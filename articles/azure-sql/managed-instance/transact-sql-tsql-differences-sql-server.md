@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 3/5/2021
+ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 1afd5a0e24e144169280e683321b5843e9766136
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212718"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601368"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -466,11 +466,13 @@ Informace o příkazech Restore naleznete v tématu [Restore restatements](/sql/
 
 ### <a name="service-broker"></a>Služba Service Broker
 
-Služba Service Broker mezi instancemi není podporována:
+Výměna zpráv služby Service Broker mezi instancemi je podporovaná jenom mezi spravovanými instancemi Azure SQL:
 
-- `sys.routes`: Jako požadavek musíte vybrat adresu z sys. Routes. Adresa musí být místní v každé trase. Viz [Sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: Nemůžete použít `CREATE ROUTE` s `ADDRESS` jinými než `LOCAL` . Viz [vytvoření trasy](/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: Nemůžete použít `ALTER ROUTE` s `ADDRESS` jinými než `LOCAL` . Viz [ALTER Route](/sql/t-sql/statements/alter-route-transact-sql). 
+- `CREATE ROUTE`: Nemůžete použít `CREATE ROUTE` s `ADDRESS` jiným `LOCAL` názvem než nebo DNS jiné spravované instance SQL.
+- `ALTER ROUTE`: Nemůžete použít `ALTER ROUTE` s `ADDRESS` jiným `LOCAL` názvem než nebo DNS jiné spravované instance SQL.
+
+Zabezpečení přenosu je podporované, zabezpečení dialogu není:
+- `CREATE REMOTE SERVICE BINDING`se nepodporuje.
 
 Služba Service Broker je ve výchozím nastavení povolena a nelze ji zakázat. Následující možnosti příkazu ALTER DATABASE nejsou podporovány:
 - `ENABLE_BROKER`

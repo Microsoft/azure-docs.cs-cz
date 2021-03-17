@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728191"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601538"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů představuje jednoduchou a efektivní metodu pro zlepšení rychlosti přenosu souborů a zvýšení výkonu načítání stránek tím, že se velikost souboru před odesláním ze serveru zmenší. Komprese souborů může snížit náklady na šířku pásma a zajistit pro uživatele lépe reagující prostředí.
@@ -63,10 +63,6 @@ Existují dva způsoby, jak povolit kompresi souborů:
 
    > [!TIP]
    > I když je to možné, nedoporučujeme používat kompresi do komprimovaných formátů. Například ZIP, MP3, MP4 nebo JPG.
-   > 
-
-   > [!NOTE]
-   > Změna výchozího seznamu typů MIME v současnosti není v Azure CDN Standard od Microsoftu podporovaná.
    > 
 
 5. Po provedení změn vyberte **Uložit**.

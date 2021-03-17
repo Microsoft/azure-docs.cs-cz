@@ -6,12 +6,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 30be0343b7c3282e3ce4da165225ab8209d07f4a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 98f53ec1b6506a6d47146377e837576254f445e2
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452403"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601062"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-solution"></a>Připojení Azure k nástrojům ITSM pomocí řešení pro správu služeb v oddělení IT
 
@@ -90,7 +90,7 @@ Skupiny akcí poskytují modulární a opakovaně použitelný způsob, jak akti
 
 ## <a name="define-a-template"></a>Definice šablony
 
-Některé typy pracovních položek mohou používat šablony, které definujete v nástroji ITSM. Pomocí šablon můžete definovat pole, která se automaticky vyplní podle pevných hodnot pro skupinu akcí. Šablonu, kterou chcete použít, můžete definovat jako součást definice skupiny akcí.
+Některé typy pracovních položek mohou používat šablony, které definujete v nástroji ITSM. Pomocí šablon můžete definovat pole, která se automaticky vyplní podle pevných hodnot pro skupinu akcí. Šablonu, kterou chcete použít, můžete definovat jako součást definice skupiny akcí. V informacích o tom, jak vytvořit šablony, najdete v dokumentaci k ServiceNow https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html .
 
 Vytvoření skupiny akcí:
 
