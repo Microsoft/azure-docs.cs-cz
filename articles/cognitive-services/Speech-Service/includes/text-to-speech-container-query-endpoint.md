@@ -8,20 +8,20 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 7e5ea8dcddce31a414d983d14fba483eb388d5d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a29244745b154aa81997813fcf4e1457f599270
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334667"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622010"
 ---
 Kontejner poskytuje [rozhraní API koncového bodu na bázi REST](../rest-text-to-speech.md). K dispozici je mnoho [ukázkových projektů zdrojového kódu](https://github.com/Azure-Samples/Cognitive-Speech-TTS) pro platformu, architekturu a jazykové variace.
 
-Pomocí standardních nebo neuronové kontejnerů pro převod textu na řeč byste měli spoléhat na národní prostředí a hlas značky obrázku, kterou jste stáhli. Například pokud jste stáhli `latest` značku výchozí národní prostředí `en-US` a `AriaRUS` hlas. `{VOICE_NAME}`Argument by pak byl [`en-US-AriaRUS`](../language-support.md#standard-voices) . Podívejte se na příklad SSML níže:
+Pomocí standardních nebo neuronové kontejnerů pro převod textu na řeč byste měli spoléhat na národní prostředí a hlas značky obrázku, kterou jste stáhli. Například pokud jste stáhli `latest` značku výchozí národní prostředí `en-US` a `AriaNeural` hlas. `{VOICE_NAME}`Argument by pak byl [`en-US-AriaNeural`](../language-support.md#neural-voices) . Podívejte se na příklad SSML níže:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-AriaNeural">
         This text will get converted into synthesized speech.
     </voice>
 </speak>

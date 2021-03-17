@@ -258,8 +258,6 @@
               href: application-sign-in-problem-application-error.md
             - name: Potíže s přihlášením k aplikaci Microsoftu
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: Potíže s jednotným přihlašováním
-              href: application-sign-in-problem-federated-sso-gallery.md
         - name: Řešení potíží s místními aplikacemi
           items:
             - name: Řešení potíží s proxy aplikací

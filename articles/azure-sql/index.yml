@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure SQL
-summary: 'Vyhledejte dokumentaci k řadě Azure SQL produktů databázových strojů SQL Serveru v cloudu: Azure SQL Database, spravovaná instance Azure SQL a SQL Server na virtuálním počítači Azure. '
+summary: 'Vyhledejte dokumentaci k řadě Azure SQL produktů databázových strojů SQL Serveru v cloudu: Azure SQL Database, spravovaná instance Azure SQL a SQL Server na virtuálním počítači Azure.'
 metadata:
   title: Dokumentace ke službě Azure SQL
   description: Azure SQL je řada produktů databázových strojů SQL Serveru v cloudu, která zahrnuje plně spravovanou databázi v Azure SQL Database, plně spravovanou instanci v Azure SQL Managed Instance nebo SQL Server nainstalovaný na virtuální počítač v Azure.
@@ -14,19 +14,23 @@ metadata:
   ms.author: sstein
   ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 91221735001f55974f6aba4b6fcae39a92834da8
-  ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
-  ms.translationtype: HT
+  ms.openlocfilehash: 13fcc3b41777a6b198ad9a8b12d93877adae75ca
+  ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/13/2020
-  ms.locfileid: "94593888"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103601419"
 landingContent:
 - title: Azure SQL Database
   linkLists:
-  - linkListType: overview
+  - linkListType: whats-new
     links:
     - text: Co je nového?
       url: database/doc-changes-updates-release-notes.md?tabs=single-database
+    - text: Chcete poslat svůj názor? Využijte průzkum!
+      url: https://aka.ms/AzureSQLSurvey
+  - linkListType: overview
+    links:
     - text: Co je SQL Database?
       url: database/sql-database-paas-overview.md
     - text: Co jsou elastické fondy?
@@ -55,6 +59,12 @@ landingContent:
       url: database/transact-sql-tsql-differences-sql-server.md
 - title: Spravovaná instance Azure SQL
   linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Co je nového?
+      url: database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: Chcete poslat svůj názor? Využijte průzkum!
+      url: https://aka.ms/AzureSQLSurvey
   - linkListType: overview
     links:
     - text: Co je nového?

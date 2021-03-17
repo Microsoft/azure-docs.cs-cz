@@ -40,6 +40,8 @@
           href: whatis-phs.md
         - name: Jak funguje synchronizace hodnot hash hesel
           href: how-to-connect-password-hash-synchronization.md
+        - name: Synchronizace hodnot hash selektivního hesla
+          href: how-to-connect-selective-password-hash-synchronization.md
     - name: Předávací ověřování
       items:
         - name: Co je předávací ověřování?
