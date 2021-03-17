@@ -2,28 +2,24 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: azure-communication-services
-author: chrwhit
-manager: nimag
+author: pvicencio
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
-ms.author: chrwhit
-ms.openlocfilehash: 313832c29eb3f3f175fb20a60ba712937fdede0a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: pvicencio
+ms.openlocfilehash: 2739079b67d80f3e4a9f367aaa58f6dcbbb650ca
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488293"
+ms.locfileid: "103622052"
 ---
 Začínáme s komunikačními službami Azure pomocí klientské knihovny služby Communications Services Java SMS k posílání zpráv SMS.
 
 Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
-
-<!--**TODO: update all these reference links as the resources go live**
-
-[API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-net-pr/tree/feature/communication/sdk/communication/Azure.Communication.Sms#todo-update-to-public) | [Artifact (Maven)](#todo-nuget) | [Samples](#todo-samples)-->
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,7 +54,7 @@ Otevřete **pom.xml** soubor v textovém editoru. Přidejte následující prvek
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0-beta.3</version>
+    <version>1.0.0-beta.4</version>
 </dependency>
 ```
 
@@ -70,7 +66,12 @@ Přidejte `azure-core-http-netty` závislost do souboru **pom.xml** .
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-core-http-netty</artifactId>
-    <version>1.3.0</version>
+    <version>1.8.0</version>
+</dependency>
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-core</artifactId>
+    <version>1.13.0</version> <!-- {x-version-update;com.azure:azure-core;dependency} -->
 </dependency>
 ```
 
@@ -79,23 +80,17 @@ Otevřete **/Src/Main/Java/com/Communication/Quickstart/App.Java** v textovém e
 ```java
 package com.communication.quickstart;
 
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.azure.communication.common.PhoneNumber;
-import com.azure.communication.sms.SmsClient;
-import com.azure.communication.sms.SmsClientBuilder;
-import com.azure.communication.sms.models.SendSmsOptions;
-import com.azure.communication.sms.models.SendSmsResponse;
+import com.azure.communication.sms.models.*;
+import com.azure.core.credential.AzureKeyCredential;
+import com.azure.communication.sms.*;
 import com.azure.core.http.HttpClient;
 import com.azure.core.http.netty.NettyAsyncHttpClientBuilder;
+import com.azure.core.util.Context;
+import java.util.Arrays;
 
 public class App
 {
-    public static void main( String[] args ) throws IOException, NoSuchAlgorithmException, InvalidKeyException
+    public static void main( String[] args )
     {
         // Quickstart code goes here
     }
@@ -107,75 +102,92 @@ public class App
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny SMS služby Azure Communications Services pro jazyk Java.
 
-| Název                                                             | Popis                                                                                     |
+| Název                                                             | Description                                                                                     |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | SmsClientBuilder              | Tato třída vytvoří třídu SmsClient. Poskytnete ho pro koncové body, přihlašovací údaje a klienta http. |
 | SmsClient                    | Tato třída je potřebná pro všechny funkce SMS. Použijete ho k posílání zpráv SMS.                |
-| SendSmsResponse               | Tato třída obsahuje odpověď ze služby SMS.                                          |
-| PhoneNumber                   | Tato třída obsahuje informace o telefonním čísle.
+| SmsSendResult                | Tato třída obsahuje výsledek ze služby SMS.                                          |
+| SmsSendOptions               | Tato třída poskytuje možnosti pro přidání vlastních značek a konfiguraci vytváření sestav o doručení. Pokud je deliveryReportEnabled nastavené na hodnotu true, vygeneruje se po úspěšném doručení událost.|                           |
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vytvořte instanci `SmsClient` s připojovacím řetězcem. Následující kód načte koncový bod a řetězce přihlašovacích údajů pro prostředek z proměnných prostředí s názvem `COMMUNICATION_SERVICES_ENDPOINT_STRING` a `COMMUNICATION_SERVICES_CREDENTIAL_STRING` (přihlašovací údaje jsou `Key` z Azure Portal. Naučte se [Spravovat připojovací řetězec prostředku](../../create-communication-resource.md#store-your-connection-string).
+Vytvořte instanci `SmsClient` s připojovacím řetězcem. (Přihlašovací údaje jsou `Key` z Azure Portal. Naučte se [Spravovat připojovací řetězec prostředku](../../create-communication-resource.md#store-your-connection-string).
 
 Do metody `main` přidejte následující kód:
 
 ```java
-// Your can find your endpoint and access key from your resource in the Azure Portal
-String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
-String accessKey = "SECRET";
+// You can find your endpoint and access key from your resource in the Azure Portal
+String endpoint = "https://<resource-name>.communication.azure.com/";
+AzureKeyCredential azureKeyCredential = new AzureKeyCredential("<access-key-credential>");
 
 // Create an HttpClient builder of your choice and customize it
 HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
-// Configure and build a new SmsClient
-SmsClient client = new SmsClientBuilder()
-    .endpoint(endpoint)
-    .accessKey(accessKey)
-    .httpClient(httpClient)
-    .buildClient();
+SmsClient smsClient = new SmsClientBuilder()
+                .endpoint(endpoint)
+                .credential(azureKeyCredential)
+                .httpClient(httpClient)
+                .buildClient();
 ```
 
 Můžete inicializovat klienta pomocí libovolného vlastního klienta HTTP, který implementuje `com.azure.core.http.HttpClient` rozhraní. Výše uvedený kód ukazuje použití [klienta protokolu HTTP v Azure Core](/java/api/overview/azure/core-http-netty-readme) , který poskytuje `azure-core` .
 
 Můžete také zadat celý připojovací řetězec pomocí funkce connectionString () místo poskytnutí koncového bodu a přístupového klíče. 
 ```java
-// Your can find your connection string from your resource in the Azure Portal
-String connectionString = "<connection_string>";
-SmsClient client = new SmsClientBuilder()
-    .connectionString(connectionString)
-    .httpClient(httpClient)
-    .buildClient();
+// You can find your connection string from your resource in the Azure Portal
+String connectionString = "https://<resource-name>.communication.azure.com/;<access-key>";
+
+// Create an HttpClient builder of your choice and customize it
+HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
+
+SmsClient smsClient = new SmsClientBuilder()
+            .connectionString(connectionString)
+            .httpClient(httpClient)
+            .buildClient();
 ```
 
-## <a name="send-an-sms-message"></a>Odeslání zprávy SMS
+## <a name="send-a-11-sms-message"></a>Poslat zprávu SMS 1:1
 
-Odešle zprávu SMS voláním metody sendMessage. Přidejte tento kód na konec `main` metody:
+Chcete-li odeslat zprávu SMS jednomu příjemci, zavolejte `send` metodu z SmsClient s jedním příjemcem telefonního čísla. K určení, zda má být povolena zpráva o doručení a nastavena vlastní značky, můžete také předat volitelné parametry.
 
 ```java
-List<PhoneNumber> to = new ArrayList<PhoneNumber>();
-to.add(new PhoneNumber("<to-phone-number>"));
+SmsSendResult sendResult = smsClient.send(
+                "<from-phone-number>",
+                "<to-phone-number>",
+                "Weekly Promotion");
 
-// SendSmsOptions is an optional field. It can be used
-// to enable a delivery report to the Azure Event Grid
-SendSmsOptions options = new SendSmsOptions();
-options.setEnableDeliveryReport(true);
+System.out.println("Message Id: " + sendResult.getMessageId());
+System.out.println("Recipient Number: " + sendResult.getTo());
+System.out.println("Send Result Successful:" + sendResult.isSuccessful());
+```
+## <a name="send-a-1n-sms-message-with-options"></a>Odeslat zprávu o 1: N SMS s možnostmi
+Chcete-li odeslat zprávu SMS seznamu příjemců, zavolejte `send` metodu se seznamem telefonních čísel příjemců. K určení, zda má být povolena zpráva o doručení a nastavena vlastní značky, můžete také předat volitelné parametry.
+```java
+SmsSendOptions options = new SmsSendOptions();
+options.setDeliveryReportEnabled(true);
+options.setTag("Marketing");
 
-// Send the message and check the response for a message id
-SendSmsResponse response = client.sendMessage(
-    new PhoneNumber("<leased-phone-number>"),
-    to,
-    "<message-text>",
-    options);
+Iterable<SmsSendResult> sendResults = smsClient.send(
+    "<from-phone-number>",
+    Arrays.asList("<to-phone-number1>", "<to-phone-number2>"),
+    "Weekly Promotion",
+    options /* Optional */,
+    Context.NONE);
 
-System.out.println("MessageId: " + response.getMessageId());
+for (SmsSendResult result : sendResults) {
+    System.out.println("Message Id: " + result.getMessageId());
+    System.out.println("Recipient Number: " + result.getTo());
+    System.out.println("Send Result Successful:" + result.isSuccessful());
+}
 ```
 
-Měli byste nahradit `<leased-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým k vašemu prostředku komunikačních služeb a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu.
+Měli byste nahradit `<from-phone-number>` telefonní číslo s povoleným SMS, které je přidružené k vašemu prostředku komunikačních služeb, a `<to-phone-number>` telefonní číslo nebo seznam telefonních čísel, na které chcete poslat zprávu.
 
-`enableDeliveryReport`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
+## <a name="optional-parameters"></a>Volitelné parametry
 
-<!--todo: the signature of the `sendMessage` method changes when configuring delivery reporting. Need to confirm that this is how our client library is to be used.-->
+`deliveryReportEnabled`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
+
+`tag`Parametr je volitelný parametr, který můžete použít k použití značky pro sestavu doručení.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 

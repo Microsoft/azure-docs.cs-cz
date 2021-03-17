@@ -2,13 +2,13 @@
 title: Škálovatelnost – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak škálovat Event Hubs Azure pomocí oddílů a jednotek propustnosti.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/16/2021
+ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521951"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601270"
 ---
 # <a name="scaling-with-event-hubs"></a>Škálování pomocí Event Hubs
 
@@ -39,11 +39,7 @@ Další informace o funkci automatického rozplochení najdete v tématu [Automa
 ## <a name="partitions"></a>Oddíly
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-### <a name="partition-key"></a>Klíč oddílu
 
-[Klíč oddílu](event-hubs-programming-guide.md#partition-key) můžete použít k mapování příchozích dat událostí do konkrétních oddílů pro účely organizace dat. Klíč oddílu je hodnota zadaná odesílatelem, která byla předaná do centra událostí. Zpracovává se pomocí statické hashovací funkce, která vytvoří přiřazení k oddílu. Pokud při publikování události nezadáte klíč oddílu, použije se přiřazení metodou kruhového dotazování.
-
-Zdroj události zná jenom svůj klíč oddílu, a ne oddíl, do kterého se události publikují. Díky tomuto oddělení klíče a oddílu odesílatel toho nepotřebuje vědět o zpracování příjmu dat příliš mnoho. Vhodným klíčem oddílu je jedinečná identita uživatele nebo zařízení, ale k seskupení souvisejících událostí do jednoho oddílu je možné použít i další atributy, například geografickou polohu.
 
 
 ## <a name="next-steps"></a>Další kroky
