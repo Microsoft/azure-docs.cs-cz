@@ -148,6 +148,8 @@
               href: manage/understand-mca-roles.md
             - name: Propojení ID partnera
               href: manage/link-partner-id.md
+            - name: Propojit ID partnera s účty Power Apps
+              href: manage/link-partner-id-power-apps-accounts.md
         - name: Správa předplatných
           items:
             - name: Přiřazení přístupu k datům služby Cost Management

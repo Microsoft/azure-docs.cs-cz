@@ -11,18 +11,20 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741112"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600858"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Řešení potíží s resetováním hesla samoobslužné služby v Azure Active Directory
 
 Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD) umožňuje uživatelům resetovat hesla v cloudu.
 
-Pokud máte problémy s SSPR, může vám pomáhat následující postup pro odstraňování potíží a běžné chyby. Pokud nemůžete najít odpověď na váš problém, [naši týmy podpory vám budou mít k dispozici stále](#contact-microsoft-support) více.
+Pokud máte problémy s SSPR, může vám pomáhat následující postup pro odstraňování potíží a běžné chyby. V tomto krátkém videu se můžete podívat i na to, [jak vyřešit šest nejčastějších chybových zpráv koncového uživatele SSPR](https://www.youtube.com/watch?v=9RPrNVLzT8I&list=PL3ZTgFEc7LyuS8615yo39LtXR7j1GCerW&index=1).
+
+Pokud nemůžete najít odpověď na váš problém, [naši týmy podpory vám budou mít k dispozici stále](#contact-microsoft-support) více.
 
 ## <a name="sspr-configuration-in-the-azure-portal"></a>Konfigurace SSPR v Azure Portal
 

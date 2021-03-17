@@ -2,13 +2,13 @@
 title: Přehled funkcí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje podrobné informace o funkcích a terminologii Azure Event Hubs.
 ms.topic: article
-ms.date: 02/19/2021
-ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/15/2021
+ms.openlocfilehash: fbfc2a23a7cde50172b80769558c2dfd6fd5ec84
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739071"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601300"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -53,6 +53,13 @@ Publikované události se odeberou z centra událostí na základě konfigurovat
 - Pro Event Hubs **Standard** je maximální doba uchovávání **7 dní**. 
 - Pro Event Hubs **vyhrazené** je maximální doba uchování **90 dní**.
 - Pokud změníte dobu uchování, bude platit pro všechny zprávy, včetně zpráv, které jsou již v centru událostí. 
+
+Event Hubs zachovává události pro nakonfigurovanou dobu uchování, která se vztahuje na všechny oddíly. Události jsou automaticky odebrány po dosažení doby uchování. Pokud zadáte dobu uchování jednoho dne, událost nebude k dispozici přesně 24 hodin poté, co byla přijata. Události nemůžete explicitně odstranit. 
+
+Pokud potřebujete Archivovat události nad povolenou dobu uchovávání, můžete je [automaticky ukládat do Azure Storage nebo Azure Data Lake zapnutím funkce Event Hubs Capture](event-hubs-capture-overview.md), a pokud potřebujete tyto podrobné archivy prohledávat nebo analyzovat, můžete [je snadno importovat do Azure synapse](store-captured-data-data-warehouse.md) nebo jiných podobných úložišť a analytických platforem. 
+
+Důvodem Event Hubs "omezení uchovávání dat na základě času je zabránit velkým objemům historických zákaznických dat v hlubokém úložišti, které je indexováno pouze pomocí časového razítka, a umožňuje pouze sekvenční přístup. Filozofie architektury tady je, že historické údaje potřebují mnohem lepší indexování a větší přímý přístup než rozhraní pro zpracování událostí v reálném čase, které Event Hubs nebo Kafka poskytují. Moduly streamování událostí nejsou vhodné pro hraní role datových laků nebo dlouhodobých archivů pro účely plnění událostí. 
+ 
 
 > [!NOTE]
 > Event Hubs je modul streamování událostí v reálném čase, který není určený pro použití namísto databáze nebo jako trvalé úložiště pro nekonečné uchovávání datových proudů událostí. 

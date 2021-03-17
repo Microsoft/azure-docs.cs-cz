@@ -44,7 +44,7 @@
 - name: ukázky
   items:
     - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
+      href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure-stream-analytics'
 - name: Koncepty
   items:
     - name: Kompletní vzory řešení
@@ -688,7 +688,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Blog
-      href: 'https://azure.microsoft.com/blog/tag/azure-stream-analytics/'
+      href: 'https://techcommunity.microsoft.com/t5/analytics-on-azure/bg-p/AnalyticsonAzure'
     - name: Fórum pro názory
       href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: Stránka s dotazy na Microsoft Q&A
@@ -705,5 +705,3 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
     - name: Zákaznické případové studie
       href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
-    - name: Dokument white paper – Zpracování událostí v reálném čase
-      href: stream-analytics-real-time-event-processing-reference-architecture.md

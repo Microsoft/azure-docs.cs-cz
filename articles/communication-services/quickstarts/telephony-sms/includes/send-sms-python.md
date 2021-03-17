@@ -2,20 +2,20 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: azure-communication-services
-author: danieldoolabh
-manager: nimag
+author: lakshmans
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dadoolab
-ms.openlocfilehash: 442fff11c2ce95ca5cc665b016631cab9048ab50
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: lakshmans
+ms.openlocfilehash: e8424f6b5b7617b00de6dedbece3325f3c5513c8
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488292"
+ms.locfileid: "103622334"
 ---
 Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications Pythonu SMS k posílání zpráv SMS.
 
@@ -51,8 +51,6 @@ Pomocí textového editoru vytvořte soubor s názvem **Send-SMS.py** v kořenov
 
 ```python
 import os
-from azure.communication.sms import PhoneNumber
-from azure.communication.sms import SendSmsOptions
 from azure.communication.sms import SmsClient
 
 try:
@@ -74,10 +72,10 @@ pip install azure-communication-sms --pre
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny SMS služby Azure Communications Services pro Python.
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| SmsClient | Tato třída je potřebná pro všechny funkce SMS. Vytvoří se jeho instance s informacemi o předplatném a použije se k posílání zpráv SMS. |
-| SendSmsOptions | Tato třída poskytuje možnosti konfigurace vytváření sestav o doručení. Pokud je enable_delivery_report nastavené na hodnotu true, vygeneruje se po úspěšném doručení událost. |
+| SmsClient | Tato třída je potřebná pro všechny funkce SMS. Vytvoří se jeho instance s informacemi o předplatném a použije se k posílání zpráv SMS.                                                                                                                 |
+| SmsSendResult               | Tato třída obsahuje výsledek ze služby SMS.                                          |
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -92,24 +90,47 @@ connection_string = os.getenv('COMMUNICATION_SERVICES_CONNECTION_STRING')
 sms_client = SmsClient.from_connection_string(connection_string)
 ```
 
-## <a name="send-an-sms-message"></a>Odeslání zprávy SMS
+## <a name="send-a-11-sms-message"></a>Poslat zprávu SMS 1:1
 
-Odešle zprávu SMS voláním metody Send. Přidejte tento kód na konec `try` bloku v **Send-SMS.py**:
+Chcete-li odeslat zprávu SMS jednomu příjemci, zavolejte ```send``` metodu z **SmsClient** s jedním příjemcem telefonního čísla. K určení, zda má být povolena zpráva o doručení a nastavena vlastní značky, můžete také předat volitelné parametry. Přidejte tento kód na konec `try` bloku v **Send-SMS.py**:
 
 ```python
 
 # calling send() with sms values
-sms_response = sms_client.send(
-        from_phone_number=PhoneNumber("<leased-phone-number>"),
-        to_phone_numbers=[PhoneNumber("<to-phone-number>")],
-        message="Hello World via SMS",
-        send_sms_options=SendSmsOptions(enable_delivery_report=True)) # optional property
+sms_responses = sms_client.send(
+    from_="<from-phone-number>",
+    to="<to-phone-number>,
+    message="Hello World via SMS",
+    enable_delivery_report=True, # optional property
+    tag="custom-tag") # optional property
 
 ```
 
-Měli byste nahradit `<leased-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým ke komunikační službě a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu. 
+Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým ke komunikační službě a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu. 
 
-`send_sms_options`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
+## <a name="send-a-1n-sms-message"></a>Odeslat zprávu o 1: N SMS
+
+Chcete-li odeslat zprávu SMS seznamu příjemců, zavolejte ```send``` metodu ze **SmsClient** se seznamem telefonních čísel příjemců. K určení, zda má být povolena zpráva o doručení a nastavena vlastní značky, můžete také předat volitelné parametry. Přidejte tento kód na konec `try` bloku v **Send-SMS.py**:
+
+```python
+
+# calling send() with sms values
+sms_responses = sms_client.send(
+    from_="<from-phone-number>",
+    to=["<to-phone-number-1>", "<to-phone-number-2>"],
+    message="Hello World via SMS",
+    enable_delivery_report=True, # optional property
+    tag="custom-tag") # optional property
+
+```
+
+Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým ke komunikační službě a `<to-phone-number-1>` a `<to-phone-number-2>` telefonními čísly, na které chcete poslat zprávu. 
+
+## <a name="optional-parameters"></a>Volitelné parametry
+
+`enable_delivery_report`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
+
+`tag`Parametr je volitelný parametr, který lze použít ke konfiguraci vlastního označování.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 

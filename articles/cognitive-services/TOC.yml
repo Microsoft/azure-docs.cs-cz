@@ -7,16 +7,10 @@
       href: what-are-cognitive-services.md
     - name: Co je nového v dokumentaci ke Cognitive Services
       href: whats-new-docs.md
-    - name: Cognitive Services a strojové učení
-      href: cognitive-services-and-machine-learning.md
-    - name: Možnosti vývoje služby Cognitive Services
-      href: cognitive-services-development-options.md
-    - name: Vlastní podřízené domény pro Cognitive Services
-      href: cognitive-services-custom-subdomains.md
     - name: Podpora jazyků
       href: language-support.md
-    - name: Plánování a správa nákladů
-      href: plan-manage-costs.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
 - name: Rychlé starty
   items:
     - name: Vytvoření nového prostředku pomocí webu Azure Portal
@@ -28,68 +22,82 @@
     - name: Vytvoření nového prostředku pomocí šablony ARM
       displayName: Resource Manager
       href: create-account-resource-manager-template.md
+- name: Postupy
+  items:
+    - name: Plánování a správa nákladů
+      href: plan-manage-costs.md
     - name: Protokolování diagnostiky
       href: diagnostic-logging.md
-- name: Zabezpečení
+    - name: Nasadit
+      items:
+        - name: Kontejnery
+          items:
+            - name: Podpora kontejnerů
+              href: cognitive-services-container-support.md
+            - name: Poznámky k verzi a značky imagí kontejnerů
+              href: ./containers/container-image-tags.md
+            - name: Nejčastější dotazy ke kontejnerům
+              href: ./containers/container-faq.yml
+            - name: Návody ke kontejnerům
+              items:
+                - name: Opakované využití kontejnerů
+                  href: ./containers/container-reuse-recipe.md
+                - name: Nasazení do instance kontejneru Azure
+                  href: ./containers/azure-container-instance-recipe.md
+                - name: Nasazení do Kubernetes v Azure
+                  href: ./containers/azure-kubernetes-recipe.md
+                - name: Nasazení s využitím Docker Compose
+                  href: ./containers/docker-compose-recipe.md
+            - name: Další služby kontejnerů
+              items:
+                - name: Azure Container Instances
+                  href: ../container-instances/container-instances-tutorial-prepare-app.md
+                - name: Azure Container Registry
+                  href: ../container-registry/container-registry-get-started-azure-cli.md
+                - name: Azure Kubernetes Service (AKS)
+                  href: ../aks/tutorial-kubernetes-prepare-app.md
+            - name: Dokumentace ke kontejnerům Cognitive Services
+              href: containers/index.yml
+    - name: Zabezpečení
+      items:
+        - name: Zabezpečení Cognitive Services
+          href: cognitive-services-security.md
+        - name: Virtuální sítě pro Cognitive Services
+          href: cognitive-services-virtual-networks.md
+        - name: Konfigurace klíčů spravovaných zákazníkem
+          href: ./encryption/cognitive-services-encryption-keys-portal.md
+        - name: Ověřování žádostí v Cognitive Services
+          href: authentication.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
+    - name: Použití s velkými objemy dat
+      items:
+        - name: Cognitive Services pro velký objem dat
+          href: ./big-data/cognitive-services-for-big-data.md
+        - name: Začínáme
+          href: ./big-data/getting-started.md
+        - name: ukázky
+          items:
+            - name: Python
+              href: ./big-data/samples-python.md
+            - name: Scala
+              href: ./big-data/samples-scala.md
+        - name: Návody
+          items:
+            - name: 'Návod: Detektor anomálií'
+              href: ./big-data/recipes/anomaly-detection.md
+            - name: 'Návod: Art Explorer'
+              href: ./big-data/recipes/art-explorer.md
+- name: Koncepty
   items:
-    - name: Zabezpečení Cognitive Services
-      href: cognitive-services-security.md
-    - name: Virtuální sítě pro Cognitive Services
-      href: cognitive-services-virtual-networks.md
-    - name: Konfigurace klíčů spravovaných zákazníkem
-      href: ./encryption/cognitive-services-encryption-keys-portal.md
-    - name: Ověřování žádostí v Cognitive Services
-      href: authentication.md
-    - name: Standardní hodnoty zabezpečení
-      href: security-baseline.md
-    - name: Mechanismy zabezpečení služby Azure Policy
-      href: ./security-controls-policy.md
-- name: Podpora kontejnerů
-  items:
-    - name: Podpora kontejnerů
-      href: cognitive-services-container-support.md
-    - name: Poznámky k verzi a značky imagí kontejnerů
-      href: ./containers/container-image-tags.md
-    - name: Nejčastější dotazy ke kontejnerům
-      href: ./containers/container-faq.yml
-    - name: Návody ke kontejnerům
-      items:
-        - name: Opakované využití kontejnerů
-          href: ./containers/container-reuse-recipe.md
-        - name: Nasazení do instance kontejneru Azure
-          href: ./containers/azure-container-instance-recipe.md
-        - name: Nasazení do Kubernetes v Azure
-          href: ./containers/azure-kubernetes-recipe.md
-        - name: Nasazení s využitím Docker Compose
-          href: ./containers/docker-compose-recipe.md
-    - name: Další služby kontejnerů
-      items:
-        - name: Azure Container Instances
-          href: ../container-instances/container-instances-tutorial-prepare-app.md
-        - name: Azure Container Registry
-          href: ../container-registry/container-registry-get-started-azure-cli.md
-        - name: Azure Kubernetes Service (AKS)
-          href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: Dokumentace ke kontejnerům Cognitive Services
-      href: containers/index.yml
-- name: Velký objem dat
-  items:
-    - name: Cognitive Services pro velký objem dat
-      href: ./big-data/cognitive-services-for-big-data.md
-    - name: Začínáme
-      href: ./big-data/getting-started.md
-    - name: ukázky
-      items:
-        - name: Python
-          href: ./big-data/samples-python.md
-        - name: Scala
-          href: ./big-data/samples-scala.md
-    - name: Návody
-      items:
-        - name: 'Návod: Detektor anomálií'
-          href: ./big-data/recipes/anomaly-detection.md
-        - name: 'Návod: Art Explorer'
-          href: ./big-data/recipes/art-explorer.md
+    - name: Možnosti vývoje služby Cognitive Services
+      href: cognitive-services-development-options.md
+    - name: Cognitive Services a strojové učení
+      href: cognitive-services-and-machine-learning.md
+    - name: Vlastní podřízené domény pro Cognitive Services
+      href: cognitive-services-custom-subdomains.md
 - name: Odkaz
   items:
     - name: Integrované služby Azure Policy
@@ -99,23 +107,19 @@
   items:
     - name: Možnosti pomoci a podpory
       href: cognitive-services-support-options.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: Podpora oblastí
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/updates/?query=cognitive%20services'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Smlouvy o úrovni služeb (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
+    - name: Azure Government
+      href: 'https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
-    - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Poskytnutí zpětné vazby k produktu
-      href: 'https://cognitive.uservoice.com/'
-    - name: Pravidla chování
-      href: 'https://go.microsoft.com/fwlink/?LinkId=698895'

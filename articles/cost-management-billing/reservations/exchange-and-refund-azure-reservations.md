@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/16/2021
 ms.author: banders
-ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bd16bbbe33876a3c44b20c5d1756b83814f9b17d
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035989"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601946"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
@@ -105,6 +105,7 @@ Azure využívá při zrušení, výměně nebo refundaci následující zásady
 - Za předčasné ukončení momentálně neúčtujeme žádný poplatek, ale v budoucnu se v případě zrušení bude za předčasné ukončení pravděpodobně účtovat poplatek 12 %.
 - Celkový zrušený závazek pro fakturační profil nebo jednu registraci nesmí za průběžné období 12 měsíců překročit 50 000 USD. Příklad: Pro rezervaci na tři roky, která stojí 100 USD měsíčně a vymění se po 18. platbě, se zrušený závazek rovná 1 800 USD. Váš nový dostupný limit po provedení této refundace bude 48 200 USD. Za 365 dnů od provedení této refundace se limit 48 200 USD zvýší o 1 800 USD a znovu budete mít k dispozici 50 000 USD. Z tohoto fondu se odčítají všechny ostatní zrušené rezervace pro fakturační profil nebo registraci EA a platí pro ně stejná doplňovací logika.
 - Azure nebude zpracovávat žádnou refundaci, která by pro fakturační profil nebo registraci EA za dobu 12 měsíců překročila limit 50 000 USD.
+    - Refundace vyplývající z výměny se nepočítají na limit refundace.
 - Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší.
 - Refundace můžou provádět pouze vlastníci objednávek rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6961c0ffc0d5b9c6559d20b00bfb5510f7247adb
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550874"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600977"
 ---
 # <a name="what-is-azure-sql"></a>Co je Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,11 +32,11 @@ Azure SQL je založený na známém SQL Server Engine, takže můžete snadno mi
 
 Přečtěte si, jak každý produkt zapadá do datové platformy Microsoft Azure SQL, aby odpovídal správné možnosti pro vaše podnikové požadavky. Bez ohledu na to, jestli upřednostňujete úspory nákladů nebo minimální správu, vám tento článek může pomáhat při rozhodování, jakým způsobem se většina obchodních požadavků zajímá.
 
-
 Pokud s Azure SQL začínáte, podívejte se na video *co je Azure SQL* z naší podrobné [série videí Azure SQL](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
 
-
+> [!TIP]
+> Jak můžeme Azure SQL lépe využít? [Proveďte průzkum](https://aka.ms/AzureSQLSurvey).
 
 ## <a name="overview"></a>Přehled
 
@@ -144,7 +144,7 @@ Další informace o cenách najdete v následujících zdrojích informací a ma
 
 - [SQL Database & ceny spravované instance SQL](https://azure.microsoft.com/pricing/details/sql-database/)
 - [Ceny za virtuální počítače](https://azure.microsoft.com/pricing/details/virtual-machines/) pro [SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#sql) a pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#windows)
-- [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/)
+- [Cenová kalkulačka funkcí Azure](https://azure.microsoft.com/pricing/calculator/)
 
 ## <a name="administration"></a>Správa
 

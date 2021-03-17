@@ -2,20 +2,20 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: azure-communication-services
-author: dademath
-manager: nimag
+author: peiliu
+manager: rejooyan
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dademath
-ms.openlocfilehash: a118dfceb73aca0897ba0f116ce3c5462368f6c3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: peiliu
+ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488294"
+ms.locfileid: "103622089"
 ---
 Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications C# pro SMS k posílání zpráv SMS.
 
@@ -27,7 +27,7 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Nejnovější verze [klientské knihovny .NET Core](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
 - Aktivní prostředek komunikační služby a připojovací řetězec. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
 - Telefonní číslo s povoleným SMS. [Získejte telefonní číslo](../get-phone-number.md).
@@ -59,13 +59,17 @@ dotnet build
 Stále v adresáři aplikace nainstalujte knihovnu klienta služby Azure Communications Services pro sadu .NET pomocí `dotnet add package` příkazu.
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
 ```
 
 Přidejte `using` do horní části **program.cs** direktivu, aby zahrnovala `Azure.Communication` obor názvů.
 
 ```csharp
 
+using System;
+using System.Collections.Generic;
+
+using Azure;
 using Azure.Communication;
 using Azure.Communication.Sms;
 
@@ -75,10 +79,11 @@ using Azure.Communication.Sms;
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny SMS služby Azure Communications Services pro jazyk C#.
 
-| Název                                       | Popis                                                                                                                                                       |
+| Název                                       | Description                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | SmsClient     | Tato třída je potřebná pro všechny funkce SMS. Vytvoří se jeho instance s informacemi o předplatném a použije se k posílání zpráv SMS.                           |
-| SendSmsOptions | Tato třída poskytuje možnosti konfigurace vytváření sestav o doručení. Pokud je enable_delivery_report nastavené na hodnotu true, vygeneruje se po úspěšném doručení událost. |
+| SmsSendResult               | Tato třída obsahuje výsledek ze služby SMS.                                          |
+| SmsSendOptions | Tato třída poskytuje možnosti konfigurace vytváření sestav o doručení. Pokud je enable_delivery_report nastavené na hodnotu true, vygeneruje se po úspěšném doručení událost. |
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -93,22 +98,43 @@ string connectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERV
 SmsClient smsClient = new SmsClient(connectionString);
 ```
 
-## <a name="send-an-sms-message"></a>Odeslání zprávy SMS
+## <a name="send-a-11-sms-message"></a>Poslat zprávu SMS 1:1
 
-Odešle zprávu SMS voláním metody Send. Přidejte tento kód na konec `Main` metody v **program.cs**:
+Chcete-li odeslat zprávu SMS jednomu příjemci, zavolejte `Send` `SendAsync` funkci nebo z SmsClient. Přidejte tento kód na konec `Main` metody v **program.cs**:
 
 ```csharp
-smsClient.Send(
-    from: new PhoneNumber("<leased-phone-number>"),
-    to: new PhoneNumber("<to-phone-number>"),
-    message: "Hello World via SMS",
-    new SendSmsOptions { EnableDeliveryReport = true } // optional
+SmsSendResult sendResult = smsClient.Send(
+    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
+    to: "<to-phone-number>", // E.164 formatted recipient phone number
+    message: "Hello World via SMS"
 );
+
+Console.WriteLine($"Sms id: {sendResult.MessageId}");
+```
+Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým k vašemu prostředku komunikačních služeb a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu.
+
+## <a name="send-a-1n-sms-message-with-options"></a>Odeslat zprávu o 1: N SMS s možnostmi
+Chcete-li odeslat zprávu SMS seznamu příjemců, zavolejte `Send` `SendAsync` funkci or ze SmsClient se seznamem telefonních čísel příjemců. K určení, zda má být povolena zpráva o doručení a nastavena vlastní značky, můžete také předat volitelné parametry.
+
+```csharp
+Response<IEnumerable<SmsSendResult>> response = smsClient.Send(
+    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
+    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" }, // E.164 formatted recipient phone numbers
+    message: "Weekly Promotion!",
+    options: new SmsSendOptions(enableDeliveryReport: true) // OPTIONAL
+    {
+        Tag = "marketing", // custom tags
+    });
+
+IEnumerable<SmsSendResult> results = response.Value;
+foreach (SmsSendResult result in results)
+{
+    Console.WriteLine($"Sms id: {result.MessageId}");
+    Console.WriteLine($"Send Result Successful: {result.Successful}");
+}
 ```
 
-Měli byste nahradit `<leased-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým k vašemu prostředku komunikačních služeb a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu.
-
-`EnableDeliveryReport`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
+`enableDeliveryReport`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
