@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: ebd8839fd17f79bc53b5093af83d457bb23712d9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452046"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601759"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
@@ -33,7 +33,6 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 - [Udělení souhlasu správce v rámci celého tenanta aplikaci](grant-admin-consent.md)
 - [Přesun ověřování aplikací z Active Directory Federation Services (AD FS) do Azure Active Directory](migrate-adfs-apps-to-azure.md)
 - [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)
-- [Problémy s přihlašováním k aplikacím s nakonfigurovaným jednotným přihlašováním založeným na SAML](application-sign-in-problem-federated-sso-gallery.md)
 - [Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>Leden 2021
@@ -84,7 +83,6 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 
 ### <a name="updated-articles"></a>Aktualizované články
 - [Azure Active Directory Správa aplikací: co je nového](whats-new-docs.md)
-- [Problémy s přihlašováním k aplikacím s nakonfigurovaným jednotným přihlašováním založeným na SAML](application-sign-in-problem-federated-sso-gallery.md)
 
 
 ## <a name="october-2020"></a>Říjen 2020
@@ -99,7 +97,6 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Problémy s přihlašováním k aplikacím s nakonfigurovaným jednotným přihlašováním založeným na SAML](application-sign-in-problem-federated-sso-gallery.md)
 - [Potíže při instalaci konektoru agenta proxy aplikací](application-proxy-connector-installation-problem.md)
 - [Přesun ověřování aplikací z Active Directory Federation Services (AD FS) do Azure Active Directory](migrate-adfs-apps-to-azure.md)
 - [Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)

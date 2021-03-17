@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 606704621a4904dd0fb7b6f55e753dbe77e39cb5
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175341"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601011"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -60,7 +60,7 @@ Tady je Ukázková chybová odpověď:
 
 `error`Pole má několik možných hodnot – Přečtěte si odkazy na dokumentaci k protokolu a specifikace OAuth 2,0, abyste se dozvěděli víc o specifických chybách (například `authorization_pending` v [toku kódu zařízení](v2-oauth2-device-code.md)) a jak na ně reagovat.  Zde jsou uvedeny některé běžné položky:
 
-| Kód chyby         | Popis        | Akce klienta    |
+| Kód chyby         | Description        | Akce klienta    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a odešlete požadavek znovu.|
 | `invalid_grant`    | Některé materiály pro ověřování (ověřovací kód, token aktualizace, přístupový token, PKCE) byly neplatné, neanalyzovatelné, chybějící nebo jinak nepoužitelné. | Vyzkoušejte nový požadavek na `/authorize` koncový bod, abyste získali nový autorizační kód.  Zvažte možnost zkontrolovat a ověřit používání protokolů v této aplikaci. |
@@ -96,13 +96,13 @@ Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [http
 | AADSTS50001 | InvalidResource – prostředek je zakázaný nebo neexistuje. Zkontrolujte kód vaší aplikace a ujistěte se, že jste zadali přesnou adresu URL prostředku pro prostředek, ke kterému se pokoušíte získat přístup.  |
 | AADSTS50002 | NotAllowedTenant – přihlášení nebylo úspěšné kvůli omezenému přístupu k proxy serveru v tenantovi. Pokud se jedná o vaše vlastní zásady tenanta, můžete tento problém vyřešit změnou nastavení zakázaného tenanta. |
 | AADSTS500021 | Přístup k tenantovi {tenant} je odepřený. AADSTS500021 označuje, že je nakonfigurovaná funkce omezení tenanta a že se uživatel pokouší získat přístup k tenantovi, který není v seznamu povolených tenantů uvedených v hlavičce `Restrict-Access-To-Tenant` . Další informace najdete v tématu [použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím](../manage-apps/tenant-restrictions.md).|
-| AADSTS50003 | MissingSigningKey – přihlášení nebylo úspěšné, protože chybí podpisový klíč nebo certifikát. To může být způsobeno tím, že v aplikaci nebyl nakonfigurován žádný podpisový klíč. Podívejte se na řešení popsaných na [... /Manage-apps/application-Sign-in-problem-Federated-SSO-Gallery.MD # Certificate-nebo-Key – Nenakonfigurováno](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Pokud se pořád zobrazují problémy, obraťte se na vlastníka aplikace nebo správce aplikace. |
+| AADSTS50003 | MissingSigningKey – přihlášení nebylo úspěšné, protože chybí podpisový klíč nebo certifikát. To může být způsobeno tím, že v aplikaci nebyl nakonfigurován žádný podpisový klíč. Další informace najdete v článku věnovaném řešení potíží s chybou [AADSTS50003](/troubleshoot/azure/active-directory/error-code-aadsts50003-cert-or-key-not-configured). Pokud se pořád zobrazují problémy, obraťte se na vlastníka aplikace nebo správce aplikace. |
 | AADSTS50005 | DevicePolicyError – uživatel se pokusil přihlásit k zařízení z platformy, která není aktuálně podporovaná pomocí zásad podmíněného přístupu. |
 | AADSTS50006 | Ověření podpisu InvalidSignature se nezdařilo kvůli neplatnému podpisu. |
 | AADSTS50007 | PartnerEncryptionCertificateMissing – pro tuto aplikaci se nenašel certifikát pro šifrování partnerského serveru. [Otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) s Microsoftem, abyste mohli tento problém vyřešit. |
 | AADSTS50008 | InvalidSamlToken – kontrolní výraz SAML v tokenu chybí nebo je nesprávně nakonfigurovaný. Obraťte se na svého federačního zprostředkovatele. |
 | AADSTS50010 | AudienceUriValidationFailed – ověření identifikátoru URI cílové skupiny pro aplikaci se nezdařilo, protože nebyly konfigurovány žádné cílové skupiny tokenů. |
-| AADSTS50011 | InvalidReplyTo – adresa pro odpověď chybí, není správně nakonfigurovaná nebo neodpovídá adresám odpovědí nakonfigurovaným pro aplikaci.  Jako řešení zajistěte, aby se tato chybějící adresa pro odpověď přidala do aplikace Azure Active Directory nebo aby měla osoba s oprávněním ke správě vaší aplikace ve službě Active Directory za vás.|
+| AADSTS50011 | InvalidReplyTo – adresa pro odpověď chybí, není správně nakonfigurovaná nebo neodpovídá adresám odpovědí nakonfigurovaným pro aplikaci.  Jako řešení zajistěte, aby se tato chybějící adresa pro odpověď přidala do aplikace Azure Active Directory nebo aby měla osoba s oprávněním ke správě vaší aplikace ve službě Active Directory za vás. Další informace najdete v článku věnovaném řešení potíží s chybou [AADSTS50011](/troubleshoot/azure/active-directory/error-code-aadsts50011-reply-url-mismatch).|
 | AADSTS50012 | AuthenticationFailed – ověření se nezdařilo z některého z následujících důvodů:<ul><li>Název předmětu podpisového certifikátu není autorizovaný.</li><li>Pro autorizovaný název subjektu se nenašly zásady odpovídajícího důvěryhodného úřadu.</li><li>Řetěz certifikátů není platný.</li><li>Podpisový certifikát není platný.</li><li>Zásada není nakonfigurovaná na tenantovi.</li><li>Kryptografický otisk podpisového certifikátu není autorizovaný.</li><li>Kontrolní výraz klienta obsahuje neplatný podpis.</li></ul> |
 | AADSTS50013 | InvalidAssertion – kontrolní výraz je neplatný z důvodu různých důvodů – Vystavitel tokenu neodpovídá verzi rozhraní API v rámci jeho platného časového rozsahu – vypršela platnost – chybné tokeny Refresh v kontrolním výrazu není primární aktualizační token. |
 | AADSTS50014 | GuestUserInPendingState – zaruč_cena uživatele je ve stavu čekání na vyřízení. Uživatelský účet hosta ještě není zcela vytvořen. |
@@ -140,7 +140,7 @@ Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [http
 | AADSTS50089 | Platnost tokenu toku vypršela – ověření se nezdařilo. Přihlaste se, aby se uživatel pokusil znovu přihlásit pomocí uživatelského jména a hesla. |
 | AADSTS50097 | DeviceAuthenticationRequired – vyžaduje se ověřování zařízení. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized – podpis JWT je neplatný. |
-| AADSTS50105 | EntitlementGrantsNotFound – přihlášený uživatel není přiřazen k roli pro přihlášenou aplikaci. Přiřaďte uživatele k aplikaci. Další informace:[.. /Manage-apps/application-Sign-in-problem-Federated-SSO-Gallery.MD # uživatel-Nepřiřazeno-a-role](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role). |
+| AADSTS50105 | EntitlementGrantsNotFound – přihlášený uživatel není přiřazen k roli pro přihlášenou aplikaci. Přiřaďte uživatele k aplikaci. Další informace najdete v článku věnovaném řešení potíží s chybou [AADSTS50105](/troubleshoot/azure/active-directory/error-code-aadsts50105-user-not-assigned-role). |
 | AADSTS50107 | InvalidRealmUri – požadovaný objekt federační sféry neexistuje. Obraťte se na správce tenanta. |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat – problém s hlavičkou JWT Obraťte se na správce tenanta. |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter – transformace deklarací identity obsahuje neplatný vstupní parametr. Obraťte se na správce klienta, aby aktualizovat zásady. |
@@ -191,11 +191,11 @@ Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [http
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist – uživatel nebo správce nesouhlasí s používáním aplikace s ID X. odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. |
 | AADSTS65004 | UserDeclinedConsent – uživatel odmítl udělit souhlas s přístupem k aplikaci. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|
-| AADSTS65005 | MisconfiguredApplication – seznam přístupu k prostředkům požadovaných aplikací neobsahuje aplikace, které prostředek zjistitelný, nebo klientská aplikace požadovala přístup k prostředku, který nebyl zadaný v požadovaném seznamu přístupu k prostředkům nebo služba Graph vrátila chybný požadavek nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, možná jste nakonfigurovali aplikaci s nesprávným identifikátorem (entita). Vyzkoušejte řešení uvedené pro SAML pomocí následujícího odkazu: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication – seznam přístupu k prostředkům požadovaných aplikací neobsahuje aplikace, které prostředek zjistitelný, nebo klientská aplikace požadovala přístup k prostředku, který nebyl zadaný v požadovaném seznamu přístupu k prostředkům nebo služba Graph vrátila chybný požadavek nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, možná jste nakonfigurovali aplikaci s nesprávným identifikátorem (entita). Další informace najdete v článku věnovaném řešení potíží s chybou [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app). |
 | AADSTS650052 | Aplikace potřebuje přístup ke službě, ke `(\"{name}\")` které se vaše organizace `\"{organization}\"` nepřipojila nebo nepovolila. Požádejte správce IT, aby zkontroloval konfiguraci vašich předplatných služeb. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant – ověření se nezdařilo. Obnovovací token není platný. K chybě mohlo dojít z následujících důvodů:<ul><li>Hlavička vazby tokenu je prázdná.</li><li>Hodnota hash vazby tokenu se neshoduje.</li></ul> |
-| AADSTS70001 | UnauthorizedClient – aplikace je zakázaná. |
+| AADSTS70001 | UnauthorizedClient – aplikace je zakázaná. Další informace najdete v článku věnovaném řešení potíží s chybou [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory). |
 | AADSTS70002 | InvalidClient – Chyba při ověřování přihlašovacích údajů. Zadaný client_secret se neshoduje s očekávanou hodnotou tohoto klienta. Opravte client_secret a zkuste to znovu. Další informace najdete v tématu [použití autorizačního kódu k vyžádání přístupového tokenu](v2-oauth2-auth-code-flow.md#request-an-access-token). |
 | AADSTS70003 | UnsupportedGrantType – aplikace vrátila nepodporovaný typ udělení. |
 | AADSTS70004 | InvalidRedirectUri – aplikace vrátila neplatný identifikátor URI přesměrování. Adresa přesměrování specifikovaná klientem neodpovídá žádné nakonfigurované adrese ani žádné adrese na seznamu schválených adres OIDC. |
@@ -209,10 +209,11 @@ Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [http
 | AADSTS70019 | CodeExpired – platnost ověřovacího kódu vypršela. Nechejte uživatele opakovat přihlášení. |
 | AADSTS75001 | BindingSerializationError – při vytváření vazby zprávy SAML došlo k chybě. |
 | AADSTS75003 | UnsupportedBindingError – aplikace vrátila chybu související s nepodporovanou vazbou (odpověď protokolu SAML se nedá poslat přes jiné vazby než HTTP POST). |
-| AADSTS75005 | Saml2MessageInvalid – Azure AD nepodporuje požadavek SAML odeslaný aplikací pro jednotné přihlašování. |
+| AADSTS75005 | Saml2MessageInvalid – Azure AD nepodporuje požadavek SAML odeslaný aplikací pro jednotné přihlašování. Další informace najdete v článku věnovaném řešení potíží s chybou [AADSTS75005](/troubleshoot/azure/active-directory/error-code-aadsts75005-not-a-valid-saml-request). |
 | AADSTS7500514 | Podporovaný typ odpovědi SAML nebyl nalezen. Podporované typy odpovědí jsou "Response" (v oboru názvů XML ' urn: Oasis: names: TC: SAML: 2.0: Protocol ') nebo ' assertion ' (v oboru názvů XML ' urn: Oasis: název: TC: SAML: 2.0: assertion '). Chyba aplikace – vývojář tuto chybu zpracuje.|
+| AADSTS750054 | SAMLRequest nebo SAMLResponse musí být přítomné jako parametry řetězce dotazu v požadavku HTTP pro vazbu přesměrování SAML. Další informace najdete v článku věnovaném řešení potíží s chybou [AADSTS750054](/troubleshoot/azure/active-directory/error-code-aadsts750054-saml-request-not-present). |
 | AADSTS75008 | RequestDeniedError – žádost z aplikace byla zamítnuta, protože žádost SAML měla neočekávaný cíl. |
-| AADSTS75011 | NoMatchedAuthnContextInOutputClaims – metoda ověřování, o kterou se uživatel s touto službou ověřil, se neshoduje s požadovanou metodou ověřování. |
+| AADSTS75011 | NoMatchedAuthnContextInOutputClaims – metoda ověřování, o kterou se uživatel s touto službou ověřil, se neshoduje s požadovanou metodou ověřování. Další informace najdete v článku věnovaném řešení potíží s chybou [AADSTS75011](/troubleshoot/azure/active-directory/error-code-aadsts75011-auth-method-mismatch). |
 | AADSTS75016 | Požadavek na ověření Saml2AuthenticationRequestInvalidNameIDPolicy-typu Saml2 má neplatný NameIdPolicy. |
 | AADSTS80001 | OnPremiseStoreIsNotAvailable – ověřovací Agent se nemůže připojit ke službě Active Directory. Ujistěte se, že jsou servery agenta členy stejné doménové struktury služby AD, jako uživatelé, jejichž hesla je potřeba ověřit, a můžou se připojit ke službě Active Directory. |
 | AADSTS80002 | Vypršel časový limit žádosti o ověření hesla OnPremisePasswordValidatorRequestTimedout. Ujistěte se, že je služba Active Directory k dispozici a reaguje na žádosti od agentů. |

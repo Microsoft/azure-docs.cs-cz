@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-windows
 ms.collection: windows
 ms.subservice: imaging
-ms.openlocfilehash: a2c4e3c1079d488b9255fb1b9660ff5c4b0aad8f
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 01b253747791fc29abf4434bebfd85865099f9ee
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103422146"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103602014"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Vytvoření image virtuálního počítače s Windows pomocí nástroje Azure VM Image Builder a PowerShellu
 
@@ -39,7 +39,7 @@ Tento článek je určený jako kopírování a vkládání cvičení.
 ## <a name="tips-for-building-windows-images"></a>Tipy pro vytváření imagí Windows 
 
 - Velikost virtuálního počítače – výchozí velikost virtuálního počítače je `Standard_D1_v2` , což není vhodné pro Windows. Použijte `Standard_D2_v2` nebo vyšší.
-- V tomto příkladu se používají [skripty prostředí PowerShell pro přizpůsobení](../linux/image-builder-json.md). Je nutné použít tato nastavení, jinak bude sestavení zareagovat.
+- V tomto příkladu se používají [skripty prostředí PowerShell pro přizpůsobení](../linux/image-builder-json.md). Je nutné použít tato nastavení, jinak sestavení přestane reagovat.
 
     ```json
       "runElevated": true,

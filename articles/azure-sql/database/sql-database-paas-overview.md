@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0bd6300f4b9dbcf76b5447a0fb58502b7aebf311
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c6b1129ca4a63e9adc8bb679dce53ff728456f42
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451428"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601827"
 ---
 # <a name="what-is-azure-sql-database"></a>Co je Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,6 +32,9 @@ SQL Database umožňuje snadno definovat a škálovat výkon v rámci dvou různ
 
 Pokud s Azure SQL Database začínáte, přečtěte si video s *přehledem Azure SQL Database* z naší podrobných [grafických řad Azure SQL](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
+
+> [!TIP]
+> Jak můžeme Azure SQL lépe využít? [Proveďte průzkum](https://aka.ms/AzureSQLSurvey).
 
 ## <a name="deployment-models"></a>Modely nasazení
 
@@ -114,7 +117,7 @@ Zóny dostupnosti Azure se snaží chránit před výpadkem jednoho datového ce
 
 Smlouva o úrovni služeb [(SLA)](https://azure.microsoft.com/support/legal/sla/) Azure, která využívá globální síť datacenter spravovaných Microsoftem, pomáhá zajistit, aby vaše aplikace běžela 24/7. Platforma Azure plně spravuje každou databázi a zaručuje žádnou ztrátu dat a vysoké procento dostupnosti dat. Azure automaticky zpracovává opravy, zálohy, replikaci, detekci selhání, základní potenciální hardware, software nebo síť, nasazování oprav chyb, převzetí služeb při selhání, upgrady databáze a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Dostupnost Premium se dosahuje integrací výpočetních prostředků a úložiště v jednom uzlu pro výkon a následnou implementací technologie podobně jako u skupin dostupnosti Always On. Úplnou diskuzi o funkcích Azure SQL Database vysoké dostupnosti najdete v článku [dostupnost SQL Database](high-availability-sla.md). 
 
-Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](business-continuity-high-availability-disaster-recover-hadr-overview.md) . Mezi ně patří:
+Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](business-continuity-high-availability-disaster-recover-hadr-overview.md) . Tady jsou některé z nich:
 
 - [Automatické zálohování](automated-backups-overview.md):
 
@@ -210,7 +213,7 @@ SQL Database podporuje vytváření aplikací pomocí jazyků Python, Java, Node
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>Můžu řídit, kdy dochází k výpadkům při opravování?
 
-Ne. Pokud ve své aplikaci použijete [logiku opakování](develop-overview.md#resiliency) , nemusíte mít dopad na opravy. Další informace najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](planned-maintenance.md).
+No. Pokud ve své aplikaci použijete [logiku opakování](develop-overview.md#resiliency) , nemusíte mít dopad na opravy. Další informace najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](planned-maintenance.md).
 
 
 

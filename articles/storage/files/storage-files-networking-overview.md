@@ -7,24 +7,33 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cec386b798b843a5badc9d52d9c71bd7df54b59a
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90563331"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601929"
 ---
 # <a name="azure-files-networking-considerations"></a>Požadavky na síť pro Azure Files 
 Ke sdílené složce Azure se můžete připojit dvěma způsoby:
 
 - Přímý přístup ke sdílené složce přes protokol SMB (Server Message Block), systém souborů NFS (Network File System) (Preview) nebo protokoly REST. Tento vzor přístupu se primárně používá, když chcete eliminovat tolik místních serverů, kolik jich je možné.
-- Vytvoření mezipaměti sdílené složky Azure na místním serveru (nebo na virtuálním počítači Azure) pomocí Azure File Sync a přístup k datům sdílené složky z místního serveru s vaším protokolem, který zvolíte (SMB, NFS, FTPS atd.) pro váš případ použití. Tento vzor přístupu je užitečný, protože kombinuje nejlépe místní výkon i cloudovou škálu a připojené služby bez serveru, jako je Azure Backup.
+- Vytvoření mezipaměti sdílené složky Azure na místním serveru (nebo na virtuálním počítači Azure) pomocí Synchronizace souborů Azure a přístup k datům sdílené složky z místního serveru s vaším protokolem, který zvolíte (SMB, NFS, FTPS atd.) pro váš případ použití. Tento vzor přístupu je užitečný, protože kombinuje nejlépe místní výkon i cloudovou škálu a připojené služby bez serveru, jako je Azure Backup.
 
-Tento článek se zaměřuje na konfiguraci sítě pro případy, kdy váš případ použití volá pro přístup ke sdílené složce Azure přímo místo použití Azure File Sync. Další informace o požadavcích na používání sítě pro nasazení Azure File Sync najdete v tématu [informace o Azure File Syncch sítích](storage-sync-files-networking-overview.md).
+Tento článek se zaměřuje na konfiguraci sítě pro případy, kdy váš případ použití volá pro přístup ke sdílené složce Azure přímo místo použití Synchronizace souborů Azure. Další informace o požadavcích na používání sítě pro nasazení Synchronizace souborů Azure najdete v tématu [informace o synchronizace souborů Azurech sítích](storage-sync-files-networking-overview.md).
 
 Konfigurace sítě pro sdílené složky Azure se provádí v účtu úložiště Azure. Účet úložiště je konstrukce správy, která představuje sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB. Účty úložiště zpřístupňují více nastavení, která vám pomůžou zabezpečit síťový přístup ke sdíleným složkám: koncové body sítě, nastavení brány firewall účtu úložiště a šifrování při přenosu. 
 
 Před čtením tohoto koncepčního Průvodce doporučujeme, abyste načetli [plánování pro nasazení souborů Azure](storage-files-planning.md) .
+
+:::row:::
+    :::column:::
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jd49W33DxkQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    :::column-end:::
+    :::column:::
+        Toto video je průvodce a ukázkou, jak bezpečně vystavit sdílené složky Azure přímo pro informační pracovníky a aplikace v pěti jednoduchých krocích. Níže uvedené části obsahují odkazy a další kontext k dokumentaci, na kterou se odkazuje ve videu.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="accessing-your-azure-file-shares"></a>Přístup ke sdíleným složkám Azure
 Když nasadíte sdílenou složku Azure v rámci účtu úložiště, vaše sdílená složka je hned dostupná přes Veřejný koncový bod účtu úložiště. To znamená, že ověřené požadavky, jako jsou požadavky autorizované identitou přihlašování uživatele, můžou pocházet z interního nebo mimo Azure. 
@@ -58,7 +67,7 @@ Bez ohledu na to, kterou metodu tunelování používáte pro přístup ke sdíl
 
 Místo hardwarového zakódování IP adres účtů úložiště do pravidel směrování sítě VPN doporučujeme použít soukromé koncové body, které přidávají účtu úložiště IP adresu z adresního prostoru virtuální sítě Azure. Vzhledem k tomu, že vytvoření tunelu do Azure vytvoří partnerský vztah mezi vaší místní sítí a jednou nebo více virtuálními sítěmi, umožní vám to trvalý způsob směrování.
 
-### <a name="private-endpoints"></a>Soukromé koncové body
+### <a name="private-endpoints"></a>Privátní koncové body
 Kromě výchozího veřejného koncového bodu pro účet úložiště poskytuje Azure Files možnost mít jeden nebo více privátních koncových bodů. Soukromý koncový bod je koncový bod, který je přístupný jenom v rámci virtuální sítě Azure. Když vytvoříte privátní koncový bod pro svůj účet úložiště, váš účet úložiště načte privátní IP adresu z adresního prostoru virtuální sítě, podobně jako místní souborový server nebo zařízení NAS obdrží IP adresu v rámci vyhrazeného adresního prostoru místní sítě. 
 
 Individuální privátní koncový bod je přidružený ke konkrétní podsíti Azure Virtual Network. Účet úložiště může mít privátní koncové body ve více než jedné virtuální síti.

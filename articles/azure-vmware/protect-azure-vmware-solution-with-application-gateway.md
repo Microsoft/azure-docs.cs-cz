@@ -3,12 +3,12 @@ title: Použití Azure Application Gateway k ochraně webových aplikací v ře�
 description: Nakonfigurujte Azure Application Gateway, aby bezpečně vystavil vaše webové aplikace běžící na řešení Azure VMware.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f92027ee46fdaae275939acaea10e144b6bde101
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733580"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601912"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
 
@@ -193,4 +193,4 @@ Teď, když jste se seznámili s používáním Application Gateway k ochraně w
 - [Konfigurace Azure Application Gateway pro různé scénáře](../application-gateway/configuration-overview.md).
 - [Nasazuje se Traffic Manager pro vyrovnávání zatížení řešení Azure VMware](deploy-traffic-manager-balance-workloads.md).
 - [Integrace Azure NetApp Files s využitím úloh Azure VMware pro řešení](netapp-files-with-azure-vmware-solution.md).
-- [Ochrana prostředků Azure ve virtuálních sítích](../ddos-protection/ddos-protection-overview.md)
+- [Ochrana prostředků Azure ve virtuálních sítích](../ddos-protection/ddos-protection-overview.md).

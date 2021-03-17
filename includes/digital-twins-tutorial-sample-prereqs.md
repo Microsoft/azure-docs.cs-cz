@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/20/2021
 ms.author: baanders
-ms.openlocfilehash: 56cda6158b7eeabaf0ce9e71decd0a9aa9f0419c
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 43cc3dfc5b425df6d9dd5e2c2f35a792907ccdea
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463746"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622319"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -21,6 +21,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si **[bezplatný účet](htt
 ### <a name="get-required-resources"></a>Získat požadované prostředky
 
 K dokončení tohoto kurzu **nainstalujte [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/), verze 16,5 nebo novější** na svém vývojovém počítači. Pokud už máte nainstalovanou starší verzi, můžete na svém počítači otevřít aplikaci *instalační program pro Visual Studio* a podle pokynů instalaci aktualizovat.
+
+>[!NOTE]
+> Ujistěte se, že vaše instalace sady Visual Studio 2019 zahrnuje **[úlohu vývoj pro Azure](/dotnet/azure/configure-visual-studio)**. Tato úloha umožňuje aplikaci publikovat Azure functions a provádět další úlohy vývoje Azure.
 
 Tento kurz je založen na ukázkovém projektu napsaném v jazyce C#. Ukázka se nachází tady: [Azure Digital vlákens – komplexní ukázky](/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Získejte vzorový projekt** na vašem počítači tak, že přejdete na vzorový odkaz a vyberete tlačítko *Procházet kód* pod nadpisem. Tím přejdete do úložiště GitHub pro ukázky, které si můžete stáhnout jako *. ZIP* výběrem tlačítka *kód* a *Stáhnout soubor zip*.
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/02/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c8221a15ddd92276c105f1e441c8da722655d576
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 914fe0bbf04fa8835cbe96e5bbb83604f0d07bc2
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444322"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622031"
 ---
 REST API Počítačové zpracování obrazu použijte k těmto akcím:
 
@@ -40,17 +40,21 @@ REST API Počítačové zpracování obrazu použijte k těmto akcím:
 Chcete-li analyzovat obrázek pro celou řadu vizuálních funkcí, proveďte následující kroky:
 
 1. Zkopírujte do textového editoru následující příkaz.
+1. Přejděte na Azure Portal. Pokud se prostředek Počítačové zpracování obrazu, který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč předplatného a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**.
 1. Proveďte v příkazu na příslušných místech následující změny:
-    1. Hodnotu `<subscriptionKey>` nahraďte klíčem předplatného.
-    1. Nahraďte první část adresy URL požadavku ( `westcentralus` ) textem ve vaší vlastní adrese URL koncového bodu.
+    1. Hodnotu `PASTE_YOUR_COMPUTER_VISION_SUBSCRIPTION_KEY_HERE` nahraďte klíčem předplatného.
+    1. Nahraďte první část adresy URL žádosti ( `PASTE_YOUR_COMPUTER_VISION_ENDPOINT_HERE` ) vlastním koncovým bodem počítačové zpracování obrazu. Váš koncový bod Počítačové zpracování obrazu má formulář `https://<your_computer_vision_resource_name>.cognitiveservices.azure.com/` .
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Volitelně můžete změnit adresu URL obrázku v textu požadavku (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) na adresu URL jiného obrázku, který se má analyzovat.
 1. Otevřete okno příkazového řádku.
 1. Vložte příkaz z textového editoru do okna příkazového řádku a pak příkaz spusťte.
 
 ```bash
-curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v3.1/analyze?visualFeatures=Categories,Description&details=Landmarks" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: PASTE_YOUR_COMPUTER_VISION_SUBSCRIPTION_KEY_HERE" -H "Content-Type: application/json" "PASTE_YOUR_COMPUTER_VISION_ENDPOINT_HERE/vision/v3.1/analyze?visualFeatures=Categories,Description&details=Landmarks" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
 ```
+
+> [!IMPORTANT]
+> Nezapomeňte odebrat klíč předplatného z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Trezor klíčů Azure](../../../key-vault/general/overview.md).
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 

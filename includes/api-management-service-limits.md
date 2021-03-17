@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 01/11/2021
+ms.date: 02/19/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 78890c0596642b629482a6d24d17d83fb8ebc9a0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: ebaca1f39b16e4a06b5dcaa4e5f1de07122c6c89
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147379"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622279"
 ---
 | Prostředek | Omezení |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -34,6 +34,8 @@ ms.locfileid: "98147379"
 | Maximální velikost datové části vyrovnávací paměti<sup>8</sup> | 2 MiB |
 | Maximální velikost adresy URL požadavku<sup>9</sup> | 4096 bajtů |
 | Maximální délka segmentu cesty k adrese URL<sup>10</sup> | 260 znaků |
+| Maximální velikost schématu rozhraní API používaného [zásadami ověřování](../articles/api-management/validation-policies.md)<sup>10</sup> | 4 MB |
+| Maximální velikost textu žádosti nebo odpovědi v [zásadách ověřování – obsah](../articles/api-management/validation-policies.md#validate-content) | 100 KB |
 | Maximální počet bran pro samoobslužné hostování<sup>11</sup> | 25 |
 
 <sup>1</sup> Omezení škálování závisí na cenové úrovni. Podrobnosti o cenových úrovních a jejich omezeních škálování najdete v tématu [API Management ceny](https://azure.microsoft.com/pricing/details/api-management/).<br/>

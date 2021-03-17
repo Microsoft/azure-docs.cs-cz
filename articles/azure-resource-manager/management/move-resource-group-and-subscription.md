@@ -4,12 +4,12 @@ description: K přesunutí prostředků do nové skupiny prostředků nebo před
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1218df618f7f5fa0787505cb4fcee67dd264ea76
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093620"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601385"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -34,6 +34,7 @@ Před přesunem prostředků je potřeba provést několik důležitých kroků.
    * [Pokyny k přesunu sítě](./move-limitations/networking-move-limitations.md)
    * [Pokyny pro přesunutí Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Pokyny pro přesunutí Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
+   * Pokud chcete přesunout předplatné Azure do nové skupiny pro správu, přečtěte si téma [Přesun předplatných](../../governance/management-groups/manage.md#move-subscriptions).
 
 1. Pokud přesunete prostředek, který má přiřazenou roli Azure, přímo k prostředku (nebo podřízenému prostředku), přiřazení role se nepřesune a bude osamocené. Po přesunutí musíte znovu vytvořit přiřazení role. Nakonec se automaticky odebere přiřazení osamocené role, ale je osvědčeným postupem odebrání přiřazení role před přesunutím prostředku.
 

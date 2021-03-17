@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 89f234ece2f7437e4a9d4092334e3dd3690e288d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a7949324cd4ad0459aa5ba111037b2f580da9cf8
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258095"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601708"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -291,17 +291,12 @@ Následující odkazy představují scénáře řešení potíží. Možná bude
 
 - [Problém s přihlášením do aplikace Microsoftu](./application-sign-in-problem-first-party-microsoft.md)
 
-#### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Problémy jednotného přihlašování pro aplikace uvedené v galerii aplikací Azure
+#### <a name="sso-issues-for-applications"></a>Problémy jednotného přihlašování pro aplikace
 
-- [Problém s heslem jednotného přihlašování pro aplikace uvedené v galerii aplikací Azure](./troubleshoot-password-based-sso.md) 
+- [Problém s heslem jednotného přihlašování pro aplikace](./troubleshoot-password-based-sso.md) 
 
-- [Problém se federovaném přihlašováním k aplikacím, které jsou uvedené v galerii aplikací Azure](./application-sign-in-problem-federated-sso-gallery.md)   
+- [Problémy s přihlašováním k aplikacím s nakonfigurovaným jednotným přihlašováním založeným na SAML](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)   
 
-#### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Problémy jednotného přihlašování pro aplikace, které nejsou uvedené v galerii aplikací Azure
-
-- [Problém s heslem jednotného přihlašování pro aplikace, které nejsou uvedené v galerii aplikací Azure](./troubleshoot-password-based-sso.md) 
-
-- [Problém se federovaném přihlašováním k aplikacím, které nejsou uvedené v galerii aplikací Azure](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>Další kroky
 

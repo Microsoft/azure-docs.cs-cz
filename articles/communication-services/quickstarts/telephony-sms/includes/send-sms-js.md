@@ -2,20 +2,20 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: azure-communication-services
-author: dademath
-manager: nimag
+author: bertong
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dademath
-ms.openlocfilehash: fc20396053dee32ac7976139a634b4592389ab5f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: bertong
+ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488291"
+ms.locfileid: "103622065"
 ---
 Začínáme s komunikačními službami Azure pomocí klientské knihovny služby Communications JavaScript pro službu SMS pro posílání zpráv SMS.
 
@@ -69,11 +69,12 @@ npm install @azure/communication-sms --save
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny SMS služby Azure Communications Services pro Node.js.
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Tato třída je potřebná pro všechny funkce SMS. Vytvoří se jeho instance s informacemi o předplatném a použije se k posílání zpráv SMS. |
-| SendSmsOptions | Toto rozhraní poskytuje možnosti konfigurace vytváření sestav o doručení. Pokud `enable_delivery_report` je nastaveno na `true` , pak dojde k vygenerování události po úspěšném doručení. |
-| SendMessageRequest | Toto rozhraní je modelem vytváření žádosti serveru SMS (např. Nakonfigurujte telefonní čísla na a z a obsah serveru SMS. |
+| SmsSendResult               | Tato třída obsahuje výsledek ze služby SMS.                                          |
+| SmsSendOptions | Toto rozhraní poskytuje možnosti konfigurace vytváření sestav o doručení. Pokud `enableDeliveryReport` je nastaveno na `true` , pak dojde k vygenerování události po úspěšném doručení. |
+| SmsSendRequest | Toto rozhraní je modelem vytváření žádosti serveru SMS (např. Nakonfigurujte telefonní čísla na a z a obsah serveru SMS. |
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -92,27 +93,66 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const smsClient = new SmsClient(connectionString);
 ```
 
-## <a name="send-an-sms-message"></a>Odeslání zprávy SMS
+## <a name="send-a-1n-sms-message"></a>Odeslat zprávu o 1: N SMS
 
-Odešle zprávu SMS voláním `send` metody. Přidejte tento kód na konec **send-sms.js**:
+Chcete-li odeslat zprávu SMS seznamu příjemců, zavolejte `send` funkci z SmsClient se seznamem příjemců s telefonními čísly (Pokud chcete poslat zprávu jednomu příjemci, zahrňte pouze jedno číslo v seznamu). Přidejte tento kód na konec **send-sms.js**:
 
 ```javascript
 async function main() {
-  await smsClient.send({
-    from: "<leased-phone-number>",
-    to: ["<to-phone-number>"],
-    message: "Hello World 👋🏻 via Sms"
-  }, {
-    enableDeliveryReport: true //Optional parameter
+  const sendResults = await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Hello World 👋🏻 via SMS"
   });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
+}
+
+main();
+```
+Měli byste nahradit `<from-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým k vašemu prostředku komunikačních služeb a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu.
+
+## <a name="send-a-1n-sms-message-with-options"></a>Odeslat zprávu o 1: N SMS s možnostmi
+
+K určení, zda má být povolena zpráva o doručení a nastavena vlastní značky, můžete také předat objekt Options.
+
+```javascript
+
+async function main() {
+  await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Weekly Promotion!"
+  }, {
+    //Optional parameter
+    enableDeliveryReport: true,
+    tag: "marketing"
+  });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
 }
 
 main();
 ```
 
-Měli byste nahradit `<leased-phone-number>` telefonním číslem s povoleným serverem SMS přidruženým k vašemu prostředku komunikačních služeb a `<to-phone-number>` telefonním číslem, na které chcete poslat zprávu.
-
 `enableDeliveryReport`Parametr je volitelný parametr, který můžete použít ke konfiguraci vytváření sestav o doručení. To je užitečné ve scénářích, kdy chcete generovat události při doručování zpráv SMS. Nastavování sestav doručení pro zprávy SMS najdete v rychlém startu pro [zpracování událostí SMS](../handle-sms-events.md) .
+`tag` je volitelný parametr, který můžete použít k použití značky pro sestavu doručení.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
