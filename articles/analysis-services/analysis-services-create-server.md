@@ -1,27 +1,27 @@
 ---
 title: Rychlý Start – vytvoření serveru Analysis Services v Azure Portal | Microsoft Docs
-description: Naučte se rychle vytvořit instanci Azure Analysis Services serveru pomocí Azure Portal.
+description: V tomto rychlém startu se dozvíte, jak vytvořit instanci Azure Analysis Services serveru pomocí Azure Portal.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697484"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89230776"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Rychlý start: Vytvoření serveru – portál
 
 Tento rychlý start popisuje, jak pomocí portálu vytvořit prostředek serveru služby Analysis Services v předplatném Azure.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
-* **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
-* **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory. Zároveň musíte být přihlášeni k Azure pod účtem v této službě Azure Active Directory. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+* **Předplatné Azure**: Pokud chcete vytvořit účet, přejděte na [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) .
+* **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory. Zároveň musíte být přihlášeni k Azure pod účtem v této službě Azure Active Directory. Další informace najdete v článku o [ověřování a uživatelských oprávněních](analysis-services-manage-users.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal 
 
@@ -58,6 +58,4 @@ Pokud už server nepotřebujete, odstraňte ho. Na stránce **Přehled** vašeho
 V tomto rychlém startu jste zjistili, jak vytvořit server v předplatném Azure. Když teď máte server, můžete ho zabezpečit nakonfigurováním (volitelné) brány firewall serveru. Na server také můžete přímo z portálu přidat základní ukázkový datový model. Na ukázkovém modelu se naučíte konfigurovat role modelové databáze a testovat připojení klientů. Ve výuce pokračujte kurzem, ve kterém přidáte ukázkový model.
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   
-> [!div class="nextstepaction"]
-> [Kurz: Přidání ukázkového modelu na server](analysis-services-create-sample-model.md)
+> [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   

@@ -1,20 +1,14 @@
 ---
 title: Začínáme s Centrem rychlého startu Azure
 description: Začněte s Azure pomocí Průvodce rychlým startem pro Azure. Naučte se nastavovat, migrovat a inovovat.
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
-ms.date: 01/29/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbfe1ea99b09813edbfaa7bc248b4c71f1dd8a45
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76900689"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232983"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Začínáme s Centrem rychlého startu Azure
 
@@ -32,7 +26,7 @@ Centrum rychlý Start pro Azure má tři možnosti, jak začít:
 
 ## <a name="how-to-use-azure-quickstart-center"></a>Jak používat centrum rychlý Start Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V nabídce Azure Portal vyberte **všechny služby** .
 

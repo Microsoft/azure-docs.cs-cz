@@ -5,42 +5,23 @@ author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 03/02/2021
 ms.author: rosouz
-ms.custom: devx-track-javascript
-ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 941fe8929b75fdebf187186ca7078b0ae1dd261c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036704"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658516"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Změna datových proudů v rozhraní Azure Cosmos DB API pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Podpora [kanálů změn](change-feed.md) v rozhraní Azure Cosmos DB API pro MongoDB je k dispozici prostřednictvím rozhraní API Change Streams. Pomocí rozhraní Change Streams API můžou vaše aplikace získat změny provedené v kolekci nebo na položky v jednom horizontálních oddílů. Později můžete na základě výsledků provádět další akce. Změny položek v kolekci jsou zachyceny v pořadí podle doby jejich úpravy a je zaručeno pořadí řazení podle horizontálních oddílů klíče.
 
 > [!NOTE]
-> Chcete-li použít změnu datových proudů, vytvořte účet s verzí 3,6 rozhraní API Azure Cosmos DB pro MongoDB nebo novější verzi. Pokud spustíte příklady pro Stream změn v předchozí verzi, může se zobrazit `Unrecognized pipeline stage name: $changeStream` Chyba.
-
-## <a name="current-limitations"></a>Aktuální omezení
-
-Při použití datových proudů změn platí následující omezení:
-
-* `operationType`Vlastnosti a `updateDescription` se zatím nepodporují ve výstupním dokumentu.
-* `insert` `update` Typy operací, a `replace` jsou aktuálně podporovány. 
-* Operace odstranění nebo jiné události ještě nejsou podporované.
-
-V důsledku těchto omezení jsou vyžadovány $match fáze, $project fáze a možnosti fullDocument, jak je znázorněno v předchozích příkladech.
-
-Na rozdíl od kanálu změn v rozhraní SQL API Azure Cosmos DB není k dispozici samostatná [Knihovna pro změny kanálu](change-feed-processor.md) , která by mohla využívat datové proudy změn, nebo vyžaduje kontejner zapůjčení. V současné době není podporovaná podpora pro [Azure Functions triggery](change-feed-functions.md) pro zpracování datových proudů změn.
-
-## <a name="error-handling"></a>Zpracování chyb
-
-Při použití datových proudů změn jsou podporovány následující chybové kódy a zprávy:
-
-* **Kód chyby HTTP 16500** – Pokud je datový proud změny omezený, vrátí prázdnou stránku.
-
-* **NamespaceNotFound (typem operace OperationType unvalidate)** – Pokud spustíte datový proud změn v kolekci, která neexistuje, nebo pokud je kolekce vyřazena, `NamespaceNotFound` vrátí se chyba. Vzhledem k tomu, že `operationType` vlastnost nemůže být vrácena ve výstupním dokumentu, místo `operationType Invalidate` chyby se `NamespaceNotFound` vrátí chyba.
+> Pokud chcete použít změny streamů, vytvořte účet API Azure Cosmos DB pro účet MongoDB se serverem verze 3,6 nebo vyšší. Pokud spustíte příklady streamování změn v předchozí verzi, může se zobrazit *nerozpoznaný název fáze kanálu: $changeStream* chyba.
 
 ## <a name="examples"></a>Příklady
 
@@ -86,7 +67,7 @@ enumerator.Dispose();
 
 # <a name="java"></a>[Java](#tab/java)
 
-Následující příklad ukazuje, jak používat funkci Change Stream v jazyce Java pro kompletní příklad naleznete v tomto [úložišti GitHub](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-changestream/blob/master/mongostream/src/main/java/com/azure/cosmos/mongostream/App.java). Tento příklad také ukazuje, jak použít `resumeAfter` metodu pro hledání všech změn od posledního čtení. 
+Následující příklad ukazuje, jak používat funkci Change Stream v jazyce Java pro kompletní příklad naleznete v tomto [úložišti GitHub](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-changestream/blob/main/mongostream/src/main/java/com/azure/cosmos/mongostream/App.java). Tento příklad také ukazuje, jak použít `resumeAfter` metodu pro hledání všech změn od posledního čtení. 
 
 ```java
 Bson match = Aggregates.match(Filters.in("operationType", asList("update", "replace", "insert")));
@@ -156,15 +137,17 @@ var cursor = db.coll.watch(
 Při použití datových proudů změn platí následující omezení:
 
 * `operationType`Vlastnosti a `updateDescription` se zatím nepodporují ve výstupním dokumentu.
-* `insert` `update` Typy operací, a `replace` jsou aktuálně podporovány. Operace odstranění nebo jiné události ještě nejsou podporované.
+* `insert` `update` Typy operací, a `replace` jsou aktuálně podporovány. Operace odstranění nebo jiné události se ale ještě nepodporují.
 
 V důsledku těchto omezení jsou vyžadovány $match fáze, $project fáze a možnosti fullDocument, jak je znázorněno v předchozích příkladech.
+
+Na rozdíl od kanálu změn v rozhraní SQL API Azure Cosmos DB není k dispozici samostatná [Knihovna pro změny kanálu](change-feed-processor.md) , která by mohla využívat datové proudy změn, nebo vyžaduje kontejner zapůjčení. V současné době není podporovaná podpora pro [Azure Functions triggery](change-feed-functions.md) pro zpracování datových proudů změn.
 
 ## <a name="error-handling"></a>Zpracování chyb
 
 Při použití datových proudů změn jsou podporovány následující chybové kódy a zprávy:
 
-* **Kód chyby HTTP 429** – Pokud je datový proud změny omezený, vrátí prázdnou stránku.
+* **Kód chyby HTTP 16500** – Pokud je datový proud změny omezený, vrátí prázdnou stránku.
 
 * **NamespaceNotFound (typem operace OperationType unvalidate)** – Pokud spustíte datový proud změn v kolekci, která neexistuje, nebo pokud je kolekce vyřazena, `NamespaceNotFound` vrátí se chyba. Vzhledem k tomu, že `operationType` vlastnost nemůže být vrácena ve výstupním dokumentu, místo `operationType Invalidate` chyby se `NamespaceNotFound` vrátí chyba.
 

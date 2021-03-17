@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13441899eeb5ca2b7c60977ab2858fe40a398d1a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088066"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397854"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastní sondy pro Azure Application Gateway (Classic) pomocí prostředí PowerShell
 
@@ -200,7 +200,6 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete nakonfigurovat protokol TLS (Transport Layer Security), dříve označovaný SSL (Secure Sockets Layer) jako přesměrování zpracování SSL (Transport Layer), přečtěte si téma [Konfigurace aplikační brány pro přesměrování zpracování TLS](application-gateway-ssl.md).
+Pokud chcete nakonfigurovat protokol TLS (Transport Layer Security), dříve označovaný SSL (Secure Sockets Layer) jako přesměrování zpracování SSL (Transport Layer), přečtěte si téma [Konfigurace aplikační brány pro přesměrování zpracování TLS](./tutorial-ssl-powershell.md).
 
-Pokud chcete provést konfiguraci aplikační brány pro použití s interním nástrojem pro vyrovnávání zatížení, přečtěte si část [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení (ILB)](application-gateway-ilb.md).
-
+Pokud chcete provést konfiguraci aplikační brány pro použití s interním nástrojem pro vyrovnávání zatížení, přečtěte si část [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení (ILB)](./application-gateway-ilb-arm.md).

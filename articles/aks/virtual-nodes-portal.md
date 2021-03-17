@@ -4,23 +4,24 @@ description: Naučte se, jak pomocí Azure Portal vytvořit cluster Azure Kubern
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.custom: references_regions
-ms.openlocfilehash: 8748e4f78582ab133d7e527daba1c126dcb7e7e2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543703"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501800"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vytvoření a konfigurace clusteru Azure Kubernetes Services (AKS) pro použití virtuálních uzlů v Azure Portal
 
-K rychlému nasazení úloh v clusteru Azure Kubernetes Service (AKS) můžete použít virtuální uzly. U virtuálních uzlů máte rychlé zřizování lusků a platíte za dobu jejich spuštění jenom za sekundu. Ve scénáři škálování nemusíte čekat, až nástroj pro automatické škálování clusteru Kubernetes nasadí výpočetní uzly pro virtuální počítače, aby se spouštěly další lusky. Virtuální uzly jsou podporované jenom se systémy Linux a uzly.
+V tomto článku se dozvíte, jak použít Azure Portal k vytvoření a konfiguraci prostředků virtuální sítě a clusteru AKS s povolenými virtuálními uzly.
 
-V tomto článku se dozvíte, jak vytvořit a nakonfigurovat prostředky virtuální sítě a cluster AKS s povolenými virtuálními uzly.
+> [!NOTE]
+> [Tento článek](virtual-nodes.md) vám poskytne přehled o dostupnosti a omezeních oblasti pomocí virtuálních uzlů.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Virtuální uzly umožňují síťovou komunikaci mezi lusky, které běží v Azure Container Instances (ACI) a clusteru AKS. Pro zajištění této komunikace se vytvoří podsíť virtuální sítě a přiřadí se delegovaná oprávnění. Virtuální uzly fungují jenom s clustery AKS vytvořenými pomocí *pokročilých* sítí. Ve výchozím nastavení se clustery AKS vytvářejí se *základními* sítěmi. V tomto článku se dozvíte, jak vytvořit virtuální síť a podsítě a pak nasadit cluster AKS, který využívá pokročilé sítě.
+Virtuální uzly umožňují síťovou komunikaci mezi lusky, které běží v Azure Container Instances (ACI) a clusteru AKS. Pro zajištění této komunikace se vytvoří podsíť virtuální sítě a přiřadí se delegovaná oprávnění. Virtuální uzly fungují jenom s clustery AKS vytvořenými pomocí *pokročilých* sítí (Azure CNI). Ve výchozím nastavení se clustery AKS vytvářejí se *základními* sítěmi (kubenet). V tomto článku se dozvíte, jak vytvořit virtuální síť a podsítě a pak nasadit cluster AKS, který využívá pokročilé sítě.
 
 Pokud jste ACI ještě dřív nepoužívali, zaregistrujte poskytovatele služeb u svého předplatného. Stav registrace poskytovatele ACI můžete zjistit pomocí příkazu [AZ Provider list][az-provider-list] , jak je znázorněno v následujícím příkladu:
 
@@ -42,41 +43,13 @@ Pokud se zprostředkovatel zobrazí jako *NotRegistered*, zaregistrujte poskytov
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Regionální dostupnost
-
-Pro nasazení virtuálních uzlů jsou podporovány následující oblasti:
-
-* Austrálie – východ (australiaeast)
-* Střed USA (centralus)
-* Východní USA (eastus)
-* Východní USA 2 (eastus2)
-* Japonsko – východ (japaneast)
-* Severní Evropa (northeurope)
-* Jihovýchodní Asie (southeastasia)
-* Středozápadní USA (westcentralus)
-* Západní Evropa (westeurope)
-* Západní USA (westus)
-* Západní USA 2 (westus2)
-
-## <a name="known-limitations"></a>Známá omezení
-Funkce virtuálních uzlů je silně závislá na sadě funkcí ACI. Kromě [kvót a omezení pro Azure Container Instances](../container-instances/container-instances-quotas.md)se u virtuálních uzlů ještě nepodporují následující scénáře:
-
-* Získání ACR imagí pomocí instančního objektu [Alternativním řešením](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) je používání [tajných klíčů Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
-* [Omezení Virtual Network](../container-instances/container-instances-vnet.md) , včetně partnerských vztahů virtuálních sítí, zásad sítě Kubernetes a odchozího provozu do Internetu se skupinami zabezpečení sítě.
-* Inicializovat kontejnery
-* [Aliasy hostitele](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* [Argumenty](../container-instances/container-instances-exec.md#restrictions) pro exec v ACI
-* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nebude nasazovat lusky do virtuálního uzlu.
-* Virtuální uzly podporují plánování lusků v systému Linux. K naplánování kontejnerů Windows serveru na ACI můžete ručně nainstalovat poskytovatele open source [Virtual KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) .
-* Virtuální uzly vyžadují clustery AKS s využitím Azure CNI Networking
-
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-V levém horním rohu Azure Portal vyberte **vytvořit**  >  **službu Kubernetes**prostředku.
+V levém horním rohu Azure Portal vyberte **vytvořit**  >  **službu Kubernetes** prostředku.
 
 Na kartě **Basics** (Základy) nakonfigurujte následující možnosti:
 
@@ -91,7 +64,7 @@ Na stránce **škálování** vyberte v části **virtuální uzly** *povoleno* 
 
 ![Vytvoření clusteru AKS a povolení virtuálních uzlů](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Ve výchozím nastavení je vytvořen Azure Active Directory instančního objektu. Tento instanční objekt se používá pro komunikaci clusteru a integraci s dalšími službami Azure. Alternativně můžete místo instančního objektu použít spravovanou identitu pro oprávnění. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
+Ve výchozím nastavení se vytvoří identita clusteru. Tato identita clusteru se používá pro komunikaci clusteru a integraci s dalšími službami Azure. Ve výchozím nastavení je tato identita clusteru spravovaná identitou. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md). Jako identitu clusteru můžete použít taky instanční objekt.
 
 Cluster je taky nakonfigurovaný pro pokročilé sítě. Virtuální uzly jsou nakonfigurované tak, aby používaly svou vlastní podsíť virtuální sítě Azure. Tato podsíť má delegovaná oprávnění k připojení prostředků Azure mezi clusterem AKS. Pokud ještě nemáte delegovanou podsíť, Azure Portal vytvoří a nakonfiguruje virtuální síť Azure a podsíť pro použití s virtuálními uzly.
 
@@ -146,7 +119,7 @@ spec:
     spec:
       containers:
       - name: aci-helloworld
-        image: microsoft/aci-helloworld
+        image: mcr.microsoft.com/azuredocs/aci-helloworld
         ports:
         - containerPort: 80
       nodeSelector:
@@ -237,9 +210,9 @@ Virtuální uzly jsou jedna součást řešení škálování v AKS. Další inf
 
 <!-- LINKS - internal -->
 [aks-network]: ./configure-azure-cni.md
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-provider-register]: /cli/azure/provider#az-provider-register

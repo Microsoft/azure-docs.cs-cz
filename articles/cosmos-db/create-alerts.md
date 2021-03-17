@@ -4,18 +4,18 @@ description: Přečtěte si, jak nastavit výstrahy pro Azure Cosmos DB pomocí 
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097619"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339525"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Vytváření upozornění pro Azure Cosmos DB pomocí Azure Monitor
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Výstrahy slouží k nastavení opakovaných testů pro monitorování dostupnosti a odezvy vašich Azure Cosmos DBch prostředků. Výstrahy vám můžou poslat oznámení ve formě e-mailu nebo spustit funkci Azure Function, když jedna z vašich metrik dosáhne prahové hodnoty nebo pokud se konkrétní událost zaznamená do protokolu aktivit.
 
@@ -43,7 +43,7 @@ V této části se dozvíte, jak vytvořit výstrahu, když obdržíte stavový 
 
    * Vyberte název vašeho **předplatného** .
 
-   * Jako **typ prostředku**vyberte **účty Azure Cosmos DB** .
+   * Jako **typ prostředku** vyberte **účty Azure Cosmos DB** .
 
    * **Umístění** vašeho účtu Azure Cosmos.
 
@@ -61,11 +61,11 @@ V této části se dozvíte, jak vytvořit výstrahu, když obdržíte stavový 
 
    * Na další kartě můžete definovat logiku pro aktivaci výstrahy a pomocí grafu zobrazit trendy svého účtu Azure Cosmos. Metrika **celkových jednotek požadavků** podporuje dimenze. Tyto dimenze umožňují filtrovat metriky. Pokud nevyberete žádnou dimenzi, tato hodnota se ignoruje.
 
-   * Jako **název dimenze**vyberte **StatusCode** . Vyberte **Přidat vlastní hodnotu** a nastavte stavový kód na 429.
+   * Jako **název dimenze** vyberte **StatusCode** . Vyberte **Přidat vlastní hodnotu** a nastavte stavový kód na 429.
 
-   * V **logice výstrahy**nastavte **prahovou hodnotu** na **static**. Statická prahová hodnota používá pro vyhodnocení pravidla uživatelsky definovanou prahovou hodnotu, zatímco dynamické prahové hodnoty používají předdefinované algoritmy strojového učení, které se průběžně učí vzor chování metriky a automaticky vypočítávají prahové hodnoty.
+   * V **logice výstrahy** nastavte **prahovou hodnotu** na **static**. Statická prahová hodnota používá pro vyhodnocení pravidla uživatelsky definovanou prahovou hodnotu, zatímco dynamické prahové hodnoty používají předdefinované algoritmy strojového učení, které se průběžně učí vzor chování metriky a automaticky vypočítávají prahové hodnoty.
 
-   * Nastavte **operátor** na hodnotu **větší než**, **typ agregace** na hodnotu **Total**a **prahovou hodnotu** **100**. Pokud se v této logice klient zobrazuje více než 100 požadavků, které mají kód stavu 429, výstraha se aktivuje. Můžete také nakonfigurovat typ agregace, členitost agregace a frekvenci vyhodnocení podle vašeho požadavku.
+   * Nastavte **operátor** na hodnotu **větší než** , **typ agregace** na hodnotu **Total** a **prahovou hodnotu** **100**. Pokud se v této logice klient zobrazuje více než 100 požadavků, které mají kód stavu 429, výstraha se aktivuje. Můžete také nakonfigurovat typ agregace, členitost agregace a frekvenci vyhodnocení podle vašeho požadavku.
 
    * Po vyplnění formuláře vyberte **Hotovo**. Následující snímek obrazovky ukazuje podrobnosti logiky výstrah:
 
@@ -81,7 +81,7 @@ V této části se dozvíte, jak vytvořit výstrahu, když obdržíte stavový 
 
    * Vyberte předplatné a skupinu prostředků, ve které bude tato skupina akcí vytvořená.  
 
-   * Zadejte název akce a jako **typ akce**vyberte **zpráva e-mail/SMS/odeslat/hlas** . Následující snímek obrazovky ukazuje podrobnosti typu akce:
+   * Zadejte název akce a jako **typ akce** vyberte **zpráva e-mail/SMS/odeslat/hlas** . Následující snímek obrazovky ukazuje podrobnosti typu akce:
 
      :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Nakonfigurujte typ akce, například e-mailové oznámení pro příjem výstrahy.":::
 

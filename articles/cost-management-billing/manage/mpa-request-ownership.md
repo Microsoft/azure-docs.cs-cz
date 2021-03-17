@@ -1,18 +1,19 @@
 ---
 title: Získání vlastnictví fakturace předplatných Azure pro smlouvu s partnerem Microsoftu (MPA)
-description: Přečtěte si, jak požádat ostatní uživatele o udělení vlastnictví fakturace předplatných Azure.
+description: Přečtěte si, jak požádat ostatní uživatele o udělení vlastnictví fakturace předplatných Azure pro Smlouvu s partnerem Microsoftu (MPA).
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 10/19/2020
 ms.author: banders
-ms.openlocfilehash: a0643b42a7d306a9e41a80cb8529926eff42c00a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-ms.translationtype: HT
+ms.openlocfilehash: 0c5ecb61b5b34864aa89c1f0e760e96c383a269f
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289004"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091483"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Získání vlastnictví fakturace předplatných Azure pro vlastní účet se smlouvou MPA
 
@@ -20,21 +21,21 @@ Aby bylo možné nabídnout jednu kombinovanou fakturu za spravované služby a 
 
 Tato funkce je k dispozici pouze pro partnery CSP s přímým vyúčtováním a certifikací [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp). Vztahují se na ni zásady správného řízení a zásady Azure a u určitých zákazníků může vyžadovat přezkoumání a schválení.
 
-Abyste si mohli vyžádat vlastnictví fakturace, musíte mít roli **Globální správce** nebo **Agent správy**. Další informace najdete v tématu [Partnerské centrum – Přiřazování uživatelských rolí a oprávnění](https://docs.microsoft.com/partner-center/permissions-overview).
+Abyste si mohli vyžádat vlastnictví fakturace, musíte mít roli **Globální správce** nebo **Agent správy**. Další informace najdete v tématu [Partnerské centrum – Přiřazování uživatelských rolí a oprávnění](/partner-center/permissions-overview).
 
 Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsoftu. Tyto účty se vytváří pro poskytovatele CSP (Cloud Solution Provider), aby mohli spravovat fakturaci za své zákazníky v novém komerčním prostředí. Nové prostředí je k dispozici pouze pro partnery s alespoň jedním zákazníkem, který přijal smlouvu se zákazníkem Microsoftu (MCA) a má plán Azure. [Ověřte si, jestli máte přístup ke smlouvě s partnerem Microsoftu](#check-access-to-a-microsoft-partner-agreement).
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Navažte se zákazníkem [vztah na úrovni prodejce](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer). Projděte si [přehled regionální autorizace CSP](https://docs.microsoft.com/partner-center/regional-authorization-overview) a zajistěte, aby tenanti zákazníka i partnera byli ve stejné autorizované oblasti.
-1. [Ověřte, že zákazník přijal smlouvu se zákazníkem Microsoftu](https://docs.microsoft.com/partner-center/confirm-customer-agreement).
-1. Nastavte pro zákazníka [plán Azure](https://docs.microsoft.com/partner-center/purchase-azure-plan). Pokud zákazník nakupuje přes několik prodejců, je potřeba nastavit plán Azure pro každou kombinaci zákazníka a prodejce.
+1. Navažte se zákazníkem [vztah na úrovni prodejce](/partner-center/request-a-relationship-with-a-customer). Projděte si [přehled regionální autorizace CSP](/partner-center/regional-authorization-overview) a zajistěte, aby tenanti zákazníka i partnera byli ve stejné autorizované oblasti.
+1. [Ověřte, že zákazník přijal smlouvu se zákazníkem Microsoftu](/partner-center/confirm-customer-agreement).
+1. Nastavte pro zákazníka [plán Azure](/partner-center/purchase-azure-plan). Pokud zákazník nakupuje přes několik prodejců, je potřeba nastavit plán Azure pro každou kombinaci zákazníka a prodejce.
 
 ## <a name="request-billing-ownership"></a>Podání žádosti o vlastnictví fakturace
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů agenta správy CSP v tenantovi CSP.
 1. Vyhledejte **Cost Management a fakturace**.  
-    ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mpa-request-ownership/search-cmb.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal za účelem odeslání žádosti o vlastnictví fakturace](./media/mpa-request-ownership/search-cmb.png)
 1. Na levé straně vyberte **Zákazníci** a pak v seznamu vyberte zákazníka.  
     [![Screenshot znázorňující výběr zákazníků](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Vlevo dole vyberte **Žádosti o převod** a pak vyberte **Přidat novou žádost**.  
@@ -55,7 +56,7 @@ Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsof
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.  
-    ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal za účelem získání stavu převodu](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. Na levé straně vyberte **Zákazníci**.  
     [![Screenshot znázorňující výběr zákazníků](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. V seznamu vyberte zákazníka, za kterého jste odeslali žádost o převod.
@@ -114,7 +115,7 @@ Zakázaná předplatná není možné převádět. Aby bylo možné převádět 
 
 ### <a name="azure-resources-transfer"></a>Převod prostředků Azure
 
-Převádí se všechny prostředky zahrnuté v předplatném, jako jsou virtuální počítače, disky a weby.
+Převádí se všechny prostředky zahrnuté v předplatném, jako jsou virtuální počítače, disky a weby. Po převodu se zachovají ID předplatných a ID prostředků. 
 
 ### <a name="azure-marketplace-products-transfer"></a>Převod produktů na Azure Marketplace
 
@@ -122,13 +123,13 @@ Produkty z Azure Marketplace dostupné pro předplatná spravovaná poskytovatel
 
 ### <a name="azure-reservations-transfer"></a>Přenos rezervací Azure
 
-Rezervace Azure se s předplatným automaticky nepřevádí. Buď si můžete rezervace v EA nechat pro jiná předplatná, nebo [rezervace zrušte](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) a partner si je může znovu koupit v CSP.
+Rezervace Azure se s předplatným automaticky nepřevádí. Buď si můžete rezervace v EA nechat pro jiná předplatná, nebo [rezervace zrušte](../reservations/exchange-and-refund-azure-reservations.md) a partner si je může znovu koupit v CSP.
 
 ### <a name="access-to-azure-services"></a>Přístup ke službám Azure
 
-Převod nebude mít vliv na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí [Azure RBAC (řízení přístupu na základě role)](../../role-based-access-control/overview.md). Partner k předplatným nezíská nový přístup RBAC.
+Převod nebude mít vliv na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md). Partner k předplatným nezíská nový přístup Azure RBAC.
 
-Pokud partneři chtějí získat přístup k předplatným, měli by se spojit se zákazníkem. Aby partneři mohli vytvářet lístky podpory, musí získat přístup k funkci [AOBO (Admin on Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) nebo ke službě [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider).
+Pokud partneři chtějí získat přístup k předplatným, měli by se spojit se zákazníkem. Aby partneři mohli vytvářet lístky podpory, musí získat přístup k funkci [AOBO (Admin on Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) nebo ke službě [Azure Lighthouse](../../lighthouse/concepts/cloud-solution-provider.md).
 
 ### <a name="azure-support-plan"></a>plán podpory Azure
 
@@ -154,13 +155,13 @@ Některé žádosti zákazníků o převod můžou kvůli povaze aktuální stru
 
 Adresář převáděných předplatných Azure musí odpovídat adresáři zákazníka vybranému při navazování vztahu CSP.
 
-Pokud se tyto dva adresáře neshodují, předplatná není možné převést. Musíte buď navázat nový vztah se zákazníkem na úrovni prodejce CSP výběrem adresáře příslušných předplatných Azure, nebo změnit adresář předplatných Azure tak, aby odpovídal adresáři vztahu CSP se zákazníkem. Další informace najdete v tématu [Přidružení existujícího předplatného k adresáři Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+Pokud se tyto dva adresáře neshodují, předplatná není možné převést. Musíte buď navázat nový vztah se zákazníkem na úrovni prodejce CSP výběrem adresáře příslušných předplatných Azure, nebo změnit adresář předplatných Azure tak, aby odpovídal adresáři vztahu CSP se zákazníkem. Další informace najdete v tématu [Přidružení existujícího předplatného k adresáři Azure AD](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory).
 
-### <a name="ea-subscription-in-the-non-orgnization-directory"></a>Předplatné EA v adresáři mimo organizaci
+### <a name="ea-subscription-in-the-non-organization-directory"></a>Předplatné EA v adresáři mimo organizaci
 
 Předplatná EA z adresářů mimo organizaci se dají přenášet v případě, že pro příslušný adresář existuje vztah prodejce s CSP. Pokud pro adresář neexistuje vztah prodejce, musíte zajistit, aby v adresáři byl uživatel organizace jako *globální správce*, který může přijímat partnerské vztahy. Část názvu domény v uživatelském jméně musí tvořit buď počáteční výchozí název domény [název domény]. onmicrosoft.com, nebo ověřený nefederovaný název vlastní domény, například contoso.com.  
 
-Pokud chcete do adresáře přidat nového uživatele, přečtěte si téma [Rychlé zprovoznění: Přidání nových uživatelů do služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+Pokud chcete do adresáře přidat nového uživatele, přečtěte si téma [Rychlé zprovoznění: Přidání nových uživatelů do služby Azure Active Directory kvůli přidání nového uživatele do adresáře](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Kontrola přístupu ke smlouvě s partnerem Microsoftu
 
@@ -173,4 +174,4 @@ Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#bl
 ## <a name="next-steps"></a>Další kroky
 
 * Vlastnictví fakturace předplatných Azure se převede na vás. Poplatky za tato předplatná můžete sledovat na webu [Azure Portal](https://portal.azure.com).
-* Pokud chcete získat přístup k převedeným předplatným Azure, spojte se se zákazníkem. [Správa přístupu k prostředkům Azure pomocí řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* Pokud chcete získat přístup k převedeným předplatným Azure, spojte se se zákazníkem. [Přiřaďte role Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).

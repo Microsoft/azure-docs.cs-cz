@@ -9,7 +9,7 @@
   items:
     - name: Povolení samoobslužného resetování hesel
       href: tutorial-enable-sspr.md
-    - name: Povolení služby Azure Multi-Factor Authentication
+    - name: Povolení vícefaktorového ověřování Azure AD
       href: tutorial-enable-azure-mfa.md
     - name: Povolení zpětného zápisu hesel do místního prostředí
       href: tutorial-enable-sspr-writeback.md
@@ -21,7 +21,19 @@
   expanded: true
   items:
     - name: Metody ověřování
-      href: concept-authentication-methods.md
+      items:
+        - name: Přehled
+          href: concept-authentication-methods.md
+        - name: Aplikace Microsoft Authenticator
+          href: concept-authentication-authenticator-app.md
+        - name: Tokeny OATH
+          href: concept-authentication-oath-tokens.md
+        - name: Bez hesla
+          href: concept-authentication-passwordless.md
+        - name: Možnosti telefonu
+          href: concept-authentication-phone-options.md
+        - name: Bezpečnostní otázky
+          href: concept-authentication-security-questions.md
     - name: Samoobslužné resetování hesla
       items:
         - name: Jak funguje resetování hesel
@@ -43,11 +55,9 @@
         - name: Licence
           href: concept-mfa-licensing.md
         - name: MFA pro Office 365
-          href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication
         - name: Nejčastější dotazy
           href: multi-factor-authentication-faq.md
-    - name: Ověřování bez hesla
-      href: concept-authentication-passwordless.md
     - name: Ochrana hesel
       items:
         - name: Eliminace slabých hesel v cloudu
@@ -70,7 +80,7 @@
           href: howto-sspr-authenticationdata.md
         - name: Klienti SSPR pro Windows
           href: howto-sspr-windows.md
-    - name: Azure Multi-Factor Authentication
+    - name: Vícefaktorové ověřování Azure AD
       items:
         - name: Průvodce nasazením
           href: howto-mfa-getstarted.md
@@ -87,7 +97,7 @@
         - name: Directory Federation
           items:
             - name: Adaptér AD FS Windows Serveru 2016
-              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
+              href: /windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
             - name: Federation Services
               href: multi-factor-authentication-get-started-adfs.md
             - name: Použití služby AD FS
@@ -98,7 +108,7 @@
               href: howto-mfa-nps-extension.md
             - name: Pokročilá konfigurace pro rozšíření serveru NPS
               href: howto-mfa-nps-extension-advanced.md
-            - name: Azure VPN a Azure MFA
+            - name: Azure VPN a Azure AD MFA
               href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: Brána vzdálené plochy
               href: howto-mfa-nps-extension-rdg.md
@@ -116,10 +126,14 @@
               href: howto-authentication-passwordless-security-key-windows.md
             - name: Jednotné přihlašování k místním prostředkům
               href: howto-authentication-passwordless-security-key-on-premises.md
+            - name: Nejčastější dotazy k hybridnímu prostředí
+              href: howto-authentication-passwordless-faqs.md
+            - name: Řešení potíží s hybridním prostředím
+              href: howto-authentication-passwordless-troubleshoot.md
         - name: Přihlašování telefonem bez hesla
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello pro firmy
-          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+          href: /windows/security/identity-protection/hello-for-business/hello-identity-verification
     - name: Registrace informací o zabezpečení
       items:
         - name: Povolení kombinované registrace
@@ -140,9 +154,13 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Historie verzí agenta
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Použití ověření na základě SMS (Preview)
+    - name: Použít dočasný předávací přístup (Preview)
+      href: howto-authentication-temporary-access-pass.md
+    - name: Použít ověřování pomocí serveru SMS
       href: howto-authentication-sms-signin.md
-    - name: Použití přihlášení s e-mailovou adresou (Preview)
+    - name: Dvoucestné nepodporované SMS
+      href: how-to-authentication-two-way-sms-unsupported.md
+    - name: Použít přihlášení k e-mailovým adresám
       href: howto-authentication-use-email-signin.md
     - name: Inteligentní uzamykání Azure AD
       href: howto-password-smart-lockout.md
@@ -157,8 +175,8 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: Vytváření sestav
       items:
-        - name: Přehledy a využití
-          href: howto-authentication-methods-usage-insights.md
+        - name: Aktivita metod ověřování
+          href: howto-authentication-methods-activity.md
         - name: Sestavy SSPR
           href: howto-sspr-reporting.md
         - name: Sestavy MFA
@@ -209,8 +227,10 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Řešení potíží
       items:
-        - name: Řešení potíží se SSPR
-          href: active-directory-passwords-troubleshoot.md
+        - name: Samoobslužné resetování hesla (SSPR)
+          href: troubleshoot-sspr.md
+        - name: Zpětný zápis SSPR
+          href: troubleshoot-sspr-writeback.md
         - name: Nejčastější dotazy k SSPR
           href: active-directory-passwords-faq.md
         - name: Nejčastější dotazy k MFA
@@ -220,7 +240,7 @@
 - name: Referenční informace
   items:
     - name: Uživatelská příručka k MFA
-      href: ./end-user/current/multi-factor-authentication-end-user.md
+      href: ../user-help/multi-factor-authentication-end-user-first-time.md
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Rutiny Azure PowerShellu
@@ -228,13 +248,15 @@
     - name: Beta verze Microsoft Graph REST API
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Limity a omezení služeb
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md
+    - name: Kompatibilita FIDO2
+      href: fido2-compatibility.md
 - name: Zdroje a prostředky
   items:
     - name: Fórum Azure pro názory
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Aktualizace služeb

@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.openlocfilehash: c9f6d5d2649aff03d4bfb2770ec97053e70027da
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+author: kriti-ms
+ms.author: krsh
+ms.openlocfilehash: e3d20b5e9206cf05d749f75982a07937a8caf078
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319877"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201086"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Přesouváme image virtuálních počítačů v Azure Marketplace do úložiště spravovaného disku.
 
@@ -30,19 +30,17 @@ Pokud máte nějaké dotazy, [kontaktujte nás](https://support.microsoft.com/su
 
 Uživatelé imagí virtuálních počítačů nebudou mít žádný výpadek. 
 
-V první fázi budeme přesouvat jenom image virtuálních počítačů, které nemají žádné běžící virtuální počítače. Protože pro tyto image neexistují žádní uživatelé, nebude to mít žádný vliv. Pro další fáze i to nebude mít žádný vliv na uživatele.
-
 ### <a name="how-long-does-it-take-for-the-process-to-complete"></a>Jak dlouho trvá dokončení procesu?
 
 Dokončení migrace může trvat až 24 hodin.
 
 ### <a name="do-i-need-to-take-any-action"></a>Potřebuji nějakou akci?
 
-Ne. Vydavatelé nebo spotřebitelé nemusí provádět žádné akce.
+No. Vydavatelé nebo spotřebitelé nemusí provádět žádné akce.
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Musím po přesunu do spravovaného diskového úložiště aktualizovat systém rozhraní API cloudového portálu jiným způsobem.
 
-Ne. Vaše stávající volání rozhraní API budou fungovat i nadále.
+No. Vaše stávající volání rozhraní API budou fungovat i nadále.
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Budou všechny image virtuálních počítačů přesunuty do spravovaného disku ve stejnou dobu?
 

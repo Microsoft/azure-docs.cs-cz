@@ -49,8 +49,8 @@
           tocHref: /azure/active-directory-domain-services/
           topicHref: /azure/active-directory-domain-services/
         - name: 'Uživatelé, skupiny a role'
-          tocHref: /azure/active-directory/users-groups-roles/
-          topicHref: /azure/active-directory/users-groups-roles/
+          tocHref: /azure/active-directory/roles/groups-concept
+          topicHref: /azure/active-directory/roles/groups-concept
         - name: Zásady správného řízení identit
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
@@ -102,6 +102,9 @@
         - name: Mobile Apps
           tocHref: /azure/app-service-mobile/
           topicHref: /azure/app-service-mobile/
+    - name: Azure Automanage
+      tocHref: 'https://azure.microsoft.com/services/azure-automanage/'
+      topicHref: 'https://azure.microsoft.com/services/azure-automanage/'
     - name: Static Web Apps
       tocHref: /azure/static-web-apps/
       topicHref: /azure/static-web-apps/
@@ -114,9 +117,16 @@
     - name: Synapse Analytics
       tocHref: /azure/synapse-analytics/
       topicHref: /azure/synapse-analytics/
-    - name: ASC for IoT
-      tocHref: /azure/asc-for-iot/
-      topicHref: /azure/asc-for-iot/
+    - name: Azure Arc
+      tocHref: /azure/azure-arc/
+      topicHref: /azure/azure-arc/
+      items:
+        - name: Kubernetes s podporou služby Arc
+          tocHref: /azure/azure-arc/kubernetes/
+          topicHref: /azure/azure-arc/kubernetes/
+        - name: Servery s podporou služby Arc
+          tocHref: /azure/azure-arc/servers/
+          topicHref: /azure/azure-arc/servers/
     - name: Automation
       tocHref: /azure/automation/
       topicHref: /azure/automation/
@@ -164,6 +174,9 @@
     - name: Azure Remote Rendering
       tocHref: /azure/remote-rendering/
       topicHref: /azure/remote-rendering/
+    - name: Porozumění objektům Azure
+      tocHref: /azure/object-understanding/
+      topicHref: /azure/object-understanding/
     - name: Container Registry
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/
@@ -199,28 +212,18 @@
       tocHref: /azure/iot-fundamentals/
       topicHref: /azure/iot-fundamentals/
       items:
+        - name: Percept Azure
+          tocHref: /azure/azure-percept/
+          topicHref: /azure/azure-percept/
+        - name: Aktualizace zařízení pro IoT Hub
+          tocHref: /azure/iot-hub-device-update/
+          topicHref: /azure/iot-hub-device-update/
         - name: IoT Hub
           tocHref: /azure/iot-hub/
           topicHref: /azure/iot-hub/
         - name: IoT Central
           tocHref: /azure/iot-central/
           topicHref: /azure/iot-central/
-          items:
-            - name: IoT Central
-              tocHref: /azure/iot-central/core/
-              topicHref: /azure/iot-central/core/
-            - name: IoT Central pro energetiku
-              tocHref: /azure/iot-central/energy/
-              topicHref: /azure/iot-central/energy/
-            - name: IoT Central pro státní správu
-              tocHref: /azure/iot-central/government/
-              topicHref: /azure/iot-central/government/
-            - name: IoT Central pro zdravotnictví
-              tocHref: /azure/iot-central/healthcare/
-              topicHref: /azure/iot-central/healthcare/
-            - name: IoT Central pro maloobchod
-              tocHref: /azure/iot-central/retail/
-              topicHref: /azure/iot-central/retail/
         - name: IoT Edge
           tocHref: /azure/iot-edge/
           topicHref: /azure/iot-edge/
@@ -258,15 +261,29 @@
         - name: Vlastní poskytovatelé Azure
           tocHref: /azure/azure-resource-manager/custom-providers/
           topicHref: /azure/azure-resource-manager/custom-providers/
+    - name: Partnerská řešení
+      tocHref: /azure/partner-solutions/
+      topicHref: /azure/partner-solutions/
+      items:
+        - name: Apache Kafka pro Cloud s nefluentmi
+          tocHref: /azure/partner-solutions/apache-kafka-confluent-cloud/
+          topicHref: /azure/partner-solutions/apache-kafka-confluent-cloud/
     - name: Služba SignalR
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/
     - name: Azure Stack
       tocHref: /azure/azure-stack/
       topicHref: /azure/azure-stack/
+      items:
+        - name: Azure Stack Edge
+          tocHref: /azure/databox-online/
+          topicHref: /azure/databox-online/
     - name: Uživatel Azure Stacku
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
+    - name: BareMetal Infrastructure
+      tocHref: /azure/baremetal-infrastructure/
+      topicHref: /azure/baremetal-infrastructure/
     - name: Backup
       tocHref: /azure/backup/
       topicHref: /azure/backup/
@@ -376,7 +393,7 @@
           topicHref: /azure/cognitive-services/LUIS/
         - name: Lingvistická analýza
           tocHref: /azure/cognitive-services/linguisticanalysisapi/
-          topicHref: /azure/cognitive-services/linguisticanalysisapi/home
+          topicHref: 'https://www.programmableweb.com/api/microsoft-cognitive-services-linguistic-analysis'
         - name: QnA Maker
           tocHref: /azure/cognitive-services/qnamaker/
           topicHref: /azure/cognitive-services/qnamaker/home
@@ -397,7 +414,7 @@
           topicHref: /azure/cognitive-services/video-indexer/video-indexer-overview
         - name: Web Language Model
           tocHref: /azure/cognitive-services/web-language-model/
-          topicHref: /azure/cognitive-services/web-language-model/home
+          topicHref: 'https://www.programmableweb.com/sdk/microsoft-cognitive-services-web-language-model-c-sdk-microsoft'
         - name: Personality Chat
           tocHref: /azure/cognitive-services/project-personality-chat/
           topicHref: /azure/cognitive-services/qnamaker/overview/overview
@@ -416,6 +433,9 @@
         - name: Asistivní čtečka
           tocHref: /azure/cognitive-services/immersive-reader/
           topicHref: /azure/cognitive-services/immersive-reader/
+    - name: Communication Services
+      tocHref: /azure/communication-services/
+      topicHref: /azure/communication-services/
     - name: Konektory
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
@@ -441,6 +461,9 @@
     - name: Databáze Cosmos
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
+    - name: Spravovaná instance pro Apache Cassandra
+      tocHref: /azure/managed-instance-apache-cassandra/
+      topicHref: /azure/managed-instance-apache-cassandra/
     - name: Storage
       tocHref: /azure/storage/
       topicHref: /azure/storage/
@@ -448,9 +471,9 @@
         - name: Offline přenos Data Boxu
           tocHref: /azure/databox/
           topicHref: /azure/databox/
-        - name: Online přenos Data Boxu
-          tocHref: /azure/databox-online/
-          topicHref: /azure/databox-online/
+        - name: Data Box Gateway
+          tocHref: /azure/databox-gateway/
+          topicHref: /azure/databox-gateway/
     - name: Data Catalog
       tocHref: /azure/data-catalog/
       topicHref: /azure/data-catalog/
@@ -535,22 +558,6 @@
     - name: Jenkins
       tocHref: /azure/jenkins/
       topicHref: /azure/jenkins/
-    - name: Key Vault
-      tocHref: /azure/key-vault/
-      topicHref: /azure/key-vault
-      items:
-        - name: Obecné
-          tocHref: /azure/key-vault/general/
-          topicHref: /azure/key-vault/general/
-        - name: Certifikáty
-          tocHref: /azure/key-vault/certificates/
-          topicHref: /azure/key-vault/certificates/
-        - name: Klíče
-          tocHref: /azure/key-vault/keys/
-          topicHref: /azure/key-vault/keys/
-        - name: Tajné kódy
-          tocHref: /azure/key-vault/secrets/
-          topicHref: /azure/key-vault/secrets/
     - name: Azure Kinect DK
       tocHref: /azure/kinect-dk/
       topicHref: /azure/kinect-dk/
@@ -576,12 +583,9 @@
         - name: Virtuální počítač pro datové vědy
           tocHref: /azure/machine-learning/data-science-virtual-machine
           topicHref: /azure/machine-learning/data-science-virtual-machine/
-    - name: Marketplace Consumer
-      tocHref: /azure/marketplace-consumer/
+    - name: Komerční marketplace
+      tocHref: /azure/marketplace
       topicHref: /azure/marketplace/
-    - name: Marketplace Publishing
-      tocHref: /azure/marketplace-publishing/
-      topicHref: /azure/marketplace/marketplace-publishers-guide
     - name: Media Services
       tocHref: /azure/media-services/
       topicHref: /azure/media-services/
@@ -661,9 +665,15 @@
         - name: Firewall Manager
           tocHref: /azure/firewall-manager/
           topicHref: /azure/firewall-manager/
+        - name: DDoS Protection úrovně Standard
+          tocHref: /azure/ddos-protection/
+          topicHref: /azure/ddos-protection/
         - name: Front Door Service
           tocHref: /azure/frontdoor/
           topicHref: /azure/frontdoor/
+        - name: Přední dveře Standard/Premium (Preview)
+          tocHref: /azure/frontdoor/standard-premium
+          topicHref: /azure/frontdoor/standard-premium
         - name: Internet Analyzer
           tocHref: /azure/internet-analyzer/
           topicHref: /azure/internet-analyzer/
@@ -682,6 +692,9 @@
         - name: Peering Service
           tocHref: /azure/peering-service/
           topicHref: /azure/peering-service/
+        - name: Server směrování (Preview)
+          tocHref: /azure/route-server/
+          topicHref: /azure/route-server/
         - name: Traffic Manager
           tocHref: /azure/traffic-manager/
           topicHref: /azure/traffic-manager/
@@ -752,12 +765,37 @@
         - name: Srovnávací testy
           tocHref: /azure/security/benchmarks/
           topicHref: /azure/security/benchmarks/
-    - name: Security Center
-      tocHref: /azure/security-center/
-      topicHref: /azure/security-center/
-    - name: Azure Sentinel
-      tocHref: /azure/sentinel/
-      topicHref: /azure/sentinel/
+        - name: Key Vault
+          tocHref: /azure/key-vault/
+          topicHref: /azure/key-vault
+          items:
+            - name: Obecné
+              tocHref: /azure/key-vault/general/
+              topicHref: /azure/key-vault/general/
+            - name: Certifikáty
+              tocHref: /azure/key-vault/certificates/
+              topicHref: /azure/key-vault/certificates/
+            - name: Klíče
+              tocHref: /azure/key-vault/keys/
+              topicHref: /azure/key-vault/keys/
+            - name: Tajné kódy
+              tocHref: /azure/key-vault/secrets/
+              topicHref: /azure/key-vault/secrets/
+            - name: Managed HSM
+              tocHref: /azure/key-vault/managed-hsm/
+              topicHref: /azure/key-vault/managed-hsm/
+        - name: Security Center
+          tocHref: /azure/security-center/
+          topicHref: /azure/security-center/
+        - name: Azure Sentinel
+          tocHref: /azure/sentinel/
+          topicHref: /azure/sentinel/
+        - name: Defender pro IoT
+          tocHref: /azure/defender-for-iot/
+          topicHref: /azure/defender-for-iot/
+        - name: Attestation
+          tocHref: /azure/attestation/
+          topicHref: /azure/attestation/
     - name: Service Fabric
       tocHref: /azure/service-fabric/
       topicHref: /azure/service-fabric/
@@ -886,3 +924,9 @@
         - name: Reservations
           tocHref: /azure/cost-management-billing/reservations/
           topicHref: /azure/cost-management-billing/reservations/
+        - name: Smlouva se zákazníkem Microsoftu
+          tocHref: /azure/cost-management-billing/microsoft-customer-agreement/
+          topicHref: /azure/cost-management-billing/microsoft-customer-agreement/
+    - name: Purview
+      tocHref: /azure/purview/
+      topicHref: /azure/purview/

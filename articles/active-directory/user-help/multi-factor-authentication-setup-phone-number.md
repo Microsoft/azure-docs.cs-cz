@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 76809a41400502ec48c2dd674f8976bb168ec9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735986"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530251"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Nastavení mobilního zařízení jako metody ověřování dvou faktorů
 
@@ -30,7 +30,7 @@ Mobilní zařízení můžete nastavit tak, aby fungovalo jako metoda dvou fakto
 
 2. V oblasti **Metoda** vyberte **Odeslat zprávu kód podle textové zprávy** a pak vyberte **Další**.
 
-    ![Stránka Další ověření zabezpečení s ověřováním telefon a textová zpráva](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    ![Snímek obrazovky se stránkou "další ověření zabezpečení" s výběrem možnosti "telefon pro ověření" a "poslat mi kód pomocí textové zprávy".](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
 3. Zadejte ověřovací kód z textové zprávy odeslané od Microsoftu do **kroku 2: poslali jsme vám textovou zprávu do vaší telefonní** oblasti a pak vyberete **ověřit**.
 
@@ -43,7 +43,7 @@ Mobilní zařízení můžete nastavit tak, aby fungovalo jako metoda dvou fakto
     >[!Note]
     >Informace o tom, jak používat heslo aplikace pro vaše starší aplikace, najdete v tématu [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md). Pokud budete nadále používat starší aplikace, které nepodporují dvojúrovňové ověřování, je třeba použít hesla aplikací.
 
-5. Vyberte **Done** (Hotovo).
+5. Vyberte **Hotovo**.
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Nastavení mobilního zařízení pro příjem telefonního hovoru
 
@@ -64,7 +64,7 @@ Mobilní zařízení můžete nastavit tak, aby fungovalo jako metoda dvou fakto
     >[!Note]
     >Informace o tom, jak používat heslo aplikace pro vaše starší aplikace, najdete v tématu [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md). Pokud budete nadále používat starší aplikace, které nepodporují dvojúrovňové ověřování, je třeba použít hesla aplikací.
 
-5. Vyberte **Done** (Hotovo).
+5. Vyberte **Hotovo**.
 
 ## <a name="next-steps"></a>Další kroky
 

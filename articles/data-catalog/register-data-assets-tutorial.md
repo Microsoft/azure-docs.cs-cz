@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88135874"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Kurz: registrace datových assetů v Azure Data Catalog
@@ -317,7 +317,7 @@ Ve službě Azure Data Catalog je možné odstranit jednotlivý asset nebo více
 
 Postupujte podle kroků [odebrat datové prostředky](#remove-data-assets) a vyčistěte všechny prostředky, které jste mohli použít při použití tohoto kurzu.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste prozkoumali základní možnosti služby Azure Data Catalog včetně registrace, přidávání poznámek, zjišťování a správy datových assetů organizace. Nyní, když jste dokončili kurz, je čas začít. Začít můžete ještě dnes registrací zdrojů dat, na která spoléháte vy a váš tým, a pozváním kolegů k používání katalogu.
 

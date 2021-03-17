@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 650755cf2692b613b2998e8ef7b706e09022b178
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846999"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626905"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Seznámení s modelem Service Fabric prostředků
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Model prostředků Service Fabric popisuje jednoduchý přístup k definování prostředků, které tvoří Service Fabric mřížkovou aplikaci. Jednotlivé prostředky lze nasadit do libovolného Service Fabricho prostředí.  Model prostředků Service Fabric je také kompatibilní s modelem Azure Resource Manager. V tomto modelu se aktuálně podporují následující typy prostředků:
 
@@ -66,7 +71,7 @@ Prostředky tajných kódů lze nasadit nezávisle na prostředku aplikace nebo 
 
 Kontejnery často zpřístupňují dočasné disky. Dočasné disky jsou ale dočasné, takže získáte nový dočasný disk a ztratíte informace, když dojde k selhání kontejneru. Je také obtížné sdílet informace o dočasných discích s jinými kontejnery. Svazky jsou adresáře, které se připevní do instancí kontejnerů, které můžete použít k trvalému stavu. Svazky poskytují úložiště souborů pro obecné účely a umožňují čtení a zápis souborů pomocí normálních rozhraní API v/v souborů na disku. Prostředek Volume je deklarativní způsob, jak popsat, jak je adresář připojený, a jeho záložní úložiště (buď svazek se soubory Azure nebo Service Fabric spolehlivý svazek).  Další informace najdete v tématu věnovaném [ukládání stavu](service-fabric-mesh-storing-state.md#volumes).
 
-![Svazky][Image3]
+![Diagram znázorňuje službu, která se přesměruje na diskový svazek, který se bude nacházet mezi Service Fabric spolehlivým svazkem, pak s replikovaným místním diskem a svazkem souborů Azure a pak do síťového úložiště.][Image3]
 
 ## <a name="programming-models"></a>Programovací modely
 Prostředek služby vyžaduje, aby se spustila image kontejneru, na kterou se odkazuje v balíčcích kódu přidružených k danému prostředku. Můžete spustit libovolný kód napsaný v jakémkoli jazyce pomocí libovolného rozhraní uvnitř kontejneru, aniž byste museli znát nebo používat Service Fabric rozhraní API specifická pro danou síť. 

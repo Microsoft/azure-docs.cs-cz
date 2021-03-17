@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/08/2019
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b71a7b8ab29e8083a5f119a41ef6de312518301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9434bd4042798dc05a33401e1884e11a73774936
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388268"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448332"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí OpenID Connect pomocí Azure Active Directory B2C
 
@@ -27,7 +27,8 @@ ms.locfileid: "85388268"
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C kliknutím na v horní nabídce na položku filtr **adresářů a předplatných** a vyberte adresář, který obsahuje vašeho tenanta.
 1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Zprostředkovatelé identity**a potom vyberte **Nový poskytovatel OpenID Connect**.
+1. Vyberte **Zprostředkovatelé identity** a potom vyberte **Nový poskytovatel OpenID Connect**.
+1. Zadejte **název**. Zadejte například *Contoso*.
 
 ## <a name="configure-the-identity-provider"></a>Konfigurace zprostředkovatele identity
 
@@ -40,7 +41,7 @@ Pokud chcete uživatelům dovolit, aby se přihlásili, poskytovatel identity vy
 > [!NOTE]
 > Tajný kód klienta je nepovinný. Pokud byste ale chtěli použít [tok autorizačního kódu](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), musíte zadat tajný klíč klienta, který používá tajný klíč k výměně kódu pro token.
 
-## <a name="scope"></a>Rozsah
+## <a name="scope"></a>Obor
 
 Obor definuje informace a oprávnění, které chcete shromáždit od vlastního poskytovatele identity. Žádosti o připojení OpenID musí obsahovat `openid` hodnotu oboru, aby bylo možné získat token ID od poskytovatele identity. Bez tokenu ID se uživatelé nebudou moct přihlašovat k Azure AD B2C pomocí vlastního zprostředkovatele identity. Další obory lze přidat oddělené mezerou. Další informace o tom, jaké další obory mohou být k dispozici, najdete v dokumentaci vlastního zprostředkovatele identity.
 
@@ -71,3 +72,16 @@ Jakmile vlastní zprostředkovatel identity pošle token ID zpátky na Azure AD 
 * **Křestní jméno**: zadejte deklaraci identity, která poskytuje *křestní jméno* uživatele.
 * **Příjmení**: zadejte deklaraci identity, která poskytuje *poslední jméno* uživatele.
 * **E-mail**: zadejte deklaraci identity, která poskytuje *e-mailovou adresu* uživatele.
+
+## <a name="add-the-identity-provider-to-a-user-flow"></a>Přidání zprostředkovatele identity do toku uživatele 
+
+1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
+1. Klikněte na tok uživatele, kterému chcete přidat poskytovatele identity. 
+1. V části **Zprostředkovatelé sociální identity** vyberte poskytovatele identity, kterého jste přidali. Například *Contoso*.
+1. Vyberte **Uložit**.
+1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
+1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tlačítko **tok spuštění uživatele** .
+1. Na stránce registrace nebo přihlášení vyberte poskytovatele identity, kterého se chcete přihlásit. Například *Contoso*.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.

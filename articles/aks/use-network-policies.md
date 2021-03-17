@@ -5,12 +5,12 @@ description: Naučte se zabezpečit provoz, který se zachází do lusků, pomoc
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b72c5551d6ed33deb4df40a60215aed8071141d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050485"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178894"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak nainstalovat modul zásad sítě a vytvořit z
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 > [!TIP]
 > Pokud jste ve verzi Preview použili funkci síťové zásady, doporučujeme [vytvořit nový cluster](#create-an-aks-cluster-and-enable-network-policy).
@@ -52,12 +52,12 @@ Obě implementace používají Linux *softwaru iptables* k vykonání zadaných 
 
 | Schopnost                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
-| Podporované platformy                      | Linux                      | Linux                       |
-| Podporované síťové možnosti             | CNI Azure                  | Azure CNI a kubenet       |
+| Podporované platformy                      | Linux                      | Linux, Windows Server 2019 (Preview)  |
+| Podporované síťové možnosti             | CNI Azure                  | Azure CNI (Windows Server 2019 a Linux) a kubenet (Linux)  |
 | Dodržování předpisů pomocí specifikace Kubernetes | Všechny podporované typy zásad |  Všechny podporované typy zásad |
 | Další funkce                      | Žádné                       | Model rozšířených zásad skládající se z globálních síťových zásad, globální síťové sady a koncového bodu hostitele. Další informace o použití rozhraní příkazového `calicoctl` řádku ke správě těchto rozšířených funkcí naleznete v tématu [calicoctl User reference][calicoctl]. |
 | Podpora                                  | Podporováno technickou podporou a technickým týmem pro Azure | Podpora komunity Calico. Další informace o další placené podpoře najdete v tématu [Možnosti podpory pro Project Calico][calico-support]. |
-| Protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
+| protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolení zásad sítě
 
@@ -67,7 +67,7 @@ Pokud chcete zobrazit zásady sítě v akci, vytvoříme a pak rozbalíme zásad
 * Povoluje provoz na základě popisků pod.
 * Povolte provoz založený na oboru názvů.
 
-Nejdřív vytvořte cluster AKS, který podporuje zásady sítě. 
+Nejdřív vytvořte cluster AKS, který podporuje zásady sítě.
 
 > [!IMPORTANT]
 >
@@ -120,25 +120,101 @@ az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 
 # Get the virtual network subnet resource ID
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
+```
 
-# Create the AKS cluster and specify the virtual network and service principal information
-# Enable network policy by using the `--network-policy` parameter
+### <a name="create-an-aks-cluster-for-azure-network-policies"></a>Vytvoření clusteru AKS pro zásady sítě Azure
+
+Vytvořte cluster AKS a zadejte virtuální síť, informace o instančním objektu a *Azure* pro modul plug-in sítě a zásady sítě.
+
+```azurecli
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
     --generate-ssh-keys \
-    --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
+    --network-plugin azure \
     --network-policy azure
 ```
 
 Vytvoření clusteru bude trvat několik minut. Až bude cluster připravený, nakonfigurujte `kubectl` pro připojení ke clusteru Kubernetes pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
+
+```azurecli-interactive
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
+```
+
+### <a name="create-an-aks-cluster-for-calico-network-policies"></a>Vytvoření clusteru AKS pro zásady sítě Calico
+
+Vytvořte cluster AKS a zadejte virtuální síť, informace o instančním objektu, službu *Azure* pro modul plug-in sítě a *Calico* pro zásady sítě. Použití *Calico* jako zásady sítě umožňuje sítě Calico na fondech uzlů Linux i Windows.
+
+Pokud plánujete přidat do clusteru fondy uzlů Windows, zahrňte `windows-admin-username` `windows-admin-password` parametry a, které splňují požadavky na heslo k [Windows serveru][windows-server-password]. Chcete-li používat Calico s fondy uzlů Windows, je také nutné zaregistrovat `Microsoft.ContainerService/EnableAKSWindowsCalico` .
+
+Zaregistrujte `EnableAKSWindowsCalico` příznak funkce pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "EnableAKSWindowsCalico"
+```
+
+ Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAKSWindowsCalico')].{Name:name,State:properties.state}"
+```
+
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+> [!IMPORTANT]
+> V tuto chvíli je použití zásad sítě Calico s uzly Windows k dispozici pro nové clustery pomocí Kubernetes verze 1,20 nebo novější s Calico 3.17.2 a vyžaduje použití Azure CNI Networking. Uzly Windows v clusterech AKS s povoleným Calico mají taky [přímý návratový Server (DSR)][dsr] , který je ve výchozím nastavení povolený.
+>
+> U clusterů s pouze fondy uzlů pro Linux se systémem Kubernetes 1,20 a staršími verzemi Calico bude verze Calico automaticky upgradována na 3.17.2.
+
+Zásady sítě Calico s uzly Windows jsou momentálně ve verzi Preview.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+```azurecli
+PASSWORD_WIN="P@ssw0rd1234"
+
+az aks create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $CLUSTER_NAME \
+    --node-count 1 \
+    --generate-ssh-keys \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal $SP_ID \
+    --client-secret $SP_PASSWORD \
+    --windows-admin-password $PASSWORD_WIN \
+    --windows-admin-username azureuser \
+    --vm-set-type VirtualMachineScaleSets \
+    --kubernetes-version 1.20.2 \
+    --network-plugin azure \
+    --network-policy calico
+```
+
+Vytvoření clusteru bude trvat několik minut. Ve výchozím nastavení se cluster vytvoří jenom s fondem uzlů Linux. Pokud chcete používat fondy uzlů Windows, můžete je přidat. Například:
+
+```azurecli
+az aks nodepool add \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --cluster-name $CLUSTER_NAME \
+    --os-type Windows \
+    --name npwin \
+    --node-count 1
+```
+
+Až bude cluster připravený, nakonfigurujte `kubectl` pro připojení ke clusteru Kubernetes pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -191,7 +267,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Vytvoření a použití zásad sítě
 
-Teď, když jste se potvrdili, že můžete použít základní webovou stránku NGINX na ukázkovém back-endu pod, vytvořit zásadu sítě, která zamítne veškerý provoz. Vytvořte soubor s názvem `backend-policy.yaml` a vložte následující manifest YAML. Tento manifest používá *podSelector* k připojení zásady k luskům, které mají *aplikaci: WebApp, role: back-end* , jako je ukázka Nginx pod. V rámci příchozího přenosu nejsou definována žádná pravidla, takže veškerý příchozí provoz do *uzlu pod je*odepřen:
+Teď, když jste se potvrdili, že můžete použít základní webovou stránku NGINX na ukázkovém back-endu pod, vytvořit zásadu sítě, která zamítne veškerý provoz. Vytvořte soubor s názvem `backend-policy.yaml` a vložte následující manifest YAML. Tento manifest používá *podSelector* k připojení zásady k luskům, které mají *aplikaci: WebApp, role: back-end* , jako je ukázka Nginx pod. V rámci příchozího přenosu nejsou definována žádná pravidla, takže veškerý příchozí provoz do *uzlu pod je* odepřen:
 
 ```yaml
 kind: NetworkPolicy
@@ -482,8 +558,12 @@ Další informace o zásadách najdete v tématu [zásady sítě Kubernetes][kub
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
 [use-advanced-networking]: configure-azure-cni.md
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [concepts-network]: concepts-network.md
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

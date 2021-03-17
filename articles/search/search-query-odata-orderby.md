@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903778"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88926826"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Syntaxe $orderby OData v Azure Kognitivní hledání
 
@@ -93,4 +93,4 @@ Seřaďte hotely v sestupném pořadí podle hledání. skóre a hodnocení a po
 - [Jak pracovat s výsledky hledání v Azure Kognitivní hledání](search-pagination-page-layout.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

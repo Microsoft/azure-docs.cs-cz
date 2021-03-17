@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: carlrab
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 07/16/2019
-ms.openlocfilehash: 5b8ca2f578881b3e8bd557fa5aaac618bcab1599
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: af1d7110cccfd8b0617d6c79eb5373cc7c087159
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073447"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594007"
 ---
 # <a name="use-powershell-to-add-a-managed-instance-to-a-failover-group"></a>Použití PowerShellu k přidání spravované instance do skupiny převzetí služeb při selhání 
 
@@ -37,7 +37,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje ten
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky. Skupinu prostředků budete muset odebrat dvakrát. Když se skupina prostředků odebere poprvé, odebere se spravovaná instance a virtuální clustery, ale tato chybová zpráva se pak nezdaří `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Spusťte příkaz Remove-AzResourceGroup a podruhé odstraňte všechny zbývající prostředky i skupinu prostředků.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky. Skupinu prostředků budete muset odebrat dvakrát. Když se skupina prostředků odebere poprvé, odebere se spravovaná instance a virtuální clustery, ale tato chybová zpráva se pak nezdaří `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Pokud chcete odebrat všechny zbývající prostředky i skupinu prostředků, spusťte příkaz Remove-AzResourceGroup a podruhé.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName

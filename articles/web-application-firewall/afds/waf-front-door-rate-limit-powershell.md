@@ -7,25 +7,28 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 23b893bad591af5f1e923b68e8d30453f859792b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005408"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563473"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurace pravidla omezení četnosti brány firewall webových aplikací pomocí Azure PowerShell
 Pravidlo omezení četnosti brány firewall webových aplikací (WAF) pro službu Azure front-dveře řídí počet požadavků povolených od klientů během minutového trvání.
 V tomto článku se dozvíte, jak nakonfigurovat pravidlo omezení četnosti WAF, které řídí počet požadavků povolených klienty na webovou aplikaci, která obsahuje */promo* v adrese URL pomocí Azure PowerShell.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> Pro každou IP adresu klienta se aplikují omezení přenosové rychlosti. Pokud máte několik klientů, kteří přistupují k vašim předním dveřím z různých IP adres, budou se použít vlastní omezení přenosové rychlosti.
+
+## <a name="prerequisites"></a>Požadavky
 Než začnete s nastavením zásady omezení četnosti, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 ### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
-Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
+Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](../../azure-resource-manager/management/overview.md). 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte AZ PowerShell Module.
+[Azure PowerShell](/powershell/azure/) můžete nainstalovat na místní počítač a používat v jakékoli relaci PowerShellu. Postupujte podle pokynů na stránce, přihlaste se pomocí přihlašovacích údajů Azure a nainstalujte AZ PowerShell Module.
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Připojení k Azure pomocí interaktivního dialogu pro přihlášení
 ```
@@ -73,9 +76,7 @@ Nastavte omezení přenosové rychlosti pomocí [New-AzFrontDoorWafCustomRuleObj
 
 Vyhledejte název skupiny prostředků, která obsahuje profil front-dveří pomocí `Get-AzureRmResourceGroup` . V dalším kroku nakonfigurujte zásadu zabezpečení s vlastním pravidlem omezení četnosti pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, která obsahuje profil front-dveří.
 
-V níže uvedeném příkladu se používá název skupiny prostředků *myResourceGroupFD1* s předpokladem, že jste vytvořili profil front-dveří pomocí pokynů uvedených v [rychlém startu: vytvořit článek na předních dveřích](../../frontdoor/quickstart-create-front-door.md) .
-
- pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+V níže uvedeném příkladu se používá název skupiny prostředků *myResourceGroupFD1* s předpokladem, že jste vytvořili profil front-dveří pomocí pokynů uvedených v [rychlém startu: Vytvoření článku na předních dveřích](../../frontdoor/quickstart-create-front-door.md) pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -104,6 +105,4 @@ V níže uvedeném příkladu se používá název skupiny prostředků *myResou
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [front-dveřích](../../frontdoor/front-door-overview.md). 
-
-
+- Přečtěte si další informace o [front-dveřích](../../frontdoor/front-door-overview.md).

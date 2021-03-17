@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001532"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006519"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv EDIFACT pro podnikovou integraci B2B v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
 
@@ -36,7 +36,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
 
 ## <a name="create-an-edifact-agreement"></a>Vytvoření smlouvy EDIFACT 
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com "Portál Azure Portal"). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com "portál Azure"). 
 
 2. V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "Integration" a pak vyberte **účty pro integraci**.
 
@@ -45,7 +45,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
    > [!TIP]
    > Pokud se nezobrazí **všechny služby** , může být nutné nejprve rozbalit nabídku. V horní části sbalené nabídky vyberte **zobrazit textové popisky**.
 
-3. V části **účty pro integraci**vyberte účet pro integraci, ve kterém chcete vytvořit smlouvu.
+3. V části **účty pro integraci** vyberte účet pro integraci, ve kterém chcete vytvořit smlouvu.
 
    ![Vyberte účet pro integraci, kde se má smlouva vytvořit.](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
@@ -57,7 +57,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
 
    ![Zvolit přidat](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. V části **Přidat**zadejte **název** vaší smlouvy. Jako **typ smlouvy**vyberte **EDIFACT**. Vyberte **hostitele hostitele**, **identitu hostitele**, **partnera hosta**a **identitu hosta** pro vaši smlouvu.
+6. V části **Přidat** zadejte **název** vaší smlouvy. Jako **typ smlouvy** vyberte **EDIFACT**. Vyberte **hostitele hostitele**, **identitu hostitele**, **partnera hosta** a **identitu hosta** pro vaši smlouvu.
 
    ![Zadání podrobností o smlouvě](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
@@ -81,7 +81,7 @@ Teď, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato
 > Konektor EDIFACT podporuje pouze znaky UTF-8.
 > Pokud výstup obsahuje neočekávané znaky, ověřte, zda zprávy EDIFACT používají znakovou sadu UTF-8.
 
-1. V části **Přidat**vyberte **Nastavení příjmu**.
+1. V části **Přidat** vyberte **Nastavení příjmu**.
 Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s partnerem, který s vámi vyměňuje zprávy. Popis vlastností najdete v tabulkách v této části.
 
    **Nastavení příjmu** je uspořádáno do těchto částí: identifikátory, potvrzení, schémata, řídicí čísla, ověřování a interní nastavení.
@@ -155,7 +155,7 @@ Po dokončení každého ověřovacího řádku se přidá další automaticky. 
 
 Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozí zprávy odeslané vašim partnerům prostřednictvím této smlouvy.
 
-1.  V části **Přidat**vyberte **Odeslat nastavení**.
+1.  V části **Přidat** vyberte **Odeslat nastavení**.
 Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s vaším partnerem, který vám s vámi vyměňuje zprávy. Popis vlastností najdete v tabulkách v této části.
 
     **Nastavení odesílání** je uspořádáno do těchto částí: identifikátory, potvrzení, schémata, obálky, znakové sady a oddělovače, řídicí čísla a ověření.
@@ -202,7 +202,7 @@ Vaše smlouva je teď připravená na zpracování odchozích zpráv, které odp
 | UNB10 (komunikační smlouva) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně 40 znaků. |
 | UNB11 (indikátor testu) |Zaškrtnutím tohoto políčka označíte, že vygenerovaná výměna je testovací data. |
 | Použít segment UNA (avízo řetězce služby) |Zaškrtnutím tohoto políčka vygenerujete UNA segment, který bude odeslán pro výměnu. |
-| Použít segmenty UNG (záhlaví skupiny funkcí) |Toto políčko zaškrtněte, pokud chcete vytvořit segmenty seskupení v hlavičce funkční skupiny v zprávách odesílaných hostovanému partnerovi. K vytvoření segmentů UNG se použijí následující hodnoty: <p>V případě **UNG1**zadejte alfanumerickou hodnotu s minimálním počtem jednoho znaku a maximálně šest znaků. <p>V případě **Ung 2.1**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 35 znaků. <p>Pro **Ung 2.2**zadejte alfanumerickou hodnotu, která má maximálně čtyři znaky. <p>Pro **Ung 3.1**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 35 znaků. <p>Pro **Ung 3.2**zadejte alfanumerickou hodnotu, která má maximálně čtyři znaky. <p>Pro **UNG6**zadejte alfanumerický údaj s minimálním a maximálním počtem tří znaků. <p>V případě **Ung 7.1**zadejte alfanumerický údaj s minimálním počtem jednoho znaku a maximálně tři znaky. <p>V případě **Ung 7.2**zadejte alfanumerický údaj s minimálním počtem jednoho znaku a maximálně tři znaky. <p>Pro **Ung 7.3**zadejte alfanumerický údaj o minimálním 1 znaku a maximálně 6 znaků. <p>V případě **UNG8**zadejte alfanumerický údaj s minimálním počtem jednoho znaku a maximálně 14 znaků. |
+| Použít segmenty UNG (záhlaví skupiny funkcí) |Toto políčko zaškrtněte, pokud chcete vytvořit segmenty seskupení v hlavičce funkční skupiny v zprávách odesílaných hostovanému partnerovi. K vytvoření segmentů UNG se použijí následující hodnoty: <p>V případě **UNG1** zadejte alfanumerickou hodnotu s minimálním počtem jednoho znaku a maximálně šest znaků. <p>V případě **Ung 2.1** zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 35 znaků. <p>Pro **Ung 2.2** zadejte alfanumerickou hodnotu, která má maximálně čtyři znaky. <p>Pro **Ung 3.1** zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 35 znaků. <p>Pro **Ung 3.2** zadejte alfanumerickou hodnotu, která má maximálně čtyři znaky. <p>Pro **UNG6** zadejte alfanumerický údaj s minimálním a maximálním počtem tří znaků. <p>V případě **Ung 7.1** zadejte alfanumerický údaj s minimálním počtem jednoho znaku a maximálně tři znaky. <p>V případě **Ung 7.2** zadejte alfanumerický údaj s minimálním počtem jednoho znaku a maximálně tři znaky. <p>Pro **Ung 7.3** zadejte alfanumerický údaj o minimálním 1 znaku a maximálně 6 znaků. <p>V případě **UNG8** zadejte alfanumerický údaj s minimálním počtem jednoho znaku a maximálně 14 znaků. |
 
 ### <a name="character-sets-and-separators"></a>Znakové sady a oddělovače
 
@@ -245,9 +245,9 @@ Po dokončení každého ověřovacího řádku se přidá další automaticky. 
 
     Nově přidaná smlouva se teď zobrazí v seznamu **smluv** .
 
-2.  Vaše smlouvy si můžete prohlédnout také v přehledu účtu pro integraci. V nabídce účtu pro integraci zvolte **Přehled**a pak vyberte dlaždici **smlouvy** . 
+2.  Vaše smlouvy si můžete prohlédnout také v přehledu účtu pro integraci. V nabídce účtu pro integraci zvolte **Přehled** a pak vyberte dlaždici **smlouvy** . 
 
-    ![Vybrat dlaždici smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Snímek obrazovky, který zobrazuje dlaždici smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

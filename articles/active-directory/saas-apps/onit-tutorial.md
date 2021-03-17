@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a04b893af41f15d0757b781716909535f43239e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 40ed33021a892e140dfff47417137046557c0aef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544005"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522355"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Onit
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Onit s Azure Active Directory (Azure A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Onit svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -106,7 +106,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -132,7 +132,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. V nabídce v horní části klikněte na **Správa**.
    
-    ![Správa](./media/onit-tutorial/IC791174.png "Správa")
+    ![Snímek obrazovky, který zobrazuje nabídku v horní části stránky test M s S, která má vybranou akci Správa](./media/onit-tutorial/IC791174.png "Správa")
 
 3. Klikněte na **Upravit společnost**.
    
@@ -172,7 +172,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Onit, musí se zřídit v Onit
 
     a. Zadejte **jméno** a **e-mailovou adresu** platného účtu Azure AD, který chcete zřídit do souvisejících textových polí.
 
-    b. Klikněte na možnost **Vytvořit**.
+    b. Klikněte na **Vytvořit**.
 
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mail a provede odkaz k potvrzení jeho účtu předtím, než se aktivuje.
@@ -181,14 +181,14 @@ Aby se uživatelé Azure AD mohli přihlašovat k Onit, musí se zřídit v Onit
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Onit, měli byste se automaticky přihlásit k Onit, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Onit, měli byste se automaticky přihlásit k Onit, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Onit s Azure AD](https://aad.portal.azure.com/)

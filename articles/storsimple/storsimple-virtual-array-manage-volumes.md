@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 734dc55cbcd9c7b5eaf6455d63bcb773b7d85367
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e3ce8c1605e5d68ff44901f53854d2f5f10abc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513987"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014376"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Použití služby Správce zařízení StorSimple ke správě svazků ve službě StorSimple Virtual Array
 
@@ -39,7 +39,7 @@ StorSimple svazky mohou být:
 ### <a name="provisioned-capacity"></a>Zřízená kapacita
 V následující tabulce najdete maximální zřízenou kapacitu pro každý typ svazku.
 
-| **Identifikátor omezení**                                       | **Počtu**     |
+| **Identifikátor omezení**                                       | **Omezení**     |
 |------------------------------------------------------------|---------------|
 | Minimální velikost vrstveného svazku                            | 500 GB        |
 | Maximální velikost vrstveného svazku                            | 5 TB          |
@@ -73,7 +73,7 @@ Pomocí pokynů v tomto kurzu proveďte následující úlohy:
 
 1. V okně s přehledem služby StorSimple klikněte na panelu příkazů na **+ Přidat svazek** . Otevře se okno **Přidat svazek** .
    
-    ![Přidání svazku](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
+    ![Snímek obrazovky se zobrazí tlačítko Přidat svazek a podokno přidat svazek.](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
 2. V okně **Přidat svazek** udělejte toto:
    
    * Do pole **název svazku** zadejte jedinečný název svazku. Název musí být řetězec, který obsahuje 3 až 127 znaků.
@@ -82,7 +82,7 @@ Pomocí pokynů v tomto kurzu proveďte následující úlohy:
    * * Klikněte na **připojené hostitele**, vyberte záznam řízení přístupu (ACR) odpovídající iniciátoru iSCSI, ke kterému se chcete připojit, a potom klikněte na **Vybrat**.
 3. Chcete-li přidat nového připojeného hostitele, klikněte na tlačítko **Přidat nový**, zadejte název hostitele a jeho kvalifikovaný název iSCSI (IQN) a pak klikněte na tlačítko **Přidat**.
    
-    ![Přidání svazku](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
+    ![Snímek obrazovky se zobrazí v podokně připojené hostitele, kde můžete přidat nové.](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
 4. Po dokončení konfigurace svazku klikněte na **vytvořit**. Vytvoří se svazek se zadaným nastavením a zobrazí se oznámení o úspěšném vytvoření stejného. Ve výchozím nastavení bude pro svazek povolená záloha.
 5. Pokud chcete ověřit, že se svazek úspěšně vytvořil, otevřete okno **svazky** . Měl by se zobrazit uvedený svazek.
    

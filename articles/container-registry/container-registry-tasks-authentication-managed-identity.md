@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77111763"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915943"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Použití identity spravované v Azure v ACR úlohách 
 
@@ -58,7 +58,7 @@ Pokud chcete povolit identitu přiřazenou systémem, předejte `--assign-identi
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false \
     --assign-identity
@@ -70,7 +70,7 @@ Pokud chcete povolit uživatelsky přiřazenou identitu, předejte jí `--assign
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false
     --assign-identity <resourceID>

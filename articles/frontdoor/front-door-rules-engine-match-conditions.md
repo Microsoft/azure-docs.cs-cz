@@ -1,29 +1,29 @@
 ---
-title: Podmínky shody stroje Azure pro pravidla front
+title: Požadavky na služby Azure pro přední dveře splňují podmínky
 description: Tento článek poskytuje seznam různých podmínek shody, které jsou k dispozici pro modul pravidel služby Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
-author: megan-beatty
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
-ms.author: mebeatty
-ms.openlocfilehash: 311914078f8169a3b48b5559ed58a690c29be83a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 03/01/2020
+ms.author: duau
+ms.openlocfilehash: a352624fc802e4224aa1b60768c064c0054cdfd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512159"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035870"
 ---
-# <a name="azure-front-door-rules-engine-match-conditions"></a>Podmínky shody stroje pravidel služby Azure Front Door
+# <a name="azure-front-door-rules-engine-match-conditions"></a>Podmínky shody stroje Azure pro pravidla front
 
-V [modulu pravidel AFD](front-door-rules-engine.md) se pravidlo skládá z nuly nebo více podmínek shody a akce. Tento článek poskytuje podrobné popisy podmínek shody, které můžete použít v modulu pravidel AFD.
+V [modulu pravidel AFD](front-door-rules-engine.md)se pravidlo skládá z nuly nebo více podmínek shody a akce. Tento článek poskytuje podrobné popisy podmínek shody, které můžete použít v modulu pravidel AFD.
 
-První část pravidla je podmínka shody nebo sada podmínek shody. Pravidlo může sestávat z až deseti podmínek shody. Podmínka shody identifikuje konkrétní typy požadavků, pro které jsou provedeny definované akce. Pokud použijete více podmínek shody, podmínky shody jsou seskupeny pomocí logiky a. Pro všechny podmínky shody, které podporují více hodnot (uvedené níže jako "oddělený mezerou"), se předpokládá operátor "nebo".
+První část pravidla je podmínka shody nebo sada podmínek shody. Pravidlo může sestávat z až deseti podmínek shody. Podmínka shody identifikuje konkrétní typy požadavků, pro které jsou provedeny definované akce. Pokud použijete více podmínek shody, podmínky shody jsou seskupeny pomocí logiky a. Pro všechny podmínky shody, které podporují více hodnot (zaznamenáno "mezera"), předpokládá se operátor "nebo".
 
 Podmínku shody můžete například použít k těmto akcím:
 
@@ -82,9 +82,9 @@ Neshoda IP adres | IP adresa (oddělená mezerami)
 - Pokud chcete zadat víc IP adres a bloků IP adres, použijte jednu mezeru mezi hodnotami:
   - **Příklad protokolu IPv4**: *1.2.3.4 10.20.30.40* odpovídá všem žádostem, které dorazí buď na adresu 1.2.3.4 nebo 10.20.30.40.
   - **Příklad IPv6**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* odpovídá všem žádostem, které přicházejí buď z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
-- Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Příklad:
+- Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Například:
   - **Příklad IPv4**: *5.5.5.64/26* odpovídá všem žádostem, které přicházejí z adres 5.5.5.64 prostřednictvím 5.5.5.127.
-  - **Příklad IPv6**: *1:2:3:/48* odpovídá všem žádostem, které přicházejí z adres 1:2:3:0:0:0:0:0 až 1:2: ffff: ffff: ffff: ffff: ffff: FFFF.
+  - **Příklad IPv6**: *1:2:3:/48* odpovídá všem žádostem, které přicházejí z adres 1:2:3:0:0:0:0:0 až 1:2:3: ffff: ffff: ffff: ffff: FFFF.
 
 ## <a name="request-body"></a>Text požadavku
 
@@ -142,7 +142,7 @@ Operátor | Adresa URL požadavku | Transformace případu
 
 #### <a name="key-information"></a>Informace o klíči
 
-- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: * https://www . \<yourdomain\> . model COM*.
+- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Příklad: `https://www.<yourdomain\>.com`.
 
 ## <a name="request-file-extension"></a>Žádost o příponu souboru
 
@@ -182,11 +182,15 @@ Operátor | Hodnota | Transformace případu
 ---------|-------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Malá písmena, Velká písmena, střih, odebrat prázdné znaky, kódování URL, kódování adresy URL
 
+#### <a name="key-information"></a>Informace o klíči
+
+- Když použijete tuto podmínku pravidla, Všimněte si, že shoda začíná za první `/` z cesty. Například: `https://www.<yourdomain>.com/folder/page` by začaly odpovídat `folder/page` .
+
 ## <a name="standard-operator-list"></a>Seznam standardních operátorů
 
 Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, platí následující operátory:
 
-- Libovolný
+- Všechny
 - Je rovno 
 - Contains 
 - Začíná na 
@@ -204,11 +208,11 @@ Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, 
 - Není větší než
 - Není větší než nebo rovno
 
-Pro číselné operátory, které jsou *menší než* a *větší než nebo rovno*, je použití porovnání založeno na délce. V tomto případě by hodnota v podmínce shody měla být celé číslo, které se rovná délce, kterou chcete porovnat. 
+Pro číselné operátory, které jsou *menší než* a *větší než nebo rovno*, je použití porovnání založeno na délce. Hodnota v podmínce Match by měla být celé číslo, které se rovná délce, kterou chcete porovnat. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se nastavit [konfiguraci modulu](front-door-tutorial-rules-engine.md)pro první pravidla. 
+- Naučte se konfigurovat modul pro první [pravidla](front-door-tutorial-rules-engine.md). 
 - Další informace o [akcích modulu pravidel](front-door-rules-engine-actions.md)
 - Další informace o [modulu pravidel pro přední dveře Azure](front-door-rules-engine.md)

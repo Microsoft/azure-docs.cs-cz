@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7585c91e42b2d3591532756c1ead9ea60b7035e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253303"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837579"
 ---
 # <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
 
 Vlastní ovládací prvky jsou funkcí verze Preview Azure Active Directory. Při použití vlastních ovládacích prvků jsou vaši uživatelé přesměrováni na kompatibilní službu, aby splnila požadavky na ověření mimo Azure Active Directory. Aby bylo možné tento ovládací prvek vyhovět, bude prohlížeč uživatele přesměrován na externí službu, provede požadované ověření a pak bude přesměrován zpět na Azure Active Directory. Azure Active Directory ověří odpověď, a pokud byl uživatel úspěšně ověřen nebo ověřen, uživatel pokračuje v toku podmíněného přístupu.
 
 > [!NOTE]
-> Další informace o změnách, které plánujeme na možnosti vlastního ovládacího prvku, najdete v článku únor 2020. února, [co je nového](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls).
+> Další informace o změnách, které plánujeme na možnosti vlastního ovládacího prvku, najdete v části únor 2020 – [co je nového](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls).
 
 ## <a name="creating-custom-controls"></a>Vytváření vlastních ovládacích prvků
 
@@ -33,11 +33,11 @@ Zkopírujte data JSON a pak je vložte do příslušného textového pole. Nepro
 
 Možnost vytvořit vlastní ovládací prvek je v části **Správa** na stránce **podmíněný přístup** .
 
-![Řízení](./media/controls/82.png)
+![Vlastní rozhraní ovládacích prvků v podmíněném přístupu](./media/controls/custom-controls-conditional-access.png)
 
-Kliknutím na **Nový vlastní ovládací prvek**otevře okno s textovým polem pro data JSON ovládacího prvku.  
+Kliknutím na **Nový vlastní ovládací prvek** otevře okno s textovým polem pro data JSON ovládacího prvku.  
 
-![Řízení](./media/controls/81.png)
+![Nový vlastní ovládací prvek](./media/controls/new-custom-controls-conditional-access.png)
 
 ## <a name="deleting-custom-controls"></a>Odstranění vlastních ovládacích prvků
 
@@ -53,7 +53,7 @@ Chcete-li upravit vlastní ovládací prvek, je nutné odstranit aktuální ovl�
 
 ## <a name="known-limitations"></a>Známá omezení
 
-Vlastní ovládací prvky nejde používat s automatizací Identity Protection, která vyžaduje Azure Multi-Factor Authentication, Samoobslužné resetování hesla Azure AD (SSPR), dodržování požadavků deklarace identity na vícefaktorové ověřování nebo zvýšení úrovně rolí v Privileged identity Manageru (PIM).
+Vlastní ovládací prvky nejde používat s automatizací Identity Protection, která vyžaduje Azure AD Multi-Factor Authentication, Samoobslužné resetování hesla Azure AD (SSPR), dodržování požadavků deklarace identity na vícefaktorové ověřování, aby bylo možné zvyšovat role v Privileged identity Manageru (PIM) jako součást registrace zařízení v Intune, nebo při připojování zařízení ke službě Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 

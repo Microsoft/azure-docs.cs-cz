@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 886e99d6f56a008c694b3bcb366cfb4049f3528e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210979"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590212"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Použití plánů údržby ke správě aktualizací a údržby služby
 
@@ -38,7 +38,7 @@ Integrace s Service Healthmi oznámeními a monitorováním Resource Health kont
 24hodinové předběžné oznámení předchází všem událostem údržby, které nejsou pro DWC400c a nižší úrovně.
 
 > [!NOTE]
-> V případě, že je nutné nasadit časově důležitou aktualizaci, může být rozšířená doba oznámení výrazně omezená.
+> V případě, že je nutné nasadit časově důležitou aktualizaci, může být rozšířená doba oznámení výrazně omezená. K tomu může dojít mimo identifikované okno údržby z důvodu kritického charakteru aktualizace.
 
 Pokud jste obdrželi předběžné oznámení o tom, že údržba proběhne, ale během časového období v oznámení nelze provést údržbu, obdržíte oznámení o zrušení. Údržba pak bude pokračovat během příští plánované doby údržby.
 
@@ -54,7 +54,7 @@ Ve výchozím nastavení mají všechny nově vytvořené instance datového skl
 
 Chcete-li zobrazit plán údržby, který byl použit pro váš synapse fond SQL, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte synapse fond SQL, který chcete zobrazit.
 3. Vybraný synapse fond SQL se otevře v okně Přehled. Plán údržby, který se použije pro datový sklad, se zobrazí pod **plánem údržby**.
 
@@ -70,7 +70,7 @@ Primární a sekundární systém Windows musí mít oddělené rozsahy dnů. P�
 
 Chcete-li změnit plán údržby pro synapse fond SQL, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte synapse fond SQL, který chcete aktualizovat. Otevře se stránka s přehledem.
 Kliknutím na odkaz **Souhrn plánu údržby** v okně Přehled otevřete stránku nastavení plánu údržby. Případně vyberte možnost **plán údržby** v nabídce na levé straně prostředku.
 
@@ -96,7 +96,7 @@ V průběhu období Preview možná některé oblasti ještě nepodporují úpln
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přečtěte si další informace](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) o vytváření, zobrazování a správě výstrah pomocí Azure monitor.
-- [Přečtěte si další informace](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) o akcích Webhooku pro pravidla upozornění protokolů.
-- [Další informace](../..//azure-monitor/platform/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Vytváření a Správa skupin akcí.
+- [Přečtěte si další informace](../../azure-monitor/alerts/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) o vytváření, zobrazování a správě výstrah pomocí Azure monitor.
+- [Přečtěte si další informace](../..//azure-monitor/alerts/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) o akcích Webhooku pro pravidla upozornění protokolů.
+- [Další informace](../..//azure-monitor/alerts/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Vytváření a Správa skupin akcí.
 - [Přečtěte si další informace](../../service-health/service-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) o Azure Service Health.

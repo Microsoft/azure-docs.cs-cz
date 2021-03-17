@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, senzor, SDK, Hloubka, RGB, záznam, přehrávání, Matroska, MKV
 ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277143"
 ---
 # <a name="the-azure-kinect-playback-api"></a>Rozhraní API pro přehrávání Azure Kinect
@@ -134,13 +134,13 @@ Níže je uveden seznam všech výchozích značek, které mohou být zahrnuty d
 
 Pokud značka neexistuje, předpokládá se, že má výchozí hodnotu.
 
-| Název značky                     | Výchozí hodnota      | [`k4a_record_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__record__configuration__t.html)Dílčí | Poznámky     |
+| Název značky                     | Výchozí hodnota      | [`k4a_record_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__record__configuration__t.html) Dílčí | Poznámky     |
 |------------------------------|--------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `K4A_COLOR_MODE`             | ZAOKROUHL              | `color_format` / `color_resolution`  | Možné hodnoty: "OFF", "MJPG_1080P", "NV12_720P", "YUY2_720P" atd.                                      |
 | `K4A_DEPTH_MODE`             | ZAOKROUHL              | `depth_mode` / `depth_track_enabled` | Možné hodnoty: "OFF", "NFOV_UNBINNED", "PASSIVE_IR" atd.                                                |
 | `K4A_IR_MODE`                | ZAOKROUHL              | `depth_mode` / `ir_track_enabled`    | Možné hodnoty: "vypnuto", "aktivní", "pasivní"                                                                    |
 | `K4A_IMU_MODE`               | ZAOKROUHL              | `imu_track_enabled`                  | Možné hodnoty: ZAPNUTo, vypnuto                                                                                   |
-| `K4A_CALIBRATION_FILE`       | "calibration.json" | Není k dispozici                                  | Si[`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
+| `K4A_CALIBRATION_FILE`       | "calibration.json" | Není k dispozici                                  | Si [`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
 | `K4A_DEPTH_DELAY_NS`         | "0"                | `depth_delay_off_color_usec`         | Hodnota uložená v nanosekundách poskytuje rozhraní API mikrosekundy.                                                        |
 | `K4A_WIRED_SYNC_MODE`        | SKUPIN       | `wired_sync_mode`                    | Možné hodnoty: "samostatná", "MASTER", "PODŘÍZENá"                                                         |
 | `K4A_SUBORDINATE_DELAY_NS`   | "0"                | `subordinate_delay_off_master_usec`  | Hodnota uložená v nanosekundách poskytuje rozhraní API mikrosekundy.                                                        |
@@ -148,10 +148,10 @@ Pokud značka neexistuje, předpokládá se, že má výchozí hodnotu.
 | `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | Není k dispozici                                  | Hloubka verze firmwaru zařízení, například 1. x. xx                                                            |
 | `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | Není k dispozici                                  | Záznam sériového čísla zařízení                                                                                 |
 | `K4A_START_OFFSET_NS`        | "0"                | `start_timestamp_offset_usec`        | Viz [synchronizace časového razítka](record-playback-api.md#timestamp-synchronization) níže.                       |
-| `K4A_COLOR_TRACK`            | Žádná               | Není k dispozici                                  | Viz [záznam formátu souboru – identifikace stop](record-file-format.md#identifying-tracks).                     |
-| `K4A_DEPTH_TRACK`            | Žádná               | Není k dispozici                                  | Viz [záznam formátu souboru – identifikace stop](record-file-format.md#identifying-tracks).                     |
-| `K4A_IR_TRACK`               | Žádná               | Není k dispozici                                  | Viz [záznam formátu souboru – identifikace stop](record-file-format.md#identifying-tracks).                     |
-| `K4A_IMU_TRACK`              | Žádná               | Není k dispozici                                  | Viz [záznam formátu souboru – identifikace stop](record-file-format.md#identifying-tracks).                     |
+| `K4A_COLOR_TRACK`            | Žádné               | Není k dispozici                                  | Viz [záznam formátu souboru – identifikace stop](record-file-format.md#identifying-tracks).                     |
+| `K4A_DEPTH_TRACK`            | Žádné               | Není k dispozici                                  | Viz [záznam formátu souboru – identifikace stop](record-file-format.md#identifying-tracks).                     |
+| `K4A_IR_TRACK`               | Žádné               | Není k dispozici                                  | Viz [záznam formátu souboru – identifikace stop](record-file-format.md#identifying-tracks).                     |
+| `K4A_IMU_TRACK`              | Žádné               | Není k dispozici                                  | Viz [záznam formátu souboru – identifikace stop](record-file-format.md#identifying-tracks).                     |
 
 ## <a name="timestamp-synchronization"></a>Synchronizace časových razítek
 

@@ -1,20 +1,17 @@
 ---
 title: Aktivita toku dat
 description: Jak spouštět toky dat z kanálu služby Data Factory.
-services: data-factory
-documentationcenter: ''
 author: kromerm
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/30/2020
-ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/03/2021
+ms.openlocfilehash: 0663690318773ccad3bddfaaa03e456c2f58895e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726958"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383377"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -37,6 +34,9 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
          "coreCount": 8,
          "computeType": "General"
       },
+      "traceLevel": "Fine",
+      "runConcurrently": true,
+      "continueOnError": true,      
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -60,8 +60,9 @@ toku dat | Odkaz na prováděný tok dat | DataFlowReference | Yes
 integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | No
 Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | No
 Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | No
-Příprava. linkedService | Pokud používáte zdroj dat nebo jímku SQL DW, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
-Příprava. folderPath | Pokud používáte zdroj dat nebo jímku SQL DW, cesta ke složce v účtu BLOB Storage se používá pro základní fázování. | Řetězec | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
+Příprava. linkedService | Pokud používáte zdroj nebo jímku Azure synapse Analytics, zadejte účet úložiště, který se používá pro základní fázování.<br/><br/>Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). Seznamte se také s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.<br/> | LinkedServiceReference | Jenom v případě, že tok dat čte nebo zapisuje do Azure synapse Analytics
+Příprava. folderPath | Pokud používáte zdroj nebo jímku Azure synapse Analytics, cesta ke složce v účtu BLOB Storage použitá pro základní fázování | Řetězec | Jenom v případě, že tok dat čte nebo zapisuje do služby Azure synapse Analytics
+traceLevel | Nastavení úrovně protokolování pro spuštění aktivity toku dat | Pokuta, hrubá, žádná | No
 
 ![Spustit tok dat](media/data-flow/activity-data-flow.png "Spustit tok dat")
 
@@ -86,7 +87,21 @@ V případě spuštění kanálu je cluster clusterem úloh, který trvá někol
 
 ### <a name="polybase"></a>PolyBase
 
-Pokud používáte Azure SQL Data Warehouse jako jímku nebo zdroj, musíte zvolit pracovní umístění pro zatížení základní dávky. Základem je hromadné načtení dávkového načítání namísto načítání datových řádků po řádku. Základce výrazně zkracuje dobu načítání do SQL datového skladu.
+Pokud jako jímku nebo zdroj používáte Azure synapse Analytics, musíte zvolit pracovní umístění pro zatížení základní dávky. Základem je hromadné načtení dávkového načítání namísto načítání datových řádků po řádku. Základce významně zkracuje dobu načítání do Azure synapse Analytics.
+
+## <a name="logging-level"></a>Úroveň protokolování
+
+Pokud nepotřebujete, aby každé spuštění kanálu pro aktivity toku dat plně protokoloval všechny protokoly telemetrie, můžete nastavit úroveň protokolování na "Basic" nebo "none". Při provádění datových toků v režimu "Verbose" (výchozí) požadujete při transformaci dat na úrovni služby ADF úplný protokol aktivity na jednotlivých úrovních jednotlivých oddílů. To může být náročná operace, takže jenom při řešení potíží můžete zlepšit celkový tok dat a výkon kanálu. Režim "základní" bude pouze dobu trvání transformace protokolu, zatímco možnost None bude obsahovat pouze souhrn dob trvání.
+
+![Úroveň protokolování](media/data-flow/logging.png "Nastavit úroveň protokolování")
+
+## <a name="sink-properties"></a>Vlastnosti jímky
+
+Funkce seskupení v datových proudech umožňuje nastavovat pořadí spouštění vašich umyvadel i seskupovat jímky pomocí stejného čísla skupiny. Aby bylo možné spravovat skupiny, můžete požádat o automatický pokus o spuštění jímky ve stejné skupině paralelně. Můžete také nastavit, aby skupina jímky pokračovala i po jedné z umyvadel dojde k chybě.
+
+Výchozím chováním jímky toku dat je spuštění každé jímky postupně, sériového způsobu a selhání toku dat, když dojde k chybě v jímky. Kromě toho jsou všechny jímky nastavené na stejnou skupinu, pokud nepřejdete do vlastností toku dat a nakonfigurujete jiné priority pro jímky.
+
+![Vlastnosti jímky](media/data-flow/sink-properties.png "Nastavení vlastností jímky")
 
 ## <a name="parameterizing-data-flows"></a>Toky dat Parametrizace
 

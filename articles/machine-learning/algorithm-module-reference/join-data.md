@@ -1,7 +1,7 @@
 ---
 title: 'Data spojování: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat datový modul Join join v Azure Machine Learning ke sloučení datových sad.
+description: Naučte se používat modul JOIN data v Návrháři Azure Machine Learning ke sloučení dvou datových sad dohromady.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c23dca40d50c5837bd9ff45bc3c3d7fb2581685b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477574"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420746"
 ---
 # <a name="join-data"></a>Spojení dat
 
-Tento článek popisuje, jak použít modul **Join data** v Návrháři Azure Machine Learning (Preview) ke sloučení dvou datových sad pomocí operace join ve stylu databáze.  
+Tento článek popisuje, jak použít modul **Join data** v Návrháři Azure Machine Learning ke sloučení dvou datových sad pomocí operace join ve stylu databáze.  
 
 ## <a name="how-to-configure-join-data"></a>Postup konfigurace připojení k datům
 
@@ -47,17 +47,17 @@ Chcete-li provést spojení se dvěma datovými sadami, měly by se vztahovat na
    
 1. Pomocí rozevíracího seznamu **typ spojení** můžete určit, jak se mají datové sady kombinovat.  
   
-    * **Vnitřní spojení**: nejběžnější operace spojení je *vnitřní spojení* . Vrátí kombinované řádky pouze v případě, že se hodnoty klíčových sloupců shodují.  
+    * **Vnitřní spojení** : nejběžnější operace spojení je *vnitřní spojení* . Vrátí kombinované řádky pouze v případě, že se hodnoty klíčových sloupců shodují.  
   
-    * **Levé vnější spojení**: *levé vnější spojení* vrátí připojené řádky pro všechny řádky z levé tabulky. Pokud řádek v levé tabulce nemá odpovídající řádky v pravé tabulce, vrácený řádek obsahuje chybějící hodnoty pro všechny sloupce, které pocházejí z pravé tabulky. Můžete také zadat náhradní hodnotu pro chybějící hodnoty.  
+    * **Levé vnější spojení** : *levé vnější spojení* vrátí připojené řádky pro všechny řádky z levé tabulky. Pokud řádek v levé tabulce nemá odpovídající řádky v pravé tabulce, vrácený řádek obsahuje chybějící hodnoty pro všechny sloupce, které pocházejí z pravé tabulky. Můžete také zadat náhradní hodnotu pro chybějící hodnoty.  
   
-    * **Úplné vnější spojení**: *úplné vnější spojení* vrátí všechny řádky z levé tabulky (**Tabulka1**) a z pravé tabulky (**Tabulka2**).  
+    * **Úplné vnější spojení** : *úplné vnější spojení* vrátí všechny řádky z levé tabulky ( **Tabulka1** ) a z pravé tabulky ( **Tabulka2** ).  
   
          Pro každý z řádků v obou tabulkách, které nemají odpovídající řádky v druhé, výsledek zahrnuje řádek obsahující chybějící hodnoty.  
   
-    * **LEFT JOIN**: *levá polovina spojení* vrátí pouze hodnoty z levé tabulky, když se hodnoty klíčových sloupců shodují.  
+    * **LEFT JOIN** : *levá polovina spojení* vrátí pouze hodnoty z levé tabulky, když se hodnoty klíčových sloupců shodují.  
 
-1. Pro možnost **zachovat pravé klíčové sloupce v připojené tabulce**:
+1. Pro možnost **zachovat pravé klíčové sloupce v připojené tabulce** :
 
     * Tuto možnost vyberte, pokud chcete zobrazit klíče z obou vstupních tabulek.
     * Zrušte zaškrtnutí, pokud chcete vrátit pouze klíčové sloupce z levého vstupu.

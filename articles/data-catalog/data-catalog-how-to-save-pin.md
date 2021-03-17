@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523702"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Uložení hledání a připnutí datových assetů v Azure Data Catalog
@@ -74,5 +74,5 @@ Na domovské stránce portálu Data Catalog se nachází oddíl **Moje assety** 
 
 ![Část moje aktiva na domovské stránce](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Azure Data Catalog poskytuje funkce, které usnadňují zjišťování zdrojů dat, které potřebujete, takže vy a ostatní členové organizace můžete strávit méně času hledáním dat a více času s tím, jak s ní pracujete. Uložená hledání a připnuté datové prostředky se vytvářejí na těchto základních funkcích, aby uživatelé mohli snadno identifikovat zdroje dat, se kterými pracují opakovaně.

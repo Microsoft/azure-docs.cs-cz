@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 52cb701312f598b1b8492226709a7d2767db9600
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7cc1a25fbfc4d3f063c6fc6d225c3f5c7a4b5a3c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187264"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572562"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Spuštění runbooku ve službě Azure Automation
 
@@ -22,7 +22,7 @@ Následující tabulka vám pomůže určit metodu spuštění sady Runbook v Az
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Volání z příkazového řádku pomocí rutin prostředí Windows PowerShell.<br> <li>Lze zahrnout do automatizované funkce s více kroky.<br> <li>Požadavek se ověřuje pomocí certifikátu nebo hlavního objektu zabezpečení nebo instančního objektu OAuth.<br> <li>Zadejte jednoduché a komplexní hodnoty parametrů.<br> <li>Sledovat stav úlohy.<br> <li>Klient je nutný k podpoře rutin PowerShellu. |
 | [Rozhraní API pro Azure Automation](/rest/api/automation/) |<li>Nejpružnější metoda, ale také nejvíc složitá.<br> <li>Volání z libovolného vlastního kódu, který může vytvářet požadavky HTTP.<br> <li>Žádost se ověří pomocí certifikátu nebo objektu zabezpečení nebo hlavního objektu OAuth uživatele.<br> <li>Zadejte jednoduché a komplexní hodnoty parametrů. *Pokud voláte sadu Runbook v Pythonu pomocí rozhraní API, je nutné serializovat datovou část JSON.*<br> <li>Sledovat stav úlohy. |
 | [Webhooky](automation-webhooks.md) |<li>Spustit Runbook z jednoho požadavku HTTP.<br> <li>Ověřeno s tokenem zabezpečení v adrese URL.<br> <li>Klient nemůže přepsat hodnoty parametrů zadané při vytvoření Webhooku. Sada Runbook může definovat jeden parametr, který je vyplněn podrobnostmi požadavku HTTP.<br> <li>Není možné sledovat stav úlohy prostřednictvím adresy URL Webhooku. |
-| [Reakce na upozornění Azure](../azure-monitor/platform/alerts-overview.md) |<li>Spuštění Runbooku v reakci na upozornění Azure<br> <li>Nakonfigurujte Webhook pro Runbook a odkaz na upozornění.<br> <li>Ověřeno s tokenem zabezpečení v adrese URL. |
+| [Reakce na upozornění Azure](../azure-monitor/alerts/alerts-overview.md) |<li>Spuštění Runbooku v reakci na upozornění Azure<br> <li>Nakonfigurujte Webhook pro Runbook a odkaz na upozornění.<br> <li>Ověřeno s tokenem zabezpečení v adrese URL. |
 | [Plán](./shared-resources/schedules.md) |<li>Automaticky spustit sadu Runbook podle hodinových, denních, týdenních nebo měsíčního plánu.<br> <li>Manipulace s plánem prostřednictvím Azure Portal, rutin prostředí PowerShell nebo rozhraní Azure API.<br> <li>Zadejte hodnoty parametrů, které se mají použít s plánem. |
 | [Z jiné sady Runbook](automation-child-runbooks.md) |<li>Použití Runbooku jako aktivity v jiné sadě Runbook.<br> <li>Užitečné pro funkce používané více sadami Runbook.<br> <li>Zadejte hodnoty parametrů pro podřízený Runbook a použijte výstup v nadřazeném Runbooku. |
 
@@ -145,13 +145,13 @@ jsmith
 
 ## <a name="start-a-runbook-with-powershell"></a>Spuštění Runbooku pomocí PowerShellu
 
-K spuštění Runbooku pomocí Windows PowerShellu můžete použít rutinu [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) . Následující vzorový kód spustí Runbook s názvem **test-Runbook**.
+K spuštění Runbooku pomocí Windows PowerShellu můžete použít rutinu [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) . Následující vzorový kód spustí Runbook s názvem **test-Runbook**.
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-`Start-AzAutomationRunbook`Vrátí objekt úlohy, který můžete použít ke sledování stavu po spuštění Runbooku. Pak můžete použít tento objekt úlohy s příkazem [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) k určení stavu úlohy a [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) k získání jejího výstupu. Následující příklad spustí Runbook s názvem **test-Runbook**, počká na jeho dokončení a potom zobrazí jeho výstup.
+`Start-AzAutomationRunbook` Vrátí objekt úlohy, který můžete použít ke sledování stavu po spuštění Runbooku. Pak můžete použít tento objekt úlohy s příkazem [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) k určení stavu úlohy a [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) k získání jejího výstupu. Následující příklad spustí Runbook s názvem **test-Runbook**, počká na jeho dokončení a potom zobrazí jeho výstup.
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"

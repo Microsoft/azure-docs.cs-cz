@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145707"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359897"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Extrakce informací v Excelu pomocí Analýza textu a automatizace 
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 - Prostředek Analýza textu. Pokud ho ještě nemáte, můžete [ho vytvořit v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) a k dokončení tohoto kurzu použít bezplatnou úroveň.
 - [Klíč a koncový bod](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který jste vygenerovali během registrace.
 - Tabulka obsahující problémy klienta. Ukázková data jsou k dispozici na GitHubu
-- Office 365 s OneDrivem pro firmy.
+- Microsoft 365 s OneDrivem pro firmy.
 
 ## <a name="add-the-excel-file-to-onedrive-for-business"></a>Přidání excelového souboru do OneDrivu pro firmy
 
@@ -81,14 +81,14 @@ Do proměnných, které jste vytvořili, přidejte následující informace. Př
 | Inicializovat proměnnou | var_person | Řetězec | Person (Osoba) |
 | Inicializovat proměnnou 2 | var_phone | Řetězec | Phone_Number |
 | Inicializovat proměnnou 3 | var_plumbing | Řetězec | vložení |
-| Inicializovat proměnnou 4 | var_other | Řetězec | ostatní | 
+| Inicializovat proměnnou 4 | var_other | Řetězec | other | 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="informace obsažené v proměnných toku":::
 
 ## <a name="read-the-excel-file"></a>Čtení excelového souboru
 
-Klikněte na **Nový krok** a zadejte **Excel**a pak ze seznamu akcí vyberte seznam řádků, které jsou k **dispozici v tabulce** .
+Klikněte na **Nový krok** a zadejte **Excel** a pak ze seznamu akcí vyberte seznam řádků, které jsou k **dispozici v tabulce** .
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/list-excel-rows.png" alt-text="Přidejte řádky aplikace Excel.":::
@@ -96,7 +96,7 @@ Klikněte na **Nový krok** a zadejte **Excel**a pak ze seznamu akcí vyberte se
 Do tohoto toku přidejte excelový soubor vyplněním polí v této akci. Tento kurz vyžaduje odeslání souboru do OneDrivu pro firmy.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="Přidejte řádky aplikace Excel.":::
+> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="vyplnit řádky v aplikaci Excel":::
 
 Klikněte na **Nový krok** a přidejte **pro každou akci použít** .
 
@@ -114,7 +114,7 @@ Pokud jste to ještě neudělali, musíte v Azure Portal vytvořit [prostředek 
 
 ### <a name="create-a-text-analytics-connection"></a>Vytvoření Analýza textuho připojení
 
-V části **platí pro**klikněte na **přidat akci**. V Azure Portal přejít na stránku **klíč a koncový bod** prostředku analýza textu a získejte klíč a koncový bod pro prostředek analýza textu.
+V části **platí pro** klikněte na **přidat akci**. V Azure Portal přejít na stránku **klíč a koncový bod** prostředku analýza textu a získejte klíč a koncový bod pro prostředek analýza textu.
 
 V toku zadejte následující informace, chcete-li vytvořit nové připojení Analýza textu.
 
@@ -123,7 +123,7 @@ V toku zadejte následující informace, chcete-li vytvořit nové připojení A
 
 | Pole           | Hodnota                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
-| Název připojení | Název připojení k vašemu prostředku Analýza textu. Například `TAforPowerAutomate`. |
+| Název připojení | Název připojení k vašemu prostředku Analýza textu. Například, `TAforPowerAutomate`. |
 | Klíč účtu     | Klíč pro prostředek Analýza textu.                                                                                   |
 | Adresa URL webu        | Koncový bod pro prostředek Analýza textu.                                                       |
 
@@ -135,62 +135,62 @@ V toku zadejte následující informace, chcete-li vytvořit nové připojení A
 Po vytvoření připojení vyhledejte **Analýza textu** a vyberte **entity**. Tato akce extrahuje informace ze sloupce Description (popis problému).
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Přidejte Analýza textu entit.":::
 
 Klikněte do **textového** pole a vyberte **Popis** z okna dynamického obsahu, které se zobrazí. Zadejte `en` pro jazyk. (Pokud nevidíte jazyk, klikněte na Zobrazit pokročilé možnosti)
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Přidejte nastavení Analýza textu.":::
 
 
 ## <a name="extract-the-person-name"></a>Extrahovat jméno osoby
 
-V dalším kroku budeme ve výstupu Analýza textu najít typ entity Person (osoba). V části **použít u každého**klikněte na **přidat akci**a vytvořte další **použít pro každou** akci. Klikněte do textového pole a v zobrazeném okně dynamického obsahu vyberte **entity** .
+V dalším kroku budeme ve výstupu Analýza textu najít typ entity Person (osoba). V části **použít u každého** klikněte na **přidat akci** a vytvořte další **použít pro každou** akci. Klikněte do textového pole a v zobrazeném okně dynamického obsahu vyberte **entity** .
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. odst":::
 
-V nově vytvořené akci **použít u každé 2** akce klikněte na **přidat akci**a přidejte ovládací prvek **podmínky** .
+V nově vytvořené akci **použít u každé 2** akce klikněte na **přidat akci** a přidejte ovládací prvek **podmínky** .
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. 1":::
 
 V okně Podmínka klikněte na první textové pole. V okně dynamický obsah vyhledejte **entity type** a vyberte je.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. 4":::
 
 Ujistěte se, že je druhé pole nastaveno na hodnotu **je rovno**. Pak vyberte třetí pole a vyhledejte `var_person` v okně dynamického obsahu. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. čl":::
 
 V podmínce **if Yes (Pokud ano** ) zadejte do Excelu a pak vyberte **aktualizovat řádek**.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. 6":::
 
-Zadejte informace o Excelu a aktualizujte **klíčový sloupec**, **hodnotu klíče** a pole jméno **osoby** . Tím se do excelového listu připojí název zjištěný rozhraním API. 
+Zadejte informace o Excelu a aktualizujte **klíčový sloupec** , **hodnotu klíče** a pole jméno **osoby** . Tím se do excelového listu připojí název zjištěný rozhraním API. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. čl":::
 
 ## <a name="get-the-phone-number"></a>Získat telefonní číslo
 
 Kliknutím na název minimalizujete **každou akci použít na každou 2** . Pak přidejte další **použít pro každou** akci, třeba před. bude se pojmenovat **pro každé 3**. Vyberte textové pole a jako výstup pro tuto akci přidejte **entity** . 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. 8":::
 
-V rámci **použít na každé 3**přidejte ovládací prvek **podmínky** . Bude se pojmenovat **Podmínka 2**. Do prvního textového pole vyhledejte a přidejte **typ entity** z okna dynamického obsahu. Ujistěte se, že je prostřední pole nastavené na hodnotu **je rovno**. Potom do pravého textového pole zadejte `var_phone` . 
+V rámci **použít na každé 3** přidejte ovládací prvek **podmínky** . Bude se pojmenovat **Podmínka 2**. Do prvního textového pole vyhledejte a přidejte **typ entity** z okna dynamického obsahu. Ujistěte se, že je prostřední pole nastavené na hodnotu **je rovno**. Potom do pravého textového pole zadejte `var_phone` . 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. 9":::
 
 V podmínce **if Yes (Pokud ano** ) přidejte akci **aktualizovat řádek** . Pak zadejte informace, jako jsme výše, pro sloupec telefonní čísla v excelovém listu. Tím se do excelového listu připojí telefonní číslo rozpoznané rozhraním API. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. 10pruhový":::
 
 
 ## <a name="get-the-plumbing-issues"></a>Získání problémů s instalací
@@ -198,7 +198,7 @@ V podmínce **if Yes (Pokud ano** ) přidejte akci **aktualizovat řádek** . Pa
 Kliknutím na název **můžete minimalizovat použití na každé tři** . Pak vytvořte další **použít pro každé** nadřazené akci. Vyberte textové pole a jako výstup pro tuto akci přidejte **entity** z okna dynamického obsahu. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. odst":::
 
 
 V dalším kroku bude tok kontrolovat, zda popis problému z řádku excelové tabulky obsahuje slovo "domovníing". Pokud ano, přidá se "instalace" do sloupce IssueType. Pokud ne, zadáme "other".
@@ -206,19 +206,19 @@ V dalším kroku bude tok kontrolovat, zda popis problému z řádku excelové t
 V rámci akce **použít u každé 4** přidejte ovládací prvek **podmínky** . Bude se pojmenovat **Podmínka 3**. Do prvního textového pole vyhledejte a přidejte **Popis** ze souboru aplikace Excel pomocí okna dynamického obsahu. Ujistěte se, že střední box **obsahuje**. Pak v pravém textovém poli vyhledejte a vyberte `var_plumbing` . 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. 12,5":::
 
 
-V **případě podmínky Ano** klikněte na **přidat akci**a vyberte **aktualizovat řádek**. Pak zadejte informace, jako jsou třeba. Ve sloupci IssueType vyberte `var_plumbing` . Tím se na řádek aplikuje popisek "instalace".
+V **případě podmínky Ano** klikněte na **přidat akci** a vyberte **aktualizovat řádek**. Pak zadejte informace, jako jsou třeba. Ve sloupci IssueType vyberte `var_plumbing` . Tím se na řádek aplikuje popisek "instalace".
 
-V části **Pokud není** podmínka klikněte na **přidat akci**a vyberte **aktualizovat řádek**. Pak zadejte informace, jako jsou třeba. Ve sloupci IssueType vyberte `var_other` . Tím se na řádek aplikuje popisek "jiné".
+V části **Pokud není** podmínka klikněte na **přidat akci** a vyberte **aktualizovat řádek**. Pak zadejte informace, jako jsou třeba. Ve sloupci IssueType vyberte `var_other` . Tím se na řádek aplikuje popisek "jiné".
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
+> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. 13,5":::
 
 ## <a name="test-the-workflow"></a>Test pracovního postupu
 
-V pravém horním rohu obrazovky klikněte na **Uložit**a pak na **test**. Vyberte možnost **provedem akci aktivace**. Klikněte na **uložit & test**, **Spustit tok**a potom na **Hotovo**.
+V pravém horním rohu obrazovky klikněte na **Uložit** a pak na **test**. Vyberte možnost  **provedem akci aktivace**. Klikněte na **uložit & test** , **Spustit tok** a potom na **Hotovo**.
 
 Excelový soubor se aktualizuje v účtu OneDrive. Bude vypadat podobně jako v následujícím příkladu.
 

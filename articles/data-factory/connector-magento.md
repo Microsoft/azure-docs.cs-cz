@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Magento pomocí Azure Data Factory (Preview)
 description: Naučte se, jak kopírovat data z Magento do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 2e27c54b6d5a95de92f77e61f5a1e11e1fd53ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 534a7cd8c9a40a807d05ef40b084a7c73c0a7710
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416902"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378464"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Kopírování dat z Magento pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -47,14 +42,14 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Magento jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Magento** . | Ano |
-| host | Adresa URL instance Magento (to znamená 192.168.222.110/magento3)  | Ano |
-| accessToken | Přístupový token z Magento. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **Magento** . | Yes |
+| Hostitel | Adresa URL instance Magento (to znamená 192.168.222.110/magento3)  | Yes |
+| accessToken | Přístupový token z Magento. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
 **Příklad:**
 
@@ -83,9 +78,9 @@ Pro propojenou službu Magento jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z Magento, nastavte vlastnost Type datové sady na **MagentoObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **MagentoObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **MagentoObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -113,10 +108,10 @@ Chcete-li kopírovat data z Magento, nastavte vlastnost Type datové sady na **M
 
 Chcete-li kopírovat data z Magento, nastavte typ zdroje v aktivitě kopírování na **MagentoSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MagentoSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Customers"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MagentoSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Customers"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

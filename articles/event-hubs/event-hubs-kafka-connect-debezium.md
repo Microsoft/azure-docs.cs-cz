@@ -1,22 +1,34 @@
 ---
-title: Integrace Apache Kafka připojení k Azure Event Hubs (Preview) pomocí Debezium pro zachycení změn dat
-description: Tento článek poskytuje informace o tom, jak používat Apache Spark s Azure Event Hubs pro Kafka.
+title: Integrace Apache Kafka připojení k Azure Event Hubs pomocí Debezium pro zachycení změn dat
+description: Tento článek poskytuje informace o tom, jak používat Debezium s Azure Event Hubs pro Kafka.
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
-ms.date: 08/11/2020
-ms.openlocfilehash: a11ec882a50d051a34758562ac84dcef5b799f5f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.date: 01/06/2021
+ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136798"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935168"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Integrace podpory Apache Kafka Connect do Azure Event Hubs (Preview) s využitím Debezium for Change Data Capture
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>Integrace podpory Apache Kafka Connect do Azure Event Hubs s Debezium for Change Data Capture
 
 Funkce **Change Data Capture (CDC)** je technika používaná ke sledování změn na úrovni řádků v databázových tabulkách v reakci na operace vytvoření, aktualizace a odstranění. [Debezium](https://debezium.io/) je distribuovaná platforma, která se sestavuje nad funkcemi funkce Change Data Capture, které jsou k dispozici v různých databázích (například [logické dekódování v PostgreSQL](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)). Poskytuje sadu [konektorů Kafka Connect](https://debezium.io/documentation/reference/1.2/connectors/index.html) , které klepnutím na změny na úrovni řádků v databázových tabulkách a převádí je do datových proudů událostí odesílaných do [Apache Kafka](https://kafka.apache.org/).
 
-V tomto kurzu se dozvíte, jak nastavit systém založený na Change Data Capture v Azure pomocí [azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about?WT.mc_id=devto-blog-abhishgu) (pro Kafka), [Azure DB pro PostgreSQL](../postgresql/overview.md) a Debezium. Použije [konektor Debezium PostgreSQL](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) k streamování úprav databáze z PostgreSQL na Kafka témata v Azure Event Hubs
+> [!WARNING]
+> Použití architektury Apache Kafka Connect a také Debezium platforma a její konektory **nemají nárok na podporu produktů prostřednictvím Microsoft Azure**.
+>
+> Apache Kafka Connect předpokládá, že se má jeho dynamická konfigurace uchovávat v kompaktních tématech s jiným neomezeným uchováváním. Azure Event Hubs [neimplementuje komprimaci jako funkci zprostředkovatele](event-hubs-federation-overview.md#log-projections) a vždycky ukládá limit uchovávání dat na zachované události, od principu, kdy je Azure Event Hubs modul pro streamování událostí v reálném čase, a ne Dlouhodobá data nebo úložiště konfigurace.
+>
+> I když Apache Kafka projekt může být při semíchání těchto rolí pohodlnější, Azure se domnívá, že tyto informace jsou nejlépe spravované ve správné databázi nebo úložišti konfigurace.
+>
+> Mnoho scénářů Apache Kafka připojení bude funkční, ale tyto koncepční rozdíly mezi modely uchovávání Apache Kafka a Azure Event Hubs mohou způsobit, že některé konfigurace nebudou fungovat podle očekávání. 
+
+V tomto kurzu se dozvíte, jak nastavit systém založený na Change Data Capture v Azure pomocí [azure Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (pro Kafka), [Azure DB pro PostgreSQL](../postgresql/overview.md) a Debezium. Použije [konektor Debezium PostgreSQL](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) k streamování úprav databáze z PostgreSQL na Kafka témata v Azure Event Hubs
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 V tomto kurzu provedete následující kroky:
 
@@ -51,7 +63,7 @@ Tato část se zabývá následujícími tématy:
 ### <a name="download-and-setup-debezium-connector"></a>Stažení a nastavení konektoru Debezium
 Pokud chcete tento konektor stáhnout a nastavit, postupujte prosím podle pokynů v [dokumentaci k Debezium](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-deploying-a-connector) .
 
-- Stáhněte si archiv modulu plug-in konektoru. Například pro stažení verze `1.2.0` konektoru použijte tento odkaz-https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
+- Stáhněte si archiv modulu plug-in konektoru. Například pro stažení verze `1.2.0` konektoru použijte tento odkaz- https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
 - Extrahujte soubory JAR a zkopírujte je do [modulu plug-in Kafka Connect. cesta](https://kafka.apache.org/documentation/#connectconfigs).
 
 
@@ -99,6 +111,10 @@ consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModul
 plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka release
 ```
 
+> [!IMPORTANT]
+> Nahraďte `{YOUR.EVENTHUBS.CONNECTION.STRING}` připojovacím řetězcem pro váš Event Hubs obor názvů. Pokyny k získání připojovacího řetězce najdete v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md). Tady je příklad konfigurace: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
+
 ### <a name="run-kafka-connect"></a>Spuštění připojení Kafka
 V tomto kroku se místně spustí pracovní proces připojení Kafka v distribuovaném režimu a k zachování stavu clusteru s použije služba Event Hubs.
 
@@ -133,7 +149,7 @@ Vytvořte konfigurační soubor ( `pg-source-connector.json` ) pro PostgreSQL so
 ```
 
 > [!TIP]
-> `database.server.name`atribut je logický název, který identifikuje a poskytuje obor názvů pro konkrétní PostgreSQL databázový server nebo cluster, který je monitorovaný. Podrobné informace najdete v [dokumentaci k Debezium](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) .
+> `database.server.name` atribut je logický název, který identifikuje a poskytuje obor názvů pro konkrétní PostgreSQL databázový server nebo cluster, který je monitorovaný. Podrobné informace najdete v [dokumentaci k Debezium](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) .
 
 K vytvoření instance konektoru použijte koncový bod Kafka Connect REST API:
 

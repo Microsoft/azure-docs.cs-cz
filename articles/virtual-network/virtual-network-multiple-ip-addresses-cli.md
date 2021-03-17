@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: 8f3cdad8638f8a1f99942d03f3878d0626c3bdbf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b5e8f28be9960a2bb4e1406a293ab5e03962681
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281238"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680565"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Přiřazení více IP adres k virtuálním počítačům pomocí Azure CLI
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Tento článek vysvětluje, jak pomocí rozhraní příkazového řádku Azure vytvořit virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager. K prostředkům vytvořeným prostřednictvím modelu nasazení Classic nelze přiřadit více IP adres. Další informace o modelech nasazení Azure najdete v článku [Principy modelů nasazení](../resource-manager-deployment-model.md) .
+Tento článek vysvětluje, jak pomocí rozhraní příkazového řádku Azure vytvořit virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager. K prostředkům vytvořeným prostřednictvím modelu nasazení Classic nelze přiřadit více IP adres. Další informace o modelech nasazení Azure najdete v článku [Principy modelů nasazení](../azure-resource-manager/management/deployment-models.md) .
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -38,7 +38,7 @@ Následující postup vysvětluje, jak vytvořit ukázkový virtuální počíta
 3. Z příkazového prostředí se přihlaste pomocí příkazu `az login` a vyberte předplatné, které používáte.
 4. Vytvořte virtuální počítač spuštěním skriptu, který následuje na počítači se systémem Linux nebo Mac. Skript vytvoří skupinu prostředků, jednu virtuální síť (VNet), jednu síťovou kartu se třemi konfiguracemi IP adres a virtuální počítač se dvěma síťovými rozhraními, které jsou k němu připojené. Síťové rozhraní, veřejná IP adresa, virtuální síť a prostředky virtuálních počítačů musí existovat ve stejném umístění a předplatném. I když prostředky nemusí všechny existovat ve stejné skupině prostředků, v následujících skriptech.
 
-```bash
+```azurecli
     
 #!/bin/sh
     

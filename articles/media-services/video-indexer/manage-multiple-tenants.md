@@ -14,25 +14,25 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76990500"
 ---
 # <a name="manage-multiple-tenants"></a>Správa několika klientů
 
-Tento článek popisuje různé možnosti správy více tenantů pomocí Video Indexer. Vyberte metodu, která je nejlépe vhodná pro váš scénář:
+Tento článek popisuje různé možnosti správy více tenantů pomocí Video Indexer. Vyberte si metodu, která je pro váš scénář nejvhodnější:
 
-* Video Indexer účet na tenanta
-* Jeden Video Indexer účet pro všechny klienty
-* Předplatné Azure na tenanta
+* Jeden účet Video Indexeru na tenanta
+* Jeden účet Video Indexeru pro všechny tenanty
+* Jedno předplatné Azure na tenanta
 
-## <a name="video-indexer-account-per-tenant"></a>Video Indexer účet na tenanta
+## <a name="video-indexer-account-per-tenant"></a>Jeden účet Video Indexeru na tenanta
 
 Při použití této architektury se pro každého tenanta vytvoří účet Video Indexer. Klienti mají úplnou izolaci v trvalé a výpočetní vrstvě.  
 
-![Video Indexer účet na tenanta](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
+![Jeden účet Video Indexeru na tenanta](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
 ### <a name="considerations"></a>Důležité informace
 
@@ -66,11 +66,11 @@ Při [nahrávání videí](https://api-portal.videoindexer.ai/docs/services/oper
 > [!TIP]
 > Pomocí atributu [priority](upload-index-videos.md) můžete určit prioritu úloh klientů.
 
-## <a name="azure-subscription-per-tenant"></a>Předplatné Azure na tenanta 
+## <a name="azure-subscription-per-tenant"></a>Jedno předplatné Azure na tenanta 
 
 Když použijete tuto architekturu, bude mít každý tenant vlastní předplatné Azure. Pro každého uživatele vytvoříte nový účet Video Indexer v rámci předplatného tenanta.
 
-![Předplatné Azure na tenanta](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
+![Jedno předplatné Azure na tenanta](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
 ### <a name="considerations"></a>Důležité informace
 

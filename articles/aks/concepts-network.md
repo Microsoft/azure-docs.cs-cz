@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88243900"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
@@ -19,7 +19,7 @@ V tomto článku se seznámíte se základními koncepcemi, které poskytují s�
 
 - [Služby](#services)
 - [Virtuální sítě Azure](#azure-virtual-networks)
-- [Řadiče příchozího přenosu dat](#ingress-controllers)
+- [Kontrolery příchozích dat](#ingress-controllers)
 - [Zásady sítě](#network-policies)
 
 ## <a name="kubernetes-basics"></a>Základy Kubernetes
@@ -121,7 +121,7 @@ I když jsou podporované možnosti, jako jsou koncové body služby nebo udr, k
 * Pokud ručně vytvoříte prostředky virtuální sítě pro cluster AKS, budete podporováni při konfiguraci vlastních koncových bodů udr nebo služby.
 * Pokud platforma Azure automaticky vytvoří prostředky virtuální sítě pro cluster AKS, není podporováno ruční změna těchto prostředků spravovaných AKS ke konfiguraci vlastních koncových bodů udr nebo služby.
 
-## <a name="ingress-controllers"></a>Řadiče příchozího přenosu dat
+## <a name="ingress-controllers"></a>Kontrolery příchozích dat
 
 Když vytvoříte službu typu Vyrovnávání zatížení, vytvoří se základní prostředek nástroje pro vyrovnávání zatížení Azure. Nástroj pro vyrovnávání zatížení je nakonfigurovaný k distribuci provozu do lusků ve vaší službě na daném portu. Nástroj pro vyrovnávání zatížení funguje pouze ve vrstvě 4 – služba nezohledňuje skutečné aplikace a nemůže dělat žádné další informace o směrování.
 

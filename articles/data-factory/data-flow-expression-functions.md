@@ -3,18 +3,16 @@ title: Funkce výrazu v toku dat mapování
 description: Přečtěte si o funkcích výrazů v mapování toku dat.
 author: kromerm
 ms.author: makromer
-manager: anandsub
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/15/2019
-ms.openlocfilehash: b48fc6ad448b829bb399c151d3f1507c804ad471
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 03/10/2021
+ms.openlocfilehash: 0e60ac6da55c11d45e8b691b4883b0f5f93a2498
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605099"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563925"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Výrazy transformace dat v toku mapování dat
 
@@ -64,14 +62,6 @@ Logický operátor AND Stejné jako &&.
 * ``and(true, false) -> false``  
 * ``true && false -> false``  
 ___
-### <code>array</code>
-<code><b>array([<i>&lt;value1&gt;</i> : any], ...) => array</b></code><br/><br/>
-Vytvoří pole položek. Všechny položky by měly být stejného typu. Nejsou-li zadány žádné položky, je výchozím polem pole prázdné řetězec. Stejné jako operátor vytvoření [].  
-* ``array('Seattle', 'Washington')``
-* ``['Seattle', 'Washington']``
-* ``['Seattle', 'Washington'][1]``
-* ``'Washington'``
-___
 ### <code>asin</code>
 <code><b>asin(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Vypočítá inverzní hodnotu sinus.  
@@ -87,37 +77,47 @@ ___
 Vrátí úhel v radiánech mezi kladnou osou x rovinou a bodem daným souřadnicemi.  
 * ``atan2(0, 0) -> 0.0``  
 ___
-### <code>byName</code>
-<code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Vybere hodnotu sloupce podle názvu v datovém proudu. Jako druhý argument můžete předat volitelný název datového proudu. Pokud existuje více shod, je vrácena první shoda. Pokud žádná shoda není, vrátí hodnotu NULL. Vrácená hodnota musí být typu převedený jednou z funkcí pro převod typu (TO_DATE, TO_STRING...).  Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
-* ``toString(byName('parent'))``  
-* ``toLong(byName('income'))``  
-* ``toBoolean(byName('foster'))``  
-* ``toLong(byName($debtCol))``  
-* ``toString(byName('Bogus Column'))``  
-* ``toString(byName('Bogus Column', 'DeriveStream'))``  
+### <code>between</code>
+<code><b>between(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : any) => boolean</b></code><br/><br/>
+Kontroluje, zda je první hodnota mezi dvěma dalšími hodnotami (včetně). Hodnoty čísel, řetězců a hodnot DateTime se dají porovnat. * ``between(10, 5, 24)``
+* ``true``
+* ``between(currentDate(), currentDate() + 10, currentDate() + 20)``
+* ``false``
 ___
-### <code>byNames</code>
-<code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Vyberte pole sloupců podle názvu v datovém proudu. Jako druhý argument můžete předat volitelný název datového proudu. Pokud existuje více shod, je vrácena první shoda. Pokud pro sloupec neexistují žádné shody, celý výstup je hodnota NULL. Vrácená hodnota vyžaduje funkce pro převod typu (do: do, toString,...).  Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.
-* ``toString(byNames(['parent', 'child']))``
-* ``byNames(['parent']) ? string``
-* ``toLong(byNames(['income']))``
-* ``byNames(['income']) ? long``
-* ``toBoolean(byNames(['foster']))``
-* ``toLong(byNames($debtCols))``
-* ``toString(byNames(['a Column']))``
-* ``toString(byNames(['a Column'], 'DeriveStream'))``
-* ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
+### <code>bitwiseAnd</code>
+<code><b>bitwiseAnd(<i>&lt;value1&gt;</i> : integral, <i>&lt;value2&gt;</i> : integral) => integral</b></code><br/><br/>
+Bitový operátor and mezi celočíselnými typy. Stejné jako operátor & * ``bitwiseAnd(0xf4, 0xef)``
+* ``0xe4``
+* ``(0xf4 & 0xef)``
+* ``0xe4``
 ___
-### <code>byPosition</code>
-<code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
-Vybere hodnotu sloupce podle relativní pozice (na základě 1) v datovém proudu. Pokud je pozice mimo rozsah, vrátí hodnotu NULL. Vrácená hodnota musí být typu převedený jednou z funkcí pro převod typu (TO_DATE, TO_STRING...). Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
-* ``toString(byPosition(1))``  
-* ``toDecimal(byPosition(2), 10, 2)``  
-* ``toBoolean(byName(4))``  
-* ``toString(byName($colName))``  
-* ``toString(byPosition(1234))``  
+### <code>bitwiseOr</code>
+<code><b>bitwiseOr(<i>&lt;value1&gt;</i> : integral, <i>&lt;value2&gt;</i> : integral) => integral</b></code><br/><br/>
+Bitový operátor OR mezi celočíselnými typy. Stejné jako | podnikatel * ``bitwiseOr(0xf4, 0xef)``
+* ``0xff``
+* ``(0xf4 | 0xef)``
+* ``0xff``
+___
+### <code>bitwiseXor</code>
+<code><b>bitwiseXor(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
+Bitový operátor OR mezi celočíselnými typy. Stejné jako | podnikatel * ``bitwiseXor(0xf4, 0xef)``
+* ``0x1b``
+* ``(0xf4 ^ 0xef)``
+* ``0x1b``
+* ``(true ^ false)``
+* ``true``
+* ``(true ^ true)``
+* ``false``
+___
+### <code>blake2b</code>
+<code><b>blake2b(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => string</b></code><br/><br/>
+Vypočítá Blake2 výtah sady sloupců s proměnlivými primitivními datovými typy s délkou bitu, který může být pouze násobkem 8 mezi 8 & 512. Dá se použít k výpočtu otisku prstu pro řádek. * ``blake2b(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))``
+* ``'c9521a5080d8da30dffb430c50ce253c345cc4c4effc315dab2162dac974711d'``
+___
+### <code>blake2bBinary</code>
+<code><b>blake2bBinary(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => binary</b></code><br/><br/>
+Vypočítá Blake2 výtah sady sloupců s proměnlivými primitivními datovými typy s délkou bitu, který může být pouze násobkem 8 mezi 8 & 512. Dá se použít k výpočtu otisku prstu pro řádek. * ``blake2bBinary(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))``
+* ``unHex('c9521a5080d8da30dffb430c50ce253c345cc4c4effc315dab2162dac974711d')``
 ___
 ### <code>case</code>
 <code><b>case(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, <i>&lt;false_expression&gt;</i> : any, ...) => any</b></code><br/><br/>
@@ -152,14 +152,13 @@ Shromáždí všechny hodnoty výrazu v agregované skupině do pole. Struktury 
 ___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
-Načte všechny výstupní sloupce pro datový proud. Jako druhý argument můžete předat volitelný název datového proudu.  
+Získá názvy všech výstupních sloupců pro datový proud. Jako druhý argument můžete předat volitelný název datového proudu.  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
-
 ___
 ### <code>columns</code>
 <code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Načte všechny výstupní sloupce pro datový proud. Jako druhý argument můžete předat volitelný název datového proudu.   
+Získá hodnoty všech výstupních sloupců pro datový proud. Jako druhý argument můžete předat volitelný název datového proudu.   
 * ``columns()``
 * ``columns('DeriveStream')``
 ___
@@ -206,7 +205,7 @@ Vypočítá hodnotu hash CRC32 sady sloupců různých primitivních DataTypes d
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-Získá aktuální datum spuštění této úlohy. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. Pro dostupné formáty se podívejte na SimpleDateFormat Java. [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). 
+Získá aktuální datum spuštění této úlohy. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). 
 * ``currentDate() == toDate('2250-12-31') -> false``  
 * ``currentDate('PST')  == toDate('2250-12-31') -> false``  
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``  
@@ -218,7 +217,7 @@ Získá aktuální časové razítko, kdy se úloha začne spouštět s místní
 ___
 ### <code>currentUTC</code>
 <code><b>currentUTC([<i>&lt;value1&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Získá aktuální časové razítko jako UTC. Pokud chcete, aby byl aktuální čas interpretován v jiném časovém pásmu než časové pásmo clusteru, můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Ve výchozím nastavení je nastavené na aktuální časové pásmo. Pro dostupné formáty se podívejte na SimpleDateFormat Java. [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). Chcete-li převést čas UTC na jiné časové pásmo, použijte fromUTC ().  
+Získá aktuální časové razítko jako UTC. Pokud chcete, aby byl aktuální čas interpretován v jiném časovém pásmu než časové pásmo clusteru, můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Ve výchozím nastavení je nastavené na aktuální časové pásmo. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). Pro převod času UTC na jiné použití časového pásma `fromUTC()` .  
 * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``  
 * ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``  
 * ``fromUTC(currentUTC(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
@@ -250,7 +249,7 @@ Převede radiány na stupně.
 ___
 ### <code>divide</code>
 <code><b>divide(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Vydělí dvojici čísel. Stejné jako operátor/.  
+Vydělí dvojici čísel. Stejné jako `/` operátor.  
 * ``divide(20, 10) -> 2``  
 * ``20 / 10 -> 2``  
 ___
@@ -274,6 +273,10 @@ Porovnání se rovná operátoru bez ohledu na velikost písmen. Stejné jako <=
 * ``'abc'<=>'Abc' -> true``  
 * ``equalsIgnoreCase('abc', 'Abc') -> true``  
 ___
+### <code>escape</code>
+<code><b>escape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
+Řídí řetězec v závislosti na formátu. Hodnoty literálu pro přijatelný formát jsou "JSON", "XML", "ECMAScript", "HTML", "Java".
+___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
 Vypočítá faktoriál čísla.  
@@ -281,15 +284,9 @@ Vypočítá faktoriál čísla.
 ___
 ### <code>false</code>
 <code><b>false() => boolean</b></code><br/><br/>
-Vždy vrátí hodnotu false. Použijte syntaxi funkce (false ()), pokud je sloupec s názvem "false".  
+Vždy vrátí hodnotu false. Funkci použijte, `syntax(false())` Pokud je sloupec s názvem false.  
 * ``(10 + 20 > 30) -> false``  
-* ``(10 + 20 > 30) -> false()``  
-___
-### <code>filter</code>
-<code><b>filter(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => array</b></code><br/><br/>
-Filtruje prvky z pole, které nesplňuje zadaný predikát. Filtr očekává odkaz na jeden prvek ve funkci predikátu jako #item.  
-* ``filter([1, 2, 3, 4], #item > 2) -> [3, 4]``  
-* ``filter(['a', 'b', 'c', 'd'], #item == 'a' || #item == 'b') -> ['a', 'b']``  
+* ``(10 + 20 > 30) -> false()``
 ___
 ### <code>floor</code>
 <code><b>floor(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -303,9 +300,9 @@ Zakóduje daný řetězec v base64.
 ___
 ### <code>fromUTC</code>
 <code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Převede na časové razítko od času UTC. Časové pásmo můžete volitelně předat ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Pro dostupné formáty je standardně nastavená na aktuální SimpleDateFormat Java timezoneRefer. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``fromUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
+Převede na časové razítko od času UTC. Časové pásmo můžete volitelně předat ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Ve výchozím nastavení je nastavené na aktuální časové pásmo. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``fromUTC(currentTimestamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
+* ``fromUTC(currentTimestamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
 ### <code>greater</code>
 <code><b>greater(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
@@ -330,12 +327,12 @@ Vrátí nejvyšší hodnotu ze seznamu hodnot jako vstup, který přeskakuje hod
 ___
 ### <code>hasColumn</code>
 <code><b>hasColumn(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => boolean</b></code><br/><br/>
-Kontroluje hodnotu sloupce podle názvu v datovém proudu. Jako druhý argument můžete předat volitelný název datového proudu.  Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
+Kontroluje hodnotu sloupce podle názvu v datovém proudu. Jako druhý argument můžete předat volitelný název datového proudu. Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
 * ``hasColumn('parent')``  
 ___
 ### <code>hour</code>
 <code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Získá hodnotu hodiny časového razítka. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. Pro dostupné formáty se podívejte na SimpleDateFormat Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Získá hodnotu hodiny časového razítka. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``  
 * ``hour(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 12``  
 ___
@@ -466,7 +463,7 @@ Získá levenshtein vzdálenost mezi dvěma řetězci.
 ___
 ### <code>like</code>
 <code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
-Vzor je řetězec, který se bude shodovat s doslova. Výjimky jsou následující speciální symboly: _ odpovídá jakémukoli jednomu znaku ve vstupu (podobně jako. v regulárních výrazech POSIX)% odpovídá nule nebo více znakům ve vstupu (podobně jako. * v regulárních výrazech POSIX).
+Vzor je řetězec, který se bude shodovat s doslova. Výjimky jsou následující speciální symboly: _ odpovídá jakémukoli jednomu znaku ve vstupu (podobně jako. v ```posix``` regulárních výrazech)% odpovídá nule nebo více znakům ve vstupu (podobně jako. * v ```posix``` regulárních výrazech).
 Řídicí znak je ' '. Pokud řídicí znak před speciálním symbolem nebo jiným řídicím znakem, je následující znak porovnán. Řídicí znak není v žádném jiném znaku neplatný.  
 * ``like('icecream', 'ice%') -> true``  
 ___
@@ -505,17 +502,6 @@ Levá ořízne řetězec úvodních znaků. Pokud není zadán druhý parametr, 
 * ``ltrim('  dumbo  ') -> 'dumbo  '``  
 * ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``  
 ___
-### <code>map</code>
-<code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/>
-Mapuje každý prvek pole na nový prvek pomocí poskytnutého výrazu. Mapa očekává odkaz na jeden prvek ve funkci Expression jako #item.  
-* ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
-* ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
-___
-### <code>mapIndex</code>
-<code><b>mapIndex(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => any</b></code><br/><br/>
-Mapuje každý prvek pole na nový prvek pomocí poskytnutého výrazu. Mapa očekává odkaz na jeden prvek ve funkci Expression jako #item a odkaz na index elementu jako #index.  
-* ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
-___
 ### <code>md5</code>
 <code><b>md5(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
 Vypočítá výtah MD5 sady sloupců různých primitivních typů DataTypes a vrátí šestnáctkový řetězec 32 znaků. Dá se použít k výpočtu otisku prstu pro řádek.  
@@ -523,7 +509,7 @@ Vypočítá výtah MD5 sady sloupců různých primitivních typů DataTypes a v
 ___
 ### <code>millisecond</code>
 <code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Získá hodnotu milisekundy pro datum. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. Pro dostupné formáty se podívejte na SimpleDateFormat Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Získá hodnotu milisekundy pro datum. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
 ___
 ### <code>milliseconds</code>
@@ -533,7 +519,7 @@ Doba v milisekundách pro počet milisekund
 ___
 ### <code>minus</code>
 <code><b>minus(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Odečte čísla. Odečte se od počtu dní od data. Odečíst dobu trvání z časového razítka. Ododečte dvě časová razítka k získání rozdílů v milisekundách. Stejné jako operátor--.  
+Odečte čísla. Odečíst počet dní od data. Odečíst dobu trvání z časového razítka. Ododečte dvě časová razítka k získání rozdílů v milisekundách. Stejné jako operátor--.  
 * ``minus(20, 10) -> 10``  
 * ``20 - 10 -> 10``  
 * ``minus(toDate('2012-12-15'), 3) -> toDate('2012-12-12')``  
@@ -543,7 +529,7 @@ Odečte čísla. Odečte se od počtu dní od data. Odečíst dobu trvání z č
 ___
 ### <code>minute</code>
 <code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Získá hodnotu minuty časového razítka. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. Pro dostupné formáty se podívejte na SimpleDateFormat Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Získá hodnotu minuty časového razítka. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``  
 * ``minute(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 58``  
 ___
@@ -565,7 +551,7 @@ Získá hodnotu měsíce pro datum nebo časové razítko.
 ___
 ### <code>monthsBetween</code>
 <code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/>
-Vrátí počet měsíců mezi dvěma kalendářními daty. Výpočet můžete zaokrouhlit. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. Pro dostupné formáty se podívejte na SimpleDateFormat Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Vrátí počet měsíců mezi dvěma kalendářními daty. Výpočet můžete zaokrouhlit. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``  
 ___
 ### <code>multiply</code>
@@ -609,7 +595,7 @@ Kontroluje, zda hodnota není NULL.
 ___
 ### <code>null</code>
 <code><b>null() => null</b></code><br/><br/>
-Vrací hodnotu NULL. Použijte syntaxi funkce (null ()), pokud je sloupec s názvem null. Výsledkem jakékoli operace, která používá, je hodnota NULL.  
+Vrací hodnotu NULL. Funkci použijte, `syntax(null())` Pokud je sloupec s názvem null. Výsledkem jakékoli operace, která používá, je hodnota NULL.  
 * ``isNull('dumbo' + null) -> true``  
 * ``isNull(10 * null) -> true``  
 * ``isNull('') -> false``  
@@ -637,10 +623,9 @@ ___
 Umocní jedno číslo na jinou mocninu.  
 * ``power(10, 2) -> 100``  
 ___
-### <code>reduce</code>
-<code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/>
-Shromáždí prvky v poli. Omezení očekává odkaz na akumulátor a jeden element v prvním výrazu funkce jako #acc a #item a očekává výslednou hodnotu jako #result pro použití ve druhé funkci výrazu.  
-* ``toString(reduce(['1', '2', '3', '4'], '0', #acc + #item, #result)) -> '01234'``  
+### <code>random</code>
+<code><b>random(<i>&lt;value1&gt;</i> : integral) => long</b></code><br/><br/>
+Vrátí náhodné číslo v rámci oddílu s nepovinným osivem. Počáteční hodnota musí být pevná a používá se ve spojení s identifikátorem partitionId pro vytvoření náhodných hodnot. * ``random(1) == 1 -> false``
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
@@ -694,7 +679,7 @@ Zkontroluje, zda řetězec odpovídá danému vzoru regulárního výrazu.
 ___
 ### <code>round</code>
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-Zaokrouhlí číslo z daného volitelného měřítka a volitelného režimu zaokrouhlení. Pokud je měřítko vynecháno, je nastavené na hodnotu 0.  Pokud je tento režim vynechán, je nastaven na hodnotu ROUND_HALF_UP (5). Mezi hodnoty zaokrouhlení patří 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6 – ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY.  
+Zaokrouhlí číslo z daného volitelného měřítka a volitelného režimu zaokrouhlení. Pokud je měřítko vynecháno, je nastavené na hodnotu 0. Pokud je tento režim vynechán, je nastaven na hodnotu ROUND_HALF_UP (5). Mezi hodnoty zaokrouhlení patří 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6 – ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY.  
 * ``round(100.123) -> 100.0``  
 * ``round(2.5, 0) -> 3.0``  
 * ``round(5.3999999999999995, 2, 7) -> 5.40``  
@@ -708,13 +693,13 @@ Doplní řetězec doplněním zadaného odsazení, dokud nemá určitou délku. 
 ___
 ### <code>rtrim</code>RTrim</code>
 <code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-Pravá ořízne řetězec úvodních znaků. Pokud není zadán druhý parametr, ořízne prázdné znaky. Jinak ořízne libovolný znak určený ve druhém parametru.  
+Pravá ořízne řetězec koncových znaků. Pokud není zadán druhý parametr, ořízne prázdné znaky. Jinak ořízne libovolný znak určený ve druhém parametru.  
 * ``rtrim('  dumbo  ') -> '  dumbo'``  
 * ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``  
 ___
 ### <code>second</code>
 <code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Získá druhou hodnotu data. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. Pro dostupné formáty se podívejte na SimpleDateFormat Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+Získá druhou hodnotu data. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
 * ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``  
 ___
 ### <code>seconds</code>
@@ -742,25 +727,9 @@ ___
 Vypočítá hodnotu hyperbolický sinus.  
 * ``sinh(0) -> 0.0``  
 ___
-### <code>slice</code>
-<code><b>slice(<i>&lt;array to slice&gt;</i> : array, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of items&gt;</i> : integral]) => array</b></code><br/><br/>
-Extrahuje podmnožinu pole z pozice. Pozice je na 1. Pokud je délka vynechána, je nastavena na konec řetězce.  
-* ``slice([10, 20, 30, 40], 1, 2) -> [10, 20]``  
-* ``slice([10, 20, 30, 40], 2) -> [20, 30, 40]``  
-* ``slice([10, 20, 30, 40], 2)[1] -> 20``  
-* ``isNull(slice([10, 20, 30, 40], 2)[0]) -> true``  
-* ``isNull(slice([10, 20, 30, 40], 2)[20]) -> true``  
-* ``slice(['a', 'b', 'c', 'd'], 8) -> []``  
-___
-### <code>sort</code>
-<code><b>sort(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => array</b></code><br/><br/>
-Seřadí pole pomocí zadané funkce predikátu. Řazení očekává odkaz na dva po sobě jdoucí prvky ve funkci Expression jako #item1 a #item2.  
-* ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
-* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
-___
 ### <code>soundex</code>
 <code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Získá kód SOUNDEX pro řetězec.  
+Získá ```soundex``` kód pro řetězec.  
 * ``soundex('genius') -> 'G520'``  
 ___
 ### <code>split</code>
@@ -786,7 +755,7 @@ Kontroluje, zda řetězec začíná zadaným řetězcem.
 ___
 ### <code>subDays</code>
 <code><b>subDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to subtract&gt;</i> : integral) => datetime</b></code><br/><br/>
-Odečíst měsíce od data nebo časového razítka. Stejné jako operátor-operator pro datum.  
+Odečíst dny od data nebo časového razítka. Stejné jako operátor-operator pro datum.  
 * ``subDays(toDate('2016-08-08'), 1) -> toDate('2016-08-07')``  
 ___
 ### <code>subMonths</code>
@@ -812,99 +781,6 @@ ___
 Vypočítá hodnotu hyperbolický tangens.  
 * ``tanh(0) -> 0.0``  
 ___
-### <code>toBase64</code>
-<code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Zakóduje daný řetězec v base64.  
-* ``toBase64('bojjus') -> 'Ym9qanVz'``  
-___
-### <code>toBinary</code>
-<code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></code><br/><br/>
-Převede jakékoli číslo, datum/časové razítko nebo řetězec na binární reprezentaci.  
-* ``toBinary(3) -> [0x11]``  
-___
-### <code>toBoolean</code>
-<code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></code><br/><br/>
-Převede hodnotu (t ', ' true ', ' y ', ' yes ', ' 1 ') na true a (' f ', ' false ', ' n ', ' ne ', ' 0 ') na hodnotu false a hodnotu NULL pro jakoukoliv jinou hodnotu.  
-* ``toBoolean('true') -> true``  
-* ``toBoolean('n') -> false``  
-* ``isNull(toBoolean('truthy')) -> true``  
-___
-### <code>toDate</code>
-<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/>
-Převede řetězec vstupního data na datum pomocí volitelného formátu data a času. Pro dostupné formáty se podívejte na SimpleDateFormat Java. Pokud je formát vstupního data vynechán, výchozí formát je rrrr-[M] M-[d] d. Přijatelné formáty jsou: [rrrr, rrrr-[M] M, rrrr-[M] M-[d] d, rrrr-[M] M-[d] dT *].  
-* ``toDate('2012-8-18') -> toDate('2012-08-18')``  
-* ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``  
-___
-### <code>toDecimal</code>
-<code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/>
-Převede libovolný číselný řetězec nebo řetězec na desítkovou hodnotu. Pokud není Zadaná přesnost a škálování, je nastavená na (10, 2). Pro převod lze použít volitelný formát desítkového čísla Java. Volitelný formát národního prostředí ve formě jazyka BCP47, jako je en-US, de, zh-CN.  
-* ``toDecimal(123.45) -> 123.45``  
-* ``toDecimal('123.45', 8, 4) -> 123.4500``  
-* ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``  
-* ``toDecimal('Ç123,45', 10, 2, 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toDouble</code>
-<code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></code><br/><br/>
-Převede libovolný číselný řetězec nebo řetězec na hodnotu Double. Pro převod lze použít volitelný formát desítkového čísla Java. Volitelný formát národního prostředí ve formě jazyka BCP47, jako je en-US, de, zh-CN.  
-* ``toDouble(123.45) -> 123.45``  
-* ``toDouble('123.45') -> 123.45``  
-* ``toDouble('$123.45', '$###.00') -> 123.45``  
-* ``toDouble('Ç123,45', 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toFloat</code>
-<code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></code><br/><br/>
-Převede libovolný číselný řetězec nebo řetězec na hodnotu float. Pro převod lze použít volitelný formát desítkového čísla Java. Zkrátí všechna dvojitá přesnost.  
-* ``toFloat(123.45) -> 123.45f``  
-* ``toFloat('123.45') -> 123.45f``  
-* ``toFloat('$123.45', '$###.00') -> 123.45f``  
-___
-### <code>toInteger</code>
-<code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></code><br/><br/>
-Převede libovolný číselný řetězec nebo řetězec na celočíselnou hodnotu. Pro převod lze použít volitelný formát desítkového čísla Java. Zkrátí všechna dlouhá, float, Double.  
-* ``toInteger(123) -> 123``  
-* ``toInteger('123') -> 123``  
-* ``toInteger('$123', '$###') -> 123``  
-___
-### <code>toLong</code>
-<code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></code><br/><br/>
-Převede libovolný číselný řetězec nebo řetězec na dlouhou hodnotu. Pro převod lze použít volitelný formát desítkového čísla Java. Zkrátí libovolný float, Double.  
-* ``toLong(123) -> 123``  
-* ``toLong('123') -> 123``  
-* ``toLong('$123', '$###') -> 123``  
-___
-### <code>toShort</code>
-<code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></code><br/><br/>
-Převede libovolný číselný řetězec nebo řetězec na krátkou hodnotu. Pro převod lze použít volitelný formát desítkového čísla Java. Zkrátí celé číslo, Long, float, Double.  
-* ``toShort(123) -> 123``  
-* ``toShort('123') -> 123``  
-* ``toShort('$123', '$###') -> 123``  
-___
-### <code>toString</code>
-<code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></code><br/><br/>
-Převede primitivní datový typ na řetězec. Pro čísla a datum, kdy lze zadat formát. Je-li tento parametr zadán, je vybrána výchozí hodnota systému. Pro čísla se používá desítkový formát Java. Všechny možné formáty data najdete v Java SimpleDateFormat. výchozí formát je RRRR-MM-DD.  
-* ``toString(10) -> '10'``  
-* ``toString('engineer') -> 'engineer'``  
-* ``toString(123456.789, '##,###.##') -> '123,456.79'``  
-* ``toString(123.78, '000000.000') -> '000123.780'``  
-* ``toString(12345, '##0.#####E0') -> '12.345E3'``  
-* ``toString(toDate('2018-12-31')) -> '2018-12-31'``  
-* ``isNull(toString(toDate('2018-12-31', 'MM/dd/yy'))) -> true``  
-* ``toString(4 == 20) -> 'false'``  
-___
-### <code>toTimestamp</code>
-<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Převede řetězec na časové razítko s ohledem na volitelný formát časového razítka. Všechny možné formáty najdete v Java SimpleDateFormat. Pokud je časové razítko vynecháno ve výchozím vzoru. rrrr-[M] M-[d] d hh: mm: ss [. f...] se používá. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Časové razítko podporuje přesnost až milisekund s hodnotou 999Refer Java SimpleDateFormat pro dostupné formáty. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
-___
-### <code>toUTC</code>
-<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Převede časové razítko na UTC. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Pro dostupné formáty je standardně nastavená na aktuální SimpleDateFormat Java timezoneRefer. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
-___
 ### <code>translate</code>
 <code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
 Nahraďte jednu sadu znaků jinou sadou znaků v řetězci. Znaky mají 1 – 1 nahrazení.  
@@ -919,7 +795,7 @@ Ořízne řetězec úvodních a koncových znaků. Pokud není zadán druhý par
 ___
 ### <code>true</code>
 <code><b>true() => boolean</b></code><br/><br/>
-Vždy vrátí hodnotu true. Použijte syntaxi funkce (true ()), pokud je sloupec s názvem true.  
+Vždy vrátí hodnotu true. Funkci použijte, `syntax(true())` Pokud je sloupec s názvem "true".  
 * ``(10 + 20 == 30) -> true``  
 * ``(10 + 20 == 30) -> true()``  
 ___
@@ -928,6 +804,12 @@ ___
 Odpovídá typu sloupce. Dá se použít jenom ve výrazech vzoru. číslo odpovídá krátkému, celému číslu, dlouhému, dvojitému, floatu nebo desetinnému číslu, které odpovídá krátkému, celému číslu, dlouhému a zlomku odpovídá typu datum nebo časové razítko.  
 * ``typeMatch(type, 'number')``  
 * ``typeMatch('date', 'datetime')``  
+___
+### <code>unescape</code>
+<code><b>unescape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
+Odřídí řetězec v závislosti na formátu. Hodnoty literálu pro přijatelný formát jsou "JSON", "XML", "ECMAScript", "HTML", "Java".
+* ```unescape('{\\\\\"value\\\\\": 10}', 'json')```
+* ```'{\\\"value\\\": 10}'```
 ___
 ### <code>upper</code>
 <code><b>upper(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
@@ -960,7 +842,9 @@ ___
 <code><b>year(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 Získá hodnotu roku pro datum.  
 * ``year(toDate('2012-8-8')) -> 2012``  
-## Agregační funkce: následující funkce jsou k dispozici pouze v agregaci, Pivot, UNPIVOT a oknech transformace.
+
+## <a name="aggregate-functions"></a>Agregační funkce
+Následující funkce jsou k dispozici pouze v transformacích agregace, Pivot, UNPIVOT a Window.
 ___
 ### <code>avg</code>
 <code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -1153,7 +1037,420 @@ ___
 <code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 Na základě kritérií získá neposunutou odchylku sloupce.  
 * ``varianceSampleIf(region == 'West', sales)``  
-## Funkce okna: následující funkce jsou k dispozici pouze v transformacích okna.
+
+## <a name="array-functions"></a>Funkce pro práci s poli
+Funkce pole provádí transformace na datových strukturách, které jsou pole. Mezi ně patří speciální klíčová slova k adresování prvků a indexů pole:
+
+* ```#acc``` představuje hodnotu, kterou chcete zahrnout do jednoho výstupu při omezení pole.
+* ```#index``` představuje aktuální index pole spolu s čísly indexu pole. ```#index2, #index3 ...```
+* ```#item``` představuje aktuální hodnotu prvku v poli.
+
+### <code>array</code>
+<code><b>array([<i>&lt;value1&gt;</i> : any], ...) => array</b></code><br/><br/>
+Vytvoří pole položek. Všechny položky by měly být stejného typu. Nejsou-li zadány žádné položky, je výchozím polem pole prázdné řetězec. Stejné jako operátor vytvoření [].  
+* ``array('Seattle', 'Washington')``
+* ``['Seattle', 'Washington']``
+* ``['Seattle', 'Washington'][1]``
+* ``'Washington'``
+___
+### <code>filter</code>
+<code><b>filter(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => array</b></code><br/><br/>
+Filtruje prvky z pole, které nesplňuje zadaný predikát. Filtr očekává odkaz na jeden prvek ve funkci predikátu jako #item.  
+* ``filter([1, 2, 3, 4], #item > 2) -> [3, 4]``  
+* ``filter(['a', 'b', 'c', 'd'], #item == 'a' || #item == 'b') -> ['a', 'b']``  
+___
+### <code>find</code>
+<code><b>find(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/>
+Najde první položku z pole, které odpovídá podmínce. Převezme funkci filtru, kde můžete položku v poli adresovat jako #item. U hluboce vnořených map můžete odkazovat na nadřazené mapy pomocí notace #item_n (#item_1, #item_2...).  
+* ``find([10, 20, 30], #item > 10) -> 20``
+* ``find(['azure', 'data', 'factory'], length(#item) > 4) -> 'azure'``
+* ``find([
+      @(
+         name = 'Daniel',
+         types = [
+                   @(mood = 'jovial', behavior = 'terrific'),
+                   @(mood = 'grumpy', behavior = 'bad')
+                 ]
+        ),
+      @(
+         name = 'Mark',
+         types = [
+                   @(mood = 'happy', behavior = 'awesome'),
+                   @(mood = 'calm', behavior = 'reclusive')
+                 ]
+        )
+      ],
+      contains(#item.types, #item.mood=='happy')  /*Filter out the happy kid*/
+    )``
+* ``
+     @(
+           name = 'Mark',
+           types = [
+                     @(mood = 'happy', behavior = 'awesome'),
+                     @(mood = 'calm', behavior = 'reclusive')
+                   ]
+      )
+    ``  
+___
+### <code>map</code>
+<code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></kód><br/><br/> mapuje každý prvek pole na nový prvek pomocí poskytnutého výrazu. Mapa očekává odkaz na jeden prvek ve výrazu Function as #item.  
+* ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
+* ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
+___
+### <code>mapIf</code>
+<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></kód><br/><br/> podmíněně mapuje pole na jiné pole se stejnou nebo menší délkou. Hodnoty mohou být libovolného typu, včetně structTypes. Převezme funkci mapování, kde můžete položku v poli adresovat jako #item a aktuální index jako #index. U hluboce vnořených map můžete odkazovat na závorky t maps using the ``#item_[n](#item_1 , #index_1...)`` notation.
+*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+* ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'CAKE']``
+___
+### <code>mapIndex</code>
+<code><b>mapIndex(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => any</b></kód><br/><br/> mapuje každý prvek pole na nový prvek pomocí poskytnutého výrazu. Map očekává odkaz na jeden prvek ve funkci Expression jako #item a odkaz na element. index as #index.  
+* ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
+___
+### <code>mapLoop</code>
+<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></kód><br/><br/> smyčky, a to od 1 do délky pro vytvoření pole této délky. Převezme funkci mapování, kde můžete index v poli vyřešit jako #index. U hluboce vnořených map můžete odkazovat na nadřazené mapy pomocí #index_n (#index_1, #index_2...) notation.
+*   ``mapLoop(3, #index * 10) -> [10, 20, 30]``
+___
+### <code>reduce</code>
+<code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></kód><br/><br/> shromažďuje prvky v poli. Omezení očekává odkaz na Akumulovaná a jeden element v prvním výrazu funkce jako #acc a #item a očekává výslednou hodnotu jako #result, která se má použít ve druhém výrazu.ession function.  
+* ``toString(reduce(['1', '2', '3', '4'], '0', #acc + #item, #result)) -> '01234'``  
+___
+### <code>size</code>
+<code><b>size(<i>&lt;value1&gt;</i> : any) => integer</b></kód><br/><br/> najde velikostrray or map type  
+* ``size(['element1', 'element2']) -> 2``
+* ``size([1,2,3]) -> 3``
+___
+### <code>slice</code>
+<code><b>slice(<i>&lt;array to slice&gt;</i> : array, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of items&gt;</i> : integral]) => array</b></kód><br/><br/> extrahuje podmnožinu pole z pozice. Pozice je na 1. Pokud je délka vynechána, je nastavena na hodnotu en.d of the string.  
+* ``slice([10, 20, 30, 40], 1, 2) -> [10, 20]``  
+* ``slice([10, 20, 30, 40], 2) -> [20, 30, 40]``  
+* ``slice([10, 20, 30, 40], 2)[1] -> 20``  
+* ``isNull(slice([10, 20, 30, 40], 2)[0]) -> true``  
+* ``isNull(slice([10, 20, 30, 40], 2)[20]) -> true``  
+* ``slice(['a', 'b', 'c', 'd'], 8) -> []``  
+___
+### <code>sort</code>
+<code><b>sort(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => array</b></kód><br/><br/> seřadí pole pomocí zadané funkce predikátu. Řazení očekává odkaz na dva po sobě jdoucí elementy ve výrazu funkce Expression jako #item1 and #item2.  
+* ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
+* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``* ``
+ @(
+       name = 'Mark',
+       types = [
+                 @(mood = 'happy', behavior = 'awesome'),
+                 @(mood = 'calm', behavior = 'reclusive')
+               ]
+  )
+``  
+___
+### <code>map</code>
+<code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/>
+Maps each element of the array to a new element using the provided expression. Map expects a reference to one element in the expression function as #item.  
+* ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
+* ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
+___
+### <code>mapIf</code>
+<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></code><br/><br/>
+Conditionally maps an array to another array of same or smaller length. The values can be of any datatype including structTypes. It takes a mapping function where you can address the item in the array as #item and current index as #index. For deeply nested maps you can refer to the parent maps using the ``#item_[n](#item_1, #index_1...)`` notation.
+*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+* ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'CAKE']``
+___
+### <code>mapIndex</code>
+<code><b>mapIndex(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => any</b></code><br/><br/>
+Maps each element of the array to a new element using the provided expression. Map expects a reference to one element in the expression function as #item and a reference to the element index as #index.  
+* ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
+___
+### <code>mapLoop</code>
+<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></code><br/><br/>
+Loops through from 1 to length to create an array of that length. It takes a mapping function where you can address the index in the array as #index. For deeply nested maps you can refer to the parent maps using the #index_n(#index_1, #index_2...) notation.
+*   ``mapLoop(3, #index * 10) -> [10, 20, 30]``
+___
+### <code>reduce</code>
+<code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/>
+Accumulates elements in an array. Reduce expects a reference to an accumulator and one element in the first expression function as #acc and #item and it expects the resulting value as #result to be used in the second expression function.  
+* ``toString(reduce(['1', '2', '3', '4'], '0', #acc + #item, #result)) -> '01234'``  
+___
+### <code>size</code>
+<code><b>size(<i>&lt;value1&gt;</i> : any) => integer</b></code><br/><br/>
+Finds the size of an array or map type  
+* ``size(['element1', 'element2']) -> 2``
+* ``size([1,2,3]) -> 3``
+___
+### <code>slice</code>
+<code><b>slice(<i>&lt;array to slice&gt;</i> : array, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of items&gt;</i> : integral]) => array</b></code><br/><br/>
+Extracts a subset of an array from a position. Position is 1 based. If the length is omitted, it is defaulted to end of the string.  
+* ``slice([10, 20, 30, 40], 1, 2) -> [10, 20]``  
+* ``slice([10, 20, 30, 40], 2) -> [20, 30, 40]``  
+* ``slice([10, 20, 30, 40], 2)[1] -> 20``  
+* ``isNull(slice([10, 20, 30, 40], 2)[0]) -> true``  
+* ``isNull(slice([10, 20, 30, 40], 2)[20]) -> true``  
+* ``slice(['a', 'b', 'c', 'd'], 8) -> []``  
+___
+### <code>sort</code>
+<code><b>sort(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => array</b></code><br/><br/>
+Sorts the array using the provided predicate function. Sort expects a reference to two consecutive elements in the expression function as #item1 and #item2.  
+* ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
+* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
+
+## <a name="cached-lookup-functions"></a>Funkce vyhledávání v mezipaměti
+Následující funkce jsou k dispozici, pouze pokud používáte vyhledávání v mezipaměti, pokud jste zahrnuli jímku uložených v mezipaměti.
+___
+### <code>lookup</code>
+<code><b>lookup(key, key2, ...) => complex[]</b></code><br/><br/>
+Vyhledá první řádek z jímky uložený v mezipaměti pomocí zadaných klíčů, které odpovídají klíčům z jímky uložené v mezipaměti.
+* ``cacheSink#lookup(movieId)``  
+___
+### <code>mlookup</code>
+<code><b>mlookup(key, key2, ...) => complex[]</b></code><br/><br/>
+Vyhledá všechny odpovídající řádky z jímky uložené v mezipaměti pomocí zadaných klíčů, které odpovídají klíčům z jímky uložené v mezipaměti.
+* ``cacheSink#mlookup(movieId)``  
+___
+### <code>output</code>
+<code><b>output() => any</b></code><br/><br/>
+Vrátí první řádek výsledků jímky mezipaměti. * ``cacheSink#output()``  
+___
+### <code>outputs</code>
+<code><b>output() => any</b></code><br/><br/>
+Vrátí celou sadu výstupních řádků výsledků jímky mezipaměti. * ``cacheSink#outputs()``
+___
+
+
+## <a name="conversion-functions"></a>Převodní funkce
+
+Převodní funkce slouží k převodu dat a testování datových typů.
+
+### <code>isBoolean</code>
+<code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
+Kontroluje, zda je řetězcová hodnota logická hodnota podle pravidel ``toBoolean()``
+* ``isBoolean('true') -> true``
+* ``isBoolean('no') -> true``
+* ``isBoolean('microsoft') -> false``
+___
+### <code>isByte</code>
+<code><b>isByte(<value1> : string) => boolean</b></code><br/><br/>
+Kontroluje, zda je hodnota řetězce hodnota v bajtech, která odpovídá volitelnému formátu podle pravidel ``toByte()``
+* ``isByte('123') -> true``
+* ``isByte('chocolate') -> false``
+___
+### <code>isDate</code>
+<code><b>isDate (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Zkontroluje, zda je řetězec vstupního data kalendářní datum pomocí volitelného formátu vstupního data. Pro dostupné formáty se podívejte na SimpleDateFormat Java. Pokud je formát vstupního data vynechán, je výchozí formát ``yyyy-[M]M-[d]d`` . Přijaté formáty jsou ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]``
+* ``isDate('2012-8-18') -> true``
+* ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
+___
+### <code>isShort</code>
+<code><b>isShort (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontroly řetězcové hodnoty jsou krátkou hodnotou podle pravidel ``toShort()``
+* ``isShort('123') -> true``
+* ``isShort('$123' -> '$###') -> true``
+* ``isShort('microsoft') -> false``
+___
+### <code>isInteger</code>
+<code><b>isInteger (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je celočíselná hodnota daného volitelného formátu podle pravidel ``toInteger()``
+* ``isInteger('123') -> true``
+* ``isInteger('$123' -> '$###') -> true``
+* ``isInteger('microsoft') -> false``
+___
+### <code>isLong</code>
+<code><b>isLong (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je dlouhodobá hodnota pro volitelný formát podle pravidel ``toLong()``
+* ``isLong('123') -> true``
+* ``isLong('$123' -> '$###') -> true``
+* ``isLong('gunchus') -> false``
+___
+### <code>isFloat</code>
+<code><b>isFloat (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je hodnota typu float, která přechází z volitelného formátu podle pravidel ``toFloat()``
+* ``isFloat('123') -> true``
+* ``isFloat('$123.45' -> '$###.00') -> true``
+* ``isFloat('icecream') -> false``
+___
+### <code>isDouble</code>
+<code><b>isDouble (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je dvojitá hodnota, která má v souladu s pravidly ``toDouble()``
+* ``isDouble('123') -> true``
+* ``isDouble('$123.45' -> '$###.00') -> true``
+* ``isDouble('icecream') -> false``
+___
+### <code>isDecimal</code>
+<code><b>isDecimal (<value1> : string) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je desítková hodnota, která má formát podle pravidel ``toDecimal()``
+* ``isDecimal('123.45') -> true``
+* ``isDecimal('12/12/2000') -> false``
+___
+### <code>isTimestamp</code>
+<code><b>isTimestamp (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontroluje, zda je řetězec vstupního data časovou známkou pomocí volitelného vstupního formátu časového razítka. Dostupné formáty najdete v SimpleDateFormat Java. Pokud je časové razítko vynecháno, použije se výchozí vzor ``yyyy-[M]M-[d]d hh:mm:ss[.f...]`` . Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Časové razítko podporuje přesnost až milisekund s hodnotou 999. informace o dostupných formátech najdete v SimpleDateFormat Java.
+* ``isTimestamp('2016-12-31 00:12:00') -> true``
+* ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
+* ``isTimestamp('2012-8222.18') -> false``
+___
+### <code>toBase64</code>
+<code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
+Zakóduje daný řetězec v base64.  
+* ``toBase64('bojjus') -> 'Ym9qanVz'``  
+___
+### <code>toBinary</code>
+<code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></code><br/><br/>
+Převede jakékoli číslo, datum/časové razítko nebo řetězec na binární reprezentaci.  
+* ``toBinary(3) -> [0x11]``  
+___
+### <code>toBoolean</code>
+<code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></code><br/><br/>
+Převede hodnotu (t ', ' true ', ' y ', ' yes ', ' 1 ') na true a (' f ', ' false ', ' n ', ' ne ', ' 0 ') na hodnotu false a hodnotu NULL pro jakoukoliv jinou hodnotu.  
+* ``toBoolean('true') -> true``  
+* ``toBoolean('n') -> false``  
+* ``isNull(toBoolean('truthy')) -> true``  
+___
+### <code>toByte</code>
+<code><b>toByte(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => byte</b></code><br/><br/>
+Převede libovolný číselný řetězec nebo řetězec na hodnotu Byte. Pro převod lze použít volitelný formát desítkového čísla Java.  
+* ``toByte(123)``
+* ``123``
+* ``toByte(0xFF)``
+* ``-1``
+* ``toByte('123')``
+* ``123``
+___
+### <code>toDate</code>
+<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/>
+Převede řetězec vstupního data na datum pomocí volitelného formátu data a času. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. Pokud je formát vstupního data vynechán, výchozí formát je rrrr-[M] M-[d] d. Přijatelné formáty jsou: [rrrr, rrrr-[M] M, rrrr-[M] M-[d] d, rrrr-[M] M-[d] dT *].  
+* ``toDate('2012-8-18') -> toDate('2012-08-18')``  
+* ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``  
+___
+### <code>toDecimal</code>
+<code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/>
+Převede libovolný číselný řetězec nebo řetězec na desítkovou hodnotu. Pokud není Zadaná přesnost a škálování, je nastavená na (10, 2). Pro převod lze použít volitelný formát desítkového čísla Java. Volitelný formát národního prostředí ve formě jazyka BCP47, jako je en-US, de, zh-CN.  
+* ``toDecimal(123.45) -> 123.45``  
+* ``toDecimal('123.45', 8, 4) -> 123.4500``  
+* ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``  
+* ``toDecimal('Ç123,45', 10, 2, 'Ç###,##', 'de') -> 123.45``  
+___
+### <code>toDouble</code>
+<code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></code><br/><br/>
+Převede libovolný číselný řetězec nebo řetězec na hodnotu Double. Pro převod lze použít volitelný formát desítkového čísla Java. Volitelný formát národního prostředí ve formě jazyka BCP47, jako je en-US, de, zh-CN.  
+* ``toDouble(123.45) -> 123.45``  
+* ``toDouble('123.45') -> 123.45``  
+* ``toDouble('$123.45', '$###.00') -> 123.45``  
+* ``toDouble('Ç123,45', 'Ç###,##', 'de') -> 123.45``  
+___
+### <code>toFloat</code>
+<code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></code><br/><br/>
+Převede libovolný číselný řetězec nebo řetězec na hodnotu float. Pro převod lze použít volitelný formát desítkového čísla Java. Zkrátí všechna dvojitá přesnost.  
+* ``toFloat(123.45) -> 123.45f``  
+* ``toFloat('123.45') -> 123.45f``  
+* ``toFloat('$123.45', '$###.00') -> 123.45f``  
+___
+### <code>toInteger</code>
+<code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></code><br/><br/>
+Převede libovolný číselný řetězec nebo řetězec na celočíselnou hodnotu. Pro převod lze použít volitelný formát desítkového čísla Java. Zkrátí všechna dlouhá, float, Double.  
+* ``toInteger(123) -> 123``  
+* ``toInteger('123') -> 123``  
+* ``toInteger('$123', '$###') -> 123``  
+___
+### <code>toLong</code>
+<code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></code><br/><br/>
+Převede libovolný číselný řetězec nebo řetězec na dlouhou hodnotu. Pro převod lze použít volitelný formát desítkového čísla Java. Zkrátí libovolný float, Double.  
+* ``toLong(123) -> 123``  
+* ``toLong('123') -> 123``  
+* ``toLong('$123', '$###') -> 123``  
+___
+### <code>toShort</code>
+<code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></code><br/><br/>
+Převede libovolný číselný řetězec nebo řetězec na krátkou hodnotu. Pro převod lze použít volitelný formát desítkového čísla Java. Zkrátí celé číslo, Long, float, Double.  
+* ``toShort(123) -> 123``  
+* ``toShort('123') -> 123``  
+* ``toShort('$123', '$###') -> 123``  
+___
+### <code>toString</code>
+<code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></code><br/><br/>
+Převede primitivní datový typ na řetězec. Pro čísla a datum, kdy lze zadat formát. Je-li tento parametr zadán, je vybrána výchozí hodnota systému. Pro čísla se používá desítkový formát Java. Všechny možné formáty data najdete v Java SimpleDateFormat. výchozí formát je RRRR-MM-DD.  
+* ``toString(10) -> '10'``  
+* ``toString('engineer') -> 'engineer'``  
+* ``toString(123456.789, '##,###.##') -> '123,456.79'``  
+* ``toString(123.78, '000000.000') -> '000123.780'``  
+* ``toString(12345, '##0.#####E0') -> '12.345E3'``  
+* ``toString(toDate('2018-12-31')) -> '2018-12-31'``  
+* ``isNull(toString(toDate('2018-12-31', 'MM/dd/yy'))) -> true``  
+* ``toString(4 == 20) -> 'false'``  
+___
+### <code>toTimestamp</code>
+<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
+Převede řetězec na časové razítko s ohledem na volitelný formát časového razítka. Pokud je časové razítko vynecháno, použije se výchozí vzor yyyy-[M] M-[d] d hh: mm: ss [. f...]. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Časové razítko podporuje přesnost až milisekund s hodnotou 999. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
+* ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
+* ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
+* ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
+___
+### <code>toUTC</code>
+<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
+Převede časové razítko na UTC. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Ve výchozím nastavení je nastavené na aktuální časové pásmo. `SimpleDateFormat`Pro dostupné formáty se podívejte na třídu Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``toUTC(currentTimestamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
+* ``toUTC(currentTimestamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
+
+## <a name="metafunctions"></a>Metafunctions
+
+Metafunctions primárně funguje na metadatech v toku dat
+
+### <code>byItem</code>
+<code><b>byItem(<i>&lt;parent column&gt;</i> : any, <i>&lt;column name&gt;</i> : string) => any</b></code><br/><br/>
+Najít podřízenou položku v rámci struktury nebo pole struktury, pokud existuje více shod, je vrácena první shoda. Pokud žádná shoda není, vrátí hodnotu NULL. Vrácená hodnota musí být typu převedený jednou z akcí převodu typu (? Datum? řetězec...).  Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů. * ``byItem( byName('customer'), 'orderItems') ? (itemName as string, itemQty as integer)``
+* ````
+* ``byItem( byItem( byName('customer'), 'orderItems'), 'itemName') ? string``
+* ````
+___
+### <code>byOrigin</code>
+<code><b>byOrigin(<i>&lt;column name&gt;</i> : string, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Vybere hodnotu sloupce podle názvu v datovém proudu zdroje. Druhý argument je název zdrojového streamu. Pokud existuje více shod, je vrácena první shoda. Pokud žádná shoda není, vrátí hodnotu NULL. Vrácená hodnota musí být typu převedený jednou z funkcí pro převod typu (TO_DATE, TO_STRING...). Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
+* ``toString(byOrigin('ancestor', 'ancestorStream'))``
+___
+### <code>byOrigins</code>
+<code><b>byOrigins(<i>&lt;column names&gt;</i> : array, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Vybere pole sloupců podle názvu v datovém proudu. Druhý argument je datový proud, ze kterého pochází. Pokud existuje více shod, je vrácena první shoda. Pokud žádná shoda není, vrátí hodnotu NULL. Vrácená hodnota musí být typu převedený jednou z funkcí pro převod typu (TO_DATE, TO_STRING...). Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.
+* ``toString(byOrigins(['ancestor1', 'ancestor2'], 'ancestorStream'))``
+___
+### <code>byName</code>
+<code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Vybere hodnotu sloupce podle názvu v datovém proudu. Jako druhý argument můžete předat volitelný název datového proudu. Pokud existuje více shod, je vrácena první shoda. Pokud žádná shoda není, vrátí hodnotu NULL. Vrácená hodnota musí být typu převedený jednou z funkcí pro převod typu (TO_DATE, TO_STRING...).  Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
+* ``toString(byName('parent'))``  
+* ``toLong(byName('income'))``  
+* ``toBoolean(byName('foster'))``  
+* ``toLong(byName($debtCol))``  
+* ``toString(byName('Bogus Column'))``  
+* ``toString(byName('Bogus Column', 'DeriveStream'))``  
+___
+### <code>byNames</code>
+<code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Vyberte pole sloupců podle názvu v datovém proudu. Jako druhý argument můžete předat volitelný název datového proudu. Pokud existuje více shod, je vrácena první shoda. Pokud pro sloupec neexistují žádné shody, celý výstup je hodnota NULL. Vrácená hodnota vyžaduje funkce pro převod typu (do: do, toString,...).  Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.
+* ``toString(byNames(['parent', 'child']))``
+* ``byNames(['parent']) ? string``
+* ``toLong(byNames(['income']))``
+* ``byNames(['income']) ? long``
+* ``toBoolean(byNames(['foster']))``
+* ``toLong(byNames($debtCols))``
+* ``toString(byNames(['a Column']))``
+* ``toString(byNames(['a Column'], 'DeriveStream'))``
+* ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
+___
+### <code>byPosition</code>
+<code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
+Vybere hodnotu sloupce podle relativní pozice (na základě 1) v datovém proudu. Pokud je pozice mimo rozsah, vrátí hodnotu NULL. Vrácená hodnota musí být typu převedený jednou z funkcí pro převod typu (TO_DATE, TO_STRING...). Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.  
+* ``toString(byPosition(1))``  
+* ``toDecimal(byPosition(2), 10, 2)``  
+* ``toBoolean(byName(4))``  
+* ``toString(byName($colName))``  
+* ``toString(byPosition(1234))``  
+___
+### <code>hex</code>
+<code><b>hex(<value1>: binary) => string</b></code><br/><br/>
+Vrátí šestnáctkovou řetězcovou reprezentaci binární hodnoty. * ``hex(toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])) -> '1fadbe'``
+___
+### <code>unhex</code>
+<code><b>unhex(<value1>: string) => binary</b></code><br/><br/>
+Unhexes binární hodnotu ze své řetězcové reprezentace. Dá se použít ve spojení s SHA2, algoritmus MD5 pro převod řetězce na binární reprezentaci. *   ``unhex('1fadbe') -> toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])``
+*   ``unhex(md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))) -> toBinary([toByte(0x4c),toByte(0xe8),toByte(0xa8),toByte(0x80),toByte(0xbd),toByte(0x62),toByte(0x1a),toByte(0x1f),toByte(0xfa),toByte(0xd0),toByte(0xbc),toByte(0xa9),toByte(0x05),toByte(0xe1),toByte(0xbc),toByte(0x5a)])``
+
+## <a name="window-functions"></a>Funkce okna
+Následující funkce jsou k dispozici pouze v transformacích okna.
 ___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
@@ -1179,7 +1476,7 @@ Získá hodnotu prvního parametru vyhodnoceného n řádků za aktuálním řá
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-Funkce NTile rozdělí řádky pro každý oddíl okna do `n` intervalů v rozsahu od 1 do nejvýše `n` . Hodnoty plechovky se budou lišit o nejvýše 1. Pokud počet řádků v oddílu není rovnoměrně rozdělen do počtu intervalů, pak jsou zbývající hodnoty distribuovány po jednotlivých kontejnerech počínaje prvním intervalem. Funkce NTile je užitečná pro výpočet tertiles, Kvartily, deciles a dalších běžných souhrnných statistik. Funkce vypočítá dvě proměnné během inicializace: velikost regulárního intervalu bude mít přidán jeden řádek navíc. Obě proměnné jsou založené na velikosti aktuálního oddílu. Během procesu výpočtu funkce udržuje sledovat aktuální číslo řádku, aktuální číslo sady a číslo řádku, na kterém se bude interval měnit (bucketThreshold). Když číslo aktuálního řádku dosáhne prahové hodnoty intervalu, hodnota intervalu se zvýší o jednu a prahová hodnota se zvýší o velikost intervalu (plus jeden další, pokud je aktuální kontejner doplněn).  
+```NTile```Funkce rozdělí řádky pro každý oddíl okna do `n` intervalů v rozsahu od 1 do nejvýše `n` . Hodnoty plechovky se budou lišit o nejvýše 1. Pokud počet řádků v oddílu není rovnoměrně rozdělen do počtu intervalů, pak jsou zbývající hodnoty distribuovány po jednotlivých kontejnerech počínaje prvním intervalem. ```NTile```Funkce je užitečná pro výpočet ```tertiles``` , Kvartily, deciles a další běžné souhrnné statistiky. Funkce vypočítá dvě proměnné během inicializace: velikost regulárního intervalu bude mít přidán jeden řádek navíc. Obě proměnné jsou založené na velikosti aktuálního oddílu. Během procesu výpočtu funkce udržuje sledovat aktuální číslo řádku, aktuální číslo sady a číslo řádku, na kterém se bude interval měnit (bucketThreshold). Když číslo aktuálního řádku dosáhne prahové hodnoty intervalu, hodnota intervalu se zvýší o jednu a prahová hodnota se zvýší o velikost intervalu (plus jeden další, pokud je aktuální kontejner doplněn).  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___

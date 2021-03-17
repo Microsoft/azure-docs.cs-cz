@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity Platform – rychlý Start pro Windows Desktop
-description: Přečtěte si, jak může aplikace Windows Desktop .NET (XAML) získat přístupový token a volat rozhraní API chráněné koncovým bodem platformy Microsoft identity.
+title: 'Rychlý Start: přihlášení uživatelů a volání Microsoft Graph ve Univerzální platforma Windows desktopové aplikaci | Azure'
+description: V tomto rychlém startu se dozvíte, jak může aplikace Windows Desktop .NET (XAML) získat přístupový token a volat rozhraní API chráněné platformou Microsoft identity.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +11,24 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 02dc2b4e86c9d0bad0c8274967aa4da77440ec01
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114553"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498757"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows
 
-V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Windows (WPF), která podporuje přihlášení osobním, pracovním a školním účtem, jak získat přístupový token a volat rozhraní Microsoft Graph API. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak se aplikace Windows Desktop .NET (WPF) může přihlašovat uživatelům a získat přístupový token pro volání rozhraní Microsoft Graph API. 
+
+Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Požadavky
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) s nainstalovanou úlohou [vývoj Univerzální platforma Windows](/windows/uwp/get-started/get-set-up)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
 > Aplikaci pro rychlý start můžete spustit dvěma způsoby:
 > * [Expresní] [Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -30,7 +36,7 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejít na nový [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -39,20 +45,21 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. V Azure Portal přejdete do okna [Registrace aplikací](https://aka.ms/MobileAppReg) pro Azure Active Directory.
-> 1. Vyberte **Nová registrace**.
->      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Win-App-calling-MsGraph`.
->      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
->      - Výběrem možnosti **Registrovat** aplikaci vytvořte.
-> 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-> 1. V části **identifikátory URI přesměrování**  |  **navrhované identifikátory URI přesměrování pro veřejné klienty (mobilní počítače)** použijte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. Vyberte **Uložit**.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace, například `Win-App-calling-MsGraph` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
+> 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
+> 1. V části **Spravovat** vyberte **ověřování**.
+> 1. Vyberte **Přidat platformu**  >  **mobilní a desktopové aplikace**.
+> 1. V části **identifikátory URI pro přesměrování** vyberte `https://login.microsoftonline.com/common/oauth2/nativeclient` a v části **vlastní identifikátory URI pro přesměrování** přidejte `ms-appx-web://microsoft.aad.brokerplugin/{client_id}` , kde `{client_id}` je ID aplikace (klienta) vaší aplikace (stejný identifikátor GUID, který se zobrazí v `msal{client_id}://auth` zaškrtávacím políčku).
+> 1. Vyberte **Konfigurovat**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat adresu URL odpovědi jako **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+> Aby ukázka kódu v tomto rychlém startu fungovala, přidejte **identifikátor URI pro přesměrování** `https://login.microsoftonline.com/common/oauth2/nativeclient` a `ms-appx-web://microsoft.aad.brokerplugin/{client_id}` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
@@ -66,7 +73,7 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Spusťte projekt pomocí sady Visual Studio 2019.
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -128,7 +135,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Kde: | Popis |
+> |Kde: | Description |
 > |---------|---------|
 > | `ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 
@@ -138,7 +145,7 @@ Knihovna MSAL používá k získání tokenů dvě metody: `AcquireTokenInteract
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Některé situace vyžadují, aby uživatelé mohli komunikovat s koncovým bodem Microsoft Identity Platform prostřednictvím místního okna a ověřit své přihlašovací údaje nebo udělit souhlas. Možné příklady:
+Některé situace vyžadují, aby uživatelé vynutili interakci s platformou Microsoft identity prostřednictvím místního okna, aby ověřili své přihlašovací údaje nebo udělili souhlas. Možné příklady:
 
 - Při prvním přihlášení uživatele k aplikaci
 - Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
@@ -150,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Kde:| Popis |
+> |Kde:| Description |
 > |---------|---------|
 > | `_scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
 
@@ -165,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Kde: | Popis |
+> |Kde: | Description |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
 > | `firstAccount` | Určuje prvního uživatele v mezipaměti (MSAL podporuje více uživatelů v jediné aplikaci). |

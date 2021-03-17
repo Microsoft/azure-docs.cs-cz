@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 07/29/2020
 ms.openlocfilehash: 359b527733ee8eebf7e1e7d12c40a0c74ec1c9bd
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87460299"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Rychlý Start: Vytvoření clusteru Service Fabric pomocí šablony ARM
@@ -28,7 +28,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ### <a name="install-service-fabric-sdk-and-powershell-modules"></a>Instalace Service Fabric SDK a modulů PowerShellu
 

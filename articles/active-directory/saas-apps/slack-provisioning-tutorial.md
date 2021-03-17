@@ -1,192 +1,192 @@
 ---
-title: 'Kurz: zřizování uživatelů pro časovou rezervu – Azure AD'
-description: Naučte se, jak nakonfigurovat Azure Active Directory pro Automatické zřizování a rušení uživatelských účtů pro časovou rezervu.
+title: 'Kurz: Zřizování uživatelů pro Slack – Azure AD'
+description: Zjistěte, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřizovala uživatelské účty ve Slacku a rušila jejich zřízení.
 services: active-directory
 author: ArvindHarinder1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 368d75ecffda49f688a7a5ce11b60693650014c6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 92c2ae13b840d7a73d86365ce88584bcafc878e8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527821"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181452"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace časové rezervy pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace automatického zřizování uživatelů ve Slacku
 
-Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste v časové rezervě a Azure AD automaticky zřídili a zrušili zřizování uživatelských účtů z Azure AD až po časovou rezervu. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md). 
+Cílem tohoto kurzu je ukázat postup zajištění automatického zřizování a rušení zřízení uživatelských účtů ve Slacku z Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Podporované funkce
 > [!div class="checklist"]
-> * Vytváření uživatelů v časové rezervě
-> * Odebrat uživatele v časové rezervě, když už nevyžadují přístup
-> * Udržování uživatelských atributů synchronizovaných mezi Azure AD a časovou rezervou
-> * Zřizování skupin a členství ve skupinách v časové rezervě
-> * Časová rezerva [jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial) (doporučeno)
+> * Vytváření uživatelů ve Slacku
+> * Odebírání uživatelů ve Slacku, když už nepotřebují přístup
+> * Zajištění synchronizace atributů uživatelů mezi Azure AD a Slackem
+> * Zřizování skupin a členství ve skupinách ve Slacku
+> * [Jednotné přihlašování](./slack-tutorial.md) ke Slacku (doporučeno)
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
-* [Tenant služby Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
-* Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce).
-* Tenant časové rezervy s [plánem plus](https://aadsyncfabric.slack.com/pricing) nebo lepším povoleným.
-* Uživatelský účet v časovém rezervě s oprávněními správce týmu.
+* [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md)
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
+* Tenanta Slacku s [plánem Plus](https://aadsyncfabric.slack.com/pricing) nebo lepším
+* Uživatelský účet ve Slacku s oprávněními správce týmu
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
-1. Přečtěte si [, jak služba zřizování funguje](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Určete, kdo bude v [oboru pro zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Určete, jaká data se mají [mapovat mezi Azure AD a časová rezerva](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+1. Seznamte se s [fungováním služby zřizování](../app-provisioning/user-provisioning.md).
+2. Zjistěte, kdo bude v [rozsahu zřizování](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+3. Zjistěte, jaká data by se [měla mapovat mezi Azure AD a Slackem](../app-provisioning/customize-application-attributes.md). 
 
-## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>Krok 2. Přidání časové rezervy z Galerie aplikací Azure AD
+## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>Krok 2. Přidání Slacku z galerie aplikací Azure AD
 
-Přidejte časovou rezervu z Galerie aplikací Azure AD a začněte spravovat zřizování s časovou rezervou. Pokud jste dříve použili časovou rezervu pro jednotné přihlašování, můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
+Přidejte Slack z galerie aplikací Azure AD, abyste mohli začít spravovat zřizování ve Slacku. Pokud jste již dříve ve Slacku nastavili jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](../manage-apps/add-application-portal.md). 
 
-## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>Krok 3. Definujte, kdo bude v oboru pro zřizování. 
+## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>Krok 3. Definování uživatelů, kteří budou v rozsahu zřizování 
 
-Služba zřizování Azure AD umožňuje obor, který se zřídí na základě přiřazení do aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se zřídí pro vaši aplikaci na základě přiřazení, můžete k přiřazení uživatelů a skupin k aplikaci použít následující [postup](../manage-apps/assign-user-or-group-access-portal.md) . Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, můžete použít filtr oboru, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+Služba zřizování Azure AD umožňuje nastavit rozsah uživatelů, kteří se zřídí, na základě přiřazení k aplikaci nebo atributů jednotlivých uživatelů nebo skupin. Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí pro vaši aplikaci, na základě přiřazení, můžete k aplikaci přiřadit uživatele a skupiny pomocí následujících [kroků](../manage-apps/assign-user-or-group-access-portal.md). Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí, pouze na základě atributů jednotlivých uživatelů nebo skupin, můžete použít filtr rozsahu, jak je popsáno [tady](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-* Při přiřazování uživatelů a skupin k časové rezervy je nutné vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu se z zřizování vylučují a v protokolech zřizování se označí jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat další role. 
+* Při přiřazování uživatelů a skupin ke Slacku musíte vybrat jinou roli než **Výchozí přístup**. Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat další role. 
 
-* Začněte malým. Než se pustíte do všech uživatelů, testujte je s malou sadou uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastavený na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+* Začněte v malém. Než se pustíte do zavádění pro všechny, proveďte testování s malou skupinou uživatelů a skupin. Pokud je rozsah zřizování nastavený na přiřazené uživatele a skupiny, můžete testování provést tak, že k aplikaci přiřadíte jednoho nebo dva uživatele nebo skupiny. Pokud je rozsah nastavený na všechny uživatele a skupiny, můžete určit [filtr rozsahu na základě atributů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>Krok 4: Konfigurace automatického zřizování uživatelů pro časovou rezervu 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>Krok 4: Konfigurace automatického zřizování uživatelů ve Slacku 
 
-V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů Azure AD s časovou rezervou a konfigurací zřizovací služby k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v časové rezervě na základě přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojením Azure AD k rozhraní API Slacku pro zřizování uživatelských účtů a konfigurací služby zřizování tak, aby ve Slacku vytvářela, aktualizovala a zakazovala přiřazené uživatelské účty na základě přiřazení uživatelů a skupin v Azure AD.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů pro časovou rezervu v Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů ve Slacku v Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte možnost **Časová rezerva**.
+2. V seznamu aplikací vyberte **Slack**.
 
-    ![Odkaz na časovou rezervu v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na Slack v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** klikněte na **autorizovat**. Tím se otevře dialogové okno autorizace časové rezervy v novém okně prohlížeče.
+5. V části **Přihlašovací údaje správce** klikněte na **Autorizovat**. Tím se v novém okně prohlížeče otevře dialogové okno pro autorizaci ve Slacku.
 
-    ![Autorizace](media/slack-provisioning-tutorial/authorization.png)
+    ![Snímek obrazovky s tlačítkem pro autorizaci přihlašovacích údajů správce](media/slack-provisioning-tutorial/authorization.png)
 
 
-6. V novém okně se přihlaste k časové rezervě pomocí účtu správce týmu. v dialogovém okně výsledné autorizace vyberte tým časové rezervy, pro který chcete povolit zřizování, a potom vyberte **autorizovat**. Až se dokončí, vraťte se do Azure Portal a dokončete konfiguraci zřizování.
+6. V novém okně se přihlaste ke Slacku pomocí svého účtu správce týmu. Ve výsledném dialogovém okně pro autorizaci vyberte tým Slacku, pro který chcete povolit zřizování, a pak vyberte **Authorize** (Autorizovat). Po dokončení se vraťte na Azure Portal a dokončete konfiguraci zřizování.
 
-    ![Dialogové okno autorizace](./media/slack-provisioning-tutorial/slackauthorize.png)
+    ![Dialogové okno pro autorizaci](./media/slack-provisioning-tutorial/slackauthorize.png)
 
-7. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci časové rezervy. Pokud se připojení nepovede, ujistěte se, že váš účet časové rezervy má oprávnění správce týmu, a zkuste znovu provést krok autorizovat.
+7. Na webu Azure Portal klikněte na **Otestovat připojení** a ujistěte se, že se Azure AD může připojit k vaší aplikaci Slack. Pokud připojení selže, ujistěte se, že váš účet Slacku má oprávnění správce týmu, a zkuste znovu provést krok autorizace.
 
-8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě** .
+8. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 
-    ![E-mail s oznámením](common/provisioning-notification-email.png)
+    ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
 9. Vyberte **Uložit**.
 
-10. V části mapování vyberte **synchronizovat Azure Active Directory uživatele s časovou rezervou**.
+10. V části Mapování vyberte **Synchronizovat uživatele Azure Active Directory do Slacku**.
 
-11. V části **mapování atributů** zkontrolujte atributy uživatele, které se budou synchronizovat ze služby Azure AD, s časovou rezervou. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů v časové rezervě pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+11. V části **Mapování atributů** zkontrolujte atributy uživatelů, které se budou synchronizovat z Azure AD do Slacku. Mějte na paměti, že atributy vybrané jako **odpovídající** vlastnosti se budou používat k porovnávání uživatelských účtů ve Slacku pro účely operací aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
    |Atribut|Typ|
    |---|---|
-   |aktivně|Logická hodnota|
+   |active|Logická hodnota|
    |externalId|Řetězec|
    |displayName|Řetězec|
-   |název. rodina|Řetězec|
-   |název. křestní jméno|Řetězec|
+   |name.familyName|Řetězec|
+   |name.givenName|Řetězec|
    |title|Řetězec|
-   |e-maily [typ EQ "Work"]. Value|Řetězec|
+   |emails[type eq "work"].value|Řetězec|
    |userName|Řetězec|
-   |Zdívek|Řetězec|
-   |adresy [Type EQ "untypeed"]. streetAddress|Řetězec|
-   |adresy [Type EQ "untypeed"].|Řetězec|
-   |adresy [Type EQ "untypeed"]. region|Řetězec|
-   |adresy [Type EQ "untyped"]. postalCode|Řetězec|
-   |adresy [Type EQ "untypeed"]. Country|Řetězec|
-   |phoneNumbers [Type EQ "mobilní"]. Value|Řetězec|
-   |phoneNumbers [typ EQ "Work"]. Value|Řetězec|
-   |role [primární EQ "true"]. Value|Řetězec|
+   |nickName|Řetězec|
+   |addresses[type eq "untyped"].streetAddress|Řetězec|
+   |addresses[type eq "untyped"].locality|Řetězec|
+   |addresses[type eq "untyped"].region|Řetězec|
+   |addresses[type eq "untyped"].postalCode|Řetězec|
+   |addresses[type eq "untyped"].country|Řetězec|
+   |phoneNumbers[type eq "mobile"].value|Řetězec|
+   |phoneNumbers[type eq "work"].value|Řetězec|
+   |roles[primary eq "True"].value|Řetězec|
    |locale|Řetězec|
-   |název. honorificPrefix|Řetězec|
-   |fotky [Type EQ "fotka"]. Value|Řetězec|
+   |name.honorificPrefix|Řetězec|
+   |photos[type eq "photo"].value|Řetězec|
    |profileUrl|Řetězec|
-   |údaj|Řetězec|
+   |timezone|Řetězec|
    |userType|Řetězec|
-   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. Department|Řetězec|
-   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. Manager|Referenční informace|
-   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. employeeNumber|Řetězec|
-   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. costCenter|Řetězec|
-   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. Organization|Řetězec|
-   |urn: SCIM: schemas: rozšíření: Enterprise: 1.0. divize|Řetězec|
+   |urn:scim:schemas:extension:enterprise:1.0.department|Řetězec|
+   |urn:scim:schemas:extension:enterprise:1.0.manager|Referenční informace|
+   |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|Řetězec|
+   |urn:scim:schemas:extension:enterprise:1.0.costCenter|Řetězec|
+   |urn:scim:schemas:extension:enterprise:1.0.organization|Řetězec|
+   |urn:scim:schemas:extension:enterprise:1.0.division|Řetězec|
 
-12. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny s časovou rezervou**.
+12. V části **Mapování** vyberte **Synchronizovat skupiny Azure Active Directory do Slacku**.
 
-13. V části **mapování atributů** zkontrolujte atributy skupin, které se budou synchronizovat z Azure AD, s časovou rezervou. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování skupin v časové rezervě pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+13. V části **Mapování atributů** zkontrolujte atributy skupin, které se budou synchronizovat z Azure AD do Slacku. Mějte na paměti, že atributy vybrané jako **odpovídající** vlastnosti se budou používat k porovnávání skupin ve Slacku pro účely operací aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
       |Atribut|Typ|
       |---|---|
       |displayName|Řetězec|
       |členy|Referenční informace|
 
-14. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Pokud chcete povolit službu Azure AD Provisioning pro časovou rezervu, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+15. Pokud chcete pro Slack povolit službu zřizování Azure AD, v části **Nastavení** změňte **Stav zřizování** na **Zapnuto**.
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
-16. Definujte uživatele nebo skupiny, které chcete zřídit pro časovou rezervu, a to výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+16. Výběrem požadovaných hodnot v nabídce **Rozsah** v části **Nastavení** definujte uživatele nebo skupiny, které chcete ve Slacku zřídit.
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-17. Až budete připraveni zřídit, klikněte na **Uložit**.
+17. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční cyklus synchronizace všech uživatelů a skupin definovaných v **oboru** v části **Nastavení** . Počáteční cyklus trvá déle než u dalších cyklů, ke kterým dojde přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
+Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení**. Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
 
 ## <a name="step-5-monitor-your-deployment"></a>Krok 5. Monitorování nasazení
-Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto prostředky:
+Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomocí následujících prostředků:
 
-1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně nastavili.
-2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
-3. Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+1. S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
+2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
+3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
 
 ## <a name="troubleshooting-tips"></a>Tipy pro řešení problémů
 
-* Při konfiguraci atributu **DisplayName** časové rezervy mějte na paměti následující chování:
+* Při konfiguraci atributu **displayName** Slacku mějte na paměti následující chování:
 
-  * Hodnoty nejsou zcela jedinečné (například 2 uživatelé můžou mít stejný zobrazovaný název).
+  * Hodnoty nejsou zcela jedinečné (např. 2 uživatelé můžou mít stejné zobrazované jméno).
 
-  * Podporuje jiné než anglické znaky, mezery a velká písmena. 
+  * Podporují se neanglické znaky, mezery a velká písmena. 
   
-  * Povolené interpunkce obsahuje tečky, podtržítka, spojovníky, apostrofy, hranaté závorky (např. **([{}])**) a oddělovače (např. **/;**).
+  * Mezi povolená interpunkční znaménka patří tečky, podtržítka, spojovníky, apostrofy, mezery (např. **( [ { } ] )** ) a oddělovače (např. **, / ;** ).
   
-  * Vlastnost DisplayName nemůže obsahovat znak @. Pokud je k dispozici znak @, můžete v protokolech zřizování najít přeskočenou událost s popisem "AttributeValidationFailed".
+  * Vlastnost displayName nesmí obsahovat znak @. Pokud obsahuje znak @, může se v protokolech zřizování zobrazit přeskočená událost s popisem AttributeValidationFailed.
 
-  * Aktualizuje se jenom v případě, že jsou tato dvě nastavení nakonfigurovaná na pracovišti nebo organizaci **profilu** pracovní rezervy a **uživatelé nemůžou měnit jeho zobrazované jméno**.
+  * Aktualizuje se pouze v případě, že jsou v pracovišti nebo organizaci Slacku nakonfigurovaná tato dvě nastavení – **Synchronizace profilů je povolená** a **Uživatelé nemůžou změnit své zobrazované jméno**.
 
-* Atribut **uživatelského jména** časové rezervy musí být kratší než 21 znaků a mít jedinečnou hodnotu.
+* Hodnota atributu **userName** Slacku musí být jedinečná a kratší než 21 znaků.
 
-* Časová rezerva povoluje pouze spárování s atributy **username** a **email**.  
+* Slack umožňuje porovnávání pouze s atributy **userName** a **email**.  
   
-* Běžné kódy erorr jsou zdokumentovány v oficiální dokumentaci k časové rezervě. https://api.slack.com/scim#errors
+* Běžné kódy chyb jsou popsané v oficiální dokumentaci Slacku – https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>Protokol změn
 
-* 06/16/2020 – atribut DisplayName byl změněn tak, aby se aktualizoval pouze při vytváření nového uživatele.
+* 16. 6. 2020 – Úprava atributu DisplayName tak, aby se aktualizoval pouze při vytvoření nového uživatele
 
 ## <a name="additional-resources"></a>Další materiály
 
@@ -195,4 +195,4 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

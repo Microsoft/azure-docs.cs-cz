@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 58c234df5babc02fdd0e69a9c806043465293ace
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d91320d8f78942ca916084cbf29a88818d95f531
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030279"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314621"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Kurz: posílání lokalizovaných nabízených oznámení do aplikací pro Windows pomocí Azure Notification Hubs
 
@@ -111,7 +111,7 @@ Další informace o šablonách najdete v tématu [šablony nabízených oznáme
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-3. Ve `Notifications` třídě přidejte parametr národního prostředí do `StoreCategoriesAndSubscribe` `SubscribeToCategories` metod a.
+3. Ve `Notifications` třídě přidejte parametr národního prostředí do  `StoreCategoriesAndSubscribe` `SubscribeToCategories` metod a.
 
     ```csharp
     public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
@@ -295,7 +295,7 @@ V tomto kurzu jste se naučili zasílat lokalizovaná nabízená oznámení urč
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

@@ -11,43 +11,49 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 3d63ccc2c47bca9410b5b9105b90aa1f0cf5854a
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: c3a821156074727d02ab36cf88f3e998756b8cc4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439264"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389446"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
 Tento článek popisuje běžnou bezpečnostní hrozbu převzetí subdomény a postup, který je proti němu možné zmírnit.
 
 
-## <a name="what-is-subdomain-takeover"></a>Co je převzetí subdomény?
+## <a name="what-is-a-subdomain-takeover"></a>Co je převzetí subdomény?
 
-Převzetí subdomény představují běžnou, vysoce závažnou hrozbu pro organizace, které pravidelně vytvářejí a odstraňují spoustu prostředků. K převzetí subdomény může dojít, když máte záznam DNS, který odkazuje na prostředek Azure, který je k dispozici. Tyto záznamy DNS se také označují jako položky DNS dangling. Záznamy CNAME jsou pro tuto hrozbu obzvláště zranitelné.
+Převzetí subdomény představují běžnou, vysoce závažnou hrozbu pro organizace, které pravidelně vytvářejí a odstraňují spoustu prostředků. K převzetí subdomény může dojít, když máte [záznam DNS](../../dns/dns-zones-records.md#dns-records) , který odkazuje na prostředek Azure, který je k dispozici. Tyto záznamy DNS se také označují jako položky DNS dangling. Záznamy CNAME jsou pro tuto hrozbu obzvláště zranitelné. Převzetí subdomény umožňují škodlivým objektům actor přesměrovat provoz určený pro doménu organizace na lokalitu, která provádí škodlivou aktivitu.
 
 Běžný scénář pro převzetí subdomény:
 
-1. Vytvoří se web. 
+1. **VYTVOŘENA**
 
-    V tomto příkladu `app-contogreat-dev-001.azurewebsites.net` .
+    1. Prostředek Azure zřizujete pomocí plně kvalifikovaného názvu domény (FQDN) `app-contogreat-dev-001.azurewebsites.net` .
 
-1. Záznam CNAME se přidá do DNS ukazující na web. 
+    1. V zóně DNS přiřadíte záznam CNAME s subdoménou `greatapp.contoso.com` , která směruje provoz do vašeho prostředku Azure.
 
-    V tomto příkladu byl vytvořen následující popisný název: `greatapp.contoso.com` .
+1. **ZRUŠENÍ zřízení**
 
-1. Po několika měsících už není lokalita potřebná, takže se odstraní, **aniž by se musela** odstranit odpovídající položka DNS. 
+    1. Prostředek Azure se po nepotřebném zrušení zřídí nebo odstraní. 
+    
+        V tuto chvíli `greatapp.contoso.com` *by se měl* záznam CNAME odebrat ze zóny DNS. Pokud záznam CNAME není odebraný, inzeruje se jako aktivní doména, ale nesměruje provoz na aktivní prostředek Azure. Toto je definice záznamu DNS "dangling".
 
-    Záznam DNS CNAME je nyní "dangling".
+    1. Subdoména dangling `greatapp.contoso.com` je teď zranitelná a je možné ji převzít prostřednictvím přiřazení k jinému prostředku předplatného Azure.
 
-1. Téměř okamžitě po odstranění lokality objekt actor pro hrozbu zjistí chybějící lokalitu a vytvoří svůj vlastní web na adrese `app-contogreat-dev-001.azurewebsites.net` .
+1. **VZETÍ**
 
-    Nyní provoz určený pro `greatapp.contoso.com` přejde na web Azure actor útočníka a útočník hrozby nařídí zobrazený obsah. 
+    1. Pomocí běžně dostupných metod a nástrojů vyhledá objekt actor hrozby subdoménou dangling.  
 
-    Služba DNS dangling byla zneužita a subdoménou společnosti Contoso "GreatApp" bylo oběť převzetí subdomény. 
+    1. Objekt actor Threat zřídí prostředek Azure se stejným plně kvalifikovaným názvem domény dříve řízeného prostředku. V tomto příkladu `app-contogreat-dev-001.azurewebsites.net` .
+
+    1. Provoz odeslaný do subdomény `greatapp.contoso.com` je nyní směrován do prostředku objektu pro škodlivý objekt actor, kde tento obsah ovládá.
+
+
 
 ![Převzetí subdomény z nezajištěné webové stránky](./media/subdomain-takeover/subdomain-takeover.png)
 
@@ -63,22 +69,94 @@ Dangling položky DNS umožňují aktérům hrozeb převzít kontrolu nad přidr
 
 - **Soubory cookie získané z nepodezřelých návštěvníků** – je běžné, že webové aplikace zveřejňují soubory cookie relací pro subdomény (*. contoso.com), a proto k nim mají přístup všechny subdomény. Aktéri hrozeb můžou pomocí převzetí subdomény vytvořit autentickou stránku, která uživatele navštíví a nashromáždění jejich souborů cookie (i zabezpečených souborů cookie). Běžný nepojmový pojem použití certifikátů SSL chrání váš web a soubory cookie uživatelů od převzetí. Aktér hrozby však může použít napadenou subdoménu k uplatnění pro a získat platný certifikát SSL. Platné certifikáty SSL udělují jim přístup k zabezpečeným souborům cookie a můžou dál zvyšovat vnímaný legitimitu škodlivého webu.
 
-- **Podvodné kampaně** – na základě závazného způsobu, které se dají použít v kampaních phishing. To platí pro škodlivé weby a také pro záznamy MX, které by útočníkovi umožnil příjem e-mailů, které jsou adresovány na oprávněnou subdoménu známé značky.
+- **Podvodné kampaně** – v kampaních phishing se můžou používat i domény s vyhledáním ověřených subdomén. To platí pro škodlivé weby a pro záznamy MX, které by útočníkovi umožnil příjem e-mailů, které jsou adresovány na oprávněnou subdoménu známek se známou bezpečností.
 
-- **Další rizika** – škodlivé weby je možné využít k eskalaci dalších klasických útoků, jako jsou například XSS, CSRF, CORS a další.
+- **Další rizika** – škodlivé weby mohou sloužit k eskalaci dalších klasických útoků, jako jsou XSS, CSRF, CORS a další.
 
 
 
-## <a name="preventing-dangling-dns-entries"></a>Prevence dangling záznamů DNS
+## <a name="identify-dangling-dns-entries"></a>Identifikace položek DNS dangling
+
+Pokud chcete identifikovat položky DNS v rámci vaší organizace, které by mohly být dangling, použijte nástroje PowerShellu hostované na GitHubu od Microsoftu ["Get-DanglingDnsRecords"](https://aka.ms/DanglingDNSDomains).
+
+Tento nástroj pomáhá zákazníkům Azure seznam všech domén s CNAME přidruženým k existujícímu prostředku Azure, který se vytvořil na svých předplatných nebo klientech.
+
+Pokud se vaše záznamy CNAME nacházejí v jiných službách DNS a odkazují na prostředky Azure, Poskytněte nástroji záznamy CNAME ve vstupním souboru.
+
+Nástroj podporuje prostředky Azure uvedené v následující tabulce. Nástroj extrahuje nebo přebírá jako vstupy všechny záznamy CNAME tenanta.
+
+
+| Služba                   | Typ                                        | FQDNproperty                               | Příklad                         |
+|---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
+| Azure Front Door          | Microsoft. Network/frontdoors                | vlastnosti. cName                           | `abc.azurefd.net`               |
+| Azure Blob Storage        | Microsoft. Storage/storageaccounts           | Properties. primaryEndpoints. blob           | `abc. blob.core.windows.net`    |
+| Azure CDN                 | Microsoft. CDN/Profiles/koncových bodů            | vlastnosti. název hostitele                        | `abc.azureedge.net`             |
+| Veřejné IP adresy       | Microsoft. Network/publicipaddresses         | Properties. dnsSettings. FQDN                | `abc.EastUs.cloudapp.azure.com` |
+| Azure Traffic Manager     | Microsoft. Network/trafficmanagerprofiles    | Properties. dnsConfig. plně kvalifikovaný název domény                  | `abc.trafficmanager.net`        |
+| Instance kontejneru Azure  | Microsoft. containerinstance/containergroups | vlastnosti. ipAddress. plně kvalifikovaný název domény                  | `abc.EastUs.azurecontainer.io`  |
+| Azure API Management      | Microsoft. apimanagement/Service             | Properties. hostnameConfigurations. název_hostitele | `abc.azure-api.net`             |
+| Azure App Service         | Microsoft. Web/weby                         | Properties. defaultHostName                 | `abc.azurewebsites.net`         |
+| Azure App Service – sloty | Microsoft. Web/weby/sloty                   | Properties. defaultHostName                 | `abc-def.azurewebsites.net`     |
+
+
+
+### <a name="prerequisites"></a>Požadavky
+
+Spusťte dotaz jako uživatel, který má:
+
+- minimální přístup k předplatným Azure na úrovni čtenářů
+- přístup pro čtení do grafu prostředků Azure
+
+Pokud jste globálním správcem tenanta vaší organizace, zvyšte svůj účet tak, aby měl přístup ke všem předplatným vaší organizace pomocí pokynů v části [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../../role-based-access-control/elevate-access-global-admin.md).
+
+
+> [!TIP]
+> Azure Resource Graph má omezení a omezení stránkování, které byste měli zvážit, pokud máte velké prostředí Azure. 
+> 
+> [Přečtěte si další informace o práci s velkými sadami dat prostředků Azure](../../governance/resource-graph/concepts/work-with-data.md).
+> 
+> Nástroj používá dávkování předplatného, aby tato omezení nedocházelo.
+
+### <a name="run-the-script"></a>Spuštění skriptu
+
+Přečtěte si další informace o skriptu PowerShellu, **Get-DanglingDnsRecords.ps1** a Stáhněte si ho z GitHubu: https://aka.ms/Get-DanglingDnsRecords .
+
+## <a name="remediate-dangling-dns-entries"></a>Napravit dangling položky DNS 
+
+Zkontrolujte zóny DNS a Identifikujte záznamy CNAME, které se dangling nebo převzaly. Pokud se naleznou subdomény, které mají být dangling nebo převezmou, odeberte zranitelné subdomény a zmírnit rizika pomocí následujících kroků:
+
+1. Z vaší zóny DNS odeberte všechny záznamy CNAME, které ukazují na plně kvalifikované názvy domén prostředků, které už nejsou zřízené.
+
+1. Pokud chcete povolit směrování provozu do prostředků v ovládacím prvku, zřiďte další prostředky s plně kvalifikovanými názvy domén, které jsou uvedené v záznamech CNAME dangling subdomén.
+
+1. Zkontrolujte kód aplikace pro odkazy na konkrétní subdomény a aktualizujte všechny nesprávné nebo zastaralé odkazy na poddomény.
+
+1. Prozkoumejte, jestli došlo k ohrožení, a proveďte akci na postupy reakce na incidenty vaší organizace. Tipy a osvědčené postupy pro zkoumání tohoto problému najdete níže.
+
+    Pokud je vaše aplikační logika taková, že tajné klíče, jako jsou přihlašovací údaje OAuth, se poslaly do subdomény dangling, nebo se informace citlivé na soukromí poslaly do subdomén dangling, mohla by být tato data vystavena třetím stranám.
+
+1. Zjistěte, proč se záznam CNAME při zrušení zřízení prostředku neodebral z vaší zóny DNS, a proveďte kroky k tomu, abyste zajistili, že se záznamy DNS patřičně aktualizují při zrušení zřízení prostředků Azure v budoucnu.
+
+
+## <a name="prevent-dangling-dns-entries"></a>Zabránit záznamům DNS v dangling
 
 Ujistěte se, že vaše organizace implementovala procesy, které zabrání položkám DNS v dangling a výsledné převzetí subdomény, je zásadní součástí vašeho programu zabezpečení.
 
-Níže jsou uvedené preventivní míry, které jsou dnes k dispozici.
+Některé služby Azure nabízí funkce, které pomáhají při vytváření preventivních opatření a jsou popsané níže. Jiné metody, jak zabránit tomuto problému, se musí navázat v rámci osvědčených postupů nebo standardních provozních postupů vaší organizace.
 
+### <a name="enable-azure-defender-for-app-service"></a>Povolit Azure Defender pro App Service
+
+CWPP (Integrated Cloud Protection Platform) – Azure Defender nabízí řadu plánů pro ochranu vašich prostředků Azure, hybridního a více cloudů a úloh. Azure Security Center
+
+Plán **Azure Defender pro App Service** zahrnuje DANGLING zjišťování DNS. V případě povolení tohoto plánu obdržíte výstrahy zabezpečení, pokud vyřadíte App Service web, ale neodeberete jeho vlastní doménu z registrátora DNS.
+
+Ochrana DNS dangling v Azure Defenderu je dostupná, ať jsou vaše domény spravované pomocí Azure DNS nebo externího registrátora domény a platí pro App Service v systémech Windows i Linux.
+
+Přečtěte si další informace o této a dalších výhodách tohoto plánu Azure Defenderu v části [Úvod do Azure Defenderu pro App Service](../../security-center/defender-for-app-service-introduction.md).
 
 ### <a name="use-azure-dns-alias-records"></a>Použití záznamů aliasů Azure DNS
 
-[Záznamy aliasů](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) Azure DNS můžou zabránit odkazům na dangling prostřednictvím propojení životního cyklu záznamu DNS s prostředkem Azure. Předpokládejme například, že záznam DNS, který je kvalifikován jako záznam aliasu, odkazuje na veřejnou IP adresu nebo profil Traffic Manager. Pokud tyto podkladové prostředky odstraníte, bude se záznam aliasu DNS nacházet v prázdné sadě záznamů. Již neodkazuje na odstraněný prostředek. Je důležité si uvědomit, že existují omezení k tomu, co můžete chránit pomocí záznamů aliasů. V dnešní době je seznam omezen na:
+[Záznamy aliasů](../../dns/dns-alias.md#scenarios) Azure DNS můžou zabránit odkazům na dangling prostřednictvím propojení životního cyklu záznamu DNS s prostředkem Azure. Předpokládejme například, že záznam DNS, který je kvalifikován jako záznam aliasu, odkazuje na veřejnou IP adresu nebo profil Traffic Manager. Pokud tyto podkladové prostředky odstraníte, bude se záznam aliasu DNS nacházet v prázdné sadě záznamů. Již neodkazuje na odstraněný prostředek. Je důležité si uvědomit, že existují omezení k tomu, co můžete chránit pomocí záznamů aliasů. V dnešní době je seznam omezen na:
 
 - Azure Front Door
 - Profily služby Traffic Manager
@@ -87,7 +165,7 @@ Níže jsou uvedené preventivní míry, které jsou dnes k dispozici.
 
 Bez ohledu na to, co je dnes omezené nabídky služeb, doporučujeme pomocí záznamů aliasů chránit před převzetím subdomény, kdykoli je to možné.
 
-[Přečtěte si další informace](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) o možnostech záznamů aliasů Azure DNS.
+[Přečtěte si další informace o možnostech záznamů aliasů Azure DNS](../../dns/dns-alias.md#capabilities).
 
 
 
@@ -97,7 +175,7 @@ Při vytváření položek DNS pro Azure App Service vytvořte asuid. subdomény
 
 Tyto záznamy nebrání někomu v vytvoření Azure App Service se stejným názvem, který se nachází v záznamu CNAME. Bez možnosti prokázat vlastnictví názvu domény nemůžou aktéri hrozeb přijímat přenosy ani řídit obsah.
 
-[Přečtěte si další informace](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) o mapování stávajícího vlastního názvu DNS na Azure App Service.
+[Přečtěte si další informace o mapování stávajícího vlastního názvu DNS na Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md).
 
 
 
@@ -111,101 +189,16 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
 
     - Při vyřazení služby ze seznamu požadovaných kontrol vložte položku "odebrat položku DNS".
 
-    - Pro všechny prostředky, které mají vlastní položku DNS, umístěte [zámky pro odstranění](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) . Zámek proti odstranění slouží jako indikátor, že mapování musí být odebráno před zrušením zřízení prostředku. Takové míry můžou fungovat jenom v kombinaci s interními vzdělávacími programy.
+    - Pro všechny prostředky, které mají vlastní položku DNS, umístěte [zámky pro odstranění](../../azure-resource-manager/management/lock-resources.md) . Zámek proti odstranění slouží jako indikátor, že mapování musí být odebráno před zrušením zřízení prostředku. Takové míry můžou fungovat jenom v kombinaci s interními vzdělávacími programy.
 
 - **Vytvořit procedury pro zjišťování:**
 
     - Pravidelně kontrolujte své záznamy DNS, abyste měli jistotu, že jsou všechny subdomény namapované na prostředky Azure, které:
 
-        - Existují – dotaz na zóny DNS pro prostředky odkazující na subdomény Azure, jako je například *. azurewebsites.net nebo *. cloudapp.azure.com (viz [Tento seznam odkazů](azure-domains.md)).
+        - Existují – dotazování na zóny DNS pro prostředky odkazující na poddomény Azure, jako je například *. azurewebsites.net nebo *. cloudapp.azure.com (viz [referenční seznam domén Azure](azure-domains.md)).
         - Vlastníte – potvrďte, že vlastníte všechny prostředky, na které vaše subdomény DNS cílí.
 
     - Udržujte katalog služeb pro koncové body plně kvalifikovaného názvu domény (FQDN) Azure a vlastníky aplikace. Pokud chcete sestavit katalog služeb, spusťte následující skript dotazu Azure Resource Graph. Tento skript vypisuje informace o koncovém názvu domény (FQDN) prostředků, ke kterým máte přístup, a vytváří jejich výstupy v souboru CSV. Pokud máte přístup ke všem předplatným pro vašeho tenanta, tento skript posuzuje všechna tato předplatná, jak je znázorněno v následujícím ukázkovém skriptu. Pokud chcete výsledky omezit na konkrétní sadu předplatných, upravte skript tak, jak je znázorněno na obrázku.
-
-        >[!IMPORTANT]
-        > **Oprávnění** – spusťte dotaz jako uživatel, který má přístup ke všem předplatným Azure. 
-        >
-        > **Omezení** – Azure Resource Graph má omezení a omezení stránkování, které byste měli zvážit, pokud máte velké prostředí Azure. [Přečtěte si další informace](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) o práci s velkými sadami dat prostředků Azure. Následující vzorový skript používá dávkování předplatných, aby tato omezení nedocházelo.
-
-        ```powershell
-        
-            # Fetch the full array of subscription IDs.
-            $subscriptions = Get-AzSubscription
-
-            $subscriptionIds = $subscriptions.Id
-                   # Output file path and names
-                   $date = get-date
-                   $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
-                   $fdate #log to console
-                   $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
-                   $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
-                   $fpath = $rpath + $rname
-                   $fpath #This is the output file of FQDN report.
-
-            # query
-            $query = "where type in ('microsoft.network/frontdoors',
-                                    'microsoft.storage/storageaccounts',
-                                    'microsoft.cdn/profiles/endpoints',
-                                    'microsoft.network/publicipaddresses',
-                                    'microsoft.network/trafficmanagerprofiles',
-                                    'microsoft.containerinstance/containergroups',
-                                    'microsoft.apimanagement/service',
-                                    'microsoft.web/sites',
-                                    'microsoft.web/sites/slots')
-                        | extend FQDN = case(
-                            type =~ 'microsoft.network/frontdoors', properties['cName'],
-                            type =~ 'microsoft.storage/storageaccounts', parse_url(tostring(properties['primaryEndpoints']['blob'])).Host,
-                            type =~ 'microsoft.cdn/profiles/endpoints', properties['hostName'],
-                            type =~ 'microsoft.network/publicipaddresses', properties['dnsSettings']['fqdn'],
-                            type =~ 'microsoft.network/trafficmanagerprofiles', properties['dnsConfig']['fqdn'],
-                            type =~ 'microsoft.containerinstance/containergroups', properties['ipAddress']['fqdn'],
-                            type =~ 'microsoft.apimanagement/service', properties['hostnameConfigurations']['hostName'],
-                            type =~ 'microsoft.web/sites', properties['defaultHostName'],
-                            type =~ 'microsoft.web/sites/slots', properties['defaultHostName'],
-                            '')
-                        | project id, ['type'], name, FQDN
-                        | where isnotempty(FQDN)";
-
-            # Paging helper cursor
-            $Skip = 0;
-            $First = 1000;
-
-            # If you have large number of subscriptions, process them in batches of 2,000.
-            $counter = [PSCustomObject] @{ Value = 0 }
-            $batchSize = 2000
-            $response = @()
-
-            # Group the subscriptions into batches.
-            $subscriptionsBatch = $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / $batchSize) }
-
-            # Run the query for each subscription batch with paging.
-            foreach ($batch in $subscriptionsBatch)
-            { 
-                $Skip = 0; #Reset after each batch.
-
-                $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
-                else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
-                $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
-            }
-
-            # View the completed results of the query on all subscriptions.
-            $response | Export-Csv -Path $fpath -Append 
-
-        ```
-
-        Seznam typů a jejich `FQDNProperty` hodnot, jak je uvedeno v předchozím dotazu grafu prostředků:
-
-        |Název prostředku  | `<ResourceType>`  | `<FQDNproperty>`  |
-        |---------|---------|---------|
-        |Azure Front Door|Microsoft. Network/frontdoors|vlastnosti. cName|
-        |Azure Blob Storage|Microsoft. Storage/storageaccounts|Properties. primaryEndpoints. blob|
-        |Azure CDN|Microsoft. CDN/Profiles/koncových bodů|vlastnosti. název hostitele|
-        |Veřejné IP adresy|Microsoft. Network/publicipaddresses|Properties. dnsSettings. FQDN|
-        |Azure Traffic Manager|Microsoft. Network/trafficmanagerprofiles|Properties. dnsConfig. plně kvalifikovaný název domény|
-        |Instance kontejneru Azure|Microsoft. containerinstance/containergroups|vlastnosti. ipAddress. plně kvalifikovaný název domény|
-        |Azure API Management|Microsoft. apimanagement/Service|Properties. hostnameConfigurations. název_hostitele|
-        |Azure App Service|Microsoft. Web/weby|Properties. defaultHostName|
-        |Azure App Service – sloty|Microsoft. Web/weby/sloty|Properties. defaultHostName|
 
 
 - **Vytvořit procedury pro nápravu:**
@@ -218,8 +211,10 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
 
 Další informace o souvisejících službách a funkcích Azure, které můžete použít k obraně před převzetím subdomény, najdete na následujících stránkách.
 
-- [Azure DNS podporuje použití záznamů aliasů pro vlastní domény.](https://docs.microsoft.com/azure/dns/dns-alias#prevent-dangling-dns-records)
+- [Povolit Azure Defender pro App Service](../../security-center/defender-for-app-service-introduction.md) – příjem výstrah při zjištění položek DNS v dangling
 
-- [Při přidávání vlastních domén do Azure App Service použijte ID ověření domény.](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
+- [Prevence dangling záznamů DNS pomocí Azure DNS](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Při přidávání vlastních domén do Azure App Service použít ID ověření domény](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
+
+- [Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell](../../governance/resource-graph/first-query-powershell.md)

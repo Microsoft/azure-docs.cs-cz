@@ -1,198 +1,283 @@
 ---
 title: Rychlý Start – vytvoření privátního koncového bodu Azure pomocí Azure CLI
-description: Seznamte se s privátním koncovým bodem Azure v tomto rychlém startu
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure CLI vytvořit privátní koncový bod.
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.date: 09/16/2019
+ms.date: 11/07/2020
 ms.author: allensu
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: e7c098ba06086781306960f76978aac9e4fa06bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bba912930a9dff0a79e0b0d81025b7524c238db0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502660"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368674"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure CLI
 
-Soukromý koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení. V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač ve virtuální síti, server v SQL Database s privátním koncovým bodem pomocí Azure CLI. Pak můžete k virtuálnímu počítači přistupovat a získat zabezpečený přístup k prostředku privátního odkazu (v tomto příkladu je to privátní server v SQL Database).
+Začínáme s privátním koncovým bodem Azure pomocí privátního koncového bodu pro zabezpečené připojení k webové aplikaci Azure.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+V tomto rychlém startu vytvoříte privátní koncový bod pro webovou aplikaci Azure a nasadíte virtuální počítač pro otestování privátního připojení.  
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+Pro různé druhy služeb Azure, jako je Azure SQL a Azure Storage, je možné vytvořit privátní koncové body.
+
+## <a name="prerequisites"></a>Požadavky
+
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Webovou aplikaci Azure s **PremiumV2** nebo vyšším plánem služby App Service nasazeným ve vašem předplatném Azure.  
+    * Další informace a příklad najdete v tématu [rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure](../app-service/quickstart-dotnetcore.md). 
+    * Podrobný kurz týkající se vytvoření webové aplikace a koncového bodu najdete v tématu [kurz: připojení k webové aplikaci pomocí privátního koncového bodu Azure](tutorial-private-endpoint-webapp-portal.md).
+* Přihlaste se k Azure Portal a ověřte, že je vaše předplatné aktivní spuštěním `az login` .
+* Podívejte se na verzi rozhraní příkazového řádku Azure CLI v terminálu nebo příkazovém okně spuštěním příkazu `az --version` . Nejnovější verzi najdete v [poznámkách k nejnovější verzi](/cli/azure/release-notes-azure-cli?tabs=azure-cli).
+  * Pokud nemáte nejnovější verzi, aktualizujte instalaci pomocí [instalační příručky pro váš operační systém nebo platformu](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Než budete moct vytvořit libovolný prostředek, musíte vytvořit skupinu prostředků, která bude hostovat Virtual Network. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Tento příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *westcentralus* :
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+
+Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az_group_create):
+
+* Název **CreatePrivateEndpointQS-RG**. 
+* V umístění **eastus** .
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location westcentralus
+az group create \
+    --name CreatePrivateEndpointQS-rg \
+    --location eastus
 ```
 
-## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="create-a-virtual-network-and-bastion-host"></a>Vytvoření virtuální sítě a hostitele bastionu
 
-Vytvořte Virtual Network pomocí [AZ Network VNet Create](/cli/azure/network/vnet). Tento příklad vytvoří výchozí Virtual Network s názvem *myVirtualNetwork* s jednou podsítí s názvem *mySubnet*:
+V této části vytvoříte virtuální síť, podsíť a hostitele bastionu. 
+
+Hostitel bastionu se bude používat k zabezpečenému připojení k virtuálnímu počítači za účelem testování privátního koncového bodu.
+
+Vytvoření virtuální sítě pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az_network_vnet_create)
+
+* S názvem **myVNet**.
+* Předpona adresy **10.0.0.0/16**.
+* Podsíť s názvem **myBackendSubnet**.
+* Předpona podsítě **10.0.0.0/24**.
+* Ve skupině prostředků **CreatePrivateEndpointQS-RG** .
+* Umístění **eastus**
 
 ```azurecli-interactive
 az network vnet create \
- --name myVirtualNetwork \
- --resource-group myResourceGroup \
- --subnet-name mySubnet
+    --resource-group CreatePrivateEndpointQS-rg\
+    --location eastus \
+    --name myVNet \
+    --address-prefixes 10.0.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.0.0.0/24
 ```
 
-## <a name="disable-subnet-private-endpoint-policies"></a>Zakázat zásady privátního koncového bodu podsítě
-
-Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Aktualizace podsítě pro zakázání zásad privátního koncového bodu pro privátní koncový bod pomocí [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
- --name mySubnet \
- --resource-group myResourceGroup \
- --vnet-name myVirtualNetwork \
- --disable-private-endpoint-network-policies true
+    --name myBackendSubnet \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --vnet-name myVNet \
+    --disable-private-endpoint-network-policies true
 ```
 
-## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
+K vytvoření veřejné IP adresy pro hostitele bastionu použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) :
 
-Vytvořte virtuální počítač pomocí AZ VM Create. Po zobrazení výzvy zadejte heslo, které se použije jako přihlašovací údaje pro virtuální počítač. Tento příklad vytvoří virtuální počítač s názvem *myVm*:
+* Vytvořte záložní veřejnou IP adresu zóny Standard s názvem **myBastionIP**.
+* V **CreatePrivateEndpointQS-RG**.
+
+```azurecli-interactive
+az network public-ip create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name myBastionIP \
+    --sku Standard
+```
+
+Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) vytvořte podsíť bastionu:
+
+* S názvem **AzureBastionSubnet**.
+* Předpona adresy **10.0.1.0/24**.
+* Ve virtuální síti **myVNet**.
+* Ve skupině prostředků **CreatePrivateEndpointQS-RG**.
+
+```azurecli-interactive
+az network vnet subnet create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name AzureBastionSubnet \
+    --vnet-name myVNet \
+    --address-prefixes 10.0.1.0/24
+```
+
+Pomocí [AZ Network bastionu Create](/cli/azure/network/bastion#az-network-bastion-create) Vytvořte hostitele bastionu:
+
+* S názvem **myBastionHost**.
+* V **CreatePrivateEndpointQS-RG**.
+* Přidruženo k veřejné IP **myBastionIP**.
+* Přidruženo k virtuální síti **myVNet**.
+* V umístění **eastus** .
+
+```azurecli-interactive
+az network bastion create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name myBastionHost \
+    --public-ip-address myBastionIP \
+    --vnet-name myVNet \
+    --location eastus
+```
+
+Nasazení hostitele Azure bastionu může trvat několik minut.
+
+## <a name="create-test-virtual-machine"></a>Vytvořit testovací virtuální počítač
+
+V této části vytvoříte virtuální počítač, který se použije k otestování privátního koncového bodu.
+
+Vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az_vm_create). Po zobrazení výzvy zadejte heslo, které se má použít jako přihlašovací údaje pro virtuální počítač:
+
+* S názvem **myVM**.
+* V **CreatePrivateEndpointQS-RG**.
+* V Network **myVNet**.
+* V **myBackendSubnet** podsíti.
+* **Win2019Datacenter** image serveru.
 
 ```azurecli-interactive
 az vm create \
-  --resource-group myResourceGroup \
-  --name myVm \
-  --image Win2019Datacenter
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name myVM \
+    --image Win2019Datacenter \
+    --public-ip-address "" \
+    --vnet-name myVNet \
+    --subnet myBackendSubnet \
+    --admin-username azureuser
 ```
 
-Poznamenejte si veřejnou IP adresu virtuálního počítače. Tato adresa se použije k připojení k virtuálnímu počítači z Internetu v dalším kroku.
+## <a name="create-private-endpoint"></a>Vytvořit privátní koncový bod
 
-## <a name="create-a-server-in-sql-database"></a>Vytvoření serveru v SQL Database
+V této části vytvoříte privátní koncový bod.
 
-Pomocí příkazu AZ SQL Server Create vytvořte server v SQL Database. Pamatujte, že název vašeho serveru musí být v rámci Azure jedinečný, proto nahraďte hodnotu zástupného symbolu v závorkách vlastní jedinečnou hodnotou:
+Pomocí [AZ WebApp list](/cli/azure/webapp#az_webapp_list) umístěte ID prostředku webové aplikace, kterou jste předtím vytvořili do proměnné prostředí.
 
-```azurecli-interactive
-# Create a server in the resource group
-az sql server create \
-    --name "myserver"\
-    --resource-group myResourceGroup \
-    --location WestUS \
-    --admin-user "sqladmin" \
-    --admin-password "CHANGE_PASSWORD_1"
+Pomocí [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) vytvořte koncový bod a připojení:
 
-# Create a database in the server with zone redundancy as false
-az sql db create \
-    --resource-group myResourceGroup  \
-    --server myserver \
-    --name mySampleDatabase \
-    --sample-name AdventureWorksLT \
-    --edition GeneralPurpose \
-    --family Gen4 \
-    --capacity 1
-```
-
-ID serveru se podobá tomu, že použijete  ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` ID serveru v dalším kroku.
-
-## <a name="create-the-private-endpoint"></a>Vytvoření privátního koncového bodu
-
-Vytvořte privátní koncový bod pro logický SQL Server ve vašem Virtual Network:
+* S názvem **myPrivateEndpoint**.
+* Ve skupině prostředků **CreatePrivateEndpointQS-RG**.
+* Ve virtuální síti **myVNet**.
+* V **myBackendSubnet** podsíti.
+* Připojení s názvem **mojepripojeni**.
+* Vaše WebApp **\<webapp-resource-group-name>** .
 
 ```azurecli-interactive
-az network private-endpoint create \  
-    --name myPrivateEndpoint \  
-    --resource-group myResourceGroup \  
-    --vnet-name myVirtualNetwork  \  
-    --subnet mySubnet \  
-    --private-connection-resource-id "<server ID>" \  
-    --group-ids sqlServer \  
+id=$(az webapp list \
+    --resource-group <webapp-resource-group-name> \
+    --query '[].[id]' \
+    --output tsv)
+
+az network private-endpoint create \
+    --name myPrivateEndpoint \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --vnet-name myVNet --subnet myBackendSubnet \
+    --private-connection-resource-id $id \
+    --group-id sites \
     --connection-name myConnection  
- ```
+```
 
-## <a name="configure-the-private-dns-zone"></a>Konfigurovat zónu Privátní DNS
+## <a name="configure-the-private-dns-zone"></a>Konfigurace privátní zóny DNS
 
-Vytvořte zónu Privátní DNS pro SQL Database doménu, vytvořte propojení přidružení s Virtual Network a vytvořte skupinu zón DNS pro přidružení privátního koncového bodu k Privátní DNS zóně. 
+V této části vytvoříte a nakonfigurujete privátní zónu DNS pomocí [AZ Network Private-DNS Zone Create](/cli/azure/ext/privatedns/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create).  
+
+Pomocí [AZ Network Private-DNS Link VNet Create](/cli/azure/ext/privatedns/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) vytvoříte propojení virtuální sítě k zóně DNS.
+
+Vytvoříte skupinu zón DNS pomocí [AZ Network Private-Endpoint DNS-Zone-Group Create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create).
+
+* Zóna s názvem **privatelink.azurewebsites.NET**
+* Ve virtuální síti **myVNet**.
+* Ve skupině prostředků **CreatePrivateEndpointQS-RG**.
+* Odkaz DNS s názvem **myDNSLink**.
+* Přidruženo k **myPrivateEndpoint**.
+* Skupina zón s názvem **MyZoneGroup**.
 
 ```azurecli-interactive
-az network private-dns zone create --resource-group myResourceGroup \
-   --name  "privatelink.database.windows.net"
-az network private-dns link vnet create --resource-group myResourceGroup \
-   --zone-name  "privatelink.database.windows.net"\
-   --name MyDNSLink \
-   --virtual-network myVirtualNetwork \
-   --registration-enabled false
+az network private-dns zone create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name "privatelink.azurewebsites.net"
+
+az network private-dns link vnet create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --zone-name "privatelink.azurewebsites.net" \
+    --name MyDNSLink \
+    --virtual-network myVNet \
+    --registration-enabled false
+
 az network private-endpoint dns-zone-group create \
-   --resource-group myResourceGroup \
+   --resource-group CreatePrivateEndpointQS-rg \
    --endpoint-name myPrivateEndpoint \
    --name MyZoneGroup \
-   --private-dns-zone "privatelink.database.windows.net" \
-   --zone-name sql
+   --private-dns-zone "privatelink.azurewebsites.net" \
+   --zone-name webapp
 ```
 
-## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
+## <a name="test-connectivity-to-private-endpoint"></a>Test připojení k privátnímu koncovému bodu
 
-Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způsobem:
+V této části použijete virtuální počítač, který jste vytvořili v předchozím kroku, abyste se připojili k SQL serveru přes soukromý koncový bod.
 
-1. Na panelu hledání na portálu zadejte *myVm*.
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com). 
+ 
+2. V levém navigačním podokně vyberte **skupiny prostředků** .
 
-1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
+3. Vyberte **CreatePrivateEndpointQS-RG**.
 
-1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (*. RDP*) a stáhne ho do vašeho počítače.
+4. Vyberte **myVM**.
 
-1. Otevřete stažený soubor. RDP *.
+5. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu**.
 
-    1. Pokud se zobrazí výzva, vyberte **Připojit**.
+6. Vyberte tlačítko modrého **použití bastionu** .
 
-    1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
+7. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-        > [!NOTE]
-        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+8. Po připojení otevřete Windows PowerShell na serveru.
 
-1. Vyberte **OK**.
+9. Zadejte `nslookup <your-webapp-name>.azurewebsites.net`. Nahraďte **\<your-webapp-name>** názvem webové aplikace, kterou jste vytvořili v předchozích krocích.  Zobrazí se zpráva podobná tomu, co se zobrazuje níže:
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
-
-1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
-
-## <a name="access-sql-database-privately-from-the-vm"></a>Přístup k SQL Database soukromě z virtuálního počítače
-
-V této části se připojíte k SQL Database z virtuálního počítače pomocí privátního koncového bodu.
-
-1. Ve vzdálené ploše *myVM*otevřete PowerShell.
-2. Zadejte nslookup myserver.database.windows.net
-
-   Zobrazí se zpráva podobná této:
-
-    ```
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
+
     Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
+    Name:    mywebapp8675.privatelink.azurewebsites.net
     Address:  10.0.0.5
-    Aliases:  myserver.database.windows.net
+    Aliases:  mywebapp8675.azurewebsites.net
     ```
 
-3. Nainstalovat SQL Server Management Studio
-4. V Connect to Server (připojit k serveru) zadejte nebo vyberte tyto informace:
+    Pro název webové aplikace se vrátí privátní IP adresa **10.0.0.5** .  Tato adresa je v podsíti virtuální sítě, kterou jste vytvořili dříve.
 
-   - Typ serveru: vyberte možnost databázový stroj.
-   - Název serveru: vyberte myserver.database.windows.net
-   - Uživatelské jméno: zadejte uživatelské jméno, které jste zadali při vytváření.
-   - Heslo: zadejte heslo, které jste zadali při vytváření.
-   - Pamatovat heslo: vyberte Ano.
+10. V připojení bastionu k **myVM** otevřete Internet Explorer.
 
-5. Vyberte **Připojit**.
-6. Procházet **databáze** z levé nabídky
-7. Volitelně Vytvoření nebo dotazování informací z *MyDatabase*
-8. Zavřete připojení ke vzdálené ploše pro *myVm*.
+11. Zadejte adresu URL vaší webové aplikace, **https:// \<your-webapp-name> . azurewebsites.NET**.
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
+12. Pokud vaše aplikace nebyla nasazena, obdržíte výchozí stránku webové aplikace:
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz AZ Group Delete:
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Výchozí stránka webové aplikace" border="true":::
+
+13. Ukončete připojení k **myVM**.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků 
+Po dokončení používání privátního koncového bodu a virtuálního počítače odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [AZ Group Delete](/cli/azure/group#az_group_delete) :
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes
+az group delete \
+    --name CreatePrivateEndpointQS-rg
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [privátním propojení Azure](private-link-overview.md)
+V tomto rychlém startu jste vytvořili:
+
+* Virtuální síť a hostitel bastionu
+* Virtuální počítač.
+* Soukromý koncový bod pro webovou aplikaci Azure.
+
+Virtuální počítač jste použili k zabezpečenému otestování připojení k webové aplikaci v rámci privátního koncového bodu.
+
+Další informace o službách, které podporují soukromý koncový bod, najdete v těchto tématech:
+> [!div class="nextstepaction"]
+> [Dostupnost privátního propojení](private-link-overview.md#availability)

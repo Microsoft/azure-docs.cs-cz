@@ -1,10 +1,10 @@
 ---
-title: Rozšířená detekce hrozeb Azure | Microsoft Docs
-description: Seznamte se s integrovanou funkcí pokročilé detekce hrozeb pro Azure, jako je například služba Azure AD Identity Protection.
+title: Azure Threat Protection | Microsoft Docs
+description: Seznamte se s integrovanou funkcí ochrany před internetovými útoky pro Azure, jako je například služba Azure AD Identity Protection.
 services: security
 documentationcenter: na
-author: UnifyCloud
-manager: barbkess
+author: TerryLanfear
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: TomSh
-ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 02/03/2021
+ms.author: terrylan
+ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541018"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101031"
 ---
-# <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb v Azure
+# <a name="azure-threat-protection"></a>Ochrana před hrozbami Azure
 
-Azure nabízí integrované funkce detekce hrozeb prostřednictvím služeb, jako je Azure Active Directory (Azure AD), protokoly Azure Monitor a Azure Security Center. Tato kolekce služeb zabezpečení a možností nabízí jednoduchý a rychlý způsob, jak porozumět tomu, co se děje v nasazeních Azure.
+Azure nabízí integrované funkce ochrany před internetovými útoky prostřednictvím služeb, jako je Azure Active Directory (Azure AD), protokoly Azure Monitor a Azure Security Center. Tato kolekce služeb zabezpečení a možností nabízí jednoduchý a rychlý způsob, jak porozumět tomu, co se děje v nasazeních Azure.
 
 Azure nabízí nejrůznější možnosti konfigurace a přizpůsobení zabezpečení, aby splňovaly požadavky nasazení vaší aplikace. Tento článek popisuje, jak tyto požadavky splnit.
 
-## <a name="azure-active-directory-identity-protection"></a>Ochrana identit služby Azure Active Directory
+## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) je funkce [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) Edition, která poskytuje přehled o detekcích rizik a potenciálních ohroženích zabezpečení, které mohou ovlivnit identity vaší organizace. Identity Protection používá stávající možnosti detekce anomálií Azure AD, které jsou dostupné prostřednictvím [sestav aktivit Azure AD neobvyklé](../../active-directory/active-directory-reporting-azure-portal.md), a přináší nové typy detekce rizik, které mohou detekovat anomálie v reálném čase.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) je funkce [Azure Active Directory Premium P2](../../active-directory/fundamentals/active-directory-whatis.md) Edition, která poskytuje přehled o detekcích rizik a potenciálních ohroženích zabezpečení, které mohou ovlivnit identity vaší organizace. Identity Protection používá stávající možnosti detekce anomálií Azure AD, které jsou dostupné prostřednictvím [sestav aktivit Azure AD neobvyklé](../../active-directory/reports-monitoring/overview-reports.md), a přináší nové typy detekce rizik, které mohou detekovat anomálie v reálném čase.
 
 ![Diagram Azure AD Identity Protection](./media/threat-detection/azure-threat-detection-fig1.png)
 
@@ -38,7 +38,7 @@ Identity Protection pomocí adaptivních algoritmů strojového učení a heuris
 
 Azure Active Directory Identity Protection je více než Nástroj pro monitorování a vytváření sestav. V závislosti na detekcích rizik aplikace Identity Protection počítá úroveň rizika uživatele pro každého uživatele, takže můžete nakonfigurovat zásady založené na rizicích, které budou automaticky chránit identity vaší organizace.
 
-Tyto rizikové zásady, kromě dalších [ovládacích prvků podmíněného přístupu](../../active-directory/active-directory-conditional-access-azure-portal.md) , které jsou poskytovány Azure Active Directory a [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md), mohou automaticky blokovat nebo nabízet adaptivní nápravné akce, které zahrnují obnovení hesla a vynucení vícefaktorového ověřování.
+Tyto rizikové zásady, kromě dalších [ovládacích prvků podmíněného přístupu](../../active-directory/conditional-access/overview.md) , které jsou poskytovány Azure Active Directory a [EMS](../../active-directory/conditional-access/overview.md), mohou automaticky blokovat nebo nabízet adaptivní nápravné akce, které zahrnují obnovení hesla a vynucení vícefaktorového ověřování.
 
 ### <a name="identity-protection-capabilities"></a>Možnosti ochrany identity
 
@@ -46,31 +46,31 @@ Azure Active Directory Identity Protection je více než Nástroj pro monitorov�
 
 Příklady některých způsobů, jak může Azure Identity Protection pomáhat zabezpečit vaše účty a identity, zahrnují:
 
-[Zjišťování detekcí rizik a rizikových účtů](../../active-directory/identity-protection/overview.md)
+[Zjišťování detekcí rizik a rizikových účtů](../../active-directory/identity-protection/overview-identity-protection.md)
 -   Zjišťuje šest typů detekce rizik pomocí strojového učení a heuristických pravidel.
 -   Vypočítat úrovně rizika uživatele.
 -   Poskytněte vlastní doporučení pro zlepšení celkového stav zabezpečení tím, že zvýrazníte slabá místa.
 
-[Zkoumání zjištění rizik](../../active-directory/identity-protection/overview.md)
+[Zkoumání zjištění rizik](../../active-directory/identity-protection/overview-identity-protection.md)
 -   Odesílat oznámení pro detekci rizik.
 -   Prozkoumejte detekci rizik pomocí relevantních a kontextových informací.
 -   Poskytněte základní pracovní postupy pro sledování vyšetřování.
 -   Poskytněte snadný přístup k opravám, jako je resetování hesla.
 
-[Zásady podmíněného přístupu na základě rizik](../../active-directory/identity-protection/overview.md)
+[Zásady podmíněného přístupu na základě rizik](../../active-directory/identity-protection/overview-identity-protection.md)
 -   Omezení rizikových přihlášení blokováním přihlášení nebo vyžádáním výzev pro službu Multi-Factor Authentication.
 -   Blokování nebo zabezpečení rizikových uživatelských účtů.
 -   Vyžaduje, aby se uživatelé zaregistrovali pro službu Multi-Factor Authentication.
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-S [Azure Active Directory Privileged identity managementem (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)můžete spravovat, řídit a monitorovat přístup v rámci vaší organizace. Tato funkce zahrnuje přístup k prostředkům v Azure AD a dalších online služby Microsoftu, jako je například Office 365 nebo Microsoft Intune.
+S [Azure Active Directory Privileged identity managementem (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)můžete spravovat, řídit a monitorovat přístup v rámci vaší organizace. Tato funkce zahrnuje přístup k prostředkům v Azure AD a dalších online služby Microsoftu, jako je Microsoft 365 nebo Microsoft Intune.
 
 ![Diagram Azure AD Privileged Identity Management](./media/threat-detection/azure-threat-detection-fig2.png)
 
 PIM vám pomůže:
 
--   Získejte výstrahy a sestavy týkající se správců služby Azure AD a řízení přístupu JIT (just-in-time) do Microsoftu online služby, jako je například Office 365 a Intune.
+-   Získejte výstrahy a sestavy týkající se správců služby Azure AD a řízení přístupu JIT (just-in-time) do Microsoftu online služby, jako je například Microsoft 365 a Intune.
 
 -   Získejte sestavy o historii přístupu správce a změnách v přiřazeních správce.
 
@@ -80,50 +80,31 @@ PIM vám pomůže:
 
 [Protokoly Azure monitor](../../azure-monitor/index.yml) jsou cloudové řešení Microsoftu pro správu IT, které pomáhá spravovat a chránit místní i cloudovou infrastrukturu. Vzhledem k tomu, že protokoly Azure Monitor jsou implementovány jako cloudová služba, můžete ji rychle provozovat a s minimálními investicemi do služeb infrastruktury. Nové funkce zabezpečení se dodávají automaticky a šetří průběžné údržby a náklady na upgrade.
 
-Kromě poskytování cenných služeb vlastním způsobem Azure Monitor protokoly mohou integrovat s součástmi nástroje System Center, jako je například [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), a rozšířit tak stávající investice do cloudu do cloudu. Protokoly nástroje System Center a Azure Monitor můžou spolupracovat a poskytovat kompletní hybridní prostředí pro správu.
+Kromě poskytování cenných služeb vlastním způsobem Azure Monitor protokoly mohou integrovat s součástmi nástroje System Center, jako je například [System Center Operations Manager](/archive/blogs/cbernier/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started), a rozšířit tak stávající investice do cloudu do cloudu. Protokoly nástroje System Center a Azure Monitor můžou spolupracovat a poskytovat kompletní hybridní prostředí pro správu.
 
 ### <a name="holistic-security-and-compliance-posture"></a>Holistický zabezpečení a dodržování předpisů stav
 
-[Řídicí panel Log Analytics Security and Audit](../../security-center/security-center-intro.md) poskytuje ucelený přehled o stav zabezpečení IT vaší organizace s integrovanými vyhledávacími dotazy pro významné problémy, které vyžadují vaši pozornost. Řídicí panel Security and Audit je domovská obrazovka pro všechno, co souvisí se zabezpečením v protokolech Azure Monitor. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Můžete také zobrazit všechny události za posledních 24 hodin, 7 dní nebo jakýkoli jiný vlastní časový rámec.
+[Azure Security Center](../../security-center/security-center-introduction.md) poskytuje ucelený přehled o stav zabezpečení IT vaší organizace s integrovanými vyhledávacími dotazy pro významné problémy, které vyžadují vaši pozornost. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Můžete si také zobrazit všechny události za posledních 24 hodin, 7 dní nebo jakýkoli jiný vlastní časový rámec.
 
 Protokoly Azure Monitor vám pomůžou rychle a snadno pochopit celkové staví zabezpečení jakéhokoli prostředí, a to vše v kontextu provozu IT, včetně posouzení aktualizací softwaru, antimalwarového posouzení a standardních hodnot konfigurace. Data protokolu zabezpečení jsou snadno dostupná pro zjednodušení procesů auditu zabezpečení a dodržování předpisů.
 
-![Řídicí panel Security and Audit Log Analytics](./media/threat-detection/azure-threat-detection-fig3.jpg)
-
-Řídicí panel Security and Audit Log Analytics se organizuje do čtyř hlavních kategorií:
-
--   **Domény zabezpečení**: umožňuje podrobněji prozkoumat záznamy zabezpečení v průběhu času. přístup k posouzení malwaru; posouzení aktualizací; zobrazení informací o zabezpečení, identitě a přístupu k síti; Zobrazit počítače s událostmi zabezpečení; a rychlý přístup k řídicímu panelu Azure Security Center.
-
--   **Významné problémy**: umožňuje rychle identifikovat počet aktivních problémů a závažnost problémů.
-
--   **Detekce (Preview)**: umožňuje identifikovat vzory útoků tím, že zobrazuje výstrahy zabezpečení při jejich výskytu na vašich prostředcích.
-
--   **Analýza hrozeb**: umožňuje identifikovat vzory útoků tím, že zobrazuje celkový počet serverů s odchozím škodlivým provozem IP, typ škodlivé hrozby a mapa umístění IP adres.
-
--   **Běžné dotazy na zabezpečení**: seznam nejběžnějších bezpečnostních dotazů, které můžete použít k monitorování vašeho prostředí. Když vyberete libovolný dotaz, otevře se podokno hledání a zobrazí se výsledky tohoto dotazu.
-
 ### <a name="insight-and-analytics"></a>Přehledy a analýzy
-V centru [Azure monitor protokolů](../../log-analytics/log-analytics-queries.md) je úložiště hostované v Azure.
+V centru [Azure monitor protokolů](../../azure-monitor/logs/log-query-overview.md) je úložiště hostované v Azure.
 
 ![Diagram Insight and Analytics](./media/threat-detection/azure-threat-detection-fig4.png)
 
 Data se shromažďují do úložiště z připojených zdrojů tak, že se nakonfigurují zdroje dat a přidávají řešení do vašeho předplatného.
 
-![Řídicí panel protokolů Azure Monitor](./media/threat-detection/azure-threat-detection-fig5.png)
-
 Zdroje dat a řešení každý vytvoří samostatné typy záznamů s vlastní sadou vlastností, ale můžete je i nadále analyzovat v dotazech do úložiště. Stejné nástroje a metody můžete použít pro práci s nejrůznějšími daty, která jsou shromažďována různými zdroji.
 
-
 Většina vašich interakcí s protokoly Azure Monitor je prostřednictvím Azure Portal, která se spouští v jakémkoli prohlížeči a poskytuje přístup k nastavení konfigurace a několika nástrojům pro analýzy shromážděných dat a práci s nimi. Z portálu můžete použít:
-* [Hledání v protokolu](../../log-analytics/log-analytics-queries.md) , kde můžete vytvářet dotazy pro analýzu shromážděných dat.
-* [Řídicí panely](../../azure-monitor/learn/tutorial-logs-dashboards.md), které můžete přizpůsobit pomocí grafických zobrazení vašich nejcennějších hledání.
-* [Řešení](../../monitoring/monitoring-solutions.md), která poskytují další funkce a analytické nástroje.
-
-![Analytické nástroje](./media/threat-detection/azure-threat-detection-fig6.png)
+* [Hledání v protokolu](../../azure-monitor/logs/log-query-overview.md) , kde můžete vytvářet dotazy pro analýzu shromážděných dat.
+* [Řídicí panely](../../azure-monitor/visualize/tutorial-logs-dashboards.md), které můžete přizpůsobit pomocí grafických zobrazení vašich nejcennějších hledání.
+* [Řešení](../../azure-monitor/insights/solutions.md), která poskytují další funkce a analytické nástroje.
 
 Řešení přidávají funkce do protokolů Azure Monitor. Primárně běží v cloudu a poskytují analýzu dat, která jsou shromážděna v úložišti Log Analytics. Řešení mohou také definovat nové typy záznamů, které mají být shromažďovány, které lze analyzovat pomocí hledání v protokolu nebo pomocí dalšího uživatelského rozhraní, které řešení poskytuje v řídicím panelu Log Analytics.
 
-Řídicí panel Security and Audit je příkladem těchto typů řešení.
+Security Center je příkladem těchto typů řešení.
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automatizace a řízení: výstraha o posunech konfigurace zabezpečení
 
@@ -135,27 +116,31 @@ Můžete vytvářet a spravovat prostředky DSC hostované v Azure a použít je
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center pomáhá chránit vaše prostředky Azure. Poskytuje integrované monitorování zabezpečení a správu zásad napříč předplatnými Azure. V rámci služby můžete definovat zásady pro větší členitost v předplatných Azure i [skupinám prostředků](../../azure-resource-manager/management/manage-resources-portal.md) .
+Azure Security Center pomáhá chránit vaše hybridní cloudové prostředí. Díky průběžnému posuzování zabezpečení připojených prostředků je možné poskytnout podrobná doporučení pro zabezpečení zjištěných chyb zabezpečení.
 
-![Diagram Azure Security Center](./media/threat-detection/azure-threat-detection-fig8.png)
+Doporučení pro Security Center jsou založená na [testu zabezpečení Azure](../benchmarks/introduction.md) – na základě zásad zabezpečení a osvědčených postupů určených pro Azure, které jsou založené na běžných architekturách dodržování předpisů. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích od [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se zaměřením na zabezpečení zaměřené na Cloud.
+
+CWPP (Integrated Cloud Protection Platform), **Azure Defender**, přináší pokročilou a inteligentní ochranu vašich Azure a hybridních prostředků a úloh. Security Center Povolení služby Azure Defender přináší řadu dalších funkcí zabezpečení (viz [Úvod do Azure Defenderu](../../security-center/azure-defender.md)). Řídicí panel Azure Defender v Security Center poskytuje viditelnost a kontrolu nad funkcemi CWP pro vaše prostředí:
+
+:::image type="content" source="../../security-center/media/azure-defender/sample-defender-dashboard.png" alt-text="Příklad řídicího panelu Azure Defenderu" lightbox="../../security-center/media/azure-defender/sample-defender-dashboard.png":::
 
 Výzkumníci v oblasti zabezpečení ze společnosti Microsoft neustále vyhledávají nové hrozby. Mají přístup k rozsáhlé sadě telemetrických údajů získávaných díky globálního prezenci společnosti Microsoft v cloudových i místních prostředích. Tento rozsáhlý a různorodý soubor datových sad umožňuje společnosti Microsoft objevovat nová schémata a trendy útoků v rámci jejích místních produktů pro zákazníky a podniky a rovněž i v rámci online služeb.
 
 Security Center tak můžou rychle aktualizovat algoritmy detekce, jako by útočníci vydávat nové a stále důmyslnější zneužití. Tento přístup vám pomůže udržet si krok s rychlým přesunutím ohroženého prostředí.
 
-![Security Center detekce hrozeb](./media/threat-detection/azure-threat-detection-fig9.jpg)
+:::image type="content" source="../../security-center/media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Seznam výstrah zabezpečení Azure Security Center":::
 
-Detekce hrozeb ve službě Security Center funguje tak, že se automaticky shromažďují informace o zabezpečení ze všech prostředků Azure, ze sítě a připojených partnerských řešení. Analyzuje tyto informace a koreluje informace z různých zdrojů, aby bylo možné identifikovat hrozby.
+V Azure Defenderu se automaticky shromažďují informace o zabezpečení z vašich prostředků, sítě a připojených partnerských řešení. Analyzuje tyto informace a koreluje informace z různých zdrojů, aby bylo možné identifikovat hrozby.
 
-U výstrah zabezpečení se ve službě Security Center stanoví priority spolu s doporučením, jak danou hrozbu vyřešit.
+Výstrahy v Azure Defenderu se stanovují Security Center společně s doporučeními, jak tyto hrozby napravit.
 
-Služba Security Center využívá pokročilou analýzu zabezpečení, která daleko překračuje možnosti detekce založené na signaturách či příznacích. Průlomy v technologiích pro velké objemy dat a [strojové učení](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) se používají k vyhodnocení událostí napříč celými prostředky infrastruktury cloudu. Pokročilá analýza dokáže detekovat hrozby, které by nebylo možné identifikovat prostřednictvím ručních přístupů a předpovědi vývoje útoků. Tyto typy analýz zabezpečení jsou pokryté v dalších oddílech.
+Služba Security Center využívá pokročilou analýzu zabezpečení, která daleko překračuje možnosti detekce založené na signaturách či příznacích. K vyhodnocení událostí v celém cloudu se používají průlomy v technologiích pro velké objemy dat a [strojové učení](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) . Pokročilá analýza dokáže detekovat hrozby, které by nebylo možné identifikovat prostřednictvím ručních přístupů a předpovídat vývoj útoků. Tyto typy analýz zabezpečení jsou pokryté v dalších oddílech.
 
 ### <a name="threat-intelligence"></a>Analýza hrozeb
 
 Microsoft má přístup k obrovské množství globálních analýz hrozeb.
 
-Telemetrie se nachází z různých zdrojů, jako je Azure, Office 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, DCU (Microsoft Digital Zločins Unit) a Microsoft Security Response Center (MSRC).
+Telemetrie se nachází z různých zdrojů, jako jsou Azure, Microsoft 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, DCU (Microsoft Digital Zločins Unit) a Microsoft Security Response Center (MSRC).
 
 ![Zjištění analýzy hrozeb](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
@@ -167,7 +152,7 @@ Výzkumníki také dostanou informace analýzy hrozeb, které jsou sdíleny mezi
 
 -   **Detekce odchozích DDoS a botnetu**: běžným cílem útoků, které cílí na cloudové prostředky, je použití výpočetní síly těchto prostředků ke spouštění dalších útoků.
 
--   **Nové analytické servery a**virtuální počítače pro chování: po ohrožení bezpečnosti serveru nebo virtuálního počítače využívají útočníci širokou škálu technik pro spouštění škodlivého kódu v tomto systému, přičemž se vyhnete detekci, zajištění Persistence a už nemusí komplikovaně řízení zabezpečení.
+-   **Nové analytické servery a** virtuální počítače pro chování: po ohrožení bezpečnosti serveru nebo virtuálního počítače využívají útočníci širokou škálu technik pro spouštění škodlivého kódu v tomto systému, přičemž se vyhnete detekci, zajištění Persistence a už nemusí komplikovaně řízení zabezpečení.
 
 -   **Azure SQL Database detekce hrozeb**: detekce hrozeb pro Azure SQL Database, která identifikuje neobvyklé databázové aktivity, které označují neobvyklé a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
 
@@ -190,7 +175,7 @@ Možné příklady:
 
 -   **Škodlivé skripty PowerShellu**: útočníci můžou použít prostředí PowerShell k provádění škodlivého kódu na cílových virtuálních počítačích pro různé účely. Služba Security Center kontroluje aktivitu prostředí PowerShell a hledá známky podezřelé aktivity.
 
--   **Odchozí útoky:** Útočníci často cílí na cloudové prostředky s cílem využít je k dalším útokům. Ohrožené virtuální počítače mohou být například použity ke spuštění útoků hrubou silou proti jiným virtuálním počítačům, k odesílání spamu nebo k prohledávání otevřených portů a dalších zařízení na internetu. Služba Security Center pomocí strojového učení, které uplatňuje na síťový provoz, dokáže detekovat odchozí síťovou komunikaci vybočující z normy. Když se zjistí spam, Security Center taky koreluje neobvyklý e-mailový přenos pomocí inteligentních dat z Office 365 a určí, jestli se e-mail nejspíš nekalé nebo výsledek legitimní e-mailové kampaně.
+-   **Odchozí útoky:** Útočníci často cílí na cloudové prostředky s cílem využít je k dalším útokům. Ohrožené virtuální počítače mohou být například použity ke spuštění útoků hrubou silou proti jiným virtuálním počítačům, k odesílání spamu nebo k prohledávání otevřených portů a dalších zařízení na internetu. Služba Security Center pomocí strojového učení, které uplatňuje na síťový provoz, dokáže detekovat odchozí síťovou komunikaci vybočující z normy. Když se zjistí spam, Security Center taky koreluje neobvyklý e-mailový přenos pomocí inteligentních dat z Microsoft 365 a určí, jestli se e-mail nejspíš nekalé nebo výsledek legitimní e-mailové kampaně.
 
 ### <a name="anomaly-detection"></a>Detekce anomálií
 
@@ -212,7 +197,7 @@ Azure Security Center pracuje se službou Security Research a týmy pro datové 
 
 Tato kombinovaná snaha má za následek nové a vylepšené detekce, na které můžete okamžitě využít výhody. K dispozici není žádná akce, kterou je potřeba provést.
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>Funkce Rozšířené detekce hrozeb: další služby Azure
+## <a name="threat-protection-features-other-azure-services"></a>Funkce ochrany před hrozbami: další služby Azure
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Virtuální počítače: Microsoft Antimalware
 
@@ -268,7 +253,7 @@ SQL Database detektory hrozeb používají jednu z následujících metodologií
 
 ### <a name="application-gateway-web-application-firewall"></a>Application Gateway Firewall webových aplikací
 
-[Firewall webových aplikací (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) je funkce služby [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce [řízení doručování aplikací](https://kemptechnologies.com/in/application-delivery-controllers) . Firewall webových aplikací to dělá tak, že je chrání před většinou z [OWASP (Open Web Application Security Project) hlavních 10 běžných webových chyb zabezpečení](https://owasp.org/www-project-top-ten/).
+[Firewall webových aplikací (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) je funkce služby [Azure Application Gateway](../../web-application-firewall/ag/ag-overview.md) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce [řízení doručování aplikací](https://kemptechnologies.com/in/application-delivery-controllers) . Firewall webových aplikací to dělá tak, že je chrání před většinou z [OWASP (Open Web Application Security Project) hlavních 10 běžných webových chyb zabezpečení](https://owasp.org/www-project-top-ten/).
 
 ![Application Gateway diagram firewallu webových aplikací](./media/threat-detection/azure-threat-detection-fig13.png)
 
@@ -304,7 +289,7 @@ Rozhraní API pro detekci anomálií je rozhraní API, které je užitečné pro
 
 [Rozhraní API pro detekci anomálií](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) dokáže detekovat následující typy anomálií v datech časových řad:
 
--   **Špičky a**nedodržení: Pokud sledujete počet neúspěšných přihlášení ke službě nebo počtu rezervací na webu elektronického obchodování, neobvyklé špičky nebo nedodržení můžou znamenat útoky na zabezpečení nebo přerušení služeb.
+-   **Špičky a** nedodržení: Pokud sledujete počet neúspěšných přihlášení ke službě nebo počtu rezervací na webu elektronického obchodování, neobvyklé špičky nebo nedodržení můžou znamenat útoky na zabezpečení nebo přerušení služeb.
 
 -   **Pozitivní a negativní trendy**: když sledujete využití paměti v výpočetním prostředí, zmenší se velikost volné paměti, což znamená potenciální nevracení paměti. V případě monitorování délky fronty služeb může trvalý vzestupný trend označovat základní problém se softwarem.
 
@@ -336,7 +321,7 @@ Rozhraní API pro detekci anomálií je efektivní a efektivní řešení pro š
 
 ### <a name="cloud-app-security"></a>Cloud App Security
 
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) je kritická součást sady Microsoft Cloud Security Stack. Jde o komplexní řešení, které může vaší organizaci pomáhat při přesunu, abyste plně využili výhod svých cloudových aplikací. Díky lepšímu přehledu o aktivitách zajišťuje kontrolu. Zvyšuje také úroveň ochrany důležitých dat napříč cloudovými aplikacemi.
+[Cloud App Security](/cloud-app-security/what-is-cloud-app-security) je kritická součást sady Microsoft Cloud Security Stack. Jde o komplexní řešení, které může vaší organizaci pomáhat při přesunu, abyste plně využili výhod svých cloudových aplikací. Díky lepšímu přehledu o aktivitách zajišťuje kontrolu. Zvyšuje také úroveň ochrany důležitých dat napříč cloudovými aplikacemi.
 
 Díky nástrojům, které usnadňují odhalení stínového IT, vyhodnocování rizik, vynucování zásad, prošetřování aktivit a zastavení hrozeb, může vaše organizace bezpečně přejít na cloudové řešení a zároveň si zachovat kontrolu nad důležitými daty.
 
@@ -363,7 +348,7 @@ Cloud App Security integruje viditelnost s vaším cloudem:
 
 Při shromažďování dat z těchto zdrojů Cloud App Security spouští sofistikovanou analýzu. Okamžitě vás upozorní na neobvyklé aktivity a umožní vám podrobně prozkoumat cloudové prostředí. V Cloud App Security můžete nakonfigurovat zásady a používat je k ochraně všechno, co máte ve svém cloudovém prostředí.
 
-## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Pokročilé možnosti detekce hrozeb od jiných výrobců prostřednictvím Azure Marketplace
+## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>Možnosti ochrany před hrozbami třetích stran prostřednictvím Azure Marketplace
 
 ### <a name="web-application-firewall"></a>Firewall webových aplikací
 
@@ -383,6 +368,6 @@ Příklady bran firewall webových aplikací, které jsou k dispozici v Azure Ma
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Reakce na dnešní hrozby](../../security-center/security-center-alerts-overview.md#respond-threats): pomáhá identifikovat aktivní hrozby, které cílí na vaše prostředky Azure, a poskytuje přehledy, které potřebujete k rychlé reakci.
+- [Reakce na dnešní hrozby](../../security-center/security-center-managing-and-responding-alerts.md): pomáhá identifikovat aktivní hrozby, které cílí na vaše prostředky Azure, a poskytuje přehledy, které potřebujete k rychlé reakci.
 
 - [Azure SQL Database detekce hrozeb](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): pomáhá řešit vaše obavy týkající se potenciálních hrozeb pro vaše databáze.

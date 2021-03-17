@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c3c597c172c7ec21c2d46e89602abf87d750127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc7bcab04da005fd0d46d18e7b708dcb1c9d58e5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608173"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89230513"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrace protokolů Azure Active Directory s využitím ArcSight pomocí Azure Monitor
 
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak směrovat protokoly Azure AD do ArcSight pomoc
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
-* Centrum událostí Azure, které obsahuje protokoly aktivit služby Azure AD. Naučte se, jak [streamovat protokoly aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Centrum událostí Azure, které obsahuje protokoly aktivit služby Azure AD. Naučte se, jak [streamovat protokoly aktivit do centra událostí](./tutorial-azure-monitor-stream-logs-to-event-hub.md). 
 * Nakonfigurovaná instance ArcSight syslog NG démon SmartConnector (SmartConnector) nebo ArcSight Load Balancer. Pokud jsou události odesílány do ArcSight Load Balancer, jsou v důsledku Load Balancer odesílány do SmartConnector.
 
 Stáhněte si a otevřete [Průvodce konfigurací pro ArcSight SmartConnector pro centrum událostí Azure monitor](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292). Tato příručka obsahuje kroky potřebné k instalaci a konfiguraci ArcSight SmartConnector pro Azure Monitor. 

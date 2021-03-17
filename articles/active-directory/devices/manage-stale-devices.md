@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184937"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393672"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Postupy: Správa zastaralých zařízení v Azure AD
 
@@ -37,7 +37,7 @@ Zastaralá zařízení ve službě Azure AD mohou kolidovat s obecnými zásadam
 
 ## <a name="detect-stale-devices"></a>Detekce zastaralých zařízení
 
-Protože se zastaralé zařízení definuje jako registrované zařízení, které se po určitou dobu nepoužívá pro přístup ke cloudovým aplikacím, vyžaduje detekce zastaralých zařízení nějakou vlastnost související s časovým razítkem. Ve službě Azure AD má tato vlastnost název **ApproximateLastLogonTimestamp**, neboli **časové razítko aktivity**. Pokud rozdíl mezi nynějškem a hodnotou **časového razítka aktivity** překročí dobu, kterou jste definovali pro aktivní zařízení, považuje se zařízení za zastaralé. Toto **časové razítko aktivity** je teď ve veřejné verzi Preview.
+Protože se zastaralé zařízení definuje jako registrované zařízení, které se po určitou dobu nepoužívá pro přístup ke cloudovým aplikacím, vyžaduje detekce zastaralých zařízení nějakou vlastnost související s časovým razítkem. Ve službě Azure AD má tato vlastnost název **ApproximateLastLogonTimestamp** , neboli **časové razítko aktivity**. Pokud rozdíl mezi nynějškem a hodnotou **časového razítka aktivity** překročí dobu, kterou jste definovali pro aktivní zařízení, považuje se zařízení za zastaralé. Toto **časové razítko aktivity** je teď ve veřejné verzi Preview.
 
 ## <a name="how-is-the-value-of-the-activity-timestamp-managed"></a>Jak se hodnota časového razítka aktivity spravuje?  
 
@@ -55,11 +55,11 @@ Ke získání hodnoty časového razítka aktivity máte dvě možnosti:
 
 - Sloupec **Aktivita** na [stránce se zařízeními](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) na webu Azure Portal
 
-    ![Časové razítko aktivity](./media/manage-stale-devices/01.png)
+    :::image type="content" source="./media/manage-stale-devices/01.png" alt-text="Snímek obrazovky stránky v Azure Portal výpis názvu, vlastníka a dalších informací o zařízení. V jednom sloupci se zobrazuje časové razítko aktivity." border="false":::
 
 - Rutina [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice)
 
-    ![Časové razítko aktivity](./media/manage-stale-devices/02.png)
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="Snímek obrazovky zobrazující výstup z příkazového řádku Je zvýrazněný jeden řádek a obsahuje časové razítko pro hodnotu ApproximateLastLogonTimeStamp." border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>Plánování úklidu zastaralých zařízení
 
@@ -147,7 +147,7 @@ Pokud máte ve svém adresáři velký počet zařízení, použijte filtr časo
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
@@ -163,9 +163,9 @@ Pokud je to nakonfigurováno, jsou klíče nástroje BitLocker pro zařízení s
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Proč se mám starat o zařízení s Windows autopilotem?
 
 Když odstraníte zařízení Azure AD, které bylo přidruženo k objektu Windows autopilotu, může dojít k následujícím třem scénářům, pokud bude zařízení v budoucnu účelné:
-- Díky uživatelsky nasazeným samoobslužným nasazením Windows bez použití prázdných šetrnější se vytvoří nové zařízení Azure AD, které ale nebude označené ZTDID.
+- U uživatelských nasazení řízených pomocí Windows autopilotu bez použití předběžného zřizování se vytvoří nové zařízení Azure AD, které ale nebude označené ZTDID.
 - S nasazením autopilotního režimu automatického nasazení Windows se nezdaří, protože nejde najít přidružení zařízení Azure AD.  (Toto je bezpečnostní mechanismus, který zajistí, že se zařízení bez jakýchkoli přihlašovacích údajů pokusí připojit k Azure AD.) Selhání bude označovat neshodu ZTDID.
-- S bílými šetrnější nasazeními Windows autopilotu se nezdaří, protože se nepovedlo najít přidružené zařízení Azure AD. (Na pozadí budou šetrnější nasazení používat stejný proces režimu samoobslužného nasazení, aby vynutila stejné mechanismy zabezpečení.)
+- S předběžnými nasazeními Windows autopilotu se nezdaří, protože se nepovedlo najít přidružené zařízení Azure AD. (Na pozadí předběžných nasazení používá stejný proces režimu samoobslužného nasazení, aby vynutila stejné mechanismy zabezpečení.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Jak poznám všechny typy připojených zařízení?
 
@@ -175,9 +175,9 @@ Další informace o různých typech najdete v [přehledu správy zařízení](o
 
 Všechna ověřování, kdy se zařízení používá k ověřování vůči službě Azure AD, budou odepřena. Obvyklými příklady jsou:
 
-- **Hybridní zařízení připojené k Azure AD** – uživatelé můžou být schopni použít zařízení k přihlášení do své místní domény. Nemají ale přístup k prostředkům Azure AD, jako je Office 365.
+- **Hybridní zařízení připojené k Azure AD** – uživatelé můžou být schopni použít zařízení k přihlášení do své místní domény. Nemůžou ale získat přístup k prostředkům Azure AD, jako je Microsoft 365.
 - **Zařízení připojená k Azure AD** – uživatelé nemůžou používat zařízení k přihlášení. 
-- **Mobilní zařízení** – uživatel nemá přístup k prostředkům Azure AD, jako je Office 365. 
+- **Mobilní zařízení** – uživatel nemá přístup k prostředkům služby Azure AD, jako je Microsoft 365. 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -2,18 +2,18 @@
 title: 'Kurz: Vytvoření vlastního analyzátoru'
 titleSuffix: Azure Cognitive Search
 description: Naučte se, jak vytvořit vlastní analyzátor pro zlepšení kvality výsledků hledání v Azure Kognitivní hledání.
-manager: liamca
+manager: luisca
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 01/29/2021
+ms.openlocfilehash: f4bde98cfc772f5a80bb52c2e4bc2f5a9c28c78d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021881"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097653"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Kurz: Vytvoření vlastního analyzátoru pro telefonní čísla
 
@@ -21,7 +21,7 @@ ms.locfileid: "87021881"
 
 V některých případech, například s bezplatným textovým polem, stačí vybrat správný [analyzátor jazyka](index-add-language-analyzers.md) , čímž dojde ke zlepšení výsledků hledání. Některé scénáře, jako je přesně hledání telefonních čísel, adres URL nebo e-mailů, ale mohou vyžadovat použití vlastních analyzátorů.
 
-V tomto kurzu použijeme post a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/) služby Azure kognitivní hledání k těmto akcím:
+V tomto kurzu použijeme post a [rozhraní REST API](/rest/api/searchservice/) služby Azure kognitivní hledání k těmto akcím:
 
 > [!div class="checklist"]
 > * Vysvětlit, jak analyzátory fungují
@@ -29,7 +29,7 @@ V tomto kurzu použijeme post a [rozhraní REST API](https://docs.microsoft.com/
 > * Testování způsobu, jakým vlastní text analyzátoru tokenizes
 > * Vytvoření samostatných analyzátorů pro indexování a hledání k dalšímu zlepšení výsledků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu jsou vyžadovány následující služby a nástroje.
 
@@ -51,7 +51,7 @@ V dalším kroku budete muset znát název vyhledávací služby a jejího klí�
 
 Potom spusťte post a importujte kolekci, kterou jste stáhli z [Azure-Samples/Azure-Search-post-Samples](https://github.com/Azure-Samples/azure-search-postman-samples).
 
-Pokud chcete kolekci importovat, pokračujte na **Files**  >  **Import**souborů a pak vyberte soubor kolekce, který chcete importovat.
+Pokud chcete kolekci importovat, pokračujte na   >  **Import** souborů a pak vyberte soubor kolekce, který chcete importovat.
 
 Pro každý požadavek budete potřebovat:
 
@@ -59,9 +59,9 @@ Pro každý požadavek budete potřebovat:
 
 1. Nahraďte `<YOUR-ADMIN-API-KEY>` primárním nebo sekundárním klíčem vaší vyhledávací služby.
 
-  ![Adresa URL a záhlaví žádosti post](media/search-get-started-postman/postman-url.png "Adresa URL a záhlaví žádosti post")
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Adresa URL a záhlaví žádosti post" border="false":::
 
-Pokud nejste obeznámeni s nástrojem post, přečtěte si téma [prozkoumání rozhraní REST API služby Azure kognitivní hledání pomocí služby post](search-get-started-postman.md).
+Pokud nejste obeznámeni s nástrojem post, přečtěte si téma [prozkoumávání rozhraní REST API pro Azure kognitivní hledání](search-get-started-rest.md).
 
 ## <a name="3---create-an-initial-index"></a>3. vytvoření počátečního indexu
 
@@ -201,7 +201,7 @@ Tento dotaz vrátí **tři ze čtyř očekávaných výsledků,** ale vrátí ta
 }
 ```
 
-Nyní vyhledáme číslo bez formátování.`4255550100`
+Nyní vyhledáme číslo bez formátování. `4255550100`
 
 ```http
 GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic-index/docs?api-version=2019-05-06&search=4255550100
@@ -225,7 +225,7 @@ Pokud tyto výsledky zjistíte matoucí, nejste sami. V další části se dig, 
 
 ## <a name="4---debug-search-results"></a>4 – výsledky hledání ladění
 
-Pro pochopení těchto výsledků hledání je důležité nejprve pochopit, jak analyzátory fungují. Odtud můžeme otestovat výchozí analyzátor pomocí [rozhraní analyzovat text API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a pak vytvořit analyzátor, který splňuje naše potřeby.
+Pro pochopení těchto výsledků hledání je důležité nejprve pochopit, jak analyzátory fungují. Odtud můžeme otestovat výchozí analyzátor pomocí [rozhraní analyzovat text API](/rest/api/searchservice/test-analyzer) a pak vytvořit analyzátor, který splňuje naše potřeby.
 
 ### <a name="how-analyzers-work"></a>Jak analyzátory fungují
 
@@ -239,11 +239,11 @@ Analyzátory se skládají ze tří součástí:
 
 V následujícím diagramu vidíte, jak budou tyto tři komponenty spolupracovat, aby tokenizovat větu:
 
-  ![Diagram procesu analyzátoru](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Diagram procesu analyzátoru, který tokenizovat větu":::
 
 Tyto tokeny se pak ukládají v obráceném indexu, který umožňuje rychlé fulltextové vyhledávání.  Obrácený index umožňuje fulltextové vyhledávání podle mapování všech jedinečných podmínek extrahovaných během lexikální analýzy do dokumentů, ve kterých se vyskytují. Příklad můžete vidět v následujícím diagramu:
 
-  ![Příklad obráceného indexu](media/tutorial-create-custom-analyzer/inverted-index-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Příklad obráceného indexu":::
 
 Při hledání podmínek uložených v obráceném indexu se objeví vše hledání. Když uživatel vydá dotaz:
 
@@ -251,7 +251,7 @@ Při hledání podmínek uložených v obráceném indexu se objeví vše hledá
 1. Obrácený index pak vyhledá dokumenty s vyhovujícími podmínkami.
 1. Nakonec jsou načtené dokumenty seřazeny podle [algoritmu podobnosti](index-ranking-similarity.md).
 
-  ![Diagram procesu analyzátoru](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Diagram podobnosti pořadí procesů analyzátoru":::
 
 Pokud se výrazy dotazu neshodují s podmínkami v obráceném indexu, výsledky se nevrátí. Další informace o tom, jak dotazy fungují, najdete v tomto článku pro [fulltextové vyhledávání](search-lucene-query-architecture.md).
 
@@ -260,7 +260,7 @@ Pokud se výrazy dotazu neshodují s podmínkami v obráceném indexu, výsledky
 
 ### <a name="test-analyzer-using-the-analyze-text-api"></a>Test Analyzer pomocí rozhraní API pro analýzu textu
 
-Azure Kognitivní hledání poskytuje [rozhraní API pro analýzu textu](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) , které umožňuje testovat analyzátory, abyste porozuměli tomu, jak zpracovávají text.
+Azure Kognitivní hledání poskytuje [rozhraní API pro analýzu textu](/rest/api/searchservice/test-analyzer) , které umožňuje testovat analyzátory, abyste porozuměli tomu, jak zpracovávají text.
 
 Rozhraní API pro analýzu textu se nazývá pomocí následujících požadavků:
 
@@ -270,8 +270,8 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
   api-key: <YOUR-ADMIN-API-KEY>
 
   {
-      "text": "(425) 555-0100",
-      "analyzer": "standard.lucene"
+    "text": "(425) 555-0100",
+    "analyzer": "standard.lucene"
   }
 ```
 
@@ -404,7 +404,7 @@ I když pro tento scénář nepotřebujeme použít žádný z těchto filtrů, 
 
 [Filtr tokenů nGram_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenFilter.html) rozdělí tokeny do n-gramů dané velikosti na základě `minGram` `maxGram` parametrů a.
 
-Pro nástroj Phone Analyzer nastavíme `minGram` `3` , že je to nejkratší podřetězec, který očekáváte, že uživatelé budou hledat. `maxGram`je nastavená na, aby se `20` zajistilo, že všechna telefonní čísla i s rozšířeními se budou vejít do jedné n-gramu.
+Pro nástroj Phone Analyzer nastavíme `minGram` `3` , že je to nejkratší podřetězec, který očekáváte, že uživatelé budou hledat. `maxGram` je nastavená na, aby se `20` zajistilo, že všechna telefonní čísla i s rozšířeními se budou vejít do jedné n-gramu.
 
  Unfortunate vedlejším účinkem n-gramů je, že se vrátí některá falešně pozitivní. V kroku 7 tuto chybu vyřešíme vytvořením samostatné analyzátoru pro hledání, která nezahrnuje filtr tokenů n-gramů.
 
@@ -586,7 +586,7 @@ I když analyzátor definovaný v tomto kurzu nabízí jednoduché řešení pro
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete na konci projektu. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Když pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete na konci projektu. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

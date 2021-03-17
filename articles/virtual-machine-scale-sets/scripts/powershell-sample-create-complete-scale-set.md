@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: powershell
 ms.date: 05/29/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: b3f806c6c42a0cff962b284f16f82e031eab61fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: d37f5f624459db6bc336884987a16c60503492a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087097"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078499"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>Vytvoření úplné škálovací sady virtuálních počítačů pomocí PowerShellu
 

@@ -15,18 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 05e9e627afecfc95e03eae39eed1183857df8b4b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 41532e554623c47e9728c6ccab92d99500e42021
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539930"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517423"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Rámec zabezpečení: Správa výjimek | Hrozeb 
 | Produkt/služba | Článek |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – Nezahrnovat uzel serviceDebug do konfiguračního souboru](#servicedebug)</li><li>[WCF – Nezahrnovat uzel oddílu serviceMetadata do konfiguračního souboru](#servicemetadata)</li></ul> |
-| **Web API** | <ul><li>[Zajistěte, aby ve webovém rozhraní API ASP.NET bylo provedeno správné zpracování výjimek.](#exception)</li></ul> |
+| **Webové rozhraní API** | <ul><li>[Zajistěte, aby ve webovém rozhraní API ASP.NET bylo provedeno správné zpracování výjimek.](#exception)</li></ul> |
 | **Webová aplikace** | <ul><li>[Nezveřejňujte podrobnosti zabezpečení v chybových zprávách.](#messages)</li><li>[Implementace výchozí stránky pro zpracování chyb](#default)</li><li>[Nastavení metody nasazení na maloobchodní prodej ve službě IIS](#deployment)</li><li>[Výjimky by měly selhat bez obav](#fail)</li></ul> |
 
 ## <a name="wcf--do-not-include-servicedebug-node-in-configuration-file"></a><a id="servicedebug"></a>WCF – Nezahrnovat uzel serviceDebug do konfiguračního souboru
@@ -37,7 +38,7 @@ ms.locfileid: "87539930"
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | –  |
-| **Reference**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
+| **Reference**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **Kroky** | Služby Windows Communication Framework (WCF) je možné nakonfigurovat tak, aby zveřejnily ladicí informace. Informace o ladění by se neměly používat v produkčním prostředí. `<serviceDebug>`Značka definuje, zda je funkce ladicích informací povolena pro službu WCF. Pokud je atribut zapnete IncludeExceptionDetailInFaults nastaven na hodnotu true, budou klientům vráceny informace o výjimce z aplikace. Útočníci můžou využít další informace, které získají z výstupu ladění, aby dokázali připojit útoky zaměřené na rozhraní, databázi nebo jiné prostředky, které aplikace používá. |
 
 ### <a name="example"></a>Příklad
@@ -61,19 +62,19 @@ Zakáže informace o ladění ve službě. To lze provést odebráním `<service
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Obecné, NET Framework 3 |
-| **Reference**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
+| **Reference**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **Kroky** | Veřejně vystavení informací o službě může útočníkům poskytnout cenné informace o tom, jak můžou službu zneužít. `<serviceMetadata>`Značka povoluje funkci publikování metadat. Metadata služby mohou obsahovat citlivé informace, které by neměly být veřejně přístupné. Minimálně Umožněte přístup k metadatům jenom důvěryhodným uživatelům a ujistěte se, že nejsou vystavené zbytečné informace. Ještě lepší je, zcela zakázat možnost publikování metadat. Bezpečná konfigurace WCF nebude obsahovat `<serviceMetadata>` značku. |
 
 ## <a name="ensure-that-proper-exception-handling-is-done-in-aspnet-web-api"></a><a id="exception"></a>Zajistěte, aby ve webovém rozhraní API ASP.NET bylo provedeno správné zpracování výjimek.
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC 5, MVC 6 |
 | **Atributy**              | –  |
 | **Reference**              | [Zpracování výjimek ve webovém rozhraní api ASP.NET](https://www.asp.net/web-api/overview/error-handling/exception-handling), [ověřování modelu ve webovém rozhraní API ASP.NET](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
-| **Kroky** | Ve výchozím nastavení se většina nezachycených výjimek ve webovém rozhraní API ASP.NET převede na odpověď HTTP se stavovým kódem.`500, Internal Server Error`|
+| **Kroky** | Ve výchozím nastavení se většina nezachycených výjimek ve webovém rozhraní API ASP.NET převede na odpověď HTTP se stavovým kódem. `500, Internal Server Error`|
 
 ### <a name="example"></a>Příklad
 Chcete-li řídit stavový kód vrácený rozhraním API, `HttpResponseException` lze použít jak je znázorněno níže: 
@@ -201,7 +202,7 @@ Další podrobnosti o mimořádném zpracování a ověřování modelu ve webov
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Dialogové okno Upravit nastavení chybových stránek ASP.NET](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
+| **Reference**              | [Dialogové okno Upravit nastavení chybových stránek ASP.NET](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd569096(v=ws.10)) |
 | **Kroky** | <p>Když aplikace ASP.NET selže a dojde k chybě interního serveru HTTP/1. x 500 nebo konfigurace funkce (například filtrování požadavků) brání zobrazení stránky, bude vygenerována chybová zpráva. Správci mohou zvolit, zda má aplikace zobrazit popisnou zprávu pro klienta, podrobnou chybovou zprávu klientovi nebo podrobnou chybovou zprávu pouze pro localhost. `<customErrors>`Značka v web.config má tři režimy:</p><ul><li>**Zapnuto:** Určuje, že jsou povoleny vlastní chyby. Pokud není zadán žádný atribut defaultRedirect, zobrazí se uživatelům Obecná chyba. Vlastní chyby se zobrazí vzdáleným klientům a místnímu hostiteli.</li><li>**Vypnuto:** Určuje, jestli jsou vlastní chyby zakázané. Podrobné chyby ASP.NET se zobrazí vzdáleným klientům a místnímu hostiteli.</li><li>**RemoteOnly:** Určuje, že se vlastní chyby zobrazují pouze vzdáleným klientům a že se chyby ASP.NET zobrazují na místním hostiteli. Toto je výchozí hodnota.</li></ul><p>Otevřete `web.config` soubor pro aplikaci nebo web a ujistěte se, že značka má buď `<customErrors mode="RemoteOnly" />` nebo `<customErrors mode="On" />` definován.</p>|
 
 ## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>Nastavení metody nasazení na maloobchodní prodej ve službě IIS
@@ -212,7 +213,7 @@ Další podrobnosti o mimořádném zpracování a ověřování modelu ve webov
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Element nasazení (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
+| **Reference**              | [Element nasazení (schéma nastavení ASP.NET)](/previous-versions/dotnet/netframework-2.0/ms228298(v=vs.80)) |
 | **Kroky** | <p>`<deployment retail>`Přepínač je určený pro použití v produkčních serverech služby IIS. Tento přepínač slouží k tomu, aby aplikace běžely s nejlepším možným výkonem a minimálními možnými úniky informací o zabezpečení tím, že zakazují schopnost aplikace generovat výstup trasování na stránce, zakáže možnost zobrazit podrobné chybové zprávy pro koncové uživatele a zakáže přepínač ladění.</p><p>V průběhu aktivního vývoje jsou často povoleny časy, přepínače a možnosti, které jsou zaměřené na vývojáře, jako je například trasování a ladění požadavků na neúspěšné zpracování. Doporučuje se, aby byla metoda nasazení na jakémkoli provozním serveru nastavená na Retail. Otevřete soubor machine.config a ujistěte se, že `<deployment retail="true" />` zůstane nastavené na true.</p>|
 
 ## <a name="exceptions-should-fail-safely"></a><a id="fail"></a>Výjimky by měly selhat bez obav
@@ -267,4 +268,4 @@ Další podrobnosti o mimořádném zpracování a ověřování modelu ve webov
             }
         }
 ```
-Výše uvedená metoda vždycky vrátí true, pokud dojde k nějaké výjimce. Pokud koncový uživatel poskytne poškozenou adresu URL, v prohlížeči se projeví, ale `Uri()` konstruktor ne, vyvolá výjimku a oběť bude provedena na platnou, ale nesprávně vytvořenou adresu URL. 
+Výše uvedená metoda vždycky vrátí true, pokud dojde k nějaké výjimce. Pokud koncový uživatel poskytne poškozenou adresu URL, v prohlížeči se projeví, ale `Uri()` konstruktor ne, vyvolá výjimku a oběť bude provedena na platnou, ale nesprávně vytvořenou adresu URL.

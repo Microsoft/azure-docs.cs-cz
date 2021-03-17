@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891251"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88935411"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Postup přidání vlastní dovednosti do kanálu rozšíření Azure Kognitivní hledání
 
@@ -168,5 +168,5 @@ Tento článek se zabývá požadavky rozhraní, které jsou nezbytné pro integ
 + [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Příklad: Vytvoření vlastní dovednosti pro obohacení AI](cognitive-search-create-custom-skill-example.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vytvořit dovednosti (REST)](/rest/api/searchservice/create-skillset)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

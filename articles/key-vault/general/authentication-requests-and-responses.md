@@ -2,26 +2,44 @@
 title: Ověřování, požadavky a odpovědi
 description: Přečtěte si, jak Azure Key Vault používá žádosti a odpovědi ve formátu JSON a o požadovaném ověřování pro použití trezoru klíčů.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191785"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752273"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
 
+Azure Key Vault poskytuje dva typy kontejnerů pro ukládání a správu tajných kódů pro cloudové aplikace:
+
+|Typ kontejneru|Podporované typy objektů|Koncový bod roviny dat|
+|--|--|--|
+| **Trezory**|<ul><li>Klíče chráněné softwarem</li><li>Klíče chráněné HSM (s SKU úrovně Premium)</li><li>Certifikáty</li><li>Klíče účtu úložiště</li></ul> | https://{trezor-Name}. trezor. Azure. NET
+|**Managed HSM** |<ul><li>Klíče chráněné pomocí HSM</li></ul> | https://{HSM-Name}. managedhsm. Azure. NET
+
+Tady jsou přípony adres URL používané pro přístup k jednotlivým typům objektů.
+
+|typ objektu|Přípona adresy URL|
+|--|--|
+|Klíče chráněné softwarem| /keys |
+|Klíče chráněné pomocí HSM| /keys |
+|Tajné kódy|/secrets|
+|Certifikáty| /certificates|
+|Klíče účtu úložiště|/storageaccounts
+||
+
 Azure Key Vault podporuje žádosti a odpovědi ve formátu JSON. Požadavky na Azure Key Vault jsou směrovány na platnou adresu URL Azure Key Vault pomocí protokolu HTTPS s některými parametry adresy URL a texty požadavků a odpovědí kódovaných v kódování JSON.
 
-Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o používání rozhraní REST Azure, včetně ověřování/autorizace a získání přístupového tokenu, najdete v tématu [Azure REST API Reference](https://docs.microsoft.com/rest/api/azure).
+Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o používání rozhraní REST Azure, včetně ověřování/autorizace a získání přístupového tokenu, najdete v tématu [Azure REST API Reference](/rest/api/azure).
 
 ## <a name="request-url"></a>Adresa URL požadavku  
  Operace správy klíčů používají operace HTTP DELETE, GET, PATCH, PUT a HTTP POST a kryptografických operací pro existující klíčové objekty, které používají HTTP POST. Klienti, kteří nemůžou podporovat konkrétní příkazy HTTP, můžou k určení zamýšleného příkazu použít taky POST protokolu HTTP pomocí záhlaví X-HTTP-REQUEST. požadavky, které obvykle nevyžadují tělo, by měly při použití HTTP POST zahrnovat prázdné tělo, například při použití POST namísto DELETE.  
@@ -36,7 +54,9 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 
 - PODEPSÁNí algoritmu Digest pomocí klíče s názvem TESTKEY v Key Vault use- `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  Autorita pro požadavek na Key Vault je vždy následující:  `https://{keyvault-name}.vault.azure.net/`  
+- Autorita pro požadavek na Key Vault je vždy následující:
+  - Pro trezory: `https://{keyvault-name}.vault.azure.net/`
+  - Pro spravované HSM: `https://{HSM-name}.managedhsm.azure.net/`
 
   Klíče se vždycky ukládají do cesty/Keys, tajné klíče se vždycky ukládají do cesty/Secrets.  
 
@@ -91,7 +111,7 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 ## <a name="authentication"></a>Authentication  
  Všechny požadavky na Azure Key Vault musí být ověřeny. Azure Key Vault podporuje přístupové tokeny Azure Active Directory, které se dají získat pomocí OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
  
- Další informace o registraci aplikace a ověřování pro použití Azure Key Vault najdete v tématu [registrace klientské aplikace pomocí Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
+ Další informace o registraci aplikace a ověřování pro použití Azure Key Vault najdete v tématu [registrace klientské aplikace pomocí Azure AD](/rest/api/azure/index#register-your-client-application-with-azure-ad).
  
  Přístupové tokeny musí být odesílány službě pomocí hlavičky autorizace protokolu HTTP:  
 
@@ -101,7 +121,7 @@ Authorization: Bearer <access_token>
 
 ```  
 
- Pokud není k dispozici přístupový token nebo když služba token nepřijme, vrátí se klientovi Chyba HTTP 401, která bude obsahovat hlavičku WWW-Authenticate, například:  
+ Pokud není k dispozici přístupový token nebo když služba token nepřijme, vrátí se klientovi Chyba HTTP 401 a bude obsahovat hlavičku WWW-Authenticate, například:  
 
 ```  
 401 Not Authorized  
@@ -113,5 +133,7 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   autorizace: adresa autorizační služby OAuth2, která se dá použít k získání přístupového tokenu pro požadavek.  
 
--   prostředek: název prostředku ( `https://vault.azure.net` ), který se má použít v žádosti o autorizaci.  
+-   prostředek: název prostředku ( `https://vault.azure.net` ), který se má použít v žádosti o autorizaci.
 
+> [!NOTE]
+> Key Vault klienti SDK pro tajné klíče, certifikáty a klíče v prvním volání Key Vault neposkytují přístupový token pro načtení informací o tenantovi. Očekává se, že příjem HTTP 401 pomocí Key Vault klienta SDK, kde Key Vault v aplikaci zobrazuje hlavičku WWW-Authenticate obsahující prostředek a tenanta, kde musí přejít a požádat o token. Pokud je vše nakonfigurované správně, druhé volání z aplikace do Key Vault bude obsahovat platný token a bude úspěšné. 

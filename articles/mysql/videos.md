@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL videa
 description: Tato stránka obsahuje video o obsahu, který se týká Azure Database for MySQL pro učení, spravované nabídky MySQL od Microsoftu v Azure.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 2c2fbb3352b159ce9f5231c56399638a1d393366
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 4e264ddba0feb6597d71006f6544f0dd3745705b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513855"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532405"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL videa
 
@@ -43,4 +43,4 @@ Azure Database for PostgreSQL a Azure Database for MySQL propojuje databázové 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8045/player]
 [Otevřít v kanálu 9](https://channel9.msdn.com/events/Build/2017/B8045)
 
-V tomto videu z konference Microsoft builde květen 2017 se dozvíte o spravované nabídce MySQL od Microsoftu v Azure. Video vás provede strategií Microsoftu pro podporu Open Source databázových systémů v Azure. Video se zabývá tím, co znamená vývojář pro vývoj a nasazení aplikací, které používají MySQL v Azure. Toto video ukazuje přehled architektury služby a ukazuje Azure Database for MySQL integrace s jinými službami Azure, jako je například Web Apps.
+V tomto videu z konference Microsoft builde květen 2017 se dozvíte o spravované nabídce MySQL od Microsoftu v Azure. Video vás provede strategií Microsoftu pro podporu Open-Source databázových systémů v Azure. Video se zabývá tím, co znamená vývojář pro vývoj a nasazení aplikací, které používají MySQL v Azure. Toto video ukazuje přehled architektury služby a ukazuje Azure Database for MySQL integrace s jinými službami Azure, jako je například Web Apps.

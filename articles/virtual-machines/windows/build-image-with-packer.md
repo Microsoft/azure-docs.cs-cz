@@ -4,16 +4,17 @@ description: Naučte se používat balíčky a PowerShell k vytváření imagí 
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 16f2bc2cc22fa38ece78b4a07298235abd7d629d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a2cd6152f9c8e75223fcf1aab77fee7700223979
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587085"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561003"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell: jak používat balíček k vytváření imagí virtuálních počítačů v Azure
 Každý virtuální počítač (VM) v Azure se vytvoří z image, která definuje distribuci Windows a verzi operačního systému. Obrázky můžou zahrnovat předem nainstalované aplikace a konfigurace. Azure Marketplace poskytuje mnoho prvních a imagí jiných výrobců pro většinu běžných prostředí operačního systému a aplikací, nebo můžete vytvořit vlastní image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source [sadu](https://www.packer.io/) nástrojů k definování a vytváření vlastních imagí v Azure.
@@ -103,7 +104,7 @@ Vytvořte soubor s názvem *windows.js* a vložte následující obsah. Zadejte 
         "task": "Image deployment"
     },
 
-    "location": "East US",
+    "build_resource_group_name": "myPackerGroup",
     "vm_size": "Standard_D2_v2"
   }],
   "provisioners": [{

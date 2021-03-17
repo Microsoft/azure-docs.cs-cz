@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte Spravovat zálohované SAP HANA databáz
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c47f03b2ac1640c12a833f8bdb53b5d6493d7eb6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e8baf7f2589cd7d9054911516253b49253397871
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489431"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713282"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: Správa databází SAP HANA ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -17,7 +17,7 @@ Azure CLI slouží k vytváření a správě prostředků Azure z příkazového
 
 Pomocí [Azure Cloud Shell](tutorial-sap-hana-backup-cli.md) spustit příkazy rozhraní příkazového řádku.
 
-Na konci tohoto kurzu budete moci:
+Na konci tohoto kurzu budete umět:
 
 > [!div class="checklist"]
 >
@@ -39,7 +39,7 @@ Azure CLI usnadňuje správu SAP HANA databáze běžící na virtuálním poč�
 
 ## <a name="monitor-backup-and-restore-jobs"></a>Monitorování úloh zálohování a obnovení
 
-Pokud chcete monitorovat dokončené nebo aktuálně spuštěné úlohy (zálohování nebo obnovení), použijte rutinu [AZ Backup Job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) . CLI také umožňuje [pozastavit aktuálně spuštěnou úlohu](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop) nebo počkat na [dokončení úlohy](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait).
+Pokud chcete monitorovat dokončené nebo aktuálně spuštěné úlohy (zálohování nebo obnovení), použijte rutinu [AZ Backup Job list](/cli/azure/backup/job#az-backup-job-list) . CLI také umožňuje [pozastavit aktuálně spuštěnou úlohu](/cli/azure/backup/job#az-backup-job-stop) nebo počkat na [dokončení úlohy](/cli/azure/backup/job#az-backup-job-wait).
 
 ```azurecli-interactive
 az backup job list --resource-group saphanaResourceGroup \
@@ -60,7 +60,7 @@ F7c68818-039f-4a0f-8d73-e0747e68a813  Restore (Log)          Completed   hxe [hx
 
 ## <a name="change-policy"></a>Změnit zásady
 
-Pokud chcete změnit zásady pro SAP HANA konfiguraci zálohování, použijte rutinu [AZ Backup Policy set](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-set) . Parametr Name v této rutině odkazuje na zálohovanou položku, jejíž zásady chceme změnit. Pro účely tohoto kurzu nahrazujeme zásadu naší SAP HANA databáze *saphanadatabase; hxe; hxe* novou zásadou *newsaphanaPolicy*. Nové zásady se dají vytvořit pomocí rutiny [AZ Backup Policy Create](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) .
+Pokud chcete změnit zásady pro SAP HANA konfiguraci zálohování, použijte rutinu [AZ Backup Policy set](/cli/azure/backup/policy#az-backup-policy-set) . Parametr Name v této rutině odkazuje na zálohovanou položku, jejíž zásady chceme změnit. Pro účely tohoto kurzu nahrazujeme zásadu naší SAP HANA databáze *saphanadatabase; hxe; hxe* novou zásadou *newsaphanaPolicy*. Nové zásady se dají vytvořit pomocí rutiny [AZ Backup Policy Create](/cli/azure/backup/policy#az-backup-policy-create) .
 
 ```azurecli-interactive
 az backup item set policy --resource-group saphanaResourceGroup \
@@ -78,11 +78,231 @@ Name                                  Resource Group
 cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 ```
 
+## <a name="create-incremental-backup-policy"></a>Vytvořit zásady přírůstkového zálohování
+
+Chcete-li vytvořit zásady přírůstkového zálohování, spusťte příkaz [AZ Backup Policy Create](/cli/azure/backup/policy#az_backup_policy_create) s následujícími parametry:
+
+* **--zálohování-Správa-typ** – úlohy Azure
+* **--typ úlohy-typ** – SAPHana
+* **--Name** – název zásady
+* **--Policy** -soubor. JSON s příslušnými podrobnostmi pro plán a uchovávání
+* **--Resource-Group** -skupina prostředků trezoru
+* **--trezor-Name** – název trezoru
+
+Příklad:
+
+```azurecli
+az backup policy create --resource-group saphanaResourceGroup --vault-name saphanaVault --name sappolicy --backup-management-type AzureWorkload --policy sappolicy.json --workload-type SAPHana
+```
+
+Ukázkový JSON (sappolicy.jszapnutý):
+
+```json
+  "eTag": null,
+  "id": "/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/saphanaResourceGroup/providers/Microsoft.RecoveryServices/vaults/saphanaVault/backupPolicies/sappolicy",
+  "location": null,
+  "name": "sappolicy",
+  "properties": {
+    "backupManagementType": "AzureWorkload",
+    "makePolicyConsistent": null,
+    "protectedItemsCount": 0,
+    "settings": {
+      "isCompression": false,
+      "issqlcompression": false,
+      "timeZone": "UTC"
+    },
+    "subProtectionPolicy": [
+      {
+        "policyType": "Full",
+        "retentionPolicy": {
+          "dailySchedule": null,
+          "monthlySchedule": {
+            "retentionDuration": {
+              "count": 60,
+              "durationType": "Months"
+            },
+            "retentionScheduleDaily": null,
+            "retentionScheduleFormatType": "Weekly",
+            "retentionScheduleWeekly": {
+              "daysOfTheWeek": [
+                "Sunday"
+              ],
+              "weeksOfTheMonth": [
+                "First"
+              ]
+            },
+            "retentionTimes": [
+              "2021-01-19T00:30:00+00:00"
+            ]
+          },
+          "retentionPolicyType": "LongTermRetentionPolicy",
+          "weeklySchedule": {
+            "daysOfTheWeek": [
+              "Sunday"
+            ],
+            "retentionDuration": {
+              "count": 104,
+              "durationType": "Weeks"
+            },
+            "retentionTimes": [
+              "2021-01-19T00:30:00+00:00"
+            ]
+          },
+          "yearlySchedule": {
+            "monthsOfYear": [
+              "January"
+            ],
+            "retentionDuration": {
+              "count": 10,
+              "durationType": "Years"
+            },
+            "retentionScheduleDaily": null,
+            "retentionScheduleFormatType": "Weekly",
+            "retentionScheduleWeekly": {
+              "daysOfTheWeek": [
+                "Sunday"
+              ],
+              "weeksOfTheMonth": [
+                "First"
+              ]
+            },
+            "retentionTimes": [
+              "2021-01-19T00:30:00+00:00"
+            ]
+          }
+        },
+        "schedulePolicy": {
+          "schedulePolicyType": "SimpleSchedulePolicy",
+          "scheduleRunDays": [
+            "Sunday"
+          ],
+          "scheduleRunFrequency": "Weekly",
+          "scheduleRunTimes": [
+            "2021-01-19T00:30:00+00:00"
+          ],
+          "scheduleWeeklyFrequency": 0
+        }
+      },
+      {
+        "policyType": "Incremental",
+        "retentionPolicy": {
+          "retentionDuration": {
+            "count": 30,
+            "durationType": "Days"
+          },
+          "retentionPolicyType": "SimpleRetentionPolicy"
+        },
+        "schedulePolicy": {
+          "schedulePolicyType": "SimpleSchedulePolicy",
+          "scheduleRunDays": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "scheduleRunFrequency": "Weekly",
+          "scheduleRunTimes": [
+            "2017-03-07T02:00:00+00:00"
+          ],
+          "scheduleWeeklyFrequency": 0
+        }
+      },
+      {
+        "policyType": "Log",
+        "retentionPolicy": {
+          "retentionDuration": {
+            "count": 15,
+            "durationType": "Days"
+          },
+          "retentionPolicyType": "SimpleRetentionPolicy"
+        },
+        "schedulePolicy": {
+          "scheduleFrequencyInMins": 120,
+          "schedulePolicyType": "LogSchedulePolicy"
+        }
+      }
+    ],
+    "workLoadType": "SAPHanaDatabase"
+  },
+  "resourceGroup": "saphanaResourceGroup",
+  "tags": null,
+  "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
+} 
+```
+
+Po úspěšném vytvoření zásady se ve výstupu příkazu zobrazí JSON zásad, který jste předali jako parametr při provádění příkazu.
+
+Pokud chcete určit požadovanou četnost zálohování a uchování přírůstkových záloh, můžete upravit následující část zásady.
+
+Například:
+
+```json
+{
+  "policyType": "Incremental",
+  "retentionPolicy": {
+    "retentionDuration": {
+      "count": 30,
+      "durationType": "Days"
+    },
+    "retentionPolicyType": "SimpleRetentionPolicy"
+  },
+  "schedulePolicy": {
+    "schedulePolicyType": "SimpleSchedulePolicy",
+    "scheduleRunDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "scheduleRunFrequency": "Weekly",
+    "scheduleRunTimes": [
+      "2017-03-07T02:00:00+00:00"
+    ],
+    "scheduleWeeklyFrequency": 0
+  }
+}
+```
+
+Příklad:
+
+Pokud chcete provádět přírůstkové zálohování pouze v sobotu a uchovat je po dobu 60 dnů, proveďte v zásadě tyto změny:
+
+* Aktualizace počtu **retentionDurationů** na 60 dní
+* Zadat pouze sobotu jako **ScheduleRunDays**
+
+```json
+ {
+  "policyType": "Incremental",
+  "retentionPolicy": {
+    "retentionDuration": {
+      "count": 60,
+      "durationType": "Days"
+    },
+    "retentionPolicyType": "SimpleRetentionPolicy"
+  },
+  "schedulePolicy": {
+    "schedulePolicyType": "SimpleSchedulePolicy",
+    "scheduleRunDays": [
+      "Saturday"
+    ],
+    "scheduleRunFrequency": "Weekly",
+    "scheduleRunTimes": [
+      "2017-03-07T02:00:00+00:00"
+    ],
+    "scheduleWeeklyFrequency": 0
+  }
+}
+```
+
 ## <a name="protect-new-databases-added-to-an-sap-hana-instance"></a>Ochrana nových databází přidaných do instance SAP HANA
 
-Při [registraci instance SAP HANA s trezorem služby Recovery Services se](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance) automaticky zjistí všechny databáze v této instanci.
+Při [registraci instance SAP HANA s Recovery Services trezorem](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance) se automaticky zjistí všechny databáze v této instanci.
 
-V případě, že se do instance SAP HANA později přidají nové databáze, použijte rutinu [AZ Backup Protected-Item Initialize](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) . Tato rutina zjišťuje nově přidané databáze.
+V případě, že se do instance SAP HANA později přidají nové databáze, použijte rutinu [AZ Backup Protected-Item Initialize](/cli/azure/backup/protectable-item#az-backup-protectable-item-initialize) . Tato rutina zjišťuje nově přidané databáze.
 
 ```azurecli-interactive
 az backup protectable-item initialize --resource-group saphanaResourceGroup \
@@ -91,7 +311,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-Potom pomocí rutiny [AZ Backup Protected-Item list](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) vypíšete všechny databáze, které byly zjištěny v instanci SAP HANA. Tento seznam však vyloučí databáze, na kterých bylo zálohování již nakonfigurováno. Po zjištění databáze, která se má zálohovat, najdete informace [v tématu Povolení zálohování databáze SAP HANA](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database).
+Potom pomocí rutiny [AZ Backup Protected-Item list](/cli/azure/backup/protectable-item#az-backup-protectable-item-list) vypíšete všechny databáze, které byly zjištěny v instanci SAP HANA. Tento seznam však vyloučí databáze, na kterých bylo zálohování již nakonfigurováno. Po zjištění databáze, která se má zálohovat, najdete informace  [v tématu Povolení zálohování databáze SAP HANA](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database).
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -119,7 +339,7 @@ Ochranu databáze SAP HANA můžete zastavit několika způsoby:
 
 Pokud se rozhodnete zachovat body obnovení, mějte na paměti tyto informace:
 
-* Všechny body obnovení zůstanou nedotčeny trvale, všechna vyřazení se zastaví při zastavení ochrany s uchováním dat.
+* Všechny body obnovení zůstanou nedotčené trvale a všechny vyřazení se zastaví při zastavení ochrany s uchováním dat.
 * Bude se vám účtovat chráněná instance a spotřebované úložiště.
 * Pokud odstraníte zdroj dat bez zastavení zálohování, nové zálohování se nezdaří.
 
@@ -127,7 +347,7 @@ Pojďme se podívat na všechny způsoby, jak zastavit ochranu podrobněji.
 
 ### <a name="stop-protection-with-retain-data"></a>Zastavení ochrany se zachováním dat
 
-Pokud chcete zastavit ochranu s uchováním dat, použijte rutinu [AZ Backup Protection Disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) .
+Pokud chcete zastavit ochranu s uchováním dat, použijte rutinu [AZ Backup Protection Disable](/cli/azure/backup/protection#az-backup-protection-disable) .
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -146,11 +366,11 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job#az-backup-job-show) .
 
 ### <a name="stop-protection-without-retain-data"></a>Zastavení ochrany bez zachování dat
 
-Pokud chcete zastavit ochranu, aniž byste zachovali data, použijte rutinu [AZ Backup Protection Disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) .
+Pokud chcete zastavit ochranu, aniž byste zachovali data, použijte rutinu [AZ Backup Protection Disable](/cli/azure/backup/protection#az-backup-protection-disable) .
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -170,13 +390,13 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job#az-backup-job-show) .
 
 ## <a name="resume-protection"></a>Obnovit ochranu
 
 Když zastavíte ochranu pro SAP HANA databázi s uchováním dat, můžete později obnovit ochranu. Pokud nezachováte zálohovaná data, nebudete moci obnovit ochranu.
 
-Pokud chcete pokračovat v ochraně, použijte rutinu [AZ Backup Protection Resume](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) .
+Pokud chcete pokračovat v ochraně, použijte rutinu [AZ Backup Protection Resume](/cli/azure/backup/protection#az-backup-protection-resume) .
 
 ```azurecli-interactive
 az backup protection resume --resource-group saphanaResourceGroup \
@@ -194,7 +414,7 @@ Name                                  ResourceGroup
 b2a7f108-1020-4529-870f-6c4c43e2bb9e  saphanaResourceGroup
 ```
 
-Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Chcete-li zjistit stav této operace, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job#az-backup-job-show) .
 
 ## <a name="next-steps"></a>Další kroky
 

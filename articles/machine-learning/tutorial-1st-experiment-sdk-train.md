@@ -1,225 +1,273 @@
 ---
-title: 'Kurz: výuka prvního modelu Azure ML v Pythonu'
+title: 'Kurz: výuka prvního modelu Machine Learning – Python'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes.
+description: Třetí část Azure Machine Learning série Začínáme ukazuje, jak naučit model strojového učení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.author: sgilley
-author: sdgilley
-ms.date: 02/10/2020
+author: aminsaied
+ms.author: amsaied
+ms.reviewer: sgilley
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: be8f0c85f62779dec9231a9f44155d4608e88b52
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: bee2b31f215758bf5cf73ff5393058fb915cdf25
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852697"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522338"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
+# <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Kurz: výuka prvního modelu strojového učení (část 3 ze 4)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+V tomto kurzu se dozvíte, jak ve Azure Machine Learning naučit model strojového učení.
 
-Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
+Tento kurz je *třetí částí série kurzů* , ve které se seznámíte se základy Azure Machine Learning a dokončení úloh strojového učení na základě úloh v Azure. Tento kurz sestaví na práci, kterou jste dokončili v [části 1: nastavení](tutorial-1st-experiment-sdk-setup-local.md) a [část 2: spustit "Hello World!"](tutorial-1st-experiment-hello-world.md) řady.
 
-V tomto kurzu se naučíte provádět následující úlohy:
+V tomto kurzu provedete další krok odesláním skriptu, který bude přebírat model strojového učení. Tento příklad vám pomůže pochopit, jak Azure Machine Learning usnadňuje konzistentní chování mezi místním laděním a vzdáleným spuštěním.
+
+V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Připojte svůj pracovní prostor a vytvořte experiment.
-> * Načtěte data a Naučte scikit modely.
-> * Zobrazit výsledky školení v studiu
-> * Načtení nejlepšího modelu
+> * Vytvořte školicí skript.
+> * Pomocí conda definujte prostředí Azure Machine Learning.
+> * Vytvořte skript ovládacího prvku.
+> * Pochopení Azure Machine Learning tříd ( `Environment` , `Run` , `Metrics` ).
+> * Odešlete a spusťte školicí skript.
+> * Zobrazte si výstup kódu v cloudu.
+> * Protokoluje metriky pro Azure Machine Learning.
+> * Podívejte se na vaše metriky v cloudu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
+- [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://www.anaconda.com/download/) ke správě virtuálních prostředí Python a instalaci balíčků.
+- Dokončení [part1](tutorial-1st-experiment-sdk-setup-local.md) a [2. část](tutorial-1st-experiment-hello-world.md) řady.
 
-V této části kurzu spustíte kód v ukázce poznámkového bloku Jupyter */Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* otevřený na konci části 1. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
+## <a name="create-training-scripts"></a>Vytváření školicích skriptů
 
-## <a name="open-the-notebook"></a>Otevření poznámkového bloku
+Nejdřív v souboru definujte architekturu sítě neuronové `model.py` . Veškerý kód školení přejde do `src` podadresáře, včetně `model.py` .
 
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
+Následující kód je pořízen z [tohoto úvodního příkladu](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html) z PyTorch. Všimněte si, že Azure Machine Learning koncepty se vztahují na jakýkoliv kód strojového učení, ne jen na PyTorch.
 
-1. Otevřete **kurz – 1st-experiment-SDK-vlak. ipynb** ve složce, jak je znázorněno v [části One](tutorial-1st-experiment-sdk-setup.md#open).
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/src/model.py":::
+
+Dále definujte školicí skript. Tento skript stáhne datovou sadu CIFAR10 pomocí `torchvision.dataset` rozhraní API PyTorch, nastaví síť definovanou v a nahlásí `model.py` ji pro dva epochsy pomocí standardní SGD a ztráty mezi entropiemi.
+
+Vytvořte `train.py` skript v `src` podadresáři:
+
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/src/train.py":::
+
+Nyní máte následující adresářovou strukturu:
+
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/directory-structure.png" alt-text="Struktura adresáře zobrazuje train.py v podadresáři src":::
 
 
-> [!Warning]
-> Nevytvářejte *Nový* Poznámkový blok v rozhraní Jupyter. **not** Kurzy poznámkového bloku */Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* jsou včetně **veškerého kódu a dat potřebných** pro účely tohoto kurzu.
+> [!div class="nextstepaction"]
+> [Vytvořili jste školicí skripty,](?success=create-scripts#environment) u kterých došlo [k problému](https://www.research.net/r/7CTJQQN?issue=create-scripts)
 
-## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
+## <a name="create-a-new-python-environment"></a><a name="environment"></a> Vytvořit nové prostředí Pythonu
 
-> [!Important]
-> Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v poznámkovém bloku.  
->
-> Pokud chcete při spuštění kódu číst společně, přepněte do poznámkového bloku Jupyter. 
-> Pokud chcete na poznámkovém bloku spustit jednu buňku kódu, klikněte na buňku kódu a stiskněte **SHIFT + ENTER**. Případně spusťte celý Poznámkový blok výběrem možnosti **Spustit vše** na horním panelu nástrojů.
+`pytorch-env.yml`Ve skrytém adresáři vytvořte soubor s názvem `.azureml` :
 
-Naimportujte `Workspace` třídu a načtěte informace o předplatném ze souboru `config.json` pomocí `from_config().` této funkce, která ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete taky zadat parametr cesty, který bude odkazovat na soubor pomocí `from_config(path="your/file/path")` . V případě serveru cloudového poznámkového bloku je soubor automaticky v kořenovém adresáři.
+:::code language="yml" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/environments/pytorch-env.yml":::
 
-Pokud následující kód požádá o další ověřování, jednoduše vložte odkaz do prohlížeče a zadejte ověřovací token.
+Toto prostředí má všechny závislosti, které model a školicí skript vyžaduje. Všimněte si, že Azure Machine Learning SDK pro Python neexistuje žádná závislost.
+
+> [!div class="nextstepaction"]
+> [Vytvořili jsem soubor prostředí,](?success=create-env-file#test-local) [který jsem narazil na problém](https://www.research.net/r/7CTJQQN?issue=create-env-file)
+
+## <a name="test-locally"></a><a name="test-local"></a> Test lokálně
+
+V okně terminálu nebo v okně příkazového řádku Anaconda použijte následující kód k otestování skriptu lokálně v novém prostředí.  
+
+```bash
+conda deactivate                                # If you are still using the tutorial environment, exit it
+conda env create -f .azureml/pytorch-env.yml    # create the new Conda environment
+conda activate pytorch-env                      # activate new Conda environment
+python src/train.py                             # train model
+```
+
+Po spuštění tohoto skriptu uvidíte data stažená do adresáře s názvem `tutorial/data` .
+
+> [!div class="nextstepaction"]
+> [Kód jsem v místním](?success=test-local#create-local) [prostředí](https://www.research.net/r/7CTJQQN?issue=test-local) jsem narazil na problém
+
+## <a name="create-the-control-script"></a><a name="create-local"></a> Vytvoření řídicího skriptu
+
+Rozdíl mezi následujícím skriptem řízení a ten, který jste použili k odeslání "Hello World!" je přidání několika dalších řádků pro nastavení prostředí.
+
+Vytvořte nový soubor Python v adresáři s `tutorial` názvem `04-run-pytorch.py` :
 
 ```python
+# 04-run-pytorch.py
 from azureml.core import Workspace
-ws = Workspace.from_config()
-```
-
-Nyní vytvořte experiment v pracovním prostoru. Experiment je další základní cloudový prostředek, který představuje kolekci zkušebních verzí (jednotlivé spuštěné modely). V tomto kurzu použijete experiment k vytvoření spuštění a sledování školení modelu v nástroji Azure Machine Learning Studio. Parametry zahrnují odkaz na pracovní prostor a název řetězce pro experiment.
-
-
-```python
 from azureml.core import Experiment
-experiment = Experiment(workspace=ws, name="diabetes-experiment")
+from azureml.core import Environment
+from azureml.core import ScriptRunConfig
+
+if __name__ == "__main__":
+    ws = Workspace.from_config()
+    experiment = Experiment(workspace=ws, name='day1-experiment-train')
+    config = ScriptRunConfig(source_directory='./src',
+                             script='train.py',
+                             compute_target='cpu-cluster')
+
+    # set up pytorch environment
+    env = Environment.from_conda_specification(
+        name='pytorch-env',
+        file_path='./.azureml/pytorch-env.yml'
+    )
+    config.run_config.environment = env
+
+    run = experiment.submit(config)
+
+    aml_url = run.get_portal_url()
+    print(aml_url)
+```    
+    
+### <a name="understand-the-code-changes"></a>Pochopení změn kódu
+
+:::row:::
+   :::column span="":::
+      `env = ...`
+   :::column-end:::
+   :::column span="2":::
+      Azure Machine Learning poskytuje koncept [prostředí](/python/api/azureml-core/azureml.core.environment.environment) , které představuje reprodukovatelné prostředí Pythonu ve verzi pro spouštění experimentů. Je snadné vytvořit prostředí z místního prostředí conda nebo PIP.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      `config.run_config.environment = env`
+   :::column-end:::
+   :::column span="2":::
+      Přidá prostředí do [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig).
+   :::column-end:::
+:::row-end:::
+
+> [!div class="nextstepaction"]
+> [Vytvořili jste řídicí skript,](?success=control-script#submit) který [jsem narazil na problém](https://www.research.net/r/7CTJQQN?issue=control-script)
+
+
+## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Odeslat běh do Azure Machine Learning
+
+Přepněte zpátky do prostředí *kurzu* , ve kterém je nainstalovaná sada Azure Machine Learning SDK for Python. Vzhledem k tomu, že kód školení není v počítači spuštěný, není nutné mít nainstalované PyTorch.  Ale potřebujete `azureml-sdk` , který je v prostředí *kurzu* .
+
+```bash
+conda deactivate
+conda activate tutorial
+python 04-run-pytorch.py
 ```
 
-## <a name="load-data-and-prepare-for-training"></a>Načtení dat a příprava na školení
+>[!NOTE] 
+> Při prvním spuštění tohoto skriptu Azure Machine Learning vytvoří novou image Docker z prostředí PyTorch. Dokončení celého spuštění může trvat 5 až 10 minut. 
+>
+> V Azure Machine Learning Studiu vidíte protokoly sestavení Docker. Použijte odkaz na Studio, vyberte kartu **výstupy + protokoly** a pak vyberte `20_image_build_log.txt` .
+>
+> Tato image se znovu použije v budoucích spuštěních, aby se spouštěla mnohem rychleji.
 
-Pro účely tohoto kurzu použijete sadu dat diabetes, která používá funkce jako věk, pohlaví a BMI k předvídání pokroku diabetesch nemocí. Načtěte data z třídy [Azure Open DataSets](https://azure.microsoft.com/services/open-datasets/) a rozdělte je do školicích a testovacích sad pomocí `train_test_split()` . Tato funkce odděluje data, takže model obsahuje nepřesná data, která se mají použít pro testování po školení.
+Po vytvoření image vyberte, aby se `70_driver_log.txt` zobrazil výstup školicího skriptu.
 
+```txt
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
+...
+Files already downloaded and verified
+epoch=1, batch= 2000: loss 2.19
+epoch=1, batch= 4000: loss 1.82
+epoch=1, batch= 6000: loss 1.66
+epoch=1, batch= 8000: loss 1.58
+epoch=1, batch=10000: loss 1.52
+epoch=1, batch=12000: loss 1.47
+epoch=2, batch= 2000: loss 1.39
+epoch=2, batch= 4000: loss 1.38
+epoch=2, batch= 6000: loss 1.37
+epoch=2, batch= 8000: loss 1.33
+epoch=2, batch=10000: loss 1.31
+epoch=2, batch=12000: loss 1.27
+Finished Training
+```
+
+> [!WARNING]
+> Pokud se zobrazí chyba `Your total snapshot size exceeds the limit` , `data` adresář se nachází v `source_directory` hodnotě použité v `ScriptRunConfig` .
+>
+> Přesunout `data` mimo `src` .
+
+Prostředí je možné zaregistrovat v pracovním prostoru pomocí `env.register(ws)` . Pak je lze snadno sdílet, znovu použít a se správou verzí. Prostředí usnadňují reprodukování předchozích výsledků a spolupráci se svým týmem.
+
+Azure Machine Learning také udržuje kolekci podmnožinových prostředí. Tato prostředí se týkají běžných scénářů strojového učení a jsou zálohována imagemi Docker uložených v mezipaměti. Image Docker v mezipaměti usnadňují první vzdálené spuštění rychleji.
+
+V krátké době vám použití registrovaných prostředí může ušetřit čas. Další informace najdete v tématu [použití prostředí](./how-to-use-environments.md) .
+
+> [!div class="nextstepaction"]
+> [Jsem mi poslal (a](?success=test-w-environment#log) ) [jsem to](https://www.research.net/r/7CTJQQN?issue=test-w-environment) , že mi běžela chyba
+
+## <a name="log-training-metrics"></a><a name="log"></a> Metriky školení protokolu
+
+Teď, když máte školení modelu v Azure Machine Learning, začněte sledovat některé metriky výkonu.
+
+Aktuální školicí skript vytiskne metriky do terminálu. Azure Machine Learning poskytuje mechanismus protokolování metrik s více funkcemi. Přidáním několika řádků kódu získáte možnost vizualizovat metriky v nástroji Studio a porovnat metriky mezi několika spuštěními.
+
+### <a name="modify-trainpy-to-include-logging"></a>Upravit `train.py` a zahrnout protokolování
+
+Upravte `train.py` skript tak, aby zahrnoval dva další řádky kódu:
+
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/code/pytorch-cifar10-train-with-logging/train.py":::
+
+
+#### <a name="understand-the-additional-two-lines-of-code"></a>Pochopení dalších dvou řádků kódu
+
+V aplikaci `train.py` získáte přístup k objektu Run z  školicího skriptu samotného pomocí `Run.get_context()` metody a použijete ho k protokolování metrik:
 
 ```python
-from azureml.opendatasets import Diabetes
-from sklearn.model_selection import train_test_split
+# in train.py
+run = Run.get_context()
 
-x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
-y_df = x_df.pop("Y")
+...
 
-X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
+run.log('loss', loss)
 ```
 
-## <a name="train-a-model"></a>Učení modelu
+Metriky v Azure Machine Learning jsou:
 
-Výuku jednoduchého scikit modelu se dá snadno udělat místně pro účely malého rozsahu, ale při výuce mnoha iterací s desítkami různých permutací a nastaveními parametrů se snadno ztratí přehled o tom, které modely jste si naučili a jakým způsobem jste je naučili. Následující vzor návrhu ukazuje, jak pomocí sady SDK snadno sledovat vaše školení v cloudu.
+- Uspořádáno podle experimentů a spouštění, takže je snadné sledovat metriky a porovnávat je.
+- Vybavené uživatelským rozhraním, abyste mohli vizualizovat školicí výkon v studiu.
+- Tato výhoda je navržena pro škálování, takže tyto výhody udržujete i při spouštění stovek experimentů.
 
-Sestavte skript, který předávat modely Ridge ve smyčce prostřednictvím různých hodnot alfa parametrů.
+> [!div class="nextstepaction"]
+> [Změnil ](?success=modify-train#log) (a) jsem Train.py [jsem narazili na problém](https://www.research.net/r/7CTJQQN?issue=modify-train)
 
+### <a name="update-the-conda-environment-file"></a>Aktualizace souboru prostředí conda
 
-```python
-from sklearn.linear_model import Ridge
-from sklearn.metrics import mean_squared_error
-from sklearn.externals import joblib
-import math
+`train.py`Skript právě zabral novou závislost na `azureml.core` . Aktualizace `pytorch-env.yml` , aby odrážela tuto změnu:
 
-alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
-for alpha in alphas:
-    run = experiment.start_logging()
-    run.log("alpha_value", alpha)
+> [!div class="nextstepaction"]
+> [Aktualizoval (a) jsem soubor prostředí, u kterého](?success=update-environment#submit-again) [došlo k problému](https://www.research.net/r/7CTJQQN?issue=update-environment)
 
-    model = Ridge(alpha=alpha)
-    model.fit(X=X_train, y=y_train)
-    y_pred = model.predict(X=X_test)
-    rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
-    run.log("rmse", rmse)
+### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> Odeslat běh do Azure Machine Learning
+Odeslat tento skript jednou za další:
 
-    model_name = "model_alpha_" + str(alpha) + ".pkl"
-    filename = "outputs/" + model_name
-
-    joblib.dump(value=model, filename=filename)
-    run.upload_file(name=model_name, path_or_stream=filename)
-    run.complete()
+```bash
+python 04-run-pytorch.py
 ```
 
-Výše uvedený kód provede následující:
+Tentokrát, když navštívíte Studio, přejděte na kartu **metriky** , kde se teď můžete podívat na průběžné aktualizace modelu na základě ztráty školení.
 
-1. Pro každou hodnotu parametru alfa parametr v poli `alphas` se vytvoří nový běh v rámci experimentu. Hodnota alfa je protokolována k odlišení jednotlivých spuštění.
-1. V každém spuštění je vytvořen Ridge model, proškolený a používaný ke spuštění předpovědi. Hodnota root-střed_hodn-Square-Error se vypočítá pro skutečné versus předpovězené hodnoty a potom se do běhu přihlásí. V tomto okamžiku má spuštění metadata připojená jak pro hodnotu alfa, tak pro přesnost rmse.
-1. V dalším kroku je model každého spuštění serializován a nahrán do běhu. To vám umožní stáhnout soubor modelu z běhu v studiu.
-1. Na konci každé iterace je spuštění dokončeno voláním `run.complete()` .
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Graf ztrát školení na kartě metriky.":::
 
-Po dokončení školení volejte `experiment` proměnnou, která načte odkaz na experiment v studiu.
-
-```python
-experiment
-```
-
-<table style="width:100%"><tr><th>Název</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Machine Learning Studio</td><td>Odkaz na dokumentaci</td></tr></table>
-
-## <a name="view-training-results-in-studio"></a>Zobrazit výsledky školení v studiu
-
-Po **odkazu na Azure Machine Learning Studiu** přejdete na hlavní stránku experimentu. Tady vidíte všechna jednotlivá spuštění v experimentu. Všechny vlastní hodnoty protokolovaných hodnot ( `alpha_value` a `rmse` v tomto případě) se stanou poli pro každé spuštění a také jsou k dispozici pro grafy. Chcete-li vytvořit nový graf s protokolovanými metrikami, klikněte na tlačítko přidat graf a vyberte metriku, kterou chcete vykreslit.
-
-Když procházíte modely ve velkém množství přes stovky a tisíce samostatných spuštění, Tato stránka usnadňuje zobrazení všech vámi vyškolených modelů, konkrétně jejich školení a způsobu, jakým se vaše jedinečné metriky v průběhu času změnily.
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Hlavní stránka experimentu v studiu.":::
-
-
-Vyberte odkaz číslo spuštění ve `RUN NUMBER` sloupci, aby se zobrazila stránka pro jednotlivé spuštění. Výchozí karta **Podrobnosti** Zobrazí podrobnější informace o každém spuštění. Přejděte na kartu **výstupy + protokoly** a zobrazí se `.pkl` soubor pro model, který byl nahrán do běhu během každé školicí iterace. Tady si můžete stáhnout soubor modelu a nemusíte ho přesměrovat ručně.
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Stránka podrobností o spuštění v studiu":::
-
-## <a name="get-the-best-model"></a>Získejte nejlepší model
-
-Kromě toho, že je možné stahovat soubory modelu z experimentu v studiu, je můžete také stáhnout programově. Následující kód projde každým spuštěním v experimentu a přistupuje ke metrikám s protokolem a k podrobnostem o běhu (které obsahují run_id). Tím se sleduje nejlepší běh, v tomto případě se spustí s nejnižší hodnotou root-střed_hodn-Square-Error.
-
-```python
-minimum_rmse_runid = None
-minimum_rmse = None
-
-for run in experiment.get_runs():
-    run_metrics = run.get_metrics()
-    run_details = run.get_details()
-    # each logged metric becomes a key in this returned dict
-    run_rmse = run_metrics["rmse"]
-    run_id = run_details["runId"]
-
-    if minimum_rmse is None:
-        minimum_rmse = run_rmse
-        minimum_rmse_runid = run_id
-    else:
-        if run_rmse < minimum_rmse:
-            minimum_rmse = run_rmse
-            minimum_rmse_runid = run_id
-
-print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))
-```
-
-```output
-Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
-Best run_id rmse: 57.234760283951765
-```
-
-Použijte nejlepší ID běhu k načtení jednotlivého spuštění pomocí `Run` konstruktoru společně s objektem experiment. Potom zavolejte `get_file_names()` na Zobrazit všechny soubory, které jsou k dispozici ke stažení z tohoto spuštění. V tomto případě jste během školení nahráli jenom jeden soubor pro každé spuštění.
-
-```python
-from azureml.core import Run
-best_run = Run(experiment=experiment, run_id=minimum_rmse_runid)
-print(best_run.get_file_names())
-```
-
-```output
-['model_alpha_0.1.pkl']
-```
-
-Zavolejte `download()` na objekt Run a určete název souboru modelu, který se má stáhnout. Ve výchozím nastavení tato funkce stahuje do aktuálního adresáře.
-
-```python
-best_run.download_file(name="model_alpha_0.1.pkl")
-```
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning.
-
-### <a name="stop-the-compute-instance"></a>Zastavení výpočetní instance
-
-[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
-
-### <a name="delete-everything"></a>Odstranit vše
-
-[!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
-
-Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
+> [!div class="nextstepaction"]
+> Znovu [jsem odeslal spuštění, které](?success=resubmit-with-logging#next-steps) [jsem narazil na problém](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging) .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provedli následující úlohy:
+V této relaci jste upgradovali ze základního "Hello World!" skript do realističtějšího školicího skriptu, který vyžadoval spuštění konkrétního prostředí Pythonu. Zjistili jste, jak převzít místní prostředí conda do cloudu pomocí Azure Machine Learningch prostředí. Nakonec jste viděli, jak v několika řádcích kódu můžete protokolovat metriky pro Azure Machine Learning.
 
-> [!div class="checklist"]
-> * Připojili jsme váš pracovní prostor a vytvořili experiment.
-> * Nahraná data a školené modely scikit-učení
-> * Zobrazení výsledků školení v studiu a načtených modelů
+Existují i jiné způsoby vytváření Azure Machine Learning prostředí, včetně souboru [pip requirements.txt](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) nebo [ze stávajícího místního prostředí conda](/python/api/azureml-core/azureml.core.environment.environment#from-existing-conda-environment-name--conda-environment-name-).
 
-[Nasaďte model](tutorial-deploy-models-with-aml.md) pomocí Azure Machine Learning.
-Naučte se vyvíjet [automatizované experimenty strojového učení](tutorial-auto-train-models.md) .
+V další relaci uvidíte, jak pracovat s daty v Azure Machine Learning nahráním datové sady CIFAR10 do Azure.
+
+> [!div class="nextstepaction"]
+> [Kurz: Převeďte vlastní data](tutorial-1st-experiment-bring-data.md)
+
+>[!NOTE] 
+> Pokud chcete dokončit řadu kurzů zde a nepostupovat k dalšímu kroku, nezapomeňte [vyčistit své prostředky](tutorial-1st-experiment-bring-data.md#clean-up-resources).

@@ -3,22 +3,75 @@ title: Použití spravované identity s aplikací
 description: Použití spravovaných identit v Azure Service Fabric kódu aplikace pro přístup ke službám Azure.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253639"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871057"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure
 
 Service Fabric aplikace můžou využívat spravované identity pro přístup k jiným prostředkům Azure, které podporují ověřování založené na Azure Active Directory. Aplikace může získat [přístupový token](../active-directory/develop/developer-glossary.md#access-token) představující jeho identitu, která může být přiřazena systémem nebo uživateli, a použít ji jako token nosiče k ověření sebe sama na jinou službu, která se označuje také jako [chráněný server prostředků](../active-directory/develop/developer-glossary.md#resource-server). Token představuje identitu přiřazenou Service Fabric aplikaci a bude ji vydávat jenom pro prostředky Azure (včetně SF aplikací), které tuto identitu sdílejí. Podrobný popis spravovaných identit a rozdíl mezi identitami přiřazenými systémem a uživatelem přiřazenými uživateli najdete v dokumentaci [Přehled spravované identity](../active-directory/managed-identities-azure-resources/overview.md) . V rámci tohoto článku budeme označovat jako [klientskou aplikaci](../active-directory/develop/developer-glossary.md#client-application) Service Fabric aplikace s podporou identity.
+
+Podívejte se na doprovodnou ukázkovou aplikaci, která demonstruje použití [spravovaných identit aplikací a Service Fabric](https://github.com/Azure-Samples/service-fabric-managed-identity) přiřazených uživatelem pomocí Reliable Services a kontejnerů.
 
 > [!IMPORTANT]
 > Spravovaná identita představuje přidružení mezi prostředkem Azure a instančním objektem v odpovídajícím tenantovi Azure AD, který je přidružený k předplatnému, které obsahuje daný prostředek. V kontextu Service Fabric se spravované identity podporují jenom pro aplikace nasazené jako prostředky Azure. 
 
 > [!IMPORTANT]
 > Před použitím spravované identity Service Fabric aplikace musí mít klientská aplikace udělený přístup k chráněnému prostředku. V seznamu [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) pro kontrolu podpory, a pak v dokumentaci příslušné služby najdete konkrétní kroky pro udělení přístupu identit k prostředkům, které vás zajímají. 
+ 
+
+## <a name="leverage-a-managed-identity-using-azureidentity"></a>Využití spravované identity pomocí Azure. identity
+
+Sada Azure identity SDK teď podporuje Service Fabric. Použití Azure. identity umožňuje psaní kódu pro použití Service Fabric spravovaných identit aplikace snadněji, protože zpracovává načítání tokenů, ukládání tokenů do mezipaměti a ověřování serveru. Při přístupu k většině prostředků Azure je koncept tokenu skrytý.
+
+Podpora Service Fabric je k dispozici v následujících verzích pro tyto jazyky: 
+- [C# ve verzi 1.3.0](https://www.nuget.org/packages/Azure.Identity). Podívejte se na [ukázku v jazyce C#](https://github.com/Azure-Samples/service-fabric-managed-identity).
+- [Python ve verzi 1.5.0](https://pypi.org/project/azure-identity/) Podívejte se na [ukázku Pythonu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md).
+- [Java ve verzi 1.2.0](/java/api/overview/azure/identity-readme).
+
+Ukázka jazyka C# pro inicializaci přihlašovacích údajů a použití přihlašovacích údajů k načtení tajného kódu z Azure Key Vault:
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace MyMIService
+{
+    internal sealed class MyMIService : StatelessService
+    {
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                // Load the service fabric application managed identity assigned to the service
+                ManagedIdentityCredential creds = new ManagedIdentityCredential();
+
+                // Create a client to keyvault using that identity
+                SecretClient client = new SecretClient(new Uri("https://mykv.vault.azure.net/"), creds);
+
+                // Fetch a secret
+                KeyVaultSecret secret = (await client.GetSecretAsync("mysecret", cancellationToken: cancellationToken)).Value;
+            }
+            catch (CredentialUnavailableException e)
+            {
+                // Handle errors with loading the Managed Identity
+            }
+            catch (RequestFailedException)
+            {
+                // Handle errors with fetching the secret
+            }
+            catch (Exception e)
+            {
+                // Handle generic errors
+            }
+        }
+    }
+}
+
+```
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Získání přístupového tokenu pomocí REST API
 V clusterech povolených pro spravovanou identitu modul runtime Service Fabric zveřejňuje koncový bod localhost, který mohou aplikace použít k získání přístupových tokenů. Koncový bod je k dispozici na každém uzlu clusteru a je přístupný všem entitám v tomto uzlu. Autorizovaní volající mohou získat přístupové tokeny voláním tohoto koncového bodu a předkládáním ověřovacího kódu; kód je generován modulem runtime Service Fabric pro každou aktivaci balíčku kódu služby a je vázán na životní cyklus procesu hostujícího daný balíček kódu služby.
@@ -377,3 +430,4 @@ V tématu [služby Azure, které podporují ověřování Azure AD](../active-di
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Udělení přístupu k aplikacím Azure Service Fabric k ostatním prostředkům Azure](./how-to-grant-access-other-resources.md)
+* [Prozkoumejte ukázkovou aplikaci s využitím Service Fabric spravované identity](https://github.com/Azure-Samples/service-fabric-managed-identity)

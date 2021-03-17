@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 871a764c549de75d5a9e1449ba2e0737d38a4094
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d66f3099ba225fbdd2bfc3d54db56ffd8ed2c43f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83799948"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684028"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Použití inteligentního směrování a Kanárských verzí s Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 > [!NOTE]
 > Tento scénář byl testován proti verzi Istio `1.3.2` .
 
-Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným RBAC) a navázali jste `kubectl` připojení ke clusteru. Ve svém clusteru budete taky muset nainstalovat Istio.
+Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným KUBERNETES RBAC) a navázali jste `kubectl` připojení ke clusteru. Ve svém clusteru budete taky muset nainstalovat Istio.
 
 Pokud potřebujete pomoc s kteroukoli z těchto položek, přečtěte si [rychlý Start AKS][aks-quickstart] a [nainstalujte Istio v][istio-install] tématu pokyny pro AKS.
 
@@ -53,7 +53,7 @@ Jakmile si nejste jistí, že verze `2.0` funguje podle očekávání u vaší p
 
 Pojďme začít nasazovat aplikaci do clusteru Azure Kubernetes Service (AKS). Následující diagram ukazuje, co se spouští na konci této části – verze `1.0` všech komponent s příchozími požadavky, které se obsluhují prostřednictvím brány Istio příchozí komunikace:
 
-![Komponenty hlasovacích aplikací AKS a směrování.](media/servicemesh/istio/scenario-routing-components-01.png)
+![Diagram, který zobrazuje verzi 1,0 všech komponent se vstupními požadavky služby prostřednictvím brány Istio příchozího přenosu dat.](media/servicemesh/istio/scenario-routing-components-01.png)
 
 Artefakty, které je třeba provést spolu s tímto článkem, jsou k dispozici v úložišti GitHub [Azure-Samples/AKS-hlasování-App][github-azure-sample] . Můžete buď stáhnout artefakty, nebo klonovat úložiště následujícím způsobem:
 
@@ -180,7 +180,7 @@ Pojďme nasadit novou verzi komponenty Analytics. Tato nová verze `1.1` zobrazu
 
 Následující diagram ukazuje, co se bude spouštět na konci této části, která má pouze verzi `1.1` naší `voting-analytics` komponenty, je směrována z `voting-app` komponenty. I když verze `1.0` naší `voting-analytics` komponenty i nadále běží a na ni odkazuje `voting-analytics` služba, proxy servery Istio zakazují provoz do a z něj.
 
-![Komponenty hlasovacích aplikací AKS a směrování.](media/servicemesh/istio/scenario-routing-components-02.png)
+![Diagram, který zobrazuje pouze verzi 1,1 součásti hlasování-Analytics, má provoz směrovaný z komponenty hlasovacího aplikace.](media/servicemesh/istio/scenario-routing-components-02.png)
 
 Pojďme nasazovat verzi `1.1` `voting-analytics` komponenty. Vytvořit tuto součást v `voting` oboru názvů:
 
@@ -361,7 +361,7 @@ Následující diagram znázorňuje, co budete spouštět na konci této části
 * Verze součásti `2.0` `voting-app` , verze součásti `2.0` `voting-analytics` a verze součásti, mezi sebou `2.0` `voting-storage` může komunikovat.
 * Verze `2.0` `voting-app` komponenty je dostupná jenom pro uživatele, kteří mají nastavenou konkrétní příznak funkce. Tato změna se spravuje pomocí příznaku funkce prostřednictvím souboru cookie.
 
-![Komponenty hlasovacích aplikací AKS a směrování.](media/servicemesh/istio/scenario-routing-components-03.png)
+![Diagram, který ukazuje, co na konci této části spustíte.](media/servicemesh/istio/scenario-routing-components-03.png)
 
 Nejdřív pro tyto nové součásti aktualizujte cílová pravidla Istio a virtuální služby na službu stravování. Tyto aktualizace zajišťují, aby nedošlo k nesprávnému směrování provozu na nové komponenty a uživatelé nezískali neočekávaný přístup:
 
@@ -415,7 +415,7 @@ Počty hlasů se v různých verzích aplikace liší. Tento rozdíl zvýrazní,
 
 Po úspěšném otestování zkušební verze aktualizujte `voting-app` virtuální službu tak, aby směrovala veškerý provoz na verzi `2.0` `voting-app` součásti. Všichni uživatelé pak uvidí verzi `2.0` aplikace bez ohledu na to, jestli je nastavený příznak funkce, nebo ne:
 
-![Komponenty hlasovacích aplikací AKS a směrování.](media/servicemesh/istio/scenario-routing-components-04.png)
+![Diagram znázorňující, že uživatelé uvidí verzi 2,0 aplikace bez ohledu na to, jestli je příznak funkce nastavený nebo ne.](media/servicemesh/istio/scenario-routing-components-04.png)
 
 Aktualizujte všechna cílová pravidla tak, aby se odebraly verze komponent, které už nechcete aktivovat. Pak aktualizujte všechny virtuální služby tak, aby přestaly odkazy na tyto verze.
 

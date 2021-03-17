@@ -1,0 +1,48 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Resource Mover
+summary: Přesouvejte prostředky Azure mezi oblastmi Azure v centru Azure Resource Mover.
+metadata:
+  title: Dokumentace ke službě Azure Resource Mover
+  description: Kurzy a informace k přesouvání prostředků napříč oblastmi Azure
+  ms.service: resource-move
+  ms.topic: landing-page
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 09/09/2020
+  keywords: azure resource mover, azure regions, move across regions
+  ms.openlocfilehash: 3dab9d313ab9564e860d78495d375bd0116ac9e0
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "89669650"
+landingContent:
+- title: Informace o službě Azure Resource Mover
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Resource Mover
+      url: ./overview.md
+    - text: Výběr nástroje pro přesun prostředků
+      url: ./select-move-tool.md
+    - text: Časté dotazy
+      url: ./common-questions.md
+- title: Začínáme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Přesun virtuálních počítačů Azure do jiné oblasti
+      url: ./tutorial-move-region-virtual-machines.md
+    - text: Přesun databází Azure SQL a elastických fondů do jiné oblasti
+      url: ./tutorial-move-region-sql.md
+- title: Další informace
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Další informace o procesu přesunu
+      url: ./about-move-process.md
+    - text: Kontrola matice podpory pro přesun virtuálních počítačů Azure
+      url: ./support-matrix-move-region-azure-vm.md
+    - text: Kontrola matice podpory pro přesun prostředků Azure SQL
+      url: ./support-matrix-move-region-sql.md

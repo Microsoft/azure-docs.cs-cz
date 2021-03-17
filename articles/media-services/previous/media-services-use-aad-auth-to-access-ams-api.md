@@ -3,7 +3,7 @@ title: Přístup k rozhraní API Azure Media Services s ověřováním Azure Act
 description: Přečtěte si o konceptech a krocích, které je potřeba použít Azure Active Directory (Azure AD) k ověření přístupu k rozhraní Azure Media Services API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,23 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 9d73c280e3f5639b11e0d07b9ef2f775f48cd3c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 3688f0f9266844ce584f3f2d2e1a7c39ed3e4f70
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038484"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009008"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API služby Azure Media Services s využitím ověřování Azure AD  
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API služby Azure Media Services s využitím ověřování Azure AD 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Rozhraní Azure Media Services API je rozhraní API pro RESTful. Můžete ji použít k provádění operací s prostředky médií pomocí REST API nebo pomocí dostupných klientských sad SDK. Azure Media Services nabízí Media Services klientskou sadu SDK pro Microsoft .NET. Abyste mohli získat autorizaci pro přístup k prostředkům a rozhraní API služby Media Services, musíte se nejprve ověřit. 
 
-Media Services podporuje [ověřování založené na Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md). Služba Azure Media REST vyžaduje, aby uživatel nebo aplikace, která vytváří REST API žádosti, měla roli **Přispěvatel** nebo **vlastník** pro přístup k prostředkům. Další informace najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../../role-based-access-control/overview.md).  
+Media Services podporuje [ověřování založené na Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md). Služba Azure Media REST vyžaduje, aby uživatel nebo aplikace, která vytváří REST API žádosti, měla roli **Přispěvatel** nebo **vlastník** pro přístup k prostředkům. Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md).  
 
 Tento dokument poskytuje přehled o tom, jak přistupovat k rozhraní Media Services API pomocí rozhraní REST API nebo rozhraní .NET API.
 
@@ -139,19 +141,19 @@ Další informace o použití ověřování Azure AD ke komunikaci s požadavky 
 
 Pokud nepoužíváte sadu SDK klienta Media Services .NET, musíte ručně vytvořit žádost o token Azure AD pomocí parametrů popsaných v kroku 1. Další informace najdete v tématu [jak pomocí knihovny ověřování Azure AD získat token Azure AD](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Výjimka: vzdálený server vrátil chybu: (401) Neautorizováno.
 
 Řešení: aby byla žádost o Media Services REST úspěšná, volající uživatel musí být rolí přispěvatel nebo Owner v účtu Media Services, ke kterému se pokouší získat přístup. Další informace najdete v části [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) .
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje informací
 
 Následující články jsou přehledem konceptů ověřování Azure AD: 
 
 - [Scénáře ověřování řešené službou Azure AD](../../active-directory/develop/authentication-vs-authorization.md)
 - [Přidání, aktualizace nebo odebrání aplikace v Azure AD](../../active-directory/develop/quickstart-register-app.md)
-- [Konfigurace a Správa Access Control na základě rolí pomocí prostředí PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure PowerShellu](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Další kroky
 

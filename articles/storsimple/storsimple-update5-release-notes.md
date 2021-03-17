@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76275172"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021040"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 5
 
@@ -44,11 +44,11 @@ V Update 5 byly provedeny následující hlavní vylepšení a opravy chyb.
 
 Následující tabulka poskytuje souhrn problémů, které byly opraveny v Update 5.
 
-| No | Funkce | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
+| Ne | Doporučené | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- |
 | 1 |Vzdálená komunikace Windows PowerShellu |V předchozí verzi se uživateli při pokusu o navázání vzdáleného připojení k StorSimple Cloud Appliance pomocí Windows PowerShellu zobrazila chyba. Tento problém byl způsobený kořenem a opravil v této verzi. |No |Yes |
-| 2 |Šablony šířky pásma |V dřívějších verzích došlo k potížím se šablonami šířky pásma, jejichž výsledkem je menší šířka pásma, než bylo zařízení nakonfigurované. Tento problém je vyřešen v této verzi. |Ano |Ano |
-| 3 |Převzetí služeb při selhání |Když v předchozí verzi došlo při převzetí služeb při selhání zařízení s velkým počtem svazků na jiné zařízení se systémem Update 4, proces při pokusu o použití záznamů řízení přístupu selže. Tento problém je opravený v této verzi. |Ano |Ano |
+| 2 |Šablony šířky pásma |V dřívějších verzích došlo k potížím se šablonami šířky pásma, jejichž výsledkem je menší šířka pásma, než bylo zařízení nakonfigurované. Tento problém je vyřešen v této verzi. |Yes |Yes |
+| 3 |Převzetí služeb při selhání |Když v předchozí verzi došlo při převzetí služeb při selhání zařízení s velkým počtem svazků na jiné zařízení se systémem Update 4, proces při pokusu o použití záznamů řízení přístupu selže. Tento problém je opravený v této verzi. |Yes |Yes |
 
 
 

@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289586"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222917"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Nasazení modulu plug-in rozhraní CNI sítě Azure Virtual Network
 
-Modul plug-in rozhraní CNI sítě Azure Virtual Network se instaluje na virtuální počítač Azure a přináší do kontejnerů a Kubernetes Pod a Docker možnosti virtuální sítě. Další informace o modulu plug-in najdete v tématu o [povolení využití funkcí služby Azure Virtual Network v kontejnerech](container-networking-overview.md). Navíc se dá plug-in použít se službou Azure Kubernetes Service (AKS). Stačí vybrat možnost [Advanced Networking](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Pokročilé síťové funkce), která automaticky umístí kontejnery AKS do virtuální sítě.
+Modul plug-in rozhraní CNI sítě Azure Virtual Network se instaluje na virtuální počítač Azure a přináší do kontejnerů a Kubernetes Pod a Docker možnosti virtuální sítě. Další informace o modulu plug-in najdete v tématu o [povolení využití funkcí služby Azure Virtual Network v kontejnerech](container-networking-overview.md). Navíc se dá plug-in použít se službou Azure Kubernetes Service (AKS). Stačí vybrat možnost [Advanced Networking](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Pokročilé síťové funkce), která automaticky umístí kontejnery AKS do virtuální sítě.
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>Nasazení modulu plug-in pro cluster Kubernetes ACS-Engine
 
@@ -95,10 +95,10 @@ Pokud chcete nainstalovat modul plug-in na všechny virtuální počítače Azur
 1. [Stáhněte a nainstalujte modul plug-in](#download-and-install-the-plug-in).
 2. Předem přidělte každému virtuálnímu počítači fond IP adres virtuální sítě, ze kterého se budou přiřazovat IP adresy jednotlivým kontejnerům Pod. Každý virtuální počítač Azure má na každém síťovém rozhraní primární privátní IP adresu virtuální sítě. IP adresy z fondu pro kontejnery Pods se přidávají jako sekundární adresy (*ipconfigs*) v síťovém rozhraní virtuálních počítačům a to pomocí jedné z následujících možností:
 
-   - **CLI**: [přiřazení více IP adres pomocí Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [přiřazení více IP adres pomocí prostředí PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portál**: [přiřazení více IP adres pomocí Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager šablona**: [přiřazení více IP adres pomocí šablon](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**: [Přiřazení více IP adres pomocí Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [Přiřazení více IP adres v prostředí PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portál**: [Přiřazení více IP adres na webu Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
+   - **Šablona Azure Resource Manageru**: [Přiřazení více IP adres pomocí šablon](./template-samples.md)
 
    Přidejte dostatek IP adres pro všechny kontejnery Pod, které chcete na virtuální počítač umístit.
 
@@ -106,7 +106,7 @@ Pokud chcete nainstalovat modul plug-in na všechny virtuální počítače Azur
 4. Pokud chcete kontejnerům Pod zajistit přístup k internetu, přidejte na své virtuální počítače s Linuxem následující pravidlo *iptables*, které zajistí určení zdroje překladu síťových adres (NAT) internetového provozu. V následujícím příkladu je zadaný rozsah IP adres 10.0.0.0/8.
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
@@ -157,10 +157,10 @@ Konfigurační soubor sítě CNI je popsán ve formátu JSON. Ve výchozím nast
 
 #### <a name="settings-explanation"></a>Vysvětlení nastavení
 
-- **cniVersion**: moduly plug-in Azure Virtual Network CNI podporují verze 0.3.0 a 0.3.1 [specifikace CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md).
+- **cniVersion**: Moduly plug-in rozhraní CNI v síti Azure Virtual Network podporují verze 0.3.0 a 0.3.1 [specifikace CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md).
 - **name**: Název sítě. Tuto vlastnost lze nastavit na libovolnou jedinečnou hodnotu.
 - **type**: Název modulu plug-in sítě. Nastavte na *azure-vnet*.
-- **mode**: Provozní režim. Toto pole je volitelné. Jediný podporovaný režim je režim síťového mostu. Další informace najdete v tématu [provozní režimy](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **mode**: Provozní režim. Toto pole je volitelné. Jediný podporovaný režim je režim síťového mostu. Další informace najdete v tématu o [provozních režimech](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
 - **bridge**: Název mostu, který se použije k připojení kontejnerů k virtuální síti. Toto pole je volitelné. Pokud ho nezadáte, modul plug-in automaticky zvolí jedinečný název podle indexu hlavního rozhraní.
 - **ipam type**: Name modulu plug-in správy IP adres. Vždy nastaveno na hodnotu *azure-vnet-ipam*.
 

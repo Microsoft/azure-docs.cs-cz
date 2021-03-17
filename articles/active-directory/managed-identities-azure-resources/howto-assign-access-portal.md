@@ -3,7 +3,7 @@ title: Přiřazení spravované identity k prostředku pomocí Azure Portal – 
 description: Podrobné pokyny pro přiřazení spravované identity k jednomu prostředku přístup k jinému prostředku pomocí Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
-ms.author: markvi
+ms.date: 11/03/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2af718c3555176167eb154b0a718218c42e93dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6584754edf3ff7ae31c3b9ace72baf16459dbc44
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608292"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359985"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Přiřazení spravované identity k prostředku pomocí Azure Portal
 
@@ -33,7 +33,7 @@ Po nakonfigurování prostředku Azure pomocí spravované identity můžete spr
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Přiřaďte přístup spravované identity k jinému prostředku pomocí RBAC.
+## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Pomocí Azure RBAC přiřaďte přístup spravované identity k jinému prostředku.
 
 Po povolení spravované identity v prostředku Azure, jako je třeba virtuální počítač [Azure](qs-configure-portal-windows-vm.md) nebo [sada škálování virtuálního počítače Azure](qs-configure-portal-windows-vmss.md):
 
@@ -41,7 +41,7 @@ Po povolení spravované identity v prostředku Azure, jako je třeba virtuáln�
 
 2. Přejděte k požadovanému prostředku, u kterého chcete změnit řízení přístupu. V tomto příkladu poskytujeme virtuálnímu počítači Azure přístup k účtu úložiště, takže přejdeme na účet úložiště.
 
-3. Vyberte stránku **řízení přístupu (IAM)** daného prostředku a vyberte **+ Přidat přiřazení role**. Pak zadejte **roli**, **přiřaďte přístup k**a zadejte odpovídající **předplatné**. V oblasti kritérií hledání byste měli vidět prostředek. Vyberte prostředek a vyberte **Uložit**. 
+3. Vyberte stránku **řízení přístupu (IAM)** daného prostředku a vyberte **+ Přidat přiřazení role**. Pak zadejte **roli** , **přiřaďte přístup k** a zadejte odpovídající **předplatné**. V oblasti kritérií hledání byste měli vidět prostředek. Vyberte prostředek a vyberte **Uložit**. 
 
    ![Snímek obrazovky řízení přístupu (IAM)](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

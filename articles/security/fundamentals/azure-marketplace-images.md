@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c317a0b4fea0c981b227bace00c1b8924fd582c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038269"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89536378"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Doporučení zabezpečení pro Azure Marketplace image
 
@@ -65,11 +65,3 @@ Před odesláním na Image vždycky spusťte detekci ohrožení zabezpečení. P
 
 I když vaše organizace nemá image na webu Azure Marketplace, zvažte možnost zkontrolovat konfigurace imagí pro Windows a Linux na těchto doporučeních.
 
-## <a name="contacting-customers"></a>Kontaktování zákazníků
-
-Identifikace zákazníků a jejich e-mailových kontaktů:
-
-1.  V portál partnerů cloudu na levé kolejnici vyberte **přehledy**.
-2.  Na kartě **objednávky a využití** použijte pole **počáteční datum** a **Datum ukončení** k dotazování na využití v požadovaném časovém rozsahu. Zobrazuje, která předplatná Azure se pro nabídku používala každý den. Exportujte tato data. 
-3.  Podobně na kartě **Zákazník** se dotazuje a vyexportuje základ zákazníka.
-4.  Porovnává ID předplatného z kroku 2 s ID předplatného z kroku 3, kde najdete potřebné informace o zákaznících.

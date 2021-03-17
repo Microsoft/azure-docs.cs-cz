@@ -1,23 +1,18 @@
 ---
 title: Přesunout data z místního HDFS
 description: Přečtěte si, jak přesunout data z místního HDFS pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e3f158bb4e8208d00fdfbc44b4afaf067183b6d2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 52e176e0fed85b649d482614667d695db539e5d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087312"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383071"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Přesunutí dat z místního HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -49,7 +44,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data ze z
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager Template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager Template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -64,7 +59,7 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte propojenou službu typu **HDFS** a propojíte místní HDFS s vaší datovou továrnou. Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu HDFS.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **HDFS** . |Yes |
 | url |Adresa URL k HDFS |Yes |
@@ -72,7 +67,7 @@ Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte p
 | userName |Uživatelské jméno pro ověřování systému Windows. Pro ověřování protokolem Kerberos zadejte `<username>@<domain>.com` . |Ano (pro ověřování systému Windows) |
 | heslo |Heslo pro ověřování systému Windows. |Ano (pro ověřování systému Windows) |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení ke HDFS. |Yes |
-| encryptedCredential |Výstup [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) přihlašovacích údajů pro přístup |No |
+| encryptedCredential |Výstup [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) přihlašovacích údajů pro přístup |No |
 
 ### <a name="using-anonymous-authentication"></a>Použití anonymního ověřování
 
@@ -112,18 +107,19 @@ Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte p
     }
 }
 ```
+
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **Shared** (zahrnující datovou sadu HDFS) má následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | folderPath |Cesta ke složce Příklad: `myfolder`<br/><br/>Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Například: pro folder\subfolder, zadejte podsložek složky \\ \\ a pro d:\samplefolder zadejte d: \\ \\ samplefolder.<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě data a času začátku a konce řezu. |Yes |
-| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud pro výstupní datovou sadu není zadán název souboru, bude název vygenerovaného souboru v následujícím formátu: <br/><br/>`Data.<Guid>.txt`(například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
+| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud pro výstupní datovou sadu není zadán název souboru, bude název vygenerovaného souboru v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
 | partitionedBy |partitionedBy lze použít k zadání dynamického názvu souboru folderPath pro data časové řady. Příklad: folderPath parametrizované pro každou hodinu dat. |No |
 | formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |No |
-| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
+| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2** a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 > [!NOTE]
 > filename a FileFilter nelze použít současně.
@@ -363,44 +359,44 @@ Existují dvě možnosti nastavení místního prostředí, aby se používalo o
 
 **Na počítači brány:**
 
-1.  Spusťte nástroj **Ksetup** a nakonfigurujte server a sféru protokolu Kerberos.
+1. Spusťte nástroj **Ksetup** a nakonfigurujte server a sféru protokolu Kerberos.
 
-    Počítač musí být nakonfigurován jako člen pracovní skupiny, protože se liší sféra protokolu Kerberos od domény systému Windows. Toho je možné dosáhnout nastavením sféry protokolu Kerberos a přidáním serveru KDC následujícím způsobem. V případě potřeby nahraďte *REALM.com* vlastním odpovídajícím sférou.
+   Počítač musí být nakonfigurován jako člen pracovní skupiny, protože se liší sféra protokolu Kerberos od domény systému Windows. Toho je možné dosáhnout nastavením sféry protokolu Kerberos a přidáním serveru KDC následujícím způsobem. V případě potřeby nahraďte *REALM.com* vlastním odpovídajícím sférou.
 
-    ```cmd
-    C:> Ksetup /setdomain REALM.COM
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    ```
+   ```cmd
+   Ksetup /setdomain REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ```
 
-    Po provedení těchto dvou příkazů **restartujte** počítač.
+   Po provedení těchto dvou příkazů **restartujte** počítač.
 
-2.  Ověřte konfiguraci pomocí příkazu **Ksetup** . Výstup by měl vypadat takto:
+2. Ověřte konfiguraci pomocí příkazu **Ksetup** . Výstup by měl vypadat takto:
 
-    ```cmd
-    C:> Ksetup
-    default realm = REALM.COM (external)
-    REALM.com:
-        kdc = <your_kdc_server_address>
-        ```
+   ```cmd
+   Ksetup
+   default realm = REALM.COM (external)
+   REALM.com:
+      kdc = <your_kdc_server_address>
+   ```
 
-**In Azure Data Factory:**
+**V Azure Data Factory:**
 
-* Configure the HDFS connector using **Windows authentication** together with your Kerberos principal name and password to connect to the HDFS data source. Check [HDFS Linked Service properties](#linked-service-properties) section on configuration details.
+* Nakonfigurujte konektor HDFS pomocí **ověřování systému Windows** společně s vaším hlavním jménem a heslem protokolu Kerberos pro připojení ke zdroji dat HDFS. Podrobnosti o konfiguraci najdete v části [Vlastnosti propojené služby HDFS](#linked-service-properties) .
 
-### <a name="kerberos-mutual-trust"></a>Option 2: Enable mutual trust between Windows domain and Kerberos realm
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>Možnost 2: povolení vzájemné důvěry mezi doménou systému Windows a sférou protokolu Kerberos
 
-#### Requirement:
-*   The gateway machine must join a Windows domain.
-*   You need permission to update the domain controller's settings.
+#### <a name="requirement"></a>Požadavek
+*    Počítač brány se musí připojit k doméně systému Windows.
+*    K aktualizaci nastavení řadiče domény potřebujete oprávnění.
 
-#### How to configure:
+#### <a name="how-to-configure"></a>Postup konfigurace:
 
 > [!NOTE]
-> Replace REALM.COM and AD.COM in the following tutorial with your own respective realm and domain controller as needed.
+> V následujícím kurzu nahraďte REALM.COM a AD.COM podle potřeby vlastní odpovídající sférou a řadičem domény.
 
-**On KDC server:**
+**Na serveru KDC:**
 
-1. Edit the KDC configuration in **krb5.conf** file to let KDC trust Windows Domain referring to the following configuration template. By default, the configuration is located at **/etc/krb5.conf**.
+1. Upravte konfiguraci služby KDC v souboru **krb5. conf** , aby se doména Windows vztahu důvěryhodnosti služby KDC odkazovala na následující šablonu konfigurace. Ve výchozím nastavení se konfigurace nachází na adrese **/etc/krb5.conf**.
 
    ```config
    [logging]
@@ -446,58 +442,58 @@ Existují dvě možnosti nastavení místního prostředí, aby se používalo o
    Kadmin> addprinc krbtgt/REALM.COM@AD.COM
    ```
 
-3. Do konfiguračního souboru služby **Hadoop. Security. auth_to_local** HDFS přidejte `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//` .
+3. Do konfiguračního souboru služby **Hadoop.Security.auth_to_local** HDFS přidejte `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//` .
 
 **Na řadiči domény:**
 
-1.  Chcete-li přidat položku sféry, spusťte následující příkazy **Ksetup** :
+1. Chcete-li přidat položku sféry, spusťte následující příkazy **Ksetup** :
 
-    ```cmd
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
-    ```
+   ```cmd
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
-2.  Vytvořte vztah důvěryhodnosti mezi doménou systému Windows a sférou protokolu Kerberos. [heslo] je heslo pro objekt zabezpečení **KRBTGT/REALM. COM \@ AD.com**.
+2. Vytvořte vztah důvěryhodnosti mezi doménou systému Windows a sférou protokolu Kerberos. [heslo] je heslo pro objekt zabezpečení **KRBTGT/REALM. COM \@ AD.com**.
 
-    ```cmd
-    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
-    ```
+   ```cmd
+   netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+   ```
 
-3.  Vyberte šifrovací algoritmus používaný v protokolu Kerberos.
+3. Vyberte šifrovací algoritmus používaný v protokolu Kerberos.
 
-    1. Přejít na Správce serveru > Zásady skupiny Správa > doméně > zásady skupiny objekty > výchozí nebo aktivní zásady domény a upravit.
+   1. Přejít na Správce serveru > Zásady skupiny Správa > doméně > zásady skupiny objekty > výchozí nebo aktivní zásady domény a upravit.
 
-    2. V místním okně **Editor pro správu zásad skupiny** přejít na konfigurace počítače > zásady > nastavení systému Windows > nastavení zabezpečení > místní zásady > možnosti zabezpečení a konfigurace **zabezpečení sítě: Konfigurace typů šifrování povolených pro protokol Kerberos**.
+   2. V místním okně **Editor pro správu zásad skupiny** přejít na konfigurace počítače > zásady > nastavení systému Windows > nastavení zabezpečení > místní zásady > možnosti zabezpečení a konfigurace **zabezpečení sítě: Konfigurace typů šifrování povolených pro protokol Kerberos**.
 
-    3. Vyberte šifrovací algoritmus, který chcete použít pro připojení ke službě KDC. Obvykle můžete jednoduše vybrat všechny možnosti.
+   3. Vyberte šifrovací algoritmus, který chcete použít pro připojení ke službě KDC. Obvykle můžete jednoduše vybrat všechny možnosti.
 
-        ![Typy šifrování konfigurace pro Kerberos](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+      ![Typy šifrování konfigurace pro Kerberos](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
 
-    4. Pomocí příkazu **Ksetup** určete šifrovací algoritmus, který se má použít pro konkrétní sféru.
+   4. Pomocí příkazu **Ksetup** určete šifrovací algoritmus, který se má použít pro konkrétní sféru.
 
-       ```cmd
-       C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
-       ```
+      ```cmd
+      ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+      ```
 
-4.  Vytvořte mapování mezi účtem domény a hlavním objektem Kerberos, aby bylo možné v doméně systému Windows použít zabezpečení Kerberos.
+4. Vytvořte mapování mezi účtem domény a hlavním objektem Kerberos, aby bylo možné v doméně systému Windows použít zabezpečení Kerberos.
 
-    1. Spusťte nástroje pro správu > **Uživatelé a počítače služby Active Directory**.
+   1. Spusťte nástroje pro správu > **Uživatelé a počítače služby Active Directory**.
 
-    2. Nakonfigurujete pokročilé funkce kliknutím na **Zobrazit**  >  **Pokročilé funkce**.
+   2. Nakonfigurujete pokročilé funkce kliknutím na **Zobrazit**  >  **Pokročilé funkce**.
 
-    3. Vyhledejte účet, pro který chcete vytvořit mapování, a kliknutím pravým tlačítkem zobrazte **mapování názvů** > klikněte na kartu **názvy protokolu Kerberos** .
+   3. Vyhledejte účet, pro který chcete vytvořit mapování, a kliknutím pravým tlačítkem zobrazte **mapování názvů** > klikněte na kartu **názvy protokolu Kerberos** .
 
-    4. Přidejte objekt zabezpečení ze sféry.
+   4. Přidejte objekt zabezpečení ze sféry.
 
-        ![Mapovat identitu zabezpečení](media/data-factory-hdfs-connector/map-security-identity.png)
+      ![Mapovat identitu zabezpečení](media/data-factory-hdfs-connector/map-security-identity.png)
 
 **Na počítači brány:**
 
 * Spuštěním následujících příkazů **Ksetup** přidejte položku sféry.
 
    ```cmd
-   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
    ```
 
 **V Azure Data Factory:**
@@ -506,7 +502,6 @@ Existují dvě možnosti nastavení místního prostředí, aby se používalo o
 
 > [!NOTE]
 > Chcete-li mapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, přečtěte si téma [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
-
 
 ## <a name="performance-and-tuning"></a>Výkon a optimalizace
 Další informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) v Azure Data Factory a různých způsobech jejich optimalizace, najdete v tématu [Průvodce optimalizací aktivity kopírování &](data-factory-copy-activity-performance.md) .

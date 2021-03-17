@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 366d68be1a7f115980973015e363da6095876754
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337445"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997626"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Postupy: konfigurace a povolení zásad rizik
 
@@ -33,19 +33,19 @@ Obě zásady pracují na automatizaci reakcí na detekci rizik ve vašem prostř
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Pokud chce vaše organizace uživatelům dovolit, aby při zjištění rizik prováděli vlastní nápravu, musí se uživatelé zaregistrovat pro Samoobslužné resetování hesla i pro Azure Multi-Factor Authentication. Pro zajištění nejlepšího prostředí doporučujeme [, abyste povolili kombinované možnosti registrace informací o zabezpečení](../authentication/howto-registration-mfa-sspr-combined.md) . Umožnění, aby si uživatelé sami opravili stav do produktivního přípravení rychleji, aniž by museli mít zásah správce. Správci můžou tyto události pořád zobrazit a prozkoumat je po faktu. 
+Pokud chce vaše organizace uživatelům dovolit, aby při zjištění rizik prováděli nápravu, je nutné, aby se uživatelé zaregistrovali pro Samoobslužné resetování hesla i pro službu Azure AD Multi-Factor Authentication. Pro zajištění nejlepšího prostředí doporučujeme [, abyste povolili kombinované možnosti registrace informací o zabezpečení](../authentication/howto-registration-mfa-sspr-combined.md) . Umožnění, aby si uživatelé sami opravili stav do produktivního přípravení rychleji, aniž by museli mít zásah správce. Správci můžou tyto události pořád zobrazit a prozkoumat je po faktu. 
 
 ## <a name="choosing-acceptable-risk-levels"></a>Výběr přípustných úrovní rizika
 
 Organizace musí rozhodnout, jakou úroveň rizika mají přijmout vyvážení uživatelského prostředí a stav zabezpečení. 
 
-Doporučení Microsoftu je nastavit prahovou hodnotu zásad rizik uživatelů na **vysokou** a na **střední a vyšší**rizikové zásady pro přihlašování.
+Doporučení Microsoftu je nastavit prahovou hodnotu zásad rizik uživatelů na **vysokou** a na **střední a vyšší** rizikové zásady pro přihlašování.
 
 Výběr **vysoké** prahové hodnoty snižuje počet aktivovaných zásad a minimalizuje dopad na uživatele. Z těchto zásad ale nevylučuje detekci **nízkých** a **středních** rizik, což nemusí útočníkovi zabránit v zneužití ohrožené identity. Výběr **nízké** prahové hodnoty zavádí další přerušení uživatele, ale zvýšené zabezpečení stav.
 
 ## <a name="exclusions"></a>Vyloučení
 
-Všechny zásady umožňují vyloučit uživatele, jako jsou například účty pro [nouzový přístup nebo správce přestávek](../users-groups-roles/directory-emergency-access.md). Organizace můžou určit, že budou muset vyloučit další účty z konkrétních zásad na základě způsobu použití účtů. Všechna vyloučení by měla být pravidelně přezkoumána, aby bylo možné zjistit, zda jsou stále k dispozici.
+Všechny zásady umožňují vyloučit uživatele, jako jsou například účty pro [nouzový přístup nebo správce přestávek](../roles/security-emergency-access.md). Organizace můžou určit, že budou muset vyloučit další účty z konkrétních zásad na základě způsobu použití účtů. Všechna vyloučení by měla být pravidelně přezkoumána, aby bylo možné zjistit, zda jsou stále k dispozici.
 
 Nakonfigurovaná důvěryhodná [Síťová umístění](../conditional-access/location-condition.md) jsou používána ochranou identity v některých detekcích rizik k omezení falešně pozitivních hodnot.
 
@@ -54,7 +54,7 @@ Nakonfigurovaná důvěryhodná [Síťová umístění](../conditional-access/lo
 Pokud chcete povolit rizika uživatele a zásady rizik přihlašování, proveďte následující kroky.
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory**  >  **Security**  >  **Přehled ochrany identit**zabezpečení  >  **Overview**.
+1. Přejděte na **Azure Active Directory**  >  **Security**  >  **Přehled ochrany identit** zabezpečení  >  **Overview**.
 1. Vyberte **zásady rizik uživatelů**.
    1. V části **přiřazení**
       1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
@@ -76,7 +76,7 @@ Pokud chcete povolit rizika uživatele a zásady rizik přihlašování, proveď
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit zásady registrace pro Azure Multi-Factor Authentication](howto-identity-protection-configure-mfa-policy.md)
+- [Povolit zásady registrace Multi-Factor Authentication služby Azure AD](howto-identity-protection-configure-mfa-policy.md)
 
 - [Co je riziko](concept-identity-protection-risks.md)
 

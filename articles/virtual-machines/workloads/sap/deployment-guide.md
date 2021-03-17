@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5d6ea75936383388a57a7822f054e0ea7297471e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653507"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695511"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -72,7 +72,7 @@ ms.locfileid: "88653507"
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
-[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -324,7 +324,7 @@ Azure Virtual Machines je řešení pro organizace, které potřebují výpočet
 
 V tomto článku jsme pokryli postup nasazení aplikací SAP na virtuálních počítačích v Azure, včetně alternativních možností nasazení a řešení potíží. Tento článek sestaví na informacích v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide]. Také doplňuje dokumentaci k instalaci SAP a poznámky SAP, které jsou primárními prostředky pro instalaci a nasazení softwaru SAP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -370,7 +370,7 @@ Pro určení velikosti SAP si můžete sdělit následující informace:
 
 V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Další informace najdete v článku [Přehled Azure Resource Manageru][resource-group-overview].
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Prostředky SAP
 
@@ -422,7 +422,7 @@ Následující vývojový diagram znázorňuje posloupnost kroků specifických 
 Nejjednodušší způsob, jak vytvořit nový virtuální počítač s imagí z Azure Marketplace, je použití Azure Portal.
 
 1.  Přejděte na <https://portal.azure.com/#create/hub>.  Nebo v nabídce Azure Portal vyberte **+ Nový**.
-1.  Vyberte **COMPUTE**a potom vyberte typ operačního systému, který chcete nasadit. Například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) nebo Oracle Linux 7,2. Výchozí zobrazení seznamu nezobrazuje všechny podporované operační systémy. Pro úplný seznam vyberte **Zobrazit vše** . Další informace o podporovaných operačních systémech pro nasazení softwaru SAP najdete v tématu SAP Note [1928533].
+1.  Vyberte **COMPUTE** a potom vyberte typ operačního systému, který chcete nasadit. Například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) nebo Oracle Linux 7,2. Výchozí zobrazení seznamu nezobrazuje všechny podporované operační systémy. Pro úplný seznam vyberte **Zobrazit vše** . Další informace o podporovaných operačních systémech pro nasazení softwaru SAP najdete v tématu SAP Note [1928533].
 1.  Na další stránce si přečtěte podmínky a ujednání.
 1.  V poli **Vyberte model nasazení** vyberte možnost **Správce prostředků**.
 1.  Vyberte **Vytvořit**.
@@ -487,7 +487,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
 
 1. **Nastavení**:
    * **ID systému SAP**: ID systému SAP (SID).
-   * **Typ operačního**systému: operační systém, který chcete nasadit, například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2), nebo Oracle Linux 7,2.
+   * **Typ operačního** systému: operační systém, který chcete nasadit, například Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2), nebo Oracle Linux 7,2.
 
      V zobrazení seznamu se nezobrazuje všechny podporované operační systémy. Další informace o podporovaných operačních systémech pro nasazení softwaru SAP najdete v tématu SAP Note [1928533].
    * **Velikost systému SAP**: velikost systému SAP.
@@ -506,7 +506,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
    * **Uživatelské jméno** a **heslo správce**: uživatelské jméno a heslo.
      Vytvoří se nový uživatel, který se přihlásí k virtuálnímu počítači.
    * **Nová nebo existující podsíť**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo se použije existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/ResourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
+   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/resourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualNetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
 
 1. Podmínky **a ujednání**:  
     Přečtěte si právní podmínky a přijměte je.
@@ -543,11 +543,11 @@ Vzhledem k tomu, že různé verze operačního systému nebo DBMS mají jiné p
 Pomocí různých kroků můžete vytvořit soukromou bitovou kopii pro Linux, než je vytvoříte pro Windows.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > K přípravě image Windows, kterou můžete použít k nasazení více virtuálních počítačů, musí být nastavení systému Windows (například identifikátor SID Windows a název hostitele) abstraktní nebo zobecněná na místním virtuálním počítači. K tomu můžete použít [Nástroj Sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) .
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > K přípravě image pro Linux, kterou můžete použít k nasazení více virtuálních počítačů, je nutné, aby některá nastavení systému Linux byla na místním virtuálním počítači abstraktní nebo zobecněná. K tomu můžete použít `waagent -deprovision`  . Další informace najdete v tématu [zachycení virtuálního počítače se systémem Linux běžícího v Azure][virtual-machines-linux-capture-image] a v [uživatelské příručce agenta Azure Linux][virtual-machines-linux-agent-user-guide-command-line-options].
 >
@@ -625,7 +625,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
    * **Umístění**: kam se má šablona nasadit. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
 1. **Nastavení**:
    * **ID systému SAP**: ID systému SAP.
-   * **Typ operačního**systému: typ operačního systému, který chcete nasadit (Windows nebo Linux).
+   * **Typ operačního** systému: typ operačního systému, který chcete nasadit (Windows nebo Linux).
    * **Velikost systému SAP**: velikost systému SAP.
 
      Počet SAP, který nový systém poskytuje. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
@@ -646,7 +646,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
 
      Vytvoří se nový uživatel, který se přihlásí k virtuálnímu počítači.
    * **Nová nebo existující podsíť**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo se použije existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/ResourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
+   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/resourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualNetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
 
 1. Podmínky **a ujednání**:  
     Přečtěte si právní podmínky a přijměte je.
@@ -683,11 +683,11 @@ V tomto scénáři se agent virtuálního počítače během **nasazování auto
 Další informace o agentovi virtuálního počítače Azure najdete v následujících zdrojích informací.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > [Přehled agenta virtuálního počítače Azure][virtual-machines-windows-agent-user-guide]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > [Uživatelská příručka nástroje Azure Linux Agent][virtual-machines-linux-agent-user-guide]
 >
@@ -720,7 +720,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
    * **Umístění**: kam se má šablona nasadit. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
 1. **Nastavení**:
    * **ID systému SAP**: ID systému SAP.
-   * **Typ operačního**systému: typ operačního systému, který chcete nasadit (Windows nebo Linux).
+   * **Typ operačního** systému: typ operačního systému, který chcete nasadit (Windows nebo Linux).
    * **Velikost systému SAP**: velikost systému SAP.
 
      Počet SAP, který nový systém poskytuje. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
@@ -734,7 +734,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
    * **Identifikátor URI VHD disku s operačním systémem** (jenom šablona nespravovaného disku): identifikátor URI privátního disku s operačním systémem, například https://\ &lt; účet \>. blob.Core.Windows.NET/VHDs/OSDisk.VHD.
    * **ID spravovaného disku disku s operačním systémem** (jenom šablona spravovaného disku): ID disku operačního systému spravovaného disku,/Subscriptions/92d102f7-81a5-4DF7-9877-54987ba97dd9/resourceGroups/Group/Providers/Microsoft.COMPUTE/disks/Win
    * **Nová nebo existující podsíť**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo se použije existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/ResourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
+   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/resourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualNetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
 
 1. Podmínky **a ujednání**:  
     Přečtěte si právní podmínky a přijměte je.
@@ -854,9 +854,9 @@ Postup pro konfiguraci proxy serveru ve Windows se liší od způsobu konfigurac
 
 Aby bylo možné získat přístup k Internetu, musí být nastavení proxy serveru správně nastaveno pro účet místního systému. Pokud vaše nastavení proxy serveru nejsou nastavená Zásady skupiny, můžete nakonfigurovat nastavení pro účet místního systému.
 
-1. Přejděte na **Start**, zadejte **gpedit. msc**a pak vyberte **ENTER**.
+1. Přejděte na **Start**, zadejte **gpedit. msc** a pak vyberte **ENTER**.
 1. Vyberte **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**. Ujistěte se, že nastavení **nastavit proxy na počítač (nikoli na uživatele)** je zakázané nebo není nakonfigurované.
-1. V **Ovládacích panelech**klikněte na možnosti **sítě a sdílení**na webu  >  **Internet Options**.
+1. V **Ovládacích panelech** klikněte na možnosti **sítě a sdílení** na webu  >  .
 1. Na kartě **připojení** vyberte tlačítko **nastavení sítě LAN** .
 1. Zrušte zaškrtnutí políčka **Automaticky zjišťovat nastavení**.
 1. Zaškrtněte políčko **použít proxy server pro vaši síť LAN** a potom zadejte adresu a port proxy serveru.
@@ -911,8 +911,8 @@ Další informace o trasách definovaných uživatelem najdete v tématu [trasy 
 ### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurace rozšíření Azure pro SAP
 
 > [!NOTE]
-> Obecný příkaz podpory: Pokud potřebujete podporu pro rozšíření Azure pro SAP, vždy prosím otevřete incident pomocí SAP pro komponentu BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR.
-> V systému podpory SAP existují vyhrazení technici podpory Microsoftu, které vám pomůžou s našimi společnými zákazníky.
+> Obecný příkaz podpory:  
+> Podpora rozšíření Azure pro SAP je poskytována prostřednictvím kanálů podpory SAP. Pokud potřebujete pomoc s rozšířením Azure pro SAP, otevřete prosím případ podpory s [podporou SAP](https://support.sap.com/). 
 
 Po přípravě virtuálního počítače, jak je popsáno v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], je na virtuálním počítači nainstalovaný agent virtuálního počítače Azure. Dalším krokem je nasazení rozšíření Azure pro SAP, které je k dispozici v úložišti rozšíření Azure v globálních datacentrech Azure. Další informace najdete v tématu [plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver][planning-guide-9.1].
 
@@ -946,7 +946,7 @@ Postup instalace rozšíření Azure pro SAP pomocí prostředí PowerShell:
 Po zadání dat účtu nasadí skript požadovaná rozšíření a povolí požadované funkce. Může to trvat několik minut.
 Další informace o `Set-AzVMAEMExtension` naleznete v tématu [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
-![Úspěšné spuštění rutiny Azure specifické pro SAP – AzVMAEMExtension][deployment-guide-figure-900]
+![Úspěšné spuštění rutiny Azure specifické pro SAP Set-AzVMAEMExtension][deployment-guide-figure-900]
 
 `Set-AzVMAEMExtension`Konfigurace provádí všechny kroky pro konfiguraci shromažďování dat hostitele pro SAP.
 
@@ -1010,7 +1010,7 @@ Instalace rozšíření Azure pro SAP pomocí Azure CLI:
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
    ```
 
-   Výstup bude vypadat nějak takto:
+   Výstup vypadá takto:
 
    ```output
    ...
@@ -1057,33 +1057,17 @@ Nové rozšíření VM pro SAP používá pro přístup k datům monitorování 
    az login
    ```
 
-1. Postupujte podle kroků v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI][qs-configure-cli-windows-vm] a povolte pro virtuální počítač spravovanou identitu přiřazenou systémem. Spravované identity přiřazené uživatelem nejsou podporovány rozšířením virtuálního počítače pro SAP. Můžete ale povolit i identitu přiřazenou systémem i uživatele.
-
-   Příklad:
+1. Nainstalujte rozšíření Azure CLI AEM. Ujistěte se, že používáte minimálně verzi 0.2.0 nebo vyšší.
+  
    ```azurecli
-   az vm identity assign -g <resource-group-name> -n <vm name>
+   az extension add --name aem
    ```
-
-1. Přiřaďte přístup spravovaných identit ke skupině prostředků virtuálního počítače nebo všem síťovým rozhraním, spravovaným diskům a samotnému virtuálnímu počítači, jak je popsáno v tématu [přiřazení spravované identity k prostředku pomocí Azure CLI][howto-assign-access-cli] .
-
-    Příklad:
-
-    ```azurecli
-    spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
-    rgId=$(az group show -g <resource-group-name> --query id --out tsv)
-    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
-    ```
-
-1. Spuštěním následujícího příkazu rozhraní příkazového řádku Azure nainstalujte rozšíření Azure pro SAP.
-    Rozšíření je aktuálně podporováno pouze v AzureCloud. Azure Čína 21Vianet, Azure Government nebo některá z dalších speciálních prostředí se zatím nepodporují.
-
-    ```azurecli
-    # For Linux machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
-
-    #For Windows machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
-    ```
+  
+1. Nainstalujte nové rozšíření pomocí nástroje.
+  
+   ```azurecli
+   az vm aem set -g <resource-group-name> -n <vm name> --install-new-extension
+   ```
 
 ## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Kontroly a odstraňování potíží
 
@@ -1128,7 +1112,7 @@ Azperflib.exe výstup zobrazuje všechny naplněné čítače výkonu Azure pro 
 ![Výstup kontroly stavu spuštěním azperflib.exe, což znamená, že neexistují žádné problémy][deployment-guide-figure-1100]
 <a name="figure-11"></a>
 
-Zkontroluje výsledek vrácený pro **čítače celkový** výstup, který je hlášený jako prázdný, a pro **stav**uvedený na předchozím obrázku.
+Zkontroluje výsledek vrácený pro **čítače celkový** výstup, který je hlášený jako prázdný, a pro **stav** uvedený na předchozím obrázku.
 
 Vyhodnotit výsledné hodnoty následujícím způsobem:
 
@@ -1279,7 +1263,7 @@ Pokud některá data infrastruktury nejsou doručena správně, jak je uvedeno v
 
    ![Výstup úspěšného testu rozšíření Azure pro SAP][deployment-guide-figure-1300]
 
-Ujistěte se, že všechny výsledky kontroly stavu jsou v **pořádku**. Pokud se některé kontroly nezobrazují, spusťte rutinu **aktualizace, jak**je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Počkejte 15 minut a opakujte kontroly popsané v části [Kontrola připravenosti pro Azure rozšíření pro SAP][deployment-guide-5.1] a [kontrolu stavu pro rozšíření Azure pro konfiguraci SAP][deployment-guide-5.2]. Pokud kontroly stále indikují problém s některými nebo všemi čítači, přečtěte si téma [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3].
+Ujistěte se, že všechny výsledky kontroly stavu jsou v **pořádku**. Pokud se některé kontroly nezobrazují, spusťte rutinu **aktualizace, jak** je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Počkejte 15 minut a opakujte kontroly popsané v části [Kontrola připravenosti pro Azure rozšíření pro SAP][deployment-guide-5.1] a [kontrolu stavu pro rozšíření Azure pro konfiguraci SAP][deployment-guide-5.2]. Pokud kontroly stále indikují problém s některými nebo všemi čítači, přečtěte si téma [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3].
 
 > [!Note]
 > V případech, kdy používáte spravované standardní disky Azure, se můžete setkat s upozorněními. Místo testů se zobrazí upozornění vracející "OK". To je normální a určené pro případ tohoto typu disku. Viz také téma [řešení potíží s rozšířením Azure pro SAP][deployment-guide-5.3] .
@@ -1309,7 +1293,7 @@ Pokud některá z dat infrastruktury nejsou dodána správně, jak je uvedeno v 
 > [!NOTE]
 > Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá výchozím rozšířením virtuálního počítače. Pokud jste nainstalovali nové rozšíření virtuálních počítačů, přečtěte si kapitolu [Poradce při potížích s novým rozšířením Azure pro SAP][deployment-guide-5.3-new].
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Logo Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
 
 Služba systému Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Pokud služba není nainstalovaná správně nebo pokud ve vašem VIRTUÁLNÍm počítači není spuštěná, nemůžete shromažďovat metriky výkonu.
 
@@ -1350,13 +1334,13 @@ Služba AzureEnhancedMonitoring systému Windows existuje a je povolená, ale ne
 
 Konfigurace je nesprávná. Restartujte rozšíření Azure pro SAP na virtuálním počítači, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5].
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Chybí některé čítače výkonu Azure.
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Logo Windows][Logo_Windows] Chybí některé čítače výkonu Azure.
 
 Služba systému Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Služba získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Diagnostics. Čítače úložiště se používají z vašeho protokolování na úrovni předplatného úložiště.
 
 Pokud řešení potíží pomocí SAP Note [1999351] problém nevyřeší, spusťte znovu `Set-AzVMAEMExtension` konfigurační skript. Možná budete muset počkat hodinu, protože diagnostické a diagnostické čítače nemusí být vytvořené hned po povolení. Pokud se problém opakuje, otevřete zprávu zákaznická podpora SAP na komponentě BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR pro virtuální počítač se systémem Linux.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Čítače výkonu Azure se vůbec nezobrazují
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Logo Linux.][Logo_Linux] Čítače výkonu Azure se vůbec nezobrazují
 
 Metriky výkonu v Azure se shromažďují pomocí démona. Pokud démon není spuštěn, nelze shromáždit žádné metriky výkonu.
 
@@ -1370,11 +1354,11 @@ Složka \\ var \\ lib waagent neobsahuje podadresář \\ \\ pro rozšíření Az
 
 Rozšíření není nainstalované. Určete, zda se jedná o problém s proxy serverem (jak je popsáno výše). Možná budete muset restartovat počítač nebo znovu spustit `Set-AzVMAEMExtension` konfigurační skript.
 
-##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Spuštění Set-AzVMAEMExtension a test-AzVMAEMExtension zobrazit varovné zprávy s oznámením, že standardní Managed Disks nejsou podporovány.
+##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Spuštění Set-AzVMAEMExtension a Test-AzVMAEMExtension zobrazit varovné zprávy s oznámením, že standardní Managed Disks nejsou podporovány.
 
 ###### <a name="issue"></a>Problém
 
-Při spouštění set-AzVMAEMExtension nebo AzVMAEMExtension zpráv, jako jsou tyto zprávy, se zobrazí následující:
+Při spouštění Set-AzVMAEMExtension nebo Test-AzVMAEMExtension se zobrazí následující zprávy:
 
 <pre><code>
 WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
@@ -1389,7 +1373,7 @@ Spuštění azperfli.exe jak bylo popsáno výše, můžete získat výsledek, k
 Zprávy jsou způsobeny faktem, že standardní Managed Disks neposkytují rozhraní API používaná rozšířením SAP pro SAP pro kontrolu statistik standardních Azure Storagech účtů. Nejedná se o obavy. Důvod, proč se shromažďování dat pro účty Standard Disk Storage omezuje na vstupy a výstupy, ke kterým došlo často. Služba Managed disks se vyhne omezování tím, že omezuje počet disků v účtu úložiště. Proto tento typ dat není kritický.
 
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Chybí některé čítače výkonu Azure.
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Logo Linux.][Logo_Linux] Chybí některé čítače výkonu Azure.
 
 Metriky výkonu v Azure se shromažďují pomocí démona, který získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Diagnostics. Čítače úložiště přicházejí z protokolů v rámci vašeho předplatného úložiště.
 
@@ -1402,7 +1386,7 @@ Pokud problém nevyřešíte pomocí SAP Note [1999351] , spusťte konfiguračn�
 > [!NOTE]
 > Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá novým rozšířením virtuálního počítače. Pokud jste nainstalovali výchozí rozšíření virtuálního počítače, přečtěte si kapitolu [Poradce při potížích s rozšířením Azure pro SAP][deployment-guide-5.3].
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Logo Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
 
 Proces AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Pokud proces ve vašem VIRTUÁLNÍm počítači neběží, nemůžete shromažďovat metriky výkonu.
 
@@ -1416,13 +1400,13 @@ Instalační adresář C: \\ \\ moduly plug-in \\ Microsoft. zákaznického pora
 
 Rozšíření není nainstalované. Určete, zda se jedná o problém s proxy serverem (jak je popsáno výše). Možná budete muset restartovat počítač nebo znovu nainstalovat rozšíření virtuálního počítače.
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Chybí některé čítače výkonu Azure.
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Logo Windows][Logo_Windows] Chybí některé čítače výkonu Azure.
 
 Proces Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Proces získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Monitor.
 
 Pokud problém nevyřešíte pomocí protokolu SAP Note [1999351] , otevřete zprávu zákaznická podpora SAP na komponentě BC-op-NT-AZR pro Windows nebo BC-op-LNX-AZR pro virtuální počítač se systémem Linux. Připojte prosím soubor protokolu C: \\ balíčky \\ plugins \\ Microsoft. zákaznického poradního. AzureEnhancedMonitoring. MonitorX64Windows \\ &lt;>\\logapp.txt k incidentu.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Čítače výkonu Azure se vůbec nezobrazují
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Logo Linux.][Logo_Linux] Čítače výkonu Azure se vůbec nezobrazují
 
 Metriky výkonu v Azure se shromažďují pomocí démona. Pokud démon není spuštěn, nelze shromáždit žádné metriky výkonu.
 
@@ -1436,7 +1420,7 @@ Složka \\ var \\ lib waagent neobsahuje podadresář \\ \\ pro rozšíření Az
 
 Rozšíření není nainstalované. Určete, zda se jedná o problém s proxy serverem (jak je popsáno výše). Možná budete muset restartovat počítač nebo znovu nainstalovat rozšíření virtuálního počítače.
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Chybí některé čítače výkonu Azure.
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Logo Linux.][Logo_Linux] Chybí některé čítače výkonu Azure.
 
 Metriky výkonu v Azure se shromažďují pomocí démona, který získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Monitor.
 
@@ -1495,7 +1479,7 @@ Postupujte podle kroků v části [Konfigurace rozšíření Azure pro SAP][depl
 
 Pokud chyby nezmizí, obraťte se na [podporu][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktování podpory
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktujte podporu
 
 Neočekávaná chyba nebo neexistuje žádné známé řešení. Shromážděte soubor AzureEnhancedMonitoring_service. log umístěný ve složce C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) nebo/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) a požádejte o další pomoc podporu SAP.
 

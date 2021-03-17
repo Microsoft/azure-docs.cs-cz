@@ -6,19 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb780d10996cb22f5e6fe5bc8889e897e8c3854d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617167"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666768"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>Použití SAP HANAch uzlů pro vrstvení dat a rozšíření
 

@@ -2,15 +2,14 @@
 title: Azure Application Insights – Automatická kolekce závislostí | Microsoft Docs
 description: Application Insights automatické shromažďování a vizualizace závislostí
 ms.topic: reference
-author: mrbullwinkle
-ms.author: mbullwin
+ms.custom: devx-track-dotnet
 ms.date: 05/06/2020
-ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a4d79e52465e93fb4db2625217cb37a06917218
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324178"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930862"
 ---
 # <a name="dependency-auto-collection"></a>Automatické shromažďování závislostí
 
@@ -24,7 +23,7 @@ Níže je uveden aktuálně podporovaný seznam volání závislostí, která js
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
 | Jádro ASP.NET | 1.1 + |
-| <b>Komunikační knihovny</b> |
+| <b> Komunikační knihovny</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
 | [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0 – nejnovější stabilní verze. (Viz poznámka níže)
@@ -43,8 +42,8 @@ Níže je uveden aktuálně podporovaný seznam volání závislostí, která js
 | [Tomcat](https://tomcat.apache.org/) | 7, 8 | 
 | [JBoss EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
-| <b>Aplikační architektury</b> |  |
-| [Spring](https://spring.io/) | 3.0 |
+| <b>Aplikační architektury </b> |  |
+| [Spring](https://spring.io/) | 3,0 |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
 | Java servlet | 3.1 + |
 | <b>Komunikační knihovny</b> |  |

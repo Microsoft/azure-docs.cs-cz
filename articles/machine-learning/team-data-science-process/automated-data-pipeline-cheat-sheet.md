@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: d09f13a65a72c6c856a7fcd3d943ec116f3da43f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721859"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91250636"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Tahák k automatizovanému datovému kanálu pro predikce služby Azure Machine Learning
 **Tahák list s automatickým datovým kanálem Microsoft Azure Machine Learning** vám pomůže procházet technologii, kterou můžete použít k získání dat do Machine Learning webové služby, kde ji můžete vyhodnotit pomocí modelu prediktivní analýzy.
@@ -35,7 +35,6 @@ Stáhněte si tahák list sem: ** [Microsoft Azure Machine Learning automaticky 
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Další nápověda k nástroji Machine Learning Studio
-* Přehled Microsoft Azure Machine Learning najdete v tématu [Úvod do strojového učení v Microsoft Azure](../studio/what-is-machine-learning.md).
-* Vysvětlení, jak nasadit webovou službu bodování, najdete v tématu [nasazení webové](../studio/deploy-a-machine-learning-web-service.md)služby vyhodnocování Azure Machine Learning.
-* Diskuzi o tom, jak používat webovou službu bodování, najdete v tématu [How to spotřebovává Azure Machine Learning Web Service](../studio/consume-web-services.md).
-
+* Přehled Microsoft Azure Machine Learning najdete v tématu [Úvod do strojového učení v Microsoft Azure](../classic/index.yml).
+* Vysvětlení, jak nasadit webovou službu bodování, najdete v tématu [nasazení webové](../classic/deploy-a-machine-learning-web-service.md)služby vyhodnocování Azure Machine Learning.
+* Diskuzi o tom, jak používat webovou službu bodování, najdete v tématu [How to spotřebovává Azure Machine Learning Web Service](../classic/consume-web-services.md).

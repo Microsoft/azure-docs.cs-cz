@@ -1,21 +1,17 @@
 ---
 title: Vytváření vizuálních prvků
 description: Naučte se používat tvorbu vizuálů v Azure Data Factory
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-author: djpmsft
-ms.author: daperlov
-ms.reviewer: ''
-manager: anandsub
-ms.date: 05/15/2020
-ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: dcstwh
+ms.author: weetok
+ms.date: 09/08/2020
+ms.openlocfilehash: 704360ac37e016de9efe2248181f7db358f5a7cf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343105"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371477"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vytváření vizuálů v Azure Data Factory
 
@@ -27,7 +23,7 @@ V současné době je Azure Data Factory UX podporován pouze v Microsoft Edge a
 
 ## <a name="authoring-canvas"></a>Plátno pro vytváření obsahu
 
-**Plátno pro vytváření obsahu**otevřete kliknutím na ikonu tužky. 
+**Plátno pro vytváření obsahu** otevřete kliknutím na ikonu tužky. 
 
 ![Plátno pro vytváření obsahu](media/author-visually/authoring-canvas.png)
 
@@ -39,9 +35,17 @@ Výchozí prostředí pro vytváření vizuálů funguje přímo s Data Factory 
 
 U prostředků nejvyšší úrovně, jako jsou kanály, datové sady a toky dat, jsou vlastnosti vysoké úrovně editovatelné v podokně vlastnosti na pravé straně plátna. Podokno vlastnosti obsahuje vlastnosti, jako je název, popis, poznámky a další vlastnosti na nejvyšší úrovni. Podzdroje, jako jsou aktivity kanálu a transformace toku dat, se upravují pomocí panelu v dolní části plátna. 
 
-![Plátno pro vytváření obsahu](media/author-visually/properties-pane.png)
+![Podokno Vlastnosti](media/author-visually/properties-pane.png)
 
 V podokně vlastnosti se při vytváření prostředků otevírá pouze standardně. Pokud ho chcete upravit, klikněte na ikonu podokna Vlastnosti umístěnou v pravém horním rohu plátna.
+
+### <a name="related-resources"></a>Související prostředky
+
+V podokně vlastnosti vidíte, které prostředky jsou na vybraném prostředku závislé, a to tak, že vyberete kartu **související** . Tady se zobrazí všechny prostředky, které odkazují na aktuální prostředek.
+
+![Související prostředky](media/author-visually/related-resources.png)
+
+Například na výše uvedeném obrázku jeden kanál a dva toky dat používají aktuálně vybranou datovou sadu.
 
 ## <a name="management-hub"></a>Centrum správy
 

@@ -3,7 +3,7 @@ title: Jak funguje Azure Traffic Manager | Microsoft Docs
 description: Tento článek vám pomůže pochopit, jak Traffic Manager směrovat provoz pro zajištění vysokého výkonu a dostupnosti webových aplikací.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: rohink
-ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a1e1bd107e8b3b9209f99d1abfc4d7e391c3c4a6
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294854"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184335"
 ---
 # <a name="how-traffic-manager-works"></a>Jak Traffic Manager funguje
 
@@ -62,8 +62,8 @@ Když klient požádá o stránku `https://partners.contoso.com/login.aspx` , pr
     - Aktuální stav každého koncového bodu, jak je stanoven Traffic Managermi kontrolami stavu. Další informace najdete v tématu [Traffic Manager monitorování koncového bodu](traffic-manager-monitoring.md).
     - Vybraná metoda směrování provozu. Další informace najdete v tématu [metody směrování Traffic Manager](traffic-manager-routing-methods.md).
 
-5. Zvolený koncový bod se vrátí jako jiný záznam CNAME DNS. V takovém případě se vám budeme vracet contoso-us.cloudapp.net.
-6. V dalším kroku najde rekurzivní služba DNS názvové servery pro doménu cloudapp.net. Kontaktuje tyto názvové servery, aby požádaly o záznam DNS ' contoso-us.cloudapp.net '. Vrátí se záznam DNS, který obsahuje IP adresu koncového bodu služby založeného na USA.
+5. Zvolený koncový bod se vrátí jako jiný záznam CNAME DNS. V takovém případě se vám budeme vracet contoso-eu.cloudapp.net.
+6. V dalším kroku najde rekurzivní služba DNS názvové servery pro doménu cloudapp.net. Kontaktuje tyto názvové servery, aby požádaly o záznam DNS ' contoso-eu.cloudapp.net '. Vrátí se záznam DNS, který obsahuje IP adresu koncového bodu služby založeného na EU.
 7. Rekurzivní služba DNS slučuje výsledky a vrátí jednu odpověď DNS klientovi.
 8. Klient obdrží výsledky DNS a připojí se k dané IP adrese. Klient se připojí ke koncovému bodu služby Application Service přímo, nikoli prostřednictvím Traffic Manager. Vzhledem k tomu, že se jedná o koncový bod HTTPS, klient provede nezbytnou metodu handshake protokolu SSL/TLS a pak vytvoří požadavek HTTP GET na stránku/Login.aspx.
 
@@ -71,27 +71,27 @@ Rekurzivní služba DNS ukládá do mezipaměti odpovědi DNS, které obdrží. 
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* [Jaká IP adresa Traffic Manager použít?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
+* [Jaká IP adresa Traffic Manager použít?](./traffic-manager-faqs.md#what-ip-address-does-traffic-manager-use)
 
-* [Jaké typy přenosů se dají směrovat pomocí Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+* [Jaké typy přenosů se dají směrovat pomocí Traffic Manager?](./traffic-manager-faqs.md#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [Podporuje Traffic Manager "rychlé" relace?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [Podporuje Traffic Manager "rychlé" relace?](./traffic-manager-faqs.md#does-traffic-manager-support-sticky-sessions)
 
-* [Proč se mi při použití Traffic Manager zobrazuje chyba protokolu HTTP?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+* [Proč se mi při použití Traffic Manager zobrazuje chyba protokolu HTTP?](./traffic-manager-faqs.md#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
-* [Jaký je dopad na výkon při používání Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+* [Jaký je dopad na výkon při používání Traffic Manager?](./traffic-manager-faqs.md#what-is-the-performance-impact-of-using-traffic-manager)
 
-* [Jaké aplikační protokoly můžu používat s Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+* [Jaké aplikační protokoly můžu používat s Traffic Manager?](./traffic-manager-faqs.md#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [Můžu použít Traffic Manager s názvem domény "holé"?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [Můžu použít Traffic Manager s názvem domény "holé"?](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-a-naked-domain-name)
 
-* [Považuje Traffic Manager adresa klientské podsítě při zpracování dotazů DNS?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+* [Považuje Traffic Manager adresa klientské podsítě při zpracování dotazů DNS?](./traffic-manager-faqs.md#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
-* [Co je DNS TTL a jak má vliv na uživatele?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+* [Co je DNS TTL a jak má vliv na uživatele?](./traffic-manager-faqs.md#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
-* [Jak vysoká nebo nízká můžu nastavit hodnotu TTL pro Traffic Manager odezvy?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+* [Jak vysoká nebo nízká můžu nastavit hodnotu TTL pro Traffic Manager odezvy?](./traffic-manager-faqs.md#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 
-* [Jak můžu pochopit objem dotazů přicházejících do svého profilu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+* [Jak můžu pochopit objem dotazů přicházejících do svého profilu?](./traffic-manager-faqs.md#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -102,4 +102,3 @@ Přečtěte si další informace o [metodách směrování provozu](traffic-mana
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
 [2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
-

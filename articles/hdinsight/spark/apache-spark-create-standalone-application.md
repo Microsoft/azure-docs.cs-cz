@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: Scala Maven App for Spark & IntelliJ – Azure HDInsight'
 description: Kurz – vytvoření aplikace Spark napsané v Scala s Apache Maven jako systém sestavení. A stávající Maven Archetype pro Scala od IntelliJ NÁPADu.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,mvc,seoapr2020
-ms.date: 04/17/2020
-ms.openlocfilehash: eaee58cf0a1a2e3497b0e09b7c26852f0699af59
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.custom: contperf-fy21q1
+ms.date: 08/21/2020
+ms.openlocfilehash: d2c7c4feca32544a0e15e876c7207c49dee39341
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848444"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940522"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace Scala Maven pro Apache Spark v HDInsight pomocí IntelliJ
 
@@ -39,7 +36,7 @@ V tomto kurzu se naučíte:
 
 * Prostředí Java IDE. V tomto článku se používá [INTELLIJ nápad Community ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
-* Azure Toolkit for IntelliJ.  Viz [instalace Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in).
+* Azure Toolkit for IntelliJ.  Viz [instalace Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in).
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>Instalace modulu plug-in Scala pro IntelliJ IDEA
 
@@ -98,16 +95,16 @@ Chcete-li nainstalovat modul plug-in Scala, proveďte následující kroky:
 
 5. V seznamu archetypes vyberte **`org.scala-tools.archetypes:scala-archetype-simple`** . Tento Archetype vytvoří správnou adresářovou strukturu a stáhne požadované výchozí závislosti pro zápis programu Scala.
 
-    ![IntelliJ nápad vytvořit Maven projekt](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    ![Snímek obrazovky zobrazuje vybraný Archetype v okně Nový projekt.](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. Vyberte **Další**.
 
-7. Rozbalte možnost **souřadnice artefaktů**. Poskytněte příslušné hodnoty pro **GroupID**a **ArtifactId**. Automaticky se vyplní **název**a **umístění** . V tomto kurzu se používají následující hodnoty:
+7. Rozbalte možnost **souřadnice artefaktů**. Poskytněte příslušné hodnoty pro **GroupID** a **ArtifactId**. Automaticky se vyplní **název** a **umístění** . V tomto kurzu se používají následující hodnoty:
 
     - **GroupID:** com. Microsoft. spark. example
     - **ArtifactId:** SparkSimpleApp
 
-    ![IntelliJ nápad vytvořit Maven projekt](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    ![Snímek obrazovky ukazuje možnost souřadnice artefaktů v okně Nový projekt.](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. Vyberte **Další**.
 
@@ -115,13 +112,13 @@ Chcete-li nainstalovat modul plug-in Scala, proveďte následující kroky:
 
 10. Ověřte název a umístění projektu a pak vyberte **Finish** (Dokončit).  Import projektu bude trvat několik minut.
 
-11. Po importu projektu v levém podokně přejděte do **SparkSimpleApp**  >  **Src**  >  **test**  >  **Scala**  >  **com**  >  **Microsoft**  >  **Spark**  >  **příklad**.  Klikněte pravým tlačítkem na **MySpec**a pak vyberte **Odstranit...**. Tento soubor pro aplikaci nepotřebujete.  V dialogovém okně vyberte **OK** .
+11. Po importu projektu v levém podokně přejděte do **SparkSimpleApp**  >  **Src**  >  **test**  >  **Scala**  >  **com**  >  **Microsoft**  >  **Spark**  >  **příklad**.  Klikněte pravým tlačítkem na **MySpec** a pak vyberte **Odstranit...**. Tento soubor pro aplikaci nepotřebujete.  V dialogovém okně vyberte **OK** .
   
 12. V pozdějších krocích aktualizujete **pom.xml** a definujete závislosti pro aplikaci Spark Scala. Aby se tyto závislosti automaticky stáhly a vyřešily, musíte nakonfigurovat Maven.
 
 13. V nabídce **soubor** vyberte **Nastavení** a otevřete okno **Nastavení** .
 
-14. V okně **Nastavení** přejděte na **sestavení, spuštění,**  >  **Nástroje sestavení**nasazení  >  **Maven**  >  **Import**.
+14. V okně **Nastavení** přejděte na **sestavení, spuštění,**  >  **Nástroje sestavení** nasazení  >  **Maven**  >  **Import**.
 
 15. Zaškrtněte políčko **importovat projekty Maven automaticky** .
 
@@ -129,7 +126,7 @@ Chcete-li nainstalovat modul plug-in Scala, proveďte následující kroky:
 
     ![Konfigurace Mavenu pro automatické stahování](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
-17. V levém podokně přejděte do **Src**  >  **Main**  >  **Scala**  >  **com. Microsoft. spark. example**a dvakrát klikněte na **aplikace** a otevřete App. Scala.
+17. V levém podokně přejděte do **Src**  >  **Main**  >  **Scala**  >  **com. Microsoft. spark. example** a dvakrát klikněte na **aplikace** a otevřete App. Scala.
 
 18. Nahraďte stávající vzorový kód následujícím kódem a uložte změny. Tento kód načte data z HVAC.csv (k dispozici ve všech clusterech HDInsight Spark). Načte řádky, které mají pouze jednu číslici z šestého sloupce. A zapíše výstup do **/HVACOut** pod výchozím kontejnerem úložiště pro cluster.
 
@@ -203,7 +200,7 @@ Chcete-li nainstalovat modul plug-in Scala, proveďte následující kroky:
 
         Ujistěte se, že je zaškrtnuté políčko **zahrnout do sestavení projektu** . Tato možnost zajistí, že se jar vytvoří při každém sestavení nebo aktualizaci projektu. Vyberte **použít** a pak **OK**.
 
-    7. Chcete-li vytvořit jar, přejděte **k sestavení**  >  **artefakty**sestavení Builds  >  **Build**. Projekt se zkompiluje přibližně po 30 sekundách.  Výstupní soubor JAR se vytvoří v adresáři **\out\artifacts**.
+    7. Chcete-li vytvořit jar, přejděte **k sestavení**  >  **artefakty** sestavení Builds  >  . Projekt se zkompiluje přibližně po 30 sekundách.  Výstupní soubor JAR se vytvoří v adresáři **\out\artifacts**.
 
         ![Výstup artefaktů projektu IntelliJ](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
 
@@ -219,11 +216,11 @@ Ke spuštění aplikace v clusteru můžete použít následující postupy:
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste vytvořili, pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 
-1. V části **služby**vyberte **clustery HDInsight** .
+1. V části **služby** vyberte **clustery HDInsight** .
 
 1. V seznamu clusterů HDInsight, které se zobrazí, vyberte **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.
 

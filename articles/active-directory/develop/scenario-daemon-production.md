@@ -1,5 +1,6 @@
 ---
-title: Přesunutí aplikace démona, která volá webová rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
+title: Přesunutí aplikace démona, která volá webová rozhraní API do produkčního prostředí | Azure
+titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak přesunout aplikaci démona, která volá webová rozhraní API do produkčního prostředí.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 72e6d0a8677f7a8175223b80541c99026a9eb16f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119160"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582837"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Aplikace démona, která volá webová rozhraní API – přesun do produkčního prostředí
 
@@ -24,27 +25,24 @@ Když teď víte, jak získat a použít token pro volání služby Service-to-S
 
 ## <a name="deployment---multitenant-daemon-apps"></a>Nasazení – víceklientské aplikace démona
 
-Pokud jste nezávislý výrobce softwaru, který vytváří aplikaci démona, která může běžet v několika klientech, musíte se ujistit, že správce klienta:
+Pokud jste nezávislý výrobce softwaru, který vytváří aplikaci démona, která může běžet v několika klientech, ujistěte se, že správce klienta:
 
 - Zřídí instanční objekt pro aplikaci.
 - Udělí souhlas aplikaci.
 
 Budete muset vysvětlit zákazníkům, jak tyto operace provést. Další informace najdete v tématu [vyžádání souhlasu pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Další kroky
-
-Tady je několik odkazů, které vám pomohou získat další informace:
+## <a name="code-samples"></a>Ukázky kódů
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-- Rychlý Start: [získání tokenu a volání Microsoft Graph API z konzolové aplikace pomocí identity aplikace](./quickstart-v2-netcore-daemon.md)
 - Referenční dokumentace pro:
   - [ConfidentialClientApplication](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)se vytváření instancí.
   - Volání [AcquireTokenForClient](/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder).
 - Další ukázky/kurzy:
-  - [Microsoft-Identity-Platform-Console-démon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) nabízí jednoduchou konzolovou aplikaci .NET Core daemon, která zobrazuje uživatele Microsoft Graph dotazování tenanta.
+  - funkce [Microsoft-Identity-Platform-Console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) obsahuje malou konzolovou aplikaci .NET Core daemon, která zobrazuje uživatele Microsoft Graph dotazování tenanta.
 
     ![Ukázková topologie aplikace démona](media/scenario-daemon-app/daemon-app-sample.svg)
 
@@ -56,12 +54,18 @@ Tady je několik odkazů, které vám pomohou získat další informace:
 
     ![topologie](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+---
+
+## <a name="next-steps"></a>Další kroky
+
+Tady je několik odkazů, které vám pomohou získat další informace:
+
 # <a name="python"></a>[Python](#tab/python)
 
 Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace](./quickstart-v2-python-daemon.md).
 
 # <a name="java"></a>[Java](#tab/java)
 
-MSAL Java je aktuálně ve verzi Public Preview. Další informace najdete v tématu [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Java pomocí identity aplikace](./quickstart-v2-java-daemon.md).
 
 ---

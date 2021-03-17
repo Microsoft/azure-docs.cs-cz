@@ -1,16 +1,14 @@
 ---
 title: Parametrizovat konfigurační soubory v Azure Service Fabric
 description: Naučte se, jak parametrizovat konfigurační soubory v Service Fabric, což je užitečná technika při správě více prostředí.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: mikhegn
-ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca376230c427c47e839b2dee96e8daa83ccedf15
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75644626"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576753"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak parametrizovat konfigurační soubory v Service Fabric
 
@@ -20,7 +18,7 @@ V tomto článku se dozvíte, jak parametrizovat konfigurační soubor v Service
 
 V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve vašem nasazení aplikace.
 
-1. Otevřete * \<MyService>\PackageRoot\Config\Settings.xml* soubor v projektu služby.
+1. Otevřete *\<MyService>\PackageRoot\Config\Settings.xml* soubor v projektu služby.
 1. Přidáním následujícího kódu XML nastavte název a hodnotu konfiguračního parametru, například velikost mezipaměti rovnou 25.
 
    ```xml
@@ -30,7 +28,7 @@ V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve va�
    ```
 
 1. Uložte soubor a zavřete ho.
-1. Otevřete soubor * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* .
+1. Otevřete soubor *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* .
 1. V souboru ApplicationManifest.xml deklarujte parametr a výchozí hodnotu v `Parameters` elementu.  Doporučuje se, aby název parametru obsahoval název služby (například "Mojesluzba").
 
    ```xml

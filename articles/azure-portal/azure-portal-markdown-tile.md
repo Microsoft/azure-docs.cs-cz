@@ -1,21 +1,15 @@
 ---
 title: Použití vlastní dlaždice Markdownu na řídicích panelech Azure
 description: Přečtěte si, jak přidat dlaždici Markdownu na řídicí panel Azure pro zobrazení statického obsahu.
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 01/08/2020
 ms.topic: how-to
-ms.custom: devx-track-javascript
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: d19809df7f79f1d1fa84a90d552dbe5bf2449ea5
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386890"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745753"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Použití dlaždice Markdownu na řídicích panelech Azure pro zobrazení vlastního obsahu
 
@@ -31,7 +25,7 @@ Dlaždici Markdownu můžete přidat do řídicích panelů Azure a zobrazit tak
 
    ![Snímek obrazovky zobrazující zobrazení pro úpravy řídicího panelu](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-1. V **galerii dlaždic**Najděte dlaždici s názvem **Markdownu** a vyberte **Přidat**. Dlaždice se přidá na řídicí panel a otevře se podokno **Upravit Markdownu** .
+1. V **galerii dlaždic** Najděte dlaždici s názvem **Markdownu** a vyberte **Přidat**. Dlaždice se přidá na řídicí panel a otevře se podokno **Upravit Markdownu** .
 
 1. Zadejte hodnoty pro **název** a **podnadpis**, které se zobrazí na dlaždici po přesunu do jiného pole.
 
@@ -48,7 +42,7 @@ Dlaždici Markdownu můžete přidat do řídicích panelů Azure a zobrazit tak
       ![Snímek obrazovky ukazující zadání adresy URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > Pro zvýšení zabezpečení můžete vytvořit soubor Markdownu a uložit ho do [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../storage/common/storage-service-encryption.md), a pak na soubor odkazovat pomocí možnosti adresa URL. Obsah Markdownu je zašifrovaný prostřednictvím možností šifrování účtu úložiště. Obsah Markdownu na řídicím panelu můžou zobrazit jenom uživatelé s oprávněními k tomuto souboru.
+      > Pro zvýšení zabezpečení můžete vytvořit soubor Markdownu a uložit ho do [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../storage/common/storage-service-encryption.md), a pak na soubor odkazovat pomocí možnosti adresa URL. Obsah Markdownu je zašifrovaný prostřednictvím možností šifrování účtu úložiště. Obsah Markdownu na řídicím panelu můžou zobrazit jenom uživatelé s oprávněními k tomuto souboru. V účtu úložiště možná budete muset nastavit pravidlo [sdílení prostředků mezi zdroji (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) , aby Azure Portal ( _https://portal.azure.com/_ ) mohl získat přístup k souboru Markdownu v objektu BLOB.
 
 1. Výběrem **Hotovo** zavřete podokno **Upravit Markdownu** . Obsah se zobrazí na dlaždici Markdownu, kterou můžete změnit přetažením úchytu v pravém dolním rohu.
 

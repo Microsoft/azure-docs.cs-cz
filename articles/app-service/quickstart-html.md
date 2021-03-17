@@ -6,17 +6,21 @@ ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: bd1e44aefed310826465dbf44dee1324f5a085b3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./quickstart-html-uiex
+ms.openlocfilehash: 1a179f30b4004eba105780ee73e25394e6a569a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085040"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708981"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak nasadit základní web HTML + CSS do Azure App Service. Tento rychlý Start dokončíte v [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale tyto příkazy můžete spustit i místně pomocí [Azure CLI](/cli/azure/install-azure-cli).
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak nasadit základní web HTML + CSS do Azure App Service. Tento rychlý Start dokončíte v [Cloud Shell](../cloud-shell/overview.md), ale tyto příkazy můžete spustit i místně pomocí [Azure CLI](/cli/azure/install-azure-cli).
 
 ![Domovská stránka ukázkové aplikace](media/quickstart-html/hello-world-in-browser-az.png)
 
@@ -58,11 +62,11 @@ Příkaz `az webapp up` provádí tyto akce:
 
 - Vytvoření aplikace se zadaným názvem
 
-- [Nasazení souborů ZIP](https://docs.microsoft.com/azure/app-service/deploy-zip) z aktuálního pracovního adresáře do webové aplikace
+- [Nasazení souborů ZIP](./deploy-zip.md) z aktuálního pracovního adresáře do webové aplikace
 
 Spuštění tohoto příkazu může trvat několik minut. Při spuštění příkaz zobrazí podobné informace jako v následujícím příkladu:
 
-<pre>
+```output
 {
   "app_url": "https://&lt;app_name&gt;.azurewebsites.net",
   "location": "westeurope",
@@ -74,7 +78,7 @@ Spuštění tohoto příkazu může trvat několik minut. Při spuštění pří
   "src_path": "/home/&lt;username&gt;/quickstart/html-docs-hello-world ",
   &lt; JSON data removed for brevity. &gt;
 }
-</pre>
+```
 
 Poznamenejte si hodnotu `resourceGroup`. Budete ji potřebovat v části [Vyčištění prostředků](#clean-up-resources).
 

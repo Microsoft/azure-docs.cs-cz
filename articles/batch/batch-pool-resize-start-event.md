@@ -2,13 +2,13 @@
 title: Událost zahájení změny velikosti fondu Azure Batch
 description: Odkaz na událost zahájení změny velikosti fondu služby Batch Příklad ukazuje tělo události začátek změny velikosti fondu z 0 na 2 uzly s ruční změnou velikosti.
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: 63576b04b06aad024211d0a50225907c88c138ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/28/2020
+ms.openlocfilehash: be64a2ef30cbe3c404633b29202a4adf1e49ea9e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83723727"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803608"
 ---
 # <a name="pool-resize-start-event"></a>Událost zahájení změny velikosti fondu
 
@@ -18,14 +18,14 @@ ms.locfileid: "83723727"
 
 ```
 {
-    "id": "myPool1",
-    "nodeDeallocationOption": "Invalid",
-    "currentDedicatedNodes": 0,
-    "targetDedicatedNodes": 2,
-    "currentLowPriorityNodes": 0,
-    "targetLowPriorityNodes": 2,
-    "enableAutoScale": false,
-    "isAutoPool": false
+   "id": "myPool1",
+   "nodeDeallocationOption": "Invalid",
+   "currentDedicatedNodes": 0,
+   "targetDedicatedNodes": 2,
+   "currentLowPriorityNodes": 0,
+   "targetLowPriorityNodes": 2,
+   "enableAutoScale": false,
+   "isAutoPool": false
 }
 ```
 

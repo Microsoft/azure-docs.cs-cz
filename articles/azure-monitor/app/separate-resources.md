@@ -3,12 +3,12 @@ title: Jak navrhnout nasazení Application Insights – jeden vs mnoho prostřed
 description: Přímá telemetrie na různé prostředky pro vývoj, testování a produkční razítka.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258719"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424661"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kolik prostředků Application Insights mám nasadit
 
@@ -26,12 +26,15 @@ Každý Application Insights prostředek obsahuje metriky, které jsou k dispozi
 
 -   Pro součásti aplikace, které jsou nasazeny dohromady. Obvykle vyvinutá jediným týmem, který je spravovaný stejnou sadou uživatelů DevOps/ITOps.
 -   Pokud má smysl agregovat klíčové ukazatele výkonu (KPI), jako jsou například doby trvání odezvy, míry selhání v řídicím panelu atd., ve výchozím nastavení je můžete rozdělit na všechny z nich (v prostředí Průzkumník metrik můžete segmentovat podle názvu role).
--   Pokud není potřeba spravovat Access Control na základě rolí (RBAC) odlišně mezi součástmi aplikace.
+-   Pokud není potřeba spravovat řízení přístupu na základě role Azure (Azure RBAC) odlišně mezi součástmi aplikace.
 -   Pokud nepotřebujete kritéria výstrahy metrik, která se liší mezi komponentami.
 -   Pokud nepotřebujete spravovat průběžné exporty různě mezi komponentami.
 -   Pokud nepotřebujete, aby se fakturace a kvóty spravovaly různě mezi komponentami.
 -   Pokud je v pořádku, aby měl klíč rozhraní API stejný přístup k datům ze všech komponent. A 10 klíčů rozhraní API stačí pro potřeby napříč všemi nimi.
 -   Pokud má být v pořádku stejné nastavení integrace inteligentní detekce a pracovní položky napříč všemi rolemi.
+
+> [!NOTE]
+> Pokud chcete konsolidovat více prostředků Application Insights, můžete existující součásti aplikace Ukázat na nový, konsolidovaný prostředek Application Insights. Telemetrii uložená ve starém prostředku se nepřenáší do nového prostředku, takže odstraňte jenom starý prostředek, jenom když budete mít k dispozici dostatek telemetrie v novém zdroji pro provozní kontinuitu.
 
 ### <a name="other-things-to-keep-in-mind"></a>Další věci, které je potřeba vzít v úvahu
 
@@ -86,7 +89,7 @@ Budete potřebovat klíče instrumentace všech prostředků, na které bude va�
 ## <a name="filter-on-build-number"></a>Filtrovat podle čísla sestavení
 Když publikujete novou verzi aplikace, budete chtít být schopni oddělit telemetrii od různých sestavení.
 
-Vlastnost verze aplikace můžete nastavit tak, aby bylo možné filtrovat výsledky [hledání](../../azure-monitor/app/diagnostic-search.md) a [Průzkumníka metrik](../../azure-monitor/platform/metrics-charts.md) .
+Vlastnost verze aplikace můžete nastavit tak, aby bylo možné filtrovat výsledky [hledání](../../azure-monitor/app/diagnostic-search.md) a [Průzkumníka metrik](../../azure-monitor/essentials/metrics-charts.md) .
 
 Vlastnost verze aplikace se nastavuje několika různými způsoby.
 
@@ -132,7 +135,7 @@ Pokud chcete sledovat verzi aplikace, ujistěte se, že proces Microsoft Build E
 </PropertyGroup>
 ```
 
-Pokud obsahuje informace o sestavení, webový modul Application Insights automaticky přidá položku **Verze aplikace** jako vlastnost pro každý předmět telemetrie. Díky tomu můžete při provádění [diagnostických hledání](../../azure-monitor/app/diagnostic-search.md) nebo při [zkoumání metrik](../../azure-monitor/platform/metrics-charts.md) filtrovat podle verze.
+Pokud obsahuje informace o sestavení, webový modul Application Insights automaticky přidá položku **Verze aplikace** jako vlastnost pro každý předmět telemetrie. Díky tomu můžete při provádění [diagnostických hledání](../../azure-monitor/app/diagnostic-search.md) nebo při [zkoumání metrik](../../azure-monitor/essentials/metrics-charts.md) filtrovat podle verze.
 
 Všimněte si však, že číslo verze sestavení je generováno pouze pomocí Microsoft Build Engine, nikoli vývojářem Build ze sady Visual Studio.
 

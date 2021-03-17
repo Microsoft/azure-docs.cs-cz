@@ -1,7 +1,7 @@
 ---
 title: Přehled šablon licencí Widevine | Microsoft Docs
 description: Toto téma poskytuje přehled šablony licencí Widevine, která se používá ke konfiguraci licencí Widevine.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 9f583e7956cba0de06e5b3277bfea13c463019d9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d4a3805e50ce48d1439696a3d9015d6ba8571470
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171971"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011183"
 ---
-# <a name="widevine-license-template-overview"></a>Přehled šablon licencování Widevine 
+# <a name="widevine-license-template-overview"></a>Přehled šablon licencování Widevine
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 K nakonfigurování a vyžádání licencí Google Widevine můžete použít Azure Media Services. Když se hráč pokusí přehrát obsah chráněný Widevine, pošle se do služby doručování licencí požadavek, aby získal licenci. Pokud licenční služba žádost schválí, služba vydá licenci. Odesílá se klientovi a používá se k dešifrování a přehrávání zadaného obsahu.
 
 Žádost o licenci Widevine je naformátovaná jako zpráva JSON.  
@@ -61,10 +64,10 @@ K nakonfigurování a vyžádání licencí Google Widevine můžete použít Az
 ```
 
 ## <a name="json-message"></a>Zpráva JSON
-| Název | Hodnota | Popis |
+| Name | Hodnota | Popis |
 | --- | --- | --- |
 | payload |Řetězec s kódováním base64 |Žádost o licenci odeslanou klientem |
-| content_id |Řetězec s kódováním base64 |Identifikátor použitý k odvození ID klíče a klíče obsahu pro každý content_key_specs. track_type |
+| content_id |Řetězec s kódováním base64 |Identifikátor použitý k odvození ID klíče a klíče obsahu pro každý content_key_specs. track_type. |
 | Zprostředkovatel |řetězec |Slouží k vyhledání klíčů obsahu a zásad. Pokud se pro doručování licencí Widevine používá doručování klíčů Microsoft, tento parametr se ignoruje. |
 | policy_name |řetězec |Název dřív registrovaných zásad. Nepovinný parametr. |
 | allowed_track_types |enum |SD_ONLY nebo SD_HD. Určuje, které klíče obsahu jsou zahrnuty v licenci. |
@@ -79,16 +82,16 @@ Pokud existují existující zásady, není nutné zadávat žádné hodnoty ve 
 
 Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohledu na možnost use_policy_overrides_exclusively. 
 
-| Název | Hodnota | Popis |
+| Name | Hodnota | Popis |
 | --- | --- | --- |
 | content_key_specs. track_type |řetězec |Název typu stopy. Je-li v žádosti o licenci zadán content_key_specs, nezapomeňte explicitně zadat všechny typy sledování. V důsledku tohoto selhání dojde k selhání při přehrání posledních 10 sekund. |
 | content_key_specs  <br/> security_level |UInt32 |Definuje požadavky na odolnost klienta pro přehrávání. <br/> – Vyžaduje se softwarově vycházející kryptografický modul s prázdným polem. <br/> – Vyžaduje se softwarová kryptografie a zakódováný dekodér. <br/> – Operace klíčového materiálu a kryptografie se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním. <br/> – Kryptografie a dekódování obsahu se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním.  <br/> – Kryptografie, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) se musí zpracovat v rámci důvěryhodného spouštěcího prostředí pro hardware. |
 | content_key_specs <br/> required_output_protection. HDC |String, jedna z HDCP_NONE, HDCP_V1, HDCP_V2 |Určuje, jestli je nutná HDCP. |
 | content_key_specs <br/>key |Base<br/>kódovaný řetězec |Klíč obsahu, který se má použít pro tuto stopu Je-li tento parametr zadán, je požadován track_type nebo key_id. Poskytovatel obsahu může tuto možnost použít k vložení klíče obsahu pro tuto stopu místo toho, aby mohl licenční server Widevine vygenerovat nebo vyhledat klíč. |
-| content_key_specs. key_id |Binární soubor řetězce kódovaný v kódování Base64, 16 bajtů |Jedinečný identifikátor pro klíč |
+| content_key_specs content_key_specs.Key_ID |Binární soubor řetězce kódovaný v kódování Base64, 16 bajtů |Jedinečný identifikátor pro klíč |
 
 ## <a name="policy-overrides"></a>Přepsání zásad
-| Název | Hodnota | Popis |
+| Name | Hodnota | Popis |
 | --- | --- | --- |
 | policy_overrides. can_play |Logická hodnota, true nebo false |Indikuje, že přehrávání obsahu je povolené. Výchozí hodnota je false. |
 | policy_overrides. can_persist |Logická hodnota, true nebo false |Označuje, že licence může být trvalá pro nestálé úložiště pro použití v offline režimu. Výchozí hodnota je false. |
@@ -103,7 +106,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 | policy_overrides. renew_with_usage |Logická hodnota, true nebo false |Indikuje, že licence se posílá k obnovení při zahájení používání. Toto pole se používá pouze v případě, že je can_renew true. |
 
 ## <a name="session-initialization"></a>Inicializace relace
-| Název | Hodnota | Popis |
+| Name | Hodnota | Popis |
 | --- | --- | --- |
 | provider_session_token |Řetězec s kódováním base64 |Tento token relace se předává zpátky v licenci a existuje v následných obnoveních. Token relace není po relacích zachován. |
 | provider_client_token |Řetězec s kódováním base64 |Token klienta k odeslání zpět v odpovědi na licenci Pokud žádost o licenci obsahuje token klienta, tato hodnota se ignoruje. Token klienta přetrvá nad rámec licenčních relací. |

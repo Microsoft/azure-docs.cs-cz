@@ -1,6 +1,7 @@
 ---
-title: Přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET | Azure
-description: Naučte se implementovat přihlášení Microsoftu do webové aplikace v ASP.NET pomocí OpenID Connect.
+title: 'Rychlý Start: Přidání přihlašování pomocí Microsoftu do webové aplikace ASP.NET | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak implementovat přihlášení Microsoftu do webové aplikace v ASP.NET pomocí OpenID Connect.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,93 +9,106 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
+ms.openlocfilehash: eb57be94e460241e3cacbe2dd20c071504a9222a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691288"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209760"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rychlý Start: přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET
-V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se webová aplikace ASP.NET přihlašuje k osobním účtům (hotmail.com, outlook.com, ostatním) a pracovním a školním účtům z jakékoli instance Azure Active Directory (Azure AD).  (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
+
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak se webová aplikace ASP.NET může přihlašovat uživatelům z jakékoli organizace služby Azure Active Directory (Azure AD). 
+
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
-> Aplikaci pro rychlý start můžete spustit dvěma způsoby:
-> * [Expresní] [Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [Ruční] [Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> Následující diagram ukazuje, jak ukázková aplikace funguje:
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
+> ![Diagram interakce mezi webovým prohlížečem, webovou aplikací a platformou Microsoft identity v ukázkové aplikaci.](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 >
-> 1. Přejít na nové podokno  [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
-> 1. Zadejte název vaší aplikace a klikněte na **Zaregistrovat**.
-> 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
+> ## <a name="prerequisites"></a>Požadavky
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
+> * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+> * [.NET Framework 4.7.2 +](https://dotnet.microsoft.com/download/visual-studio-sdks)
+>
+> ## <a name="register-and-download-the-app"></a>Registrace a stažení aplikace
+> Máte dvě možnosti, jak začít sestavovat aplikaci: Automatická nebo ruční konfigurace.
+>
+> ### <a name="automatic-configuration"></a>Automatická konfigurace
+> Pokud chcete svou aplikaci automaticky nakonfigurovat a potom stáhnout ukázku kódu, postupujte podle následujících kroků:
+>
+> 1. Přejít na <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">stránku Azure Portal pro registraci aplikace</a>.
+> 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
+> 1. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci jediným kliknutím.
+>
+> ### <a name="manual-configuration"></a>Ruční konfigurace
+> Pokud chcete ručně nakonfigurovat ukázku aplikace a kódu, použijte následující postupy.
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
-> Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-> 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
->      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `ASPNET-Quickstart`.
->      - Přidejte `https://localhost:44368/` do **URI pro přesměrování**a klikněte na **zaregistrovat**.
->      - V levém navigačním podokně v části Spravovat vyberte **ověřování** .
->          - V dílčí části **implicitní udělení grantu** vyberte možnost **tokeny ID**.
->          - A pak vyberte **Uložit**.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář a odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Jako **název** zadejte název vaší aplikace. Zadejte například **ASPNET-Start**. Uživatelé vaší aplikace uvidí tento název a později ho můžete změnit.
+> 1. Přidejte **https://localhost:44368/** do **identifikátoru URI přesměrování** a vyberte **Registrovat**.
+> 1. V části **Spravovat** vyberte **ověřování**.
+> 1. V části **implicitní udělení a hybridní toky** vyberte **tokeny ID**.
+> 1. Vyberte **Uložit**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
-> Aby mohl vzorový kód pro rychlý start fungovat, musíte přidat adresu URL odpovědi ve formě `https://localhost:44368/`.
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
+> Aby ukázka kódu v tomto rychlém startu fungovala, zadejte **https://localhost:44368/** pro **identifikátor URI přesměrování**.
+>
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurované](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace je nakonfigurovaná s tímto atributem
+> > ![](media/quickstart-v2-aspnet-webapp/green-check.png)Vaše aplikace je už nakonfigurovaná s tímto atributem.
 
-#### <a name="step-2-download-your-project"></a>Krok 2: Stáhněte si projekt
+#### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
 
 > [!div renderon="docs"]
 > [Stažení řešení pro Visual Studio 2019](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-> [!div renderon="portal"]
+> [!div renderon="portal" class="sxs-lookup"]
 > Spusťte projekt pomocí sady Visual Studio 2019.
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
-> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace. 
+> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace.
 
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Krok 3: spuštění projektu sady Visual Studio
 
-1. Extrahujte soubor ZIP do místní složky bližší ke kořenové složce, třeba **C:\Azure-Samples**.
-1. Otevřete řešení v sadě Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln).
-1. V závislosti na verzi sady Visual Studio možná budete muset kliknout pravým tlačítkem na projekt `AppModelv2-WebApp-OpenIDConnect-DotNet` a **obnovit balíčky NuGet** .
-1. Otevřete konzolu Správce balíčků (zobrazení – > jiné konzoly Správce balíčků > systému Windows) a spusťte příkaz. `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
+1. Extrahujte soubor. zip do místní složky, která je blízko kořenové složky. Například extrahujte do *C:\Azure-Samples*.
+   
+   K tomu, aby se předešlo chybám způsobeným omezeními délky cest ve Windows, doporučujeme extrakci archivu do adresáře v blízkosti vaší jednotky.
+2. Otevřete řešení v aplikaci Visual Studio (*AppModelv2-WebApp-OpenIDConnect-dotnet. sln*).
+3. V závislosti na verzi sady Visual Studio možná budete muset kliknout pravým tlačítkem na projekt **AppModelv2-WebApp-OpenIDConnect-dotnet** a pak vybrat **obnovit balíčky NuGet**.
+4. Otevřete konzolu Správce balíčků tak, že vyberete **Zobrazit**  >  **jinou**  >  **konzolu Správce balíčků** Windows. Potom spusťte `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`.
 
 > [!div renderon="docs"]
-> 5. Upravte soubor **Web.config** a nahraďte parametry `ClientId` a `Tenant` následujícími hodnotami:
+> 5. Upravte *Web.config* a nahraďte parametry `ClientId` , `Tenant` a `redirectUri` pomocí:
 >    ```xml
 >    <add key="ClientId" value="Enter_the_Application_Id_here" />
 >    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
+>    <add key="redirectUri" value="https://localhost:44368/" />
 >    ```
->    Kde:
-> - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
-> - `Enter_the_Tenant_Info_Here` je jedna z následujících možností:
->   - Pokud vaše aplikace podporuje **pouze moji organizaci**, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například contoso.onmicrosoft.com).
->   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
->   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
+>    V tomto kódu:
 >
-> > [!TIP]
-> > - Hodnoty *ID aplikace*, *ID adresáře (tenanta)* a *Podporované typy účtu* najdete na stránce **Přehled**.
-> > - Zajistěte, aby hodnota `redirectUri` v **Web.config** odpovídala **identifikátoru URI přesměrování** definovanému pro registraci aplikace ve službě Azure AD (Pokud ne, přejděte do nabídky **ověřování** pro registraci aplikace a aktualizujte **identifikátor URI přesměrování** tak, aby odpovídal).
+>    - `Enter_the_Application_Id_here` je ID aplikace (klienta) registrace aplikace, kterou jste vytvořili dříve. Vyhledejte ID aplikace (klienta) na stránce **Přehled** aplikace v **Registrace aplikací** Azure Portal.
+>    - `Enter_the_Tenant_Info_Here` je jedna z následujících možností:
+>      - Pokud vaše aplikace podporuje **pouze moji organizaci**, nahraďte tuto hodnotu ID adresáře (tenant) nebo názvem tenanta (například `contoso.onmicrosoft.com` ). Vyhledejte ID adresáře (tenant) na stránce **Přehled** aplikace v **Registrace aplikací** Azure Portal.
+>      - Pokud vaše aplikace podporuje **účty v jakémkoli organizačním adresáři**, nahraďte tuto hodnotu hodnotou `organizations` .
+>      - Pokud vaše aplikace podporuje **všechny účet Microsoft uživatele**, nahraďte tuto hodnotu hodnotou `common` .
+>    - `redirectUri` je **identifikátor URI přesměrování** , který jste zadali dříve v **Registrace aplikací** Azure Portal.
+>
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -102,24 +116,26 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se webová aplikace
 
 ## <a name="more-information"></a>Další informace
 
-Tato část obsahuje základní informace o kódu, který je nutný pro přihlášení uživatelů. Tento přehled může být užitečný pro pochopení, jak kód funguje, hlavní argumenty a také, pokud chcete přidat přihlášení do existující aplikace ASP.NET.
+V této části najdete přehled kódu potřebného k přihlášení uživatelů. Tento přehled může být užitečný pro pochopení, jak kód funguje, co jsou hlavní argumenty a jak přidat přihlášení do existující aplikace ASP.NET.
 
-### <a name="how-the-sample-works"></a>Jak ukázka funguje
-![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
+> [!div class="sxs-lookup" renderon="portal"]
+> ### <a name="how-the-sample-works"></a>Jak ukázka funguje
+>
+> ![Diagram interakce mezi webovým prohlížečem, webovou aplikací a platformou Microsoft identity v ukázkové aplikaci.](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 ### <a name="owin-middleware-nuget-packages"></a>Balíčky NuGet middlewaru OWIN
 
-Můžete nastavit ověřovací kanál využívající ověřování na základě souborů cookie tak, že použijete OpenID Connect v ASP.NET společně s balíčky middlewaru OWIN. Uvedené balíčky je možné nainstalovat spuštěním následujících příkazů v **konzole Správce balíčků** v sadě Visual Studio:
+Ověřovací kanál můžete nastavit pomocí ověřování založeného na souborech cookie pomocí OpenID Connect v ASP.NET s balíčky middlewaru OWIN. Tyto balíčky můžete nainstalovat spuštěním následujících příkazů v konzole správce balíčků v sadě Visual Studio:
 
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb  
+Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 ### <a name="owin-startup-class"></a>Třída OWIN Startup
 
-Middleware OWIN používá *spouštěcí třídu* , která se spouští při inicializaci hostitelského procesu. V tomto rychlém startu se nachází soubor *Startup.cs* , který se nachází v kořenové složce. Následující kód obsahuje parametr použitý v rámci tohoto rychlého startu:
+Middleware OWIN používá *spouštěcí třídu* , která se spouští při spuštění hostitelského procesu. V tomto rychlém startu se soubor *Startup.cs* nachází v kořenové složce. Následující kód ukazuje parametry, které tento rychlý Start používá:
 
 ```csharp
 public void Configuration(IAppBuilder app)
@@ -130,23 +146,23 @@ public void Configuration(IAppBuilder app)
     app.UseOpenIdConnectAuthentication(
         new OpenIdConnectAuthenticationOptions
         {
-            // Sets the ClientId, authority, RedirectUri as obtained from web.config
+            // Sets the client ID, authority, and redirect URI as obtained from Web.config
             ClientId = clientId,
             Authority = authority,
             RedirectUri = redirectUri,
-            // PostLogoutRedirectUri is the page that users will be redirected to after sign-out. In this case, it is using the home page
+            // PostLogoutRedirectUri is the page that users will be redirected to after sign-out. In this case, it's using the home page
             PostLogoutRedirectUri = redirectUri,
             Scope = OpenIdConnectScope.OpenIdProfile,
-            // ResponseType is set to request the id_token - which contains basic information about the signed-in user
-            ResponseType = OpenIdConnectResponseType.IdToken,
+            // ResponseType is set to request the code id_token, which contains basic information about the signed-in user
+            ResponseType = OpenIdConnectResponseType.CodeIdToken,
             // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
-            // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
-            // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
+            // To only allow users from a single organization, set ValidateIssuer to true and the 'tenant' setting in Web.config to the tenant name
+            // To allow users from only a list of specific organizations, set ValidateIssuer to true and use the ValidIssuers parameter
             TokenValidationParameters = new TokenValidationParameters()
             {
                 ValidateIssuer = false // Simplification (see note below)
             },
-            // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
+            // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to the OnAuthenticationFailed method
             Notifications = new OpenIdConnectAuthenticationNotifications
             {
                 AuthenticationFailed = OnAuthenticationFailed
@@ -158,21 +174,20 @@ public void Configuration(IAppBuilder app)
 
 > |Kde  | Popis |
 > |---------|---------|
-> | `ClientId`     | ID aplikace, kterou jste zaregistrovali na portálu Azure Portal |
-> | `Authority`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, obvykle `https://login.microsoftonline.com/{tenant}/v2.0` pro veřejný cloud, kde hodnota {tenant} představuje název tenanta, ID tenanta nebo hodnotu *common* odkazující na společný koncový bod (používaný u multitenantních aplikací) |
-> | `RedirectUri`  | Adresa URL, kam se po ověření s koncovým bodem platformy Microsoft Identity odesílají uživatelé |
-> | `PostLogoutRedirectUri`     | Adresa URL, na kterou jsou uživatelé přesměrováni po odhlášení |
+> | `ClientId`     | ID aplikace z aplikace zaregistrované v Azure Portal. |
+> | `Authority`    | Koncový bod služby tokenu zabezpečení (STS) pro uživatele, který se má ověřit Obvykle je `https://login.microsoftonline.com/{tenant}/v2.0` pro veřejný cloud. V této adrese URL *{tenant}* je název vašeho TENANTA, ID tenanta nebo `common` odkaz na společný koncový bod. (Společný koncový bod se používá pro víceklientské aplikace.) |
+> | `RedirectUri`  | Adresa URL, kam se po ověření na platformě Microsoft Identity odesílají uživatelé. |
+> | `PostLogoutRedirectUri`     | Adresa URL, kam se po odhlášení odesílají uživatelé |
 > | `Scope`     | Seznam požadovaných oborů oddělených mezerami |
-> | `ResponseType`     | Žádost, aby odpověď ověřování obsahovala token ID |
-> | `TokenValidationParameters`     | Seznam parametrů pro ověřování tokenů; v tomto případě je parametr `ValidateIssuer` nastavený na hodnotu `false`, což znamená, že může přijímat přihlášení všech typů osobních, pracovních nebo školních účtů |
-> | `Notifications`     | Seznam delegátů, které jde spustit u různých zpráv *OpenIdConnect* |
+> | `ResponseType`     | Požadavek, který odpověď z ověřování obsahuje autorizační kód a token ID. |
+> | `TokenValidationParameters`     | Seznam parametrů pro ověřování tokenů; V tomto případě `ValidateIssuer` je nastaveno, aby `false` označoval, že může přijímat přihlášení z libovolného typu osobního, pracovního nebo školního účtu. |
+> | `Notifications`     | Seznam delegátů, které lze spustit u `OpenIdConnect` zpráv. |
 
 
 > [!NOTE]
-> Nastavení `ValidateIssuer = false` je zjednodušení pro tento rychlý Start. Ve skutečných aplikacích potřebujete k ověření vystavitele.
-> V ukázkách si můžete uvědomit, jak to udělat.
+> Nastavení `ValidateIssuer = false` je zjednodušení pro tento rychlý Start. V reálných aplikacích ověřte vystavitele. V ukázkách si můžete uvědomit, jak to udělat.
 
-### <a name="initiate-an-authentication-challenge"></a>Iniciace výzvy ověřování
+### <a name="authentication-challenge"></a>Ověřovací výzva
 
 Uživatele můžete k přihlášení přinutit tím, že si v řadiči vyžádáte výzvu ověřování:
 
@@ -189,19 +204,17 @@ public void SignIn()
 ```
 
 > [!TIP]
-> Vyžádání výzvy ověřování výše uvedeným způsobem je volitelné a obvykle se používá v případě, že chcete zajistit přístup k zobrazení ověřeným i neověřeným uživatelům. Řadiče můžete zároveň chránit způsobem popsaným v další části.
+> Vyžadování výzvy ověřování pomocí této metody je volitelné. Normálně ho použijete, když chcete, aby zobrazení bylo dostupné z ověřených i neověřených uživatelů. Řadiče můžete zároveň chránit způsobem popsaným v další části.
 
-### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrana řadiče nebo akcí řadiče
+### <a name="attribute-for-protecting-a-controller-or-a-controller-actions"></a>Atribut pro ochranu kontroléru nebo akcí kontroleru
 
-Řadič a jeho akce můžete chránit pomocí atributu `[Authorize]`. Tento atribut omezuje přístup k řadiči nebo akcím tak, že ho umožňuje pouze ověřeným uživatelům. To znamená, že výzva ověřování se iniciuje automaticky, pokud o přístup k některé z akcí nebo řadiči s nastaveným atributem `[Authorize]` pokusí *neověřený* uživatel.
+Pomocí atributu můžete chránit akce kontroleru nebo kontroleru `[Authorize]` . Tento atribut omezuje přístup k řadiči nebo akcím tím, že umožňuje přístup k akcím v řadiči pouze ověřeným uživatelům. K ověření se pak automaticky dojde, když se neověřený uživatel pokusí získat přístup k jedné z akcí nebo kontrolám, které `[Authorize]` atribut dekoruje.
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte kurz pro ASP.NET, který nabízí vyčerpávající podrobný návod k vytváření aplikací a nových funkcí, včetně detailního vysvětlení těchto pokynů pro rychlý start.
-
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Zjistěte, jak vytvořit aplikaci použitou v tomto rychlém startu
+Úplný podrobný průvodce vytvářením aplikací a nových funkcí, včetně úplného vysvětlení tohoto rychlého startu, najdete v kurzu ASP.NET.
 
 > [!div class="nextstepaction"]
-> [Kurz týkající se přihlašování](./tutorial-v2-asp-webapp.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Přidání přihlašování do webové aplikace v ASP.NET](tutorial-v2-asp-webapp.md)

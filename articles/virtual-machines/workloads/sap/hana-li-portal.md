@@ -8,21 +8,25 @@ manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d81a8b3a1596e8a447f7a2434e52df8c89b416b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d32adab35852cd19933fe3877c2742a21ddc5f1e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085261"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676995"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Řízení velkých instancí Azure HANA prostřednictvím webu Azure Portal
+
+>[!NOTE]
+>V případě Rev 4,2 postupujte podle pokynů v tématu [Správa instancí BareMetal pomocí tématu Azure Portal](../../../baremetal-infrastructure/workloads/sap/baremetal-infrastructure-portal.md) .
+
 Tento dokument popisuje způsob, jakým se v [Azure Portal](https://portal.azure.com) prezentují [velké instance Hana](./hana-overview-architecture.md) a jaké aktivity je možné provádět prostřednictvím Azure Portal s velkými jednotkami instancí Hana, které jsou pro vás nasazené. Viditelnost velkých instancí HANA v Azure Portal k dispozici prostřednictvím poskytovatele prostředků Azure pro velké instance HANA, který je aktuálně ve verzi Public Preview.
 
 ## <a name="register-hana-large-instance-resource-provider"></a>Registrovat poskytovatele prostředků velké instance HANA
@@ -54,7 +58,7 @@ Když se nasadí první velký počet instancí HANA, vytvoří se v předplatn�
 
 Pokud chcete najít novou skupinu prostředků Azure, vypište skupinu prostředků ve vašem předplatném procházením levého navigačního podokna Azure Portal.
 
-![Navigační podokno v Azure Portal](./media/hana-li-portal/portal-resource-group.png)
+![Snímek obrazovky, který zvýrazní možnost skupiny prostředků.](./media/hana-li-portal/portal-resource-group.png)
 
 V seznamu skupin prostředků, které se zobrazí, možná budete muset filtrovat předplatné, které jste použili k nasazení velkých instancí HANA.
 
@@ -89,7 +93,7 @@ Další data na pravé dolní straně jsou revize razítka velké instance HANA.
 - Revize 4
 
 Revize 4 je nejnovější architektura vydaná pro velké instance HANA, která přináší větší vylepšení latence sítě mezi virtuálními počítači Azure a jednotkami velkých instancí HANA nasazenými v rámci revizních razítek nebo řádků.
-Další velmi důležité informace najdete v pravém dolním rohu přehledu s názvem skupiny umístění blízkosti Azure, která se automaticky vytvoří pro každou nasazenou jednotku velkých instancí HANA. Tato skupina umístění blízkosti musí být odkazována při nasazení virtuálních počítačů Azure, které hostují aplikační vrstvu SAP. Pomocí [skupiny umístění blízkosti Azure](../../linux/co-location.md) přidružené k jednotce velkých instancí Hana se ujistěte, že jsou virtuální počítače Azure nasazené v těsné blízkosti jednotky velkých instancí Hana. Způsob, jakým se dají skupiny umístění blízkosti použít k vyhledání vrstvy aplikace SAP ve stejném datovém centru Azure jako revize 4 jednotky velkých instancí HANA, jsou popsané v tématu [skupiny umístění pro zajištění optimální latence sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+Další velmi důležité informace najdete v pravém dolním rohu přehledu s názvem skupiny umístění blízkosti Azure, která se automaticky vytvoří pro každou nasazenou jednotku velkých instancí HANA. Tato skupina umístění blízkosti musí být odkazována při nasazení virtuálních počítačů Azure, které hostují aplikační vrstvu SAP. Pomocí [skupiny umístění blízkosti Azure](../../co-location.md) přidružené k jednotce velkých instancí Hana se ujistěte, že jsou virtuální počítače Azure nasazené v těsné blízkosti jednotky velkých instancí Hana. Způsob, jakým se dají skupiny umístění blízkosti použít k vyhledání vrstvy aplikace SAP ve stejném datovém centru Azure jako revize 4 jednotky velkých instancí HANA, jsou popsané v tématu [skupiny umístění pro zajištění optimální latence sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
 
 Další pole v pravém sloupci záhlaví informuje o stavu napájení jednotky velkých instancí HANA.
 

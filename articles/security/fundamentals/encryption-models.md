@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/13/2020
+ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 105d867b4eafe37ca6555e3f6b54dc521a7264fe
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227148"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051374"
 ---
 # <a name="data-encryption-models"></a>Modely šifrování dat
 
@@ -27,7 +27,7 @@ Porozumění různým modelům šifrování a jejich specialistům a nevýhodám
 
 Pro šifrování na straně serveru existují tři scénáře:
 
-- Šifrování na straně serveru pomocí klíčů spravovaných službou
+- Šifrování na straně serveru pomocí Service-Managedch klíčů
   - Poskytovatelé prostředků Azure provádějí operace šifrování a dešifrování.
   - Microsoft spravuje klíče
   - Plná funkčnost cloudu
@@ -91,7 +91,7 @@ Pokud se používá šifrování na straně serveru pomocí klíčů spravovaný
 
 U scénářů, kde požadavek slouží k šifrování uložených dat a řízení uživatelů šifrovacích klíčů, můžou používat šifrování na straně serveru pomocí klíčů spravovaných zákazníkem v Key Vault. Některé služby můžou ukládat jenom šifrovací klíč kořenového klíče v Azure Key Vault a uložit šifrovaný šifrovací klíč dat do interního umístění blíže k datům. V takovém scénáři můžou zákazníci přinášet vlastní klíče Key Vault (BYOK – Bring Your Own Key) nebo generovat nové a použít je k zašifrování požadovaných prostředků. I když poskytovatel prostředků provádí operace šifrování a dešifrování, používá nakonfigurovaný klíč šifrování klíče jako kořenový klíč pro všechny operace šifrování.
 
-Ztráta klíčového šifrovacího klíče znamená ztrátu dat. Z tohoto důvodu by klíče neměly být odstraněny. Klíče by se měly zálohovat vždy, když se vytvoří nebo otočí. [Obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) by mělo být povolené v jakémkoli trezoru, který ukládá šifrovací klíče klíčů. Místo odstranění klíče nastavte možnost povoleno na hodnotu NEPRAVDA nebo nastavte datum vypršení platnosti.
+Ztráta klíčového šifrovacího klíče znamená ztrátu dat. Z tohoto důvodu by klíče neměly být odstraněny. Klíče by se měly zálohovat vždy, když se vytvoří nebo otočí. [Obnovitelné odstranění](../../key-vault/general/soft-delete-overview.md) by mělo být povolené v jakémkoli trezoru, který ukládá šifrovací klíče klíčů. Místo odstranění klíče nastavte možnost povoleno na hodnotu NEPRAVDA nebo nastavte datum vypršení platnosti.
 
 ### <a name="key-access"></a>Přístup ke klíči
 
@@ -143,13 +143,13 @@ Pokud se používá šifrování na straně serveru pomocí klíčů spravovaný
 ## <a name="supporting-services"></a>Podpůrné služby
 Služby Azure, které podporují jednotlivé modely šifrování:
 
-| Produkt, funkce nebo služba | Na straně serveru pomocí klíče spravovaného službou   | Na straně serveru pomocí klíče spravovaného zákazníkem | Klientská strana s použitím klíče spravovaného klientem  |
+| Produkt, funkce nebo služba | Server-Side pomocí klíče Service-Managed   | Server-Side pomocí klíče Customer-Managed | Client-Side pomocí klíče Client-Managed  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **AI a strojové učení**      |                    |                    |                    |
 | Azure Cognitive Search           | Ano                | Ano                | -                  |
 | Azure Cognitive Services         | Ano                | Ano                | -                  |
 | Azure Machine Learning           | Ano                | Ano                | -                  |
-| Azure Machine Learning Studio    | Ano                | Verze Preview, RSA 2048-bit | -               |
+| Azure Machine Learning Studio (klasický) | Ano         | Verze Preview, RSA 2048-bit | -               |
 | Content Moderator                | Ano                | Ano                | -                  |
 | Rozpoznávání tváře                             | Ano                | Ano                | -                  |
 | Language Understanding           | Ano                | Ano                | -                  |
@@ -157,11 +157,11 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | QnA Maker                        | Ano                | Ano                | -                  |
 | Hlasové služby                  | Ano                | Ano                | -                  |
 | Translator Text                  | Ano                | Ano                | -                  |
-| Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -                  |
+| Power BI                         | Ano                | Ano, RSA 4096-bit  | -                  |
 | **Analýzy**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ano                | –\*            | -                  |
-| Event Hubs                       | Ano                | Ano, všechny délky RSA. | -                  |
-| Functions                        | Ano                | Ano, všechny délky RSA. | -                  |
+| Azure Stream Analytics           | Ano                | Ano\*\*            | -                  |
+| Event Hubs                       | Ano                | Ano                | -                  |
+| Functions                        | Ano                | Ano                | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Azure Data Catalog               | Ano                | -                  | -                  |
 | Azure HDInsight                  | Ano                | Vše                | -                  |
@@ -175,9 +175,9 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Container Instances              | Ano                | Ano                | -                  |
 | Container Registry               | Ano                | Ano                | -                  |
 | **Výpočetní služby**                      |                    |                    |                    |
-| Virtual Machines                 | Ano                | Ano, RSA 2048-bit  | -                  |
-| Sada škálování virtuálních počítačů        | Ano                | Ano, RSA 2048-bit  | -                  |
-| SAP HANA                         | Ano                | Ano, RSA 2048-bit  | -                  |
+| Virtual Machines                 | Ano                | Ano                | -                  |
+| Sada škálování virtuálních počítačů        | Ano                | Ano                | -                  |
+| SAP HANA                         | Ano                | Ano                | -                  |
 | App Service                      | Ano                | Ano\*\*            | -                  |
 | Automation                       | Ano                | Ano\*\*            | -                  |
 | Azure Functions                  | Ano                | Ano\*\*            | -                  |
@@ -187,23 +187,23 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Service Bus                      | Ano                | Ano                | -                  |
 | Site Recovery                    | Ano                | Ano                | -                  |
 | **Databáze**                    |                    |                    |                    |
-| SQL Server na virtuálních počítačích   | Ano                | Ano, RSA 2048-bit  | Ano                |
-| Azure SQL Database               | Ano                | Ano, RSA 2048-bit  | Ano                |
+| SQL Server na virtuálních počítačích   | Ano                | Ano                | Ano                |
+| Azure SQL Database               | Ano                | Ano, RSA 3072-bit  | Ano                |
 | Azure SQL Database pro MariaDB   | Ano                | -                  | -                  |
 | Azure SQL Database pro MySQL     | Ano                | Ano                | -                  |
 | Azure SQL Database pro PostgreSQL | Ano               | Ano                | -                  |
-| Azure Synapse Analytics          | Ano                | Ano, RSA 2048-bit  | -                  |
-| SQL Server Stretch Database      | Ano                | Ano, RSA 2048-bit  | Ano                |
+| Azure Synapse Analytics          | Ano                | Ano, RSA 3072-bit  | -                  |
+| SQL Server Stretch Database      | Ano                | Ano, RSA 3072-bit  | Ano                |
 | Table Storage                    | Ano                | Ano                | Ano                |
 | Azure Cosmos DB                  | Ano                | Ano                | -                  |
 | Azure Databricks                 | Ano                | Ano                | -                  |
-| Azure Database Migration Service | Ano                | –\*              | -                  |
+| Azure Database Migration Service | Ano                | NENÍ K DISPOZICI\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Ano                | -                  | Ano                |
-| Azure Repos                      | Ano                | -                  | Ano                |
+| Azure DevOps Services            | Ano                | -                  | -                  |
+| Azure Repos                      | Ano                | -                  | -                  |
 | **Identita**                     |                    |                    |                    |
 | Azure Active Directory           | Ano                | -                  | -                  |
-| Azure Active Directory Domain Services | Ano          | Ano, RSA 2048-bit  | -                  |
+| Azure Active Directory Domain Services | Ano          | Ano                | -                  |
 | **Integrace**                  |                    |                    |                    |
 | Service Bus                      | Ano                | Ano                | Ano                |
 | Event Grid                       | Ano                | -                  | -                  |
@@ -215,32 +215,32 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Azure Site Recovery              | Ano                | -                  | -                  |
 | Azure Migrate                    | Ano                | Ano                | -                  |
 | **Média**                        |                    |                    |                    |
-| Media Services                   | Ano                | -                  | Ano                |
+| Media Services                   | Ano                | Ano                | Ano                |
 | **Zabezpečení**                     |                    |                    |                    |
 | Azure Security Center for IoT    | Ano                | Ano                | -                  |
 | Azure Sentinel                   | Ano                | Ano                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | Ano                | Ano, RSA 2048-bit  | Ano                |
-| Blob Storage úrovně Premium             | Ano                | Ano, RSA 2048-bit  | Ano                |
+| Blob Storage                     | Ano                | Ano                | Ano                |
+| Blob Storage úrovně Premium             | Ano                | Ano                | Ano                |
 | Disk Storage                     | Ano                | Ano                | -                  |
 | Ultra Disk Storage               | Ano                | Ano                | -                  |
 | Spravované Disk Storage             | Ano                | Ano                | -                  |
-| File Storage                     | Ano                | Ano, RSA 2048-bit  | -                  |
-| Premium Storage souboru             | Ano                | Ano, RSA 2048-bit  | -                  |
-| Synchronizace souborů                        | Ano                | Ano, RSA 2048-bit  | -                  |
+| File Storage                     | Ano                | Ano                | -                  |
+| Premium Storage souboru             | Ano                | Ano                | -                  |
+| Synchronizace souborů                        | Ano                | Ano                | -                  |
 | Queue Storage                    | Ano                | Ano                | Ano                |
 | Avere vFXT                       | Ano                | -                  | -                  |
-| Azure Cache for Redis            | Ano                | –\*              | -                  |
+| Azure Cache for Redis            | Ano                | NENÍ K DISPOZICI\*              | -                  |
 | Azure NetApp Files               | Ano                | Ano                | -                  |
-| Archiv služby Storage                  | Ano                | Ano, RSA 2048-bit  | -                  |
-| StorSimple                       | Ano                | Ano, RSA 2048-bit  | Ano                |
+| Archiv služby Storage                  | Ano                | Ano                | -                  |
+| StorSimple                       | Ano                | Ano                | Ano                |
 | Azure Backup                     | Ano                | Ano                | Ano                |
 | Data Box                         | Ano                | -                  | Ano                |
 | Data Box Edge                    | Ano                | Ano                | -                  |
 
 \* Tato služba neuchovává data. Přechodné mezipaměti, pokud jsou nějaké, se šifrují pomocí klíče Microsoftu.
 
-\*\* Tato služba podporuje ukládání dat do vlastního Key Vault, účtu úložiště nebo jiné trvalé služby dat, která již podporuje šifrování na straně serveru s klíčem spravovaným zákazníkem.
+\*\* Tato služba podporuje ukládání dat do vlastního Key Vault, účtu úložiště nebo jiné trvalé služby dat, která již podporuje šifrování Server-Side pomocí Customer-Managed Key.
 
 ## <a name="next-steps"></a>Další kroky
 

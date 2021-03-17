@@ -10,15 +10,20 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c3515d6dc7556995c990180330212bffb1445ad2
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 76d7f4e31934480be57cd5ac133c1c7e6a9dd364
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406227"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349601"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Kurz: Jednostránková aplikace s vyhledáváním videí
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 Rozhraní API Bingu pro vyhledávání videí umožňuje hledat na webu a získávat výsledky videí relevantní pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API pro vyhledávání Bingu k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -42,7 +47,7 @@ Tato ukázková aplikace předvádí, jak:
 
 Stránka kurzu je zcela nezávislá. Nepoužívá žádná externí rozhraní, šablony stylů ani soubory obrázků. Používá jenom běžně podporované funkce jazyka JavaScript a funguje s aktuálními verzemi všech hlavních webových prohlížečů.
 
-V tomto kurzu probereme vybrané části zdrojového kódu. K dispozici je kompletní [zdrojový kód](tutorial-bing-video-search-single-page-app-source.md). Pokud chcete spustit příklad, zkopírujte a vložte zdrojový kód do textového editoru a uložte ho jako `bing.html`.
+V tomto kurzu probereme vybrané části zdrojového kódu. K dispozici je kompletní [zdrojový kód](). Pokud chcete spustit příklad, zkopírujte a vložte zdrojový kód do textového editoru a uložte ho jako `bing.html`.
 
 ## <a name="app-components"></a>Komponenty aplikace
 Stejně jako každá jednostránková webová aplikace i tato aplikace zahrnuje tři části:

@@ -8,16 +8,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: carlrab; jrasnick
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 793010ba9eaea32256796f5fcd42d1c469eb7917
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 40657ad2f3b69d62e0e0d9c7d9e0f0be7343547b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981978"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490597"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Ladění aplikací a databází pro výkon v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ Po vytvoření stejný příkaz SELECT vybere jiný plán, který místo kontrol
 
 ![Plán dotazů s opravenými indexy](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-Klíčovým přehledem je, že kapacita vstupně-výstupních operací sdíleného a komoditního systému je více omezená než na vyhrazeném serverovém počítači. K minimalizaci zbytečných vstupně-výstupních operací pro maximální využití systému v prostředcích všech výpočetních velikostí úrovní služeb se využívá Premium. Vhodné volby pro návrh fyzické databáze můžou výrazně zlepšit latenci pro jednotlivé dotazy, zlepšit propustnost souběžných požadavků zpracovaných na jednotku škálování a snížit náklady potřebné k uspokojení dotazu. Další informace o chybějícím indexu zobrazení dynamické správy naleznete v tématu [Sys. dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Klíčovým přehledem je, že kapacita vstupně-výstupních operací sdíleného a komoditního systému je více omezená než na vyhrazeném serverovém počítači. K minimalizaci zbytečných vstupně-výstupních operací pro maximální využití systému v prostředcích všech výpočetních velikostí úrovní služeb se využívá Premium. Vhodné volby pro návrh fyzické databáze můžou výrazně zlepšit latenci pro jednotlivé dotazy, zlepšit propustnost souběžných požadavků zpracovaných na jednotku škálování a snížit náklady potřebné k uspokojení dotazu. Další informace o chybějícím indexu zobrazení dynamické správy naleznete v tématu [Sys.dm_db_missing_index_details](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-missing-index-details-transact-sql).
 
 ### <a name="query-tuning-and-hinting"></a>Ladění a hinty dotazů
 
@@ -216,7 +216,7 @@ Druhá část příkladu používá pomocný parametr dotazu k oznámení, aby O
 
 ![Vyladění dotazů pomocí pomocného parametru dotazu](./media/performance-guidance/query_tuning_3.png)
 
-Můžete zobrazit efekt v tabulce **Sys. resource_stats** (zpoždění od času, kdy spouštíte test a když data naplní tabulku). V tomto příkladu se část 1 spustila během časového intervalu 22:25:00.2. část byla provedena v 22:35:00. Předchozí časové okno v tomto časovém intervalu používalo více prostředků než novější (kvůli vylepšením efektivity plánování).
+Můžete zobrazit efekt v tabulce **Sys.resource_stats** (nastane zpoždění od času, kdy spouštíte test a když data naplní tabulku). V tomto příkladu se část 1 spustila během časového intervalu 22:25:00.2. část byla provedena v 22:35:00. Předchozí časové okno v tomto časovém intervalu používalo více prostředků než novější (kvůli vylepšením efektivity plánování).
 
 ```sql
 SELECT TOP 1000 *
@@ -230,9 +230,9 @@ ORDER BY start_time DESC
 > [!NOTE]
 > I když je svazek v tomto příkladu záměrně malý, účinek dílčích optimálních parametrů může být zásadní, zejména u větších databází. Rozdíl v extrémních případech může být v rozmezí sekund pro rychlé případy a hodiny pro pomalé případy.
 
-Můžete zkontrolovat **Sys. resource_stats** , abyste zjistili, zda prostředek pro test používá více nebo méně prostředků než jiný test. Když porovnáte data, oddělte časování testů tak, aby se v zobrazení **Sys. resource_stats** nezobrazily v jednom okně s pěti minutami. Cílem tohoto cvičení je minimalizovat celkový objem využitých prostředků, a ne minimalizovat prostředky ve špičce. Obecně optimalizuje část kódu pro latenci také snižuje spotřebu prostředků. Ujistěte se, že jsou změny, které provedete v aplikaci, nezbytné a že změny nemají negativní vliv na uživatelské prostředí pro někoho, kdo může v aplikaci použít pomocný parametr dotazu.
+Můžete zkontrolovat **Sys.resource_stats** , abyste zjistili, zda prostředek pro test používá více nebo méně prostředků než jiný test. Když porovnáte data, oddělte časování testů tak, aby se v zobrazení **Sys.resource_stats** navzájemly v nestejném intervalu 5 minut. Cílem tohoto cvičení je minimalizovat celkový objem využitých prostředků, a ne minimalizovat prostředky ve špičce. Obecně optimalizuje část kódu pro latenci také snižuje spotřebu prostředků. Ujistěte se, že jsou změny, které provedete v aplikaci, nezbytné a že změny nemají negativní vliv na uživatelské prostředí pro někoho, kdo může v aplikaci použít pomocný parametr dotazu.
 
-Pokud má úloha sadu opakujících se dotazů, často má smysl zachytit a ověřit optimální možnosti plánu, protože jednotkou je minimální jednotka velikosti prostředků, která je vyžadována pro hostování databáze. Po ověření si občas prověříte plány, které vám pomohou zajistit, že nebudou omezené. Další informace o [pokynech pro dotazy najdete v jazyce Transact-SQL](https://msdn.microsoft.com/library/ms181714.aspx).
+Pokud má úloha sadu opakujících se dotazů, často má smysl zachytit a ověřit optimální možnosti plánu, protože jednotkou je minimální jednotka velikosti prostředků, která je vyžadována pro hostování databáze. Po ověření si občas prověříte plány, které vám pomohou zajistit, že nebudou omezené. Další informace o [pokynech pro dotazy najdete v jazyce Transact-SQL](/sql/t-sql/queries/hints-transact-sql-query).
 
 ### <a name="very-large-database-architectures"></a>Velmi velké architektury databáze
 

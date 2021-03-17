@@ -1,15 +1,16 @@
 ---
 title: Referenční informace o syntaxi vzoru – LUIS
 description: Vytvořte entity pro extrakci klíčových dat z uživatelských projevy v aplikacích Language Understanding (LUIS). Klientská aplikace používá extrahovaná data.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684549"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542185"
 ---
 # <a name="pattern-syntax"></a>Syntaxe vzoru
 
@@ -22,17 +23,17 @@ Entity v vzorcích jsou obklopené složenými závorkami `{}` . Vzory mohou zah
 
 Syntaxe vzoru podporuje následující syntaxi:
 
-|Funkce|Syntaxe|Úroveň vnoření|Příklad|
+|Funkce|Syntax|Úroveň vnoření|Příklad|
 |--|--|--|--|
-|entita| {}– složené závorky|2|Kde je tvar {entity-Name}?|
+|entita| {} – složené závorky|2|Kde je tvar {entity-Name}?|
 |optional|[] – hranaté závorky<BR><BR>Existuje limit 3 pro vnořování úrovní jakékoli kombinace Optional and Grouping. |2|Otazník je nepovinný [?].|
 |grouping|() – závorky|2|je (a \| b)|
-|nebo| \|– svislá čára (svislá čára)<br><br>U svislých pruhů (nebo) v jedné skupině je povolený limit 2. |-|Kde je Form ({Form-Name-short} &#x7c; {Form-Name-Long} &#x7c; {Form-Number})|
+|nebo| \| – svislá čára (svislá čára)<br><br>U svislých pruhů (nebo) v jedné skupině je povolený limit 2. |-|Kde je Form ({Form-Name-short} &#x7c; {Form-Name-Long} &#x7c; {Form-Number})|
 |začátek a/nebo konec utterance|^ – blikající kurzor|-|^ začátek utterance<br>utterance je hotové ^<br>^ striktní shoda literálu celého utterance s {Number} entitou ^|
 
 ## <a name="nesting-syntax-in-patterns"></a>Syntaxe vnořování ve vzorcích
 
-**Volitelná** syntaxe s hranatými závorkami může být vnořená na dvě úrovně. Příklad: `[[this]is] a new form`. Tento příklad umožňuje následující projevy:
+**Volitelná** syntaxe s hranatými závorkami může být vnořená na dvě úrovně. Například: `[[this]is] a new form`. Tento příklad umožňuje následující projevy:
 
 |Příklad vnořeného volitelného utteranceu|Vysvětlení|
 |--|--|
@@ -40,7 +41,7 @@ Syntaxe vzoru podporuje následující syntaxi:
 |je nový formulář|odpovídá vnějšímu volitelnému slovu a jiným nevolitelným slovům ve vzoru|
 |nový formulář|odpovídá pouze povinným slovům|
 
-Syntaxe **seskupení** s kulatými závorkami může být vnořená dvě úrovně. Příklad: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Tato funkce umožňuje, aby se všechny tři entity shodovaly.
+Syntaxe **seskupení** s kulatými závorkami může být vnořená dvě úrovně. Například: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Tato funkce umožňuje, aby se všechny tři entity shodovaly.
 
 Pokud je Entity1 umístění s rolemi, jako je počátek (Seattle) a cíl (Cairo) a entita 2 je známý název budovy ze seznamu entit (RedWest-C), následující projevy by se namapovaly na tento vzor:
 
@@ -56,8 +57,8 @@ Kombinace **seskupení** s **volitelnou** syntaxí má limit 3 úrovní vnořen�
 
 |Povoleno|Příklad|
 |--|--|
-|Ano|([(Test1 &#x7c; test2)] &#x7c; test3)|
-|Ne|([([test1] &#x7c; test2)] &#x7c; test3)|
+|Yes|([(Test1 &#x7c; test2)] &#x7c; test3)|
+|No|([([test1] &#x7c; test2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Omezení vnořování pro skupiny s syntaxí or-Lo
 
@@ -65,8 +66,8 @@ Kombinace **seskupení** se syntaxí **or-Lo** má omezení 2 svislé pruhy.
 
 |Povoleno|Příklad|
 |--|--|
-|Ano|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
-|Ne|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Yes|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
+|No|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxe pro přidání entity do šablony vzoru
 Chcete-li přidat entitu do šablony vzoru, uzavřete název entity do složených závorek, například `Who does {Employee} manage?` .
@@ -126,7 +127,7 @@ Označte Nepovinný text v utterance pomocí syntaxe hranaté závorky regulárn
 
 |Vzor s volitelným textem|Význam|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find`a `from {person}` jsou volitelné|
+|`[find] email about {subject} [from {person}]`|`find` a `from {person}` jsou volitelné|
 |' Vám může pomáhat: [?]|Interpunkční znaménko je volitelné.|
 
 Interpunkční znaménka ( `?` , `!` , `.` ) by měla být ignorována a je třeba je ignorovat pomocí syntaxe hranaté závorky ve vzorcích.

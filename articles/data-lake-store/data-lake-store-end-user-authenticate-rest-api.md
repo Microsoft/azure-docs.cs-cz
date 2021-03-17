@@ -6,25 +6,25 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 84e85e6e817972b8ec0bee0e8b441b3585d2d9dd
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 462cd06c9da3b1f0a57c293d52c59181372b709b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984847"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103743"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí REST API
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Pomocí Pythonu](data-lake-store-end-user-authenticate-python.md)
-> * [Pomocí rozhraní REST API](data-lake-store-end-user-authenticate-rest-api.md)
+> * [Použití REST API](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >  
 
 V tomto článku se dozvíte, jak používat REST API k ověřování koncových uživatelů pomocí Azure Data Lake Storage Gen1. Informace o ověřování služby-služba pomocí Data Lake Storage Gen1 pomocí REST API najdete v tématu [ověřování služba-služba s Data Lake Storage Gen1 pomocí REST API](data-lake-store-service-to-service-authenticate-rest-api.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -37,14 +37,14 @@ Ověřování koncových uživatelů je doporučený postup, pokud chcete, aby s
 
 Výsledkem přihlášení koncového uživatele je, že aplikace má přístup k přístupovému tokenu a obnovovacímu tokenu. Přístupový token se připojí ke všem žádostem provedeným na Data Lake Storage Gen1 nebo Data Lake Analytics a ve výchozím nastavení platí pro jednu hodinu. Aktualizační token se dá použít k získání nového přístupového tokenu a ve výchozím nastavení je platný až pro dva týdny, pokud se pravidelně používá. Pro přihlášení koncového uživatele můžete použít dva různé přístupy.
 
-V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace se provádějí v kontextu uživatele. Proveďte následující kroky:
+V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace se provádějí v kontextu uživatele. Proveďte tyto kroky:
 
 1. Prostřednictvím aplikace přesměrujte uživatele na tuto adresu URL:
 
     `https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>`
 
    > [!NOTE]
-   > \<REDIRECT-URI>musí být kódovány pro použití v adrese URL. Takže pro https://localhost , použití `https%3A%2F%2Flocalhost` )
+   > \<REDIRECT-URI> musí být kódovány pro použití v adrese URL. Takže pro https://localhost , použití `https%3A%2F%2Flocalhost` )
 
     Pro účely tohoto kurzu můžete ve výše zobrazené adrese URL nahradit zástupné hodnoty a vložit ji do adresního řádku webového prohlížeče. Budete přesměrováni na ověření pomocí přihlášení Azure. Po úspěšném přihlášení se zobrazí v adresním řádku prohlížeče odpověď. Odpověď bude mít tento formát:
 
@@ -82,11 +82,10 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
          -F refresh_token=<REFRESH-TOKEN>
     ```
 
-Další informace o interaktivním ověřování uživatelů najdete v tématu [Tok poskytování autorizačních kódů](https://msdn.microsoft.com/library/azure/dn645542.aspx).
+Další informace o interaktivním ověřování uživatelů najdete v tématu [Tok poskytování autorizačních kódů](/previous-versions/azure/dn645542(v=azure.100)).
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak používat ověřování služby pro službu k ověřování pomocí Azure Data Lake Storage Gen1 pomocí REST API. Nyní se můžete podívat na následující články, které vás seznámí s postupem použití REST API k práci s Azure Data Lake Storage Gen1.
 
 * [Operace správy účtů u Data Lake Storage Gen1 pomocí REST API](data-lake-store-get-started-rest-api.md)
 * [Operace s daty při Data Lake Storage Gen1 pomocí REST API](data-lake-store-data-operations-rest-api.md)
-

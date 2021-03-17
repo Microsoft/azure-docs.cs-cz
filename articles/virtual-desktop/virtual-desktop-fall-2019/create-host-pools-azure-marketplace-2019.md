@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008589"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Kurz: Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic)
@@ -44,7 +44,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů
 
@@ -65,7 +65,7 @@ Tady je seznam toho, co uděláte na kartě **základy** :
 1. Vyberte **oblast**.
 1. Zadejte název fondu hostitelů, který je jedinečný v rámci tenanta virtuálních klientů Windows.
 1. Vyberte **typ pracovní plochy**. Pokud vyberete **osobní**, každý uživatel, který se připojí k tomuto fondu hostitelů, se trvale přiřadí k virtuálnímu počítači.
-1. Zadejte uživatele, kteří se mohou přihlásit k klientům virtuálních klientů Windows a přistupovat k ploše. Použijte seznam oddělený čárkami. Například pokud chcete přiřadit `user1@contoso.com` a `user2@contoso.com` přístup, zadejte*`user1@contoso.com,user2@contoso.com`*
+1. Zadejte uživatele, kteří se mohou přihlásit k klientům virtuálních klientů Windows a přistupovat k ploše. Použijte seznam oddělený čárkami. Například pokud chcete přiřadit `user1@contoso.com` a `user2@contoso.com` přístup, zadejte *`user1@contoso.com,user2@contoso.com`*
 1. V poli **umístění metadat služby**vyberte stejné umístění jako virtuální síť, která má připojení k serveru služby Active Directory.
 
    >[!IMPORTANT]

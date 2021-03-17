@@ -6,23 +6,24 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 474e8152341aeb5e05af1859e531810f2be31e7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4b62b591c408f663fd28d5077af924f785ee66c8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322801"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090405"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
-
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
 > * [Sada Java SDK v4](create-sql-api-java.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -33,7 +34,7 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhran�
 > Tento rychlý Start je určen pouze pro Azure Cosmos DB Java SDK v4. Další informace najdete v Azure Cosmos DB zpráva k [vydání verze](sql-api-sdk-java-v4.md)Java SDK v4, [úložiště pro Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB [tipy pro výkon](performance-tips-java-sdk-v4-sql.md)Java SDK v4 a Azure Cosmos DB [Průvodce řešením potíží](troubleshoot-java-sdk-v4-sql.md) se sadou Java SDK v4. Pokud aktuálně používáte starší verzi než v4, přečtěte si článek průvodce [migrací do Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) , který vám pomůže s upgradem na V4.
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte `JAVA_HOME` proměnnou prostředí na složku, ve které je nainstalovaná JDK.
@@ -42,15 +43,15 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhran�
 
 ## <a name="introductory-notes"></a>Úvodní poznámky
 
-*Struktura Cosmos DB účtu* Bez ohledu na rozhraní API nebo programovací jazyk, Cosmos DB *účet* obsahuje nula nebo více *databází*, *databáze* (DB) obsahuje nula nebo více *kontejnerů*a *kontejner* obsahuje nula nebo více položek, jak je znázorněno na následujícím obrázku:
+*Struktura Cosmos DB účtu* Bez ohledu na rozhraní API nebo programovací jazyk, Cosmos DB *účet* obsahuje nula nebo více *databází* , *databáze* (DB) obsahuje nula nebo více *kontejnerů* a *kontejner* obsahuje nula nebo více položek, jak je znázorněno na následujícím obrázku:
 
-:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Entity účtu Azure Cosmos" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Entity účtu Azure Cosmos" border="false":::
 
-Další informace o databázích, kontejnerech a položkách si můžete přečíst [tady.](databases-containers-items.md) Na úrovni kontejneru je definováno několik důležitých vlastností, mezi kterými je *zřízena propustnost* a *klíč oddílu*. 
+Další informace o databázích, kontejnerech a položkách si můžete přečíst [tady.](account-databases-containers-items.md) Na úrovni kontejneru je definováno několik důležitých vlastností, mezi kterými je *zřízena propustnost* a *klíč oddílu* . 
 
-Zřízená propustnost se měří v jednotkách žádosti (*ru*), které mají peněžní cenu, a jsou zásadním rozhodujícím faktorem za provozní náklady na účet. Zřízenou propustnost lze vybrat v členitosti podle kontejneru nebo členitosti na databázi, ale obvykle je upřednostňována specifikace propustnosti na úrovni kontejneru. Další informace o zřizování propustnosti si můžete přečíst [tady.](set-throughput.md)
+Zřízená propustnost se měří v jednotkách žádosti ( *ru* ), které mají peněžní cenu, a jsou zásadním rozhodujícím faktorem za provozní náklady na účet. Zřízenou propustnost lze vybrat v členitosti podle kontejneru nebo členitosti na databázi, ale obvykle je upřednostňována specifikace propustnosti na úrovni kontejneru. Další informace o zřizování propustnosti si můžete přečíst [tady.](set-throughput.md)
 
-Když jsou položky vloženy do kontejneru Cosmos DB, databáze se poroste vodorovně přidáním dalšího úložiště a výpočetních prostředků pro zpracování požadavků. Kapacita úložiště a výpočetní kapacity se přidávají do diskrétních jednotek označovaných jako *oddíly*a Vy musíte zvolit jedno pole v dokumentu, které bude mít klíč oddílu, který mapuje jednotlivé dokumenty na oddíl. Způsob správy oddílů je, že každý oddíl má přiřazený zhruba stejný řez mimo rozsah hodnot klíče oddílu; Proto doporučujeme zvolit klíč oddílu, který je relativně náhodný nebo rovnoměrně distribuovaný. V opačném případě některé oddíly uvidí podstatně více požadavků (*aktivní oddíl*), zatímco ostatní oddíly jsou v podstatě méně požadavků (*studený oddíl*) a že se to vyhne. [Tady](partitioning-overview.md)se můžete dozvědět víc o vytváření oddílů.
+Když jsou položky vloženy do kontejneru Cosmos DB, databáze se poroste vodorovně přidáním dalšího úložiště a výpočetních prostředků pro zpracování požadavků. Kapacita úložiště a výpočetní kapacity se přidávají do diskrétních jednotek označovaných jako *oddíly* a Vy musíte zvolit jedno pole v dokumentu, které bude mít klíč oddílu, který mapuje jednotlivé dokumenty na oddíl. Způsob správy oddílů je, že každý oddíl má přiřazený zhruba stejný řez mimo rozsah hodnot klíče oddílu; Proto doporučujeme zvolit klíč oddílu, který je relativně náhodný nebo rovnoměrně distribuovaný. V opačném případě některé oddíly uvidí podstatně více požadavků ( *aktivní oddíl* ), zatímco ostatní oddíly jsou v podstatě méně požadavků ( *studený oddíl* ) a že se to vyhne. [Tady](partitioning-overview.md)se můžete dozvědět víc o vytváření oddílů.
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -94,11 +95,11 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* `CosmosDatabase`vytvořena.
+* `CosmosDatabase` vytvořena.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosContainer`vytvořena.
+* `CosmosContainer` vytvořena.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -124,11 +125,11 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
 
-* `CosmosAsyncDatabase`vytvořena.
+* `CosmosAsyncDatabase` vytvořena.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosAsyncContainer`vytvořena.
+* `CosmosAsyncContainer` vytvořena.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -171,8 +172,8 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
 
     V okně terminálu se zobrazí oznámení o vytvoření databáze FamilyDB. 
     
-4. Aplikace vytvoří databázi s názvem.`AzureSampleFamilyDB`
-5. Aplikace vytvoří kontejner s názvem.`FamilyContainer`
+4. Aplikace vytvoří databázi s názvem. `AzureSampleFamilyDB`
+5. Aplikace vytvoří kontejner s názvem. `FamilyContainer`
 6. Aplikace provede čtení bodů pomocí ID objektů a hodnoty klíče oddílu (což je lastName v naší ukázce). 
 7. Aplikace se bude dotazovat na položky a načíst všechny rodiny s posledním názvem v (' Andersen ', ' Wakefieldů ', ' Johnsonem ').
 

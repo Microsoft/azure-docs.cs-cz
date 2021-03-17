@@ -1,0 +1,119 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Percept
+summary: Azure Percept je ucelené řešení pro sestavování a nasazování AI na bázi vnímání na hranici.
+metadata:
+  title: Dokumentace ke službě Azure Percept
+  description: Azure Percept je koncová platforma AI pro všechny koncové strany.
+  services: azure-percept
+  ms.service: azure-percept
+  ms.topic: landing-page
+  author: elqu20
+  ms.author: v-elqu
+  ms.date: 02/11/2021
+  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102097491"
+landingContent:
+- title: Co je Azure Percept?
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled služby Azure Percept
+      url: overview-azure-percept.md
+    - text: Přehled Azure Percept DK
+      url: overview-azure-percept-dk.md
+    - text: Přehled služby Azure Percept audio
+      url: overview-azure-percept-audio.md
+    - text: Přehled služby Azure Percept Studio
+      url: overview-azure-percept-studio.md
+    - text: Přehled zabezpečení Azure Percept
+      url: overview-percept-security.md
+- title: Začínáme s Azure Percept DK
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Unbox a sestavte si Azure Percept DK
+      url: quickstart-percept-dk-unboxing.md
+    - text: Připojení Azure Percept DK k Azure a nasazení modelu AI Vision
+      url: quickstart-percept-dk-set-up.md
+  - linkListType: reference
+    links:
+    - text: Datový list Azure Percept DK
+      url: azure-percept-dk-datasheet.md
+    - text: Datový list Azure Percept Vision
+      url: azure-percept-vision-datasheet.md
+    - text: Řešení potíží
+      url: troubleshoot-dev-kit.md
+- title: Začínáme se službou Azure Percept audio
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Nastavení služby Azure Percept audio
+      url: quickstart-percept-audio-setup.md
+  - linkListType: reference
+    links:
+    - text: Datový list Azure Percept audio
+      url: azure-percept-audio-datasheet.md
+    - text: Řešení potíží se zvukem v Azure Percept
+      url: troubleshoot-audio-accessory-speech-module.md
+    - text: LED a tlačítko zvuku Azure Percept
+      url: audio-button-led-behavior.md
+- title: Sestavení prototypu pro revize bez kódu
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření řešení pro vize bez kódu
+      url: tutorial-nocode-vision.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zobrazení streamu videa DevKit
+      url: how-to-view-video-stream.md
+    - text: Nasazení modelu AI do DevKit
+      url: how-to-deploy-model.md
+    - text: Zachycení imagí pro projekt vize
+      url: how-to-capture-images.md
+    - text: Zobrazení telemetrie DevKit
+      url: how-to-view-telemetry.md
+  - linkListType: concept
+    links:
+    - text: Práce s řešeními AI
+      url: overview-ai-models.md
+- title: Vytvoření řešení hlasového asistenta bez kódu
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření hlasového asistenta bez kódu
+      url: tutorial-no-code-speech.md
+  - linkListType: how-to-guide
+    links:
+    - text: Správa hlasového asistenta
+      url: how-to-manage-voice-assistant.md
+    - text: Konfigurace hlasového asistenta pomocí IoT Hub
+      url: how-to-configure-voice-assistant.md
+- title: Pokročilý vývoj s využitím Azure Percept
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled pokročilého vývoje
+      url: overview-advanced-code.md
+  - linkListType: how-to-guide
+    links:
+    - text: Instalační program sady nástrojů pro vývojáře
+      url: dev-tools-installer.md
+- title: Udržujte si aktuálnost Azure Percept DK v aktuálním stavu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled prostředí Azure Percept DK Update
+      url: overview-update-experience.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení aktualizací přes Air
+      url: how-to-set-up-over-the-air-updates.md
+    - text: Aktualizace přes Air
+      url: how-to-update-over-the-air.md
+    - text: Aktualizace přes USB
+      url: how-to-update-via-usb.md

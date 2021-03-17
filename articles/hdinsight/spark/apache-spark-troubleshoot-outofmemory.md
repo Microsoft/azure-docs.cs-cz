@@ -3,16 +3,13 @@ title: OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
 description: Různé výjimky OutOfMemoryError pro cluster Apache Spark ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709041"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946341"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
 
@@ -194,7 +191,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Příčina
 
-`java.lang.OutOfMemoryError: unable to create new native thread`Hlavní operační systém nemůže přiřadit více nativních vláken pro JVMs. Potvrzuje, že je tato výjimka způsobena porušením limitu počtu vláken pro procesy.
+`java.lang.OutOfMemoryError: unable to create new native thread` Hlavní operační systém nemůže přiřadit více nativních vláken pro JVMs. Potvrzuje, že je tato výjimka způsobena porušením limitu počtu vláken pro procesy.
 
 Při neočekávaném ukončení serveru Livy se také ukončí všechna připojení ke clusterům Spark, což znamená, že všechny úlohy a související data budou ztracena. V rámci mechanismu obnovení relace HDP 2,6 Livy ukládá podrobnosti o relaci v Zookeeper po obnovení serveru Livy.
 
@@ -239,7 +236,7 @@ Všechny položky odstraňte pomocí kroků popsaných níže.
 1. Počkejte, než se výše uvedený příkaz dokončí, a kurzorem vraťte výzvu a pak restartujte službu Livy z Ambari, která by měla být úspěšná.
 
 > [!NOTE]
-> `DELETE`relace Livy po dokončení jejího provádění. Relace Livy Batch se neodstraní automaticky hned po dokončení aplikace Spark, což je záměrné. Relace Livy je entita vytvořená požadavkem POST proti serveru Livy REST. `DELETE`K odstranění této entity je potřeba volání. Nebo bychom měli počkat na navázání GC.
+> `DELETE` relace Livy po dokončení jejího provádění. Relace Livy Batch se neodstraní automaticky hned po dokončení aplikace Spark, což je záměrné. Relace Livy je entita vytvořená požadavkem POST proti serveru Livy REST. `DELETE`K odstranění této entity je potřeba volání. Nebo bychom měli počkat na navázání GC.
 
 ---
 
@@ -249,10 +246,10 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * [Přehled správy paměti Spark](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
 
-* [Ladění aplikace Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
+* [Ladění aplikace Spark v clusterech HDInsight](/archive/blogs/azuredatalake/spark-debugging-101).
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

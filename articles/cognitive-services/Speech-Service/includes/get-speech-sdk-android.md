@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 3d9718d7c1b3182d1f7bc16cd81b38635c051a85
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f07eb0ab252144d1e0953a1a227dfbadb152c422
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399860"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434448"
 ---
 :::row:::
     :::column span="3":::
@@ -31,7 +31,7 @@ ms.locfileid: "81399860"
 
 :::row:::
     :::column span="3":::
-        Xamarin.Android zpřístupňuje celou sadu Android SDK vývojářům v technologii .NET. Vytvářejte plně nativní aplikace pro Android pomocí jazyků C# nebo F# v sadě Visual Studio. Další informace najdete v tématu <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin. Android <span class="docon docon-navigate-external x-hidden-focus"></span> .</a>
+        Xamarin.Android zpřístupňuje celou sadu Android SDK vývojářům v technologii .NET. Vytvářejte plně nativní aplikace pro Android pomocí jazyků C# nebo F# v sadě Visual Studio. Další informace najdete v tématu <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin. Android. </a>
     :::column-end:::
     :::column:::
         <br>

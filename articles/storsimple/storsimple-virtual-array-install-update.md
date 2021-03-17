@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77d2e61533016de7417446ba4111116e9749ac74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bd6f298ad2bb01503492b52c2d50dec82ec0ca5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507870"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534037"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Instalace aktualizací do virtuálního pole StorSimple – Azure Portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "85507870"
 
 Tento článek popisuje kroky potřebné k instalaci aktualizací ve virtuálním poli StorSimple prostřednictvím místního webového uživatelského rozhraní a prostřednictvím Azure Portal. Chcete-li, aby vaše virtuální pole StorSimple bylo aktuální, je třeba použít aktualizace softwaru nebo opravy hotfix. 
 
-Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix se zařízení restartuje. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení. 
+Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení. 
 
 Než použijete aktualizaci, doporučujeme, abyste nejprve převzali svazky nebo sdílené složky na hostiteli a pak zařízení. Minimalizuje se tak možnost poškození dat.
 
@@ -59,7 +59,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
    
     ![Prohledávání katalogu](./media/storsimple-virtual-array-install-update/download1.png)
 
-4. Klikněte na tlačítko **Add** (Přidat). Aktualizace se přidá do košíku.
+4. Klikněte na **Přidat**. Aktualizace se přidá do košíku.
 
 5. Klikněte na **Zobrazit košík**.
 
@@ -77,26 +77,26 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
 
 1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![Snímek obrazovky se zobrazí aktualizace softwaru vybrané z nabídky Údržba.](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. Do pole **cesta k souboru aktualizace**zadejte název souboru aktualizace nebo opravy hotfix. Můžete také přejít k instalačnímu souboru aktualizace nebo opravy hotfix, pokud je umístěn ve sdílené síťové složce. Klikněte na **Použít**.
+2. Do pole **cesta k souboru aktualizace** zadejte název souboru aktualizace nebo opravy hotfix. Můžete také přejít k instalačnímu souboru aktualizace nebo opravy hotfix, pokud je umístěn ve sdílené síťové složce. Klikněte na **Použít**.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![Snímek obrazovky se zobrazí textové pole cesta k souboru aktualizace na stránce aktualizace softwaru.](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. Zobrazí se upozornění. Vzhledem k tomu, že se jedná o zařízení s jedním uzlem, po použití aktualizace se zařízení restartuje a dojde k výpadku. Klikněte na ikonu zaškrtněte.
    
-   ![aktualizace zařízení](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![Snímek obrazovky se zobrazí dialogové okno s upozorněním na výpadky.](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. Spustí se aktualizace. Po úspěšné aktualizaci zařízení se restartuje. Místní uživatelské rozhraní není v tuto dobu k dispozici.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![Snímek obrazovky ukazuje zprávu o úspěchu aktualizace.](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10288.0** pro aktualizaci 0,3.
+5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance** navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10288.0** pro aktualizaci 0,3.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10288** a sestavy Azure Portal **10.0.10288.0** pro stejnou verzi.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![Snímek obrazovky s aktuální verzí softwaru zobrazí stránku aktualizace softwaru.](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 

@@ -17,19 +17,19 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385088"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996555"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Změna hesla účtu služby ADSync
 Změníte-li heslo účtu služby ADSync, synchronizační služba nebude moci správně spustit, dokud neodstraníte šifrovací klíč a znovu znovu spustíte heslo účtu služby ADSync. 
 
 Azure AD Connect jako součást synchronizačních služeb používá šifrovací klíč k ukládání hesel účtu služby služba AD DS Connector a účtu služby ADSync.  Tyto účty se šifrují předtím, než se uloží do databáze. 
 
-Použitý šifrovací klíč je zabezpečený pomocí nástroje [Windows Data Protection (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx). DPAPI chrání šifrovací klíč pomocí **účtu služby AdSync**. 
+Použitý šifrovací klíč je zabezpečený pomocí nástroje [Windows Data Protection (DPAPI)](/previous-versions/ms995355(v=msdn.10)). DPAPI chrání šifrovací klíč pomocí **účtu služby AdSync**. 
 
 Pokud potřebujete změnit heslo účtu služby, můžete k tomu použít postupy [přenechání šifrovacího klíče účtu služby AdSync](#abandoning-the-adsync-service-account-encryption-key) .  Tyto postupy by se měly používat i v případě, že z nějakého důvodu potřebujete opustit šifrovací klíč.
 
@@ -52,7 +52,7 @@ Chcete-li zajistit, že tyto chyby neobdržíte, postupujte podle pokynů v čá
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>Přenechání šifrovacího klíče účtu služby ADSync
 >[!IMPORTANT]
->Následující postupy platí jenom pro Azure AD Connect Build verze 1.1.443.0 nebo starší. Toto nelze použít pro novější verze Azure AD Connect.
+>Následující postupy platí jenom pro Azure AD Connect Build verze 1.1.443.0 nebo starší. Tato funkce se nedá použít pro novější verze Azure AD Connect, protože přenechání šifrovacího klíče se při změně hesla účtu služby AD Sync zpracovává sám o sobě, takže v novějších verzích se nevyžadují následující kroky.   
 
 K opuštění šifrovacího klíče použijte následující postupy.
 
@@ -84,11 +84,11 @@ Stávající šifrovací klíč přenecháte, aby bylo možné vytvořit nový �
 
 2. Spusťte novou relaci PowerShellu.
 
-3. Přejít do složky:`'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
+3. Přejít do složky: `'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
 
-4. Spusťte příkaz:`./miiskmu.exe /a`
+4. Spusťte příkaz: `./miiskmu.exe /a`
 
-![Nástroj Azure AD Connect Sync šifrovací klíč](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
+![Snímek obrazovky, který po spuštění příkazu zobrazuje PowerShell](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 
 #### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>Zadejte heslo účtu konektoru služba AD DS.
 Vzhledem k tomu, že stávající hesla uložená v databázi již nelze dešifrovat, je nutné zadat synchronizační službu s heslem účtu konektoru služba AD DS. Synchronizační služba šifruje hesla pomocí nového šifrovacího klíče:
@@ -97,11 +97,11 @@ Vzhledem k tomu, že stávající hesla uložená v databázi již nelze dešifr
 </br>![Synchronizovat Service Manager](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
 2. Přejít na kartu **konektory** .
 3. Vyberte **konektor služby Active** Directory, který odpovídá vaší místní službě AD. Pokud máte více než jeden konektor služby AD, opakujte následující postup pro každý z nich.
-4. V části **Akce**vyberte **vlastnosti**.
+4. V části **Akce** vyberte **vlastnosti**.
 5. V místním dialogovém okně vyberte **připojit k doménové struktuře služby Active Directory**:
 6. Do textového pole **heslo** zadejte heslo účtu služba AD DS. Pokud heslo neznáte, musíte ho před provedením tohoto kroku nastavit na známou hodnotu.
 7. Kliknutím na tlačítko **OK** uložte nové heslo a zavřete automaticky otevírané okno.
-![Nástroj Azure AD Connect Sync šifrovací klíč](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
+![Snímek obrazovky zobrazující stránku připojit k doménové struktuře služby Active Directory v okně Vlastnosti.](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
 #### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>Znovu inicializovat heslo účtu služby ADSync
 Do synchronizační služby nemůžete přímo zadat heslo k účtu služby Azure AD. Místo toho je třeba použít rutinu **Add-ADSyncAADServiceAccount** k opětovné inicializaci účtu služby Azure AD. Rutina obnoví heslo účtu a zpřístupní ho službě synchronizace:

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206924"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88922816"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>`search.in`Funkce OData v Azure kognitivní hledání
 
@@ -46,9 +46,9 @@ Existuje však kratší způsob, jak to napsat pomocí `search.in` funkce:
 > [!NOTE]
 > Verze 4,01 Standard OData nedávno zavedla [ `in` operátor](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230), který má podobné chování jako `search.in` funkce v Azure kognitivní hledání. Ale Azure Kognitivní hledání nepodporuje tento operátor, takže musíte `search.in` místo toho použít funkci.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `search.in` funkce:
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `search.in` funkce:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -74,7 +74,7 @@ Existují dvě přetížení `search.in` funkce:
 
 Parametry jsou definovány v následující tabulce:
 
-| Název parametru | Typ | Popis |
+| Název parametru | Typ | Description |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Odkaz na pole řetězce (nebo proměnná rozsahu v poli kolekce řetězců v případě, kdy `search.in` se používá uvnitř `any` `all` výrazu or). |
 | `valueList` | `Edm.String` | Řetězec obsahující oddělený seznam hodnot, který se má shodovat s `variable` parametrem. Pokud `delimiters` parametr není zadán, výchozí oddělovače jsou mezera a čárka. |
@@ -82,7 +82,7 @@ Parametry jsou definovány v následující tabulce:
 
 <a name="bkmk_performance"></a>
 
-### <a name="performance-of-searchin"></a>Výkon`search.in`
+### <a name="performance-of-searchin"></a>Výkon `search.in`
 
 Pokud použijete `search.in` , můžete očekávat dobu odezvy za sekundu v případě, že druhý parametr obsahuje seznam stovek nebo tisíců hodnot. Pro počet položek, které můžete předat, neexistuje žádný explicitní limit `search.in` , i když se vám i nadále omezuje maximální velikost požadavku. Latence se ale zvětšuje, jakmile se zvýší počet hodnot.
 
@@ -123,4 +123,4 @@ Vyhledejte všechny hotely bez označení ' Motel ' nebo ' cabin':
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

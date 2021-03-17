@@ -1,17 +1,17 @@
 ---
 title: Konfigurace TLS-Azure Portal-Azure Database for MySQL
 description: Naučte se nastavit konfiguraci TLS pomocí Azure Portal pro Azure Database for MySQL
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 46eaa6a3b97967da9c4743d0cf1f6edc8f90b1ce
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 290752c0e577e6c2cd58d83f77fea8a5406388e4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119780"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240626"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>Konfigurace nastavení TLS v Azure Database for MySQL pomocí Azure Portal
 
@@ -31,17 +31,17 @@ Pomocí těchto kroků nastavte minimální verzi TLS serveru MySQL:
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj existující Azure Database for MySQL server.
 
-1. Na stránce serveru MySQL v části **Nastavení**klikněte na **zabezpečení připojení** . tím otevřete stránku konfigurace zabezpečení připojení.
+1. Na stránce serveru MySQL v části **Nastavení** klikněte na **zabezpečení připojení** . tím otevřete stránku konfigurace zabezpečení připojení.
 
-1. V **minimální verzi protokolu TLS**vyberte **1,2** pro zamítnutí připojení s protokolem TLS nižším než TLS 1,2 pro váš server MySQL.
+1. V **minimální verzi protokolu TLS** vyberte **1,2** pro zamítnutí připojení s protokolem TLS nižším než TLS 1,2 pro váš server MySQL.
 
-    ![Konfigurace Azure Database for MySQL TLS](./media/howto-tls-configurations/setting-tls-value.png)
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="Konfigurace Azure Database for MySQL TLS":::
 
 1. Kliknutím na **Uložit** uložte změny.
 
 1. Oznámení ověří, že nastavení zabezpečení připojení bylo úspěšně povoleno.
 
-    ![Úspěšná konfigurace TLS Azure Database for MySQL](./media/howto-tls-configurations/setting-tls-value-success.png)
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="Konfigurace Azure Database for MySQL TLS":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 20a6702a37a4432504d85c787218eb10a10931b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e676268abb9e1a4a597ef431ea6ba6593411711e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555897"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455217"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Coralogix
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Coralogix s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Coralogix svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -93,15 +93,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Coralogix](mailto:info@coralogix.com) . Můžete se také podívat na vzory v části **základní konfigurace SAML** v Azure Portal.
 
- 1. Aplikace Coralogix očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat v části **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte tlačítko **Upravit** a otevřete tak dialogové okno **atributy uživatele** .
+ 1. Aplikace Coralogix očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat v části **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte tlačítko **Upravit** a otevřete tak dialogové okno **atributy uživatele** .
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele se zvýrazněným tlačítkem Upravit.](common/edit-attribute.png)
 
 1. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace identity pomocí ikony **Upravit** . Deklarace identity můžete také přidat pomocí **Přidat novou deklaraci identity** a nakonfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku. Pak proveďte následující kroky:
     
     a. Výběrem **ikony upravit** otevřete dialogové okno **Spravovat deklarace identity uživatele** .
 
-    ![](./media/coralogix-tutorial/tutorial_usermail.png) ![ Obrázek obrázku](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![Snímek obrazovky zobrazující dialog atributy uživatele & deklarace se zvýrazněným tlačítkem Upravit.](./media/coralogix-tutorial/tutorial_usermail.png)
+    ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
     b. V seznamu **zvolit formát identifikátoru názvu** vyberte možnost **e-mailová adresa**.
 
@@ -127,7 +128,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -153,21 +154,20 @@ Ke konfiguraci jednotného přihlašování na straně **Coralogix** je potřeba
 
 ### <a name="create-coralogix-test-user"></a>Vytvořit testovacího uživatele Coralogix
 
-V této části vytvoříte uživatele s názvem Britta Simon v Coralogix. Pokud chcete přidat uživatele na platformě Coralogix, pracujte s [týmem podpory Coralogix](mailto:info@coralogix.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Coralogix. Pokud chcete přidat uživatele na platformě Coralogix, pracujte s [týmem podpory Coralogix](mailto:info@coralogix.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Coralogix, měli byste se automaticky přihlásit k Coralogix, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Coralogix, měli byste se automaticky přihlásit k Coralogix, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Coralogix s Azure AD](https://aad.portal.azure.com/)
-

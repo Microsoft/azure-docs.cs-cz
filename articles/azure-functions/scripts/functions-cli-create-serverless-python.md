@@ -5,12 +5,12 @@ ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 11/23/2019
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: bbc302194d4dc1922344138e057b456b63c18bbf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 65ea6513046cd0372720e5a9438941dda2a74877
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848090"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934352"
 ---
 # <a name="create-a-serverless-python-function-app-using-azure-cli"></a>Vytvoření aplikace funkcí Python bez serveru pomocí Azure CLI
 
@@ -21,13 +21,13 @@ Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí, což je kont
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). 
+ - Tento kurz vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří aplikaci funkcí Azure pomocí [plánu spotřeby](../functions-scale.md#consumption-plan).
+Tento skript vytvoří aplikaci funkcí Azure pomocí [plánu spotřeby](../consumption-plan.md).
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption-python/create-function-app-consumption-python.sh "Create an Azure Function on a Consumption plan")]
 

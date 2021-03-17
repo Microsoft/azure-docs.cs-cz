@@ -1,39 +1,39 @@
 ---
-title: CETAS v synapse SQL
-description: Použití CETAS s synapse SQL
+title: VYTVOŘENÍ externí tabulky jako SELECT (CETAS) v synapse SQL
+description: Použití možnost vytvořit externí tabulku jako SELECT (CETAS) s synapse SQL
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
-ms.date: 04/15/2020
+ms.subservice: sql
+ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3e53ac189e0d612b09c362e82ba5bc2fe5fec8d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 23b74c06ebd45092b9efe36a870eeac7f6fb828a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696832"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677561"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS s synapse SQL
 
-V buď ve fondu SQL nebo na vyžádání SQL (Preview), můžete použít možnost vytvořit externí tabulku jako SELECT (CETAS) a dokončit následující úlohy:  
+Pokud chcete dokončit následující úlohy, můžete použít možnost vytvořit externí tabulku jako SELECT (CETAS) ve vyhrazeném fondu SQL nebo bez serveru SQL.  
 
 - Vytvoření externí tabulky
-- Export, paralelně, výsledky příkazu jazyka Transact-SQL SELECT do
+- Exportujte paralelně výsledky příkazu SELECT jazyka Transact-SQL pro:
 
   - Hadoop
   - Azure Storage Blob
   - Azure Data Lake Storage Gen2
 
-## <a name="cetas-in-sql-pool"></a>CETAS ve fondu SQL
+## <a name="cetas-in-dedicated-sql-pool"></a>CETAS ve vyhrazeném fondu SQL
 
-V případě fondu SQL, použití a syntaxe CETAS zaškrtněte políčko [vytvořit externí tabulku jako](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) článek. Další informace o pokynech k CTAS s využitím fondu SQL najdete v článku [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) .
+V případě vyhrazeného fondu SQL CETAS použití a syntaxe zaškrtněte políčko [vytvořit externí tabulku jako](/sql/t-sql/statements/create-external-table-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true) článek. Další informace o pokynech k CTAS s využitím vyhrazeného fondu SQL najdete v článku [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) .
 
-## <a name="cetas-in-sql-on-demand"></a>CETAS v SQL na vyžádání
+## <a name="cetas-in-serverless-sql-pool"></a>CETAS ve fondu SQL bez serveru
 
-Při použití prostředku SQL na vyžádání se CETAS používá k vytvoření externí tabulky a exportu výsledků dotazu pro Azure Storage Blob nebo Azure Data Lake Storage Gen2.
+Pokud používáte fond SQL bez serveru, CETAS se používá k vytvoření externí tabulky a k exportu výsledků dotazu pro Azure Storage Blob nebo Azure Data Lake Storage Gen2.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -52,11 +52,11 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
     SELECT <select_criteria>
 ```
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
 
 *[[ *database_name* . [ *schema_name* ]. ] | *schema_name* . ] *TABLE_NAME**
 
-Název první ze tří částí tabulky, která se má vytvořit. V případě externí tabulky ukládá SQL na vyžádání pouze metadata tabulky. V SQL na vyžádání se nepřesunou ani neukládají žádná skutečná data.
+Název první ze tří částí tabulky, která se má vytvořit. V případě externí tabulky je ve fondu SQL bez serveru uloženo pouze metadata tabulky. Ve fondu SQL bez serveru nejsou přesunutá ani uložená žádná skutečná data.
 
 LOCATION = *' path_to_folder '*
 
@@ -68,18 +68,18 @@ Určuje název objektu externího zdroje dat, který obsahuje umístění, kde b
 
 FILE_FORMAT = *external_file_format_name*
 
-Určuje název objektu externího souboru formátu, který obsahuje formát pro externí datový soubor. Chcete-li vytvořit externí formát souboru, použijte příkaz [Create External File Format (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format). V současné době se podporují jenom formáty externích souborů s FORMAT = ' PARQUET '.
+Určuje název objektu externího souboru formátu, který obsahuje formát pro externí datový soubor. Chcete-li vytvořit externí formát souboru, použijte příkaz [Create External File Format (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format). V současné době se podporují jenom formáty externích souborů s FORMAT_TYPE = PARQUET a FORMAT_TYPE = DELIMITEDTEXT. Komprese GZip pro formát DELIMITEDTEXT se nepodporuje.
 
 S *<common_table_expression>*
 
-Určuje dočasnou pojmenovanou sadu výsledků, která se označuje jako výraz běžné tabulky (CTE). Další informace naleznete v tématu [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Určuje dočasnou pojmenovanou sadu výsledků, která se označuje jako výraz běžné tabulky (CTE). Další informace naleznete v tématu [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 Vyberte <select_criteria>
 
-Naplní novou tabulku výsledky příkazu SELECT. *select_criteria* je tělo příkazu SELECT, který určuje, která data se mají zkopírovat do nové tabulky. Informace o příkazech SELECT naleznete v tématu [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Naplní novou tabulku výsledky příkazu SELECT. *select_criteria* je tělo příkazu SELECT, který určuje, která data se mají zkopírovat do nové tabulky. Informace o příkazech SELECT naleznete v tématu [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 > [!NOTE]
-> Klauzule ORDER BY v příkazu SELECT part of CETAS není podporována.
+> Klauzule ORDER BY v příkazu SELECT není pro CETAS podporována.
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -112,7 +112,7 @@ FROM
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -132,7 +132,7 @@ FROM census_external_table
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -144,33 +144,31 @@ CETAS lze použít k uložení sad výsledků s následujícími datovými typy 
 - varbinary
 - char
 - varchar
+- nchar
+- nvarchar
+- smalldate
 - date
-- time
+- datetime
 - datetime2
+- DateTimeOffset
+- time
 - decimal
 - numerické
 - float
 - real
 - bigint
-- int
-- smallint
 - tinyint
+- smallint
+- int
+- bigint
 - bit
-
-> [!NOTE]
-> Objekty LOBs s nelze použít s CETAS.
-
-V rámci vybrané části CETAS nelze použít následující datové typy:
-
-- nchar
-- nvarchar
-- datetime
-- smalldatetime
-- DateTimeOffset
 - papír
 - smallmoney
 - uniqueidentifier
 
+> [!NOTE]
+> Objekty LOBs s větší než 1 MB nelze použít s CETAS.
+
 ## <a name="next-steps"></a>Další kroky
 
-Můžete zkusit dotazování [Apache Spark pro externí tabulky Azure synapse](develop-storage-files-spark-tables.md).
+Zkuste zadat dotaz [na Apache Spark externích tabulek Azure synapse](develop-storage-files-spark-tables.md).

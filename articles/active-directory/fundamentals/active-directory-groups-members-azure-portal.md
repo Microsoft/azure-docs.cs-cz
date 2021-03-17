@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb7b7da4ed5268e66260e48d6367bbe02f0845a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797572"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371830"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Přidat nebo odebrat členy skupiny pomocí Azure Active Directory
 Pomocí Azure Active Directory můžete pokračovat v přidávání a odebírání členů skupiny.
@@ -31,7 +31,7 @@ Pomocí Azure Active Directory můžete pokračovat v přidávání a odebírán
 
 3. Na stránce **skupiny – všechny skupiny** vyhledejte a vyberte skupinu, do které chcete člena přidat. V takovém případě použijte naši dříve vytvořenou skupinu **– zásada MDM – západ**.
 
-    ![Skupiny – stránka všechny skupiny, zvýrazněný název skupiny](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
+    ![Stránka Groups-All skupiny, název skupiny se zvýrazní](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
 4. Na stránce s **přehledem skupiny MDM policy – West** vyberte **Členové** v oblasti **Spravovat**.
 
@@ -61,6 +61,6 @@ Pomocí Azure Active Directory můžete pokračovat v přidávání a odebírán
 
 - [Správa přístupu k prostředkům pomocí skupin](active-directory-manage-groups.md)
 
-- [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-create-rule.md)
+- [Správa dynamických pravidel pro uživatele ve skupině](../enterprise-users/groups-create-rule.md)
 
 - [Přidružte nebo přidejte předplatné Azure k Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

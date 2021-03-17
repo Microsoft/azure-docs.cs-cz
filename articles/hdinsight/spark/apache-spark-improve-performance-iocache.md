@@ -1,22 +1,19 @@
 ---
 title: Apache Spark výkon – Azure HDInsight v/v cache (Preview)
 description: Přečtěte si o službě Azure HDInsight v/v cache a o tom, jak je používat ke zvýšení výkonu Apache Spark.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 3e724e6336163a092c9b4385324b1aa037295bb6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081753"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940126"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache
 
-Vstupně-výstupní mezipaměť je služba pro ukládání dat do mezipaměti pro Azure HDInsight, která vylepšuje výkon Apache Spark úloh. Vstupně-výstupní mezipaměť funguje taky s [tez](https://tez.apache.org/) a [Apache Hive](https://hive.apache.org/) úlohami, které se dají spouštět v clusterech [Apache Spark](https://spark.apache.org/) . Vstupně-výstupní mezipaměť používá open source komponentu pro ukládání do mezipaměti s názvem RubiX. RubiX je místní mezipaměť disku pro použití s analytickými moduly pro velké objemy dat, které přistupují k datům ze systémů cloudového úložiště. RubiX je jedinečný mezi systémy ukládání do mezipaměti, protože používá jednotky SSD (Solid-State Drive) místo toho, aby vyhradí provozní paměť pro účely ukládání do mezipaměti. Služba v/v cache spouští a spravuje servery metadat RubiX na všech pracovních uzlech clusteru. Také nakonfiguruje všechny služby clusteru pro transparentní používání služby RubiX cache.
+Vstupně-výstupní mezipaměť je služba pro ukládání dat do mezipaměti pro Azure HDInsight, která vylepšuje výkon Apache Spark úloh. Vstupně-výstupní mezipaměť funguje taky s [tez](https://tez.apache.org/) a [Apache Hive](https://hive.apache.org/) úlohami, které se dají spouštět v clusterech [Apache Spark](https://spark.apache.org/) . Vstupně-výstupní mezipaměť používá open source komponentu pro ukládání do mezipaměti s názvem RubiX. RubiX je místní mezipaměť disku pro použití s analytickými moduly pro velké objemy dat, které přistupují k datům ze systémů cloudového úložiště. RubiX je jedinečný mezi systémy pro ukládání do mezipaměti, protože místo toho, aby vyhradí provozní paměť pro účely ukládání do mezipaměti, používá Solid-State jednotky (SSD). Služba v/v cache spouští a spravuje servery metadat RubiX na všech pracovních uzlech clusteru. Také nakonfiguruje všechny služby clusteru pro transparentní používání služby RubiX cache.
 
 Většina SSD poskytuje více než 1 GByte za sekundu šířky pásma. Tato šířka pásma, doplněná mezipamětí souborových souborů v paměti operačního systému, poskytuje dostatečnou šířku pásma pro načtení strojového výpočetního výpočetního prostředí pro velké objemy dat, jako je například Apache Spark. Pracovní paměť je ponechána k dispozici pro Apache Spark pro zpracování velmi závislých úloh, jako jsou například přestupné operace. Výhradní použití operační paměti umožňuje Apache Spark dosáhnout optimálního využití prostředků.  
 
@@ -47,7 +44,7 @@ Služba Azure HDInsight IO cache je ve výchozím nastavení deaktivována ve ve
 > [!NOTE]  
 > I když se na indikátoru průběhu zobrazuje aktivováno, mezipaměť v/v není ve skutečnosti povolená, dokud nerestartujete ostatní ovlivněné služby.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
   
 Po povolení vstupně-výstupních operací můžete získat chyby místa na disku při spouštění úloh Spark. K těmto chybám dochází, protože Spark používá k ukládání dat v průběhu operace přerozdělování také úložiště na místním disku. Spark může vyrazit z prostoru SSD, když je povolená vstupně-výstupní mezipaměť a prostor pro úložiště Spark se zmenší. Velikost místa využitého v/v mezipaměti je výchozím nastavením na polovinu celkového prostoru SSD. Využití místa na disku pro vstupně-výstupní mezipaměť je konfigurovatelné v Ambari. Pokud získáte chyby místa na disku, snižte velikost prostoru SSD používaného pro vstupně-výstupní mezipaměť a restartujte službu. Chcete-li změnit nastavení prostoru pro vstupně-výstupní operace, proveďte následující kroky:
 
@@ -67,7 +64,7 @@ Po povolení vstupně-výstupních operací můžete získat chyby místa na dis
 
 1. V pravém horním rohu vyberte **Uložit** .
 
-1. Vyberte **znovu**restartovat  >  **všechny ovlivněné**.
+1. Vyberte **znovu** restartovat  >  **všechny ovlivněné**.
 
     ![Apache Ambari restartuje všechny ovlivněné](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Restartovat všechny ovlivněné")
 

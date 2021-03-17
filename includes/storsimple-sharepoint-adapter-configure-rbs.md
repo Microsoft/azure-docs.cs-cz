@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45b2ac73ffcb4b777572f9ad62d8aae0e8277e1c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175047"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563637"
 ---
 > [!NOTE]
 > Při provádění změn konfigurace StorSimple adaptéru pro konfiguraci služby SharePoint RBS musíte být přihlášeni pomocí uživatelského účtu, který patří do skupiny Domain Admins. Kromě toho musíte přistupovat ke konfigurační stránce z prohlížeče běžícího na stejném hostiteli jako centrální Správa.
@@ -55,7 +55,7 @@ ms.locfileid: "67175047"
    
    1. Nahrajte dokument do SharePointu. 
    2. Přejděte na cestu UNC, kterou jste nakonfigurovali. Ujistěte se, že se vytvořila adresářová struktura RBS a že obsahuje nahraný objekt.
-6. Volitelné `Migrate()`K migraci existujícího obsahu objektů blob do zařízení StorSimple můžete použít rutinu Microsoft RBS PowerShell, která je součástí SharePointu. Další informace najdete v tématu [migrace obsahu do RBS nebo z kódu RBS ve službě SharePoint 2013][6] nebo [migrace obsahu do nebo z kódu RBS (SharePoint Foundation 2010)][7].
+6. Volitelné `Migrate()` K migraci existujícího obsahu objektů blob do zařízení StorSimple můžete použít rutinu Microsoft RBS PowerShell, která je součástí SharePointu. Další informace najdete v tématu [migrace obsahu do RBS nebo z kódu RBS ve službě SharePoint 2013][6] nebo [migrace obsahu do nebo z kódu RBS (SharePoint Foundation 2010)][7].
 7. Volitelné V případě testovacích instalací můžete ověřit, že se objekty blob přesunuly z databáze obsahu následujícím způsobem: 
    
    1. Spusťte SQL Management Studio.
@@ -115,5 +115,5 @@ ms.locfileid: "67175047"
    
 9. Přejít k dalšímu kroku: [Konfigurace uvolňování paměti](#configure-garbage-collection).
 
-[6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
-[7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx
+[6]: /SharePoint/administration/migrate-content-into-or-out-of-rbs
+[7]: /previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14)

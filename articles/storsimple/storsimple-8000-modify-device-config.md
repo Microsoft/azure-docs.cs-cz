@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eb5c351462279fe5c4f790e052f73201d211cfb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514682"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961171"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Změna konfigurace zařízení StorSimple pomocí služby StorSimple Device Manager
 
@@ -44,7 +44,7 @@ Pomocí Azure Portal můžete změnit název zařízení a přiřadit mu jedine�
 
 K StorSimple zařízení, které je připojené ke službě StorSimple Device Manager, se přiřadí výchozí název. Výchozí název obvykle odráží sériové číslo zařízení. Například výchozí název zařízení, který je delší než 15 znaků, například 8600-SHX0991003G44HT, označuje následující:
 
-* **8600** – označuje model zařízení.
+* **8600**  – označuje model zařízení.
 * **SHX** – označuje pracoviště výroby.
 * **0991003** – označuje určitý produkt.
 * **G44HT**– při posledních 5 číslicích se zvýší a vytvoří se jedinečná sériová čísla. Nemusí se jednat o sekvenční sadu.
@@ -61,11 +61,11 @@ Popis zařízení obvykle pomáhá identifikovat vlastníka a fyzické umístěn
 
 Vaše zařízení musí synchronizovat čas, aby se mohl ověřit s vaším poskytovatelem cloudových služeb úložiště. Pomocí okna **Obecné nastavení** v zařízení upravte nastavení času zařízení.
 
-![Popis zařízení v obecných nastaveních](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![Popis zařízení v obecných nastaveních 2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  V rozevíracím seznamu vyberte své časové pásmo. Můžete zadat až dva servery protokolu NTP (Network Time Protocol):
 
- - **Primární server NTP** – konfigurace je povinná a je zadaná při použití Windows PowerShell pro StorSimple ke konfiguraci zařízení. Jako server NTP můžete zadat výchozí **time.Windows.com** Windows serveru. Konfiguraci primárního serveru NTP můžete zobrazit pomocí Azure Portal, k jeho změně ale musíte použít rozhraní Windows PowerShell. Pomocí `Set-HcsNTPClientServerAddress` rutiny upravte primární server NTP vašeho zařízení. Další informace najdete v syntaxi pro rutinu [set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) .
+ - **Primární server NTP** – konfigurace je povinná a je zadaná při použití Windows PowerShell pro StorSimple ke konfiguraci zařízení. Jako server NTP můžete zadat výchozí **time.Windows.com** Windows serveru. Konfiguraci primárního serveru NTP můžete zobrazit pomocí Azure Portal, k jeho změně ale musíte použít rozhraní Windows PowerShell. Pomocí `Set-HcsNTPClientServerAddress` rutiny upravte primární server NTP vašeho zařízení. Další informace najdete v syntaxi pro rutinu [set-HcsNTPClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) .
 
 - **Sekundární server NTP** – konfigurace je volitelná. Portál můžete použít ke konfiguraci sekundárního serveru NTP.
 
@@ -85,7 +85,7 @@ Server DNS se používá, když se vaše zařízení pokusí komunikovat s vaš�
 
 Pro zajištění vysoké dostupnosti je nutné při počátečním nasazení zařízení nakonfigurovat primární a sekundární servery DNS.
 
-**Primární server DNS** – při počátečním nastavení použijte k prvnímu určení primárního serveru DNS Windows PowerShell pro StorSimple. Primární server DNS můžete překonfigurovat jenom přes rozhraní Windows PowerShell. Pomocí `Set-HcsDNSClientServerAddress` rutiny upravte primární server DNS vašeho zařízení. Další informace najdete v syntaxi pro rutinu [set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) .
+**Primární server DNS** – při počátečním nastavení použijte k prvnímu určení primárního serveru DNS Windows PowerShell pro StorSimple. Primární server DNS můžete překonfigurovat jenom přes rozhraní Windows PowerShell. Pomocí `Set-HcsDNSClientServerAddress` rutiny upravte primární server DNS vašeho zařízení. Další informace najdete v syntaxi pro rutinu [set-HcsDNSClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) .
 
 **Sekundární server DNS** – Chcete-li změnit sekundární server DNS, použijte `Set-HcsDNSClientServerAddress` rutinu v rozhraní Windows PowerShell okna zařízení nebo **nastavení sítě** zařízení StorSimple v Azure Portal.
 
@@ -169,4 +169,3 @@ Provedením následujících kroků prohodíte nebo znovu přiřadíte virtuáln
 
 * Přečtěte si, jak [nakonfigurovat funkci MPIO pro zařízení StorSimple](storsimple-8000-configure-mpio-windows-server.md).
 * Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
-

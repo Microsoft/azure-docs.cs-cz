@@ -3,7 +3,7 @@ title: Licencování &reg; sady pro portování klienta Microsoft Smooth Streami
 description: Přečtěte si, jak licencovat &reg; sadu Microsoft Smooth streaminging SDK pro přenos klientů.
 services: media-services
 documentationcenter: ''
-author: xpouyat
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: e3b488e7-8428-4c10-a072-eb3af46c82ad
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: 7d4822f453e27a5e2fa7b97d77056b6bee1041d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f7e371f892fb0796a310be46a402781e8eb57e1a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086230"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009415"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licencování &reg; sady pro portování klienta Microsoft Smooth Streaming 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licencování &reg; sady pro portování klienta Microsoft Smooth Streaming
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 ## <a name="overview"></a>Přehled
 Sada Microsoft Smooth Streaming Client porting kit (**SSPK** pro krátké) je Smooth Streaming implementace klienta optimalizovaná tak, aby pomáhala vestavěným výrobcům zařízení, kabelovým a mobilním operátorům, poskytovatelům služeb obsahu, výrobcům na sluchátkách, nezávislým výrobcům softwaru (ISV) a poskytovatelům řešení vytvářet produkty a služby pro adaptivní obsah streamování ve formátu Smooth Streaming. SSPK je implementace klienta Smooth Streaming nezávislá na platformě, kterou může licence přenést na jakékoli zařízení a platformu. 
 
@@ -29,7 +32,7 @@ Níže je uveden seznam architektury vysoké úrovně a služba IIS Smooth Strea
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Popis
+## <a name="description"></a>Description
 SSPK je licencovaná pro výrazy, které nabízejí skvělou obchodní hodnotu. SSPK License poskytuje odvětví s:
 
 * Zdroj Smooth Streaminging Kit pro portování v C++ 
@@ -43,7 +46,7 @@ SSPK je licencovaná pro výrazy, které nabízejí skvělou obchodní hodnotu. 
   * programovací rozhraní pro interakci s hardwarovými A/V dekodéry (dekódování, vykreslování)
 * Rozhraní Digital Rights Management (DRM) 
   * programovací rozhraní pro zpracování DRM přes vrstvu abstrakce DRM (DAL)
-  * Microsoft PlayReady porting kit se dodává samostatně, ale integruje se přes toto rozhraní. Další podrobnosti o licencování zařízení Microsoft PlayReady získáte kliknutím [sem](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
+  * Microsoft PlayReady porting kit se dodává samostatně, ale integruje se přes toto rozhraní. [Další podrobnosti najdete v článku licencování zařízení Microsoft PlayReady](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
 * Ukázky implementace 
   * Ukázka implementace PAL pro Linux
   * Ukázková implementace vrstvy HAL pro GStreamer
@@ -113,22 +116,25 @@ Dočasné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@m
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Konečné licence k produktu Microsoft Smooth Streaming Client
 * Rozšířené digitální vysílání SA
 * Kablosuz Iletism Sanayive dis Ticaret neúčinné látky
+* AmTRAN Technology Co., Ltd 
 * Arcadyan Technology Corporation
 * Arcelik A. S
 * Kompatibilní s elektronikou, Inc.
 * OMEZENÁ TECHNOLOGIE EXPRESS
 * Fluendo S.A.
 * FUNAI ELEKTROINSTALACE CO., LTD
-* Hisense International co., Ltd. 
+* Hisense International co., Ltd.
+* Hisense Visual Technology Co., Ltd
 * HKC Corporation – omezená
 * Hongkong Konka Ltd
 * InnoLux Corporation
-* Innopia Technologies, Inc
+* Jinpin elektrotechnické společnost Ltd. Zhuhai. S. E. Z
 * K-Tronics (Suzhou) technologie co., Ltd. 
 * Kaonmedia co., Ltd.
 * KDDI Corporation
 * Megabajtů Fame elektronika co. omezeno
 * MIRC elektronika omezená
+* MOKA, MEZINÁRODNÍ OMEZENÍ
 * Nintendo Co., Ltd.
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
@@ -142,6 +148,7 @@ Dočasné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@m
 * Digitální technologie Shenzhen Skyworth co., Ltd
 * Iština Changhong elektrických co., Ltd.
 * Skardin průmyslová Corp.
+* Nebe CP Ltd
 * Nebeská Deutschlanda Fernsehen GmbH & co. KG
 * GLOBÁLNÍ SAS SMARDTV
 * SoftAtHome
@@ -149,6 +156,7 @@ Dočasné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@m
 * Technologie Technicolor Delivery, SAS
 * Hlavní investice do Victory, Ltd.
 * Aktualizace UMC v/v z. o.o.
+* VIZIO, Inc.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services

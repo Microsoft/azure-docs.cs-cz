@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 1e6abeff8998e55eb7cbf450d1c3cc32f233e382
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065970"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89659913"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
@@ -25,7 +25,7 @@ Pomocí Azure Logic Apps a konektoru systému souborů můžete vytvářet autom
 
 V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, jak je popsáno v tomto ukázkovém scénáři: zkopírování souboru nahraného do Dropboxu do sdílené složky a odeslání e-mailu. K bezpečnému připojení k místním systémům využívají Logic Apps místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Technické informace specifické pro konektor najdete v referenčních informacích o [konektoru systému souborů](/connectors/filesystem/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, j
 
 * Přístup k počítači, který má systém souborů, který chcete použít. Pokud například nainstalujete bránu dat na stejný počítač jako systém souborů, budete potřebovat přihlašovací údaje účtu pro tento počítač.
 
-* E-mailový účet od poskytovatele, který podporuje Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](/connectors/). Tato aplikace logiky používá účet Office 365 Outlook. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
+* E-mailový účet od poskytovatele, který podporuje Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](/connectors/). Tato aplikace logiky používá pracovní nebo školní účet. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
 
   > [!IMPORTANT]
   > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).

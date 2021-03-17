@@ -1,16 +1,15 @@
 ---
 title: Povolení a zobrazení diagnostických protokolů pro Azure Data Lake Analytics
 description: Vysvětlení způsobu nastavení a přístupu k diagnostickým protokolům pro Azure Data Lake Analytics
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cd339729f2300ff7e13e7422bf73373b4ce4658e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132598"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221005"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Analytics
 
@@ -26,7 +25,7 @@ Protokolování diagnostiky umožňuje shromažďovat záznamy pro audit příst
 
 2. Otevřete účet Data Lake Analytics a v části __monitorování__ vyberte **diagnostické protokoly** . V dalším kroku vyberte __zapnout diagnostiku__.
 
-    ![Zapnout diagnostiku pro shromažďování protokolů auditu a žádostí](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![Snímek obrazovky zobrazující zvolenou akci diagnostické protokoly a možnost zapnout diagnostiku pro shromažďování následujících protokolů](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
 3. Z __nastavení diagnostiky__zadejte __název__ této konfigurace protokolování a pak vyberte možnosti protokolování.
 

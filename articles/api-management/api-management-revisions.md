@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: b099a6ea706482e25b2c37a87cf0a24f2fe475bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a20a7966daff372cf5c0abc9b7b1dbbfd459838
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531242"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91403234"
 ---
 # <a name="revisions-in-azure-api-management"></a>Revize v Azure API Management
 
@@ -38,7 +38,7 @@ K každé revizi rozhraní API lze použít speciálně vytvořenou adresu URL. 
 
 `https://apis.contoso.com/customers;rev=3?customerId=123`
 
-Ve výchozím nastavení má každá revize stejné nastavení zabezpečení jako aktuální revize. Zásady pro konkrétní revizi můžete záměrně změnit, pokud chcete mít pro každou revizi použitu různé zabezpečení. Například můžete chtít přidat [zásadu povoleného protokolu IP](./api-management-access-restriction-policies.md#RestrictCallerIPs) , která externím volajícím znemožní přístup k revizi, která je stále ve vývoji.
+Ve výchozím nastavení má každá revize stejné nastavení zabezpečení jako aktuální revize. Zásady pro konkrétní revizi můžete záměrně změnit, pokud chcete mít pro každou revizi použitu různé zabezpečení. Například můžete chtít přidat [zásadu filtrování IP adres](./api-management-access-restriction-policies.md#RestrictCallerIPs) , která externím volajícím brání v přístupu k revizi, která je stále ve vývoji.
 
 Revizi lze převést do režimu offline, která je nepřístupná volajícím, i když se pokusí získat přístup k revizi prostřednictvím její adresy URL. Revizi můžete označit jako offline pomocí Azure Portal. Pokud používáte PowerShell, můžete použít `Set-AzApiManagementApiRevision` rutinu a nastavit `Path` argument na `$null` .
 

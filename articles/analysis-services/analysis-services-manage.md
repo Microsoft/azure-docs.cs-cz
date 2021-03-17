@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84015498"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078896"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
 Po vytvoření Analysis Servicesho serveru v Azure můžou nastat některé úlohy správy a správy, které potřebujete udělat hned nebo po dobu provozu. Například spusťte zpracování na data aktualizace, řízení, kdo má přístup k modelům na vašem serveru, nebo můžete monitorovat stav svého serveru. Některé úlohy správy lze provádět pouze v Azure Portal, dalších v SQL Server Management Studio (SSMS) a některé úlohy lze provádět v obou.
@@ -20,7 +20,7 @@ Po vytvoření Analysis Servicesho serveru v Azure můžou nastat některé úlo
 ## <a name="azure-portal"></a>portál Azure
 [Azure Portal](https://portal.azure.com/) je místo, kde můžete vytvářet a odstraňovat servery, monitorovat prostředky serveru, měnit velikost a spravovat, kdo má přístup k vašim serverům.  Pokud máte nějaké problémy, můžete také odeslat žádost o podporu.
 
-![Získání názvu serveru v Azure](./media/analysis-services-manage/aas-manage-portal.png)
+![Snímek obrazovky zobrazující Azure Portal, kde můžete vytvářet a odstraňovat servery, monitorovat prostředky serveru, měnit velikost a spravovat, kdo má přístup k vašim serverům.](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
 Připojení k serveru v Azure je stejné jako připojení k instanci serveru ve vaší vlastní organizaci. Z SSMS můžete provádět mnoho stejných úkolů, jako jsou například zpracování dat nebo vytváření skriptu pro zpracování, Správa rolí a používání prostředí PowerShell.
@@ -30,7 +30,7 @@ Připojení k serveru v Azure je stejné jako připojení k instanci serveru ve 
 ### <a name="download-and-install-ssms"></a>Stažení a instalace SSMS
 Pokud chcete získat nejnovější funkce a využít nejplynulejší prostředí při připojování k serveru Azure Analysis Services, ujistěte se, že používáte nejnovější verzi SSMS. 
 
-[Stáhněte si SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+[Stáhněte si SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 ### <a name="to-connect-with-ssms"></a>Připojení pomocí SSMS
@@ -39,10 +39,10 @@ Pokud chcete získat nejnovější funkce a využít nejplynulejší prostředí
 1. Než se připojíte, musíte získat název serveru. Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopírujte název serveru.
    
     ![Získání názvu serveru v Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
-3. V dialogovém okně **připojit k serveru** vložte do pole název serveru a pak v části **ověřování**zvolte jeden z následujících typů ověřování:   
+2. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services** .
+3. V dialogovém okně **připojit k serveru** vložte do pole název serveru a pak v části **ověřování** zvolte jeden z následujících typů ověřování:   
     > [!NOTE]
-    > Doporučuje se typ ověřování **Active Directory – univerzální s podporou vícefaktorového ověřování**.
+    > Doporučuje se typ ověřování **Active Directory – univerzální s podporou vícefaktorového ověřování** .
 
     > [!NOTE]
     > Pokud se přihlásíte pomocí účtu Microsoft, Live ID, Yahoo, Gmail atd., nechte pole heslo prázdné. Po kliknutí na připojit se zobrazí výzva k zadání hesla.
@@ -56,7 +56,7 @@ Pokud chcete získat nejnovější funkce a využít nejplynulejší prostředí
     ![Připojení v SQL Server Management Studiu](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 ## <a name="server-administrators-and-database-users"></a>Správci serveru a uživatelé databáze
-V Azure Analysis Services existují dva typy uživatelů, správci serveru a uživatelé databáze. Oba typy uživatelů musí být ve vašem Azure Active Directory a musí být zadány e-mailovou adresou organizace nebo hlavním jménem uživatele. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+V Azure Analysis Services existují dva typy uživatelů, správci serveru a uživatelé databáze. Oba typy uživatelů musí být ve vašem Azure Active Directory a musí být zadány e-mailovou adresou organizace nebo hlavním jménem uživatele. Další informace najdete v článku o [ověřování a uživatelských oprávněních](analysis-services-manage-users.md).
 
 
 ## <a name="troubleshooting-connection-problems"></a>Řešení potíží s připojením
@@ -66,4 +66,3 @@ Pokud při připojování pomocí SSMS narazíte na problémy, možná budete mu
 Pokud jste ještě nenainstalovali tabelární model na nový server, je teď dobrý čas. Další informace najdete v tématu [Nasazení do služby Azure Analysis Services](analysis-services-deploy.md).
 
 Pokud jste model nasadili na váš server, jste připraveni se k němu připojit pomocí klienta nebo prohlížeče. Další informace najdete v tématu [získání dat ze serveru Azure Analysis Services](analysis-services-connect.md).
-

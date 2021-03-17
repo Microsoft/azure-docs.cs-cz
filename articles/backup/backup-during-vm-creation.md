@@ -3,12 +3,12 @@ title: Povolení zálohování při vytvoření virtuálního počítače Azure
 description: Popisuje, jak povolit zálohování při vytváření virtuálního počítače Azure pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586694"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89377331"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Povolení zálohování při vytvoření virtuálního počítače Azure
 
@@ -26,14 +26,14 @@ Pokud jste k vašemu účtu ještě přihlášeni, přihlaste se k [Azure Portal
 
 ## <a name="create-a-vm-with-backup-configured"></a>Vytvoření virtuálního počítače s nakonfigurovaným zálohováním
 
-1. V Azure Portal klikněte na **vytvořit prostředek**.
+1. V Azure Portal vyberte **vytvořit prostředek**.
 
-2. V Azure Marketplace klikněte na **COMPUTE**a pak vyberte image virtuálního počítače.
+2. V Azure Marketplace vyberte **COMPUTE**a potom vyberte image virtuálního počítače.
 
 3. Nastavte virtuální počítač v souladu s pokyny pro [Windows](../virtual-machines/windows/quick-create-portal.md) nebo [Linux](../virtual-machines/linux/quick-create-portal.md) .
 
-4. Na kartě **Správa** v části **Povolit zálohování**klikněte **na zapnuto**.
-5. Azure Backup zálohy do trezoru Recovery Services. Pokud nemáte existující trezor, klikněte na **vytvořit nový** .
+4. Na kartě **Správa** v části **Povolit zálohování**vyberte **zapnuto**.
+5. Azure Backup zálohy do trezoru Recovery Services. Vyberte **vytvořit novou** , pokud nemáte existující trezor.
 6. Přijměte navrhovaný název trezoru nebo zadejte vlastní.
 7. Zadejte nebo vytvořte skupinu prostředků, ve které bude uložený trezor. Úložiště skupin prostředků se může lišit od skupiny prostředků virtuálních počítačů.
 
@@ -60,13 +60,13 @@ Ukazuje na poznámku:
 1. Můžete buď použít výchozí název RG, nebo ho upravit podle požadavků vaší společnosti.
 2. Při vytváření zásady zálohování virtuálního počítače zadáváte vzor názvu RG jako vstup. Název RG by měl být v následujícím formátu: `<alpha-numeric string>* n <alpha-numeric string>` . ' n ' je nahrazen celým číslem (od 1) a slouží k horizontálnímu navýšení kapacity, pokud je první RG plný. Jedna RG může mít maximálně 600 vzdálených volání procedur (RPC).
               ![Při vytváření zásad zvolit název](./media/backup-during-vm-creation/create-policy.png)
-3. Vzor by měl splňovat pravidla pojmenování RG a celková délka by neměla překročit maximální povolenou délku RG názvu.
-    1. V názvech skupin prostředků jsou povolené jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Nemohou končit tečkou.
+3. Vzor by měl splňovat pravidla pojmenování RG a celková délka by neměla přesáhnout maximální povolenou délku RG názvu.
+    1. V názvech skupin prostředků jsou povolené jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Nemůžou končit tečkou.
     2. Názvy skupin prostředků mohou obsahovat až 74 znaků, včetně názvu RG a přípony.
 4. První `<alpha-numeric-string>` je povinná, zatímco druhá hodnota po ' n ' je volitelná. To platí pouze v případě, že přidáváte vlastní název. Pokud nezadáte nic do některého z textových polí, použije se výchozí název.
 5. V případě potřeby můžete upravit název RG úpravou zásady. Pokud se změní vzor názvu, vytvoří se v novém RG nový RPs. Starý RPs se ale pořád bude nacházet ve starém RG a nebude přesunutý, protože kolekce RP nepodporuje přesunutí prostředků. Nakonec se RPs po vypršení platnosti bodů shromáždí do paměti.
 ![Změnit název při úpravě zásady](./media/backup-during-vm-creation/modify-policy.png)
-6. Doporučujeme neuzamknout skupinu prostředků vytvořenou pro použití službou zálohování.
+6. Doporučuje se uzamknout skupinu prostředků vytvořenou pro použití službou zálohování.
 
 Pokud chcete nakonfigurovat Azure Backup skupinu prostředků pro Virtual Machines pomocí PowerShellu, přečtěte si téma [vytvoření Azure Backup skupiny prostředků během uchování snímku](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention).
 
@@ -76,8 +76,8 @@ Zálohování virtuálního počítače se spustí v souladu se zásadami záloh
 
 Po vytvoření virtuálního počítače postupujte takto:
 
-1. Ve vlastnostech virtuálního počítače klikněte na **zálohovat**. Stav virtuálního počítače čeká na počáteční zálohování, dokud se nespustí počáteční záloha.
-2. Pokud chcete spustit zálohování na vyžádání, klikněte na **Zálohovat nyní** .
+1. Ve vlastnostech virtuálního počítače vyberte **zálohovat**. Stav virtuálního počítače čeká na počáteční zálohování, dokud se nespustí počáteční záloha.
+2. Pokud chcete spustit zálohování na vyžádání, vyberte **Zálohovat nyní** .
 
     ![Spuštění zálohování na vyžádání](./media/backup-during-vm-creation/run-backup.png)
 

@@ -1,27 +1,27 @@
 ---
 title: Ladění výkonu Azure Data Lake Storage Gen1 – MapReduce
 description: Přečtěte si o ladění výkonu pro MapReduce v Azure Data Lake Storage Gen1, včetně parametrů, pokynů, ukázkového výpočtu a omezení.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: twooley
+ms.openlocfilehash: 2549413241e422fb1e0e5e1f079c287e0b7cf005
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190205"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723724"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Storage Gen1
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
-* **Použití MapReduce ve službě HDInsight**. Další informace najdete v tématu [použití MapReduce v Hadoop ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce) .
-* **Přečtěte si pokyny pro ladění výkonu pro data Lake Storage Gen1**. Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) .
+* **Použití MapReduce ve službě HDInsight**. Další informace najdete v tématu [použití MapReduce v Hadoop ve službě HDInsight](../hdinsight/hadoop/hdinsight-use-mapreduce.md) .
+* **Přečtěte si pokyny pro ladění výkonu pro data Lake Storage Gen1**. Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](./data-lake-store-performance-tuning-guidance.md) .
 
 ## <a name="parameters"></a>Parametry
 

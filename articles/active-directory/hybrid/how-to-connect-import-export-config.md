@@ -11,14 +11,14 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da80af9fe598186fa25d59601c9fa4faccb4286a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447048"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681951"
 ---
-# <a name="import-and-export-azure-ad-connect-configuration-settings-public-preview"></a>Import a export nastavení konfigurace Azure AD Connect (verze Public Preview)
+# <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Import a export nastavení konfigurace Azure AD Connect 
 
 Azure Active Directory (Azure AD) připojení nasazení se liší od instalace s jednou doménovou strukturou až po složitá nasazení, která se synchronizují napříč více doménovými strukturami pomocí vlastních pravidel synchronizace. Z důvodu velkého počtu možností konfigurace a mechanismů je důležité pochopit, jaká nastavení jsou platná, a umožnit tak rychlé nasazení serveru se stejnou konfigurací. Tato funkce zavádí možnost zařadit do katalogu konfiguraci daného synchronizačního serveru a importovat nastavení do nového nasazení. Různé snímky nastavení synchronizace je možné porovnat a snadno vizualizovat rozdíly mezi dvěma servery nebo stejným serverem v čase.
 
@@ -40,7 +40,7 @@ Import dříve exportovaných nastavení:
 1. Nainstalujte **Azure AD Connect** na nový server.
 1. Jako **úvodní** stránku vyberte možnost **přizpůsobit** .
 1. Vyberte **importovat nastavení synchronizace**. Vyhledejte dříve exportovaný soubor nastavení JSON.
-1. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Nainstalovat**.
 
    ![Snímek obrazovky zobrazující obrazovku instalovat požadované součásti](media/how-to-connect-import-export-config/import1.png)
 
@@ -52,7 +52,7 @@ Import dříve exportovaných nastavení:
 Prostředí pro import je záměrně zachované s minimálními vstupy od uživatele, aby snadno poskytovala reprodukovatelnost stávajícího serveru.
 
 Tady jsou jediné změny, které je možné provést během instalace. Všechny ostatní změny lze provést po instalaci z Průvodce Azure AD Connect:
-- **Azure Active Directory přihlašovací údaje**: ve výchozím nastavení se navrhne název účtu pro globálního správce Azure, který se používá ke konfiguraci původního serveru. *must*   Pokud chcete synchronizovat informace s novým adresářem, je nutné ho změnit.
+- **Azure Active Directory přihlašovací údaje**: ve výchozím nastavení se navrhne název účtu pro globálního správce Azure, který se používá ke konfiguraci původního serveru.    Pokud chcete synchronizovat informace s novým adresářem, je nutné ho změnit.
 - **Přihlášení uživatele**: ve výchozím nastavení jsou vybrané přihlašovací možnosti nakonfigurované pro původní server a automaticky se zobrazí výzva k zadání přihlašovacích údajů nebo další informace, které jsou potřeba při konfiguraci. Ve výjimečných případech může být potřeba nastavit server s různými možnostmi, aby nedošlo ke změně chování aktivního serveru. V opačném případě vyberte možnost **Další** a použijte stejné nastavení.
 - **Přihlašovací údaje pro místní adresář**: pro každý místní adresář zahrnutý do nastavení synchronizace musíte zadat přihlašovací údaje pro vytvoření synchronizačního účtu nebo zadání předem vytvořeného vlastního účtu synchronizace. Tento postup se shoduje s čistým prostředím instalace s výjimkou, že nemůžete přidat nebo odebrat adresáře.
 - **Možnosti konfigurace**: stejně jako u čisté instalace můžete nakonfigurovat počáteční nastavení, jestli chcete spustit automatickou synchronizaci nebo povolit pracovní režim. Hlavním rozdílem je, že pracovní režim je ve výchozím nastavení záměrně povolený, aby bylo možné porovnat výsledky konfigurace a synchronizace před aktivně exportováním výsledků do Azure.
@@ -77,10 +77,10 @@ Postup migrace nastavení:
 
    ![Snímek obrazovky zobrazující adresáře Azure AD Connect](media/how-to-connect-import-export-config/migrate1.png)
 
-1. Spusťte skript, jak je znázorněno zde, a uložte celý konfigurační adresář serveru nižší úrovně. Zkopírujte tento adresář do nového přípravného serveru. Je nutné zkopírovat celou složku **exportovanou-ServerConfiguration-*** na nový server.
+1. Spusťte skript, jak je znázorněno zde, a uložte celý konfigurační adresář serveru nižší úrovně. Zkopírujte tento adresář do nového přípravného serveru. Je nutné zkopírovat celou složku **exportovanou-ServerConfiguration-** _ na nový server.
 
    ![Snímek obrazovky, který zobrazuje skript v prostředí Windows PowerShell. ](media/how-to-connect-import-export-config/migrate2.png)
-    ![ Snímek obrazovky, který ukazuje kopírování exportované složky-ServerConfiguration-*.](media/how-to-connect-import-export-config/migrate3.png)
+    ![ Snímek obrazovky, který ukazuje kopírování exportované složky-ServerConfiguration-_.](media/how-to-connect-import-export-config/migrate3.png)
 
 1. Spusťte **Azure AD Connect** dvojitým kliknutím na ikonu na ploše. Přijměte licenční podmínky pro software společnosti Microsoft a na další stránce vyberte možnost **přizpůsobit**.
 1. Zaškrtněte políčko **importovat nastavení synchronizace** . Vyberte **Procházet** a přejděte do složky zkopírované do exportovaného-ServerConfiguration-*. Vyberte MigratedPolicy.jspro import migrovaných nastavení.
@@ -91,7 +91,7 @@ Postup migrace nastavení:
 
 Porovnání původního importovaného souboru nastavení se souborem exportovaných nastavení nově nasazeného serveru je důležitým krokem při porozumění případných rozdílech mezi zamýšleným a výsledným nasazením. Použití vaší oblíbené aplikace pro porovnání textu vedle sebe poskytuje okamžitou vizualizaci, která rychle zvýrazní všechny požadované nebo náhodné změny.
 
-I když je mnoho dříve ručních kroků konfigurace eliminováno, měli byste i nadále postupovat podle procesu certifikace vaší organizace, abyste měli jistotu, že se nevyžaduje žádná další konfigurace. Tato konfigurace může nastat, pokud použijete upřesňující nastavení, která nejsou aktuálně zachycena ve verzi Public Preview správy nastavení.
+I když je mnoho dříve ručních kroků konfigurace eliminováno, měli byste i nadále postupovat podle procesu certifikace vaší organizace, abyste měli jistotu, že se nevyžaduje žádná další konfigurace. Tato konfigurace může nastat, pokud použijete upřesňující nastavení, která nejsou aktuálně zachycena v této verzi správy nastavení.
 
 Tady jsou známá omezení:
 - **Pravidla synchronizace**: priorita vlastního pravidla musí být v rezervovaném rozsahu 0 až 99, aby nedocházelo ke konfliktům se standardními pravidly Microsoftu. Umístění vlastního pravidla mimo vyhrazený rozsah může mít za následek, že se vaše vlastní pravidlo posune přibližně po přidání standardních pravidel do konfigurace. K podobnému problému dojde, pokud vaše konfigurace obsahuje upravená standardní pravidla. Změna standardního pravidla se nedoporučuje a umístění pravidla bude pravděpodobně nesprávné.

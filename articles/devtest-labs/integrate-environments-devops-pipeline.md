@@ -4,10 +4,10 @@ description: Naučte se integrovat Azure DevTest Labs prostředí do kanálů Az
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483019"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrace prostředí do kanálů Azure DevOps CI/CD
@@ -53,8 +53,8 @@ Další fází nasazení je vytvořit prostředí, které se bude používat pro
 4. Jako **název šablony**vyberte název prostředí, které jste uložili do úložiště zdrojového kódu *. 
 5. Název **testovacího prostředí**, **název úložiště**a **název šablony** jsou popisné reprezentace ID prostředků Azure. Ruční zadání popisného názvu způsobí selhání, a to pomocí rozevíracích seznamů pro výběr informací.
 6. Do pole **Název prostředí**zadejte název pro jedinečnou identifikaci instance prostředí v testovacím prostředí.  Musí být jedinečný v rámci testovacího prostředí.
-7. **Soubor parametrů** a **parametry**umožňují předat vlastní parametry do prostředí. K nastavení hodnot parametrů lze použít buď nebo obojí. V tomto příkladu se použije oddíl Parameters. Použijte názvy proměnných, které jste definovali v prostředí, například:`-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
-8. Informace v šabloně prostředí lze předat prostřednictvím části Output v šabloně. Ověřte **Vytvoření výstupních proměnných na základě výstupu šablony prostředí** , aby ostatní úlohy mohly data používat. `$(Reference name.Output Name)`je vzor, který se má sledovat. Například pokud je referenční název odkládací složky a název výstupu v šabloně byl umístění, proměnná by byla `$(DTL.location)` .
+7. **Soubor parametrů** a **parametry**umožňují předat vlastní parametry do prostředí. K nastavení hodnot parametrů lze použít buď nebo obojí. V tomto příkladu se použije oddíl Parameters. Použijte názvy proměnných, které jste definovali v prostředí, například: `-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
+8. Informace v šabloně prostředí lze předat prostřednictvím části Output v šabloně. Ověřte **Vytvoření výstupních proměnných na základě výstupu šablony prostředí** , aby ostatní úlohy mohly data používat. `$(Reference name.Output Name)` je vzor, který se má sledovat. Například pokud je referenční název odkládací složky a název výstupu v šabloně byl umístění, proměnná by byla `$(DTL.location)` .
 
 ## <a name="delete-the-environment"></a>Odstranění prostředí
 Poslední fází je odstranit prostředí, které jste nasadili v instanci Azure DevTest Labs. Prostředí byste obvykle odstranili po spuštění úloh vývoje nebo spuštění testů, které potřebujete na nasazených prostředcích.

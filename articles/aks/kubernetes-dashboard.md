@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: acaeaa2e5338c86fa59d0e2941719f8fa2708ef1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225984"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176817"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k webovému řídicímu panelu Kubernetes ve službě Azure Kubernetes (AKS)
 
@@ -30,17 +30,21 @@ Další informace o řídicím panelu Kubernetes najdete v tématu [řídicí pa
 
 Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili cluster AKS a navázali připojení k `kubectl` tomuto clusteru. Pokud potřebujete vytvořit cluster AKS, přečtěte si téma [rychlý Start: nasazení clusteru služby Azure Kubernetes pomocí rozhraní příkazového řádku Azure][aks-quickstart].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu  `az --version` . Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="disable-the-kubernetes-dashboard"></a>Zakázání řídicího panelu Kubernetes
 
 Doplněk Kube-Dashboard je **ve výchozím nastavení povolen v clusterech starších než K8s 1,18**. Doplněk lze zakázat spuštěním následujícího příkazu.
 
-``` azure-cli
+``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 
 ## <a name="start-the-kubernetes-dashboard"></a>Spuštění řídicího panelu Kubernetes
+
+> [!WARNING]
+> Doplněk řídicího panelu AKS je zastaralý pro verze 1.19 +. Místo toho prosím použijte [zobrazení prostředků Kubernetes v Azure Portal (Preview)][kubernetes-portal] . 
+> * Následující příkaz teď otevře zobrazení prostředků portálu Azure Portal místo řídicího panelu Kubernetes pro verze 1,19 a vyšší.
 
 Chcete-li spustit řídicí panel Kubernetes v clusteru, použijte příkaz [AZ AKS Browse][az-aks-browse] . Tento příkaz vyžaduje instalaci doplňku Kube-Dashboard na cluster, který je ve výchozím nastavení zahrnutý v clusterech s libovolnou verzí starší než Kubernetes 1,18.
 
@@ -71,7 +75,7 @@ You have the following options to sign in to your cluster's dashboard:
 > 
 > When setting up authentication for the Kubernetes dashboard, it is recommended that you use a token over the default dashboard service account. A token allows each user to use their own permissions. Using the default dashboard service account may allow a user to bypass their own permissions and use the service account instead.
 > 
-> If you do choose to use the default dashboard service account and your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
+> If you do choose to use the default dashboard service account and your AKS cluster uses Kubernetes RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays Kubernetes RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 >
 > To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command as shown in the following example. **This sample binding does not apply any additional authentication components and may lead to insecure use.**
 >
@@ -79,16 +83,16 @@ You have the following options to sign in to your cluster's dashboard:
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> You can now access the Kubernetes dashboard in your RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
+> You can now access the Kubernetes dashboard in your Kubernetes RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
 >
-> If your cluster does not use RBAC, it is not recommended to create a *ClusterRoleBinding*.
+> If your cluster does not use Kubernetes RBAC, it is not recommended to create a *ClusterRoleBinding*.
 > 
 > For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 
 After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
 
 > [!IMPORTANT]
-> If your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
+> If your AKS cluster uses Kubernetes RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays Kubernetes RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 > 
 > To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command. The following example shows how to create a sample binding, however, this sample binding does not apply any additional authentication components and may lead to insecure use. The Kubernetes dashboard is open to anyone with access to the URL. Do not expose the Kubernetes dashboard publicly.
 >
@@ -102,9 +106,9 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 ## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>Přihlaste se na řídicí panel (Kubernetes 1.16 +).
 
 > [!IMPORTANT]
-> Od verze [1.10.1 řídicího panelu Kubernetes](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) nebo Kubernetes v 1.16 + účet služby "Kubernetes-Dashboard" již nelze použít k načtení prostředků z důvodu [opravy zabezpečení v této verzi](https://github.com/kubernetes/dashboard/pull/3400). V důsledku toho požadavky bez ověřovacích údajů vrátí chybu 401 s neoprávněným přístupem. Nosný token načtený z účtu služby se pořád používá jako v tomto [příkladu řídicího panelu Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui), ale to má vliv na tok přihlášení doplňku na řídicí panel v porovnání se staršími verzemi.
+> Od verze [1.10.1 řídicího panelu Kubernetes](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) nebo Kubernetes v 1.16 + účet služby "Kubernetes-Dashboard" již nelze použít k načtení prostředků z důvodu [opravy zabezpečení v této verzi](https://github.com/kubernetes/dashboard/pull/3400). V důsledku toho požadavky bez ověřovacích údajů vrátí [chybu 401 s neoprávněným přístupem](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998). Nosný token načtený z účtu služby se pořád používá jako v tomto [příkladu řídicího panelu Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui), ale to má vliv na tok přihlášení doplňku na řídicí panel v porovnání se staršími verzemi.
 >
->Pokud pořád pracujete s verzí starší než 1,16, můžete přesto udělit oprávnění k účtu služby Kubernetes-Dashboard, ale **nedoporučuje**se to:
+>Pokud pořád pracujete s verzí starší než 1,16, můžete přesto udělit oprávnění k účtu služby Kubernetes-Dashboard, ale **nedoporučuje** se to:
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
@@ -152,7 +156,7 @@ Chcete-li vytvořit aplikaci, proveďte následující kroky:
 1. Chcete-li použít Průvodce grafickým rozhraním, vyberte možnost **vytvořit aplikaci**.
 1. Zadejte název pro nasazení, například *Nginx* .
 1. Zadejte název Image kontejneru, která se má použít, například *Nginx: 1.15.5.*
-1. K vystavení portu 80 pro webový provoz vytvoříte službu Kubernetes. V části **Služba**vyberte **externí**a potom zadejte **80** pro port i cílový port.
+1. K vystavení portu 80 pro webový provoz vytvoříte službu Kubernetes. V části **Služba** vyberte **externí** a potom zadejte **80** pro port i cílový port.
 1. Až budete připraveni, vyberte **nasadit** a vytvořte aplikaci.
 
 ![Nasazení aplikace na webový řídicí panel Kubernetes](./media/kubernetes-dashboard/create-app.png)
@@ -186,7 +190,7 @@ Postup úpravy nasazení:
 
 ![Upravte nasazení a aktualizujte počet replik.](./media/kubernetes-dashboard/edit-deployment.png)
 
-Vytvoření nových lusků v sadě replik může chvíli trvat. V nabídce vlevo zvolte **sady replik**a pak zvolte svou sadu replik *Nginx* . Seznam lusků nyní odráží aktualizovaný počet replik, jak je znázorněno v následujícím příkladu výstupu:
+Vytvoření nových lusků v sadě replik může chvíli trvat. V nabídce vlevo zvolte **sady replik** a pak zvolte svou sadu replik *Nginx* . Seznam lusků nyní odráží aktualizovaný počet replik, jak je znázorněno v následujícím příkladu výstupu:
 
 ![Zobrazit informace o sadě replik](./media/kubernetes-dashboard/view-replica-set.png)
 
@@ -205,8 +209,8 @@ Další informace o řídicím panelu Kubernetes najdete na [řídicím panelu w
 [aad-cluster]: ./azure-ad-integration-cli.md
 [aks-quickstart]: ./kubernetes-walkthrough.md
 [aks-service-accounts]: ./concepts-identity.md#kubernetes-service-accounts
-[az-account-get-access-token]: /cli/azure/account?view=azure-cli-latest#az-account-get-access-token
+[az-account-get-access-token]: /cli/azure/account#az-account-get-access-token
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
 [kubernetes-portal]: ./kubernetes-portal.md

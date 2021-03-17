@@ -5,32 +5,32 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
 keywords: Azure App Service, Web App, Linux, Windows, Docker, kontejner
-ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
+ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a3579ba805d0da08184e6274de60086a9d55a938
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5d3a714230f0279bd68b39cd02624866b9b3bacf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212944"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180509"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrace vlastního softwaru na Azure App Service pomocí vlastního kontejneru
 
 ::: zone pivot="container-windows"  
 
-[Azure App Service](overview.md) poskytuje předdefinované zásobníky aplikací ve Windows, jako je ASP.NET nebo Node.js, které běží ve službě IIS. Předkonfigurované prostředí Windows uzamkne přístup k operačnímu systému pro správu a zamezí instalaci softwaru, změnám globální mezipaměti sestavení (GAC) atd. (viz [Funkce operačního systému ve službě Azure App Service](operating-system-functionality.md)). Pomocí vlastního kontejneru Windows ve službě App Service (Preview) ale můžete dělat změny operačního systému, které vaše aplikace potřebuje, takže je snadné migrovat místní aplikaci, která vyžaduje vlastní operační systém a konfiguraci softwaru. Tento kurz ukazuje, jak do služby App Service migrovat aplikaci ASP.NET, která využívá vlastní písma nainstalovaná v knihovně písem Windows. Do služby [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nasadíte vlastní nakonfigurovanou image Windows ze sady Visual Studio a pak ji spustíte ve službě App Service.
+[Azure App Service](overview.md) poskytuje předdefinované zásobníky aplikací ve Windows, jako je ASP.NET nebo Node.js, které běží ve službě IIS. Předkonfigurované prostředí Windows uzamkne přístup k operačnímu systému pro správu a zamezí instalaci softwaru, změnám globální mezipaměti sestavení (GAC) atd. (viz [Funkce operačního systému ve službě Azure App Service](operating-system-functionality.md)). Použití vlastního kontejneru Windows ve službě App Service vám ale umožňuje udělat změny operačního systému, které vaše aplikace potřebuje, takže migrace místní aplikace, která vyžaduje vlastní konfiguraci operačního systému a softwaru, je snadná. Tento kurz ukazuje, jak do služby App Service migrovat aplikaci ASP.NET, která využívá vlastní písma nainstalovaná v knihovně písem Windows. Do služby [Azure Container Registry](../container-registry/index.yml) nasadíte vlastní nakonfigurovanou image Windows ze sady Visual Studio a pak ji spustíte ve službě App Service.
 
 ![Zobrazuje webovou aplikaci spuštěnou v kontejneru Windows.](media/tutorial-custom-container/app-running.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
 - <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalujte Docker for Windows</a>.
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
+- <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalujte Visual Studio 2019</a> s pracovními procesy pro **vývoj ASP.NET a web** a **vývoj pro Azure** . Pokud jste již nainstalovali Visual Studio 2019:
-    - Po **kliknutí na**tlačítko  >  **Vyhledat aktualizace**nainstalujte nejnovější aktualizace v aplikaci Visual Studio.
+    - Po **kliknutí na** tlačítko  >  **Vyhledat aktualizace** nainstalujte nejnovější aktualizace v aplikaci Visual Studio.
     - Přidejte úlohy do sady Visual Studio tak, že kliknete na **nástroje**  >  **získat nástroje a funkce**.
 
 ## <a name="set-up-the-app-locally"></a>Místní nastavení aplikace
@@ -56,7 +56,7 @@ Otevřete soubor *custom-font-win-container/CustomFontSample.sln* v sadě Visual
 
 Zadáním `Ctrl+F5` spusťte aplikaci bez zapnutého ladění. Aplikace se zobrazí ve vašem výchozím prohlížeči. 
 
-![Dialogové okno Nový projekt ASP.NET](media/tutorial-custom-container/local-app-in-browser.png)
+:::image type="content" source="media/tutorial-custom-container/local-app-in-browser.png" alt-text="Snímek obrazovky zobrazující aplikaci zobrazenou ve výchozím prohlížeči":::
 
 Protože tato aplikace používá nainstalované písmo, nemůže běžet v sandboxu služby App Service. Můžete ji ale místo toho nasadit pomocí kontejneru Windows, protože písmo můžete nainstalovat do tohoto kontejneru Windows.
 
@@ -64,7 +64,7 @@ Protože tato aplikace používá nainstalované písmo, nemůže běžet v sand
 
 V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontSample** a vyberte **Přidat** > **Podpora orchestrace kontejnerů**.
 
-![Dialogové okno Nový projekt ASP.NET](media/tutorial-custom-container/enable-container-orchestration.png)
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Snímek obrazovky okna Průzkumník řešení znázorňující vybrané položky nabídky projektu CustomFontSample, přidat a kontejner produktu Orchestrator support":::
 
 Vyberte **Docker Compose**  >  **OK**.
 
@@ -72,7 +72,7 @@ Projekt je teď nastavený tak, aby běžel v kontejneru Windows. Do projektu **
 
 V Průzkumníku řešení otevřete soubor **Dockerfile**.
 
-Musíte použít [podporovanou nadřazenou image](quickstart-custom-container.md#use-a-different-parent-image). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem:
+Musíte použít [podporovanou nadřazenou image](configure-custom-container.md#supported-parent-images). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem:
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -92,19 +92,19 @@ _InstallFont.ps1_ najdete v projektu **CustomFontSample**. Jde o jednoduchý skr
 
 ## <a name="publish-to-azure-container-registry"></a>Publikování do služby Azure Container Registry
 
-Služba [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) uchovává vaše image pro nasazení kontejnerů. Službu App Service můžete nakonfigurovat tak, aby používala image hostované ve službě Azure Container Registry.
+Služba [Azure Container Registry](../container-registry/index.yml) uchovává vaše image pro nasazení kontejnerů. Službu App Service můžete nakonfigurovat tak, aby používala image hostované ve službě Azure Container Registry.
 
 ### <a name="open-publish-wizard"></a>Otevření průvodce publikováním
 
 V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontSample** a vyberte **Publikovat**.
 
-![Dialogové okno Nový projekt ASP.NET](media/tutorial-custom-container/open-publish-wizard.png)
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Snímek obrazovky Průzkumník řešení se zobrazením projektu CustomFontSample a publikováním vybraného.":::
 
 ### <a name="create-registry-and-publish"></a>Vytvoření registru a publikování
 
 V Průvodci publikováním vyberte **Container Registry**  >  **vytvořit nové Azure Container Registry**  >  **publikovat**.
 
-![Dialogové okno Nový projekt ASP.NET](media/tutorial-custom-container/create-registry.png)
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Snímek obrazovky s průvodcem publikováním, který zobrazuje Container Registry, vytvořte nové Azure Container Registry a vybrané tlačítko publikovat.":::
 
 ### <a name="sign-in-with-azure-account"></a>Přihlášení pomocí účtu Azure
 
@@ -120,7 +120,7 @@ Nakonfigurujte nový registr kontejneru podle navržených hodnot v následujíc
 | ----------------- | ------------ | ----|
 |**Předpona DNS**| Ponechejte vygenerovaný název registru nebo ho změňte na jiný jedinečný název. |  |
 |**Skupina prostředků**| Klikněte na **Nový**, zadejte **myResourceGroup** a klikněte na **OK**. |  |
-|**Skladová jednotka (SKU)**| Základní | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**SKU**| Basic | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Umístění registru**| West Europe | |
 
 ![Konfigurace Azure Container Registry](./media/tutorial-custom-container/configure-registry.png)
@@ -142,12 +142,12 @@ Na kartě **základy** nakonfigurujte nastavení podle následující tabulky a 
 | Nastavení  | Navrhovaná hodnota | Další informace |
 | ----------------- | ------------ | ----|
 |**Předplatné**| Ujistěte se, že je vybráno správné předplatné. |  |
-|**Skupina prostředků**| Vyberte **vytvořit nový**, zadejte **myResourceGroup**a klikněte na **OK**. |  |
+|**Skupina prostředků**| Vyberte **vytvořit nový**, zadejte **myResourceGroup** a klikněte na **OK**. |  |
 |**Název**| Zadejte jedinečný název. | Adresa URL webové aplikace je `http://<app-name>.azurewebsites.net`, kde `<app-name>` je název vaší aplikace. |
 |**Publikovat**| Kontejner Docker | |
 |**Operační systém**| Windows | |
 |**Oblast**| West Europe | |
-|**Plán Windows**| Vyberte **vytvořit nový**, zadejte **myAppServicePlan**a klikněte na **OK**. | |
+|**Plán Windows**| Vyberte **vytvořit nový**, zadejte **myAppServicePlan** a klikněte na **OK**. | |
 
 Karta **základy** by měla vypadat takto:
 
@@ -211,7 +211,7 @@ Streamované protokoly vypadají přibližně takto:
 
 ::: zone pivot="container-linux"
 
-Azure App Service používá technologii kontejneru Docker k hostování vestavěných imagí i vlastních imagí. Pokud chcete zobrazit seznam předdefinovaných imagí, spusťte příkaz Azure CLI, ["AZ WebApp list-runtimes--Linux"](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes). Pokud tyto image nevyhovují vašim potřebám, můžete sestavit a nasadit vlastní image.
+Azure App Service používá technologii kontejneru Docker k hostování vestavěných imagí i vlastních imagí. Pokud chcete zobrazit seznam předdefinovaných imagí, spusťte příkaz Azure CLI, ["AZ WebApp list-runtimes--Linux"](/cli/azure/webapp#az-webapp-list-runtimes). Pokud tyto image nevyhovují vašim potřebám, můžete sestavit a nasadit vlastní image.
 
 V tomto kurzu se naučíte:
 
@@ -228,31 +228,16 @@ V tomto kurzu vznikne v rámci vašeho účtu Azure v registru kontejneru malý 
 
 ## <a name="set-up-your-initial-environment"></a>Nastavení počátečního prostředí
 
-* Mít účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Nainstalujte [Docker](https://docs.docker.com/get-started/#setup), který použijete k sestavení imagí Docker. Instalace Docker může vyžadovat restart počítače.
-* Nainstalujte rozhraní příkazového <a href="/cli/azure/install-azure-cli" target="_blank">řádku Azure CLI</a> 2.0.80 nebo novější, ve kterém spouštíte příkazy v jakémkoli prostředí pro zřizování a konfiguraci prostředků Azure.
+- Mít účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Nainstalujte [Docker](https://docs.docker.com/get-started/#setup), který použijete k sestavení imagí Docker. Instalace Docker může vyžadovat restart počítače.
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.80 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-Po instalaci Docker a rozhraní příkazového řádku Azure otevřete okno terminálu a ověřte, že je Docker nainstalovaný:
+Po instalaci Docker nebo spuštění Azure Cloud Shell otevřete okno terminálu a ověřte, že je Docker nainstalovaný:
 
 ```bash
 docker --version
 ```
-
-Ověřte také, že verze Azure CLI je 2.0.80 nebo vyšší:
-
-```azurecli
-az --version
-```
-
-Pak se přihlaste k Azure prostřednictvím rozhraní příkazového řádku:
-
-```azurecli
-az login
-```
-
-`az login`Příkaz otevře prohlížeč pro shromáždění vašich přihlašovacích údajů. Po dokončení příkazu se zobrazí výstup JSON obsahující informace o vašich předplatných.
-
-Po přihlášení můžete spustit příkazy Azure pomocí Azure CLI a pracovat s prostředky ve vašem předplatném.
 
 ## <a name="clone-or-download-the-sample-app"></a>Klonování nebo stažení ukázkové aplikace
 
@@ -276,7 +261,7 @@ cd docker-django-webapp-linux
 
 ### <a name="download-from-github"></a>Stažení z GitHubu
 
-Místo použití klonu Git můžete navštívit [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) , vybrat **klonovat**a pak vybrat **Stáhnout ZIP**. 
+Místo použití klonu Git můžete navštívit [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) , vybrat **klonovat** a pak vybrat **Stáhnout ZIP**. 
 
 Rozbalte soubor ZIP do složky s názvem *Docker-Django-WebApp-Linux*. 
 
@@ -319,6 +304,10 @@ ENTRYPOINT ["init.sh"]
 
 ## <a name="build-and-test-the-image-locally"></a>Místní sestavení a otestování image
 
+> [!NOTE]
+> Docker Hub má [kvóty pro počet anonymních přijetí změn na jednu IP adresu a počet ověřených přijetí na bezplatného uživatele (viz **přenos dat**)](https://www.docker.com/pricing). Pokud si všimnete, že se vaše přijetí z dokovacího centra bude omezovat, zkuste, jestli ještě nejste `docker login` přihlášení.
+> 
+
 1. Spusťte následující příkaz, který sestaví bitovou kopii:
 
     ```bash
@@ -340,13 +329,11 @@ ENTRYPOINT ["init.sh"]
 
     ![Místní test webové aplikace](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
 
-[!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 V této části a těch, které následují, zřídíte prostředky v Azure, do kterých nahrajete image, a pak nasadíte kontejner, který Azure App Service. Začnete vytvořením skupiny prostředků, ve které se budou shromažďovat všechny tyto prostředky.
 
-Spuštěním příkazu [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) vytvořte skupinu prostředků:
+Spuštěním příkazu [AZ Group Create](/cli/azure/group#az-group-create) vytvořte skupinu prostředků:
 
 ```azurecli-interactive
 az group create --name AppSvc-DockerTutorial-rg --location westus2
@@ -358,7 +345,7 @@ Můžete změnit `--location` hodnotu a zadat oblast poblíž.
 
 V této části nahrajete obrázek do Azure Container Registry, ze kterého ho App Service může nasadit.
 
-1. Spuštěním [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) příkazu vytvořte Azure Container Registry:
+1. Spuštěním [`az acr create`](/cli/azure/acr#az-acr-create) příkazu vytvořte Azure Container Registry:
 
     ```azurecli-interactive
     az acr create --name <registry-name> --resource-group AppSvc-DockerTutorial-rg --sku Basic --admin-enabled true
@@ -366,7 +353,7 @@ V této části nahrajete obrázek do Azure Container Registry, ze kterého ho A
     
     Nahraďte `<registry-name>` vhodným názvem pro váš registr. Název musí obsahovat jenom písmena a číslice a musí být jedinečný ve všech Azure.
 
-1. Spusťte [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) příkaz pro načtení přihlašovacích údajů registru:
+1. Spusťte [`az acr show`](/cli/azure/acr#az-acr-show) příkaz pro načtení přihlašovacích údajů registru:
 
     ```azurecli-interactive
     az acr credential show --resource-group AppSvc-DockerTutorial-rg --name <registry-name>
@@ -413,7 +400,7 @@ V této části nahrajete obrázek do Azure Container Registry, ze kterého ho A
 
 Chcete-li nasadit kontejner pro Azure App Service, nejprve vytvořte webovou aplikaci v App Service a pak připojte webovou aplikaci k registru kontejneru. Po spuštění webové aplikace App Service automaticky načítat image z registru.
 
-1. Pomocí příkazu vytvořte App Service plán [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) :
+1. Pomocí příkazu vytvořte App Service plán [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) :
 
     ```azurecli-interactive
     az appservice plan create --name AppSvc-DockerTutorial-plan --resource-group AppSvc-DockerTutorial-rg --is-linux
@@ -421,7 +408,7 @@ Chcete-li nasadit kontejner pro Azure App Service, nejprve vytvořte webovou apl
 
     Plán App Service odpovídá virtuálnímu počítači, který je hostitelem webové aplikace. Ve výchozím nastavení používá předchozí příkaz [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/linux/) nelevného B1, která je v prvním měsíci zdarma. Úroveň můžete řídit pomocí `--sku` parametru.
 
-1. Pomocí příkazu vytvořte webovou aplikaci [`az webpp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) :
+1. Pomocí příkazu vytvořte webovou aplikaci [`az webpp create`](/cli/azure/webapp#az-webapp-create) :
 
     ```azurecli-interactive
     az webapp create --resource-group AppSvc-DockerTutorial-rg --plan AppSvc-DockerTutorial-plan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
@@ -429,7 +416,7 @@ Chcete-li nasadit kontejner pro Azure App Service, nejprve vytvořte webovou apl
     
     Nahraďte `<app-name>` názvem webové aplikace, který musí být v rámci všech Azure jedinečný. Nahraďte také `<registry-name>` názvem vašeho registru z předchozí části.
 
-1. Použijte [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) k nastavení `WEBSITES_PORT` proměnné prostředí podle očekávání v kódu aplikace: 
+1. Použijte [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) k nastavení `WEBSITES_PORT` proměnné prostředí podle očekávání v kódu aplikace: 
 
     ```azurecli-interactive
     az webapp config appsettings set --resource-group AppSvc-DockerTutorial-rg --name <app-name> --settings WEBSITES_PORT=8000
@@ -439,7 +426,7 @@ Chcete-li nasadit kontejner pro Azure App Service, nejprve vytvořte webovou apl
     
     Další informace o této proměnné prostředí najdete v [souboru Readme v úložišti GitHub ukázky](https://github.com/Azure-Samples/docker-django-webapp-linux).
 
-1. Povolte [spravovanou identitu](/azure/app-service/overview-managed-identity) webové aplikace pomocí [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) příkazu:
+1. Povolte [spravovanou identitu](./overview-managed-identity.md) webové aplikace pomocí [`az webapp identity assign`](/cli/azure/webapp/identity#az-webapp-identity-assign) příkazu:
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -449,7 +436,7 @@ Chcete-li nasadit kontejner pro Azure App Service, nejprve vytvořte webovou apl
 
     Spravovaná identita umožňuje udělit oprávnění k této webové aplikaci pro přístup k jiným prostředkům Azure, aniž by bylo potřeba zadat konkrétní přihlašovací údaje.
 
-1. Pomocí [`az account show`](/cli/azure/account?view=azure-cli-latest#az-account-show) příkazu, který budete potřebovat v dalším kroku, načtěte ID vašeho předplatného:
+1. Pomocí [`az account show`](/cli/azure/account#az-account-show) příkazu, který budete potřebovat v dalším kroku, načtěte ID vašeho předplatného:
 
     ```azurecli-interactive
     az account show --query id --output tsv
@@ -466,13 +453,13 @@ Chcete-li nasadit kontejner pro Azure App Service, nejprve vytvořte webovou apl
     - `<registry-name>` s názvem vašeho registru kontejneru
     - `<subscription-id>` s ID předplatného načteným z `az account show` příkazu
 
-Další informace o těchto oprávněních najdete v tématu [co je řízení přístupu na základě role Azure](/azure/role-based-access-control/overview) . 
+Další informace o těchto oprávněních najdete v tématu [co je řízení přístupu na základě role Azure](../role-based-access-control/overview.md) . 
 
 ## <a name="deploy-the-image-and-test-the-app"></a>Nasazení image a testování aplikace
 
 Po nahrání image do registru kontejneru můžete tyto kroky dokončit a App Service je plně zřízené.
 
-1. Pomocí [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) příkazu zadejte registr kontejneru a image, která se má nasadit pro webovou aplikaci:
+1. Pomocí [`az webapp config container set`](/cli/azure/webapp/config/container#az-webapp-config-container-set) příkazu zadejte registr kontejneru a image, která se má nasadit pro webovou aplikaci:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io
@@ -559,7 +546,7 @@ V této části provedete změnu kódu webové aplikace, znovu sestavíte kontej
     
     Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
 
-    Soubory protokolu můžete také zkontrolovat v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
+    Soubory protokolu můžete také zkontrolovat v prohlížeči na `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
 
 1. Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C**.
 
@@ -569,7 +556,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Pokud chcet
 
 ### <a name="configure-the-container-for-ssh"></a>Konfigurace kontejneru pro SSH
 
-Ukázková aplikace použitá v tomto kurzu už má v *souboru Dockerfile*potřebnou konfiguraci, která nainstaluje server SSH a také nastaví přihlašovací údaje. Tato část je jenom informativní. Pokud se chcete připojit ke kontejneru, přejděte k další části.
+Ukázková aplikace použitá v tomto kurzu už má v *souboru Dockerfile* potřebnou konfiguraci, která nainstaluje server SSH a také nastaví přihlašovací údaje. Tato část je jenom informativní. Pokud se chcete připojit ke kontejneru, přejděte k další části.
 
 ```Dockerfile
 ENV SSH_PASSWD "root:Docker!"
@@ -595,7 +582,7 @@ EXPOSE 8000 2222
 
 Port 2222 je interní port přístupný pouze pro kontejnery v rámci mostu sítě privátní virtuální sítě. 
 
-Nakonec skript vstupu *init.sh*SPUSTÍ Server SSH.
+Nakonec skript vstupu *init.sh* SPUSTÍ Server SSH.
 
 ```bash
 #!/bin/bash
@@ -618,6 +605,8 @@ Prostředky, které jste vytvořili v tomto článku, můžou účtovat průbě�
 az group delete --name AppSvc-DockerTutorial-rg
 ```
 
+::: zone-end
+
 ## <a name="next-steps"></a>Další kroky
 
 Naučili jste se:
@@ -625,9 +614,13 @@ Naučili jste se:
 > [!div class="checklist"]
 > * Nasazení vlastní image do privátního registru kontejnerů
 > * Nasazení a vlastní image v App Service
+::: zone pivot="container-linux"
 > * Aktualizace a opětovné nasazení image
+::: zone-end
 > * Přístup k diagnostickým protokolům
+::: zone pivot="container-linux"
 > * Připojit se ke kontejneru pomocí SSH
+::: zone-end
 
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
@@ -639,7 +632,7 @@ Nebo si prohlédněte další zdroje informací:
 > [!div class="nextstepaction"]
 > [Konfigurace vlastního kontejneru](configure-custom-container.md)
 
+::: zone pivot="container-linux"
 > [!div class="nextstepaction"]
 > [Kurz: aplikace pro více kontejnerů WordPress](tutorial-multi-container-app.md)
-
 ::: zone-end

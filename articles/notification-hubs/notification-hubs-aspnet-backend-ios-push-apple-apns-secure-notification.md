@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6c85ba017656bd312ddfe3d5f6d98014a3dc89a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022119"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90090342"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
 
@@ -43,7 +43,7 @@ Tok je na vysoké úrovni následující:
    * Zařízení kontaktuje back-end požadující zabezpečenou datovou část.
    * Aplikace může datovou část zobrazit jako oznámení na zařízení.
 
-Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení po přihlášení uživatele uloží ověřovací token do místního úložiště. Tím zajistíte bezproblémové prostředí, protože zařízení může načíst zabezpečenou datovou část oznámení pomocí tohoto tokenu. Pokud vaše aplikace neukládá ověřovací tokeny na zařízení nebo pokud tato tokeny vypršela, měla by aplikace zařízení po přijetí oznámení zobrazit obecné oznámení s výzvou, aby uživatel spustil aplikaci. Aplikace pak uživatele ověří a zobrazí datovou část oznámení.
+Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení po přihlášení uživatele uloží ověřovací token do místního úložiště. Tím zajistíte bezproblémové prostředí, protože zařízení může načíst zabezpečenou datovou část oznámení pomocí tohoto tokenu. Pokud vaše aplikace neukládá ověřovací tokeny na zařízení nebo pokud tyto tokeny můžou být prošlé, aplikace zařízení po přijetí oznámení by měla zobrazit obecné oznámení s výzvou, aby uživatel spustil aplikaci. Aplikace pak uživatele ověří a zobrazí datovou část oznámení.
 
 Tento kurz zabezpečeného nabízeného oznámení ukazuje, jak bezpečně odeslat nabízené oznámení. Kurz se sestaví v kurzu [informování uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) , takže byste nejdřív měli provést kroky v tomto kurzu.
 
@@ -119,7 +119,7 @@ Abychom dosáhli tohoto cíle, musíme napsat logiku, která načte zabezpečen�
 
     Tato metoda volá back-end aplikace pro načtení obsahu oznámení pomocí přihlašovacích údajů uložených ve sdílených preferencích.
 
-4. Nyní musíme zpracovat příchozí oznámení a použít výše uvedenou metodu k načtení obsahu, který se má zobrazit. Nejdřív musíme povolit, aby vaše aplikace pro iOS běžela na pozadí při přijímání nabízeného oznámení. V **Xcode**vyberte projekt aplikace na levém panelu a pak klikněte na cíl vaší hlavní aplikace v části **cíle** v centrálním podokně.
+4. Nyní zpracujte příchozí oznámení a pomocí výše uvedené metody načtěte obsah, který se má zobrazit. Nejdřív při přijímání nabízeného oznámení Povolte aplikaci pro iOS běžet na pozadí. V **Xcode**vyberte projekt aplikace na levém panelu a pak klikněte na cíl vaší hlavní aplikace v části **cíle** v centrálním podokně.
 5. Pak v horní části centrálního podokna klikněte na kartu **Možnosti** a zaškrtněte políčko **Vzdálená oznámení** .
 
     ![Snímek obrazovky s XCode s vybraným projektem aplikace a otevřenou kartou možnosti. Zaškrtávací políčko pro vzdálené oznámení je zaškrtnuté.][IOS1]

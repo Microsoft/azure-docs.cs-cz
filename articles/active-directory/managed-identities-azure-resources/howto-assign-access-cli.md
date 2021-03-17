@@ -3,7 +3,7 @@ title: Přiřazení spravované identity k prostředku pomocí Azure CLI – Azu
 description: Podrobné pokyny pro přiřazení spravované identity k jednomu prostředku a přístup k jinému prostředku pomocí Azure CLI.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2017
-ms.author: markvi
+ms.date: 01/29/2021
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb89f962251c8c83a0f01e67a1ae42203d7e69f9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e3b06ce76ae77aa62b20b707a736e8e20e5f6c45
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494634"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090040"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Přiřazení spravované identity k prostředku pomocí Azure CLI
 
@@ -29,28 +29,19 @@ ms.locfileid: "87494634"
 
 Po nakonfigurování prostředku Azure pomocí spravované identity můžete spravované identitě udělit přístup k jinému prostředku, stejně jako jakýkoli objekt zabezpečení. V tomto příkladu se dozvíte, jak poskytnout přístup k účtu Azure Storage pomocí rozhraní příkazového řádku Azure pro virtuální počítač Azure nebo spravovanou identitu sady škálování virtuálního počítače.
 
+Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
-- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Chcete-li spustit příklady skriptu rozhraní příkazového řádku, máte tři možnosti:
-    - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md) z Azure Portal (viz další oddíl).
-    - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu.
-    - Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) . 
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si téma [co jsou spravované identity pro prostředky Azure?](overview.md). Další informace o spravovaných typech identity přiřazených systémem a uživatelem definovaných uživatelů najdete v tématu [spravované identity typu](overview.md#managed-identity-types).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Přiřaďte přístup spravované identity k jinému prostředku pomocí RBAC.
+## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Pomocí Azure RBAC přiřaďte přístup spravované identity k jinému prostředku.
 
 Po povolení spravované identity na prostředku Azure, jako je třeba [virtuální počítač Azure](qs-configure-cli-windows-vm.md) nebo [sada škálování virtuálního počítače Azure](qs-configure-cli-windows-vmss.md): 
 
-1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az-login). Použijte účet, který je přidružený k předplatnému Azure, pod kterým chcete nasadit virtuální počítač nebo sadu škálování virtuálního počítače:
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. V tomto příkladu poskytujeme virtuálnímu počítači Azure přístup k účtu úložiště. Nejprve k získání instančního objektu pro virtuální počítač s názvem myVM používáme [AZ Resource list](/cli/azure/resource/#az-resource-list) :
+1. V tomto příkladu poskytujeme virtuálnímu počítači Azure přístup k účtu úložiště. Nejprve k získání instančního objektu pro virtuální počítač s názvem myVM používáme [AZ Resource list](/cli/azure/resource/#az-resource-list) :
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
@@ -61,7 +52,7 @@ Po povolení spravované identity na prostředku Azure, jako je třeba [virtuál
    spID=$(az resource list -n DevTestVMSS --query [*].identity.principalId --out tsv)
    ```
 
-3. Jakmile budete mít ID instančního objektu, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) a udělte tak virtuálnímu počítači nebo čtečce sady škálování virtuálního počítače přístup k účtu úložiště s názvem "myStorageAcct":
+1. Jakmile budete mít ID instančního objektu, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) a udělte tak virtuálnímu počítači nebo čtečce sady škálování virtuálního počítače přístup k účtu úložiště s názvem "myStorageAcct":
 
    ```azurecli-interactive
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct

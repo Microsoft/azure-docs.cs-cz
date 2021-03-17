@@ -1,18 +1,17 @@
 ---
-title: Protokoly Apache Hive zaplňujících místo na disku – Azure HDInsight
-description: Protokoly Apache Hive zaplňují místo na disku v hlavních uzlech ve službě Azure HDInsight.
+title: 'Řešení potíží: protokoly Apache Hive zaplní místo na disku – Azure HDInsight'
+description: Tento článek popisuje postup řešení potíží, když Apache Hive protokoly doplňují místo na disku v hlavních uzlech ve službě Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
-ms.reviewer: jasonh
-ms.date: 03/05/2020
-ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/05/2020
+ms.openlocfilehash: cd7e6a7f13f6cccb5be5d23d69c2a44fc655cf55
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78943969"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930955"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Scénář: protokoly Apache Hive zaplňují místo na disku v hlavních uzlech ve službě Azure HDInsight.
 
@@ -20,12 +19,13 @@ Tento článek popisuje postup řešení potíží a možná řešení pro probl
 
 ## <a name="issue"></a>Problém
 
-V clusteru Apache Hive/LLAP zabírají nechtěné protokoly v hlavních uzlech celé místo na disku. V důsledku toho mohou být zjištěny následující problémy.
+V clusteru Apache Hive/LLAP zabírají nechtěné protokoly v hlavních uzlech celé místo na disku. Tento stav může způsobit následující problémy:
 
-1. Přístup SSH se nezdařil z důvodu nedostatku místa na hlavním uzlu.
-2. Ambari poskytuje *chybu protokolu http: služba 503 není k dispozici*.
+- Přístup SSH se nezdařil, protože na hlavním uzlu není žádné místo.
+- Ambari vyvolá *chybu protokolu http: služba 503 není k dispozici*.
+- HiveServer2 Interactive se nerestartuje.
 
-V `ambari-agent` protokolech se při potížích zobrazí následující.
+`ambari-agent`Protokoly budou zahrnovat následující položky, když dojde k problému:
 ```
 ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
 ```
@@ -35,47 +35,39 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Příčina
 
-V pokročilých konfiguracích log4j podregistru se parametr *log4j. appender. rfa. MaxBackupIndex* vynechá. Způsobuje nekonečnou generaci souborů protokolu.
+V části Pokročilá konfigurace log4j podregistru je aktuálním výchozím plánem odstranění odstranění souborů, které jsou starší než 30 dní, na základě data poslední úpravy.
 
 ## <a name="resolution"></a>Řešení
 
-1. Přejděte na souhrn komponenty podregistru na portálu Ambari a klikněte na `Configs` kartu.
+1. Na portálu Ambari přejít na souhrn komponenty podregistr a vyberte kartu **Konfigurace** .
 
-2. Přejít na `Advanced hive-log4j` část v části Upřesnit nastavení.
+2. Přejít na `Advanced hive-log4j` oddíl v části **Upřesnit nastavení**.
 
-3. Nastavte `log4j.appender.RFA` parametr jako RollingFileAppender. 
+3. Nastavte `appender.RFA.strategy.action.condition.age` parametr na stáří podle vašeho výběru. V tomto příkladu se nastaví stáří na 14 dnů: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. Nastavte `log4j.appender.RFA.MaxFileSize` a `log4j.appender.RFA.MaxBackupIndex` následujícím způsobem.
+4. Pokud nevidíte žádná související nastavení, přidejte tato nastavení:
+    ```
+    # automatically delete hive log
+    appender.RFA.strategy.action.type = Delete
+    appender.RFA.strategy.action.basePath = ${sys:hive.log.dir}
+    appender.RFA.strategy.action.condition.type = IfLastModified
+    appender.RFA.strategy.action.condition.age = 30D
+    appender.RFA.strategy.action.PathConditions.type = IfFileName
+    appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
+    ```
 
-```
-log4jhive.log.maxfilesize=1024MB
-log4jhive.log.maxbackupindex=10
+5. Nastavte `hive.root.logger` na `INFO,RFA` , jak je znázorněno v následujícím příkladu. Výchozí nastavení je `DEBUG` , což znamená, že protokoly budou velké.
 
-log4j.appender.RFA=org.apache.log4j.RollingFileAppender
-log4j.appender.RFA.File=${hive.log.dir}/${hive.log.file}
-log4j.appender.RFA.MaxFileSize=${log4jhive.log.maxfilesize}
-log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
-log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
-```
-5. Nastavte `hive.root.logger` následujícím `INFO,RFA` způsobem. Výchozím nastavením je ladění, které způsobí, že se protokoly budou velmi velké.
-
-```
-# Define some default values that can be overridden by system properties
-hive.log.threshold=ALL
-hive.root.logger=INFO,RFA
-hive.log.dir=${java.io.tmpdir}/${user.name}
-hive.log.file=hive.log
-```
+    ```
+    # Define some default values that can be overridden by system properties
+    hive.log.threshold=ALL
+    hive.root.logger=INFO,RFA
+    hive.log.dir=${java.io.tmpdir}/${user.name}
+    hive.log.file=hive.log
+    ```
 
 6. Uložte konfigurace a restartujte požadované součásti.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

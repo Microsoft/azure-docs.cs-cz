@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: add73e1399b11d4bd8f039c72bb4e5e9f2b82cfa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c8e9770f2e425c93f45a207a2e49cff25e924d9
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085185"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244646"
 ---
-V Cloud Shell vytvořte App Service plán pomocí [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest) příkazu.
+V Cloud Shell vytvořte App Service plán pomocí [`az appservice plan create`](/cli/azure/appservice/plan) příkazu.
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan.md)] -->
 

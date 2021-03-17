@@ -3,18 +3,18 @@ title: Integrace a Správa operací zabezpečení & zabezpečení Microsoft Grap
 description: Vylepšete ochranu před hrozbami, detekci a reakci vaší aplikace pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: preetikr
+author: ecfan
 ms.author: preetikr
 ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986364"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888534"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zvyšte ochranu před hrozbami integrací operací zabezpečení pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 
@@ -30,13 +30,13 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a konektoru [za
 
 Pracovní postup vaší aplikace logiky může používat akce, které získávají odpovědi z konektoru zabezpečení Microsoft Graph a zpřístupňují výstup ostatním akcím v pracovním postupu. V pracovním postupu můžete mít také další akce, které používají výstup z akcí Microsoft Graph Security Connector. Pokud například obdržíte upozornění s vysokou závažností prostřednictvím konektoru zabezpečení Microsoft Graph, můžete tyto výstrahy odeslat v e-mailové zprávě pomocí konektoru aplikace Outlook. 
 
-Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled rozhraní API pro Microsoft Graph zabezpečení](https://aka.ms/graphsecuritydocs). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Pokud hledáte Microsoft Flow nebo PowerApps, přečtěte si téma [co je Flow?](https://flow.microsoft.com/) nebo [co je PowerApps?](https://powerapps.microsoft.com/)
+Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled rozhraní API pro Microsoft Graph zabezpečení](/graph/security-concept-overview). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Pokud hledáte Power Automate nebo PowerApps, přečtěte si téma [co je Power automat?](https://flow.microsoft.com/) nebo [co je Power Apps?](https://powerapps.microsoft.com/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Abyste mohli používat konektor pro Microsoft Graph Security, musí vám být *explicitně udělen* souhlas správce tenanta Azure Active Directory (AD). To je součástí [požadavků na ověřování v Microsoft Graph Security](https://aka.ms/graphsecurityauth). Tento souhlas vyžaduje ID a název aplikace konektoru zabezpečení Microsoft Graph, které můžete také najít v [Azure Portal](https://portal.azure.com):
+* Abyste mohli používat konektor pro Microsoft Graph Security, musí vám být *explicitně udělen* souhlas správce tenanta Azure Active Directory (AD). To je součástí [požadavků na ověřování v Microsoft Graph Security](/graph/security-authorization). Tento souhlas vyžaduje ID a název aplikace konektoru zabezpečení Microsoft Graph, které můžete také najít v [Azure Portal](https://portal.azure.com):
 
   | Vlastnost | Hodnota |
   |----------|-------|
@@ -93,10 +93,10 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky, 
 
    | Vlastnost | Property (JSON) | Požaduje se | Typ | Popis |
    |----------|-----------------|----------|------|-------------|
-   | **Interval** | `interval` | Ano | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p><p>-Month: 1-16 měsíců <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
-   | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
-   | **Časové pásmo** | `timeZone` | Ne | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
-   | **Čas spuštění** | `startTime` | Ne | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p><p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Interval** | `interval` | Yes | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p><p>-Month: 1-16 měsíců <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
+   | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden** nebo **měsíc** |
+   | **Časové pásmo** | `timeZone` | No | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
+   | **Čas spuštění** | `startTime` | No | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p><p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
 1.  Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
@@ -142,26 +142,25 @@ Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-Další informace o dotazech, které můžete použít s tímto konektorem, najdete [v části "volitelné parametry dotazu" v tématu Referenční dokumentace k nástroji Microsoft Graph Security Threat Intelligence](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta). Pokud chcete s tímto konektorem sestavovat vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu – indikátor analýzy hrozeb](/graph/api/resources/tiindicator?view=graph-rest-beta) , který konektor podporuje.
+Další informace o dotazech, které můžete použít s tímto konektorem, najdete [v části "volitelné parametry dotazu" v tématu Referenční dokumentace k nástroji Microsoft Graph Security Threat Intelligence](/graph/api/tiindicators-list). Pokud chcete s tímto konektorem sestavovat vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu – indikátor analýzy hrozeb](/graph/api/resources/tiindicator) , který konektor podporuje.
 
 | Akce | Popis |
 |--------|-------------|
-| **Získat indikátory pro analýzu hrozeb** | Získání tiIndicators filtrovaných na základě jedné nebo více [tiIndicator vlastností](/graph/api/resources/tiindicator?view=graph-rest-beta), například`threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Získat indikátory pro analýzu hrozeb** | Získání tiIndicators filtrovaných na základě jedné nebo více [tiIndicator vlastností](/graph/api/resources/tiindicator), například `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Získat indikátor analýzy hrozeb podle ID** | Získá konkrétní tiIndicator na základě ID tiIndicator. | 
-| **Vytvořit indikátor analýzy hrozeb** | Vytvořte nový tiIndicator publikováním do kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro vytváření tiIndicator](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta). |
-| **Odeslání více ukazatelů analýzy hrozeb** | Vytvořte více nových tiIndicators publikováním kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro odeslání více tiIndicators](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta). |
-| **Aktualizovat indikátor analýzy hrozeb** | Aktualizujte konkrétní tiIndicator na základě ID tiIndicator. Abyste se ujistili, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti pro tiIndicator](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta). Chcete-li například aktualizovat akci, která má být použita, pokud se ukazatel shoduje v rámci nástroje zabezpečení targetProduct, můžete aktualizovat vlastnost **Action** tiIndicator. |
-| **Aktualizace více ukazatelů analýzy hrozeb** | Aktualizace více tiIndicators Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro aktualizaci více tiIndicators](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta). |
+| **Vytvořit indikátor analýzy hrozeb** | Vytvořte nový tiIndicator publikováním do kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro vytváření tiIndicator](/graph/api/tiindicators-post). |
+| **Odeslání více ukazatelů analýzy hrozeb** | Vytvořte více nových tiIndicators publikováním kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro odeslání více tiIndicators](/graph/api/tiindicator-submittiindicators). |
+| **Aktualizovat indikátor analýzy hrozeb** | Aktualizujte konkrétní tiIndicator na základě ID tiIndicator. Abyste se ujistili, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti pro tiIndicator](/graph/api/tiindicator-update). Chcete-li například aktualizovat akci, která má být použita, pokud se ukazatel shoduje v rámci nástroje zabezpečení targetProduct, můžete aktualizovat vlastnost **Action** tiIndicator. |
+| **Aktualizace více ukazatelů analýzy hrozeb** | Aktualizace více tiIndicators Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro aktualizaci více tiIndicators](/graph/api/tiindicator-updatetiindicators). |
 | **Odstranit indikátor analýzy hrozeb podle ID** | Odstraňte konkrétní tiIndicator na základě ID tiIndicator. |
-| **Odstranění více ukazatelů analýzy hrozeb podle ID** | Odstraňte více tiIndicators podle jejich ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle ID](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta). |
-| **Odstranění více indikátorů analýzy hrozeb podle externích ID** | Odstraňte více tiIndicators externích ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle externích ID](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta). |
+| **Odstranění více ukazatelů analýzy hrozeb podle ID** | Odstraňte více tiIndicators podle jejich ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle ID](/graph/api/tiindicator-deletetiindicators). |
+| **Odstranění více indikátorů analýzy hrozeb podle externích ID** | Odstraňte více tiIndicators externích ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle externích ID](/graph/api/tiindicator-deletetiindicatorsbyexternalid). |
 |||
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](https://aka.ms/graphsecurityconnectorreference)konektoru.
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/microsoftgraphsecurity/)konektoru.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
-

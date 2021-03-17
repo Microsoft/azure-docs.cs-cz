@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271103"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008425"
 ---
 # <a name="get-help-with-your-system"></a>Získejte pomoc s vaším systémem.
 
@@ -37,7 +37,7 @@ Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený pro
 
 1. Na první stránce žádosti o podporu vyberte typ problému a ujistěte se, že je vybrané správné předplatné.
 
-   V části **Služba**klikněte na **všechny služby** a v části **úložiště** vyberte **avere vFXT**.
+   V části **Služba** klikněte na **všechny služby** a v části **úložiště** vyberte **avere vFXT**.
 
    Přidejte krátký souhrn a vyberte typ problému.
 
@@ -57,4 +57,4 @@ Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený pro
 
 ## <a name="request-a-quota-increase"></a>Požádat o zvýšení kvóty
 
-Přečtěte si [kvótu pro cluster vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) , kde se dozvíte, jaké součásti jsou potřeba k nasazení avere VFXT pro Azure. Z Azure Portal můžete [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
+Přečtěte si [kvótu pro cluster vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) , kde se dozvíte, jaké součásti jsou potřeba k nasazení avere VFXT pro Azure. Z Azure Portal můžete [požádat o zvýšení kvóty](../azure-portal/supportability/resource-manager-core-quotas-request.md) .

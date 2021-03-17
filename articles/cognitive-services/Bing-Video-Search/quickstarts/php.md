@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: c43abc6c87b88e9fc4a15d4ca5d5506389a8a81a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 213dec3498b76f7331f40cb24f0c796175a3fbb3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849616"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353846"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a PHP
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání videí. Tato jednoduchá aplikace PHP pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď JSON. Vzorový kód je napsán pro práci v PHP 5,6.
 
@@ -31,13 +36,13 @@ I když je tato aplikace napsaná v PHP, rozhraní API je webová služba RESTfu
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
-[Rozhraní API Bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
+[Rozhraní API Bingu pro vyhledávání videí](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
 
 1. Povolte zabezpečenou podporu protokolu HTTP v `php.ini` souboru tak, že Odkomentujete `;extension=php_openssl.dll` řádek, jak je popsáno v následujícím kódu.
 2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.
 3. Přidejte níže uvedený kód.
 4. Hodnotu `$accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné. Pro tuto `$endpoint` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
-5. Spusťte program.
+5. Spustíte program.
 
 ```php
 <?php
@@ -46,8 +51,8 @@ I když je tato aplikace napsaná v PHP, rozhraní API je webová služba RESTfu
 // ;extension=php_openssl.dll
 
 // **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// **_ Update or verify the following values. _*_
+// _*********************************************
 
 // Replace the accessKey string value with your valid access key.
 $accessKey = 'enter key here';

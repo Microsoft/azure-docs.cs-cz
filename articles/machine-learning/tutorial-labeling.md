@@ -10,15 +10,16 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: data4ml
+ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319265"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882462"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem pro klasifikaci imagí ve více třídách 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto kurzu se dozvíte, jak spravovat proces označování (označované také jako označování) obrázků, které se použijí jako data pro sestavování modelů strojového učení. Popisky dat v Azure Machine Learning jsou ve verzi Public Preview.
 
@@ -42,7 +43,7 @@ V tomto kurzu budete používat obrázky koček a psi.  Vzhledem k tomu, že ka�
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě.
 
-Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
+Existuje mnoho způsobů, jak [vytvořit pracovní prostor](how-to-manage-workspace.md). V tomto kurzu vytvoříte pracovní prostor prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -98,12 +99,13 @@ Teď, když máte přístup k datům, která mají být označená, vytvořte sv
 
 ### <a name="select-or-create-a-dataset"></a>Vybrat nebo vytvořit datovou sadu
 
-1.   Na formuláři **Vybrat nebo vytvořit datovou sadu** vyberte druhou volbu, **Vytvořte datovou sadu**a pak vyberte odkaz **z úložiště dat**.
+1.   Na formuláři **Vybrat nebo vytvořit datovou sadu** vyberte druhou volbu, **Vytvořte datovou sadu** a pak vyberte odkaz **z úložiště dat**.
 
 1. Pro formulář **vytvořit datovou sadu z úložiště** dat použijte následující vstup:
 
     1. Do formuláře **základní informace** přidejte název, v tomto příkladu budeme používat **obrázky-for-tutorial**.  Pokud chcete, přidejte popis.  Pak vyberte **Další**.
-    1. Ve formuláři pro **Výběr úložiště dat** vyberte pomocí rozevíracího seznamu **dříve vytvořené úložiště dat**, například **tutorial_images (Azure Blob Storage)** .
+    1. Ve formuláři pro **Výběr úložiště dat** vyberte **dříve vytvořené úložiště dat**, klikněte na název úložiště dat a vyberte **vybrat úložiště dat**.
+    1. Na další stránce Ověřte, zda je aktuálně vybrané úložiště dat správné. Pokud ne, vyberte **dříve vytvořené úložiště dat** a opakujte předchozí krok.
     1. Dál ještě na formuláři pro **Výběr úložiště dat** vyberte **Procházet** a pak vyberte DogsCats **(více tříd**).  Vyberte **Uložit** a jako cestu použijte **/MultiClass-DogsCats** .
     1. Kliknutím na tlačítko **Další** potvrďte podrobnosti **a vytvořte** datovou sadu a vytvořte ji.
     1. V seznamu vyberte kroužek vedle názvu datové sady, například **obrázky-for-tutorial**.
@@ -118,7 +120,7 @@ Pokračujte výběrem tlačítka **Další**.
 
 ### <a name="label-classes"></a>Třídy popisků
 
-1. Ve formuláři **třídy popisků** zadejte název popisku a pak vyberte **+ Přidat popisek** k zadání dalšího popisku.  Pro tento projekt jsou popisky **Cat**, **pes**a **nejisté**.
+1. Ve formuláři **třídy popisků** zadejte název popisku a pak vyberte **+ Přidat popisek** k zadání dalšího popisku.  Pro tento projekt jsou popisky **Cat**, **pes** a **nejisté**.
 
 1. Pokud jste přidali všechny popisky, vyberte **Další** .
 
@@ -130,7 +132,7 @@ Pokračujte výběrem tlačítka **Další**.
 
 1. Vyberte **Další**.
 
-1. Pokud používáte pracovní prostor Enterprise, zobrazí se v části s **asistencí s popisem ml** .  Ponechejte políčko nezaškrtnuté. Označování s asistencí ML vyžaduje více dat, než v tomto kurzu budete používat.
+1. V části s **asistencí pro označování** ponechejte políčko nezaškrtnuté. Označování s asistencí ML vyžaduje více dat, než v tomto kurzu budete používat.
 
 1. Vyberte **Vytvořit projekt**.
 

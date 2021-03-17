@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: quickstart
 ms.date: 07/16/2020
-ms.openlocfilehash: 6d03870a24e25327b43c14e57715cdaea23e700d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: eddae69c0946ab135540b77d3cc89937079e6293
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132876"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016249"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base"></a>Rychlý Start: získání odpovědi od znalostní báze Knowledge Base
 
@@ -35,8 +35,9 @@ ms.locfileid: "87132876"
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Test znalostní báze pomocí dávkového souboru](batch-testing.md)
+> [Test znalostní báze pomocí dávkového souboru](../how-to/test-knowledge-base.md#batch-test-with-tool)
 
 Další informace o metadatech:
 * [Vytváření – přidání metadat do páru QnA](../How-To/edit-knowledge-base.md#add-metadata)
-* [Prediktivní dotazování – filtrování odpovědí podle metadat](../How-To/metadata-generateanswer-usage.md#use-metadata-to-filter-answers-by-custom-metadata-tags)
+* [Prediktivní dotazování – filtrování odpovědí podle metadat](../How-To/query-knowledge-base-with-metadata.md)
+

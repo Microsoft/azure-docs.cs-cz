@@ -3,7 +3,7 @@ title: Živý datový proud s místními kodéry pomocí Azure Portal | Microsof
 description: Tento kurz vás provede kroky pro vytvoření Kanálu, který je nakonfigurován pro průchozí doručování.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 6f4acd95-cc64-4dd9-9e2d-8734707de326
@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 51d3d859bbd176a6e1fac92b75c6120301a5066f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 6dd2f8a228c582e99f7d7281bd2d31faff8cadda
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084513"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010792"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Živé streamování pomocí místních kodérů pomocí Azure Portal
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -30,11 +33,11 @@ ms.locfileid: "87084513"
 > 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Tento kurz vás provede kroky pro vytvoření **Kanálu**, který je nakonfigurován pro průchozí doručování. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující:
 
 * Účet Azure: Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
@@ -130,7 +133,7 @@ Další podrobnosti o průchozích kanálech najdete v tématu [Živé streamov�
 ## <a name="get-ingest-urls"></a>Získání ingestovaných adres URL
 Po vytvoření kanálu můžete získat ingestované adresy URL, které poskytnete kodéru pro kódování v reálném čase. Kodér tyto adresy URL používá ke vkládání živého proudu.
 
-![Vytvořeno](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
+![Snímek obrazovky zobrazující stránku živého streamování s vybraným kanálem a zobrazeným podoknem kanálů.](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>Sledování události
 Pokud chcete sledovat událost, klikněte na tlačítko **Sledovat** na webu Azure Portal nebo zkopírujte adresu URL streamování a použijte přehrávač dle svého výběru. 

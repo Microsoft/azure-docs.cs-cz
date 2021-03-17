@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 295897be03a7dd8e397e8202ff1cf10e6d59cdfb
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119211"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753857"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikace démona, která volá webová rozhraní API – získá token.
 
@@ -91,6 +91,10 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
     // Mitigation: Change the scope to be as expected.
 }
 ```
+
+### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient používá mezipaměť tokenu aplikace.
+
+V MSAL.NET `AcquireTokenForClient` používá mezipaměť tokenů aplikace. (Všechny ostatní metody AcquireToken *XX* používají mezipaměť tokenu uživatele.) Nevolejte `AcquireTokenSilent` před voláním `AcquireTokenForClient` , protože `AcquireTokenSilent` používá mezipaměť tokenu *uživatele* . `AcquireTokenForClient` kontroluje samotný mezipaměť tokenu *aplikace* a aktualizuje ji.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -200,11 +204,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Další informace najdete v dokumentaci k protokolu: [Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="application-token-cache"></a>Mezipaměť tokenů aplikace
-
-V MSAL.NET `AcquireTokenForClient` používá mezipaměť tokenů aplikace. (Všechny ostatní metody AcquireToken*XX* používají mezipaměť tokenu uživatele.) Nevolejte `AcquireTokenSilent` před voláním `AcquireTokenForClient` , protože `AcquireTokenSilent` používá mezipaměť tokenu *uživatele* . `AcquireTokenForClient`kontroluje samotný mezipaměť tokenu *aplikace* a aktualizuje ji.
-
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Použili jste prostředek/. výchozí obor?
 
@@ -229,21 +229,24 @@ Content: {
 }
 ```
 
+### <a name="are-you-calling-your-own-api"></a>Voláte své vlastní rozhraní API?
+
+Pokud voláte vlastní webové rozhraní API a nepovedlo se mu přidat oprávnění aplikace k registraci aplikace pro vaši aplikaci démona, vystaví se na vašem webovém rozhraní API role aplikace?
+
+Podrobnosti najdete v tématu vystavení [oprávnění aplikace (aplikační role)](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) a zejména o [tom, že služba Azure AD vystavuje tokeny pro vaše webové rozhraní API jenom pro povolené klienty](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients).
+
 ## <a name="next-steps"></a>Další kroky
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Aplikace démona – volání webového rozhraní API](./scenario-daemon-call-api.md?tabs=dotnet)
+Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](./scenario-daemon-call-api.md?tabs=dotnet).
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Aplikace démona – volání webového rozhraní API](./scenario-daemon-call-api.md?tabs=python)
+Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](./scenario-daemon-call-api.md?tabs=python).
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Aplikace démona – volání webového rozhraní API](./scenario-daemon-call-api.md?tabs=java)
+Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](./scenario-daemon-call-api.md?tabs=java).
 
 ---

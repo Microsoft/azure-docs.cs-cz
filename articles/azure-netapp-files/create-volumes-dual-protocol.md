@@ -12,32 +12,48 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 8/11/2020
+ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: f4cc253de0de9d099cfc4881f48182cf9b2a1616
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 0079c123f908a38cc1e4923790439f18352bf3ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134577"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574638"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
-Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMBv3 nebo duálního protokolu. V tomto článku se dozvíte, jak vytvořit svazek, který využívá duální protokol NFSv3 a SMB s podporou mapování uživatelů LDAP.  
+Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu. V tomto článku se dozvíte, jak vytvořit svazek, který využívá duální protokol NFSv3 a SMB s podporou mapování uživatelů LDAP.  
 
 
 ## <a name="before-you-begin"></a>Než začnete 
 
-* Musíte mít už nastavený fond kapacity.  
+* Je potřeba, abyste už vytvořili fond kapacit.  
     Viz [nastavení fondu kapacit](azure-netapp-files-set-up-capacity-pool.md).   
 * Podsíť musí být delegovaná na Azure NetApp Files.  
     Viz [delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
 ## <a name="considerations"></a>Požadavky
 
-* Ujistěte se, že splňujete [požadavky pro připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
+* Ujistěte se, že splňujete [požadavky pro připojení ke službě Active Directory](create-active-directory-connections.md#requirements-for-active-directory-connections). 
 * Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.
-* Zajistěte, aby byl klient systému souborů NFS aktuální a běžel nejnovější aktualizace operačního systému.
+* Ujistěte se, že je klient NFS aktuální a že používá nejnovější aktualizace pro daný operační systém.
+* Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. Můžete to udělat tak, že nainstalujete a nakonfigurujete roli [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
+* Svazky s duálním protokolem momentálně nepodporují Azure Active Directory Domain Services (AADDS).  
+* Verze systému souborů NFS používaná svazkem s duálním protokolem je NFSv3. V takovém případě platí následující požadavky:
+    * Duální protokol nepodporuje rozšířené atributy seznamů ACL systému Windows `set/get` z klientů systému souborů NFS.
+    * Klienti NFS nemohou měnit oprávnění pro styl zabezpečení systému souborů NTFS a klienti systému Windows nemohou měnit oprávnění pro svazky s duálním protokolem ve stylu UNIX.   
+
+    Následující tabulka popisuje styly zabezpečení a jejich účinky:  
+    
+    | Styl zabezpečení    | Klienti, kteří mohou měnit oprávnění   | Oprávnění, která mohou klienti používat  | Výsledný efektivní styl zabezpečení    | Klienti, kteří mají přístup k souborům     |
+    |-  |-  |-  |-  |-  |
+    | `Unix`    | NFS   | Bity režimu NFSv3   | UNIX  | Systém souborů NFS a Windows   |
+    | `Ntfs`    | Windows   | Seznamy řízení přístupu NTFS     | NTFS  |Systém souborů NFS a Windows|
+* Uživatelé systému UNIX, kteří přidávají svazek se zabezpečením NTFS pomocí systému souborů NFS, budou ověřeni jako uživatel systému Windows `root` pro systém UNIX `root` a `pcuser` pro všechny ostatní uživatele. Před připojením svazku při použití systému souborů NFS se ujistěte, že tyto uživatelské účty existují ve službě Active Directory. 
+* Pokud máte velké topologie a používáte `Unix` styl zabezpečení se svazkem se dvěma protokoly nebo LDAP s rozšířenými skupinami, Azure NetApp Files pravděpodobně nepůjde získat přístup ke všem serverům v topologiích.  Pokud k této situaci dojde, požádejte o pomoc tým svého účtu.  <!-- NFSAAS-15123 --> 
+* Pro vytvoření svazku se dvěma protokoly nepotřebujete certifikát kořenové certifikační autority serveru. Je vyžadován pouze v případě, že je povolen protokol LDAP over TLS.
+
 
 ## <a name="create-a-dual-protocol-volume"></a>Vytvoření svazku se dvěma protokoly
 
@@ -45,13 +61,13 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
     ![Přejít na svazky](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  V okně vytvořit svazek klikněte na **vytvořit**a zadejte informace pro následující pole na kartě základy:   
+2.  V okně vytvořit svazek klikněte na **vytvořit** a zadejte informace pro následující pole na kartě základy:   
     * **Název svazku**      
         Zadejte název svazku, který vytváříte.   
 
         Název svazku musí být v rámci každého fondu kapacity jedinečný. Musí mít aspoň tři znaky dlouhé. Můžete použít jakékoli alfanumerické znaky.   
 
-        `default`Název svazku nelze použít.
+        Nemůžete použít `default` nebo `bin` jako název svazku.
 
     * **Fond kapacit**  
         Zadejte fond kapacit, ve kterém chcete vytvořit svazek.
@@ -60,6 +76,11 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
         Určuje velikost logického úložiště, které je přidělené svazku.  
 
         Pole **Dostupná kvóta** zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.  
+
+    * **Propustnost (MiB/S)**   
+        Pokud je svazek vytvořený v manuálním fondu kapacity QoS, určete propustnost, kterou pro svazek požadujete.   
+
+        Pokud se svazek vytvoří ve fondu kapacity auto QoS, hodnota zobrazená v tomto poli je (propustnost × úroveň služby).   
 
     * **Virtuální síť**  
         Zadejte službu Azure Virtual Network (VNet), ze které chcete získat přístup ke svazku.  
@@ -76,17 +97,14 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** a v rozevírací nabídce vyberte zásadu snímku. 
+    * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** , určete, jestli chcete cestu k snímku skrýt, a v rozevírací nabídce vyberte zásadu snímku. 
 
         Informace o vytváření zásad snímku najdete v tématu [Správa zásad snímků](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
         ![Zobrazit rozšířený výběr](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. Klikněte na **protokol**a pak proveďte následující akce:  
+3. Klikněte na **protokol** a pak proveďte následující akce:  
     * Jako typ protokolu pro svazek vyberte **duální protokol (NFSv3 a SMB)** .   
-
-    * V rozevíracím seznamu vyberte připojení **služby Active Directory** .  
-    Služba Active Directory, kterou použijete, musí mít certifikát kořenové certifikační autority serveru. 
 
     * Zadejte **cestu svazku** pro svazek.   
     Tato cesta svazku je název sdíleného svazku. Název musí začínat abecedním znakem a musí být jedinečný v rámci každého předplatného a každé oblasti.  
@@ -103,34 +121,17 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
  
     Svazek dědí atributy předplatného, skupiny prostředků a umístění z fondu kapacity. Stav nasazení svazku můžete monitorovat na kartě Oznámení.
 
-## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Odeslat veřejný kořenový certifikát certifikační autority služby Active Directory  
-
-1.  Postupujte podle pokynů k instalaci a konfiguraci [certifikační](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) autority a přidat certifikační autoritu. 
-
-2.  Podle pokynů v [části zobrazení certifikátů pomocí modulu snap-](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) in MMC použijte modul snap-in konzoly MMC a nástroj Správce certifikátů.  
-    Pomocí modulu snap-in Správce certifikátů vyhledejte kořenový nebo vydávající certifikát pro místní zařízení. V jednom z následujících nastavení byste měli spustit příkazy modulu snap-in Správa certifikátů:  
-    * Klient založený na systému Windows, který se připojil k doméně a má nainstalovaný kořenový certifikát 
-    * Další počítač v doméně obsahující kořenový certifikát  
-
-3. Exportujte kořenový certifikát.  
-    Zajistěte, aby byl certifikát exportován v kódování X. 509 kódované pomocí Base-64 (. Formát CER): 
-
-    ![Průvodce exportem certifikátu](../media/azure-netapp-files/certificate-export-wizard.png)
-
-4. Přejděte na účet NetApp svazku se dvěma protokoly, klikněte na **připojení služby Active Directory**a nahrajte certifikát kořenové certifikační autority pomocí okna **připojit se ke službě Active Directory** :  
-
-    ![Certifikát kořenové certifikační autority serveru](../media/azure-netapp-files/server-root-ca-certificate.png)
-
-    Zajistěte, aby název certifikační autority mohl přeložit služba DNS. Tento název je pole "vystavitelný" nebo "Issuer" na certifikátu:  
-
-    ![Informace o certifikátu](../media/azure-netapp-files/certificate-information.png)
-
 ## <a name="manage-ldap-posix-attributes"></a>Správa atributů LDAP POSIX
 
 Pomocí modulu snap-in konzoly MMC Uživatelé a počítače služby Active Directory můžete spravovat atributy POSIX, jako je UID, domovský adresář a další hodnoty.  Následující příklad ukazuje Editor atributů služby Active Directory:  
 
 ![Editor atributů služby Active Directory](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
+Pro uživatele LDAP a skupiny LDAP musíte nastavit následující atributy: 
+* Požadované atributy pro uživatele LDAP:   
+    `uid`: Alice, `uidNumber` : 139, `gidNumber` : 555, `objectClass` : posixAccount
+* Požadované atributy pro skupiny LDAP:   
+    `objectClass`: "POSIX", `gidNumber` : 555
 
 ## <a name="configure-the-nfs-client"></a>Konfigurace klienta NFS 
 
@@ -138,5 +139,5 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 
 ## <a name="next-steps"></a>Další kroky  
 
-* [Nejčastější dotazy týkající se duálního protokolu](azure-netapp-files-faqs.md#dual-protocol-faqs)
-* [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md) 
+* [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md)
+* [Řešení potíží se svazky SMB nebo Dual-Protocol](troubleshoot-dual-protocol-volumes.md)

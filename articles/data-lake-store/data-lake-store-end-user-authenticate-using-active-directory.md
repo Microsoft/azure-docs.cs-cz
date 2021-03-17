@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511315"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103777"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -28,9 +28,9 @@ Azure Data Lake Storage Gen1 používá pro ověřování Azure Active Directory
 
 Obě tyto možnosti mají za následek, že vaše aplikace bude k dispozici s tokenem OAuth 2,0, který se připojí ke každému požadavku, který jste odeslali Data Lake Storage Gen1 nebo Azure Data Lake Analytics.
 
-Tento článek pojednává o tom, jak vytvořit **nativní aplikaci Azure AD pro ověřování koncových uživatelů**. Pokyny týkající se konfigurace aplikací Azure AD pro ověřování služby a služby najdete v tématu [ověřování služby-služba pomocí Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
+Tento článek pojednává o tom, jak vytvořit **nativní aplikaci Azure AD pro ověřování koncových uživatelů**. Pokyny týkající se konfigurace aplikací Azure AD pro ověřování služby a služby najdete v tématu [ověřování služby-služba pomocí Data Lake Storage Gen1 pomocí Azure Active Directory](./data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 * ID vašeho předplatného. Můžete ho načíst z Azure Portal. Například je k dispozici v okně Data Lake Storage Gen1 účet.
@@ -97,17 +97,17 @@ Pro načtení identifikátoru URI přesměrování proveďte následující krok
 
 2. V okně **Nastavení** aplikace klikněte na **požadovaná oprávnění**a pak klikněte na **Přidat**.
 
-    ![ID klienta](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![Snímek obrazovky okna nastavení s parametrem redirect U R I s názvem a přesměrování U R I v okně s skutečným U R, které jsem vyvolal](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. V okně **Přidat přístup přes rozhraní API** klikněte na **Vybrat rozhraní API**, klikněte na **Azure Data Lake**a pak klikněte na **Vybrat**.
 
-    ![ID klienta](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![Snímek obrazovky okna přidat přístup přes rozhraní API pomocí možnosti vyberte rozhraní API, které se vyvolaly, a vyberte okno vybrat rozhraní API s možností Azure Data Lake a možnost vybrat s názvem.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
 4.  V okně **Přidat přístup přes rozhraní API** klikněte na **vybrat oprávnění**. Zaškrtnutím políčka udělíte **úplný přístup k Data Lake Store**a potom klikněte na **Vybrat**.
 
-    ![ID klienta](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    ![Snímek obrazovky okna přidat přístup přes rozhraní API s možností vybrat oprávnění a v okně Povolit přístup s úplným přístupem k možnosti služby Azure Data Lake a s možností vybrat s názvem.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
-    Klikněte na **Done** (Hotovo).
+    Klikněte na **Hotovo**.
 
 5. Zopakováním posledních dvou kroků udělíte taky oprávnění pro **Windows Azure rozhraní API pro správu služeb** .
 

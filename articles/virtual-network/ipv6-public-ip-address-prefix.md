@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e3d3c01ba1190871da39ce27de6a95952d09be1
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420522"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538202"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>Vyhrazená předpona veřejných adres IPv6
 
@@ -28,7 +28,7 @@ Všechny veřejné IP adresy, které rezervujete, jsou přidružené k oblasti A
 > [!WARNING]
 > Nechtěně neodstraňujte veřejné IP adresy pomocí opatrnosti. Odstraněním veřejné IP adresy se odebere z vašeho předplatného a nebudete je moct obnovit (ani s podporou Azure Support).
 
-Kromě rezervace individuálních adres IPv6 můžete pro své použití rezervovat souvislé rozsahy adres IPv6 pro Azure (označované jako předpona IP adresy).  Podobně jako jednotlivé IP adresy jsou rezervované předpony přidružené k oblasti Azure podle vašeho výběru a s vaším předplatným Azure. Vyhrazení předvídatelného souvislého rozsahu adres má mnoho využití. Například můžete významně zjednodušit seznam *povolených* IP adres vašich aplikací hostovaných v Azure vaší společností a vašimi zákazníky, protože statické rozsahy IP adres je možné snadno doložit do místních bran firewall.  Podle potřeby můžete vytvořit jednotlivé veřejné IP adresy z předpony IP adres a při odstranění těchto jednotlivých veřejných IP adres, které se *vrátí* do rezervovaného rozsahu, abyste je mohli znovu použít později. Všechny IP adresy v rámci vaší předpony IP adres jsou vyhrazené pro vaše výhradní použití až do doby, kdy jste tuto předponu odstranili.
+Kromě rezervace individuálních adres IPv6 můžete pro své použití rezervovat souvislé rozsahy adres IPv6 pro Azure (označované jako předpona IP adresy).  Podobně jako jednotlivé IP adresy jsou rezervované předpony přidružené k oblasti Azure podle vašeho výběru a s vaším předplatným Azure. Vyhrazení předvídatelného souvislého rozsahu adres má mnoho využití. Například můžete výrazně zjednodušit *filtrování* protokolu IP vašich aplikací hostovaných v Azure vaší společností a vašimi zákazníky, protože statické rozsahy IP adres je možné snadno programovat do místních bran firewall.  Podle potřeby můžete vytvořit jednotlivé veřejné IP adresy z předpony IP adres a při odstranění těchto jednotlivých veřejných IP adres, které se *vrátí* do rezervovaného rozsahu, abyste je mohli znovu použít později. Všechny IP adresy v rámci vaší předpony IP adres jsou vyhrazené pro vaše výhradní použití až do doby, kdy jste tuto předponu odstranili.
 
 
 
@@ -38,7 +38,7 @@ K dispozici jsou následující velikosti předpony veřejných IP adres:
 -  Minimální velikost předpony IPv6:/127 = 2 adresy
 -  Maximální velikost předpony IPv6:/124 = 16 adres
 
-Velikost předpony je zadaná jako velikost masky CIDR (Classless Inter-Domain Routing). Například maska/128 představuje konkrétní adresu IPv6, protože adresy IPv6 se skládají z 128 bitů.
+Velikost předpony je zadaná jako velikost masky CIDR (Inter-Domain Routing). Například maska/128 představuje konkrétní adresu IPv6, protože adresy IPv6 se skládají z 128 bitů.
 
 ## <a name="pricing"></a>Ceny
  

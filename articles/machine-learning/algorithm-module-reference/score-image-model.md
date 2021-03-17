@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: b949603b3e6ee51311f9c54f3e1326217f00c82d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe57a9e8ce9b14f7d1346d819965576770afef3b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039106"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324885"
 ---
 # <a name="score-image-model"></a>Model určení skóre obrázků
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vygenerovat předpovědi s využitím modelu vyškolených imagí pro data vstupních imagí.
 
@@ -38,8 +38,8 @@ Po vygenerování sady výsledků pomocí [modelu obrázku skóre](score-image-m
 
 ### <a name="publish-scores-as-a-web-service"></a>Publikování skóre jako webové služby
 
-Běžné použití bodování je vrácení výstupu v rámci prediktivní webové služby. Další informace najdete v [tomto kurzu](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) o nasazení koncového bodu v reálném čase na základě kanálu v Návrháři Azure Machine Learning.
+Běžné použití bodování je vrácení výstupu v rámci prediktivní webové služby. Další informace najdete v [tomto kurzu](../tutorial-designer-automobile-price-deploy.md) o nasazení koncového bodu v reálném čase na základě kanálu v Návrháři Azure Machine Learning.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

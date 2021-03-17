@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c855fff9e5791b9c0cf870acfc6de53e7a700b2
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708939"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653992"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Úvod k řešení potíží s připojením v Azure Network Watcher
 
 Funkce řešení potíží s připojením Network Watcher poskytuje možnost kontrolovat přímé připojení TCP z virtuálního počítače k virtuálnímu počítači (VM), plně kvalifikovanému názvu domény (FQDN), identifikátoru URI nebo adrese IPv4. Scénáře sítě jsou složité, jsou implementované pomocí skupin zabezpečení sítě, bran firewall, tras definovaných uživatelem a prostředků poskytovaných Azure. Složité konfigurace usnadňují řešení potíží s připojením náročné. Network Watcher pomáhá zkrátit dobu, po kterou můžete najít a zjistit problémy s připojením. Vrácené výsledky mohou poskytnout přehled o tom, zda je problém s připojením způsoben platformou nebo problémem s konfigurací uživatele. Připojení se dá zkontrolovat pomocí [PowerShellu](network-watcher-connectivity-powershell.md), rozhraní příkazového [řádku Azure](network-watcher-connectivity-cli.md)a [REST API](network-watcher-connectivity-rest.md).
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
 ## <a name="response"></a>Odpověď
 
@@ -38,7 +38,7 @@ V následující tabulce jsou uvedeny vlastnosti vrácené při dokončení ře�
 |ProbesSent     | Počet sond odeslaných během kontroly. Maximální hodnota je 100.        |
 |ProbesFailed     | Počet sond, které během kontroly selhaly. Maximální hodnota je 100.        |
 |Směrování     | Směrování podle cesty směrování ze zdroje do cíle.        |
-|Směrování []. Textový     | Typ prostředku Možné hodnoty jsou **source**, **VirtualAppliance**, **VnetLocal**a **Internet**.        |
+|Směrování []. Textový     | Typ prostředku Možné hodnoty jsou **source**, **VirtualAppliance**, **VnetLocal** a **Internet**.        |
 |Směrování []. Účet | Jedinečný identifikátor směrování|
 |Směrování []. Adresáře | IP adresa směrování.|
 |Směrování []. Prostředku | ResourceID prostředku směrování, pokud je segmentem směrování prostředek Azure. Pokud se jedná o internetový prostředek, ResourceID je **Internet**. |
@@ -72,7 +72,7 @@ Následuje příklad problému nalezeného na směrování.
 
 Řešení potíží s připojením vrátí typy chyb připojení. Následující tabulka obsahuje seznam aktuálních vrácených typů selhání.
 
-|Typ  |Description  |
+|Typ  |Popis  |
 |---------|---------|
 |Procesor     | Vysoké využití procesoru.       |
 |Memory (Paměť)     | Vysoké využití paměti.       |

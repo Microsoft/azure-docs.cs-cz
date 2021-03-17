@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: a5a7a31c174271f963bb005f10b8376a59133d36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513130"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014869"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Výměna diskové jednotky na zařízení StorSimple řady 8000
 
@@ -103,7 +103,7 @@ Po selhání jednotky ve vašem zařízení StorSimple a jejím odebráním se p
     **Obrázek 6**  Posuňte nosič jednotky na skříň.
 3. Když je vložen nosič jednotek, uzavřete popisovač obslužné rutiny jednotky a pokračujte tak, že přehrajete nosič jednotek do skříně, dokud se popisovač obslužné rutiny jednotky nepřichytí do uzamčené pozice.
 4. Použijte klíč zámku, který byl poskytnutý Microsoftem (tamperproof Torx Screwdriver), abyste zabezpečili popisovač nosné frekvence tím, že zapnete zámek a posunete ho po směru hodinových ručiček.
-5. Ověřte, zda byla náhrada úspěšná a zda je jednotka funkční. Přejděte k Azure Portal a přejděte do **nastavení zařízení**  >  **stav hardwaru**. V části **sdílené součásti** nebo **sdílené součásti eBOD**by měl být stav jednotky zelený, což značí, že je v pořádku.
+5. Ověřte, zda byla náhrada úspěšná a zda je jednotka funkční. Přejděte k Azure Portal a přejděte do **nastavení zařízení**  >  **stav hardwaru**. V části **sdílené součásti** nebo **sdílené součásti eBOD** by měl být stav jednotky zelený, což značí, že je v pořádku.
 
    
    > [!NOTE]

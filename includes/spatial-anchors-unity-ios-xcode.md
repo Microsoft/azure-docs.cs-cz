@@ -1,55 +1,45 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/29/2019
-ms.author: rgarcia
-ms.openlocfilehash: b052772bbfe9d69e430d9f722d8db56b48db7610
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 81d2804d99896200ea6f68592ea168112e172c20
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72933479"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762593"
 ---
-Vyberte **sestavení**. V dialogovém okně, které se otevře, vyberte složku, do které chcete exportovat projekt Xcode.
+Vyberte **sestavení**. V podokně, které se otevře, vyberte složku, do které se má projekt Xcode exportovat.
 
-Po dokončení exportu se zobrazí složka obsahující exportovaný projekt Xcode.
+   Po dokončení exportu se zobrazí složka, která obsahuje exportovaný projekt Xcode.
 
-> [!NOTE]
-> Pokud se zobrazí okno s dotazem, jestli chcete nahradit nebo připojit, doporučujeme vybrat **připojit** , protože je rychlejší. Pokud měníte prostředky ve scéně, je nutné vybrat možnost **nahradit** . (Například pokud přidáváte, odebíráte nebo měníte vztahy nadřazený-podřízený nebo pokud přidáváte, odebíráte nebo měníte vlastnosti.) Pokud provádíte pouze změny zdrojového kódu, musí být příkaz **Append** dostatečně k dispozici.
+   > [!NOTE]
+   > Pokud se zobrazí okno se zprávou s dotazem, zda chcete nahradit nebo připojit, doporučujeme vybrat možnost **připojit**, protože je rychlejší. Možnost **nahradit** můžete vybrat jenom v případě, že měníte prostředky ve scéně. Můžete například přidat, odebrat nebo změnit vztahy nadřazenosti/podřízenosti nebo přidat, odebrat nebo změnit vlastnosti. Pokud provádíte pouze změny zdrojového kódu, musí být příkaz **Append** dostatečně k dispozici.
 
-### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Převeďte projekt Xcode na xcworkspace obsahující odkazy na prostorové kotvy Azure.
+## <a name="open-the-xcode-project"></a>Otevřete projekt Xcode
 
-V exportované složce projektu Xcode spusťte tento příkaz v terminálu a nainstalujte nezbytný CocoaPods pro projekt:
+Nyní můžete `Unity-iPhone.xcodeproj` projekt otevřít v Xcode. 
 
-```bash
-pod install --repo-update
+Můžete buď spustit Xcode a otevřít exportovaný projekt, `Unity-iPhone.xcodeproj` nebo spustit projekt v Xcode spuštěním následujícího příkazu z umístění, kam jste projekt exportovali:
+
+ ```bash
+open ./Unity-iPhone.xcodeproj
 ```
-
-Nyní můžete otevřít `Unity-iPhone.xcworkspace` a otevřít projekt v Xcode:
-
-```bash
-open ./Unity-iPhone.xcworkspace
-```
-
-> [!NOTE]
-> Pokud máte CocoaPod problémy po upgradu na macOS Catalina (10,15), Projděte [si postup](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015) řešení potíží.
 
 Vyberte uzel root **Unity-iPhone** pro zobrazení nastavení projektu a pak vyberte kartu **Obecné** .
 
-V části **podepisování**se ujistěte, že je povoleno **Automatické řízení podepisování** . Pokud není, povolte ji a potom v dialogovém okně, které se zobrazí, vyberte **Povolit automatické** obnovení nastavení sestavení.
+V části **informace o nasazení** ověřte, že je cíl nasazení nastavený na **iOS 11,0**.
 
-V části **informace o nasazení**zajistěte, aby byl **cíl nasazení** nastaven na `11.0`hodnotu.
+Vyberte kartu **možnosti podepisování &** a ujistěte se, že je povoleno **Automatické řízení podepisování** . Pokud není, povolte ji a pak resetujte nastavení sestavení výběrem možnosti **Povolit automaticky** v zobrazeném podokně.
 
-### <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do zařízení s iOS
+## <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do zařízení s iOS
 
 Připojte zařízení s iOS k počítači Mac a nastavte **aktivní schéma** na zařízení s iOS.
 
-![Vyberte zařízení](./media/spatial-anchors-unity/select-device.png)
+   ![Snímek obrazovky s tlačítkem mého iPhonu pro výběr zařízení](./media/spatial-anchors-unity/select-device.png)
 
 Vyberte **Sestavit a potom spusťte aktuální schéma**.
 
-![Nasazení a spuštění](./media/spatial-anchors-unity/deploy-run.png)
-
-> [!NOTE]
-> Pokud se zobrazí `library not found for -lPods-Unity-iPhone` chyba, pravděpodobně jste `.xcodeproj` soubor otevřeli místo `.xcworkspace` souboru.
+   ![Snímek obrazovky s tlačítkem "nasadit a spustit" tlačítko se šipkou](./media/spatial-anchors-unity/deploy-run.png)

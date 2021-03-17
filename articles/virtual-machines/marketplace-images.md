@@ -3,18 +3,18 @@ title: Zadání informací o plánu nákupu na webu Marketplace pomocí Azure Po
 description: Naučte se při vytváření imagí v galerii sdílených imagí zadat Azure Marketplace podrobnosti plánu nákupu.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3de79e5cb3db2d0c52d13826900ec7160271edf9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9df1f6b02e6572c8f2153016c0142912e24fcfe8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225095"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562533"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Při vytváření imagí zadejte Azure Marketplace informace o plánu nákupu.
 
@@ -24,15 +24,13 @@ Další informace o hledání a používání imagí na webu Marketplace najdete
 
 
 ## <a name="get-the-source-vm-information"></a>Získat informace o zdrojovém virtuálním počítači
-Pokud máte i nadále původní virtuální počítač, můžete z něj získat informace o plánu, vydavateli a SKU pomocí Get-AzVM. Tento příklad načte virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* a pak zobrazí informace o plánu nákupu.
+Pokud máte i nadále původní virtuální počítač, můžete z něj získat název plánu, vydavatele a informace o produktu pomocí Get-AzVM. Tento příklad načte virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* a pak zobrazí informace o plánu nákupu pro virtuální počítač.
 
 ```azurepowershell-interactive
 $vm = Get-azvm `
    -ResourceGroupName myResourceGroup `
    -Name myVM
-$vm.Plan.Publisher
-$vm.Plan.Name
-$vm.Plan.Product
+$vm.Plan
 ```
 
 ## <a name="create-the-image-definition"></a>Vytvoření definice image
@@ -51,7 +49,7 @@ $gallery = Get-AzGallery `
    -ResourceGroupName myGalleryRG
 ```
 
-Vytvořte definici Image pomocí `-PurchasePlanPublisher` `-PurchasePlanProduct` parametrů, a `-PurchasePlanName` .
+Vytvořte definici Image pomocí  `-PurchasePlanPublisher` `-PurchasePlanProduct` parametrů, a `-PurchasePlanName` .
 
 ```azurepowershell-interactive
  $imageDefinition = New-AzGalleryImageDefinition `

@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b2b405e7f6babf84ef8297310a5a7a34c3f2dc11
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133806"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623326"
 ---
 Cognitive Services poskytuje dvě služby pro zpracování v přirozeném jazyce, [Language Understanding](../luis/what-is-luis.md) a [QnA maker](../qnamaker/overview/overview.md), každý s jiným účelem. Informace o tom, kdy používat jednotlivé služby a jak se vzájemně přidávají
 
@@ -33,7 +33,7 @@ Pokud robot váš chat obdrží text `How do I get to the Human Resources buildi
 |Služba|Klientská aplikace určuje|
 |--|--|
 |LUIS|**Určuje** , zda je uživatel členem textu – služba nevrátí odpověď na otázku. Například tento text je klasifikován jako shodný s `FindLocation` záměrem.<br>|
-|QnA Maker|**Vrátí odpověď na dotaz** z vlastní znalostní báze. Například tento text je určen jako otázka se statickou textovou odpovědí `Get on the #9 bus and get off at Franklin street` .|
+|QnA Maker|**Vrátí odpověď na dotaz** z vlastní znalostní báze. Například tento text je určen jako otázka se statickou textovou odpovědí  `Get on the #9 bus and get off at Franklin street` .|
 |||
 
 > [!div class="mx-imgBorder"]
@@ -71,9 +71,9 @@ Tuto odpověď třetí strany můžete zobrazit uživateli k ověření. Jakmile
 
 Pokud vaše chatovací robot potřebuje více informací, než je kterákoli z poskytované služby, pokračujte v rozhodování pomocí obou služeb a zpracujte obě odezvy v klientské aplikaci.
 
-Pomocí nástroje bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** můžete vytvořit proces, který bude spolupracovat s oběma službami. Tento nástroj vytvoří nejvyšší LUIS aplikaci záměrů, které odesílají mezi LUIS a QnA Maker jako podřízené aplikace. [Další informace](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs) o integraci s LUIS, QnA maker a robot Framework
+Pomocí nástroje bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** můžete vytvořit proces, který bude spolupracovat s oběma službami. Tento nástroj vytvoří nejvyšší LUIS aplikaci záměrů, které odesílají mezi LUIS a QnA Maker jako podřízené aplikace. [Další informace](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs) o integraci s LUIS, QnA maker a robot Framework
 
-K implementaci tohoto typu robota chatu použijte ukázku tvůrce robota, **NLP s odesláním**v [jazyce C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) nebo [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch).
+K implementaci tohoto typu robota chatu použijte ukázku tvůrce robota, **NLP s odesláním** v [jazyce C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) nebo [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch).
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -88,6 +88,6 @@ Implementujte osvědčené postupy pro každou službu:
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [Rozhraní příkazového řádku pro odesílání](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Ukázky pro robot Framework](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Azure bot Service](/azure/bot-service/bot-service-overview-introduction)
 * [Emulátor Azure bot](https://github.com/Microsoft/BotFramework-Emulator)
 * [Webový chat pro robot Framework](https://github.com/microsoft/BotFramework-WebChat)

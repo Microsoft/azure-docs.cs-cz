@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 99368da8b4018e93ad537e4722ffefd476e61291
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489465"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573683"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Integrace Trusona s Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Abyste mohli začít, budete potřebovat:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * [Tenant Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
-* [Zkušební účet](https://www.trusona.com/aadb2c) na adrese Trusona
+* [Zkušební účet](https://www.trusona.com/) na adrese Trusona
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -40,7 +40,7 @@ V tomto scénáři Trusona funguje jako zprostředkovatel identity pro Azure AD 
 
 ![Diagram architektury Trusona](media/partner-trusona/trusona-architecture-diagram.png)
 
-| Krok | Popis |
+| Krok | Description |
 |------|------|
 |1     | Uživatel se pokusí přihlásit k aplikaci nebo se k ní zaregistrovat. Uživatel je ověřený prostřednictvím Azure AD B2C zásady registrace a přihlašování. Při registraci se používá dříve ověřená e-mailová adresa uživatele z aplikace Trusona.     |
 |2     | Azure B2C přesměruje uživatele na zprostředkovatele identity Trusona OpenID Connect (OIDC) pomocí implicitního toku.     |
@@ -53,7 +53,7 @@ V tomto scénáři Trusona funguje jako zprostředkovatel identity pro Azure AD 
 
 ## <a name="onboard-with-trusona"></a>Zprovoznění s Trusona
 
-1. Vyplňte [formulář](https://www.trusona.com/aadb2c) pro vytvoření účtu Trusona a začněte.
+1. Vyplňte [formulář](https://www.trusona.com/) pro vytvoření účtu Trusona a začněte.
 
 2. Stáhněte si mobilní aplikaci Trusona z App Storu. Nainstalujte aplikaci a zaregistrujte svůj e-mail.
 
@@ -67,7 +67,7 @@ V tomto scénáři Trusona funguje jako zprostředkovatel identity pro Azure AD 
 
 7. Vyberte **vytvořit integraci OpenID Connect**.
 
-8. Zadejte **název** podle svého výběru a v **poli Hostitel přesměrování klienta**použijte dříve zadané informace o doméně (například contoso).  
+8. Zadejte **název** podle svého výběru a v **poli Hostitel přesměrování klienta** použijte dříve zadané informace o doméně (například contoso).  
 
    > [!NOTE]
    > Jako hostitel přesměrování klienta se použije počáteční název domény Azure Active Directory.
@@ -103,7 +103,7 @@ V tomto scénáři Trusona funguje jako zprostředkovatel identity pro Azure AD 
    | :--- | :--- |
    | Adresa URL metadat | `https://gateway.trusona.net/oidc/.well-known/openid-configuration`|
    | ID klienta | Pošle vám e-mail z Trusona |
-   | Rozsah | E-mail s profilem OpenID |
+   | Obor | E-mail s profilem OpenID |
    | Typ odpovědi | Id_token |
    | Režim odezvy  | Form_post |
 
@@ -127,11 +127,11 @@ V tomto scénáři Trusona funguje jako zprostředkovatel identity pro Azure AD 
 
 Teď byste měli vidět Trusona jako **nového poskytovatele identity OpenID Connect** uvedeného v rámci vašich poskytovatelů identity B2C.
 
-1. Ve vašem tenantovi Azure AD B2C v části **zásady**vyberte **toky uživatelů**.
+1. Ve vašem tenantovi Azure AD B2C v části **zásady** vyberte **toky uživatelů**.
 
 1. Vyberte **Nový tok uživatele**.
 
-1. Vyberte **zaregistrovat, přihlaste**se, vyberte verzi a pak vyberte **vytvořit**.
+1. Vyberte **zaregistrovat, přihlaste** se, vyberte verzi a pak vyberte **vytvořit**.
 
 1. Zadejte **název** zásady.
 
@@ -142,7 +142,7 @@ Teď byste měli vidět Trusona jako **nového poskytovatele identity OpenID Con
 
 1. Vyberte **Vytvořit**.
 
-1. V části **atributy a deklarace identity uživatele**vyberte **Zobrazit další**. Ve formuláři vyberte alespoň jeden atribut, který jste zadali při nastavení poskytovatele identity v předchozí části.
+1. V části **atributy a deklarace identity uživatele** vyberte **Zobrazit další**. Ve formuláři vyberte alespoň jeden atribut, který jste zadali při nastavení poskytovatele identity v předchozí části.
 
 1. Vyberte **OK**.  
 

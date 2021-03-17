@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74815410"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Řešení potíží se sadou Speech SDK
@@ -46,7 +46,7 @@ Tato chyba je často způsobena problémy při ověřování. Požadavky na při
 Spuštěním jednoho z následujících příkazů můžete ověřit, zda máte platný klíč předplatného.
 
 > [!NOTE]
-> `YOUR_SUBSCRIPTION_KEY` Nahraďte `YOUR_REGION` a vlastním klíčem předplatného a přidruženou oblastí.
+> Nahraďte `YOUR_SUBSCRIPTION_KEY` a `YOUR_REGION` vlastním klíčem předplatného a přidruženou oblastí.
 
 * PowerShell
 
@@ -109,7 +109,7 @@ Pokud jste zadali platný autorizační token, příkaz vrátí přepis pro vá�
 
 ## <a name="error-http-400-bad-request"></a>Chyba: Chybná žádost HTTP 400
 
-K této chybě obvykle dochází, když tělo požadavku obsahuje neplatná zvuková data. Podporován je pouze formát WAV. Zkontrolujte také hlavičky žádosti a ujistěte se, že jste zadali odpovídající hodnoty pro `Content-Type` a. `Content-Length`
+K této chybě obvykle dochází, když tělo požadavku obsahuje neplatná zvuková data. Podporován je pouze formát WAV. Zkontrolujte také hlavičky žádosti a ujistěte se, že jste zadali odpovídající hodnoty pro `Content-Type` a `Content-Length` .
 
 ## <a name="error-http-408-request-timeout"></a>Chyba: časový limit žádosti HTTP 408
 
@@ -119,7 +119,7 @@ K chybě pravděpodobně dochází, protože do služby nejsou odesílána žád
 
 K tomuto problému obvykle dochází v důsledku zvukových dat. Tato chyba se může zobrazit z těchto důvodů:
 
-* Na začátku zvukového zařízení je dlouhé roztažení tichého. V takovém případě služba zastaví rozpoznávání po několika sekundách a vrátí `InitialSilenceTimeout`.
+* Na začátku zvukového zařízení je dlouhé roztažení tichého. V takovém případě služba zastaví rozpoznávání po několika sekundách a vrátí `InitialSilenceTimeout` .
 
 * Zvuk používá nepodporovaný formát kodeku, což způsobí, že zvuková data budou považována za netichá.
 

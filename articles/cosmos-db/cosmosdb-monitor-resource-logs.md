@@ -5,22 +5,23 @@ author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e551fc12da5e25ba54df5a6a38a49b76f7c376e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549979"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181818"
 ---
-# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování Azure Cosmos DB dat pomocí nastavení diagnostiky v Azure
+# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování dat ve službě Azure Cosmos DB s využitím nastavení diagnostiky v Azure
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Nastavení diagnostiky v Azure slouží ke shromažďování protokolů prostředků. Protokoly prostředků Azure se generují prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Tyto protokoly jsou zachyceny na žádost a jsou také označovány jako "protokoly roviny dat". Mezi Příklady operací s rovinou dat patří odstranění, vložení a readFeed. Obsah těchto protokolů se liší podle typu prostředku.
 
 Metriky platforem a protokoly aktivit jsou shromažďovány automaticky, zatímco je nutné vytvořit nastavení diagnostiky pro shromáždění protokolů prostředků nebo jejich přeposílání mimo Azure Monitor. Nastavení diagnostiky pro účty Azure Cosmos můžete zapnout pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Přejděte k účtu Azure Cosmos. Otevřete podokno **nastavení diagnostiky** a pak vyberte **Přidat možnost nastavení diagnostiky** .
 
@@ -32,23 +33,57 @@ Metriky platforem a protokoly aktivit jsou shromažďovány automaticky, zatímc
 
 1. Při vytváření nastavení diagnostiky určíte, kterou kategorii protokolů se mají shromažďovat. Kategorie protokolů, které podporuje Azure Cosmos DB, jsou uvedené dál spolu s ukázkovým protokolem, který jsou shromážděny:
 
- * **DataPlaneRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky back-endu do všech rozhraní API, mezi které patří účty SQL, Graph, MongoDB, Cassandra a rozhraní API pro tabulky v Azure Cosmos DB. Všimněte si klíčových vlastností, které jsou: `Requestcharge` , `statusCode` , `clientIPaddress` a `partitionID` .
+ * **DataPlaneRequests**: tuto možnost vyberte, pokud chcete protokolovat back-endové požadavky na účty rozhraní SQL API v Azure Cosmos DB. Všimněte si klíčových vlastností, které jsou: `Requestcharge` , `statusCode` , `clientIPaddress` , `partitionID` , a `resourceTokenPermissionId` `resourceTokenPermissionMode` .
 
-    ```json
-    { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
-    ```
+   ```json
+    { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372", "resourceTokenPermissionId": "perm-prescriber-app","resourceTokenPermissionMode": "all", "resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
+   ```
+   
+   K získání protokolů odpovídajících požadavkům na rovinu dat použijte následující dotaz:
+  
+   ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+   ```
 
 * **MongoRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky iniciované uživateli z front-endu, aby sloužily požadavky na rozhraní API služby Azure Cosmos DB pro MongoDB. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, které se mají poznamenat: `Requestcharge` , `opCode` . Pokud povolíte MongoRequests v diagnostických protokolech, nezapomeňte vypnout DataPlaneRequests. V rozhraní API se zobrazí jeden protokol pro každý požadavek.
 
     ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
+  
+  K získání protokolů odpovídajících požadavkům MongoDB použijte následující dotaz:
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="MongoRequests"
+  ```
 
 * **CassandraRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky iniciované uživateli z front-endu, aby sloužily požadavky na rozhraní API služby Azure Cosmos DB pro Cassandra. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, které se mají poznamenat, jsou, `operationName` `requestCharge` , `piiCommandText` . Pokud povolíte CassandraRequests v diagnostických protokolech, nezapomeňte vypnout DataPlaneRequests. V rozhraní API se zobrazí jeden protokol pro každý požadavek.
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
    ```
+   
+  K získání protokolů odpovídajících požadavkům Cassandra použijte následující dotaz:
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="CassandraRequests"
+  ```
+
+* **GremlinRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky iniciované uživateli z front-endu, aby sloužily požadavky na rozhraní API služby Azure Cosmos DB pro Gremlin. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, které se mají poznamenat `operationName` , jsou a `requestCharge` . Pokud povolíte GremlinRequests v diagnostických protokolech, nezapomeňte vypnout DataPlaneRequests. V rozhraní API se zobrazí jeden protokol pro každý požadavek.
+
+  ```json
+  { "time": "2021-01-06T19:36:58.2554534Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "GremlinRequests", "operationName": "eval", "properties": {"activityId": "b16bd876-0e5c-4448-90d1-7f3134c6b5ff", "errorCode": "200", "duration": "9.6036", "requestCharge": "9.059999999999999", "databaseName": "GraphDemoDatabase", "collectionName": "GraphDemoContainer", "authorizationTokenType": "PrimaryMasterKey", "address": "98.225.2.189", "estimatedDelayFromRateLimitingInMilliseconds": "0", "retriedDueToRateLimiting": "False", "region": "Australia East", "requestLength": "266", "responseLength": "364", "userAgent": "<empty>"}}
+  ```
+  
+  K získání protokolů odpovídajících požadavkům Gremlin použijte následující dotaz:
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="GremlinRequests"
+  ```
 
 * **QueryRuntimeStatistics**: tuto možnost vyberte, pokud chcete protokolovat text dotazu, který se spustil. Tento typ protokolu je k dispozici pouze pro účty rozhraní SQL API.
 
@@ -68,10 +103,10 @@ Metriky platforem a protokoly aktivit jsou shromažďovány automaticky, zatímc
 
 * **Požadavky**: tuto možnost vyberte, pokud chcete shromažďovat data metrik z Azure Cosmos DB do cílových umístění v nastavení diagnostiky. Jedná se o stejná data shromažďovaná automaticky v metrikách Azure. Shromažďovat data metriky pomocí protokolů zdrojů k analýze obou druhů dat a k odesílání dat metriky mimo Azure Monitor.
 
-Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu, najdete v tématu [Vytvoření nastavení diagnostiky pro shromáždění protokolů platforem a metrik v článku Azure](../azure-monitor/platform/diagnostic-settings.md) .
+Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu, najdete v tématu [Vytvoření nastavení diagnostiky pro shromáždění protokolů platforem a metrik v článku Azure](../azure-monitor/essentials/diagnostic-settings.md) .
 
 
-## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Řešení potíží s diagnostickými dotazy
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> Řešení potíží s diagnostickými dotazy
 
 1. Postup dotazování na operace, které trvá déle než 3 MS pro spuštění:
 
@@ -99,12 +134,12 @@ Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Po
    | render timechart
    ```
     
-1. Jak získat statistiku klíče oddílu k vyhodnocení zešikmení v horních 3 oddílech pro databázový účet:
+1. Jak získat statistiku klíče oddílu pro vyhodnocení zešikmení v horních 3 oddílech pro databázový účet:
 
    ```Kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId 
    ```
 
 1. Jak získat poplatky za žádosti pro nákladné dotazy?
@@ -211,15 +246,7 @@ Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Po
    ```Kusto
    AzureDiagnostics
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics"
-   | where todouble(sizeKb_d) > 800000
-   ```
-
-1. Jak získat statistiku klíče oddílu k vyhodnocení zkosení v rámci tří hlavních oddílů pro databázový účet?
-
-   ```Kusto
-   AzureDiagnostics 
-   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
+   | where todouble(sizeKb_d) > 8000000
    ```
 
 1. Jak získat latenci při replikaci p99 nebo P50 pro operace, poplatek za požadavek nebo délku odpovědi?
@@ -236,16 +263,15 @@ Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Po
    by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
    ```
  
-1. Jak získat protokoly Controlplane?
+1. Jak získat protokoly ControlPlane?
  
-   nezapomeňte zapnout příznak, jak je popsáno v části [Zakázání přístupu k zápisu metadat založených na klíčích](audit-control-plane-logs.md#disable-key-based-metadata-write-access) articleand provádění operací prostřednictvím Azure POWERSHELL, CLI nebo ARM.
+   Nezapomeňte zapnout příznak, jak je popsáno v článku [Zakázání přístupu k zápisu metadat na základě klíčů](audit-control-plane-logs.md#disable-key-based-metadata-write-access) , a provedení operací pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo Azure Resource Manager.
  
    ```Kusto  
    AzureDiagnostics 
    | where Category =="ControlPlaneRequests"
    | summarize by OperationName 
    ```
-
 
 ## <a name="next-steps"></a>Další kroky
 

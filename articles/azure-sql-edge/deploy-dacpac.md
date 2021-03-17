@@ -1,6 +1,6 @@
 ---
-title: Použití SQL Databasech balíčků DAC – Azure SQL Edge (Preview)
-description: Další informace o používání DACPACs ve službě Azure SQL Edge (Preview)
+title: Použití SQL Database DACPAC a BACPAC balíčků – Azure SQL Edge
+description: Další informace o použití DACPACs a bacpacs ve službě Azure SQL Edge
 keywords: SQL Edge, SqlPackage
 services: sql-edge
 ms.service: sql-edge
@@ -8,42 +8,36 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 0ddd1544c6a51ff1e2f98a28e40d9eb2ee0b47c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 40bd0eda16f9f96dd356eef900369ab25854e9f9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233282"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392244"
 ---
-# <a name="sql-database-dac-packages-in-sql-edge"></a>SQL Database balíčky DAC v SQL Edge
+# <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL Database DACPAC a BACPAC balíčky v SQL Edge
 
-Azure SQL Edge (Preview) je optimalizovaný relační databázový stroj, který je optimalizovaný pro nasazení v IoT a hraničních zařízeních. Je postaven na nejnovějších verzích Microsoft SQL Server databázového stroje, který poskytuje špičkové možnosti pro výkon, zabezpečení a zpracování dotazů. Spolu s špičkovými možnostmi správy relačních databází SQL Server poskytuje Azure SQL Edge integrované možnosti streamování pro analýzy v reálném čase a složité zpracování událostí.
+Azure SQL Edge je optimalizovaný relační databázový stroj pro nasazování do IoT a na hraniční zařízení. Je postaven na nejnovějších verzích modulu Microsoft SQL Database Engine, který poskytuje špičkové možnosti pro výkon, zabezpečení a zpracování dotazů. Spolu s špičkovými možnostmi správy relačních databází SQL Server poskytuje Azure SQL Edge integrované možnosti streamování pro analýzy v reálném čase a složité zpracování událostí.
 
-Azure SQL Edge taky poskytuje nativní implementaci SqlPackage.exe, která vám umožní nasadit [SQL Database balíček DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) během nasazování SQL Edge. SQL Database DACPACs lze nasadit do SQL Edge pomocí parametru SqlPackage vystaveného prostřednictvím `module twin's desired properties` Možnosti modulu SQL Edge:
+Azure SQL Edge poskytuje nativní mechanismus, který vám umožní nasadit balíček [SQL Database DACPAC a BacPac](/sql/relational-databases/data-tier-applications/data-tier-applications) během nebo po nasazení Edge SQL.
 
-```json
-{
-    "properties.desired":
-    {
-        "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-        "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-    }
-}
-```
-
-|Pole | Description |
-|------|-------------|
-| SqlPackage | Identifikátor URI úložiště objektů BLOB v Azure pro soubor *. zip, který obsahuje SQL Database balíček DAC.
-| ASAJobInfo | Identifikátor URI úložiště objektů BLOB v Azure pro hraniční úlohu ASA
+Balíčky SQL Database DACPAC a BacPac lze nasadit do SQL Edge pomocí `MSSQL_PACKAGE` proměnné prostředí. Proměnná prostředí se dá nakonfigurovat pomocí kterékoli z následujících možností.  
+- Umístění místní složky v rámci kontejneru SQL obsahujícího soubory DACPAC a BacPac. Tuto složku lze namapovat na svazek hostitele pomocí přípojných bodů nebo kontejnerů datových svazků. 
+- Místní cesta k souboru v mapování kontejneru SQL k souboru DACPAC nebo BacPac. Tato cesta k souboru se dá namapovat na svazek hostitele pomocí přípojných bodů nebo kontejnerů datových svazků. 
+- Místní cesta k souboru v mapování kontejneru SQL k souboru zip, který obsahuje soubory DACPAC nebo BacPac. Tato cesta k souboru se dá namapovat na svazek hostitele pomocí přípojných bodů nebo kontejnerů datových svazků. 
+- Adresa URL SAS objektu blob Azure do souboru zip, který obsahuje soubory DACPAC a BacPac.
+- Adresa URL SAS objektu blob Azure na DACPAC nebo soubor BacPac. 
 
 ## <a name="use-a-sql-database-dac-package-with-sql-edge"></a>Použití SQL Databaseho balíčku DAC s okrajem SQL
 
-Chcete-li použít SQL Database balíček DAC (*. DACPAC) s okrajem SQL, postupujte takto:
+Pokud chcete nasadit (nebo importovat) SQL Database balíček DAC `(*.dacpac)` nebo soubor BacPac `(*.bacpac)` pomocí služby Azure Blob Storage a souboru zip, postupujte podle následujících kroků. 
 
-1. Vytvoření nebo extrakce SQL Database balíčku DAC Informace o tom, jak vygenerovat balíček DAC pro existující SQL Server databázi, najdete v tématu [extrakce DAC z databáze](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) .
+1. Vytvořte nebo rozbalte balíček DAC nebo exportujte soubor BacPac pomocí mechanismu uvedeného níže. 
+    - Vytvoření nebo extrakce SQL Database balíčku DAC Informace o tom, jak vygenerovat balíček DAC pro existující SQL Server databázi, najdete v tématu [extrakce DAC z databáze](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) .
+    - Exportování nasazeného balíčku DAC nebo databáze. Informace o tom, jak vygenerovat soubor BacPac pro existující databázi SQL Server, najdete v tématu [Export aplikace na datové vrstvě](/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) .
 
-2. Zip *. DACPAC a nahrajte ho do účtu služby Azure Blob Storage. Další informace o nahrávání souborů do úložiště objektů BLOB v Azure najdete v tématu [nahrání, stažení a výpis objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+2. Zip `*.dacpac` `*.bacpac` soubor nebo soubor a nahrajte ho do účtu služby Azure Blob Storage. Další informace o nahrávání souborů do úložiště objektů BLOB v Azure najdete v tématu [nahrání, stažení a výpis objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 3. Vygenerujte sdílený přístupový podpis pro soubor ZIP pomocí Azure Portal. Další informace najdete v tématu [delegování přístupu pomocí podpisů sdíleného přístupu (SAS)](../storage/common/storage-sas-overview.md).
 
@@ -57,34 +51,26 @@ Chcete-li použít SQL Database balíček DAC (*. DACPAC) s okrajem SQL, postupu
 
     4. Na stránce zařízení **IoT Edge zařízení** vyberte **nastavit modul**.
 
-    5. Na stránce **nastavit moduly** vyberte **Konfigurovat** pro modul SQL Edge.
+    5. Na stránce **nastavit moduly** a klikněte na modul Azure SQL Edge.
 
-    6. V podokně **IoT Edge vlastní moduly** vyberte **nastavit požadované vlastnosti nevlákenných**modulů. Aktualizujte požadované vlastnosti tak, aby zahrnovaly identifikátor URI pro `SQLPackage` možnost, jak je znázorněno v následujícím příkladu.
+    6. V podokně **aktualizovat IoT Edge modul** vyberte **proměnné prostředí**. Přidejte `MSSQL_PACKAGE` proměnnou prostředí a zadejte adresu URL SAS vygenerovanou v kroku 3 výše jako hodnotu proměnné prostředí. 
 
-        > [!NOTE]
-        > Identifikátor URI SAS v následujícím formátu JSON je pouze příklad. Nahraďte identifikátor URI skutečným identifikátorem URI z vašeho nasazení.
+    7. Vyberte **Aktualizovat**.
 
-        ```json
-            {
-                "properties.desired":
-                {
-                    "SqlPackage": "<<<SAS URL for the *.zip file containing the dacpac",
-                }
-            }
-        ```
+    8. Na stránce **nastavit moduly** vyberte **zkontrolovat + vytvořit**.
 
-    7. Vyberte **Uložit**.
+    9. Na stránce **nastavit moduly** vyberte **vytvořit**.
 
-    8. Na stránce **nastavit moduly** vyberte **Další**.
+5. Po aktualizaci modulu se soubory balíčku stáhnou, rozbalí a nasadí proti instanci SQL Edge.
 
-    9. Na stránce **nastavit moduly** vyberte **Další** a pak **Odeslat**.
+Při každém restartování kontejneru Azure SQL Edge se aplikace SQL Edge pokusí stáhnout balíček souborů zip a vyhodnotit změny. Pokud dojde k nové verzi souboru DACPAC, změny se nasadí do databáze v SQL Edge.
 
-5. Po aktualizaci modulu se soubor balíčku DAC stáhne, rozbalí a nasadí na instanci SQL Edge.
+## <a name="known-issue"></a>Známý problém
 
-Při každém restartování kontejneru Azure SQL Edge se balíček souboru *. DACPAC stáhne a vyhodnotí jeho změny. Pokud dojde k nové verzi souboru DACPAC, změny se nasadí do databáze v SQL Edge.
+Během některých nasazení DACPAC nebo BACPAC se můžou setkat s časovými limity příkazů, což vedlo k selhání operace nasazení DACPAC. Pokud se setkáte s tímto problémem, použijte prosím SQLPackage.exe (nebo klientské nástroje SQL), abyste použili maually nebo BACPAC. 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Nasazení okraje SQL Edge prostřednictvím Azure Portal](deploy-portal.md).
 - [Streamování dat](stream-data.md)
-- [Machine Learning a AI s ONNXem v SQL Edge (Preview)](onnx-overview.md)
+- [Machine Learning a AI s ONNX v SQL Edge](onnx-overview.md)

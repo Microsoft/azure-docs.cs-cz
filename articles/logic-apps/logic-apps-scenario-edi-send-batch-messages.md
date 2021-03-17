@@ -8,11 +8,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75666665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000398"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Zprávy EDI Exchange jako dávky nebo skupiny mezi obchodními partnery v Azure Logic Apps
 
@@ -70,7 +70,7 @@ Pro tohoto přijímače Batch zadáte režim dávky, název, kritéria pro vydá
    | **Název dávky** | TestBatch | K dispozici pouze s **vloženým** režimem dávky | 
    | **Kritéria uvolnění** | Založené na počtu zpráv, podle plánu | K dispozici pouze s **vloženým** režimem dávky | 
    | **Počet zpráv** | 10 | Dostupné jenom pro kritéria uvolnění **na základě počtu zpráv** | 
-   | **Doba** | 10 | K dispozici pouze s kritérii vydání **podle plánu** | 
+   | **Interval** | 10 | K dispozici pouze s kritérii vydání **podle plánu** | 
    | **Frekvence** | minute | K dispozici pouze s kritérii vydání **podle plánu** | 
    ||| 
 
@@ -107,7 +107,7 @@ Pro tohoto přijímače Batch zadáte režim dávky, název, kritéria pro vydá
 
       ![Dávkové kódování položek akcí](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-items.png)
 
-6. Uložte svou aplikaci logiky. 
+6. Uložte aplikaci logiky. 
 
 7. Pokud používáte Visual Studio, ujistěte se, že jste [nasadili aplikaci logiky přijímače z Batch do Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). V opačném případě nelze při vytváření odesílatele Batch vybrat přijímače Batch.
 
@@ -132,7 +132,7 @@ Chcete-li se ujistit, že přijímač Batch funguje podle očekávání, můžet
 
    ![Zadat podrobnosti akce HTTP](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action-details.png)
 
-4. Uložte svou aplikaci logiky. 
+4. Uložte aplikaci logiky. 
 
    Aplikace logiky přijímače v dávce vypadá jako v tomto příkladu: 
 
@@ -167,7 +167,7 @@ Nyní vytvořte jednu nebo více aplikací logiky, které odesílají zprávy do
 
       ![Výběr aplikace logiky pro přijímače v dávce](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Vyberte tuto akci: **Batch_messages-<*vašeho-Batch-Receiver* > **
+   4. Vyberte tuto akci: **Batch_messages-<*vašeho-Batch-Receiver* >**
 
       ![Vybrat akci Batch_messages](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
@@ -181,7 +181,7 @@ Nyní vytvořte jednu nebo více aplikací logiky, které odesílají zprávy do
    
    ![Nastavení vlastností dávky](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-set-batch-properties.png)
 
-5. Uložte svou aplikaci logiky. 
+5. Uložte aplikaci logiky. 
 
    Vaše aplikace logiky pro odesílatele Batch vypadá jako v tomto příkladu:
 

@@ -2,44 +2,44 @@
 title: Konfigurace Azure Storage bran firewall a virtuálních sítí | Microsoft Docs
 description: Nakonfigurujte vícevrstvé zabezpečení sítě pro svůj účet úložiště pomocí Azure Storage bran firewall a Azure Virtual Network.
 services: storage
-author: tamram
+author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
-ms.author: tamram
+ms.date: 03/05/2021
+ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 9c95501c4e17e0afaa082c3e02c29934435c1a19
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9e395ce996bf7e6889a27fcb04b0e643cf63c58b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032498"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430883"
 ---
-# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace Azure Storage bran firewall a virtuálních sítí
+# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
-Azure Storage zajišťuje vrstvený model zabezpečení. Tento model umožňuje zabezpečit a řídit úroveň přístupu k vašim účtům úložiště, které vyžadují vaše aplikace a podniková prostředí, v závislosti na typu a podmnožině použitých sítí. Při konfiguraci síťových pravidel mají přístup k účtu úložiště jenom aplikace požadující data přes zadanou sadu sítí. Přístup k účtu úložiště můžete omezit na požadavky pocházející ze zadaných IP adres, rozsahů IP adres nebo ze seznamu podsítí v Azure Virtual Network (virtuální síť).
+Azure Storage poskytuje vrstvený model zabezpečení. Tento model vám umožní zabezpečit a řídit úroveň přístupu k účtům úložiště, které vaše aplikace a podniková prostředí vyžadují, na základě typu a podmnožiny sítí nebo prostředků. Při konfiguraci síťových pravidel mají přístup k účtu úložiště jenom aplikace požadující data přes zadanou sadu sítí nebo prostřednictvím zadané sady prostředků Azure. Přístup k účtu úložiště můžete omezit na požadavky pocházející ze zadaných IP adres, rozsahů IP adres, podsítí v Azure Virtual Network (VNet) nebo instancí prostředků některých služeb Azure.
 
-Účty úložiště mají veřejný koncový bod, který je přístupný prostřednictvím Internetu. [Pro svůj účet úložiště můžete také vytvořit privátní koncové body](storage-private-endpoints.md), které přiřadí privátní IP adresu z vaší virtuální sítě k účtu úložiště a zabezpečuje veškerý provoz mezi vaší virtuální sítí a účtem úložiště prostřednictvím privátního propojení. Brána firewall služby Azure Storage poskytuje přístup k řízení přístupu pro veřejný koncový bod vašeho účtu úložiště. Bránu firewall můžete použít také k blokování veškerého přístupu prostřednictvím veřejného koncového bodu při používání privátních koncových bodů. Vaše konfigurace brány firewall pro úložiště také umožňuje, aby bylo možné bezpečně přistupovat k účtu úložiště pomocí výběru důvěryhodných služeb platformy Azure.
+Účty úložiště mají veřejný koncový bod, který je přístupný prostřednictvím Internetu. [Pro svůj účet úložiště můžete také vytvořit privátní koncové body](storage-private-endpoints.md), které přiřadí privátní IP adresu z vaší virtuální sítě k účtu úložiště a zabezpečuje veškerý provoz mezi vaší virtuální sítí a účtem úložiště prostřednictvím privátního propojení. Brána firewall služby Azure Storage poskytuje řízení přístupu pro veřejný koncový bod vašeho účtu úložiště. Bránu firewall můžete použít také k blokování veškerého přístupu prostřednictvím veřejného koncového bodu při používání privátních koncových bodů. Vaše konfigurace brány firewall pro úložiště také umožňuje, aby bylo možné bezpečně přistupovat k účtu úložiště pomocí výběru důvěryhodných služeb platformy Azure.
 
 Aplikace, která přistupuje k účtu úložiště v případě, že jsou platná síťová pravidla, vyžaduje pro požadavek správnou autorizaci. Autorizace se podporuje s přihlašovacími údaji služby Azure Active Directory (Azure AD) pro objekty BLOB a front, s platným klíčem pro přístup k účtu nebo s tokenem SAS.
 
 > [!IMPORTANT]
 > Zapnutím pravidel brány firewall pro váš účet úložiště se ve výchozím nastavení zablokuje příchozí požadavky na data, pokud žádosti pocházejí ze služby v rámci Azure Virtual Network (VNet) nebo z povolených veřejných IP adres. Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd.
 >
-> Přístup ke službám Azure, které provozují v rámci virtuální sítě, můžete udělit povolením provozu z podsítě hostující instanci služby. Pomocí mechanismu [výjimek](#exceptions) popsaných níže můžete také povolit omezený počet scénářů. Pokud chcete získat přístup k datům z účtu úložiště prostřednictvím Azure Portal, musíte být na počítači v rámci důvěryhodné hranice (buď IP nebo VNet), kterou jste nastavili.
+> Přístup ke službám Azure, které provozují v rámci virtuální sítě, můžete udělit povolením provozu z podsítě hostující instanci služby. Pomocí mechanismu výjimek popsaných níže můžete také povolit omezený počet scénářů. Pokud chcete získat přístup k datům z účtu úložiště prostřednictvím Azure Portal, musíte být na počítači v rámci důvěryhodné hranice (buď IP nebo VNet), kterou jste nastavili.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Scénáře
 
-Chcete-li zabezpečit svůj účet úložiště, je třeba nejprve nakonfigurovat pravidlo pro odepření přístupu k provozu ze všech sítí (včetně internetového provozu) ve výchozím nastavení ve veřejném koncovém bodu. Pak byste měli nakonfigurovat pravidla, která udělí přístup k provozu z konkrétních virtuální sítě. Můžete taky nakonfigurovat pravidla pro udělení přístupu k provozu z výběru rozsahů veřejných IP adres, které umožňují připojení z určitých internetových nebo místních klientů. Tato konfigurace umožňuje vytvořit zabezpečenou hranici sítě pro vaše aplikace.
+Chcete-li zabezpečit svůj účet úložiště, je třeba nejprve nakonfigurovat pravidlo pro odepření přístupu k provozu ze všech sítí (včetně internetového provozu) ve výchozím nastavení ve veřejném koncovém bodu. Pak byste měli nakonfigurovat pravidla, která udělí přístup k provozu z konkrétních virtuální sítě. Můžete taky nakonfigurovat pravidla pro udělení přístupu k provozu z vybraných rozsahů veřejných IP adres, které umožňují připojení z určitých internetových nebo místních klientů. Tato konfigurace umožňuje vytvořit zabezpečenou hranici sítě pro vaše aplikace.
 
 Můžete zkombinovat pravidla brány firewall, která umožňují přístup z konkrétních virtuálních sítí a z rozsahů veřejných IP adres ve stejném účtu úložiště. Pravidla brány firewall pro úložiště se dají použít u existujících účtů úložiště nebo při vytváření nových účtů úložiště.
 
 Pravidla brány firewall pro úložiště se vztahují na veřejný koncový bod účtu úložiště. Nepotřebujete žádná pravidla přístupu k bránám firewall, aby bylo možné povolit přenosy privátních koncových bodů účtu úložiště. Proces schvalování privátního koncového bodu uděluje implicitní přístup k provozu z podsítě, která je hostitelem privátního koncového bodu.
 
-Síťová pravidla jsou vynutila ve všech síťových protokolech do služby Azure Storage, včetně REST a protokolu SMB. Chcete-li získat přístup k datům pomocí nástrojů, jako jsou Azure Portal, Průzkumník služby Storage a AZCopy, musí být nakonfigurována explicitní Síťová pravidla.
+Síťová pravidla jsou vynutila ve všech síťových protokolech pro Azure Storage, včetně REST a protokolu SMB. Chcete-li získat přístup k datům pomocí nástrojů, jako jsou Azure Portal, Průzkumník služby Storage a AZCopy, musí být nakonfigurována explicitní Síťová pravidla.
 
 Po použití pravidel sítě se vynutily pro všechny požadavky. Tokeny SAS, které udělují přístup k určité IP adrese, slouží k omezení přístupu držitele tokenu, ale neudělují se novému přístupu nad nakonfigurovaná Síťová pravidla.
 
@@ -47,7 +47,7 @@ Síťový provoz virtuálního počítače (včetně operací připojení a odpo
 
 Klasické účty úložiště nepodporují brány firewall a virtuální sítě.
 
-Nespravované disky můžete použít v účtech úložiště s pravidly sítě použitými pro zálohování a obnovení virtuálních počítačů, a to vytvořením výjimky. Tento postup je popsán v části [výjimky](#exceptions) v tomto článku. Výjimky brány firewall se nevztahují na spravované disky, protože už jsou spravované přes Azure.
+Nespravované disky můžete použít v účtech úložiště s pravidly sítě použitými pro zálohování a obnovení virtuálních počítačů, a to vytvořením výjimky. Tento postup je popsán v části [Správa výjimek](#manage-exceptions) v tomto článku. Výjimky brány firewall se nevztahují na spravované disky, protože už jsou spravované přes Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Změna výchozího pravidla přístupu k síti
 
@@ -60,71 +60,74 @@ Nespravované disky můžete použít v účtech úložiště s pravidly sítě 
 
 Pomocí Azure Portal, PowerShellu nebo CLIv2 můžete spravovat výchozí pravidla přístupu k síti pro účty úložiště.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
-1. Klikněte na nabídku nastavení s názvem **brány firewall a virtuální sítě**.
+2. Vyberte položku v nabídce nastavení s názvem **síť**.
 
-1. Chcete-li odepřít přístup ve výchozím nastavení, vyberte možnost povolit přístup z **vybraných sítí**. Pokud chcete povolit přenos ze všech sítí, zvolte povolení přístupu ze **všech sítí**.
+3. Chcete-li odepřít přístup ve výchozím nastavení, vyberte možnost povolit přístup z **vybraných sítí**. Pokud chcete povolit přenos ze všech sítí, zvolte povolení přístupu ze **všech sítí**.
 
-1. Kliknutím na **Uložit** použijte změny.
+4. Vyberte **Uložit**, aby se tyto změny použily.
 
-#### <a name="powershell"></a>PowerShell
+<a id="powershell"></a>
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Nainstalujte [Azure PowerShell](/powershell/azure/install-Az-ps) a [přihlaste](/powershell/azure/authenticate-azureps)se.
 
-1. Zobrazí stav výchozího pravidla pro účet úložiště.
+2. Zobrazí stav výchozího pravidla pro účet úložiště.
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
     ```
 
-1. Nastavte výchozí pravidlo na odepřít přístup k síti ve výchozím nastavení.
+3. Nastavte výchozí pravidlo na odepřít přístup k síti ve výchozím nastavení.
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
     ```
 
-1. Nastavte výchozí pravidlo tak, aby povolovalo přístup k síti ve výchozím nastavení.
+4. Nastavte výchozí pravidlo tak, aby povolovalo přístup k síti ve výchozím nastavení.
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
     ```
 
-#### <a name="cliv2"></a>CLIv2
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [přihlaste](/cli/azure/authenticate-azure-cli)se.
 
-1. Zobrazí stav výchozího pravidla pro účet úložiště.
+2. Zobrazí stav výchozího pravidla pro účet úložiště.
 
     ```azurecli
     az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
     ```
 
-1. Nastavte výchozí pravidlo na odepřít přístup k síti ve výchozím nastavení.
+3. Nastavte výchozí pravidlo na odepřít přístup k síti ve výchozím nastavení.
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Deny
     ```
 
-1. Nastavte výchozí pravidlo tak, aby povolovalo přístup k síti ve výchozím nastavení.
+4. Nastavte výchozí pravidlo tak, aby povolovalo přístup k síti ve výchozím nastavení.
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Allow
     ```
+---
 
 ## <a name="grant-access-from-a-virtual-network"></a>Udělení přístupu z virtuální sítě
 
 Účty úložiště můžete nakonfigurovat tak, aby povolovaly přístup jenom z konkrétních podsítí. Povolené podsítě můžou patřit do virtuální sítě ve stejném předplatném nebo v jiném předplatném, včetně předplatných, která patří do jiného tenanta Azure Active Directory.
 
-Povolte [koncový bod služby](/azure/virtual-network/virtual-network-service-endpoints-overview) pro Azure Storage v rámci virtuální sítě. Koncový bod služby směruje provoz z virtuální sítě prostřednictvím optimální cesty ke službě Azure Storage. Identity podsítě a virtuální sítě se také odesílají s každým požadavkem. Správci potom můžou nakonfigurovat Síťová pravidla pro účet úložiště, který povoluje příjem požadavků z konkrétních podsítí ve virtuální síti. Klienti s uděleným přístupem přes tato Síťová pravidla musí nadále splňovat požadavky na autorizaci účtu úložiště pro přístup k datům.
+Povolte [koncový bod služby](../../virtual-network/virtual-network-service-endpoints-overview.md) pro Azure Storage v rámci virtuální sítě. Koncový bod služby směruje provoz z virtuální sítě prostřednictvím optimální cesty ke službě Azure Storage. Identity podsítě a virtuální sítě se také odesílají s každým požadavkem. Správci potom můžou nakonfigurovat Síťová pravidla pro účet úložiště, který povoluje příjem požadavků z konkrétních podsítí ve virtuální síti. Klienti s uděleným přístupem přes tato Síťová pravidla musí nadále splňovat požadavky na autorizaci účtu úložiště pro přístup k datům.
 
 Každý účet úložiště podporuje až 200 pravidel virtuální sítě, která se můžou kombinovat s [pravidly sítě IP](#grant-access-from-an-internet-ip-range).
 
 ### <a name="available-virtual-network-regions"></a>Dostupné oblasti virtuální sítě
 
-Obecně platí, že koncové body služby fungují mezi virtuálními sítěmi a instancemi služby ve stejné oblasti Azure. Při použití koncových bodů služby s Azure Storage se tento rozsah zvětšuje tak, aby zahrnoval [spárovánou oblast](/azure/best-practices-availability-paired-regions). Koncové body služby umožňují kontinuitu v rámci regionálního převzetí služeb při selhání a přístup k instancím geograficky redundantního úložiště jen pro čtení (RA-GRS). Síťová pravidla, která udělují přístup z virtuální sítě k účtu úložiště, taky udělují přístup k libovolné instanci RA-GRS.
+Obecně platí, že koncové body služby fungují mezi virtuálními sítěmi a instancemi služby ve stejné oblasti Azure. Při použití koncových bodů služby s Azure Storage se tento rozsah zvětšuje tak, aby zahrnoval [spárovánou oblast](../../best-practices-availability-paired-regions.md). Koncové body služby umožňují kontinuitu v rámci regionálního převzetí služeb při selhání a přístup k instancím geograficky redundantního úložiště jen pro čtení (RA-GRS). Síťová pravidla, která udělují přístup z virtuální sítě k účtu úložiště, taky udělují přístup k libovolné instanci RA-GRS.
 
 Při plánování zotavení po havárii během regionálního výpadku byste měli vytvořit virtuální sítě v párové oblasti předem. Povolte koncové body služby pro Azure Storage se síťovými pravidly udělujících přístup z těchto alternativních virtuálních sítí. Tato pravidla pak použijte pro vaše geograficky redundantní účty úložiště.
 
@@ -133,7 +136,7 @@ Při plánování zotavení po havárii během regionálního výpadku byste mě
 
 ### <a name="required-permissions"></a>Požadovaná oprávnění
 
-Aby bylo možné použít pravidlo virtuální sítě pro účet úložiště, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Potřebná oprávnění se *připojují ke službě do podsítě* a jsou součástí předdefinované role *přispěvatele účtu úložiště* . Dá se taky přidat k definicím vlastních rolí.
+Aby bylo možné použít pravidlo virtuální sítě pro účet úložiště, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Používání pravidla může provést [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor) nebo uživatel, kterému bylo uděleno oprávnění k `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftnetwork) prostřednictvím vlastní role Azure.
 
 Účet úložiště a udělený přístup k virtuálním sítím můžou být v různých předplatných, včetně předplatných, která jsou součástí jiného tenanta Azure AD.
 
@@ -144,42 +147,42 @@ Aby bylo možné použít pravidlo virtuální sítě pro účet úložiště, m
 
 Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřednictvím Azure Portal, PowerShellu nebo CLIv2.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
-1. Klikněte na nabídku nastavení s názvem **brány firewall a virtuální sítě**.
+2. Vyberte položku v nabídce nastavení s názvem **síť**.
 
-1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
+3. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 
-1. Chcete-li udělit přístup k virtuální síti pomocí nového síťového pravidla, klikněte v části **virtuální sítě**na položku **Přidat existující virtuální síť**, vyberte možnost **virtuální sítě** a **podsítě** a pak klikněte na tlačítko **Přidat**. Pokud chcete vytvořit novou virtuální síť a udělit jí přístup, klikněte na **Přidat novou virtuální síť**. Zadejte informace potřebné k vytvoření nové virtuální sítě a potom klikněte na tlačítko **vytvořit**.
+4. Chcete-li udělit přístup k virtuální síti pomocí nového pravidla sítě, vyberte v části **virtuální sítě** možnost **Přidat existující virtuální síť**, vyberte možnost **virtuální sítě** a **podsítě** a pak vyberte **Přidat**. Pokud chcete vytvořit novou virtuální síť a udělit jí přístup, vyberte **Přidat novou virtuální síť**. Zadejte informace potřebné k vytvoření nové virtuální sítě a pak vyberte **vytvořit**.
 
     > [!NOTE]
     > Pokud koncový bod služby pro Azure Storage ještě nebyl nakonfigurovaný pro vybranou virtuální síť a podsítě, můžete ho nakonfigurovat jako součást této operace.
     >
     > V současné době se při vytváření pravidel zobrazují jenom virtuální sítě patřící do stejného Azure Active Directory tenanta. Pokud chcete udělit přístup k podsíti ve virtuální síti patřící jinému tenantovi, použijte PowerShell, rozhraní příkazového řádku nebo rozhraní REST API.
 
-1. Pokud chcete odebrat pravidlo virtuální sítě nebo podsítě, klikněte na **...** a otevřete místní nabídku pro virtuální síť nebo podsíť a klikněte na **Odebrat**.
+5. Chcete-li odebrat virtuální síť nebo pravidlo podsítě, vyberte **...** a otevřete tak kontextovou nabídku pro virtuální síť nebo podsíť a vyberte možnost **Odebrat**.
 
-1. Kliknutím na **Uložit** použijte změny.
+6. Pokud chcete změny použít, vyberte **Uložit** .
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Nainstalujte [Azure PowerShell](/powershell/azure/install-Az-ps) a [přihlaste](/powershell/azure/authenticate-azureps)se.
 
-1. Vypíše pravidla virtuální sítě.
+2. Vypíše pravidla virtuální sítě.
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
     ```
 
-1. Povolte koncový bod služby pro Azure Storage v existující virtuální síti a podsíti.
+3. Povolte koncový bod služby pro Azure Storage v existující virtuální síti a podsíti.
 
     ```powershell
     Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
     ```
 
-1. Přidejte síťové pravidlo pro virtuální síť a podsíť.
+4. Přidejte síťové pravidlo pro virtuální síť a podsíť.
 
     ```powershell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
@@ -189,7 +192,7 @@ Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřed
     > [!TIP]
     > Pokud chcete přidat síťové pravidlo pro podsíť ve virtuální síti, která patří do jiného tenanta Azure AD, použijte plně kvalifikovaný parametr **VirtualNetworkResourceId** ve formátu "/Subscriptions/Subscription-ID/resourceGroups/resourceGroup-Name/Providers/Microsoft.Network/virtualNetworks/vNet-Name/subnets/Subnet-Name".
 
-1. Odeberte pravidlo sítě pro virtuální síť a podsíť.
+5. Odeberte pravidlo sítě pro virtuální síť a podsíť.
 
     ```powershell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
@@ -199,26 +202,26 @@ Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřed
 > [!IMPORTANT]
 > Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
 
-#### <a name="cliv2"></a>CLIv2
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [přihlaste](/cli/azure/authenticate-azure-cli)se.
 
-1. Vypíše pravidla virtuální sítě.
+2. Vypíše pravidla virtuální sítě.
 
     ```azurecli
     az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
     ```
 
-1. Povolte koncový bod služby pro Azure Storage v existující virtuální síti a podsíti.
+3. Povolte koncový bod služby pro Azure Storage v existující virtuální síti a podsíti.
 
     ```azurecli
     az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.Storage"
     ```
 
-1. Přidejte síťové pravidlo pro virtuální síť a podsíť.
+4. Přidejte síťové pravidlo pro virtuální síť a podsíť.
 
     ```azurecli
-    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
 
@@ -227,15 +230,17 @@ Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřed
     >
     > Pomocí parametru **Subscription** můžete načíst ID podsítě pro virtuální síť patřící jinému Tenantovi služby Azure AD.
 
-1. Odeberte pravidlo sítě pro virtuální síť a podsíť.
+5. Odeberte pravidlo sítě pro virtuální síť a podsíť.
 
     ```azurecli
-    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
 
 > [!IMPORTANT]
 > Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
+
+---
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z rozsahu internetových IP adres
 
@@ -256,61 +261,61 @@ Pravidla sítě IP jsou povolená jenom pro **veřejné internetové** IP adresy
 
 Pro konfiguraci pravidel brány firewall úložiště se podporují jenom IPV4 adresy.
 
-Každý účet úložiště podporuje až 100 pravidel sítě IP.
+Každý účet úložiště podporuje až 200 pravidel sítě IP.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurace přístupu z místních sítí
 
 Pokud chcete udělit přístup z místních sítí k vašemu účtu úložiště pomocí pravidla sítě protokolu IP, musíte identifikovat internetové IP adresy, které používá vaše síť. Požádejte o nápovědu správce sítě.
 
-Pokud používáte [ExpressRoute](/azure/expressroute/expressroute-introduction) z vašich místních partnerských vztahů nebo partnerských vztahů Microsoftu, budete muset určit IP adresy NAT, které se používají. Ve veřejných partnerských vztazích každý okruh ExpressRoute automaticky využívá dvě IP adresy pro překlad adres (NAT), které se používají k provozu služeb Azure při vstupu do páteřní sítě Microsoft Azure. V případě partnerského vztahu Microsoftu se používají IP adresy NAT buď poskytované zákazníkem, nebo poskytovatelem služeb. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
+Pokud používáte [ExpressRoute](../../expressroute/expressroute-introduction.md) z vašich místních partnerských vztahů nebo partnerských vztahů Microsoftu, budete muset určit IP adresy NAT, které se používají. Ve veřejných partnerských vztazích každý okruh ExpressRoute automaticky využívá dvě IP adresy pro překlad adres (NAT), které se používají k provozu služeb Azure při vstupu do páteřní sítě Microsoft Azure. V případě partnerského vztahu Microsoftu se používají IP adresy NAT buď poskytované zákazníkem, nebo poskytovatelem služeb. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](../../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)
 
 ### <a name="managing-ip-network-rules"></a>Správa pravidel sítě IP
 
 Pravidla sítě IP pro účty úložiště můžete spravovat pomocí Azure Portal, PowerShellu nebo CLIv2.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
-1. Klikněte na nabídku nastavení s názvem **brány firewall a virtuální sítě**.
+2. Vyberte položku v nabídce nastavení s názvem **síť**.
 
-1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
+3. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 
-1. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části **Firewall**  >  **Rozsah adres**firewallu IP adresu nebo rozsah adres (ve formátu CIDR).
+4. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části   >  **Rozsah adres** firewallu IP adresu nebo rozsah adres (ve formátu CIDR).
 
-1. Chcete-li odebrat pravidlo sítě protokolu IP, klikněte na ikonu koše vedle rozsahu adres.
+5. Chcete-li odebrat pravidlo sítě protokolu IP, vyberte ikonu odpadkového koše vedle rozsahu adres.
 
-1. Kliknutím na **Uložit** použijte změny.
+6. Vyberte **Uložit**, aby se tyto změny použily.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Nainstalujte [Azure PowerShell](/powershell/azure/install-Az-ps) a [přihlaste](/powershell/azure/authenticate-azureps)se.
 
-1. Vypíše pravidla sítě protokolu IP.
+2. Vypíše pravidla sítě protokolu IP.
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
     ```
 
-1. Přidejte síťové pravidlo pro jednotlivé IP adresy.
+3. Přidejte síťové pravidlo pro jednotlivé IP adresy.
 
     ```powershell
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
-1. Přidejte síťové pravidlo pro rozsah IP adres.
+4. Přidejte síťové pravidlo pro rozsah IP adres.
 
     ```powershell
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
-1. Odeberte pravidlo sítě pro jednotlivé IP adresy.
+5. Odeberte pravidlo sítě pro jednotlivé IP adresy.
 
     ```powershell
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
-1. Odebere síťové pravidlo pro rozsah IP adres.
+6. Odebere síťové pravidlo pro rozsah IP adres.
 
     ```powershell
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
@@ -319,7 +324,7 @@ Pravidla sítě IP pro účty úložiště můžete spravovat pomocí Azure Port
 > [!IMPORTANT]
 > Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
 
-#### <a name="cliv2"></a>CLIv2
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [přihlaste](/cli/azure/authenticate-azure-cli)se.
 
@@ -329,25 +334,25 @@ Pravidla sítě IP pro účty úložiště můžete spravovat pomocí Azure Port
     az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
     ```
 
-1. Přidejte síťové pravidlo pro jednotlivé IP adresy.
+2. Přidejte síťové pravidlo pro jednotlivé IP adresy.
 
     ```azurecli
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
     ```
 
-1. Přidejte síťové pravidlo pro rozsah IP adres.
+3. Přidejte síťové pravidlo pro rozsah IP adres.
 
     ```azurecli
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
     ```
 
-1. Odeberte pravidlo sítě pro jednotlivé IP adresy.
+4. Odeberte pravidlo sítě pro jednotlivé IP adresy.
 
     ```azurecli
     az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
     ```
 
-1. Odebere síťové pravidlo pro rozsah IP adres.
+5. Odebere síťové pravidlo pro rozsah IP adres.
 
     ```azurecli
     az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
@@ -356,89 +361,287 @@ Pravidla sítě IP pro účty úložiště můžete spravovat pomocí Azure Port
 > [!IMPORTANT]
 > Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
 
-## <a name="exceptions"></a>Výjimky
+---
 
-Síťová pravidla usnadňují vytvoření zabezpečeného prostředí pro připojení mezi vašimi aplikacemi a Vašimi daty pro většinu scénářů. Některé aplikace jsou ale závislé na službách Azure, které se nedají jedinečně izolovat prostřednictvím pravidel virtuální sítě nebo IP adres. Takové služby ale musí být udělené do úložiště, aby se povolily úplné funkce aplikace. V takových situacích můžete použít nastavení ***Povolit důvěryhodné služby společnosti Microsoft...*** , aby tyto služby mohly přistupovat k vašim datům, protokolům a analýzám.
+<a id="grant-access-specific-instances"></a>
 
-### <a name="trusted-microsoft-services"></a>Důvěryhodné služby Microsoftu
+## <a name="grant-access-from-azure-resource-instances-preview"></a>Udělení přístupu z Azure Resource Instances (Preview)
 
-Některé služby společnosti Microsoft pracují z sítí, které nelze zahrnout do síťových pravidel. Podmnožině takových důvěryhodných služeb Microsoftu získáte přístup k účtu úložiště a přitom zachováte Síťová pravidla pro ostatní aplikace. Tyto důvěryhodné služby pak budou používat silné ověřování pro zabezpečené připojení k vašemu účtu úložiště. Povolili jsme dva režimy důvěryhodného přístupu pro služby Microsoftu.
+V některých případech může být aplikace závislá na prostředcích Azure, které se nedají izolovat přes virtuální síť nebo pravidlo IP adresy. Pořád ale chcete zabezpečit a omezit přístup k účtu úložiště jenom na prostředky Azure vaší aplikace. Účty úložiště můžete nakonfigurovat tak, aby povolovaly přístup ke konkrétním instancím prostředků některých služeb Azure tím, že se vytvoří pravidlo instance prostředku. 
 
-- Prostředky některých služeb, **Pokud jsou zaregistrované ve vašem předplatném**, mají přístup k vašemu účtu úložiště **ve stejném předplatném** pro vybrané operace, jako je například zápis protokolů nebo zálohování.
-- Prostředkům některých služeb lze udělit explicitní přístup k účtu úložiště tím, že **přiřadíte roli Azure** ke spravované identitě přiřazené systémem.
+Typy operací, které může instance prostředků provádět u dat účtu úložiště, se určují pomocí [přiřazení rolí Azure](storage-auth-aad.md#assign-azure-roles-for-access-rights) instance prostředku. Instance prostředků musí být ze stejného tenanta jako váš účet úložiště, ale můžou patřit do libovolného předplatného v tenantovi.
+
+> [!NOTE]
+> Tato funkce je ve verzi Public Preview a je dostupná ve všech oblastech veřejného cloudu.
+
+> [!NOTE]
+> Pravidla instancí prostředků se aktuálně podporují jenom pro Azure synapse. Podpora dalších služeb Azure uvedených v části [důvěryhodný přístup na základě spravované identity přiřazené systémem](#trusted-access-system-assigned-managed-identity) v tomto článku bude k dispozici v nadcházejících týdnech.
 
 
-Pokud povolíte nastavení **Povolit důvěryhodné služby společnosti Microsoft...** , prostředky následujících služeb, které jsou zaregistrované ve stejném předplatném jako účet úložiště, budou mít přístup k omezené sadě operací, jak je popsáno níže:
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Můžete přidat nebo odebrat pravidla sítě prostředků v Azure Portal.
+
+1. Začněte tím, že se přihlásíte k [Azure Portal](https://portal.azure.com/) .
+
+2. Vyhledejte svůj účet úložiště a zobrazte přehled účtu.
+
+3. Vyberte **sítě** , aby se zobrazila stránka konfigurace pro síťové služby.
+
+4. V rozevíracím seznamu **typ prostředku** vyberte typ prostředku vaší instance prostředku. 
+
+5. V rozevíracím seznamu **název instance** vyberte instanci prostředku. Můžete se také rozhodnout zahrnout všechny instance prostředků do aktivního tenanta, předplatného nebo skupiny prostředků.
+
+6. Vyberte **Uložit**, aby se tyto změny použily. Instance prostředků se zobrazí v části **instance prostředků** na stránce nastavení sítě. 
+
+Chcete-li odebrat instanci prostředku, vyberte ikonu odstranění ( :::image type="icon" source="media/storage-network-security/delete-icon.png"::: ) vedle instance prostředku.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+K přidání nebo odebrání pravidel sítě prostředků můžete použít příkazy prostředí PowerShell.
+
+> [!IMPORTANT]
+> Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
+
+#### <a name="install-the-preview-module"></a>Instalace modulu Preview
+
+Nainstalujte nejnovější verzi modulu PowershellGet. Pak zavřete a znovu otevřete konzolu PowerShellu.
+
+```powershell
+install-Module PowerShellGet –Repository PSGallery –Force  
+```
+
+Nainstalujte modul **AZ. Storage** Preview.
+
+```powershell
+Install-Module Az.Storage -Repository PsGallery -RequiredVersion 3.0.1-preview -AllowClobber -AllowPrerelease -Force 
+```
+
+Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) .
+
+#### <a name="grant-access"></a>Udělení přístupu
+
+Přidejte síťové pravidlo, které uděluje přístup z instance prostředku.
+
+```powershell
+$resourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory"
+$tenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+
+```
+
+Určete více instancí prostředků najednou úpravou sady pravidel sítě.
+
+```powershell
+$resourceId1 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory"
+$resourceId2 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/mySQLServer"
+$tenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName -ResourceAccessRule (@{ResourceId=$resourceId1;TenantId=$tenantId},@{ResourceId=$resourceId2;TenantId=$tenantId}) 
+```
+
+#### <a name="remove-access"></a>Odebrání přístupu
+
+Odebere síťové pravidlo, které uděluje přístup z instance prostředku.
+
+```powershell
+$resourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory"
+$tenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+Remove-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId  
+```
+
+Odeberte všechna síťová pravidla, která udělují přístup z instancí prostředků.
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName -ResourceAccessRule @()  
+```
+
+#### <a name="view-a-list-of-allowed-resource-instances"></a>Zobrazit seznam povolených instancí prostředků
+
+Zobrazte úplný seznam instancí prostředků, kterým byl udělen přístup k účtu úložiště.
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+$rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+$rule.ResourceAccessRules 
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí příkazů rozhraní příkazového řádku Azure můžete přidat nebo odebrat pravidla sítě prostředků.
+
+#### <a name="install-the-preview-extension"></a>Instalace rozšíření verze Preview
+
+1. Otevřete [Azure Cloud Shell](../../cloud-shell/overview.md)nebo pokud máte rozhraní příkazového řádku Azure místně [nainstalované](/cli/azure/install-azure-cli) , otevřete konzolovou aplikaci, například Windows PowerShell.
+
+2. Pak ověřte, že verze rozhraní příkazového řádku Azure, kterou jste nainstalovali, je `2.13.0` nebo vyšší, a to pomocí následujícího příkazu.
+
+   ```azurecli
+   az --version
+   ```
+
+   Pokud je vaše verze rozhraní příkazového řádku Azure nižší než `2.13.0` , nainstalujte novější verzi. Viz [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+
+3. Zadejte následující příkaz pro instalaci rozšíření Preview.
+
+   ```azurecli
+   az extension add -n storage-preview
+   ```
+
+#### <a name="grant-access"></a>Udělení přístupu
+
+Přidejte síťové pravidlo, které uděluje přístup z instance prostředku.
+
+```azurecli
+az storage account network-rule add \
+    --resource-id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Synapse/workspaces/testworkspace \
+    --tenant-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    -g myResourceGroup \
+    --account-name mystorageaccount
+```
+
+#### <a name="remove-access"></a>Odebrání přístupu
+
+Odebere síťové pravidlo, které uděluje přístup z instance prostředku.
+
+```azurecli
+az storage account network-rule remove \
+    --resource-id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Synapse/workspaces/testworkspace \
+    --tenant-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    -g myResourceGroup \
+    --account-name mystorageaccount
+```
+
+#### <a name="view-a-list-of-allowed-resource-instances"></a>Zobrazit seznam povolených instancí prostředků
+
+Zobrazte úplný seznam instancí prostředků, kterým byl udělen přístup k účtu úložiště.
+
+```azurecli
+az storage account network-rule list \
+    -g myResourceGroup \
+    --account-name mystorageaccount
+```
+
+---
+
+<a id="exceptions"></a>
+<a id="trusted-microsoft-services"></a>
+
+## <a name="grant-access-to-trusted-azure-services"></a>Udělení přístupu k důvěryhodným službám Azure 
+
+Některé služby Azure fungují ze sítí, které není možné zahrnout do svých síťových pravidel. K účtu úložiště můžete udělit podmnožinu takových důvěryhodných služeb Azure a přitom zachovat Síťová pravidla pro ostatní aplikace. Tyto důvěryhodné služby pak budou používat silné ověřování pro zabezpečené připojení k vašemu účtu úložiště.
+
+Vytvořením výjimky pro síťové pravidlo můžete udělit přístup k důvěryhodným službám Azure. Podrobné pokyny najdete v části [Správa výjimek](#manage-exceptions) v tomto článku.
+
+Když udělíte přístup k důvěryhodným službám Azure, udělíte jim následující typy přístupu:
+
+- Důvěryhodný přístup pro vybrané operace k prostředkům, které jsou zaregistrované ve vašem předplatném
+- Důvěryhodný přístup k prostředkům na základě spravované identity přiřazené systémem.
+
+<a id="trusted-access-resources-in-subscription"></a>
+
+### <a name="trusted-access-for-resources-registered-in-your-subscription"></a>Důvěryhodný přístup k prostředkům zaregistrovaným ve vašem předplatném
+
+Prostředky některých služeb, **Pokud jsou zaregistrované ve vašem předplatném**, mají přístup k vašemu účtu úložiště **ve stejném předplatném** pro vybrané operace, jako je například zápis protokolů nebo zálohování.  V následující tabulce jsou popsány jednotlivé služby a operace, které jsou povoleny. 
 
 | Služba                  | Název poskytovatele prostředků     | Povolené operace                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure Backup             | Microsoft. RecoveryServices | Spusťte zálohování a obnovujte nespravované disky ve virtuálních počítačích IAAS. (není vyžadováno pro Managed Disks). [Další informace](/azure/backup/backup-introduction-to-azure-backup). |
-| Azure Data Box           | Microsoft. DataBox          | Umožňuje importovat data do Azure pomocí Data Box. [Další informace](/azure/databox/data-box-overview). |
+| Azure Backup             | Microsoft. RecoveryServices | Spusťte zálohování a obnovujte nespravované disky ve virtuálních počítačích IAAS. (není vyžadováno pro Managed Disks). [Další informace](../../backup/backup-overview.md). |
+| Azure Data Box           | Microsoft. DataBox          | Umožňuje importovat data do Azure pomocí Data Box. [Další informace](../../databox/data-box-overview.md). |
 | Azure DevTest Labs       | Microsoft. DevTestLab       | Vytvoření vlastní image a instalace artefaktů. [Další informace](../../devtest-labs/devtest-lab-overview.md). |
-| Azure Event Grid         | Microsoft. EventGrid        | Povolte publikování událostí Blob Storage a umožněte Event Grid publikování do front úložiště. Přečtěte si informace o [událostech služby Blob Storage](/azure/event-grid/event-sources) a [publikování do front](/azure/event-grid/event-handlers). |
-| Azure Event Hubs         | Microsoft. EventHub         | Archivujte data pomocí Event Hubsho zachycení. [Další informace](/azure/event-hubs/event-hubs-capture-overview) |
+| Azure Event Grid         | Microsoft. EventGrid        | Povolte publikování událostí Blob Storage a umožněte Event Grid publikování do front úložiště. Přečtěte si informace o [událostech služby Blob Storage](../../event-grid/overview.md#event-sources) a [publikování do front](../../event-grid/event-handlers.md). |
+| Azure Event Hubs         | Microsoft. EventHub         | Archivujte data pomocí Event Hubsho zachycení. [Další informace](../../event-hubs/event-hubs-capture-overview.md) |
 | Synchronizace souborů Azure          | Microsoft. StorageSync      | Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Další informace](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft. HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
-| Export pro import do Azure      | Microsoft. ImportExport     | Umožňuje importovat data do Azure a exportovat data z Azure pomocí služby pro import a export. [Další informace](/azure/storage/common/storage-import-export-service).  |
-| Azure Monitor            | Microsoft. Insights         | Povoluje zápis dat monitorování do zabezpečeného účtu úložiště, včetně protokolů prostředků, Azure Active Directory protokolů pro přihlášení a auditu a protokolů Microsoft Intune. [Další informace](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Sítě Azure         | Microsoft.Network          | Ukládejte a analyzujte protokoly síťového provozu, včetně služeb Network Watcher a Analýza provozu. [Další informace](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
-| Azure Site Recovery      | Microsoft. SiteRecovery     | Povolení replikace pro zotavení po havárii virtuálních počítačů Azure s IaaS při použití mezipaměti, zdrojového nebo cílového účtu úložiště podporujícího bránu firewall  [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
+| Azure HDInsight          | Microsoft. HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
+| Export pro import do Azure      | Microsoft. ImportExport     | Umožňuje importovat data Azure Storage nebo exportovat data z Azure Storage pomocí služby Azure Storage import/export. [Další informace](../../import-export/storage-import-export-service.md).  |
+| Azure Monitor            | Microsoft. Insights         | Povoluje zápis dat monitorování do zabezpečeného účtu úložiště, včetně protokolů prostředků, Azure Active Directory protokolů pro přihlášení a auditu a protokolů Microsoft Intune. [Další informace](../../azure-monitor/roles-permissions-security.md). |
+| Sítě Azure         | Microsoft.Network          | Ukládejte a analyzujte protokoly síťového provozu, včetně služeb Network Watcher a Analýza provozu. [Další informace](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
+| Azure Site Recovery      | Microsoft. SiteRecovery     | Povolení replikace pro zotavení po havárii virtuálních počítačů Azure s IaaS při použití mezipaměti, zdrojového nebo cílového účtu úložiště podporujícího bránu firewall  [Další informace](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
 
-Nastavení **Povolit důvěryhodné služby společnosti Microsoft...** umožňuje také konkrétní instanci níže uvedených služeb pro přístup k účtu úložiště, pokud explicitně [přiřadíte roli Azure](storage-auth-aad.md#assign-azure-roles-for-access-rights) k [spravované identitě přiřazené systémem](../../active-directory/managed-identities-azure-resources/overview.md) pro danou instanci prostředku. V takovém případě rozsah přístupu pro instanci odpovídá roli Azure přiřazené spravované identitě.
+<a id="trusted-access-system-assigned-managed-identity"></a>
+
+### <a name="trusted-access-based-on-system-assigned-managed-identity"></a>Důvěryhodný přístup na základě spravované identity přiřazené systémem
+
+V následující tabulce jsou uvedeny služby, které mohou mít přístup k datům účtu úložiště, pokud se instance těchto služeb dostanou příslušným oprávněním. Pokud chcete udělit oprávnění, musíte explicitně [přiřadit roli Azure](storage-auth-aad.md#assign-azure-roles-for-access-rights) pro [spravovanou identitu přiřazenou systémem](../../active-directory/managed-identities-azure-resources/overview.md) pro každou instanci prostředku. V takovém případě rozsah přístupu pro instanci odpovídá roli Azure přiřazené spravované identitě. 
+
+> [!TIP]
+> Doporučeným způsobem, jak udělit přístup ke konkrétním prostředkům, je použít pravidla instance prostředků. Pokud chcete udělit přístup ke konkrétním instancím prostředků, přečtěte si část [udělení přístupu z Azure Resource Instances (Preview)](#grant-access-specific-instances) v tomto článku.
+
 
 | Služba                        | Název poskytovatele prostředků                 | Účel            |
 | :----------------------------- | :------------------------------------- | :----------------- |
-| Azure API Management           | Microsoft.ApiManagement/service        | Umožňuje službě API Management přístup k účtům úložiště za bránou firewall pomocí zásad. [Další informace](/azure/api-management/api-management-authentication-policies#use-managed-identity-in-send-request-policy). |
+| Azure API Management           | Microsoft.ApiManagement/service        | Umožňuje službě API Management přístup k účtům úložiště za bránou firewall pomocí zásad. [Další informace](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Cognitive Search         | Microsoft. Search/searchServices        | Umožňuje službám Kognitivní hledání získat přístup k účtům úložiště pro indexování, zpracování a dotazování. |
+| Azure Cognitive Services       | Microsoft. CognitiveService/účty    | Povolí Cognitive Services k přístupu k účtům úložiště. |
 | Úlohy Azure Container Registry | Microsoft. ContainerRegistry/Registry | ACR úlohy mají přístup k účtům úložiště při vytváření imagí kontejneru. |
 | Azure Data Factory             | Microsoft. DataFactory/továrny        | Umožňuje přístup k účtům úložiště pomocí modulu runtime ADF. |
 | Azure Data Share               | Microsoft. datashare/Accounts           | Umožňuje přístup k účtům úložiště prostřednictvím sdílení dat. |
+| Azure DevTest Labs             | Microsoft. DevTestLab/Labs              | Umožňuje přístup k účtům úložiště prostřednictvím DevTest Labs. |
 | Azure IoT Hub                  | Microsoft. Devices/IotHubs              | Umožňuje zapsat data z služby IoT Hub do úložiště objektů BLOB. [Další informace](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
-| Azure Logic Apps               | Microsoft. Logic/Workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Další informace](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
-| Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Další informace](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
-| Azure SQL Data Warehouse       | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních instancí SQL Database pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure SQL Database       | Microsoft.Sql                          | Umožňuje [importovat](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage) data z účtů úložiště a [zapisovat](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall) data auditu do účtů úložiště za bránou firewall. |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics             | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. Tato funkce je aktuálně ve verzi Preview. [Další informace](/azure/stream-analytics/blob-output-managed-identity). |
-| Azure Synapse Analytics        | Microsoft. synapse/pracovní prostory          | Umožňuje přístup k datům v Azure Storage z synapse Analytics. |
+| Azure Logic Apps               | Microsoft. Logic/Workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Další informace](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
+| Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Další informace](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). |
+| Azure Media Services           | Microsoft. Media/MediaServices          | Umožňuje přístup k účtům úložiště prostřednictvím Media Services. |
+| Azure Migrate                  | Microsoft. migruje/migrateprojects      | Umožňuje přístup k účtům úložiště prostřednictvím Azure Migrate. |
+| Azure Purview                  | Microsoft. dosah/účty             | Povoluje dosah přístup k účtům úložiště. |
+| Azure Remote Rendering         | Microsoft. MixedReality/remoteRenderingAccounts | Umožňuje přístup k účtům úložiště prostřednictvím vzdáleného vykreslování. |
+| Azure Site Recovery            | Microsoft. RecoveryServices/trezory      | Umožňuje přístup k účtům úložiště prostřednictvím Site Recovery. |
+| Azure SQL Database             | Microsoft.Sql                          | Povoluje [zápis](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) dat auditu do účtů úložiště za bránou firewall. |
+| Azure Synapse Analytics        | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních databází SQL pomocí příkazu COPY nebo základny (ve vyhrazeném fondu) nebo `openrowset` funkce a externích tabulek ve fondu bez serveru. [Další informace](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics              | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. [Další informace](../../stream-analytics/blob-output-managed-identity.md). |
+| Azure Synapse Analytics        | Microsoft. synapse/pracovní prostory           | Umožňuje přístup k datům v Azure Storage z Azure synapse Analytics. |
 
+## <a name="grant-access-to-storage-analytics"></a>Udělení přístupu k analýze úložiště
 
-### <a name="storage-analytics-data-access"></a>Přístup k datům Analytics Storage
+V některých případech je přístup ke čtení protokolů prostředku a metriky vyžadován mimo hranici sítě. Při konfiguraci přístupu důvěryhodných služeb k účtu úložiště můžete povolení přístupu pro čtení pro soubory protokolů, tabulky metrik nebo obojí vytvořit tak, že vytvoříte výjimku síťového pravidla. Podrobné pokyny najdete níže v části **Manage Exceptions** . Další informace o práci s analýzou úložiště najdete v tématu [použití analýzy Azure Storage ke shromažďování dat o protokolech a metrikách](./storage-analytics.md). 
 
-V některých případech je přístup ke čtení protokolů prostředku a metriky vyžadován mimo hranici sítě. Když konfigurujete přístup důvěryhodných služeb k účtu úložiště, můžete pro soubory protokolů, tabulky metrik nebo obojí dovolit přístup pro čtení. [Přečtěte si další informace o práci s analýzou úložiště.](/azure/storage/storage-analytics)
+<a id="manage-exceptions"></a>
 
-### <a name="managing-exceptions"></a>Správa výjimek
+## <a name="manage-exceptions"></a>Správa výjimek
 
 Výjimky síťového pravidla můžete spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI v2.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
-1. Klikněte na nabídku nastavení s názvem **brány firewall a virtuální sítě**.
+2. Vyberte položku v nabídce nastavení s názvem **síť**.
 
-1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
+3. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 
-1. V části **výjimky**vyberte výjimky, které chcete udělit.
+4. V části **výjimky** vyberte výjimky, které chcete udělit.
 
-1. Kliknutím na **Uložit** použijte změny.
+5. Vyberte **Uložit**, aby se tyto změny použily.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Nainstalujte [Azure PowerShell](/powershell/azure/install-Az-ps) a [přihlaste](/powershell/azure/authenticate-azureps)se.
 
-1. Zobrazí výjimky pro síťová pravidla účtu úložiště.
+2. Zobrazí výjimky pro síťová pravidla účtu úložiště.
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
     ```
 
-1. Nakonfigurujte výjimky na Síťová pravidla účtu úložiště.
+3. Nakonfigurujte výjimky na Síťová pravidla účtu úložiště.
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
     ```
 
-1. Odeberte výjimky pro síťová pravidla účtu úložiště.
+4. Odeberte výjimky pro síťová pravidla účtu úložiště.
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
@@ -447,23 +650,23 @@ Výjimky síťového pravidla můžete spravovat pomocí Azure Portal, PowerShel
 > [!IMPORTANT]
 > Nezapomeňte [nastavit výchozí pravidlo](#change-the-default-network-access-rule) na **Odepřít**, nebo odebrání výjimek nebude mít žádný vliv.
 
-#### <a name="cliv2"></a>CLIv2
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [přihlaste](/cli/azure/authenticate-azure-cli)se.
 
-1. Zobrazí výjimky pro síťová pravidla účtu úložiště.
+2. Zobrazí výjimky pro síťová pravidla účtu úložiště.
 
     ```azurecli
     az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass
     ```
 
-1. Nakonfigurujte výjimky na Síťová pravidla účtu úložiště.
+3. Nakonfigurujte výjimky na Síťová pravidla účtu úložiště.
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass Logging Metrics AzureServices
     ```
 
-1. Odeberte výjimky pro síťová pravidla účtu úložiště.
+4. Odeberte výjimky pro síťová pravidla účtu úložiště.
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass None
@@ -472,8 +675,10 @@ Výjimky síťového pravidla můžete spravovat pomocí Azure Portal, PowerShel
 > [!IMPORTANT]
 > Nezapomeňte [nastavit výchozí pravidlo](#change-the-default-network-access-rule) na **Odepřít**, nebo odebrání výjimek nebude mít žádný vliv.
 
+---
+
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o koncových bodech síťových služeb Azure v [koncových bodech služby](/azure/virtual-network/virtual-network-service-endpoints-overview).
+Přečtěte si další informace o koncových bodech síťových služeb Azure v [koncových bodech služby](../../virtual-network/virtual-network-service-endpoints-overview.md).
 
 Dig hlouběji do zabezpečení Azure Storage v [Azure Storage příručce zabezpečení](../blobs/security-recommendations.md).

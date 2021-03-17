@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783006"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024040"
 ---
 # <a name="material-mapping-for-model-formats"></a>Mapování materiálu pro formáty modelů
 
@@ -47,7 +47,7 @@ Každá textura v glTF může mít `texCoord` hodnotu, která je také podporov�
 
 ### <a name="embedded-textures"></a>Vložené textury
 
-Podporují se textury vložené do souborů * \* . bin* nebo * \* . glb* .
+Podporují se textury vložené do souborů *\* . bin* nebo *\* . glb* .
 
 ### <a name="supported-gltf-extension"></a>Podporované rozšíření glTF
 
@@ -101,29 +101,30 @@ Mapování výše je nejsložitější součást převodu materiálu z důvodu m
 Některé níže používané definice:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular` . Zelená ∗ 0,7154 + `Specular` . Blue ∗ 0,0721
-* `DiffuseBrightness`= 0,299 * `Diffuse` . Red<sup>2</sup> + 0,587 * `Diffuse` . Zelená<sup>2</sup> + 0,114 * `Diffuse` . Modrá<sup>2</sup>
-* `SpecularBrightness`= 0,299 * `Specular` . Red<sup>2</sup> + 0,587 * `Specular` . Zelená<sup>2</sup> + 0,114 * `Specular` . Modrá<sup>2</sup>
-* `SpecularStrength`= Max ( `Specular` . Červená, `Specular` . Zelená, `Specular` . Novák
+* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 +  `Specular` . Zelená ∗ 0,7154 + `Specular` . Blue ∗ 0,0721
+* `DiffuseBrightness` = 0,299 * `Diffuse` . Red<sup>2</sup> + 0,587 * `Diffuse` . Zelená<sup>2</sup> + 0,114 * `Diffuse` . Modrá<sup>2</sup>
+* `SpecularBrightness` = 0,299 * `Specular` . Red<sup>2</sup> + 0,587 * `Specular` . Zelená<sup>2</sup> + 0,114 * `Specular` . Modrá<sup>2</sup>
+* `SpecularStrength` = Max ( `Specular` . Červená, `Specular` . Zelená, `Specular` . Novák
 
 Vzorec SpecularIntensity se získá [odsud.](https://en.wikipedia.org/wiki/Luma_(video))
 Vzorec jasu je popsán v této [specifikaci](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf).
 
 ### <a name="roughness"></a>Hrubá
 
-`Roughness`vypočítá se z `Specular` a `ShininessExponent` pomocí [tohoto vzorce](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf). Vzorec je aproximace hrubosti od exponentu Phongova odlesků:
+`Roughness` vypočítá se z `Specular` a `ShininessExponent` pomocí [tohoto vzorce](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf). Vzorec je aproximace hrubosti od exponentu Phongova odlesků:
 
-```Cpp
+```cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
 ### <a name="metalness"></a>Kov
 
-`Metalness`se počítá z `Diffuse` a `Specular` používá tento [vzorec ze specifikace glTF](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js).
+`Metalness` se počítá z `Diffuse` a `Specular` používá tento [vzorec ze specifikace glTF](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js).
 
 Tady je, že jsme vyřešili rovnici: AX<sup>2</sup> + BX + C = 0.
 V podstatě dielectric povrch odráží přibližně 4% světla a zbytek je rozptýlen. Kovové povrchy nereflektují žádné světlo jako difúzi, ale všechny s odlesky.
 Tento vzorec má několik nevýhod, protože neexistuje způsob, jak rozlišovat lesklé plasty a lesklé kovové povrchy. Předpokládáme většinu času, kdy plocha má kovové vlastnosti, a v důsledku toho se lesklé plastové/pryžové plochy nemusí považovat za očekávané.
+
 ```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
@@ -138,12 +139,12 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedo
 
-`Albedo`je vypočítán z `Diffuse` , `Specular` a `Metalness` .
+`Albedo` je vypočítán z `Diffuse` , `Specular` a `Metalness` .
 
 Jak je popsáno v části kov, dielectric povrchy odráží přibližně 4% světla.  
 Tady je příklad, jak lineárně interpoluje barvy mezi `Dielectric` a, a to `Metal` pomocí `Metalness` hodnoty jako faktoru. Pokud je k `0.0` dispozici rozptyl, pak v závislosti na odlesku bude tato barva buď tmavá (Pokud je zrcadlově velká), nebo se difúze nemění (Pokud není k dispozici žádná odlesk). Pokud je k dishodnotě značná hodnota, pak barva difúze zmizí a bude mít za následek odlesky barev.
 
-```Cpp
+```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
 
@@ -153,13 +154,13 @@ albedoRawColor = lerpColors(dielectricColor, metalColor, metalness * metalness)
 AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 ```
 
-`AlbedoRGB`byl vypočítán pomocí výše uvedeného vzorce, ale alfa kanál vyžaduje další výpočty. Formát FBX je Vague o transparentnosti a má mnoho způsobů, jak ho definovat. Různé nástroje obsahu používají různé metody. Nápad je sjednotit do jednoho vzorce. V případě, že se některé assety nevytváří běžným způsobem, jsou některé z nich nesprávně zobrazené jako průhledné.
+`AlbedoRGB` byl vypočítán pomocí výše uvedeného vzorce, ale alfa kanál vyžaduje další výpočty. Formát FBX je Vague o transparentnosti a má mnoho způsobů, jak ho definovat. Různé nástroje obsahu používají různé metody. Nápad je sjednotit do jednoho vzorce. V případě, že se některé assety nevytváří běžným způsobem, jsou některé z nich nesprávně zobrazené jako průhledné.
 
 Tato akce je vypočítána z `TransparentColor` , `TransparencyFactor` , `Opacity` :
 
 Pokud `Opacity` je definován, použijte ji přímo: `AlbedoAlpha`  =  `Opacity` Else  
 Pokud `TransparencyColor` je definován, pak `AlbedoAlpha` = 1,0-(( `TransparentColor` . Červená + `TransparentColor` . Zelená + `TransparentColor` . Modrý)/3,0) else  
-IF `TransparencyFactor` , then `AlbedoAlpha` = 1,0-`TransparencyFactor`
+IF `TransparencyFactor` , then `AlbedoAlpha` = 1,0- `TransparencyFactor`
 
 Konečná `Albedo` Barva má čtyři kanály a kombinaci `AlbedoRGB` s `AlbedoAlpha` .
 

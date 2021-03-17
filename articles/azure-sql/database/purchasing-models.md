@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a11894eb94b73d8d31ca7135be2ba9c05eca5e04
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075872"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788821"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Výběr mezi modely nákupu vCore a DTU – Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,10 +34,10 @@ Existují dva nákupní modely:
 
 Následující tabulka a graf se porovnávají a kontrastují s nákupními modely založenými na DTU vCore a na DTU:
 
-|**Model nákupu**|**Popis**|**Nejlepší pro**|
+|**Nákupní model**|**Popis**|**Nejvhodnější pro**|
 |---|---|---|
-|Založené na DTU|Tento model vychází ze sady prostředků COMPUTE, úložiště a vstupně-výstupních prostředků. Velikosti výpočetních hodnot se vyjadřují v DTU pro izolované databáze a v jednotkách eDTU (elastické databázové transakce) pro elastické fondy. Další informace o DTU a eDTU najdete v tématu [co jsou DTU a eDTU?](purchasing-models.md#dtu-based-purchasing-model).|Zákazníci, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředků|
-|založené na vCore|Tento model vám umožní nezávisle zvolit výpočetní prostředky a prostředky úložiště. Nákupní model založený na vCoreech vám také umožní používat [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) SQL Server k úspory nákladů.|Zákazníci, kteří flexibilitu hodnot, řízení a transparentnost|
+|Model založený na jednotkách DTU|Tento model vychází ze sady prostředků COMPUTE, úložiště a vstupně-výstupních prostředků. Velikosti výpočetních prostředků se vyjadřují v jednotkách DTU v případě jednoúčelových databází a v jednotkách eDTU (jednotky elastických databázových transakcí) v případě elastických fondů. Další informace o jednotkách DTU a eDTU najdete v části [Co jsou jednotky DTU a eDTU](purchasing-models.md#dtu-based-purchasing-model)?|Zákazníci, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředků|
+|založené na vCore|Tento model vám umožní nezávisle zvolit výpočetní prostředky a prostředky úložiště. Nákupní model založený na virtuálních jádrech umožňuje také šetřit náklady s využitím [Zvýhodněného hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) pro SQL Server.|Zákazníci, kteří flexibilitu hodnot, řízení a transparentnost|
 ||||  
 
 ![Porovnání cenového modelu](./media/purchasing-models/pricing-model.png)
@@ -60,7 +60,7 @@ Náklady na úložiště zálohování jsou stejné jako pro úroveň služby Pr
 
 Popis způsobu definování kapacity a výpočtu nákladů na výpočetní úrovni bez serveru najdete v tématu [SQL Database úrovně bez serveru](serverless-tier-overview.md).
 
-## <a name="storage-costs"></a>Cena za uložení
+## <a name="storage-costs"></a>Náklady na úložiště
 
 Různé typy úložiště se účtují jinak. Pro úložiště dat se vám budou účtovat zřízené úložiště založené na maximální velikosti databáze nebo fondu, který vyberete. Náklady se nezmění, pokud je maximální hodnota nesnížíte nebo nezvýšíte. Úložiště zálohování je přidruženo k automatizovaným zálohám vaší instance a dynamicky se přiřazuje. Zvýšení doby uchovávání záloh zvyšuje velikost úložiště zálohování spotřebovaného vaší instancí.
 
@@ -72,12 +72,12 @@ Další informace o cenách za úložiště najdete na stránce s [cenami](https
 
 Virtual Core (vCore) představuje logický procesor a nabízí možnost výběru mezi generacemi hardwaru a fyzickými charakteristikami hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na vCoreech poskytuje flexibilitu, kontrolu, transparentnost individuální spotřeby prostředků a snadný způsob, jak přeložit požadavky na místní úlohy do cloudu. Tento model vám umožní zvolit prostředky výpočtů, paměti a úložiště na základě potřeb vašich úloh.
 
-V rámci nákupního modelu založeného na vCore si můžete vybrat mezi [pro obecné účely](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) a [pro důležité obchodní informace](high-availability-sla.md#premium-and-business-critical-service-tier-availability) úrovněmi služeb pro SQL Database a SQL Managed instance.  Pro izolované databáze můžete také zvolit [úroveň služby pro škálování na úrovni služeb](service-tier-hyperscale.md).
+V rámci nákupního modelu založeného na vCore si můžete vybrat mezi [pro obecné účely](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) a [pro důležité obchodní informace](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) úrovněmi služeb pro SQL Database a SQL Managed instance.  Pro izolované databáze můžete také zvolit [úroveň služby pro škálování na úrovni služeb](service-tier-hyperscale.md).
 
 Nákupní model založený na vCore vám umožňuje nezávisle vybrat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny. V rámci nákupního modelu založeného na vCore platíte za:
 
-- Výpočetní prostředky (úroveň služby + počet virtuální jádra a množství paměti a generace hardwaru).
-- Typ a množství dat a úložiště protokolu.
+- Výpočetní prostředky (úroveň služeb + počet virtuálních jader a množství paměti + generace hardwaru),
+- typ a množství úložišť pro data a protokoly,
 - Úložiště zálohování (RA-GRS).
 
 > [!IMPORTANT]
@@ -127,7 +127,7 @@ Do existujícího fondu můžete přidat další eDTU bez výpadku databáze a b
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Určení počtu DTU potřebných pro zatížení
 
-Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu SQL Database použijte [přehledy výkonu dotazů](query-performance-insight-use.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) (DMV) umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
+Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu SQL Database použijte [přehledy výkonu dotazů](query-performance-insight-use.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) (DMV) umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
 
 ### <a name="determine-dtu-utilization"></a>Určení využití DTU
 
@@ -135,7 +135,7 @@ K určení průměrného procenta využití DTU/eDTU vzhledem k limitu DTU/eDTU 
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-Vstupní hodnoty pro tento vzorec lze získat z [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)a [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) zobrazení dynamické správy. Jinými slovy, chcete-li určit procento využití DTU/eDTU do limitu DTU/eDTU databáze nebo elastického fondu, vyberte nejvyšší procento z následujících hodnot: `avg_cpu_percent` , `avg_data_io_percent` a v `avg_log_write_percent` daném časovém okamžiku.
+Vstupní hodnoty pro tento vzorec lze získat z [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)a [Sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) zobrazení dynamické správy. Jinými slovy, chcete-li určit procento využití DTU/eDTU do limitu DTU/eDTU databáze nebo elastického fondu, vyberte nejvyšší procento z následujících hodnot: `avg_cpu_percent` , `avg_data_io_percent` a v `avg_log_write_percent` daném časovém okamžiku.
 
 > [!NOTE]
 > Omezení DTU databáze je určeno PROCESORem, čtením, zápisy a pamětí, která je k dispozici pro databázi. Vzhledem k tomu, že modul SQL Database obvykle používá veškerou dostupnou paměť pro svou datovou mezipaměť ke zvýšení výkonu, `avg_memory_usage_percent` hodnota se obvykle blíží 100 procentům bez ohledu na aktuální zatížení databáze. Proto i když paměť nepřímo ovlivňuje limit DTU, nepoužívá se ve vzorci využití DTU.
@@ -150,13 +150,13 @@ V nákupním modelu založeném na DTU si zákazníci nemůžou zvolit generová
 
 Databázi můžete například přesunout do jiné generace hardwaru, pokud se škáluje směrem nahoru nebo dolů k jinému cíli služby, nebo pokud se aktuální infrastruktura v datacentru blíží k omezením kapacity nebo pokud je aktuálně vydaný hardware vyřazen z provozu z důvodu jeho konce životního cyklu.
 
-Pokud je databáze přesunuta na jiný hardware, výkon úlohy se může změnit. Model DTU zaručuje, že propustnost a doba odezvy úlohy [srovnávacího testu DTU](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) zůstanou v podstatě stejné jako databáze se přesune na jinou generaci hardwaru, pokud je její cíl služby (počet DTU) zůstává stejný.
+Pokud je databáze přesunuta na jiný hardware, výkon úlohy se může změnit. Model DTU zaručuje, že propustnost a doba odezvy úlohy [srovnávacího testu DTU](./service-tiers-dtu.md#dtu-benchmark) zůstanou v podstatě stejné jako databáze se přesune na jinou generaci hardwaru, pokud je její cíl služby (počet DTU) zůstává stejný.
 
 V rámci spektra úloh zákazníků, které běží v Azure SQL Database, je ale možné vyslovit dopad použití jiného hardwaru pro stejný cíl služby. Různé úlohy budou využívat různé konfigurace hardwaru a funkce. Pro jiné úlohy než srovnávací test DTU je proto možné zobrazit rozdíly v výkonu, pokud se databáze přesouvá z jedné generace hardwaru do jiné.
 
 Například aplikace, která je citlivá na latenci sítě, může zobrazit lepší výkon Gen5 hardwaru vs. COMPUTE GEN4 – v důsledku použití akcelerovaných síťových služeb v Gen5, ale aplikace využívající intenzivní čtení v/v může zobrazit lepší výkon u COMPUTE GEN4 –ho hardwaru oproti Gen5, protože je na COMPUTE GEN4 – vyšší poměr paměti na jádro.
 
-Zákazníci s pracovními postupy, které jsou citlivé na změny hardwaru nebo zákazníky, kteří chtějí řídit výběr generování hardwaru pro svou databázi, mohou pomocí modelu [Vcore](service-tiers-vcore.md) zvolit jejich preferovanou generaci hardwaru při vytváření a škálování databáze. V modelu vCore se pro jednotlivé [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md)zdokumentují omezení prostředků každého cíle služby při každém generování hardwaru. Další informace o generacích hardwaru v modelu vCore najdete v tématu [hardwarové generace](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
+Zákazníci s pracovními postupy, které jsou citlivé na změny hardwaru nebo zákazníky, kteří chtějí řídit výběr generování hardwaru pro svou databázi, mohou pomocí modelu [Vcore](service-tiers-vcore.md) zvolit jejich preferovanou generaci hardwaru při vytváření a škálování databáze. V modelu vCore se pro jednotlivé [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md)zdokumentují omezení prostředků každého cíle služby při každém generování hardwaru. Další informace o generacích hardwaru v modelu vCore najdete v tématu [hardwarové generace](./service-tiers-vcore.md#hardware-generations).
 
 ## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 

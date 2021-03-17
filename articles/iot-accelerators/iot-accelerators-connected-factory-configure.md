@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820116"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002234"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátoru řešení propojené továrny
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Akcelerátor řešení propojené továrny zobrazuje simulovaný řídicí panel pro fiktivní společnost Contoso. V této společnosti jsou globální továrny v mnoha globálních umístěních.
 
@@ -85,7 +88,7 @@ Následující fragment kódu ukazuje osnovu `ContosoTopologyDescription.json` k
 }
 ```
 
-Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` jsou:
+Společné vlastnosti `<global_configuration>` ,, a `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` jsou:
 
 * **Název** (typ řetězce)
 
@@ -109,13 +112,13 @@ Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` 
 
   Jednoznačně identifikuje uzel topologie.
 
-`<factory_configuration>`má vlastnost:
+`<factory_configuration>` má vlastnost:
 
 * **Umístění** (typ `<location_definition>` )
 
   Určuje, kde se nachází objekt pro vytváření.
 
-`<station_configuration>`má vlastnosti:
+`<station_configuration>` má vlastnosti:
 
 * **OpcUri** (typ řetězce)
 
@@ -124,7 +127,7 @@ Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` 
 
 * **OpcNodes**, což jsou pole uzlů OPC UA (typ `<opc_node_description>` )
 
-`<location_definition>`má vlastnosti:
+`<location_definition>` má vlastnosti:
 
 * **City** (typ řetězce)
 
@@ -142,7 +145,7 @@ Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` 
 
   Zeměpisná délka místa
 
-`<performance_definition>`má vlastnosti:
+`<performance_definition>` má vlastnosti:
 
 * **Minimum** (typ Double)
 
@@ -188,7 +191,7 @@ Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` 
   * **CallOpcMethod**: informace o uzlu a parametry metody OPC UA pro volání ve formátu "NodeId nadřazených uzlů", NodeId metody volání, identifikátor URI serveru OPC UA. "
   * **OpenWebPage**: adresa URL, která se má zobrazit v okně prohlížeče.
 
-`<opc_node_description>`obsahuje informace o uzlech OPC UA ve stanici (OPC UA Server). Uzly, které nepředstavují žádné existující uzly OPC UA, ale používají se jako úložiště v logice výpočtu propojené továrny, jsou také platné. Má následující vlastnosti:
+`<opc_node_description>` obsahuje informace o uzlech OPC UA ve stanici (OPC UA Server). Uzly, které nepředstavují žádné existující uzly OPC UA, ale používají se jako úložiště v logice výpočtu propojené továrny, jsou také platné. Má následující vlastnosti:
 
 * **NodeId** (typ řetězce)
 
@@ -264,7 +267,7 @@ Všechny vlastnosti použité v konfiguračním souboru lze seskupit do různýc
 
 Vlastnosti v této kategorii definují vizuální vzhled řídicího panelu propojené továrny. Mezi příklady patří:
 
-* Name
+* Název
 * Description
 * Image
 * Umístění
@@ -291,7 +294,7 @@ Objekty uzlu UA OPC ve stanicích umožňují tagování pro použití při výp
 Propojená továrna podporuje jednoduchý mechanismus generování výstrah na základě prahové hodnoty minima a maxima. V reakci na tyto výstrahy můžete nakonfigurovat řadu předdefinovaných akcí. Tento mechanismus řídí následující vlastnosti:
 
 * Maximum
-* Minimální
+* Minimum
 * MaximumAlertActions
 * MinimumAlertActions
 
@@ -334,7 +337,7 @@ Tato konfigurace umožňuje dotazování na hodnoty telemetrie tohoto uzlu pomoc
 * Průměr všech hodnot.
 * Součet všech hodnot pro všechny jedinečné páry **OpcUri** (**ApplicationUri**), **NodeId** v daném časovém rozpětí.
 
-Jedna z vlastností **NumberOfManufactureredProducts** uzlu znamená, že se zvyšuje jenom. K výpočtu počtu produktů vyrobených v rámci TimeSpan používá propojená továrna SubMaxMin **operačního** **SubMaxMin**systému. Výpočet načte minimální hodnotu na začátku TimeSpan a maximální hodnotu na konci časového rozpětí.
+Jedna z vlastností **NumberOfManufactureredProducts** uzlu znamená, že se zvyšuje jenom. K výpočtu počtu produktů vyrobených v rámci TimeSpan používá propojená továrna SubMaxMin **operačního** **SubMaxMin** systému. Výpočet načte minimální hodnotu na začátku TimeSpan a maximální hodnotu na konci časového rozpětí.
 
 **Operační kód** v konfiguraci konfiguruje logiku výpočtu pro výpočet výsledku rozdílu mezi maximální a minimální hodnotou. Tyto výsledky se pak sčítají až do kořenové (globální) úrovně a zobrazují se na řídicím panelu.
 

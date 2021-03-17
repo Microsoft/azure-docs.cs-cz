@@ -12,13 +12,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004150"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91598260"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití SSMS pro připojení k a dotazování Azure SQL Database nebo spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,7 +53,7 @@ Pokud jednoduše chcete spustit některé dotazy ad-hoc bez instalace SSMS, pře
 
 Získejte informace o připojení, které potřebujete pro připojení k vaší databázi. K dokončení tohoto rychlého startu budete potřebovat plně kvalifikovaný název [serveru](logical-servers.md) nebo název hostitele, název databáze a přihlašovací informace.
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte do **databáze** nebo **spravované instance** , pro kterou chcete zadat dotaz.
 
@@ -63,6 +63,8 @@ Získejte informace o připojení, které potřebujete pro připojení k vaší 
 > Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)
 
 ## <a name="connect-to-your-database"></a>Připojení k databázi
+
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
 
 V SSMS se připojte k vašemu serveru.
 
@@ -77,20 +79,23 @@ V SSMS se připojte k vašemu serveru.
    | ------------ | ------------------ | ----------- |
    | **Typ serveru** | Databázový stroj | Požadovaná hodnota. |
    | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **servername.Database.Windows.NET**. |
-   | **Ověřování** | Ověřování SQL Serveru | V tomto kurzu se používá ověřování SQL. |
+   | **Authentication** | Ověřování SQL Serveru | V tomto kurzu se používá ověřování SQL. |
    | **Přihlásit** | ID uživatele účtu správce serveru | ID uživatele z účtu správce serveru, který se použil k vytvoření serveru. |
    | **Heslo** | Heslo účtu správce serveru | Heslo z účtu správce serveru, který se použil k vytvoření serveru. |
    ||||
 
    ![Připojení k serveru](./media/connect-query-ssms/connect.png)  
 
+> [!NOTE]
+> V tomto kurzu se používá SQL Server ověřování.
+
 3. V dialogovém okně **připojit k serveru** vyberte **Možnosti** . V rozevírací nabídce **připojit k databázi** vyberte **mySampleDatabase**. Po dokončení rychlého startu v [oddílu předpoklady](#prerequisites) se vytvoří databáze AdventureWorksLT s názvem mySampleDatabase. Pokud vaše pracovní kopie databáze AdventureWorks má jiný název než mySampleDatabase, pak ji místo toho vyberte.
 
    ![připojení k databázi na serveru](./media/connect-query-ssms/options-connect-to-db.png)  
 
-4. Vyberte **Připojit**. Otevře se okno Průzkumník objektů.
+4. Vyberte **Connect** (Připojit). Otevře se okno Průzkumník objektů.
 
-5. Chcete-li zobrazit objekty databáze, rozbalte položku **databáze** a poté rozbalte uzel databáze.
+5. Pokud chcete zobrazit objekty databáze, rozbalte položku **Databases** (Databáze) a poté rozbalte uzel databáze.
 
    ![objekty mySampleDatabase](./media/connect-query-ssms/connected.png)  
 
@@ -138,7 +143,7 @@ Spuštěním tohoto příkazu [vložte](/sql/t-sql/statements/insert-transact-sq
            ,GETDATE() );
    ```
 
-2. Vyberte **Spustit** pro vložení nového řádku do `Product` tabulky. Zobrazí **Messages** se podokno zprávy **(počet ovlivněných řádků: 1)**.
+2. Vyberte **Spustit**  pro vložení nového řádku do `Product` tabulky. Zobrazí **Messages** se podokno zprávy **(počet ovlivněných řádků: 1)**.
 
 #### <a name="view-the-result"></a>Zobrazit výsledek
 
@@ -155,7 +160,7 @@ Spuštěním tohoto příkazu [vložte](/sql/t-sql/statements/insert-transact-sq
 
 ### <a name="update-data"></a>Aktualizace dat
 
-Spusťte tento [kód](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) Transact-SQL pro úpravu nového produktu.
+Spusťte tento [kód](/sql/t-sql/queries/update-transact-sql) Transact-SQL pro úpravu nového produktu.
 
 1. Nahraďte předchozí dotaz tímto výsledkem, který vrátí nový záznam, který jste vytvořili dříve:
 

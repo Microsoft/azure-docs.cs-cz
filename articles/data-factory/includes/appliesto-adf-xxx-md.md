@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 8125d5a99dc0759c679145e462f023cf0ab55a8e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e9a2d1b5fbe99dac42de27639fad3924b8eb3174
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497369"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444866"
 ---
-<Token>**platí pro:** ![ Ano ](../media/applies-to/yes.png) Azure Data Factory ![ žádné ](../media/applies-to/no.png) analýzy Azure synapse (Preview)</Token> 
+<Token>**platí pro:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure Data Factory :::image type="icon" source="../media/applies-to/no.png" border="false"::: Azure synapse Analytics</Token> 

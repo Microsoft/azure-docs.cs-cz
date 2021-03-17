@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: ac81832765f674e58ad6b3213238e9c68e04d2dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1634731381be6ebbb8750746f88b8ff9e761025d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726463"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879186"
 ---
 # <a name="azure-media-player-quickstart"></a>Rychlé zprovoznění Azure Media Playeru
 Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu z vašeho účtu Azure Media Services trvá jenom několik minut. Tato část ukazuje základní kroky a nezachází do podrobností. Následující části vám poskytnou konkrétní informace o tom, jak nastavit a nakonfigurovat Azure Media Player.  Stačí přidat následující příkazy include do části `<head>` vašeho dokumentu:
@@ -22,7 +22,7 @@ Nastavení Azure Media Player je snadné. Získání základního přehrávání
 ```
 
 > [!IMPORTANT]
-> Tuto `latest` verzi byste **neměli používat v** produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player; například nahraďte `latest` parametr `1.0.0`. Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
+> Tuto verzi  byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player, například nahraďte parametrem `latest` `1.0.0` . Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
 
 ## <a name="use-the-video-element"></a>Použití prvku video
 
@@ -63,4 +63,4 @@ Pokud nechcete použít automatické nastavení, můžete `data-setup` atribut v
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)
+- [Azure Media Player úplnou instalaci](./azure-media-player-full-setup.md)

@@ -3,7 +3,7 @@ title: 'Kurz: použití spravované identity pro přístup k Azure Cosmos DB-Win
 description: Tento kurz vás provede procesem použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
-ms.author: markvi
+ms.date: 12/10/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 04508f1aa8ee9d6b4f730f57c60d959fab209122
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583075"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093789"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB
 
@@ -36,25 +36,18 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
+- Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
+- Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- K provedení potřebných kroků k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 - Nainstalovat nejnovější verzi [Azure PowerShell](/powershell/azure/install-az-ps)
+- Budete také potřebovat virtuální počítač s Windows, který má povolené spravované identity přiřazené systémem.
+  - Pokud pro tento kurz potřebujete vytvořit virtuální počítač, můžete postupovat podle článku [s názvem vytvořit virtuální počítač s povolenou identitou přiřazenou systémem](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) .
 
-
-## <a name="enable"></a>Povolení
-
-[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
-
-
-
-## <a name="grant-access"></a>Udělení přístupu
-
-
-### <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB 
+## <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB 
 
 Vytvořte si účet služby Cosmos DB (pokud ho ještě nemáte). Tento krok můžete přeskočit a můžete použít stávající účet služby Cosmos DB. 
 
-1. V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
+1. Na webu Azure Portal klikněte v levém horním rohu na tlačítko **+ Vytvořit prostředek**.
 2. Klikněte na **Databáze**, pak na **Azure Cosmos DB** a zobrazí se nový panel Nový účet.
 3. Zadejte **ID** pro účet služby Cosmos DB, který použijete později.  
 4. **API** musí být nastaveno na SQL. Přístup popsaný v tomto kurzu je možné použít s ostatními dostupnými typy rozhraní API. Kroky tohoto kurzu jsou ale určené pro rozhraní API SQL.
@@ -70,23 +63,31 @@ Potom přidejte shromažďování dat v účtu služby Cosmos DB, kterého se m�
 3. Pro kolekci zadejte ID databáze, ID kolekce, vyberte kapacitu úložiště, zadejte klíč oddílu, zadejte hodnotu propustnosti a potom klikněte na **OK**.  Pro účely tohoto kurzu stačí, když použijete „Test“ jako ID databáze a ID kolekce, vyberete kapacitu pevného úložiště a nejnižší propustnost (400 RU/s).  
 
 
-### <a name="grant-access-to-the-cosmos-db-account-access-keys"></a>Udělení přístupu k klíčům pro přístup k účtu Cosmos DB
+## <a name="grant-access"></a>Udělení přístupu
 
-V této části se dozvíte, jak udělit přístup spravované identitě přiřazený systémem Windows VM k přístupovým klíčům Cosmos DB účtu. Cosmos DB nativně nepodporuje ověřování Azure AD. Spravovanou identitu přiřazenou systémem ale můžete použít k načtení přístupového klíče ke Cosmos DB z Resource Manageru a tento klíč použít pro přístup ke Cosmos DB. V tomto kroku udělíte spravované identitě přiřazené systémem na virtuálním počítači s Windows přístup ke klíčům k účtu Cosmos DB.
+V této části se dozvíte, jak udělit přístup spravované identitě přiřazený systémem Windows VM k přístupovým klíčům Cosmos DB účtu. Cosmos DB nativně nepodporuje ověřování Azure AD. Spravovanou identitu přiřazenou systémem ale můžete použít k načtení Cosmos DB přístupového klíče z Správce prostředků a k přístupu k Cosmos DB použít klíč. V tomto kroku udělíte spravované identitě přiřazené systémem na virtuálním počítači s Windows přístup ke klíčům k účtu Cosmos DB.
 
-Pokud chcete spravované identitě přiřazené systémem na počítači s Windows udělit v Azure Resource Manageru pomocí PowerShellu přístup k účtu Cosmos DB, aktualizujte hodnoty `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` pro svoje prostředí. Služba Cosmos DB podporuje při použití přístupových klíčů dvě úrovně: přístup k účtu pro čtení/zápis a přístup k účtu jen pro čtení.  Roli `DocumentDB Account Contributor` přiřaďte, pokud chcete k účtu získat klíče pro přístup pro čtení a zápis. Pokud chcete k účtu získat klíče pro přístup jen pro čtení, přiřaďte roli `Cosmos DB Account Reader Role`.  Pro účely tohoto kurzu přiřaďte `Cosmos DB Account Reader Role`:
+K udělení přístupu spravované identity systémem Windows VM k účtu Cosmos DB v Azure Resource Manager pomocí PowerShellu aktualizujte následující hodnoty:
+
+- `<SUBSCRIPTION ID>`
+- `<RESOURCE GROUP>`
+- `<COSMOS DB ACCOUNT NAME>`
+
+Služba Cosmos DB podporuje při použití přístupových klíčů dvě úrovně: přístup k účtu pro čtení/zápis a přístup k účtu jen pro čtení.  Roli `DocumentDB Account Contributor` přiřaďte, pokud chcete k účtu získat klíče pro přístup pro čtení a zápis. Pokud chcete k účtu získat klíče pro přístup jen pro čtení, přiřaďte roli `Cosmos DB Account Reader Role`.  Pro účely tohoto kurzu přiřaďte `Cosmos DB Account Reader Role`:
 
 ```azurepowershell
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
+
+>[!NOTE]
+> Mějte na paměti, že pokud nemůžete provést operaci, možná nemáte správná oprávnění. Pokud chcete přístup pro zápis ke klíčům, potřebujete použít roli Azure, jako je například Přispěvatel účtu DocumentDB nebo vytvořit vlastní roli. Další informace najdete [v v Azure Cosmos DB řízení přístupu na základě role v Azure](../../cosmos-db/role-based-access-control.md) .
+
 ## <a name="access-data"></a>Přístup k datům
 
 V této části se dozvíte, jak volat Azure Resource Manager pomocí přístupového tokenu pro spravovanou identitu přiřazenou systémem Windows VM. Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač. 
 
-Na virtuální počítač s Windows musíte nainstalovat nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
-
-
+Na virtuální počítač s Windows musíte nainstalovat nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 
 ### <a name="get-an-access-token"></a>Získání přístupového tokenu
 
@@ -115,12 +116,20 @@ Na virtuální počítač s Windows musíte nainstalovat nejnovější verzi roz
 
 ### <a name="get-access-keys"></a>Získání přístupových klíčů 
 
-V této části se dozvíte, jak získat přístupové klíče z Azure Resource Manager, aby bylo možné Cosmos DB volání. Teď použijte PowerShell k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a načtěte přístupový klíč k účtu služby Cosmos DB. Jakmile budeme mít přístupový klíč, můžeme zadat dotaz na službu Cosmos DB. Nezapomeňte nahradit parametry `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem.  Pokud chcete načíst klíče pro čtení/zápis, použijte typ operace klíče `listKeys`.  Pokud chcete načíst klíče jen pro čtení, použijte typ operace klíče `readonlykeys`:
+V této části se dozvíte, jak získat přístupové klíče z Azure Resource Manager, aby bylo možné Cosmos DB volání. K volání Správce prostředků pomocí přístupového tokenu, který jsme dřív získali k načtení přístupového klíče Cosmos DB účtu, používáme PowerShell. Jakmile budeme mít přístupový klíč, můžeme zadat dotaz na službu Cosmos DB. Použijte vlastní hodnoty k nahrazení následujících položek:
+
+- `<SUBSCRIPTION ID>`
+- `<RESOURCE GROUP>`
+- `<COSMOS DB ACCOUNT NAME>` 
+- Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem. 
+
+>[!NOTE]
+>Pokud chcete načíst klíče pro čtení/zápis, použijte typ operace klíče `listKeys`.  Pokud chcete načíst klíče jen pro čtení, použijte typ operace Key `readonlykeys` . Pokud nemůžete použít klíče listkey, ověřte, že jste k spravované identitě přiřadili [příslušnou roli](../../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role) .
 
 ```powershell
-Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/listKeys/?api-version=2016-03-31' -Method POST -Headers @{Authorization="Bearer $ARMToken"}
+Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/readonlykeys/?api-version=2016-03-31' -Method POST -Headers @{Authorization="Bearer $ARMToken"}
 ```
-V odpovědi získáte seznam klíčů.  Pokud například získáte klíče jen pro čtení:
+Odpověď nabízí seznam klíčů.  Pokud například získáte klíče jen pro čtení:
 
 ```powershell
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",
@@ -204,6 +213,4 @@ Tento příkaz rozhraní příkazového řádku vrátí podrobnosti o kolekci:
 V tomto kurzu jste zjistili, jak použít identitu přiřazenou systémem na virtuálním počítači s Windows pro přístup ke Cosmos DB.  Další informace o službě Cosmos DB najdete tady:
 
 > [!div class="nextstepaction"]
->[Přehledu databáze Azure Cosmos DB](/azure/cosmos-db/introduction)
-
-
+>[Přehled Azure Cosmos DB](../../cosmos-db/introduction.md)

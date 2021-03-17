@@ -3,7 +3,7 @@ title: Kopírování objektů BLOB z účtu úložiště do prostředku Azure Me
 description: V tomto tématu se dozvíte, jak zkopírovat existující objekt blob do prostředku Media Services. V příkladu se používá rozšíření Azure Media Services .NET SDK.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,19 +11,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: f23bb2469136373c130ce600892b85dfcb4f3866
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6ee6af8726dbd0a7b564b442242572afec670f4d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038864"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016742"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopírování existujících objektů blob do prostředku Media Services
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Tento článek popisuje, jak zkopírovat objekty BLOB z účtu úložiště do nového prostředku Azure Media Services (AMS) pomocí [rozšíření Azure Media Services .NET SDK](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
 
@@ -42,7 +45,7 @@ V tomto článku jsou uvedeny dva ukázky kódu:
 
 ## <a name="copy-blobs-between-two-ams-accounts"></a>Kopírování objektů BLOB mezi dvěma účty AMS  
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Dva účty Media Services. Přečtěte si článek [jak vytvořit účet Media Services](media-services-portal-create-account.md).
 
@@ -160,7 +163,7 @@ namespace CopyExistingBlobsIntoAsset
 
 ## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Kopírování objektů BLOB z účtu úložiště do účtu AMS 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Jeden účet úložiště, ze kterého chcete zkopírovat objekty blob.
 - Jeden účet AMS, do kterého chcete zkopírovat objekty blob.

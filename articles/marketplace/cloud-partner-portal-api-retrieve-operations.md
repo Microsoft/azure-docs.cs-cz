@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271939"
 ---
 # <a name="retrieve-operations"></a>Načtení operací
@@ -33,13 +33,13 @@ Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný 
 
 |  **Název**          |      **Popis**                                                                                           | **Datový typ** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Identifikátor vydavatele, například`Contoso`                                                                   |  Řetězec       |
+|  publisherId       |  Identifikátor vydavatele, například `Contoso`                                                                   |  Řetězec       |
 |  Hodnotami OfferId           |  Identifikátor nabídky                                                                                              |  Řetězec       |
 |  operationId       |  Identifikátor GUID, který jedinečně identifikuje operaci na nabídce OperationId může být načten pomocí tohoto rozhraní API a také se vrátí v hlavičce HTTP odpovědi pro jakoukoli dlouhodobou operaci, jako je například rozhraní API [nabídky publikovat](./cloud-partner-portal-api-publish-offer.md) .  |   Identifikátor GUID   |
 |  verze-api       | Nejnovější verze rozhraní API |    Datum      |
 |  |  |  |
 
-## <a name="header"></a>Hlavička
+## <a name="header"></a>Záhlaví
 
 |  **Název**          |  **Hodnota**           |
 |  ---------------   | -------------------- |
@@ -172,11 +172,11 @@ Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný 
 |  **Název**                    |  **Popis**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | Identifikátor GUID, který jedinečně identifikuje operaci                                                       |
-|  submissionType              | Určuje typ operace hlášené pro nabídku, například`Publish/GoLive`      |
+|  submissionType              | Určuje typ operace hlášené pro nabídku, například `Publish/GoLive`      |
 |  createdDateTime             | Datum a čas UTC při vytvoření operace                                                       |
 |  lastActionDateTime          | Datum a čas UTC, kdy byla provedena poslední aktualizace na operaci                                       |
 |  status                      | Stav operace, buď `not started` \| `running` \| `failed` \| `completed` . V jednom okamžiku může být stav jenom jedna operace `running` . |
-|  chyba                       | Chybová zpráva pro neúspěšné operace                                                               |
+|  error                       | Chybová zpráva pro neúspěšné operace                                                               |
 |  |  |
 
 ### <a name="response-step-properties"></a>Vlastnosti kroku odpovědi
@@ -185,7 +185,7 @@ Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný 
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | Odhadovaná doba trvání této operace |
 | id | Jedinečný identifikátor procesu kroku |
-| description | Popis kroku |
+| Popis | Popis kroku |
 | Step | Popisný název kroku |
 | status | Stav kroku, `notStarted` \| `running` \| `failed` buď \|`completed` |
 | cloud-zařízení | Všechna oznámení nebo upozornění zjištěná v průběhu tohoto kroku. Pole řetězců |
@@ -196,8 +196,8 @@ Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný 
 
 | **Kód**  |   **Popis**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK`-Požadavek byl úspěšně zpracován a byly vráceny požadované operace.        |
-|  400      | `Bad/Malformed request`– Tělo chybové odpovědi může obsahovat více informací.                    |
-|  403      | `Forbidden`– Klient nemá přístup k zadanému oboru názvů.                          |
-|  404      | `Not found`-Zadaná entita neexistuje.                                                 |
+|  200      | `OK` -Požadavek byl úspěšně zpracován a byly vráceny požadované operace.        |
+|  400      | `Bad/Malformed request` – Tělo chybové odpovědi může obsahovat více informací.                    |
+|  403      | `Forbidden` – Klient nemá přístup k zadanému oboru názvů.                          |
+|  404      | `Not found` -Zadaná entita neexistuje.                                                 |
 |  |  |

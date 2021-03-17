@@ -16,17 +16,15 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: b08a5e63bc78b5b86b1802e7c8f334bad43167fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5bd52e8865bb704497740851f6a0e3c886ed9d6d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688355"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790149"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Směrování síťového provozu pomocí směrovací tabulky pomocí PowerShellu
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Azure ve výchozím nastavení automaticky směruje provoz mezi všemi podsítěmi v rámci virtuální sítě. Můžete vytvořit vlastní trasy a přepsat tak výchozí směrování Azure. Možnost vytvářet vlastní trasy je užitečná například v případě, že chcete směrovat provoz mezi podsítěmi přes síťové virtuální zařízení. V tomto článku získáte informace o těchto tématech:
 
@@ -38,7 +36,7 @@ Azure ve výchozím nastavení automaticky směruje provoz mezi všemi podsítě
 * Nasazení virtuálních počítačů do různých podsítí
 * Směrování provozu z jedné podsítě do jiné přes síťové virtuální zařízení
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -89,7 +87,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Vytvořte tři podsítě vytvořením tří konfigurací podsítí pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Následující příklad vytvoří tři konfigurace podsítí pro *veřejné*, *privátní*a *DMZ* podsítě:
+Vytvořte tři podsítě vytvořením tří konfigurací podsítí pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Následující příklad vytvoří tři konfigurace podsítí pro *veřejné*, *privátní* a *DMZ* podsítě:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -121,7 +119,7 @@ Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork `
   -Name 'Public' `
   -AddressPrefix 10.0.0.0/24 `
-  -RouteTable $routeTablePublic | `
+  -RouteTable $myRouteTablePublic | `
 Set-AzVirtualNetwork
 ```
 

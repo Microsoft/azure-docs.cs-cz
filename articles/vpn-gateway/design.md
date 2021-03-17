@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7b9077af50115e912415d784dc98ace081c0c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61732f66aef58f5a9edcb9e095782e19e8aaffdd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397211"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway návrh
 
@@ -27,6 +27,8 @@ Připojení brány VPN typu Site-to-Site (S2S) je připojení přes tunel VPN pr
 
 ![Příklad propojení Site-to-Site pomocí Azure VPN Gateway](./media/design/vpngateway-site-to-site-connection-diagram.png)
 
+V aktivním pohotovostním režimu můžete VPN Gateway nakonfigurovat pomocí jedné veřejné IP adresy nebo v režimu aktivní-aktivní pomocí dvou veřejných IP adres. V aktivním pohotovostním režimu je jeden tunel IPsec aktivní a druhý tunel je v pohotovostním režimu. V tomto nastavení přenos toků přes aktivní tunel a pokud s tímto tunelem dojde k nějakému problému, přepíná přenos do úsporného tunelu. Nastavení VPN Gateway v režimu aktivní-aktivní se *doporučuje* , protože tunely IPSec jsou současně aktivní a data se přenášejí mezi tunely současně. Další výhodou režimu aktivní-aktivní je to, že se zákazníci setkávají s vyšší propustností.
+
 ### <a name="multi-site"></a><a name="Multi"></a>Více lokalit
 
 Tento typ připojení je variací připojení Site-to-Site. Z brány virtuální sítě vytvoříte několik připojení VPN, obvykle pro připojení k několika místním lokalitám. Při práci s několika připojeními je nutné použít typ sítě VPN RouteBased (při práci s klasickými virtuálními sítěmi se označuje jako dynamická brána). Vzhledem k tomu, že virtuální síť může mít jenom jednu bránu virtuální sítě, všechna připojení prostřednictvím brány sdílejí dostupnou šířku pásma. Tento typ připojení se často označuje jako připojení „s více lokalitami“ (multi-site).
@@ -37,7 +39,7 @@ Tento typ připojení je variací připojení Site-to-Site. Z brány virtuální
 
 [!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="point-to-site-vpn"></a><a name="P2S"></a>Point-to-site VPN
+## <a name="point-to-site-vpn"></a><a name="P2S"></a>SÍŤ VPN typu Point-to-site
 
 Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuální síti z jednotlivých klientských počítačů. Připojení P2S se vytvoří jeho zahájením z klientského počítače. Toto řešení je užitečné pro osoby pracující z domova, které se chtějí k virtuálním sítím Azure připojit ze vzdáleného umístění, například z domova nebo z místa konání konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN S2S, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti.
 
@@ -75,7 +77,7 @@ Pokud virtuální síť splňuje určité požadavky, je možné k vytvoření p
 
 ## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute (soukromé připojení)
 
-ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 a CRM Online. Připojení může být ze sítě typu any-to-Any (IP VPN), sítě Ethernet typu Point-to-Point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení v zařízení, ve kterém se nachází.
+ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure, Microsoft 365 a CRM Online. Připojení může být ze sítě typu any-to-Any (IP VPN), sítě Ethernet typu Point-to-Point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení v zařízení, ve kterém se nachází.
 
 Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To dovoluje připojením ExpressRoute poskytovat větší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes internet.
 

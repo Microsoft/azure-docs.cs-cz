@@ -1,26 +1,28 @@
 ---
 title: Kurz – vyrovnávání zatížení virtuálních počítačů s Linux v Azure
 description: V tomto kurzu se dozvíte, jak pomocí Azure CLI vytvořit nástroj pro vyrovnávání zatížení pro vysoce dostupnou a zabezpečenou aplikaci na třech virtuálních počítačích s Linuxem.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
+ms.subservice: networking
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
-ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: 82f1a803935c69835906155cf0d522e74d3d2fd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 433bbd51618cfb5624c8ed2c549e1793488f0e81
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502490"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553761"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace pomocí Azure CLI
 

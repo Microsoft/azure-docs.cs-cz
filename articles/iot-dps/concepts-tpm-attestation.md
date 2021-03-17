@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12860629d78391ed271306daba29a51aeb326c1d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975274"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90531589"
 ---
 # <a name="tpm-attestation"></a>Osvědčení TPM
 
 IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub, která slouží ke konfiguraci zařízení s nulovým dotykem pro zadané centrum IoT. Služba Device Provisioning Service umožňuje bezpečným způsobem zřizovat miliony zařízení.
 
-Tento článek popisuje proces ověření identity při použití [čipu TPM](./concepts-device.md). ČIP TPM představuje modul důvěryhodné platformy a je typu modulu hardwarového zabezpečení (HSM). V tomto článku se předpokládá, že používáte diskrétní, firmware nebo integrovaný čip TPM. Software emulující čipy TPM je vhodný pro vytváření prototypů nebo testování, ale neposkytuje stejnou úroveň zabezpečení jako diskrétní, firmware nebo integrované čipy TPM. Nedoporučujeme používat software čipy TPM v produkčním prostředí. Další informace o typech čipy TPM najdete v tématu [stručný úvod do čipu TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
+Tento článek popisuje proces ověření identity při použití čipu TPM (Trusted Platform Module). ČIP TPM je typ modulu hardwarového zabezpečení (HSM). V tomto článku se předpokládá, že používáte diskrétní, firmware nebo integrovaný čip TPM. Software emulující čipy TPM je vhodný pro vytváření prototypů nebo testování, ale neposkytuje stejnou úroveň zabezpečení jako diskrétní, firmware nebo integrované čipy TPM. Nedoporučujeme používat software čipy TPM v produkčním prostředí. Další informace o typech čipy TPM najdete v tématu [stručný úvod do čipu TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
 
 Tento článek se týká jenom zařízení, která používají TPM 2,0 s podporou klíčů HMAC a jejich ověřovacími klíči. Nejedná se o zařízení, která používají certifikáty X. 509 pro ověřování. TPM je podniková, standardně založená na standardech ISO od skupiny důvěryhodných Computingů a další informace o TPM najdete na [kompletní specifikaci tpm 2,0](https://trustedcomputinggroup.org/tpm-library-specification/) nebo [specifikaci ISO/IEC 11889](https://www.iso.org/standard/66510.html). Tento článek také předpokládá, že jste obeznámeni s dvojicemi veřejného a privátního klíče a jak se používají pro šifrování.
 
@@ -67,5 +67,5 @@ Zařízení pak může podepsat token SAS pomocí dešifrované hodnoty nonce a 
 
 Nyní se zařízení připojí k IoT Hub a zůstane v bezpečí, že jsou klíče zařízení bezpečně uložené. Když teď víte, jak služba Device Provisioning bezpečně ověřuje identitu zařízení pomocí čipu TPM, Projděte si následující články, kde najdete další informace:
 
-* [Přečtěte si o všech konceptech při automatickém zřizování](./concepts-auto-provisioning.md)
+* [Přečtěte si o konceptech zřizování](about-iot-dps.md#provisioning-process)
 * Začněte [používat Automatické zřizování](./quick-setup-auto-provision.md) pomocí sad SDK, aby se tento tok mohl postarat.

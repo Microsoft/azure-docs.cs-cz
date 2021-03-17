@@ -2,21 +2,25 @@
 title: Vytvoření virtuálního počítače s Windows ze šablony v Azure
 description: K snadnému vytvoření nového virtuálního počítače s Windows použijte šablonu Správce prostředků a PowerShell.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d0d3e6836e2f87c503ac5154a54aeb0dd1c0e26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 534a8480e783853f7497a0538b04e0302a9cda0c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266295"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553608"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Vytvoření virtuálního počítače s Windows ze šablony Resource Manageru
 
 Naučte se, jak vytvořit virtuální počítač s Windows pomocí šablony Azure Resource Manager a Azure PowerShell z Azure Cloud shellu. Šablona použitá v tomto článku nasadí jeden virtuální počítač se systémem Windows Server v nové virtuální síti s jednou podsítí. Informace o vytvoření virtuálního počítače se systémem Linux najdete v tématu [Vytvoření virtuálního počítače se systémem Linux pomocí šablon Azure Resource Manager](../linux/create-ssh-secured-vm-from-template.md).
+
+Alternativou je nasazení šablony z Azure Portal. Pokud chcete otevřít šablonu na portálu, vyberte tlačítko **nasadit do Azure** .
+
+[![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -67,11 +71,11 @@ Poslední příkaz prostředí PowerShell z předchozího skriptu zobrazuje náz
 ## <a name="next-steps"></a>Další kroky
 
 - V případě, že došlo k potížím s nasazením, můžete se podívat na problémy s [běžnými chybami při nasazení Azure pomocí Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
-- Naučte se vytvářet a spravovat virtuální počítače v tématu [vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Naučte se vytvářet a spravovat virtuální počítače v tématu [vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md).
 
 Další informace o vytváření šablon najdete v syntaxi a vlastnostech JSON pro typy prostředků, které jste nasadili:
 
 - [Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
 - [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 - [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

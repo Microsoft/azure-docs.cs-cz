@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: bezproblémové jednotné přihlašování – jak funguje | Microsoft Docs'
-description: Tento článek popisuje, jak Azure Active Directory funkce bezproblémového jednotného přihlašování funguje.
+title: 'Azure AD Connect: bezproblémové jednoduché Sign-On – jak to funguje | Microsoft Docs'
+description: Tento článek popisuje, jak Azure Active Directory funguje bezproblémové jednoduché funkce Sign-On.
 services: active-directory
 keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: addb90ed3929847612fd423e3af01c1b3982c2d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144696"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369641"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: technický hluboký podrobně
 
-Tento článek obsahuje technické informace o tom, jak Azure Active Directory bezproblémové jednotné přihlašování (bezproblémové jednotné přihlašování) funguje.
+Tento článek obsahuje technické informace o tom, jak Azure Active Directory funguje bezproblémové jednotné Sign-On (bezproblémové jednotné přihlašování).
 
 ## <a name="how-does-seamless-sso-work"></a>Jak funguje bezproblémové přihlašování?
 
@@ -67,6 +67,10 @@ Tok přihlášení ve webovém prohlížeči je následující:
 6. Služba Active Directory vyhledá účet počítače a vrátí lístek protokolu Kerberos do prohlížeče šifrovaného pomocí tajného klíče účtu počítače.
 7. Prohlížeč přepošle lístek protokolu Kerberos, který získal ze služby Active Directory do Azure AD.
 8. Azure AD dešifruje lístek protokolu Kerberos, který zahrnuje identitu uživatele přihlášeného k firemnímu zařízení pomocí dříve sdíleného klíče.
+
+   >[!NOTE]
+   >Služba Azure AD se pokusí spárovat hlavní název uživatele (UPN) od lístku protokolu Kerberos s objektem uživatele služby Azure AD, který má odpovídající hodnotu v atributu userPrincipalName. Pokud to neproběhne úspěšně, Azure AD se vrátí k odpovídajícímu účtu samAccountName z lístku Kerberos k objektu uživatele Azure AD, který má odpovídající hodnotu v atributu onPremisesSamAccountName.
+   
 9. Po vyhodnocení služba Azure AD vrátí token zpátky do aplikace nebo požádá uživatele o provedení dalších důkazů, jako je například Multi-Factor Authentication.
 10. Pokud je přihlášení uživatele úspěšné, uživatel bude moci získat přístup k aplikaci.
 
@@ -82,8 +86,8 @@ Tok přihlášení na nativním klientovi je následující:
 
 1. Uživatel se pokusí o přístup k nativní aplikaci (například k klientovi Outlook) z podnikového zařízení připojeného k doméně ve vaší podnikové síti.
 2. Pokud uživatel ještě není přihlášený, nativní aplikace získá uživatelské jméno uživatele z relace systému Windows daného zařízení.
-3. Aplikace pošle uživatelské jméno do Azure AD a načte koncový bod WS-Trust MEX vašeho tenanta. Tento koncový bod WS-Trust se používá výhradně funkcí bezproblémového přihlašování a nejedná se o obecnou implementaci protokolu WS-Trust v Azure AD.
-4. Aplikace pak zadá dotaz na koncový bod WS-Trust MEX a zjistí, jestli je k dispozici koncový bod integrovaného ověřování. Integrovaný koncový bod ověřování používá výhradně funkce bezproblémového přihlašování.
+3. Aplikace pošle uživatelské jméno do Azure AD a načte koncový bod klienta WS-Trust MEX. Tento koncový bod WS-Trust používá výhradně funkce bezproblémového jednotného přihlašování a nejedná se o obecnou implementaci WS-Trustho protokolu v Azure AD.
+4. Aplikace pak zadá dotaz na koncový bod WS-Trust MEX a zjistí, jestli je k dispozici integrovaný koncový bod ověřování. Integrovaný koncový bod ověřování používá výhradně funkce bezproblémového přihlašování.
 5. V případě úspěchu kroku 4 se vydá výzva protokolu Kerberos.
 6. Pokud je aplikace schopná načíst lístek protokolu Kerberos, přepošle ho do koncového bodu integrovaného ověřování služby Azure AD.
 7. Azure AD dešifruje lístek Kerberos a ověří ho.

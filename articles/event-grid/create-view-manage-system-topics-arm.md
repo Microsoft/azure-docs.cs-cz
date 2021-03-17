@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak pomocí šablon Azure Resource Ma
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115158"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>Vytváření systémových témat v Azure Event Grid pomocí šablon Správce prostředků

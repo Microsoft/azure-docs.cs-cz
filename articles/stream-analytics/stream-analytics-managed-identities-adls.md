@@ -1,20 +1,20 @@
 ---
 title: Ověření Azure Stream Analytics pro Azure Data Lake Storage Gen1
 description: Tento článek popisuje, jak pomocí spravovaných identit ověřit vaši Azure Stream Analyticsovou úlohu pro Azure Data Lake Storage Gen1 výstupu.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 551f0065f1547e94d93993a38795234f455b9eef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d7e9b1ecef9cfda804b89f0ba1beeb54d7d48b98
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044392"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020345"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravovaných identit
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 používání spravovaných identit (Preview)
 
 Azure Stream Analytics podporuje ověřování pomocí spravované identity pomocí Azure Data Lake Storage (ADLS) Gen1 výstup. Identita je spravovaná aplikace zaregistrovaná v Azure Active Directory, která představuje danou Stream Analytics úlohu a dá se použít k ověření cílového prostředku. Spravované identity odstraňují omezení metod ověřování založených na uživatelích, například nutnost opětovného ověření z důvodu změny hesla nebo vypršení platnosti tokenu uživatele, ke kterému dochází každých 90 dní. Spravované identity navíc usnadňují automatizaci nasazení úloh Stream Analytics, které výstup Azure Data Lake Storage Gen1.
 
@@ -54,7 +54,7 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
 
    ![Vybrat hlavní název služby](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
  
-8. V podokně **oprávnění** Ověřte oprávnění **zapisovat** a **Spustit** a přiřaďte je k **této složce a všem podřízeným**položkám. Pak klikněte na **OK**.
+8. V podokně **oprávnění** Ověřte oprávnění **zapisovat** a **Spustit** a přiřaďte je k **této složce a všem podřízeným** položkám. Pak klikněte na **OK**.
 
    ![Vyberte oprávnění zapisovat a provést.](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
@@ -84,7 +84,7 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
 
    * Automaticky nastavit oprávnění **zapisovat** a **spustit** pro cestu adls Gen1 předponu použitou v úloze a přiřadit ji k této složce a všem podřízeným položkám.
 
-5. Pomocí Stream Analytics CI můžete vygenerovat šablony Správce prostředků s následující vlastností [. Balíček NuGet CD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) verze 1.5.0 nebo novější na sestavovacím počítači (mimo Visual Studio). Použijte postup nasazení šablony Správce prostředků v následující části k získání instančního objektu a udělení přístupu k instančnímu objektu prostřednictvím PowerShellu.
+5. Šablony Správce prostředků s následující vlastností můžete vygenerovat pomocí [Stream Analytics CI.CD balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) verze 1.5.0 nebo vyšší na sestavovacím počítači (mimo Visual Studio). Použijte postup nasazení šablony Správce prostředků v následující části k získání instančního objektu a udělení přístupu k instančnímu objektu prostřednictvím PowerShellu.
 
 ## <a name="resource-manager-template-deployment"></a>Nasazení šablony Správce prostředků
 
@@ -174,6 +174,10 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
    ```
 
    Další informace o výše uvedeném příkazu PowerShellu najdete v dokumentaci k rutině [set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) .
+
+## <a name="remove-managed-identity"></a>Odebrat spravovanou identitu
+
+Spravovaná identita vytvořená pro Stream Analytics úlohu se odstraní jenom v případě, že se úloha odstraní. Neexistuje způsob, jak odstranit spravovanou identitu, aniž byste úlohu odstranili. Pokud už nechcete používat spravovanou identitu, můžete pro výstup změnit metodu ověřování. Spravovaná identita bude i nadále existovat, dokud se úloha neodstraní, a použije se, pokud se rozhodnete znovu použít spravované ověřování identity.
 
 ## <a name="limitations"></a>Omezení
 Tato funkce nepodporuje následující:

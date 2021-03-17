@@ -1,18 +1,19 @@
 ---
-title: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
+title: Použití certifikátů a zabezpečeného přístupu Azure Key Vault pomocí Batch
 description: Naučte se programově přistupovat k přihlašovacím údajům z Key Vault pomocí Azure Batch.
 ms.topic: how-to
-ms.date: 02/13/2020
-ms.openlocfilehash: 6ea248dd51ae6786b0e987dc31ca83b29277cd16
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 10/28/2020
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961502"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260125"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>Zabezpečený přístup ke Key Vaultu s využitím služby Batch
+# <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>Použití certifikátů a zabezpečeného přístupu Azure Key Vault pomocí Batch
 
-V tomto článku se dozvíte, jak nastavit uzly Batch pro zabezpečený přístup k přihlašovacím údajům uloženým v Azure Key Vault. K dispozici není žádný bod pro vložení přihlašovacích údajů správce do Key Vault a pak pevně zakódování přihlašovacích údajů pro přístup Key Vault ze skriptu. Řešením je použít certifikát, který uděluje uzlům služby Batch přístup k Key Vault. Pomocí několika kroků můžeme implementovat zabezpečené úložiště klíčů pro dávku.
+V tomto článku se dozvíte, jak nastavit uzly Batch pro zabezpečený přístup k přihlašovacím údajům uloženým v [Azure Key Vault](../key-vault/general/overview.md). K dispozici není žádný bod pro vložení přihlašovacích údajů správce do Key Vault a pak pevně zakódování přihlašovacích údajů pro přístup Key Vault ze skriptu. Řešením je použít certifikát, který uděluje uzlům služby Batch přístup k Key Vault.
 
 K ověření Azure Key Vault z uzlu Batch budete potřebovat:
 
@@ -45,12 +46,7 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Přístup k Key Vault je udělen buď **uživateli** , nebo **instančnímu objektu**. Pro přístup k Key Vault programově použijte instanční objekt s certifikátem, který jsme vytvořili v předchozím kroku.
-
-Další informace o instančních objektech Azure najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
-
-> [!NOTE]
-> Instanční objekt musí být ve stejném tenantovi služby Azure AD jako Key Vault.
+Přístup k Key Vault je udělen buď **uživateli** , nebo **instančnímu objektu**. Pro přístup k Key Vault programově použijte [instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) s certifikátem, který jste vytvořili v předchozím kroku. Instanční objekt musí být ve stejném tenantovi služby Azure AD jako Key Vault.
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -71,7 +67,7 @@ Adresy URL pro aplikaci nejsou důležité, protože je používáme pro příst
 
 ## <a name="grant-rights-to-key-vault"></a>Udělit práva Key Vault
 
-Instanční objekt vytvořený v předchozím kroku potřebuje oprávnění k načtení tajných kódů z Key Vault. Oprávnění lze udělit buď prostřednictvím Azure Portal, nebo pomocí příkazu PowerShellu níže.
+Instanční objekt vytvořený v předchozím kroku potřebuje oprávnění k načtení tajných kódů z Key Vault. Oprávnění lze udělit buď prostřednictvím [Azure Portal](../key-vault/general/assign-access-policy-portal.md) , nebo pomocí příkazu PowerShellu níže.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -81,13 +77,13 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 Vytvořte fond dávek a pak ve fondu klikněte na kartu certifikát a přiřaďte certifikát, který jste vytvořili. Certifikát je nyní na všech uzlech Batch.
 
-Dál je potřeba přiřadit k účtu Batch certifikát. Když k účtu přiřadíte certifikát, umožníme mu přiřadit fondy a pak uzly. Nejjednodušší způsob, jak to provést, je přejít na účet Batch na portálu, přejít na **certifikáty**a vybrat **Přidat**. Nahrajte `.pfx` soubor, který jsme vygenerovali v části [získání certifikátu](#obtain-a-certificate) , a zadejte heslo. Po dokončení se certifikát přidá do seznamu a tento kryptografický otisk můžete ověřit.
+V dalším kroku přiřaďte certifikát k účtu Batch. Přiřazením certifikátu k účtu umožníte službě Batch přiřadit je ke fondům a potom k uzlům. Nejjednodušší způsob, jak to provést, je přejít na účet Batch na portálu, přejít na **certifikáty** a vybrat **Přidat**. Nahrajte `.pfx` soubor, který jste vygenerovali dříve, a zadejte heslo. Po dokončení se certifikát přidá do seznamu a tento kryptografický otisk můžete ověřit.
 
 Když teď vytvoříte fond služby Batch, můžete přejít na **certifikáty** v rámci fondu a přiřadit certifikát, který jste vytvořili do tohoto fondu. Když to uděláte, ujistěte se, že jste pro umístění úložiště vybrali možnost **LocalMachine** . Certifikát je načtený na všech uzlech Batch ve fondu.
 
 ## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
 
-Pokud plánujete přístup k Key Vault pomocí skriptů PowerShellu na uzlech, budete potřebovat nainstalovanou knihovnu Azure PowerShell. Existuje několik způsobů, jak to provést, pokud jsou v uzlech nainstalované rozhraní Windows Management Framework (WMF) 5, můžete ho stáhnout pomocí příkazu install-Module. Pokud používáte uzly, které nemají WMF 5, nejjednodušší způsob, jak ji nainstalovat, je `.msi` soubor Azure PowerShell pomocí dávkových souborů odinstalujte a potom zavolejte instalační program jako první část spouštěcího skriptu služby Batch. Podrobnosti najdete v tomto příkladu:
+Pokud plánujete přístup k Key Vault pomocí skriptů PowerShellu na uzlech, budete potřebovat nainstalovanou knihovnu Azure PowerShell. Pokud jsou v uzlech nainstalované rozhraní Windows Management Framework (WMF) 5, můžete si ho stáhnout pomocí příkazu install-Module. Pokud používáte uzly, které nemají WMF 5, nejjednodušší způsob, jak ji nainstalovat, je začlenit `.msi` soubor Azure PowerShell se soubory Batch a pak zavolat instalační program jako první část spouštěcího skriptu služby Batch. Podrobnosti najdete v tomto příkladu:
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh
@@ -98,7 +94,7 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>Přístup ke službě Key Vault
 
-Nyní máme všechna nastavení pro přístup k Key Vault ve skriptech spuštěných na uzlech Batch. Aby bylo možné získat přístup k Key Vault ze skriptu, stačí pro váš skript ověřit službu Azure AD pomocí certifikátu. Pokud to chcete provést v prostředí PowerShell, použijte následující příklady příkazů. Zadejte odpovídající identifikátor GUID pro **kryptografický otisk**, **ID aplikace** (ID objektu služby) a **ID tenanta** (tenant, ve kterém se nachází instanční objekt).
+Nyní jste připraveni získat přístup k Key Vault ve skriptech spuštěných na uzlech služby Batch. Aby bylo možné získat přístup k Key Vault ze skriptu, stačí pro váš skript ověřit službu Azure AD pomocí certifikátu. Pokud to chcete provést v prostředí PowerShell, použijte následující příklady příkazů. Zadejte odpovídající identifikátor GUID pro **kryptografický otisk**, **ID aplikace** (ID objektu služby) a **ID tenanta** (tenant, ve kterém se nachází instanční objekt).
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId
@@ -111,3 +107,9 @@ $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPas
 ```
 
 Toto jsou přihlašovací údaje, které se mají použít ve vašem skriptu.
+
+## <a name="next-steps"></a>Další kroky
+
+- Přečtěte si další informace o [Azure Key Vault](../key-vault/general/overview.md).
+- Projděte si [základní hodnoty zabezpečení Azure pro službu Batch](security-baseline.md).
+- Přečtěte si o dávkových funkcích, jako je [Konfigurace přístupu k výpočetním uzlům](pool-endpoint-configuration.md), [použití výpočetních uzlů Linux](batch-linux-nodes.md)a [používání privátních koncových bodů](private-connectivity.md).

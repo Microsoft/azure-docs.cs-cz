@@ -4,12 +4,12 @@ description: Application Insights komplexní diagnostiku transakcí
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318908"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746093"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Sjednocená Diagnostika transakcí mezi komponentami
 
@@ -72,7 +72,7 @@ Pokud se vám nepovedlo Snapshot Debugger pracovat, kontaktujte prosím **snapsh
 
 ![Integrace profileru](media/transaction-diagnostics/profilerTraces.png)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 *Zobrazuje se v grafu jedna komponenta a ostatní se zobrazují jenom jako externí závislosti bez jakýchkoli podrobností o tom, co se v těchto součástech stalo.*
 
@@ -80,9 +80,7 @@ Potenciální důvody:
 
 * Jsou ostatní komponenty instrumentované pomocí Application Insights?
 * Používají nejnovější stabilní sadu Application Insights SDK?
-* Pokud jsou tyto součásti samostatné prostředky Application Insights, máte požadovaný přístup k jejich telemetrie?
-
-Pokud máte přístup a komponenty jsou instrumentované s nejnovějšími Application Insights SDK, dejte nám vědět prostřednictvím horního kanálu zpětné vazby.
+* Pokud jsou tyto komponenty oddělené Application Insights prostředky, máte požadovaný [přístup](resources-roles-access-control.md) , pokud máte přístup a komponenty jsou instrumentované s nejnovějšími Application Insights SDK, dejte nám vědět prostřednictvím horního kanálu zpětné vazby.
 
 *Zobrazuje se pro závislosti duplicitní řádky. Je to očekávané?*
 

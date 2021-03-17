@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74951475"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Omezení Azure Cloud Shell
@@ -47,7 +47,7 @@ Cloud Shell podporuje nejnovější verze Microsoft Edge, Microsoft Internet Exp
 
 Uživatelé mohou spustit pouze jeden typ prostředí, buď **bash** nebo **PowerShell**. Může se ale stát, že v jednom okamžiku běží víc instancí bash nebo PowerShellu. Záměna mezi bash nebo PowerShellem pomocí nabídky způsobí, že se Cloud Shell restart, což ukončí existující relace. Alternativně můžete bash spustit v PowerShellu tak, že zadáte `bash` a můžete spustit PowerShell v bash zadáním `pwsh` .
 
-### <a name="usage-limits"></a>Omezení využití
+### <a name="usage-limits"></a>Limity využití
 
 Cloud Shell je určena pro interaktivní případy použití. V důsledku toho jsou všechny dlouho běžící neinteraktivní relace ukončeny bez upozornění.
 
@@ -63,11 +63,11 @@ Při úpravách souboru $PROFILE prostředí PowerShell buďte opatrní. v takov
 
 ## <a name="powershell-limitations"></a>Omezení prostředí PowerShell
 
-### <a name="azuread-module-name"></a>`AzureAD`název modulu
+### <a name="azuread-module-name"></a>`AzureAD` název modulu
 
 `AzureAD`Název modulu je v současné době `AzureAD.Standard.Preview` , modul nabízí stejné funkce.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer`funkce modulu
+### <a name="sqlserver-module-functionality"></a>`SqlServer` funkce modulu
 
 `SqlServer`Modul zahrnutý v Cloud Shell má pouze předprodejní podporu pro PowerShell Core. Konkrétně není `Invoke-SqlCmd` zatím k dispozici.
 

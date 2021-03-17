@@ -3,26 +3,30 @@ title: Konfigurace a Správa času do provozu v Azure Cosmos DB
 description: Naučte se, jak nakonfigurovat a spravovat dobu provozu na kontejneru a položku v Azure Cosmos DB
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 03/27/2020
+ms.date: 10/11/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: 029c2ffa548c8c99030f630a90eb07ac8ba063a0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 2ddba95f9ccc25d536638dbc68c41027d26e71c7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496997"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341004"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V Azure Cosmos DB můžete nastavit hodnotu TTL (Time to Live) na úrovni kontejneru nebo ji můžete přepsat na úrovni položky po nastavení kontejneru. Hodnotu TTL pro kontejner můžete nakonfigurovat pomocí Azure Portal nebo sad SDK pro konkrétní jazyk. Přepsání na úrovni položek TTL lze konfigurovat pomocí sad SDK.
+
+> Tento obsah se týká Azure Cosmos DB hodnoty TTL transakčního úložiště. Pokud hledáte hodnotu TTL pro analitycal Store, která umožňuje scénáře NoETL HTAP prostřednictvím [odkazu Azure synapse](./synapse-link.md), klikněte prosím [sem](./analytical-store-introduction.md#analytical-ttl).
 
 ## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Povolit dobu provozu na kontejneru pomocí Azure Portal
 
 Pomocí následujících kroků můžete povolit dobu provozu na kontejneru bez vypršení platnosti. Tuto možnost povolte, pokud chcete, aby hodnota TTL mohla být přepsána na úrovni položky. Hodnotu TTL můžete nastavit také zadáním nenulové hodnoty pro sekundy.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -50,7 +54,7 @@ Pokud chcete vytvořit nebo povolit hodnotu TTL u kontejneru, přečtěte si té
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Povolení doby provozu na kontejneru pomocí sady SDK
 
-### <a name="net-sdk"></a><a id="dotnet-enable-noexpiry"></a>SADA .NET SDK
+### <a name="net-sdk"></a><a id="dotnet-enable-noexpiry"></a> SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -83,7 +87,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 ```
 ---
 
-### <a name="java-sdk"></a><a id="java-enable-noexpiry"></a>Java SDK
+### <a name="java-sdk"></a><a id="java-enable-noexpiry"></a> Java SDK
 
 # <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
 
@@ -114,9 +118,9 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>Nastavení TTL (Time to Live) na kontejneru pomocí sady SDK
 
-Chcete-li nastavit hodnotu TTL (Time to Live) na kontejneru, je nutné zadat nenulové kladné číslo, které určuje časové období v sekundách. Na základě nastavené hodnoty TTL se odstraní všechny položky v kontejneru po posledním změněném časovém razítku položky `_ts` .
+Chcete-li nastavit hodnotu TTL (Time to Live) na kontejneru, je nutné zadat nenulové kladné číslo, které určuje časové období v sekundách. Na základě nastavené hodnoty TTL se odstraní všechny položky v kontejneru po posledním změněném časovém razítku položky `_ts` . Volitelně můžete nastavit `TimeToLivePropertyPath` , který bude používat jinou vlastnost místo vlastnosti generované systémem `_ts` k určení, které položky se mají odstranit na základě hodnoty TTL.
 
-### <a name="net-sdk"></a><a id="dotnet-enable-withexpiry"></a>SADA .NET SDK
+### <a name="net-sdk"></a><a id="dotnet-enable-withexpiry"></a> SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -149,7 +153,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 ```
 ---
 
-### <a name="java-sdk"></a><a id="java-enable-defaultexpiry"></a>Java SDK
+### <a name="java-sdk"></a><a id="java-enable-defaultexpiry"></a> Java SDK
 
 # <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
 
@@ -202,11 +206,11 @@ Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete na
 
 * Pokud je hodnota TTL na úrovni kontejneru zakázaná, bude pole TTL u této položky ignorováno, dokud nebude hodnota TTL znovu povolena v kontejneru.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure Portal
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>portál Azure
 
 Chcete-li povolit dobu provozu na položce, použijte následující postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -269,7 +273,7 @@ const itemDefinition = {
         };
 ```
 
-### <a name="java-sdk"></a><a id="java-set-ttl-item"></a>Java SDK
+### <a name="java-sdk"></a><a id="java-set-ttl-item"></a> Java SDK
 
 # <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
 
@@ -350,7 +354,7 @@ SalesOrder salesOrder = new SalesOrder(
 
 Čas do živého nastavení můžete nastavit tak, že na položku provedete operaci zápisu nebo aktualizace. Operace zápisu nebo aktualizace nastaví na `_ts` aktuální čas a hodnota TTL pro položku, jejíž platnost vyprší, bude zahájena znovu. Pokud chcete změnit hodnotu TTL položky, můžete pole aktualizovat stejně, jako byste aktualizovali jiné pole.
 
-### <a name="net-sdk"></a><a id="dotnet-extend-ttl-item"></a>SADA .NET SDK
+### <a name="net-sdk"></a><a id="dotnet-extend-ttl-item"></a> SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -382,7 +386,7 @@ await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse
 ```
 ---
 
-### <a name="java-sdk"></a><a id="java-enable-modifyitemexpiry"></a>Java SDK
+### <a name="java-sdk"></a><a id="java-enable-modifyitemexpiry"></a> Java SDK
 
 # <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
 
@@ -424,7 +428,7 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
 
 Pokud je u položky nastavená možnost čas na Live a už nechcete, aby tato položka vypršela, pak můžete získat položku, odebrat pole TTL a nahradit položku na serveru. Po odebrání pole TTL z položky se na položku použije výchozí hodnota TTL přiřazená kontejneru. Nastavte hodnotu TTL na hodnotu-1, pokud chcete zabránit vypršení platnosti položky a Nedědit hodnotu TTL z kontejneru.
 
-### <a name="net-sdk"></a><a id="dotnet-turn-off-ttl-item"></a>SADA .NET SDK
+### <a name="net-sdk"></a><a id="dotnet-turn-off-ttl-item"></a> SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -457,7 +461,7 @@ await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse
 ```
 ---
 
-### <a name="java-sdk"></a><a id="java-enable-itemdefaultexpiry"></a>Java SDK
+### <a name="java-sdk"></a><a id="java-enable-itemdefaultexpiry"></a> Java SDK
 
 # <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
 
@@ -499,7 +503,7 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
 
 Chcete-li zakázat dobu provozu na kontejneru a zastavit proces na pozadí, aby kontroloval položky, jejichž platnost vypršela, `DefaultTimeToLive` měla by být vlastnost kontejneru odstraněna. Odstranění této vlastnosti se liší od nastavení na hodnotu-1. Když nastavíte hodnotu-1, nové položky přidané do kontejneru budou trvale živé, ale tuto hodnotu můžete přepsat pro konkrétní položky v kontejneru. Po odebrání vlastnosti TTL z kontejneru nebudou položky nikdy vypršet, a to ani v případě, že jste explicitně přepsali předchozí výchozí hodnotu TTL.
 
-### <a name="net-sdk"></a><a id="dotnet-disable-ttl"></a>SADA .NET SDK
+### <a name="net-sdk"></a><a id="dotnet-disable-ttl"></a> SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -526,7 +530,7 @@ await client.GetContainer("database", "container").ReplaceContainerAsync(contain
 ```
 ---
 
-### <a name="java-sdk"></a><a id="java-enable-disableexpiry"></a>Java SDK
+### <a name="java-sdk"></a><a id="java-enable-disableexpiry"></a> Java SDK
 
 # <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
 

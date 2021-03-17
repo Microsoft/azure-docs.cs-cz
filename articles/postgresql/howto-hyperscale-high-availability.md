@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/04/2019
-ms.openlocfilehash: 0c7702c8832e22d889a5d785dad845430bfb7d17
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/27/2020
+ms.openlocfilehash: 46b842994cbcf7efe66d5992c79246d77626e268
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116875"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90907388"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Konfigurace vysoké dostupnosti Citus (High-Scale)
 
@@ -21,15 +21,15 @@ Azure Database for PostgreSQL – Citus (vysoká úroveň) poskytuje vysokou dos
 > [!IMPORTANT]
 > Vzhledem k tomu, že HA nazdvojnásobuje počet serverů ve skupině, bude také dvojnásobek nákladů.
 
-Povolení vysoké dostupnosti je možné během vytváření skupiny serverů nebo později na kartě **Konfigurace** pro skupinu serverů v Azure Portal. Uživatelské rozhraní vypadá podobně v obou případech. Přetáhněte posuvník pro **vysokou dostupnost** na Ano:
+Povolení vysoké dostupnosti je možné během vytváření skupiny serverů nebo později na kartě **COMPUTE + úložiště** pro skupinu serverů v Azure Portal. Uživatelské rozhraní vypadá podobně v obou případech. Přetáhněte posuvník pro **vysokou dostupnost** z ne na Ano:
 
-![posuvník ha](./media/howto-hyperscale-high-availability/01-ha-slider.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/01-ha-slider.png" alt-text="posuvník ha":::
 
 Kliknutím na tlačítko **Uložit** použijte výběr. Povolení HA může nějakou dobu trvat, protože skupiny serverů zřídí pohotovostní data a proudy dat.
 
 Karta **Přehled** pro skupinu serverů zobrazí seznam všech uzlů a jejich pohotovostních a společně se sloupcem s **vysokou dostupností** , který označuje, jestli je u každého uzlu úspěšně povolený ha.
 
-![sloupec ha ve skupině serverů – přehled](./media/howto-hyperscale-high-availability/02-ha-column.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="posuvník ha":::
 
 ### <a name="next-steps"></a>Další kroky
 

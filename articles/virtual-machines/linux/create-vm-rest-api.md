@@ -2,16 +2,17 @@
 title: Vytvoření virtuálního počítače se systémem Linux pomocí REST API
 description: Naučte se, jak vytvořit virtuální počítač se systémem Linux v Azure, který používá Managed Disks a ověřování SSH s Azure REST API.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 519939445e67f0f993662e2faf506eb186686156
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373398"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554560"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače se systémem Linux, který používá ověřování pomocí protokolu SSH, s REST API
 
@@ -26,7 +27,7 @@ V tomto článku se dozvíte, jak pomocí REST API vytvořit virtuální počít
 Než vytvoříte a odešlete žádost, budete potřebovat:
 
 * `{subscription-id}`Pro vaše předplatné
-  * Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) .
+  * Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli) .
 * `{resourceGroupName}`Vytvořili jste předem čas
 * [Virtuální síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) ve stejné skupině prostředků
 * Pár klíčů SSH (můžete [vygenerovat nový](mac-create-ssh-keys.md) , pokud ho ještě nemáte)
@@ -46,7 +47,7 @@ Jsou vyžadovány následující hlavičky:
 | Hlavička požadavku   | Popis |
 |------------------|-----------------|
 | *Content-Type:*  | Povinná hodnota. Nastavte na `application/json`. |
-| *Authorization:* | Povinná hodnota. Nastavte na platný  [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |
+| *Authorization:* | Povinná hodnota. Nastavte na platný [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients) `Bearer`. |
 
 Obecné informace o práci s požadavky na REST API najdete v tématu [komponenty REST API žádosti a odpovědi](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -54,7 +55,7 @@ Obecné informace o práci s požadavky na REST API najdete v tématu [komponent
 
 Následující běžné definice se používají k sestavení textu žádosti:
 
-| Název                       | Požaduje se | Typ                                                                                | Description  |
+| Name                       | Požaduje se | Typ                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | řetězec                                                                              | Umístění prostředku. |
 | name                       |          | řetězec                                                                              | Název virtuálního počítače |

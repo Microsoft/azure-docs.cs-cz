@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Vytvoření vlastní definice zásady'
 description: V tomto kurzu vytvoříte vlastní definici zásad pro Azure Policy, která vynutila vlastní obchodní pravidla pro vaše prostředky Azure.
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 817e6f494b024b9a789f39a4101236f64d8fa0cd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044613"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882887"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
@@ -33,7 +33,7 @@ Přístup k vytváření vlastních zásad se řídí těmito kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="identify-requirements"></a>Identifikace požadavků
 
@@ -66,14 +66,17 @@ Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se
 
 ### <a name="arm-templates"></a>Šablony ARM
 
-Existuje několik způsobů, jak se podívat na [šablonu správce prostředků](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) , která obsahuje vlastnost, kterou chcete spravovat.
+Existuje několik způsobů, jak se podívat na [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) , který obsahuje vlastnost, kterou chcete spravovat.
 
 #### <a name="existing-resource-in-the-portal"></a>Existující prostředek na portálu
 
 Nejjednodušší způsob, jak najít vlastnosti, je podívat se na existující prostředek stejného typu. Prostředky, které jsou už nakonfigurované s nastavením, které chcete vyhodnotit, taky poskytují hodnotu pro porovnání.
 Podívejte se na stránku **Exportovat šablonu** (v části **nastavení**) v Azure Portal pro tento konkrétní prostředek.
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Stránka pro export šablony na stávajícím prostředku" border="false":::
+> [!WARNING]
+> Šablona ARM exportovaná pomocí Azure Portal nemůže být přímo připojena do `deployment` vlastnosti pro šablonu ARM v definici zásady [deployIfNotExists](../concepts/effects.md#deployifnotexists) .
+
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Snímek stránky pro export šablony na existujícím prostředku v Azure Portal." border="false":::
 
 Když to uděláte, účet úložiště odhalí šablonu podobnou tomuto příkladu:
 
@@ -165,7 +168,6 @@ Existuje několik způsobů, jak určit aliasy pro prostředek Azure. Podíváme
 - Rozšíření Azure Policy pro VS Code
 - Azure CLI
 - Azure PowerShell
-- Azure Resource Graph
 
 ### <a name="get-aliases-in-vs-code-extension"></a>Získat aliasy v rozšíření VS Code
 
@@ -200,125 +202,6 @@ V Azure PowerShell `Get-AzPolicyAlias` rutina slouží k hledání aliasů prost
 
 Podobně jako Azure CLI zobrazuje výsledky aliasy podporované účty úložiště s názvem **supportsHttpsTrafficOnly**.
 
-### <a name="azure-resource-graph"></a>Azure Resource Graph
-
-[Azure Resource Graph](../../resource-graph/overview.md) je služba, která poskytuje další způsob hledání vlastností prostředků Azure. Tady je ukázkový dotaz pro prohlížení jednoho účtu úložiště s grafem prostředků:
-
-```kusto
-Resources
-| where type=~'microsoft.storage/storageaccounts'
-| limit 1
-```
-
-```azurecli-interactive
-az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-Výsledky vypadají podobně jako v šablonách ARM a prostřednictvím Azure Resource Explorer. Výsledky grafu prostředků Azure ale můžou taky zahrnovat podrobnosti o [aliasu](../concepts/definition-structure.md#aliases) tím, že projedná _projekt_ s polem _aliasy_ :
-
-```kusto
-Resources
-| where type=~'microsoft.storage/storageaccounts'
-| limit 1
-| project aliases
-```
-
-```azurecli-interactive
-az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-Tady je příklad výstupu z účtu úložiště pro aliasy:
-
-```json
-"aliases": {
-    "Microsoft.Storage/storageAccounts/accessTier": null,
-    "Microsoft.Storage/storageAccounts/accountType": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/enableBlobEncryption": true,
-    "Microsoft.Storage/storageAccounts/enableFileEncryption": true,
-    "Microsoft.Storage/storageAccounts/encryption": {
-        "keySource": "Microsoft.Storage",
-        "services": {
-            "blob": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            },
-            "file": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            }
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.keySource": "Microsoft.Storage",
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyname": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyvaulturi": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyversion": null,
-    "Microsoft.Storage/storageAccounts/encryption.services": {
-        "blob": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        },
-        "file": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob.enabled": true,
-    "Microsoft.Storage/storageAccounts/encryption.services.file": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.file.enabled": true,
-    "Microsoft.Storage/storageAccounts/networkAcls": {
-        "bypass": "AzureServices",
-        "defaultAction": "Allow",
-        "ipRules": [],
-        "virtualNetworkRules": []
-    },
-    "Microsoft.Storage/storageAccounts/networkAcls.bypass": "AzureServices",
-    "Microsoft.Storage/storageAccounts/networkAcls.defaultAction": "Allow",
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].state": [],
-    "Microsoft.Storage/storageAccounts/primaryEndpoints": {
-        "blob": "https://mystorageaccount.blob.core.windows.net/",
-        "file": "https://mystorageaccount.file.core.windows.net/",
-        "queue": "https://mystorageaccount.queue.core.windows.net/",
-        "table": "https://mystorageaccount.table.core.windows.net/"
-    },
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.blob": "https://mystorageaccount.blob.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.file": "https://mystorageaccount.file.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.queue": "https://mystorageaccount.queue.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.table": "https://mystorageaccount.table.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.web": null,
-    "Microsoft.Storage/storageAccounts/primaryLocation": "eastus2",
-    "Microsoft.Storage/storageAccounts/provisioningState": "Succeeded",
-    "Microsoft.Storage/storageAccounts/sku.name": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/sku.tier": "Standard",
-    "Microsoft.Storage/storageAccounts/statusOfPrimary": "available",
-    "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly": false
-}
-```
-
-Azure Resource Graph se dá použít prostřednictvím [Cloud Shell](https://shell.azure.com), takže je rychlý a snadný způsob, jak prozkoumat vlastnosti vašich prostředků.
-
 ## <a name="determine-the-effect-to-use"></a>Určení efektu, který se má použít
 
 Rozhodnutí o tom, co dělat s prostředky, které nedodržují předpisy, je skoro stejně důležité jako rozhodování, co vyhodnotit na prvním místě. Každá možná odpověď na prostředek, který nedodržuje předpisy, se nazývá [efekt](../concepts/effects.md). Tento efekt řídí, jestli je prostředek, který nedodržuje předpisy, přihlášen, je blokovaný, má připojená data, nebo má přidružené nasazení pro uvedení prostředku zpátky do stavu kompatibility.
@@ -352,7 +235,7 @@ Teď máme podrobnosti o vlastnosti a alias pro to, co plánujeme spravovat. V d
 
 ### <a name="metadata"></a>Metadata
 
-První tři komponenty jsou metadata zásad. Tyto komponenty se dají snadno zadat, protože víme, pro které pravidlo vytváříme. [Režim](../concepts/definition-structure.md#mode) je primárně o značkách a umístění prostředků. Vzhledem k tomu, že nepotřebujeme omezit vyhodnocení na prostředky, které podporují značky, použijeme pro **režim**hodnotu _All_ .
+První tři komponenty jsou metadata zásad. Tyto komponenty se dají snadno zadat, protože víme, pro které pravidlo vytváříme. [Režim](../concepts/definition-structure.md#mode) je primárně o značkách a umístění prostředků. Vzhledem k tomu, že nepotřebujeme omezit vyhodnocení na prostředky, které podporují značky, použijeme pro **režim** hodnotu _All_ .
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -465,7 +348,7 @@ Pokud jste dokončili práci s prostředky z tohoto kurzu, pomocí následujíc�
 
 1. Klikněte na řádek pravým tlačítkem nebo vyberte tři tečky na konci definice (nebo přiřazení) a pak vyberte **Odstranit definici** (nebo **Odstranit přiřazení**).
 
-## <a name="review"></a>Revize
+## <a name="review"></a>Opakování
 
 V tomto kurzu jste úspěšně provedli následující úlohy:
 

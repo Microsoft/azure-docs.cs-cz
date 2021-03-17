@@ -1,17 +1,15 @@
 ---
 title: Ladění aplikace Java v místním clusteru Service Fabric
 description: V tomto kurzu se dozvíte, jak ladit aplikaci Service Fabric spuštěnou v místním clusteru a jak z ní získat protokoly.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 040eaeb3ef77dfd68feb2aebac71d945ef669d6d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 801702d43bae6d925fa4f7fbc37cf44bf585fa6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372429"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531986"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Kurz: Ladění aplikace v Javě nasazené v místním clusteru Service Fabric
 

@@ -1,24 +1,21 @@
 ---
 title: Koncepty architektury v Azure IoT Central – sluneční panel | Microsoft Docs
-description: Tento článek představuje klíčové koncepty týkající se architektury Azure IoT Central
+description: Tento článek představuje klíčové koncepty, které se týkají architektury aplikace pro monitorování v Azure IoT Central slunečním panelu.
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
-ms.topic: overview
+ms.date: 12/11/2020
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: f09a8cfae9b0f12df2ea76ecc216b1b2eb66e9ff
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1efb693e1ad9b9e9bfdbeafa27e9cc75c645baf4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511853"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834285"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Architektura aplikace panelu Azure IoT Central-slunečního panelu
-
-
-
 
 Tento článek poskytuje přehled architektury šablon aplikací pro monitorování v panelu slunečního vstupu. Následující diagram ukazuje běžně použitou architekturu pro aplikaci slunečního panelu v Azure s využitím IoT Central platformy.
 
@@ -27,11 +24,9 @@ Tento článek poskytuje přehled architektury šablon aplikací pro monitorová
 
 Tato architektura se skládá z následujících komponent. Některé aplikace nemusí vyžadovat všechny zde uvedené komponenty.
 
-## <a name="solar-panels-and-connectivity"></a>Sluneční panely a připojení 
+## <a name="solar-panels-and-connectivity"></a>Sluneční panely a připojení
 
-Sluneční panely jsou jedním z významných zdrojů obnovitelné energie. V závislosti na typu a nastavení panelu slunečního připojení se můžete připojit buď pomocí bran, nebo jiných zprostředkujících zařízení a proprietárních systémů. Možná budete muset vytvořit most IoT Central zařízení pro připojení zařízení, která se nedají připojit přímo. Most zařízení IoT Central je open source řešení a [tady](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)můžete najít kompletní podrobnosti. 
-
-
+Sluneční panely jsou jedním z významných zdrojů obnovitelné energie. V závislosti na typu a nastavení panelu slunečního připojení se můžete připojit buď pomocí bran, nebo jiných zprostředkujících zařízení a proprietárních systémů. Možná budete muset vytvořit most IoT Central zařízení pro připojení zařízení, která se nedají připojit přímo. Most zařízení IoT Central je open source řešení a [tady](../core/howto-build-iotc-device-bridge.md)můžete najít kompletní podrobnosti. 
 
 ## <a name="iot-central-platform"></a>IoT Central platforma
 Azure IoT Central je platforma, která zjednodušuje vytváření řešení IoT a pomáhá snižovat zatížení a náklady na správu, provoz a vývoj IoT. Díky IoT Central se můžete snadno připojit, monitorovat a spravovat vaše prostředky Internet věcí (IoT) ve velkém měřítku. Po připojení vašich slunečních panelů k IoT Central se v šabloně aplikace používají předdefinované funkce, jako jsou například modely zařízení, příkazy a řídicí panely. Šablona aplikace také používá IoT Central úložiště pro scénáře teplé cesty, jako jsou monitorování, analýzy, pravidla a vizualizace dat měřiče v reálném čase.
@@ -43,4 +38,4 @@ Platforma IoT Central poskytuje dvě možnosti rozšíření: průběžné expor
 ## <a name="next-steps"></a>Další kroky
 
 * Teď, když jste se seznámili s architekturou, můžete [zdarma vytvořit aplikaci slunečního panelu](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) .
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/) .
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](../index.yml) .

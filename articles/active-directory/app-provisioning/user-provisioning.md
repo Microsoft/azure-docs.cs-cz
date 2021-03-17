@@ -3,24 +3,28 @@ title: Co je automatizované zřizování uživatelů aplikací SaaS ve službě
 description: Představte si, jak můžete pomocí Azure AD automaticky zřídit, zrušit zřízení a průběžně aktualizovat uživatelské účty napříč různými aplikacemi SaaS třetích stran.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: overview
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 02/08/2021
 ms.author: kenwith
-ms.reviewer: arvinh, celested
-ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.reviewer: arvinh
+ms.openlocfilehash: f899c4d67321482dab62729632fe031bb23f71ea
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235396"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830664"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Co je automatizované zřizování uživatelů aplikací SaaS ve službě Azure AD?
 
 V Azure Active Directory (Azure AD) pojem **zřizování aplikací** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)a další.
+
+Stačí začít se správou aplikací a jednotným přihlašováním (SSO) ve službě Azure AD? Podívejte se na [řadu rychlých startů](../manage-apps/view-applications-portal.md).
+
+Další informace o SCIM a připojení k konverzacím ze technické komunity najdete v článku [zřizování s SCIM technickou komunitou](https://aka.ms/scimoverview).
 
 ![Diagram přehledu zřizování](./media/user-provisioning/provisioning-overview.png)
 
@@ -59,7 +63,7 @@ Azure AD nabízí předem integrovanou podporu pro spoustu oblíbených aplikac�
 
    ![Logo Salesforce](./media/user-provisioning/gallery-app-logos.png)
 
-   Pokud chcete požádat o novou aplikaci pro zřizování, můžete [požádat o integraci aplikace do naší galerie aplikací](../azuread-dev/howto-app-gallery-listing.md). Pro požadavek na zřízení uživatele vyžaduje aplikace, aby měl koncový bod kompatibilní s SCIM. Požádejte prosím, aby dodavatel aplikace následoval za standardu SCIM, abychom mohli rychle připojit aplikaci k naší platformě.
+   Pokud chcete požádat o novou aplikaci pro zřizování, můžete [požádat o integraci aplikace do naší galerie aplikací](../develop/v2-howto-app-gallery-listing.md). Pro požadavek na zřízení uživatele vyžaduje aplikace, aby měl koncový bod kompatibilní s SCIM. Požádejte prosím, aby dodavatel aplikace následoval za standardu SCIM, abychom mohli rychle připojit aplikaci k naší platformě.
 
 * **Aplikace, které podporují SCIM 2,0**. Informace o tom, jak obecně připojit aplikace, které implementují rozhraní API pro správu uživatelů na bázi SCIM 2,0, najdete v tématu [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů](use-scim-to-provision-users-and-groups.md).
 
@@ -79,7 +83,7 @@ Aplikace v galerii Azure AD podporují jeden ze dvou režimů zřizování:
 
 * **Automaticky** znamená, že se pro tuto aplikaci vyvinul konektor zřizování služby Azure AD. Měli byste postupovat podle kurzu nastavení, který je specifický pro nastavení zřizování pro aplikaci. Kurzy aplikací najdete v tématu [Seznam kurzů, jak integrovat aplikace SaaS s Azure Active Directory](../saas-apps/tutorial-list.md).
 
-V galerii Azure AD jsou aplikace, které podporují Automatické zřizování, označeny ikonou **zřizování** . Přepněte na nové prostředí verze Preview, abyste viděli tyto ikony (v horní části **stránky přidat aplikaci**vyberete odkaz, který zobrazíte **kliknutím sem, abyste si vyzkoušeli novou a vylepšenou galerii aplikací**).
+V galerii Azure AD jsou aplikace, které podporují Automatické zřizování, označeny ikonou **zřizování** . Přepněte na nové prostředí verze Preview, abyste viděli tyto ikony (v horní části **stránky přidat aplikaci** vyberete odkaz, který zobrazíte **kliknutím sem, abyste si vyzkoušeli novou a vylepšenou galerii aplikací**).
 
 ![Ikona zřizování v galerii aplikací](./media/user-provisioning/browse-gallery.png)
 

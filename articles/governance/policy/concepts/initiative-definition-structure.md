@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury definice iniciativy
 description: Popisuje způsob, jakým se definice iniciativ zásad používají k definování zásad pro nasazení do prostředků Azure ve vaší organizaci.
-ms.date: 08/17/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544634"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876171"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Struktura definice Azure Policy iniciativy
 
@@ -17,7 +17,7 @@ Iniciativy umožňují seskupit několik souvisejících definic zásad, které 
 K vytvoření definice iniciativy zásad použijte JSON. Definice iniciativy zásad obsahuje prvky pro:
 
 - zobrazované jméno
-- description
+- Popis
 - zprostředkovatele identity
 - parameters
 - definice zásad
@@ -248,19 +248,18 @@ Tady je příklad `policyDefinitions` , který má dvě zahrnuté definice zása
 ]
 ```
 
-## <a name="policy-definitions-groups-preview"></a><a name="policy-definition-groups"></a>Skupiny definic zásad (Preview)
+## <a name="policy-definition-groups"></a>Skupiny definic zásad
 
-Jako součást funkce [dodržování legislativních předpisů](./regulatory-compliance.md) pro Azure Policy (Preview) je možné seskupit definice zásad v definici iniciativy. Tyto informace jsou definovány ve vlastnosti `policyDefinitionGroups` _Array_ . Tato seskupení obsahují další podrobnosti, jako je například **řízení** a **doména dodržování předpisů** , které definice zásad poskytuje pokrytí.
-Další podrobnosti o seskupení se dají najít v objektu **policyMetadata** vytvořeném Microsoftem. Informace najdete v tématu [objekty metadat](#metadata-objects).
+Definice zásad v definici iniciativy lze seskupit a kategorizovat. Funkce [dodržování legislativních předpisů](./regulatory-compliance.md) v Azure Policy (Preview) používá tuto vlastnost k seskupení definic do domén **řízení** a **dodržování předpisů**. Tyto informace jsou definovány ve vlastnosti `policyDefinitionGroups` _Array_ . Další podrobnosti o seskupení se dají najít v objektu **policyMetadata** vytvořeném Microsoftem. Informace najdete v tématu [objekty metadat](#metadata-objects).
 
 ### <a name="policy-definition-groups-parameters"></a>Parametry skupin definic zásad
 
 Každý prvek _pole_ v `policyDefinitionGroups` musí mít obě následující vlastnosti:
 
-- `name` (String) \[ požadováno \] : krátký název **ovládacího prvku**. Hodnota této vlastnosti je používána `groupNames` v `policyDefinitions` .
-- `category` (String): **doména dodržování předpisů** ovládacího prvku.
-- `displayName` (String): popisný název **ovládacího prvku**. Používáno portálem.
-- `description` (String): popis toho, co **ovládací prvek** dělá.
+- `name` (String) \[ požadováno \] : krátký název **skupiny**. **Řízení**dodržování předpisů v souladu se zákonem. Hodnota této vlastnosti je používána `groupNames` v `policyDefinitions` .
+- `category` (String): hierarchie, do které skupina patří. V souladu se zákonem o dodržování předpisů, **doména dodržování předpisů** ovládacího prvku.
+- `displayName` (String): popisný název pro **skupinu** nebo **ovládací prvek**. Používáno portálem.
+- `description` (String): popis toho, co **Skupina** nebo **ovládací prvek** pokrývá.
 - `additionalMetadataId` (String): umístění objektu [policyMetadata](#metadata-objects) , který obsahuje další podrobnosti o **řízení** a **doméně dodržování předpisů**.
 
   > [!NOTE]
@@ -284,7 +283,7 @@ Tyto informace jsou:
 
 - Zobrazuje se v Azure Portal přehledu **ovládacího prvku** v iniciativě dodržování předpisů.
 - K dispozici prostřednictvím REST API. Prohlédněte si `Microsoft.PolicyInsights` poskytovatele prostředků a [skupinu operací policyMetadata](/rest/api/policy-insights/policymetadata/getresource).
-- K dispozici prostřednictvím Azure CLI. Viz příkaz [AZ Policy metadata](/cli/azure/policy/metadata?view=azure-cli-latest) .
+- K dispozici prostřednictvím Azure CLI. Viz příkaz [AZ Policy metadata](/cli/azure/policy/metadata) .
 
 > [!IMPORTANT]
 > Objekty metadat pro dodržování předpisů jsou jen _pro čtení_ a zákazníci je nemůžou vytvořit.

@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327d365cd1b110a6b57b11f92e70d221d3712cfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7454733233f1fd487d774d52a6f46187354ae05c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550177"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246702"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Reference k funkcím
 V Azure AD Connect jsou funkce použity k manipulaci s hodnotou atributu během synchronizace.  
@@ -48,7 +48,7 @@ Typy jsou vyjádřeny pomocí následující syntaxe:
 * **var** – varianta (téměř) jakéhokoli jiného typu
 * **void** – nevrací hodnotu
 
-Funkce s typy **mvbin**, **mvstr**a **mvref** mohou pracovat pouze s více hodnotami atributů. Funkce s funkcí **bin**, **str**a **ref** jak v atributech s jednou hodnotou, tak i s více hodnotami.
+Funkce s typy **mvbin**, **mvstr** a **mvref** mohou pracovat pouze s více hodnotami atributů. Funkce s funkcí **bin**, **str** a **ref** jak v atributech s jednou hodnotou, tak i s více hodnotami.
 
 ## <a name="functions-reference"></a>Reference k funkcím
 
@@ -75,7 +75,7 @@ Funkce s typy **mvbin**, **mvstr**a **mvref** mohou pracovat pouze s více hodno
   * [CertThumbprint](#certthumbprint)
   * [CertVersion](#certversion)
   * [Certifikát](#iscert)
-* **Počtu**
+* **Převod**
   * [CBool](#cbool)
   * [CDate](#cdate)
   * [CGuid](#cguid)
@@ -117,7 +117,7 @@ Funkce s typy **mvbin**, **mvstr**a **mvref** mohou pracovat pouze s více hodno
   * [Výpočtu](#count)
   * [Položka](#item)
   * [ItemOrNull](#itemornull)
-  * [Připojit](#join)
+  * [Join](#join) (Spojení)
   * [RemoveDuplicates –](#removeduplicates)
   * [Rozdělení](#split)
 * **Tok programu**
@@ -426,9 +426,9 @@ Funkce CGuid převede řetězcovou reprezentaci identifikátoru GUID na jeho bin
 Funkce Contains vyhledá řetězec uvnitř vícehodnotového atributu.
 
 **Syntaktick**  
-`num Contains (mvstring attribute, str search)`– rozlišuje velká a malá písmena  
+`num Contains (mvstring attribute, str search)` – rozlišuje velká a malá písmena  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`– rozlišuje velká a malá písmena
+`num Contains (mvref attribute, str search)` – rozlišuje velká a malá písmena
 
 * atribut: vícehodnotový atribut, který má být hledán.
 * Search: řetězec, který se má najít v atributu.
@@ -450,7 +450,7 @@ Pokud má atribut proxyAddresses primární e-mailovou adresu (označenou jako v
 Funkce ConvertFromBase64 převede zadanou hodnotu v kódování Base64 na běžný řetězec.
 
 **Syntaktick**  
-`str ConvertFromBase64(str source)`– předpokládá kódování Unicode.  
+`str ConvertFromBase64(str source)` – předpokládá kódování Unicode.  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Zdroj: řetězec kódovaný v kódování Base64  
@@ -625,7 +625,7 @@ Pokud je DN "CN = Jan, OU = Brno, OU = GA, OU = US, DC = contoso, DC = com", pak
 Jak nás vrátíme.
 
 ---
-### <a name="error"></a>Chyba
+### <a name="error"></a>Chybová
 **Popis:**  
 Funkce Error slouží k vrácení vlastní chyby.
 
@@ -660,11 +660,11 @@ Funkce FormatDateTime slouží k formátování hodnoty DateTime na řetězec se
 * Format: řetězec představující formát, na který se má převést.
 
 **Mark**  
-Možné hodnoty pro tento formát najdete tady: [vlastní formáty data a času pro funkci Format](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
+Možné hodnoty pro tento formát najdete tady: [vlastní formáty data a času pro funkci Format](/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Příklad:**  
 
-`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
+`FormatDateTime(CDate("12/25/2007"),"yyyy-MM-dd")`  
 Má za následek "2007-12-25".
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
@@ -703,7 +703,7 @@ Funkce InStr vyhledá první výskyt podřetězce v řetězci.
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck: řetězec, který má být prohledán
 * stringmatch: řetězec, který se má najít
@@ -1130,7 +1130,7 @@ Funkce RemoveDuplicates – přebírá řetězec s více hodnotami a ověří, z
 Vrátí upravený atribut proxyAddress, ve kterém byly odstraněny všechny duplicitní hodnoty.
 
 ---
-### <a name="replace"></a>Nahradit
+### <a name="replace"></a>Nahrazení
 **Popis:**  
 Funkce Replace nahradí všechny výskyty řetězce na jiný řetězec.
 
@@ -1393,7 +1393,7 @@ Vrátí "Brown"
 `Word("This,string!has&many separators",3,",!&#")`  
 Vrátí "has"
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 * [Principy výrazů deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
 * [Azure AD Connect synchronizace: přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

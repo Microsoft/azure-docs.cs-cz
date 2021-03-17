@@ -20,6 +20,8 @@
       href: set-up-service-alerts.md
 - name: Postupy
   items:
+    - name: Ruční migrace
+      href: manual-migration.md
     - name: Připojení k prostředkům Windows Virtual Desktop
       items:
         - name: Připojení s desktopovým klientem Windows
@@ -32,6 +34,12 @@
           href: connect-macos.md
         - name: Připojení s klientem iOS
           href: connect-ios.md
+        - name: Připojení s klientem Microsoft Storu
+          href: connect-microsoft-store.md
+        - name: Připojení pomocí tenkých klientů
+          href: linux-overview.md
+    - name: Konfigurace přesměrování zařízení
+      href: configure-device-redirections.md
     - name: Instalace modulu PowerShellu
       href: powershell-module.md
     - name: Vytvoření fondu hostitelů a hostitelů relací
@@ -58,6 +66,8 @@
           href: create-profile-container-adds.md
         - name: Použití Azure Files a AD DS
           href: create-file-share.md
+        - name: Instalace Office s kontejnery aplikací FSLogix
+          href: fslogix-office-app-rule-editor.md
     - name: Konfigurace nastavení fondu hostitelů
       items:
         - name: Vlastnosti protokolu RDP
@@ -84,24 +94,64 @@
           href: diagnostics-log-analytics.md
     - name: Publikování integrovaných aplikací
       href: publish-apps.md
-    - name: Nastavení připojení aplikace MSIX
-      href: app-attach.md
+    - name: Použití připojení aplikace MSIX
+      items:
+        - name: Nastavení připojení aplikace MSIX s využitím webu Azure Portal
+          href: app-attach-azure-portal.md
+        - name: Nastavení připojení aplikace MSIX s využitím PowerShellu
+          href: app-attach-powershell.md
+        - name: Vytváření skriptů PowerShellu
+          href: app-attach.md
+        - name: Příprava image MSIX
+          href: app-attach-image-prep.md
+        - name: Nastavení sdílené složky
+          href: app-attach-file-share.md
+        - name: Nastavení nástroje MSIXMGR
+          href: app-attach-msixmgr.md
     - name: Použití Microsoft Teams
       href: teams-on-wvd.md
-    - name: Nastavení služby Azure Multi-Factor Authentication
+    - name: Nastavení vícefaktorového ověřování Azure AD
       href: set-up-mfa.md
     - name: Konfigurace automatických aktualizací
       href: configure-automatic-updates.md
     - name: Instalace jazykových sad
       href: language-packs.md
+    - name: Použití Azure Advisoru
+      href: azure-advisor.md
+    - name: Řešení doporučení
+      href: azure-advisor-recommendations.md
+    - name: Použití Azure Monitoru pro Windows Virtual Desktop
+      href: azure-monitor.md
+    - name: Nastavení plánu zotavení po havárii
+      href: disaster-recovery.md
+    - name: Nastavení proxy služby KDC
+      href: key-distribution-center-proxy.md
+    - name: Nastavení role Brána VP
+      href: rd-gateway-role.md
 - name: Koncepty
   items:
-    - name: Seznam bezpečných adres URL
-      href: safe-url-list.md
+    - name: Vestavěné role
+      href: rbac.md
+    - name: Ověřování
+      href: authentication.md
     - name: Prostředí Windows Virtual Desktop
       href: environment-setup.md
-    - name: Určení latence připojení uživatele
-      href: connection-latency.md
+    - name: Agent Windows Virtual Desktop
+      href: agent-overview.md
+    - name: Připojení k síti
+      items:
+        - name: Principy připojení k síti
+          href: network-connectivity.md
+        - name: RDP stručně
+          href: shortpath.md
+        - name: Implementace technologie QoS (Quality of Service)
+          href: rdp-quality-of-service-qos.md
+        - name: Seznam požadovaných adres URL
+          href: safe-url-list.md
+        - name: Aspekty šířky pásma
+          href: rdp-bandwidth.md
+        - name: Určení latence připojení uživatele
+          href: connection-latency.md
     - name: Delegovaný přístup ve Windows Virtual Desktop
       href: delegated-access-virtual-desktop.md
     - name: Metody vyrovnávání zatížení fondu hostitelů
@@ -124,8 +174,14 @@
           href: app-attach-glossary.md
         - name: Nejčastější dotazy
           href: app-attach-faq.md
+    - name: Glosář Azure Monitoru
+      href: azure-monitor-glossary.md
     - name: Umístění dat
       href: data-locations.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Řešení potíží
   items:
     - name: 'Přehled řešení potíží, zpětná vazba a podpora'
@@ -138,12 +194,16 @@
       href: troubleshoot-vm-configuration.md
     - name: Připojení služby Vzdálená plocha
       href: troubleshoot-service-connection.md
+    - name: Agent Windows Virtual Desktop
+      href: troubleshoot-agent.md
     - name: Potíže s klienty Vzdálené plochy
       href: troubleshoot-client.md
     - name: PowerShell pro Windows Virtual Desktop
       href: troubleshoot-powershell.md
     - name: Diagnostika problémů s výkonem grafiky
       href: remotefx-graphics-performance-counters.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
 - name: Referenční informace
   items:
     - name: Osvědčené postupy zabezpečení
@@ -152,18 +212,18 @@
       href: linux-overview.md
     - name: Podporovaná nastavení souboru RDP
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
-    - name: Doprovodné materiály k sítím
-      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: Doprovodné materiály k určení velikosti virtuálního počítače
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Rozhraní příkazového řádku Azure (CLI)
-      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+      href: /cli/azure/ext/desktopvirtualization/
     - name: Ukázkové scénáře Azure
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+    - name: Zjišťování e-mailů
+      href: /windows-server/remote/remote-desktop-services/rds-email-discovery
 - name: Zdroje a prostředky
   items:
     - name: PowerShell
-      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+      href: /powershell/module/az.desktopvirtualization/#desktopvirtualization
     - name: REST API – referenční informace
       href: /rest/api/desktopvirtualization/
     - name: Experience Estimator

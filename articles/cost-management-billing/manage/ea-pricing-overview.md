@@ -4,15 +4,16 @@ description: Popisuje přehled cen Azure EA.
 author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 34b683da561d1cae843aa8c6198fdc241b60bae1
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 4195ab701bb0829cf2d006e9646290bdf25ea10e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243971"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442407"
 ---
 # <a name="azure-ea-pricing"></a>Ceny Azure EA
 

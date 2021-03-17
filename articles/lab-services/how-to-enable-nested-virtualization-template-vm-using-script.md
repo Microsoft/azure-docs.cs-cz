@@ -1,14 +1,14 @@
 ---
 title: Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services (skript) | Microsoft Docs
-description: Přečtěte si, jak vytvořit virtuální počítač šablony s několika virtuálními počítači v rámci.  Jinými slovy, povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services.
+description: Přečtěte si, jak vytvořit virtuální počítač šablony s více virtuálními počítači v rámci pomocí skriptu.  Jinými slovy, povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a45257dffffc98c3f650c5b1753158edd9bfbede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445742"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91251491"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services pomocí skriptu
 
@@ -29,7 +29,7 @@ Postup v tomto článku se zaměřuje na nastavení vnořené virtualizace pro W
 
         ![Důvěryhodné servery](./media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
 1. Stáhněte si soubory úložiště Git, jak je uvedeno v následujícím postupu.
-    1. Přejít na [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
+    1. Přejít na  [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
     1. Klikněte na tlačítko **klonovat nebo stáhnout** .
     1. Klikněte na **Stáhnout soubor zip**.
     1. Extrakce souboru ZIP

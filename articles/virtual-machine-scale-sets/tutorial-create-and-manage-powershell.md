@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: a657f8a4fd7b92aeb858b919052ca732bf630ae9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 102ab619a3f341658383dc4997f9fbfc2cd12a43
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091330"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519176"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a správa škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
@@ -27,7 +27,7 @@ ms.locfileid: "87091330"
 > * Ruční škálování škálovací sady
 > * Provádění běžných úloh správy škálovací sady
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -45,7 +45,7 @@ Název skupiny prostředků zadáte při vytváření nebo úpravě škálovací
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-Nejprve pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce instancí virtuálních počítačů:
+Nejprve pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) nastavte uživatelské jméno a heslo správce instancí virtuálních počítačů:
 
 ```azurepowershell-interactive
 $cred = Get-Credential

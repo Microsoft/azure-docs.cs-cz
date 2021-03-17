@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886631"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027478"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Posun schématu v mapování toku dat
 
@@ -43,7 +43,7 @@ Ve zdrojové transformaci je na posunu schématu definovaná jako sloupce pro č
 
 ![Zdroj posunu schématu](media/data-flow/schemadrift001.png "Zdroj posunu schématu")
 
-Když je zapnutý posun schématu, všechna příchozí pole se během provádění načtou ze zdroje a předají se celému toku do jímky. Ve výchozím nastavení se všechny nově zjištěné sloupce, označované jako *sloupce*s datovým typem, dorazí jako datový typ String. Pokud chcete, aby tok dat automaticky odvodit datové typy sloupců se sloupci, zrušte ve svém nastavení zdroje možnost **odvodit typy** vydaných sloupců.
+Když je zapnutý posun schématu, všechna příchozí pole se během provádění načtou ze zdroje a předají se celému toku do jímky. Ve výchozím nastavení se všechny nově zjištěné sloupce, označované jako *sloupce* s datovým typem, dorazí jako datový typ String. Pokud chcete, aby tok dat automaticky odvodit datové typy sloupců se sloupci, zrušte ve svém nastavení zdroje možnost **odvodit typy** vydaných sloupců.
 
 ## <a name="schema-drift-in-sink"></a>Posunování schématu v jímky
 
@@ -60,7 +60,7 @@ Pokud je zapnutý posun schématu, ujistěte se, že je zapnutý posuvník **aut
 Když datový tok obsahuje sloupce, můžete k nim přistupovat v transformacích pomocí následujících metod:
 
 * Použijte `byPosition` výrazy a `byName` k explicitnímu odkazu na sloupec podle názvu nebo čísla pozice.
-* Přidejte do odvozeného sloupce vzor sloupce nebo agregovanou transformaci podle libovolné kombinace názvu, datového proudu, pozice nebo typu.
+* Přidejte do odvozeného sloupce vzor sloupce nebo agregovanou transformaci, která se bude shodovat s libovolnou kombinací názvu, datového proudu, pozice, zdroje nebo typu.
 * Přidání mapování založeného na pravidlech v transformaci SELECT nebo Sink tak, aby se shodovaly se sloupci s aliasy přes vzor
 
 Další informace o implementaci vzorů sloupců najdete v tématu [vzory sloupců v části mapování toku dat](concepts-data-flow-column-pattern.md).
@@ -69,11 +69,11 @@ Další informace o implementaci vzorů sloupců najdete v tématu [vzory sloupc
 
 Chcete-li explicitně odkazovat na sloupce, můžete pro tyto sloupce rychle vygenerovat mapování pomocí rychlé akce Náhled dat. Jakmile je [režim ladění](concepts-data-flow-debug-mode.md) zapnutý, přejděte na kartu náhled dat a kliknutím na **aktualizovat** načtěte data Preview. Pokud objekt pro vytváření dat zjistí, že sloupce existují, můžete kliknout na tlačítko **Mapa se posunem** a vygenerovat odvozený sloupec, který vám umožní odkazovat na všechny sloupce v zobrazení schématu pro podřízené.
 
-![Mapa s posunem](media/data-flow/mapdrifted1.png "Mapa s posunem")
+![Snímek obrazovky s kartou náhled dat s mapou se vyvolal.](media/data-flow/mapdrifted1.png "Mapa s posunem")
 
 Ve vygenerované transformaci odvozeného sloupce je každý sloupec s rovným sloupcem namapován na jeho zjištěné názvy a datový typ. Ve výše uvedeném náhledu dat je sloupec ' movieId ' zjištěn jako celé číslo. Po kliknutí na **mapu** se movieId je v odvozeném sloupci definována jako `toInteger(byName('movieId'))` a obsažená v zobrazeních schématu v části s transformacemi na navazujících typech.
 
-![Mapa s posunem](media/data-flow/mapdrifted2.png "Mapa s posunem")
+![Snímek obrazovky se zobrazí na kartě nastavení odvozeného sloupce.](media/data-flow/mapdrifted2.png "Mapa s posunem")
 
 ## <a name="next-steps"></a>Další kroky
 V [jazyce výrazu toku dat](data-flow-expression-functions.md)najdete další informace o vzorcích sloupců a posunu schématu včetně možností "byName" a "byPosition".

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80680073"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723821"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Kontrolní nástroj ArrInspector
 
@@ -29,7 +29,7 @@ Pokud aplikace, která volá, `ConnectToArrInspectorAsync` je už na počítači
 
 Pokud aplikace běží na HoloLens:
 
-1. Přístup k HoloLens pomocí [portálu zařízení s Windows](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
+1. Přístup k HoloLens pomocí [portálu zařízení s Windows](/windows/mixed-reality/using-the-windows-device-portal)
 1. Přejít do *systémového > Průzkumník souborů*.
 1. Přejděte do *složky uživatele \\ LocalAppData \\ [your_app] \\ AC \\ TEMP*.
 1. Uložte *StartArrInspector.html* do počítače.
@@ -108,17 +108,3 @@ V pravém horním rohu vám přepínač umožní pozastavit živou aktualizaci p
 ![Režim pozastavení](./media/pause-mode.png)
 
 Při opětovném povolení živé aktualizace se resetují všechny panely.
-
-## <a name="host-configuration"></a>Konfigurace hostitele
-
-Ve výchozím nastavení se nástroj připojí k serveru ARR, na kterém je spuštěný na stejném hostiteli, který obsluhuje ArrInspector. Můžete ji ale nakonfigurovat tak, aby zkontrolovala jiný server, za předpokladu, že je spuštěná instance ARR s otevřeným portem nástrojů.
-
-Provedete to tak, že získáte přístup k hlavní nabídce nalevo od záhlaví a vyberete *Konfigurace hostitele*. Klikněte na **Přidat nového hostitele**a zadejte název a název hostitele. Pro *název hostitele* použijte pouze název hostitele končící na `.mixedreality.azure.com` , Nezahrnovat `http://` ani port.
-
-![Konfigurace hostitele](./media/host-configuration.png)
-
-Chcete-li rychle přepínat z jednoho hostitele na druhého, použijte rozevírací nabídku v pravém horním rohu.
-
-![Pole se seznamem hostitelů](./media/host-switch-combo.png)
-
-Seznam hostitelů je uložený v prohlížeči místního úložiště, takže při opětovném otevření stejného prohlížeče se zachová.

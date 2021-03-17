@@ -25,6 +25,52 @@
   items:
     - name: Zabezpečení
       items:
+        - name: Ochrana Microsoftu 365 před místními útoky
+          href: protect-m365-from-on-premises-attacks.md
+        - name: Zabezpečená externí spolupráce
+          items:
+            - name: Přehled zabezpečení externího přístupu
+              href: secure-external-access-resources.md
+            - name: 1. Zjištění stavu zabezpečení
+              href: 1-secure-access-posture.md
+            - name: 2. Zjištění aktuálního stavu
+              href: 2-secure-access-current-state.md
+            - name: 3. Vytvoření plánu zabezpečení
+              href: 3-secure-access-plan.md
+            - name: 4. Zabezpečení přístupu s využitím skupin
+              href: 4-secure-access-groups.md
+            - name: 5. Zabezpečení přístupu s využitím spolupráce B2B
+              href: 5-secure-access-b2b.md
+            - name: 6. Zabezpečení přístupu s využitím správy nároků
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7. Zabezpečení přístupu s využitím podmíněného přístupu
+              href: 7-secure-access-conditional-access.md
+            - name: 8. Zabezpečení přístupu s využitím popisků citlivosti
+              href: 8-secure-access-sensitivity-labels.md
+            - name: '9. Zabezpečení přístupu k Teams, SharePointu a OneDrivu'
+              href: 9-secure-access-teams-sharepoint.md
+        - name: Účty zabezpečené služby
+          items:
+            - name: Seznámení s účty služeb Azure
+              href: service-accounts-introduction-azure.md
+            - name: Zabezpečení spravovaných identit
+              href: service-accounts-managed-identities.md
+            - name: Zabezpečení instančních objektů
+              href: service-accounts-principal.md
+            - name: Řízení účtů služeb Azure
+              href: service-accounts-governing-azure.md
+            - name: Seznámení s místními účty služeb
+              href: service-accounts-on-premises.md
+            - name: Zabezpečení skupiny účty spravované služby
+              href: service-accounts-group-managed.md
+            - name: Zabezpečení samostatných účty spravované služby
+              href: service-accounts-standalone-managed.md
+            - name: Zabezpečení počítačových účtů
+              href: service-accounts-computer.md
+            - name: Zabezpečení účtů služeb založených na uživateli
+              href: service-accounts-user-on-premises.md
+            - name: Řízení účtů místních služeb
+              href: service-accounts-govern-on-premises.md
         - name: Povolení MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: Výchozí nastavení zabezpečení
@@ -35,8 +81,6 @@
           href: identity-secure-score.md
         - name: Zabezpečené vzdálené pracovní procesy
           href: concept-secure-remote-workers.md
-        - name: Nepřetržité vyhodnocování přístupu
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: Skupiny a uživatelé
       items:
         - name: Správa přístupu a skupin
@@ -51,6 +95,80 @@
           href: active-directory-architecture.md
         - name: Integrace všech vašich aplikací s Azure AD
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: Protokoly zřizování a ověřování
+          items:
+            - name: Přehled
+              href: auth-sync-overview.md
+            - name: Ověřování na základě hlaviček
+              href: auth-header-based.md
+            - name: Ověřování pomocí protokolu LDAP
+              href: auth-ldap.md
+            - name: Ověřování OAuth 2.0
+              href: auth-oauth2.md
+            - name: Ověřování Open ID Connect
+              href: auth-oidc.md
+            - name: Ověřování pomocí hesla
+              href: auth-password-based-sso.md
+            - name: Ověřování RADIUS
+              href: auth-radius.md
+            - name: Ověřování brány vzdálené plochy
+              href: auth-remote-desktop-gateway.md
+            - name: Ověřování SAML
+              href: auth-saml.md
+            - name: Ověřování SSH
+              href: auth-ssh.md
+            - name: Ověřování Windows – KCD
+              href: auth-kcd.md
+            - name: Synchronizace adresářů
+              href: sync-directory.md
+            - name: Synchronizace LDAP
+              href: sync-ldap.md
+            - name: Synchronizace SCIM
+              href: sync-scim.md
+        - name: Sestavení pro zajištění odolnosti
+          items:
+            - name: Přehled
+              href: resilience-overview.md
+            - name: Doprovodné materiály pro infrastrukturu
+              items:
+                - name: Přehled infrastruktury
+                  href: resilience-in-infrastructure.md
+                - name: Správa přihlašovacích údajů
+                  href: resilience-in-credentials.md
+                - name: Stavy zařízení
+                  href: resilience-with-device-states.md
+                - name: Nepřetržité vyhodnocování přístupu
+                  href: resilience-with-continuous-access-evaluation.md
+                - name: Ověřování externích uživatelů
+                  href: resilience-b2b-authentication.md
+                - name: Hybridní ověřování
+                  href: resilience-in-hybrid.md
+                - name: Proxy aplikací
+                  href: resilience-on-premises-access.md
+            - name: Doprovodné materiály pro Azure AD B2C
+              items:
+                - name: Seznámení s odolností Azure AD B2C
+                  href: resilience-b2c.md
+                - name: Prostředí koncového uživatele
+                  href: resilient-end-user-experience.md
+                - name: Rozhraní s externími procesy
+                  href: resilient-external-processes.md
+                - name: Osvědčené postupy vývojářů pro Azure AD B2C
+                  href: resilience-b2c-developer-best-practices.md
+                - name: Sledování a analýza
+                  href: resilience-with-monitoring-alerting.md
+            - name: Doprovodné materiály k vývoji aplikací
+              items:
+                - name: Přehled vývoje
+                  href: resilience-app-development-overview.md
+                - name: Klientské aplikace
+                  href: resilience-client-app.md
+                - name: Aplikace démona
+                  href: resilience-daemon-app.md
+            - name: Monitorovat stav aplikace pro odolnost
+              href: monitor-sign-in-health-for-resilience.md
+        - name: Certifikační autority použité v Azure
+          href: certificate-authorities.md
     - name: Průvodce nasazením
       items:
         - name: 'Nasazení 30, 90 a dál'
@@ -90,6 +208,8 @@
           href: customize-branding.md
         - name: Konfigurace funkce Zachovat přihlášení
           href: keep-me-signed-in.md
+        - name: Jak zjistit ID tenanta
+          href: active-directory-how-to-find-tenant.md
         - name: Přidružení předplatného Azure
           href: active-directory-how-subscriptions-associated-directory.md
         - name: Přidání informací o ochraně osobních údajů

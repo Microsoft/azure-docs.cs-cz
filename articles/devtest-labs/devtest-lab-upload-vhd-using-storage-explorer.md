@@ -3,12 +3,12 @@ title: Nahrání souboru VHD do Azure DevTest Labs pomocí Průzkumník služby 
 description: Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumník služby Microsoft Azure Storage
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654510"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91282523"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumník služby Microsoft Azure Storage
 
@@ -24,7 +24,7 @@ Následující kroky vás provedou odesláním souboru VHD do DevTest Labs pomoc
 
 1. Získejte název účtu úložiště testovacího prostředí pomocí Azure Portal:
 
-    1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+    1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
     
     1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
     
@@ -90,13 +90,13 @@ Následující kroky vás provedou odesláním souboru VHD do DevTest Labs pomoc
 
     1. V pravém podokně Průzkumník služby Storage by se měl zobrazit seznam objektů BLOB v kontejneru objektů BLOB při **nahrávání** v účtu úložiště testovacího prostředí. Na panelu nástrojů editoru objektů BLOB vyberte **nahrát** . 
         
-        ![Tlačítko Nahrát][6]
+        ![Snímek obrazovky, který zobrazuje Průzkumník služby Storage pravé podokno s vybraným tlačítkem Odeslat.][6]
     
     1. V rozevírací nabídce **nahrát** vyberte **Odeslat soubory...**.
     
     1. V dialogovém okně **nahrát soubory** vyberte tři tečky.
         
-        ![Vybrat soubor][8]  
+        ![Snímek obrazovky, který zobrazuje dialogové okno nahrát soubory s vybranými třemi tečkami][8]  
 
     1. V dialogovém okně **Vyberte soubory k nahrání** přejděte na požadovaný soubor VHD, vyberte ho a pak vyberte **otevřít**.
     

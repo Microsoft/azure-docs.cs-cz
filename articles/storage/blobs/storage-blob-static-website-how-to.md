@@ -7,17 +7,17 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 2ba0e836f1be97681d677158f5cb81c5b033e915
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432555"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008497"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
-Statický obsah (HTML, CSS, JavaScript a soubory obrázků) můžete zpracovat přímo z kontejneru v účtu Azure Storage GPv2. Další informace najdete v tématu [statické hostování webů v Azure Storage](storage-blob-static-website.md).
+Statický obsah (HTML, CSS, JavaScript a soubory obrázků) můžete zpracovat přímo z kontejneru v účtu pro [obecné účely v2](../common/storage-account-create.md) nebo [BlockBlobStorage](storage-blob-create-account-block-blob.md) . Další informace najdete v tématu [statické hostování webů v Azure Storage](storage-blob-static-website.md).
 
 V tomto článku se dozvíte, jak povolit hostování statických webů pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu.
 
@@ -51,9 +51,9 @@ Hostování statického webu je funkce, kterou musíte povolit v účtu úloži�
 
 <a id="cli"></a>
 
-Můžete povolit hostování statického webu pomocí [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+Můžete povolit hostování statického webu pomocí rozhraní příkazového [řádku Azure Command-Line](/cli/azure/).
 
-1. Nejdřív otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), nebo pokud jste rozhraní příkazového řádku Azure [nainstalovali](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) místně, otevřete konzolovou aplikaci, například Windows PowerShell.
+1. Nejdřív otevřete [Azure Cloud Shell](../../cloud-shell/overview.md), nebo pokud jste rozhraní příkazového řádku Azure [nainstalovali](/cli/azure/install-azure-cli) místně, otevřete konzolovou aplikaci, například Windows PowerShell.
 
 2. Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné na předplatné účtu úložiště, který bude hostovat váš statický Web.
 
@@ -133,7 +133,7 @@ Hostování statického webu můžete povolit pomocí modulu Azure PowerShell.
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-V těchto pokynech se dozvíte, jak nahrávat soubory pomocí verze Průzkumník služby Storage, která se zobrazí v Azure Portal. Můžete ale také použít verzi [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) , která se spouští mimo Azure Portal. Můžete použít [AzCopy](../common/storage-use-azcopy-v10.md), POWERSHELL, CLI nebo jakoukoli vlastní aplikaci, která může nahrávat soubory do kontejneru **$Web** svého účtu. Podrobný kurz, který nahrává soubory pomocí sady Visual Studio Code, najdete v tématu [kurz: hostování statického webu na BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
+V těchto pokynech se dozvíte, jak nahrávat soubory pomocí verze Průzkumník služby Storage, která se zobrazí v Azure Portal. Můžete ale také použít verzi [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) , která se spouští mimo Azure Portal. Můžete použít [AzCopy](../common/storage-use-azcopy-v10.md), POWERSHELL, CLI nebo jakoukoli vlastní aplikaci, která může nahrávat soubory do kontejneru **$Web** svého účtu. Podrobný kurz, který nahrává soubory pomocí sady Visual Studio Code, najdete v tématu [kurz: hostování statického webu na BLOB Storage](./storage-blob-static-website-host.md).
 
 1. Vyberte **Průzkumník služby Storage (Preview)**.
 
@@ -170,7 +170,7 @@ az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-
 > [!NOTE]
 > Pokud používáte instalaci rozhraní příkazového řádku Azure CLI, můžete použít cestu k libovolnému umístění v místním počítači (například: `C:\myFolder` .
 >
-> Pokud používáte Azure Cloud Shell, budete muset odkazovat na sdílenou složku, která je viditelná pro Cloud Shell. Toto umístění může být sdílená složka samotné sdílené složky cloudu nebo existující sdílená složka, kterou připojujete z Cloud Shell. Další informace o tom, jak to udělat, najdete [v tématu trvalé soubory v Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage).
+> Pokud používáte Azure Cloud Shell, budete muset odkazovat na sdílenou složku, která je viditelná pro Cloud Shell. Toto umístění může být sdílená složka samotné sdílené složky cloudu nebo existující sdílená složka, kterou připojujete z Cloud Shell. Další informace o tom, jak to udělat, najdete [v tématu trvalé soubory v Azure Cloud Shell](../../cloud-shell/persisting-shell-storage.md).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -256,7 +256,7 @@ Po povolení metrik se na řídicím panelu metriky nahlásí Statistiky provozu
 
 4. Pak vyberte metriku **odchozího** přenosu dat.
 
-   ![Metrika metriky Azure Storage statických webů](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+   ![Snímek obrazovky zobrazující neAzure Storageou výstupní metriku statického webu websites](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
 5. V selektoru *agregace* vyberte **Sum** .
 
@@ -276,4 +276,3 @@ Po povolení metrik se na řídicím panelu metriky nahlásí Statistiky provozu
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si, jak nakonfigurovat vlastní doménu s vaším statickým webem. Viz téma [Mapování vlastní domény na koncový bod Azure Blob Storage](storage-custom-domain-name.md).
-

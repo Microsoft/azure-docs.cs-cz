@@ -5,23 +5,23 @@ author: JBCook
 ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5ecd3827bbdc12b098684f1feda2df652f11940
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772894"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551908"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Nejčastější dotazy týkající se důvěrného výpočetního prostředí Azure
 
-Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se spouštění [důvěrných výpočetních úloh v Azure](overview.md).
+Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se spouštění [důvěrných výpočetních úloh na virtuálních počítačích Azure](overview.md).
 
 Pokud váš problém s Azure není v tomto článku řešen, navštivte fóra Azure na [webu MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Svůj problém můžete vystavit na těchto fórech nebo odeslat na [ @AzureSupport Twitter](https://twitter.com/AzureSupport). Můžete také odeslat žádost o podporu Azure. Pokud chcete odeslat žádost o podporu, vyberte na [stránce podpory Azure](https://azure.microsoft.com/support/options/)možnost získat podporu.
 
-## <a name="confidential-computing-virtual-machines"></a>Důvěrné výpočetní Virtual Machines<a id="vm-faq"></a>
+## <a name="confidential-computing-virtual-machines"></a>Důvěrné výpočetní Virtual Machines <a id="vm-faq"></a>
 
 **Jak můžu nasazovat virtuální počítače řady DCsv2 v Azure?**
 
@@ -32,7 +32,7 @@ Tady je několik způsobů, jak můžete nasadit virtuální počítač s DCsv2:
 
 **Budou všechny image operačních systémů fungovat s důvěrným výpočetním prostředím Azure?**
 
-Ne. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 16,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/linux/generation-2.md) a [Windows](../virtual-machines/windows/generation-2.md)
+No. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 16,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/generation-2.md) a [Windows](../virtual-machines/generation-2.md)
 
 **Virtuální počítače s DCsv2 jsou na portálu zobrazeny šedě a nelze je vybrat.**
 
@@ -45,17 +45,29 @@ Na základě informačního bublinového rámečku u virtuálního počítače j
 
 Ujistěte se, že jste vybrali oblast, která je [k dispozici](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines). Také se ujistěte, že v selektoru velikosti vyberete možnost zrušit všechny filtry. 
 
+**Můžu povolit akcelerované síťové služby s důvěrným výpočetním prostředím Azure?**
+
+ No. Akcelerované síťové služby se na virtuálních počítačích DC-Series nebo DCsv2-Series nepodporují. Akcelerované síťové služby se nedají povolit pro jakékoli nasazení s důvěrnými výpočetními počítači nebo nasazení clusteru služby Azure Kubernetes spuštěné na důvěrné výpočetní platformě.
+
+**Můžu s těmito počítači použít vyhrazeného hostitele Azure?**
+
+Ano. Vyhrazený hostitel Azure podporuje virtuální počítače řady DCsv2-Series. Vyhrazený hostitel Azure poskytuje fyzický server s jedním klientem ke spouštění virtuálních počítačů na serveru. Uživatelé obvykle používají vyhrazeného hostitele Azure k řešení požadavků na dodržování předpisů v případě fyzického zabezpečení, integrity dat a monitorování. 
+
 **Zobrazila se chyba při selhání nasazení šablony Azure Resource Manager: operace nemohla být dokončena, protože má za následek překročení schválené kvóty jader řady Standard DcsV2.**
 
 [Vytvořte žádost o podporu, která zvýší vaši kvótu](../azure-portal/supportability/per-vm-quota-requests.md). Bezplatné zkušební předplatné nemají kvótu pro virtuální počítače s důvěrnými výpočetními prostředími. 
 
-**Jaký je rozdíl mezi virtuálními počítači řady DCsv2-Series a DC-Series?**
+**Jaký je rozdíl mezi DCsv2-Series a DC-Seriesmi virtuálními počítači?**
 
-Virtuální počítače DC-Series běží na starších 6 procesorech Intel s Intel SGX a mají méně celkové paměti, méně enklávy paměti mezipaměti (EPC) a jsou dostupné jenom v dvou oblastech (USA – východ a Evropa – západ v Standard_DC2s a Standard_DC4s velikosti). Nejsou k dispozici žádné plány pro zajištění všeobecně dostupných virtuálních počítačů a nedoporučují se pro produkční použití. K nasazení těchto virtuálních počítačů použijte instanci webu Marketplace [COMPUTE COMPUTE DC-Series VM [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) .
+DC-Series virtuální počítače běží na starších 6 procesorech Intel s Intel SGX a mají méně celkovou paměť, méně enklávy paměti mezipaměti (EPC) a jsou dostupné jenom v dvou oblastech (USA – východ a Evropa – západ v Standard_DC2s a Standard_DC4s velikosti). Nejsou k dispozici žádné plány pro zajištění všeobecně dostupných virtuálních počítačů a nedoporučují se pro produkční použití. K nasazení těchto virtuálních počítačů použijte instanci webu Marketplace  [compute DC-Series virtuální počítač [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) .
 
 **Jsou virtuální počítače DCsv2 k dispozici globálně?**
 
-Ne. Tyto virtuální počítače jsou v tuto chvíli dostupné jenom ve vybraných oblastech. Poslední dostupné oblasti najdete na [stránce produkty podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) . 
+No. Tyto virtuální počítače jsou v tuto chvíli dostupné jenom ve vybraných oblastech. Poslední dostupné oblasti najdete na [stránce produkty podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) . 
+
+**Je technologie Hyper-Threading na těchto počítačích VYPNUTá?**
+
+Technologie Hyper-Threading je zakázaná pro všechny clustery s důvěrnými výpočetními prostředími Azure.
 
 **Návody na virtuální počítače s DCsv2 nainstalovat sadu Open enklávy SDK?**
    

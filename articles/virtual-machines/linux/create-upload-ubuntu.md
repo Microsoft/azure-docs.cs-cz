@@ -2,16 +2,17 @@
 title: Vytvoření a nahrání Ubuntu Linux VHD v Azure
 description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje Ubuntu Linux operační systém.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: 8b34e266214285f6483acca59050780810e62345
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 92ceecd16a428593764fe5ab6478cc4ea7ab91d7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373347"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554611"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Ubuntu pro Azure
 
@@ -28,7 +29,7 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
 
 * Další tipy k přípravě Linux pro Azure najdete v tématu [Obecné poznámky k instalaci pro Linux](create-upload-generic.md#general-linux-installation-notes) .
 * Formát VHDX není v Azure podporovaný, jenom **pevný virtuální pevný disk**.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo `Convert-VHD` rutiny.
-* Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou použít na datových discích, pokud jsou preferované.
+* Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) nebo [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) se můžou použít na datových discích, pokud jsou preferované.
 * Nekonfigurujte na disku s operačním systémem odkládací oddíl ani swapfile. Agent zřizování Cloud-init se dá nakonfigurovat tak, aby vytvořil stránkovací soubor nebo odkládací oddíl na dočasném disku s prostředky. Další informace o tomto postupu najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 
@@ -176,7 +177,7 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
 
 13. Klikněte na **Akce – > vypnout** ve Správci technologie Hyper-V.
 
-14. Azure přijímá jenom virtuální pevné disky s pevnou velikostí. Pokud disk s operačním systémem virtuálního počítače není VHD s pevnou velikostí, použijte `Convert-VHD` rutinu prostředí PowerShell a určete `-VHDType Fixed` možnost. Podívejte se prosím na dokumentaci `Convert-VHD` zde: [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps).
+14. Azure přijímá jenom virtuální pevné disky s pevnou velikostí. Pokud disk s operačním systémem virtuálního počítače není VHD s pevnou velikostí, použijte `Convert-VHD` rutinu prostředí PowerShell a určete `-VHDType Fixed` možnost. Podívejte se prosím na dokumentaci `Convert-VHD` zde: [Convert-VHD](/powershell/module/hyper-v/convert-vhd).
 
 
 ## <a name="next-steps"></a>Další kroky

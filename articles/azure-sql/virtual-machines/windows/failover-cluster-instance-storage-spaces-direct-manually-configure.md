@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.custom: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: fb253845330a139b04fa79090a27a135f67cab46
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: aa19cf6b59b1efa4b14501fbf64e319da3e4c0b3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954774"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048637"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Vytvoření FCI s využitím Prostory úložiště s přímým přístupem (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +58,7 @@ Před dokončením kroků v tomto článku byste už měli mít:
 - Předplatné Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
 - [Dva nebo více připravených virtuálních počítačů Windows Azure](failover-cluster-instance-prepare-vm.md) ve [skupině dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 - Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
-- Nejnovější verze [prostředí PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
+- Nejnovější verze [prostředí PowerShell](/powershell/azure/install-az-ps). 
 
 
 ## <a name="add-the-windows-cluster-feature"></a>Přidání funkce cluster Windows
@@ -68,11 +69,11 @@ Před dokončením kroků v tomto článku byste už měli mít:
 
    Pokud chcete nainstalovat Clustering s podporou převzetí služeb při selhání z uživatelského rozhraní, udělejte na obou virtuálních počítačích tento postup:
 
-   1. V **Správce serveru**vyberte **Spravovat**a pak vyberte **Přidat role a funkce**.
+   1. V **Správce serveru** vyberte **Spravovat** a pak vyberte **Přidat role a funkce**.
    1. V průvodci **přidáním rolí a funkcí** vyberte **Další** , dokud se nedostanete k **vybraným funkcím**.
-   1. V **možnosti vybrat funkce**vyberte **Clustering s podporou převzetí služeb při selhání**. Zahrňte všechny požadované funkce a nástroje pro správu. 
+   1. V **možnosti vybrat funkce** vyberte **Clustering s podporou převzetí služeb při selhání**. Zahrňte všechny požadované funkce a nástroje pro správu. 
    1. Vyberte **Přidat funkce**.
-   1. Vyberte **Další**a potom vyberte **Dokončit** a nainstalujte funkce.
+   1. Vyberte **Další** a potom vyberte **Dokončit** a nainstalujte funkce.
 
    Pokud chcete nainstalovat Clustering s podporou převzetí služeb při selhání pomocí PowerShellu, spusťte následující skript z relace správce PowerShellu na jednom z virtuálních počítačů:
 
@@ -81,7 +82,7 @@ Před dokončením kroků v tomto článku byste už měli mít:
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-Další informace o dalších krocích najdete v pokynech v oddílu "krok 3: Konfigurace Prostory úložiště s přímým přístupem" v [řešení s použitím prostory úložiště s přímým přístupem v systému Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
+Další informace o dalších krocích najdete v pokynech v oddílu "krok 3: Konfigurace Prostory úložiště s přímým přístupem" v [řešení s použitím prostory úložiště s přímým přístupem v systému Windows Server 2016](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
 
 ## <a name="validate-the-cluster"></a>Ověřit cluster
@@ -90,18 +91,18 @@ Ověřte cluster v uživatelském rozhraní nebo pomocí PowerShellu.
 
 Pokud chcete cluster ověřit pomocí uživatelského rozhraní, udělejte na jednom z těchto virtuálních počítačů následující:
 
-1. V části **Správce serveru**vyberte **nástroje**a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
-1. V části **Správce clusteru s podporou převzetí služeb při selhání**vyberte **Akce**a pak vyberte **ověřit konfiguraci**.
+1. V části **Správce serveru** vyberte **nástroje** a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
+1. V části **Správce clusteru s podporou převzetí služeb při selhání** vyberte **Akce** a pak vyberte **ověřit konfiguraci**.
 1. Vyberte **Další**.
-1. V části **Vybrat servery nebo cluster**zadejte názvy obou virtuálních počítačů.
-1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. 
+1. V části **Vybrat servery nebo cluster** zadejte názvy obou virtuálních počítačů.
+1. V části **Možnosti testování** vyberte **Spustit pouze vybrané testy**. 
 1. Vyberte **Další**.
-1. V části **Výběr testu**vyberte všechny testy s výjimkou **úložiště**, jak je znázorněno zde:
+1. V části **Výběr testu** vyberte všechny testy s výjimkou **úložiště**, jak je znázorněno zde:
 
    ![Výběr testů pro ověření clusteru](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 
 1. Vyberte **Další**.
-1. V části **potvrzení**vyberte **Další**.
+1. V části **potvrzení** vyberte **Další**.
 
     Průvodce **ověřením konfigurace** spustí ověřovací testy.
 
@@ -150,9 +151,9 @@ Nakonfigurujte řešení kvora, které nejlépe vyhovuje vašim obchodním potř
 
 ## <a name="add-storage"></a>Přidání úložiště
 
-Disky pro Prostory úložiště s přímým přístupem musí být prázdné. Nemohou obsahovat oddíly nebo jiná data. Chcete-li vyčistit disky, postupujte podle pokynů v části [nasazení prostory úložiště s přímým přístupem](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives).
+Disky pro Prostory úložiště s přímým přístupem musí být prázdné. Nemohou obsahovat oddíly nebo jiná data. Chcete-li vyčistit disky, postupujte podle pokynů v části [nasazení prostory úložiště s přímým přístupem](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
 
-1. [Povolte prostory úložiště s přímým přístupem](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Povolte prostory úložiště s přímým přístupem](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
    Následující skript prostředí PowerShell umožňuje Prostory úložiště s přímým přístupem:  
 
@@ -160,11 +161,11 @@ Disky pro Prostory úložiště s přímým přístupem musí být prázdné. Ne
    Enable-ClusterS2D
    ```
 
-   V **Správce clusteru s podporou převzetí služeb při selhání**se teď můžete podívat na fond úložiště.
+   V **Správce clusteru s podporou převzetí služeb při selhání** se teď můžete podívat na fond úložiště.
 
-1. [Vytvořte svazek](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
+1. [Vytvořte svazek](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-36-create-volumes).
 
-   Prostory úložiště s přímým přístupem automaticky vytvoří fond úložiště, když ho povolíte. Teď jste připraveni vytvořit svazek. Rutina PowerShellu `New-Volume` automatizuje proces vytváření svazků. Tento proces zahrnuje formátování, přidání svazku do clusteru a vytvoření SDÍLENÉHO svazku clusteru. Tento příklad vytvoří soubor CSV 800 GB:
+   Prostory úložiště s přímým přístupem automaticky vytvoří fond úložiště, když ho povolíte. Teď jste připraveni vytvořit svazek. Rutina PowerShellu `New-Volume` automatizuje proces vytváření svazků. Tento proces zahrnuje formátování, přidání svazku do clusteru a vytvoření SDÍLENÉHO svazku clusteru. Tento příklad vytvoří soubor CSV 800 gigabajt (GB):
 
    ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
@@ -180,7 +181,7 @@ Disky pro Prostory úložiště s přímým přístupem musí být prázdné. Ne
 
 ## <a name="test-cluster-failover"></a>Testovací převzetí služeb při selhání clusteru
 
-Otestujte převzetí služeb při selhání clusteru. V **Správce clusteru s podporou převzetí služeb při selhání**klikněte pravým tlačítkem na svůj cluster, vyberte **Další akce**  >  **přesunout základní prostředek clusteru**  >  **Vybrat uzel**a pak vyberte druhý uzel clusteru. Přesuňte základní prostředek clusteru do každého uzlu clusteru a pak ho přesuňte zpátky do primárního uzlu. Pokud můžete cluster úspěšně přesunout do každého uzlu, budete připraveni nainstalovat SQL Server.  
+Otestujte převzetí služeb při selhání clusteru. V **Správce clusteru s podporou převzetí služeb při selhání** klikněte pravým tlačítkem na svůj cluster, vyberte **Další akce**  >  **přesunout základní prostředek clusteru**  >  **Vybrat uzel** a pak vyberte druhý uzel clusteru. Přesuňte základní prostředek clusteru do každého uzlu clusteru a pak ho přesuňte zpátky do primárního uzlu. Pokud můžete cluster úspěšně přesunout do každého uzlu, budete připraveni nainstalovat SQL Server.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Testování převzetí služeb při selhání clusteru přesunutím základního prostředku do ostatních uzlů":::
 
@@ -190,11 +191,11 @@ Po nakonfigurování clusteru s podporou převzetí služeb při selhání a vš
 
 1. Připojte se k prvnímu virtuálnímu počítači pomocí protokolu RDP.
 
-1. V **Správce clusteru s podporou převzetí služeb při selhání**zajistěte, aby všechny základní prostředky clusteru byly na prvním virtuálním počítači. V případě potřeby přesuňte všechny prostředky na tento virtuální počítač.
+1. V **Správce clusteru s podporou převzetí služeb při selhání** zajistěte, aby všechny základní prostředky clusteru byly na prvním virtuálním počítači. V případě potřeby přesuňte všechny prostředky na tento virtuální počítač.
 
 1. Vyhledejte instalační médium. Pokud virtuální počítač používá jednu z Azure Marketplace imagí, médium se nachází na adrese `C:\SQLServer_<version number>_Full` . Vyberte **Nastavení**.
 
-1. V **SQL Server centra instalace**vyberte možnost **instalace**.
+1. V **SQL Server centra instalace** vyberte možnost **instalace**.
 
 1. Vyberte **nový SQL Server instalace clusteru s podporou převzetí služeb při selhání**. Podle pokynů v průvodci nainstalujte SQL Server FCI.
 
@@ -211,13 +212,13 @@ Po nakonfigurování clusteru s podporou převzetí služeb při selhání a vš
 1. Vyberte **přidat uzel do clusteru SQL Server s podporou převzetí služeb při selhání**. Podle pokynů v průvodci nainstalujte SQL Server a přidejte server do FCI.
 
    >[!NOTE]
-   >Pokud jste použili Azure Marketplace image galerie, která obsahuje SQL Server, SQL Server nástroje byly součástí bitové kopie. Pokud jste některou z těchto imagí nepoužili, nainstalujte nástroje SQL Server samostatně. Další informace najdete v tématu [stažení SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >Pokud jste použili Azure Marketplace image galerie, která obsahuje SQL Server, SQL Server nástroje byly součástí bitové kopie. Pokud jste některou z těchto imagí nepoužili, nainstalujte nástroje SQL Server samostatně. Další informace najdete v tématu [stažení SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
    >
 
 
 ## <a name="register-with-the-sql-vm-rp"></a>Zaregistrujte se pomocí SQL VM RP.
 
-Pokud chcete spravovat SQL Server virtuální počítač z portálu, zaregistrujte ho pomocí poskytovatele prostředků virtuálního počítače SQL (RP) v [režimu zjednodušené správy](sql-vm-resource-provider-register.md#lightweight-management-mode), v současné době jde o jediný režim, který se v FCI a SQL Server na virtuálních počítačích Azure podporuje. 
+Pokud chcete spravovat SQL Server virtuální počítač z portálu, zaregistrujte ho pomocí rozšíření SQL IaaS Agent (RP) v [režimu zjednodušené správy](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), v současné době se jedná o jediný režim, který podporuje FCI a SQL Server na virtuálních počítačích Azure. 
 
 
 Zaregistrujte SQL Server virtuální počítač v jednoduchém režimu pomocí prostředí PowerShell:  
@@ -233,22 +234,24 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurace možností připojení 
 
-Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, nakonfigurujte možnost připojení, která je vhodná pro vaše prostředí. Můžete vytvořit [Nástroj pro vyrovnávání zatížení Azure](hadr-vnn-azure-load-balancer-configure.md) , nebo pokud používáte SQL Server 2019 a Windows Server 2019, můžete místo toho zobrazit náhled funkce [názvu distribuované sítě](hadr-distributed-network-name-dnn-configure.md) . 
+Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, nakonfigurujte možnost připojení, která je vhodná pro vaše prostředí. Můžete vytvořit [Nástroj pro vyrovnávání zatížení Azure](failover-cluster-instance-vnn-azure-load-balancer-configure.md) , nebo pokud používáte SQL Server 2019 CU2 (nebo novější) a Windows Server 2016 (nebo novější), můžete místo toho použít funkci [názvu distribuované sítě](failover-cluster-instance-distributed-network-name-dnn-configure.md) . 
+
+Další podrobnosti o možnostech připojení clusteru najdete v tématu [Směrování hadr připojení k SQL Server na virtuálních počítačích Azure](hadr-cluster-best-practices.md#connectivity). 
 
 ## <a name="limitations"></a>Omezení
 
-- Virtuální počítače Azure podporují službu Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm v CSV a [standardním nástrojem pro vyrovnávání zatížení](../../../load-balancer/load-balancer-standard-overview.md).
+- Virtuální počítače Azure podporují službu Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm v CSV a [standardním nástrojem pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md).
 - Disky, které jsou připojené jako disky formátované systémem souborů NTFS, se dají používat s Prostory úložiště s přímým přístupem jenom v případě, že při přidávání úložiště do clusteru není zaškrtnuté políčko nárok na disk nebo když se nevymaže. 
-- Podporuje se jenom registrace u poskytovatele prostředků virtuálního počítače SQL v [režimu zjednodušené správy](sql-vm-resource-provider-register.md#management-modes) .
+- Podporuje se jenom registrování s rozšířením agenta SQL IaaS v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste to ještě neudělali, nakonfigurujte připojení k vašemu FCI pomocí [názvu virtuální sítě a nástroje pro vyrovnávání zatížení Azure](hadr-vnn-azure-load-balancer-configure.md) nebo [názvu DISTRIBUOVANÉ sítě (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Pokud jste to ještě neudělali, nakonfigurujte připojení k vašemu FCI pomocí [názvu virtuální sítě a nástroje pro vyrovnávání zatížení Azure](failover-cluster-instance-vnn-azure-load-balancer-configure.md) nebo [názvu DISTRIBUOVANÉ sítě (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
 
 Pokud Prostory úložiště s přímým přístupem není pro vás vhodné řešení úložiště pro FCI, zvažte místo toho vytvoření FCI pomocí [sdílených disků Azure](failover-cluster-instance-azure-shared-disks-manually-configure.md) nebo [sdílených složek prémiových souborů](failover-cluster-instance-premium-file-share-manually-configure.md) . 
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech konfigurace clusteru](hadr-cluster-best-practices.md). 
 
-Další informace najdete v těchto tématech: 
+Další informace naleznete v tématu: 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

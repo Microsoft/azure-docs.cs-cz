@@ -1,5 +1,5 @@
 ---
-title: Co je Azure Sentinel? | Microsoft Docs
+title: Co je Azure Sentinel? | Dokumentace Microsoftu
 description: Přečtěte si o Azure Sentinel, škálovatelné, cloudové správě událostí zabezpečení (SIEM) a řešení automatizované reakce (společnosti) pro orchestraci zabezpečení.
 services: sentinel
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: ebc9756afc43648f2b44ca317abe3373807f4efa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 4bc5732c1b2349f34297ecaacc7eb3176fdba611
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564629"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570478"
 ---
 # <a name="what-is-azure-sentinel"></a>Co je Azure Sentinel?
 
@@ -29,11 +29,11 @@ Microsoft Azure Sentinel je škálovatelná, cloudová, nativní, **Siem (Securi
 
 Azure Sentinel je pohled z ptačího oka v celém podniku, který řeší zátěž stále náročnějších útoků, zvyšuje množství výstrah a časové rámce dlouhého rozlišení.
 
-- **Shromažďovat data v cloudovém měřítku** napříč všemi uživateli, zařízeními, aplikacemi a infrastrukturou, a to místně i v několika cloudech. 
+- **Shromažďovat data v cloudovém měřítku** napříč všemi uživateli, zařízeními, aplikacemi a infrastrukturou, a to místně i v několika cloudech. 
 
-- **Detekuje dříve nezjištěné hrozby**a minimalizuje falešně pozitivní výsledky pomocí analýzy Microsoftu a neparalelních analýz hrozeb. 
+- **Detekuje dříve nezjištěné hrozby** a minimalizuje falešně pozitivní výsledky pomocí analýzy Microsoftu a neparalelních analýz hrozeb. 
 
-- **Prozkoumejte hrozby pomocí umělých inteligentních poznatků a prošetřete**podezřelé aktivity ve velkém měřítku, klepněte na roky zabezpečení na pracovišti v Microsoftu. 
+- **Prozkoumejte hrozby pomocí umělých inteligentních poznatků a prošetřete** podezřelé aktivity ve velkém měřítku, klepněte na roky zabezpečení na pracovišti v Microsoftu. 
 
 - **Můžete rychle reagovat na incidenty** díky integrované orchestraci a automatizaci běžných úloh.
 
@@ -43,15 +43,15 @@ V celé škále stávajících služeb Azure se v systému Azure Sentinel nativn
 
 ## <a name="connect-to-all-your-data"></a>Připojení ke všem datům
 
-Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív [připojit ke zdrojům zabezpečení](connect-data-sources.md). Služba Azure Sentinel se dodává s řadou konektorů pro řešení Microsoftu, které jsou dostupné okamžitě a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky Microsoftu a Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pro připojení zdrojů dat k Azure Sentinel taky můžete použít také běžné formáty událostí, syslog nebo REST API.  
+Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív [připojit ke zdrojům zabezpečení](connect-data-sources.md). Služba Azure Sentinel je dodávána s řadou konektorů pro řešení Microsoftu, která je dostupná předem a poskytuje integraci v reálném čase, včetně Microsoft 365 Defender (dříve Microsoft Threat Protection) a Microsoft 365ch zdrojů, včetně Office 365, Azure AD, Microsoft Defenderu pro identitu (dřív Azure ATP) a Microsoft Cloud App Security a dalších. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pro připojení zdrojů dat k Azure Sentinel taky můžete použít také běžné formáty událostí, syslog nebo REST API. 
 
-![Sběrače dat](./media/collect-data/collect-data-page.png)
+![Kolektory dat](./media/collect-data/collect-data-page.png)
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="workbooks"></a>Workbooks
 
-Po [připojení zdrojů dat](quickstart-onboard.md)   ke službě Azure Sentinel můžete monitorovat data pomocí integrace služby azure Sentinel s Azure monitor sešity, které poskytují univerzálnost při vytváření vlastních sešitů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/platform/workbooks-overview.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
+Po [připojení zdrojů dat](quickstart-onboard.md) ke službě Azure Sentinel můžete monitorovat data pomocí integrace služby Azure sentinel s Azure monitor sešity, které poskytují univerzálnost při vytváření vlastních sešitů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/visualize/workbooks-overview.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
 
 ![Řídicí panely](./media/tutorial-monitor-data/access-workbooks.png)
 
@@ -64,7 +64,7 @@ K tomu, abyste snížili šum a minimalizovali počet výstrah, které je třeba
 
 ## <a name="security-automation--orchestration"></a>Orchestrace & automatizace zabezpečení
 
-Automatizujte své běžné úlohy a [Zjednodušte orchestraci zabezpečení pomocí playbooky](tutorial-respond-threats-playbook.md) , která se integruje se službami Azure, i s vašimi stávajícími nástroji. Řešení automatizace a orchestrace v Azure, které je postavené na základu Azure Logic Apps, nabízí vysoce rozšiřitelnou architekturu, která umožňuje škálovatelnou automatizaci jako nové technologie a hrozby. Pokud chcete sestavit playbooky s Azure Logic Apps, můžete si vybrat z rostoucí Galerie předdefinovaných playbooky. Mezi ně patří [200 konektorů](https://docs.microsoft.com/azure/connectors/apis-list) pro služby, jako je Azure Functions. Konektory umožňují použití libovolné vlastní logiky v kódu, ServiceNow, JIRA, Zendesk, požadavcích HTTP, Microsoft teams, dislogic, Windows Defender ATP a Cloud App Security.
+Automatizujte své běžné úlohy a [Zjednodušte orchestraci zabezpečení pomocí playbooky](tutorial-respond-threats-playbook.md) , která se integruje se službami Azure, i s vašimi stávajícími nástroji. Řešení automatizace a orchestrace v Azure, které je postavené na základu Azure Logic Apps, nabízí vysoce rozšiřitelnou architekturu, která umožňuje škálovatelnou automatizaci jako nové technologie a hrozby. Pokud chcete sestavit playbooky s Azure Logic Apps, můžete si vybrat z rostoucí Galerie předdefinovaných playbooky. Mezi ně patří [200 konektorů](../connectors/apis-list.md) pro služby, jako je Azure Functions. Konektory umožňují použití libovolné vlastní logiky v kódu, ServiceNow, JIRA, Zendesk, požadavcích HTTP, Microsoft teams, dislogic, Windows Defender ATP a Cloud App Security.
 
 Pokud například používáte systém lístků ServiceNow, můžete použít nástroje, které jsou k dispozici pro použití Azure Logic Apps k automatizaci pracovních postupů a otevření lístku v ServiceNow pokaždé, když se zjistí konkrétní událost.
 
@@ -82,13 +82,13 @@ V současnosti ve verzi Preview vám Azure Sentinel – [podrobné vyšetřovac�
 
 Využijte [výkonné nástroje pro hledání a dotazování](hunting.md)v rámci Azure Sentinel na základě Mitre Frameworku, které vám umožní proaktivní prokládat bezpečnostní hrozby ve zdrojích dat vaší organizace, než se aktivuje výstraha. Až zjistíte, který lovecký dotaz poskytuje přehledy o možných útokech, můžete také vytvořit vlastní pravidla detekce na základě dotazu a tyto poznatky obdržíte jako výstrahy na vaše reakce na incidenty zabezpečení. Při lovu můžete vytvořit záložky pro zajímavé události, které vám umožní vrátit se k nim později, sdílet je s ostatními a seskupovat je s ostatními korelačními událostmi a vytvořit tak přesvědčivý incident pro šetření.
 
-![Vyhledávání](./media/overview/hunting.png)
+![Přehled funkce pro lov](./media/overview/hunting.png)
 
 ## <a name="community"></a>Komunita
 
 Komunita Sentinel Azure je výkonným prostředkem pro detekci a automatizaci hrozeb. Naši analytici Microsoftu v oblasti zabezpečení neustále vytvářejí a přidávají nové sešity, playbooky, lovecké dotazy a další, jejich publikování do komunity, abyste je mohli používat ve svém prostředí. Můžete si stáhnout ukázkový obsah z [úložiště](https://aka.ms/asicommunity) GitHub privátní komunity a vytvořit vlastní sešity, lovecké dotazy, poznámkové bloky a playbooky pro službu Azure Sentinel. 
 
-![Komunita](./media/overview/community.png)
+![Prozkoumejte komunitu uživatelů](./media/overview/community.png)
 
 ## <a name="next-steps"></a>Další kroky
 

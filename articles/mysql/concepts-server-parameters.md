@@ -1,17 +1,17 @@
 ---
 title: Parametry serveru – Azure Database for MySQL
 description: Toto téma poskytuje pokyny pro konfiguraci parametrů serveru v Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.date: 1/26/2021
+ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258554"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720949"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -21,7 +21,7 @@ Tento článek popisuje informace a pokyny pro konfiguraci parametrů serveru v 
 
 Modul MySQL poskytuje mnoho různých proměnných serveru/parametrů, které lze použít ke konfiguraci a ladění chování modulu. Některé parametry lze nastavit dynamicky během doby běhu, zatímco jiné jsou "statické", což vyžaduje restart serveru, aby se mohl použít.
 
-Azure Database for MySQL zpřístupňuje možnost změnit hodnotu různých parametrů serveru MySQL pomocí [Azure Portal](./howto-server-parameters.md), rozhraní příkazového [řádku Azure](./howto-configure-server-parameters-using-cli.md)a [PowerShellu](./howto-configure-server-parameters-using-powershell.md) tak, aby odpovídaly potřebám vašich úloh.
+Azure Database for MySQL nabízí možnost pomocí webu [Azure Portal](./howto-server-parameters.md), [Azure CLI](./howto-configure-server-parameters-using-cli.md) nebo [PowerShellu](./howto-configure-server-parameters-using-powershell.md) změnit hodnoty různých parametrů serveru MySQL tak, aby odpovídaly potřebám vašich úloh.
 
 ## <a name="configurable-server-parameters"></a>Konfigurovatelné parametry serveru
 
@@ -55,6 +55,12 @@ Aby bylo možné vylepšit výkon krátkých dotazů ve fondu vláken, Azure Dat
 > [!IMPORTANT]
 > Před zapnutím v produkčním prostředí prosím otestujte fond vláken. 
 
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+V Azure Database for MySQL jsou binární protokoly vždycky povolené (tj. `log_bin` je nastavené na zapnuto). V případě, že budete chtít použít triggery, zobrazí se chybová zpráva podobná se tomu, že nemáte *oprávnění super a binární protokolování je povolené (je možné použít méně bezpečné `log_bin_trust_function_creators` proměnné)*. 
+
+Formát binárního protokolování je vždy **řádek** a všechna připojení k serveru **vždy** používají binární protokolování založené na řádcích. V případě binárního protokolování založeného na řádcích neexistují problémy se zabezpečením a binární protokolování nemůže přerušit, takže můžete bezpečně nastavit [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) na **hodnotu true**.
+
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
 Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_buffer_pool_size) .
@@ -63,8 +69,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|872415232|134217728|872415232|
-|Základní|2|2684354560|134217728|2684354560|
+|Basic|1|872415232|134217728|872415232|
+|Basic|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|3758096384|134217728|3758096384|
 |Pro obecné účely|4|8053063680|134217728|8053063680|
 |Pro obecné účely|8|16106127360|134217728|16106127360|
@@ -81,8 +87,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|872415232|134217728|872415232|
-|Základní|2|2684354560|134217728|2684354560|
+|Basic|1|872415232|134217728|872415232|
+|Basic|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|7516192768|134217728|7516192768|
 |Pro obecné účely|4|16106127360|134217728|16106127360|
 |Pro obecné účely|8|32212254720|134217728|32212254720|
@@ -102,7 +108,7 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 MySQL ukládá tabulku InnoDB v různých tabulkových prostorech na základě konfigurace, kterou jste zadali během vytváření tabulky. [Systémový tabulkový prostor](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) je oblast úložiště pro slovník InnoDB data Dictionary. [Tabulkový prostor pro tabulku](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) obsahuje data a indexy pro jednu tabulku InnoDB a je uložený v systému souborů ve vlastním datovém souboru. Toto chování je řízeno `innodb_file_per_table` parametrem serveru. Nastavení `innodb_file_per_table` na `OFF` způsobí, že InnoDB vytvoří tabulky v systémovém tabulkovém prostoru. V opačném případě InnoDB vytvoří tabulky v tabulkových prostorech v souborové tabulce.
 
-V jednom datovém souboru podporuje Azure Database for MySQL v největších **1 TB**. Pokud je velikost databáze větší než 1 TB, měli byste vytvořit tabulku v [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabulkovém prostoru. Pokud máte velikost jedné tabulky větší než 1 TB, měli byste použít tabulku oddílů.
+Azure Database for MySQL v jednom datovém souboru podporuje v největším, **4 TB**. Pokud je velikost databáze větší než 4 TB, měli byste vytvořit tabulku v [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabulkovém prostoru. Pokud máte velikost jedné tabulky větší než 4 TB, měli byste použít tabulku oddílů.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -110,8 +116,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -128,8 +134,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Min. hodnota**|**Max. hodnota**|
 |---|---|---|---|---|
-|Základní|1|50|10|50|
-|Základní|2|100|10|100|
+|Basic|1|50|10|50|
+|Basic|2|100|10|100|
 |Pro obecné účely|2|300|10|600|
 |Pro obecné účely|4|625|10|1250|
 |Pro obecné účely|8|1250|10|2500|
@@ -159,8 +165,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -184,8 +190,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|* * Maximální hodnota * *|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -209,12 +215,12 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-Pokud se zobrazí chybová zpráva podobná velikosti řádku je moc velká (> 8126), můžete **innodb_strict_mode**parametru vypnout. Parametr serveru **innodb_strict_mode** není povoleno upravovat globálně na úrovni serveru, protože pokud je velikost dat řádku větší než 8k, data budou zkrácena, aniž by došlo k chybě, která by vedla k potenciální ztrátě dat. Doporučujeme schéma upravit tak, aby odpovídalo limitu velikosti stránky. 
+Pokud se zobrazí chybová zpráva podobná velikosti řádku je moc velká (> 8126), můžete **innodb_strict_mode** parametru vypnout. Parametr serveru **innodb_strict_mode** není povoleno upravovat globálně na úrovni serveru, protože pokud je velikost dat řádku větší než 8k, data budou zkrácena, aniž by došlo k chybě, která by vedla k potenciální ztrátě dat. Doporučujeme schéma upravit tak, aby odpovídalo limitu velikosti stránky. 
 
-Tento parametr lze nastavit na úrovni relace pomocí `init_connect` . Pokud chcete nastavit **innodb_strict_mode** na úrovni relace, přečtěte si téma [Nastavení parametrů není uvedené](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
+Tento parametr lze nastavit na úrovni relace pomocí `init_connect` . Pokud chcete nastavit **innodb_strict_mode** na úrovni relace, přečtěte si téma [Nastavení parametrů není uvedené](./howto-server-parameters.md#setting-parameters-not-listed).
 
 > [!NOTE]
-> Pokud máte server repliky pro čtení, nastavení **innodb_strict_mode** pro vypnutí na úrovni relace na hlavním serveru způsobí přerušení replikace. Pokud máte repliky čtení, doporučujeme ponechat parametr nastavený na vypnuto.
+> Pokud máte server repliky pro čtení, nastavení **innodb_strict_mode** na úrovni relace na zdrojovém serveru zruší replikaci. Pokud máte repliky čtení, doporučujeme ponechat parametr nastavený na vypnuto.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
@@ -222,8 +228,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -242,8 +248,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|
@@ -255,6 +261,18 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 |Optimalizováno pro paměť|8|16777216|1024|536870912|
 |Optimalizováno pro paměť|16|16777216|1024|1073741824|
 |Optimalizováno pro paměť|32|16777216|1024|1073741824|
+
+### <a name="innodb-buffer-pool-warmup"></a>InnoDB fondu vyrovnávací paměti zahřívání
+Po restartování serveru Azure Database for MySQL server se data, která jsou umístěna na disku, načtou při dotazování tabulek. To vede ke zvýšení latence a zpomalení výkonu při prvním spuštění dotazů. To nemusí být přijatelné pro úlohy citlivé na latenci. Použití fondu vyrovnávacích pamětí InnoDB zahřívání zkrátí dobu zahřívání tím, že znovu načte stránky disku, které byly ve fondu vyrovnávací paměti před restartováním, nikoli čekáním na operace DML nebo SELECT pro přístup k odpovídajícím řádkům.
+
+Po restartování serveru Azure Database for MySQL, který představuje výhodu výkonu, můžete zkrátit dobu zahřívání konfigurací [parametrů serveru fondu vyrovnávací paměti InnoDB](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html). InnoDB uloží procento naposledy použitých stránek pro každý fond vyrovnávacích pamětí při vypnutí serveru a obnoví tyto stránky při spuštění serveru.
+
+Je také důležité si uvědomit, že vyšší výkon je poskytován na úkor delšího času spuštění serveru. Pokud je tento parametr povolený, očekává se, že se čas spuštění a restartování serveru zvýší v závislosti na IOPS zřízené na serveru. Doporučujeme, abyste si vyzkoušeli a monitoroval čas restartování, abyste měli jistotu, že je možné spustit i restartovat výkon, protože server během této doby není dostupný. Tento parametr není doporučeno používat, pokud je zřízená IOPS menší než 1000 IOPS (nebo jinými slovy, pokud je zřízené úložiště menší než 335GB).
+
+Chcete-li uložit stav fondu vyrovnávací paměti na serveru, nastavte parametr serveru `innodb_buffer_pool_dump_at_shutdown` na hodnotu `ON` . Podobně nastavte parametr serveru `innodb_buffer_pool_load_at_startup` na `ON` Obnovit stav fondu vyrovnávací paměti při spuštění serveru. Dopad při spuštění/restartování můžete ovlivnit snížením a vyladěním hodnoty parametru serveru `innodb_buffer_pool_dump_pct` , ve výchozím nastavení je tento parametr nastaven na hodnotu `25` .
+
+> [!Note]
+> Parametry zahřívání fondu vyrovnávací paměti InnoDB se podporují jenom v serverech úložiště pro obecné účely s úložištěm o velikosti až 16 TB. Další informace o [možnostech úložiště Azure Database for MySQL najdete tady](./concepts-pricing-tiers.md#storage).
 
 ### <a name="time_zone"></a>time_zone
 

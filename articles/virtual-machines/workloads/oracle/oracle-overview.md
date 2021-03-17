@@ -1,23 +1,24 @@
 ---
 title: Řešení Oracle v Microsoft Azure | Microsoft Docs
 description: Přečtěte si o možnostech nasazení aplikací a řešení Oracle na Microsoft Azure, včetně spuštění výhradně v infrastruktuře Azure nebo při použití připojení mezi cloudy pomocí Oracle cloudové infrastruktury (OCI).
-services: virtual-machines-linux
 documentationcenter: ''
-author: rgardler
+author: dbakevlar
 tags: azure-resource-management
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
-ms.author: rogardle
-ms.openlocfilehash: 6a516fc75880e3b6a5bc5b5907e8d968dce2ae31
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: kegorman
+ms.openlocfilehash: 971f7c919595f915451faf9266ee3bb18b35087e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507858"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677180"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
 
@@ -91,7 +92,7 @@ V kombinaci se softwarem Oracle běžícím v Azure použijte Oracle Database Cl
 
 ## <a name="licensing"></a>Licencování
 
-Nasazení aplikací Oracle v Azure je založené na modelu "Přineste si vlastní licenci". Předpokládáte, že máte řádně licenci na používání softwaru Oracle a máte k dispozici aktuální smlouvu o podpoře pro Oracle. Oracle garantuje mobilitu licencí z místního prostředí do Azure. Podívejte se na [Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)k Oracle-Azure.
+Nasazení aplikací Oracle v Azure je založené na modelu "Přineste si vlastní licenci". Předpokládáte, že máte řádně licenci na používání softwaru Oracle a máte k dispozici aktuální smlouvu o podpoře pro Oracle. Oracle garantuje mobilitu licencí z místního prostředí do Azure. Přečtěte si Oracle-Azure [Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -101,4 +102,4 @@ Nasazení aplikací Oracle v Azure je založené na modelu "Přineste si vlastn�
 
 * Přečtěte si další informace o tom, jak [propojit Azure s OCI](oracle-oci-overview.md).
 
-* Podívejte se na [Přehled relace Oracle v Azure](https://myignite.techcommunity.microsoft.com/sessions/82915) z Ignite 2019. 
+* Podívejte se na [Přehled relace Oracle v Azure](https://www.pluralsight.com/courses/microsoft-ignite-session-57) z Ignite 2019. 

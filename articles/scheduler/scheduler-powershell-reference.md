@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 5b82dba923db16e96cc0884b629723c4e8496c3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccc9f709348d961e49bced00946658a6997837c0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080898"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368107"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Referenční informace k rutinám PowerShellu pro Azure Scheduler
 
@@ -22,7 +22,7 @@ ms.locfileid: "87080898"
 >
 > Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
-Pokud chcete vytvářet skripty pro vytváření a správu úloh a kolekcí úloh Scheduleru, můžete použít rutiny PowerShellu. V tomto článku jsou uvedené hlavní rutiny PowerShellu pro Azure Scheduler s odkazy na jejich referenční články. Pokud chcete nainstalovat Azure PowerShell pro předplatné Azure, přečtěte si téma [instalace a konfigurace Azure PowerShell](/powershell/azure/). Další informace o [rutinách Azure Resource Manager](/powershell/azure/)najdete v tématu [použití Azure PowerShell s Azure Resource Manager](../powershell-azure-resource-manager.md).
+Pokud chcete vytvářet skripty pro vytváření a správu úloh a kolekcí úloh Scheduleru, můžete použít rutiny PowerShellu. V tomto článku jsou uvedené hlavní rutiny PowerShellu pro Azure Scheduler s odkazy na jejich referenční články. Pokud chcete nainstalovat Azure PowerShell pro předplatné Azure, přečtěte si téma [instalace a konfigurace Azure PowerShell](/powershell/azure/). Další informace o [rutinách Azure Resource Manager](/powershell/azure/)najdete v tématu [použití Azure PowerShell s Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

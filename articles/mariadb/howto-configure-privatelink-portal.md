@@ -1,23 +1,23 @@
 ---
 title: Privátní Link-Azure Portal-Azure Database for MariaDB
 description: Postup konfigurace privátního odkazu pro Azure Database for MariaDB z Azure Portal
-author: kummanish
-ms.author: manishku
-ms.service: mariadb
+author: mksuni
+ms.author: sumuth
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836475"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659620"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB pomocí portálu
 
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení.  V tomto článku se naučíte, jak pomocí Azure Portal vytvořit virtuální počítač v Azure Virtual Network a Azure Database for MariaDB Server s privátním koncovým bodem Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
@@ -33,14 +33,14 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 V této části vytvoříte Virtual Network a podsíť, která bude hostovat virtuální počítač, který se používá pro přístup k prostředku privátního propojení.
 
 1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
-2. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+2. V nástroji **vytvořit virtuální síť** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte *MyVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
-    | Předplatné | Vyberte předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
+    | Předplatné | Vyberte své předplatné.|
+    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup* a pak vyberte **OK**. |
     | Umístění | Vyberte **Západní Evropa**.|
     | Název podsítě | Zadejte *mySubnet*. |
     | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
@@ -49,14 +49,14 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
 
 ### <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač**Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >    >  **virtuální počítač** Compute.
 
-2. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
+2. V nástroji **vytvořit virtuální počítač základy** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
@@ -66,19 +66,19 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
-    | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Heslo | Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Potvrdit heslo | Zadejte znovu heslo. |
     | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
     | Veřejné příchozí porty | Nechejte výchozí nastavení **žádné**. |
-    | **ÚSPORA PENĚZ** |  |
+    | **UŠETŘETE PENÍZE** |  |
     | Máte už licenci na Windows? | Ponechte výchozí hodnotu **ne**. |
     |||
 
 1. Vyberte **Další: disky**.
 
-1. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
+1. V okně **Vytvořit virtuální počítač – Disky** nechte vybrané výchozí hodnoty a vyberte **Další: Sítě**.
 
-1. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
+1. V nástroji **vytvořit virtuální počítač – síť** vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -87,26 +87,26 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
     | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)**.|
     | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Vyberte **http** a **RDP**.|
+    | Vyberte příchozí porty | Vyberte **http** a **RDP**.|
     |||
 
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 ## <a name="create-an-azure-database-for-mariadb"></a>Vytvoření databáze Azure Database for MariaDB
 
 V této části vytvoříte Azure Database for MariaDB Server v Azure. 
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **databáze**prostředků  >  **Azure Database for MariaDB**.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **databáze** prostředků  >  **Azure Database for MariaDB**.
 
 1. V **Azure Database for MariaDB** zadejte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **Podrobnosti serveru** |  |
     |Název serveru  | Zadejte *MyServer*. Pokud se tento název povede, vytvořte jedinečný název.|
@@ -118,7 +118,7 @@ V této části vytvoříte Azure Database for MariaDB Server v Azure.
     |||
 
 7. Vyberte **OK**. 
-8. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
+8. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci. 
 9. Když se zobrazí zpráva s potvrzením ověření, vyberte **vytvořit**. 
 10. Když se zobrazí zpráva s potvrzením ověření, vyberte vytvořit. 
 
@@ -131,62 +131,62 @@ V této části vytvoříte Azure Database for MariaDB Server v Azure.
 V této části vytvoříte na server MariaDB privátní koncový bod. 
 
 1. V levé horní části obrazovky v Azure Portal vyberte **vytvořit prostředek**  >  **sítě**  >  **privátní odkaz**.
-2. V části **centrum privátních odkazů – přehled**na možnost **vytvořit privátní připojení ke službě**vyberte možnost **Spustit**.
+2. V části **centrum privátních odkazů – přehled** na možnost **vytvořit privátní připojení ke službě** vyberte možnost **Spustit**.
 
     ![Přehled privátních odkazů](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. V **rámci vytvoření privátního koncového bodu základy**zadejte nebo vyberte tyto informace:
+1. V **rámci vytvoření privátního koncového bodu základy** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
-    | **Detaily instance** |  |
-    | Název | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
+    | **Podrobnosti instance** |  |
+    | Name | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
     |Oblast|Vyberte **Západní Evropa**.|
     |||
 5. Vyberte **Další: prostředek**.
-6. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:
+6. V **Vytvoření privátního koncového bodu – prostředek** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     |Způsob připojení  | V adresáři vyberte připojit k prostředku Azure.|
-    | Předplatné| Vyberte předplatné. |
+    | Předplatné| Vyberte své předplatné. |
     | Typ prostředku | Vyberte **Microsoft. DBforMariaDB/servery**. |
     | Prostředek |Vybrat *MyServer*|
     |Cílový dílčí prostředek |Vybrat *mariadbServer*|
     |||
 7. Vyberte **Další: Konfigurace**.
-8. V **Vytvoření privátního koncového bodu – konfigurace**zadejte nebo vyberte tyto informace:
+8. V **Vytvoření privátního koncového bodu – konfigurace** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     |**SÍTĚ**| |
     | Virtuální síť| Vyberte *MyVirtualNetwork*. |
     | Podsíť | Vyberte *mySubnet*. |
-    |**INTEGRACE PRIVÁTNÍ DNS**||
-    |Integrace s privátní zónou DNS |Vyberte **Ano**. |
-    |Zóna Privátní DNS |Select *(New) privatelink. MariaDB. Database. Azure. com* |
+    |**INTEGRACE S PRIVÁTNÍM DNS**||
+    |Integrovat s privátní zónou DNS |Vyberte **Ano**. |
+    |Zóna Privátního DNS |Select *(New) privatelink. MariaDB. Database. Azure. com* |
     |||
 
     > [!Note] 
     > Pro vaši službu použijte předdefinovanou privátní zónu DNS nebo zadejte upřednostňovaný název zóny DNS. Podrobnosti najdete v tématu [Konfigurace zóny DNS služeb Azure](../private-link/private-endpoint-dns.md) .
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
-2. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci. 
+2. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**. 
 
     ![Privátní odkaz se vytvořil.](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
 
     > [!NOTE] 
     > Plně kvalifikovaný název domény v nastavení DNS zákazníka se nepřekladuje na nakonfigurovanou soukromou IP adresu. Bude nutné nastavit zónu DNS pro nakonfigurovaný plně kvalifikovaný název domény, jak je znázorněno [zde](../dns/dns-operations-recordsets-portal.md).
 
-## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Připojení k virtuálnímu počítači pomocí vzdálené plochy (RDP)
+## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Připojení k virtuálnímu počítači přes vzdálenou plochu (RDP)
 
 
-Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobem: 
+Po vytvoření **myVm** se k němu připojte z Internetu následujícím způsobem: 
 
-1. Na panelu hledání na portálu zadejte *myVm*.
+1. Na portálu zadejte na panelu hledání *myVm*.
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
@@ -199,17 +199,17 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>Přístup k serveru MariaDB soukromě z virtuálního počítače
 
-1. Ve vzdálené ploše *myVM*otevřete PowerShell.
+1. Ve vzdálené ploše *myVM* otevřete PowerShell.
 
 2. Zadejte  `nslookup mydemomserver.privatelink.mariadb.database.azure.com` . 
 
@@ -225,7 +225,7 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
 3. Otestujte připojení privátního propojení pro server MariaDB pomocí libovolného dostupného klienta. V následujícím příkladu jsem k provedení operace použili aplikaci [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) .
 
 
-4. V **nové připojení**zadejte nebo vyberte tyto informace:
+4. V **nové připojení** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -245,13 +245,13 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Až budete s použitím privátního koncového bodu, serveru MariaDB a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
 
-1.  *myResourceGroup*   Do **vyhledávacího** pole v horní části portálu zadejte myResourceGroup a ve výsledcích hledání vyberte *myResourceGroup*   .
+1.  **   Do **vyhledávacího** pole v horní části portálu zadejte myResourceGroup a ve výsledcích hledání vyberte  *myResourceGroup*   .
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Zadejte myResourceGroup pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto postupu jste vytvořili virtuální počítač ve virtuální síti, Azure Database for MariaDB a privátní koncový bod pro privátní přístup. Připojili jste se k jednomu virtuálnímu počítači z Internetu a bezpečně komunikovali se serverem MariaDB pomocí privátního odkazu. Další informace o privátních koncových bodech najdete v tématu [co je privátní koncový bod Azure](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+V tomto postupu jste vytvořili virtuální počítač ve virtuální síti, Azure Database for MariaDB a privátní koncový bod pro privátní přístup. Připojili jste se k jednomu virtuálnímu počítači z Internetu a bezpečně komunikovali se serverem MariaDB pomocí privátního odkazu. Další informace o privátních koncových bodech najdete v tématu [co je privátní koncový bod Azure](../private-link/private-endpoint-overview.md).
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

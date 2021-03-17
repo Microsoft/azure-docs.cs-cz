@@ -8,20 +8,24 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/12/2020
+ms.date: 02/05/2021
 ms.author: juliako
-ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744607"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530225"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Co je Video Indexer služby Azure Media Services?
+
+[!INCLUDE [regulation](./includes/regulation.md)]
 
 Video Indexer (VI) je řešení Azure Media Services AI a součást značky Azure Cognitive Services. Video Indexer poskytuje možnost extrahovat podrobné přehledy (bez potřeby analýzy dat nebo dovedností v kódování) pomocí modelů strojového učení, které jsou založené na několika kanálech (Voice, vocals, Visual). Modely můžete dále přizpůsobit a naučit. Služba umožňuje hloubkové hledání, snižuje provozní náklady, umožňuje nové příležitosti finanční zhodnocení a vytváří nové uživatelské prostředí ve velkých archivech videí (s nízkými překážkami vstupu).
 
 Pokud chcete začít s extrakcí přehledů pomocí Video Indexer, musíte si vytvořit účet a nahrávat videa. Když nahrajete videa do Video Indexer, analyzují vizuály i zvuk spuštěním různých modelů AI. Jak Video Indexer analyzuje vaše video, přehledy, které jsou extrahovány modely AI.
+
+Když vytvoříte účet Video Indexer a připojíte ho k Media Services, uloží se soubory médií a souborů metadat do účtu služby Azure Storage přidruženého k tomuto Media Services účtu. Další informace najdete v tématu [Vytvoření účtu video indexer připojeného k Azure](connect-to-azure.md).
 
 Následující diagram představuje ilustraci a nejedná se o technické vysvětlení toho, jak Video Indexer funguje v back-endu.
 
@@ -70,17 +74,17 @@ Následující seznam obsahuje přehledy, které můžete z videí načíst pomo
 
 ### <a name="audio-insights"></a>Přehledy zvuku
 
-* **Přepis zvuku**: převede řeč na text v 12 jazycích a povoluje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, finština, japonština, japonština, ruština, portugalština a korejština.
-* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, finština, japonština, japonština, ruština a portugalština. Pokud jazyk nemůžete identifikovat s jistotou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace najdete v tématu [model identifikace jazyka](language-identification-model.md).
-* **Identifikace a přepis mluveného slova ve více jazycích** (Preview): automaticky identifikuje mluvený jazyk v různých segmentech ze zvuku. Pošle každý segment mediálního souboru, který se má přepisu, a pak ho zkombinuje zpátky do jednoho sjednoceného přepisu. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
+* **Přepis zvuku**: převede řeč na text v 12 jazycích a povoluje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínština, japonština, arabština, ruština, portugalština, hindština a korejština.
+* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, mandarínština, japonština, ruština a portugalština. Pokud není možné s jistotou identifikovat jazyk, Video Indexer předpokládá, že mluveným jazykem je angličtina. Další informace najdete v tématu [Model identifikace jazyka](language-identification-model.md).
+* **Identifikace a přepis vícejazyčného hlasu**: automaticky identifikuje mluvený jazyk v různých segmentech ze zvuku. Jednotlivé části mediálního souboru se odešlou k přepisu a tyto části přepisu se pak znovu spojí v jeden ucelený přepis. Další informace najdete v tématu [Automatická identifikace a přepis vícejazyčného obsahu](multi-language-identification-transcription.md).
 * **Tvorba titulků**: Vytvoří titulky ve třech formátech: VTT, TTML, SRT.
 * **Zpracování dvou kanálů**: automaticky detekuje samostatný přepis a sloučení s jednou časovou osou.
 * **Redukce hluku**: vymaže zvukové a přenosové nahrávky v telefonním formátu (na základě filtrů Skypu).
 * **Přizpůsobení přepisu** (položku CRI): vlacích vlastní řeč na textové modely pro vytváření přepisů specifických pro jednotlivé obory. Další informace najdete v tématu [přizpůsobení jazykového modelu z video indexer webu](customize-language-model-with-website.md) a [přizpůsobení jazykového modelu pomocí rozhraní API video indexer](customize-language-model-with-api.md).
-* **Výčet mluvčího**: mapuje a rozumí, ke kterému paprsku mluvčího se slova a kdy.
+* **Výčet mluvčího**: mapuje a rozumí, ke kterému paprsku mluvčího se slova a kdy. Šestnáct mluvčích se dá zjistit v jednom zvukovém souboru.
 * **Statistika mluvčího**: poskytuje statistiku pro poměr řeči mluvčích.
 * **Zmírnění textového obsahu**: Detekuje explicitní text v přepisu zvuku.
-* **Zvukové efekty**: identifikuje zvukové efekty, jako je claps, řeč a tiché.
+* **Zvukové efekty** (Public Preview): detekuje následující zvukové efekty v segmentech nehlasu obsahu: Gunshot, skleněná Shatter, alarm, Siren, výbuch, pes, kůra, výkřiku, Laughter, reelné reakce (vše, clapping a booing) a netiché. Poznámka: Úplná sada událostí je k dispozici pouze v případě, že v přednastavení nahrávání zvolíte možnost Rozšířená analýza zvuku, jinak budou k dispozici pouze tiché a přeplněné reakce.
 * **Detekce emoce**: identifikuje emoce na základě řeči (co se říká) a hlasového tónového (jak se říká). Emoce můžou mít radost, smutek, hněv nebo obavy.
 * **Překlad**: Vytvoří překlady přepisu zvuku do 54 různých jazyků.
 
@@ -111,6 +115,21 @@ K funkcím Video Indexer máte přístup třemi způsoby:
     Další informace najdete v tématu [vkládání vizuálních pomůcek do aplikace](video-indexer-embed-widgets.md).
 
 Pokud web používáte, přehledy se přidávají jako metadata a zobrazují se na portálu. Pokud používáte rozhraní API, přehledy jsou dostupné jako soubor JSON.
+
+## <a name="supported-browsers"></a>Podporované prohlížeče
+
+V následujícím seznamu jsou uvedeny podporované prohlížeče, které můžete použít pro Video Indexer web a pro aplikace, které vkládají widgety. V seznamu se zobrazí také minimální podporovaná verze prohlížeče:
+
+- Edge, verze: 16
+- Firefox, verze: 54
+- Chrome, verze: 58
+- Safari, verze: 11
+- Opera, verze: 44
+- Opera Mobile, verze: 59
+- Prohlížeč Android verze: 81
+- Prohlížeč Samsung, verze: 7
+- Chrome pro Android, verze: 87
+- Firefox pro Android, verze: 83
 
 ## <a name="next-steps"></a>Další kroky
 

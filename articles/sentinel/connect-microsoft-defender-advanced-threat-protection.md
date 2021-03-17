@@ -1,6 +1,6 @@
 ---
-title: Připojit data ATP Microsoft Defenderu ke službě Azure Sentinel | Microsoft Docs
-description: Přečtěte si, jak propojit data rozšířené ochrany před internetovými útoky z Microsoft Defenderu do Azure Sentinel.
+title: Připojit Microsoft Defender pro data koncového bodu do Azure Sentinel | Microsoft Docs
+description: Naučte se připojit data programu Microsoft Defender pro koncový bod (dříve ATP. Microsoft Defender) do Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,45 +12,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 831baabcc26130d9b2c730afd85f2ed4b3842690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db4e0fe0472c75f1eae392980ae697f53007244
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80756352"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623362"
 ---
-# <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Připojení upozornění z rozšířené ochrany před internetovými útoky v programu Microsoft Defender 
-
+# <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Připojit výstrahy z programu Microsoft Defender pro koncový bod (dříve ATP. Microsoft Defender)
 
 > [!IMPORTANT]
-> Ingestování výstrah rozšířené ochrany před internetovými útoky v programu Microsoft Defender je aktuálně ve verzi Public Preview.
-> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
- 
+>
+> - **Microsoft Defender pro koncové body** se dřív jmenoval jako **Rozšířená ochrana před internetovými útoky v programu Microsoft Defender** nebo **MDATP**.
+>
+>     Starý název se může v produktu (včetně datového konektoru v Azure Sentinel) v časovém intervalu zobrazovat i nadále.
 
-Konektor [Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) umožňuje streamovat výstrahy z rozšířené ochrany před internetovými útoky v programu Microsoft Defender do Azure Sentinel. To vám umožní lépe analyzovat události zabezpečení napříč vaší organizací a sestavovat playbooky pro efektivní a okamžitou reakci.
+Konektor [Microsoft Defender pro koncové body](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) umožňuje streamovat výstrahy z Microsoft Defenderu na koncový bod do Azure Sentinel. To vám umožní lépe analyzovat události zabezpečení napříč vaší organizací a sestavovat playbooky pro efektivní a okamžitou reakci.
+
+> [!NOTE]
+>
+> Chcete-li ingestovat nové protokoly nezpracovaných dat od programu Microsoft Defender pro [Pokročilé lov](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)koncových bodů, použijte nový konektor pro Microsoft 365 Defender (dříve Microsoft Threat Protection, [Viz dokumentace](./connect-microsoft-365-defender.md)).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít platnou licenci pro rozšířenou ochranu před internetovými útoky v programu Microsoft Defender, jak je popsáno v tématu [nastavení nasazení ATP v programu Microsoft Defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing). 
-- Musíte být správce nebo správce zabezpečení v tenantovi Azure Sentinel.
+- Musíte mít platnou licenci pro Microsoft Defender pro koncový bod, jak je popsáno v tématu [Nastavení programu Microsoft Defender pro nasazení koncového bodu](/windows/security/threat-protection/microsoft-defender-atp/licensing). 
 
+- Musíte být globálním správcem nebo správcem zabezpečení v tenantovi Azure Sentinel.
 
-## <a name="connect-to-microsoft-defender-advanced-threat-protection"></a>Připojení k Rozšířené ochraně před internetovými útoky v programu Microsoft Defender
+## <a name="connect-to-microsoft-defender-for-endpoint"></a>Připojit se k programu Microsoft Defender pro koncový bod
 
-Pokud je nainstalovaná Rozšířená ochrana před internetovými útoky v programu Microsoft Defender a ingestuje vaše data, můžou se výstrahy do Azure Sentinel snadno streamovat.
+Pokud je Microsoft Defender pro koncový bod nasazený a ingestuje vaše data, můžete výstrahy snadno streamovat do Azure Sentinel.
 
+1. V Azure Sentinel vyberte **datové konektory**, v galerii vyberte **Microsoft Defender pro koncový bod** (na stránce Galerie se může dál volat *Rozšířená ochrana před internetovými útoky programu Microsoft Defender*) a vyberte **stránku otevřít konektor**.
 
-1. V Azure Sentinel vyberte **datové konektory**, klikněte na dlaždici **Rozšířená ochrana před internetovými útoky v programu Microsoft Defender** a vyberte **otevřít konektor stránky**.
 1. Klikněte na **Připojit**. 
-1. Pokud chcete použít příslušné schéma v Log Analytics pro výstrahy ATP ATP, vyhledejte **SecurityAlert** a **název poskytovatele** je **MDATP**.
 
-
-
+1. Pro dotazování programu Microsoft Defender pro upozornění koncového bodu v **protokolech** zadejte **SecurityAlert** do okna dotazu a přidejte filtr, kde je **název poskytovatele** **MDATP**.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste zjistili, jak propojit službu Microsoft Defender ATP s Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+V tomto dokumentu jste zjistili, jak připojit Microsoft Defender ke koncovému bodu do Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).

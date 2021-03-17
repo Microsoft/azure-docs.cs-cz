@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87053050"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Změna protokolu SSTR (MS-) pro HEVC Smooth Streaming 
@@ -40,11 +40,11 @@ V *[MS-Glos]* jsou definované následující výrazy:
 
 Následující výrazy jsou specifické pro tento dokument:
 
->  **čas kompozice:** Čas, kdy se ukázka zobrazí na klientovi, jak je definován v [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695).
+>  **čas kompozice:** Čas, kdy se ukázka zobrazí na klientovi, jak je definován v   [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695).
 > 
 >   **CENC**: Common Encryption, jak je definováno v [ISO/IEC 23001-7] Second Edition.
 > 
->   **čas dekódování:** Čas, kdy je nutné dekódovat ukázku na klientovi, jak je definováno v [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
+>   **čas dekódování:** Čas, kdy je nutné dekódovat ukázku na klientovi, jak je definováno v   [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
 
 **fragment:** Nezávislá jednotka ke stažení **médií** , která zahrnuje jednu nebo více **vzorků**.
 
@@ -54,9 +54,9 @@ Následující výrazy jsou specifické pro tento dokument:
 > 
 >   **prezentace:** Sada všech **datových proudů** a související metadata potřebná k přehrání jediného filmu. **požadavek:** Zpráva HTTP odeslaná z klienta na server, jak je definováno v odpovědi [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **Odpověď:** zpráva HTTP odeslaná ze serveru klientovi, jak je definováno v [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
 > 
->   **Ukázka:** Nejmenší základní jednotka (například rámec), ve které se **médium** ukládá a zpracovává.
+>   **Ukázka:** Nejmenší základní jednotka (například rámec), ve které se   **médium** ukládá a zpracovává.
 > 
->   **květen** by neměl, nesmí: Tyto výrazy (ve všech verzálky) se používají tak, jak je popsáno v [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) všechny příkazy volitelného chování, které by mohly být nebo by neměly.
+>   **květen** by neměl, nesmí: Tyto výrazy (ve všech verzálky) se používají tak, jak je popsáno v   [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) všechny příkazy volitelného chování, které by mohly být nebo by neměly.
 
 ## <a name="12-references"></a>odkazy 1,2
 
@@ -64,7 +64,7 @@ Následující výrazy jsou specifické pro tento dokument:
 
 ### <a name="121-normative-references"></a>1.2.1 normativní odkazy 
 
->  [MS-SSTR] *V20140502* protokolu Smooth Streaming[https://msdn.microsoft.com/library/ff469518.aspx](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)
+>  [MS-SSTR] *V20140502* protokolu Smooth Streaming [https://msdn.microsoft.com/library/ff469518.aspx](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)
 > 
 >   [ISO/IEC 14496-12] ISO, "informační technologie – kódování zvuku-vizuálních objektů – část 12: formát souboru ISO Base Media", ISO/IEC 14496-12:2014, edice 4, plus Corrigendum 1, změny 1 & 2.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
@@ -72,23 +72,23 @@ Následující výrazy jsou specifické pro tento dokument:
 >   [ISO/IEC 14496-15] ISO, "informační technologie--kódování zvuku-vizuálních objektů – část 15: přeprava strukturovaného videa jednotky NAL ve formátu ISO Base Media File Format", ISO 14496-15:2015, edice 3.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
->   [ISO/IEC 23008-2] Informační technologie – kódování s vysokými efektivitami a doručování médií v heterogenních prostředích – část 2: video s vysokým efektivitou: 2013 nebo nejnovější edice<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/IEC 23008-2] Informační technologie – kódování s vysokými efektivitami a doručování médií v heterogenních prostředích – část 2: video s vysokým efektivitou: 2013 nebo nejnovější edice   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 > 
->   [ISO/IEC 23001-7] Informační technologie – systémové technologie MPEG – část 7: běžné šifrování ve formátu souborů ISO Base Media Format, CENC Edition 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/IEC 23001-7] Informační technologie – systémové technologie MPEG – část 7: běžné šifrování ve formátu souborů ISO Base Media Format, CENC Edition 2:2015 <https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 > 
->   [RFC-6381] IETF RFC-6381, "kodeky" a "profiles" typy médií "interval"<https://tools.ietf.org/html/rfc6381>
+>   [RFC-6381] IETF RFC-6381, "kodeky" a "profiles" typy médií "interval" <https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] Registrační autorita MP4 "MP4REG",[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] Registrační autorita MP4 "MP4REG", [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S., "klíčová slova pro použití v dokumentech RFC k označení úrovní požadavků", BCP 14, RFC 2119, březen 1997,[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "klíčová slova pro použití v dokumentech RFC k označení úrovní požadavků", BCP 14, RFC 2119, březen 1997,   [https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 informativní odkazy 
 
 >   [MS-GLOS] Microsoft Corporation, "*hlavní Glosář protokolů systému Windows*"
 > 
->   [RFC3548] Josefsson, S., Ed., "Base16, Base32 a kódování dat Base64", RFC 3548, červenec 2003,[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., Ed., "Base16, Base32 a kódování dat Base64", RFC 3548, červenec 2003, [https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., Ed., Ed., a Overell, P., "Rozšířená BNF pro specifikace syntaxe: ABNF", STD 68, RFC 5234, leden 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed., Ed., a Overell, P., "Rozšířená BNF pro specifikace syntaxe: ABNF", STD 68, RFC 5234, leden 2008,   [https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>Přehled 1,3 
@@ -211,11 +211,11 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 > 
 >   **SampleCompositionTimeOffset (4 bajty):** Časový posun vzorku pro každý vzorek upravený tak, aby čas prezentace první prezentované ukázky v fragmentu byl stejný jako čas dekódování prvního dekódovanýho vzorku. Použijí se záporné posuny ukázek videa,
 > 
->   Jak je definováno v [[ISO/IEC – 14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
+>   Jak je definováno v   [[ISO/IEC – 14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
 > 
 >   Poznámka: zabrání se tak Chyba synchronizace videa způsobené videem, která se rovná největšímu zpoždění při odstraňování vyrovnávací paměti obrázků, a udržuje časování prezentace mezi alternativními fragmenty, které mohou mít různou prodlevu při odebírání.
 > 
->   Syntaxe polí definovaných v této části uvedená v ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) zůstává stejná, s výjimkou následujících:
+>   Syntaxe polí definovaných v této části uvedená v ABNF   [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) zůstává stejná, s výjimkou následujících:
 > 
 >   SampleCompositionTimeOffset = SIGNED_INT32
 
@@ -240,7 +240,7 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 >   **CompatibleBrands (proměnná):** Určuje podporované značky MPEG-4.
 >   MUSÍ zahrnovat "ccff" a "ISO8".
 > 
->   Syntaxe polí definovaných v této části, určená v ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) je následující:
+>   Syntaxe polí definovaných v této části, určená v ABNF   [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) je následující:
 
 ```properties
 FileType = MajorBrand MinorVersion CompatibleBrands
@@ -324,7 +324,7 @@ TimeScale = 90000
 
 ##### <a name="3113-fragment-reference-description"></a>Popis odkazu na fragment 3.1.1.3 
 
-###### <a name="31131-track-specific-fragment-reference-description"></a>Popis odkazu na fragment 3.1.1.3.1 specifický pro sledování 
+###### <a name="31131-track-specific-fragment-reference-description"></a>Popis odkazu na fragment Track-Specific 3.1.1.3.1 
 
 #### <a name="3112-fragment-description"></a>Popis fragmentu 3.1.1.2 
 
@@ -334,7 +334,7 @@ TimeScale = 90000
 
 ### <a name="313-initialization"></a>Inicializace 3.1.3 
 
-### <a name="314-higher-layer-triggered-events"></a>Události s vyšší vrstvou pro 3.1.4 
+### <a name="314-higher-layer-triggered-events"></a>3.1.4 Higher-Layer aktivované události 
 
 #### <a name="3141-open-presentation"></a>otevřená prezentace 3.1.4.1 
 

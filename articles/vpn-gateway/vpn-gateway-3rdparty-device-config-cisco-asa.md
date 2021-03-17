@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2018
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 82e00e0b519040c57fdfd798d8992086c61e5481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081997"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89426166"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Ukázková konfigurace: zařízení Cisco ASA (IKEv2/bez BGP)
 Tento článek poskytuje ukázkové konfigurace pro připojení zařízení se zařízením s bránou Cisco Adaptive Security (ASA) do bran Azure VPN Gateway. Tento příklad se vztahuje na zařízení Cisco ASA, na kterých běží IKEv2 bez Border Gateway Protocol (BGP). 
@@ -62,7 +62,7 @@ Tato část obsahuje seznam parametrů pro ukázku.
 | * Místní IP adresa partnerského uzlu protokolu BGP     | 10.52.255.254                |
 |                              |                              |
 
-\*Volitelný parametr jenom pro BGP.
+\* Volitelný parametr jenom pro BGP.
 
 ### <a name="ipsecike-policy-and-parameters"></a>Zásady a parametry protokolu IPsec/IKE
 V následující tabulce jsou uvedeny algoritmy a parametry protokolu IPsec/IKE používané v ukázce. Podívejte se na specifikace zařízení VPN a ověřte algoritmy, které jsou podporované pro modely zařízení VPN a verze firmwaru.
@@ -80,7 +80,7 @@ V následující tabulce jsou uvedeny algoritmy a parametry protokolu IPsec/IKE 
 | Předsdílený klíč   | PreSharedKey                         |
 |                  |                                      |
 
-\*U některých zařízení musí být integrita protokolu IPsec nastavena na hodnotu null, pokud je šifrovací algoritmus IPsec AES-GCM.
+\* U některých zařízení musí být integrita protokolu IPsec nastavena na hodnotu null, pokud je šifrovací algoritmus IPsec AES-GCM.
 
 ### <a name="asa-device-support"></a>Podpora zařízení ASA
 

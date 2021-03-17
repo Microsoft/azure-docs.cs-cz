@@ -3,60 +3,137 @@ title: Dostupnost prostředků podle oblasti
 description: Dostupnost výpočetních a paměťových prostředků pro službu Azure Container Instances v různých oblastech Azure.
 ms.topic: article
 ms.date: 04/27/2020
-ms.author: danlep
-ms.openlocfilehash: 591d7dd07ea3717303589cdc070623068c4d3864
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: references_regions
+ms.openlocfilehash: 4decf29be23c2f1ed51f422052869e99abe4a511
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500602"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573604"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
-Tento článek podrobně popisuje dostupnost Azure Container Instances výpočetních, paměťových a úložných prostředků v oblastech Azure a v cílovém operačním systému. 
+Tento článek podrobně popisuje dostupnost Azure Container Instances výpočetních, paměťových a úložných prostředků v oblastech Azure a v cílovém operačním systému. Obecný seznam oblastí, které jsou k dispozici pro Azure Container Instances, najdete v tématu [dostupné oblasti](https://azure.microsoft.com/regions/services/).
 
-Zobrazené hodnoty jsou maximální počet dostupných prostředků na jedno nasazení [skupiny kontejnerů](container-instances-container-groups.md). Hodnoty jsou aktuální v době publikace. 
+Zobrazené hodnoty jsou maximální počet dostupných prostředků na jedno nasazení [skupiny kontejnerů](container-instances-container-groups.md). Hodnoty jsou aktuální v době publikace.
 
 > [!NOTE]
 > Skupiny kontejnerů vytvořené v rámci těchto omezení prostředků podléhají dostupnosti v rámci oblasti nasazení. V případě velkého zatížení oblasti může při nasazování instancí docházet k selhání. Pro zmírnění takového selhání nasazení zkuste nasadit instance s nižšími nastaveními prostředků nebo zkuste nasazení později nebo v jiné oblasti s dostupnými prostředky.
 
 Informace o kvótách a dalších omezeních v nasazeních najdete v tématu [kvóty a omezení pro Azure Container Instances](container-instances-quotas.md).
 
-## <a name="availability---general"></a>Dostupnost – obecné
+## <a name="linux-container-groups"></a>Skupiny kontejnerů Linux
 
-Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnery systému Windows Server 2016 jsou k dispozici následující oblasti a maximální počet prostředků.
+Následující oblasti a maximální prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery Linux v obecných nasazeních, nasazeních [virtuálních sítí Azure](container-instances-vnet.md) a nasazení s využitím [prostředků GPU](container-instances-gpu.md) (Preview).
 
-| Oblasti | Operační systém | Max CPU (maximální využití procesoru) | Maximální velikost paměti (GB) | Úložiště (GB) |
-| -------- | -- | :---: | :-----------: | :---: |
-| Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa, Západní USA, Západní USA 2 | Linux | 4 | 16 | 50 |
-| Austrálie – východ, Japonsko – východ | Linux | 2 | 8 | 50 |
-| USA – středosever | Linux | 2 | 3,5 | 50 |
-| Brazílie – jih, Japonsko – východ, Západní Evropa | Windows | 4 | 16 | 20 |
-| Východní USA Západní USA | Windows | 4 | 14 | 20 |
-| Austrálie – východ, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA 2, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní USA 2 | Windows | 2 | 3,5 | 20 |
+> [!IMPORTANT]
+> Maximální počet prostředků v oblasti se liší v závislosti na vašem nasazení. Například region může mít v nasazení virtuální sítě Azure jiný maximální velikost procesoru a paměti než pro obecné nasazení. Stejná oblast může mít také jinou sadu maximálních hodnot pro nasazení s prostředky GPU. Před zaškrtnutím níže uvedených tabulek ověřte, zda je typ nasazení maximální hodnota ve vaší oblasti.
 
-## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostupnost – Windows Server 2019 LTSC, 1809 nasazení (Preview)
+| Oblast | Max CPU (maximální využití procesoru) | Maximální velikost paměti (GB) | Maximální využití virtuální sítě | Maximální velikost paměti virtuální sítě (GB) | Úložiště (GB) | SKU GPU (Preview) |
+| -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
+| Austrálie – východ | 4 | 16 | 4 | 16 | 50 | – |
+| Brazílie – jih | 4 | 16 | 2 | 8 | 50 | – |
+| Střední Kanada | 4 | 16 | 4 | 16 | 50 | – |
+| Indie – střed | 4 | 16 | 4 | 4 | 50 | V100 |
+| USA – střed | 4 | 16 | 4 | 16 | 50 | – |
+| Východní Asie | 4 | 16 | 4 | 16 | 50 | – |
+| East US | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
+| USA – východ 2 | 4 | 16 | 4 | 16 | 50 | – |
+| Francie – střed | 4 | 16 | 4 | 16 | 50 | – |
+| Německo – středozápad | 3 | 16 | N/A | N/A | 50 | – |
+| Japonsko – východ | 2 | 8 | 4 | 16 | 50 | – |
+| Jižní Korea – střed | 4 | 16 | N/A | N/A | 50 | – |
+| USA – středosever | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
+| Severní Evropa | 4 | 16 | 4 | 16 | 50 | K80 |
+| Středojižní USA | 4 | 16 | 4 | 16 | 50 | – |
+| Southeast Asia | 4 | 16 | 4 | 16 | 50 | P100, V100 |
+| Indie – jih | 4 | 16 | N/A | N/A | 50 | – |
+| Švýcarsko – sever | 3 | 16 | N/A | N/A | 50 | – |
+| Spojené království – jih | 4 | 16 | 4 | 16 | 50 | – |
+| Spojené arabské emiráty sever | 3 | 16 | N/A | N/A | 50 | – |
+| USA – středozápad| 4 | 16 | 4 | 16 | 50 | – |
+| West Europe | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
+| USA – západ | 4 | 16 | 4 | 16 | 50 | – |
+| Západní USA 2 | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 
-Následující oblasti a maximální prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery založenými na Windows serveru 2019 (Preview).
+Pro skupinu kontejnerů nasazenou s [prostředky GPU](container-instances-gpu.md) (Preview) jsou k dispozici následující maximální prostředky.
 
-| Oblasti | Operační systém | Max CPU (maximální využití procesoru) | Maximální velikost paměti (GB) | Úložiště (GB) |
-| -------- | -- | :---: | :-----------: | :---: |
-| Austrálie – východ, Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Japonsko – východ, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa | Windows | 4 | 16 | 20 |
-| Východní USA 2 Západní USA 2 | Windows | 2 | 3,5 | 20 |
+> [!IMPORTANT]
+> V tuto chvíli se nasazení s prostředky GPU v nasazení virtuální sítě Azure nepodporuje a jsou dostupná jenom pro skupiny kontejnerů Linux.
+
+| SKU GPU | Počet GPU | Max CPU (maximální využití procesoru) | Maximální velikost paměti (GB) | Úložiště (GB) |
+| --- | --- | --- | --- | --- |
+| K80 | 1 | 6 | 56 | 50 |
+| K80 | 2 | 12 | 112 | 50 |
+| K80 | 4 | 24 | 224 | 50 |
+| P100, V100 | 1 | 6 | 112 | 50 |
+| P100, V100 | 2 | 12 | 224 | 50 |
+| P100, V100 | 4 | 24 | 448 | 50 |
+
+## <a name="windows-container-groups"></a>Skupiny kontejnerů Windows
+
+Následující oblasti a maximální prostředky jsou k dispozici pro skupiny kontejnerů s [podporovanými a náhledem](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnerů Windows serveru.
+
+> [!IMPORTANT]
+> V tuto chvíli se nasazení pomocí skupin kontejnerů Windows v nasazení virtuální sítě Azure nepodporuje.
+
+###  <a name="windows-server-2016"></a>Windows Server 2016
+
+> [!NOTE]
+> Další informace o hostitelích 1B, 2B a 3B najdete v tématu [Kompatibilita verzí hostitelů a kontejnerů](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) .
+
+| Oblast | Maximální využití procesoru 1B/2B | Maximální velikost paměti 1B/2B (GB) |Maximální využití procesoru 3B | Maximální velikost paměti 3B (v GB) | Úložiště (GB) |
+| -------- | :---: | :---: | :----: | :-----: | :-------: |
+| Austrálie – východ | 2 | 8 | 2 | 8 | 20 |
+| Brazílie – jih | 4 | 16 | 4 | 16 | 20 |
+| Střední Kanada | 2 | 8 | 2 | 3,5 | 20 |
+| Indie – střed | 2 | 3,5 | 2 | 3,5 | 20 |
+| USA – střed | 2 | 3,5 | 2 | 3,5 | 20 |
+| Východní Asie | 2 | 3,5 | 2 | 3,5 | 20 |
+| East US | 4 | 16 | 2 | 8 | 20 |
+| USA – východ 2 | 2 | 3,5 | 4 | 16 | 20 |
+| Japonsko – východ | 4 | 16 | 4 | 16 | 20 |
+| Jižní Korea – střed | 4 | 16 | 4 | 16 | 20 |
+| USA – středosever | 4 | 16 | 4 | 16 | 20 |
+| Severní Evropa | 2 | 8 | 2 | 8 | 20 |
+| Středojižní USA | 2 | 3,5 | 2 | 8 | 20 |
+| Southeast Asia | N/A | N/A | 2 | 3,5 | 20 |
+| Indie – jih | 2 | 3,5 | 2 | 3,5 | 20 |
+| Spojené království – jih | 2 | 8 | 2 | 3,5 | 20 |
+| USA – středozápad | 4 | 16 | 2 | 8 | 20 |
+| West Europe | 4 | 16 | 4 | 16 | 20 |
+| USA – západ | 4 | 16 | 2 | 8 | 20 |
+| Západní USA 2 | 2 | 8 | 2 | 3,5 | 20 |
 
 
-## <a name="availability---virtual-network-deployment"></a>Dostupnost – nasazení virtuální sítě
+### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC
 
-Pro skupinu kontejnerů nasazené ve [službě Azure Virtual Network](container-instances-vnet.md)jsou k dispozici následující oblasti a maximální počet prostředků.
+> [!NOTE]
+> Další informace o hostitelích 1B, 2B a 3B najdete v tématu [Kompatibilita verzí hostitelů a kontejnerů](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) .
 
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
-
-## <a name="availability---gpu-resources-preview"></a>Dostupnost – prostředky GPU (Preview)
-
-Pro skupinu kontejnerů nasazenou s [prostředky GPU](container-instances-gpu.md) (Preview) jsou k dispozici následující oblasti a maximální počet prostředků.
-
-[!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
-[!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
+| Oblast | Maximální využití procesoru 1B/2B | Maximální velikost paměti 1B/2B (GB) |Maximální využití procesoru 3B | Maximální velikost paměti 3B (v GB) | Úložiště (GB) |
+| -------- | :---: | :---: | :----: | :-----: | :-------: |
+| Austrálie – východ | 4 | 16 | 4 | 16 | 20 |
+| Brazílie – jih | 4 | 16 | 4 | 16 | 20 |
+| Střední Kanada | 4 | 16 | 4 | 16 | 20 |
+| Indie – střed | 4 | 16 | 4 | 16 | 20 |
+| USA – střed | 4 | 16 | 4 | 16 | 20 |
+| Východní Asie | 4 | 16 | 4 | 16 | 20 |
+| East US | 4 | 16 | 4 | 16 | 20 |
+| USA – východ 2 | 2 | 3,5 | 2 | 3,5 | 20 |
+| Francie – střed | 4 | 16 | 4 | 16 | 20 |
+| Japonsko – východ | N/A | N/A | 4 | 16 | 20 |
+| Jižní Korea – střed | 4 | 16 | 4 | 16 | 20 |
+| USA – středosever | 4 | 16 | 4 | 16 | 20 |
+| Severní Evropa | 4 | 16 | 4 | 16 | 20 |
+| Středojižní USA | 4 | 16 | 4 | 16 | 20 |
+| Southeast Asia | 4 | 16 | 4 | 16 | 20 |
+| Indie – jih | 4 | 16 | 4 | 16 | 20 |
+| Spojené království – jih | 4 | 16 | 4 | 16 | 20 |
+| USA – středozápad | 4 | 16 | 4 | 16 | 20 |
+| West Europe | 4 | 16 | 4 | 16 | 20 |
+| USA – západ | 4 | 16 | 4 | 16 | 20 |
+| Západní USA 2 | 2 | 8 | 4 | 16 | 20 |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,13 +4,13 @@ description: Tento článek popisuje, jak z partnerů získat pomocí dronů.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 04f0c3c63d00ea49bf43f00f256266599a73d6c0
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.author: v-ummehabiba
+ms.openlocfilehash: 18932d2ddb60242b4d7874dddf0349a62cd5c738
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508800"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177602"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Získání pomocí dronů snímků z partnerů pomocí dronů
 
@@ -85,7 +85,7 @@ Když vyberete část pomocí dronů, zobrazí se automaticky otevírané okno s
 
 ## <a name="view-all-drone-maps"></a>Zobrazit všechny mapy pomocí dronů
 
-Soubory a obrázky odeslané poskytovatelem pomocí dronů se zobrazí v oddílu **Maps** . Vyberte část **mapy** , filtr podle **farmy**a vyberte příslušné soubory, které chcete zobrazit a stáhnout.
+Soubory a obrázky odeslané poskytovatelem pomocí dronů se zobrazí v oddílu **Maps** . Vyberte část **mapy** , filtr podle **farmy** a vyberte příslušné soubory, které chcete zobrazit a stáhnout.
 
   ![Oddíl Maps](./media/get-drone-imagery-from-drone-partner/view-drone-maps-1.png)
 

@@ -10,23 +10,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090446"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699075"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
 Azure Standard Load Balancer zpřístupňuje následující diagnostické možnosti:
 
-* Multidimenzionální **metriky a upozornění**: poskytuje multidimenzionální diagnostické možnosti prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro standardní konfigurace nástroje pro vyrovnávání zatížení. Můžete monitorovat, spravovat a řešit potíže s prostředky standardního nástroje pro vyrovnávání zatížení.
+* Multidimenzionální **metriky a upozornění**: poskytuje multidimenzionální diagnostické možnosti prostřednictvím [Azure monitor](../azure-monitor/overview.md) pro standardní konfigurace nástroje pro vyrovnávání zatížení. Můžete monitorovat, spravovat a řešit potíže s prostředky standardního nástroje pro vyrovnávání zatížení.
 
-* **Resource Health**: stránka Load Balancer v Azure Portal a stránka Resource Health (pod položkou monitor) zpřístupňuje oddíl Resource Health pro standard Load Balancer. 
-
+* **Resource Health**: stav Resource Health Load Balancer je k dispozici na stránce Resource Health pod položkou monitor. Tato automatická rezervace vás informuje o aktuální dostupnosti vašeho prostředku Load Balancer.
 Tento článek poskytuje rychlou prohlídku těchto funkcí a nabízí způsoby jejich použití pro Standard Load Balancer. 
 
 ## <a name="multi-dimensional-metrics"></a><a name = "MultiDimensionalMetrics"></a>Multidimenzionální metriky
@@ -35,19 +34,22 @@ Azure Load Balancer poskytuje multidimenzionální metriky prostřednictvím met
 
 Různé konfigurace Standard Load Balancer poskytují následující metriky:
 
-| Metrika | Typ prostředku | Popis | Doporučená agregace |
+| Metric | Typ prostředku | Popis | Doporučená agregace |
 | --- | --- | --- | --- |
 | Dostupnost cesty k datům | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer průběžně kontroluje cestu dat z určité oblasti k front-endu nástroje pro vyrovnávání zatížení, a to až ke stacku SDN, který podporuje váš virtuální počítač. Pokud zůstanou instance v pořádku, měření se řídí stejnou cestou jako provoz s vyrovnáváním zatížení vaší aplikace. Ověřuje se také cesta dat, kterou využívají vaši zákazníci. Měření je pro vaši aplikaci neviditelné a nemá vliv na ostatní operace.| Průměr |
 | Stav sondy stavu | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer používá distribuovanou službu pro zjišťování stavu, která monitoruje stav koncového bodu vaší aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované zobrazení nebo filtrované zobrazení jednotlivých koncových bodů instancí ve fondu nástroje pro vyrovnávání zatížení. Můžete zjistit, jak Load Balancer vidí stav vaší aplikace na základě vaší konfigurace sondy stavu. |  Průměr |
-| Pakety SYN (synchronizace) | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer neukončuje připojení přes protokol TCP (Transmission Control Protocol) ani nepracuje s toky paketů protokolu TCP nebo UDP. Toky a jejich metody handshake probíhají vždy mezi zdrojem a instancí virtuálního počítače. Při řešení potíží se scénáři souvisejícími s protokolem TCP můžete využít čítače paketů SYN, pomocí kterých můžete zjistit množství pokusů o přihlášení přes protokol TCP. Tato metrika hlásí počet přijatých paketů TCP SYN.| Průměr |
-| Připojení SNAT | Veřejný nástroj pro vyrovnávání zatížení |Standard Load Balancer hlásí počet odchozích toků maskovaných za front-end veřejné IP adresy. Porty překladu adres na základě zdroje (SNAT) jsou vyčerpatelný prostředek. Tato metrika může poskytnout další informace o tom, do jaké míry se vaše aplikace spoléhá na SNAT u odchozích toků. Hlásí se čítače úspěšných a neúspěšných odchozích toků SNAT, které je možné použít k řešení potíží a porozumění stavu odchozích toků.| Průměr |
-| Přidělené porty SNAT | Veřejný nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet přidělených portů SNAT na back-end instanci. | Vypočítat. |
+| Počet SYN (synchronizovaný) | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer neukončuje připojení přes protokol TCP (Transmission Control Protocol) ani nepracuje s toky paketů protokolu TCP nebo UDP. Toky a jejich metody handshake probíhají vždy mezi zdrojem a instancí virtuálního počítače. Při řešení potíží se scénáři souvisejícími s protokolem TCP můžete využít čítače paketů SYN, pomocí kterých můžete zjistit množství pokusů o přihlášení přes protokol TCP. Tato metrika hlásí počet přijatých paketů TCP SYN.| Sum |
+| Počet připojení SNAT | Veřejný nástroj pro vyrovnávání zatížení |Standard Load Balancer hlásí počet odchozích toků maskovaných za front-end veřejné IP adresy. Porty překladu adres na základě zdroje (SNAT) jsou vyčerpatelný prostředek. Tato metrika může poskytnout další informace o tom, do jaké míry se vaše aplikace spoléhá na SNAT u odchozích toků. Hlásí se čítače úspěšných a neúspěšných odchozích toků SNAT, které je možné použít k řešení potíží a porozumění stavu odchozích toků.| Sum |
+| Přidělené porty SNAT | Veřejný nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet přidělených portů SNAT na back-end instanci. | Průměr: |
 | Používané porty SNAT | Veřejný nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet portů SNAT, které se využívají na instanci back-endu. | Průměr | 
-| Čítače bajtů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí objem zpracovaných dat na front-end. Můžete si všimnout nerovnoměrné distribuce bajtů napříč instancemi back-endu. Očekává se, že Load Balancer algoritmus Azure je založený na tocích | Průměr |
-| Čítače paketů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí množství zpracovaných paketů na front-end.| Průměr |
+| Počet bajtů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí objem zpracovaných dat na front-end. Můžete si všimnout nerovnoměrné distribuce bajtů napříč instancemi back-endu. Očekává se, že Load Balancer algoritmus Azure je založený na tocích | Sum |
+| Počet paketů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí množství zpracovaných paketů na front-end.| Sum |
 
   >[!NOTE]
-  >Při distribuci provozu z interního nástroje pro vyrovnávání zatížení prostřednictvím paketu síťové virtuální zařízení nebo brány firewall syn nejsou k dispozici metriky čítačů bajtů a paketů a budou zobrazeny jako nula. 
+  >Pokud používáte distribuci provozu z interního nástroje pro vyrovnávání zatížení prostřednictvím paketu síťové virtuální zařízení nebo brány firewall syn, počet bajtů a metriky počtu paketů nejsou k dispozici a budou zobrazeny jako nula. 
+  
+  >[!NOTE]
+  >Pro počet jednotek SYN, počet paketů, počet připojení SNAT a počet bajtů se nedají použít maximální a minimální agregace. 
   
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Zobrazit metriky nástroje pro vyrovnávání zatížení v Azure Portal
 
@@ -70,28 +72,14 @@ Chcete-li zobrazit metriky pro prostředky Standard Load Balancer:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Načtěte multidimenzionální metriky prostřednictvím rozhraní API.
 
-Pokyny k rozhraní API pro načítání multidimenzionálních definic a hodnot naleznete v tématu [návod k Azure Monitoring REST API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api). Tyto metriky se dají zapsat do účtu úložiště jenom pomocí možnosti všechny metriky. 
-
-### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurace upozornění na multidimenzionální metriky ###
-
-Azure Standard Load Balancer podporuje snadno konfigurovatelné výstrahy pro multidimenzionální metriky. Nakonfigurujte vlastní prahové hodnoty pro konkrétní metriky, abyste mohli aktivovat výstrahy s různou úrovní závažnosti, abyste mohli využívat možnosti monitorování prostředků bez dotykového ovládání.
-
-Konfigurace upozornění:
-1. Přejít na dílčí okno výstrahy pro nástroj pro vyrovnávání zatížení
-1. Vytvoření nového pravidla upozornění
-    1.  Konfigurace podmínky výstrahy
-    1.  Volitelné Přidat skupinu akcí pro automatizovanou opravu
-    1.  Přiřazení závažnosti, názvu a popisu výstrahy, která umožňuje intuitivní reakci
-
-  >[!NOTE]
-  >Okno Konfigurace podmínky výstrahy zobrazí časové řady pro historii signálu. K dispozici je možnost filtrovat tuto časovou řadu podle dimenzí, jako je například IP adresa back-endu. Tato akce bude filtrovat graf časové řady, ale **ne** samotnou výstrahu. Nemůžete konfigurovat výstrahy pro konkrétní IP adresy back-endu.
+Pokyny k rozhraní API pro načítání multidimenzionálních definic a hodnot naleznete v tématu [návod k Azure Monitoring REST API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Tyto metriky se dají zapsat do účtu úložiště přidáním [nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md) pro kategorii všechny metriky. 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Běžné diagnostické scénáře a doporučená zobrazení
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Je cesta k datům a dostupná pro moje Load Balancer front-end?
 <details><summary>Rozbalit</summary>
 
-Metrika dostupnosti datové cesty popisuje stav cesty k datům v rámci oblasti a výpočetnímu hostiteli, ve kterém se nachází vaše virtuální počítače. Metrika je odrazem stavu infrastruktury Azure. Metriku můžete použít k těmto akcím:
+Metrika dostupnosti datových cest popisuje stav cesty dat v rámci oblasti pro výpočetní hostitele, ve kterém se nachází vaše virtuální počítače. Metrika je odrazem stavu infrastruktury Azure. Metriku můžete použít k těmto akcím:
 - Monitorování externí dostupnosti vaší služby
 - Dig hlubší a zjistěte, jestli je platforma, na které je vaše služba nasazená, v dobrém stavu, nebo jestli je instance hostovaného operačního systému nebo aplikace v pořádku.
 - Izolujte, jestli událost souvisí se službou nebo základní rovinou dat. Nezaměňujte tuto metriku se stavem sondy stavu ("dostupnost instance back-endu").
@@ -110,7 +98,7 @@ Metrika je generována aktivním měřením v pásmu. Služba zjišťování v r
 
 Paket, který odpovídá front-end a pravidlu nasazení, se generuje pravidelně. Projde oblast ze zdroje na hostitele, kde se nachází virtuální počítač ve fondu back-end. Infrastruktura nástroje pro vyrovnávání zatížení provádí stejné operace vyrovnávání zatížení a překladu, protože funguje pro všechny ostatní přenosy. Tento test je v rámci vašeho koncového bodu s vyrovnáváním zatížení v pásmu. Po doručení testu do výpočetního hostitele, kde je umístěn zdravý virtuální počítač ve fondu back-end, vygeneruje výpočetní hostitel odpověď na službu zjišťování. Váš virtuální počítač tento provoz nevidí.
 
-Dostupnost dostupnosti DataPath se nezdařila z následujících důvodů:
+Dostupnost DataPath se nezdařila z následujících důvodů:
 - Vaše nasazení nemá ve fondu back-end žádné dobré virtuální počítače. 
 - Došlo k výpadku infrastruktury.
 
@@ -138,13 +126,13 @@ Pro většinu scénářů použijte **průměr** jako agregaci.
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Návody se podívat na Statistika odchozího připojení? 
 <details>
   <summary>Rozbalit</summary>
-Metrika připojení SNAT popisuje objem úspěšných a neúspěšných připojení pro [odchozí toky](https://aka.ms/lboutbound).
+Metrika připojení SNAT popisuje objem úspěšných a neúspěšných připojení pro [odchozí toky](./load-balancer-outbound-connections.md).
 
-Svazek neúspěšných připojení, který je větší než nula, indikuje vyčerpání portů SNAT. Abyste zjistili, co můžou tyto chyby způsobovat, musíte prozkoumat další. Manifesty vyčerpání portů SNAT jako neúspěšné navázání [odchozího toku](https://aka.ms/lboutbound). Přečtěte si článek o odchozích připojeních, abyste porozuměli scénářům a mechanismům v práci, a zjistili si, jak zmírnit a navrhovat, abyste se vyhnuli vyčerpání portů SNAT. 
+Svazek neúspěšných připojení, který je větší než nula, indikuje vyčerpání portů SNAT. Abyste zjistili, co můžou tyto chyby způsobovat, musíte prozkoumat další. Manifesty vyčerpání portů SNAT jako neúspěšné navázání [odchozího toku](./load-balancer-outbound-connections.md). Přečtěte si článek o odchozích připojeních, abyste porozuměli scénářům a mechanismům v práci, a zjistili si, jak zmírnit a navrhovat, abyste se vyhnuli vyčerpání portů SNAT. 
 
 Získání statistiky připojení SNAT:
 1. Vyberte **připojení SNAT** typ metriky a **součet** jako agregaci. 
-2. Seskupit podle **stavu připojení** pro úspěšné a neúspěšné počty připojení SNAT, které jsou reprezentovány různými řádky. 
+2. Seskupit podle **stavu připojení** pro úspěšné a neúspěšné počty připojení SNAT, které mají být reprezentovány různými řádky. 
 
 ![Připojení SNAT](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
@@ -155,16 +143,16 @@ Získání statistiky připojení SNAT:
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>Návody kontrolovat využití a přidělování portů SNAT?
 <details>
   <summary>Rozbalit</summary>
-Metrika využití SNAT indikuje, kolik jedinečných toků mezi internetovým zdrojem a back-end virtuálním počítačem nebo sadou škálování virtuálního počítače, která je za nástrojem pro vyrovnávání zatížení, a nemá veřejnou IP adresu. Porovnáním s metrikou přidělování SNAT můžete zjistit, jestli se vaše služba objevila, nebo na nebezpečí vyčerpání SNAT a výsledný výstup selhání toku. 
+Metrika používaných portů SNAT sleduje, kolik portů SNAT se spotřebovává pro udržování odchozích toků. To indikuje, kolik jedinečných toků mezi internetovým zdrojem a back-end virtuálním počítačem nebo sadou škálování virtuálního počítače, která je za nástrojem pro vyrovnávání zatížení, a nemá veřejnou IP adresu. Porovnáním počtu portů SNAT, které používáte s přidělenou metrikou portů SNAT, můžete zjistit, jestli vaše služba má nebo nehrozí v nebezpečí vyčerpání SNAT, a výsledný výstupní tok se nezdařil. 
 
-Pokud vaše metrika signalizuje riziko selhání [odchozího toku](https://aka.ms/lboutbound) , proveďte odkaz na článek a proveďte kroky, které tuto skutečnost zmírnit, abyste zajistili stav služby.
+Pokud vaše metrika signalizuje riziko selhání [odchozího toku](./load-balancer-outbound-connections.md) , proveďte odkaz na článek a proveďte kroky, které tuto skutečnost zmírnit, abyste zajistili stav služby.
 
 Zobrazení využití a přidělení portu SNAT:
 1. Nastavte časovou agregaci grafu na 1 minutu, aby se zobrazila požadovaná data.
-1. Jako typ metriky vyberte **využití SNAT** nebo **alokaci SNAT** a **průměr** jako agregaci.
-    * Ve výchozím nastavení se jedná o průměrný počet portů SNAT přidělených nebo používaných jednotlivými virtuálními počítači back-end nebo VMSS, které odpovídají všem veřejným IP adresám front-endu mapovaným na Load Balancer agregované přes protokoly TCP a UDP.
+1. Vyberte **použité porty SNAT** nebo **přidělené porty SNAT** jako typ metriky a **průměr** jako agregaci.
+    * Ve výchozím nastavení jsou tyto metriky průměrný počet portů SNAT, které jsou přiděleny nebo využity jednotlivými virtuálními počítači back-endu nebo VMSS, a odpovídající všechny veřejné IP adresy front-endu namapované na Load Balancer, agregované přes protokoly TCP a UDP.
     * Zobrazení celkových portů SNAT používaných nástrojem nebo přiděleným pro nástroj pro vyrovnávání zatížení použití **součtu** agregace metriky
-1. Filtr na konkrétní **typ protokolu**, sadu **back-end**serverů nebo **IP adresy front-endu**.
+1. Filtr na konkrétní **typ protokolu**, sadu **back-end** serverů nebo **IP adresy front-endu**.
 1. Pokud chcete monitorovat stav na back-end nebo front-endové instance, použijte rozdělení. 
     * Rozdělení poznámky umožňuje zobrazit pouze jednu metriku. 
 1. Například pro monitorování využití SNAT pro toky TCP na počítač, agregované podle **průměru**, rozdělení podle **IP adresy back-endu** a filtrování podle **typu protokolu**. 
@@ -181,7 +169,7 @@ Zobrazení využití a přidělení portu SNAT:
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Návody kontrolovat pokusy o příchozí a odchozí připojení pro moji službu?
 <details>
   <summary>Rozbalit</summary>
-Metrika paketů SYN popisuje objem paketů TCP SYN, které byly doručeny nebo odeslány (pro [odchozí toky](https://aka.ms/lboutbound)), které jsou přidruženy k určitému front-endu. Tuto metriku můžete použít k porozumění pokusům o připojení TCP ke službě.
+Metrika paketů SYN popisuje objem paketů TCP SYN, které byly doručeny nebo odeslány (pro [odchozí toky](./load-balancer-outbound-connections.md)), které jsou přidruženy k určitému front-endu. Tuto metriku můžete použít k porozumění pokusům o připojení TCP ke službě.
 
 Pro většinu scénářů použijte **součet** jako agregaci.
 
@@ -199,7 +187,7 @@ Metriky čítače bajtů a paketů popisují objem bajtů a paketů, které vaš
 Pro většinu scénářů použijte **součet** jako agregaci.
 
 Postup získání statistiky počtu bajtů nebo paketů:
-1. Vyberte typ metriky **počet bajtů** nebo **počet paketů** s **průměrem** jako agregaci. 
+1. Vyberte typ metriky **počet bajtů** nebo **počet paketů** a **součet** jako agregaci. 
 2. Proveďte jednu z následujících akcí:
    * Použijte filtr na konkrétní IP adresu front-endu, front-end port, back-end IP adresu nebo back-end port.
    * Získejte celkové statistiky prostředku nástroje pro vyrovnávání zatížení bez jakéhokoli filtrování.
@@ -229,9 +217,42 @@ Graf zobrazuje následující informace:
 Graf umožňuje zákazníkům řešit vlastní řešení bez nutnosti odhadování nebo požádáte o podporu, jestli dochází k ostatním problémům. Služba není k dispozici, protože sondy stavu selhaly kvůli chybné konfiguraci nebo selhání aplikace.
 </details>
 
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurace upozornění na multidimenzionální metriky ###
+
+Azure Standard Load Balancer podporuje snadno konfigurovatelné výstrahy pro multidimenzionální metriky. Nakonfigurujte vlastní prahové hodnoty pro konkrétní metriky, abyste mohli aktivovat výstrahy s různou úrovní závažnosti, abyste mohli využívat možnosti monitorování prostředků bez dotykového ovládání.
+
+Konfigurace upozornění:
+1. Přejít na dílčí okno výstrahy pro nástroj pro vyrovnávání zatížení
+1. Vytvoření nového pravidla upozornění
+    1.  Konfigurace podmínky výstrahy
+    1.  Volitelné Přidat skupinu akcí pro automatizovanou opravu
+    1.  Přiřazení závažnosti, názvu a popisu výstrahy, která umožňuje intuitivní reakci
+
+### <a name="inbound-availability-alerting"></a>Upozornění na příchozí dostupnost
+Pokud chcete upozornit na příchozí dostupnost, můžete vytvořit dvě samostatné výstrahy pomocí metriky stavu dostupnosti datových cest a sond stavu. Zákazníci mohou mít různé scénáře, které vyžadují specifickou logiku upozorňování, ale níže uvedené příklady budou užitečné pro většinu konfigurací.
+
+Pomocí dostupnosti cesty k datům můžete aktivovat výstrahy vždy, když dojde k nedostupnosti konkrétního pravidla vyrovnávání zatížení. Tato výstraha se dá nakonfigurovat tak, že nastavíte podmínku upozornění pro dostupnost a rozdělení dat pro cestu k datům a použijete všechny aktuální hodnoty a budoucí hodnoty pro port front-end i front-end IP adresu. Nastavení logiky výstrah tak, aby byla menší nebo rovna nule, způsobí, že se tato výstraha aktivuje vždy, když jakékoli pravidlo vyrovnávání zatížení přestane reagovat. Nastavte členitost agregace a četnost vyhodnocování podle požadovaného vyhodnocení. 
+
+Stav sondy stavu můžete upozornit, když předaná instance back-end nereaguje na test stavu po značnou dobu. Nastavte podmínku upozornění pro použití metriky stavu sondy stavu a rozdělení podle IP adresy back-endu a portu back-endu. Tím zajistíte, že budete moci pro každou jednotlivou instanci back-endu, která bude obsluhovat přenosy na konkrétní port, samostatně vygenerovat výstrahu. Použijte **průměrový** typ agregace a nastavte prahovou hodnotu podle toho, jak často je vaše back-end instance zjištěná a co byste měli zvážit jako prahovou hodnotu vaší dobré kontroly. 
+
+Můžete také upozornit na úroveň back-end fondu tak, že nerozdělí žádné dimenze a nepoužijete **průměrně** typ agregace. To vám umožní nastavit pravidla upozornění, jako je například výstraha v případě, že 50% členů fondu back-endu není v pořádku.
+
+### <a name="outbound-availability-alerting"></a>Upozornění na odchozí dostupnost
+Pokud chcete nakonfigurovat odchozí dostupnost, můžete nakonfigurovat dvě samostatné výstrahy pomocí počtu připojení SNAT a použitých metrik portů SNAT.
+
+Chcete-li zjistit selhání odchozího připojení, nakonfigurujte výstrahu pomocí počtu připojení SNAT a filtrování do stavu připojení = neúspěšné. Použijte **celkovou** agregaci. Pak můžete tuto možnost také rozdělit na back-end IP adresu nastavenou na všechny aktuální a budoucí hodnoty, aby výstraha nebyla závislá na každé instanci back-endu, u které došlo k selhání Nastavte prahovou hodnotu větší než nula nebo vyšší číslo, pokud očekáváte, že se zobrazí některá selhání odchozího připojení.
+
+Pomocí portů SNAT můžete upozornit na vyšší riziko vyčerpání SNAT a selhání odchozího připojení. Při použití této výstrahy se ujistěte, že rozdělujete podle IP adresy back-endu a protokolu, a použijte **průměrnou** agregaci. Nastavte prahovou hodnotu větší než procento počtu portů, které jste přidělili pro jednotlivé instance, které považujete za nebezpečné. Můžete například nakonfigurovat upozornění s nízkou závažností, pokud instance back-endu používá 75% přidělených portů a vysokou závažnost, když používá 90% nebo 100% přidělených portů.  
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Stav prostředku
 
-Stav prostředků Standard Load Balancer se zveřejňuje prostřednictvím stávajícího **stavu prostředků** v části **monitorování > Service Health**.
+Stav prostředků Standard Load Balancer se zveřejňuje prostřednictvím stávajícího **stavu prostředků** v části **monitorování > Service Health**. Vyhodnocuje se každé **dvě minuty** měřením dostupnosti dat, která určuje, jestli jsou k dispozici koncové body vyrovnávání zatížení front-endu.
+
+| Stav prostředku | Popis |
+| --- | --- |
+| K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
+| Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti cesty k datům hlásila stav mezi 25 % a 90 % po dobu alespoň dvou minut. Dosáhnete středně silného dopadu na výkon. [Postupujte podle pokynů pro řešení potíží s RHC](./troubleshoot-rhc.md) a zjistěte, jestli neexistují uživatelem iniciované události, které by měly vliv na dostupnost.
+| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. [Postupujte podle pokynů pro řešení potíží s RHC](./troubleshoot-rhc.md) , abyste zjistili, jestli neexistují uživatelem iniciované události, které mají vliv na dostupnost. |
+| Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval nebo nepřijal informace o dostupnosti cesty k datům za posledních 10 minut. Tento stav by měl být přechodný a jakmile se přijmou data, měl by odrážet správný stav. |
 
 Zobrazení stavu prostředků veřejné Standard Load Balancer:
 1. Vyberte **monitor**  >  **Service Health**.
@@ -240,7 +261,7 @@ Zobrazení stavu prostředků veřejné Standard Load Balancer:
 
    *Obrázek: odkaz Service Health na Azure Monitor*
 
-2. Vyberte **Resource Health**a pak se ujistěte, že je vybraná možnost **ID předplatného** a **typ prostředku = Load Balancer** .
+2. Vyberte **Resource Health** a pak se ujistěte, že je vybraná možnost **ID předplatného** a **typ prostředku = Load Balancer** .
 
    ![Stav prostředku](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
@@ -252,17 +273,13 @@ Zobrazení stavu prostředků veřejné Standard Load Balancer:
 
    *Obrázek: Load Balancer zobrazení stavu prostředků*
  
-V následující tabulce jsou uvedeny různé stavy prostředků a jejich popisy: 
+Popis obecného stavu prostředku je k dispozici v [dokumentaci k RHC](../service-health/resource-health-overview.md). Konkrétní stavy pro Azure Load Balancer jsou uvedené v následující tabulce: 
 
-| Stav prostředku | Popis |
-| --- | --- |
-| K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
-| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Diagnostikujte stav tak, že vyberete **Azure monitor**  >  **metriky**.<br>(*Nedostupný* stav může také znamenat, že prostředek není připojený k vašemu standardnímu nástroji pro vyrovnávání zatížení.) |
-| Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval.<br>(*Neznámý* stav může také znamenat, že prostředek není připojen k vašemu standardnímu nástroji pro vyrovnávání zatížení.)  |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [Standard Load Balancer](load-balancer-standard-overview.md).
-- Přečtěte si další informace o [odchozím připojení k nástroji pro vyrovnávání zatížení](https://aka.ms/lboutbound).
-- Přečtěte si o [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
-- Přečtěte si o [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) a [o tom, jak pomocí REST API načíst metriky](/rest/api/monitor/metrics/list).
+- Přečtěte si o používání [přehledů](./load-balancer-insights.md) k zobrazení těchto metrik, které jsou pro vaše Load Balancer předem nakonfigurované.
+- Přečtěte si další informace o [Standard Load Balancer](./load-balancer-overview.md).
+- Přečtěte si další informace o [odchozím připojení k nástroji pro vyrovnávání zatížení](./load-balancer-outbound-connections.md).
+- Přečtěte si o [Azure monitor](../azure-monitor/overview.md).
+- Přečtěte si o [Azure Monitor REST API](/rest/api/monitor/) a [o tom, jak pomocí REST API načíst metriky](/rest/api/monitor/metrics/list).

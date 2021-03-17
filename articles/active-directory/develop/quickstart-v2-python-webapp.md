@@ -1,6 +1,7 @@
 ---
-title: Přidání přihlašování do webové aplikace v Pythonu Microsoft Identity Platform | Azure
-description: Naučte se implementovat přihlašování Microsoftu na webové aplikaci v Pythonu pomocí OAuth2.
+title: 'Rychlý Start: přidání přihlášení pomocí Microsoftu do webové aplikace v Pythonu | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak se webová aplikace v Pythonu může přihlašovat uživatelům, získat přístupový token z platformy Microsoft identity a volat rozhraní Microsoft Graph API.
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,23 +12,22 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 6b58e927952b2a51289c3017455cc7d66545fe86
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fb38140f09fc7c1eb2c40fc02e8c113cbc6f94a0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120316"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103511"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
-V tomto rychlém startu se dozvíte, jak integrovat webovou aplikaci v Pythonu s platformou Microsoft identity. Vaše aplikace se přihlásí k uživateli, získá přístupový token pro volání rozhraní API Microsoft Graph a vytvoří požadavek na rozhraní Microsoft Graph API.
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak se webová aplikace v Pythonu může přihlašovat uživatelům a získat přístupový token pro volání rozhraní Microsoft Graph API. Uživatelé s osobním účtem Microsoft nebo účtem v jakékoli Azure Active Directory (Azure AD) se můžou k aplikaci přihlásit.
 
-Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
+Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení této ukázky budete potřebovat:
-
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) nebo [Python 3 +](https://www.python.org/downloads/release/python-364/)
 - [Baňka](http://flask.pocoo.org/), [baňka – relace](https://pypi.org/project/Flask-Session/), [žádosti](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
@@ -40,7 +40,7 @@ K provedení této ukázky budete potřebovat:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejít na [Registrace aplikací Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs).
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
 >
@@ -50,37 +50,31 @@ K provedení této ukázky budete potřebovat:
 >
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-> 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
->      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `python-webapp`.
->      - V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
->      - Vyberte **Zaregistrovat**.
->      - Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
-> 1. V nabídce vyberte **ověřování** a přidejte následující informace:
->    - Přidejte konfiguraci **webové** platformy. Přidejte `http://localhost:5000/getAToken` jako **identifikátory URI přesměrování**.
->    - Vyberte **Uložit**.
-> 1. V nabídce vlevo vyberte **certifikáty & tajných** kódů a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta** :
->
->      - Zadejte popis klíče (instance tajného kódu aplikace).
->      - Vyberte dobu trvání klíče **v intervalu 1 roku**.
->      - Po kliknutí na tlačítko **Přidat**se zobrazí hodnota klíče.
->      - Zkopírujte hodnotu klíče. Budete ho potřebovat později.
-> 1. Vyberte oddíl **oprávnění rozhraní API** .
->
->      - Klikněte na tlačítko **Přidat oprávnění** a pak na
->      - Ujistěte se, že je vybraná karta **rozhraní API Microsoftu** .
->      - V části *běžně používaná rozhraní Microsoft API* klikněte na **Microsoft Graph**
->      - V části **delegovaná oprávnění** zkontrolujte, že jsou zaškrtnutá správná oprávnění: **User. ReadBasic. All**. V případě potřeby použijte vyhledávací pole.
->      - Vyberte tlačítko **Přidat oprávnění** .
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace, například `python-webapp` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+> 1. Vyberte **Zaregistrovat**.
+> 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
+> 1. V části **Spravovat** vyberte **ověřování**.
+> 1. Vyberte **Přidat**  >  **Web** platformy.
+> 1. Přidejte `http://localhost:5000/getAToken` jako **identifikátory URI přesměrování**.
+> 1. Vyberte **Konfigurovat**.
+> 1. V části **Spravovat** vyberte **certifikáty & tajných**  kódů a v části **tajné klíče klienta** vyberte **nový tajný klíč klienta**.
+> 1. Zadejte popis klíče (například pro tajný klíč aplikace), ponechte výchozí hodnotu vypršení platnosti a vyberte **Přidat**.
+> 1. Poznamenejte si **hodnotu** **tajného klíče klienta** pro pozdější použití.
+> 1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**.
+> 1. Ujistěte se, že je vybraná karta **rozhraní API Microsoftu** .
+> 1. V části *běžně používaná rozhraní Microsoft API* vyberte **Microsoft Graph**.
+> 1. V části **delegovaná oprávnění** zkontrolujte, že jsou zaškrtnutá správná oprávnění: **User. ReadBasic. All**. V případě potřeby použijte vyhledávací pole.
+> 1. Klikněte na tlačítko **Přidat oprávnění** .
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
 >
-> Ukázku kódu pro tento rychlý Start, který funguje, je třeba:
+> Ukázka kódu v tomto rychlém startu funguje:
 >
 > 1. Přidejte adresu URL odpovědi jako `http://localhost:5000/getAToken` .
 > 1. Vytvořte tajný klíč klienta.
@@ -97,7 +91,7 @@ K provedení této ukázky budete potřebovat:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Stáhněte si projekt a extrahujte soubor zip do místní složky blíže ke kořenové složce – například **C:\Azure-Samples**
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -119,8 +113,8 @@ K provedení této ukázky budete potřebovat:
 > Kde:
 >
 > - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
-> - `Enter_the_Client_Secret_Here`– je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro aplikaci, kterou jste zaregistrovali.
-> - `Enter_the_Tenant_Name_Here`– je hodnota **ID adresáře** aplikace, kterou jste zaregistrovali.
+> - `Enter_the_Client_Secret_Here` – je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných**  kódů pro aplikaci, kterou jste zaregistrovali.
+> - `Enter_the_Tenant_Name_Here` – je hodnota **ID adresáře** aplikace, kterou jste zaregistrovali.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-run-the-code-sample"></a>Krok 3: spuštění ukázky kódu
@@ -128,7 +122,7 @@ K provedení této ukázky budete potřebovat:
 > [!div renderon="docs"]
 > #### <a name="step-4-run-the-code-sample"></a>Krok 4: spuštění ukázky kódu
 
-1. Budete muset nainstalovat MSAL knihovny Pythonu, architekturu baněk, baňky pro správu relací na straně serveru a požadavky pomocí PIP následujícím způsobem:
+1. Pro správu relací na straně serveru a požadavky pomocí PIP budete muset nainstalovat MSAL Python Library, Flask-Sessions, a to následujícím způsobem:
 
     ```Shell
     pip install -r requirements.txt
@@ -162,11 +156,11 @@ Odkaz na MSAL Python můžete přidat přidáním následujícího kódu do horn
 import msal
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o webových aplikacích, které přihlásí uživatele, a potom zavolá webová rozhraní API:
+Přečtěte si další informace o webových aplikacích, které přihlásí uživatele v naší řadě scénářů s více částmi.
 
 > [!div class="nextstepaction"]
-> [Scénář: webové aplikace, které přihlásí uživatele](scenario-web-app-sign-user-overview.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md)

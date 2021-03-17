@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 3060e12b294531a697c1486b3a020dc1da1484c4
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 289804a0006941b3fd5666888d3d8e16d3618fe7
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077647"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244551"
 ---
 Vytvořte [webovou aplikaci](../articles/app-service/overview.md#app-service-on-linux) v `myAppServicePlan` plánu App Service. 
 
-V Cloud Shell můžete použít [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) příkaz. V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). 
+V Cloud Shell můžete použít [`az webapp create`](/cli/azure/webapp#az-webapp-create) příkaz. V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-local-git

@@ -1,30 +1,25 @@
 ---
 title: Azure Disk Encryption pro Linux
 description: Nasadí Azure Disk Encryption pro Linux do virtuálního počítače pomocí rozšíření virtuálního počítače.
-services: virtual-machines-linux
-documentationcenter: ''
-author: ejarvi
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 03/19/2020
+ms.service: virtual-machines
+ms.subservice: disks
+author: ejarvi
 ms.author: ejarvi
-ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/19/2020
+ms.collection: linux
+ms.openlocfilehash: 7c79391e3459804a4b5ce72c2230d17af3269641
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066919"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566256"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption pro Linux (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
 ## <a name="overview"></a>Přehled
 
-Azure Disk Encryption využívá podsystém dm-crypt v systému Linux, který poskytuje úplné šifrování disků na [vybraných distribucích systému Azure Linux](https://aka.ms/adelinux).  Toto řešení je integrované s Azure Key Vault pro správu klíčů a tajných kódů disku.
+Azure Disk Encryption využívá podsystém dm-crypt v systému Linux, který poskytuje úplné šifrování disků na [vybraných distribucích systému Azure Linux](../linux/disk-encryption-overview.md).  Toto řešení je integrované s Azure Key Vault pro správu klíčů a tajných kódů disku.
 
 ## <a name="prerequisites"></a>Požadavky
 

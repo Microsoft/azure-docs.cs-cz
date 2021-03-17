@@ -4,20 +4,20 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 21c19027d21a87e199d74644cfc5c8f3cd52ba4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1b56cfb85595b8a17dc18f69a0b162d504c04ec
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79128615"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025788"
 ---
-Pokud chcete zařízení resetovat, musíte bezpečně vymazat všechna data na datovém disku a na spouštěcím disku vašeho zařízení. 
+Pokud chcete resetovat zařízení, musíte bezpečně vymazat všechna data na datovém a spouštěcím disku zařízení. 
 
 Pomocí `Reset-HcsAppliance` rutiny můžete vymazat datové disky i spouštěcí disk nebo jenom datové disky. `ClearData`Přepínače a `BootDisk` umožňují vymazat datové disky a spouštěcí disk v uvedeném pořadí.
 
-`BootDisk`Přepínač vymaže spouštěcí disk a zařízení bude nepoužitelné. Měl by se použít jenom v případě, že je potřeba vrátit zařízení do Microsoftu. Další informace najdete v tématu o [vrácení zařízení do Microsoftu](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
+`BootDisk`Přepínač vymaže spouštěcí disk a zařízení bude nepoužitelné. Měl by se použít pouze v případě, že je potřeba vrátit zařízení do Microsoftu. Další informace najdete v tématu o [vrácení zařízení do Microsoftu](../articles/databox-online/azure-stack-edge-return-device.md).
 
-Pokud použijete resetování zařízení v místním webovém uživatelském rozhraní, budou se bezpečně mazat jenom datové disky, ale spouštěcí disk zůstane nedotčený. Spouštěcí disk obsahuje konfiguraci zařízení.
+Pokud využijete možnost resetování zařízení v místním webovém uživatelském rozhraní, bezpečně se vymažou pouze datové disky a spouštěcí disk zůstane nedotčený. Spouštěcí disk obsahuje konfiguraci zařízení.
 
 1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
 2. Na příkazovém řádku zadejte:

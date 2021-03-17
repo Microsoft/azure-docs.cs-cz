@@ -1,33 +1,35 @@
 ---
-title: Zpracování přerušení služby Azure, které ovlivňuje Azure Cloud Services
-titleSuffix: Azure Cloud Services
+title: Zpracování přerušení služby Azure, které ovlivňuje Azure Cloud Services (Classic)
 description: Seznamte se s tím, co dělat v případě výpadku služby Azure, který ovlivňuje Azure Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: mmccrory
-ms.service: cloud-services
-ms.workload: cloud-services
 ms.topic: article
-ms.date: 04/04/2017
-ms.author: memccror
-ms.openlocfilehash: d4f869c8b4ae6e90cfe64a2bf3d13839d72727be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: cdd6c9da5a1895d4aadd73133734cd4c8204ecf1
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84015295"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742161"
 ---
-# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Co dělat v případě přerušení služby Azure, které ovlivní Azure Cloud Services
+# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services-classic"></a>Co dělat v případě výpadku služby Azure, který ovlivňuje Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 V Microsoftu pracujeme na tom, abychom zajistili, že naše služby jsou vždycky k dispozici, až je budete potřebovat. Síly nad rámec našeho ovládacího prvku někdy ovlivňují způsob, jakým způsobují neplánované výpadky služeb.
 
 Společnost Microsoft poskytuje smlouva SLA (SLA) pro své služby jako závazek pro dobu provozu a připojení. Smlouvu SLA pro jednotlivé služby Azure najdete na stránce [smlouvy o úrovni služeb Azure](https://azure.microsoft.com/support/legal/sla/).
 
-Azure už obsahuje mnoho vestavěných funkcí platformy, které podporují vysoce dostupné aplikace. Další informace o těchto službách najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Azure už obsahuje mnoho vestavěných funkcí platformy, které podporují vysoce dostupné aplikace. Další informace o těchto službách najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace Azure](/azure/architecture/framework/resiliency/backup-and-recovery).
 
 Tento článek se zabývá skutečným scénářem zotavení po havárii, když celá oblast dojde k výpadku, protože došlo k závažné přirozené havárii nebo rozšířenému přerušení služby. Jedná se o vzácná opakování, ale musíte připravit na možnost, že dojde k výpadku celé oblasti. Pokud v celé oblasti dojde k přerušení služby, místně redundantní kopie vašich dat nebudou dočasně k dispozici. Pokud jste povolili geografickou replikaci, budou se tři další kopie Azure Storage objektů BLOB a tabulek ukládat v jiné oblasti. V případě úplného výpadku v oblasti regionu nebo havárie, ve kterém se primární oblast nedá obnovit, Azure přemapuje všechny položky DNS do geografické replikované oblasti.
 
 > [!NOTE]
-> Mějte na paměti, že k tomuto procesu nemáte žádnou kontrolu a dojde k tomu jenom pro přerušení služeb v rámci datového centra. Z tohoto důvodu musíte také spoléhat na jiné strategie zálohování specifické pro aplikace, abyste dosáhli nejvyšší úrovně dostupnosti. Další informace najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace založené na Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Pokud chcete mít možnost ovlivnit vlastní převzetí služeb při selhání, můžete zvážit použití [geograficky redundantního úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy.md), které v jiné oblasti vytvoří kopii vašich dat jen pro čtení.
+> Mějte na paměti, že k tomuto procesu nemáte žádnou kontrolu a dojde k tomu jenom pro přerušení služeb v rámci datového centra. Z tohoto důvodu musíte také spoléhat na jiné strategie zálohování specifické pro aplikace, abyste dosáhli nejvyšší úrovně dostupnosti. Další informace najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace založené na Microsoft Azure](/azure/architecture/framework/resiliency/backup-and-recovery). Pokud chcete mít možnost ovlivnit vlastní převzetí služeb při selhání, můžete zvážit použití [geograficky redundantního úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy.md), které v jiné oblasti vytvoří kopii vašich dat jen pro čtení.
 >
 >
 
@@ -54,6 +56,6 @@ V závislosti na zdrojích dat aplikací může být nutné ověřit postupy obn
 V takovém případě se nevyžaduje žádná akce s vaší částí, ale vaše služba nebude dostupná, dokud se oblast neobnoví. Aktuální stav služby můžete zobrazit na [řídicím panelu Azure Service Health](https://azure.microsoft.com/status/).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o tom, jak implementovat strategii zotavení po havárii a vysokou dostupnost, najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Další informace o tom, jak implementovat strategii zotavení po havárii a vysokou dostupnost, najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace Azure](/azure/architecture/framework/resiliency/backup-and-recovery).
 
 Podrobné technické porozumění funkcím cloudové platformy najdete v tématu [technické pokyny k odolnosti Azure](/azure/architecture/checklist/resiliency-per-service).

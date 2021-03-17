@@ -3,12 +3,12 @@ title: Osobní údaje
 description: Naučte se spravovat osobní data přidružená k Azure Resource Manager operací.
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 22cfc1b6096980f3d10db404a1c4e02f2de355d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e531f7cd9992536bcc191637111761c5bbdefa2
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75485257"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693698"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Správa osobních údajů spojených s Azure Resource Manager
 
@@ -26,19 +26,19 @@ K vypsání **nasazení** v historii použijte:
 
 * [Seznam podle skupiny prostředků](/rest/api/resources/deployments/listbyresourcegroup)
 * [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
-* [AZ Group Deployment list](/cli/azure/group/deployment#az-group-deployment-list)
+* [AZ Deployment Group list](/cli/azure/deployment/group#az_deployment_group_list)
 
 Pokud chcete z historie odstranit **nasazení** , použijte:
 
 * [Odstranit](/rest/api/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
-* [AZ Group Deployment DELETE](/cli/azure/group/deployment#az-group-deployment-delete)
+* [AZ Deployment Group DELETE](/cli/azure/deployment/group#az_deployment_group_delete)
 
 ## <a name="delete-personal-data-in-resource-group-names"></a>Odstranění osobních údajů v názvech skupin prostředků
 
 Název skupiny prostředků přetrvává, dokud skupinu prostředků neodstraníte. Pokud chcete zjistit, jestli jste v názvech zadali osobní údaje, Seznamte se se skupinami prostředků. Pokud najdete osobní údaje, [přesuňte prostředky](move-resource-group-and-subscription.md) do nové skupiny prostředků a odstraňte skupinu prostředků s osobními údaji v názvu.
 
-K vypsání **skupin prostředků**použijte:
+K vypsání **skupin prostředků** použijte:
 
 * [Seznam](/rest/api/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)

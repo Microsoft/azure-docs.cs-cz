@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 298ca69a659bec2d5262b344c274fac7371390f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d51903aff6f3fd1cd53d85a980f1b5dc2a893e9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534349"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354257"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>Kurz: Konfigurace brány pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v části brána a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD tak, aby automaticky zřídily a zrušily zřizování uživatelů a skupin pro odměnu brány.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
@@ -53,15 +53,15 @@ Před konfigurací brány pro odměnu pro Automatické zřizování uživatelů 
 
 1. Přihlaste se ke [konzole Správce brány pro odměnu](https://rewardgateway.photoshelter.com/login/). Klikněte na **integrace**.
 
-    ![Motivace konzoly Správce brány](media/reward-gateway-provisioning-tutorial/image00.png)
+    ![Snímek obrazovky konzoly Správce brány s možností integrace s názvem.](media/reward-gateway-provisioning-tutorial/image00.png)
 
 2.  Vyberte **Moje integrace**.
 
-    ![Motivace konzoly Správce brány](media/reward-gateway-provisioning-tutorial/image001.png)
+    ![Snímek obrazovky se dvěma možnostmi integrace pomocí možnosti moje integrace s názvem.](media/reward-gateway-provisioning-tutorial/image001.png)
 
 3.  Zkopírujte hodnoty **SCIM URL (v2)** a **tokenu OAuth Bearer**. Tyto hodnoty se zadají do pole Adresa URL klienta a tajný token na kartě zřizování aplikace brány pro odměnu v Azure Portal.
 
-    ![Motivace konzoly Správce brány](media/reward-gateway-provisioning-tutorial/image03.png)
+    ![Snímek obrazovky s panelem moje integrace s textovým polem s tokenem OAuth pro držitele](media/reward-gateway-provisioning-tutorial/image03.png)
 
 ## <a name="add-reward-gateway-from-the-gallery"></a>Přidání brány pro odměnu z Galerie
 
@@ -73,7 +73,7 @@ Pokud chcete nakonfigurovat bránu pro Automatické zřizování uživatelů pom
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -81,7 +81,7 @@ Pokud chcete nakonfigurovat bránu pro Automatické zřizování uživatelů pom
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **záměna brány**, vyberte možnost odznačit **bránu** na panelu výsledky a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **záměna brány** , vyberte možnost odznačit **bránu** na panelu výsledky a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Odměna brány v seznamu výsledků](common/search-new-app.png)
 
@@ -94,21 +94,21 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-reward-gateway-in-azure-ad"></a>Postup při konfiguraci automatického zřizování uživatelů pro bránu pro odměnu v Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost odznačit **bránu**.
 
     ![Odkaz na bránu pro odměnu v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
 5. V části **přihlašovací údaje správce** zadejte hodnoty **SCIM URL (v2)** a **token nosiče OAuth** načtené dříve v **adrese URL tenanta** a **tajného tokenu** v uvedeném pořadí. Klikněte na **Test připojení** a ujistěte se, že se Azure AD může připojit k bráně pro odměnu. Pokud se připojení nepovede, zajistěte, aby měl účet brány pro odměnu oprávnění správce, a zkuste to znovu.
 
@@ -116,31 +116,31 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![E-mail s oznámením](common/provisioning-notification-email.png)
+    ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
 8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelů a odměnu brány**.
 
-    ![Motivace konzoly Správce brány](media/reward-gateway-provisioning-tutorial/user-mappings.png)
+    ![Snímek obrazovky s oddílem mapování s možností synchronizovat Azure Active Directory uživatele k odměnu brány s názvem.](media/reward-gateway-provisioning-tutorial/user-mappings.png)
 
 9. Zkontrolujte atributy uživatelů synchronizované z Azure AD a odměna brány v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Záměna brány pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Motivace konzoly Správce brány](media/reward-gateway-provisioning-tutorial/user-attributes.png)
+    ![Snímek obrazovky s oddílem mapování atributů se zobrazenými šesti mapováními](media/reward-gateway-provisioning-tutorial/user-attributes.png)
 
-10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Pokud chcete povolit službu zřizování Azure AD pro odměnu brány, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
 12. Definujte uživatele nebo skupiny, které chcete zřídit pro odměnu brány, výběrem požadovaných hodnot v **rozsahu** v části **Nastavení** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Až budete připraveni zřídit, klikněte na **Uložit**.
+13. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít ke sledování průběhu a následného odkazu na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování služby Azure AD v bráně pro odměnu.
 
@@ -150,11 +150,11 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 Brána pro odměnu v tuto chvíli nepodporuje zřizování skupin.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+[Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

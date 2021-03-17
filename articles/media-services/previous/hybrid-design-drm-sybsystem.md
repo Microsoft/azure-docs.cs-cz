@@ -3,7 +3,7 @@ title: Hybridní návrh subsystémů DRM pomocí Azure Media Services | Microsof
 description: Toto téma popisuje hybridní návrh subsystémů DRM pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: ce2fbe8c706870250973974c7a73a3964dedd04a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a48e761c4fb74802c6b1db63884ee192446720a4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831885"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016266"
 ---
-# <a name="hybrid-design-of-drm-subsystems"></a>Hybridní návrh subsystémů DRM 
+# <a name="hybrid-design-of-drm-subsystems"></a>Hybridní návrh subsystémů DRM
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Toto téma popisuje hybridní návrh subsystémů DRM pomocí Azure Media Services.
 
@@ -93,39 +95,39 @@ Prostřednictvím konfigurace zásad doručení assetů můžete řídit násled
 
 ## <a name="scenarios-and-samples"></a>Scénáře a ukázky
 
-Na základě vysvětlení v předchozí části používají následující pět hybridních scénářů příslušné **Content key** - kombinace konfigurace**zásad doručení assetů** obsahu (ukázky uvedené v posledním sloupci následují v tabulce):
+Na základě vysvětlení v předchozí části používají následující pět hybridních scénářů příslušné  - kombinace konfigurace **zásad doručení assetů** obsahu (ukázky uvedené v posledním sloupci následují v tabulce):
 
 |**Hostování obsahu & původu**|**Šifrování DRM**|**Doručování licencí DRM**|**Konfigurovat klíč obsahu**|**Konfigurace zásad doručení assetu**|**Ukázka**|
 |---|---|---|---|---|---|
-|AMS|AMS|AMS|Ano|Ano|Ukázka 1|
-|AMS|AMS|Třetí strana|Ano|Ano|Ukázka 2|
-|AMS|Třetí strana|AMS|Ano|No|Ukázka 3|
+|AMS|AMS|AMS|Yes|Yes|Ukázka 1|
+|AMS|AMS|Třetí strana|Yes|Yes|Ukázka 2|
+|AMS|Třetí strana|AMS|Yes|No|Ukázka 3|
 |AMS|Třetí strana|Nenachází|No|No|Ukázka 4|
-|Třetí strana|Třetí strana|AMS|Ano|No|    
+|Třetí strana|Třetí strana|AMS|Yes|No|    
 
 V ukázkách funguje ochrana PlayReady pro PŘERUŠOVANé i hladké streamování. Níže uvedené adresy URL videa jsou vyhlazené adresy URL streamování. Chcete-li získat odpovídající POMLČKy URL, stačí připojit "(Format = MPD-Time-CSF)". K otestování v prohlížeči můžete použít [přehrávač Azure Media test Player](https://aka.ms/amtest) . Umožňuje vám nakonfigurovat, který protokol streamování se má použít, na kterém tech. IE11 a Microsoft Edge na Windows 10 podporují PlayReady prostřednictvím EME. Další informace najdete v [podrobnostech o testovacím nástroji](./offline-playready-streaming-windows-10.md).
 
 ### <a name="sample-1"></a>Ukázka 1
 
-* Adresa URL zdroje (základní):`https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest` 
-* PlayReady LA_URL (PŘERUŠOVANé & hladké):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
-* Widevine LA_URL (POMLČKa):`https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4` 
-* FairPlay LA_URL (HLS):`https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8` 
+* Adresa URL zdroje (základní): `https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest` 
+* PlayReady LA_URL (PŘERUŠOVANé & hladké): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
+* Widevine LA_URL (POMLČKa): `https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4` 
+* FairPlay LA_URL (HLS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8` 
 
 ### <a name="sample-2"></a>Ukázka 2
 
-* Adresa URL zdroje (základní):https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady LA_URL (PŘERUŠOVANé & hladké):`http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx` 
+* Adresa URL zdroje (základní): https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
+* PlayReady LA_URL (PŘERUŠOVANé & hladké): `http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx` 
 
 ### <a name="sample-3"></a>Ukázka 3
 
-* Zdrojová adresa URL:https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (PŘERUŠOVANé & hladké):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
+* Zdrojová adresa URL: https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
+* PlayReady LA_URL (PŘERUŠOVANé & hladké): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
 
 ### <a name="sample-4"></a>Ukázka 4
 
-* Zdrojová adresa URL:https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (PŘERUŠOVANé & hladké):`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx` 
+* Zdrojová adresa URL: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
+* PlayReady LA_URL (PŘERUŠOVANé & hladké): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx` 
 
 ## <a name="additional-notes"></a>Další poznámky
 

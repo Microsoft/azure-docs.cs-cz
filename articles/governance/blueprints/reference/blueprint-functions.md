@@ -1,14 +1,14 @@
 ---
 title: Funkce Azure modrotisky
 description: Popisuje funkce, které jsou k dispozici pro použití s artefakty podrobného plánu v definicích a přiřazeních Azure modrotisky.
-ms.date: 05/22/2020
+ms.date: 01/27/2021
 ms.topic: reference
-ms.openlocfilehash: 7a52901060466692e7094cf74fa5acfcded5f1da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422840"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919270"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití s plány Azure
 
@@ -36,7 +36,7 @@ Vrátí objekt vlastností naplněný pomocí tohoto výstupu artefaktů podrobn
 
 | Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| artefakt |Ano |řetězec |Název artefaktu podrobného plánu |
+| artefakt |Yes |řetězec |Název artefaktu podrobného plánu |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -125,8 +125,8 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 
 | Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| řetězec1 |Ano |řetězec |První hodnota pro zřetězení |
-| Další argumenty |Ne |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
+| řetězec1 |Yes |řetězec |První hodnota pro zřetězení |
+| Další argumenty |No |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -150,7 +150,7 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 
 | Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -271,7 +271,7 @@ Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na ro
 
 | Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| zástupný znak |Ano |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
+| zástupný znak |Yes |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

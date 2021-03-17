@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381452"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997728"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Důležité informace k návrhu hybridní identity Azure Active Directory
 Zařízení založená na zákaznících přecházejí z podnikového světa a aplikace založené na cloudovém softwaru jako služby (SaaS) se dají snadno přijmout. Výsledkem je, že udržování řízení přístupu uživatelů k aplikacím napříč interními datacentry a cloudové platformy je náročné.  
@@ -42,7 +42,7 @@ Cílem příručky pro aspekty návrhu hybridní identity je konkrétně odpově
 ## <a name="how-can-this-guide-help-you"></a>V čem vám může tento průvodce pomoct?
 Tento průvodce vám pomůže pochopit, jak navrhnout řešení hybridní identity, které umožňuje integrovat cloudový systém správy identit do vašeho aktuálního místního řešení identity. 
 
-Následující obrázek znázorňuje příklad řešení hybridní identity, které umožňuje správcům IT spravovat stávající řešení služby Active Directory Windows serveru v místním prostředí s Microsoft Azure Active Directory, aby uživatelé mohli používat jednotné přihlašování (SSO) napříč aplikacemi, které se nacházejí v cloudu a místně.
+Následující obrázek znázorňuje příklad řešení hybridní identity, které umožňuje správcům IT spravovat jejich aktuální řešení služby Active Directory Windows serveru v místním prostředí s Microsoft Azure Active Directory, aby uživatelé mohli používat jednotné Sign-On (SSO) v aplikacích, které se nacházejí v cloudu a místně.
 
 ![Příklad](media/plan-hybrid-identity-design-considerations/hybridID-example.png)
 

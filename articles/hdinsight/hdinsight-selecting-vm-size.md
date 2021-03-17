@@ -2,19 +2,16 @@
 title: Jak vybrat správnou velikost virtuálního počítače pro cluster Azure HDInsight
 description: Naučte se, jak vybrat správnou velikost virtuálního počítače pro cluster HDInsight.
 keywords: velikosti virtuálních počítačů, velikosti clusterů, konfigurace clusteru
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51043f0a1009994528783a1b56ec5ccec68e99b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73682208"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931783"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight
 
@@ -32,18 +29,18 @@ Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikost
 
 - RAM: velikost virtuálního počítače také určí velikost paměti RAM dostupné ve virtuálním počítači. Pro úlohy, které ukládají data do paměti pro zpracování, nikoli čtení z disku, ujistěte se, že vaše pracovní uzly mají dostatek paměti pro přizpůsobení dat.
 
-- Síť: u většiny typů clusterů data zpracovaná clusterem nejsou na místním disku, ale ne v externí službě úložiště, jako je Data Lake Storage nebo Azure Storage. Vezměte v úvahu šířku pásma a propustnost sítě mezi virtuálním počítačem uzlu a službou úložiště. Šířka pásma sítě, která je k dispozici pro virtuální počítač, se obvykle zvětšuje o větší velikost. Podrobnosti najdete v tématu [Přehled velikostí virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+- Síť: u většiny typů clusterů data zpracovaná clusterem nejsou na místním disku, ale ne v externí službě úložiště, jako je Data Lake Storage nebo Azure Storage. Vezměte v úvahu šířku pásma a propustnost sítě mezi virtuálním počítačem uzlu a službou úložiště. Šířka pásma sítě, která je k dispozici pro virtuální počítač, se obvykle zvětšuje o větší velikost. Podrobnosti najdete v tématu [Přehled velikostí virtuálních počítačů](../virtual-machines/sizes.md).
 
 ## <a name="understanding-vm-optimization"></a>Principy optimalizace virtuálních počítačů
 
 Rodiny virtuálních počítačů v Azure jsou optimalizované tak, aby vyhovovaly různým případům použití. V níže uvedené tabulce najdete některé z nejoblíbenějších případů použití a rodin virtuálních počítačů, které se na ně shodují.
 
-| Typ                     | Velikosti           |    Description       |
+| Typ                     | Velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Vstupní úroveň](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Pro úlohy vstupní úrovně, jako je vývoj a testování, se nejlépe hodí konfigurace výkonu a paměti procesoru. Je to ekonomicky výhodná možnost, která vám umožní začít s Azure. |
-| [Obecné účely](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Poměr vyrovnaných PROCESORů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md)        | F           | Vysoký poměr PROCESORů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
-| [Optimalizované z hlediska paměti](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti.                 |
+| [Vstupní úroveň](../virtual-machines/sizes-general.md)          | A, Av2  | Pro úlohy vstupní úrovně, jako je vývoj a testování, se nejlépe hodí konfigurace výkonu a paměti procesoru. Je to ekonomicky výhodná možnost, která vám umožní začít s Azure. |
+| [Obecné účely](../virtual-machines/sizes-general.md)          | D, DSv2, Dv2  | Vyvážený poměr procesorů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
+| [Optimalizované pro výpočty](../virtual-machines/sizes-compute.md)        | F           | Vysoký poměr procesorů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
+| [Optimalizované pro paměť](../virtual-machines/sizes-memory.md)         | Esv3, Ev3  | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti.                 |
 
 - Informace o cenách dostupných instancí virtuálních počítačů napříč oblastmi podporovanými HDInsight najdete v tématu [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -74,4 +71,4 @@ Další informace o srovnávacích testech pro SKU virtuálních počítačů a 
 ## <a name="next-steps"></a>Další kroky
 
 - [Konfigurace podporovaných uzlů Azure HDInsight](hdinsight-supported-node-configuration.md)
-- [Velikosti virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/sizes.md)
+- [Sizes for Linux virtual machines in Azure](../virtual-machines/sizes.md)

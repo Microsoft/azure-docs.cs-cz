@@ -5,21 +5,21 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
-ms.date: 06/15/2020
+ms.topic: how-to
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 28a6ea4ed40df909b4d74ff52703babb8e8cd949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791726"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652093"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Správa incidentů zabezpečení v Azure Security Center
 
 Třídění a vyšetřování výstrah zabezpečení může být časově náročné i pro ty z těch nejpravděpodobnějších analytiků zabezpečení. V mnoha případech je obtížné zjistit, kde začít. 
 
-Security Center používá [Analytics](security-center-detection-capabilities.md) k propojení informací mezi různými [výstrahami zabezpečení](security-center-managing-and-responding-alerts.md). Pomocí těchto připojení Security Center může poskytnout jediné zobrazení kampaně útoku a související výstrahy, které vám pomohou pochopit akce útočníka a ovlivněné prostředky.
+Security Center používá [Analytics](./security-center-alerts-overview.md) k propojení informací mezi různými [výstrahami zabezpečení](security-center-managing-and-responding-alerts.md). Pomocí těchto připojení Security Center může poskytnout jediné zobrazení kampaně útoku a související výstrahy, které vám pomohou pochopit akce útočníka a ovlivněné prostředky.
 
 Tato stránka poskytuje přehled o incidentech v Security Center.
 
@@ -29,11 +29,19 @@ Ve službě Security Center představuje bezpečnostní incident souhrn všech v
 
 ## <a name="managing-security-incidents"></a>Správa incidentů zabezpečení
 
-1. Na stránce Přehled Security Center vyberte dlaždici **výstrahy zabezpečení** . Zobrazí se incidenty a výstrahy. Všimněte si, že bezpečnostní incidenty mají jinou ikonu výstrah zabezpečení.
+1. Na stránce s výstrahami Security Center použijte tlačítko **Přidat filtr** pro filtrování podle názvu výstrahy na incident zabezpečení s názvem výstrahy **zjištěného u několika prostředků**. 
 
-    ![Zobrazit incidenty zabezpečení](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="Hledání incidentů na stránce s výstrahami v Azure Security Center":::
 
-1. Pokud chcete zobrazit podrobnosti, vyberte incident. Na stránce **incident zabezpečení** se zobrazí další podrobnosti. 
+    Seznam je teď filtrovaný tak, aby zobrazoval jenom incidenty. Všimněte si, že bezpečnostní incidenty mají jinou ikonu výstrah zabezpečení.
+
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Seznam incidentů na stránce s výstrahami v Azure Security Center":::
+
+1. Pokud chcete zobrazit podrobnosti o incidentu, vyberte ho ze seznamu. Zobrazí se boční podokno s dalšími podrobnostmi o incidentu.
+
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="Boční podokno zobrazující podrobnosti incidentu":::
+
+1. Pokud chcete zobrazit další podrobnosti, vyberte **Zobrazit úplné podrobnosti**.
 
     [![Reakce na incidenty zabezpečení v Azure Security Center](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 
@@ -62,6 +70,5 @@ Ve službě Security Center představuje bezpečnostní incident souhrn všech v
 
 Tato stránka vysvětluje možnosti incidentu zabezpečení Security Center. Související informace najdete na následujících stránkách:
 
-* [Ochrana před hrozbami v Security Center](threat-protection.md)
-* [Výstrahy zabezpečení v Security Center](security-center-alerts-overview.md)
-* [Správa a reakce na výstrahy zabezpečení](security-center-managing-and-responding-alerts.md)
+- [Výstrahy zabezpečení v Security Center](security-center-alerts-overview.md)
+- [Správa a reakce na výstrahy zabezpečení](security-center-managing-and-responding-alerts.md)

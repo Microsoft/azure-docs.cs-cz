@@ -13,13 +13,13 @@ metadata:
   author: TerryLanfear
   ms.author: terrylan
   manager: rkarlin
-  ms.date: 08/29/2019
-  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
-  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
-  ms.translationtype: HT
+  ms.date: 02/05/2021
+  ms.openlocfilehash: 2e50e273841b93d2ecc742f26069c0e3017b3692
+  ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/03/2020
-  ms.locfileid: "87540848"
+  ms.lasthandoff: 02/07/2021
+  ms.locfileid: "99807780"
 highlightedContent:
   items:
   - title: Seznámení se zabezpečením Azure
@@ -30,7 +30,7 @@ highlightedContent:
     url: ./fundamentals/best-practices-and-patterns.md
   - title: Co je Azure Security Center?
     itemType: overview
-    url: ../security-center/security-center-intro.md
+    url: ../security-center/security-center-introduction.md
 conceptualContent:
   items:
   - title: Základy
@@ -52,9 +52,9 @@ conceptualContent:
     - url: ./develop/secure-dev-overview.md
       itemType: overview
       text: Osvědčené postupy zabezpečeného vývoje
-    - url: ./develop/secure-web-app.md
+    - url: ./develop/secure-develop.md
       itemType: tutorial
-      text: Vývoj zabezpečené webové aplikace
+      text: Vývoj zabezpečených aplikací
     - url: ./develop/threat-modeling-tool.md
       itemType: concept
       text: Nástroj Microsoftu pro modelování hrozeb
@@ -74,17 +74,17 @@ conceptualContent:
       text: Další informace
   - title: Tajné kódy a klíče
     links:
-    - url: ../key-vault/key-vault-overview.md
+    - url: ../key-vault/general/overview.md
       itemType: overview
       text: Co je Azure Key Vault?
-    - url: ../key-vault/quick-create-cli.md
+    - url: ../key-vault/secrets/quick-create-cli.md
       itemType: quickstart
       text: Nastavení a načtení tajného kódu
     - url: ../dedicated-hsm/overview.md
       itemType: overview
       text: Co je Azure Dedicated HSM?
     footerLink:
-      url: /azure/key-vault/
+      url: ../key-vault/index.yml
       text: Další informace
   - title: Ochrana dat
     links:
@@ -102,7 +102,7 @@ conceptualContent:
       text: Další informace
   - title: Správa identit
     links:
-    - url: ./fundamentals/choose-ad-authn.md
+    - url: ../active-directory/hybrid/choose-ad-authn.md
       itemType: concept
       text: Volba vhodné metody ověřování
     - url: ./fundamentals/steps-secure-identity.md
@@ -126,17 +126,17 @@ conceptualContent:
       itemType: how-to-guide
       text: Práce se zásadami zabezpečení
     footerLink:
-      url: /azure/security-center/
+      url: ../security-center/index.yml
       text: Další informace
   - title: Monitorování zabezpečení IoT
     links:
-    - url: ../asc-for-iot/overview.md
+    - url: ../defender-for-iot/overview.md
       itemType: overview
       text: Představujeme Azure Security Center pro IoT
-    - url: ../asc-for-iot/architecture.md
+    - url: ../defender-for-iot/architecture.md
       itemType: how-to-guide
       text: Architektura služby Azure Security Center pro IoT
-    - url: ../asc-for-iot/getting-started.md
+    - url: ../defender-for-iot/getting-started.md
       itemType: how-to-guide
       text: Začínáme se službou Azure Security Center pro IoT
     footerLink:
@@ -154,19 +154,19 @@ conceptualContent:
       itemType: quickstart
       text: Začínáme s verzí Preview Azure Sentinelu
     footerLink:
-      url: /azure/sentinel/
+      url: ../sentinel/index.yml
       text: Další informace
   - title: Ochrana před hrozbami
     links:
     - url: ../security-center/security-center-alerts-overview.md
       itemType: concept
       text: Výstrahy zabezpečení ve službě Azure Security Center
-    - url: ../storage/common/storage-advanced-threat-protection.md
+    - url: ../storage/common/azure-defender-storage-configure.md
       itemType: concept
-      text: Advanced Threat Protection pro Azure Storage
-    - url: ../sql-database/sql-database-threat-detection-overview.md
+      text: Azure Defender pro úložiště
+    - url: ../azure-sql/database/threat-detection-overview.md
       itemType: concept
-      text: Advanced Threat Protection pro Azure SQL Database
+      text: Azure Defender pro SQL
     footerLink:
       url: ./fundamentals/threat-detection.md
       text: Další informace
@@ -179,7 +179,7 @@ conceptualContent:
       itemType: overview
       text: Přehled správy a monitorování
     footerLink:
-      url: https://docs.microsoft.com/search/?search=security+audit+log&scope=azure&category=Documentation
+      url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
       text: Hledání dalších položek
   - title: Zabezpečení sítě
     links:
@@ -189,7 +189,7 @@ conceptualContent:
     - url: ./fundamentals/network-best-practices.md
       itemType: concept
       text: Osvědčené postupy zabezpečení
-    - url: ./fundamentals/ddos-best-practices.md
+    - url: ../ddos-protection/fundamental-best-practices.md
       itemType: concept
       text: DDoS Protection
   - title: Zabezpečení infrastruktury
@@ -237,5 +237,5 @@ conceptualContent:
       itemType: overview
       text: Služba Azure Blueprints
     footerLink:
-      url: /azure/governance/
+      url: ../governance/index.yml
       text: Další informace

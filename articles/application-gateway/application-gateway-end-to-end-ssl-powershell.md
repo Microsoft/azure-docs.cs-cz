@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: e35569a1dc5ce7c1cb2889ac3e2ca8f60f8ccd42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47891dfa7fc0c9b30ccdbf2ed7710125eb36e4a3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808199"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397803"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Konfigurace koncového protokolu TLS pomocí Application Gateway s využitím PowerShellu
 
@@ -20,7 +20,7 @@ ms.locfileid: "84808199"
 
 Azure Application Gateway podporuje komplexní šifrování provozu. Application Gateway ukončí připojení TLS/SSL ve službě Application Gateway. Brána pak použije pravidla směrování na provoz, znovu zašifruje paket a přepošle paket na příslušný back-end Server na základě definovaných pravidel směrování. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem.
 
-Application Gateway podporuje definování vlastních možností TLS. Také podporuje zakázání následujících verzí protokolů: **tlsv 1.0**, **Tlsv 1.1**a **tlsv 1.2**, a také definování, které šifrovací sady použít a pořadí priorit. Další informace o konfigurovatelných možnostech TLS najdete v tématu [Přehled zásad protokolu TLS](application-gateway-SSL-policy-overview.md).
+Application Gateway podporuje definování vlastních možností TLS. Také podporuje zakázání následujících verzí protokolů: **tlsv 1.0** , **Tlsv 1.1** a **tlsv 1.2** , a také definování, které šifrovací sady použít a pořadí priorit. Další informace o konfigurovatelných možnostech TLS najdete v tématu [Přehled zásad protokolu TLS](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > SSL 2,0 a SSL 3,0 jsou ve výchozím nastavení zakázány a nelze je povolit. Jsou považovány za nezabezpečené a nelze je použít s Application Gateway.
@@ -202,7 +202,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Nakonfigurujte velikost instance služby Application Gateway. Dostupné velikosti jsou **standardní \_ malé**, **standardní \_ střední**a **standardní \_ **.  V případě kapacity mají dostupné hodnoty **1** až **10**.
+10. Nakonfigurujte velikost instance služby Application Gateway. Dostupné velikosti jsou **standardní \_ malé** , **standardní \_ střední** a **standardní \_**.  V případě kapacity mají dostupné hodnoty **1** až **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -219,7 +219,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Následující příklad nastaví minimální verzi protokolu na **TLSv1_2** a povolí **TLS \_ ecdh \_ ECDSA \_ s \_ AES \_ 128 \_ GCM \_ SHA256**, **TLS \_ ECDH \_ ECDSA \_ with \_ AES \_ 256 \_ GCM \_ SHA384**a **TLS \_ RSA \_ s \_ AES \_ 128 pouze \_ GCM \_ ** SHA256.
+    Následující příklad nastaví minimální verzi protokolu na **TLSv1_2** a povolí **TLS \_ ecdh \_ ECDSA \_ s \_ AES \_ 128 \_ GCM \_ SHA256** , **TLS \_ ECDH \_ ECDSA \_ with \_ AES \_ 256 \_ GCM \_ SHA384** a **TLS \_ RSA \_ s \_ AES \_ 128 pouze \_ GCM \_** SHA256.
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -312,7 +312,7 @@ Předchozí kroky vás provedly vytvořením aplikace s koncovým protokolem TLS
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definujte zásadu TLS. V následujícím příkladu jsou **tlsv 1.0** a **tlsv 1.1** zakázané a šifrovací sady **TLS \_ ECDH \_ ECDSA \_ s \_ AES \_ 128 \_ GCM \_ SHA256**, **TLS \_ ECDH \_ ECDSA \_ s \_ AES \_ 256 \_ GCM \_ SHA384**a **TLS \_ RSA \_ s \_ AES \_ 128 \_ GCM \_ ** SHA256 jsou jenom ty povolené.
+2. Definujte zásadu TLS. V následujícím příkladu jsou **tlsv 1.0** a **tlsv 1.1** zakázané a šifrovací sady **TLS \_ ECDH \_ ECDSA \_ s \_ AES \_ 128 \_ GCM \_ SHA256** , **TLS \_ ECDH \_ ECDSA \_ s \_ AES \_ 256 \_ GCM \_ SHA384** a **TLS \_ RSA \_ s \_ AES \_ 128 \_ GCM \_** SHA256 jsou jenom ty povolené.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
@@ -359,6 +359,6 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o posílení zabezpečení webových aplikací pomocí brány firewall webových aplikací prostřednictvím Application Gateway najdete v tématu [Přehled firewallu webových aplikací](application-gateway-webapplicationfirewall-overview.md).
+Další informace o posílení zabezpečení webových aplikací pomocí brány firewall webových aplikací prostřednictvím Application Gateway najdete v tématu [Přehled firewallu webových aplikací](../web-application-firewall/ag/ag-overview.md).
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png

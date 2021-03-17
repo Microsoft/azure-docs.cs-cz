@@ -3,17 +3,19 @@ title: Připojení k Azure Cosmos DB pomocí analytických nástrojů BI
 description: Naučte se používat ovladač Azure Cosmos DB ODBC k vytváření tabulek a zobrazení, aby bylo možné v softwaru BI a data Analytics zobrazovat normalizovaná data.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e7d6a67f5322c5bb640430f66ccb0917f6faada1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084819"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003493"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení k Azure Cosmos DB pomocí nástrojů BI Analytics s ovladačem ODBC
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ovladač Azure Cosmos DB ODBC vám umožní připojit se k Azure Cosmos DB pomocí analytických nástrojů BI, jako jsou služba SSIS (SQL Server Integration Services), Power BI Desktop a Tableau, abyste mohli analyzovat a vytvářet vizualizace vašich Azure Cosmos DB dat v těchto řešeních.
 
@@ -52,7 +54,7 @@ Pojďme začít s ovladačem ODBC.
 
 1. Po [instalaci ovladače Azure Cosmos DB ODBC](#install)v okně **Správce zdrojů dat ODBC** klikněte na **Přidat**. Můžete vytvořit uživatelský nebo systémový název DSN. V tomto příkladu vytváříte uživatelské DSN.
 
-1. V okně **vytvořit nový zdroj dat** vyberte **Microsoft Azure Cosmos DB ovladač ODBC**a pak klikněte na **Dokončit**.
+1. V okně **vytvořit nový zdroj dat** vyberte **Microsoft Azure Cosmos DB ovladač ODBC** a pak klikněte na **Dokončit**.
 
 1. V okně **Azure Cosmos DB ODBC ovladače SDN nastavení** zadejte následující informace: 
 
@@ -81,8 +83,8 @@ Pojďme začít s ovladačem ODBC.
     - **Počet opakování**: zadejte počet opakování operace, pokud se počáteční žádost nedokončila z důvodu omezení rychlosti služby.
     - **Soubor schématu**: tady máte několik možností.
         - Ve výchozím nastavení zachová tuto položku jako (prázdná), ovladač prohledá první stránku dat pro všechny kontejnery a určí schéma každého kontejneru. Toto je známé jako mapování kontejneru. Bez definovaného souboru schématu musí ovladač provést kontrolu každé relace ovladače a může mít za následek vyšší dobu spuštění aplikace, která používá DSN. Doporučujeme vždy přidružit soubor schématu pro DSN.
-        - Pokud už máte soubor schématu (Možná ho vytvoříte pomocí editoru schémat), můžete kliknout na **Procházet**, přejít k souboru, kliknout na **Uložit**a pak na **OK**.
-        - Pokud chcete vytvořit nové schéma, klikněte na tlačítko **OK**a potom v hlavním okně klikněte na **editor schémat** . Pak přejděte k informacím editoru schématu. Po vytvoření nového souboru schématu nezapomeňte přejít zpět do okna **Upřesnit možnosti** a zahrnout nově vytvořený soubor schématu.
+        - Pokud už máte soubor schématu (Možná ho vytvoříte pomocí editoru schémat), můžete kliknout na **Procházet**, přejít k souboru, kliknout na **Uložit** a pak na **OK**.
+        - Pokud chcete vytvořit nové schéma, klikněte na tlačítko **OK** a potom v hlavním okně klikněte na **editor schémat** . Pak přejděte k informacím editoru schématu. Po vytvoření nového souboru schématu nezapomeňte přejít zpět do okna **Upřesnit možnosti** a zahrnout nově vytvořený soubor schématu.
 
 1. Po dokončení a zavření okna **Azure Cosmos DB nastavení DSN ovladače ODBC** se nový uživatel DSN přidá na kartu uživatelské DSN.
 
@@ -105,9 +107,9 @@ Existují dva typy metod vzorkování, které lze použít: **mapování kontejn
     - Pokud chcete tento sloupec z výsledků dotazu vyloučit, můžete nastavit možnost **Skrýt sloupec** na **hodnotu true** . Sloupce označené jako skrýt sloupec = true nejsou vraceny pro výběr a projekci, i když jsou stále součástí schématu. Můžete například skrýt všechny požadované vlastnosti Azure Cosmos DB systému začínající znakem "_".
     - Sloupec **ID** je jediné pole, které nelze skrýt, protože se používá jako primární klíč v normalizovaném schématu. 
 
-1. Po dokončení definování schématu klikněte na **File**  |  **Uložit**soubor, přejděte do adresáře a uložte schéma a pak klikněte na **Uložit**.
+1. Po dokončení definování schématu klikněte na **File**  |  **Uložit** soubor, přejděte do adresáře a uložte schéma a pak klikněte na **Uložit**.
 
-1. Pokud chcete toto schéma použít se zdrojem DSN, otevřete **okno Azure Cosmos DB nastavení DSN ovladače ODBC** (přes Správce zdrojů dat ODBC), klikněte na **Upřesnit možnosti**a pak v poli **schématu** přejděte do uloženého schématu. Uložením souboru schématu do stávajícího DSN se upraví připojení DSN k oboru pro data a strukturu, která je definovaná schématem.
+1. Pokud chcete toto schéma použít se zdrojem DSN, otevřete **okno Azure Cosmos DB nastavení DSN ovladače ODBC** (přes Správce zdrojů dat ODBC), klikněte na **Upřesnit možnosti** a pak v poli **schématu** přejděte do uloženého schématu. Uložením souboru schématu do stávajícího DSN se upraví připojení DSN k oboru pro data a strukturu, která je definovaná schématem.
 
 ## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>Krok 4: vytvoření definice schématu pomocí metody mapování oddělovačů tabulek
 
@@ -135,7 +137,7 @@ Následující postup vytvoří schéma pro data v jednom nebo více kontejnerec
     - Pokud chcete tento sloupec z výsledků dotazu vyloučit, můžete nastavit možnost **Skrýt sloupec** na **hodnotu true** . Sloupce označené jako skrýt sloupec = true nejsou vraceny pro výběr a projekci, i když jsou stále součástí schématu. Můžete například skrýt všechny požadované vlastnosti Azure Cosmos DB systému od `_` .
     - Sloupec **ID** je jediné pole, které nelze skrýt, protože se používá jako primární klíč v normalizovaném schématu. 
 
-1. Po dokončení definování schématu klikněte na **File**  |  **Uložit**soubor, přejděte do adresáře a uložte schéma a pak klikněte na **Uložit**.
+1. Po dokončení definování schématu klikněte na **File**  |  **Uložit** soubor, přejděte do adresáře a uložte schéma a pak klikněte na **Uložit**.
 
 1. Zpátky v okně **Azure Cosmos DB nastavení DSN ovladače ODBC** klikněte na **Upřesnit možnosti**. Pak v poli **soubor schématu** přejděte do uloženého souboru schématu a klikněte na **OK**. Opětovným kliknutím na tlačítko **OK** uložte název DSN. Tím se uloží schéma, které jste vytvořili do DSN. 
 
@@ -145,7 +147,7 @@ Nastavením připojení připojeného serveru můžete zadat dotaz na Azure Cosm
 
 1. Vytvořte systémový zdroj dat, jak je popsáno v [kroku 2](#connect)nazvané příklad `SDS Name` .
 
-1. [Nainstalujte SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a připojte se k serveru. 
+1. [Nainstalujte SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a připojte se k serveru. 
 
 1. V editoru dotazů SSMS vytvořte objekt propojeného serveru `DEMOCOSMOS` pro zdroj dat pomocí následujících příkazů. Nahraďte `DEMOCOSMOS` názvem vašeho odkazovaného serveru a `SDS Name` názvem vašeho systémového zdroje dat.
 
@@ -203,7 +205,7 @@ Pak v okně **definice zobrazení** proveďte následující:
 
 1. Klikněte na **Nový**, zadejte název zobrazení, třeba EmployeesfromSeattleView, a pak klikněte na **OK**.
 
-1. V okně **Upravit zobrazení** zadejte Azure Cosmos DB dotaz. Musí se jednat o [Azure Cosmos DB dotaz SQL](how-to-sql-query.md), například `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` a pak klikněte na tlačítko **OK**.
+1. V okně **Upravit zobrazení** zadejte Azure Cosmos DB dotaz. Musí se jednat o [Azure Cosmos DB dotaz SQL](./sql-query-getting-started.md), například `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` a pak klikněte na tlačítko **OK**.
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="Přidat dotaz při vytváření zobrazení":::
 
@@ -218,7 +220,7 @@ Pomocí nového názvu DSN se můžete připojit k Azure Cosmos DB pomocí libov
 
 1. Klikněte na **získat data**.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="Načtení dat v Power BI Desktopu":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="Získat data v Power BI Desktop":::
 
 1. V okně **získat data** klikněte na **jiný**  |  **ODBC**  |  **připojit**.
 
@@ -238,9 +240,9 @@ Pomocí nového názvu DSN se můžete připojit k Azure Cosmos DB pomocí libov
 
 1. V Power BI Desktop úplně vlevo vyberte kartu data a potvrďte tak, že se :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: data naimportovala. 
 
-1. Vizuály teď můžete vytvářet pomocí Power BI kliknutím na kartu Sestava :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: , kliknutím na **Nový vizuál**a přizpůsobením dlaždice. Další informace o vytváření vizualizací v Power BI Desktop najdete v tématu [typy vizualizací v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/). 
+1. Vizuály teď můžete vytvářet pomocí Power BI kliknutím na kartu Sestava :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: , kliknutím na **Nový vizuál** a přizpůsobením dlaždice. Další informace o vytváření vizualizací v Power BI Desktop najdete v tématu [typy vizualizací v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/). 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se zobrazí následující chyba, ujistěte se, že hodnoty pro **hostitele** a **přístupová oprávnění** , které jste zkopírovali Azure Portal v [kroku 2](#connect) jsou správné, a pak to zkuste znovu. Použijte tlačítka Kopírovat napravo od **hostitele** a přístupové hodnoty **klíčů** v Azure Portal ke zkopírování hodnoty bez chyb.
 

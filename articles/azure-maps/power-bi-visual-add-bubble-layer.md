@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4443b0f479079a4722a5d62fea40afcb4a58632d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ff0d2c8e90995222af79d5be63ca3e9da24b3c45
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261752"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896221"
 ---
 # <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
 
@@ -49,15 +49,15 @@ Pokud se pole předává do kontejneru **Velikost** v podokně **pole** , bublin
 |---------------------|--------------|
 | Minimální velikost            | Minimální velikost bublin při škálování dat|
 | Maximální velikost            | Maximální velikost bublin při škálování dat|
-| Size – metoda škálování | Algoritmus škálování používaný k určení relativní velikosti bublin.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Lineární rozsah vstupních dat lineárně mapovaných na minimum a maximální velikost. (výchozí)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Log – rozsah vstupních datových logarithmically mapovaných na minimum a maximální velikost.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Krychlový-Bézierovo – zadejte hodnoty x1, Y1, X2, Y2 křivky krychle, která umožňuje vytvořit vlastní metodu škálování. |
+| Size – metoda škálování | Algoritmus škálování používaný k určení relativní velikosti bublin.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Lineární rozsah vstupních dat lineárně mapovaných na minimum a maximální velikost. (výchozí)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Log – rozsah vstupních datových logarithmically mapovaných na minimum a maximální velikost.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Cubic-Bezier – zadáním hodnot x1, Y1, X2, Y2 Cubic-Bezier křivky vytvořte vlastní metodu škálování. |
 
-Když je **Metoda škálování velikosti** nastavená na **protokol**, zpřístupní se následující možnosti.
+Když je **Metoda škálování velikosti** nastavená na **protokol** , zpřístupní se následující možnosti.
 
 | Nastavení   | Popis      |
 |-----------|------------------|
 | Škálování protokolu | Logaritmické měřítko, které má být použito při výpočtu velikosti bublin. |
 
-Pokud je **Metoda škálování velikosti** nastavená na **krychlové**, budou k dispozici následující možnosti pro přizpůsobení křivky škálování.
+Pokud je **Metoda škálování velikosti** nastavená na **krychlové** , budou k dispozici následující možnosti pro přizpůsobení křivky škálování.
 
 | Nastavení | Popis                           |
 |---------|---------------------------------------|
@@ -67,30 +67,30 @@ Pokud je **Metoda škálování velikosti** nastavená na **krychlové**, budou 
 | Y2      | Parametr Y2 Bézierovy křivky krychle |
 
 > [!TIP]
-> [https://cubic-bezier.com/](https://cubic-bezier.com/)má užitečný nástroj pro vytváření parametrů pro křivky krychlových a Bézierových čar.
+> [https://cubic-bezier.com/](https://cubic-bezier.com/) má užitečný nástroj pro vytváření parametrů pro Cubic-Bezier křivky.
 
 ## <a name="next-steps"></a>Další kroky
 
 Změňte způsob zobrazení dat na mapě:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu pruhového grafu](power-bi-visual-add-bar-chart-layer.md)
+> [Přidání vrstvy pruhového grafu](power-bi-visual-add-bar-chart-layer.md)
 
 Přidat k mapě další kontext:
 
 > [!div class="nextstepaction"]
-> [Přidat referenční vrstvu](power-bi-visual-add-reference-layer.md)
+> [Přidání referenční vrstvy](power-bi-visual-add-reference-layer.md)
 
 > [!div class="nextstepaction"]
 > [Přidání vrstvy dlaždic](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazit provoz v reálném čase](power-bi-visual-show-real-time-traffic.md)
+> [Zobrazení provozu v reálném čase](power-bi-visual-show-real-time-traffic.md)
 
 Přizpůsobení vizuálu:
 
 > [!div class="nextstepaction"]
-> [Tipy a triky pro formátování barev v Power BI](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Tipy a triky pro formátování barev v Power BI](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení názvů, pozadí a legend vizualizací](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [Přizpůsobení názvů, pozadí a legend vizualizací](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

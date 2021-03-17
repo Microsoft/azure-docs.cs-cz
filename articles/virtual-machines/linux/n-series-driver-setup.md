@@ -1,25 +1,27 @@
 ---
 title: Nastavení ovladače GPU řady Azure N-Series pro Linux
 description: Postup nastavení ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux v Azure
-services: virtual-machines-linux
+services: virtual-machines
 author: vikancha-MSFT
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subervice: vm-sizes-gpu
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/09/2019
+ms.date: 11/11/2019
 ms.author: vikancha
-ms.openlocfilehash: 02fbe721f1bf5737ad1d10d656ea75ed1372b484
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c4c6bee6d3f9e423d83458ad48d213fe65223514
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284876"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551756"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
 Pokud chcete využívat možnosti GPU pro virtuální počítače řady Azure N-Series, které využívají grafické procesory NVIDIA, musíte nainstalovat ovladače GPU NVIDIA. [Rozšíření ovladače NVIDIA GPU](../extensions/hpccompute-gpu-linux.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako je Azure CLI nebo šablony Azure Resource Manager. Podporované distribuce a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) .
 
-Pokud se rozhodnete nainstalovat ovladače NVIDIA GPU ručně, najdete v tomto článku Podporované distribuce, ovladače a postup instalace a ověření. Pro [virtuální počítače s Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jsou k dispozici také informace o ruční instalaci ovladače.
+Pokud se rozhodnete nainstalovat ovladače NVIDIA GPU ručně, najdete v tomto článku Podporované distribuce, ovladače a postup instalace a ověření. Pro [virtuální počítače s Windows](../windows/n-series-driver-setup.md)jsou k dispozici také informace o ruční instalaci ovladače.
 
 Informace o specifikacích virtuálních počítačů řady N-Series, kapacitách úložiště a podrobnostech o disku najdete v tématu [velikosti virtuálních počítačů se systémem GPU Linux](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
 
@@ -28,7 +30,6 @@ Informace o specifikacích virtuálních počítačů řady N-Series, kapacitác
 ## <a name="install-cuda-drivers-on-n-series-vms"></a>Nainstalovat ovladače CUDA pro virtuální počítače řady N-Series
 
 Tady jsou kroky pro instalaci ovladačů CUDA ze sady NVIDIA CUDA Toolkit na virtuálních počítačích řady N-Series. 
-
 
 Vývojáři jazyka C a C++ můžou volitelně nainstalovat úplnou sadu nástrojů pro vytváření aplikací akcelerovaných GPU. Další informace najdete v příručce pro [instalaci CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
@@ -41,29 +42,31 @@ Zobrazí se výstup podobný následujícímu příkladu (zobrazuje se karta NVI
 
 ![výstup příkazu lspci](./media/n-series-driver-setup/lspci.png)
 
+lspci Vypíše zařízení PCIe na virtuálním počítači, včetně síťových karet InfiniBand a GPU (pokud nějaké jsou). Pokud se lspci úspěšně nevrátí, možná budete muset nainstalovat LIS v CentOS/RHEL (pokyny níže).
 Pak spusťte instalační příkazy specifické pro vaši distribuci.
 
 ### <a name="ubuntu"></a>Ubuntu 
 
-1. Stáhněte si a nainstalujte ovladače CUDA z webu NVIDIA. Například pro Ubuntu 16,04 LTS:
+1. Stáhněte si a nainstalujte ovladače CUDA z webu NVIDIA. 
+    > [!NOTE]
+   >  Následující příklad ukazuje cestu k balíčku CUDA pro Ubuntu 16,04. Nahraďte cestu specifickou pro verzi, kterou plánujete použít. 
+   >  
+   >  Přejděte na stránku [stažení softwaru společnosti NVIDIA] ( https://developer.download.nvidia.com/compute/cuda/repos/) pro úplnou cestu specifickou pro každou verzi. 
+   > 
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
-
-   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
+   wget -O /tmp/${CUDA_REPO_PKG} https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
    sudo dpkg -i /tmp/${CUDA_REPO_PKG}
-
    sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
-
    rm -f /tmp/${CUDA_REPO_PKG}
 
    sudo apt-get update
-
    sudo apt-get install cuda-drivers
-
    ```
 
    Instalace může trvat několik minut.
+ 
 
 2. Pokud chcete volitelně nainstalovat úplnou CUDA sadu nástrojů, zadejte:
 
@@ -79,11 +82,8 @@ Doporučujeme, abyste po nasazení pravidelně aktualizovali CUDA ovladače.
 
 ```bash
 sudo apt-get update
-
 sudo apt-get upgrade -y
-
 sudo apt-get dist-upgrade -y
-
 sudo apt-get install cuda-drivers
 
 sudo reboot
@@ -95,36 +95,33 @@ sudo reboot
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
-  
-   sudo reboot
-
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
-
-   ```bash
-   wget https://aka.ms/lis
- 
-   tar xvzf lis
- 
-   cd LISISO
- 
-   sudo ./install.sh
- 
    sudo reboot
    ```
- 
+
+2. Nainstalujte nejnovější [integrační služby pro Linux pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106). Ověřte, zda je aplikace LIS požadována pomocí ověření výsledků lspci. Pokud jsou všechna zařízení GPU uvedená podle očekávání (a jsou popsána výše), instalace aplikace LIS se nevyžaduje.
+
+   Upozorňujeme, že LIS platí pro Red Hat Enterprise Linux, CentOS a Oracle Linux Red Hat kompatibilní jádro 5.2-5,11, 6.0-6.10 a 7.0-7.7. Další podrobnosti najdete v dokumentaci [dokumentace ke službě Linux Integration Services] ( https://www.microsoft.com/en-us/download/details.aspx?id=55106) . 
+   Tento krok přeskočte, pokud plánujete používat CentOS/RHEL 7,8 (nebo vyšší verze), protože v aplikaci LIS už pro tyto verze není potřeba.
+
+      ```bash
+      wget https://aka.ms/lis
+      tar xvzf lis
+      cd LISISO
+
+      sudo ./install.sh
+      sudo reboot
+      ```
+
 3. Znovu se připojte k virtuálnímu počítači a pokračujte v instalaci pomocí následujících příkazů:
 
    ```bash
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
    sudo yum install dkms
-
+   
    CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
-
-   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+   wget https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
    sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
-
    rm -f /tmp/${CUDA_REPO_PKG}
 
    sudo yum install cuda-drivers
@@ -137,6 +134,9 @@ sudo reboot
    ```bash
    sudo yum install cuda
    ```
+   > [!NOTE]
+   >  Pokud se zobrazí chybová zpráva týkající se chybějících balíčků, jako je Vulkan systém, budete možná muset upravit/etc/yum.Repos.d/RH-Cloud, vyhledat volitelnou RPM a nastavit povoleno na 1.
+   >  
 
 5. Restartujte virtuální počítač a pokračujte v instalaci ověření.
 
@@ -150,7 +150,7 @@ Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu.
 
 ## <a name="rdma-network-connectivity"></a>Připojení k síti RDMA
 
-Připojení k síti RDMA je možné povolit u virtuálních počítačů řady N-Series s podporou RDMA, jako je NC24r nasazených ve stejné skupině dostupnosti nebo v jedné skupině umístění v sadě škálování virtuálního machiine (VM). Síť RDMA podporuje provoz rozhraní MPI (Message Passing Interface) pro aplikace běžící s Intel MPI 5. x nebo novější verzí. Další požadavky jsou následující:
+Připojení k síti RDMA je možné povolit u virtuálních počítačů řady N-Series s podporou RDMA, jako je NC24r nasazených ve stejné skupině dostupnosti nebo do jedné skupiny umístění v sadě škálování virtuálního počítače (VM). Síť RDMA podporuje provoz rozhraní MPI (Message Passing Interface) pro aplikace běžící s Intel MPI 5. x nebo novější verzí. Další požadavky jsou následující:
 
 ### <a name="distributions"></a>Distribuce
 
@@ -161,6 +161,23 @@ Nasaďte virtuální počítače s podporou RDMA řady N-Series z jedné bitové
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
 * Na virtuálním počítači jsou nainstalované ovladače **HPC-based 7,4 CentOS HPC** -RDMA a Intel MPI 5,1.
+
+* **CentOS HPC** -CentOS-HPC 7,6 a novější (pro SKU, kde se InfiniBand podporuje přes SR-IOV). Tyto image mají Mellanox OFED a knihovny MPI, které jsou předem nainstalované.
+
+> [!NOTE]
+> Karty CX3-Pro jsou podporovány pouze prostřednictvím LTS verzí Mellanox OFED. Použijte LTS Mellanox OFED verze (4.9-0.1.7.0) na virtuálních počítačích řady N-Series s kartami ConnectX3-Pro. Další informace najdete v tématu [ovladače pro Linux](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
+>
+> Některé z nejnovějších Azure Marketplace imagí HPC mají také Mellanox OFED 5,1 a novější, které nepodporují ConnectX3-Pro karty. Než ho použijete na virtuálních počítačích s ConnectX3-Pro kartami, v imagi HPC ověřte verzi OFED Mellanox.
+>
+> Následující obrázky jsou nejnovější bitové kopie CentOS-HPC, které podporují ConnectX3-Pro karty:
+>
+> - OpenLogic: CentOS-HPC: 7.6:7.6.2020062900
+> - OpenLogic: CentOS-HPC: 7_6gen2:7.6.2020062901
+> - OpenLogic: CentOS-HPC: 7.7:7.7.2020062600
+> - OpenLogic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+> - OpenLogic: CentOS-HPC: 8_1:8.1.2020062400
+> - OpenLogic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+>
 
 ## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>Instalace ovladačů mřížky na virtuálních počítačích NV nebo NVv3-Series
 
@@ -174,20 +191,15 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
 
    ```bash
    sudo apt-get update
-
    sudo apt-get upgrade -y
-
    sudo apt-get dist-upgrade -y
-
    sudo apt-get install build-essential ubuntu-desktop -y
-   
    sudo apt-get install linux-azure -y
    ```
 3. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NVv2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` `nouveau.conf` s názvem s následujícím obsahem:
 
    ```
    blacklist nouveau
-
    blacklist lbm-nouveau
    ```
 
@@ -202,9 +214,7 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
-
    chmod +x NVIDIA-Linux-x86_64-grid.run
-
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
@@ -237,38 +247,32 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
  
    ```bash  
    sudo yum update
- 
    sudo yum install kernel-devel
- 
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
- 
    sudo yum install dkms
-   
    sudo yum install hyperv-daemons
    ```
 
-2. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NV2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` `nouveau.conf` s názvem s následujícím obsahem:
+2. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NV3.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` `nouveau.conf` s názvem s následujícím obsahem:
 
    ```
    blacklist nouveau
-
    blacklist lbm-nouveau
    ```
- 
-3. Restartujte virtuální počítač, znovu se připojte a nainstalujte nejnovější [integrační služby Linux pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106).
- 
-   ```bash
-   wget https://aka.ms/lis
 
-   tar xvzf lis
+3. Restartujte virtuální počítač, znovu se připojte a nainstalujte nejnovější [integrační služby Linux pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106). Ověřte, zda je aplikace LIS požadována pomocí ověření výsledků lspci. Pokud jsou všechna zařízení GPU uvedená podle očekávání (a jsou popsána výše), instalace aplikace LIS se nevyžaduje. 
 
-   cd LISISO
+   Tento krok přeskočte, pokud plánujete používat CentOS/RHEL 7,8 (nebo vyšší verze), protože v aplikaci LIS už pro tyto verze není potřeba.
 
-   sudo ./install.sh
+      ```bash
+      wget https://aka.ms/lis
+      tar xvzf lis
+      cd LISISO
 
-   sudo reboot
+      sudo ./install.sh
+      sudo reboot
 
-   ```
+      ```
  
 4. Znovu se připojte k virtuálnímu počítači a spusťte `lspci` příkaz. Ověřte, že karta nebo karty NVIDIA M60 jsou viditelné jako zařízení PCI.
  
@@ -276,7 +280,6 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
-
    chmod +x NVIDIA-Linux-x86_64-grid.run
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
@@ -310,7 +313,7 @@ Pokud chcete zadat dotaz na stav zařízení GPU, SSH k virtuálnímu počítač
 
 Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu. Všimněte si, že **GPU-util** zobrazuje 0%, pokud momentálně na virtuálním počítači nespouštíte úlohu GPU. Podrobnosti o verzi ovladače a GPU se mohou lišit od zobrazených.
 
-![Stav zařízení NVIDIA](./media/n-series-driver-setup/smi-nv.png)
+![Snímek obrazovky, který zobrazuje výstup při dotazování na stav zařízení GPU](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>Server X11
@@ -356,7 +359,8 @@ Pak vytvořte záznam pro skript pro aktualizaci v nástroji, `/etc/rc.d/rc3.d` 
 
 * Můžete nastavit režim trvalosti pomocí `nvidia-smi` , takže výstup příkazu je rychlejší, když potřebujete zadat dotaz na karty. Chcete-li nastavit režim trvalosti, spusťte příkaz `nvidia-smi -pm 1` . Všimněte si, že pokud se virtuální počítač restartuje, nastavení režimu zmizí. Vždy můžete skriptovat nastavení režimu, které se spustí při spuštění.
 * Pokud jste ovladače NVIDIA CUDA aktualizovali na nejnovější verzi a zjistíte, že připojení RDMA už nefunguje, [přeinstalujte ovladače RDMA pro opětovné](#rdma-network-connectivity) vytvoření tohoto připojení. 
+* Pokud aplikace LIS nepodporuje určitou CentOS/RHEL verzi operačního systému (nebo jádro), je během instalace aplikace LIS vyvolána chyba "Nepodporovaná verze jádra". Oznamte tuto chybu spolu s operačním systémem a verzemi jádra.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete zachytit image virtuálního počítače se systémem Linux pomocí nainstalovaných ovladačů NVIDIA, přečtěte si téma [postup generalizace a zachycení virtuálního počítače se systémem Linux](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Pokud chcete zachytit image virtuálního počítače se systémem Linux pomocí nainstalovaných ovladačů NVIDIA, přečtěte si téma [postup generalizace a zachycení virtuálního počítače se systémem Linux](capture-image.md).

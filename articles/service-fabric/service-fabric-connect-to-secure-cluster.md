@@ -3,12 +3,13 @@ title: Zabezpečené připojení k clusteru Azure Service Fabric
 description: Popisuje ověření přístupu klienta ke clusteru Service Fabric a způsob zabezpečení komunikace mezi klienty a clusterem.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d3598b283a91645f0db648be81c73dffde8b46
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3a669f7400eb2daf2d71f6caed41560020699c58
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259251"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791117"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
@@ -30,7 +31,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 Pokud Váš soubor. pfx není chráněný heslem, použijte parametr-Passin Pass: pro poslední parametr.
 
-Pokud chcete zadat klientský certifikát jako soubor PEM, zadejte cestu k souboru v `--pem` argumentu. Příklad:
+Pokud chcete zadat klientský certifikát jako soubor PEM, zadejte cestu k souboru v `--pem` argumentu. Například:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -44,7 +45,7 @@ Chcete-li zadat certifikát, dvojici klíčů `--cert` použijte `--key` argumen
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Někdy certifikáty, které se používají k zabezpečení testovacích nebo vývojových clusterů, selžou při ověřování certifikátů. Pokud chcete obejít ověření certifikátu, zadejte `--no-verify` možnost. Příklad:
+Někdy certifikáty, které se používají k zabezpečení testovacích nebo vývojových clusterů, selžou při ověřování certifikátů. Pokud chcete obejít ověření certifikátu, zadejte `--no-verify` možnost. Například:
 
 > [!WARNING]
 > Nepoužívejte `no-verify` možnost při připojování k produkčním Service Fabric clusterům.
@@ -53,7 +54,7 @@ Někdy certifikáty, které se používají k zabezpečení testovacích nebo v�
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Kromě toho můžete zadat cesty k adresářům důvěryhodných certifikátů CA nebo jednotlivých certifikátů. K určení těchto cest použijte `--ca` argument. Příklad:
+Kromě toho můžete zadat cesty k adresářům důvěryhodných certifikátů CA nebo jednotlivých certifikátů. K určení těchto cest použijte `--ca` argument. Například:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
@@ -231,7 +232,7 @@ catch (Exception e)
 
 Následující příklad spoléhá na Microsoft. IdentityModel. clients. Active, Version: 2.19.208020213.
 
-Další informace o získání tokenu AAD najdete v tématu [Microsoft. IdentityModel. clients. Active](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet).
+Další informace o získání tokenu AAD najdete v tématu [Microsoft. IdentityModel. clients. Active](/dotnet/api/microsoft.identitymodel.clients.activedirectory).
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";

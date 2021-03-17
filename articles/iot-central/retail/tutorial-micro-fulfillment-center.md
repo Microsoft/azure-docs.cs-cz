@@ -5,18 +5,24 @@ author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 74deb4253a21445e21f7ef04f53f3bfe3f1fe0d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000536"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390466"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace centra pro pořizování
 
-V tomto kurzu použijete šablonu aplikace Azure IoT Central Micro-splní centrum k sestavení maloobchodního řešení. Naučíte se, jak nasadit šablonu, co je součástí IT a co byste chtěli udělat dál.
+V tomto kurzu použijete šablonu aplikace Azure IoT Central Micro-splní centrum k sestavení maloobchodního řešení.
+
+V tomto kurzu se naučíte:
+
+> [!div class="checklist"]
+> * Postup nasazení šablony aplikace
+> * Jak používat šablonu aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení této série kurzů potřebujete předplatné Azure. Volitelně můžete použít bezplatnou 7 dní zkušební verzi. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
@@ -47,7 +53,7 @@ Vytvoření nové aplikace centra pro pořizování softwaru, která používá 
 
 1. Pokud máte předplatné Azure, zadejte svůj adresář, předplatné Azure a oblast. Pokud předplatné nemáte, můžete povolit 7 dní bezplatnou zkušební verzi a doplnit požadované kontaktní údaje.  
 
-    Další informace o adresářích a předplatných najdete v tématu rychlý Start [k vytvoření aplikace](../preview/quick-deploy-iot-central.md) .
+    Další informace o adresářích a předplatných najdete v tématu rychlý Start [k vytvoření aplikace](../core/quick-deploy-iot-central.md) .
 
 1. Vyberte **Vytvořit**.
 
@@ -62,11 +68,11 @@ Z řídicího panelu můžete:
    * Zobrazení plánu a umístění automatických dopravců v rámci struktury plnění.
    * Příkazy triggeru, jako je resetování systému řízení, aktualizace firmwaru dopravce a změna konfigurace sítě.
 
-     ![Snímek obrazovky s řídicím panelem Northwind Traders Micro – plnění](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Snímek obrazovky s horní polovinou řídicího panelu pro Northwind Traders Micro Center](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * Podívejte se na příklad řídicího panelu, který může operátor použít k monitorování podmínek v rámci centra plnění. 
    * Monitorujte stav datových částí, které jsou spuštěny na zařízení brány v rámci centra plnění.    
 
-     ![Snímek obrazovky s řídicím panelem Northwind Traders Micro – plnění](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Snímek obrazovky Botton poloviny řídicího panelu pro Northwind Traders Micro.](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>Šablona zařízení
 Pokud vyberete kartu šablony zařízení, uvidíte, že existují dva různé typy zařízení, které jsou součástí šablony: 
@@ -86,11 +92,13 @@ Pomocí ukázkového pravidla jako inspiraci definujte pravidla, která jsou vho
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace. Přejít na**nastavení aplikace** **pro správu** > a vyberte **Odstranit**.
+Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace. Přejít na   >  **nastavení aplikace** pro správu a vyberte **Odstranit**.
 
 ![Snímek obrazovky se stránkou nastavení aplikace centra pro doplňování](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [architektuře řešení pro Micro-vyplňování softwaru](./architecture-micro-fulfillment-center.md).
-* Přečtěte si další informace o dalších [šablonách maloobchodního prodeje v Azure IoT Central](./overview-iot-central-retail.md).
-* Přečtěte si [Přehled Azure IoT Central](../preview/overview-iot-central.md).
+
+Přečtěte si další informace:
+
+> [!div class="nextstepaction"]
+> [Architektura řešení pro Micro-vyplňování softwaru](./architecture-micro-fulfillment-center.md)

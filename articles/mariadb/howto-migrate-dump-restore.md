@@ -1,17 +1,18 @@
 ---
 title: Migrace pomocí výpisu a obnovení Azure Database for MariaDB
 description: Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MariaDB pomocí nástrojů, jako jsou mysqldump, MySQL Workbench a PHPMyAdmin.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
+ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 2/27/2020
-ms.openlocfilehash: 674622e6210c3cceda5af3b53bf4ba1851f7179b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8678304e72f11c486911ff4de00633224e878147
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118847"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564469"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrace databáze MariaDB do Azure Database for MariaDB pomocí výpisu a obnovení
 Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MariaDB

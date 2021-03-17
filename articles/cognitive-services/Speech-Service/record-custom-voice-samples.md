@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261580"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722309"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam ukázek hlasu pro vytvoření vlastního hlasu
 
@@ -24,6 +24,14 @@ Vytváření vysoce kvalitního vlastního hlasu od začátku není žádný neo
 Než budete moct tyto nahrávky vytvořit, budete potřebovat skript: slova, která budou hlasem talentů mluveného záznamu k vytvoření ukázek zvuku. Pro dosažení nejlepších výsledků musí mít váš skript dobré pokrytí foneticky a dostatečné množství pro výuku vlastního hlasového modelu.
 
 Mnoho malých, ale důležitých podrobností se dohlíží k vytvoření profesionálního záznamu hlasu. Tato příručka je plánem procesu, který vám pomůže získat dobré a konzistentní výsledky.
+
+> [!NOTE]
+> Pokud chcete naučit neuronové hlas, musíte zadat profil hlasového talentů se souborem s vyjádřením informací o zvuku, který je k dispozici v hlasovém talentůu, abyste mohli využít jeho data o řeči k učení vlastního hlasového modelu. Při přípravě skriptu nahrávání se ujistěte, že jste zahrnuli níže uvedenou větu. 
+
+> "I [stav vašeho jména a příjmení] si uvědomte, že nahrávky mého hlasu budou použity uživatelem [State název společnosti] k vytvoření a použití syntetické verze mého hlasu."
+Tato věta se použije k ověření, jestli se školicí data provádějí stejnou osobou, která tento souhlas provede. Tady si můžete přečíst další informace o [ověřování hlasových talentů](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) .
+
+> Vlastní neuronové hlas je k dispozici s omezeným přístupem. Ujistěte se, že rozumíte [požadavkům na AI](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) a [použijete přístup tady](https://aka.ms/customneural). 
 
 > [!TIP]
 > Pro nejvyšší výsledky kvality zvažte, že společnost Microsoft bude pomáhat s vývojem vlastního hlasu. Microsoft má rozsáhlé zkušenosti s vytvářením vysoce kvalitních hlasů pro vlastní produkty, včetně Cortany a kanceláře.
@@ -56,7 +64,7 @@ Vaše hlasová talentů je druhá polovina rovnice. Musí být schopni mluvit s 
 
 Nahrávání vlastních ukázek hlasu může být víc fatiguing než jiné druhy hlasového díla. Většina hlasových talentů může nahrávat dva nebo tři hodiny denně. Omezení relací na tři nebo čtyři týdny s denním dnem (Pokud je to možné).
 
-Záznamy vytvořené pro hlasový model by měly být dětem neutrální. To znamená, že JSD utterance by neměl být čten v rámci JSD. Náladu můžete přidat do syntetizované řeči později prostřednictvím ovládacích prvků Prosody. Spolupracujte se svým hlasovým talentůem, abyste mohli vyvíjet "" "osoby, které definují celkový zvuk a emocionálních tón vlastního hlasu. V tomto procesu určíte, jaké jsou "neutrální" zvuky jako pro tyto osoby.
+Spolupracujte se svým hlasovým talentůem, abyste mohli vyvíjet "" "osoby, které definují celkový zvuk a emocionálních tón vlastního hlasu. V tomto procesu určíte, jaké jsou "neutrální" zvuky jako pro tyto osoby. Pomocí funkce hlas Custom neuronové můžete vytvořit výuku modelu, který se domluví s emoce. Definujte "speaking Styles" a požádejte talentů hlasu, aby se skript četl způsobem, který rezonovat požadované styly.  
 
 Osoba může mít například přirozený osobní charakter. Takže hlas "jejich" může poznamenat optimism i v případě, že budou mluvit neutrálně. Tyto vlastnosti osobnosti by však měly být drobné a konzistentní. Získejte představu o tom, co si stávající hlasy poslechnout.
 
@@ -108,7 +116,7 @@ Naštěstí je možné tyto problémy zcela vyhnout. Existuje mnoho zdrojů text
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|Přibližně 1100 vět vybraných z ochrany autorského práva fungují speciálně pro použití v projektech syntézy řeči. Vynikající počáteční bod.|
 |Už funguje<br>v části Copyright|Obvykle funguje publikace před 1923. V anglickém jazyce [Gutenberg Project](https://www.gutenberg.org/) nabízí desítky tisíců takových děl. Možná se budete chtít soustředit na novější práci, protože jazyk bude přiblížný k moderní angličtině.|
-|Vláda&nbsp;funguje|Práce vytvořená USA vládou nejsou v USA s copyrightem, i když státní správa může nárokovat na Copyright v jiných zemích nebo oblastech.|
+|Vláda &nbsp; funguje|Práce vytvořená USA vládou nejsou v USA s copyrightem, i když státní správa může nárokovat na Copyright v jiných zemích nebo oblastech.|
 |Veřejná doména|Funguje, pro která je autorská práva explicitně nenárokovaná nebo která byla vyhrazená pro veřejnou doménu. V některých předpisech nemusí být možné zcela upustit od autorského práva.|
 |Opravňující – licencovaná práce|Funguje v rámci licence, jako je například Creative, nebo licence na bezplatnou dokumentaci GNU (GFDL). Wikipedii používá GFDL. Některé licence však mohou znamenat omezení výkonu licencovaného obsahu, který může mít vliv na vytvoření vlastního hlasového modelu, takže si důkladně přečtěte licenci.|
 
@@ -211,7 +219,7 @@ Pečlivě naslouchat každému souboru. V této fázi můžete upravit malé nec
 
 Převeďte každý soubor na 16 bitů a vzorkovací frekvenci o 16 kHz před uložením a pokud jste si poznamenali, že jste nahráli chat Studio, odeberte druhý kanál. Uložte každý soubor ve formátu WAV a pojmenujte soubory s utterance číslem ze svého skriptu.
 
-Nakonec vytvořte *přepis* , který přidruží jednotlivé soubory WAV k textové verzi odpovídající utterance. [Vytváření vlastních hlasových písem](how-to-customize-voice-font.md) obsahuje podrobnosti o požadovaném formátu. Text můžete zkopírovat přímo z vašeho skriptu. Pak vytvořte soubor zip se soubory WAV a přepis textu.
+Nakonec vytvořte *přepis* , který přidruží jednotlivé soubory WAV k textové verzi odpovídající utterance. [Vytváření vlastních hlasů](./how-to-custom-voice-create-voice.md) obsahuje podrobnosti o požadovaném formátu. Text můžete zkopírovat přímo z vašeho skriptu. Pak vytvořte soubor zip se soubory WAV a přepis textu.
 
 Archivujte původní nahrávky na bezpečném místě pro případ, že je budete potřebovat později. Zachovejte i svůj skript a poznámky.
 
@@ -220,4 +228,4 @@ Archivujte původní nahrávky na bezpečném místě pro případ, že je budet
 Jste připraveni nahrát vaše nahrávky a vytvořit vlastní hlas.
 
 > [!div class="nextstepaction"]
-> [Vytváření vlastních hlasových písem](how-to-customize-voice-font.md)
+> [Vytváření vlastních hlasových písem](./how-to-custom-voice-create-voice.md)

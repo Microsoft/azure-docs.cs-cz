@@ -10,17 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5882b79232e858bbc8ad7e0da94ad4b04f5165ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 7b4bda5a439b1e0b35dc6d3af99e0273e4987568
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422976"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091351"
 ---
 # <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>Jak používat Shaka Player s Azure Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -31,6 +33,7 @@ Doporučujeme použít [Mux.js](https://github.com/videojs/mux.js/) jako bez ně
 Jeho oficiální dokumentaci najdete v [dokumentaci ke službě Shaka Player](https://shaka-player-demo.appspot.com/docs/api/tutorial-welcome.html).
 
 ## <a name="sample-code"></a>Ukázka kódu
+
 Vzorový kód tohoto článku je k dispozici v [Azure-Samples/Media-Services-3rdParty-Player-Samples](https://github.com/Azure-Samples/media-services-3rdparty-player-samples).
 
 ## <a name="implementing-the-player"></a>Implementace přehrávače

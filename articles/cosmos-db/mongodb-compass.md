@@ -5,16 +5,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/05/2020
-author: LuisBosquez
-ms.author: lbosq
-ms.openlocfilehash: 2f461ebbd84a66470eba012660db3aefebc8c5e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: christopheranderson
+ms.author: chrande
+ms.openlocfilehash: 43bcd54955cb1a8aaf08785368faf13c14f8322c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260776"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413050"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Použití MongoDB kompasu pro připojení k rozhraní API Azure Cosmos DB pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 V tomto kurzu se dozvíte, jak pomocí [MongoDB kompasu](https://www.mongodb.com/products/compass) ukládat a spravovat data v Cosmos DB. Pro tento návod používáme rozhraní API Azure Cosmos DB pro MongoDB. U těch, které neznáte, je kompas pro MongoDB grafické uživatelské rozhraní. Často se používá k vizualizaci dat, spouštění ad-hoc dotazů spolu se správou vašich dat.
 
@@ -26,9 +27,6 @@ Pokud se chcete k účtu Cosmos DB připojit pomocí MongoDB kompasu, musíte:
 
 * Stažení a instalace [kompasu](https://www.mongodb.com/download-center/compass?jmp=hero)
 * Informace o [připojovacím řetězci](connect-mongodb-account.md) Cosmos DB
-
-> [!NOTE]
-> V současné době je Azure Cosmos DB rozhraní API pro server MongoDB verze 3,2 podporováno nejnovější verzí MongoDB kompasu. MongoDB kompas ještě není ve verzi 3,6 serveru podporován. 
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Připojení k rozhraní API Cosmos DB pro MongoDB
 
@@ -46,11 +44,11 @@ Pokud chcete účet Cosmos DB připojit k kompasu, můžete postupovat podle ná
 
 4. Kompas automaticky zjistí připojovací řetězec ve schránce a zobrazí výzvu k dotazování, jestli chcete použít, aby se připojil. Klikněte na **Ano** , jak je znázorněno na snímku obrazovky níže.
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="Snímek obrazovky s výzvou k připojení":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="Snímek obrazovky se zobrazí dialogové okno s vysvětlením, že vaše schránka obsahuje připojovací řetězec.":::
 
 5. Po kliknutí na tlačítko **Ano** ve výše uvedeném kroku budou automaticky vyplněny podrobnosti z připojovacího řetězce. Odeberte hodnotu automaticky naplněnou v poli **název sady replik** , abyste zajistili, že zůstane prázdné.
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="Snímek obrazovky s výzvou k připojení":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="Snímek obrazovky se zobrazí v textovém poli název sady replik.":::
 
 6. V dolní části stránky klikněte na **připojit** . Váš účet Cosmos DB a databáze by se teď měly zobrazovat v rámci MongoDB kompasu.
 

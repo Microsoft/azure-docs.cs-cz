@@ -1,17 +1,16 @@
 ---
 title: Azure Key Vault řešení v Azure Monitor | Microsoft Docs
 description: K revizi protokolů Azure Key Vault můžete použít řešení Azure Key Vault v Azure Monitor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 286d8d8c202a4fc59a18501eff16a569e2d09047
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 24869841a106a68234cfec600d9a98e519f8c6cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318041"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734192"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics v Azure Monitor
 
@@ -42,10 +41,10 @@ Pro instalaci a konfiguraci řešení Azure Key Vault použijte následující p
 1. V Azure Portal přejděte na prostředek Key Vault, který chcete monitorovat.
 2. Výběrem *Možnosti nastavení diagnostiky* otevřete následující stránku.
 
-   ![Obrázek dlaždice Azure Key Vault](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![Snímek obrazovky se stránkou nastavení diagnostiky pro prostředek Key Vault ContosoKVSCUS. možnost zapnutí diagnostiky je zvýrazněna.](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. Kliknutím na *zapnout diagnostiku* otevřete následující stránku.
 
-   ![Obrázek dlaždice Azure Key Vault](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![Snímek obrazovky stránky pro konfiguraci nastavení diagnostiky Jsou vybrány možnosti pro odeslání do Log Analytics, protokol AuditEvent a AllMetrics.](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. Zadejte název nastavení diagnostiky.
 5. Kliknutím na zaškrtávací políčko pro *odeslání Log Analytics*
 6. Vyberte existující pracovní prostor Log Analytics nebo vytvořte pracovní prostor.
@@ -75,9 +74,9 @@ V následující tabulce jsou uvedeny metody shromažďování dat a další pod
 | Azure |  |  |&#8226; |  |  | při doručení |
 
 ## <a name="use-azure-key-vault"></a>Použití Azure Key Vault
-Po [instalaci řešení](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)zobrazte data Key Vault kliknutím na dlaždici **Key Vault Analytics** na stránce **Přehled** Azure monitor. Tuto stránku otevřete z nabídky **Azure monitor** kliknutím na **Další** v části **přehledy** . 
+Po [instalaci řešení](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview)zobrazte data Key Vault kliknutím na dlaždici **Key Vault Analytics** na stránce **Přehled** Azure monitor. Tuto stránku otevřete z nabídky **Azure monitor** kliknutím na **Další** v části **přehledy** . 
 
-![Obrázek dlaždice Azure Key Vault](media/azure-key-vault/log-analytics-keyvault-tile.png)
+![Snímek obrazovky Key Vault Analytics dlaždice na stránce Přehled Azure Monitor znázorňující graf objemu operací trezoru klíčů v průběhu času.](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
 Po kliknutí na dlaždici **Key Vault Analytics** můžete zobrazit souhrny protokolů a pak přejít k podrobnostem v následujících kategoriích:
 
@@ -86,9 +85,9 @@ Po kliknutí na dlaždici **Key Vault Analytics** můžete zobrazit souhrny prot
 * Průměrná provozní latence podle operace
 * Kvalita služeb pro operace s počtem operací, které přebírají více než 1000 MS, a seznam operací, které mají více než 1000 MS
 
-![Obrázek řídicího panelu Azure Key Vault](media/azure-key-vault/log-analytics-keyvault01.png)
+![Snímek obrazovky řídicího panelu Azure Key Vault znázorňující dlaždice s grafickými daty pro všechny operace, neúspěšné operace a průměrná provozní latence.](media/azure-key-vault/log-analytics-keyvault01.png)
 
-![Obrázek řídicího panelu Azure Key Vault](media/azure-key-vault/log-analytics-keyvault02.png)
+![Snímek obrazovky řídicího panelu Azure Key Vault znázorňující dlaždice s daty pro průměrnou provozní latenci, kvalitu služby a doporučená hledání.](media/azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>Zobrazení podrobností o všech operacích
 1. Na stránce **Přehled** klikněte na dlaždici **Key Vault Analytics** .
@@ -135,13 +134,13 @@ Použití aktualizovaného řešení:
 2. Povolte řešení Azure Key Vault pomocí procesu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](./solutions.md)
 3. Aktualizovat všechny uložené dotazy, řídicí panely nebo výstrahy, aby používaly nový datový typ
    + Typ se změní z: trezory klíčů na AzureDiagnostics. Pomocí prostředku ResourceType můžete filtrovat Key Vault protokolů.
-   + Místo: `KeyVaults` , použijte`AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Místo: `KeyVaults` , použijte `AzureDiagnostics | where ResourceType'=="VAULTS"`
    + Pole: (názvy polí rozlišují malá a velká písmena)
    + Pro každé pole, které má \_ v názvu příponu s, \_ d nebo \_ g, změňte první znak na malá písmena.
-   + Pro každé pole, které má příponu \_ o v názvu, jsou data rozdělena do jednotlivých polí na základě názvů vnořených polí. Například hlavní název uživatele volajícího je uložen v poli.`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + Pro každé pole, které má příponu \_ o v názvu, jsou data rozdělena do jednotlivých polí na základě názvů vnořených polí. Například hlavní název uživatele volajícího je uložen v poli. `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    + CallerIpAddress pole se změnila na CallerIPAddress.
    + Pole RemoteIPCountry už není k dispozici.
-4. Odeberte řešení *Key Vault Analytics (nepoužívané)* . Pokud používáte PowerShell, použijte`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
+4. Odeberte řešení *Key Vault Analytics (nepoužívané)* . Pokud používáte PowerShell, použijte `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 Data shromážděná před změnou nejsou v novém řešení viditelná. Můžete pokračovat v dotazování na tato data pomocí starého názvu typu a pole.
 
@@ -149,5 +148,5 @@ Data shromážděná před změnou nejsou v novém řešení viditelná. Můžet
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* Použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) k zobrazení podrobných dat Azure Key Vault.
+* Použijte [dotazy protokolu v Azure monitor](../logs/log-query-overview.md) k zobrazení podrobných dat Azure Key Vault.
 

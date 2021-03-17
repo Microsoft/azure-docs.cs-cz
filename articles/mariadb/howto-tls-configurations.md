@@ -1,17 +1,17 @@
 ---
 title: Konfigurace TLS-Azure Portal-Azure Database for MariaDB
 description: Naučte se nastavit konfiguraci TLS pomocí Azure Portal pro Azure Database for MariaDB
-author: kummanish
-ms.author: manishku
-ms.service: mariadb
+author: mksuni
+ms.author: sumuth
+ms.service: jroth
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: fac719daf05e8b319db7c86d0dbc61c2814b0a0c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b4e167714ffccd20b4628fd21fb6b284d5400112
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120343"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664762"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mariadb-using-azure-portal"></a>Konfigurace nastavení TLS v Azure Database for MariaDB pomocí Azure Portal
 
@@ -31,9 +31,9 @@ Při nastavování minimální verze protokolu TLS serveru MariaDB použijte ná
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj existující Azure Database for MariaDB Server.
 
-1. Na stránce Server MariaDB v části **Nastavení**klikněte na **zabezpečení připojení** . tím otevřete stránku konfigurace zabezpečení připojení.
+1. Na stránce Server MariaDB v části **Nastavení** klikněte na **zabezpečení připojení** . tím otevřete stránku konfigurace zabezpečení připojení.
 
-1. V **minimální verzi protokolu TLS**vyberte **1,2** pro zamítnutí připojení s protokolem TLS nižším než TLS 1,2 pro váš server MariaDB.
+1. V **minimální verzi protokolu TLS** vyberte **1,2** pro zamítnutí připojení s protokolem TLS nižším než TLS 1,2 pro váš server MariaDB.
 
     ![Konfigurace Azure Database for MariaDB TLS](./media/howto-tls-configurations/tls-configurations.png)
 

@@ -1,20 +1,18 @@
 ---
 title: Přehled Azure Data Lake Analytics
 description: Díky službě Data Lake Analytics můžete podpořit své podnikání s využitím přehledů získaných z cloudových dat v jakémkoli měřítku.
-services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
-ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: b86b569b1b14b943cdc6dcc805a7b7a208d03447
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: f2916b45c04aac3e36e8dfb82a6bb9b332f55286
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475115"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449148"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Co je Azure Data Lake Analytics?
 
@@ -49,12 +47,16 @@ Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění
 
 ## <a name="works-with-all-your-azure-data"></a>Možnost práce se všemi daty Azure
   
-Data Lake Analytics spolupracuje s Azure Data Lake Storage pro nejvyšší výkon, propustnost a paralelní zpracování a funguje s Azure Storagemi objekty blob, Azure SQL Database a Azure synapse Analytics (dříve Azure SQL Data Warehouse).
+Data Lake Analytics spolupracuje s Azure Data Lake Storage pro nejvyšší výkon, propustnost a paralelní zpracování a spolupracuje s objekty blob Azure Storage Azure SQL Database a Azure synapse Analytics.
+
+## <a name="in-region-data-residency"></a>Zasídlí dat v oblasti
+  
+Data Lake Analytics nepřesouvá ani neukládají zákaznická data mimo oblast, ve které je nasazená.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Podívejte se na Azure Data Lake Analytics Poslední aktualizace s využitím [novinek v Azure Data Lake Analytics?](data-lake-analytics-whats-new.md)
-* Začínáme s Data Lake Analytics pomocí rozhraní příkazového řádku [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [CLI](data-lake-analytics-get-started-cli.md)
+* Začínáme s Data Lake Analytics pomocí rozhraní příkazového řádku [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [](data-lake-analytics-get-started-cli.md)
 * Správa Azure Data Lake Analytics pomocí [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)  |  [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)  |  [Node.js](data-lake-analytics-manage-use-nodejs.md)
 * [Kontrola nákladů a úspory s využitím služby Data Lake Analytics](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

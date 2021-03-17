@@ -1,21 +1,25 @@
 ---
 title: Běžné úkoly správy cloudových služeb | Microsoft Docs
 description: Naučte se spravovat Cloud Services v Azure Portal. V těchto příkladech se používá Azure Portal.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a1b37ed1d15282224cc7de61ec6f8a98a4bbf732
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002926"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610497"
 ---
-# <a name="manage-cloud-services-in-the-azure-portal"></a>Správa Cloud Services v Azure Portal
+# <a name="manage-cloud-services-classic-in-the-azure-portal"></a>Spravovat Cloud Services (Classic) v Azure Portal
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 V **Cloud Services** oblasti Azure Portal můžete:
 
 * Aktualizace role služby nebo nasazení.
@@ -77,13 +81,13 @@ Nasazení můžete měnit na stránce **Cloud Services** nebo na řídicím pane
 
 - Pokud chcete pro produkční slot použít statickou IP adresu, musíte rezervovat i pro svůj přípravný slot. V opačném případě se výměna nezdařila.
 
-- Než budete moct provést prohození, musí být spuštěné všechny instance vašich rolí. Stav vašich instancí můžete zjistit v okně **přehled** Azure Portal. Případně můžete použít příkaz [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) ve Windows PowerShellu.
+- Než budete moct provést prohození, musí být spuštěné všechny instance vašich rolí. Stav vašich instancí můžete zjistit v okně **přehled** Azure Portal. Případně můžete použít příkaz [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole) ve Windows PowerShellu.
 
 Upozorňujeme, že aktualizace operačního systému hosta a operace Service retušova taky můžou způsobit, že se swapy nasazení nezdaří. Další informace najdete v tématu [řešení problémů s nasazením cloudové služby](cloud-services-troubleshoot-deployment-problems.md).
 
 **Účtuje se u své aplikace výpadky? Jak ho mám pokládat?**
 
-Jak je popsáno v předchozí části, prohození nasazení je obvykle rychlé, protože se jedná o změnu konfigurace v nástroji pro vyrovnávání zatížení Azure. V některých případech může trvat 10 nebo více sekund a způsobit selhání při přechodném připojení. Pokud chcete omezit dopad na vaše zákazníky, zvažte implementaci [logiky opakování klienta](../best-practices-retry-general.md).
+Jak je popsáno v předchozí části, prohození nasazení je obvykle rychlé, protože se jedná o změnu konfigurace v nástroji pro vyrovnávání zatížení Azure. V některých případech může trvat 10 nebo více sekund a způsobit selhání při přechodném připojení. Pokud chcete omezit dopad na vaše zákazníky, zvažte implementaci [logiky opakování klienta](/azure/architecture/best-practices/transient-faults).
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>Odstranit nasazení a cloudovou službu
 Než budete moct odstranit cloudovou službu, musíte odstranit všechna existující nasazení.
@@ -124,6 +128,3 @@ Okno **Přehled** má v horní části stavový řádek. Když vyberete pruh, ot
 * Přečtěte si, jak [nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
 * Nakonfigurujte [vlastní název domény](cloud-services-custom-domain-name-portal.md).
 * Nakonfigurujte [certifikáty TLS/SSL](cloud-services-configure-ssl-certificate-portal.md).
-
-
-

@@ -1,33 +1,34 @@
 ---
 title: Přístup k protokolům auditu – Azure CLI – Azure Database for MariaDB
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům auditu v Azure Database for MariaDB z Azure CLI.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0aba88c10304cf7d87277ad851ae38eae8eb5bf3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 57fc79e88e3268c37dd932a5618bd661f000e09c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497116"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665170"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Konfigurace a přístup k protokolům auditu Azure Database for Marie DB v Azure CLI
 
 [Protokoly auditu Azure Database for MariaDB](concepts-audit-logs.md) můžete nakonfigurovat z rozhraní příkazového řádku Azure CLI.
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete projít tento průvodce, budete potřebovat:
+Postup dokončení této příručky:
 
-- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md)
+- Potřebujete [server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
 

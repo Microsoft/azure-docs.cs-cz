@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure RBAC
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou dostupné pro řízení přístupu na základě role Azure (Azure RBAC). Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 07/22/2020
+ms.date: 03/10/2021
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a40244fb958993cbed9e8585190939eb43e5acc2
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1c3d003e269ec6da6454d01dfb0724e45f479f03
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461778"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632288"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Azure Policy kontroly dodržování předpisů pro Azure RBAC
 

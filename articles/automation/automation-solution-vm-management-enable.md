@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36f885416c5e9cb656d01a65b9c503f8897d2f9f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743762"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593900"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>Povolení funkce Enable Start/Stop VMs during off-hours
 
@@ -50,7 +50,7 @@ Po vytvoření prostředku se zobrazí stránka Přidat řešení. Před importe
 
    - Zadejte název nového pracovního prostoru Log Analytics, například **ContosoLAWorkspace**.
    - Vyberte **předplatné** , které chcete propojit, výběrem z rozevíracího seznamu, pokud výchozí volba není vhodná.
-   - V případě **skupiny prostředků**můžete vytvořit novou skupinu prostředků nebo vybrat některou z existujících.
+   - V případě **skupiny prostředků** můžete vytvořit novou skupinu prostředků nebo vybrat některou z existujících.
    - Vyberte **umístění**.
    - Vyberte **cenovou úroveň**. Vyberte možnost **za GB (samostatně)** . Protokoly Azure Monitor mají aktualizované [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) a jedinou možností je úroveň na GB.
 
@@ -61,11 +61,11 @@ Po vytvoření prostředku se zobrazí stránka Přidat řešení. Před importe
 
 ## <a name="add-automation-account"></a>Přidat účet Automation
 
-Znovu přejděte na stránku přidat řešení a vyberte **účet Automation**. Můžete vybrat existující účet Automation, který ještě není propojený s pracovním prostorem Log Analytics. Pokud vytváříte nový pracovní prostor Log Analytics, můžete vytvořit nový účet Automation, který se k němu přidruží. Vyberte existující účet Automation, nebo klikněte na **vytvořit účet Automation**a na stránce Přidat účet Automation zadejte název účtu Automation do pole **název** .
+Znovu přejděte na stránku přidat řešení a vyberte **účet Automation**. Můžete vybrat existující účet Automation, který ještě není propojený s pracovním prostorem Log Analytics. Pokud vytváříte nový pracovní prostor Log Analytics, můžete vytvořit nový účet Automation, který se k němu přidruží. Vyberte existující účet Automation, nebo klikněte na **vytvořit účet Automation** a na stránce Přidat účet Automation zadejte název účtu Automation do pole **název** .
 
 Všechny ostatní možnosti se vyplní automaticky na základě vybraného pracovního prostoru Log Analytics. Tyto možnosti nemůžete změnit. Účet Spustit jako pro Azure je výchozí metoda ověřování pro Runbooky, které jsou součástí této funkce. 
 
-Po kliknutí na **OK**se ověřují možnosti konfigurace a vytvoří se účet Automation. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
+Po kliknutí na **OK** se ověřují možnosti konfigurace a vytvoří se účet Automation. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
 
 ## <a name="define-feature-parameters"></a>Definovat parametry funkce
 
@@ -82,7 +82,7 @@ Po kliknutí na **OK**se ověřují možnosti konfigurace a vytvoří se účet 
   
 4. Pomocí pole **plán** vyberte plán správy virtuálních počítačů pomocí této funkce. Vyberte počáteční datum a čas pro váš plán a vytvořte tak opakovaný denní plán, který začíná ve zvoleném čase. Výběr jiné oblasti není k dispozici. Pokud chcete nakonfigurovat plán na konkrétní časové pásmo po konfiguraci funkce, přečtěte si téma [Změna plánů spouštění a vypínání](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules).
 
-5. Pokud chcete dostávat e-mailová oznámení ze [skupiny akcí](../azure-monitor/platform/action-groups.md), přijměte výchozí hodnotu **Ano** v poli **e-mailových oznámení** a zadejte platnou e-mailovou adresu. Pokud vyberete možnost **ne** , ale později se rozhodnete, že chcete dostávat e-mailová oznámení, můžete aktualizovat skupinu akcí vytvořenou pomocí platných e-mailových adres oddělených čárkami. 
+5. Pokud chcete dostávat e-mailová oznámení ze [skupiny akcí](../azure-monitor/alerts/action-groups.md), přijměte výchozí hodnotu **Ano** v poli  **e-mailových oznámení** a zadejte platnou e-mailovou adresu. Pokud vyberete možnost **ne** , ale později se rozhodnete, že chcete dostávat e-mailová oznámení, můžete aktualizovat skupinu akcí vytvořenou pomocí platných e-mailových adres oddělených čárkami. 
 
 6. Povolit následující pravidla upozornění:
 
@@ -92,7 +92,7 @@ Po kliknutí na **OK**se ověřují možnosti konfigurace a vytvoří se účet 
 
 ## <a name="create-alerts"></a>Vytváření upozornění
 
-Start/Stop VMs during off-hours neobsahuje předdefinovanou sadu výstrah. Přečtěte si téma [vytvoření výstrah protokolu pomocí Azure monitor](../azure-monitor/platform/alerts-log.md) , kde se dozvíte, jak vytvořit neúspěšné výstrahy úlohy pro podporu vašich DevOpsch a provozních procesů a postupů.
+Start/Stop VMs during off-hours neobsahuje předdefinovanou sadu výstrah. Přečtěte si téma [vytvoření výstrah protokolu pomocí Azure monitor](../azure-monitor/alerts/alerts-log.md) , kde se dozvíte, jak vytvořit neúspěšné výstrahy úlohy pro podporu vašich DevOpsch a provozních procesů a postupů.
 
 ## <a name="deploy-the-feature"></a>Nasazení funkce
 

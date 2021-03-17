@@ -1,67 +1,98 @@
 ---
-title: Exportujte data služby Azure IoT Central | Microsoft Docs
-description: Jak exportovat data z aplikace Azure IoT Central do Azure Event Hubs, Azure Service Bus a Azure Blob Storage
+title: Export dat z Azure IoT Central | Microsoft Docs
+description: Jak používat novou export dat k exportu dat IoT do Azure a vlastních cílů cloudu.
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/25/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
-manager: corywink
-ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: contperf-fy21q1, contperf-fy21q3
+ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008521"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522610"
 ---
-# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>Export dat IoT do cílových umístění v Azure pomocí exportu dat (starší verze)
+# <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
 > [!Note]
-> Existuje nový způsob, jak exportovat data v IoT Central. K filtrování a obohacení exportovaných dat můžete použít nový export dat a vyexportovat ho do nových míst, jako jsou koncové body Webhooku. Informace o novém exportu dat najdete [tady](./howto-use-data-export.md). Další informace o rozdílech mezi novým exportem dat a exportem dat starší verze najdete v [srovnávací tabulce](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export).
+> Tento článek popisuje funkce exportu dat v IoT Central. Informace o funkcích exportu starších dat najdete v tématu [Export dat IoT do cloudových cílů pomocí exportu dat (starší verze)](./howto-export-data-legacy.md).
 
-Tento článek popisuje, jak používat funkci exportu dat v Azure IoT Central. Tato funkce umožňuje nepřetržitě exportovat data do **azure Event Hubs**, **Azure Service Bus**nebo instancí služby **Azure Blob Storage** . Export dat používá formát JSON a může zahrnovat telemetrii, informace o zařízení a informace o šabloně zařízení. Použít exportovaná data pro:
+Tento článek popisuje, jak používat novou funkci exportu dat v Azure IoT Central. Pomocí této funkce můžete průběžně exportovat filtrovaná a obohacená data IoT z vaší aplikace IoT Central. Export dat nabízí změny téměř v reálném čase do dalších částí vašeho cloudového řešení pro rychlé poznatky, analýzy a úložiště.
 
-- Přehledy a analýzy teplé cesty. Tato možnost zahrnuje aktivaci vlastních pravidel v Azure Stream Analytics, aktivaci vlastních pracovních postupů v Azure Logic Apps nebo jejich předání prostřednictvím Azure Functions pro transformaci.
-- Analýzy studených cest, jako jsou například školicí modely v Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
+Můžete například:
 
-> [!Note]
+- Průběžně exportujte data telemetrie a změny vlastností ve formátu JSON téměř v reálném čase.
+- Filtrování datových proudů pro export dat, která odpovídají vlastním podmínkám.
+- Obohacení datových proudů o vlastní hodnoty a hodnoty vlastností ze zařízení.
+- Odešlete data do umístění, jako jsou například Azure Event Hubs, Azure Service Bus, Azure Blob Storage a koncové body Webhooku.
+
+> [!Tip]
 > Když zapnete export dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte nejdříve export dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte být správce aplikace IoT Central, nebo mít oprávnění k exportu dat.
+Chcete-li používat funkce exportu dat, je nutné mít [aplikaci V3](howto-get-app-info.md)a musíte mít oprávnění k [exportu dat](howto-manage-users-roles.md) .
+
+Pokud máte aplikaci v2, přečtěte si téma [migrace aplikace IoT Central v2 na V3](howto-migrate.md).
 
 ## <a name="set-up-export-destination"></a>Nastavit cíl exportu
 
-Před konfigurací exportu dat musí existovat váš cíl exportu.
+Před konfigurací exportu dat musí existovat váš cíl exportu. V současné době jsou k dispozici následující typy cílů:
 
-### <a name="create-event-hubs-namespace"></a>Vytvoření oboru názvů Event Hubs
+- Azure Event Hubs
+- Fronta služby Azure Service Bus
+- Téma služby Azure Service Bus
+- Azure Blob Storage
+- Webhook
+
+### <a name="create-an-event-hubs-destination"></a>Vytvoření cíle Event Hubs
 
 Pokud nemáte existující Event Hubs obor názvů pro export do, postupujte podle těchto kroků:
 
 1. Vytvořte [Nový obor názvů Event Hubs v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Další informace najdete v [dokumentaci k Azure Event Hubs](../../event-hubs/event-hubs-create.md).
 
-2. Zvolte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako vaše aplikace IoT Central. V tomto případě se připojíte pomocí připojovacího řetězce.
+1. Vytvořte centrum událostí v oboru názvů Event Hubs. Vytvořte instanci centra událostí tak, že přejdete do svého oboru názvů a vyberete **+ centrum událostí** v horní části.
 
-3. Vytvořte centrum událostí v oboru názvů Event Hubs. Vytvořte instanci centra událostí tak, že přejdete do svého oboru názvů a vyberete **+ centrum událostí** v horní části.
+1. Vygenerujte klíč, který se použije při nastavení exportu dat v IoT Central:
 
-### <a name="create-service-bus-namespace"></a>Vytvořit obor názvů Service Bus
+    - Vyberte instanci centra událostí, kterou jste vytvořili.
+    - Vyberte **nastavení > zásady sdíleného přístupu**.
+    - Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
+    - Zkopírujte buď primární nebo sekundární připojovací řetězec. Tento připojovací řetězec můžete použít k nastavení nového cíle v IoT Central.
+    - Alternativně můžete vygenerovat připojovací řetězec pro celý Event Hubs obor názvů:
+        1. V Azure Portal přejít na obor názvů Event Hubs.
+        2. V části **Nastavení** vyberte **zásady sdíleného přístupu** .
+        3. Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
+        4. Zkopírování primárního nebo sekundárního připojovacího řetězce
+        
+### <a name="create-a-service-bus-queue-or-topic-destination"></a>Vytvoření Service Bus fronty nebo cíle tématu
 
 Pokud nemáte existující Service Bus obor názvů pro export do, postupujte podle těchto kroků:
 
 1. Vytvořte [Nový obor názvů Service Bus v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5). Další informace najdete v [dokumentaci Azure Service Bus](../../service-bus-messaging/service-bus-create-namespace-portal.md).
-2. Zvolte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako vaše aplikace IoT Central. V tomto případě se připojíte pomocí připojovacího řetězce.
 
-3. Chcete-li vytvořit frontu nebo téma pro export do, přejít na obor názvů Service Bus a vybrat **+ fronta** nebo **+ téma**.
+1. Chcete-li vytvořit frontu nebo téma pro export do, přejít na obor názvů Service Bus a vybrat **+ fronta** nebo **+ téma**.
 
-Pokud zvolíte Service Bus jako cíl exportu, nesmí fronty a témata obsahovat relace nebo je povoleno zjišťování duplicitních dat. Pokud je některá z těchto možností povolená, některé zprávy ve frontě nebo tématu nepřijde.
+1. Vygenerujte klíč, který se použije při nastavení exportu dat v IoT Central:
 
-### <a name="create-storage-account"></a>Vytvoření účtu úložiště
+    - Vyberte frontu nebo téma, které jste vytvořili.
+    - Vyberte **nastavení/zásady sdíleného přístupu**.
+    - Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
+    - Zkopírujte buď primární nebo sekundární připojovací řetězec. Tento připojovací řetězec můžete použít k nastavení nového cíle v IoT Central.
+    - Alternativně můžete vygenerovat připojovací řetězec pro celý Service Bus obor názvů:
+        1. V Azure Portal přejít na obor názvů Service Bus.
+        2. V části **Nastavení** vyberte **zásady sdíleného přístupu** .
+        3. Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
+        4. Zkopírování primárního nebo sekundárního připojovacího řetězce
+
+### <a name="create-an-azure-blob-storage-destination"></a>Vytvoření cíle Azure Blob Storage
 
 Pokud nemáte existující účet úložiště Azure pro export do, postupujte takto:
 
-1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Můžete si přečíst další informace o vytváření nových [účtů úložiště Azure Blob](https://aka.ms/blobdocscreatestorageaccount) nebo [Azure Data Lake Storagech účtů úložiště v2](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Export dat může zapisovat jenom data do účtů úložiště, které podporují objekty blob bloku. Následující seznam uvádí známé kompatibilní typy účtů úložiště:
+1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Můžete si přečíst další informace o vytváření nových [účtů úložiště Azure Blob](../../storage/blobs/storage-quickstart-blobs-portal.md) nebo [Azure Data Lake Storagech účtů úložiště v2](../../storage/common/storage-account-create.md). Export dat může zapisovat jenom data do účtů úložiště, které podporují objekty blob bloku. Následující seznam uvádí známé kompatibilní typy účtů úložiště:
 
     |Úroveň výkonu|Typ účtu|
     |-|-|
@@ -70,687 +101,295 @@ Pokud nemáte existující účet úložiště Azure pro export do, postupujte t
     |Standard|Blob Storage|
     |Premium|Úložiště objektů blob bloku|
 
-2. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service**vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
+1. Pokud chcete vytvořit kontejner v účtu úložiště, klikněte na účet úložiště. V části **BLOB Service** vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
+
+1. Kliknutím na **nastavení > přístupové klíče** vygenerujte připojovací řetězec pro váš účet úložiště. Zkopírujte jeden ze dvou připojovacích řetězců.
+
+### <a name="create-a-webhook-endpoint"></a>Vytvoření koncového bodu Webhooku
+
+Data můžete exportovat do veřejně dostupného koncového bodu HTTP Webhooku. Pomocí [RequestBin](https://requestbin.net/)můžete vytvořit testovací koncový bod Webhooku. RequestBin omezuje požadavek na dosažení limitu požadavků:
+
+1. Otevřete [RequestBin](https://requestbin.net/).
+2. Vytvořte novou RequestBin a zkopírujte **adresu URL přihrádky**. Tuto adresu URL použijete při testování exportu dat.
 
 ## <a name="set-up-data-export"></a>Nastavení exportu dat
 
-Teď, když máte cíl pro export dat, postupujte podle těchto kroků a nastavte export dat.
+Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT Central:
 
 1. Přihlaste se k aplikaci IoT Central.
 
-2. V levém podokně vyberte **exportovat data**.
+1. V levém podokně vyberte **exportovat data**.
 
     > [!Tip]
     > Pokud nevidíte **exportovat data** v levém podokně, nemáte oprávnění ke konfiguraci exportu dat ve vaší aplikaci. Pokud chcete nastavit export dat, obraťte se na správce.
 
-3. Vyberte tlačítko **+ Nový** . Vyberte jednu z **BLOB Storage Azure**, **Azure Event Hubs**, **frontu Azure Service Bus**nebo **Azure Service Bus téma** jako cíl exportu. Maximální počet exportů na aplikaci je 5.
+1. Vyberte **+ Nový export**.
 
-4. Zadejte název exportu. V rozevíracím seznamu vyberte svůj **obor názvů**nebo **Zadejte připojovací řetězec**.
+1. Zadejte zobrazovaný název pro nový export a ujistěte se, že je **povolen** export dat.
 
-    - V rámci stejného předplatného jako aplikace pro IoT Central se zobrazí jenom účty úložiště, Event Hubs obory názvů a Service Bus obory názvů. Pokud chcete exportovat do cílového umístění mimo toto předplatné, vyberte **zadat připojovací řetězec** a podívejte se na krok 6.
-    - U aplikací vytvořených pomocí bezplatného cenového plánu je jediným způsobem, jak nakonfigurovat export dat, prostřednictvím připojovacího řetězce. Pro aplikace v cenovém plánu zdarma nemáte přidružené předplatné Azure.
+1. Vyberte typ dat, který chcete exportovat. Následující tabulka uvádí podporované typy exportu dat:
 
-    ![Vytvořit nové centrum událostí](media/howto-export-data/export-event-hub.png)
+    | Datový typ | Popis | Formát dat |
+    | :------------- | :---------- | :----------- |
+    |  Telemetrie | Exportujte zprávy telemetrie ze zařízení téměř v reálném čase. Každá exportovaná zpráva obsahuje úplný obsah původní zprávy zařízení, normalizováno.   |  [Formát zprávy telemetrie](#telemetry-format)   |
+    | Změny vlastností | Exportujte změny do vlastností zařízení a cloudu téměř v reálném čase. V případě vlastností zařízení jen pro čtení jsou exportovány změny hlášených hodnot. Pro vlastnosti pro čtení i zápis jsou vyexportovány obě hlášené i požadované hodnoty. | [Formát zprávy o změně vlastnosti](#property-changes-format) |
 
-5. V rozevíracím seznamu vyberte centrum událostí, frontu, téma nebo kontejner.
+<a name="DataExportFilters"></a>
+1. Volitelně můžete přidat filtry pro snížení objemu exportovaných dat. Pro každý typ exportu dat jsou k dispozici různé typy filtrů:
 
-6. Volitelné Pokud jste zvolili **zadat připojovací řetězec**, zobrazí se nové okno pro vložení připojovacího řetězce. Získání připojovacího řetězce pro:
+    K filtrování telemetrie můžete:
 
-    - Event Hubs nebo Service Bus v Azure Portal přejít na obor názvů:
-        - Použití připojovacího řetězce pro celý obor názvů:
-            1. V části **Nastavení**vyberte **zásady sdíleného přístupu** .
-            2. Vytvořte nový klíč nebo vyberte existující klíč, který má oprávnění **Odeslat** .
-            3. Zkopírování primárního nebo sekundárního připojovacího řetězce
-        - Pokud chcete použít připojovací řetězec pro konkrétní instanci centra událostí nebo Service Bus frontu nebo téma, přejít na **entity > Event Hubs** nebo **entity > fronty** nebo **entity > témata**. Vyberte konkrétní instanci a použijte stejný postup k získání připojovacího řetězce.
-    - Účet úložiště, v Azure Portal přejít na účet úložiště:
-        - Podporují se jenom připojovací řetězce pro celý účet úložiště. Připojovací řetězce s oborem jednoho kontejneru nejsou podporovány.
-          1. V části **Nastavení**vyberte **přístupové klíče** .
-          2. Zkopírujte buď připojovací řetězec klíč1, nebo připojovací řetězec key2.
+    - **Vyfiltruje** exportovaný datový proud tak, aby obsahoval pouze telemetrii ze zařízení, která odpovídají názvu zařízení, ID zařízení a podmínky filtru šablony zařízení.
+    - **Filtrovat** přes možnosti: Pokud zvolíte položku telemetrie v rozevíracím seznamu **název** , exportovaný datový proud obsahuje jenom telemetrii, která splňuje podmínku filtru. Pokud v rozevíracím seznamu **název** zvolíte položku zařízení nebo cloudová vlastnost, exportovaný datový proud obsahuje jenom telemetrii ze zařízení s vlastnostmi, které odpovídají podmínkám filtru.
+    - **Filtr vlastností zpráv**: zařízení, která používají sady SDK pro zařízení, mohou odesílat *vlastnosti zprávy* nebo *Vlastnosti aplikace* v každé zprávě telemetrie. Vlastnosti jsou kontejner párů klíč-hodnota, které označí zprávu vlastními identifikátory. Chcete-li vytvořit filtr vlastností zprávy, zadejte klíč vlastnosti zprávy, který hledáte, a zadejte podmínku. Exportují se jenom zprávy telemetrie s vlastnostmi, které odpovídají zadané podmínce filtru. Jsou podporovány následující řetězcové operátory porovnání: Equals, není rovno, obsahuje, neobsahuje, existuje, neexistuje. [Přečtěte si další informace o vlastnostech aplikace z IoT Hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-    Vložte do připojovacího řetězce. Zadejte název instance nebo **kontejneru**, přičemž mějte na paměti, že se rozlišují malá a velká písmena.
+    Chcete-li filtrovat změny vlastností, použijte **Filtr schopností**. V rozevíracím seznamu vyberte položku Vlastnosti. Exportovaný datový proud obsahuje pouze změny vybrané vlastnosti, která splňuje podmínku filtru.
 
-7. V části **data, která chcete exportovat**, vyberte typy dat k exportu nastavením typ na **zapnuto**.
+<a name="DataExportEnrichmnents"></a>
+1. Volitelně můžete rozšířit exportované zprávy s dalšími metadaty páru klíč-hodnota. K dispozici jsou následující obohacení pro telemetrie a vlastnost pro změny typů exportu dat:
 
-8. Pokud chcete zapnout export dat, ujistěte se, že **je zapnutý**přepínač **zapnuto** . Vyberte **Uložit**.
+    - **Vlastní řetězec**: přidá do každé zprávy vlastní statický řetězec. Zadejte libovolný klíč a zadejte libovolnou hodnotu řetězce.
+    - **Vlastnost**: přidá do každé zprávy aktuální nahlášenou vlastnost nebo hodnotu vlastnosti cloudu. Zadejte libovolný klíč a vyberte vlastnost zařízení nebo cloudu. Pokud je vyexportovaná zpráva ze zařízení, které nemá zadanou vlastnost, vyexportovaná zpráva nezíská obohacení.
 
-9. Po několika minutách se vaše data zobrazí ve zvoleném cíli.
+1. Přidejte nový cíl nebo přidejte cíl, který jste už vytvořili. Vyberte odkaz **vytvořit nové** a přidejte následující informace:
 
-## <a name="export-contents-and-format"></a>Exportovat obsah a formát
+    - **Název cíle**: zobrazovaný název cíle v IoT Central.
+    - **Cílový typ**: Vyberte typ cíle. Pokud jste ještě nevytvořili cíl, přečtěte si téma [Nastavení cíle exportu](#set-up-export-destination).
+    - V případě služby Azure Event Hubs Azure Service Bus Queue nebo téma vložte připojovací řetězec pro váš prostředek a v případě potřeby zadejte název centra událostí s rozlišováním velkých a malých písmen, fronty nebo tématu.
+    - Pro Azure Blob Storage vložte připojovací řetězec pro váš prostředek a v případě potřeby zadejte název kontejneru rozlišující velká a malá písmena.
+    - Pro Webhook vložte adresu URL zpětného volání pro svůj koncový bod Webhooku. Volitelně můžete nakonfigurovat autorizaci Webhooku (OAuth 2,0 a autorizační token) a přidat vlastní hlavičky. 
+        - U OAuth 2,0 se podporuje jenom tok přihlašovacích údajů klienta. Po uložení cíle IoT Central bude komunikovat se zprostředkovatelem OAuth, aby získal autorizační token. Tento token bude připojen k hlavičce "Authorization" pro každou zprávu odeslanou do tohoto cíle.
+        - U autorizačního tokenu můžete zadat hodnotu tokenu, která bude přímo připojena k hlavičce "Authorization" pro každou zprávu odeslanou do tohoto cíle.
+    - Vyberte **Vytvořit**.
 
-Exportovaná data telemetrie obsahují celou zprávu, kterou zařízení odesílá do IoT Central, nejen samotné hodnoty telemetrie. Data exportovaných zařízení obsahují změny vlastností a metadat všech zařízení a exportované šablony zařízení obsahují změny všech šablon zařízení.
+1. Vyberte **+ cíl** a zvolte cíl z rozevíracího seznamu. Do jednoho exportu můžete přidat až pět cílů.
 
-Pro Event Hubs a Service Bus se data exportují prakticky v reálném čase. Data jsou ve `body` vlastnosti a jsou ve formátu JSON. Příklady najdete níže.
+1. Po dokončení nastavení exportu vyberte **Uložit**. Po několika minutách se vaše data zobrazí ve vašich cílech.
 
-Pro úložiště objektů BLOB se data exportují jednou za minutu a každý soubor, který obsahuje dávku změn od posledního exportovaného souboru. Exportovaná data jsou umístěna ve formátu JSON ve třech složkách. Výchozí cesty v účtu úložiště jsou:
+## <a name="monitor-your-export"></a>Monitorování exportu
 
-- Telemetrie: _{Container}/{App-ID}/Telemetry/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
-- Zařízení: _{Container}/{App-ID}/Devices/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
-- Šablony zařízení: _{Container}/{App-ID}/deviceTemplates/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
+Kromě zobrazení stavu exportů v IoT Central můžete pomocí [Azure monitor](../../azure-monitor/overview.md) zjistit, kolik dat exportujete, a případné chyby při exportu. Pro export a metriky stavu zařízení můžete v grafech v Azure Portal, pomocí REST API nebo pomocí dotazů v PowerShellu nebo v Azure CLI získat přístup. V současné době můžete monitorovat následující metriky exportu dat v Azure Monitor:
 
-Chcete-li procházet exportované soubory v Azure Portal, přejděte do souboru a vyberte kartu **Upravit objekt BLOB** .
+- Počet zpráv, které jsou příchozí pro export před použitím filtrů.
+- Počet zpráv, které procházejí filtry.
+- Počet zpráv úspěšně exportovaných do cílových umístění.
+- Počet zjištěných chyb.
 
-## <a name="telemetry"></a>Telemetrie
+Další informace najdete v tématu [monitorování celkového stavu aplikace IoT Central](howto-monitor-application-health.md).
 
-Pro Event Hubs a Service Bus IoT Central exportuje novou zprávu rychle po přijetí zprávy ze zařízení. Každá exportovaná zpráva obsahuje úplnou zprávu, kterou zařízení odeslalo ve formátu JSON.
+## <a name="destinations"></a>Cíle
 
-Pro úložiště objektů BLOB se zprávy účtují a exportují jednou za minutu. Exportované soubory používají stejný formát jako soubory zpráv exportované [IoT Hub směrováním zpráv](../../iot-hub/tutorial-routing.md) do úložiště objektů BLOB.
+### <a name="azure-blob-storage-destination"></a>Cíl Azure Blob Storage
 
-> [!NOTE]
-> V případě úložiště objektů BLOB zajistěte, aby vaše zařízení odesílala zprávy, které mají `contentType: application/JSON` a `contentEncoding:utf-8` (nebo `utf-16` `utf-32` ). Příklad najdete v [dokumentaci k IoT Hub](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) .
+Data se exportují jednou za minutu a každý soubor, který obsahuje dávku změn od předchozího exportu. Exportovaná data se ukládají ve formátu JSON. Výchozí cesty k exportovaným datům v účtu úložiště jsou:
 
-Zařízení, které poslalo telemetrii, je reprezentované ID zařízení (viz následující oddíly). Pokud chcete získat názvy zařízení, exportovat data zařízení a sladit každou zprávu pomocí **connectionDeviceId** , který odpovídá ID zařízení zprávy zařízení. **deviceId**
+- Telemetrie: _{Container}/{app-id}/{partition_id}/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
+- Změny vlastností: _{Container}/{app-id}/{partition_id}/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
 
-Následující příklad ukazuje zprávu přijatou z centra událostí nebo Service Bus fronty nebo tématu:
+Chcete-li procházet exportované soubory v Azure Portal, přejděte k souboru a vyberte **Upravit objekt BLOB**.
 
-```json
-{
-  "temp":81.129693132351775,
-  "humid":59.488071477541247,
-  "EventProcessedUtcTime":"2020-04-07T09:41:15.2877981Z",
-  "PartitionId":0,
-  "EventEnqueuedUtcTime":"2020-04-07T09:38:32.7380000Z"
-}
-```
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Cíle Azure Event Hubs a Azure Service Bus
 
-Tato zpráva neobsahuje ID zařízení odesílajícího zařízení.
+Data se exportují prakticky v reálném čase. Data jsou v těle zprávy a jsou ve formátu JSON kódovaném jako UTF-8.
 
-K načtení ID zařízení z dat zprávy v Azure Stream Analytics dotazu použijte funkci [GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) . Příklad najdete v dotazech v tématu věnovaném [rozšiřování Azure IoT Central vlastními pravidly pomocí Stream Analytics, Azure functions a SendGrid](./howto-create-custom-rules.md).
+Poznámky nebo kontejner systému vlastností zprávy obsahují `iotcentral-device-id` pole,, `iotcentral-application-id` `iotcentral-message-source` a `iotcentral-message-type` , která mají stejné hodnoty jako odpovídající pole v těle zprávy.
 
-Pokud chcete načíst ID zařízení v pracovním prostoru Azure Databricks nebo Apache Spark, použijte [systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md). Příklad najdete v pracovním prostoru datacihly v tématu [Rozšířené Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks](./howto-create-custom-analytics.md).
+### <a name="webhook-destination"></a>Cíl Webhooku
 
-Následující příklad ukazuje záznam exportovaný do úložiště objektů BLOB:
+V případě míst pro Webhooky se data exportují i téměř v reálném čase. Data v těle zprávy jsou ve stejném formátu jako pro Event Hubs a Service Bus.
 
-```json
-{
-  "EnqueuedTimeUtc":"2019-09-26T17:46:09.8870000Z",
-  "Properties":{
+## <a name="telemetry-format"></a>Formát telemetrie
 
-  },
-  "SystemProperties":{
-    "connectionDeviceId":"<deviceid>",
-    "connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-    "connectionDeviceGenerationId":"637051167384630591",
-    "contentType":"application/json",
-    "contentEncoding":"utf-8",
-    "enqueuedTime":"2019-09-26T17:46:09.8870000Z"
-  },
-  "Body":{
-    "temp":49.91322758395974,
-    "humid":49.61214852573155,
-    "pm25":25.87332214661367
-  }
-}
-```
+Každá exportovaná zpráva obsahuje normalizovanou podobu celé zprávy odeslané zařízením v těle zprávy. Zpráva je ve formátu JSON a je kódovaná jako UTF-8. Mezi informace v každé zprávě patří:
 
-## <a name="devices"></a>Zařízení
+- `applicationId`: ID aplikace IoT Central.
+- `messageSource`: Zdroj zprávy – `telemetry` .
+- `deviceId`: ID zařízení, které odeslalo zprávu telemetrie.
+- `schema`: Název a verze schématu datové části.
+- `templateId`: ID šablony zařízení přidružené k zařízení.
+- `enrichments`: Jakékoli obohacení nastavené na export.
+- `messageProperties`: Další vlastnosti, které zařízení poslalo se zprávou. Tyto vlastnosti jsou někdy označovány jako *Vlastnosti aplikace*. [Další informace najdete v dokumentaci IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-Každá zpráva nebo záznam ve snímku představuje jednu nebo více změn zařízení a vlastností zařízení a cloudu od poslední exportované zprávy. Zpráva obsahuje:
+Pro Event Hubs a Service Bus IoT Central exportuje novou zprávu rychle po přijetí zprávy ze zařízení. Ve vlastnostech uživatele (také označovaných jako vlastnosti aplikace) každé zprávy `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` jsou automaticky zahrnuty, a.
 
-- `id`zařízení v IoT Central
-- `displayName`zařízení
-- ID šablony zařízení v`instanceOf`
-- `simulated`příznak, true, pokud je zařízení simulované zařízení
-- `provisioned`příznak, true, pokud bylo zařízení zřízené
-- `approved`příznak, true, pokud bylo zařízení schváleno k odesílání dat
-- Hodnoty vlastností
-- `properties`Zahrnutí hodnot vlastností zařízení a cloudu
+Pro úložiště objektů BLOB se zprávy účtují a exportují jednou za minutu.
 
-Odstraněná zařízení se neexportují. V současné době nejsou v exportovaných zprávách žádné indikátory pro Odstraněná zařízení.
-
-V případě Event Hubs a Service Bus odesílá IoT Central zprávy obsahující data zařízení do centra událostí nebo Service Bus fronty nebo tématu téměř v reálném čase.
-
-V případě služby Blob Storage je nový snímek obsahující všechny změny od posledního napsaného typu exportován jednou za minutu.
-
-Následující příklad zprávy zobrazuje informace o zařízeních a vlastnostech v centru událostí nebo v Service Bus fronty nebo tématu:
+Následující příklad ukazuje exportovanou zprávu telemetrie:
 
 ```json
+
 {
-  "body":{
-    "id": "<device Id>",
-    "etag": "<etag>",
-    "displayName": "Sensor 1",
-    "instanceOf": "<device template Id>",
-    "simulated": false,
-    "provisioned": true,
-    "approved": true,
-    "properties": {
-        "sensorComponent": {
-            "setTemp": "30",
-            "fwVersion": "2.0.1",
-            "status": { "first": "first", "second": "second" },
-            "$metadata": {
-                "setTemp": {
-                    "desiredValue": "30",
-                    "desiredVersion": 3,
-                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                    "ackVersion": 3
-                },
-                "fwVersion": { "ackVersion": 3 },
-                "status": {
-                    "desiredValue": {
-                        "first": "first",
-                        "second": "second"
-                    },
-                    "desiredVersion": 2,
-                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                    "ackVersion": 2
-                }
-            },
-            
-        }
-    },
-    "installDate": { "installDate": "2020-02-01" }
-},
-  "annotations":{
-    "iotcentral-message-source":"devices",
-    "x-opt-partition-key":"<partitionKey>",
-    "x-opt-sequence-number":39740,
-    "x-opt-offset":"<offset>",
-    "x-opt-enqueued-time":1539274959654
-  },
-  "partitionKey":"<partitionKey>",
-  "sequenceNumber":39740,
-  "enqueuedTimeUtc":"2020-02-01T18:14:49.3820326Z",
-  "offset":"<offset>"
-}
-```
-
-Tento snímek obsahuje ukázkovou zprávu, která zobrazuje zařízení a vlastnosti dat v úložišti objektů BLOB. Exportované soubory obsahují jeden řádek na záznam.
-
-```json
-{
-  "id": "<device Id>",
-  "etag": "<etag>",
-  "displayName": "Sensor 1",
-  "instanceOf": "<device template Id>",
-  "simulated": false,
-  "provisioned": true,
-  "approved": true,
-  "properties": {
-      "sensorComponent": {
-          "setTemp": "30",
-          "fwVersion": "2.0.1",
-          "status": { "first": "first", "second": "second" },
-          "$metadata": {
-              "setTemp": {
-                  "desiredValue": "30",
-                  "desiredVersion": 3,
-                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                  "ackVersion": 3
-              },
-              "fwVersion": { "ackVersion": 3 },
-              "status": {
-                  "desiredValue": {
-                      "first": "first",
-                      "second": "second"
-                  },
-                  "desiredVersion": 2,
-                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                  "ackVersion": 2
-              }
-          },
-          
-      }
-  },
-  "installDate": { "installDate": "2020-02-01" }
-}
-```
-
-## <a name="device-templates"></a>Šablony zařízení
-
-Každý záznam zprávy nebo snímku představuje jednu nebo více změn v publikované šabloně zařízení od poslední exportované zprávy. Mezi informace odesílané v každé zprávě nebo záznamu patří:
-
-- `id`šablony zařízení, která odpovídá `instanceOf` datovému proudu zařízení výše
-- `displayName`šablony zařízení
-- Zařízení `capabilityModel` `interfaces` , včetně definicí a telemetrie, vlastností a příkazů
-- `cloudProperties`definici
-- Přepisuje a počáteční hodnoty, které jsou vloženy do`capabilityModel`
-
-Odstraněné šablony zařízení se neexportují. V současné době nejsou v exportovaných zprávách pro odstraněné šablony zařízení žádné indikátory.
-
-U Event Hubs a Service Bus odesílá IoT Central zprávy obsahující data šablony zařízení do centra událostí nebo do fronty Service Bus nebo v téměř reálném čase.
-
-V případě služby Blob Storage je nový snímek obsahující všechny změny od posledního napsaného typu exportován jednou za minutu.
-
-V tomto příkladu se zobrazuje zpráva o datech šablon zařízení v centru událostí nebo Service Bus frontě nebo tématu:
-
-```json
-{
-  "body":{
-      "id": "<device template id>",
-      "etag": "<etag>",
-      "types": ["DeviceModel"],
-      "displayName": "Sensor template",
-      "capabilityModel": {
-          "@id": "<capability model id>",
-          "@type": ["CapabilityModel"],
-          "contents": [],
-          "implements": [
-              {
-                  "@id": "<component Id>",
-                  "@type": ["InterfaceInstance"],
-                  "name": "sensorComponent",
-                  "schema": {
-                      "@id": "<interface Id>",
-                      "@type": ["Interface"],
-                      "displayName": "Sensor interface",
-                      "contents": [
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry"],
-                              "displayName": "Humidity",
-                              "name": "humidity",
-                              "schema": "double"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry", "SemanticType/Event"],
-                              "displayName": "Error event",
-                              "name": "error",
-                              "schema": "integer"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Set temperature",
-                              "name": "setTemp",
-                              "writable": true,
-                              "schema": "integer",
-                              "unit": "Units/Temperature/fahrenheit",
-                              "initialValue": "30"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Firmware version read only",
-                              "name": "fwversion",
-                              "schema": "string"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Display status",
-                              "name": "status",
-                              "writable": true,
-                              "schema": {
-                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
-                                  "@type": ["Object"]
-                              }
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Command"],
-                              "commandType": "synchronous",
-                              "request": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Configuration",
-                                  "name": "config",
-                                  "schema": "string"
-                              },
-                              "response": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Response",
-                                  "name": "response",
-                                  "schema": "string"
-                              },
-                              "displayName": "Configure sensor",
-                              "name": "sensorConfig"
-                          }
-                      ]
-                  }
-              }
-          ],
-          "displayName": "Sensor capability model"
-      },
-      "solutionModel": {
-          "@id": "<id>",
-          "@type": ["SolutionModel"],
-          "cloudProperties": [
-              {
-                  "@id": "<id>",
-                  "@type": ["CloudProperty"],
-                  "displayName": "Install date",
-                  "name": "installDate",
-                  "schema": "dateTime",
-                  "valueDetail": {
-                      "@id": "<id>",
-                      "@type": ["ValueDetail/DateTimeValueDetail"]
-                  }
-              }
-          ]
-      }
-  },
-    "annotations":{
-      "iotcentral-message-source":"deviceTemplates",
-      "x-opt-partition-key":"<partitionKey>",
-      "x-opt-sequence-number":25315,
-      "x-opt-offset":"<offset>",
-      "x-opt-enqueued-time":1539274985085
-    },
-    "partitionKey":"<partitionKey>",
-    "sequenceNumber":25315,
-    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
-    "offset":"<offset>"
-  }
-}
-```
-
-Tento ukázkový snímek zobrazuje zprávu, která obsahuje data zařízení a vlastností v úložišti objektů BLOB. Exportované soubory obsahují jeden řádek na záznam.
-
-```json
-{
-      "id": "<device template id>",
-      "etag": "<etag>",
-      "types": ["DeviceModel"],
-      "displayName": "Sensor template",
-      "capabilityModel": {
-          "@id": "<capability model id>",
-          "@type": ["CapabilityModel"],
-          "contents": [],
-          "implements": [
-              {
-                  "@id": "<component Id>",
-                  "@type": ["InterfaceInstance"],
-                  "name": "Sensor component",
-                  "schema": {
-                      "@id": "<interface Id>",
-                      "@type": ["Interface"],
-                      "displayName": "Sensor interface",
-                      "contents": [
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry"],
-                              "displayName": "Humidity",
-                              "name": "humidity",
-                              "schema": "double"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry", "SemanticType/Event"],
-                              "displayName": "Error event",
-                              "name": "error",
-                              "schema": "integer"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Set temperature",
-                              "name": "setTemp",
-                              "writable": true,
-                              "schema": "integer",
-                              "unit": "Units/Temperature/fahrenheit",
-                              "initialValue": "30"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Firmware version read only",
-                              "name": "fwversion",
-                              "schema": "string"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Display status",
-                              "name": "status",
-                              "writable": true,
-                              "schema": {
-                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
-                                  "@type": ["Object"]
-                              }
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Command"],
-                              "commandType": "synchronous",
-                              "request": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Configuration",
-                                  "name": "config",
-                                  "schema": "string"
-                              },
-                              "response": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Response",
-                                  "name": "response",
-                                  "schema": "string"
-                              },
-                              "displayName": "Configure sensor",
-                              "name": "sensorconfig"
-                          }
-                      ]
-                  }
-              }
-          ],
-          "displayName": "Sensor capability model"
-      },
-      "solutionModel": {
-          "@id": "<id>",
-          "@type": ["SolutionModel"],
-          "cloudProperties": [
-              {
-                  "@id": "<id>",
-                  "@type": ["CloudProperty"],
-                  "displayName": "Install date",
-                  "name": "installDate",
-                  "schema": "dateTime",
-                  "valueDetail": {
-                      "@id": "<id>",
-                      "@type": ["ValueDetail/DateTimeValueDetail"]
-                  }
-              }
-          ]
-      }
-  }
-```
-
-## <a name="data-format-change-notice"></a>Upozornění na změnu formátu dat
-
-> [!Note]
-> Tato změna nemá vliv na formát dat datového proudu telemetrie. Jsou ovlivněna pouze data datových proudů zařízení a zařízení.
-
-Pokud máte v aplikaci ve verzi Preview existující export dat se zapnutými datovými proudy *šablon* *zařízení* a zařízení, aktualizujte svůj export o **30. června 2020**. Tento požadavek platí pro exporty do Azure Blob Storage, Azure Event Hubs a Azure Service Bus.
-
-Od 3. února 2020 budou všechny nové exporty v aplikacích se zapnutými šablonami zařízení a zařízení mít formát dat popsaný výše. Všechny exporty vytvořené před tímto datem zůstanou ve starém formátu dat až do 30. června 2020, kdy se tyto exporty automaticky migrují do nového formátu dat. Nový formát dat odpovídá vlastnostem [zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [vlastnosti zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [cloudové vlastnosti zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)a objekty [šablon zařízení](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) ve IoT Central veřejném rozhraní API.
-
-U **zařízení**se jedná o významné rozdíly mezi starým a novým datovým formátem:
-- `@id`v případě odebrání zařízení se `deviceId` přejmenuje na`id` 
-- `provisioned`Přidání příznaku pro popis stavu zřizování zařízení
-- `approved`Přidání příznaku k popisu stavu schválení zařízení
-- `properties`zahrnutí vlastností zařízení a cloudu, které odpovídají entitám ve veřejném rozhraní API
-
-V případě **šablon zařízení**jsou významné rozdíly mezi starým a novým datovým formátem:
-
-- `@id`pro šablonu zařízení je přejmenovaná na`id`
-- `@type`pro šablonu zařízení se přejmenuje na `types` a je teď polem.
-
-### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Zařízení (formát se už nepoužívá od 3. února 2020)
-
-```json
-{
-  "@id":"<id-value>",
-  "@type":"Device",
-  "displayName":"Airbox",
-  "data":{
-    "$cloudProperties":{
-        "Color":"blue"
-    },
-    "EnvironmentalSensor":{
-      "thsensormodel":{
-        "reported":{
-          "value":"Neque quia et voluptatem veritatis assumenda consequuntur quod.",
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      },
-      "pm25sensormodel":{
-        "reported":{
-          "value":"Aut alias odio.",
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      }
-    },
-    "urn_azureiot_DeviceManagement_DeviceInformation":{
-      "totalStorage":{
-        "reported":{
-          "value":27900.9730905171,
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      },
-      "totalMemory":{
-        "reported":{
-          "value":4667.82916715811,
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      }
-    }
-  },
-  "instanceOf":"<template-id>",
-  "deviceId":"<device-id>",
-  "simulated":true
-}
-```
-
-### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Šablony zařízení (formát se už nepoužívá od 3. února 2020)
-
-```json
-{
-  "@id":"<template-id>",
-  "@type":"DeviceModelDefinition",
-  "displayName":"Airbox",
-  "capabilityModel":{
-    "@id":"<id>",
-    "@type":"CapabilityModel",
-    "implements":[
-      {
-        "@id":"<id>",
-        "@type":"InterfaceInstance",
-        "name":"EnvironmentalSensor",
-        "schema":{
-          "@id":"<id>",
-          "@type":"Interface",
-          "comment":"Requires temperature and humidity sensors.",
-          "description":"Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
-          "displayName":"Environmental Sensor",
-          "contents":[
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current temperature on the device",
-              "displayName":"Temperature",
-              "name":"temp",
-              "schema":"double",
-              "unit":"Units/Temperature/celsius",
-              "valueDetail":{
-                "@id":"<id>",
-                "@type":"ValueDetail/NumberValueDetail",
-                "minValue":{
-                  "@value":"50"
-                }
-              },
-              "visualizationDetail":{
-                "@id":"<id>",
-                "@type":"VisualizationDetail"
-              }
-            },
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current humidity on the device",
-              "displayName":"Humidity",
-              "name":"humid",
-              "schema":"integer"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current PM2.5 on the device",
-              "displayName":"PM2.5",
-              "name":"pm25",
-              "schema":"integer"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "description":"T&H Sensor Model Name",
-              "displayName":"T&H Sensor Model",
-              "name":"thsensormodel",
-              "schema":"string"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "description":"PM2.5 Sensor Model Name",
-              "displayName":"PM2.5 Sensor Model",
-              "name":"pm25sensormodel",
-              "schema":"string"
-            }
-          ]
-        }
-      },
-      {
-        "@id":"<id>",
-        "@type":"InterfaceInstance",
-        "name":"urn_azureiot_DeviceManagement_DeviceInformation",
-        "schema":{
-          "@id":"<id>",
-          "@type":"Interface",
-          "displayName":"Device information",
-          "contents":[
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "comment":"Total available storage on the device in kilobytes. Ex. 20480000 kilobytes.",
-              "displayName":"Total storage",
-              "name":"totalStorage",
-              "displayUnit":"kilobytes",
-              "schema":"long"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "comment":"Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
-              "displayName":"Total memory",
-              "name":"totalMemory",
-              "displayUnit":"kilobytes",
-              "schema":"long"
-            }
-          ]
-        }
-      }
-    ],
-    "displayName":"AAEONAirbox52"
-  },
-  "solutionModel":{
-    "@id":"<id>",
-    "@type":"SolutionModel",
-    "cloudProperties":[
-      {
-        "@id":"<id>",
-        "@type":"CloudProperty",
-        "displayName":"Color",
-        "name":"Color",
-        "schema":"string",
-        "valueDetail":{
-          "@id":"<id>",
-          "@type":"ValueDetail/StringValueDetail"
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "Activity": "running",
+        "BloodPressure": {
+            "Diastolic": 7,
+            "Systolic": 71
         },
-        "visualizationDetail":{
-          "@id":"<id>",
-          "@type":"VisualizationDetail"
-        }
-      }
-    ]
-  }
+        "BodyTemperature": 98.73447010562934,
+        "HeartRate": 88,
+        "HeartRateVariability": 17,
+        "RespiratoryRate": 13
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
 }
 ```
+### <a name="message-properties"></a>Vlastnosti zprávy
+
+Zprávy telemetrie mají kromě datové části telemetrie také vlastnosti pro metadata. Předchozí fragment kódu ukazuje příklady systémových zpráv, například `deviceId` a `enqueuedTime` . Další informace o vlastnostech systémové zprávy najdete v tématu [systémové vlastnosti D2C zpráv o IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages).
+
+Pokud potřebujete do zpráv telemetrie přidat vlastní metadata, můžete do zpráv telemetrie přidat vlastnosti. Například je třeba přidat časové razítko, když zařízení vytvoří zprávu.
+
+Následující fragment kódu ukazuje, jak přidat `iothub-creation-time-utc` vlastnost do zprávy při jejím vytváření na zařízení:
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+async function sendTelemetry(deviceClient, index) {
+  console.log('Sending telemetry message %d...', index);
+  const msg = new Message(
+    JSON.stringify(
+      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
+    )
+  );
+  msg.properties.add("iothub-creation-time-utc", new Date().toISOString());
+  msg.contentType = 'application/json';
+  msg.contentEncoding = 'utf-8';
+  await deviceClient.sendEvent(msg);
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+private static void sendTemperatureTelemetry() {
+  String telemetryName = "temperature";
+  String telemetryPayload = String.format("{\"%s\": %f}", telemetryName, temperature);
+
+  Message message = new Message(telemetryPayload);
+  message.setContentEncoding(StandardCharsets.UTF_8.name());
+  message.setContentTypeFinal("application/json");
+  message.setProperty("iothub-creation-time-utc", Instant.now().toString());
+
+  deviceClient.sendEventAsync(message, new MessageIotHubEventCallback(), message);
+  log.debug("My Telemetry: Sent - {\"{}\": {}°C} with message Id {}.", telemetryName, temperature, message.getMessageId());
+  temperatureReadings.put(new Date(), temperature);
+}
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
+private async Task SendTemperatureTelemetryAsync()
+{
+  const string telemetryName = "temperature";
+
+  string telemetryPayload = $"{{ \"{telemetryName}\": {_temperature} }}";
+  using var message = new Message(Encoding.UTF8.GetBytes(telemetryPayload))
+  {
+      ContentEncoding = "utf-8",
+      ContentType = "application/json",
+  };
+  message.Properties.Add("iothub-creation-time-utc", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+  await _deviceClient.SendEventAsync(message);
+  _logger.LogDebug($"Telemetry: Sent - {{ \"{telemetryName}\": {_temperature}°C }}.");
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def send_telemetry_from_thermostat(device_client, telemetry_msg):
+    msg = Message(json.dumps(telemetry_msg))
+    msg.custom_properties["iothub-creation-time-utc"] = datetime.now(timezone.utc).isoformat()
+    msg.content_encoding = "utf-8"
+    msg.content_type = "application/json"
+    print("Sent message")
+    await device_client.send_message(msg)
+```
+
+---
+
+Následující fragment kódu ukazuje tuto vlastnost ve zprávě exportované do úložiště objektů BLOB:
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
+}
+```
+
+## <a name="property-changes-format"></a>Formát změn vlastností
+
+Každá zpráva nebo záznam představuje jednu změnu vlastnosti zařízení nebo cloudu. U vlastností zařízení se jako samostatná zpráva exportují jenom změny v hlášené hodnotě. Mezi informace v exportované zprávě patří:
+
+- `applicationId`: ID aplikace IoT Central.
+- `messageSource`: Zdroj zprávy – `properties` .
+- `messageType`: Buď `cloudPropertyChange` , `devicePropertyDesiredChange` nebo `devicePropertyReportedChange` .
+- `deviceId`: ID zařízení, které odeslalo zprávu telemetrie.
+- `schema`: Název a verze schématu datové části.
+- `templateId`: ID šablony zařízení přidružené k zařízení.
+- `enrichments`: Jakékoli obohacení nastavené na export.
+
+V případě Event Hubs a Service Bus IoT Central exportuje data nových zpráv do centra událostí nebo Service Bus fronty nebo tématu téměř v reálném čase. Ve vlastnostech uživatele (také označovaných jako vlastnosti aplikace) každé zprávy `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` jsou automaticky zahrnuty,,, a `iotcentral-message-type` .
+
+Pro úložiště objektů BLOB se zprávy účtují a exportují jednou za minutu.
+
+Následující příklad ukazuje zprávu o změně exportovaných vlastností přijatou v Azure Blob Storage.
+
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "properties",
+    "messageType": "cloudPropertyChange",
+    "deviceId": "18a985g1fta",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:37:32.942Z",
+    "properties": [{
+        "name": "MachineSerialNumber",
+        "value": "abc"
+    }],
+    "enrichments": {
+        "userSpecifiedKey" : "sampleValue"
+    }
+}
+```
+
+## <a name="comparison-of-legacy-data-export-and-data-export"></a>Porovnání exportu a exportu dat ze starších verzí
+
+V následující tabulce jsou uvedeny rozdíly mezi [exportem starších dat](howto-export-data-legacy.md) a novými funkcemi exportu dat:
+
+| Možnosti  | Export zastaralých dat | Nový export dat |
+| :------------- | :---------- | :----------- |
+| Dostupné datové typy | Telemetrie, zařízení a šablony zařízení | Telemetrie, změny vlastností |
+| Filtrování | Žádné | Závisí na typu exportovaného dat. Pro telemetrii, filtrování podle telemetrie, vlastností zpráv a hodnot vlastností |
+| Obohacení | Žádné | Obohacení vlastním řetězcem nebo hodnotou vlastnosti v zařízení |
+| Cíle | Azure Event Hubs, Azure Service Bus fronty a témata, Azure Blob Storage | Stejné jako u starších verzí exportu dat a webhooků|
+| Podporované verze aplikace | V2, V3 | Jenom V3 |
+| Významné limity | 5 exportů na aplikaci, 1 cíl na export | 10 EXPORTS – cílová připojení na aplikaci |
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když víte, jak exportovat data do Azure Event Hubs, Azure Service Bus a Azure Blob Storage, přejděte k dalšímu kroku:
-
-> [!div class="nextstepaction"]
-> [Jak spouštět vlastní analýzy pomocí datacihlů](./howto-create-custom-analytics.md)
+Teď, když už víte, jak používat nový export dat, je navržený další krok, kde se dozvíte, [Jak používat analýzy v IoT Central](./howto-create-analytics.md)

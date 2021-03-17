@@ -1,5 +1,6 @@
 ---
-title: Zápis webové aplikace s přihlašováním/vycházejícími uživateli – Microsoft Identity Platform | Azure
+title: Zápis webové aplikace, která se přihlásí uživatelům Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se, jak vytvořit webovou aplikaci, která se přihlásí uživatelům.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 28bbe1432777e9e15ae625fb9788f9182495bd66
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845081"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937840"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webová aplikace, která přihlašuje uživatele: přihlášení a odhlášení
 
@@ -108,7 +109,7 @@ def index():
 
 ---
 
-### <a name="signin-action-of-the-controller"></a>`SignIn`akce kontroleru
+### <a name="signin-action-of-the-controller"></a>`SignIn` akce kontroleru
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -213,7 +214,7 @@ Až se uživatel přihlásí do vaší aplikace, budete ho chtít povolit, aby s
 Odhlášení z webové aplikace zahrnuje více než odebrání informací o přihlášeném účtu ze stavu webové aplikace.
 Webová aplikace musí také přesměrovat uživatele na koncový bod platformy Microsoft identity, `logout` aby se odhlásily.
 
-Když vaše webová aplikace přesměruje uživatele na `logout` koncový bod, tento koncový bod vymaže relaci uživatele z prohlížeče. Pokud vaše aplikace nepřešla do `logout` koncového bodu, uživatel se znovu ověří do vaší aplikace bez zadání přihlašovacích údajů. Důvodem je, že budou mít platnou relaci jednotného přihlašování s koncovým bodem Microsoft Identity Platform.
+Když vaše webová aplikace přesměruje uživatele na `logout` koncový bod, tento koncový bod vymaže relaci uživatele z prohlížeče. Pokud vaše aplikace nepřešla do `logout` koncového bodu, uživatel se znovu ověří do vaší aplikace bez zadání přihlašovacích údajů. Důvodem je, že budou mít platnou relaci jednotného přihlašování s platformou Microsoft identity.
 
 Další informace najdete v části [odeslání žádosti o přihlášení](v2-protocols-oidc.md#send-a-sign-out-request) na [platformě Microsoft Identity Platform a v dokumentaci k protokolu OpenID Connect](v2-protocols-oidc.md) .
 
@@ -221,19 +222,19 @@ Další informace najdete v části [odeslání žádosti o přihlášení](v2-p
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Během registrace aplikace zaregistrujete identifikátor URI po odhlášení. V našem kurzu jste si zaregistrovali `https://localhost:44321/signout-oidc` v poli **Adresa URL pro odhlášení** v části **Upřesnit nastavení** na stránce **ověřování** . Podrobnosti najdete v tématu [Registrace aplikace WebApp](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp).
+Při registraci aplikace zaregistrujete adresu URL pro odhlášení front-Channel. V našem kurzu jste `https://localhost:44321/signout-oidc` na stránce **ověřování** zaregistrovali pole **Adresa URL pro odhlášení front-Channel** . Podrobnosti najdete v tématu [Registrace aplikace WebApp](scenario-web-app-sign-user-app-registration.md#register-an-app-by-using-the-azure-portal).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Během registrace aplikace zaregistrujete identifikátor URI po odhlášení. V našem kurzu jste si zaregistrovali `https://localhost:44308/Account/EndSession` v poli **Adresa URL pro odhlášení** v části **Upřesnit nastavení** na stránce **ověřování** . Podrobnosti najdete v tématu [Registrace aplikace WebApp](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet).
+Během registrace aplikace nemusíte registrovat další adresu URL pro odhlášení front-Channel. Aplikace se bude volat zpátky na svou hlavní adresu URL. 
 
 # <a name="java"></a>[Java](#tab/java)
 
-Během registrace aplikace zaregistrujete identifikátor URI po odhlášení. V našem kurzu jste si zaregistrovali `http://localhost:8080/msal4jsample/sign_out` v poli **Adresa URL pro odhlášení** v části **Upřesnit nastavení** na stránce **ověřování** .
+V registraci aplikace se nevyžaduje žádná adresa URL pro odhlášení front-Channel.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Během registrace aplikace nemusíte registrovat další adresu URL pro odhlášení. Aplikace se bude volat zpátky na svou hlavní adresu URL.
+Během registrace aplikace nemusíte registrovat další adresu URL pro odhlášení front-Channel. Aplikace se bude volat zpátky na svou hlavní adresu URL.
 
 ---
 
@@ -325,7 +326,7 @@ V rychlém startu Pythonu se tlačítko pro odhlášení nachází v souboru [Te
 
 ---
 
-### <a name="signout-action-of-the-controller"></a>`SignOut`akce kontroleru
+### <a name="signout-action-of-the-controller"></a>`SignOut` akce kontroleru
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -335,7 +336,7 @@ V předchozích verzích základních šablon ASP.NET `Account` byl kontroler vl
 - Volání `Signout()` , která umožňují middlewaru OpenID Connect, se obrátit na koncový bod Microsoft Identity Platform `logout` . Koncový bod pak:
 
   - Vymaže soubor cookie relace z prohlížeče.
-  - Volá zpět adresu URL pro odhlášení. Ve výchozím nastavení zobrazuje adresa URL pro odhlášení [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)stránku zobrazení se znaménkem. Tato stránka je také k dispozici jako součást MIcrosoft. identity. Web.
+  - Zavolá zpět identifikátor URI přesměrování po odhlášení. Ve výchozím nastavení se identifikátor URI pro přesměrování po odhlášení zobrazuje na [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)stránce zobrazení s odhlašovacím podpisem. Tato stránka je také k dispozici jako součást Microsoft. identity. Web.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -432,5 +433,4 @@ Pokud chcete získat další informace o odhlášení, přečtěte si dokumentac
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Přechod k produkčnímu prostředí](scenario-web-app-sign-user-production.md)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](scenario-web-app-sign-user-production.md)prostředí.

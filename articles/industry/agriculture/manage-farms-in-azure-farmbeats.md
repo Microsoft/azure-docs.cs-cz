@@ -4,13 +4,13 @@ description: Popisuje, jak spravovat farmy.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-ummehabiba
+ms.openlocfilehash: 050b3b4d67eda9b6c9b4621c014e3e6baad34053
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847491"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173796"
 ---
 # <a name="manage-farms"></a>Správa farem
 
@@ -25,7 +25,7 @@ Použijte k tomu následující postup:
 
     Tady je ukázka obrázku:
 
-    ![Beats farmy projektu](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
+    ![Snímek obrazovky zobrazující stránku farmy](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
 2. Vyberte **vytvořit farmu** a zadejte **název**, **plodiny** a **adresu**.
@@ -33,14 +33,14 @@ Použijte k tomu následující postup:
 
 Existují dva způsoby, jak definovat hranici farmy:
 
-1. **Označit na mapě**: pomocí nástroje mapového ovládacího prvku nakreslete a označte hranici farmy. Chcete-li označit hranice, ![ farma projektu Beats ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) a označte přesné hranice.
+1. **Označit na mapě**: pomocí nástroje mapového ovládacího prvku nakreslete a označte hranici farmy. Chcete-li označit hranice,  ![ snímek obrazovky, který zobrazuje ikonu tužky pro kreslení hranic na mapě ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) , a označte přesné hranice.
 
-    ![Beats farmy projektu](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
+    ![Snímek obrazovky zobrazující hranice vykreslování na mapě](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
 2. **Vložení geografického kódu JSON**: geografická JSON je formát pro kódování geografických datových struktur pomocí JavaScript Object Notation (JSON). Tato možnost zobrazí textové pole, kde lze zadat řetězec typu "text", který označuje hranice farmy. Z GeoJSON.io můžete také vytvořit kód pro injson.
 Informace můžete zadat pomocí popisů.
 
-    ![Beats farmy projektu](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
+    ![Snímek obrazovky, který zvýrazní možnost vložení invariantního kódu JSON na obrazovce vytvořit farmu.](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
 
 3.  Vyberte **Odeslat** a vytvořte farmu. Vytvoří se nová farma, která se zobrazí na stránce **farmy** .
 
@@ -58,7 +58,7 @@ Na stránce seznam farmy se zobrazí seznam vytvořených farem. Vyberte farmu, 
 Stránka **farmy** zobrazuje seznam vytvořených farem.
 
 1.  Vyberte farmu, pro kterou chcete farmu zobrazit a upravit.
-2.  Vyberte **Upravit farmu** a upravte informace o farmě. V okně **Podrobnosti o farmě** můžete upravit pole **název**, **plodiny**, **adresa**a definovat **hranice farmy** .
+2.  Vyberte **Upravit farmu** a upravte informace o farmě. V okně **Podrobnosti o farmě** můžete upravit pole **název**, **plodiny**, **adresa** a definovat **hranice farmy** .
 
     ![Beats farmy projektu](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
 
@@ -71,7 +71,7 @@ Na stránce **farmy** se zobrazí seznam vytvořených Farm. Chcete-li odstranit
 1.  Vyberte farmu ze seznamu pro odstranění podrobností o farmě.
 2.  Vyberte **Odstranit farmu** , aby se farma odstranila.
 
-    ![Beats farmy projektu](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
+    ![Snímek obrazovky zobrazující obrazovku odstranit farmu a zvýrazní tlačítko Odstranit](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
 
     > [!NOTE]
     > Když odstraníte farmu, zařízení a mapy přidružené k farmě se neodstraňují. Žádné informace o farmě spojené se zařízením a mapami nebudou relevantní. Můžete dál zobrazovat zařízení, telemetrie a mapy ze služby FarmBeats.

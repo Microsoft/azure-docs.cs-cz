@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c1d2613661421ae95c34edef3caafe4c6fb3d4a9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: e62333f241cf24620773314fb7aa4846af651eaf
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905070"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185865"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatické zjišování jazyka pro rozpoznávání řeči na text
 
@@ -67,7 +67,8 @@ auto autoDetectSourceLanguageConfig =
 auto recognizer = SpeechRecognizer::FromConfig(
     speechConfig,
     autoDetectSourceLanguageConfig,
-    audioConfig);
+    audioConfig
+    );
 
 speechRecognitionResult = recognizer->RecognizeOnceAsync().get();
 auto autoDetectSourceLanguageResult =
@@ -140,7 +141,7 @@ NSString *detectedLanguage = [languageDetectionResult language];
 
 ```Javascript
 var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromLanguages(["en-US", "de-DE"]);
-var speechRecognizer = SpeechSDK.SpeechRecognizer.FromConfig(speechConfig, audioConfig, autoDetectConfig);
+var speechRecognizer = SpeechSDK.SpeechRecognizer.FromConfig(speechConfig, autoDetectConfig, audioConfig);
 speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) => {
         var languageDetectionResult = SpeechSDK.AutoDetectSourceLanguageResult.fromResult(result);
         var detectedLanguage = languageDetectionResult.language;
@@ -253,11 +254,11 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-* Podívejte se na [ukázkový kód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434) na GitHubu pro automatické zjišťování jazyka.
+* Podívejte se na [ukázkový kód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py#L458) na GitHubu pro automatické zjišťování jazyka.
 ::: zone-end
 
 ::: zone pivot="programming-language-objectivec"
-* Podívejte se na [ukázkový kód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494) na GitHubu pro automatické zjišťování jazyka.
+* Podívejte se na [ukázkový kód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L525) na GitHubu pro automatické zjišťování jazyka.
 ::: zone-end
 
 * [Referenční dokumentace sady Speech SDK](speech-sdk.md)

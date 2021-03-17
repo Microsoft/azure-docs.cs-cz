@@ -7,13 +7,13 @@ ms.assetid: de5d4285-9c7d-4735-a695-288264047375
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 771cdecd6248f0a4fd350dc3d18e1c05edbd5a46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 1b88e5928d276b58339cb0266505295808bc7a7c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033866"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91335479"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>Ruční škálování webové aplikace pomocí PowerShellu
 
@@ -43,6 +43,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
+| [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | Upraví konfiguraci App Serviceho plánu. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upraví konfiguraci webové aplikace. |
 

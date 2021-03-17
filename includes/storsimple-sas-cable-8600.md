@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f08a6b3f7abfc79bff6baff2a339053905612535
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175041"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025591"
 ---
 #### <a name="to-attach-the-sas-cables"></a>Připojení kabelů SAS
 1. Identifikujte primární a EBOD skříně. Tyto dvě skříně se dají identifikovat tak, že si prohlížíte jejich příslušné zadní plochy. Pokyny najdete na následujícím obrázku. 
@@ -22,7 +22,7 @@ ms.locfileid: "67175041"
    |:--- |:--- |
    | 1 |Primární skříň |
    | 2 |EBOD skříň |
-2. Vyhledejte sériová čísla na primárních a EBOD skříních. Nálepka sériovým číslem je připevněna k zadnímu ušnímu číslu každé skříně. Sériová čísla musí být v obou skříních stejná. Pokud se sériová čísla neshodují, [kontaktujte podpora Microsoftu](../articles/storsimple/storsimple-contact-microsoft-support.md) hned. Pokud chcete najít sériová čísla, přečtěte si následující obrázek.
+2. Vyhledejte sériová čísla na primárních a EBOD skříních. Nálepka sériovým číslem je připevněna k zadnímu ušnímu číslu každé skříně. Sériová čísla musí být v obou skříních stejná. Pokud se sériová čísla neshodují, [kontaktujte podpora Microsoftu](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) hned. Pokud chcete najít sériová čísla, přečtěte si následující obrázek.
    
     ![Zadní pohled na skříň zobrazující sériové číslo](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
@@ -51,4 +51,3 @@ ms.locfileid: "67175041"
       | 4 |EBOD řadič 1 |
       | 5, 6 |Porty SAS v primární skříni (označený EBOD) |
       | 7, 8 |Porty SAS na skříni EBOD (port A) |
-

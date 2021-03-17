@@ -16,12 +16,13 @@ ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3bad65dbecd6e4a7d9bcb7fbdee6faafc31ead86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 787cf922fcee0ee613fc0874a490830da9adf38a
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078017"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455021"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostika zrušených oznámení v Azure Notification Hubs
 
@@ -128,7 +129,7 @@ Tady jsou cesty pro diagnostiku hlavní příčiny odhozených oznámení v Noti
 
 Ověřte přihlašovací údaje v příslušném portálu pro vývojáře služby nabízených oznámení (APNs, FCM, Služba oznamování systému Windows atd.). Další informace najdete v tématu [kurz: posílání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete zkontrolovat přihlašovací údaje, které jste získali z portálu pro vývojáře služby nabízených oznámení, přejděte na kartu **zásady přístupu** v Azure Portal.
 
@@ -146,7 +147,7 @@ V aplikaci Visual Studio se můžete připojit k Azure prostřednictvím Průzku
 
 Můžete zobrazit a spravovat všechny registrace v centru. Registrace lze rozdělit do kategorií podle Platform, nativního nebo registračního zápisu, značky, identifikátoru nabízených oznámení, ID registrace a data vypršení platnosti. Na této stránce můžete také upravit registraci. To je zvlášť užitečné pro úpravy značek.
 
-V **Průzkumník serveru**klikněte pravým tlačítkem na centrum oznámení a vyberte **Diagnostika**. 
+V **Průzkumník serveru** klikněte pravým tlačítkem na centrum oznámení a vyberte **Diagnostika**. 
 
 ![Visual Studio Průzkumník serveru: Diagnostika nabídky](./media/notification-hubs-push-notification-fixer/diagnose-menu.png)
 
@@ -171,9 +172,9 @@ Mnoho zákazníků používá [Service Bus Exploreru](https://github.com/paolosa
 
 ### <a name="verify-message-notifications"></a>Ověření oznámení zprávy
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete vašim klientům poslat testovací oznámení, aniž byste museli ukončit a spustit službu back-end, vyberte v části **Podpora a řešení potíží**možnost **Odeslat test odeslat**.
+Pokud chcete vašim klientům poslat testovací oznámení, aniž byste museli ukončit a spustit službu back-end, vyberte v části **Podpora a řešení potíží** možnost **Odeslat test odeslat**.
 
 ![Testování funkcí Send v Azure][7]
 
@@ -199,7 +200,7 @@ Pokud oznámení v klientském zařízení nepřijde, může při Notification H
 
 Pokud chcete získat přehled o chybách služby nabízených oznámení, můžete použít vlastnost [EnableTestSend] . Tato vlastnost je automaticky povolena při odesílání zkušebních zpráv z portálu nebo klienta sady Visual Studio. Tato vlastnost slouží k zobrazení podrobných informací o ladění a také prostřednictvím rozhraní API. V současné době je možné ji použít v sadě .NET SDK. Bude nakonec přidáno do všech klientských sad SDK.
 
-Chcete-li použít `EnableTestSend` vlastnost se voláním REST, přidejte parametr řetězce dotazu s názvem *test* na konec volání odeslání. Příklad:
+Chcete-li použít `EnableTestSend` vlastnost se voláním REST, přidejte parametr řetězce dotazu s názvem *test* na konec volání odeslání. Například:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -248,7 +249,7 @@ Tato zpráva znamená, že přihlašovací údaje nakonfigurované v Notificatio
 
 ### <a name="review-telemetry"></a>Kontrola telemetrie
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Na portálu můžete získat rychlý přehled o všech aktivitách v centru oznámení.
 
@@ -260,7 +261,7 @@ Na portálu můžete získat rychlý přehled o všech aktivitách v centru ozn�
 
    ![Protokol aktivit Azure Portal][6]
 
-3. Začněte tím, že zkontrolujete **příchozí zprávy**, **operace registrace**a **úspěšná oznámení**. Pak přejdete na kartu platforma na platformu, kde můžete zkontrolovat chyby, které jsou specifické pro službu nabízených oznámení.
+3. Začněte tím, že zkontrolujete **příchozí zprávy**, **operace registrace** a **úspěšná oznámení**. Pak přejdete na kartu platforma na platformu, kde můžete zkontrolovat chyby, které jsou specifické pro službu nabízených oznámení.
 
 4. Pokud není nastavení ověřování pro vaše centrum oznámení správné, zobrazí se **Chyba ověření PNS** zprávy. Je dobré se podívat, jak přihlašovací údaje služby nabízených oznámení kontrolovat.
 
@@ -296,5 +297,5 @@ Další informace o programovém přístupu najdete v tématu [programový pří
 [View device registrations for notification hubs]: /previous-versions/windows/apps/dn792122(v=win.10)
 [Hluboká podrobně: Visual Studio 2013 Update 2 RC a Azure SDK 2,3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [Oznamujeme vydání verze Visual Studio 2013 Update 3 a Azure SDK 2,4.]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
-[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend
 [Programmatic telemetry access]: /previous-versions/azure/azure-services/dn458823(v=azure.100)

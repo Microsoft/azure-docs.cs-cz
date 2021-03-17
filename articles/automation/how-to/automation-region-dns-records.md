@@ -3,14 +3,14 @@ title: Záznamy DNS datového centra Azure, které používá Azure Automation |
 description: Tento článek obsahuje záznamy DNS vyžadované funkcemi Azure Automation, když omezíte komunikaci s konkrétní oblastí Azure hostující tento účet Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/23/2020
+ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 8630afa7410aad81a7a3c61540fc74702fc6481c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117188"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575998"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Záznamy DNS pro oblasti Azure používané Azure Automation
 
@@ -21,7 +21,7 @@ Služba [Azure Automation](../automation-intro.md) používá několik záznamů
 * Webhooky
 
 >[!NOTE]
->Pokud se nejedná o 1.6.10.2 nebo vyšší verzi, registrace pro Hybrid Runbook Worker Linux se nezdaří s novými záznamy. Aby počítač mohl získat aktualizovanou verzi role pracovního procesu a používat tyto nové záznamy, musíte upgradovat na novější verzi [agenta Log Analytics pro Linux](../../azure-monitor/platform/agent-linux.md) . Stávající počítače budou dál fungovat bez problémů.  
+>Pokud se nejedná o 1.6.10.2 nebo vyšší verzi, registrace pro Hybrid Runbook Worker Linux se nezdaří s novými záznamy. Aby počítač mohl získat aktualizovanou verzi role pracovního procesu a používat tyto nové záznamy, musíte upgradovat na novější verzi [agenta Log Analytics pro Linux](../../azure-monitor/agents/agent-linux.md) . Stávající počítače budou dál fungovat bez problémů.  
 
 ## <a name="dns-records-per-region"></a>Záznamy DNS na oblast
 
@@ -38,7 +38,7 @@ Následující tabulka uvádí záznam DNS pro každou oblast.
 | Střední Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Indie – střed |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | USA – východ 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Japan East |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Severní Evropa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Jihovýchodní Asie |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
@@ -57,7 +57,7 @@ Pro podporu [privátního odkazu](../../private-link/private-link-overview.md) v
 | USA – středozápad |`https://<accountId>.webhook.wcus.azure-automation.net`<br>`https://<accountId>.agentsvc.wcus.azure-automation.net`<br>`https://<accountId>.jrds.wcus.azure-automation.net` |
 | USA – západ |`https://<accountId>.webhook.wus.azure-automation.net`<br>`https://<accountId>.agentsvc.wus.azure-automation.net`<br>`https://<accountId>.jrds.wus.azure-automation.net` |
 | Západní USA 2 |`https://<accountId>.webhook.wus2.azure-automation.net`<br>`https://<accountId>.agentsvc.wus2.azure-automation.net`<br>`https://<accountId>.jrds.wus2.azure-automation.net` |
-| Střední USA |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
+| USA – střed |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
 | Středojižní USA |`https://<accountId>.webhook.scus.azure-automation.net`<br>`https://<accountId>.agentsvc.scus.azure-automation.net`<br>`https://<accountId>.jrds.scus.azure-automation.net` |
 | USA – středosever |`https://<accountId>.webhook.ncus.azure-automation.net`<br>`https://<accountId>.agentsvc.ncus.azure-automation.net`<br>`https://<accountId>.jrds.ncus.azure-automation.net` |
 | East US |`https://<accountId>.webhook.eus.azure-automation.net`<br>`https://<accountId>.agentsvc.eus.azure-automation.net`<br>`https://<accountId>.jrds.eus.azure-automation.net` |
@@ -68,7 +68,7 @@ Pro podporu [privátního odkazu](../../private-link/private-link-overview.md) v
 | Jihovýchodní Asie |`https://<accountId>.webhook.sea.azure-automation.net`<br>`https://<accountId>.agentsvc.sea.azure-automation.net`<br>`https://<accountId>.jrds.sea.azure-automation.net` |
 | Východní Asie |`https://<accountId>.webhook.ea.azure-automation.net`<br>`https://<accountId>.agentsvc.ea.azure-automation.net`<br>`https://<accountId>.jrds.ea.azure-automation.net` |
 | Indie – střed |`https://<accountId>.webhook.cid.azure-automation.net`<br>`https://<accountId>.agentsvc.cid.azure-automation.net`<br>`https://<accountId>.jrds.cid.azure-automation.net` |
-| Japan East |`https://<accountId>.webhook.jpe.azure-automation.net`<br>`https://<accountId>.agentsvc.jpe.azure-automation.net`<br>`https://<accountId>.jrds.jpe.azure-automation.net` |
+| Japonsko – východ |`https://<accountId>.webhook.jpe.azure-automation.net`<br>`https://<accountId>.agentsvc.jpe.azure-automation.net`<br>`https://<accountId>.jrds.jpe.azure-automation.net` |
 | Jižní Korea – střed |`https://<accountId>.webhook.kc.azure-automation.net`<br>`https://<accountId>.agentsvc.kc.azure-automation.net`<br>`https://<accountId>.jrds.kc.azure-automation.net` |
 | Austrálie – jihovýchod |`https://<accountId>.webhook.ase.azure-automation.net`<br>`https://<accountId>.agentsvc.ase.azure-automation.net`<br>`https://<accountId>.jrds.ase.azure-automation.net` |
 | Austrálie – východ |`https://<accountId>.webhook.ae.azure-automation.net`<br>`https://<accountId>.agentsvc.ae.azure-automation.net`<br>`https://<accountId>.jrds.ae.azure-automation.net` |
@@ -76,7 +76,7 @@ Pro podporu [privátního odkazu](../../private-link/private-link-overview.md) v
 | Spojené království – jih |`https://<accountId>.webhook.uks.azure-automation.net`<br>`https://<accountId>.agentsvc.uks.azure-automation.net`<br>`https://<accountId>.jrds.uks.azure-automation.net` |
 | Francie – střed |`https://<accountId>.webhook.fc.azure-automation.net`<br>`https://<accountId>.agentsvc.fc.azure-automation.net`<br>`https://<accountId>.jrds.fc.azure-automation.net` |
 | Jižní Afrika – sever |`https://<accountId>.webhook.san.azure-automation.net`<br>`https://<accountId>.agentsvc.san.azure-automation.net`<br>`https://<accountId>.jrds.san.azure-automation.net` |
-| Brazil South |`https://<accountId>.webhook.brs.azure-automation.net`<br>`https://<accountId>.agentsvc.brs.azure-automation.net`<br>`https://<accountId>.jrds.brs.azure-automation.net` |
+| Brazílie – jih |`https://<accountId>.webhook.brs.azure-automation.net`<br>`https://<accountId>.agentsvc.brs.azure-automation.net`<br>`https://<accountId>.jrds.brs.azure-automation.net` |
 | Čína – sever |`https://<accountId>.webhook.bjb.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjb.azure-automation.cn`<br>`https://<accountId>.jrds.bjb.azure-automation.cn` |
 | Čína – sever 2 |`https://<accountId>.webhook.bjs2.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjs2.azure-automation.cn`<br>`https://<accountId>.jrds.bjs2.azure-automation.cn` |
 | Čína – východ 2 |`https://<accountId>.webhook.sha2.azure-automation.cn`<br>`https://<accountId>.agentsvc.sha2.azure-automation.cn`<br>`https://<accountId>.jrds.sha2.azure-automation.cn` |
@@ -88,7 +88,10 @@ Pro podporu [privátního odkazu](../../private-link/private-link-overview.md) v
 
 ![Stránka primárního klíče účtu Automation](./media/automation-region-dns-records/automation-account-keys.png)
 
-Zkopírujte hodnotu po *účtech/* z pole **Adresa URL** –`https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+Zkopírujte hodnotu po *účtech/* z pole **Adresa URL** – `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+
+> [!NOTE]
+> Všechny záznamy DNS Webhooku a AgentService se aktualizovaly na nové styly DNS pro podporu privátního odkazu. U záznamů DNS JRDS se podporují staré i nové styly DNS. Pokud nepoužíváte privátní odkaz, zobrazí se původní styl záznamů DNS, zatímco na základě privátního odkazu se zobrazí nový styl záznamů DNS.
 
 Doporučujeme používat adresy uvedené při definování [výjimek](../automation-runbook-execution.md#exceptions). Seznam IP adres oblastí a nikoli názvů oblastí získáte stažením souboru JSON z webu Microsoft Download Center pro následující cloudová prostředí:
 

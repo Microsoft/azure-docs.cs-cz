@@ -8,21 +8,22 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9554fa63d13c5da465653064d69d7950d91f0300
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421871"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359536"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: vytvoření Node.js webové aplikace pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -93,7 +94,7 @@ Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí
 
 Soubor **package.json** je jedním ze souborů vytvořených v kořenu projektu. Tento soubor obsahuje seznam dalších modulů, které aplikace Node.js vyžaduje. Až budete tuto aplikaci nasazovat v Azure, tento soubor se použije k vyhodnocení, které moduly se musí v Azure pro podporu vaší aplikace nainstalovat. Pro účely tohoto kurzu nainstalujte další dva balíčky.
 
-1. Nainstalujte modul ** \@ Azure/Cosmos** prostřednictvím npm. 
+1. Nainstalujte modul **\@ Azure/Cosmos** prostřednictvím npm. 
 
    ```bash
    npm install @azure/cosmos
@@ -469,14 +470,14 @@ Po úspěšném dokončení aplikace v místním prostředí můžete službu na
 3. Odesláním aplikace do vzdáleného úložiště ji nasaďte.
    
    ```bash
-   git push azure master
+   git push azure main
    ```
 
 4. Během několika sekund se vaše webová aplikace publikuje a spustí v prohlížeči.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už tyto prostředky nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos DB a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků, kterou jste použili pro účet Azure Cosmos DB, vyberte **Odstranit**a pak potvrďte název skupiny prostředků, která se má odstranit.
+Když už tyto prostředky nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos DB a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků, kterou jste použili pro účet Azure Cosmos DB, vyberte **Odstranit** a pak potvrďte název skupiny prostředků, která se má odstranit.
 
 ## <a name="next-steps"></a><a name="_Toc395637775"></a>Další kroky
 
@@ -487,4 +488,3 @@ Když už tyto prostředky nepotřebujete, můžete odstranit skupinu prostředk
 [Node.js]: https://nodejs.org/
 [Git]: https://git-scm.com/
 [GitHub]: https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-todo-app
-

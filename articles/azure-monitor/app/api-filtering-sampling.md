@@ -3,13 +3,13 @@ title: Filtrování a předzpracování v sadě Application Insights SDK | Micro
 description: Zapište procesory telemetrie a Inicializátory telemetrie pro sadu SDK, aby bylo možné filtrovat nebo přidat vlastnosti dat před odesláním telemetrie na Application Insights portál.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.custom: devx-track-javascript
-ms.openlocfilehash: eec3cf44eb516ce20db564e1bed32e5741bfd02a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: cb9159b98b219c6fb04beb7bbbaade64fc72a30b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366751"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927758"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Filtrování a předzpracování telemetrie v sadě Application Insights SDK
 
@@ -292,7 +292,7 @@ protected void Application_Start()
 }
 ```
 
-Další informace najdete v [této ukázce](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole).
+Další informace najdete v [této ukázce](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole).
 
 ASP.NET **Core/aplikace pracovní služby: načíst inicializátor**
 
@@ -327,24 +327,22 @@ Vložte inicializátor telemetrie hned po inicializačním kódu, který jste z�
     // This is called whenever a new telemetry item
     // is created.
 
-    appInsights.queue.push(function () {
-        appInsights.context.addTelemetryInitializer(function (envelope) {
-            var telemetryItem = envelope.data.baseData;
+    appInsights.addTelemetryInitializer(function (envelope) {
+        var telemetryItem = envelope.data.baseData;
 
-            // To check the telemetry items type - for example PageView:
-            if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
-                // this statement removes url from all page view documents
-                telemetryItem.url = "URL CENSORED";
-            }
+        // To check the telemetry items type - for example PageView:
+        if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
+            // this statement removes url from all page view documents
+            telemetryItem.url = "URL CENSORED";
+        }
 
-            // To set custom properties:
-            telemetryItem.properties = telemetryItem.properties || {};
-            telemetryItem.properties["globalProperty"] = "boo";
-
-            // To set custom metrics:
-            telemetryItem.measurements = telemetryItem.measurements || {};
-            telemetryItem.measurements["globalMetric"] = 100;
-        });
+        // To set custom properties:
+        telemetryItem.properties = telemetryItem.properties || {};
+        telemetryItem.properties["globalProperty"] = "boo";
+        
+        // To set cloud role name / instance
+        envelope.tags["ai.cloud.role"] = "your role name";
+        envelope.tags["ai.cloud.roleInstance"] = "your role instance";
     });
 
     // End of inserted code.
@@ -499,7 +497,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>Přidat informace z HttpContext
 
-Následující ukázkový inicializátor načte data z [`HttpContext`](/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) a připojí je k `RequestTelemetry` instanci. `IHttpContextAccessor`Je automaticky zajištěn vložením závislosti konstruktoru.
+Následující ukázkový inicializátor načte data z [`HttpContext`](/aspnet/core/fundamentals/http-context) a připojí je k `RequestTelemetry` instanci. `IHttpContextAccessor`Je automaticky zajištěn vložením závislosti konstruktoru.
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer

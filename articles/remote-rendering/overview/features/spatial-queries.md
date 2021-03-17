@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 3f808d45197f7d9ee23d3f809a2ab0452e92c20e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c664df586c260b3e16f64c071190055dbaeccd24
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021292"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594040"
 ---
 # <a name="spatial-queries"></a>Prostorové dotazy
 
@@ -33,7 +34,7 @@ Prostorové dotazy používá modul [Havok fyzika](https://www.havok.com/product
 *Jednosměrné přetypování* je prostorový dotaz, ve kterém modul runtime kontroluje, které objekty se protínají, od dané pozice a odkazuje na určitý směr. V rámci optimalizace je také k disdobu maximální vzdálenosti, aby nedošlo k hledání objektů, které jsou příliš daleko.
 
 ```cs
-async void CastRay(AzureSession session)
+async void CastRay(RenderingSession session)
 {
     // trace a line from the origin into the +z direction, over 10 units of distance.
     RayCast rayCast = new RayCast(new Double3(0, 0, 0), new Double3(0, 0, 1), 10);
@@ -41,8 +42,8 @@ async void CastRay(AzureSession session)
     // only return the closest hit
     rayCast.HitCollection = HitCollectionPolicy.ClosestHit;
 
-    RayCastHit[] hits = await session.Actions.RayCastQueryAsync(rayCast).AsTask();
-
+    RayCastQueryResult result = await session.Connection.RayCastQueryAsync(rayCast);
+    RayCastHit[] hits = result.Hits;
     if (hits.Length > 0)
     {
         var hitObject = hits[0].HitObject;
@@ -55,42 +56,43 @@ async void CastRay(AzureSession session)
 ```
 
 ```cpp
-void CastRay(ApiHandle<AzureSession> session)
+void CastRay(ApiHandle<RenderingSession> session)
 {
     // trace a line from the origin into the +z direction, over 10 units of distance.
     RayCast rayCast;
-    rayCast.StartPos = { 0, 0, 0 };
-    rayCast.EndPos = { 0, 0, 1 };
+    rayCast.StartPos = {0, 0, 0};
+    rayCast.EndPos = {0, 0, 1};
     rayCast.MaxHits = 10;
 
     // only return the closest hit
     rayCast.HitCollection = HitCollectionPolicy::ClosestHit;
 
-    ApiHandle<RaycastQueryAsync> castQuery = *session->Actions()->RayCastQueryAsync(rayCast);
-
-    castQuery->Completed([](const ApiHandle<RaycastQueryAsync>& async)
+    session->Connection()->RayCastQueryAsync(rayCast, [](Status status, ApiHandle<RayCastQueryResult> result)
     {
-        std::vector<RayCastHit> hits = *async->Result();
-
-        if (hits.size() > 0)
+        if (status == Status::OK)
         {
-            auto hitObject = hits[0].HitObject;
-            auto hitPosition = hits[0].HitPosition;
-            auto hitNormal = hits[0].HitNormal;
+            std::vector<RayCastHit> hits;
+            result->GetHits(hits);
 
-            // do something with the hit information
+            if (hits.size() > 0)
+            {
+                auto hitObject = hits[0].HitObject;
+                auto hitPosition = hits[0].HitPosition;
+                auto hitNormal = hits[0].HitNormal;
+
+                // do something with the hit information
+            }
         }
     });
-
 }
 ```
 
 
 Existují tři režimy kolekce přístupů:
 
-* ** `Closest` :** V tomto režimu bude hlášeno pouze nejbližší volání.
-* ** `Any` :** Preferovat tento režim, pokud chcete zjistit, *jestli* v Ray nedošlo cokoli, ale nezáleží na tom, co bylo dosaženo přesně. Tento dotaz může být výrazně levnější pro vyhodnocení, ale má i několik aplikací.
-* ** `All` :** V tomto režimu jsou vykazovány všechny přístupy podél pole Ray, seřazené podle vzdálenosti. Tento režim nepoužívejte, pokud skutečně nepotřebujete více než první zásah. Omezte počet nahlášených přístupů s `MaxHits` možností.
+* **`Closest` :** V tomto režimu bude hlášeno pouze nejbližší volání.
+* **`Any` :** Preferovat tento režim, pokud chcete zjistit, *jestli* v Ray nedošlo cokoli, ale nezáleží na tom, co bylo dosaženo přesně. Tento dotaz může být výrazně levnější pro vyhodnocení, ale má i několik aplikací.
+* **`All` :** V tomto režimu jsou vykazovány všechny přístupy podél pole Ray, seřazené podle vzdálenosti. Tento režim nepoužívejte, pokud skutečně nepotřebujete více než první zásah. Omezte počet nahlášených přístupů s `MaxHits` možností.
 
 Pokud chcete vyloučit objekty, které se selektivně považují za přetypování, je možné použít komponentu [HierarchicalStateOverrideComponent](override-hierarchical-state.md) .
 
@@ -106,11 +108,16 @@ Výsledkem dotazu přetypování do Ray je pole přístupů. Pole je prázdné, 
 
 K dispozice jsou následující vlastnosti:
 
-* ** `HitEntity` :** Která [entita](../../concepts/entities.md) byla vybrána.
-* ** `SubPartId` :** Která *podsítě* byla v [MeshComponent](../../concepts/meshes.md). Dá se použít k indexování `MeshComponent.UsedMaterials` a hledání [materiálu](../../concepts/materials.md) v tomto okamžiku.
-* ** `HitPosition` :** Pozice v celém světě, kde prostor protínají objekty.
-* ** `HitNormal` :** Střední plocha je normální plocha na pozici průsečíku.
-* ** `DistanceToHit` :** Vzdálenost od počáteční pozice od Ray po k dosažení.
+* **`HitEntity` :** Která [entita](../../concepts/entities.md) byla vybrána.
+* **`SubPartId` :** Která *podsítě* byla v [MeshComponent](../../concepts/meshes.md). Dá se použít k indexování `MeshComponent.UsedMaterials` a hledání [materiálu](../../concepts/materials.md) v tomto okamžiku.
+* **`HitPosition` :** Pozice v celém světě, kde prostor protínají objekty.
+* **`HitNormal` :** Střední plocha je normální plocha na pozici průsečíku.
+* **`DistanceToHit` :** Vzdálenost od počáteční pozice od Ray po k dosažení.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [C# RenderingConnection. RayCastQueryAsync ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.raycastqueryasync)
+* [C++ RenderingConnection:: RayCastQueryAsync ()](/cpp/api/remote-rendering/renderingconnection#raycastqueryasync)
 
 ## <a name="next-steps"></a>Další kroky
 

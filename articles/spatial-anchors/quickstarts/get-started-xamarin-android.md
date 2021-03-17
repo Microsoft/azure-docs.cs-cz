@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace pro Xamarin Android'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro Android pomocí prostorových ukotvení.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1626dfa739df6b7cf971aa570f14d36ac6c532e7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810305"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022611"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro Xamarin Android pomocí prostorových kotev Azure
 
@@ -28,7 +28,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 - Počítač s Windows nebo macOS:
@@ -37,10 +37,10 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
     - <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
     - <a href="https://git-lfs.github.com/">Git LFS</a>.
   - Pokud používáte macOS:
-    - Aktuální verze <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio pro Mac 8.1 +</a>.
+    - Aktuální verze <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio pro Mac 8.1 +</a>.
     - <a href="https://git-scm.com/download/mac" target="_blank">Git pro MacOS</a>.
     - <a href="https://git-lfs.github.com/">Git LFS</a>.
-- Na vámi zvolenou platformu je nainstalovaná a spuštěná nejnovější verze Xamarin. Androidu. Průvodce instalací Xamarin. Android najdete v příručkách k [instalaci Xamarin. Android](https://docs.microsoft.com/xamarin/android/get-started/installation/index) .
+- Na vámi zvolenou platformu je nainstalovaná a spuštěná nejnovější verze Xamarin. Androidu. Průvodce instalací Xamarin. Android najdete v příručkách k [instalaci Xamarin. Android](/xamarin/android/get-started/installation/index) .
 - Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
   - Počítač může pro komunikaci se zařízením s Androidem vyžadovat další ovladače zařízení. Další informace najdete [tady](https://developer.android.com/studio/run/device.html).
 - Vaše aplikace musí cílit na ARCore **1,8**.
@@ -69,11 +69,11 @@ Vyhledejte `SpatialAnchorsAccountDomain` pole a nahraďte ho `Set me` doménou �
 
 Zapněte zařízení se systémem Android, přihlaste se a připojte ho k počítači pomocí kabelu USB.
 
-Nastavte projekt po spuštění na **SampleXamarin. Android**, změňte **konfiguraci řešení** na **release**a v rozevíracím seznamu pro výběr zařízení vyberte zařízení, do kterého chcete nasadit.
+Nastavte projekt po spuštění na **SampleXamarin. Android**, změňte **konfiguraci řešení** na **release** a v rozevíracím seznamu pro výběr zařízení vyberte zařízení, do kterého chcete nasadit.
 
 # <a name="windows"></a>[Windows](#tab/deploy-windows)
 
-![Konfigurace sady Visual Studio](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
+![Snímek obrazovky, který zobrazuje nabídku pro výběr projektu a zařízení v systému Windows.](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 Vyberte **ladit**  >  **Spustit ladění** a nasaďte a spusťte svoji aplikaci.
 
@@ -81,7 +81,7 @@ Vyberte **ladit**  >  **Spustit ladění** a nasaďte a spusťte svoji aplikaci.
 
 ![Konfigurace sady Visual Studio](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-Pokud **Run**  >  chcete nasadit a spustit aplikaci, vyberte spustit**Spustit bez ladění** .
+Pokud **Run**  >  chcete nasadit a spustit aplikaci, vyberte spustit **Spustit bez ladění** .
 
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace směrování zpráv pro Azure IoT Hub pomocí Azure CLI
-description: Konfigurace směrování zpráv pro Azure IoT Hub pomocí Azure CLI. V závislosti na vlastnostech ve zprávě můžete směrovat na účet úložiště nebo Service Bus frontu.
+title: Kurz – konfigurace směrování zpráv pro Azure IoT Hub pomocí rozhraní příkazového řádku Azure
+description: Kurz – konfigurace směrování zpráv pro Azure IoT Hub pomocí rozhraní příkazového řádku Azure V závislosti na vlastnostech ve zprávě můžete směrovat na účet úložiště nebo Service Bus frontu.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 239d8f2bcc1422a1098fb8f6cb3fba6706d671f2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a1cce7264e56b16d285685392186a05e2f075439
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500193"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199760"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Kurz: použití rozhraní příkazového řádku Azure ke konfiguraci směrování zpráv IoT Hub
 
@@ -147,7 +147,7 @@ Teď, když jsou základní prostředky nastavené, můžete nakonfigurovat smě
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-Pokud chcete vytvořit koncový bod směrování, použijte příkaz [AZ IoT Hub Routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create). Chcete-li vytvořit trasu zprávy pro koncový bod, použijte příkaz [AZ IoT Hub Route Create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create).
+Pokud chcete vytvořit koncový bod směrování, použijte příkaz [AZ IoT Hub Routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create). Chcete-li vytvořit trasu zprávy pro koncový bod, použijte příkaz [AZ IoT Hub Route Create](/cli/azure/iot/hub/route#az-iot-hub-route-create).
 
 ### <a name="route-to-a-storage-account"></a>Směrování do účtu úložiště
 
@@ -159,7 +159,7 @@ Toto jsou proměnné používané skriptem, které musí být nastaveny v rámci
 
 **storageConnectionString**: Tato hodnota se načte z účtu úložiště, který jste nastavili v předchozím skriptu. Používá ho směrováním zpráv pro přístup k účtu úložiště.
 
-  skupina **prostředků: existují**dva výskyty skupiny prostředků – nastavte je do vaší skupiny prostředků.
+  skupina **prostředků: existují** dva výskyty skupiny prostředků – nastavte je do vaší skupiny prostředků.
 
 **koncový bod subscriptionID**: Toto pole je nastavené na subscriptionID Azure pro koncový bod. 
 

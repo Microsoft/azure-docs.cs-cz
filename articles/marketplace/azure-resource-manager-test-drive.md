@@ -5,20 +5,20 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.author: keferna
-author: keferna
-ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.author: trkeya
+author: trkeya
+ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287941"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730367"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
 Tento typ použijte, pokud máte nabídku Azure Marketplace nebo AppSource, ale chcete vytvořit testovací jednotku s pouze prostředky Azure. Šablona Azure Resource Manager (ARM) je kódovaný kontejner prostředků Azure, který navrhujete, aby nejlépe představoval vaše řešení. Test Drive vezme zadanou šablonu ARM a nasadí všechny prostředky, které vyžaduje, do skupiny prostředků. Toto je jediná možnost testovacího disku pro virtuální počítač nebo nabídky aplikací Azure.
 
-Pokud nejste obeznámeni s tím, co je šablona ARM, přečtěte si téma [co je Azure Resource Manager?](../azure-resource-manager/resource-group-overview.md) a [Pochopte strukturu a syntaxi šablon ARM](../azure-resource-manager/resource-group-authoring-templates.md) , abyste lépe pochopili, jak vytvářet a testovat vlastní šablony.
+Pokud nejste obeznámeni s tím, co je šablona ARM, přečtěte si téma [co je Azure Resource Manager?](../azure-resource-manager/management/overview.md) a [Pochopte strukturu a syntaxi šablon ARM](../azure-resource-manager/templates/template-syntax.md) , abyste lépe pochopili, jak vytvářet a testovat vlastní šablony.
 
 Informace o **hostované** nebo testovací jednotce **Aplikace logiky** najdete v tématu [co je testovací jednotka?](what-is-test-drive.md)
 
@@ -34,7 +34,10 @@ Informace o **hostované** nebo testovací jednotce **Aplikace logiky** najdete 
 
   - **Studená** – tento typ instance představuje celkový počet instancí, které mohou být nasazeny v jednotlivých oblastech. Studené instance vyžadují pro nasazení celé testovací jednotky Správce prostředků šablonu, když zákazník požádá o testovací verzi, takže *studené* instance budou mnohem pomalejší, než se dosadí *za horké* instance. Kompromisy je, že je nutné platit jenom za dobu trvání testovacích jednotek *, ale v* předplatném Azure není vždycky spuštěná jako s *horkou* instancí.
 
-- **Test drive Azure Resource Manager šablona** – nahrajte soubor. zip obsahující šablonu Azure Resource Manager. Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+- **Test drive Azure Resource Manager šablona** – nahrajte soubor. zip obsahující šablonu Azure Resource Manager. Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
+
+    > [!note]
+    > Pro úspěšné publikování je důležité ověřit formátování šablony ARM. Existují dva způsoby, jak to provést (1) pomocí [Nástroje pro online rozhraní API](/rest/api/resources/deployments/validate) nebo (2) s [testovacím nasazením](../azure-resource-manager/templates/deploy-portal.md).
 
 - **Doba trvání testovacích jednotek** (požadováno) – zadejte počet hodin, po který bude testovací jednotka aktivní. Testovací jednotka se po skončení tohoto časového období ukončí automaticky. Používejte pouze celá čísla (například "2" hodiny jsou platné, "1,5" není).
 
@@ -72,7 +75,7 @@ Pro parametry můžete použít libovolný platný název; testovací jednotka r
 
 | Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
 |---|---|---|---|
-| **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| `https://<..>.blob.core.windows.net/<..>` |
 | **jmen**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
 | **heslo**    | zabezpečený řetězec    | Nové náhodné heslo | LP! ACS \^ 2kH     |
 | **ID relace**   | řetězec          | Jedinečný identifikátor relace testovacích jednotek (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
@@ -122,7 +125,7 @@ Test Drive Inicializuje tento parametr pomocí nového náhodného uživatelské
 }
 ```
 
-Ukázková hodnota:`admin68876`
+Ukázková hodnota: `admin68876`
 
 Pro vaše řešení můžete použít buď náhodná, nebo trvalá uživatelská jména.
 
@@ -144,7 +147,7 @@ Test Drive Inicializuje tento parametr pomocí nového náhodného hesla:
 }
 ```
 
-Ukázková hodnota:`Lp!ACS^2kh`
+Ukázková hodnota:  `Lp!ACS^2kh`
 
 Pro vaše řešení můžete použít náhodná nebo trvalá hesla.
 
@@ -166,7 +169,7 @@ Test Drive Inicializuje tento parametr s jedinečným identifikátorem GUID, kte
 }
 ```
 
-Ukázková hodnota:`b8c8693e-5673-449c-badd-257a405a6dee`
+Ukázková hodnota: `b8c8693e-5673-449c-badd-257a405a6dee`
 
 Tento parametr můžete použít k jednoznačné identifikaci relace testovacích jednotek, pokud je to nezbytné.
 
@@ -266,7 +269,7 @@ Příklad:
 
 ### <a name="subscription-limits"></a>Omezení předplatného
 
-Nezapomeňte na omezení předplatného a služeb. Pokud například chcete nasadit až deset virtuálních počítačů se 4 jádry, je potřeba zajistit, aby předplatné, které používáte pro vaše testovací prostředí, bylo možné používat 40 jader. Další informace o omezeních předplatného a služeb Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md). Když lze současně provést více testovacích jednotek, ověřte, že vaše předplatné může zpracovávat počet jader vynásobený celkovým počtem souběžných testovacích jednotek, které lze provést.
+Nezapomeňte na omezení předplatného a služeb. Pokud například chcete nasadit až 10 4 virtuálních počítačů, musíte zajistit, aby předplatné, které používáte pro vaše testovací prostředí, umožňovalo používat 40 jader. Další informace o omezeních předplatného a služeb Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md). Když lze současně provést více testovacích jednotek, ověřte, že vaše předplatné může zpracovávat počet jader vynásobený celkovým počtem souběžných testovacích jednotek, které lze provést.
 
 ### <a name="what-to-upload"></a>Co nahrát
 
@@ -333,7 +336,7 @@ Poslední část, která se má dokončit, je umožnit automatické nasazení te
 
    1. Vyberte **Uložit**.
 
-7. Vygenerujte **aplikace Azure AD** ověřovací klíč. V části **klíče**přidejte **Popis klíče**, nastavte dobu trvání na bez **platnosti** (v případě, že vypršela platnost testovací jednotky v produkčním prostředí) a pak vyberte **Uložit**. Zkopírujte tuto hodnotu a vložte ji do pole požadovaných testovacích jednotek.
+7. Vygenerujte **aplikace Azure AD** ověřovací klíč. V části **klíče** přidejte **Popis klíče**, nastavte dobu trvání na bez **platnosti** (v případě, že vypršela platnost testovací jednotky v produkčním prostředí) a pak vyberte **Uložit**. Zkopírujte tuto hodnotu a vložte ji do pole požadovaných testovacích jednotek.
 
 ![Zobrazuje klíče pro aplikaci Azure AD.](media/test-drive/azure-ad-app-keys.png)
 

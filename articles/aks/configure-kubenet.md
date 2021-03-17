@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 639bed3dcd8f3f443b73f51efb60e7c8aeaa00a0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543363"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504214"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
-Ve výchozím nastavení clustery AKS používají [kubenet][kubenet]a pro vás vytvoří virtuální síť Azure a podsíť. Pomocí *kubenet*uzly získají IP adresu z podsítě virtuální sítě Azure. Pody získají IP adresu z logicky jiného adresního prostoru do podsítě virtuální sítě Azure uzlů. Překlad adres (NAT) se pak nakonfiguruje tak, aby pody mohly získat přístup k prostředkům ve virtuální síti Azure. Zdrojová IP adresa provozu je NAT k primární IP adrese uzlu. Tento přístup významně snižuje počet IP adres, které je třeba vyhradit v síťovém prostoru pro použití v luskech.
+Ve výchozím nastavení clustery AKS používají [kubenet][kubenet]a pro vás vytvoří virtuální síť Azure a podsíť. Pomocí *kubenet* uzly získají IP adresu z podsítě virtuální sítě Azure. Pody získají IP adresu z logicky jiného adresního prostoru do podsítě virtuální sítě Azure uzlů. Překlad adres (NAT) se pak nakonfiguruje tak, aby pody mohly získat přístup k prostředkům ve virtuální síti Azure. Zdrojová IP adresa provozu je NAT k primární IP adrese uzlu. Tento přístup významně snižuje počet IP adres, které je třeba vyhradit v síťovém prostoru pro použití v luskech.
 
 Díky [rozhraní CNI (Azure Container Networking Interface)][cni-networking]každý z nich získá IP adresu z podsítě a dá se k nim získat přímý pøístup. Tyto IP adresy musí být v rámci vašeho síťového prostoru jedinečné a musí být plánovány předem. Každý uzel má parametr konfigurace maximálního počtu lusků, které podporuje. Pro tento uzel je pak rezervovaný i ekvivalentní počet IP adres na uzel. Tento přístup vyžaduje více plánování a často vede k vyčerpání IP adres nebo k nutnosti opětovnému sestavení clusterů ve větší podsíti, dokud vaše aplikace požaduje růst. Můžete nakonfigurovat maximální počet lusků nasazení na uzel v clusteru vytvoření času nebo při vytváření nových fondů uzlů. Pokud při vytváření nových fondů uzlů nezadáte maxPods, zobrazí se výchozí hodnota 110 pro kubenet.
 
@@ -24,8 +24,8 @@ V tomto článku se dozvíte, jak pomocí sítě *kubenet* vytvořit a použít 
 
 * Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
 * Nevytvářejte více než jeden cluster AKS ve stejné podsíti.
-* Clustery AKS nemůžou `169.254.0.0/16` používat `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` Rozsah adres služby Kubernetes,, nebo.
-* Instanční objekt používaný clusterem AKS musí mít alespoň roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
+* Clustery AKS nemůžou `169.254.0.0/16` používat `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` Rozsah adres služby Kubernetes pod rozsahem adres nebo rozsah adres virtuální sítě clusteru.
+* Identita clusteru používaná clusterem AKS musí mít alespoň roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Aby bylo možné vytvořit identitu clusteru a přiřadit jí oprávnění, musíte mít také příslušná oprávnění, jako je vlastník předplatného. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -34,19 +34,19 @@ V tomto článku se dozvíte, jak pomocí sítě *kubenet* vytvořit a použít 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Přehled sítě kubenet s vlastní podsítí
 
 V mnoha prostředích jste definovali virtuální sítě a podsítě s přidělenými rozsahy IP adres. Tyto prostředky virtuální sítě se používají k podpoře více služeb a aplikací. Pro zajištění připojení k síti můžou clustery AKS používat *kubenet* (základní sítě) nebo Azure CNI (*Pokročilé sítě*).
 
-V případě *kubenet*obdrží jenom uzly IP adresu v podsíti virtuální sítě. Lusky spolu nemůžou komunikovat přímo. Místo toho se k propojení mezi různými uzly používá uživatelem definované směrování (UDR) a předávání IP. Ve výchozím nastavení je udr a konfigurace předávání IP adres vytvořena a udržována službou AKS, ale je nutné použít možnost k zařazení vlastní [směrovací tabulky pro vlastní správu tras][byo-subnet-route-table]. Můžete také nasadit lusky za službu, která obdrží přiřazenou IP adresu a zatížení pro vyrovnávání zatížení pro aplikaci. Následující diagram znázorňuje, jak uzly AKS obdrží IP adresu v podsíti virtuální sítě, ale ne lusky:
+V případě *kubenet* obdrží jenom uzly IP adresu v podsíti virtuální sítě. Lusky spolu nemůžou komunikovat přímo. Místo toho se k propojení mezi různými uzly používá uživatelem definované směrování (UDR) a předávání IP. Ve výchozím nastavení je udr a konfigurace předávání IP adres vytvořena a udržována službou AKS, ale je nutné použít možnost k zařazení vlastní [směrovací tabulky pro vlastní správu tras][byo-subnet-route-table]. Můžete také nasadit lusky za službu, která obdrží přiřazenou IP adresu a zatížení pro vyrovnávání zatížení pro aplikaci. Následující diagram znázorňuje, jak uzly AKS obdrží IP adresu v podsíti virtuální sítě, ale ne lusky:
 
 ![Model sítě Kubenet s clusterem AKS](media/use-kubenet/kubenet-overview.png)
 
 Azure podporuje maximálně 400 tras v UDR, takže nemůžete mít cluster AKS větší než 400 uzlů. [Virtuální uzly][virtual-nodes] AKS a zásady sítě Azure nejsou podporované s *kubenet*.  Můžete použít [zásady sítě Calico][calico-network-policies], protože jsou podporované v kubenet.
 
-V případě *Azure CNI*každý pod tím obdrží IP adresu v podsíti protokolu IP a může přímo komunikovat s dalšími lusky a službami. Clustery můžou být tak velké jako rozsah IP adres, který zadáte. Rozsah IP adres se ale musí naplánovat předem a všechny IP adresy se spotřebovávají AKS uzly na základě maximálního počtu lusků, které můžou podporovat. *Azure CNI*podporuje pokročilé síťové funkce a scénáře, jako jsou [virtuální uzly][virtual-nodes] nebo zásady sítě (buď Azure nebo Calico).
+V případě *Azure CNI* každý pod tím obdrží IP adresu v podsíti protokolu IP a může přímo komunikovat s dalšími lusky a službami. Clustery můžou být tak velké jako rozsah IP adres, který zadáte. Rozsah IP adres se ale musí naplánovat předem a všechny IP adresy se spotřebovávají AKS uzly na základě maximálního počtu lusků, které můžou podporovat. *Azure CNI* podporuje pokročilé síťové funkce a scénáře, jako jsou [virtuální uzly][virtual-nodes] nebo zásady sítě (buď Azure nebo Calico).
 
 ### <a name="limitations--considerations-for-kubenet"></a>Omezení & důležitých informací pro kubenet
 
@@ -56,16 +56,16 @@ V případě *Azure CNI*každý pod tím obdrží IP adresu v podsíti protokolu
 * Na rozdíl od clusterů Azure CNI nemůže více clusterů kubenet sdílet podsíť.
 * Funkce, **které nejsou podporovány v kubenet** , zahrnují:
    * [Zásady sítě Azure](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), ale zásady sítě Calico jsou podporované v kubenet.
-   * [Fondy uzlů Windows](windows-node-limitations.md)
-   * [Doplněk virtuálních uzlů](virtual-nodes-portal.md#known-limitations)
+   * [Fondy uzlů Windows](./windows-faq.md)
+   * [Doplněk virtuálních uzlů](virtual-nodes.md#network-requirements)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>Dostupnost a vyčerpání IP adres
 
-V případě *Azure CNI*je běžný problém, že přiřazený rozsah IP adres je příliš malý a pak při škálování nebo upgradu clusteru nepřidá další uzly. Síťový tým také nemusí být schopný vystavit velký dostatečný rozsah IP adres, aby podporoval očekávané požadavky aplikace.
+V případě *Azure CNI* je běžný problém, že přiřazený rozsah IP adres je příliš malý a pak při škálování nebo upgradu clusteru nepřidá další uzly. Síťový tým také nemusí být schopný vystavit velký dostatečný rozsah IP adres, aby podporoval očekávané požadavky aplikace.
 
 Jako kompromis můžete vytvořit cluster AKS, který používá *kubenet* , a připojit se k existující podsíti virtuální sítě. Tento přístup umožňuje uzlům přijímat definované IP adresy, aniž by bylo nutné vyhradit velký počet IP adres vpřed pro všechny možné lusky, které by mohly běžet v clusteru.
 
-Pomocí *kubenet*můžete použít mnohem menší rozsah IP adres a být schopný podporovat velké clustery a požadavky aplikací. Například s rozsahem IP adres */27* v podsíti můžete spustit cluster 20-25 Node s dostatkem místa pro škálování nebo upgrade. Tato velikost clusteru by podporovala až *2200-2750* lusky (s výchozím maximem 110 až na jeden uzel). Maximální počet lusků na uzel, který můžete nakonfigurovat pomocí *kubenet* v AKS, je 110.
+Pomocí *kubenet* můžete použít mnohem menší rozsah IP adres a být schopný podporovat velké clustery a požadavky aplikací. Například s rozsahem IP adres */27* v podsíti můžete spustit cluster 20-25 Node s dostatkem místa pro škálování nebo upgrade. Tato velikost clusteru by podporovala až *2200-2750* lusky (s výchozím maximem 110 až na jeden uzel). Maximální počet lusků na uzel, který můžete nakonfigurovat pomocí *kubenet* v AKS, je 110.
 
 Následující základní výpočty porovnávají rozdíl v síťových modelech:
 
@@ -162,13 +162,13 @@ Nyní jste vytvořili virtuální síť a podsíť a vytvořili a přiřadili js
 
 V rámci procesu vytváření clusteru se definují taky tyto rozsahy IP adres:
 
-* *Služba--Service-CIDR* slouží k přiřazení IP adresy interním službám v clusteru AKS. Tento rozsah IP adres by měl být adresní prostor, který se ve vašem síťovém prostředí nepoužívá jinde. Tento rozsah zahrnuje všechny místní síťové rozsahy, pokud se připojujete nebo plánujete připojit virtuální sítě Azure pomocí Express Route nebo připojení VPN typu Site-to-site.
+* *Služba--Service-CIDR* slouží k přiřazení IP adresy interním službám v clusteru AKS. Tento rozsah IP adres by měl být adresní prostor, který se nepoužívá jinde v síťovém prostředí, včetně jakýchkoli místních síťových rozsahů, pokud se připojujete nebo plánujete připojit, k virtuálním sítím Azure pomocí expresního postupu nebo připojení VPN typu Site-to-site.
 
 * Adresa *--DNS-Service-IP* musí být *.10* adresou rozsahu IP adres služby.
 
 * *--Pod-CIDR* by měl být velký adresní prostor, který se ve vašem síťovém prostředí nepoužívá jinde. Tento rozsah zahrnuje všechny místní síťové rozsahy, pokud se připojujete nebo plánujete připojit virtuální sítě Azure pomocí Express Route nebo připojení VPN typu Site-to-site.
     * Tento rozsah adres musí být dostatečně velký, aby odpovídal počtu uzlů, na které očekáváte horizontální navýšení kapacity. Po nasazení clusteru nemůžete tento rozsah adres změnit, pokud potřebujete víc adres pro další uzly.
-    * Rozsah IP adres pod se používá k přiřazení adresního prostoru */24* k jednotlivým uzlům v clusteru. V následujícím příkladu se *--pod-CIDR* *10.244.0.0/16* přiřadí první uzel *10.244.0.0/24*, druhý uzel *10.244.1.0/24*a třetí uzel *10.244.2.0/24*.
+    * Rozsah IP adres pod se používá k přiřazení adresního prostoru */24* k jednotlivým uzlům v clusteru. V následujícím příkladu se *--pod-CIDR* *10.244.0.0/16* přiřadí první uzel *10.244.0.0/24*, druhý uzel *10.244.1.0/24* a třetí uzel *10.244.2.0/24*.
     * Při škálování a upgradování clusteru bude platforma Azure dál přiřazovat rozsah IP adres pod na každý nový uzel.
     
 * *Adresa--Docker-most* umožňuje uzlům AKS komunikovat s podkladovou platformou správy. Tato IP adresa nesmí spadat do rozsahu IP adres virtuálních sítí vašeho clusteru a neměla by se překrývat s ostatními rozsahy adres, které se ve vaší síti používají.
@@ -224,7 +224,6 @@ Kubenet Networking vyžaduje uspořádaná pravidla směrovací tabulky pro úsp
 Omezení:
 
 * Oprávnění musí být přiřazena před vytvořením clusteru, ujistěte se, že používáte instanční objekt s oprávněním k zápisu do vlastní podsítě a vlastní směrovací tabulky.
-* Spravované identity se v současnosti nepodporují s vlastními směrovacími tabulkami v kubenet.
 * Vlastní směrovací tabulka musí být přidružena k podsíti před vytvořením clusteru AKS.
 * Po vytvoření clusteru nelze aktualizovat prostředek přidružené směrovací tabulky. I když nelze prostředek směrovací tabulky aktualizovat, lze upravit vlastní pravidla v tabulce směrování.
 * Každý cluster AKS musí používat jednu jedinečnou směrovací tabulku pro všechny podsítě přidružené ke clusteru. Směrovací tabulku s několika clustery nemůžete znovu použít kvůli potenciálu překrývající se pod CIDRs a konfliktní pravidla směrování.
@@ -246,10 +245,9 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 
 ## <a name="next-steps"></a>Další kroky
 
-Když je cluster AKS nasazený do stávající podsítě virtuální sítě, můžete teď cluster používat jako normální. Začněte s [vytvářením aplikací pomocí Azure dev Spaces][dev-spaces], [Nasaďte existující aplikace pomocí Helm][use-helm]nebo [vytvářejte nové aplikace pomocí Helm][develop-helm].
+Když je cluster AKS nasazený do stávající podsítě virtuální sítě, můžete teď cluster používat jako normální. Začněte [vytvářet nové aplikace pomocí Helm][develop-helm] nebo [nasazovat existující aplikace pomocí Helm][use-helm].
 
 <!-- LINKS - External -->
-[dev-spaces]: ../dev-spaces/index.yml
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy

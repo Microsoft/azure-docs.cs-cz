@@ -1,38 +1,42 @@
 ---
 title: Funkce šablon – logická
-description: Popisuje funkce, které lze použít v šabloně Azure Resource Manager k určení logických hodnot.
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) k určení logických hodnot.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/18/2020
+ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677385"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920465"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logické funkce pro šablony ARM
 
-Správce prostředků poskytuje několik funkcí pro porovnávání šablon Azure Resource Manager (ARM).
+Správce prostředků poskytuje několik funkcí pro porovnávání v šabloně Azure Resource Manager (šablona ARM):
 
-* [a](#and)
+* [and](#and)
 * [bool](#bool)
-* [Přestože](#if)
+* [chybné](#false)
+* [if](#if)
 * [mění](#not)
-* [nebo](#or)
+* [ani](#or)
+* [podmínka](#true)
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="and"></a>a
 
 `and(arg1, arg2, ...)`
 
-Kontroluje, zda jsou všechny hodnoty parametrů pravdivé.
+Kontroluje, zda jsou všechny hodnoty parametrů pravdivé. `and`Funkce není v bicep podporována. `&&`Místo toho použijte operátor.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |Boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Yes |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |No |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -42,35 +46,47 @@ Vrátí **hodnotu true** , pokud jsou všechny hodnoty true; v opačném přípa
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak používat logické funkce.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [ ],
-    "outputs": {
-        "andExampleOutput": {
-            "value": "[and(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "orExampleOutput": {
-            "value": "[or(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "notExampleOutput": {
-            "value": "[not(bool('true'))]",
-            "type": "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "andExampleOutput": {
+      "type": "bool",
+      "value": "[and(bool('true'), bool('false'))]"
+    },
+    "orExampleOutput": {
+      "type": "bool",
+      "value": "[or(bool('true'), bool('false'))]"
+    },
+    "notExampleOutput": {
+      "type": "bool",
+      "value": "[not(bool('true'))]"
     }
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output andExampleOutput bool = bool('true') && bool('false')
+output orExampleOutput bool = bool('true') || bool('false')
+output notExampleOutput bool = !(bool('true'))
+```
+
+---
+
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Logická hodnota | False |
-| orExampleOutput | Logická hodnota | True |
-| notExampleOutput | Logická hodnota | False |
+| andExampleOutput | Logická hodnota | Ne |
+| orExampleOutput | Logická hodnota | Ano |
+| notExampleOutput | Logická hodnota | Ne |
 
 ## <a name="bool"></a>bool
 
@@ -80,65 +96,130 @@ Převede parametr na logickou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
+| arg1 |Ano |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
 
 ### <a name="return-value"></a>Vrácená hodnota
+
 Logická hodnota převedené hodnoty.
+
+### <a name="remarks"></a>Poznámky
+
+K získání logických hodnot můžete použít také hodnoty [true ()](#true) a [false ()](#false) .
 
 ### <a name="examples"></a>Příklady
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) ukazuje, jak použít bool s řetězcem nebo celým číslem.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "trueString": {
-            "value": "[bool('true')]",
-            "type" : "bool"
-        },
-        "falseString": {
-            "value": "[bool('false')]",
-            "type" : "bool"
-        },
-        "trueInt": {
-            "value": "[bool(1)]",
-            "type" : "bool"
-        },
-        "falseInt": {
-            "value": "[bool(0)]",
-            "type" : "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "trueString": {
+      "type": "bool",
+      "value": "[bool('true')]",
+    },
+    "falseString": {
+      "type": "bool",
+      "value": "[bool('false')]"
+    },
+    "trueInt": {
+      "type": "bool",
+      "value": "[bool(1)]"
+    },
+    "falseInt": {
+      "type": "bool",
+      "value": "[bool(0)]"
     }
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output trueString bool = bool('true')
+output falseString bool = bool('false')
+output trueInt bool = bool(1)
+output falseInt bool = bool(0)
+```
+
+---
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| trueString | Logická hodnota | True |
-| falseString | Logická hodnota | False |
-| trueInt | Logická hodnota | True |
-| falseInt | Logická hodnota | False |
+| trueString | Logická hodnota | Ano |
+| falseString | Logická hodnota | Ne |
+| trueInt | Logická hodnota | Ano |
+| falseInt | Logická hodnota | Ne |
+
+## <a name="false"></a>false (nepravda)
+
+`false()`
+
+Vrátí hodnotu false. `false`Funkce není v bicep k dispozici.  `false`Místo toho použijte klíčové slovo.
+
+### <a name="parameters"></a>Parametry
+
+Funkce false nepřijímá žádné parametry.
+
+### <a name="return-value"></a>Vrácená hodnota
+
+Logická hodnota, která je vždy false.
+
+### <a name="example"></a>Příklad
+
+Následující příklad vrátí falešnou výstupní hodnotu.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "falseOutput": {
+      "type": "bool",
+      "value": "[false()]"
+    }
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output falseOutput bool = false
+```
+
+---
+
+Výstup z předchozího příkladu:
+
+| Název | Typ | Hodnota |
+| ---- | ---- | ----- |
+| falseOutput | Logická hodnota | Ne |
 
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
 
-Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false.
+Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false. `if`Funkce není v bicep podporována. `?:`Místo toho použijte operátor.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| pomocné |Yes |Boolean |Hodnota, která ověří, zda je true nebo false. |
-| trueValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
-| falseValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
+| pomocné |Ano |boolean |Hodnota, která ověří, zda je true nebo false. |
+| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
+| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -146,38 +227,50 @@ Vrací druhý parametr, pokud je první parametr **true**; v opačném případ�
 
 ### <a name="remarks"></a>Poznámky
 
-Pokud je podmínka **pravdivá**, vyhodnotí se jenom skutečná hodnota. Pokud je podmínka **nepravdivá**, vyhodnotí se jenom hodnota false. Pomocí funkce **if** můžete zahrnout výrazy, které jsou pouze podmíněně platné. Můžete například vytvořit odkaz na prostředek, který existuje v rámci jedné podmínky, ale ne pod druhou podmínkou. Příklad podmíněného vyhodnocování výrazů je uveden v následující části.
+Pokud je podmínka **pravdivá**, vyhodnotí se jenom skutečná hodnota. Pokud je podmínka **nepravdivá**, vyhodnotí se jenom hodnota false. Pomocí `if` funkce můžete zahrnout výrazy, které jsou pouze podmíněně platné. Můžete například vytvořit odkaz na prostředek, který existuje v rámci jedné podmínky, ale ne pod druhou podmínkou. Příklad podmíněného vyhodnocování výrazů je uveden v následující části.
 
 ### <a name="examples"></a>Příklady
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ukazuje, jak používat `if` funkci.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-    ],
-    "outputs": {
-        "yesOutput": {
-            "type": "string",
-            "value": "[if(equals('a', 'a'), 'yes', 'no')]"
-        },
-        "noOutput": {
-            "type": "string",
-            "value": "[if(equals('a', 'b'), 'yes', 'no')]"
-        },
-        "objectOutput": {
-            "type": "object",
-            "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+  ],
+  "outputs": {
+    "yesOutput": {
+      "type": "string",
+      "value": "[if(equals('a', 'a'), 'yes', 'no')]"
+    },
+    "noOutput": {
+      "type": "string",
+      "value": "[if(equals('a', 'b'), 'yes', 'no')]"
+    },
+    "objectOutput": {
+      "type": "object",
+      "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
     }
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output yesOutput string = 'a' == 'a' ? 'yes' : 'no'
+output noOutput string = 'a' == 'b' ? 'yes' : 'no'
+output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('null')
+```
+
+---
+
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | yesOutput | Řetězec | ano |
 | Výstup | Řetězec | ne |
@@ -185,63 +278,72 @@ Výstup z předchozího příkladu:
 
 Následující [příklad šablony](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) ukazuje, jak použít tuto funkci s výrazy, které jsou pouze podmíněně platné.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "vmName": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string"
-        },
-        "logAnalytics": {
-            "type": "string",
-            "defaultValue": ""
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "condition": "[not(empty(parameters('logAnalytics')))]",
-            "name": "[concat(parameters('vmName'),'/omsOnboarding')]",
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "location": "[parameters('location')]",
-            "apiVersion": "2017-03-30",
-            "properties": {
-                "publisher": "Microsoft.EnterpriseCloud.Monitoring",
-                "type": "MicrosoftMonitoringAgent",
-                "typeHandlerVersion": "1.0",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "workspaceId": "[if(not(empty(parameters('logAnalytics'))), reference(parameters('logAnalytics'), '2015-11-01-preview').customerId, json('null'))]"
-                },
-                "protectedSettings": {
-                    "workspaceKey": "[if(not(empty(parameters('logAnalytics'))), listKeys(parameters('logAnalytics'), '2015-11-01-preview').primarySharedKey, json('null'))]"
-                }
-            }
-        }
-    ],
-    "outputs": {
-        "mgmtStatus": {
-            "type": "string",
-            "value": "[if(not(empty(parameters('logAnalytics'))), 'Enabled monitoring for VM!', 'Nothing to enable')]"
-        }
+    "location": {
+      "type": "string"
+    },
+    "logAnalytics": {
+      "type": "string",
+      "defaultValue": ""
     }
+  },
+  "resources": [
+    {
+      "condition": "[not(empty(parameters('logAnalytics')))]",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "apiVersion": "2017-03-30",
+      "name": "[concat(parameters('vmName'),'/omsOnboarding')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+        "type": "MicrosoftMonitoringAgent",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "workspaceId": "[if(not(empty(parameters('logAnalytics'))), reference(parameters('logAnalytics'), '2015-11-01-preview').customerId, json('null'))]"
+        },
+        "protectedSettings": {
+          "workspaceKey": "[if(not(empty(parameters('logAnalytics'))), listKeys(parameters('logAnalytics'), '2015-11-01-preview').primarySharedKey, json('null'))]"
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "mgmtStatus": {
+      "type": "string",
+      "value": "[if(not(empty(parameters('logAnalytics'))), 'Enabled monitoring for VM!', 'Nothing to enable')]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+> [!NOTE]
+> `Conditions` ještě nejsou v bicep implementované. Viz [podmínky](https://github.com/Azure/bicep/issues/186).
+
+---
 
 ## <a name="not"></a>not
 
 `not(arg1)`
 
-Převede logickou hodnotu na její opačnou hodnotu.
+Převede logickou hodnotu na její opačnou hodnotu. `not`Funkce není v bicep podporována. `!`Místo toho použijte operátor.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |Boolean |Hodnota, kterou chcete převést. |
+| arg1 |Ano |boolean |Hodnota, kterou chcete převést. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -251,72 +353,94 @@ Vrátí **hodnotu pravda** , pokud má parametr **hodnotu false**. Vrátí **hod
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak používat logické funkce.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [ ],
-    "outputs": {
-        "andExampleOutput": {
-            "value": "[and(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "orExampleOutput": {
-            "value": "[or(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "notExampleOutput": {
-            "value": "[not(bool('true'))]",
-            "type": "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "andExampleOutput": {
+      "type": "bool",
+      "value": "[and(bool('true'), bool('false'))]",
+    },
+    "orExampleOutput": {
+      "type": "bool",
+      "value": "[or(bool('true'), bool('false'))]"
+    },
+    "notExampleOutput": {
+      "type": "bool",
+      "value": "[not(bool('true'))]"
     }
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output andExampleOutput bool = bool('true') && bool('false')
+output orExampleOutput bool = bool('true') || bool('false')
+output notExampleOutput bool = !(bool('true'))
+```
+
+---
+
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Logická hodnota | False |
-| orExampleOutput | Logická hodnota | True |
-| notExampleOutput | Logická hodnota | False |
+| andExampleOutput | Logická hodnota | Ne |
+| orExampleOutput | Logická hodnota | Ano |
+| notExampleOutput | Logická hodnota | Ne |
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá znaménko **Not** a [Equals](template-functions-comparison.md#equals).
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-    ],
-    "outputs": {
-        "checkNotEquals": {
-            "type": "bool",
-            "value": "[not(equals(1, 2))]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+  ],
+  "outputs": {
+    "checkNotEquals": {
+      "type": "bool",
+      "value": "[not(equals(1, 2))]"
     }
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output checkNotEquals bool = !(1 == 2)
+```
+
+---
+
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkNotEquals | Logická hodnota | True |
+| checkNotEquals | Logická hodnota | Ano |
 
 ## <a name="or"></a>nebo
 
 `or(arg1, arg2, ...)`
 
-Kontroluje, zda je hodnota parametru pravdivá.
+Kontroluje, zda je hodnota parametru pravdivá. `or`Funkce není v bicep podporována. `||`Místo toho použijte operátor.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |Boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Yes |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |No |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -326,37 +450,96 @@ Vrátí **hodnotu true** , pokud je libovolná hodnota true; v opačném přípa
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak používat logické funkce.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [ ],
-    "outputs": {
-        "andExampleOutput": {
-            "value": "[and(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "orExampleOutput": {
-            "value": "[or(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "notExampleOutput": {
-            "value": "[not(bool('true'))]",
-            "type": "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "andExampleOutput": {
+      "value": "[and(bool('true'), bool('false'))]",
+      "type": "bool"
+    },
+    "orExampleOutput": {
+      "value": "[or(bool('true'), bool('false'))]",
+      "type": "bool"
+    },
+    "notExampleOutput": {
+      "value": "[not(bool('true'))]",
+      "type": "bool"
     }
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output andExampleOutput bool = bool('true') && bool('false')
+output orExampleOutput bool = bool('true') || bool('false')
+output notExampleOutput bool = !(bool('true'))
+```
+
+---
+
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Logická hodnota | False |
-| orExampleOutput | Logická hodnota | True |
-| notExampleOutput | Logická hodnota | False |
+| andExampleOutput | Logická hodnota | Ne |
+| orExampleOutput | Logická hodnota | Ano |
+| notExampleOutput | Logická hodnota | Ne |
+
+## <a name="true"></a>true
+
+`true()`
+
+Vrátí hodnotu true. `true`Funkce není v bicep k dispozici.  `true`Místo toho použijte klíčové slovo.
+
+### <a name="parameters"></a>Parametry
+
+Funkce true nepřijímá žádné parametry. `true`Funkce není v bicep k dispozici.  `true`Místo toho použijte klíčové slovo.
+
+### <a name="return-value"></a>Vrácená hodnota
+
+Logická hodnota, která je vždycky true.
+
+### <a name="example"></a>Příklad
+
+Následující příklad vrátí hodnotu true Output.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "trueOutput": {
+      "type": "bool",
+      "value": "[true()]"
+    }
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output trueOutput bool = true
+```
+
+---
+
+Výstup z předchozího příkladu:
+
+| Název | Typ | Hodnota |
+| ---- | ---- | ----- |
+| trueOutput | Logická hodnota | Ano |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
-
+* Popis sekcí v šabloně ARM najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

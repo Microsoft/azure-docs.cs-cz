@@ -3,12 +3,12 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382708"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940831"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
@@ -28,19 +28,19 @@ Zkontrolujte, jestli už příslušná sdílená složka Azure není chráněná
 
 ### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync"></a>Můžu chránit sdílené složky připojené ke skupině synchronizace ve službě Azure File Sync?
 
-Yes. Ochrana sdílených složek Azure připojených ke skupinám synchronizace je povolená.
+Ano. Ochrana sdílených složek Azure připojených ke skupinám synchronizace je povolená.
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Při pokusu o zálohování sdílených složek jsem kliknul/a na účet úložiště, abych zjistil/a, které sdílené složky obsahuje. Nechrání se však. Návody chránit tyto sdílené složky pomocí jiného trezoru?
+### <a name="when-trying-to-back-up-file-shares-i-selected-a-storage-account-to-discover-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Při pokusu o zálohování sdílených složek jsem vybrali účet úložiště, ve kterém zjistíte sdílené složky. Nechrání se však. Návody chránit tyto sdílené složky pomocí jiného trezoru?
 
 Při pokusu o zálohování vyberte účet úložiště, ve kterém se budou objevovat sdílené složky. zaregistruje účet úložiště s trezorem, ze kterého se tato akce provádí. Pokud se rozhodnete chránit sdílené složky pomocí jiného trezoru, [zrušte registraci](manage-afs-backup.md#unregister-a-storage-account) zvoleného účtu úložiště z tohoto trezoru.
 
 ### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Proč nemohu změnit trezor, aby se nakonfigurovala záloha pro sdílenou složku?
 
-Pokud je účet úložiště už zaregistrovaný v trezoru nebo jiné sdílené složky v účtu úložiště jsou chráněné pomocí trezoru, nebudete mít možnost ho změnit, protože všechny sdílené složky v účtu úložiště je možné chránit jenom pomocí stejného trezoru. V případě, že chcete změnit trezor, budete muset [Zastavit ochranu všech sdílených složek v účtu úložiště](manage-afs-backup.md#stop-protection-on-a-file-share) z připojeného trezoru, zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) účtu úložiště a pak zvolit jiný trezor pro ochranu.
+Pokud je účet úložiště už zaregistrovaný v trezoru nebo jiné sdílené složky v účtu úložiště jsou chráněné pomocí trezoru, nebudete mít možnost ho změnit. Všechny sdílené složky v účtu úložiště je možné chránit jenom pomocí stejného trezoru. Pokud chcete změnit trezor, budete muset [Zastavit ochranu všech sdílených složek v účtu úložiště](manage-afs-backup.md#stop-protection-on-a-file-share) z připojeného trezoru, [zrušit registraci](manage-afs-backup.md#unregister-a-storage-account) účtu úložiště a pak zvolit jiný trezor pro ochranu.
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Můžu změnit trezor, do kterého zálohujte své sdílené složky?
 
-Yes. Z připojeného trezoru ale budete muset [Zastavit ochranu sdílené složky](manage-afs-backup.md#stop-protection-on-a-file-share) , zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) tohoto účtu úložiště a pak ho chránit z jiného trezoru.
+Ano. Z připojeného trezoru ale budete muset [Zastavit ochranu sdílené složky](manage-afs-backup.md#stop-protection-on-a-file-share) , zrušit [registraci](manage-afs-backup.md#unregister-a-storage-account) tohoto účtu úložiště a pak ho chránit z jiného trezoru.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Můžu chránit dvě různé sdílené složky ze stejného účtu úložiště v jiných trezorech?
 
@@ -60,7 +60,7 @@ Pokud je sdílená složka ve stavu tichého odstranění, je třeba nejprve zru
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Můžu provést obnovení ze zálohy po zastavení ochrany sdílené složky Azure?
 
-Yes. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohovaná data**, můžete provést obnovení ze všech stávajících bodů obnovení.
+Ano. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohovaná data**, můžete provést obnovení ze všech stávajících bodů obnovení.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším probíhající úlohu obnovení?
 
@@ -70,11 +70,28 @@ Pokud je probíhající úloha obnovení zrušena, proces obnovení se zastaví 
 
 ### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Můžu ke konfiguraci/správě a obnovení záloh sdílených složek Azure použít PowerShell?
 
-Yes. Informace [najdete v podrobné dokumentaci.](backup-azure-afs-automation.md)
+Ano. Informace [najdete v podrobné dokumentaci.](backup-azure-afs-automation.md)
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Můžu získat přístup k snímkům pořízeným službou Azure Backup a připojit je?
 
 Ke všem snímkům pořízeným pomocí Azure Backup lze přihlédnout zobrazením snímků na portálu, PowerShellu nebo rozhraní příkazového řádku. Další informace o snímcích sdílených složek Azure najdete v tématu [Přehled snímků sdílených složek pro soubory Azure](../storage/files/storage-snapshots-files.md).
+
+### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>Co se stane po přesunu zálohované sdílené složky do jiného předplatného?
+
+Jakmile se sdílená složka přesune do jiného předplatného, považuje se za novou sdílenou složku Azure Backup. Toto jsou doporučené kroky:
+ 
+Scénář: řekněme, že máte sdílenou složku *FS1* v předplatném *S1* a že je chráněná pomocí trezoru *v1* . Nyní chcete přesunout sdílenou složku do předplatného *S2*.
+ 
+1.  Přesuňte požadovaný účet úložiště a sdílení souborů (FS1) do jiného předplatného (S2).
+2.  V trezoru v1 aktivujte operaci zastavení ochrany s operací odstranit data pro FS1.
+3.  Zrušte registraci účtu úložiště, který je hostitelem nástroje FS1, z trezoru v1.
+4.  Překonfigurujte zálohu pro FS1, teď se přesunula do S2 s trezorem (v2) v předplatném S2. 
+ 
+Všimněte si, že po změně konfigurace zálohy s v2 již nebudou snímky, které byly provedeny s V1, spravovány Azure Backup. Proto budete muset snímky odstranit ručně podle vašich požadavků.
+
+### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>Můžu přesunout zálohovanou sdílenou složku na jinou skupinu prostředků?
+ 
+Ano, zálohovanou sdílenou složku můžete přesunout do jiné skupiny prostředků. Pro sdílenou složku budete ale muset zálohování znovu nakonfigurovat, protože se bude zacházet jako s novým prostředkem Azure Backup. Také snímky, které byly vytvořeny před přesunem skupiny prostředků, již nebudou spravovány službou Azure Backup. Proto budete muset snímky odstranit ručně podle vašich požadavků.
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Jaká je maximální doba uchování, kterou je možné nakonfigurovat pro zálohování?
 

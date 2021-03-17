@@ -1,7 +1,7 @@
 ---
 title: Ověřit obory a chráněné webové rozhraní API pro obory a role aplikace | Azure
 titleSuffix: Microsoft identity platform
-description: Naučte se vytvářet chráněné webové rozhraní API a konfigurovat kód vaší aplikace.
+description: Ověřte, že rozhraní API se volá jenom aplikacemi jménem uživatelů, kteří mají správné obory a aplikace démona, které mají správnou aplikační role.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6d737f107e7a9b1476fdf86ac0320931ea137671
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120962"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442901"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Chráněné webové rozhraní API: ověření oborů a rolí aplikací
 
@@ -108,7 +108,7 @@ public class TodoListController : ApiController
 {
     public IEnumerable<TodoItem> Get()
     {
-        ValidateAppRole("access_as_application");
+        HttpContext.ValidateAppRole("access_as_application");
         ...
     }
 ```
@@ -152,5 +152,4 @@ Kontrola inverzní podmínky umožňuje pouze aplikacím, které přihlásí už
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Přechod k produkčnímu prostředí](scenario-protected-web-api-production.md)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](scenario-protected-web-api-production.md)prostředí.

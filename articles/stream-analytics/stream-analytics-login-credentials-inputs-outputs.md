@@ -1,19 +1,18 @@
 ---
 title: Otočení přihlašovacích údajů v úlohách Azure Stream Analytics
 description: Tento článek popisuje, jak aktualizovat přihlašovací údaje vstupních a výstupních umyvadel v úlohách Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fd6c072f9783e8ff5d4d5e465b513c2e530bfd63
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044409"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015228"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Otočit přihlašovací údaje pro vstupy a výstupy Stream Analytics úlohy
 
@@ -38,7 +37,7 @@ V této části Vás provedeme procesem opětovného generování přihlašovac�
 ### <a name="event-hubs"></a>Event Hubs
 
 1. Přihlaste se k Azure Portal > procházení centra událostí, které jste použili jako vstup/výstup pro úlohu Stream Analytics.    
-2. V části Nastavení otevřete **zásady sdíleného přístupu** a vyberte požadované zásady přístupu. Mezi **primárním** a **sekundárním klíčem**vyberte ten, který nepoužívá vaše úloha a znovu ho vygeneruje:  
+2. V části Nastavení otevřete **zásady sdíleného přístupu** a vyberte požadované zásady přístupu. Mezi **primárním** a **sekundárním klíčem** vyberte ten, který nepoužívá vaše úloha a znovu ho vygeneruje:  
    ![Znovu vygenerovat klíče pro Event Hubs](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. Zkopírujte nově vygenerovaný klíč.    
 4. V Azure Portal Projděte úlohu Stream Analytics > vyberte **zastavit** a počkejte, než se úloha zastaví.    
@@ -52,7 +51,7 @@ V této části Vás provedeme procesem opětovného generování přihlašovac�
 Abyste mohli aktualizovat přihlašovací údaje stávajícího uživatele, musíte se připojit k SQL Database. Přihlašovací údaje můžete aktualizovat pomocí Azure Portal nebo nástroje na straně klienta, jako je například SQL Server Management Studio. Tato část demonstruje proces aktualizace přihlašovacích údajů pomocí Azure Portal.
 
 1. Přihlaste se k Azure Portal > v databázi SQL vyhledejte, kterou jste použili jako výstup pro úlohu Stream Analytics.    
-2. V **Průzkumníku dat**se přihlaste nebo připojte k databázi > vyberte typ autorizace jako **ověřování serveru SQL** > v **přihlašovacích** údajích a **hesle** , > vyberte **OK**.  
+2. V **Průzkumníku dat** se přihlaste nebo připojte k databázi > vyberte typ autorizace jako **ověřování serveru SQL** > v **přihlašovacích** údajích a **hesle** , > vyberte **OK**.  
    ![Znovu vygenerovat přihlašovací údaje pro SQL Database](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. Na kartě dotaz změňte heslo pro jednoho z uživatelů spuštěním následujícího dotazu (Nezapomeňte nahradit vaším uživatelským `<user_name>` jménem a `<new_password>` novým heslem):  
@@ -84,5 +83,5 @@ Abyste mohli aktualizovat přihlašovací údaje stávajícího uživatele, mus�
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

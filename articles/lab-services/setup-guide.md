@@ -1,18 +1,20 @@
 ---
 title: Průvodce nastavením akcelerovaného testovacího prostředí pro Azure Lab Services
-description: Tato příručka pomáhá tvůrcům testovacího prostředí rychle nastavit účet testovacího prostředí pro použití v rámci své školy.
+description: Pokud jste autor testovacího prostředí, tento průvodce vám pomůže rychle nastavit účet testovacího prostředí ve škole.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ad1a679c556316c2d23a713ffa5ac5dfe86cce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f0d92ebd926616f1318b430bec2de32f753f7c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445572"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021724"
 ---
-# <a name="classroom-lab-setup-guide"></a>Průvodce nastavením testovacího prostředí pro učebnu
+# <a name="lab-setup-guide"></a>Průvodce nastavením testovacího prostředí
 
-Proces publikování testovacího prostředí pro studenty může trvat až několik hodin, a to v závislosti na počtu virtuálních počítačů, které se vytvoří v testovacím prostředí. Počkejte aspoň jeden den, abyste nastavili testovací prostředí, abyste měli jistotu, že funguje správně a umožníte dostatek času na publikování virtuálních počítačů studentů.
+V této příručce se dozvíte, jak vytvořit testovací prostředí pro studenty ve škole.
+
+Proces publikování testovacího prostředí pro studenty může trvat až několik hodin. Doba nastavení závisí na počtu virtuálních počítačů, které chcete vytvořit v testovacím prostředí. Počkejte aspoň jeden den, abyste zajistili, že testovací prostředí funguje správně, a umožní vám dostatek času na publikování virtuálních počítačů studentů.
 
 ## <a name="understand-the-lab-requirements-of-your-class"></a>Pochopení požadavků testovacího prostředí vaší třídy
 
@@ -20,117 +22,124 @@ Před nastavením nového testovacího prostředí byste měli vzít v úvahu n�
 
 ### <a name="what-software-requirements-does-the-class-have"></a>Jaké softwarové požadavky třída používá?
 
-Na základě studijních cílů vaší třídy rozhodněte, které operační systémy, aplikace a nástroje je potřeba nainstalovat na virtuální počítače testovacího prostředí. K nastavení virtuálních počítačů testovacího prostředí máte tři možnosti:
+Pokud se rozhodnete, jaký operační systém, aplikace a nástroje potřebujete nainstalovat na virtuální počítače v testovacím prostředí, přečtěte si záměry studijních kurzů vaší třídy. K nastavení virtuálních počítačů testovacího prostředí máte tři možnosti:
 
 - **Použít Azure Marketplace image**: Azure Marketplace poskytuje stovky imagí, které můžete použít při vytváření testovacího prostředí. U některých tříd může jeden z těchto imagí již obsahovat všechno, co potřebujete pro vaši třídu.
 
-- **Vytvoření nové vlastní image**: můžete vytvořit vlastní image pomocí Azure Marketplace Image jako výchozí bod a přizpůsobit ji tím, že nainstalujete další software a provedete změny konfigurace.
+- **Vytvoření nové vlastní image**: jako výchozí bod můžete vytvořit vlastní image pomocí Azure Marketplace image. Pak ho můžete přizpůsobit tak, že nainstalujete další software a provedete změny konfigurace.
 
-- **Použít stávající vlastní image**: můžete znovu použít stávající vlastní image, které jste vytvořili dříve, nebo které vytvořili jiní správci nebo vyučující ve vaší škole. To vyžaduje, aby vaši správci nakonfigurovali galerii sdílených imagí, což je úložiště pro ukládání vlastních imagí.
+- **Použít stávající vlastní image**: můžete znovu použít vlastní image, které jste vytvořili dříve, nebo obrázky, které vytvořili jiní správci nebo vyučující ve vaší škole. Chcete-li použít vlastní image, je nutné, aby správci nastavili galerii sdílených imagí.  Galerie sdílených imagí je úložiště, které se používá k ukládání vlastních imagí.
 
 > [!NOTE]
-> Vaši správci zodpovídají za povolení Azure Marketplacech imagí a vlastních imagí, abyste je mohli použít. Zajistěte koordinaci s vaším IT oddělením, abyste měli jistotu, že jsou povolené potřebné obrázky. Vlastní image, které vytvoříte, se automaticky povolí pro použití v rámci testovacích prostředí, která vlastníte.
+> Vaši správci zodpovídají za povolení Azure Marketplacech imagí a vlastních imagí, abyste je mohli použít. Zajistěte koordinaci s vaším IT oddělením, abyste měli jistotu, že jsou povolené image, které potřebujete. Vlastní image, které vytvoříte, se automaticky povolí pro použití v rámci testovacích prostředí, která vlastníte.
 
 ### <a name="what-hardware-requirements-does-the-class-have"></a>Jaké hardwarové požadavky má třída?
 
-Existují různé výpočetní velikosti, ze kterých si můžete vybrat:
+Můžete si vybrat z nejrůznějších výpočetních velikostí:
 
-- Vnořené velikosti virtualizace, abyste mohli dát studentům přístup k virtuálnímu počítači, který je schopný hostovat více vnořených virtuálních počítačů. Tuto výpočetní velikost můžete například použít pro síťové kurzy.
+- **Vnořené velikosti virtualizace**: umožňuje dát studentům přístup k virtuálnímu počítači, který může hostovat více vnořených virtuálních počítačů. Tuto výpočetní velikost můžete například použít pro síťové nebo etické třídy v případě průniku.
 
-- Velikosti GPU, aby mohli studenti používat typy aplikací náročných na počítač. Například tato volba může být vhodná pro umělá a strojové učení.
+- **Velikosti GPU**: umožňuje studentům používat typy aplikací náročných na počítač. Například tato volba se často používá s umělou logikou a strojovým učením.
 
-Úplný seznam dostupných výpočetních velikostí najdete v průvodci [nastavením změny velikosti virtuálního počítače](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing) .
+Pokyny k výběru vhodné velikosti virtuálních počítačů najdete v těchto tématech:
+- [Změna velikosti virtuálního počítače](./administrator-guide.md#vm-sizing)
+- [Přechod z fyzického testovacího prostředí na Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931)
 
 > [!NOTE]
-> V závislosti na oblasti testovacího prostředí se může zobrazit méně dostupných velikostí výpočetních prostředků, protože se liší podle oblasti. Obecně byste měli vybrat nejmenší výpočetní velikost, která je nejblíže vašim potřebám. Pomocí Azure Lab Services můžete v případě potřeby nastavit nové testovací prostředí s jinou výpočetní kapacitou.
+> Vzhledem k tomu, že se dostupnost výpočetní velikosti liší podle oblasti, může být pro vaše prostředí k dispozici méně velikostí. Obecně byste měli vybrat nejmenší výpočetní velikost, která vyhovuje vašim potřebám. Pomocí Azure Lab Services můžete v případě potřeby nastavit nové testovací prostředí s větší výpočetní kapacitou.
 
 ### <a name="what-dependencies-does-the-class-have-on-external-azure-or-network-resources"></a>Jaké závislosti má třída na externích zdrojích Azure nebo síťových prostředcích?
-
-Pokud vaše virtuální počítače v testovacím prostředí potřebují používat externí prostředky, jako je třeba databáze, sdílená složka nebo licenční server, zajistěte koordinaci s vašimi správci, abyste měli jistotu, že vaše laboratoř má k těmto prostředkům přístup.
-
-Pokud chcete mít přístup k prostředkům Azure, které *nejsou zabezpečené pomocí* virtuální sítě, nemusíte od správců hledat další konfigurace. K těmto prostředkům máte přístup prostřednictvím veřejného Internetu.
+Vaše virtuální počítače v testovacím prostředí můžou potřebovat přístup k externím prostředkům, jako je třeba databáze, sdílená složka nebo licenční server.  Pokud chcete, aby virtuální počítače v testovacím prostředí používaly externí prostředky, zajistěte koordinaci se správci IT.
 
 > [!NOTE]
-> Měli byste zvážit, jestli můžete snížit závislosti testovacího prostředí na externí prostředky tím, že poskytnete prostředek přímo na virtuálním počítači. Pokud například chcete eliminovat nutnost čtení dat z externí databáze, můžete nainstalovat databázi přímo na virtuálním počítači.  
+> Měli byste zvážit, jestli můžete snížit závislost testovacího prostředí u externích prostředků tím, že zadáte síťové prostředky přímo na virtuálním počítači. Pokud například chcete eliminovat nutnost čtení dat z externí databáze, můžete nainstalovat databázi přímo na virtuálním počítači.  
 
-### <a name="how-will-costs-be-controlled"></a>Jak se budou řídit náklady?
+### <a name="how-will-you-control-costs"></a>Jak budete řídit náklady?
+Testovací služby používají cenový model s průběžnými platbami, což znamená, že platíte jenom za čas, kdy je virtuální počítač testovacího prostředí spuštěný. Chcete-li řídit náklady, použijte některou z následujících možností nebo všechny tyto možnosti:
 
-Testovací služby používají cenový model s průběžnými platbami, což znamená, že platíte jenom za čas, kdy je virtuální počítač testovacího prostředí spuštěný. Chcete-li řídit náklady, máte tři možnosti, které se obvykle používají ve spojení s jednou další:
+- **Plán**: pomocí plánů automaticky můžete řídit, kdy se mají virtuální počítače v testovacím prostředí spouštět a vypínat.
+- **Kvóta**: pomocí kvót můžete řídit počet hodin, po které mají studenti přístup k virtuálnímu počítači mimo naplánovanou dobu.  Když student používá virtuální počítač a dosáhne kvóty, virtuální počítač se automaticky vypne.  Student nemůže virtuální počítač restartovat, pokud nezvýšíte kvótu.
+- **Automatické vypnutí**: Pokud povolíte nastavení automatického vypnutí, virtuální počítače s Windows se automaticky vypnou po odpojení studenta od relace protokol RDP (Remote Desktop Protocol) (RDP). Standardně je toto nastavení zakázáno.
 
-- **Plán**: plán vám umožní automaticky řídit, kdy se virtuální počítače Labs spustí a ukončí.
-- **Kvóta**: kvóta řídí počet hodin, po které studenti budou mít přístup k virtuálnímu počítači mimo plánované hodiny. Pokud se kvóta dosáhne, když ji student používá, virtuální počítač se automaticky vypne. Student nemůže virtuální počítač restartovat, pokud se kvóta nezvýší.
-- **Automatické vypnutí**: Pokud je povoleno, nastavení automatického vypínání způsobí, že se virtuální počítače s Windows po určité době automaticky vypnou, jakmile se student odpojí od relace protokol RDP (Remote Desktop Protocol) (RDP). Standardně je toto nastavení zakázáno.  
-
-    > [!NOTE]
-    > Toto nastavení aktuálně existuje pouze pro systém Windows.
+Další informace o řízení nákladů najdete v tématech:
+- [Odhadněte náklady](./cost-management-guide.md#estimate-the-lab-costs)
+- [Správa nákladů](./cost-management-guide.md#manage-costs)
 
 ### <a name="how-will-students-save-their-work"></a>Jak budou studenti ukládat svou práci?
+Každému jednomu studentovi se přiřadí virtuální počítač pro celou dobu životnosti testovacího prostředí. Studenti můžou svou práci uložit:
 
-Studentům se přiřadí vlastní virtuální počítač, který se jim přiřadí za dobu života testovacího prostředí. Můžou zvolit tyto možnosti:
-
-- Uložte se přímo do virtuálního počítače.
-- Uložte si do externího umístění, jako je OneDrive nebo GitHub.
-
-OneDrive je možné nakonfigurovat automaticky pro studenty na svých testovacích virtuálních počítačích.
+- K virtuálnímu počítači.
+- Do externího umístění, jako je OneDrive nebo GitHub. OneDrive je možné nakonfigurovat automaticky pro studenty na svých testovacích virtuálních počítačích.
 
 > [!NOTE]
-> Abychom zajistili, že studenti budou pokračovat v přístupu ke své uložené práci mimo testovací prostředí a po ukončení třídy, doporučujeme, aby studenti svou práci ukládali do externího úložiště.
+> Chcete-li zajistit, aby vaši studenti pokračovali v přístupu ke své uložené práci mimo testovací prostředí a po ukončení třídy, doporučujeme, aby svou práci ukládali do externího úložiště.
 
-### <a name="how-will-students-connect-to-their-vm"></a>Jak se studenti připojí ke svému virtuálnímu počítači?
+### <a name="how-will-students-connect-to-their-vms"></a>Jak se studenti připojí ke svým virtuálním počítačům?
+Pro připojení RDP k virtuálním počítačům s Windows doporučujeme, aby studenti používali [klienta Vzdálená plocha Microsoft](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients). Klient vzdálené plochy podporuje zařízení Mac, Chromebook a Windows.
 
-U protokolu RDP na virtuální počítače s Windows doporučujeme, aby studenti používali [klienta Vzdálená plocha Microsoft](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients). Klient vzdálené plochy podporuje Mac, Chromebooks a Windows.
+Pro virtuální počítače se systémem Linux můžou studenti použít buď protokol Secure Shell (SSH), nebo protokol RDP. Pokud chcete, aby se studenti připojovali pomocí protokolu RDP, musíte nainstalovat a nakonfigurovat potřebné balíčky RDP a grafického uživatelského rozhraní (GUI).
 
-Pro virtuální počítače se systémem Linux můžou studenti použít buď SSH, nebo RDP. Pokud chcete, aby se studenti připojovali pomocí protokolu RDP, musíte nainstalovat a nakonfigurovat potřebné balíčky RDP a GUI.
+### <a name="will-students-also-use-microsoft-teams"></a>Budou studenti také používat Microsoft Teams?
+Azure Lab Services se integruje s Microsoft teams, aby členové vyučující mohli vytvářet a spravovat své laboratoře v týmech.  Podobně mají studenti přístup k jejich cvičením v týmech.
+
+Další informace najdete v tématu [Azure Lab Services v Microsoft Teams](./lab-services-within-teams-overview.md).
 
 ## <a name="set-up-your-lab"></a>Nastavení testovacího prostředí
 
-Až pochopíte požadavky na testovací prostředí vaší třídy, jste připraveni je nastavit. Pomocí odkazů v této části zjistíte, jak nastavit testovací prostředí.
+Až pochopíte požadavky na testovací prostředí vaší třídy, jste připraveni je nastavit. Pokud se chcete dozvědět, jak, postupujte podle odkazů v této části. K dispozici jsou také pokyny pro nastavení Labs v týmech.
 
-1. **Vytvořte testovací prostředí.** Pokyny najdete v kurzu [Vytvoření laboratorního prostředí pro učebnu](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab) .
-
-    > [!NOTE]
-    > Pokud vaše třída vyžaduje vnořenou virtualizaci, přečtěte si postup [Povolení vnořené virtualizace](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm).
-
-1. **Přizpůsobení imagí a publikování testovacích virtuálních počítačů.** Připojte se ke speciálnímu virtuálnímu počítači, který se nazývá virtuální počítač šablony. Postup najdete v následujících příručkách:
-    - [Vytvoření a Správa virtuálního počítače šablony](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#publish-the-template-vm)
-    - [Využití galerie sdílených imagí](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-shared-image-gallery)
+1. **Vytvořte testovací prostředí**. Projděte si tyto kurzy:
+    - [Vytvoření testovacího prostředí v učebně](./tutorial-setup-classroom-lab.md#create-a-classroom-lab)
+    - [Vytvoření testovacího prostředí v týmech](./how-to-get-started-create-lab-within-teams.md)
 
     > [!NOTE]
-    > Pokud používáte systém Windows, měli byste se také podívat na pokyny v tématu [Příprava virtuálního počítače šablony pro Windows](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template). Tyto pokyny obsahují kroky pro nastavení OneDrivu a Office pro vaše studenty, kteří budou používat.
+    > Pokud vaše třída vyžaduje vnořenou virtualizaci, přečtěte si téma [Povolení vnořené virtualizace](./how-to-enable-nested-virtualization-template-vm.md).
 
-1. **Spravujte fond virtuálních počítačů a kapacitu.** Kapacitu virtuálního počítače můžete snadno škálovat směrem nahoru nebo dolů podle potřeby vaší třídy. Mějte na paměti, že zvýšení kapacity virtuálních počítačů může trvat několik hodin, protože to zahrnuje nastavování nových virtuálních počítačů. Postup najdete v tématu [nastavení a Správa fondu virtuálních počítačů](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords).
+1. **Přizpůsobení imagí a publikování testovacích virtuálních počítačů**. Pokud se chcete připojit ke speciálnímu virtuálnímu počítači s názvem Template VM, přečtěte si:
+    - [Vytvoření a Správa virtuálního počítače šablony](./tutorial-setup-classroom-lab.md#publish-the-template-vm)
+    - [Využití galerie sdílených imagí](./how-to-use-shared-image-gallery.md)
 
-1. **Přidejte a spravujte uživatele testovacího prostředí.** Pokud chcete přidat uživatele do testovacího prostředí, přečtěte si postup v následujících kurzech:
-   - [Přidat uživatele do testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#add-users-to-the-lab)
-   - [Odesílat pozvánky uživatelům](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#send-invitation-emails-to-users)
+    > [!NOTE]
+    > Pokud používáte Windows, přečtěte si také téma [nastavení virtuálního počítače šablony pro Windows](./how-to-prepare-windows-template.md). Tyto pokyny zahrnují kroky pro nastavení OneDrivu a systém Microsoft Office pro studenty.
 
-    Informace o typech účtů, které studenti můžou používat, najdete v tématu [účty studenta](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts).
+1. **Spravujte fond virtuálních počítačů a kapacitu**. Kapacitu virtuálního počítače můžete snadno škálovat směrem nahoru nebo dolů podle potřeby vaší třídy. Mějte na paměti, že zvýšení kapacity virtuálních počítačů může trvat několik hodin, protože se nastavují nové virtuální počítače. Viz následující články:
+    - [Nastavení a Správa fondu virtuálních počítačů](./how-to-set-virtual-machine-passwords.md)
+    - [Správa fondu virtuálních počítačů ve službě Lab Services v týmech](./how-to-manage-vm-pool-within-teams.md)
+
+1. **Přidejte a spravujte uživatele testovacího prostředí**. Pokud chcete přidat uživatele do testovacího prostředí, přečtěte si:
+   - [Přidat uživatele do testovacího prostředí](./tutorial-setup-classroom-lab.md#add-users-to-the-lab)
+   - [Odesílat pozvánky uživatelům](./tutorial-setup-classroom-lab.md#send-invitation-emails-to-users)
+   - [Správa seznamů uživatelů testovacích služeb v týmech](./how-to-manage-user-lists-within-teams.md)
+
+    Informace o typech účtů, které studenti můžou používat, najdete v tématu [účty studenta](./how-to-configure-student-usage.md#student-accounts).
   
-1. **Nastavte řízení nákladů.** Chcete-li řídit náklady na testovací prostředí, nastavte plány, kvóty a automatické vypnutí. Projděte si tyto kurzy:
+1. **Nastavte řízení nákladů**. Pokud chcete nastavit plán, vytvořit kvóty a povolit automatické vypnutí, přečtěte si následující kurzy:
 
-   - [Nastavit plán](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
+   - [Nastavit plán](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+
         > [!NOTE]
-        > V závislosti na typu operačního systému, který jste nainstalovali, může spuštění virtuálního počítače trvat několik minut. Aby se zajistilo, že testovací virtuální počítač je připravený k použití během naplánovaných hodin, doporučujeme začít virtuální počítače 30 minut předem.
+        > V závislosti na operačním systému, který jste nainstalovali, může spuštění virtuálního počítače trvat několik minut. Aby se zajistilo, že testovací virtuální počítač je připravený k použití během naplánovaných hodin, doporučujeme, abyste ho spustili předem za 30 minut.
 
-   - [Nastavte kvóty pro uživatele](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) a [nastavte další kvótu pro konkrétního uživatele](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users) .
+   - [Nastavte kvóty pro uživatele](./how-to-configure-student-usage.md#set-quotas-for-users) a [nastavte další kvóty pro konkrétní uživatele](./how-to-configure-student-usage.md#set-additional-quotas-for-specific-users) .
   
-   - [Povolení automatického vypnutí při odpojení](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+   - [Povolení automatického vypnutí při odpojení](./how-to-enable-shutdown-disconnect.md)
 
         > [!NOTE]
-        > Plány a kvóty se nevztahují na virtuální počítač šablony, ale nastavení automatického vypnutí se použije. 
+        > Plány a kvóty se nevztahují na virtuální počítač šablony, ale použijí se nastavení automatického vypnutí. 
         > 
-        > Při vytváření testovacího prostředí se vytvoří virtuální počítač šablony, který ale není spuštěný. Můžete ji spustit, připojit k ní a nainstalovat libovolný nezbytný software pro testovací prostředí a pak ho publikovat. Když publikujete virtuální počítač šablony, automaticky se vypíná za vás, pokud jste to ještě neudělali. 
+        > Při vytváření testovacího prostředí se vytvoří virtuální počítač šablony, ale ne spuštěný. Můžete spustit šablonu virtuálního počítače, připojit se k němu, nainstalovat libovolný nezbytný software pro testovací prostředí a pak ho publikovat. Když publikujete virtuální počítač šablony, automaticky se vypíná za vás, pokud jste to neudělali ručně. 
         > 
-        > Virtuální počítače šablony účtují **náklady** při jejich spuštění, takže se ujistěte, že je virtuální počítač šablony vypnutý, když ho nepotřebujete používat. 
+        > Virtuální počítače s šablonou účtují *náklady* , pokud jsou spuštěné, takže se ujistěte, že je virtuální počítač šablony vypnutý, když ho nepotřebujete používat.
 
+    - [Vytváření a Správa plánů testovacích služeb v týmech](./how-to-create-schedules-within-teams.md) 
 
-1. **Použijte řídicí panel.** Pokyny najdete v tématu [Použití řídicího panelu testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
+1. **Použijte řídicí panel**. Pokyny najdete v tématu [Použití řídicího panelu prostředí učebny](./use-dashboard.md).
 
     > [!NOTE]
-    > Odhadované náklady zobrazené na řídicím panelu jsou maximální náklady, které můžete očekávat od využívání testovacího prostředí pro studenty. Nebudete se například *not* účtovat za nevyužité pracovní doby vaší studenty. Odhadované náklady *neodráží žádné* poplatky za použití virtuálního počítače šablony, Galerie sdílených imagí nebo když tvůrce testovacího prostředí spustí uživatelský počítač.
+    > Odhadované náklady zobrazené na řídicím panelu jsou maximální náklady, které můžete očekávat pro použití v testovacím prostředí studenta. Nebudete se například *not* účtovat za nevyužité pracovní doby vaší studenty. Odhadované náklady *neodráží žádné* poplatky za použití virtuálního počítače šablony, Galerie sdílených imagí nebo když tvůrce testovacího prostředí spustí uživatelský počítač.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Sledování využití testovacího prostředí v učebně](tutorial-track-usage.md)
-  
+V rámci správy cvičení si přečtěte následující články:
+- [Sledování využití testovacího prostředí učebny](tutorial-track-usage.md)  
 - [Přístup k testovacímu prostředí v učebně](tutorial-connect-virtual-machine-classroom-lab.md)

@@ -3,32 +3,32 @@ title: Řada Fsv2
 description: Specifikace pro virtuální počítače řady Fsv2-Series.
 author: brbell
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 50653b0da2bb488f2a0d4254df2e27ba7c6a5f1f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 7181766d366358719a32b5e7a7f4eeb82de5e935
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648305"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549154"
 ---
 # <a name="fsv2-series"></a>Řada Fsv2
 
 Fsv2-Series běží na procesorech Intel® Xeon® Platinum 8272CL (Cascade Lake) a na procesorech Intel® Xeon® Platinum 8168 (Skylake). Nabízí trvalou veškerou rychlost Turbo, 3,4 GHz a maximální frekvenci s jedním jádrem 3,7 GHz. Pokyny pro procesory Intel® AVX-512 jsou novinkou na škálovatelných procesorech Intel. Tyto pokyny poskytují až dvojnásobné zvýšení výkonu pro úlohy vektorového zpracování na operacích s plovoucí desetinnou čárkou a dvojitou přesností. Jinými slovy jsou skutečně rychlé pro všechny výpočetní úlohy.
 
-Virtuální počítače Fsv2-Series jsou součástí technologie Intel® technologie Hyper-Threading.
+Virtuální počítače Fsv2-Series jsou součástí technologie Intel® Hyper-Threading.
 
-ACU: 195-210
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované (*vyžaduje minimálně 4 vCPU*)<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
+<br>
 
 | Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|
@@ -62,7 +62,7 @@ Aktualizace pro zachování paměti: podporováno
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

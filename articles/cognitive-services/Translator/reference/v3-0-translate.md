@@ -3,19 +3,19 @@ title: Metoda překladu překladatele
 titleSuffix: Azure Cognitive Services
 description: Seznamte se s parametry, hlavičkami a zprávami zprávy pro metodu přeložit služby Azure Cognitive Services Translator pro překlad textu.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.author: lajanuar
+ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903982"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895437"
 ---
 # <a name="translator-30-translate"></a>Překladatel 3,0: překlad
 
@@ -55,7 +55,7 @@ Parametry žádosti předané řetězci dotazu jsou:
   <th>Popis</th>
   <tr>
     <td>Výsledkem</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk vstupního textu. Najděte jazyky, ze kterých jsou k dispozici pro překlad, vyhledáním <a href="./v3-0-languages.md">podporovaných jazyků</a> pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, použije se pro určení zdrojového jazyka automatické zjišování jazyka. <br/><br/><code>from</code>Při použití funkce <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamického slovníku</a> musíte použít parametr, nikoli funkci autodetection.</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk vstupního textu. Najděte jazyky, ze kterých jsou k dispozici pro překlad, vyhledáním <a href="./v3-0-languages.md">podporovaných jazyků</a> pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, použije se pro určení zdrojového jazyka automatické zjišování jazyka. <br/><br/><code>from</code>Při použití funkce <a href="/azure/cognitive-services/translator/dynamic-dictionary">dynamického slovníku</a> musíte použít parametr, nikoli funkci autodetection.</td>
   </tr>  
   <tr>
     <td>textType</td>
@@ -63,7 +63,7 @@ Parametry žádosti předané řetězci dotazu jsou:
   </tr>
   <tr>
     <td>category</td>
-    <td><em>Volitelný parametr</em>.<br/>Řetězec určující kategorii (doménu) překladu. Tento parametr slouží k získání překladu z přizpůsobeného systému vytvořeného pomocí <a href="../customization.md">vlastního překladatele</a>. Přidejte ID kategorie z <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">podrobností projektu</a> vlastního překladatele do tohoto parametru pro použití nasazeného přizpůsobeného systému. Výchozí hodnota je: <code>general</code> .</td>
+    <td><em>Volitelný parametr</em>.<br/>Řetězec určující kategorii (doménu) překladu. Tento parametr slouží k získání překladu z přizpůsobeného systému vytvořeného pomocí <a href="../customization.md">vlastního překladatele</a>. Přidejte ID kategorie z <a href="/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">podrobností projektu</a> vlastního překladatele do tohoto parametru pro použití nasazeného přizpůsobeného systému. Výchozí hodnota je: <code>general</code> .</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -95,7 +95,7 @@ Parametry žádosti předané řetězci dotazu jsou:
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje, že služba může přejít do obecného systému, pokud vlastní systém neexistuje. Možné hodnoty jsou: <code>true</code> (výchozí) nebo <code>false</code> .<br/><br/><code>allowFallback=false</code>Určuje, že překlad by měl používat pouze systémy vyškolené pro <code>category</code> zadaný požadavek. Pokud překlad pro jazyk X na jazyk Y vyžaduje řetězení pomocí jazyka pivotu E, pak všechny systémy v řetězu (X->E a E->Y) budou muset být vlastní a musí mít stejnou kategorii. Pokud se s konkrétní kategorií nenajde žádný systém, bude požadavek vracet kód stavu 400. <code>allowFallback=true</code>Určuje, že služba může přejít do obecného systému, pokud vlastní systém neexistuje.
+    <td><em>Volitelný parametr</em>.<br/>Určuje, že služba může přejít do obecného systému, pokud vlastní systém neexistuje. Možné hodnoty jsou: <code>true</code> (výchozí) nebo <code>false</code> .<br/><br/><code>allowFallback=false</code> Určuje, že překlad by měl používat pouze systémy vyškolené pro <code>category</code> zadaný požadavek. Pokud překlad pro jazyk X na jazyk Y vyžaduje řetězení pomocí jazyka pivotu E, pak všechny systémy v řetězu (X->E a E->Y) budou muset být vlastní a musí mít stejnou kategorii. Pokud se s konkrétní kategorií nenajde žádný systém, bude požadavek vracet kód stavu 400. <code>allowFallback=true</code> Určuje, že služba může přejít do obecného systému, pokud vlastní systém neexistuje.
 </td>
   </tr>
 </table> 
@@ -107,7 +107,7 @@ Hlavičky požadavku zahrnují:
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
+    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
   </tr>
   <tr>
     <td>Typ obsahu</td>
@@ -174,7 +174,7 @@ Platí následující omezení:
 
     Hranice věty jsou zahrnuté jenom v případě, že parametr Request `includeSentenceLength` je `true` .
 
-  * `sourceText`: Objekt s jedinou řetězcovou vlastností s názvem `text` , která poskytuje vstupní text ve výchozím skriptu zdrojového jazyka. `sourceText`vlastnost je přítomna pouze v případě, že vstup je vyjádřen ve skriptu, který není obvyklým skriptem pro daný jazyk. Pokud byl například vstup ve skriptu latinky napsaný arabsko, pak `sourceText.text` bude stejný arabský text, který se převedl na arabskou skript.
+  * `sourceText`: Objekt s jedinou řetězcovou vlastností s názvem `text` , která poskytuje vstupní text ve výchozím skriptu zdrojového jazyka. `sourceText` vlastnost je přítomna pouze v případě, že vstup je vyjádřen ve skriptu, který není obvyklým skriptem pro daný jazyk. Pokud byl například vstup ve skriptu latinky napsaný arabsko, pak `sourceText.text` bude stejný arabský text, který se převedl na arabskou skript.
 
 Příklad odpovědí JSON je uveden v části [Příklady](#examples) .
 
@@ -234,7 +234,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
 </table> 
 
-Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [referenční stránce překladatele V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [referenční stránce překladatele V3](./v3-0-reference.md#errors). 
 
 ## <a name="examples"></a>Příklady
 
@@ -280,7 +280,7 @@ Tělo odpovědi:
     }
 ]
 ```
-Odpověď je podobná odpovědi z předchozího příkladu. Vzhledem k tomu, že se požadovalo automatické zjišťování jazyka, odpověď obsahuje také informace o jazyce zjištěném pro vstupní text. 
+Odpověď je podobná odpovědi z předchozího příkladu. Vzhledem k tomu, že se požadovalo automatické zjišťování jazyka, odpověď obsahuje také informace o jazyce zjištěném pro vstupní text. Automatické zjišťování jazyka funguje lépe s delším vstupním textem.
 
 ### <a name="translate-with-transliteration"></a>Převod s využitím převodu na více než litry
 

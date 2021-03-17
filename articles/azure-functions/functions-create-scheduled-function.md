@@ -1,28 +1,28 @@
 ---
-title: Vytvoření funkce, která se spouští podle plánu v Azure
-description: Zjistěte, jak v Azure vytvořit funkci, která se spouští na základě vámi definovaného plánu.
+title: Vytvoření funkce v Azure, která běží podle plánu
+description: Naučte se, jak pomocí Azure Portal vytvořit funkci, která se spouští na základě vámi definovaného plánu.
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: be539efdb66b0a9bda583960484f40fae1e18235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14d918cc41f49b954f5cabf48572db5df829fd10
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123388"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035185"
 ---
-# <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Vytvoření funkce v Azure aktivované časovačem
+# <a name="create-a-function-in-the-azure-portal-that-runs-on-a-schedule"></a>Vytvoření funkce v Azure Portal, která se spouští podle plánu
 
-Naučte se, jak pomocí Azure Functions vytvořit funkci bez [serveru](https://azure.microsoft.com/solutions/serverless/) , která se spouští na základě vámi definovaného plánu.
+Naučte se, jak pomocí Azure Portal vytvořit funkci, která na Azure běží bez [serveru](https://azure.microsoft.com/solutions/serverless/) na základě vámi definovaného plánu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-+ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
++ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-azure-function-app"></a>Vytvoření aplikace Azure Function App
+## <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -34,7 +34,7 @@ Vaše nová aplikace Function App je připravena k použití. V dalším kroku v
 
 ## <a name="create-a-timer-triggered-function"></a>Vytvoření funkce aktivované časovačem
 
-1. Ve vaší aplikaci Function App vyberte **funkce**a pak vyberte **+ Přidat** . 
+1. Ve vaší aplikaci Function App vyberte **funkce** a pak vyberte **+ Přidat** . 
 
    :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
 
@@ -44,7 +44,7 @@ Vaše nová aplikace Function App je připravena k použití. V dalším kroku v
 
 1. Nakonfigurujte novou aktivační událost s nastavením uvedenými v tabulce pod obrázkem a pak vyberte **vytvořit funkci**.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Vyberte aktivační událost časovače v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Snímek obrazovky s vybranou šablonou triggeru časovače zobrazuje novou stránku funkce." border="true":::
     
     | Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|
@@ -73,7 +73,7 @@ Teď můžete změnit plán funkce tak, aby se spouštěla jednou za hodinu (a n
 
 1. Aktualizujte hodnotu **plánu** na `0 0 */1 * * *` a pak vyberte **Uložit**.  
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="Aktualizace plánu časovače funkcí na webu Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="Aktualizace plánu časovače funkcí v Azure Portal." border="true":::
 
 Teď máte funkci, která se spouští jednou za hodinu, a to za hodinu.
 

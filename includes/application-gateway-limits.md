@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: a3fb3dbf026a696b9d472efcba139c371ff1e587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334919"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612940"
 ---
 | Prostředek | Omezení | Poznámka |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "80334919"
 | Konfigurace front-endové IP adresy |2 |1 veřejný a 1 privátní |
 | Porty front-endu |100<sup>1</sup> | |
 | Fondy back-endové adresy |100<sup>1</sup> | |
-| Back-endové servery na fond |1 200 | |
+| Back-endové servery na fond |1 200 | |
 | Naslouchací procesy HTTP |200<sup>1</sup> |Omezeno na 100 aktivních naslouchací procesy, které směrují provoz. Aktivní naslouchací procesy = celkový počet naslouchacího procesu – naslouchací procesy nejsou aktivní.<br>Pokud je výchozí konfigurace v pravidle směrování nastavená na směrování provozu (například má naslouchací proces, fond back-end a nastavení HTTP), pak se také počítá jako naslouchací proces.|
 | Pravidla vyrovnávání zatížení HTTP |100<sup>1</sup> | |
 | Nastavení HTTP back-endu |100<sup>1</sup> | |
@@ -32,6 +32,9 @@ ms.locfileid: "80334919"
 | Mapování adres URL na naslouchací proces |1 | |
 | Maximální počet pravidel založených na cestách na mapování adresy URL|100||
 | Konfigurace přesměrování |100<sup>1</sup>| |
+| Počet sad pravidel přepsání |400| |
+| Počet sad záhlaví nebo adres URL na základě sady pravidel pro přepsání|40| |
+| Počet podmínek na přepsání sady pravidel|40| |
 | Souběžná připojení WebSocket |Střední brány 20 tisíc<br> Velké brány 50 tis| |
 | Maximální délka adresy URL|32 KB| |
 | Maximální velikost hlavičky pro HTTP/2 |4KB| |
@@ -39,6 +42,6 @@ ms.locfileid: "80334919"
 | Maximální velikost nahrávání souborů WAF |V1 střední WAF brány, 100 MB<br>Velké WAF brány V1, 500 MB<br>V2 WAF, 750 MB| |
 | Omezení velikosti těla WAF, bez souborů|128 kB||
 | Maximální počet vlastních pravidel WAF|100||
-| Maximální počet vyloučení WAF|100||
+| Maximální počet WAF vyloučení na Application Gateway|40||
 
-<sup>1</sup> v případě SKU s POVOLENým WAF doporučujeme omezit počet prostředků na 40 pro zajištění optimálního výkonu.
+<sup>1</sup> v případě SKU s POVOLENým WAF je nutné omezit počet prostředků na 40.

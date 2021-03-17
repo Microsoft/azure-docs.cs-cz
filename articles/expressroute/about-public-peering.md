@@ -2,17 +2,17 @@
 title: Vytvoření a správa veřejného partnerského vztahu Azure ExpressRoute
 description: Další informace o správě veřejných partnerských vztahů Azure
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.author: cherylmc
-ms.openlocfilehash: 8c1afac834fb9abb2cbf82f16f046a1624b251f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 477145619e1b4d8b41c422389b57a46615597478
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79481129"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202544"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>Vytvoření a správa veřejného partnerského vztahu ExpressRoute
 
@@ -30,7 +30,7 @@ Tento článek vám pomůže vytvořit a spravovat konfiguraci směrování veř
 
 ## <a name="connectivity"></a>Připojení
 
-Připojení se vždycky zahajuje z vaší sítě WAN až po Microsoft Azure služby. Služby Microsoft Azure Services nebudou moct iniciovat připojení k síti přes tuto doménu směrování. Pokud je pro veřejný partnerský vztah Azure povolen okruh ExpressRoute, můžete k [rozsahům veřejných IP adres, které se používají v Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) , přistupovat přes okruh.
+Připojení se vždycky zahajuje z vaší sítě WAN až po Microsoft Azure služby. Služby Microsoft Azure Services nebudou moct iniciovat připojení k síti přes tuto doménu směrování. Pokud je pro veřejný partnerský vztah Azure povolen okruh ExpressRoute, můžete k [rozsahům veřejných IP adres, které se používají v Azure](../virtual-network/public-ip-addresses.md#public-ip-addresses) , přistupovat přes okruh.
 
 Po povolení veřejného partnerského vztahu se můžete připojit k většině služeb Azure. Neumožňujeme selektivně vybrat služby, pro které budeme inzerovat trasy.
 
@@ -60,7 +60,7 @@ Pokud chcete ověřit dostupnost konkrétní služby, můžete si prohlédnout d
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 > [!NOTE]
-> Veřejný partnerský vztah Azure má 1 IP adresu NAT přidruženou ke každé relaci protokolu BGP. V případě více než 2 IP adres NAT přejděte na partnerský vztah Microsoftu. Partnerský vztah Microsoftu umožňuje nakonfigurovat vlastní přidělení NAT a také použít filtry tras pro inzerování selektivních předpon. Další informace najdete v tématu [Přesun na partnerský vztah Microsoftu](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
+> Veřejný partnerský vztah Azure má 1 IP adresu NAT přidruženou ke každé relaci protokolu BGP. V případě více než 2 IP adres NAT přejděte na partnerský vztah Microsoftu. Partnerský vztah Microsoftu umožňuje nakonfigurovat vlastní přidělení NAT a také použít filtry tras pro inzerování selektivních předpon. Další informace najdete v tématu [Přesun na partnerský vztah Microsoftu](./how-to-move-peering.md).
 >
 
 ## <a name="custom-route-filters"></a>Vlastní filtry tras

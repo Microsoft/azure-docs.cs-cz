@@ -1,19 +1,16 @@
 ---
 title: Vytvoření Java MapReduce pro Apache Hadoop – Azure HDInsight
 description: Naučte se, jak pomocí Apache Maven vytvořit aplikaci MapReduce založenou na jazyce Java a pak ji spustit se systémem Hadoop ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
-ms.openlocfilehash: 84d9253b865ddac6d97395af3d8632e29cc2ea24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7c1a6623883cbee46ba98982808f3c392dc50ffa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323804"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946653"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Vývoj programů Java MapReduce pro Apache Hadoop v HDInsight
 
@@ -21,7 +18,7 @@ Naučte se, jak pomocí Apache Maven vytvořit aplikaci MapReduce založenou na 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks).
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
@@ -44,9 +41,9 @@ cd C:\HDI
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    Tento příkaz vytvoří adresář s názvem zadaným `artifactID` parametrem (v tomto příkladu**wordcountjava** ). Tento adresář obsahuje následující položky:
+    Tento příkaz vytvoří adresář s názvem zadaným `artifactID` parametrem (v tomto příkladu **wordcountjava** ). Tento adresář obsahuje následující položky:
 
-    * `pom.xml`– [Model objektu projektu (pom)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , který obsahuje informace a podrobnosti o konfiguraci použité k sestavení projektu.
+    * `pom.xml` – [Model objektu projektu (pom)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , který obsahuje informace a podrobnosti o konfiguraci použité k sestavení projektu.
     * src\main\java\org\apache\hadoop\examples: obsahuje kód vaší aplikace.
     * src\test\java\org\apache\hadoop\examples: obsahuje testy pro vaši aplikaci.
 

@@ -4,13 +4,13 @@ description: Tento článek popisuje, jak obnovení dat chrání před ztrátou 
 author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
-ms.author: v-umha
-ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-ummehabiba
+ms.openlocfilehash: 9ece624546cab1b8b6fab8c19f4401bd050f6267
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683895"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179880"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Zotavení po havárii pro FarmBeats
 
@@ -45,18 +45,18 @@ Můžete iniciovat převzetí služeb při selhání a obnovit uložená data, p
 Zkopírujte přístupový klíč obnoveného Cosmos DB a aktualizujte nové Key Vault FarmBeats DataHub.
 
 
-  ![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
+  ![Snímek obrazovky, který zvýrazní, kde získat kopii přístupového klíče](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > Zkopírujte adresu URL obnoveného Cosmos DB a aktualizujte ji v nové konfiguraci App Service FarmBeats DataHub. Nyní můžete Cosmos DB účet odstranit v novém nasazení FarmBeats.
 
-  ![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/configuration.png)
+  ![Snímek obrazovky, který ukazuje, kam zkopírovat adresu URL obnoveného Cosmos DB.](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Konfigurace účtu úložiště
 
 Zkopírujte přístupový klíč obnoveného účtu úložiště a aktualizujte ho v New FarmBeats DataHub Key Vault.
 
-![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
+![Snímek obrazovky, který ukazuje, kam zkopírovat přístupový klíč obnoveného účtu úložiště.](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > Ujistěte se, že jste v novém konfiguračním souboru FarmBeats Batch VM aktualizovali název účtu úložiště.

@@ -1,17 +1,9 @@
-- name: Dokumentace brány Azure Firewall
+- name: Dokumentace ke službě Azure Firewall
   href: index.yml
 - name: Přehled
   items:
     - name: Co je brána Azure Firewall?
       href: overview.md
-- name: Kurzy
-  items:
-    - name: Nasazení a konfigurace
-      href: tutorial-firewall-deploy-portal.md
-    - name: Nasazení v hybridní síti
-      href: tutorial-hybrid-portal.md
-    - name: Filtrování příchozího provozu pomocí DNAT
-      href: tutorial-firewall-dnat.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -24,16 +16,28 @@
     - name: Nasazení s využitím Zón dostupnosti – šablona ARM
       displayName: Resource Manager
       href: deploy-template.md
+- name: Kurzy
+  items:
+    - name: Nasazení a konfigurace
+      href: tutorial-firewall-deploy-portal.md
+    - name: Nasazení v hybridní síti
+      href: tutorial-hybrid-portal.md
+    - name: Filtrování příchozího provozu pomocí DNAT
+      href: tutorial-firewall-dnat.md
 - name: ukázky
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
-    - name: Protokoly služby Azure Monitor
-      href: log-analytics-samples.md
 - name: Koncepty
   items:
     - name: Funkce Azure Firewallu
       href: features.md
+    - name: Azure Firewall prémiové funkce
+      href: premium-features.md
+    - name: Azure Firewall Premium na portálu
+      href: premium-portal.md
+    - name: Certifikáty Azure Firewall Premium
+      href: premium-certificates.md
     - name: Značky plně kvalifikovaných názvů domén
       href: fqdn-tags.md
     - name: Plně kvalifikované názvy domén infrastruktury
@@ -60,6 +64,8 @@
       href: fqdn-filtering-network-rules.md
     - name: Standardní hodnoty zabezpečení
       href: security-baseline.md
+    - name: Aktivní podpora FTP
+      href: active-ftp-support.md
 - name: Návody
   items:
     - name: Nasazení s využitím Azure PowerShellu
@@ -88,6 +94,15 @@
       href: dns-settings.md
     - name: Monitorování diagnostických protokolů
       href: firewall-diagnostics.md
+      displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
+    - name: Sešit služby Azure Firewall
+      href: firewall-workbook.md
+    - name: Nasazení a konfigurace brány firewall Premium
+      href: premium-deploy.md
+    - name: Nasazení certifikátů podnikové certifikační autority pro Premium
+      href: premium-deploy-certificates-enterprise-ca.md
+    - name: Migrace na Azure Firewall Premium
+      href: premium-migrate.md
 - name: Referenční informace
   items:
     - name: Azure CLI
@@ -109,7 +124,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: Tvorba šablon
       href: ../azure-resource-manager/templates/template-syntax.md
     - name: Plány Azure do budoucna

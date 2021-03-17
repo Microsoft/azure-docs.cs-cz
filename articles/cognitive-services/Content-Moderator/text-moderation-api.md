@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800087"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912901"
 ---
 # <a name="learn-text-moderation-concepts"></a>Základní informace o principech moderování textu
 
@@ -34,7 +34,7 @@ Odpověď služby zahrnuje následující informace:
 
 ## <a name="profanity"></a>Vulgární výrazy
 
-Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporovaných jazyků](Text-Moderation-API-Languages.md), jsou tyto výrazy součástí odpovědi. Odpověď také obsahuje jejich umístění ( `Index` ) v původním textu. `ListId`V následujícím ukázkovém formátu JSON odkazuje na podmínky nalezené v [seznamech vlastních termínů](try-terms-list-api.md) , pokud jsou k dispozici.
+Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporovaných jazyků](./language-support.md), jsou tyto výrazy součástí odpovědi. Odpověď také obsahuje jejich umístění ( `Index` ) v původním textu. `ListId`V následujícím ukázkovém formátu JSON odkazuje na podmínky nalezené v [seznamech vlastních termínů](try-terms-list-api.md) , pokud jsou k dispozici.
 
 ```json
 "Terms": [
@@ -47,13 +47,13 @@ Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporo
 ```
 
 > [!NOTE]
-> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
+> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu** .
 >
 > Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
 
-## <a name="classification"></a>Classification
+## <a name="classification"></a>Klasifikace
 
-**Funkce klasifikace textu** s asistencí Content moderator podporuje **pouze angličtinu**a pomáhá detekovat potenciálně nežádoucí obsah. Obsah označený příznakem může být v závislosti na kontextu posuzován jako nevhodný. Dává pravděpodobnost každé kategorie a může doporučit kontrolu lidského. Tato funkce používá trained model k identifikaci možného urážlivých, derogačních nebo diskriminačních jazyků. To zahrnuje slangem, zkrácená slova, urážlivá a záměrně nesprávně napsaná slova ke kontrole. 
+**Funkce klasifikace textu** s asistencí Content moderator podporuje **pouze angličtinu** a pomáhá detekovat potenciálně nežádoucí obsah. Obsah označený příznakem může být v závislosti na kontextu posuzován jako nevhodný. Dává pravděpodobnost každé kategorie a může doporučit kontrolu lidského. Tato funkce používá trained model k identifikaci možného urážlivých, derogačních nebo diskriminačních jazyků. To zahrnuje slangem, zkrácená slova, urážlivá a záměrně nesprávně napsaná slova ke kontrole. 
 
 Následující extrakce v extrakci JSON ukazuje příklad výstupu:
 
@@ -74,11 +74,11 @@ Následující extrakce v extrakci JSON ukazuje příklad výstupu:
 
 ### <a name="explanation"></a>Vysvětlení
 
-- `Category1`odkazuje na potenciální přítomnost jazyka, který může být v určitých situacích považován za zřejmý nebo dospělý.
-- `Category2`odkazuje na potenciální přítomnost jazyka, který může být v určitých situacích považovaný za zřejmý sugestivní nebo vyspělý.
-- `Category3`odkazuje na potenciální přítomnost jazyka, který může být v určitých situacích považován za urážlivý.
-- `Score`je mezi 0 a 1. Čím vyšší je skóre, tím vyšší je model, který předpokládá, že se kategorie může použít. Tato funkce spoléhá na statistickou model namísto ručně kódovaných výsledků. Doporučujeme, abyste při testování pomocí vlastního obsahu určili, jak jednotlivé kategorie odpovídají vašim požadavkům.
-- `ReviewRecommended`je buď true, nebo false v závislosti na vnitřních prahech skóre. Zákazníci by měli posoudit, jestli tuto hodnotu použít, nebo se rozhodnout o vlastních prahech na základě zásad obsahu.
+- `Category1` odkazuje na potenciální přítomnost jazyka, který může být v určitých situacích považován za zřejmý nebo dospělý.
+- `Category2` odkazuje na potenciální přítomnost jazyka, který může být v určitých situacích považovaný za zřejmý sugestivní nebo vyspělý.
+- `Category3` odkazuje na potenciální přítomnost jazyka, který může být v určitých situacích považován za urážlivý.
+- `Score` je mezi 0 a 1. Čím vyšší je skóre, tím vyšší je model, který předpokládá, že se kategorie může použít. Tato funkce spoléhá na statistickou model namísto ručně kódovaných výsledků. Doporučujeme, abyste při testování pomocí vlastního obsahu určili, jak jednotlivé kategorie odpovídají vašim požadavkům.
+- `ReviewRecommended` je buď true, nebo false v závislosti na vnitřních prahech skóre. Zákazníci by měli posoudit, jestli tuto hodnotu použít, nebo se rozhodnout o vlastních prahech na základě zásad obsahu.
 
 ## <a name="personal-data"></a>Osobní údaje
 
@@ -142,7 +142,7 @@ Pokud si vyžádáte automatické opravy, odpověď obsahuje opravenou verzi tex
 I když výchozí globální seznam pojmů funguje skvěle pro většinu případů, možná se budete chtít setkat s podmínkami, které jsou specifické pro vaše obchodní potřeby. Můžete například chtít vyfiltrovat všechny názvy značek konkurenčních uživatelů na základě příspěvků.
 
 > [!NOTE]
-> Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů**.
+> Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů** .
 >
 
 Následující příklad ukazuje ID odpovídajícího seznamu:

@@ -7,15 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: b2c-support
+ms.openlocfilehash: 3a5afcd8c0ef0c31353cd2369ead332675c9877f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005374"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453117"
 ---
 # <a name="localization-element"></a>Element Localization
 
@@ -41,7 +42,7 @@ Element **Localization** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Povoleno | No | Možné hodnoty: `true` nebo `false` . |
+| Povoleno | Ne | Možné hodnoty: `true` nebo `false` . |
 
 Element **Localization** obsahuje následující elementy XML
 
@@ -56,8 +57,8 @@ Element **SupportedLanguages** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| DefaultLanguage | Yes | Jazyk, který má být použit jako výchozí pro lokalizované prostředky. |
-| MergeBehavior | No | Hodnoty výčtu hodnot, které jsou sloučeny spolu s jakýmkoli objektem ClaimType přítomným v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základních zásadách. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota určuje, že se má na konec kolekce zadané v nadřazené zásadě připojit kolekce dat. `Prepend`Hodnota určuje, že kolekce přítomných dat by měla být přidána před kolekci určenou v nadřazené zásadě. `ReplaceAll`Hodnota určuje, že kolekce dat definovaná v nadřazené zásadě by měla být použita jako místo dat definovaných v aktuálních zásadách. |
+| DefaultLanguage | Ano | Jazyk, který má být použit jako výchozí pro lokalizované prostředky. |
+| MergeBehavior | Ne | Hodnoty výčtu hodnot, které jsou sloučeny spolu s jakýmkoli objektem ClaimType přítomným v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základních zásadách. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota určuje, že se má na konec kolekce zadané v nadřazené zásadě připojit kolekce dat. `Prepend`Hodnota určuje, že kolekce přítomných dat by měla být přidána před kolekci určenou v nadřazené zásadě. `ReplaceAll`Hodnota určuje, že kolekce dat definovaná v nadřazené zásadě by měla být použita jako místo dat definovaných v aktuálních zásadách. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
@@ -73,7 +74,7 @@ Element **LocalizedResources** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | Yes | Identifikátor, který slouží k jednoznačné identifikaci lokalizovaných prostředků. |
+| Id | Ano | Identifikátor, který slouží k jednoznačné identifikaci lokalizovaných prostředků. |
 
 Element **LocalizedResources** obsahuje následující prvky:
 
@@ -96,9 +97,9 @@ Element **LocalizedCollections** obsahuje následující prvky:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Deklarován | Yes | Odkazuje na element ClaimType nebo na prvek uživatelského rozhraní v souboru zásad. |
-| ElementId | Yes | Řetězec, který obsahuje odkaz na typ deklarace, který je již definován v části ClaimsSchema, která je použita, pokud je typ **ElementType** nastaven na typ ClaimType. |
-| Cílovácollection | Yes | Cílová kolekce. |
+| Deklarován | Ano | Odkazuje na element ClaimType nebo na prvek uživatelského rozhraní v souboru zásad. |
+| ElementId | Ano | Řetězec, který obsahuje odkaz na typ deklarace, který je již definován v části ClaimsSchema, která je použita, pokud je typ **ElementType** nastaven na typ ClaimType. |
+| Cílovácollection | Ano | Cílová kolekce. |
 
 **Lokalizovaný** ElementCollection obsahuje následující prvky:
 
@@ -110,9 +111,9 @@ Element **Item** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Text | Yes | Uživatelsky přívětivý řetězec zobrazení, který by měl být zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
-| Hodnota | Yes | Hodnota deklarace řetězce přidružená k výběru této možnosti |
-| SelectByDefault | No | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
+| Text | Ano | Uživatelsky přívětivý řetězec zobrazení, který by měl být zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
+| Hodnota | Ano | Hodnota deklarace řetězce přidružená k výběru této možnosti |
+| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
 
 Následující příklad ukazuje použití elementu **LocalizedCollections** . Obsahuje dva **lokalizované** prvkycollection, jeden pro angličtinu a druhý pro španělštinu. Nastavte kolekci **omezení** deklarace identity `Gender` se seznamem položek pro angličtinu a španělštinu.
 
@@ -146,9 +147,9 @@ Element **LocalizedString** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Deklarován | Yes | Možné hodnoty: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [predikát](#predicate), [InputValidation](#inputvalidation)nebo [UxElement](#uxelement).   | 
-| ElementId | Yes | Pokud je typ **ElementType** nastaven na `ClaimType` , `Predicate` nebo `InputValidation` , obsahuje tento element odkaz na typ deklarace identity, který je již definován v části ClaimsSchema. |
-| StringId | Yes | Pokud je vlastnost **ElementType** nastavena na `ClaimType` , tento prvek obsahuje odkaz na atribut typu deklarace. Možné hodnoty: `DisplayName` , `AdminHelpText` , nebo `PatternHelpText` . `DisplayName`Hodnota se používá k nastavení zobrazovaného názvu deklarace identity. `AdminHelpText`Hodnota slouží k nastavení názvu textu v nápovědě pro uživatele s deklarací identity. `PatternHelpText`Hodnota se používá k nastavení textu v nápovědě ke vzorci deklarace identity. Pokud je vlastnost **ElementType** nastavena na `UxElement` , tento prvek obsahuje odkaz na atribut prvku uživatelského rozhraní. Pokud je typ **ElementType** nastaven na `ErrorMessage` , tento prvek určuje identifikátor chybové zprávy. Úplný seznam identifikátorů naleznete v tématu [lokalizace ID řetězců](localization-string-ids.md) `UxElement` .|
+| Deklarován | Ano | Možné hodnoty: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [FormatLocalizedStringTransformationClaimType](#formatlocalizedstringtransformationclaimtype), [predikát](#predicate), [InputValidation](#inputvalidation)nebo [UxElement](#uxelement).   | 
+| ElementId | Ano | Pokud je typ **ElementType** nastaven na `ClaimType` , `Predicate` nebo `InputValidation` , obsahuje tento element odkaz na typ deklarace identity, který je již definován v části ClaimsSchema. |
+| StringId | Ano | Pokud je vlastnost **ElementType** nastavena na `ClaimType` , tento prvek obsahuje odkaz na atribut typu deklarace. Možné hodnoty: `DisplayName` , `AdminHelpText` , nebo `PatternHelpText` . `DisplayName`Hodnota se používá k nastavení zobrazovaného názvu deklarace identity. `AdminHelpText`Hodnota slouží k nastavení názvu textu v nápovědě pro uživatele s deklarací identity. `PatternHelpText`Hodnota se používá k nastavení textu v nápovědě ke vzorci deklarace identity. Pokud je vlastnost **ElementType** nastavena na `UxElement` , tento prvek obsahuje odkaz na atribut prvku uživatelského rozhraní. Pokud je typ **ElementType** nastaven na `ErrorMessage` , tento prvek určuje identifikátor chybové zprávy. Úplný seznam identifikátorů naleznete v tématu [lokalizace ID řetězců](localization-string-ids.md) `UxElement` .|
 
 ## <a name="elementtype"></a>Deklarován
 
@@ -163,6 +164,7 @@ Odkaz ElementType na typ deklarace identity, transformaci deklarace nebo prvek u
 |Zpráva uživatele predikátu|`Predicate`|Název predikátu| Atribut predikátu, který má být lokalizován. Možné hodnoty: `HelpText` .|
 |Zpráva uživatele skupiny predikátů|`InputValidation`|ID elementu PredicateValidation|ID elementu predikátu. Skupina predikátu musí být podřízeným elementu ověřování predikátu, jak je definováno v ElementId.|
 |Prvky uživatelského rozhraní |`UxElement` | | ID prvku uživatelského rozhraní, který se má lokalizovat|
+|[Ovládací prvek zobrazení](display-controls.md) |`DisplayControl` |ID ovládacího prvku zobrazení | ID prvku uživatelského rozhraní, který se má lokalizovat|
 
 ## <a name="examples"></a>Příklady
 
@@ -230,6 +232,31 @@ Následující příklad ukazuje, jak lokalizovat chybovou zprávu UserMessageIf
 
 ```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="formatlocalizedstringtransformationclaimtype"></a>FormatLocalizedStringTransformationClaimType
+
+Hodnota FormatLocalizedStringTransformationClaimType slouží k formátování deklarací do lokalizovaného řetězce. Další informace najdete v tématu [transformace deklarací identity FormatLocalizedString](string-transformations.md#formatlocalizedstring) .
+
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+Následující příklad ukazuje, jak lokalizovat formát řetězce transformace FormatLocalizedStringTransformationClaimType deklarací identity.
+
+```xml
+<LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
 ```
 
 ### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
@@ -332,9 +359,26 @@ Hodnota UxElement slouží k lokalizaci jednoho z prvků uživatelského rozhran
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```
 
+### <a name="displaycontrol"></a>Prvek
+
+Hodnota ovládacího prvku DataGridView slouží k lokalizaci jednoho z prvků uživatelského rozhraní [ovládacího prvku zobrazení](display-controls.md) . Pokud je tato možnost povolená, localizedStrings ovládací prvek zobrazení přebírá ***přednost** před některými StringIDsy _ *UxElement**, jako je **ver_but_send**, **ver_but_edit**, **ver_but_resend** a **ver_but_verify**. Následující příklad ukazuje, jak lokalizovat tlačítka Odeslat a ověřit. 
+
+```xml
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+```
+
+V části metadata technického profilu s vlastním příznakem musí mít odkazované ContentDefinition DataUri nastavenou na [rozložení stránky verze](page-layout.md) 2.1.0 nebo vyšší. Například:
+
+```xml
+<ContentDefinition Id="api.selfasserted">
+  <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:2.1.0</DataUri>
+  ...
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 Příklady lokalizace najdete v následujících článcích:
 
-- [Přizpůsobení jazyka s vlastními zásadami v Azure Active Directory B2C](custom-policy-localization.md)
-- [Přizpůsobení jazyka pomocí toků uživatelů v Azure Active Directory B2C](user-flow-language-customization.md)
+- [Přizpůsobení jazyka s vlastními zásadami v Azure Active Directory B2C](language-customization.md)
+- [Přizpůsobení jazyka pomocí toků uživatelů v Azure Active Directory B2C](language-customization.md)

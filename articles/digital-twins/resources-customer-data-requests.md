@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522342"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461755"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Funkce pro žádosti o data zákaznických dat v Azure
 
@@ -25,7 +25,7 @@ Digitální reprezentace označované jako *digitální vlákna* v rámci digit�
 
 Mnohé z digitálních vláken v Azure Digital autofactory nepředstavuje přímo osobní entity – typické objekty mohou být v místnosti pro schůzku nebo v továrně. Uživatelé ale můžou zvážit, že některé entity budou identifikovatelné osobně, a na základě jejich uvážení mohou uchovávat vlastní metody sledování prostředků nebo inventáře, které propojují digitální vlákna jednotlivcům. Digitální vlákna Azure spravuje a ukládá všechna data přidružená k digitálním hodnotám, jako by šlo o osobní údaje.
 
-Pokud chcete zobrazit, exportovat a odstranit osobní údaje, které mohou být odkazovány v žádosti subjektu údajů, může správce digitálních vláken Azure použít [**Azure Portal**](https://portal.azure.com/) pro uživatele a role nebo [**rozhraní REST API**](how-to-use-apis-sdks.md) pro digitální vlákna Azure. Rozhraní API pro Azure Portal a REST poskytují různé metody pro poskytování požadavků subjektu dat pro uživatele.
+Pokud chcete zobrazit, exportovat a odstranit osobní údaje, které mohou být odkazovány v žádosti subjektu údajů, může správce digitálních vláken Azure použít [**Azure Portal**](https://portal.azure.com/) pro uživatele a role nebo [**rozhraní REST API**](/rest/api/azure-digitaltwins/) pro digitální vlákna Azure. Rozhraní API pro Azure Portal a REST poskytují různé metody pro poskytování požadavků subjektu dat pro uživatele.
 
 ## <a name="identifying-customer-data"></a>Identifikace zákaznických dat
 
@@ -35,7 +35,7 @@ Digitální vlákna Azure ukládá [Azure Active Directory](../active-directory/
 
 ## <a name="deleting-customer-data"></a>Odstraňují se zákaznická data
 
-Správci digitálních vláken Azure můžou použít Azure Portal k odstraňování dat souvisejících s uživateli. Je také možné provádět operace odstranění u jednotlivých digitálních vláken pomocí rozhraní REST API služby Azure Digital revláken. Další informace o dostupných rozhraních API najdete v [dokumentaci k rozhraní REST API pro digitální vlákna Azure](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
+Správci digitálních vláken Azure můžou použít Azure Portal k odstraňování dat souvisejících s uživateli. Je také možné provádět operace odstranění u jednotlivých digitálních vláken pomocí rozhraní REST API služby Azure Digital revláken. Další informace o dostupných rozhraních API najdete v [dokumentaci k rozhraní REST API pro digitální vlákna Azure](/rest/api/azure-digitaltwins/).
 
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
 
@@ -45,4 +45,4 @@ Zákaznická data, včetně rolí uživatelů a přiřazení rolí, můžou být
 
 ## <a name="links-to-additional-documentation"></a>Odkazy na další dokumentaci
 
-Úplný seznam rozhraní API služeb digitálních vláken Azure najdete v [dokumentaci rozhraní REST API pro digitální vlákna Azure](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
+Úplný seznam rozhraní API služeb digitálních vláken Azure najdete v [dokumentaci rozhraní REST API pro digitální vlákna Azure](/rest/api/azure-digitaltwins/).

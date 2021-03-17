@@ -3,7 +3,7 @@ title: Konfigurace telemetrie Azure Media Services s využitím REST | Microsoft
 description: V tomto článku se dozvíte, jak používat Azure Media Services telemetrie pomocí REST API..
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 9409b340e8c1bd06b689acb849a9f47d24ed0391
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 37276240835fe1a06928ee54383f81fa95690ece
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170764"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015484"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurace telemetrie Azure Media Services s využitím REST
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Toto téma popisuje obecné kroky, které můžete provést při konfiguraci telemetrie Azure Media Services (AMS) pomocí REST API. 
 

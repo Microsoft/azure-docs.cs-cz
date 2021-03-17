@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aec72644f708d6363a80da28c5e571d0165fcdfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678167"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91651832"
 ---
 # <a name="export-your-application"></a>Export vaší aplikace
 
@@ -30,7 +30,7 @@ Můžete vytvořit kopii libovolné aplikace, mínus instance zařízení, histo
 
 Vyberte **Kopírovat**. Do dialogového okna zadejte podrobnosti nové aplikace. Pak vyberte **Kopírovat** a potvrďte, že chcete pokračovat. Další informace o polích ve formuláři najdete v rychlém startu [Vytvoření aplikace](quick-deploy-iot-central.md) .
 
-![Stránka nastavení aplikace](media/howto-use-app-templates/appcopy2.png)
+![Snímek obrazovky zobrazující stránku nastavení kopírování aplikace](media/howto-use-app-templates/appcopy2.png)
 
 Po úspěšném dokončení operace kopírování aplikace můžete přejít k nové aplikaci pomocí odkazu.
 

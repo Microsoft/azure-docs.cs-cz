@@ -3,17 +3,17 @@ title: Konfigurace pravidel a akcí v Azure IoT Central | Microsoft Docs
 description: V tomto článku se dozvíte, jak můžete jako tvůrce nakonfigurovat pravidla a akce založené na telemetrie v aplikaci Azure IoT Central.
 author: vavilla
 ms.author: vavilla
-ms.date: 11/27/2019
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 378a1dbcfbc89cdf9b24dc2490db583f1135b9a2
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659348"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796784"
 ---
 # <a name="configure-rules"></a>Konfigurace pravidel
 
@@ -33,7 +33,7 @@ Podmínky určují, na čem se pravidla spouštějí. Když v současné době p
 
 Na následujícím snímku obrazovky se podmínky kontrolují, když je teplota větší než 70 &deg; F a vlhkost je menší než 10. Pokud jsou oba tyto příkazy pravdivé, pravidlo se vyhodnotí jako true a aktivuje akci.
 
-![Podmínky](media/howto-configure-rules/conditions.png)
+![Snímek obrazovky ukazuje monitor chladničky s podmínkami určenými pro teplotu a vlhkost.](media/howto-configure-rules/conditions.png)
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>Použití vlastnosti Cloud v poli hodnota
 

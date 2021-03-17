@@ -3,20 +3,20 @@ title: Publikování místních aplikací pomocí Azure Proxy aplikací služby 
 description: Zjistěte, proč používat proxy aplikace k externímu publikování místních webových aplikací pro vzdálené uživatele. Přečtěte si o architektuře proxy aplikací, konektorech, metodách ověřování a výhodách zabezpečení.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/31/2019
+ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1569e577ec535a4680cfaec6f7975c056275ecbe
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640510"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258774"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Použití Azure Proxy aplikací služby AD k publikování místních aplikací pro vzdálené uživatele
 
@@ -29,7 +29,7 @@ Možnost bezpečného přístupu k interním aplikacím mimo vaši síť se v mo
 
 Řada organizací věří, že jsou pod kontrolou a chráněny v případě, že prostředky existují v hranicích jejich podnikových sítí. Ale v dnešním digitálním pracovišti se tato hranice rozšířila na spravovaná mobilní zařízení a prostředky a služby v cloudu. Teď musíte spravovat složitost ochrany identit uživatelů a dat uložených na svých zařízeních a aplikacích.
 
-Možná už službu Azure AD používáte ke správě uživatelů v cloudu, kteří potřebují přístup k Office 365 a dalším aplikacím SaaS i k webovým aplikacím hostovaným v místním prostředí. Pokud už službu Azure AD máte, můžete ji využít jako jednu řídicí rovinu a zajistit tak bezproblémové a zabezpečené připojení k místním aplikacím. Nebo možná stále zvažujete přesun do cloudu. Pokud ano, můžete začít svoji cestu do cloudu tím, že implementujete proxy aplikace a vezmete první krok k vytvoření silného základu identity.
+Možná už službu Azure AD používáte ke správě uživatelů v cloudu, kteří potřebují mít přístup k Microsoft 365 a dalším aplikacím SaaS i k místním hostovaným webovým aplikacím. Pokud už službu Azure AD máte, můžete ji využít jako jednu řídicí rovinu a zajistit tak bezproblémové a zabezpečené připojení k místním aplikacím. Nebo možná stále zvažujete přesun do cloudu. Pokud ano, můžete začít svoji cestu do cloudu tím, že implementujete proxy aplikace a vezmete první krok k vytvoření silného základu identity.
 
 I když není vyčerpávající, níže uvedený seznam popisuje některé z akcí, které můžete povolit implementací proxy aplikací ve scénáři hybridní existence:
 
@@ -53,11 +53,11 @@ Dříve byla vaše Řídicí rovina pro ochranu interních prostředků před ú
 * Ověřování uživatelů na webové servery v hraniční síti
 * Údržba přístupu VPN pro vzdálené uživatele s distribucí a konfigurací softwaru klienta VPN. Také Udržujte servery připojené k doméně v DMZ, což může být zranitelné vůči vnějším útokům.
 
-V dnešním cloudovém světě se Azure AD nejlépe hodí k řízení toho, kdo a co se do vaší sítě dostane. Azure Proxy aplikací služby AD se integruje s moderním ověřováním a cloudovým technologií, jako jsou SaaS aplikace a zprostředkovatelé identity. Tato integrace umožňuje uživatelům přistoupit k aplikacím odkudkoli. Jenom proxy aplikace jsou pro dnešní digitální pracoviště lépe vhodné, je bezpečnější než řešení VPN a reverzní proxy a jednodušší implementace. Vzdálení uživatelé mají přístup k místním aplikacím stejným způsobem jako při přístupu do O365 a dalších aplikací SaaS integrovaných se službou Azure AD. Aby aplikace fungovaly s Proxy aplikací, nemusíte je měnit nebo aktualizovat. Navíc proxy aplikací nevyžaduje, abyste otevřeli příchozí připojení přes bránu firewall. S proxy aplikací ho jednoduše nastavíte a zapomenete.
+V dnešním cloudovém světě se Azure AD nejlépe hodí k řízení toho, kdo a co se do vaší sítě dostane. Azure Proxy aplikací služby AD se integruje s moderním ověřováním a cloudovým technologií, jako jsou SaaS aplikace a zprostředkovatelé identity. Tato integrace umožňuje uživatelům přistoupit k aplikacím odkudkoli. Jenom proxy aplikace jsou pro dnešní digitální pracoviště lépe vhodné, je bezpečnější než řešení VPN a reverzní proxy a jednodušší implementace. Vzdálení uživatelé mají přístup k místním aplikacím stejným způsobem jako přístup k Microsoft a dalším SaaS aplikacím integrovaným s Azure AD. Aby aplikace fungovaly s Proxy aplikací, nemusíte je měnit nebo aktualizovat. Navíc proxy aplikací nevyžaduje, abyste otevřeli příchozí připojení přes bránu firewall. S proxy aplikací ho jednoduše nastavíte a zapomenete.
 
 ## <a name="the-future-of-remote-access"></a>Budoucnost vzdáleného přístupu
 
-V dnešním digitálním pracovišti uživatelé pracují kdekoli s více zařízeními a aplikacemi. Jedinou konstantou je identita uživatele. To je proto, že první krok zabezpečené sítě dnes využívá možnosti [správy identit Azure AD](https://docs.microsoft.com/azure/security/security-identity-management-overview) jako plochu ovládacího prvku zabezpečení. Model, který používá identitu jako řídicí plochu, se obvykle skládá z následujících součástí:
+V dnešním digitálním pracovišti uživatelé pracují kdekoli s více zařízeními a aplikacemi. Jedinou konstantou je identita uživatele. To je proto, že první krok zabezpečené sítě dnes využívá možnosti [správy identit Azure AD](../../security/fundamentals/identity-management-overview.md) jako plochu ovládacího prvku zabezpečení. Model, který používá identitu jako řídicí plochu, se obvykle skládá z následujících součástí:
 
 * Zprostředkovatel identity, který uchovává přehled o uživatelích a informacích o uživatelích.
 * Adresář zařízení pro udržování seznamu zařízení, která mají přístup k podnikovým prostředkům. Tento adresář obsahuje odpovídající informace o zařízení (například typ zařízení, integrita atd.).
@@ -72,11 +72,11 @@ V případě proxy aplikací uchovává služba Azure AD uživatele, kteří pot
 
 ### <a name="an-overview-of-how-app-proxy-works"></a>Přehled fungování proxy aplikací
 
-Proxy aplikací je služba Azure AD, kterou konfigurujete v Azure Portal. Umožňuje publikovat externí veřejný koncový bod adresy URL HTTP/HTTPS v cloudu Azure, který se připojí k interní adrese URL aplikačního serveru ve vaší organizaci. Tyto místní webové aplikace můžete integrovat se službou Azure AD pro podporu jednotného přihlašování. Koncoví uživatelé pak mohou přistupovat k místním webovým aplikacím stejným způsobem jako přístup k Office 365 a dalším aplikacím SaaS.
+Proxy aplikací je služba Azure AD, kterou konfigurujete v Azure Portal. Umožňuje publikovat externí veřejný koncový bod adresy URL HTTP/HTTPS v cloudu Azure, který se připojí k interní adrese URL aplikačního serveru ve vaší organizaci. Tyto místní webové aplikace můžete integrovat se službou Azure AD pro podporu jednotného přihlašování. Koncoví uživatelé pak mohou přistupovat k místním webovým aplikacím stejným způsobem jako přístup k Microsoft 365 a dalším aplikacím SaaS.
 
 Mezi součásti této funkce patří služba proxy aplikací, která běží v cloudu, konektor proxy aplikací, což je jednoduchý agent, který běží na místním serveru a Azure AD, což je poskytovatel identity. Všechny tři komponenty společně poskytují přístup k místním webovým aplikacím pro uživatele s jednotným přihlašováním.
 
-Po přihlášení mohou externí uživatelé přistupovat k místním webovým aplikacím pomocí známé adresy URL nebo [mých aplikací](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) ze zařízení s platformou Desktop nebo iOS nebo Mac. Například proxy aplikace může poskytovat vzdálený přístup a jednotné přihlašování ke vzdálené ploše, webům SharePoint, Tableau, Qlik, Outlooku na webu a obchodním aplikacím (LOB).
+Po přihlášení mohou externí uživatelé přistupovat k místním webovým aplikacím pomocí známé adresy URL nebo [mých aplikací](../user-help/my-apps-portal-end-user-access.md) ze zařízení s platformou Desktop nebo iOS nebo Mac. Například proxy aplikace může poskytovat vzdálený přístup a jednotné přihlašování ke vzdálené ploše, webům SharePoint, Tableau, Qlik, Outlooku na webu a obchodním aplikacím (LOB).
 
 ![Architektura Azure Proxy aplikací služby AD](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
@@ -87,7 +87,7 @@ Existuje několik způsobů konfigurace aplikace pro jednotné přihlašování 
 * Webové aplikace
 * Webová rozhraní API, která chcete zpřístupnit pro rozšířené aplikace na různých zařízeních
 * Aplikace hostované za Brána vzdálené plochy
-* Bohatých klientských aplikací integrovaných do [knihovny Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
+* Bohatých klientských aplikací integrovaných do [knihovny Microsoft Authentication Library (MSAL)](../develop/v2-overview.md)
 
 App proxy funguje s aplikacemi, které používají následující nativní protokol ověřování:
 
@@ -95,9 +95,9 @@ App proxy funguje s aplikacemi, které používají následující nativní prot
 
 Proxy aplikace také podporuje následující protokoly ověřování s integrací třetí strany nebo v konkrétních scénářích konfigurace:
 
-* [**Ověřování na základě hlaviček**](application-proxy-configure-single-sign-on-with-ping-access.md). Tato metoda přihlašování používá ověřovací službu třetí strany nazvanou PingAccess a používá se v případě, že aplikace používá hlavičky pro ověřování. V tomto scénáři se ověřování zpracovává pomocí PingAccess.
+* [**Ověřování na základě hlaviček**](./application-proxy-configure-single-sign-on-with-headers.md). Tato metoda přihlašování používá ověřovací službu třetí strany nazvanou PingAccess a používá se v případě, že aplikace používá hlavičky pro ověřování. V tomto scénáři se ověřování zpracovává pomocí PingAccess.
 * [**Ověřování pomocí formulářů nebo hesel**](application-proxy-configure-single-sign-on-password-vaulting.md). Pomocí této metody ověřování se uživatelé přihlásí k aplikaci pomocí uživatelského jména a hesla při prvním přístupu k ní. Po prvním přihlášení Azure AD zadá uživatelské jméno a heslo k aplikaci. V tomto scénáři služba Azure AD zpracovává ověřování.
-* [**Ověřování SAML**](application-proxy-configure-single-sign-on-on-premises-apps.md). Jednotné přihlašování založené na SAML je podporované pro aplikace, které používají protokol SAML 2,0 nebo WS-Federation. Pomocí jednotného přihlašování SAML Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele.
+* [**Ověřování SAML**](application-proxy-configure-single-sign-on-on-premises-apps.md). Jednotné přihlašování založené na SAML je podporované pro aplikace, které používají protokol SAML 2,0 nebo WS-Federation protokoly. Pomocí jednotného přihlašování SAML Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele.
 
 Další informace o podporovaných metodách najdete v tématu [Výběr metody jednotného přihlašování](sso-options.md#choosing-a-single-sign-on-method).
 
@@ -109,11 +109,11 @@ Další informace o podporovaných metodách najdete v tématu [Výběr metody j
 * **Podmíněný přístup**. Chcete-li vytvořit připojení k síti, můžete použít bohatší ovládací prvky zásad. Pomocí podmíněného přístupu můžete definovat omezení pro přenosy, které povolíte, aby se mohla zobrazit vaše back-end aplikace. Vytvoříte zásady, které omezují přihlášení na základě umístění, síly ověřování a profilu rizika uživatele. V případě vývoje podmíněného přístupu se přidávají další ovládací prvky, které poskytují další zabezpečení, jako je integrace s Microsoft Cloud App Security (MCAS). MCAS Integration umožňuje nakonfigurovat místní aplikaci pro [monitorování v reálném čase](application-proxy-integrate-with-microsoft-cloud-application-security.md) tím, že využije podmíněný přístup k monitorování a řízení relací v reálném čase na základě zásad podmíněného přístupu.
 * **Ukončení provozu**. Veškerý provoz do back-endové aplikace se ukončí ve službě proxy aplikací v cloudu, zatímco se znovu naváže relace k back-end serveru. Tato strategie připojení znamená, že servery back-end nejsou vystaveny přímému přenosu HTTP. Jsou lépe chráněny proti cílovým útokům DoS (DOS), protože brána firewall není v útoku.
 * **Veškerý přístup je odchozí**. Konektory proxy aplikací používají pouze odchozí připojení ke službě proxy aplikací v cloudu přes porty 80 a 443. Bez příchozích připojení není nutné otevírat porty brány firewall pro příchozí připojení nebo komponenty v DMZ. Všechna připojení jsou odchozí a přes zabezpečený kanál.
-* **Analýza zabezpečení a Machine Learning (ml) – inteligentní**informace Vzhledem k tomu, že je součástí Azure Active Directory, může proxy aplikace využít [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview) (vyžaduje [licencování Premium P2](https://azure.microsoft.com/pricing/details/active-directory/)). Azure AD Identity Protection kombinuje informace o zabezpečení strojového učení s datovými kanály z [digitálních činů](https://news.microsoft.com/stories/cybercrime/index.html) od společnosti Microsoft a z [centra Microsoft Security Response Center](https://www.microsoft.com/msrc) k proaktivní identifikaci ohrožených účtů. Identity Protection nabízí ochranu v reálném čase z přihlašování s vysokým rizikem. Bere v úvahu faktory, jako je přístup z nakažených zařízení, prostřednictvím sítí anonymizace nebo z netypických a nepravděpodobných umístění pro zvýšení rizikového profilu relace. Tento rizikový profil se používá pro ochranu v reálném čase. Mnohé z těchto sestav a událostí už jsou k dispozici prostřednictvím rozhraní API pro integraci se systémy SIEM.
+* **Analýza zabezpečení a Machine Learning (ml) – inteligentní** informace Vzhledem k tomu, že je součástí Azure Active Directory, může proxy aplikace využít [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) (vyžaduje [licencování Premium P2](https://azure.microsoft.com/pricing/details/active-directory/)). Azure AD Identity Protection kombinuje informace o zabezpečení strojového učení s datovými kanály z [digitálních činů](https://news.microsoft.com/stories/cybercrime/index.html) od společnosti Microsoft a z [centra Microsoft Security Response Center](https://www.microsoft.com/msrc) k proaktivní identifikaci ohrožených účtů. Identity Protection nabízí ochranu v reálném čase z přihlašování s vysokým rizikem. Bere v úvahu faktory, jako je přístup z nakažených zařízení, prostřednictvím sítí anonymizace nebo z netypických a nepravděpodobných umístění pro zvýšení rizikového profilu relace. Tento rizikový profil se používá pro ochranu v reálném čase. Mnohé z těchto sestav a událostí už jsou k dispozici prostřednictvím rozhraní API pro integraci se systémy SIEM.
 
 * **Vzdálený přístup jako služba**. Nemusíte si dělat starosti s údržbou a opravou místních serverů, abyste mohli povolit vzdálený přístup. Proxy aplikací je služba internetového škálování, kterou Microsoft vlastní, takže vždycky získáte nejnovější opravy a upgrady zabezpečení. Neopravný software je stále pro velký počet útoků. V souladu s Homeland zabezpečením je možné [zabránit tomu, aby se zabránilo 85% cílených útoků](https://www.us-cert.gov/ncas/alerts/TA15-119A). S tímto modelem služeb nemusíte mít k dispozici velkou zátěž pro správu hraničních serverů a jejich případné opravy podle potřeby.
 
-* **Integrace Intune**. V Intune se podnikový provoz směruje odděleně od osobního provozu. Proxy aplikace zajišťuje ověření podnikového provozu. [Proxy aplikací a funkce Intune Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser#how-to-configure-application-proxy-settings-for-protected-browsers) lze také použít společně k tomu, aby vzdálení uživatelé měli bezpečný přístup k interním webům ze zařízení s iOS a Androidem.
+* **Integrace Intune**. V Intune se podnikový provoz směruje odděleně od osobního provozu. Proxy aplikace zajišťuje ověření podnikového provozu. [Proxy aplikací a funkce Intune Managed Browser](/intune/app-configuration-managed-browser#how-to-configure-application-proxy-settings-for-protected-browsers) lze také použít společně k tomu, aby vzdálení uživatelé měli bezpečný přístup k interním webům ze zařízení s iOS a Androidem.
 
 ### <a name="roadmap-to-the-cloud"></a>Plán do cloudu
 
@@ -137,10 +137,10 @@ Následující diagram znázorňuje obecný postup, jak služby ověřování Az
 
 |**Komponenta**|**Popis**|
 |:-|:-|
-|Koncový bod|Koncový bod je adresa URL nebo [portál pro koncové uživatele](end-user-experiences.md). Uživatelé můžou kontaktovat aplikace i mimo vaši síť přístupem k externí adrese URL. Uživatelé v rámci vaší sítě mají přístup k aplikaci prostřednictvím adresy URL nebo portálu pro koncové uživatele. Když uživatelé přejdou do některého z těchto koncových bodů, ověřují se ve službě Azure AD a potom jsou směrováni přes konektor do místní aplikace.|
+|Koncový bod|Koncový bod je adresa URL nebo [portál pro koncové uživatele](end-user-experiences.md). Uživatelé můžou kontaktovat aplikace i mimo vaši síť přístupem k externí adrese URL. Uživatelé v rámci vaší sítě mají přístup k aplikaci prostřednictvím adresy URL nebo portálu pro koncové uživatele. Když uživatelé přejdou do některého z těchto koncových bodů, ověřují se ve službě Azure AD a potom jsou směrováni přes konektor do místní aplikace.|
 |Azure AD|Azure AD provádí ověřování pomocí adresáře tenanta, který je uložený v cloudu.|
 |Služba proxy aplikací|Tato služba proxy aplikací běží v cloudu jako součást služby Azure AD. Předá přihlašovací token od uživatele k konektoru proxy aplikací. Proxy aplikace přepošle všechny dostupné hlavičky na žádosti a nastaví hlavičky podle jejího protokolu na IP adresu klienta. Pokud příchozí požadavek na proxy již má tuto hlavičku, adresa IP klienta se přidá na konec seznamu odděleného čárkami, který je hodnotou záhlaví.|
-|Konektor proxy aplikací|Konektor je jednoduchý agent, který běží na Windows serveru ve vaší síti. Konektor spravuje komunikaci mezi službou proxy aplikací v cloudu a místní aplikací. Konektor používá pouze odchozí připojení, takže nemusíte otevírat žádné příchozí porty ani nic vkládat do DMZ. V případě potřeby jsou konektory bezstavové a nabízené informace z cloudu. Další informace o konektorech, jako je například vyrovnávání zatížení a ověřování, najdete v tématu [vysvětlení konektorů Azure proxy aplikací služby AD](application-proxy-connectors.md).|
+|Konektor proxy aplikací|Konektor je jednoduchý agent, který běží na Windows serveru ve vaší síti. Konektor spravuje komunikaci mezi službou proxy aplikací v cloudu a místní aplikací. Konektor používá pouze odchozí připojení, takže nemusíte otevírat žádné příchozí porty ani nic vkládat do DMZ. V případě potřeby jsou konektory bezstavové a nabízené informace z cloudu. Další informace o konektorech, jako je například vyrovnávání zatížení a ověřování, najdete v tématu [vysvětlení konektorů Azure proxy aplikací služby AD](application-proxy-connectors.md).|
 |Služba Active Directory (AD)|Služba Active Directory pracuje místně a provádí ověřování pro doménové účty. Pokud je nakonfigurováno jednotné přihlašování, konektor komunikuje se službou AD za účelem provedení dalšího vyžadovaného ověřování.|
 |Místní aplikace|Nakonec může uživatel získat přístup k místní aplikaci.|
 
@@ -179,9 +179,9 @@ Další informace o výběru umístění pro instalaci konektorů a optimalizaci
 
 ## <a name="other-use-cases"></a>Jiné případy použití
 
-V tomto okamžiku se zaměřujeme na použití proxy aplikací k externímu publikování místních aplikací při povolování jednotného přihlašování ke všem cloudovým a místním aplikacím. Existují však i další případy použití pro proxy aplikace, které představují zmínku. Patří sem:
+V tomto okamžiku se zaměřujeme na použití proxy aplikací k externímu publikování místních aplikací při povolování jednotného přihlašování ke všem cloudovým a místním aplikacím. Existují však i další případy použití pro proxy aplikace, které představují zmínku. Mezi ně patří:
 
-* **Bezpečně zveřejňujte rozhraní REST API**. Pokud máte obchodní logiku nebo rozhraní API spuštěná místně nebo hostovaná na virtuálních počítačích v cloudu, proxy aplikací poskytuje veřejný koncový bod pro přístup k rozhraní API. Přístup ke koncovému bodu rozhraní API umožňuje řídit ověřování a autorizaci bez vyžadování příchozích portů. Poskytuje další zabezpečení prostřednictvím Azure AD Premiumch funkcí, jako jsou vícefaktorové ověřování a podmíněný přístup na základě zařízení pro stolní počítače, iOS, MAC a zařízení s Androidem pomocí Intune. Další informace najdete v tématu [Jak povolit nativním klientským aplikacím pracovat s proxy aplikacemi](application-proxy-configure-native-client-application.md) a [chránit rozhraní API pomocí protokolu OAuth 2,0 s Azure Active Directory a API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad).
+* **Bezpečně zveřejňujte rozhraní REST API**. Pokud máte obchodní logiku nebo rozhraní API spuštěná místně nebo hostovaná na virtuálních počítačích v cloudu, proxy aplikací poskytuje veřejný koncový bod pro přístup k rozhraní API. Přístup ke koncovému bodu rozhraní API umožňuje řídit ověřování a autorizaci bez vyžadování příchozích portů. Poskytuje další zabezpečení prostřednictvím Azure AD Premiumch funkcí, jako jsou vícefaktorové ověřování a podmíněný přístup na základě zařízení pro stolní počítače, iOS, MAC a zařízení s Androidem pomocí Intune. Další informace najdete v tématu [Jak povolit nativním klientským aplikacím pracovat s proxy aplikacemi](application-proxy-configure-native-client-application.md) a [chránit rozhraní API pomocí protokolu OAuth 2,0 s Azure Active Directory a API Management](../../api-management/api-management-howto-protect-backend-with-aad.md).
 * **Služba Vzdálená plocha** **(RDS)**. Standardní nasazení služby RDS vyžaduje otevřená příchozí připojení. [Nasazení RDS s proxy aplikací](application-proxy-integrate-with-remote-desktop-services.md) má ale trvalé odchozí připojení ze serveru, na kterém je spuštěná služba konektoru. Tímto způsobem můžete koncovým uživatelům nabídnout další aplikace publikováním místních aplikací prostřednictvím služby Vzdálená plocha. Můžete také omezit plochu pro útok na nasazení s omezeným počtem dvou kroků ověřování a řízení podmíněného přístupu na RDS.
 * **Publikujte aplikace, které se připojují pomocí WebSockets**. Podpora s [Qlik senseem](application-proxy-qlik.md) je v Public Preview a v budoucnu se rozšíří na jiné aplikace.
 * **Povolit nativním klientským aplikacím interakci s proxy aplikacemi**. Pomocí služby Azure Proxy aplikací služby AD můžete publikovat webové aplikace, ale také je lze použít k publikování [nativních klientských aplikací](application-proxy-configure-native-client-application.md) , které jsou nakonfigurovány pomocí knihovny ADAL (Azure AD Authentication Library). Nativní klientské aplikace se liší od webových aplikací, protože jsou nainstalované v zařízení, zatímco webové aplikace jsou dostupné přes prohlížeč.
@@ -195,8 +195,8 @@ Bez ohledu na to, jestli aktuálně používáte Azure AD ke správě uživatel�
 Organizace by si měli začít využívat výhod proxy aplikací ještě dnes, abyste mohli využít výhod následujících výhod:
 
 * Publikujte místní aplikace externě bez režie spojené s údržbou tradiční sítě VPN nebo jiných řešení pro publikování webů a DMZ přístupu.
-* Jednotné přihlašování ke všem aplikacím, jejich Office 365 nebo jiné aplikace SaaS, včetně místních aplikací
-* Cloudové škálování, kde Azure AD využívá telemetrii Office 365, aby zabránila neoprávněnému přístupu
+* Jednotné přihlašování pro všechny aplikace, Microsoft 365 nebo jiné aplikace SaaS a včetně místních aplikací
+* Cloudové škálování, kde Azure AD využívá Microsoft 365 telemetrii k tomu, aby se zabránilo neoprávněnému přístupu
 * Integrace Intune, aby se zajistilo ověřování podnikového provozu
 * Centralizované řízení správy uživatelských účtů
 * Automatické aktualizace, aby se zajistilo, že máte nejnovější opravy zabezpečení

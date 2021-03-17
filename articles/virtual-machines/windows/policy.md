@@ -3,18 +3,18 @@ title: Vynutilit zabezpečení pomocí zásad na virtuálních počítačích s 
 description: Jak použít zásadu na virtuální počítač s Azure Resource Manager Windows
 author: mimckitt
 manager: vashan
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: security
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: fb847a8935a438b4d2668733e87571aefdca26a1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a4e54510c4683dc1be9da09b96d6289136a26f1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288274"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550259"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Použití zásad pro virtuální počítače s Windows pomocí Azure Resource Manager
 Pomocí zásad může organizace vyhovět různým konvencím a pravidlům v celém podniku. Vynucování požadovaného chování může přispět k zmírnění rizika při přispívání na úspěch organizace. V tomto článku popisujeme, jak můžete pomocí zásad Azure Resource Manager definovat požadované chování pro Virtual Machines vaší organizace.

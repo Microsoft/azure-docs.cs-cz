@@ -5,18 +5,18 @@ author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2ec1b080c195a47caafd0120240b5fb61ede062b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233017"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932278"
 ---
 # <a name="durable-functions-billing"></a>Durable Functions fakturaci
 
 [Durable Functions](durable-functions-overview.md) se účtuje stejným způsobem jako Azure Functions. Další informace najdete v tématu [Azure Functions ceny](https://azure.microsoft.com/pricing/details/functions/).
 
-Při provádění funkcí Orchestrator v [plánu Azure Functions spotřeby](../functions-scale.md#consumption-plan)musíte být vědomi některých chování fakturace. Následující části popisují tato chování a jejich efekt podrobněji.
+Při provádění funkcí Orchestrator v [plánu Azure Functions spotřeby](../consumption-plan.md)musíte být vědomi některých chování fakturace. Následující části popisují tato chování a jejich efekt podrobněji.
 
 ## <a name="orchestrator-function-replay-billing"></a>Faktura pro opětovné přehrání funkcí Orchestrator
 
@@ -45,7 +45,7 @@ Několik faktorů přispívá k skutečným Azure Storagem nákladům, které vz
 
 * Jedna aplikace Function App je přidružená k jednomu rozbočovači úloh, který sdílí sadu prostředků Azure Storage. Tyto prostředky používá všechny trvalé funkce ve Function App. Skutečný počet funkcí v aplikaci Function App nemá žádný vliv na Azure Storage náklady transakce.
 * Každá instance aplikace Function interně se dotazuje více front v účtu úložiště pomocí algoritmu cyklického dotazování exponenciálního omezení rychlosti. Nečinná instance aplikace dotazuje fronty méně často než aktivní aplikace, což vede k menšímu počtu transakčních nákladů. Další informace o chování při cyklickém dotazování ve frontě Durable Functions najdete v [článku o výkonu a škálování v části cyklické dotazování front](durable-functions-perf-and-scale.md#queue-polling).
-* Při spuštění ve Azure Functions spotřebě nebo plánu Premium se [kontroler Azure Functions](../functions-scale.md#how-the-consumption-and-premium-plans-work) pravidelně dotazuje na všechny fronty centra úkolů na pozadí. Pokud se aplikace Function App dohlíží ke střednímu měřítku, bude se tyto fronty dotazovat jenom u jediné instance řadiče škálování. Pokud se aplikace funkcí škáluje na velký počet instancí, můžou se přidat další instance kontroleru škálování. Tyto dodatečné instance kontroleru škálování můžou zvýšit celkovou cenu za transakce ve frontě.
+* Při spuštění ve Azure Functions spotřebě nebo plánu Premium se [kontroler Azure Functions](../event-driven-scaling.md) pravidelně dotazuje na všechny fronty centra úkolů na pozadí. Pokud se aplikace Function App dohlíží ke střednímu měřítku, bude se tyto fronty dotazovat jenom u jediné instance řadiče škálování. Pokud se aplikace funkcí škáluje na velký počet instancí, můžou se přidat další instance kontroleru škálování. Tyto dodatečné instance kontroleru škálování můžou zvýšit celkovou cenu za transakce ve frontě.
 * Každá instance aplikace funkcí soutěží o sadu zapůjčení objektů BLOB. Tyto instance budou pravidelně volat Blob service Azure, aby obnovili držené zapůjčení nebo se pokusili získat nová zapůjčení. Počet nakonfigurovaného oddílu centra úkolů určuje počet zapůjčení objektů BLOB. Horizontální navýšení kapacity u většího počtu instancí aplikace Functions může zvýšit náklady na Azure Storage transakce spojené s těmito operacemi zapůjčení.
 
 Další informace o cenách Azure Storage najdete v dokumentaci k [Azure Storageám s cenami](https://azure.microsoft.com/pricing/details/storage/) . 

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d56a13d0a2e373a725320e132df739d806f2e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 905261058c2de0afae18cbc5572c64962bef8834
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608224"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580017"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor
 
@@ -36,20 +36,20 @@ V tomto článku se dozvíte, jak analyzovat protokoly aktivit Azure AD v pracov
 
 Pokud chcete postup sledovat, potřebujete:
 
-* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../../azure-monitor/logs/quick-create-workspace.md).
 * Nejdřív proveďte kroky pro [Směrování protokolů aktivit služby Azure AD do vašeho pracovního prostoru Log Analytics](howto-integrate-activity-logs-with-log-analytics.md).
-*  [Přístup](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
+*  [Přístup](../../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
 * Následující role v Azure Active Directory (Pokud přistupujete Log Analytics prostřednictvím Azure Active Directoryového portálu)
     - Správce zabezpečení
-    - Čtecí modul zabezpečení
-    - Čtečka sestav
+    - Čtenář zabezpečení
+    - Čtenář sestav
     - Globální správce
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Přejděte do pracovního prostoru Log Analytics.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
-2. Vyberte **Azure Active Directory**a potom v části **monitorování** vyberte **protokoly** . tím otevřete pracovní prostor Log Analytics. Pracovní prostor se otevře s výchozím dotazem.
+2. Vyberte **Azure Active Directory** a potom v části **monitorování** vyberte **protokoly** . tím otevřete pracovní prostor Log Analytics. Pracovní prostor se otevře s výchozím dotazem.
 
     ![Výchozí dotaz](./media/howto-analyze-activity-logs-log-analytics/defaultquery.png)
 
@@ -96,23 +96,20 @@ Pro svůj dotaz můžete také nastavit výstrahy. Pokud třeba chcete nakonfigu
 
 3. Zadejte název a popis výstrahy a vyberte úroveň závažnosti. V našem příkladu jsme ho mohli nastavit na **informativní**.
 
-4. Vyberte **skupinu akcí** , která bude upozorněna, když dojde k signálu. Můžete se rozhodnout, že budete svému týmu informovat prostřednictvím e-mailu nebo textové zprávy, nebo můžete automatizovat akci pomocí webhooků, Azure Functions nebo Logic Apps. Přečtěte si další informace o [vytváření a správě skupin výstrah v Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
+4. Vyberte **skupinu akcí** , která bude upozorněna, když dojde k signálu. Můžete se rozhodnout, že budete svému týmu informovat prostřednictvím e-mailu nebo textové zprávy, nebo můžete automatizovat akci pomocí webhooků, Azure Functions nebo Logic Apps. Přečtěte si další informace o [vytváření a správě skupin výstrah v Azure Portal](../../azure-monitor/alerts/action-groups.md).
 
 5. Po nakonfigurování výstrahy vyberte **vytvořit výstrahu** a povolte ji. 
 
-## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Instalace a použití předem připravených zobrazení pro protokoly aktivit Azure AD
+## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>Používejte předem připravené sešity pro protokoly aktivit Azure AD
 
-Můžete si také stáhnout předem připravené zobrazení Log Analytics pro protokoly aktivit služby Azure AD. Zobrazení poskytují několik sestav, které se týkají běžných scénářů týkajících se událostí auditu a přihlašování. Pomocí postupu popsaného v předchozí části můžete také upozornit na kterékoli z dat, která jsou uvedena v sestavách.
+Sešity obsahují několik sestav, které se týkají běžných scénářů týkajících se auditu, přihlašování a zřizování událostí. Pomocí postupu popsaného v předchozí části můžete také upozornit na kterékoli z dat, která jsou uvedena v sestavách.
 
-* **Události zřizování účtů Azure AD**: Toto zobrazení ukazuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů, kteří se zřídili a provisionují chyby, počet uživatelů, kteří se aktualizovaly a aktualizují selhání, a počet nezřízených a odpovídajících selhání uživatelů.    
-* **Události přihlášení**: Toto zobrazení ukazuje nejrelevantnější sestavy týkající se monitorování přihlašovacích aktivit, jako jsou například přihlášení podle aplikace, uživatele, zařízení a také souhrnné zobrazení sledování počtu přihlášení v průběhu času.
-* **Uživatel, který provádí souhlas**: Toto zobrazení ukazuje sestavy týkající se souhlasu uživatele, jako je například souhlas udělený uživatelem, přihlášení uživatelů, kteří udělili souhlas, a také přihlášení aplikací pro všechny aplikace založené na souhlasu. 
-
-Naučte se [instalovat a používat zobrazení Log Analytics pro protokoly aktivit Azure AD](howto-install-use-log-analytics-views.md). 
-
+* **Analýza zřizování**: Tento [sešit](../app-provisioning/application-provisioning-log-analytics.md) obsahuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů, kteří se zřídili a provisionují chyby, počet aktualizovaných uživatelů a selhání aktualizací a počet nezřízených uživatelů a odpovídající selhání.    
+* **Události přihlášení**: Tento sešit obsahuje nejrelevantnější sestavy týkající se monitorování přihlašovacích aktivit, jako jsou například přihlášení podle aplikace, uživatele, zařízení a také souhrnné zobrazení sledování počtu přihlášení v průběhu času.
+* **Přehledy podmíněného přístupu**: přehledy podmíněného přístupu [a vytváření sestav](../conditional-access/howto-conditional-access-insights-reporting.md) vám umožní pochopit dopad zásad podmíněného přístupu ve vaší organizaci v průběhu času. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme s dotazy v protokolech Azure Monitor](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
-* [Vytváření a Správa skupin výstrah v Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
+* [Začínáme s dotazy v protokolech Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
+* [Vytváření a Správa skupin výstrah v Azure Portal](../../azure-monitor/alerts/action-groups.md)
 * [Instalace a použití zobrazení Log Analytics pro Azure Active Directory](howto-install-use-log-analytics-views.md)

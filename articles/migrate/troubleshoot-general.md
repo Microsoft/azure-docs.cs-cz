@@ -1,18 +1,18 @@
 ---
 title: Řešení potíží s Azure Migrate | Microsoft Docs
 description: Poskytuje přehled známých problémů služby Azure Migrate a také tipy pro řešení běžných chyb.
-author: musa-57
+author: ms-psharma
+ms.author: panshar
 ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: hamusa
-ms.openlocfilehash: 433f3cc29e334a9034fa073d4ace735fc7e7e3ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00802f53f973ad9b5a80b265006943121a0fa763
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75725868"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753395"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -28,7 +28,7 @@ Přečtěte si [odpovědi na běžné problémy](troubleshoot-appliance-discover
 
 ## <a name="machines-arent-discovered"></a>Počítače nejsou zjištěny
 
-Zkontrolujte běžné problémy zjišťování.
+Zkontrolujte [běžné problémy zjišťování](common-questions-discovery-assessment.md).
 
 ## <a name="app-discovery-isnt-working"></a>Zjišťování aplikací nefunguje
 

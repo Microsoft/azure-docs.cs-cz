@@ -7,17 +7,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: dalechen
 ms.author: ninarn
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 0b28fa788e7b35e94482104d807c228db21f49b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f2e755047910aefa89c2f187cda956aca608b98
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003912"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093753"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Řešení chyb přechodného připojení v SQL Database a spravované instanci SQL
 
@@ -70,7 +70,7 @@ Klientské programy, které občas nastanou přechodnou chybu, jsou odolnější
 
 Doporučujeme, abyste počkali na 5 sekund před prvním opakováním. Opakuje se pokus po zpoždění kratším než 5 sekund při zahlcení cloudové služby. U každého následného opakování by prodleva měla exponenciálně růst, maximálně 60 sekund.
 
-Diskuzi o době blokování klientů, kteří používají ADO.NET, najdete v tématu [sdružování připojení (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
+Diskuzi o době blokování klientů, kteří používají ADO.NET, najdete v tématu [sdružování připojení (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 Můžete také chtít nastavit maximální počet opakovaných pokusů, než se program ukončí sami.
 
@@ -126,13 +126,13 @@ Aby byl tento test praktický, váš program rozpozná parametr modulu runtime, 
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Parametry .NET SqlConnection pro opakování připojení
 
-Pokud se klientský program připojuje k vaší databázi v SQL Database pomocí .NET Framework třídy **System. data. SqlClient. SqlConnection**, použijte .NET 4.6.1 nebo novější (nebo .NET Core), abyste mohli použít funkci opakování připojení. Další informace o této funkci najdete na [této webové stránce](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
+Pokud se klientský program připojuje k vaší databázi v SQL Database pomocí .NET Framework třídy **System. data. SqlClient. SqlConnection**, použijte .NET 4.6.1 nebo novější (nebo .NET Core), abyste mohli použít funkci opakování připojení. Další informace o této funkci naleznete v tématu [vlastnost SqlConnection. ConnectionString](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-Při sestavování [připojovacího řetězce](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) pro objekt **SqlConnection** koordinovat hodnoty mezi následujícími parametry:
+Při sestavování [připojovacího řetězce](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring) pro objekt **SqlConnection** koordinovat hodnoty mezi následujícími parametry:
 
 - **Atributu ConnectRetryCount**: &nbsp; &nbsp; Výchozí hodnota je 1. Rozsah je od 0 do 255.
 - **Atributu ConnectRetryInterval**: &nbsp; &nbsp; Výchozí hodnota je 10 sekund. Rozsah je 1 až 60.
@@ -189,7 +189,7 @@ Obvykle je nutné zajistit, aby byl pro odchozí komunikaci v počítači, kter�
 Pokud je například klientský program hostovaný v počítači se systémem Windows, můžete k otevření portu 1433 použít bránu Windows Firewall na hostiteli.
 
 1. Otevřete okno Ovládací panely.
-2. Vybrat **všechny položky Ovládacích panelů**  >  nastavení nastavení odchozí pravidla**brány Windows Firewall**  >  **Upřesnit nastavení**  >  **Outbound Rules**  >  **Akce**  >  **nové pravidlo**.
+2. Vybrat **všechny položky Ovládacích panelů**  >  nastavení nastavení odchozí pravidla **brány Windows Firewall**  >  **Upřesnit nastavení**  >    >  **Akce**  >  **nové pravidlo**.
 
 Pokud je váš klientský program hostovaný na virtuálním počítači Azure (VM), přečtěte si [porty, které přesahují 1433 pro ADO.NET 4,5 a SQL Database](adonet-v12-develop-direct-route-ports.md).
 
@@ -227,7 +227,7 @@ Pokud se programu nemůžete připojit k vaší databázi v SQL Database, jednou
 Na jakémkoli počítači s Windows můžete vyzkoušet tyto nástroje:
 
 - SQL Server Management Studio (ssms.exe), který se připojuje pomocí ADO.NET
-- `sqlcmd.exe`, který se připojuje pomocí [rozhraní ODBC](https://msdn.microsoft.com/library/jj730308.aspx)
+- `sqlcmd.exe`, který se připojuje pomocí [rozhraní ODBC](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server)
 
 Po připojení programu otestujte, jestli funguje krátký dotaz SQL SELECT.
 
@@ -268,7 +268,7 @@ Občasné problémy se někdy nejlépe diagnostikují detekcí obecného vzoru b
 
 Váš klient může pomoci diagnostikovat tím, že zaznamená všechny chyby, ke kterým dojde. Je možné, že budete moci korelaci položek protokolu s daty o chybách, které se samy SQL Database protokolují interně.
 
-Enterprise Library 6 (EntLib60) nabízí pro pomoc s protokolováním spravované třídy .NET. Další informace najdete v části [5 – stejně snadné jako v případě, že se nachází v protokolu: použití bloku aplikace protokolování](https://msdn.microsoft.com/library/dn440731.aspx).
+Enterprise Library 6 (EntLib60) nabízí pro pomoc s protokolováním spravované třídy .NET. Další informace najdete v části [5 – stejně snadné jako v případě, že se nachází v protokolu: použití bloku aplikace protokolování](/previous-versions/msp-n-p/dn440731(v=pandp.60)).
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
@@ -276,10 +276,10 @@ Enterprise Library 6 (EntLib60) nabízí pro pomoc s protokolováním spravovan�
 
 Tady jsou některé příkazy SELECT jazyka Transact-SQL, které dotazují protokoly chyb a další informace.
 
-| Dotaz na protokol | Popis |
+| Dotaz na protokol | Description |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Zobrazení [Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nabízí informace o jednotlivých událostech, které obsahují některé, které mohou způsobit přechodné chyby nebo selhání připojení.<br/><br/>V ideálním případě můžete sladit **start_time** nebo **end_time** hodnoty informacemi o tom, kdy došlo k potížím s klientským programem.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Zobrazení [Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nabízí agregované počty typů událostí pro další diagnostiku.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Zobrazení [Sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) nabízí informace o jednotlivých událostech, které obsahují některé, které mohou způsobit přechodné chyby nebo selhání připojení.<br/><br/>V ideálním případě můžete sladit **start_time** nebo **end_time** hodnoty informacemi o tom, kdy došlo k potížím s klientským programem.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Zobrazení [Sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) nabízí agregované počty typů událostí pro další diagnostiku.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -312,7 +312,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Několik vrácených řádků z sys. fn_xe_telemetry_blob_target_read_file
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Několik vrácených řádků z sys.fn_xe_telemetry_blob_target_read_file
 
 Následující příklad ukazuje, jak vrácený řádek může vypadat. Zobrazené hodnoty null nejsou v jiných řádcích často null.
 
@@ -326,18 +326,18 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 ## <a name="enterprise-library-6"></a>Enterprise Library 6
 
-Enterprise Library 6 (EntLib60) je architektura tříd .NET, která pomáhá implementovat robustní klienty Cloud Services, z nichž jeden je SQL Database. Témata vyhrazená pro jednotlivé oblasti, ve kterých může EntLib60 pomoct, najdete v tématu [Enterprise Library 6. dubna 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
+Enterprise Library 6 (EntLib60) je architektura tříd .NET, která pomáhá implementovat robustní klienty Cloud Services, z nichž jeden je SQL Database. Témata vyhrazená pro jednotlivé oblasti, ve kterých může EntLib60 pomoct, najdete v tématu [Enterprise Library 6. dubna 2013](/previous-versions/msp-n-p/dn169621(v=pandp.10)).
 
-Logika opakování pro zpracování přechodných chyb je jednou z oblastí, ve které může EntLib60 pomoct. Další informace najdete v tématu [4 – Perseverance, tajný kód všech triumphs: použijte blok aplikace pro zpracování přechodného selhání](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
+Logika opakování pro zpracování přechodných chyb je jednou z oblastí, ve které může EntLib60 pomoct. Další informace najdete v tématu [4 – Perseverance, tajný kód všech triumphs: použijte blok aplikace pro zpracování přechodného selhání](/previous-versions/msp-n-p/dn440719(v=pandp.60)).
 
 > [!NOTE]
-> Zdrojový kód pro EntLib60 je k dispozici pro veřejné stažení ze [služby Stažení softwaru](https://go.microsoft.com/fwlink/p/?LinkID=290898). Microsoft nemá žádné plány na další aktualizace funkcí ani aktualizace údržby EntLib.
+> Zdrojový kód pro EntLib60 je k dispozici pro veřejné stažení ze [služby Stažení softwaru](https://github.com/MicrosoftArchive/enterprise-library). Microsoft nemá žádné plány na další aktualizace funkcí ani aktualizace údržby EntLib.
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
 ### <a name="entlib60-classes-for-transient-errors-and-retry"></a>EntLib60 třídy pro přechodné chyby a zkuste to znovu.
 
-Následující třídy EntLib60 jsou zvláště užitečné pro logiku opakování. Všechny tyto třídy se nacházejí v oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling**nebo pod ním.
+Následující třídy EntLib60 jsou zvláště užitečné pro logiku opakování. Všechny tyto třídy se nacházejí v oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling** nebo pod ním.
 
 V oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling**:
 
@@ -369,7 +369,7 @@ Tady jsou některé odkazy na informace o EntLib60:
   - Shromažďování kontextových informací, které jsou užitečné pro ladění a trasování, a také pro auditování a obecné požadavky na protokolování.
 - Blok protokolování vyabstrakce protokolovací funkce z cílového umístění protokolu, takže kód aplikace je konzistentní bez ohledu na umístění a typ cílového úložiště protokolování.
 
-Další informace najdete v části [5 – stejně snadné jako v případě, že se nachází v protokolu: použití bloku aplikace protokolování](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx).
+Další informace najdete v části [5 – stejně snadné jako v případě, že se nachází v protokolu: použití bloku aplikace protokolování](/previous-versions/msp-n-p/dn440731(v=pandp.60)).
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
@@ -446,11 +446,11 @@ public bool IsTransient(Exception ex)
 ## <a name="next-steps"></a>Další kroky
 
 - [Knihovny připojení pro SQL Database a SQL Server](connect-query-content-reference-guide.md#libraries)
-- [Sdružování připojení (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
+- [Sdružování připojení (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - [ *Opakovaným pokusem* je knihovna Apache 2,0 s licencí pro obecné účely, která je napsaná v Pythonu,](https://pypi.python.org/pypi/retrying) aby zjednodušila úlohu přidávání chování opakování do stejného množství.
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
-[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+[step-4-connect-resiliently-to-sql-with-php-p42h]: /sql/connect/php/step-4-connect-resiliently-to-sql-with-php

@@ -3,14 +3,18 @@ title: Import certifikátů do kontejneru
 description: Naučte se importovat soubory certifikátů do služby Service Fabric Container Service.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: da4babd8f9d1a25a8514d0c6f1526b43a9723854
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 219882a3f7f6db665f1ec311098ef53464773b71
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614107"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313687"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Importovat soubor certifikátu do kontejneru běžícího na Service Fabric
+
+> [!NOTE]
+> U Service Fabricch clusterů, které běží na Azure, se doporučuje použít k zřizování aplikačních certifikátů v rámci kontejneru [spravovanou identitu Service Fabric aplikace](./concepts-managed-identity.md) . Spravovaná identita poskytuje izolaci tajných klíčů a certifikátů na úrovni služby a umožňuje, aby bylo zřizování certifikátů aplikací součástí pracovního postupu aplikace, nikoli pracovního postupu infrastruktury. Mechanismus CertificateRef bude v budoucí verzi zastaralý.
 
 Služby kontejneru můžete zabezpečit zadáním certifikátu. Service Fabric poskytuje mechanismus pro služby uvnitř kontejneru pro přístup k certifikátu, který je nainstalovaný na uzlech v clusteru s Windows nebo Linux (verze 5,7 nebo vyšší). Certifikát musí být nainstalovaný v úložišti certifikátů v části LocalMachine na všech uzlech clusteru. Privátní klíč odpovídající certifikátu musí být dostupný, přístupný a povolený pro Windows, který lze exportovat. Informace o certifikátu jsou uvedeny v manifestu aplikace pod `ContainerHostPolicies` značkou, jak ukazuje následující fragment kódu:
 
@@ -29,6 +33,8 @@ V případě clusterů se systémem Linux se certifikáty (PEM) zkopírují z ú
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
+
+Upozorňujeme, že `PEM` `PrivateKey` soubor i obsahuje certifikát i nešifrovaný privátní klíč.
 
 Případně, pokud již máte certifikáty v požadovaném formuláři a chcete k nim přistupovat v rámci kontejneru, můžete vytvořit datový balíček v rámci balíčku aplikace a zadat následující v manifestu aplikace:
 

@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: hadr
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955501"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359451"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurace skupiny dostupnosti pracovní skupiny 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +27,7 @@ ms.locfileid: "85955501"
 Tento článek popisuje kroky potřebné k vytvoření clusteru nezávislého na doméně služby Active Directory se skupinou dostupnosti Always On. Tato funkce se také označuje jako cluster pracovní skupiny. Tento článek se zaměřuje na kroky, které jsou důležité pro přípravu a konfiguraci pracovní skupiny a skupiny dostupnosti, a lesky na kroky, které jsou pokryté v jiných článcích, jako je vytvoření clusteru nebo nasazení skupiny dostupnosti. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci skupiny dostupnosti pracovních skupin budete potřebovat následující:
 - Alespoň dva virtuální počítače se systémem Windows Server 2016 (nebo vyšší), které používají SQL Server 2016 (nebo vyšší), nasazené do stejné skupiny dostupnosti nebo jiné zóny dostupnosti pomocí statických IP adres. 
@@ -48,25 +49,25 @@ Pro referenci se v tomto článku používají následující parametry, které 
 
 ## <a name="set-a-dns-suffix"></a>Nastavit příponu DNS 
 
-V tomto kroku nakonfigurujte pro oba servery příponu DNS. Například, `ag.wgcluster.example.com`. To vám umožní použít název objektu, ke kterému se chcete připojit, jako plně kvalifikovanou adresu v rámci vaší sítě, například `AGNode1.ag.wgcluster.example.com` . 
+V tomto kroku nakonfigurujte pro oba servery příponu DNS. Například `ag.wgcluster.example.com`. To vám umožní použít název objektu, ke kterému se chcete připojit, jako plně kvalifikovanou adresu v rámci vaší sítě, například `AGNode1.ag.wgcluster.example.com` . 
 
 K nakonfigurování přípony DNS použijte následující postup:
 
 1. Protokol RDP do prvního uzlu a otevřete Správce serveru. 
-1. Vyberte **místní server** a pak v části **název počítače**vyberte název vašeho virtuálního počítače. 
+1. Vyberte **místní server** a pak v části **název počítače** vyberte název vašeho virtuálního počítače. 
 1. V části **Chcete-li přejmenovat tento počítač**, vyberte možnost **změnit.** ... 
 1. Název pracovní skupiny změňte na něco smysluplného, například `AGWORKGROUP` : 
 
    ![Změnit název pracovní skupiny](./media/availability-group-clusterless-workgroup-configure/1-change-workgroup-name.png)
 
 1. Pokud chcete otevřít dialogové okno **přípona DNS a název počítače pro rozhraní NetBIOS** , vyberte **Další...** 
-1. Do pole **Přípona primárního serveru DNS tohoto počítače**zadejte název vaší přípony DNS, například `ag.wgcluster.example.com` a pak vyberte **OK**: 
+1. Do pole **Přípona primárního serveru DNS tohoto počítače** zadejte název vaší přípony DNS, například `ag.wgcluster.example.com` a pak vyberte **OK**: 
 
-   ![Přidat příponu DNS](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![Snímek obrazovky se zobrazí v dialogovém okně Přípona D N S a název počítače pro rozhraní NetBIOS, kde můžete zadat hodnotu.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. Potvrďte, že **úplný název počítače** teď zobrazuje příponu DNS, a pak vyberte **OK** , aby se změny uložily: 
 
-   ![Přidat příponu DNS](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![Snímek obrazovky ukazuje, kde se zobrazí úplný název počítače.](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. Až se vám zobrazí výzva, restartujte server. 
 1. Opakujte tyto kroky na všech ostatních uzlech, které chcete použít pro skupinu dostupnosti. 
@@ -107,15 +108,15 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 V tomto kroku vytvoříte cluster s podporou převzetí služeb při selhání. Pokud tyto kroky neznáte, můžete je sledovat v [kurzu cluster s podporou převzetí služeb při selhání](failover-cluster-instance-storage-spaces-direct-manually-configure.md).
 
 Významné rozdíly mezi kurzem a to, co je potřeba udělat pro cluster pracovních skupin:
-- Zrušte kontrolu **úložiště**a při spuštění ověření clusteru **prostory úložiště s přímým přístupem** . 
+- Zrušte kontrolu **úložiště** a při spuštění ověření clusteru **prostory úložiště s přímým přístupem** . 
 - Při přidávání uzlů do clusteru přidejte plně kvalifikovaný název, například:
    - `AGNode1.ag.wgcluster.example.com`
    - `AGNode2.ag.wgcluster.example.com`
 - Zrušte kontrolu **Přidat do clusteru veškeré oprávněné úložiště**. 
 
-Po vytvoření clusteru přiřaďte IP adresu statického clusteru. Postup je následující:
+Po vytvoření clusteru přiřaďte IP adresu statického clusteru. To můžete provést pomocí těchto kroků:
 
-1. Na jednom z uzlů otevřete **Správce clusteru s podporou převzetí služeb při selhání**, vyberte cluster, klikněte pravým tlačítkem myši na **Název: \<ClusterNam> ** v části **základní prostředky clusteru** a pak vyberte **vlastnosti**. 
+1. Na jednom z uzlů otevřete **Správce clusteru s podporou převzetí služeb při selhání**, vyberte cluster, klikněte pravým tlačítkem myši na **Název: \<ClusterNam>** v části **základní prostředky clusteru** a pak vyberte **vlastnosti**. 
 
    ![Spustit vlastnosti pro název clusteru](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
@@ -291,6 +292,4 @@ V tomto posledním kroku nakonfigurujte nástroj pro vyrovnávání zatížení 
 
 ## <a name="next-steps"></a>Další kroky
 
-Ke konfiguraci skupiny dostupnosti můžete použít taky [příkaz AZ SQL VM CLI](availability-group-az-cli-configure.md) . 
-
-
+Ke konfiguraci skupiny dostupnosti můžete použít taky [příkaz AZ SQL VM CLI](./availability-group-az-commandline-configure.md) .

@@ -12,12 +12,12 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04d5a989fcaf3cef3eea3b782842fb3255d4b317
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383933"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661098"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -57,15 +57,15 @@ Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 | Iniciované uživatelem (actor) | ObjectId | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
 | Iniciované uživatelem (actor) | SPN | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 | Cíle | ObjectId | **ID objektu** uživatele, který se přihlašuje. |
-| Další podrobnosti | TenantId | **ID tenanta** klienta Azure AD B2C. |
-| Další podrobnosti | PolicyId | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
-| Další podrobnosti | ApplicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
+| Additional Details | TenantId | **ID tenanta** klienta Azure AD B2C. |
+| Additional Details | PolicyId | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
+| Additional Details | ApplicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Zobrazit protokoly auditu v Azure Portal
 
 Azure Portal poskytuje přístup k událostem protokolu auditu ve vašem tenantovi Azure AD B2C.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 1. Přejděte do adresáře, který obsahuje vašeho tenanta Azure AD B2C, a pak přejděte do **Azure AD B2C**.
 1. V části **aktivity** v nabídce vlevo vyberte **protokoly auditu**.
 
@@ -84,7 +84,7 @@ Chcete-li stáhnout seznam událostí aktivit v souboru hodnot oddělených čá
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>Získání protokolů auditu pomocí rozhraní API pro vytváření sestav Azure AD
 
-Protokoly auditu se publikují do stejného kanálu jako jiné aktivity pro Azure Active Directory, takže se dají dostat prostřednictvím [rozhraní API pro vytváření sestav Azure Active Directory](https://docs.microsoft.com/graph/api/directoryaudit-list). Další informace najdete v tématu [Začínáme s rozhraním API pro vytváření sestav Azure Active Directory](../active-directory/reports-monitoring/concept-reporting-api.md).
+Protokoly auditu se publikují do stejného kanálu jako jiné aktivity pro Azure Active Directory, takže se dají dostat prostřednictvím [rozhraní API pro vytváření sestav Azure Active Directory](/graph/api/directoryaudit-list). Další informace najdete v tématu [Začínáme s rozhraním API pro vytváření sestav Azure Active Directory](../active-directory/reports-monitoring/concept-reporting-api.md).
 
 ### <a name="enable-reporting-api-access"></a>Povolit přístup k rozhraní API pro vytváření sestav
 
@@ -223,4 +223,4 @@ Tady je reprezentace JSON ukázkové události aktivity uvedené dříve v člá
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete automatizovat další úlohy správy, například [spravovat Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).
+Můžete automatizovat další úlohy správy, například [spravovat Azure AD B2C uživatelských účtů pomocí Microsoft Graph](microsoft-graph-operations.md).

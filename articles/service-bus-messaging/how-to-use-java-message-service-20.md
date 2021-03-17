@@ -4,26 +4,37 @@ description: Jak používat službu JMS (Java Message Service) s Azure Service B
 ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8363011187a4c2ef77681ece4bb8b1de73ec7a63
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 894821444f74248b73578595df943cb3a0025360
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87801415"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698395"
 ---
-# <a name="use-java-message-service-20-api-with-azure-service-bus-premium-preview"></a>Použití rozhraní Java Message Service 2,0 API s Azure Service Bus Premium (Preview)
+# <a name="use-java-message-service-20-api-with-azure-service-bus-premium"></a>Použití rozhraní Java Message Service 2,0 API s Azure Service Bus Premium
 
 Tento článek vysvětluje, jak používat oblíbená rozhraní **JMS (Java Message Service) 2,0** k interakci s Azure Service BUSM prostřednictvím protokolu AMQP 1,0 (Advanced Message Queue Protocol).
 
 > [!NOTE]
-> Podpora rozhraní JMS (Java Message Service) 2,0 API je dostupná jenom na **úrovni Premium Azure Service Bus** a je momentálně ve **verzi Preview**.
+> Podpora rozhraní JMS (Java Message Service) 2,0 API je dostupná jenom na **úrovni Premium Azure Service Bus**.
 >
 
-## <a name="get-started-with-service-bus"></a>Začínáme se službou Service Bus
+## <a name="pre-requisites"></a>Požadavky
+
+### <a name="get-started-with-service-bus"></a>Začínáme se službou Service Bus
 
 V tomto průvodci se předpokládá, že už máte Service Bus obor názvů. Pokud to neuděláte, můžete [vytvořit obor názvů a frontu](service-bus-create-namespace-portal.md) pomocí [Azure Portal](https://portal.azure.com). 
 
 Další informace o tom, jak vytvořit Service Bus obory názvů a fronty, najdete v tématu Začínáme [s Service Bus fronty prostřednictvím Azure Portal](service-bus-quickstart-portal.md).
+
+### <a name="set-up-a-java-development-environment"></a>Nastavení vývojového prostředí Java
+
+Pro vývoj aplikací v jazyce Java je potřeba nastavit příslušné vývojové prostředí – 
+   * Je nainstalovaná buď sada JDK (Java Development Kit), nebo JRE (Java Runtime Environment).
+   * JDK nebo JRE se přidá do cesty sestavení a do příslušných systémových proměnných.
+   * Java IDE je nainstalováno pro využití rozhraní JDK nebo JRE. Například zatmění nebo IntelliJ.
+
+Pokud chcete získat další informace o tom, jak připravit vývojové prostředí pro jazyk Java v Azure, využijte [Tento průvodce](/azure/developer/java/fundamentals/).
 
 ## <a name="what-jms-features-are-supported"></a>Jaké funkce JMS jsou podporovány?
 
@@ -47,7 +58,7 @@ Po naimportování závislostí můžou být aplikace Java napsány nezávislá 
 
 Pokud se chcete připojit k Azure Service Bus pomocí klientů JMS, potřebujete **připojovací řetězec** , který je dostupný v zásadách sdíleného přístupu v [Azure Portal](https://portal.azure.com) pod **primárním připojovacím řetězcem**.
 
-1. Vytvoření instance`ServiceBusJmsConnectionFactorySettings`
+1. Vytvoření instance `ServiceBusJmsConnectionFactorySettings`
 
     ```java
     ServiceBusJmsConnectionFactorySettings connFactorySettings = new ServiceBusJmsConnectionFactorySettings();
@@ -60,7 +71,7 @@ Pokud se chcete připojit k Azure Service Bus pomocí klientů JMS, potřebujete
     ConnectionFactory factory = new ServiceBusJmsConnectionFactory(ServiceBusConnectionString, connFactorySettings);
     ```
 
-3. Použijte `ConnectionFactory` k vytvoření `Connection` a pak`Session` 
+3. Použijte `ConnectionFactory` k vytvoření `Connection` a pak `Session` 
 
     ```java
     Connection connection = factory.createConnection();
@@ -72,11 +83,19 @@ Pokud se chcete připojit k Azure Service Bus pomocí klientů JMS, potřebujete
     JMSContext jmsContext = factory.createContext();
     ```
 
+    >[!IMPORTANT]
+    > I když je obdobně pojmenovaný, relace JMS a relace Service Bus je zcela nezávislá na sobě.
+    >
+    > V JMS 1,1 je relace základním stavebním blokem rozhraní API, které umožňuje vytváření MessageProducer, MessageConsumer a samotné zprávy. Další podrobnosti najdete v [programovacím modelu rozhraní JMS API](https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html) .
+    >
+    > V Service Bus jsou [relace](message-sessions.md) součástí konstrukce služby a klienta, aby bylo možné zpracovávat na frontách a předplatných funkci FIFO.
+    >
+
 ### <a name="write-the-jms-application"></a>Zápis aplikace JMS
 
 Po `Session` `JMSContext` vytvoření instance nebo může vaše aplikace používat známá rozhraní JMS API k provádění operací správy a dat.
 
-Informace o tom, která rozhraní API se v této verzi Preview podporují, najdete v seznamu [podporovaných funkcí JMS](how-to-use-java-message-service-20.md#what-jms-features-are-supported) .
+Informace o podporovaných rozhraních API najdete v seznamu [podporovaných funkcí JMS](how-to-use-java-message-service-20.md#what-jms-features-are-supported) .
 
 Níže jsou uvedeny některé ukázkové fragmenty kódu, které vám pomohou začít s JMS-
 
@@ -134,7 +153,7 @@ Service Bus AMQP 1,0 můžete také použít z jiných jazyků, včetně .NET, C
 
 Další informace o Azure Service Bus a podrobnostech o entitách JMS (Java Message Service) najdete na odkazech níže. 
 * [Service Bus – fronty, témata a předplatná](service-bus-queues-topics-subscriptions.md)
-* [Service Bus – entity služby zprávy Java](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities-preview)
+* [Service Bus – entity služby zprávy Java](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities)
 * [Podpora AMQP 1,0 v Azure Service Bus](service-bus-amqp-overview.md)
 * [Příručka pro vývojáře Service Bus AMQP 1,0](service-bus-amqp-dotnet.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 590ddef27315f37719da5b28c68b6c402371e986
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189813"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363251"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>Ukázky Pythonu pro Cognitive Services pro velké objemy dat
 
@@ -27,7 +27,7 @@ V ukázkách v tomto článku se používají tyto Cognitive Services:
 - Zvukové soubory s mluveným převodem na text přepisovat k extrakci textových přepisů.
 - Detektor anomálií – zjištění anomálií v datech časové řady
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Postupujte podle kroků uvedených v části [Začínáme](getting-started.md) s nastavením Azure Databricks a Cognitive Services prostředí. V tomto kurzu se dozvíte, jak nainstalovat MMLSpark a jak vytvořit cluster Spark v datacihlách.
 1. Po vytvoření nového poznámkového bloku v Azure Databricks zkopírujte níže **sdílený kód** a vložte ho do nové buňky v poznámkovém bloku.
@@ -56,7 +56,7 @@ assert service_key != "ADD_YOUR_SUBSCRIPION_KEY"
 
 ## <a name="text-analytics-sample"></a>Ukázka Analýza textu
 
-Služba [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) poskytuje několik algoritmů pro extrakci inteligentních přehledů z textu. Můžete například najít mínění zadaného vstupního textu. Služba vrátí skóre od 0,0 do 1,0, kde nízké skóre naznačují negativní mínění a vysoké skóre značí kladné mínění.  Tato ukázka používá tři jednoduché věty a vrátí mínění pro každou z nich.
+Služba [Analýza textu](../text-analytics/index.yml) poskytuje několik algoritmů pro extrakci inteligentních přehledů z textu. Můžete například najít mínění zadaného vstupního textu. Služba vrátí skóre od 0,0 do 1,0, kde nízké skóre naznačují negativní mínění a vysoké skóre značí kladné mínění.  Tato ukázka používá tři jednoduché věty a vrátí mínění pro každou z nich.
 
 ```python
 from pyspark.sql.functions import col
@@ -78,20 +78,20 @@ sentiment = (TextSentiment()
     .setLanguageCol("language"))
 
 # Show the results of your text query in a table format
-display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("score").alias("sentiment")))
+display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sentiment").alias("sentiment")))
 ```
 
 ### <a name="expected-result"></a>Očekávaný výsledek
 
 | text                                      | mínění                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| Jsem si dnes spokojeni, Slunečné!           | 0.9789592027664185                                    |
-| Frustrovaní tento přenos nespěcháte hodin | 0.023795604705810547                                  |
-| Služba rozpoznávání na Spark aint je chybná.  | 0.8888956308364868                                    |
+| Jsem si dnes spokojeni, Slunečné!           | pozitivní                                              |
+| Frustrovaní tento přenos nespěcháte hodin | negativní                                              |
+| Služba rozpoznávání na Spark aint je chybná.  | pozitivní                                              |
 
 ## <a name="computer-vision-sample"></a>Ukázka Počítačové zpracování obrazu
 
-[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) analyzuje obrázky pro identifikaci struktury, jako jsou obličeje, objekty a popisy přirozeného jazyka. V této ukázce označíte seznam imagí. Značky jsou jedním z popisů textu v obrázku, jako jsou například rozpoznatelné objekty, lidé, krajin a akce.
+[Počítačové zpracování obrazu](../computer-vision/index.yml) analyzuje obrázky pro identifikaci struktury, jako jsou obličeje, objekty a popisy přirozeného jazyka. V této ukázce označíte seznam imagí. Značky jsou jedním z popisů textu v obrázku, jako jsou například rozpoznatelné objekty, lidé, krajin a akce.
 
 ```python
 
@@ -126,7 +126,7 @@ display(analysis.transform(df).select("image", "analysis_results.description.tag
 
 ## <a name="bing-image-search-sample"></a>Ukázka Vyhledávání obrázků Bingu
 
-[Vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) vyhledá web, aby se načetly obrázky související s dotazem přirozeného jazyka uživatele. V této ukázce používáme textový dotaz, který vyhledává obrázky s uvozovkami. Vrátí seznam adres URL obrázků, které obsahují fotografie související s naším dotazem.
+[Vyhledávání obrázků Bingu](../bing-image-search/overview.md) vyhledá web, aby se načetly obrázky související s dotazem přirozeného jazyka uživatele. V této ukázce používáme textový dotaz, který vyhledává obrázky s uvozovkami. Vrátí seznam adres URL obrázků, které obsahují fotografie související s naším dotazem.
 
 ```python
 from pyspark.ml import PipelineModel
@@ -171,7 +171,7 @@ display(pipeline.transform(bingParameters))
 
 
 ## <a name="speech-to-text-sample"></a>Ukázka převodu řeči na text
-Služba převod [řeči na text](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) převede datové proudy nebo soubory mluveného zvuku na text. V této ukázce jsme přepisovat dva zvukové soubory. První soubor je snadno srozumitelný a druhý je náročnější.
+Služba převod [řeči na text](../speech-service/index-speech-to-text.yml) převede datové proudy nebo soubory mluveného zvuku na text. V této ukázce jsme přepisovat dva zvukové soubory. První soubor je snadno srozumitelný a druhý je náročnější.
 
 ```python
 
@@ -205,7 +205,7 @@ display(speech_to_text.transform(df).select("url", "text.DisplayText"))
 
 ## <a name="anomaly-detector-sample"></a>Ukázka detektoru anomálií
 
-Detekce [anomálií](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) je ideální pro detekci nedovolených dat v datech časových řad. V této ukázce používáme službu k nalezení anomálií v celé časové řadě.
+Detekce [anomálií](../anomaly-detector/index.yml) je ideální pro detekci nedovolených dat v datech časových řad. V této ukázce používáme službu k nalezení anomálií v celé časové řadě.
 
 ```python
 from pyspark.sql.functions import lit
@@ -245,7 +245,7 @@ display(anamoly_detector.transform(df).select("timestamp", "value", "anomalies.i
 
 ### <a name="expected-result"></a>Očekávaný výsledek
 
-| časové razítko            |   hodnota | Anomálie   |
+| časové razítko            |   value | Anomálie   |
 |:---------------------|--------:|:------------|
 | 1972-01-01T00:00:00Z |     826 | Nepravda       |
 | 1972-02-01T00:00:00Z |     799 | Nepravda       |
@@ -254,14 +254,14 @@ display(anamoly_detector.transform(df).select("timestamp", "value", "anomalies.i
 | 1972-05-01T00:00:00Z |     766 | Nepravda       |
 | 1972-06-01T00:00:00Z |     805 | Nepravda       |
 | 1972 – 07 – 01T00:00:00Z |     821 | Nepravda       |
-| 1972 – 08-01T00:00:00Z |   20000 | Pravda        |
+| 1972 – 08-01T00:00:00Z |   20000 | Ano        |
 | 1972 – 09 – 01T00:00:00Z |     883 | Nepravda       |
 | 1972 – 10 – 01T00:00:00Z |     898 | Nepravda       |
 | 1972-11-01T00:00:00Z |     957 | Nepravda       |
 | 1972 – 12.01T00:00:00Z |     924 | Nepravda       |
 | 1973-01-01T00:00:00Z |     881 | Nepravda       |
 | 1973-02-01T00:00:00Z |     837 | Nepravda       |
-| 1973-03-01T00:00:00Z |    9000 | Pravda        |
+| 1973-03-01T00:00:00Z |    9000 | Ano        |
 
 ## <a name="arbitrary-web-apis"></a>Libovolná webová rozhraní API
 
@@ -304,4 +304,4 @@ display(client.transform(df).select("country", udf(get_response_body)(col("respo
 ## <a name="see-also"></a>Viz také
 
 * [Recept: detekce anomálií](./recipes/anomaly-detection.md)
-* [Recept: Průzkumník grafiky](./recipes/art-explorer.md)
+* [Návod: Art Explorer](./recipes/art-explorer.md)

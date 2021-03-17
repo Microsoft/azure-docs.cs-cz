@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/18/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 10c2b447a3f174afe93f56084827756d24d982cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 807cbd283cf7971bf4256451028ffa16a0911266
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792186"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025617"
 ---
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí 
 
 Galerie imagí je primární prostředek, který slouží k povolení sdílení obrázků. Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky. Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
-Vytvořte galerii imagí pomocí [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). Následující příklad vytvoří galerii s názvem *myGallery* ve skupině prostředků *myGalleryRG* .
+Vytvořte galerii imagí pomocí [New-AzGallery](/powershell/module/az.compute/new-azgallery). Následující příklad vytvoří galerii s názvem *myGallery* ve skupině prostředků *myGalleryRG* .
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -49,4 +49,3 @@ New-AzRoleAssignment `
    -ResourceGroupName $resourceGroup.ResourceGroupName
 
 ```
-

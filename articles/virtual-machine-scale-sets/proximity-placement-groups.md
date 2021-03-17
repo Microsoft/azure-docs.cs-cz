@@ -9,16 +9,16 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3a7b50c82b3deffa7526bfcfe799972c3b02762
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011052"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877862"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Preview: vytváření a používání skupin umístění blízkosti pomocí PowerShellu
 
-Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste v rámci [skupiny umístění blízkosti](co-location.md#preview-proximity-placement-groups)nasadit svou sadu škálování.
+Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste v rámci [skupiny umístění blízkosti](../virtual-machines/co-location.md#proximity-placement-groups)nasadit svou sadu škálování.
 
 Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
 

@@ -4,10 +4,10 @@ description: Popisuje úlohy, které se dají chránit pomocí zotavení po hav�
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80062840"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Informace o zotavení po havárii pro místní aplikace
@@ -106,10 +106,10 @@ Pomocí Azure Site Recovery můžete replikovat následující služby:
 
 Možnosti replikace najdete v následující tabulce:
 
-| **Vzdálená plocha** |**Replikace virtuálních počítačů Azure do Azure** | **Replikace virtuálních počítačů Hyper-V do sekundární lokality** | **Replikace virtuálních počítačů Hyper-V do Azure** | **Replikace virtuálních počítačů VMware do sekundární lokality** | **Replikace virtuálních počítačů VMware do Azure** | **Replikace fyzických serverů do sekundární lokality** | **Replikace fyzických serverů do Azure** |
+| **Service** |**Replikace virtuálních počítačů Azure do Azure** | **Replikace virtuálních počítačů Hyper-V do sekundární lokality** | **Replikace virtuálních počítačů Hyper-V do Azure** | **Replikace virtuálních počítačů VMware do sekundární lokality** | **Replikace virtuálních počítačů VMware do Azure** | **Replikace fyzických serverů do sekundární lokality** | **Replikace fyzických serverů do Azure** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **Virtuální desktop ve fondu (nespravovaný)** |Ne|Ano |Ne |Ano |Ne |Ano |Ne |
-| **Virtuální desktop ve fondu (spravovaný a bez UPD)** |Ne|Ano |Ne |Ano |Ne |Ano |Ne |
+| **Virtuální desktop ve fondu (nespravovaný)** |No|Ano |No |Ano |No |Ano |No |
+| **Virtuální desktop ve fondu (spravovaný a bez UPD)** |No|Ano |No |Ano |No |Ano |No |
 | **Vzdálené aplikace a desktopové relace (bez UPD)** |Ano|Ano |Ano |Ano |Ano |Ano |Ano |
 
 [Přečtěte si další informace](/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) o zotavení po havárii pro RDS.

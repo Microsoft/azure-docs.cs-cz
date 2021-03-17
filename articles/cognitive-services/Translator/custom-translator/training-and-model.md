@@ -2,24 +2,24 @@
 title: Co je školení a model? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Model je systém, který poskytuje překlad pro konkrétní dvojici jazyků. Výsledkem úspěšného školení je model. Při výuce modelu se pro školicí datovou sadu, optimalizační datovou sadu a testovací datovou sadu vyžadují tři vzájemně se vylučující datové sady.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.author: swmachan
-ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.author: lajanuar
+ms.openlocfilehash: 62a444b66d50579c601077751b0700aa954b34c0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510823"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897930"
 ---
 # <a name="what-are-trainings-and-models"></a>Co jsou kurzy a modely?
 
 Model je systém, který poskytuje překlad pro konkrétní dvojici jazyků.
-Výsledkem úspěšného školení je model. Při výuce modelu jsou vyžadovány tři vzájemně exkluzivní typy dokumentů: školení, optimalizace a testování. Je možné zadat také typ dokumentu slovníku. Přečtěte si prosím [Zarovnání vět](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences).
+Výsledkem úspěšného školení je model. Při výuce modelu jsou vyžadovány tři vzájemně exkluzivní typy dokumentů: školení, optimalizace a testování. Je možné zadat také typ dokumentu slovníku. Přečtěte si prosím [Zarovnání vět](./sentence-alignment.md#suggested-minimum-number-of-sentences).
 
 Pokud jsou při zařazování školení k dispozici jenom školicí údaje, vlastní Překladatel automaticky sestaví data optimalizace a testování. Použije náhodnou podmnožinu vět z školicích dokumentů a vyloučí tyto věty z vašich školicích dat.
 

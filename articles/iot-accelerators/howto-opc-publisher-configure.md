@@ -8,14 +8,18 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 2128fee29e64c58a8066a681776fb509b3e31b6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 405fa04a3b6af7f0c87888aa48aba9bdffeaf282
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445691"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366951"
 ---
 # <a name="configure-opc-publisher"></a>Konfigurace vydavatele OPC
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Vydavatele OPC můžete nakonfigurovat tak, aby určovalo:
 
@@ -140,7 +144,7 @@ Vydavatel OPC implementuje následující volání přímých metod IoT Hub:
 - ExitApplication
 - GetInfo
 
-Formát datové části JSON žádosti o metodu a odpovědi jsou definované v [opcpublisher/HubMethodModel. cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs).
+Formát datové části JSON žádosti o metodu a odpovědi jsou definované v [opcpublisher/HubMethodModel. cs](https://github.com/Azure/iot-edge-opc-publisher/tree/master/opcpublisher).
 
 Pokud voláte neznámou metodu v modulu, odpoví řetězcem, který říká, že metoda není implementována. Můžete zavolat neznámou metodu jako způsob, jak testovat modul pomocí příkazů.
 

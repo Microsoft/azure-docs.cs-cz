@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 1a9aa212c95d8fef58c3fa92b2c1135f81b708be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e93a9b7ba2c7f801761d33ccacfa3ecdb3c48503
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736760"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019784"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Řešení potíží s připojením k Azure Network Watcher pomocí rozhraní příkazového řádku Azure
 
@@ -37,7 +37,7 @@ V tomto článku se předpokládá, že máte následující zdroje:
 * Virtuální počítače pro řešení potíží s připojeními.
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Ověřte připojení k virtuálnímu počítači.
 
@@ -51,7 +51,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Odpověď
 
-Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **nedosažitelný**. Vidíte, že se nepovedlo úspěšně odeslat všechny sondy. Připojení na virtuálním zařízení se nepovedlo, protože se `NetworkSecurityRule` nakonfiguroval uživatel s názvem **UserRule_Port80**nakonfigurovaný tak, aby blokoval příchozí provoz na portu 80. Tyto informace se dají použít k tomu, aby se nastudovaly problémy s připojením.
+Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **nedosažitelný**. Vidíte, že se nepovedlo úspěšně odeslat všechny sondy. Připojení na virtuálním zařízení se nepovedlo, protože se `NetworkSecurityRule` nakonfiguroval uživatel s názvem **UserRule_Port80** nakonfigurovaný tak, aby blokoval příchozí provoz na portu 80. Tyto informace se dají použít k tomu, aby se nastudovaly problémy s připojením.
 
 ```json
 {

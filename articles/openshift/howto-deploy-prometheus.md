@@ -3,18 +3,24 @@ title: Nasazení instance Prometheus v clusteru Azure Red Hat OpenShift
 description: Vytvořte instanci Prometheus v clusteru Azure Red Hat OpenShift a sledujte metriky vaší aplikace.
 author: makdaam
 ms.author: b-lejaku
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, ARO, OpenShift, metriky, Red Hat
-ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 974096e515401ab5e292dbad4c9beba7f1611a8a
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80886884"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633440"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Nasazení samostatné instance Prometheus v clusteru Azure Red Hat OpenShift
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3,11 bude vyřazeno 30. června 2022. Podpora pro vytváření nových clusterů Azure Red Hat OpenShift 3,11 pokračuje do 30. listopadu 2020. Po vyřazení z provozu budou zbývající clustery Azure Red Hat OpenShift 3,11 vypnuté, aby se předešlo chybám zabezpečení.
+> 
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](tutorial-create-cluster.md).
+> Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:arofeedback@microsoft.com).
 
 Tento článek popisuje, jak nakonfigurovat samostatnou instanci Prometheus, která používá zjišťování služeb v clusteru Azure Red Hat OpenShift.
 
@@ -30,7 +36,7 @@ Soubory konfigurace Prometheus budete připravovat místně. Vytvořte novou slo
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Přihlaste se ke clusteru pomocí nástroje OC.
 
-1. Otevřete webový prohlížeč a pak klikněte na webovou konzoli vašeho clusteru ( https://openshift .* ID náhodného*. *region*. azmosa.IO).
+1. Otevřete webový prohlížeč a pak klikněte na webovou konzoli vašeho clusteru ( https://openshift .*ID náhodného*. *region*. azmosa.IO).
 2. Přihlaste se pomocí přihlašovacích údajů Azure.
 3. V pravém horním rohu vyberte své uživatelské jméno a pak vyberte **příkaz Kopírovat přihlášení**.
 4. Vložte své uživatelské jméno do terminálu, který budete používat.
@@ -102,7 +108,7 @@ receivers:
 - name: default
 - name: deadmansswitch
 ```
-Vytvořte tajný klíč s názvem prom-Alerts zadáním následující konfigurace:
+Pomocí následující konfigurace vytvořte tajný klíč s názvem Prom-Alerts:
 ```
 oc create secret generic prom-alerts --from-file=alertmanager.yml -n prometheus-project
 ```
@@ -182,7 +188,7 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 
 ## <a name="optional-deploy-example-application"></a>Volitelné: příklad nasazení aplikace
 
-Vše funguje, ale neexistují žádné zdroje metriky. Přejít na adresu URL Prometheus ( https://prom-prometheus-project.apps .* ID náhodného*. *region*. azmosa.IO/). Můžete ji najít pomocí následujícího příkazu:
+Vše funguje, ale neexistují žádné zdroje metriky. Přejít na adresu URL Prometheus ( https://prom-prometheus-project.apps .*ID náhodného*. *region*. azmosa.IO/). Můžete ji najít pomocí následujícího příkazu:
 
 ```
 oc get route prom -n prometheus-project
@@ -200,7 +206,7 @@ oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=examp
 ```
 Nové aplikace by se měly zobrazit jako platné cíle na stránce zjišťování služby během 30 sekund po nasazení.
 
-Další podrobnosti najdete v výběru **Status**  >  **cíle**stavu.
+Další podrobnosti najdete v výběru   >  **cíle** stavu.
 
 > [!NOTE]
 > Pro každý úspěšně vyřazený cíl Prometheus přidá datový bod do metriky nahoru. V levém horním rohu vyberte **Prometheus** **, jako výraz** zadejte a pak vyberte Execute ( **Spustit**).

@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f0bac363e020826e34df3cb0b4e3d3582990302
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564489"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595452"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Připojit data z protokolu aktivit Azure
 
-Pomocí jediného kliknutí můžete streamovat protokoly z [Azure Activity log](../azure-monitor/platform/platform-logs-overview.md) do Azure Sentinel. Protokol aktivit je protokol předplatného, který zaznamenává a zobrazuje události na úrovni předplatného v rámci Azure, od Azure Resource Manager provozních dat až po aktualizace Service Healthch událostí. Pomocí protokolu aktivit můžete určit, kdo a kdy se má u prostředků ve vašem předplatném provést operace zápisu (PUT, POST, DELETE). Můžete si také přečíst stav operace a dalších relevantních vlastností. Protokol aktivit nezahrnuje operace čtení (GET) nebo operací pro prostředky, které používají model Classic/"RDFE". 
+Pomocí jediného kliknutí můžete streamovat protokoly z [Azure Activity log](../azure-monitor/essentials/platform-logs-overview.md) do Azure Sentinel. Protokol aktivit je protokol předplatného, který zaznamenává a zobrazuje události na úrovni předplatného v rámci Azure, od Azure Resource Manager provozních dat až po aktualizace Service Healthch událostí. Pomocí protokolu aktivit můžete určit, kdo a kdy se má u prostředků ve vašem předplatném provést operace zápisu (PUT, POST, DELETE). Můžete si také přečíst stav operace a dalších relevantních vlastností. Protokol aktivit nezahrnuje operace čtení (GET) nebo operací pro prostředky, které používají model Classic/"RDFE". 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +33,7 @@ Pomocí jediného kliknutí můžete streamovat protokoly z [Azure Activity log]
 
 ## <a name="set-up-the-azure-activity-connector"></a>Nastavení konektoru aktivit Azure
 
-1. V navigační nabídce Azure Sentinel vyberte **datové konektory**. V seznamu konektorů klikněte na **aktivita Azure**a pak na tlačítku pro **otevření konektoru** na pravé straně.
+1. V navigační nabídce Azure Sentinel vyberte **datové konektory**. V seznamu konektorů klikněte na **aktivita Azure** a pak na tlačítku pro **otevření konektoru** na pravé straně.
 
 2. Na kartě **pokyny** klikněte na odkaz **Konfigurovat protokoly aktivit Azure >** .
 

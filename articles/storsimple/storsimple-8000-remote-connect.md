@@ -8,10 +8,10 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514570"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Vzdálené připojení k zařízení řady StorSimple 8000
@@ -66,9 +66,9 @@ Chcete-li povolit vzdálenou správu, proveďte následující kroky v konzole s
 
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Povolení vzdálené správy přes konzolu sériového portu zařízení
 1. V nabídce Konzola sériového portu vyberte možnost 1. Další informace o používání konzoly sériového portu na zařízení najdete v části [připojení k Windows PowerShell pro StorSimple prostřednictvím konzoly sériového portu zařízení](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. Do příkazového řádku zadejte:`Enable-HcsRemoteManagement –AllowHttp`
+2. Do příkazového řádku zadejte: `Enable-HcsRemoteManagement –AllowHttp`
 3. Zobrazí se oznámení o ohrožení zabezpečení pomocí protokolu HTTP pro připojení k zařízení. Po zobrazení výzvy potvrďte zadáním **Y**.
-4. Zadáním příkazu ověřte, že je protokol HTTP povolený.`Get-HcsSystem`
+4. Zadáním příkazu ověřte, že je protokol HTTP povolený. `Get-HcsSystem`
 5. Ověřte, že pole **RemoteManagementMode** zobrazuje **HttpsAndHttpEnabled**. Následující ilustrace znázorňuje tato nastavení v výstupu.
    
      ![Podpora sériového portu HTTPS a protokolu HTTP](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)

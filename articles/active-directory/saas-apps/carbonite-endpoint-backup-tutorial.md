@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff19275270e5b6572fb7d637b88c4736a3aa6ea0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530586"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456479"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Kurz: integrace zálohování koncového bodu Carbonite s Azure Active Directory
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat zálohování koncového bodu Carbonit
 * Umožněte uživatelům, aby se k zálohování koncových bodů Carbonite pomocí svých účtů Azure AD automaticky přihlásili.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -59,7 +59,7 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí zálohov�
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí zálohování koncového bodu Carbonite, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování koncového bodu Carbonite](#configure-carbonite-endpoint-backup-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Konfigurace jednotného přihlašování koncového bodu Carbonite](#configure-carbonite-endpoint-backup-sso)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 5. **[Vytvořit testovacího uživatele koncového bodu Carbonite koncového bodu](#create-carbonite-endpoint-backup-test-user)** – Chcete-li mít protějšek B. Simon v zálohování koncového bodu Carbonite, který je propojený s reprezentací uživatele Azure AD.
@@ -71,7 +71,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **koncového bodu Carbonite** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     https://red-emea.mysecuredatavault.com/
     ```
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -129,19 +129,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. V levém podokně klikněte na **Společnost** .
 
-    ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![Snímek obrazovky zobrazuje koncový bod Carbonite s vybraným podnikem.](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. Klikněte na **jednotné přihlašování**.
 
-    ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![Snímek obrazovky zobrazuje společnost s vybraným jednotným přihlašováním.](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. Klikněte na **Povolit** a pak pro konfiguraci klikněte na **Upravit nastavení** .
 
-    ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![Snímek obrazovky znázorňující kartu jednotného přihlašování s nastaveními povolit a upravit, které se vyvolalo.](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. Na stránce nastavení **jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![Snímek obrazovky zobrazující kartu jednotného přihlašování s informacemi popsanými v tomto kroku.](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
     1. Do textového pole **název zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
@@ -161,7 +161,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -187,11 +187,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V levém podokně klikněte na **uživatele** a pak klikněte na **Přidat uživatele**.
 
-    ![Přidat uživatele v zálohování koncového bodu Carbonite](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![Snímek obrazovky ukazuje stránku koncového bodu Carbonite s uživateli a vybraným uživatelem přidat uživatele.](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. Na stránce **Přidat uživatele** proveďte následující kroky:
 
-    ![Přidat uživatele v zálohování koncového bodu Carbonite](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![Snímek obrazovky se zobrazí stránka Přidat uživatele, kde můžete provést postup, který je zde popsán.](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. Zadejte **e-mail**, **jméno**, příjmení a **jméno** uživatele a poskytněte uživateli požadovaná oprávnění podle požadavků organizace.
 
@@ -201,12 +201,12 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici zálohování koncového bodu Carbonite na přístupovém panelu, měli byste se automaticky přihlásit k zálohování koncového bodu Carbonite, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici zálohování koncového bodu Carbonite na přístupovém panelu, měli byste se automaticky přihlásit k zálohování koncového bodu Carbonite, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

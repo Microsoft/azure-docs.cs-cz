@@ -3,16 +3,16 @@ title: Použití přímých metod v živé analýze videí v IoT Edge – Azure
 description: Live video Analytics na IoT Edge zveřejňuje několik přímých metod. Přímé metody jsou založeny na konvencích popsaných v tomto tématu.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091823"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656236"
 ---
 # <a name="direct-methods"></a>Přímé metody
 
-Live video Analytics na IoT Edge zveřejňuje několik přímých metod, které mohou být vyvolány z IoT Hub. Přímé metody představují interakci požadavek-odpověď se zařízením podobným volání HTTP v tom, že je úspěšné nebo neúspěšné (po uplynutí časového limitu zadaného uživatelem). Tento přístup je užitečný pro scénáře, ve kterých je průběh okamžité akce odlišný v závislosti na tom, jestli zařízení bylo schopné reagovat. Další informace naleznete v tématu [pochopení a vyvolání přímých metod z IoT Hub](../../iot-hub/iot-hub-devguide-direct-methods.md).
+Live video Analytics na IoT Edge zveřejňuje několik přímých metod, které mohou být vyvolány z IoT Hub. Přímé metody představují interakci požadavek-odpověď se zařízením podobným volání HTTP v tom, že je úspěšné nebo neúspěšné (po uplynutí časového limitu zadaného uživatelem). Tento přístup je užitečný v případě scénářů, kdy se průběh okamžité akce liší podle toho, jestli zařízení bylo schopné reagovat. Další informace naleznete v tématu [pochopení a vyvolání přímých metod z IoT Hub](../../iot-hub/iot-hub-devguide-direct-methods.md).
 
 Toto téma popisuje tyto metody a konvence.
 
@@ -112,7 +112,7 @@ Podrobná Chyba při ověřování, jako jsou třeba ověřování modulu grafu,
 
 Tato přímá metoda načte jednu topologii grafu.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -140,12 +140,12 @@ Tato přímá metoda načte jednu topologii grafu.
 
 #### <a name="status-codes"></a>Stavové kódy
 
-|Podmínka  |Stavový kód    |Podrobný kód chyby|
-|---|---|---|
-|Entita se našla|  200 |–
-|Obecné chyby uživatele    |Rozsah 400  ||
-|Entita se nenašla.   |404        ||
-|Obecné chyby serveru| Rozsah 500       ||
+| Podmínka | Stavový kód | Podrobný kód chyby |
+|--|--|--|
+| Entita se našla | 200 | – |
+| Obecné chyby uživatele | Rozsah 400 |  |
+| Entita se nenašla. | 404 |  |
+| Obecné chyby serveru | Rozsah 500 |  |
 
 ### <a name="graphtopologyset"></a>GraphTopologySet
 
@@ -160,7 +160,7 @@ Klíčové aspekty:
     * Na odebrané parametry neodkazuje žádný graf.
 * Aktualizace topologie nejsou povoleny, pokud existují aktivní grafy.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -204,7 +204,7 @@ Obecné chyby serveru   |Rozsah 500  ||
 
 Odstraní jednu topologii grafu.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -227,19 +227,19 @@ Odstraní jednu topologii grafu.
 
 #### <a name="status-codes"></a>Stavové kódy
 
-|Podmínka  |Stavový kód    |Podrobný kód chyby|
-|---|---|---|
-|Entita se odstranila|    200|    –|
-|Entita se nenašla.|  204|    –|
-|Obecné chyby uživatele|   Rozsah 400   ||
-|Na topologii grafu odkazuje jedna nebo více instancí grafu.| 409 |GraphTopologyInUse|
-|Obecné chyby serveru| Rozsah 500   ||
+| Podmínka | Stavový kód | Podrobný kód chyby |
+|--|--|--|
+| Entita se odstranila | 200 | – |
+| Entita se nenašla. | 204 | – |
+| Obecné chyby uživatele | Rozsah 400 |  |
+| Na topologii grafu odkazuje jedna nebo více instancí grafu. | 409 | GraphTopologyInUse |
+| Obecné chyby serveru | Rozsah 500 |  |
 
 ### <a name="graphtopologylist"></a>GraphTopologyList
 
 Načte seznam všech topologií grafu, které odpovídají kritériím filtru.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -278,24 +278,24 @@ Načte seznam všech topologií grafu, které odpovídají kritériím filtru.
 
 #### <a name="filter-support"></a>Podpora filtru
 
-|Operace      |Pole (y)   |Operátory|
+|Operace |Pole (y)    |Operátory|
 |---|---|---|
 |$orderby|name  |ASC|
 
 
 #### <a name="status-codes"></a>Stavové kódy
 
-|Podmínka  |Stavový kód    |Podrobný kód chyby|
-|---|---|---|
-|Success|   200 |–|
-|Obecné chyby uživatele|   Rozsah 400   ||
-|Obecné chyby serveru| Rozsah 500   ||
+| Podmínka | Stavový kód | Podrobný kód chyby |
+|--|--|--|
+| Success | 200 | – |
+| Obecné chyby uživatele | Rozsah 400 |  |
+| Obecné chyby serveru | Rozsah 500 |  |
 
 ### <a name="graphinstanceget"></a>GraphInstanceGet
 
 Načte jednu instanci grafu:
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -323,12 +323,12 @@ Načte jednu instanci grafu:
 
 #### <a name="status-codes"></a>Stavové kódy
 
-|Podmínka  |Stavový kód    |Podrobný kód chyby|
-|---|---|---|
-|Entita se našla   |200|   –|
-|Obecné chyby uživatele|   Rozsah 400   ||
-|Entita se nenašla.|  404 ||
-|Obecné chyby serveru| Rozsah 500   ||
+| Podmínka | Stavový kód | Podrobný kód chyby |
+|--|--|--|
+| Entita se našla | 200 | – |
+| Obecné chyby uživatele | Rozsah 400 |  |
+| Entita se nenašla. | 404 |  |
+| Obecné chyby serveru | Rozsah 500 |  |
 
 ### <a name="graphinstanceset"></a>GraphInstanceSet
 
@@ -342,7 +342,7 @@ Klíčové aspekty:
 * Aktualizace instancí grafu jsou částečně omezené, zatímco graf není ve stavu "neaktivní".
 * Aktualizace instancí grafu nejsou povoleny v aktivních grafech.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -373,15 +373,15 @@ Klíčové aspekty:
 
 #### <a name="status-codes"></a>Stavové kódy
 
-|Podmínka  |Stavový kód    |Podrobný kód chyby|
-|---|---|---|
-|Existující entita se aktualizovala.    |200    |–|
-|Vytvořila se nová entita.|    201 |–|
-|Obecné chyby uživatele|   Rozsah 400   ||
-|Chyby ověřování grafu    |400|   GraphValidationError|
-|Chyby ověřování modulu|  400 |ModuleValidationError|
-|Chyby ověřování prostředků |409    |ResourceValidationError|
-|Obecné chyby serveru  |Rozsah 500||    
+| Podmínka | Stavový kód | Podrobný kód chyby |
+|--|--|--|
+| Existující entita se aktualizovala. | 200 | – |
+| Vytvořila se nová entita. | 201 | – |
+| Obecné chyby uživatele | Rozsah 400 |  |
+| Chyby ověřování grafu | 400 | GraphValidationError |
+| Chyby ověřování modulu | 400 | ModuleValidationError |
+| Chyby ověřování prostředků | 409 | ResourceValidationError |
+| Obecné chyby serveru | Rozsah 500 |  |  |
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 
@@ -391,7 +391,7 @@ Klíčové aspekty:
 
 * Odstranit lze pouze deaktivované grafy.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -414,20 +414,20 @@ Klíčové aspekty:
 
 #### <a name="status-codes"></a>Stavové kódy
 
-|Podmínka  |Stavový kód    |Podrobný kód chyby|
-|---|---|---|
-|Graf se úspěšně odstranil.|    200|    –|
-|Graf se nenašel.|   204|    –|
-|Obecné chyby uživatele    |Rozsah 400  ||
-|Graf není ve stavu Zastaveno.    |409    |OperationNotAllowedInState|
-|Obecné chyby serveru| Rozsah 500   ||
+| Podmínka | Stavový kód | Podrobný kód chyby |
+|--|--|--|
+| Graf se úspěšně odstranil. | 200 | – |
+| Graf se nenašel. | 204 | – |
+| Obecné chyby uživatele | Rozsah 400 |  |
+| Graf není ve stavu Zastaveno. | 409 | OperationNotAllowedInState |
+| Obecné chyby serveru | Rozsah 500 |  |
 
 ### <a name="graphinstancelist"></a>GraphInstanceList
 
 To se podobá GraphTopologyList. Umožňuje použít k zobrazení výčtu instancí grafu.
 Načte seznam všech instancí grafů, které odpovídají kritériím filtru.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -472,11 +472,11 @@ Načte seznam všech instancí grafů, které odpovídají kritériím filtru.
 
 #### <a name="status-codes"></a>Stavové kódy
 
-|Podmínka  |Stavový kód    |Podrobný kód chyby|
-|---|---|---|
-|Success    |200    |–|
-|Obecné chyby uživatele|   Rozsah 400   ||
-|Obecné chyby serveru| Rozsah 500   ||
+| Podmínka | Stavový kód | Podrobný kód chyby |
+|--|--|--|
+| Success | 200 | – |
+| Obecné chyby uživatele | Rozsah 400 |  |
+| Obecné chyby serveru | Rozsah 500 |  |
 
 ### <a name="graphinstanceactivate"></a>GraphInstanceActivate
 
@@ -493,7 +493,7 @@ Klíčové aspekty
     * Spuštění grafu se stavem "Aktivace" se chová stejným způsobem jako při deaktivaci grafu (to znamená, že bloky volání až do aktivace grafu).
     * Aktivace grafu pro stav "aktivní" se úspěšně vrátí.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -516,15 +516,15 @@ Klíčové aspekty
 
 #### <a name="status-codes"></a>Stavové kódy
 
-|Podmínka  |Stavový kód    |Podrobný kód chyby|
-|---|---|---|
-|Graf se úspěšně aktivoval.   |200    |–|
-|Vytvořila se nová entita. |201|   –|
-|Obecné chyby uživatele    |Rozsah 400  ||
-|Chyby ověřování modulu   |400|   ModuleValidationError|
-|Chyby ověřování prostředků|    409|    ResourceValidationError|
-|Graf je ve stavu deaktivace. |409    |OperationNotAllowedInState|
-|Obecné chyby serveru| Rozsah 500   ||
+| Podmínka | Stavový kód | Podrobný kód chyby |
+|--|--|--|
+| Graf se úspěšně aktivoval. | 200 | – |
+| Vytvořila se nová entita. | 201 | – |
+| Obecné chyby uživatele | Rozsah 400 |  |
+| Chyby ověřování modulu | 400 | ModuleValidationError |
+| Chyby ověřování prostředků | 409 | ResourceValidationError |
+| Graf je ve stavu deaktivace. | 409 | OperationNotAllowedInState |
+| Obecné chyby serveru | Rozsah 500 |  |
 
 ### <a name="graphinstancedeactivate"></a>GraphInstanceDeactivate
 
@@ -542,7 +542,7 @@ Klíčové aspekty:
     * Deaktivace grafu se stavem deaktivace se chová stejně jako v případě deaktivace grafu (to znamená, že bloky volání až do deaktivace grafu).
     * Deaktivace grafu pro stav "neaktivní" se okamžitě vrátí.
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>Žádost
 
 ```
 {
@@ -565,13 +565,13 @@ Klíčové aspekty:
 }
 ```
 
-|Podmínka  |Stavový kód    |Podrobný kód chyby|
-|---|---|---|
-|Graf se úspěšně aktivoval.   |200|   –|
-|Vytvořila se nová entita. |201|   –|
-|Obecné chyby uživatele    |Rozsah 400  ||
-|Graf je ve stavu aktivace   |409|   OperationNotAllowedInState|
-|Obecné chyby serveru  |Rozsah 500  ||
+| Podmínka | Stavový kód | Podrobný kód chyby |
+|--|--|--|
+| Graf se úspěšně aktivoval. | 200 | – |
+| Vytvořila se nová entita. | 201 | – |
+| Obecné chyby uživatele | Rozsah 400 |  |
+| Graf je ve stavu aktivace | 409 | OperationNotAllowedInState |
+| Obecné chyby serveru | Rozsah 500 |  |
 
 ## <a name="next-steps"></a>Další kroky
 

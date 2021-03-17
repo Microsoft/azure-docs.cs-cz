@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4e07285eca0fd10b73b386fcf139cdad5b94ddc2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057003"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696400"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti pomocí Load Balanceru úrovně Standard na webu Azure Portal
 
@@ -37,9 +37,13 @@ Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že r
 
 Další informace o používání zón dostupnosti s Load Balancerem úrovně Standard najdete v tématu o [Load Balanceru úrovně Standard a zónách dostupnosti](load-balancer-standard-availability-zones.md).
 
-Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md).
+Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](./quickstart-load-balancer-standard-public-cli.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+
+## <a name="prerequisites"></a>Předpoklady
+
+* Předplatné Azure
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -58,7 +62,7 @@ Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu.
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupLBAZ* .|
     | Name                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Typ          | Vyberte možnost **veřejné**.                                        |
+    | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
@@ -77,7 +81,7 @@ V této části budete muset v krocích níže nahradit následující parametry
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLBAZ (vyberte existující skupinu prostředků) |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Západní Evropa      |
+| **\<region-name>**          | West Europe      |
 | **\<IPv4-address-space>**   | 10.0.0.0/16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.0.0.0/24          |
@@ -93,7 +97,7 @@ Vytvořte skupinu zabezpečení sítě, která definuje příchozí připojení 
     - *myNetworkSecurityGroup* – název skupiny zabezpečení sítě.
     - *myResourceGroupLBAZ* – název existující skupiny prostředků.
    
-![Vytvoření virtuální sítě](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![Snímek obrazovky se zobrazí v podokně vytvořit skupinu zabezpečení sítě.](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>Vytvoření pravidel skupiny zabezpečení sítě
 
@@ -112,7 +116,7 @@ V této části vytvoříte pravidla skupiny zabezpečení sítě, která povol�
     - Jako popis pravidla nástroje pro vyrovnávání zatížení zadejte *Povolení protokolu HTTP*.
 4. Klikněte na **OK**.
  
-   ![Vytvoření virtuální sítě](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Snímek obrazovky se zobrazí v podokně Přidat příchozí pravidlo zabezpečení.](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Zopakováním kroků 2 až 4 vytvořte další pravidlo *myRDPRule*, které povolí příchozí připojení RDP na portu 3389, s použitím následujících hodnot:
     - Jako **Zdroj** zadejte *Značka služby*.
     - Jako **Značka zdrojové služby** zadejte *Internet*.
@@ -175,12 +179,12 @@ Za účelem distribuce provozu do virtuálních počítačů obsahuje fond back-
 1. V levé nabídce klikněte na **Všechny prostředky** a pak v seznamu prostředků klikněte na **myLoadBalancer**.
 2. V části **Nastavení** klikněte na **Back-endové fondy** a pak klikněte na **Přidat**.
 3. Na stránce **Přidat back-endový fond** postupujte následovně:
-    - Do pole název zadejte *myBackEndPool*jako název vašeho back-end fondu.
+    - Do pole název zadejte *myBackEndPool* jako název vašeho back-end fondu.
     - Pro možnost **Virtuální síť** v rozevírací nabídce klikněte na **myVNet**.
     - Pro možnost **Virtuální počítač** v rozevírací nabídce klikněte na **myVM1**.
     - Pro možnost **IP adresa** v rozevírací nabídce klikněte na IP adresu myVM1.
 4. Kliknutím na **Přidat nový back-endový prostředek** přidejte jednotlivé virtuální počítače (*myVM2* a *myVM3*), které chcete přidat do back-endového fondu nástroje pro vyrovnávání zatížení.
-5. Klikněte na tlačítko **Add** (Přidat).
+5. Klikněte na **Přidat**.
 
     ![Přidání do back-endového fondu adres –](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
@@ -220,7 +224,7 @@ Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způso
     
     ![Přidání pravidla vyrovnávání zatížení](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 
-## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
+## <a name="test-the-load-balancer"></a>Testování Load Balanceru
 1. Na obrazovce **Přehled** vyhledejte veřejnou IP adresu Load Balanceru. Klikněte na **Všechny prostředky** a pak klikněte na **myPublicIP**.
 
 2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V prohlížeči se zobrazí výchozí stránka webového serveru služby IIS.
@@ -231,8 +235,10 @@ Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížen
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to výběrem skupiny prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a kliknutím na **Odstranit**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a vyberete **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [Standard Load Balancer](load-balancer-standard-overview.md).
+Přečtěte si další informace o vyrovnávání zatížení virtuálního počítače v rámci konkrétní zóny dostupnosti.
+> [!div class="nextstepaction"]
+> [Vyrovnávání zatížení virtuálních počítačů v rámci zóny dostupnosti](tutorial-load-balancer-standard-public-zonal-portal.md)

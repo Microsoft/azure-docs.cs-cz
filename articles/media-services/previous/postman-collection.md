@@ -1,9 +1,9 @@
 ---
 title: Import kolekce po odeslání pomocí operací streamování na vyžádání Azure
-description: Tento článek poskytuje definici následné kolekce pro volání REST Azure Media Services.
+description: Přečtěte si o kolekci post, která obsahuje seskupené požadavky HTTP, které volají Azure Media Services rozhraní REST API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 2d3bf8b43bc12a2a8a193ea2708ab1668235edde
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 64e7dd754f09a60163decfd419ce6c2cd2c6182d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047581"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007800"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Import kolekce po publikování s operacemi streamování na vyžádání 
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Import kolekce po publikování s operacemi streamování na vyžádání
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Tento článek obsahuje definici kolekce **post** , která obsahuje seskupené požadavky HTTP, které volají Azure Media Services rozhraní REST API. Informace o tom, jak nakonfigurovat **metodu post** , aby ji bylo možné volat Media Services rozhraní REST API najdete v kurzu věnovaném [konfiguraci služby post pro Media Services REST API volání](media-rest-apis-with-postman.md) .
 
@@ -178,7 +180,7 @@ Tento článek obsahuje definici kolekce **post** , která obsahuje seskupené p
                                 ]
                             }
                         }
-                    ],                  
+                    ],
                     "request": {
                         "auth": {
                             "type": "bearer",
@@ -3251,7 +3253,7 @@ Tento článek obsahuje definici kolekce **post** , která obsahuje seskupené p
                                     "key": "access-control-expose-headers",
                                     "value": "request-id, x-ms-request-id",
                                     "name": "access-control-expose-headers",
-                                    "description": "Lets a server whitelist headers that browsers are allowed to access."
+                                    "description": "Lets a server allowlist headers that browsers are allowed to access."
                                 },
                                 {
                                     "key": "request-id",
@@ -3454,7 +3456,7 @@ Tento článek obsahuje definici kolekce **post** , která obsahuje seskupené p
                                     "key": "access-control-expose-headers",
                                     "value": "request-id, x-ms-request-id",
                                     "name": "access-control-expose-headers",
-                                    "description": "Lets a server whitelist headers that browsers are allowed to access."
+                                    "description": "Lets a server allowlist headers that browsers are allowed to access."
                                 },
                                 {
                                     "key": "request-id",
@@ -5589,3 +5591,4 @@ Tento článek obsahuje definici kolekce **post** , která obsahuje seskupené p
     ]
 }
 ```
+

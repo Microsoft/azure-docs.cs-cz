@@ -3,18 +3,20 @@ title: DateTimeAdd v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o DateTimeAdd funkcí SQL systému v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 0b2741a3d2b013ba7bd97038eb4ba4512f36af11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dc81849a13fdaef748c5fd631ee66ea5e3eb67c4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261824"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335785"
 ---
 # <a name="datetimeadd-azure-cosmos-db"></a>DateTimeAdd (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Vrátí hodnotu řetězce DateTime, která je výsledkem přidání zadané číselné hodnoty (jako čísla se znaménkem) k určenému řetězci DateTime.  
   
@@ -36,7 +38,7 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 | Den          | "Day", "dd", "d"     |
 | Hodina         | "hour", "HH"         |
 | Minuta       | "Minute", "mi", "n"  |
-| Druhý       | "Second", "SS", "s"  |
+| Second       | "Second", "SS", "s"  |
 | Komponentu  | "milisekund", "MS"  |
 | Úrovni mikrosekund  | "mikrosekunda", "MCS" |
 | Nanosekund   | "nanosekund", "NS"   |
@@ -87,7 +89,7 @@ DateTimeAdd se vrátí `undefined` z následujících důvodů:
 
 ## <a name="examples"></a>Příklady
   
-Následující příklad přidá 1 měsíc k hodnotě DateTime:`2020-07-09T23:20:13.4575530Z`
+Následující příklad přidá 1 měsíc k hodnotě DateTime: `2020-07-09T23:20:13.4575530Z`
 
 ```sql
 SELECT DateTimeAdd("mm", 1, "2020-07-09T23:20:13.4575530Z") AS OneMonthLater
@@ -101,7 +103,7 @@ SELECT DateTimeAdd("mm", 1, "2020-07-09T23:20:13.4575530Z") AS OneMonthLater
 ]
 ```  
 
-Následující příklad odečte 2 hodiny od data a času:`2020-07-09T23:20:13.4575530Z`
+Následující příklad odečte 2 hodiny od data a času: `2020-07-09T23:20:13.4575530Z`
 
 ```sql
 SELECT DateTimeAdd("hh", -2, "2020-07-09T23:20:13.4575530Z") AS TwoHoursEarlier
@@ -119,4 +121,4 @@ SELECT DateTimeAdd("hh", -2, "2020-07-09T23:20:13.4575530Z") AS TwoHoursEarlier
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

@@ -4,20 +4,20 @@ description: Přehled hostitelské služby DNS v Microsoft Azure. Hostujte svoji
 author: rohinkoul
 ms.service: dns
 ms.topic: overview
-ms.date: 3/21/2019
+ms.date: 3/15/2021
 ms.author: rohink
-ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5d81e24d344d04ea59bc6c9e6141109bf66da3c3
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924270"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491091"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
 Azure DNS je hostitelská služba pro domény DNS, která poskytuje překlad názvů na IP adresy pomocí infrastruktury Microsoft Azure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
-Azure DNS nelze použít k nákupu názvu domény. V případě ročního poplatku můžete koupit název domény pomocí [App Service domény](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) nebo registrátora názvu domény třetí strany. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete v tématu [delegování domény na Azure DNS](dns-domain-delegation.md).
+Azure DNS nelze použít k nákupu názvu domény. V případě ročního poplatku můžete koupit název domény pomocí [App Service domény](../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain) nebo registrátora názvu domény třetí strany. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete v tématu [delegování domény na Azure DNS](dns-domain-delegation.md).
 
 Součástí Azure DNS jsou následující funkce.
 
@@ -29,11 +29,11 @@ DNS domény v Azure DNS jsou hostované na globální síti názvových serverů
 
  Služba Azure DNS je postavená na Azure Resource Manageru, který poskytuje například následující funkce:
 
-* [Řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) k řízení, kdo má přístup ke konkrétním akcím pro vaši organizaci.
+* [Řízení přístupu na základě role Azure (Azure RBAC)](../azure-resource-manager/management/overview.md) k řízení, kdo má přístup ke konkrétním akcím pro vaši organizaci.
 
-* [Protokoly aktivit](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), abyste mohli monitorovat, jakým způsobem uživatel v organizaci upravil prostředek, nebo vyhledat chyby při řešení potíží.
+* [Protokoly aktivit](../azure-resource-manager/management/overview.md), abyste mohli monitorovat, jakým způsobem uživatel v organizaci upravil prostředek, nebo vyhledat chyby při řešení potíží.
 
-* [Uzamčení prostředku](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources), abyste mohli uzamknout předplatné, skupinu prostředků nebo prostředek. Uzamykání zabraňuje tomu, aby ostatní uživatelé ve vaší organizaci omylem odstranili nebo změnili důležité prostředky.
+* [Uzamčení prostředku](../azure-resource-manager/management/lock-resources.md), abyste mohli uzamknout předplatné, skupinu prostředků nebo prostředek. Uzamykání zabraňuje tomu, aby ostatní uživatelé ve vaší organizaci omylem odstranili nebo změnili důležité prostředky.
 
 Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protect-zones-recordsets.md). 
 
@@ -67,6 +67,6 @@ Další informace najdete v [přehledu záznamů aliasů Azure DNS](dns-alias.md
 
 * Informace o záznamech a zónách DNS najdete v tématu [Přehled záznamů a zón DNS](dns-zones-records.md).
 
-* Informace o vytvoření zóny v Azure DNS najdete v tématu [Vytvoření zóny DNS](./dns-getstarted-create-dnszone-portal.md).
+* Informace o vytvoření zóny v Azure DNS najdete v tématu [Vytvoření zóny DNS](./dns-getstarted-portal.md).
 
 * Odpovědi na nejčastější dotazy týkající se Azure DNS najdete v článku s [nejčastějšími dotazy k Azure DNS](dns-faq.md).

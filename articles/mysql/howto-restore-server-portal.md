@@ -1,17 +1,17 @@
 ---
 title: Zálohování a obnovení-Azure Portal-Azure Database for MySQL
 description: Tento článek popisuje, jak obnovit server v Azure Database for MySQL pomocí Azure Portal.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 1a10d61c5dc35a19a8b02769a517d9f1c7aac601
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9bc31cf8fee2669634ff366caac77cb090baf075
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119221"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000296"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for MySQL pomocí Azure Portal
 
@@ -32,16 +32,16 @@ V okně **cenová úroveň** můžete vybrat konfiguraci serveru pro buď místn
 
 Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úroveň** vyberete buď **místně redundantní** , nebo **geograficky redundantní** zálohy pro váš server. V tomto okně můžete také vybrat **dobu uchování zálohy** – jak dlouho (za kolik dní) chcete ukládat zálohy serveru.
 
-   ![Cenová úroveň – výběr redundance zálohy](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
 
 Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-portal.md).
 
 Dobu uchovávání záloh můžete na serveru změnit pomocí následujících kroků:
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Vyberte server Azure Database for MySQL. Tato akce otevře stránku s **přehledem** .
-3. V nabídce v části **Nastavení**vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
+3. V nabídce v části **Nastavení** vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
 Na snímku obrazovky níže byl zvýšen na 34 dní.
-![Období uchování zálohy se zvýšilo.](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Období uchování zálohy se zvýšilo.":::
 
 4. Potvrďte změnu kliknutím na tlačítko **OK** .
 
@@ -57,11 +57,11 @@ Následující kroky obnovují ukázkový Server k určitému bodu v čase:
 
 2. Na panelu nástrojů na stránce **Přehled** serveru vyberte **obnovit**.
 
-   ![Azure Database for MySQL – přehled – tlačítko obnovit](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL – přehled – tlačítko obnovit":::
 
 3. Do formuláře Restore zadejte požadované údaje:
 
-   ![Informace o obnovení Azure Database for MySQL](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Informace o obnovení Azure Database for MySQL":::
    - **Bod obnovení**: Vyberte bod v čase, který chcete obnovit.
    - **Cílový server**: zadejte název nového serveru.
    - **Umístění**: oblast nelze vybrat. Ve výchozím nastavení je stejný jako zdrojový server.
@@ -72,6 +72,12 @@ Následující kroky obnovují ukázkový Server k určitému bodu v čase:
 5. Až se obnovení dokončí, najděte nově vytvořený server, abyste ověřili, že se data obnovila podle očekávání.
 
 Nový server vytvořený nástrojem obnovení k bodu v čase má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době, kdy je zvolený časový okamžik. Heslo můžete změnit na stránce **Přehled** nového serveru.
+
+Navíc po dokončení operace obnovení jsou k dispozici dva parametry serveru, u kterých se obnoví výchozí hodnoty (a po dokončení operace obnovení se nekopírují z primárního serveru).
+*   time_zone – tato hodnota se nastaví na **systém** výchozí hodnoty.
+*   event_scheduler – event_scheduler na obnoveném serveru je nastaven na **vypnuto**
+
+Budete muset zkopírovat hodnotu z primárního serveru a nastavit ji na obnovený server, a to tak, že znovu nakonfigurujete [parametr serveru](howto-server-parameters.md) .
 
 Nový server vytvořený během obnovy nemá koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba pro tento nový server nastavit samostatně. Obnoví se pravidla brány firewall z původního serveru.
 
@@ -84,7 +90,7 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
  
 2. Zadejte předplatné, skupinu prostředků a název nového serveru. 
 
-3. Jako **zdroj dat**vyberte **Backup** . Tato akce načte rozevírací seznam, který obsahuje seznam serverů s povolenými geografickými redundantními zálohami.
+3. Jako **zdroj dat** vyberte **Backup** . Tato akce načte rozevírací seznam, který obsahuje seznam serverů s povolenými geografickými redundantními zálohami.
    
    :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Vyberte zdroj dat.":::
     
@@ -100,13 +106,13 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
    
    :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Vyberte zálohování.":::
 
-6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu**a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
+6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu** a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Pokračujte v zálohování.":::
 
 7. Vyplňte zbytek formuláře vlastními preferencemi. Můžete vybrat libovolné **umístění**.
 
-    Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra**, **dobu uchování zálohy**a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
+    Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra**, **dobu uchování zálohy** a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
 
    :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Vyplnit formulář"::: 
 

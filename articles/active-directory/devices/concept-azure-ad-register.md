@@ -1,6 +1,6 @@
 ---
 title: Co jsou zařízení registrovaná v Azure AD?
-description: Přečtěte si, jak vám Správa identit zařízení může pomáhat při správě zařízení, která přistupují k prostředkům ve vašem prostředí.
+description: Přečtěte si, jak zařízení registrovaná v Azure AD poskytují vašim uživatelům podporu pro scénáře Přineste si vlastní zařízení (BYOD) nebo mobilní zařízení.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554869"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91256434"
 ---
 # <a name="azure-ad-registered-devices"></a>Zařízení zaregistrovaná v Azure AD
 
@@ -61,5 +61,5 @@ Jiný uživatel chce získat přístup k e-mailu organizace na svém osobním te
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa identit zařízení pomocí Azure Portal](device-management-azure-portal.md)
-- [Správa zastaralých zařízení ve službě Azure AD](manage-stale-devices.md)
+- [Správa identit zařízení přes Azure Portal](device-management-azure-portal.md)
+- [Správa zastaralých zařízení v Azure AD](manage-stale-devices.md)

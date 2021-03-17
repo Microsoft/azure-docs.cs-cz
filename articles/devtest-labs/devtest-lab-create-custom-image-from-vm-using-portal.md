@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit vlastní image v Azure DevTest Labs ze z�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87277023"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Vytvoření vlastní image z virtuálního počítače
@@ -18,7 +18,7 @@ ms.locfileid: "87277023"
 
 Můžete vytvořit vlastní image ze zřízeného virtuálního počítače a následně ji pomocí této vlastní image vytvořit identické virtuální počítače. Následující kroky ukazují, jak vytvořit vlastní image z virtuálního počítače:
 
-1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 
@@ -33,13 +33,13 @@ Můžete vytvořit vlastní image ze zřízeného virtuálního počítače a n�
     :::image type="content" source="./media/devtest-lab-create-template/create-custom-image.png" alt-text="Vytvořit vlastní položku nabídky image":::
 1. V podokně **vlastní obrázek** zadejte název a popis vlastní image. Tyto informace se zobrazí v seznamu základů při vytváření virtuálního počítače. Vlastní image bude zahrnovat disk s operačním systémem a všechny datové disky připojené k virtuálnímu počítači.
 
-    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Vytvořit vlastní stránku obrázku":::
+    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Vytvořit vlastní položku nabídky image":::
 1. Vyberte, zda byl na virtuálním počítači spuštěn nástroj Sysprep. Pokud se na virtuálním počítači nespustí nástroj Sysprep, určete, jestli se má při vytvoření vlastní image spustit nástroj Sysprep na virtuálním počítači.
 1. Po dokončení vyberte **OK** , aby se vytvořila vlastní image.
 
     Po několika minutách se vlastní image vytvoří a uloží se do účtu úložiště testovacího prostředí. Když chce uživatel testovacího prostředí vytvořit nový virtuální počítač, bude obrázek k dispozici v seznamu základních imagí.
 
-    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="vlastní image je dostupná v seznamu základních imagí.":::
+    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="Vytvořit vlastní položku nabídky image":::
 
 ## <a name="related-blog-posts"></a>Související blogové příspěvky
 

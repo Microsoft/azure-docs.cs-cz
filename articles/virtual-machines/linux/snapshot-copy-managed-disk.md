@@ -1,5 +1,5 @@
 ---
-title: Vytvoření snímku VHD v Azure
+title: Vytvoření snímku VHD pomocí Azure CLI
 description: Naučte se vytvořit kopii VHD v Azure jako zálohu nebo pro řešení problémů.
 author: roygara
 manager: twooley
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d041f864c6c8cd3ae9c522d79447d71c86f9ac04
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659965"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875600"
 ---
-# <a name="create-a-snapshot"></a>Vytvoření snímku 
+# <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Vytvoření snímku pomocí portálu nebo rozhraní příkazového řádku Azure
 
 Pořídit snímek operačního systému nebo datového disku pro zálohování nebo řešení potíží s virtuálním počítačem. Snímek je plná kopie VHD, která je jen pro čtení. 
 
@@ -58,17 +58,16 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Začněte v levém horním rohu, klikněte na **vytvořit prostředek** a vyhledejte **snímek**. Z výsledků hledání vyberte **snímek** .
 3. V okně **snímek** klikněte na **vytvořit**.
 4. Zadejte **název** snímku.
 5. Vyberte existující skupinu prostředků nebo zadejte název nového. 
-7. Pro **zdrojový disk**vyberte spravovaný disk, který se má snímek.
+7. Pro **zdrojový disk** vyberte spravovaný disk, který se má snímek.
 8. Vyberte **typ účtu** , který chcete použít k uložení snímku. Použijte **HDD úrovně Standard** , pokud ho nepotřebujete, aby byl uložený na disku SSD s vysokou úrovní.
 9. Klikněte na **Vytvořit**.
 
 
 ## <a name="next-steps"></a>Další kroky
 
- Vytvořte virtuální počítač ze snímku vytvořením spravovaného disku ze snímku a připojením nového spravovaného disku jako disku s operačním systémem. Další informace najdete v tématu [Vytvoření virtuálního počítače ze skriptu snímku](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) .
-
+ Vytvořte virtuální počítač ze snímku vytvořením spravovaného disku ze snímku a připojením nového spravovaného disku jako disku s operačním systémem. Další informace najdete v tématu [Vytvoření virtuálního počítače ze skriptu snímku](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot?toc=%2fcli%2fmodule%2ftoc.json) .

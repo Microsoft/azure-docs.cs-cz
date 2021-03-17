@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
 ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132002"
 ---
 # <a name="fail-over--vmware-vms"></a>Převzetí služeb při selhání pro virtuální počítače VMware
@@ -65,7 +65,7 @@ Ověřte vlastnosti následujícím způsobem:
 ## <a name="run-a-failover-to-azure"></a>Spuštění převzetí služeb při selhání do Azure
 
 1. V **Nastavení**  >  **replikované položky**vyberte virtuální počítač, u kterého chcete převzít služby při selhání, a pak vyberte **převzetí služeb při selhání**.
-2. V části **převzetí služeb při selhání**vyberte **bod obnovení** pro převzetí služeb při selhání. Můžete použít jednu z následujících možností:
+2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
    * **Nejnovější:** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože virtuální počítač Azure, který se vytvořil po převzetí služeb při selhání, má všechna data, která se replikují do Site Recovery při aktivaci převzetí služeb při selhání.
    * **Poslední zpracování**: Tato možnost nefunguje pro virtuální počítač do nejnovějšího bodu obnovení zpracovaného Site Recovery. Tato možnost poskytuje nízkou RTO (cíl doby obnovení), protože nestráví zpracováním nezpracovaných dat žádného času.
    * **Nejnovější konzistentní vzhledem k aplikacím**: pomocí této možnosti se virtuální počítač nezdařil do posledního bodu obnovení konzistentního vzhledem k aplikacím zpracovaného pomocí Site Recovery.

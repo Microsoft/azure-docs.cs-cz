@@ -1,0 +1,56 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Managed instance pro Apache Cassandra
+summary: Spravovaná instance Azure pro Apache Cassandra poskytuje automatizované operace nasazení a škálování pro spravovaná Open Source datacentra Apache Cassandra. Zrychluje hybridní scénáře a zkracuje průběžnou údržbu.
+metadata:
+  title: Spravovaná instance Azure pro Apache Cassandra
+  description: Spravovaná instance Azure pro Apache Cassandra poskytuje automatizované operace nasazení a škálování pro spravovaná Open Source datacentra Apache Cassandra. Zrychluje hybridní scénáře a zkracuje průběžnou údržbu.
+  services: service
+  ms.service: managed-instance-apache-cassandra
+  ms.topic: landing-page
+  ms.collection: collection
+  author: TheovanKraay
+  ms.author: thvankra
+  ms.date: 01/18/2021
+  ms.openlocfilehash: 2ffbd257c9db27a9c895d566bca6107b8f2fe546
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102608372"
+landingContent:
+- title: O spravované instanci Azure pro Apache Cassandra
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Managed instance pro Apache Cassandra?
+      url: introduction.md
+  - linkListType: get-started
+    links:
+    - text: Spravovaná instance Azure pro Apache Cassandra vs Azure Cosmos DB rozhraní API Cassandra
+      url: compare-cosmosdb-managed-instance.md
+- title: Vytvoření a nasazení clusteru
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření clusteru – portál
+      url: create-cluster-portal.md
+    - text: Vytvoření clusteru – rozhraní příkazového řádku
+      url: create-cluster-cli.md
+    - text: Nasazení clusteru Spark pomocí Azure Databricks
+      url: deploy-cluster-databricks.md
+  - linkListType: concept
+    links:
+    - text: Nejčastější dotazy
+      url: faq.md
+- title: Konfigurace a Správa prostředků clusteru
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Konfigurace hybridního clusteru
+      url: configure-hybrid-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: Správa prostředků pomocí Azure CLI
+      url: manage-resources-cli.md
+    - text: Vizualizace metrik v Prometheus pomocí Grafana
+      url: visualize-prometheus-grafana.md

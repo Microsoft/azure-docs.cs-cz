@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Začněte s zákaznickou smlouvou Microsoftu
+summary: Začněte se správou fakturace a předplatných pod zákaznickou smlouvou Microsoftu. Naučte se pochopit a optimalizovat náklady a přitom zajistit zabezpečený přístup k vašemu fakturačnímu prostředí.
+metadata:
+  title: Začněte s zákaznickou smlouvou Microsoftu
+  description: Naučte se, jak začít s zákaznickou smlouvou Microsoftu.
+  ms.service: cost-management-billing
+  ms.subservice: billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.date: 03/01/2021
+  ms.openlocfilehash: f2dcb2687a5a765e674a3dce7ac9016e58056b81
+  ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103574700"
+landingContent:
+- title: Začínáme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je smlouva o zákaznících Microsoftu?
+      url: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Přechod z platební karty na fakturu
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Přístup k předplatným s ID domény
+      url: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Nastavení správce pro správu uživatelů předplatného
+      url: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Vytváření nových předplatných
+      url: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- title: Správa vyúčtování
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vysvětlení fakturačního cyklu
+      url: ../understand/mca-understand-your-invoice.md#billing-period
+  - linkListType: tutorial
+    links:
+    - text: Přijetí faktury v rámci mé smlouvy
+      url: ../understand/review-customer-agreement-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Co je Fakturační profil a jak ho spravovat?
+      url: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Platba fakturovaná podle faktury
+      url: ../manage/pay-by-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Platba fakturovaná na základě kreditních nebo debetních karet nebo přes kontrolu nebo přenos
+      url: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Nastavení správce pro správu fakturace
+      url: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Spustit fakturaci pro moji smlouvu
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Najít vlastníka mého předplatného
+      url: ../manage/add-change-subscription-administrator.md#assign-a-subscription-administrator
+  - linkListType: video
+    links:
+    - text: Uspořádání nákladů
+      url: https://www.youtube.com/watch?v=7RxTfShGHwU
+    - text: Správa přístupu k fakturačnímu účtu
+      url: https://www.youtube.com/watch?v=9sqglBlKkho
+    - text: Vysvětlení faktury
+      url: https://www.youtube.com/watch?v=e2LGZZ7GubA
+- title: Správa předplatných
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co je služba Active Directory?
+      url: ../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json

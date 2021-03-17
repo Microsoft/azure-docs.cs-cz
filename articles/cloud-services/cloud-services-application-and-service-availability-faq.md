@@ -1,28 +1,24 @@
 ---
 title: Nejčastější dotazy týkající se dostupnosti aplikací a služeb
-titleSuffix: Azure Cloud Services
 description: V tomto článku jsou uvedeny nejčastější dotazy týkající se dostupnosti aplikací a služeb pro Microsoft Azure Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: c294d4583ba2690e1f4952441ffb43bff1459059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c1a5b63a33f951857bd4837380c1465af5b7583e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386914"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742892"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s dostupností aplikací a služeb pro Azure Cloud Services: nejčastější dotazy
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Problémy s dostupností aplikací a služeb pro Azure Cloud Services (Classic): nejčastější dotazy
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 Tento článek obsahuje nejčastější dotazy týkající se problémů s dostupností aplikací a služeb pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informace o velikosti najdete také na [stránce Cloud Services velikosti virtuálního počítače](cloud-services-sizes-specs.md) .
 
@@ -33,7 +29,7 @@ Přibližně jednou za měsíc vydává společnost Microsoft novou verzi hostov
 
 Podrobné informace o nejnovějších aktualizacích operačního systému hosta najdete v tématu [věnovaném vydání hostovaného operačního systému Azure a s maticí kompatibility SDK](cloud-services-guestos-update-matrix.md).
 
-Další informace o restartech a ukazatelích na technické podrobnosti o aktualizacích hostovaného a hostitelského operačního systému najdete v tématu [restart instance role blogu MSDN z důvodu upgradů operačního systému](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
+Další informace o restartech a ukazatelích na technické podrobnosti o aktualizacích hostovaného a hostitelského operačního systému najdete v tématu [restart instance role blogu MSDN z důvodu upgradů operačního systému](/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades).
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Proč je první požadavek na moji cloudovou službu po nějakou dobu nečinný, trvat déle než obvykle?
 Když webový server obdrží první požadavek, nejprve znovu zkompiluje kód a potom zpracuje požadavek. To je důvod, proč první požadavek trvá déle než ostatní. Ve výchozím nastavení se fond aplikací vypne v případech nečinnosti uživatele. Ve výchozím nastavení se fond aplikací recykluje každých 1 740 minut (29 hodin).

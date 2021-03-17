@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: b76e84f6ae2449347604ab823fde5b74d5c68f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740996"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88799413"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Možné opravy pro chybovou zprávu "nemůžete se dostat sem"
 
@@ -68,6 +68,6 @@ Pokud zařízení není připojené k síti vaší organizace, můžete provést
 - **Zaregistrujte svoje osobní zařízení pro práci.** Zaregistrujte své osobní zařízení, obvykle telefon nebo tablet, do sítě vaší organizace. Po zaregistrování zařízení bude mít přístup k prostředkům s omezeným přístupem vaší organizace. Další informace a podrobné pokyny najdete v tématu [registrace osobního zařízení v síti vaší organizace](user-help-register-device-on-network.md).
 
 ## <a name="next-steps"></a>Další kroky
-- [Co je to portál MyApp?](active-directory-saas-access-panel-introduction.md)
+- [Co je to portál MyApp?](./my-apps-portal-end-user-access.md)
 
 - [Přihlášení pomocí telefonu, ne pomocí hesla](user-help-auth-app-sign-in.md)

@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 2a03b791f37868010e107214ddcb7cf42174e4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85833549"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Vytvoření ILB ASE pomocí šablon Azure Resource Manageru
@@ -88,7 +88,7 @@ Parametry v souboru *azuredeploy.parameters.js* jsou uvedeny níže:
 * *pfxBlobString*: řetězcová reprezentace based64 kódovaného souboru. pfx.  Pomocí fragmentu kódu uvedeného výše byste zkopírovali řetězec obsažený v souboru "exportedcert. pfx. B64" a vložili jste ho jako hodnotu atributu *pfxBlobString* .
 * *heslo*: heslo použité k zabezpečení souboru. pfx.
 * *certificateThumbprint*: kryptografický otisk certifikátu.  Pokud tuto hodnotu načtete z PowerShellu (např. *$Certificate. Kryptografický otisk* z dřívějšího fragmentu kódu) můžete použít hodnotu tak, jak je.  Pokud však zkopírujete hodnotu z dialogu certifikát systému Windows, nezapomeňte oddělit nadbytečné mezery.  *CertificateThumbprint* by měl vypadat nějak takto: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* identifikátor *certifikátu*: popisný identifikátor řetězce, který se používá k identifikaci certifikátu.  Název se používá jako součást jedinečného identifikátoru Azure Resource Manager pro entitu *Microsoft. Web/Certificates* , která představuje certifikát TLS/SSL.  Název **musí** končit následující příponou: \_ yourASENameHere_InternalLoadBalancingASE.  Tato přípona se používá na portálu jako ukazatel, který se používá k zabezpečení interního nástroje přihlašování s povolenými právy.
+* identifikátor *certifikátu*: popisný identifikátor řetězce, který se používá k identifikaci certifikátu.  Název se používá jako součást jedinečného identifikátoru Azure Resource Manager pro entitu *Microsoft. Web/Certificates* , která představuje certifikát TLS/SSL.  Název **musí** končit následující příponou:  \_ yourASENameHere_InternalLoadBalancingASE.  Tato přípona se používá na portálu jako ukazatel, který se používá k zabezpečení interního nástroje přihlašování s povolenými právy.
 
 Následující zkrácený příklad *azuredeploy.parameters.js* je uveden níže:
 

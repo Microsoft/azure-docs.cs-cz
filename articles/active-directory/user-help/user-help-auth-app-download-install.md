@@ -12,17 +12,17 @@ ms.topic: end-user-help
 ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aac6c0b903a3b2adf481a2c63847272122ce2d7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266215"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88798971"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Stažení a instalace aplikace Microsoft Authenticator
 
 >[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat prostředí služby Azure Active Directory (Azure AD) v [dokumentaci pro správu pro Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+>Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat prostředí služby Azure Active Directory (Azure AD) v [dokumentaci pro správu pro Azure Active Directory](../index.yml).
 >
 > Pokud máte problémy s přihlášením k účtu, přečtěte si téma [nemůžete se přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429) , kde najdete nápovědu.  Navíc můžete získat další informace o tom, co dělat, když se při pokusu o přihlášení ke účet Microsoft zobrazí zpráva ["tato účet Microsoft neexistují"](https://support.microsoft.com/help/13811) .
 

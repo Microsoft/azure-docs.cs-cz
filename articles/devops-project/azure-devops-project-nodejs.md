@@ -1,30 +1,27 @@
 ---
 title: Vytvoření kanálu CI/CD pro aplikaci PWA pomocí GatsbyJS a Azure DevOps Starter
-description: DevOps Starter usnadňuje začátek práce v Azure. Pomůže vám v několika rychlých krocích spustit aplikaci v libovolné službě Azure.
+description: Naučte se vytvářet NodeJS progresivní webovou aplikaci (PWA) s využitím GatsbyJS a zjednodušeným prostředím pro vytváření Azure DevOps Starter.
 ms.prod: devops
 ms.technology: devops-cicd
-services: vsts
 documentationcenter: vs-devops-build
-author: arob98
-manager: angrobe
+author: mijacobs
+ms.author: mijacobs
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
-ms.author: angrobe
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 5453677826e1490977257fd75e10308ee45df00a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: d6d8a10dffa3801fe343b3b479265fac5612b021
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421752"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556569"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD v Azure Pipelines pro Node.js pomocí Azure DevOps Starter
 
 V tomto rychlém startu vytvoříte NodeJS progresivní webovou aplikaci (PWA) pomocí [GatsbyJS](https://www.gatsbyjs.org/) a zjednodušeným prostředím pro vytváření Azure DevOps Starter. Po dokončení budete mít pro aplikaci PWA v Azure Pipelines kanál průběžné integrace (CI) a průběžného doručování (CD). Azure DevOps Starter nastavuje, co potřebujete pro vývoj, nasazování a monitorování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Organizace [Azure DevOps](https://azure.microsoft.com/services/devops/) .
@@ -37,7 +34,7 @@ DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novo
 
    ![Vytvoření prostředku Azure v Azure Portal](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -73,7 +70,7 @@ DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novo
 
     ![Řídicí panel Azure DevOps](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. Z projektu Azure DevOps můžete pozvat členy týmu, aby spolupracovali a navázali kanbanovou desku, abyste mohli začít sledovat vaši práci. Další informace najdete [tady](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops).
+1. Z projektu Azure DevOps můžete pozvat členy týmu, aby spolupracovali a navázali kanbanovou desku, abyste mohli začít sledovat vaši práci. Další informace najdete [tady](/azure/devops/user-guide/what-is-azure-devops).
 
 ![Přehled služby Azure DevOps](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -163,9 +160,9 @@ DevOps Starter vytvoří úložiště Git v Azure Repos nebo GitHubu. Tento př�
 
 1. Na levé straně prohlížeče otevřete soubor **views/index. pug** .
 
-1. Vyberte **Upravit**a pak proveďte změnu nadpisu H2.  Například zadejte Začínáme hned **s Azure DevOps Starter** nebo Udělejte nějakou jinou změnu.
+1. Vyberte **Upravit** a pak proveďte změnu nadpisu H2.  Například zadejte Začínáme hned **s Azure DevOps Starter** nebo Udělejte nějakou jinou změnu.
 
-1. Vyberte **Potvrdit**a potom změny uložte.
+1. Vyberte **Potvrdit** a potom změny uložte.
 
 1. V prohlížeči přejdete na řídicí panel DevOps Starter.   
 Nyní by se mělo zobrazit sestavení probíhá. Změny, které jste provedli, jsou automaticky vytvořeny a nasazeny prostřednictvím kanálu CI/CD.
@@ -195,5 +192,4 @@ Můžete odstranit Azure App Service a další související prostředky, které
 Při konfiguraci procesu CI/CD se automaticky vytvoří kanály sestavení a vydání. Tyto kanály sestavení a vydání můžete změnit tak, aby vyhovovaly potřebám vašeho týmu. Další informace o kanálu CI/CD najdete tady:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení procesu CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
-
+> [Přizpůsobení procesu CD](/azure/devops/pipelines/release/define-multistage-release-process)

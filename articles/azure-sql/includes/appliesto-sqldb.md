@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: f952bfb7cdda4629a4dc50723efb5e6e2bf22eb2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c3dbc32475eb6ee53ae716369f81290fc6fbcf93
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504321"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011845"
 ---
-<Token>**platí pro:** ![ Ano ](../media/applies-to/yes.png) Azure SQL Database</Token> 
+<Token>**platí pro:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure SQL Database</Token> 

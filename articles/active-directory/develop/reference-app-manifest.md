@@ -9,31 +9,31 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 47215070893c6fefd42554fdf4514e4aa8b45047
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115063"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103341"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
 Manifest aplikace obsahuje definici všech atributů objektu aplikace na platformě Microsoft identity. Slouží také jako mechanismus pro aktualizaci objektu aplikace. Další informace o entitě aplikace a jejím schématu naleznete v dokumentaci k [entitě aplikace Graph API](/graph/api/resources/application).
 
-Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově pomocí [REST API](/graph/api/resources/application) nebo [PowerShellu](/powershell/module/azuread/?view=azureadps-2.0#applications). Existují však situace, kdy budete muset upravit manifest aplikace a nakonfigurovat atribut aplikace. Mezi tyto scénáře patří:
+Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově pomocí [REST API](/graph/api/resources/application) nebo [PowerShellu](/powershell/module/azuread#applications). Existují však situace, kdy budete muset upravit manifest aplikace a nakonfigurovat atribut aplikace. Mezi tyto scénáře patří:
 
 * Pokud jste aplikaci zaregistrovali jako víceklientské a osobní účty Microsoft Azure AD, nemůžete v uživatelském rozhraní měnit podporované účty Microsoft. Místo toho je nutné použít editor manifestu aplikace ke změně podporovaného typu účtu.
-* Pokud potřebujete definovat oprávnění a role, které vaše aplikace podporuje, je nutné změnit manifest aplikace.
+* Chcete-li definovat oprávnění a role, které vaše aplikace podporuje, je nutné upravit manifest aplikace.
 
 ## <a name="configure-the-app-manifest"></a>Konfigurace manifestu aplikace
 
 Konfigurace manifestu aplikace:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
+1. Přejděte na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>. Vyhledejte a vyberte službu **Azure Active Directory** .
 1. Vyberte **Registrace aplikací**.
 1. Vyberte aplikaci, kterou chcete nakonfigurovat.
 1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se webový editor manifestu, který umožňuje upravovat manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** a upravit manifest místně a potom použít **nahrávání** pro jeho opakované použití do aplikace.
@@ -82,7 +82,7 @@ Příklad:
 | :--- | :--- |
 | addIns | Kolekce |
 
-Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy souborů, mohou nastavit `addIns` vlastnost pro její funkci "handlerer". Tento parametr umožní službám, jako je Office 365, volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje.
+Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy souborů, mohou nastavit `addIns` vlastnost pro její funkci "handlerer". Tento parametr umožní službám, jako Microsoft 365 volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje.
 
 Příklad:
 
@@ -114,17 +114,6 @@ Příklad:
 ```json
     "allowPublicClient": false,
 ```
-
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| availableToOtherTenants | Logická hodnota |
-
-Nastavte na hodnotu true, pokud je aplikace sdílená s ostatními klienty. v opačném případě false.
-
-> [!NOTE]
-> Tento atribut je k dispozici pouze v prostředí **Registrace aplikací (zastaralé)** . Nahradili `signInAudience` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 
 ### <a name="appid-attribute"></a>atribut appId
 
@@ -165,17 +154,6 @@ Příklad:
     ],
 ```
 
-### <a name="displayname-attribute"></a>DisplayName – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| displayName | Řetězec |
-
-Zobrazovaný název aplikace
-
-> [!NOTE]
-> Tento atribut je k dispozici pouze v prostředí **Registrace aplikací (zastaralé)** . Nahradili `name` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
 ### <a name="errorurl-attribute"></a>errorUrl – atribut
 
 | Klíč | Typ hodnoty |
@@ -193,40 +171,15 @@ Neplatné.
 Nakonfiguruje `groups` deklaraci identity vydanou v uživatelském nebo přístupovém tokenu OAuth 2,0, který očekává aplikace. Chcete-li nastavit tento atribut, použijte jednu z následujících platných řetězcových hodnot:
 
 - `"None"`
-- `"SecurityGroup"`(pro skupiny zabezpečení a role Azure AD)
-- `"All"`(zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem.
+- `"SecurityGroup"` (pro skupiny zabezpečení a role Azure AD)
+- `"ApplicationGroup"` (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci.)
+- `"DirectoryRole"` (získá role adresáře Azure AD, kterých je uživatel členem.)
+- `"All"` (zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem).
 
 Příklad:
 
 ```json
     "groupMembershipClaims": "SecurityGroup",
-```
-
-### <a name="homepage-attribute"></a>atribut domovské stránky
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| domovské stránky |Řetězec |
-
-Adresa URL domovské stránky aplikace
-
-> [!NOTE]
-> Tento atribut je k dispozici pouze v prostředí **Registrace aplikací (zastaralé)** . Nahradili `signInUrl` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
-### <a name="objectid-attribute"></a>objectId – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-|Objektu | Řetězec |
-
-Jedinečný identifikátor aplikace v adresáři
-
-Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `id` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
-Příklad:
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
 ### <a name="optionalclaims-attribute"></a>optionalClaims – atribut
@@ -244,7 +197,6 @@ Příklad:
 ```json
     "optionalClaims": null,
 ```
-
 
 
 ### <a name="identifieruris-attribute"></a>identifierUris – atribut
@@ -433,8 +385,8 @@ Příklad:
 | :--- | :--- |
 | parentalControlSettings | Řetězec |
 
-- `countriesBlockedForMinors`Určuje země nebo oblasti, ve kterých je aplikace blokovaná pro nezletilé.
-- `legalAgeGroupRule`Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow` , `RequireConsentForPrivacyServices` ,, `RequireConsentForMinors` `RequireConsentForKids` nebo `BlockMinors` .
+- `countriesBlockedForMinors` Určuje země nebo oblasti, ve kterých je aplikace blokovaná pro nezletilé.
+- `legalAgeGroupRule` Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow` , `RequireConsentForPrivacyServices` ,, `RequireConsentForMinors` `RequireConsentForKids` nebo `BlockMinors` .
 
 Příklad:
 
@@ -488,16 +440,6 @@ Příklad:
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| publicClient | Logická hodnota|
-
-Určuje, jestli je tato aplikace veřejným klientem (například nainstalovaná aplikace spuštěná v mobilním zařízení).
-
-Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `allowPublicClient` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain – atribut
 
 | Klíč | Typ hodnoty |
@@ -509,18 +451,8 @@ Ověřená doména vydavatele pro aplikaci. Jen pro čtení.
 Příklad:
 
 ```json
-    "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls – atribut
-
-| Klíč | Typ hodnoty |
-| :--- | :--- |
-| replyUrls | Pole řetězců |
-
-Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri hodnot, které služba Azure AD přijme jako cílová umístění při vracení tokenů.
-
-Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `replyUrlsWithType` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
+    "publisherDomain": "{tenant}.onmicrosoft.com",
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType – atribut
 
@@ -555,8 +487,8 @@ Příklad:
 
 S dynamickým souhlasem se `requiredResourceAccess` pro uživatele, kteří používají statický souhlas, řídí prostředí pro vyjádření souhlasu správce a uživatelské prostředí pro vyjádření souhlasu uživatele. Tento parametr ale neřídí uživatelské prostředí pro vyjádření souhlasu uživatele pro obecný případ.
 
-- `resourceAppId`je jedinečný identifikátor pro prostředek, ke kterému aplikace vyžaduje přístup. Tato hodnota by měla být stejná jako appId deklarované v cílové aplikaci prostředků.
-- `resourceAccess`je pole, ve kterém jsou uvedené obory oprávnění OAuth 2.0 a aplikační role, které aplikace vyžaduje ze zadaného prostředku. Obsahuje `id` hodnoty a pro `type` zadané prostředky.
+- `resourceAppId` je jedinečný identifikátor pro prostředek, ke kterému aplikace vyžaduje přístup. Tato hodnota by měla být stejná jako appId deklarované v cílové aplikaci prostředků.
+- `resourceAccess` je pole, ve kterém jsou uvedené obory oprávnění OAuth 2.0 a aplikační role, které aplikace vyžaduje ze zadaného prostředku. Obsahuje `id` hodnoty a pro `type` zadané prostředky.
 
 Příklad:
 
@@ -609,10 +541,10 @@ Příklad:
 | signInAudience | Řetězec |
 
 Určuje, jaké účty Microsoft se pro aktuální aplikaci podporují. Podporované hodnoty jsou:
-- `AzureADMyOrg`– Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například jeden tenant)
-- `AzureADMultipleOrgs`– Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například víceklientská tenant)
-- `AzureADandPersonalMicrosoftAccount`– Uživatelé s osobní účet Microsoft nebo pracovní nebo školní účet v tenantovi Azure AD ve vaší organizaci
-- `PersonalMicrosoftAccount`– Osobní účty používané pro přihlášení ke službám, jako jsou Xbox a Skype.
+- `AzureADMyOrg` – Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například jeden tenant)
+- `AzureADMultipleOrgs` – Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například víceklientská tenant)
+- `AzureADandPersonalMicrosoftAccount` – Uživatelé s osobní účet Microsoft nebo pracovní nebo školní účet v tenantovi Azure AD ve vaší organizaci
+- `PersonalMicrosoftAccount` – Osobní účty používané pro přihlášení ke službám, jako jsou Xbox a Skype.
 
 Příklad:
 
@@ -686,14 +618,10 @@ Následující komentáře vám poskytnou zpětnou vazbu, která pomáhá Upřes
 [AAD-DEVELOPER-GLOSSARY]:developer-glossary.md
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
-[APPLICATION-ENTITY]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity
-[APPLICATION-ENTITY-APP-ROLE]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#approle-type
-[APPLICATION-ENTITY-OAUTH2-PERMISSION]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permission-type
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
 [IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
 [INTEGRATING-APPLICATIONS-AAD]: ./quickstart-register-app.md
 [O365-PERM-DETAILS]: /graph/permissions-reference
-[O365-SERVICE-DAEMON-APPS]: /previous-versions/office/office-365-api/
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/

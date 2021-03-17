@@ -1,19 +1,24 @@
 ---
 title: Kurz – nasazení aplikace do sítě Azure Service Fabric
 description: V tomto kurzu se dozvíte, jak nasadit aplikaci do služby Service Fabric Mesh pomocí šablony.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 589e881eb48daf7da9cd2a934b14acfcc76dc5f9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248386"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625412"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Tento kurz je první částí série. Dozvíte se, jak nasadit aplikaci Azure Service Fabric Mesh pomocí šablony.  Aplikace se skládá z webové front-end služby ASP.NET a back-endové služby s webovým rozhraním API ASP.NET Core, které najdete v Docker Hubu.  Tyto dvě image kontejneru si stáhnete z Docker Hubu a pak je nasdílíte do vlastního privátního registru. Pak pro aplikaci vytvoříte šablonu Azure Resource Manageru a nasadíte aplikaci ze svého registru kontejneru do služby Service Fabric Mesh. Jakmile budete hotovi, budete mít jednoduchou aplikaci seznamu úkolů spuštěnou ve službě Service Fabric Mesh.
 
@@ -103,6 +108,11 @@ Po vytvoření registru se zobrazí výstup podobný tomuto:
 V tomto kurzu se jako příklad používá ukázková aplikace seznamu úkolů.  Image kontejneru pro služby [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) najdete na Docker Hubu. Informace o tom, jak sestavit aplikaci v aplikaci Visual Studio, najdete v tématu [Vytvoření webové aplikace s Service Fabricovou mřížkou](service-fabric-mesh-tutorial-create-dotnetcore.md) . Service Fabrice Mesh podporuje spouštění kontejnerů Dockeru pro Windows nebo Linux.  Pokud pracujete s kontejnery Linuxu, vyberte v Dockeru **Switch to Linux containers** (Přepnout na kontejnery Linuxu).  Pokud pracujete s kontejnery Windows, vyberte v Dockeru **Switch to Windows containers** (Přepnout na kontejnery Windows).
 
 Pokud chcete nasdílet image do instance služby ACR, musíte nejprve mít image kontejneru. Pokud ještě nemáte žádné místní image kontejneru, pomocí příkazu [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) si z Docker Hubu stáhněte image [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/).
+
+>[!NOTE]
+> Od 2. listopadu 2020 se [limity četnosti stahování vztahují](https://docs.docker.com/docker-hub/download-rate-limit/) na anonymní a ověřené požadavky na Docker Hub z účtů bezplatného plánu Docker a vynutila IP adresa. 
+> 
+> Tyto příkazy využívají veřejné image z Docker Hub. Počítejte s tím, že je možné omezit rychlost. Další podrobnosti najdete v tématu [ověřování pomocí Docker Hub](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub).
 
 Stažení imagí pro Windows:
 

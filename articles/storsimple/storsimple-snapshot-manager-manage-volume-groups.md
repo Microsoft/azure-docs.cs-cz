@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager skupiny svazků | Microsoft Docs
 description: V této části najdete popis postupu při vytváření a správě skupin svazků pomocí modulu snap-in StorSimple Snapshot Manager MMC.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 97bb232f726dada5241242e4a1d90e120c07e38c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: df2d74701e21c3773d96564f1b06d80ddb9fce9d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506255"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209215"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Použití Snapshot Manager StorSimple k vytváření a správě skupin svazků
 ## <a name="overview"></a>Přehled
@@ -46,11 +46,11 @@ V tomto kurzu se dozvíte, jak můžete použít StorSimple Snapshot Manager k t
 Všechny tyto akce jsou také k dispozici v podokně **Akce** .
 
 ## <a name="view-volume-groups"></a>Zobrazit skupiny svazků
-Pokud kliknete na uzel **skupiny svazků** , v podokně **výsledků** se zobrazí následující informace o každé skupině svazků v závislosti na výběrech sloupců, které provedete. (Sloupce v podokně **výsledků** se dají konfigurovat. Klikněte pravým tlačítkem myši na uzel **svazky** , vyberte možnost **zobrazení**a pak vyberte možnost **Přidat nebo odebrat sloupce**.)
+Pokud kliknete na uzel **skupiny svazků** , v podokně **výsledků** se zobrazí následující informace o každé skupině svazků v závislosti na výběrech sloupců, které provedete. (Sloupce v podokně **výsledků** se dají konfigurovat. Klikněte pravým tlačítkem myši na uzel **svazky** , vyberte možnost **zobrazení** a pak vyberte možnost **Přidat nebo odebrat sloupce**.)
 
-| Sloupec výsledků | Description |
+| Sloupec výsledků | Popis |
 |:--- |:--- |
-| Name |Sloupec **název** obsahuje název skupiny svazků. |
+| Název |Sloupec **název** obsahuje název skupiny svazků. |
 | Aplikace |Sloupec **aplikace** zobrazuje počet zapisovačů VSS aktuálně nainstalovaných a spuštěných na hostiteli Windows. |
 | Vybráno |**Vybraný** sloupec zobrazuje počet svazků, které jsou obsaženy ve skupině svazků. Nula (0) znamená, že ke svazkům ve skupině svazků není přidružena žádná aplikace. |
 | Dovážel |**Importovaný** sloupec zobrazuje počet importovaných svazků. Když se nastaví na **true**, v tomto sloupci se zobrazí zpráva o tom, že skupina svazků byla naimportována z Azure Portal a nebyla vytvořena v Snapshot Manager StorSimple. |
@@ -65,7 +65,7 @@ Chcete-li vytvořit skupinu svazků, použijte následující postup.
 
 #### <a name="to-create-a-volume-group"></a>Vytvoření skupiny svazků
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
-2. V podokně **obor** klikněte pravým tlačítkem na **skupiny svazků**a pak klikněte na **vytvořit skupinu svazků**.
+2. V podokně **obor** klikněte pravým tlačítkem na **skupiny svazků** a pak klikněte na **vytvořit skupinu svazků**.
    
     ![Vytvořit skupinu svazků](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
    
@@ -95,7 +95,7 @@ K zálohování skupiny svazků použijte následující postup.
 2. V podokně **obor** rozbalte uzel **skupiny svazků** , klikněte pravým tlačítkem na název skupiny svazků a pak klikněte na **vytvořit zálohu**.
    
     ![Zálohování skupiny svazků hned](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
-3. V dialogovém okně **provést zálohování** vyberte **místní snímek** nebo **cloudový snímek**a potom klikněte na **vytvořit**.
+3. V dialogovém okně **provést zálohování** vyberte **místní snímek** nebo **cloudový snímek** a potom klikněte na **vytvořit**.
    
     ![Dialogové okno pro zálohování](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
 4. Chcete-li ověřit, zda je zálohování spuštěno, rozbalte uzel **úlohy** a potom klikněte na možnost **spuštěno**. Záloha by měla být uvedena v seznamu.
@@ -107,7 +107,7 @@ Pro úpravu skupiny svazků použijte následující postup.
 #### <a name="to-edit-a-volume-group"></a>Úprava skupiny svazků
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
 2. V podokně **obor** rozbalte uzel **skupiny svazků** , klikněte pravým tlačítkem na název skupiny svazků a pak klikněte na **Upravit**.
-3. Zobrazí se dialogové okno * * vytvořit skupinu svazků * *. Můžete změnit položky **název**, **aplikace**a **svazky** .
+3. Zobrazí se dialogové okno **vytvořit skupinu svazků** . Můžete změnit položky **název**, **aplikace** a **svazky** .
 4. Klikněte na tlačítko **OK** a uložte změny.
 
 ## <a name="delete-a-volume-group"></a>Odstranění skupiny svazků

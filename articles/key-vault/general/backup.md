@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c55c87cd8ab1b2cd1dbaf2c877eb341744d822ef
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585929"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287472"
 ---
 # <a name="azure-key-vault-backup"></a>Zálohování Azure Key Vault
 
@@ -25,11 +25,14 @@ V tomto dokumentu se dozvíte, jak zálohovat tajné klíče, klíče a certifik
 
 Azure Key Vault automaticky poskytuje funkce, které vám pomůžou zachovat dostupnost a zabránit ztrátě dat. Zálohujte tajné klíče jenom v případě, že máte důležité obchodní odůvodnění. Zálohování tajných klíčů v trezoru klíčů může vést k provozním výzvám, jako je udržování několika sad protokolů, oprávnění a záloh po vypršení platnosti tajných klíčů.
 
-Key Vault udržuje dostupnost ve scénářích havárií a automaticky převezme požadavky na spárované oblasti bez zásahu uživatele. Další informace najdete v tématu [Azure Key Vault dostupnost a redundance](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
+Key Vault udržuje dostupnost ve scénářích havárií a automaticky převezme požadavky na spárované oblasti bez zásahu uživatele. Další informace najdete v tématu [Azure Key Vault dostupnost a redundance](./disaster-recovery-guidance.md).
 
-Pokud chcete chránit před náhodným nebo škodlivým odstraněním tajných kódů, nakonfigurujte funkce ochrany obnovitelného odstranění a vyprázdnění v trezoru klíčů. Další informace najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
+Pokud chcete chránit před náhodným nebo škodlivým odstraněním tajných kódů, nakonfigurujte funkce ochrany obnovitelného odstranění a vyprázdnění v trezoru klíčů. Další informace najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](./soft-delete-overview.md).
 
 ## <a name="limitations"></a>Omezení
+
+> [!IMPORTANT]
+> Key Vault nepodporuje zálohování více než 500 starších verzí objektu Key, SECRET nebo Certificate. Pokus o zálohování objektu klíče, tajného kódu nebo certifikátu může mít za následek chybu. Není možné odstranit předchozí verze klíče, tajného kódu ani certifikátu.
 
 Key Vault aktuálně neposkytuje způsob, jak zálohovat celý Trezor klíčů v rámci jedné operace. Jakékoli pokusy o použití příkazů uvedených v tomto dokumentu k provedení automatizovaného zálohování trezoru klíčů může způsobit chyby a společnost Microsoft ani tým Azure Key Vault nepodporují. 
 
@@ -39,11 +42,11 @@ Vezměte v úvahu také následující důsledky:
 * Při zálohování se vytvoří snímek v daném časovém okamžiku. Tajné kódy se můžou během zálohování prodloužit, což způsobilo neshodu šifrovacích klíčů.
 * Pokud překročíte omezení služby trezoru klíčů pro žádosti za sekundu, váš Trezor klíčů bude omezený a zálohování se nezdaří.
 
-## <a name="design-considerations"></a>Aspekty návrhu
+## <a name="design-considerations"></a>Na co dát pozor při navrhování
 
 Při zálohování objektu trezoru klíčů, jako je tajný klíč, klíč nebo certifikát, bude operace zálohování stahovat objekt jako zašifrovaný objekt BLOB. Tento objekt BLOB není možné dešifrovat mimo Azure. Pokud chcete získat použitelná data z tohoto objektu blob, musíte obnovit objekt blob do trezoru klíčů v rámci stejného předplatného Azure a [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zálohovat objekt trezoru klíčů, musíte mít: 
 
@@ -120,4 +123,4 @@ az keyvault secret restore --file {File Path} --vault-name {Key Vault Name} --su
 
 ## <a name="next-steps"></a>Další kroky
 
-Zapněte [protokolování a monitorování](https://docs.microsoft.com/azure/key-vault/general/logging) pro Key Vault.
+Zapněte [protokolování a monitorování](./logging.md) pro Key Vault.

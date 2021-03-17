@@ -10,22 +10,25 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ea418576ab8fe06964a61e48f16393e1a0566ce8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206576"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182243"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
 
-Tento článek vysvětluje, jak pracovat s triggerem zahřívání v Azure Functions. Aktivační událost zahřívání je podporovaná jenom pro aplikace Function App běžící v [plánu Premium](functions-premium-plan.md). Trigger zahřívání je vyvolán, když je přidána instance pro škálování běžící aplikace Function App. Pomocí triggeru zahřívání můžete předem načíst vlastní závislosti během [procesu před zahříváním](./functions-premium-plan.md#pre-warmed-instances) , aby byly vaše funkce připravené na okamžité zpracování požadavků. 
+Tento článek vysvětluje, jak pracovat s triggerem zahřívání v Azure Functions. Trigger zahřívání je vyvolán, když je přidána instance pro škálování běžící aplikace Function App. Pomocí triggeru zahřívání můžete předem načíst vlastní závislosti během [procesu před zahříváním](./functions-premium-plan.md#pre-warmed-instances) , aby byly vaše funkce připravené na okamžité zpracování požadavků. 
+
+> [!NOTE]
+> Aktivační událost zahřívání se nepodporuje pro aplikace Function App spuštěné v plánu spotřeby.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-2x-and-higher"></a>Balíčky – funkce 2. x a vyšší
 
-Vyžaduje se balíček NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) , verze **3.0.5 nebo vyšší** . Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) . 
+Vyžaduje se balíček NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) , verze **3.0.5 nebo vyšší** . Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/main/src/WebJobs.Extensions/Extensions/Warmup) . 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
@@ -77,7 +80,7 @@ namespace WarmupSample
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
 
-Následující příklad ukazuje Trigger zahřívání v souboru * vfunction.js* a [funkce skriptu jazyka C#](functions-reference-csharp.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
+Následující příklad ukazuje Trigger zahřívání v souboru *vfunction.js* a [funkce skriptu jazyka C#](functions-reference-csharp.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
 
 Vaše funkce musí být pojmenována ```warmup``` (nerozlišuje velká a malá písmena) a pro každou aplikaci může existovat pouze jedna zahřívání funkce.
 
@@ -97,10 +100,8 @@ Tady je *function.js* souboru:
 
 Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#trigger---configuration) .
 
-Tady je kód skriptu C#, ke kterému se váže `HttpRequest` :
-
 ```cs
-public static void Run(ILogger log)
+public static void Run(WarmupContext warmupContext, ILogger log)
 {
     log.LogInformation("Function App instance is warm 🌞🌞🌞");  
 }

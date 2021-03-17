@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210217"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563411"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Průběžné doručování pomocí Azure DevOps
 
@@ -30,7 +30,7 @@ Pokud chcete vytvořit kanál založený na YAML, nejdřív sestavte aplikaci a 
 
 Způsob sestavování aplikace v Azure Pipelines závisí na programovacím jazyku vaší aplikace. Každý jazyk má konkrétní kroky sestavení, které vytvářejí artefakt nasazení. Artefakt nasazení se používá k nasazení aplikace Function App v Azure.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[R\#](#tab/csharp)
 
 Pomocí následující ukázky můžete vytvořit soubor YAML k vytvoření aplikace .NET:
 
@@ -256,7 +256,7 @@ K vytvoření kanálu sestavení v Azure použijte `az functionapp devops-pipeli
 
     - Musíte být správce projektu ve službě Azure DevOps.
 
-    - Musíte mít oprávnění k vytvoření osobního přístupového tokenu GitHubu, který má dostatečná oprávnění. Další informace najdete v tématu [požadavky na oprávnění GitHubu Pat.](https://aka.ms/azure-devops-source-repos)
+    - Musíte mít oprávnění k vytvoření osobního přístupového tokenu GitHubu, který má dostatečná oprávnění. Další informace najdete v tématu [požadavky na oprávnění GitHubu Pat.](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
 
     - Musíte mít oprávnění k potvrzení do hlavní větve ve vašem úložišti GitHub, abyste mohli potvrdit automaticky vygenerovaný soubor YAML.
 

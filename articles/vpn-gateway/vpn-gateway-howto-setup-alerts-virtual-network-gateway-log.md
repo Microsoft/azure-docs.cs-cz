@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: Konfigurace upozornění na události protokolu diagnostických prostředků'
 description: Naučte se, jak nastavit výstrahy na základě událostí protokolu prostředků z Azure VPN Gateway pomocí Azure Monitor Log Analytics.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/12/2019
+ms.date: 11/18/2020
 ms.author: alzam
-ms.openlocfilehash: f8c688adda3924d0cea3c9b57d2d24ed3b3b1e68
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 70cac6ef566ef52409cd9667708c2fc297e046f7
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033169"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656610"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Nastavení upozornění na události protokolu prostředků z VPN Gateway
 
@@ -20,20 +20,20 @@ Tento článek vám pomůže nastavit výstrahy na základě událostí protokol
 
 V Azure jsou k dispozici následující protokoly prostředků:
 
-|***Název*** | ***Popis*** |
-|---        | ---               |
+|***Název** _ | _*_Popis_*_ |
+|--- | --- |
 |GatewayDiagnosticLog | Obsahuje protokoly prostředků pro události konfigurace brány, primární změny a události údržby. |
 |TunnelDiagnosticLog | Obsahuje události změny stavu tunelu. Události připojení a odpojení tunelu mají souhrnný důvod změny stavu, pokud je to možné. |
 |RouteDiagnosticLog | Zaznamená změny do statických tras a událostí protokolu BGP, ke kterým dojde v bráně. |
 |IKEDiagnosticLog | Protokoluje zprávy řízení IKE a události v bráně. |
-|P2SDiagnosticLog | Zaznamená v bráně zprávy řízení Point-to-site a události. Informace o zdroji připojení se poskytují jenom pro připojení IKEv2. |
+|P2SDiagnosticLog | Zaznamená v bráně zprávy řízení Point-to-site a události. K dispozici jsou informace o zdroji připojení jenom pro připojení IKEv2 a OpenVPN. |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Nastavení výstrah v Azure Portal
 
 Následující příklad kroků vytvoří výstrahu pro událost odpojení, která zahrnuje tunel VPN typu Site-to-site:
 
 
-1. V Azure Portal vyhledejte **Log Analytics** v části **všechny služby** a vyberte **Log Analytics pracovní prostory**.
+1. V Azure Portal vyhledejte _ *Log Analytics** v části **všechny služby** a vyberte **Log Analytics pracovní prostory**.
 
    ![Výběry pro přechodu na Log Analytics pracovní prostory](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Vytvořit")
 
@@ -69,7 +69,7 @@ Následující příklad kroků vytvoří výstrahu pro událost odpojení, kter
 
    ![Výběry pro pracovní prostor a prostředek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Vyberte")
 
-9. Jako logiku signálu v části **Přidat podmínku**vyberte **vlastní prohledávání protokolu** .
+9. Jako logiku signálu v části **Přidat podmínku** vyberte **vlastní prohledávání protokolu** .
 
    ![Výběry pro vlastní prohledávání protokolu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Vyberte")
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045293"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661929"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure HDInsight
 
@@ -26,21 +26,21 @@ V tomto kurzu se naučíte:
 > * Transformujte data pomocí Apache Hive.
 > * Načtěte data pro Azure SQL Database pomocí Sqoop.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Účet úložiště Azure Data Lake Storage Gen2, který je nakonfigurovaný pro HDInsight**
 
-    Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
+    Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 * **Cluster Hadoop se systémem Linux ve službě HDInsight**
 
-    Další informace najdete [v tématu rychlý Start: Začínáme s Apache Hadoop a Apache Hive v Azure HDInsight pomocí Azure Portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
+    Další informace najdete [v tématu rychlý Start: Začínáme s Apache Hadoop a Apache Hive v Azure HDInsight pomocí Azure Portal](../../hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md).
 
-* **Azure SQL Database**: jako cílové úložiště dat používáte Azure SQL Database. Pokud nemáte databázi v SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database v Azure Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**: jako cílové úložiště dat používáte Azure SQL Database. Pokud nemáte databázi v SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database v Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
-* **Azure CLI**: Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Azure CLI**: Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 * **Klient Secure Shell (SSH)**: Další informace naleznete v tématu [připojení ke službě HDInsight (HADOOP) pomocí SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -54,11 +54,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
    | --- | --- |
    | Filter Year (Filtr roku) |2013 |
    | Filter Period (Filtr období) |January (Leden) |
-   | Fields (Pole) |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, původ, OriginCityName, OriginState, DestAirportID, cíl, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Pole |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, původ, OriginCityName, OriginState, DestAirportID, cíl, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
    
    Zrušte zaškrtnutí všech ostatních polí.
 
-3. Vyberte **Download** (Stáhnout). Získáte soubor .zip s vybranými datovými poli.
+3. Vyberte **Stáhnout**. Získáte soubor .zip s vybranými datovými poli.
 
 ## <a name="extract-and-upload-the-data"></a>Extrakce a nahrání dat
 
@@ -76,7 +76,7 @@ V této části nahrajete data do clusteru HDInsight a pak tato data zkopírujet
 
    Pokud k ověření přihlášení SSH používáte heslo, zobrazí se výzva k zadání hesla.
 
-   Pokud používáte veřejný klíč, budete pravděpodobně muset použít parametr `-i` k zadání cesty k odpovídajícímu privátnímu klíči. Například, `scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`.
+   Pokud používáte veřejný klíč, budete pravděpodobně muset použít parametr `-i` k zadání cesty k odpovídajícímu privátnímu klíči. Například `scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`.
 
 2. Po dokončení nahrávání se ke clusteru připojte pomocí SSH. Na příkazovém řádku zadejte následující příkaz:
 
@@ -122,7 +122,7 @@ V této části použijete Beeline ke spuštění úlohy Apache Hive.
 
 V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache Hive s názvem **zpoždění**.
 
-1. Z příkazového řádku SSH, který už máte pro cluster HDInsight, použijte následující příkaz k vytvoření a úpravě nového souboru s názvem **flightdelays. HQL**:
+1. Z příkazového řádku SSH, který už máte pro cluster HDInsight, použijte následující příkaz k vytvoření a úpravě nového souboru s názvem     **flightdelays. HQL**:
 
    ```bash
    nano flightdelays.hql
@@ -226,7 +226,7 @@ V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache
 
 Pro tuto operaci budete potřebovat název serveru z SQL Database. Pokud chcete najít název vašeho serveru, proveďte tyto kroky.
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **databáze SQL**.
 
@@ -300,7 +300,7 @@ Pro tuto operaci budete potřebovat název serveru z SQL Database. Pokud chcete 
 
 ## <a name="export-and-load-the-data"></a>Exportovat a načíst data
 
-V předchozích částech jste do umístění zkopírovali transformovaná data `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . V této části použijete Sqoop k exportu dat z `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v Azure SQL Database.
+V předchozích částech jste do umístění zkopírovali transformovaná data  `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . V této části použijete Sqoop k exportu dat z `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v Azure SQL Database.
 
 1. Pomocí následujícího příkazu ověřte, že má Sqoop vhled do vaší databáze SQL:
 
@@ -344,4 +344,4 @@ Všechny prostředky použité v tomto kurzu jsou již existující. Není nutn�
 Další informace o tom, jak pracovat s daty v HDInsight, najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
-> [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

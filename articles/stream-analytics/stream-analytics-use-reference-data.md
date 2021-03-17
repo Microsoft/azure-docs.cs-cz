@@ -3,20 +3,19 @@ title: Použití referenčních dat pro vyhledávání v Azure Stream Analytics
 description: Tento článek popisuje, jak pomocí referenčních dat vyhledávat nebo korelovat data v návrhu dotazů Azure Stream Analytics úlohy.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 5/11/2020
-ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/18/2020
+ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196427"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560216"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
 
-Referenční data (označovaná také jako vyhledávací tabulka) jsou konečnou datovou sadu, která je statická nebo pomalá, se mění v podstatě, která se používá k vyhledávání nebo rozšíření datových proudů. Například ve scénáři IoT můžete ukládat metadata o senzorech (které se často nemění) v referenčních datech a spojit je s datovými proudy IoT v reálném čase. Azure Stream Analytics načte referenční data v paměti, aby bylo možné zpracovat zpracování datových proudů s nízkou latencí. Pokud chcete používat referenční data v úloze Azure Stream Analytics, obecně se v dotazu použije [referenční datová připojení](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) . 
+Referenční data (označovaná také jako vyhledávací tabulka) jsou konečnou datovou sadu, která je statická nebo pomalá, se mění v podstatě, která se používá k vyhledávání nebo rozšíření datových proudů. Například ve scénáři IoT můžete ukládat metadata o senzorech (které se často nemění) v referenčních datech a spojit je s datovými proudy IoT v reálném čase. Azure Stream Analytics načte referenční data v paměti, aby bylo možné zpracovat zpracování datových proudů s nízkou latencí. Pokud chcete používat referenční data v úloze Azure Stream Analytics, obecně se v dotazu použije [referenční datová připojení](/stream-analytics-query/reference-data-join-azure-stream-analytics) . 
 
 ## <a name="example"></a>Příklad  
 V reálném čase můžete mít datový proud událostí vygenerovaných v případě, že automobily přejdou na svůj telefonní kabinu. V rámci telefonní kabiny může být v reálném čase zachycena licence a spojí se se statickou datovou sadou, která má registrační údaje, a identifikovat tak licenční štítky, jejichž platnost vypršela.  
@@ -33,7 +32,7 @@ Stream Analytics podporuje službu Azure Blob Storage a Azure SQL Database jako 
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Referenční data jsou modelována jako sekvence objektů BLOB (definovaných ve vstupní konfiguraci) ve vzestupném pořadí podle data a času zadaného v názvu objektu BLOB. Podporuje se **pouze** přidávání na konec sekvence pomocí data a času **většího** než ta, kterou Určuje poslední objekt BLOB v sekvenci.
+Referenční data jsou modelována jako sekvence objektů BLOB (definovaných ve vstupní konfiguraci) ve vzestupném pořadí podle data a času zadaného v názvu objektu BLOB. Podporuje se **pouze** přidávání na konec sekvence pomocí data a času **většího** než ta, kterou Určuje poslední objekt BLOB v sekvenci. Další informace najdete v tématu [použití referenčních dat z BLOB Storage pro úlohu Azure Stream Analytics](data-protection.md).
 
 ### <a name="configure-blob-reference-data"></a>Konfigurace referenčních dat objektů BLOB
 
@@ -96,7 +95,7 @@ Pomocí možnosti rozdílového dotazu Stream Analytics spustí nejprve dotaz sn
 
 Chcete-li nakonfigurovat referenční data SQL Database, musíte nejprve vytvořit **referenční vstupní data** . Následující tabulka vysvětluje každou vlastnost, kterou budete muset zadat při vytváření vstupních dat s popisem. Další informace najdete v tématu [použití referenčních dat z SQL Database pro úlohu Azure Stream Analytics](sql-reference-data.md).
 
-Můžete použít [spravovanou instanci SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) jako referenční datový vstup. Musíte [nakonfigurovat veřejný koncový bod ve spravované instanci SQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) a pak ručně nakonfigurovat následující nastavení v Azure Stream Analytics. Virtuální počítač Azure se spuštěným SQL Server s připojenou databází je také podporován ruční konfigurací nastavení níže.
+Můžete použít [spravovanou instanci SQL Azure](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) jako referenční datový vstup. Musíte [nakonfigurovat veřejný koncový bod ve spravované instanci SQL](../azure-sql/managed-instance/public-endpoint-configure.md) a pak ručně nakonfigurovat následující nastavení v Azure Stream Analytics. Virtuální počítač Azure se spuštěným SQL Server s připojenou databází je také podporován ruční konfigurací nastavení níže.
 
 |**Název vlastnosti**|**Popis**  |
 |---------|---------|
@@ -111,13 +110,13 @@ Můžete použít [spravovanou instanci SQL Azure](https://docs.microsoft.com/az
 
 ## <a name="size-limitation"></a>Omezení velikosti
 
-Pro nejlepší výkon se doporučuje použít referenční datové sady, které jsou menší než 300 MB. Použití referenčních dat větší než 300 MB se podporuje v úlohách s 6 službami SUs nebo více. Tato funkce je ve verzi Preview a nesmí se používat v produkčním prostředí. Použití velmi velkých referenčních dat může mít vliv na výkon vaší úlohy. Vzhledem k tomu, že složitost dotazu se zvyšuje o zahrnutí stavového zpracování, jako jsou například agregace oken, dočasné spojení a dočasné analytické funkce, je očekáváno, že se maximální podporovaná velikost referenčních dat zkrátí. Pokud Azure Stream Analytics nemůže načíst referenční data a provádět složité operace, úloha nebude mít dostatek paměti a selže. V takových případech bude metrika využití% SU dostupná 100%.    
+Pro nejlepší výkon se doporučuje použít referenční datové sady, které jsou menší než 300 MB. Referenční datové sady 5 GB nebo nižší jsou podporovány v úlohách s 6 nebo více službami SUs. Použití velmi velkých referenčních dat může mít vliv na koncovou latenci vaší úlohy. Vzhledem k tomu, že složitost dotazu se zvyšuje o zahrnutí stavového zpracování, jako jsou například agregace oken, dočasné spojení a dočasné analytické funkce, je očekáváno, že se maximální podporovaná velikost referenčních dat zkrátí. Pokud Azure Stream Analytics nemůže načíst referenční data a provádět složité operace, úloha nebude mít dostatek paměti a selže. V takových případech bude metrika využití% SU dostupná 100%.    
 
 |**Počet jednotek streamování**  |**Doporučená velikost**  |
 |---------|---------|
 |1   |50 MB nebo méně   |
 |3   |150 MB nebo méně   |
-|6 a více   |300 MB nebo méně. Použití referenčních dat větší než 300 MB je ve verzi Preview podporováno a může mít vliv na výkon vaší úlohy.    |
+|6 a více   |5 GB nebo méně    |
 
 Podpora komprese není pro referenční data k dispozici.
 
@@ -138,6 +137,18 @@ FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
 
+## <a name="iot-edge-jobs"></a>Úlohy IoT Edge
+
+Pro Stream Analytics hraničních úloh jsou podporována pouze místní referenční data. Při nasazení úlohy do IoT Edge zařízení načte referenční data z uživatelsky definované cesty k souboru. V zařízení musí být připravený referenční datový soubor. V případě kontejneru Windows umístěte soubor referenčních dat na místní disk a sdílejte místní disk s kontejnerem Docker. V případě kontejneru pro Linux vytvořte svazek Docker a naplňte do něj datový soubor.
+
+Referenční data na IoT Edge Update se aktivují nasazením. Po aktivaci modul Stream Analytics vybere aktualizovaná data bez zastavení spuštěné úlohy.
+
+Existují dva způsoby, jak aktualizovat referenční data:
+
+* Aktualizujte cestu referenčních dat v Stream Analytics úlohy z Azure Portal.
+
+* Aktualizujte nasazení IoT Edge.
+
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal](stream-analytics-quick-create-portal.md)
@@ -146,6 +157,6 @@ JOIN    refData2 ON refData2.Desc = Step1.Desc
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.get.started]: ./stream-analytics-real-time-fraud-detection.md
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

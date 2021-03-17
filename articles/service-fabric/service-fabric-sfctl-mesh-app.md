@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 835369116b07b74c666fba271476f1cba5a708b8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259951"
 ---
 # <a name="sfctl-mesh-app"></a>sfctl mesh app
@@ -19,7 +19,7 @@ Získejte a odstraňte prostředky aplikace.
 
 |Příkaz|Popis|
 | --- | --- |
-| odstranění | Odstraní prostředek aplikace. |
+| delete | Odstraní prostředek aplikace. |
 | list | Zobrazí seznam všech prostředků aplikace. |
 | show | Získá prostředek aplikace se zadaným názvem. |
 
@@ -28,15 +28,15 @@ Odstraní prostředek aplikace.
 
 Odstraní prostředek aplikace identifikovaný názvem.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Name-n [povinné] | Název aplikace |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -51,7 +51,7 @@ Získá informace o všech prostředcích aplikace v dané skupině prostředků
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -64,15 +64,15 @@ Získá prostředek aplikace se zadaným názvem.
 
 Načte informace o prostředku aplikace s daným názvem. Tyto informace zahrnují popis a další vlastnosti aplikace.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Name-n [povinné] | Název aplikace |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

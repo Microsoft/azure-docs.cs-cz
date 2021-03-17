@@ -1,97 +1,129 @@
 ---
-title: Získat pomoc s nasazením řešení Azure VMware nebo chybami zřizování
-description: Jak získat potřebné informace z privátního cloudu řešení Azure VMware (AVS) do souboru žádosti o službu pro nasazení nebo selhání zřizování služby AVS
+title: Podpora nasazení řešení Azure VMware nebo selhání zřizování
+description: Získejte informace z privátního cloudu řešení Azure VMware a zajistěte si soubor žádosti o službu pro nasazení řešení Azure VMware nebo chybu zřizování.
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 10/28/2020
+ms.openlocfilehash: 27b645f4ca225fdd74bca6499b6581b3803e41a4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514573"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542401"
 ---
-# <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Získat pomoc s nasazením řešení Azure VMware nebo chybami zřizování
+# <a name="open-a-support-request-for-an-azure-vmware-solution-deployment-or-provisioning-failure"></a>Otevření žádosti o podporu pro nasazení řešení Azure VMware nebo selhání zřizování
 
-V tomto článku se dozvíte, jak získat pomoc s nasazením řešení Azure VMware (AVS) nebo selháním zřizování ve vašem privátním cloudu otevřením žádosti o službu (SR) v Azure Portal. Nejdřív ale potřebujete shromažďovat některé klíčové informace v Azure Portal. Ve většině případů potřebujete:
+V tomto článku se dozvíte, jak otevřít [žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support) a zadat klíčové informace pro nasazení řešení Azure VMware nebo chybu zřizování. 
 
-- ID korelace (u neúspěšného nasazení)
-- ID okruhu ExpressRoute (při pokusu o škálování nebo navázání partnerského vztahu se stávajícím privátním cloudem pomocí okruhu privátního cloudu ExpressRoute
+Pokud máte ve svém privátním cloudu selhání, musíte v Azure Portal otevřít žádost o podporu. Chcete-li otevřít žádost o podporu, nejprve získejte některé klíčové informace v Azure Portal:
 
-## <a name="collect-the-correlation-id"></a>Shromáždit ID korelace
+- ID korelace
+- ID okruhu Azure ExpressRoute
+- Chybové zprávy
+
+## <a name="get-the-correlation-id"></a>Získat ID korelace
  
-Pojďme se nejdřív podívat na ID korelace. Při vytváření privátního cloudu (nebo jakéhokoli prostředku v Azure) se vygeneruje přidružené ID korelace. Každé nasazení Azure Resource Manager také generuje jedinečné ID korelace. Toto ID umožňuje rychlejší vytváření a řešení SR. 
+Při vytváření privátního cloudu nebo jakéhokoli prostředku v Azure se pro prostředek automaticky vygeneruje korelační ID pro daný prostředek. Do žádosti o podporu zahrňte ID korelace privátního cloudu, abyste mohli žádost rychleji otevřít a vyřešit.
+
+V Azure Portal můžete získat ID korelace pro prostředek dvěma způsoby:
+
+* Podokno **přehledu**
+* Protokoly nasazení
  
-Tady je příklad výstupu z neúspěšného nasazení privátního cloudu se zvýrazněným ID korelace.
+ ### <a name="get-the-correlation-id-from-the-resource-overview"></a>Získat ID korelace z přehledu prostředků
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/failed-private-cloud-deployment.png" alt-text="Nasazení privátního cloudu s ID korelace se nezdařilo.":::
+Tady je příklad podrobností o operacích s neúspěšným nasazením privátního cloudu s vybraným ID korelace:
 
-Zkopírujte a uložte toto ID korelace, které chcete zahrnout do žádosti o služby. Podrobnosti najdete v tématu [Vytvoření žádosti o podporu](#create-your-support-request) na konci tohoto článku.
+:::image type="content" source="media/fix-deployment-provisioning-failures/failed-private-cloud-deployment.png" alt-text="Snímek obrazovky, který zobrazuje neúspěšné nasazení privátního cloudu s vybraným ID korelace.":::
 
-Pokud dojde k selhání v fázích před ověřením, před nasazením privátního cloudu se nevygeneruje žádné ID korelace. V takovém případě můžete jednoduše zadat informace, které jste použili při vytváření privátního cloudu pro funkci AVS, včetně těchto:
+Přístup k výsledkům nasazení v podokně **Přehled** privátního cloudu:
 
-- Umístění
-- Skupina prostředků
-- Název prostředku
+1. V Azure Portal vyberte svůj privátní cloud.
+
+1. V nabídce vlevo vyberte **Přehled**.
+
+Po zahájení nasazení se výsledky nasazení zobrazí v podokně **Přehled** privátního cloudu.
+
+Zkopírujte a uložte ID korelace nasazení privátního cloudu, které chcete zahrnout do žádosti o služby.
+
+### <a name="get-the-correlation-id-from-the-deployment-log"></a>Získat ID korelace z protokolu nasazení
+
+ID korelace pro nasazení, které selhalo, můžete získat tak, že v Azure Portal provedete hledání v protokolu aktivit nasazení.
+
+Přístup k protokolu nasazení:
+
+1. V Azure Portal vyberte svůj privátní cloud a pak vyberte ikonu oznámení.
+
+   :::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Snímek obrazovky, který zobrazuje ikonu oznámení v Azure Portal.":::
+
+1. V podokně **oznámení** vyberte **Další události v protokolu aktivit** :
+
+    :::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Snímek obrazovky, který zobrazuje další události v odkazu protokolu aktivit vybrané v podokně oznámení.":::
+
+1. Pokud chcete najít neúspěšné nasazení a jeho ID korelace, vyhledejte název prostředku nebo další informace, které jste použili k vytvoření prostředku. 
+
+    Následující příklad ukazuje výsledky hledání pro prostředek privátního cloudu s názvem pc03.
  
-### <a name="collect-a-summary-of-errors"></a>Shromažďování souhrnu chyb
+    :::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Snímek obrazovky, který zobrazuje výsledky hledání pro ukázkový prostředek privátního cloudu a podokno vytvořit nebo aktualizovat PrivateCloud.":::
+ 
+1. Ve výsledcích hledání v podokně **Protokol aktivit** vyberte název operace neúspěšného nasazení.
 
-Podrobnosti o jakýchkoli chybách můžou být užitečné také při řešení vašeho problému. Na předchozí obrazovce vyberte **kliknutím sem** zobrazíte podrobnosti (zvýrazněno) a zobrazí se souhrn chyb, jak je znázorněno na následujícím snímku obrazovky.
+1. V podokně **vytvořit nebo aktualizovat PrivateCloud** vyberte kartu **JSON** a pak `correlationId` ji vyhledejte v zobrazeném protokolu. Zkopírujte `correlationId` hodnotu tak, aby byla zahrnuta do žádosti o podporu. 
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Souhrn chyb":::
+## <a name="copy-error-messages"></a>Kopírovat chybové zprávy
 
-Znovu tento souhrn zkopírujte a uložte, abyste ho zahrnuli do SR.
+Chcete-li vyřešit potíže s nasazením, zahrňte všechny chybové zprávy, které jsou zobrazeny v Azure Portal. Vyberte zprávu upozornění pro zobrazení souhrnu chyb:
  
-### <a name="retrieve-past-deployments"></a>Načíst minulá nasazení
+:::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Snímek obrazovky zobrazující podrobnosti o chybě na kartě Souhrn v podokně chyby s vybranou ikonou kopírování":::
 
-Minulá nasazení, včetně chyb, můžete načíst tak, že vyhledáte přidaný protokol aktivit nasazení, a to výběrem ikony oznámení.
+Chcete-li zkopírovat chybovou zprávu, vyberte ikonu Kopírovat. Uložte zkopírovanou zprávu, kterou chcete zahrnout do žádosti o podporu.
+ 
+## <a name="get-the-expressroute-id-uri"></a>Získat ID ExpressRoute (URI)
+ 
+Možná se snažíte škálovat nebo vytvořit partnerský vztah k existujícímu privátnímu cloudu pomocí okruhu ExpressRoute privátního cloudu a nefunguje. V takovém případě potřebujete ID ExpressRoute zahrnout do žádosti o podporu.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Otevřete oznámení.":::
+Zkopírování ID ExpressRoute:
 
-V části oznámení vyberte **Další události v protokolu aktivit**.
+1. V Azure Portal vyberte svůj privátní cloud.
+1. V nabídce vlevo v části **Spravovat** vyberte možnost **připojení**. 
+1. V pravém podokně vyberte kartu **ExpressRoute** .
+1. Vyberte ikonu kopírování pro **EXPRESSROUTE ID** a uložte hodnotu, která se má použít v žádosti o podporu.
+ 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Zkopírujte ID ExpressRoute do schránky."::: 
+ 
+## <a name="pre-validation-failures"></a>Selhání předběžného ověření
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Odkaz: další události v protokolu aktivit.":::
+Pokud se kontrola před ověřením privátního cloudu nezdařila (před nasazením), ID korelace nebude vygenerováno. V tomto scénáři můžete v žádosti o podporu zadat následující informace:
 
-Pak vyhledejte název prostředku nebo jiné jedinečné informace, které jste použili při vytváření prostředku, a vyhledejte neúspěšné nasazení a ID korelace. Následující příklad ukazuje výsledky hledání v prostředku privátního cloudu (pc03).
- 
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Najde minulá nasazení v neúspěšném prostředí AVS.":::
- 
-Když vyberete název operace neúspěšného nasazení, otevře se okno s podrobnostmi. Vyberte kartu JSON a vyhledejte ID korelace. Zkopírujte a zahrňte do SR. 
- 
-## <a name="collect-the-expressroute-id-uri"></a>Shromáždit ID ExpressRoute (URI)
- 
-Možná už máte privátní cloud a dojde k selhání při pokusu o horizontální navýšení kapacity nebo partnerského okruhu privátního cloudu ExpressRoute. V takovém případě se ExpressRoute ID privátního cloudu dá použít k jeho identifikaci při vytváření rozhraní SR.
-
-Při prohlížení privátního cloudu na portálu vyberte možnost **připojení > ExpressRoute** a ZKOPÍRUJTE **ExpressRoute ID** do schránky.
- 
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Shromážděte ID ExpressRoute."::: 
- 
-Vložte ID ExpressRoute do příslušného pole v nové žádosti o podporu. Další informace najdete v následující části [Vytvoření žádosti o podporu](#create-your-support-request).
- 
-> [!NOTE]
-> V některých případech mohou být před nasazením neúspěšné kontroly před ověřením a k dispozici jsou pouze informace o chybách a/nebo chybách. To může být užitečné při několika selháních, pro problémy související s kvótou a je důležité zahrnout tyto zprávy do žádosti o podporu. Chcete-li je shromáždit, přečtěte si předchozí část [shromáždění souhrnu chyb](#collect-a-summary-of-errors).
+- Chybové zprávy a chyby Tyto zprávy mohou být užitečné v mnoha selháních, například pro problémy související s kvótou. Je důležité tyto zprávy zkopírovat a zahrnout je do žádosti o podporu, jak je popsáno v tomto článku.
+- Informace, které jste použili k vytvoření privátního cloudu řešení Azure VMware, včetně těchto:
+  - Umístění
+  - Skupina prostředků
+  - Název prostředku
 
 ## <a name="create-your-support-request"></a>Vytvoření žádosti o podporu
 
-Obecné pokyny k vytvoření žádosti o podporu najdete v tématu [Postup vytvoření žádosti o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md). 
+Obecné informace o vytvoření žádosti o podporu najdete v tématu [Postup vytvoření žádosti o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
-Tady jsou další doprovodné materiály, které jsou specifické pro vytvoření SR pro nasazení nebo selhání zřizování služby AVS.
+Vytvoření žádosti o podporu pro nasazení řešení Azure VMware nebo selhání zřizování:
 
-1. Vyberte ikonu **pomoci** a potom **+ Nová žádost o podporu**.
+1. V Azure Portal vyberte ikonu **pomoci** a pak vyberte **Nová žádost o podporu**.
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Shromážděte ID ExpressRoute.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Snímek obrazovky s novým podoknem žádosti o podporu v Azure Portal.":::
 
-2. Vyplňte všechna povinná pole a na kartě **základy** :
+1. Zadejte nebo vyberte požadované informace:
 
-    - Jako **typ problému**vyberte **Konfigurace a problémy s instalací**.
+   1. Vyberte kartu **Základy** :
 
-    - V případě **podtypu problému**vyberte možnost **zřídit privátní cloud**.
+      1. Jako **typ problému** vyberte **Konfigurace a problémy s instalací**.
 
-3. Na kartě **Podrobnosti** :
+      1. V případě **podtypu problému** vyberte možnost **zřídit privátní cloud**.
 
-    - Vyplňte všechna povinná pole.
+   1. Na kartě **Podrobnosti** :
 
-    - Do zadaných polí Vložte ID korelace nebo ID ExpressRoute. Pokud se pro ně nezobrazuje konkrétní pole, můžete je vložit do textového pole v části **Zadejte podrobnosti o problému.**
+      1. Zadejte nebo vyberte požadované informace.
 
-    - Vložte všechny podrobnosti o chybě, včetně souhrnu chyb, které jste zkopírovali, do textového pole v části **Zadejte podrobnosti o problému.**
+      1. Vložte ID korelace nebo ID ExpressRoute, kde se vyžadují tyto informace. Pokud pro tyto hodnoty nevidíte konkrétní textové pole, vložte je do textového pole **Zadejte podrobnosti o problému** .
 
-4. Zkontrolujte a vyberte **vytvořit** a vytvořte tak své rozhraní SR.
+    1. Vložte všechny podrobnosti o chybě, včetně chybových zpráv o chybách a chybách, které jste zkopírovali, do textového pole **Zadejte podrobnosti o problému** .
+
+1. Zkontrolujte položky a potom vyberte **vytvořit** a vytvořte žádost o podporu.

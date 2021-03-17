@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 30c5c5be89f8a318de8690430d4d248817961fc2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524956"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360305"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Vytvoření aplikační brány v Azure PowerShellu, která hostuje více webů
 
@@ -22,17 +22,16 @@ Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure 
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření brány Application Gateway
-> * Vytvořit back-endové naslouchací procesy
-> * Vytvořit pravidla směrování
-> * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvoření záznamu CNAME v doméně
+* Nastavit síť
+* Vytvoření brány Application Gateway
+* Vytvořit back-endové naslouchací procesy
+* Vytvořit pravidla směrování
+* Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
+* Vytvoření záznamu CNAME v doméně
 
 :::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Application Gateway více lokalit":::
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -128,7 +127,7 @@ Vytvořte první naslouchací proces pomocí [New-AzApplicationGatewayHttpListen
 
 >[!NOTE]
 > Pomocí Application Gateway nebo WAF v2 SKU můžete také nakonfigurovat až 5 názvů hostitelů na naslouchací proces a v názvu hostitele můžete použít zástupné znaky. Další informace najdete [v tématu názvy hostitelů se zástupnými znaky v naslouchací](multiple-site-overview.md#wildcard-host-names-in-listener-preview) službě.
->Chcete-li použít více názvů hostitelů a zástupných znaků v naslouchací službě pomocí Azure PowerShell, je nutné použít `-HostNames` místo `-HostName` . S názvy hostitelů můžete uvést až 5 názvů hostitelů jako hodnoty oddělené čárkami. Například `-HostNames "*.contoso.com,*.fabrikam.com"`.
+>Chcete-li použít více názvů hostitelů a zástupných znaků v naslouchací službě pomocí Azure PowerShell, je nutné použít `-HostNames` místo `-HostName` . S názvy hostitelů můžete uvést až 5 názvů hostitelů jako hodnoty oddělené čárkami. Například `-HostNames "*.contoso.com","*.fabrikam.com"`.
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `

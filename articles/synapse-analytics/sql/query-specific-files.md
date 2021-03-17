@@ -7,28 +7,28 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496215"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299611"
 ---
-# <a name="use-file-metadata-in-queries"></a>Použití metadat souboru v dotazech
+# <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Použití metadat souboru v neserverových dotazech na fond SQL
 
-Dotazovací služba SQL na vyžádání může adresovat více souborů a složek, jak je popsáno v článku [složky dotazů a více souborů](query-folders-multiple-csv-files.md) . V tomto článku se dozvíte, jak v dotazech používat informace o metadatech souborů a složek.
+Fond SQL bez serveru může adresovat více souborů a složek, jak je popsáno v článku [složky dotazů a více souborů](query-folders-multiple-csv-files.md) . V tomto článku se dozvíte, jak v dotazech používat informace o metadatech souborů a složek.
 
 V některých případech možná budete muset zjistit, který zdroj souborů nebo složek je v sadě výsledků v souvislosti s konkrétním řádkem.
 
-Pomocí funkce a můžete `filepath` `filename` vracet názvy souborů nebo cestu v sadě výsledků dotazu. Můžete je také použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány v oddílu syntaxe [filename](query-data-storage.md#filename-function) a funkce [FilePath](query-data-storage.md#filepath-function). Níže najdete krátké popisy v rámci ukázek.
+Pomocí funkce a můžete `filepath` `filename` vracet názvy souborů nebo cestu v sadě výsledků dotazu. Můžete je také použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány v oddílu syntaxe [filename](query-data-storage.md#filename-function) a funkce [FilePath](query-data-storage.md#filepath-function). V následujících částech najdete krátké popisy podél vzorků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na účet úložiště. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 ### <a name="filename"></a>Bitmap
 
@@ -76,7 +76,7 @@ ORDER BY
 
 Funkce FilePath vrátí úplnou nebo částečnou cestu:
 
-- Při volání bez parametru vrátí úplnou cestu k souboru, ze které řádek pochází.
+- Při volání bez parametru vrátí úplnou cestu k souboru, ze které řádek pochází. Pokud je použita DATA_SOURCE v OPENROWSET, vrátí cestu relativní k DATA_SOURCE. 
 - Při volání s parametrem vrátí část cesty, která odpovídá zástupnému znaku na pozici zadané v parametru. Například hodnota parametru 1 vrátí část cesty, která se shoduje s prvním zástupným znakem.
 
 Následující ukázka přečte NYC žluté taxislužby datové soubory za poslední tři měsíce 2017. Vrátí počet jezdí na cestu k souboru. Část OPENROWSET dotazu určuje, které soubory budou čteny.

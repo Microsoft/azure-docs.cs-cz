@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: f969d7edc22c9c36481ca42449193af5f8c7b0d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709993"
 ---
 # <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Nasazení služby Virtual Machine Scale Sets pomocí protokolu IPv6 v Azure
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak nasadit sadu škálování virtuálních poč�
 2.    Vytvořte duální Nástroj pro vyrovnávání zatížení.  
 3.    Vytvořte pravidla skupiny zabezpečení sítě (NSG).  
 
-Jediným krokem, který se liší od jednotlivých virtuálních počítačů, je vytvoření konfigurace síťového rozhraní (NIC), která používá prostředek sady škálování virtuálního počítače: networkProfile/networkInterfaceConfigurations. Struktura JSON je podobná jako objekt Microsoft. Network/networkInterfaces, který se používá pro jednotlivé virtuální počítače, přičemž jako primární rozhraní používá atribut **"Primary": true** , jak je vidět v následujícím příkladu:
+Jediným krokem, který se liší od jednotlivých virtuálních počítačů, je vytvoření konfigurace síťového rozhraní (NIC), která používá prostředek sady škálování virtuálního počítače: networkProfile/networkInterfaceConfigurations. Struktura JSON je podobná jako objekt Microsoft. Network/networkInterfaces, který se používá pro jednotlivé virtuální počítače, přičemž jako primární rozhraní používá atribut **"Primary": true**  , jak je vidět v následujícím příkladu:
 
 ```json
           "networkProfile": {

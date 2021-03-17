@@ -1,26 +1,29 @@
 ---
-title: Povolení diagnostiky v Azure Cloud Services pomocí PowerShellu | Microsoft Docs
+title: Povolení diagnostiky v Azure Cloud Services (Classic) pomocí PowerShellu | Microsoft Docs
 description: Naučte se, jak pomocí PowerShellu Povolit shromažďování diagnostických dat z cloudové služby Azure s rozšířením Azure Diagnostics.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/06/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: e3c4beac5bd88ba0bbefa91fc83976416b24d2fc
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 23528190d2eb60cc6ea3fe94bb9f7a2374526f6a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141070"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618436"
 ---
-# <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Povolení diagnostiky v Azure Cloud Services s využitím PowerShellu
+# <a name="enable-diagnostics-in-azure-cloud-services-classic-using-powershell"></a>Povolení diagnostiky v Azure Cloud Services (Classic) pomocí PowerShellu
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Můžete shromažďovat diagnostická data, jako jsou protokoly aplikací, čítače výkonu atd. z cloudové služby pomocí rozšíření Azure Diagnostics. Tento článek popisuje, jak povolit rozšíření Azure Diagnostics pro cloudovou službu pomocí PowerShellu.  Potřebné předpoklady pro tento článek najdete v tématu [Postup instalace a konfigurace Azure PowerShell](/powershell/azure/) .
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Povolit rozšíření diagnostiky jako součást nasazení cloudové služby
-Tento přístup se vztahuje na typ souvislé integrace scénářů, kde diagnostické rozšíření může být povolené v rámci nasazení cloudové služby. Při vytváření nového nasazení cloudové služby můžete povolit rozšíření diagnostiky tak, že do rutiny [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-3.7.0) předáte parametr *ExtensionConfiguration* . Parametr *ExtensionConfiguration* přebírá pole konfigurací diagnostiky, které lze vytvořit pomocí rutiny [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure.service/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) .
+Tento přístup se vztahuje na typ souvislé integrace scénářů, kde diagnostické rozšíření může být povolené v rámci nasazení cloudové služby. Při vytváření nového nasazení cloudové služby můžete povolit rozšíření diagnostiky tak, že do rutiny [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment) předáte parametr *ExtensionConfiguration* . Parametr *ExtensionConfiguration* přebírá pole konfigurací diagnostiky, které lze vytvořit pomocí rutiny [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure.service/new-azureservicediagnosticsextensionconfig) .
 
 Následující příklad ukazuje, jak můžete povolit diagnostiku pro cloudovou službu pomocí webrole a role pracovního procesu, z nichž každá má jinou konfiguraci diagnostiky.
 
@@ -92,7 +95,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 ```
 
 ## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>Povolit rozšíření diagnostiky na existující službu Cloud
-Pomocí rutiny [set-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) můžete povolit nebo aktualizovat konfiguraci diagnostiky v cloudové službě, která je už spuštěná.
+Pomocí rutiny [set-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azureservicediagnosticsextension) můžete povolit nebo aktualizovat konfiguraci diagnostiky v cloudové službě, která je už spuštěná.
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -108,14 +111,14 @@ Set-AzureServiceDiagnosticsExtension -DiagnosticsConfiguration @($webrole_diagco
 ```
 
 ## <a name="get-current-diagnostics-extension-configuration"></a>Získejte aktuální konfiguraci rozšíření diagnostiky
-Pomocí rutiny [Get-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) získáte aktuální konfiguraci diagnostiky pro cloudovou službu.
+Pomocí rutiny [Get-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/get-azureservicediagnosticsextension) získáte aktuální konfiguraci diagnostiky pro cloudovou službu.
 
 ```powershell
 Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>Odeberte rozšíření diagnostiky
-Pokud chcete vypnout diagnostiku v cloudové službě, můžete použít rutinu [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) .
+Pokud chcete vypnout diagnostiku v cloudové službě, můžete použít rutinu [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/remove-azureservicediagnosticsextension) .
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
@@ -131,8 +134,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Další kroky
 * Další pokyny týkající se používání diagnostiky Azure a dalších postupů k řešení problémů najdete v tématu [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* [Schéma konfigurace diagnostiky](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
-* Informace o tom, jak povolit rozšíření diagnostiky pro Virtual Machines, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí monitorování a diagnostiky pomocí šablony Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md) .
-
-
-
+* [Schéma konfigurace diagnostiky](../azure-monitor/agents/diagnostics-extension-schema-windows.md) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
+* Informace o tom, jak povolit rozšíření diagnostiky pro Virtual Machines, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí monitorování a diagnostiky pomocí šablony Azure Resource Manager](../virtual-machines/extensions/diagnostics-template.md) .

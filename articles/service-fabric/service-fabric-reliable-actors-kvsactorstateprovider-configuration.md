@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75609770"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurace Reliable Actors--KVSActorStateProvider
@@ -41,7 +41,7 @@ Výchozí konfigurace je generována šablonou sady Visual Studio a měla by sta
 &lt;Jméno objektu actor &gt; ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Name | Jednotka | Výchozí hodnota | Poznámky |
+| Název | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0,015 |Časové období, po které se Replikátor v sekundárním čekání po přijetí operace před odesláním zpět na primární. Jakékoli další potvrzení, která se mají odeslat pro operace zpracovávané v tomto intervalu, se odešlou jako jedna odpověď. |
 | ReplicatorEndpoint |Není k dispozici |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
@@ -58,7 +58,7 @@ Výchozí konfigurace je generována šablonou sady Visual Studio a měla by sta
 &lt;Jméno objektu actor &gt; ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Name | Jednotka | Výchozí hodnota | Poznámky |
+| Název | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |Milisekund |200 |Nastaví maximální interval dávkování pro potvrzení trvalého místního úložiště. |
 | MaxVerPages |Počet stránek |16384 |Maximální počet stránek verze v místní databázi úložiště Určuje maximální počet nezpracovaných transakcí. |

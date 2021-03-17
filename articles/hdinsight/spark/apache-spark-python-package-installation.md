@@ -1,27 +1,20 @@
 ---
 title: Akce skriptu pro balíčky Pythonu s Jupyter ve službě Azure HDInsight
 description: Podrobné pokyny, jak pomocí akce skriptu nakonfigurovat Jupyter poznámkové bloky dostupné v clusterech HDInsight Spark, aby používaly externí balíčky Pythonu.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873751"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929815"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
-> [!div class="op_single_selector"]
-> * [Použití buňky Magic](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Pomocí akce skriptu](apache-spark-python-package-installation.md)
-
-HDInsight obsahuje dvě vestavěné Instalace Pythonu v clusteru Spark, Anaconda Python 2,7 a Python 3,5. Zákazníci možná budou muset přizpůsobit prostředí Python. Podobně jako instalace externích balíčků Pythonu nebo jiné verze Pythonu. Tady uvádíme osvědčený postup pro bezpečnou správu prostředí Pythonu pro Apache Spark clustery v HDInsight.
+HDInsight obsahuje dvě vestavěné Instalace Pythonu v clusteru Spark, Anaconda Python 2,7 a Python 3,5. Zákazníci možná budou muset přizpůsobit prostředí Pythonu, jako je instalace externích balíčků Pythonu. Tady uvádíme osvědčený postup pro bezpečnou správu prostředí Pythonu pro Apache Spark clustery v HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +34,7 @@ Existují dva typy open source komponent, které jsou k dispozici ve službě HD
 > [!IMPORTANT]
 > Součásti dodávané s clusterem HDInsight jsou plně podporované. Podpora Microsoftu pomáhá izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. Tato podpora může být schopná vyřešit problém nebo může požádat o zapojení dostupných kanálů pro technologie Open Source, kde se nachází hloubkové odbornosti pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například: [Microsoft Q&stránku s otázkou pro HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html), `https://stackoverflow.com` . Projekty Apache také obsahují projektové weby `https://apache.org` .
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. Tato podpora může být schopná vyřešit problém nebo může požádat o zapojení dostupných kanálů pro technologie Open Source, kde se nachází hloubkové odbornosti pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například: [Microsoft Q&stránku s otázkou pro HDInsight](/answers/topics/azure-hdinsight.html), `https://stackoverflow.com` . Projekty Apache také obsahují projektové weby `https://apache.org` .
 
 ## <a name="understand-default-python-installation"></a>Principy výchozí instalace Pythonu
 
@@ -50,8 +43,8 @@ Cluster HDInsight Spark se vytvoří s instalací Anaconda. V clusteru jsou dvě
 |Nastavení |Python 2,7|Python 3,5|
 |----|----|----|
 |Cesta|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Verze Sparku|Výchozí nastavení je 2,7|–|
-|Verze Livy|Výchozí nastavení je 2,7|–|
+|Verze Sparku|Výchozí nastavení je 2,7|Můžete změnit konfiguraci na 3,5.|
+|Verze Livy|Výchozí nastavení je 2,7|Můžete změnit konfiguraci na 3,5.|
 |Jupyter|Jádro PySpark|Jádro PySpark3|
 
 ## <a name="safely-install-external-python-packages"></a>Bezpečně instalovat externí balíčky Pythonu
@@ -60,9 +53,9 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
 1. Vytvořte virtuální prostředí Python pomocí conda. Virtuální prostředí poskytuje izolovaný prostor pro vaše projekty, aniž by došlo k porušení dalších. Při vytváření virtuálního prostředí Python můžete určit verzi Pythonu, kterou chcete použít. I přesto musíte vytvořit virtuální prostředí, i když byste chtěli používat Python 2,7 a 3,5. Tento požadavek zajistí, aby výchozí prostředí clusteru nepodařilo přerušito. Spustí v clusteru akce skriptu pro všechny uzly s níže uvedeným skriptem, aby se vytvořilo virtuální prostředí Pythonu.
 
-    -   `--prefix`Určuje cestu, kde virtuální prostředí conda žije. V závislosti na zadané cestě je potřeba změnit několik konfigurací. V tomto příkladu používáme py35new, protože cluster má už existující virtuální prostředí s názvem py35.
-    -   `python=`Určuje verzi Pythonu pro virtuální prostředí. V tomto příkladu používáme verzi 3,5, což je stejná verze jako v clusteru. K vytvoření virtuálního prostředí můžete také použít jiné verze Pythonu.
-    -   `anaconda`Určuje package_spec jako Anaconda pro instalaci balíčků Anaconda ve virtuálním prostředí.
+    -   `--prefix` Určuje cestu, kde virtuální prostředí conda žije. V závislosti na zadané cestě je potřeba změnit několik konfigurací. V tomto příkladu používáme py35new, protože cluster má už existující virtuální prostředí s názvem py35.
+    -   `python=` Určuje verzi Pythonu pro virtuální prostředí. V tomto příkladu používáme verzi 3,5, což je stejná verze jako v clusteru. K vytvoření virtuálního prostředí můžete také použít jiné verze Pythonu.
+    -   `anaconda` Určuje package_spec jako Anaconda pro instalaci balíčků Anaconda ve virtuálním prostředí.
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
@@ -76,8 +69,8 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     - Použít conda kanál:
 
-        -   `seaborn`je název balíčku, který chcete nainstalovat.
-        -   `-n py35new`Zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
+        -   `seaborn` je název balíčku, který chcete nainstalovat.
+        -   `-n py35new` Zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
@@ -85,15 +78,15 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     - Nebo použijte úložiště PyPi, změňte `seaborn` a `py35new` odpovídající:
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install seaborn
         ```
 
     Použijte níže uvedený příkaz, pokud chcete nainstalovat knihovnu s konkrétní verzí:
 
     - Použít conda kanál:
 
-        -   `numpy=1.16.1`je název a verze balíčku, které byste chtěli nainstalovat.
-        -   `-n py35new`Zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
+        -   `numpy=1.16.1` je název a verze balíčku, které byste chtěli nainstalovat.
+        -   `-n py35new` Zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
@@ -102,7 +95,7 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
     - Nebo použijte úložiště PyPi, změňte `numpy==1.16.1` a `py35new` odpovídající:
 
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install numpy==1.16.1
         ```
 
     Pokud neznáte název virtuálního prostředí, můžete SSH pro hlavní uzel clusteru a spustit `/usr/bin/anaconda/bin/conda info -e` pro zobrazení všech virtuálních prostředí.
@@ -132,7 +125,25 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     4. Uložte změny a restartujte ovlivněné služby. Tyto změny vyžadují restartování služby Spark2. Uživatelské rozhraní Ambari vás vyzve k vyžadovanámu restartování, kliknutím na restartovat restartujte všechny ovlivněné služby.
 
-        ![Změna konfigurace Sparku prostřednictvím Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Restartovat služby](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+
+    5. Nastavte dvě vlastnosti relace Sparku, aby se zajistilo, že úloha odkazuje na aktualizovanou konfiguraci Sparku: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` a `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` . 
+
+        Pomocí terminálu nebo poznámkového bloku použijte `spark.conf.set` funkci.
+
+        ```spark
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        ```
+
+        Pokud používáte Livy, přidejte do textu žádosti následující vlastnosti:
+
+        ```
+        “conf” : {
+        “spark.yarn.appMasterEnv.PYSPARK_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”,
+        “spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”
+        }
+        ```
 
 4. Pokud chcete použít nové vytvořené virtuální prostředí v Jupyter. Změňte konfigurace Jupyter a restartujte Jupyter. Spusťte akce skriptu na všech uzlech hlaviček pomocí příkazu níže, aby odkazovaly Jupyter na nové vytvořené virtuální prostředí. Nezapomeňte upravit cestu k předponě, kterou jste zadali pro vaše virtuální prostředí. Po spuštění této akce skriptu restartujte službu Jupyter prostřednictvím uživatelského rozhraní Ambari, aby tato změna byla dostupná.
 

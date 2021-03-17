@@ -3,12 +3,13 @@ title: Správa tajných kódů aplikace Service Fabric Azure
 description: Naučte se zabezpečit tajné hodnoty v Service Fabric aplikaci (Platform-nezávislá).
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.openlocfilehash: af82a55d41c48eebcbcbd1581ec5096a89c49bea
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a11869c3b606ed9e74ce4f598109139fa1bb4164
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248114"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89012819"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Správa šifrovaných tajných kódů v aplikacích Service Fabric
 Tento průvodce vás provede jednotlivými kroky správy tajných kódů v aplikaci Service Fabric. Tajné kódy můžou obsahovat citlivé informace, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu.

@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6195b949cc71043dfa7a12bdece7a311dbde5e21
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014688"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562248"
 ---
 ## <a name="next-steps"></a>Další kroky
 
@@ -142,8 +142,8 @@ SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-Další informace o tom, jak tyto funkce šifrování používat, najdete v tématu [použití funkce EKM s SQL Server funkcemi šifrování](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
+Další informace o tom, jak tyto funkce šifrování používat, najdete v tématu [použití funkce EKM s SQL Server funkcemi šifrování](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server#UsesOfEKM).
 
 Všimněte si, že kroky v tomto článku předpokládají, že už máte SQL Server spuštěnou na virtuálním počítači Azure. Pokud ne, přečtěte si téma [zřízení virtuálního počítače s SQL Server v Azure](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md). Další pokyny týkající se spuštění SQL Server na virtuálních počítačích Azure najdete v tématu [SQL Server na azure Virtual Machines přehled](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).

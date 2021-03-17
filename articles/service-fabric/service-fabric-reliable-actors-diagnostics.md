@@ -5,15 +5,15 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ebaedb5369f3b39372262bfde526706e8d069418
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258457"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789612"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostika a sledování výkonu služby Reliable Actors
-Modul runtime Reliable Actors generuje události [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) a [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1). Tyto informace poskytují přehled o tom, jak modul runtime pracuje a který umožňuje řešení potíží a monitorování výkonu.
+Modul runtime Reliable Actors generuje události [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) a [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter). Tyto informace poskytují přehled o tom, jak modul runtime pracuje a který umožňuje řešení potíží a monitorování výkonu.
 
 ## <a name="eventsource-events"></a>Události EventSource
 Název zprostředkovatele EventSource pro modul runtime Reliable Actors je "Microsoft-ServiceFabric-Actors". Události z tohoto zdroje událostí se zobrazí v okně [diagnostické události](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) při ladění aplikace objektu actor [v aplikaci Visual Studio](service-fabric-debugging-your-application.md).
@@ -50,7 +50,7 @@ Pro kategorii `Service Fabric Actor` jsou názvy instancí čítače v následuj
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) metody s specifikátorem formátu "D".
+*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) metody s specifikátorem formátu "D".
 
 *ActorRuntimeInternalID* je řetězcová reprezentace 64ého celého čísla generovaného modulem runtime Fabric Actors pro své interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
@@ -69,7 +69,7 @@ Pro kategorii `Service Fabric Actor Method` jsou názvy instancí čítače v n�
 
 *ActorsRuntimeMethodId* je řetězcová reprezentace 32ého celého čísla generovaného modulem runtime Fabric Actors pro své interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) metody s specifikátorem formátu "D".
+*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) metody s specifikátorem formátu "D".
 
 *ActorRuntimeInternalID* je řetězcová reprezentace 64ého celého čísla generovaného modulem runtime Fabric Actors pro své interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 

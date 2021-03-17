@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498612"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652241"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
 
-Tento článek popisuje architekturu, komponenty a procesy používané při nasazení zotavení po havárii pro virtuální počítače Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) . Po nastavení zotavení po havárii se virtuální počítače Azure průběžně replikují z do jiné cílové oblasti. Pokud dojde k výpadku, můžete převzít služby virtuálních počítačů do sekundární oblasti a získat k nim přístup. Když všechno běží normálně, můžete navrátit služby po obnovení a pokračovat v práci v primárním umístění.
+Tento článek popisuje architekturu, komponenty a procesy používané při nasazení zotavení po havárii pro virtuální počítače Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) . Po nastavení zotavení po havárii se virtuální počítače Azure průběžně replikují do jiné cílové oblasti. Pokud dojde k výpadku, můžete převzít služby virtuálních počítačů do sekundární oblasti a získat k nim přístup. Když všechno běží normálně, můžete navrátit služby po obnovení a pokračovat v práci v primárním umístění.
 
 
 
@@ -104,7 +104,7 @@ Snímek konzistentní se selháním zachycuje data, která byla na disku při po
 
 **Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
-Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím.<br/><br/> Snímek konzistentní vzhledem k aplikacím obsahuje všechny informace v snímku konzistentním s chybou a také všechna data v paměti a probíhajících transakcích. | Snímky konzistentní vzhledem k aplikacím používají služba Stínová kopie svazku (VSS):<br/><br/>   1) když se spustí snímek, služba VSS provede na svazku operaci kopírování na zápis (KRÁVy).<br/><br/>   2) před provedením KRÁVy vytvoří služba Stínová kopie svazku každou aplikaci v počítači, kterou potřebuje k vyprázdnit data rezidentní paměti na disk.<br/><br/>   3) služba VSS pak umožní aplikaci pro zálohování nebo zotavení po havárii (v tomto případě Site Recovery) ke čtení dat snímku a pokračování. | Snímky konzistentní vzhledem k aplikacím jsou pořízeny podle četnosti, kterou zadáte. Tato frekvence by měla být vždy menší než nastavení pro zachování bodů obnovení. Pokud například zachováte body obnovení s použitím výchozího nastavení 24 hodin, měli byste nastavit četnost na méně než 24 hodin.<br/><br/>Jsou složitější a jejich dokončení trvá déle než snímky konzistentní se selháním.<br/><br/> Mají vliv na výkon aplikací spuštěných na virtuálním počítači, který je povolen pro replikaci. 
+Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím.<br/><br/> Snímek konzistentní vzhledem k aplikacím obsahuje všechny informace v snímku konzistentním s chybou a také všechna data v paměti a probíhajících transakcích. | Snímky konzistentní vzhledem k aplikacím používají služba Stínová kopie svazku (VSS):<br/><br/>   1) Azure Site Recovery používá metodu kopírování pouze pro zálohování (VSS_BT_COPY), která nemění čas zálohování protokolu transakce Microsoft SQL a číslo sekvence. </br></br> 2) když se spustí snímek, služba VSS provede na svazku operaci kopírování na zápis (KRÁVy).<br/><br/>   3) před provedením KRÁVy vytvoří služba Stínová kopie svazku každou aplikaci v počítači, kterou potřebuje k vyprázdnit data rezidentní paměti na disk.<br/><br/>   4) služba VSS pak umožní aplikaci pro zálohování nebo zotavení po havárii (v tomto případě Site Recovery) ke čtení dat snímku a pokračování. | Snímky konzistentní vzhledem k aplikacím jsou pořízeny podle četnosti, kterou zadáte. Tato frekvence by měla být vždy menší než nastavení pro zachování bodů obnovení. Pokud například zachováte body obnovení s použitím výchozího nastavení 24 hodin, měli byste nastavit četnost na méně než 24 hodin.<br/><br/>Jsou složitější a jejich dokončení trvá déle než snímky konzistentní se selháním.<br/><br/> Mají vliv na výkon aplikací spuštěných na virtuálním počítači, který je povolen pro replikaci. 
 
 ## <a name="replication-process"></a>Proces replikace
 
@@ -130,7 +130,7 @@ Pokud se odchozí přístup pro virtuální počítače ovládá pomocí adres U
 
 | **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
 | Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
@@ -167,11 +167,11 @@ Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azur
 
 #### <a name="control-access-with-nsg-rules"></a>Řízení přístupu pomocí pravidel NSG
 
-Pokud ovládáte připojení virtuálních počítačů pomocí filtrování síťového provozu do a z sítí nebo podsítí Azure pomocí [pravidel NSG](../virtual-network/security-overview.md), vezměte v vědomí následující požadavky:
+Pokud ovládáte připojení virtuálních počítačů pomocí filtrování síťového provozu do a z sítí nebo podsítí Azure pomocí [pravidel NSG](../virtual-network/network-security-groups-overview.md), vezměte v vědomí následující požadavky:
 
 - Pravidla NSG pro zdrojovou oblast Azure by měla umožňovat odchozí přístup pro provoz replikace.
 - Před vložením do produkčního prostředí doporučujeme vytvořit pravidla v testovacím prostředí.
-- Místo povolování jednotlivých IP adres používejte [značky služeb](../virtual-network/security-overview.md#service-tags) .
+- Místo povolování jednotlivých IP adres používejte [značky služeb](../virtual-network/network-security-groups-overview.md#service-tags) .
     - Značky služby reprezentují skupinu předpon IP adres shromážděných dohromady, aby se při vytváření pravidel zabezpečení minimalizovala složitost.
     - Microsoft automaticky aktualizuje značky služeb v průběhu času. 
  

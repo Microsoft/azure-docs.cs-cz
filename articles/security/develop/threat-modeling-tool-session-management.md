@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 6a40d89db3e81721ec8a35973b79a558c17caee4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
+ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543686"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518097"
 ---
 # <a name="security-frame-session-management"></a>Rámec zabezpečení: Správa relací
 | Produkt/služba | Článek |
@@ -32,7 +32,7 @@ ms.locfileid: "87543686"
 | **ADFS** | <ul><li>[Implementace správného odhlášení pomocí metod WsFederation při použití ADFS](#wsfederation-logout)</li></ul> |
 | **Server identit** | <ul><li>[Implementace správného odhlášení při použití serveru identity](#proper-logout)</li></ul> |
 | **Webová aplikace** | <ul><li>[Aplikace dostupné přes HTTPS musí používat zabezpečené soubory cookie.](#https-secure-cookies)</li><li>[Všechny aplikace založené na protokolu HTTP by měly určovat pouze http pro definici souboru cookie.](#cookie-definition)</li><li>[Zmírnění útoků proti útokům přes CSRF (site-to Request) na webových stránkách ASP.NET](#csrf-asp)</li><li>[Nastavte relaci pro dobu neaktivity.](#inactivity-lifetime)</li><li>[Implementace správného odhlášení z aplikace](#proper-app-logout)</li></ul> |
-| **Web API** | <ul><li>[Zmírnění útoků na webové rozhraní API v ASP.NET proti útokům přes lokalitu (CSRF)](#csrf-api)</li></ul> |
+| **Webové rozhraní API** | <ul><li>[Zmírnění útoků na webové rozhraní API v ASP.NET proti útokům přes lokalitu (CSRF)](#csrf-api)</li></ul> |
 
 ## <a name="implement-proper-logout-using-adal-methods-when-using-azure-ad"></a><a id="logout-adal"></a>Implementace správného odhlášení pomocí metod ADAL při použití Azure AD
 
@@ -159,7 +159,7 @@ Měla by také zničit relaci uživatele voláním metody Session. Abandon (). N
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | EnvironmentType – OnPrem |
-| **Reference**              | [httpCookies – element (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [vlastnost HttpCookie. Secure](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **Reference**              | [httpCookies – element (schéma nastavení ASP.NET)](/previous-versions/dotnet/netframework-4.0/ms228262(v=vs.100)), [vlastnost HttpCookie. Secure](/dotnet/api/system.web.httpcookie.secure) |
 | **Kroky** | Soubory cookie jsou obvykle přístupné pouze pro doménu, pro kterou byly vymezeny. Definice "doména" ale nezahrnuje protokol, takže soubory cookie, které jsou vytvořené přes protokol HTTPS, jsou přístupné přes HTTP. Atribut "Secure" označuje prohlížeč, že by měl být soubor cookie zpřístupněn pouze přes protokol HTTPS. Zajistěte, aby všechny soubory cookie nastavené přes protokol HTTPS používaly **zabezpečený** atribut. Požadavek lze vyhovět v souboru web.config nastavením atributu vlastnost requireSSL na hodnotu true. Je to preferovaný přístup, protože vygeneruje **zabezpečený** atribut pro všechny aktuální a budoucí soubory cookie, aniž by bylo potřeba provádět další změny kódu.|
 
 ### <a name="example"></a>Příklad
@@ -221,7 +221,7 @@ Všechny aplikace založené na protokolu HTTP, které používají soubory cook
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | webové formuláře |
 | **Atributy**              | –  |
-| **Reference**              | [FormsAuthentication. vlastnost RequireSSL – vlastnost](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
+| **Reference**              | [FormsAuthentication. vlastnost RequireSSL – vlastnost](/dotnet/api/system.web.security.formsauthentication.requiressl) |
 | **Kroky** | Hodnota vlastnosti vlastnost RequireSSL je nastavena v konfiguračním souboru pro aplikaci ASP.NET pomocí atributu vlastnost requireSSL konfiguračního elementu. Můžete zadat v souboru Web.config pro vaši aplikaci ASP.NET, jestli je pro vrácení souboru cookie s ověřováním pomocí formulářů SSL (Secure Sockets Layer) (vlastnost requireSSL) na serveru potřeba, aby se na server vrátil soubor cookie s ověřováním pomocí formulářů, a to tak, že nastaví atribut.|
 
 ### <a name="example"></a>Příklad 
@@ -238,7 +238,7 @@ Následující příklad kódu nastaví atribut vlastnost requireSSL v souboru W
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5 |
 | **Atributy**              | EnvironmentType – OnPrem |
-| **Reference**              | [Konfigurace Windows Identity Foundation (WIF) – část II](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
+| **Reference**              | [Konfigurace Windows Identity Foundation (WIF) – část II](/archive/blogs/alikl/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler) |
 | **Kroky** | Chcete-li nastavit atribut httpOnly pro soubory cookie FedAuth, měla by být hodnota atributu hideFromCsript nastavena na hodnotu true. |
 
 ### <a name="example"></a>Příklad
@@ -292,7 +292,7 @@ Následující konfigurace zobrazuje správnou konfiguraci:
 ```
 
 ### <a name="example"></a>Příklad
-Ve stejnou dobu HTML. AntiForgeryToken () přiřadí návštěvníkovi soubor cookie s názvem __RequestVerificationToken se stejnou hodnotou jako náhodná Skrytá hodnota uvedená výše. Dále pro ověření příchozího příspěvku formuláře přidejte filtr [ValidateAntiForgeryToken] do metody cíle akce. Příklad:
+Ve stejnou dobu HTML. AntiForgeryToken () přiřadí návštěvníkovi soubor cookie s názvem __RequestVerificationToken se stejnou hodnotou jako náhodná Skrytá hodnota uvedená výše. Dále pro ověření příchozího příspěvku formuláře přidejte filtr [ValidateAntiForgeryToken] do metody cíle akce. Například:
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()
@@ -358,7 +358,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | webové formuláře |
 | **Atributy**              | –  |
-| **Reference**              | [Využijte výhod integrovaných funkcí ASP.NET k Fendí webových útoků.](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
+| **Reference**              | [Využijte výhod integrovaných funkcí ASP.NET k Fendí webových útoků.](/previous-versions/dotnet/articles/ms972969(v=msdn.10)#securitybarriers_topic2) |
 | **Kroky** | Útoky CSRF v aplikacích založených na webformách je možné zmírnit nastavením ViewStateUserKey na náhodný řetězec, který se u každého uživatele změní na ID uživatele nebo je ještě lepší, ID relace. Z řady technických a sociálních důvodů je ID relace mnohem lepší, protože ID relace je nepředvídatelné, má časový limit a liší se podle jednotlivých uživatelů.|
 
 ### <a name="example"></a>Příklad
@@ -378,7 +378,7 @@ void Page_Init (object sender, EventArgs e) {
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [HttpSessionState. Timeout – vlastnost](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
+| **Reference**              | [HttpSessionState. Timeout – vlastnost](/dotnet/api/system.web.sessionstate.httpsessionstate.timeout) |
 | **Kroky** | Časový limit relace představuje událost, když uživatel neprovede žádnou akci na webu během intervalu (definovaného webovým serverem). Událost na straně serveru mění stav uživatelské relace na neplatnou (například již nepoužito) a vydá pokyn webovému serveru, aby ho zničil (odstraní všechna data, která jsou v něm obsažená). Následující příklad kódu nastaví atribut relace Timeout na 15 minut v souboru Web.config.|
 
 ### <a name="example"></a>Příklad
@@ -398,7 +398,7 @@ void Page_Init (object sender, EventArgs e) {
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | webové formuláře |
 | **Atributy**              | –  |
-| **Reference**              | [Element Forms pro ověřování (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **Reference**              | [Element Forms pro ověřování (schéma nastavení ASP.NET)](/previous-versions/dotnet/netframework-4.0/1d3t3c61(v=vs.100)) |
 | **Kroky** | Nastavte časový limit souboru cookie lístku pro ověřování formulářů na 15 minut.|
 
 ### <a name="example"></a>Příklad
@@ -455,7 +455,7 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
@@ -464,7 +464,7 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5, MVC6 |
 | **Atributy**              | –  |
@@ -536,7 +536,7 @@ V předchozím příkladu bude výstup vypadat přibližně takto:
 ```
 
 ### <a name="example"></a>Příklad
-Ve stejnou dobu HTML. AntiForgeryToken () přiřadí návštěvníkovi soubor cookie s názvem __RequestVerificationToken se stejnou hodnotou jako náhodná Skrytá hodnota uvedená výše. Dále pro ověření příchozího příspěvku formuláře přidejte filtr [ValidateAntiForgeryToken] do metody cíle akce. Příklad:
+Ve stejnou dobu HTML. AntiForgeryToken () přiřadí návštěvníkovi soubor cookie s názvem __RequestVerificationToken se stejnou hodnotou jako náhodná Skrytá hodnota uvedená výše. Dále pro ověření příchozího příspěvku formuláře přidejte filtr [ValidateAntiForgeryToken] do metody cíle akce. Například:
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()
@@ -551,7 +551,7 @@ Filtr autorizace, který kontroluje:
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5, MVC6 |
 | **Atributy**              | Zprostředkovatel identity – ADFS, zprostředkovatel identity – Azure AD |

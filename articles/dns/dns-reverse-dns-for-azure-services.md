@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 15396467e92b3e035add03d0d29888558571aa2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c72e17e601ebf87b0f344a4723159ae22abc81d1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711234"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919863"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurace reverzního DNS pro služby hostované v Azure
 
@@ -33,7 +33,7 @@ Před čtením tohoto článku byste měli být obeznámeni s tímto [přehledem
 V Azure DNS jsou k dispozici výpočetní prostředky (například virtuální počítače, sady škálování virtuálních počítačů nebo clustery Service Fabric) prostřednictvím prostředku PublicIpAddress. Reverzní vyhledávání DNS se konfigurují pomocí vlastnosti ' ReverseFqdn ' objektu PublicIpAddress.
 
 
-Reverzní DNS se v současnosti pro Azure App Service nepodporuje.
+Reverzní DNS se v současné době pro Azure App Service a Application Gateway nepodporuje.
 
 ## <a name="validation-of-reverse-dns-records"></a>Ověření reverzních záznamů DNS
 
@@ -247,11 +247,10 @@ Ne. Azure aktuálně podporuje reverzní DNS jenom pro prostředky IPv4 PublicIp
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Můžu odeslat e-maily externím doménám z výpočetních služeb Azure?
 
-Technická možnost odesílání e-mailů přímo z nasazení Azure závisí na typu předplatného. Bez ohledu na typ předplatného Microsoft doporučuje odesílat odchozí e-mailové služby pomocí důvěryhodných poštovních přenosů. Další podrobnosti najdete v tématu [Rozšířené zabezpečení Azure pro odesílání e-mailů – listopad 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
+Technická možnost odesílání e-mailů přímo z nasazení Azure závisí na typu předplatného. Bez ohledu na typ předplatného Microsoft doporučuje odesílat odchozí e-mailové služby pomocí důvěryhodných poštovních přenosů. Další podrobnosti najdete v tématu [Rozšířené zabezpečení Azure pro odesílání e-mailů – listopad 2017 Update](../virtual-network/troubleshoot-outbound-smtp-connectivity.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o reverzních DNS najdete v tématu [reverzní DNS Lookup v Wikipedii](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
 Naučte se [hostovat zónu zpětného vyhledávání pro rozsah IP adres přiřazený poskytovateli internetových služeb v Azure DNS](dns-reverse-dns-for-azure-services.md).
-

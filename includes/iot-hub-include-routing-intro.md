@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 552a40be0c069d1002ebc7ea4dafe0d6f93a5755
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85128193"
 ---
 [Směrování zpráv](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) umožňuje odesílat data telemetrie ze zařízení IoT do integrovaných koncových bodů kompatibilních s centrem událostí nebo vlastních koncových bodů, jako je BLOB storage, Service Bus fronty, Service Bus témata a Event Hubs. Chcete-li nakonfigurovat vlastní směrování zpráv, vytvořte [dotazy směrování](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) pro přizpůsobení trasy, která odpovídá určité podmínce. Po nastavení se příchozí data automaticky přesměrují na koncové body pomocí služby IoT Hub. Pokud zpráva neodpovídá žádnému z definovaných směrovacích dotazů, bude směrována do výchozího koncového bodu.
@@ -39,7 +39,7 @@ K dokončení částí 1 a 2 tohoto kurzu provedete následující úlohy:
 ## <a name="prerequisites"></a>Požadavky
 
 * V části 1 tohoto kurzu:
-  - Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+  - Mít předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * V části 2 tohoto kurzu:
   - Musíte mít hotovou část 1 tohoto kurzu a prostředky budou stále k dispozici.

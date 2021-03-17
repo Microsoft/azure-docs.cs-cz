@@ -7,16 +7,16 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019017"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Postup dokumentování zdrojů dat v Azure Data Catalog
 
 ## <a name="introduction"></a>Úvod
-**Microsoft Azure Data Catalog** je plně spravovaná cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy **Azure Data Catalog** je vše, co je potřeba k tomu, aby lidé mohli zjišťovat, *pochopit*a používat zdroje dat a pomáhat organizacím získat větší hodnotu z jejich stávajících dat.
+**Microsoft Azure Data Catalog** je plně spravovaná cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy **Azure Data Catalog** je vše, co je potřeba k tomu, aby lidé mohli zjišťovat, *pochopit* a používat zdroje dat a pomáhat organizacím získat větší hodnotu z jejich stávajících dat.
 
 Pokud je zdroj dat zaregistrován ve **Azure Data Catalog**, jeho metadata jsou zkopírována a indexována službou, ale tento scénář nekončí. **Azure Data Catalog** také uživatelům umožňuje poskytnout svou vlastní úplnou dokumentaci, která může popsat použití a běžné scénáře pro zdroj dat.
 
@@ -41,5 +41,5 @@ Výhoda **Azure Data Catalog** dokumentace vám umožní používat Data Catalog
 * Dokumentuje pouze tabulky: obsah je specifický pro daný objekt, ale uživatelé mají více míst pro dokumenty.
 * Kontejnery a tabulky dokumentů: nejucelenější přístup, ale mohou zavádět větší údržbu dokumentů.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Dokumentování zdrojů dat pomocí **Azure Data Catalog** může vytvořit mluvený komentář k vašim datovým assetům, a to co nejvíce podrobností.  Pomocí odkazů můžete propojit obsah uložený v existujícím úložišti obsahu, který přináší existující dokumentaci a datové prostředky dohromady. Jakmile uživatelé zjišťují příslušné datové prostředky, mohou mít úplnou sadu dokumentace.

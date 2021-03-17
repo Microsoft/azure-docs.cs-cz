@@ -8,24 +8,24 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 32efde2cb2497fb8aab415d09a1063ff07c6b0f0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 8c114d6260cf81bcc4fb256fc8a09947ab9ce1d8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837189"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502480"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Výběr správného počtu domén selhání pro škálovací sadu virtuálních počítačů
 Služba Virtual Machine Scale Sets se ve výchozím nastavení vytváří s pěti doménami selhání v oblastech Azure bez zón. Pro oblasti, které podporují nasazení geografických sad virtuálních počítačů a tuto možnost, je výchozí hodnota počtu domén selhání 1 pro každou z těchto zón. FD = 1 v tomto případě předpokládá, že instance virtuálních počítačů patřící do sady škálování budou rozloženy mezi mnoho skříní na nejvyšší úrovni.
 
-Můžete také zvážit zarovnání domén selhání sady škálování s počtem Managed Disks domén selhání. Toto zarovnání může zabránit ztrátě kvora v případě výpadku celé Managed Disks domény selhání. Počet položek FD může být nastaven na hodnotu menší nebo rovna počtu Managed Disks domén selhání dostupných v každé oblasti. V tomto [dokumentu](../virtual-machines/windows/manage-availability.md) najdete informace o počtu Managed disks domén selhání podle oblasti.
+Můžete také zvážit zarovnání domén selhání sady škálování s počtem Managed Disks domén selhání. Toto zarovnání může zabránit ztrátě kvora v případě výpadku celé Managed Disks domény selhání. Počet položek FD může být nastaven na hodnotu menší nebo rovna počtu Managed Disks domén selhání dostupných v každé oblasti. V tomto [dokumentu](../virtual-machines/availability.md) najdete informace o počtu Managed disks domén selhání podle oblasti.
 
 ## <a name="rest-api"></a>REST API
 Vlastnost lze nastavit na hodnotu `properties.platformFaultDomainCount` 1, 2 nebo 3 (výchozí hodnota je 3, pokud není zadána). Další [informace najdete v dokumentaci k REST API.](/rest/api/compute/virtualmachinescalesets/createorupdate)
 
 ## <a name="azure-cli"></a>Azure CLI
-Parametr lze nastavit na hodnotu `--platform-fault-domain-count` 1, 2 nebo 3 (výchozí hodnota je 3, pokud není zadána). Informace najdete [tady](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)v dokumentaci k Azure CLI.
+Parametr lze nastavit na hodnotu `--platform-fault-domain-count` 1, 2 nebo 3 (výchozí hodnota je 3, pokud není zadána). Informace najdete [tady](/cli/azure/vmss#az-vmss-create)v dokumentaci k Azure CLI.
 
 ```azurecli-interactive
 az vmss create \

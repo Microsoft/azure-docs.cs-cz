@@ -7,10 +7,10 @@ ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008623"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace virtuálních počítačů s Windows (Classic)
@@ -140,7 +140,7 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 2. Vygenerujte nový token pomocí RDS-NewRegistrationInfo.
 3. Potvrďte, že parametr-ExpriationHours je nastavený na 72 (maximální hodnota je 99999).
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Chyba: Agent virtuálních počítačů s Windows neoznamuje prezenční signál při spuštění Get-RdsSessionHost.
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Chyba: Agent virtuálních počítačů systému Windows neoznamuje prezenční signál při spuštění Get-RdsSessionHost
 
 **Příčina 1:** Služba RDAgentBootLoader byla zastavena.
 

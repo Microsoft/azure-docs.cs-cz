@@ -10,15 +10,20 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 857195e0befb95035572b5b52a01d151b332518e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: ca3f9da681c60608b5b196b17191f0b4d549f305
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406346"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338363"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí pro hostované uživatelské rozhraní
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Vlastní vyhledávání Bingu poskytuje hostované uživatelské rozhraní, které můžete snadno integrovat do webových stránek a webových aplikací jako fragment kódu JavaScriptu. Pomocí portálu Vlastní vyhledávání Bingu můžete nakonfigurovat možnosti rozložení, barvy a hledání uživatelského rozhraní.
 
@@ -47,9 +52,9 @@ Pokud chcete nakonfigurovat hostované uživatelské rozhraní pro vaše webové
    > [!NOTE]
    > Při volbě barev zvažte přístupnost.
 
-6. V části **Další konfigurace**zadejte odpovídající hodnoty pro vaši aplikaci. Tato nastavení jsou volitelná. Pokud chcete zobrazit efekt použití nebo odebrání, přečtěte si v podokně náhledu na pravé straně. K dispozici jsou následující možnosti konfigurace:  
+6. V části **Další konfigurace** zadejte odpovídající hodnoty pro vaši aplikaci. Tato nastavení jsou volitelná. Pokud chcete zobrazit efekt použití nebo odebrání, přečtěte si v podokně náhledu na pravé straně. K dispozici jsou následující možnosti konfigurace:  
 
-7. Zadejte klíč předplatného hledání nebo ho vyberte v rozevíracím seznamu. Rozevírací seznam se naplní klíči z předplatných vašeho účtu Azure. Viz [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
+7. Zadejte klíč předplatného hledání nebo ho vyberte v rozevíracím seznamu. Rozevírací seznam se naplní klíči z předplatných vašeho účtu Azure. Viz [Cognitive Services účet rozhraní API](../cognitive-services-apis-create-account.md).  
 
 8. Pokud jste povolili automatické návrhy, zadejte klíč předplatného pro automatické návrhy nebo ho vyberte z rozevíracího seznamu. Rozevírací seznam se naplní klíči z předplatných vašeho účtu Azure. Vlastní Automatický návrh vyžaduje konkrétní úroveň předplatného, viz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
@@ -77,7 +82,7 @@ Pro využití hostovaného uživatelského rozhraní:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Podle potřeby přidejte do adresy URL následující parametry dotazu. Informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) reference.
+  > Podle potřeby přidejte do adresy URL následující parametry dotazu. Informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) reference.
   >
   > - q
   > - mkt
@@ -91,7 +96,7 @@ Další informace, včetně vlastního ID konfigurace, najdete v části **konco
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-Chování hostovaného uživatelského rozhraní můžete nakonfigurovat kliknutím na **Další konfigurace**a zadáním hodnot. Tato nastavení jsou volitelná. Pokud chcete zobrazit efekt použití nebo odebrání, přečtěte si v podokně náhledu na pravé straně. 
+Chování hostovaného uživatelského rozhraní můžete nakonfigurovat kliknutím na **Další konfigurace** a zadáním hodnot. Tato nastavení jsou volitelná. Pokud chcete zobrazit efekt použití nebo odebrání, přečtěte si v podokně náhledu na pravé straně. 
 
 ### <a name="web-search-configurations"></a>Konfigurace hledání na webu
 
@@ -148,4 +153,4 @@ Následující konfigurace platí pouze v případě, že používáte hostovan�
 ## <a name="next-steps"></a>Další kroky
 
 - [Zvýraznění textu pomocí dekoračních značek](../bing-web-search/hit-highlighting.md)
-- [Stránkování webových stránek](./page-webpages.md)
+- [Stránkování webových stránek](../bing-web-search/paging-search-results.md)

@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
-ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e2b998432f6c4417da0242d86347ed43acb5071a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424218"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968226"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Import a export souboru zóny DNS pomocí Azure CLI
 
@@ -69,9 +69,9 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 Hodnoty:
 
-* `<resource group>`je název skupiny prostředků pro zónu v Azure DNS.
-* `<zone name>`je název zóny.
-* `<zone file name>`je cesta nebo název souboru zóny, který se má importovat.
+* `<resource group>` je název skupiny prostředků pro zónu v Azure DNS.
+* `<zone name>` je název zóny.
+* `<zone file name>` je cesta nebo název souboru zóny, který se má importovat.
 
 Pokud ve skupině prostředků neexistuje zóna s tímto názvem, vytvoří se pro vás. Pokud již zóna existuje, importované sady záznamů budou sloučeny s existujícími sadami záznamů. 
 
@@ -163,9 +163,9 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 Hodnoty:
 
-* `<resource group>`je název skupiny prostředků pro zónu v Azure DNS.
-* `<zone name>`je název zóny.
-* `<zone file name>`je cesta nebo název souboru zóny, který má být exportován.
+* `<resource group>` je název skupiny prostředků pro zónu v Azure DNS.
+* `<zone name>` je název zóny.
+* `<zone file name>` je cesta nebo název souboru zóny, který má být exportován.
 
 Stejně jako u importu zóny se nejprve musíte přihlásit, zvolit předplatné a nakonfigurovat rozhraní příkazového řádku Azure CLI tak, aby používalo režim Správce prostředků.
 
@@ -179,6 +179,6 @@ az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se [Spravovat sady záznamů a záznamy](dns-getstarted-create-recordset-cli.md) v zóně DNS.
+* Naučte se [Spravovat sady záznamů a záznamy](./dns-getstarted-cli.md) v zóně DNS.
 
 * Přečtěte si, jak [delegovat doménu na Azure DNS](dns-domain-delegation.md).

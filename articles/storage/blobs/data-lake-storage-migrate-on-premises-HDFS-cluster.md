@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e58137dd680ff9a2be2bd657f0969304b526873f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032556"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913109"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrace z úložiště Prem HDFS do Azure Storage s využitím Azure Data Box
 
@@ -37,9 +37,9 @@ K dokončení migrace potřebujete tyto věci.
 
 * [Zařízení Azure Data box](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Seřazení data box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) nebo [data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). 
+  * [Seřazení data box](../../databox/data-box-deploy-ordered.md) nebo [data box Heavy](../../databox/data-box-heavy-deploy-ordered.md). 
 
-  * Připojte [data box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) nebo [data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) k místní síti kabelem.
+  * Připojte [data box](../../databox/data-box-deploy-set-up.md) nebo [data box Heavy](../../databox/data-box-heavy-deploy-set-up.md) k místní síti kabelem.
 
 Pokud jste připraveni, začněte.
 
@@ -53,13 +53,13 @@ Pokud chcete zkopírovat data z místního úložiště HDFS do zařízení Data
 
 Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro úložiště objektů BLOB a objektů do zařízení Data Box. Rozhraní REST API umožní, aby se zařízení zobrazilo jako úložiště HDFS do vašeho clusteru.
 
-1. Před kopírováním dat pomocí REST Identifikujte prvky zabezpečení a připojení, které se připojí k rozhraní REST na Data Box nebo Data Box Heavy. Přihlaste se k místnímu webovému uživatelskému rozhraní Data Box a přejít na stránku **připojit a kopírovat** . Na účtu úložiště Azure pro vaše zařízení v části **nastavení přístupu**vyhledejte a vyberte **REST**.
+1. Před kopírováním dat pomocí REST Identifikujte prvky zabezpečení a připojení, které se připojí k rozhraní REST na Data Box nebo Data Box Heavy. Přihlaste se k místnímu webovému uživatelskému rozhraní Data Box a přejít na stránku **připojit a kopírovat** . Na účtu úložiště Azure pro vaše zařízení v části **nastavení přístupu** vyhledejte a vyberte **REST**.
 
     ![Stránka připojit a kopírovat](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
 2. V dialogu pro přístup k účtu úložiště a nahrávání dat zkopírujte **BLOB Service koncový bod** a **klíč účtu úložiště**. Z koncového bodu služby objektů BLOB vynechejte `https://` a koncové lomítko.
 
-    V tomto případě je koncový bod: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` . Část hostitele identifikátoru URI, kterou budete používat, je: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` . Příklad najdete v tématu Jak se [připojit k REST přes protokol HTTP](/azure/databox/data-box-deploy-copy-data-via-rest). 
+    V tomto případě je koncový bod: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` . Část hostitele identifikátoru URI, kterou budete používat, je: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` . Příklad najdete v tématu Jak se [připojit k REST přes protokol HTTP](../../databox/data-box-deploy-copy-data-via-rest.md). 
 
      ![Dialogová okna přístup k účtu úložiště a nahrání dat](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
@@ -161,7 +161,7 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
 
 Pomocí těchto kroků Připravte a odešlete zařízení Data Box společnosti Microsoft.
 
-1. Nejprve [Příprava k odeslání na data box nebo data box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+1. Nejprve  [Příprava k odeslání na data box nebo data box Heavy](../../databox/data-box-deploy-copy-data-via-rest.md).
 
 2. Až se dokončí příprava zařízení, Stáhněte soubory BOM. Tyto soubory kusovníku nebo manifest budete později používat k ověření dat odesílaných do Azure.
 
@@ -169,9 +169,9 @@ Pomocí těchto kroků Připravte a odešlete zařízení Data Box společnosti 
 
 4. Naplánujte vyzvednutí službou UPS.
 
-    * Data Box zařízení najdete v tématu věnovaném [Dodávání data box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
+    * Data Box zařízení najdete v tématu věnovaném [Dodávání data box](../../databox/data-box-deploy-picked-up.md).
 
-    * Data Box Heavy zařízení najdete v tématu věnovaném [Dodávání data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
+    * Data Box Heavy zařízení najdete v tématu věnovaném [Dodávání data box Heavy](../../databox/data-box-heavy-deploy-picked-up.md).
 
 5. Jakmile Microsoft přijme vaše zařízení, připojí se k síti datového centra a data se nahrají do účtu úložiště, který jste zadali při umístění zařízení do objednávky. Ověřte soubory kusovníku, že všechna vaše data jsou nahraná do Azure. 
 
@@ -184,11 +184,11 @@ Data už máte ve svém účtu Azure Storage. Teď budete používat přístupov
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Vytvoření instančního objektu pro účet Azure Data Lake Storage Gen2
 
-Chcete-li vytvořit instanční objekt, přečtěte si téma [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Chcete-li vytvořit instanční objekt, přečtěte si téma [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-* Při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+* Při provádění kroků v části [přiřazení aplikace k roli](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
 
-* Při provádění kroků v části [získat hodnoty pro podepsání v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku, uložte ID aplikace a hodnoty tajného klíče klienta do textového souboru. Budete je potřebovat brzy.
+* Při provádění kroků v části [získat hodnoty pro podepsání v](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) článku, uložte ID aplikace a hodnoty tajného klíče klienta do textového souboru. Budete je potřebovat brzy.
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Vygeneruje seznam kopírovaných souborů s jejich oprávněními.
 

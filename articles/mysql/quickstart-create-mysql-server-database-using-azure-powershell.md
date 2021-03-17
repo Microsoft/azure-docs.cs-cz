@@ -1,27 +1,27 @@
 ---
 title: 'Rychlý Start: vytvoření serveru-Azure PowerShell-Azure Database for MySQL'
 description: V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for MySQL server ve skupině prostředků Azure.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: f32f6c4366aac1a39dbc1bc4af3b945e259b3280
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d12d447acb3b6bf2b6f84e9768e9f063a9a36b03
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543533"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542299"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí prostředí PowerShell
 
 V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for MySQL server ve skupině prostředků Azure. PowerShell můžete použít k interaktivnímu vytváření a správě prostředků Azure nebo ve skriptech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -45,7 +45,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina.
 
 Následující příklad vytvoří skupinu prostředků s názvem **myresourcegroup** v oblasti **západní USA** .
 
@@ -70,12 +70,12 @@ Následující tabulka obsahuje seznam běžně používaných parametrů a uká
 | SslEnforcement             | Povoleno          | Zda má být pro tento server povolen nebo nikoli protokol SSL. Povolené hodnoty: Enabled, Disabled.                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | Kapacita úložiště serveru (jednotkou jsou megabajty). Platný StorageInMb je minimálně 5120 MB a zvyšuje se o 1024 MB. Další informace o limitech velikosti úložiště najdete v tématu [Azure Database for MySQL cenové úrovně](./concepts-pricing-tiers.md).                                                                               |
 | Verze                    | 5.7              | Hlavní verze MySQL.                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být ** azure_superuser **, ** admin **, ** administrátor **, ** root **, ** host ** nebo ** public**.                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser** , **admin** , **administrátor** , **root** , **host** nebo **public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | Heslo správce uživatele ve formě zabezpečeného řetězce. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.                                       |
 
-Hodnota parametru **SKU** dodržuje cenové úrovně ** \_ \_ virtuální jádra COMPUTE-Generation** , jak je znázorněno v následujících příkladech.
+Hodnota parametru **SKU** dodržuje cenové úrovně **\_ \_ virtuální jádra COMPUTE-Generation** , jak je znázorněno v následujících příkladech.
 
-- `-Sku B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
+- `-Sku B_Gen5_1` mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 - `-Sku GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 - `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
@@ -201,12 +201,12 @@ Další příkazy najdete v [Referenční příručce k MySQL 5.7 – v kapitole
 
 1. V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
 
-   ![nastavení nového připojení](./media/quickstart-create-mysql-server-database-using-azure-powershell/setup-new-connection.png)
+   :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-powershell/setup-new-connection.png" alt-text="nastavení nového připojení":::
 
     |    **Nastavení**    |           **Navrhovaná hodnota**           |                      **Popis**                       |
     | ----------------- | --------------------------------------- | ---------------------------------------------------------- |
     | Název připojení   | My Connection                           | Zadejte popisek pro toto připojení.                        |
-    | Způsob připojení | Standard (TCP/IP)                       | Připojení k Azure Database for MySQL pomocí protokolu TCP/IP |
+    | Způsob připojení | Standardní (TCP/IP)                       | Připojení k Azure Database for MySQL pomocí protokolu TCP/IP |
     | Název hostitele          | `mydemoserver.mysql.database.azure.com` | Název serveru, který jste si dříve poznamenali                           |
     | Port              | 3306                                    | Výchozí port pro MySQL                                 |
     | Uživatelské jméno          | myadmin@mydemoserver                    | Přihlašovací jméno správce serveru, které jste si poznamenali dříve                |
@@ -237,4 +237,4 @@ Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Generování připojovacího řetězce pomocí PowerShellu Azure Database for MySQL](connect-powershell.md)
+> [Návrh Azure Database for MySQL pomocí prostředí PowerShell](tutorial-design-database-using-powershell.md)

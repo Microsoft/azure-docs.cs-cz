@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 46c6eac80ddbff73d99e05c070e66aa1700da174
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683857"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928626"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Onfido s využitím Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Tenant Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , který je propojený s vaším předplatným Azure.
+- [Tenant Azure AD B2C](./tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 
 - [Zkušební účet](https://onfido.com/signup/)Onfido.
 
@@ -74,7 +74,7 @@ Další informace o Onfido najdete v tématu [dokumentace k rozhraní Onfido API
 
 ### <a name="part-1---deploy-the-api"></a>Část 1 – nasazení rozhraní API
 
-- Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+- Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](/visualstudio/deployment/quickstart-deploy-to-azure).
 - Nastavte CORS, přidejte **povolený původ** jako https://{your_tenant_name}. b2clogin. com.
 
 >[!NOTE]
@@ -82,7 +82,7 @@ Další informace o Onfido najdete v tématu [dokumentace k rozhraní Onfido API
 
 #### <a name="adding-sensitive-configuration-settings"></a>Přidávání nastavení citlivých konfigurací
 
-Nastavení aplikace je možné nakonfigurovat ve [službě App Service v Azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). App Service umožňuje nakonfigurovat nastavení tak, aby se správně nakonfigurovala bez jejich kontroly do úložiště. Rozhraní REST API potřebuje následující nastavení:
+Nastavení aplikace je možné nakonfigurovat ve [službě App Service v Azure](../app-service/configure-common.md#configure-app-settings). App Service umožňuje nakonfigurovat nastavení tak, aby se správně nakonfigurovala bez jejich kontroly do úložiště. Rozhraní REST API potřebuje následující nastavení:
 
 | Název nastavení aplikace | Zdroj | Poznámky |
 |:-------------------------|:-------|:-------|
@@ -92,15 +92,15 @@ Nastavení aplikace je možné nakonfigurovat ve [službě App Service v Azure](
 
 #### <a name="configure-your-storage-location"></a>Konfigurace umístění úložiště
 
-1. Nastavení [kontejneru úložiště objektů BLOB v účtu úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
+1. Nastavení [kontejneru úložiště objektů BLOB v účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 
-2. Soubory uživatelského rozhraní uložte ze složky uživatelského rozhraní do kontejneru objektů BLOB.
+2. Soubory uživatelského rozhraní uložte ze [složky uživatelského rozhraní](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) do kontejneru objektů BLOB.
 
 3. Pomocí těchto pokynů povolte přístup CORS k kontejneru úložiště, který jste vytvořili:
 
-   a. Přejděte na **Nastavení**  > **povolený počátek**a zadejte `https://{your_tenant_name}.b2clogin.com` . Nahraďte název-tenanta názvem vašeho tenanta Azure AD B2C. Například https://fabrikam.b2clogin.com . Při zadávání názvu tenanta použijte všechna malá písmena.
+   a. Přejděte na **Nastavení**  > **povolený počátek** a zadejte `https://{your_tenant_name}.b2clogin.com` . Nahraďte název-tenanta názvem vašeho tenanta Azure AD B2C. Například https://fabrikam.b2clogin.com . Při zadávání názvu tenanta použijte všechna malá písmena.
 
-   b. U **povolených metod**vyberte `GET` a `PUT` .
+   b. U **povolených metod** vyberte `GET` a `PUT` .
 
    c. Vyberte **Uložit**.
 
@@ -110,7 +110,7 @@ Nastavení aplikace je možné nakonfigurovat ve [službě App Service v Azure](
 
 2. Otevřete každý soubor HTML.
 
-3. Vyhledejte a nahraďte {Your-UI-BLOB-Container-URL} adresou URL místa, kde se nachází vaše uživatelské rozhraní **ocean_blue**, **DIST**a **assety** složky.
+3. Vyhledejte a nahraďte {Your-UI-BLOB-Container-URL} adresou URL místa, kde se nachází vaše uživatelské rozhraní **ocean_blue**, **DIST** a **assety** složky.
 
 4. Vyhledejte a nahraďte {The-Intermediate-API-URL} adresou URL služby zprostředkující API App Service.
 
@@ -118,13 +118,13 @@ Nastavení aplikace je možné nakonfigurovat ve [službě App Service v Azure](
 
 1. Soubory uživatelského rozhraní uložte ze složky uživatelského rozhraní do kontejneru objektů BLOB.
 
-2. Ke správě souborů a přístupových oprávnění použijte [Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-use-storage-explorer-managed-disks) .
+2. Ke správě souborů a přístupových oprávnění použijte [Průzkumník služby Azure Storage](../virtual-machines/disks-use-storage-explorer-managed-disks.md) .
 
 ### <a name="part-3---configure-azure-ad-b2c"></a>Část 3 – konfigurace Azure AD B2C
 
 #### <a name="replace-the-configuration-values"></a>Nahraďte konfigurační hodnoty.
 
-V části poskytnuté vlastní zásady vyhledejte následující zástupné symboly a nahraďte je odpovídajícími hodnotami z vaší instance.
+V části poskytnuté [vlastní zásady](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies)vyhledejte následující zástupné symboly a nahraďte je odpovídajícími hodnotami z vaší instance.
 
 | Zástupný symbol | Nahradit hodnotou | Příklad  |
 |:---------------|:----------------|:-------------------|
@@ -135,14 +135,14 @@ V části poskytnuté vlastní zásady vyhledejte následující zástupné symb
 | {your_tenant_extensions_appid}                         | ID aplikace pro aplikaci úložiště vašeho tenanta                                      | 01234567-89AB-CDEF-0123-456789ABCDEF         |
 | {your_tenant_extensions_app_objectid}                  | ID objektu aplikace úložiště vašeho tenanta                                   | 01234567-89AB-CDEF-0123-456789ABCDEF         |
 | {your_app_insights_instrumentation_key} | Klíč instrumentace instance App Insights *| 01234567-89AB-CDEF-0123-456789ABCDEF|
-|{your_ui_file_base_url}| Adresa URL místa, kde se nachází vaše uživatelské rozhraní **ocean_blue**, **DIST**a složky **assetů** | https://yourstorage.blob.core.windows.net/UI/|
+|{your_ui_file_base_url}| Adresa URL místa, kde se nachází vaše uživatelské rozhraní **ocean_blue**, **DIST** a složky **assetů** | https://yourstorage.blob.core.windows.net/UI/|
 | {your_app_service_URL}                                 | Adresa URL služby App Service, kterou jste nastavili                                             | `https://yourapp.azurewebsites.net`          |
 
 * App Insights může být v jiném tenantovi. Tento krok je volitelný. Odeberte odpovídající TechnicalProfiles a OrchestrationSteps, pokud není potřeba.
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>Část 4 – Konfigurace zásad Azure AD B2C
 
-Pokyny, jak nastavit tenanta Azure AD B2C a nakonfigurovat zásady, najdete v tomto [dokumentu](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) .
+Pokyny, jak nastavit tenanta Azure AD B2C a nakonfigurovat zásady, najdete v tomto [dokumentu](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) .
 
 >[!NOTE]
 > Jako osvědčený postup doporučujeme, aby zákazníci přidávají oznámení o souhlasu na stránce kolekce atributů. Upozorněte uživatele, že informace budou odeslány službám třetích stran pro ověření identity.
@@ -169,6 +169,6 @@ Pokyny, jak nastavit tenanta Azure AD B2C a nakonfigurovat zásady, najdete v to
 
 Další informace najdete v následujících článcích:
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

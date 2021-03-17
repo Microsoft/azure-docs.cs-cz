@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792443"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565067"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Přidání obchodních partnerů do účtů integrace pro Azure Logic Apps
 
@@ -47,13 +47,13 @@ V rámci smlouvy zadáte podrobnosti pro zpracování příchozích a odchozích
 
 1. Vyberte dlaždici **partneři** .
 
-   ![Vybrat dlaždici partneři](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   ![Snímek obrazovky, který zobrazuje dlaždici partneři](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
 1. V části **partneři**klikněte na možnost **Přidat**. V části **Přidat partnera**zadejte podrobnosti o partnerovi, jak je popsáno v následující tabulce.
 
    ![Klikněte na tlačítko Přidat a zadejte podrobnosti o partnerovi.](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Název** | Yes | Název partnera |
    | **Kvalifikátor** | Yes | Ověřovací text, který poskytuje organizacím jedinečné obchodní identity, například **D-U-N-S (Dun & Bradstreet)**. <p>Partneři se můžou rozhodnout pro vzájemně definovanou obchodní identitu. U těchto scénářů vyberte možnost **vzájemně definované** pro EDIFACT nebo **vzájemně definované (X12)** pro X12. <p>Pro RosettaNet vyberte pouze **Duns**, což je standard. |
@@ -84,11 +84,11 @@ Vyberte dlaždici **partneři** .
 
    V případě RosettaNet můžete v části **vlastnosti partnerů RosettaNet**zadat tyto další informace:
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Klasifikace partnerů** | No | Typ organizace partnera |
    | **Kód dodavatelského řetězce** | No | Kód dodavatelského řetězce partnera, například "informační technologie" nebo "elektronické součásti" |
-   | **Kontaktní osoba** | No | Jméno kontaktní osoby partnera |
+   | **Jméno kontaktu** | No | Jméno kontaktní osoby partnera |
    | **E-mail** | No | E-mailová adresa partnera |
    | **Fax** | No | Faxové číslo partnera |
    | **Telephone** | No | Telefonní číslo partnera |
@@ -100,7 +100,7 @@ Vyberte dlaždici **partneři** .
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte účet pro integraci. Vyberte dlaždici **partneři** .
 
-   ![Vybrat dlaždici partneři](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   ![Snímek obrazovky, který zobrazuje dlaždici partneři, kterou vyberete, když chcete odstranit partnera.](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
 1. V části **partneři**vyberte partnera, kterého chcete odstranit. Zvolte **Odstranit**.
 

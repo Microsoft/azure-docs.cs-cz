@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3394754f2829018f7862b3775f8ab2cb2d07d005
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078757"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051356"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgradovat interní Load Balancer Azure – vyžaduje se odchozí připojení
-[Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](https://docs.microsoft.com/azure/load-balancer/skus#skus). Vzhledem k tomu, že standardní interní Load Balancer neposkytuje odchozí připojení, poskytujeme řešení, které místo toho vytvoří standardní veřejný Load Balancer.
+[Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](./skus.md#skus). Vzhledem k tomu, že standardní interní Load Balancer neposkytuje odchozí připojení, poskytujeme řešení, které místo toho vytvoří standardní veřejný Load Balancer.
 
 Existují čtyři fáze upgradu:
 
@@ -42,7 +42,7 @@ K dispozici je skript Azure PowerShell, který provede následující akce:
 
 ## <a name="download-the-script"></a>Stáhnout skript
 
-Stáhněte si skript migrace z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0).
+Stáhněte si skript migrace z  [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0).
 ## <a name="use-the-script"></a>Použití skriptu
 
 V závislosti na nastaveních a preferencích místního prostředí PowerShellu jsou k dispozici dvě možnosti:
@@ -52,7 +52,7 @@ V závislosti na nastaveních a preferencích místního prostředí PowerShellu
 
 Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az` . Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
 
-### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody install-Script
+### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody Install-Script
 
 Pokud chcete použít tuto možnost, musíte mít v počítači nainstalované moduly AZ pro Azure. Pokud jsou nainstalovány, následující příkaz zobrazí chybu. Můžete buď odinstalovat moduly AZ pro Azure, nebo použít jinou možnost ke stažení skriptu ručně a jeho spuštění.
   
@@ -100,7 +100,7 @@ Tady je několik scénářů, jak můžete nakonfigurovat virtuální počítač
  
     1. V nabídce vlevo vyberte **všechny prostředky** a potom v seznamu prostředků vyberte **nově vytvořenou Standard Load Balancer** .
    
-    1. V části **Nastavení**vyberte **back-endové fondy**.
+    1. V části **Nastavení** vyberte **back-endové fondy**.
    
     1. Vyberte back-end fond, který se shoduje se back-end fondem základního Load Balancer, vyberte následující hodnotu: 
       - **Virtuální počítač**: rozevírací seznam a výběr virtuálních počítačů z odpovídajícího back-end fondu základní Load Balancer.
@@ -109,16 +109,16 @@ Tady je několik scénářů, jak můžete nakonfigurovat virtuální počítač
     >U virtuálních počítačů, které mají veřejné IP adresy, budete muset nejprve vytvořit standardní IP adresy, kde není zaručena stejná IP adresa. Zruší přidružení virtuálních počítačů ze základních IP adres a přidruží je k nově vytvořeným standardním IP adresám. Pak budete moct postupovat podle pokynů pro přidání virtuálních počítačů do back-endového fondu Standard Load Balancer. 
 
 * **Vytváření nových virtuálních počítačů pro přidání do back-endovéch fondů nově vytvořených standardních veřejných Load Balancer**.
-    * Další pokyny k vytvoření virtuálního počítače a jeho přidružení k Standard Load Balancer najdete [tady](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
+    * Další pokyny k vytvoření virtuálního počítače a jeho přidružení k Standard Load Balancer najdete [tady](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines).
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Vytvoření odchozího pravidla pro odchozí připojení
 
-Postupujte podle [pokynů](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) pro vytvoření odchozího pravidla, abyste mohli
+Postupujte podle [pokynů](./quickstart-load-balancer-standard-public-powershell.md#create-outbound-rule-configuration) pro vytvoření odchozího pravidla, abyste mohli
 * Definice odchozího překladu adres (NAT) od začátku
 * Škálujte a optimalizujte chování stávajícího odchozího překladu adres (NAT).
 
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>Vytvoření pravidel NSG pro virtuální počítače, které budou zdržet komunikaci z Internetu nebo na ně
-Pokud byste chtěli upustit od připojení k virtuálním počítačům z Internetu, můžete vytvořit [pravidlo NSG](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) na síťovém rozhraní virtuálních počítačů.
+Pokud byste chtěli upustit od připojení k virtuálním počítačům z Internetu, můžete vytvořit [pravidlo NSG](../virtual-network/manage-network-security-group.md) na síťovém rozhraní virtuálních počítačů.
 
 ## <a name="common-questions"></a>Časté dotazy
 
@@ -128,11 +128,7 @@ Yes. Podívejte se na [Upozornění a omezení](#caveatslimitations).
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Přepíná Azure PowerShell skript také přenos z mé základní Load Balancer na nově vytvořenou Standard Load Balancer?
 
-Ne. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
-
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
-  
-Můžete odeslat e-mail slbupgradesupport@microsoft.com , otevřít případ podpory s podporou Azure nebo obojí.
+No. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
 
 ## <a name="next-steps"></a>Další kroky
 

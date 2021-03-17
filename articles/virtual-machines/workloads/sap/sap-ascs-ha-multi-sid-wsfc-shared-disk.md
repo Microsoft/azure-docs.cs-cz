@@ -9,30 +9,28 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8c235cd204b86573746be4bce615939f3b072fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92d881a85f5719e15db6fe24b80deed3b3d3fe35
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82977902"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504435"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>Vysoká dostupnost ASCS/SCS instance SAP pomocí clusteringu s podporou převzetí služeb při selhání Windows serveru a sdíleného disku v Azure
 
-> ![Windows][Logo_Windows] Windows
+> ![Operační systém Windows][Logo_Windows] Windows
 >
-
-V září 2016 společnost Microsoft vydala funkci, kde můžete spravovat více virtuálních IP adres pomocí [interního nástroje pro vyrovnávání zatížení Azure][load-balancer-multivip-overview]. Tato funkce už v externím nástroji pro vyrovnávání zatížení Azure existuje. 
 
 Pokud máte nasazení SAP, musíte použít interní nástroj pro vyrovnávání zatížení a vytvořit konfiguraci clusteru Windows pro instance služby SAP Central Services (ASCS/SCS).
 
-Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do konfigurace SAP multi-SID instalací dalších clusterových instancí SAP ASCS/SCS do stávajícího clusteru služby Windows Server Failover Clustering (WSFC) se sdíleným diskem. Po dokončení tohoto procesu jste nakonfigurovali cluster SAP s více identifikátory SID.
+Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do konfigurace SAP multi-SID instalací dalších clusterových instancí SAP ASCS/SCS do stávajícího clusteru služby Windows Server Failover Clustering (WSFC) se sdíleným diskem s využitím pro simulaci sdíleného disku. Po dokončení tohoto procesu jste nakonfigurovali cluster SAP s více identifikátory SID.
 
 > [!NOTE]
 > Tato funkce je k dispozici pouze v modelu nasazení Azure Resource Manager.
@@ -44,6 +42,9 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 
 Další informace o limitech pro vyrovnávání zatížení najdete v části "privátní front-end IP adresa na nástroj pro vyrovnávání zatížení" v části [omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager].
 
+> [!IMPORTANT]
+> Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.  
+
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
@@ -54,9 +55,10 @@ Cluster služby WSFC jste už nakonfigurovali pro použití pro jednu instanci S
 
 > [!IMPORTANT]
 > Nastavení musí splňovat následující podmínky:
-> * Instance SAP ASCS/SCS musí sdílet stejný cluster služby WSFC.
-> * Každý identifikátor SID systému správy databáze (DBMS) musí mít vlastní vyhrazený cluster WSFC.
-> * Aplikační servery SAP, které patří k jednomu identifikátoru zabezpečení systému SAP, musí mít vlastní vyhrazené virtuální počítače.
+> * Instance SAP ASCS/SCS musí sdílet stejný cluster služby WSFC.  
+> * Každý identifikátor SID systému správy databáze (DBMS) musí mít vlastní vyhrazený cluster WSFC.  
+> * Aplikační servery SAP, které patří k jednomu identifikátoru zabezpečení systému SAP, musí mít vlastní vyhrazené virtuální počítače.  
+> * Kombinace replikačního serveru fronty 1 a fronty replikačního serveru 2 ve stejném clusteru není podporovaná.  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>Architektura SAP ASCS/SCS s více identifikátory SID se sdíleným diskem
 
@@ -70,7 +72,7 @@ Kompletní na šířku se dvěma systémy SAP s vysokou dostupností by vypadaly
 
 ![Nastavení Multi-SID s vysokou dostupností se dvěma čísly SID systému SAP][sap-ha-guide-figure-6003]
 
-## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a><a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a>Příprava infrastruktury pro scénář s více identifikátory SID SAP
+## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a><a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> Příprava infrastruktury pro scénář s více identifikátory SID SAP
 
 K přípravě infrastruktury můžete nainstalovat další instanci SAP ASCS/SCS s následujícími parametry:
 
@@ -204,7 +206,7 @@ Po spuštění skriptu se výsledky zobrazí v Azure Portal, jak je znázorněno
 
 Pro každou další instanci SAP ASCS/SCS je nutné přidat nový disk pro sdílení clusteru. Pro Windows Server 2012 R2 se sdílený disk clusteru služby WSFC, který se právě používá, je softwarové řešení s.
 
-Udělejte toto:
+Postupujte následovně:
 1. Přidejte další disk nebo disky stejné velikosti (které je třeba protáhnout) do každého uzlu clusteru a naformátujte je.
 2. Nakonfigurujte replikaci úložiště s využitím datakeep.
 
@@ -246,8 +248,6 @@ Postup vysoké úrovně je následující:
 
     Otevřete také port testu interního nástroje pro vyrovnávání zatížení Azure, který je 62350 v našem scénáři. Je popsán [v tomto článku][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port].
 
-7. [Změňte typ spuštění instance služby pro vyhodnocování příjmu pro příjem (olajících) SAP][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type].
-
 8. Nainstalujte primární aplikační Server SAP na novém vyhrazeném virtuálním počítači, jak je popsáno v instalační příručce SAP.  
 
 9. Nainstalujte další aplikační Server SAP na nový vyhrazený virtuální počítač, jak je popsáno v instalační příručce SAP.
@@ -285,7 +285,7 @@ Postup vysoké úrovně je následující:
 [sap-high-availability-installation-wsfc-shared-disk]:sap-high-availability-installation-wsfc-shared-disk.md
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
-[sap-net-weaver-ports-ascs-scs-ports]:sap-high-availability-infrastructure-wsfc-shared-disk.md#0f3ee255-b31e-4b8a-a95a-d9ed6200468b
+[sap-net-weaver-ports-ascs-scs-ports]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -437,4 +437,4 @@ Postup vysoké úrovně je následující:
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
-[virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
+[virtual-machines-manage-availability]:../../availability.md

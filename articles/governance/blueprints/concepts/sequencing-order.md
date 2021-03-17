@@ -1,14 +1,14 @@
 ---
 title: Pochopení pořadí sekvence nasazení
 description: Přečtěte si o výchozím pořadí, během kterého jsou v průběhu přiřazení podrobného plánu nasazeny artefakty podrobného plánu a jak přizpůsobit pořadí nasazení.
-ms.date: 05/06/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: ada7e7771e44e6f43c8546e8307fd5d2b218c009
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970616"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918224"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Porozumění sekvenci nasazení v Azure modrotisky
 
@@ -44,7 +44,7 @@ V rámci každého artefaktu **skupiny prostředků** se pro artefakty, které s
 
 Při sestavování velkých podrobných definic podrobného plánu může být potřeba, aby se prostředky vytvořily v určitém pořadí. Nejběžnějším vzorem použití tohoto scénáře je, že definice podrobného plánu obsahuje několik šablon ARM. Azure Modrotiskys zpracovává tento model tím, že umožňuje definovat pořadí sekvencování.
 
-Řazení je provedeno definováním `dependsOn` vlastnosti ve formátu JSON. Tato vlastnost podporuje definici podrobného plánu, pro skupiny prostředků a objekty artefaktů. `dependsOn`je pole řetězců názvů artefaktů, které musí být před vytvořením vytvořen konkrétní artefakt.
+Řazení je provedeno definováním `dependsOn` vlastnosti ve formátu JSON. Tato vlastnost podporuje definici podrobného plánu, pro skupiny prostředků a objekty artefaktů. `dependsOn` je pole řetězců názvů artefaktů, které musí být před vytvořením vytvořen konkrétní artefakt.
 
 > [!NOTE]
 > Při vytváření objektů podrobného plánu získá každý prostředek artefaktu svůj název z názvu souboru, pokud používáte [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact), nebo koncový bod adresy URL, pokud se používá [REST API](/rest/api/blueprints/artifacts/createorupdate). odkazy na _zdroj_ v artefaktech se musí shodovat s odkazy definovanými v definici podrobného plánu.
@@ -141,8 +141,8 @@ Příkladem je skupina prostředků, která závisí na zásadě na úrovni pře
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
-- Principy použití [statických a dynamických parametrů](parameters.md)
-- Použití [zamykání prostředků podrobného plánu](resource-locking.md)
+- Další informace o [životním cyklu podrobného plánu](./lifecycle.md)
+- Principy použití [statických a dynamických parametrů](./parameters.md)
+- Použití [zamykání prostředků podrobného plánu](./resource-locking.md)
 - Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
 - Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

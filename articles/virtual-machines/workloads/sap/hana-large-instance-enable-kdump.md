@@ -6,27 +6,33 @@ documentationcenter: ''
 author: prtyag
 manager: hrushib
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4b06cbcbef79e243116bddb33adbcf6476fac8a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488881"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213364"
 ---
-# <a name="enable-kdump-service"></a>Povolit službu kdump
+# <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Kdump pro SAP HANA ve velkých instancích Azure (HLI)
+
+Konfigurace a povolení kdump je krok, který je nutný k řešení potíží se systémovými chybami, které nemají jasnou příčinu.
+V některých případech dojde k neočekávanému selhání systému, který nelze vysvětlit při potížích s hardwarem nebo infrastrukturou.
+V těchto případech může dojít k potížím s operačním systémem nebo aplikací a kdump umožní SUSE zjistit, proč došlo k chybě systému.
+
+## <a name="enable-kdump-service"></a>Povolit službu kdump
 
 Tento dokument popisuje podrobnosti o tom, jak povolit službu kdump ve velké instanci Azure HANA (**typ I a typ II**).
 
 ## <a name="supported-skus"></a>Podporované SKU
 
-|  Typ velké instance Hana   |  Dodavatel operačního systému   |  Verze balíčku operačního systému   |  SKU        |
+|  Typ velké instance Hana   |  Dodavatel operačního systému   |  Verze balíčku operačního systému   |  SKU |
 |-----------------------------|--------------|-----------------------|-------------|
 |   Typ I                    |  SuSE        |   SLES 12 SP3         |  S224m      |
 |   Typ I                    |  SuSE        |   SLES 12 SP4         |  S224m      |
@@ -61,7 +67,11 @@ Tento dokument popisuje podrobnosti o tom, jak povolit službu kdump ve velké i
 
 ## <a name="setup-details"></a>Podrobnosti o nastavení
 
-- Skript, který povoluje kdump, najdete [tady](https://github.com/Azure/sap-hana/blob/master/tools/enable-kdump.sh) .
+- Skript, který povoluje kdump, najdete [tady](https://github.com/Azure/sap-hana-tools/blob/master/tools/enable-kdump.sh) .
+> [!NOTE]
+> Tento skript se provede na základě našeho nastavení testovacího prostředí a zákazník se očekává, že se obrátí na dodavatele operačního systému za účelem dalšího ladění.
+> Pro nové a stávající servery pro ukládání výpisů paměti se bude zřizovat samostatná logická jednotka (LUN) a skript se postará o konfiguraci systému souborů z logické jednotky (LUN).
+> Společnost Microsoft nebude zodpovědná za analýzu výpisu paměti. Aby mohl zákazník získat analýzu, musí otevřít lístek s dodavatelem operačního systému.
 
 - Spusťte tento skript pro rozsáhlou instanci HANA pomocí příkazu níže.
 
@@ -72,7 +82,7 @@ Tento dokument popisuje podrobnosti o tom, jak povolit službu kdump ve velké i
     sudo bash enable-kdump.sh
     ```
 
-- Pokud je příkaz kdump Outputs úspěšně povolený, restartujte prosím systém, aby se změna projevila, a pak se kdump úspěšně povolí. Změny se projeví až po restartování systému.
+- Pokud je příkaz kdump Outputs úspěšně povolený, nezapomeňte restartovat systém, aby se změny projevily úspěšně.
 
 - Pokud se výstupu příkazu nepovedlo provést určitou operaci, ukončí se!!!!, služba kdump není povolená. Informace najdete v části [problém podpory](#support-issue).
 
@@ -104,3 +114,6 @@ Pokud se skript nepovede s chybou nebo kdump není povolený, vyvolejte žádost
 * Verze operačního systému
 
 * Verze jádra
+
+## <a name="related-documents"></a>Související dokumenty
+- Další informace o [konfiguraci kdump](https://www.suse.com/support/kb/doc/?id=3374462)

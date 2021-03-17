@@ -10,12 +10,13 @@ ms.date: 07/08/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: d4bead0ad73bd1315ce114c08320c6673ab0f42d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 37b8c79df5b208feea185292fa09c323b64fa27d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185151"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89001803"
 ---
 # <a name="configure-transport-layer-security-tls-for-a-client-application"></a>Konfigurace protokolu TLS (Transport Layer Security) pro klientskou aplikaci
 

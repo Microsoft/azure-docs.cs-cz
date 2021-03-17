@@ -4,12 +4,12 @@ description: Naučte se, jak obnovitelné odstranění může chránit sdílené
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 52a116320e07c25d4ee7f00b8063ca15faeb8560
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282700"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89179908"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Náhodné odstranění ochrany sdílených složek Azure pomocí Azure Backup
 
@@ -53,7 +53,7 @@ Pokud máte v účtu úložiště aspoň jednu chráněnou sdílenou složku, zn
 >Před zahájením další naplánované úlohy zálohování s chráněnou sdílenou složkou v účtu úložiště byste měli provést krok 2. Vzhledem k tomu, že při každém spuštění úlohy zálohování znovu povolíte obnovitelné odstranění pro všechny sdílené složky v účtu úložiště.
 
 >[!WARNING]
->Po deaktivaci obnovitelného odstranění v kroku 2 je operace odstranění prováděná proti sdíleným složkám trvalá operace odstranění. To znamená, že pokud omylem odstraníte zálohovanou sdílenou složku po vypnutí možnosti obnovitelné odstranění, ztratíte tím všechny snímky a nebude možné obnovit data.
+>Po deaktivaci obnovitelného odstranění v kroku 2 je operace odstranění prováděná proti sdíleným složkám trvalá operace odstranění. Takže pokud omylem odstraníte zálohovanou sdílenou složku po zakázání obnovitelného odstranění, ztratíte všechny vaše snímky a nebudete moct data obnovit.
 
 ### <a name="in-the-context-of-a-file-shares-soft-delete-setting-what-changes-does-azure-backup-do-when-i-unregister-a-storage-account"></a>V kontextu nastavení obnovitelného odstranění sdílené složky se u kterých změn Azure Backup udělat, když zruším registraci účtu úložiště?
 

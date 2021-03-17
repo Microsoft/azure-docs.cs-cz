@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: fbbb298dd9e5b568e6a1dc2c4ef731b8521f8308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d736c09fc1c9490f79dfc526895970e01b8b45cc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556023"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963177"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Nasazení místního zařízení StorSimple na portálu pro státní správu
 
@@ -42,7 +42,7 @@ K dokončení této instalace a procesu konfigurace budete potřebovat oprávně
 ## <a name="deployment-steps"></a>Kroky nasazení
 Pomocí níže uvedených požadovaných kroků zařízení StorSimple nakonfigurujte a připojte ke službě Správce zařízení StorSimple. Kromě požadovaných kroků jsou k dispozici volitelné kroky a postupy, které může být nutné provést během nasazování. Informace o tom, kdy je vhodné provést jednotlivé volitelné kroky, jsou vždy uvedeny v příslušných požadovaných krocích nasazení.
 
-| Krok | Description |
+| Krok | Popis |
 | --- | --- |
 | **POŽADOVANÝ** |Požadavky je nutné splnit v rámci přípravy na nasazení. |
 | [Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist) |Kontrolní seznam použijte ke shromáždění a zaznamenání informací před nasazením a během nasazení. |
@@ -153,7 +153,7 @@ Proveďte tyto kroky na hostiteli s Windows serverem.
 
 > [!IMPORTANT]
 > * K zajištění vysoké dostupnosti vašeho řešení StorSimple doporučujeme před konfigurací standardu iSCSI nakonfigurovat na hostitelských serverech funkci MPIO (volitelné). Konfigurace funkce MPIO na hostitelských serverech zajistí, že servery budou tolerovat chyby připojení, sítě a rozhraní.
-> * Pokyny k instalaci a konfiguraci funkce MPIO a standardu iSCSI v hostiteli se systémem Windows Server najdete v tématu [Konfigurace funkce MPIO pro zařízení StorSimple](storsimple-configure-mpio-windows-server.md). Tyto kroky budou zahrnovat také kroky připojení, inicializace a formátování svazků zařízení StorSimple.
+> * Pokyny k instalaci a konfiguraci funkce MPIO a standardu iSCSI v hostiteli se systémem Windows Server najdete v tématu [Konfigurace funkce MPIO pro zařízení StorSimple](./storsimple-8000-configure-mpio-windows-server.md). Tyto kroky budou zahrnovat také kroky připojení, inicializace a formátování svazků zařízení StorSimple.
 > * Pokyny k instalaci a konfiguraci funkce MPIO a standardu iSCSI v hostiteli se systémem Linux najdete v tématu [Konfigurace funkce MPIO pro hostitele zařízení StorSimple se systémem Linux](storsimple-configure-mpio-on-linux.md)
 
 Pokud se rozhodnete, že funkci MPIO konfigurovat nebudete, připojte, inicializujte a formátujte svazky zařízení StorSimple v hostiteli se systémem Windows Server pomocí následujících kroků.
@@ -172,7 +172,7 @@ Ruční zálohování lze provést kdykoliv. Popis potřebného postupu najdete 
 ## <a name="configure-a-new-storage-account-for-the-service"></a>Konfigurace nového účtu úložiště pro službu
 Toto je volitelný krok, který je potřeba provést pouze v případě, že jste ve své službě nepovolili automatické vytvoření účtu úložiště. K vytvoření kontejneru svazků zařízení StorSimple je potřeba účet služby Microsoft Azure Storage.
 
-Pokud potřebujete vytvořit účet služby Azure Storage v jiné oblasti, postupujte podle pokynů v tématu [Účty Azure Storage](../storage/common/storage-create-storage-account.md).
+Pokud potřebujete vytvořit účet služby Azure Storage v jiné oblasti, postupujte podle pokynů v tématu [Účty Azure Storage](../storage/common/storage-account-create.md).
 
 Proveďte následující kroky na portálu pro státní správu na stránce **služby StorSimple Device Manager** .
 
@@ -199,4 +199,3 @@ Proveďte následující kroky na portálu pro státní správu, abyste vytvoři
 ## <a name="next-steps"></a>Další kroky
 * Konfigurace [virtuálního zařízení](storsimple-8000-cloud-appliance-u2.md)
 * Ke správě zařízení StorSimple použijte [službu StorSimple Device Manager](storsimple-8000-manager-service-administration.md) .
-

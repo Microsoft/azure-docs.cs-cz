@@ -1,16 +1,17 @@
 ---
-title: Vykreslení scény Blenderu pomocí služby Azure Batch a nástroje Batch Explorer
+title: Kurz – vykreslení scény v Blendu pomocí Azure Batch a Batch Explorer
 description: Kurz – Vykreslení několika snímků ze scény Blenderu pomocí služby Azure Batch a klientské aplikace Batch Explorer
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ROBOTS: NOINDEX
+ms.openlocfilehash: 11805d2a15e7f369ad38ab7e92409c1b357d2d8e
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964800"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490836"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Kurz: Vykreslení scény Blenderu pomocí nástroje Batch Explorer
 
@@ -93,6 +94,7 @@ Stav fondu a virtuálních počítačů můžete monitorovat v zobrazení Pools 
 ## <a name="create-a-rendering-job"></a>Vytvoření úlohy vykreslování
 
 Vytvořte úlohu vykreslování pro vykreslení několika snímků s využitím fondu, který jste vytvořili:
+
 * V hlavní nabídce na levé straně vyberte položku nabídky Gallery (Galerie).
 * Výběrem položky Blender zobrazte seznam položek aplikací.
 * Vyberte položky pro vykreslování snímků na Windows Serveru.
@@ -137,6 +139,18 @@ Po dokončení všech úkolů se úloha označí jako dokončená: ![Dokončená
 * Klikněte na něj pravým tlačítkem a vyberte Delete (Odstranit) nebo vyberte ikonu koše nad fondem.
 
 ## <a name="next-steps"></a>Další kroky
-* V části Gallery (Galerie) prozkoumejte vykreslovací aplikace, které jsou v nástroji Batch Explorer k dispozici.
-* Pro každou aplikaci je k dispozici několik šablon a jejich počet se časem bude rozšiřovat.  Pro Blender například existují šablony, které rozdělí obrázek na čtverce, aby bylo možné části obrázku vykreslit paralelně.
-* Komplexní popis možností vykreslování najdete v [této](./batch-rendering-service.md) sadě článků.
+
+V tomto kurzu jste se naučili:
+
+> [!div class="checklist"]
+> * Nahrání scény Blenderu do úložiště Azure
+> * Vytvoření fondu Batch s několika uzly pro účely vykreslování
+> * Vykreslení několika snímků
+> * Zobrazení a stažení souborů s vykreslenými snímky
+
+Pokračujte tím, že prozkoumáte aplikace pro vykreslování dostupné prostřednictvím Batch Explorer v části **Galerie** . Pro každou aplikaci je k dispozici několik šablon a jejich počet se časem bude rozšiřovat. Pro Blender například existují šablony, které rozdělí obrázek na čtverce, aby bylo možné části obrázku vykreslit paralelně.
+
+Další informace o vykreslování v cloudovém měřítku najdete v popisu možností služby Batch Rendering.
+
+> [!div class="nextstepaction"]
+> [Služba Batch Rendering](batch-rendering-service.md)

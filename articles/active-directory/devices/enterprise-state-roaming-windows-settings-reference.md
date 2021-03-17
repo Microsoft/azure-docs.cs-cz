@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85252963"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
@@ -28,10 +28,10 @@ V následující tabulce najdete souhrn typů zařízení a účtů, které jsou
 
 | Typ účtu a operace | Plocha | Mobilní |
 | --- | --- | --- |
-| Azure Active Directory: synchronizace |Yes |No |
+| Azure Active Directory: synchronizace |Ano |No |
 | Azure Active Directory: zálohování a obnovení |No |No |
 | Účet Microsoft: synchronizace |Ano |Ano |
-| Účet Microsoft: zálohování a obnovení |No |Yes |
+| Účet Microsoft: zálohování a obnovení |No |Ano |
 
 ## <a name="what-is-backup"></a>Co je zálohování?
 
@@ -43,7 +43,7 @@ Pro koncové uživatele jsou k dispozici následující skupiny nastavení, kter
 
 * Motiv: pozadí plochy, dlaždice uživatele, pozice hlavního panelu atd. 
 * Nastavení aplikace Internet Explorer: historie procházení, typové adresy URL, oblíbené položky atd. 
-* Hesla: Správce přihlašovacích údajů systému Windows, včetně profilů sítě Wi-Fi 
+* Hesla: Správce přihlašovacích údajů systému Windows, včetně profilů Wi-Fi 
 * Jazykové předvolby: slovník pravopisu, systémová nastavení jazyka 
 * Usnadnění přístupu: Předčítání, klávesnice na obrazovce, Lupa 
 * Další nastavení Windows: informace o nastavení Windows
@@ -69,13 +69,13 @@ V následující tabulce se ve sloupci skupina nastavení zobrazí další polo�
 Interní položky ve sloupci skupina nastavení odkazují na nastavení a aplikace, které se můžou zakázat jenom v synchronizaci v rámci samotné aplikace, nebo vypnutím synchronizace pro celé zařízení pomocí správy mobilních zařízení (MDM) nebo nastavení Zásady skupiny.
 Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do skupiny.
 
-| Nastavení | Plocha | Mobilní | Skupina |
+| Nastavení | Plocha | Mobilní | Group (Skupina) |
 | --- | --- | --- | --- |
 | **Účty**: obrázek účtu |synchronizace |× |Motiv |
 | **Účty**: Další nastavení účtu |X |X | |
 | **Rozšířené mobilní širokopásmové**připojení: název sítě pro sdílení připojení k Internetu (umožňuje automatické zjišťování mobilních Wi-Fi hotspotů přes Bluetooth) |X |X |Hesla |
 | **Data aplikací**: jednotlivé aplikace můžou synchronizovat data |synchronizovat zálohu |synchronizovat zálohu |internal |
-| **Seznam aplikací**: seznam nainstalovaných aplikací |× |zálohování |Jiné |
+| **Seznam aplikací**: seznam nainstalovaných aplikací |× |zálohování |Ostatní |
 | **Bluetooth**: všechna nastavení Bluetooth |X |X | |
 | **Příkazový řádek**: výchozí nastavení pro příkazový řádek |synchronizace |× |internal |
 | **Přihlašovací údaje**: schránka na přihlašovací údaje |synchronizace |synchronizace |heslo |
@@ -95,7 +95,7 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Individuální nastavení plochy**: Tapeta prezentace |synchronizace |× |Motiv |
 | **Individuální nastavení plochy**: nastavení hlavního panelu (pozice, automatické skrývání atd.) |synchronizace |× |Motiv |
 | **Individuální nastavení plochy**: rozložení úvodní obrazovky |× |zálohování | |
-| **Zařízení**: sdílené tiskárny, ke kterým jste se připojili |X |X |ostatní |
+| **Zařízení**: sdílené tiskárny, ke kterým jste se připojili |X |X |other |
 | **Prohlížeč Microsoft Edge**: seznam pro čtení |synchronizace |synchronizace |internal |
 | **Prohlížeč Microsoft Edge**: oblíbené položky |synchronizace |synchronizace |internal |
 | **Prohlížeč Microsoft Edge**: hlavní lokality <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
@@ -152,8 +152,8 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Lupa**: sledování – Sledujte fokus klávesnice |synchronizace |× |Usnadnění přístupu |
 | **Lupa**: sledování – následovat ukazatel myši |synchronizace |× |Usnadnění přístupu |
 | **Lupa**: spustit při přihlášení uživatele (ve výchozím nastavení vypnuté) |synchronizace |× |Usnadnění přístupu |
-| **Myš**: Změna velikosti kurzoru myši |synchronizace |× |ostatní |
-| **Myš**: Změna barvy kurzoru myši |synchronizace |× |ostatní |
+| **Myš**: Změna velikosti kurzoru myši |synchronizace |× |other |
+| **Myš**: Změna barvy kurzoru myši |synchronizace |× |other |
 | **Myš**: všechna ostatní nastavení |X |X | |
 | **Narrator**: Snadné spuštění |synchronizace |× |Usnadnění přístupu |
 | **Narrator**: uživatelé můžou měnit rozteč mluvené řeči. |synchronizace |× |Usnadnění přístupu |
@@ -178,7 +178,7 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Psaní**: při dvojitém kliknutí na klávesu SHIFT používejte všechna velká písmena |synchronizace |zálohování |Jazyk |
 | **Psaní**: přehrání klíčových zvuků při psaní |synchronizace |zálohování |Jazyk |
 | **Psaní**: data individuálního nastavení pro dotykovou klávesnici |synchronizace |zálohování |Jazyk |
-| **Wi-Fi**: profily sítě Wi-Fi (jenom WPA) |synchronizace |synchronizace |Hesla |
+| **Wi-Fi**: profily Wi-Fi (jenom WPA) |synchronizace |synchronizace |Hesla |
 
 ###### <a name="footnote-1"></a>Poznámka pod čarou 1
 

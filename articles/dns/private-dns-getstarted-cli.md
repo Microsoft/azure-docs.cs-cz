@@ -5,15 +5,15 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/05/2019
+ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8fdf78c0a3dd2f7a130d827751ce93c5539575df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 820641af00caea4ffca450be8aa81b5357ba1261
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502949"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652955"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure CLI
 
@@ -21,19 +21,13 @@ Tento rychlý Start vás provede kroky k vytvoření první privátní zóny DNS
 
 K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do vaší virtuální sítě, zadáte seznam virtuálních sítí, které mají povolené překládání záznamů v rámci zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
-V tomto rychlém startu se naučíte:
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!div class="checklist"]
-> * Vytvoření privátní zóny DNS
-> * Vytvoření testovacích virtuálních počítačů
-> * Vytvoření dalšího záznamu DNS
-> * Testování privátní zóny
+## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Pokud budete chtít, můžete tento rychlý Start dokončit pomocí [Azure PowerShell](private-dns-getstarted-powershell.md).
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- Tento rychlý Start můžete také dokončit pomocí [Azure PowerShell](private-dns-getstarted-powershell.md).
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -116,7 +110,7 @@ Dokončení může několik minut trvat.
 
 K vytvoření záznamu DNS použijte příkaz `az network private-dns record-set [record type] add-record`. Například nápovědu k přidání záznamů A získáte příkazem `az network private-dns record-set A add-record --help`.
 
- Následující příklad vytvoří záznam s relativní názvem **DB** v zóně DNS **Private.contoso.com**ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **DB.Private.contoso.com**. Typ záznamu je A a IP adresa je 10.2.0.4.
+ Následující příklad vytvoří záznam s relativní názvem **DB** v zóně DNS **Private.contoso.com** ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **DB.Private.contoso.com**. Typ záznamu je A a IP adresa je 10.2.0.4.
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -157,13 +151,13 @@ Totéž zopakujte pro virtuální počítač myVM02.
 
 1. Z příkazového řádku ve Windows PowerShellu virtuálního počítače myVM02 odešlete příkaz ping do virtuálního počítače myVM01 a použijte v něm automaticky zaregistrovaný název hostitele:
 
-   ```
+   ```powershell
    ping myVM01.private.contoso.com
    ```
 
    Zobrazený výstup by měl vypadat nějak takto:
 
-   ```
+   ```output
    PS C:\> ping myvm01.private.contoso.com
 
    Pinging myvm01.private.contoso.com [10.2.0.4] with 32 bytes of data:
@@ -181,13 +175,13 @@ Totéž zopakujte pro virtuální počítač myVM02.
 
 2. Teď odešlete příkaz ping na název **db**, který jste předtím vytvořili:
 
-   ```
+   ```powershell
    ping db.private.contoso.com
    ```
 
    Zobrazený výstup by měl vypadat nějak takto:
 
-   ```
+   ```output
    PS C:\> ping db.private.contoso.com
 
    Pinging db.private.contoso.com [10.2.0.4] with 32 bytes of data:
@@ -203,7 +197,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Odstranění všech prostředků
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků **MyAzureResourceGroup** a odstraňte prostředky vytvořené v rámci tohoto rychlého startu.
 
@@ -214,5 +208,5 @@ az group delete --name MyAzureResourceGroup
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Scénáře pro Azure DNS Private Zones](private-dns-scenarios.md)
+> [Scénáře privátních zón Azure DNS](private-dns-scenarios.md)
 

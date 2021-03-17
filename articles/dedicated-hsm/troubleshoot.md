@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590451"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508267"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Řešení potíží s vyhrazenou službou HSM Azure
 
@@ -29,7 +29,7 @@ Vyhrazená služba HSM v Azure má dvě odlišné charakteristiky. Za prvé, reg
 
 ## <a name="hsm-registration"></a>Registrace HSM
 
-Vyhrazený modul hardwarového zabezpečení (HSM) není volně dostupný pro použití, protože dodává hardwarové prostředky v cloudu, a proto je cenným prostředkem, který je potřeba chránit. Proto používáme proces přidávání do seznamu povolených adres prostřednictvím e-mailu HSMrequest@microsoft.com . 
+Vyhrazený modul hardwarového zabezpečení (HSM) není volně dostupný pro použití, protože dodává hardwarové prostředky v cloudu, a proto je cenným prostředkem, který je potřeba chránit. Proto používáme allowlisting proces prostřednictvím e-mailu HSMrequest@microsoft.com . 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Získání přístupu k vyhrazenému modulu HSM
 
@@ -69,9 +69,9 @@ Nasazení můžou selhat, pokud překročíte 2 HSM na razítko a 4 HSM na oblas
 Když se konkrétní razítko nebo oblast zaplní, to znamená, že jsou skoro všechny bezplatné HSM zřízené, může to vést k selháním nasazení. Každé razítko má k dispozici 11 HSM pro zákazníky, což znamená 22 na oblast. V každém razítku jsou také 3 náhr a 1 testovací zařízení. Pokud se domníváte, že jste si myslíte, že jste dosáhli limitu, pak můžete poslat HSMrequest@microsoft.com informace na úrovni výplně konkrétních razítek.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Návody se při zřizování zobrazuje HSM?
-Vzhledem k vyhrazenému modulu HSM, který je na seznamu povolených služeb, se v Azure Portal považuje za "skrytý typ". Chcete-li zobrazit prostředky HSM, je nutné zaškrtnout políčko Zobrazit skryté typy, jak je znázorněno níže. Prostředek síťových adaptérů vždy sleduje modul hardwarového zabezpečení (HSM) a je dobrým místem, kde můžete zjistit IP adresu modulu HARDWAROVÉho zabezpečení před použitím SSH pro připojení.
+Vzhledem k tomu, že je vyhrazený modul HSM ve službě allowlisted, považuje se za "skrytý typ" v Azure Portal. Chcete-li zobrazit prostředky HSM, je nutné zaškrtnout políčko Zobrazit skryté typy, jak je znázorněno níže. Prostředek síťových adaptérů vždy sleduje modul hardwarového zabezpečení (HSM) a je dobrým místem, kde můžete zjistit IP adresu modulu HARDWAROVÉho zabezpečení před použitím SSH pro připojení.
 
-![Delegování podsítě](./media/troubleshoot/hsm-provisioned.png)
+![Snímek obrazovky, který zvýrazní kontrolu skrytých typů](./media/troubleshoot/hsm-provisioned.png)
 
 ## <a name="networking-resources"></a>Síťové prostředky
 
@@ -85,7 +85,7 @@ Vyhrazený HSM používá ExpressRoute bránu jako tunel pro komunikaci mezi pri
 
 Ukázkové šablony poskytované pro vyhrazený modul HSM předpokládá, že IP modul HSM se automaticky vezme z daného rozsahu podsítě. Pomocí atributu "NetworkInterfaces" v šabloně ARM můžete zadat explicitní IP adresu pro modul hardwarového zabezpečení (HSM). 
 
-![Delegování podsítě](./media/troubleshoot/private-ip-address.png)
+![Snímek obrazovky, který zobrazuje ukázkovou šablonu pro vyhrazený modul HSM.](./media/troubleshoot/private-ip-address.png)
 
 ## <a name="hsm-initialization"></a>Inicializace HSM
 

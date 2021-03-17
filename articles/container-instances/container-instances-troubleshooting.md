@@ -3,13 +3,13 @@ title: Řešení běžných potíží
 description: Naučte se řešit běžné problémy při nasazení, spuštění nebo správě Azure Container Instances
 ms.topic: article
 ms.date: 06/25/2020
-ms.custom: mvc
-ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260751"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779511"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží se službou Azure Container Instances
 
@@ -45,7 +45,7 @@ Pokud zadáte obrázek, který Azure Container Instances nepodporuje, `OsVersion
 }
 ```
 
-K této chybě nejčastěji dochází při nasazování bitových kopií Windows, které jsou založené na pololetním kanálu verze 1709 nebo 1803, což není podporováno. Podporované image Windows v Azure Container Instances najdete v tématu [Nejčastější dotazy](container-instances-faq.md#what-windows-base-os-images-are-supported).
+K této chybě nejčastěji dochází při nasazování bitových kopií systému Windows, které jsou založené na Semi-Annualovém kanálu verze 1709 nebo 1803, což není podporováno. Podporované image Windows v Azure Container Instances najdete v tématu [Nejčastější dotazy](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
 ### <a name="unable-to-pull-image"></a>Nelze načíst obrázek.
 
@@ -187,7 +187,7 @@ Dalším způsobem, jak snížit dopad navýšení obrázku na dobu spuštění 
 
 #### <a name="cached-images"></a>Obrázky v mezipaměti
 
-Azure Container Instances používá mechanismus ukládání do mezipaměti, který urychluje čas spuštění kontejneru pro image vytvořené na běžných [obrázcích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported), včetně `nanoserver:1809` , `servercore:ltsc2019` a `servercore:1809` . Běžně používané image Linux, například `ubuntu:1604` a, `alpine:3.6` jsou také uloženy v mezipaměti. Aktuální seznam imagí a značek uložených v mezipaměti najdete v rozhraní API pro [vypsání imagí v mezipaměti][list-cached-images] .
+Azure Container Instances používá mechanismus ukládání do mezipaměti, který urychluje čas spuštění kontejneru pro image vytvořené na běžných [obrázcích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported), včetně `nanoserver:1809` , `servercore:ltsc2019` a `servercore:1809` . Běžně používané image Linux, například `ubuntu:1604` a, `alpine:3.6` jsou také uloženy v mezipaměti. Pro image Windows i Linux Nepoužívejte `latest` značku. Projděte si [osvědčené postupy pro značky Image](../container-registry/container-registry-image-tag-version.md) Container registry pro doprovodné materiály. Aktuální seznam imagí a značek uložených v mezipaměti najdete v rozhraní API pro [vypsání imagí v mezipaměti][list-cached-images] .
 
 > [!NOTE]
 > Používání imagí založených na Windows serveru 2019 v Azure Container Instances je ve verzi Preview.
@@ -198,13 +198,13 @@ Při počátečním vytváření nemusí kontejnery Windows mít žádná příc
 
 ### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nejde se připojit k základnímu rozhraní Docker API nebo ke spuštění privilegovaných kontejnerů.
 
-Azure Container Instances nevystavuje přímý přístup k podkladové infrastruktuře, která je hostitelem skupin kontejnerů. To zahrnuje přístup k rozhraní API Docker běžícímu na hostiteli kontejneru a spouštění privilegovaných kontejnerů. Pokud potřebujete interakci Docker, podívejte se do [Referenční dokumentace REST](https://aka.ms/aci/rest) a podívejte se, co podporuje rozhraní ACI API. Pokud chybí nějaký objekt, odešlete žádost ve [fórech ACI Feedback](https://aka.ms/aci/feedback).
+Azure Container Instances nevystavuje přímý přístup k podkladové infrastruktuře, která je hostitelem skupin kontejnerů. To zahrnuje přístup k rozhraní API Docker běžícímu na hostiteli kontejneru a spouštění privilegovaných kontejnerů. Pokud potřebujete interakci Docker, podívejte se do [Referenční dokumentace REST](/rest/api/container-instances/) a podívejte se, co podporuje rozhraní ACI API. Pokud chybí nějaký objekt, odešlete žádost ve [fórech ACI Feedback](https://aka.ms/aci/feedback).
 
 ### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>IP adresa skupiny kontejnerů nemusí být dostupná kvůli neshodě portů
 
 Azure Container Instances ještě nepodporuje mapování portů jako s normální konfigurací Docker. Pokud zjistíte, že IP adresa skupiny kontejnerů není dostupná, pokud se domníváte, že by měla být, ujistěte se, že jste nakonfigurovali image kontejneru, aby naslouchala stejným portům, které zveřejníte ve skupině kontejnerů s `ports` vlastností.
 
-Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu, který jste nakonfigurovali v imagi kontejneru, otestujte nasazení `aci-helloworld` image, která port zveřejňuje. Aplikaci také spusťte `aci-helloworld` , aby naslouchala na portu. `aci-helloworld`přijme volitelnou proměnnou prostředí `PORT` pro přepsání výchozího portu 80, na kterém naslouchá. Například pro otestování portu 9000 nastavte [proměnnou prostředí](container-instances-environment-variables.md) při vytváření skupiny kontejnerů:
+Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu, který jste nakonfigurovali v imagi kontejneru, otestujte nasazení `aci-helloworld` image, která port zveřejňuje. Aplikaci také spusťte `aci-helloworld` , aby naslouchala na portu. `aci-helloworld` přijme volitelnou proměnnou prostředí `PORT` pro přepsání výchozího portu 80, na kterém naslouchá. Například pro otestování portu 9000 nastavte [proměnnou prostředí](container-instances-environment-variables.md) při vytváření skupiny kontejnerů:
 
 1. Nastavte skupinu kontejnerů k vystavení portu 9000 a předejte číslo portu jako hodnotu proměnné prostředí. Příklad je naformátován pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, budete muset odpovídajícím způsobem upravit přiřazení proměnné.
     ```azurecli

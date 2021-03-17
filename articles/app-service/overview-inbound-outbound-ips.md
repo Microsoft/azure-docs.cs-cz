@@ -2,28 +2,34 @@
 title: Příchozí/odchozí IP adresy
 description: Přečtěte si, jak se příchozí a odchozí IP adresy používají v Azure App Service, když se mění a jak najít adresy pro vaši aplikaci.
 ms.topic: article
-ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/25/2020
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537623"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746144"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy v Azure App Service
 
-[Azure App Service](overview.md) je víceklientské služby s výjimkou [App Service prostředí](environment/intro.md). Aplikace, které nejsou v prostředí App Service (ne v [izolované vrstvě](https://azure.microsoft.com/pricing/details/app-service/)) sdílejí síťovou infrastrukturu s jinými aplikacemi. V důsledku toho může být příchozí a odchozí IP adresa aplikace odlišná a může se dokonce změnit v určitých situacích. 
+[Azure App Service](overview.md) je víceklientské služby s výjimkou [App Service prostředí](environment/intro.md). Aplikace, které nejsou v prostředí App Service (ne v [izolované vrstvě](https://azure.microsoft.com/pricing/details/app-service/)) sdílejí síťovou infrastrukturu s jinými aplikacemi. V důsledku toho může být příchozí a odchozí IP adresa aplikace odlišná a může se dokonce změnit v určitých situacích.
 
 [App Service prostředí](environment/intro.md) využívají vyhrazenou síťovou infrastrukturu, takže aplikace běžící v prostředí App Service získají statické a vyhrazené IP adresy pro příchozí i odchozí připojení.
+
+## <a name="how-ip-addresses-work-in-app-service"></a>Jak IP adresy fungují v App Service
+
+App Service aplikace běží v plánu App Service a App Service plány se nasazují do jedné z jednotek nasazení v infrastruktuře Azure (interně označované jako webspace). Každé jednotce nasazení je přiřazena až pět virtuálních IP adres, což zahrnuje jednu veřejnou příchozí IP adresu a čtyři odchozí IP adresy. Všechny plány App Service ve stejné jednotce nasazení a spuštěné instance aplikace sdílejí stejnou sadu virtuálních IP adres. V případě App Service Environment (plán App Service na [izolovanou úroveň](https://azure.microsoft.com/pricing/details/app-service/)) je plán App Service sám se samotnou jednotkou nasazení, takže virtuální IP adresy jsou ve výsledku vyhrazené.
+
+Vzhledem k tomu, že nepovolujete přesun plánu App Service mezi jednotkami nasazení, virtuální IP adresy přiřazené k vaší aplikaci obvykle zůstanou stejné, ale existují výjimky.
 
 ## <a name="when-inbound-ip-changes"></a>Při změně příchozí IP adresy
 
 Bez ohledu na počet instancí s horizontálním navýšení kapacity má každá aplikace jednu příchozí IP adresu. Příchozí IP adresa se může změnit, když provedete jednu z následujících akcí:
 
-- Odstraňte aplikaci a znovu ji vytvořte v jiné skupině prostředků.
-- Odstraní poslední aplikaci v kombinaci skupiny prostředků _a_ oblasti a znovu ji vytvoří.
-- Odstraní existující vazbu TLS, například během obnovování certifikátu (viz [obnovení certifikátu](configure-ssl-certificate.md#renew-certificate)).
+- Odstraňte aplikaci a znovu ji vytvořte v jiné skupině prostředků (jednotka nasazení se může změnit).
+- Odstraní poslední aplikaci v kombinaci skupiny prostředků _a_ oblasti a znovu ji vytvoří (jednotka nasazení se může změnit).
+- Odstraňte existující vazbu TLS/SSL založenou na protokolu IP, například během obnovování certifikátu (viz [obnovení certifikátu](configure-ssl-certificate.md#renew-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>Najít příchozí IP adresu
 
@@ -39,9 +45,13 @@ Někdy můžete chtít vyhrazenou statickou IP adresu pro vaši aplikaci. Chcete
 
 ## <a name="when-outbound-ips-change"></a>Změna odchozích IP adres
 
-Bez ohledu na počet instancí s horizontálním navýšení kapacity má každá aplikace v daném okamžiku nastavený počet odchozích IP adres. Jakékoli odchozí připojení z aplikace App Service, jako je například databáze back-end, používá jako zdrojovou IP adresu jednu z odchozích IP adres. Nemůžete předem znát, která IP adresa, kterou daná instance aplikace použije k vytvoření odchozího připojení, takže vaše back-end služba musí bránu firewall otevřít na všechny odchozí IP adresy vaší aplikace.
+Bez ohledu na počet instancí s horizontálním navýšení kapacity má každá aplikace v daném okamžiku nastavený počet odchozích IP adres. Jakékoli odchozí připojení z aplikace App Service, jako je například databáze back-end, používá jako zdrojovou IP adresu jednu z odchozích IP adres. IP adresa, která se má použít, se vybere náhodně za běhu, takže vaše back-end služba musí bránu firewall otevřít na všechny odchozí IP adresy vaší aplikace.
 
-Sada odchozích IP adres vaší aplikace se mění při škálování aplikace mezi nižšími úrovněmi (**Basic**, **Standard**a **Premium**) a úrovní **Premium v2** .
+Sada odchozích IP adres vaší aplikace se změní, když provedete jednu z následujících akcí:
+
+- Odstraňte aplikaci a znovu ji vytvořte v jiné skupině prostředků (jednotka nasazení se může změnit).
+- Odstraní poslední aplikaci v kombinaci skupiny prostředků _a_ oblasti a znovu ji vytvoří (jednotka nasazení se může změnit).
+- Škálujte svoji aplikaci mezi nižšími úrovněmi ( **Basic** , **Standard** a **Premium** ) a úrovní **Premium v2** (IP adresy se můžou přičíst nebo odvolávat ze sady).
 
 Můžete najít sadu všech možných odchozích IP adres, které vaše aplikace může používat, a to bez ohledu na cenové úrovně, a to tak, že vyhledáte `possibleOutboundIpAddresses` vlastnost nebo v poli **Další odchozí IP adresy** v okně **vlastnosti** Azure Portal. Viz [Najít odchozí IP adresy](#find-outbound-ips).
 

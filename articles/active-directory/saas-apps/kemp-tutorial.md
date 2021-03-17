@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/28/2020
+ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d974badd715d7966f552603a77d77aab95d70f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aa36d8522f548101ef3354237d93128b0f041eac
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549961"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648926"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s integrací služby Azure AD v kemp LoadMaster
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat integraci služby Azure AD kemp LoadMa
 * Řízení ve službě Azure AD, která má přístup k integraci služby Azure AD v kemp LoadMaster.
 * Umožněte, aby se vaši uživatelé automaticky přihlásili ke službě kemp LoadMaster integrací Azure AD s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,13 +38,12 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Integrace Azure AD kemp LoadMaster podporuje **IDP** iniciované jednotného přihlašování.
-* Jakmile nakonfigurujete integraci služby Azure AD kemp LoadMaster, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>Přidání integrace služby Azure AD kemp LoadMaster z Galerie
+## <a name="add-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>Přidání integrace služby Azure AD kemp LoadMaster z Galerie
 
 Pokud chcete nakonfigurovat integraci služby Azure AD kemp LoadMaster do služby Azure AD, musíte do svého seznamu spravovaných aplikací přidat kemp LoadMaster Azure AD Integration z galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -57,7 +54,7 @@ Pokud chcete nakonfigurovat integraci služby Azure AD kemp LoadMaster do služb
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD s kemp LoadMaster integrací Azure AD pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v integraci služby Azure AD kemp LoadMaster.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí integrace služby Azure AD kemp LoadMaster, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí integrace služby Azure AD kemp LoadMaster, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -80,9 +77,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **Integration Application kemp LoadMaster služby Azure AD** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikace **Integration Application kemp LoadMaster služby Azure AD** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -107,30 +104,24 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k integraci kemp LoadMaster Azure AD.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **kemp LoadMaster Integration Azure AD**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-kemp-loadmaster-azure-ad-integration-sso"></a>Konfigurace jednotného přihlašování pro integraci služby Azure AD kemp LoadMaster
@@ -139,13 +130,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-a-virtual-service"></a>Vytvoření virtuální služby 
 
-1. Na webu kemp LoadMaster Integration Load WebUI služby Azure AD > Virtual Services > přidat nový.
+1. Na webu kemp LoadMaster Integration LoadMaster web UI Azure AD > Virtual Services > přidat nový.
 
 1. Klikněte na Přidat nový.
 
 1. Zadejte parametry pro virtuální službu.
 
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-1.png)
+    ![Snímek obrazovky, který zobrazuje "zadejte parametry pro stránku virtuální služby" s příklady hodnot v polích.](./media/kemp-tutorial/kemp-1.png)
 
     a. Virtuální adresa
     
@@ -161,7 +152,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Zadejte parametry reálného serveru.
     
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-2.png)
+    ![Snímek obrazovky, který zobrazuje "zadejte parametry pro skutečný serverovou stránku s příklady hodnot v polích.](./media/kemp-tutorial/kemp-2.png)
 
     a. Vyberte možnost povolení vzdálených adres.
     
@@ -197,13 +188,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="ssl-acceleration"></a>Akcelerace SSL
  
-1. Přejít na kemp Load Master web UI > Virtual Services > Virtual Services.
+1. Přejít na webové uživatelské rozhraní kemp LoadMaster > služby Virtual Services > Zobrazit/upravit služby.
 
 1. V části operace klikněte na Upravit.
 
-1. V části vlastnosti pro TCP/x.x.x.: 443 (ID: 6) – pracuje na vrstvě 7, klikněte na vlastnosti SSL.
+1. Klikněte na vlastnosti SSL (které fungují ve vrstvě 7).
     
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-3.png)
+    ![Snímek obrazovky s vybraným oddílem s s podporou akcelerace s povolenými možnostmi zrychlení s L a vybraným ukázkovým certifikátem](./media/kemp-tutorial/kemp-3.png)
     
     a. V akceleraci SSL klikněte na zapnuto.
     
@@ -222,7 +213,7 @@ Přejít na webovou konzolu integrace služby Azure AD v kemp LoadMaster
 
 1. Klikněte na zprostředkující certifikáty v části certifikáty a autorita.
 
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-6.png)
+    ![Snímek obrazovky, který zobrazuje část aktuálně nainstalované zprostředkující certifikáty s ukázkovým certifikátem.](./media/kemp-tutorial/kemp-6.png)
 
     a. Klikněte na zvolit soubor v Přidat nový zprostředkující certifikát.
     
@@ -238,7 +229,7 @@ Přejít na webovou konzolu integrace služby Azure AD v kemp LoadMaster
  
 V části virtuální služby můžete spravovat jednotné přihlašování.
 
-   ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-7.png)
+   ![Snímek obrazovky, na které se zobrazuje stránka Správa s/O](./media/kemp-tutorial/kemp-7.png)
    
    a. Po přidělení názvu klikněte na Přidat v části Přidat novou konfiguraci na straně klienta.
 
@@ -254,7 +245,7 @@ V části virtuální služby můžete spravovat jednotné přihlašování.
 
    například Vyberte zprostředkující certifikát z IdP certifikátu.
 
-   h. Nastavte ID entity SP, které by se mělo shodovat s identitou vytvořenou v Azure Portal 
+   h. Nastavte ID entity SP, které by se mělo shodovat s identitou vytvořenou v Azure Portal. 
 
    i. Klikněte na nastavit ID entity SP.
 
@@ -268,7 +259,7 @@ Webová konzola integrace služby Azure AD v kemp LoadMaster
 
 1. Klikněte na Upravit a přejděte na možnosti ESP.
     
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-8.png)
+    ![Snímek obrazovky zobrazující stránku zobrazit/upravit služby s rozbalenými oddíly "možnosti protokolu ESP" a "reálné servery".](./media/kemp-tutorial/kemp-8.png)
 
     a. Klikněte na Povolit protokol ESP.
     
@@ -286,7 +277,7 @@ Přejít na adresu URL aplikace
 
 V minulosti by se měla zobrazit stránka pro přihlášení klienta namísto neověřeného přístupu. 
 
-![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-9.png)
+![Snímek obrazovky s přihlašovací stránkou pro přihlášení klienta](./media/kemp-tutorial/kemp-9.png)
 
 ## <a name="configuring-kerberos-based-authentication"></a>Konfigurace ověřování založeného na protokolu Kerberos 
  
@@ -294,7 +285,7 @@ V minulosti by se měla zobrazit stránka pro přihlášení klienta namísto ne
 
 1. Vytvořte uživatelský účet (v tomto příkladu AppDelegation).
     
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-10.png)
+    ![Snímek obrazovky, který zobrazuje okno "KCD User Properties" se zvolenou kartou "Account" (účet).](./media/kemp-tutorial/kemp-10.png)
 
 
     a. Vyberte kartu Editor atributů.
@@ -311,7 +302,7 @@ V minulosti by se měla zobrazit stránka pro přihlášení klienta namísto ne
 
 1. Vyberte kartu Delegování.
 
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-11.png)
+    ![Snímek obrazovky, který zobrazuje okno vlastností uživatele KCD s vybranou kartou delegování](./media/kemp-tutorial/kemp-11.png)
 
     a. Vyberte Důvěřovat tomuto uživateli pro delegování pouze určeným službám.
 
@@ -332,11 +323,11 @@ V minulosti by se měla zobrazit stránka pro přihlášení klienta namísto ne
 
 Navštivte web kemp LoadMaster Integration webová Konzola služby Azure AD > služby Virtual Services > spravovat jednotné přihlašování.
 
-![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-12.png)
+![Snímek obrazovky se stránkou Správa s informacemi O správě domény](./media/kemp-tutorial/kemp-12.png)
 
 a. Přejděte na konfigurace jednotného přihlašování na straně serveru.
 
-b. Do rozevíracího okna Přidat novou konfiguraci na straně serveru a klikněte na Přidat.
+b. Do Přidat novou Server-Side konfiguraci zadejte název a klikněte na Přidat.
 
 c. V ověřovacím protokolu vyberte omezené delegování protokolu Kerberos.
 
@@ -368,7 +359,7 @@ b. Klikněte na možnost ESP.
     
 c. V části režim ověřování serveru vyberte KCD.
         
-d. V části konfigurace na straně serveru vyberte dříve vytvořený profil na straně serveru.
+d. V části Konfigurace Server-Side vyberte dříve vytvořený profil na straně serveru.
 
 ### <a name="create-kemp-loadmaster-azure-ad-integration-test-user"></a>Vytvoření testovacího uživatele integrace služby Azure AD v kemp LoadMaster
 
@@ -376,20 +367,12 @@ V této části vytvoříte uživatele s názvem B. Simon v integraci kemp LoadM
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 
-Když na přístupovém panelu kliknete na dlaždici integrace služby Azure AD kemp LoadMaster, měli byste se automaticky přihlášeni k integraci Azure AD kemp LoadMaster, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k integraci Azure AD kemp LoadMaster, pro kterou jste nastavili jednotné přihlašování.
 
-## <a name="additional-resources"></a>Další zdroje
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici integrace služby Azure AD kemp LoadMaster v okně moje aplikace byste měli být automaticky přihlášeni k integraci Azure AD kemp LoadMaster, pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Vyzkoušejte kemp LoadMaster integrací Azure AD se službou Azure AD](https://aad.portal.azure.com/)
-
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Jak chránit kemp LoadMaster integrací Azure AD s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+Jakmile nakonfigurujete integraci služby Azure AD kemp LoadMaster, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

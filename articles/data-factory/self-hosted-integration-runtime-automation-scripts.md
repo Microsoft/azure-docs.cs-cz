@@ -1,22 +1,18 @@
 ---
 title: Automatizace instalace místního prostředí Integration runtime pomocí místních skriptů PowerShellu
 description: K automatizaci instalace Integration Runtime v místním počítači do místního počítače.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 068586a96ad3655cb70171266bd58f56ed320fc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cbe54a23cb1c8b55afd86a18b51c0e392c3f78a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664379"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376203"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Automatizace instalace místního prostředí Integration runtime pomocí místních skriptů PowerShellu
 Pokud chcete automatizovat instalaci Integration Runtime v místním prostředí na místních počítačích (kromě virtuálních počítačů Azure, kde můžeme místo toho použít šablonu Správce prostředků), můžete použít místní skripty PowerShellu. Tento článek obsahuje dva skripty, které můžete použít.
@@ -31,7 +27,7 @@ Pokud chcete automatizovat instalaci Integration Runtime v místním prostředí
 ## <a name="scripts-introduction"></a>Úvod ke skriptům 
 
 > [!NOTE]
-> Tyto skripty se vytvářejí pomocí [dokumentovaného nástroje příkazového řádku](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#set-up-an-existing-self-hosted-ir-via-local-powershell) v místním prostředí Integration runtime. Pokud je to potřeba, může tyto skripty přizpůsobit svým potřebám pro automatizaci.
+> Tyto skripty se vytvářejí pomocí [dokumentovaného nástroje příkazového řádku](./create-self-hosted-integration-runtime.md#set-up-an-existing-self-hosted-ir-via-local-powershell) v místním prostředí Integration runtime. Pokud je to potřeba, může tyto skripty přizpůsobit svým potřebám pro automatizaci.
 > Skripty je potřeba použít pro jednotlivé uzly, proto je nezapomeňte spustit napříč všemi uzly v případě nastavení vysoké dostupnosti (2 nebo více uzlů).
 
 * Pro automatizaci instalačního programu: Nainstalujte a zaregistrujte nový uzel Integration runtime v místním prostředí pomocí **[InstallGatewayOnLocalMachine.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1)** – skript lze použít k instalaci uzlu místního prostředí Integration runtime a jeho registraci k ověřovacímu klíči. Skript přijímá dva argumenty, **nejdříve** určí umístění místního [prostředí Integration runtime](https://www.microsoft.com/download/details.aspx?id=39717) na místním disku, přičemž **druhý** Určuje **ověřovací klíč** (pro registraci uzlu IR v místním prostředí).

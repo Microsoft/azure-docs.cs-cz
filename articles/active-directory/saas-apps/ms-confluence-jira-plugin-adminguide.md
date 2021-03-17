@@ -8,15 +8,15 @@ ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543978"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359153"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian JIRA a příručka pro správce Confluence pro Azure Active Directory
 
@@ -67,7 +67,7 @@ Modul plug-in podporuje následující verze JIRA a Confluence:
 
 * JIRA Core a software: 6,0 až 7,12
 * Oddělení služeb JIRA: 3.0.0 na 3.5.0
-* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) .
+* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](./jira52microsoft-tutorial.md) .
 * Confluence: 5,0 až 5,10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
@@ -107,59 +107,59 @@ Následující obrázek znázorňuje konfigurační obrazovku v JIRA i Confluenc
 
 ![Obrazovka konfigurace modulu plug-in](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-* **Adresa URL metadat**: adresa URL pro získání federačních metadat z Azure AD.
+* **Adresa URL metadat** : adresa URL pro získání federačních metadat z Azure AD.
 
-* **Identifikátory**: adresa URL, kterou služba Azure AD používá k ověření zdroje žádosti. Mapuje se na element **identifikátoru** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domain:port>* /.
+* **Identifikátory** : adresa URL, kterou služba Azure AD používá k ověření zdroje žádosti. Mapuje se na element **identifikátoru** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domain:port>* /.
 
-* **Adresa URL odpovědi**: adresa URL odpovědi ve Vašem zprostředkovateli identity (IDP), která iniciuje přihlášení SAML. Mapuje se na element **adresy URL odpovědi** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domain:port>* /plugins/servlet/SAML/auth..
+* **Adresa URL odpovědi** : adresa URL odpovědi ve Vašem zprostředkovateli identity (IDP), která iniciuje přihlášení SAML. Mapuje se na element **adresy URL odpovědi** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domain:port>* /plugins/servlet/SAML/auth..
 
-* **Adresa URL pro přihlášení**: přihlašovací adresa URL v IDP, která iniciuje přihlášení SAML. Mapuje se na element **Signing** v Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domain:port>* /plugins/servlet/SAML/auth..
+* **Adresa URL pro přihlášení** : přihlašovací adresa URL v IDP, která iniciuje přihlášení SAML. Mapuje se na element **Signing** v Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domain:port>* /plugins/servlet/SAML/auth..
 
-* **ID entity IDP**: ID entity, kterou používá vaše IDP. Toto pole se vyplní, když se vyřeší adresa URL metadat.
+* **ID entity IDP** : ID entity, kterou používá vaše IDP. Toto pole se vyplní, když se vyřeší adresa URL metadat.
 
-* **Přihlašovací adresa URL**: přihlašovací adresa URL z vaší IDP. Toto pole se vyplní z Azure AD, když se vyřeší adresa URL metadat.
+* **Přihlašovací adresa URL** : přihlašovací adresa URL z vaší IDP. Toto pole se vyplní z Azure AD, když se vyřeší adresa URL metadat.
 
-* **Odhlašovací adresa**URL: odhlašovací URL z vaší IDP. Toto pole se vyplní z Azure AD, když se vyřeší adresa URL metadat.
+* **Odhlašovací adresa** URL: odhlašovací URL z vaší IDP. Toto pole se vyplní z Azure AD, když se vyřeší adresa URL metadat.
 
-* **Certifikát x. 509**: váš IDP certifikát x. 509. Toto pole se vyplní z Azure AD, když se vyřeší adresa URL metadat.
+* **Certifikát x. 509** : váš IDP certifikát x. 509. Toto pole se vyplní z Azure AD, když se vyřeší adresa URL metadat.
 
-* **Název tlačítka pro přihlášení**: název přihlašovacího tlačítka, které vaše organizace chce, aby na přihlašovací stránce viděli uživatele.
+* **Název tlačítka pro přihlášení** : název přihlašovacího tlačítka, které vaše organizace chce, aby na přihlašovací stránce viděli uživatele.
 
-* **Umístění ID uživatele SAML**: umístění, kde se v odpovědi SAML očekává ID uživatele JIRA nebo Confluence. Může to být v **NameId** nebo ve vlastním názvu atributu.
+* **Umístění ID uživatele SAML** : umístění, kde se v odpovědi SAML očekává ID uživatele JIRA nebo Confluence. Může to být v **NameId** nebo ve vlastním názvu atributu.
 
-* **Název atributu**: název atributu, u kterého se očekává ID uživatele.
+* **Název atributu** : název atributu, u kterého se očekává ID uživatele.
 
-* **Povolit zjišťování domovské sféry**: výběr, který se má použít k tomu, aby společnost používala přihlašování založené na Active Directory Federation Services (AD FS) (AD FS).
+* **Povolit zjišťování domovské sféry** : výběr, který se má použít k tomu, aby společnost používala přihlašování založené na Active Directory Federation Services (AD FS) (AD FS).
 
-* **Název domény**: název domény, pokud se AD FS na základě přihlášení.
+* **Název domény** : název domény, pokud se AD FS na základě přihlášení.
 
-* **Povolit jednotné přihlašování**: výběr, který se má udělat, pokud se chcete odhlásit ze služby Azure AD, když se uživatel odhlásí z JIRA nebo Confluence.
+* **Povolit jednotné přihlašování** : výběr, který se má udělat, pokud se chcete odhlásit ze služby Azure AD, když se uživatel odhlásí z JIRA nebo Confluence.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-* Máte k dispozici **více chyb certifikátu**: Přihlaste se do služby Azure AD a odeberte více certifikátů, které jsou pro aplikaci k dispozici. Zajistěte, aby byl přítomen pouze jeden certifikát.
+* Máte k dispozici **více chyb certifikátu** : Přihlaste se do služby Azure AD a odeberte více certifikátů, které jsou pro aplikaci k dispozici. Zajistěte, aby byl přítomen pouze jeden certifikát.
 
-* **Platnost certifikátu brzy vyprší ve službě Azure AD**: Doplňky se postará o automatický přechod na certifikát. Pokud brzy vyprší platnost certifikátu, měl by být nový certifikát označený jako aktivní a nepoužívané certifikáty by se měly odstranit. Když se uživatel pokusí přihlásit k JIRA v tomto scénáři, modul plug-in načte a uloží nový certifikát.
+* **Platnost certifikátu brzy vyprší ve službě Azure AD** : Doplňky se postará o automatický přechod na certifikát. Pokud brzy vyprší platnost certifikátu, měl by být nový certifikát označený jako aktivní a nepoužívané certifikáty by se měly odstranit. Když se uživatel pokusí přihlásit k JIRA v tomto scénáři, modul plug-in načte a uloží nový certifikát.
 
-* **Chcete zakázat WebSudo (zakažte relaci zabezpečeného správce)**:
+* **Chcete zakázat WebSudo (zakažte relaci zabezpečeného správce)** :
 
   * Pro JIRA jsou ve výchozím nastavení povolené relace zabezpečeného správce (tj. potvrzení hesla před přístupem k funkcím pro správu). Pokud chcete tuto schopnost v instanci JIRA odebrat, zadejte v souboru JIRA-config. Properties následující řádek: `jira.websudo.is.disabled = true`
 
   * V případě Confluence postupujte podle pokynů na [webu podpory Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
 
-* **Pole, která by měla být naplněna pomocí adresy URL metadat, nejsou naplněna**:
+* **Pole, která by měla být naplněna pomocí adresy URL metadat, nejsou naplněna** :
 
   * Zkontroluje, jestli je adresa URL správná. Ověřte, jestli jste namapovali správné ID tenanta a aplikace.
 
   * Zadejte adresu URL v prohlížeči a podívejte se, jestli se vám zobrazuje kód XML federačních metadat.
 
-* **Došlo k vnitřní chybě serveru**: Projděte si protokoly v adresáři protokolu instalace. Pokud se zobrazí chyba, když se uživatel pokusí přihlásit pomocí jednotného přihlašování služby Azure AD, můžete protokoly sdílet s týmem podpory.
+* **Došlo k vnitřní chybě serveru** : Projděte si protokoly v adresáři protokolu instalace. Pokud se zobrazí chyba, když se uživatel pokusí přihlásit pomocí jednotného přihlašování služby Azure AD, můžete protokoly sdílet s týmem podpory.
 
-* **Při pokusu uživatele o přihlášení došlo k chybě "ID uživatele nebylo nalezeno"**: vytvořte ID uživatele v JIRA nebo Confluence.
+* **Při pokusu uživatele o přihlášení došlo k chybě "ID uživatele nebylo nalezeno"** : vytvořte ID uživatele v JIRA nebo Confluence.
 
-* **V Azure AD se vyskytla chyba aplikace nenalezena**: Podívejte se, jestli je příslušná adresa URL namapovaná na aplikaci ve službě Azure AD.
+* **V Azure AD se vyskytla chyba aplikace nenalezena** : Podívejte se, jestli je příslušná adresa URL namapovaná na aplikaci ve službě Azure AD.
 
-* **Potřebujete podporu**: nahlaste se k [integrování týmu jednotného přihlašování v Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Tým odpoví v 24-48 pracovní době.
+* **Potřebujete podporu** : nahlaste se k [integrování týmu jednotného přihlašování v Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Tým odpoví v 24-48 pracovní době.
 
   Lístek podpory můžete také vyvolat se společností Microsoft prostřednictvím kanálu Azure Portal.
 
@@ -185,7 +185,7 @@ Modul plug-in podporuje tyto verze:
 
 * JIRA Core a software: 6,0 až 7,12
 * Oddělení služeb JIRA: 3.0.0 na 3.5.0
-* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) .
+* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](./jira52microsoft-tutorial.md) .
 * Confluence: 5,0 až 5,10
 * Confluence: 6.0.1
 * Confluence: 6.1.1

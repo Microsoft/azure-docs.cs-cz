@@ -1,15 +1,17 @@
 ---
 title: Prostředky pro vývojáře – Language Understanding
 description: Sady SDK, rozhraní REST API a CLI vám pomůžou vyvíjet aplikace Language Understanding (LUIS) ve vašem programovacím jazyce. Spravujte své prostředky Azure a LUIS předpovědi.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/19/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 01cbaf5a7e8eb733680381da21a7b1f9aa5c2cea
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 01/12/2021
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 08a1965aadf8f50625e54d7c5e3b3f6a44c0bbd4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235991"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946177"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Materiály pro vývojáře sady SDK, REST a CLI pro Language Understanding (LUIS)
 
@@ -21,9 +23,9 @@ Pomocí vrstvy správy Azure Cognitive Services můžete vytvořit, upravit, vyp
 
 Vyhledejte referenční dokumentaci na základě nástroje:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
+* [Azure CLI](/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
-* [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
+* [Azure RM PowerShell](/powershell/module/azurerm.cognitiveservices/#cognitive_services)
 
 
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Language Understanding žádosti o vytváření a předpovědi
@@ -86,14 +88,14 @@ Následující tabulka popisuje parametry, které jsou označeny složenými zá
 
 |Jazyk |Referenční dokumentace|Balíček|Rychlé starty|
 |--|--|--|--|
-|C#|[Vytváření obsahu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Předpověď](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[Vytváření balíčků NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[Předpověď NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Vytváření obsahu](quickstart-sdk.md?pivots=programming-language-csharp)<br>[Prediktivní dotazování](quickstart-sdk.md?pivots=programming-language-csharp)|
-|Přejít|[Vytváření a předpověď](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[Sada SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
-|Java|[Vytváření a předpověď](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Vytváření Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Předpověď Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[Vytváření obsahu](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Předpověď](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[Vytváření NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[Předpověď NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Vytváření obsahu](quickstart-sdk.md?pivots=programming-language-javascript)<br>[Předpověď](quickstart-sdk.md?pivots=programming-language-javascript)|
-|Python|[Vytváření a předpověď](quickstart-sdk.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Vytváření obsahu](quickstart-sdk.md?pivots=programming-language-python)<br>[Předpověď](quickstart-sdk.md?pivots=programming-language-python)|
+|C#|[Vytváření obsahu](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring)</br>[Předpovědi](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime)|[Vytváření balíčků NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[Předpověď NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Vytváření obsahu](./client-libraries-rest-api.md?pivots=rest-api)<br>[Prediktivní dotazování](./client-libraries-rest-api.md?pivots=rest-api)|
+|Přejít|[Vytváření a předpověď](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SADĚ](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
+|Java|[Vytváření a předpověď](/java/api/overview/azure/cognitiveservices/client/languageunderstanding)|[Vytváření Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Předpověď Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
+|JavaScript|[Vytváření obsahu](/javascript/api/@azure/cognitiveservices-luis-authoring/)<br>[Předpovědi](/javascript/api/@azure/cognitiveservices-luis-runtime/)|[Vytváření NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[Předpověď NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Vytváření obsahu](./client-libraries-rest-api.md?pivots=rest-api)<br>[Předpovědi](./client-libraries-rest-api.md?pivots=rest-api)|
+|Python|[Vytváření a předpověď](./client-libraries-rest-api.md?pivots=rest-api)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Vytváření obsahu](./client-libraries-rest-api.md?pivots=rest-api)<br>[Předpovědi](./client-libraries-rest-api.md?pivots=rest-api)|
 
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 
 Language Understanding (LUIS) poskytuje [kontejner](luis-container-howto.md) pro poskytování místních a obsažených verzí vaší aplikace.
 
@@ -117,18 +119,14 @@ Import a export těchto formátů je dostupný z rozhraní API a z portálu LUIS
 Rozhraní bot Framework je dostupné jako [sada SDK](https://github.com/Microsoft/botframework) v různých jazycích a jako služba pomocí [Azure bot Service](https://dev.botframework.com/).
 
 Robot Framework nabízí [několik nástrojů](https://github.com/microsoft/botbuilder-tools) , které vám pomůžou s Language Understanding, včetně:
-
-* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown) – vytváření Luis jazyka pro porozumění modelům pomocí souborů Markdownu
-* [Luis CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) – vytvoření a správa aplikací Luis.AI
-* [Odesílání](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)– Správa nadřazených a podřízených aplikací
-* [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) – automatické generování záložních tříd C#/TypeScript pro vaše Luis záměry a entity.
 * [Emulátor rozhraní robot](https://github.com/Microsoft/BotFramework-Emulator/releases) – desktopová aplikace umožňující vývojářům robotům testovat a ladit roboty sestavené pomocí sady robot Framework SDK
 * [Robot Framework robot](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) – integrovaný vývojový nástroj pro vývojáře a týmy pro více týmů k sestavování roboty a konverzací v prostředí Microsoft bot Framework
 * [Ukázky rozhraní bot](https://github.com/microsoft/botbuilder-samples) – v #C, JavaScriptu, TypeScriptu a Pythonu
+
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o běžných [kódech chyb HTTP](luis-reference-response-codes.md)
-* [Referenční dokumentace](https://docs.microsoft.com/azure/index) pro všechna rozhraní API a sady SDK
+* [Referenční dokumentace](../../index.yml) pro všechna rozhraní API a sady SDK
 * [Rozhraní bot Framework](https://github.com/Microsoft/botbuilder-dotnet) a [Azure bot Service](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [Rozpoznávání kontejnerů](../cognitive-services-container-support.md)

@@ -2,26 +2,26 @@
 title: Azure AD Domain Services pro poskytovatele cloudových řešení | Microsoft Docs
 description: Naučte se, jak povolit a spravovat Azure Active Directory Domain Services spravované domény pro poskytovatele cloudových řešení Azure.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 2760f0d91f7ed1066b0020c4aedc7572af095cfb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: justinha
+ms.openlocfilehash: d8edafff9b6534e5f1ce1c4581595ee187dfd432
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220316"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619895"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure Active Directory Domain Services nasazení a správy pro poskytovatele cloudových řešení Azure
 
 Poskytovatelé cloudových řešení Azure (CSP) je program pro partnery Microsoftu a poskytuje licenční kanál pro různé cloudové služby Microsoftu. CSP Azure umožňuje partnerům spravovat prodej, vlastnit fakturační vztah, poskytovat technickou a fakturační podporu a být jediným kontaktním bodem zákazníka. Kromě toho poskytuje poskytovatel cloudových služeb Azure kompletní sadu nástrojů, včetně samoobslužného portálu a doprovodného rozhraní API. Tyto nástroje umožňují partnerům CSP snadno zřizovat a spravovat prostředky Azure a poskytovat zákazníkům a jejich předplatným fakturaci.
 
-[Portál partnerského centra](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) je vstupním bodem pro všechny partnery CSP Azure a poskytuje bohatou možnost správy zákazníků, automatizované zpracování a další funkce. Partneři CSP Azure mohou využívat možnosti partnerského centra pomocí webového uživatelského rozhraní nebo pomocí prostředí PowerShell a různých volání rozhraní API.
+[Portál partnerského centra](/partner-center/azure-plan-lp) je vstupním bodem pro všechny partnery CSP Azure a poskytuje bohatou možnost správy zákazníků, automatizované zpracování a další funkce. Partneři CSP Azure mohou využívat možnosti partnerského centra pomocí webového uživatelského rozhraní nebo pomocí prostředí PowerShell a různých volání rozhraní API.
 
 Následující diagram znázorňuje, jak model CSP funguje na vysoké úrovni. Společnost Contoso má klienta Azure Active Directory (Azure AD). Mají partnerství se zprostředkovatelem CSP, který nasazuje a spravuje prostředky ve svém předplatném Azure CSP. Contoso může mít také běžná (přímá) předplatná Azure, která se účtují přímo do společnosti Contoso.
 
@@ -33,7 +33,7 @@ Skupina agentů pro *správu* je přiřazená k roli správce klienta v TENANTOV
 
 Když partner CSP zřídí předplatné služby Azure CSP pro společnost Contoso, jejich skupina agentů pro správu je přiřazena k roli vlastníka daného předplatného. V důsledku toho mají agenti správce CSP požadovaná oprávnění ke zřízení prostředků Azure, jako jsou virtuální počítače, virtuální sítě a Azure AD Domain Services jménem společnosti Contoso.
 
-Další informace najdete v tématu [Přehled CSP Azure](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) .
+Další informace najdete v tématu [Přehled CSP Azure](/partner-center/azure-plan-lp) .
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>Výhody používání Azure služba AD DS v předplatném služby Azure CSP
 

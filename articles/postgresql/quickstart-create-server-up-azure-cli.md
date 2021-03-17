@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření serveru – AZ Postgres up-Azure Database for PostgreSQL-Single server'
 description: Průvodce rychlým startem pro vytvoření Azure Database for PostgreSQLho samostatného serveru pomocí příkazu Azure CLI (rozhraní příkazového řádku)
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a2b7ceea74091931c92d28f8fa47b9046b545fc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c11a98c04f81e7c111faf4aa449ab2bf9a4890bb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496572"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485218"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití příkazu rozhraní příkazového řádku Azure, AZ Postgres up (Preview), vytvoření serveru Azure Database for PostgreSQL-Single
 
@@ -22,13 +22,13 @@ ms.locfileid: "87496572"
 
 Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí příkazu [AZ Postgres nahoru](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) vytvořit server Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure CLI. Kromě vytvoření serveru `az postgres up` vytvoří příkaz ukázkovou databázi, root user v databázi, otevře bránu firewall pro služby Azure a vytvoří výchozí pravidla brány firewall pro klientský počítač. Tato výchozí nastavení usnadňují urychlení procesu vývoje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) . Poznamenejte si vlastnost **ID** z výstupu příkazu pro odpovídající název předplatného.
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli) . Poznamenejte si vlastnost **ID** z výstupu příkazu pro odpovídající název předplatného.
 
 ```azurecli
 az login
@@ -56,7 +56,7 @@ az postgres up
 
 Server se vytvoří s následujícími výchozími hodnotami (Pokud je nepřepíšete ručně):
 
-**Nastavení** | **Výchozí hodnota** | **Description**
+**Nastavení** | **Výchozí hodnota** | **Popis**
 ---|---|---
 název-serveru | Vygenerované systémem | Jedinečný název, který identifikuje váš server Azure Database for PostgreSQL.
 resource-group | Vygenerované systémem | Nová skupina prostředků Azure.
@@ -75,7 +75,7 @@ admin-password | Vygenerované systémem | Heslo uživatele, který je správcem
 
 Po vytvoření serveru se objeví následující nastavení:
 
-- Vytvoří se pravidlo brány firewall nazvané "devbox". Rozhraní příkazového řádku Azure CLI zjistí IP adresu počítače, na kterém `az postgres up` je spuštěný příkaz, a seznam povolených IP adres.
+- Vytvoří se pravidlo brány firewall nazvané "devbox". Rozhraní příkazového řádku Azure CLI se pokusí zjistit IP adresu počítače, `az postgres up` ze kterého se spouští příkaz, a umožňuje tuto IP adresu.
 - Možnost "povolení přístupu ke službám Azure" je nastavená na ZAPNUTo. Toto nastavení nakonfiguruje bránu firewall serveru tak, aby přijímala připojení ze všech prostředků Azure, včetně prostředků, které se ve vašem předplatném nepoužívá.
 - Vytvoří se prázdná databáze s názvem "sampledb".
 - Vytvoří se nový uživatel s názvem root s oprávněními k SampleDB.

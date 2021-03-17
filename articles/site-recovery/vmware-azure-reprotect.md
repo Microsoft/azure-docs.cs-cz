@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292792"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89441489"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Zpětná replikace z Azure do místního prostředí
 
@@ -46,6 +46,9 @@ Povolte replikaci. Můžete znovu chránit konkrétní virtuální počítače n
 
 - Pokud znovu nastavíte ochranu plánu obnovení, je nutné zadat hodnoty pro každý chráněný počítač.
 - Pokud virtuální počítače patří do replikační skupiny pro konzistenci více virtuálních počítačů, dají se znovu chránit jenom pomocí plánu obnovení. Virtuální počítače v replikační skupině musí používat stejný hlavní cílový server.
+
+>[!NOTE]
+>Objem dat odesílaných z Azure do Erstwhile zdroje během opětovného zapnutí ochrany může být cokoli z 0 bajtů a celková velikost disku pro všechny chráněné počítače a nedá se vypočítat.
 
 ### <a name="before-you-start"></a>Než začnete
 

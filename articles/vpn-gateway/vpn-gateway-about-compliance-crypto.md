@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 499d184d373b896ba7bffcf990693ef5e6ac466b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 47d14c5ee7f6c4816bf15351e9cb28a2aaa72b4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032420"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546841"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>O kryptografických požadavcích a branách Azure VPN Gateway
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak můžete nakonfigurovat brány VPN Azure tak, aby s
 
 ## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Informace o připojeních VPN IKEv1 a IKEv2 pro Azure
 
-Tradičně jsme povolili připojení IKEv1 jenom pro základní SKU a povolená připojení IKEv2 pro všechny skladové položky služby VPN Gateway kromě základních SKU. Základní skladové položky (SKU) umožňují pouze 1 připojení a společně s dalšími omezeními, jako je například výkon, zákazníci používající starší zařízení, která podporují pouze IKEv1 protokoly, mají omezené prostředí. Abychom vylepšili možnosti zákazníků pomocí IKEv1 protokolů, teď pro všechny SKU brány VPN Gateway povolujeme připojení IKEv1, a to s výjimkou základního SKU. Další informace najdete v tématu [VPN Gateway SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku).
+Tradičně jsme povolili připojení IKEv1 jenom pro základní SKU a povolená připojení IKEv2 pro všechny skladové položky služby VPN Gateway kromě základních SKU. Základní skladové položky (SKU) umožňují pouze 1 připojení a společně s dalšími omezeními, jako je například výkon, zákazníci používající starší zařízení, která podporují pouze IKEv1 protokoly, mají omezené prostředí. Abychom vylepšili možnosti zákazníků pomocí IKEv1 protokolů, teď pro všechny SKU brány VPN Gateway povolujeme připojení IKEv1, a to s výjimkou základního SKU. Další informace najdete v tématu [VPN Gateway SKU](./vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 ![Připojení k Azure VPN Gateway IKEv1 a IKEv2](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 
@@ -30,13 +30,15 @@ Pokud jsou připojení IKEv1 a IKEv2 použita u stejné brány VPN, je přenos m
 
 Protokol IPsec a IKE standard podporuje široké spektrum kryptografických algoritmů v různých kombinacích. Pokud nepožadujete určitou kombinaci kryptografických algoritmů a parametrů, Azure VPN Gateway použije sadu výchozích návrhů. Výchozí sady zásad byly zvoleny pro maximalizaci interoperability se široké škálou zařízení VPN jiných výrobců ve výchozích konfiguracích. V důsledku toho zásady a počet návrhů nemůžou pokrýt všechny možné kombinace dostupných kryptografických algoritmů a silných klíčů.
 
+### <a name="default-policy"></a>Výchozí zásady
+
 Výchozí nastavení zásad pro Azure VPN Gateway najdete v článku: [informace o zařízeních VPN a parametrech protokolu IPSec/IKE pro připojení typu Site-to-site VPN Gateway](vpn-gateway-about-vpn-devices.md).
 
 ## <a name="cryptographic-requirements"></a>Kryptografické požadavky
 
 V případě komunikace, která vyžaduje konkrétní kryptografické algoritmy nebo parametry, obvykle kvůli požadavkům na dodržování předpisů nebo zabezpečení, teď můžete nakonfigurovat své brány Azure VPN tak, aby používaly vlastní zásadu IPsec/IKE s konkrétními kryptografickými algoritmy a silnými klíči, nikoli výchozími sadami zásad Azure.
 
-Například zásady hlavního režimu IKEv2 pro Azure VPN Gateway využívají jenom skupinu Diffie-Hellman Group 2 (1024 bitů), zatímco možná budete muset zadat silnější skupiny, které se mají použít v protokolu IKE, jako je například skupina 14 (2048 bitů), skupina 24 (2048-bit MODP Group) nebo ECP (skupiny eliptických křivek) 256 nebo 384 (skupina 19 a skupina 20). Podobné požadavky platí i pro zásady rychlého režimu IPsec.
+Například zásady hlavního režimu IKEv2 pro služby Azure VPN Gateway využívají Diffie-Hellman skupiny 2 (1024 bitů), zatímco možná budete muset zadat silnější skupiny, které se mají použít v protokolu IKE, jako je například skupina 14 (2048-bit), skupina 24 (2048-bit MODP Group) nebo ECP (skupiny eliptických křivek) 256 nebo 384 (skupina 19 a skupina 20). Podobné požadavky platí i pro zásady rychlého režimu IPsec.
 
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Vlastní zásady IPsec/IKE pomocí Azure VPN Gateway
 

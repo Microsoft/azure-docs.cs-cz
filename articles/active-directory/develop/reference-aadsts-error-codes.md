@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2020
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115097"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175341"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -74,7 +74,7 @@ Tady je Ukázková chybová odpověď:
 ## <a name="lookup-current-error-code-information"></a>Vyhledat aktuální informace o kódu chyby
 Chybové kódy a zprávy mohou být změněny.  Nejaktuálnější informace najdete na stránce, kde [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) najdete popis chyb AADSTS, opravy a některá navrhovaná řešení.  
 
-Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdržíte kód chyby "AADSTS16000", proveďte hledání [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "16000".  Můžete také přímo propojit s konkrétní chybou přidáním čísla kódu chyby k adrese URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) .
+Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "50058".  Můžete také přímo propojit s konkrétní chybou přidáním čísla kódu chyby k adrese URL: [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) .
 
 ## <a name="aadsts-error-codes"></a>Kódy chyb AADSTS
 
@@ -95,6 +95,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS50000 | TokenIssuanceError – došlo k potížím s přihlašovací službou. Pokud chcete tento problém vyřešit, [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md). |
 | AADSTS50001 | InvalidResource – prostředek je zakázaný nebo neexistuje. Zkontrolujte kód vaší aplikace a ujistěte se, že jste zadali přesnou adresu URL prostředku pro prostředek, ke kterému se pokoušíte získat přístup.  |
 | AADSTS50002 | NotAllowedTenant – přihlášení nebylo úspěšné kvůli omezenému přístupu k proxy serveru v tenantovi. Pokud se jedná o vaše vlastní zásady tenanta, můžete tento problém vyřešit změnou nastavení zakázaného tenanta. |
+| AADSTS500021 | Přístup k tenantovi {tenant} je odepřený. AADSTS500021 označuje, že je nakonfigurovaná funkce omezení tenanta a že se uživatel pokouší získat přístup k tenantovi, který není v seznamu povolených tenantů uvedených v hlavičce `Restrict-Access-To-Tenant` . Další informace najdete v tématu [použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím](../manage-apps/tenant-restrictions.md).|
 | AADSTS50003 | MissingSigningKey – přihlášení nebylo úspěšné, protože chybí podpisový klíč nebo certifikát. To může být způsobeno tím, že v aplikaci nebyl nakonfigurován žádný podpisový klíč. Podívejte se na řešení popsaných na [... /Manage-apps/application-Sign-in-problem-Federated-SSO-Gallery.MD # Certificate-nebo-Key – Nenakonfigurováno](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Pokud se pořád zobrazují problémy, obraťte se na vlastníka aplikace nebo správce aplikace. |
 | AADSTS50005 | DevicePolicyError – uživatel se pokusil přihlásit k zařízení z platformy, která není aktuálně podporovaná pomocí zásad podmíněného přístupu. |
 | AADSTS50006 | Ověření podpisu InvalidSignature se nezdařilo kvůli neplatnému podpisu. |
@@ -135,7 +136,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS50079 | UserStrongAuthEnrollmentRequired – z důvodu změny konfigurace provedené správcem nebo proto, že uživatel přesunul do nového umístění, je nutné, aby uživatel používal službu Multi-Factor Authentication. |
 | AADSTS50085 | Obnovovací token vyžaduje přihlášení prostřednictvím distribučního bodu vydávání (IDP) sociální sítě. Požádejte uživatele, aby se zkusil pomocí uživatelského jména a hesla přihlásit znovu. |
 | AADSTS50086 | SasNonRetryableError |
-| AADSTS50087 | SasRetryableError – služba je dočasně nedostupná. Zkuste to znovu. |
+| AADSTS50087 | SasRetryableError – služba je dočasně nedostupná. Zkuste to ještě jednou. |
 | AADSTS50089 | Platnost tokenu toku vypršela – ověření se nezdařilo. Přihlaste se, aby se uživatel pokusil znovu přihlásit pomocí uživatelského jména a hesla. |
 | AADSTS50097 | DeviceAuthenticationRequired – vyžaduje se ověřování zařízení. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized – podpis JWT je neplatný. |
@@ -156,7 +157,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS50136 | Byla zjištěna relace RedirectMsaSessionToApp-Single MSA. |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken – relace je neplatná z důvodu chybějícího externího aktualizačního tokenu. |
 | AADSTS50140 | KmsiInterrupt – k této chybě došlo v důsledku přerušení přihlášení uživatele v případě, že se přihlásil uživatel. Více informací získáte, když [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby. |
-| AADSTS50143 | Neshoda relací – relace je neplatná, protože klient uživatele se neshoduje s pomocným parametrem domény z důvodu jiného prostředku. Pokud chcete získat další podrobnosti,  [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) s ID korelace, ID požadavku a kódem chyby. |
+| AADSTS50143 | Neshoda relace – relace je neplatná, protože se tenant uživatele kvůli jinému prostředku neshoduje s nápovědou domény. Více informací získáte, když [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby. |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword – vypršela platnost hesla služby Active Directory uživatele. Vygenerujte nové heslo pro uživatele nebo ho použijte k resetování hesla pomocí nástroje pro samoobslužné obnovení. |
 | AADSTS50146 | MissingCustomSigningKey – Tato aplikace musí být nakonfigurovaná pomocí podpisového klíče specifického pro aplikaci. Buď není pomocí tohoto klíče nakonfigurovaná nebo klíči vypršela platnost nebo ještě klíč v platnost nevstoupil. |
 | AADSTS50147 | MissingCodeChallenge – velikost parametru výzvy kódu není platná. |
@@ -167,6 +168,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired – klient může získat token jednotného přihlašování prostřednictvím rozšíření účtů Windows 10, ale token se v požadavku nenašel nebo vypršela platnost zadaného tokenu. |
 | AADSTS50169 | InvalidRequestBadRealm – sféra není nakonfigurovanou sférou aktuálního oboru názvů služby. |
 | AADSTS50170 | MissingExternalClaimsProviderMapping – chybí mapování externích ovládacích prvků. |
+| AADSTS50173 | FreshTokenNeeded – poskytnutý grant vypršel z důvodu jeho odvolání a je potřeba nový ověřovací token. Správce nebo uživatel odvolal tokeny pro tohoto uživatele, což způsobilo selhání následné aktualizace tokenu a vyžaduje opakované ověření. Přihlaste se znovu. |
 | AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers – externí výzva není pro průchozí uživatele podporována. |
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers – řízení relace není pro průchozí uživatele podporováno. |
 | AADSTS50180 | WindowsIntegratedAuthMissing – vyžaduje se integrované ověřování systému Windows. Povolte tenantovi bezproblémové jednotné přihlašování. |
@@ -185,10 +187,11 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp – použitá aplikace není schválenou aplikací pro podmíněný přístup. Aby uživatel mohl získat přístup, musí použít jednu z aplikací ze seznamu schválených aplikací. |
 | AADSTS53003 | BlockedByConditionalAccess – zásady podmíněného přístupu zablokovaly přístup. Zásady přístupu nepovolují vystavení tokenu. |
 | AADSTS53004 | ProofUpBlockedDueToRisk – uživatel musí před přístupem k tomuto obsahu dokončit proces registrace Multi-Factor Authentication. Uživatel by se měl zaregistrovat k vícefaktorovému ověřování. |
+| AADSTS53011 | Uživatel zablokoval kvůli riziku pro domácího tenanta. |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist – uživatel nebo správce nesouhlasí s používáním aplikace s ID X. odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. |
 | AADSTS65004 | UserDeclinedConsent – uživatel odmítl udělit souhlas s přístupem k aplikaci. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|
-| AADSTS65005 | MisconfiguredApplication – seznam přístupu k prostředkům požadovaných aplikací neobsahuje aplikace, které prostředek zjistitelný, nebo klientská aplikace požadovala přístup k prostředku, který nebyl zadaný v požadovaném seznamu přístupu k prostředkům nebo služba Graph vrátila chybný požadavek nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, možná jste nakonfigurovali aplikaci s nesprávným identifikátorem (entita). Vyzkoušejte řešení uvedené pro SAML pomocí následujícího odkazu:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication – seznam přístupu k prostředkům požadovaných aplikací neobsahuje aplikace, které prostředek zjistitelný, nebo klientská aplikace požadovala přístup k prostředku, který nebyl zadaný v požadovaném seznamu přístupu k prostředkům nebo služba Graph vrátila chybný požadavek nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, možná jste nakonfigurovali aplikaci s nesprávným identifikátorem (entita). Vyzkoušejte řešení uvedené pro SAML pomocí následujícího odkazu: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS650052 | Aplikace potřebuje přístup ke službě, ke `(\"{name}\")` které se vaše organizace `\"{organization}\"` nepřipojila nebo nepovolila. Požádejte správce IT, aby zkontroloval konfiguraci vašich předplatných služeb. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant – ověření se nezdařilo. Obnovovací token není platný. K chybě mohlo dojít z následujících důvodů:<ul><li>Hlavička vazby tokenu je prázdná.</li><li>Hodnota hash vazby tokenu se neshoduje.</li></ul> |
@@ -200,7 +203,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS70007 | UnsupportedResponseMode – `response_mode` při požadavku na token vrátila aplikace nepodporovanou hodnotu.  |
 | AADSTS70008 | ExpiredOrRevokedGrant – platnost obnovovacího tokenu vypršela z důvodu nečinnosti. Token byl vydán v XXX a byl po určitou dobu neaktivní. |
 | AADSTS70011 | InvalidScope – rozsah požadovaný aplikací je neplatný. |
-| AADSTS70012 | MsaServerError – při ověřování uživatele MSA (příjemce) došlo k chybě serveru. Zkuste to znovu. Pokud se i nadále nedaří, [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) . |
+| AADSTS70012 | MsaServerError – při ověřování uživatele MSA (příjemce) došlo k chybě serveru. Zkuste to ještě jednou. Pokud k chybě dochází opakovaně, [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md). |
 | AADSTS70016 | Chyba toku zařízení AuthorizationPending-OAuth 2,0. Autorizace čeká na vyřízení. Zařízení se znovu pokusí dotazovat požadavek. |
 | AADSTS70018 | BadVerificationCode – neplatný ověřovací kód z důvodu zadání nesprávného uživatelského kódu pro tok kódu zařízení uživatelem Autorizace není schválená. |
 | AADSTS70019 | CodeExpired – platnost ověřovacího kódu vypršela. Nechejte uživatele opakovat přihlášení. |
@@ -243,7 +246,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat – formát hlavního názvu není platný nebo nesplňuje očekávaný `name[/host][@realm]` formát. Hlavní název je povinný, hostitel a sféra jsou volitelné a můžou být nastavené na hodnotu null. |
 | AADSTS90023 | InvalidRequest – žádost ověřovací služby není platná. |
 | AADSTS9002313 | InvalidRequest-žádost je poškozená nebo neplatná. – Problém je tady, protože u požadavku na určitý koncový bod došlo k nějaké chybě. K tomuto problému se dostanete tak, že získáte Fiddler trasování chyby a zjistíte, jestli je požadavek ve skutečnosti správně naformátovaný nebo ne. |
-| AADSTS90024 | RequestBudgetExceededError – došlo k přechodné chybě. Zkuste to znovu. |
+| AADSTS90024 | RequestBudgetExceededError – došlo k přechodné chybě. Zkuste to ještě jednou. |
 | AADSTS90033 | MsodsServiceUnavailable – služba Microsoft online Directory Service (MSODS) není k dispozici. |
 | AADSTS90036 | MsodsServiceUnretryableFailure – došlo k neočekávané chybě, která není znovu opakována ze služby WCF hostované službou MSODS. [Otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) pro získání dalších podrobností o chybě. |
 | AADSTS90038 | NationalCloudTenantRedirection – zadaný tenant Y patří do národního cloudu X. Aktuální instance cloudu Z se federovat hodnotou X. Vrátí se chyba přesměrování cloudu. |
@@ -251,8 +254,8 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS90051 | InvalidNationalCloudId – identifikátor národního cloudu obsahuje neplatný identifikátor cloudu. |
 | AADSTS90055 | TenantThrottlingError – existuje příliš mnoho příchozích požadavků. Tato výjimka je vyvolána u blokovaných klientů. |
 | AADSTS90056 | BadResourceRequest – Chcete-li uplatnit kód pro přístupový token, aplikace by měla poslat požadavek POST na `/token` koncový bod. Před tímto kódem byste také měli poskytnout autorizační kód a odeslat ho do požadavku POST do `/token` koncového bodu. V tomto článku najdete Přehled toku autorizačního kódu OAuth 2,0: [.. /azuread-dev/v1-Protocols-OAuth-Code.MD](../azuread-dev/v1-protocols-oauth-code.md). Nasměrujte uživatele na `/authorize` koncový bod, který vrátí authorization_code. Odesláním žádosti do `/token` koncového bodu uživatel získá přístupový token. Přihlaste se Azure Portal a zkontrolujte **koncové body Registrace aplikací >** , abyste zkontrolovali, jestli byly dva koncové body správně nakonfigurované. |
-| AADSTS90072 | PassThroughUserMfaError – externí účet, ke kterému se uživatel přihlašuje, neexistuje v tenantovi, ke kterému se přihlásil. takže uživatel nemůže splnit požadavky MFA pro tenanta. Účet musí být nejdřív přidaný jako externí uživatel v tenantovi. Odhlaste se a přihlaste se pomocí jiného uživatelského účtu Azure AD. |
-| AADSTS90081 | OrgIdWsFederationMessageInvalid – při pokusu služby o zpracování zprávy WS-Federation došlo k chybě. Zpráva není platná. |
+| AADSTS90072 | PassThroughUserMfaError – externí účet, ke kterému se uživatel přihlašuje, neexistuje v tenantovi, ke kterému se přihlásil. takže uživatel nemůže splnit požadavky MFA pro tenanta. K této chybě může dojít také v případě, že jsou uživatelé synchronizováni, ale v atributu ImmutableID (sourceAnchor) mezi službou Active Directory a službou Azure AD dojde k neshodě. Účet musí být nejdřív přidaný jako externí uživatel v tenantovi. Odhlaste se a přihlaste se pomocí jiného uživatelského účtu Azure AD. |
+| AADSTS90081 | OrgIdWsFederationMessageInvalid – došlo k chybě, když se služba pokusila zpracovat WS-Federationovou zprávu. Zpráva není platná. |
 | AADSTS90082 | OrgIdWsFederationNotSupported – vybrané zásady ověřování pro požadavek se aktuálně nepodporují. |
 | AADSTS90084 | OrgIdWsFederationGuestNotAllowed – účty hostů nejsou pro tuto lokalitu povoleny. |
 | AADSTS90085 | OrgIdWsFederationSltRedemptionFailed – služba nemůže vydat token, protože objekt společnosti nebyl dosud zřízen. |
@@ -315,11 +318,12 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS700022 | InvalidMultipleResourcesScope – zadaná hodnota oboru vstupních parametrů není platná, protože obsahuje více než jeden prostředek. |
 | AADSTS700023 | InvalidResourcelessScope – zadaná hodnota oboru vstupních parametrů není platná, pokud požaduje přístupový token. |
 | AADSTS7000215 | Je zadaný neplatný tajný klíč klienta. Chyba vývojáře – aplikace se pokouší přihlásit bez správných parametrů ověřování.|
-| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided – platnost zadaných tajných klíčů klienta vypršela. Přejděte na Azure Portal pro vytvoření nových klíčů pro aplikaci nebo zvažte použití přihlašovacích údajů k certifikátu pro zvýšení zabezpečení:[https://aka.ms/certCreds](https://aka.ms/certCreds) |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided – platnost zadaných tajných klíčů klienta vypršela. Přejděte na Azure Portal pro vytvoření nových klíčů pro aplikaci nebo zvažte použití přihlašovacích údajů k certifikátu pro zvýšení zabezpečení: [https://aka.ms/certCreds](./active-directory-certificate-credentials.md) |
 | AADSTS700005 | Autorizační kód poskytnutý InvalidGrantRedeemAgainstWrongTenant je určený pro použití s jiným klientem, tedy odmítnutý. Autorizační kód OAuth2 se musí uplatnit u stejného tenanta, kterého se získal pro (/běžné nebo/{tenant-ID} podle potřeby). |
 | AADSTS1000000 | UserNotBoundError – rozhraní API pro vázání vyžaduje, aby uživatel Azure AD ověřil i s externím IDP, ke kterému ještě nedošlo. |
 | AADSTS1000002 | BindCompleteInterruptError – vazba byla úspěšně dokončena, ale uživatel musí být informován. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled – aplikace je zakázaná. |
+| AADSTS7000114| Aplikace ' appIdentifier ' nemá povoleno provádět aplikace na základě volání.|
 | AADSTS7500529 | Hodnota ' SAMLId-GUID ' není platné ID SAML – Azure AD používá tento atribut k naplnění atributu InResponseTo vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například id6c1c178c166d486687be4aaf5e482730 je platný identifikátor. |
 
 ## <a name="next-steps"></a>Další kroky

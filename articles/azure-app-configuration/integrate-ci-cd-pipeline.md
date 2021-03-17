@@ -2,18 +2,18 @@
 title: Integrace konfigurace aplikace Azure s použitím kanálu průběžné integrace a doručování
 description: Naučte se implementovat průběžnou integraci a doručování pomocí Azure App Configuration.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.date: 01/30/2020
-ms.author: lcozzens
-ms.openlocfilehash: f0d1e57c7e212fefc6e17a8170e3b4537b190f60
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 04/19/2020
+ms.author: alkemper
+ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211637"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979840"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
 
@@ -33,11 +33,11 @@ Následující příklad ukazuje, jak zahrnout konfigurační data aplikace jako
 
 K provedení kroků v tomto kurzu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) je vynikající možnost dostupná na platformách Windows, MacOS a Linux.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-Pokud jste místně sestavili, Stáhněte a nainstalujte [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , pokud jste to ještě neudělali.
+Pokud jste místně sestavili, Stáhněte a nainstalujte [Azure CLI](/cli/azure/install-azure-cli) , pokud jste to ještě neudělali.
 
-Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte se, že rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) je nainstalováno v systému sestavení.
+Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte se, že rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) je nainstalováno v systému sestavení.
 
 ### <a name="export-an-app-configuration-store"></a>Exportovat úložiště konfigurace aplikace
 
@@ -49,7 +49,7 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. Otevřete *program.cs*a aktualizujte `CreateWebHostBuilder` metodu pro použití exportovaného souboru JSON voláním `config.AddJsonFile()` metody.  Přidejte `System.Reflection` také obor názvů.
+1. Otevřete *program.cs* a aktualizujte `CreateWebHostBuilder` metodu pro použití exportovaného souboru JSON voláním `config.AddJsonFile()` metody.  Přidejte `System.Reflection` také obor názvů.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -67,7 +67,7 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
 
 ### <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. 
+1. Nastavte proměnnou prostředí s názvem **ConnectionString** a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. 
     Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
     ```console
@@ -107,4 +107,4 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
 V tomto kurzu jste exportovali data konfigurace aplikace Azure, která se mají použít v kanálu nasazení. Další informace o tom, jak používat konfiguraci aplikací, najdete v ukázkách Azure CLI.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)

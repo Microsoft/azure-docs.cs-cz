@@ -1,19 +1,16 @@
 ---
 title: Apache Sqoop s Apache Hadoop – Azure HDInsight
 description: Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoop ve službě HDInsight a Azure SQL Database.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 0761ea059350369a363ee1022b21c9da2702b396
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2d0d38dee15817e56c2784981365ea331b6a8459
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076109"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943142"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>Použití Apache Sqoop k importu a exportu dat mezi Apache Hadoop ve službě HDInsight a Azure SQL Database
 
@@ -25,7 +22,7 @@ Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoopm clust
 
 * Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [pro použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Seznamte se se znalostí pro Sqoop. Další informace najdete v tématu [uživatelská příručka pro Sqoop](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
 
@@ -150,13 +147,13 @@ Z SQL do Azure Storage.
 
     Další informace o používání služby HDInsight s Virtual Network Azure najdete v dokumentu věnovaném [rozšiřování HDInsight s azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md) . Další informace o Azure Virtual Network najdete v dokumentu [přehled Virtual Network](../../virtual-network/virtual-networks-overview.md) .
 
-* SQL Server musí být nakonfigurovaná tak, aby povolovala ověřování SQL. Další informace naleznete v dokumentu [zvolit režim ověřování](https://msdn.microsoft.com/ms144284.aspx) .
+* SQL Server musí být nakonfigurovaná tak, aby povolovala ověřování SQL. Další informace naleznete v dokumentu [zvolit režim ověřování](/sql/relational-databases/security/choose-an-authentication-mode) .
 
 * Možná budete muset nakonfigurovat SQL Server, aby přijímala vzdálená připojení. Další informace najdete v tématu [řešení potíží s připojením k dokumentu SQL Server databázového stroje](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak používat Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak používat Sqoop. Další informace najdete v následujících tématech:
 
 * [Použití Apache Oozie se službou HDInsight](../hdinsight-use-oozie-linux-mac.md): použijte akci Sqoop v pracovním postupu Oozie.
 * [Analýza dat zpoždění letu pomocí HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): pomocí interaktivního dotazu Analyzujte data zpoždění letu a pak pomocí Sqoop exportujte data do databáze v Azure.

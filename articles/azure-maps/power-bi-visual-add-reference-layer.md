@@ -10,13 +10,13 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: eb6c9fed42f263ca6cfaa1ea975d31cb8f4a75cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261756"
 ---
-# <a name="add-a-reference-layer"></a>Přidat referenční vrstvu
+# <a name="add-a-reference-layer"></a>Přidání referenční vrstvy
 
 Funkce referenční vrstvy umožňuje odeslat sekundární prostorovou datovou sadu do vizuálu a překrytí na mapě, aby poskytovala kontext sčítání. Tato datová sada je hostovaná pomocí Power BI a musí se jednat o [soubor v souboru. JSON](https://wikipedia.org/wiki/GeoJSON) s `.json` `.geojson` příponou nebo.
 
@@ -64,4 +64,4 @@ Přidat k mapě další kontext:
 > [Přidání vrstvy dlaždic](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazit provoz v reálném čase](power-bi-visual-show-real-time-traffic.md)
+> [Zobrazení provozu v reálném čase](power-bi-visual-show-real-time-traffic.md)

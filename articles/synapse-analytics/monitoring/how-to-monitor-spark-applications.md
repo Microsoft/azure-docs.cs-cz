@@ -1,22 +1,22 @@
 ---
 title: Jak monitorovat aplikace Apache Spark v synapse studiu
-description: Pomocí synapse studia můžete monitorovat aplikace Apache Spark.
+description: Naučte se monitorovat Apache Spark aplikace pomocí nástroje synapse Studio.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 04/15/2020
+ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: b5ad9e6a448747ac8f33829b1137b1af434e7a9c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 5f9733866e85d79bdb85b8a24d1878e1169c2479
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385581"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586036"
 ---
-# <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>Použití synapse studia (Preview) k monitorování aplikací Apache Spark
+# <a name="how-to-use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Jak používat synapse Studio k monitorování aplikací Apache Spark
 
 Pomocí služby Azure synapse Analytics můžete pomocí Sparku spouštět poznámkové bloky, úlohy a jiné druhy aplikací ve vašich fondech Spark ve vašem pracovním prostoru.
 
@@ -34,15 +34,13 @@ Po otevření pracovního prostoru vyberte na levé straně část **monitorová
 
 Pokud chcete zobrazit seznam aplikací Apache Spark, vyberte **Apache Spark aplikace** .
 
- ![Vybrat aplikace Spark](./media/how-to-monitor-spark-applications/monitor-hub-nav-sparkapplications.png)
+ ![Vybrat aplikace Spark](./media/how-to-monitor-spark-applications/monitor-hub-nav-spark-applications.png)
 
 ## <a name="filter-your-apache-spark-applications"></a>Filtrování aplikací Apache Spark
 
 Seznam aplikací Apache Spark můžete filtrovat do těch, které vás zajímají. Filtry v horní části obrazovky umožňují zadat pole, podle kterého chcete filtrovat.
 
 Můžete například filtrovat zobrazení a zobrazit pouze aplikace Apache Spark, které obsahují název "prodej":
-
-![Tlačítko Filtr](./media/common/filter-button.png)
 
 ![Vzorový filtr](./media/how-to-monitor-spark-applications/filter-example.png)
 

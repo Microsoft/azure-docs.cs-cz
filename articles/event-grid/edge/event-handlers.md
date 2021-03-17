@@ -4,10 +4,10 @@ description: Obslužné rutiny událostí a cíle v Event Grid na hraničních z
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 18e2b944f60ebdf8a1b0c60ba446a13df13134c5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171580"
 ---
 # <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>Obslužné rutiny událostí a cíle v Event Grid na hraničních zařízeních
@@ -145,7 +145,7 @@ Chcete-li publikovat do tématu Service Bus, nastavte `endpointType` na `service
 
 ## <a name="storage-queues"></a>Fronty služby Storage
 
-K publikování do fronty úložiště nastavte `endpointType` `storageQueue` a zadejte:
+K publikování do fronty úložiště nastavte  `endpointType` `storageQueue` a zadejte:
 
 * Queue: název fronty úložiště, do které se chystáte publikovat.
 * connectionString: připojovací řetězec pro účet úložiště, ve kterém je fronta úložiště.

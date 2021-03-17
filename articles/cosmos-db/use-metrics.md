@@ -5,18 +5,21 @@ author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: b8cf0425a4a40c4692f4c0c7fcf11dbb23019b23
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b0760b86012504ea86e4a0cde36ae878e8ff3b26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132666"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685733"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění pomocí metrik v Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB poskytuje metriky pro propustnost, úložiště, konzistenci, dostupnost a latenci. Azure Portal nabízí agregované zobrazení těchto metrik. Metriky služby Azure Cosmos DB můžete zobrazit také s využitím rozhraní API služby Azure Monitor. Hodnoty dimenze pro metriky, jako je například název kontejneru, nerozlišují velká a malá písmena. Proto je nutné použít porovnávání bez rozlišování velkých a malých písmen při porovnávání řetězců u těchto hodnot dimenzí. Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](cosmos-db-azure-monitor-metrics.md) .
+Azure Cosmos DB poskytuje metriky pro propustnost, úložiště, konzistenci, dostupnost a latenci. Azure Portal nabízí agregované zobrazení těchto metrik. Metriky služby Azure Cosmos DB můžete zobrazit také s využitím rozhraní API služby Azure Monitor. Hodnoty dimenze pro metriky, jako je například název kontejneru, nerozlišují velká a malá písmena. Proto je nutné použít porovnávání bez rozlišování velkých a malých písmen při porovnávání řetězců u těchto hodnot dimenzí. Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](./monitor-cosmos-db.md) .
 
 Tento článek popisuje běžné případy použití a možnosti použití metrik služby Azure Cosmos DB k analýze a ladění těchto problémů. Metriky se shromažďují každých pět minut a uchovávají se po dobu sedmi dní.
 
@@ -40,7 +43,7 @@ V podokně **metriky** jsou k dispozici následující metriky:
 
 * **Metriky konzistence** – Tato metrika ukazuje, jakým způsobem je možné konzistence modelu konzistence zvolit. U účtů s více oblastmi zobrazuje tato metrika také latenci replikace mezi oblastmi, které jste vybrali.
 
-* **Metriky systému** – Tato metrika ukazuje, kolik požadavků na metadata jsou obsluhovány hlavním oddílem. Pomůže vám také identifikovat omezené požadavky.
+* **Metriky systému** – Tato metrika ukazuje, kolik požadavků na metadata jsou obsluhovány primárním oddílem. Pomůže vám také identifikovat omezené požadavky.
 
 V následujících částech se vysvětlují běžné scénáře, kdy můžete použít Azure Cosmos DB metriky. 
 
@@ -58,7 +61,7 @@ Dobré mohutnosti klíčů oddílů je nezbytné pro libovolnou škálovatelnou 
 
 :::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Jeden oddíl se zobrazením velkého využití":::
 
-Nerovnoměrné rozdělení propustnosti může způsobovat *aktivní* oddíly, což může vést k omezení požadavků a může vyžadovat přerozdělení na oddíly. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partition-data.md).
+Nerovnoměrné rozdělení propustnosti může způsobovat *aktivní* oddíly, což může vést k omezení požadavků a může vyžadovat přerozdělení na oddíly. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partitioning-overview.md).
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>Určení distribuce úložiště mezi oddíly
 
@@ -70,11 +73,11 @@ Můžete hlavní příčinu, která klíč oddílu zkosí rozdělení, kliknutí
 
 :::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Klíč oddílu zkosí distribuci.":::
 
-Po zjištění, který klíč oddílu způsobuje rozdělení v distribuci, bude pravděpodobně nutné znovu rozdělit svůj kontejner na více distribuovaných klíčů oddílu. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partition-data.md).
+Po zjištění, který klíč oddílu způsobuje rozdělení v distribuci, bude pravděpodobně nutné znovu rozdělit svůj kontejner na více distribuovaných klíčů oddílu. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partitioning-overview.md).
 
 ## <a name="compare-data-size-against-index-size"></a>Porovnat velikost dat s velikostí indexu
 
-V Azure Cosmos DB celkové spotřebované úložiště je kombinací velikosti dat i velikosti indexu. Velikost indexu je obvykle zlomkem velikosti dat. V okně metriky v [Azure Portal](https://portal.azure.com)karta úložiště prezentuje rozdělení spotřeby úložiště na základě dat a indexu.
+V Azure Cosmos DB celkové spotřebované úložiště je kombinací velikosti dat i velikosti indexu. Velikost indexu je obvykle zlomkem velikosti dat. Další informace najdete v článku o [velikosti indexu](index-policy.md#index-size) . V okně metriky v [Azure Portal](https://portal.azure.com)karta úložiště prezentuje rozdělení spotřeby úložiště na základě dat a indexu.
 
 ```csharp
 // Measure the document size usage (which includes the index size)  
@@ -111,6 +114,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 Nyní jste zjistili, jak monitorovat a ladit problémy pomocí metriky, které jsou k dispozici v Azure Portal. Další informace o vylepšení výkonu databáze najdete v následujících článcích:
 
-* Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](cosmos-db-azure-monitor-metrics.md) . 
+* Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](./monitor-cosmos-db.md) . 
 * [Testování výkonu a škálování pomocí Azure Cosmos DB](performance-testing.md)
 * [Tipy pro zvýšení výkonu pro službu Azure Cosmos DB](performance-tips.md)

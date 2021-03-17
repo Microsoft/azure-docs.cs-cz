@@ -1,23 +1,21 @@
 ---
 title: Analýza webových protokolů pomocí Azure Data Lake Analytics
 description: Naučte se analyzovat webové protokoly pomocí Azure Data Lake Analytics pro spouštění funkcí a dotazů U-SQL.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 5ad837c51fafd7df2b019c78ae4adaf4967f2df7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d2764e5e3994eb7b80a8e7cf62fb7f437323c97e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132632"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015294"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analýza webových protokolů pomocí Azure Data Lake Analytics
 Naučte se analyzovat webové protokoly pomocí Data Lake Analytics, zejména v tématu zjištění, které odhlašovací servery při pokusu o návštěvě webu narazily na chyby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Visual Studio 2015 nebo Visual Studio 2013**.
 * **[Nástroje Data Lake pro Visual Studio](https://aka.ms/adltoolsvs)**.
 
@@ -185,4 +183,4 @@ Pokud chcete začít s Data Lake Analytics pomocí různých nástrojů, projdě
 
 * [Začínáme s Data Lake Analytics pomocí Portálu Azure](data-lake-analytics-get-started-portal.md)
 * [Začínáme s Data Lake Analytics pomocí Azure PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Začínáme s Data Lake Analytics pomocí sady .NET SDK](data-lake-analytics-get-started-net-sdk.md)
+* [Začínáme s Data Lake Analytics pomocí sady .NET SDK](./data-lake-analytics-get-started-cli.md)

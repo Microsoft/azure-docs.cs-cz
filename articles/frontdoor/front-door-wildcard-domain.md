@@ -2,24 +2,24 @@
 title: Přední dvířka Azure – podpora pro domény se zástupnými znaky
 description: Tento článek vám pomůže porozumět tomu, jak přední dvířka Azure podporuje mapování a správu domén se zástupnými znaky v seznamu vlastních domén.
 services: frontdoor
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
-ms.author: sharadag
-ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/29/2020
+ms.author: duau
+ms.openlocfilehash: 18504f1ed4200889b20c9608c9c0ad2c13c9aaa5
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81768318"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425758"
 ---
 # <a name="wildcard-domains"></a>Domény se zástupnými znaky
 
-Kromě domén vrcholů a subdomén můžete mapovat název domény se zástupnými znaky na váš seznam hostitelů front-endu nebo vlastní domény v profilu front-endu Azure. Pokud máte v konfiguraci front-end serverů ve službě Azure frontu se zástupnými znaky, zjednoduší se chování směrování provozu pro více subdomén pro rozhraní API, aplikace nebo weby ze stejného pravidla směrování. Nemusíte měnit konfiguraci, aby bylo možné přidat nebo zadat každou subdoménu samostatně. Můžete například definovat směrování pro `customer1.contoso.com` , `customer2.contoso.com` a `customerN.contoso.com` pomocí stejného pravidla směrování a přidat doménu se zástupnými znaky `*.contoso.com` .
+Kromě domén Apex a subdomén můžete také namapovat zástupnou doménu na front-end hostitele nebo vlastní domény pro profil front-endu Azure. Pokud máte v konfiguraci front-end serverů ve službě Azure frontu se zástupnými znaky, zjednoduší se chování směrování provozu pro více subdomén pro rozhraní API, aplikace nebo weby ze stejného pravidla směrování. Nemusíte měnit konfiguraci, aby bylo možné přidat nebo zadat každou subdoménu samostatně. Můžete například definovat směrování pro `customer1.contoso.com` , `customer2.contoso.com` a `customerN.contoso.com` pomocí stejného pravidla směrování a přidat doménu se zástupnými znaky `*.contoso.com` .
 
 Mezi klíčové scénáře, které jsou vylepšené podporou zástupných domén, patří:
 
@@ -27,7 +27,7 @@ Mezi klíčové scénáře, které jsou vylepšené podporou zástupných domén
 - Pokud aplikace přidá novou subdoménu, nebudete už muset měnit provozní konfiguraci front-dveří Azure. Dříve jste museli přidat subdoménu, vytvořit k ní certifikát, připojit zásadu firewallu webových aplikací (WAF) a pak přidat doménu do různých pravidel směrování.
 
 > [!NOTE]
-> Domény se zástupnými znaky se v současné době podporují jenom přes rozhraní API, PowerShell a Azure CLI. Podpora pro přidávání a správu domén se zástupnými znaky není v Azure Portal k dispozici.
+> V současné době se k přidávání domén se zástupnými znaky prostřednictvím Azure DNS podporuje jenom přes rozhraní API, PowerShell a rozhraní příkazového řádku Azure CLI. Podpora pro přidávání a správu domén se zástupnými znaky není v Azure Portal k dispozici.
 
 ## <a name="adding-wildcard-domains"></a>Přidání domén se zástupnými znaky
 
@@ -47,7 +47,7 @@ Můžete přidat domény se zástupnými znaky a jejich subdomény s určitými 
 - Pokud se do profilu front-dveří Azure přidá doména se zástupnými znaky:
   - Zástupná doména se nedá přidat do žádného jiného profilu front-dveří Azure.
   - Domény se zástupnými znaky první úrovně v doméně se zástupnými znaky se nedají přidat do jiného profilu služby Azure front-dveří ani do profilu Azure Content Delivery Network.
-- Pokud se subdoménou domény se zástupnými znaky přidá do profilu služby Azure front-dveří nebo do profilu Azure Content Delivery Network, pak se zástupná doména nedá přidat do jiných profilů front-dveří Azure.
+- Pokud je subdoménou domény se zástupným znakem již přidána do profilu služby Azure front-dveří nebo do profilu služby Azure Content Delivery Network, nelze použít doménu se zástupnými znaky pro jiný profil front-end Azure.
 - Pokud mají dva profily (přední vrátka Azure nebo Azure Content Delivery Network) různé subdomény kořenové domény, pak se do těchto profilů nedají přidat zástupné domény.
 
 ## <a name="certificate-binding"></a>Vazba certifikátu
@@ -59,7 +59,7 @@ Pro přijetí provozu HTTPS v doméně se zástupnými znaky musíte povolit pro
 
 Můžete použít stejný certifikát se zástupným znakem z Azure Key Vault nebo ze služby Azure front-dveří spravované certifikáty pro subdomény.
 
-Pokud je pro doménu se zástupným znakem přidána subdoména, která již má přidružený certifikát, nelze protokol HTTPS pro subdoménu zakázat. Subdoména používá vazbu certifikátu pro doménu se zástupnými znaky, pokud se nepoužije jiný Key Vault nebo certifikát spravovaný přes frontu Azure.
+Pokud se k doméně se zástupným znakem přidá subdoménou, která už má přidružený certifikát, nemůžete pro subdoménu zakázat HTTPS. Subdoména používá vazbu certifikátu pro doménu se zástupnými znaky, pokud se nepoužije jiný Key Vault nebo certifikát spravovaný přes frontu Azure.
 
 ## <a name="waf-policies"></a>Zásady WAF
 
@@ -72,7 +72,7 @@ Pokud nechcete, aby se pro subdoménu spouštěla zásada WAF, můžete vytvoři
 Při konfiguraci pravidla směrování můžete jako front-end hostitele Vybrat doménu se zástupnými znaky. Pro domény se zástupnými znaky a subdomény můžete také použít jiné chování směrování. Jak je popsáno v tématu Jak se na [frontách Azure nachází párování směrování](front-door-route-matching.md), je za běhu zvolena nejvíce specifická shoda pro doménu napříč různými pravidly směrování.
 
 > [!IMPORTANT]
-> Musíte mít stejné vzory cest napříč pravidly směrování, jinak se zobrazí selhání. Máte například dvě pravidla směrování, jako je třeba trasa 1 ( `*.foo.com/*` namapovaná na fond back-end a) a trasa 2 ( `bar.foo.com/somePath/*` namapovaná na back-end fond B). Pak přijde žádost o `bar.foo.com/anotherPath/*` . Přední dvířka Azure vybírá trasu 2 na základě přesnější shody domény, a to jenom v případě, že v cestách neodpovídají vzory cest.
+> Musíte mít stejné vzory cest napříč pravidly směrování, jinak se zobrazí selhání. Máte například dvě pravidla směrování, jako je třeba trasa 1 ( `*.foo.com/*` namapovaná na fond back-end a) a trasa 2 ( `/bar.foo.com/somePath/*` namapovaná na back-end fond B). Pak přijde žádost o `bar.foo.com/anotherPath/*` . Přední dvířka Azure vybírá trasu 2 na základě přesnější shody domény, a to jenom v případě, že v cestách neodpovídají vzory cest.
 
 ## <a name="next-steps"></a>Další kroky
 

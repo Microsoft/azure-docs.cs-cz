@@ -1,47 +1,47 @@
 ---
-title: Migrace StorSimple 1200 na Azure File Sync
-description: Přečtěte si, jak migrovat virtuální zařízení řady StorSimple 1200 na Azure File Sync.
+title: Migrace zařízení StorSimple 1200 do Synchronizace souborů Azure
+description: Přečtěte si, jak migrovat virtuální zařízení řady StorSimple 1200 na Synchronizace souborů Azure.
 author: fauhse
 ms.service: storage
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510332"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882276"
 ---
-# <a name="storsimple-1200-migration-to-azure-file-sync"></a>Migrace StorSimple 1200 na Azure File Sync
+# <a name="storsimple-1200-migration-to-azure-file-sync"></a>Migrace zařízení StorSimple 1200 do Synchronizace souborů Azure
 
-Série StorSimple 1200 je virtuální zařízení, které běží v místním datovém centru. Je možné migrovat data z tohoto zařízení do Azure File Syncho prostředí. Azure File Sync je výchozí a strategická dlouhodobá služba Azure, na kterou je možné StorSimple zařízení migrovat.
+Série StorSimple 1200 je virtuální zařízení, které běží v místním datovém centru. Je možné migrovat data z tohoto zařízení do Synchronizace souborů Azureho prostředí. Synchronizace souborů Azure je výchozí a strategická dlouhodobá služba Azure, na kterou je možné StorSimple zařízení migrovat.
 
-Série StorSimple 1200 se [dokončí do konce životnosti](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series) v prosinci 2022.  Je důležité zahájit plánování migrace co nejrychleji. Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Azure File Sync. 
+Série StorSimple 1200 se [dokončí do konce životnosti](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series) v prosinci 2022.  Je důležité zahájit plánování migrace co nejrychleji. Tento článek popisuje nezbytné kroky pro znalosti a migrace na pozadí pro úspěšnou migraci na Synchronizace souborů Azure. 
 
 ## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
 > [!IMPORTANT]
 > Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFilesMigration@microsoft . com pro vlastní plán migrace a pomoc při migraci.
 
-Azure File Sync je cloudová služba Microsoftu založená na dvou hlavních součástech:
+Synchronizace souborů Azure je cloudová služba Microsoftu založená na dvou hlavních součástech:
 
 * Synchronizace souborů a vrstvení cloudu.
 * Sdílené složky jako nativní úložiště v Azure, které je možné používat v různých protokolech jako SMB a REST souborů. Sdílená složka Azure je srovnatelná se sdílenou složkou na Windows serveru, kterou můžete nativně připojit jako síťovou jednotku. Podporuje důležité aspekty souborů, jako jsou atributy, oprávnění a časová razítka. Na rozdíl od StorSimple není potřeba k interpretaci souborů a složek uložených v cloudu žádná aplikace ani služba. Ideální a nejpružnější přístup k ukládání dat souborového serveru pro obecné účely i k určitým datům aplikace v cloudu.
 
-Tento článek se zaměřuje na kroky migrace. Pokud před migrací chcete získat další informace o Azure File Sync, doporučujeme následující články:
+Tento článek se zaměřuje na kroky migrace. Pokud před migrací chcete získat další informace o Synchronizace souborů Azure, doporučujeme následující články:
 
-* [Azure File Sync – přehled](https://aka.ms/AFS "Přehled")
-* [Průvodce nasazením Azure File Sync](storage-sync-files-deployment-guide.md)
+* [Synchronizace souborů Azure – přehled](./storage-sync-files-planning.md "Přehled")
+* [Průvodce nasazením Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>Cíle migrace
 
 Cílem je zaručit integritu produkčních dat a zaručit dostupnost. Ta ta vyžaduje udržení minimálního výpadku, aby bylo možné se přizpůsobit nebo jen mírně překročit pravidelná časová období údržby.
 
-## <a name="storsimple-1200-migration-path-to-azure-file-sync"></a>Cesta migrace StorSimple 1200 na Azure File Sync
+## <a name="storsimple-1200-migration-path-to-azure-file-sync"></a>Cesta migrace StorSimple 1200 na Synchronizace souborů Azure
 
-Pro spuštění agenta Azure File Sync je vyžadován místní Windows Server. Windows Server může mít minimálně server 2012R2, ale v ideálním případě je to Windows Server 2019.
+Pro spuštění agenta Synchronizace souborů Azure je vyžadován místní Windows Server. Windows Server může mít minimálně server 2012R2, ale v ideálním případě je to Windows Server 2019.
 
 Existuje spousta alternativních cest migrace a vytvoří se příliš dlouhý článek, který by měl dokument zdokumentovat a ilustruje, proč představují riziko nebo nevýhody v trase, které doporučujeme jako osvědčený postup v tomto článku.
 
@@ -58,19 +58,19 @@ Předchozí obrázek znázorňuje kroky, které odpovídají oddílům v tomto �
 
 V tomto kroku namapujete strukturu úložiště StorSimple (svazky a sdílené složky) do struktury úložiště Windows serveru.
 Pokud máte v plánu provádět změny ve své struktuře úložiště, což znamená počet svazků, přidružení složek dat ke svazkům nebo strukturu podsložek nad rámec aktuálních sdílených složek SMB/NFS, a teď je čas provést tyto změny v potaz.
-Změna struktury souborů a složek po nakonfigurování Azure File Sync je nenáročná a měla by se vám vyhnout.
+Změna struktury souborů a složek po nakonfigurování Synchronizace souborů Azure je nenáročná a měla by se vám vyhnout.
 V tomto článku se předpokládá, že jste namapováni 1:1, takže pokud budete postupovat podle kroků v tomto článku, musíte vzít v úvahu změny v mapování.
 
 * Žádná z vašich produkčních dat by neměla skončit na svazku systému Windows Server. V systémových svazcích není podporováno vrstvení cloudu. Tato funkce se ale vyžaduje pro migraci i pro průběžné operace jako StorSimple náhrada.
 * Na Windows serveru zajistěte stejný počet svazků, jako máte na virtuálním zařízení s StorSimple 1200.
-* Nakonfigurujte jakékoli role, funkce a nastavení systému Windows Server, které potřebujete. Doporučujeme, abyste se přihlásili k aktualizacím Windows serveru, aby byl váš operační systém v bezpečí a byl v aktuálním stavu. Podobně doporučujeme, abyste se přihlásili Microsoft Update, aby se aplikace Microsoftu udržovaly v aktuálním stavu, včetně agenta Azure File Sync.
+* Nakonfigurujte jakékoli role, funkce a nastavení systému Windows Server, které potřebujete. Doporučujeme, abyste se přihlásili k aktualizacím Windows serveru, aby byl váš operační systém v bezpečí a byl v aktuálním stavu. Podobně doporučujeme, abyste se přihlásili Microsoft Update, aby se aplikace Microsoftu udržovaly v aktuálním stavu, včetně agenta Synchronizace souborů Azure.
 * Před čtením následujících kroků nekonfigurujte žádné složky ani sdílené složky.
 
-### <a name="step-3-deploy-the-first-azure-file-sync-cloud-resource"></a>Krok 3: nasazení prvního Azure File Syncho cloudového prostředku
+### <a name="step-3-deploy-the-first-azure-file-sync-cloud-resource"></a>Krok 3: nasazení prvního Synchronizace souborů Azureho cloudového prostředku
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
-### <a name="step-4-match-your-local-volume-and-folder-structure-to-azure-file-sync-and-azure-file-share-resources"></a>Krok 4: Vyhledání místní struktury svazků a složek pro Azure File Sync a prostředků sdílené složky Azure
+### <a name="step-4-match-your-local-volume-and-folder-structure-to-azure-file-sync-and-azure-file-share-resources"></a>Krok 4: Vyhledání místní struktury svazků a složek pro Synchronizace souborů Azure a prostředků sdílené složky Azure
 
 [!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
@@ -87,7 +87,7 @@ Je důležité postupovat podle struktury složek, kterou jste si popsali dřív
 
 Počet sdílených sdílených složek Azure, které jste zřídili, by měl odpovídat počtu složek, které jste vytvořili v tomto kroku, a počtu svazků, které budete synchronizovat na kořenové úrovni.
 
-### <a name="step-7-deploy-the-azure-file-sync-agent"></a>Krok 7: nasazení agenta Azure File Sync
+### <a name="step-7-deploy-the-azure-file-sync-agent"></a>Krok 7: nasazení agenta Synchronizace souborů Azure
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
@@ -102,12 +102,12 @@ Opakujte kroky při vytváření skupiny synchronizace a přidání odpovídají
 
 ### <a name="step-9-copy-your-files"></a>Krok 9: zkopírování souborů
 
-Základní přístup k migraci je příkaz Robocopy z virtuálního zařízení StorSimple k vašemu Windows serveru a Azure File Sync ke sdíleným složkám Azure.
+Základní přístup k migraci je příkaz Robocopy z virtuálního zařízení StorSimple k vašemu Windows serveru a Synchronizace souborů Azure ke sdíleným složkám Azure.
 
 Spusťte první místní kopii do cílové složky Windows serveru:
 
 * Identifikujte první umístění na virtuálním zařízení StorSimple.
-* Identifikujte odpovídající složku na Windows serveru, která už má Azure File Sync nakonfigurovanou.
+* Identifikujte odpovídající složku na Windows serveru, která už má Synchronizace souborů Azure nakonfigurovanou.
 * Spuštění kopírování pomocí nástroje Robocopy
 
 Následující příkaz Robocopy stáhne soubory z StorSimple Azure Storage do místního StorSimple a pak je přesune do cílové složky Windows serveru. Systém Windows Server provede synchronizaci se sdílenými složkami Azure. Vzhledem k plnémumu místnímu svazku Windows serveru se vrstvení cloudu zahájí v souborech a vrstvách, které se už úspěšně synchronizovaly. Vrstvení cloudu vytvoří dostatek místa pro pokračování kopie z virtuálního zařízení StorSimple. Vrstvení cloudu kontroluje jednu hodinu, která se synchronizuje, a uvolní místo na disku, abyste dosáhli volného místa na 99% svazku.
@@ -185,7 +185,7 @@ Pozadí
 
 Při prvním spuštění příkazu Robocopy budou uživatelé a aplikace nadále přistupovat k souborům a složkám StorSimple a potenciálně je mohou změnit. Je možné, že Robocopy zpracovaly adresář, přesune se k dalšímu a pak uživatel na zdrojovém umístění (StorSimple) přidá, změní nebo odstraní soubor, který se teď v tomto aktuálním běhu Robocopy nezpracovává. To je dobré.
 
-Prvním spuštěním je o přesunu velkých objemů dat zpátky do místního prostředí a k zálohování do cloudu přes Azure File Sync. Tato akce může trvat dlouhou dobu, v závislosti na:
+Prvním spuštěním je o přesunu velkých objemů dat zpátky do místního prostředí a k zálohování do cloudu přes Synchronizace souborů Azure. Tato akce může trvat dlouhou dobu, v závislosti na:
 
 * Šířka pásma ke stažení
 * rychlost odvolání cloudové služby StorSimple
@@ -210,20 +210,20 @@ Dokončili jste migraci sdílené složky nebo skupiny sdílených složek do sp
 Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, abyste v jednom okamžiku zpracovali obor jedné sdílené složky Azure.
 
 > [!WARNING]
-> Po přesunutí všech dat StorSimple do Windows serveru a dokončení migrace se vraťte do ***všech*** skupin synchronizace v Azure Portal a nastavte hodnotu hlasitosti volného místa na úrovni cloudu na něco většího, než je procento využití mezipaměti, řekněme 20%. 
+> Po přesunutí všech dat StorSimple do Windows serveru a dokončení migrace se vraťte do složky ***všechny** synchronizační skupiny _ v Azure Portal a upravte Procentuální hodnotu volného místa na úrovni cloudu tak, aby lépe vyhovovala využití mezipaměti, řekněme, že 20%. 
 
 Zásada pro volné místo svazku ve vrstvách cloudu funguje na úrovni svazku s potenciálně synchronizovanými koncovými body serveru. Pokud zapomenete upravit volné místo na jednom koncovém bodu serveru, bude synchronizace dál používat nejvíce omezující pravidlo a pokusí se zachovávat 99% volného místa na disku, takže místní mezipaměť nefunguje, protože byste mohli očekávat. Pokud se nejedná o váš cíl jenom pro svazek, který obsahuje jenom zřídka používané, archivní data.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s *názvem "svazek je plný"* . Pokud se jedná o tento případ, bude vaše rychlost stahování nejspíš lepší než rychlost nahrávání. Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje.
+Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s názvem "svazek je plný" *. Pokud se jedná o tento případ, bude vaše rychlost stahování nejspíš lepší než rychlost nahrávání. Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje.
 
 Umožněte synchronizaci v průběhu a vrstvení cloudu uvolněte místo na disku. Můžete si všimnout, že v Průzkumníkovi souborů na vašem Windows serveru.
 
 Pokud má Windows Server dostatek dostupné kapacity, problém vyřešíte tak, že znovu spustíte příkaz. Po dosažení této situace se nic neukončí a můžete se přesunout vpřed s jistotou. Nepohodlí spuštění příkazu je jediné, co je to v tomto důsledku.
 
-Můžete také spustit jiné problémy Azure File Sync.
-V případě nepravděpodobného chování, pokud k tomu dojde, se podívejte na **Průvodce odstraňováním potíží s odkazem Azure File Sync**.
+Můžete také spustit jiné problémy Synchronizace souborů Azure.
+V případě nepravděpodobného chování, pokud k tomu dojde, se podívejte na **Průvodce odstraňováním potíží s odkazem synchronizace souborů Azure**.
 
 ## <a name="relevant-links"></a>Relevantní odkazy
 
@@ -231,8 +231,8 @@ Obsah migrace:
 
 * [Průvodce migrací řady StorSimple 8000](storage-files-migration-storsimple-8000.md)
 
-Azure File Sync obsah:
+Synchronizace souborů Azure obsah:
 
-* [Přehled AFS](https://aka.ms/AFS)
-* [Průvodce nasazením pro AFS](storage-files-deployment-guide.md)
+* [Přehled AFS](./storage-sync-files-planning.md)
+* [Průvodce nasazením pro AFS](./storage-how-to-create-file-share.md)
 * [Řešení potíží AFS](storage-sync-files-troubleshoot.md)

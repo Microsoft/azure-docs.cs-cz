@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: 7ba6a059a35bee0b122659d8fc70466595112fca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: 8ee124f866a5241620671ff84c24f3713f62efe1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011026"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078465"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
@@ -28,7 +28,7 @@ Při vytváření škálovací sady definujete počet instancí virtuálních po
 > * Zátěžový test instancí virtuálních počítačů a aktivace pravidel automatického škálování
 > * Opětovné automatické horizontální snížení kapacity po snížení požadavků
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Existuje známý problém, který má vliv na modul Azure PowerShell verze 6.8.1 nebo novější včetně aktuální verze služby Azure Cloud Shell. Tento kurz vyžaduje modul Azure PowerShell verze 6.0.0 až 6.8.0. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 

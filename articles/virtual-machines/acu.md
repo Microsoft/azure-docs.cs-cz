@@ -3,18 +3,18 @@ title: Přehled výpočetní jednotky Azure
 description: Přehled konceptu výpočetních jednotek Azure. ACU poskytuje způsob, jak porovnat výkon procesoru napříč SKU Azure.
 author: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: azure-compute-unit
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: 07d222139f48e91637405660ae0e0c65ef3acdb6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ae37771cd9e48f450ae538174b9bed9cfa866f9d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605026"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565525"
 ---
 # <a name="azure-compute-unit-acu"></a>Výpočetní jednotka Azure (ACU)
 
@@ -38,6 +38,7 @@ Vlákny s technologií Hyper a schopné spustit vnořenou virtualizaci
 | [A1_v2 – A8_v2](sizes-general.md) |100 | 1:1 |
 | [A2m_v2 – A8m_v2](sizes-general.md) |100 | 1:1 |
 | [A8 – A11](sizes-previous-gen.md) |225* | 1:1 |
+| [B](sizes-b-series-burstable.md) |Různé | Různé |
 | [D1 – D14](sizes-previous-gen.md) |160 – 250 | 1:1 |
 | [D1_v2 – D15_v2](dv2-dsv2-series.md) |210 - 250* | 1:1 |
 | [DS1 – DS14](sizes-previous-gen.md) |160 – 250 | 1:1 |
@@ -63,12 +64,12 @@ Vlákny s technologií Hyper a schopné spustit vnořenou virtualizaci
 | [F1s úrovně – F16s úrovně](sizes-previous-gen.md) |210 - 250* | 1:1 |
 | [G1-G5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [GS1 – GS5](sizes-previous-gen.md) |180 - 240* | 1:1 |
-| [H](h-series.md) |290 - 300* | 1:1 |
+| [Y](h-series.md) |290 - 300* | 1:1 |
 | [HB](hb-series.md) |199 – 216 * * | 1:1 |
 | [HC](hc-series.md) |297 – 315 * | 1:1 |
 | [L4S úrovně – L32s úrovně](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 – L80s_v2](lsv2-series.md) |150 – 175 * * | 2:1 |
-| [M](m-series.md) | 160 – 180 | 2:1\*\*\* |
+| [4m](m-series.md) | 160 – 180 | 2:1\*\*\* |
 | [NVv4](nvv4-series.md) |230 – 260 * * | 2:1 |
 
 Tady jsou odkazy na Další informace o různých velikostech:
@@ -76,6 +77,6 @@ Tady jsou odkazy na Další informace o různých velikostech:
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro výpočty](sizes-compute.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Optimalizované pro úložiště](sizes-storage.md)

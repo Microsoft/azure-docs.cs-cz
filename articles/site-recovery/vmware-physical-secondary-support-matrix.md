@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ac67e3cf8f057738b76b0de7cbcb821ef290e0cb
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135148"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757572"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality
 
@@ -66,16 +66,16 @@ Replikovat se dají jenom počítače se systémem Linux s následujícím úlo�
 
 ## <a name="network-configuration---hostguest-vm"></a>Konfigurace sítě – virtuální počítač hosta/hosta
 
-**Konfigurace** | **Doložen**  
+**Konfigurace** | **Podporováno**  
 --- | --- 
-Seskupování síťových adaptérů hosta | Yes 
-Hostitel-síť VLAN | Yes 
-Hostitel – IPv4 | Yes 
+Seskupování síťových adaptérů hosta | Ano 
+Hostitel-síť VLAN | Ano 
+Hostitel – IPv4 | Ano 
 Hostitel – IPv6 | No 
 Virtuální počítač hosta – seskupování síťových adaptérů | No
-Virtuální počítač hosta – IPv4 | Yes
+Virtuální počítač hosta – IPv4 | Ano
 Virtuální počítač hosta – IPv6 | No
-Virtuální počítač hosta – Windows/Linux – statická IP adresa | Yes
+Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
 Virtuální počítač hosta – více síťových karet | Ano
 
 
@@ -83,36 +83,36 @@ Virtuální počítač hosta – více síťových karet | Ano
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
-**Úložiště (hostitel)** | **Doložen** 
+**Úložiště (hostitel)** | **Podporováno** 
 --- | --- 
-NFS | Yes 
-SMB 3.0 | Není k dispozici 
-SÍŤ SAN (ISCSI) | Yes 
-Multipath (multi-Path) | Yes 
+NFS | Ano 
+SMB 3.0 | – 
+SÍŤ SAN (ISCSI) | Ano 
+Multipath (multi-Path) | Ano 
 
 ### <a name="guest-or-physical-server-storage"></a>Úložiště hostů nebo fyzických serverů
 
-**Konfigurace** | **Doložen** 
+**Konfigurace** | **Podporováno** 
 --- | --- 
-FORMÁTU | Yes 
-VHD/VHDX | Není k dispozici 
-Virtuální počítač 2. generace | Není k dispozici 
-Disk sdíleného clusteru | Yes 
+FORMÁTU | Ano 
+VHD/VHDX | – 
+Virtuální počítač 2. generace | – 
+Disk sdíleného clusteru | Ano 
 Zašifrovaný disk | No 
-UEFI| Yes 
+UEFI| Ano 
 NFS | No 
 SMB 3.0 | No 
-RDM | Yes 
-Disk > 1 TB | Yes 
-Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Yes 
+RDM | Ano 
+Disk > 1 TB | Ano 
+Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano 
 Prostory úložiště | No 
-Hot Add/Remove disk | Yes 
-Vyloučení disku | Yes 
-Multipath (multi-Path) | Není k dispozici 
+Hot Add/Remove disk | Ano 
+Vyloučení disku | Ano 
+Multipath (multi-Path) | – 
 
 ## <a name="vaults"></a>Trezory
 
-**Akce** | **Doložen** 
+**Akce** | **Podporováno** 
 --- | --- 
 Přesun trezorů mezi skupinami prostředků (v rámci předplatného nebo mezi nimi) | No 
 Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků (v rámci předplatných nebo mezi nimi) | No 
@@ -124,7 +124,7 @@ Služba mobility koordinuje replikaci mezi místními servery VMware nebo fyzick
 | **Aktualizace** | **Podrobnosti** |
 | --- | --- |
 |Aktualizace Scout | Aktualizace Scout jsou kumulativní. <br/><br/> [Seznamte se s](vmware-physical-secondary-disaster-recovery.md#updates) nejnovějšími aktualizacemi Scout a Stáhněte si je |
-|Aktualizace součástí | Aktualizace Scout obsahují aktualizace pro všechny součásti, včetně serveru pro příjem dat, konfiguračního serveru, procesu a hlavních cílových serverů, serverů vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
+|Aktualizace součástí | Aktualizace Scout obsahují aktualizace pro všechny součásti, včetně serveru pro příjem dat, konfiguračního serveru, procesu a hlavních cílových serverů, serverů vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Přečtěte si další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
 ## <a name="next-steps"></a>Další kroky

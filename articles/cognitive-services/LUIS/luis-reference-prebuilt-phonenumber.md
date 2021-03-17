@@ -3,26 +3,24 @@ title: Předem připravené entity telefonního čísla – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje telefonní číslo předem sestavených informací o entitách v Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 4e2c8e27c6d4195252c6a5b423fa98b2a4247182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 598ecaddbab3b70297a460521c7ec3386b390a8d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270473"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91535385"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita pro aplikaci pro LUIS s telefonním číslem
-`phonenumber` Entita extrahuje celou řadu telefonních čísel včetně kódu země. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do aplikace přidat příklad projevy. `phonenumber` Entita je podporována pouze v `en-us` jazykové verzi.
+`phonenumber`Entita extrahuje celou řadu telefonních čísel včetně kódu země. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do aplikace přidat příklad projevy. `phonenumber`Entita je podporována pouze v `en-us` jazykové verzi.
 
 ## <a name="types-of-a-phone-number"></a>Typy telefonního čísla
-`Phonenumber`je spravováno z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) v GitHubu.
+`Phonenumber` je spravováno z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) v GitHubu.
 
 ## <a name="resolution-for-this-prebuilt-entity"></a>Řešení pro tuto předem vytvořenou entitu
 
@@ -32,7 +30,7 @@ Pro dotaz se vrátí následující objekty entity:
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `false` :
 
 ```json
 "entities": {
@@ -42,7 +40,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
-Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `true` :
 
 ```json
 "entities": {

@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 4249f753181ea4b54d7e1e1f098717ef669bae4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744030"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791082"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Upravit nebo odvolat oprávnění aplikace na portálu moje aplikace
 
@@ -26,17 +26,17 @@ Pokud používáte aplikace organizace na portálu **Moje aplikace** , často ud
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
+>Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](../manage-apps/access-panel-collections.md).
 
-## <a name="manage-app-permissions"></a>Správa oprávnění aplikací
+## <a name="manage-app-accounts"></a>Správa účtů aplikací
 
-Pokud si chcete zobrazit oprávnění, která jste poslali vy nebo váš správce, vyberte **...** při najetí myší na aplikaci na portálu **Moje aplikace** vyberte **Spravovat aplikaci**:
+Pokud si chcete zobrazit aplikace, které jste poslali vy nebo váš správce, vyberte **...** při najetí myší na aplikaci na portálu **Moje aplikace** vyberte **Spravovat aplikaci** :
 
-![Správa aplikace na portálu moje aplikace](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
+![Správa aplikace na portálu moje aplikace](media/my-applications-portal-permissions-saved-accounts/my-apps-home-woodgrove.png)
 
 V horní části okna oprávnění se zobrazí informace o tom, na co jste osobně poslali. K příkladům oprávnění aplikací patří možnost přístupu k vašemu kalendáři, kontaktům nebo kameře.
 
-Můžete odvolat všechna oprávnění, která jste jim poslali, výběrem **oprávnění odvolat**, ale odebrání oprávnění může poškodit některé funkce aplikace. Pokud máte po odebrání oprávnění nebo účtů problémy, požádejte o další pomoc Helpdesk vaší organizace.
+Můžete odvolat všechna oprávnění, která jste jim poslali, výběrem **oprávnění odvolat** , ale odebrání oprávnění může poškodit některé funkce aplikace. Pokud máte po odebrání oprávnění nebo účtů problémy, požádejte o další pomoc Helpdesk vaší organizace.
 
 ![Odvolat oprávnění pro aplikaci na portálu moje aplikace](media/my-applications-portal-permissions-saved-accounts/revoke-permissions.png)
 

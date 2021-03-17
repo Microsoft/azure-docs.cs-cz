@@ -1,7 +1,7 @@
 ---
 title: Hodnocení spolehlivosti – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Je nutné publikovat znalostní bázi. Po publikování se znalostní báze dotazuje na koncový bod předpovědi prostředí runtime pomocí rozhraní generateAnswer API.
+description: Když je dotaz na uživatele shodný se základem znalostní báze, QnA Maker vrátí relevantní odpovědi společně s hodnocením spolehlivosti.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: fcfc70f7bfb9e2bb1b1a0edbffdc1282056e5fa7
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131153"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214044"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>Hodnocení spolehlivosti odpovědi
 Když je dotaz na uživatele shodný se základem znalostní báze, QnA Maker vrátí relevantní odpovědi společně s hodnocením spolehlivosti. Toto skóre označuje jistotu, že odpověď je správná pro daný dotaz uživatele.
@@ -53,7 +53,7 @@ Při volbě prahové hodnoty Pamatujte na rovnováhu mezi přesností a rozsahem
 - Pokud je **pokrytí** (nebo odvolání) důležitější – a chcete odpovědět co nejvíce otázek, i když k otázce uživatele dojde jenom k částečné relaci – pak snižte prahovou hodnotu. To znamená, že může dojít k více případům, kdy odpověď neodpoví na vlastní dotaz uživatele, ale poskytne trochu související odpověď. *Příklad:* Pokud nastavíte prahovou hodnotu **30**, můžete poskytnout odpovědi na dotazy, jako je "kde můžu upravit svůj KB?"
 
 > [!NOTE]
-> Novější verze QnA Maker zahrnují vylepšení logiky vyhodnocování a můžou mít vliv na vaši prahovou hodnotu. Při každé aktualizaci služby se ujistěte, že v případě potřeby otestujete a rozvedete prahovou hodnotu. [Tady](https://www.qnamaker.ai/UserSettings)si můžete prohlédnout verzi služby QnA a podívat se, jak získat [nejnovější aktualizace.](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)
+> Novější verze QnA Maker zahrnují vylepšení logiky vyhodnocování a můžou mít vliv na vaši prahovou hodnotu. Při každé aktualizaci služby se ujistěte, že v případě potřeby otestujete a rozvedete prahovou hodnotu. [Tady](https://www.qnamaker.ai/UserSettings)si můžete prohlédnout verzi služby QnA a podívat se, jak získat [nejnovější aktualizace.](../How-To/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)
 
 ## <a name="set-threshold"></a>Nastavit prahovou hodnotu
 
@@ -62,7 +62,7 @@ Nastavte skóre prahové hodnoty jako vlastnost [těla JSON GENERATEANSWER API](
 Z rozhraní bot Framework nastavte skóre v rámci objektu Options pomocí [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) nebo [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
 ## <a name="improve-confidence-scores"></a>Vylepšení hodnocení spolehlivosti
-Chcete-li zlepšit míru spolehlivosti konkrétní reakce na dotaz na uživatele, můžete do této odpovědi přidat dotaz uživatele do znalostní báze jako alternativní otázku. [Změnou](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) velikosti písmen bez rozlišení velkých a malých písmen můžete také přidat synonyma do klíčových slov ve vaší znalostní bázi.
+Chcete-li zlepšit míru spolehlivosti konkrétní reakce na dotaz na uživatele, můžete do této odpovědi přidat dotaz uživatele do znalostní báze jako alternativní otázku. [Změnou](/rest/api/cognitiveservices/qnamaker/alterations/replace) velikosti písmen bez rozlišení velkých a malých písmen můžete také přidat synonyma do klíčových slov ve vaší znalostní bázi.
 
 
 ## <a name="similar-confidence-scores"></a>Podobná hodnocení spolehlivosti
@@ -89,4 +89,3 @@ V případě, že klasifikátor nenalezne žádnou dobrou shodu, bude vráceno h
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Osvědčené postupy](./best-practices.md)
-

@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6ef7efe3d48fd20c5141803430260a80395faa82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27c78566877f27e80ae5ae27c5250f228c7ae676
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877805"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017843"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Nasazení kontejneru Extrakce klíčových frází do clusteru AKS
 
@@ -24,7 +25,7 @@ ms.locfileid: "80877805"
     az login
     ```
 
-1. Přihlaste se ke clusteru AKS. `your-cluster-name` Nahraďte `your-resource-group` a odpovídajícími hodnotami.
+1. Přihlaste se ke clusteru AKS. Nahraďte `your-cluster-name` a `your-resource-group` odpovídajícími hodnotami.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
@@ -48,7 +49,7 @@ ms.locfileid: "80877805"
     code .
     ```
 
-1. V textovém editoru vytvořte nový soubor s názvem *keyphrase. yaml*a vložte do něj následující YAML. Nezapomeňte nahradit `billing/value` a `apikey/value` vlastními informacemi.
+1. V textovém editoru vytvořte nový soubor s názvem *keyphrase. yaml* a vložte do něj následující YAML. Nezapomeňte nahradit `billing/value` a `apikey/value` vlastními informacemi.
 
     ```yaml
     apiVersion: apps/v1beta1

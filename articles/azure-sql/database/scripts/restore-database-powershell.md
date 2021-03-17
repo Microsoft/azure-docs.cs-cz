@@ -7,16 +7,16 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-author: mashamsft
-ms.author: mathoma
-ms.reviewer: carlrab
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 03/27/2019
-ms.openlocfilehash: ed66759ab2da28f004c704d4ea24ec4124355c98
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc987efbf156c264d3e0c8df07335910e711c376
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084967"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594092"
 ---
 # <a name="use-powershell-to-restore-a-database-to-an-earlier-point-in-time"></a>Použití PowerShellu k obnovení databáze k dřívějšímu bodu v čase
 
@@ -48,7 +48,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server, který je hostitelem databází a elastických fondů. |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří databázi na serveru. |
 | [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Získá geograficky redundantní zálohu samostatné nebo sdružené databáze. |

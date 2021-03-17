@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace k externím identitám
-summary: Externí identity jsou sada funkcí, které organizacím umožňují zabezpečit a spravovat všechny externí uživatele, včetně zákazníků a partnerů. Externí identity jsou založené na spolupráci B2B a nabízejí další možnosti pro interakci a propojování s uživateli mimo vaši organizaci.
+summary: Externí identity jsou sada funkcí, které organizacím umožňují zabezpečit a spravovat všechny externí uživatele, včetně zákazníků a partnerů. Externí identity jsou postavené na spolupráci B2B a nabízejí další možnosti pro interakci a propojování s uživateli mimo vaši organizaci.
 metadata:
   title: Dokumentace k externím identitám
-  description: Externí identity jsou sada funkcí, které organizacím umožňují zabezpečit a spravovat všechny externí uživatele, včetně zákazníků a partnerů. Externí identity jsou založené na spolupráci B2B a nabízejí další možnosti pro interakci a propojování s uživateli mimo vaši organizaci.
+  description: Externí identity jsou sada funkcí, které organizacím umožňují zabezpečit a spravovat všechny externí uživatele, včetně zákazníků a partnerů. Externí identity jsou postavené na spolupráci B2B a nabízejí další možnosti pro interakci a propojování s uživateli mimo vaši organizaci.
   ms.service: active-directory
   ms.subservice: B2B
   ms.workload: identity
@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 694b5fee19a1c0dca752e02259e3cc398ae6e55e
-  ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
-  ms.translationtype: HT
+  ms.openlocfilehash: 578eb6859114eeef9672e7b58e6bb6b56189dc5a
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/06/2020
-  ms.locfileid: "87906738"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101647366"
 landingContent:
 - title: Informace o externích identitách
   linkLists:
@@ -25,77 +25,63 @@ landingContent:
     links:
     - text: Porovnání řešení externích identit
       url: compare-with-b2c.md
-    - text: Co je přístup uživatele typu host B2B?
+    - text: Co je spolupráce B2B ve službě Azure AD?
       url: what-is-b2b.md
-- title: Samoobslužná registrace (Preview)
+    - text: Co je identita Azure AD B2C (Business To Consumer)?
+      url: ../../active-directory-b2c/overview.md
+- title: Spolupráce s uživateli mimo vaši organizaci (spolupráce B2B)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Principy uživatelů typu host B2B
+      url: user-properties.md
+    - text: Jak host B2B uplatní pozvánku
+      url: redemption-experience.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace nastavení externí spolupráce
+      url: delegate-invitations.md
+    - text: Nastavení přímé federace (Preview)
+      url: direct-federation.md
+    - text: Nastavení jednorázových hesel (Preview)
+      url: one-time-passcode.md
+    - text: Přidání a pozvání uživatelů typu host
+      url: add-users-administrator.md
+    - text: Opuštění organizace jako uživatel typu host
+      url: leave-the-organization.md
+- title: Škálování aplikace pro příjemce a zákazníky (Azure AD B2C)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informace o Azure AD B2C
+      url: ../../active-directory-b2c/overview.md
+    - text: Technický přehled a přehled funkcí
+      url: ../../active-directory-b2c/technical-overview.md
+    - text: Zobrazit veškerou dokumentaci k Azure AD B2C
+      url: ../../active-directory-b2c/index.yml
+  - linkListType: concept
+    links:
+    - text: Toky uživatelů Azure AD B2C
+      url: ../../active-directory-b2c/user-flow-overview.md
+    - text: Vlastní zásady Azure AD B2C
+      url: ../../active-directory-b2c/custom-policy-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Vytváření toků uživatelů v Azure AD B2C
+      url: ../../active-directory-b2c/tutorial-create-user-flows.md
+- title: Samoobslužné registrační toky pro uživatele typu Host B2B
   linkLists:
   - linkListType: overview
     links:
     - text: Co je samoobslužné přihlášení?
       url: self-service-sign-up-overview.md
+  - linkListType: sample
+    links:
+    - text: Ukázky kódu konektorů API pero toky uživatelů
+      url: code-samples-self-service-sign-up.md
   - linkListType: how-to-guide
     links:
     - text: Přidání toku uživatelů se samoobslužnou registrací
       url: self-service-sign-up-user-flow.md
     - text: Definování vlastních atributů pro toky uživatelů
       url: user-flow-add-custom-attributes.md
-- title: Pozvání uživatelů typu host B2B
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Jak host B2B uplatní pozvánku
-      url: redemption-experience.md
-  - linkListType: quickstart
-    links:
-    - text: Přidání uživatele typu host do adresáře
-      url: b2b-quickstart-add-guest-users-portal.md
-    - text: Přidání uživatele typu host s využitím PowerShellu
-      url: b2b-quickstart-invite-powershell.md
-  - linkListType: how-to-guide
-    links:
-    - text: Jak správci zvou hosty
-      url: add-users-administrator.md
-    - text: Jak uživatelé zvou hosty
-      url: add-users-information-worker.md
-- title: Přizpůsobení spolupráce B2B
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Povolení spolupráce B2B Azure
-      url: delegate-invitations.md
-  - linkListType: deploy
-    links:
-    - text: Nastavení přímé federace (Preview)
-      url: direct-federation.md
-    - text: Nastavení federace Googlu
-      url: google-federation.md
-    - text: Nastavení ověřování jednorázovým heslem (Preview)
-      url: one-time-passcode.md
-  - linkListType: tutorial
-    links:
-    - text: Vynucení vícefaktorového ověřování
-      url: b2b-tutorial-require-mfa.md
-  - linkListType: reference
-    links:
-    - text: Ukázky PowerShellu a kód spolupráce B2B
-      url: code-samples.md
-- title: Správa uživatelů typu host
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Principy uživatelů typu host B2B
-      url: user-properties.md
-    - text: Dynamické skupiny a hosti B2B
-      url: use-dynamic-groups.md
-  - linkListType: how-to-guide
-    links:
-    - text: Audit a hlášení uživatelů typu host B2B
-      url: auditing-and-reporting.md
-    - text: Udělení oprávnění pro hosty B2B
-      url: add-guest-to-role.md
-    - text: Povolení nebo blokování organizací
-      url: allow-deny-list.md
-  - linkListType: deploy
-    links:
-    - text: Konfigurace aplikací SaaS pro spolupráci B2B
-      url: configure-saas-apps.md

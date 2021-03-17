@@ -10,12 +10,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
-ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3097041c96f70dda384f0b116bbbc9bc9130be4d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72249179"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395746"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Přehled provozní kontinuity pomocí Microsoft Genomics
 Tento přehled popisuje možnosti, které Microsoft Genomics poskytuje pro provozní kontinuitu a zotavení po havárii. Přečtěte si o možnostech obnovování z rušivých událostí, jako je výpadek oblasti Azure, které můžou způsobit ztrátu dat. 
@@ -43,7 +43,7 @@ Po obnovení původní oblasti služba Microsoft Genomics nemigruje data ze seku
 Pokud máte obavy o rychlejší obnovení v případě výpadku datového centra, je potřeba provést několik kroků, které vám pomůžou ušetřit čas ručního opětovného odeslání Microsoft Genomics pracovních postupů do sekundární oblasti:
 
 * Identifikujte příslušnou sekundární oblast a pro aktivně vytvořte účet genomiky v této oblasti.
-* Duplikujte svá data v primární a sekundární oblasti, aby data byla okamžitě k dispozici v sekundární oblasti. To můžete provést ručně nebo pomocí funkce [geograficky redundantního úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy) dostupného ve službě Azure Storage. 
+* Duplikujte svá data v primární a sekundární oblasti, aby data byla okamžitě k dispozici v sekundární oblasti. To můžete provést ručně nebo pomocí funkce [geograficky redundantního úložiště](../storage/common/storage-redundancy.md) dostupného ve službě Azure Storage. 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se seznámili s možnostmi pro provozní kontinuitu a zotavení po havárii při používání služby Microsoft Genomics. Další informace o provozní kontinuitě a zotavení po havárii v Azure najdete v tématu [technické doprovodné materiály k odolnosti Azure.](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region) 
+V tomto článku jste se seznámili s možnostmi pro provozní kontinuitu a zotavení po havárii při používání služby Microsoft Genomics. Další informace o provozní kontinuitě a zotavení po havárii v Azure najdete v tématu [technické doprovodné materiály k odolnosti Azure.](/azure/architecture/resiliency/recovery-loss-azure-region)

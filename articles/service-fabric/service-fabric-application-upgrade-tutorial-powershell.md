@@ -3,12 +3,13 @@ title: Service Fabric upgrade aplikace pomocí PowerShellu
 description: Tento článek vás provede nasazením aplikace Service Fabric, změnou kódu a zavedením upgradu pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: 2bd74d071d5dfb3385d4203704eacd5ba685917e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4b038f4a41ee02960a02c4445b65eb2360a75761
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064583"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792027"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric upgrade aplikace pomocí PowerShellu
 > [!div class="op_single_selector"]
@@ -26,7 +27,7 @@ Upgrade monitorovaných aplikací se dá provést pomocí spravovaných nebo nat
 Díky Service Fabric sledovaných upgradů může správce aplikace nakonfigurovat zásady hodnocení stavu, které Service Fabric používá k určení, jestli je aplikace v pořádku. Kromě toho může správce nakonfigurovat akci, která se má provést, když se vyhodnocení stavu nepovede (například provedení automatického vrácení zpět). Tato část vás provede monitorovaným upgradem pro jeden ze vzorků sady SDK, které používají PowerShell. 
 
 > [!NOTE]
-> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s se nezachovají v rámci upgradu aplikace. Aby bylo možné zachovat aktuální parametry aplikace, uživatel by měl nejprve načíst parametry a předat je do volání rozhraní API pro upgrade, jak je znázorněno níže:
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s se nezachovají v rámci upgradu aplikace. Aby bylo možné zachovat aktuální parametry aplikace, uživatel by měl nejprve načíst parametry a předat je do volání rozhraní API pro upgrade, jak je znázorněno níže:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -48,9 +49,9 @@ Sestavte a publikujte aplikaci kliknutím pravým tlačítkem na projekt aplikac
 > 
 > 
 
-Po sestavení projektu v aplikaci Visual Studio můžete k zkopírování balíčku aplikace do úložiště bitových kopií použít příkaz PowerShell [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) . Pokud chcete balíček aplikace ověřit lokálně, použijte rutinu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) . Dalším krokem je registrace aplikace do modulu runtime Service Fabric pomocí rutiny [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) . V následujícím kroku spustíte instanci aplikace pomocí rutiny [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) .  Tyto tři kroky jsou podobné použití položky nabídky **nasadit** v aplikaci Visual Studio.  Po dokončení zřizování byste měli kopírovaný balíček aplikace vyčistit z úložiště imagí, aby se snížily spotřebované prostředky.  Pokud již typ aplikace není vyžadován, je třeba zrušit jeho registraci ze stejného důvodu. Další informace najdete v tématu [nasazení a odebrání aplikací pomocí PowerShellu](service-fabric-application-upgrade-tutorial-powershell.md) .
+Po sestavení projektu v aplikaci Visual Studio můžete k zkopírování balíčku aplikace do úložiště bitových kopií použít příkaz PowerShell [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) . Pokud chcete balíček aplikace ověřit lokálně, použijte rutinu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) . Dalším krokem je registrace aplikace do modulu runtime Service Fabric pomocí rutiny [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) . V následujícím kroku spustíte instanci aplikace pomocí rutiny [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication) .  Tyto tři kroky jsou podobné použití položky nabídky **nasadit** v aplikaci Visual Studio.  Po dokončení zřizování byste měli kopírovaný balíček aplikace vyčistit z úložiště imagí, aby se snížily spotřebované prostředky.  Pokud již typ aplikace není vyžadován, je třeba zrušit jeho registraci ze stejného důvodu. Další informace najdete v tématu [nasazení a odebrání aplikací pomocí PowerShellu](service-fabric-application-upgrade-tutorial-powershell.md) .
 
-Nyní můžete použít [Service Fabric Explorer k zobrazení clusteru a aplikace](service-fabric-visualizing-your-cluster.md). Aplikace má webovou službu, na kterou lze přejít v aplikaci Internet Explorer zadáním `http://localhost:8081/visualobjects` do adresního řádku.  Měli byste vidět, že se některé plovoucí vizuální objekty v obrazovce pohybují.  Kromě toho můžete ke kontrole stavu aplikace použít [příkaz Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) .
+Nyní můžete použít [Service Fabric Explorer k zobrazení clusteru a aplikace](service-fabric-visualizing-your-cluster.md). Aplikace má webovou službu, na kterou lze přejít v aplikaci Internet Explorer zadáním `http://localhost:8081/visualobjects` do adresního řádku.  Měli byste vidět, že se některé plovoucí vizuální objekty v obrazovce pohybují.  Kromě toho můžete ke kontrole stavu aplikace použít [příkaz Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) .
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: aktualizace ukázky vizuálních objektů
 Můžete si všimnout, že ve verzi, která byla nasazena v kroku 1, se neotáčí vizuální objekty. Pojďme tuto aplikaci upgradovat na jednu, kde se také otočí vizuální objekty.
@@ -76,7 +77,7 @@ Nyní je soubor *ApplicationManifest.xml* (v rámci projektu **VisualObjects** p
  <ServiceManifestRefServiceManifestName="VisualObjects.ActorService" ServiceManifestVersion="2.0" />
 ```
 
-Nyní Sestavte projekt tak, že vyberete pouze projekt **ActorService** , kliknete pravým tlačítkem a vyberete možnost **sestavení** v aplikaci Visual Studio. Pokud vyberete možnost **znovu sestavit vše**, měli byste aktualizovat verze pro všechny projekty, protože by došlo ke změně kódu. Teď pokaždé, když kliknete pravým tlačítkem na ***VisualObjectsApplication***, zabalíme aktualizovanou aplikaci, vybereme nabídku Service Fabric a zvolíte **balíček**. Tato akce vytvoří balíček aplikace, který lze nasadit.  Vaše aktualizovaná aplikace je připravená k nasazení.
+Nyní Sestavte projekt tak, že vyberete pouze projekt **ActorService** , kliknete pravým tlačítkem a vyberete možnost **sestavení** v aplikaci Visual Studio. Pokud vyberete možnost **znovu sestavit vše**, měli byste aktualizovat verze pro všechny projekty, protože by došlo ke změně kódu. Potom pokaždé, když kliknete pravým tlačítkem na VisualObjectsApplication _ Service Fabric, zabalíme aktualizovanou aplikaci ***a zvolíte příkaz _* Package**. Tato akce vytvoří balíček aplikace, který lze nasadit.  Vaše aktualizovaná aplikace je připravená k nasazení.
 
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Krok 3: rozhodnutí o zásadách stavu a parametrech upgradu
 Seznamte se s [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md) a s [procesem upgradu](service-fabric-application-upgrade.md) , abyste získali dobré znalosti o různých parametrech upgradu, časových limitech a kritériu stavu. V tomto návodu je kritérium vyhodnocení stavu služby nastavené na výchozí (a doporučené) hodnoty, což znamená, že všechny služby a instance by měly být po upgradu *v pořádku* .  
@@ -94,7 +95,7 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## <a name="step-4-prepare-application-for-upgrade"></a>Krok 4: Příprava aplikace pro upgrade
-Nyní je aplikace sestavená a připravená k upgradu. Pokud otevřete okno PowerShellu jako správce a zadáte [příkaz Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps), měli byste si být vědomi, že se jedná o typ aplikace 1.0.0.0 z **VisualObjects** , který je nasazený.  
+Nyní je aplikace sestavená a připravená k upgradu. Pokud otevřete okno PowerShellu jako správce a zadáte [příkaz Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication), měli byste si být vědomi, že se jedná o typ aplikace 1.0.0.0 z **VisualObjects** , který je nasazený.  
 
 Balíček aplikace je uložený v následující relativní cestě, do které jste nekomprimovaný Service Fabric SDK – *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. V adresáři, ve kterém je uložený balíček aplikace, byste měli najít složku "Package". Zkontrolujte časová razítka, abyste měli jistotu, že se jedná o nejnovější sestavení (možná budete muset vhodně upravit i cesty).
 
@@ -104,7 +105,7 @@ Teď nakopírujete aktualizovaný balíček aplikace na Service Fabric úložiš
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
-Dalším krokem je registrace aplikace pomocí Service Fabric, kterou můžete provést pomocí příkazu [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) :
+Dalším krokem je registrace aplikace pomocí Service Fabric, kterou můžete provést pomocí příkazu [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) :
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
@@ -119,7 +120,7 @@ Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore "Visu
 ```
 
 ## <a name="step-5-start-the-application-upgrade"></a>Krok 5: zahájení upgradu aplikace
-Teď je vše nastavené na spuštění upgradu aplikace pomocí příkazu [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) :
+Teď je vše nastavené na spuštění upgradu aplikace pomocí příkazu [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) :
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -ApplicationTypeVersion 2.0.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000   -FailureAction Rollback -Monitored
@@ -128,7 +129,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 Název aplikace je stejný, jako byl popsán v souboru *ApplicationManifest.xml* . Service Fabric používá tento název k identifikaci aplikace, která se aktualizuje. Pokud nastavíte časový limit na příliš krátký, může se zobrazit zpráva o selhání s informací o problému. Přečtěte si část věnované řešení potíží nebo zvyšte časový limit.
 
-Teď, když upgrade aplikace pokračuje, můžete ho monitorovat pomocí Service Fabric Explorer nebo pomocí příkazu PowerShellu [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) : 
+Teď, když upgrade aplikace pokračuje, můžete ho monitorovat pomocí Service Fabric Explorer nebo pomocí příkazu PowerShellu [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade) : 
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
@@ -148,4 +149,3 @@ Vyjistěte, aby byly upgrady aplikací kompatibilní, pomocí učení, jak použ
 Naučte se používat pokročilé funkce při upgradu vaší aplikace, které odkazují na [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
 
 Pomocí postupu v části [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md)můžete opravit běžné problémy s upgrady aplikací.
-

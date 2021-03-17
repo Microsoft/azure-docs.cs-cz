@@ -1,18 +1,23 @@
 ---
 title: Možnosti úložiště stavu na síti Azure Service Fabric sítě
 description: Přečtěte si informace o spolehlivém ukládání stavu v Service Fabricch aplikacích sítě, které běží na Azure Service Fabric sítě.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 651329b1b061f2cf5a06dbdc9d60f73cec64e7d3
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246822"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625545"
 ---
 # <a name="state-management-with-service-fabric"></a>Správa stavu pomocí Service Fabric
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Service Fabric podporuje mnoho různých možností pro úložiště stavů. Koncepční Přehled vzorů správy stavů a Service Fabric najdete v tématu [Service Fabric koncepty: State](../service-fabric/service-fabric-concepts-state.md). Všechny tyto stejné koncepty platí bez ohledu na to, jestli se vaše služby spouštějí uvnitř nebo vně Service Fabric sítě. 
 
@@ -22,7 +27,7 @@ Pomocí Service Fabric sítě můžete snadno nasadit novou aplikaci a připojit
 
 Kontejnery často využívají dočasné disky. Dočasné disky jsou ale dočasné, takže získáte nový dočasný disk a ztratíte informace, když dojde k selhání kontejneru. Je také obtížné sdílet informace o dočasných discích s jinými kontejnery. Svazky jsou adresáře, které se připevní do instancí kontejnerů, které můžete použít k trvalému stavu. Svazky poskytují úložiště souborů pro obecné účely a umožňují čtení a zápis souborů pomocí normálních rozhraní API v/v souborů na disku. Prostředek Volume popisuje, jak připojit adresář a které záložní úložiště použít. K ukládání dat můžete vybrat buď službu Azure File Storage, nebo Service Fabric diskové jednotky.
 
-![Svazky][image3]
+![Diagram znázorňuje službu, která přetéká do svazku, což vede k Service Fabric spolehlivého svazku na replikovaném místním disku a na svazku souborů Azure v síťovém úložišti.][image3]
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric spolehlivý svazek
 

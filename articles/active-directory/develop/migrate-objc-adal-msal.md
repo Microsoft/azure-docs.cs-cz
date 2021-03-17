@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7dc3241198fbc6eeddba059251f28c6dc35c8a29
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119925"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754929"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrace aplikací do MSAL pro iOS a macOS
 
@@ -38,14 +38,14 @@ Platforma Microsoft identity má několik klíčových rozdílů s Azure Active 
 
 ### <a name="standards-compliance"></a>Dodržování standardů
 
-* Koncový bod Microsoft Identity Platform sleduje standardy OAuth 2,0 a OpenId Connect.
+* Platforma Microsoft Identity splňuje standardy OAuth 2,0 a OpenId Connect.
 
 ### <a name="incremental-and-dynamic-consent"></a>Přírůstkové a dynamické vyjádření souhlasu
 
 * Koncový bod Azure Active Directory v 1.0 vyžaduje, aby byla při registraci aplikace předem deklarována všechna oprávnění. To znamená, že tato oprávnění jsou statická.
 * Platforma Microsoft Identity vám umožňuje dynamicky požádat o oprávnění. Aplikace můžou požádat o oprávnění pouze podle potřeby a požádat o další informace, jak je aplikace potřebuje.
 
-Další informace o rozdílech mezi Azure Active Directory v 1.0 a platformou Microsoft identity najdete v tématu [Proč aktualizovat na Microsoft Identity Platform (v 2.0)?](../azuread-dev/azure-ad-endpoint-comparison.md).
+Další informace o rozdílech mezi Azure Active Directory v 1.0 a platformou Microsoft identity najdete v tématu [Proč se aktualizovat na Microsoft Identity Platform?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="adal-and-msal-library-differences"></a>Rozdíly v knihovně ADAL a MSAL
 
@@ -53,7 +53,7 @@ Veřejné rozhraní API MSAL odráží několik klíčových rozdílů mezi Azur
 
 ### <a name="msalpublicclientapplication-instead-of-adauthenticationcontext"></a>MSALPublicClientApplication místo ADAuthenticationContext
 
-`ADAuthenticationContext`je prvním objektem, který aplikace ADAL vytvoří. Představuje instanci ADAL. Aplikace vytvoří novou instanci `ADAuthenticationContext` pro každou kombinaci Azure Active Directory cloudu a tenanta (autorita). Stejný `ADAuthenticationContext` postup lze použít k získání tokenů pro více veřejných klientských aplikací.
+`ADAuthenticationContext` je prvním objektem, který aplikace ADAL vytvoří. Představuje instanci ADAL. Aplikace vytvoří novou instanci `ADAuthenticationContext` pro každou kombinaci Azure Active Directory cloudu a tenanta (autorita). Stejný `ADAuthenticationContext` postup lze použít k získání tokenů pro více veřejných klientských aplikací.
 
 V MSAL je hlavní interakcí prostřednictvím `MSALPublicClientApplication` objektu, který je modelován po [veřejném klientovi OAuth 2,0](https://tools.ietf.org/html/rfc6749#section-2.1). Jednu instanci `MSALPublicClientApplication` lze použít k interakci s několika cloudy AAD a klienty, aniž byste museli vytvářet novou instanci pro každou autoritu. Pro většinu aplikací je jedna `MSALPublicClientApplication` instance dostatečná.
 
@@ -75,7 +75,7 @@ Existují dva způsoby, jak poskytnout obory v MSAL:
 
 Toto je vestavěný rozsah pro každou aplikaci. Odkazuje na statický seznam oprávnění nakonfigurovaných při registraci aplikace. Jeho chování je podobné jako u `resource` . To může být užitečné při migraci, aby se zajistilo, že bude zachována podobná sada oborů a činnost koncového uživatele.
 
-Chcete-li použít `/.default` rozsah, přidejte `/.default` k identifikátoru prostředku. Například: `https://graph.microsoft.com/.default`. Pokud váš prostředek končí lomítkem ( `/` ), měli byste se stále připojit `/.default` , včetně počátečního lomítka, a to v oboru, který obsahuje dvojité lomítko ( `//` ).
+Chcete-li použít `/.default` rozsah, přidejte `/.default` k identifikátoru prostředku. Příklad: `https://graph.microsoft.com/.default`. Pokud váš prostředek končí lomítkem ( `/` ), měli byste se stále připojit `/.default` , včetně počátečního lomítka, a to v oboru, který obsahuje dvojité lomítko ( `//` ).
 
 Další informace o používání oboru "/.default" si můžete přečíst [tady](./v2-permissions-and-consent.md#the-default-scope) .
 
@@ -83,7 +83,7 @@ Další informace o používání oboru "/.default" si můžete přečíst [tady
 
 ADAL podporuje pouze UIWebView/WKWebView pro iOS a WebView pro macOS. MSAL pro iOS podporuje další možnosti zobrazení webového obsahu při vyžádání autorizačního kódu a už není podporovaný `UIWebView` , což může zlepšit uživatelské prostředí a zabezpečení.
 
-Ve výchozím nastavení MSAL v systému iOS používá [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc), což je webová komponenta, kterou Apple doporučuje pro ověřování na zařízeních s iOS 12 +. Poskytuje výhody jednotného přihlašování (SSO) prostřednictvím sdílení souborů cookie mezi aplikacemi a prohlížečem Safari.
+Ve výchozím nastavení MSAL v systému iOS používá [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc), což je webová komponenta, kterou Apple doporučuje pro ověřování na zařízeních s iOS 12 +. Poskytuje výhody jednotného Sign-On (SSO) prostřednictvím sdílení souborů cookie mezi aplikacemi a prohlížečem Safari.
 
 Můžete použít jinou webovou komponentu v závislosti na požadavcích aplikace a na možnosti koncového uživatele, kterou požadujete. Další možnosti najdete v tématu [podporované typy webových zobrazení](customize-webviews.md) .
 
@@ -136,7 +136,7 @@ MSAL poskytuje větší přehlednost mezi chybami, které může zpracovat vaše
 
 Zpracování všech ostatních chyb v [ `MSALError` seznamu](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) je volitelné. Pomocí informací v těchto chybách můžete zlepšit činnost koncového uživatele.
 
-Další informace o zpracování chyb MSAL najdete v tématu [zpracování výjimek a chyb pomocí MSAL](msal-handling-exceptions.md) .
+Další informace o zpracování chyb MSAL najdete v tématu [zpracování výjimek a chyb pomocí MSAL](msal-error-handling-ios.md) .
 
 ### <a name="broker-support"></a>Podpora zprostředkovatele
 
@@ -322,7 +322,7 @@ Ve výchozím nastavení MSAL ukládá do mezipaměti tokeny vaší aplikace v �
 Postup povolení ukládání tokenů do mezipaměti:
 1. Ujistěte se, že je aplikace správně podepsaná.
 2. Přejít na nastavení projektu Xcode **karta možnosti**>  >  **Povolit sdílení řetězce klíčů**
-3. Klikněte **+** a zadejte následující položku **skupin klíčů** : 3. a pro iOS zadejte `com.microsoft.adalcache` 3. b pro MacOS ENTER.`com.microsoft.identity.universalstorage`
+3. Klikněte **+** a zadejte následující položku **skupin klíčů** : 3. a pro iOS zadejte `com.microsoft.adalcache` 3. b pro MacOS ENTER. `com.microsoft.identity.universalstorage`
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>Vytvoření MSALPublicClientApplication a přepnutí na jeho acquireToken a acquireTokeSilent volání
 

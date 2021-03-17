@@ -6,19 +6,19 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 23d1e4b06c9c0278742da0cec8ac565b5f80a362
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 08c9f7a6c5f8fd4a51c464018438bf6e7db119fb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004897"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374894"
 ---
 # <a name="windows-virtual-desktop-classic-powershell"></a>PowerShell pro virtuální počítače s Windows (Classic)
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objektů virtuálních klientů Windows, přečtěte si [Tento článek](../troubleshoot-powershell.md).
 
-Pomocí tohoto článku můžete vyřešit chyby a problémy při používání PowerShellu s virtuálním počítačem s Windows. Další informace o PowerShellu služby Vzdálená plocha najdete v tématu [prostředí PowerShell pro virtuální počítače s Windows](/powershell/module/windowsvirtualdesktop/).
+Pomocí tohoto článku můžete vyřešit chyby a problémy při používání PowerShellu s virtuálním počítačem s Windows. Další informace o PowerShellu služby Vzdálená plocha najdete v tématu [prostředí PowerShell pro virtuální počítače s Windows](/powershell/windows-virtual-desktop/overview).
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
@@ -28,7 +28,7 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 
 Tato část obsahuje seznam příkazů PowerShellu, které se obvykle používají při nastavování virtuální plochy Windows, a poskytuje možnosti pro řešení problémů, ke kterým může dojít při jejich používání.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Chyba: příkaz Add-RdsAppGroupUser--zadaná hodnota UserPrincipalName je již přiřazena ke skupině aplikací RemoteApp v zadaném fondu hostitelů.
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Chyba: Add-RdsAppGroupUser příkaz--zadaná hodnota UserPrincipalName je již přiřazena ke skupině aplikací RemoteApp v zadaném fondu hostitelů.
 
 ```Powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
@@ -38,7 +38,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 
 **Oprava:** Pokud uživatel potřebuje obě vzdálené aplikace i Vzdálená plocha, vytvořte různé fondy hostitelů nebo udělte uživatelům přístup ke vzdálené ploše. Tím umožníte použití jakékoli aplikace na virtuálním počítači hostitele relace.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Chyba: příkaz Add-RdsAppGroupUser – zadaná hodnota UserPrincipalName neexistuje v Azure Active Directory přidružená k tenantovi vzdálené plochy.
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Chyba: Add-RdsAppGroupUser příkaz--zadaná hodnota UserPrincipalName neexistuje v Azure Active Directory přidružená k tenantovi vzdálené plochy.
 
 ```PowerShell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
@@ -52,7 +52,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 - Uživatel není spojený s obchodem s B2C (Business to Consumer) ani B2B (Business-to-Business).
 - Tenant virtuálních počítačů s Windows je vázaný na správnou Azure Active Directory.
 
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities--User není autorizován pro dotazování služby správy
+### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities – uživatel nemá oprávnění k dotazování služby správy
 
 ```PowerShell
 Get-RdsDiagnosticActivities -ActivityId <ActivityId>
@@ -60,9 +60,9 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **Příčina:** -parametr tenant
 
-**Oprava:** Vydejte Get-RdsDiagnosticActivities s-tenant \<TenantName> .
+**Oprava:** Vystavení Get-RdsDiagnosticActivities s-tenant \<TenantName> .
 
-### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities--uživatel nemá oprávnění pro dotaz na službu správy.
+### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities – uživatel nemá oprávnění k dotazování služby správy
 
 ```PowerShell
 Get-RdsDiagnosticActivities -Deployment -username <username>
@@ -72,7 +72,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **Oprava:** – přepínač nasazení může být používán pouze správci nasazení. Tito správci jsou obvykle členy týmu vzdálené plochy služby Vzdálená plocha nebo Windows. Nahraďte přepínač-Deployment parametrem-tenant \<TenantName> .
 
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: New-RdsRoleAssignment--uživatel nemá oprávnění pro dotaz na službu správy.
+### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: New-RdsRoleAssignment – uživatel nemá oprávnění k dotazování služby správy
 
 **Příčina 1:** Použitý účet nemá oprávnění vlastníka služby Vzdálená plocha pro tenanta.
 
@@ -83,7 +83,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 **Oprava 2:** Uživatel s oprávněním služby Active Directory musí provést přiřazení role.
 
 >[!Note]
->Příkaz New-RdsRoleAssignment nemůže udělit oprávnění uživateli, který neexistuje v Azure Active Directory (AD).
+>New-RdsRoleAssignment nemůže udělit oprávnění uživateli, který neexistuje v Azure Active Directory (AD).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,18 +1,16 @@
 ---
 title: Optimalizace úložiště dat pro Apache Spark – Azure HDInsight
 description: Naučte se optimalizovat úložiště dat pro použití s Apache Spark v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 10f99bdc4a5d418ae1b432a6799c5979e473c5ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737627"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98926996"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Optimalizace úložiště dat pro Apache Spark
 
@@ -43,7 +41,7 @@ Starší verze Sparku používají RDD k abstraktním datům, Spark 1,3 a 1,6 za
     * Přidá režii serializace/deserializace.
     * Vysoká režie GC.
     * Zruší generování kódu na celé fázi.
-* **RDD**
+* **Sady RDD**
     * Nemusíte používat RDD, pokud nepotřebujete vytvářet nové vlastní RDD.
     * Žádná optimalizace dotazů prostřednictvím Catalyst.
     * Nevytváření celého připraveného kódu.
@@ -77,7 +75,7 @@ Spark poskytuje vlastní nativní mechanismy ukládání do mezipaměti, které 
     * Používá ukládání do mezipaměti SSD v paměti a SSD.
 
 * Místní HDFS (doporučeno)
-    * `hdfs://mycluster`dílčí.
+    * `hdfs://mycluster` dílčí.
     * Používá ukládání do mezipaměti SSD.
     * Po odstranění clusteru dojde ke ztrátě dat uložených v mezipaměti, které vyžaduje opětovné sestavení mezipaměti.
 
@@ -86,7 +84,7 @@ Spark poskytuje vlastní nativní mechanismy ukládání do mezipaměti, které 
 Úlohy Sparku jsou distribuované, takže pro nejlepší výkon je důležité, aby byla vhodná serializace dat.  Pro Spark existují dvě možnosti serializace:
 
 * Výchozím nastavením je serializace Java.
-* `Kryo`serializace je novější formát a může mít za následek rychlejší a kompaktnější serializaci než Java.  `Kryo`vyžaduje, abyste v programu zaregistrovali třídy a zatím nepodporovaly všechny Serializovatelné typy.
+* `Kryo` serializace je novější formát a může mít za následek rychlejší a kompaktnější serializaci než Java.  `Kryo` vyžaduje, abyste v programu zaregistrovali třídy a zatím nepodporovaly všechny Serializovatelné typy.
 
 ## <a name="use-bucketing"></a>Použití rozdělování do kbelíků
 

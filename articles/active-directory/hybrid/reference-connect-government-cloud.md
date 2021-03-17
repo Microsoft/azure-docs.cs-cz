@@ -11,21 +11,24 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39acc0373f5748f57f4fef5a5cee5fb038071523
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080177"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504351"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Požadavky na hybridní identitu pro cloud Azure Government
 
 Tento článek popisuje požadavky na integraci hybridního prostředí s Microsoft Azure Governmentm cloudem. Tyto informace jsou k dispozici jako reference pro správce a architekty, kteří pracují s Azure Governmentm cloudem.
 
 > [!NOTE]
-> Pokud chcete integrovat místní prostředí Microsoft Azure Active Directory (Azure AD) s Azure Governmentm cloudem, budete muset upgradovat na nejnovější verzi [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
+> Pokud chcete integrovat prostředí služby Microsoft Active Directory (místně nebo hostované v IaaS, které je součástí stejné instance cloudu) s Azure Governmentm cloudem, musíte upgradovat na nejnovější verzi [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
 
-Úplný seznam USAch koncových bodů obrany najdete v [dokumentaci](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints).
+> [!NOTE]
+> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+
+Úplný seznam USAch koncových bodů obrany najdete v [dokumentaci](/office365/enterprise/office-365-u-s-government-dod-endpoints).
 
 ## <a name="azure-ad-pass-through-authentication"></a>Předávací ověřování Azure AD
 
@@ -36,7 +39,7 @@ Následující informace popisují implementaci předávacího ověřování a c
 Před nasazením předávacího agenta pro ověřování ověřte, zda existuje brána firewall mezi servery a službou Azure AD. Pokud brána firewall nebo proxy povolí blokované nebo bezpečné programy DNS (Domain Name System), přidejte následující připojení.
 
 > [!NOTE]
-> Následující pokyny platí také pro instalaci [konektoru služby Azure proxy aplikací služby AD](https://aka.ms/whyappproxy) pro Azure Government prostředí.
+> Následující pokyny platí také pro instalaci [konektoru služby Azure proxy aplikací služby AD](../manage-apps/what-is-application-proxy.md) pro Azure Government prostředí.
 
 |URL |Jak se používá|
 |-----|-----|
@@ -74,9 +77,9 @@ Pokud jako metodu přihlašování použijete předávací ověřování, nevyž
 
   V takovém případě povolte přístup k rozsahům IP adres datacentra Azure, které se aktualizují týdně. Tato podmínka platí pouze v případě, že funkci povolíte. Nevyžaduje se pro vlastní přihlášení uživatelů.
 
-### <a name="roll-out-seamless-single-sign-on"></a>Zavedení bezproblémového jednotného přihlašování
+### <a name="roll-out-seamless-single-sign-on"></a>Zavedení bezproblémového jednoduchého Sign-On
 
-K bezproblémovému jednotnému přihlašování uživatelů Azure AD můžete použít následující pokyny. Začnete přidáním adresy URL Azure AD `https://autologon.microsoft.us` do nastavení zóny intranetu pro všechny nebo vybrané uživatele pomocí Zásady skupiny ve službě Active Directory.
+K Sign-On bezproblémovému nasazení Azure AD pro uživatele můžete použít následující pokyny. Začnete přidáním adresy URL Azure AD `https://autologon.microsoft.us` do nastavení zóny intranetu pro všechny nebo vybrané uživatele pomocí Zásady skupiny ve službě Active Directory.
 
 Musíte taky povolit nastavení zásad zóny intranetu **Povolit aktualizace stavového řádku prostřednictvím skriptu prostřednictvím zásady skupiny**.
 

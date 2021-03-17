@@ -8,13 +8,13 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 47e175a47d3548962f63e283c80abe8333e9ecc4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: d1bdae976d5e5b7d98311d33bb38b5035f2557ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421616"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548695"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Nasazení aplikací Node.js využívajících Azure Cosmos DB s DevOps Starter
 
@@ -26,7 +26,7 @@ DevOps Starter také:
 
 * Vytvoří a nakonfiguruje kanál verze CI/CD ve službě Azure DevOps.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Použití DevOps Starter k nasazení aplikace Node.js s využitím Azure Cosmos DB
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující:
 > * Potvrďte změny v Gitu a automaticky je nasaďte do Azure.
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Potřebujete předplatné Azure, které můžete získat zdarma prostřednictvím [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) .
 
@@ -47,17 +47,17 @@ DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novo
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Jako modul runtime vyberte **Node.js** a pak vyberte **Další**. V části **zvolte Aplikační architekturu**vyberte **Express.js**.
+1. Jako modul runtime vyberte **Node.js** a pak vyberte **Další**. V části **zvolte Aplikační architekturu** vyberte **Express.js**.
 
-1. Povolte část **Přidat databázi** pro **Cosmos DB**a pak vyberte **Další**.
+1. Povolte část **Přidat databázi** pro **Cosmos DB** a pak vyberte **Další**.
 
     ![Přidání databáze](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Azure DevOps Starter podporuje různé aplikační architektury, jako jsou **Express.js**, **ukázkové Node.js aplikace**a **Sail.js**. V tomto kurzu používáme **Express.js**.
+    Azure DevOps Starter podporuje různé aplikační architektury, jako jsou **Express.js**, **ukázkové Node.js aplikace** a **Sail.js**. V tomto kurzu používáme **Express.js**.
 
 1. Vyberte službu Azure pro nasazení aplikace a pak vyberte **Další**. Mezi tyto možnosti patří webová aplikace Windows, služba Azure Kubernetes a Azure Web App for Containers. V tomto kurzu používáme **webovou aplikaci Windows**.
 
@@ -144,9 +144,9 @@ Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, 
 
 1. Úložiště již obsahuje kód na základě jazyka aplikace, který jste zvolili v procesu vytváření. Otevřete soubor **Application/views/index. pug** .
 
-1. Vyberte **Upravit**a pak proveďte změnu na **řádek číslo 15**. Můžete ho například změnit na "Moje první nasazení, které má Azure App Service využívá Azure Cosmos DB."
+1. Vyberte **Upravit** a pak proveďte změnu na **řádek číslo 15**. Můžete ho například změnit na "Moje první nasazení, které má Azure App Service využívá Azure Cosmos DB."
 
-1. V pravém horním rohu vyberte **Potvrdit**a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte.
+1. V pravém horním rohu vyberte **Potvrdit** a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte.
 
      Po několika sekundách se Build spustí v Azure DevOps a k nasazení změn se spustí vydání. Monitorujte stav buildu na řídicím panelu Starter DevOps nebo v prohlížeči pomocí vaší organizace Azure DevOps.
 
@@ -167,6 +167,4 @@ Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vaš
 > * Potvrďte změny v Gitu a automaticky je nasaďte do Azure.
 > * Vyčištění prostředků
 
-Další informace a další kroky najdete v tématu [definice kanálu pro průběžné nasazování (CD) s více fázemi](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) .
-
-
+Další informace a další kroky najdete v tématu [definice kanálu pro průběžné nasazování (CD) s více fázemi](/azure/devops/pipelines/release/define-multistage-release-process) .

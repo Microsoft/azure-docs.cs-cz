@@ -4,15 +4,16 @@ description: Přečtěte si, jak si předplatit náklady na Azure Databricks pom
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: dd5654b31f8d1bebe44902d1db5c35fc6dd9a866
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287604"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599160"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Optimalizace nákladů na Azure Databricks díky předběžnému nákupu
 
@@ -47,7 +48,7 @@ Plány Databricks si můžete zakoupit na webu [Azure Portal](https://portal.azu
 **Postup při nákupu:**
 
 1. Přejděte na [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
-1. Vyberte předplatné. V seznamu **Předplatné** vyberte předplatné, které chcete použít k úhradě rezervované kapacity. Náklady na rezervovanou instanci se vyfakturují pomocí způsobu platby vybraného pro dané předplatné. Poplatky se strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
+1. Vyberte předplatné. V seznamu **Předplatné** vyberte předplatné, které chcete použít k úhradě rezervované kapacity. Náklady na rezervovanou instanci se vyfakturují pomocí způsobu platby vybraného pro dané předplatné. Poplatky se strhávají z Azure Prepaymentu (dříve označovaný jako peněžní závazek) příslušné registrace, nebo se účtují jako nadlimitní využití.
 1. Vyberte rozsah. Rozsah předplatného vyberte v seznamu **Rozsah**:
     - Rozsah **Jedna skupina prostředků** – sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
     - Rozsah **Jedno předplatné** – sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.
@@ -62,7 +63,7 @@ Plány Databricks si můžete zakoupit na webu [Azure Portal](https://portal.azu
 V zakoupené rezervaci můžete provádět následující typy změn:
 
 - Aktualizace rozsahu rezervace
-- Přístup na základě rolí
+- Řízení přístupu na základě role Azure (Azure RBAC)
 
 Předem zakoupené jednotky potvrzení Databricks není možné rozdělit ani sloučit. Další informace o správě rezervací najdete v tématu [Správa rezervací po nákupu](manage-reserved-vm-instance.md).
 

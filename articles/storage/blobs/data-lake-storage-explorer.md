@@ -5,26 +5,30 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 088618c0f23f5cfd1b14c3c946ef735fadb893d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e6147918e7cd56aed5b5b333a8e9825a34d60fd4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086094"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652271"
 ---
-# <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage
+# <a name="use-azure-storage-explorer-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Správa adresářů a souborů v Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage
 
-V tomto článku se dozvíte, jak pomocí [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
+V tomto článku se dozvíte, jak pomocí [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) vytvářet a spravovat adresáře a soubory v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-> [!div class="checklist"]
-> * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-> * Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](data-lake-storage-quickstart-create-account.md) pokynů.
-> * Průzkumník služby Azure Storage nainstalované na místním počítači. Instalaci Průzkumníka služby Azure Storage pro Windows, Macintosh nebo Linux popisuje článek [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
+- Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+
+- Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](../common/storage-account-create.md) pokynů.
+
+- Průzkumník služby Azure Storage nainstalované na místním počítači. Instalaci Průzkumníka služby Azure Storage pro Windows, Macintosh nebo Linux popisuje článek [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
+
+> [!NOTE]
+> Průzkumník služby Storage využívá při práci s Azure Data Lake Storage Gen2 i [koncové body](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) objektů BLOB (blob) & Data Lake Storage Gen2 (DFS). Pokud je přístup k Azure Data Lake Storage Gen2 nakonfigurovaný pomocí privátních koncových bodů, zajistěte, aby se pro účet úložiště vytvořily dva privátní koncové body: jeden s cílovým dílčím prostředkem `blob` a druhý s cílovým dílčím prostředkem `dfs` .
 
 ## <a name="sign-in-to-storage-explorer"></a>Přihlášení k Průzkumník služby Storage
 
@@ -38,7 +42,7 @@ Když poprvé spustíte Průzkumníka služby Storage, objeví se okno **Průzku
 
 Vyberte **Přidat účet Azure** a klikněte na **Přihlásit se.**.. Podle pokynů na obrazovce se přihlaste k účtu Azure.
 
-![Průzkumník služby Microsoft Azure Storage – okno Připojení](media/storage-quickstart-blobs-storage-explorer/connect.png)
+![Snímek obrazovky zobrazující Průzkumník služby Microsoft Azure Storage a zvýrazní možnost Přidat účet Azure a tlačítko přihlásit.](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
 Po dokončení připojení se Průzkumník služby Azure Storage otevře se zobrazenou kartou **Průzkumník**. Toto zobrazení vám umožní získat přehled o všech účtech úložiště Azure i o místním úložišti nakonfigurovaném pomocí [emulátoru úložiště Azurite](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), účtů [Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) prostředí.
 
@@ -46,7 +50,7 @@ Po dokončení připojení se Průzkumník služby Azure Storage otevře se zobr
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Kontejner obsahuje adresáře a soubory. Pokud ho chcete vytvořit, rozbalte účet úložiště, který jste vytvořili v kroku pokračování. Klikněte pravým tlačítkem na **Kontejnery objektů blob** a vyberte **Vytvořit kontejner objektů blob**. Zadejte název kontejneru. Seznam pravidel a omezení pro pojmenování kontejnerů najdete v části [vytvoření kontejneru](storage-quickstart-blobs-dotnet.md#create-a-container) . Po dokončení stiskněte klávesu **ENTER** a kontejner se vytvoří. Jakmile se kontejner úspěšně vytvoří, zobrazí se ve složce **kontejnery objektů BLOB** pro vybraný účet úložiště.
+Kontejner obsahuje adresáře a soubory. Pokud ho chcete vytvořit, rozbalte účet úložiště, který jste vytvořili v kroku pokračování. Vyberte **kontejnery objektů BLOB**, klikněte pravým tlačítkem myši a vyberte **vytvořit kontejner objektů BLOB**. Zadejte název kontejneru. Seznam pravidel a omezení pro pojmenování kontejnerů najdete v části [vytvoření kontejneru](storage-quickstart-blobs-dotnet.md#create-a-container) . Po dokončení stiskněte klávesu **ENTER** a kontejner se vytvoří. Jakmile se kontejner úspěšně vytvoří, zobrazí se ve složce **kontejnery objektů BLOB** pro vybraný účet úložiště.
 
 ![Průzkumník služby Microsoft Azure Storage – vytváření kontejneru](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
@@ -58,7 +62,7 @@ Chcete-li vytvořit adresář, vyberte kontejner, který jste vytvořili v kroku
 
 ## <a name="upload-blobs-to-the-directory"></a>Nahrajte objekty blob do adresáře.
 
-Na pásu karet adresář zvolte tlačítko **nahrát** . Tato operace umožňuje nahrát složku nebo soubor.
+Na pásu karet Adresář klikněte na tlačítko **nahrát** . Tato operace umožňuje nahrát složku nebo soubor.
 
 Vyberte soubory nebo složku k nahrání.
 
@@ -74,41 +78,11 @@ V aplikaci **Průzkumník služby Azure Storage** vyberte adresář pod účtem 
 
 ## <a name="download-blobs"></a>Stáhnout objekty blob
 
-Pokud chcete soubory stáhnout pomocí **Průzkumník služby Azure Storage**s vybraným souborem, na pásu karet vyberte **Stáhnout** . Otevře se dialogové okno pro výběr souboru, kde můžete zadat umístění a název staženého souboru. Výběrem **Uložit** zahájíte stahování souboru do místního umístění.
-
-## <a name="managing-access"></a>Správa přístupu
-
-Oprávnění můžete nastavit v kořenu vašeho kontejneru. Abyste to mohli udělat, musíte být přihlášeni k Průzkumník služby Azure Storage s vaším individuálním účtem s právy k tomu, aby to bylo možné (na rozdíl od připojovacího řetězce). Klikněte pravým tlačítkem na svůj kontejner a vyberte **Spravovat oprávnění**a v dialogovém okně **Spravovat oprávnění** .
-
-![Průzkumník služby Microsoft Azure Storage – Správa přístupu k adresáři](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
-
-Dialog **Spravovat oprávnění** umožňuje spravovat oprávnění pro vlastníka a skupinu vlastníci. Umožňuje také přidat nové uživatele a skupiny do seznamu řízení přístupu, pro který pak můžete spravovat oprávnění.
-
-Chcete-li přidat nového uživatele nebo skupinu do seznamu řízení přístupu, vyberte pole **Přidat uživatele nebo skupinu** .
-
-Zadejte odpovídající položku Azure Active Directory (AAD), kterou chcete přidat do seznamu, a pak vyberte **Přidat**.
-
-Uživatel nebo skupina se nyní zobrazí v poli **Uživatelé a skupiny:** , což vám umožní začít spravovat jejich oprávnění.
-
-> [!NOTE]
-> Osvědčeným postupem je a doporučujeme vytvořit v AAD skupinu zabezpečení a zachovat oprávnění pro skupinu, nikoli jednotlivé uživatele. Podrobnosti o tomto doporučení a další osvědčené postupy najdete v tématu [osvědčené postupy pro data Lake Storage Gen2](data-lake-storage-best-practices.md).
-
-Existují dvě kategorie oprávnění, které můžete přiřadit: přístup k ACL a výchozí seznamy ACL.
-
-* **Přístup**: přístup k ovládacímu prvku ACL přístup k objektu. Přístupové seznamy ACL mají přístup k souborům a adresářům.
-
-* **Výchozí**: Šablona seznamů ACL přidružených k adresáři, které určují přístupové seznamy ACL pro všechny podřízené položky, které jsou vytvořeny v tomto adresáři. Soubory nemají výchozí seznamy ACL.
-
-V obou těchto kategoriích máte tři oprávnění, která pak můžete přiřadit k souborům nebo adresářům: **čtení**, **zápis**a **spouštění**.
-
->[!NOTE]
-> Výběrem těchto možností se nenastaví oprávnění k žádným aktuálně existujícím položkám v adresáři. Je nutné přejít na každou jednotlivou položku a nastavit oprávnění ručně, pokud soubor již existuje.
-
-Můžete spravovat oprávnění pro jednotlivé adresáře a také jednotlivé soubory, což vám umožní jemně odstupňované řízení přístupu. Proces pro správu oprávnění pro adresáře i soubory je stejný, jak je popsáno výše. Klikněte pravým tlačítkem na soubor nebo adresář, u kterého chcete spravovat oprávnění, a postupujte podle stejného procesu.
+Pokud chcete soubory stáhnout pomocí **Průzkumník služby Azure Storage** s vybraným souborem, na pásu karet vyberte **Stáhnout** . Otevře se dialogové okno pro výběr souboru, kde můžete zadat umístění a název staženého souboru. Výběrem **Uložit** zahájíte stahování souboru do místního umístění.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si seznam řízení přístupu v Data Lake Storage Gen2.
+Zjistěte, jak spravovat oprávnění k souborům a adresářům nastavením seznamů řízení přístupu (ACL).
 
 > [!div class="nextstepaction"]
-> [Řízení přístupu ve službě Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> [Správa seznamů ACL v Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage](./data-lake-storage-explorer-acl.md)

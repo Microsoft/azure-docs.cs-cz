@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: e4255f0d42e28a72ad55d9b7f81d0dc49b2950cb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87041002"
 ---
 # <a name="createuidefinition-functions"></a>Funkce CreateUiDefinition
@@ -18,25 +18,25 @@ Tento článek poskytuje přehled podporovaných funkcí pro CreateUiDefinition.
 
 ## <a name="function-syntax"></a>Syntaxe funkce
 
-Chcete-li použít funkci, uzavřete vyvolání do hranatých závorek. Příklad:
+Chcete-li použít funkci, uzavřete vyvolání do hranatých závorek. Například:
 
 ```json
 "[function()]"
 ```
 
-Na řetězce a další funkce lze odkazovat jako na parametry funkce, ale řetězce musí být obklopeny v jednoduchých uvozovkách. Příklad:
+Na řetězce a další funkce lze odkazovat jako na parametry funkce, ale řetězce musí být obklopeny v jednoduchých uvozovkách. Například:
 
 ```json
 "[fn1(fn2(), 'demo text')]"
 ```
 
-V případě potřeby můžete odkazovat na vlastnosti výstupu funkce pomocí operátoru tečka. Příklad:
+V případě potřeby můžete odkazovat na vlastnosti výstupu funkce pomocí operátoru tečka. Například:
 
 ```json
 "[func().prop1]"
 ```
 
-## <a name="collection-functions"></a>Funkce kolekce
+## <a name="collection-functions"></a>Funkce kolekcí
 
 Tyto funkce lze použít s kolekcemi, jako jsou řetězce JSON, pole a objekty.
 
@@ -45,8 +45,8 @@ Tyto funkce lze použít s kolekcemi, jako jsou řetězce JSON, pole a objekty.
 * [filtrovací](create-ui-definition-collection-functions.md#filter)
 * [první](create-ui-definition-collection-functions.md#first)
 * [posledního](create-ui-definition-collection-functions.md#last)
-* [časový](create-ui-definition-collection-functions.md#length)
-* [mapy](create-ui-definition-collection-functions.md#map)
+* [length](create-ui-definition-collection-functions.md#length)
+* [mapa](create-ui-definition-collection-functions.md#map)
 * [přímo](create-ui-definition-collection-functions.md#skip)
 * [rozdělení](create-ui-definition-collection-functions.md#split)
 * [take](create-ui-definition-collection-functions.md#take)
@@ -60,7 +60,7 @@ Tyto funkce lze použít pro převod hodnot mezi datovými typy JSON a kódován
 * [decodeURIComponent –](create-ui-definition-conversion-functions.md#decodeuricomponent)
 * [encodeBase64](create-ui-definition-conversion-functions.md#encodebase64)
 * [encodeURIComponent –](create-ui-definition-conversion-functions.md#encodeuricomponent)
-* [Plovák](create-ui-definition-conversion-functions.md#float)
+* [float](create-ui-definition-conversion-functions.md#float)
 * [int](create-ui-definition-conversion-functions.md#int)
 * [Analýza](create-ui-definition-conversion-functions.md#parse)
 * [řetezce](create-ui-definition-conversion-functions.md#string)
@@ -76,16 +76,16 @@ Tyto funkce lze použít pro převod hodnot mezi datovými typy JSON a kódován
 
 Tyto funkce lze použít v podmíněných podmínkách. Některé funkce nemusí podporovat všechny datové typy JSON.
 
-* [a](create-ui-definition-logical-functions.md#and)
+* [and](create-ui-definition-logical-functions.md#and)
 * [COALESCE](create-ui-definition-logical-functions.md#coalesce)
-* [rovná](create-ui-definition-logical-functions.md#equals)
+* [rovná se](create-ui-definition-logical-functions.md#equals)
 * [greater](create-ui-definition-logical-functions.md#greater)
 * [greaterOrEquals](create-ui-definition-logical-functions.md#greaterorequals)
 * [if](create-ui-definition-logical-functions.md#if)
 * [tolik](create-ui-definition-logical-functions.md#less)
 * [lessOrEquals](create-ui-definition-logical-functions.md#lessorequals)
-* [not](create-ui-definition-logical-functions.md#not)
-* [ani](create-ui-definition-logical-functions.md#or)
+* [mění](create-ui-definition-logical-functions.md#not)
+* [nebo](create-ui-definition-logical-functions.md#or)
 
 ## <a name="math-functions"></a>Matematické funkce
 
@@ -101,7 +101,7 @@ Tyto funkce lze použít v podmíněných podmínkách. Některé funkce nemusí
 * [oblasti](create-ui-definition-math-functions.md#range)
 * [jednotk](create-ui-definition-math-functions.md#sub)
 
-## <a name="referencing-functions"></a>Odkazování na funkce
+## <a name="referencing-functions"></a>Odkazovací funkce
 
 * [práce](create-ui-definition-referencing-functions.md#basics)
 * [oblasti](create-ui-definition-referencing-functions.md#location)

@@ -2,93 +2,69 @@
 title: Konfigurace pravidel brány firewall protokolu IP pro Azure Service Bus
 description: Jak používat pravidla brány firewall k povolení Azure Service Bus Připojení z konkrétních IP adres.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 699ece2e78ff0605ff4076b09c023d14e289b1f7
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 02/12/2021
+ms.openlocfilehash: e73f566533cb2357653f7f584ec9ca77333c0a63
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064634"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560858"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Povolení přístupu k oboru názvů Azure Service Bus z konkrétních IP adres nebo rozsahů
-Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
+Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 Tato funkce je užitečná ve scénářích, ve kterých Azure Service Bus by měly být dostupné jenom z určitých dobře známých lokalit. Pravidla brány firewall umožňují konfigurovat pravidla pro příjem provozu pocházejících z konkrétních IPv4 adres. Pokud například používáte Service Bus s využitím [Azure Express Route][express-route], můžete vytvořit **pravidlo brány firewall** , které umožní provoz jenom z místních IP adres nebo adres podnikové brány NAT. 
 
 > [!IMPORTANT]
-> Brány firewall a virtuální sítě se podporují jenom v Service Bus úrovně **Premium** . Pokud upgrade na úroveň **Premier** není možnost, doporučujeme, abyste zachovali zabezpečený token (SAS) sdíleného přístupového podpisu (SAS) a sdíleli ho jenom autorizovaní uživatelé. Informace o ověřování SAS najdete v tématu [ověřování a autorizace](service-bus-authentication-and-authorization.md#shared-access-signature).
+> - Brány firewall a virtuální sítě se podporují jenom v Service Bus úrovně **Premium** . Pokud upgrade na úroveň **Premier** není možnost, doporučujeme, abyste zachovali zabezpečený token (SAS) sdíleného přístupového podpisu (SAS) a sdíleli ho jenom autorizovaní uživatelé. Informace o ověřování SAS najdete v tématu [ověřování a autorizace](service-bus-authentication-and-authorization.md#shared-access-signature).
+> - Zadejte alespoň jedno pravidlo IP nebo pravidlo virtuální sítě pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítě virtuální sítě. Pokud neexistují žádná pravidla IP a virtuální sítě, můžete k oboru názvů přistupovat prostřednictvím veřejného Internetu (pomocí přístupového klíče).  
 
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů Service Bus. Proto se pravidla vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu. Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů Service Bus, se odmítnou jako neoprávněné. Odpověď nezmiňuje pravidlo protokolu IP. Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
 
->[!WARNING]
-> Implementace pravidel brány firewall může zabránit ostatním službám Azure v interakci s Service Bus.
->
-> Důvěryhodné služby společnosti Microsoft nejsou podporovány, pokud je implementováno filtrování IP adres (pravidla brány firewall) a bude k dispozici brzy.
->
-> Běžné scénáře Azure, které nefungují s filtrováním IP adres (Všimněte si, že seznam **není vyčerpávající)** –
-> - Integrace s Azure Event Grid
-> - Trasy k Azure IoT Hub
-> - Device Explorer Azure IoT
->
-> Následující služby společnosti Microsoft musí být ve virtuální síti.
-> - Azure App Service
-> - Azure Functions
-> - Azure Monitor (nastavení diagnostiky)
+Implementace pravidel brány firewall může zabránit ostatním službám Azure v interakci s Service Bus. V případě výjimky můžete povolit přístup k Service Bus prostředkům z určitých důvěryhodných služeb i v případě, že je povolené filtrování IP adres. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services). 
+
+Následující služby společnosti Microsoft musí být ve virtuální síti.
+- Azure App Service
+- Azure Functions
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány firewall protokolu IP pro Service Bus obor názvů. 
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů Service Bus** .
-2. V nabídce vlevo vyberte v části **Nastavení**možnost **sítě** .  
+2. V nabídce vlevo vyberte v části **Nastavení** možnost **sítě** .  
 
     > [!NOTE]
     > Karta **síť** se zobrazí jenom pro obory názvů úrovně **Premium** .  
     
-    Ve výchozím nastavení je vybraná možnost **vybrané sítě** . Pokud na tuto stránku nepřidáte aspoň jedno pravidlo firewallu protokolu IP nebo virtuální síť, můžete k oboru názvů přistupovat přes veřejný Internet (pomocí přístupového klíče).
-
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Stránka sítě – výchozí" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
     Pokud vyberete možnost **všechny sítě** , obor názvů Service Bus akceptuje připojení z libovolné IP adresy. Toto výchozí nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
 
-    ![Firewall – vybraná možnost všechny sítě](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+    ![Snímek obrazovky stránky Azure Portal sítě Možnost povolení přístupu ze všech sítí je vybrána na kartě brány firewall a virtuální sítě.](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
 1. Pokud chcete povolený přístup jenom ze zadané IP adresy, vyberte možnost **vybrané sítě** , pokud už není vybraná. V části **Brána firewall** postupujte podle následujících kroků:
     1. Vyberte možnost **Přidat IP adresu klienta** a poskytněte vaší aktuální IP adrese přístup k oboru názvů. 
-    2. Pro **Rozsah adres**zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 
+    2. Pro **Rozsah adres** zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 
     3. Určete, zda chcete, aby **důvěryhodné služby společnosti Microsoft vynechal tuto bránu firewall**. 
 
-        > [!WARNING]
-        > Pokud zvolíte možnost **vybrané sítě** a nezadáte IP adresu nebo rozsah adres, bude služba umožňovat provoz ze všech sítí. 
+        >[!WARNING]
+        > Pokud vyberete možnost **vybrané sítě** a na tuto stránku nepřidáte aspoň jedno pravidlo firewallu IP nebo virtuální síť, přístup k oboru názvů se dá získat přes veřejný Internet (pomocí přístupové klávesy).    
 
-        ![Firewall – vybraná možnost všechny sítě](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+        ![Snímek obrazovky stránky Azure Portal sítě Je vybraná možnost pro povolení přístupu z vybraných sítí a zvýrazní se oddíl brány firewall.](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. Nastavení uložte kliknutím na **Uložit** na panelu nástrojů. Počkejte několik minut, než se potvrzení zobrazí v oznámeních na portálu.
 
     > [!NOTE]
     > Pokud chcete omezit přístup k určitým virtuálním sítím, přečtěte si téma [Povolení přístupu z konkrétních sítí](service-bus-service-endpoints.md).
 
+[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
+
 ## <a name="use-resource-manager-template"></a>Použití šablony Resource Manageru
-Tato část obsahuje ukázkovou Azure Resource Manager šablonu, která vytvoří virtuální síť a pravidlo brány firewall.
+Tato část obsahuje ukázkovou Azure Resource Manager šablonu, která přidá virtuální síť a pravidlo brány firewall do existujícího oboru názvů Service Bus.
 
+**ipMask** je jedna adresa IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 70.37.104.0/24 představuje 256 IPv4 adres z 70.37.104.0 do 70.37.104.255, přičemž 24 značí počet významných bitů předpony pro daný rozsah.
 
-Následující šablona Správce prostředků umožňuje přidání pravidla virtuální sítě do existujícího oboru názvů Service Bus.
+Při přidávání pravidel virtuální sítě nebo bran firewall nastavte hodnotu `defaultAction` na `Deny` .
 
-Parametry šablony:
-
-- **ipMask** je jedna adresa IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 70.37.104.0/24 představuje 256 IPv4 adres z 70.37.104.0 do 70.37.104.255, přičemž 24 značí počet významných bitů předpony pro daný rozsah.
-
-> [!NOTE]
-> I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
-> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit ***"defaultAction"*** .
-> 
-> Výsledkem
-> ```json
-> "defaultAction": "Allow"
-> ```
-> na
-> ```json
-> "defaultAction": "Deny"
-> ```
->
 
 ```json
 {
@@ -126,7 +102,7 @@ Parametry šablony:
       {
         "apiVersion": "2018-01-01-preview",
         "name": "[variables('namespaceNetworkRuleSetName')]",
-        "type": "Microsoft.ServiceBus/namespaces/networkruleset",
+        "type": "Microsoft.ServiceBus/namespaces/networkrulesets",
         "dependsOn": [
           "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespaceName'))]"
         ],
@@ -153,6 +129,10 @@ Parametry šablony:
 ```
 
 Pokud chcete nasadit šablonu, postupujte podle pokynů [Azure Resource Manager][lnk-deploy].
+
+> [!IMPORTANT]
+> Pokud neexistují žádná pravidla pro IP a virtuální sítě, veškerý provoz se předává do oboru názvů, a to i v případě, že nastavíte `defaultAction` na `deny` . K oboru názvů se dá získat přístup prostřednictvím veřejného Internetu (pomocí přístupového klíče). Zadejte alespoň jedno pravidlo IP nebo pravidlo virtuální sítě pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítě virtuální sítě.  
+
 
 ## <a name="next-steps"></a>Další kroky
 

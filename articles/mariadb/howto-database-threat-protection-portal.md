@@ -1,17 +1,17 @@
 ---
 title: Rozšířená ochrana před internetovými útoky – Azure Portal-Azure Database for MariaDB
-description: Ochrana před hrozbami detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+description: Ochrana před hrozbami pro Azure Database for MariaDB detekuje aktivity databáze neobvyklé, které indikují potenciální ohrožení zabezpečení databáze.
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5f419836b9e73e49ec510fc359487633523e0ef0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 33bc93c62c32010e28cc8bb783bcef6f40700ca0
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104601"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665102"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB
 
@@ -31,7 +31,7 @@ Rozšířená ochrana před internetovými útoky je součástí rozšířené n
 3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 
    - Povolit rozšířenou ochranu před internetovými útoky na serveru.
-   - V části **Upřesnit nastavení ochrany před internetovými útoky**zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
+   - V části **Upřesnit nastavení ochrany před internetovými útoky** zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
   
    ![Nastavení detekce hrozeb](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 
@@ -62,5 +62,5 @@ Kliknutím na **výstrahu detekce hrozeb** spustíte stránku Azure Security Cen
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Další informace o cenách najdete na stránce s [cenami Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/mariadb/) .  
+* Další informace o [Azure Security Center](../security-center/security-center-introduction.md)
+* Další informace o cenách najdete na stránce s [cenami Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/mariadb/) .

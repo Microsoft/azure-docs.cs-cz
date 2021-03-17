@@ -2,23 +2,23 @@
 title: Import nebo export dat pomocí konfigurace aplikace Azure
 description: Naučte se importovat nebo exportovat konfigurační data do nebo z konfigurace aplikace Azure. Výměna dat mezi úložištěm konfigurace aplikace a projektem kódu.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.author: alkemper
+ms.openlocfilehash: 5e4eeb37bb5efa11a656600072e4aa364fc71500
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588071"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931788"
 ---
 # <a name="import-or-export-configuration-data"></a>Import nebo export konfiguračních dat
 
 Konfigurace aplikace Azure podporuje operace importu a exportu dat. Tyto operace použijte pro práci s konfiguračními daty v hromadných a výměnných datech mezi úložištěm konfigurace aplikace a projektem kódu. Můžete například nastavit jedno úložiště konfigurace aplikace pro testování a další pro produkční prostředí. Můžete zkopírovat nastavení aplikace mezi nimi, abyste nemuseli zadávat data dvakrát.
 
-Tento článek poskytuje návod pro import a export dat pomocí konfigurace aplikace. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHubu, podívejte se na naši [akci GitHubu](https://aka.ms/azconfig-gha1).
+Tento článek poskytuje návod pro import a export dat pomocí konfigurace aplikace. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHubu, podívejte se na naši [akci GitHubu](./concept-github-action.md).
 
 ## <a name="import-data"></a>Import dat
 
@@ -28,7 +28,7 @@ Importujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
 1. Přejděte do úložiště konfigurace aplikace a v nabídce **operace** vyberte **Import/export** .
 
-1. Na kartě **Import** vyberte konfigurační soubor **zdrojové služby**  >  **Configuration File**.
+1. Na kartě **Import** vyberte konfigurační soubor **zdrojové služby**  >  .
 
 1. Vyberte možnost **jazyk** a vyberte požadovaný typ vstupu.
 
@@ -36,7 +36,7 @@ Importujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
     ![Importovat soubor](./media/import-file.png)
 
-1. Vyberte **oddělovač**a volitelně zadejte **předponu** , která se má použít pro importované názvy klíčů.
+1. Vyberte **oddělovač** a volitelně zadejte **předponu** , která se má použít pro importované názvy klíčů.
 
 1. Volitelně můžete vybrat **popisek**.
 
@@ -44,7 +44,7 @@ Importujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
     ![Import souboru byl dokončen.](./media/import-file-complete.png)
 
-## <a name="export-data"></a>Export dat
+## <a name="export-data"></a>Exportovat data
 
 Export vypíše konfigurační data uložená v konfiguraci aplikace do jiného cílového umístění. Použijte funkci exportu, například k uložení dat v úložišti konfigurace aplikace do souboru, který je vložený s vaším kódem aplikace během nasazení.
 
@@ -52,11 +52,11 @@ Exportujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
 1. Přejděte do úložiště konfigurace aplikace a vyberte **Import/export**.
 
-1. Na kartě **Export** vyberte **cílový**  >  **konfigurační soubor**služby.
+1. Na kartě **Export** vyberte **cílový**  >  **konfigurační soubor** služby.
 
 1. Volitelně můžete zadat **předponu** a vybrat **popisek** a časový okamžik pro export klíčů.
 
-1. Vyberte oddělovač **typů souborů**  >  **Separator**.
+1. Vyberte oddělovač **typů souborů**  >  .
 
 1. Pro dokončení exportu vyberte **použít** .
 
@@ -65,4 +65,4 @@ Exportujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)  
+> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)

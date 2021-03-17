@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 869def6b3187e10727a170377f2635fb3652f98b
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9aed5f282ff7b5d573a6f8511f2fc4dbfd27135d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797589"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371813"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Odstranění skupiny pomocí Azure Active Directory
 Skupinu Azure Active Directory (Azure AD) můžete odstranit z libovolného počtu důvodů, ale obvykle to bude být způsobeno tím, že:
@@ -36,7 +36,7 @@ Skupinu Azure Active Directory (Azure AD) můžete odstranit z libovolného poč
 
 3. Na stránce **skupiny – všechny skupiny** vyhledejte a vyberte skupinu, kterou chcete odstranit. Pro tyto kroky použijeme **zásady MDM – východ**.
 
-    ![Skupiny – stránka všechny skupiny, zvýrazněný název skupiny](media/active-directory-groups-delete-group/group-all-groups-screen.png)
+    ![Stránka Groups-All skupiny, název skupiny se zvýrazní](media/active-directory-groups-delete-group/group-all-groups-screen.png)
 
 4. Na stránce **Přehled zásad MDM – východ** a pak vyberte **Odstranit**.
 
@@ -48,4 +48,4 @@ Skupinu Azure Active Directory (Azure AD) můžete odstranit z libovolného poč
 
 - Pokud odstraníte skupinu omylem, můžete ji znovu vytvořit. Další informace najdete v tématu [Postup vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
 
-- Pokud omylem odstraníte skupinu Office 365, je možné ji obnovit. Další informace najdete v tématu [Obnovení odstraněné skupiny Office 365](../users-groups-roles/groups-restore-deleted.md).
+- Pokud odstraníte Microsoft 365 skupinu omylem, je možné, že ji budete moct obnovit. Další informace najdete v tématu [Obnovení odstraněné skupiny Office 365](../enterprise-users/groups-restore-deleted.md).

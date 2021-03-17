@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: vytvoření kanálu CI/CD pro Java – Azure DevOps Starter'
-description: DevOps Starter usnadňuje začátek práce v Azure. Pomůže vám v několika rychlých krocích spustit aplikaci v libovolné službě Azure.
+description: Naučte se používat zjednodušené prostředí Azure DevOps Starter k nastavení kanálu průběžné integrace (CI) a průběžného doručování (CD) pro vaši aplikaci Java v Azure Pipelines.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 738822d2dd4a67ea0b5c83c6c5f6c289e93766c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d76c4206ca39518c3a09d27ee470c05db108ae6d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327782"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551877"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Nastavení kanálu CI/CD pro aplikaci Java pomocí Azure DevOps Starter
 
@@ -35,7 +35,7 @@ DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novo
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -68,14 +68,14 @@ DevOps Starter vytvoří úložiště Git v Azure Repos nebo GitHubu. Chcete-li 
 
 1. Na levé straně řídicího panelu DevOps Starter vyberte odkaz pro svou hlavní větev. Tento odkaz otevře zobrazení nově vytvořeného úložiště Git.
 
-1. Pokud chcete zobrazit adresu URL klonování úložiště, vyberte v pravém horním rohu v prohlížeči možnost **klonovat** . Úložiště Git můžete naklonovat do svého oblíbeného integrovaného vývojového prostředí (IDE). V dalších několika krocích můžete k provedení změn kódu a jejich potvrzení přímo do hlavní větve použít webový prohlížeč.
+1. Pokud chcete zobrazit adresu URL klonování úložiště, vyberte v pravém horním rohu v prohlížeči možnost **klonovat** . Úložiště Git můžete naklonovat do svého oblíbeného integrovaného vývojového prostředí (IDE). V několika dalších krocích můžete pomocí webového prohlížeče vytvořit a potvrdit změny kódu přímo do hlavní větve.
 
 1. Na levé straně prohlížeče otevřete soubor **Src/Main/WebApp/index.html** .
 
-1. Vyberte **Upravit**a pak proveďte změnu textu.
+1. Vyberte **Upravit** a pak proveďte změnu textu.
     Změňte například text v některé ze značek div.
 
-1. Vyberte **Potvrdit**a potom změny uložte.
+1. Vyberte **Potvrdit** a potom změny uložte.
 
 1. V prohlížeči přejdete na řídicí panel DevOps Starter.   
 Nyní by se mělo zobrazit sestavení probíhá. Změny, které jste právě provedli, jsou automaticky vytvořeny a nasazeny prostřednictvím kanálu CI/CD.
@@ -94,7 +94,7 @@ Nyní by se mělo zobrazit sestavení probíhá. Změny, které jste právě pro
 
 1. V horní části kanálu buildu, vyberte název kanálu buildu.
 
-1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty**a pak vyberte **Uložit**.
+1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty** a pak vyberte **Uložit**.
 
 1. Pod názvem kanálu buildu vyberte **Historie**.   
 V podokně **Historie** se zobrazí záznam pro audit vašich nedávných změn pro sestavení.  Azure Pipelines sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
@@ -103,7 +103,7 @@ V podokně **Historie** se zobrazí záznam pro audit vašich nedávných změn 
 
 1. Vyberte **Uchování**. V závislosti na vašem scénáři můžete určit zásady, které zachovají nebo odeberou určitý počet sestavení.
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**.  
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**.  
  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1. Na levé straně vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje kanál, který definuje proces vydání.  
@@ -131,4 +131,4 @@ Pokud už je nepotřebujete, můžete Azure App Service a další související 
 Při konfiguraci procesu CI/CD byly automaticky vytvořeny kanály sestavení a vydání. Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Další informace o kanálu CI/CD najdete tady:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení procesu CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Přizpůsobení procesu CD](/azure/devops/pipelines/release/define-multistage-release-process)

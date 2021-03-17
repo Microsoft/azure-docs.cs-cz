@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2b2b35e21cf9c8650b9dcf95cbd199c56cc23783
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8a9149119bc754ff0715f2841925da01301faecd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691766"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751027"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Kontrola a úprava ukázkových souborů
 
@@ -26,12 +26,55 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 1. Upravit *operations.jsv* souboru:
  
     * Změňte odkaz na topologii grafu:
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-with-grpcExtension/2.0/topology.json"`
     * V části GraphInstanceSet upravte název topologie grafu tak, aby odpovídala hodnotě z předchozího odkazu:
-    * `"topologyName"` : `"InferencingWithGrpcExtension"`
+    * `"topologyName"` : `"EVROnMotionPlusGrpcExtension"`
     * V části GraphTopologyDelete upravte název:
-    * `"name"` : `"InferencingWithGrpcExtension"`
-    
+    * `"name"` : `"EVROnMotionPlusGrpcExtension"`
+
+> [!NOTE]
+> <p>
+> <details>
+> <summary>Rozbalte tuto položku a podívejte se, jak se uzel MediaGraphGrpcExtension implementuje v topologii.</summary>
+> <pre><code>
+> {
+>   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+>   "name": "grpcExtension",
+>   "endpoint": {
+>       "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+>       "url": "${grpcExtensionAddress}",
+>       "credentials": {
+>           "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+>           "username": "${grpcExtensionUserName}",
+>           "password": "${grpcExtensionPassword}"
+>       }
+>   },
+>   "dataTransfer": {
+>       "mode": "sharedMemory",
+>       "SharedMemorySizeMiB": "256"
+>   },
+>   "image": {
+>       "scale": {
+>           "mode": "${imageScaleMode}",
+>           "width": "${frameWidth}",
+>           "height": "${frameHeight}"
+>       },
+>       "format": {
+>           "@type": "#Microsoft.Media.MediaGraphImageFormatEncoded",
+>           "encoding": "${imageEncoding}",
+>           "quality": "${imageQuality}"
+>       }
+>   },
+>   "inputs": [
+>       {
+>           "nodeName": "motionDetection"
+>       }
+>   ]
+> }          
+> </code></pre>
+> </details>    
+> </p>
+
 ### <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Generování a nasazení manifestu nasazení IoT Edge
 
 1. Klikněte pravým tlačítkem myši na soubor *Src/Edge/* *deployment.grpcyolov3icpu.template.jsv* souboru a potom vyberte možnost **Generovat Manifest nasazení IoT Edge**.
@@ -44,6 +87,13 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
     V opačném případě v levém dolním rohu poblíž podokna **Azure IoT Hub** vyberte ikonu **Další akce** a pak vyberte **nastavit IoT Hub připojovací řetězec**. Můžete zkopírovat řetězec z *appsettings.jsv* souboru. Nebo pokud chcete mít jistotu, že jste nakonfigurovali správné centrum IoT v rámci Visual Studio Code, použijte [příkaz vybrat IoT Hub](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
 
     ![Připojovací řetězec IoT Hub](../../../media/quickstarts/iot-hub-connection-string-grpc.png)
+
+    > [!NOTE]
+    > Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
+
 1. Klikněte pravým tlačítkem na *Src/Edge/config/* *deployment.grpcyolov3icpu.amd64.jsna* a vyberte **vytvořit nasazení pro jedno zařízení**.
 
     ![vytvořit jedno zařízení nasazení](../../../media/quickstarts/create-deployment-single-device-grpc.png)
@@ -54,13 +104,13 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
     * Modul **rtspsim** , který simuluje Server RTSP a funguje jako zdroj živého informačního kanálu.
 
         > [!NOTE]
-        > Pokud místo toho, které jste zřídili pomocí našeho skriptu pro instalaci, používáte vlastní hraniční zařízení, přečtěte si příslušné hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
+        > Výše uvedené kroky předpokládají, že používáte virtuální počítač vytvořený instalačním skriptem. Pokud místo toho používáte vlastní hraniční zařízení, přečtěte si hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
 
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
     * Modul **lvaExtension** , což je model detekce objektu YOLOv3, který jako metodu komunikace používá gRPC a na obrázcích aplikuje počítačové zpracování obrazu a vrací více tříd typů objektů.
     
@@ -68,10 +118,24 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
 ### <a name="prepare-to-monitor-events"></a>Příprava na monitorování událostí
 
-Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Spustit sledování předdefinovaného koncového bodu události**. Tento krok potřebujete, pokud chcete monitorovat události IoT Hub v okně **výstup** Visual Studio Code.
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
 
-![Spustit monitorování](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
+1. Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Spustit sledování předdefinovaného koncového bodu události**. Tento krok potřebujete, pokud chcete monitorovat události IoT Hub v okně **výstup** Visual Studio Code.
+
+   ![Spustit monitorování](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
+
+    > [!NOTE]
+    > Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
 ### <a name="run-the-sample-program"></a>Spuštění ukázkového programu
 
 1. Chcete-li spustit relaci ladění, vyberte klávesu F5. V okně terminálu se zobrazí zprávy tištěné.
@@ -81,7 +145,7 @@ Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Sp
     -------------------------------Executing operation GraphTopologyList-----------------------  
     Request: GraphTopologyList  --------------------------------------------------
     {
-    "@apiVersion": "1.0"
+    "@apiVersion": "2.0"
     }
     ---------------  
     Response: GraphTopologyList - Status: 200  ---------------
@@ -100,10 +164,10 @@ Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Sp
     
     ```
     {
-      "@apiVersion": "1.0",
+      "@apiVersion": "2.0",
       "name": "Sample-Graph-1",
       "properties": {
-        "topologyName": "InferencingWithGrpcExtension",
+        "topologyName": "EVROnMotionPlusGrpcExtension",
         "description": "Sample graph description",
         "parameters": [
           {

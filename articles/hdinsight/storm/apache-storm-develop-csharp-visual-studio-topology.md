@@ -2,18 +2,16 @@
 title: Apache Storm topologie se sadou Visual Studio a C# – Azure HDInsight
 description: Naučte se vytvářet topologie v jazyce C#. Vytvořte topologii počtu slov v aplikaci Visual Studio pomocí nástrojů Hadoop pro Visual Studio.
 ROBOTS: NOINDEX
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
-ms.openlocfilehash: 3645b6752a49a0cf2544d170ac55a77cc8ae5e40
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082008"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929160"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj topologií v jazyce C# pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
 
@@ -58,30 +56,30 @@ using System;
 using System.IO;
 namespace ConsoleApplication2
 {
-   class Program
-   {
-       static void Main(string[] args)
-       {
-           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-           if (!string.IsNullOrEmpty(javaHome))
-           {
-               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
-               if (File.Exists(jarExe))
-               {
-                   Console.WriteLine("JAVA Is Installed properly");
-                    return;
-               }
-               else
-               {
-                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
-               }
-           }
-           else
-           {
-             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
-           }
-       }  
-   }
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+           if (!string.IsNullOrEmpty(javaHome))
+           {
+               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
+               if (File.Exists(jarExe))
+               {
+                   Console.WriteLine("JAVA Is Installed properly");
+                    return;
+               }
+               else
+               {
+                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
+               }
+           }
+           else
+           {
+             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
+           }
+       }  
+   }
 }
 ```
 
@@ -126,7 +124,7 @@ Vytvoření projektu topologie v jazyce C# v aplikaci Visual Studio:
 
 1. V okně **Start** vyberte **vytvořit nový projekt**.
 
-1. V okně **vytvořit nový projekt** přejděte na a vyberte možnost **aplikace**pro zaplavení a pak vyberte **Další**.
+1. V okně **vytvořit nový projekt** přejděte na a vyberte možnost **aplikace** pro zaplavení a pak vyberte **Další**.
 
 1. V okně **Konfigurovat nový projekt** zadejte **název projektu** *WORDCOUNT*, přejděte na nebo vytvořte cestu k adresáři **umístění** pro projekt a pak vyberte **vytvořit**.
 
@@ -150,9 +148,9 @@ Dále přidejte kód pro Spout, který se používá ke čtení dat v topologii 
 
    * `NextTuple`: Voláno pomocí metody], když má Spout povoleno generovat nové řazené kolekce členů.
 
-   * `Ack`(pouze transakční topologie): zpracovává potvrzovací potvrzení spuštěná jinými součástmi v topologii pro řazené kolekce členů odeslané z Spout. Potvrzením řazené kolekce členů umožní Spout zjistit, že byl úspěšně zpracován pomocí součástí podřízené součásti.
+   * `Ack` (pouze transakční topologie): zpracovává potvrzovací potvrzení spuštěná jinými součástmi v topologii pro řazené kolekce členů odeslané z Spout. Potvrzením řazené kolekce členů umožní Spout zjistit, že byl úspěšně zpracován pomocí součástí podřízené součásti.
 
-   * `Fail`(pouze transakční topologie): zpracovává řazené kolekce členů, které zpracovávají selhání jiných komponent v topologii. Implementace `Fail` metody umožňuje znovu vygenerovat řazenou kolekci členů, aby ji bylo možné znovu zpracovat.
+   * `Fail` (pouze transakční topologie): zpracovává řazené kolekce členů, které zpracovávají selhání jiných komponent v topologii. Implementace `Fail` metody umožňuje znovu vygenerovat řazenou kolekci členů, aby ji bylo možné znovu zpracovat.
 
 2. Obsah třídy nahraďte `Spout` následujícím textem:
 
@@ -220,7 +218,7 @@ Nyní v tomto příkladu vytvořte dvě šrouby:
 
 1. Odstraňte existující soubor *Bolt.cs* z projektu.
 
-2. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. V seznamu vyberte možnost **přešroubování**a jako název zadejte *Splitter.cs* . V kódu nového souboru změňte název oboru názvů na `WordCount` . Pak tento postup opakujte, abyste vytvořili druhý šroub s názvem *Counter.cs*.
+2. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. V seznamu vyberte možnost **přešroubování** a jako název zadejte *Splitter.cs* . V kódu nového souboru změňte název oboru názvů na `WordCount` . Pak tento postup opakujte, abyste vytvořili druhý šroub s názvem *Counter.cs*.
 
    * *Splitter.cs*: implementuje šroub, který rozdělí věty na jednotlivá slova a vygeneruje nový proud slov.
 
@@ -277,7 +275,7 @@ Nyní v tomto příkladu vytvořte dvě šrouby:
     }
     ```
 
-5. Otevřete *Counter.cs*a nahraďte obsah třídy následujícím kódem:
+5. Otevřete *Counter.cs* a nahraďte obsah třídy následujícím kódem:
 
     ```csharp
     private Context ctx;
@@ -341,7 +339,7 @@ Spout vygeneruje věty, které jsou distribuovány do instancí rozdělovače. �
 
 Vzhledem k tomu, že instance čítače obsahuje počet slov místně, chcete zajistit, aby určitá slova byla v toku ke stejné instanci šroubu čítače. Každá instance uchovává záznam o konkrétních slovech. Vzhledem k tomu, že rozdělovač oddělovače udržuje žádný stav, nezáleží na tom, která instance rozdělovače obdrží tuto větu.
 
-Otevřete *program.cs*. Důležitou metodou je `GetTopologyBuilder` , která se používá k definování topologie, která je odeslána do přeplavení. Nahraďte obsah `GetTopologyBuilder` následujícím kódem pro implementaci výše popsané topologie:
+Otevřete soubor *Program.cs*. Důležitou metodou je `GetTopologyBuilder` , která se používá k definování topologie, která je odeslána do přeplavení. Nahraďte obsah `GetTopologyBuilder` následujícím kódem pro implementaci výše popsané topologie:
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -409,7 +407,7 @@ Nyní jste připraveni odeslat topologii do clusteru HDInsight.
 
 1. Klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit k Microsoft Azure předplatnému...** a dokončete proces přihlašování.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Odeslat pro**zaplavení v HDInsight.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte **Odeslat pro** zaplavení v HDInsight.
 
 1. V dialogovém okně **Odeslat topologii** v rozevíracím seznamu cluster nenáročného **clusteru** zvolte své zaplavení na clusteru HDInsight a pak vyberte **Odeslat**. Můžete ověřit, zda je odeslání úspěšné, zobrazením podokna **výstup** .
 
@@ -418,7 +416,7 @@ Nyní jste připraveni odeslat topologii do clusteru HDInsight.
     ![Okno zobrazení topologie navýšení, cluster HDInsight, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
 
     > [!NOTE]  
-    > **Topologie** **přePrůzkumník serveru**můžete zobrazit také z. Rozbalte **Azure**  >  **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak zvolte **Zobrazit topologie**přeplavování.
+    > **Topologie** **přePrůzkumník serveru** můžete zobrazit také z. Rozbalte **Azure**  >  **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak zvolte **Zobrazit topologie** přeplavování.
 
     Chcete-li zobrazit informace o součástech v topologii, vyberte součást v diagramu.
 
@@ -481,9 +479,9 @@ Při vytváření a odesílání hybridní topologie Vezměte v úvahu následuj
 
 SCP.NET verze 0.9.4.203 zavádí novou třídu a metodu specificky pro práci s centrem událostí Spout (Java Spout, který čte z Event Hubs). Když vytváříte topologii, která používá centrum událostí Spout (například pomocí **ukázkové šablony čtečky EventHub** , použijte následující rozhraní API):
 
-* `EventHubSpoutConfig`Třída: vytvoří objekt, který obsahuje konfiguraci pro komponentu Spout.
+* `EventHubSpoutConfig` Třída: vytvoří objekt, který obsahuje konfiguraci pro komponentu Spout.
 
-* `TopologyBuilder.SetEventHubSpout`Metoda: přidá do topologie komponentu Spout centra událostí.
+* `TopologyBuilder.SetEventHubSpout` Metoda: přidá do topologie komponentu Spout centra událostí.
 
 > [!NOTE]  
 > `CustomizedInteropJSONSerializer`Ke serializaci dat vytvořených v Spout je nutné stále použít.
@@ -567,16 +565,16 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
 > [!WARNING]  
 > Místní testování funguje pouze pro základní topologie pouze pro C#. Místní testování nelze použít pro hybridní topologie nebo topologie, které používají více datových proudů.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **vlastnosti**. Ve vlastnostech projektu. Pak změňte **Typ výstupu** na **konzolovou aplikaci**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte **vlastnosti**. Ve vlastnostech projektu. Pak změňte **Typ výstupu** na **konzolovou aplikaci**.
 
    ![Aplikace HDInsight-zaplavení, vlastnosti projektu, typ výstupu](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > Nezapomeňte změnit **Typ výstupu** zpátky do **knihovny tříd** před nasazením topologie do clusteru.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. Vyberte **Třída**a jako název třídy zadejte *LocalTest.cs* . Nakonec vyberte **Přidat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. Vyberte **Třída** a jako název třídy zadejte *LocalTest.cs* . Nakonec vyberte **Přidat**.
 
-1. Otevřete *LocalTest.cs*a přidejte následující `using` příkaz v horní části:
+1. Otevřete *LocalTest.cs* a přidejte následující `using` příkaz v horní části:
 
     ```csharp
     using Microsoft.SCP;
@@ -663,7 +661,7 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
 
     Věnujte si chvilku, abyste si přečetli komentáře ke kódu. Tento kód používá `LocalContext` ke spuštění komponent ve vývojovém prostředí. Ukládá datový proud mezi součástmi do textových souborů na místním disku.
 
-1. Otevřete *program.cs*a do metody přidejte následující kód `Main` :
+1. Otevřete *program.cs* a do metody přidejte následující kód `Main` :
 
     ```csharp
     Console.WriteLine("Starting tests");
@@ -686,10 +684,10 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
 
 1. Uložte změny a pak vyberte **F5** nebo zvolte **ladění**  >  **Spustit ladění** a spusťte tak projekt. Mělo by se zobrazit okno konzoly a log status jako průběh testů. Když `Tests finished` se zobrazí, vyberte libovolnou klávesu pro zavření okna.
 
-1. Pomocí **Průzkumníka Windows** vyhledejte adresář, který obsahuje váš projekt. (Například: *C: \\ Users \\ \<your_user_name> \\ source \\ úložišť \\ WORDCOUNT \\ WORDCOUNT*.) Pak v tomto adresáři otevřete *přihrádku*a potom vyberte *ladit*. Měli byste vidět textové soubory, které byly vytvořeny při spuštění testů: *sentences.txt*, *counter.txt*a *splitter.txt*. Otevřete každý textový soubor a zkontrolujte data.
+1. Pomocí **Průzkumníka Windows** vyhledejte adresář, který obsahuje váš projekt. (Například: *C: \\ Users \\ \<your_user_name> \\ source \\ úložišť \\ WORDCOUNT \\ WORDCOUNT*.) Pak v tomto adresáři otevřete *přihrádku* a potom vyberte *ladit*. Měli byste vidět textové soubory, které byly vytvořeny při spuštění testů: *sentences.txt*, *counter.txt* a *splitter.txt*. Otevřete každý textový soubor a zkontrolujte data.
 
    > [!NOTE]  
-   > Řetězcová data v těchto souborech přetrvají jako pole desítkových hodnot. Například `[[97,103,111]]` v souboru **splitter.txt** představuje *před*slovem.
+   > Řetězcová data v těchto souborech přetrvají jako pole desítkových hodnot. Například `[[97,103,111]]` v souboru **splitter.txt** představuje *před* slovem.
 
 > [!NOTE]  
 > Nezapomeňte nastavit **typ projektu** zpět na **knihovnu tříd** ve vlastnostech projektu před nasazením na šíření v clusteru HDInsight.
@@ -709,9 +707,9 @@ Protokolované informace můžete zobrazit z **protokolu služby Hadoop**, kter�
 
 Chcete-li zobrazit chyby, ke kterým došlo ve spuštěné topologii, použijte následující postup:
 
-1. V **Průzkumník serveru**klikněte pravým tlačítkem na cluster se systémem HDInsight a vyberte **Zobrazit topologie**přeplavení.
+1. V **Průzkumník serveru** klikněte pravým tlačítkem na cluster se systémem HDInsight a vyberte **Zobrazit topologie** přeplavení.
 
-   Sloupec **Poslední chyba** pro **Spout** a **šrouby**obsahuje informace o Poslední chybě.
+   Sloupec **Poslední chyba** pro **Spout** a **šrouby** obsahuje informace o Poslední chybě.
 
 2. Vyberte **ID Spout** nebo **ID šroubu** pro komponentu, u které je uvedená chyba. Stránka Podrobnosti obsahuje další informace o chybě v části **chyby** v dolní části stránky.
 

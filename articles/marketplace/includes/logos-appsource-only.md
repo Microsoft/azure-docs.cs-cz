@@ -7,13 +7,13 @@ ms.topic: include
 author: dannyevers
 ms.author: mingshen
 ms.reviewer: trkeya
-ms.date: 08/07/2020
-ms.openlocfilehash: 65fde879aa29ed1f93de4dd5c8ddccbfddccee38
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/18/2020
+ms.openlocfilehash: 90fe06e352a012f4774ba86fce9aed170379820a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030745"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88815401"
 ---
--   Malé logo (48 x 48 pixelů) se zobrazí na stránce Microsoft AppSource hlavní stránka a výsledky hledání. 
--   Velké logo (mezi 216 x 216 a 350 × 350 pixelů) se zobrazí na stránce se seznamem nabídek v Microsoft AppSource.
+- Velké logo se zobrazí na stránce se seznamem nabídek v Microsoft AppSource.
+- Malé logo (volitelné) se zobrazí na stránce Microsoft AppSource hlavní stránka a výsledky hledání.

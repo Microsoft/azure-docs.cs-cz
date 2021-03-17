@@ -7,14 +7,14 @@ ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-- devx-track-javascript
+- devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 31e7e7d6785e8fd52f4c76171f6ca9d7f5c8383c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1c327fc7fc067948b5022f989e6c86f99573bd1a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501317"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100180"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure
 
@@ -24,17 +24,17 @@ V tomto rychlém startu použijete Azure CLI k nasazení izolovaného kontejneru
 
 ![Zobrazení aplikace nasazené do Azure Container Instances v prohlížeči][aci-app-browser]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet][azure-account].
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-K dokončení tohoto rychlého startu můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Pokud byste ho chtěli používat místně, doporučuje se verze 2.0.55 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+- V tomto rychlém startu se vyžaduje verze Azure CLI 2.0.55 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Instance kontejnerů Azure, stejně jako všechny prostředky Azure, se musí nasadit do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
 
-Nejprve pomocí následujícího příkazu [az group create][az-group-create]vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus*:
+Nejprve pomocí následujícího příkazu [az group create][az-group-create]vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +66,7 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Pokud `ProvisioningState` je kontejner **úspěšný**, v prohlížeči přejdete na jeho plně kvalifikovaný název domény. Pokud zobrazená webová stránka vypadá přibližně takto, blahopřejeme! Úspěšně jste nasadili aplikaci spuštěnou v kontejneru Dockeru do Azure.
+Pokud `ProvisioningState` je kontejner **úspěšný** , v prohlížeči přejdete na jeho plně kvalifikovaný název domény. Pokud zobrazená webová stránka vypadá přibližně takto, blahopřejeme! Úspěšně jste nasadili aplikaci spuštěnou v kontejneru Dockeru do Azure.
 
 ![Zobrazení aplikace nasazené do Azure Container Instances v prohlížeči][aci-app-browser]
 

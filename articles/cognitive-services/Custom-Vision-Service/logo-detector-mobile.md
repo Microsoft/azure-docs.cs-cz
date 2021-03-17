@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 5dd5cd1ac0463c6c07496e4ea49edd08178a5a54
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 76e7b061670f603007cefd6d7aed503e0e0d3d6b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834384"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941779"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: rozpoznání loga služeb Azure v obrázcích fotoaparátu
 
@@ -28,14 +29,14 @@ V tomto kurzu se dozvíte, jak:
 > - Připojte svoji aplikaci k Azure Počítačové zpracování obrazu a Custom Vision.
 > - Vytvoření účtu instančního objektu Azure pro nasazení služeb Azure z aplikace
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
-- Úlohy Xamarin pro Visual Studio (viz [instalace Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
+- Úlohy Xamarin pro Visual Studio (viz [instalace Xamarin](/xamarin/cross-platform/get-started/installation/windows))
 - Emulátor pro iOS nebo Android pro Visual Studio
-- Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (volitelné)
+- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows) (volitelné)
 
 ## <a name="get-the-source-code"></a>Získání zdrojového kódu
 
@@ -93,7 +94,7 @@ Pokud chcete získat další informace o tom, jak aplikace zpracovává Tato dat
 
 Custom Vision část tohoto kurzu jste dokončili. Pokud chcete aplikaci spustit, bude potřeba integrovat i službu Počítačové zpracování obrazu. Aplikace používá funkci rozpoznávání textu Počítačové zpracování obrazu k doplnění procesu zjišťování loga. Logo Azure může rozpoznat jeho vzhled *nebo* text, který se v blízkosti něj tiskne. Na rozdíl od Custom Vision modelů je Počítačové zpracování obrazu předvedený, aby na obrázcích a videích prováděl určité operace.
 
-Přihlaste se k odběru služby Počítačové zpracování obrazu, abyste získali adresu URL klíče a koncového bodu. Nápovědu k tomuto kroku najdete v tématu [Jak získat klíče předplatného](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
+Přihlaste se k odběru služby Počítačové zpracování obrazu, abyste získali adresu URL klíče a koncového bodu. Nápovědu k tomuto kroku najdete v tématu [Jak získat klíče předplatného](../cognitive-services-apis-create-account.md?tabs=singleservice%2Cwindows).
 
 ![Služba Počítačové zpracování obrazu v Azure Portal s vybranou nabídkou pro rychlý Start. Odkaz na klíče je popsaný, jak je adresa URL koncového bodu rozhraní API.](media/azure-logo-tutorial/comvis-keys.png)
 
@@ -103,7 +104,7 @@ Potom otevřete soubor *Source\VisualProvision\AppSettings.cs* a naplňte `Compu
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-K nasazení služeb do předplatného Azure vyžaduje aplikace účet instančního objektu Azure. Instanční objekt umožňuje delegovat specifická oprávnění k aplikaci pomocí řízení přístupu na základě rolí. Další informace najdete v tématu [Průvodce instančními objekty služby](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
+K nasazení služeb do předplatného Azure vyžaduje aplikace účet instančního objektu Azure. Instanční objekt umožňuje delegovat specifická oprávnění k aplikaci pomocí řízení přístupu na základě role v Azure. Další informace najdete v tématu [Průvodce instančními objekty služby](/azure-stack/operator/azure-stack-create-service-principals).
 
 Instanční objekt můžete vytvořit pomocí Azure Cloud Shell nebo rozhraní příkazového řádku Azure CLI, jak je znázorněno zde. Začněte tím, že se přihlásíte a vyberete předplatné, které chcete použít.
 

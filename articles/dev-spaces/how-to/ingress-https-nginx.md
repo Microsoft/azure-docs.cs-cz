@@ -5,19 +5,21 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Naučte se nakonfigurovat Azure Dev Spaces k použití vlastního kontroleru NGINX příchozího přenosu dat a konfiguraci HTTPS pomocí tohoto kontroleru příchozího přenosu dat.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 199b077f20f396919d26b69d3fea422a8d9b4358
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: c5ef14074c6e601bcd8a23ce62921d67b01ba3bb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212491"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198128"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Použití vlastního kontroleru NGINX příchozího přenosu dat a konfigurace HTTPS
 
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
+
 V tomto článku se dozvíte, jak nakonfigurovat Azure Dev Spaces, aby používaly vlastní kontroler příchozího přenosu dat (NGINX). Tento článek také ukazuje, jak nakonfigurovat tento vlastní kontroler příchozích dat na používání protokolu HTTPS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet][azure-account-create].
 * [Nainstalované rozhraní Azure CLI][az-cli]
@@ -99,7 +101,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 
 Otevřete [hodnoty. yaml][values-yaml] a proveďte následující aktualizace:
 * Nahradí všechny výskyty *<REPLACE_ME_WITH_HOST_SUFFIX>* pomocí *Nginx. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN*. 
-* Nahraďte *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: Nginx # Custom*příchozí příchozí přenos dat. 
+* Nahraďte *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: Nginx # Custom* příchozí příchozí přenos dat. 
 
 Níže je příklad aktualizovaného `values.yaml` souboru:
 
@@ -323,10 +325,10 @@ Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
 > [Jak Azure Dev Spaces funguje](../how-dev-spaces-works.md)
 
 
-[az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[az-cli]: /cli/azure/install-azure-cli
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-add-record
+[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free

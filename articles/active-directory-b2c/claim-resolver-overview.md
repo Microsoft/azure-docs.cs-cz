@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b69492dc41786a677043df5e77c9d12aa26893f6
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201171"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119769"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
 Překladače deklarací identity v Azure Active Directory B2C (Azure AD B2C) [vlastní zásady](custom-policy-overview.md) poskytují kontextové informace o žádosti o autorizaci, jako je název zásady, ID korelace požadavku, jazyk uživatelského rozhraní a další.
 
-Chcete-li použít překladač deklarací identity ve vstupní nebo výstupní deklaraci identity, definujte v rámci elementu [ClaimsSchema](claimsschema.md) řetězec **ClaimType**a pak nastavte hodnotu **DefaultValue** na překladač deklarací identity v elementu Input nebo Output. Azure AD B2C přečte hodnotu překladače deklarací identity a použije hodnotu v technickém profilu.
+Chcete-li použít překladač deklarací identity ve vstupní nebo výstupní deklaraci identity, definujte v rámci elementu [ClaimsSchema](claimsschema.md) řetězec **ClaimType** a pak nastavte hodnotu **DefaultValue** na překladač deklarací identity v elementu Input nebo Output. Azure AD B2C přečte hodnotu překladače deklarací identity a použije hodnotu v technickém profilu.
 
 V následujícím příkladu je typ deklarace s názvem `correlationId` definován s **datovým** typem `string` .
 
@@ -51,9 +51,9 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Culture: LanguageGroup} | Dva číslice kódu ISO pro jazyk | en |
 | {Culture: LCID}   | Identifikátor LCID kódu jazyka. | 1033 |
 | {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | USA |
-| {Culture: RFC5646} | Kód jazyka RFC5646 | cs-CZ |
+| {Culture: RFC5646} | Kód jazyka RFC5646 | en-US |
 
-### <a name="policy"></a>Zásada
+### <a name="policy"></a>Zásady
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
@@ -66,16 +66,16 @@ Následující části uvádějí dostupné překladače deklarací identity.
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |`acr_values`Parametr řetězce dotazu. | Není k dispozici |
+| {OIDC: AuthenticationContextReferences} |`acr_values`Parametr řetězce dotazu. | – |
 | {OIDC: ClientId} |`client_id`Parametr řetězce dotazu. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |`domain_hint`Parametr řetězce dotazu. | facebook.com |
 | {OIDC: LoginHint} |  `login_hint`Parametr řetězce dotazu. | someone@contoso.com |
-| {OIDC: MaxAge} | Hodnota `max_age` | Není k dispozici |
+| {OIDC: MaxAge} | Hodnota `max_age` | – |
 | {OIDC: nonce} |`Nonce`Parametr řetězce dotazu. | defaultNonce |
 | {OIDC: heslo}| Heslo uživatele [toku přihlašovacích údajů pro heslo vlastníka prostředku](ropc-custom.md) .| Heslo1| 
 | {OIDC: prompt} | `prompt`Parametr řetězce dotazu. | přihlášení |
 | {OIDC: RedirectUri} |`redirect_uri`Parametr řetězce dotazu. | https://jwt.ms |
-| {OIDC: Resource} |`resource`Parametr řetězce dotazu. | Není k dispozici |
+| {OIDC: Resource} |`resource`Parametr řetězce dotazu. | – |
 | {OIDC: Scope} |`scope`Parametr řetězce dotazu. | OpenID |
 | {OIDC: username}| Uživatelské jméno uživatele [toku přihlašovacích údajů pro heslo vlastníka prostředku](ropc-custom.md) .| emily@contoso.com| 
 
@@ -86,11 +86,12 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Context: BuildNumber} | Verze architektury rozhraní identity Experience Framework (číslo buildu).  | 1.0.507.0 |
 | {Context: ID korelace} | ID korelace.  | 00000000-0000-0000-0000-000000000000 |
 | {Context: DateTimeInUtc} |Datum a čas ve standardu UTC.  | 10/10/2018 12:00:00 ODP. |
-| {Context: DeploymentMode} |Režim nasazení zásad.  | Produkce |
+| {Context: DeploymentMode} |Režim nasazení zásad.  | Výroba |
+| {Context: název_hostitele} | Název hostitele aktuálního požadavku.  | contoso.b2clogin.com |
 | {Context: IPAddress} | IP adresa uživatele. | 11.111.111.11 |
-| {Context: políčko zůstat přihlášeni} | Určuje, zda je zaškrtnuto políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . |  true |
+| {Context: políčko zůstat přihlášeni} | Určuje, zda je zaškrtnuto políčko [zůstat přihlášeni](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) . |  true |
 
-### <a name="claims"></a>Deklarace identity 
+### <a name="claims"></a>Deklarace identit 
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
@@ -106,13 +107,14 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {OAUTH-KV: campaignId} | Parametr řetězce dotazu. | Hawaii |
 | {OAUTH-KV: app_session} | Parametr řetězce dotazu. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr řetězce dotazu. | 1 234 |
-| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není k dispozici |
+| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | – |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Přístupový token | Není k dispozici |
+| {OAuth2: access_token} | Přístupový token | – |
+| {OAuth2: refresh_token} | Obnovovací token | – |
 
 
 ### <a name="saml"></a>SAML
@@ -122,10 +124,11 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {SAML: AuthnContextClassReferences} | `AuthnContextClassRef`Hodnota elementu, od požadavku SAML. | urn: Oasis: names: TC: SAML: 2.0: AC: třídy: PasswordProtectedTransport |
 | {SAML: NameIdPolicyFormat} | `Format`Atribut z `NameIDPolicy` prvku požadavku SAML. | urn: Oasis: names: TC: SAML: 1.1: NameId-Format: emailAddress |
 | {SAML: Issuer} |  `Issuer`Hodnota prvku SAML požadavku SAML.| `https://contoso.com` |
-| {SAML: AllowCreate} | `AllowCreate`Hodnota atributu z `NameIDPolicy` prvku požadavku SAML. | True |
-| {SAML: ForceAuthn} | `ForceAuthN`Hodnota atributu z `AuthnRequest` prvku požadavku SAML. | True |
+| {SAML: AllowCreate} | `AllowCreate`Hodnota atributu z `NameIDPolicy` prvku požadavku SAML. | Ano |
+| {SAML: ForceAuthn} | `ForceAuthN`Hodnota atributu z `AuthnRequest` prvku požadavku SAML. | Ano |
 | {SAML: ProviderName} | `ProviderName`Hodnota atributu z `AuthnRequest` prvku požadavku SAML.| Contoso.com |
 | {SAML: RelayState} | `RelayState`Parametr řetězce dotazu.| 
+| {SAML: Subject} | `Subject`Z prvku NameId žádosti AUTHN SAML.| 
 
 ## <a name="using-claim-resolvers"></a>Použití překladačů deklarací identity
 
@@ -139,7 +142,7 @@ Překladače deklarací identity můžete použít s následujícími prvky:
 |[OpenID Connect](openid-connect-technical-profile.md) Technical Profile| `InputClaim`, `OutputClaim`| 1, 2|
 |Technický profil [transformace deklarací identity](claims-transformation-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
 |Technický profil [poskytovatele RESTful](restful-technical-profile.md)| `InputClaim`| 1, 2|
-|Technický profil [zprostředkovatele identity SAML](saml-identity-provider-technical-profile.md)| `OutputClaim`| 1, 2|
+|Technický profil [zprostředkovatele identity SAML](identity-provider-generic-saml.md)| `OutputClaim`| 1, 2|
 |Technický profil [s vlastním uplatněním](self-asserted-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
@@ -183,7 +186,7 @@ Pomocí překladačů deklarací identity můžete předem naplnit přihlašovac
 
 ### <a name="dynamic-ui-customization"></a>Dynamické přizpůsobení uživatelského rozhraní
 
-Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML pro dynamické vykreslování obsahu stránky. Tato funkce například umožňuje upravit obrázek pozadí na stránce Azure AD B2C přihlašovací nebo přihlašovací stránku na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete v tématu [dynamická konfigurace uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri). Můžete také lokalizovat stránku HTML na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
+Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML pro dynamické vykreslování obsahu stránky. Tato funkce například umožňuje upravit obrázek pozadí na stránce Azure AD B2C přihlašovací nebo přihlašovací stránku na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete v tématu [dynamická konfigurace uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri). Můžete také lokalizovat stránku HTML na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
 
 Následující příklad předává parametr řetězce dotazu s názvem **campaignId** s hodnotou `Hawaii` , kód **jazyka** `en-US` a **aplikace** představující ID klienta:
 

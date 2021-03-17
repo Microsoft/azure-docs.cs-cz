@@ -8,25 +8,26 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417935"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536075"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Hromadný import a export identit zařízení služby IoT Hub
 
 Každé centrum IoT má registr identit, který můžete použít k vytvoření prostředků pro jednotlivé zařízení ve službě. Registr identit také umožňuje řídit přístup k koncovým bodům orientovaným na zařízení. Tento článek popisuje, jak hromadně importovat a exportovat identity zařízení do registru identit a z něj. Pokud chcete zobrazit pracovní ukázku v jazyce C# a zjistit, jak můžete tuto schopnost využít při klonování rozbočovače do jiné oblasti, přečtěte si téma [postup klonování IoT Hub](iot-hub-how-to-clone.md).
 
 > [!NOTE]
-> IoT Hub se nedávno přidala podpora virtuální sítě v omezeném počtu oblastí. Tato funkce zabezpečuje operace importu a exportu a eliminuje nutnost předávání klíčů pro ověřování.  Zpočátku je podpora virtuální sítě dostupná jenom v těchto oblastech: *WestUS2*, *EastUS*a *SouthCentralUS*. Další informace o podpoře virtuálních sítí a voláních rozhraní API k implementaci najdete v tématu [Podpora pro virtuální sítě IoT Hub](virtual-network-support.md).
+> IoT Hub se nedávno přidala podpora virtuální sítě v omezeném počtu oblastí. Tato funkce zabezpečuje operace importu a exportu a eliminuje nutnost předávání klíčů pro ověřování.  Zpočátku je podpora virtuální sítě dostupná jenom v těchto oblastech: *WestUS2* , *EastUS* a *SouthCentralUS* . Další informace o podpoře virtuálních sítí a voláních rozhraní API k implementaci najdete v tématu [Podpora pro virtuální sítě IoT Hub](virtual-network-support.md).
 
 Operace importu a exportu se provádějí v kontextu *úloh* , které umožňují provádět operace hromadné služby ve službě IoT Hub.
 
 Třída **RegistryManager** zahrnuje metody **ExportDevicesAsync** a **ImportDevicesAsync** , které používají architekturu **úloh** . Tyto metody umožňují exportovat, importovat a synchronizovat celý registr identit služby IoT Hub.
 
-Toto téma popisuje použití třídy **RegistryManager** a systému **úloh** k provádění hromadných importů a exportů zařízení do registru identit služby IoT Hub a z něj. Azure IoT Hub Device Provisioning Service můžete použít také k povolení nulového dotykového zřizování pro jedno nebo více rozbočovačů IoT bez nutnosti zásahu člověka. Další informace najdete v dokumentaci ke [službě zřizování](/azure/iot-dps).
+Toto téma popisuje použití třídy **RegistryManager** a systému **úloh** k provádění hromadných importů a exportů zařízení do registru identit služby IoT Hub a z něj. Azure IoT Hub Device Provisioning Service můžete použít také k povolení nulového dotykového zřizování pro jedno nebo více rozbočovačů IoT bez nutnosti zásahu člověka. Další informace najdete v dokumentaci ke [službě zřizování](../iot-dps/index.yml).
 
 ## <a name="what-are-jobs"></a>Co jsou úlohy?
 
@@ -60,7 +61,7 @@ Pokud chcete najít připojovací řetězec pro Centrum IoT, v Azure Portal:
 
 - Přejděte do svého centra IoT.
 
-- Vyberte **zásady sdíleného přístupu**.
+- Vyberte **zásady sdíleného přístupu** .
 
 - Vyberte zásadu, která vezme v úvahu potřebná oprávnění.
 
@@ -108,7 +109,7 @@ Metoda **ExportDevicesAsync** vyžaduje dva parametry:
      | SharedAccessBlobPermissions.Delete
    ```
 
-* *Logická hodnota* , která označuje, zda chcete vyloučit ověřovací klíče z dat exportu. Pokud je **hodnota false**, jsou ve výstupu exportu zahrnuty ověřovací klíče. V opačném případě jsou klíče exportovány jako **hodnota null**.
+* *Logická hodnota* , která označuje, zda chcete vyloučit ověřovací klíče z dat exportu. Pokud je **hodnota false** , jsou ve výstupu exportu zahrnuty ověřovací klíče. V opačném případě jsou klíče exportovány jako **hodnota null** .
 
 Následující fragment kódu jazyka C# ukazuje, jak zahájit úlohu exportu, která zahrnuje klíče pro ověřování zařízení v datech exportu a pak dotaz na dokončení:
 
@@ -133,7 +134,7 @@ while(true)
 }
 ```
 
-Úloha ukládá svůj výstup do poskytnutého kontejneru objektů BLOB jako objekt blob bloku s názvem **devices.txt**. Výstupní data obsahují data serializovaných zařízení JSON s jedním zařízením na jeden řádek.
+Úloha ukládá svůj výstup do poskytnutého kontejneru objektů BLOB jako objekt blob bloku s názvem **devices.txt** . Výstupní data obsahují data serializovaných zařízení JSON s jedním zařízením na jeden řádek.
 
 Následující příklad ukazuje výstupní data:
 
@@ -225,7 +226,7 @@ Metoda **ImportDevicesAsync** přijímá dva parametry:
    SharedAccessBlobPermissions.Read
    ```
 
-* *Řetězec* , který obsahuje identifikátor URI [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) kontejneru objektů blob, který má být použit jako *výstup* z úlohy. Úloha vytvoří objekt blob bloku v tomto kontejneru, do kterého budou uloženy informace o chybě z dokončené **úlohy**importu. Token SAS musí zahrnovat tato oprávnění:
+* *Řetězec* , který obsahuje identifikátor URI [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) kontejneru objektů blob, který má být použit jako *výstup* z úlohy. Úloha vytvoří objekt blob bloku v tomto kontejneru, do kterého budou uloženy informace o chybě z dokončené **úlohy** importu. Token SAS musí zahrnovat tato oprávnění:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
@@ -261,15 +262,15 @@ Pokud soubor importu obsahuje dvojitá metadata, tato metadata přepisují exist
 
 Použijte volitelnou vlastnost **importMode** v části Import dat serializace pro každé zařízení a řízení procesu importu pro jednotlivá zařízení. Vlastnost **importMode** má následující možnosti:
 
-| importMode | Description |
+| importMode | Popis |
 | --- | --- |
-| **createOrUpdate** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, stávající informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
-| **vytvořeny** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, zapíše se do souboru protokolu chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
-| **update** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
-| **updateIfMatchETag** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. |
-| **createOrUpdateIfMatchETag** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
-| **delete** |Pokud zařízení se zadaným **ID**už existuje, odstraní se bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
-| **deleteIfMatchETag** |Pokud zařízení se zadaným **ID**už existuje, odstraní se jenom v případě, že se vyskytuje shoda **ETag** . Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. <br/>Pokud se značka ETag neshoduje, do souboru protokolu se zapíše chyba. |
+| **createOrUpdate** |Pokud zařízení se zadaným **ID** neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, stávající informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
+| **vytvořeny** |Pokud zařízení se zadaným **ID** neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, zapíše se do souboru protokolu chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
+| **update** |Pokud zařízení se zadaným **ID** už existuje, existující informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
+| **updateIfMatchETag** |Pokud zařízení se zadaným **ID** už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. |
+| **createOrUpdateIfMatchETag** |Pokud zařízení se zadaným **ID** neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
+| **delete** |Pokud zařízení se zadaným **ID** už existuje, odstraní se bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
+| **deleteIfMatchETag** |Pokud zařízení se zadaným **ID** už existuje, odstraní se jenom v případě, že se vyskytuje shoda **ETag** . Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. <br/>Pokud se značka ETag neshoduje, do souboru protokolu se zapíše chyba. |
 
 > [!NOTE]
 > Pokud data serializace explicitně nedefinují příznak **importMode** pro zařízení, výchozí hodnota je **createOrUpdate** během operace importu.
@@ -398,7 +399,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>Získat identifikátor URI SAS kontejneru
 
-Následující ukázka kódu ukazuje, jak vygenerovat [identifikátor URI SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) s oprávněním ke čtení, zápisu a odstranění pro kontejner objektů BLOB:
+Následující ukázka kódu ukazuje, jak vygenerovat [identifikátor URI SAS](../storage/common/storage-sas-overview.md) s oprávněním ke čtení, zápisu a odstranění pro kontejner objektů BLOB:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -431,14 +432,13 @@ V tomto článku jste zjistili, jak provádět hromadné operace s registrem ide
 
 Další informace o správě IoT Hub Azure najdete v následujících článcích:
 
-* [IoT Hub metriky](iot-hub-metrics.md)
-* [Protokoly IoT Hub](iot-hub-monitor-resource-health.md)
+* [IoT Hub monitorování](monitor-iot-hub.md)
 
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
 * [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/quickstart-linux.md)
 
 Pokud chcete prozkoumat použití IoT Hub Device Provisioning Service k povolení nulového dotykového zřizování za běhu, přečtěte si téma: 
 
-* [Služba Azure IoT Hub Device Provisioning](/azure/iot-dps)
+* [Služba Azure IoT Hub Device Provisioning](../iot-dps/index.yml)

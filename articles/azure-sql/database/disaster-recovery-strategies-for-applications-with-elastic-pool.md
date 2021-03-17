@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8ba9edc129cc169ccc146c7bc314d8f5ffe573b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84050405"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91357778"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Strategie zotavení po havárii pro aplikace používající Azure SQL Database elastické fondy
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Jsem vyspělou SaaSou aplikací s nabídkami vrstvených služeb a různými SLA
 
 Pro podporu tohoto scénáře oddělte zkušební klienty od placených tenantů jejich vložením do samostatných elastických fondů. Zákazníci se zkušební verzí mají nižší eDTU nebo virtuální jádra na tenanta a nižší SLA s delší dobou obnovení. Zákazníci s platbami jsou ve fondu s vyššími eDTU nebo virtuální jádra na tenanta a vyšší smlouvou SLA. Aby bylo zaručeno nejnižší čas obnovení, jsou geograficky replikovány i databáze tenantů platící zákazníky. Tato konfigurace je znázorněna v dalším diagramu.
 
-![Obrázek 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![Diagram znázorňuje primární oblast a oblast D R, která využívá geografickou replikaci mezi databází správy a primárním fondem zákazníků a sekundárním fondem bez replikace pro fond zkušebních verzí pro zákazníky.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
 Stejně jako v prvním scénáři jsou databáze správy poměrně aktivní, takže pro ni používáte jednu geograficky replikovanou databázi (1). Tím zajistíte předvídatelný výkon pro nové předplatné zákazníků, aktualizace profilu a další operace správy. Oblast, ve které jsou umístěny základní části databází správy, je primární oblastí a oblastí, ve které jsou umístěny sekundární databáze správy, je oblast DR.
 
@@ -86,7 +86,7 @@ Databáze tenantů platící zákazníky mají aktivní databáze v "placeném" 
 
 Pokud dojde k výpadku v primární oblasti, kroky obnovení pro uvedení vaší aplikace do režimu online jsou znázorněny v dalším diagramu:
 
-![Obrázek 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![Diagram znázorňuje výpadek primární oblasti, s převzetím služeb při selhání do databáze pro správu, placeného sekundárního fondu zákazníka a vytváření a obnovování pro zákazníky se zkušební verzí.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * Okamžitě převezme služby databáze pro správu do oblasti DR (3).
 * Změňte připojovací řetězec aplikace tak, aby odkazoval na oblast zotavení po havárii. Všechny nové účty a databáze tenantů se teď vytvoří v oblasti zotavení po havárii. Stávající zákazníci zkušební verze uvidí svá data dočasně nedostupné.
@@ -99,7 +99,7 @@ V tomto okamžiku je aplikace znovu online v oblasti zotavení po havárii. Vši
 
 Když Azure obnoví primární oblast *po* obnovení aplikace v oblasti zotavení po havárii, můžete pokračovat v používání aplikace v této oblasti nebo se můžete rozhodnout, že navrácení služeb po obnovení do primární oblasti. Pokud je primární oblast obnovena *před* dokončením procesu převzetí služeb při selhání, zvažte možnost okamžitého navrácení služeb po obnovení. Navrácení služeb po obnovení provede kroky popsané v následujícím diagramu:
 
-![Obrázek 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![Diagram zobrazuje kroky navrácení služeb po obnovení, které se implementují po obnovení primární oblasti.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
 * Zruší všechny zbývající požadavky na geografickou obnovu.
 * Převzetí služeb při selhání v databázích správy (8). Po obnovení oblasti se stará primární primární automaticky stane sekundární. Nově se teď znovu vytvoří jako primární.  
@@ -128,7 +128,7 @@ Pro podporu tohoto scénáře použijte tři samostatné elastické fondy. Zřiz
 
 Aby bylo zaručeno nejnižší čas obnovení během výpadků, jsou databáze tenantů platící zákazníky geograficky replikovány pomocí 50% primárních databází v každé ze dvou oblastí. Podobně každá oblast má 50% sekundárních databází. Tímto způsobem platí, že pokud je oblast offline, bude ovlivněná jenom 50% databází placených zákazníků a převezme se služby při selhání. Ostatní databáze zůstávají beze změn. Tato konfigurace je znázorněna v následujícím diagramu:
 
-![Obrázek 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![Diagram zobrazuje primární oblast s názvem oblast A a sekundární oblast s názvem region B, která využívá geografickou replikaci mezi databází správy a primárním fondem zákazníků a sekundárním fondem bez replikace pro tento fond zákazníků zkušební verze.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
 Stejně jako v předchozích scénářích jsou databáze pro správu poměrně aktivní, takže je nakonfigurujte jako jednu geograficky replikovanou databázi (1). Tím zajistíte předvídatelný výkon nových zákaznických předplatných, aktualizací profilů a dalších operací správy. Oblast A je primární oblastí pro databáze pro správu a oblast B se používá pro obnovení databází správy.
 
@@ -136,7 +136,7 @@ Databáze tenantů placené zákazníky jsou taky geograficky replikované, ale 
 
 Další diagram znázorňuje kroky obnovení, které je potřeba provést, pokud dojde k výpadku v oblasti A.
 
-![Obrázek 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![Diagram znázorňuje výpadek primární oblasti, s převzetím služeb při selhání do databáze pro správu, placeného sekundárního fondu zákazníka a vytváření a obnovování pro zákazníky zkušební verze v oblasti B.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * Okamžitě převezme služby databáze pro správu do oblasti B (3).
 * Změňte připojovací řetězec aplikace tak, aby odkazoval na databáze pro správu v oblasti B. Upravte databáze pro správu, abyste se ujistili, že jsou vytvořeny nové účty a databáze tenantů v oblasti B a zda jsou také nalezeny existující databáze tenantů. Stávající zákazníci zkušební verze uvidí svá data dočasně nedostupné.
@@ -152,7 +152,7 @@ V tomto okamžiku je vaše aplikace zase online v oblasti B. Všichni zákazníc
 
 Když se obnoví oblast A, musíte se rozhodnout, jestli chcete použít oblast B pro zákazníky zkušební verze nebo navrácení služeb po obnovení na používání fondu zákazníků zkušební verze v oblasti A. Jedním z kritérií může být% zkušebních databází tenantů, které byly od obnovení změněny. Bez ohledu na toto rozhodnutí je potřeba znovu vyvážit placené klienty mezi dvěma fondy. Další diagram znázorňuje proces, když se databáze tenantů zkušební verze vrátí do oblasti A.  
 
-![Obrázek 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![Diagram zobrazuje kroky navrácení služeb po obnovení, které se implementují po obnovení oblasti A.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
 * Zruší všechny zbývající požadavky na geografickou obnovu na vyzkoušení fondu zotavení po havárii.
 * Převzetí služeb při selhání v databázi pro správu (8). Po obnovení oblasti se stará primární databáze automaticky stala sekundární. Nově se teď znovu vytvoří jako primární.  
@@ -179,7 +179,7 @@ Hlavní kompromisy jsou:
 * Vyžaduje složitější návrh databáze správy. Každý záznam tenanta má například značku umístění, kterou je třeba změnit během převzetí služeb při selhání a navrácení služeb po obnovení.  
 * Zákazníci s platbami můžou vyskytnout nižší výkon než obvykle, dokud se nedokončí upgrade fondu v oblasti B.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Tento článek se zaměřuje na strategie zotavení po havárii pro databázovou vrstvu, kterou používá aplikace SaaS ISV pro více tenantů. Zvolená strategie je založená na potřebách aplikace, jako je obchodní model, smlouva SLA, kterou chcete zákazníkům nabídnout, a omezení rozpočtu atd. V každé popsané strategii se dozvíte o výhodách a obchodu, abyste mohli učinit rozhodnutí v informování. Vaše konkrétní aplikace taky může zahrnovat jiné součásti Azure. Proto si Projděte pokyny pro provozní kontinuitu a orchestrujte obnovení databázové vrstvy. Další informace o správě obnovení databázových aplikací v Azure najdete v tématu [navrhování cloudových řešení pro zotavení po havárii](designing-cloud-solutions-for-disaster-recovery.md).  
 

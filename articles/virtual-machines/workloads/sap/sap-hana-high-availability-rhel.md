@@ -6,18 +6,18 @@ documentationcenter: ''
 author: rdeltcheva
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/21/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 2ce3a4116c12065bbaee8e11d5ada3b8c89b1a9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a98fd5785174d681b333cdaa29fe53ae06f137e1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088219"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675373"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
 
@@ -48,7 +48,7 @@ Na virtuálních počítačích Azure je replikace systému HANA v Azure aktuál
 Replikace SAP HANA se skládá z jednoho primárního uzlu a alespoň jednoho sekundárního uzlu. Změny dat v primárním uzlu jsou replikovány do sekundárního uzlu synchronně nebo asynchronně.
 
 Tento článek popisuje nasazení a konfiguraci virtuálních počítačů, instalaci architektury clusterů a instalaci a konfiguraci replikace systému SAP HANA.
-V ukázkových konfiguracích se používají instalační příkazy, číslo instance **03**a ID systému Hana **HN1** .
+V ukázkových konfiguracích se používají instalační příkazy, číslo instance **03** a ID systému Hana **HN1** .
 
 Nejprve si přečtěte následující poznámky a dokumenty SAP:
 
@@ -70,12 +70,12 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 * [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
 * [Replikace SAP HANA systému v clusteru Pacemaker](https://access.redhat.com/articles/3004101)
 * Obecná dokumentace k RHEL
-  * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Přehled Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Správa Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referenční informace o Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
 * Dokumentace k RHEL specifické pro Azure:
   * [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru](https://access.redhat.com/articles/3131341)
-  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) High-Availability clusteru v Microsoft Azure](https://access.redhat.com/articles/3252491)
   * [Instalace SAP HANA na Red Hat Enterprise Linux pro použití v Microsoft Azure](https://access.redhat.com/solutions/3193782)
 
 ## <a name="overview"></a>Přehled
@@ -95,7 +95,7 @@ SAP HANA instalace replikace systému používá vyhrazený virtuální hostitel
 
 Azure Marketplace obsahuje image pro Red Hat Enterprise Linux 7,4 pro SAP HANA, kterou můžete použít k nasazení nových virtuálních počítačů.
 
-### <a name="deploy-with-a-template"></a>Nasazení pomocí šablony
+### <a name="deploy-with-a-template"></a>Nasazení s využitím šablony
 
 K nasazení všech požadovaných prostředků můžete použít jednu z šablon pro rychlý Start, které jsou na GitHubu. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, skupinu dostupnosti a tak dále.
 K nasazení šablony použijte následující postup:
@@ -108,7 +108,7 @@ K nasazení šablony použijte následující postup:
     * **Velikost systému SAP**: zadejte počet SAP, který bude nový systém poskytovat. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
     * **Dostupnost systému**: vyberte **ha**.
     * **Uživatelské jméno správce, heslo správce nebo klíč SSH**: vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
-    * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **. Pokud chcete vytvořit novou virtuální síť, ponechejte tuto položku prázdnou.
+    * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name>**. Pokud chcete vytvořit novou virtuální síť, ponechejte tuto položku prázdnou.
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 
@@ -123,10 +123,17 @@ K nasazení šablony použijte následující postup:
 1. Vytvořte virtuální počítač 2.  
    Pro SAP HANA použijte minimálně Red Hat Enterprise Linux 7,4. V tomto příkladu se používá Red Hat Enterprise Linux 7,4 pro SAP HANA image <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> Vyberte skupinu dostupnosti vytvořenou v kroku 3.
 1. Přidejte datové disky.
+
+> [!IMPORTANT]
+> Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.    
+
+> [!Note]
+> Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
+
 1. Pokud používáte standardní nástroj pro vyrovnávání zatížení, postupujte podle těchto kroků konfigurace:
    1. Nejprve vytvořte front-end fond IP adres:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond** a vyberte **Přidat**.
       1. Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
       1. Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.0.0.13**).
       1. Vyberte **OK**.
@@ -134,7 +141,7 @@ K nasazení šablony použijte následující postup:
 
    1. Dále vytvořte fond back-end:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu** a vyberte **Přidat**.
       1. Zadejte název nového fondu back-end (například **Hana-back-end**).
       1. Vyberte **Přidat virtuální počítač**.
       1. Vyberte * * virtuální počítač * *.
@@ -143,14 +150,14 @@ K nasazení šablony použijte následující postup:
 
    1. Potom vytvořte sondu stavu:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu** a vyberte **Přidat**.
       1. Zadejte název nové sondy stavu (například **Hana-HP**).
-      1. Jako protokol a port 625**03**vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+      1. Jako protokol a port 625 **03** vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
       1. Vyberte **OK**.
 
    1. Dále vytvořte pravidla vyrovnávání zatížení:
    
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
       1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-kg**).
       1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**, **Hana-back-endu** a **Hana-HP**).
       1. Vyberte **porty ha**.
@@ -158,13 +165,11 @@ K nasazení šablony použijte následující postup:
       1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
       1. Vyberte **OK**.
 
-   > [!Note]
-   > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
 
 1. Případně, pokud váš scénář používá základní nástroj pro vyrovnávání zatížení, postupujte podle těchto kroků konfigurace:
    1. Nakonfigurujte Nástroj pro vyrovnávání zatížení. Nejprve vytvořte front-end fond IP adres:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond** a vyberte **Přidat**.
       1. Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
       1. Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.0.0.13**).
       1. Vyberte **OK**.
@@ -172,7 +177,7 @@ K nasazení šablony použijte následující postup:
 
    1. Dále vytvořte fond back-end:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu** a vyberte **Přidat**.
       1. Zadejte název nového fondu back-end (například **Hana-back-end**).
       1. Vyberte **Přidat virtuální počítač**.
       1. Vyberte skupinu dostupnosti vytvořenou v kroku 3.
@@ -181,48 +186,48 @@ K nasazení šablony použijte následující postup:
 
    1. Potom vytvořte sondu stavu:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu** a vyberte **Přidat**.
       1. Zadejte název nové sondy stavu (například **Hana-HP**).
-      1. Jako protokol a port 625**03**vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+      1. Jako protokol a port 625 **03** vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
       1. Vyberte **OK**.
 
    1. Pro SAP HANA 1,0 vytvořte pravidla vyrovnávání zatížení:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**15).
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
+      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3 **03** 15).
       1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
-      1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**15.
+      1. Zachovejte **protokol** nastaven na **TCP** a zadejte port 3 **03** 15.
       1. Zvyšte **časový limit nečinnosti** na 30 minut.
       1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
       1. Vyberte **OK**.
-      1. Opakujte tento postup pro port 3**03**17.
+      1. Opakujte tento postup pro port 3 **03** 17.
 
    1. Pro SAP HANA 2,0 vytvořte pravidla vyrovnávání zatížení pro systémovou databázi:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**13).
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
+      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3 **03** 13).
       1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
-      1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**13.
+      1. Zachovejte **protokol** nastaven na **TCP** a zadejte port 3 **03** 13.
       1. Zvyšte **časový limit nečinnosti** na 30 minut.
       1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
       1. Vyberte **OK**.
-      1. Opakujte tento postup pro port 3**03**14.
+      1. Opakujte tento postup pro port 3 **03** 14.
 
    1. Pro SAP HANA 2,0 nejprve vytvořte pravidla vyrovnávání zatížení pro databázi tenanta:
 
-      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**40).
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
+      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3 **03** 40).
       1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **Hana-Endu**).
-      1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**40.
+      1. Zachovejte **protokol** nastaven na **TCP** a zadejte port 3 **03** 40.
       1. Zvyšte **časový limit nečinnosti** na 30 minut.
       1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
       1. Vyberte **OK**.
-      1. Opakujte tyto kroky pro porty 3**03**41 a 3**03**42.
+      1. Opakujte tyto kroky pro porty 3 **03** 41 a 3 **03** 42.
 
 Další informace o požadovaných portech pro SAP HANA naleznete v kapitole [připojení k databázím tenantů](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v průvodci [SAP HANA databáze klienta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) nebo v tématu [SAP Note 2388694][2388694].
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net.IPv4.tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
 > Viz také SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="install-sap-hana"></a>Instalace SAP HANA
@@ -342,7 +347,12 @@ Kroky v této části používají následující předpony:
 
 1. **[A]** RHEL pro konfiguraci Hana
 
-   Nakonfigurujte RHEL podle popisu v tématu SAP Note [2292690] a [2455582] a <https://access.redhat.com/solutions/2447641> .
+   Nakonfigurujte RHEL podle popisu v tématu <https://access.redhat.com/solutions/2447641> a v následujících komentářích SAP:  
+   - [2292690-SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)
+   - [2777782-SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)
+   - [2455582 – Linux: spouštění aplikací SAP s použitím RSZ 6. x](https://launchpad.support.sap.com/#/notes/2455582)
+   - [2593824 – Linux: běžící aplikace SAP s aplikací RSZ 7. x](https://launchpad.support.sap.com/#/notes/2593824) 
+   - [2886607 – Linux: běžící aplikace SAP s aplikací RSZ 9. x](https://launchpad.support.sap.com/#/notes/2886607)
 
 1. **[A]** instalace SAP HANA
 
@@ -551,7 +561,7 @@ Postupujte podle kroků v části [Nastavení Pacemaker na Red Hat Enterprise Li
 
 ## <a name="create-sap-hana-cluster-resources"></a>Vytvoření prostředků clusteru SAP HANA
 
-Nainstalujte agenty SAP HANA prostředků na **všech uzlech**. Ujistěte se, že jste povolili úložiště, které obsahuje balíček.
+Nainstalujte agenty SAP HANA prostředků na **všech uzlech**. Ujistěte se, že jste povolili úložiště, které obsahuje balíček. Pokud používáte bitovou kopii s povoleným RHEL 8. x HA, nemusíte povolit další úložiště.  
 
 <pre><code># Enable repository that contains SAP HANA resource agents
 sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
@@ -566,13 +576,18 @@ Pak vytvořte topologii HANA. Na jednom z uzlů clusteru Pacemaker spusťte nás
 # Replace the bold string with your instance number and HANA system ID
 sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> \
 op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600 \
---clone clone-max=2 clone-node-max=1 interleave=true
+clone clone-max=2 clone-node-max=1 interleave=true
 </code></pre>
 
-Pak vytvořte prostředky HANA:
+Pak vytvořte prostředky HANA.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na *podřízený* termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+
+Pokud vytváříte cluster na **RHEL 7. x**, použijte následující příkazy:  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
-
+#
 sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
 op start timeout=3600 op stop timeout=3600 \
 op monitor interval=61 role="Slave" timeout=700 \
@@ -581,14 +596,32 @@ op promote timeout=3600 op demote timeout=3600 \
 master notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
-
 sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
-
 sudo pcs resource group add g_ip_<b>HN1</b>_<b>03</b> nc_<b>HN1</b>_<b>03</b> vip_<b>HN1</b>_<b>03</b>
 
 sudo pcs constraint order SAPHanaTopology_<b>HN1</b>_<b>03</b>-clone then SAPHana_<b>HN1</b>_<b>03</b>-master symmetrical=false
-
 sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana_<b>HN1</b>_<b>03</b>-master 4000
+
+sudo pcs property set maintenance-mode=false
+</code></pre>
+
+Pokud vytváříte cluster na **RHEL 8. x**, použijte následující příkazy:  
+
+<pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
+#
+sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
+op start timeout=3600 op stop timeout=3600 \
+op monitor interval=61 role="Slave" timeout=700 \
+op monitor interval=59 role="Master" timeout=700 \
+op promote timeout=3600 op demote timeout=3600 \
+promotable meta notify=true clone-max=2 clone-node-max=1 interleave=true
+
+sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
+sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
+sudo pcs resource group add g_ip_<b>HN1</b>_<b>03</b> nc_<b>HN1</b>_<b>03</b> vip_<b>HN1</b>_<b>03</b>
+
+sudo pcs constraint order SAPHanaTopology_<b>HN1</b>_<b>03</b>-clone then SAPHana_<b>HN1</b>_<b>03</b>-clone symmetrical=false
+sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana_<b>HN1</b>_<b>03</b>-clone 4000
 
 sudo pcs property set maintenance-mode=false
 </code></pre>
@@ -638,7 +671,10 @@ Resource Group: g_ip_HN1_03
 
 SAP HANA hlavní uzel můžete migrovat spuštěním následujícího příkazu:
 
-<pre><code>[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
+<pre><code># On RHEL <b>7.x</b> 
+[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-clone --master
 </code></pre>
 
 Pokud nastavíte `AUTOMATED_REGISTER="false"` , tento příkaz by měl migrovat SAP HANA hlavní uzel a skupinu obsahující virtuální IP adresu na HN1-DB-1.
@@ -686,6 +722,9 @@ Resource Group: g_ip_HN1_03
 
 ### <a name="test-the-azure-fencing-agent"></a>Testování agenta pro oplocení Azure
 
+> [!NOTE]
+> Tento článek obsahuje odkazy na *podřízený* termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.  
+
 Stav prostředku před spuštěním testu:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
@@ -717,7 +756,10 @@ hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-d
 
 # Switch back to root and clean up the failed state
 exit
+# On RHEL <b>7.x</b>
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03 node=&lt;hostname on which the resource needs to be cleaned&gt;
 </code></pre>
 
 Stav prostředku po testu:
@@ -762,7 +804,10 @@ hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-d
 
 # Switch back to root and clean up the failed state
 hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> exit
+# On RHEL <b>7.x</b>
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03 node=&lt;hostname on which the resource needs to be cleaned&gt;
 </code></pre>
 
 Stav prostředku po testu:

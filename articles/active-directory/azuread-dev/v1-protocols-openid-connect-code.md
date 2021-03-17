@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85551547"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím s použitím OpenID Connect a Azure Active Directory
@@ -118,7 +118,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri | doporučil |Redirect_uri vaší aplikace, ve které vaše aplikace může odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z redirect_uris, který jste zaregistrovali na portálu, s výjimkou musí být zakódovaný URL. Pokud chybí, uživatelský agent se pošle zpátky k jednomu z identifikátorů URI pro přesměrování zaregistrovaných pro aplikaci náhodně. Maximální délka je 255 bajtů. |
 | response_mode |optional |Určuje metodu, která se má použít k odeslání výsledného authorization_code zpět do vaší aplikace. Podporované hodnoty jsou `form_post` pro *post formuláře http* a `fragment` pro *fragment adresy URL*. U webových aplikací doporučujeme použít `response_mode=form_post` k zajištění nejbezpečnějšího přenosu tokenů do aplikace. Výchozí hodnota pro libovolný tok včetně id_token `fragment` .|
 | state |doporučil |Hodnota obsažená v požadavku, která je vrácena v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k [prevenci útoků proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
-| výzv |optional |Určuje typ interakce uživatele, která je povinná. V současné době jsou jedinými platnými hodnotami "login," none "a" souhlas ". `prompt=login`vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku a současně se jedná o operátor jednotného přihlašování. `prompt=none`je opakem, zajišťuje, že uživatel není zobrazen s žádnou interaktivní výzvou. Pokud požadavek nejde v tichém režimu dokončit pomocí jednotného přihlašování, vrátí koncový bod chybu. `prompt=consent`spustí dialog souhlasu OAuth po přihlášení uživatele a požádá uživatele, aby aplikaci udělil oprávnění. |
+| výzv |optional |Určuje typ interakce uživatele, která je povinná. V současné době jsou jedinými platnými hodnotami "login," none "a" souhlas ". `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku a současně se jedná o operátor jednotného přihlašování. `prompt=none` je opakem, zajišťuje, že uživatel není zobrazen s žádnou interaktivní výzvou. Pokud požadavek nejde v tichém režimu dokončit pomocí jednotného přihlašování, vrátí koncový bod chybu. `prompt=consent` spustí dialog souhlasu OAuth po přihlášení uživatele a požádá uživatele, aby aplikaci udělil oprávnění. |
 | login_hint |optional |Dá se použít k předvyplnění pole uživatelské jméno a e-mailová adresa přihlašovací stránky pro uživatele, pokud znáte své uživatelské jméno předem. Aplikace často používají tento parametr během opakovaného ověřování, který už z předchozího přihlášení extrahuje uživatelské jméno, a to pomocí `preferred_username` deklarace identity. |
 
 V tomto okamžiku se uživateli zobrazí výzva k zadání přihlašovacích údajů a dokončení ověřování.

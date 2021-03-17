@@ -1,28 +1,30 @@
 ---
-title: Schéma role Azure Cloud Services | Microsoft Docs
+title: Schéma role pro Azure Cloud Services (Classic) | Microsoft Docs
 description: Element role konfiguračního souboru služby určuje, kolik instancí rolí se má nasadit pro každou roli, konfigurační hodnoty a kryptografické otisky certifikátů.
-ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 12
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2dc8e14a4e4d8855abb615632bb7d43b9034d360
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79528417"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743436"
 ---
-# <a name="azure-cloud-services-config-role-schema"></a>Schéma role konfigurace Azure Cloud Services
+# <a name="azure-cloud-services-classic-config-role-schema"></a>Schéma konfigurační role pro Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 `Role`Element konfiguračního souboru určuje počet instancí rolí, které mají být nasazeny pro každou roli ve službě, hodnoty nastavení konfigurace a kryptografické otisky pro všechny certifikáty přidružené k roli.
 
 Další informace o schématu konfigurace služby Azure najdete v tématu [schéma konfigurace cloudové služby (Classic)](schema-cscfg-file.md). Další informace o schématu definice služby Azure najdete v tématu [schéma definice cloudové služby (Classic)](schema-csdef-file.md).
 
-##  <a name="role-element"></a><a name="Role"></a>Element role
+##  <a name="role-element"></a><a name="Role"></a> Element role
 Následující příklad ukazuje `Role` prvek a jeho podřízené prvky.
 
 ```xml 
@@ -48,7 +50,7 @@ Následující tabulka popisuje atributy `Role` prvku.
 
 Následující tabulka popisuje podřízené prvky `Role` elementu.
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
 | Instance | Povinná hodnota. Určuje počet instancí, které mají být pro roli nasazeny. Počet instancí je definován celým číslem pro `count` atribut.|
 | Nastavení   | Nepovinný parametr. Určuje název nastavení a hodnotu v kolekci nastavení pro roli. Název nastavení je definován řetězcem pro `name` atribut a hodnota nastavení je definována řetězcem pro `value` atribut.|

@@ -1,24 +1,21 @@
 ---
 title: Vytváření aktivačních událostí pro bubny v Azure Data Factory
 description: Naučte se, jak vytvořit Trigger v Azure Data Factory, který spouští kanál v bubnovém okně.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: chez-charlie
+ms.author: chez
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/25/2020
+ms.openlocfilehash: b961939516ac4848da00a3cd01c754c90da805cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996682"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177721"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření aktivační události, která spustí kanál v přeskakujícím okně
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje kroky pro vytvoření, spuštění a monitorování aktivační události bubnového okna. Obecné informace o aktivačních událostech a podporovaných typech najdete v tématu [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md).
@@ -28,7 +25,7 @@ Aktivační události pro přeskakující okno jsou typem aktivačních událost
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 
 1. Chcete-li vytvořit aktivační událost bubnového okna v uživatelském rozhraní Data Factory, vyberte kartu **triggery** a pak vyberte možnost **Nový**. 
-1. Po otevření podokna konfigurace aktivační události vyberte **okno bubnu**a pak definujte vlastnosti aktivační události pro bubnové okno. 
+1. Po otevření podokna konfigurace aktivační události vyberte **okno bubnu** a pak definujte vlastnosti aktivační události pro bubnové okno. 
 1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
 ![Vytvoření aktivační události bubnového okna v Azure Portal](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
@@ -37,7 +34,7 @@ Aktivační události pro přeskakující okno jsou typem aktivačních událost
 
 Okno bubnu má následující vlastnosti typu triggeru:
 
-```
+```json
 {
     "name": "MyTriggerName",
     "properties": {
@@ -47,7 +44,7 @@ Okno bubnu má následující vlastnosti typu triggeru:
             "frequency": <<Minute/Hour>>,
             "interval": <<int>>,
             "startTime": "<<datetime>>",
-            "endTime: <<datetime – optional>>,
+            "endTime": <<datetime – optional>>,
             "delay": <<timespan – optional>>,
             "maxConcurrency": <<int>> (required, max allowed: 50),
             "retryPolicy": {
@@ -94,20 +91,20 @@ Okno bubnu má následující vlastnosti typu triggeru:
 
 Následující tabulka poskytuje podrobný přehled hlavních elementů JSON, které souvisejí s opakováním a plánováním aktivační události bubnového okna:
 
-| Element JSON | Description | Typ | Povolené hodnoty | Vyžadováno |
+| Element JSON | Popis | Typ | Povolené hodnoty | Vyžadováno |
 |:--- |:--- |:--- |:--- |:--- |
-| **textový** | Typ triggeru Typ je pevná hodnota "TumblingWindowTrigger". | Řetězec | "TumblingWindowTrigger" | Yes |
-| **runtimeState** | Aktuální stav doby spuštění triggeru.<br/>**Poznámka**: Tento element je \<readOnly> . | Řetězec | "Spuštěno, zastaveno", "zakázáno" | Yes |
-| **opakování** | Řetězec, který představuje jednotku frekvence (minuty nebo hodiny), ve které se aktivační událost opakuje. Pokud jsou hodnoty data **čas_spuštění** lépe podrobnější než hodnota **frekvence** , jsou při výpočtu hranic okna zvážena data **StartTime** . Pokud má například hodnota **frekvence** hodinu a hodnota **StartTime** je 2017-09-01T10:10:10z, první okno je (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | Řetězec | "Minute", "hodina"  | Yes |
-| **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. <br/>**Poznámka**: minimální interval okna je 5 minut. | Integer | Kladné celé číslo. | Yes |
-| **startTime**| První výskyt, který může být v minulosti. První interval triggeru je (**čas_spuštění**, **startTime**  +  **interval**čas_spuštění). | DateTime | Hodnota DateTime | Yes |
-| **endTime**| Poslední výskyt, který může být v minulosti. | DateTime | Hodnota DateTime | Yes |
-| **způsobené** | Doba, po kterou se má zpozdit začátek zpracování dat okna. Spuštění kanálu se spustí po očekávaném čase spuštění a **prodlevě**. **Prodleva** definuje, jak dlouho bude aktivační událost před aktivací nového běhu čekat po uplynutí doby platnosti. **Zpoždění** nezmění okno **čas_spuštění**. Například hodnota **zpoždění** 00:10:00 implikuje zpoždění 10 minut. | Časový interval<br/>(hh: mm: SS)  | Hodnota TimeSpan, kde výchozí hodnota je 00:00:00. | No |
-| **maxConcurrency** | Počet souběžných spuštění triggerů, které jsou aktivovány pro Windows, která jsou připravena. Například pro zálohování na celou hodinu běží u včerejších výsledků v 24 oknech. Pokud **maxConcurrency** = 10, aktivační události se aktivují jenom pro prvních 10 oken (00:00-01:00-09:00-10:00). Po dokončení prvních 10 aktivovaných spuštění kanálu se triggery spustí pro následující 10 Windows (10:00-11:00-19:00-20:00). Pokud budete pokračovat v tomto příkladu **maxConcurrency** = 10, pokud je k dispozici 10 Windows, je k dispozici 10 celkových spuštění kanálu. Pokud je k dispozici pouze 1 okno, je k dispozici pouze 1 spuštění kanálu. | Integer | Celé číslo od 1 do 50. | Yes |
-| **retryPolicy: počet** | Počet opakování před spuštěním kanálu je označený jako "neúspěšné".  | Integer | Celé číslo, kde výchozí hodnota je 0 (žádné opakování). | No |
-| **retryPolicy: intervalInSeconds** | Prodleva mezi pokusy o opakování zadané v sekundách. | Integer | Počet sekund, kde výchozí hodnota je 30. | No |
-| **dependsOn: typ** | Typ TumblingWindowTriggerReference. Vyžaduje se, pokud je nastavená závislost. | Řetězec |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | No |
-| **dependsOn: velikost** | Velikost bubnového okna závislosti. | Časový interval<br/>(hh: mm: SS)  | Kladná hodnota TimeSpan, kde výchozí je velikost okna podřízené triggeru  | No |
+| **textový** | Typ triggeru Typ je pevná hodnota "TumblingWindowTrigger". | Řetězec | "TumblingWindowTrigger" | Ano |
+| **runtimeState** | Aktuální stav doby spuštění triggeru.<br/>**Poznámka**: Tento element je \<readOnly> . | Řetězec | "Spuštěno, zastaveno", "zakázáno" | Ano |
+| **opakování** | Řetězec, který představuje jednotku frekvence (minuty nebo hodiny), ve které se aktivační událost opakuje. Pokud jsou hodnoty data **čas_spuštění** lépe podrobnější než hodnota **frekvence** , jsou při výpočtu hranic okna zvážena data **StartTime** . Pokud má například hodnota **frekvence** hodinu a hodnota **StartTime** je 2017-09-01T10:10:10z, první okno je (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | Řetězec | "Minute", "hodina"  | Ano |
+| **doba** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. <br/>**Poznámka**: minimální interval okna je 5 minut. | Integer | Kladné celé číslo. | Ano |
+| **Spuštění**| První výskyt, který může být v minulosti. První interval triggeru je (**čas_spuštění**,   +  **interval** čas_spuštění). | DateTime | Hodnota DateTime | Ano |
+| **endTime**| Poslední výskyt, který může být v minulosti. | DateTime | Hodnota DateTime | Ano |
+| **způsobené** | Doba, po kterou se má zpozdit začátek zpracování dat okna. Spuštění kanálu se spustí po očekávaném čase spuštění a **prodlevě**. **Prodleva** definuje, jak dlouho bude aktivační událost před aktivací nového běhu čekat po uplynutí doby platnosti. **Zpoždění** nezmění okno **čas_spuštění**. Například hodnota **zpoždění** 00:10:00 implikuje zpoždění 10 minut. | Časový interval<br/>(hh: mm: SS)  | Hodnota TimeSpan, kde výchozí hodnota je 00:00:00. | Ne |
+| **maxConcurrency** | Počet souběžných spuštění triggerů, které jsou aktivovány pro Windows, která jsou připravena. Například pro zálohování na celou hodinu běží u včerejších výsledků v 24 oknech. Pokud **maxConcurrency** = 10, aktivační události se aktivují jenom pro prvních 10 oken (00:00-01:00-09:00-10:00). Po dokončení prvních 10 aktivovaných spuštění kanálu se triggery spustí pro následující 10 Windows (10:00-11:00-19:00-20:00). Pokud budete pokračovat v tomto příkladu **maxConcurrency** = 10, pokud je k dispozici 10 Windows, je k dispozici 10 celkových spuštění kanálu. Pokud je k dispozici pouze 1 okno, je k dispozici pouze 1 spuštění kanálu. | Integer | Celé číslo od 1 do 50. | Ano |
+| **retryPolicy: počet** | Počet opakování před spuštěním kanálu je označený jako "neúspěšné".  | Integer | Celé číslo, kde výchozí hodnota je 0 (žádné opakování). | Ne |
+| **retryPolicy: intervalInSeconds** | Prodleva mezi pokusy o opakování zadané v sekundách. | Integer | Počet sekund, kde výchozí hodnota je 30. | Ne |
+| **dependsOn: typ** | Typ TumblingWindowTriggerReference. Vyžaduje se, pokud je nastavená závislost. | Řetězec |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Ne |
+| **dependsOn: velikost** | Velikost bubnového okna závislosti. | Časový interval<br/>(hh: mm: SS)  | Kladná hodnota TimeSpan, kde výchozí je velikost okna podřízené triggeru  | Ne |
 | **dependsOn: posun** | Posun triggeru závislosti. | Časový interval<br/>(hh: mm: SS) |  Hodnota TimeSpan, která musí být záporná v závislosti na sobě. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Samostatná závislost: Ano<br/>Jiné: ne  |
 
 > [!NOTE]
@@ -117,7 +114,7 @@ Následující tabulka poskytuje podrobný přehled hlavních elementů JSON, kt
 
 V definici **kanálu** (to znamená pro část dotazu) můžete použít systémové proměnné **WindowStart** a **WindowEnd** triggeru bubnového okna (tj.). Předejte systémové proměnné jako parametry do kanálu v definici **triggeru** . Následující příklad ukazuje, jak předat tyto proměnné jako parametry:
 
-```
+```json
 {
     "name": "MyTriggerName",
     "properties": {
@@ -147,7 +144,7 @@ Chcete-li v definici kanálu použít hodnoty systémové proměnné **WindowSta
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Pořadí spouštění Windows ve scénáři obnovení
 
-Pokud je Čas_spuštění triggeru v minulosti, pak na základě tohoto vzorce: M = (CurrentTime-TriggerStartTime)/TriggerSliceSize, aktivační událost vygeneruje paralelní běh (v minulosti), který plní souběžnou aktivační událost, před provedením budoucích běhů. Pořadí spouštění pro Windows je deterministické od nejstarších po nejnovější intervaly. Toto chování v současné době není možné změnit.
+Pokud je Čas_spuštění triggeru v minulosti, pak na základě tohoto vzorce: M = (CurrentTime-TriggerStartTime)/TumblingWindowSize, aktivační událost vygeneruje paralelní běh (v minulosti), který plní souběžnou aktivační událost, před provedením budoucích běhů. Pořadí spouštění pro Windows je deterministické od nejstarších po nejnovější intervaly. Toto chování v současné době není možné změnit.
 
 ### <a name="existing-triggerresource-elements"></a>Existující prvky TriggerResource
 
@@ -162,7 +159,20 @@ V případě selhání kanálu může aktivační událost bubnového okna opako
 
 ### <a name="tumbling-window-trigger-dependency"></a>Závislost triggeru zabubného okna
 
-Pokud chcete zajistit, aby se aktivační událost bubnového okna spustila až po úspěšném spuštění jiného zabubnového okna v objektu pro vytváření dat, [vytvořte závislost triggeru bubnového](tumbling-window-trigger-dependency.md)okna. 
+Pokud chcete zajistit, aby se aktivační událost bubnového okna spustila až po úspěšném spuštění jiného zabubnového okna v objektu pro vytváření dat, [vytvořte závislost triggeru bubnového](tumbling-window-trigger-dependency.md)okna.
+
+### <a name="cancel-tumbling-window-run"></a>Zrušit spuštění bubnového okna
+
+Pro aktivační událost bubnového okna můžete zrušit spuštění, pokud _se v konkrétním okně čeká_ na spuštění, _čeká na_ vystavení nebo je _spuštěný_ .
+
+* Pokud je okno v **běžícím** stavu, zrušte přidružené _spuštění kanálu_ a spuštění triggeru bude označeno jako _zrušené_ .
+* Pokud se okno **čeká** na stav **závislosti a čeká na** něj, můžete okno zrušit z monitorování:
+
+![Zrušení triggeru bubnového okna ze stránky monitorování](media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png)
+
+Zrušené okno můžete také znovu spustit. Opětovné spuštění převezme _nejnovější_ publikované definice triggeru a po _opětovném spuštění se znovu vyhodnotí_ závislosti pro zadané okno.
+
+![Znovu spustit aktivační událost bubnového okna pro dříve zrušené běhy](media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png)
 
 ## <a name="sample-for-azure-powershell"></a>Ukázka pro Azure PowerShell
 
@@ -211,7 +221,7 @@ V této části se dozvíte, jak pomocí Azure PowerShell vytvořit, spustit a m
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
-    
+
 3. Pomocí rutiny **Get-AzDataFactoryV2Trigger** ověřte, že se stav triggeru **zastavil** :
 
     ```powershell
@@ -235,10 +245,11 @@ V této části se dozvíte, jak pomocí Azure PowerShell vytvořit, spustit a m
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
-    
+
 Pokud chcete monitorovat spuštění aktivačních událostí a spuštění kanálů v Azure Portal, přečtěte si téma [monitorování spuštění kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Podrobné informace o aktivačních událostech najdete v tématu [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md#trigger-execution).
-* [Vytvoření závislosti aktivační události pro přeskakující okno](tumbling-window-trigger-dependency.md)
+* [Vytvořte závislost triggeru bubnového okna](tumbling-window-trigger-dependency.md).
+* Informace o tom, jak odkazovat na metadata triggeru v kanálu, najdete v tématu [metadata triggeru odkazů v běhu kanálu](how-to-use-trigger-parameterization.md) .

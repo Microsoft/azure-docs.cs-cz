@@ -13,17 +13,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: fcf8eb8cd110fab4f1fc85a317f1dd491d21c091
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e91d250b8cc9b80f2c97910c7fa972af32fa9104
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529943"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88998335"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Kurz: odesílání nabízených oznámení do Windows Phone aplikací pomocí Notification Hubs
 
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření aplikace pro Windows Phone
 > * Odeslání zkušebního oznámení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Visual Studio 2015 Express s komponentami pro vývoj mobilních aplikací](https://www.visualstudio.com/vs/older-downloads/)
@@ -123,7 +123,7 @@ V této části vytvoříte aplikaci pro Windows Phone, která k registraci pou�
     Tento kód načte identifikátor URI kanálu pro aplikaci z MPNS a pak zaregistruje tento kanál URI pomocí centra oznámení. Také zaručuje, že kanál URI je registrován v centru oznámení pokaždé, když je aplikace spuštěna.
 
    > [!NOTE]
-   > V tomto kurzu se odešle informační zpráva do zařízení. Když odešlete oznámení na dlaždici, musíte místo toho zavolat `BindToShellTile` metodu na kanál. Chcete-li podporovat informační zprávy a oznámení dlaždic, zavolejte jak `BindToShellTile` a `BindToShellToast` .
+   > V tomto kurzu se odešle informační zpráva do zařízení. Když odešlete oznámení na dlaždici, musíte místo toho zavolat `BindToShellTile` metodu na kanál. Chcete-li podporovat informační zprávy a oznámení dlaždic, zavolejte jak `BindToShellTile` a  `BindToShellToast` .
 
 6. V Průzkumníku řešení rozbalte **Vlastnosti**, otevřete soubor `WMAppManifest.xml`, klikněte na kartu **Možnosti** a ujistěte se, že je zaškrtnuta schopnost **ID_CAP_PUSH_NOTIFICATION**. Vaše aplikace teď přijímá nabízená oznámení.
 

@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/10/2019
   ms.author: aahi
-  ms.openlocfilehash: 26632aebbd6cddd1463064b397a2f42071a5d518
-  ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
-  ms.translationtype: HT
+  ms.openlocfilehash: ccf8dd232bdfa703400a949c8dd948fe9ba21f54
+  ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "81757298"
+  ms.lasthandoff: 03/08/2021
+  ms.locfileid: "102454919"
 landingContent:
 - title: Informace o rozhraní API Detektoru anomálií
   linkLists:
@@ -58,8 +58,6 @@ landingContent:
     links:
     - text: Vizualizace anomálií s využitím dávkového zjišťování a Power BI
       url: tutorials/batch-anomaly-detection-powerbi.md
-    - text: Detekce anomálií ve streamovaných datech pomocí Azure Databricks
-      url: tutorials/anomaly-detection-streaming-databricks.md
   - linkListType: video
     links:
     - text: Detekce anomálií ve streamovaných datech pomocí Azure Databricks
@@ -86,6 +84,8 @@ landingContent:
       url: anomaly-detector-container-configuration.md
     - text: Nasazení instance kontejneru do Azure
       url: how-to/deploy-anomaly-detection-on-container-instances.md
+    - text: Nasazení do IoT Edge
+      url: how-to/deploy-anomaly-detection-on-iot-edge.md
   - linkListType: video
     links:
     - text: Přenesení Detektoru anomálií do místního prostředí s podporou kontejnerů
@@ -98,6 +98,12 @@ landingContent:
       url: https://aka.ms/adadvisorsjoin
     - text: Doporučený obsah generovaný uživateli
       url: user-generated-content.md
+- title: Nápověda a zpětná vazba
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Možnosti pomoci a podpory
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - title: Referenční informace
   linkLists:
   - linkListType: reference
@@ -113,6 +119,6 @@ landingContent:
     - text: Node.js SDK
       url: https://go.microsoft.com/fwlink/?linkid=2090788
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure CLI
       url: /cli/azure/cognitiveservices#az-cognitiveservices-list

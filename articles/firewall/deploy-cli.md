@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 3087b01e849aaa4d1f3c2b6b4060cf202927f55f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d611a6d575fbc94a555006882f77e5a31753164
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602614"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051424"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Nasazení a konfigurace Azure Firewall pomocí rozhraní příkazového řádku Azure
 
@@ -25,7 +25,7 @@ Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsí
 
 Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když ho směrujete na bránu firewall jako na výchozí bránu podsítě.
 
-V tomto článku vytvoříte zjednodušenou jedinou virtuální síť se třemi podsítěmi pro snadné nasazení. U produkčních nasazení se doporučuje [model hvězdicového a paprskového modelu](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . Brána firewall je ve své vlastní virtuální síti. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
+V tomto článku vytvoříte zjednodušenou jedinou virtuální síť se třemi podsítěmi pro snadné nasazení. U produkčních nasazení se doporučuje [model hvězdicového a paprskového modelu](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . Brána firewall je ve své vlastní virtuální síti. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
 
 * **AzureFirewallSubnet** – v této podsíti bude brána firewall.
 * **Workload-SN** – v této podsíti bude server úloh. Provoz této podsítě bude procházet bránou firewall.
@@ -35,32 +35,20 @@ V tomto článku vytvoříte zjednodušenou jedinou virtuální síť se třemi 
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit testovací síťové prostředí
-> * Nasadit bránu firewall
-> * Vytvoření výchozí trasy
-> * Konfigurace pravidla použití pro povolení přístupu k www.google.com
-> * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
-> * Testování brány firewall
+* Nastavit testovací síťové prostředí
+* Nasadit bránu firewall
+* Vytvoření výchozí trasy
+* Konfigurace pravidla použití pro povolení přístupu k www.google.com
+* Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
+* Testování brány firewall
 
 Pokud budete chtít, můžete tento postup provést pomocí [Azure Portal](tutorial-firewall-deploy-portal.md) nebo [Azure PowerShell](deploy-ps.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Požadavky
-
-### <a name="azure-cli"></a>Azure CLI
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, spusťte Azure CLI verze 2.0.4 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz **AZ--Version**. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
-
-Nainstalujte Azure Firewall rozšíření:
-
-```azurecli-interactive
-az extension add -n azure-firewall
-```
-
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="set-up-the-network"></a>Nastavit síť
 
@@ -79,7 +67,7 @@ az group create --name Test-FW-RG --location eastus
 Tato virtuální síť má tři podsítě.
 
 > [!NOTE]
-> Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+> Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 ```azurecli-interactive
 az network vnet create \
@@ -106,7 +94,7 @@ az network vnet subnet create \
 Teď vytvoříte virtuální počítače pro jump server a server úloh a umístíte je do příslušných podsítí.
 Po zobrazení výzvy zadejte heslo pro virtuální počítač.
 
-Vytvořte virtuální počítač s odkazem na SRV.
+Vytvořte virtuální počítač s Srv-Jump.
 
 ```azurecli-interactive
 az vm create \
@@ -122,7 +110,7 @@ az vm open-port --port 3389 --resource-group Test-FW-RG --name Srv-Jump
 
 
 
-Vytvořte síťovou kartu pro službu SRV – Pracujte s konkrétními IP adresami serverů DNS a bez veřejné IP adresy k testování.
+Vytvořte síťovou kartu pro Srv-Work s konkrétními IP adresami serveru DNS a bez veřejné IP adresy pro testování.
 
 ```azurecli-interactive
 az network nic create \
@@ -265,7 +253,7 @@ Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
 
 1. Připojte vzdálenou plochu k virtuálnímu počítači s **odkazem na SRV** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše k privátní IP adrese **SRV** a přihlaste se.
 
-3. V nabídce **SRV – práci**otevřete okno PowerShellu a spusťte následující příkazy:
+3. V nabídce **SRV – práci** otevřete okno PowerShellu a spusťte následující příkazy:
 
    ```
    nslookup www.google.com
@@ -302,4 +290,4 @@ az group delete \
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+* [Kurz: Monitorování protokolů brány Azure Firewall](./firewall-diagnostics.md)

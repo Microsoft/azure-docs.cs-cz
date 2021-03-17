@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/21/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: abcd2f6e23ea0c7c26b2ee26b2f6ca4ad502b769
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265173"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177177"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testování šířky pásma a propustnosti (NTTTCP)
 
@@ -26,7 +26,7 @@ Při testování výkonu propustnosti sítě v Azure je nejvhodnější použít
 Zkopírujte nástroj do dvou virtuálních počítačů Azure se stejnou velikostí. Jeden virtuální počítač funguje jako ODESÍLATEL a druhý jako přijímač.
 
 #### <a name="deploying-vms-for-testing"></a>Nasazení virtuálních počítačů pro testování
-Pro účely tohoto testu musí být oba virtuální počítače buď ve stejné cloudové službě, nebo ve stejné skupině dostupnosti, aby bylo možné použít své interní IP adresy a vyloučit z testu nástroje pro vyrovnávání zatížení. Je možné provést test pomocí virtuální IP adresy, ale tento druh testování je mimo rozsah tohoto dokumentu.
+Pro účely tohoto testu musí být oba virtuální počítače buď ve stejné [skupině umístění blízkosti](../virtual-machines/co-location.md) , nebo ve stejné skupině dostupnosti, aby bylo možné použít své interní IP adresy a vyloučit z testu nástroje pro vyrovnávání zatížení. Je možné provést test pomocí virtuální IP adresy, ale tento druh testování je mimo rozsah tohoto dokumentu.
 
 Poznamenejte si IP adresu příjemce. Pojďme zavolat tuto IP adresu "a. b. c. r"
 
@@ -52,9 +52,9 @@ Parametry odesílatele: NTttcp-s 10.27.33.7-t 10-n 1-P 1
 
 #### <a name="get-ntttcp-onto-the-vms"></a>Získejte NTTTCP na virtuální počítače.
 
-Stáhnout nejnovější verzi:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+Stáhnout nejnovější verzi: https://github.com/microsoft/ntttcp/releases/download/v5.35/NTttcp.exe
 
-Nebo ho vyhledejte, pokud je přesunutý: <https://www.bing.com/search?q=ntttcp+download> \< --měl by se nejdřív narazit.
+Nebo si zobrazte stránku GitHub nejvyšší úrovně: <https://github.com/microsoft/ntttcp>\
 
 Zvažte vložení NTTTCP do samostatné složky, jako je c: \\ Tools
 
@@ -65,7 +65,7 @@ Povolte NTttcp přes bránu Windows Firewall takto:
 
 netsh advfirewall firewall Add rule program = \<PATH\> \\ntttcp.exe název = "NTttcp" Protocol = any dir = in Action = Allow Enable = Yes Profile = any
 
-Pokud jste například zkopírovali ntttcp.exe do složky "c: \\ Tools", bude to příkaz: 
+Pokud jste například zkopírovali ntttcp.exe do složky "c: \\ Tools", bude to příkaz: 
 
 netsh advfirewall firewall Add rule program = c: \\ tools \\ntttcp.exe název = "NTttcp" Protocol = any dir = in Action = Allow Enable = Yes Profile = any
 
@@ -82,32 +82,36 @@ NTttcp-r – m 8, \* , 10.0.0.4-t 300
 
 Spusťte NTTTCP na ODESILATELi (**spusťte z cmd**, ne z PowerShellu):
 
-NTttcp-s – m 8, \* , 10.0.0.4-t 300 
+NTttcp-s – m 8, \* , 10.0.0.4-t 300 
 
 Počkejte na výsledky.
 
 
 ## <a name="testing-vms-running-linux"></a>Testování virtuálních počítačů se systémem LINUX:
 
-Použijte nttcp-for-Linux. Je k dispozici z<https://github.com/Microsoft/ntttcp-for-linux>
+Použijte nttcp-for-Linux. Je k dispozici z <https://github.com/Microsoft/ntttcp-for-linux>
 
 Na virtuálních počítačích se systémem Linux (ODESÍLATEL i přijímač) spusťte tyto příkazy pro přípravu NTttcp-for-Linux na virtuálních počítačích:
 
-CentOS – instalace Gitu:
+CentOS – nainstalujte si RSZ a git:
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
-Ubuntu – instalace Gitu:
+Ubuntu – nainstalujte Build-Essential a git:
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
+```
+SUSE – nainstalujte si Git-Core, RSZ a udělejte toto:
+``` bash
+  zypper in -y git-core gcc make
 ```
 Vytvořit a nainstalovat na obou těchto počítačích:
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 Jako v příkladu Windows předpokládáme, že IP adresa PŘIJÍMAČe pro Linux je 10.0.0.4.
@@ -123,7 +127,7 @@ A na ODESILATELi spusťte:
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 Délka testu se nastaví na výchozí hodnotu 60 sekund, pokud není zadán žádný časový parametr.
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Testování mezi virtuálními počítači se systémem Windows a LINUX:

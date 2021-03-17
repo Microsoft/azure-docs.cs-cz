@@ -1,5 +1,5 @@
 ---
-title: Zkoumání dat ve službě Azure Blob Storage pomocí procesu PANDAS-Team data vědu
+title: Zkoumání dat v Azure Blob Storage s využitím procesu PANDAS – tým pro datové vědy
 description: Jak prozkoumat data uložená v kontejneru objektů BLOB v Azure pomocí balíčku Pythonu PANDAS
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5a0804ae5ee2dbffaa57fc967fda29701562ab44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085697"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805678"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat v úložišti objektů BLOB v Azure pomocí PANDAS
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat v Azure Blob Storage pomocí PANDAS
 
 Tento článek popisuje, jak prozkoumat data uložená v kontejneru objektů BLOB v Azure pomocí balíčku Pythonu [PANDAS](https://pandas.pydata.org/) .
 
@@ -28,7 +28,7 @@ Tento úkol je krok v rámci [vědeckého procesu týmového zpracování dat](o
 V tomto článku se předpokládá, že máte následující:
 
 * Vytvořili jste účet úložiště Azure. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
-* Vaše data se ukládají v účtu služby Azure Blob Storage. Pokud potřebujete pokyny, přečtěte si téma [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md)
+* Data uložená v účtu Azure Blob Storage. Pokud potřebujete pokyny, přečtěte si téma [přesun dat do a z Azure Storage](../../storage/common/storage-choose-data-transfer-solution.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Načtení dat do PANDAS dataframe
 Chcete-li prozkoumat a manipulovat s datovou sadou, je nutné ji nejprve stáhnout ze zdroje objektu blob do místního souboru, který lze poté načíst do PANDAS dataframe. Postup je následující:
@@ -69,7 +69,7 @@ Tady je několik příkladů způsobů, jak prozkoumat data pomocí PANDAS:
 1. Kontrola **počtu řádků a sloupců**
 
     ```python
-    print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
+    print('the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape)
     ```
 
 1. **Zkontrolujte** první nebo poslední **řádky** v následující datové sadě:
@@ -84,7 +84,7 @@ Tady je několik příkladů způsobů, jak prozkoumat data pomocí PANDAS:
 
     ```python
     for col in dataframe_blobdata.columns:
-        print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
+        print(dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype)
     ```
 
 1. Ověřte **základní statistiky** pro sloupce v sadě dat následujícím způsobem.
@@ -103,7 +103,7 @@ Tady je několik příkladů způsobů, jak prozkoumat data pomocí PANDAS:
 
     ```python
     miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
-    print miss_num
+    print(miss_num)
     ```
 
 1. Pokud v datech **chybí hodnoty** pro určitý sloupec, můžete je odstranit takto:

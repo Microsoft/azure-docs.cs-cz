@@ -1,0 +1,72 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Metrics Advisor
+summary: Metrics Advisor je platforma pro monitorování časových řad, která poskytuje sadu rozhraní API pro příjem dat, detekci anomálií a diagnostiku, bez nutnosti znát strojové učení.
+metadata:
+  title: Dokumentace ke službě Metrics Advisor – kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: Metrics Advisor je platforma pro monitorování časových řad, která poskytuje sadu rozhraní API pro příjem dat, detekci anomálií a diagnostiku, bez nutnosti znát strojové učení.
+  author: mrbullwinkle
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.subservice: metrics-advisor
+  ms.topic: landing-page
+  ms.date: 08/13/2020
+  ms.author: mbullwin
+  ms.openlocfilehash: 82029d4547f840d838b371fe42c8ec727a57fa2d
+  ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102201545"
+landingContent:
+- title: Informace o Metrics Advisoru
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Metrics Advisor?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Monitorování první metriky na webu
+      url: quickstarts/web-portal.md
+    - text: Použití rozhraní REST API nebo klientských knihoven
+      url: quickstarts/rest-api-and-client-library.md
+- title: Články s návody
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Onboarding dat
+      url: how-tos/onboard-your-data.md
+    - text: Připojení různých zdrojů datových kanálů
+      url: data-feeds-from-different-sources.md
+    - text: Správa datových kanálů
+      url: how-tos/manage-data-feeds.md
+    - text: Konfigurace metrik a doladění konfigurace zjišťování
+      url: how-tos/configure-metrics.md
+    - text: Konfigurace výstrah a získání oznámení pomocí háku
+      url: how-tos/alerts.md
+    - text: Diagnostika incidentu
+      url: how-tos/diagnose-incident.md
+    - text: Úprava detekce anomálií pomocí zpětné vazby
+      url: how-tos/anomaly-feedback.md
+    - text: Sestavení grafu metrik
+      url: how-tos/metrics-graph.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Glosář
+      url: glossary.md
+    - text: Rozhraní API pro Metrics Advisor
+      url: https://go.microsoft.com/fwlink/?linkid=2141634
+    - text: Azure PowerShell
+      url: /powershell/module/az.cognitiveservices
+    - text: Azure CLI
+      url: /cli/azure/cognitiveservices
+- title: Nápověda a zpětná vazba
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Možnosti pomoci a podpory
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context

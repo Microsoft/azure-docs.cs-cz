@@ -3,14 +3,14 @@ title: Základy architektury v Azure Lab Services | Microsoft Docs
 description: Tento článek se zabývá základními prostředky používanými v rámci testovacích služeb a základní architekturou testovacího prostředí.
 author: emaher
 ms.topic: overview
-ms.date: 06/26/2020
+ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: 93e95e1b03cd942e513a6d643f8a9e96399c231b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 71d59e8bcf7b4078255d6b119e9d62f366e46033
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445640"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437316"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Základy architektury v Azure Lab Services
 
@@ -20,7 +20,7 @@ Azure Lab Services poskytuje několik oblastí, které vám umožní používat 
 
 Níže je uvedená základní architektura prostředí učebny.  Účet testovacího prostředí je hostovaný v rámci vašeho předplatného. Virtuální počítače studenta spolu s prostředky potřebnými k podpoře virtuálních počítačů se hostují v rámci předplatného vlastněných testovacími službami. Pojďme pohovořit o tom, co je v předplatných služby testovacího prostředí podrobněji.
 
-![Architektura základní architektury učebny Labs](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
+![Architektura úrovně Basic Labs](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
 
 ## <a name="hosted-resources"></a>Hostované prostředky
 

@@ -1,7 +1,7 @@
 ---
 title: 'Permutace – funkce důležitost: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak používat modul důležitost funkcí permutace v Azure Machine Learning k výpočtu skóre důležitosti funkcí funkcí, s ohledem na vyškolený model a testovací datovou sadu.
+description: Naučte se používat modul důležitost funkcí permutace v Návrháři k výpočtu skóre důležitosti funkcí v rámci proměnných funkcí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,22 +9,22 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae1e79922cc0f34e8b2d1f253fce5078df286d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456059"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421239"
 ---
 # <a name="permutation-feature-importance"></a>Důležitost funkce permutací
 
-Tento článek popisuje, jak použít modul důležitost funkcí permutace v Návrháři Azure Machine Learning (Preview) k výpočtu sady výsledků důležitosti funkcí pro datovou sadu. Tato skóre vám pomůžou určit nejlepší funkce pro použití v modelu.
+Tento článek popisuje, jak použít modul důležitost funkcí permutace v Návrháři Azure Machine Learning k výpočtu sady výsledků důležitosti funkcí pro vaši datovou sadu. Tato skóre vám pomůžou určit nejlepší funkce pro použití v modelu.
 
 V tomto modulu jsou hodnoty funkcí náhodně přemístěné, vždy v jednom sloupci. Výkon modelu je měřen před a po. Můžete zvolit jednu ze standardních metrik pro měření výkonu.
 
 Skóre, které modul vrací, představuje *změnu* výkonu pro vyškolený model po permutaci. Důležité funkce jsou obvykle citlivější na proces náhodného zpracování, takže budou mít výsledek vyšší důležitost. 
 
-Tento článek poskytuje přehled funkce permutace, její teoretickou a její aplikace ve službě Machine Learning: [důležitost funkce permutace](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
+Tento článek poskytuje přehled funkce permutace, její teoretickou a její aplikace ve službě Machine Learning: [důležitost funkce permutace](/archive/blogs/machinelearning/permutation-feature-importance).  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>Použití funkce permutace důležitost
 
@@ -36,11 +36,11 @@ Generování sady výsledků funkcí vyžaduje, abyste měli už vyškolený mod
 
 3.  U správného vstupu připojte datovou sadu. V takovém případě vyberte, který se liší od datové sady, kterou jste použili pro školení modelu. Tato datová sada se používá pro hodnocení na základě trained model. Používá se také k vyhodnocení modelu po změně hodnot vlastností.  
 
-4.  V případě **náhodného osazení**zadejte hodnotu, která se má použít jako počáteční hodnota pro náhodnost. Pokud zadáte 0 (výchozí), vygeneruje se číslo na základě systémových hodin.
+4.  V případě **náhodného osazení** zadejte hodnotu, která se má použít jako počáteční hodnota pro náhodnost. Pokud zadáte 0 (výchozí), vygeneruje se číslo na základě systémových hodin.
 
      Hodnota počáteční hodnoty je volitelná, ale měli byste zadat hodnotu, pokud chcete reprodukovatelnost napříč běhy stejného kanálu.  
 
-5.  Pro **metriku pro měření výkonu**vyberte jednu metriku, která se má použít, když počítáte kvalitu modelu po permutaci.  
+5.  Pro **metriku pro měření výkonu** vyberte jednu metriku, která se má použít, když počítáte kvalitu modelu po permutaci.  
 
      Azure Machine Learning Designer podporuje následující metriky v závislosti na tom, zda vyhodnocujete model klasifikace nebo regrese:  
 
@@ -69,4 +69,4 @@ Důvodem rozdílu je, že důležitost funkcí permutace neměří přidružení
   
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

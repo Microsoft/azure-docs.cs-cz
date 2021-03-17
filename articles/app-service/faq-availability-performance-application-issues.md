@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159979"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88958993"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se výkonu aplikací pro Web Apps v Azure
 
@@ -32,15 +32,15 @@ K zpomalení výkonu aplikace může přispět více faktorů. Podrobné kroky p
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Návody řešit potíže s vysokým scénářem využití procesoru?
 
-V některých velmi vysokých scénářích spotřeby procesoru může vaše aplikace skutečně vyžadovat více výpočetních prostředků.V takovém případě zvažte škálování na vyšší úroveň služby, takže aplikace získá všechny prostředky, které potřebuje. V ostatních případech může být vysoká spotřeba procesoru způsobena chybnou smyčkou nebo postupem kódování. Seznámení s tím, co se aktivuje zvýšené spotřeby procesoru, je proces dvou částí. Nejprve vytvořte výpis procesu a poté Analyzujte výpis procesu. Další informace najdete v tématu [zachycení a analýza souboru s výpisem paměti pro vysokou spotřebu procesoru pro Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/).
+V některých velmi vysokých scénářích spotřeby procesoru může vaše aplikace skutečně vyžadovat více výpočetních prostředků.V takovém případě zvažte škálování na vyšší úroveň služby, takže aplikace získá všechny prostředky, které potřebuje. V ostatních případech může být vysoká spotřeba procesoru způsobena chybnou smyčkou nebo postupem kódování. Seznámení s tím, co se aktivuje zvýšené spotřeby procesoru, je proces dvou částí. Nejprve vytvořte výpis procesu a poté Analyzujte výpis procesu. Další informace najdete v tématu [zachycení a analýza souboru s výpisem paměti pro vysokou spotřebu procesoru pro Web Apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Návody řešení potíží s vysokým využitím paměti?
 
-V některých scénářích s vysokými nároky na paměť může vaše aplikace skutečně vyžadovat více výpočetních prostředků.V takovém případě zvažte škálování na vyšší úroveň služby, takže aplikace získá všechny prostředky, které potřebuje. Jindy může chyba v kódu způsobit nevracení paměti. Postup kódování může také zvýšit spotřebu paměti.Získání přehledu o tom, co spouští vysokou spotřebu paměti, je proces dvou částí. Nejprve vytvořte výpis procesu a poté Analyzujte výpis procesu. Diagnostiku havárií z galerie rozšíření webu Azure může efektivně provádět oba tyto kroky. Další informace najdete v tématu [zachycení a analýza souboru s výpisem paměti pro přerušovanou vysokou paměť pro Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
+V některých scénářích s vysokými nároky na paměť může vaše aplikace skutečně vyžadovat více výpočetních prostředků.V takovém případě zvažte škálování na vyšší úroveň služby, takže aplikace získá všechny prostředky, které potřebuje. Jindy může chyba v kódu způsobit nevracení paměti. Postup kódování může také zvýšit spotřebu paměti.Získání přehledu o tom, co spouští vysokou spotřebu paměti, je proces dvou částí. Nejprve vytvořte výpis procesu a poté Analyzujte výpis procesu. Diagnostiku havárií z galerie rozšíření webu Azure může efektivně provádět oba tyto kroky. Další informace najdete v tématu [zachycení a analýza souboru s výpisem paměti pro přerušovanou vysokou paměť pro Web Apps](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Návody Automatizujte App Service webové aplikace pomocí PowerShellu?
 
-K správě a údržbě App Service webových aplikací můžete použít rutiny prostředí PowerShell. V našem blogovém příspěvku můžete [automatizovat webové aplikace hostované v Azure App Service pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/). popisujeme, jak používat rutiny prostředí PowerShell založené na Azure Resource Manager k automatizaci běžných úloh. Blogový příspěvek má také vzorový kód pro různé úlohy správy webových aplikací. Popisy a syntaxi pro všechny rutiny App Service Web Apps najdete v tématu [AZ. websites](/powershell/module/az.websites).
+K správě a údržbě App Service webových aplikací můžete použít rutiny prostředí PowerShell. V našem blogovém příspěvku můžete [automatizovat webové aplikace hostované v Azure App Service pomocí prostředí PowerShell](/archive/blogs/puneetgupta/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way). popisujeme, jak používat rutiny prostředí PowerShell založené na Azure Resource Manager k automatizaci běžných úloh. Blogový příspěvek má také vzorový kód pro různé úlohy správy webových aplikací. Popisy a syntaxi pro všechny rutiny App Service Web Apps najdete v tématu [AZ. websites](/powershell/module/az.websites).
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Návody zobrazit protokoly událostí webové aplikace?
 
@@ -81,7 +81,7 @@ Tato chyba může způsobit tři podmínky:
 * Webová aplikace se zastavila na portálu.
 * U webové aplikace se dosáhlo limitu kvóty prostředků, který by se mohl vztahovat na plán služby škály free nebo Shared.
 
-Chcete-li zjistit, co způsobuje chybu a vyřešit problém, postupujte podle kroků v [Web Apps: "error 403 – Tato webová aplikace je zastavena"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
+Chcete-li zjistit, co způsobuje chybu a vyřešit problém, postupujte podle kroků v [Web Apps: "error 403 – Tato webová aplikace je zastavena"](/archive/blogs/waws/azure-web-apps-error-403-this-web-app-is-stopped).
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Kde se mohu dozvědět více o kvótách a omezeních pro různé plány App Service?
 
@@ -167,7 +167,7 @@ Webové úlohy jsou navržené pro zpracování na pozadí. V rámci webové úl
 
 Známý problém s dřívější [verzí Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) může způsobit, že aplikace ASP.NET Core 1,0, která je hostovaná v App Service, bude schopná přestat reagovat. Může se také zobrazit tato zpráva: v zadané aplikaci CGI došlo k chybě a server ukončil proces.
 
-Tento problém je opravený v Kestrel verze 1.0.2. Tato verze je součástí aktualizace ASP.NET Core 1.0.3. Pokud chcete tento problém vyřešit, nezapomeňte aktualizovat závislosti aplikací tak, aby používaly Kestrel 1.0.2. Alternativně můžete použít jedno ze dvou alternativních řešení, která jsou popsána v příspěvku blogu [ASP.NET Core 1,0 pomalých potížích s výkonem v App Service Web Apps](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites).
+Tento problém je opravený v Kestrel verze 1.0.2. Tato verze je součástí aktualizace ASP.NET Core 1.0.3. Pokud chcete tento problém vyřešit, nezapomeňte aktualizovat závislosti aplikací tak, aby používaly Kestrel 1.0.2. Alternativně můžete použít jedno ze dvou alternativních řešení, která jsou popsána v příspěvku blogu [ASP.NET Core 1,0 pomalých potížích s výkonem v App Service Web Apps](/archive/blogs/waws/asp-net-core-slow-perf-issues-on-azure-websites).
 
 
 ## <a name="i-cant-find-my-log-files-in-the-file-structure-of-my-web-app-how-can-i-find-them"></a>Nemohu najít soubory protokolu ve struktuře souborů moje webové aplikace. Jak je můžu najít?
@@ -188,4 +188,4 @@ Další informace o odchozích připojeních ve vaší webové aplikaci najdete 
 
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Návody použít Visual Studio ke vzdálenému ladění moje App Service webové aplikace?
 
-Podrobný návod, který ukazuje, jak webovou aplikaci ladit pomocí sady Visual Studio, najdete v tématu [vzdálené ladění App Service webové aplikace](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/).
+Podrobný návod, který ukazuje, jak webovou aplikaci ladit pomocí sady Visual Studio, najdete v tématu [vzdálené ladění App Service webové aplikace](/archive/blogs/benjaminperkins/remote-debug-your-azure-app-service-web-app).

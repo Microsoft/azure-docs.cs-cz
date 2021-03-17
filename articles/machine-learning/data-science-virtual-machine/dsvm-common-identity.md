@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Naučte se vytvářet běžné uživatelské účty, které se dají používat v rámci více Virtual Machines pro datové vědy. K ověřování uživatelů v Data Science Virtual Machine můžete použít Azure Active Directory nebo místní službu Active Directory.
 keywords: obsáhlý Learning, AI, nástroje pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 43ef0f55f0b0f3ff9008f0ddf240ad0ea4f37df6
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959139"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519724"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Nastavení společné identity na Data Science Virtual Machine
 
@@ -23,9 +22,9 @@ Na Microsoft Azure virtuálním počítači (VM), včetně Data Science Virtual 
 
 Služba Active Directory je oblíbený poskytovatel identity a podporuje se v Azure jako cloudová služba i jako místní adresář. K ověřování uživatelů na samostatném DSVM nebo clustere DSVMs v sadě škálování virtuálního počítače Azure můžete použít Azure Active Directory (Azure AD) nebo místní službu Active Directory. Provedete to připojením instancí DSVM k doméně služby Active Directory.
 
-Pokud již máte službu Active Directory, můžete ji použít jako svého společného poskytovatele identity. Pokud nemáte službu Active Directory, můžete v Azure spustit spravovanou instanci služby Active Directory prostřednictvím [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure služba AD DS).
+Pokud již máte službu Active Directory, můžete ji použít jako svého společného poskytovatele identity. Pokud nemáte službu Active Directory, můžete v Azure spustit spravovanou instanci služby Active Directory prostřednictvím [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) (Azure služba AD DS).
 
-Dokumentace k [Azure AD](https://docs.microsoft.com/azure/active-directory/) poskytuje podrobné [pokyny pro správu](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution), včetně pokynů k propojení Azure AD s vaším místním adresářem, pokud ho máte.
+Dokumentace k [Azure AD](../../active-directory/index.yml) poskytuje podrobné [pokyny pro správu](../../active-directory/hybrid/whatis-hybrid-identity.md), včetně pokynů k propojení Azure AD s vaším místním adresářem, pokud ho máte.
 
 Tento článek popisuje, jak nastavit plně spravovanou službu Active Directory Domain Service v Azure pomocí služba AD DS Azure. Pak můžete své DSVMs připojit k spravované doméně služby Active Directory. Tento přístup umožňuje uživatelům přístup k fondu DSVMs (a dalších prostředků Azure) prostřednictvím běžného uživatelského účtu a přihlašovacích údajů.
 
@@ -39,27 +38,27 @@ Azure služba AD DS usnadňuje správu identit tím, že poskytuje plně spravov
     
    1. Vyberte **Azure Active Directory** a potom **Uživatelé a skupiny**.
     
-   1. V **Uživatelé a skupiny**vyberte **Všichni uživatelé**a pak vyberte **Nový uživatel**.
+   1. V **Uživatelé a skupiny** vyberte **Všichni uživatelé** a pak vyberte **Nový uživatel**.
    
         Otevře se podokno **uživatel** :
       
         ![Podokno "uživatel"](./media/add-user.png)
     
-   1. Zadejte podrobnosti o uživateli, například **Jméno** a **Uživatelské jméno**. Část názvu domény uživatelského jména musí být buď počáteční výchozí název domény "[název domény].. Microsoft. com" nebo ověřený nefederovaný [vlastní název domény](../../active-directory/add-custom-domain.md) , například "contoso.com".
+   1. Zadejte podrobnosti o uživateli, například **Jméno** a **Uživatelské jméno**. Část názvu domény uživatelského jména musí být buď počáteční výchozí název domény "[název domény].. Microsoft. com" nebo ověřený nefederovaný [vlastní název domény](../../active-directory/fundamentals/add-custom-domain.md) , například "contoso.com".
     
    1. Zkopírujte nebo si jiným způsobem poznamenejte vygenerované heslo uživatele, abyste ho mohli po dokončení tohoto procesu poskytnout příslušnému uživateli.
     
    1. Můžete ale také otevřít a vyplnit informace o uživateli v části **Profil**, **Skupiny** nebo **Role adresáře**. 
     
-   1. V části **uživatel**vyberte **vytvořit**.
+   1. V části **uživatel** vyberte **vytvořit**.
     
    1. Vygenerované heslo bezpečně distribuujte novému uživateli, aby se mohli přihlásit.
 
-1. Vytvořte instanci služby Azure služba AD DS. Postupujte podle pokynů v části [povolení Azure Active Directory Domain Services pomocí Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (oddíl vytvořit instanci a nakonfigurovat základní nastavení). Je důležité aktualizovat stávající hesla uživatelů ve službě Active Directory tak, aby se heslo ve službě Azure služba AD DS synchronizoval. Je také důležité přidat DNS do Azure služba AD DS, jak je popsáno v části "vyplnění polí v okně základy Azure Portal k vytvoření instance služby Azure služba AD DS v této části.
+1. Vytvořte instanci služby Azure služba AD DS. Postupujte podle pokynů v části  [povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md) (oddíl vytvořit instanci a nakonfigurovat základní nastavení). Je důležité aktualizovat stávající hesla uživatelů ve službě Active Directory tak, aby se heslo ve službě Azure služba AD DS synchronizoval. Je také důležité přidat DNS do Azure služba AD DS, jak je popsáno v části "vyplnění polí v okně základy Azure Portal k vytvoření instance služby Azure služba AD DS v této části.
 
 1. Vytvořte samostatnou podsíť DSVM ve virtuální síti vytvořené v části Vytvoření a konfigurace virtuální sítě v předchozím kroku.
 1. V podsíti DSVM vytvořte jednu nebo víc instancí DSVM.
-1. Podle [pokynů](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm ) přidejte DSVM do Active Directory. 
+1. Podle [pokynů](../../active-directory-domain-services/join-ubuntu-linux-vm.md) přidejte DSVM do Active Directory. 
 1. Připojte sdílenou složku služby soubory Azure pro hostování domovského adresáře nebo adresáře poznámkového bloku, aby se váš pracovní prostor mohl připojit k libovolnému počítači. (Pokud potřebujete vysoké oprávnění na úrovni souborů, budete potřebovat systém souborů NFS (Network File System), který je spuštěný na jednom nebo víc virtuálních počítačích.)
 
    1. [Vytvořte sdílenou složku služby soubory Azure](../../storage/files/storage-how-to-create-file-share.md).
@@ -79,6 +78,3 @@ Pro automatické škálování můžete pomocí sady škálování virtuálních
 ## <a name="next-steps"></a>Další kroky
 
 * [Bezpečné uložení přihlašovacích údajů pro přístup k prostředkům cloudu](dsvm-secure-access-keys.md)
-
-
-

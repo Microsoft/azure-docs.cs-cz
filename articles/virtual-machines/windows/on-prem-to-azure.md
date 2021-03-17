@@ -3,19 +3,20 @@ title: Migrace z AWS a dalších platforem na Managed Disks v Azure
 description: Vytvářejte virtuální počítače v Azure pomocí VHD odeslaných z jiných cloudů, jako je AWS nebo jiných virtualizačních platforem, a využijte výhod Azure Managed Disks.
 author: roygara
 manager: twooley
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subervice: disks
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c817528ff26dd10112eaf69c7ad20f8fb5813695
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835475"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550395"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrace z Amazon Web Services (AWS) a dalších platforem na Managed Disks v Azure
 
@@ -26,12 +27,12 @@ Můžete nahrát generalizované a specializované virtuální pevné disky.
 - **Specializované virtuální** pevné disky – udržují uživatelské účty, aplikace a data dalších stavů z původního virtuálního počítače. 
 
 > [!IMPORTANT]
-> Před nahráním libovolného virtuálního pevného disku do Azure byste měli postupovat po [přípravě virtuálního pevného disku (VHD) Windows nebo VHDX k nahrání do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> Před nahráním libovolného virtuálního pevného disku do Azure byste měli postupovat po [přípravě virtuálního pevného disku (VHD) Windows nebo VHDX k nahrání do Azure](prepare-for-upload-vhd-image.md)
 >
 >
 
 
-| Scénář                                                                                                                         | Dokumentace                                                                                                                       |
+| Scenario                                                                                                                         | Dokumentace                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Máte existující instance EC2 AWS, které byste chtěli migrovat na virtuální počítače Azure pomocí spravovaných disků.                              | [Přesunutí virtuálního počítače z Amazon Web Services (AWS) do Azure](aws-to-azure.md)                           |
 | Máte virtuální počítač z jiné virtualizační platformy, kterou byste chtěli použít jako image k vytvoření několika virtuálních počítačů Azure. | [Nahrajte zobecněný virtuální pevný disk a použijte ho k vytvoření nového virtuálního počítače v Azure.](upload-generalized-managed.md) |
@@ -41,7 +42,7 @@ Můžete nahrát generalizované a specializované virtuální pevné disky.
 ## <a name="overview-of-managed-disks"></a>Přehled Managed Disks
 
 Azure Managed Disks zjednodušuje správu virtuálních počítačů tím, že odstraňuje nutnost spravovat účty úložiště. Managed Disks taky využívat lepší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, aby byly disky různých virtuálních počítačů ve skupině dostupnosti dostatečně izolované, aby nedocházelo k jednomu bodu selhání. Automaticky umístí disky různých virtuálních počítačů do skupiny dostupnosti v různých jednotkách škálování úložiště (razítka), které omezují dopad selhání jedné jednotky úložiště kvůli selháním hardwaru a softwaru.
-Podle svých potřeb můžete vybírat ze čtyř typů úložišť. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](disks-types.md).
+Podle svých potřeb můžete vybírat ze čtyř typů úložišť. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](../disks-types.md).
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Plánování migrace na Managed Disks
 
@@ -64,20 +65,20 @@ Přečtěte si výkonnostní charakteristiky virtuálních počítačů, které 
 
 K virtuálnímu počítači se dá použít sedm typů disků úrovně Premium, které se dají používat s vaším virtuálním počítačem, přičemž každý z nich má konkrétní omezení IOPs a propustnost Vezměte v úvahu tato omezení při výběru typu disku Premium pro váš virtuální počítač na základě potřeb vaší aplikace z důvodu kapacity, výkonu, škálovatelnosti a zatížení ve špičce.
 
-| Typ disků úrovně Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+| Typ disků úrovně Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Velikost disku           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7 500              | 7 500              | 
-| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 125 MB za sekundu |150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu |
+| Velikost disku           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7 500              | 7 500              | 
+| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 125 MB za sekundu |150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu |
 
 **Standardní Managed Disks**
 
 Existuje sedm typů standardních spravovaných disků, které se dají používat s vaším VIRTUÁLNÍm počítačem. Každá z nich má různou kapacitu, ale má stejný počet vstupně-výstupních operací a omezení propustnosti. Vyberte typ Standard Managed disks založený na potřebách kapacity vaší aplikace.
 
-| Disk typu Standard  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
+| Disk typu Standard  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
-| Velikost disku           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
-| Vstupně-výstupní operace za sekundu / disk       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
+| Velikost disku           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| Vstupně-výstupní operace za sekundu / disk       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
 | Propustnost / disk | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu |60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 
 
 ### <a name="disk-caching-policy"></a>Zásady ukládání do mezipaměti disku 
@@ -93,4 +94,4 @@ Projděte si [ceny Managed disks](https://azure.microsoft.com/pricing/details/ma
 
 ## <a name="next-steps"></a>Další kroky
 
-- Před nahráním libovolného virtuálního pevného disku do Azure byste měli postupovat po [přípravě virtuálního pevného disku (VHD) Windows nebo VHDX k nahrání do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- Před nahráním libovolného virtuálního pevného disku do Azure byste měli postupovat po [přípravě virtuálního pevného disku (VHD) Windows nebo VHDX k nahrání do Azure](prepare-for-upload-vhd-image.md)

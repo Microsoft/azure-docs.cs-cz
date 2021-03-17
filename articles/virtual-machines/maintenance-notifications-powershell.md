@@ -3,16 +3,17 @@ title: Získání oznámení o údržbě pro virtuální počítače Azure pomoc
 description: Zobrazení oznámení o údržbě pro virtuální počítače běžící v Azure a spuštění samoobslužné údržby pomocí PowerShellu
 author: shants123
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4278aa563d76b783e02e67ee964764864931fd68
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028581"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552367"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Zpracování plánované údržby pomocí PowerShellu
 
@@ -25,6 +26,18 @@ Informace o údržbě jsou vráceny pouze v případě, že je naplánována úd
 
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
+```
+
+Výstup
+
+```
+MaintenanceRedeployStatus               : 
+  IsCustomerInitiatedMaintenanceAllowed : True
+  PreMaintenanceWindowStartTime         : 5/14/2018 12:30:00 PM
+  PreMaintenanceWindowEndTime           : 5/19/2018 12:30:00 PM
+  MaintenanceWindowStartTime            : 5/21/2018 4:30:00 PM
+  MaintenanceWindowEndTime              : 6/4/2018 4:30
+  LastOperationResultCode               : None 
 ```
 
 V MaintenanceRedeployStatus se vrátí následující vlastnosti: 

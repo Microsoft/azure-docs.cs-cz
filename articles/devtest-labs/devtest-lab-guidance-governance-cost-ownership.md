@@ -4,12 +4,12 @@ description: Tento článek poskytuje informace, které vám pomůžou s optimal
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfac69a055c9b0c75032622caf7fb8502fad3406
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476253"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328262"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – Správa nákladů a vlastnictví
 Náklady a vlastnictví jsou primárními aspekty, když zvažte vytvoření vývojových a testovacích prostředí. V této části najdete informace, které vám pomůžou s optimalizací a vyrovnáním vlastnictví napříč vaším prostředím.
@@ -34,9 +34,9 @@ Prostředky Azure běžící v rámci předplatného Enterprise pro vývoj/testo
 
 Pokud se rozhodnete použít nabídku DevTest, mějte na paměti, že tato výhoda je určená výhradně pro vývoj a testování vašich aplikací. Využití v rámci předplatného nenese finančně zajištěnou smlouvu SLA, s výjimkou použití Azure DevOps a HockeyApp.
 
-## <a name="define-a-role-based-access-across-your-organization"></a>Definování přístupu na základě role v rámci vaší organizace
+## <a name="define-role-based-access-across-your-organization"></a>Definování přístupu na základě role v rámci vaší organizace
 ### <a name="question"></a>Otázka
-Návody pro prostředí DevTest Labs definovat řízení přístupu na základě rolí, aby se zajistilo, že se může řídit, zatímco vývojáři/testy můžou svou práci dělat? 
+Návody pro prostředí DevTest Labs definovat řízení přístupu na základě role v Azure, aby se zajistilo, že se bude moct řídit i když vývojáři/testy můžou dělat svou práci? 
 
 ### <a name="answer"></a>Odpověď
 Existuje velký model, ale podrobnosti závisí na vaší organizaci.

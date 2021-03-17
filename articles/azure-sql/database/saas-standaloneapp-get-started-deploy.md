@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 896f4edb1e94c1eca06b046382727a5042375e3b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544077"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793275"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a prozkoumání samostatné aplikace pro jednoho tenanta, která používá Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -60,16 +60,16 @@ Nasazení aplikace pro tři poskytnuté klienty:
     > Některá ověřování a brány firewall serveru jsou pro demonstrační účely záměrně nezabezpečené. **Vytvořte novou skupinu prostředků** pro každé nasazení aplikace.  Nepoužívejte existující skupinu prostředků. Nepoužívejte tuto aplikaci ani žádné prostředky, které vytvoří, pro produkční prostředí. Odstraňte všechny skupiny prostředků, až skončíte s aplikacemi, aby se zastavily související fakturace.
 
     Doporučuje se v názvech prostředků používat jenom malá písmena, číslice a spojovníky.
-    * V poli **Skupina prostředků**vyberte vytvořit novou a zadejte pro skupinu prostředků malý název. **Wingtip-SA- \<venueName\> - \<user\> ** je doporučený vzor.  V případě \<venueName\> nahraďte název místa bez mezer. V případě \<user\> nahraďte hodnotu uživatele níže.  V tomto vzoru můžou být názvy skupin prostředků *Wingtip-SA-contosoconcerthall-AF1*, *Wingtip-SA-dogwooddojo-AF1*, *Wingtip-SA-fabrikamjazzclub-AF1*.
+    * V poli **Skupina prostředků** vyberte vytvořit novou a zadejte pro skupinu prostředků malý název. **Wingtip-SA- \<venueName\> - \<user\>** je doporučený vzor.  V případě \<venueName\> nahraďte název místa bez mezer. V případě \<user\> nahraďte hodnotu uživatele níže.  V tomto vzoru můžou být názvy skupin prostředků *Wingtip-SA-contosoconcerthall-AF1* , *Wingtip-SA-dogwooddojo-AF1* , *Wingtip-SA-fabrikamjazzclub-AF1* .
     * Z rozevíracího seznamu vyberte **umístění** .
 
-    * Pro **uživatele** – doporučujeme krátkou hodnotu uživatele, jako je například vaše iniciály a číslice: například *AF1*.
+    * Pro **uživatele** – doporučujeme krátkou hodnotu uživatele, jako je například vaše iniciály a číslice: například *AF1* .
 
 
-3. **Nasaďte aplikaci**.
+3. **Nasaďte aplikaci** .
 
     * Kliknutím souhlasíte s podmínkami a ujednáními.
-    * Klikněte na **Koupit**.
+    * Klikněte na **Koupit** .
 
 4. Kliknutím na **oznámení** (ikona zvonku napravo od vyhledávacího pole) Sledujte stav všech tří nasazení. Nasazení aplikací trvá přibližně pět minut.
 
@@ -106,12 +106,12 @@ Pojďme se podívat na některé z nasazených prostředků:
 
 Každá databáze tenanta je *samostatná* databáze 50 DTU.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 <!--
-* Additional [tutorials that build on the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* Additional [tutorials that build on the Wingtip SaaS application](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](elastic-pool-overview.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](../../sql-database/elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](./elastic-jobs-overview.md)
 -->
 
 - Další informace o víceklientské aplikacích SaaS najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
@@ -131,5 +131,3 @@ V tomto kurzu jste se dozvěděli:
 > * Jak odstranit ukázkové prostředky pro zastavení související fakturace
 
 V dalším kroku si vyzkoušíte kurz [zřízení a katalog](saas-standaloneapp-provision-and-catalog.md) , ve kterém budete zkoumat použití katalogu tenantů, který umožňuje využít řadu scénářů mezi klienty, jako je Správa schématu a analýza klientů.
- 
-

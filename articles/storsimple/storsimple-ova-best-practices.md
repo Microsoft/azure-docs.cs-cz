@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71b018da6b54ebf2b45a261378ea521a397159e5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460643"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964979"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pro StorSimple Virtual Array
 
@@ -119,7 +119,7 @@ Pokud je vaše virtuální pole připojené k doméně, můžete na něj použí
 Proto doporučujeme:
 
 * Ujistěte se, že vaše virtuální pole je ve své vlastní organizační jednotce pro službu Active Directory.
-* Ujistěte se, že ve virtuálním poli nejsou použité žádné objekty zásad skupiny (GPO). Dědičnost můžete zablokovat, aby se zajistilo, že virtuální pole (podřízený uzel) automaticky nedědí žádné objekty zásad skupiny z nadřazené položky. Další informace najdete na webu [blokování dědičnosti](https://technet.microsoft.com/library/cc731076.aspx).
+* Ujistěte se, že ve virtuálním poli nejsou použité žádné objekty zásad skupiny (GPO). Dědičnost můžete zablokovat, aby se zajistilo, že virtuální pole (podřízený uzel) automaticky nedědí žádné objekty zásad skupiny z nadřazené položky. Další informace najdete na webu [blokování dědičnosti](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731076(v=ws.11)).
 
 ### <a name="networking"></a>Sítě
 Konfigurace sítě pro vaše virtuální pole se provádí prostřednictvím místního webového uživatelského rozhraní. Virtuální síťové rozhraní je povolené prostřednictvím hypervisoru, ve kterém je virtuální pole zřízené. Na stránce [nastavení sítě](storsimple-virtual-array-deploy3-fs-setup.md) můžete nakonfigurovat IP adresu, podsíť a bránu virtuálního síťového rozhraní.  Pro vaše zařízení můžete také nakonfigurovat primární a sekundární server DNS, nastavení času a volitelná nastavení proxy serveru. Většina konfigurace sítě je jednorázová instalace. Před nasazením virtuálního pole si Projděte [požadavky na síť StorSimple](storsimple-ova-system-requirements.md#networking-requirements) .
@@ -137,7 +137,7 @@ Při nasazování virtuálního pole doporučujeme dodržovat tyto osvědčené 
   * Konfigurace statických IP adres. Je nutné nakonfigurovat primární a sekundární server DNS.
   * Pokud ve virtuálním poli definujete více síťových rozhraní, může Cloud dosáhnout jenom první síťové rozhraní (ve výchozím nastavení je to **Ethernet**). Chcete-li řídit typ provozu, můžete vytvořit několik virtuálních síťových rozhraní ve virtuálním poli (nakonfigurovaných jako server iSCSI) a propojit tato rozhraní s různými podsítěmi.
 * Pokud chcete omezit jenom šířku pásma cloudu (používané virtuálním polem), nakonfigurujte omezování směrovače nebo brány firewall. Pokud v hypervisoru definujete omezení, omezí se tím všechny protokoly, včetně iSCSI a protokolu SMB, nikoli jenom šířky pásma cloudu.
-* Ujistěte se, že je povolená synchronizace času pro hypervisory. Pokud používáte Hyper-V, vyberte své virtuální pole ve Správci technologie Hyper-V, klikněte na **nastavení &gt; integrační služby**a ujistěte se, že je zaškrtnutá **synchronizace času** .
+* Ujistěte se, že je povolená synchronizace času pro hypervisory. Pokud používáte Hyper-V, vyberte své virtuální pole ve Správci technologie Hyper-V, klikněte na **nastavení &gt; integrační služby** a ujistěte se, že je zaškrtnutá **synchronizace času** .
 
 ### <a name="storage-accounts"></a>Účty úložiště
 Virtuální pole StorSimple může být přidruženo k jednomu účtu úložiště. Tento účet úložiště může být automaticky generovaný účet úložiště, účet ve stejném předplatném jako služba nebo účet úložiště, který se vztahuje k jinému předplatnému. Další informace najdete v tématu [Správa účtů úložiště pro virtuální pole](storsimple-virtual-array-manage-storage-accounts.md).
@@ -149,7 +149,7 @@ Pro účty úložiště přidružené k virtuálnímu poli použijte následují
   
   * Doporučujeme, abyste ho vytvořili v oblasti nejbližší vzdálenému Office nebo pobočce, kde je vaše virtuální pole StorSimple nasazené, aby se minimalizovala latence.
   * Pamatujte na to, že účet úložiště nemůžete přesouvat mezi různými oblastmi. Nemůžete také přesunout službu mezi předplatnými.
-  * Použijte účet úložiště, který implementuje redundanci mezi datovými centry. Pro použití s virtuálním polem je podporováno geograficky redundantní úložiště (GRS), zóna redundantního úložiště (ZRS) a místně redundantní úložiště (LRS). Další informace o různých typech účtů úložiště najdete v části [replikace úložiště Azure](../storage/common/storage-redundancy.md).
+  * Použijte účet úložiště, který implementuje redundanci mezi datovými centry. Služba Geo-Redundant Storage (GRS), zóna redundantního úložiště (ZRS) a místně redundantní úložiště (LRS) jsou podporovány pro použití s virtuálním polem. Další informace o různých typech účtů úložiště najdete v části [replikace úložiště Azure](../storage/common/storage-redundancy.md).
 
 ### <a name="shares-and-volumes"></a>Sdílené složky a svazky
 Pro virtuální pole StorSimple můžete zřídit sdílené složky, pokud jsou nakonfigurované jako souborový server a svazky, pokud jsou nakonfigurované jako server iSCSI. Osvědčené postupy pro vytváření sdílených složek a svazků se týkají velikosti a typu nakonfigurovaného.
@@ -250,7 +250,7 @@ Při deaktivaci virtuálního pole mějte na paměti následující osvědčené
 * Před deaktivací StorSimple virtuálního pole nezapomeňte zastavit nebo odstranit klienty a hostitele, kteří na tomto zařízení závisejí.
 * Odstraňte deaktivované zařízení, pokud už se nepoužíváte, takže se neúčtují poplatky.
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 Aby se zajistilo, že vaše virtuální pole StorSimple je v nepřetržitém stavu, budete muset monitorovat pole a zajistit, aby se zobrazovaly informace ze systému včetně výstrah. Chcete-li monitorovat celkový stav virtuálního pole, implementujte tyto osvědčené postupy:
 
 * Nakonfigurujte monitorování a sledujte využití disku s datovým diskem virtuálního pole i disk s operačním systémem. Pokud používáte Hyper-V, můžete k monitorování hostitelů virtualizace použít kombinaci System Center Virtual Machine Manager (SCVMM) a System Center Operations Manager.
@@ -287,6 +287,5 @@ Pro rostoucí pracovní sadu dat, která by mohla přecházet do cloudu, může 
 * Pokud nasazujete více virtuálních polí, doporučujeme, abyste z perspektivy vyrovnávání zatížení rozšíříte pole napříč různými hostiteli hypervisoru.
 * V oboru názvů systém souborů DFS (Distributed File System) lze nasadit více virtuálních polí (Pokud je nakonfigurovaná jako souborový server nebo server iSCSI). Podrobný postup najdete v [systém souborů DFS (Distributed File System) řešení oboru názvů pomocí Průvodce nasazením hybridního cloudového úložiště](https://www.microsoft.com/download/details.aspx?id=45507). Replikace systém souborů DFS (Distributed File System) se momentálně nedoporučuje pro použití s virtuálním polem. 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 Naučte se [spravovat virtuální pole StorSimple](storsimple-virtual-array-manager-service-administration.md) prostřednictvím služby StorSimple Manager.
-

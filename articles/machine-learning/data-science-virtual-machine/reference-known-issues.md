@@ -3,18 +3,17 @@ title: 'Reference: známé problémy & řešení potíží'
 titleSuffix: Azure Data Science Virtual  Machine
 description: Seznam známých problémů, řešení a řešení potíží pro Azure Data Science Virtual Machine
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcd75347f91109967ac48427ca0b8855c11b7d9b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78206516"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656852"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Známé problémy a řešení potíží s Data Science Virtual Machine Azure
 
@@ -30,7 +29,7 @@ Tento článek vám pomůže najít a opravit chyby nebo chyby, ke kterým můž
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Šifrování disku se na Ubuntu DSVM nezdařilo.
 
-Azure Disk Encryption (ADE) není aktuálně podporován na Ubuntu DSVM. Alternativním řešením je zvážit konfiguraci [šifrování na straně serveru Azure Managed disks](../../virtual-machines/windows/disk-encryption.md).
+Azure Disk Encryption (ADE) není aktuálně podporován na Ubuntu DSVM. Alternativním řešením je zvážit konfiguraci [šifrování na straně serveru Azure Managed disks](../../virtual-machines/disk-encryption.md).
 
 ## <a name="tool-appears-disabled"></a>Nástroj se zobrazuje zakázaný
 
@@ -46,4 +45,3 @@ Tato technologie Hyper-V zpočátku nefunguje v systému Windows je očekávané
 Poslední obrazovka by měla vypadat takto:
 
    ![Povolení Hyper-V](./media/workaround/hyperv-enable-dsvm.png)
-

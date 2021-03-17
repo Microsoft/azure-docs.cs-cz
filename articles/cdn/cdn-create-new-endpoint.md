@@ -1,26 +1,19 @@
 ---
 title: Rychlý Start – vytvoření profilu a koncového bodu Azure CDN
 description: V tomto rychlém startu se dozvíte, jak povolit Azure CDN prostřednictvím vytvoření nového profilu CDN a koncového bodu CDN.
-services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: azure-cdn
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: af90166b688dee104e7bda18a88a2fe7c98f657b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: e8b3b5c28d00b4d7c81fa3e245113119ae3134ad
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996261"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555699"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Rychlý start: Vytvoření profilu a koncového bodu Azure CDN
 
@@ -53,7 +46,7 @@ Po vytvoření profilu CDN ho použijete k vytvoření koncového bodu.
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **Název** | Jako název hostitele koncového bodu zadejte *CDN-Endpoint-123* . Tento název musí být globálně jedinečný v rámci Azure. Pokud se už používá, zadejte jiný název. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _ &lt;koncového bodu&gt;-Name_. azureedge.NET.|
+    | **Název** | Jako název hostitele koncového bodu zadejte *CDN-Endpoint-123* . Tento název musí být globálně jedinečný v rámci Azure. Pokud se už používá, zadejte jiný název. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _&lt; koncového bodu &gt; -Name_. azureedge.NET.|
     | **Typ zdroje** | Vyberte **úložiště**. | 
     | **Název počátečního hostitele** | V rozevíracím seznamu vyberte název hostitele účtu Azure Storage, který používáte, například *cdnstorageacct123.blob.Core.Windows.NET*. |
     | **Cesta ke zdroji** | Ponechte prázdné. |
@@ -68,7 +61,7 @@ Po vytvoření profilu CDN ho použijete k vytvoření koncového bodu.
     
    ![Koncový bod CDN](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   Čas potřebný ke rozšiřování koncového bodu závisí na cenové úrovni vybrané při vytváření profilu. **Standardní Akamai** se obvykle dokončuje během jedné minuty, **standardu Microsoft** během 10 minut a **Standard Verizon** a **Premium Verizon** během až 90 minut.
+   Čas potřebný ke rozšiřování koncového bodu závisí na cenové úrovni vybrané při vytváření profilu. **Standardní Akamai** se obvykle dokončuje během jedné minuty, **standardu Microsoft** během 10 minut a **Standard Verizon** a **Premium Verizon** během až 30 minut.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -81,7 +74,4 @@ V předchozích krocích jste ve skupině prostředků vytvořili profil a konco
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: použití sítě CDN pro statický obsah serveru z webové aplikace](cdn-add-to-web-app.md)
-
-> [!div class="nextstepaction"]
-> [Kurz: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
+> [Kurz: použití CDN k poskytování statického obsahu z webové aplikace](cdn-add-to-web-app.md)

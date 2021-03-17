@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu Cílová zóna migrace CAF – přehled
 description: Přehled a architektura přechodu na cloud pro Azure (CAF) pro ukázkový podrobný plán Cílová zóna migrace.
-ms.date: 04/15/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 6deb671070a742448560309b1b1a3572f5aa082d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
-ms.translationtype: HT
+ms.openlocfilehash: 9cbf1c1a4ac4cf7a58ed27ec05cc77997da1366d
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852306"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472195"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Cílová zóna migrace
 
@@ -20,7 +20,9 @@ Ukázkový podrobný plán [Základy CAF](../caf-foundation/index.md) na tento p
 
 Ukázkový podrobný plán Cílová zóna migrace CAF nasadí do Azure základní prostředky infrastruktury, které organizace můžou využít k přípravě svých předplatných pro migraci virtuálních počítačů. Pomáhá také zavést ovládací prvky zásad správného řízení, které jsou nezbytné pro správu jejich cloudových aktiv. Tato ukázka nasadí a vynutí prostředky, zásady a šablony, které organizacím umožní, aby s Azure mohli bez obav začít.
 
-:::image type="content" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="Cílová zóna migrace CAF: Obrázek popisuje, co se nainstaluje v rámci pokynů CAF pro počáteční cílovou zónu." border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="Cílová zóna migrace CAF: Obrázek popisuje, co se nainstaluje v rámci pokynů CAF pro počáteční cílovou zónu." border="false":::
+   Popisuje architekturu Azure, která se zajistí nasazením podrobného plánu Migrace CAF.  Dá se použít pro předplatné se skupinami prostředků, jehož součástí je virtuální síť Azure, účet úložiště pro ukládání protokolů a analytiky protokolů nakonfigurované pro uložení v účtu úložiště.  Ukazuje také nakonfigurovanou službu Azure Key Vault a vytvořené počáteční nastavení služby Azure Migrate.  Všechny tyto základní infrastruktury jsou dostupné pomocí Azure Active Directory.     
+:::image-end:::
 
 Toto prostředí je tvořené několika službami Azure, které se využívají k zajištění zabezpečených a plně monitorovaných zásad správného řízení na podnikové úrovni. Toto prostředí tvoří:
 

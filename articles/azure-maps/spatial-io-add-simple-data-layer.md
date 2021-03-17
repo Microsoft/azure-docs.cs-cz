@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 704cb43a31ff1dfcaf287f9af467f7d6e7d6c50d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 90f3cb0ae44be176d3ae248988d098039c140c3e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282802"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896153"
 ---
 # <a name="add-a-simple-data-layer"></a>Přidání jednoduché datové vrstvy
 
@@ -57,7 +57,7 @@ Následující kód vykreslí funkci výše uvedeného bodu pomocí jednoduché 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Použití jednoduché datové vrstvy" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Podívejte se, jak pero <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>použít jednoduchou datovou vrstvu</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Použití jednoduché datové vrstvy" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Podívejte se, jak pero <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>použít jednoduchou datovou vrstvu</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Skutečná síla jednoduché datové vrstvy nastane v těchto případech:
@@ -70,7 +70,7 @@ Například při analýze datových kanálů XML nemusíte znát přesné styly 
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Možnosti jednoduchých datových vrstev" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Přečtěte si <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>Možnosti jednoduché datové vrstvy</a> pera od Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="700" style="width: 100%;" scrolling="no" title="Možnosti jednoduchých datových vrstev" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> Přečtěte si <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>Možnosti jednoduché datové vrstvy</a> pera od Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -102,7 +102,7 @@ Pokud je funkce nebo a `Point` `MultiPoint` a funkce nemá `image` vlastnost, kt
 | `radius` | `size`<sup>1</sup>, `marker-size` <sup>2</sup>, `scale` <sup>1</sup> | `8` |
 | `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
 
-\[1 \] `size` hodnoty a `scale` jsou považovány za skalární hodnoty a vynásobí se`8`
+\[1 \] `size` hodnoty a `scale` jsou považovány za skalární hodnoty a vynásobí se `8`
 
 \[2 \] Pokud `marker-size` je zadána možnost GitHubu, budou pro protokol RADIUS použity následující hodnoty.
 
@@ -118,7 +118,7 @@ Clustery se také vykreslují pomocí bublinové vrstvy. Ve výchozím nastaven�
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |
-| &lt;10pruhový     | `green`  |
+| &lt; 10pruhový     | `green`  |
 
 ### <a name="symbol-style-properties"></a>Vlastnosti stylu symbolu
 
@@ -176,10 +176,10 @@ Pokud je funkce nebo a `Polygon` `MultiPolygon` má `height` vlastnost s hodnoto
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+> [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+> [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 

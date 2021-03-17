@@ -1,25 +1,22 @@
 ---
-title: Nastavení připojení k účtu úložiště pomocí spravované identity (Preview)
+title: Nastavení připojení k účtu úložiště pomocí spravované identity
 titleSuffix: Azure Cognitive Search
-description: Naučte se, jak nastavit připojení indexeru k účtu Azure Storage pomocí spravované identity (Preview).
+description: Naučte se, jak nastavit připojení indexeru k účtu Azure Storage pomocí spravované identity.
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/22/2020
+ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553076"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358367"
 ---
-# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Nastavení připojení k účtu Azure Storage pomocí spravované identity (Preview)
-
-> [!IMPORTANT] 
-> Podpora nastavení připojení ke zdroji dat pomocí spravované identity je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
+# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Nastavení připojení k účtu služby Azure Storage s využitím spravované identity
 
 Tato stránka popisuje, jak nastavit připojení indexeru k účtu služby Azure Storage pomocí spravované identity namísto zadání přihlašovacích údajů do připojovacího řetězce objektu zdroje dat.
 
@@ -33,7 +30,7 @@ Než se dozvíte víc o této funkci, doporučujeme vám pochopit, co indexer je
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 – zapnout spravovanou identitu přiřazenou systémem
 
-Když je povolená spravovaná identita přiřazená systémem, Azure vytvoří identitu pro vaši vyhledávací službu, která se dá použít k ověření dalších služeb Azure v rámci stejného tenanta a předplatného. Tuto identitu pak můžete použít v přiřazeních řízení přístupu na základě role (RBAC), které umožňuje přístup k datům během indexování.
+Když je povolená spravovaná identita přiřazená systémem, Azure vytvoří identitu pro vaši vyhledávací službu, která se dá použít k ověření dalších služeb Azure v rámci stejného tenanta a předplatného. Tuto identitu pak můžete použít v přiřazeních řízení přístupu na základě role v Azure (Azure RBAC), které umožňuje přístup k datům během indexování.
 
 ![Zapnout spravovanou identitu přiřazenou systémem](./media/search-managed-identities/turn-on-system-assigned-identity.png "Zapnout spravovanou identitu přiřazenou systémem")
 
@@ -46,7 +43,7 @@ Po výběru možnosti **Uložit** se zobrazí ID objektu, které bylo přiřazen
 V tomto kroku udělíte službě Azure Kognitivní hledání oprávnění číst data z vašeho účtu úložiště.
 
 1. V Azure Portal přejděte k účtu úložiště, který obsahuje data, která chcete indexovat.
-2. Výběr **řízení přístupu (IAM)**
+2. Vyberte **Řízení přístupu (IAM)** .
 3. Vyberte **Přidat** a pak **Přidat přiřazení role** .
 
     ![Přidat přiřazení role](./media/search-managed-identities/add-role-assignment-storage.png "Přidat přiřazení role")
@@ -68,7 +65,7 @@ V tomto kroku udělíte službě Azure Kognitivní hledání oprávnění číst
 
 ### <a name="3---create-the-data-source"></a>3. vytvoření zdroje dat
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z účtu úložiště pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) a připojovacího řetězce spravované identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
+[REST API](/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z účtu úložiště pomocí [REST API](/rest/api/searchservice/create-data-source) a připojovacího řetězce spravované identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
 
 Při indexování z účtu úložiště musí mít zdroj dat následující požadované vlastnosti:
 
@@ -80,10 +77,10 @@ Při indexování z účtu úložiště musí mít zdroj dat následující pož
 * **přihlašovací údaje**
     * Při ověřování pomocí spravované identity se formát **přihlašovacích údajů** liší od použití spravované identity. Tady poskytnete ResourceId, které nemá klíč účtu ani heslo. ResourceId musí zahrnovat ID předplatného účtu úložiště, skupinu prostředků účtu úložiště a název účtu úložiště.
     * Spravovaný formát identity: 
-        * *ResourceId =/Subscriptions/**ID vašeho předplatného**/resourceGroups/název vaší**skupiny prostředků**/Providers/Microsoft.Storage/storageAccounts/**název vašeho účtu úložiště**/;*
+        * *ResourceId =/Subscriptions/ **ID vašeho předplatného** /resourceGroups/název vaší **skupiny prostředků** /Providers/Microsoft.Storage/storageAccounts/ **název vašeho účtu úložiště** /;*
 * **kontejner** Určuje název kontejneru nebo tabulky v účtu úložiště. Ve výchozím nastavení jsou všechny objekty BLOB v kontejneru navýšené. Pokud chcete indexovat objekty blob pouze v konkrétním virtuálním adresáři, můžete tento adresář zadat pomocí volitelného parametru **dotazu** .
 
-Příklad vytvoření objektu zdroje dat objektů BLOB pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
+Příklad vytvoření objektu zdroje dat objektů BLOB pomocí [REST API](/rest/api/searchservice/create-data-source):
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -118,7 +115,7 @@ Tady je postup, jak vytvořit index s `content` polem, které lze prohledávat a
     }
 ```
 
-Další informace o vytváření indexů najdete v tématu [vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+Další informace o vytváření indexů najdete v tématu [vytvoření indexu](/rest/api/searchservice/create-index) .
 
 ### <a name="5---create-the-indexer"></a>5. vytvoření indexeru
 
@@ -143,13 +140,18 @@ Příklad definice indexeru pro indexer objektů BLOB:
 
 Tento indexer se spustí každé dvě hodiny (časový interval je nastaven na "PT2H"). Pokud chcete indexer spustit každých 30 minut, nastavte interval na "PT30M". Nejkratší podporovaný interval je 5 minut. Plán je nepovinný – Pokud je vynechaný, indexer se při vytvoření spustí jenom jednou. Můžete ale kdykoli spustit indexer na vyžádání.   
 
-Další informace o rozhraní API Create indexeru najdete v části [Vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Další informace o rozhraní API Create indexeru najdete v části [Vytvoření indexeru](/rest/api/searchservice/create-indexer).
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
+
+## <a name="accessing-secure-data-in-storage-accounts"></a>Přístup k zabezpečeným datům v účtech úložiště
+
+Účty Azure Storage je možné dále zabezpečit pomocí bran firewall a virtuálních sítí. Pokud chcete indexovat obsah z účtu BLOB Storage nebo Data Lake Gen2 účet úložiště, který je zabezpečený pomocí brány firewall nebo virtuální sítě, postupujte podle pokynů pro [přístup k datům v účtech úložiště bezpečně prostřednictvím výjimky důvěryhodné služby](search-indexer-howto-access-trusted-service-exception.md).
 
 ## <a name="see-also"></a>Viz také
 
 Další informace o Azure Storage indexerech:
+
 * [Indexer Azure Blob](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2 indexer](search-howto-index-azure-data-lake-storage.md)
 * [Indexer tabulek Azure](search-howto-indexing-azure-tables.md)

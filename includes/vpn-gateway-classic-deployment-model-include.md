@@ -5,17 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1cf8babe1e769382ba86a2cfa8c570ae2d1e5c62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 621ac11531a77342204bbbd8628aaa5c11fb88cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174840"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028112"
 ---
 > [!NOTE]
-> Tento článek se týká modelu nasazení Classic. Pokud s Azure začínáte, doporučujeme vám místo toho použít model nasazení Resource Manager. Model nasazení Resource Manager je nejnovější model nasazení a nabízí více možností a větší kompatibilitu funkcí než model nasazení Classic. Další informace o modelech nasazení najdete v tématu [Vysvětlení modelů nasazení](../articles/resource-manager-deployment-model.md).
+> Tento článek se týká modelu nasazení Classic. Pokud s Azure začínáte, doporučujeme vám místo toho použít model nasazení Resource Manager. Model nasazení Resource Manager je nejnovější model nasazení a nabízí více možností a větší kompatibilitu funkcí než model nasazení Classic. Další informace o modelech nasazení najdete v tématu [Vysvětlení modelů nasazení](../articles/azure-resource-manager/management/deployment-models.md).
 > 
-> Pokud chcete zobrazit tento článek ve verzi pro Resource Manager, vyberte ho z rozevírací nabídky níže nebo z obsahu vlevo.
+> Pro Správce prostředků verzi tohoto článku ho vyberte v rozevíracím seznamu nebo v obsahu na levé straně.
+>

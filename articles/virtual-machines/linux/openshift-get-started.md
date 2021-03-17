@@ -3,18 +3,19 @@ title: OpenShift v Azure – přehled
 description: Přehled OpenShift v Azure.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 989c67d0d1b1cd8257da089ec9c31f247228018e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: aba01fc2317372438bc0d93a6618d518ab03ed0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367941"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672312"
 ---
 # <a name="openshift-in-azure"></a>OpenShift v Azure
 
@@ -46,7 +47,7 @@ OKD je [Open Source](https://www.okd.io/) projekt pro OpenShift, který je podpo
 
 - [Konfigurace běžných požadavků pro OpenShift v Azure](./openshift-container-platform-3x-prerequisites.md)
 - [Nasazení platformy kontejnerů OpenShift v Azure](./openshift-container-platform-3x.md)
-- [Nasazení nabídky samoobslužného tržiště spravovaného kontejnerem OpenShift](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [Nasazení OpenShift kontejnerové platformy Self-Managed nabídky Marketplace](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [Nasazení OpenShift v Azure Stack](./openshift-azure-stack.md)
 - [Úkoly po nasazení](./openshift-container-platform-3x-post-deployment.md)
 - [Řešení potíží s nasazením OpenShift](./openshift-container-platform-3x-troubleshooting.md)

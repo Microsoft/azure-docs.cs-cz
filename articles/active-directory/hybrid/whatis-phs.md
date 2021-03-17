@@ -11,17 +11,17 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e40eecce3ff0ea5b252fd135ae553fa20e0a77b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 23f88a783ca257090fc607cc9a16ec457c7e9c8c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386347"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90016584"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Co je synchronizace hodnot hash hesel pomocí Azure AD?
 Synchronizace hodnot hash hesel je jednou z metod přihlášení, které se používají k provádění hybridní identity. Azure AD Connect synchronizuje hodnotu hash hesla uživatele z místní instance služby Active Directory s využitím cloudové instance služby Azure AD.
 
-Synchronizace hodnot hash hesel je rozšířením funkce synchronizace adresáře implementované Azure AD Connect synchronizace. Tuto funkci můžete použít pro přihlášení ke službám Azure AD, jako je například Office 365. Ke službě se přihlašujete pomocí stejného hesla, které používáte k přihlášení k místní instanci služby Active Directory.
+Synchronizace hodnot hash hesel je rozšířením funkce synchronizace adresáře implementované Azure AD Connect synchronizace. Tuto funkci můžete použít pro přihlášení ke službám Azure AD, jako je Microsoft 365. Ke službě se přihlašujete pomocí stejného hesla, které používáte k přihlášení k místní instanci služby Active Directory.
 
 ![Co je služba Azure AD Connect](./media/how-to-connect-password-hash-synchronization/arch1.png)
 

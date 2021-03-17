@@ -1,19 +1,16 @@
 ---
 title: Řešení chyb při vytváření prostředků ve službě Azure HDInsight
 description: V tomto článku jsou uvedené běžné chyby a techniky zmírnění potíží s kapacitou.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 527d2d8cb8086ed6b5e87417e2bc80dd52aa6e63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bad934e02184c46c19dcda91e18e7c7ce2f1c884
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188408"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944650"
 ---
 # <a name="troubleshoot-resource-creation-failures-in-azure-hdinsight"></a>Řešení chyb při vytváření prostředků ve službě Azure HDInsight
 
@@ -25,7 +22,7 @@ V Azure platí limit kvóty 800 nasazení na skupinu prostředků. Pro každou s
 
 Pokud chcete tento problém vyřešit, odstraňte nasazení, která už nepotřebujete, pomocí Azure Portal, CLI nebo PowerShellu.
 
-Další informace najdete v tématu [Řešení chyb týkajících se kvót prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
+Další informace najdete v tématu [Řešení chyb týkajících se kvót prostředků](../azure-resource-manager/templates/error-resource-quota.md).
 
 ## <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Chyba: maximální uzel překročil dostupné jádra v této oblasti.
 
@@ -47,10 +44,4 @@ Další informace najdete v tématu [Vytvoření lístku podpory kvůli navýše
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

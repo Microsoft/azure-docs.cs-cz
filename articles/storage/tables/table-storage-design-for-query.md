@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 43ae21d97bc9d8292270ae62006e649f4bcf540b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236331"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316148"
 ---
 # <a name="design-for-querying"></a>Návrh pro dotazování
 Table service řešení mohou být náročná na čtení, náročné na zápis nebo kombinace těchto dvou. Tento článek se zaměřuje na postupy, které je potřeba mít na paměti při navrhování Table service, aby bylo možné efektivně podporovat operace čtení. Obecně platí, že návrh, který podporuje operace čtení efektivně, je také účinný pro operace zápisu. Existují však i další okolnosti, které byste měli mít na paměti při navrhování pro podporu operací zápisu popsaných v článku [Návrh pro úpravu dat](table-storage-design-for-modification.md).
@@ -41,18 +41,18 @@ V následujících příkladech se předpokládá, že služba Table Service ukl
 | **RowKey** (ID zaměstnance) |Řetězec |
 | **FirstName** |Řetězec |
 | **LastName** |Řetězec |
-| **Stáří** |Integer |
+| **Age** (Věk) |Integer |
 | **EmailAddress** |Řetězec |
 
-Článek [Přehled služby Azure Table Storage](table-storage-overview.md) popisuje některé klíčové funkce Table Service Azure, které mají přímý vliv na návrh pro dotazy. Výsledkem jsou následující obecné pokyny pro navrhování Table service dotazů. Všimněte si, že syntaxe filtru použitá v níže uvedených příkladech pochází z REST API Table service, další informace najdete v tématu věnovaném [dotazům v entitě](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  
+Článek [Přehled služby Azure Table Storage](table-storage-overview.md) popisuje některé klíčové funkce Table Service Azure, které mají přímý vliv na návrh pro dotazy. Výsledkem jsou následující obecné pokyny pro navrhování Table service dotazů. Všimněte si, že syntaxe filtru použitá v níže uvedených příkladech pochází z REST API Table service, další informace najdete v tématu věnovaném [dotazům v entitě](/rest/api/storageservices/Query-Entities).  
 
-* ***Dotaz na bod*** je nejúčinnější vyhledávání, které se má použít, se doporučuje použít pro vyhledávání ve velkém objemech nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může použít indexy k velmi efektivnímu vyhledání jednotlivých entit zadáním hodnot **PartitionKey** a **RowKey** . Například: $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ ' 2 ')  
-* Druhým nejlepším je ***dotaz na rozsah*** , který používá **PartitionKey** a filtry na rozsah hodnot **RowKey** pro vrácení více než jedné entity. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty **RowKey** identifikují podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ "Sales" and RowKey GE 'S "and RowKey lt t"  
-* Třetí nejlepší je ***skenování oddílů*** , které používá **PartitionKey** a filtry pro jinou neklíčovou vlastnost a která může vracet více než jednu entitu. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ ' Sales ' a LastName EQ ' Smith '  
-* ***Hledání v tabulce*** neobsahuje **PartitionKey** a je velmi neefektivní, protože prohledává všechny oddíly, které tvoří tabulku, a naopak všechny odpovídající entity. Provede kontrolu tabulky bez ohledu na to, zda filtr používá **RowKey**. Příklad: $filter = příjmení EQ ' Novák '  
+* * **Bodový dotaz** _ je nejúčinnější vyhledávání, které se má použít, a doporučuje se ho použít pro vyhledávání ve velkém objemech nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může použít indexy k velmi efektivnímu vyhledání jednotlivých entit zadáním hodnot _ *PartitionKey* * a **RowKey** . Například: $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ ' 2 ')  
+* Druhým nejlepším je * **dotaz na rozsah** _, který používá _ *PartitionKey* * a filtry na rozsah hodnot **RowKey** pro vrácení více než jedné entity. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty **RowKey** identifikují podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ "Sales" and RowKey GE 'S "and RowKey lt t"  
+* Třetí nejlepší je * **prověřování oddílu** _, které používá _ *PartitionKey* * a filtry pro jinou neklíčovou vlastnost a která může vracet více než jednu entitu. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ ' Sales ' a LastName EQ ' Smith '  
+* Funkce * **prověřování v tabulce** _ neobsahuje _ *PartitionKey* * a je velmi neefektivní, protože prohledává všechny oddíly, které tvoří tabulku, a také všechny odpovídající entity. Provede kontrolu tabulky bez ohledu na to, zda filtr používá **RowKey**. Příklad: $filter = příjmení EQ ' Novák '  
 * Dotazy, které vracejí více entit, je vrátí seřazené v pořadí **PartitionKey** a **RowKey** . Chcete-li se vyhnout vyřazování entit v klientovi, vyberte **RowKey** , který definuje nejběžnější pořadí řazení.  
 
-Všimněte si, že použití "**nebo**" k určení filtru založeného na hodnotách **RowKey** má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto byste se měli vyhnout dotazům, které používají filtry jako: $filter = PartitionKey EQ ' Sales ' a (RowKey EQ ' 121 ' nebo RowKey EQ ' 322 ')  
+Všimněte si, že použití " **nebo** " k určení filtru založeného na hodnotách **RowKey** má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto byste se měli vyhnout dotazům, které používají filtry jako: $filter = PartitionKey EQ ' Sales ' a (RowKey EQ ' 121 ' nebo RowKey EQ ' 322 ')  
 
 Příklady kódu na straně klienta, který používá klientskou knihovnu pro úložiště ke spouštění efektivních dotazů, najdete v těchto tématech:  
 

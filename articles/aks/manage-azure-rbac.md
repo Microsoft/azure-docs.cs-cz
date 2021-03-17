@@ -1,34 +1,33 @@
 ---
-title: Správa RBAC v Kubernetes z Azure
+title: Správa služby Azure RBAC v Kubernetes z Azure
 titleSuffix: Azure Kubernetes Service
 description: Naučte se používat Azure RBAC pro autorizaci Kubernetes se službou Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c1222f671c95d4475de93b9c9e085a94f864b2ae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9ce8bc71139b52d690893734435e6bfee090062d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003088"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184368"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Použití Azure RBAC pro autorizaci Kubernetes (Preview)
 
 Dnes už můžete využít [integrované ověřování mezi Azure Active Directory (Azure AD) a AKS](managed-aad.md). Pokud je tato integrace povolená, umožňuje zákazníkům používat pro uživatele, skupiny nebo instanční objekty Azure AD jako předměty v Kubernetes RBAC další [informace.](azure-ad-rbac.md)
-Tato funkce uvolní, abyste nemuseli samostatně spravovat identity uživatelů a přihlašovací údaje pro Kubernetes. Pořád ale musíte nastavit a spravovat službu Azure RBAC a Kubernetes RBAC samostatně. Další podrobnosti o ověřování, autorizaci a RBAC na AKS najdete [tady](concepts-identity.md).
+Tato funkce uvolní, abyste nemuseli samostatně spravovat identity uživatelů a přihlašovací údaje pro Kubernetes. Pořád ale musíte nastavit a spravovat službu Azure RBAC a Kubernetes RBAC samostatně. Další podrobnosti o ověřování a autorizaci pomocí RBAC na AKS najdete [tady](concepts-identity.md).
 
 Tento dokument popisuje nový přístup, který umožňuje jednotnou správu a řízení přístupu napříč prostředky Azure, AKS a Kubernetes prostředky.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost spravovat RBAC pro prostředky clusteru, a to buď pomocí Azure, nebo nativních mechanismů Kubernetes. Pokud je povoleno, objekty zabezpečení Azure AD budou ověřovány výhradně pomocí Azure RBAC, zatímco pravidelné Kubernetes uživatele a účty služeb jsou exkluzivně ověřovány Kubernetes RBAC. Další podrobnosti o ověřování, autorizaci a RBAC na AKS najdete [tady](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview).
+Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost spravovat RBAC pro prostředky clusteru, a to buď pomocí Azure, nebo nativních mechanismů Kubernetes. Pokud je povoleno, objekty zabezpečení Azure AD budou ověřovány výhradně pomocí Azure RBAC, zatímco pravidelné Kubernetes uživatele a účty služeb jsou exkluzivně ověřovány Kubernetes RBAC. Další podrobnosti o ověřování a autorizaci pomocí RBAC na AKS najdete [tady](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview).
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>Požadavky 
-- Zaregistrujte se do verze Preview <https://aka.ms/aad-rbac-sign-up-form> .
 - Ujistěte se, že máte Azure CLI verze 2.9.0 nebo novější.
 - Ujistěte se, že máte `EnableAzureRBACPreview` povolený příznak funkce.
 - Ujistěte se, že máte `aks-preview` nainstalovanou [příponu CLI][az-extension-add] v 0.4.55 nebo novější verzi.
@@ -44,13 +43,13 @@ Zaregistrujte `EnableAzureRBACPreview` příznak funkce pomocí příkazu [AZ Fe
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
 ```
 
-Před tím, než bude možné úspěšně zaregistrovat příznak, budete muset získat schválení po odeslání výše uvedeného formuláře verze Preview. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
+ Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
 ```
 
-Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [az Provider Register] [az-Provider-Register].
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -73,9 +72,9 @@ az extension update --name aks-preview
 - Vyžaduje [spravovanou integraci služby Azure AD](managed-aad.md).
 - V rámci verze Preview nemůžete integrovat Azure RBAC pro autorizaci Kubernetes do existujících clusterů, ale budete mít k dispozici obecné dostupnosti (GA).
 - Použijte [kubectl v 1.18.3 +][az-aks-install-cli].
-- Během období Preview můžete přidat jenom oprávnění na *úrovni oboru názvů* prostřednictvím Azure CLI.
 - Pokud máte CRDs a vytváříte vlastní definice rolí, jediným způsobem, jak pokrýt CRDs dnes, je poskytnout `Microsoft.ContainerService/managedClusters/*/read` . AKS pracuje na poskytování podrobnějších oprávnění pro CRDs. Pro zbývající objekty můžete použít konkrétní skupiny rozhraní API, například: `Microsoft.ContainerService/apps/deployments/read` .
 - Nové přiřazení rolí může trvat až 5 minut, než se rozšíří a aktualizuje autorizační Server.
+- Vyžaduje, aby byl tenant Azure AD nakonfigurovaný pro ověřování stejný jako tenant u předplatného, které obsahuje cluster AKS. 
 
 ## <a name="create-a-new-cluster-using-azure-rbac-and-managed-azure-ad-integration"></a>Vytvoření nového clusteru pomocí Azure RBAC a spravované integrace služby Azure AD
 
@@ -116,7 +115,7 @@ AKS poskytuje následující čtyři předdefinované role:
 
 | Role                                | Popis  |
 |-------------------------------------|--------------|
-| Prohlížeč RBAC pro službu Azure Kubernetes  | Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Nepovoluje zobrazení rolí nebo vazeb rolí. Tato role nepovoluje zobrazení `Secrets` , protože čtení obsahu tajných kódů umožňuje přístup k přihlašovacím údajům ServiceAccount v oboru názvů, což by mohlo povolit přístup k rozhraní API jako libovolný ServiceAccount v oboru názvů (forma eskalace oprávnění).  |
+| Čtečka RBAC služby Azure Kubernetes  | Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Nepovoluje zobrazení rolí nebo vazeb rolí. Tato role nepovoluje zobrazení `Secrets` , protože čtení obsahu tajných kódů umožňuje přístup k přihlašovacím údajům ServiceAccount v oboru názvů, což by mohlo povolit přístup k rozhraní API jako libovolný ServiceAccount v oboru názvů (forma eskalace oprávnění).  |
 | Zapisovač RBAC služby Azure Kubernetes | Povoluje přístup pro čtení a zápis většiny objektů v oboru názvů. Tato role nepovoluje prohlížení a úpravy rolí nebo vazeb rolí. Tato role však umožňuje přístup k `Secrets` luskům a jejich spuštění jako libovolných ServiceAccount v oboru názvů, takže se dá použít k získání úrovní přístupu rozhraní API všech ServiceAccount v oboru názvů. |
 | Správce RBAC služby Azure Kubernetes  | Povoluje přístup správce, který má být udělen v rámci oboru názvů. Umožňuje přístup pro čtení a zápis většiny prostředků v oboru názvů (nebo oboru clusteru), včetně možnosti vytvářet role a vazby rolí v rámci oboru názvů. Tato role nepovoluje přístup pro zápis k kvótě prostředků nebo samotnému oboru názvů. |
 | Správce clusteru RBAC služby Azure Kubernetes  | Umožňuje přístupu super uživatele k provedení jakékoli akce u libovolného prostředku. Poskytuje plnou kontrolu nad všemi prostředky v clusteru a ve všech oborech názvů. |
@@ -160,12 +159,12 @@ Zkopírujte níže JSON do souboru s názvem `deploy-view.json` .
     "Actions": [],
     "NotActions": [],
     "DataActions": [
-        "Microsoft.ContainerService/managedClusters/apps/deployments/read"  
+        "Microsoft.ContainerService/managedClusters/apps/deployments/read"
     ],
     "NotDataActions": [],
     "assignableScopes": [
         "/subscriptions/<YOUR SUBSCRIPTION ID>"
-    ]   
+    ]
 }
 ```
 
@@ -188,7 +187,7 @@ Teď, když máte definici role, můžete ji přiřadit uživateli nebo jiné id
 az role assignment create --role "AKS Deployment Viewer" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
 ```
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>Použití Azure RBAC pro autorizaci Kubernetes s`kubectl`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>Použití Azure RBAC pro autorizaci Kubernetes s `kubectl`
 
 > [!NOTE]
 > Zajistěte, abyste měli nejnovější kubectl spuštěním následujícího příkazu:
@@ -222,7 +221,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>Použití Azure RBAC pro autorizaci Kubernetes s`kubelogin`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>Použití Azure RBAC pro autorizaci Kubernetes s `kubelogin`
 
 K odblokování dalších scénářů, jako jsou neinteraktivní přihlášení, starší `kubectl` verze nebo použití jednotného přihlašování napříč několika clustery bez nutnosti přihlašovat se k novému clusteru, jste udělili, že token je stále platný, AKS vytvořil modul plug-in exec [`kubelogin`](https://github.com/Azure/kubelogin) .
 
@@ -273,7 +272,7 @@ az group delete -n MyResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o ověřování AKS, autorizaci [a RBAC.](concepts-identity.md)
+- Přečtěte si další informace o ověřování AKS, autorizaci, Kubernetes RBAC a Azure [RBAC.](concepts-identity.md)
 - Přečtěte si další informace o Azure RBAC [tady](../role-based-access-control/overview.md).
 - Přečtěte si další informace o všech akcích, které můžete použít k podrobnému definování vlastních rolí Azure [pro autorizaci](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)Kubernetes.
 
@@ -285,4 +284,5 @@ az group delete -n MyResourceGroup
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
+[az-provider-register]: /cli/azure/provider#az-provider-register

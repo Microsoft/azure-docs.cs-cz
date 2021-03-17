@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b214932f43ce20480ee37a7b4edf942f080b38e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce39e23208398f6060103345a6c6cb3541834abc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174900"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90606570"
 ---
 Při instalaci klientského certifikátu budete potřebovat heslo, které bylo vytvořeno při jeho exportu.
 
@@ -23,4 +23,4 @@ Při instalaci klientského certifikátu budete potřebovat heslo, které bylo v
    ![Přidat certifikáty](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
 3. Zadejte heslo, které jste vytvořili při exportu klientského certifikátu. Heslo chrání privátní klíč certifikátu. Instalaci dokončíte kliknutím na **OK** .
 
-   ![Heslo](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)
+   ![Snímek obrazovky se zobrazí dialogové okno s výzvou k zadání hesla.](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)

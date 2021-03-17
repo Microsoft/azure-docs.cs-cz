@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 53a861761f819c2127228e7ef688f04d91744d25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081249"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021924"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak se připojit ke zdrojům dat
 ## <a name="introduction"></a>Úvod
@@ -40,7 +40,7 @@ Při použití možnosti otevřít v... v nabídce zdrojů dat na portálu Azure
 | Power Query |.xlsx |Excel 2016 nebo Excel 2010 nebo Excel 2013 s nainstalovaným doplňkem Power Query for Excel |
 | Power BI Desktop |. pbix |Power BI Desktop červenec 2016 nebo novější |
 | SQL Server Data Tools |vsweb:// |Visual Studio 2013 Update 4 nebo novější s nainstalovanou SQL Server nástrojů |
-| Správce sestav |http:// |Viz [požadavky na prohlížeč pro SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |
+| Správce sestav |http:// |Viz [požadavky na prohlížeč pro SQL Server Reporting Services](/sql/reporting-services/browser-support-for-reporting-services-and-power-view) |
 
 ## <a name="your-data-your-tools"></a>Vaše data, vaše nástroje
 Možnosti dostupné v nabídce budou záviset na typu aktuálně vybraného datového assetu. Samozřejmě nejsou všechny možné nástroje zahrnuté do příkazu otevřít v... , ale je stále snadné se připojit ke zdroji dat pomocí libovolného klientského nástroje. Po výběru datového assetu na portálu **Azure Data Catalog** se v podokně Vlastnosti zobrazí úplné umístění.
@@ -56,7 +56,7 @@ Aby bylo snazší uživatelům, kteří si objevují zdroj dat, ale nemají opr�
 
  ![Informace o připojení s poskytnutými pokyny pro přístup k žádosti](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Registrace zdroje dat pomocí **Azure Data Catalog** zajišťuje, aby byla data zjistitelná zkopírováním strukturních a popisných metadat ze zdroje dat do služby katalogu. Po zaregistrování zdroje dat a zjištění, že se uživatelé mohou připojit ke zdroji dat z portálu **Azure Data Catalog** otevřít v... nebo pomocí svých nástrojů pro data dle výběru.
 
 ## <a name="see-also"></a>Viz také

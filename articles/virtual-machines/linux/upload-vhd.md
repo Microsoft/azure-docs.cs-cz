@@ -1,25 +1,27 @@
 ---
 title: Nahrání nebo zkopírování vlastního virtuálního počítače se systémem Linux pomocí Azure CLI
 description: Nahrání nebo zkopírování vlastního virtuálního počítače pomocí modelu nasazení Správce prostředků a Azure CLI
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: df2b58e0067932edd9dfa21ee1a6fbb2a5c1fdf7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d549d77b4a60f7543f69a9fd89e8b538c95d010
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289762"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564607"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -38,12 +40,12 @@ Máte dvě možnosti, jak vytvořit vlastní disk:
 K provedení následujících kroků budete potřebovat:
 
 - Virtuální počítač se systémem Linux připravený pro použití v Azure. Část [Příprava virtuálního počítače](#prepare-the-vm) v tomto článku popisuje, jak najít informace specifické pro distribuce k instalaci agenta Azure Linux (waagent), který je potřeba pro připojení k virtuálnímu počítači pomocí SSH.
-- Soubor VHD z existující distribuce systému [Linux schváleného službou Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (nebo zobrazit [informace o neschválených distribucích](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) na virtuální disk ve formátu VHD. Existuje několik nástrojů, které slouží k vytvoření virtuálního počítače a virtuálního pevného disku:
+- Soubor VHD z existující distribuce systému [Linux schváleného službou Azure](endorsed-distros.md) (nebo zobrazit [informace o neschválených distribucích](create-upload-generic.md)) na virtuální disk ve formátu VHD. Existuje několik nástrojů, které slouží k vytvoření virtuálního počítače a virtuálního pevného disku:
   - Nainstalujte a nakonfigurujte [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) nebo [KVM](https://www.linux-kvm.org/page/RunningKVM), přičemž se ujistěte, že jako formát obrázku použijete VHD. V případě potřeby můžete [obrázek převést](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) pomocí `qemu-img convert` .
   - Můžete také použít Hyper-V [ve Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) nebo [Windows Serveru 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 > [!NOTE]
-> Novější formát VHDX se v Azure nepodporuje. Když vytváříte virtuální počítač, zadejte jako formát VHD. V případě potřeby můžete disky VHDX převést na VHD pomocí rutiny Convert- [img qemu-img](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) nebo rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) prostředí PowerShell. Azure nepodporuje nahrávání dynamických virtuálních pevných disků, takže před odesláním budete muset tyto disky převést na statické virtuální pevné disky. Pomocí nástrojů, jako jsou například [nástroje Azure VHD](https://github.com/Microsoft/azure-vhd-utils-for-go) Tools, můžete na cestách převést dynamické disky během procesu jejich nahrávání do Azure.
+> Novější formát VHDX se v Azure nepodporuje. Když vytváříte virtuální počítač, zadejte jako formát VHD. V případě potřeby můžete disky VHDX převést na VHD pomocí rutiny Convert- [img qemu-img](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) nebo rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) prostředí PowerShell. Azure nepodporuje nahrávání dynamických virtuálních pevných disků, takže před odesláním budete muset tyto disky převést na statické virtuální pevné disky. Pomocí nástrojů, jako jsou například [nástroje Azure VHD](https://github.com/Microsoft/azure-vhd-utils-for-go) Tools, můžete na cestách převést dynamické disky během procesu jejich nahrávání do Azure.
 > 
 > 
 
@@ -56,20 +58,20 @@ V následujících příkladech nahraďte příklady názvů parametrů vlastní
 
 ## <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 
-Azure podporuje různé distribuce systému Linux (viz [schválené distribuce](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Následující články popisují, jak připravit různé distribuce systému Linux podporované v Azure:
+Azure podporuje různé distribuce systému Linux (viz [schválené distribuce](endorsed-distros.md)). Následující články popisují, jak připravit různé distribuce systému Linux podporované v Azure:
 
-* [Distribuce založené na CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [SLES a openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Ostatní: neschválené distribuce](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Distribuce založené na CentOS](create-upload-centos.md)
+* [Debian Linux](debian-create-upload-vhd.md)
+* [Oracle Linux](oracle-create-upload-vhd.md)
+* [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+* [SLES a openSUSE](suse-create-upload-vhd.md)
+* [Ubuntu](create-upload-ubuntu.md)
+* [Ostatní: neschválené distribuce](create-upload-generic.md)
 
 Další obecné tipy k přípravě imagí pro Linux pro Azure najdete také v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 
 > [!NOTE]
-> [Smlouva SLA platformy Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) se vztahuje na virtuální počítače se systémem Linux jenom v případě, že se jedno z označených distribucí používá s podrobnostmi konfigurace, které jsou uvedené v části podporované verze v systému [Linux v distribucích schválených pro Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> [Smlouva SLA platformy Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) se vztahuje na virtuální počítače se systémem Linux jenom v případě, že se jedno z označených distribucí používá s podrobnostmi konfigurace, jak je uvedeno v části podporované verze v [linuxech v Azure-Endorsedch distribucích](endorsed-distros.md).
 > 
 > 
 
@@ -133,4 +135,4 @@ az vm create \
 Měli byste být schopni se k virtuálnímu počítači přihlásit přes SSH pomocí přihlašovacích údajů ze zdrojového virtuálního počítače. 
 
 ## <a name="next-steps"></a>Další kroky
-Po přípravě a nahrání vlastního virtuálního disku si můžete přečíst další informace o [používání Správce prostředků a šablon](../../azure-resource-manager/management/overview.md). Na nové virtuální počítače můžete také [přidat datový disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Pokud máte aplikace spuštěné na virtuálních počítačích, ke kterým potřebujete přístup, nezapomeňte [otevřít porty a koncové body](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Po přípravě a nahrání vlastního virtuálního disku si můžete přečíst další informace o [používání Správce prostředků a šablon](../../azure-resource-manager/management/overview.md). Na nové virtuální počítače můžete také [přidat datový disk](add-disk.md) . Pokud máte aplikace spuštěné na virtuálních počítačích, ke kterým potřebujete přístup, nezapomeňte [otevřít porty a koncové body](nsg-quickstart.md).

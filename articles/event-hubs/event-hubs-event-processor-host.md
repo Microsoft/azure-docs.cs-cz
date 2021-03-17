@@ -3,22 +3,21 @@ title: Příjem událostí pomocí procesoru událostí hostitel – Azure Event
 description: Tento článek popisuje hostitele procesoru událostí v Azure Event Hubs, který zjednodušuje správu kontrolních bodů, zapůjčení a čtení událostí s paralelním hostováním.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: de5d8f0f8bf9f64a473b18a50434cac83e8e38c3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002518"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622058"
 ---
 # <a name="event-processor-host"></a>EventProcessorHost
 > [!NOTE]
-> Tento článek se týká starší verze sady Azure Event Hubs SDK. Informace o tom, jak migrovat kód do novější verze sady SDK, najdete v těchto příručkách k migraci. 
+> Tento článek se týká starší verze sady Azure Event Hubs SDK. Aktuální verzi sady SDK najdete v tématu [Vyrovnávání zatížení oddílu napříč několika instancemi vaší aplikace](event-processor-balance-partition-load.md). Informace o tom, jak migrovat kód do novější verze sady SDK, najdete v těchto příručkách k migraci. 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [Skript Java](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
->
-> Viz také [Vyrovnávání zatížení oddílu napříč několika instancemi aplikace](event-processor-balance-partition-load.md).
 
 Azure Event Hubs je výkonná služba pro příjem telemetrie, která se dá použít ke streamování milionů událostí s nízkými náklady. Tento článek popisuje, jak používat příjmové události pomocí modulu *Event Processor Host* (EPH); Inteligentní Agent pro příjemce, který zjednodušuje správu kontrolních bodů, leasingu a paralelních čtecích zařízení událostí.  
 
@@ -43,7 +42,7 @@ Namísto sestavování vlastního řešení pro tento Event Hubs poskytuje tuto 
 
 ## <a name="ieventprocessor-interface"></a>Rozhraní IEventProcessor
 
-Nejprve spotřebovávají aplikace, které implementují rozhraní [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) , které má čtyři metody: [openAsync, CloseAsync, ProcessErrorAsync a ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Toto rozhraní obsahuje skutečný kód pro využití událostí, které Event Hubs odesílá. Následující kód ukazuje jednoduchou implementaci:
+Nejprve spotřebovávají aplikace, které implementují rozhraní  [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) , které má čtyři metody: [openAsync, CloseAsync, ProcessErrorAsync a ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor#methods). Toto rozhraní obsahuje skutečný kód pro využití událostí, které Event Hubs odesílá. Následující kód ukazuje jednoduchou implementaci:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -88,6 +87,8 @@ Dále vytvořte instanci instance [EventProcessorHost](/dotnet/api/microsoft.azu
 
 Nakonec budou spotřebitelé registrovat instanci [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) ve službě Event Hubs. Registrace třídy procesoru událostí s instancí EventProcessorHost spustí zpracování událostí. Registrace vydá pokyn službě Event Hubs k tomu, aby čekala, že aplikace příjemce spotřebovává události z některých jeho oddílů, a vyvolá implementační kód [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) pokaždé, když vloží události, které se mají spotřebovat. 
 
+> [!NOTE]
+> ConsumerGroupName rozlišuje velká a malá písmena.  Změny consumerGroupName můžou mít za následek čtení všech oddílů od začátku streamu.
 
 ### <a name="example"></a>Příklad
 
@@ -149,7 +150,7 @@ Jak bylo vysvětleno dřív, tabulka sledování značně zjednodušuje charakte
 
 ## <a name="control-event-processor-host-options"></a>Řízení možností hostitele procesoru událostí
 
-Kromě toho jedno přetížení [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) přebírá objekt [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) jako parametr. Tento parametr použijte k řízení chování samotného [EventProcessorHost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) . [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definuje čtyři vlastnosti a jednu událost:
+Kromě toho jedno přetížení [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) přebírá objekt [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) jako parametr. Tento parametr použijte k řízení chování samotného [EventProcessorHost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) . [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definuje čtyři vlastnosti a jednu událost:
 
 - [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): maximální velikost kolekce, kterou chcete přijmout při vyvolání [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Tato velikost není minimální, jenom maximální velikost. Pokud je k dispozici méně zpráv, **ProcessEventsAsync** se spustí s tolik, kolik bylo k dispozici.
 - [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): hodnota, kterou používá podkladový kanál AMQP k určení horního limitu počtu zpráv, které by měl klient přijímat. Tato hodnota by měla být větší nebo rovna [maxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize).
@@ -162,7 +163,7 @@ Kromě toho jedno přetížení [RegisterEventProcessorAsync](/dotnet/api/micros
 Tady je postup, jak epocha Receive funguje:
 
 ### <a name="with-epoch"></a>S epocha
-Epocha je jedinečný identifikátor (hodnota epocha), kterou služba používá, aby se vynutilo vlastnictví oddílu nebo zapůjčení. K vytvoření přijímače založeného na epocha použijte metodu [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) . Tato metoda vytvoří přijímač založené na epocha. Příjemce se vytvoří pro konkrétní oddíl centra událostí ze zadané skupiny uživatelů.
+Epocha je jedinečný identifikátor (hodnota epocha), kterou služba používá, aby se vynutilo vlastnictví oddílu nebo zapůjčení. K vytvoření přijímače založeného na epocha použijte metodu [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver) . Tato metoda vytvoří přijímač založené na epocha. Příjemce se vytvoří pro konkrétní oddíl centra událostí ze zadané skupiny uživatelů.
 
 Funkce epocha poskytuje uživatelům možnost zajistit, že ve skupině příjemců je v libovolném časovém okamžiku pouze jeden přijímač, a to s následujícími pravidly:
 
@@ -171,7 +172,7 @@ Funkce epocha poskytuje uživatelům možnost zajistit, že ve skupině příjem
 - Pokud je k dispozici přijímač s hodnotou epocha E1 a vytvoří se nový příjemce s hodnotou epocha E2, kde E1 > E2, pak vytvoření objektu E2 s chybou se nezdaří a dojde k chybě: příjemce s epocha E1 již existuje.
 
 ### <a name="no-epoch"></a>Žádné epocha
-Pomocí metody [CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) vytvoříte přijímač, který není založen na epocha. 
+Pomocí metody [CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver) vytvoříte přijímač, který není založen na epocha. 
 
 V případě zpracování datových proudů existuje několik scénářů, kdy uživatelé chtějí vytvořit více přijímačů v jedné skupině příjemců. Pro podporu takových scénářů máme možnost vytvořit přijímač bez epocha a v tomto případě povolíme až 5 souběžných přijímačů ve skupině příjemců.
 
@@ -192,10 +193,10 @@ Nedoporučujeme používat aplikace, kde jste vytvořili přijímač s epocha a 
 Teď, když jste obeznámeni s hostitelem procesoru událostí, přečtěte si následující články, kde se dozvíte víc o Event Hubs:
 
 - Začínáme se službou Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-node-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 785c87e8136430557af819cd8c7ab1db8f54c060
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079566"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507717"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Glosář: slovník cloudové terminologie na platformě Azure
 
@@ -30,21 +30,21 @@ Glosář Microsoft Azure je krátký slovník cloudové terminologie pro platfor
 * [Pojem Cloud Computing](https://azure.microsoft.com/overview/cloud-computing-dictionary/) – obecné oborové cloudové prostředí.
 
 ## <a name="account"></a>account
-Účet, který se používá pro přístup k předplatnému Azure a jeho správu. Často se označuje jako účet Azure, přestože účet může být některý z těchto: stávající pracovní, školní nebo osobní účet Microsoft nebo uživatelské jméno a heslo pro Office 365. Můžete také vytvořit účet pro správu předplatného Azure při registraci [bezplatné zkušební verze](https://azure.microsoft.com).  
+Účet, který se používá pro přístup k předplatnému Azure a jeho správu. Často se označuje jako účet Azure, přestože účet může být některý z těchto: stávající pracovní, školní nebo osobní účet Microsoft. Můžete také vytvořit účet pro správu předplatného Azure při registraci [bezplatné zkušební verze](https://azure.microsoft.com).  
 Přečtěte si téma [registrace předplatného Azure s účtem Microsoft 365](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) a [účty, které můžete použít k přihlášení](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>Aplikace API
 Jiný název [aplikace App Service](#app-service-app).
 
 ## <a name="app-service-app"></a>Aplikace služby App Service
-Výpočetní prostředky, které [Azure App Service](app-service/overview.md) poskytují pro hostování webu nebo webové aplikace, webového rozhraní API nebo [back-endu mobilní aplikace](app-service-mobile/app-service-mobile-value-prop.md). Aplikace App Service se také označují jako *App Services*, *webové aplikace*, *aplikace API*a *mobilní aplikace*.
+Výpočetní prostředky, které [Azure App Service](app-service/overview.md) poskytují pro hostování webu nebo webové aplikace, webového rozhraní API nebo [back-endu mobilní aplikace](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop). Aplikace App Service se také označují jako *App Services*, *webové aplikace*, *aplikace API* a *mobilní aplikace*.
 
 ## <a name="availability-set"></a>Skupina dostupnosti
 Kolekce virtuálních počítačů, které jsou spravovány společně za účelem zajištění redundance a spolehlivosti aplikací. Použití skupiny dostupnosti zajišťuje, že během plánované nebo neplánované události údržby je k dispozici alespoň jeden virtuální počítač.  
-Viz [Správa dostupnosti virtuálních počítačů s Windows](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Správa dostupnosti virtuálních počítačů se systémem Linux](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Viz [Správa dostupnosti virtuálních počítačů s Windows](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Správa dostupnosti virtuálních počítačů se systémem Linux](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Model nasazení Azure Classic
-Jeden ze dvou [modelů nasazení](resource-manager-deployment-model.md) , které se používají k nasazení prostředků v Azure (nový model je Azure Resource Manager). Některé služby Azure podporují jenom model nasazení Správce prostředků, některá podporují jenom klasický model nasazení a některá podporují obojí. Dokumentace ke každé službě Azure určuje, které modely podporují.
+Jeden ze dvou [modelů nasazení](./azure-resource-manager/management/deployment-models.md) , které se používají k nasazení prostředků v Azure (nový model je Azure Resource Manager). Některé služby Azure podporují jenom model nasazení Správce prostředků, některá podporují jenom klasický model nasazení a některá podporují obojí. Dokumentace ke každé službě Azure určuje, které modely podporují.
 
 ## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Rozhraní příkazového řádku Azure (CLI)
 Rozhraní příkazového řádku, které se dá použít ke správě služeb Azure ze systémů Windows, macOS a Linux.  Některé služby nebo funkce služeb se dají spravovat jenom přes PowerShell nebo rozhraní příkazového řádku. Viz [Azure CLI](/cli/azure)
@@ -54,11 +54,11 @@ Rozhraní příkazového řádku pro správu služeb Azure prostřednictvím př
 Viz [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/)
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Model nasazení Azure Resource Manager
-Jeden ze dvou [modelů nasazení](resource-manager-deployment-model.md) , který se používá k nasazení prostředků v Microsoft Azure (druhý je model nasazení Classic). Některé služby Azure podporují jenom model nasazení Správce prostředků, některá podporují jenom klasický model nasazení a některá podporují obojí. Dokumentace ke každé službě Azure určuje, které modely podporují.
+Jeden ze dvou [modelů nasazení](./azure-resource-manager/management/deployment-models.md) , který se používá k nasazení prostředků v Microsoft Azure (druhý je model nasazení Classic). Některé služby Azure podporují jenom model nasazení Správce prostředků, některá podporují jenom klasický model nasazení a některá podporují obojí. Dokumentace ke každé službě Azure určuje, které modely podporují.
 
 ## <a name="fault-domain"></a>Doména selhání
 Kolekce virtuálních počítačů ve skupině dostupnosti, která může být ve stejnou dobu neúspěšná. Příkladem je skupina počítačů v racku, které sdílejí společný zdroj napájení a síťový přepínač. V Azure se virtuální počítače ve skupině dostupnosti automaticky oddělují mezi několik domén selhání.  
-Viz [Správa dostupnosti virtuálních počítačů s Windows](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [Správa dostupnosti virtuálních počítačů se systémem Linux](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .  
+Viz [Správa dostupnosti virtuálních počítačů s Windows](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [Správa dostupnosti virtuálních počítačů se systémem Linux](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .  
 
 ## <a name="geo"></a>geograficky
 Definovaná hranice pro zasídlí dat, která obvykle obsahuje dvě nebo více oblastí. Hranice mohou být v mezích hranic nebo mimo hranice států a jsou ovlivněny daňovým nařízením. Každé geografické umístění má alespoň jednu oblast. Příklady zeměpisných oblastech jsou Asie a Tichomoří a Japonsko. Označuje se také jako *geografické*.  
@@ -66,7 +66,7 @@ Zobrazit [oblasti Azure](best-practices-availability-paired-regions.md)
 
 ## <a name="geo-replication"></a>geografická replikace
 Proces automatické replikace obsahu, jako jsou objekty blob, tabulky a fronty v rámci regionálního páru.  
-Viz [Aktivní geografická replikace pro Azure SQL Database](sql-database/sql-database-geo-replication-overview.md)
+Další informace najdete v tématu [Active Geo-Replication Azure SQL Database](./azure-sql/database/auto-failover-group-overview.md)
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
 ## <a name="image"></a>image
@@ -104,7 +104,7 @@ Další informace najdete v tématu [Azure Resource Manager Overview](azure-reso
 
 ## <a name="resource-manager-template"></a><a name="arm-template"></a>Šablona Resource Manageru
 Soubor JSON, který deklarativně definuje jeden nebo víc prostředků Azure a definuje závislosti mezi nasazenými prostředky. Šablony lze použít k nasazení prostředků konzistentně a opakovaně.  
-Další informace najdete v tématu [vytváření Azure Resource Manager šablon](resource-group-authoring-templates.md) .
+Další informace najdete v tématu [vytváření Azure Resource Manager šablon](./azure-resource-manager/templates/template-syntax.md) .
 
 ## <a name="resource-provider"></a>poskytovatel prostředků
 Služba poskytující prostředky, které můžete nasadit a spravovat prostřednictvím Správce prostředků. Každý poskytovatel prostředků nabízí operace pro práci s nasazenými prostředky. Poskytovatelé prostředků jsou k dispozici prostřednictvím Azure Portal, Azure PowerShell a několika programovacích sad SDK.  
@@ -119,11 +119,11 @@ Smlouva popisující závazky Microsoftu pro dobu provozu a konektivitu. Každá
 Zobrazit [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/)
 
 ## <a name="shared-access-signature-sas"></a><a name="sas"></a>sdílený přístupový podpis (SAS)
-Signatura, která umožňuje udělit omezený přístup k prostředku bez vystavení klíče účtu. [Azure Storage například používá SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) pro udělení přístupu klienta k objektům, jako jsou objekty blob. [IoT Hub používá SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) k udělení oprávnění zařízením k posílání telemetrie.
+Signatura, která umožňuje udělit omezený přístup k prostředku bez vystavení klíče účtu. [Azure Storage například používá SAS](./storage/common/storage-sas-overview.md) pro udělení přístupu klienta k objektům, jako jsou objekty blob. [IoT Hub používá SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) k udělení oprávnění zařízením k posílání telemetrie.
 
 ## <a name="storage-account"></a>účet úložiště
 Účet, který vám poskytne přístup ke službám Azure Blob, Queue, Table a File v Azure Storage. Název účtu úložiště definuje jedinečný obor názvů pro Azure Storage datových objektů.  
-Viz [informace o účtech Azure Storage](storage/common/storage-create-storage-account.md) .
+Viz [informace o účtech Azure Storage](./storage/common/storage-account-create.md) .
 
 ## <a name="subscription"></a>předplatné
 Smlouvu zákazníka s Microsoftem, která jim umožní získat služby Azure. Ceny předplatného a související podmínky se řídí nabídkou, kterou jste si zvolili pro předplatné.
@@ -131,11 +131,11 @@ Přečtěte si téma [Microsoft Online Subscription Agreement](https://azure.mic
 
 ## <a name="tag"></a>značka
 Pojem indexování, který umožňuje kategorizaci prostředků podle vašich požadavků na správu a fakturaci. Pokud máte komplexní kolekci prostředků, můžete použít značky k vizualizaci těchto assetů způsobem, který má největší smysl. Můžete například označit prostředky, které mají v rámci organizace podobnou roli nebo které patří do stejného oddělení.  
-Informace najdete v tématu [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md) .
+Informace najdete v tématu [použití značek k uspořádání prostředků Azure](./azure-resource-manager/management/tag-resources.md) .
 
 ## <a name="update-domain"></a>aktualizovat doménu
 Kolekce virtuálních počítačů ve skupině dostupnosti, které jsou aktualizovány ve stejnou dobu. Virtuální počítače ve stejné aktualizační doméně se při plánované údržbě restartují společně. Azure nikdy nerestartuje více než jednu aktualizační doménu současně. Také se označuje jako upgradovací doména.  
-Viz [Správa dostupnosti virtuálních počítačů s Windows](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Správa dostupnosti virtuálních počítačů se systémem Linux](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Viz [Správa dostupnosti virtuálních počítačů s Windows](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Správa dostupnosti virtuálních počítačů se systémem Linux](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ## <a name="virtual-machine"></a><a name="vm"></a>virtuální počítač
 Implementace softwaru fyzického počítače, který používá operační systém. Na stejném hardwaru může běžet více virtuálních počítačů současně. V Azure jsou virtuální počítače dostupné v nejrůznějších velikostech.  
@@ -144,7 +144,7 @@ Viz [dokumentace Virtual Machines](https://azure.microsoft.com/documentation/ser
 ## <a name="virtual-machine-extension"></a><a name="vm-extension"></a>rozšíření virtuálního počítače
 Prostředek, který implementuje chování nebo funkce, které pomůžou použít jiné programy, nebo vám umožní pracovat s běžícím počítačem. Můžete například použít rozšíření přístupu virtuálních počítačů k resetování nebo úpravě hodnot vzdáleného přístupu na virtuálním počítači Azure.
 <!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
-Přečtěte si informace [o rozšířeních a funkcích virtuálních počítačů (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [o rozšířeních a funkcích virtuálních počítačů (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Přečtěte si informace [o rozšířeních a funkcích virtuálních počítačů (Windows)](./virtual-machines/extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [o rozšířeních a funkcích virtuálních počítačů (Linux)](./virtual-machines/extensions/features-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ## <a name="virtual-network"></a><a name="vnet"></a>virtuální síť
 Síť, která poskytuje připojení mezi prostředky Azure, které jsou izolované od všech ostatních tenantů Azure. [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) umožňuje navázat připojení mezi virtuálními sítěmi a mezi virtuální sítí a místní sítí. V rámci virtuální sítě můžete plně řídit bloky IP adres, nastavení DNS, zásady zabezpečení a směrovací tabulky.  
@@ -159,4 +159,3 @@ Jiný název [aplikace App Service](#app-service-app).
 * [Centrum prostředků cloudu](https://azure.microsoft.com/resources/)  
 * [Azure pro vaši obchodní aplikaci](https://azure.microsoft.com/overview/business-apps-on-azure/)
 * [Azure ve vašem datovém centru](https://azure.microsoft.com/overview/business-apps-on-azure/)
-

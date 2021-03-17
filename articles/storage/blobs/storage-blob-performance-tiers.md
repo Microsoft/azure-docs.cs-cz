@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74270222"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880704"
 ---
-# <a name="performance-tiers-for-block-blob-storage"></a>Úrovně výkonu pro úložiště objektů blob bloku
+# <a name="performance-tiers-for-block-blob-storage"></a>Úrovně výkonu úložiště objektů blob bloku
 
 Vzhledem k tomu, že podniky nasazují výkonně citlivé aplikace v cloudu, je důležité mít možnosti pro nákladově efektivní úložiště dat na různých úrovních výkonu.
 
@@ -26,7 +26,7 @@ Azure Block BLOB Storage nabízí dvě různé úrovně výkonu:
 
 Následující požadavky platí pro různé úrovně výkonu:
 
-| Oblast |Standardní výkon  |Výkon úrovně Premium  |
+| Plošný |Standardní výkon  |Výkon úrovně Premium  |
 |---------|---------|---------|
 |Dostupnost v oblastech     |   Všechny oblasti      | Ve [vybraných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
 |Podporované [typy účtů úložiště](../common/storage-account-overview.md#types-of-storage-accounts)     |     Obecné účely v2, BlobStorage, obecné účely v1    |    BlockBlobStorage     |
@@ -65,7 +65,7 @@ Standardní výkon podporuje různé [úrovně přístupu](storage-blob-storage-
 
 Stávající standardní účet úložiště výkonu nemůžete převést na účet úložiště objektů blob bloku s výkonem Premium. K migraci na účet úložiště s výkonem Premium je potřeba vytvořit účet BlockBlobStorage a migrovat data na nový účet. Další informace najdete v tématu [Vytvoření účtu BlockBlobStorage](storage-blob-create-account-block-blob.md).
 
-K kopírování objektů BLOB mezi účty úložiště můžete použít nejnovější verzi nástroje příkazového řádku [AzCopy](../common/storage-use-azcopy-blobs.md) . Pro přesun a transformaci dat jsou k dispozici také jiné nástroje, například Azure Data Factory.
+K kopírování objektů BLOB mezi účty úložiště můžete použít nejnovější verzi nástroje příkazového řádku [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) . Pro přesun a transformaci dat jsou k dispozici také jiné nástroje, například Azure Data Factory.
 
 ## <a name="blob-lifecycle-management"></a>Správa životního cyklu objektů BLOB
 
@@ -83,6 +83,6 @@ Nemůžete přesouvat data uložená v účtu úložiště blob bloku úrovně P
 Vyhodnoťte horkou, studenou a archivní v účtech GPv2 a BLOB Storage.
 
 - [Přečtěte si informace o prodehydratacích dat objektů BLOB z archivní úrovně.](storage-blob-rehydration.md)
-- [Zapnutí metrik Azure Storage a vyhodnocení používání aktuálních účtů úložiště](../common/storage-enable-and-view-metrics.md)
+- [Zapnutí metrik Azure Storage a vyhodnocení používání aktuálních účtů úložiště](./monitor-blob-storage.md)
 - [Ověření cen horké, studené a archivní úrovně v účtech Blob Storage a GPv2 v jednotlivých oblastech](https://azure.microsoft.com/pricing/details/storage/)
 - [Posouzení cen přenosu dat](https://azure.microsoft.com/pricing/details/data-transfers/)

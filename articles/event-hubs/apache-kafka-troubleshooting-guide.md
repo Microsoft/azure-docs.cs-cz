@@ -3,12 +3,12 @@ title: Řešení potíží se službou Azure Event Hubs pro Apache Kafka
 description: Tento článek popisuje, jak řešit problémy s Azure Event Hubs pro Apache Kafka
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090565"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90061423"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Průvodce odstraňováním potíží s Apache Kafka pro Event Hubs
 Tento článek popisuje tipy k odstraňování problémů, ke kterým může dojít při použití Event Hubs pro Apache Kafka. 
@@ -55,11 +55,11 @@ Zkontrolujte následující položky, pokud se při použití Kafka na Event Hub
 - **SASL ověřování** – připravujeme vaše rozhraní, aby spolupracovalo s ověřovacím protokolem SASL, který vyžadovaná Event Hubs může být obtížnější, než aby splňovalo oči. Podívejte se, jestli můžete řešit problémy s konfigurací pomocí prostředků vašeho rozhraní na SASL ověřování. 
 
 ## <a name="limits"></a>Omezení
-Apache Kafka vs. Event Hubs Kafka. Ve většině případů má Event Hubs Kafka stejné výchozí hodnoty, vlastnosti, kódy chyb a obecné chování, které Apache Kafka provádí. Instance, které tyto dva explicitně liší (nebo kde Event Hubs ukládá omezení Kafka), jsou uvedeny níže:
+Apache Kafka vs. Event Hubs Kafka. Ve většině případů má rozhraní Kafka Azure Event Hubs stejné výchozí hodnoty, vlastnosti, kódy chyb a obecné chování, které Apache Kafka dělá. Instance, které tyto dva explicitně liší (nebo kde Event Hubs ukládá omezení Kafka), jsou uvedeny níže:
 
 - Maximální délka `group.id` vlastnosti je 256 znaků.
 - Maximální velikost `offset.metadata.max.bytes` je 1024 bajtů.
-- Posunutí potvrzení jsou omezená o 4 hovory za sekundu na oddíl s maximální velikostí interního protokolu 1 MB.
+- Posunutí potvrzení jsou omezená na 4 volání/sekundu na oddíl s maximální velikostí interního protokolu 1 MB.
 
 
 ## <a name="next-steps"></a>Další kroky

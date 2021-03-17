@@ -1,20 +1,22 @@
 ---
 title: Typ entity regulárního výrazu – LUIS
 description: Regulární výraz je nejvhodnější pro nezpracovaný utterance text. Ignoruje velikost písmen a ignoruje kulturní variantu.  Pro porovnání regulárních výrazů se použije po změnách kontroly pravopisu na úrovni znaků, nikoli na úrovni tokenu.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 90260fca10fc087225f6b1286e9fa2dd6d17c836
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 18e44ec43e1169aa054e6e5b4591ccd8611a7f4d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585602"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025221"
 ---
 # <a name="regular-expression-entity"></a>Entiay regulárního výrazu
 
 Entita regulárního výrazu extrahuje entitu na základě vzoru regulárního výrazu, který zadáte.
 
-Regulární výraz je nejvhodnější pro nezpracovaný utterance text. Ignoruje velikost písmen a ignoruje kulturní variantu.  Pro porovnání regulárních výrazů se použije po změnách kontroly pravopisu na úrovni znaků, nikoli na úrovni tokenu. Pokud je regulární výraz příliš složitý, například při použití řady hranatých závorek, nemůžete do modelu přidat výraz. Používá součást, ale ne všechny knihovny [regulárních regulárních knihoven .NET](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) .
+Regulární výraz je nejvhodnější pro nezpracovaný utterance text. Ignoruje velikost písmen a ignoruje kulturní variantu.  Pro porovnání regulárních výrazů se použije po změnách kontroly pravopisu na úrovni znaků, nikoli na úrovni tokenu. Pokud je regulární výraz příliš složitý, například při použití řady hranatých závorek, nemůžete do modelu přidat výraz. Používá součást, ale ne všechny knihovny [regulárních regulárních knihoven .NET](/dotnet/standard/base-types/regular-expressions) .
 
 **Entita je vhodná v případě, že:**
 

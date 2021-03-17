@@ -2,17 +2,18 @@
 title: Výměna disku s operačním systémem pro virtuální počítač Azure pomocí PowerShellu
 description: Změna disku operačního systému používaného virtuálním počítačem Azure pomocí PowerShellu
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 2d4abd68e60201a17e56ee105777614c42691bfc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e928944a7508cc2a0ed35e89189fa2dd8c50665
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020334"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550378"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Změna disku s operačním systémem používaného virtuálním počítačem Azure pomocí PowerShellu
 

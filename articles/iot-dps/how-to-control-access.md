@@ -8,15 +8,15 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7ca1620c51640699fe8b31aef3504b8c67185253
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 024dbf6518748a4048873de4eb54a53f9d9a6362
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423486"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954320"
 ---
-# <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu k Azure IoT Hub Device Provisioning Service
+# <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu ke službě Azure IoT Hub Device Provisioning Service
 
 Tento článek popisuje možnosti zabezpečení služby IoT Device Provisioning. Služba zřizování používá *oprávnění* k udělení přístupu ke každému koncovému bodu. Oprávnění omezují přístup k instanci služby na základě funkčnosti.
 
@@ -192,4 +192,4 @@ Následující tabulka uvádí oprávnění, která můžete použít k řízen�
 [lnk-sdks]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-management-portal]: https://portal.azure.com
 [lnk-azure-resource-manager]: ../azure-resource-manager/management/overview.md
-[lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iot-dps/
+[lnk-resource-provider-apis]: /rest/api/iot-dps/

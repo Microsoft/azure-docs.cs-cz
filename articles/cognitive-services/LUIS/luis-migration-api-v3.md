@@ -1,15 +1,16 @@
 ---
 title: Změny koncového bodu předpovědi v rozhraní V3 API
 description: Rozhraní API pro koncový bod pro předpověď dotazu se změnila. Tento průvodce vám pomůže pochopit, jak migrovat na rozhraní API koncového bodu verze 3.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.author: diberry
-ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610876"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624299"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Předpověď změn koncového bodu pro v3
 
@@ -39,14 +40,14 @@ Hodnota V3 provedla v rámci přechodu na GA následující změny:
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
     * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
     * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
-    * S měřitelnou příponou klíče jednotky z `units` na`unit`
+    * S měřitelnou příponou klíče jednotky z `units` na `unit`
 
 * Změna JSON textu požadavku:
-    * od `preferExternalEntities` do`preferExternalEntities`
+    * od `preferExternalEntities` do `preferExternalEntities`
     * volitelný `score` parametr pro externí entity
 
 * Změny JSON těla odpovědi:
-    * `normalizedQuery`odstraněn
+    * `normalizedQuery` odstraněn
 
 ## <a name="suggested-adoption-strategy"></a>Navrhovaná strategie přijetí
 
@@ -55,19 +56,16 @@ Pokud používáte rozhraní bot Framework, Kontrola pravopisu Bingu v7 nebo chc
 Pokud víte, že žádná z vašich klientských aplikací nebo integrace (bot Framework a Kontrola pravopisu Bingu v7) je ovlivněná a vy budete mít na úmyslu migrovat vytváření aplikací LUIS a koncový bod předpovědi ve stejnou dobu, začněte používat koncový bod verze v3. Koncový bod verze v2 bude stále k dispozici a jedná se o dobrou strategii pro vrácení zpět.
 
 
-## <a name="not-supported"></a>Nepodporuje se
+## <a name="not-supported"></a>Nepodporováno
 
 ### <a name="bing-spell-check"></a>Kontrola pravopisu Bingu
 
-Toto rozhraní API se v koncovém bodě verze V3 nepodporuje – pro opravy pravopisu je dál používán koncový bod pro předpověď rozhraní v2 API. Pokud při použití rozhraní V3 API potřebujete korekci pravopisu, požádejte o klientskou aplikaci rozhraní API [Kontrola pravopisu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) a před odesláním textu do rozhraní API Luis změňte text na správný pravopis.
+Toto rozhraní API se v koncovém bodě verze V3 nepodporuje – pro opravy pravopisu je dál používán koncový bod pro předpověď rozhraní v2 API. Pokud při použití rozhraní V3 API potřebujete korekci pravopisu, požádejte o klientskou aplikaci rozhraní API [Kontrola pravopisu Bingu](../bing-spell-check/overview.md) a před odesláním textu do rozhraní API Luis změňte text na správný pravopis.
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Rozhraní bot Framework a klientské aplikace Azure Bot Service
 
 Pokračujte v použití koncového bodu předpovědi rozhraní v2 API, dokud se neuvolní v rozhraní bot Framework V 4.7.
 
-## <a name="v2-api-deprecation"></a>Zastaralé rozhraní API v2
-
-Předpokládané rozhraní API v2 nebude zastaralé po dobu nejméně 9 měsíců od verze V3 Preview, 8. června 2020.
 
 ## <a name="endpoint-url-changes"></a>Změny adresy URL koncového bodu
 
@@ -77,7 +75,7 @@ Byl změněn [Formát volání rozhraní HTTP koncového bodu V3](developer-refe
 
 Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) pomocí `"directVersionPublish":true` . Dotaz na koncový bod odkazující na ID verze místo názvu slotu.
 
-|Platné hodnoty pro`SLOT-NAME`|
+|Platné hodnoty pro `SLOT-NAME`|
 |--|
 |`production`|
 |`staging`|
@@ -104,11 +102,11 @@ Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhr
 
 |Vlastnost|Typ|Verze|Výchozí|Účel|
 |--|--|--|--|--|
-|`dynamicLists`|pole|Jenom V3|Nepožadováno.|[Dynamické seznamy](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) umožňují rozšiřování existující entity vyškolené a publikované seznamu, která už je v aplikaci Luis.|
-|`externalEntities`|pole|Jenom V3|Nepožadováno.|[Externí entity](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) poskytují vaší aplikaci Luis schopnost identifikovat a označovat entity za běhu, které se dají použít jako funkce pro stávající entity. |
+|`dynamicLists`|array|Jenom V3|Nevyžadují se.|[Dynamické seznamy](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) umožňují rozšiřování existující entity vyškolené a publikované seznamu, která už je v aplikaci Luis.|
+|`externalEntities`|array|Jenom V3|Nevyžadují se.|[Externí entity](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) poskytují vaší aplikaci Luis schopnost identifikovat a označovat entity za běhu, které se dají použít jako funkce pro stávající entity. |
 |`options.datetimeReference`|řetězec|Jenom V3|Žádná výchozí|Používá se k určení [posunu datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity). Formát pro datetimeReference je [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
-|`options.preferExternalEntities`|Boolean|Jenom V3|false (nepravda)|Určuje, jestli se použije [Externí entita uživatele (se stejným názvem jako existující entita)](schema-change-prediction-runtime.md#override-existing-model-predictions) , nebo jestli se existující entita v modelu používá pro předpověď. |
-|`query`|řetězec|Jenom V3|Povinná hodnota.|**V v2**je utterance, který má být předpovězen, v `q` parametru. <br><br>**V v3**je funkce předána do `query` parametru.|
+|`options.preferExternalEntities`|boolean|Jenom V3|false (nepravda)|Určuje, jestli se použije [Externí entita uživatele (se stejným názvem jako existující entita)](schema-change-prediction-runtime.md#override-existing-model-predictions) , nebo jestli se existující entita v modelu používá pro předpověď. |
+|`query`|řetězec|Jenom V3|Povinná hodnota.|**V v2** je utterance, který má být předpovězen, v `q` parametru. <br><br>**V v3** je funkce předána do `query` parametru.|
 
 ## <a name="response-changes"></a>Změny odpovědí
 
@@ -161,9 +159,9 @@ Změny schématu JSON odpovědi umožňují:
 
 #### <a name="marking-placement-of-entities-in-utterances"></a>Označení umístění entit v projevy
 
-**V v2**byla entita označena v utterance s `startIndex` a `endIndex` .
+**V v2** byla entita označena v utterance s `startIndex` a `endIndex` .
 
-**V v3**je entita označena pomocí `startIndex` a `entityLength` .
+**V v3** je entita označena pomocí `startIndex` a `entityLength` .
 
 #### <a name="access-instance-for-entity-metadata"></a>Přístup `$instance` k metadatům entit
 
@@ -267,9 +265,6 @@ V v3 stejný výsledek s `verbose` příznakem pro vrácení metadat entity:
 
 Přečtěte [si informace o](schema-change-prediction-runtime.md) tom, jak aplikaci rozvést v předpokládaném prostředí.
 
-## <a name="deprecation"></a>Vyřazení
-
-Rozhraní v2 API nebude zastaralé po dobu nejméně 9 měsíců od verze V3 Preview.
 
 ## <a name="next-steps"></a>Další kroky
 

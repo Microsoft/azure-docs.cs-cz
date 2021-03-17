@@ -1,40 +1,39 @@
 ---
 title: Přesměrování HTTP na HTTPS pomocí rozhraní příkazového řádku
 titleSuffix: Azure Application Gateway
-description: Naučte se vytvořit Aplikační bránu a přidat certifikát pro ukončení TLS pomocí Azure CLI.
+description: Naučte se vytvořit přesměrování HTTP na HTTPS a přidat certifikát pro ukončení TLS pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/15/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 19bfaf611093f6ca178a627123d4d0f9c8ccf3ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d56a1c46f251307755416ef44991ac6f809f330
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804413"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566737"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí Azure CLI
 
-Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro ukončení protokolu TLS/SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS ve vaší aplikační bráně. V tomto příkladu vytvoříte také [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-end fond aplikační brány, která obsahuje dvě instance virtuálních počítačů.
+Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro ukončení protokolu TLS/SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS ve vaší aplikační bráně. V tomto příkladu vytvoříte také [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/overview.md) pro back-end fond aplikační brány, která obsahuje dvě instance virtuálních počítačů.
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
-> * Nastavit síť
-> * Vytvořit aplikační bránu s certifikátem
-> * Přidat pravidlo naslouchacího procesu a přesměrování
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
+* Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+* Nastavit síť
+* Vytvořit aplikační bránu s certifikátem
+* Přidat pravidlo naslouchacího procesu a přesměrování
+* Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+ - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) a soubor pfx pomocí příkazu openssl.
 
@@ -62,7 +61,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet* , kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -204,7 +203,7 @@ az vmss extension set \
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
@@ -224,13 +223,4 @@ Pokud chcete přijímat upozornění zabezpečení v případě použití certif
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
-> * Nastavit síť
-> * Vytvořit aplikační bránu s certifikátem
-> * Přidat pravidlo naslouchacího procesu a přesměrování
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
-
-
+- [Vytvoření aplikační brány s interním přesměrování pomocí Azure CLI](redirect-internal-site-cli.md)

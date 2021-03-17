@@ -8,19 +8,21 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 664943fc5535883b3df77b2795383e5c0586a71c
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84448627"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375325"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Zesílený modul pro regresi rozhodovacího stromu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul použijte k vytvoření kompletu regresních stromů pomocí zvyšování úrovně. *Zvyšování úrovně* znamená, že každý strom je závislý na předchozí stromové struktuře. Algoritmus se učí tím, že se dovedou zbytky stromů, které jí předcházejí. Proto zvýšení přesnosti v kompletu rozhodovacího stromu zamýšlí zlepšit přesnost s malým rizikem menšího rozsahu.  
+
+Tento modul je založený na LightGBM algoritmu.
   
 Tato regresní metoda je metoda učení pod dohledem, a proto vyžaduje *datovou sadu s popiskem*. Sloupec popisku musí obsahovat číselné hodnoty.  
 
@@ -50,39 +52,39 @@ Metodu zvyšování barevného přechodu lze také použít pro problémy s klas
 
 ## <a name="how-to-configure-boosted-decision-tree-regression"></a>Jak nakonfigurovat zvýšení regrese rozhodovacího stromu
 
-1.  Přidejte do svého kanálu modul **zesíleného rozhodovacího stromu** . Tento modul najdete pod **Machine Learning**, **inicializovat**v rámci kategorie **regrese** . 
+1.  Přidejte do svého kanálu modul **zesíleného rozhodovacího stromu** . Tento modul najdete pod **Machine Learning** , **inicializovat** v rámci kategorie **regrese** . 
   
 2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: tuto možnost vyberte, pokud víte, jak chcete model konfigurovat, a poskytněte konkrétní sadu hodnot jako argumenty. 
+    -   **Jeden parametr** : tuto možnost vyberte, pokud víte, jak chcete model konfigurovat, a poskytněte konkrétní sadu hodnot jako argumenty. 
      
-    -   **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.    
+    -   **Rozsah parametrů** : tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.    
    
   
-3. **Maximální počet pochodů na stromovou strukturu**: Určuje maximální počet uzlů terminálu (opustí), které je možné vytvořit v jakémkoli stromu.  
+3. **Maximální počet pochodů na stromovou strukturu** : Určuje maximální počet uzlů terminálu (opustí), které je možné vytvořit v jakémkoli stromu.  
 
     Zvýšením této hodnoty můžete zvýšit velikost stromu a dosáhnout lepší přesnosti, a to na riziko přebudování a delší dobu školení.  
 
-4. **Minimální počet vzorků na uzel typu list**: Určuje minimální počet případů vyžadovaných k vytvoření libovolného uzlu terminálu (list) ve stromu.
+4. **Minimální počet vzorků na uzel typu list** : Určuje minimální počet případů vyžadovaných k vytvoření libovolného uzlu terminálu (list) ve stromu.
 
     Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň 5 případů, které splňují stejné podmínky.
 
-5. **Studijní frekvence**: zadejte číslo od 0 do 1, které definuje velikost kroku při učení. Studijní frekvence určuje, jak rychle nebo pomalu se učí sblížení s optimálním řešením. Pokud je velikost kroku příliš velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení.
+5. **Studijní frekvence** : zadejte číslo od 0 do 1, které definuje velikost kroku při učení. Studijní frekvence určuje, jak rychle nebo pomalu se učí sblížení s optimálním řešením. Pokud je velikost kroku příliš velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení.
 
-6. **Počet konstruovaných stromů**: uveďte celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale zvýší se čas školení.
+6. **Počet konstruovaných stromů** : uveďte celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale zvýší se čas školení.
 
-    Tato hodnota také určuje počet stromů zobrazených při vizualizaci výukového modelu. Pokud chcete zobrazit nebo vytisknout jeden strom, můžete hodnotu nastavit na 1. je však vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a nejsou provedeny žádné další iterace.
+    Pokud nastavíte hodnotu 1; je však vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a nejsou provedeny žádné další iterace.
 
-7. **Počáteční číslo osiva**: zadejte volitelné nezáporné celé číslo, které se použije jako hodnota náhodného základu. Určení počáteční hodnoty zajišťuje reprodukovatelnost v různých spuštěních, která mají stejná data a parametry.
+7. **Počáteční číslo osiva** : zadejte volitelné nezáporné celé číslo, které se použije jako hodnota náhodného základu. Určení počáteční hodnoty zajišťuje reprodukovatelnost v různých spuštěních, která mají stejná data a parametry.
 
     Ve výchozím nastavení je náhodné osazení nastaveno na hodnotu 0, což znamená, že počáteční počáteční hodnota se získá ze systémových hodin.
   
 
 9. Výukové modely:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 

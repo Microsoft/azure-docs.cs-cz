@@ -1,20 +1,18 @@
 ---
-title: 'PowerShellový skript: vypsání existujících sdílených složek v Azure Data Share | Microsoft Docs'
+title: 'PowerShellový skript: vypsání existujících sdílených složek v Azure Data Share'
 description: Tento skript PowerShellu vypíše a zobrazí podrobnosti o sdílených složkách.
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 6314bd348c22c901001b88eda6875181a2f69df4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54b4b6cedc2dc09e4a9d5c4b7b937e80750e17c6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70307122"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220818"
 ---
 # <a name="use-powershell-to-view-the-details-of-a-sent-data-share"></a>Použití PowerShellu k zobrazení podrobností o odeslané sdílené složce dat
 
@@ -45,11 +43,11 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare?view=azps-2.6.0) | Získá a zobrazí seznam sdílených složek v účtu. |
+| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare) | Získá a zobrazí seznam sdílených složek v účtu. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další ukázkové skripty PowerShellu pro sdílení dat Azure najdete v [ukázkách Azure Data Share PowerShell](../../samples-powershell.md).

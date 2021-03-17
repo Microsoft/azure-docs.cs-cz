@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 02/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23ce17844a0113f63931c6ece7d36bfefedc2de5
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175197"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552830"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>Přidání zásady zálohování StorSimple
 
@@ -17,7 +17,7 @@ ms.locfileid: "67175197"
 
 2. V okně **Zásady zálohování** klikněte na panelu příkazů na **Přidat zásadu**.
    
-    ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
+    ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/add-backup-policy-01.png)
 
 3. V okně **Vytvořit zásadu zálohování** proveďte následující kroky:
    
@@ -27,11 +27,11 @@ ms.locfileid: "67175197"
        
    3. Pokud chcete k této zásadě zálohování přiřadit svazky, vyberte **Přidat svazky** a potom v tabulkovém výpisu svazků zaškrtnutím políček přiřaďte této zásadě zálohování jeden nebo několik svazků.
 
-       ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
+       ![Přidání zásady zálohování 2](./media/storsimple-8000-add-backup-policy-u2/add-backup-policy-02.png)<!--Replacement screen source: create-backup-policy-addvolumes.png-->
 
-   4. Pokud chcete pro tuto zásadu zálohování nadefinovat plán, klikněte na **První plán** a potom upravte následující parametry:
+   4. Pokud chcete pro tuto zásadu zálohování nadefinovat plán, klikněte na **První plán** a potom upravte následující parametry:<!--Do the substeps remain the same? Can they follow without a screenshot?-->
 
-       ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
+       ![Přidání zásady zálohování 3](./media/storsimple-8000-add-backup-policy-u2/add-backup-policy-03.png)<!--Replacement screen source: create-backup-policy-first-schedule.png-->
 
        1. Jako **Typ snímku** vyberte **Cloud** nebo **Místní**.
 
@@ -44,10 +44,7 @@ ms.locfileid: "67175197"
        5. Kliknutím na **OK** nadefinujte plán.
 
    5. Kliknutím na **Vytvořit** vytvořte zásadu zálohování.
-
-       ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
    6. Po vytvoření zásady zálohování se zobrazí oznámení. Nově přidaná zásada se zobrazí v tabulkovém zobrazení v okně **Zásady zálohování**.
 
-       ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
-
+       ![Přidání zásady zálohování 5](./media/storsimple-8000-add-backup-policy-u2/add-backup-policy-07.png)

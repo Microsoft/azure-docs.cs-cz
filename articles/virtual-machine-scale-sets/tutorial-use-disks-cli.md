@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: a4be498b25aee7c5a50b2f35fe06be3763eb4732
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: adaa7d1c2cf4a78a680ef4fbbec06975ceda812b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825850"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433492"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure CLI
 Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. Co se v tomto kurzu naučíte:
@@ -28,10 +28,9 @@ ms.locfileid: "87825850"
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
-
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.29 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="default-azure-disks"></a>Výchozí disky v Azure
 Při vytváření nebo škálování škálovací sady se ke každé instanci virtuálního počítače automaticky připojí dva disky.
@@ -76,6 +75,8 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 ## <a name="create-and-attach-disks"></a>Vytvoření a připojení disků
 Disky můžete vytvořit a připojit při vytváření škálovací sady nebo u existující škálovací sady.
 
+Od verze rozhraní API `2019-07-01` můžete nastavit velikost disku s operačním systémem v sadě škálování virtuálního počítače pomocí vlastnosti [StorageProfile. OsDisk. diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) . Po zřízení možná budete muset disk rozbalit nebo znovu rozdělit, aby bylo možné používat celý prostor. Další informace o [rozšiřování disku najdete tady](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os).
+
 ### <a name="attach-disks-at-scale-set-creation"></a>Připojení disků při vytváření škálovací sady
 Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus* .
 
@@ -83,7 +84,7 @@ Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cl
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří sadu škálování s názvem *myScaleSet*a vygeneruje klíče SSH, pokud neexistují. Pomocí parametru `--data-disk-sizes-gb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB:
+Vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří sadu škálování s názvem *myScaleSet* a vygeneruje klíče SSH, pokud neexistují. Pomocí parametru `--data-disk-sizes-gb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB:
 
 ```azurecli-interactive
 az vmss create \
@@ -99,7 +100,7 @@ az vmss create \
 Vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Připojení disku k existující škálovací sadě
-Disky můžete připojit také k existující škálovací sadě. Použijte škálovací sadu vytvořenou v předchozím kroku a přidejte další disk pomocí příkazu [az vmss disk attach](/cli/azure/vmss/disk). Následující příklad připojí další *128*GB disk:
+Disky můžete připojit také k existující škálovací sadě. Použijte škálovací sadu vytvořenou v předchozím kroku a přidejte další disk pomocí příkazu [az vmss disk attach](/cli/azure/vmss/disk). Následující příklad připojí další *128* GB disk:
 
 ```azurecli-interactive
 az vmss disk attach \

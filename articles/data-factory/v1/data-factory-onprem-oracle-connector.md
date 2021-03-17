@@ -1,23 +1,18 @@
 ---
 title: Kopírování dat z a do Oracle pomocí Data Factory
 description: Naučte se, jak kopírovat data do nebo z místní databáze Oracle pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 02fc142a08176aa577250417c0e394218e832f34
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084286"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387338"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do a z Oracle místně pomocí Azure Data Factory
 
@@ -82,7 +77,7 @@ Můžete vytvořit kanál s aktivitou kopírování. Kanál přesouvá data do n
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít Průvodce kopírováním. Rychlý návod k vytvoření kanálu pomocí Průvodce Kopírování dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete použít také jeden z následujících nástrojů: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager šablona**, rozhraní **.NET API**nebo **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete použít také jeden z následujících nástrojů: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager šablona**, rozhraní **.NET API** nebo **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, proveďte následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -99,7 +94,7 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 
 Následující tabulka popisuje elementy JSON, které jsou specifické pro propojenou službu Oracle:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost **Type** musí být nastavená na **OnPremisesOracle**. |Yes |
 | driverType | Určete, který ovladač má být použit ke zkopírování dat z databáze Oracle nebo do ní. Povolené hodnoty jsou **Microsoft** a **ODP** (výchozí). Podrobnosti o ovladači najdete v části [podporovaná verze a instalace](#supported-versions-and-installation) . | No |
@@ -150,7 +145,7 @@ Oddíly souboru JSON datové sady, jako je například struktura, dostupnost a z
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **Oracle** má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky v databázi Oracle, na kterou odkazuje propojená služba. |Ne (Pokud je zadáno **oracleReaderQuery** nebo **OracleSource** ) |
 
@@ -565,7 +560,7 @@ Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: 
 * Zprostředkovatel dat .NET Framework pro Oracle nebyla nainstalována.
 * Zprostředkovatel dat .NET Framework pro Oracle byl nainstalován do .NET Framework 2,0 a nenalezne se ve složce .NET Framework 4,0.
 
-**Rozlišení**
+**Řešení**
 
 * Pokud jste nenainstalovali poskytovatele .NET pro Oracle, [nainstalujte ho](https://www.oracle.com/technetwork/topics/dotnet/downloads/)a pak zkuste scénář zopakovat.
 * Pokud se zobrazí chybová zpráva i po instalaci poskytovatele, proveďte následující kroky:
@@ -582,7 +577,7 @@ Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: 
 Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 ```
 
-**Rozlišení**
+**Řešení**
 
 Je možné, že budete muset upravit řetězec dotazu v aktivitě kopírování na základě toho, jak jsou data ve vaší databázi Oracle nakonfigurovaná. Tady je příklad (pomocí funkce **TO_DATE** ):
 
@@ -606,7 +601,7 @@ Když přesunete data z Oracle, použijí se z datového typu Oracle na typ .NET
 | PŘÍZNAKY |Byte []<br/>(podporované jenom v Oracle 10g a novějších verzích při použití ovladače Microsoftu) |
 | CHAR |Řetězec |
 | DATOVÝ typ CLOB |Řetězec |
-| DATE (Datum) |DateTime |
+| DATE |DateTime |
 | Plovák |Decimal, String (if Precision > 28) |
 | CELÉ ČÍSLO |Decimal, String (if Precision > 28) |
 | INTERVAL OD ROKU DO MĚSÍCE |Int32 |
@@ -619,7 +614,7 @@ Když přesunete data z Oracle, použijí se z datového typu Oracle na typ .NET
 | NVARCHAR2 |Řetězec |
 | ZÍSKÁNÍ |Byte [] |
 | ROWID |Řetězec |
-| ČASOVÉ razítko |DateTime |
+| ČASOVÉ RAZÍTKO |DateTime |
 | ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÝM PÁSMEM |DateTime |
 | ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |DateTime |
 | CELÉ ČÍSLO BEZ ZNAMÉNKA |Číslo |

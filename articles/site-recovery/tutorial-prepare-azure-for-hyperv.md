@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f4f040288574a9ddfc5f7c56878c7f1e795b09a3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5ca03336fc60abbb458615e922a2556dd21a79a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653847"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739674"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Příprava prostředků Azure pro zotavení po havárii technologie Hyper-V
 
@@ -34,9 +34,9 @@ V tomto kurzu se dozvíte, jak připravit komponenty Azure v případě, že chc
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="sign-in"></a>Přihlášení
+## <a name="sign-in"></a>Přihlásit se
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="verify-account-permissions"></a>Ověření oprávnění k účtu
 
@@ -52,31 +52,31 @@ K dokončení těchto úloh by měl být vašemu účtu přiřazená předdefino
 
 Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Virtuální počítače Azure se vytvoří z úložiště, když převezmete služby při selhání z místní lokality do Azure. Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
 
-1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek**úložiště  >  **Storage**  >  **účet úložiště – objekt blob, soubor, tabulka, fronta**.
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek** úložiště  >    >  **účet úložiště – objekt blob, soubor, tabulka, fronta**.
 2. V části **Vytvořit účet úložiště** zadejte název účtu.  Název, který zvolíte, musí být v rámci Azure jedinečný, musí být dlouhý 3 až 24 znaků a obsahovat pouze malá písmena a číslice. Pro tento kurz použijte **contosovmsacct1910171607**.
 3. V části **Model nasazení** vyberte **Resource Manager**.
-4. V rozevíracím rámečku **druh účtu**vyberte **úložiště (pro obecné účely V1)**. Nevybírejte úložiště objektů blob.
-5. V části **Replikace** vyberte výchozí redundanci úložiště **Geograficky redundantní úložiště jen pro čtení**. Nastavení požadováno zabezpečeným přenosem nechte zakázané.
-6. V části **Výkon** vyberte **Standard**. V poli **úroveň přístupu**vyberte výchozí možnost **Hot (aktivní**).
-7. V části **předplatné**vyberte předplatné, ve kterém chcete vytvořit nový účet úložiště.
+4. V rozevíracím rámečku **druh účtu** vyberte **úložiště (pro obecné účely V1)**. Nevybírejte úložiště objektů blob.
+5. V části **Replikace** vyberte výchozí redundanci úložiště **Geograficky redundantní úložiště jen pro čtení**.
+6. V části **Výkon** vyberte **Standard**. V poli **úroveň přístupu** vyberte výchozí možnost **Hot (aktivní**).
+7. V části **předplatné** vyberte předplatné, ve kterém chcete vytvořit nový účet úložiště.
 8. V části **Skupina prostředků** zadejte název nové skupiny prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pro tento kurz použijte **ContosoRG**.
-9. V části **umístění**vyberte geografické umístění účtu úložiště. Pro tento kurz použijte **západní Evropa**.
+9. V části **umístění** vyberte geografické umístění účtu úložiště. Pro tento kurz použijte **západní Evropa**.
 10. Vyberte **Vytvořit** a vytvořte účet úložiště.
 
    ![Snímek obrazovky s možnostmi vytvoření účtu úložiště](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
 
-1. V Azure Portal vyberte **+ vytvořit prostředek**a pak vyhledejte Recovery Services Azure Marketplace.
+1. V Azure Portal vyberte **+ vytvořit prostředek** a pak vyhledejte Recovery Services Azure Marketplace.
 2. Vyberte **Backup a Site Recovery (OMS)**. Potom na stránce **zálohování a Site Recovery** vyberte **vytvořit**.
-1. V **trezoru služby Recovery services > název**zadejte popisný název pro identifikaci trezoru. Pro účely tohoto kurzu použijte **ContosoVMVault**.
-2. V **skupiny prostředků**vyberte existující skupinu prostředků nebo vytvořte novou. Pro tento kurz použijte **contosoRG**.
-3. V části **umístění**vyberte oblast, ve které se má Trezor nacházet. Pro tento kurz použijte **západní Evropa**.
+1. V **trezoru služby Recovery services > název** zadejte popisný název pro identifikaci trezoru. Pro účely tohoto kurzu použijte **ContosoVMVault**.
+2. V **skupiny prostředků** vyberte existující skupinu prostředků nebo vytvořte novou. Pro tento kurz použijte **contosoRG**.
+3. V části **umístění** vyberte oblast, ve které se má Trezor nacházet. Pro tento kurz použijte **západní Evropa**.
 4. Chcete-li rychle získat přístup k trezoru z řídicího panelu, vyberte možnost **Připnout na řídicí panel**  >  **vytvořit**.
 
 ![Snímek obrazovky s stránkou vytvořit Recovery Services trezor](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-Nový trezor se zobrazí v části **řídicí panel**  >  **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .
+Nový trezor se zobrazí v části **řídicí panel**  >  **všechny prostředky** a na hlavní stránce **Recovery Services trezory** .
 
 ## <a name="set-up-an-azure-network"></a>Nastavení sítě Azure
 
@@ -85,9 +85,9 @@ Když se po převzetí služeb při selhání vytvoří z úložiště virtuáln
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**. Jako model nasazení nechte vybraný Resource Manager.
 2. V části **Název** zadejte název sítě. Název musí být v rámci skupiny prostředků Azure jedinečný. Pro tento kurz použijte **ContosoASRnet**.
 3. Zadejte skupinu prostředků, ve které se má síť vytvořit. Pro tento kurz použijte existující skupinu prostředků **contosoRG**.
-4. Do pole **Rozsah adres**zadejte **10.0.0.0/24** jako rozsah sítě. Pro tuto síť neexistuje žádná podsíť.
+4. Do pole **Rozsah adres** zadejte **10.0.0.0/24** jako rozsah sítě. Pro tuto síť neexistuje žádná podsíť.
 5. V části **Předplatné** vyberte předplatné, ve kterém chcete síť vytvořit.
-6. V **umístění**vyberte možnost **západní Evropa**. Síť musí být ve stejné oblasti jako trezor Služeb zotavení.
+6. V **umístění** vyberte možnost **západní Evropa**. Síť musí být ve stejné oblasti jako trezor Služeb zotavení.
 7. Ponechte výchozí možnosti základní DDoS Protection bez koncového bodu služby v síti.
 8. Vyberte **Vytvořit**.
 

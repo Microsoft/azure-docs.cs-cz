@@ -1,24 +1,18 @@
 ---
 title: Sestava analýzy hrozeb v Azure Security Center | Dokumentace Microsoftu
 description: Tato stránka vám pomůže s použitím sestav analýzy hrozeb Azure Security Center během šetření najít další informace o výstrahách zabezpečení.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
 ms.service: security-center
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: a4fdbab4a69fac1376779f37d5fa69fef587bf52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec6d227059c3f4fd1285f224e13169a2479bc65f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888238"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438229"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Sestava analýzy hrozeb Azure Security Center
 
@@ -75,5 +69,5 @@ Tento typ informací je užitečný během procesu reakce na incidenty, kde exis
 
 Tato stránka vysvětluje, jak otevřít sestavy analýzy hrozeb při zkoumání výstrah zabezpečení. Související informace najdete na následujících stránkách:
 
-* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md). Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
+* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md). Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
 * [Zpracování incidentů zabezpečení v Azure Security Center](security-center-incident.md)

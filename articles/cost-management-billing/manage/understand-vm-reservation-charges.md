@@ -3,15 +3,16 @@ title: Vysvětlení slevy za Azure Reserved VM Instances
 description: Zjistěte, jak se na běžící virtuální počítače uplatňuje sleva za rezervované instance virtuálních počítačů Azure.
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: bda93712dd9a7501fbfddf0e75b8ae3c0088ed55
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018378"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341236"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Jak se na virtuální počítače uplatňuje sleva za rezervaci Azure
 
@@ -56,11 +57,15 @@ Pokud používáte instance virtuálních počítačů s Windows, rezervace pokr
 
 ## <a name="discount-can-apply-to-different-sizes"></a>Sleva se může vztahovat na různé velikosti
 
-Pokud si koupíte rezervovanou instanci virtuálního počítače a vyberete **Optimalizováno pro:** **flexibilita velikosti instance**, rozsah pokrytí slevou závisí na tom, jakou velikost virtuálního počítače zvolíte. Tato rezervace se může vztahovat na velikosti virtuálních počítačů ve stejné skupině velikostí. Další informace najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Pokud si koupíte rezervovanou instanci virtuálního počítače a vyberete možnost **optimalizace pro flexibilní velikost instance**, pokrytí slevou se využije pro zvolenou velikost virtuálního počítače. Může se vztahovat i na jiné velikosti virtuálních počítačů, které jsou ve stejné skupině flexibilních velikostí instancí. Další informace najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/reserved-vm-instance-size-flexibility.md).
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>Sleva se vztahuje jenom na stejnou hodnotu ServiceType
+## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Virtuální počítače služby Premium Storage nezískávají slevy jiného typu než Premium
 
-Sleva za rezervaci se vztahuje jenom na využití virtuálních počítačů, u kterých hodnota `ServiceType` v oddílu `AdditionalInfo` odpovídá zakoupené rezervaci. Při uplatňování slevy za rezervaci se nebere v úvahu měřič používaný pro virtuální počítače a vyhodnocuje se jenom hodnota `ServiceType`. Je potřeba vědět, pro který typ služby jste virtuální počítač zakoupili. Rezervaci virtuálního počítače s jinou službou než Premium Storage můžete vyměnit za rezervaci se službou Premium Storage a naopak.
+Tady je příklad. Předpokládejme, že jste si koupili rezervaci pro pět virtuálních počítačů Standard_D1. Sleva za rezervace se vztahuje jenom na virtuální počítače Standard_D1 nebo jiné virtuální počítače ve stejné rodině instancí. Tato sleva se nevztahuje na virtuální počítače Standard_DS1 ani na jiné velikosti ve skupině flexibilních velikostí instancí DS1.
+
+Při uplatňování slevy za rezervaci se nebere v úvahu měřič používaný pro virtuální počítače a vyhodnocuje se jenom typ služby. Podívejte se na hodnotu `ServiceType` v `AdditionalInfo` a určete řadu/skupinu flexibility instance pro vaše virtuální počítače. Tyto hodnoty najdete v souboru CSV s informacemi o využití.
+
+Řadu/skupinu flexibility instance pro rezervaci nemůžete po jejím zakoupení měnit přímo. Můžete ale *vyměnit* rezervaci virtuálního počítače z jedné řady/skupiny flexibility instance za jinou.
 
 ## <a name="services-that-get-vm-reservation-discounts"></a>Služby, které získávají slevy za rezervaci virtuálních počítačů
 
@@ -89,7 +94,7 @@ Když je nastavení zapnuté a položka *ConsumedService* má některou z násle
 
 V datech využití si zkontrolujte hodnotu *ConsumedService*, abyste zjistili, jestli má dané využití nárok na slevy za rezervace.
 
-Další informace o flexibilitě velikosti instance najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Další informace o flexibilitě velikosti instance najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/reserved-vm-instance-size-flexibility.md).
 
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
@@ -101,10 +106,10 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 Další informace o rezervacích Azure najdete v následujících článcích:
 
 - [Co jsou rezervace v Azure?](../reservations/save-compute-costs-reservations.md)
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Správa rezervací v Azure](../reservations/manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../reservations/understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervací u smlouvy Enterprise](../reservations/understand-reserved-instance-usage-ea.md)
 - [Vysvětlení využití rezervací u předplatných CSP](/partner-center/azure-reservations)
-- [Náklady na software nezahrnuté v rezervacích](../reservations/reserved-instance-windows-software-costs.md)
+- [Náklady na software pro Windows nezahrnuté v rezervacích](../reservations/reserved-instance-windows-software-costs.md)

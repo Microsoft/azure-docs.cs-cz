@@ -3,12 +3,12 @@ title: Základní aktualizace obrázků – úkoly
 description: Přečtěte si o základních imagí pro Image kontejnerů aplikací a o tom, jak může základní aktualizace image aktivovat úlohu Azure Container Registry.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918500"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707482"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Základní aktualizace obrázků pro úlohy ACR
 
@@ -22,9 +22,13 @@ Základní image často aktualizuje maintainer image, aby zahrnovala nové funkc
 
 V některých případech, jako je například soukromý vývojový tým, může základní obrázek určovat více než operační systém nebo architekturu. Základní bitová kopie může být například bitová kopie součásti sdílené služby, kterou je třeba sledovat. Členové týmu mohou potřebovat sledovat tuto základní image pro testování nebo musí při vývoji imagí aplikace pravidelně aktualizovat image.
 
+## <a name="maintain-copies-of-base-images"></a>Zachovat kopie základních imagí
+
+Pro jakýkoliv obsah v registrech, který závisí na základním obsahu spravovaném ve veřejném registru, jako je například Docker Hub, doporučujeme zkopírovat obsah do služby Azure Container registry nebo do jiného privátního registru. Pak se ujistěte, že sestavíte image aplikace odkazem na soukromé základní image. Azure Container Registry poskytuje možnost [importu obrázků](container-registry-import-images.md) , která umožňuje snadno kopírovat obsah z veřejných registrů nebo jiných registrů služby Azure Container Registry. Další část popisuje použití úloh ACR ke sledování základních aktualizací imagí při sestavování aktualizací aplikace. Základní aktualizace obrázků můžete sledovat ve vlastních registrech Azure Container registry a volitelně také v případě, že jsou veřejné Registry v nadřazeném prostředí.
+
 ## <a name="track-base-image-updates"></a>Sledovat základní aktualizace obrázků
 
-ACR Tasks zahrnuje možnost, která za vás při aktualizaci základní image kontejnerů automaticky tyto image sestaví.
+ACR Tasks zahrnuje možnost, která za vás při aktualizaci základní image kontejnerů automaticky tyto image sestaví. Tuto možnost můžete použít k údržbě a aktualizaci kopií veřejných základních imagí ve službě Azure Container registry a pak k opětovnému sestavení imagí aplikace, které jsou závislé na základních obrázcích.
 
 ACR úlohy dynamicky zjišťují základní závislosti obrázků při sestavení image kontejneru. V důsledku toho může rozpoznat, kdy se aktualizuje základní obrázek image aplikace. S jedním předkonfigurovaným úkolem sestavení můžou úlohy ACR automaticky znovu sestavit všechny image aplikace, které odkazují na základní image. Díky této automatické detekci a novému sestavování vám ACR úlohy šetří čas a úsilí obvykle potřebné k ručnímu sledování a aktualizaci jednotlivých imagí a všech imagí aplikace, které odkazují na aktualizovanou základní image.
 
@@ -48,12 +52,12 @@ Pokud se základní bitová kopie zadaná v `FROM` příkazu nachází v jednom 
 
 ## <a name="additional-considerations"></a>Další aspekty
 
-* **Základní image pro Image aplikací** – v současné době úloha ACR sleduje jenom základní aktualizace obrázků pro aplikace (*běhové*image). Nesleduje aktualizace základních imagí pro mezilehlé (*BuildTime*) image používané ve více fázích fázemi.  
+* **Základní image pro Image aplikací** – v současné době úloha ACR sleduje jenom základní aktualizace obrázků pro aplikace (*běhové* image). Nesleduje aktualizace základních imagí pro mezilehlé (*BuildTime*) image používané ve více fázích fázemi.  
 
 * **Povoleno ve výchozím nastavení** – když vytvoříte úlohu ACR pomocí příkazu [AZ ACR Task Create][az-acr-task-create] , ve výchozím nastavení je úloha *povolená* pro aktivaci základní aktualizací image. To znamená, že `base-image-trigger-enabled` vlastnost je nastavena na hodnotu true. Pokud chcete toto chování v úloze zakázat, aktualizujte vlastnost na false. Například spusťte následující příkaz [AZ ACR Task Update][az-acr-task-update] :
 
   ```azurecli
-  az acr task update --myregistry --name mytask --base-image-trigger-enabled False
+  az acr task update --registry myregistry --name mytask --base-image-trigger-enabled False
   ```
 
 * **Aktivační událost ke sledování závislostí** – Pokud chcete, aby úloha ACR mohla určit a sledovat závislosti image kontejneru – což zahrnuje základní image, musíte nejdřív aktivovat úlohu, aby se image sestavila **aspoň jednou**. Úlohu můžete například aktivovat ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] .

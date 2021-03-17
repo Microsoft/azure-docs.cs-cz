@@ -3,8 +3,8 @@ title: Konfigurace spravovaných identit v sadě škálování virtuálního po�
 description: Podrobné pokyny pro konfiguraci spravovaných identit systémových a uživatelem definovaných identit v sadě škálování virtuálních počítačů Azure pomocí Azure CLI.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: MarkusVi
+author: barclayn
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
-ms.author: markvi
+ms.date: 12/15/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969307070d23f9892105b2f620ee839356f46330
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f88eccc524ffac424f8f5048990f693aa67613d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609167"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590932"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálního počítače pomocí Azure CLI
 
@@ -32,28 +32,24 @@ V tomto článku se dozvíte, jak provádět následující spravované identity
 - Povolení a zakázání spravované identity přiřazené systémem v sadě škálování virtuálních počítačů Azure
 - Přidání a odebrání spravované identity přiřazené uživatelem v sadě škálování virtuálních počítačů Azure
 
+Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
-- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si téma [co jsou spravované identity pro prostředky Azure?](overview.md). Další informace o spravovaných typech identity přiřazených systémem a uživatelem definovaných uživatelů najdete v tématu [spravované identity typu](overview.md#managed-identity-types).
+
 - K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení řízení přístupu na základě role Azure:
 
-    > [!NOTE]
-    > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+  - [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) , aby vytvořil sadu škálování virtuálního počítače a povolil a odebral systémovou a/nebo uživatelsky spravovanou identitu ze sady škálování virtuálního počítače.
 
-    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) , aby vytvořil sadu škálování virtuálního počítače a povolil a odebral systémovou a/nebo uživatelsky spravovanou identitu ze sady škálování virtuálního počítače.
-    - Role [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) k vytvoření spravované identity přiřazené uživatelem.
-    - Role [operátora spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) k přiřazení a odebrání spravované identity přiřazené uživatelem z a do sady škálování virtuálního počítače.
-- Chcete-li spustit příklady skriptu rozhraní příkazového řádku, máte tři možnosti:
-    - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md) z Azure Portal (viz další oddíl).
-    - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu.
-    - Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 nebo novější). 
-      
-      > [!NOTE]
-      > Příkazy byly aktualizovány tak, aby odrážely nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+  - Role [Přispěvatel spravovaných identit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) k vytvoření spravované identity přiřazené uživatelem.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+  - Role [operátora spravované identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) k přiřazení a odebrání spravované identity přiřazené uživatelem z a do sady škálování virtuálního počítače.
+
+  > [!NOTE]
+  > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
@@ -63,19 +59,13 @@ V této části se dozvíte, jak povolit a zakázat spravovanou identitu přiřa
 
 Vytvoření sady škálování virtuálního počítače s povolenou spravovanou identitou přiřazenou systémem:
 
-1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az-login). Použijte účet, který je přidružený k předplatnému Azure, v rámci kterého chcete nasadit sadu škálování virtuálního počítače:
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Vytvořte [skupinu prostředků](../../azure-resource-manager/management/overview.md#terminology) pro omezení a nasazení sady škálování virtuálních počítačů a souvisejících prostředků pomocí [AZ Group Create](/cli/azure/group/#az-group-create). Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
+1. Vytvořte [skupinu prostředků](../../azure-resource-manager/management/overview.md#terminology) pro omezení a nasazení sady škálování virtuálních počítačů a souvisejících prostředků pomocí [AZ Group Create](/cli/azure/group/#az-group-create). Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. [Vytvořte](/cli/azure/vmss/#az-vmss-create) sadu škálování virtuálního počítače. Následující příklad vytvoří sadu škálování virtuálního počítače s názvem *myVMSS* s spravovanou identitou přiřazenou systémem, jak je požadováno `--assign-identity` parametrem. Parametry `--admin-username` a `--admin-password` určují uživatelské jméno a heslo účtu správce pro přihlášení k virtuálnímu počítači. Aktualizujte tyto hodnoty odpovídajícím způsobem pro vaše prostředí: 
+1. [Vytvořte](/cli/azure/vmss/#az-vmss-create) sadu škálování virtuálního počítače. Následující příklad vytvoří sadu škálování virtuálního počítače s názvem *myVMSS* s spravovanou identitou přiřazenou systémem, jak je požadováno `--assign-identity` parametrem. Parametry `--admin-username` a `--admin-password` určují uživatelské jméno a heslo účtu správce pro přihlášení k virtuálnímu počítači. Aktualizujte tyto hodnoty odpovídajícím způsobem pro vaše prostředí: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -83,19 +73,11 @@ Vytvoření sady škálování virtuálního počítače s povolenou spravovanou
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>Povolit spravovanou identitu přiřazenou systémem v existující sadě škálování virtuálních počítačů Azure
 
-Pokud potřebujete povolit spravovanou identitu přiřazenou systémem v existující sadě škálování virtuálního počítače Azure:
+Pokud potřebujete [Povolit](/cli/azure/vmss/identity/#az-vmss-identity-assign) spravovanou identitu přiřazenou systémem v existující sadě škálování virtuálního počítače Azure:
 
-1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az-login). Použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače.
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. [Povolení](/cli/azure/vmss/identity/#az-vmss-identity-assign) spravované identity přiřazené systémem pro existující virtuální počítač:
-
-   ```azurecli-interactive
-   az vmss identity assign -g myResourceGroup -n myVMSS
-   ```
+```azurecli-interactive
+az vmss identity assign -g myResourceGroup -n myVMSS
+```
 
 ### <a name="disable-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Zakázat spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů Azure
 
@@ -114,9 +96,7 @@ Pokud máte virtuální počítač, který už nepotřebuje spravovanou identitu
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-
-
-## <a name="user-assigned-managed-identity"></a>spravovaná identita přiřazená uživatelem
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
 V této části se dozvíte, jak povolit a odebrat spravovanou identitu přiřazenou uživatelem pomocí Azure CLI.
 
@@ -216,23 +196,4 @@ az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned'
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled spravovaných identit pro prostředky Azure](overview.md)
-- Úplný rychlý Start pro vytváření škálování virtuálních počítačů Azure najdete v těchto tématech: 
-
-  - [Vytvoření sady škálování virtuálních počítačů pomocí rozhraní příkazového řádku](../../virtual-machines/linux/tutorial-create-vmss.md#create-a-scale-set)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Úplný úvodní režim pro vytváření škálování virtuálních počítačů Azure najdete v tématu [Vytvoření sady škálování virtuálních počítačů pomocí](../../virtual-machines/linux/tutorial-create-vmss.md#create-a-scale-set) rozhraní PŘÍKAZového řádku.

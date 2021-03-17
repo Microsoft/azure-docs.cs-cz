@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
-ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 39f893e9375970ff4bb6e3cfa2c93ceea48ec896
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195678"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331800"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Rychlý Start: vytvoření instance hybridního režimu pomocí Azure Portal & Azure Database Migration Service
 
@@ -39,7 +39,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření instance Azure Dat
 > [!IMPORTANT]
 > Azure Database Migration Service Hybrid Installer vyžaduje rozhraní .NET 4.7.2 nebo novější. Nejnovější verze rozhraní .NET najdete na stránce [stažení .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) .
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -125,7 +125,7 @@ Musíte vytvořit registraci aplikace Azure, kterou může místní hybridní pr
     > [!IMPORTANT]
     > Azure Database Migration Service Hybrid Installer vyžaduje rozhraní .NET 4.7.2 nebo novější. Nejnovější verze rozhraní .NET najdete na stránce [stažení .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) .
 
-4. Ve složce Install vyhledejte a otevřete soubor **dmsSettings. JSON** , zadejte **ApplicationId** a **ResourceID**a pak soubor uložte.
+4. Ve složce Install vyhledejte a otevřete **dmsSettings.jsv** souboru, zadejte **ApplicationId** a **ResourceID**a pak soubor uložte.
 
     ![Azure Database Migration Service nastavení hybridního pracovního procesu](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
 
@@ -172,7 +172,7 @@ V současné době se odinstalace Azure Database Migration Service hybridního r
 
 ## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>Nastavení Azure Database Migration Service Hybrid Worker pomocí prostředí PowerShell
 
-Kromě instalace Azure Database Migration Service Hybrid Worker prostřednictvím Azure Portal poskytujeme [powershellový skript](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip) , který můžete použít k automatizaci kroků instalace pracovního procesu po vytvoření nové instance Azure Database Migration Service v hybridním režimu. Skript:
+Kromě instalace Azure Database Migration Service Hybrid Worker prostřednictvím Azure Portal poskytujeme [powershellový skript](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip) , který můžete použít k automatizaci kroků instalace pracovního procesu po vytvoření nové instance Azure Database Migration Service v hybridním režimu. Tento skript:
 
 1. Vytvoří nový AdApp.
 2. Stáhne instalační program.
@@ -184,7 +184,7 @@ Kromě instalace Azure Database Migration Service Hybrid Worker prostřednictví
 Tento skript je určený pro rychlé vytváření prototypů, pokud už uživatel má všechna potřebná oprávnění v prostředí. Všimněte si, že ve vašem produkčním prostředí můžou mít AdApp a CERT různé požadavky, takže by se skript mohl zdařit.
 
 > [!IMPORTANT]
-> Tento skript předpokládá, že v hybridním režimu existuje existující instance Azure Database Migration Service a že účet Azure, který používá, má oprávnění k vytvoření AdApps v tenantovi a k úpravě RBAC v předplatném.
+> Tento skript předpokládá, že v hybridním režimu existuje existující instance Azure Database Migration Service a že účet Azure, který používá, má oprávnění k vytvoření AdApps v tenantovi a pro úpravu služby Azure RBAC v rámci předplatného.
 
 Vyplňte parametry v horní části skriptu a spusťte skript z instance prostředí PowerShell pro správce.
 

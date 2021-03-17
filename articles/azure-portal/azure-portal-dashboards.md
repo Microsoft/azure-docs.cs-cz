@@ -1,24 +1,15 @@
 ---
 title: Vytváření a sdílení řídicích panelů na webu Azure Portal
 description: Tento článek popisuje, jak vytvářet, přizpůsobovat, publikovat a sdílet řídicí panely v Azure Portal.
-services: azure-portal
-documentationcenter: ''
-author: sewatson
-manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764005"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745821"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytváření a sdílení řídicích panelů na webu Azure Portal
 
@@ -142,7 +133,7 @@ Pokud chcete použít existující řídicí panel jako šablonu pro nový říd
 
 ## <a name="publish-and-share-a-dashboard"></a>Publikování a sdílení řídicího panelu
 
-Když vytváříte řídicí panel, je ve výchozím nastavení privátní, což znamená, že jste ten, kdo ho uvidí. Aby byly řídicí panely dostupné ostatním uživatelům, můžete je publikovat a sdílet. Další informace najdete v tématu [sdílení řídicích panelů Azure pomocí Access Control na základě rolí](azure-portal-dashboard-share-access.md).
+Když vytváříte řídicí panel, je ve výchozím nastavení privátní, což znamená, že jste ten, kdo ho uvidí. Aby byly řídicí panely dostupné ostatním uživatelům, můžete je publikovat a sdílet. Další informace najdete v tématu [sdílení řídicích panelů Azure pomocí řízení přístupu na základě role v Azure](azure-portal-dashboard-share-access.md).
 
 ### <a name="open-a-shared-dashboard"></a>Otevření sdíleného řídicího panelu
 
@@ -178,5 +169,5 @@ K trvalému odstranění privátního nebo sdíleného řídicího panelu použi
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Sdílení řídicích panelů Azure prostřednictvím Řízení přístupu na základě role](azure-portal-dashboard-share-access.md)
+* [Sdílení řídicích panelů Azure pomocí řízení přístupu na základě role v Azure](azure-portal-dashboard-share-access.md)
 * [Vytváření řídicích panelů Azure prostřednictvím kódu programu](azure-portal-dashboards-create-programmatically.md)

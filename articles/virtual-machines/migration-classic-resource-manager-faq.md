@@ -1,19 +1,20 @@
 ---
 title: Nejčastější dotazy ohledně migrace z modelu Classic na Azure Resource Manager
-description: Nejčastější dotazy ohledně migrace z modelu Classic na Azure Resource Manager
+description: Nejčastější dotazy týkající se migrace z modelu Classic na Azure Resource Manager.
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
+ms.subservice: classic-to-arm-migration
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 3d8c5d408ef2b958ca7d3454f23ce2c52fb1d1be
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 034f09a8b616450e472dcc11427191f187cf489f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513111"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615155"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Nejčastější dotazy ohledně migrace z modelu Classic na Azure Resource Manager
 
@@ -26,7 +27,7 @@ Slovo "Classic" na virtuálním počítači s IaaS (Classic) odkazuje na virtuá
 
 ## <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) je nejnovější Řídicí rovina Azure zodpovědná za vytváření, správu a odstraňování virtuálních počítačů a provádění jiných operací roviny řízení. 
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) je nejnovější Řídicí rovina Azure zodpovědná za vytváření, správu a odstraňování virtuálních počítačů a provádění jiných operací roviny řízení. 
 
 ## <a name="what-is-the-time-required-for-migration"></a>Jaký je čas potřebný k migraci?
 
@@ -42,11 +43,13 @@ Zákazník, který ve svém předplatném v měsíci února 2020 aktivní nebo z
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Proč se mi zobrazuje chyba s oznámením "NewClassicVMCreationNotAllowedForSubscription"?
 
-V rámci procesu vyřazení již nejsou virtuální počítače IaaS (Classic) k dispozici pro nové zákazníky. Identifikovali jsme vás jako noví zákazníci, takže vaše operace nebyla autorizována. Důrazně doporučujeme používat službu [Azure Virtual Machines s využitím ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Pokud nemůžete použít virtuální počítače Azure pomocí ARM, obraťte se prosím na podporu a přidejte své předplatné do seznamu povolených.
+V rámci procesu vyřazení již nejsou virtuální počítače IaaS (Classic) k dispozici pro nové zákazníky. Identifikovali jsme vás jako noví zákazníci, takže vaše operace nebyla autorizována. Důrazně doporučujeme použít Azure Resource Manager. Pokud nemůžete použít virtuální počítače Azure pomocí Azure Resource Manager, požádejte prosím podporu o přidání vašeho předplatného do seznamu povolených.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Má tento plán migrace vliv na některé stávající služby nebo aplikace spuštěné na virtuálních počítačích Azure? 
 
-Ne do 1. března 2023 pro virtuální počítače s IaaS (Classic). Virtuální počítače s IaaS (Classic) mají obecně dostupné služby. I nadále můžete tyto prostředky používat k rozšíření vaší působnosti v systému Microsoft Azure. Od 1. března 2023 se tyto virtuální počítače kompletně vyřadí a všechny aktivní nebo přidělené virtuální počítače se zastaví & přidělení zrušeno. Nebude to mít žádný vliv na jiné klasické prostředky, jako je Cloud Services (Classic), účty úložiště (Classic) atd.   
+Ne do 1. března 2023 pro virtuální počítače s IaaS (Classic). Virtuální počítače s IaaS (Classic) mají obecně dostupné služby. I nadále můžete tyto prostředky používat k rozšíření vaší působnosti v systému Microsoft Azure. Od 1. března 2023 se tyto virtuální počítače kompletně vyřadí a všechny aktivní nebo přidělené virtuální počítače se zastaví & přidělení zrušeno.
+
+Nebude to mít žádný vliv na jiné klasické prostředky, jako je Cloud Services (Classic), účty úložiště (Classic) atd.
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Co se stane s virtuálními počítači, pokud se je nechystám migrovat v blízké budoucnosti? 
 
@@ -70,21 +73,21 @@ Pokud selže operace potvrzení, migraci není možné přerušit. Všechny oper
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Je nutné koupit další okruh ExpressRoute, když potřebuji používat infrastrukturu jako službu (IaaS) v modelu Resource Manager? 
 
-No. Nedávno jsme povolili [přesun okruhů ExpressRoute z modelu nasazení Classic na Resource Manager](~/articles/expressroute/expressroute-move.md). Pokud už máte okruh ExpressRoute, není nutné kupovat nový.
+No. Nedávno jsme povolili [přesun okruhů ExpressRoute z modelu nasazení Classic na Resource Manager](../expressroute/expressroute-move.md). Pokud už máte okruh ExpressRoute, není nutné kupovat nový.
 
-## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>Co když byly pro prostředky IaaS v modelu Classic nakonfigurované zásady řízení přístupu na základě role? 
+## <a name="what-if-i-had-configured-azure-role-based-access-control-policies-for-my-classic-iaas-resources"></a>Co když mám nakonfigurovat zásady řízení přístupu na základě rolí Azure pro moje klasické prostředky IaaS? 
 
-Během migrace se prostředky transformují z modelu Classic na Resource Manager. Proto doporučujeme naplánovat aktualizace zásad řízení přístupu na základě role, které je třeba provést, až po migraci.
+Během migrace se prostředky transformují z modelu Classic na Resource Manager. Proto doporučujeme, abyste naplánovali aktualizace zásad Azure RBAC, které se musí provést po migraci.
 
 ## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Tyto klasické virtuální počítače jsem zálohoval do trezoru. Můžu migrovat svoje virtuální počítače z klasického režimu do režimu Resource Manageru a chránit je pomocí trezoru služby Recovery Services?
 
 Když přesunete virtuální počítač z klasického do režimu Správce prostředků, zálohy provedené před migrací se nebudou migrovat na nově migrovaný Správce prostředků virtuální počítač. Pokud ale chcete zachovat zálohy klasických virtuálních počítačů, postupujte před migrací pomocí těchto kroků. 
 
-1. V trezoru Recovery Services otevřete kartu **chráněné položky** a vyberte virtuální počítač. 
-2. Klikněte na Zastavit ochranu. Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
+1. V trezoru Recovery Services otevřete okno **zálohované položky** a vyberte virtuální počítač. 
+2. Klikněte na zastavit zálohování. V rozevírací nabídce vyberte zachovat data záloh.
 
 > [!NOTE]
-> Náklady na instanci zálohy se vám budou účtovat, dokud si zachováte data. Záložní kopie se vyřadí jako rozsah pro uchování dat. Poslední záložní kopie je ale vždycky zachovaná, dokud data zálohy explicitně neodstraníte. Po překročení rozsahu uchování doporučujeme, abyste zkontrolovali rozsah uchování virtuálního počítače a aktivovali v chráněné položce v trezoru možnost odstranit data zálohy. 
+> Tato možnost zastaví všechny budoucí úlohy zálohování z ochrany virtuálního počítače. Služba Azure Backup však uchová body obnovení, které byly zálohovány.  Abyste zachovali body obnovení v trezoru, musíte platit, abyste si ponechali body obnovení v trezoru (podrobnosti najdete [Azure Backup ceny](https://azure.microsoft.com/pricing/details/backup/) ). V případě potřeby budete moct virtuální počítač obnovit. Pokud se rozhodnete obnovit ochranu virtuálního počítače, můžete použít možnost *obnovit zálohování* .
 >
 >
 
@@ -93,11 +96,11 @@ Chcete-li migrovat virtuální počítač do režimu Správce prostředků,
 1. Odstraňte z virtuálního počítače zálohu/rozšíření snímků.
 2. Proveďte migraci virtuálního počítače z klasického režimu do režimu Resource Manageru. Ověřte, že se do režimu Resource Manager migruje také úložiště a informace o síti odpovídající tomuto virtuálnímu počítači.
 
-Pokud navíc chcete zálohovat migrovaný virtuální počítač, v okně Správa virtuálního počítače [Povolte zálohování](~/articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
+Pokud navíc chcete zálohovat migrovaný virtuální počítač, v okně Správa virtuálního počítače [Povolte zálohování](../backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Je možné ověřit, jestli jsou prostředky nebo předplatné schopné migrace? 
 
-Yes. U možnosti migrace s podporou platformy je prvním krokem přípravy na migraci ověření, že jsou prostředky schopné migrace. V případě selhání operace ověření se zobrazí zprávy se všemi důvody, proč migraci není možné dokončit.
+Ano. U možnosti migrace s podporou platformy je prvním krokem přípravy na migraci ověření, že jsou prostředky schopné migrace. V případě selhání operace ověření se zobrazí zprávy se všemi důvody, proč migraci není možné dokončit.
 
 ## <a name="what-happens-if-i-run-into-a-quota-error-while-preparing-the-iaas-resources-for-migration"></a>Co se stane, pokud při přípravě prostředků IaaS na migraci dojde k chybě kvóty? 
 
@@ -105,7 +108,7 @@ Doporučujeme migraci přerušit a pak odeslat žádost o navýšení kvót v ob
 
 ## <a name="how-do-i-report-an-issue"></a>Jak se dá nahlásit problém? 
 
-Vystavte své problémy a dotazy týkající se migrace na [stránku s otázkou pro virtuální počítač&Microsoft Q](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)a klíčovým slovem ClassicIaaSMigration. Doporučujeme, abyste všechny vaše dotazy zveřejnili na tomto fóru. Pokud máte smlouvu o podpoře, můžete také odeslat lístek podpory.
+Vystavte své problémy a dotazy týkající se migrace na [stránku s otázkou pro virtuální počítač&Microsoft Q](/answers/topics/azure-virtual-machines.html)a klíčovým slovem ClassicIaaSMigration. Doporučujeme, abyste všechny vaše dotazy zveřejnili na tomto fóru. Pokud máte smlouvu o podpoře, můžete také odeslat lístek podpory.
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>Co když se mi nelíbí názvy prostředků, které platforma zvolila během migrace? 
 
@@ -113,7 +116,7 @@ Všechny prostředky, pro které jste explicitně zadali název v modelu nasazen
 
 ## <a name="can-i-migrate-expressroute-circuits-used-across-subscriptions-with-authorization-links"></a>Je možné migrovat okruhy ExpressRoute používané napříč předplatnými pomocí autorizačních odkazů? 
 
-Okruhy ExpressRoute používající autorizační odkazy mezi předplatnými není možné automaticky migrovat bez výpadku. Nabízíme doprovodné materiály popisující ruční postup jejich migrace. Postup a další informace najdete v článku [Migrace okruhů ExpressRoute a přidružených virtuálních sítí z modelu nasazení Classic na Resource Manager](~/articles/expressroute/expressroute-migration-classic-resource-manager.md).
+Okruhy ExpressRoute používající autorizační odkazy mezi předplatnými není možné automaticky migrovat bez výpadku. Nabízíme doprovodné materiály popisující ruční postup jejich migrace. Postup a další informace najdete v článku [Migrace okruhů ExpressRoute a přidružených virtuálních sítí z modelu nasazení Classic na Resource Manager](../expressroute/expressroute-migration-classic-resource-manager.md).
 
 ## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Zobrazila se mi zpráva *"virtuální počítač hlásí celkový stav agenta jako Nepřipraveno. Virtuální počítač proto nelze migrovat. Ujistěte se, že agent virtuálního počítače hlásí celkový stav agenta jako připravený nebo zda* *obsahuje rozšíření, jehož stav není hlášený z virtuálního počítače. Proto tento virtuální počítač nejde migrovat. "*
 
@@ -122,22 +125,10 @@ Tato zpráva se zobrazí v případě, že virtuální počítač nemá odchozí
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro Linux:
-
-* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](./linux/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu Classic na Azure Resource Manager](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Běžné chyby při migraci](./linux/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-Ve Windows:
-
-* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](./windows/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu Classic na Azure Resource Manager](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Běžné chyby při migraci](./windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](./migration-classic-resource-manager-overview.md)
+* [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md)
+* [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md)
+* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-ps.md)
+* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](migration-classic-resource-manager-cli.md)
+* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-community-tools.md)
+* [Běžné chyby při migraci](migration-classic-resource-manager-errors.md)

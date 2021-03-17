@@ -1,6 +1,6 @@
 ---
 title: Aplikace Java s Azure Cosmos DB rozhraní API Cassandra pomocí sady Java 3,0 SDK
-description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a Javy.
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure Cosmos DB rozhraní API Cassandra vytvořit profilovou aplikaci s Azure Portal a Java 3,0 SDK.
 ms.service: cosmos-db
 author: TheovanKraay
 ms.author: thvankra
@@ -9,14 +9,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 78a8e6cd777c239841f6d26e06a9fc348a221286
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df7f857edc4c1296b6a6e1fae13d70aa4f178728
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323141"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099767"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Rychlý Start: Vytvoření aplikace Java pro správu dat rozhraní API Cassandra Azure Cosmos DB (ovladač v3)
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -29,7 +30,7 @@ ms.locfileid: "87323141"
 
 V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API Cassandra a použijete Cassandra aplikaci Java naklonovaná z GitHubu k vytvoření databáze Cassandra a kontejneru pomocí [ovladačů v3. x Apache Cassandra](https://github.com/datastax/java-driver/tree/3.x) pro Java. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte `JAVA_HOME` proměnnou prostředí na složku, ve které je nainstalovaná JDK.
@@ -144,7 +145,7 @@ Následující fragmenty kódu jsou ze souboru *Src/Main/Java/com/Azure/cosmosdb
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Podrobnosti o připojovacím řetězci umožňují vaší aplikaci komunikovat s hostovanou databází.
 
-1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec**. 
+1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec** . 
 
     :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="Zobrazení a zkopírování uživatelského jména z webu Azure Portal, stránka Připojovací řetězec":::
 
@@ -200,9 +201,9 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     Stisknutím kombinace kláves CTRL + C ukončete provádění programu a zavřete okno konzoly.
 
-4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
+4. Na portálu Azure Portal otevřete **Data Explorer** , abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
 
-    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="Zobrazení dat v Průzkumník dat-Azure Cosmos DB":::
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="Zobrazení a zkopírování uživatelského jména z webu Azure Portal, stránka Připojovací řetězec":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

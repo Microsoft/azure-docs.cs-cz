@@ -3,17 +3,19 @@ title: Klauzule FROM v Azure Cosmos DB
 description: Přečtěte si o syntaxi SQL a příklad pro klauzuli FROM pro Azure Cosmos DB. Tento článek také ukazuje příklady určení rozsahu výsledků a získání dílčích položek pomocí klauzule FROM.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3844a628a8e3773821736324bfdaab3f64ff9da5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83005858"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336244"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Klauzule FROM v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Klauzule FROM ( `FROM <from_specification>` ) je volitelná, pokud se zdroj nefiltruje nebo se v dotazu později nepoužívá. Dotaz, jako `SELECT * FROM Families` je například výčet v rámci celého `Families` kontejneru. Místo použití názvu kontejneru můžete použít také kořenový kořenový identifikátor pro kontejner.
 
@@ -55,11 +57,11 @@ FROM <from_specification>
   
 -  Pokud je výraz `<container_expression>` , pak property_name a property_name bude použit jako alias. Pokud je výraz container_name, container_name bude použit jako alias.  
   
-- FORMÁTU`input_alias`  
+- FORMÁTU `input_alias`  
   
   Určuje, že `input_alias` je sada hodnot vrácená podkladovým výrazem kontejneru.  
  
-- `input_alias`PRO  
+- `input_alias` PRO  
   
   Určuje, že `input_alias` má představovat sadu hodnot, které byly získány pomocí iterace u všech prvků pole každého pole vráceného podkladovým výrazem kontejneru. Jakákoli hodnota vrácená podkladovým výrazem kontejneru, který není polem Array, je ignorována.  
   

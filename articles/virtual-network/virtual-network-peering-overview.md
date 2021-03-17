@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 6ba0caa2546fdb9d4845e2c7adf87a06d906dd12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265156"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216746"
 ---
 # <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
 
-Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení sítí v [Azure Virtual Network](virtual-networks-overview.md). Virtuální sítě se zobrazí jako jedna pro účely připojení. Přenos dat mezi virtuálními počítači používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti se provoz směruje jenom přes *privátní* síť Microsoftu.
+Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení dvou nebo více [virtuálních sítí](virtual-networks-overview.md) v Azure. Virtuální sítě se zobrazí jako jedna pro účely připojení. Přenos dat mezi virtuálními počítači ve virtuálních sítích s navázaným partnerským vztahem používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti se provoz směruje jenom přes *privátní* síť Microsoftu.
 
 Azure podporuje následující typy partnerských vztahů:
 
@@ -48,7 +48,7 @@ Latence sítě mezi virtuálními počítači v partnerských virtuálních sít
 Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přímo přes páteřní infrastrukturu Microsoftu, ne prostřednictvím brány ani přes veřejný internet.
 
 Skupiny zabezpečení sítě v obou virtuálních sítích můžete použít k blokování přístupu k ostatním virtuálním sítím nebo podsítím.
-Při konfiguraci partnerského vztahu virtuálních sítí buď otevřete nebo zavřete pravidla skupiny zabezpečení sítě mezi virtuálními sítěmi. Pokud otevřete úplné propojení mezi partnerskými virtuálními sítěmi, můžete použít skupiny zabezpečení sítě a zablokovat nebo odepřít konkrétní přístup. Výchozí možností je úplné připojení. Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení](security-overview.md).
+Při konfiguraci partnerského vztahu virtuálních sítí buď otevřete nebo zavřete pravidla skupiny zabezpečení sítě mezi virtuálními sítěmi. Pokud otevřete úplné propojení mezi partnerskými virtuálními sítěmi, můžete použít skupiny zabezpečení sítě a zablokovat nebo odepřít konkrétní přístup. Výchozí možností je úplné připojení. Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení](./network-security-groups-overview.md).
 
 ## <a name="service-chaining"></a>Řetězení služeb
 

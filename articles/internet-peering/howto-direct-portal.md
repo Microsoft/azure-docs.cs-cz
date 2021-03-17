@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: e49462612b58163c2ac51b78584761d0d8b8bd06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a89ce873c53e94036aa4f8ac2c2870365924187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700561"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537204"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Vytvoření nebo úprava přímého partnerského vztahu pomocí Azure Portal
 
@@ -37,7 +37,7 @@ Jako poskytovatel internetových služeb nebo poskytovatel internetového Exchan
 1. Na stránce **vytvořit partnerský vztah** na kartě **základy** vyplňte pole, jak je znázorněno zde:
 
 
-    ![Registrace služby Peering Service](./media/setup-basics-tab.png)
+    ![Snímek obrazovky se zobrazí karta základy vytvoření partnerského vztahu pomocí odkazu vytvořit nový, který se vyvolal.](./media/setup-basics-tab.png)
 
 2. Vyberte své předplatné Azure.
 
@@ -59,7 +59,7 @@ Jako poskytovatel internetových služeb nebo poskytovatel internetového Exchan
 
 
 
-    ![Registrace služby Peering Service](./media/setup-direct-basics-filled-tab.png)
+    ![Snímek obrazovky se zobrazí karta základy stránky vytvořit partnerský vztah se všemi zadanými hodnotami.](./media/setup-direct-basics-filled-tab.png)
 
 
 #### <a name="configure-connections-and-submit"></a>Konfigurace připojení a odeslání

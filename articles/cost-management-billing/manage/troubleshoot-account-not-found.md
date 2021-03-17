@@ -5,15 +5,16 @@ author: amberbhargava
 ms.reviewer: banders
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 671189a6a328a77653b61542e3e30c848a75cb65
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 71561f6ecdde09f259e54260e7bab4dcc0e85c98
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85364256"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132631"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>Řešení potíží se zobrazením fakturačního účtu na webu Azure Portal
 
@@ -58,7 +59,7 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 Přečtěte si následující články věnované předplatným a fakturaci, které vám pomohou s řešením vašich potíží.
 
-- [Odmítnutá karta](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Problémy s přihlášením k předplatnému](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Nenalezena žádná předplatná](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Zákaz zobrazení firemních nákladů](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Odmítnutá karta](./troubleshoot-declined-card.md)
+- [Problémy s přihlášením k předplatnému](./troubleshoot-sign-in-issue.md)
+- [Nenalezena žádná předplatná](./no-subscriptions-found.md)
+- [Zákaz zobrazení firemních nákladů](./enterprise-mgmt-grp-troubleshoot-cost-view.md)

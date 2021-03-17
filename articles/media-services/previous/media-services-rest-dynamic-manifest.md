@@ -1,9 +1,9 @@
 ---
 title: Vytváření filtrů pomocí Azure Media Services REST API | Microsoft Docs
-description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
+description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services REST API vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f7d23daf-7cd2-49c7-a195-ab902912ab3c
@@ -12,24 +12,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewr: cenkdin
-ms.openlocfilehash: 9bc351f72f5dac38ebfc1983a7b918d46f5fc8ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9286260d0fead11c7f55eff213c8ad0241a8cba
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000308"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008786"
 ---
-# <a name="creating-filters-with-azure-media-services-rest-api"></a>Vytváření filtrů pomocí Azure Media Services REST API 
+# <a name="creating-filters-with-azure-media-services-rest-api"></a>Vytváření filtrů pomocí Azure Media Services REST API
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-Počínaje verzí 2,17 Media Services umožňuje definovat filtry pro vaše prostředky. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožňují vybrat, co dělají: přehrávání pouze části videa (místo přehrávání celého videa) nebo určení pouze podmnožiny zvukových a video verzí, které může zařízení zákazníka zpracovat (místo všech verzí přidružených k assetu). Toto filtrování prostředků je archivováno prostřednictvím **dynamického manifestu**s, které jsou vytvořeny na základě požadavku zákazníka o streamování videa na základě zadaného filtru (ů).
+Počínaje verzí 2,17 Media Services umožňuje definovat filtry pro vaše prostředky. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožňují vybrat, co dělají: přehrávání pouze části videa (místo přehrávání celého videa) nebo určení pouze podmnožiny zvukových a video verzí, které může zařízení zákazníka zpracovat (místo všech verzí přidružených k assetu). Toto filtrování prostředků je archivováno prostřednictvím **dynamického manifestu** s, které jsou vytvořeny na základě požadavku zákazníka o streamování videa na základě zadaného filtru (ů).
 
 Podrobnější informace týkající se filtrů a dynamického manifestu naleznete v tématu [Přehled dynamických manifestů](media-services-dynamic-manifest-overview.md).
 
@@ -171,7 +174,7 @@ HTTP/1.1 201 Created
 ```
 
 ## <a name="list-filters"></a>Seznam filtrů
-### <a name="get-all-global-filters-in-the-ams-account"></a>Načíst všechny globální **filtry**s v účtu AMS
+### <a name="get-all-global-filters-in-the-ams-account"></a>Načíst všechny globální **filtry** s v účtu AMS
 Chcete-li zobrazit seznam filtrů, použijte následující požadavky HTTP: 
 
 #### <a name="http-request"></a>Požadavek HTTP
@@ -187,7 +190,7 @@ x-ms-version: 2.19
 Host: media.windows.net 
 ```
 
-### <a name="get-assetfilters-associated-with-an-asset"></a>Získat **AssetFilter**s přidruženou k assetu
+### <a name="get-assetfilters-associated-with-an-asset"></a>Získat **AssetFilter** s přidruženou k assetu
 #### <a name="http-request"></a>Požadavek HTTP
 
 ```console
@@ -360,7 +363,7 @@ Následující příklady ukazují, jak přidat filtry na adresy URL streamován
 
 **Technologie Smooth Streaming**
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
 
     
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services

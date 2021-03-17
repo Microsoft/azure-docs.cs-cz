@@ -11,11 +11,11 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100902"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023819"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -26,10 +26,10 @@ Tady je několik tipů pro řešení potíží s některými běžnými problém
 
 Můžete najít chybové zprávy přidružené k pracovnímu postupu:
 
-1. Použití příkazového řádku a psaní`msgen status`
+1. Použití příkazového řádku a psaní  `msgen status`
 2. Prozkoumání obsahu standardoutput.txt.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. používání příkazového řádku`msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. používání příkazového řádku `msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -82,7 +82,7 @@ msgen status -w 1001 -f "config.txt"
 ```
 
 ### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. Projděte si obsah standardoutput.txt 
-Vyhledejte kontejner výstupu pro daný pracovní postup. MSGEN vytvoří `[workflowfilename].logs.zip` složku po každém spuštění pracovního postupu. Rozbalte složku pro zobrazení jejího obsahu:
+Vyhledejte kontejner výstupu pro daný pracovní postup. MSGEN vytvoří   `[workflowfilename].logs.zip` složku po každém spuštění pracovního postupu. Rozbalte složku pro zobrazení jejího obsahu:
 
 * outputFileList.txt – seznam výstupních souborů vyprodukovaných během pracovního postupu
 * standarderror.txt – tento soubor je prázdný.
@@ -115,7 +115,7 @@ Tyto chyby jsou uživatelem akce. Na základě typu souboru a kódu chyby služb
 
 | Typ souboru | Kód chyby | Chybová zpráva                                                                           | Doporučený postup při řešení potíží                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Všechny          | 701        | Čtení [připraveno] má [numberOfBases] základ, ale limit je [maxReadLength].           | Nejběžnějším důvodem této chyby je poškození souboru vedoucí ke zřetězení dvou čtení. Ověřte vstupní soubory. |
+| Libovolný          | 701        | Čtení [připraveno] má [numberOfBases] základ, ale limit je [maxReadLength].           | Nejběžnějším důvodem této chyby je poškození souboru vedoucí ke zřetězení dvou čtení. Ověřte vstupní soubory. |
 | BAM          | 200        |   Nelze číst soubor ' [yourFileName] '.                                                                                       | Ověřte formát souboru BAM. Odešlete pracovní postup znovu se správným formátovaným souborem.                                                                           |
 | BAM          | 201        |  Nelze číst soubor BAM [File_name].                                                                                      |Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                            |
 | BAM          | 202        | Nelze číst soubor BAM [File_name]. Soubor je moc malý a záhlaví chybí.                                                                                        | Ověřte formát souboru BAM.  Odešlete pracovní postup se správně formátovaným souborem.                                                                            |

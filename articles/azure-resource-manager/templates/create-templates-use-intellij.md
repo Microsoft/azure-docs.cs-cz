@@ -1,20 +1,20 @@
 ---
 title: Nasazení šablony – IntelliJ nápad
-description: Naučte se, jak vytvořit první šablonu Azure Resource Manager s využitím NÁPADu IntelliJ a jak ho nasadit.
+description: Naučte se, jak vytvořit první šablonu Azure Resource Manager (šablonu ARM) pomocí NÁPADu pro IntelliJ a jak ji nasadit.
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: 4039a70bf90bc8f4b7932dbf40d8369e9773abf3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0e007fe8930b30cee1c95159d7e964e3792449f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321815"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905957"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>Vytváření a nasazování šablon ARM pomocí IntelliJ NÁPADu
 
-Naučte se nasadit šablonu Azure Resource Manager (ARM) do Azure s využitím NÁPADu IntelliJ a procesu úpravy a aktualizace šablony přímo z integrovaného vývojového prostředí (IDE). Šablony ARM jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Informace o konceptech spojených s nasazením a správou řešení Azure najdete v tématu [Přehled nasazení šablon](overview.md).
+Naučte se nasadit šablonu Azure Resource Manager (šablonu ARM) do Azure s využitím NÁPADu IntelliJ a procesu úpravy a aktualizace šablony přímo z integrovaného vývojového prostředí (IDE). Šablony ARM jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Pokud chcete pochopit koncepty spojené s nasazením a správou řešení Azure, přečtěte si téma [Přehled nasazení šablon](overview.md).
 
 ![Diagram portálu Správce prostředků Template](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -22,7 +22,7 @@ Po dokončení kurzu nasadíte účet Azure Storage. Stejný postup je možné p
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -40,7 +40,7 @@ K dokončení tohoto článku potřebujete:
 
     ![Správce prostředků šablonu kliknutím pravým tlačítkem myši vytvoříte nasazení.](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Proveďte konfiguraci **názvu nasazení**, **předplatného**, **skupiny prostředků**a **oblasti**. Tady nasadíme šablonu do nové skupiny prostředků `testRG` . Pak vyberte možnost cesta pro **šablonu prostředků** jako `azuredeploy.json` a **parametry prostředku** při `azuredeploy.parameters.json` stažení.
+1. Proveďte konfiguraci **názvu nasazení**, **předplatného**, **skupiny prostředků** a **oblasti**. Tady nasadíme šablonu do nové skupiny prostředků `testRG` . Pak vyberte možnost cesta pro **šablonu prostředků** jako `azuredeploy.json` a **parametry prostředku** při `azuredeploy.parameters.json` stažení.
 
     ![Správce prostředků šablonou vyberte soubory pro vytvoření nasazení.](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
@@ -60,13 +60,13 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="edit-and-update-an-existing-deployment"></a>Upravit a aktualizovat existující nasazení
 
-1. V nabídce kliknutím pravým tlačítkem nebo zobrazení vlastností vyberte **Upravit nasazení** . Otevře se jiné zobrazení karty, které zobrazuje šablonu a soubory parametrů pro nasazení v Azure. Chcete-li uložit tyto soubory do místní, můžete kliknout na **Exportovat soubor šablony** nebo **exportovat soubory parametrů**.
+1. V nabídce kliknutím pravým tlačítkem nebo zobrazení vlastností vyberte **Upravit nasazení** . Otevře se jiné zobrazení karty, které zobrazuje šablonu a soubory parametrů pro nasazení v Azure. Chcete-li uložit tyto soubory do místní, můžete kliknout na **Exportovat soubor šablony**  nebo **exportovat soubory parametrů**.
 
     ![Nasazení úprav šablony Správce prostředků](./media/create-templates-use-intellij/resource-manager-edit-deployment.png)
 
 1. Tyto dva soubory můžete upravovat na této stránce a nasazovat změny do Azure. Zde upravujeme hodnotu **storageAccountType** v souborech parametrů z `Standard_LRS` na `Standard_GRS` . Potom v dolní části klikněte na **aktualizovat nasazení** a potvrďte aktualizaci.
 
-    ![Nasazení úprav šablony Správce prostředků](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
+    ![Snímek obrazovky zobrazuje šablonu Správce prostředků s zobrazeným výzvou k nasazení aktualizace.](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
 1. Po dokončení nasazení aktualizace můžete na portálu ověřit, jestli je vytvořený účet úložiště změněný `Standard_GRS` .
 

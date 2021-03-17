@@ -4,19 +4,19 @@ description: Další informace o zásadách Azure Firewall Manageru
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: overview
-ms.date: 06/30/2020
+ms.topic: conceptual
+ms.date: 11/24/2020
 ms.author: victorh
-ms.openlocfilehash: 6e532634fb40eee100e73a333ac6aa7e0a79cf3c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 73a07af0fa98adf66d6104f1ab545d31a0cfd6d7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521645"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95802032"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Přehled zásad Azure Firewall Manageru
 
-Zásada brány firewall je prostředek Azure, který obsahuje kolekce pravidel NAT, síť a aplikace a také nastavení analýzy hrozeb. Jedná se o globální prostředek, který se dá použít napříč několika Azure Firewall instancemi v zabezpečených virtuálních rozbočovačích a virtuálních sítích rozbočovačů. Zásady fungují napříč oblastmi a předplatnými.
+Zásada brány firewall je prostředek Azure, který obsahuje kolekce pravidel NAT, síť a aplikace a nastavení analýzy hrozeb. Jedná se o globální prostředek, který se dá použít napříč několika Azure Firewall instancemi v zabezpečených virtuálních rozbočovačích a virtuálních sítích rozbočovačů. Zásady fungují napříč oblastmi a předplatnými.
 
 ![Zásady Azure Firewall Manageru](media/policy-overview/policy-overview.png)
 

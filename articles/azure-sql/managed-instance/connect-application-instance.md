@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab, vanto
+ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a5d002532adb043fa5196231964d5b6e2c81417c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3106ec1a45b307207624e5cd077a222acccc83d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706371"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692823"
 ---
-# <a name="connect-your-application-to-azure-sql-managed-instance"></a>Připojení aplikace ke spravované instanci Azure SQL
+# <a name="connect-your-application-to-azure-sql-managed-instance"></a>Připojení aplikace ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Dnes máte několik možností, jak se rozhodnout, jak a kde budete hostovat svoji aplikaci.
@@ -42,13 +42,13 @@ Připojení aplikace v případě, že se nachází v jiné virtuální síti z 
 
 Pro připojení virtuálních sítí existují dvě možnosti:
 
-- [Partnerský vztah Azure VPN](../../virtual-network/virtual-network-peering-overview.md)
+- [Partnerský vztah virtuální sítě Azure](../../virtual-network/virtual-network-peering-overview.md)
 - Brána VPN typu VNet-to-VNet ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-Partnerský vztah je vhodnější, protože používá páteřní síť Microsoftu, takže z perspektivy připojení nedochází k znatelnému rozdílu mezi virtuálními počítači v partnerské virtuální síti a ve stejné virtuální síti. Partnerský vztah virtuálních sítí je omezený na sítě ve stejné oblasti.  
+Partnerský vztah je vhodnější, protože používá páteřní síť Microsoftu, takže z perspektivy připojení nedochází k znatelnému rozdílu mezi virtuálními počítači v partnerské virtuální síti a ve stejné virtuální síti. Partnerský vztah virtuálních sítí se podporuje mezi sítěmi ve stejné oblasti. Podpora globálního partnerského vztahu virtuálních sítí se podporuje i s omezením popsaným v níže uvedené poznámce.  
 
 > [!IMPORTANT]
-> Scénář partnerského vztahu virtuální sítě pro spravovanou instanci SQL je omezený na sítě ve stejné oblasti z důvodu [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
+> [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
 
 ## <a name="connect-from-on-premises"></a>Připojení z místního prostředí 
 
@@ -56,22 +56,22 @@ Místní aplikaci můžete také připojit k spravované instanci SQL. K spravov
 
 Existují dvě možnosti, jak se připojit k virtuální síti Azure v místním prostředí:
 
-- Připojení VPN typu Site-to-Site ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
+- Připojení VPN typu Site-to-Site ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - Připojení [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)  
 
 Pokud jste úspěšně navázali připojení místního prostředí k Azure a nemůžete navázat připojení k spravované instanci SQL, ověřte, jestli má brána firewall otevřené odchozí připojení na portu SQL 1433 a také 11000-11999 rozsah portů pro přesměrování.
 
 ## <a name="connect-the-developer-box"></a>Připojení pole pro vývojáře
 
-Také je možné připojit pole pro vývojáře k spravované instanci SQL. K spravované instanci SQL se dá získat přístup jenom přes soukromou IP adresu, takže pokud k ní chcete přistupovat z pole pro vývojáře, musíte nejdřív vytvořit připojení mezi vaším polem pro vývojáře a virtuální sítí spravované instance SQL. Provedete to tak, že nakonfigurujete připojení typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure. Další informace najdete v tématu [Konfigurace připojení typu Point-to-site pro připojení ke spravované instanci Azure SQL z místního počítače](point-to-site-p2s-configure.md).
+Také je možné připojit pole pro vývojáře k spravované instanci SQL. K spravované instanci SQL se dá získat přístup jenom přes soukromou IP adresu, takže pokud k ní chcete přistupovat z pole pro vývojáře, musíte nejdřív vytvořit připojení mezi vaším polem pro vývojáře a virtuální sítí spravované instance SQL. Provedete to tak, že nakonfigurujete připojení typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure. Další informace najdete v tématu  [Konfigurace připojení typu Point-to-site pro připojení ke spravované instanci Azure SQL z místního počítače](point-to-site-p2s-configure.md).
 
 ## <a name="connect-with-vnet-peering"></a>Připojení s partnerským vztahem virtuální sítě
 
 Dalším scénářem implementovaným zákazníky je, že je Brána VPN nainstalovaná v samostatné virtuální síti a v rámci předplatného, které je hostitelem spravované instance SQL. Tyto dvě virtuální sítě jsou pak partnerského vztahu. Následující příklad diagramu architektury ukazuje, jak to lze provést.
 
-![Partnerské vztahy virtuálních sítí](./media/connect-application-instance/vnet-peering.png)
+![Peering virtuálních sítí](./media/connect-application-instance/vnet-peering.png)
 
-Jakmile máte nastavenou základní infrastrukturu, budete muset změnit některá nastavení tak, aby brána VPN mohla zobrazit IP adresy ve virtuální síti, která je hostitelem spravované instance SQL. Provedete to tak, že v **Nastavení partnerského vztahu**provedete následující velmi specifické změny.
+Jakmile máte nastavenou základní infrastrukturu, budete muset změnit některá nastavení tak, aby brána VPN mohla zobrazit IP adresy ve virtuální síti, která je hostitelem spravované instance SQL. Provedete to tak, že v **Nastavení partnerského vztahu** provedete následující velmi specifické změny.
 
 1. Ve virtuální síti, která hostuje bránu VPN, přejděte do **partnerských vztahů**, přejděte k partnerským připojením virtuální sítě pro SPRAVOVANOU instanci SQL a pak klikněte na možnost **povolení přenosu brány**.
 2. Ve virtuální síti, která je hostitelem spravované instance SQL, přejděte na **partnerské vztahy**, přejděte na připojení s partnerskými virtuálními sítěmi pro bránu VPN a pak klikněte na **použít vzdálené brány**.
@@ -105,7 +105,7 @@ Pokud chcete řešit potíže s připojením, přečtěte si následující tém
 
    ![vstupní/výstupní čísla](./media/connect-application-instance/ingress-egress-numbers.png)
 
-- Ověřte, zda má klientský počítač (se spuštěným klientem VPN) položky směrování pro všechny virtuální sítě, ke kterým potřebujete získat přístup. Trasy jsou uloženy v `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
+- Ověřte, zda má klientský počítač (se spuštěným klientem VPN) položky směrování pro všechny virtuální sítě, ke kterým potřebujete získat přístup. Trasy jsou uloženy v `%AppData%\Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
 
    ![route.txt](./media/connect-application-instance/route-txt.png)
 
@@ -151,8 +151,8 @@ Pokud se chcete připojit ke spravované instanci SQL, doporučuje se používat
 |Ovladač JDBC| 6.4.0 |
 |Ovladač Node.js| 2.1.1 |
 |Ovladač OLEDB| 18.0.2.0 |
-|SSMS| 18,0 nebo [vyšší](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) nebo vyšší |
+|SSMS| 18,0 nebo [vyšší](/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) nebo vyšší |
 
 ## <a name="next-steps"></a>Další kroky
 

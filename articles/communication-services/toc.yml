@@ -1,0 +1,200 @@
+- name: Dokumentace k Azure Communication Services
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je služba Azure Communication Services?
+      href: overview.md
+    - name: Podpora a možnosti pomoci
+      href: support.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Vytvoření prostředku Communication Services
+      href: quickstarts/create-communication-resource.md
+    - name: Vytvoření a správa přístupových tokenů
+      href: quickstarts/access-tokens.md
+    - name: Použití spravovaných identit
+      href: quickstarts/managed-identity.md
+    - name: Nastavení spravovaných identit z CLI
+      href: quickstarts/managed-identity-from-cli.md
+    - name: Chat
+      items:
+        - name: Přidání chatu do aplikace
+          href: quickstarts/chat/get-started.md
+        - name: Připojení chatovací aplikace ke schůzce v Teams
+          href: quickstarts/chat/meeting-interop.md
+    - name: Telefonie a SMS
+      items:
+        - name: Správa telefonních čísel
+          href: quickstarts/telephony-sms/get-phone-number.md
+        - name: Přidání telefonních hovorů do vaší aplikace
+          href: quickstarts/voice-video-calling/pstn-call.md
+        - name: Odeslání zprávy SMS
+          href: quickstarts/telephony-sms/send.md
+        - name: Zpracování událostí SMS
+          href: quickstarts/telephony-sms/handle-sms-events.md
+        - name: Odeslání SMS v Azure Logic Apps
+          href: quickstarts/telephony-sms/logic-app.md
+    - name: Hlasové hovory a videohovory
+      items:
+        - name: Přidání hlasových hovorů do aplikace
+          href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: Přidání videa do vaší aplikace (JavaScript)
+          href: quickstarts/voice-video-calling/get-started-with-video-calling.md
+        - name: Použití klientské knihovny pro hovory
+          href: quickstarts/voice-video-calling/calling-client-samples.md
+        - name: Připojení volající aplikace ke schůzce v Teams
+          href: quickstarts/voice-video-calling/get-started-teams-interop.md
+    - name: Architektura uživatelského rozhraní
+      items:
+        - name: Začínáme se složenými komponentami
+          href: quickstarts/ui-framework/get-started-with-composites.md
+        - name: Začínáme se základními komponentami
+          href: quickstarts/ui-framework/get-started-with-components.md
+        - name: Vytvoření vlastní komponenty architektury uživatelského rozhraní
+          href: quickstarts/ui-framework/create-your-own-components.md
+- name: Kurzy
+  expanded: false
+  items:
+    - name: Vytvoření důvěryhodné ověřovací služby s využitím Azure Functions
+      href: tutorials/trusted-service-tutorial.md
+    - name: 'Podepsání požadavku HTTP podpisem HMAC pomocí jazyka C #'
+      href: tutorials/hmac-header-tutorial.md
+    - name: Příprava webové aplikace pro komunikační služby (Node.js)
+      href: tutorials/building-app-start.md
+    - name: Podepisování a vytváření požadavků na rozhraní API služby ACS SMS pomocí post
+      href: tutorials/postman-tutorial.md
+- name: Koncepty
+  expanded: false
+  items:
+    - name: Chat
+      items:
+        - name: Přehled klientských knihoven pro chat
+          href: concepts/chat/sdk-features.md
+        - name: Koncepce chatu
+          href: concepts/chat/concepts.md
+    - name: Telefonie a SMS
+      items:
+        - name: Přehled klientských knihoven pro SMS
+          href: concepts/telephony-sms/sdk-features.md
+        - name: Koncepce SMS
+          href: concepts/telephony-sms/concepts.md
+        - name: Koncepce telefonního subsystému
+          href: concepts/telephony-sms/telephony-concept.md
+        - name: Typy telefonních čísel
+          href: concepts/telephony-sms/plan-solution.md
+        - name: Požadavky na infrastrukturu rozhraní SIP
+          href: concepts/telephony-sms/sip-interface-infrastructure.md
+    - name: Hlasové hovory a videohovory
+      items:
+        - name: Přehled klientských knihoven pro hovory
+          href: concepts/voice-video-calling/calling-sdk-features.md
+        - name: Koncepce hlasových hovorů a videohovorů
+          href: concepts/voice-video-calling/about-call-types.md
+        - name: Toky volání
+          href: concepts/call-flows.md
+        - name: Topologie toků volání
+          href: concepts/detailed-call-flows.md
+    - name: Architektura uživatelského rozhraní
+      items:
+        - name: Přehled rozhraní .NET Framework
+          href: concepts/ui-framework/ui-sdk-overview.md
+        - name: Možnosti architektury uživatelského rozhraní
+          href: concepts/ui-framework/ui-sdk-features.md
+    - name: Data a operace
+      items:
+        - name: Události služby (EventGrid)
+          href: concepts/event-handling.md
+        - name: Protokolování a diagnostika
+          href: concepts/logging-and-diagnostics.md
+        - name: Metriky
+          href: concepts/metrics.md
+        - name: Řešení potíží
+          href: concepts/troubleshooting-info.md
+    - name: Sady SDK a rozhraní REST API
+      href: concepts/sdk-options.md
+    - name: Klientská a serverová architektura
+      href: concepts/client-and-server-architecture.md
+    - name: Model identit
+      href: concepts/identity-model.md
+    - name: Authentication
+      href: concepts/authentication.md
+    - name: Ochrana osobních údajů
+      href: concepts/privacy.md
+    - name: Ceny
+      href: concepts/pricing.md
+    - name: Nabízená oznámení
+      href: concepts/notifications.md
+    - name: Interoperabilita Teams
+      href: concepts/teams-interop.md
+    - name: Známé problémy
+      href: concepts/known-issues.md
+- name: ukázky
+  items:
+    - name: Přehled
+      href: samples/overview.md
+    - name: Ukázka pro skupinové hovory
+      href: samples/calling-hero-sample.md
+    - name: Ukázka pro skupinový chat
+      href: samples/chat-hero-sample.md
+    - name: Ukázka webového volání
+      href: samples/web-calling-sample.md
+- name: Reference
+  items:
+    - name: Přehled referenční dokumentace
+      href: concepts/reference.md
+    - name: Rozhraní REST API dokumentace
+      href: /rest/api/communication/
+    - name: Knihovny pro volání
+      items:
+        - name: Volání (JavaScript)
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/
+        - name: Volání (Android/Java)
+          href: /java/api/com.azure.communication.calling
+        - name: Volání (iOS)
+          href: /objectivec/communication-services/calling/
+    - name: Knihovny pro chat
+      items:
+        - name: Chat (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-chat'
+        - name: Chat (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
+        - name: Chat (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
+        - name: Chat (Python)
+          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-chat'
+    - name: Knihovny pro SMS
+      items:
+        - name: SMS (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-sms'
+        - name: SMS (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
+        - name: SMS (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
+        - name: SMS (Python)
+          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-sms'
+    - name: Knihovny identit
+      items:
+        - name: Identita (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-identity'
+        - name: Identita (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationidentity'
+        - name: Identita (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-identity'
+        - name: Identita (Python)
+          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-identity'
+    - name: Společné knihovny
+      items:
+        - name: Společné (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-common'
+        - name: Společné (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
+        - name: Společné (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
+        - name: Společné (Python)
+          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-common'
+- name: Zdroje a prostředky
+  items:
+    - name: "Poznámky k\_verzi"
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'

@@ -1,108 +1,146 @@
 ---
-title: Nejčastější dotazy k Azure synapse Analytics (pracovní prostory Preview)
-description: Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostory verze Preview)
+title: Nejčastější dotazy k Azure synapse Analytics
+description: Nejčastější dotazy k Azure synapse Analytics
 services: synapse-analytics
-author: ArnoMicrosoft
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 04/15/2020
-ms.author: acomet
+ms.date: 10/25/2020
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9a0fb8ed8ac54fa866b6db7d8f808c011c0c6758
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287495"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695817"
 ---
-# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostory ve verzi Preview)
+# <a name="azure-synapse-analytics-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics
 
-V této příručce najdete nejčastější dotazy k synapse Analytics.
-
-[!INCLUDE [preview](includes/note-preview.md)]
+V této příručce najdete nejčastější dotazy k Azure synapse Analytics.
 
 ## <a name="general"></a>Obecné
 
-### <a name="q-what-is-azure-synapse-analytics"></a>Otázka: co je Azure synapse Analytics
+### <a name="q-how-can-i-use-rbac-roles-to-secure-my-workspace"></a>Otázka: Jak můžu použít role RBAC k zabezpečení pracovního prostoru?
 
-Odpověď: Azure synapse je integrovaná datová platforma pro BI, AI a nepřetržitou analýzu. Připojuje různé analytické moduly, jako je SQL a Spark, prostřednictvím jediné platformy, která poskytuje jednotný způsob:
+Odpověď: Azure synapse zavádí řadu rolí a oborů, které jim přiřadí. tím se zjednoduší zabezpečení vašeho pracovního prostoru.
 
-- Zabezpečte své analytické prostředky, včetně sítě, spravujte přístup s jednotným přihlašováním ke fondům, datům a vývojovým artefaktům.
-- Snadno Sledujte a rychle Optimalizujte, reagují a ladíte události, které probíhají v aktivitách pracovního prostoru v libovolné vrstvě.
-- Spravujte svá metadata napříč moduly. Vytvoří tabulku Spark a bude automaticky dostupná ve vašich databázích Azure synapse.
-- Interakci s daty prostřednictvím jednotného uživatelského prostředí. Synapse Studio přináší vývojářům pro velké objemy dat, datové inženýry, specializující, analytiky dat a odborníky na data na stejné platformě.
+Synapse role RBAC:
+* Správce synapse
+* Správce synapse SQL
+* Správce synapse Spark
+* Přispěvatel synapse (Preview)
+* Vydavatel artefaktu synapse (Preview)
+* Uživatel artefaktu synapse (Preview)
+* Synapse – operátor COMPUTE (Preview)
+* Uživatel s přihlašovacími údaji synapse (Preview)
 
-Další informace najdete v tématu [co je Azure synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is).
+Pokud chcete zabezpečit svůj pracovní prostor synapse, přiřaďte role RBAC těmto oborům RBAC:
+* Pracovní prostory
+* Fondy Spark
+* Prostředí Integration runtime
+* Propojené služby
+* Přihlašovací údaje
 
-### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>Otázka: Jaké jsou hlavní součásti Azure synapse Analytics
+Kromě toho mají vyhrazené fondy SQL stejné funkce zabezpečení, které znáte a máte rádi.
 
-Odpověď: Azure synapse má následující možnosti:
+### <a name="q-how-do-i-control-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>Otázka: Návody řízení vyhrazených fondů SQL, fondů SQL bez serveru a fondů Spark bez serveru?
 
-- Analytické možnosti jsou nabízeny prostřednictvím fondu SQL nebo SQL na vyžádání (verze Preview) (bez serveru).
-- Fond Apache Spark (Preview) s plnou podporou pro Scala, Python, SparkSQL a C #
-- Tok dat nabízí prostředí pro transformaci velkých objemů dat bez kódu.
-- Integrace dat & orchestrace pro integraci vašich dat a zprovozněníí veškerého vývoje kódu
-- Studio pro přístup ke všem těmto funkcím prostřednictvím jediného webového uživatelského rozhraní
+Odpověď: jako výchozí bod funguje Azure synapse s integrovanou analýzou nákladů a cenovými výstrahami dostupnými na úrovni předplatného Azure.
 
-### <a name="q-how-does-azure-synapse-analytics-relate-to-azure-sql-data-warehouse"></a>Otázka: jak se vztahuje Azure synapse Analytics na Azure SQL Data Warehouse
+- Vyhrazené fondy SQL – máte přímý přehled o nákladech a kontrole nad náklady, protože vytvoříte a určíte velikost vyhrazených fondů SQL. Můžete dále řídit, kteří uživatelé můžou vytvářet nebo škálovat vyhrazené fondy SQL pomocí rolí Azure RBAC.
 
-Odpověď: Azure synapse Analytics je vývojem Azure SQL Data Warehouse na analytické platformě, která zahrnuje fond SQL jako řešení datového skladu. Tato platforma kombinuje zkoumání dat, ingestování, transformaci, přípravu a obsluhu analytických vrstev.
+- Fondy SQL bez serveru – můžete monitorovat a řídit náklady na správu, které vám umožní na denní, týdenní a měsíční úrovni. Další informace [najdete v tématu Správa nákladů pro fond SQL bez serveru](./sql/data-processed.md) . 
 
-## <a name="use-cases"></a>Případy použití
+- Fondy Spark bez serveru – můžete omezit, kdo může vytvářet fondy Spark s rolemi RBAC synapse.  
 
-### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>Otázka: Návody přejmenování publikovaného artefaktu (datová sada, Poznámkový blok, SQL Script atd.) v Azure synapse?
+### <a name="q-will-synapse-workspace-support-folder-organization-of-objects-and-granularity-at-ga"></a>Otázka: bude pracovní prostor synapse podporovat organizaci objektů a členitosti na GA?
 
-Odpověď: Chcete-li přejmenovat publikovaný soubor artefaktů, nejprve naklonujte soubor a přejmenujte nový soubor na název, kterému dáváte přednost. Budete muset ručně aktualizovat všechny odkazy na artefakt na nový název souboru a odstranit starý.
+Odpověď: pracovní prostory synapse podporují uživatelsky definované složky.
 
-### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>Otázka: co je dobrým případem použití pro synapse fond SQL
+### <a name="q-can-i-link-more-than-one-power-bi-workspace-to-a-single-azure-synapse-workspace"></a>Otázka: Mohu propojit více než jeden Power BI pracovní prostor k jednomu pracovnímu prostoru Azure synapse?
+    
+Odpověď: v současné době můžete propojit pouze jeden Power BI pracovní prostor k pracovnímu prostoru Azure synapse. 
 
-A: fond SQL je srdcem vašich potřeb datového skladu. Je to přední řešení datového skladu v [ceně a výkonu](https://azure.microsoft.com/services/sql-data-warehouse/compare/). Fond SQL je špičkovým řešením cloudového datového skladu, protože můžete:
+### <a name="q-is-synapse-link-to-cosmos-db-ga"></a>Otázka: je synapse odkazem na Cosmos DB GA?
 
-- Díky vysoké souběžnosti a izolaci úloh slouží velká a smíšená škála úloh bez dopadu na výkon.
-- Snadné zabezpečení dat prostřednictvím pokročilých funkcí v rozsahu od zabezpečení sítě až po jemně odstupňovaný přístup
-- výhoda z široké škály ekosystémového systému
+Odpověď: synapse odkaz na Apache Spark je GA. Odkaz synapse pro fond SQL bez serveru je v Public Preview.
 
-### <a name="q-what-is-a-good-use-case-for-spark-in-synapse"></a>Otázka: co je dobrý případ použití pro Spark v synapse
+### <a name="q-does-azure-synapse-workspace-support-cicd"></a>Otázka: poskytuje Azure synapse Workspace podporu CI/CD? 
 
-Odpověď: naším prvním cílem je zajistit Skvělé prostředí pro datovou přípravu pro transformaci dat prostřednictvím jezera v dávce nebo streamu. Jeho těsná a jednoduchá integrace k naší orchestraci dat usnadňuje práci vývojového prostředí.
+Odpověď: Ano! Všechny artefakty kanálů, poznámkové bloky, skripty SQL a definice úloh Sparku se budou nacházet v Gitu. Všechny definice fondů budou uloženy v Gitu jako šablony ARM. Vyhrazené objekty fondu SQL (schémata, tabulky, zobrazení atd.) se budou spravovat pomocí databázových projektů s podporou CI/CD.
 
-Dalším případem použití Sparku je vědecký odborník na data:
+## <a name="pipelines"></a>Pipelines
 
-- extrakce funkce
-- Prozkoumat data
-- Výuka modelu
+### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>Otázka: Návody vědět, jaké přihlašovací údaje se používají ke spuštění kanálu? 
 
-### <a name="q-what-is-a-good-use-case-for-sql-on-demand-in-synapse"></a>Otázka: co je dobrý případ použití pro SQL na vyžádání v synapse
+Odpověď: Každá aktivita v kanálu synapse se spustí s použitím přihlašovacích údajů zadaných v propojené službě.
 
-Odpověď: SQL na vyžádání je dotazovací služba na základě dat ve službě Data Lake. Umožňuje Demokratizujte přístup ke všem datům tím, že poskytuje známou syntaxi T-SQL pro dotazování dat na místě, aniž by bylo nutné kopírovat nebo načítat data do specializovaného úložiště.
+### <a name="q-are-ssis-irs-supported-in-synapse-integrate"></a>Otázka: jsou SSIS finanční úřad podporovaný v synapse Integration?
 
-Příklady případů použití zahrnují následující:
+Odpověď: ne v tomto okamžiku. 
 
-- základní zjišťování a průzkum – poskytuje analytikům dat, vznikajícím datovým specialistům a datovým technikům jednoduchou cestu k prvnímu přehledu o živých datech v Data Lake pomocí schématu pro čtení dotazů T-SQL.
-- logický datový sklad – datové analytiky můžou spouštět úplné expresivity jazyka T-SQL, aby se mohli přímo dotazovat a analyzovat data, která se nacházejí v Azure Storage, a pomocí známých nástrojů BI (např. analýzy Azure, Power BI Premium atd.) aktualizovat řídicí panely tím, že se znovu spustí dotazy dotazů Starlight.
-- ETL "Single Query" – umožňuje datovým technikům transformovat Azure Storage data založená na jiném formátu na jiný, filtrovat, agregovat atd. při výkonném paralelním zpracování, uchovávat výsledky dotazů Azure Storage a zpřístupnit je okamžitě pro další zpracování v Starlight dotazech nebo jiných službách, které vás zajímají.
+### <a name="q-how-do-i-migrate-existing-pipelines-from-azure-data-factory-to-an-azure-synapse-workspace"></a>Otázka: Návody migrovat existující kanály z Azure Data Factory do pracovního prostoru Azure synapse?
 
-### <a name="q-what-is-a-good-use-case-for-data-flow-in-synapse"></a>Otázka: co je dobrý případ použití pro tok dat v synapse
+Odpověď: v tuto chvíli musíte ručně znovu vytvořit kanály Azure Data Factory a související artefakty tím, že vyexportujete JSON z původního kanálu a importujete ho do svého pracovního prostoru synapse.
 
-Odpověď: tok dat umožňuje inženýrům dat vyvíjet grafické logiky pro transformaci dat bez psaní kódu. Výsledné toky dat se spouštějí jako aktivity v rámci integrace dat & orchestrace. Aktivity toku dat je možné provozovat prostřednictvím stávajících možností plánování, řízení, toku a monitorování.
+## <a name="apache-spark"></a>Apache Spark
 
-## <a name="security-and-access"></a>Zabezpečení a přístup
+### <a name="q-what-is-the-difference-between-apache-spark-for-synapse-and-apache-spark"></a>Otázka: Jaký je rozdíl mezi Apache Spark pro synapse a Apache Spark?
 
-O: ucelené prostředí jednotného přihlašování je důležitým ověřovacím procesem v synapse Analytics. Správa a předání identity prostřednictvím úplné integrace AAD je nutné.
+Odpověď: Apache Spark pro synapse je Apache Spark s přidanou podporou pro integraci s jinými službami (AAD, AzureML atd.) a dalšími knihovnami (mssparktuils, Hummingbird) a předem vyladěnými konfiguracemi výkonu.
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adls-gen2"></a>Otázka: Návody získat přístup k souborům a složkám v ADLS Gen2
+Jakékoli zatížení, které aktuálně běží na Apache Spark, se spustí v Apache Spark pro Azure synapse beze změny. 
 
-Odpověď: přístup k souborům a složkám je aktuálně spravován prostřednictvím ADLS Gen2. Další informace najdete v tématu [Data Lake řízení přístupu k úložišti](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+### <a name="q-what-versions-of-spark-are-available"></a>Otázka: Jaké verze Sparku jsou k dispozici?
 
-### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>Otázka: je možné použít business intelligence nástroje třetích stran pro přístup ke službě Azure synapse Analytics
+Odpověď: Azure synapse Apache Spark plně podporuje Spark 2,4. Úplný seznam základních komponent a aktuálně podporované verze najdete v tématu [podpora Apache Spark verzí](./spark/apache-spark-version-support.md).
 
-Odpověď: Ano, můžete použít obchodní aplikace třetích stran, jako je Tableau a Power BI, pro připojení k fondu SQL a k SQL na vyžádání. Spark podporuje IntelliJ.
+### <a name="q-is-there-an-equivalent-of-dbutils-in-azure-synapse-spark"></a>Otázka: existuje ekvivalent DButils v Azure synapse Spark?
+
+Odpověď: Ano, Azure synapse Apache Spark poskytuje knihovnu **mssparkutils** . Úplnou dokumentaci k nástroji najdete v tématu [Úvod do nástrojů Microsoft Spark](./spark/microsoft-spark-utilities.md).
+
+### <a name="q-how-do-i-set-session-parameters-in-apache-spark"></a>Otázka: Návody nastavení parametrů relace v Apache Spark?
+
+Odpověď: Chcete-li nastavit parametry relace, použijte%% Configure Magic available. Aby se parametry projevily, je nutné restartovat relaci. 
+
+### <a name="q-how-do-i-set-cluster-level-parameters-in-a-serverless-spark-pool"></a>Otázka: Návody nastavení parametrů na úrovni clusteru ve fondu Spark bez serveru?
+
+Odpověď: Chcete-li nastavit parametry na úrovni clusteru, můžete zadat soubor Spark. conf pro fond Spark. Tento fond pak bude akceptovat parametry v konfiguračním souboru za minulosti. 
+
+### <a name="q-can-i-run-a-multi-user-spark-cluster-in-azure-synapse-analytics"></a>Otázka: mohu v Azure synapse Analytics spustit cluster Spark s více uživateli?
+ 
+Odpověď: Azure synapse poskytuje účelově sestavené moduly pro konkrétní případy použití. Apache Spark pro synapse je navržená jako služba úloh, nikoli model clusteru. Existují dva scénáře, kdy se uživatelé dotazují na model clusteru s více uživateli.
+
+**Scénář #1: mnoho uživatelů, kteří přistupují k clusteru pro poskytování dat pro účely BI.**
+
+Nejjednodušší způsob, jak tento úkol provést, je vyšetřit data pomocí Sparku a pak využít možnosti synapse SQL k tomu, aby se mohly k těmto datovým sadám připojit Power BI.
+
+**Scénář #2: máte více vývojářů v jednom clusteru, abyste ušetřili peníze.**
+ 
+Pro splnění tohoto scénáře byste měli všem vývojářům poskytnout fond Spark bez serveru, který je nastavený tak, aby používal malý počet prostředků Sparku. Vzhledem k tomu, že fondy Spark bez serveru neúčtují žádné náklady, dokud je nebudete aktivně používat, minimalizují se náklady, pokud existuje více vývojářů Fondy sdílejí metadata (tabulky Spark), aby s nimi mohli snadno pracovat.
+
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>Otázka: Návody zahrnout, spravovat a instalovat knihovny?
+
+Odpověď: můžete nainstalovat externí balíčky pomocí requirements.txt souboru při vytváření fondu Spark, z pracovního prostoru synapse nebo z Azure Portal. Viz [Správa knihoven pro Apache Spark ve službě Azure synapse Analytics](./spark/apache-spark-azure-portal-add-libraries.md).
+
+## <a name="dedicated-sql-pools"></a>Vyhrazené fondy SQL
+
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>Otázka: Jaké jsou funkční rozdíly mezi vyhrazenými fondy SQL a fondy bez serveru?
+
+Odpověď: můžete najít úplný seznam rozdílů v [rozdílech funkcí T-SQL v synapse SQL](./sql/overview-features.md).
+
+### <a name="q-now-that-azure-synapse-is-ga-how-do-i-move-my-dedicated-sql-pools-that-were-previously-standalone-into-azure-synapse"></a>Otázka: teď, když je Azure synapse v GA, jak mohu přesunout své vyhrazené fondy SQL, které byly dřív samostatné do Azure synapse? 
+
+Odpověď: není k dispozici žádný "Přesun" nebo "migrace". Ve stávajících fondech se můžete rozhodnout, že povolíte nové funkce pracovního prostoru. Pokud to uděláte, neexistují žádné zásadní změny, ale budete moct používat nové funkce, jako jsou synapse Studio, Spark a SQL Server bez serveru.
+
+### <a name="q-what-is-the-default-deployment-of-dedicated-sql-pools-now"></a>Otázka: Jaké je nyní výchozí nasazení vyhrazených fondů SQL? 
+
+Odpověď: ve výchozím nastavení budou všechny nové vyhrazené fondy SQL nasazeny do pracovního prostoru. Pokud ale potřebujete, můžete i nadále vytvořit vyhrazený fond SQL (dřív SQL DW) v samostatném faktoru formuláře. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
-- [Použití synapse studia](quickstart-synapse-studio.md)
-- [Vytvoření fondu SQL](quickstart-create-sql-pool-portal.md)
-- [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
-- [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool-portal.md) 
+* [Začínáme s Azure Synapse Analytics](get-started.md)
+* [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
+* [Použití bezserverového fondu SQL](quickstart-sql-on-demand.md)

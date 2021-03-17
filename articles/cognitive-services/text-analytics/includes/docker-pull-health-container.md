@@ -6,23 +6,29 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 4c33952ed56399b94a7db1088cb60919a4f88137
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a0b2c9548f9c1289ae0abd61a72d7146a3bbca29
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108908"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965139"
 ---
-Vyplňte a odešlete [formulář žádosti o Cognitive Services kontejnery](https://aka.ms/cognitivegate) , který bude požadovat přístup ke kontejneru.
+Vyplňte a odešlete [formulář žádosti o Cognitive Services](https://aka.ms/csgate) , abyste požádali o přístup k analýza textu ve verzi Public Preview.  Tato aplikace se vztahuje jak na kontejner, tak na hostované rozhraní Web API Public Preview.
+Formulář požaduje informace o vás, vaší společnosti a scénáři uživatele, pro které budete kontejner používat. Po odeslání formuláře ho tým Azure Cognitive Services zkontroluje a ověří, jestli splňujete kritéria pro přístup k privátnímu registru kontejneru.
 
-[!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
+> [!IMPORTANT]
+> * Ve formuláři je nutné použít e-mailovou adresu přidruženou k ID předplatného Azure.
+> * Prostředek Azure, který používáte ke spuštění kontejneru, se musí vytvořit s schváleným ID předplatného Azure. 
+> * Pokud chcete aktualizovat stav vaší aplikace od Microsoftu, Projděte si e-mail (Doručená pošta a složky nevyžádané pošty).
 
-Pomocí příkazu Docker Login s přihlašovacími údaji, které jste zadali v e-mailu pro registraci, se připojte k našemu soukromému registru kontejnerů pro kontejnery Cognitive Services.
+Po schválení se vám pošle e-mail s přihlašovacími údaji pro přístup k soukromému registru kontejneru.  Pomocí příkazu Docker Login s přihlašovacími údaji, které jste zadali v e-mailu pro registraci, se připojte k našemu soukromému registru kontejnerů pro kontejnery Cognitive Services.
 
-```bash
+
+```Docker
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 

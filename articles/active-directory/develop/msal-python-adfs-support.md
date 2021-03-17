@@ -1,7 +1,7 @@
 ---
 title: Podpora Azure AD FS (MSAL Python)
 titleSuffix: Microsoft identity platform
-description: Další informace o podpoře Active Directory Federation Services (AD FS) (AD FS) v knihovně Microsoft Authentication Library pro Python
+description: Další informace o podpoře Active Directory Federation Services (AD FS) (AD FS) v knihovně Microsoft Authentication Library for Python
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ad874a4b117b7a7ccecea0e1800ca18c6fce8aaa
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d847e38a6114b0e5f8d56f6e994aa47dfbe929e7
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846203"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583701"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Podpora Active Directory Federation Services (AD FS) v MSAL pro Python
 
@@ -53,11 +53,11 @@ Když získáte token pomocí `acquire_token_by_username_password` , MSAL Python
 
 ## <a name="connecting-directly-to-ad-fs"></a>Přímé připojení k AD FS
 
-Když připojíte adresář k AD FS, autorita, kterou budete chtít použít k sestavení vaší aplikace, bude vypadat nějak takto.`https://somesite.contoso.com/adfs/`
+Když připojíte adresář k AD FS, autorita, kterou budete chtít použít k sestavení vaší aplikace, bude vypadat nějak takto. `https://somesite.contoso.com/adfs/`
 
 MSAL Python podporuje ADFS 2019.
 
-Nepodporuje přímé připojení ke službě AD FS 2016 nebo ADFS v2. Pokud potřebujete podporu scénářů vyžadujících přímé připojení ke službě ADFS 2016, použijte nejnovější verzi Pythonu pro ADAL. Po upgradu místního systému na ADFS 2019 můžete použít MSAL Python.
+Nepodporuje přímé připojení ke službě AD FS 2016 nebo ADFS v2. K podpoře scénářů vyžadujících přímé připojení ke službě ADFS 2016 použijte nejnovější verzi Pythonu pro ADAL. Po upgradu místního systému na ADFS 2019 můžete použít MSAL Python.
 
 ## <a name="next-steps"></a>Další kroky
 

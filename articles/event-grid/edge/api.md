@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171750"
 ---
 # <a name="rest-api"></a>REST API
@@ -22,8 +22,8 @@ Tento článek popisuje rozhraní REST API Azure Event Grid v IoT Edge
 ### <a name="base-url"></a>Základní adresa URL
 Event Grid v IoT Edge má následující rozhraní API vystavené přes protokol HTTP (port 5888) a HTTPS (port 4438).
 
-* Základní adresa URL pro HTTP:http://eventgridmodule:5888
-* Základní adresa URL pro protokol HTTPS:https://eventgridmodule:4438
+* Základní adresa URL pro HTTP: http://eventgridmodule:5888
+* Základní adresa URL pro protokol HTTPS: https://eventgridmodule:4438
 
 ### <a name="request-query-string"></a>Vyžádat řetězec dotazu
 Všechny požadavky rozhraní API vyžadují následující parametr řetězce dotazu:
@@ -72,7 +72,7 @@ Všechna rozhraní API vrací chybu s následující datovou částí:
 
 ### <a name="put-topic-create--update"></a>Vložit téma (vytvořit/aktualizovat)
 
-**Požadavek**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Požadavek**: ``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Datová část**:
 
@@ -105,7 +105,7 @@ Všechna rozhraní API vrací chybu s následující datovou částí:
 
 ### <a name="get-topic"></a>Získat téma
 
-**Požadavek**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Požadavek**: ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Odpověď**: http 200
 
@@ -125,7 +125,7 @@ Všechna rozhraní API vrací chybu s následující datovou částí:
 
 ### <a name="get-all-topics"></a>Získat všechna témata
 
-**Požadavek**:``` GET /topics?api-version=2019-01-01-preview ```
+**Požadavek**: ``` GET /topics?api-version=2019-01-01-preview ```
 
 **Odpověď**: http 200
 
@@ -157,7 +157,7 @@ Všechna rozhraní API vrací chybu s následující datovou částí:
 
 ### <a name="delete-topic"></a>Odstranit téma
 
-**Požadavek**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Požadavek**: ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Odpověď**: http 200, prázdná datová část
 
@@ -166,7 +166,7 @@ Ukázky v tomto oddílu používají `EndpointType=Webhook;` . Ukázky JSON pro 
 
 ### <a name="put-event-subscription-create--update"></a>Vložit odběr události (vytvořit nebo aktualizovat)
 
-**Požadavek**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Požadavek**: ``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Datová část**:
 ```json
@@ -371,7 +371,7 @@ Ukázky v tomto oddílu používají `EndpointType=Webhook;` . Ukázky JSON pro 
 
 ### <a name="get-event-subscription"></a>Získat odběr události
 
-**Požadavek**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Požadavek**: ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Odpověď**: http 200
 
@@ -476,7 +476,7 @@ Ukázky v tomto oddílu používají `EndpointType=Webhook;` . Ukázky JSON pro 
 
 ### <a name="get-event-subscriptions"></a>Získat odběry událostí
 
-**Požadavek**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
+**Požadavek**: ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
 **Odpověď**: http 200
 
@@ -494,7 +494,7 @@ Ukázky v tomto oddílu používají `EndpointType=Webhook;` . Ukázky JSON pro 
 
 ### <a name="delete-event-subscription"></a>Odstranit odběr události
 
-**Požadavek**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Požadavek**: ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Odpověď**: http 200, žádná datová část
 
@@ -503,7 +503,7 @@ Ukázky v tomto oddílu používají `EndpointType=Webhook;` . Ukázky JSON pro 
 
 ### <a name="send-batch-of-events-in-event-grid-schema"></a>Odeslat dávku událostí (ve schématu Event Grid)
 
-**Požadavek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Požadavek**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -525,18 +525,18 @@ Ukázky v tomto oddílu používají `EndpointType=Webhook;` . Ukázky JSON pro 
 
 
 **Popisy polí datové části**
-- ```Id```je povinné. Může to být jakákoli řetězcová hodnota, která je vyplněna volajícím. Event Grid neprovádí žádnou duplicitu ani neuplatňuje žádné sémantiky v tomto poli.
-- ```Topic```je volitelný, ale pokud je zadaný, musí odpovídat topic_name z adresy URL požadavku.
-- ```Subject```je povinná, může být libovolná hodnota řetězce.
-- ```EventType```je povinná, může být libovolná hodnota řetězce.
-- ```EventTime```je povinná, není ověřená, ale měla by být správného typu DateTime.
-- ```DataVersion```je povinné
-- ```MetadataVersion```je nepovinný, pokud je zadaný, musí to být řetězec s hodnotou.```"1"```
-- ```Data```je volitelná a může to být libovolný token JSON (číslo, řetězec, logická hodnota, pole, objekt).
+- ```Id``` je povinné. Může to být jakákoli řetězcová hodnota, která je vyplněna volajícím. Event Grid neprovádí žádnou duplicitu ani neuplatňuje žádné sémantiky v tomto poli.
+- ```Topic``` je volitelný, ale pokud je zadaný, musí odpovídat topic_name z adresy URL požadavku.
+- ```Subject``` je povinná, může být libovolná hodnota řetězce.
+- ```EventType``` je povinná, může být libovolná hodnota řetězce.
+- ```EventTime``` je povinná, není ověřená, ale měla by být správného typu DateTime.
+- ```DataVersion``` je povinné
+- ```MetadataVersion``` je nepovinný, pokud je zadaný, musí to být řetězec s hodnotou. ```"1"```
+- ```Data``` je volitelná a může to být libovolný token JSON (číslo, řetězec, logická hodnota, pole, objekt).
 
 ### <a name="send-batch-of-events-in-custom-schema"></a>Odeslat dávku událostí (ve vlastním schématu)
 
-**Požadavek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Požadavek**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -754,7 +754,7 @@ Chcete-li publikovat do tématu Service Bus, nastavte `endpointType` na `service
 
 ## <a name="set-up-storage-queues-as-a-destination"></a>Nastavit fronty úložiště jako cíl
 
-K publikování do fronty úložiště nastavte `endpointType` `storageQueue` a zadejte:
+K publikování do fronty úložiště nastavte  `endpointType` `storageQueue` a zadejte:
 
 * Queue: název fronty úložiště, do které se chystáte publikovat.
 * connectionString: připojovací řetězec pro účet úložiště, ve kterém je fronta úložiště.

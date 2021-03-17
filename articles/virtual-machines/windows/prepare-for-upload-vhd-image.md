@@ -3,23 +3,25 @@ title: Příprava virtuálního pevného disku s Windows pro nahrání do Azure
 description: Informace o přípravě virtuálního pevného disku (VHD) nebo VHDX Windows pro nahrání do Azure
 author: glimoli
 manager: dcscontentpm
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: troubleshooting
-ms.date: 04/28/2020
+ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 8b5124a0336773412ae9c36a32a0f6f86da62a31
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 12ef839cbbbc69230b314bf7c56a63f57a0d6b20
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056240"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556260"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
 Než nahrajete virtuální počítač s Windows z místního počítače do Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje virtuální počítače generace 1 i generace 2, které jsou ve formátu souboru VHD a mají disk s pevnou velikostí. Maximální velikost povolená pro virtuální pevný disk operačního systému na virtuálním počítači generace 1 je 2 TB.
 
-Soubor VHDX můžete převést na VHD, převést dynamicky se zvětšující disk na disk s pevnou velikostí, ale nemůžete změnit generaci virtuálního počítače. Další informace najdete v tématu [Vytvoření virtuálního počítače generace 1 nebo 2 v Hyper-V?](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) a [Podpora virtuálních počítačů 2. generace v Azure](generation-2.md).
+Soubor VHDX můžete převést na VHD, převést dynamicky se zvětšující disk na disk s pevnou velikostí, ale nemůžete změnit generaci virtuálního počítače. Další informace najdete v tématu [Vytvoření virtuálního počítače generace 1 nebo 2 v Hyper-V?](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) a [Podpora virtuálních počítačů 2. generace v Azure](../generation-2.md).
 
 Informace o zásadách podpory pro virtuální počítače Azure najdete v tématu [podpora serverového softwaru společnosti Microsoft pro virtuální počítače Azure](https://support.microsoft.com/help/2721672/).
 
@@ -28,73 +30,6 @@ Informace o zásadách podpory pro virtuální počítače Azure najdete v téma
 >
 > - 64 verze systému Windows Server 2008 R2 a novějších operačních systémů Windows Server. Informace o spuštění 32 operačního systému v Azure najdete v tématu [Podpora pro 32 operační systémy ve virtuálních počítačích Azure](https://support.microsoft.com/help/4021388/).
 > - Pokud bude k migraci zatížení použit libovolný nástroj pro zotavení po havárii, například Azure Site Recovery nebo Azure Migrate, je tento proces stále požadován v hostovaném operačním systému, aby mohl připravit bitovou kopii před migrací.
-
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Převést virtuální disk na virtuální pevný disk s pevnou velikostí
-
-Pomocí jedné z metod v této části můžete převést virtuální disk a změnit jeho velikost na požadovaný formát pro Azure:
-
-1. Před spuštěním převodu virtuálního disku nebo procesu změny velikosti zálohujte virtuální počítač.
-
-1. Ujistěte se, že virtuální pevný disk Windows funguje na místním serveru správně. Než se pokusíte převést nebo odeslat do Azure, vyřešte všechny chyby v samotném virtuálním počítači.
-
-1. Převeďte virtuální disk na pevný typ.
-
-1. Změnit velikost virtuálního disku na splnění požadavků Azure:
-
-   1. Disky v Azure musí mít virtuální velikost zarovnaná na 1 MiB. Pokud je váš virtuální pevný disk zlomek 1 MiB, budete muset změnit velikost disku na násobek 1 MiB. Disky, které jsou zlomky souboru MiB, způsobují chyby při vytváření imagí z nahraného virtuálního pevného disku. Pokud to chcete ověřit, můžete použít rutinu PowerShellu [Get-VHD](/powershell/module/hyper-v/get-vhd) comdlet k zobrazení "size", která musí být násobkem 1 MiB v Azure a "velikost souboru", která bude odpovídat velikosti a 512 bajtů pro zápatí VHD.
-   
-   1. Maximální velikost povolená pro virtuální pevný disk s operačním systémem s virtuálním počítačem 1. generace je 2 048 GiB (2 TiB). 
-   1. Maximální velikost datového disku je 32 767 GiB (32 TiB).
-
-> [!NOTE]
-> - Pokud připravujete disk s operačním systémem Windows po převodu na pevný disk a v případě potřeby změníte jeho velikost, vytvořte virtuální počítač, který disk používá. Spusťte a přihlaste se k virtuálnímu počítači a pokračujte v částech tohoto článku a dokončete přípravu na odeslání.  
-> - Pokud připravujete datový disk, který můžete s touto částí zastavit, pokračujte v nahrávání disku.
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Použití Správce technologie Hyper-V k převedení disku
-
-1. Otevřete Správce technologie Hyper-V a na levé straně vyberte svůj místní počítač. V nabídce nad seznamem počítač vyberte **Akce**  >  **Upravit disk**.
-1. Na stránce **najít virtuální pevný disk** vyberte svůj virtuální disk.
-1. Na stránce **Zvolte akci** vyberte **převést**  >  **Další**.
-1. Pro převod z VHDX vyberte **virtuální pevný disk**  >  **Next**.
-1. Chcete-li se převést na dynamicky se zvětšující disk, vyberte možnost **Pevná velikost**(  >  **Další**).
-1. Vyhledejte a vyberte cestu, kam chcete uložit nový soubor VHD.
-1. Vyberte **Dokončit**.
-
-### <a name="use-powershell-to-convert-the-disk"></a>Použití PowerShellu k převedení disku
-
-Virtuální disk můžete převést pomocí rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, klikněte [sem](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
-
-Následující příklad převede disk z VHDX na VHD. Také převede disk z dynamicky se zvětšující disk na disk s pevnou velikostí.
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-V tomto příkladu nahraďte hodnotu pro **cestu** cestou k virtuálnímu pevnému disku, který chcete převést. Hodnotu **DestinationPath** nahraďte novou cestou a názvem převedeného disku.
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>Převést z formátu disku VMDK VMware
-
-Pokud máte image virtuálního počítače s Windows ve [formátu souboru VMDK](https://en.wikipedia.org/wiki/VMDK), převeďte ji pomocí [převaděče Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) na formát VHD. Další informace najdete v tématu [Postup převedení VMDK VMDK na VHD na virtuální pevný disk Hyper-V](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd).
-
-### <a name="use-hyper-v-manager-to-resize-the-disk"></a>Použití Správce technologie Hyper-V ke změně velikosti disku
-
-1. Otevřete Správce technologie Hyper-V a na levé straně vyberte svůj místní počítač. V nabídce nad seznamem počítač vyberte **Akce**  >  **Upravit disk**.
-1. Na stránce **najít virtuální pevný disk** vyberte svůj virtuální disk.
-1. Na stránce **Zvolte akci** vyberte **Rozbalit**  >  **Další**.
-1. Na stránce **najít virtuální pevný disk** zadejte novou velikost v GIB > **Další**.
-1. Vyberte **Dokončit**.
-
-### <a name="use-powershell-to-resize-the-disk"></a>Použití PowerShellu ke změně velikosti disku
-
-Velikost virtuálního disku můžete změnit pomocí rutiny [změnit velikost-VHD](/powershell/module/hyper-v/resize-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, klikněte [sem](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
-
-Následující příklad změní velikost disku z 100,5 MiB na 101 MiB, aby splňoval požadavek na zarovnání Azure.
-
-```powershell
-Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
-```
-
-V tomto příkladu nahraďte hodnotu pro **cestu** cestou k virtuálnímu pevnému disku, u kterého chcete změnit velikost. Nahraďte hodnotu pro **SizeBytes** novou velikostí v bajtech pro disk.
 
 ## <a name="system-file-checker"></a>Kontrola systémových souborů
 
@@ -411,13 +346,13 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 
 1. Restartujte virtuální počítač, abyste se ujistili, že je systém Windows stále v pořádku a že je možné ho spojit s připojením RDP. V tomto okamžiku zvažte vytvoření virtuálního počítače na místním serveru Hyper-V, abyste se ujistili, že se virtuální počítač spustí úplně. Pak se otestujte a ujistěte se, že máte přístup k virtuálnímu počítači přes RDP.
 
-1. Odeberte jakékoli další filtry rozhraní TDI (Transport Driver Interface). Můžete například odebrat software, který analyzuje pakety TCP nebo brány firewall navíc. Pokud to chcete provést později, můžete to udělat až po nasazení virtuálního počítače v Azure.
+1. Odeberte jakékoli další filtry rozhraní TDI (Transport Driver Interface). Můžete například odebrat software, který analyzuje pakety TCP nebo brány firewall navíc.
 
 1. Odinstalujte všechny další software nebo ovladače třetí strany, které se vztahují k fyzickým součástem nebo jiné virtualizační technologii.
 
 ### <a name="install-windows-updates"></a>Nainstalovat aktualizace Windows
 
-V ideálním případě byste měli udržovat počítač aktualizovaný na *úrovni opravy*. Pokud to není možné, ujistěte se, že jsou nainstalované následující aktualizace. Chcete-li získat nejnovější aktualizace, přečtěte si stránky historie Windows Update: [Windows 10 a Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1 a Windows Server 2012 R2](https://support.microsoft.com/help/4009470) a [Windows 7 SP1 a Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
+V ideálním případě byste měli udržovat počítač aktualizovaný na *úrovni oprav*, pokud to není možné, zajistěte, aby byly nainstalované následující aktualizace. Nejnovější aktualizace získáte na stránkách historie Windows Update: [Windows 10 a Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1 a Windows Server 2012 R2](https://support.microsoft.com/help/4009470) a [Windows 7 SP1 a Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
 
 <br />
 
@@ -462,7 +397,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 > [!NOTE]
 > Abyste se vyhnuli nechtěnému restartování během zřizování virtuálních počítačů, doporučujeme, abyste zajistili, že všechny instalace web Windows Update jsou dokončené a že nečekají žádné aktualizace. Jedním ze způsobů, jak to provést, je nainstalovat všechny možné aktualizace systému Windows a restartovat jednou před spuštěním `sysprep.exe` příkazu.
 
-### <a name="determine-when-to-use-sysprep"></a>Určení použití nástroje Sysprep
+## <a name="determine-when-to-use-sysprep"></a>Určení použití nástroje Sysprep
 
 Nástroj pro přípravu systému ( `sysprep.exe` ) je proces, který můžete použít k resetování instalace Windows.
 Nástroj Sysprep nabízí "nepoužívané" prostředí odebráním všech osobních údajů a obnovením několika součástí.
@@ -490,17 +425,84 @@ Nástroj Sysprep vyžaduje, aby před provedením plně dešifroval jednotky. Po
 1. Spusťte relaci PowerShellu jako správce.
 1. Odstraňte adresář Panther (C:\Windows\Panther).
 1. Změňte adresář na `%windir%\system32\sysprep` . Potom spusťte `sysprep.exe`.
-1. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost **Zadejte systém při spuštění uživatelského rozhraní (OOBE)** a ujistěte se, že je zaškrtnuté políčko **generalizace** .
+1. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost spustit **prostředí při spuštění v systému (OOBE)** a ujistěte se, že je zaškrtnuté políčko **generalizace** .
 
     ![Nástroj pro přípravu systému](media/prepare-for-upload-vhd-image/syspre.png)
-1. V **Možnosti vypnutí**vyberte **vypnout**.
+1. V **Možnosti vypnutí** vyberte **vypnout**.
 1. Vyberte **OK**.
 1. Po dokončení programu Sysprep vypněte virtuální počítač. Nepoužívejte **restart** pro vypnutí virtuálního počítače.
 
-Virtuální pevný disk je teď připravený k nahrání. Další informace o tom, jak vytvořit virtuální počítač z zobecněného disku, najdete v tématu [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nového virtuálního počítače v Azure](sa-upload-generalized.md).
+Virtuální pevný disk je teď připravený k nahrání. Další informace o tom, jak vytvořit virtuální počítač z zobecněného disku, najdete v tématu [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nového virtuálního počítače v Azure](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized).
 
 >[!NOTE]
-> Vlastní soubor *unattend.xml* není podporován. I když podporujeme vlastnost **additionalUnattendContent** , která poskytuje jenom omezené podpory pro přidání možností [Microsoft-Windows-Shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do souboru *unattend.xml* , který používá agent zřizování Azure. Můžete použít například [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) k přidání FirstLogonCommands a LogonCommands. Další informace najdete v tématu [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Vlastní soubor *unattend.xml* není podporován. I když podporujeme vlastnost **additionalUnattendContent** , která poskytuje jenom omezené podpory pro přidání možností [Microsoft-Windows-Shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do souboru *unattend.xml* , který používá agent zřizování Azure. Můžete použít například [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent) k přidání FirstLogonCommands a LogonCommands. Další informace najdete v tématu [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Převést virtuální disk na virtuální pevný disk s pevnou velikostí
+
+Pomocí jedné z metod v této části můžete převést virtuální disk a změnit jeho velikost na požadovaný formát pro Azure:
+
+1. Před spuštěním převodu virtuálního disku nebo procesu změny velikosti zálohujte virtuální počítač.
+
+1. Ujistěte se, že virtuální pevný disk Windows funguje na místním serveru správně. Než se pokusíte převést nebo odeslat do Azure, vyřešte všechny chyby v samotném virtuálním počítači.
+
+1. Převeďte virtuální disk na pevný typ.
+
+1. Změnit velikost virtuálního disku na splnění požadavků Azure:
+
+   1. Disky v Azure musí mít virtuální velikost zarovnaná na 1 MiB. Pokud je váš virtuální pevný disk zlomek 1 MiB, budete muset změnit velikost disku na násobek 1 MiB. Disky, které jsou zlomky souboru MiB, způsobují chyby při vytváření imagí z nahraného virtuálního pevného disku. Pokud chcete ověřit velikost, můžete použít rutinu [Get-VHD](/powershell/module/hyper-v/get-vhd) PowerShellu k zobrazení "size", která musí být násobkem 1 MiB v Azure a "velikost souboru", která bude odpovídat velikosti a 512 bajtů pro zápatí VHD.
+   
+   1. Maximální velikost povolená pro virtuální pevný disk s operačním systémem s virtuálním počítačem 1. generace je 2 048 GiB (2 TiB). 
+   1. Maximální velikost datového disku je 32 767 GiB (32 TiB).
+
+> [!NOTE]
+> - Pokud připravujete disk s operačním systémem Windows po převodu na pevný disk a v případě potřeby změníte jeho velikost, vytvořte virtuální počítač, který disk používá. Spusťte a přihlaste se k virtuálnímu počítači a pokračujte v částech tohoto článku a dokončete přípravu na odeslání.  
+> - Pokud připravujete datový disk, který můžete s touto částí zastavit, pokračujte v nahrávání disku.
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Použití Správce technologie Hyper-V k převedení disku
+
+1. Otevřete Správce technologie Hyper-V a na levé straně vyberte svůj místní počítač. V nabídce nad seznamem počítač vyberte **Akce**  >  **Upravit disk**.
+1. Na stránce **najít virtuální pevný disk** vyberte svůj virtuální disk.
+1. Na stránce **Zvolte akci** vyberte **převést**  >  **Další**.
+1. Pro převod z VHDX vyberte **virtuální pevný disk**  >  **Next**.
+1. Chcete-li se převést na dynamicky se zvětšující disk, vyberte možnost **Pevná velikost**(  >  **Další**).
+1. Vyhledejte a vyberte cestu, kam chcete uložit nový soubor VHD.
+1. Vyberte **Dokončit**.
+
+### <a name="use-powershell-to-convert-the-disk"></a>Použití PowerShellu k převedení disku
+
+Virtuální disk můžete převést pomocí rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, přečtěte si téma [instalace role Hyper-V](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Následující příklad převede disk z VHDX na VHD. Také převede disk z dynamicky se zvětšující disk na disk s pevnou velikostí.
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+V tomto příkladu nahraďte hodnotu pro **cestu** cestou k virtuálnímu pevnému disku, který chcete převést. Hodnotu **DestinationPath** nahraďte novou cestou a názvem převedeného disku.
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>Použití Správce technologie Hyper-V ke změně velikosti disku
+
+1. Otevřete Správce technologie Hyper-V a na levé straně vyberte svůj místní počítač. V nabídce nad seznamem počítač vyberte **Akce**  >  **Upravit disk**.
+1. Na stránce **najít virtuální pevný disk** vyberte svůj virtuální disk.
+1. Na stránce **Zvolte akci** vyberte **Rozbalit**  >  **Další**.
+1. Na stránce **najít virtuální pevný disk** zadejte novou velikost v GIB > **Další**.
+1. Vyberte **Dokončit**.
+
+### <a name="use-powershell-to-resize-the-disk"></a>Použití PowerShellu ke změně velikosti disku
+
+Velikost virtuálního disku můžete změnit pomocí rutiny [změnit velikost-VHD](/powershell/module/hyper-v/resize-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, přečtěte si téma [instalace role Hyper-V](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Následující příklad změní velikost disku z 100,5 MiB na 101 MiB, aby splňoval požadavek na zarovnání Azure.
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+V tomto příkladu nahraďte hodnotu pro **cestu** cestou k virtuálnímu pevnému disku, u kterého chcete změnit velikost. Nahraďte hodnotu pro **SizeBytes** novou velikostí v bajtech pro disk.
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>Převést z formátu disku VMDK VMware
+
+Pokud máte image virtuálního počítače s Windows ve [formátu souboru VMDK](https://en.wikipedia.org/wiki/VMDK), můžete k převedení VMDK a jeho nahrání do Azure použít [Azure Migrate](../../migrate/server-migrate-overview.md) .
 
 ## <a name="complete-the-recommended-configurations"></a>Dokončete Doporučené konfigurace.
 

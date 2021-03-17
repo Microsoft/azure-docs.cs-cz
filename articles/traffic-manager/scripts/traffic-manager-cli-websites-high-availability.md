@@ -3,7 +3,7 @@ title: Směrování provozu pro HA aplikací – Azure CLI – Traffic Manager
 description: Ukázkový skript Azure CLI – směrování provozu pro vysokou dostupnost aplikací
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
+author: duongau
 manager: twooley
 tags: azure-infrastructure
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
-ms.author: rohink
-ms.openlocfilehash: e108fbe54ce67d4eb354319450259fc410462c53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: abac2e5b1fcba65db92edd2bcc2f390ec0114f59
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460609"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185338"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Směrování provozu pro vysokou dostupnost aplikací pomocí Azure CLI
 
@@ -49,14 +49,14 @@ Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služ
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Vytvoří plán služby App Service. Toto je jako serverová farma pro webovou aplikaci Azure. |
-| [AZ WebApp web Create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Vytvoří webovou aplikaci Azure v rámci plánu App Service. |
-| [AZ Network Traffic-Manager Profile Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Vytvoří profil služby Azure Traffic Manager. |
-| [AZ Network Traffic-Manager Endpoint Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Přidá do profilu služby Azure Traffic Manager koncový bod. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az appservice plan create](/cli/azure/appservice/plan) | Vytvoří plán služby App Service. Toto je jako serverová farma pro webovou aplikaci Azure. |
+| [AZ WebApp web Create](/cli/azure/webapp#az-webapp-create) | Vytvoří webovou aplikaci Azure v rámci plánu App Service. |
+| [AZ Network Traffic-Manager Profile Create](/cli/azure/network/traffic-manager/profile) | Vytvoří profil služby Azure Traffic Manager. |
+| [AZ Network Traffic-Manager Endpoint Create](/cli/azure/network/traffic-manager/endpoint) | Přidá do profilu služby Azure Traffic Manager koncový bod. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty App Service CLI najdete v [dokumentaci k síti Azure](../cli-samples.md).

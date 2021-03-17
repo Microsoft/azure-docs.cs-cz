@@ -2,18 +2,17 @@
 title: Konfigurace skupin dostupnosti pro SQL Server na virtuálních počítačích RHEL ve virtuálních počítačích Azure-Linux | Microsoft Docs
 description: Přečtěte si o nastavení vysoké dostupnosti v prostředí clusteru RHEL a nastavení STONITH.
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533f5c9e38818a8e37482cbbb3a90602366eca6f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086791"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587209"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,11 +34,11 @@ V tomto kurzu se naučíte:
 
 Tento kurz použije Azure CLI k nasazení prostředků v Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku v místním prostředí, vyžaduje tento kurz Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.30 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -223,7 +222,7 @@ Po dokončení příkazu byste měli získat následující výsledky:
     - `<resourceGroupName>`
     - `<VM-basename>`
     - `<availabilitySetName>`
-    - `<VM-Size>`-Příkladem může být "Standard_D16_v3"
+    - `<VM-Size>` -Příkladem může být "Standard_D16_v3"
     - `<username>`
     - `<adminPassword>`
 
@@ -242,7 +241,7 @@ Po dokončení příkazu byste měli získat následující výsledky:
     done
     ```
 
-Pomocí výše uvedeného příkazu se vytvoří virtuální počítače a pro tyto virtuální počítače se vytvoří výchozí virtuální síť. Další informace o různých konfiguracích najdete v článku [AZ VM Create](https://docs.microsoft.com/cli/azure/vm) .
+Pomocí výše uvedeného příkazu se vytvoří virtuální počítače a pro tyto virtuální počítače se vytvoří výchozí virtuální síť. Další informace o různých konfiguracích najdete v článku [AZ VM Create](/cli/azure/vm) .
 
 Po dokončení příkazu u každého virtuálního počítače byste měli získat výsledky podobné následujícímu:
 
@@ -263,7 +262,7 @@ Po dokončení příkazu u každého virtuálního počítače byste měli získ
 > [!IMPORTANT]
 > Výchozí image, která je vytvořena pomocí příkazu výše, vytvoří ve výchozím nastavení disk s operačním systémem 32 GB. Můžete mít pravděpodobně nedostatek místa v této výchozí instalaci. K `az vm create` Vytvoření disku s operačním systémem pomocí 128 GB jako příkladu můžete použít následující parametr přidaný do výše uvedeného příkazu: `--os-disk-size-gb 128` .
 >
-> Pak můžete [nakonfigurovat Správce logických svazků (LVM)](../../../virtual-machines/linux/configure-lvm.md) , pokud potřebujete rozbalit příslušné svazky složek, aby vyhovovaly vaší instalaci.
+> Pak můžete [nakonfigurovat Správce logických svazků (LVM)](/previous-versions/azure/virtual-machines/linux/configure-lvm) , pokud potřebujete rozbalit příslušné svazky složek, aby vyhovovaly vaší instalaci.
 
 ### <a name="test-connection-to-the-created-vms"></a>Test připojení k vytvořeným virtuálním počítačům
 
@@ -485,11 +484,11 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
 ### <a name="register-a-new-application-in-azure-active-directory"></a>Registrace nové aplikace v Azure Active Directory
  
  1. Přejděte na https://portal.azure.com.
- 2. Otevřete okno [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Přejděte na vlastnosti a zapište ID adresáře. Toto je`tenant ID`
+ 2. Otevřete okno [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Přejděte na vlastnosti a zapište ID adresáře. Toto je `tenant ID`
  3. Klikněte na [ **Registrace aplikací**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Klikněte na **Nová registrace** .
  5. Zadejte **název** , jako `<resourceGroupName>-app` je, vyberte **účty pouze v tomto adresáři organizace**
- 6. Vyberte možnost **Web**typu aplikace, zadejte adresu URL pro přihlášení (například http://localhost) a klikněte na Přidat. Přihlašovací adresa URL se nepoužívá a může to být jakákoli platná adresa URL. Po dokončení klikněte na **zaregistrovat** .
+ 6. Vyberte možnost **Web** typu aplikace, zadejte adresu URL pro přihlášení (například http://localhost) a klikněte na Přidat. Přihlašovací adresa URL se nepoužívá a může to být jakákoli platná adresa URL. Po dokončení klikněte na **zaregistrovat** .
  7. Vyberte **certifikáty a tajné klíče** pro novou registraci aplikace a pak klikněte na **nový tajný klíč klienta** .
  8. Zadejte popis nového klíče (tajný klíč klienta), vyberte možnost **nikdy nevyprší** a klikněte na **Přidat** .
  9. Zapište hodnotu tajného kódu. Používá se jako heslo instančního objektu.
@@ -532,7 +531,7 @@ Chcete-li přidat roli, spusťte následující příkaz:
 az role definition create --role-definition "<filename>.json"
 ```
 
-Měl by se zobrazit následující výstup:
+Měli byste vidět následující výstup:
 
 ```output
 {
@@ -570,7 +569,7 @@ Přiřaďte vlastní roli `Linux Fence Agent Role-<username>` vytvořenou v posl
 4. Klikněte na **řízení přístupu (IAM)** .
 5. Klikněte na **Přidat přiřazení role** .
 6. Vyberte roli `Linux Fence Agent Role-<username>` ze seznamu **rolí** .
-7. V seznamu **Vybrat** zadejte název aplikace, kterou jste vytvořili výše.`<resourceGroupName>-app`
+7. V seznamu **Vybrat** zadejte název aplikace, kterou jste vytvořili výše. `<resourceGroupName>-app`
 8. Klikněte na **Uložit**.
 9. Opakujte výše uvedené kroky pro uzel všechny uzly clusteru.
 
@@ -669,7 +668,7 @@ Po dokončení konfigurace můžete zkontrolovat stav SQL Server a ověřit, jes
 systemctl status mssql-server --no-pager
 ```
 
-Měl by se zobrazit následující výstup:
+Měli byste vidět následující výstup:
 
 ```output
 ● mssql-server.service - Microsoft SQL Server Database Engine
@@ -908,7 +907,7 @@ V části všechny SQL Server instance uložte přihlašovací údaje používan
 
 1. Až budou sekundární repliky připojené, můžete je zobrazit v SSMS Průzkumník objektů rozbalením uzlu **vždy na vysokou dostupnost** :
 
-    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![Snímek obrazovky se zobrazí v primárních a sekundárních replikách dostupnosti.](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>Přidání databáze do skupiny dostupnosti
 
@@ -947,6 +946,9 @@ Pokud jsou `synchronization_state_desc` seznamy synchronizované pro `db1` , zna
 
 Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)budeme postupovat podle pokynů.
 
+> [!NOTE]
+> Tento článek obsahuje odkazy na podřízený termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+
 ### <a name="create-the-ag-cluster-resource"></a>Vytvoření prostředku clusteru AG
 
 1. Použijte jeden z následujících příkazů na základě dříve zvoleného prostředí a vytvořte prostředek `ag_cluster` ve skupině dostupnosti `ag1` .
@@ -969,7 +971,7 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     sudo pcs resource
     ```
 
-    Měl by se zobrazit následující výstup:
+    Měli byste vidět následující výstup:
     
     **RHEL 7** 
     
@@ -1051,7 +1053,7 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     sudo pcs constraint list --full
     ```
 
-    Měl by se zobrazit následující výstup:
+    Měli byste vidět následující výstup:
     
     **RHEL 7**
 
@@ -1132,6 +1134,34 @@ Abychom zajistili, že se konfigurace úspěšně provedla, otestujeme převzet�
     sudo pcs resource move ag_cluster-clone <VM2> --master
     ```
 
+   Můžete také zadat další možnost, aby dočasné omezení vytvořené pro přesunutí prostředku na požadovaný uzel bylo automaticky zakázáno a není nutné provádět kroky 2 a 3 níže.
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+    ```
+
+   Další alternativou pro automatizaci kroků 2 a 3 níže, které zruší dočasné omezení v příkazu pro přesunutí prostředku, je spojením více příkazů na jednom řádku. 
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+    ```
+    
 2. Pokud znovu zkontrolujete vaše omezení, uvidíte, že se kvůli ručnímu převzetí služeb při selhání přidalo jiné omezení:
     
     **RHEL 7**

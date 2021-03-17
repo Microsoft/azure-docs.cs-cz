@@ -2,17 +2,17 @@
 title: Řešení potíží s připojením – Azure Database for MySQL
 description: Přečtěte si, jak řešit potíže s připojením Azure Database for MySQL, včetně přechodných chyb, které vyžadují opakované pokusy, problémy s bránou firewall a výpadky.
 keywords: připojení MySQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da500087aeb4ad5e2bf516c3d0ce3cceaf8396af
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100885"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000279"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Řešení potíží s připojením ke službě Azure Database for MySQL
 
@@ -48,7 +48,7 @@ Pokud se aplikace trvale nepřipojí k Azure Database for MySQL, obvykle se jedn
 
 * Konfigurace brány firewall serveru: Ujistěte se, že je brána firewall serveru Azure Database for MySQL nakonfigurovaná tak, aby povolovala připojení z vašeho klienta, včetně proxy serverů a bran.
 * Konfigurace brány firewall klienta: Brána firewall klienta musí umožňovat připojení k vašemu databázovému serveru. IP adresy a porty serveru, které se nedají povolit, a také názvy aplikací, jako je MySQL v některých branách firewall.
-* Chyba uživatele: v připojovacím řetězci můžete mít chybné typové parametry připojení, jako je název serveru nebo chybějící přípona * \@ servername* v uživatelském jménu.
+* Chyba uživatele: v připojovacím řetězci můžete mít chybné typové parametry připojení, jako je název serveru nebo chybějící přípona *\@ servername* v uživatelském jménu.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
 

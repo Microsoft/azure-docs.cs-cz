@@ -1,6 +1,6 @@
 ---
-title: Správa a monitorování důležitosti úloh
-description: Naučte se spravovat a monitorovat důležitost na úrovni požadavků ve službě Azure synapse Analytics.
+title: Správa a monitorování důležitosti úloh ve vyhrazeném fondu SQL
+description: Přečtěte si, jak spravovat a monitorovat vyhrazený fond SQL pro důležitost požadavků na úrovni požadavku pro Azure synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12b75ad3746cd0f54e27e474e0fd13bb0bba0e05
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211965"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685238"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Správa a monitorování důležitosti úloh v Azure synapse Analytics
+# <a name="manage-and-monitor-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>Správa a monitorování důležitosti úloh ve vyhrazeném fondu SQL pro Azure synapse Analytics
 
-Správa a monitorování synapse důležitosti na úrovni požadavků SQL ve službě Azure synapse pomocí zobrazení zobrazení dynamické správy a katalogu
+Správa a monitorování vyhrazené úrovně požadavků fondu SQL ve službě Azure synapse pomocí zobrazení zobrazení dynamické správy a katalogu
 
 ## <a name="monitor-importance"></a>Důležitost monitorování
 
-Sledujte důležitost pomocí sloupce nový důležitost v zobrazení dynamické správy [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Sledujte důležitost pomocí sloupce nový důležitost v zobrazení dynamické správy [Sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 Níže uvedený dotaz monitorování ukazuje dobu odeslání a čas spuštění dotazů. Přečtěte si čas odeslání a čas zahájení spolu s důležitostí, abyste viděli, jak důležitost ovlivnila plánování.
 
 ```sql
@@ -39,7 +39,7 @@ Pokud chcete zobrazit další informace o plánování dotazů, použijte zobraz
 
 ## <a name="manage-importance-with-catalog-views"></a>Správa důležitosti pomocí zobrazení katalogu
 
-Zobrazení katalogu sys. workload_management_workload_classifiers obsahuje informace o klasifikátorech. Chcete-li vyloučit systémem definované klasifikátory, které jsou mapovány na třídy prostředků, spusťte následující kód:
+Zobrazení katalogu sys.workload_management_workload_classifiers obsahuje informace o klasifikátorech. Chcete-li vyloučit systémem definované klasifikátory, které jsou mapovány na třídy prostředků, spusťte následující kód:
 
 ```sql
 SELECT *
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-Zobrazení katalogu [Sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)obsahuje informace o parametrech použitých při vytváření klasifikátoru.  Níže uvedený dotaz ukazuje, že v ```membername``` parametru pro hodnoty s ExecutiveReports byl vytvořen ExecReportsClassifier:
+Zobrazení katalogu [Sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)obsahuje informace o parametrech použitých při vytváření klasifikátoru.  Níže uvedený dotaz ukazuje, že v ```membername``` parametru pro hodnoty s ExecutiveReports byl vytvořen ExecReportsClassifier:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value

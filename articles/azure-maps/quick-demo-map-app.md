@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: interaktivní vyhledávání map pomocí Azure Maps'
-description: Naučte se vytvářet interaktivní a prohledávatelné mapy. Podívejte se, jak vytvořit účet Azure Maps, získat primární klíč a pomocí webové sady SDK nastavit aplikace mapy.
+description: 'Rychlý Start: Naučte se vytvářet interaktivní a prohledávatelné mapy. Přečtěte si, jak vytvořit účet Azure Maps, získat primární klíč a použít web SDK k nastavení map aplikací.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 24a834c87fe34d90dec5961bb3f8d376c6e5e62d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031042"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373211"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Rychlý Start: vytvoření interaktivní vyhledávací mapy pomocí Azure Maps
 
@@ -24,11 +24,13 @@ V tomto článku se dozvíte, jak pomocí Azure Maps vytvořit mapu, která uži
 * Získejte primární klíč, který se použije v ukázkové webové aplikaci.
 * Stáhněte a otevřete ukázkovou aplikaci s mapou.
 
+V tomto rychlém startu se používá Azure Maps Web SDK, ale služby Azure Maps lze použít s libovolným mapovým ovládacím prvkem. [Zde](open-source-projects.md#third-part-map-control-plugins) je několik oblíbených open source mapových ovládacích prvků, které Azure Maps tým vytvořil modul plug-in pro.
+
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+* Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -38,7 +40,7 @@ Vytvořte nový Azure Maps účet pomocí následujících kroků:
 
 1. V levém horním rohu webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek**.
 2. Do pole *Hledat na Marketplace* zadejte **Azure Maps**.
-3. Z *výsledků*vyberte **Azure Maps**. Klikněte na tlačítko **Vytvořit**, které se zobrazí pod mapou.
+3. Z *výsledků* vyberte **Azure Maps**. Klikněte na tlačítko **Vytvořit**, které se zobrazí pod mapou.
 4. Na stránce **Vytvořit účet Maps** zadejte následující hodnoty:
     * *Předplatné*, které chcete pro tento účet použít.
     * Název *skupiny prostředků* pro tento účet. Můžete zvolit možnost *Vytvořit novou* nebo *Použít existující* skupinu prostředků.
@@ -60,7 +62,7 @@ Po úspěšném vytvoření účtu Maps načtěte primární klíč, který vám
 3. Zkopírujte do schránky **Primární klíč**. Místně ho uložte, abyste ho mohli použít později v tomto kurzu.
 
 >[!NOTE]
-> Pokud místo primárního klíče použijete klíč předplatného, nebude se vaše mapa správně vykreslovat. Z bezpečnostních důvodů se navíc doporučuje střídat mezi primárním a sekundárním klíčem. Pokud chcete otočit klíče, aktualizujte aplikaci tak, aby používala sekundární klíč, nasaďte a pak stisknutím tlačítka cyklus/obnovení vedle primárního klíče Vygenerujte nový primární klíč. Starý primární klíč bude zakázán. Další informace o rotaci klíčů najdete v tématu [nastavení Azure Key Vault s použitím rotace a auditování klíčů](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring) .
+> Pokud místo primárního klíče použijete klíč předplatného, nebude se vaše mapa správně vykreslovat. Z bezpečnostních důvodů se navíc doporučuje střídat mezi primárním a sekundárním klíčem. Pokud chcete otočit klíče, aktualizujte aplikaci tak, aby používala sekundární klíč, nasaďte a pak stisknutím tlačítka cyklus/obnovení vedle primárního klíče Vygenerujte nový primární klíč. Starý primární klíč bude zakázán. Další informace o rotaci klíčů najdete v tématu [nastavení Azure Key Vault s použitím rotace a auditování klíčů](../key-vault/secrets/tutorial-rotation-dual.md) .
 
 :::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Získání klíče primárního klíče Azure Maps v Azure Portal":::
 
@@ -92,17 +94,15 @@ Pokud neplánujete pokračovat v kurzech, proveďte tyto kroky a vyčistěte pro
 2. Přejděte na stránku Azure Portal. Na hlavní stránce portálu vyberte **všechny prostředky** . Případně klikněte na ikonu nabídky v levém horním rohu. Vyberte **Všechny prostředky**.
 3. Klikněte na účet Azure Maps. V horní části stránky klikněte na **Odstranit**.
 
+Další příklady kódu a interaktivní prostředí pro kódování najdete v těchto příručkách:
+
+[Najít adresu pomocí služby Azure Maps Search Service](how-to-search-for-address.md)
+
+[Použití Azure Maps Ovládací prvek Mapa](how-to-use-map-control.md)
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili účet Azure Maps a vytvořili jste ukázkovou aplikaci. Další informace o Azure Maps najdete v následujících kurzech:
 
 > [!div class="nextstepaction"]
 > [Prohledejte okolní body zájmu pomocí Azure Maps](tutorial-search-location.md)
-
-Další příklady kódu a interaktivní prostředí pro kódování najdete v těchto příručkách:
-
-> [!div class="nextstepaction"]
-> [Najít adresu pomocí služby Azure Maps Search Service](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [Použití Azure Maps Ovládací prvek Mapa](how-to-use-map-control.md)

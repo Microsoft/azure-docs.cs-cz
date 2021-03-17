@@ -6,25 +6,25 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 725490316ef4fcbce197d5a29b7665b7de7014c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 4947bab58a6d23bcc3e3212a9e3e7dc0c4fa8578
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857125"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106701"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování služba-služba pomocí Azure Data Lake Storage Gen1 s využitím REST API
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-service-to-service-authenticate-java.md)
 > * [Pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Pomocí Pythonu](data-lake-store-service-to-service-authenticate-python.md)
-> * [Pomocí rozhraní REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
+> * [Použití REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
 > 
 > 
 
 V tomto článku se dozvíte, jak pomocí REST API provádět ověřování pomocí služby s Azure Data Lake Storage Gen1. Ověřování koncových uživatelů pomocí Data Lake Storage Gen1 pomocí REST API najdete v tématu [ověřování koncových uživatelů pomocí Data Lake Storage Gen1 pomocí REST API](data-lake-store-end-user-authenticate-rest-api.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -48,7 +48,7 @@ Výstup požadavku zahrnuje autorizační token (označený `access-token` ve v�
 {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 ```
 
-Tento článek používá **neinteraktivní** přístup. Další informace o neinteraktivním přístupu (volání služba-služba) najdete v tématu [Volání služba-služba pomocí přihlašovacích údajů](https://msdn.microsoft.com/library/azure/dn645543.aspx).
+Tento článek používá **neinteraktivní** přístup. Další informace o neinteraktivním přístupu (volání služba-služba) najdete v tématu [Volání služba-služba pomocí přihlašovacích údajů](/previous-versions/azure/dn645543(v=azure.100)).
 
 ## <a name="next-steps"></a>Další kroky
 

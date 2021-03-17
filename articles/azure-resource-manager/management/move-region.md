@@ -4,20 +4,20 @@ description: Poskytuje přehled o přesouvání prostředků Azure napříč obl
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 22d8bcee96b4ac52641d4f0841267195f44fe15a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a71502ec361004079e0962d8bc6433316a4ba81
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75485205"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90007634"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Přesun prostředků Azure napříč oblastmi
 
 Tento článek poskytuje informace o přesunu prostředků Azure napříč oblastmi Azure.
 
-Geografické grafy Azure, oblasti a Zóny dostupnosti tvoří základ globální infrastruktury Azure. Geografické [grafy](https://azure.microsoft.com/global-infrastructure/geographies/) Azure obvykle obsahují dvě nebo víc [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). Oblast je oblast v rámci geografické oblasti, která obsahuje Zóny dostupnosti a více datových center. 
+Geografické oblasti Azure, oblasti a zóny dostupnosti tvoří základ globální infrastruktury Azure. Geografické [grafy](https://azure.microsoft.com/global-infrastructure/geographies/) Azure obvykle obsahují dvě nebo víc [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). Oblast je oblast v rámci geografické oblasti, která obsahuje Zóny dostupnosti a více datových center. 
 
 Po nasazení prostředků v konkrétní oblasti Azure existuje několik důvodů, proč je vhodné přesunout prostředky do jiné oblasti.
 
@@ -29,20 +29,50 @@ Po nasazení prostředků v konkrétní oblasti Azure existuje několik důvodů
 - **Reakce na požadavky na nasazení**: přesunout prostředky, které byly nasazeny chybně, nebo je přesunout v reakci na kapacitu kapacity. 
 - **Reakce na vyřazení z provozu**: Přesunutí prostředků z důvodu vyřazení oblastí z provozu.
 
-## <a name="move-process"></a>Přesunout proces
+## <a name="move-resources-with-resource-mover"></a>Přesunutí prostředků pomocí Resource stěhovací
 
-Skutečný proces přesunutí závisí na prostředcích, které přesouváte. Existují však některé běžné klíčové kroky:
+Prostředky můžete přesunout do jiné oblasti pomocí programu [Azure Resource stěhovací](../../resource-mover/overview.md). Resource stěhovací poskytuje:
 
-- **Ověřit požadavky**: požadavky zahrnují kontrolu dostupnosti potřebných prostředků v cílové oblasti, kontrolu, zda máte dostatečnou kvótu a zda má vaše předplatné přístup k cílové oblasti.
-- **Analyzovat závislosti**: vaše prostředky můžou mít závislosti na jiných prostředcích. Před přesunutím Zjistěte závislosti, aby přesunuté prostředky nadále fungovaly podle očekávání po přesunutí.
-- **Příprava na přesun**: Jedná se o kroky, které v primární oblasti převezmete před přesunutím. Například může být nutné exportovat šablonu Azure Resource Manager nebo zahájit replikaci prostředků ze zdroje do cíle.
-- **Přesunutí prostředků**: způsob přesunutí prostředků závisí na tom, co jsou. Je možné, že budete muset nasadit šablonu v cílové oblasti nebo převzít prostředky do cíle.
-- **Zahození cílových prostředků**: po přesunutí prostředků se můžete podívat na prostředky v cílové oblasti a rozhodnout se, jestli nepotřebujete nic.
-- **Potvrzení přesunutí**: po ověření prostředků v cílové oblasti můžou některé prostředky vyžadovat konečnou akci potvrzení. Například v cílové oblasti, která je teď primární oblastí, možná budete muset nastavit zotavení po havárii do nové sekundární oblasti. 
-- **Vyčištění zdroje**: nakonec po zprovoznění všeho a spuštění v nové oblasti můžete vyčistit a vyřadit z provozu prostředky, které jste vytvořili pro přesun, a prostředky v primární oblasti.
+- Jediné centrum pro přesouvání prostředků napříč oblastmi.
+- Zkrácená doba přesunutí a složitost. Všechno, co potřebujete, je na jednom místě.
+- Jednoduché a konzistentní prostředí pro přesun různých typů prostředků Azure.
+- Snadný způsob, jak identifikovat závislosti mezi prostředky, které chcete přesunout. To vám pomůže přesunout související prostředky dohromady, takže vše funguje podle očekávání v cílové oblasti, a to po přesunutí.
+- Automatické vyčištění prostředků ve zdrojové oblasti, pokud je chcete po přesunutí odstranit.
+- Testování. Můžete si vyzkoušet přesunutí a pak ho zahodit, pokud nechcete provést úplné přesunutí.
+
+Prostředky můžete přesunout do jiné oblasti pomocí několika různých metod:
+
+- **Zahájení přesouvání prostředků ze skupiny prostředků**: s touto metodou jste v rámci skupiny prostředků aktivovali přesunutí oblasti. Po výběru prostředků, které chcete přesunout, proces pokračuje v centru zdrojů pro kontrolu závislostí prostředků a orchestruje proces přesunutí. [Další informace](../../resource-mover/move-region-within-resource-group.md).
+- **Začněte přesouvat prostředky přímo z centra pro**podávání prostředků: s touto metodou jste v oblasti přesunuli proces přesunutí přímo do centra. [Další informace](../../resource-mover/tutorial-move-region-virtual-machines.md).
+
+
+## <a name="support-for-region-move"></a>Podpora pro přesun oblasti
+
+V současné době můžete k přesunutí těchto prostředků do jiné oblasti použít Resource stěhovací:
+
+- Virtuální počítače Azure a přidružené disky
+- Síťové karty
+- Skupiny dostupnosti
+- Virtuální sítě Azure
+- Veřejné IP adresy
+- Skupiny zabezpečení sítě (NSG)
+- Interní a veřejné nástroje pro vyrovnávání zatížení
+- Databáze SQL Azure a elastické fondy
+
+## <a name="region-move-process"></a>Proces přesunutí oblasti
+
+Skutečný proces přesunutí prostředků mezi oblastmi závisí na prostředcích, které přesouváte. Existují však některé běžné klíčové kroky:
+
+1. **Ověřit požadavky**: požadavky zahrnují kontrolu dostupnosti potřebných prostředků v cílové oblasti, kontrolu, zda máte dostatečnou kvótu a zda má vaše předplatné přístup k cílové oblasti.
+2. **Analyzovat závislosti**: vaše prostředky můžou mít závislosti na jiných prostředcích. Před přesunutím Zjistěte závislosti, aby přesunuté prostředky nadále fungovaly podle očekávání po přesunutí.
+3. **Příprava na přesun**: Jedná se o kroky, které v primární oblasti převezmete před přesunutím. Například může být nutné exportovat šablonu Azure Resource Manager nebo zahájit replikaci prostředků ze zdroje do cíle.
+4. **Přesunutí prostředků**: způsob přesunutí prostředků závisí na tom, co jsou. Je možné, že budete muset nasadit šablonu v cílové oblasti nebo převzít prostředky do cíle.
+5. **Zahození cílových prostředků**: po přesunutí prostředků se můžete podívat na prostředky v cílové oblasti a rozhodnout se, jestli nepotřebujete nic.
+6. **Potvrzení přesunutí**: po ověření prostředků v cílové oblasti můžou některé prostředky vyžadovat konečnou akci potvrzení. Například v cílové oblasti, která je teď primární oblastí, možná budete muset nastavit zotavení po havárii do nové sekundární oblasti. 
+7. **Vyčištění zdroje**: nakonec po zprovoznění všeho a spuštění v nové oblasti můžete vyčistit a vyřadit z provozu prostředky, které jste vytvořili pro přesun, a prostředky v primární oblasti.
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznam prostředků, které podporují přesun mezi oblastmi, najdete v tématu [Podpora operací přesunutí pro prostředky](region-move-support.md).
+[Přečtěte si další informace](../../resource-mover/about-move-process.md) o procesu přesunu v nástroji Resource stěhovací.

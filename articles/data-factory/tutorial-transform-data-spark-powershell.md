@@ -1,21 +1,17 @@
 ---
 title: 'Transformace dat pomocí Sparku v Azure Data Factory '
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Sparku ve službě Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf425ecb1a8aebf594828bfba50e9aba8ca9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409088"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377614"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 
@@ -30,14 +26,14 @@ V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, kt
 > * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Účet Azure Storage**. Vytvoříte skript Pythonu a vstupní soubor a nahrajete je do úložiště Azure. V tomto účtu úložiště se ukládá výstup z programu Sparku. Cluster Spark na vyžádání používá stejný účet úložiště jako primární úložiště.  
-* **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
+* **Azure PowerShell.** Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
 
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Uložení skriptu Pythonu do účtu služby Blob Storage
@@ -66,7 +62,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
     if __name__ == "__main__":
         main()
     ```
-2. Nahraďte ** &lt;storageAccountName&gt; ** názvem vašeho účtu Azure Storage. Pak soubor uložte. 
+2. Nahraďte **&lt; storageAccountName &gt;** názvem vašeho účtu Azure Storage. Pak soubor uložte. 
 3. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial**, pokud ještě neexistuje. 
 4. Vytvořte složku **spark**.
 5. Ve složce **spark** vytvořte podsložku **script**. 
@@ -182,7 +178,7 @@ Je třeba počítat s následujícím:
 
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny 
-Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vytvoříme datovou továrnu a pomocí rutin PowerShellu nasadíme soubory JSON propojené služby a kanálu. Postupně spusťte následující příkazy PowerShellu: 
+Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vytvoříme datovou továrnu a nasadíme soubory JSON propojené služby a kanálu pomocí rutin PowerShellu. Postupně spusťte následující příkazy PowerShellu: 
 
 1. Nastavte proměnné jednu po druhé.
 
@@ -332,7 +328,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
 
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se tyto postupy: 
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se: 
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny 

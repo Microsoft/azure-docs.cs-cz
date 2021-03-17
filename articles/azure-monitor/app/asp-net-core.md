@@ -2,13 +2,14 @@
 title: Application Insights Azure pro ASP.NET Core aplikace | Microsoft Docs
 description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, výkonu a využití.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be4cbe5f95fa6901ae4299662750c232d4700a8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711497"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -24,16 +25,20 @@ Příklad, který budeme používat, je [aplikace MVC](/aspnet/core/tutorials/fi
 * **Metoda nasazení**: závislá na architektuře nebo samostatně obsažená.
 * **Webový server**: IIS (Internet Information Server) nebo Kestrel.
 * **Hostující platforma**: funkce Web Apps Azure App Service, virtuální počítač Azure, Docker, Azure Kubernetes Service (AKS) a tak dále.
-* **Verze modulu runtime .NET Core**: 1. xx, 2. xx nebo 3. xx
+* **Verze .NET Core**: všechny oficiálně [podporované](https://dotnet.microsoft.com/download/dotnet-core) verze .NET Core.
 * **IDE**: Visual Studio, vs Code nebo příkazový řádek.
 
 > [!NOTE]
-> ASP.NET Core 3. X vyžaduje [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) nebo novější.
+> ASP.NET Core 3,1 vyžaduje [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) nebo novější.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Funkční aplikace ASP.NET Core. Pokud potřebujete vytvořit aplikaci ASP.NET Core, postupujte podle tohoto [ASP.NET Core kurzu](/aspnet/core/getting-started/).
 - Platný klíč instrumentace Application Insights. Tento klíč je nutný k odeslání jakékoli telemetrie do Application Insights. Pokud potřebujete vytvořit nový prostředek Application Insights, abyste získali klíč instrumentace, přečtěte si téma [vytvoření prostředku Application Insights](./create-new-resource.md).
+
+> [!IMPORTANT]
+> Nové oblasti Azure **vyžadují** použití připojovacích řetězců místo klíčů instrumentace. [Připojovací řetězec](./sdk-connection-string.md?tabs=net) identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
+
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Povolit Application Insights telemetrie na straně serveru (Visual Studio)
 
@@ -48,7 +53,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 
 3. Vyberte **Začínáme**. Text tohoto výběru se může lišit v závislosti na vaší verzi sady Visual Studio. Některé starší verze používají místo toho tlačítko **Spustit zdarma** .
 
-4. Vyberte předplatné. Pak vyberte **Resource**položku  >  **registr**prostředků.
+4. Vyberte své předplatné. Pak vyberte položku  >  **registr** prostředků.
 
 5. Po přidání Application Insights do projektu ověřte, že používáte nejnovější stabilní verzi sady SDK. Přejít na **projekt**  >  **Správa balíčků NuGet**  >  **Microsoft. ApplicationInsights. AspNetCore** Pokud potřebujete, klikněte na tlačítko **aktualizovat**.
 
@@ -64,7 +69,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
         </ItemGroup>
     ```
 
@@ -105,7 +110,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Příklad:
+    Například:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -121,6 +126,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 ### <a name="user-secrets-and-other-configuration-providers"></a>Uživatelské klíče a další poskytovatelé konfigurace
 
 Pokud chcete uložit klíč instrumentace v ASP.NET Core uživatelských tajných klíčích nebo si ho načíst z jiného poskytovatele konfigurace, můžete použít přetížení s `Microsoft.Extensions.Configuration.IConfiguration` parametrem. Například, `services.AddApplicationInsightsTelemetry(Configuration);`.
+Od Microsoft. ApplicationInsights. AspNetCore verze [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)volání `services.AddApplicationInsightsTelemetry()` automaticky přečte klíč instrumentace z `Microsoft.Extensions.Configuration.IConfiguration` aplikace. Není nutné explicitně poskytnout `IConfiguration` .
 
 ## <a name="run-your-application"></a>Spusťte aplikaci
 
@@ -132,7 +138,7 @@ Spusťte aplikaci a proveďte na ni požadavky. Telemetrii by teď měla přesm�
 
 ### <a name="ilogger-logs"></a>Protokoly ILogger
 
-Protokoly emitované pomocí `ILogger` závažnosti `Warning` nebo většího jsou zachyceny automaticky. Dodržujte [ILogger docs](ilogger.md#control-logging-level) k přizpůsobení, které úrovně protokolu jsou zachyceny Application Insights.
+Výchozí konfigurace shromažďuje `ILogger` protokoly závažnost `Warning` a vyšší. Tato konfigurace se dá [přizpůsobit](#how-do-i-customize-ilogger-logs-collection).
 
 ### <a name="dependencies"></a>Závislosti
 
@@ -140,7 +146,7 @@ Kolekce závislostí je ve výchozím nastavení povolená. [Tento](asp-net-depe
 
 ### <a name="performance-counters"></a>Čítače výkonu
 
-Podpora [čítačů výkonu](./web-monitor-performance.md) v ASP.NET Core je omezená:
+Podpora [čítačů výkonu](./performance-counters.md) v ASP.NET Core je omezená:
 
 * Sady SDK verze 2.4.1 a novější shromažďují čítače výkonu, pokud aplikace běží v Azure Web Apps (Windows).
 * Verze sady SDK 2.7.1 a novější shromažďují čítače výkonu, pokud je aplikace spuštěná ve Windows a cílících `NETSTANDARD2.0` nebo novějších.
@@ -149,7 +155,7 @@ Podpora [čítačů výkonu](./web-monitor-performance.md) v ASP.NET Core je ome
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` je ve výchozím nastavení povolená a bude shromažďovat výchozí sadu čítačů z aplikací .NET Core 3. X. Kurz [EventCounter](eventcounters.md) obsahuje seznam výchozích sad čítačů, které jsou shromažďovány. Obsahuje také pokyny k přizpůsobení seznamu.
+`EventCounterCollectionModule` je ve výchozím nastavení povoleno. V kurzu [EventCounter](eventcounters.md) najdete pokyny ke konfiguraci seznamu čítačů, které se mají shromažďovat.
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>Povolení telemetrie na straně klienta pro webové aplikace
 
@@ -157,17 +163,17 @@ Předchozí kroky jsou dostatečné, aby vám pomohly začít shromažďovat tel
 
 1. Do `_ViewImports.cshtml` přidejte injektáže:
 
-    ```cshtml
-        @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
-    ```
+```cshtml
+    @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+```
 
 2. V nástroji `_Layout.cshtml` vložte `HtmlHelper` na konec `<head>` oddílu, ale před jakýkoli jiný skript. Pokud chcete vykázat jakékoli vlastní telemetrie JavaScriptu ze stránky, zastavte ji za tento fragment kódu:
 
-    ```cshtml
-        @Html.Raw(JavaScriptSnippet.FullScript)
-        </head>
-    ```
-    
+```cshtml
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    </head>
+```
+
 Alternativně můžete použít `FullScript` sadu, která `ScriptBody` je k dispozici od verze sady SDK v 2.14. Tento postup použijte v případě, že potřebujete řídit `<script>` značku pro nastavení zásad zabezpečení obsahu:
 
 ```cshtml
@@ -182,7 +188,7 @@ Pokud váš projekt nezahrnuje `_Layout.cshtml` , můžete přesto přidat [moni
 
 ## <a name="configure-the-application-insights-sdk"></a>Konfigurace sady Application Insights SDK
 
-Můžete přizpůsobit sadu Application Insights SDK, aby ASP.NET Core změnila výchozí konfiguraci. Uživatelé sady Application Insights ASP.NET SDK mohou být obeznámeni se změnou konfigurace pomocí nástroje `ApplicationInsights.config` nebo úpravou `TelemetryConfiguration.Active` . Konfiguraci můžete změnit odlišně pro ASP.NET Core. Přidejte sadu ASP.NET Core SDK do aplikace a nakonfigurujte ji pomocí vkládání integrovaných [závislostí](/aspnet/core/fundamentals/dependency-injection)ASP.NET Core. Udělejte téměř všechny změny konfigurace v `ConfigureServices()` metodě vaší `Startup.cs` třídy, pokud nebudete přesměrováni jinak. Následující části obsahují další informace.
+Můžete přizpůsobit sadu Application Insights SDK, aby ASP.NET Core změnila výchozí konfiguraci. Uživatelé sady Application Insights ASP.NET SDK mohou být obeznámeni se změnou konfigurace pomocí nástroje `ApplicationInsights.config` nebo úpravou `TelemetryConfiguration.Active` . Pro ASP.NET Core se téměř všechny změny konfigurace provádí v `ConfigureServices()` metodě vaší `Startup.cs` třídy, pokud nebudete přesměrováni jinak. Následující části obsahují další informace.
 
 > [!NOTE]
 > V ASP.NET Corech aplikacích se změna konfigurace podle úpravy `TelemetryConfiguration.Active` nepodporuje.
@@ -220,12 +226,29 @@ public void ConfigureServices(IServiceCollection services)
 |EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartbeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true
 |AddAutoCollectedMetricExtractor | Povolí nebo zakáže extraktor AutoCollectedMetrics, což je TelemetryProcessor, který posílá předem agregované metriky o požadavcích a závislostech, než proběhne vzorkování. | true
 |RequestCollectionOptions.TrackExceptions | Povolí nebo zakáže vytváření sestav neošetřené sledování výjimek v modulu shromažďování požadavků. | false v NETSTANDARD 2.0 (protože výjimky jsou sledovány pomocí ApplicationInsightsLoggerProvider), v opačném případě true.
+|EnableDiagnosticsTelemetryModule | Povolit/zakázat `DiagnosticsTelemetryModule` . Zakázáním této možnosti dojde k ignorování následujících nastavení; `EnableHeartbeat`, `EnableAzureInstanceMetadataTelemetryModule`, `EnableAppServicesHeartbeatTelemetryModule` | true
 
 Seznam [konfigurovatelných nastavení v nástroji `ApplicationInsightsServiceOptions` najdete v](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) tématu seznam nejaktuálnějších dat.
 
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>Doporučení konfigurace pro Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0 & výše
+
+Od Microsoft. ApplicationInsights. AspNetCore SDK verze [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0)se doporučuje nakonfigurovat všechna nastavení dostupná v `ApplicationInsightsServiceOptions` , včetně instrumentationkey použití `IConfiguration` instance aplikace. Nastavení musí být v části "ApplicationInsights", jak je znázorněno v následujícím příkladu. Následující část appsettings.jsv tématu Konfigurace klíče instrumentace a také vypnutí adaptivního vzorkování a shromažďování čítačů výkonu.
+
+```json
+{
+    "ApplicationInsights": {
+    "InstrumentationKey": "putinstrumentationkeyhere",
+    "EnableAdaptiveSampling": false,
+    "EnablePerformanceCounterCollectionModule": false
+    }
+}
+```
+
+Pokud `services.AddApplicationInsightsTelemetry(aiOptions)` je použit, přepíše nastavení z `Microsoft.Extensions.Configuration.IConfiguration` .
+
 ### <a name="sampling"></a>Vzorkování
 
-Sada Application Insights SDK pro ASP.NET Core podporuje fixní i adaptivní vzorkování. Adaptivní vzorkování je ve výchozím nastavení povolené. 
+Sada Application Insights SDK pro ASP.NET Core podporuje fixní i adaptivní vzorkování. Adaptivní vzorkování je ve výchozím nastavení povolené.
 
 Další informace najdete v tématu [Konfigurace adaptivního vzorkování pro aplikace ASP.NET Core](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
 
@@ -242,6 +265,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+> [!NOTE]
+> `services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();` funguje pro jednoduché Inicializátory. Pro ostatní se vyžadují následující: `services.AddSingleton(new MyCustomTelemetryInitializer() { fieldName = "myfieldName" });`
+    
 ### <a name="removing-telemetryinitializers"></a>Odebírá se TelemetryInitializers
 
 Ve výchozím nastavení jsou Inicializátory telemetrie přítomné. Chcete-li odebrat všechny nebo konkrétní Inicializátory telemetrie, použijte následující vzorový kód *po* volání `AddApplicationInsightsTelemetry()` .
@@ -316,7 +342,6 @@ public void ConfigureServices(IServiceCollection services)
     services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                module.Counters.Clear();
                 module.Counters.Add(new EventCounterCollectionRequest("System.Runtime", "gen-0-size"));
             }
         );
@@ -379,7 +404,7 @@ Také Pokud používáte pokyny na základě sady Visual Studio z [tohoto místa
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Jak můžu sledovat telemetrii, která se automaticky neshromažďuje?
 
-Získání instance `TelemetryClient` pomocí injektáže konstruktoru a volání požadované `TrackXXX()` metody. Nedoporučujeme vytvářet nové `TelemetryClient` instance v ASP.NET Core aplikaci. Instance typu Singleton `TelemetryClient` je již v kontejneru zaregistrována `DependencyInjection` , která sdílí `TelemetryConfiguration` se zbytkem telemetrie. Vytvoření nové `TelemetryClient` instance se doporučuje jenom v případě, že potřebuje konfiguraci, která je oddělená od zbytku telemetrie.
+Získání instance `TelemetryClient` pomocí injektáže konstruktoru a volání požadované `TrackXXX()` metody. Nedoporučujeme vytvářet nové `TelemetryClient` `TelemetryConfiguration` instance ani instance v ASP.NET Core aplikaci. Instance typu Singleton `TelemetryClient` je již v kontejneru zaregistrována `DependencyInjection` , která sdílí `TelemetryConfiguration` se zbytkem telemetrie. Vytvoření nové `TelemetryClient` instance se doporučuje jenom v případě, že potřebuje konfiguraci, která je oddělená od zbytku telemetrie.
 
 Následující příklad ukazuje, jak sledovat další telemetrii z kontroleru.
 
@@ -406,6 +431,40 @@ public class HomeController : Controller
 
 Další informace o vlastních datových sestavách v Application Insights najdete v tématu [Application Insights referenční informace k rozhraní API pro vlastní metriky](./api-custom-events-metrics.md). Podobný přístup lze použít k posílání vlastních metrik pro Application Insights pomocí [rozhraní Getmetric API](./get-metric.md).
 
+### <a name="how-do-i-customize-ilogger-logs-collection"></a>Návody přizpůsobit kolekci protokolů ILogger?
+
+Ve výchozím nastavení `Warning` jsou zachyceny pouze protokoly závažnost a výše. Chcete-li toto chování změnit, explicitně popište konfiguraci protokolování pro poskytovatele `ApplicationInsights` , jak je uvedeno níže.
+Následující konfigurace umožňuje ApplicationInsights zachytit všechny protokoly závažnosti `Information` a vyšší.
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    }
+  }
+}
+```
+
+Je důležité si uvědomit, že následující informace nezpůsobí, že poskytovatel ApplicationInsights zachytí `Information` protokoly. Důvodem je to, že sada SDK přidává výchozí filtr protokolování, `ApplicationInsights` který dává pokyn k zachycení jenom `Warning` a vyšších. Z tohoto důvodu je pro ApplicationInsights vyžadováno Explicitní přepsání.
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  }
+}
+```
+
+Přečtěte si další informace o [konfiguraci ILogger](ilogger.md#control-logging-level).
+
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Některé šablony sady Visual Studio používaly metodu rozšíření UseApplicationInsights () na IWebHostBuilder pro povolení Application Insights. Je toto použití stále platné?
 
 I když je rozšiřující metoda `UseApplicationInsights()` stále podporovaná, je označená jako zastaralá v sadě Application Insights SDK verze 2.8.0 a vyšší. V další hlavní verzi sady SDK se odebere. Doporučený způsob, jak povolit telemetrii Application Insights, je použití, `AddApplicationInsightsTelemetry()` protože poskytuje přetížení k řízení některých konfigurací. V aplikacích ASP.NET Core 3. X `services.AddApplicationInsightsTelemetry()` je také jediným způsobem, jak povolit službu Application Insights.
@@ -426,11 +485,7 @@ Pokud je sada SDK nainstalována v době sestavení, jak je znázorněno v tomto
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Můžu Application Insights monitorování povolit pomocí nástrojů jako Monitorování stavu?
 
-Ne. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
-
-### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Je Application Insights automaticky povolená pro moji aplikaci ASP.NET Core 2,0?
-
-`Microsoft.AspNetCore.All`2,0 Metapackage zahrnuje sadu SDK pro Application Insights (verze 2.1.0). Pokud spustíte aplikaci v ladicím programu sady Visual Studio, Visual Studio povolí Application Insights a zobrazí telemetrii místně v samotném integrovaném vývojovém prostředí. Do služby Application Insights nebyla odeslána telemetrie, pokud nebyl zadán klíč instrumentace. Doporučujeme vám postupovat podle pokynů v tomto článku a povolit Application Insights, i pro aplikace 2,0.
+No. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Pokud Spouštím aplikaci v systému Linux, jsou podporovány všechny funkce?
 
@@ -455,13 +510,15 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
     }
 ```
 
+Toto omezení se nevztahuje na [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) a novější verze.
+
 ### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>Podporuje se tato sada SDK pro nové aplikace šablon pracovních služeb .NET Core 3. X?
 
 Tato sada SDK vyžaduje `HttpContext` , a proto nefunguje v aplikacích, které nepoužívají protokol HTTP, včetně aplikací pracovní služby .NET Core 3. X Worker. V [tomto](worker-service.md) dokumentu najdete informace o povolení Application Insights v takových aplikacích s využitím nově vydané sady Microsoft. ApplicationInsights. WorkerService SDK.
 
 ## <a name="open-source-sdk"></a>Open-Source sada SDK
 
-* [Číst a přispívat do kódu](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+* [Číst a přispívat do kódu](https://github.com/microsoft/ApplicationInsights-dotnet).
 
 Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./release-notes.md).
 
@@ -471,5 +528,4 @@ Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./relea
 * [Konfigurace kolekce snímků](./snapshot-debugger.md) pro zobrazení stavu zdrojového kódu a proměnných v okamžiku, kdy je vyvolána výjimka.
 * [Použijte rozhraní API](./api-custom-events-metrics.md) k posílání vlastních událostí a metrik pro podrobné zobrazení výkonu a využití vaší aplikace.
 * Pomocí [testů dostupnosti](./monitor-web-app-availability.md) můžete svou aplikaci průběžně kontrolovat z celého světa.
-* [Vkládání závislostí v ASP.NET Core](/aspnet/core/fundamentals/dependency-injection)
-
+* [Injektáž závislostí v ASP.NET Core](/aspnet/core/fundamentals/dependency-injection)

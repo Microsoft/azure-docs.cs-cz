@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: 27865afd356be9eac64083c1ebdeb6ced43dbd18
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986938"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472000"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Řešení potíží s připojením pro Azure SQL Database a spravovanou instanci SQL Azure pomocí Resource Health
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,11 +35,11 @@ Resource Health určuje stav prostředku SQL tím, že prozkoumá úspěch a ne�
 
 Stav **k dispozici** znamená, že Resource Health nezjistila selhání přihlášení kvůli chybám systému v prostředku SQL.
 
-![K dispozici](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-available.jpg)
+![K dispozici.](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-available.jpg)
 
 ### <a name="degraded"></a>Snížený výkon
 
-Stav **snížené** úrovně znamená, že Resource Health zjistila většinu úspěšných přihlášení, ale také některé chyby. Jedná se o nejpravděpodobnější chyby při přechodných přihlášeních. Chcete-li snížit dopad problémů s připojením způsobených přechodnými chybami přihlášení, implementujte v kódu [logiku opakování](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) .
+Stav **Degradovaný** znamená, že služba Resource Health zjistila většinu úspěšných přihlášení, ale také několik selhání. Jedná se o nejpravděpodobnější chyby při přechodných přihlášeních. Chcete-li snížit dopad problémů s připojením způsobených přechodnými chybami přihlášení, implementujte v kódu [logiku opakování](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) .
 
 ![Snížený výkon](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-degraded.jpg)
 
@@ -49,11 +49,11 @@ Stav **nedostupný** znamená, že Resource Health zjistila konzistentní selhá
 
 ![Neaktivní](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-unavailable.jpg)
 
-### <a name="unknown"></a>Není známo
+### <a name="unknown"></a>Neznámý
 
 Stav **Neznámý** znamená, že Resource Health nedostaly informace o tomto prostředku po dobu více než 10 minut. I když tento stav není konečným náznakem stavu prostředku, jedná se o důležitý datový bod v procesu řešení potíží. Pokud je prostředek spuštěný podle očekávání, stav prostředku se změní na k dispozici po několika minutách. Pokud máte problémy s prostředkem, neznámý stav může navrhnout, aby daný prostředek ovlivnila událost na platformě.
 
-![Není známo](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-unknown.jpg)
+![Neznámý](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>Historické informace
 
@@ -61,7 +61,7 @@ V části Historie stavu Resource Health můžete přistupovat až ke 14 dnům h
 
 ### <a name="downtime-reasons"></a>Důvody výpadku
 
-Když dojde k výpadku databáze, provede se analýza a určí se důvod. V případě, že je k dispozici, je důvod výpadku uveden v části Historie stavu Resource Health. Důvody výpadků se obvykle publikují 30 minut po události.
+Když dojde k výpadku databáze, provede se analýza a určí se důvod. V případě, že je k dispozici, je důvod výpadku uveden v části Historie stavu Resource Health. Důvody výpadku jsou obvykle publikovány během 45 minut po události.
 
 #### <a name="planned-maintenance"></a>Plánovaná údržba
 

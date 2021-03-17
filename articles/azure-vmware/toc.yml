@@ -1,78 +1,136 @@
-- name: Azure VMware Solution (AVS)
+- name: Azure VMware Solution
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o řešení Azure VMware Solution (AVS)
+    - name: Informace o službě Azure VMware Solution
       href: introduction.md
-- name: Kurzy
+    - name: Aktualizace platformy
+      href: azure-vmware-solution-platform-updates.md
+- name: Rychlý start
   items:
-    - name: 1. Plánování sítě
+    - name: 0. Naplánování nasazení
+      href: production-ready-deployment-steps.md
+    - name: 1. Nasazení služby Azure VMware Solution
+      href: deploy-azure-vmware-solution.md
+    - name: 2. Připojení k místnímu prostředí
+      href: azure-vmware-solution-on-premises.md
+    - name: 3. Nasazení a konfigurace VMware HCX
+      href: tutorial-deploy-vmware-hcx.md
+- name: Výukové kurzy
+  items:
+    - name: 1. Kontrolní seznam pro plánování sítí
       href: tutorial-network-checklist.md
-    - name: 2. Vytvoření privátního cloudu AVS
+    - name: 2. Vytvoření privátního cloudu
       href: tutorial-create-private-cloud.md
-    - name: 3. Konfigurace sítí
-      href: tutorial-configure-networking.md
-    - name: 4. Přístup k privátnímu cloudu
+    - name: 3. Přístup k privátnímu cloudu
       href: tutorial-access-private-cloud.md
-    - name: 5. Škálování privátního cloudu
-      href: tutorial-scale-private-cloud.md
-    - name: 6. Vytvoření segmentu sítě NSX-T
+    - name: 4. Konfigurace sítí
+      href: tutorial-configure-networking.md
+    - name: 5. Vytvoření segmentu sítě NSX-T
       href: tutorial-nsx-t-network-segment.md
-    - name: 7. Peering místního prostředí k privátnímu cloudu
+    - name: 6. Peering místního prostředí k privátnímu cloudu
       href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 8. Nasazení virtuálního počítače přes knihovnu obsahu
-      href: tutorial-deploy-vm-content-library.md
+    - name: 7. Nasazení a konfigurace VMware HCX
+      href: tutorial-deploy-vmware-hcx.md
+    - name: 8. Škálování privátního cloudu
+      href: tutorial-scale-private-cloud.md
+    - name: 9. odstranění privátního cloudu
+      href: tutorial-delete-private-cloud.md
 - name: Koncepty
   items:
     - name: Privátní cloudy a clustery
       href: concepts-private-clouds-clusters.md
-    - name: Sítě a propojení privátních cloudů
+    - name: Sítě a vzájemné propojení privátních cloudů
       href: concepts-networking.md
     - name: Úložiště v privátních cloudech
       href: concepts-storage.md
     - name: Přístup a identita pro privátní cloud
       href: concepts-identity.md
-    - name: Řízení přístupu na základě role
-      href: concepts-rbac.md
+    - name: Řízení přístupu na základě role ve vSphere
+      href: concepts-role-based-access-control.md
+    - name: Monitorování a oprava privátních cloudů
+      href: concepts-monitor-repair-private-cloud.md
     - name: Upgrady privátních cloudů
       href: concepts-upgrades.md
 - name: Návody
   items:
-    - name: Posouzení migrace AVS
+    - name: Požádat o kvótu hostitele a povolit řešení Azure VMware
+      href: enable-azure-vmware-solution.md
+    - name: Přesunout předplatná EA a CSP
+      href: move-ea-csp-subscriptions.md
+    - name: Úspora nákladů s využitím rezervované instance
+      href: reserved-instance.md
+    - name: Posouzení migrace
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
-    - name: Nastavení HCX
-      href: hybrid-cloud-extension-installation.md
     - name: Správa DHCP
       href: manage-dhcp.md
-    - name: Zotavení po havárii
-      href: disaster-recovery.md
+    - name: Konfigurace síťových součástí NSX
+      href: configure-nsx-network-components-azure-portal.md
+    - name: Nasazení zotavení po havárii pro virtuální počítače
+      href: disaster-recovery-for-virtual-machines.md
+    - name: Nasazení virtuálního počítače přes knihovnu obsahu
+      href: ./deploy-vm-content-library.md
+    - name: Nastavení serveru GitHub Enterprise
+      href: github-enterprise-server.md
+    - name: Využití veřejných IP adres
+      href: public-ip-usage.md
+    - name: Vytvoření tunelu IPSec
+      href: create-ipsec-tunnel.md
+    - name: Cluster s podporou převzetí služeb při selhání Windows serveru
+      href: windows-server-failover-cluster.md
     - name: Nativní integrace Azure
       items:
         - name: API Management
           href: concepts-api-management.md
         - name: Hvězdicová architektura
-          href: concepts-avs-hub-and-spoke-integration.md
-        - name: Azure Backup Server pro AVS
+          href: concepts-hub-and-spoke.md
+        - name: Azure Security Center
+          href: azure-security-integration.md
+        - name: Server Azure Backup
           items:
-            - name: Nastavení Backup Serveru pro AVS
-              href: set-up-mabs-for-avs.md
-            - name: Zálohování virtuálních počítačů AVS s využitím Backup Serveru
-              href: backup-avs-vms-with-mabs.md
-        - name: Application Gateway s využitím AVS
-          href: protect-avs-web-apps-with-app-gateway.md
-        - name: Traffic Manager s využitím AVS
-          href: deploy-traffic-manager-to-balance-avs-workloads.md
+            - name: Nastavení Backup Serveru
+              href: set-up-backup-server-for-azure-vmware-solution.md
+            - name: Zálohování virtuálních počítačů privátního cloudu s využitím Backup Serveru
+              href: backup-azure-vmware-solution-virtual-machines.md
+        - name: Správa životního cyklu virtuálních počítačů
+          href: lifecycle-management-of-azure-vmware-solution-vms.md
+        - name: Azure NetApp Files
+          href: netapp-files-with-azure-vmware-solution.md
+        - name: Application Gateway
+          href: protect-azure-vmware-solution-with-application-gateway.md
+        - name: Traffic Manager
+          href: deploy-traffic-manager-balance-workloads.md
     - name: Řešení VMware
       items:
-        - name: Nastavení vRealize Operations pro AVS
-          href: vrealize-operations-for-avs.md
-- name: Referenční informace
-  items: null
+        - name: Nastavení vRealize Operations
+          href: vrealize-operations-for-azure-vmware-solution.md
+        - name: Nasazení VMware Horizonu
+          href: azure-vmware-solution-horizon.md
+    - name: Ekosystém VMware
+      items:
+        - name: Řešení zálohování pro virtuální počítače
+          href: ecosystem-back-up-vms.md
 - name: Zdroje a prostředky
   items:
     - name: Řešení potíží
       items:
-        - name: Pomoc při selhání zřizování nebo nasazení AVS
+        - name: Otevření žádosti o podporu pro selhání nasazení
           href: fix-deployment-provisioning-failures.md
     - name: Nejčastější dotazy
-      href: faq.md
+      href: faq.yml
+    - name: Videa
+      items:
+        - name: Postupně
+          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+        - name: Integrace se službou Azure
+          href: 'https://youtu.be/m26iLu6DHbU'
+        - name: Integrace s Azure Application Gateway
+          href: 'https://youtu.be/BoQYvqzb6Y8'
+        - name: Plánování migrace a kapacity
+          href: 'https://youtu.be/NoNG-hkksrA'
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/vmware/vmware
+    - name: Azure PowerShell
+      href: /powershell/module/az.vmware/

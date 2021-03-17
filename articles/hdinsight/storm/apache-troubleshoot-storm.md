@@ -2,19 +2,16 @@
 title: Řešení potíží s využitím Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se použití Apache Storm se službou Azure HDInsight.
 keywords: Azure HDInsight, vyplavení, nejčastější dotazy, Průvodce odstraňováním potíží, běžné problémy
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c81084c77b355a5d60c72564c58a98e08da14312
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700361"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946310"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Řešení potíží s Apache Storm pomocí Azure HDInsight
 
@@ -27,8 +24,8 @@ Máte dvě možnosti pro přístup k uživatelskému rozhraní s více podmnoži
 ### <a name="apache-ambari-ui"></a>Uživatelské rozhraní Apache Ambari
 
 1. Přejít na řídicí panel Ambari
-2. V seznamu **služeb vyberte možnost**zaplavit.
-3. V nabídce **Rychlé odkazy** vyberte **uživatelské rozhraní**pro zaplavení.
+2. V seznamu **služeb vyberte možnost** zaplavit.
+3. V nabídce **Rychlé odkazy** vyberte **uživatelské rozhraní** pro zaplavení.
 
 ### <a name="direct-link"></a>Přímý odkaz
 
@@ -95,7 +92,7 @@ Binární soubory pro aktuální HDP zásobník jsou v `/usr/hdp/current/storm-c
 
 Pro konkrétní verze HDP v/usr/HDP může existovat více binárních souborů (například `/usr/hdp/2.5.0.1233/storm` ). `/usr/hdp/current/storm-client`Složka je symlinked na nejnovější verzi, která je spuštěna v clusteru.
 
-Další informace najdete v tématu [připojení ke clusteru HDInsight pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) a [Apache Storm](https://storm.apache.org/).
+Další informace najdete v tématu [připojení ke clusteru HDInsight pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) a [Apache Storm](https://storm.apache.org/).
 
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Návody určit topologii nasazení clusteru se zaplavou?
 
@@ -141,7 +138,7 @@ Další informace o použití souborů. jar centra událostí Spout s vaší top
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>Topologie založená na C# (mono v clusterech HDInsight 3.4 + Linux)
 
-[Zpracování událostí z Azure Event Hubs s využitím Apache Storm v HDInsight (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Zpracování událostí z Azure Event Hubs s využitím Apache Storm v HDInsight (C#)](./apache-storm-develop-csharp-event-hub-topology.md)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Nejnovější Apache Storm binární soubory Spout centra událostí pro clustery HDInsight 3.5 + Linux
 
@@ -165,7 +162,7 @@ Konfigurace Log4J správce je načítána z `/usr/hdp/\<HDP version>/storm/log4j
 
 Konfigurační soubor Work Log4J je načten z `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml` .
 
-4.6`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
+4.6 `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
 ---
@@ -186,4 +183,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 - Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

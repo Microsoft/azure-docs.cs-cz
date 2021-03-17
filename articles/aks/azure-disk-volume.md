@@ -4,12 +4,12 @@ description: Přečtěte si, jak ručně vytvořit svazek s disky Azure pro pou�
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 32e9da592d4c8f3997d5b1844065bf550d7d7d48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8a038926fc6bf3234b43a82c0259ba633df11e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82207509"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506646"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -24,11 +24,11 @@ Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložišt
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Vytvoření disku Azure
 
-Když vytvoříte disk Azure pro použití s AKS, můžete vytvořit prostředek disku ve skupině prostředků **uzlu** . Tento přístup umožňuje clusteru AKS získat přístup k prostředku disku a jeho správu. Pokud místo toho vytvoříte disk v samostatné skupině prostředků, musíte instančnímu objektu služby Azure Kubernetes (AKS) pro váš cluster udělit `Contributor` roli pro skupinu prostředků na disku. Případně můžete použít spravovanou identitu přiřazenou systémem pro oprávnění místo instančního objektu. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
+Když vytvoříte disk Azure pro použití s AKS, můžete vytvořit prostředek disku ve skupině prostředků **uzlu** . Tento přístup umožňuje clusteru AKS získat přístup k prostředku disku a jeho správu. Pokud místo toho vytvoříte disk v samostatné skupině prostředků, musíte spravované identitě služby Azure Kubernetes (AKS) pro váš cluster přidělit `Contributor` roli skupině prostředků na disku.
 
 V tomto článku Vytvořte disk ve skupině prostředků uzlu. Nejprve Získejte název skupiny prostředků pomocí příkazu [AZ AKS show][az-aks-show] a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad načte skupinu prostředků uzlu pro název clusteru AKS *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
@@ -38,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Nyní vytvořte disk pomocí příkazu [AZ disk Create][az-disk-create] . Zadejte název skupiny prostředků uzlu získaný v předchozím příkazu a potom název diskového prostředku, například *myAKSDisk*. Následující příklad vytvoří *20*GIB disk a po vytvoření vytvoří výstup ID disku. Pokud potřebujete vytvořit disk pro použití s kontejnery Windows serveru, přidejte `--os-type windows` do správného formátování disku parametr.
+Nyní vytvořte disk pomocí příkazu [AZ disk Create][az-disk-create] . Zadejte název skupiny prostředků uzlu získaný v předchozím příkazu a potom název diskového prostředku, například *myAKSDisk*. Následující příklad vytvoří *20* GIB disk a po vytvoření vytvoří výstup ID disku. Pokud potřebujete vytvořit disk pro použití s kontejnery Windows serveru, přidejte `--os-type windows` do správného formátování disku parametr.
 
 ```azurecli-interactive
 az disk create \
@@ -59,7 +59,7 @@ ID prostředku disku se zobrazí po úspěšném dokončení příkazu, jak je z
 
 ## <a name="mount-disk-as-volume"></a>Připojit disk jako svazek
 
-Pokud chcete připojit disk Azure do složky pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor `azure-disk-pod.yaml` s názvem s následujícím obsahem. Aktualizujte `diskName` název disku, který jste vytvořili v předchozím kroku, a `diskURI` s ID disku zobrazeným ve výstupu příkazu pro vytvoření disku. V případě potřeby aktualizujte `mountPath` cestu, která je cesta k disku Azure připojeného k části pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
+Pokud chcete připojit disk Azure do svého zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor s názvem `azure-disk-pod.yaml` s následujícím obsahem. Aktualizujte `diskName` název disku, který jste vytvořili v předchozím kroku, a `diskURI` s ID disku zobrazeným ve výstupu příkazu pro vytvoření disku. V případě potřeby aktualizujte `mountPath` cestu, která je cesta k disku Azure připojeného k části pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
 ```yaml
 apiVersion: v1
@@ -68,7 +68,7 @@ metadata:
   name: mypod
 spec:
   containers:
-  - image: nginx:1.15.5
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     name: mypod
     resources:
       requests:

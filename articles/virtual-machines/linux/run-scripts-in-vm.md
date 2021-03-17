@@ -2,17 +2,18 @@
 title: Spouštění skriptů na virtuálním počítači Azure Linux
 description: Toto téma popisuje, jak spouštět skripty na virtuálním počítači.
 services: automation
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 0f91bb33116947312173d8f22929b8548d23a9ab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9531b5b3d5f178e204d408c677e8908be86e3367
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292272"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552860"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Spouštění skriptů na VIRTUÁLNÍm počítači se systémem Linux
 
@@ -33,7 +34,7 @@ Pokud chcete automatizovat úlohy nebo řešit problémy, možná budete muset n
 Funkce [příkazu Run](run-command.md) umožňuje správu virtuálních počítačů a aplikací a odstraňování potíží pomocí skriptů a je k dispozici i v případě, že je počítač nedostupný, například pokud brána firewall hosta nemá otevřený port RDP nebo SSH.
 
 * Spouštění skriptů na virtuálních počítačích Azure.
-* Dá se spustit pomocí [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)nebo [PowerShellu](/powershell/module/az.compute/invoke-azvmruncommand) .
+* Dá se spustit pomocí [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke)nebo [PowerShellu](/powershell/module/az.compute/invoke-azvmruncommand) .
 * Rychlé spuštění skriptu a zobrazení výstupu a opakování podle potřeby v Azure Portal.
 * Skript lze zadat přímo nebo můžete spustit jeden z vestavěných skriptů.
 * Spusťte skript prostředí PowerShell na počítačích s Windows a skriptu bash v počítačích se systémem Linux.

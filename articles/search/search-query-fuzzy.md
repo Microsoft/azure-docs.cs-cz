@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 03/03/2021
+ms.openlocfilehash: b2f2c8497d5365104a5ffc361b791450925d0c19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146137"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694780"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Nepřibližné vyhledávání pro opravu chybných pravopisů a překlepů
 
@@ -73,7 +73,7 @@ V Azure Kognitivní hledání kromě termínu a vzdálenosti (maximálně 2) nee
 
 ## <a name="testing-fuzzy-search"></a>Testování přibližného vyhledávání
 
-Pro jednoduché testování doporučujeme, abyste provedli příkaz [Průzkumník služby Search](search-explorer.md) nebo [publikování](search-get-started-postman.md) pro iteraci na výrazu dotazu. Oba nástroje jsou interaktivní, což znamená, že můžete rychle krokovat více variant termínu a vyhodnotit odpovědi, které se vrátí zpět.
+Pro jednoduché testování doporučujeme, abyste provedli příkaz [Průzkumník služby Search](search-explorer.md) nebo [publikování](search-get-started-rest.md) pro iteraci na výrazu dotazu. Oba nástroje jsou interaktivní, což znamená, že můžete rychle krokovat více variant termínu a vyhodnotit odpovědi, které se vrátí zpět.
 
 Pokud jsou výsledky dvojznačné, [zvýrazňování přístupů](search-pagination-page-layout.md#hit-highlighting) vám může pomáhat identifikovat shodu v odpovědi. 
 
@@ -82,7 +82,7 @@ Pokud jsou výsledky dvojznačné, [zvýrazňování přístupů](search-paginat
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Příklad 1: hledání přibližného vyhledávání s přesným termínem
 
-V `"Description"` poli vyhledávacího dokumentu se předpokládá následující řetězec:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+V `"Description"` poli vyhledávacího dokumentu se předpokládá následující řetězec: `"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
 Začněte s přibližným hledáním "Special" a přidejte zvýraznění přístupů do pole Popis:
 
@@ -136,5 +136,5 @@ Bodem tohoto rozbaleného příkladu je ilustrovat přehlednost, který zvýraz�
 
 + [Jak funguje fulltextové vyhledávání v Azure Kognitivní hledání (architektura analýzy dotazů)](search-lucene-query-architecture.md)
 + [Průzkumník vyhledávání](search-explorer.md)
-+ [Dotazování v .NET](search-query-dotnet.md)
-+ [Dotazování v REST](search-create-index-rest-api.md)
++ [Dotazování v .NET](./search-get-started-dotnet.md)
++ [Dotazování v REST](./search-get-started-powershell.md)

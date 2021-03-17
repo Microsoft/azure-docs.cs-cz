@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: carlrab
-ms.date: 01/30/2019
-ms.openlocfilehash: f0bda1f4b9894b1ea5a68f44a728f715676d500e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.reviewer: sstein
+ms.date: 1/21/2021
+ms.openlocfilehash: d38ac9731959cf9a23052753b09c9e7819846705
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661142"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664113"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Plánování událostí údržby Azure v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,25 +25,32 @@ Přečtěte si, jak připravit na plánované události údržby ve vaší datab
 
 ## <a name="what-is-a-planned-maintenance-event"></a>Co je plánovaná událost údržby?
 
+Aby bylo možné zajistit Azure SQL Database a služby Azure SQL Managed instance zabezpečené, kompatibilní, stabilní a výkonné, provedou se komponenty služby skoro nepřetržitě. Díky moderní a robustní architektuře služeb a inovativním technologiím, jako jsou [Hot patching](https://aka.ms/azuresqlhotpatching), je většina aktualizací plně transparentní a bez dopadu na dostupnost služeb. Stále se u několika typů aktualizací nezpůsobí krátká přerušení služeb a vyžadují zvláštní zpracování. 
+
 Pro každou databázi, Azure SQL Database a Azure SQL Managed instance udržují kvorum replik databáze, kde jedna replika je primární. V každém okamžiku musí být primární replika online obsluha a aspoň jedna sekundární replika musí být v pořádku. Během plánované údržby se členové kvora databáze po jednom přejdou do offline režimu, s cílem zajistit, aby existovala jedna primární replika a aspoň jedna sekundární replika online, aby nedocházelo k výpadkům klientů. Když se primární replika musí převést do režimu offline, dojde k rekonfiguraci nebo procesu převzetí služeb při selhání, kdy se jedna sekundární replika stane novou primární.  
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Co očekávat během plánované události údržby
 
-Rekonfigurace/převzetí služeb při selhání se většinou dokončí do 30 sekund. Průměr je 8 sekund. Pokud už je vaše aplikace připojená, musí se znovu připojit ke správné kopii nové primární repliky vaší databáze. Pokud dojde k pokusu o nové připojení, zatímco se databáze předá novou primární replikou v online režimu, zobrazí se chyba 40613 (databáze není k dispozici): "databáze {DatabaseName} na serveru {ServerName}" není aktuálně k dispozici. Opakujte pokus o připojení později.“ Pokud má vaše databáze dlouhotrvající dotaz, bude tento dotaz během opakované konfigurace přerušen a bude nutné ho restartovat.
+Událost údržby může způsobit jedno nebo několik převzetí služeb při selhání v závislosti na Constellation primárních a sekundárních replik na začátku události údržby. V průměru 1,7 dojde k převzetí služeb při selhání za plánovanou událost údržby. Rekonfigurace/převzetí služeb při selhání se většinou dokončí do 30 sekund. Průměrná hodnota je osm sekund. Pokud už je vaše aplikace připojená, musí se znovu připojit k nové primární replice vaší databáze. Pokud dojde k pokusu o nové připojení, zatímco se databáze předá novou primární replikou v online režimu, zobrazí se chyba 40613 (databáze není k dispozici): *"databáze {DatabaseName} na serveru {ServerName}" není aktuálně k dispozici. Zkuste prosím připojení znovu později. "* Pokud má vaše databáze dlouhotrvající dotaz, bude tento dotaz během opakované konfigurace přerušen a bude nutné ho restartovat.
+
+## <a name="how-to-simulate-a-planned-maintenance-event"></a>Postup simulace plánované události údržby
+
+Zajištění odolnosti klientských aplikací proti událostem údržby před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací a přispěje k dostupnosti aplikací pro koncové uživatele. Při provádění [ručního převzetí služeb při selhání](https://aka.ms/mifailover-techblog) prostřednictvím PowerShellu, CLI nebo REST API můžete testovat chování klientské aplikace během plánovaných událostí údržby. Vytvoří stejné chování jako událost údržby při převedení primární repliky do offline režimu.
 
 ## <a name="retry-logic"></a>Logika opakování
 
-Každá provozní aplikace klienta, která se připojuje ke cloudové databázové službě, by měla implementovat robustní [logiku opakování](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)připojení. To vám pomůže zmírnit tyto situace a obvykle by měly být chyby transparentní pro koncového uživatele.
-
-## <a name="frequency"></a>Frequency
-
-V průměru se v každém měsíci vyskytují plánované události údržby 1,7.
+Každá provozní aplikace klienta, která se připojuje ke cloudové databázové službě, by měla implementovat robustní [logiku opakování](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)připojení. To pomůže zajistit, aby převzetí služeb při selhání bylo transparentní pro koncové uživatele nebo alespoň v negativních dopadech.
 
 ## <a name="resource-health"></a>Stav prostředků
 
 Pokud v databázi dochází k chybám přihlášení, podívejte se do okna [Resource Health](../../service-health/resource-health-overview.md#get-started) v [Azure Portal](https://portal.azure.com) aktuálního stavu. Část historie stavu obsahuje důvod výpadku každé události (Pokud je dostupná).
 
+## <a name="maintenance-window-feature"></a>Funkce časového období údržby
+
+Funkce časového období údržby umožňuje konfiguraci předvídatelných plánů oken údržby pro oprávněné databáze SQL Azure a spravované instance SQL. Další informace najdete v časovém [intervalu pro správu a údržbu](maintenance-window.md) .
+
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [Resource Health](resource-health-to-troubleshoot-connectivity.md) pro Azure SQL Database a Azure SQL Managed instance.
 - Další informace o logice opakování najdete v tématu [logika opakování pro přechodné chyby](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
+- Nakonfigurujte plány časových období údržby pomocí funkce časový interval pro správu a [údržbu](maintenance-window.md) .

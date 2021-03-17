@@ -1,19 +1,16 @@
 ---
 title: Pracovní postupy Apache Oozie & Enterprise Security – Azure HDInsight
 description: Zabezpečte Oozie pracovní postupy Apache pomocí Azure HDInsight Balíček zabezpečení podniku. Naučte se definovat pracovní postup Oozie a odeslat úlohu Oozie.
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.custom: seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc20a258028bb76351ae70362234e7c4c8c741a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83647572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699398"
 ---
 # <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Spuštění Apache Oozie v clusterech Azure HDInsight s Balíček zabezpečení podniku
 
@@ -231,8 +228,8 @@ Definice pracovních postupů Oozie jsou napsané v jazyce hPDL (Apache Hadoop p
    ```
 
    - Pokud jste `adl://home` `nameNode` Azure Data Lake Storage Gen1 jako primární úložiště clusteru, použijte identifikátor URI pro vlastnost. Pokud používáte Azure Blob Storage, přejděte na `wasb://home` . Pokud používáte Azure Data Lake Storage Gen2, přejděte na `abfs://home` .
-   - Nahraďte `domainuser` svým uživatelským jménem pro doménu.  
-   - Nahraďte `ClusterShortName` krátkým názvem clusteru. Pokud je název clusteru například https:// *[example Link]* sechadoopcontoso.azurehdisnight.NET, `clustershortname` je prvních šest znaků clusteru: **sechad**.  
+   - Nahraďte `domainuser` svým uživatelským jménem pro doménu.
+   - Nahraďte `ClusterShortName` krátkým názvem clusteru. Pokud je název clusteru například https:// *[example Link]* sechadoopcontoso.azurehdisnight.NET, `clustershortname` je prvních šest znaků clusteru: **sechad**.
    - Nahraďte `jdbcurlvalue` adresou URL JDBC z konfigurace podregistru. Příklad je JDBC: hive2://headnodehost: 10001/; transportMode = http.
    - Pokud chcete soubor uložit, vyberte CTRL + X, zadejte `Y` a pak vyberte **ENTER**.
 
@@ -313,17 +310,17 @@ CoordAction ID: -
 
 Actions
 ------------------------------------------------------------------------------------------------
-ID                      Status  Ext ID          ExtStatus   ErrCode
+ID                        Status    Ext ID            ExtStatus                 ErrCode
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
+0000015-180626011240801-oozie-oozi-W@:start:    OK    -                         OK             -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@mr-test    OK    job_1529975666160_0051    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@myHive2    OK    job_1529975666160_0053    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@myHive    OK     job_1529975666160_0055    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
+0000015-180626011240801-oozie-oozi-W@end       OK     -                         OK             -
 -----------------------------------------------------------------------------------------------
 ```
 

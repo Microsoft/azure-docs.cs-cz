@@ -3,13 +3,13 @@ title: Azure Application Insights pro webové aplikace v JavaScriptu
 description: Získejte zobrazení stránky a počty relací, data webového klienta, jednostránkové aplikace (SPA) a sledujte vzorce používání. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: devx-track-js
+ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224848"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485482"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -19,8 +19,11 @@ Application Insights můžete použít s jakýmikoli webovými stránkami – st
 
 ## <a name="adding-the-javascript-sdk"></a>Přidání sady JavaScript SDK
 
+> [!IMPORTANT]
+> Nové oblasti Azure **vyžadují** použití připojovacích řetězců místo klíčů instrumentace. [Připojovací řetězec](./sdk-connection-string.md?tabs=js) identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
+
 1. Nejdřív potřebujete prostředek Application Insights. Pokud ještě nemáte prostředek a klíč instrumentace, postupujte podle [pokynů pro vytvoření nového prostředku](create-new-resource.md).
-2. Zkopírujte _klíč instrumentace_ (označovaný také jako "ikey") pro prostředek, ve kterém chcete odeslat telemetrii JavaScriptu (z kroku 1). Přidáte ho do `instrumentationKey` nastavení Application Insights JavaScript SDK.
+2. Zkopírujte _klíč instrumentace_ (označovaný také jako "ikey") nebo [připojovací řetězec](#connection-string-setup) pro prostředek, ve kterém chcete odeslat telemetrii JavaScriptu (z kroku 1). Přidáte ho do `instrumentationKey` `connectionString` nastavení nebo Application Insights JavaScript SDK.
 3. Přidejte sadu Application Insights JavaScript SDK do své webové stránky nebo aplikace pomocí jedné z následujících dvou možností:
     * [Nastavení npm](#npm-based-setup)
     * [Fragment kódu JavaScriptu](#snippet-based-setup)
@@ -59,16 +62,17 @@ Pokud vaše aplikace nepoužívá NPM, můžete své webové stránky přímo in
 
 Abychom vám pomohli sledovat, kterou verzi fragmentu aplikace používá, počínaje verzí 2.5.5 události zobrazení stránky bude obsahovat novou značku "AI. Internal. fragment", která bude obsahovat identifikovanou verzi fragmentu.
 
-Aktuální fragment kódu (uvedený níže) bude identifikován jako verze "3".
+Aktuální fragment (uvedený níže) je verze "5", verze je ve fragmentu kódování zakódována jako sv: "#" a [aktuální verze je také k dispozici na GitHubu](https://go.microsoft.com/fwlink/?linkid=2156318).
 
 ```html
 <script type="text/javascript">
-!function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
-src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
-//name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
-//ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
-//useXhr: 1, // Use XHR instead of fetch to report failures (if available),
-//crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+!function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", // The SDK URL Source
+// name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+// ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+// useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
+// onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
 cfg: { // Application Insights Configuration
     instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
     /* ...Other Configuration Options... */
@@ -102,7 +106,7 @@ Všechny možnosti konfigurace se teď přesunuly na konec skriptu, aby se zabr�
 
 Každá možnost konfigurace je uvedená výše na novém řádku, pokud nechcete přepsat výchozí hodnotu položky uvedené jako [volitelné], můžete odebrat tuto čáru, abyste minimalizovali výslednou velikost vrácené stránky.
 
-Dostupné možnosti konfigurace jsou 
+Dostupné možnosti konfigurace jsou
 
 | Název | Typ | Popis
 |------|------|----------------
@@ -112,6 +116,20 @@ Dostupné možnosti konfigurace jsou
 | useXhr | logická hodnota *[nepovinné]* | Toto nastavení se používá pouze při selhání načtení sady SDK pro generování sestav. Vytváření sestav se nejprve pokusí použít metodu Fetch (), je-li k dispozici a pak přechod na XHR, nastavení této hodnoty na hodnotu true pouze obchází kontrolu načtení. Použití této hodnoty se vyžaduje jenom v případě, že se vaše aplikace používá v prostředí, kde se při načítání nepodaří odeslat události selhání.
 | crossOrigin | řetězec *[nepovinné]* | Zahrnutím tohoto nastavení se značka skriptu přidaná ke stažení SDK bude týkat atributu crossOrigin s touto řetězcovou hodnotou. Pokud není definován (výchozí), není přidán žádný atribut crossOrigin. Doporučené hodnoty nejsou definovány (výchozí nastavení); ""; nebo "anonymní" (pro všechny platné hodnoty viz [atribut HTML: `crossorigin` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) dokumentace)
 | Priorita | objekt **[povinné]** | Konfigurace předaná do sady Application Insights SDK během inicializace.
+
+### <a name="connection-string-setup"></a>Nastavení připojovacího řetězce
+
+Pro nastavení NPM nebo fragmentu kódu můžete také nakonfigurovat instanci Application Insights pomocí připojovacího řetězce. Jednoduše nahraďte `instrumentationKey` pole `connectionString` polem.
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: 'YOUR_CONNECTION_STRING_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+appInsights.trackPageView();
+```
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Posílání telemetrie do Azure Portal
 
@@ -155,15 +173,15 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 
 | Název | Výchozí | Popis |
 |------|---------|-------------|
-| instrumentationKey | null | **Požadováno**<br>Klíč instrumentace, který jste získali z Azure Portal. |
+| instrumentationKey | null | **Povinné**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
 | sessionRenewalMs | 1800000 | Pokud je uživatel neaktivní po dobu v milisekundách, dojde k zaznamenání relace. Výchozí hodnota je 30 minut. |
 | sessionExpirationMs | 86400000 | Relace je zaznamenána v případě, že v milisekundách pokračuje po dobu. Výchozí hodnota je 24 hodin. |
 | maxBatchSizeInBytes | 10000 | Maximální velikost dávky telemetrie Pokud dávka tento limit překročí, pošle se hned a spustí se nová dávka. |
 | maxBatchInterval | 15 000 | Doba, po kterou se má telemetrie v dávce před odesláním (milisekundy) |
-| disableExceptionTracking | false (nepravda) | Je-li nastavena hodnota true, výjimky nebudou shromažďovány. Výchozí hodnota je false. |
+| disableExceptionTracking | false (nepravda) | Je-li nastavena hodnota true, výjimky se nebudou shromažďovat. Výchozí hodnota je false. |
 | disableTelemetry | false (nepravda) | Pokud je nastaveno na true, telemetrie se neshromažďuje ani neposílá. Výchozí hodnota je false. |
-| enableDebug | false (nepravda) | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>***Poznámka:*** Povolení tohoto nastavení způsobí, že dojde k zahození telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo `enableDebug` . |
+| enableDebug | false (nepravda) | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>**_Poznámka:_** Povolení tohoto nastavení způsobí, že dojde k zahození telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo `enableDebug` . |
 | loggingLevelConsole | 0 | Zaznamená **vnitřní** chyby Application Insights do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
 | loggingLevelTelemetry | 1 | Odesílá **interní** chyby Application Insights jako telemetrii. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
 | diagnosticLogInterval | 10000 | vnitřních Interval dotazování (v MS) pro interní frontu protokolování |
@@ -179,7 +197,7 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | correlationHeaderDomains |  | Povolit korelační hlavičky pro konkrétní domény |
 | disableFlushOnBeforeUnload | false (nepravda) | Výchozí hodnota je false. Je-li nastavena hodnota true, metoda flush nebude volána při triggerech události onBeforeUnload |
 | enableSessionStorageBuffer | true | Výchozí hodnota je true. Pokud je nastaveno na true, uloží se do úložiště relace vyrovnávací paměť s veškerou neodeslanou telemetrie. Vyrovnávací paměť se při načtení stránky obnoví. |
-| isCookieUseDisabled | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z souborů cookie.|
+| isCookieUseDisabled | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z souborů cookie. Všimněte si, že tato možnost zakáže soubory cookie uživatelů a relací a vykreslí okna využití a vykreslí je nepoužitelné. |
 | cookieDomain | null | Vlastní doména souborů cookie. To je užitečné, pokud chcete sdílet Application Insights soubory cookie mezi subdoménami. |
 | isRetryDisabled | false (nepravda) | Výchozí hodnota je false. Pokud je hodnota false, zkuste to znovu v 206 (částečný úspěch), 408 (timeout), 429 (příliš mnoho požadavků), 500 (interní chyba serveru), 503 (služba není dostupná) a 0 (offline, jenom pokud se zjistilo). |
 | isStorageUseDisabled | false (nepravda) | Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z místního úložiště a úložiště relací. Výchozí hodnota je false. |
@@ -200,57 +218,57 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | ajaxPerfLookupDelay | 25 | Výchozí hodnota je 25 ms. Doba, po kterou se má počkat, než se znovu pokusí najít Windows. časování výkonu pro `ajax` požadavek, čas je v milisekundách a předává se přímo do setTimeout ().
 | enableUnhandledPromiseRejectionTracking | false (nepravda) | V případě hodnoty true budou se Neošetřená zamítnutí slíbit shromažďovat a nahlásí se jako chyba JavaScriptu. Pokud má disableExceptionTracking hodnotu true (nesleduje výjimky), konfigurační hodnota se bude ignorovat a Neošetřená zamítnutí se nebudou hlásit.
 
-## <a name="single-page-applications"></a>Jednostránkové aplikace
+## <a name="enable-time-on-page-tracking"></a>Povolit sledování času na stránce
 
-Ve výchozím nastavení tato sada SDK **nezpracovává změny** směrování na základě stavu, ke kterým dochází v aplikacích s jednou stránkou. Pokud chcete povolit automatické sledování změn směrování pro jednu stránkovou aplikaci, můžete přidat `enableAutoRouteTracking: true` do konfigurace instalace.
+Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](../essentials/metrics-custom-overview.md) s názvem `PageVisitTime` . Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](../essentials/metrics-getting-started.md) jako metrika založená na protokolu.
 
-V současné době nabízíme samostatný [modul plug-in pro reakce](#react-extensions), který můžete inicializovat pomocí této sady SDK. Bude také plnit sledování změn směrování pro vás a shromažďovat [Další reakce na konkrétní telemetrii](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md).
+## <a name="enable-correlation"></a>Povolit korelaci
 
-> [!NOTE]
-> Použijte `enableAutoRouteTracking: true` pouze v případě, **not** že nepoužíváte modul plug-in reakce. Obě jsou schopné posílat nové PageViews při změně trasy. Pokud jsou obě povolené, může se odeslat duplicitní PageViews.
+Korelace generuje a odesílá data, která umožňují distribuované trasování a nanáší [mapu aplikace](../app/app-map.md), [zobrazení na konci transakce](../app/app-map.md#go-to-details)a další diagnostické nástroje.
 
-## <a name="configuration-autotrackpagevisittime"></a>Konfigurace: autoTrackPageVisitTime
-
-Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](../platform/metrics-custom-overview.md) s názvem `PageVisitTime` . Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](../platform/metrics-getting-started.md) jako metrika založená na protokolu.
-
-## <a name="react-extensions"></a>Rozšíření reakce
-
-| Rozšíření |
-|---------------|
-| [React](javascript-react-plugin.md)|
-| [React Native](javascript-react-native-plugin.md)|
-
-## <a name="correlation"></a>Korelace
-
-Korelace klienta na straně serveru je podporovaná pro:
-
-- XHR/AJAX – požadavky 
-- Načíst požadavky 
-
-Korelace klienta na straně serveru není pro žádosti a **podporovaná** `GET` `POST` .
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>Povolení korelace mezi komponentami mezi klientským AJAX a požadavky serveru
-
-Aby bylo možné povolit `CORS` korelaci, musí klient odeslat dvě další hlavičky žádosti `Request-Id` a `Request-Context` a na straně serveru musí být schopni přijmout připojení k těmto hlavičkám. Odesílání těchto hlaviček je povoleno nastavením `enableCorsCorrelation: true` v rámci konfigurace sady JavaScript SDK. 
-
-V závislosti na `Access-Control-Allow-Headers` konfiguraci na straně serveru je často potřeba rozšíření seznamu na straně serveru tím, že ručně přidáte `Request-Id` a `Request-Context` .
-
-Access-Control-Allow-Headers: `Request-Id` , `Request-Context` , `<your header>`
-
-Pokud některý ze serverů jiných výrobců, které klient komunikuje, nemůže přijmout `Request-Id` hlavičky a a `Request-Context` nemůžete aktualizovat jejich konfiguraci, pak je budete muset vložit do seznamu vyloučení prostřednictvím `correlationHeaderExcludeDomains` Vlastnosti konfigurace. Tato vlastnost podporuje zástupné znaky.
+Následující příklad zobrazuje všechny možné konfigurace potřebné k povolení korelace s poznámkami pro konkrétní scénář níže:
 
 ```javascript
 // excerpt of the config section of the JavaScript SDK snippet with correlation
 // between client-side AJAX and server requests enabled.
 cfg: { // Application Insights Configuration
     instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
     enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
     correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
     /* ...Other Configuration Options... */
 }});
 </script>
 
 ``` 
+
+Pokud některý ze serverů jiných výrobců, které klient komunikuje, nemůže přijmout `Request-Id` hlavičky a a `Request-Context` nemůžete aktualizovat jejich konfiguraci, pak je budete muset vložit do seznamu vyloučení prostřednictvím `correlationHeaderExcludeDomains` Vlastnosti konfigurace. Tato vlastnost podporuje zástupné znaky.
+
+Na straně serveru musí být možné přijmout připojení k těmto hlavičkám. V závislosti na `Access-Control-Allow-Headers` konfiguraci na straně serveru je často potřeba rozšíření seznamu na straně serveru tím, že ručně přidáte `Request-Id` a `Request-Context` .
+
+Access-Control-Allow-Headers: `Request-Id` , `Request-Context` , `<your header>`
+
+> [!NOTE]
+> Pokud používáte OpenTelemtry nebo Application Insights sady SDK vydané v 2020 nebo novějších verzích, doporučujeme použít [WC3 TraceContext](https://www.w3.org/TR/trace-context/). [Tady](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)najdete pokyny k konfiguraci.
+
+## <a name="single-page-applications"></a>Jednostránkové aplikace
+
+Ve výchozím nastavení tato sada SDK **nezpracovává změny** směrování na základě stavu, ke kterým dochází v aplikacích s jednou stránkou. Pokud chcete povolit automatické sledování změn směrování pro jednu stránkovou aplikaci, můžete přidat `enableAutoRouteTracking: true` do konfigurace instalace.
+
+V současné době nabízíme samostatný [modul plug-in pro reakce](javascript-react-plugin.md), který můžete inicializovat pomocí této sady SDK. Bude také plnit sledování změn směrování pro vás a shromažďovat další reakce na konkrétní telemetrii.
+> [!NOTE]
+> Použijte `enableAutoRouteTracking: true` pouze v případě,  že nepoužíváte modul plug-in reakce. Obě jsou schopné posílat nové PageViews při změně trasy. Pokud jsou obě povolené, může se odeslat duplicitní PageViews.
+
+## <a name="extensions"></a>Rozšíření
+
+| Rozšíření |
+|---------------|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md)|
+| [Angular](javascript-angular-plugin.md)|
+| [Klikněte na analýza Automatická kolekce.](javascript-click-analytics-plugin.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Prozkoumat data v prohlížeči nebo na straně klienta
 
@@ -315,7 +333,7 @@ Tato verze je dodávána s minimálním počtem funkcí a funkcemi, které vám 
 
 ## <a name="examples"></a>Příklady
 
-Příklady spustitelný naleznete v tématu [Application Insights JavaScript SDK Samples](https://github.com/topics/applicationinsights-js-demo)
+Příklady spustitelný naleznete v tématu [Application Insights JavaScript SDK Samples](https://github.com/Azure-Samples?q=applicationinsights-js-demo).
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Upgrade ze starší verze Application Insights
 
@@ -323,7 +341,7 @@ Přerušující se změny v verzi sady SDK v2:
 - Pro lepší signatury rozhraní API se některá volání rozhraní API, například trackPageView a trackException, aktualizovala. Spuštění v aplikaci Internet Explorer 8 a starších verzích prohlížeče se nepodporuje.
 - Obálka telemetrie má název pole a strukturu, které se mění kvůli aktualizacím schématu dat.
 - Přesunuto `context.operation` do `context.telemetryTrace` . Některá pole se také změnila ( `operation.id`  -->  `telemetryTrace.traceID` ).
-  - Chcete-li ručně aktualizovat aktuální ID PageView (například v aplikacích SPA), použijte `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` .
+  - Chcete-li ručně aktualizovat aktuální ID PageView (například v aplikacích SPA), použijte `appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` .
     > [!NOTE]
     > Aby ID trasování bylo jedinečné, kde jste předtím používali `Util.newId()` , teď použijte `Util.generateW3CId()` . Oba nakonec mají ID operace.
 
@@ -331,7 +349,7 @@ Pokud používáte aktuální sadu SDK 1.0.20 (Application Insights produkční 
 
 - Stáhnout přes CDN scénář: aktualizujte fragment kódu, který aktuálně používáte k odkazování na následující adresu URL:
    ```
-   "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+   "https://js.monitor.azure.com/scripts/b/ai.2.min.js"
    ```
 
 - scénář npm: volání `downloadAndSetup` ke stažení úplného skriptu ApplicationInsights z CDN a jeho inicializaci pomocí klíče instrumentace:
@@ -339,7 +357,7 @@ Pokud používáte aktuální sadu SDK 1.0.20 (Application Insights produkční 
    ```ts
    appInsights.downloadAndSetup({
      instrumentationKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-     url: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+     url: "https://js.monitor.azure.com/scripts/b/ai.2.min.jss"
      });
    ```
 

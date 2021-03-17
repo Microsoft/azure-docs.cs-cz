@@ -6,22 +6,23 @@ author: v-miegge
 manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 15dc25c3092f0bbf1a79f107f9d5ca87fa896bee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
-ms.translationtype: HT
+ms.openlocfilehash: 915b4fb289b6af6f4aac84d8bfa4d491a7f77efe
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102510"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050466"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Řešení potíží s přihlášením k předplatnému Azure
 
 Tato příručka vám pomůže vyřešit problémy s přihlášením na Azure Portal nebo do Centra účtů Azure.
 
 > [!NOTE]
-> Pokud máte potíže s registrací nového účtu Azure, projděte si téma věnované [řešení potíží s registrací předplatného Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up).
+> Pokud máte potíže s registrací nového účtu Azure, projděte si téma věnované [řešení potíží s registrací předplatného Azure](./troubleshoot-azure-sign-up.md).
 
 ## <a name="page-hangs-in-the-loading-status"></a>Stránka zamrzne ve stavu načítání
 
@@ -31,7 +32,7 @@ Pokud stránka v internetovém prohlížeči zamrzne, vyzkoušejte postupně vš
 - Použijte jiný internetový prohlížeč.
 - Použijte privátní režim prohlížeče:
 
-   - **Edge:** Otevřete **Nastavení** (tři tečky vedle vašeho profilového obrázku), vyberte **Nové okno InPrivate** a potom přejděte na [Azure Portal](https://portal.azure.com/) nebo do [Centra účtů Azure](https://account.azure.com/Subscriptions) a přihlaste se. 
+   - **Hrana:** Otevřete **Nastavení** (tři tečky na obrázku vašeho profilu), vyberte **nové okno InPrivate** a potom přejděte a přihlaste se k [Azure Portal](https://portal.azure.com/). 
    - **Chrome:** Zvolte režim **Incognito**.
    - **Safari:** Zvolte **Soubor** a potom **Nové privátní okno**.
 
@@ -52,7 +53,7 @@ Při řešení tohoto problému zkuste použít některou z následujících met
    - **Chrome:** Zvolte **Nastavení** a v části **Ochrana soukromí a zabezpečení** vyberte **Vymazat údaje o procházení**.
 - Obnovte výchozí nastavení prohlížeče.
 - Použijte privátní režim prohlížeče. 
-   - **Edge:** Otevřete **Nastavení** (tři tečky vedle vašeho profilového obrázku), vyberte **Nové okno InPrivate** a potom přejděte na [Azure Portal](https://portal.azure.com/) nebo do [Centra účtů Azure](https://account.azure.com/Subscriptions) a přihlaste se. 
+   - **Hrana:** Otevřete **Nastavení** (tři tečky na obrázku vašeho profilu), vyberte **nové okno InPrivate** a potom přejděte a přihlaste se k [Azure Portal](https://portal.azure.com/). 
    - **Chrome:** Zvolte režim **Incognito**.
    - **Safari:** Zvolte **Soubor** a potom **Nové privátní okno**.
 
@@ -65,7 +66,7 @@ K tomuto problému dochází, pokud jste vybrali nesprávný adresář nebo poku
 Pokud chcete tento problém vyřešit:
 
 - Vyberte vpravo nahoře na svůj účet a ujistěte se, že je vybraný správný adresář Azure.
-- Pokud je vybraný správný adresář Azure, ale chybová zpráva se přesto zobrazuje, zajistěte, aby váš účet byl [přidán jako Vlastník](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator).
+- Pokud je vybraný správný adresář Azure, ale chybová zpráva se přesto zobrazuje, zajistěte, aby váš účet byl [přidán jako Vlastník](./add-change-subscription-administrator.md).
 
 **Scénář 2:** Při přihlášení k [Centru účtů Azure](https://account.windowsazure.com/Subscriptions) se zobrazila chyba
 
@@ -79,11 +80,11 @@ Zkontrolujte, jestli účet, který jste použili, je účet správce účtu. Po
 
 Další články týkající se řešení potíží s fakturací a předplatnými Azure
 
-- [Odmítnutá karta](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Problémy s registrací předplatného](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
-- [Nenalezena žádná předplatná](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Zákaz zobrazení firemních nákladů](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
-- [Dokumentace k fakturaci Azure](https://docs.microsoft.com/azure/cost-management-billing/)
+- [Odmítnutá karta](./troubleshoot-declined-card.md)
+- [Problémy s registrací předplatného](./troubleshoot-azure-sign-up.md)
+- [Nenalezena žádná předplatná](./no-subscriptions-found.md)
+- [Zákaz zobrazení firemních nákladů](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Dokumentace k fakturaci Azure](../index.yml)
 
 ## <a name="contact-us-for-help"></a>Kontaktujte nás, abychom vám pomohli
 

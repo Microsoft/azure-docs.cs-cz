@@ -1,22 +1,25 @@
 ---
-title: Připojení k Common Data Service
-description: Vytváření a Správa záznamů Common Data Service pomocí Azure Logic Apps
+title: Připojení k Common Data Service (Microsoft datatext)
+description: Vytváření a Správa záznamů Common Data Service (Microsoft datavert) pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 02/11/2021
 tags: connectors
-ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284111"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382343"
 ---
-# <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Vytváření a Správa záznamů v Common Data Service pomocí Azure Logic Apps
+# <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Vytváření a Správa záznamů v Common Data Service (Microsoft dataRecord) pomocí Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Common data Service](/connectors/commondataservice/)můžete vytvářet automatizované pracovní postupy, které spravují záznamy v databázi [Common data Service](/powerapps/maker/common-data-service/data-platform-intro) . Tyto pracovní postupy mohou vytvářet záznamy, aktualizovat záznamy a provádět jiné operace. Můžete také získat informace z databáze Common Data Service a zpřístupnit výstup ostatním akcím pro použití v aplikaci logiky. Například při aktualizaci záznamu ve vaší databázi Common Data Service můžete odeslat e-mail pomocí konektoru Office 365 Outlook.
+> [!NOTE]
+> V listopadu 2020 se Common Data Service přejmenovala na Microsoft datavert.
+
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Common data Service](/connectors/commondataservice/)můžete sestavovat automatizované pracovní postupy, které spravují záznamy ve vašich [Common data Service, teď Microsoft](/powerapps/maker/common-data-service/data-platform-intro) datadatabase. Tyto pracovní postupy mohou vytvářet záznamy, aktualizovat záznamy a provádět jiné operace. Můžete také získat informace z databáze datadatabase a zpřístupnit výstup ostatním akcím pro použití v aplikaci logiky. Pokud se například v databázi DataAccess aktualizuje záznam, můžete poslat e-mail pomocí konektoru Office 365 Outlook.
 
 Tento článek ukazuje, jak můžete vytvořit aplikaci logiky, která při každém vytvoření záznamu nového zájemce vytvoří záznam úkolu.
 
@@ -29,7 +32,7 @@ Tento článek ukazuje, jak můžete vytvořit aplikaci logiky, která při kaž
   * [Další informace: Začínáme s Common Data Service](/learn/modules/get-started-with-powerapps-common-data-service/)
   * [Power Platform – Přehled prostředí](/power-platform/admin/environments-overview)
 
-* Základní informace o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) a aplikace logiky, ze kterých chcete získat přístup k záznamům ve vaší databázi Common data Service. Pokud chcete spustit aplikaci logiky pomocí Common Data Service triggeru, budete potřebovat prázdnou aplikaci logiky. Pokud s Azure Logic Apps začínáte, Projděte si [rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Základní informace o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) a aplikace logiky, ze kterých chcete získat přístup k záznamům ve vaší databázi DataAccess. Pokud chcete spustit aplikaci logiky pomocí Common Data Service triggeru, budete potřebovat prázdnou aplikaci logiky. Pokud s Azure Logic Apps začínáte, Projděte si [rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-common-data-service-trigger"></a>Přidat aktivační událost Common Data Service
 
@@ -51,9 +54,9 @@ V tomto příkladu přidejte Trigger Common Data Service, který se aktivuje př
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Prostředí** | Ano | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](/power-platform/admin/environments-overview). |
-   | **Název entity** | Ano | Entita, která se má monitorovat například "Zájemci" |
-   | **Rozsah** | Ano | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
+   | **Prostředí** | Yes | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](/power-platform/admin/environments-overview). |
+   | **Název entity** | Yes | Entita, která se má monitorovat například "Zájemci" |
+   | **Scope** | Yes | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Přidat Common Data Service akci
@@ -72,8 +75,8 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název organizace** | Ano | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
-   | **Název entity** | Ano | Entita, ve které chcete záznam vytvořit, například "úkoly" |
+   | **Název organizace** | Yes | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
+   | **Název entity** | Yes | Entita, ve které chcete záznam vytvořit, například "úkoly" |
    | **Předmět** | Ano, na základě entity vybrané v tomto příkladu | Krátký popis cíle pro tuto úlohu |
    ||||
 
@@ -87,7 +90,7 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
       ![Vyberte výstupy triggerů, které se mají použít v záznamu úlohy.](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Výstup triggeru | Popis |
+      | Výstup triggeru | Description |
       |----------------|-------------|
       | **Jméno** | Křestní jméno z záznamu zájemce pro použití jako primární kontakt v záznamu úkolu |
       | **Příjmení** | Příjmení ze záznamu zájemce, které se má použít jako primární kontakt v záznamu úkolu |
@@ -108,9 +111,9 @@ Pro aktivační události, které se spouštějí při aktualizaci záznamů, ja
 
 1. V aktivační události v seznamu **Přidat nový parametr** vyberte **filtry atributů**.
 
-   ![Přidat vlastnost "Filters" (filtry atributů)](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
+   ![Snímek obrazovky zobrazující akci aktualizovat záznam "když je aktualizován" a otevře se seznam přidat nový parametr s vybranou vlastností "filtry atributů".](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
-1. Pro každou **položku filtrování atributů**vyberte atribut, který chcete monitorovat, například:
+1. Pro každou **položku filtrování atributů** vyberte atribut, který chcete monitorovat, například:
 
    ![Přidat vlastnost "Filters" (filtry atributů)](./media/connect-common-data-service/when-record-updated-trigger-select-attribute-filter.png)
 
@@ -122,7 +125,7 @@ U akcí, které vracejí záznamy, jako je například akce **seznam záznamů**
 
    ![Přidat vlastnost dotaz filtru](./media/connect-common-data-service/list-records-action-filter-query.png)
 
-1. Do vlastnosti **dotaz filtru** , která se nyní zobrazí v akci, zadejte tento dotaz filtru OData:`statuscode eq 1`
+1. Do vlastnosti **dotaz filtru** , která se nyní zobrazí v akci, zadejte tento dotaz filtru OData: `statuscode eq 1`
 
    ![Zadejte dotaz filtru ODATA pro filtrování záznamů.](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
@@ -136,7 +139,7 @@ U akcí, které vracejí záznamy, jako je například akce **seznam záznamů**
 
    ![Přidat vlastnost ORDER by](./media/connect-common-data-service/list-records-action-order-by.png)
 
-1. Do vlastnosti **ORDER by** , která se teď zobrazí v akci, zadejte tento dotaz filtru OData:`name`
+1. Do vlastnosti **ORDER by** , která se teď zobrazí v akci, zadejte tento dotaz filtru OData: `name`
 
    ![Zadejte dotaz filtru ODATA pro řazení záznamů.](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
@@ -167,6 +170,62 @@ Tento příklad ukazuje, jak akce **vytvořit nový záznam** vytvoří nový z�
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
 Technické informace na základě popisu Swagger konektoru, jako jsou triggery, akce, omezení a další podrobnosti, najdete na [referenční stránce konektoru](/connectors/commondataservice/).
+
+## <a name="troubleshooting-problems"></a>Řešení problémů
+
+### <a name="calls-from-multiple-environments"></a>Volání z více prostředí
+
+Oba konektory, Common Data Service a Common Data Service (aktuální prostředí) ukládají informace o pracovních postupech aplikace logiky, které potřebují, a dostávat oznámení o změnách entit pomocí `callbackregistrations` entity ve službě Microsoft DataForm. Pokud zkopírujete organizaci datatext, všechny Webhooky se zkopírují. Pokud jste organizaci zkopírovali předtím, než zakážete pracovní postupy, které jsou namapované na vaši organizaci, všechny zkopírované Webhooky taky ukazují na stejné Logic Apps, které pak získají oznámení od více organizací.
+
+Chcete-li zastavit nechtěné oznámení, odstraňte registraci zpětného volání z organizace, která odesílá tato oznámení, pomocí následujících kroků:
+
+1. Identifikujte organizaci DataForm, ze které chcete odebrat oznámení, a přihlaste se k této organizaci.
+
+1. V prohlížeči Chrome Najděte registraci zpětného volání, kterou chcete odstranit, pomocí následujících kroků:
+
+   1. Zkontrolujte obecný seznam pro všechny registrace zpětného volání na následujícím identifikátoru URI OData, abyste mohli zobrazit data v rámci `callbackregistrations` entity:
+
+      `https://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations`:
+
+      > [!NOTE]
+      > Pokud se nevrátí žádné hodnoty, možná nemáte oprávnění k zobrazení tohoto typu entity nebo se nemůžete přihlásit ke správné organizaci.
+
+   1. Vyfiltrujte logický název aktivační entity `entityname` a událost oznámení, která odpovídá vašemu pracovnímu postupu aplikace logiky (zpráva). Každý typ události je namapován na celé číslo zprávy následujícím způsobem:
+
+      | Typ události | Celé číslo zprávy |
+      |------------|-----------------|
+      | Vytvořit | 1 |
+      | Odstranit | 2 |
+      | Aktualizace | 3 |
+      | CreateOrUpdate | 4 |
+      | CreateOrDelete | 5 |
+      | UpdateOrDelete | 6 |
+      | CreateOrUpdateOrDelete | 7 |
+      |||
+
+      Tento příklad ukazuje, jak můžete filtrovat `Create` oznámení v entitě s názvem `nov_validation` pomocí následujícího identifikátoru URI OData pro ukázkovou organizaci:
+
+      `https://fabrikam-preprod.crm1.dynamics.com/api/data/v9.0/callbackregistrations?$filter=entityname eq 'nov_validation' and message eq 1`
+
+      ![Snímek obrazovky, který zobrazuje okno prohlížeče a identifikátor URI OData na adresním řádku.](./media/connect-common-data-service/find-callback-registrations.png)
+
+      > [!TIP]
+      > Pokud pro stejnou entitu nebo událost existuje více triggerů, můžete seznam filtrovat pomocí dalších filtrů, například `createdon` `_owninguser_value` atributů a. Jméno vlastníka uživatele se zobrazí v části `/api/data/v9.0/systemusers({id})` .
+
+   1. Po nalezení ID pro registraci zpětného volání, kterou chcete odstranit, postupujte takto:
+   
+      1. V prohlížeči Chrome otevřete Vývojářské nástroje Chrome (klávesnice: F12).
+
+      1. V okně nahoře vyberte kartu **Konzola** .
+
+      1. Do příkazového řádku zadejte tento příkaz, který odešle požadavek na odstranění zadané registrace zpětného volání:
+
+         `fetch('http://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations({ID-to-delete})', { method: 'DELETE'})`
+
+         > [!IMPORTANT]
+         > Ujistěte se, že se jedná o žádost ze stránky bez sjednoceného klientského rozhraní (UCI), například ze samotné stránky odpovědi OData nebo API. V opačném případě by logika v souboru app.js mohla být v konfliktu s touto operací.
+
+   1. Chcete-li potvrdit, že registrace zpětného volání již neexistuje, zkontrolujte seznam registrací zpětného volání.
 
 ## <a name="next-steps"></a>Další kroky
 

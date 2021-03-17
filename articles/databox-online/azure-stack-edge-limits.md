@@ -1,38 +1,42 @@
 ---
-title: Limity Azure Stack hran | Microsoft Docs
-description: Přečtěte si o omezeních a doporučených velikostech při nasazení a provozu Azure Stack Edge, včetně omezení služby, omezení zařízení a omezení úložiště.
+title: Limity Azure Stack Edge pro | Microsoft Docs
+description: Přečtěte si o omezeních a doporučených velikostech při nasazení a provozu Azure Stack Edge pro, včetně omezení služeb, omezení zařízení a omezení úložiště.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 8bbcf3f61121813b91cb951809992d10977a640c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922706"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992752"
 ---
-# <a name="azure-stack-edge-limits"></a>Omezení služby Azure Stack Edge
+# <a name="azure-stack-edge-pro-limits"></a>Omezení pro Azure Stack Edge Pro
 
-Tato omezení zvažte při nasazení a provozu řešení Microsoft Azure Stack Edge. 
+Vezměte v úvahu tato omezení při nasazení a provozu řešení Microsoft Azure Stack Edge pro. 
 
 ## <a name="azure-stack-edge-service-limits"></a>Omezení služby Azure Stack Edge
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="azure-stack-device-limits"></a>Omezení Azure Stack zařízení
+## <a name="azure-stack-edge-device-limits"></a>Omezení Azure Stack hraničních zařízení
 
-V následující tabulce jsou popsány limity Azure Stack hraničního zařízení. 
+Následující tabulka popisuje omezení pro zařízení Azure Stack Edge pro. 
 
-| Popis | Hodnota |
+V následující tabulce jsou popsány limity Azure Stack hraničního zařízení.
+
+| Description | Hodnota |
 |---|---|
 |Ne. souborů na zařízení |100 000 000 |
-|Ne. sdílených složek na zařízení |24 |
 |Ne. sdílených složek na kontejner |1 |
+|Maximální počet. koncových bodů sdílení a koncových bodů REST na zařízení| 24 |
+|Maximální počet. účtů vrstveného úložiště na zařízení| 24|
 |Maximální velikost souboru zapsaná do sdílené složky| 5 TB |
+|Maximální počet skupin prostředků na zařízení| 800 |
 
 ## <a name="azure-storage-limits"></a>Omezení úložiště Azure
 
@@ -53,4 +57,4 @@ V následující tabulce jsou popsány limity Azure Stack hraničního zařízen
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Příprava na nasazení Azure Stack Edge](azure-stack-edge-deploy-prep.md)
+- [Příprava na nasazení Azure Stack Edge pro](azure-stack-edge-deploy-prep.md)

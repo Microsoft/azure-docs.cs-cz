@@ -3,12 +3,12 @@ title: Přidání úložiště artefaktů do testovacího prostředí v Azure De
 description: Naučte se, jak zadat vlastní úložiště artefaktů pro testovací prostředí v Azure DevTest Labs k ukládání nástrojů nedostupných ve veřejném úložišti artefaktů.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270967"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502191"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
 DevTest Labs umožňuje zadat artefakt, který se má přidat k virtuálnímu počítači v době vytváření nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroj nebo aplikace, kterou chcete nainstalovat na virtuální počítač. Artefakty jsou definované v souboru JSON, který se načte z GitHubu nebo z úložiště Git Azure DevOps.
@@ -31,7 +31,7 @@ Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získej
 5. V nabídce **osobní nastavení** na levé straně vyberte **Nastavení vývojáře**.
 6. V nabídce vlevo vyberte možnost **osobní přístupové tokeny** .
 7. Vyberte možnost **generovat nový token**.
-8. Na stránce **Nový token osobního přístupu** zadejte v části **Popis tokenu**popis. Přijměte výchozí položky v části **Vybrat obory**a pak vyberte **vygenerovat token**.
+8. Na stránce **Nový token osobního přístupu** zadejte v části **Popis tokenu** popis. Přijměte výchozí položky v části **Vybrat obory** a pak vyberte **vygenerovat token**.
 9. Uložte vygenerovaný token. Token použijete později.
 10. Zavřete GitHub.   
 
@@ -46,17 +46,17 @@ Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získej
 8. Na stránce **Vytvoření nového osobního přístupového tokenu** :
    1. Zadejte **název** tokenu.
    2. V seznamu **organizace** vyberte **všechny dostupné organizace**.
-   3. V seznamu **vypršení platnosti (UTC)** vyberte **90 dní**nebo vlastní definované období vypršení platnosti.
+   3. V seznamu **vypršení platnosti (UTC)** vyberte **90 dní** nebo vlastní definované období vypršení platnosti.
    4. Vyberte možnost **úplný přístup** pro rozsahy.
    5. Vyberte **Vytvořit**.
-9. Nový token se zobrazí v seznamu **tokenů osobního přístupu** . Vyberte možnost **Kopírovat token**a pak hodnotu token uložte pro pozdější použití.
+9. Nový token se zobrazí v seznamu **tokenů osobního přístupu** . Vyberte možnost **Kopírovat token** a pak hodnotu token uložte pro pozdější použití.
 10. Přejděte k části připojení laboratoře k úložišti.
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části najdete postup přidání úložiště artefaktů do testovacího prostředí v Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **Další služby**a v seznamu služeb vyberte **DevTest Labs** .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Vyberte **Další služby** a v seznamu služeb vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí.
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .
 5. V části **externí prostředky** v nabídce vlevo vyberte **úložiště** .
@@ -78,7 +78,7 @@ V této části najdete postup přidání úložiště artefaktů do testovacíh
 
 V této části najdete postup přidání úložiště artefaktů do testovacího prostředí pomocí šablony Azure Resource Manager.  Šablona vytvoří testovací prostředí, pokud ještě neexistuje.
 
-### <a name="template"></a>Šablona
+### <a name="template"></a>Template (Šablona)
 Ukázková šablona použitá v tomto článku shromažďuje následující informace prostřednictvím parametrů. Většina parametrů má inteligentní výchozí hodnoty, ale je třeba zadat několik hodnot. Je nutné zadat název testovacího prostředí, identifikátor URI pro úložiště artefaktů a token zabezpečení pro úložiště.
 
 - Název testovacího prostředí.
@@ -180,10 +180,10 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-Po úspěšném spuštění rutiny New-AzResourceGroupDeployment budou výstupy příkazu obsahovat důležité informace, jako je stav zřizování (měl by být úspěšný), a všechny výstupy pro šablonu.
+Po úspěšném spuštění New-AzResourceGroupDeployment výstup příkazu vypíše důležité informace, jako je stav zřizování (měl by být úspěšný), a všechny výstupy pro šablonu.
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
-V této části najdete ukázkový skript PowerShellu, který se dá použít k přidání úložiště artefaktů do testovacího prostředí. Pokud nemáte Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/?view=azps-1.2.0) podrobné pokyny k jeho instalaci.
+V této části najdete ukázkový skript PowerShellu, který se dá použít k přidání úložiště artefaktů do testovacího prostředí. Pokud nemáte Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/) podrobné pokyny k jeho instalaci.
 
 ### <a name="full-script"></a>Celý skript
 Tady je úplný skript, včetně některých podrobných zpráv a komentářů:

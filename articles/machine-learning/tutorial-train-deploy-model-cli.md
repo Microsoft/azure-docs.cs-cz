@@ -9,19 +9,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: b4167f8958f7a1613c4d48625f7a79a02c7588d0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 77df97eaecc59bc9160bcf63ae5d3904cd79ec79
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543397"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215183"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V tomto kurzu použijete rozšíření Machine Learning pro Azure CLI ke školení, registraci a nasazení modelu.
 
-Školicí skripty Pythonu v tomto kurzu používají [scikit – Naučte](https://scikit-learn.org/) se naučit základní model. Fokus tohoto kurzu není ve skriptech nebo modelu, ale proces použití rozhraní příkazového řádku pro práci s Azure Machine Learning.
+Školicí skripty Pythonu v tomto kurzu používají [scikit – Naučte](https://scikit-learn.org/) se naučit jednoduchý model. Fokus tohoto kurzu není ve skriptech nebo modelu, ale proces použití rozhraní příkazového řádku pro práci s Azure Machine Learning.
 
 Přečtěte si, jak provést následující akce:
 
@@ -37,9 +37,9 @@ Přečtěte si, jak provést následující akce:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](/cli/azure/install-azure-cli).
 
     Použijete-li [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/), k rozhraní příkazového řádku se dostanete v prohlížeči a v cloudu.
 
@@ -75,7 +75,7 @@ git clone https://github.com/microsoft/MLOps.git
 
 ## <a name="connect-to-your-azure-subscription"></a>Připojení k předplatnému služby Azure
 
-Existuje několik způsobů, jak můžete z CLI ověřit předplatné Azure. Nejzákladnější je interaktivní ověřování pomocí prohlížeče. Chcete-li provést interaktivní ověřování, otevřete příkazový řádek nebo terminál a použijte následující příkaz:
+Existuje několik způsobů, jak můžete z CLI ověřit předplatné Azure. Nejjednodušším je interaktivní ověřování pomocí prohlížeče. Chcete-li provést interaktivní ověřování, otevřete příkazový řádek nebo terminál a použijte následující příkaz:
 
 ```azurecli-interactive
 az login
@@ -101,7 +101,7 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je základní kontejner prostředků na platformě Azure. Při práci s Azure Machine Learning bude skupina prostředků obsahovat váš pracovní prostor Azure Machine Learning. Bude také obsahovat další služby Azure, které pracovní prostor používá. Pokud například provedete svůj model pomocí cloudového výpočetního prostředku, vytvoří se tento prostředek ve skupině prostředků.
+Skupina prostředků je kontejner prostředků na platformě Azure. Při práci s Azure Machine Learning bude skupina prostředků obsahovat váš pracovní prostor Azure Machine Learning. Bude také obsahovat další služby Azure, které pracovní prostor používá. Pokud například provedete svůj model pomocí cloudového výpočetního prostředku, vytvoří se tento prostředek ve skupině prostředků.
 
 Pokud chcete __vytvořit novou skupinu prostředků__, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
 
@@ -128,7 +128,7 @@ Odpověď z tohoto příkazu je podobná následujícímu kódu JSON:
 }
 ```
 
-Další informace o práci se skupinami prostředků najdete v tématu [AZ Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest).
+Další informace o práci se skupinami prostředků najdete v tématu [AZ Group](/cli/azure/group).
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
@@ -300,17 +300,17 @@ Soubor RunConfig obsahuje také informace, které slouží ke konfiguraci prost�
 > [!TIP]
 > I když je možné soubor RunConfig vytvořit ručně, byl v tomto příkladu vytvořen pomocí souboru, který je `generate-runconfig.py` součástí úložiště. Tento soubor získá odkaz na registrovanou datovou sadu, vytvoří programově config a pak ho přetrvá do souboru.
 
-Další informace o spuštění konfiguračních souborů najdete v tématu [nastavení a použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). Úplný odkaz na JSON najdete v [runconfigschema.jsna](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
+Další informace o spuštění konfiguračních souborů najdete v tématu [použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md#whats-a-run-configuration). Úplný odkaz na JSON najdete v [runconfigschema.jsna](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
 
 ## <a name="submit-the-training-run"></a>Odeslat školicí běh
 
 Pokud chcete spustit školicí běh na `cpu-cluster` cílovém výpočetním cíli, použijte následující příkaz:
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-Tento příkaz určuje název experimentu ( `myexperiment` ). Experiment ukládá informace o tomto běhu v pracovním prostoru.
+Tento příkaz určuje název experimentu ( `tutorial-cli` ). Experiment ukládá informace o tomto běhu v pracovním prostoru.
 
 `-c mnist`Parametr určuje `.azureml/mnist.runconfig` soubor.
 
@@ -327,7 +327,7 @@ Tento text se zaznamená do protokolu ze školicího skriptu a zobrazí přesnos
 
 Pokud provedete kontrolu školicího skriptu, všimnete si, že při ukládání školicího modelu do nástroje používá také hodnotu alfa `outputs/sklearn_mnist_model.pkl` .
 
-Model byl uložen do `./outputs` adresáře ve výpočetním cíli, kde byl vyškolený. V tomto případě Azure Machine Learning výpočetní instance v cloudu Azure. Proces školení automaticky nahraje obsah `./outputs` adresáře z cílového výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning dojde k výuce. Je uložen jako součást experimentu ( `myexperiment` v tomto příkladu).
+Model byl uložen do `./outputs` adresáře ve výpočetním cíli, kde byl vyškolený. V tomto případě Azure Machine Learning výpočetní instance v cloudu Azure. Proces školení automaticky nahraje obsah `./outputs` adresáře z cílového výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning dojde k výuce. Je uložen jako součást experimentu ( `tutorial-cli` v tomto příkladu).
 
 ## <a name="register-the-model"></a>Registrace modelu
 
@@ -345,13 +345,13 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }

@@ -3,20 +3,20 @@ title: Přední dvířka Azure – zabezpečení aplikační vrstvy | Microsoft 
 description: Tento článek vám pomůže pochopit, jak můžou služby Azure front-endu chránit a zabezpečovat back-endy vaší aplikace.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471791"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89399935"
 ---
 # <a name="application-layer-security-with-front-door"></a>Zabezpečení aplikační vrstvy s předními dvířky
 Přední dveře Azure poskytují možnost ochrany webových aplikací, která chrání webové aplikace před útoky ze sítě a běžnými webovými ohroženími zabezpečení, jako je vkládání SQL nebo skriptování mezi weby (XSS). Povoleno pro front-endy http (s), zabezpečení vrstvy aplikace front-endu je globálně distribuované a pořád se zastavuje, aby se na hraniční síti Azure od back-endu zastavily škodlivé útoky. Díky zvýšení zabezpečení a optimalizace výkonu poskytují přední dveře rychlé a zabezpečené webové prostředí koncovým uživatelům.

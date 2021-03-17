@@ -1,22 +1,33 @@
 ---
-title: Tlačítko nasadit do Azure
+title: Tlačítko pro nasazení do Azure
 description: Pomocí tlačítka nasaďte Azure Resource Manager šablony z úložiště GitHub.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 11/10/2020
+ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079457"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028739"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Použití tlačítka nasazení k nasazení šablon z úložiště GitHub
 
-Tento článek popisuje, jak pomocí tlačítka **nasadit do Azure** nasazovat šablony z úložiště GitHub. Tlačítko můžete přidat přímo do souboru README.md v úložišti GitHub nebo na webovou stránku, která odkazuje na úložiště. Tato metoda podporuje jenom nasazení na úrovni skupiny prostředků.
+Tento článek popisuje, jak pomocí tlačítka **nasadit do Azure** nasazovat šablony z úložiště GitHub. Tlačítko můžete přidat přímo do souboru _Readme.MD_ v úložišti GitHub. Nebo můžete přidat tlačítko na webovou stránku, která odkazuje na úložiště.
+
+Rozsah nasazení je určen schématem šablony. Další informace najdete tady:
+
+- [skupiny prostředků](deploy-to-resource-group.md)
+- [odběru](deploy-to-subscription.md)
+- [skupiny pro správu](deploy-to-management-group.md)
+- [tenantů](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Použít běžný obrázek
 
 Chcete-li přidat tlačítko na webovou stránku nebo úložiště, použijte následující obrázek:
+
+```markdown
+![Deploy to Azure](https://aka.ms/deploytoazurebutton)
+```
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
@@ -24,7 +35,7 @@ Chcete-li přidat tlačítko na webovou stránku nebo úložiště, použijte n�
 
 Obrázek se zobrazí jako:
 
-![Tlačítko nasadit do Azure](https://aka.ms/deploytoazurebutton)
+![Tlačítko pro nasazení do Azure](https://aka.ms/deploytoazurebutton)
 
 ## <a name="create-url-for-deploying-template"></a>Vytvořit adresu URL pro nasazení šablony
 
@@ -38,9 +49,10 @@ Formát adresy URL je:
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Pak je adresa URL zakóduje. Můžete použít online kodér nebo spustit příkaz. Následující příklad PowerShellu ukazuje, jak adresa URL kóduje hodnotu.
+Pak převeďte adresu URL na hodnotu kódovanou pomocí adresy URL. Můžete použít online kodér nebo spustit příkaz. Následující příklad PowerShellu ukazuje, jak adresa URL kóduje hodnotu.
 
 ```powershell
+$url = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 [uri]::EscapeDataString($url)
 ```
 
@@ -64,11 +76,21 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 Máte úplnou adresu URL odkazu.
 
+Obvykle je tato šablona hostována ve veřejném úložišti. Používáte-li privátní úložiště, je nutné zahrnout token pro přístup k nezpracovanému obsahu šablony. Token vygenerovaný GitHubem je platný jenom pro krátkou dobu. Tento odkaz byste často museli aktualizovat.
+
+Pokud používáte [Git se Azure Repos](/azure/devops/repos/git/) místo úložiště GitHub, můžete pořád použít tlačítko **nasadit do Azure** . Ujistěte se, že je vaše úložiště veřejné. K získání šablony použijte [operaci Items (položky](/rest/api/azure/devops/git/items/get) ). Vaše žádost by měla být v následujícím formátu:
+
+```http
+https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
+```
+
+Zakódovat tuto adresu URL požadavku.
+
 ## <a name="create-deploy-to-azure-button"></a>Tlačítko pro vytvoření nasazení do Azure
 
 Nakonec vložte odkaz a obrázek dohromady.
 
-Pokud chcete přidat tlačítko s Markdownu do souboru README.md v úložišti GitHubu nebo na webové stránce, použijte:
+Pokud chcete přidat tlačítko s Markdownu do souboru _Readme.MD_ v úložišti GitHubu nebo na webové stránce, použijte:
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
@@ -80,6 +102,12 @@ V případě HTML použijte:
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
   <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
+```
+
+Pro Git s úložištěm Azure je tlačítko ve formátu:
+
+```markdown
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com%2Forgname%2Fprojectname%2F_apis%2Fgit%2Frepositories%2Freponame%2Fitems%3FscopePath%3D%2freponame%2fazuredeploy.json%26api-version%3D6.0)
 ```
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
@@ -94,4 +122,4 @@ Portál zobrazí podokno, které umožňuje snadno zadat hodnoty parametrů. Par
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o šablonách naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
+- Další informace o šablonách najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

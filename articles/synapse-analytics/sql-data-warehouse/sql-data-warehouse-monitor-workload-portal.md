@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01a22aa5d2ec7ed54be62f0975b0fefbafd84cd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a2161fd24ccde596630549163a631626a961773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211557"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596651"
 ---
 # <a name="monitor-workload---azure-portal"></a>Monitorování úloh – Azure Portal
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak pomocí Azure Portal monitorovat vaše úlohy. Zahr
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- Fond SQL: bude shromažďovat protokoly pro fond SQL. Pokud nemáte zřízen Fond SQL, přečtěte si pokyny v tématu [Vytvoření fondu SQL](load-data-from-azure-blob-storage-using-polybase.md).
+- Fond SQL: bude shromažďovat protokoly pro fond SQL. Pokud nemáte zřízen Fond SQL, přečtěte si pokyny v tématu [Vytvoření fondu SQL](./load-data-from-azure-blob-storage-using-copy.md).
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 
@@ -32,21 +32,21 @@ Přejděte do okna procházení pro Log Analytics pracovní prostory a vytvořte
 
 ![Pracovní prostory služby Log Analytics](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
-![Přidat pracovní prostor analýzy](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
+![Snímek obrazovky zobrazuje Log Analytics pracovní prostory, kde můžete vybrat přidat.](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
 
-![Přidat pracovní prostor analýzy](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
+![Snímek obrazovky ukazuje Log Analytics pracovní prostor, do kterého můžete zadat hodnoty.](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
-Další informace o pracovních prostorech najdete v následující [dokumentaci](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace).
+Další informace o pracovních prostorech najdete v následující [dokumentaci](../../azure-monitor/logs/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace).
 
 ## <a name="turn-on-resource-logs"></a>Zapnout protokoly prostředků
 
 Nakonfigurujte nastavení diagnostiky k vygenerování protokolů z vašeho fondu SQL. Protokoly se skládají z zobrazení telemetrie, která odpovídají nejčastěji používaným řešením potíží s výkonem zobrazení dynamické správy. V současné době jsou podporována následující zobrazení:
 
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ![Povolení protokolů prostředků](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
@@ -63,7 +63,7 @@ Přejděte do pracovního prostoru Log Analytics, kde můžete provádět násle
 - Vytvoření upozornění protokolu
 - Připnutí výsledků dotazu na řídicí panel
 
-Podrobnosti o možnostech dotazů protokolu najdete v následující [dokumentaci](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Podrobnosti o možnostech dotazů protokolu najdete v následující [dokumentaci](/azure/data-explorer/kusto/query/?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json).
 
 ![Editor pracovního prostoru Log Analytics](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 

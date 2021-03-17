@@ -6,19 +6,21 @@ ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
-ms.date: 03/25/2020
-ms.openlocfilehash: 459f11844f873a911b3e5702e8c768b1cd22e504
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/31/2020
+ms.openlocfilehash: 76bbb980b6430f7cffc23ec078e2c932128dc637
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80984993"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89265265"
 ---
 # <a name="create-an-azure-media-services-live-stream"></a>Vytvoření živého streamu Azure Media Services
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Tento rychlý Start vám pomůže vytvořit Azure Media Services živý datový proud pomocí Azure Portal a Wirecast. Předpokládá, že máte předplatné Azure a máte vytvořený účet Media Services.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -125,7 +127,7 @@ Tato část nastaví vaše výstupy a umožní vám uložit záznam živého str
 
 ## <a name="start-the-broadcast"></a>Spustit všesměrové vysílání
 
-1. V Wirecast vyberte **výstup** > **Spustit/zastavit vysílání** > **Start Azure Media Services: Azure Media Services** z hlavní nabídky.
+1. V Wirecast vyberte **výstup**  >  **Spustit/zastavit vysílání**  >  **Start Azure Media Services: Azure Media Services** z hlavní nabídky.
 
    ![Spustit položky nabídky vysílání](media/live-events-wirecast-quickstart/start-broadcast.png)
 

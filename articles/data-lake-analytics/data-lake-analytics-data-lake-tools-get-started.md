@@ -1,18 +1,16 @@
 ---
 title: Dotaz Azure Data Lake Analytics – Visual Studio
 description: Naučte se nainstalovat nástroje Data Lake pro Visual Studio a vyvíjet a testovat skripty U-SQL.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 2f02c16d73ca07c1909bf84bfb7e158b429d3096
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d3812cb27d2d9ea7a49038f566f8b4cc5d779172
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125968"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241688"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio
 
@@ -33,7 +31,7 @@ Tento článek popisuje, jak pomocí sady Visual Studio vytvořit účty Azure D
 >    - [Pro Visual Studio 2017 a 2019](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
 >    - [Visual Studio 2013 a 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Visual Studio:** Podporovány jsou všechny edice kromě Express.
 
@@ -53,11 +51,11 @@ Tento kurz vyžaduje, aby byly nainstalované Nástroje Data Lake pro Visual Stu
 
 1. Otevřete sadu Visual Studio.
 
-1. Otevřete **Průzkumník serveru** výběrem možnosti **Zobrazit**  >  **Průzkumník serveru**.
+1. Otevřete **aplikaci Data Lake Analytics Explorer** výběrem možnosti **Zobrazit**  >  **Data Lake Analytics Explorer**.
 
-1. Klikněte pravým tlačítkem na **Azure**a pak vyberte **připojit k Microsoft Azure předplatnému**. Při **přihlašování ke svému účtu**postupujte podle pokynů.
+1. Klikněte pravým tlačítkem na **Azure** a pak vyberte **připojit k Microsoft Azure předplatnému**. Při **přihlašování ke svému účtu** postupujte podle pokynů.
 
-1. V **Průzkumník serveru**vyberte **Azure**  >  **Data Lake Analytics**. Zobrazí se seznam vašich účtů Data Lake Analytics.
+1. V **Průzkumník serveru** vyberte **Azure**  >  **Data Lake Analytics**. Zobrazí se seznam vašich účtů Data Lake Analytics.
 
 ## <a name="write-your-first-u-sql-script"></a>Napsání prvního skriptu U-SQL
 
@@ -82,15 +80,15 @@ OUTPUT @a
 
 1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**.
 
-1. Vyberte typ **projektu U-SQL** a pak vyberte **Další**. V **konfiguraci nového projektu**vyberte **vytvořit**.
+1. Vyberte typ **projektu U-SQL** a pak vyberte **Další**. V **konfiguraci nového projektu** vyberte **vytvořit**.
 
    Visual Studio vytvoří řešení, které obsahuje soubor **script. usql** .
 
 1. Vložte skript z [napsání prvního skriptu U-SQL](#write-your-first-u-sql-script) do okna **script. usql** .
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na **script. Usql**a vyberte **Odeslat skript**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na **script. Usql** a vyberte **Odeslat skript**.
 
-1. V možnosti **Odeslat úlohu**zvolte účet Data Lake Analytics a vyberte **Odeslat**.
+1. V možnosti **Odeslat úlohu** zvolte účet Data Lake Analytics a vyberte **Odeslat**.
 
    ![Odeslání projektu U-SQL sady Visual Studio](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-submit-job-vs2019.png)
 
@@ -110,7 +108,7 @@ Pokud chcete zobrazit nejnovější stav úlohy a aktualizovat obrazovku, vybert
 
 ## <a name="check-job-status"></a>Kontrola stavu úlohy
 
-1. V **Průzkumník serveru**vyberte **Azure**  >  **Data Lake Analytics**.
+1. V **Průzkumník serveru** vyberte **Azure**  >  **Data Lake Analytics**.
 
 1. Rozbalte název účtu Data Lake Analytics.
 
@@ -120,7 +118,7 @@ Pokud chcete zobrazit nejnovější stav úlohy a aktualizovat obrazovku, vybert
 
 ## <a name="see-the-job-output"></a>Zobrazení výstupu úlohy
 
-1. V **Průzkumník serveru**přejděte do úlohy, kterou jste odeslali.
+1. V **Průzkumník serveru** přejděte do úlohy, kterou jste odeslali.
 
 1. Klikněte na kartu **Data**.
 

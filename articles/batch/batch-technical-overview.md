@@ -1,14 +1,14 @@
 ---
 title: Azure Batch spouští velké Paralelní úlohy v cloudu
 description: Další informace o používání služby Azure Batch pro rozsáhlé paralelní úlohy a úlohy v prostředí HPC.
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: a88c5a2577456e188beb83d13ae0e5667b31180c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447123"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743096"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -74,6 +74,9 @@ Následující diagram znázorňuje kroky v běžném pracovním postupu služby
 Mějte na paměti, že výše popsaný pracovní postup je pouze jedním ze způsobů, jak používat dávku a existuje mnoho dalších funkcí a možností. Například můžete v každém výpočetním uzlu [paralelně provádět několik úkolů](batch-parallel-node-tasks.md). Nebo můžete použít [úkoly přípravy a dokončení úlohy](batch-job-prep-release.md) k přípravě uzlů pro vaše úlohy a pak je vyčistit později.
 
 Přehled funkcí, jako jsou fondy, uzly, úlohy a úkoly, najdete v tématu [pracovní postupy a prostředky služby Batch](batch-service-workflow-features.md) . Prohlédněte si také nejnovější [aktualizace služby Batch](https://azure.microsoft.com/updates/?product=batch).
+
+## <a name="in-region-data-residency"></a>Zasídlí dat v oblasti
+Azure Batch nepřesouvá ani neukládají zákaznická data mimo oblast, ve které je nasazená. 
 
 ## <a name="next-steps"></a>Další kroky
 

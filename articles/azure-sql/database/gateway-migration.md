@@ -4,29 +4,93 @@ description: Článek obsahuje oznámení uživatelům o migraci IP adres Azure 
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.custom: sqldbrb=1 
+ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507494"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430186"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Díky tomu, že se infrastruktura Azure zlepšuje, Microsoft pravidelně aktualizuje hardware, aby bylo zajištěno, že budeme poskytovat nejlepší možné prostředí pro zákazníky. V nadcházejících měsících plánujeme přidat brány postavené na novějších generacích hardwaru, migrovat provoz na ně a nakonec vyřadit brány z provozu na starší hardware v některých oblastech.  
 
-Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli změně bran, které jsou dostupné v jednotlivých oblastech. Nejaktuálnější informace se budou udržovat v tabulce [IP adres Azure SQL Database brány](connectivity-architecture.md#gateway-ip-addresses) .
+Zákazníkům se v rámci oznámení o stavu služeb předem oznámí jakákoli změna bran dostupných v jednotlivých oblastech. Zákazníci můžou [použít Azure Portal k nastavení upozornění protokolu aktivit](../../service-health/alerts-activity-log-service-notifications-portal.md).
+
+Nejaktuálnější informace se budou udržovat v tabulce [IP adres Azure SQL Database brány](connectivity-architecture.md#gateway-ip-addresses) .
 
 ## <a name="status-updates"></a>Aktualizace stavu
 
 # <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
+
+## <a name="april-2021"></a>Duben 2021
+Nové brány SQL se přidávají do následujících oblastí:
+- Norsko – východ: 51.120.96.33
+- Jižní Východní Asie: 13.67.16.193
+- Jižní Afrika sever: 102.133.152.32
+- Korea – jih: 52.231.151.96
+- Střed USA – sever: US 52.162.105.9
+- Austrálie – jihovýchod: 13.77.49.32 
+
+Tyto brány SQL začnou přijímat provoz zákazníků 5. dubna 2021.
+
+## <a name="march-2021"></a>Březen 2021
+Probíhá deaktivace následujících bran SQL v několika oblastech:
+
+- Brazílie – jih: 104.41.11.5
+- Východní Asie: 191.234.2.139
+- Východní USA: 191.238.6.43
+- Japonsko – východ: 191.237.240.43
+- Japonsko – západ: 191.238.68.11
+- Severní Evropa: 191.235.193.75
+- Střed USA – jih: 23.98.162.75
+- Jihovýchodní Asie: 23.100.117.95
+- Západní Evropa: 191.237.232.75
+- Západní USA: 23.99.34.75
+
+Nepředpokládá se žádný dopad na zákazníky, protože tyto brány (spuštěné na starším hardwaru) nesměrují provoz zákazníků. Po 15. březnu 2021 se IP adresy těchto bran deaktivují.
+
+## <a name="february-2021"></a>Únor 2021
+Nové brány SQL se přidávají do následujících oblastí:
+
+- Střed USA: 13.89.169.20
+
+Tyto brány SQL začnou přijímat zákaznická data od 28. února 2021.
+
+## <a name="january-2021"></a>Leden 2021
+Nové brány SQL se přidávají do následujících oblastí:
+
+- Austrálie – střed: 20.36.104.6, 20.36.104.7 
+- Austrálie – střed 2:20.36.112.6 
+- Brazílie – jih: 191.234.144.16, 191.234.152.3 
+- Kanada – východ: 40.69.105.9, 40.69.105.10
+- Indie – střed: 104.211.86.30, 104.211.86.31 
+- Východní Asie: 13.75.32.14 
+- Francie – střed: 40.79.137.8, 40.79.145.12 
+- Francie – jih: 40.79.177.10, 40.79.177.12
+- Korea – střed: 52.231.17.22, 52.231.17.23
+- Indie – západ: 104.211.144.4
+
+Tyto brány SQL začnou přijímat provoz zákazníků 31. ledna 2021.
+
+# <a name="completed"></a>[Dokončeno](#tab/completed-ip)
+Následující migrace brány jsou dokončené: 
+
+### <a name="october-2020"></a>Říjen 2020
+
+Nové brány SQL se přidávají do následujících oblastí:
+
+- Německo – středozápad: 51.116.240.0, 51.116.248.0
+
+Tyto brány SQL začnou přijímat provoz zákazníků 12. října 2020. 
+
 ### <a name="september-2020"></a>Září 2020
 Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL začnou přijímat provoz zákazníků 15. **září 2020**:
 
@@ -59,12 +123,9 @@ Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL z
 - Západní Evropa: 52.236.184.163 
 - Střed USA – jih: 20.45.121.1, 20.49.88.1 
 
-Stávající brány SQL začnou přijímat přenosy v následujících oblastech. Tyto brány SQL začnou přijímat provoz zákazníků dne **1. září 2020** :
+Stávající brány SQL začnou přijímat přenosy v následujících oblastech. Tyto brány SQL začnou přijímat provoz zákazníků dne **1. září 2020**:
 - Japonsko – východ: 40.79.184.8, 40.79.192.5
 
-# <a name="completed"></a>[Dokončeno](#tab/completed-ip)
-
-Následující migrace brány jsou dokončené: 
 
 ### <a name="august-2020"></a>Srpen 2020
 
@@ -77,17 +138,17 @@ Nové brány SQL se přidávají do následujících oblastí:
 Tyto brány SQL začnou přijímat provoz zákazníků 10. srpna 2020. 
 
 ### <a name="october-2019"></a>Říjen 2019
-- Brazil South
+- Brazílie – jih
 - USA – západ
 - West Europe
 - East US
-- Střední USA
+- USA – střed
 - Jihovýchodní Asie
 - Středojižní USA
 - Severní Evropa
 - USA – středosever
 - Japonsko – západ
-- Japan East
+- Japonsko – východ
 - USA – východ 2
 - Východní Asie
 
@@ -100,7 +161,8 @@ Může to mít vliv na to, jestli:
 
 - Pevně zakóduje IP adresu pro konkrétní bránu v místní bráně firewall.
 - Mít všechny podsítě používající Microsoft. SQL jako koncový bod služby, ale nemůžou komunikovat s IP adresami brány.
-- Použít [redundantní konfiguraci zóny](high-availability-sla.md#zone-redundant-configuration) pro vaši databázi
+- Použít [zónu redundantní konfigurace pro vrstvu pro obecné účely](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
+- Použití [nadbytečné konfigurace zóny pro klíčové úrovně premium & pro firmy](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
 
 Nebudete mít vliv na tyto akce:
  

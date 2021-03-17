@@ -1,25 +1,24 @@
 ---
-title: Použití sady Visual Studio, povolení vzdálené plochy pro roli (Azure Cloud Services)
+title: Použití sady Visual Studio, povolení vzdálené plochy pro roli (Azure Cloud Services Classic)
 description: Konfigurace aplikace cloudové služby Azure tak, aby povolovala připojení ke vzdálené ploše
-services: cloud-services
-author: ghogen
-manager: jillfra
-ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
-ms.custom: vs-azure
-ms.topic: conceptual
-ms.workload: azure-vs
-ms.date: 03/06/2018
-ms.author: ghogen
-ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: article
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ad95cefbdf839c28b0979b051e217a1dfec76eea
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294394"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743232"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services pomocí sady Visual Studio
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-visual-studio"></a>Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services (Classic) pomocí sady Visual Studio
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -40,14 +39,14 @@ Při použití sady Visual Studio 2017 verze 15,4 a starší můžete použít m
 
 2. V případě potřeby se přihlaste k předplatnému Azure a vyberte **Další**.
 
-3. Na stránce **Nastavení** vyberte **Povolit vzdálenou plochu pro všechny role**a pak vyberte odkaz **nastavení...** . otevře se dialogové okno **Konfigurace vzdálené plochy** .
+3. Na stránce **Nastavení** vyberte **Povolit vzdálenou plochu pro všechny role** a pak vyberte odkaz **nastavení...** . otevře se dialogové okno **Konfigurace vzdálené plochy** .
 
 4. V dolní části dialogového okna vyberte **Další možnosti**. Tento příkaz zobrazí rozevírací seznam, ve kterém můžete vytvořit nebo zvolit certifikát, abyste při připojování přes vzdálenou plochu mohli šifrovat informace o přihlašovacích údajích.
 
    > [!Note]
    > Certifikáty, které potřebujete pro připojení ke vzdálené ploše, se liší od certifikátů, které používáte pro jiné operace Azure. Certifikát vzdáleného přístupu musí mít privátní klíč.
 
-5. Vyberte certifikát ze seznamu nebo zvolte ** &lt; vytvořit... &gt; **. Při vytváření nového certifikátu zadejte po zobrazení výzvy popisný název nového certifikátu a vyberte **OK**. Nový certifikát se zobrazí v rozevíracím seznamu.
+5. Vyberte certifikát ze seznamu nebo zvolte **&lt; vytvořit... &gt;**. Při vytváření nového certifikátu zadejte po zobrazení výzvy popisný název nového certifikátu a vyberte **OK**. Nový certifikát se zobrazí v rozevíracím seznamu.
 
 6. Zadejte uživatelské jméno a heslo. Existující účet nemůžete použít. Jako uživatelské jméno nového účtu nepoužívejte "správce".
 
@@ -86,7 +85,7 @@ Projekt cloudové služby lze nasadit ze serveru sestavení (například pomocí
 
 Pokud chcete použít rozšíření RDP z Azure DevOps Services, zahrňte do svého kanálu sestavení následující podrobnosti:
 
-1. Zahrňte `/p:ForceRDPExtensionOverPlugin=true` do argumentů MSBuild, abyste se ujistili, že nasazení funguje s rozšířením RDP a nikoli s modulem plug-in RDP. Příklad:
+1. Zahrňte `/p:ForceRDPExtensionOverPlugin=true` do argumentů MSBuild, abyste se ujistili, že nasazení funguje s rozšířením RDP a nikoli s modulem plug-in RDP. Například:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -146,6 +145,6 @@ Po publikování cloudové služby v Azure a zapnutí vzdálené plochy můžete
 
 3. Zadejte uživatelské jméno a heslo, které jste vytvořili dříve. Nyní jste přihlášeni ke vzdálené relaci.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 [Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

@@ -3,15 +3,20 @@ title: Monitorování výkonu webové aplikace Java v systému Linux – Azure |
 description: Rozšířené monitorování výkonu aplikace vašeho webu Java pomocí shromážděného modulu plug-in pro Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 08d8deb4c7769c4f8a202050d7b5515439d691f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322597"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573844"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromažďováno: metriky výkonu Linux v Application Insights
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>shromážděné: metriky výkonu Linux v Application Insights [zastaralé]
 
+> [!IMPORTANT]
+> **Doporučený postup** pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro **[Application Insights agenta Java 3,0](./java-in-process-agent.md)**.
 
 Pokud chcete prozkoumat metriky výkonu systému Linux v [Application Insights](./app-insights-overview.md), [nainstalujte společně](https://collectd.org/)s modulem plug-in Application Insights. Toto open source řešení shromažďuje různé statistiky systému a sítě.
 
@@ -28,7 +33,7 @@ Poznamenejte si kopii klíče instrumentace, který identifikuje prostředek.
 Na počítačích se systémem Linux Server:
 
 1. Nainstalujte [shromážděnou](https://collectd.org/) verzi 5.4.0 nebo novější.
-2. Stáhněte si [modul plug-in Application Insights Collected Writer](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Poznamenejte si číslo verze.
+2. Stáhněte si [modul plug-in Application Insights Collected Writer](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal). Poznamenejte si číslo verze.
 3. Zkopírujte SKLENICi modulu plug-in do `/usr/share/collectd/java` .
 4. Upravit `/etc/collectd/collectd.conf` :
    * Ujistěte se, že je povolený [modul plug-in Java](https://collectd.org/wiki/index.php/Plugin:Java) .
@@ -128,5 +133,5 @@ Alternativní řešení: vylučte data shromážděná potížemi s zápisem mod
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 

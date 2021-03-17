@@ -1,19 +1,24 @@
 ---
 title: Kurz – škálování aplikace běžící v Azure Service Fabric sítě
 description: V tomto kurzu se naučíte škálovat služby v aplikaci spuštěné ve službě Service Fabric Mesh.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 02dc5d43a23c572d441da2bbb7386885bf66ece7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75351820"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625379"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Kurz: Škálování aplikace spuštěné ve službě Service Fabric Mesh
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Tento kurz je druhá část série. Zjistěte, jak můžete ručně škálovat počet instancí služby aplikace, která byla [předtím nasazena do služby Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md). Až budete hotovi, budete mít front-endovou službu se třemi instancemi a datovou službu se dvěma instancemi.
 

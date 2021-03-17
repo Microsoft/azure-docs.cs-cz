@@ -1,36 +1,36 @@
 ---
 title: Nasazení a vytvoření předpovědi pomocí ONNX
-description: Naučte se, jak vytvořit model, převést ho na ONNX, nasadit ho do Azure SQL Edge (Preview) nebo Azure SQL Managed instance (Preview) a pak spustit nativní předpověď dat pomocí nahraného modelu ONNX.
+titleSuffix: SQL machine learning
+description: Naučte se, jak vytvořit model, převést ho na ONNX, nasadit ho do Azure SQL Edge nebo Azure SQL Managed instance (Preview) a pak spustit nativní prediktivní zpracování dat pomocí nahraného modelu ONNX.
 keywords: nasazení Edge SQL
-services: sql-edge
-ms.service: sql-edge
-ms.subservice: machine-learning
-ms.topic: conceptual
+ms.prod: sql
+ms.technology: machine-learning
+ms.topic: quickstart
 author: dphansen
 ms.author: davidph
-ms.date: 07/14/2020
-ms.openlocfilehash: fe1e4a195903803d3103da5f350de30a016e614b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/13/2020
+ms.openlocfilehash: 755111b2fc48ec119c30d09f2e51b9db6c333848
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085009"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653206"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Nasazení a vytvoření předpovědi pomocí modelu ONNX
+# <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>Nasazení a vytvoření předpovědi pomocí modelu ONNX a strojového učení SQL
 
-V tomto rychlém startu se dozvíte, jak vytvořit model, převést ho na ONNX, nasadit ho do služby [Azure SQL Edge (Preview)](onnx-overview.md) nebo [Azure SQL Managed instance (Preview)](../azure-sql/managed-instance/machine-learning-services-overview.md)a pak spustit nativní předpověď dat pomocí nahraného modelu ONNX.
+V tomto rychlém startu se dozvíte, jak vytvořit model, převést ho na ONNX, nasadit ho do služby [Azure SQL Edge](onnx-overview.md) nebo [Azure SQL Managed instance (Preview)](../azure-sql/managed-instance/machine-learning-services-overview.md)a pak spustit nativní předpověď dat pomocí nahraného modelu ONNX.
 
 Tento rychlý Start je založený na **scikit-učení** a používá [datovou sadu Boston](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Pokud používáte Azure SQL Edge a nejste nasadili modul Azure SQL Edge, postupujte podle pokynů v části [nasazení SQL Edge (Preview) pomocí Azure Portal](deploy-portal.md).
+* Pokud používáte Azure SQL Edge a nejste nasadili modul Azure SQL Edge, postupujte podle kroků v části [nasazení SQL Edge pomocí Azure Portal](deploy-portal.md).
 
-* Nainstalujte [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
+* Nainstalujte [Azure Data Studio](/sql/azure-data-studio/download).
 
 * Nainstalujte balíčky Pythonu potřebné pro tento rychlý Start:
 
-  1. Otevřete [Nový Poznámkový blok](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) připojený k jádru Python 3. 
+  1. Otevřete [Nový Poznámkový blok](/sql/azure-data-studio/sql-notebooks) připojený k jádru Python 3. 
   1. Klikněte na **Spravovat balíčky** .
   1. Na kartě **nainstalované** vyhledejte v seznamu nainstalovaných balíčků následující balíčky Pythonu. Pokud některý z těchto balíčků není nainstalován, vyberte kartu **Přidat novou** , vyhledejte balíček a klikněte na tlačítko **nainstalovat**.
      - **scikit-learn**
@@ -177,7 +177,7 @@ Pomocí `skl2onnx` , převeďte LinearRegression model na formát ONNX a uložte
 
 ```python
 # Convert the scikit model to onnx format
-onnx_model = skl2onnx.convert_sklearn(model, 'Boston Data', convert_dataframe_schema(x_train))
+onnx_model = skl2onnx.convert_sklearn(model, 'Boston Data', convert_dataframe_schema(x_train), final_types=[('variable1',FloatTensorType([1,1]))])
 # Save the onnx model locally
 onnx_model_path = 'boston1.model.onnx'
 onnxmltools.utils.save_model(onnx_model, onnx_model_path)
@@ -227,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>Vložení modelu ONNX
 
-Uložte model do Azure SQL Edge nebo spravované instance Azure SQL v `models` tabulce v databázi `onnx` . V připojovacím řetězci zadejte **adresu serveru**, **uživatelské jméno**a **heslo**.
+Uložte model do Azure SQL Edge nebo spravované instance Azure SQL v `models` tabulce v databázi `onnx` . V připojovacím řetězci zadejte **adresu serveru**, **uživatelské jméno** a **heslo**.
 
 ```python
 import pyodbc
@@ -287,7 +287,7 @@ conn.commit()
 
 Načtěte data do SQL.
 
-Nejdřív vytvořte dvě tabulky, **funkce** a **cíl**a uložte podmnožiny datové sady Boston.
+Nejdřív vytvořte dvě tabulky, **funkce** a **cíl** a uložte podmnožiny datové sady Boston.
 
 * **Funkce** obsahují všechna data, která se používají k předpovědi cíle a mediánu hodnoty. 
 * **Cíl** obsahuje medián hodnoty pro každý záznam v datové sadě. 

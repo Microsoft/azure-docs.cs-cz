@@ -4,15 +4,15 @@ description: Jak využít výhod velikosti virtuálních počítačů HPC a GPU 
 ms.topic: how-to
 ms.date: 12/17/2018
 ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147339"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Použití instancí RDMA nebo GPU ve fondech Batch
 
-Pokud chcete spustit určité dávkové úlohy, můžete využít výhod velikosti virtuálních počítačů Azure určených pro velké výpočty. Zde je příklad:
+Pokud chcete spustit určité dávkové úlohy, můžete využít výhod velikosti virtuálních počítačů Azure určených pro velké výpočty. Například:
 
 * Pokud chcete spouštět [úlohy MPI](batch-mpi.md)s více instancemi, vyberte H-Series nebo jiné velikosti, které mají síťové rozhraní pro přímý přístup do paměti vzdáleného počítače (RDMA). Tyto velikosti se připojují k InfiniBand síti pro komunikaci mezi uzly, což dokáže zrychlit aplikace MPI. 
 
@@ -36,8 +36,8 @@ Schopnosti RDMA nebo GPU pro velikosti náročné na výpočetní výkon ve slu�
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, s.](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS nebo<br/>HPC založené na CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Ovladače systému Linux RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
-| [Řady NC, NCv2, NCv3, NDv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3 nebo 7,4<br/>(Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit | Nelze použít | 
-| [NV, NVv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla M60 | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3<br/>(Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Nelze použít |
+| [Řady NC, NCv2, NCv3, NDv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3 nebo 7,4<br/>(Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit | Není k dispozici | 
+| [NV, NVv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla M60 | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3<br/>(Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Není k dispozici |
 
 <sup>*</sup>Velikosti N-Series podporující RDMA obsahují také NVIDIA Tesla GPU
 
@@ -46,8 +46,8 @@ Schopnosti RDMA nebo GPU pro velikosti náročné na výpočetní výkon ve slu�
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, s.](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 nebo<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 nebo novější nebo<br/> Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
-| [Řady NC, NCv2, NCv3, ND, NDv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Windows Server 2016 nebo <br/>2012 R2 (Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit| Nelze použít | 
-| [NV, NVv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla M60 | Windows Server 2016 nebo<br/>2012 R2 (Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Nelze použít |
+| [Řady NC, NCv2, NCv3, ND, NDv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Windows Server 2016 nebo <br/>2012 R2 (Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit| Není k dispozici | 
+| [NV, NVv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla M60 | Windows Server 2016 nebo<br/>2012 R2 (Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Není k dispozici |
 
 <sup>*</sup>Velikosti N-Series podporující RDMA obsahují také NVIDIA Tesla GPU
 
@@ -99,13 +99,13 @@ Pokud chcete spouštět aplikace CUDA ve fondu uzlů Windows NC, musíte nainsta
 
 | Nastavení | Hodnota |
 | ---- | ----- | 
-| **Typ image** | Marketplace (Linux/Windows) |
+| **Typ obrázku** | Marketplace (Linux/Windows) |
 | **Publisher** | MicrosoftWindowsServer |
 | **Nabídka** | WindowsServer |
 | **Skladové** | 2016 – Datacenter |
 | **Velikost uzlu** | NC6 Standard |
 | **Odkazy na balíček aplikace** | GPUDriver verze 411,82 |
-| **Spouštěcí úkol povolen** | Pravda<br>**Příkazový řádek** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Identita uživatele** – fond – autouser, správce<br/>**Počkat na úspěch** – pravda
+| **Spouštěcí úkol povolen** | Ano<br>**Příkazový řádek** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Identita uživatele** – fond – autouser, správce<br/>**Počkat na úspěch** – pravda
 
 ## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Příklad: ovladače NVIDIA GPU na fondu virtuálních počítačů se systémem Linux NC
 
@@ -120,7 +120,7 @@ Chcete-li spouštět aplikace CUDA ve fondu uzlů systému Linux NC, je nutné n
 
 | Nastavení | Hodnota |
 | ---- | ---- |
-| **Typ image** | Vlastní image |
+| **Typ obrázku** | Vlastní image |
 | **Vlastní image** | *Název obrázku* |
 | **SKU agenta uzlu** | Batch. Node. Ubuntu 16,04 |
 | **Velikost uzlu** | NC6 Standard |
@@ -138,11 +138,11 @@ Pokud chcete spouštět aplikace Windows MPI ve fondu uzlů virtuálních počí
 
 | Nastavení | Hodnota |
 | ---- | ---- |
-| **Typ image** | Vlastní image |
+| **Typ obrázku** | Vlastní image |
 | **Vlastní image** | *Název obrázku* |
 | **SKU agenta uzlu** | Batch. Node. Windows amd64 |
 | **Velikost uzlu** | H16r Standard |
-| **Komunikace mezi uzly povolena** | Pravda |
+| **Komunikace mezi uzly povolena** | Ano |
 | **Maximální počet úkolů na uzel** | 1 |
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Příklad: Intel MPI ve fondu virtuálních počítačů se systémem Linux H16r
@@ -153,12 +153,12 @@ Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond s použitím tohot
 
 | Nastavení | Hodnota |
 | ---- | ---- |
-| **Typ image** | Marketplace (Linux/Windows) |
+| **Typ obrázku** | Marketplace (Linux/Windows) |
 | **Publisher** | OpenLogic |
 | **Nabídka** | CentOS – HPC |
-| **Skladové** | 7.4 |
+| **Skladové** | 7,4 |
 | **Velikost uzlu** | H16r Standard |
-| **Komunikace mezi uzly povolena** | Pravda |
+| **Komunikace mezi uzly povolena** | Ano |
 | **Maximální počet úkolů na uzel** | 1 |
 
 ## <a name="next-steps"></a>Další kroky

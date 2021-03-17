@@ -4,7 +4,7 @@ description: Naučte se používat aplikace se zástupnými znaky v proxy aplika
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367729"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257976"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikace Azure Active Directory
 
@@ -45,7 +45,7 @@ Můžete publikovat aplikace se zástupnými znaky, pokud jsou obě, interní i 
 
 > http (s)://*.\<domain\>
 
-Například: `http(s)://*.adventure-works.com`.
+Příklad: `http(s)://*.adventure-works.com`.
 
 I když interní a externí adresy URL můžou používat jiné domény, doporučuje se, aby byly stejné. Při publikování aplikace se zobrazí chyba, pokud jedna z adres URL neobsahuje zástupný znak.
 
@@ -68,13 +68,13 @@ Z bezpečnostních důvodů je to pevný požadavek a nebudeme podporovat zástu
 
 ### <a name="dns-updates"></a>Aktualizace DNS
 
-Při použití vlastních domén potřebujete vytvořit záznam DNS s záznamem CNAME pro externí adresu URL (například `*.adventure-works.com` ) odkazující na externí adresu URL koncového bodu proxy aplikace. V případě aplikací se zástupnými znaky musí záznam CNAME ukazovat na příslušné externí adresy URL:
+Při použití vlastních domén potřebujete vytvořit záznam DNS s záznamem CNAME pro externí adresu URL (například  `*.adventure-works.com` ) odkazující na externí adresu URL koncového bodu proxy aplikace. V případě aplikací se zástupnými znaky musí záznam CNAME ukazovat na příslušné externí adresy URL:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-Pokud chcete potvrdit, že jste svůj záznam CNAME správně nakonfigurovali, můžete použít nástroj [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) v jednom z cílových koncových bodů, například `expenses.adventure-works.com` .  Vaše odpověď by měla zahrnovat už zmíněný alias ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ).
+Pokud chcete potvrdit, že jste svůj záznam CNAME správně nakonfigurovali, můžete použít nástroj [nslookup](/windows-server/administration/windows-commands/nslookup) v jednom z cílových koncových bodů, například `expenses.adventure-works.com` .  Vaše odpověď by měla zahrnovat už zmíněný alias ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ).
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Tady je několik důležitých informací, které byste měli vzít v úvahu pro aplikace se zástupnými znaky.
 
@@ -84,7 +84,7 @@ V případě aplikací se zástupnými znaky musí být **interní adresa URL** 
 
 ![Pro interní adresu URL použijte formát http (s)://*. \<> domény](./media/application-proxy-wildcard/22.png)
 
-Při konfiguraci **externí adresy URL**je nutné použít následující formát:`https://*.<custom domain>`
+Při konfiguraci **externí adresy URL** je nutné použít následující formát: `https://*.<custom domain>`
 
 ![Pro externí adresu URL použijte formát https://*. \< vlastní doména>](./media/application-proxy-wildcard/21.png)
 
@@ -132,7 +132,7 @@ Všechny tři aplikace:
 
 Pomocí kroků uvedených v části [publikování aplikací pomocí Azure proxy aplikací služby AD](application-proxy-add-on-premises-application.md)můžete publikovat aplikaci se zástupnými znaky. Tento scénář předpokládá:
 
-- Tenant s následujícím ID:`000aa000-11b1-2ccc-d333-4444eee4444e`
+- Tenant s následujícím ID: `000aa000-11b1-2ccc-d333-4444eee4444e`
 - Byla nakonfigurována ověřená doména s názvem `adventure-works.com` .
 - Záznam **CNAME** , který odkazuje `*.adventure-works.com` na, byl `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` vytvořen.
 
@@ -156,7 +156,7 @@ Konfigurace implementuje následující strukturu:
 
 ![Zobrazuje strukturu implementovanou ukázkovou konfigurací.](./media/application-proxy-wildcard/05.png)
 
-| Barva | Description |
+| Barva | Popis |
 | ---   | ---         |
 | Blue  | Aplikace jsou explicitně publikované a viditelné v Azure Portal. |
 | Les  | Aplikace, ke kterým můžete přistupovat přes nadřazenou aplikaci. |
@@ -169,11 +169,11 @@ Musíte zajistit, aby existovaly záznamy CNAME, které odkazují `finance.adven
 
 Podle [dokumentovaných kroků](application-proxy-add-on-premises-application.md)tento scénář vyžaduje následující nastavení:
 
-- V **interní adrese URL**jste místo zástupného znaku nastavili **finance** .
+- V **interní adrese URL** jste místo zástupného znaku nastavili **finance** .
 
     ![Příklad: nastavte finance místo zástupného znaku na interní adrese URL.](./media/application-proxy-wildcard/52.png)
 
-- V **externí adrese URL**jste místo zástupného znaku nastavili **finance** .
+- V **externí adrese URL** jste místo zástupného znaku nastavili **finance** .
 
     ![Příklad: nastavte finance místo zástupného znaku v externí adrese URL.](./media/application-proxy-wildcard/53.png)
 
@@ -191,5 +191,5 @@ Pokud máte k dispozici více aplikací publikovaných pro finance a máte `fina
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o **vlastních doménách**najdete v tématu [práce s vlastními doménami v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md).
-- Další informace o **publikování aplikací**najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](application-proxy-add-on-premises-application.md)
+- Další informace o **vlastních doménách** najdete v tématu [práce s vlastními doménami v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md).
+- Další informace o **publikování aplikací** najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](application-proxy-add-on-premises-application.md)

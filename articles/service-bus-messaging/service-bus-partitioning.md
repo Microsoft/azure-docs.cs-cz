@@ -3,16 +3,17 @@ title: Vytvořit dělené Azure Service Bus fronty a témata | Microsoft Docs
 description: Popisuje, jak rozdělit Service Bus fronty a témata pomocí více zprostředkovatelů zpráv.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c43d8d560ddede021b70b0cdc167f42052904b0b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064855"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796631"
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
 
-Azure Service Bus využívá více zprostředkovatelů zpráv ke zpracování zpráv a více úložišť pro zasílání zpráv pro ukládání zpráv. Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukládá se do jednoho úložiště pro zasílání zpráv. Service Bus *oddíly* umožňují rozdělit do oddílů fronty a témata nebo *entity zasílání zpráv*v rámci více zprostředkovatelů zpráv a úložišť pro zasílání zpráv. Dělení znamená, že celková propustnost entit rozdělená na oddíly již není omezena výkonem jediného zprostředkovatele zpráv nebo úložiště pro zasílání zpráv. Kromě toho dočasný výpadek úložiště pro zasílání zpráv nezobrazuje dělenou frontu nebo téma není k dispozici. Dělené fronty a témata můžou obsahovat všechny pokročilé funkce Service Bus, jako je podpora transakcí a relací.
+Azure Service Bus využívá více zprostředkovatelů zpráv ke zpracování zpráv a více úložišť pro zasílání zpráv pro ukládání zpráv. Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukládá se do jednoho úložiště pro zasílání zpráv. Service Bus *oddíly* umožňují rozdělit do oddílů fronty a témata nebo *entity zasílání zpráv* v rámci více zprostředkovatelů zpráv a úložišť pro zasílání zpráv. Dělení znamená, že celková propustnost entit rozdělená na oddíly již není omezena výkonem jediného zprostředkovatele zpráv nebo úložiště pro zasílání zpráv. Kromě toho dočasný výpadek úložiště pro zasílání zpráv nezobrazuje dělenou frontu nebo téma není k dispozici. Dělené fronty a témata můžou obsahovat všechny pokročilé funkce Service Bus, jako je podpora transakcí a relací.
 
 > [!NOTE]
 > Dělení je k dispozici při vytváření entit pro všechny fronty a témata v jednotkách Basic a Standard. Pro SKU zasílání zpráv na úrovni Premium není k dispozici, ale všechny dříve existující rozdělené entity v oborech názvů Premium budou fungovat podle očekávání.
@@ -29,6 +30,9 @@ Operace prohlížet v nerozdělené entitě vždycky vrátí nejstarší zprávu
 
 Při odesílání zprávy do dělené fronty nebo tématu se neúčtují žádné další náklady.
 
+> [!NOTE]
+> Náhled operace vrátí nejstarší zprávu z oddílu na základě pořadového čísla. Pro dělené entity je číslo sekvence vystaveno relativně k oddílu. Další informace najdete v tématu [sekvence zpráv a časová razítka](../service-bus-messaging/message-sequencing.md).
+
 ## <a name="enable-partitioning"></a>Povolit dělení
 
 Pokud chcete použít dělené fronty a témata s Azure Service Bus, použijte Azure SDK verze 2,2 nebo novější, nebo zadejte `api-version=2013-10` nebo novější v požadavcích http.
@@ -43,7 +47,7 @@ V oboru názvů úrovně Premium se nepodporují dělení entit. Stále ale mů�
 
 ### <a name="create-a-partitioned-entity"></a>Vytvoření rozdělené entity
 
-Existuje několik způsobů, jak vytvořit dělenou frontu nebo téma. Když vytvoříte frontu nebo téma z aplikace, můžete povolit dělení na oddíly pro frontu nebo téma nastavením vlastnosti [QueueDescription. EnablePartitioning][QueueDescription.EnablePartitioning] nebo [TopicDescription. EnablePartitioning][TopicDescription.EnablePartitioning] na **hodnotu true**. Tyto vlastnosti musí být nastaveny v okamžiku vytvoření fronty nebo tématu a jsou k dispozici pouze ve starší knihovně [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) . Jak bylo uvedeno dříve, není možné tyto vlastnosti změnit ve stávající frontě nebo tématu. Příklad:
+Existuje několik způsobů, jak vytvořit dělenou frontu nebo téma. Když vytvoříte frontu nebo téma z aplikace, můžete povolit dělení na oddíly pro frontu nebo téma nastavením vlastnosti [QueueDescription. EnablePartitioning][QueueDescription.EnablePartitioning] nebo [TopicDescription. EnablePartitioning][TopicDescription.EnablePartitioning] na **hodnotu true**. Tyto vlastnosti musí být nastaveny v okamžiku vytvoření fronty nebo tématu a jsou k dispozici pouze ve starší knihovně [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) . Jak bylo uvedeno dříve, není možné tyto vlastnosti změnit ve stávající frontě nebo tématu. Například:
 
 ```csharp
 // Create partitioned topic
@@ -83,7 +87,7 @@ Klíč oddílu "PIN" zprávy do konkrétního oddílu. Pokud úložiště pro za
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Pokročilá témata: použití transakcí s rozdělenými entitami
 
-Zprávy odeslané v rámci transakce musí určovat klíč oddílu. Klíč může být jedna z následujících vlastností: [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)nebo [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid). Všechny zprávy, které jsou odeslány jako součást stejné transakce, musí určovat stejný klíč oddílu. Pokud se pokusíte odeslat zprávu bez klíče oddílu v rámci transakce, Service Bus vrátí neplatnou výjimku operace. Pokud se pokusíte odeslat více zpráv v rámci stejné transakce, které mají různé klíče oddílu, Service Bus vrátí výjimku neplatné operace. Příklad:
+Zprávy odeslané v rámci transakce musí určovat klíč oddílu. Klíč může být jedna z následujících vlastností: [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)nebo [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid). Všechny zprávy, které jsou odeslány jako součást stejné transakce, musí určovat stejný klíč oddílu. Pokud se pokusíte odeslat zprávu bez klíče oddílu v rámci transakce, Service Bus vrátí neplatnou výjimku operace. Pokud se pokusíte odeslat více zpráv v rámci stejné transakce, které mají různé klíče oddílu, Service Bus vrátí výjimku neplatné operace. Například:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -91,8 +95,8 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
     Message msg = new Message("This is a message");
     msg.PartitionKey = "myPartitionKey";
-    messageSender.SendAsync(msg); 
-    ts.CompleteAsync();
+    await messageSender.SendAsync(msg); 
+    await ts.CompleteAsync();
 }
 committableTransaction.Commit();
 ```
@@ -103,7 +107,7 @@ Pokud je nastavená kterákoli z vlastností, která slouží jako klíč oddíl
 
 Chcete-li odeslat transakční zprávu do tématu nebo fronty využívající relaci, musí mít zpráva nastavenu vlastnost [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) . Pokud je zadána vlastnost [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) , musí být stejná jako vlastnost [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) . Pokud se liší, Service Bus vrátí výjimku neplatné operace.
 
-Na rozdíl od běžných (nerozdělených) front nebo témat není možné použít jedinou transakci k posílání více zpráv do různých relací. Při pokusu Service Bus vrací výjimku neplatné operace. Příklad:
+Na rozdíl od běžných (nerozdělených) front nebo témat není možné použít jedinou transakci k posílání více zpráv do různých relací. Při pokusu Service Bus vrací výjimku neplatné operace. Například:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -111,8 +115,8 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
     Message msg = new Message("This is a message");
     msg.SessionId = "mySession";
-    messageSender.SendAsync(msg); 
-    ts.CompleteAsync();
+    await messageSender.SendAsync(msg); 
+    await ts.CompleteAsync();
 }
 committableTransaction.Commit();
 ```

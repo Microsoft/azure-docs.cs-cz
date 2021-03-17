@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72248599"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Kontaktování Microsoft Genomics pro podporu
@@ -32,7 +32,7 @@ Pak vyberte `New support request` .
 
 ![Nová žádost o podporu](./media/file-support-ticket/new-support-request.png "Nová žádost o podporu") 
 
-Vyplňte `Basics` , včetně `Issue type` a `Subscription` . Vyberte, co je `Issue type` pro váš problém relevantní; jako příklad na obrázku níže `Technical` byl vybrán. Nezapomeňte vybrat `Microsoft Genomics` jako příslušnou službu.  `Microsoft Genomics`bude uvedeno v `Intelligence and Analytics` kategorii.   Po výběru `Microsoft Genomics` budete také požádáni o zadání `Support plan` typu.
+Vyplňte `Basics` , včetně `Issue type` a `Subscription` . Vyberte, co je `Issue type` pro váš problém relevantní; jako příklad na obrázku níže `Technical` byl vybrán. Nezapomeňte vybrat `Microsoft Genomics` jako příslušnou službu.  `Microsoft Genomics` bude uvedeno v `Intelligence and Analytics` kategorii.   Po výběru `Microsoft Genomics` budete také požádáni o zadání `Support plan` typu.
 
 ![Základy Support request](./media/file-support-ticket/support-request-basics.png "Základy Support request")
 

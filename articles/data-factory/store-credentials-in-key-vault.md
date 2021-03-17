@@ -1,25 +1,21 @@
 ---
 title: Uložení přihlašovacích údajů v Azure Key Vault
 description: Naučte se ukládat přihlašovací údaje pro úložiště dat používaná v trezoru klíčů Azure, který Azure Data Factory může automaticky načíst za běhu.
-services: data-factory
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00c28a9ede01a74f4ae64109d277276050047461
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81451682"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653760"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Ukládat přihlašovací údaje v Azure Key Vault
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Přihlašovací údaje pro úložiště dat a výpočetní služby můžete ukládat [Azure Key Vault](../key-vault/general/overview.md). Azure Data Factory načte pověření při provádění aktivity, která používá úložiště nebo výpočetní prostředky.
 
@@ -29,7 +25,7 @@ V současné době všechny typy aktivit kromě vlastní aktivity podporují tut
 
 Tato funkce závisí na spravované identitě objektu pro vytváření dat. Naučte se, jak to funguje ze [spravované identity pro datovou továrnu](data-factory-service-identity.md) , a ujistěte se, že je k datové továrně přidružená jedna.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 
 Pokud chcete odkazovat na přihlašovací údaje uložené v Azure Key Vault, musíte:
 
@@ -42,10 +38,10 @@ Pokud chcete odkazovat na přihlašovací údaje uložené v Azure Key Vault, mu
 
 Pro Azure Key Vault propojenou službu jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **AzureKeyVault**. | Ano |
-| baseUrl | Zadejte adresu URL Azure Key Vault. | Ano |
+| typ | Vlastnost Type musí být nastavená na: **AzureKeyVault**. | Yes |
+| baseUrl | Zadejte adresu URL Azure Key Vault. | Yes |
 
 **Používání uživatelského rozhraní pro vytváření:**
 
@@ -75,16 +71,16 @@ Vyberte zřízené Azure Key Vault, kde jsou uložené vaše přihlašovací úd
 
 Následující vlastnosti jsou podporované při konfiguraci pole v propojené službě odkazujícího na tajný kód trezoru klíčů:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type pole musí být nastavená na: **AzureKeyVaultSecret**. | Ano |
-| secretName | Název tajného klíče v Azure Key Vault. | Ano |
-| Verzetajnéhoklíče | Verze tajného kódu v Azure Key Vault.<br/>Pokud tento parametr nezadáte, vždy používá nejnovější verzi tajného kódu.<br/>Je-li tento parametr zadán, bude se podávat do dané verze.| Ne |
-| store | Odkazuje na Azure Key Vault propojená služba, kterou použijete k uložení přihlašovacích údajů. | Ano |
+| typ | Vlastnost Type pole musí být nastavená na: **AzureKeyVaultSecret**. | Yes |
+| secretName | Název tajného klíče v Azure Key Vault. | Yes |
+| Verzetajnéhoklíče | Verze tajného kódu v Azure Key Vault.<br/>Pokud tento parametr nezadáte, vždy používá nejnovější verzi tajného kódu.<br/>Je-li tento parametr zadán, bude se podávat do dané verze.| No |
+| store | Odkazuje na Azure Key Vault propojená služba, kterou použijete k uložení přihlašovacích údajů. | Yes |
 
 **Používání uživatelského rozhraní pro vytváření:**
 
-Vyberte možnost **Azure Key Vault** pro tajná pole při vytváření připojení k úložišti dat nebo výpočetnímu prostředí. Vyberte zřízené Azure Key Vault propojenou službu a zadejte **název tajného**kódu. Volitelně můžete také zadat tajnou verzi. 
+Vyberte možnost **Azure Key Vault** pro tajná pole při vytváření připojení k úložišti dat nebo výpočetnímu prostředí. Vyberte zřízené Azure Key Vault propojenou službu a zadejte **název tajného** kódu. Volitelně můžete také zadat tajnou verzi. 
 
 >[!TIP]
 >Pro konektory, které používají připojovací řetězec v propojené službě, jako je SQL Server, úložiště objektů BLOB atd., můžete zvolit, aby se ukládaly jenom tajné pole, třeba heslo v integrace, nebo uložit celý připojovací řetězec do integrace. V uživatelském rozhraní můžete najít obě možnosti.

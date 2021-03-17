@@ -4,30 +4,29 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Naučte se vytvářet & nasazovat sdílený fond pro datové vědy Virtual Machines (DSVMs) jako sdílený prostředek pro tým.
 keywords: obsáhlý Learning, AI, nástroje pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a118d5a3e716a80bda21ffe82a8cefd1da1202f3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477336"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519707"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Vytvoření sdíleného fondu Virtual Machines pro datové vědy
 
 V tomto článku se dozvíte, jak vytvořit sdílený fond pro datové vědy Virtual Machines (DSVMs) pro tým. Výhody použití sdíleného fondu zahrnují lepší využití prostředků, jednodušší sdílení a spolupráci a efektivnější správu prostředků DSVM.
 
-K vytvoření fondu DSVMs můžete použít spoustu metod a technologií. Tento článek se zaměřuje na fondy pro interaktivní virtuální počítače (VM). Alternativní spravovaná výpočetní infrastruktura je Azure Machine Learning výpočetní prostředí. Další informace najdete v tématu [nastavení cílových výpočetních](../how-to-set-up-training-targets.md#amlcompute)prostředků.
+K vytvoření fondu DSVMs můžete použít spoustu metod a technologií. Tento článek se zaměřuje na fondy pro interaktivní virtuální počítače (VM). Alternativní spravovaná výpočetní infrastruktura je Azure Machine Learning výpočetní prostředí. Další informace najdete v tématu [Vytvoření výpočetního clusteru](../how-to-create-attach-compute-cluster.md).
 
 ## <a name="interactive-vm-pool"></a>Interaktivní fond virtuálních počítačů
 
 Fond interaktivních virtuálních počítačů, které jsou sdíleny celým týmem AI nebo pro datové vědy, umožňuje uživatelům přihlásit se k dostupné instanci DSVM místo toho, aby měli vyhrazenou instanci pro každou skupinu uživatelů. Tato instalace umožňuje lepší dostupnost a efektivnější využití prostředků.
 
-K vytvoření interaktivního fondu virtuálních počítačů použijete technologii [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) . Sady škálování můžete použít k vytvoření a správě skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatického škálování.
+K vytvoření interaktivního fondu virtuálních počítačů použijete technologii [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) . Sady škálování můžete použít k vytvoření a správě skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatického škálování.
 
 Uživatel se přihlásí k IP adrese nebo adrese DNS hlavního fondu. Sada škálování automaticky směruje relaci k dostupnému DSVM v sadě škálování. Vzhledem k tomu, že uživatelé chtějí konzistentní a známé prostředí bez ohledu na virtuální počítač, ke kterému se přihlásí, všechny instance virtuálního počítače v sadě škálování připojí sdílenou síťovou jednotku, třeba sdílenou složku služby soubory Azure nebo sdílenou složku NFS (Network File System). Sdílený pracovní prostor uživatele je obvykle uložen ve sdíleném úložišti souborů, které je připojeno ke každé z těchto instancí.
 
@@ -37,7 +36,7 @@ Můžete vytvořit sadu škálování ze šablony Azure Resource Manager zadán�
 
 ```azurecli-interactive
 az group create --name [[NAME OF RESOURCE GROUP]] --location [[ Data center. For eg: "West US 2"]
-az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  --template-uri https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json --parameters @[[PARAMETER JSON FILE]]
+az deployment group create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  --template-uri https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json --parameters @[[PARAMETER JSON FILE]]
 ```
 
 V předchozích příkazech se předpokládá, že máte následující:
@@ -53,7 +52,7 @@ Předchozí šablona umožňuje, aby se protokol SSH a JupyterHub z front-endov�
 
 [Skript, který připojuje sdílenou složku služby soubory Azure,](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) je také k dispozici v úložišti Azure DataScienceVM na GitHubu. Skript připojí sdílenou složku souborů Azure v zadaném přípojném bodu v souboru parametrů. Skript také vytvoří v domovském adresáři počátečního uživatele předběžné odkazy na připojenou jednotku. Adresář notebooků konkrétního uživatele ve sdílené složce služby soubory Azure je podmíněně propojený s `$HOME/notebooks/remote` adresářem, aby uživatelé mohli přistupovat k Jupyter notebookům a jejich spouštění a ukládat je. Stejnou konvenci můžete použít při vytváření dalších uživatelů na virtuálním počítači, aby odkazovaly na pracovní prostor Jupyter jednotlivých uživatelů na sdílenou složku služby soubory Azure.
 
-Sada škálování virtuálních počítačů podporuje automatické škálování. Můžete nastavit pravidla, kdy vytvořit další instance a kdy se má škálovat instance. Můžete například snížit kapacitu na nulové instance a ušetřit tak náklady na cloudové využití hardwaru v případě, že se virtuální počítače vůbec nepoužívají. Stránky dokumentace sady Virtual Machine Scale Sets poskytují podrobné kroky pro automatické [škálování](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
+Sada škálování virtuálních počítačů podporuje automatické škálování. Můžete nastavit pravidla, kdy vytvořit další instance a kdy se má škálovat instance. Můžete například snížit kapacitu na nulové instance a ušetřit tak náklady na cloudové využití hardwaru v případě, že se virtuální počítače vůbec nepoužívají. Stránky dokumentace sady Virtual Machine Scale Sets poskytují podrobné kroky pro automatické [škálování](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

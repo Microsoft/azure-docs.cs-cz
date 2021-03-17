@@ -1,14 +1,14 @@
 ---
 title: Pochopení životního cyklu podrobného plánu
 description: Seznamte se s životním cyklem, na který odkazuje definice podrobného plánu, a podrobnosti o jednotlivých fázích, včetně aktualizace a odebírání přiřazení podrobného plánu.
-ms.date: 05/06/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 721a198b5732af01c6712e86bc0c8e8ef543b404
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864024"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918513"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Pochopení životního cyklu Azure Blueprint
 
@@ -34,7 +34,7 @@ Vytvořte a upravte podrobný plán pomocí [Azure Portal](../create-blueprint-p
 
 ## <a name="publishing-a-blueprint"></a>Publikování podrobného plánu
 
-Jakmile provedete všechny plánované změny podrobného plánu v režimu **konceptu** , je možné je **publikovat** a zpřístupnit pro přiřazení. **Publikovanou** verzi podrobného plánu nelze změnit. Po **publikování**se v podrobném plánu zobrazí s jinou ikonou než s **Koncepty** a ve sloupci **nejnovější verze** se zobrazí zadané číslo verze.
+Jakmile provedete všechny plánované změny podrobného plánu v režimu **konceptu** , je možné je **publikovat** a zpřístupnit pro přiřazení. **Publikovanou** verzi podrobného plánu nelze změnit. Po **publikování** se v podrobném plánu zobrazí s jinou ikonou než s **Koncepty** a ve sloupci **nejnovější verze** se zobrazí zadané číslo verze.
 
 Publikovat podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) nebo [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
@@ -55,12 +55,12 @@ Pokud chcete publikovat podrobný plán s **nepublikovanými změnami**, použij
 
 ## <a name="deleting-a-specific-version-of-the-blueprint"></a>Odstranění konkrétní verze podrobného plánu
 
-Každá verze podrobného plánu je jedinečný objekt a lze jej **publikovat**jednotlivě. V takovém případě lze také odstranit každou verzi podrobného plánu. Odstranění verze podrobného plánu nemá žádný vliv na jiné verze tohoto podrobného plánu.
+Každá verze podrobného plánu je jedinečný objekt a lze jej **publikovat** jednotlivě. V takovém případě lze také odstranit každou verzi podrobného plánu. Odstranění verze podrobného plánu nemá žádný vliv na jiné verze tohoto podrobného plánu.
 
 > [!NOTE]
 > Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a pak odstraňte verzi, kterou chcete odebrat.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na stránce vlevo vyberte **definice** podrobného plánu a pomocí možností filtru Najděte plán, ve kterém chcete odstranit verzi. Výběrem této stránky otevřete stránku pro úpravu.
 
@@ -79,16 +79,16 @@ Odstraňte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#
 
 ## <a name="assignments"></a>Přiřazení
 
-V životním cyklu je několik bodů, které je možné přiřadit k předplatnému. Po **publikování**režimu verze podrobného plánu lze tuto verzi přiřadit k předplatnému. Tento životní cyklus umožňuje používat verze podrobného plánu a aktivně je přiřazovat během vývoje novější verze.
+V životním cyklu je několik bodů, které je možné přiřadit k předplatnému. Po **publikování** režimu verze podrobného plánu lze tuto verzi přiřadit k předplatnému. Tento životní cyklus umožňuje používat verze podrobného plánu a aktivně je přiřazovat během vývoje novější verze.
 
-Vzhledem k tomu, že se přiřadí verze plánů, je důležité pochopit, kde jsou přiřazené, a s parametry, se kterými byly přiřazeny. Parametry mohou být buď statické, nebo dynamické. Další informace najdete v tématu [statické a dynamické parametry](parameters.md).
+Vzhledem k tomu, že se přiřadí verze plánů, je důležité pochopit, kde jsou přiřazené, a s parametry, se kterými byly přiřazeny. Parametry mohou být buď statické, nebo dynamické. Další informace najdete v tématu [statické a dynamické parametry](./parameters.md).
 
 ### <a name="updating-assignments"></a>Aktualizace přiřazení
 
 Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje několik důvodů Aktualizace existujícího přiřazení, včetně:
 
-- Přidat nebo odebrat [uzamykání prostředků](resource-locking.md)
-- Změna hodnoty [dynamických parametrů](parameters.md#dynamic-parameters)
+- Přidat nebo odebrat [uzamykání prostředků](./resource-locking.md)
+- Změna hodnoty [dynamických parametrů](./parameters.md#dynamic-parameters)
 - Upgradujte přiřazení na novější **publikovanou** verzi podrobného plánu.
 
 Informace o postupu najdete v tématu [aktualizace existujících přiřazení](../how-to/update-existing-assignments.md).
@@ -97,7 +97,7 @@ Informace o postupu najdete v tématu [aktualizace existujících přiřazení](
 
 Pokud již podrobný plán není potřebný, může být nepřiřazený ze skupiny pro správu nebo předplatného. Při zrušení přiřazení podrobného plánu dojde k následujícímu:
 
-- Odebrání [uzamykání prostředků](resource-locking.md) podrobného plánu
+- Odebrání [uzamykání prostředků](./resource-locking.md) podrobného plánu
 - Odstranění objektu přiřazení podrobného plánu
 - Podmíněného Pokud se použila **spravovaná identita přiřazená systémem** , odstraní se taky.
 
@@ -106,8 +106,8 @@ Pokud již podrobný plán není potřebný, může být nepřiřazený ze skupi
 
 ## <a name="next-steps"></a>Další kroky
 
-- Principy použití [statických a dynamických parametrů](parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](resource-locking.md)
+- Principy použití [statických a dynamických parametrů](./parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](./sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](./resource-locking.md)
 - Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
 - Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

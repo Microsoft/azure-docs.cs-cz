@@ -9,19 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 71296618-673b-4093-ab17-b7a80df6e9ac
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: a3759bbe92a2de8515c7d812637acd88070f8d46
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760885"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490904"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Instalace vysoké dostupnosti SAP NetWeaver v clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složce pro instance SAP ASCS/SCS v Azure
 
@@ -197,9 +197,9 @@ ms.locfileid: "87760885"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou dostupností v Azure, s clusterem Windows Server failover cluster (WSFC) a Souborový server se škálováním na více systémů jako možnost pro clusteringu instancí SAP ASCS/SCS.
+Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou dostupností v Azure, s clusterem Windows Server s podporou převzetí služeb při selhání (WSFC) a Scale-Out souborový server jako možnost pro clustering instancí SAP ASCS/SCS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s instalací, přečtěte si následující články:
 
@@ -214,9 +214,11 @@ Z SAP budete potřebovat následující spustitelné soubory a knihovny DLL:
 * Jádro SAP 7,49 nebo novější
 
 > [!IMPORTANT]
-> Clustering SAP ASCS/SCS Instances pomocí sdílené složky se podporuje pro SAP NetWeaver 7,40 (a novější) pomocí SAP kernel 7,49 (a novější).
+> Clustering SAP ASCS/SCS Instances pomocí sdílené složky se podporuje pro SAP NetWeaver 7,40 (a novější) pomocí SAP kernel 7,49 (a novější).  
+>   
+> [!IMPORTANT]
+> Instalační program musí splňovat následující požadavky: instance SAP ASCS/SCS a sdílená složka SOFS musí být nasazeny v samostatných clusterech.    
 >
-
 
 Nepopisujeme nastavení systému správy databáze (DBMS), protože nastavení se liší v závislosti na použitém systému DBMS. Předpokládá se však, že se v systému DBMS budou řešit problémy s vysokou dostupností s funkcemi, které pro Azure podporují různé dodavatele DBMS. Mezi takové funkce patří zrcadlení AlwaysOn nebo databáze pro SQL Server a Oracle data Guard pro databáze Oracle. Ve scénáři, který používáme v tomto článku, jsme nepřidali do systému DBMS větší ochranu.
 
@@ -299,7 +301,7 @@ Vytvořte název sítě s clustery SAP ASCS/SCS (například **PR1-ASCS [10.0.6.
 
 Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Chcete-li nainstalovat instanci, v instalačním nástroji SAP SWPM přejít na:
 
-**\<Product>** > **\<DBMS>** > **Instalace**  >  **Aplikační server ABAP** (nebo **Java**) > první uzel clusteru ASCS/SCS instance **systému s vysokou dostupností**  >  **ASCS/SCS instance**  >  **First cluster node**.
+**\<Product>** > **\<DBMS>** > **Instalace**  >  **Aplikační server ABAP** (nebo **Java**) > první uzel clusteru ASCS/SCS instance **systému s vysokou dostupností**  >    >  .
 
 ### <a name="add-a-probe-port"></a>Přidat port testu paměti
 
@@ -314,7 +316,7 @@ Nainstalujte instanci SAP ASCS/SCS na druhý uzel clusteru. Chcete-li nainstalov
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualizovat profil instance SAP ASCS/SCS
 
-Aktualizujte parametry v profilu instance SAP ASCS/SCS \<SID> _ASCS/SCS \<Nr> _ \<Host> .
+Aktualizujte parametry v profilu instance SAP ASCS/SCS \<SID> _ASCS/SCS \<Nr>_ \<Host> .
 
 
 | Název parametru | Hodnota parametru |

@@ -1,5 +1,5 @@
 ---
-title: Přidání automatického dokončování a návrhů do vyhledávacího pole
+title: Přidání automatického dokončování do vyhledávacího pole
 titleSuffix: Azure Cognitive Search
 description: Povolte v Azure Kognitivní hledání akce dotazování typu hledání jako, které umožňují navrhovat a formulují žádosti, které automaticky vyplní vyhledávací pole s dokončenými podmínkami nebo frázemi. Můžete také vrátit navrhované shody.
 manager: nitinme
@@ -7,23 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2de282da56a40c92eacde84ac913be0ceacf9e2b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 11/24/2020
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413013"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339604"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
+# <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Přidání automatického dokončování a návrhů do klientských aplikací s využitím Azure Kognitivní hledání
 
-Hledání jako typ je běžná technika pro zlepšení produktivity dotazů inicializovaných uživatelem. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování*, které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Další forma je *návrhy*: krátký seznam odpovídajících dokumentů (pro vracení titulů knih s ID, aby bylo možné propojit stránku s podrobnostmi). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
+Hledání jako typ je běžná technika pro zlepšení produktivity dotazů inicializovaných uživatelem. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování*, které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Druhý uživatel je *návrhem* nebo krátký seznam odpovídajících dokumentů (s ID, který vrací názvy knih s ID, takže můžete propojit stránku s podrobnostmi o dané knize). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
 
 K implementaci těchto prostředí v Azure Kognitivní hledání budete potřebovat:
 
-+ Modul pro *návrhy* na back-endu.
-+ *Dotaz* určující rozhraní API pro [Automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) nebo [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions) v žádosti.
++ Definice *návrhového* nástroje, která je vložena do schématu indexu.
++ *Dotaz* určující rozhraní API pro [Automatické dokončování](/rest/api/searchservice/autocomplete) nebo [návrhy](/rest/api/searchservice/suggestions) v žádosti.
 + *Ovládací prvek uživatelského rozhraní* , který v klientské aplikaci zpracovává interakce typu hledání podle vás. Pro tento účel doporučujeme použít existující knihovnu JavaScriptu.
 
 V Azure Kognitivní hledání jsou automatické dokončováné dotazy a navrhované výsledky načteny z indexu hledání z vybraných polí, která jste zaregistrovali v modulu pro návrhy. Modul pro návrhy je součástí indexu a určuje, která pole budou poskytovat obsah, který buď dokončí dotaz, navrhne výsledek nebo provede obojí. Když se index vytvoří a načte, vytvoří se interně struktura dat modulu pro ukládání předpon používaných pro porovnání částečných dotazů. V případě návrhů zvolte vhodná pole, která jsou jedinečná nebo alespoň neopakující, je základem pro prostředí. Další informace najdete v tématu [Vytvoření](index-add-suggesters.md)modulu pro návrhy.
@@ -54,16 +54,16 @@ Shody jsou na začátku termínu kdekoli ve vstupním řetězci. V případě "r
 
 Pro referenční stránky REST a .NET SDK použijte tyto odkazy:
 
-+ [REST API návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [REST API automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [Metoda SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [Metoda AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [REST API návrhů](/rest/api/searchservice/suggestions) 
++ [REST API automatického dokončování](/rest/api/searchservice/autocomplete) 
++ [Metoda SuggestAsync](/dotnet/api/azure.search.documents.searchclient.suggestasync)
++ [Metoda AutocompleteAsync](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
 ## <a name="structure-a-response"></a>Strukturování odpovědi
 
-Odpovědi na automatické dokončování a návrhy jsou to, co byste pro vzor mohli očekávat: [funkce automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) vrátí seznam podmínek, [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) vrátí výrazy a ID dokumentu, abyste mohli načíst dokument (pomocí rozhraní API pro [vyhledání dokumentu](https://docs.microsoft.com/rest/api/searchservice/lookup-document) načíst konkrétní dokument pro stránku s podrobnostmi).
+Odpovědi na automatické dokončování a návrhy jsou to, co byste pro vzor mohli očekávat: [funkce automatického dokončování](/rest/api/searchservice/autocomplete#response) vrátí seznam podmínek, [návrhy](/rest/api/searchservice/suggestions#response) vrátí výrazy a ID dokumentu, abyste mohli načíst dokument (pomocí rozhraní API pro [vyhledání dokumentu](/rest/api/searchservice/lookup-document) načíst konkrétní dokument pro stránku s podrobnostmi).
 
-Odpovědi jsou ve tvaru podle parametrů v žádosti. Pro automatické dokončování nastavte [**autocompleteMode**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) , abyste zjistili, jestli se při dokončování textu vyskytuje jedna nebo dvě slova. U návrhů se pole, které zvolíte, určí obsah odpovědi.
+Odpovědi jsou ve tvaru podle parametrů v žádosti. Pro automatické dokončování nastavte [**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) , abyste zjistili, jestli se při dokončování textu vyskytuje jedna nebo dvě slova. U návrhů se pole, které zvolíte, určí obsah odpovědi.
 
 V případě návrhů byste měli dál vylepšit odpověď, aby nedocházelo k duplicitám nebo co se jeví jako nesouvisející výsledky. Pro řízení výsledků přidejte do žádosti více parametrů. Následující parametry se vztahují na automatické dokončování i návrhy, ale mohou být vhodnější pro návrhy, zejména v případě, že modul pro návrh obsahuje více polí.
 
@@ -131,7 +131,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 ### <a name="enable-highlighting"></a>Povolit zvýrazňování
 
-Zvýrazňování aplikuje styl písma na znaky ve výsledku, které odpovídají vstupu. Pokud je například částečný vstup "mikro", výsledek by se **zobrazil jako**mikroměkký, **mikroskop Scope a**tak dále. Zvýrazňování je založeno na parametrech HighlightPreTag a HighlightPostTag, který je definovaný jako vložený s funkcí návrh.
+Zvýrazňování aplikuje styl písma na znaky ve výsledku, které odpovídají vstupu. Pokud je například částečný vstup "mikro", výsledek by se **zobrazil jako** mikroměkký, **mikroskop Scope a** tak dále. Zvýrazňování je založeno na parametrech HighlightPreTag a HighlightPostTag, který je definovaný jako vložený s funkcí návrh.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
@@ -139,43 +139,43 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Navrhnout funkci
 
-Pokud používáte jazyk C# a aplikaci MVC, soubor **HomeController.cs** v adresáři Controllers je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě DocumentsOperationsExtensions. navrhuje](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
+Pokud používáte jazyk C# a aplikaci MVC, soubor **HomeController.cs** v adresáři Controllers je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě SuggestAsync](/dotnet/api/azure.search.documents.searchclient.suggestasync). Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](search-howto-dotnet-sdk.md).
 
-`InitSearch`Metoda vytvoří ověřeného klienta http indexu pro službu Azure kognitivní hledání. Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+`InitSearch`Metoda vytvoří ověřeného klienta http indexu pro službu Azure kognitivní hledání. Vlastnosti třídy [SuggestOptions](/dotnet/api/azure.search.documents.suggestoptions) určují, která pole se prohledávají a vrátí ve výsledcích, počet shod a zda se používá přibližná shoda. 
+
+Pro automatické dokončování je přibližné porovnání omezené na jednu vzdálenost úprav (jeden vynechán nebo nesprávně umístěn znak). Všimněte si, že Přibližná shoda v dotazech automatického dokončování může někdy způsobit neočekávané výsledky v závislosti na velikosti indexu a způsobu jeho horizontálně dělené. Další informace najdete v tématu [dělení a horizontálního dělení koncepty](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards).
 
 ```csharp
-public ActionResult Suggest(bool highlights, bool fuzzy, string term)
+public async Task<ActionResult> SuggestAsync(bool highlights, bool fuzzy, string term)
 {
     InitSearch();
 
-    // Call suggest API and return results
-    SuggestParameters sp = new SuggestParameters()
+    var options = new SuggestOptions()
     {
-        Select = HotelName,
-        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
-        Top = 5
+        Size = 8,
     };
 
     if (highlights)
     {
-        sp.HighlightPreTag = "<b>";
-        sp.HighlightPostTag = "</b>";
+        options.HighlightPreTag = "<b>";
+        options.HighlightPostTag = "</b>";
     }
 
-    DocumentSuggestResult resp = _indexClient.Documents.Suggest(term, "sg", sp);
+    // Only one suggester can be specified per index.
+    // The suggester for the Hotels index enables autocomplete/suggestions on the HotelName field only.
+    // During indexing, HotelNames are indexed in patterns that support autocomplete and suggested results.
+    var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", options).ConfigureAwait(false);
 
     // Convert the suggest query results to a list that can be displayed in the client.
-    List<string> suggestions = resp.Results.Select(x => x.Text).ToList();
-    return new JsonResult
-    {
-        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        Data = suggestions
-    };
+    List<string> suggestions = suggestResult.Value.Results.Select(x => x.Text).ToList();
+
+    // Return the list of suggestions.
+    return new JsonResult(suggestions);
 }
 ```
 
-Funkce Suggest přebírá dva parametry, které určují, jestli se mají vracet zvýrazněné shody nebo jestli se má kromě vstupního hledaného výrazu použít i přibližná shoda. Metoda vytvoří [objekt SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), který je poté předán rozhraní API navrhnout. Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
+Funkce SuggestAsync přebírá dva parametry, které určují, zda jsou vraceny nejzajímavější výsledky nebo se neshoduje s tím, že se kromě hledaného výrazu používá přibližná shoda. Do navrhovaných výsledků lze zahrnout až osm shod. Metoda vytvoří [objekt SuggestOptions](/dotnet/api/azure.search.documents.suggestoptions), který je poté předán rozhraní API navrhnout. Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
 
 ## <a name="autocomplete"></a>Automatické dokončování
 
@@ -183,7 +183,7 @@ V tomto případě byl kód uživatelského rozhraní hledání na základě ná
 
 ```javascript
 $(function () {
-    // using modified jQuery Autocomplete plugin v1.2.6 https://xdsoft.net/jqplugins/autocomplete/
+    // using modified jQuery Autocomplete plugin v1.2.8 https://xdsoft.net/jqplugins/autocomplete/
     // $.autocomplete -> $.autocompleteInline
     $("#searchbox1").autocompleteInline({
         appendMethod: "replace",
@@ -218,37 +218,33 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Funkce AutoComplete
 
-Automatické dokončování je založené na [metodě DocumentsOperationsExtensions. AutoComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Stejně jako u návrhů by tento blok kódu byl v souboru **HomeController.cs** .
+Automatické dokončování je založené na [metodě AutocompleteAsync](/dotnet/api/azure.search.documents.searchclient.autocompleteasync). Stejně jako u návrhů by tento blok kódu byl v souboru **HomeController.cs** .
 
 ```csharp
-public ActionResult AutoComplete(string term)
+public async Task<ActionResult> AutoCompleteAsync(string term)
 {
     InitSearch();
-    //Call autocomplete API and return results
-    AutocompleteParameters ap = new AutocompleteParameters()
-    {
-        AutocompleteMode = AutocompleteMode.OneTermWithContext,
-        UseFuzzyMatching = false,
-        Top = 5
-    };
-    AutocompleteResult autocompleteResult = _indexClient.Documents.Autocomplete(term, "sg", ap);
 
-    // Convert the Suggest results to a list that can be displayed in the client.
-    List<string> autocomplete = autocompleteResult.Results.Select(x => x.Text).ToList();
-    return new JsonResult
+    // Setup the autocomplete parameters.
+    var ap = new AutocompleteOptions()
     {
-        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        Data = autocomplete
+        Mode = AutocompleteMode.OneTermWithContext,
+        Size = 6
     };
+    var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap).ConfigureAwait(false);
+
+    // Convert the autocompleteResult results to a list that can be displayed in the client.
+    List<string> autocomplete = autocompleteResult.Value.Results.Select(x => x.Text).ToList();
+
+    return new JsonResult(autocomplete);
 }
 ```
 
-Funkce automatického dokončování přijímá vstup hledaného termínu. Metoda vytvoří [objekt AutoCompleteParameters](https://docs.microsoft.com/rest/api/searchservice/autocomplete). Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
+Funkce automatického dokončování přijímá vstup hledaného termínu. Metoda vytvoří [objekt AutoCompleteParameters](/rest/api/searchservice/autocomplete). Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
 
 ## <a name="next-steps"></a>Další kroky
 
 Pomocí těchto odkazů můžete najít ucelené pokyny nebo kód, který demonstruje prostředí hledání s možností vyhledávání. Mezi příklady kódu patří hybridní implementace návrhů a automatické dokončování.
 
 + [Kurz: Vytvoření první aplikace v jazyce C# (lekce 3)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [Ukázka kódu C#: Azure-Search-dotnet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
-+ [Ukázka C# a JavaScriptu se ZBYTKem kódu pro souběžné navýšení](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
++ [Ukázka kódu C#: Azure-Search-dotnet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)

@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – nastavení privátního cloudu jako lokality pro zotavení po havárii pomocí nástroje VMware Site Recovery Manager
-description: Popisuje, jak nastavit privátní cloud CloudSimple jako lokalitu pro zotavení po havárii pro místní úlohy VMware.
-author: sharaths-cs
-ms.author: b-shsury
+description: Popisuje, jak nastavit privátní cloud CloudSimple jako lokalitu pro zotavení po havárii pomocí nástroje VMware Site Recovery Manager.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d71f8aec1f35514ac6c10b17b6f7b69b79b05bd
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77565923"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897905"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Nastavení privátního cloudu jako cíle zotavení po havárii pomocí nástroje VMware Site Recovery Manager
 
@@ -111,7 +111,7 @@ Nainstalujte zařízení vSphere Replication (vRA) do místního prostředí pod
 
 2. Nasaďte vRA do svého místního prostředí pomocí OVF v VR ISO od vmware.com. V případě vRA 6,5 obsahuje [Tento blog VMware](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) relevantní informace.
 
-3. Zaregistrujte své místní vRA s jednotným přihlašováním vCenter v místní lokalitě. Podrobné pokyny pro vSphere Replication 6,5 najdete v VMware vSphere dokumentu VMware o [instalaci a konfiguraci replikace 6,5](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
+3. Zaregistrujte své místní vRA pomocí vCenter Single Sign-On v místní lokalitě. Podrobné pokyny pro vSphere Replication 6,5 najdete v VMware vSphere dokumentu VMware o [instalaci a konfiguraci replikace 6,5](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
 
 ## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>Instalace zařízení replikace vSphere do prostředí privátního cloudu
 
@@ -137,7 +137,7 @@ Instalace se skládá z těchto kroků vysoké úrovně:
 3. Připravte prostředí privátního cloudu pro instalaci vRA.
 4. Nasaďte vRA do privátního cloudu pomocí OVF v VR ISO od vmware.com. V případě vRA 6,5 má [Tento blog VMware](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) relevantní informace.
 5. Nakonfigurujte pravidla brány firewall pro vRA. Je vysvětleno níže v [portálu CloudSimple: Konfigurace pravidel brány firewall pro vRA](#cloudsimple-portal-configure-firewall-rules-for-vra).
-6. Zaregistrujte privátní cloud vRA s jednotným přihlašováním vCenter na webu privátního cloudu.
+6. V privátním cloudu Zaregistrujte vRA privátního cloudu pomocí vCenter Single Sign-On.
 7. Nakonfigurujte připojení replikace vSphere mezi oběma zařízeními. Zajistěte, aby byly požadované porty otevřeny v rámci bran firewall. Seznam čísel portů, která musí být otevřená pro vSphere replikaci 6,5, najdete v [tomto článku znalostní báze VMware](https://kb.vmware.com/s/article/2087769) .
 
 Podrobné pokyny k instalaci pro vSphere Replication 6,5 najdete v VMware vSphere dokumentu VMware [instalace a konfigurace replikace 6,5](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
@@ -227,7 +227,7 @@ Máte plnou kontrolu nad replikací vSphere a SRM software ve vašem prostředí
 * [OVF možnosti při nasazení vSphere replikace 6,5](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
 * [VMware vSphere instalace a konfigurace replikace 6,5](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [Předpoklady a osvědčené postupy pro SRM 6,5](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
-* [Site Recovery Manager v topologii dvou lokalit s jednou instancí vCenter Server na řadič služeb platformy](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
+* [Site Recovery Manager v topologii Two-Site s jednou instancí vCenter Server na řadič služeb platformy](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
 * [Průvodce instalací a konfigurací nástroje VMware Site Recovery Manager 6,5](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)
 * [Blog VMware v SRM s replikací založenými na poli a replikací vSphere](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)
 * [Blog VMware na SRM možnosti pro více lokalit](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite)

@@ -4,13 +4,14 @@ description: Průvodce rychlým startem pro Application Insights agenta. Monitor
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
-ms.date: 04/23/2019
-ms.openlocfilehash: 66b0ba083dc05c10dbf001eebcbbdfa269285c2e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 01/22/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318959"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587383"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Začínáme s agentem Azure Monitor Application Insights pro místní servery
 
@@ -25,6 +26,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 ## <a name="download-and-install-via-powershell-gallery"></a>Stažení a instalace prostřednictvím Galerie prostředí PowerShell
 
 ### <a name="install-prerequisites"></a>Požadavky na instalaci
+
+> [!NOTE]
+> Od dubna 2020 Galerie prostředí PowerShell zastaralou TLS 1,1 a 1,0.
+>
+> Požadavky na additionnal, které byste mohli potřebovat, najdete v tématu [podpora Galerie prostředí POWERSHELL TLS](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support).
+>
+
 Spusťte PowerShell jako správce.
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
@@ -44,7 +52,7 @@ Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
 ### <a name="enable-monitoring"></a>Povolení monitorování
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
     
         
@@ -62,7 +70,7 @@ Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ```
 ### <a name="enable-monitoring"></a>Povolení monitorování
 ```powershell
-Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 
@@ -71,9 +79,9 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  Zobrazení telemetrických dat:
 
-- [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
+- [Prozkoumejte metriky](../essentials/metrics-charts.md) pro monitorování výkonu a využití.
 - [Prohledejte události a protokoly](./diagnostic-search.md) a Diagnostikujte problémy.
-- K pokročilejším dotazům [použijte Analytics](../log-query/log-query-overview.md) .
+- K pokročilejším dotazům [použijte Analytics](../logs/log-query-overview.md) .
 - [Vytváření řídicích panelů](./overview-dashboard.md).
 
  Přidání další telemetrie:

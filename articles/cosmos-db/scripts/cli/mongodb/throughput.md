@@ -1,30 +1,31 @@
 ---
-title: Aktualizace RU/s pro databázi a kolekci pro MongoDB API pro Azure Cosmos DB
-description: Aktualizace RU/s pro databázi a kolekci pro MongoDB API pro Azure Cosmos DB
+title: Operace skriptů Azure CLI pro propustnost (RU/s) pro služby Azure Cosmos DB API pro prostředky MongoDB
+description: Operace skriptů Azure CLI pro propustnost (RU/s) pro služby Azure Cosmos DB API pro prostředky MongoDB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 6f3bd23f11abf0e72dc4b7affe54ada42e0cf712
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 54aebb48986b94dbebea400e6b6ee155a54f514b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432171"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566210"
 ---
-# <a name="update-rus-for-a-database-and-collection-for-mongodb-api-for-azure-cosmos-db-using-azure-cli"></a>Aktualizace RU/s pro databázi a kolekci pro MongoDB API pro Azure Cosmos DB pomocí Azure CLI
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-graph-for-azure-cosmos-db-api-for-mongodb"></a>Operace propustnosti (RU/s) pomocí Azure CLI pro databázi nebo graf pro rozhraní Azure Cosmos DB API pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](../../../includes/appliesto-mongodb-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.9.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.12.1 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří databázi se sdílenou propustností a kolekcí s vyhrazenou propustností pro Azure Cosmos DB rozhraní MongoDB API a pak aktualizuje propustnost pro databázi i kolekci.
+Tento skript vytvoří databázi MongoDB se sdílenou propustností a kolekcí s vyhrazenou propustností a pak aktualizuje propustnost pro obojí. Skript pak migruje z úrovně Standard na propustnost automatického škálování a potom po migraci přečte hodnotu propustnosti automatického škálování.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/mongodb/throughput.sh "Update RU/s for an Azure Cosmos DB MongoDB API database and collection.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/mongodb/throughput.sh "Throughput operations for Azure Cosmos DB API for MongoDB.")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -46,6 +47,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [AZ cosmosdb MongoDB Collection Create](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-create) | Vytvoří kolekci rozhraní MongoDB API pro Azure Cosmos. |
 | [AZ cosmosdb MongoDB Database propustnost Update](/cli/azure/cosmosdb/mongodb/database/throughput#az-cosmosdb-mongodb-database-throughput-update) | Aktualizujte ru pro databázi rozhraní API Azure Cosmos MongoDB. |
 | [AZ cosmosdb MongoDB Collection Update propustnost](/cli/azure/cosmosdb/mongodb/collection/throughput#az-cosmosdb-mongodb-collection-throughput-update) | Aktualizujte ru pro kolekci rozhraní API Azure Cosmos MongoDB. |
+| [AZ cosmosdb MongoDB Database propustnost migrace](/cli/azure/cosmosdb/mongodb/database/throughput#az-cosmosdb-mongodb-database-throughput-migrate) | Migrace propustnosti databáze. |
+| [AZ cosmosdb MongoDB Collection migrace propustnosti](/cli/azure/cosmosdb/mongodb/collection/throughput#az-cosmosdb-mongodb-collection-throughput-migrate) | Migruje propustnost kolekce. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky

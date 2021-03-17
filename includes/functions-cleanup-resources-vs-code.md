@@ -2,25 +2,21 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/12/2020
+ms.date: 10/20/2020
 ms.author: glenga
-ms.openlocfilehash: 2eb8b988d7d65b444fe41ecb21dddfab4ff4cfa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: af009a3f04f17d9d7e518d2dd02343a8ed54e342
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125828"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93425002"
 ---
-1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Open in portal` .
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-1. Zvolte aplikaci Function App a stiskněte klávesu ENTER. Na Azure Portal se otevře stránka Function App.
+Když přejdete k [dalšímu kroku](#next-steps) a přidáte do své funkce vazbu Azure Storage fronty, budete muset všechny vaše prostředky zachovávat, abyste mohli vytvářet informace o tom, co jste už provedli.
 
-1. Na kartě **Přehled** vyberte odkaz s názvem vedle **skupiny prostředků**.
+V opačném případě můžete pomocí následujících kroků odstranit aplikaci Function App a její související prostředky, abyste se vyhnuli dalším nákladům.
 
-   :::image type="content" source="./media/functions-cleanup-resources-vs-code/functions-app-delete-resource-group.png" alt-text="Vyberte skupinu prostředků, kterou chcete odstranit ze stránky aplikace funkcí.":::
+[!INCLUDE [functions-cleanup-resources-vs-code-inner.md](functions-cleanup-resources-vs-code-inner.md)]
 
-1. Na stránce **Skupina prostředků** zkontrolujte seznam zahrnutých prostředků a ověřte, že jsou to ty, které chcete odstranit.
- 
-1. Vyberte **Odstranit skupinu prostředků** a postupujte podle pokynů.
-
-   Odstranění může trvat několik minut. Po jeho dokončení se na několik sekund zobrazí oznámení. K zobrazení tohoto oznámení můžete také vybrat ikonu zvonku v horní části stránky.
+Další informace o nákladech na funkce najdete v tématu [odhad nákladů na plán spotřeby](../articles/azure-functions/functions-consumption-costs.md).

@@ -1,97 +1,47 @@
 ---
-title: Co je nového pro Azure Key Vault | Microsoft Docs
+title: Co je nového pro Azure Key Vault
 description: Nedávné aktualizace pro Azure Key Vault
 services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: overview
-ms.date: 07/27/2020
+ms.topic: reference
+ms.date: 01/12/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b469ea0d0a91cc4ca7f0602dffbcc63b31c60855
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ef2c42ae76dc5e1511494635904228a8b574d483
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588360"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132184"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Co je nového pro Azure Key Vault
 
-> [!WARNING]
-> **Červenec 2020**: Existují dvě aktualizace trezoru klíčů, které mají schopnost ovlivnit implementace služby: [v trezoru klíčů se ve výchozím nastavení](#soft-delete-on-by-default) a [změny certifikátu Azure TLS](#azure-tls-certificate-changes)standardně odstraní. Podrobnosti najdete níže.
-
 Tady je co je nový s Azure Key Vault. Nové funkce a vylepšení jsou také oznamovány na [Key Vaultm kanálu služby Azure Updates](https://azure.microsoft.com/updates/?category=security&query=Key%20vault).
 
-## <a name="soft-delete-on-by-default"></a>Obnovitelné odstranění ve výchozím nastavení
+## <a name="october-2020"></a>Říjen 2020
 
-Po konci 2020 **budou obnovitelné odstranění standardně zapnuté pro všechny trezory klíčů**, a to jak nové, tak i již existující. Úplné podrobnosti o této potenciálně zásadní změně a postupu při hledání ovlivněných trezorů klíčů a jejich opětovné aktualizace najdete v článku [tiché odstranění bude povoleno u všech trezorů klíčů](soft-delete-change.md). 
+> [!WARNING]
+> Tyto aktualizace mají schopnost ovlivnit Azure Key Vault implementace.
 
-## <a name="azure-tls-certificate-changes"></a>Změny certifikátu Azure TLS  
+Aby se [ve výchozím nastavení podporovaly obnovitelné odstranění](#soft-delete-on-by-default), byly provedeny dvě změny Azure Key Vault rutiny PowerShellu:
 
-Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jiné sady kořenových certifikačních autorit (CAs). Tato změna se provádí, protože aktuální certifikáty certifikační autority nejsou v rozporu s jedním z požadavků na základní hodnoty fóra CA nebo prohlížeče.
+- Parametry DisableSoftDelete a EnableSoftDelete [Update-AzKeyVault](/powershell/module/az.keyvault/update-azkeyvault) jsou zastaralé.
+- Výstup rutiny [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) už nemá `SecretValueText` atribut.
 
-### <a name="when-will-this-change-happen"></a>Kdy bude tato změna provedena?
+## <a name="july-2020"></a>Červenec 2020
 
-- Služba Azure Active Directory (Azure AD) zahájila tento přechod 7. července 2020.
-- Všechny nově vytvořené koncové body služby Azure TLS/SSL obsahují aktualizované certifikáty, které jsou zřetězené až s novými kořenovými certifikačními autoritami. 
-- Stávající koncové body Azure se budou postupně přecházet ve fázích od 13. srpna 2020 a končí 26. října 2020.
+> [!WARNING]
+> Tyto dvě aktualizace mají schopnost ovlivnit Azure Key Vault implementace.
 
-> [!IMPORTANT]
-> Zákazníci možná budou muset po této změně aktualizovat své aplikace, aby se předešlo chybám připojení při pokusu o připojení ke službám Azure. 
+### <a name="soft-delete-on-by-default"></a>Obnovitelné odstranění ve výchozím nastavení
 
-### <a name="what-is-changing"></a>Co se mění?
+**Pro všechny trezory klíčů je nutné povolit obnovitelné odstranění**, a to jak nové, tak i již existující. V několika dalších měsících se možnost odhlásit z slabého odstranění zastaralá. Úplné podrobnosti o této potenciálně zásadní změně a postupu při hledání ovlivněných trezorů klíčů a jejich opětovné aktualizace najdete v článku [tiché odstranění bude povoleno u všech trezorů klíčů](soft-delete-change.md).
 
-V dnešní době je většina certifikátů TLS používaných službami Azure zřetězená s následující kořenovou certifikační autoritou:
+### <a name="azure-tls-certificate-changes"></a>Změny certifikátu Azure TLS
 
-| Běžný název certifikační autority | Kryptografický otisk (SHA1) |
-|--|--|
-| [Baltimore CyberTrust Root](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt) | d4de20d05e66fc53fe1a50882c78db2852cae474 |
-
-Certifikáty TLS používané službami Azure budou zřetězit až do jednoho z následujících kořenových certifikačních autorit:
-
-| Běžný název certifikační autority | Kryptografický otisk (SHA1) |
-|--|--|
-| [Globální kořenový adresář G2 DigiCert](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) | df3c24f9bfd666761b268073fe06d1cc8d4f82a4 |
-| [Globální kořenová certifikační autorita DigiCert](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) | a8985d3a65e5e5c4b2d7d66d40c6dd2fb19c5436 |
-| [Baltimore CyberTrust Root](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt) | d4de20d05e66fc53fe1a50882c78db2852cae474 |
-| [D – DŮVĚRYHODNÁ kořenová třída 3, CA 2 2009](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt) | 58e8abb0361533fb80f79b1b6d29d3ff8d5f00f0 |
-| [Kořenová certifikační autorita RSA společnosti Microsoft 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt) | 73a5e64a3bff8316ff0edccc618a906e4eae4d74 | 
-| [Kořenová certifikační autorita Microsoft EV ECC 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20EV%20ECC%20Root%20Certificate%20Authority%202017.crt) | 6b1937abfd64e1e40daf2262a27857c015d6228d |
-
-### <a name="when-can-i-retire-the-old-intermediate-thumbprint"></a>Kdy je možné vyřadit starý zprostředkující kryptografický otisk?
-
-Aktuální certifikáty certifikační autority *nebudou* odvolány do 15. února 2021. Po tomto datu můžete ze svého kódu odebrat staré kryptografické otisky.
-
-Pokud se změní toto datum, budete upozorněni na nové datum odvolání.
-
-### <a name="will-this-affect-me"></a>Bude to mít vliv na mě?
-
-Očekáváme, že **většina zákazníků Azure** nebude mít vliv na.  Vaše aplikace ale může mít vliv, pokud explicitně určí seznam přijatelných certifikačních autorit. Tento postup se označuje jako připnutí certifikátu.
-
-Tady je několik způsobů, jak zjistit, jestli je vaše aplikace ovlivněná:
-
-- Vyhledejte ve zdrojovém kódu svůj kryptografický otisk, běžný název a další vlastnosti certifikátu pro všechny certifikační autority IT společnosti Microsoft, které najdete [tady](https://www.microsoft.com/pki/mscorp/cps/default.htm). Pokud dojde ke shodě, bude ovlivněna vaše aplikace. Pokud chcete tento problém vyřešit, aktualizujte zdrojový kód tak, aby obsahoval nové certifikační autority. Osvědčeným postupem je zajistit, aby certifikační autority bylo možné přidat nebo upravit v krátkém časovém oznámení. Oborové předpisy vyžadují, aby se certifikáty certifikační autority nahradily do 7 dnů, takže se zákazníci, kteří spoléhají na připnutí, musí reagovat rychle.
-
-- Pokud máte aplikaci, která se integruje s rozhraními API Azure nebo jinými službami Azure, a nejste si jistí, jestli používá připnutí certifikátů, obraťte se na dodavatele aplikace.
-
-- Různé operační systémy a jazykové moduly runtime, které komunikují se službami Azure, můžou vyžadovat další kroky pro správné sestavení řetězce certifikátů s těmito novými kořeny: 
-    - **Linux**: mnoho distribucí vyžaduje, abyste do/etc/SSL/certs. přidali CAS uvedené výše. Konkrétní pokyny najdete v dokumentaci k distribuci.
-    - **Java**: Ujistěte se, že úložiště klíčů Java obsahuje výše uvedené CAS.
-    - **Windows spuštěné v odpojeném prostředí**: systémy běžící v odpojených prostředích budou muset mít do úložiště důvěryhodných kořenových certifikačních autorit uvedené výše uvedené kořeny a do úložiště zprostředkujících certifikačních autorit se přidaly zprostředkující.
-    - **Android**: Projděte si dokumentaci k vašemu zařízení a verzi Androidu.
-    - **Další hardwarová zařízení, zejména IoT**: obraťte se na výrobce zařízení. 
-
-- Pokud máte prostředí, ve kterém jsou pravidla brány firewall nastavená tak, aby umožňovala odchozí volání jenom na určitý seznam odvolaných certifikátů (CRL) stáhnout a/nebo online ověřovací umístění protokolu OCSP (Online Certificate Status Protocol). Bude potřeba, abyste povolili následující seznam CRL a adresy URL protokolu OCSP:
-
-    - http://crl3&#46;d igicert&#46;com
-    - http://crl4&#46;d igicert&#46;com
-    - http://ocsp&#46;d igicert&#46;com
-    - http://www&#46;d-Trust&#46;NET
-    - http://root-c3-ca2-2009&#46;&#46;protokolu OCSP-Trust&#46;NET
-    - http://crl&#46; Microsoft&#46;com
-    - http://oneocsp&#46; Microsoft&#46;com
-    - http://ocsp&#46; msocsp&#46;com
+Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jiné sady kořenových certifikačních autorit (CAs). Tato změna se provádí, protože aktuální certifikáty certifikační autority nejsou v rozporu s jedním z požadavků na základní hodnoty fóra CA nebo prohlížeče.  Úplné podrobnosti najdete v tématu [změny certifikátu Azure TLS](../../security/fundamentals/tls-certificate-changes.md).
 
 ## <a name="june-2020"></a>Červen 2020
 
@@ -108,7 +58,7 @@ Soukromé koncové body jsou nyní k dispozici ve verzi Preview. Služba privát
 ## <a name="2019"></a>2019
 
 - Vydání Azure Key Vault sad SDK nové generace. Příklady jejich použití najdete v tématu rychlý Start Azure Key Vault tajných kódů pro [Python](../secrets/quick-create-python.md), [.NET](../secrets/quick-create-net.md), [Java](../secrets/quick-create-java.md)a [Node.js](../secrets/quick-create-node.md)
-- Nové zásady Azure pro správu certifikátů trezoru klíčů. Přečtěte si [Azure Policy předdefinované definice pro Key Vault](../policy-samples.md).
+- Nové zásady Azure pro správu certifikátů trezoru klíčů. Přečtěte si [Azure Policy předdefinované definice pro Key Vault](../policy-reference.md).
 - Rozšíření virtuálního počítače Azure Key Vault je teď všeobecně dostupné.  Viz [Key Vault rozšíření pro virtuální počítače pro Linux](../../virtual-machines/extensions/key-vault-linux.md) a [rozšíření virtuálního počítače Key Vault pro Windows](../../virtual-machines/extensions/key-vault-windows.md).
 - Správa tajných kódů řízených událostmi pro Azure Key Vault nyní k dispozici v Azure Event Grid. Další informace najdete v tématu [schéma Event Grid pro události v Azure Key Vault] (.. /.. /Event-Grid/Event-Schema-Key-Vault.MD] a Naučte se, jak [přijímat a reagovat na oznámení o trezoru klíčů pomocí Azure Event Grid](event-grid-tutorial.md).
 
@@ -116,7 +66,7 @@ Soukromé koncové body jsou nyní k dispozici ve verzi Preview. Služba privát
 
 Nové funkce a integrace vydané tento rok:
 
-- Integrace s Azure Functions. Příklad scénáře využití [Azure Functions](../../azure-functions/index.yml) pro operace trezoru klíčů najdete v tématu [Automatizace rotace tajného](../secrets/tutorial-rotation.md)klíče. 
+- Integrace s Azure Functions. Příklad scénáře využití [Azure Functions](../../azure-functions/index.yml) pro operace trezoru klíčů najdete v tématu [Automatizace rotace tajného](../secrets/tutorial-rotation.md)klíče.
 - [Integrace s Azure Databricks](/azure/databricks/scenarios/store-secrets-azure-key-vault). Díky tomu Azure Databricks nyní podporuje dva typy tajných oborů: zálohovaných Azure Key Vault a datacihly. Další informace najdete v tématu [Vytvoření oboru tajného klíče, který je Azure Key Vault zálohovaný](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope) .
 - [Koncové body služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md).
 
@@ -124,39 +74,39 @@ Nové funkce a integrace vydané tento rok:
 
 Nové funkce vydané tento rok:
 
-- Spravované klíče účtu úložiště. Funkce klíčů účtu úložiště přidala snazší integraci s Azure Storage. Další informace najdete v tématu Přehled – [Přehled klíčů spravovaného účtu úložiště](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys).
-- Obnovitelné odstranění. Funkce obnovitelného odstranění vylepšuje ochranu dat vašich trezorů klíčů a objektů trezoru klíčů. Další informace najdete v tématu Přehled – [Přehled o tichém odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).
+- Spravované klíče účtu úložiště. Funkce klíčů účtu úložiště přidala snazší integraci s Azure Storage. Další informace najdete v tématu Přehled – [Přehled klíčů spravovaného účtu úložiště](../secrets/overview-storage-keys.md).
+- Obnovitelné odstranění. Funkce obnovitelného odstranění vylepšuje ochranu dat vašich trezorů klíčů a objektů trezoru klíčů. Další informace najdete v tématu Přehled – [Přehled o tichém odstranění](./soft-delete-overview.md).
 
 ## <a name="2015"></a>2015
 
 Nové funkce vydané tento rok:
 - Správa certifikátů: Přidáno do 26. září 2016 jako funkce pro GA verze 2015-06-01.
 
-Obecná dostupnost (verze 2015-06-01) byla oznámena 24. června 2015. V této verzi byly provedeny následující změny: 
+Obecná dostupnost (verze 2015-06-01) byla oznámena 24. června 2015. V této verzi byly provedeny následující změny:
 - Odstranění klíče – pole použít se odebralo.
 - Načte informace o klíči – pole použít se odebralo.
 - Import klíče do trezoru – pole použít se odebralo.
-- Obnoví klíč – pole použít se odebralo.     
-- Byl změněn "RSA_OAEP" na "RSA-výplně OAEP" pro algoritmy RSA. Přečtěte si [o klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md).    
- 
-Verze Second Preview (verze 2015-02-01-Preview) byla oznámena 20. dubna 2015. Další informace najdete v příspěvku na blogu [REST API Update](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) . Následující úkoly byly aktualizovány:
- 
+- Obnoví klíč – pole použít se odebralo.
+- Byl změněn "RSA_OAEP" na "RSA-výplně OAEP" pro algoritmy RSA. Přečtěte si [o klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md).
+
+Verze Second Preview (verze 2015-02-01-Preview) byla oznámena 20. dubna 2015. Další informace najdete v příspěvku na blogu [REST API Update](/archive/blogs/kv/rest-api-update) . Následující úkoly byly aktualizovány:
+
 - Výpis klíčů v trezoru – Podpora stránkování je přidána do provozu.
-- Vypíše verze operace přidané klíčovým seznamem verzí klíče.  
+- Vypíše verze operace přidané klíčovým seznamem verzí klíče.
 - Výpis tajných klíčů v trezoru – Podpora stránkování byla přidána.
-- Vypíše verze operace s tajným kódem, aby vypisovat verze tajného kódu.  
-- Všechny operace – do atributů se přidaly vytvořená a aktualizovaná časová razítka.  
+- Vypíše verze operace s tajným kódem, aby vypisovat verze tajného kódu.
+- Všechny operace – do atributů se přidaly vytvořená a aktualizovaná časová razítka.
 - Vytvoření tajného klíče přidávaného obsahu k tajným klíčům.
 - Vytvořte značky přidané klíčovým slovem jako volitelné informace.
 - Vytvoření značek přidaných po tajnosti jako volitelných informací.
 - Aktualizace značek přidaných klíčovým slovem jako volitelné informace
 - Aktualizace značek přidaných tajnými znaky jako volitelné informace
-- Změnila se maximální velikost tajných kódů z 10 K na 25 kB. Přečtěte si informace [o klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md).    
+- Změnila se maximální velikost tajných kódů z 10 K na 25 kB. Přečtěte si informace [o klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md).
 
 ## <a name="2014"></a>2014
- 
-První verze Preview (verze 2014-12-08-Preview) byla oznámena 8. ledna 2015.  
+
+První verze Preview (verze 2014-12-08-Preview) byla oznámena 8. ledna 2015.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte další otázky, kontaktujte nás prosím prostřednictvím [podpory](https://azure.microsoft.com/support/options/).  
+Pokud máte další otázky, kontaktujte nás prosím prostřednictvím [podpory](https://azure.microsoft.com/support/options/).

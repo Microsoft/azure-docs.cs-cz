@@ -7,12 +7,13 @@ ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089409"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490777"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Použití emulátoru Azurite pro vývoj místních Azure Storage
 
@@ -69,7 +70,7 @@ Podporovaná jsou následující nastavení:
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Instalace a spuštění Azurite pomocí NPM
 
-Tato metoda instalace vyžaduje, abyste měli nainstalovanou [verziNode.js 8,0 nebo novější](https://nodejs.org) . Správce balíčků Node (npm) je nástroj pro správu balíčků, který je součástí každé instalace Node.js. Po instalaci Node.js spusťte následující `npm` příkaz a nainstalujte Azurite.
+Tato metoda instalace vyžaduje, abyste měli nainstalovanou [ verziNode.js 8,0 nebo novější](https://nodejs.org) . Správce balíčků Node (npm) je nástroj pro správu balíčků, který je součástí každé instalace Node.js. Po instalaci Node.js spusťte následující `npm` příkaz a nainstalujte Azurite.
 
 ```console
 npm install -g azurite
@@ -281,7 +282,7 @@ azurite --version
 
 ### <a name="certificate-configuration-https"></a>Konfigurace certifikátu (HTTPS)
 
-**Volitelné** – ve výchozím nastavení používá AZURITE protokol HTTP. Režim HTTPS povolíte tak, že zadáte cestu k souboru certifikátu aplikace PEM (Privacy Enhanced mail) nebo [Personal Information Exchange (. pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) na `--cert` přepínač.
+**Volitelné** – ve výchozím nastavení používá AZURITE protokol HTTP. Režim HTTPS povolíte tak, že zadáte cestu k souboru certifikátu aplikace PEM (Privacy Enhanced mail) nebo [Personal Information Exchange (. pfx)](/windows-hardware/drivers/install/personal-information-exchange---pfx--files) na `--cert` přepínač.
 
 Když `--cert` je k dispozici soubor PEM, je nutné zadat odpovídající `--key` přepínač.
 
@@ -327,10 +328,10 @@ Pokud používáte sady SDK Azure, spusťte Azurite s `--oauth basic and --cert 
 
 ### <a name="well-known-storage-account-and-key"></a>Dobře známý účet úložiště a klíč
 
-Azurite přijímá stejný dobře známý účet a klíč, který používá starší emulátor úložiště Azure.
+Azurite přijímá stejný dobře známý účet a klíč, který používá starší emulátor Azure Storage.
 
-- Název účtu:`devstoreaccount1`
-- Klíč účtu:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
+- Název účtu: `devstoreaccount1`
+- Klíč účtu: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 ### <a name="custom-storage-accounts-and-keys"></a>Vlastní účty úložiště a klíče
 
@@ -508,12 +509,12 @@ Pomocí těchto kroků přidejte Azurite HTTPS do Průzkumník služby Storage:
 
 Při inicializaci Azurite se můžou v umístění pracovního prostoru vytvořit následující soubory a složky.
 
-- `__blobstorage__`– Adresář obsahující Azurite BLOB Service trvalá binární data
-- `__queuestorage__`-Adresář, který obsahuje zadržená binární data služby front Azurite
-- `__azurite_db_blob__.json`– Azurite soubor metadat služby BLOB Service
-- `__azurite_db_blob_extent__.json`– Azurite soubor metadat rozsahu služby BLOB Service
-- `__azurite_db_queue__.json`– Soubor metadat služby Azurite Queue
-- `__azurite_db_queue_extent__.json`– Soubor metadat rozsahu služby fronty Azurite
+- `__blobstorage__` – Adresář obsahující Azurite BLOB Service trvalá binární data
+- `__queuestorage__` -Adresář, který obsahuje zadržená binární data služby front Azurite
+- `__azurite_db_blob__.json` – Azurite soubor metadat služby BLOB Service
+- `__azurite_db_blob_extent__.json` – Azurite soubor metadat rozsahu služby BLOB Service
+- `__azurite_db_queue__.json` – Soubor metadat služby Azurite Queue
+- `__azurite_db_queue_extent__.json` – Soubor metadat rozsahu služby fronty Azurite
 
 Pokud chcete Azurite vyčistit, odstraňte výše uvedené soubory a složky a restartujte emulátor.
 
@@ -555,11 +556,17 @@ Azurite podporuje geograficky redundantní replikaci s přístupem pro čtení (
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
+### <a name="table-support"></a>Podpora tabulek
+
+Podpora tabulek v Azurite je momentálně ve vývoji a je otevřená pro přispívání! V případě nejnovějšího postupu se podívejte na projekt [tabulky Azurite V3](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) .
+
+Podpora trvalých funkcí vyžaduje tabulky.
+
 ## <a name="azurite-is-open-source"></a>Azurite je open source
 
 Příspěvky a návrhy pro Azurite jsou Vítá vás. Přejít na stránku [projektu GitHubu](https://github.com/Azure/Azurite/projects) Azurite nebo [problémy GitHubu](https://github.com/Azure/Azurite/issues) pro milníky a pracovní položky, které sledujeme pro nadcházející funkce a opravy chyb. Podrobné pracovní položky jsou také sledovány na GitHubu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použijte emulátor úložiště Azure pro vývoj a testování](storage-use-emulator.md) dokumentů staršího emulátoru úložiště Azure, který nahrazuje Azurite.
+- [Použijte emulátor Azure Storage pro vývoj a testování](storage-use-emulator.md) dokumentů starší verze Azure Storage emulátor, který nahrazuje Azurite.
 - [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md) vysvětluje, jak sestavit platný připojovací řetězec Azure Storage.

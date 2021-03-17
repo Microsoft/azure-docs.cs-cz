@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: e3339f883d177366a64187e0c090752527802c8d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183254"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968770"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Použití Azure Resource Manager skriptů založených na sadě SDK ke správě zařízení StorSimple
 
@@ -49,7 +49,7 @@ K dispozici jsou následující ukázkové skripty pro automatizaci různých ú
 
 V této části se používá ukázkový skript a podrobnosti o různých krocích potřebných ke spuštění skriptu.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -57,7 +57,7 @@ Než začnete, ujistěte se, že máte následující:
     * V prostředí Windows postupujte podle pokynů v části [instalace a konfigurace Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte StorSimple, můžete na hostitele Windows serveru nainstalovat Azure PowerShell.
     * V prostředí Linux nebo MacOS postupujte podle pokynů v části [instalace a konfigurace Azure PowerShell v MacOS nebo Linux](/powershell/azure/install-az-ps).
 
-Další informace o používání Azure PowerShell najdete na webu [Začínáme s používáním Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Další informace o používání Azure PowerShell najdete na webu [Začínáme s používáním Azure PowerShell](/powershell/azure/get-started-azureps).
 
 ### <a name="run-azure-powershell-script"></a>Spustit skript Azure PowerShell
 

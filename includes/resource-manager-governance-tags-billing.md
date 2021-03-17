@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 226079b1970508004c55c54cd3de6d2e9475aa08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 34388fe975df359c695b9358cafcd3ae711af0cf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75970126"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900861"
 ---
 Po označení prostředků můžete zobrazit náklady na prostředky s příslušnými značkami. Zobrazení nejnovějšího využití v analýze nákladů nějakou dobu trvá, proto náklady možná ještě nevidíte. Jakmile budou náklady k dispozici, můžete zobrazit náklady na prostředky napříč skupinami prostředků ve vašem předplatném. K zobrazení nákladů musí mít uživatelé [přístup k fakturačním údajům na úrovni předplatného](../articles/cost-management-billing/manage/manage-billing-access.md).
 
@@ -25,4 +25,4 @@ Pak vyberte filtr hodnoty značky a vyberte **Použít**.
 
 ![Zobrazení nákladů podle značky](./media/resource-manager-governance-tags-billing/view-costs-by-tag.png)
 
-Můžete použít také [rozhraní API pro fakturaci Azure](../articles/cost-management-billing/manage/usage-rate-card-overview.md) a zobrazit náklady prostřednictvím kódu programu.
+K programovému zobrazení nákladů můžete použít také [Přehled rozhraní API pro využití Azure](../articles/cost-management-billing/manage/consumption-api-overview.md) .

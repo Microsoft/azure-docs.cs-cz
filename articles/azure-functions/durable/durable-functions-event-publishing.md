@@ -3,12 +3,12 @@ title: Durable Functions publikování do Azure Event Grid (Preview)
 description: Naučte se konfigurovat automatické publikování Azure Event Grid pro Durable Functions.
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081742"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175953"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do Azure Event Grid (Preview)
 
@@ -22,11 +22,11 @@ Tato funkce je užitečná v následujících situacích:
 
 * **Dlouhodobě běžící aktivita na pozadí**: Pokud použijete Durable Functions pro dlouhou běžící aktivitu na pozadí, tato funkce vám pomůže seznámit se s aktuálním stavem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Do projektu Durable Functions nainstalujte [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) .
 * Nainstalujte [emulátor Azure Storage](../../storage/common/storage-use-emulator.md) (jenom Windows) nebo použijte existující účet Azure Storage.
-* Instalace rozhraní příkazového [řádku Azure](/cli/azure/?view=azure-cli-latest) nebo použití [Azure Cloud Shell](../../cloud-shell/overview.md)
+* Instalace rozhraní příkazového [řádku Azure](/cli/azure/) nebo použití [Azure Cloud Shell](../../cloud-shell/overview.md)
 
 ## <a name="create-a-custom-event-grid-topic"></a>Vytvoření vlastního Event Gridho tématu
 
@@ -126,11 +126,11 @@ Pomocí Azure Portal vytvořte další aplikaci Function App, která bude naslou
 
 ### <a name="create-an-event-grid-trigger-function"></a>Vytvoření funkce triggeru Event Grid
 
-1. Ve vaší aplikaci Function App vyberte **funkce**a pak vyberte **+ Přidat** . 
+1. Ve vaší aplikaci Function App vyberte **funkce** a pak vyberte **+ Přidat** . 
 
    :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
 
-1. Vyhledejte **Event Grid**a pak vyberte šablonu **triggeru Azure Event Grid** . 
+1. Vyhledejte **Event Grid** a pak vyberte šablonu **triggeru Azure Event Grid** . 
 
     :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Vyberte šablonu triggeru Event gridu v Azure Portal." border="true":::
 
@@ -237,7 +237,7 @@ V projektu Durable Functions, který jste nakonfigurovali dříve, spusťte lad�
 Následující seznam vysvětluje schéma událostí životního cyklu:
 
 * **`id`**: Jedinečný identifikátor pro událost Event Grid.
-* **`subject`**: Cesta k předmětu události. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}`budou `Running` ,, `Completed` `Failed` a `Terminated` .  
+* **`subject`**: Cesta k předmětu události. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` budou `Running` ,, `Completed` `Failed` a `Terminated` .  
 * **`data`**: Durable Functions konkrétní parametry.
   * **`hubName`**: [TaskHub](durable-functions-task-hubs.md) název.
   * **`functionName`**: Název funkce nástroje Orchestrator.

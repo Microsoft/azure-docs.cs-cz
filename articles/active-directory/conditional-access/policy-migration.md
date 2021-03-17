@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185913"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90601650"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Migrace klasických zásad podmíněného přístupu
 
@@ -73,9 +73,9 @@ V souvislosti s konsolidací zásad jsou důležité tyto aspekty:
    - Pokud to váš scénář vyžaduje, kombinovat více podmínek. 
    - Vyberte několik požadavků grantu jako řízení přístupu a Zkombinujte je s logickým operátorem *or* (vyžadovat jeden z vybraných ovládacích prvků) nebo s logickým operátorem *and* (vyžadovat všechny vybrané ovládací prvky).
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
+### <a name="exchange-online"></a>Exchange Online
 
-Pokud chcete migrovat klasické zásady pro **Office 365 Exchange Online** , které zahrnují **Exchange Active Sync** jako podmínku klientské aplikace, možná je nebudete moct sloučit do jedné nové zásady. 
+Pokud chcete migrovat klasické zásady pro **Exchange Online** , které zahrnují **Exchange Active Sync** stav klientských aplikací, možná je nebudete moct sloučit do jedné nové zásady. 
 
 Jedná se například o případ, kdy chcete podporovat všechny typy klientských aplikací. V nové zásadě, která má **Exchange Active Sync** jako podmínku klientské aplikace, nemůžete vybrat další klientské aplikace.
 
@@ -89,7 +89,7 @@ Pokud máte novou zásadu, která má nakonfigurované podmínky **Exchange Acti
 
 ![Podmínky podmíněného přístupu](./media/policy-migration/16.png)
  
-Klasické zásady založené na aplikacích pro Office 365 Exchange Online, které zahrnují **Exchange Active Sync** jako stav klientských aplikací, umožňují použití **podporovaných** a **nepodporovaných** platforem zařízení. I když v souvisejících nových zásadách nemůžete konfigurovat jednotlivé platformy zařízení, můžete omezit podporu jenom na [podporované platformy zařízení](concept-conditional-access-conditions.md#device-platforms) . 
+Klasické zásady na základě aplikací pro Exchange Online, které zahrnují **Exchange Active Sync** jako podmínky klientských aplikací, umožňují použití **podporovaných** a **nepodporovaných** platforem zařízení. I když v souvisejících nových zásadách nemůžete konfigurovat jednotlivé platformy zařízení, můžete omezit podporu jenom na [podporované platformy zařízení](concept-conditional-access-conditions.md#device-platforms) . 
 
 ![Podmíněný přístup vybrat Exchange ActiveSync](./media/policy-migration/65.png)
 

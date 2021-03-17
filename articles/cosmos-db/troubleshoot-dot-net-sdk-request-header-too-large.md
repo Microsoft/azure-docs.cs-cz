@@ -1,49 +1,53 @@
 ---
-title: Řešení potíží s hlavičkou požadavku je příliš velké nebo 400 Chybný požadavek v Azure Cosmos DB
-description: Jak diagnostikovat a opravit příliš velkou výjimku v hlavičce požadavku
+title: Řešení potíží s chybou "zpráva" je příliš velká "nebo 400 Chybný požadavek v Azure Cosmos DB
+description: Naučte se diagnostikovat a opravovat příliš velkou výjimku v hlavičce požadavku.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 942af52c43a1d4526a42f20df40abf3f510e0ee6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: a14503bc56777563b6360143efaa86a136b22278
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294175"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340511"
 ---
-# <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Diagnostika a řešení potíží s hlavičkou požadavku Azure Cosmos DB příliš velkou zprávu
-V hlavičce požadavku je vyvolána příliš velká zpráva s kódem chyby HTTP 400. K této chybě dojde, pokud se velikost hlavičky požadavku zvětšila příliš velká a přesahuje maximální povolenou velikost. Doporučujeme, abyste používali nejnovější verzi sady SDK. Ujistěte se, že používáte alespoň verzi 3. x nebo 2. x, protože tyto verze přidávají do zprávy výjimky trasování velikosti hlavičky.
+# <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Diagnostika a řešení potíží Azure Cosmos DB zpráva "moc velká hlavička" žádosti
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
+Zpráva "požadavek je příliš velká" se vyvolala s kódem chyby HTTP 400. K této chybě dochází, pokud se velikost hlavičky požadavku zvětšila tak, aby byla větší než maximální povolená velikost. Doporučujeme, abyste používali nejnovější verzi sady SDK. Použijte alespoň verzi 3. x nebo 2. x, protože tyto verze přidávají do zprávy výjimky trasování velikosti hlavičky.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
-Hlavička požadavku je příliš velká zpráva, pokud je relace nebo token pro pokračování příliš velká. Následující části popisují příčinu a řešení problému v jednotlivých kategoriích.
+Zpráva "příliš velká hlavička žádosti" se zobrazí, pokud je relace nebo token pro pokračování příliš velká. Následující části popisují příčinu problému a jeho řešení v jednotlivých kategoriích.
 
-### <a name="1-session-token-too-large"></a>1. token relace je moc velký.
+### <a name="session-token-is-too-large"></a>Token relace je příliš velký.
 
 #### <a name="cause"></a>Příčina:
-400 Chybný požadavek je pravděpodobně způsoben velkým objemem tokenu relace. Pokud jsou tyto příkazy pravdivé, potvrdí, že token relace je příliš velký.
+Je-li token relace příliš velký, pravděpodobně došlo k chybě 400 chybného požadavku. Pokud jsou splněny následující příkazy, token relace je příliš velký:
 
-* K této chybě dochází při operaci Point, jako je vytváření, čtení, aktualizace a další. tam, kde není k dispozici token pro pokračování.
-* Výjimka byla spuštěna bez provedení změn v aplikaci. Token relace roste jako počet oddílů, které se v kontejneru zvyšují. Počet oddílů, které se zvyšují, s nárůstem objemu dat nebo se zvyšuje propustnost.
+* K chybě dochází při operacích s bodem, jako je vytvoření, čtení a aktualizace, kde není k dispozici token pro pokračování.
+* Výjimka byla spuštěna bez provedení změn v aplikaci. Token relace roste, protože počet oddílů se zvětšuje v kontejneru. Počet oddílů se zvyšuje podle objemu dat, nebo pokud se zvyšuje propustnost.
 
 #### <a name="temporary-mitigation"></a>Dočasné zmírnění rizika: 
-Obnovte všechny tokeny relace restartováním klientské aplikace. Token relace se nakonec zvětší zpátky na předchozí velikost, která způsobila daný problém. Proto použijte řešení v další části, abyste se tomuto problému zcela vyhnuli.
+Obnovte všechny tokeny relace restartováním klientské aplikace. Nakonec se token relace zvětší na předchozí velikost, která tento problém způsobila. Chcete-li se tomuto problému zcela vyhnout, použijte řešení v následující části.
 
 #### <a name="solution"></a>Řešení:
-1. Postupujte podle pokynů v článku tipy pro výkon [rozhraní .NET V3](performance-tips-dotnet-sdk-v3-sql.md) nebo [.NET v2](performance-tips.md) a převeďte aplikaci na použití přímého režimu připojení s protokolem TCP. Přímý režim s protokolem TCP nemá omezení velikosti záhlaví, jako je protokol HTTP, takže se tomuto problému vyhne. Ujistěte se, že používáte nejnovější verzi sady SDK, která obsahuje opravu pro operace dotazů, pokud není k dispozici spolupráce služby.
-2. Pokud režim přímého připojení s protokolem TCP není možností pro vaše úlohy, můžete ho zmírnit změnou [úrovně konzistence klienta](how-to-manage-consistency.md). Token relace se používá pouze pro konzistenci relací, což je výchozí úroveň konzistence pro Azure Cosmos DB. Jiné úrovně konzistence nepoužívají token relace.
+1. Postupujte podle pokynů v článcích tipy pro výkon [rozhraní .NET V3](performance-tips-dotnet-sdk-v3-sql.md) nebo [.NET v2](performance-tips.md) . Převeďte aplikaci tak, aby používala přímý režim připojení s protokolem TCP (Transmission Control Protocol). Režim přímého připojení s protokolem TCP nemá omezení velikosti záhlaví, jako je protokol HTTP, takže se tomuto problému vyhne. Ujistěte se, že používáte nejnovější verzi sady SDK, která obsahuje opravu pro operace dotazů, pokud není k dispozici spolupráce služby.
+1. Pokud režim přímého připojení s protokolem TCP není pro vaše zatížení dostupný, můžete ho zmírnit změnou [úrovně konzistence klienta](how-to-manage-consistency.md). Token relace se používá pouze pro konzistenci relací, což je výchozí úroveň konzistence pro Azure Cosmos DB. Jiné úrovně konzistence nepoužívají token relace.
 
-### <a name="2-continuation-token-too-large"></a>2. token pro pokračování je moc velký.
+### <a name="continuation-token-is-too-large"></a>Token pro pokračování je moc velký.
 
 #### <a name="cause"></a>Příčina:
-400 Chybný požadavek se děje na operacích dotazu, kde se používá token pro pokračování. Pokud token pro pokračování vzrostl příliš velkou nebo pokud různé dotazy mají jiné velikosti tokenů pro pokračování.
+V operacích dotazu, kde je použit token pokračování v případě, že byl token pokračování vypěstován příliš velký nebo pokud různé dotazy mají jiné velikosti tokenů pro pokračování, dojde k chybě 400.
     
 #### <a name="solution"></a>Řešení:
-1. Postupujte podle pokynů v článku tipy pro výkon [rozhraní .NET V3](performance-tips-dotnet-sdk-v3-sql.md) nebo [.NET v2](performance-tips.md) a převeďte aplikaci na použití přímého režimu připojení s protokolem TCP. Přímý režim s protokolem TCP nemá omezení velikosti záhlaví, jako je protokol HTTP, takže se tomuto problému vyhne. 
-3. Pokud režim přímého připojení s protokolem TCP není možností pro vaše zatížení, zkuste nastavit `ResponseContinuationTokenLimitInKb` možnost. Tuto možnost najdete v části `FeedOptions` pro v2 nebo `QueryRequestOptions` v v3.
+1. Postupujte podle pokynů v článcích tipy pro výkon [rozhraní .NET V3](performance-tips-dotnet-sdk-v3-sql.md) nebo [.NET v2](performance-tips.md) . Převeďte aplikaci tak, aby používala přímý režim připojení s protokolem TCP. Režim přímého připojení s protokolem TCP nemá omezení velikosti záhlaví, jako je protokol HTTP, takže se tomuto problému vyhne. 
+1. Pokud režim přímého připojení s protokolem TCP není pro vaše zatížení možnost, nastavte `ResponseContinuationTokenLimitInKb` možnost. Tuto možnost můžete najít v `FeedOptions` v v2 nebo `QueryRequestOptions` v3.
 
 ## <a name="next-steps"></a>Další kroky
-* [Diagnostika a řešení potíží](troubleshoot-dot-net-sdk.md) při použití Azure Cosmos DB .NET SDK
-* Informace o zásadách výkonu pro [.NET V3](performance-tips-dotnet-sdk-v3-sql.md) a [.NET v2](performance-tips.md)
+* [Diagnostikujte a řešte](troubleshoot-dot-net-sdk.md) potíže při použití sady Azure Cosmos DB .NET SDK.
+* Seznamte se s pokyny k výkonu pro [.NET V3](performance-tips-dotnet-sdk-v3-sql.md) a [.NET v2](performance-tips.md).

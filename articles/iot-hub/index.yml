@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 949a007a51fce4a76dcc840f187ca353c88e8ede
-  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-  ms.translationtype: HT
+  ms.openlocfilehash: 391d4372e71241854c3a9920c35ce0711fe6634e
+  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87291588"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102030660"
 landingContent:
 - title: začínáme
   linkLists:
@@ -40,12 +40,6 @@ landingContent:
     links:
     - text: Práce s dvojčaty zařízení s využitím Node.js
       url: iot-hub-node-node-twin-getstarted.md
-    - text: Principy metrik IoT
-      url: iot-hub-metrics.md
-    - text: Protokolování diagnostiky
-      url: iot-hub-monitor-resource-health.md
-    - text: Monitorování, detekce a řešení potíží s odpojením s IoT
-      url: iot-hub-troubleshoot-connectivity.md
 - title: Škálování vlastního řešení
   linkLists:
   - linkListType: concept
@@ -84,6 +78,38 @@ landingContent:
       url: tutorial-routing-config-message-routing-rm-template.md
     - text: Spuštění a zobrazení výsledků směrování
       url: tutorial-routing-view-message-routing-results.md
+- title: Aktualizace zařízení pro IoT Hub (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled aktualizace zařízení pro IoT Hub
+      url: ../iot-hub-device-update/understand-device-update.md
+  - linkListType: how-to-guide
+    links:
+    - text: Importovat aktualizaci
+      url: ../iot-hub-device-update/import-update.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvořit skupinu aktualizací
+      url: ../iot-hub-device-update/create-update-group.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nasazení aktualizace
+      url: ../iot-hub-device-update/deploy-update.md
+- title: IoT Hub v Azure Stack Hubu (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled pro operátory
+      url: /azure-stack/operator/iot-hub-rp-overview
+    - text: Přehled pro uživatele
+      url: /azure-stack/user/iot-hub-overview
+  - linkListType: how-to-guide
+    links:
+    - text: Požadavky pro instalaci
+      url: /azure-stack/operator/iot-hub-rp-prerequisites
+    - text: Jak nainstalovat IoT Hub v Azure Stack Hubu
+      url: /azure-stack/operator/iot-hub-rp-install
 - title: Použití nástrojů IoT Hubu
   linkLists:
   - linkListType: how-to-guide
@@ -91,7 +117,19 @@ landingContent:
     - text: Použití IoT Tools pro VS Code
       url: iot-hub-create-use-iot-toolkit.md
     - text: Průzkumník IoT
-      url: ../iot-pnp/howto-install-iot-explorer.md
+      url: ../iot-pnp/howto-use-iot-explorer.md
+- title: Monitorování a odstraňování potíží s IoT Hubem
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Monitorování IoT Hubu
+      url: monitor-iot-hub.md
+    - text: Referenční informace k monitorování dat IoT Hubu
+      url: monitor-iot-hub-reference.md
+    - text: Monitorování, detekce a řešení potíží s odpojením s využitím IoT Hubu
+      url: iot-hub-troubleshoot-connectivity.md
+    - text: Uspořádání událostí připojení zařízení z Azure IoT Hubu pomocí služby Azure Cosmos DB
+      url: iot-hub-how-to-order-connection-state-events.md
 - title: Použití certifikátů zabezpečení IoT
   linkLists:
   - linkListType: concept

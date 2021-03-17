@@ -3,15 +3,16 @@ title: Kontrola fakturačních dat předplatného Azure s využitím rozhraní R
 description: Naučte se používat rozhraní Azure REST API ke kontrole podrobných údajů fakturace předplatného. Výsledky si můžete přizpůsobit s využitím filtrů.
 author: lleonard-msft
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ac5bbc1d93347654cea118ea9521d6074a9af7c8
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461829"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132376"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Kontrola fakturace předplatného pomocí rozhraní REST API
 
@@ -31,7 +32,7 @@ Authorization: Bearer
 
 Parametr `{subscriptionID}` je povinný a identifikuje cílové předplatné.
 
-Parametr `{billingPeriod}` je povinný a určuje aktuální [fakturační období](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
+Parametr `{billingPeriod}` je povinný a určuje aktuální [fakturační období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 
 Parametry `${startDate}` a `${endDate}` jsou v tomto příkladu povinné, ale pro koncový bod volitelné. Určují rozsah kalendářních dat jako řetězce ve formátu YYYY-MM-DD (příklady: `'20180501'` a `'20180615'`).
 
@@ -40,7 +41,7 @@ Jsou vyžadovány následující hlavičky:
 |Hlavička požadavku|Popis|
 |--------------------|-----------------|
 |*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|
-|*Authorization:*|Povinná hodnota. Nastavte na platný [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) `Bearer`. |
+|*Authorization:*|Povinná hodnota. Nastavte na platný [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients) `Bearer`. |
 
 ## <a name="response"></a>Odpověď
 
@@ -84,7 +85,7 @@ Každá položka v **hodnotě** představuje podrobné informace o použití slu
 |**meterDetails** | Podrobné informace o použití. |
 |**nextLink**| Při nastavení určuje adresu URL další stránky podrobností. Prázdné, pokud je stránka poslední. |
 
-Tento příklad je zkrácený; úplný popis každého pole odpovědi najdete v části věnované [výpisu podrobností o využití](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy).
+Tento příklad je zkrácený; úplný popis každého pole odpovědi najdete v části věnované [výpisu podrobností o využití](/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy).
 
 Jiné stavové kódy označují chybové stavy. V těchto případech objekt odpovědi vysvětluje, proč se požadavek nezdařil.
 
@@ -100,6 +101,6 @@ Jiné stavové kódy označují chybové stavy. V těchto případech objekt odp
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- Projděte si [Přehled služby Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api).
-- Prozkoumejte [Rozhraní REST API podnikové fakturace](https://docs.microsoft.com/rest/api/billing/).
-- [Začínáme s Azure REST API](https://docs.microsoft.com/rest/api/azure/)
+- Projděte si [Přehled služby Enterprise Reporting](./enterprise-api.md).
+- Prozkoumejte [Rozhraní REST API podnikové fakturace](/rest/api/billing/).
+- [Začínáme s Azure REST API](/rest/api/azure/)

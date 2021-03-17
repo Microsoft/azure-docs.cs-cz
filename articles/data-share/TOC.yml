@@ -1,6 +1,7 @@
 - name: Dokumentace ke službě Azure Data Share
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Co je Azure Data Share?
       href: overview.md
@@ -8,7 +9,9 @@
       href: supported-data-stores.md
 - name: Rychlé starty
   items:
-    - name: Vytvoření sdílené datové složky – šablona ARM
+    - name: Sdílení dat – Azure Portal
+      href: share-your-data-portal.md
+    - name: Sdílení dat – šablona Resource Manageru
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Kurzy
@@ -16,10 +19,18 @@
   items:
     - name: Sdílení dat
       href: share-your-data.md
+      displayName: 'Azure CLI, az datashare account create, az datashare create'
     - name: Přijetí a získání dat
       href: subscribe-to-data-share.md
+      displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: Koncepty
   items:
+    - name: Zabezpečení
+      items:
+        - name: Přehled zabezpečení
+          href: security.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Terminologie služby Azure Data Share
       href: terminology.md
     - name: Role a požadavky
@@ -28,16 +39,19 @@
       href: concepts-pricing.md
 - name: ukázky
   items:
-    - name: Ukázky kódů
-      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure PowerShell
       href: samples-powershell.md
 - name: Návody
   items:
-    - name: Monitorování
-      href: how-to-monitor.md
-    - name: Řešení potíží
-      href: data-share-troubleshoot.md
+    - name: Sdílení a příjem dat podle zdroje
+      items:
+        - name: Sdílení z Azure Storage
+          href: how-to-share-from-storage.md
+        - name: Sdílení z Azure SQL Database nebo Azure Synapse Analytics
+          href: how-to-share-from-sql.md
+        - name: Sdílení z Azure Data Exploreru
+          href: /azure/data-explorer/data-share
+          maintainContext: true
     - name: Přidání datových sad
       href: how-to-add-datasets.md
     - name: Konfigurace mapování datové sady
@@ -48,24 +62,26 @@
       href: how-to-delete-invitation.md
     - name: Odvolání předplatného sdílené složky
       href: how-to-revoke-share-subscription.md
-    - name: Zabezpečení
-      href: security.md
+    - name: Monitorování
+      href: how-to-monitor.md
     - name: Zotavení po havárii
       href: disaster-recovery.md
+    - name: Řešení potíží
+      href: data-share-troubleshoot.md
 - name: Referenční informace
   items:
     - name: .NET
       href: /dotnet/api/overview/azure/datashare
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
+      href: /powershell/module/az.datashare/
     - name: REST API
       href: /rest/api/datashare
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest'
+      href: /cli/azure/azure-cli-reference-for-data-share
 - name: Zdroje a prostředky
   items:
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
+      href: /answers/topics/azure-data-share.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: Blog

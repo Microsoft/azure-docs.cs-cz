@@ -3,17 +3,20 @@ title: Použití estimatoru Change feed-Azure Cosmos DB
 description: Naučte se používat estimatoru Change feed k analýze průběhu procesoru změny kanálu.
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 90ae7951196d424b59d3780469cb7e01519c51f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263574"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339831"
 ---
 # <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje, jak můžete monitorovat průběh instancí [procesoru změn kanálu](./change-feed-processor.md) při čtení kanálu změn.
 
@@ -52,7 +55,7 @@ Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení
 > [!NOTE]
 > Estimator kanálu změn není nutné nasazovat jako součást procesoru změny kanálu ani být součástí stejného projektu. Může být nezávislý a musí běžet v zcela jiné instanci. Stačí použít stejný název a konfiguraci zapůjčení.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
@@ -63,4 +66,4 @@ Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení
 Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 
 * [Přehled procesoru Change feed](change-feed-processor.md)
-* [Počáteční čas procesoru kanálu změn](how-to-configure-change-feed-start-time.md)
+* [Počáteční čas procesoru kanálu změn](./change-feed-processor.md#starting-time)

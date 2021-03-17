@@ -10,10 +10,15 @@
     - name: Zabezpečené virtuální centrum – šablona Resource Manageru
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
+    - name: Nasazení brány firewall se šablonou zásady – ARM
+      displayName: Resource Manager
+      href: quick-firewall-policy.md
 - name: Kurzy
   items:
     - name: Zabezpečení virtuálního centra – portál
       href: secure-cloud-network.md
+    - name: Zabezpečení virtuálního centra – PowerShell
+      href: secure-cloud-network-powershell.md
     - name: Zabezpečení virtuální sítě WAN rozbočovače – portál
       href: secure-hybrid-network.md
 - name: Koncepty
@@ -26,6 +31,8 @@
       href: deployment-overview.md
     - name: Poskytovatelé partnerů pro zabezpečení
       href: trusted-security-partners.md
+    - name: Zabezpečení center pomocí služby Check Point Cloudguard Connect
+      href: check-point-overview.md
     - name: Skupiny IP adres
       href: ip-groups.md
     - name: Logika zpracování pravidel
@@ -36,6 +43,10 @@
       href: threat-intelligence-settings.md
     - name: FQDN v pravidlech sítě
       href: fqdn-filtering-network-rules.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Nasazení poskytovatelů partnerů pro zabezpečení
@@ -46,6 +57,8 @@
       href: dns-settings.md
     - name: Nasazení několika veřejných IP adres – PowerShell
       href: multiple-public-ip-powershell.md
+    - name: Definování hierarchie pravidel
+      href: rule-hierarchy.md
 - name: Referenční informace
   items:
     - name: Azure CLI

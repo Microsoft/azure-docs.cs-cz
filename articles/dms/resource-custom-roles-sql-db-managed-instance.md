@@ -10,18 +10,18 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
-ms.date: 10/25/2019
-ms.openlocfilehash: 6d720eee668edf2de968f0ce6955a5a586a92419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 02/08/2021
+ms.openlocfilehash: 1228234b6a2904c453ec92f3c09a7b3f55604953
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087675"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363759"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Vlastní role pro SQL Server migrací do online migrace spravované instance Azure SQL
 
-Azure Database Migration Service používá ID aplikace pro interakci se službami Azure. ID aplikace vyžaduje buď roli přispěvatel na úrovni předplatného (kterou nepovoluje mnoho podnikových bezpečnostních oddělení), nebo vytváření vlastních rolí, které udělují specifická oprávnění, která služba Azure Database Migration vyžaduje. Vzhledem k tomu, že v Azure Active Directory existuje limit 2 000 vlastních rolí, možná budete chtít zkombinovat všechna oprávnění požadovaná konkrétně ID aplikace do jedné nebo dvou vlastních rolí a potom udělit ID aplikace vlastní roli pro konkrétní objekty nebo skupiny prostředků (vs. na úrovni předplatného). Pokud počet vlastních rolí není obavou, můžete vlastní role rozdělit podle typu prostředku a vytvořit tak tři vlastní role celkem, jak je popsáno níže.
+Azure Database Migration Service používá ID aplikace pro interakci se službami Azure. ID aplikace vyžaduje buď roli přispěvatel na úrovni předplatného (kterou nepovoluje mnoho podnikových bezpečnostních oddělení), nebo vytváření vlastních rolí, které udělují specifická oprávnění, která Azure Database Migration Service vyžaduje. Vzhledem k tomu, že v Azure Active Directory existuje limit 2 000 vlastních rolí, možná budete chtít zkombinovat všechna oprávnění požadovaná konkrétně ID aplikace do jedné nebo dvou vlastních rolí a potom udělit ID aplikace vlastní roli pro konkrétní objekty nebo skupiny prostředků (vs. na úrovni předplatného). Pokud počet vlastních rolí není obavou, můžete vlastní role rozdělit podle typu prostředku a vytvořit tak tři vlastní role celkem, jak je popsáno níže.
 
 Část AssignableScopes řetězce JSON definice role umožňuje řídit, kde se oprávnění zobrazí v uživatelském rozhraní **přiřazení role** na portálu. Pravděpodobně budete chtít definovat roli na skupině prostředků nebo dokonce na úrovni prostředků, abyste zabránili zbytečnému uživatelskému rozhraní s dalšími rolemi. Všimněte si, že se neprovádí skutečné přiřazení role.
 
@@ -32,7 +32,7 @@ V současnosti doporučujeme vytvořit minimálně dvě vlastní role pro ID apl
 > [!NOTE]
 > Poslední požadavek na vlastní roli možná nebude možné odebrat, protože nový kód spravované instance SQL je nasazený do Azure.
 
-**Vlastní role pro ID aplikace** Tato role se vyžaduje pro Azure Database Migration Service migrace na úrovni *prostředku* nebo *skupiny prostředků* (Další informace o ID aplikace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
+**Vlastní role pro ID aplikace** Tato role se vyžaduje pro Azure Database Migration Service migrace na úrovni *prostředku* nebo *skupiny prostředků* , která hostuje Azure Database Migration Service (Další informace o ID aplikace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md)).
 
 ```json
 {
@@ -63,7 +63,7 @@ V současnosti doporučujeme vytvořit minimálně dvě vlastní role pro ID apl
 }
 ```
 
-**Vlastní role pro ID aplikace – předplatné** Tato role je nutná pro Azure Database Migration Service migrace na úrovni *předplatného* .
+**Vlastní role pro ID aplikace – předplatné** Tato role je nutná pro Azure Database Migration Service migrace na úrovni *předplatného* , která je hostitelem spravované instance SQL.
 
 ```json
 {
@@ -83,12 +83,12 @@ V současnosti doporučujeme vytvořit minimálně dvě vlastní role pro ID apl
 
 Výše uvedený formát JSON musí být uložen ve třech textových souborech a můžete použít buď AzureRM, AZ PowerShell rutiny nebo Azure CLI, a vytvořit tak role pomocí rutiny **New-AzureRmRoleDefinition (AzureRM)** nebo **New-AzRoleDefinition (AZ)**.
 
-Další informace najdete v článku [vlastní role Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
+Další informace najdete v článku [vlastní role Azure](../role-based-access-control/custom-roles.md).
 
 Po vytvoření těchto vlastních rolí je nutné přidat přiřazení rolí uživatelům a ID aplikací k příslušným prostředkům nebo skupinám prostředků:
 
-* Roli "DMS role – ID aplikace" musí být udělené ID aplikace, které se bude používat pro migrace, a také na úrovni účtu úložiště, Azure Database Migration Service instance a úrovně prostředků spravované instance SQL.
-* Role "DMS role – ID aplikace-sub" musí být udělena ID aplikace na úrovni předplatného (přidělení u prostředku nebo skupiny prostředků se nezdaří). Tento požadavek je dočasný, dokud není nasazena aktualizace kódu.
+* Roli "DMS role – ID aplikace" musí být udělené ID aplikace, které se bude používat pro migrace, a také na úrovni účtu úložiště, Azure Database Migration Service instance a úrovně prostředků spravované instance SQL. Je udělená na úrovni prostředku nebo skupiny prostředků, která hostuje Azure Database Migration Service.
+* Role "DMS role-App ID-sub" musí být udělena ID aplikace na úrovni předplatného, která hostuje spravovanou instanci SQL (přidělení u prostředku nebo skupiny prostředků se nezdaří). Tento požadavek je dočasný, dokud není nasazena aktualizace kódu.
 
 ## <a name="expanded-number-of-roles"></a>Rozšířený počet rolí
 
@@ -142,7 +142,7 @@ Pokud se počet vlastních rolí v Azure Active Directory netýká, doporučujem
 
 Pokud chcete přiřadit roli uživatelům nebo ID aplikace, otevřete Azure Portal, proveďte následující kroky:
 
-1. Přejděte do skupiny prostředků nebo prostředku (s výjimkou role, kterou je třeba pro předplatné udělit), přejděte na **Access Control**a potom se posuňte, abyste našli vlastní role, které jste právě vytvořili.
+1. Přejděte do skupiny prostředků nebo prostředku (s výjimkou role, kterou je třeba pro předplatné udělit), přejděte na **Access Control** a potom se posuňte, abyste našli vlastní role, které jste právě vytvořili.
 
 2. Vyberte příslušnou roli, vyberte ID aplikace a pak změny uložte.
 

@@ -1,19 +1,19 @@
 ---
 title: Pokyny pro efektivní prostředí ukotvení
 description: Pokyny a požadavky pro efektivní vytváření a hledání kotev pomocí prostorových kotev Azure.
-author: mattwojo
-manager: jken
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: mattwoj
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1877934cb604d140d7700c2e537d6dc187b63cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6bc500516de7e554c38a335ea57519a39c8f602
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83005530"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487499"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Vytvoření efektivního prostředí pro kotvu pomocí prostorových kotev Azure
 

@@ -3,23 +3,21 @@ title: Vzory – přesnost přidávání – LUIS
 titleSuffix: Azure Cognitive Services
 description: Přidejte šablony vzorů, aby se zlepšila přesnost předpovědi v aplikacích Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 4af8f90abf2a5581ec18ea550cbc5f1a5df50a4e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5e1cc5cdda921e63315c2904d560b7ad3939776
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344896"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018850"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Postup přidání vzorů pro zlepšení přesnosti předpovědi
-Jakmile aplikace LUIS přijme koncový bod projevy, použijte [vzorek](luis-concept-patterns.md) , který vylepšit přesnost předpovědi pro projevy, která odhalí vzor v textovém pořadí a v textovém výběru. Vzory používají specifickou [syntaxi](luis-concept-patterns.md#pattern-syntax) k označení umístění: [entity](luis-concept-entity-types.md), [role](luis-concept-roles.md)entit a volitelného textu.
+Jakmile aplikace LUIS přijme koncový bod projevy, použijte [vzorek](luis-concept-patterns.md) , který vylepšit přesnost předpovědi pro projevy, která odhalí vzor v textovém pořadí a v textovém výběru. Vzory používají specifickou [syntaxi](luis-concept-patterns.md#pattern-syntax) k označení umístění: [entity](luis-concept-entity-types.md), [role](./luis-concept-entity-types.md)entit a volitelného textu.
 
 > [!CAUTION]
 > Vzory zahrnují jenom nadřazené entity strojového učení, ne subentity.
@@ -37,7 +35,7 @@ Jakmile aplikace LUIS přijme koncový bod projevy, použijte [vzorek](luis-conc
     > [!div class="mx-imgBorder"]
     > ![Snímek entity pro vzor](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Pokud vaše entita obsahuje [roli](luis-concept-roles.md), uveďte roli s jednou dvojtečkou, `:` za názvem entity, jako je například `{Location:Origin}` . Seznam rolí pro entity se zobrazí v seznamu. Vyberte roli a pak vyberte zadat.
+    Pokud vaše entita obsahuje [roli](./luis-concept-entity-types.md), uveďte roli s jednou dvojtečkou, `:` za názvem entity, jako je například `{Location:Origin}` . Seznam rolí pro entity se zobrazí v seznamu. Vyberte roli a pak vyberte zadat.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky entity s rolí](./media/luis-how-to-model-intent-pattern/patterns-4.png)

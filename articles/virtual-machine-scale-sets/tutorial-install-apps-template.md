@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 19eb5ae89598a0ebe040f1ffda5afd2b9e3d5e7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: d5eba5486e7d26e62379e0112cd4b95322e6dae1
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059256"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705230"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Kurz: Instalace aplikací ve škálovacích sadách virtuálních počítačů pomocí šablony Azure
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. V předchozím kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače k nasazení instancí virtuálních počítačů. Tato vlastní image zahrnovala ruční instalaci a konfiguraci aplikací. Můžete automatizovat také instalaci aplikací do škálovací sady po nasazení všech instancí virtuálních počítačů nebo aktualizaci aplikace, která je již ve škálovací sadě spuštěná. Co se v tomto kurzu naučíte:
@@ -24,11 +24,11 @@ Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve š
 > * Použití rozšíření vlastních skriptů Azure
 > * Aktualizace spuštěné aplikace ve škálovací sadě
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.29 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Co je rozšíření vlastních skriptů Azure?
@@ -76,10 +76,10 @@ Pomocí ukázkové šablony teď vytvoříme škálovací sadu a použijeme roz�
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az group deployment create](/cli/azure/group/deployment). Po zobrazení výzvy zadejte své uživatelské jméno a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
+Teď vytvořte sadu škálování virtuálního počítače pomocí [AZ Deployment Group Create](/cli/azure/deployment/group). Po zobrazení výzvy zadejte své uživatelské jméno a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy.json
 ```
@@ -134,10 +134,10 @@ Pokud chcete aktualizovat definici rozšíření vlastních skriptů, upravte sv
 }
 ```
 
-Opět použijte konfiguraci rozšíření vlastních skriptů na instance virtuálních počítačů ve škálovací sadě pomocí příkazu [az group deployment create](/cli/azure/group/deployment). Tato šablona *azuredeployv2.json* slouží k použití aktualizované verze aplikace. V praxi upravíte stávající šablonu *azuredeploy.json* tak, aby odkazovala na aktualizovaný instalační skript, jak je znázorněno v předchozí části. Po zobrazení výzvy zadejte stejné uživatelské jméno a heslo, které jste použili při počátečním vytvoření škálovací sady:
+Znovu použijte konfiguraci rozšíření vlastních skriptů na instance virtuálních počítačů ve vaší sadě škálování znovu pomocí [AZ Deployment Group Create](/cli/azure/deployment/group). Tato šablona *azuredeployv2.json* slouží k použití aktualizované verze aplikace. V praxi upravíte stávající šablonu *azuredeploy.json* tak, aby odkazovala na aktualizovaný instalační skript, jak je znázorněno v předchozí části. Po zobrazení výzvy zadejte stejné uživatelské jméno a heslo, které jste použili při počátečním vytvoření škálovací sady:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy_v2.json
 ```

@@ -3,20 +3,20 @@ title: Apache Kafka příručka pro vývojáře pro Event Hubs
 description: Tento článek obsahuje odkazy na články, které popisují integraci aplikací Kafka s využitím Azure Event Hubs.
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314231"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90061729"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka příručka pro vývojáře pro Azure Event Hubs
 Tento článek obsahuje odkazy na články, které popisují integraci vašich Apache Kafkach aplikací s využitím Azure Event Hubs. 
 
 ## <a name="overview"></a>Přehled
-Event Hubs poskytuje koncový bod Kafka, který můžou stávající aplikace založené na Kafka použít jako alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje Apache Kafka protokol 1,0 a novější a funguje s vašimi stávajícími aplikacemi Kafka, včetně nástroje MirrorMaker. Další informace najdete v tématu [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+Event Hubs poskytuje koncový bod Kafka, který můžou stávající aplikace založené na Kafka použít jako alternativu ke spuštění vlastního clusteru Kafka. Event Hubs funguje s řadou vašich stávajících aplikací Kafka. Další informace najdete v tématu [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 
-## <a name="quickstarts"></a>Rychlý start
+## <a name="quickstarts"></a>Rychlé starty
 Rychlé starty najdete na webu GitHub a v této sadě obsahu, které vám pomůžou rychle zjistit Event Hubs pro Kafka.
 
 ### <a name="quickstarts-in-github"></a>Rychlé starty v GitHubu
@@ -69,7 +69,7 @@ V naší dokumentaci se podívejte na následující Příručky k návodům:
 | [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md) | Provede vás připojením aplikace Spark k Event Hubs pro streamování v reálném čase. |
 | [Připojení Apache Flinku k centru událostí](event-hubs-kafka-flink-tutorial.md) | Ukazuje, jak připojit Apache Flink k centru událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. |
 | [Integrace Apache Kafka připojení k centru událostí (Preview)](event-hubs-kafka-connect-tutorial.md) | Provede vás integrací Kafka připojení k centru událostí a nasazení základních konektorů FileStreamSource a FileStreamSink. |
-| [Připojení datových proudů Akka k centru událostí](event-hubs-kafka-akka-streams-tutorial.md) | Ukazuje, jak připojit Akka datové proudy k centru událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. |
+| [Připojení Akka Streams k centru událostí](event-hubs-kafka-akka-streams-tutorial.md) | Ukazuje, jak připojit Akka datové proudy k centru událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. |
 | [Použití jaře Boot Starter pro Apache Kafka s využitím Azure Event Hubs](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Ukazuje, jak nakonfigurovat pořadač založené na jarním cloudovém streamu založeném na jazyce Java, který byl vytvořen pomocí inicializátoru pružinového spouštění pro použití Apache Kafka s Azure Event Hubs. |
 
 ## <a name="next-steps"></a>Další kroky

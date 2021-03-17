@@ -8,14 +8,16 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fe24cc79d749761b697a8d1a162ec2867da9a649
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: d88d35eece698c7d0079221ae3c76058d1877948
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257483"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200480"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Udělení přístupu k místnímu úložišti zařízení pro moduly
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Kromě ukládání dat pomocí služeb Azure Storage nebo v úložišti kontejnerů vašeho zařízení můžete také vyhradit úložiště na hostiteli IoT Edge samotném zařízení, aby se zlepšila spolehlivost, obzvláště když pracujete offline.
 
@@ -36,7 +38,7 @@ Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení
 "systemModules": {
     "edgeAgent": {
         "settings": {
-            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+            "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
             "createOptions": {
                 "HostConfig": {
                     "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
@@ -52,7 +54,7 @@ Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení
     },
     "edgeHub": {
         "settings": {
-            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+            "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
             "createOptions": {
                 "HostConfig": {
                     "Binds":["<HostStoragePath>:<ModuleStoragePath>"],
@@ -72,7 +74,7 @@ Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení
 
 Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` cestou k úložišti hostitele a modulu; obě hodnoty musí být absolutní cesta.
 
-Například v systému Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že je adresář **/etc/iotedge/Storage** v hostitelském systému namapován na adresář **/iotedge/Storage/** v kontejneru. V systému Windows se jako jiný příklad označuje, `"Binds":["C:\\temp:C:\\contemp"]` že adresář **c: \\ TEMP** v hostitelském systému je namapován na adresář **c: \\ ** v kontejneru.
+Například v systému Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že je adresář **/etc/iotedge/Storage** v hostitelském systému namapován na adresář **/iotedge/Storage/** v kontejneru. V systému Windows se jako jiný příklad označuje, `"Binds":["C:\\temp:C:\\contemp"]` že adresář **c: \\ TEMP** v hostitelském systému je namapován na adresář **c: \\** v kontejneru.
 
 Na zařízeních se systémem Linux se navíc ujistěte, že má uživatelský profil pro váš modul potřebná oprávnění ke čtení, zápisu a spouštění pro adresář hostitelského systému. Když se vrátíte na předchozí příklad povolení IoT Edge centra pro ukládání zpráv do místního úložiště vašeho zařízení, musíte udělit oprávnění k profilu uživatele, UID 1000. (Agent IoT Edge funguje jako kořenový, takže nepotřebuje další oprávnění.) Existuje několik způsobů, jak spravovat oprávnění adresářů v systémech Linux, včetně použití `chown` ke změně vlastníka adresáře a `chmod` ke změně oprávnění, jako například:
 
@@ -85,7 +87,7 @@ Další podrobnosti o možnostech vytváření najdete v dokumentaci k [Docker](
 
 ## <a name="encrypted-data-in-module-storage"></a>Šifrovaná data v modulu úložiště modulů
 
-Když moduly aktivují rozhraní API úlohy démona IoT Edge k šifrování dat, je šifrovací klíč odvozený pomocí identifikátoru generování ID modulu a modulu. ID generování se používá k ochraně tajných kódů, pokud je modul odebraný z nasazení a potom se později do stejného zařízení nasadí jiný modul se stejným ID modulu. ID generování modulu můžete zobrazit pomocí příkazu Azure CLI [AZ IoT Hub Module-identity show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show).
+Když moduly aktivují rozhraní API úlohy démona IoT Edge k šifrování dat, je šifrovací klíč odvozený pomocí identifikátoru generování ID modulu a modulu. ID generování se používá k ochraně tajných kódů, pokud je modul odebraný z nasazení a potom se později do stejného zařízení nasadí jiný modul se stejným ID modulu. ID generování modulu můžete zobrazit pomocí příkazu Azure CLI [AZ IoT Hub Module-identity show](/cli/azure/ext/azure-iot/iot/hub/module-identity).
 
 Pokud chcete sdílet soubory mezi moduly v rámci generací, nesmí obsahovat žádné tajné kódy, jinak je nepůjde dešifrovat.
 

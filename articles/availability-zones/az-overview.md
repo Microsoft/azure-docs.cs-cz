@@ -1,18 +1,19 @@
 ---
 title: Oblasti a Zóny dostupnosti v Azure
 description: Přečtěte si o oblastech a Zóny dostupnosti v Azure, které odpovídají vašim technickým a zákonným požadavkům.
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
-ms.date: 04/28/2020
-ms.author: cynthn
+ms.topic: conceptual
+ms.date: 02/23/2021
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4adfb63ecab72eb42e188af472bb5387a0276a79
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413157"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723771"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Oblasti a Zóny dostupnosti v Azure
 
@@ -22,7 +23,7 @@ Služby Microsoft Azure Services jsou k dispozici globálně, aby bylo možné p
 
 Pro lepší pochopení oblastí a Zóny dostupnosti v Azure vám pomůže pochopit klíčové pojmy nebo koncepty.
 
-| Termín nebo koncept | Description |
+| Termín nebo koncept | Popis |
 | --- | --- |
 | oblast | Sada Datacenter nasazených v hraničním prostředí určeném pro latenci a připojená přes vyhrazenou síť s nízkou latencí. |
 | geografické | Oblast světa, která obsahuje alespoň jednu oblast Azure. Geografické oblasti definují diskrétní trh, který zachovává rozsahy dat a hranice dodržování předpisů. Zeměpisné oblasti umožňují zákazníkům se specifickými požadavky na rezidenci dat a dodržování předpisů, aby měli svoje data a aplikace blízko. Geografické oblasti jsou odolné proti chybám, které vydržely selhání celé oblasti prostřednictvím připojení k naší vyhrazené síťové infrastruktuře s vysokou kapacitou. |
@@ -30,14 +31,14 @@ Pro lepší pochopení oblastí a Zóny dostupnosti v Azure vám pomůže pochop
 | Doporučená oblast | Oblast, která poskytuje nejširší škálu možností služeb a je navržena pro podporu Zóny dostupnosti nyní nebo v budoucnu. Ty jsou určené v Azure Portal jako **Doporučené**. |
 | alternativní (jiná) oblast | Oblast, která rozšiřuje nároky na Azure v rámci hranice sídla dat, kde existuje i doporučená oblast. Alternativní oblasti vám pomůžou optimalizovat latenci a poskytnout druhou oblast pro potřeby zotavení po havárii. Nejsou navržené tak, aby podporovaly Zóny dostupnosti (i když Azure provádí pravidelné hodnocení těchto oblastí a určí, jestli by se měly stát doporučené oblasti). Tyto jsou označeny v Azure Portal jako **jiné**. |
 | základní služba | Základní služba Azure, která je dostupná ve všech oblastech, když je oblast všeobecně dostupná. |
-| Služba na běžném provozu | Služba Azure, která je dostupná ve všech doporučených oblastech během 12 měsíců od všeobecné dostupnosti oblasti nebo služby a dostupnosti na základě poptávky v alternativních oblastech. |
+| Služba na běžném provozu | Služba Azure, která je k dispozici ve všech doporučených oblastech během 90 dnů od oblasti obecné dostupnosti nebo dostupnosti založené na poptávce v alternativních oblastech. |
 | Specializovaná služba | Služba Azure, která je k dispozici v rámci různých oblastí, které jsou zajištěny vlastním/specializovaným hardwarem. |
 | místní služba | Služba Azure nasazená v regionu a umožňuje zákazníkům určit oblast, do které bude služba nasazena. Úplný seznam najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=all). |
 | neregionální služba | Služba Azure, pro kterou neexistuje žádná závislost na konkrétní oblasti Azure. Neregionální služby se nasazují do dvou nebo více oblastí, a pokud dojde k místnímu selhání, instance služby v jiné oblasti bude dál obsluhovat zákazníky. Úplný seznam najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=all). |
 
 ## <a name="regions"></a>Oblasti
 
-Oblast je sada Datacenter nasazených v hraničním prostředí definovaném latencí a připojená přes vyhrazenou síť s nízkou latencí. Azure vám nabízí flexibilitu při nasazování aplikací, které potřebujete, včetně napříč různými oblastmi a zajištění odolnosti mezi oblastmi. Další informace najdete v tématu [Přehled pilíře odolnosti](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)proti chybám.
+Oblast je sada Datacenter nasazených v hraničním prostředí definovaném latencí a připojená přes vyhrazenou síť s nízkou latencí. Azure vám nabízí flexibilitu při nasazování aplikací, které potřebujete, včetně napříč různými oblastmi a zajištění odolnosti mezi oblastmi. Další informace najdete v tématu [Přehled pilíře odolnosti](/azure/architecture/framework/resiliency/overview)proti chybám.
 
 ## <a name="availability-zones"></a>Zóny dostupnosti
 
@@ -68,8 +69,8 @@ Přístup k Azure v oblasti dostupnosti služeb Azure v různých oblastech je n
 
 Služby Azure se seskupují do tří kategorií: základní, běžné a specializované služby. Obecné zásady Azure týkající se nasazování služeb do jakékoli dané oblasti se řídí podle typu oblasti, kategorií služeb a poptávky zákazníků:
 
-- **Základní** – k dispozici ve všech doporučených a alternativních oblastech, pokud je oblast všeobecně dostupná nebo do 12 měsíců od nové základní služby, která se stane všeobecně dostupnou.
-- General **– k** dispozici ve všech doporučených oblastech do 12 měsíců od obecné dostupnosti oblasti nebo služby; na základě poptávky v alternativních oblastech (mnoho už je nasazených do velké podmnožiny alternativních oblastí).
+- **Základní** – k dispozici ve všech doporučených a alternativních oblastech, pokud je oblast všeobecně dostupná, nebo do 90 dnů od nové základní služby, která se stane všeobecně dostupnou.
+- General **– k** dispozici ve všech doporučených oblastech během 90 dnů od oblasti obecné dostupnosti; na základě poptávky v alternativních oblastech (mnoho už je nasazených do velké podmnožiny alternativních oblastí).
 - **Specializované** – cílené nabídky služeb, často zaměřené na obor nebo na základě vlastního/specializovaného hardwaru. Dostupnost na základě požadavků napříč oblastmi (mnoho je již nasazena do velké podmnožiny doporučených oblastí).
 
 Pokud chcete zjistit, které služby se v dané oblasti nasazují, a také budoucí plán pro náhled nebo obecnou dostupnost služeb v oblasti, přečtěte si článek [dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=all).
@@ -78,104 +79,135 @@ Pokud nabídka služeb není v konkrétní oblasti dostupná, můžete svůj zá
 
 | Typ oblasti | Bez regionu | Základní | Hlavní fáze | Specializovaná | Zóny dostupnosti | Rezidence dat |
 | --- | --- | --- | --- | --- | --- | --- |
-| Doporučené | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | :heavy_check_mark: | :heavy_check_mark: |
-| Střídat | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | Řízený na základě poptávky | Není k dispozici | :heavy_check_mark: |
+| Doporučeno | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | :heavy_check_mark: | :heavy_check_mark: |
+| Střídat | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | Řízený na základě poptávky | – | :heavy_check_mark: |
 
-### <a name="services-by-category"></a>Služby podle kategorie
+### <a name="services-by-category-with-availability-zones"></a>Služby podle kategorie s Zóny dostupnosti
 
-Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: základní, hlavní a specializované. Kategorie služeb jsou přiřazeny při obecné dostupnosti. Služby často spouštějí životní cyklus jako specializovanou službu a jako požadavek a zvýšení využití se můžou zvýšit na běžný nebo základní. V následující tabulce jsou uvedeny kategorie služeb jako základní, hlavní nebo specializované. Měli byste si uvědomit následující informace o tabulce:
+Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: základní, hlavní a specializované. Kategorie služeb jsou přiřazeny při obecné dostupnosti. Služby často spouštějí životní cyklus jako specializovanou službu a jako požadavek a zvýšení využití se můžou zvýšit na běžný nebo základní. V následující tabulce jsou uvedeny kategorie služeb jako základní, hlavní. Měli byste si uvědomit následující informace o tabulce:
 
 - Některé služby jsou jiné než regionální. Informace a seznam neoblastních služeb najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/).
-- Virtuální počítače starší generace nejsou uvedeny. Další informace najdete v dokumentaci na [předchozích generacích velikostí virtuálních počítačů](../virtual-machines/sizes-previous-gen.md).
+- Starší generace služeb nebo virtuálních počítačů nejsou v seznamu. Další informace najdete v dokumentaci v [předchozích generacích velikostí virtuálních počítačů](../virtual-machines/sizes-previous-gen.md) .
+- . Službám není přiřazena žádná kategorie, dokud nebude Obecná dostupnost (GA). Informace a seznam služeb ve verzi Preview najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). 
 
 > [!div class="mx-tableFixed"]
-> | Základní | Hlavní fáze | Specializovaná |
-> | --- | --- | --- |
-> | Úložiště účtů | API Management | Azure API for FHIR |
-> | Application Gateway | App Configuration | Služba Azure Blockchain |
-> | Azure Backup | App Service | Azure Blueprint |
-> | Azure Cosmos DB | Automation | Azure Database for MariaDB |
-> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Rezervované HSM Azure |
-> | Azure ExpressRoute | Azure Analysis Services | Azure Dev Spaces |
-> | Azure SQL Database | Azure Bastion | Azure Digital Twins |
-> | Cloud Services | Azure Cache for Redis | Azure Lab Services |
-> | Cloud Services: Av2-Series | Azure Cognitive Search | Azure NetApp Files |
-> | Cloud Services: Dv2-Series | Průzkumník dat Azure | Azure |
-> | Cloud Services: Dv3-Series | Azure Data Share | Azure Time Series Insights |
-> | Cloud Services: Ev3-Series | Azure Database for MySQL | Azure VMware Solution by CloudSimple |
-> | Cloud Services: IP adresy na úrovni instance | Azure Database for PostgreSQL | Cloud Services: A8-A11 (náročné na výpočetní výkon) |
-> | Cloud Services: Vyhrazená IP adresa | Azure Database Migration Service | Cloud Services: Řada G |
-> | Disk Storage | Azure Databricks | Cloud Services: řada H-Series |
-> | Event Hubs | Azure DDoS Protection | Cognitive Services: detektor anomálií |
-> | Key Vault | Azure DevTest Labs | Cognitive Services: Custom Vision |
-> | Nástroj pro vyrovnávání zatížení | Azure Firewall Manager | Cognitive Services: rozpoznávání mluvčího |
-> | Service Bus | Brána Azure Firewall | Data Box Heavy |
-> | Service Fabric | Azure Functions | Data Catalog |
-> | Virtual Machine Scale Sets | Azure HPC Cache | Data Factory: Data Factory v1 |
-> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
-> | Virtual Machines: Av2-Series | Azure Kubernetes Service (AKS) | Machine Learning Studio |
-> | Virtual Machines: BS-Series | Azure Machine Learning | Microsoft Genomics |
-> | Virtual Machines: DSv2-Series | Azure Private Link | Remote Rendering |
-> | Virtual Machines: DSv3-Series | Azure Red Hat OpenShift | Spatial Anchors |
-> | Virtual Machines: Dv2-Series | Azure Site Recovery | StorSimple |
-> | Virtual Machines: Dv3-Series | Jarní cloudová služba Azure | Video Indexer |
-> | Virtual Machines: ESv3-Series | Azure Stack Hub | Virtual Machines: A8-A11 (náročné na výpočetní výkon) |
-> | Virtual Machines: Ev3-Series | Azure Stream Analytics | Virtual Machines: DASv4-Series |
-> | Virtual Machines: řada F-Series | Azure Synapse Analytics | Virtual Machines: DAv4-Series |
-> | Virtual Machines: řada FS | Služba Azure SignalR | Virtual Machines: DCsv2-Series |
-> | Virtual Machines: IP adresy na úrovni instance | Batch | Virtual Machines: EASv4-Series |
-> | Virtual Machines: Vyhrazená IP adresa | Cloud Services: řada M-Series | Virtual Machines: EAv4-Series |
-> | Virtual Network | Cognitive Services | Virtual Machines: Řada G |
-> | VPN Gateway | Cognitive Services: Počítačové zpracování obrazu | Virtual Machines: řady GS-Series |
-> |  | Cognitive Services: Content Moderator | Virtual Machines: HBv1-Series |
-> |  | Cognitive Services: Face | Virtual Machines: HBv2-Series |
-> |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1-Series |
-> |  | Cognitive Services: hlasové služby | Virtual Machines: řada H-Series |
-> |  | Cognitive Services: QnA Maker | Virtual Machines: řada LS-Series |
-> |  | Container Instances | Virtual Machines: LSv2-Series |
-> |  | Container Registry | Virtual Machines: Mv2-Series |
-> |  | Data Factory | Virtual Machines: NC-Series |
-> |  | Event Grid | Virtual Machines: NCv2-Series |
-> |  | HDInsight | Virtual Machines: NCv3-Series |
-> |  | Logic Apps | Virtual Machines: řada NDs |
-> |  | Media Services | Virtual Machines: NDv2-Series |
-> |  | Network Watcher | Virtual Machines: NV-Series |
-> |  | Notification Hubs | Virtual Machines: NVv3-Series |
-> |  | Power BI Embedded | Virtual Machines: NVv4-Series |
-> |  | Blob Storage úrovně Premium | Virtual Machines: SAP HANA ve velkých instancích Azure |
-> |  | Úložiště Premium Files | Visual Studio App Center |
-> |  | Úložiště: Archiv služby Storage |  |
-> |  | Ultra Disk Storage |  |
-> |  | Virtual Machines: Fsv2-Series |  |
-> |  | Virtual Machines: řada M-Series |  |
-> |  | Virtual WAN |  |
+> | Základní                           | Hlavní fáze                                        | 
+> |----------------------------------------|---------------------------------------------------|
+> | Účty úložiště                       | API Management                                    | 
+> | Application Gateway                    | App Configuration                                 | 
+> | Azure Backup                           | App Service                                       | 
+> | Azure Cosmos DB                        | Automation                                        | 
+> | Azure Data Lake Storage Gen2           | Azure Active Directory Domain Services            | 
+> | Azure ExpressRoute                     | Azure Bastion                                     | 
+> | Veřejná IP adresa Azure                        | Azure Cache for Redis                             | 
+> | Azure SQL Database                     | Azure Cognitive Search                            | 
+> | Azure SQL: spravovaná instance           | Azure Cognitive Services                          | 
+> | Disk Storage                           | Azure Cognitive Services: Počítačové zpracování obrazu         | 
+> | Event Hubs                             | Cognitive Services Azure: Content Moderator       | 
+> | Key Vault                              | Azure Cognitive Services: Face                    | 
+> | Nástroj pro vyrovnávání zatížení                          | Azure Cognitive Services: moderní čtečka        | 
+> | Service Bus                            | Cognitive Services Azure: Language Understanding  | 
+> | Service Fabric                         | Azure Cognitive Services: hlasové služby         | 
+> | Storage: horká a studená Blob Storage vrstva   | Azure Cognitive Services: Analýza textu          | 
+> | Úložiště: Managed Disks                 | Azure Cognitive Services: Translator              | 
+> | Virtual Machine Scale Sets             | Průzkumník dat Azure                               | 
+> | Virtual Machines                       | Azure Data Share                                  | 
+> | Virtual Machines: vyhrazený hostitel Azure | Azure Database for MySQL                          | 
+> | Virtual Machines: Av2-Series           | Azure Database for PostgreSQL                     | 
+> | Virtual Machines: Bs-Series            | Azure DDoS Protection                             | 
+> | Virtual Machines: DSv2-Series          | Azure Firewall                                    | 
+> | Virtual Machines: DSv3-Series          | Azure Firewall Manager                            | 
+> | Virtual Machines: Dv2-Series           | Azure Functions                                   | 
+> | Virtual Machines: Dv3-Series           | Azure IoT Hub                                     |     
+> | Virtual Machines: ESv3-Series          | Azure Kubernetes Service (AKS)                    | 
+> | Virtual Machines: Ev3-Series           | Azure Machine Learning                            | 
+> | Virtual Network                        | Azure Monitor: Application Insights               | 
+> | VPN Gateway                            | Azure Monitor: Log Analytics                      | 
+> |                                        | Azure Private Link                                | 
+> |                                        | Azure Red Hat OpenShift                           | 
+> |                                        | Azure Site Recovery                               | 
+> |                                        | Azure Stream Analytics                            | 
+> |                                        | Azure Synapse Analytics                           | 
+> |                                        | Batch                                             | 
+> |                                        | Cloud Services: řada M-Series                          | 
+> |                                        | Container Instances                               | 
+> |                                        | Container Registry                                | 
+> |                                        | Data Factory                                      | 
+> |                                        | Event Grid                                        | 
+> |                                        | HDInsight                                         |  
+> |                                        | Logic Apps                                        | 
+> |                                        | Media Services                                    | 
+> |                                        | Network Watcher                                   | 
+> |                                        | Notification Hubs                                 | 
+> |                                        | Blob Storage úrovně Premium                              | 
+> |                                        | Úložiště Premium Files                             | 
+> |                                        | Virtual Machines: Ddsv4-Series                    | 
+> |                                        | Virtual Machines: Ddv4-Series                     | 
+> |                                        | Virtual Machines: Dsv4-Series                     | 
+> |                                        | Virtual Machines: Dv4-Series                      | 
+> |                                        | Virtual Machines: Edsv4-Series                    | 
+> |                                        | Virtual Machines: Edv4-Series                     | 
+> |                                        | Virtual Machines: Esv4-Series                     | 
+> |                                        | Virtual Machines: Ev4-Series                      | 
+> |                                        | Virtual Machines: Fsv2-Series                     | 
+> |                                        | Virtual Machines: řada M-Series                        | 
+> |                                        | Virtuální síť WAN                                       | 
 
-###  <a name="services-resiliency"></a>Odolnost služeb
 
-Všechny služby správy Azure jsou navržené tak, aby byly odolné proti selháním na úrovni jednotlivých oblastí. V případě selhání má jedna nebo více selhání zóny dostupnosti v rámci oblasti menší poloměr selhání v porovnání s selháním celé oblasti. Azure se může zotavit z neúspěšného selhání služeb správy v rámci oblasti nebo z jiné oblasti Azure. Azure provádí kritickou údržbu jedné zóny v čase v rámci určité oblasti, aby nedocházelo k chybám, které mají vliv na prostředky zákazníka nasazené napříč Zóny dostupnosti v rámci oblasti.
 
-### <a name="pricing-for-vms-in-availability-zones"></a>Ceny pro virtuální počítače v Zóny dostupnosti
+### <a name="specialized-services"></a>Specializované služby
+Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: základní, hlavní a specializované. Kategorie služeb jsou přiřazeny při obecné dostupnosti. Služby často spouštějí životní cyklus jako specializovanou službu a jako požadavek a zvýšení využití se můžou zvýšit na běžný nebo základní. V následující tabulce jsou uvedeny specializované služby. 
 
-Pro virtuální počítače nasazené v zóně dostupnosti se neúčtují žádné další náklady. 99,99% doba provozu virtuálního počítače se nabízí, když se v rámci jedné nebo více Zóny dostupnosti v oblasti Azure nasadí nejméně dva virtuální počítače. Budou se účtovat další poplatky za přenos dat mezi virtuálními počítači v zóně dostupnosti. Další informace najdete na stránce s [cenami za šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/) .
+> [!div class="mx-tableFixed"]
+> | Specializovaná                                          |
+> |------------------------------------------------------|
+> | Azure API for FHIR                                   |
+> | Azure Analysis Services                              |
+> | Azure Cognitive Services: detektor anomálií           |
+> | Cognitive Services Azure: Custom Vision              |
+> | Azure Cognitive Services: Nástroj pro rozpoznávání formulářů            |
+> | Azure Cognitive Services: přizpůsobování               |
+> | Cognitive Services Azure: QnA Maker                  |
+> | Azure Database for MariaDB                           |
+> | Azure Database Migration Service                     |
+> | Rezervované HSM Azure                                  |
+> | Azure Digital Twins                                  |
+> | Robot stavu Azure                                     |
+> | Azure HPC Cache                                      |
+> | Azure Lab Services                                   |
+> | Azure NetApp Files                                   |
+> | Služba Azure SignalR                                |
+> | Jarní cloudová služba Azure                           |
+> | Azure Time Series Insights                           |
+> | Azure VMware Solution                                |
+> | Azure VMware Solution by CloudSimple                 |
+> | Data Lake Analytics                                  |
+> | Azure Machine Learning Studio (klasický)              |
+> | Spatial Anchors                                      |
+> | Úložiště: Archiv služby Storage                             |
+> | Ultra Disk Storage                                   |
+> | Video Indexer                                        |
+> | Virtual Machines: DASv4-Series                       |
+> | Virtual Machines: DAv4-Series                        |
+> | Virtual Machines: DCsv2-Series                       |
+> | Virtual Machines: EASv4-Series                       |
+> | Virtual Machines: EAv4-Series                        |
+> | Virtual Machines: HBv1-Series                        |
+> | Virtual Machines: HBv2-Series                        |
+> | Virtual Machines: HCv1-Series                        |
+> | Virtual Machines: řada H-Series                           |
+> | Virtual Machines: LSv2-Series                        |
+> | Virtual Machines: Mv2-Series                         |
+> | Virtual Machines: NCv3-Series                        |
+> | Virtual Machines: NDv2-Series                        |
+> | Virtual Machines: NVv3-Series                        |
+> | Virtual Machines: NVv4-Series                        | 
+> | Virtual Machines: SAP HANA ve velkých instancích Azure  |
 
-### <a name="get-started-with-availability-zones"></a>Začínáme s Zóny dostupnosti
 
-- [Vytvoření virtuálního počítače](../virtual-machines/windows/create-portal-availability-zone.md)
-- [Přidání spravovaného disku pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [Vytvoření sady škálování virtuálních počítačů v zóně redundantní](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Vyrovnávání zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer se zónou redundantního front-endu](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)
-- [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
-- [Geografické zotavení po havárii služby Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)
-- [Geografické zotavení po havárii služby Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
-- [Vytvoření zónově redundantní brány virtuální sítě](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [Přidat redundantní oblast zóny pro Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
-- [Začínáme Azure cache pro Zóny dostupnosti Redis](https://aka.ms/redis/az/getstarted)
-- [Vytvoření instance Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md)
-- [Vytvoření clusteru služby Azure Kubernetes (AKS), který používá Zóny dostupnosti](../aks/availability-zones.md)
+
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Oblasti, které podporují Zóny dostupnosti v Azure](az-region.md)
-- [Šablony Rychlý start](https://aka.ms/azqs)
+- [Šablony pro rychlý start](https://aka.ms/azqs)

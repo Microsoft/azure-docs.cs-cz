@@ -8,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: 780ddc614feef492dafa54862abbea9552496274
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7b0afdd90f2a1413c7f8364fc4518c4d1116454a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539811"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913581"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA Release 7.1.50911.2-9/12/2018
 
@@ -65,13 +65,13 @@ Uživatel může kliknout na text pro zmírnění rizika a použít standardní 
 
 Odebrala se funkce "otevřená z OneDrivu" ve verzi Preview. Uživatelům s "nedávno otevřenými modely" uloženými na OneDrive se zobrazí následující chyba.
 
-![Funkce OneDrivu se odebrala](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
+![Snímky obrazovky zobrazují chybu: Chyba při otevírání odkazu na objekt souboru není nastavena na instanci objektu.](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
 
 #### <a name="workaround"></a>Alternativní řešení
 
 Uživatelům OneDrivu doporučujeme používat klienta Microsoft [OneDrive pro Windows](https://onedrive.live.com/about/en-us/download/) pro přístup k souborům uloženým na OneDrivu přes Standard a dialog Otevřít model.
 
-![Funkce OneDrivu se odebrala](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
+![Snímek obrazovky s vybraným OneDrivem najdete v dialogovém okně Otevřít model.](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
 
 ### <a name="my-organization-uses-the-2016-version-of-the-tool-can-i-use-the-azure-stencil-set"></a>Má vaše organizace používá verzi 2016 tohoto nástroje, můžu použít sadu vzorníků Azure?
 

@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Dokumentace ke službě Azure Media Services
-summary: Azure Media Services je cloudová platforma pracovních postupů pro média, která umožňuje sestavovat řešení vyžadující kódování, balení, ochranu obsahu a živé přenášení akcí.
+summary: Azure Media Services je kolekce pracovních postupů pro média pro cloud a hraniční zařízení, která umožňuje vytvářet řešení vyžadující živé a dávkové analýzy videa, překódování, služby doručování pro více zařízení, ochranu obsahu a vysílání živých událostí ve velkém.
 brand: azure
 metadata:
   title: Dokumentace k platformě Azure Media Services
-  description: Azure Media Services je cloudová platforma pracovních postupů pro média, která umožňuje sestavovat řešení vyžadující kódování, balení, ochranu obsahu a živé přenášení akcí.
+  description: Azure Media Services je kolekce pracovních postupů pro média pro cloud a hraniční zařízení, která umožňuje vytvářet řešení vyžadující živé a dávkové analýzy videa, překódování, služby doručování pro více zařízení, ochranu obsahu a vysílání živých událostí ve velkém.
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: d6f78b4494a16a0522f93658b063d157819c519e
-  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
-  ms.translationtype: HT
+  ms.openlocfilehash: b2fa1520bf73dcd1608c0f3494f4ccc1a3b13be2
+  ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/06/2020
-  ms.locfileid: "87826139"
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98707404"
 highlightedContent:
   items:
   - title: Informace o platformě Azure Media Services v3
@@ -44,7 +44,7 @@ highlightedContent:
     url: ./previous/media-services-overview.md
   - title: Migrace platformy Media Services v2 na v3
     itemType: concept
-    url: ./latest/migrate-from-v2-to-v3.md
+    url: ./latest/migrate-v-2-v-3-migration-introduction.md
 conceptualContent:
   items:
   - title: Vývoj pomocí rozhraní API Media Services v3

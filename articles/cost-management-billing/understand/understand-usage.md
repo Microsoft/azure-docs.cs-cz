@@ -1,19 +1,20 @@
 ---
-title: Vysvětlení podrobných informací o využití a poplatcích | Microsoft Docs
+title: Vysvětlení podrobných informací o využití a poplatcích
 description: Naučte se číst soubor s podrobnými informacemi o využití a poplatcích a rozumět jim. Projděte si seznam termínů používaných v tomto souboru a jejich popisů.
 author: bandersmsft
 ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 01/04/2021
 ms.author: banders
-ms.openlocfilehash: 1b53869c9ef90dd0edf3ab9a3120e65db8f16e8a
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460282"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882496"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení termínů v souboru s využitím a poplatky Azure
 
@@ -89,8 +90,8 @@ PublisherType | Vše | Typ vydavatele (hodnoty: **Azure**, **AWS**, **Marketplac
 Množství | Vše | Počet zakoupených nebo spotřebovaných jednotek.
 ReservationId | EA, MCA | Jedinečný identifikátor zakoupené instance rezervace.
 ReservationName | EA, MCA | Název zakoupené instance rezervace.
-ResourceGroup | Vše | Název [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ve které se prostředek nachází. Ne všechny poplatky pocházejí z prostředků nasazených ve skupinách prostředků. Poplatky, které nemají skupinu prostředků, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
-ResourceId<sup>1</sup> | Vše | Jedinečný identifikátor prostředku [Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources).
+ResourceGroup | Vše | Název [skupiny prostředků](../../azure-resource-manager/management/overview.md), ve které se prostředek nachází. Ne všechny poplatky pocházejí z prostředků nasazených ve skupinách prostředků. Poplatky, které nemají skupinu prostředků, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
+ResourceId<sup>1</sup> | Vše | Jedinečný identifikátor prostředku [Azure Resource Manageru](/rest/api/resources/resources).
 ResourceLocation | Vše | Umístění datacentra, ve kterém prostředek běží. Viz Location.
 ResourceName | EA, PAYG | Název prostředku. Ne všechny poplatky pocházejí z nasazených prostředků. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
 ResourceType | MCA | Typ instance prostředku. Ne všechny poplatky pocházejí z nasazených prostředků. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
@@ -125,10 +126,24 @@ UsageDate | Datum
 UsageEnd | Datum
 UsageStart | Datum
 
-
 ## <a name="ensure-charges-are-correct"></a>Ujistěte se, že jsou poplatky správné.
 
 Pokud chcete získat další podrobné informace o využití a poplatcích, přečtěte si článek vysvětlující fakturu [s průběžnými platbami](review-individual-bill.md) nebo fakturu [pro smlouvu se zákazníkem Microsoftu](review-customer-agreement-bill.md).
+
+## <a name="unexpected-usage-or-charges"></a>Neočekávané využití nebo poplatky
+
+Pokud nějaké využití nebo poplatky nepoznáváte, tady je pár věcí, které můžete udělat, abyste je lépe pochopili:
+
+- Kontrola faktury s poplatky pro příslušný prostředek
+- Kontrola fakturovaných poplatků v analýze nákladů
+- Vyhledání lidí zodpovědných za konkrétní prostředky a jejich zapojení
+- Analýza protokolů auditu
+- Analýza uživatelských oprávnění k nadřazenému oboru prostředku
+- Vytvoření [žádosti o podporu Azure ](https://go.microsoft.com/fwlink/?linkid=2083458) a pomoc při identifikaci poplatků
+
+Další informace najdete v tématu [Analýza neočekávaných poplatků](analyze-unexpected-charges.md).
+
+Upozorňujeme, Azure neprotokoluje většinu uživatelských akcí. Místo toho Microsoft protokoluje využití prostředků pro účely fakturace. Pokud si všimnete špičky využití v minulosti a neměli jste povolené protokolování, Microsoft nemůže určit příčinu. Povolte protokolování pro službu, pro kterou chcete zobrazit zvýšené využití, aby vám příslušný technický tým mohl s tímto problémem pomoct.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

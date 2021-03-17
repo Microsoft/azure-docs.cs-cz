@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 8e5dcb6c9dfa08efc0889fcab779d6cb333d2330
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 6817601659c841ca98031f4e3e1590743bbed171
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507531"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530531"
 ---
 # <a name="sample-models"></a>Ukázkové modely
 
@@ -26,7 +26,7 @@ Statistika modelu:
 
 | Název | Hodnota |
 |-----------|:-----------|
-| [Požadovaná velikost serveru](../how-tos/session-rest-api.md#create-a-session) | standardní |
+| [Požadovaná velikost serveru](../reference/vm-sizes.md) | standardní |
 | Počet trojúhelníků | 18 700 000 |
 | Počet pohyblivých částí | 2073 |
 | Počet materiálů | 94 |
@@ -40,4 +40,4 @@ Skupina Khronos udržuje sadu vzorových modelů glTF pro testování. ARR podpo
 ## <a name="next-steps"></a>Další kroky
 
 * [Rychlý Start: vykreslení modelu pomocí Unity](../quickstarts/render-model.md)
-* [Rychlý Start: převod modelu pro vykreslování](../quickstarts/convert-model.md)
+* [Rychlý start: Převod modelu pro vykreslování](../quickstarts/convert-model.md)

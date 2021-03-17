@@ -1,5 +1,5 @@
 ---
-title: Připojení kompletního řešení
+title: 'Kurz: připojení kompletního řešení'
 titleSuffix: Azure Digital Twins
 description: Kurz pro sestavení uceleného řešení digitálních vláken Azure, které je založené na datech zařízení
 author: baanders
@@ -7,26 +7,27 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827311"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634970"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>Sestavení kompletního řešení
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
 K nastavení kompletního řešení založeného na živých datech z vašeho prostředí můžete propojit instanci digitálních vláken Azure s dalšími službami Azure za účelem správy zařízení a dat.
 
 V tomto kurzu budete...
-* Nastavení instance digitálních vláken Azure
-* Seznamte se s ukázkovým scénářem sestavení a vytvořením instance předem zapsaných komponent.
-* Použití aplikace [Azure Functions](../azure-functions/functions-overview.md) ke směrování simulované telemetrie ze [IoT Hub](../iot-hub/about-iot-hub.md) zařízení do digitálních vlastností
-* Rozšíří změny přes dodaný **graf**zpracováním digitálních dvojitých oznámení pomocí Azure Functions, koncových bodů a tras.
+> [!div class="checklist"]
+> * Nastavení instance digitálních vláken Azure
+> * Seznamte se s ukázkovým scénářem sestavení a vytvořením instance předem zapsaných komponent.
+> * Použití aplikace [Azure Functions](../azure-functions/functions-overview.md) ke směrování simulované telemetrie ze [IoT Hub](../iot-hub/about-iot-hub.md) zařízení do digitálních vlastností
+> * Rozšíří změny přes dodaný **graf** zpracováním digitálních dvojitých oznámení pomocí Azure Functions, koncových bodů a tras.
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
 ### <a name="set-up-cloud-shell-session"></a>Nastavit relaci Cloud Shell
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
@@ -47,12 +48,10 @@ Pokud chcete pracovat v tomto scénáři, budete pracovat s komponentami předem
 
 Tady jsou komponenty implementované ukázkovou aplikací *AdtSampleApp* scénář vytváření:
 * Ověřování zařízení 
-* Příklady použití [rozhraní .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) (najdete v *CommandLoop.cs*)
+* Příklady použití [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) (najdete v *CommandLoop.cs*)
 * Rozhraní konzoly pro volání rozhraní API digitálních vláken Azure
 * *SampleClientApp* – ukázkové řešení digitálních vláken Azure
 * *SampleFunctionsApp* – aplikace Azure Functions, která aktualizuje graf digitálních vláken Azure v důsledku telemetrie z IoT Hub a událostí digitálních vláken Azure
-
-Ukázkový projekt obsahuje také interaktivní autorizační komponentu. Pokaždé, když projekt spustíte, otevře se okno prohlížeče s výzvou k přihlášení pomocí účtu Azure.
 
 ### <a name="instantiate-the-pre-created-twin-graph"></a>Vytvoření instance předem vytvořeného grafu s dvojitou čárkou
 
@@ -73,7 +72,7 @@ Otevře se okno konzoly, provede se ověřování a počká na příkaz. V této
 SetupBuildingScenario
 ```
 
-Výstupem tohoto příkazu je série potvrzujících zpráv, [**protože se vytvářejí**](concepts-twins-graph.md) a připojují ve vaší instanci digitálních vláken Azure: podlahu s názvem *floor1*, místnost s názvem *room21*a snímač teploty s názvem *thermostat67*. Tyto digitální vlákna reprezentují entity, které by existovaly ve skutečném prostředí.
+Výstupem tohoto příkazu je série potvrzujících zpráv, [**protože se vytvářejí**](concepts-twins-graph.md) a připojují ve vaší instanci digitálních vláken Azure: podlahu s názvem *floor1*, místnost s názvem *room21* a snímač teploty s názvem *thermostat67*. Tyto digitální vlákna reprezentují entity, které by existovaly ve skutečném prostředí.
 
 Jsou propojeny prostřednictvím vztahů s následujícím [**dvojitým grafem**](concepts-twins-graph.md). Dvojitý graf představuje prostředí jako celek, včetně toho, jak entity vzájemně spolupracují a vzájemně souvisí.
 
@@ -84,6 +83,13 @@ Můžete ověřit, které vlákna byly vytvořeny spuštěním následujícího 
 ```cmd/sh
 Query
 ```
+
+>[!TIP]
+> Tato zjednodušená metoda je k dispozici jako součást projektu _**AdtE2ESample**_ . Mimo kontext tohoto ukázkového kódu se můžete kdykoli dotazovat na všechny vlákna ve vaší instanci pomocí [rozhraní API pro dotazy](/rest/api/digital-twins/dataplane/query) nebo [příkazů rozhraní příkazového řádku](how-to-use-cli.md).
+>
+> Tady je úplný text dotazu, který vám umožní získat všechny digitální vlákna ve vaší instanci:
+> 
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="GetAllTwins":::
 
 Potom můžete zastavit běh projektu. Nechejte řešení otevřené v aplikaci Visual Studio, i když ho budete dál používat v celém kurzu.
 
@@ -101,7 +107,7 @@ Zpět v okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_
 
 Před publikováním aplikace je vhodné se ujistit, že vaše závislosti jsou aktuální, a přitom se ujistěte, že máte nejnovější verzi všech zahrnutých balíčků.
 
-V podokně *Průzkumník řešení* rozbalte položku *SampleFunctionsApp > závislosti*. Klikněte pravým tlačítkem na položku *balíčky* a zvolte možnost *Spravovat balíčky NuGet...*.
+V podokně *Průzkumník řešení* rozbalte položku _**SampleFunctionsApp** > závislosti_. Klikněte pravým tlačítkem na položku *balíčky* a zvolte možnost *Spravovat balíčky NuGet...*.
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: Správa balíčků NuGet pro projekt SampleFunctionsApp" border="false":::
 
@@ -111,70 +117,36 @@ Tím se otevře správce balíčků NuGet. Vyberte kartu *aktualizace* a pokud e
 
 ### <a name="publish-the-app"></a>Publikování aplikace
 
-Zpět v okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_ , v podokně *Průzkumník řešení* klikněte pravým tlačítkem myši na soubor projektu _**SampleFunctionsApp**_ a stiskněte **publikovat**.
+Zpět v okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_ , vyhledejte projekt _**SampleFunctionsApp**_ v podokně *Průzkumník řešení* .
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio: publikování projektu":::
+[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
-Na následující stránce *publikování* ponechte výchozí cílový výběr **Azure** a potom klikněte na tlačítko *Další*. 
-
-V případě konkrétního cíle zvolte **Azure Function App (Windows)** a stiskněte tlačítko *Další*.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Publikování funkce Azure v aplikaci Visual Studio: konkrétní cíl":::
-
-Na stránce *funkce instance* vyberte své předplatné. To by mělo naplnit pole *skupinami prostředků* v rámci vašeho předplatného.
-
-Vyberte skupinu prostředků vaší instance a stiskněte *+ vytvořit novou funkci Azure Functions...*.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Publikování funkce Azure Functions v aplikaci Visual Studio: instance Functions (před aplikací Function App)":::
-
-V *Function App (Windows) – vytvořit nové* okno vyplňte pole následujícím způsobem:
-* **Název** je název plánu spotřeby, který Azure použije k hostování vaší Azure Functions aplikace. Tím se také stane název aplikace Function App, která obsahuje vaši skutečnou funkci. Můžete zvolit vlastní jedinečnou hodnotu nebo ponechat výchozí návrh.
-* Ujistěte se, že **předplatné** odpovídá předplatnému, které chcete použít. 
-* Ujistěte se, že **Skupina prostředků** má skupinu prostředků, kterou chcete použít.
-* Ponechat **typ plánu** jako *spotřebu*
-* Vyberte **umístění** , které odpovídá umístění vaší skupiny prostředků.
-* Vytvořte nový prostředek **Azure Storage** pomocí odkazu *New...* . Nastavte umístění tak, aby odpovídalo vaší skupině prostředků, použijte jiné výchozí hodnoty a stiskněte OK.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Publikování funkce Azure v aplikaci Visual Studio: Function App (Windows) – vytvořit nový":::
-
-Potom vyberte **Vytvořit**.
-
-To by mělo vrátit se zpátky na stránku *instance Functions* , kde je vaše nová aplikace Functions teď viditelná pod vaší skupinou prostředků. *Zakončete*volání.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Publikování funkce Azure Functions v aplikaci Visual Studio: instance Functions (po aplikaci Function App)":::
-
-V podokně *publikovat* , které se otevře zpátky v hlavním okně sady Visual Studio, zaškrtněte políčko všechny informace vypadají správně a vyberte **publikovat**.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Publikování funkce Azure v aplikaci Visual Studio: publikování":::
-
-> [!NOTE]
-> Pokud se zobrazí automaticky otevírané okno: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="publikovat funkci Azure v aplikaci Visual Studio: přihlašovací údaje pro publikování" border="false":::
-> Vyberte **pokus o načtení přihlašovacích údajů z Azure** a **uložte**ji.
->
-> Pokud se zobrazí upozornění na *Upgrade verze funkcí v Azure* nebo že *vaše verze modulu runtime Functions neodpovídá verzi běžící v Azure*:
->
-> Postupujte podle pokynů a upgradujte na nejnovější verzi modulu runtime Azure Functions. K tomuto problému může dojít, pokud používáte starší verzi sady Visual Studio, než kterou jste doporučili v části *požadavky* na začátku tohoto kurzu.
+Aby aplikace Function App mohla získat přístup k digitálním funkcím Azure, bude potřebovat identitu spravovanou systémem s oprávněními pro přístup k instanci digitálních vláken Azure. Nastavíte tuto hodnotu jako další.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Přiřazení oprávnění k aplikaci Function App
 
-Chcete-li povolit aplikaci Function App přístup k digitálním úlohám Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení aplikace identitou spravované systémem a udělení této identity této identitě v instanci služby Azure Digital reinstances *vlastníka (Preview)* . Tato role se vyžaduje pro libovolného uživatele nebo funkci, která chce v instanci provést mnoho aktivit roviny dat. Další informace o zabezpečení a přiřazování rolí si můžete přečíst v tématu [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md).
+Pokud chcete povolit aplikaci Function App přístup k digitálním úlohám Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení této aplikace identitě spravované systémem Azure AD a udělení této identity roli *vlastníka dat v Azure Digital* realiass v instanci digitálních vláken Azure. Tato role se vyžaduje pro libovolného uživatele nebo funkci, která chce v instanci provést mnoho aktivit roviny dat. Další informace o zabezpečení a přiřazování rolí si můžete přečíst v tématu [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md).
 
-V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na instanci digitálních vláken Azure.
+V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na instanci digitálních vláken Azure. Zadejte zástupné symboly s podrobnostmi o vašich prostředcích (Nezapomeňte, že adresa URL instance digitálního vlákna Azure představuje název hostitele, kterému předchází *https://*).
 
 ```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
-Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Poznamenejte si pole *principalId* ve výstupu.
+Výstupem je seznam nastavení funkce Azure Functions, která by teď měla obsahovat položku s názvem **ADT_SERVICE_URL**.
+
+Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Ve výstupu vyhledejte pole **principalId** .
 
 ```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Pomocí hodnoty *principalId* z výstupu v následujícím příkazu přiřaďte identitě aplikace funkcí roli vlastníka služby Azure Digital nepracovníci *(Preview)* pro vaši instanci digitálních vláken Azure:
+Pomocí hodnoty **principalId** z výstupu v následujícím příkazu přiřaďte identitu aplikace funkcí k roli *vlastníka dat digitálních vláken Azure* pro vaši instanci digitálních vláken Azure.
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
+
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
 
 Výsledkem tohoto příkazu jsou informace o přiřazení role, kterou jste vytvořili. Aplikace Function App má teď oprávnění pro přístup k instanci digitálních vláken Azure.
@@ -208,7 +180,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 Výstupem tohoto příkazu jsou informace o vytvořeném službě IoT Hub.
 
-Uložte název, který jste přiřadili do služby IoT Hub. Budete jej později potřebovat.
+Uložte **název** , který jste přiřadili do služby IoT Hub. Budete jej později potřebovat.
 
 ### <a name="connect-the-iot-hub-to-the-azure-function"></a>Připojení centra IoT ke službě Azure Functions
 
@@ -249,18 +221,18 @@ Výstupem jsou informace o vytvořeném zařízení.
 
 ### <a name="configure-and-run-the-simulation"></a>Konfigurace a spuštění simulace
 
-Dále nakonfigurujte simulátor zařízení, aby odesílal data do instance IoT Hub.
+Následně nakonfigurujte simulátor zařízení, aby posílal data do instance IoT Hubu.
 
 Začněte získáním *připojovacího řetězce centra IoT* pomocí tohoto příkazu:
 
-```azurecli
-az iot hub show-connection-string -n <your-IoT-hub-name>
+```azurecli-interactive
+az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
-Pak Získejte *připojovací řetězec zařízení* pomocí tohoto příkazu:
+Pak načtěte *připojovací řetězec zařízení* pomocí tohoto příkazu:
 
-```azurecli
-az iot hub device-identity show-connection-string --device-id thermostat67 --hub-name <your-IoT-hub-name>
+```azurecli-interactive
+az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>
 ```
 
 Tyto hodnoty připojíte do kódu simulátoru zařízení v místním projektu a připojíte simulátor do tohoto zařízení IoT Hub a IoT Hub.
@@ -270,11 +242,11 @@ V novém okně sady Visual Studio otevřete (ze stažené složky řešení) _si
 >[!NOTE]
 > Nyní byste měli mít dvě okna sady Visual Studio, jednu s _**DeviceSimulator. sln**_ a jednu z předchozích verzí _**AdtE2ESample. sln**_.
 
-V podokně *Průzkumník řešení* v tomto novém okně sady Visual Studio vyberte možnost _DeviceSimulator/**AzureIoTHub.cs** _ a otevřete ji v okně pro úpravy. Změňte následující hodnoty připojovacího řetězce na hodnoty, které jste shromáždili výše:
+V podokně *Průzkumník řešení* v tomto novém okně sady Visual Studio vyberte možnost _DeviceSimulator/**AzureIoTHub.cs**_ a otevřete ji v okně pro úpravy. Změňte následující hodnoty připojovacího řetězce na hodnoty, které jste shromáždili výše:
 
 ```csharp
-connectionString = <Iot-hub-connection-string>
-deviceConnectionString = <device-connection-string>
+iotHubConnectionString = <your-hub-connection-string>
+deviceConnectionString = <your-device-connection-string>
 ```
 
 Soubor uložte.
@@ -301,7 +273,10 @@ V okně konzoly projektu, které se otevře, spusťte následující příkaz, k
 ObserveProperties thermostat67 Temperature
 ```
 
-Měli byste vidět živá aktualizované teploty *z instance digitálních vláken Azure* , které jsou protokolovány do konzoly každých 10 sekund.
+Měli byste vidět živá aktualizované teploty *z instance digitálních vláken Azure* , které jsou protokolovány do konzoly každé dvě sekundy.
+
+>[!NOTE]
+> Může trvat několik sekund, než se data ze zařízení šíří do vlákna. Prvních několika čtení teploty se může zobrazit jako 0 předtím, než se data začnou dorazit.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="Výstup konzoly zobrazující protokol teplotních zpráv z digitálního vlákna thermostat67":::
 
@@ -316,7 +291,7 @@ K tomu použijete funkci *ProcessDTRoutedData* Azure k aktualizaci vlákna v *m�
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Výňatek z celého scénáře sestavování grafického zvýraznění – šipka C, prvky po digitálních událostech Azure: Event Grid a druhá funkce Azure":::
 
 Tady jsou akce, které dokončíte pro nastavení tohoto toku dat:
-1. Vytvoření koncového bodu digitálních vláken Azure, který připojuje instanci k Event Grid
+1. Vytvoření koncového bodu Event Grid v digitálních událostech Azure, které připojují instanci k Event Grid
 2. Nastavení trasy v rámci digitálních vláken Azure pro posílání dvojitých událostí změny vlastností do koncového bodu
 3. Nasaďte aplikaci Azure Functions, která na koncovém bodu naslouchá (prostřednictvím [Event Grid](../event-grid/overview.md)), a odpovídajícím způsobem aktualizuje další vlákna.
 4. Spuštění simulovaného zařízení a dotazování digitálních vláken Azure na výsledky zobrazení živých výsledků
@@ -335,15 +310,15 @@ az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-g
 
 > [!TIP]
 > Pokud chcete vypsat seznam názvů oblastí Azure, které se dají předávat do příkazů v Azure CLI, spusťte tento příkaz:
-> ```azurecli
+> ```azurecli-interactive
 > az account list-locations -o table
 > ```
 
 Výstupem tohoto příkazu jsou informace o tématu, které jste vytvořili.
 
-V dalším kroku vytvořte koncový bod digitálních vláken Azure, který odkazuje na téma Event gridu. Použijte následující příkaz, podle potřeby vyplňte pole zástupné symboly:
+Dále vytvořte koncový bod Event Grid v digitálních událostech Azure, které budou vaši instanci připojovat k tématu Event gridu. Použijte následující příkaz, podle potřeby vyplňte pole zástupné symboly:
 
-```azurecli
+```azurecli-interactive
 az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --eventgrid-resource-group <your-resource-group> --eventgrid-topic <your-event-grid-topic> --endpoint-name <name-for-your-Azure-Digital-Twins-endpoint>
 ```
 
@@ -351,7 +326,7 @@ Výstupem tohoto příkazu jsou informace o koncovém bodu, který jste vytvoři
 
 Spuštěním následujícího příkazu můžete také ověřit, jestli se vytvoření koncového bodu dokončilo, a to tak, že spustíte následující příkaz, který se dotazuje na instanci digitálního vlákna Azure pro tento
 
-```azurecli
+```azurecli-interactive
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
@@ -359,13 +334,13 @@ Vyhledejte `provisioningState` pole ve výstupu a zkontrolujte, zda je hodnota "
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Výsledek dotazu koncového bodu zobrazující koncový bod s provisioningStateem úspěšného":::
 
-Uložte názvy, které jste zadali do svého tématu Event gridu, a koncový bod digitálních vláken Azure. Později je budete používat.
+Uložte názvy, které jste zadali do svého **tématu Event gridu** , a Event Grid **koncový bod** v části digitální vlákna Azure. Později je budete používat.
 
 ### <a name="set-up-route"></a>Nastavení trasy
 
-Dále vytvořte trasu digitálních vláken Azure, která odesílá události do koncového bodu digitálních vláken Azure, který jste právě vytvořili.
+Dále vytvořte trasu digitálních vláken Azure, která odešle události do Event Gridho koncového bodu, který jste právě vytvořili.
 
-```azurecli
+```azurecli-interactive
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
 
@@ -378,7 +353,7 @@ Výstupem z tohoto příkazu jsou některé informace o trasách, které jste vy
 
 Dále přihlaste *ProcessDTRoutedData* funkci Azure do tématu Event gridu, které jste vytvořili dříve, aby data telemetrie mohla být z *thermostat67* vyplněna prostřednictvím tématu Event gridu do funkce, která se vrátí do digitálních vláken Azure a odpovídajícím způsobem aktualizuje *room21* .
 
-Pokud to chcete provést, vytvoříte **Event Grid předplatné** z tématu Event gridu do *ProcessDTRoutedData* funkce Azure jako koncový bod.
+Uděláte to tak, že vytvoříte **předplatné Event Grid** , které odesílá data z **tématu Event gridu** , které jste vytvořili dříve, do služby Azure Functions v *ProcessDTRoutedData* .
 
 V [Azure Portal](https://portal.azure.com/)přejděte na téma Event gridu tak, že na horním panelu vyhledávání vyhledáte jeho název. Vyberte *+ Odběr události*.
 
@@ -407,13 +382,13 @@ V této konzole nemusíte nic dalšího dělat, ale při provádění dalších 
 
 Pokud se chcete podívat na data z oblasti digitálních vláken Azure, přejděte do okna aplikace Visual Studio, kde je projekt _**AdtE2ESample**_ otevřený, a spusťte projekt.
 
-V okně konzoly projektu, které se otevře, spusťte následující příkaz, který získá teploty hlášené digitálním **both** *thermostat67em* a digitálním *room21em*.
+V okně konzoly projektu, které se otevře, spusťte následující příkaz, který získá teploty hlášené digitálním  *thermostat67em* a digitálním *room21em*.
 
 ```cmd
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-Měli byste vidět živá aktualizované teploty *z instance digitálních vláken Azure* , které jsou protokolovány do konzoly každých 10 sekund. Všimněte si, že teplota pro *room21* se aktualizuje tak, aby odpovídala aktualizacím *thermostat67*.
+Měli byste vidět živá aktualizované teploty *z instance digitálních vláken Azure* , které jsou protokolovány do konzoly každé dvě sekundy. Všimněte si, že teplota pro *room21* se aktualizuje tak, aby odpovídala aktualizacím *thermostat67*.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="Výstup konzoly zobrazující protokol teplotních zpráv, z termostatu a místnosti":::
 
@@ -431,31 +406,21 @@ Tady je přehled scénáře, který jste vytvořili v tomto kurzu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, odstraňte je pomocí těchto kroků. 
+Po dokončení tohoto kurzu můžete zvolit prostředky, které chcete odebrat, v závislosti na tom, co byste chtěli udělat dál.
 
-Pomocí Azure Cloud Shell můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Tím odeberete skupinu prostředků. instance digitálního vlákna Azure; Centrum IoT a registrace zařízení v centru téma Event Grid a související odběry; a aplikace Azure Functions, včetně přidružených prostředků, jako je úložiště.
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-> [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
+* **Pokud chcete dál používat instanci digitálních vláken Azure, kterou jste nastavili v tomto článku, ale vymažete některé nebo všechny jeho modely, vlákna a vztahy**, můžete k odstranění prvků, které chcete odebrat, použít příkazy [AZ dt](/cli/azure/ext/azure-iot/dt) CLI v [Azure Cloud Shell](https://shell.azure.com) okně.
 
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
+    Tato možnost neodebere žádný z dalších prostředků Azure vytvořených v tomto kurzu (IoT Hub, Azure Functions aplikace atd.). Můžete je odstranit jednotlivě pomocí [příkazů DT](/cli/azure/reference-index) vhodných pro každý typ prostředku.
 
-V dalším kroku odstraňte registraci aplikace Azure AD, kterou jste vytvořili pro klientskou aplikaci, pomocí tohoto příkazu:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
-
-Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli z místního počítače.
+Je také možné, že budete chtít odstranit složku projektu z místního počítače.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili kompletní scénář, který zobrazuje digitální vlákna Azure, která se řídí daty živého zařízení.
 
 Pak začněte hledat v dokumentaci konceptu, kde najdete další informace o prvcích, se kterými jste pracovali v tomto kurzu:
-* [*Koncepty: vlastní modely*](concepts-models.md)
 
-Případně můžete v tomto kurzu podrobněji podrobnější informace o procesech, a to spuštěním článků s postupy:
-* [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> [*Koncepty: vlastní modely*](concepts-models.md)

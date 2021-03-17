@@ -1,90 +1,61 @@
 ---
-title: Upravit Microsoft Identifikujte účty aplikací platformy | Azure
-description: Konfigurací aplikace zaregistrované na platformě Microsoft Identity Platform můžete změnit, kdo (jaké účty) může k aplikaci přistupovat.
+title: 'Postupy: Změna typů účtů podporovaných aplikací | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto postupu nakonfigurujete aplikaci registrovanou s platformou Microsoft identity na změnu toho, kdo nebo jaké účty mají přístup k aplikaci.
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.reviewer: marsma, aragra, lenalepa, sureshja
+ms.openlocfilehash: 3ae6616263de605d5910f244423b9e7ffc036c5d
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826855"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103953"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Rychlý Start: Změna účtů podporovaných aplikací
+# <a name="how-to-modify-the-accounts-supported-by-an-application"></a>Postup úpravy účtů podporovaných aplikací
 
-Při registraci aplikace na platformě Microsoft Identity Platform možná budete chtít svou aplikaci zpřístupnit pouze uživatelům ve vaší organizaci. Alternativně můžete chtít aplikaci zpřístupnit také uživatelům v externích organizacích nebo uživatelům v externích organizacích i uživatelům, kteří nutně nejsou součástí žádné organizace (osobní účty).
+Když zaregistrujete aplikaci s platformou Microsoft identity, zadali jste, kteří typy účtů k nim mají přístup. Můžete například zadat účty pouze ve vaší organizaci, což je jedna aplikace pro *jednoho tenanta* . Nebo jste mohli zadat účty v jakékoli organizaci (včetně vašeho), což je *víceklientské* aplikace.
 
-V tomto rychlém startu se dozvíte, jak úpravou konfigurace vaší aplikace změnit, kdo (jaké účty) může k aplikaci přistupovat.
+V následujících částech se dozvíte, jak změnit registraci vaší aplikace v Azure Portal, abyste změnili, kdo nebo jaké typy účtů mají přístup k aplikaci.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, musíte splnit následující požadavky:
-
-* Přečtěte si o podporovaných [oprávněních a souhlasu](v2-permissions-and-consent.md), kterým je důležité rozumět při vytváření aplikací, které budou používat jiní uživatelé či jiné aplikace.
-* Máte tenanta, ke kterému jsou zaregistrované aplikace.
-  * Pokud nemáte žádné zaregistrované aplikace, [přečtěte si o registraci aplikací na platformě Microsoft Identity Platform](quickstart-register-app.md).
-
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Přihlášení k webu Azure Portal a výběr aplikace
-
-Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
-1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
-1. Postupujte podle pokynů a [změňte registraci aplikace tak, aby podporovala různé účty](#change-the-application-registration-to-support-different-accounts).
-1. Pokud máte jednostránkovou aplikaci, [povolte implicitní udělení OAuth 2.0](#enable-oauth-20-implicit-grant-for-single-page-applications).
+* [Aplikace zaregistrovaná v Tenantovi Azure AD](quickstart-register-app.md)
 
 ## <a name="change-the-application-registration-to-support-different-accounts"></a>Změna registrace aplikace pro podporu různých účtů
 
-Pokud píšete aplikaci, kterou chcete zpřístupnit zákazníkům nebo partnerům mimo organizaci, musíte na webu Azure Portal aktualizovat definici aplikace.
+Pokud chcete zadat jiné nastavení pro typy účtů podporované při registraci existující aplikace:
 
-> [!IMPORTANT]
-> Azure AD vyžaduje, aby identifikátor URI ID aplikací s více tenanty byl globálně jedinečný. Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. U aplikace s jedním tenantem stačí, když bude identifikátor URI ID aplikace jedinečný v rámci daného tenanta. U aplikace s více tenanty musí být globálně jedinečný, aby služba Azure AD aplikaci našla mezi všemi tenanty. Globální jedinečnost se vynucuje požadavkem, aby Identifikátor URI ID aplikace obsahoval název hostitele, který odpovídá ověřené doméně tenanta Azure AD. Když je například název tenanta contoso.onmicrosoft.com, pak by platným identifikátorem URI ID aplikace byl `https://contoso.onmicrosoft.com/myapp`. Pokud má tenant ověřenou doménu contoso.com, pak by platným identifikátorem URI ID aplikace byl i `https://contoso.com/myapp`. Pokud identifikátor URI ID aplikace nepoužívá tento vzor, nastavení aplikace jako aplikace s více tenanty se nezdaří.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací** a pak vyberte svou aplikaci.
+1. Nyní určete, kdo může používat aplikaci, někdy označovanou jako *cílová skupina pro přihlášení*.
 
-### <a name="to-change-who-can-access-your-application"></a>Změna toho, kdo má přístup k aplikaci
-
-1. Na stránce **Přehled** aplikace vyberte část **Ověřování** a změňte vybranou hodnotu v části **Podporované typy účtu**.
-    * Pokud vytváříte obchodní aplikaci, vyberte **Účty jen v tomto adresáři**. Tato možnost není dostupná, pokud aplikace není zaregistrovaná v adresáři.
-    * Pokud chcete cílit na všechny zákazníky z řad firem a vzdělávacích institucí, vyberte **Účty v libovolném organizačním adresáři**.
-    * Pokud chcete cílit na co nejširší okruh zákazníků, vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+    | Podporované typy účtu | Description |
+    |-------------------------|-------------|
+    | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte aplikaci pro použití jenom pro uživatele (nebo hosty) ve *vašem* tenantovi.<br><br>Je často označována jako *obchodní* aplikace (LOB), což je **jediná klientská** aplikace na platformě Microsoft identity. |
+    | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete, aby se vaše aplikace mohla používat pro uživatele v *jakémkoli* tenantovi služby Azure AD. Tato možnost je vhodná, pokud například vytváříte aplikaci typu software jako služba (SaaS), kterou máte v úmyslu poskytnout více organizacím.<br><br>Tato aplikace se označuje jako **víceklientská** aplikace na platformě Microsoft identity. |
 1. Vyberte **Uložit**.
 
-## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>Povolení implicitního udělení OAuth 2.0 u jednostránkových aplikací
+### <a name="why-changing-to-multi-tenant-can-fail"></a>Proč se změna na více tenantů může zdařit
 
-Jednostránkové aplikace (SPA) mají obvykle strukturu front-endu se spoustou JavaScriptu běžícího v prohlížeči, který volá back-end aplikace webového rozhraní API, aby provedl obchodní logiku. U jednostránkových aplikací hostovaných v Azure AD se používá implicitní udělení OAuth 2.0 k ověření uživatele pomocí Azure AD a získání tokenu, který můžete použít k zabezpečení volání z javascriptového klienta aplikace do back-endu webového rozhraní API.
+Přepnutí registrace aplikace z jednoho na více tenantů může někdy selhat z důvodu kolizí názvů identifikátoru URI ID aplikace (identifikátor URI ID aplikace). Identifikátor URI ID aplikace je příklad `https://contoso.onmicrosoft.com/myapp` .
 
-Jakmile uživatel udělí souhlas, může se stejný protokol ověřování použít k získání tokenů, aby se zabezpečila volání mezi klientem a jinými prostředky webového rozhraní API nakonfigurovanými pro danou aplikaci. Další informace o implicitním udělení autorizace a pomoc s rozhodnutím, zda je implicitní udělení autorizace pro váš scénář vhodné, najdete v článcích o toku implicitního udělení OAuth 2.0 v Azure AD [v1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) a [v2.0](v2-oauth2-implicit-grant-flow.md).
+Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. V případě aplikace s jedním klientem musí být identifikátor URI ID aplikace jedinečný jenom v rámci tohoto tenanta. Pro víceklientské aplikace musí být globálně jedinečné, aby služba Azure AD mohla najít aplikaci napříč všemi klienty. Globální jedinečnost se vynutila tím, že se vyžaduje, aby název hostitele identifikátoru URI ID aplikace odpovídal jednomu z [ověřených domén vydavatelů](howto-configure-publisher-domain.md)v TENANTOVI Azure AD.
 
-Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázané. Implicitní udělení OAuth 2.0 můžete u své aplikace povolit podle níže uvedeného postupu.
+Například pokud je název vašeho tenanta *contoso.onmicrosoft.com*, pak `https://contoso.onmicrosoft.com/myapp` je platný identifikátor URI ID aplikace. Pokud má váš tenant ověřenou doménu *contoso.com*, bude také platný identifikátor URI ID aplikace `https://contoso.com/myapp` . Pokud identifikátor URI ID aplikace nedodržuje druhý vzor, `https://contoso.com/myapp` převod registrace aplikace na více tenantů se nezdařil.
 
-### <a name="to-enable-oauth-20-implicit-grant"></a>Povolení implicitního udělení OAuth 2.0
-
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
-1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
-1. Na stránce **Přehled** aplikace vyberte část **Ověřování**.
-1. V části **Upřesnit nastavení** vyhledejte část **Implicitní udělení**.
-1. Vyberte **Tokeny ID**, **Přístupové tokeny** nebo obojí.
-1. Vyberte **Uložit**.
+Další informace o konfiguraci ověřené domény vydavatele najdete v tématu [Konfigurace ověřené domény](howto-configure-publisher-domain.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v těchto rychlých startech souvisejících se správou aplikací:
-
-* [Registrace aplikace na platformě Microsoft Identity Platform](quickstart-register-app.md)
-* [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md)
-* [Konfigurace aplikace pro zveřejnění webových rozhraní API](quickstart-configure-app-expose-web-apis.md)
-* [Odebrání aplikace zaregistrované na platformě Microsoft Identity Platform](quickstart-remove-app.md)
-
-Další informace o dvou objektech Azure AD, které představují zaregistrovanou aplikaci, a vztahu mezi nimi, najdete v článku o [objektech aplikací a instančních objektech](app-objects-and-service-principals.md).
-
-Další informace o pokynech pro branding, kterými byste se měli řídit při vývoji aplikací s využitím Azure Active Directory, najdete v článku [Pokyny pro branding aplikací](howto-add-branding-in-azure-ad-apps.md).
+Přečtěte si další informace o požadavcích na [Převod aplikace z jednoho na více tenantů](howto-convert-app-to-be-multi-tenant.md).

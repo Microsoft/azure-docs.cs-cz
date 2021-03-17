@@ -1,19 +1,16 @@
 ---
 title: Vlastní databáze Apache Ambari v Azure HDInsight
 description: Naučte se vytvářet clustery HDInsight s vlastní databází Apache Ambari.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
-ms.date: 06/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1858e06567a0ab0907e6d2cb60358ff4ac00f9a2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 01/12/2021
+ms.openlocfilehash: fe38ddc594060c78a2d26e9b25476e38736b4cf7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086343"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946047"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>Nastavení clusterů HDInsight s vlastní Ambari DB
 
@@ -59,11 +56,25 @@ Pokud chcete vytvořit cluster HDInsight, který používá vaši vlastní exter
 Nasazení můžete zahájit pomocí Azure CLI. Nahraďte `<RESOURCEGROUPNAME>` skupinou prostředků, do které chcete cluster nasadit.
 
 ```azurecli
-az group deployment create --name HDInsightAmbariDBDeployment \
+az deployment group create --name HDInsightAmbariDBDeployment \
     --resource-group <RESOURCEGROUPNAME> \
     --template-file azuredeploy.json \
     --parameters azuredeploy.parameters.json
 ```
+
+## <a name="database-sizing"></a>Velikost databáze
+
+Následující tabulka uvádí pokyny, které úroveň databáze SQL Azure vybere na základě velikosti clusteru HDInsight.
+
+| Počet uzlů pracovního procesu | Požadovaná úroveň databáze |
+|---|---|
+| <= 4 | S0 |
+| >4 && <= 8 | S1 |
+| >8 && <= 16 | S2 |
+| >16 && <= 32 | S3 |
+| >32 && <= 64 | S4 |
+| >64 && <= 128 | P2 |
+| >128 | Kontaktování podpory |
 
 ## <a name="next-steps"></a>Další kroky
 

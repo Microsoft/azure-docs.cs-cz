@@ -2,15 +2,13 @@
 title: Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 description: Tento dokument popisuje, jak vytvořit funkci Azure pomocí TrackAvailability (), která se pravidelně spouští podle konfigurace zadané ve funkci TimerTrigger. Výsledky tohoto testu se odešlou do vašeho prostředku Application Insights, kde se budete moct dotazovat na data výsledků dostupnosti a upozornit na ně. Přizpůsobené testy vám umožní zapisovat složitější testy dostupnosti, než je možné pomocí uživatelského rozhraní portálu, monitorovat aplikaci v rámci virtuální sítě Azure, změnit adresu koncového bodu nebo vytvořit test dostupnosti, pokud není ve vaší oblasti dostupný.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320625"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589945"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 
@@ -32,7 +30,7 @@ Tento článek popisuje, jak vytvořit funkci Azure pomocí TrackAvailability ()
 
             ![Výběr existujícího prostředku Application Insights](media/availability-azure-functions/app-insights-resource.png)
 
-        - Vybrat **kontrolu + vytvořit**
+        - Vyberte **Zkontrolovat a vytvořit**.
 - Pokud ještě nemáte vytvořený prostředek Application Insights pro funkci aktivovanou časovačem:
     - Když vytváříte aplikaci Azure Functions, vytvoří se ve výchozím nastavení pro vás prostředek Application Insights.
     - Postupujte podle pokynů v tématu Jak [vytvořit prostředek Azure functions a funkci aktivovanou časovačem](../../azure-functions/functions-create-scheduled-function.md) (před čištěním zastavit).
@@ -135,7 +133,7 @@ Na pravé straně v části Zobrazit soubory vyberte **Přidat**. Zavolejte nov�
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.8.2" /> <!-- Ensure you’re using the latest version -->
+        <PackageReference Include="Microsoft.ApplicationInsights" Version="2.15.0" /> <!-- Ensure you’re using the latest version -->
     </ItemGroup>
 </Project>
 
@@ -177,13 +175,13 @@ Pokud jste spustili vše, co je (bez přidání obchodní logiky), pak se test n
 
 ## <a name="query-in-logs-analytics"></a>Dotaz v protokolech (analýza)
 
-Pomocí protokolů (Analytics) můžete zobrazit výsledky, závislosti a další informace o dostupnosti. Další informace o protokolech najdete v článku [Přehled dotazů protokolu](../log-query/log-query-overview.md).
+Pomocí protokolů (Analytics) můžete zobrazit výsledky, závislosti a další informace o dostupnosti. Další informace o protokolech najdete v článku [Přehled dotazů protokolu](../logs/log-query-overview.md).
 
 >[!div class="mx-imgBorder"]
 >![Výsledky dostupnosti](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
->![Závislosti](media/availability-azure-functions/dependencies.png)
+>![Snímek obrazovky se zobrazí nová karta dotaz se závislostmi omezenými na 50.](media/availability-azure-functions/dependencies.png)
 
 ## <a name="next-steps"></a>Další kroky
 

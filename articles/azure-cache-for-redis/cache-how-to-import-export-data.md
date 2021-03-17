@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9ee3b447b2b5f6dfa8972749c3c46ae01f79bfdc
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004334"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327504"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Import a export dat v Azure cache pro Redis
 Import/Export je mezipaměť Azure pro operaci správy dat Redis, která umožňuje importovat data do mezipaměti Azure pro Redis nebo exportovat data z mezipaměti Azure pro Redis tím, že importuje a exportuje snímek Azure cache for Redis Database (RDB) z mezipaměti Premium do objektu BLOB v účtu Azure Storage.
@@ -32,7 +32,7 @@ Tento článek obsahuje průvodce pro import a export dat pomocí Azure cache pr
 Import se dá použít k převedení Redis kompatibilních souborů RDB z libovolného serveru Redis spuštěného v jakémkoli cloudu nebo prostředí, včetně Redis, které běží na Linux, Windows nebo jakémkoli poskytovateli cloudu, jako je Amazon Web Services a další. Import dat představuje snadný způsob, jak vytvořit mezipaměť s předem vyplněnými daty. Během procesu importu načte služba Azure cache pro Redis soubory RDB z Azure Storage do paměti a pak tyto klíče vloží do mezipaměti.
 
 > [!NOTE]
-> Před zahájením operace importu se ujistěte, že se soubor nebo soubory databáze Redis (RDB) nahrály do stránek nebo objektů blob bloku v Azure Storage ve stejné oblasti a předplatném jako instance Azure cache pro Redis. Další informace najdete v tématu [Začínáme se službou Azure Blob Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Pokud jste soubor RDB exportovali pomocí funkce [exportu Azure cache for Redis](#export) , váš soubor RDB je už uložený v objektu blob stránky a připravený k importu.
+> Před zahájením operace importu se ujistěte, že se soubor nebo soubory databáze Redis (RDB) nahrály do stránek nebo objektů blob bloku v Azure Storage ve stejné oblasti a předplatném jako instance Azure cache pro Redis. Další informace najdete v tématu [Začínáme se službou Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md). Pokud jste soubor RDB exportovali pomocí funkce [exportu Azure cache for Redis](#export) , váš soubor RDB je už uložený v objektu blob stránky a připravený k importu.
 >
 >
 
@@ -66,7 +66,7 @@ Export umožňuje exportovat data uložená v mezipaměti Azure pro Redis do sou
 
 1. Pokud chcete exportovat aktuální obsah mezipaměti do úložiště, přejděte do [mezipaměti](cache-configure.md#configure-azure-cache-for-redis-settings) v Azure Portal a klikněte na **exportovat data** z **nabídky prostředků**.
 
-    ![Zvolit kontejner úložiště](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
+    ![V navigačním podokně pro contoso5premium se zvýrazní možnost exportovat data v seznamu Správa.](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
 2. Klikněte na **zvolit kontejner úložiště** a vyberte požadovaný účet úložiště. Účet úložiště musí být ve stejném předplatném a oblasti jako vaše mezipaměť.
 
    > [!IMPORTANT]
@@ -76,7 +76,7 @@ Export umožňuje exportovat data uložená v mezipaměti Azure pro Redis do sou
     ![Účet úložiště](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
 3. Zvolte požadovaný kontejner objektů BLOB a klikněte na **Vybrat**. Chcete-li použít nový kontejner, klikněte na tlačítko **Přidat kontejner** a nejprve ho přidejte a vyberte ze seznamu.
 
-    ![Zvolit kontejner úložiště](./media/cache-how-to-import-export-data/cache-export-data-container.png)
+    ![V kontejnerech pro contoso55 je možnost + kontejner zvýrazněna. V seznamu je jeden kontejner, cachesaves a je vybraný a zvýrazněný. Možnost výběru je vybrána a zvýrazněna.](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. Zadejte **předponu názvu objektu BLOB** a kliknutím na **Export** spusťte proces exportu. Předpona názvu objektu BLOB se používá k vytvoření předpony názvů souborů generovaných touto operací exportu.
 
     ![Export](./media/cache-how-to-import-export-data/cache-export-data.png)

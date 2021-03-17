@@ -4,20 +4,22 @@ description: 'Kurz: Naučte se dotazovat se na dotazy SQL v Azure Cosmos DB pomo
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c206b68495b09988e49f37433ccd5616acd29cb7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135993"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337774"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Rozhraní [SQL API](documentdb-introduction.md) služby Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL. Tento článek obsahuje ukázkový dokument a dva ukázkové dotazy SQL a jejich výsledky.
+Rozhraní [SQL API](./introduction.md) služby Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL. Tento článek obsahuje ukázkový dokument a dva ukázkové dotazy SQL a jejich výsledky.
 
 Tento článek se zabývá následujícími úkony: 
 
@@ -64,7 +66,7 @@ Dotazy můžete spouštět pomocí Průzkumníka dat na webu Azure Portal, prost
 Další informace o dotazech SQL najdete tady:
 * [Dotazy a syntaxe SQL](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Nemáte žádné z těchto prostředků? Dokončete [pětiminutový rychlý start](create-cosmosdb-resources-portal.md).
 
@@ -149,4 +151,3 @@ Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak globálně dis
 
 > [!div class="nextstepaction"]
 > [Globální distribuce dat](tutorial-global-distribution-sql-api.md)
-

@@ -3,12 +3,12 @@ title: Zálohování virtuálního počítače s SQL Server v podokně virtuáln
 description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze na virtuálních počítačích Azure z podokna virtuálního počítače.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: dd30ca1fb138d3e3bd44633b9d5e71beae6d96be
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227118"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88891653"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>Zálohování SQL Server v podokně virtuálního počítače
 
@@ -62,7 +62,7 @@ Můžete povolit zálohování na svém SQL Serverm VIRTUÁLNÍm počítači z p
 
     ![Připravenost na zálohování není připravená](./media/backup-sql-server-vm-from-vm-pane/backup-readiness-not-ready.png)
 
-8. Pro další operace nebo monitorování, které musíte provést na zálohovaném SQL Serverm virtuálním počítači, přejdete do odpovídajícího trezoru služby Recovery Services. Přejděte na **zálohované položky** a zobrazte všechny databáze zálohované v tomto trezoru a aktivujte operace, jako je zálohování a obnovení na vyžádání. Podobně můžete přejít na **úlohy zálohování** a [monitorovat](manage-monitor-sql-database-backup.md) úlohy, které odpovídají operacím, jako je konfigurace ochrany, zálohování a obnovení.
+8. Pro další operace nebo monitorování, které musíte provést na zálohovaných SQL Server virtuálních počítačích, přejdete do odpovídajícího trezoru Recovery Services. Přejděte na **zálohované položky** a zobrazte všechny databáze zálohované v tomto trezoru a aktivujte operace, jako je zálohování a obnovení na vyžádání. Podobně můžete přejít na **úlohy zálohování** a [monitorovat](manage-monitor-sql-database-backup.md) úlohy, které odpovídají operacím, jako je konfigurace ochrany, zálohování a obnovení.
 
     ![Viz zálohované databáze v zálohovaných položkách.](./media/backup-sql-server-vm-from-vm-pane/backup-items.png)
 

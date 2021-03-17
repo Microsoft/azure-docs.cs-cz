@@ -4,12 +4,12 @@ description: Automatizace vlastních denních, týdenních nebo měsíčních se
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: abd87af1a9cf61aba21e9231350aabc661e5091b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320404"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590046"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatizace vlastních sestav pomocí Azure Application Insights dat
 
@@ -31,9 +31,9 @@ Každá organizace má své jedinečné požadavky na vytváření sestav, jako 
 
 [Pomocí programového dotazování](https://dev.applicationinsights.io/) na data Application Insights můžete vytvářet vlastní sestavy podle plánu. Následující možnosti vám pomůžou rychle začít:
 
-* [Automatizace sestav pomocí Microsoft Flow](../platform/logicapp-flow-connector.md)
+* [Automatizace sestav s využitím Power automatizovat](../logs/logicapp-flow-connector.md)
 * [Automatizace sestav pomocí Logic Apps](automate-with-logic-apps.md)
-* V scénáři monitorování použijte šablonu [Azure Functions](../../azure-functions/functions-create-first-azure-function.md) "Application Insights naplánovaný výtah". Tato funkce používá SendGrid k doručování e-mailů. 
+* V scénáři monitorování použijte šablonu [Azure Functions](../../azure-functions/functions-get-started.md) "Application Insights naplánovaný výtah". Tato funkce používá SendGrid k doručování e-mailů. 
 
     ![Šablona funkce Azure](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Vytvoří Function App Azure. (Application Insights on se vyžaduje jenom _v_ případě, že chcete monitorovat nové Function App s Application Insights).
 
-   Informace o tom, jak [vytvořit aplikaci Function App](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) , najdete v dokumentaci k Azure Functions.
+   Informace o tom, jak [vytvořit aplikaci Function App](../../azure-functions/functions-get-started.md) , najdete v dokumentaci k Azure Functions.
 
 2. Po dokončení nasazení nového Function App vyberte **Přejít k prostředku**.
 
@@ -91,7 +91,7 @@ availabilityResults
 
    ![Snímek obrazovky s nastavením funkce](./media/automate-custom-reports/scheduled-digest.png)
 
-6. Vyberte **Function App**  >  **konfiguraci funkcí platformy**  >  **Configuration**.
+6. Vyberte **Function App**  >  **konfiguraci funkcí platformy**  >  .
 
     ![Snímek obrazovky nastavení aplikace Azure Functions](./media/automate-custom-reports/config.png)
 
@@ -112,7 +112,7 @@ availabilityResults
 
      ![Snímek obrazovky výstupu](./media/automate-custom-reports/integrate.png)
 
-9. V **nastavení aplikace SendGridAPI Key**vyberte nově vytvořené nastavení aplikace pro **SendGridAPI**.
+9. V **nastavení aplikace SendGridAPI Key** vyberte nově vytvořené nastavení aplikace pro **SendGridAPI**.
 
      ![Spustit Function App snímek obrazovky](./media/automate-custom-reports/sendgrid-output.png)
 
@@ -150,8 +150,7 @@ Tyto kroky platí pouze v případě, že ještě nemáte nakonfigurovaný úče
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o vytváření [analytických dotazů](../log-query/get-started-queries.md).
+* Přečtěte si další informace o vytváření [analytických dotazů](../logs/get-started-queries.md).
 * Další informace o [programovém dotazování Application Insights dat](https://dev.applicationinsights.io/)
 * Další informace o [Logic Apps](../../logic-apps/logic-apps-overview.md).
-* Přečtěte si další informace o [Microsoft Flow](https://ms.flow.microsoft.com).
-
+* Přečtěte si další informace o [Microsoft Power automatizuje](https://ms.flow.microsoft.com).

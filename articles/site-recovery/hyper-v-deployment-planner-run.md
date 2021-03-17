@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74082605"
 ---
-# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Spuštění plánovače nasazení Azure Site Recovery pro zotavení po havárii technologie Hyper-V do Azure
+# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Spuštění Plánovače nasazení služby Azure Site Recovery pro zotavení po havárii Hyper-V do Azure
 
 Nástroj příkazového řádku plánovače nasazení Site Recovery (ASRDeploymentPlanner.exe) můžete spustit v některém z těchto čtyř režimů: 
 -   Získání seznamu virtuálních počítačů

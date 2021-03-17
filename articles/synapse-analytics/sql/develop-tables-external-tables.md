@@ -5,42 +5,42 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 070d933394b19ea38a9632f25909812943f7bff8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255826"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667641"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
-Externí tabulka odkazuje na data umístěná v Hadoop, Azure Storage BLOB nebo Azure Data Lake Storage. Externí tabulky se používají ke čtení dat ze souborů nebo zápisu dat do souborů v Azure Storage. Pomocí synapse SQL můžete použít externí tabulky ke čtení a zápisu dat do fondu SQL nebo na vyžádání SQL (Preview).
+Externí tabulka odkazuje na data umístěná v Hadoop, Azure Storage BLOB nebo Azure Data Lake Storage. Externí tabulky se používají ke čtení dat ze souborů nebo zápisu dat do souborů v Azure Storage. Pomocí synapse SQL můžete použít externí tabulky ke čtení a zápisu dat do vyhrazeného fondu SQL nebo bez serveru SQL.
 
-## <a name="external-tables-in-synapse-sql-pool-and-on-demand"></a>Externí tabulky ve fondu SQL synapse a na vyžádání
+## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>Externí tabulky ve vyhrazeném fondu SQL a bez serveru SQL
 
-### <a name="sql-pool"></a>[Fond SQL](#tab/sql-pool) 
+### <a name="dedicated-sql-pool"></a>[Vyhrazený fond SQL](#tab/sql-pool) 
 
-Ve fondu SQL můžete použít externí tabulku k těmto akcím:
+V vyhrazeném fondu SQL můžete použít externí tabulku k těmto akcím:
 
 - Dotazování Azure Blob Storage a Azure Data Lake Gen2 pomocí příkazů jazyka Transact-SQL.
-- Importuje a ukládá data z Azure Blob Storage a Azure Data Lake Storage do fondu SQL.
+- Importujte a uložte data z Azure Blob Storage a Azure Data Lake Storage do vyhrazeného fondu SQL.
 
-Při použití ve spojení s příkazem [Create Table jako SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , výběr z externí tabulky importuje data do tabulky v rámci fondu SQL. Kromě [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)jsou externí tabulky užitečné pro načítání dat. 
+Při použití ve spojení s příkazem [Create Table jako SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , výběr z externí tabulky importuje data do tabulky v rámci fondu SQL. Kromě [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)jsou externí tabulky užitečné pro načítání dat. 
 
-Kurz načítání najdete v tématu [použití základny k načtení dat z Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Kurz načítání najdete v tématu [použití základny k načtení dat z Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
-### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-on-demand)
+### <a name="serverless-sql-pool"></a>[Fond SQL bez serveru](#tab/sql-on-demand)
 
-V případě SQL na vyžádání použijete externí tabulku k těmto akcím:
+Pro fond SQL bez serveru použijete externí tabulku k těmto akcím:
 
 - Dotazování na data ve službě Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazů jazyka Transact-SQL
-- Uložení výsledků dotazů na vyžádání SQL do souborů v Azure Blob Storage nebo Azure Data Lake Storage pomocí [CETAS](develop-tables-cetas.md)
+- Ukládání výsledků dotazu na neserverový fond SQL do souborů v Azure Blob Storage nebo Azure Data Lake Storage pomocí [CETAS](develop-tables-cetas.md)
 
-Externí tabulky můžete vytvořit pomocí SQL na vyžádání pomocí následujících kroků:
+Externí tabulky můžete vytvářet pomocí neserverového fondu SQL pomocí následujících kroků:
 
 1. VYTVOŘIT EXTERNÍ ZDROJ DAT
 2. CREATE EXTERNAL FILE FORMAT
@@ -56,15 +56,15 @@ Externí tabulka přistupuje k základní službě Azure Storage pomocí oboru p
 - Zdroj dat může mít přihlašovací údaje, které umožňuje externím tabulkám přistupovat k souborům v Azure Storage pomocí tokenu SAS nebo spravované identity v pracovním prostoru. Příklady najdete [v článku vývoj souborů úložiště pro přístup do úložiště](develop-storage-files-storage-access-control.md#examples) .
 
 > [!IMPORTANT]
-> V rámci fondu SQL umožňuje DataSource bez creadential uživateli Azure AD přístup k souborům úložiště pomocí své identity Azure AD. V SQL na vyžádání potřebujete vytvořit zdroj dat s přihlašovacími údaji pro databáze s rozsahem, který obsahuje `IDENTITY='User Identity'` vlastnost – [tady najdete příklady](develop-storage-files-storage-access-control.md#examples).
+> V vyhrazeném fondu SQL může zdroj dat vytvořený bez přihlašovacích údajů povolit uživatelům Azure AD přístup k souborům úložiště pomocí své identity Azure AD. Ve fondu SQL bez serveru musíte vytvořit zdroj dat s přihlašovacími údaji v databázi s rozsahem, který obsahuje `IDENTITY='User Identity'` vlastnost – příklady najdete [tady](develop-storage-files-storage-access-control.md#examples).
 
 ## <a name="create-external-data-source"></a>VYTVOŘIT EXTERNÍ ZDROJ DAT
 
-Externí zdroje dat slouží k připojení k účtům úložiště. [Tady](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)je popsaný kompletní dokumentace.
+Externí zdroje dat slouží k připojení k účtům úložiště. [Tady](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true)je popsaný kompletní dokumentace.
 
 ### <a name="syntax-for-create-external-data-source"></a>Syntaxe pro vytvoření externího zdroje dat
 
-#### <a name="sql-pool"></a>[Fond SQL](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[Vyhrazený fond SQL](#tab/sql-pool)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -76,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Fond SQL bez serveru](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -96,7 +96,7 @@ data_source_name
 Určuje uživatelsky definovaný název pro zdroj dat. Název musí být v rámci databáze jedinečný.
 
 #### <a name="location"></a>Umístění
-LOCATION = `'<prefix>://<path>'` – poskytuje protokol připojení a cestu k externímu zdroji dat. V umístění lze použít následující vzory:
+LOCATION = `'<prefix>://<path>'`   – poskytuje protokol připojení a cestu k externímu zdroji dat. V umístění lze použít následující vzory:
 
 | Externí zdroj dat        | Předpona umístění | Cesta k umístění                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
@@ -105,21 +105,21 @@ LOCATION = `'<prefix>://<path>'` – poskytuje protokol připojení a cestu k ex
 | Azure Data Lake Store Gen 1 | `http[s]`       | `<storage_account>.azuredatalakestore.net/webhdfs/v1` |
 | Azure Data Lake Store Gen 2 | `http[s]`       | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
 
-`https:`prefix umožňuje použít v cestě podsložku.
+`https:` prefix umožňuje použít v cestě podsložku.
 
 #### <a name="credential"></a>Přihlašovací údaj
 CREDENTIAL = `<database scoped credential>` je volitelné přihlašovací údaje, které se použijí k ověření v Azure Storage. Externí zdroj dat bez přihlašovacích údajů má přístup ke veřejnému účtu úložiště. 
 
-Externí zdroje dat bez přihlašovacích údajů ve fondu SQL můžou k přístupu k souborům v úložišti používat taky identitu Azure AD. Externí zdroj dat s přihlašovacími údaji, který je zadaný v přihlašovacích údajích pro přístup k souborům
-- V rámci fondu SQL může pověření v oboru databáze určovat identitu vlastní aplikace, spravovanou identitu pracovního prostoru nebo SAK klíč. 
-- V SQL na vyžádání můžou přihlašovací údaje vymezené databází určovat identitu Azure AD s rozsahem, spravovanou identitu nebo klíč SAS volajícího. 
+Externí zdroje dat bez přihlašovacích údajů ve vyhrazeném fondu SQL budou používat identitu Azure AD volajícího pro přístup k souborům v úložišti. Externí zdroj dat pro fond SQL bez serveru s přihlašovacími údaji  `IDENTITY='User Identity'` použije identitu Azure AD volajícího pro přístup k souborům.
+- V vyhrazeném fondu SQL můžou přihlašovací údaje vymezené databází určovat vlastní identitu aplikace, spravovanou identitu pracovního prostoru nebo SAK klíč. 
+- V rámci fondu SQL bez serveru můžou přihlašovací údaje v oboru databáze určovat identitu Azure AD, která je spravovaná pro pracovní prostor nebo klíč SAS. 
 
 #### <a name="type"></a>TYP
-TYPE = `HADOOP` je povinná možnost ve fondu SQL a určuje, že se pro přístup k podkladovým souborům používá technologie založené na základech. Tento parametr se nedá použít ve službě SQL na vyžádání, která používá vestavěnou nativní čtečku.
+TYPE = `HADOOP` je povinná možnost ve vyhrazeném fondu SQL a určuje, že se pro přístup k podkladovým souborům používá technologie základu. Tento parametr se nedá použít ve fondu SQL bez serveru, který používá vestavěnou nativní čtečku.
 
 ### <a name="example-for-create-external-data-source"></a>Příklad pro vytvoření externího zdroje dat
 
-#### <a name="sql-pool"></a>[Fond SQL](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[Vyhrazený fond SQL](#tab/sql-pool)
 
 Následující příklad vytvoří externí zdroj dat pro Azure Data Lake Gen2 odkazuje na datovou sadu New York:
 
@@ -133,7 +133,7 @@ WITH
   ) ;
 ```
 
-#### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Fond SQL bez serveru](#tab/sql-on-demand)
 
 Následující příklad vytvoří externí zdroj dat pro Azure Data Lake Gen2, ke kterému lze přistupovat pomocí pověření SAS:
 
@@ -159,11 +159,13 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Vytvoří objekt externího formátu souboru, který definuje externí data uložená v Azure Blob Storage nebo Azure Data Lake Storage. Vytvoření externího formátu souboru je předpokladem pro vytvoření externí tabulky. Kompletní dokumentaci [najdete tady](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Vytvoří objekt externího formátu souboru, který definuje externí data uložená v Azure Blob Storage nebo Azure Data Lake Storage. Vytvoření externího formátu souboru je předpokladem pro vytvoření externí tabulky. Kompletní dokumentaci [najdete tady](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 Vytvořením formátu externího souboru zadáte skutečné rozložení dat, na která odkazuje externí tabulka.
 
 ### <a name="syntax-for-create-external-file-format"></a>Syntaxe pro formát vytvoření externího souboru
+
+#### <a name="sql-pool"></a>[Fond SQL](#tab/sql-pool)
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -192,6 +194,40 @@ WITH (
     | Encoding = {'UTF8' | 'UTF16'}
 }
 ```
+
+#### <a name="serverless-sql-pool"></a>[Fond SQL bez serveru](#tab/sql-on-demand)
+
+```syntaxsql
+-- Create an external file format for PARQUET files.  
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = PARQUET  
+    [ , DATA_COMPRESSION = {  
+        'org.apache.hadoop.io.compress.SnappyCodec'  
+      | 'org.apache.hadoop.io.compress.GzipCodec'      }  
+    ]);  
+
+--Create an external file format for DELIMITED TEXT files
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = DELIMITEDTEXT  
+    [ , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' ]
+    [ , FORMAT_OPTIONS ( <format_options> [ ,...n  ] ) ]  
+    );  
+
+<format_options> ::=  
+{  
+    FIELD_TERMINATOR = field_terminator  
+    | STRING_DELIMITER = string_delimiter
+    | First_Row = integer
+    | USE_TYPE_DEFAULT = { TRUE | FALSE }
+    | Encoding = {'UTF8' | 'UTF16'}
+    | PARSER_VERSION = {'parser_version'}
+}
+```
+
+---
+
 
 ### <a name="arguments-for-create-external-file-format"></a>Argumenty pro formát vytvoření externího souboru
 
@@ -230,7 +266,7 @@ TRUE – Pokud načítáte data z textového souboru, uložte všechny chybějí
 
 FALSE – uloží všechny chybějící hodnoty jako NULL. Všechny hodnoty NULL, které jsou uloženy pomocí slova NULL v textovém souboru s oddělovači, jsou importovány jako řetězec "NULL".
 
-Encoding = {' UTF8 ' | ' UTF16 '} – SQL na vyžádání může číst textové soubory s oddělovači v kódování UTF8 a UTF16.
+Encoding = {' UTF8 ' | ' UTF16 '} – fond SQL bez serveru může číst textové soubory s oddělovači v kódování UTF8 a UTF16.
 
 DATA_COMPRESSION = *data_compression_method* – tento argument určuje metodu komprese dat pro externí data. 
 
@@ -244,6 +280,8 @@ Při čtení z externích tabulek PARQUET je tento argument ignorován, ale pou�
 Typ formátu souboru DELIMITEDTEXT podporuje následující kompresní metodu:
 
 - DATA_COMPRESSION = ' org. Apache. Hadoop. IO. Compress. GzipCodec '
+
+PARSER_VERSION = ' parser_version ' určuje verzi analyzátoru, která má být použita při čtení souborů. Podrobnosti najdete v argumentech PARSER_VERSION v argumentech [OpenRowset](develop-openrowset.md#arguments) .
 
 ### <a name="example-for-create-external-file-format"></a>Příklad pro vytvoření formátu externího souboru
 
@@ -281,13 +319,13 @@ column_name <data_type>
 
 ### <a name="arguments-create-external-table"></a>Argumenty vytvoří externí tabulku.
 
-*{database_name. schema_name. table_name | schema_name. table_name | table_name}*
+*{název_databáze. schema_name. TABLE_NAME | schema_name. TABLE_NAME | TABLE_NAME}*
 
-Název první ze tří částí tabulky, která se má vytvořit. V případě externí tabulky ukládá SQL na vyžádání pouze metadata tabulky. V SQL na vyžádání se nepřesunou ani neukládají žádná skutečná data.
+Název první ze tří částí tabulky, která se má vytvořit. V případě externí tabulky je ve fondu SQL bez serveru uloženo pouze metadata tabulky. Ve fondu SQL bez serveru nejsou přesunutá ani uložená žádná skutečná data.
 
 <column_definition>,... *n* ]
 
-Možnost vytvořit externí tabulku podporuje konfiguraci názvu sloupce, datového typu, možnosti použití hodnoty null a kolace. VÝCHOZÍ omezení nemůžete použít u externích tabulek.
+Možnost vytvořit externí tabulku podporuje konfiguraci názvu sloupce, datového typu a kolaci. VÝCHOZÍ omezení nemůžete použít u externích tabulek.
 
 >[!IMPORTANT]
 >Definice sloupců, včetně datových typů a počtu sloupců, musí odpovídat datům v externích souborech. Pokud dojde k neshodě, řádky souboru budou odmítnuty při dotazování na skutečná data.
@@ -298,12 +336,12 @@ LOCATION = '*folder_or_filepath*'
 
 Určuje složku, cestu k souboru a název souboru pro skutečná data v Azure Blob Storage. Umístění začíná od kořenové složky. Kořenová složka je umístění dat zadané v externím zdroji dat.
 
-Pokud zadáte umístění složky, dotaz na vyžádání SQL se vybere z externí tabulky a načte soubory ze složky.
+Pokud zadáte umístění složky, dotaz na fond SQL bez serveru se vybere z externí tabulky a načte soubory ze složky.
 
 > [!NOTE]
-> Na rozdíl od Hadoop a báze SQL na vyžádání nevrací podsložky. Vrátí soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
+> Na rozdíl od Hadoop a báze SQL bez serveru nevrací podsložky. Vrátí soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
 
-V tomto příkladu, pokud LOCATION = '/WebData/', dotaz na vyžádání SQL, vrátí řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
+V tomto příkladu, pokud LOCATION = '/WebData/', není dotaz na fond SQL bez serveru, bude vracet řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
 
 ![Rekurzivní data pro externí tabulky](./media/develop-tables-external-tables/folder-traversal.png)
 
@@ -343,26 +381,24 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Vytvoření a dotazování externích tabulek ze souboru v Azure Data Lake
 
-Pomocí Data Lake možností průzkumu teď můžete vytvořit a zadat dotaz na externí tabulku pomocí fondu SQL nebo SQL na vyžádání s jednoduchým kliknutím pravým tlačítkem myši na soubor.
+Pomocí možností zkoumání Data Lake nyní můžete vytvořit a zadat dotaz na externí tabulku pomocí vyhrazeného fondu SQL nebo bez serveru SQL s jednoduchým kliknutím pravým tlačítkem myši na soubor. Gesto jedním kliknutím pro vytvoření externích tabulek z ADLS Gen2ho účtu úložiště je podporované jenom pro soubory Parquet. 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Musíte mít přístup k pracovnímu prostoru, který má alespoň roli přístupu pro přispěvatele dat objektů BLOB úložiště k účtu ADLS Gen2.
 
-- Musíte mít aspoň [oprávnění k vytváření](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) a dotazování externích tabulek ve fondu SQL nebo v SQL z.
-
-- Propojená služba přidružená k ADLS Gen2mu účtu **musí mít přístup k tomuto souboru**. Pokud má například mechanismus ověřování propojených služeb spravovanou identitu, musí mít spravovaná identita v pracovním prostoru aspoň oprávnění pro čtení objektů BLOB úložiště v účtu úložiště.
+- Musíte mít aspoň [oprávnění k vytváření](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true) a dotazování externích tabulek ve fondu SQL nebo v SQL z.
 
 Z panelu data vyberte soubor, ze kterého chcete vytvořit externí tabulku:
 > [!div class="mx-imgBorder"]
 >![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-Otevře se dialogové okno. Vyberte možnost fond SQL nebo SQL na vyžádání, zadejte název tabulky a vyberte otevřít skript:
+Otevře se dialogové okno. Vyberte vyhrazený fond SQL nebo fond SQL bez serveru, zadejte název tabulky a vyberte otevřít skript:
 
 > [!div class="mx-imgBorder"]
 >![externaltable2](./media/develop-tables-external-tables/external-table-2.png)
 
-Skript SQL se automaticky generuje odvozením schématu ze souboru:
+Skript SQL automaticky vygeneroval odvození schématu ze souboru:
 > [!div class="mx-imgBorder"]
 >![externaltable3](./media/develop-tables-external-tables/external-table-3.png)
 

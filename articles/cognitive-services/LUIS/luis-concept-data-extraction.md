@@ -1,15 +1,16 @@
 ---
 title: Extrakce dat – LUIS
 description: Extrahovat data z utterance textu s záměry a entitami. Zjistěte, jaký druh dat je možné extrahovat z Language Understanding (LUIS).
-author: diberry
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e6f01354bb5aa2b78d3c9962bac49be39dd2c81f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682187"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025989"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrakce dat z utterance textu s využitím záměrů a entit
 LUIS poskytuje možnost získávat informace z přirozeného jazyka projevy uživatele. Informace jsou extrahovány způsobem, který může být použit programem, aplikací nebo robotem chatu k provedení akce. V následujících částech se dozvíte, jaká data se vracejí z záměrů a entit s příklady JSON.
@@ -32,7 +33,7 @@ LUIS extrahuje data z utterance uživatele v publikovaném [koncovém bodu](luis
 **Odpověď https** obsahuje všechny informace o záměru a entitě, které Luis může určit na základě aktuálního publikovaného modelu pracovního nebo produkčního koncového bodu. Adresa URL koncového bodu se nachází na webu [Luis](luis-reference-regions.md) v části **Správa** na stránce **klíče a koncové body** .
 
 ## <a name="data-from-intents"></a>Data z záměrů
-Primární data jsou nejvyšším **názvem záměru**hodnocení. Odpověď koncového bodu:
+Primární data jsou nejvyšším **názvem záměru** hodnocení. Odpověď koncového bodu:
 
 #### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
@@ -71,7 +72,7 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 |Datový objekt|Typ dat|Umístění dat|Hodnota|
 |--|--|--|--|
-|Záměr|String|topScoringIntent. záměr|"GetStoreInfo"|
+|Záměr|Řetězec|topScoringIntent. záměr|"GetStoreInfo"|
 
 Pokud vaše aplikace chatovací robot nebo LUIS volá rozhodnutí na základě více než jednoho skóre záměru, vrátí všechny skóre záměrů.
 
@@ -133,8 +134,8 @@ Záměry jsou seřazené od nejvyšších po nejnižší skóre.
 
 |Datový objekt|Typ dat|Umístění dat|Hodnota|Skóre|
 |--|--|--|--|:--|
-|Záměr|String|záměry [0]. záměr|"GetStoreInfo"|0,984749258|
-|Záměr|String|záměry [1]. záměr|NTato|0,0168218873|
+|Záměr|Řetězec|záměry [0]. záměr|"GetStoreInfo"|0,984749258|
+|Záměr|Řetězec|záměry [1]. záměr|NTato|0,0168218873|
 
 Pokud přidáte předem připravené domény, název záměru označuje doménu, například nebo, a `Utilties` `Communication` také záměr:
 
@@ -192,11 +193,11 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 * * *
 
-|Domain (Doména)|Datový objekt|Typ dat|Umístění dat|Hodnota|
+|Doména|Datový objekt|Typ dat|Umístění dat|Hodnota|
 |--|--|--|--|--|
-|Nástroje|Záměr|String|záměry [0]. záměr|"<b>Nástroje</b>. ShowNext"|
-|Communication|Záměr|String|záměry [1]. záměr|<b>Komunikace</b>. StartOver"|
-||Záměr|String|záměry [2]. záměr|NTato|
+|Nástroje|Záměr|Řetězec|záměry [0]. záměr|"<b>Nástroje</b>. ShowNext"|
+|Komunikace|Záměr|Řetězec|záměry [1]. záměr|<b>Komunikace</b>. StartOver"|
+||Záměr|Řetězec|záměry [2]. záměr|NTato|
 
 
 ## <a name="data-from-entities"></a>Data z entit
@@ -231,9 +232,9 @@ Entity [Person](luis-reference-prebuilt-person.md) a [GeographyV2](luis-referenc
 
 ### <a name="names-of-people"></a>Jména lidí
 
-Jméno osoby může mít v závislosti na jazyku a jazykové verzi trochu mírné formátování. Použijte buď předem sestavenou entitu **[Person](luis-reference-prebuilt-person.md)** , nebo **[jednoduchou entitu](luis-concept-entity-types.md#simple-entity)** s [rolemi](luis-concept-roles.md) jména a příjmení.
+Jméno osoby může mít v závislosti na jazyku a jazykové verzi trochu mírné formátování. Použijte buď předem sestavenou entitu **[Person](luis-reference-prebuilt-person.md)** , nebo **[jednoduchou entitu](luis-concept-entity-types.md)** s rolemi jména a příjmení.
 
-Pokud používáte jednoduchou entitu, nezapomeňte uvést příklady, které používají jméno a příjmení v různých částech utterance, v projevy různých délek a projevy napříč všemi záměry, včetně záměru None. Pravidelně [kontrolujte](luis-how-to-review-endoint-utt.md) koncový bod projevy, abyste mohli popsat všechny názvy, které nebyly předpovídat správně.
+Pokud používáte jednoduchou entitu, nezapomeňte uvést příklady, které používají jméno a příjmení v různých částech utterance, v projevy různých délek a projevy napříč všemi záměry, včetně záměru None. Pravidelně [kontrolujte](./luis-how-to-review-endpoint-utterances.md) koncový bod projevy, abyste mohli popsat všechny názvy, které nebyly předpovídat správně.
 
 ### <a name="names-of-places"></a>Názvy míst
 
@@ -241,17 +242,17 @@ Názvy umístění se nastavují a označují jako města, okresy, stavy, provin
 
 ### <a name="new-and-emerging-names"></a>Nové a vycházející názvy
 
-Některé aplikace musí být schopné najít nové a nově vznikající názvy, jako jsou produkty nebo společnosti. Tyto typy názvů jsou nejobtížnějším typem extrakce dat. Začněte **[jednoduchou entitou](luis-concept-entity-types.md#simple-entity)** a přidejte [seznam frází](luis-concept-feature.md). Pravidelně [kontrolujte](luis-how-to-review-endoint-utt.md) koncový bod projevy, abyste mohli popsat všechny názvy, které nebyly předpovídat správně.
+Některé aplikace musí být schopné najít nové a nově vznikající názvy, jako jsou produkty nebo společnosti. Tyto typy názvů jsou nejobtížnějším typem extrakce dat. Začněte **[jednoduchou entitou](luis-concept-entity-types.md#simple-entity)** a přidejte [seznam frází](luis-concept-feature.md). Pravidelně [kontrolujte](./luis-how-to-review-endpoint-utterances.md) koncový bod projevy, abyste mohli popsat všechny názvy, které nebyly předpovídat správně.
 
 ## <a name="patternany-entity-data"></a>Vzor. libovolná data entity
 
 [Pattern. any](reference-entity-pattern-any.md) je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita. Aby bylo možné použít vzor, musí být entita použitá ve vzoru nalezena.
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
-Pokud je při [publikování](luis-how-to-publish-app.md#sentiment-analysis)nakonfigurovaná analýza mínění, odpověď Luis JSON zahrnuje analýzu mínění. Další informace o analýze mínění najdete v dokumentaci k [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .
+Pokud je při [publikování](luis-how-to-publish-app.md#sentiment-analysis)nakonfigurovaná analýza mínění, odpověď Luis JSON zahrnuje analýzu mínění. Další informace o analýze mínění najdete v dokumentaci k [Analýza textu](../text-analytics/index.yml) .
 
 ## <a name="key-phrase-extraction-entity-data"></a>Data entity extrakce klíčových frází
-[Entita pro extrakci klíčových frází](luis-reference-prebuilt-keyphrase.md) vrátí klíčové fráze v utterance, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
+[Entita pro extrakci klíčových frází](luis-reference-prebuilt-keyphrase.md) vrátí klíčové fráze v utterance, které poskytuje [Analýza textu](../text-analytics/index.yml).
 
 ## <a name="data-matching-multiple-entities"></a>Data, která odpovídají více entitám
 

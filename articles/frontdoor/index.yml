@@ -7,15 +7,15 @@ metadata:
   services: frontdoor
   ms.service: frontdoor
   ms.topic: landing-page
-  author: vhorne
-  ms.author: victorh
-  ms.date: 03/03/2020
-  ms.openlocfilehash: f6059ee181095a7f60da02e192c32818fe5b542f
-  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-  ms.translationtype: HT
+  author: duongau
+  ms.author: duau
+  ms.date: 09/09/2020
+  ms.openlocfilehash: 1f92d3b744be76e96b33bc32eafcf7555fccf815
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85321498"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101092053"
 landingContent:
 - title: Další informace o službě Azure Front Door
   linkLists:
@@ -23,8 +23,12 @@ landingContent:
     links:
     - text: Co je Azure Front Door?
       url: front-door-overview.md
-    - text: Co je nového?
-      url: front-door-whats-new.md
+- title: Přečtěte si o službě Azure front dveří Standard/Premium (Preview).
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure front dveří Standard/Premium (Preview)?
+      url: standard-premium/overview.md
 - title: Vytvoření služby Front Door
   linkLists:
   - linkListType: quickstart

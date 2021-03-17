@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 648de447a08e593af28d11a3be206a2cfee80902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cf379b051ba42be2d7df7d288f07cdc2a0002a1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790088"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657631"
 ---
 # <a name="list-azure-deny-assignments-using-azure-powershell"></a>Výpis přiřazení odmítnutí Azure pomocí Azure PowerShell
 
@@ -31,8 +31,8 @@ ms.locfileid: "84790088"
 
 Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následující:
 
-- `Microsoft.Authorization/denyAssignments/read`oprávnění, které je součástí většiny [předdefinovaných rolí Azure](built-in-roles.md)
-- [PowerShell v Azure Cloud Shell](/azure/cloud-shell/overview) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
+- `Microsoft.Authorization/denyAssignments/read` oprávnění, které je součástí většiny [předdefinovaných rolí Azure](built-in-roles.md)
+- [PowerShell v Azure Cloud Shell](../cloud-shell/overview.md) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-deny-assignments"></a>Zobrazení seznamu zamítnutých přiřazení
 

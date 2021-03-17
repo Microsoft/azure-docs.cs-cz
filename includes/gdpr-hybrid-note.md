@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/01/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 968ebe89de65de5fa49e56a90a1bc92109a16861
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cbdf96571ece4f714affb13aa97d495cc84dab3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75613753"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109098"
 ---
->[!Note]
->Pokud byste chtěli zobrazit nebo odstranit osobní údaje, přečtěte si pokyny Microsoftu na webu věnovaném [žádostem subjektů údajů v souvislosti s nařízením GDPR pro Windows](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests). Pokud hledáte obecné informace o nařízení GDPR, přejděte na [část věnovanou GDPR na portálu Service Trust Portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> [!NOTE]
+> Informace o zobrazení nebo odstranění osobních údajů najdete v doprovodnéch materiálech od Microsoftu na [žádostech o datovém subjektu pro web GDPR pro Windows](/microsoft-365/compliance/gdpr-dsr-windows) . Obecné informace o GDPR najdete v [části GDPR na webu Microsoft Trust Center](https://www.microsoft.com/trust-center/privacy/gdpr-overview) a v [části GDPR portálu pro důvěryhodnost služby](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

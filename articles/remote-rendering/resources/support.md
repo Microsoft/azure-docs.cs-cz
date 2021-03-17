@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a05216fd44a64c037561662009987615f5657a8
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782513"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207168"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Možnosti podpory vzdáleného vykreslování Azure
 
@@ -30,8 +30,8 @@ Otevření lístku technické podpory v rámci Azure Portal pro vzdálené vykre
 
 1. Vyplňte pole:
 
-    * **Typ problému**:`Technical`
-    * **Služba**:`Remote Rendering`
+    * **Typ problému**: `Technical`
+    * **Služba**: `Remote Rendering`
 
     ![Pole lístků podpory Azure Portal](media/portal-request.png)
 
@@ -56,7 +56,7 @@ Pokud chcete poskytnout zpětnou vazbu, nasdílet nápad nebo návrh na vzdálen
 
 ## <a name="microsoft-qa"></a>Microsoft Q&A
 
-Pro zajištění rychlých a spolehlivých odpovědí na dotazy k technickým produktům od techniků Microsoftu, z Azure MVP (MVP) nebo z naší odborné komunity se můžete zapojit do [Microsoft Q&a](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html), preferovaný cíl Azure pro podporu komunity.
+Pro zajištění rychlých a spolehlivých odpovědí na dotazy k technickým produktům od techniků Microsoftu, z Azure MVP (MVP) nebo z naší odborné komunity se můžete zapojit do [Microsoft Q&a](/answers/topics/azure-remote-rendering.html), preferovaný cíl Azure pro podporu komunity.
 
 ## <a name="next-steps"></a>Další kroky
 

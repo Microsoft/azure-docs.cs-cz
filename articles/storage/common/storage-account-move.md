@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d894ce71e0ffa5a0894a1f6b0035efe66271ded8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515009"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591469"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Přesunutí účtu Azure Storage do jiné oblasti
 
 Pokud chcete přesunout účet úložiště, vytvořte jeho kopii v jiné oblasti. Pak přesuňte data do tohoto účtu pomocí AzCopy nebo jiného nástroje podle vašeho výběru.
 
-V tomto článku se dozvíte, jak:
+V tomto článku se naučíte:
 
 > [!div class="checklist"]
 > 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak:
 
 - Ujistěte se, že cílová oblast podporuje služby a funkce, které váš účet využívá.
 
-- V případě funkcí Preview se ujistěte, že je vaše předplatné v cílové oblasti uvedené na seznamu povolených.
+- V případě funkcí verze Preview se ujistěte, že je vaše předplatné allowlisted pro cílovou oblast.
 
 <a id="prepare"></a>
 
@@ -51,7 +51,7 @@ Tato šablona obsahuje nastavení, která popisují váš účet úložiště.
 
 Export šablony pomocí webu Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj účet úložiště.
 
@@ -67,7 +67,7 @@ Export šablony pomocí webu Azure Portal:
 
 Export šablony pomocí prostředí PowerShell:
 
-1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) a postupujte podle pokynů na obrazovce:
+1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a postupujte podle pokynů na obrazovce:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -103,7 +103,7 @@ Nasazení šablony pomocí Azure Portal:
 
 1. V Azure Portal vyberte **vytvořit prostředek**.
 
-2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
+2. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
 
 3. Vyberte **template Deployment**.
 
@@ -113,7 +113,7 @@ Nasazení šablony pomocí Azure Portal:
 
 5. **V editoru vyberte vytvořit vlastní šablonu**.
 
-6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
+6. Vyberte **načíst soubor** a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 
 7. V **template.jsv** souboru pojmenujte cílový účet úložiště nastavením výchozí hodnoty názvu účtu úložiště. V tomto příkladu se nastaví výchozí hodnota názvu účtu úložiště na `mytargetaccount` .
     
@@ -167,7 +167,7 @@ Nasazení šablony pomocí prostředí PowerShell:
          }]          
     ```
 
-    Kódy oblastí můžete získat spuštěním příkazu [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) .
+    Kódy oblastí můžete získat spuštěním příkazu [Get-AzLocation](/powershell/module/az.resources/get-azlocation) .
 
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
@@ -196,7 +196,7 @@ Nasaďte šablonu a vytvořte nový účet úložiště v cílové oblasti.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Získejte ID předplatného, do kterého chcete nasadit cílovou veřejnou IP adresu pomocí [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0):
+1. Získejte ID předplatného, do kterého chcete nasadit cílovou veřejnou IP adresu pomocí [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription):
 
    ```azurepowershell-interactive
    Get-AzSubscription
@@ -224,7 +224,7 @@ Následující tabulka obsahuje seznam těchto funkcí společně s pokyny k jej
 | **Zásady správy životního cyklu** | [Správa životního cyklu úložiště objektů blob v Azure](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statické weby** | [Hostování statického webu v Azure Storage](../blobs/storage-blob-static-website-how-to.md) |
 | **Odběry událostí** | [Reakce na události služby Blob Storage](../blobs/storage-blob-event-overview.md) |
-| **Výstrahy** | [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md) |
+| **Výstrahy** | [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md) |
 | **Content Delivery Network (CDN)** | [Použití Azure CDN pro přístup k objektům blob s vlastními doménami přes HTTPS](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
@@ -232,14 +232,14 @@ Následující tabulka obsahuje seznam těchto funkcí společně s pokyny k jej
 
 ### <a name="move-data-to-the-new-storage-account"></a>Přesunutí dat do nového účtu úložiště
 
-AzCopy je preferovaný nástroj pro přesun vašich dat. Je optimalizovaný na výkon.  Jedním z důvodů, proč je rychlejší, je skutečnost, že data se kopírují přímo mezi servery úložiště, takže AzCopy nevyužívá šířku pásma sítě vašeho počítače. AzCopy můžete použít na příkazovém řádku nebo jako součást vlastního skriptu. Viz Začínáme [s AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy je preferovaný nástroj pro přesun vašich dat. Je optimalizovaný na výkon.  Jedním z důvodů, proč je rychlejší, je skutečnost, že data se kopírují přímo mezi servery úložiště, takže AzCopy nevyužívá šířku pásma sítě vašeho počítače. AzCopy můžete použít na příkazovém řádku nebo jako součást vlastního skriptu. Viz Začínáme [s AzCopy](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 K přesunu dat můžete použít také Azure Data Factory. Poskytuje intuitivní uživatelské rozhraní. Pokud chcete použít Azure Data Factory, přečtěte si některý z těchto odkazů:. 
 
-  - [Kopírování dat do nebo z úložiště Azure Blob Storage pomocí služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Kopírování dat z nebo do Azure File Storage pomocí služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Kopírování dat do a z Azure Table Storage pomocí služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Kopírování dat do nebo z úložiště Azure Blob Storage pomocí služby Azure Data Factory](/azure/data-factory/connector-azure-blob-storage)
+  - [Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí služby Azure Data Factory](/azure/data-factory/connector-azure-data-lake-storage)
+  - [Kopírování dat z nebo do Azure File Storage pomocí služby Azure Data Factory](/azure/data-factory/connector-azure-file-storage)
+  - [Kopírování dat do a z Azure Table Storage pomocí služby Azure Data Factory](/azure/data-factory/connector-azure-table-storage)
 
 ---
 
@@ -257,7 +257,7 @@ Pokud chcete potvrdit změny a dokončit přesun účtu úložiště, odstraňte
 
 2. Vyhledejte cílový účet úložiště, který chcete odstranit, a klikněte pravým tlačítkem myši na tlačítko **Další** (**...**) na pravé straně seznamu.
 
-3. Vyberte **Odstranit**a potvrďte.
+3. Vyberte **Odstranit** a potvrďte.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -273,5 +273,5 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 V tomto kurzu jste přesunuli účet Azure Storage z jedné oblasti na jiný a vyčistili zdrojové prostředky.  Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
-- [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Přesun virtuálních počítačů Azure do jiné oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Přesun virtuálních počítačů Azure do jiné oblasti](../../site-recovery/azure-to-azure-tutorial-migrate.md)

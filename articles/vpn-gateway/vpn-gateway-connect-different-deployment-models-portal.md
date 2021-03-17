@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/24/2019
+ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: d3ab49d0ad24c2b2c8859408ed103178cede5b8b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082099"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376798"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Propojení virtuálních sítí z různých modelů nasazení pomocí portálu
 
@@ -86,7 +86,7 @@ V této části vytvoříte klasickou virtuální síť, místní síť (místn�
 
 ### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"></a> vytvoření virtuální sítě Classic
 
-Pokud nemáte klasickou virtuální síť a spouštíte tyto kroky jako cvičení, můžete vytvořit virtuální síť pomocí [tohoto článku](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a výše uvedené [Příklady](#values) hodnot nastavení.
+Pokud nemáte klasickou virtuální síť a spouštíte tyto kroky jako cvičení, můžete vytvořit virtuální síť pomocí [tohoto článku](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) a výše uvedené [Příklady](#values) hodnot nastavení.
 
 Pokud již máte virtuální síť s bránou sítě VPN, ověřte, zda je brána dynamická. Pokud je statická, musíte nejdřív odstranit bránu VPN, než budete pokračovat [v konfiguraci místní lokality](#local).
 
@@ -101,11 +101,11 @@ Pokud již máte virtuální síť s bránou sítě VPN, ověřte, zda je brána
 1. Přejděte na **všechny prostředky** a vyhledejte v seznamu **ClassicVNet** .
 2. Klikněte na **Brána** v části **Nastavení** v nabídce a pak kliknutím na banner vytvořte bránu.
   ![Konfigurace brány VPN](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Konfigurace brány VPN")
-3. Na stránce **nové připojení VPN** pro **Typ připojení**vyberte **site-to-site**.
-4. U možnosti **místní lokalita**klikněte na **konfigurovat požadovaná nastavení**. Tím se otevře stránka **místní web** .
+3. Na stránce **nové připojení VPN** pro **Typ připojení** vyberte **site-to-site**.
+4. U možnosti **místní lokalita** klikněte na **konfigurovat požadovaná nastavení**. Tím se otevře stránka **místní web** .
 5. Na stránce **místní lokalita** vytvořte název, který bude odkazovat na správce prostředků virtuální síť. Například ' RMVNetLocal '.
 6. Pokud brána VPN pro Správce prostředků virtuální síť již má veřejnou IP adresu, použijte hodnotu pro pole **IP adresa brány VPN** . Pokud provedete tyto kroky jako cvičení nebo ještě nemáte bránu virtuální sítě pro vaši virtuální síť Správce prostředků, můžete vytvořit zástupnou IP adresu. Ujistěte se, že zástupný symbol IP adresa používá platný formát. Později nahraďte zástupnou IP adresu veřejnou IP adresou brány Správce prostředků virtuální sítě.
-7. Pro **adresní prostor klienta**použijte [hodnoty](#connectoverview) pro adresní prostory IP adres virtuální sítě pro virtuální síť správce prostředků. Toto nastavení slouží k zadání adresních prostorů pro směrování do Správce prostředků virtuální sítě. V tomto příkladu používáme pro RMVNet rozsah adres 192.168.0.0/16.
+7. Pro **adresní prostor klienta** použijte [hodnoty](#connectoverview) pro adresní prostory IP adres virtuální sítě pro virtuální síť správce prostředků. Toto nastavení slouží k zadání adresních prostorů pro směrování do Správce prostředků virtuální sítě. V tomto příkladu používáme pro RMVNet rozsah adres 192.168.0.0/16.
 8. Kliknutím na tlačítko **OK** uložte hodnoty a vraťte se na stránku **nové připojení k síti VPN** .
 
 ### <a name="3-create-the-virtual-network-gateway"></a><a name="classicgw"></a>3. Vytvoření brány virtuální sítě
@@ -162,7 +162,7 @@ V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. 
 * GatewaySubnet = 192.168.0.0/26 <br>
 * První konfigurace IP adresy = rmgwpip <br>
 
-[!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Add gateway](../../includes/vpn-gateway-add-gw-rm-portal-empty.md)]
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -177,7 +177,7 @@ V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. 
 
 Brána místní sítě určuje rozsah adres a veřejnou IP adresu přidruženou k vaší klasické virtuální síti a její bráně virtuální sítě. Pokud provedete tyto kroky jako cvičení, přečtěte si příklady hodnot.
 
-[!INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
+[!INCLUDE [Add local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-ip-empty.md)]
 
 ## <a name="section-3---modify-the-classic-vnet-local-site-settings"></a><a name="modifylng"></a>Oddíl 3 – Změna nastavení místního webu virtuální sítě
 
@@ -203,9 +203,9 @@ V této části nahradíte zástupnou IP adresu, kterou jste použili při zadá
 
 V těchto krocích nakonfigurujete připojení z Správce prostředků VNet na klasickou virtuální síť pomocí Azure Portal.
 
-1. V části **všechny prostředky**vyhledejte bránu místní sítě. V našem příkladu je brána místní sítě **ClassicVNetLocal**.
+1. V části **všechny prostředky** vyhledejte bránu místní sítě. V našem příkladu je brána místní sítě **ClassicVNetLocal**.
 2. Klikněte na **Konfigurace** a ověřte, jestli je hodnota IP adresa bránou sítě VPN pro klasickou virtuální síť. V případě potřeby aktualizujte a pak klikněte na **Uložit**. Stránku zavřete.
-3. V části **všechny prostředky**klikněte na bránu místní sítě.
+3. V části **všechny prostředky** klikněte na bránu místní sítě.
 4. Kliknutím na **připojení** otevřete stránku připojení.
 5. Na stránce **připojení** klikněte na **+** Přidat připojení.
 6. Na stránce **Přidat připojení zadejte** název připojení. Například ' RMtoClassic '.

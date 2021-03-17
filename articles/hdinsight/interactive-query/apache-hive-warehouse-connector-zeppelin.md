@@ -3,20 +3,22 @@ title: Konektor skladiště pro podregistr – Apache Zeppelin využívající L
 description: Naučte se integrovat konektory ve skladu s Apache Zeppelin v Azure HDInsight.
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6ee1c70ec02af2a24f7867a6e6b06593361612b2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4859ff098bf3fdffbecc70608cb147d17d9d7f59
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083113"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941174"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrace Apache Zeppelin s použitím konektoru datového skladu pro podregistr ve službě Azure HDInsight
 
 Clustery HDInsight Spark obsahují poznámkové bloky Apache Zeppelin s různými interprety. V tomto článku se zaměříme jenom na překladač Livy, který umožňuje přístup k tabulkám podregistru z Sparku pomocí konektoru skladu z podregistru.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ## <a name="prerequisite"></a>Požadavek
 

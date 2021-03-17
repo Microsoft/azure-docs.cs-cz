@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 3c4695bb9dfeb9f0122d39dd335c9b733fe039b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04c19ca8fbdaed85225b5af128c72d393e5350e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085038"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573251"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Použití PowerShellu k monitorování a škálování izolované databáze v Azure SQL Database
 
@@ -35,7 +35,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, je nutné, ab
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=15-16 "Monitor and scale single database")]
 
 > [!NOTE]
-> Úplný seznam metrik najdete v tématu [podporované metriky](../../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases).
+> Úplný seznam metrik najdete v tématu [podporované metriky](../../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases).
 > [!TIP]
 > Pomocí [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) Získejte stav databázových operací a pomocí [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity) zrušte operaci aktualizace databáze.
 

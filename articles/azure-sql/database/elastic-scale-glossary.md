@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 4f594f663267de7ed746082e77ae603e5592e721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84047563"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330457"
 ---
 # <a name="elastic-database-tools-glossary"></a>Glosář nástrojů pro Elastic Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Tyto výrazy se používají při [přidávání horizontálních oddílů pomoc
 
 **Vícenásobný tenant** a **jeden tenant**: zobrazuje se databáze s jedním klientem a víceklientské databáze:
 
-![Jedna a více tenantů databází](./media/elastic-scale-glossary/multi-single-simple.png)
+![Snímek obrazovky, který zobrazuje databázi s jedním klientem a víceklientské databáze.](./media/elastic-scale-glossary/multi-single-simple.png)
 
 Tady je reprezentace **horizontálně dělené** jedné a víceklientské databáze. 
 
@@ -67,7 +67,7 @@ Tady je reprezentace **horizontálně dělené** jedné a víceklientské datab�
 
 **Správce map horizontálních oddílů**: objekt správy a úložiště dat, které obsahuje mapy horizontálních oddílů, umístění horizontálních oddílů a mapování pro jednu nebo více horizontálních oddílů sad.
 
-![Mapování][2]
+![Diagram znázorňuje správce mapy horizontálních oddílů spojený s shardmaps_global, shards_global a shard_mappings_global.][2]
 
 ## <a name="verbs"></a>Příkazy
 **Horizontální škálování**: Změna velikosti (nebo v) kolekce horizontálních oddílů přidáním nebo odebráním horizontálních oddílů na mapu horizontálních oddílů, jak je znázorněno níže.

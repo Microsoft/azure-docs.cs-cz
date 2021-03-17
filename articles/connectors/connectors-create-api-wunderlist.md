@@ -1,5 +1,5 @@
 ---
-title: Připojení k Wunderlistu
+title: Připojit k Wunderlistu (zastaralé)
 description: Automatizujte úlohy a pracovní postupy, které sledují a spravují seznamy, úkoly, připomenutí a další v účtu Wunderlistu pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
@@ -7,18 +7,17 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: 3f1ae215bcfa8543d134722292bedc5fe1ac76ea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 205684923db4528193a337b2b9b867e356e89017
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288131"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301682"
 ---
-# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Monitorování a Správa Wunderlistu pomocí Azure Logic Apps
+# <a name="monitor-and-manage-wunderlist-in-azure-logic-apps"></a>Monitorování a Správa Wunderlistu v Azure Logic Apps
 
-Od 6. května 2020 [Služba wunderlistu vypnula](https://www.wunderlist.com/) a požádala zákazníky o [migraci svých dat a začít používat k tomu Microsoft](https://www.wunderlist.com/blog/goodbye-from-wunderlist/). K nahrazení zastaralého [konektoru wunderlistu](/connectors/wunderlist/)můžete použít [konektor Microsoft to](/connectors/todo/) do.
+Od 6. května 2020 služba Wunderlistu vypnula a požádala zákazníky o migraci svých dat a začít používat k tomu Microsoft. K nahrazení zastaralého [konektoru wunderlistu](https://preview.flow.microsoft.com/connectors/shared_wunderlist/wunderlist/)můžete použít [konektor Microsoft to](/connectors/todo/) do.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
-

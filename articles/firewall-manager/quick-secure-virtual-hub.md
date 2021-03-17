@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: zabezpečené virtuální rozbočovače pomocí nástroje Azure Firewall Manager – šablona Správce prostředků'
-description: Naučte se zabezpečit virtuální rozbočovač pomocí správce Azure Firewall.
+description: V tomto rychlém startu se dozvíte, jak zabezpečit virtuální rozbočovač pomocí správce Azure Firewall.
 services: firewall-manager
 author: vhorne
-ms.service: firewall
+ms.service: firewall-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/30/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: bfa957d8fb0eeb8020472026e18c41dc6e65fdc3
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 050dfa737ad04127f8c72158fbecb2e8e70e05c1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705754"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89075337"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Rychlý Start: zabezpečení virtuálního centra pomocí šablony Azure Firewall Manager – ARM
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: cfb75b6383d8ca449b4bc54b9d21cb16b3a4ad40
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212710"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428179"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -43,7 +43,7 @@ Azure Virtual WAN umožňuje globální přenosovou architekturu sítě díky to
 
 **Obrázek 2: globální tranzitní síť a virtuální síť WAN**
 
-V architektuře Azure Virtual WAN se virtuální rozbočovače sítě WAN zřídí v oblastech Azure, ke kterým se můžete rozhodnout připojit své větve, virtuální sítě a vzdálené uživatele. Fyzické větve jsou připojené k centru podle úrovně Premium ExpressRoute nebo site-to-VPN, virtuální sítě jsou připojené k rozbočovači podle připojení virtuální sítě a vzdálení uživatelé se můžou přímo připojit k centru pomocí uživatelské sítě VPN (VPN typu Point-to-site). Virtuální síť WAN taky podporuje připojení virtuální sítě mezi oblastmi, kde virtuální síť v jedné oblasti může být připojená k virtuálnímu rozbočovači WAN v jiné oblasti.
+V architektuře Azure Virtual WAN se virtuální rozbočovače sítě WAN zřídí v oblastech Azure, ke kterým se můžete rozhodnout připojit své větve, virtuální sítě a vzdálené uživatele. Fyzické větve jsou připojené k centru podle úrovně Premium nebo Standard ExpressRoute nebo site-to-VPN, virtuální sítě jsou připojené k rozbočovači podle připojení virtuální sítě a vzdálení uživatelé se můžou přímo připojit k centru pomocí uživatelské sítě VPN (VPN typu Point-to-site). Virtuální síť WAN taky podporuje připojení virtuální sítě mezi oblastmi, kde virtuální síť v jedné oblasti může být připojená k virtuálnímu rozbočovači WAN v jiné oblasti.
 
 Virtuální síť WAN můžete vytvořit tak, že vytvoříte jedno virtuální centrum sítě WAN v oblasti s největším počtem paprsků (větví, virtuální sítě, uživatelů) a potom propojíte paprsky, které jsou v jiných oblastech, do centra. Tato možnost je vhodná v případě, že podniková technologie je převážně v jedné oblasti s několika vzdálenými paprsky.  
   
@@ -87,7 +87,7 @@ Větev-to-VNet je primární cesta podporovaná službou Azure Virtual WAN. Tato
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach a virtuální síť WAN
 
-ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. Virtuální síť WAN podporuje připojení okruhu Express Route. Připojení lokality pobočky k virtuální síti WAN pomocí expresní trasy vyžaduje 1) okruh Premium okruh 2), aby byl v Global Reach povolené umístění.
+ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. Virtuální síť WAN podporuje připojení okruhu Express Route. Připojení lokality pobočky k virtuální síti WAN pomocí Express Route vyžaduje 1) okruh úrovně Premium nebo Standard okruh 2), aby byl v umístění s povoleným Global Reach.
 
 ExpressRoute Global Reach je doplňková funkce pro ExpressRoute. Pomocí Global Reach můžete propojit okruhy ExpressRoute dohromady a vytvořit tak soukromou síť mezi místními sítěmi. Větve, které jsou připojené k Azure Virtual WAN pomocí ExpressRoute, vyžadují vzájemnou komunikaci ExpressRoute Global Reach.
 
@@ -127,14 +127,11 @@ Tento příznak se zobrazí, když uživatel upraví připojení k virtuální s
 
 Rozbočovače Azure Virtual WAN propojování všech koncových bodů sítě v rámci hybridní sítě a potenciálně uvidí veškerý tranzitní síťový provoz. Virtuální rozbočovače WAN je možné převést na zabezpečená virtuální centra tím, že nasadíte Azure Firewall do Center VWAN a povolíte cloudové zabezpečení, přístup a řízení zásad. Orchestrace bran Azure firewall ve virtuálních sítích WAN může provádět Azure Firewall Manager.
 
-[Azure firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683) poskytuje možnosti pro správu a škálování zabezpečení pro globální přenosové sítě. Azure Firewall Manager nabízí možnost centrálně spravovat směrování, správu globálních zásad a rozšířené služby internetového zabezpečení prostřednictvím třetích stran spolu s Azure Firewall.
+[Azure firewall Manager](../firewall-manager/index.yml) poskytuje možnosti pro správu a škálování zabezpečení pro globální přenosové sítě. Azure Firewall Manager nabízí možnost centrálně spravovat směrování, správu globálních zásad a rozšířené služby internetového zabezpečení prostřednictvím třetích stran spolu s Azure Firewall.
 
 ![zabezpečené virtuální centrum s Azure Firewall](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
 **Obrázek 5: zabezpečené virtuální centrum s Azure Firewall**
-
-> [!NOTE]
-> Mezi centrem s bránou firewall se aktuálně nepodporují. Provoz mezi rozbočovači se přesune přímo z Azure Firewall v každém centru.
 
 Azure Firewall k virtuální síti WAN podporuje následující cesty globálního připojení pro zabezpečené průjezdy. Písmena v závorkách se mapují na obrázek 5.
 
@@ -152,6 +149,23 @@ Připojení typu VNet-to-Internet umožňuje virtuální sítě připojit se k I
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Služba zabezpečení z více stran na Internet nebo pro službu zabezpečení třetí strany (j)
 Síť s připojením k Internetu umožňuje větví připojit se k Internetu prostřednictvím Azure Firewall ve virtuálním centru WAN. Provoz do Internetu prostřednictvím podporovaných služeb zabezpečení třetích stran neprovádí tok prostřednictvím Azure Firewall. Pomocí správce Azure Firewall můžete nakonfigurovat cestu k síti Internet prostřednictvím podporované služby zabezpečení třetí strany. 
+
+### <a name="branch-to-branch-secured-transit-cross-region-f"></a>Zabezpečený tranzitní přechod mezi jednotlivými větvemi (f)
+
+Větve je možné připojit k zabezpečenému virtuálnímu rozbočovači pomocí Azure Firewall s využitím okruhů ExpressRoute a připojení VPN typu Site-to-site. Větve můžete připojit k virtuálnímu rozbočovači WAN, který je v oblasti nejbližší k této větvi.
+
+Tato možnost umožňuje podnikům využít páteřní síť Azure pro připojení větví. I když je tato možnost k dispozici, měli byste zvážit výhody propojení větví přes Azure Virtual WAN vs. pomocí privátní sítě WAN.  
+
+> [!NOTE]
+> V současné době není podporováno souběžné zpracování provozu přes bránu firewall. Provoz mezi rozbočovači bude směrován do správné větve v rámci zabezpečeného virtuálního rozbočovače, ale přenosy budou obejít Azure Firewall v každém centru.
+
+### <a name="branch-to-vnet-secured-transit-g"></a>Zabezpečený tranzitní větev mezi virtuálními sítěmi (g)
+
+Zabezpečený přenos větví na virtuální síť umožňuje větvím komunikovat s virtuálními sítěmi ve stejné oblasti jako virtuální síť WAN a také v jiné virtuální síti připojené k jinému virtuálnímu rozbočovači WAN v jiné oblasti.
+
+> [!NOTE]
+> Mezi centrem s bránou firewall se aktuálně nepodporují. Provoz mezi rozbočovači se přesune přímo z Azure Firewall v každém centru.  Přenos prostřednictvím připojení určeného pro virtuální síť ve stejné oblasti bude zpracován Azure Firewall v zabezpečeném centru.
+
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Návody povolit výchozí trasu (0.0.0.0/0) v zabezpečeném virtuálním centru
 
@@ -177,4 +191,4 @@ Vytvořte připojení pomocí virtuální sítě WAN a nasaďte Azure Firewall v
 
 * [Připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md)
 * [Připojení ExpressRoute pomocí virtuální sítě WAN](virtual-wan-expressroute-portal.md)
-* [Azure Firewall Manager pro nasazení nástroje Azure FW v VWAN](https://go.microsoft.com/fwlink/?linkid=2107683)
+* [Azure Firewall Manager pro nasazení nástroje Azure FW v VWAN](../firewall-manager/index.yml)

@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
-ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72757145"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905126"
 ---
-# <a name="create-human-reviews-rest"></a>Vytvořit lidské recenze (REST)
+# <a name="create-human-reviews-api-console"></a>Vytváření lidských kontrolorů (konzola API)
 
 [Kontroluje](./review-api.md#reviews) ukládání a zobrazování obsahu pro Moderátoři pro lidské moderování k vyhodnocení. Když uživatel dokončí revizi, výsledky se odešlou do zadaného koncového bodu zpětného volání. V této příručce se dozvíte, jak nastavit recenze pomocí rozhraní API pro kontrolu REST prostřednictvím konzoly API. Jakmile pochopíte strukturu rozhraní API, můžete tato volání snadno přenést na libovolnou platformu kompatibilní s REST.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 
@@ -33,7 +33,7 @@ Chcete-li vytvořit revizi, klikněte na stránku **[recenze – vytvořit](http
 
 ### <a name="enter-rest-call-parameters"></a>Zadejte parametry volání REST
 
-Zadejte hodnoty pro **Členové týmu**a **OCP-APIM-Subscription-Key**:
+Zadejte hodnoty pro **Členové týmu** a **OCP-APIM-Subscription-Key**:
 
 - ID **týmu**: ID týmu, které jste vytvořili při nastavování účtu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) (najdete ho v poli **ID** na obrazovce s přihlašovacími údaji nástroje pro kontrolu).
 - **OCP-APIM-Subscription-Key**: váš Content moderator klíč. Najdete ho na kartě **Nastavení** [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com).
@@ -44,7 +44,7 @@ Upravte pole **Text žádosti** , aby se ZADAL požadavek JSON s následujícím
 
 - **Metadata**: vlastní páry klíč-hodnota, které se mají vrátit do koncového bodu zpětného volání. Pokud je klíč krátkým kódem, který je definován v [nástroji pro revizi](https://contentmoderator.cognitive.microsoft.com), zobrazí se jako značka.
 - **Obsah**: v případě obrázku a obsahu videa se jedná o řetězec adresy URL odkazující na obsah. V případě textového obsahu je to skutečný textový řetězec.
-- ID **obsahu: vlastní**řetězec identifikátoru. Tento řetězec je předán rozhraní API a vrácen prostřednictvím zpětného volání. Je vhodný pro přidružení interních identifikátorů nebo metadat k výsledkům úlohy moderování.
+- ID **obsahu: vlastní** řetězec identifikátoru. Tento řetězec je předán rozhraní API a vrácen prostřednictvím zpětného volání. Je vhodný pro přidružení interních identifikátorů nebo metadat k výsledkům úlohy moderování.
 - **CallbackEndpoint**: (volitelné) adresa URL pro příjem informací o zpětném volání po dokončení revize.
 
 Výchozí text požadavku ukazuje příklady různých typů revizí, které můžete vytvořit:
@@ -127,15 +127,15 @@ Výchozí text požadavku ukazuje příklady různých typů revizí, které mů
 ]
 ```
 
-### <a name="submit-your-request"></a>Odeslat žádost
+### <a name="submit-your-request"></a>Odeslání žádosti
   
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a v poli **obsah odpovědi** se zobrazí ID revize. Zkopírujte toto ID, které chcete použít v následujících krocích.
+Vyberte **Odeslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a v poli **obsah odpovědi** se zobrazí ID revize. Zkopírujte toto ID, které chcete použít v následujících krocích.
 
 ![Revize – pole vytvořit obsah odpovědi konzoly zobrazí ID revize.](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>Prozkoumejte novou kontrolu
 
-V [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com)vyberte **zkontrolovat** > **video** **text**/**Obrázek**/(v závislosti na obsahu, který jste použili). Obsah, který jste nahráli, by měl být připravený k lidské kontrole.
+V [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com)vyberte **zkontrolovat**  >  **Image** / **Text** / **video** text obrázek (v závislosti na obsahu, který jste použili). Obsah, který jste nahráli, by měl být připravený k lidské kontrole.
 
 ![Obrázek nástroje pro kontrolu fotbalového míče](images/test-drive-review-5.PNG)
 
@@ -149,7 +149,7 @@ Zadejte parametry volání REST jako v předchozí části. Pro tento krok je **
 
 ![Kontrola – vytvoření výsledků získání konzoly](images/test-drive-review-3.PNG)
   
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a v poli **obsah odpovědi** se zobrazí podrobnosti o kontrole ve formátu JSON, jako je například následující:
+Vyberte **Odeslat**. Pokud je operace úspěšná, **stav odpovědi** je a v `200 OK` poli **obsah odpovědi** se zobrazí podrobnosti o kontrole ve formátu JSON, jako je například následující:
 
 ```json
 {  

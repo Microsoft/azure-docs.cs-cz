@@ -1,29 +1,29 @@
 ---
 title: Vytvořit klienta pro model nasazený jako webovou službu
 titleSuffix: Azure Machine Learning
-description: Naučte se volat koncový bod webové služby, který byl vygenerován při nasazení modelu z Azure Machine Learning. Koncový bod zpřístupňuje REST API, které můžete volat pro provedení odvození s modelem. Vytvořte klienty pro toto rozhraní API pomocí programovacího jazyka dle vašeho výběru.
+description: Naučte se volat koncový bod webové služby, který byl vygenerován při nasazení modelu z Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: how-to, devx-track-python, devx-track-csharp
+ms.openlocfilehash: e9fb801fce3e47fc83febeddd6f331ce2af207e6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652589"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506969"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využívání modelu služby Azure Machine Learning nasazeného jako webová služba
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Nasazení modelu Azure Machine Learning jako webové služby vytvoří koncový bod REST API. Do tohoto koncového bodu můžete posílat data a získat předpovědi vrácenou modelem. V tomto dokumentu se naučíte vytvářet klienty pro webovou službu pomocí jazyků C#, cestách, Java a Python.
 
-Webovou službu vytvoříte při nasazení modelu do svého místního prostředí, Azure Container Instances, služby Azure Kubernetes nebo polí s programovatelnými poli brány (FPGA). Identifikátor URI, který se používá pro přístup k webové službě, načtete pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Pokud je povolené ověřování, můžete k získání ověřovacích klíčů nebo tokenů použít taky sadu SDK.
+Nasazením modelu služby Azure Machine Learning jako webové služby se vytvoří koncový bod rozhraní REST API. Do tohoto koncového bodu můžete odesílat data a přijímat z něj predikce vrácené modelem. V tomto dokumentu se naučíte vytvářet klienty pro webovou službu pomocí jazyků C#, cestách, Java a Python.
+
+Webovou službu vytvoříte při nasazení modelu do svého místního prostředí, Azure Container Instances, služby Azure Kubernetes nebo polí s programovatelnými poli brány (FPGA). Identifikátor URI, který se používá pro přístup k webové službě, načtete pomocí [sady Azure Machine Learning SDK](/python/api/overview/azure/ml/intro). Pokud je povolené ověřování, můžete k získání ověřovacích klíčů nebo tokenů použít taky sadu SDK.
 
 Obecný pracovní postup pro vytvoření klienta, který používá webovou službu Machine Learning, je:
 
@@ -39,14 +39,16 @@ Obecný pracovní postup pro vytvoření klienta, který používá webovou slu�
 > [!NOTE]
 > K získání informací o webové službě použijte sadu SDK Azure Machine Learning. Toto je sada Python SDK. Pro vytvoření klienta pro službu můžete použít libovolný jazyk.
 
-Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) poskytuje informace, které potřebujete k vytvoření klienta. Následující `Webservice` vlastnosti jsou užitečné při vytváření klientské aplikace:
+Třída [AzureML. Core. WebService](/python/api/azureml-core/azureml.core.webservice%28class%29) poskytuje informace, které potřebujete k vytvoření klienta. Následující `Webservice` vlastnosti jsou užitečné při vytváření klientské aplikace:
 
 * `auth_enabled` – Pokud je povolené ověřování klíčů, `True` ; jinak `False` .
 * `token_auth_enabled` – Pokud je povolené ověřování tokenu, `True` ; jinak `False` .
 * `scoring_uri` – Adresa REST API.
 * `swagger_uri` – Adresa specifikace OpenAPI Tento identifikátor URI je k dispozici, pokud jste povolili automatické generování schématu. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
-Existují tři způsoby, jak načíst tyto informace pro nasazené webové služby:
+Existuje několik způsobů, jak načíst tyto informace pro nasazené webové služby:
+
+# <a name="python"></a>[Python](#tab/python)
 
 * Při nasazení modelu se `Webservice` vrátí objekt s informacemi o službě:
 
@@ -57,7 +59,7 @@ Existují tři způsoby, jak načíst tyto informace pro nasazené webové služ
     print(service.swagger_uri)
     ```
 
-* Můžete použít `Webservice.list` k načtení seznamu nasazených webových služeb pro modely v pracovním prostoru. Chcete-li zúžit seznam vrácených informací, můžete přidat filtry. Další informace o tom, co je možné filtrovat, najdete v dokumentaci ke službě [WebService. list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) .
+* Můžete použít `Webservice.list` k načtení seznamu nasazených webových služeb pro modely v pracovním prostoru. Chcete-li zúžit seznam vrácených informací, můžete přidat filtry. Další informace o tom, co je možné filtrovat, najdete v dokumentaci ke službě [WebService. list](/python/api/azureml-core/azureml.core.webservice.webservice.webservice) .
 
     ```python
     services = Webservice.list(ws)
@@ -72,6 +74,30 @@ Existují tři způsoby, jak načíst tyto informace pro nasazené webové služ
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud znáte název nasazené služby, použijte příkaz [AZ ml Service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) :
+
+```azurecli
+az ml service show -n <service-name>
+```
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+V Azure Machine Learning Studiu vyberte __koncové__ body, __koncové body v reálném čase__ a potom název koncového bodu. V podrobnostech pro koncový bod obsahuje pole __koncový bod REST__ identifikátor URI pro vyhodnocování. __Identifikátor URI Swagger__ obsahuje identifikátor URI Swagger.
+
+---
+
+Následující tabulka ukazuje, jaké mají tyto identifikátory URI vypadat:
+
+| Typ URI | Příklad |
+| ----- | ----- |
+| Identifikátor URI pro vyhodnocování | `http://104.214.29.152:80/api/v1/service/<service-name>/score` |
+| Identifikátor URI Swagger | `http://104.214.29.152/api/v1/service/<service-name>/swagger.json` |
+
+> [!TIP]
+> IP adresa se pro vaše nasazení liší. Každý cluster AKS bude mít vlastní IP adresu, která je sdílená nasazeními do tohoto clusteru.
 
 ### <a name="secured-web-service"></a>Zabezpečená webová služba
 
@@ -93,7 +119,7 @@ Azure Machine Learning poskytuje dva způsoby, jak řídit přístup k webovým 
 
 Když posíláte požadavek službě, která je zabezpečená pomocí klíče nebo tokenu, použijte k předání klíče nebo tokenu __autorizační__ hlavičku. Klíč nebo token musí být formátován jako `Bearer <key-or-token>` , kde `<key-or-token>` je vaše hodnota klíče nebo tokenu.
 
-Hlavním rozdílem mezi klíči a tokeny je, že **klíče jsou statické a dají se znovu vygenerovat ručně**a **tokeny je potřeba aktualizovat po vypršení platnosti**. Ověřování založené na klíčích se podporuje pro Azure Container instance a službu Azure Kubernetesed Web-Services a ověřování na základě tokenu je dostupné **jenom** pro nasazení služby Azure Kubernetes. Další informace a konkrétní ukázky kódu najdete v [tématu o ověřování](how-to-setup-authentication.md#web-service-authentication) .
+Hlavním rozdílem mezi klíči a tokeny je, že **klíče jsou statické a dají se znovu vygenerovat ručně** a **tokeny je potřeba aktualizovat po vypršení platnosti**. Ověřování založené na klíčích se podporuje pro Azure Container instance a službu Azure Kubernetesed Web-Services a ověřování na základě tokenu je dostupné **jenom** pro nasazení služby Azure Kubernetes. Další informace o konfiguraci ověřování najdete v tématu [Konfigurace ověřování pro modely nasazené jako webové služby](how-to-authenticate-web-service.md).
 
 
 #### <a name="authentication-with-keys"></a>Ověřování pomocí klíčů
@@ -113,7 +139,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Pokud potřebujete znovu vygenerovat klíč, použijte [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) .
+> Pokud potřebujete znovu vygenerovat klíč, použijte [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29) .
 
 #### <a name="authentication-with-tokens"></a>Ověřování pomocí tokenů
 
@@ -179,7 +205,7 @@ Informace o povolení podpory CORS ve službě najdete v tématu [sdílení pros
 
 ## <a name="call-the-service-c"></a>Volání služby (C#)
 
-Tento příklad ukazuje, jak použít jazyk C# k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
+Tento příklad ukazuje, jak použít jazyk C# k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) :
 
 ```csharp
 using System;
@@ -268,7 +294,7 @@ Vrácené výsledky jsou podobné následujícímu dokumentu JSON:
 
 ## <a name="call-the-service-go"></a>Volání služby (Přejít)
 
-Tento příklad ukazuje, jak použít funkci přejít k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
+Tento příklad ukazuje, jak použít funkci přejít k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) :
 
 ```go
 package main
@@ -360,7 +386,7 @@ Vrácené výsledky jsou podobné následujícímu dokumentu JSON:
 
 ## <a name="call-the-service-java"></a>Volání služby (Java)
 
-Tento příklad ukazuje, jak použít jazyk Java k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
+Tento příklad ukazuje, jak použít jazyk Java k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) :
 
 ```java
 import java.io.IOException;
@@ -440,7 +466,7 @@ Vrácené výsledky jsou podobné následujícímu dokumentu JSON:
 
 ## <a name="call-the-service-python"></a>Volání služby (Python)
 
-Tento příklad ukazuje, jak použít Python pro volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
+Tento příklad ukazuje, jak použít Python pro volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) :
 
 ```python
 import requests
@@ -501,7 +527,7 @@ Vrácené výsledky jsou podobné následujícímu dokumentu JSON:
 
 ## <a name="web-service-schema-openapi-specification"></a>Schéma webové služby (specifikace OpenAPI)
 
-Pokud jste s vaším nasazením použili automatické generování schématu, můžete získat adresu specifikace OpenAPI pro službu pomocí [vlastnosti swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Například `print(service.swagger_uri)` .) K načtení specifikace použijte požadavek GET nebo otevřete identifikátor URI v prohlížeči.
+Pokud jste s vaším nasazením použili automatické generování schématu, můžete získat adresu specifikace OpenAPI pro službu pomocí [vlastnosti swagger_uri](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#swagger-uri). (Například `print(service.swagger_uri)` .) K načtení specifikace použijte požadavek GET nebo otevřete identifikátor URI v prohlížeči.
 
 Následující dokument JSON je příklad schématu (specifikace OpenAPI) generovaného pro nasazení:
 
@@ -643,15 +669,15 @@ Nástroj, který umožňuje vytvářet klientské knihovny ze specifikace, najde
 
 
 > [!TIP]
-> Po nasazení služby můžete načíst dokument JSON schématu. Použijte [vlastnost swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) z nasazené webové služby (například `service.swagger_uri` ) k získání identifikátoru URI do souboru Swagger místní webové služby.
+> Po nasazení služby můžete načíst dokument JSON schématu. Použijte [vlastnost swagger_uri](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#swagger-uri) z nasazené webové služby (například `service.swagger_uri` ) k získání identifikátoru URI do souboru Swagger místní webové služby.
 
-## <a name="consume-the-service-from-power-bi"></a>Využívání služby v Power BI
+## <a name="consume-the-service-from-power-bi"></a>Využívání služby od Power BI
 
 Power BI podporuje využití webových služeb Azure Machine Learning k rozšíření dat v Power BI pomocí předpovědi. 
 
-Pro vygenerování webové služby, která je podporována pro použití v Power BI, musí schéma podporovat formát vyžadovaný Power BI. [Naučte se vytvořit schéma podporované Power BI](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script).
+Pro vygenerování webové služby, která je podporována pro použití v Power BI, musí schéma podporovat formát vyžadovaný Power BI. [Naučte se vytvořit schéma podporované Power BI](./how-to-deploy-advanced-entry-script.md#power-bi-compatible-endpoint).
 
-Po nasazení webové služby je tato služba příchodná z Power BIch toků dat. [Naučte se využívat Azure Machine Learning webové služby od Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Po nasazení webové služby je možné ji využívat v tocích dat Power BI. [Zjistěte, jak v Power BI využívat webovou službu Azure Machine Learning](/power-bi/service-machine-learning-integration).
 
 ## <a name="next-steps"></a>Další kroky
 

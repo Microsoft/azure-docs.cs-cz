@@ -1,5 +1,5 @@
 ---
-title: Jak používat Video.js Player s Azure Media Services
+title: Použití přehrávače Video.js s Azure Media Services
 description: Tento článek vysvětluje, jak používat objekt HTML video a JavaScript s Azure Media Services
 services: media-services
 documentationcenter: ''
@@ -10,17 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 39c790ea3c7799c59d4b49e3ce3284fb96b8b254
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: a0b357705de04ed4c2be3223f9dd07f61f75d970
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422959"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954576"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>Jak používat Video.js Player s Azure Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -73,10 +75,10 @@ Vzorový kód tohoto článku je k dispozici v [Azure-Samples/Media-Services-3rd
 
 Spusťte `addRemoteTextTrack` metodu a nahraďte:
 
-- `subtitleKind`pomocí obou `"captions"` , `"subtitles"` , `"descriptions"` nebo`"metadata"`  
-- `caption`s cestou k souboru. vtt (soubor VTT musí být ve stejném hostiteli, aby nedošlo k chybě CORS).
-- `subtitleLang`s kódem BCP 47 pro jazyk, například `"eng"` pro angličtinu nebo `"es"` španělštinu
-- `subtitleLabel`s požadovaným zobrazovaným názvem titulku
+- `subtitleKind` pomocí obou `"captions"` , `"subtitles"` , `"descriptions"` nebo `"metadata"`  
+- `caption` s cestou k souboru. vtt (soubor VTT musí být ve stejném hostiteli, aby nedošlo k chybě CORS).
+- `subtitleLang` s kódem BCP 47 pro jazyk, například `"eng"` pro angličtinu nebo `"es"` španělštinu
+- `subtitleLabel` s požadovaným zobrazovaným názvem titulku
 
 ```javascript
 videojs.players.video.addRemoteTextTrack({

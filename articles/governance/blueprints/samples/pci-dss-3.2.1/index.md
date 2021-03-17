@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu PCI-DSS v3.2.1 – přehled
 description: Přehled podrobného plánu pro Payment Card Industry Data Security Standard v3.2.1 Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly.
-ms.date: 01/29/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 70a03b925c12fbfc7a3a605f682699c0808cd9eb
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 409be63f367c1077b3f35ec62c86a36d26aaaab1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "76905533"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044998"
 ---
 # <a name="overview-of-the-pci-dss-v321-blueprint-sample"></a>Přehled ukázky podrobného plánu PCI-DSS v3.2.1
 

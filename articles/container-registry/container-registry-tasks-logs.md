@@ -3,12 +3,12 @@ title: Zobrazit protokoly spuštění úlohy – úlohy
 description: Jak zobrazit a spravovat protokoly spuštění generované ACR úkoly
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79246965"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027172"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Zobrazení a správa protokolů spuštění úloh
 
@@ -65,14 +65,14 @@ Pokud se úloha spustí automaticky, například při aktualizaci zdrojového k�
 Zobrazení protokolů spuštění na portálu:
 
 1. Přejděte do registru kontejneru.
-1. V **služby**vyberte možnost **Tasks**  >  **spuštěné**úlohy.
+1. V **služby** vyberte možnost **Tasks**  >  **spuštěné** úlohy.
 1. Vyberte **ID spuštění** pro zobrazení stavu spuštění a protokolů spuštění. Pokud je vygenerováno, protokol obsahuje stejné informace jako protokol streamování.
 
 ![Zobrazit portál pro přihlášení ke spuštění úlohy](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
 Pokud chcete zobrazit protokol pomocí Azure CLI, spusťte [protokol AZ ACR Task log](/cli/azure/acr/task#az-acr-task-logs) a zadejte ID spuštění, název úlohy nebo konkrétní obrázek, který vytvoří úloha sestavení. Je-li zadán název úlohy, příkaz zobrazí protokol posledního vytvořeného spuštění.
 
-Následující příklad vypíše výstup protokolu pro běh s ID *CF4*:
+Následující příklad vypíše výstup protokolu pro běh s ID *CF4* :
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
@@ -94,18 +94,10 @@ az acr task logs --registry mycontainerregistry1220 \
 
 Do Azure Storage můžete ukládat i místní soubory protokolů. Například můžete použít rozhraní příkazového [řádku Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md), [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)nebo jiné metody pro nahrání souborů do účtu úložiště.
 
-
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [úlohách Azure Container Registry](container-registry-tasks-overview.md)
 
-<!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
-[sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

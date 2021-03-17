@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 094b1a029c8e10abce3ca282de0cc99be34d313a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522332"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318860"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Kurz: integrace AlertOps s Azure Active Directory
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat AlertOps s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k AlertOps svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -69,7 +69,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **AlertOps** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -86,7 +86,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta AlertOps](mailto:support@alertops.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -108,11 +108,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. V levém navigačním panelu klikněte na **Nastavení účtu** .
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí v nabídce AlertOps s nastavením účtu s názvem.](./media/alertops-tutorial/configure1.png)
 
 5. Na stránce **nastavení odběru** vyberte **jednotné přihlašování** a proveďte následující kroky:
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/configure2.png)
+    ![Snímek obrazovky se zobrazí okno nastavení předplatného pro s s s hodnotami, které jsou zadány, jak je popsáno v tomto kroku.](./media/alertops-tutorial/configure2.png)
 
     a. Zaškrtněte políčko **použít jednotné přihlašování (SSO)** .
 
@@ -138,7 +138,7 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -164,15 +164,15 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 2. V levém navigačním panelu klikněte na **uživatele** .
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí v nabídce AlertOps s uživateli s názvem.](./media/alertops-tutorial/user1.png)
 
 3. Vyberte **Přidat uživatele**.
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/user2.png)
+    ![Snímek obrazovky s tlačítkem Přidat uživatele zobrazí okno uživatelé.](./media/alertops-tutorial/user2.png)
 
 4. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/user3.png)
+    ![Snímek obrazovky se zobrazí v podokně Přidat uživatele s hodnotami uvedenými v tomto kroku.](./media/alertops-tutorial/user3.png)
 
     a. Do textového pole **přihlašovací uživatelské jméno** zadejte uživatelské jméno uživatele, jako je **Brittasimon**.
 
@@ -190,12 +190,12 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="test-sso"></a>Test SSO
 
-Když na přístupovém panelu vyberete dlaždici AlertOps, měli byste se automaticky přihlásit k AlertOps, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici AlertOps, měli byste se automaticky přihlásit k AlertOps, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

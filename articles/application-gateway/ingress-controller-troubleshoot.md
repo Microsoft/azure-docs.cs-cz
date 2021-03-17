@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f2b9f79f0914e645c736f8a577c46baa42587332
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207163"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874606"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Řešení běžných otázek nebo potíží s řadičem příchozího přenosu dat
 
 [Azure Cloud Shell](https://shell.azure.com/) je nejpohodlnější způsob, jak řešit problémy s instalací nástroje AKS a AGIC. Spusťte prostředí z [Shell.Azure.com](https://shell.azure.com/) nebo kliknutím na odkaz:
 
-[![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
+[![Vložené spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
 
 
 ## <a name="test-with-a-simple-kubernetes-app"></a>Testování pomocí jednoduché aplikace Kubernetes
@@ -85,17 +85,17 @@ Po úspěšném nasazení aplikace nad cluster AKS bude k dispozici nový pod, s
 Seznam lusků získáte pomocí [Cloud Shell](https://shell.azure.com/): `kubectl get pods -o wide` .
 Očekáváme, že se vytvoří název pod názvem test-agic-App-pod. Bude mít IP adresu. Tato adresa musí být v rámci virtuální sítě Application Gateway, která se používá s AKS.
 
-![podů](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
+![Snímek obrazovky okna bash v Azure Cloud Shell zobrazující seznam lusků, který zahrnuje test-agic-App-pod v seznamu.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
 
 Získat seznam služeb: `kubectl get services -o wide` . Očekáváme, že se zobrazí služba s názvem test-agic-App-Service.
 
-![podů](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
+![Snímek obrazovky okna bash v Azure Cloud Shell zobrazující seznam služeb, které obsahují test-agic-App-pod v seznamu.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
 
 Získat seznam příchozích dat: `kubectl get ingress` . Očekáváme, že prostředek příchozího přenosu s názvem test-agic-App-příchozí je vytvořený. Prostředek bude mít název hostitele ' test.agic.contoso.com '.
 
-![podů](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
+![Snímek obrazovky okna bash v Azure Cloud Shell zobrazující seznam vstupů, které v seznamu obsahují test-agic-App-in.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
-Jedna z lusků bude AGIC. `kubectl get pods`Zobrazí seznam lusků, z nichž jedna začíná "příchozí – Azure". Získejte všechny protokoly, které jsou pod nástrojem, `kubectl logs <name-of-ingress-controller-pod>` a ověřte tak, že máme úspěšné nasazení. Úspěšné nasazení by do protokolu přidalo následující řádky:
+Jedna z lusků bude AGIC. `kubectl get pods` Zobrazí seznam lusků, z nichž jedna začíná "příchozí – Azure". Získejte všechny protokoly, které jsou pod nástrojem, `kubectl logs <name-of-ingress-controller-pod>` a ověřte tak, že máme úspěšné nasazení. Úspěšné nasazení by do protokolu přidalo následující řádky:
 ```
 I0927 22:34:51.281437       1 process.go:156] Applied Application Gateway config in 20.461335266s
 I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied config.
@@ -120,7 +120,7 @@ Nakonec můžeme pomocí příkazu v `cURL` rámci [Cloud Shell](https://shell.a
 1. Použijte `kubectl get ingress` k získání veřejné IP adresy Application Gateway
 2. Použití `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>`
 
-![podů](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
+![Snímek obrazovky okna bash v Azure Cloud Shell znázorňující příkaz složeného příkazu se úspěšně navázáním připojení HTTP k testovací aplikaci.](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
 Výsledek `HTTP/1.1 200 OK` znamená, že systém Application Gateway + AKS + AGIC pracuje podle očekávání.
 
@@ -141,8 +141,8 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. Jednu nebo více **služeb**s odkazem na lusky přes párové `selector` popisky.
-     Ověřte tuto z [Cloud Shell](https://shell.azure.com/) s`kubectl get services -o wide`
+  2. Jednu nebo více **služeb** s odkazem na lusky přes párové `selector` popisky.
+     Ověřte tuto z [Cloud Shell](https://shell.azure.com/) s `kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
 
@@ -150,7 +150,7 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. **Ingress**Příchozí s poznámkami s `kubernetes.io/ingress.class: azure/application-gateway` odkazem na výše uvedenou službu ověřte tuto [Cloud Shell](https://shell.azure.com/) s`kubectl get ingress -o wide --show-labels`
+  3. **Ingress** Příchozí s poznámkami s `kubernetes.io/ingress.class: azure/application-gateway` odkazem na výše uvedenou službu ověřte tuto [Cloud Shell](https://shell.azure.com/) s`kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -199,9 +199,9 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
 
 
 * Pokud AGIC pod není v pořádku ( `STATUS` sloupec z příkazu výše není `Running` ):
-  - Získejte protokoly, abyste zjistili, proč:`kubectl logs <pod-name>`
-  - pro předchozí instanci rozhraní pod:`kubectl logs <pod-name> --previous`
-  - Popište pole pod, aby se získalo více kontextu:`kubectl describe pod <pod-name>`
+  - Získejte protokoly, abyste zjistili, proč: `kubectl logs <pod-name>`
+  - pro předchozí instanci rozhraní pod: `kubectl logs <pod-name> --previous`
+  - Popište pole pod, aby se získalo více kontextu: `kubectl describe pod <pod-name>`
 
 
 * Máte [službu](https://kubernetes.io/docs/concepts/services-networking/service/) [Kubernetes a prostředky](https://kubernetes.io/docs/concepts/services-networking/ingress/) příchozího přenosu dat?
@@ -224,7 +224,7 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
 
 
 * AGIC generuje události Kubernetes pro určité kritické chyby. Můžete je zobrazit:
-  - v terminálu prostřednictvím`kubectl get events --sort-by=.metadata.creationTimestamp`
+  - v terminálu prostřednictvím `kubectl get events --sort-by=.metadata.creationTimestamp`
   - v prohlížeči pomocí [webového uživatelského rozhraní Kubernetes (řídicí panel)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
 
 
@@ -243,9 +243,9 @@ Komunita Kubernetes zřídila 9 úrovní protokolování pro nástroj [kubectl](
 |  5        | Zařazování objektů do protokolu; zobrazuje upravenou konfiguraci JSON použitou pro ARM. |
 
 
-Úrovně podrobností lze nastavit přes `verbosityLevel` proměnnou v souboru [Helm-config. yaml](#sample-helm-config-file) . Zvyšte úroveň podrobností na, `5` aby se získala konfigurace JSON odeslané do [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview):
+Úrovně podrobností lze nastavit přes `verbosityLevel` proměnnou v souboru [Helm-config. yaml](#sample-helm-config-file) . Zvyšte úroveň podrobností na, `5` aby se získala konfigurace JSON odeslané do [ARM](../azure-resource-manager/management/overview.md):
   - Přidat `verbosityLevel: 5` na sebe sebe v [Helm-config. yaml](#sample-helm-config-file) a znovu nainstalovat
-  - získat protokoly pomocí`kubectl logs <pod-name>`
+  - získat protokoly pomocí `kubectl logs <pod-name>`
 
 ### <a name="sample-helm-config-file"></a>Ukázkový konfigurační soubor Helm
 ```yaml
@@ -292,7 +292,7 @@ armAuth:
 #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
 
 ################################################################################
-# Specify if the cluster is RBAC enabled or not
+# Specify if the cluster is Kubernetes RBAC enabled or not
 rbac:
     enabled: false # true/false
 
@@ -300,4 +300,3 @@ rbac:
 aksClusterConfiguration:
     apiServerAddress: <aks-api-server-address>
 ```
-

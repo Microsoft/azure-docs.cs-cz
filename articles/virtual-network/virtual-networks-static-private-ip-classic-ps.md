@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 669b8427f13efcc55a69bc7c970b6658a6719cd8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 2e798f81102017b4d34c4b1b219a9f23035b0359
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134722"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222832"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Konfigurace privátních IP adres pro virtuální počítač (Classic) pomocí PowerShellu
 
@@ -35,7 +35,7 @@ Tento článek se týká modelu nasazení Classic. [V modelu nasazení Správce 
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Následující ukázkové příkazy prostředí PowerShell očekávají, že už je vytvořené jednoduché prostředí. Pokud chcete spustit příkazy, které se zobrazují v tomto dokumentu, nejdříve Sestavte testovací prostředí popsané v tématu [vytvoření virtuální](virtual-networks-create-vnet-classic-netcfg-ps.md)sítě.
+Následující ukázkové příkazy prostředí PowerShell očekávají, že už je vytvořené jednoduché prostředí. Pokud chcete spustit příkazy, které se zobrazují v tomto dokumentu, nejdříve Sestavte testovací prostředí popsané v tématu [vytvoření virtuální](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-netcfg-ps)sítě.
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Jak ověřit, zda je k dispozici konkrétní IP adresa
 Pokud chcete ověřit, jestli je IP adresa *192.168.1.101* k dispozici ve virtuální síti s názvem *TestVNet*, spusťte následující příkaz PowerShellu a ověřte, jestli je hodnota k *dispozici*:
@@ -55,7 +55,7 @@ OperationStatus      : Succeeded
 ```
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Jak zadat statickou privátní IP adresu při vytváření virtuálního počítače
-Níže uvedený skript PowerShellu vytvoří novou cloudovou službu s názvem *TestService*a potom načte image z Azure, vytvoří virtuální počítač s názvem *DNS01* v nové cloudové službě pomocí načtené image, nastaví virtuální počítač jako v podsíti s názvem *front-endu*a nastaví *192.168.1.7* jako statickou privátní IP adresu pro virtuální počítač:
+Níže uvedený skript PowerShellu vytvoří novou cloudovou službu s názvem *TestService* a potom načte image z Azure, vytvoří virtuální počítač s názvem *DNS01* v nové cloudové službě pomocí načtené image, nastaví virtuální počítač jako v podsíti s názvem *front-endu* a nastaví *192.168.1.7* jako statickou privátní IP adresu pro virtuální počítač:
 
 ```azurepowershell
 New-AzureService -ServiceName TestService -Location "Central US"
@@ -154,7 +154,6 @@ Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded
 V případě potřeby doporučujeme, abyste privátní IP adresu přiřazenou k virtuálnímu počítači Azure nepřiřadili staticky v operačním systému virtuálního počítače. Pokud ručně nastavíte privátní IP adresu v operačním systému, ujistěte se, že se jedná o stejnou adresu jako soukromá IP adresa přiřazená k virtuálnímu počítači Azure, nebo můžete ztratit připojení k virtuálnímu počítači. Nikdy byste neměli ručně přiřadit veřejnou IP adresu přiřazenou k virtuálnímu počítači Azure v operačním systému virtuálního počítače.
 
 ## <a name="next-steps"></a>Další kroky
-* Seznamte se s [rezervovanými veřejnými IP](virtual-networks-reserved-public-ip.md) adresami.
-* Přečtěte si informace o [veřejných IP adresách na úrovni instance (ILPIP)](virtual-networks-instance-level-public-ip.md) .
-* Projděte si [vyhrazená IP adresa rozhraní REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
-
+* Seznamte se s [rezervovanými veřejnými IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) adresami.
+* Přečtěte si informace o [veřejných IP adresách na úrovni instance (ILPIP)](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) .
+* Projděte si [vyhrazená IP adresa rozhraní REST API](/previous-versions/azure/reference/dn722420(v=azure.100)).

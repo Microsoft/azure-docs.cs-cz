@@ -8,18 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ddee5edcf1d19af0fb088976c590b62866a1484e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797742"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674414"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -54,7 +54,7 @@ Nejprve je třeba vytvořit virtuální počítače cíle iSCSI. cílové server
 
 1. Nasaďte nové virtuální počítače s SLES 12 SP1 nebo novější a připojte se k nim přes SSH. Počítače nemusí být velké. Velikost virtuálního počítače, jako je Standard_E2s_v3 nebo Standard_D2s_v3, je dostatečná. Ujistěte se, že používáte disk s operačním systémem Premium Storage.
 
-Na všech **virtuálních počítačích cíle iSCSI**spusťte následující příkazy.
+Na všech **virtuálních počítačích cíle iSCSI** spusťte následující příkazy.
 
 1. Aktualizovat SLES
 
@@ -419,7 +419,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    </code></pre>
 
    >[!IMPORTANT]
-   > Nainstalovaná verze **ochranného balíčku – agenti** musí být aspoň **4.4.0** , aby mohli využívat rychlejší časy převzetí služeb při selhání s agentem Azure plot, pokud je potřeba vytvořit uzly clusteru. Pokud používáte nižší verzi, doporučujeme balíček aktualizovat.  
+   > Nainstalovaná verze **ochranného balíčku – agenti** musí být aspoň **4.4.0**  , aby mohli využívat rychlejší časy převzetí služeb při selhání s agentem Azure plot, pokud je potřeba vytvořit uzly clusteru. Pokud používáte nižší verzi, doporučujeme balíček aktualizovat.  
 
 
 1. **[A]** instalace sady Azure Python SDK 
@@ -442,7 +442,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    >Rozšíření můžete ověřit spuštěním SUSEConnect---rozšíření seznamu.  
    >Chcete-li dosáhnout rychlejšího převzetí služeb při selhání pomocí agenta Azure Plot:
    > - v SLES 12 SP4 nebo SLES 12 SP5 nainstalujte verzi **4.6.2** nebo vyšší z balíčku Python – Azure-Správa – Compute.  
-   > - v SLES 15 nainstalujte verzi **4.6.2** nebo vyšší z balíčku Python**3**– Azure-Správa – Compute. 
+   > - v SLES 15 nainstalujte verzi **4.6.2** nebo vyšší z balíčku Python **3**– Azure-Správa – Compute. 
 
 1. **[A]** nastavení rozlišení názvu hostitele
 
@@ -636,12 +636,16 @@ Opakujte výše uvedené kroky pro druhý uzel clusteru.
 
 Po úpravě oprávnění pro virtuální počítače můžete nakonfigurovat zařízení STONITH v clusteru.
 
+> [!NOTE]
+> Možnost ' pcmk_host_map ' je požadována pouze v příkazu, pokud názvy hostitelů a názvy virtuálních počítačů Azure nejsou stejné. Zadejte mapování ve formátu název **hostitele: VM-Name**.
+> Přečtěte si část tučné v příkazu.
+
 <pre><code>sudo crm configure property stonith-enabled=true
 crm configure property concurrent-fencing=true
 # replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
-  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 \ 
+  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
   op monitor interval=3600 timeout=120
 
 sudo crm configure property stonith-timeout=900

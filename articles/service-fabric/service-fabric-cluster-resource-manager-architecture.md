@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0aff55810508fedcf354fba3d9fca9f7a402029b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551688"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685830"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Přehled architektury cluster Resource Manageru
 Cluster Service Fabric Správce prostředků je centrální služba, která běží v clusteru. Spravuje požadovaný stav služeb v clusteru, zejména v souvislosti se spotřebou prostředků a všemi pravidly umístění. 
@@ -43,7 +43,7 @@ Pojďme se podívat na následující diagram:
 
 <center>
 
-![Architektura nástroje pro vyrovnávání zatížení prostředků][Image1]
+![Diagram, který znázorňuje službu Správce prostředků clusteru, agreguje všechny informace z místních agentů a reaguje na základě aktuální konfigurace.][Image1]
 </center>
 
 Během běhu je k dispozici mnoho změn, ke kterým může dojít. Řekněme například, že množství prostředků některé služby vybírají změny, některé služby selžou a některé uzly se připojí a opustí cluster. Všechny změny v uzlu jsou agregované a pravidelně se odesílají do clusteru Správce prostředků služby (1, 2), kde se znovu agregují, analyzují a ukládají. Každých pár sekund služba prohlíží změny a určí, jestli jsou potřebné nějaké akce (3). Může se třeba stát, že do clusteru se přidaly nějaké prázdné uzly. V důsledku toho se rozhodne přesunout některé služby do těchto uzlů. Cluster Správce prostředků může také všimnout, že určitý uzel je přetížený nebo že některé služby se nezdařily nebo byly odstraněny, a uvolňuje prostředky jinde.

@@ -16,4 +16,4 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "75533129"
 ---
-Zjistěte, jak spustit poznámkové bloky podle článku [použití poznámkových bloků Jupyter k prozkoumání této služby](../articles/machine-learning/samples-notebooks.md).
+Postupujte podle pokynů v článku věnovaném [využití poznámkových bloků Jupyter k prozkoumání této služby](../articles/machine-learning/samples-notebooks.md) a zjistěte, jak provozovat poznámkové bloky.

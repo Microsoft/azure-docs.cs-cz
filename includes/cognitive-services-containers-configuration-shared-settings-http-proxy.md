@@ -5,15 +5,15 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: ce4cc68826b39b5707549afc799d2d214e8876c6
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88639035"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001147"
 ---
 Pokud potřebujete nakonfigurovat proxy server HTTP pro vytváření odchozích požadavků, použijte tyto dva argumenty:
 
-| Název | Datový typ | Popis |
+| Name | Datový typ | Popis |
 |--|--|--|
 |HTTPS_PROXY|řetězec|Proxy, který se má použít, například `https://proxy:8888`<br>`<proxy-url>`|
 |HTTPS_PROXY_CREDS|řetězec|Jakékoli přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské jméno: heslo.|

@@ -1,18 +1,18 @@
 ---
 title: Konfigurovat ověřování klientů u příchozích volání – Azure Event Grid IoT Edge | Microsoft Docs
-description: Nakonfigurujte protokoly rozhraní API, které jsou vystavené Event Grid v IoT Edge.
+description: Přečtěte si o možných konfiguracích ověřování klientů pro modul Event Grid.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: a0bba9559c2a0b4ff6c8a4e5f2287692e27f8a1a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9525da4204e270d033f0c2354318bd71874eaf54
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171699"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91290768"
 ---
 # <a name="configure-client-authentication-of-incoming-calls"></a>Konfigurovat ověřování klientů u příchozích volání
 

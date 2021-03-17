@@ -1,6 +1,6 @@
 ---
 title: Co je Azure AD Connect a Connect Health. | Dokumentace Microsoftu
-description: Popisuje nástroje, které slouží k synchronizaci a monitorování místního prostředí s využitím Azure AD.
+description: Přečtěte si o nástrojích, které se používají k synchronizaci a monitorování místního prostředí s využitím Azure AD.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8e1af1848405441088796d2e3b42e7b52eedba8
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80631721"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065112"
 ---
 # <a name="what-is-azure-ad-connect"></a>Co je Azure AD Connect?
 
@@ -26,7 +26,7 @@ Azure AD Connect je nástroj od Microsoftu, jehož účelem je splnit a zajistit
 - [Předávací ověřování](how-to-connect-pta.md) – Metoda přihlašování, která umožňuje uživatelům používat stejné heslo místně a v cloudu, ale nevyžaduje další infrastrukturu federovaného prostředí.
 - [Integrace federace](how-to-connect-fed-whatis.md) – federace je volitelná součást Azure AD Connect a je možné ji použít ke konfiguraci hybridního prostředí pomocí místní infrastruktury AD FS. Poskytuje taky AD FS možnosti správy, jako je například obnovení certifikátu a další AD FS nasazení serveru.
 - [Synchronizace](how-to-connect-sync-whatis.md) – zodpovídá za vytváření uživatelů, skupin a dalších objektů.  A zároveň se ujistěte, že informace o identitě místních uživatelů a skupin odpovídají cloudu.  Tato synchronizace zahrnuje taky hodnoty hash hesel.
-- [Sledování stavu](whatis-hybrid-identity-health.md) – Azure AD Connect Health může poskytovat robustní monitorování a poskytnout centrální umístění v Azure Portal k zobrazení této aktivity. 
+- [Sledování stavu](whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) – Azure AD Connect Health může poskytovat robustní monitorování a poskytnout centrální umístění v Azure Portal k zobrazení této aktivity. 
 
 
 ![Co je služba Azure AD Connect](./media/whatis-hybrid-identity/arch.png)
@@ -35,7 +35,7 @@ Azure AD Connect je nástroj od Microsoftu, jehož účelem je splnit a zajistit
 
 ## <a name="what-is-azure-ad-connect-health"></a>Co je Azure AD Connect Health?
 
-Služba Azure Active Directory (Azure AD) Connect Health poskytuje robustní monitorování místní infrastruktury identity. Umožňuje udržovat spolehlivé připojení k Office 365 a službám Microsoft Online Services.  Tato spolehlivost se dosahuje tím, že poskytuje možnosti monitorování pro klíčové komponenty identity. Také usnadňuje přístup klíčových datových bodů k těmto součástem.
+Služba Azure Active Directory (Azure AD) Connect Health poskytuje robustní monitorování místní infrastruktury identity. Umožňuje udržovat spolehlivé připojení k Microsoft 365 a službám Microsoft Online Services.  Tato spolehlivost se dosahuje tím, že poskytuje možnosti monitorování pro klíčové komponenty identity. Také usnadňuje přístup klíčových datových bodů k těmto součástem.
 
 Další informace najdete v článku [Portál služby Azure AD Connect Health](https://aka.ms/aadconnecthealth). Pomocí portálu Azure AD Connect Health můžete zobrazit výstrahy, monitorování výkonu, analýzu využití a další informace. Azure AD Connect Health umožňuje mít na jednom místě a v jediném přehledu informace o stavu klíčových komponent identity.
 
@@ -44,7 +44,7 @@ Další informace najdete v článku [Portál služby Azure AD Connect Health](h
 ## <a name="why-use-azure-ad-connect"></a>Proč používat Azure AD Connect?
 Integrace místních adresářů se službou Azure AD zvyšuje produktivitu uživatelů tím, že jim poskytuje společnou identitu pro přístup ke cloudovým i místním prostředkům. Uživatelé a organizace můžou využít tyto možnosti:
 
-* Uživatelé můžou používat jedinou identitu pro přístup k místním aplikacím i ke cloudovým službám, jako je například Office 365.
+* Uživatelé můžou použít jedinou identitu pro přístup k místním aplikacím a cloudovým službám, jako je Microsoft 365.
 * Získáváte jeden nástroj, který umožňuje snadné nasazení pro synchronizaci a přihlašování.
 * Přináší nejnovější schopnosti pro vaše scénáře. Azure AD Connect nahrazuje starší verze nástrojů pro integraci identity, jako je DirSync a Azure AD Sync. Další informace najdete v tématu [porovnání nástrojů pro integraci adresářů hybridní identity](plan-hybrid-identity-design-considerations-tools-comparison.md).
 
@@ -57,9 +57,9 @@ Klíčové výhody a osvědčené postupy:
 
 |Klíčové výhody|Osvědčené postupy|
 |-----|-----|
-|Rozšířené zabezpečení|[Trendy uzamčení extranetu](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Sestava neúspěšných přihlášení](how-to-connect-health-adfs-risky-ip.md)</br>[V souladu s ochranou osobních údajů](reference-connect-health-user-privacy.md)|
+|Posílené zabezpečení|[Trendy uzamčení extranetu](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Sestava neúspěšných přihlášení](how-to-connect-health-adfs-risky-ip.md)</br>[V souladu s ochranou osobních údajů](reference-connect-health-user-privacy.md)|
 |Získání upozornění na [všechny kritické problémy systému služby ADFS](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)|Konfigurace serveru a dostupnost</br>[Výkon a možnosti připojení](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Pravidelná údržba|
-|Snadné nasazení a Správa|[Rychlá instalace agenta](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Automatický upgrade agenta na nejnovější verzi</br>Dostupnost dat na portálu během několika minut|
+|Snadné nasazení a Správa|[Rychlá instalace agenta](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs)</br>Automatický upgrade agenta na nejnovější verzi</br>Dostupnost dat na portálu během několika minut|
 Detailní [metriky využití](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|Využití nejčastějších aplikací</br>Umístění v síti a připojení TCP</br>Žádosti o tokeny pro každý server|
 |Skvělé uživatelské prostředí|Styl řídicího panelu z webu Azure Portal</br>[Upozornění prostřednictvím e-mailů](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
 
@@ -76,4 +76,4 @@ Detailní [metriky využití](how-to-connect-health-adfs.md#usage-analytics-for-
 - [Hardware a předpoklady](how-to-connect-install-prerequisites.md) 
 - [Expresní nastavení](how-to-connect-install-express.md)
 - [Vlastní nastavení](how-to-connect-install-custom.md)
-- [Instalace agentů Azure AD Connect Health](how-to-connect-health-agent-install.md) 
+- [Instalace agentů Azure AD Connect Health](how-to-connect-health-agent-install.md)

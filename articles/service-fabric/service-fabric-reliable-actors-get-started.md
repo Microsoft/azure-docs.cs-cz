@@ -1,16 +1,15 @@
 ---
 title: Vytvoření služby založené na objektu actor v Azure Service Fabric
 description: Naučte se vytvářet, ladit a nasazovat svou první službu založenou na objektech actor v jazyce C# pomocí Service Fabric Reliable Actors.
-author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: vturecek
-ms.openlocfilehash: c2ee5df9f0b09e30212f61e804e24086874f07f5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 225ccb67153a33ed47af68ebb1549dce37426278
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256267"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573457"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
 > [!div class="op_single_selector"]
@@ -19,7 +18,7 @@ ms.locfileid: "86256267"
 
 Tento článek vás provede vytvořením a laděním jednoduché aplikace typu Reliable actor v aplikaci Visual Studio. Další informace o Reliable Actors najdete v tématu [Úvod do Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte vývojové prostředí Service Fabric, včetně sady Visual Studio, a nastavte na svém počítači. Podrobnosti najdete v tématu [Postup nastavení vývojového prostředí](service-fabric-get-started.md).
 
@@ -62,7 +61,7 @@ public interface IHelloWorld : IActor
 }
 ```
 
-V projektu **HelloWorld** v **HelloWorld.cs**nahraďte celou definici třídy následujícím způsobem:
+V projektu **HelloWorld** v **HelloWorld.cs** nahraďte celou definici třídy následujícím způsobem:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -107,7 +106,7 @@ Vytvořte jednoduchou konzolovou aplikaci pro volání služby objektu actor.
 
     Balíček NuGet a všechny jeho závislosti se nainstalují do projektu ActorClient.
 
-5. Klientský projekt také vyžaduje odkaz na projekt rozhraní.  V projektu ActorClient klikněte pravým tlačítkem na **závislosti** a pak klikněte na **Přidat odkaz...**.  Vyberte **projekty > řešení** (Pokud ještě není vybrané) a potom zaškrtněte políčko vedle **HelloWorld. Interfaces**.  Klikněte na **OK**.
+5. Klientský projekt také vyžaduje odkaz na projekt rozhraní.  V projektu ActorClient klikněte pravým tlačítkem na **závislosti** a pak klikněte na **Přidat odkaz na projekt..**.  Vyberte **projekty > řešení** (Pokud ještě není vybrané) a potom zaškrtněte políčko vedle **HelloWorld. Interfaces**.  Klikněte na **OK**.
     
     ![Přidat odkaz – dialogové okno][7]
 

@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: Historie vydání verze | Microsoft Docs'
-description: V tomto článku jsou uvedené všechny verze Azure AD Connect a Azure AD Sync
+description: V tomto článku jsou uvedené všechny verze Azure AD Connect a Azure AD Sync.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b0b0a98e80fb7f343411b49ff2ccd11046bcdc5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 706f759243fd9edbd5f47633cb2638d6b06beec1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88052925"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376356"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -37,20 +37,25 @@ Stáhnout| [Stáhněte si Azure AD Connect](https://go.microsoft.com/fwlink/?Lin
 >[!NOTE]
 >Vydání nové verze Azure AD Connect je proces, který vyžaduje několik kroků řízení kvality, aby se zajistila funkčnost této služby. při tomto procesu se ale aktualizuje číslo verze nové verze a stav verze se aktualizuje tak, aby odrážela nejnovější stav.
 I když procházíme tímto procesem, číslo verze vydaných verzí se zobrazí s číslem "X" v umístění vedlejší verze, jako v "1.3. X. 0" – to znamená, že poznámky k verzi v tomto dokumentu jsou platné pro všechny verze začínající znakem "1,3". Po dokončení procesu vydávání verzí bude číslo vydané verze aktualizováno na nejnovější vydanou verzi a stav vydání bude aktualizován na hodnotu Vydáno ke stažení a automatický upgrade.
-Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. Další informace o [automatickém upgradu](how-to-connect-install-automatic-upgrade.md) získáte pomocí tohoto odkazu.
+Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. 
+
+Chcete-li objasnit použití automatického upgradu, je třeba, abyste na vás zaznamenali všechny důležité aktualizace a důležité opravy. To nemusí nutně být nejnovější verze, protože ne všechny verze budou vyžadovat nebo zahrnují opravu kritického bezpečnostního problému (jenom jeden příklad mnoha). Takový problém by byl vyřešen novou verzí poskytnutou prostřednictvím automatického upgradu. Pokud neexistují žádné takové problémy, aktualizace se neodesílají pomocí automatického upgradu a obecně platí, že pokud používáte nejnovější verzi automatického upgradu, měli byste být dobrá.
+Pokud byste ale chtěli mít všechny nejnovější funkce a aktualizace, nejlepším způsobem, jak zjistit, jestli je tato stránka k dispozici, je to, abyste si tuto stránku zkontrolovali a nainstalovali podle potřeby. 
+
+Další informace o [automatickém upgradu](how-to-connect-install-automatic-upgrade.md) získáte pomocí tohoto odkazu.
 
 >[!IMPORTANT]
-> Od 1. listopadu 2020 zahájíme implementaci procesu vyřazení, přičemž verze Azure AD Connect vydané před více než 18 měsíci budou zastaralé. V tuto chvíli zahájíme tento proces tím, že vyřadíme všechny verze Azure AD Connect s verzí 1.3.20.0 (které byly vydané na 4/24/2019) a starší, a budeme pokračovat, abychom vyhodnotili vyřazení starších verzí Azure AD Connect pokaždé, když dojde k vydání nových verzí.
+> Od 1. dubna 2024 vyřadíme verze Azure AD Connect vydané před 1. května 2018 verze 1.1.751.0 a starší. 
 >
 > Abyste získali optimální prostředí podpory, musíte mít jistotu, že používáte nejnovější verzi Azure AD Connect. 
 >
->Pokud spustíte zastaralou verzi Azure AD Connect nebudete mít k dispozici nejnovější opravy zabezpečení, vylepšení výkonu, řešení potíží a diagnostické nástroje a vylepšení služeb. Pokud ale potřebujete podporu, můžeme vám poskytnout úroveň služby, kterou vaše organizace potřebuje.
+>Pokud spustíte vystaralou verzi Azure AD Connect nebudete mít k dispozici nejnovější opravy zabezpečení, vylepšení výkonu, řešení potíží a diagnostické nástroje a vylepšení služeb. Pokud požadujete podporu, můžeme vám poskytnout úroveň služby, kterou vaše organizace potřebuje.
 >
->Pokud jste povolili Azure AD Connect pro synchronizaci, brzy automaticky zahájíte přijímání oznámení o stavu, která vás upozorní na nadcházející vyřazení, pokud používáte některou ze starších verzí.
+
 >
->Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) .
+>Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](./how-to-upgrade-previous-version.md) .
 >
->Informace o historii verzí u zastaralých verzí najdete v článku [archiv Historie verzí Azure AD Connect](reference-connect-version-history-archive.md) .
+>Informace o historii verzí v vyřazených verzích najdete v článku [archiv Historie vydání verze Azure AD Connect](reference-connect-version-history-archive.md) .
 
 ## <a name="15450"></a>1.5.45.0
 
@@ -74,7 +79,7 @@ Toto je verze opravy chyb. V této verzi nejsou žádné funkční změny.
 ### <a name="functional-changes"></a>Funkční změny
 Tato verze zahrnuje veřejnou verzi Preview funkce pro export konfigurace existujícího serveru Azure AD Connect do. Soubor JSON, který se pak dá použít při instalaci nového serveru Azure AD Connect pro vytvoření kopie původního serveru.
 
-Podrobný popis této nové funkce najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config) .
+Podrobný popis této nové funkce najdete v [tomto článku](./how-to-connect-import-export-config.md) .
 
 ### <a name="fixed-issues"></a>Opravené problémy
 - Opravili jsme chybu, kdy by došlo k nepravdivému upozornění na velikost místní databáze v lokalizovaných sestaveních během upgradu.
@@ -140,12 +145,12 @@ Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste nakl
 
 - Byla přidána podpora funkce mS-DS-ConsistencyGuid pro skupinové objekty. To vám umožní přesouvat skupiny mezi doménovými strukturami nebo znovu připojit skupiny ve službě AD do Azure AD, kde se změnil identifikátor objectID skupiny AD, třeba když se server služby AD znovu vytvoří po Calamity. Další informace najdete v tématu [Přesun skupin mezi doménovými strukturami](how-to-connect-migrate-groups.md).
 - Atribut mS-DS-ConsistencyGuid se automaticky nastaví u všech synchronizovaných skupin a k povolení této funkce není nutné provádět žádné akce. 
-- Odebrali Get-ADSyncRunProfile, protože se už nepoužívá. 
+- Get-ADSyncRunProfile odebrat, protože se už nepoužívá. 
 - Změnili jsme upozornění, které se zobrazí při pokusu o použití účtu správce podnikové sítě nebo správce domény pro účet služby služba AD DS Connector k poskytnutí dalšího kontextu. 
-- Přidala se nová rutina pro odebrání objektů z prostoru konektoru. starý nástroj CSDelete.exe odebraný a nahrazuje se novou rutinou Remove-ADSyncCSObject. Rutina Remove-ADSyncCSObject přijímá jako vstup CsObject. Tento objekt lze načíst pomocí rutiny Get-ADSyncCSObject.
+- Přidala se nová rutina pro odebrání objektů z místa konektoru, který je odebraný ze starého CSDelete.exe nástroje, a nahradí se novou rutinou Remove-ADSyncCSObject. Rutina Remove-ADSyncCSObject jako vstup převezme CsObject. Tento objekt lze načíst pomocí rutiny Get-ADSyncCSObject.
 
 >[!NOTE]
->Starý nástroj CSDelete.exe se odebral a nahradil novou rutinou Remove-ADSyncCSObject. 
+>Starý nástroj CSDelete.exe se odebral a nahradil novou rutinou Remove-ADSyncCSObject 
 
 ### <a name="fixed-issues"></a>Opravené problémy
 
@@ -159,7 +164,7 @@ Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste nakl
 ### <a name="release-status"></a>Stav verze
 12/9/2019: vydaná verze ke stažení Není k dispozici prostřednictvím automatického upgradu.
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
-- Aktualizovali jsme synchronizaci hodnot hash hesel, aby Azure AD Domain Services správně zohlednila odsazení v hodnotách hash protokolu Kerberos.  Tím zajistíte zlepšení výkonu při synchronizaci hesel ze služby instituce AD až po Azure AD Domain Services.
+- Aktualizovali jsme synchronizaci hodnot hash hesel, aby Azure AD Domain Services správně zohlednila odsazení v hodnotách hash protokolu Kerberos.  Tím zajistíte zlepšení výkonu při synchronizaci hesel ze služby Azure AD až po Azure AD Domain Services.
 - Přidali jsme podporu spolehlivých relací mezi ověřovacím agentem a Service Bus.
 - Tato vydaná verze vynutila TLS 1,2 pro komunikaci mezi ověřovacím agentem a cloudovou službou.
 - Přidali jsme mezipaměť DNS pro připojení protokolu WebSocket mezi ověřovacím agentem a cloudovou službou.
@@ -208,13 +213,13 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 - Nové nástroje pro řešení potíží pomáhají při řešení potíží s scénáři "uživatel neprobíhá synchronizace", "seskupení není synchronizovaný" nebo "nesynchronizované členství ve skupině".
-- Přidání podpory pro národní cloudy do skriptu pro řešení potíží s Azure AD Connect 
+- Přidání podpory pro národní cloudy do skriptu pro řešení potíží s Azure AD Connect.
 - Zákazníci by měli být informováni o tom, že vyřazení koncových bodů služby WMI pro MIIS_Service byla nyní odebrána. Jakékoli operace WMI by se teď měly provádět pomocí rutin PS.
 - Vylepšení zabezpečení pomocí resetování omezeného delegování objektu AZUREADSSOACC
 - Pokud přidáváte nebo upravujete pravidlo synchronizace, jsou-li v pravidle použity atributy, které jsou ve schématu konektoru, ale nejsou přidány do tohoto konektoru, přidají se do konektoru automaticky atributy. Totéž platí pro typ objektu, který pravidlo ovlivňuje. Pokud se do konektoru přidá cokoli, konektor se označí pro úplný import na další cyklus synchronizace.
 - Použití organizace nebo správce domény jako účtu konektoru už se v nových nasazeních Azure AD Connect nepodporuje. Tato verze nebude mít vliv na aktuální Azure AD Connect nasazení pomocí podnikového nebo správce domény jako účet konektoru.
 - V nástroji Správce synchronizace se při vytváření/úpravách a odstraňování pravidel spustí Úplná synchronizace. Automaticky otevírané okno se zobrazí u libovolné změny pravidla oznamující uživateli, pokud bude spuštěn úplný import nebo Úplná synchronizace.
-- Přidání kroků zmírnění pro chyby hesla do ' konektory > vlastností > připojení '
+- Přidání kroků zmírnění pro chyby hesla do ' konektory > vlastnosti > připojení '.
 - Přidání upozornění na zastaralost pro správce synchronizační služby na stránce vlastností konektoru. Toto upozornění upozorňuje uživatele, že by se měly provádět změny prostřednictvím Průvodce Azure AD Connect.
 - Přidala se nová chyba pro problémy se zásadami hesel uživatele.
 - Zabraňuje nekonfiguraci filtrování skupin podle domén a organizačních jednotek. Filtrování skupin zobrazí chybu, pokud je už doména nebo organizační jednotka zadané skupiny odfiltrovaná, a uživatel zůstane v pohybu dál, dokud se problém nevyřeší.
@@ -244,13 +249,13 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 
 ## <a name="13210"></a>1.3.21.0
 >[!IMPORTANT]
->Došlo k známému problému s upgradem Azure AD Connect ze starší verze na 1.3.21.0, kde portál O365 neodráží aktualizovanou verzi, i když Azure AD Connect úspěšně upgradována.
+>Došlo k známému problému s upgradem Azure AD Connect ze starší verze na 1.3.21.0, kde Microsoft 365 portál neodráží aktualizovanou verzi, i když Azure AD Connect upgradovat úspěšně.
 >
-> Pokud to chcete vyřešit, musíte importovat modul **AdSync** a pak na `Set-ADSyncDirSyncConfiguration` serveru Azure AD Connect spustit rutinu PowerShellu.  Můžete použít následující postup:
+> Chcete-li tento problém vyřešit, je třeba importovat modul **AdSync** a pak spustit `Set-ADSyncDirSyncConfiguration` rutinu prostředí PowerShell na serveru Azure AD Connect.  Můžete použít následující postup:
 >
 >1. Otevřete PowerShell v režimu správce.
->2. Spusťte příkaz `Import-Module "ADSync"`.
->3. Spusťte příkaz `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`.
+>2. Spusťte `Import-Module "ADSync"`.
+>3. Spusťte `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`.
  
 ### <a name="release-status"></a>Stav verze 
 

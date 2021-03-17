@@ -1,107 +1,109 @@
-- name: Dokumentace k IoT Plug and Play
+- name: Dokumentace k technologii IoT Plug and Play
   href: index.yml
 - name: Přehled
   items:
     - name: Co je IoT Plug and Play?
       href: overview-iot-plug-and-play.md
-    - name: Aktualizace Preview Refresh
-      href: overview-iot-plug-and-play-preview-updates.md
+    - name: Co je v aktuální verzi
+      href: overview-iot-plug-and-play-current-release.md
 - name: Rychlé starty
   expanded: true
   items:
+    - name: Nastavení prostředí
+      href: set-up-environment.md
     - name: Připojení zařízení ke službě IoT Hub
-      items:
-        - name: C
-          href: quickstart-connect-device-c.md
-        - name: Node.js
-          href: quickstart-connect-device-node.md
-        - name: Python
-          href: quickstart-connect-device-python.md
-        - name: C#
-          href: quickstart-connect-device-csharp.md
-        - name: Java
-          href: quickstart-connect-device-java.md
+      href: quickstart-connect-device.md
     - name: Interakce se zařízením z vašeho řešení
-      items:
-        - name: Node.js
-          href: quickstart-service-node.md
-        - name: Python
-          href: quickstart-service-python.md
+      href: quickstart-service.md
 - name: Kurzy
   items:
-    - name: Připojení zařízení s více komponentami (C#)
-      href: tutorial-multiple-components-csharp.md
-    - name: Připojení zařízení s více komponentami (Java)
-      href: tutorial-multiple-components-java.md
-    - name: Připojení zařízení s více komponentami (Node.js)
-      href: tutorial-multiple-components-node.md
-    - name: Připojení zařízení s více komponentami (Python)
-      href: tutorial-multiple-components-python.md
+    - name: Připojení zařízení s více komponentami
+      href: tutorial-multiple-components.md
     - name: Použití MQTT pro připojení zařízení
       href: tutorial-use-mqtt.md
+    - name: Interakce se zařízením MXChip (ukázka)
+      href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
+    - name: Připojení modulu zařízení
+      href: tutorial-migrate-device-to-module.md
+    - name: Preview – připojení a analýza dat pomocí Time Series Insights Gen2
+      href: tutorial-configure-tsi.md
 - name: Koncepty
   items:
     - name: Architektura
       href: concepts-architecture.md
-    - name: Příručka pro vývojáře
-      href: concepts-developer-guide.md
+    - name: Příručka pro vývojáře zařízení
+      href: concepts-developer-guide-device.md
+    - name: Příručka pro vývojáře služeb
+      href: concepts-developer-guide-service.md
     - name: Komponenty
       href: concepts-components.md
     - name: Konvence IoT Plug and Play
       href: concepts-convention.md
+    - name: Přemostění IoT Plug and Play
+      href: concepts-iot-pnp-bridge.md
     - name: Digitální dvojčata
       href: concepts-digital-twin.md
+    - name: Certifikace zařízení
+      href: concepts-certification-program.md
     - name: Úložiště modelů
       href: concepts-model-repository.md
     - name: Použití modelů v řešení
       href: concepts-model-discovery.md
     - name: Analyzátor modelů
       href: concepts-model-parser.md
-    - name: Omezení a kvóty
-      href: concepts-limits-quotas.md
-    - name: Glosář
-      href: iot-plug-and-play-glossary.md
 - name: Návody
   items:
     - name: Instalace a použití průzkumníka IoT
       href: howto-use-iot-explorer.md
-    - name: Instalace a použití rozšíření rozhraní příkazového řádku Azure IoT
-      href: howto-use-iot-pnp-cli.md
+    - name: Instalace a použití nástrojů pro vytváření DTDL
+      href: howto-use-dtdl-authoring-tools.md
+    - name: Použití vloženého kódu C
+      href: howto-use-embedded-c.md
     - name: Správa digitálních dvojčat
       href: howto-manage-digital-twin.md
+    - name: Certifikace zařízení
+      href: howto-certify-device.md
+    - name: Jak připojit ukázku technologie Plug and Play mostu IoT
+      href: howto-use-iot-pnp-bridge.md
+    - name: Sestavování a nasazování IoT technologie Plug and Play mostu
+      href: howto-build-deploy-extend-pnp-bridge.md
+    - name: Rozšiřování IoT technologie Plug and Play mostu
+      href: howto-author-pnp-bridge-adapter.md
 - name: Referenční informace
   items:
     - name: Knihovny a sady SDK
       href: libraries-sdks.md
     - name: Rozhraní REST API služby Digital Twins
-      href: 'https://aka.ms/iot-pnp-preview-rest'
+      href: /rest/api/iothub/service/digitaltwin
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: Akcelerátory řešení IoT
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT Plug and Play
-          href: /azure/iot-pnp
+          href: ./index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Sady Azure IoT SDK
       items:
         - name: Sady SDK pro služby IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: Sady SDK pro zařízení IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks

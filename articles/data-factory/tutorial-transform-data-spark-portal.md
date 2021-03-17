@@ -1,21 +1,17 @@
 ---
 title: 'Transformace dat pomocí Sparku v Azure Data Factory '
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Sparku ve službě Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 01/10/2018
+ms.openlocfilehash: 2e2a50a96402f01fe914c79d5257fc5bb4dc57a0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409266"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377784"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 
@@ -31,7 +27,7 @@ V tomto kurzu provedete následující kroky:
 > * Aktivace spuštění kanálu
 > * Monitorování spuštění kanálu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > [!NOTE]
 > HdInsight podporuje jenom účty úložiště pro obecné účely s úrovní Standard. Ujistěte se, že účet úložiště nemá úroveň Premium nebo není určený jenom pro objekty blob.
 
-* **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
+* **Azure PowerShell.** Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
 
 
 ### <a name="upload-the-python-script-to-your-blob-storage-account"></a>Nahrání skriptu Pythonu do účtu služby Blob Storage
@@ -71,7 +67,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     if __name__ == "__main__":
         main()
     ```
-1. Nahraďte * &lt;storageAccountName&gt; * názvem vašeho účtu úložiště Azure. Pak soubor uložte. 
+1. Nahraďte *&lt; storageAccountName &gt;* názvem vašeho účtu úložiště Azure. Pak soubor uložte. 
 1. Ve službě Azure Blob Storage vytvořte kontejner **adftutorial**, pokud ještě neexistuje. 
 1. Vytvořte složku **spark**.
 1. Ve složce **spark** vytvořte dílčí složku s názvem **script**. 
@@ -93,14 +89,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
       
    ![Podokno Nová datová továrna](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny. (Můžete například použít ** &lt;svůj&gt;ADFTutorialDataFactory**). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny. (Můžete například použít **&lt; svůj &gt; ADFTutorialDataFactory**). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chyba: název není k dispozici](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
 1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
      
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
-   - Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
+   - Vyberte **vytvořit novou** a zadejte název skupiny prostředků.   
          
    U některých kroků v tomto rychlém startu se předpokládá, že pro skupinu prostředků použijete název **ADFTutorialResourceGroup** . Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 1. V poli **Verze** vyberte **V2**.
@@ -149,17 +145,17 @@ V této části vytvoříte tyto dvě propojené služby:
    
    b. Ověřte, že je v poli **Typ** vybraná možnost **HDInsight na vyžádání**.
    
-   c. Pro **Azure Storage propojená služba**vyberte **AzureBlobStorage1**. Tuto propojenou službu jste vytvořili dříve. Pokud jste použili jiný název, zadejte sem správný název. 
+   c. Pro **Azure Storage propojená služba** vyberte **AzureBlobStorage1**. Tuto propojenou službu jste vytvořili dříve. Pokud jste použili jiný název, zadejte sem správný název. 
    
    d. V poli **Typ clusteru** vyberte **spark**.
    
    e. V poli **ID instančního objektu** zadejte ID instančního objektu s oprávněním k vytvoření clusteru HDInsight. 
    
-      Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Další informace najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). **ID instančního objektu** je ekvivalentní *ID aplikace*a **klíč instančního objektu** je ekvivalentní hodnotě pro *tajný klíč klienta*.
+      Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Další informace najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). **ID instančního objektu** je ekvivalentní *ID aplikace* a **klíč instančního objektu** je ekvivalentní hodnotě pro *tajný klíč klienta*.
    
    f. Do pole **Klíč instančního objektu** zadejte klíč. 
    
-   g. V poli **Skupina prostředků** vyberte stejnou skupinu prostředků, kterou jste použili při vytváření datové továrny. Cluster Spark se vytvoří v této skupině prostředků. 
+   například V poli **Skupina prostředků** vyberte stejnou skupinu prostředků, kterou jste použili při vytváření datové továrny. Cluster Spark se vytvoří v této skupině prostředků. 
    
    h. Rozbalte **Typ operačního systému**.
    
@@ -167,7 +163,7 @@ V této části vytvoříte tyto dvě propojené služby:
    
    j. Zadejte **Heslo clusteru** pro tohoto uživatele. 
    
-   k. Vyberte **Finish** (Dokončit). 
+   k. Vyberte **Dokončit**. 
 
    ![Nastavení propojené služby HDInsight](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -176,7 +172,7 @@ V této části vytvoříte tyto dvě propojené služby:
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-1. Vyberte tlačítko **+** (plus) a pak v nabídce vyberte **kanál** .
+1. Vyberte **+** tlačítko (plus) a pak v nabídce vyberte **kanál** .
 
    ![Tlačítka pro vytvoření nového kanálu](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
 1. Na panelu nástrojů **Aktivity** rozbalte **HDInsight**. Přetáhněte aktivitu **Spark** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. 
@@ -191,7 +187,7 @@ V této části vytvoříte tyto dvě propojené služby:
    ![Zadání propojené služby HDInsight](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Přepněte na kartu **Skripty/Jar** a proveďte následující kroky: 
 
-   a. V případě **propojené služby úlohy**vyberte **AzureBlobStorage1**.
+   a. V případě **propojené služby úlohy** vyberte **AzureBlobStorage1**.
    
    b. Klikněte na **Procházet úložiště**.
 
@@ -199,7 +195,7 @@ V této části vytvoříte tyto dvě propojené služby:
    
    c. Přejděte do složky **adftutorial/spark/script**, vyberte soubor **WordCount_Spark.py** a potom vyberte **Dokončit**.      
 
-1. Pokud chcete kanál ověřit, vyberte tlačítko **Ověřit** na panelu nástrojů. Výběrem tlačítka **>>** (šipka doprava) zavřete okno ověřování. 
+1. Pokud chcete kanál ověřit, vyberte tlačítko **Ověřit** na panelu nástrojů. Výběrem **>>** tlačítka (šipka doprava) zavřete okno ověřování. 
     
    ![Tlačítko Ověřit](./media/tutorial-transform-data-spark-portal/validate-button.png)
 1. Vyberte **Publikovat vše**. Uživatelské rozhraní služby Data Factory publikuje entity (propojené služby a kanál) do služby Azure Data Factory. 
@@ -214,7 +210,7 @@ Vyberte **Přidat aktivační událost** na panelu nástrojů a pak vyberte **ak
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
-1. Přepněte na kartu **monitorování** . Ověřte, že se zobrazí spuštění kanálu. Vytvoření clusteru Spark trvá přibližně 20 minut. 
+1. Přepněte na kartu **monitorování** . Potvrďte, že se zobrazí spuštění kanálu. Vytvoření clusteru Spark trvá přibližně 20 minut. 
    
 1. Pravidelně klikejte na **Aktualizovat** a kontrolujte stav spuštění kanálu. 
 
@@ -244,7 +240,7 @@ Tento soubor by měl obsahovat všechna slova ze vstupního textového souboru a
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce transformuje data pomocí aktivity Sparku a propojené služby HDInsight na vyžádáni. Naučili jste se tyto postupy: 
+Kanál v této ukázce transformuje data pomocí aktivity Sparku a propojené služby HDInsight na vyžádáni. Naučili jste se: 
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny 

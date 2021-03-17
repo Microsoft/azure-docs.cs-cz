@@ -8,15 +8,15 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135656"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů Hyper-V na zotavení po havárii do Azure
 
-Tento článek popisuje, jak připravit místní infrastrukturu technologie Hyper-V, když chcete nastavit zotavení po havárii virtuálních počítačů Hyper-V do Azure pomocí [Azure Site Recovery](site-recovery-overview.md).
+Tento článek popisuje, jak připravit místní infrastrukturu technologie Hyper-V, když chcete nastavit zotavení po havárii Hyper-VMs do Azure pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 
 Toto je druhý kurz v řadě, ve kterém se dozvíte, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače Hyper-V. V prvním kurzu [nastavíme komponenty Azure](tutorial-prepare-azure.md) potřebné pro zotavení po havárii technologie Hyper-V.

@@ -1,18 +1,15 @@
 ---
 title: Nejčastější dotazy týkající se Apache Kafka ve službě Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se Apache Kafka v Azure HDInsight, spravované cloudové službě Hadoop.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 851d7ceb44d2466ed31e26c1442fde9acea9fd22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80436884"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939091"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Nejčastější dotazy k Apache Kafka ve službě Azure HDInsight
 
@@ -68,7 +65,7 @@ Pokud chcete zvýšit množství volného místa dostupného pro Kafka zprávy, 
 
 ## <a name="can-a-kafka-cluster-work-with-databricks"></a>Může cluster Kafka pracovat s datacihly? 
 
-Ano, clustery Kafka můžou pracovat s datacihly, pokud jsou ve stejné virtuální síti. Pokud chcete použít cluster Kafka s datacihly, vytvořte virtuální síť s clusterem HDInsight Kafka a pak tuto virtuální síť zadejte při vytváření pracovního prostoru datacihly a používání injektáže virtuální sítě. Další informace najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network (vkládání virtuální sítě)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Při vytváření pracovního prostoru datacihly bude nutné zadat názvy zprostředkovatelů spuštění clusteru Kafka. Informace o načtení názvů zprostředkovatelů Kafka najdete v tématu [získání informací o hostiteli Apache Zookeeper a Broker](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo).
+Ano, clustery Kafka můžou pracovat s datacihly, pokud jsou ve stejné virtuální síti. Pokud chcete použít cluster Kafka s datacihly, vytvořte virtuální síť s clusterem HDInsight Kafka a pak tuto virtuální síť zadejte při vytváření pracovního prostoru datacihly a používání injektáže virtuální sítě. Další informace najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network (vkládání virtuální sítě)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Při vytváření pracovního prostoru datacihly bude nutné zadat názvy zprostředkovatelů spuštění clusteru Kafka. Informace o načtení názvů zprostředkovatelů Kafka najdete v tématu [získání informací o hostiteli Apache Zookeeper a Broker](./apache-kafka-get-started.md#getkafkainfo).
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>Jak můžu mít maximální odolnost dat?
 

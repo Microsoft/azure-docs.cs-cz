@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
-ms.openlocfilehash: 6a50faee2d557c39e9bd371caa98a4bcb2016e0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b907eb1f9240156cdb1d9c9cf44d77d4738aff1a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75971876"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135951"
 ---
-Pokud chcete na svém VIRTUÁLNÍm počítači zakázat identitu přiřazenou systémem, nastavte stav identity přiřazené systémem na **vypnuto**. 
+Pokud chcete na svém VIRTUÁLNÍm počítači zakázat identitu přiřazenou systémem, nastavte stav identity přiřazené systémem na **vypnuto** . 
 
-![Vytvoření nového účtu úložiště](./media/active-directory-msi-tut-disable/identity.png)
+![Snímek obrazovky zobrazuje kartu přiřazenou systému pro virtuální počítač, ve kterém můžete vypnout stav přiřazený systému.](./media/active-directory-msi-tut-disable/identity.png)

@@ -7,18 +7,18 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 12/04/2020
 ms.author: erhopf
-ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590634"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032962"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Názvy vlastních subdomén pro Cognitive Services
 
-Azure Cognitive Services pro každý prostředek vytvořený prostřednictvím [Azure Portal](https://portal.azure.com), [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)používá vlastní názvy subdomén. Na rozdíl od regionálních koncových bodů, které byly společné pro všechny zákazníky v konkrétní oblasti Azure, jsou názvy vlastních subdomén pro daný prostředek jedinečné. Pro povolení funkcí, jako je například Azure Active Directory (Azure AD) pro ověřování, jsou vyžadovány názvy vlastních subdomén.
+Azure Cognitive Services pro každý prostředek vytvořený prostřednictvím [Azure Portal](https://portal.azure.com), [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)nebo rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)používá vlastní názvy subdomén. Na rozdíl od regionálních koncových bodů, které byly společné pro všechny zákazníky v konkrétní oblasti Azure, jsou názvy vlastních subdomén pro daný prostředek jedinečné. Pro povolení funkcí, jako je například Azure Active Directory (Azure AD) pro ověřování, jsou vyžadovány názvy vlastních subdomén.
 
 ## <a name="how-does-this-impact-existing-resources"></a>Jak to ovlivní stávající prostředky?
 
@@ -39,7 +39,7 @@ No. Místní koncový bod bude fungovat i nadále pro nové a stávající Cogni
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Co když SDK požádá o oblast pro určitý prostředek?
 
 > [!WARNING]
-> Služba Speech Services v tuto **chvíli nepodporuje vlastní** subdomény. Při použití služeb Speech a přidružených sad SDK prosím použijte místní koncové body.
+> Služba Speech Services používá vlastní subdomény **pouze** s [privátními koncovými body](Speech-Service/speech-services-private-link.md) . Ve všech ostatních případech používají pro služby řeči a přidružené sady SDK **regionální koncové body** .
 
 Místní koncové body a názvy vlastních subdomén jsou podporovány a lze je použít zaměnitelné. Vyžaduje se ale plný koncový bod.
 
@@ -47,7 +47,7 @@ Informace o oblasti jsou k dispozici v okně **Přehled** pro váš prostředek 
 
 ## <a name="are-custom-subdomain-names-regional"></a>Jsou názvy vlastních subdomén regionální?
 
-Yes. Použití vlastního názvu subdomény nemění žádné místní aspekty vašeho prostředku Cognitive Services.
+Ano. Použití vlastního názvu subdomény nemění žádné místní aspekty vašeho prostředku Cognitive Services.
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Jaké jsou požadavky na název vlastní subdomény?
 
@@ -63,40 +63,40 @@ Každý název vlastní subdomény je jedinečný, takže pokud chcete znovu pou
 
 ## <a name="is-there-a-list-of-regional-endpoints"></a>Existuje seznam regionálních koncových bodů?
 
-Yes. Toto je seznam regionálních koncových bodů, které můžete použít s prostředky Azure Cognitive Services.
+Ano. Toto je seznam regionálních koncových bodů, které můžete použít s prostředky Azure Cognitive Services.
 
 > [!NOTE]
 > Služba Translator a rozhraní API pro vyhledávání Bingu používat globální koncové body.
 
 | Typ koncového bodu | Oblast | Koncový bod |
 |---------------|--------|----------|
-| Public | Globální (Translator & Bing) | `https://api.cognitive.microsoft.com` |
+| Veřejná | Globální (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Austrálie – východ | `https://australiaeast.api.cognitive.microsoft.com` |
-| | Brazílie – jih | `https://brazilsouth.api.cognitive.microsoft.com` |
+| | Brazil South | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Střední Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
-| | USA – střed | `https://centralus.api.cognitive.microsoft.com` |
+| | Střední USA | `https://centralus.api.cognitive.microsoft.com` |
 | | Východní Asie | `https://eastasia.api.cognitive.microsoft.com` |
-| | USA – východ | `https://eastus.api.cognitive.microsoft.com` |
+| | East US | `https://eastus.api.cognitive.microsoft.com` |
 | | USA – východ 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Francie – střed | `https://francecentral.api.cognitive.microsoft.com` |
 | | Indie – střed | `https://centralindia.api.cognitive.microsoft.com` |
-| | Japonsko – východ | `https://japaneast.api.cognitive.microsoft.com` |
+| | Japan East | `https://japaneast.api.cognitive.microsoft.com` |
 | | Jižní Korea – střed | `https://koreacentral.api.cognitive.microsoft.com` |
 | | USA – středosever | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Severní Evropa | `https://northeurope.api.cognitive.microsoft.com` |
 | | Jižní Afrika – sever | `https://southafricanorth.api.cognitive.microsoft.com` |
-| | USA – středojih | `https://southcentralus.api.cognitive.microsoft.com` |
-| | Jihovýchodní Asie | `https://southeastasia.api.cognitive.microsoft.com` |
+| | Středojižní USA | `https://southcentralus.api.cognitive.microsoft.com` |
+| | Southeast Asia | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Spojené království – jih | `https://uksouth.api.cognitive.microsoft.com` |
 | | USA – středozápad | `https://westcentralus.api.cognitive.microsoft.com` |
-| | Západní Evropa | `https://westeurope.api.cognitive.microsoft.com` |
+| | West Europe | `https://westeurope.api.cognitive.microsoft.com` |
 | | USA – západ | `https://westus.api.cognitive.microsoft.com` |
-| | USA – západ 2 | `https://westus2.api.cognitive.microsoft.com` |
+| | Západní USA 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | USA (Gov) – Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | Čína | Čína – východ 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Čína – sever | `https://chinanorth.api.cognitive.azure.cn` |
 
 ## <a name="see-also"></a>Viz také
 
-* [Co je Cognitive Services?](Welcome.md)
+* [Co je Cognitive Services?](./what-are-cognitive-services.md)
 * [Authentication](authentication.md)

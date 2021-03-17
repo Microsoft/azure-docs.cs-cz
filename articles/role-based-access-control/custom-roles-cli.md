@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984185"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369136"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI
 
@@ -32,7 +32,7 @@ Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním 
 
 Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoření vlastní role Azure pomocí Azure CLI](tutorial-custom-role-cli.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytvoření vlastních rolí budete potřebovat:
 
@@ -146,7 +146,7 @@ Pokud chcete vytvořit vlastní roli, použijte příkaz [AZ role definice Creat
 az role definition create --role-definition {roleDefinition}
 ```
 
-Následující příklad vytvoří vlastní roli s názvem *operátor virtuálního počítače*. Tato vlastní role přiřadí přístup ke všem operacím čtení pro poskytovatele prostředků *Microsoft. COMPUTE*, *Microsoft. Storage*a *Microsoft. Network* a přiřadí přístup ke spouštění, restartování a monitorování virtuálních počítačů. Tato vlastní role se dá použít ve dvou předplatných. V tomto příkladu se jako vstup používá soubor JSON.
+Následující příklad vytvoří vlastní roli s názvem *operátor virtuálního počítače*. Tato vlastní role přiřadí přístup ke všem operacím čtení pro poskytovatele prostředků *Microsoft. COMPUTE*, *Microsoft. Storage* a *Microsoft. Network* a přiřadí přístup ke spouštění, restartování a monitorování virtuálních počítačů. Tato vlastní role se dá použít ve dvou předplatných. V tomto příkladu se jako vstup používá soubor JSON.
 
 vmoperator.jsna
 
@@ -244,4 +244,4 @@ az role definition delete --name "Virtual Machine Operator"
 
 - [Kurz: Vytvoření vlastní role Azure pomocí Azure CLI](tutorial-custom-role-cli.md)
 - [Vlastní role Azure](custom-roles.md)
-- [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md)
+- [Operace poskytovatele prostředků Azure](resource-provider-operations.md)

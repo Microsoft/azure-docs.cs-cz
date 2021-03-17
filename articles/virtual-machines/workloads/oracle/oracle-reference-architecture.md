@@ -1,23 +1,19 @@
 ---
 title: Referenční architektury pro databáze Oracle v Azure | Microsoft Docs
 description: Odkazuje na architektury pro spouštění Oracle Database Enterprise Edition databází v Microsoft Azure Virtual Machines.
-services: virtual-machines-linux
-author: rgardler
-manager: ''
-tags: ''
+author: dbakevlar
 ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: rogardle
-ms.custom: ''
-ms.openlocfilehash: 8feede515cf7ed861f3219fdf5f4642a33c9e83e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.author: kegorman
+ms.openlocfilehash: 6bce6f011086d9855c4da2739addbb34e661e2d6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690353"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507479"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 
@@ -33,7 +29,7 @@ Pokud vás zajímá více o maximalizaci výkonu vaší databáze Oracle, přeč
 
 ## <a name="high-availability-for-oracle-databases"></a>Vysoká dostupnost pro databáze Oracle
 
-Dosažení vysoké dostupnosti v cloudu je důležitou součástí plánování a návrhu každé organizace. Microsoft Azure nabízí [zóny dostupnosti](../../../availability-zones/az-overview.md) a skupiny dostupnosti (budou použity v oblastech, kde jsou zóny dostupnosti k dispozici). Přečtěte si další informace o [správě dostupnosti virtuálních počítačů](../../../virtual-machines/linux/manage-availability.md) pro návrh pro Cloud.
+Dosažení vysoké dostupnosti v cloudu je důležitou součástí plánování a návrhu každé organizace. Microsoft Azure nabízí [zóny dostupnosti](../../../availability-zones/az-overview.md) a skupiny dostupnosti (budou použity v oblastech, kde jsou zóny dostupnosti k dispozici). Přečtěte si další informace o [správě dostupnosti virtuálních počítačů](../../availability.md) pro návrh pro Cloud.
 
 Kromě nativních nástrojů a nabídek cloudu poskytuje Oracle řešení pro vysokou dostupnost, jako je [Oracle data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), [Ochrana dat s FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [horizontálního dělení](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)a [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) , která se dají nastavit v Azure. Tento průvodce popisuje referenční architektury pro každé z těchto řešení.
 
@@ -43,7 +39,7 @@ Nakonec při migraci nebo vytváření aplikací pro Cloud je důležité upravi
 
 Oracle Real Application cluster (RAC) je řešení od Oracle, které zákazníkům umožňuje dosáhnout vysoké propustnosti tím, že má mnoho instancí přístup k jednomu úložišti databáze (Shared-All Pattern). I když se dá Oracle RAC použít i pro místní vysokou dostupnost, nedá se samotný Oracle RAC použít k zajištění vysoké dostupnosti v cloudu, protože chrání jenom proti selháním na úrovni instance a ne proti selháním na úrovni skříně nebo datového centra. Z tohoto důvodu Oracle doporučuje použít pro vysokou dostupnost databáze Oracle data Guard (bez ohledu na to, jestli jde o jedinou instanci nebo certifikát RAC). Zákazníci obecně vyžadují vysokou smlouvu SLA pro provozování důležitých aplikací. Oracle RAC není v současné době v Azure certifikovaný ani podporovaný. Azure ale nabízí funkce, jako je Azure, nabízí Zóny dostupnosti a plánovaná časová období údržby, která chrání před selháním na úrovni instance. Kromě toho můžou zákazníci využívat technologie, jako je Oracle data Guard, Oracle GoldenGate a Oracle horizontálního dělení pro zajištění vysokého výkonu a odolnosti díky ochraně jejich databází před rackem a i geograficky neznámým selháním.
 
-Při spouštění databází Oracle v různých [zónách dostupnosti](../../../availability-zones/az-overview.md) ve spojení s Oracle data Guard nebo GoldenGate můžou zákazníci získat smlouvu SLA o provozu 99,99%. V oblastech Azure, kde se ještě nevyskytují zóny dostupnosti, můžou zákazníci používat [skupiny dostupnosti](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) a získat smlouvu SLA pro dobu provozu 99,95%.
+Při spouštění databází Oracle v různých [zónách dostupnosti](../../../availability-zones/az-overview.md) ve spojení s Oracle data Guard nebo GoldenGate můžou zákazníci získat smlouvu SLA o provozu 99,99%. V oblastech Azure, kde se ještě nevyskytují zóny dostupnosti, můžou zákazníci používat [skupiny dostupnosti](../../availability-set-overview.md) a získat smlouvu SLA pro dobu provozu 99,95%.
 
 >Poznámka: je možné, že máte cíl provozu, který je mnohem vyšší než smlouva SLA pro dobu provozu poskytovanou společností Microsoft.
 
@@ -71,13 +67,13 @@ Pokud používáte Oracle data Guard, můžete také otevřít sekundární data
 > Aktivní ochrana dat vyžaduje další licencování. Tato licence je také nutná k použití funkce Far Sync. Připojte se k vašemu zástupci Oracle a proberte případné důsledky k licencování.
 
 #### <a name="oracle-data-guard-with-fsfo"></a>Oracle data Guard s FSFO
-Oracle data Guard s rychlým spuštěním převzetí služeb při selhání (FSFO) může zvýšit odolnost nastavením zprostředkovatele na samostatném počítači. Zprostředkovatel ochrany dat a sekundární databáze spouštějí pozorovatele a sledují primární databázi za výpadky. To umožňuje také redundanci v instalaci pozorovatele data Guard. 
+Oracle data Guard s Fast-Start převzetí služeb při selhání (FSFO) může poskytovat další odolnost tím, že na samostatném počítači Nastaví zprostředkovatele. Zprostředkovatel ochrany dat a sekundární databáze spouštějí pozorovatele a sledují primární databázi za výpadky. To umožňuje také redundanci v instalaci pozorovatele data Guard. 
 
 U Oracle Database verze 12,2 a vyšší je také možné nakonfigurovat více pozorovatelů s jednou konfigurací zprostředkovatele ochrany dat Oracle. Tato instalace poskytuje dodatečnou dostupnost v případě výpadku jednoho pozorovatele a sekundárního databázového prostředí. Zprostředkovatel ochrany dat je odlehčený a může být hostovaný na relativně malém virtuálním počítači. Další informace o zprostředkovateli ochrany dat a jeho výhodách najdete v [dokumentaci k Oracle](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) v tomto tématu.
 
 Následující diagram je doporučená architektura pro používání ochrany dat Oracle v Azure se zónami dostupnosti. Tato architektura umožňuje získat smlouvu SLA pro dobu provozu virtuálního počítače 99,99%.
 
-![Oracle Database použití zón dostupnosti s zprostředkovatelem ochrany dat – FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
+![Diagram, který zobrazuje doporučenou architekturu pro používání ochrany dat Oracle v Azure se zónami dostupnosti.](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
 V předchozím diagramu klientský systém přistupuje k vlastní aplikaci pomocí back-endu Oracle přes web. Webový front-end je nakonfigurovaný v nástroji pro vyrovnávání zatížení. Webový front-end provede volání příslušného aplikačního serveru za účelem zpracování práce. Aplikační server se dotazuje na primární databázi Oracle. Databáze Oracle byla nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. Pro výkon a vysokou dostupnost se používá několik disků Premium nebo Ultra (Managed Disks).
 
@@ -152,7 +148,7 @@ Oracle horizontálního dělení se primárně skládá z následujících souč
 
 - **Globální služba** – služba Global Service je podobná běžné databázové službě. Kromě všech vlastností databázové služby má globální služba vlastnosti pro databáze horizontálně dělené, jako je spřažení oblastí mezi klienty a horizontálních oddílů a tolerance prodlevy replikace. Pro čtení a zápis dat do/z databáze horizontálně dělené je potřeba vytvořit jenom jednu globální službu. Při použití Active Data Guard a nastavení replik horizontálních oddílů jen pro čtení můžete vytvořit další službu gGobal pro úlohy jen pro čtení. Klient může tyto globální služby používat pro připojení k databázi.
 
-- Databáze **horizontálních oddílů** – databáze horizontálních oddílů jsou databáze Oracle. Každá databáze se replikuje pomocí ochrany dat Oracle v konfiguraci zprostředkovatele s povoleným rychlým spuštěním převzetí služeb při selhání (FSFO). Pro každou horizontálních oddílů není nutné nastavovat převzetí služeb při selhání ochrany dat a replikaci. Tato konfigurace se automaticky nakonfiguruje a nasadí při vytvoření sdílené databáze. Pokud se konkrétní horizontálních oddílů nepovede, sdílení Oracle při převzetí služeb při selhání připojení databáze z primárního serveru do úsporného režimu automaticky nefunguje.
+- Databáze **horizontálních oddílů** – databáze horizontálních oddílů jsou databáze Oracle. Každá databáze se replikuje pomocí Oracle data Guard v konfiguraci zprostředkovatele s povoleným Fast-Start převzetí služeb při selhání (FSFO). Pro každou horizontálních oddílů není nutné nastavovat převzetí služeb při selhání ochrany dat a replikaci. Tato konfigurace se automaticky nakonfiguruje a nasadí při vytvoření sdílené databáze. Pokud se konkrétní horizontálních oddílů nepovede, sdílení Oracle při převzetí služeb při selhání připojení databáze z primárního serveru do úsporného režimu automaticky nefunguje.
 
 Databáze Oracle horizontálně dělené můžete nasadit a spravovat pomocí dvou rozhraní: Oracle Enterprise Manager Cloud Control GUI nebo `GDSCTL` Nástroj příkazového řádku. Můžete dokonce monitorovat různé horizontálních oddílů pro dostupnost a výkon pomocí řízení cloudu. `GDSCTL DEPLOY`Příkaz automaticky vytvoří horizontálních oddílů a jejich příslušné naslouchací procesy. Tento příkaz kromě toho automaticky nasadí konfiguraci replikace použitou pro vysokou dostupnost na úrovni horizontálních oddílů určenou správcem.
 
@@ -209,18 +205,18 @@ Během počátečního požadavku se aplikační server připojí k horizontáln
 
 ## <a name="patching-and-maintenance"></a>Opravy a údržba
 
-Při nasazování úloh Oracle do Azure se společnost Microsoft postará o všechny opravy na úrovni operačního systému hostitele. Veškerá plánovaná údržba na úrovni operačního systému je zákazníkům předem sdělena, aby umožnila této plánované údržbě zákazníkům. Dva servery ze dvou různých Zóny dostupnosti se nikdy neopravují současně. Další informace o údržbě virtuálních počítačů a opravách najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/linux/manage-availability.md) . 
+Při nasazování úloh Oracle do Azure se společnost Microsoft postará o všechny opravy na úrovni operačního systému hostitele. Veškerá plánovaná údržba na úrovni operačního systému je zákazníkům předem sdělena, aby umožnila této plánované údržbě zákazníkům. Dva servery ze dvou různých Zóny dostupnosti se nikdy neopravují současně. Další informace o údržbě virtuálních počítačů a opravách najdete v tématu [Správa dostupnosti virtuálních počítačů](../../availability.md) . 
 
-Opravy operačního systému virtuálního počítače můžete automatizovat pomocí [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md). Oprava a údržba databáze Oracle může být automatizovaná a naplánovaná pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) nebo [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md) k minimalizaci prostojů. Podívejte se na [průběžné doručování a modré/zelené nasazení](/azure/devops/learn/what-is-continuous-delivery) , které vám pomůžou pochopit, jak se dá používat v kontextu databází Oracle.
+Opravy operačního systému virtuálního počítače můžete automatizovat pomocí [Azure Automation Update Management](../../../automation/update-management/overview.md). Oprava a údržba databáze Oracle může být automatizovaná a naplánovaná pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) nebo [Azure Automation Update Management](../../../automation/update-management/overview.md) k minimalizaci prostojů. Podívejte se na [průběžné doručování a modré/zelené nasazení](/azure/devops/learn/what-is-continuous-delivery) , které vám pomůžou pochopit, jak se dá používat v kontextu databází Oracle.
 
 ## <a name="architecture-and-design-considerations"></a>Požadavky na architekturu a návrh
 
 - Zvažte použití [optimalizovaného paměťového optimalizovaného virtuálního počítače](../../sizes-memory.md) s [omezenými jádry vCPU](../../../virtual-machines/constrained-vcpu.md) pro váš virtuální počítač Oracle Database, který šetří náklady na licencování a maximalizuje výkon. Pro výkon a dostupnost použijte více disků Premium nebo Ultra (spravované disky).
-- Při použití spravovaných disků se může při restartování změnit název disku nebo zařízení. Doporučuje se místo názvu použít UUID zařízení, abyste zajistili, že vaše připojení budou v rámci restartování trvalá. Další informace najdete [tady](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab).
+- Při použití spravovaných disků se může při restartování změnit název disku nebo zařízení. Doporučuje se místo názvu použít UUID zařízení, abyste zajistili, že vaše připojení budou v rámci restartování trvalá. Další informace najdete [tady](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab).
 - Pomocí zón dostupnosti můžete dosáhnout vysoké dostupnosti v oblasti.
 - Zvažte použití disků Ultra (Pokud je k dispozici) nebo prémiových disků pro vaši databázi Oracle.
 - Zvažte nastavení pohotovostní databáze Oracle v jiné oblasti Azure pomocí ochrany dat Oracle.
-- Pokud chcete snížit latenci mezi aplikací a databázovou vrstvou, zvažte použití [skupin umístění blízkosti](../../../virtual-machines/linux/co-location.md#proximity-placement-groups) .
+- Pokud chcete snížit latenci mezi aplikací a databázovou vrstvou, zvažte použití [skupin umístění blízkosti](../../co-location.md#proximity-placement-groups) .
 - Nastavte [podnikového správce Oracle](https://docs.oracle.com/en/enterprise-manager/) pro správu, monitorování a protokolování.
 - Zvažte použití funkce Oracle pro správu úložiště (ASM) pro zjednodušenou správu úložiště pro vaši databázi.
 - Pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) můžete spravovat opravy a aktualizace databáze bez výpadků.
@@ -232,6 +228,6 @@ Projděte si následující články o odkazech Oracle, které se vztahují k va
 
 - [Úvod do Oracle data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Koncepty zprostředkovatele Oracle data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [Konfigurace Oracle GoldenGate pro zajištění vysoké dostupnosti aktivní – aktivní](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [Konfigurace Oracle GoldenGate pro Active-Active vysoké dostupnosti](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Přehled Oracle horizontálního dělení](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Oracle Active Data Guard – vzdálená synchronizace – nulová ztráta dat v libovolné vzdálenosti](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

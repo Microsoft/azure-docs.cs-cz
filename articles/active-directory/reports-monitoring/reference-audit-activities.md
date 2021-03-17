@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80891505"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89231142"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
@@ -35,8 +35,8 @@ Architektura generování sestav v Azure AD se skládá z následujících kompo
     - [Protokoly auditu](concept-audit-logs.md) – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. 
     
 - **Sestavy zabezpečení** 
-    - [Riziková přihlášení](concept-risky-sign-ins.md) – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
-    - [Uživatelé označení příznakem rizika](concept-user-at-risk.md) – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
+    - [Riziková přihlášení](../identity-protection/overview-identity-protection.md) – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+    - [Uživatelé označení příznakem rizika](../identity-protection/overview-identity-protection.md) – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
 Tento článek obsahuje seznam aktivit auditování, které můžete protokolovat v protokolech auditu.
 
@@ -474,7 +474,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa uživatelů|Přidání role ze šablony|
 |Správa uživatelů|Přidání vymezeného člena do role|
 |Správa uživatelů|Přidáno|
-|Správa uživatelů|Přiřazení|
+|Správa uživatelů|Přiřadit|
 |Správa uživatelů|Hromadné vytvoření uživatelů – spuštěné|
 |Správa uživatelů|Hromadné vytvoření uživatelů – dokončeno|
 |Správa uživatelů|Hromadné odstranění uživatelů – spuštěné|
@@ -558,7 +558,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |PIM|ActivationRequested|
 |PIM|Přidáno|
 |PIM|AddedOutsidePIM|
-|PIM|Přiřazení|
+|PIM|Přiřadit|
 |PIM|DismissAlert|
 |PIM|Zvýšení oprávnění|
 |PIM|ReactivateAlert|

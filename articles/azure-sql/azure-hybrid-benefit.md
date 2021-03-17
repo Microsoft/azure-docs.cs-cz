@@ -9,14 +9,14 @@ ms.custom: sqldbrb=4
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/13/2019
-ms.openlocfilehash: b4af9fce3c5ca779866055d2835ebfebe9fbb9cf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.reviewer: sashan, moslake
+ms.date: 02/16/2021
+ms.openlocfilehash: f1761851f91e6d0c0aadb3315dbb7980a00bba5b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987004"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633814"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Zvýhodněné hybridní využití Azure-Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCo
 > [!NOTE]
 > Změna na Zvýhodněné hybridní využití Azure nevyžaduje žádné výpadky.
 
-![stanov](./media/azure-hybrid-benefit/pricing.png)
+![cenová struktura Vcore](./media/azure-hybrid-benefit/pricing.png)
 
 ## <a name="choose-a-license-model"></a>Zvolit model licence
 
@@ -85,12 +85,12 @@ Zvýhodněné hybridní využití Azure pro SQL Server se liší od mobility lic
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Jaká jsou specifická práva Zvýhodněné hybridní využití Azure pro SQL Server?
 
-Zákazníci SQL Database mají pro SQL Server k Zvýhodněné hybridní využití Azure přidružená tato práva:
+Zákazníci s SQL Database a SQL spravované instance mají pro SQL Server přidružená následující práva k Zvýhodněné hybridní využití Azureám:
 
 |Nároky na licenci|K čemu Zvýhodněné hybridní využití Azure SQL Server získat přístup?|
 |---|---|
-|Zákazníci se základními edicemi SQL Server Enterprise s SA|<li>Může platit základní sazba pro Pro obecné účely nebo Pro důležité obchodní informace SKLADOVOU položku.</li><br><li>1 jádro v místním prostředí = 4 jádra v Pro obecné účely SKU</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro důležité obchodní informace SKU</li>|
-|Zákazníci se základními edicemi SQL Server Standard s SA|<li>Může platit základní sazba jenom pro Pro obecné účely SKU.</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro obecné účely SKU</li>|
+|Zákazníci se základními edicemi SQL Server Enterprise s SA|<li>Může platit základní sazba na úrovni Pro obecné účely nebo SKU Pro důležité obchodní informace.</li><br><li>1 jádro v místním prostředí = 4 jádra v SKU s škálovatelným škálováním</li><br><li>1 jádro v místním prostředí = 4 jádra v Pro obecné účely SKU</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro důležité obchodní informace SKU</li>|
+|Zákazníci se základními edicemi SQL Server Standard s SA|<li>Může platit základní sazba na úrovni Pro obecné účely nebo SKU Pro důležité obchodní informace.</li><br><li>1 jádro v místním prostředí = 1 jádro v SKU s škálovatelným škálováním</li><br><li>1 jádro v místním prostředí = 1 jádro v Pro obecné účely SKU</li><br><li>4 jádro v místním prostředí = 1 jádro v Pro důležité obchodní informace SKU</li>|
 |||
 
 

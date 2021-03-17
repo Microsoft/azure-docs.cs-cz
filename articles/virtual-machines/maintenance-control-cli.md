@@ -3,22 +3,23 @@ title: Řízení údržby pro virtuální počítače Azure pomocí rozhraní p�
 description: Naučte se řídit, kdy se na virtuální počítače Azure použije údržba pomocí řízení údržby a CLI.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/20/2020
+ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9425759de1e08bc83cac80cd1b56c602edb59fb1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675855"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562958"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Řízení aktualizací pomocí řízení údržby a Azure CLI
 
-Řízení údržby vám umožní určit, kdy se mají aktualizace použít pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti rozhraní příkazového řádku Azure CLI pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
+Řízení údržby vám umožní určit, kdy se mají použít aktualizace platforem pro hostování infrastruktury pro izolované virtuální počítače a vyhrazené hostitele Azure. Toto téma popisuje možnosti rozhraní příkazového řádku Azure CLI pro řízení údržby. Další informace o výhodách použití řízení údržby, jejich omezení a dalších možností správy najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](maintenance-control.md).
 
-## <a name="create-a-maintenance-configuration"></a>Vytvořit konfiguraci údržby
+## <a name="create-a-maintenance-configuration"></a>Vytvoření konfigurace údržby
 
 Použijte `az maintenance configuration create` k vytvoření konfigurace údržby. Tento příklad vytvoří konfiguraci údržby s názvem *myConfig* s oborem názvů hostitele. 
 
@@ -28,22 +29,46 @@ az group create \
    --name myMaintenanceRG
 az maintenance configuration create \
    -g myMaintenanceRG \
-   --name myConfig \
-   --maintenanceScope host\
+   --resource-name myConfig \
+   --maintenance-scope host\
    --location eastus
 ```
 
 Zkopírujte ID konfigurace z výstupu pro pozdější použití.
 
-Pomocí nástroje `--maintenanceScope host` je zajištěno, že se konfigurace údržby používá pro řízení aktualizací hostitele.
+Pomocí nástroje `--maintenance-scope host` je zajištěno, že se konfigurace údržby používá pro řízení aktualizací infrastruktury hostitele.
 
-Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurace musí být pro vaše předplatné jedinečné.
+Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurace musí být pro vaši skupinu prostředků jedinečné.
 
 K dostupným konfiguracím údržby se můžete dotázat pomocí `az maintenance configuration list` .
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Vytvoření konfigurace údržby pomocí plánovaného okna
+Můžete také deklarovat naplánované okno, když Azure použije aktualizace vašich prostředků. Tento příklad vytvoří konfiguraci údržby s názvem myConfig s plánovaným oknem 5 hodin ve čtvrtém pondělí každého měsíce. Po vytvoření naplánovaného okna už aktualizace nemusíte instalovat ručně.
+
+```azurecli-interactive
+az maintenance configuration create \
+   -g myMaintenanceRG \
+   --resource-name myConfig \
+   --maintenance-scope host \
+   --location eastus \
+   --maintenance-window-duration "05:00" \
+   --maintenance-window-recur-every "Month Fourth Monday" \
+   --maintenance-window-start-date-time "2020-12-30 08:00" \
+   --maintenance-window-time-zone "Pacific Standard Time"
+```
+
+> [!IMPORTANT]
+> **Doba trvání** údržby musí být *2 hodiny* nebo déle. **Opakování** údržby musí být nastavené na nejméně jednou za 35 dní.
+
+Opakování údržby může být vyjádřeno jako denní, týdenní nebo měsíční. Tady je několik příkladů:
+- **denní** údržba – okno – opakování – každé: "den" **nebo** "3Days"
+- **týdenní**– údržba – okno – opakování – každé: "3Weeks" **nebo** "týden sobotu, neděle"
+- **měsíčně**– údržba – okno – opakování – každé: "měsíc day23, day24" **nebo** "Month Last neděle" **nebo** "Month čtvrté pondělí"
+
 
 ## <a name="assign-the-configuration"></a>Přiřazení konfigurace
 
@@ -251,7 +276,7 @@ Slouží `az maintenance configuration delete` k odstranění konfigurace údrž
 az maintenance configuration delete \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
    -g myResourceGroup \
-   --name myConfig
+   --resource-name myConfig
 ```
 
 ## <a name="next-steps"></a>Další kroky

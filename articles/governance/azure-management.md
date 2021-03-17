@@ -1,14 +1,14 @@
 ---
 title: Přehled správy Azure – zásady správného řízení Azure
 description: Přehled oblastí správy pro aplikace a prostředky Azure s odkazy na obsah v nástrojích pro správu Azure.
-ms.date: 07/06/2020
+ms.date: 02/05/2021
 ms.topic: overview
-ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041910"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593921"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Co jsou oblasti správy Azure?
 
@@ -18,20 +18,22 @@ Termín správa označuje úlohy a procesy nezbytné pro udržování obchodníc
 
 Následující diagram ukazuje různé oblasti správy, které jsou nutné k údržbě libovolné aplikace nebo prostředku. Tyto různé oblasti si můžete představit jako životní cyklus. Každá oblast je požadována při nepřetržitém pokusům o životnosti prostředku. Tento životní cyklus prostředků začíná počátečním nasazením, prostřednictvím pokračování operace a nakonec po vyřazení.
 
-:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Disciplíny správy v Azure" border="false":::
+:::image type="complex" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Diagram pravidel správy v Azure." border="false":::
+   Diagram znázorňující migraci, zabezpečení, ochranu, monitorování, konfiguraci a řízení prvků kolečka služeb, které podporují správu a řízení v Azure. Zabezpečení má za podřízenými položkami zabezpečení a ochranu před hrozbami. Ochrana má zálohování a zotavení po havárii jako dílčí položky. Monitorování má aplikace, infrastrukturu a monitorování sítě a Log Analytics a diagnostiku jako dílčí položky. Konfigurace má konfiguraci, správu aktualizací, automatizaci a skriptování jako dílčí položky. A řídí se správou zásad a správou nákladů jako dílčí položky.
+:::image-end:::
 
 Žádná jediná služba Azure zcela neplní požadavky určité oblasti správy. Místo toho jsou všechny realizovány několika službami současně. Některé služby, například Application Insights, poskytují cílené funkce monitorování webových aplikací. Ostatní, jako jsou protokoly Azure Monitor, ukládají data správy pro další služby. Tato funkce umožňuje analyzovat data různých typů shromažďovaných různými službami.
 
 Následující části stručně popisují různé oblasti správy a poskytují odkazy na podrobný obsah věnovaný hlavním službám Azure, které jsou určené k jejich řešení.
 
-## <a name="monitor"></a>Monitorování
+## <a name="monitor"></a>Monitor
 
 Monitorování je proces shromažďování a analýzy dat pro audit výkonu, stavu a dostupnosti vašich prostředků. Efektivní strategie monitorování vám pomůže pochopit fungování komponent a zvýšit dobu provozu pomocí oznámení. Přečtěte si přehled monitorování, které pokrývá různé služby používané při [monitorování aplikací a prostředků Azure](../azure-monitor/overview.md).
 
 ## <a name="configure"></a>Konfigurace
 
 Konfigurace odkazuje na počáteční nasazení a konfiguraci prostředků a průběžnou údržbu.
-Automatizace těchto úloh vám umožní eliminovat redundanci, minimalizovat čas a úsilí a zvýšit přesnost a efektivitu. [Azure Automation](../automation/automation-intro.md) poskytuje převážnou část služeb pro automatizaci úloh konfigurace. Zatímco Runbooky zpracovávají automatizaci procesů, konfiguraci a správu aktualizací pomáhají při správě konfigurace.
+Automatizace těchto úloh vám umožní eliminovat redundanci, minimalizovat čas a úsilí a zvýšit přesnost a efektivitu. [Azure Automation](../automation/automation-intro.md) poskytuje převážnou část služeb pro automatizaci úloh konfigurace. I když Runbooky zpracovávají automatizaci procesů, konfigurace a správa aktualizací vám pomůžou spravovat konfiguraci.
 
 ## <a name="govern"></a>Řízení
 
@@ -42,13 +44,13 @@ Tato funkce udržuje tyto prostředky v souladu s vašimi podnikovými standardy
 
 ## <a name="secure"></a>Zabezpečení
 
-Spravujte zabezpečení svých prostředků a dat. Bezpečnostní program zahrnuje hodnocení hrozeb, shromažďování a analýzy dat a kompatibilitu vašich aplikací a prostředků. Monitorování zabezpečení a analýza hrozeb poskytuje [Azure Security Center](../security-center/security-center-intro.md), což zahrnuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudy. Podrobné informace a pokyny k zabezpečení prostředků Azure najdete v tématu [Úvod do zabezpečení Azure](../security/fundamentals/overview.md) .
+Spravujte zabezpečení svých prostředků a dat. Bezpečnostní program zahrnuje hodnocení hrozeb, shromažďování a analýzy dat a kompatibilitu vašich aplikací a prostředků. Monitorování zabezpečení a analýza hrozeb poskytuje [Azure Security Center](../security-center/security-center-introduction.md), což zahrnuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudy. Podrobné informace a pokyny k zabezpečení prostředků Azure najdete v tématu [Úvod do zabezpečení Azure](../security/fundamentals/overview.md) .
 
 ## <a name="protect"></a>Ochrana
 
 Ochrana znamená, že vaše aplikace a data budou k dispozici, a to i s výpadky, které jsou mimo vaši kontrolu. Ochranu v Azure zajišťují dvě služby. [Azure Backup](../backup/backup-overview.md) zajišťuje zálohování a obnovení vašich dat, a to v cloudu i v místním prostředí. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) zajišťuje kontinuitu podnikových aplikací a okamžité obnovení při havárii.
 
-## <a name="migrate"></a>Migrace
+## <a name="migrate"></a>Migrate
 
 Migrace označuje přenos úloh, které jsou aktuálně spuštěné v místním prostředí, do cloudu Azure.
 [Azure Migrate](../migrate/migrate-services-overview.md) je služba, která vám pomůže vyhodnotit vhodnost migrace místních virtuálních počítačů do Azure. Azure Site Recovery migruje virtuální počítače [z místního](../site-recovery/migrate-tutorial-on-premises-azure.md) prostředí nebo [z Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md). [Azure Database Migration](../dms/dms-overview.md) vám pomůže při migraci zdrojů databáze na datové platformy Azure.

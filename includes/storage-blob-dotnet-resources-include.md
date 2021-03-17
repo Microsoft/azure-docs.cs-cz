@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8ca4b1ce6e0470476e9f16ed338b8707d3faf90f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79128890"
 ---
 ## <a name="resources-for-development-with-net"></a>Prostředky pro vývoj s využitím .NET
@@ -31,7 +31,7 @@ Odkazy níže poskytují užitečné prostředky pro vývojáře pomocí Azure S
 - [Zdrojový kód knihovny](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 - [Package (NuGet) pro verzi 11. x](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 - [Package (NuGet) pro verzi 12. x](https://www.nuget.org/packages/Azure.Storage.Blobs)
-- [Ukázky](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+- [ukázky](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 ### <a name="net-tools"></a>Nástroje .NET
 

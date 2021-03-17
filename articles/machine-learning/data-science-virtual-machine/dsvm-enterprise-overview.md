@@ -4,25 +4,24 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Vzory pro nasazení Data Science VM v podnikovém týmovém prostředí.
 keywords: obsáhlý Learning, AI, nástroje pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 28dea7c28f47a9850486877571672cbd717e9f1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87919935"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596769"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Team Analytics a prostředí AI založené na Data Science Virtual Machine 
 [Data Science Virtual Machine](overview.md) (DSVM) poskytuje bohatý prostředí na platformě Azure s předem připraveným softwarem pro umělou Intelligence (AI) a analýzou dat.
 
 Tradičně se DSVM použil jako individuální analytická plocha. Tato sdílená a předem sestavená analytická prostředí získávají jednotlivá specialista na data. Jelikož týmy pro velké analýzy plánují prostředí pro odborníky na data a pro vývojáře AI, je jedním z opakovaných motivů sdílená analytická infrastruktura pro vývoj a experimentování. Tato infrastruktura se spravuje v souladu s podnikovými zásadami IT, která také usnadňuje spolupráci a konzistenci napříč týmy pro datové vědy a analýzy.
 
-Sdílená infrastruktura umožňuje lepší využití IT prostředí pro analýzu. Některé organizace volají v rámci *analytického izolovaného prostoru*pro datové vědy a analytické infrastruktury. Umožňuje pracovníkům dat přistupovat k různým datovým assetům a rychle pochopit data. Toto prostředí izolovaného prostoru také pomáhá pracovníkům dat provádět experimenty, ověřovat hypotézy a sestavovat prediktivní modely, aniž by to ovlivnilo produkční prostředí.
+Sdílená infrastruktura umožňuje lepší využití IT prostředí pro analýzu. Některé organizace volají v rámci *analytického izolovaného prostoru* pro datové vědy a analytické infrastruktury. Umožňuje pracovníkům dat přistupovat k různým datovým assetům a rychle pochopit data. Toto prostředí izolovaného prostoru také pomáhá pracovníkům dat provádět experimenty, ověřovat hypotézy a sestavovat prediktivní modely, aniž by to ovlivnilo produkční prostředí.
 
 Vzhledem k tomu, že DSVM funguje na úrovni infrastruktury Azure, správci IT můžou snadno nakonfigurovat DSVM tak, aby fungoval v souladu se zásadami IT v podniku. DSVM nabízí plnou flexibilitu při implementaci různých architektur sdílení a zároveň nabízí přístup k podnikovým datovým prostředkům řízeným způsobem.
 
@@ -37,13 +36,13 @@ Mezi klíčové stavební bloky prostředí Enterprise Team Analytics patří:
 
 Tato série poskytuje pokyny a ukazatele pro každé z předchozích témat. Nezabývá se všemi důležitými informacemi a požadavky pro nasazení DSVMs ve velkých podnikových konfiguracích. Tady jsou některé další prostředky Azure, které můžete použít při implementaci DSVM instancí v podniku:
 
-* [Zabezpečení sítě](https://docs.microsoft.com/azure/security/fundamentals/network-security)
-* [Monitorování](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) a [Správa](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [Protokolování a auditování](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Zabezpečení sítě](../../security/fundamentals/network-overview.md)
+* [Monitorování](../../azure-monitor/vm/monitor-vm-azure.md) a [Správa](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Protokolování a auditování](../../security/fundamentals/log-audit.md)
+* [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Nastavení zásad a vynucení](../../governance/policy/overview.md)
-* [antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [Šifrování](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
-* [Zjišťování a řízení dat](https://docs.microsoft.com/azure/data-catalog/)
+* [antimalware](../../security/fundamentals/antimalware.md)
+* [Šifrování](../../virtual-machines/windows/disk-encryption-overview.md)
+* [Zjišťování a řízení dat](../../data-catalog/index.yml)
 
-A konečně [cetrum architektury Azure](https://docs.microsoft.com/azure/architecture/) poskytuje detailní ucelenou architekturu a modely pro sestavování a správu cloudové infrastruktury pro analýzu.
+A konečně [cetrum architektury Azure](/azure/architecture/) poskytuje detailní ucelenou architekturu a modely pro sestavování a správu cloudové infrastruktury pro analýzu.

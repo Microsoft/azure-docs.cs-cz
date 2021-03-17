@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 2a986afa1916d179834c516a26f76a2789f82452
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: cc400922115f348090677661cd1b30434be19b72
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511883"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910470"
 ---
 # <a name="monitor-azure-data-share"></a>Monitorování služby Azure Data Share  
 
@@ -36,13 +36,13 @@ Existují tři stavy, ve kterých může být vaše Pozvánka:
 
 ## <a name="monitor-share-subscriptions"></a>Monitorování předplatných sdílení
 
-Projděte si stav vašich předplatných sdílení tak, že přejdete na odeslané sdílené složky – > sdílet předplatná. Tím získáte podrobnosti o aktivních předplatných vytvořených vašimi příjemci dat po přijetí pozvánky. Budoucí aktualizace svého příjemce dat můžete zastavit výběrem položky sdílet předplatné a výběrem možnosti *odvolat*. 
+Projděte si stav vašich předplatných sdílení tak, že přejdete na odeslané sdílené složky – > sdílet předplatná. Tím získáte podrobnosti o aktivních předplatných vytvořených vašimi příjemci dat po přijetí pozvánky. Budoucí aktualizace svého příjemce dat můžete zastavit výběrem položky sdílet předplatné a výběrem možnosti *odvolat* . 
 
 ## <a name="snapshot-history"></a>Historie snímků 
 
 Na kartě **Historie** sdílené složky můžete zobrazit, kdy se data zkopírují z poskytovatele dat do úložiště dat příjemce dat. Můžete monitorovat četnost, dobu trvání a stav každého snímku. 
 
-![Historie snímků](./media/sent-shares.png "Historie snímků") 
+![Snímek obrazovky ukazuje odeslané sdílené složky v Azure Portal.](./media/sent-shares.png "Historie snímků") 
 
 Další podrobnosti o každém spuštění snímku můžete zobrazit kliknutím na datum zahájení spuštění. Pak kliknutím na stav pro každou datovou sadu zobrazíte množství přenesených dat, počet kopírovaných souborů nebo záznamů, dobu trvání snímku, počet použitých virtuální jádra a chybové zprávy, pokud existuje. 
 
@@ -50,9 +50,9 @@ Zobrazí se až 30 dní historie snímků. Pokud potřebujete uložit a Zobrazit
 
 ## <a name="diagnostic-setting"></a>Nastavení diagnostiky
 
-Nastavení diagnostiky můžete nakonfigurovat tak, aby ušetřilo data protokolu nebo události. Přejděte na monitorování – nastavení diagnostiky > a vyberte **Přidat nastavení diagnostiky**. Vyberte data protokolu nebo události, které vás zajímají, a kam je chcete uložit nebo odeslat. 
+Nastavení diagnostiky můžete nakonfigurovat tak, aby ušetřilo data protokolu nebo události. Přejděte na monitorování – nastavení diagnostiky > a vyberte **Přidat nastavení diagnostiky** . Vyberte data protokolu nebo události, které vás zajímají, a kam je chcete uložit nebo odeslat. 
 
-![Historie snímků](./media/diagnostic-settings.png "Nastavení diagnostiky") 
+![Snímek obrazovky ukazuje stránku nastavení diagnostiky v Azure Portal.](./media/diagnostic-settings.png "Nastavení diagnostiky") 
 
 ## <a name="next-steps"></a>Další kroky 
 

@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Na nejčastějších dotazech se můžete podívat, když ve službě Azure Kubernetes Service (AKS) spouštíte fondy uzlů Windows serveru a úlohy aplikací.
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 10/12/2020
+ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927547"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739572"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Nejčastější dotazy týkající se fondů uzlů Windows serveru v AKS
 
@@ -54,11 +54,13 @@ Chcete-li získat nejnovější opravy pro uzly systému Windows, můžete buď 
 
 Clustery AKS s fondy uzlů Windows musí používat síťový model Azure CNI (rozšířené). Kubenet (základní) sítě se nepodporují. Další informace o rozdílech v síťových modelech najdete v tématu [Koncepty sítě pro aplikace v AKS][azure-network-models]. Model sítě Azure CNI vyžaduje další plánování a předpoklady pro správu IP adres. Další informace o plánování a implementaci Azure CNI najdete v tématu [Konfigurace sítě Azure CNI v AKS][configure-azure-cni].
 
+V uzlech systému Windows v clusterech AKS je také povoleno [přímé vrácení serveru (DSR)][dsr] ve výchozím nastavení, pokud je povolená možnost Calico.
+
 ## <a name="is-preserving-the-client-source-ip-supported"></a>Zachovává se podpora zdrojové IP adresy klienta?
 
 V současné době [zachování IP adresy zdrojového klienta][client-source-ip] není u uzlů Windows podporováno.
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>Můžu změnit maximum. počet lusků na uzel?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Můžu změnit max. # lusků na uzel?
 
 Ano. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
 
@@ -91,7 +93,7 @@ Název musí být delší než 6 (šest) znaků. Toto je aktuální omezení AKS
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Jsou všechny funkce podporované uzly Windows?
 
-Zásady sítě a kubenet se v tuto chvíli nepodporují s uzly Windows.
+Kubenet se v tuto chvíli nepodporuje u uzlů Windows.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Můžu spustit řadiče příchozího přenosu dat v uzlech Windows?
 
@@ -112,6 +114,49 @@ Ano, můžete ale Azure Monitor ve verzi Public Preview pro shromažďování pr
 ## <a name="are-there-any-limitations-on-the-number-of-services-on-a-cluster-with-windows-nodes"></a>Existují nějaká omezení počtu služeb v clusteru s uzly Windows?
 
 Cluster s uzly Windows může mít přibližně 500 služeb před tím, než dojde k vyčerpání portů.
+
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>Můžu použít Zvýhodněné hybridní využití Azure s uzly Windows?
+
+Ano. Zvýhodněné hybridní využití Azure pro Windows Server snižuje provozní náklady tím, že vám umožní převést místní licenci Windows serveru na AKS uzly Windows.
+
+Zvýhodněné hybridní využití Azure lze použít na celém clusteru AKS nebo na jednotlivých uzlech. Pro jednotlivé uzly je potřeba přejít do [skupiny prostředků uzlu][resource-groups] a použít zvýhodněné hybridní využití Azure na uzly přímo. Další informace o použití Zvýhodněné hybridní využití Azure u jednotlivých uzlů najdete v tématu [zvýhodněné hybridní využití Azure pro Windows Server][hybrid-vms]. 
+
+Pokud chcete použít Zvýhodněné hybridní využití Azure na novém clusteru AKS, použijte `--enable-ahub` argument.
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+Pokud chcete použít Zvýhodněné hybridní využití Azure v existujícím clusteru AKS, aktualizujte cluster pomocí `--enable-ahub` argumentu.
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+Chcete-li zjistit, zda je v clusteru nastavena Zvýhodněné hybridní využití Azure, použijte následující příkaz:
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+Pokud je cluster Zvýhodněné hybridní využití Azure povolený, výstup `az vmss show` bude podobný následujícímu:
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
 
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Můžu použít webový řídicí panel Kubernetes s kontejnery Windows?
 
@@ -146,9 +191,12 @@ Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, 
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
-[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[azure-monitor]: ../azure-monitor/containers/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
 [client-source-ip]: concepts-network.md#ingress-controllers
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

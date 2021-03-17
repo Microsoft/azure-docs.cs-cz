@@ -1,37 +1,37 @@
 ---
-title: Přidání a volání Azure Functions z Azure Logic Apps
-description: Volání a spouštění vlastního kódu v Azure Functions z automatizovaných úloh a pracovních postupů v Azure Logic Apps
+title: Přidání a volání funkcí z Azure Logic Apps
+description: Pomocí automatizovaných úloh a pracovních postupů v Azure Logic Apps volejte a spouštějte vlastní kód ve funkcích provedených v Azure.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e853255f0fc1bc95a4a7fb1658fc41d4fe705c41
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420052"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791875"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>Volání funkcí Azure Functions z Azure Logic Apps
+# <a name="call-functions-from-azure-logic-apps"></a>Volat funkce z Azure Logic Apps
 
-Pokud chcete spustit kód, který provádí určitou úlohu ve svých aplikacích logiky, můžete vytvořit vlastní funkci pomocí [Azure Functions](../azure-functions/functions-overview.md). Tato služba pomáhá vytvářet funkce Node.js, C# a F#, takže nemusíte vytvářet kompletní aplikaci nebo infrastrukturu pro spouštění kódu. [V rámci služby Azure Functions můžete také volat Logic Apps](#call-logic-app). Azure Functions poskytuje výpočetní prostředí bez serveru v cloudu a je užitečné pro provádění úloh, jako jsou tyto příklady:
+Pokud chcete spustit kód, který provádí určitou úlohu ve svých aplikacích logiky, můžete vytvořit vlastní funkci pomocí [Azure Functions](../azure-functions/functions-overview.md). Tato služba pomáhá vytvářet funkce Node.js, C# a F#, takže nemusíte vytvářet kompletní aplikaci nebo infrastrukturu pro spouštění kódu. Můžete také [volat Logic Apps z uvnitř funkcí](#call-logic-app). Azure Functions poskytuje výpočetní prostředí bez serveru v cloudu a je užitečné pro provádění úloh, jako jsou tyto příklady:
 
 * Rozšíří chování aplikace logiky pomocí funkcí v Node.js nebo C#.
 * V pracovním postupu aplikace logiky proveďte výpočty.
 * Použijte Rozšířené formátování nebo výpočetní pole ve vašich aplikacích logiky.
 
-Chcete-li spustit fragmenty kódu bez vytváření Azure Functions, přečtěte si, jak [Přidat a spustit vložený kód](../logic-apps/logic-apps-add-run-inline-code.md).
+Chcete-li spustit fragmenty kódu bez použití Azure Functions, přečtěte si, jak [Přidat a spustit vložený kód](../logic-apps/logic-apps-add-run-inline-code.md).
 
 > [!NOTE]
 > Integrace mezi Logic Apps a Azure Functions v současnosti nefunguje s povolenými sloty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Azure Function App, což je kontejner pro Azure Functions, společně s funkcí Azure Functions. Pokud nemáte aplikaci Function App, [vytvořte nejdřív aplikaci Function App](../azure-functions/functions-create-first-azure-function.md). Pak můžete vytvořit svou funkci buď mimo vaši aplikaci logiky, v Azure Portal, nebo [z aplikace logiky](#create-function-designer) v návrháři aplikace logiky.
+* Aplikace Function App, která je kontejnerem pro funkci vytvořenou v Azure Functions společně s funkcí, kterou vytvoříte. Pokud nemáte aplikaci Function App, [vytvořte nejdřív aplikaci Function App](../azure-functions/functions-get-started.md). Pak můžete vytvořit svou funkci buď mimo vaši aplikaci logiky, v Azure Portal, nebo [z aplikace logiky](#create-function-designer) v návrháři aplikace logiky.
 
 * Při práci s Logic Apps platí stejné požadavky i pro aplikace Function App a funkce bez ohledu na to, jestli jsou existující nebo nové:
 
@@ -41,7 +41,7 @@ Chcete-li spustit fragmenty kódu bez vytváření Azure Functions, přečtěte 
 
   * Vaše funkce používá šablonu **triggeru http** .
 
-    Šablona triggeru HTTP může přijmout obsah, který je `application/json` typu z vaší aplikace logiky. Když do aplikace logiky přidáte funkci Azure Functions, návrhář aplikace logiky zobrazí vlastní funkce, které jsou vytvořeny z této šablony v rámci vašeho předplatného Azure.
+    Šablona triggeru HTTP může přijmout obsah, který je `application/json` typu z vaší aplikace logiky. Když do aplikace logiky přidáte funkci, návrhář aplikace logiky zobrazí vlastní funkce, které jsou vytvořeny z této šablony v rámci vašeho předplatného Azure.
 
   * Vaše funkce nepoužívá vlastní trasy, pokud jste nedefinovali [definici openapi](../azure-functions/functions-openapi-definition.md) (dříve označovanou jako [soubor Swagger](https://swagger.io/)).
 
@@ -65,7 +65,7 @@ Pro rozsáhlejší prostředí při práci s parametry funkcí v Návrháři Log
 
       ![Výběr aplikace Function App > "funkce platformy" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. V části **CORS**přidejte zástupný znak hvězdičky ( **`*`** ), ale odeberte všechny ostatní počáteky v seznamu a vyberte **Uložit**.
+   1. V části **CORS** přidejte zástupný znak hvězdičky ( **`*`** ), ale odeberte všechny ostatní počáteky v seznamu a vyberte **Uložit**.
 
       ![Nastavte CORS * na zástupný znak *.](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
@@ -96,15 +96,15 @@ Tady je to, co se děje uvnitř této funkce:
    body: data.date.ToDateString();
    ```
 
-Teď, když jste vytvořili funkci Azure Functions, postupujte podle pokynů pro [Přidání funkcí do Logic Apps](#add-function-logic-app).
+Teď, když jste vytvořili funkci v Azure, postupujte podle pokynů pro [Přidání funkcí do Logic Apps](#add-function-logic-app).
 
 <a name="create-function-designer"></a>
 
 ## <a name="create-functions-inside-logic-apps"></a>Vytváření funkcí v Logic Apps
 
-Azure Functions můžete vytvořit přímo z pracovního postupu aplikace logiky pomocí předdefinované Azure Functions akce v návrháři aplikace logiky, ale tuto metodu můžete použít jenom pro služby Azure Functions napsané v JavaScriptu. Pro jiné jazyky můžete Azure Functions vytvořit prostřednictvím Azure Functionsho prostředí v Azure Portal. Další informace najdete v tématu [Vytvoření první funkce v Azure Portal](../azure-functions/functions-create-first-azure-function.md).
+Můžete vytvořit funkce přímo z pracovního postupu aplikace logiky pomocí předdefinované Azure Functions akce v návrháři aplikace logiky, ale tuto metodu lze použít pouze pro funkce napsané v jazyce JavaScript. Pro jiné jazyky můžete vytvářet funkce prostřednictvím Azure Functionsho prostředí v Azure Portal. Další informace najdete v tématu [Vytvoření první funkce v Azure Portal](../azure-functions/functions-get-started.md).
 
-Než ale budete moct vytvořit libovolnou funkci Azure Functions, musíte už mít aplikaci funkcí Azure, což je kontejner pro vaše funkce. Pokud nemáte aplikaci Function App, vytvořte nejprve tuto aplikaci Function App. Další informace najdete [v tématu Vytvoření první funkce v Azure Portal](../azure-functions/functions-create-first-azure-function.md).
+Než ale budete moct vytvořit funkci v Azure, musíte už mít aplikaci funkcí, což je kontejner pro vaše funkce. Pokud nemáte aplikaci Function App, vytvořte nejprve tuto aplikaci Function App. Další informace najdete [v tématu Vytvoření první funkce v Azure Portal](../azure-functions/functions-get-started.md).
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
@@ -116,9 +116,9 @@ Než ale budete moct vytvořit libovolnou funkci Azure Functions, musíte už m�
 
 1. Do vyhledávacího pole zadejte jako filtr "Azure Functions". V seznamu akce vyberte akci **Azure Function** , například:
 
-   ![Najít Azure Functions](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![Najít funkce v Azure Portal.](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. V seznamu aplikace Function App vyberte svou aplikaci Function App. Po otevření seznamu akcí vyberte tuto akci: **vytvořit novou funkci** .
+1. V seznamu aplikace Function App vyberte svou aplikaci Function App. Po otevření seznamu akcí vyberte tuto akci: **vytvořit novou funkci**.
 
    ![Výběr aplikace Function App](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -128,11 +128,11 @@ Než ale budete moct vytvořit libovolnou funkci Azure Functions, musíte už m�
 
    1. V poli **kód** přidejte svůj kód do šablony funkce, včetně odpovědi a datové části, kterou chcete vrátit do vaší aplikace logiky poté, co byla funkce dokončena. Po dokončení vyberte **Vytvořit**.
 
-   Příklad:
+   Například:
 
    ![Definovat funkci](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   V kódu šablony * `context` objekt* odkazuje na zprávu, kterou aplikace logiky posílá v pozdějším kroku v poli **Text žádosti** . Chcete-li získat přístup k `context` vlastnostem objektu zevnitř vaší funkce, použijte tuto syntaxi:
+   V kódu šablony *`context` objekt* odkazuje na zprávu, kterou aplikace logiky posílá v pozdějším kroku v poli **Text žádosti** . Chcete-li získat přístup k `context` vlastnostem objektu zevnitř vaší funkce, použijte tuto syntaxi:
 
    `context.body.<property-name>`
 
@@ -155,29 +155,29 @@ Než ale budete moct vytvořit libovolnou funkci Azure Functions, musíte už m�
 
    ![Přetypování objektu jako řetězce](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. Chcete-li zadat další podrobnosti, jako je například metoda, která má být použita, hlavičky požadavku nebo parametry dotazu nebo ověřování, otevřete seznam **Přidat nový parametr** a vyberte požadované možnosti. Pro ověřování se vaše možnosti liší v závislosti na vybrané funkci. Viz [Povolení ověřování pro službu Azure Functions](#enable-authentication-functions).
+1. Chcete-li zadat další podrobnosti, jako je například metoda, která má být použita, hlavičky požadavku nebo parametry dotazu nebo ověřování, otevřete seznam **Přidat nový parametr** a vyberte požadované možnosti. Pro ověřování se vaše možnosti liší v závislosti na vybrané funkci. Viz [Povolení ověřování pro funkce](#enable-authentication-functions).
 
 <a name="add-function-logic-app"></a>
 
 ## <a name="add-existing-functions-to-logic-apps"></a>Přidání existujících funkcí do Logic Apps
 
-Pokud chcete volat existující služby Azure Functions z aplikací logiky, můžete přidat Azure Functions jako jakoukoli jinou akci v návrháři aplikace logiky.
+Chcete-li volat existující funkce z aplikací logiky, můžete v návrháři aplikace logiky přidat funkce jako jakoukoli jinou akci.
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
 1. V kroku, kam chcete funkci přidat, vyberte **Nový krok**.
 
-1. V části **Vybrat akci**do vyhledávacího pole zadejte jako filtr "Azure Functions". V seznamu akce vyberte akci **použít funkci Azure** .
+1. V části **Vybrat akci** do vyhledávacího pole zadejte jako filtr "Azure Functions". V seznamu akce vyberte akci **použít funkci Azure** .
 
-   ![Najít Azure Functions](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![Najděte funkci v Azure.](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
 1. V seznamu aplikace Function App vyberte svou aplikaci Function App. Jakmile se zobrazí seznam Functions, vyberte svoji funkci.
 
-   ![Výběr aplikace Function App a funkce Azure](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
+   ![Výběr aplikace Function App a funkce](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
    Pro funkce, které mají definice rozhraní API (popisy Swagger) a jsou [nastavené tak, aby vaše aplikace logiky mohla najít a přistupovat k těmto funkcím](#function-swagger), můžete vybrat **Akce Swagger**.
 
-   ![Výběr aplikace Function App, akcí Swagger a vaší funkce Azure](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![Výběr aplikace Function App, akcí Swagger a funkce](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. Do pole **Text žádosti** zadejte vstup funkce, který musí být naformátován jako objekt JavaScript Object Notation (JSON).
 
@@ -189,27 +189,27 @@ Pokud chcete volat existující služby Azure Functions z aplikací logiky, mů�
 
    ![Přetypování objektu jako řetězce](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. Chcete-li zadat další podrobnosti, jako je například metoda, která má být použita, hlavičky požadavku, parametry dotazu nebo ověřování, otevřete seznam **Přidat nový parametr** a vyberte požadované možnosti. Pro ověřování se vaše možnosti liší v závislosti na vybrané funkci. Viz [Povolení ověřování ve službě Azure Functions](#enable-authentication-functions).
+1. Chcete-li zadat další podrobnosti, jako je například metoda, která má být použita, hlavičky požadavku, parametry dotazu nebo ověřování, otevřete seznam **Přidat nový parametr** a vyberte požadované možnosti. Pro ověřování se vaše možnosti liší v závislosti na vybrané funkci. Viz [Povolení ověřování ve funkcích](#enable-authentication-functions).
 
 <a name="call-logic-app"></a>
 
-## <a name="call-logic-apps-from-azure-functions"></a>Volání aplikací logiky z Azure Functions
+## <a name="call-logic-apps-from-functions"></a>Volání aplikací logiky z funkcí
 
-Pokud chcete aktivovat aplikaci logiky z funkce Azure Functions, musí aplikace logiky začínat triggerem, který poskytuje k dispozici koncový bod. Můžete například spustit aplikaci logiky s triggerem **http**, **Request**, **front Azure**nebo aktivační proceduru **Event Grid** . V rámci funkce odešlete požadavek HTTP POST do adresy URL triggeru a zahrňte datovou část, kterou má aplikace logiky zpracovat. Další informace najdete v tématu [volání, Trigger nebo vnořování Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
+Pokud chcete spustit aplikaci logiky zevnitř funkce, musí aplikace logiky začínat triggerem, který poskytuje k dispozici koncový bod. Můžete například spustit aplikaci logiky s triggerem **http**, **Request**, **front Azure** nebo aktivační proceduru **Event Grid** . V rámci funkce odešlete požadavek HTTP POST do adresy URL triggeru a zahrňte datovou část, kterou má aplikace logiky zpracovat. Další informace najdete v tématu [volání, Trigger nebo vnořování Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 <a name="enable-authentication-functions"></a>
 
-## <a name="enable-authentication-for-azure-functions"></a>Povolení ověřování pro službu Azure Functions
+## <a name="enable-authentication-for-functions"></a>Povolení ověřování pro funkce
 
 Abyste mohli snadno ověřit přístup k jiným prostředkům, které jsou chráněné službou Azure Active Directory (Azure AD), aniž byste se museli přihlašovat a poskytovat přihlašovací údaje nebo tajné kódy, může vaše aplikace logiky používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) (dřív označovanou jako identita spravované služby nebo MSI). Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani vyměňovat tajné kódy. Přečtěte si další informace o [službách Azure, které podporují spravované identity pro ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Pokud nastavíte aplikaci logiky tak, aby používala identitu přiřazenou systémem, nebo ručně vytvořenou identitu uživatele, funkce Azure ve vaší aplikaci logiky může stejnou identitu použít i pro ověřování. Další informace o podpoře ověřování pro službu Azure Functions v Logic Apps najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+Pokud nastavíte aplikaci logiky tak, aby používala identitu přiřazenou systémem, nebo ručně vytvořenou identitu přiřazenou uživatelem, funkce ve vaší aplikaci logiky může použít stejnou identitu pro ověřování. Další informace o podpoře ověřování funkcí v Logic Apps najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 Pokud chcete nastavit a používat spravovanou identitu s vaší funkcí, postupujte podle těchto kroků:
 
 1. Povolte spravovanou identitu ve vaší aplikaci logiky a nastavte přístup identity k cílovému prostředku. Informace najdete [v tématu ověření přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](../logic-apps/create-managed-service-identity.md).
 
-1. Pomocí následujících kroků povolte ověřování v aplikaci Azure Function a Function App:
+1. Pomocí následujících kroků povolte ověřování v aplikaci Function a Function App:
 
    * [Nastavení anonymního ověřování ve vaší funkci](#set-authentication-function-app)
    * [Nastavení ověřování Azure AD ve vaší aplikaci Function App](#set-azure-ad-authentication)
@@ -218,11 +218,11 @@ Pokud chcete nastavit a používat spravovanou identitu s vaší funkcí, postup
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>Nastavení anonymního ověřování ve vaší funkci
 
-Pokud chcete ve funkci Azure Functions používat spravovanou identitu vaší aplikace logiky, nastavte úroveň ověřování funkce na anonymní. V opačném případě vaše aplikace logiky vyvolá chybu "důvodu chybného požadavku".
+Pokud chcete ve své funkci použít spravovanou identitu vaší aplikace logiky, musíte nastavit úroveň ověřování vaší funkce na anonymní. V opačném případě vaše aplikace logiky vyvolá chybu "důvodu chybného požadavku".
 
 1. V [Azure Portal](https://portal.azure.com)Najděte aplikaci Function App a vyberte ji. Tyto kroky jako ukázkovou aplikaci funkcí používají "FabrikamFunctionApp".
 
-1. V podokně aplikace funkcí vyberte **funkce platformy**. V části **vývojové nástroje**vyberte **Rozšířené nástroje (Kudu)**.
+1. V podokně aplikace funkcí vyberte **funkce platformy**. V části **vývojové nástroje** vyberte **Rozšířené nástroje (Kudu)**.
 
    ![Otevřít rozšířené nástroje pro Kudu](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
 
@@ -254,7 +254,7 @@ Před zahájením této úlohy Najděte a uložte tyto hodnoty pro pozdější p
 
   * Pokud chcete vygenerovat toto ID objektu, [Povolte identitu přiřazenou systému vaší aplikace logiky](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app).
 
-  * V opačném případě pro vyhledání tohoto ID objektu otevřete aplikaci logiky v návrháři aplikace logiky. V nabídce aplikace logiky v části **Nastavení**vyberte **Identity**  >  **přiřazený systém**identit.
+  * V opačném případě pro vyhledání tohoto ID objektu otevřete aplikaci logiky v návrháři aplikace logiky. V nabídce aplikace logiky v části **Nastavení** vyberte   >  **přiřazený systém** identit.
 
 * ID adresáře pro vašeho tenanta ve službě Azure Active Directory (Azure AD)
 
@@ -264,7 +264,7 @@ Před zahájením této úlohy Najděte a uložte tyto hodnoty pro pozdější p
 
   1. Vyhledejte a vyberte svého tenanta služby Azure AD. Tyto kroky používají jako ukázkového tenanta "fabrikam".
 
-  1. V nabídce tenanta v části **Spravovat**vyberte **vlastnosti**.
+  1. V nabídce tenanta v části **Spravovat** vyberte **vlastnosti**.
 
   1. Zkopírujte ID adresáře vašeho tenanta, například a uložte toto ID pro pozdější použití.
 
@@ -283,11 +283,11 @@ Teď jste připraveni nastavit ověřování Azure AD pro aplikaci Function App.
 
 1. V [Azure Portal](https://portal.azure.com)Najděte aplikaci Function App a vyberte ji.
 
-1. V podokně aplikace funkcí vyberte **funkce platformy**. V části **síť**vyberte **ověřování/autorizace**.
+1. V podokně aplikace funkcí vyberte **funkce platformy**. V části **síť** vyberte **ověřování/autorizace**.
 
    ![Zobrazit nastavení ověřování a autorizace](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
 
-1. Změňte nastavení **ověřování App Service** na **zapnuto**. V seznamu **akce, která se má provést, když není ověřená žádost** vyberte možnost **přihlásit se pomocí Azure Active Directory**. V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**.
+1. Změňte nastavení **ověřování App Service** na **zapnuto**. V seznamu **akce, která se má provést, když není ověřená žádost** vyberte možnost **přihlásit se pomocí Azure Active Directory**. V části **Zprostředkovatelé ověřování** vyberte **Azure Active Directory**.
 
    ![Zapnutí ověřování pomocí Azure AD](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure cache pro Redis
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou dostupné pro Azure cache pro Redis. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 07/22/2020
+ms.date: 03/10/2021
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 75b33610acac0309f6141d807d204d4dfef9d91c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a3151bf98259f45c392182cf5e23c37c72d8203f
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374601"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633869"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>Azure Policy kontroly dodržování předpisů pro Azure cache pro Redis
 

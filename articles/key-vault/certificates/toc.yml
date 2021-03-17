@@ -15,15 +15,18 @@
       href: quick-create-powershell.md
     - name: Portál
       href: quick-create-portal.md
+    - name: .NET
+      href: quick-create-net.md
+    - name: Node.js
+      href: quick-create-node.md
     - name: Python
       href: quick-create-python.md
+    - name: Java
+      href: quick-create-java.md
 - name: ukázky
   items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
     - name: Ukázky kódu pro službu Key Vault
-      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
+      href: /samples/browse/?expanded=azure&products=azure-key-vault
 - name: Kurzy
   items:
     - name: Import certifikátu
@@ -40,6 +43,8 @@
       href: create-certificate.md
     - name: Vytvoření žádosti o podepsání certifikátu
       href: create-certificate-signing-request.md
+    - name: Řízení přístupu k certifikátům
+      href: certificate-access-control.md
 - name: Návody
   items:
     - name: Integrace služby Key Vault s certifikační autoritou DigiCert
@@ -51,22 +56,25 @@
 - name: Referenční informace
   items:
     - name: Azure PowerShell
-      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
+      href: /powershell/module/az.keyvault/#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
-      href: /dotnet/api/overview/azure/security.keyvault.certificates-readme?view=azure-dotnet
+      href: /dotnet/api/overview/azure/security.keyvault.certificates-readme
     - name: Java
-      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+      href: /java/api/overview/azure/keyvault
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest'
+      href: /javascript/api/overview/azure/key-vault-index
     - name: Python
-      href: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
+      href: /python/api/overview/azure/keyvault-certificates-readme
     - name: REST
       href: /rest/api/keyvault
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn
@@ -84,6 +92,6 @@
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=key-vault'
     - name: Blog
-      href: 'https://blogs.technet.com/b/kv/'
+      href: /archive/blogs/kv/
     - name: Zpětná vazba k produktu
       href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

@@ -16,12 +16,12 @@ ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356861"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89662387"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect synchronizace: pochopení a přizpůsobení synchronizace
 Služby synchronizace Azure Active Directory Connect (synchronizace Azure AD Connect) jsou hlavní součástí Azure AD Connect. Postará se o všechny operace, které souvisejí s synchronizací dat identity mezi místním prostředím a službou Azure AD. Azure AD Connect synchronizace je nástupce DirSync, Azure AD Sync a Forefront Identity Manageru s nakonfigurovaným konektorem Azure Active Directory.
@@ -52,19 +52,19 @@ Synchronizační služba se skládá ze dvou součástí: místní **Azure AD Co
 | [Implementace synchronizace hodnot hash hesel](how-to-connect-password-hash-synchronization.md) |Popisuje, jak funguje synchronizace hesel, jak implementovat a jak vyvíjejí a řešit potíže. |
 | [Zpětný zápis zařízení](how-to-connect-device-writeback.md) |Popisuje způsob, jakým funguje zpětný zápis zařízení v Azure AD Connect. |
 | [Rozšíření adresáře](how-to-connect-sync-feature-directory-extensions.md) |V této části najdete popis postupu při rozšiřování schématu Azure AD pomocí vlastních atributů. |
-| [PreferredDataLocation Office 365](how-to-connect-sync-feature-preferreddatalocation.md) |V této části najdete popis postupu umístění prostředků uživatele Office 365 ve stejné oblasti jako uživatel. |
+| [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Popisuje, jak umístit Microsoft 365 prostředky uživatele do stejné oblasti jako uživatel. |
 | **Synchronizační služba** | |
 | [Funkce synchronizační služby Azure AD Connect](how-to-connect-syncservice-features.md) |Popisuje synchronizační službu a postup změny nastavení synchronizace ve službě Azure AD. |
 | [Odolnost duplicitních atributů](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |Popisuje, jak povolit a použít atributy **userPrincipalName** a **proxyAddresses** duplicitních hodnot atributů. |
 | **Operace a uživatelské rozhraní** | |
 | [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) |Popisuje Synchronization Service Manager uživatelské rozhraní, včetně [operací](how-to-connect-sync-service-manager-ui-operations.md), [konektorů](how-to-connect-sync-service-manager-ui-connectors.md), [nástroje Metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md)a karet [hledání v úložišti Metaverse](how-to-connect-sync-service-manager-ui-mvsearch.md) . |
-| [Provozní úlohy a požadavky](how-to-connect-sync-operations.md) |Popisuje provozní obavy, jako je například zotavení po havárii. |
+| [Provozní úlohy a požadavky](./how-to-connect-sync-staging-server.md) |Popisuje provozní obavy, jako je například zotavení po havárii. |
 | **Jak...** | |
 | [Resetování účtu Azure AD](how-to-connect-azureadaccount.md) |Postup resetování přihlašovacích údajů účtu služby použitého pro připojení z Azure AD Connect synchronizaci do Azure AD. |
 | **Další informace a odkazy** | |
-| [Přístavu](reference-connect-ports.md) |Zobrazuje seznam portů, které je třeba otevřít mezi synchronizačním modulem a místními adresáři a službou Azure AD. |
+| [Porty](reference-connect-ports.md) |Zobrazuje seznam portů, které je třeba otevřít mezi synchronizačním modulem a místními adresáři a službou Azure AD. |
 | [Atributy synchronizované se službou Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |Zobrazí seznam všech synchronizovaných atributů mezi místními službami AD a Azure AD. |
 | [Reference k funkcím](reference-connect-sync-functions-reference.md) |Zobrazí seznam všech funkcí dostupných v deklarativních zřizováních. |
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

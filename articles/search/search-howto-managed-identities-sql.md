@@ -1,25 +1,22 @@
 ---
-title: Nastavení připojení k Azure SQL Database pomocí spravované identity (Preview)
+title: Nastavení připojení k Azure SQL Database pomocí spravované identity
 titleSuffix: Azure Cognitive Search
-description: Naučte se, jak nastavit připojení indexeru k Azure SQL Database pomocí spravované identity (Preview).
+description: Naučte se, jak nastavit připojení indexeru k Azure SQL Database pomocí spravované identity.
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/22/2020
+ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553134"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358418"
 ---
-# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Nastavení připojení indexeru k Azure SQL Database pomocí spravované identity (Preview)
-
-> [!IMPORTANT] 
-> Podpora nastavení připojení ke zdroji dat pomocí spravované identity je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Nastavení připojení indexeru k Azure SQL Database pomocí spravované identity
 
 Tato stránka popisuje, jak nastavit připojení indexeru k Azure SQL Database pomocí spravované identity namísto zadání přihlašovacích údajů do připojovacího řetězce objektu zdroje dat.
 
@@ -32,7 +29,7 @@ Než se dozvíte víc o této funkci, doporučujeme vám pochopit, co indexer je
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 – zapnout spravovanou identitu přiřazenou systémem
 
-Když je povolená spravovaná identita přiřazená systémem, Azure vytvoří identitu pro vaši vyhledávací službu, která se dá použít k ověření dalších služeb Azure v rámci stejného tenanta a předplatného. Tuto identitu pak můžete použít v přiřazeních řízení přístupu na základě role (RBAC), které umožňuje přístup k datům během indexování.
+Když je povolená spravovaná identita přiřazená systémem, Azure vytvoří identitu pro vaši vyhledávací službu, která se dá použít k ověření dalších služeb Azure v rámci stejného tenanta a předplatného. Tuto identitu pak můžete použít v přiřazeních řízení přístupu na základě role v Azure (Azure RBAC), které umožňuje přístup k datům během indexování.
 
 ![Zapnout spravovanou identitu přiřazenou systémem](./media/search-managed-identities/turn-on-system-assigned-identity.png "Zapnout spravovanou identitu přiřazenou systémem")
 
@@ -44,7 +41,7 @@ Po výběru možnosti **Uložit** se zobrazí ID objektu, které bylo přiřazen
 
 Při připojování k databázi v dalším kroku se budete muset připojit pomocí účtu Azure Active Directory (Azure AD), který má oprávnění správce k databázi, aby vaše služba vyhledávání mohla mít přístup k databázi.
 
-Postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) a udělte správci účtu Azure AD přístup k databázi.
+Postupujte podle pokynů uvedených [tady](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-database) a udělte správci účtu Azure AD přístup k databázi.
 
 ### <a name="3---assign-the-search-service-permissions"></a>3. přiřazení oprávnění vyhledávací služby
 
@@ -84,7 +81,7 @@ Pomocí následujících kroků přiřaďte oprávnění vyhledávací služby k
 V tomto kroku udělíte službě Azure Kognitivní hledání oprávnění číst data z vašeho SQL Server.
 
 1. V Azure Portal přejděte na stránku Azure SQL Server.
-2. Výběr **řízení přístupu (IAM)**
+2. Vyberte **Řízení přístupu (IAM)** .
 3. Vyberte **Přidat** a pak **Přidat přiřazení role** .
 
     ![Přidat přiřazení role](./media/search-managed-identities/add-role-assignment-sql-server.png "Přidat přiřazení role")
@@ -97,19 +94,19 @@ V tomto kroku udělíte službě Azure Kognitivní hledání oprávnění číst
 
 ### <a name="5---create-the-data-source"></a>5. vytvoření zdroje dat
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z Azure SQL Database pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) a spravovaného připojovacího řetězce identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
+[REST API](/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z Azure SQL Database pomocí [REST API](/rest/api/searchservice/create-data-source) a spravovaného připojovacího řetězce identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
 
-Při vytváření zdroje dat pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)musí mít zdroj dat následující požadované vlastnosti:
+Při vytváření zdroje dat pomocí [REST API](/rest/api/searchservice/create-data-source)musí mít zdroj dat následující požadované vlastnosti:
 
 * **název** je jedinečný název zdroje dat v rámci vyhledávací služby.
 * **typ** je `azuresql`
 * **přihlašovací údaje**
     * Při ověřování pomocí spravované identity se formát **přihlašovacích údajů** liší od použití identity spravovaných. Tady poskytnete počáteční katalog nebo název databáze a ResourceId, které nemají klíč nebo heslo účtu. ResourceId musí zahrnovat ID předplatného Azure SQL Database, skupinu prostředků SQL Database a název databáze SQL. 
     * Formát připojovacího řetězce spravované identity:
-        * *Počáteční katalog | Databáze =**název databáze**; ResourceId =/Subscriptions/**ID vašeho předplatného**/resourceGroups/**název vaší skupiny prostředků**/Providers/Microsoft.SQL/Servers/**vaše SQL Server jméno**/; Časový limit připojení =**časový limit připojení**;*
+        * *Počáteční katalog | Databáze = **název databáze** ; ResourceId =/Subscriptions/ **ID vašeho předplatného** /resourceGroups/ **název vaší skupiny prostředků** /Providers/Microsoft.SQL/Servers/ **vaše SQL Server jméno** /; Časový limit připojení = **časový limit připojení** ;*
 * **Container** Určuje název tabulky nebo zobrazení, které chcete indexovat.
 
-Příklad vytvoření objektu zdroje dat SQL Azure pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
+Příklad vytvoření objektu zdroje dat SQL Azure pomocí [REST API](/rest/api/searchservice/create-data-source):
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -144,7 +141,7 @@ api-key: [admin key]
 }
 ```
 
-Další informace o vytváření indexů najdete v tématu [vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+Další informace o vytváření indexů najdete v tématu [vytvoření indexu](/rest/api/searchservice/create-index) .
 
 ### <a name="7---create-the-indexer"></a>7. vytvoření indexeru
 
@@ -169,13 +166,13 @@ api-key: [admin key]
 
 Tento indexer se spustí každé dvě hodiny (časový interval je nastaven na "PT2H"). Pokud chcete indexer spustit každých 30 minut, nastavte interval na "PT30M". Nejkratší podporovaný interval je 5 minut. Plán je nepovinný – Pokud je vynechaný, indexer se při vytvoření spustí jenom jednou. Můžete ale kdykoli spustit indexer na vyžádání.   
 
-Další informace o rozhraní API Create indexeru najdete v části [Vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Další informace o rozhraní API Create indexeru najdete v části [Vytvoření indexeru](/rest/api/searchservice/create-indexer).
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud se při pokusu indexeru o připojení ke zdroji dat zobrazí chybová zpráva s informacemi o tom, že klient nemá povolený přístup k serveru, podívejte se na [běžné chyby indexeru](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting).
+Pokud se při pokusu indexeru o připojení ke zdroji dat zobrazí chybová zpráva s informacemi o tom, že klient nemá povolený přístup k serveru, podívejte se na [běžné chyby indexeru](./search-indexer-troubleshooting.md).
 
 ## <a name="see-also"></a>Viz také
 

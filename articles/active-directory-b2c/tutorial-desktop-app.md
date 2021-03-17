@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78186195"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Kurz: ověřování uživatelů v nativním klientském počítači pomocí Azure Active Directory B2C
@@ -52,7 +52,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 
 Chcete-li aktualizovat aplikaci pro práci s vaším klientem Azure AD B2C a vyvolat jeho toky uživatelů místo těch, kteří jsou ve výchozím ukázkovém tenantovi:
 
-1. Otevřete řešení **Active-Directory-B2C-WPF** (`active-directory-b2c-wpf.sln`) v aplikaci Visual Studio.
+1. Otevřete řešení **Active-Directory-B2C-WPF** ( `active-directory-b2c-wpf.sln` ) v aplikaci Visual Studio.
 2. V projektu **Active-Directory-B2C-WPF** otevřete soubor *App.XAML.cs* a vyhledejte následující definice proměnných. Nahraďte `{your-tenant-name}` názvem klienta Azure AD B2C a `{application-ID}` ID aplikace, které jste si poznamenali dříve.
 
     ```csharp
@@ -61,7 +61,7 @@ Chcete-li aktualizovat aplikaci pro práci s vaším klientem Azure AD B2C a vyv
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. Aktualizujte proměnné názvu zásad pomocí názvů toků uživatelů, které jste vytvořili v rámci požadavků. Příklad:
+3. Aktualizujte proměnné názvu zásad pomocí názvů toků uživatelů, které jste vytvořili v rámci požadavků. Například:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";
@@ -89,7 +89,7 @@ Uživatel teď může pomocí své e-mailové adresy přihlásit se a použít d
 
 ![Podrobnosti tokenu zobrazené v dolním podokně desktopové aplikace WPF](./media/tutorial-desktop-app/desktop-app-01-post-signin.png)
 
-Pokud vyberete tlačítko **rozhraní API pro volání** , zobrazí se **chybová zpráva** . Narazíte na chybu, protože v jejím aktuálním stavu se aplikace pokouší o přístup k rozhraní API chráněného demonstračním klientem `fabrikamb2c.onmicrosoft.com`. Vzhledem k tomu, že váš přístupový token je platný jenom pro vašeho tenanta Azure AD B2C, volání rozhraní API je proto neautorizované.
+Pokud vyberete tlačítko **rozhraní API pro volání** , zobrazí se **chybová zpráva** . Narazíte na chybu, protože v jejím aktuálním stavu se aplikace pokouší o přístup k rozhraní API chráněného demonstračním klientem `fabrikamb2c.onmicrosoft.com` . Vzhledem k tomu, že váš přístupový token je platný jenom pro vašeho tenanta Azure AD B2C, volání rozhraní API je proto neautorizované.
 
 Přejděte k dalšímu kurzu, který zaregistruje chráněné webové rozhraní API ve vašem tenantovi a povolí funkci **rozhraní API pro volání** .
 
@@ -105,4 +105,4 @@ V tomto kurzu jste se naučili:
 Pokud chcete povolit funkci tlačítka **rozhraní API volání** , udělte desktopové aplikaci WPF přístup k webovému rozhraní API zaregistrovanému ve vašem tenantovi Azure AD B2C:
 
 > [!div class="nextstepaction"]
-> [Kurz: poskytnutí přístupu k webovému rozhraní API Node. js z desktopové aplikace >](tutorial-desktop-app-webapi.md)
+> [Kurz: poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace >](tutorial-desktop-app-webapi.md)

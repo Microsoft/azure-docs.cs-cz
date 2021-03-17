@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 582ec01a7a843358bef749aec693a59f88a1d655
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640646"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420525"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: když máte existujícího tenanta
 Většina témat pro použití Azure AD Connect předpokládá, že začnete s novým tenant Azure AD a neexistují žádní uživatelé ani jiné objekty. Ale pokud jste spustili klienta Azure AD, naplnili ho uživateli a dalšími objekty a teď chcete použít připojit, bude toto téma pro vás.
@@ -34,14 +34,14 @@ Můžete spravovat některé uživatele místně i v cloudu. Běžným scénář
 Pokud jste začali spravovat uživatele ve službě Azure AD, které jsou také v místní službě AD a později chcete použít možnost připojit, je potřeba vzít v úvahu ještě nějaké další aspekty.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchronizace se stávajícími uživateli v Azure AD
-Když nainstalujete Azure AD Connect a začnete synchronizovat, služba synchronizace Azure AD (v Azure AD) provede kontrolu každého nového objektu a pokusí se najít existující objekt, který se má shodovat. Pro tento proces se používají tři atributy: **userPrincipalName**, **proxyAddresses**a **sourceAnchor** / **immutableID**. Shoda v atributech **userPrincipalName** a **proxyAddresses** se označuje jako **příčasná shoda**. Shoda na **sourceAnchor** se označuje jako **těžká shoda**. Pro atribut **proxyAddresses** se pro vyhodnocení používá jenom hodnota s **SMTP:**, která je primární e-mailová adresa.
+Když nainstalujete Azure AD Connect a začnete synchronizovat, služba synchronizace Azure AD (v Azure AD) provede kontrolu každého nového objektu a pokusí se najít existující objekt, který se má shodovat. Pro tento proces se používají tři atributy: **userPrincipalName** , **proxyAddresses** a **sourceAnchor** / **immutableID**. Shoda v atributech **userPrincipalName** a **proxyAddresses** se označuje jako **příčasná shoda**. Shoda na **sourceAnchor** se označuje jako **těžká shoda**. Pro atribut **proxyAddresses** se pro vyhodnocení používá jenom hodnota s **SMTP:** , která je primární e-mailová adresa.
 
 Shoda se vyhodnocuje jenom pro nové objekty, které pocházejí z připojení. Pokud změníte existující objekt tak, aby odpovídal jakémukoli z těchto atributů, zobrazí se místo toho chyba.
 
-Pokud Azure AD najde objekt, kde jsou hodnoty atributu stejné pro objekt přicházející z připojení a že už je ve službě Azure AD, je objekt ve službě Azure AD převzatý pomocí připojit. Dřív spravovaný objekt v cloudu je označen jako místní správa. Všechny atributy v Azure AD s hodnotou v místní službě AD se přepíší pomocí místní hodnoty. Výjimkou je, že atribut má hodnotu **null** v místním prostředí. V takovém případě hodnota ve službě Azure AD zůstane, ale můžete ji změnit jenom místně na něco jiného.
+Pokud Azure AD najde objekt, kde jsou hodnoty atributu stejné pro objekt přicházející z připojení a že už je ve službě Azure AD, je objekt ve službě Azure AD převzatý pomocí připojit. Dřív spravovaný objekt v cloudu je označen jako místní správa. Všechny atributy v Azure AD s hodnotou v místní službě AD se přepíší pomocí místní hodnoty.
 
 > [!WARNING]
-> Vzhledem k tomu, že všechny atributy ve službě Azure AD budou přepsány místní hodnotou, ujistěte se, že máte dobrá data v místním prostředí. Pokud třeba máte spravované e-mailové adresy v Office 365 a nezůstane aktualizované v místní služba AD DS, ztratíte jakékoli hodnoty v Azure AD/Office 365, které nejsou k dispozici v služba AD DS.
+> Vzhledem k tomu, že všechny atributy ve službě Azure AD budou přepsány místní hodnotou, ujistěte se, že máte dobrá data v místním prostředí. Pokud například máte spravované e-mailové adresy v Microsoft 365 a nezůstane aktualizované v místní služba AD DS, pak ztratíte všechny hodnoty v Azure AD nebo Microsoft 365 nepřítomné v služba AD DS.
 
 > [!IMPORTANT]
 > Pokud používáte synchronizaci hesla, která se vždycky používá v expresním nastavení, pak se heslo ve službě Azure AD přepíše heslem v místní službě AD. Pokud se uživatelé používají ke správě různých hesel, musíte je informovat, aby po instalaci připojení používali místní heslo.

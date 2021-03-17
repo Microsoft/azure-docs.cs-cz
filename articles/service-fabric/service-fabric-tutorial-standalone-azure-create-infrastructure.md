@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte nastavit infrastrukturu virtuálních po
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75614005"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90561836"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: vytvoření infrastruktury virtuálních počítačů Azure pro hostování Service Fabricho clusteru
 
@@ -49,19 +49,19 @@ K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud účet ješt�
 
 8. V dalším kroku nastavte **skupinu zabezpečení sítě síťové karty** na **Upřesnit**. Vytvořte novou skupinu zabezpečení, která zaznamená její název, a vytvořte následující pravidla, která povolí přenos TCP z libovolného zdroje:
 
-   ![SF – příchozí][sf-inbound]
+   ![Snímek obrazovky ukazuje vytváření pravidel, která povolují příchozí přenosy TCP.][sf-inbound]
 
-   * Port `3389`pro RDP a ICMP (základní připojení).
-   * Porty `19000-19003`pro Service Fabric.
-   * Porty `19080-19081`pro Service Fabric.
-   * Port `8080`pro požadavky webového prohlížeče.
+   * Port `3389` pro RDP a ICMP (základní připojení).
+   * Porty `19000-19003` pro Service Fabric.
+   * Porty `19080-19081` pro Service Fabric.
+   * Port `8080` pro požadavky webového prohlížeče.
 
    > [!TIP]
    > Pro propojení virtuálních počítačů do Service Fabric je třeba, aby virtuální počítače hostující vaši infrastrukturu měly stejné přihlašovací údaje.  Existují dva běžné způsoby, jak zajistit konzistenci přihlašovacích údajů: připojení všech virtuálních počítačů do stejné domény nebo nastavení stejného hesla správce na každém počítači. Naštěstí Azure umožňuje, aby se všechny virtuální počítače ve stejné **virtuální síti** snadno připojovaly, takže budeme mít jistotu, že všechny naše instance budou ve stejné síti.
 
 9. Přidejte další pravidlo. Nastavte zdroj jako **značku služby** a nastavte značku zdrojové služby na **VirtualNetwork**. Service Fabric vyžaduje, aby byly pro komunikaci v rámci clusteru otevřené následující porty: 135137-139, 445, 20 001-20031, 20606-20861.
 
-   ![síť VNet – příchozí][vnet-inbound]
+   ![Snímek obrazovky s vytvářením pravidel pro povolení přenosů TCP pro cluster.][vnet-inbound]
 
 10. Ostatní možnosti jsou přijatelné ve výchozím stavu. Zkontrolujte je, pokud chcete, a pak spusťte virtuální počítač.
 

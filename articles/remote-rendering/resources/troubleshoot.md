@@ -5,35 +5,39 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509276"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593329"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
 Tato stránka obsahuje seznam běžných problémů, které mají vliv na vzdálené vykreslování Azure, a způsoby, jak je vyřešit.
 
-## <a name="cant-link-storage-account-to-arr-account"></a>Nejde propojit účet úložiště s účtem ARR.
+## <a name="cant-link-storage-account-to-arr-account"></a>Nejde propojit účet úložiště s účtem ARR
 
 V některých případech se během [propojování účtu úložiště](../how-tos/create-an-account.md#link-storage-accounts) v seznamu nenachází účet vzdáleného vykreslování. Pokud chcete tento problém vyřešit, v Azure Portal klikněte na účet ARR a ve skupině **Nastavení** na levé straně vyberte **Identita** . Ujistěte se, že **stav** je **zapnuto**.
 ![Ladicí program rámce Unity](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>Klient se nemůže připojit k serveru.
 
-Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblokují následující porty:
-
-* **50051 (TCP)** – vyžaduje se pro počáteční připojení (http handshake)
-* **8266 (TCP + UDP)** – vyžadováno pro přenos dat
-* **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** – požadováno pro [ArrInspector](tools/arr-inspector.md)
+Zajistěte, aby brány firewall (na zařízení, ve směrovačích atd.) neblokovaly porty uvedené v [požadavcích na systém](../overview/system-requirements.md#network-firewall).
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Chyba: `Disconnected: VideoFormatNotAvailable` ' '
 
 Ověřte, že grafický procesor podporuje dekódování hardwarových videí. Viz [vývojový počítač](../overview/system-requirements.md#development-pc).
 
 Pokud pracujete na přenosném počítači se dvěma grafickými procesory, je možné, že GPU, ve kterém pracujete, ve výchozím nastavení neposkytuje funkci dekódování hardwarových videí. Pokud ano, zkuste aplikaci vynutit, aby používala jiný GPU. To je často možné v nastavení ovladače GPU.
+
+## <a name="retrieve-sessionconversion-status-fails"></a>Nepodařilo se načíst relaci nebo stav převodu.
+
+Příliš časté posílání REST API příkazů způsobí, že server bude omezovat a vracet chybu nakonec. Stavový kód HTTP v případě omezení je 429 (příliš mnoho požadavků). Jako pravidlo pro palec by se měla **mezi následnými voláními čekat 5-10 sekund**.
+
+Všimněte si, že toto omezení neovlivňuje jenom REST API volání, když se volá přímo, ale také jejich protějšky C#/C + +, například `Session.GetPropertiesAsync` , `Session.RenewAsync` nebo `Frontend.GetAssetConversionStatusAsync` .
+
+Pokud máte omezení na straně serveru, změňte kód tak, aby bylo volání méně časté. Server resetuje stav omezování každou minutu, takže můžete bezpečně znovu spustit kód po minutě.
 
 ## <a name="h265-codec-not-available"></a>Kodek h265 není k dispozici.
 
@@ -84,7 +88,7 @@ Kvalitu videa je možné ohrozit buď pomocí kvality sítě, nebo chybějícíh
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Video zaznamenané v rámci MRC neodráží kvalitu živého prostředí.
 
-Video se dá zaznamenat na HoloLens prostřednictvím aplikace [MRC (Mixed reality Capture)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). Výsledné video má však horší kvalitu než živé prostředí ze dvou důvodů:
+Video se dá zaznamenat na HoloLens prostřednictvím aplikace [MRC (Mixed reality Capture)](/windows/mixed-reality/mixed-reality-capture-for-developers). Výsledné video má však horší kvalitu než živé prostředí ze dvou důvodů:
 * Snímková frekvence videa se omezené na 30 Hz na rozdíl od 60 Hz.
 * Obrázky videa neprojde krok zpracování [promítnout v pozdní fázi](../overview/features/late-stage-reprojection.md) , takže se video zdá být choppier.
 
@@ -144,11 +148,12 @@ Existují dva problémy s tímto ohraničujícím polem, které vedou k nevidite
 
 Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a provede kompozici snímků s videem a provede reprojekci. Chcete-li ověřit, zda tyto zavěšení existují, otevřete nabídku *:::no-loc text="Window > Analysis > Frame debugger":::* . Povolte ji a ujistěte se, že v kanálu existují dvě položky `HolographicRemotingCallbackPass` :
 
-![Ladicí program rámce Unity](./media/troubleshoot-unity-pipeline.png)
+![Kanál vykreslování Unity](./media/troubleshoot-unity-pipeline.png)
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Po načtení modelu se vykresluje šachovnicový vzor.
 
-Pokud vykreslený obrázek vypadá takto: ![ šachovnice ](../reference/media/checkerboard.png) narazí na [omezení mnohoúhelníku pro standardní velikost konfigurace](../reference/vm-sizes.md). Chcete-li zmírnit, buď přepněte na velikost konfigurace **Premium** , nebo snižte počet viditelných mnohoúhelníků.
+Pokud vykreslený obrázek vypadá takto: ![ snímek obrazovky zobrazuje mřížku černého a bílého čtverečku pomocí nabídky nástroje.](../reference/media/checkerboard.png)
+vykreslovací modul pak narazí na [omezení mnohoúhelníku pro standardní velikost konfigurace](../reference/vm-sizes.md). Chcete-li zmírnit, buď přepněte na velikost konfigurace **Premium** , nebo snižte počet viditelných mnohoúhelníků.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Vykreslený obraz v Unity je souběžný
 
@@ -176,13 +181,19 @@ Při pokusu o kompilaci ukázek Unity (rychlý Start, ShowCaseApp,..) pro HoloLe
 
 Rozhraní `AudioPluginMsHRTF.dll` pro Arm64 bylo přidáno do balíčku *Windows Mixed reality* *(com. Unity. XR. windowsmr. metro)* ve verzi 3.0.1. Ujistěte se, že máte nainstalovanou verzi 3.0.1 nebo novější prostřednictvím Správce balíčků Unity. V řádku nabídek Unity přejděte do *okna > správce balíčků* a vyhledejte balíček *Windows Mixed reality* .
 
+## <a name="native-c-based-application-does-not-compile"></a>Nativní aplikace založená na jazyce C++ není zkompilována.
+
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>Chyba knihovny nenalezena pro aplikaci UWP nebo knihovnu DLL
+
+Uvnitř balíčku NuGet jazyka C++ je soubor souboru `microsoft.azure.remoterendering.Cpp.targets` , který definuje, který binární charakter má být použit. Chcete-li identifikovat `UWP` , podmínky v souboru pro kontrolu `ApplicationType == 'Windows Store'` . Proto je nutné zajistit, aby byl tento typ nastaven v projektu. To by mělo být případ při vytváření aplikace UWP nebo knihovny DLL prostřednictvím Průvodce projektu sady Visual Studio.
+
 ## <a name="unstable-holograms"></a>Nestabilní hologramy
 
 V případě, že se vygenerované objekty budou pohybovat spolu s pohyby hlav, může docházet k potížím s fází LSR ( *opožděné reprojekce* ). Pokyny k tomu, jak se tyto situace týkají, najdete v části o [reprojekci v pozdní fázi](../overview/features/late-stage-reprojection.md) .
 
-Dalším důvodem pro nestabilní hologramy (wobbling, reformace, kolísání nebo přechodové hologramy) může být špatné připojení k síti, zejména nedostatečná šířka pásma sítě nebo příliš vysoká latence. Dobrým indikátorem pro kvalitu síťového připojení je hodnota [statistiky výkonu](../overview/features/performance-queries.md) `ARRServiceStats.VideoFramesReused` . Znovu používané snímky označují situace, kdy se na straně klienta má znovu použít starý snímek videa, protože není k dispozici žádný nový snímek videa – například kvůli ztrátě paketů nebo kvůli variacím latence sítě. Pokud `ARRServiceStats.VideoFramesReused` je často větší než nula, znamená to, že dojde k potížím se sítí.
+Dalším důvodem pro nestabilní hologramy (wobbling, reformace, kolísání nebo přechodové hologramy) může být špatné připojení k síti, zejména nedostatečná šířka pásma sítě nebo příliš vysoká latence. Dobrým indikátorem pro kvalitu síťového připojení je hodnota [statistiky výkonu](../overview/features/performance-queries.md) `ServiceStatistics.VideoFramesReused` . Znovu používané snímky označují situace, kdy se na straně klienta má znovu použít starý snímek videa, protože není k dispozici žádný nový snímek videa – například kvůli ztrátě paketů nebo kvůli variacím latence sítě. Pokud `ServiceStatistics.VideoFramesReused` je často větší než nula, znamená to, že dojde k potížím se sítí.
 
-Další hodnota, kterou chcete prohledat `ARRServiceStats.LatencyPoseToReceiveAvg` , je. Mělo by se konzistentně nacházet pod 100 ms. Pokud vidíte vyšší hodnoty, znamená to, že jste připojení k datovému centru, které je příliš daleko.
+Další hodnota, kterou chcete prohledat `ServiceStatistics.LatencyPoseToReceiveAvg` , je. Mělo by se konzistentně nacházet pod 100 ms. Zobrazení vyšších hodnot může znamenat, že jste připojení k datovému centru, které je příliš daleko.
 
 Seznam možných rizik najdete v [pokynech k připojení k síti](../reference/network-requirements.md#guidelines-for-network-connectivity).
 
@@ -208,7 +219,7 @@ Pokud byly výše uvedené kroky vyčerpány a zbývající z-boje je nepřijate
 
 Vlastnost ARR má funkci pro určení, zda by povrchy mohly z boje: [šachovnice zvýrazňování](../overview/features/z-fighting-mitigation.md). Můžete také určit vizuálně co způsobuje z-boje. Následující první animace ukazuje příklad ztráty hloubky ve vzdálenosti a druhá ukazuje příklad téměř coplanarch ploch:
 
-![Hloubka a přesnost z-boje](./media/depth-precision-z-fighting.gif)  ![coplanar-z-boj](./media/coplanar-z-fighting.gif)
+![Animace ukazuje příklad ztráty hloubkové přesnosti v rámci vzdálenosti.](./media/depth-precision-z-fighting.gif)  ![Animace ukazuje příklad téměř coplanar povrchů.](./media/coplanar-z-fighting.gif)
 
 Tyto příklady porovnejte s vaším z-bojeem a určete příčinu nebo volitelně postupujte podle kroků tohoto podrobného pracovního postupu:
 
@@ -234,7 +245,9 @@ Coplanar povrchy můžou mít řadu různých příčin:
 
 * Povrchy jsou záměrně vytvořené tak, aby se dotkly, jako je decals nebo text na stěnách.
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Artefakty grafiky využívající víceřádkové vykreslování stereo v nativních aplikacích C++
 
+V některých případech vlastní nativní aplikace C++, které používají režim vícenásobného vykreslování stereo pro místní obsah (vykreslování vlevo a vpravo v samostatných průchodech) po volání [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) , mohou aktivovat chybu ovladače. Výsledkem chyby je nedeterministické rastrové histogramu, což způsobí, že jednotlivé trojúhelníky nebo části trojúhelníků místního obsahu budou náhodně zmizet. Z důvodů výkonu je vhodné vykreslovat místní obsah s pokročilejší technikou pro vykreslování v jednom průchodu, například pomocí **SV_RenderTargetArrayIndex**.
 
 ## <a name="next-steps"></a>Další kroky
 

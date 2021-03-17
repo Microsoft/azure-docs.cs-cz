@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806497"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182882"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Řešení potíží s App Service v Application Gateway
 
@@ -23,9 +23,8 @@ Naučte se diagnostikovat a řešit problémy, se kterými se můžete setkat p�
 
 V tomto článku se dozvíte, jak řešit následující problémy:
 
-> [!div class="checklist"]
-> * Adresa URL služby App Service se zveřejňuje v prohlížeči, když dojde k přesměrování.
-> * Doména souborů cookie ARRAffinity App Service je nastavená na název hostitele App Service (example.azurewebsites.net) místo původního hostitele.
+* Adresa URL služby App Service se zveřejňuje v prohlížeči, když dojde k přesměrování.
+* Doména souborů cookie ARRAffinity App Service je nastavená na název hostitele App Service (example.azurewebsites.net) místo původního hostitele.
 
 Když aplikace back-end pošle odezvu přesměrování, může být vhodné přesměrovat klienta na jinou adresu URL, než která je určena v back-endové aplikaci. To může být vhodné, pokud je služba App Service hostována za aplikační bránou a vyžaduje, aby klient provedl přesměrování na jeho relativní cestu. Příkladem je přesměrování z contoso.azurewebsites.net/path1 na contoso.azurewebsites.net/path2. 
 
@@ -81,10 +80,10 @@ V předchozím příkladu si všimněte, že hlavička odpovědi má stavový k�
 
 ## <a name="solution-rewrite-the-location-header"></a>Řešení: přepište hlavičku umístění
 
-Nastavte název hostitele v hlavičce umístění na název domény služby Application Gateway. Provedete to tak, že vytvoříte [pravidlo přepsání](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) s podmínkou, která vyhodnotí, jestli hlavička umístění v odpovědi obsahuje azurewebsites.NET. Musí také provést akci, která přepíše hlavičku umístění, aby měl název hostitele služby Application Gateway. Další informace najdete v pokynech k [přepsání hlavičky umístění](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url).
+Nastavte název hostitele v hlavičce umístění na název domény služby Application Gateway. Provedete to tak, že vytvoříte [pravidlo přepsání](./rewrite-http-headers.md) s podmínkou, která vyhodnotí, jestli hlavička umístění v odpovědi obsahuje azurewebsites.NET. Musí také provést akci, která přepíše hlavičku umístění, aby měl název hostitele služby Application Gateway. Další informace najdete v pokynech k [přepsání hlavičky umístění](./rewrite-http-headers.md#modify-a-redirection-url).
 
 > [!NOTE]
-> Podpora přepisování hlaviček protokolu HTTP je k dispozici pouze pro [Standard_v2 a WAF_V2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) Application Gateway. Pokud používáte SKU V1, doporučujeme [migrovat z verze V1 na verzi v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2). Chcete použít přepis a další [Pokročilé funkce](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) , které jsou k dispozici s SKU v2.
+> Podpora přepisování hlaviček protokolu HTTP je k dispozici pouze pro [Standard_v2 a WAF_V2 SKU](./application-gateway-autoscaling-zone-redundant.md) Application Gateway. Pokud používáte SKU V1, doporučujeme [migrovat z verze V1 na verzi v2](./migrate-v1-v2.md). Chcete použít přepis a další [Pokročilé funkce](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) , které jsou k dispozici s SKU v2.
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternativní řešení: použijte vlastní název domény.
 
@@ -94,7 +93,7 @@ App Service teď provádí přesměrování (pokud existuje) ve stejné původn�
 
 Musíte vlastnit vlastní doménu a postupovat podle tohoto postupu:
 
-- Zaregistrujte doménu do seznamu vlastních domén služby App Service. V vlastní doméně musíte mít záznam CNAME, který odkazuje na plně kvalifikovaný název domény služby App Service. Další informace najdete v tématu [Mapování existujícího vlastního názvu DNS na Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
+- Zaregistrujte doménu do seznamu vlastních domén služby App Service. V vlastní doméně musíte mít záznam CNAME, který odkazuje na plně kvalifikovaný název domény služby App Service. Další informace najdete v tématu [Mapování existujícího vlastního názvu DNS na Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
 
     ![Seznam vlastních domén služby App Service](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 

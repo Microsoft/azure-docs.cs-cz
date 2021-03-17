@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
-ms.openlocfilehash: f6e356f868cdb2107a19084070a85a0388ab4af7
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 37ff94608e9756142f70a4f3c64d0a6f7eeea685
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554806"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88932895"
 ---
 # <a name="get-customer-managed-key-information-from-indexes-and-synonym-maps"></a>Získat informace o klíčích spravovaných zákazníkem z indexů a mapování synonym
 
@@ -66,6 +66,6 @@ Invoke-RestMethod -Uri $uri -Headers $headers | ConvertTo-Json
 
 Když teď víte, který šifrovací klíč a verzi se používá, můžete klíč spravovat v Azure Key Vault nebo kontrolovat další nastavení konfigurace.
 
-+ [Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí PowerShellu](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-powershell)
++ [Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí PowerShellu](../key-vault/secrets/quick-create-powershell.md)
 
 + [Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání](search-security-manage-encryption-keys.md)

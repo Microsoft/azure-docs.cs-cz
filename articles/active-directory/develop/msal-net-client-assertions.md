@@ -1,7 +1,7 @@
 ---
 title: Kontrolní výrazy klienta (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o podpoře podepsaných klientských výrazů u důvěrných klientských aplikací v knihovně Microsoft Authentication Library pro .NET (MSAL.NET).
+description: Přečtěte si o podpoře podepsaných klientských výrazů u důvěrných klientských aplikací v knihovně Microsoft Authentication Library for .NET (MSAL.NET).
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/18/2019
+ms.date: 9/30/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: aeef0c4f139f9721449ba2c503f08fafa2c627d3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: f1ff679bddf2afc355516f2a04b3307d4a260a5c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166310"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063616"
 ---
 # <a name="confidential-client-assertions"></a>Důvěrné kontrolní výrazy klienta
 
@@ -48,16 +48,16 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Služba Azure AD očekává deklarace identity:
+[Služba Azure AD očekává deklarace identity](active-directory-certificate-credentials.md) :
 
 Typ deklarace identity | Hodnota | Popis
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Deklarace "AUD" (cílová skupina) identifikuje příjemce, pro které je požadavek JWT určen (tady Azure AD), viz [RFC 7519, Section 4.1.3].
-exp | Čtvrtek června 27 2019 15:04:17 GMT + 0200 (románské země (letní čas)) | Deklarace "EXP" (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí může být požadavek JWT přijat ke zpracování. Viz [RFC 7519, kapitola 4.1.4]
-ISS | ClientID | Deklarace identity "ISS" (Issuer) identifikuje objekt zabezpečení, který vystavil token JWT. Zpracování této deklarace identity je specifické pro aplikaci. Hodnota "ISS" je řetězec rozlišující velká a malá písmena obsahující hodnotu StringOrURI. [RFC 7519, oddíl 4.1.1]
-jti | (identifikátor GUID) | Deklarace identity JTI (ID JWT) poskytuje jedinečný identifikátor pro token JWT. Hodnota identifikátoru musí být přiřazena způsobem, který zajišťuje nezanedbatelnou pravděpodobnost, že stejná hodnota bude omylem přiřazena k jinému datovému objektu. Pokud aplikace používá více vystavitelů, musí být kolizi znemožněna mezi hodnotami vytvořenými různými vystaviteli. Deklaraci identity JTI lze použít k zabránění opakovanému přehrání tokenu JWT. Hodnota "JTI" je řetězec, který rozlišuje velká a malá písmena. [RFC 7519, část 4.1.7]
-NBF | Čtvrtek června 27 2019 14:54:17 GMT + 0200 (románské země (letní čas)) | Deklarace "NBF" (ne dřív) určuje dobu, po jejímž uplynutí nesmí být požadavek JWT přijat ke zpracování. [RFC 7519, oddíl 4.1.5]
-jednotk | ClientID | Deklarace "sub" (Subject) identifikuje předmět tokenu JWT. Deklarace v tokenu JWT jsou obvykle příkazy pro předmět. Hodnota subjektu musí být buď vymezená, aby byla v kontextu vystavitele místně jedinečná, nebo být globálně jedinečná. Viz [RFC 7519, oddíl 4.1.2].
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Deklarace "AUD" (cílová skupina) identifikuje příjemce, pro které je požadavek JWT určen (tady Azure AD) [, viz dokument RFC 7519, část 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  V takovém případě je tento příjemce přihlašovacím serverem (login.microsoftonline.com).
+exp | 1601519414 | Deklarace "EXP" (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí může být požadavek JWT přijat ke zpracování. Viz [dokument RFC 7519, část 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  To umožňuje, aby byl kontrolní výraz použit až do té doby, takže by měl být krátký – 5-10 minut po `nbf` maximálně.  Služba Azure AD v současné době neumísťuje omezení `exp` . 
+ISS | ClientID | Deklarace "ISS" (Issuer) identifikuje objekt zabezpečení, který vystavil token JWT, v tomto případě klientská aplikace.  Použijte ID aplikace GUID.
+jti | (identifikátor GUID) | Deklarace identity JTI (ID JWT) poskytuje jedinečný identifikátor pro token JWT. Hodnota identifikátoru musí být přiřazena způsobem, který zajišťuje nezanedbatelnou pravděpodobnost, že stejná hodnota bude omylem přiřazena k jinému datovému objektu. Pokud aplikace používá více vystavitelů, musí být kolizi znemožněna mezi hodnotami vytvořenými různými vystaviteli. Hodnota "JTI" je řetězec, který rozlišuje velká a malá písmena. [RFC 7519, část 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+NBF | 1601519114 | Deklarace "NBF" (ne dřív) určuje dobu, po jejímž uplynutí nesmí být požadavek JWT přijat ke zpracování. [RFC 7519, oddíl 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Použití aktuálního času je vhodné. 
+jednotk | ClientID | Deklarace "sub" (Subject) identifikuje předmět tokenu JWT, v tomto případě i ve vaší aplikaci. Použijte stejnou hodnotu jako `iss` . 
 
 Tady je příklad, jak vytvořit tyto deklarace identity:
 
@@ -181,7 +181,7 @@ Jakmile budete mít podepsaného kontrolního výrazu klienta, můžete ho použ
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`ve výchozím nastavení vytvoří podepsaný kontrolní výraz obsahující deklarace, které očekává služba Azure AD, a další deklarace identity klientů, které chcete odeslat. Zde je fragment kódu, jak to provést.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` ve výchozím nastavení vytvoří podepsaný kontrolní výraz obsahující deklarace, které očekává služba Azure AD, a další deklarace identity klientů, které chcete odeslat. Zde je fragment kódu, jak to provést.
 
 ```csharp
 string ipAddress = "192.168.1.2";

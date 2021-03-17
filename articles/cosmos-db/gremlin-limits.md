@@ -1,23 +1,25 @@
 ---
 title: Omezení Azure Cosmos DB Gremlin
 description: Referenční dokumentace pro běhová omezení modulu grafu
-author: LuisBosquez
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: lbosq
-ms.openlocfilehash: 76ad787990c355d29613c05ca9fce31885a2eccc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: sngun
+ms.openlocfilehash: 4e638fdff67ad2d0bc6f191cdfd46867ab847923
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72029850"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080103"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Omezení Gremlin ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 Tento článek pojednává o omezeních Azure Cosmos DBho stroje Gremlin a vysvětluje, jak mohou ovlivnit zákaznická procházení.
 
-Cosmos DB Gremlin je postavená na Cosmos DB infrastruktuře. Z tohoto důvodu jsou všechna omezení vysvětlena v [Azure Cosmos DB omezení služby](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) jsou stále použitelná. 
+Cosmos DB Gremlin je postavená na Cosmos DB infrastruktuře. Z tohoto důvodu jsou všechna omezení vysvětlena v [Azure Cosmos DB omezení služby](./concepts-limits.md) jsou stále použitelná.
 
 ## <a name="limits"></a>Omezení
 
@@ -34,5 +36,5 @@ Po dosažení limitu Gremlin se přecházení zruší s **x-MS-Status-code** 429
 *Počet tokenů prostředků za hodinu* | **100** | Počet jedinečných tokenů prostředků, pomocí kterých se klienti Gremlin připojují k účtu Gremlin v příslušné oblasti. Pokud aplikace překročí limit hodinových jedinečných tokenů, `"Exceeded allowed resource token limit of 100 that can be used concurrently"` bude vrácena na další požadavek na ověření.
 
 ## <a name="next-steps"></a>Další kroky
-* [Hlavičky odpovědi Azure Cosmos DB Gremlin](gremlin-headers.md) 
+* [Hlavičky odpovědi Azure Cosmos DB Gremlin](gremlin-headers.md)
 * [Azure Cosmos DB tokeny prostředků pomocí Gremlin](how-to-use-resource-tokens-gremlin.md)

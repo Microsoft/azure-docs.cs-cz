@@ -1,27 +1,12 @@
 ---
-title: Živý přepis
-titleSuffix: Azure Media Services
-description: Přečtěte si o Azure Media Services živý přepis.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: article
-ms.date: 06/12/2019
-ms.author: inhenkel
-ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765008"
+title: Live přepis: Azure Media Services popis: informace o Azure Media Services živý přepis.  
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: ne MS. kapitola: How-to MS. Date: 08/31/2020 MS. Author: inhenkel
+
 ---
+
 # <a name="live-transcription-preview"></a>Živý přepis (Preview)
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Služba Azure Media Service nabízí video, zvuk a text v různých protokolech. Když publikujete živý datový proud pomocí MPEG-POMLČKy nebo HLS/CMAF, pak společně s videem a zvukem doručí naše služba přepisu text v IMSC 1.1 kompatibilní TTML. Doručení se zabalí do fragmentů MPEG-4 Part 30 (ISO/IEC 14496-30). Pokud používáte doručování přes HLS/TS, text se doručí jako VTTý v bloku.
 
@@ -33,13 +18,13 @@ Tento článek popisuje, jak povolit živý přepis při streamování živé ud
 
 Živý přepis je k dispozici v následujících oblastech:
 
-- Jihovýchodní Asie
-- Západní Evropa
+- Southeast Asia
+- West Europe
 - Severní Evropa
-- USA – východ
+- East US
 - USA – střed
-- USA – středojih
-- USA – západ 2
+- Středojižní USA
+- Západní USA 2
 - Brazílie – jih
 
 Toto je seznam dostupných jazyků, které je možné přepisu, pomocí kódu jazyka v rozhraní API.
@@ -54,7 +39,7 @@ Toto je seznam dostupných jazyků, které je možné přepisu, pomocí kódu ja
 | Angličtina (Spojené království) | en-GB |
 | Angličtina (Indie) | en-IN |
 | Angličtina (Nový Zéland) | EN-NZ |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Španělština (Španělsko) | es-ES |
 | Španělština (Mexiko) | ES – MX |
 | finština (Finsko) | fi-FI |
@@ -135,7 +120,7 @@ Pokud chcete zapnout funkci Live přepisu nebo aktualizovat jazyk přepisu, opra
 
 Toto je ukázkové volání pro zapnutí živých přepisů.
 
-POUŽITA```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+POUŽITA ```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
 
 ```
 {

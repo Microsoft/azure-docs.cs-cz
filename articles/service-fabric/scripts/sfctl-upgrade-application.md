@@ -15,10 +15,10 @@ ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: ''
 ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75614719"
 ---
 # <a name="update-an-application-using-the-service-fabric-cli"></a>Aktualizace aplikace pomocí rozhraní příkazového řádku Service Fabric

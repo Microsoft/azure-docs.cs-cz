@@ -2,61 +2,45 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 02/09/2020
+ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 55c64048e0604987c5a4c26961e5617106358e76
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 11d426016cfe1a8a9ff843da518f57c08881be5d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84436170"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842292"
 ---
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-Spusťte funkci spuštěním místního hostitele modulu runtime Azure Functions ze složky *LocalFunctionProj* :
+1. Spusťte funkci spuštěním místního hostitele modulu runtime Azure Functions ze složky *LocalFunctionProj* :
 
-::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-javascript,programming-language-python"
-```
-func start
-```
-::: zone-end
+    ```
+    func start
+    ```
 
-::: zone pivot="programming-language-typescript"
-```
-npm install
-npm start
-```
-::: zone-end
+    Ke konci výstupu by se měly zobrazit následující řádky: 
+    
+    <pre>
+    ...
+    
+    Now listening on: http://0.0.0.0:7071
+    Application started. Press Ctrl+C to shut down.
+    
+    Http Functions:
+    
+            HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
+    ...
+    
+    </pre>
+    
+    >[!NOTE]  
+    > Pokud se HttpExample nezobrazí, jak je uvedeno výše, pravděpodobně jste spustili hostitele mimo kořenovou složku projektu. V takovém případě pomocí **kombinace kláves CTRL +** + **C** zastavte hostitele, přejděte do kořenové složky projektu a spusťte předchozí příkaz znovu.
 
-::: zone pivot="programming-language-java"
-```
-mvn clean package 
-mvn azure-functions:run
-```
-::: zone-end
+1. Zkopírujte adresu URL vaší `HttpExample` funkce z tohoto výstupu do prohlížeče a přidejte řetězec dotazu `?name=<YOUR_NAME>` , jako je třeba celá adresa URL `http://localhost:7071/api/HttpExample?name=Functions` . V prohlížeči by se měla zobrazit zpráva jako `Hello Functions` :
 
-Ke konci výstupu by se měly zobrazit následující řádky: 
+    ![Výsledek funkce místně spuštěný v prohlížeči](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
-<pre>
-...
+1. Terminál, ve kterém jste spustili projekt, také zobrazuje výstup protokolu při provádění požadavků.
 
-Now listening on: http://0.0.0.0:7071
-Application started. Press Ctrl+C to shut down.
-
-Http Functions:
-
-        HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
-...
-
-</pre>
-
->[!NOTE]  
-> Pokud se HttpExample nezobrazí, jak je uvedeno níže, pravděpodobně jste spustili hostitele mimo kořenovou složku projektu. V takovém případě pomocí **kombinace kláves CTRL +** + **C** zastavte hostitele, přejděte do kořenové složky projektu a spusťte předchozí příkaz znovu.
-
-Zkopírujte adresu URL vaší `HttpExample` funkce z tohoto výstupu do prohlížeče a přidejte řetězec dotazu `?name=<your-name>` , jako je třeba celá adresa URL `http://localhost:7071/api/HttpExample?name=Functions` . V prohlížeči by se měla zobrazit zpráva jako `Hello Functions` :
-
-![Výsledek funkce místně spuštěný v prohlížeči](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
-
-Terminál, ve kterém jste spustili projekt, také zobrazuje výstup protokolu při provádění požadavků.
-
-Až budete připraveni, použijte **CTRL** + **C** a vyberte možnost `y` zastavit hostitele funkcí.
+1. Až budete hotovi, použijte **CTRL** + **C** a vyberte možnost `y` zastavit hostitele funkcí.

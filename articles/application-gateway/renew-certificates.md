@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 8/15/2018
+ms.date: 01/20/2021
 ms.author: victorh
-ms.openlocfilehash: de57a58f7c891009d2e0cc43b351c2cad42a2766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0c06a94498f4d2481a6e953b959d766c60415fb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807873"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622176"
 ---
 # <a name="renew-application-gateway-certificates"></a>Prodloužit platnost Application Gatewaych certifikátů
 
@@ -22,11 +22,11 @@ Certifikát přidružený k naslouchacímu procesu můžete obnovit pomocí Azur
 
 ## <a name="azure-portal"></a>portál Azure
 
-Pokud chcete obnovit certifikát naslouchacího procesu z portálu, přejděte na naslouchací procesy služby Application Gateway. Klikněte na naslouchací proces s certifikátem, který je třeba obnovit, a potom klikněte na tlačítko **obnovit nebo upravit vybraný certifikát**.
+Pokud chcete obnovit certifikát naslouchacího procesu z portálu, přejděte na naslouchací procesy služby Application Gateway. Vyberte naslouchací proces s certifikátem, který je třeba obnovit, a potom vyberte možnost **obnovit nebo upravit vybraný certifikát**.
 
-![Prodloužit platnost certifikátu](media/renew-certificate/ssl-cert.png)
+:::image type="content" source="media/renew-certificate/ssl-cert.png" alt-text="Prodloužit platnost certifikátu":::
 
-Nahrajte nový certifikát PFX, zadejte jeho název, zadejte heslo a klikněte na **Uložit**.
+Nahrajte nový certifikát PFX, zadejte jeho název, zadejte heslo a pak vyberte **Uložit**.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak nakonfigurovat snižování zátěže TLS pomocí Azure Application Gateway, najdete v tématu [Konfigurace snižování zátěže TLS](application-gateway-ssl-portal.md) .
+Informace o tom, jak nakonfigurovat snižování zátěže TLS pomocí Azure Application Gateway, najdete v tématu [Konfigurace snižování zátěže TLS](./create-ssl-portal.md) .

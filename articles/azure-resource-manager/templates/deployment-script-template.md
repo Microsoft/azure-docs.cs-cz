@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291796"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175647"
 ---
-# <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
+# <a name="use-deployment-scripts-in-arm-templates"></a>Použití skriptů pro nasazení v šablonách ARM
 
-Naučte se používat skripty pro nasazení v šablonách prostředků Azure. S názvem nový typ prostředku `Microsoft.Resources/deploymentScripts` můžou uživatelé spouštět skripty nasazení v nasazeních šablon a kontrolovat výsledky spuštění. Tyto skripty lze použít k provedení vlastních kroků, jako například:
+Naučte se používat skripty pro nasazení v šablonách prostředků Azure (šablony ARM). S názvem nový typ prostředku `Microsoft.Resources/deploymentScripts` můžou uživatelé spouštět skripty v nasazeních šablon a kontrolovat výsledky spuštění. Tyto skripty lze použít k provedení vlastních kroků, jako například:
 
 - Přidání uživatelů do adresáře
 - provádět operace roviny dat, například objekty blob kopírování nebo databáze počátečních dat
@@ -29,7 +29,6 @@ Výhody skriptu nasazení:
 
 - Snadné kódování, použití a ladění. Skripty pro nasazení můžete vyvíjet ve svých oblíbených vývojových prostředích. Skripty mohou být vloženy do šablon nebo externích souborů skriptu.
 - Můžete zadat jazyk skriptu a platformu. V současné době jsou podporovány skripty nasazení Azure PowerShell a Azure CLI v prostředí systému Linux.
-- Povolte určení identit, které se používají ke spouštění skriptů. V současné době se podporuje jenom [spravovaná identita přiřazená uživatelem Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) .
 - Povolí předání argumentů příkazového řádku do skriptu.
 - Může určit výstupy skriptu a předávat je zpátky do nasazení.
 
@@ -38,57 +37,52 @@ Prostředek skriptu nasazení je k dispozici pouze v oblastech, kde je k dispozi
 > [!IMPORTANT]
 > K provádění skriptů a odstraňování potíží je potřeba účet úložiště a instance kontejneru. Máte možnost zadat existující účet úložiště, jinak se služba skriptu automaticky vytvoří účet úložiště spolu s instancí kontejneru. Tyto dva automaticky vytvořené prostředky obvykle odstraní služba skriptu, když se spuštění skriptu nasazení dostane do stavu terminálu. Budou se vám účtovat prostředky, dokud se prostředky neodstraní. Další informace najdete v tématu [vyčištění prostředků skriptů nasazení](#clean-up-deployment-script-resources).
 
-## <a name="prerequisites"></a>Požadavky
+> [!IMPORTANT]
+> Rozhraní deploymentScripts Resource API verze 2020-10-01 podporuje [OnBehalfofTokens (OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md). Pomocí OBO využívá služba skriptu nasazení token objektu zabezpečení nasazení k vytvoření základních prostředků pro spouštění skriptů nasazení, mezi které patří Azure Container instance, účet Azure Storage a přiřazení rolí pro spravovanou identitu. Ve starší verzi rozhraní API se k vytváření těchto prostředků používá spravovaná identita.
+> Logika opakování pro přihlášení k Azure je teď integrovaná do skriptu obálky. Pokud udělíte oprávnění ve stejné šabloně, kde spouštíte skripty nasazení. Služba skriptu nasazení opakuje přihlášení po dobu 10 minut a 10 sekund, dokud se nereplikuje přiřazení role spravované identity.
 
-- **Spravovaná identita přiřazená uživatelem s rolí přispěvatele do cílové skupiny prostředků**. Tato identita se používá ke spouštění skriptů nasazení. K provedení operací mimo skupinu prostředků je potřeba udělit další oprávnění. Například pokud chcete vytvořit novou skupinu prostředků, přiřaďte identitu k úrovni předplatného.
+## <a name="configure-the-minimum-permissions"></a>Konfigurace minimálních oprávnění
 
-  > [!NOTE]
-  > Služba skriptu vytvoří účet úložiště (Pokud nezadáte existující účet úložiště) a instanci kontejneru na pozadí.  Spravovaná identita přiřazená uživateli s rolí přispěvatele na úrovni předplatného je povinná, pokud předplatné nezaregistrovalo službu Azure Storage Account (Microsoft. Storage) a poskytovatele prostředků Azure Container instance (Microsoft. ContainerInstance).
+Pro nasazení rozhraní API skriptu verze 2020-10-01 nebo novější se k vytvoření základních prostředků, které jsou potřebné ke spuštění prostředku skriptu nasazení, používá účet úložiště a instance kontejneru Azure. Pokud se skript potřebuje k ověřování v Azure a provádění akcí specifických pro Azure, doporučujeme pro tento skript poskytnout spravovanou identitu přiřazenou uživatelem. Aby bylo možné dokončit operaci ve skriptu, musí mít spravovaná identita požadovaný přístup.
 
-  Pokud chcete vytvořit identitu, přečtěte si článek [Vytvoření spravované identity přiřazené uživatelem pomocí Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)nebo pomocí rozhraní příkazového [řádku Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)nebo [pomocí Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). ID identity budete potřebovat při nasazení šablony. Formát identity je:
+Chcete-li konfigurovat oprávnění pro nejnižší oprávnění, budete potřebovat:
+
+- Přiřaďte k instančnímu objektu nasazení vlastní roli s následujícími vlastnostmi:
 
   ```json
-  /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
+  {
+    "roleName": "deployment-script-minimum-privilege-for-deployment-principal",
+    "description": "Configure least privilege for the deployment principal in deployment script",
+    "type": "customRole",
+    "IsCustom": true,
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Storage/storageAccounts/*",
+          "Microsoft.ContainerInstance/containerGroups/*",
+          "Microsoft.Resources/deployments/*",
+          "Microsoft.Resources/deploymentScripts/*"
+        ],
+      }
+    ],
+    "assignableScopes": [
+      "[subscription().id]"
+    ]
+  }
   ```
 
-  Pomocí následujícího skriptu CLI nebo skriptu PowerShellu Získejte ID zadáním názvu skupiny prostředků a názvu identity.
+  Pokud Azure Storage a poskytovatelé prostředků služby Azure Container instance nejsou zaregistrovaní, je také nutné přidat `Microsoft.Storage/register/action` a `Microsoft.ContainerInstance/register/action` .
 
-  # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
-
-  ```azurecli-interactive
-  echo "Enter the Resource Group name:" &&
-  read resourceGroupName &&
-  echo "Enter the managed identity name:" &&
-  read idName &&
-  az identity show -g $resourceGroupName -n $idName --query id
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-  ```azurepowershell-interactive
-  $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
-  $idName = Read-Host -Prompt "Enter the name of the managed identity"
-
-  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
-  ```
-
-  ---
-
-- **Azure PowerShell** nebo **Azure CLI**. Podívejte se na seznam [podporovaných verzí Azure PowerShell](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Podívejte se na seznam [podporovaných verzí rozhraní příkazového řádku Azure CLI](https://mcr.microsoft.com/v2/azure-cli/tags/list).
-
-    >[!IMPORTANT]
-    > Skript nasazení používá dostupné image CLI z Microsoft Container Registry (MCR). K certifikaci bitové kopie rozhraní příkazového řádku pro skript nasazení trvá zhruba jeden měsíc. Nepoužívejte verze rozhraní příkazového řádku, které byly vydány do 30 dnů. Data vydání imagí najdete v [poznámkách k verzi Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest). Pokud se používá Nepodporovaná verze, zobrazí se chybová zpráva s přehledem podporovaných verzí.
-
-    Tyto verze nepotřebujete pro nasazování šablon. Tyto verze jsou ale nutné pro místní testování skriptů nasazení. Přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Můžete použít předem nakonfigurovanou bitovou kopii Docker.  Viz [Konfigurace vývojového prostředí](#configure-development-environment).
+- Pokud se používá spravovaná identita, hlavní povinný objekt nasazení potřebuje roli **spravovaného operátora identity** (předdefinované role) přiřazenou spravovanému prostředku identity.
 
 ## <a name="sample-templates"></a>Ukázkové šablony
 
-Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [tady](/azure/templates/microsoft.resources/deploymentscripts).
+Následující kód JSON je příklad. Další informace najdete v tématu nejnovější [schéma šablony](/azure/templates/microsoft.resources/deploymentscripts).
 
 ```json
 {
   "type": "Microsoft.Resources/deploymentScripts",
-  "apiVersion": "2019-10-01-preview",
+  "apiVersion": "2020-10-01",
   "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
   "kind": "AzurePowerShell", // or "AzureCLI"
@@ -99,7 +93,7 @@ Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [
     }
   },
   "properties": {
-    "forceUpdateTag": 1,
+    "forceUpdateTag": "1",
     "containerSettings": {
       "containerGroupName": "mycustomaci"
     },
@@ -107,17 +101,21 @@ Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [
       "storageAccountName": "myStorageAccount",
       "storageAccountKey": "myKey"
     },
-    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80",
     "arguments": "-name \\\"John Dole\\\"",
     "environmentVariables": [
       {
-        "name": "someSecret",
-        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+        "name": "UserName",
+        "value": "jdole"
+      },
+      {
+        "name": "Password",
+        "secureValue": "jDolePassword"
       }
     ],
     "scriptContent": "
       param([string] $name)
-      $output = 'Hello {0}' -f $name
+      $output = 'Hello {0}. The username is {1}, the password is {2}.' -f $name,${Env:UserName},${Env:Password}
       Write-Output $output
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
@@ -131,37 +129,44 @@ Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [
 ```
 
 > [!NOTE]
-> Příklad je určen pro demonstrační účely.  **scriptContent** a **primaryScriptUri** se v šabloně nedají koexistovat.
+> Příklad je určen pro demonstrační účely. Vlastnosti `scriptContent` a `primaryScriptUri` nemohou koexistovat v šabloně.
 
 Podrobnosti hodnoty vlastnosti:
 
-- **Identita**: služba skriptu nasazení používá ke spouštění skriptů spravovanou identitu přiřazenou uživatelem. V současné době je podporována pouze spravovaná identita přiřazená uživatelem.
-- **druh**: zadejte typ skriptu. V současné době jsou podporovány skripty Azure PowerShell a Azure CLI. Hodnoty jsou **AzurePowerShell** a **Azure CLI**.
-- **forceUpdateTag**: Změna této hodnoty mezi nasazeními šablon vynutí opětovné spuštění skriptu nasazení. Použijte funkci newGuid () nebo utcNow (), která musí být nastavena jako výchozí hodnota parametru. Další informace najdete v tématu [spuštění skriptu více než jednou](#run-script-more-than-once).
-- **containerSettings**: Zadejte nastavení pro přizpůsobení instance kontejneru Azure.  **containerGroupName** je určen pro zadání názvu skupiny kontejnerů.  Pokud není zadaný, název skupiny se automaticky vygeneruje.
-- **storageAccountSettings**: Zadejte nastavení pro použití existujícího účtu úložiště. Pokud není zadaný, automaticky se vytvoří účet úložiště. Viz [použití existujícího účtu úložiště](#use-existing-storage-account).
-- **azPowerShellVersion** / **azCliVersion**: Zadejte verzi modulu, která se má použít. Seznam podporovaných verzí PowerShellu a rozhraní příkazového řádku najdete v tématu [požadavky](#prerequisites).
-- **argumenty**: zadejte hodnoty parametrů. Hodnoty jsou oddělené mezerami.
+- `identity`: Rozhraní API pro nasazení skriptů verze 2020-10-01 nebo novější je uživatelem přiřazená identita volitelná, pokud nepotřebujete ve skriptu provádět žádné akce specifické pro Azure.  Pro rozhraní API verze 2019-10-01-Preview je požadovaná spravovaná identita, protože služba skriptu nasazení ji používá ke spouštění skriptů. V současné době je podporována pouze spravovaná identita přiřazená uživatelem.
+- `kind`: Zadejte typ skriptu. V současné době jsou podporovány skripty Azure PowerShell a Azure CLI. Hodnoty jsou **AzurePowerShell** a **Azure CLI**.
+- `forceUpdateTag`: Změna této hodnoty mezi nasazeními šablon vynutí opětovné spuštění skriptu nasazení. Použijete-li `newGuid()` funkce nebo `utcNow()` , lze obě funkce použít pouze ve výchozí hodnotě parametru. Další informace najdete v tématu [spuštění skriptu více než jednou](#run-script-more-than-once).
+- `containerSettings`: Zadejte nastavení pro přizpůsobení instance kontejneru Azure.  `containerGroupName` slouží k zadání názvu skupiny kontejnerů. Pokud není zadaný, název skupiny se automaticky vygeneruje.
+- `storageAccountSettings`: Zadejte nastavení pro použití existujícího účtu úložiště. Pokud není zadaný, automaticky se vytvoří účet úložiště. Viz [použití existujícího účtu úložiště](#use-existing-storage-account).
+- `azPowerShellVersion`/`azCliVersion`: Zadejte verzi modulu, která se má použít. Podívejte se na seznam [podporovaných verzí Azure PowerShell](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Podívejte se na seznam [podporovaných verzí rozhraní příkazového řádku Azure CLI](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
-    Skripty nasazení rozdělí argumenty do pole řetězců vyvoláním [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) systému. To je nezbytné, protože argumenty jsou předány jako [vlastnost příkazu](/rest/api/container-instances/containergroups/createorupdate#containerexec) službě Azure Container instance a vlastnost Command je pole řetězce.
+  >[!IMPORTANT]
+  > Skript nasazení používá dostupné image CLI z Microsoft Container Registry (MCR). K certifikaci bitové kopie rozhraní příkazového řádku pro skript nasazení trvá zhruba jeden měsíc. Nepoužívejte verze rozhraní příkazového řádku, které byly vydány do 30 dnů. Data vydání imagí najdete v [poznámkách k verzi Azure CLI](/cli/azure/release-notes-azure-cli). Pokud se používá Nepodporovaná verze, zobrazí se chybová zpráva s podporovanými verzemi.
 
-    Pokud argumenty obsahují řídicí znaky, použijte [JsonEscaper](https://www.jsonescaper.com/) pro dvojitou sekvenci znaků. Vložte původní řídicí řetězec do nástroje a pak vyberte **Escape**.  Nástroj vypíše řetězec s dvojitým řídicím znakem. Například v předchozí ukázkové šabloně je argumentem **název \\ "Jan dole \\ "**.  Řetězec s řídicím řetězcem je **name \\ \\ \\ "Jan dole \\ \\ \\ "**.
+- `arguments`: Zadejte hodnoty parametrů. Hodnoty jsou oddělené mezerami.
 
-    Chcete-li předat parametr šablony ARM typu Object jako argument, převeďte objekt na řetězec pomocí funkce [String ()](./template-functions-string.md#string) a pak použijte funkci [Replace ()](./template-functions-string.md#replace) , která nahradí všechny ** \\ "** into ** \\ \\ \\ "**. Například:
+  Skripty nasazení rozdělí argumenty do pole řetězců vyvoláním [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) systému. Tento krok je nezbytný, protože argumenty jsou předány jako [vlastnost příkazu](/rest/api/container-instances/containergroups/createorupdate#containerexec) službě Azure Container instance a vlastnost Command je pole řetězce.
 
-    ```json
-    replace(string(parameters('tables')), '\"', '\\\"')
-    ```
+  Pokud argumenty obsahují řídicí znaky, použijte [JsonEscaper](https://www.jsonescaper.com/) pro dvojitou sekvenci znaků. Vložte původní řídicí řetězec do nástroje a pak vyberte **Escape**.  Nástroj vypíše řetězec s dvojitým řídicím znakem. Například v předchozí ukázkové šabloně je argument `-name \"John Dole\"` . Řídicí řetězec je `-name \\\"John Dole\\\"` .
 
-    Chcete-li zobrazit vzorovou šablonu, vyberte [zde](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json).
+  Chcete-li předat parametr šablony ARM typu Object jako argument, převeďte objekt na řetězec pomocí funkce [String ()](./template-functions-string.md#string) a pak použijte funkci [Replace ()](./template-functions-string.md#replace) , která se má nahradit `\"` `\\\"` . Například:
 
-- **environmentVariables**: Určete proměnné prostředí, které se mají předat skriptu. Další informace najdete v tématu [vývoj skriptů nasazení](#develop-deployment-scripts).
-- **scriptContent**: Zadejte obsah skriptu. Pokud chcete spustit externí skript, použijte `primaryScriptUri` místo toho. Příklady najdete v tématu [použití vloženého skriptu](#use-inline-scripts) a [použití externího skriptu](#use-external-scripts).
-- **primaryScriptUri**: zadejte veřejně přístupnou adresu URL ke skriptu primárního nasazení s podporovanými příponami souborů.
-- **supportingScriptUris**: Určete pole veřejně přístupných adres URL k podpůrným souborům, které jsou volány buď `ScriptContent` nebo `PrimaryScriptUri` .
-- **timeout**: zadejte maximální povolenou dobu spuštění skriptu zadanou ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**.
-- **cleanupPreference**. Určete předvolbu čisticích prostředků nasazení, když se spuštění skriptu dostane do stavu terminálu. Výchozí nastavení je **vždy**, což znamená odstranění prostředků navzdory stavu terminálu (úspěšné, neúspěšné, zrušené). Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
-- **retentionInterval**: zadejte interval, po který služba uchovává prostředky skriptu nasazení poté, co spuštění skriptu nasazení dosáhne stavu terminálu. Prostředky skriptu nasazení budou odstraněny po uplynutí této doby. Doba trvání vychází ze [vzoru ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**, což znamená jeden den. Tato vlastnost se používá, pokud je cleanupPreference nastaveno na hodnotu- *vypršení platnosti*. Vlastnost- *vypršení platnosti* není v současné době povolena. Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
+  ```json
+  replace(string(parameters('tables')), '\"', '\\\"')
+  ```
+
+  Další informace najdete v [ukázkové šabloně](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json).
+
+- `environmentVariables`: Určete proměnné prostředí, které se mají předat skriptu. Další informace najdete v tématu [vývoj skriptů nasazení](#develop-deployment-scripts).
+- `scriptContent`: Zadejte obsah skriptu. Pokud chcete spustit externí skript, použijte `primaryScriptUri` místo toho. Příklady najdete v tématu [použití vloženého skriptu](#use-inline-scripts) a [použití externího skriptu](#use-external-scripts).
+  > [!NOTE]
+  > Azure Portal nemůže analyzovat skript nasazení s více řádky. K nasazení šablony se skriptem nasazení z Azure Portal můžete buď zřetězit příkazy prostředí PowerShell pomocí středníků na jeden řádek, nebo použít `primaryScriptUri` vlastnost s externím souborem skriptu.
+
+- `primaryScriptUri`: Zadejte veřejně přístupnou adresu URL ke skriptu primárního nasazení s podporovanými příponami souborů.
+- `supportingScriptUris`: Určete pole veřejně přístupných adres URL k podpůrným souborům, které jsou volány buď `scriptContent` nebo `primaryScriptUri` .
+- `timeout`: Zadejte maximální povolenou dobu spuštění skriptu určenou ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**.
+- `cleanupPreference`. Určete předvolbu čisticích prostředků nasazení, když se spuštění skriptu dostane do stavu terminálu. Výchozí nastavení je **vždy**, což znamená odstranění prostředků navzdory stavu terminálu (úspěšné, neúspěšné, zrušené). Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
+- `retentionInterval`: Zadejte interval, po který služba uchovává prostředky skriptu nasazení poté, co spuštění skriptu nasazení dosáhne stavu terminálu. Prostředky skriptu nasazení budou odstraněny po uplynutí této doby. Doba trvání vychází ze [vzoru ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Interval uchovávání dat je mezi 1 a 26 hodinami (PT26H). Tato vlastnost se používá v případě, že `cleanupPreference` je nastavena na hodnotu- **vypršení platnosti**. Vlastnost- **vypršení platnosti** není aktuálně povolena. Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>Další ukázky
 
@@ -169,55 +174,51 @@ Podrobnosti hodnoty vlastnosti:
 - [Ukázka 2](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json): Vytvořte skupinu prostředků na úrovni předplatného, ve skupině prostředků vytvořte Trezor klíčů a pak pomocí skriptu pro nasazení přiřaďte certifikát k trezoru klíčů.
 - [Ukázka 3](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json): Vytvořte spravovanou identitu přiřazenou uživatelem, přiřaďte roli přispěvatele k identitě na úrovni skupiny prostředků, vytvořte Trezor klíčů a pak pomocí skriptu pro nasazení přiřaďte certifikát k trezoru klíčů.
 
-> [!NOTE]
-> Doporučuje se vytvořit uživatelem přiřazenou identitu a předem udělit oprávnění. Pokud vytvoříte identitu a udělíte oprávnění ve stejné šabloně, kde spouštíte skripty nasazení, můžete získat chyby související s přihlášením a oprávněními. Bude nějakou dobu trvat, než se oprávnění dostanou platit.
-
 ## <a name="use-inline-scripts"></a>Použít vložené skripty
 
 Následující šablona má definován jeden prostředek s `Microsoft.Resources/deploymentScripts` typem. Zvýrazněná část je vložený skript.
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
-> Vzhledem k tomu, že vložené skripty pro nasazení jsou uzavřeny do dvojitých uvozovek, musí být řetězce uvnitř skriptů nasazení uvozeny pomocí **&#92;** nebo uzavřeny v jednoduchých uvozovkách. Můžete také zvážit použití náhrady řetězce, jak je znázorněno v předchozí ukázce JSON.
+> Vzhledem k tomu, že vložené skripty pro nasazení jsou uzavřeny do dvojitých uvozovek, musí být řetězce uvnitř skriptů nasazení uvozeny pomocí zpětného lomítka (**&#92;**) nebo uzavřeny v jednoduchých uvozovkách. Můžete také zvážit použití náhrady řetězce, jak je znázorněno v předchozí ukázce JSON.
 
-Skript přijímá jeden parametr a výstupní hodnotu parametru. **DeploymentScriptOutputs** se používá k ukládání výstupů.  V části výstupy zobrazuje řádek **hodnoty** jak získat přístup k uloženým hodnotám. `Write-Output`se používá pro účely ladění. Informace o tom, jak získat přístup k výstupnímu souboru, najdete v tématu [monitorování a odstraňování potíží se skripty nasazení](#monitor-and-troubleshoot-deployment-scripts).  Popis vlastností naleznete v tématu [Sample Templates](#sample-templates).
+Skript přijímá jeden parametr a výstupní hodnotu parametru. `DeploymentScriptOutputs` slouží k ukládání výstupů. V části výstupy `value` zobrazuje čára přístup k uloženým hodnotám. `Write-Output` se používá pro účely ladění. Informace o tom, jak získat přístup k výstupnímu souboru, najdete v tématu [monitorování a odstraňování potíží se skripty nasazení](#monitor-and-troubleshoot-deployment-scripts). Popis vlastností naleznete v tématu [Sample Templates](#sample-templates).
 
 Chcete-li spustit skript, vyberte příkaz **zkusit** pro otevření Cloud Shell a poté vložte následující kód do podokna prostředí.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$id = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json" -identity $id
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json"
 
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-Výstup bude vypadat následovně:
+Výstup vypadá takto:
 
 ![Výstup skriptu Hello World pro Správce prostředků šablon nasazení](./media/deployment-script-template/resource-manager-template-deployment-script-helloworld-output.png)
 
 ## <a name="use-external-scripts"></a>Použití externích skriptů
 
-Kromě vložených skriptů můžete použít také externí soubory skriptu. Podporují se jenom primární skripty PowerShellu s příponou souboru **ps1** . U skriptů CLI můžou primární skripty mít jakákoli rozšíření (nebo bez přípony), pokud jsou tyto skripty platné bash skripty. Chcete-li použít externí soubory skriptu, nahraďte parametr `scriptContent` `primaryScriptUri` . Například:
+Kromě vložených skriptů můžete použít také externí soubory skriptu. Podporují se jenom primární skripty PowerShellu s příponou souboru _ps1_ . U skriptů CLI můžou primární skripty mít jakákoli rozšíření (nebo bez přípony), pokud jsou tyto skripty platné bash skripty. Chcete-li použít externí soubory skriptu, nahraďte parametr `scriptContent` `primaryScriptUri` . Například:
 
 ```json
-"primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
+"primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
 ```
 
-Příklad zobrazíte výběrem [sem](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
+Další informace najdete v [příkladu šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
-Soubory externího skriptu musí být přístupné.  Informace o zabezpečení souborů skriptu uložených v účtech úložiště Azure najdete v tématu [nasazení privátní šablony ARM pomocí tokenu SAS](./secure-template-with-sas-token.md).
+Soubory externího skriptu musí být přístupné. Informace o zabezpečení souborů skriptu uložených v účtech úložiště Azure najdete v tématu [nasazení privátní šablony ARM pomocí tokenu SAS](./secure-template-with-sas-token.md).
 
-Zodpovídáte za zajištění integrity skriptů, které jsou odkazovány pomocí skriptu nasazení, buď **PrimaryScriptUri** nebo **SupportingScriptUris**.  Odkazovat pouze na skripty, kterým důvěřujete.
+Zodpovídáte za zajištění integrity skriptů, které jsou odkazovány pomocí skriptu nasazení, a to buď `primaryScriptUri` nebo `supportingScriptUris` . Odkazovat pouze na skripty, kterým důvěřujete.
 
 ## <a name="use-supporting-scripts"></a>Použití podpůrných skriptů
 
-Složité logiky můžete oddělit do jednoho nebo více podpůrných souborů skriptu. `supportingScriptURI`Vlastnost umožňuje v případě potřeby zadat pole identifikátorů URI pro podpůrné soubory skriptu:
+Složité logiky můžete oddělit do jednoho nebo více podpůrných souborů skriptu. `supportingScriptUris`Vlastnost umožňuje v případě potřeby zadat pole identifikátorů URI pro podpůrné soubory skriptu:
 
 ```json
 "scriptContent": "
@@ -233,15 +234,15 @@ Složité logiky můžete oddělit do jednoho nebo více podpůrných souborů s
 
 Podpůrné soubory skriptu lze volat z vložených skriptů i souborů primárního skriptu. Podpora souborů skriptu nemá žádná omezení na příponu souboru.
 
-Podpůrné soubory se zkopírují do azscripts/azscriptinput za běhu. Pomocí relativní cesty můžete odkazovat na podpůrné soubory z vložených skriptů a souborů primárního skriptu.
+Podpůrné soubory jsou zkopírovány do `azscripts/azscriptinput` modulu runtime. Pomocí relativní cesty můžete odkazovat na podpůrné soubory z vložených skriptů a souborů primárního skriptu.
 
 ## <a name="work-with-outputs-from-powershell-script"></a>Práce s výstupy ze skriptu PowerShellu
 
-Následující šablona ukazuje, jak předat hodnoty mezi dvěma deploymentScripts prostředky:
+Následující šablona ukazuje, jak předat hodnoty mezi dvěma `deploymentScripts` prostředky:
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-84" highlight="39-40,66":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
-V prvním prostředku definujete proměnnou s názvem **$DeploymentScriptOutputs**a použijete ji k uložení výstupních hodnot. Chcete-li získat přístup k výstupní hodnotě z jiného prostředku v rámci šablony, použijte:
+V prvním prostředku definujete proměnnou s názvem `$DeploymentScriptOutputs` a použijete ji k uložení výstupních hodnot. Chcete-li získat přístup k výstupní hodnotě z jiného prostředku v rámci šablony, použijte:
 
 ```json
 reference('<ResourceName>').output.text
@@ -249,9 +250,9 @@ reference('<ResourceName>').output.text
 
 ## <a name="work-with-outputs-from-cli-script"></a>Práce s výstupy ze skriptu CLI
 
-Liší se od skriptu nasazení prostředí PowerShell, Podpora CLI/bash nevystavuje společnou proměnnou pro ukládání výstupů skriptu. místo toho je k dispozici proměnná prostředí s názvem **AZ_SCRIPTS_OUTPUT_PATH** , která ukládá umístění, kde se nachází soubor výstupy skriptu. Pokud se skript nasazení spustí ze šablony Správce prostředků, tato proměnná prostředí se pro vás automaticky nastaví pomocí prostředí bash.
+Liší se od skriptu nasazení prostředí PowerShell, Podpora CLI/bash nezveřejňuje společnou proměnnou pro ukládání výstupů skriptu, místo toho je k dispozici proměnná prostředí `AZ_SCRIPTS_OUTPUT_PATH` s názvem, která ukládá umístění, kde se nachází soubor výstupy skriptu. Pokud se skript nasazení spustí ze šablony Správce prostředků, tato proměnná prostředí se pro vás automaticky nastaví pomocí prostředí bash.
 
-Výstupy skriptu nasazení musí být uloženy v umístění AZ_SCRIPTS_OUTPUT_PATH a výstupy musí být platný objekt řetězce JSON. Obsah souboru musí být uložen jako dvojice klíč-hodnota. Například pole řetězců je uloženo jako {"MyResult": ["foo", "bar"]}.  Ukládání pouze výsledků pole, například ["foo", "bar"], je neplatné.
+Výstupy skriptu nasazení musí být uloženy v `AZ_SCRIPTS_OUTPUT_PATH` umístění a výstupy musí být platný objekt řetězce JSON. Obsah souboru musí být uložen jako dvojice klíč-hodnota. Například pole řetězců je uloženo jako `{ "MyResult": [ "foo", "bar"] }` .  Ukládání pouze výsledků pole `[ "foo", "bar" ]` je například neplatné.
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json" range="1-44" highlight="32":::
 
@@ -263,7 +264,7 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 
 - Podporované typy účtů úložiště:
 
-    | Skladová položka             | Podporovaný druh     |
+    | SKU             | Podporovaný druh     |
     |-----------------|--------------------|
     | Premium_LRS     | Úložiště        |
     | Premium_ZRS     | Úložiště        |
@@ -274,9 +275,10 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
     | Standard_RAGZRS | StorageV2          |
     | Standard_ZRS    | StorageV2          |
 
-    Tyto kombinace podporují sdílení souborů.  Další informace najdete v tématu [Vytvoření sdílené složky Azure](../../storage/files/storage-how-to-create-file-share.md) a [typů účtů úložiště](../../storage/common/storage-account-overview.md).
+    Tyto kombinace podporují sdílení souborů. Další informace najdete v tématu [Vytvoření sdílené složky Azure](../../storage/files/storage-how-to-create-file-share.md) a [typů účtů úložiště](../../storage/common/storage-account-overview.md).
+
 - Pravidla brány firewall účtu úložiště ještě nejsou podporovaná. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../../storage/common/storage-network-security.md).
-- Spravovaná identita přiřazená uživatelem skriptu pro nasazení musí mít oprávnění ke správě účtu úložiště, který zahrnuje čtení, vytváření a odstraňování sdílených složek.
+- Objekt zabezpečení nasazení musí mít oprávnění ke správě účtu úložiště, který zahrnuje čtení, vytváření a odstraňování sdílených složek.
 
 Chcete-li zadat existující účet úložiště, přidejte následující JSON do elementu Property elementu `Microsoft.Resources/deploymentScripts` :
 
@@ -287,8 +289,8 @@ Chcete-li zadat existující účet úložiště, přidejte následující JSON 
 },
 ```
 
-- **storageAccountName**: zadejte název účtu úložiště.
-- **storageAccountKey "**: zadejte jeden z klíčů účtu úložiště. [`listKeys()`](./template-functions-resource.md#listkeys)K načtení klíče lze použít funkci. Například:
+- `storageAccountName`: zadejte název účtu úložiště.
+- `storageAccountKey`: zadejte jeden z klíčů účtu úložiště. K načtení klíče lze použít funkci [klíče listkey ()](./template-functions-resource.md#listkeys) . Například:
 
     ```json
     "storageAccountSettings": {
@@ -305,9 +307,9 @@ Když se použije existující účet úložiště, služba skriptu vytvoří sd
 
 ### <a name="handle-non-terminating-errors"></a>Zpracování neukončujících chyb
 
-Pomocí proměnné **$ErrorActionPreference** ve skriptu pro nasazení můžete řídit, jak PowerShell odpoví na neukončující chyby. Pokud proměnná není nastavená ve skriptu nasazení, služba skriptu použije výchozí hodnotu **pokračovat**.
+Způsob, jakým PowerShell odpoví na neukončující chyby, můžete řídit pomocí `$ErrorActionPreference` proměnné ve skriptu nasazení. Pokud tato proměnná není nastavená ve skriptu nasazení, služba skriptu použije výchozí hodnotu **pokračovat**.
 
-Služba skriptu nastaví stav zřizování prostředků na **neúspěšné** , pokud skript narazí na chybu navzdory nastavení $ErrorActionPreference.
+Služba skriptu nastaví stav zřizování prostředků na **neúspěšné** , pokud skript narazí na chybu navzdory nastavení `$ErrorActionPreference` .
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Předání zabezpečených řetězců skriptu nasazení
 
@@ -317,23 +319,23 @@ Maximální povolená velikost pro proměnné prostředí je 64 KB.
 
 ## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Monitorování a odstraňování potíží se skripty nasazení
 
-Služba skriptu vytvoří [účet úložiště](../../storage/common/storage-account-overview.md) (Pokud nezadáte existující účet úložiště) a [instanci kontejneru](../../container-instances/container-instances-overview.md) pro spuštění skriptu. Pokud tyto prostředky služba Script Service automaticky vytvoří, oba prostředky mají v názvech prostředků příponu **azscripts** .
+Služba skriptu vytvoří [účet úložiště](../../storage/common/storage-account-overview.md) (Pokud nezadáte existující účet úložiště) a [instanci kontejneru](../../container-instances/container-instances-overview.md) pro spuštění skriptu. Pokud tyto prostředky služba Script Service automaticky vytvoří, oba prostředky mají `azscripts` příponu v názvech prostředků.
 
 ![Názvy prostředků skriptů nasazení Správce prostředků šablon](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
-Uživatelský skript, výsledky spuštění a soubor stdout jsou uloženy ve sdílených složkách účtu úložiště. Existuje složka s názvem **azscripts**. Ve složce jsou k dispozici dvě další složky pro vstup a výstupní soubory: **azscriptinput** a **azscriptoutput**.
+Uživatelský skript, výsledky spuštění a soubor stdout jsou uloženy ve sdílených složkách účtu úložiště. Existuje složka s názvem `azscripts` . Ve složce jsou k dispozici dvě další složky pro vstup a výstupní soubory: `azscriptinput` a `azscriptoutput` .
 
-Výstupní složka obsahuje **executionresult.js** a výstupní soubor skriptu. V **executionresult.js**se zobrazí chybová zpráva spuštění skriptu. Výstupní soubor je vytvořen pouze v případě, že byl skript úspěšně proveden. Vstupní složka obsahuje systémový soubor skriptu PowerShellu a soubory skriptu nasazení uživatele. Můžete nahradit soubor skriptu nasazení uživatele revidovanou a znovu spustit skript nasazení z instance kontejneru Azure.
+Výstupní složka obsahuje _executionresult.js_ a výstupní soubor skriptu. V _executionresult.js_ se zobrazí chybová zpráva spuštění skriptu. Výstupní soubor je vytvořen pouze v případě, že byl skript úspěšně proveden. Vstupní složka obsahuje systémový soubor skriptu PowerShellu a soubory skriptu nasazení uživatele. Můžete nahradit soubor skriptu nasazení uživatele revidovanou a znovu spustit skript nasazení z instance kontejneru Azure.
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Po nasazení prostředku skriptu nasazení se prostředek zobrazí v části Skupina prostředků v Azure Portal. Na následujícím snímku obrazovky vidíte stránku s přehledem prostředku skriptu nasazení:
+Po nasazení prostředku skriptu nasazení se prostředek zobrazí v části Skupina prostředků v Azure Portal. Na následujícím snímku obrazovky vidíte stránku s **přehledem** prostředku skriptu nasazení:
 
 ![Správce prostředků – přehled portálu skriptu nasazení šablony](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
 
-Na stránce Přehled se zobrazí některé důležité informace o prostředku, jako je například **stav zřizování**, **účet úložiště**, **instance kontejneru**a **protokoly**.
+Na stránce Přehled se zobrazí některé důležité informace o prostředku, jako je například **stav zřizování**, **účet úložiště**, **instance kontejneru** a **protokoly**.
 
-V nabídce vlevo můžete zobrazit obsah skriptu nasazení, argumenty předané skriptu a výstup.  Můžete také exportovat šablonu pro skript nasazení, včetně skriptu nasazení.
+V nabídce vlevo můžete zobrazit obsah skriptu nasazení, argumenty předané skriptu a výstup. Můžete také exportovat šablonu pro skript nasazení, včetně skriptu nasazení.
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 
@@ -344,7 +346,7 @@ Pomocí Azure PowerShell můžete spravovat skripty nasazení v rámci předplat
 - [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript): Odebere skript nasazení a jeho přidružené prostředky.
 - [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog): uloží protokol spuštění skriptu nasazení na disk.
 
-Výstup Get-AzDeploymentScript je podobný následujícímu:
+`Get-AzDeploymentScript`Výstup je podobný následujícímu:
 
 ```output
 Name                : runPowerShellInlineWithOutput
@@ -375,10 +377,10 @@ Timeout             : PT1H
 
 Pomocí Azure CLI můžete spravovat skripty pro nasazení v rámci předplatného nebo oboru skupiny prostředků:
 
-- [AZ Deployment-Scripts Delete](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): odstranění skriptu nasazení.
-- [AZ Deployment-Scripting list](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): vypíše všechny skripty nasazení.
-- [AZ Deployment-Scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): načtení skriptu nasazení.
-- [AZ Deployment-skripty show-log](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log): zobrazí protokoly skriptu nasazení.
+- [AZ Deployment-Scripts Delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete): odstranění skriptu nasazení.
+- [AZ Deployment-Scripting list](/cli/azure/deployment-scripts#az-deployment-scripts-list): vypíše všechny skripty nasazení.
+- [AZ Deployment-Scripts show](/cli/azure/deployment-scripts#az-deployment-scripts-show): načtení skriptu nasazení.
+- [AZ Deployment-skripty show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log): zobrazí protokoly skriptu nasazení.
 
 Výstup příkazu list je podobný následujícímu:
 
@@ -445,18 +447,18 @@ Výstup příkazu list je podobný následujícímu:
 Informace o nasazení prostředku skriptu nasazení můžete získat na úrovni skupiny prostředků a na úrovni předplatného pomocí REST API:
 
 ```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2019-10-01-preview
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2020-10-01
 ```
 
 ```rest
-/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2019-10-01-preview
+/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2020-10-01
 ```
 
 Následující příklad používá [ARMClient](https://github.com/projectkudu/ARMClient):
 
 ```azurepowershell
 armclient login
-armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2019-10-01-preview
+armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2020-10-01
 ```
 
 Výstup je podobný tomuto:
@@ -514,7 +516,7 @@ Výstup je podobný tomuto:
 Následující REST API vrátí protokol:
 
 ```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2019-10-01-preview
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2020-10-01
 ```
 
 Funguje pouze před odstraněním prostředků skriptu nasazení.
@@ -529,27 +531,29 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 
 Životní cyklus těchto prostředků je řízen následujícími vlastnostmi v šabloně:
 
-- **cleanupPreference**: vyčistěte předvolby, když se spuštění skriptu dostane do stavu terminálu. Podporované hodnoty jsou:
+- `cleanupPreference`: Vyčistěte předvolby, když se spuštění skriptu dostane do stavu terminálu. Podporované hodnoty jsou:
 
-  - **Always**: odstranit automaticky vytvořené prostředky, jakmile se spuštění skriptu dostane do stavu terminálu. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku vytvořenou v účtu úložiště. Vzhledem k tomu, že prostředek deploymentScripts může být stále přítomen po vyčištění prostředků, služba skriptu uchovává výsledky spuštění skriptu, například stdout, výstupy, návratové hodnoty atd. před odstraněním prostředků.
+  - **Always**: odstranit automaticky vytvořené prostředky, jakmile se spuštění skriptu dostane do stavu terminálu. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku vytvořenou v účtu úložiště. Vzhledem k tomu `deploymentScripts` , že prostředek může být stále k dispozici po vyčištění prostředků, služba skriptu zachovává výsledky spuštění skriptu, například stdout, výstupy a návratové hodnoty před odstraněním prostředků.
   - **Úspěch**: Odstraňte automaticky vytvořené prostředky pouze v případě, že je spuštění skriptu úspěšné. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku, jenom když je spuštění skriptu úspěšné. K vyhledání informací o ladění máte stále přístup k prostředkům.
-  - **Vypršení platnosti**: odstranit automaticky vytvořené prostředky jenom v případě, že vypršela platnost nastavení **retentionInterval** . Pokud se použije existující účet úložiště, služba skriptu odebere sdílenou složku, ale zachová účet úložiště.
+  - **Vypršení platnosti**: odstranit automaticky vytvořené prostředky jenom v případě, že `retentionInterval` vypršela platnost nastavení. Pokud se použije existující účet úložiště, služba skriptu odebere sdílenou složku, ale zachová účet úložiště.
 
-- **retentionInterval**: zadejte časový interval, po který se zachová prostředek skriptu, a potom vyprší platnost a odstraní se.
+- `retentionInterval`: Zadejte časový interval, po který bude prostředek skriptu zachován, a poté jeho platnost vyprší a odstraní se.
 
 > [!NOTE]
 > Pro jiné účely se nedoporučuje používat účet úložiště a instanci kontejneru vygenerované službou skriptu. Tyto dva prostředky mohou být odstraněny v závislosti na životním cyklu skriptu.
 
+Instance kontejneru a účet úložiště se odstraní podle `cleanupPreference` . Pokud se ale skript nezdařil a `cleanupPreference` není nastaven na hodnotu **vždy**, proces nasazení automaticky udržuje kontejner spuštěný po dobu jedné hodiny. Tuto hodinu můžete použít k řešení potíží se skriptem. Pokud chcete po úspěšném nasazení zachovat kontejner spuštěný, přidejte do skriptu krok přechodu do režimu spánku. Například na konec skriptu přidejte [Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep) . Pokud nepřidáte krok spánku, kontejner je nastaven na stav terminálu a nebude k němu mít k dispozici, i když ještě nebyl odstraněn.
+
 ## <a name="run-script-more-than-once"></a>Spustit skript více než jednou
 
-Spuštění skriptu nasazení je operace idempotentní. Pokud se nezměnila žádná z vlastností prostředku deploymentScripts (včetně vloženého skriptu), skript se nespustí při opětovném nasazení šablony. Služba skriptu nasazení porovnává názvy prostředků v šabloně se stávajícími prostředky ve stejné skupině prostředků. Existují dvě možnosti, pokud chcete spustit stejný skript nasazení několikrát:
+Spuštění skriptu nasazení je operace idempotentní. Pokud `deploymentScripts` se nezměnila žádná z vlastností prostředku (včetně vloženého skriptu), skript se nespustí při opětovném nasazení šablony. Služba skriptu nasazení porovnává názvy prostředků v šabloně se stávajícími prostředky ve stejné skupině prostředků. Existují dvě možnosti, pokud chcete spustit stejný skript nasazení několikrát:
 
-- Změňte název prostředku deploymentScripts. Použijte například funkci šablony [UtcNow](./template-functions-date.md#utcnow) jako název prostředku nebo jako součást názvu prostředku. Změna názvu prostředku vytvoří nový prostředek deploymentScripts. Je vhodné uchovávat historii provádění skriptu.
+- Změňte název `deploymentScripts` prostředku. Použijte například funkci šablony [UtcNow](./template-functions-date.md#utcnow) jako název prostředku nebo jako součást názvu prostředku. Změna názvu prostředku vytvoří nový `deploymentScripts` prostředek. Je vhodné uchovávat historii spuštění skriptu.
 
     > [!NOTE]
-    > Funkci utcNow lze použít pouze ve výchozí hodnotě pro parametr.
+    > `utcNow`Funkci lze použít pouze ve výchozí hodnotě pro parametr.
 
-- Zadejte jinou hodnotu ve `forceUpdateTag` vlastnosti Template.  Jako hodnotu použijte například utcNow.
+- Zadejte jinou hodnotu ve `forceUpdateTag` vlastnosti Template. Použijte například `utcNow` jako hodnotu.
 
 > [!NOTE]
 > Zapište skripty nasazení, které jsou idempotentní. Tím se zajistí, že pokud se znovu spustí, nezpůsobí se změny systému. Například pokud se skript nasazení používá k vytvoření prostředku Azure, ověřte, že prostředek neexistuje, než ho vytvoříte, takže skript bude úspěšný, nebo znovu nevytvářejte prostředek.
@@ -565,11 +569,11 @@ Po úspěšném otestování skriptu ho můžete použít jako skript nasazení 
 | Kód chyby | Popis |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Definice prostředku skriptu nasazení v šabloně obsahuje neplatné názvy vlastností. |
-| DeploymentScriptResourceConflict | Nelze odstranit prostředek skriptu nasazení, který je v neterminálu, a provádění nepřekročilo 1 hodinu. Nebo nemůže znovu spustit stejný skript nasazení se stejným identifikátorem prostředku (stejné předplatné, název skupiny prostředků a název prostředku), ale současně i s různým obsahem textu skriptu. |
-| DeploymentScriptOperationFailed | Operace skriptu nasazení se nezdařila interně. Obraťte se prosím na podporu Microsoftu. |
+| DeploymentScriptResourceConflict | Nelze odstranit prostředek skriptu nasazení, který je v neterminálu, a provádění nepřekročilo 1 hodinu. Nebo nemůžete znovu spustit stejný skript nasazení se stejným identifikátorem prostředku (stejné předplatné, název skupiny prostředků a názvem prostředku), ale zároveň s jiným obsahem textu skriptu. |
+| DeploymentScriptOperationFailed | Operace skriptu nasazení se nezdařila interně. Obraťte se na podporu Microsoftu. |
 | DeploymentScriptStorageAccountAccessKeyNotSpecified | Přístupový klíč nebyl zadaný pro existující účet úložiště.|
 | DeploymentScriptContainerGroupContainsInvalidContainers | Skupina kontejnerů vytvořená službou skriptu nasazení se externě změnila a přidaly se neplatné kontejnery. |
-| DeploymentScriptContainerGroupInNonterminalState | Dva nebo víc prostředků skriptu nasazení používá stejný název instance kontejneru Azure ve stejné skupině prostředků a jedna z nich ještě nedokončila své provádění. |
+| DeploymentScriptContainerGroupInNonterminalState | Dva nebo více prostředků skriptu nasazení používají stejný název instance kontejneru Azure ve stejné skupině prostředků a jedna z nich ještě nedokončila své provádění. |
 | DeploymentScriptStorageAccountInvalidKind | Existující účet úložiště typu BlobBlobStorage nebo BlobStorage nepodporuje sdílené složky a nedá se použít. |
 | DeploymentScriptStorageAccountInvalidKindAndSku | Existující účet úložiště nepodporuje sdílení souborů. Seznam podporovaných typů účtů úložiště najdete v tématu [použití existujícího účtu úložiště](#use-existing-storage-account). |
 | DeploymentScriptStorageAccountNotFound | Účet úložiště neexistuje nebo byl odstraněn externím procesem nebo nástrojem. |
@@ -578,7 +582,7 @@ Po úspěšném otestování skriptu ho můžete použít jako skript nasazení 
 | DeploymentScriptStorageAccountInvalidAccessKeyFormat | Neplatný formát klíče účtu úložiště Viz [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md). |
 | DeploymentScriptExceededMaxAllowedTime | Doba spuštění skriptu nasazení překročila hodnotu časového limitu zadanou v definici prostředku skriptu nasazení. |
 | DeploymentScriptInvalidOutputs | Výstup skriptu nasazení není platný objekt JSON. |
-| DeploymentScriptContainerInstancesServiceLoginFailure | Uživatelem přiřazená identita se nemohla přihlásit po 10 pokusech o interval 1 minuty. |
+| DeploymentScriptContainerInstancesServiceLoginFailure | Uživatelsky přiřazená identita se nemohla přihlásit po 10 pokusech v intervalu 1 minut. |
 | DeploymentScriptContainerGroupNotFound | Skupina kontejnerů vytvořená službou skriptu nasazení byla odstraněna externím nástrojem nebo procesem. |
 | DeploymentScriptDownloadFailure | Nepovedlo se stáhnout podpůrný skript. Viz [použití podpůrného skriptu](#use-supporting-scripts).|
 | DeploymentScriptError | V uživatelském skriptu došlo k chybě. |
@@ -594,3 +598,6 @@ V tomto článku jste zjistili, jak používat skripty pro nasazení. Návod k p
 
 > [!div class="nextstepaction"]
 > [Kurz: použití skriptů nasazení v šablonách Azure Resource Manager](./template-tutorial-deployment-script.md)
+
+> [!div class="nextstepaction"]
+> [Seznámení s modulem: roztažení šablon ARM pomocí skriptů pro nasazení](/learn/modules/extend-resource-manager-template-deployment-scripts/)

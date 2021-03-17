@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na portálu'
 description: V tomto rychlém startu budete postupovat podle pokynů ke spuštění prvního dotazu z Azure Portal pomocí Průzkumníka Azure Resource Graph.
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: cb62a1ae3a29a7aae793fcee6fd896fe0260dc10
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056376"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920092"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu
 
@@ -31,7 +31,7 @@ Otevřete [Azure Portal](https://portal.azure.com) pro vyhledání a použití P
    > [!NOTE]
    > Jelikož tento příklad dotazu neposkytuje modifikátor řazení, jako je `order by` spuštění tohoto dotazu vícekrát, je pravděpodobně výsledkem jiné sady prostředků na žádost.
 
-1. Zkontrolujte odpověď na dotaz na kartě **výsledky** . výběrem karty **zprávy** zobrazíte podrobnosti o dotazu, včetně počtu výsledků a doby trvání dotazu. Případné chyby se zobrazí na této kartě.
+1. Přečtěte si odpověď na dotaz na kartě **výsledky** . Výběrem karty **zprávy** zobrazíte podrobnosti o dotazu, včetně počtu výsledků a doby trvání dotazu. Případné chyby se zobrazí na této kartě.
 
 1. Aktualizujte dotaz na `order by` vlastnost **Name** : `Resources | project name, type | limit 5 | order by name asc` . Pak vyberte **Spustit dotaz**.
 
@@ -47,11 +47,11 @@ Když se konečný dotaz několikrát spustí, předpokládá se, že se nic ve 
 Prohlížeč schématu je umístěný v levém podokně Průzkumníka grafu prostředků. Tento seznam prostředků zobrazuje všechny _typy_ prostředků Azure, které podporuje Azure Resource Graph a které existují v tenantovi, ke kterému máte přístup. Rozbalením typu prostředku nebo podvlastnostmi se zobrazí podřízené vlastnosti, které lze použít k vytvoření dotazu grafu prostředku.
 
 Výběr typu prostředku umístí `where type =="<resource type>"` do pole dotazu. Výběrem jedné z podřízených vlastností přidáte `where <propertyName> == "INSERT_VALUE_HERE"` do pole dotazu.
-Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použití v dotazech. Nezapomeňte nahradit _vloženou \_ hodnotu \_ _ vlastní hodnotou, upravit dotaz pomocí podmínek, operátorů a funkcí, abyste dosáhli zamýšlených výsledků.
+Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použití v dotazech. Nezapomeňte nahradit _vloženou \_ hodnotu \__ vlastní hodnotou, upravit dotaz pomocí podmínek, operátorů a funkcí, abyste dosáhli zamýšlených výsledků.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Vytvoření grafu z dotazu na graf prostředků
 
-Pokud po spuštění posledního dotazu vyberete kartu **grafy** , zobrazí se zpráva, že sada výsledků dotazu není kompatibilní s vizualizací výsečového grafu. Dotazy, které uvádějí výsledky seznamu, se nedají provést v grafu, ale můžou se zadat i dotazy, které poskytují počty prostředků. Pomocí [ukázkového dotazu – počet virtuálních počítačů podle typu operačního systému](./samples/starter.md#count-os)vytvoříme vizualizaci z dotazu na graf prostředků.
+Pokud po spuštění předchozího dotazu vyberete kartu **grafy** , zobrazí se zpráva, že sada výsledků dotazu není kompatibilní s vizualizací výsečového grafu. Dotazy, které uvádějí výsledky seznamu, se nedají provést v grafu, ale můžou se zadat i dotazy, které poskytují počty prostředků. Pomocí [ukázkového dotazu – počet virtuálních počítačů podle typu operačního systému](./samples/starter.md#count-os)vytvoříme vizualizaci z dotazu na graf prostředků.
 
 1. V části pro **dotaz 1** v okně zadejte následující dotaz a vyberte **Spustit dotaz**.
 
@@ -67,7 +67,7 @@ Pokud po spuštění posledního dotazu vyberete kartu **grafy** , zobrazí se z
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>Připnutí vizualizace dotazu na řídicí panel
 
-Když máte výsledky z dotazu, který je možné vizuálně vyfiltrovat, můžete tuto vizualizaci dat připnout k některému z vašich řídicích panelů. Po spuštění dotazu výše použijte následující postup:
+Když máte výsledky z dotazu, který je možné vizuálně vyfiltrovat, můžete tuto vizualizaci dat připnout k některému z vašich řídicích panelů. Po spuštění předchozího dotazu proveďte tyto kroky:
 
 1. Vyberte **Uložit** a zadejte název virtuální počítače podle typu operačního systému. Potom v dolní části pravého podokna vyberte **Save (Uložit** ).
 
@@ -103,7 +103,7 @@ Chcete-li poskytnout příklady dotazů na grafy prostředků a jak lze použít
 
 1. V Azure Portal v levém podokně vyberte **řídicí panel** .
 
-1. Vyberte **nahrát**a pak vyhledejte a vyberte stažený ukázkový soubor řídicího panelu. Pak vyberte **otevřít**.
+1. Vyberte **nahrát** a pak vyhledejte a vyberte stažený ukázkový soubor řídicího panelu. Pak vyberte **otevřít**.
 
 Automaticky se zobrazí importovaný řídicí panel. Protože teď existuje ve vašem Azure Portal, můžete podle potřeby prozkoumat a dělat změny nebo vytvořit nové řídicí panely z tohoto příkladu a sdílet je s vašimi týmy. Další informace o práci s řídicími panely najdete v tématu [Vytvoření a sdílení řídicích panelů v Azure Portal](../../azure-portal/azure-portal-dashboards.md).
 

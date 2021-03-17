@@ -4,12 +4,12 @@ ms.topic: include
 ms.date: 11/09/2018
 author: linda33wj
 ms.author: jingwang
-ms.openlocfilehash: c0fcdf1cf69c55f63288138bc7377a78295cb2be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34848b638ff0c7f7b9d1a2f3e5894339f8310ccc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544839"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013346"
 ---
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
@@ -17,13 +17,13 @@ Kanál v kontejneru objektů blob adftutorial automaticky vytvoří výstupní s
 
 1. V Azure Portal na stránce kontejneru **adftutorial** vyberte **aktualizovat** , aby se zobrazila výstupní složka. 
     
-    ![Aktualizovat](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+    ![Snímek obrazovky zobrazující stránku kontejneru, kde můžete stránku aktualizovat.](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
 
 2. V seznamu složek vyberte **výstup** . 
 
 3. Potvrďte, že je do výstupní složky zkopírovaný soubor **emp.txt**. 
 
-    ![Aktualizovat](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    ![Snímek obrazovky se zobrazí v obsahu výstupní složky.](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

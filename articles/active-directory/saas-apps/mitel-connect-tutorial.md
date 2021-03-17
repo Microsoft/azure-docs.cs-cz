@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552590"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Kurz: Integrace Azure Active Directory s platformou Mitel MiCloud Connect nebo dodavatelů CloudLink
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte, jak pomocí aplikace Mitel Connect integrovat Azure 
 * Přístup uživatelů k aplikacím MiCloud Connect a aplikacím dodavatelů CloudLink ve službě Azure AD můžete řídit pomocí svých podnikových přihlašovacích údajů.
 * Můžete povolit, aby se uživatelé na vašem účtu automaticky přihlásili k MiCloud Connect nebo dodavatelů CloudLink (jednotné přihlašování) pomocí svých účtů Azure AD.
 
-Podrobnosti o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Podrobnosti o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete s integrací služby Azure AD s platformou Mitel MiCloud Connect nebo dodavatelů CloudLink.
 
@@ -41,7 +41,7 @@ Ke konfiguraci integrace služby Azure AD s MiCloud Connect budete potřebovat n
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování (SSO) Azure AD.
 
 * Mitel Connect podporuje jednotné přihlašování iniciované v **SP**
-* Jakmile nakonfigurujete Mitel Connect, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Jakmile nakonfigurujete Mitel Connect, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-mitel-connect-from-the-gallery"></a>Přidání Mitel Connect z Galerie
 
@@ -51,7 +51,7 @@ Pokud chcete nakonfigurovat integraci Mitel připojení ke službě Azure AD, mu
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -102,17 +102,17 @@ Pokud chcete nakonfigurovat MiCloud Connect s SSO pro Azure AD, je nejjednoduš�
 
     1. V nabídce **systém pro telefon** vyberte **funkce doplňku**.
 
-    1. Napravo od **jednotného přihlašování**vyberte **aktivovat** nebo **Nastavení**.
+    1. Napravo od **jednotného přihlašování** vyberte **aktivovat** nebo **Nastavení**.
     
-    Zobrazí se dialogové okno připojit nastavení jednotného přihlašování.
+    Zobrazí se dialogové okno připojit nastavení jednoho Sign-On.
     
 3. Zaškrtněte políčko **Povolit jednotné přihlašování** .
     
-    ![Snímek obrazovky, na které se zobrazí stránka nastavení jednotného přihlašování Mitel Connect, se zaškrtnutým políčkem Povolit jednotné přihlašování.](./media/mitel-connect-tutorial/mitel-connect-enable.png)
+    ![Snímek obrazovky, který zobrazuje stránku nastavení Mitel Connect Single Sign-On, se zaškrtnutým políčkem Povolit jednu Sign-On](./media/mitel-connect-tutorial/mitel-connect-enable.png)
 
 4. V Azure Portal vyberte v části **základní konfigurační oddíl SAML** ikonu **Upravit** .
    
-    ![image](common/edit-urls.png)
+    ![Snímek obrazovky s vybranou ikonou pro úpravu zobrazí stránku nastavit jednu Sign-On se stránkou SAML.](common/edit-urls.png)
 
     Zobrazí se základní dialogové okno Konfigurace SAML.
 
@@ -120,7 +120,7 @@ Pokud chcete nakonfigurovat MiCloud Connect s SSO pro Azure AD, je nejjednoduš�
 
 6. Zkopírujte adresu URL z pole **Adresa URL odpovědi (adresa URL služby potvrzení)** na portálu účtu Mitel a vložte ji do pole **Adresa URL odpovědi (adresa URL služby potvrzení)** v Azure Portal.
 
-   ![image](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
+   ![Snímek obrazovky ukazuje základní konfiguraci SAML v Azure Portal a v části nastavení zprostředkovatele identity na portálu účtů Mitel s řádky, které označují vztah mezi nimi.](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
 
 7. Do textového pole **přihlašovací adresa URL** zadejte jednu z těchto adres URL:
 
@@ -134,11 +134,11 @@ Pokud chcete nakonfigurovat MiCloud Connect s SSO pro Azure AD, je nejjednoduš�
 
 9. V části **podpisový certifikát SAML** na **přihlašovací stránce založené na SAML** v Azure Portal vyberte **Stáhnout** certifikát **(Base64)** a stáhněte **podpisový certifikát** a uložte ho do počítače.
 
-    ![image](./media/mitel-connect-tutorial/azure-signing-certificate.png)
+    ![Snímek obrazovky se zobrazí v podokně podpisový certifikát SAML, kde si můžete stáhnout certifikát.](./media/mitel-connect-tutorial/azure-signing-certificate.png)
 
 10. Otevřete soubor podpisového certifikátu v textovém editoru, zkopírujte všechna data v souboru a vložte data do pole **podpisový certifikát** na portálu účtů Mitel. 
 
-      ![image](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
+      ![Snímek obrazovky se zobrazí pole podpisový certifikát.](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
 
 11. V části **Nastavení Mitel Connect** na přihlašovací stránce **založené na SAML** Azure Portal:
 
@@ -146,15 +146,15 @@ Pokud chcete nakonfigurovat MiCloud Connect s SSO pro Azure AD, je nejjednoduš�
 
      1. Zkopírujte adresu URL z pole **identifikátoru Azure AD** a vložte ji do pole **ID entity** na portálu účtu Mitel.
          
-         ![image](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
+         ![Snímek obrazovky ukazuje relaci mezi přihlašovací stránkou založenou na SAML Azure Portal a portálem účtu Mitel.](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
-12. V dialogovém okně **připojit k nastavení jednotného přihlašování** na portálu účtu Mitel vyberte **Save (Uložit** ).
+12. V dialogovém okně **připojit nastavení jednoho Sign-On** na portálu účtu Mitel vyberte **Save (Uložit** ).
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -178,9 +178,9 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Mitel připojení.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Mitel připojit**.
 
@@ -190,7 +190,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
@@ -204,7 +204,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 V této části vytvoříte uživatele s názvem Britta Simon na účtu MiCloud Connect. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-Podrobnosti o přidávání uživatelů na portálu účtů Mitel najdete v článku věnovaném [Přidání uživatele](https://oneview.mitel.com/s/article/Adding-a-User-092815) ve znalostní bázi Mitel.
+Podrobnosti o přidávání uživatelů na portálu účtů Mitel najdete v článku věnovaném [Přidání uživatele](https://shoretelcommunity.force.com/s/article/Adding-Users-092815) ve znalostní bázi Mitel.
 
 Na účtu MiCloud Connect vytvořte uživatele s následujícími podrobnostmi:
 
@@ -221,7 +221,7 @@ Na účtu MiCloud Connect vytvořte uživatele s následujícími podrobnostmi:
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Mitel Connect, měli byste se automaticky přesměrovat, abyste se přihlásili do aplikace MiCloud Connect, kterou jste nakonfigurovali jako výchozí v poli **Adresa URL pro přihlášení** . Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Mitel Connect, měli byste se automaticky přesměrovat, abyste se přihlásili do aplikace MiCloud Connect, kterou jste nakonfigurovali jako výchozí v poli **Adresa URL pro přihlášení** . Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="configure-and-test-azure-ad-sso-with-cloudlink-platform"></a>Konfigurace a testování jednotného přihlašování Azure AD s platformou dodavatelů CloudLink
 
@@ -241,7 +241,7 @@ Pokud chcete nakonfigurovat platformu dodavatelů CloudLink s jednotným přihla
     
        Otevře se **přihlašovací stránka založená na SAML** a zobrazí se **základní konfigurační oddíl SAML** .
 
-       ![image](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
+       ![Snímek obrazovky ukazuje přihlašovací stránku založenou na SAML se základní konfigurací SAML.](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
 
 2. Přístup ke konfiguračnímu panelu **jednotné přihlašování Azure AD** na portálu účtů dodavatelů CloudLink:
 
@@ -249,35 +249,35 @@ Pokud chcete nakonfigurovat platformu dodavatelů CloudLink s jednotným přihla
 
     1. V části **integrace** vyberte **+ Přidat nový**. Automaticky otevíraná obrazovka se zobrazí panel **integrace** .
 
-    1. Vyberte kartu **třetí strana** . Zobrazí se seznam podporovaných aplikací třetích stran. Vyberte tlačítko **Přidat** přidružené k **jednotnému přihlašování Azure AD**a vyberte **Hotovo**.
+    1. Vyberte kartu **třetí strana** . Zobrazí se seznam podporovaných aplikací třetích stran. Vyberte tlačítko **Přidat** přidružené k **jednotnému přihlašování Azure AD** a vyberte **Hotovo**.
 
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
+       ![Snímek obrazovky zobrazující stránku integrace, kde můžete přidat Azure A D jednotného přihlašování.](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
 
        Pro účet zákazníka je povolené **jednotné přihlašování Azure AD** a přidá se do části **integrace** na stránce **informace o účtu** .   
 
    1. Vyberte **Dokončit instalaci**.
     
-      ![image](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
+      ![Snímek obrazovky ukazuje možnost kompletního nastavení pro Azure A D jednotného přihlašování.](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
       
       Otevře se panel konfigurace **jednotného přihlašování služby Azure AD** .
       
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
+       ![Snímek obrazovky ukazuje konfiguraci pro jednu Sign-On Azure A D.](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
        
        Mitel doporučuje, aby nebylo zaškrtnuto políčko **Povolit Mitel přihlašovací údaje (volitelné)** v oddílu **volitelné přihlašovací údaje Mitel** . Toto políčko zaškrtněte pouze v případě, že chcete, aby se uživatel přihlásil k aplikaci dodavatelů CloudLink pomocí přihlašovacích údajů Mitel společně s možností jednotného přihlašování.
 
 3. V Azure Portal na **přihlašovací stránce založené na SAML** vyberte v části **základní konfigurace SAML** ikonu **Upravit** . Otevře se **základní panel konfigurace SAML** .
 
-    ![image](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
+    ![Snímek obrazovky se základní podokno konfigurace SAML s vybranou ikonou pro úpravy](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
  
  4. Zkopírujte adresu URL z pole **identifikátor Mitel (ID entity)** na portálu účtů dodavatelů CloudLink a vložte ho do pole **identifikátor (ID entity)** v Azure Portal.
 
  5. Zkopírujte adresu URL z pole **Adresa URL odpovědi (adresa URL služby potvrzení)** na portálu účty dodavatelů CloudLink a vložte ji do pole **Adresa URL odpovědi (adresa URL služby potvrzení)** v Azure Portal.  
     
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
+    ![Snímek obrazovky ukazuje vztah mezi stránkami na portálu účtů dodavatelů CloudLink a Azure Portal.](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
 
  6. Do textového pole **přihlašovací adresa URL** zadejte adresu URL `https://accounts.mitel.io` pro použití portálu účtů dodavatelů CloudLink jako výchozí aplikace Mitel.
      
-     ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
+     ![Snímek obrazovky se zobrazí v textovém poli přihlášení U R L.](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
   
      > [!NOTE]
      > Výchozí aplikace Mitel je aplikace, která se otevře, když uživatel vybere dlaždici Mitel připojit na přístupovém panelu. To je také aplikace, ke které se používá, když uživatel nakonfiguruje nastavení testu z Azure AD.
@@ -286,14 +286,14 @@ Pokud chcete nakonfigurovat platformu dodavatelů CloudLink s jednotným přihla
 
 8. V části **podpisový certifikát SAML** na **přihlašovací stránce založené na SAML** v Azure Portal vyberte **Stáhnout** certifikát **(Base64)** a stáhněte **podpisový certifikát**. Uložte certifikát do počítače.
   
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
+    ![Snímek obrazovky se zobrazí v části podpisový certifikát SAML, kde si můžete stáhnout certifikát base64.](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
 
 9. V textovém editoru otevřete soubor podpisového certifikátu, zkopírujte do něj všechna data a pak data vložte do pole **podpisový certifikát** na portálu účtů dodavatelů CloudLink.  
 
     > [!NOTE]
     > Pokud máte více než jeden certifikát, doporučujeme, abyste je vložili po druhém. 
        
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
+    ![Snímek obrazovky ukazuje krok 2 v postupu, ve kterém vyplníte hodnoty z Integrace Azure A D.](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
 
 10. V části **Nastavení Mitel Connect** na **přihlašovací stránce založené na SAML** Azure Portal:
 
@@ -301,7 +301,7 @@ Pokud chcete nakonfigurovat platformu dodavatelů CloudLink s jednotným přihla
 
      1. Zkopírujte adresu URL z pole **identifikátoru Azure AD** a vložte ji do pole **identifikátor IDP (ID entity)** na portálu účtů dodavatelů CloudLink.
      
-        ![image](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
+        ![Snímek obrazovky zobrazující zdroj hodnot popsaných tady v Mintel Connect.](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
 
 11. Na panelu **jednotné přihlašování Azure AD** na portálu účtů dodavatelů CloudLink vyberte **Save (Uložit** ).
 
@@ -309,7 +309,7 @@ Pokud chcete nakonfigurovat platformu dodavatelů CloudLink s jednotným přihla
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -333,9 +333,9 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Mitel připojení.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Mitel připojit**.
 
@@ -345,7 +345,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
@@ -375,12 +375,12 @@ Na portálu účtů dodavatelů CloudLink vytvořte uživatele s následujícím
 
 V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupového panelu.
 
-Když vyberete dlaždici Mitel Connect na přístupovém panelu, budete automaticky přesměrováni na přihlášení k aplikaci dodavatelů CloudLink, kterou jste nakonfigurovali jako výchozí v poli **Adresa URL pro přihlášení** . Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete dlaždici Mitel Connect na přístupovém panelu, budete automaticky přesměrováni na přihlášení k aplikaci dodavatelů CloudLink, kterou jste nakonfigurovali jako výchozí v poli **Adresa URL pro přihlášení** . Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

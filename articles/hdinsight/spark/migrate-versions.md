@@ -1,18 +1,15 @@
 ---
 title: Migrace úloh Apache Spark 2,1 nebo 2,2 na 2,3 nebo 2,4-Azure HDInsight
 description: Naučte se migrovat Apache Spark 2,1 a 2,2 na 2,3 nebo 2,4.
-author: ashishthaps1
-ms.author: ashishth
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 681de5d8e4daeaabb865cde3ef93008b2965824e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: af1894d2f63357006e87fa8e4533f135ecc02f21
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497144"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944744"
 ---
 # <a name="migrate-apache-spark-21-and-22-workloads-to-23-and-24"></a>Migrace úloh Apache Spark 2,1 a 2,2 na 2,3 a 2,4
 

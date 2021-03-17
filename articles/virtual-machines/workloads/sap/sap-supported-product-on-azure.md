@@ -9,19 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/21/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfd560754d92c97b435ff7643f6da4d3e62e8cfd
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065078"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673528"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Který software SAP se podporuje pro nasazení Azure
 Tento článek popisuje, jak zjistit, který software SAP je podporován pro nasazení Azure a jaké jsou nezbytné verze operačního systému nebo verze DBMS.
@@ -82,6 +82,12 @@ Operační systém, verze Oracle DBMS a funkce Oracle podporované v Azure jsou 
 
 Znalost verzí DBMS, které jsou podporované s cílovou infrastrukturou Azure, je potřeba, abyste zkontrolovali, jestli jsou vydané verze operačních systémů a systémy DBMS podporované u vydání produktu SAP, které jste chtěli spustit. 
 
+## <a name="oracle-linux"></a>Oracle Linux
+Nejvýraznějším dotazům Oracle Linux je, zda SAP podporuje jádro Red Hat, které je nedílnou součástí Oracle Linux. Podrobnosti najdete v [poznámkách k podpoře SAP #1565179](https://launchpad.support.sap.com/#/notes/1565179).
+
+## <a name="other-database-than-sap-hana"></a>Jiná databáze než SAP HANA
+Podpora databází nehana pro úlohy SAP je popsána v [poznámkách k podpoře sap #1928533](https://launchpad.support.sap.com/#/notes/1928533).
+
 
 ## <a name="sap-hana-support"></a>Podpora SAP HANA
 V Azure jsou k dispozici dvě služby, které se dají použít ke spuštění databáze HANA:
@@ -117,7 +123,7 @@ Pro virtuální počítače Azure jsou tato čísla propustnosti SAP dokumentov�
 
 Při hledání [poznámky k podpoře SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)platí následující poznámky:
 
-- Pro virtuální počítače Azure **řady M-Series a virtuální počítače Azure řady Mv2-Series se pro jiné typy virtuálních počítačů Azure použijí jiné minimální verze operačního systému**. Požadavek na další poslední vydané verze operačního systému je založený na změnách, které výrobci v operačním systému museli poskytnout, aby povolili jejich operační systémy běžící na specifických typech virtuálních počítačů Azure nebo optimalizoval výkon a propustnost úloh SAP na těchto typech virtuálních počítačů.
+- **Pro virtuální počítače Azure řady M-Series a Mv2-Series virtuálních počítačů Azure se pro jiné typy virtuálních počítačů Azure použijí jiné minimální verze operačního systému**. Požadavek na další poslední vydané verze operačního systému je založený na změnách, které výrobci v operačním systému museli poskytnout, aby povolili jejich operační systémy běžící na specifických typech virtuálních počítačů Azure nebo optimalizoval výkon a propustnost úloh SAP na těchto typech virtuálních počítačů.
 - K dispozici jsou dvě tabulky, které určují různé typy virtuálních počítačů. Druhá tabulka určuje propustnost SAP pro typy virtuálních počítačů Azure, které podporují jenom Azure Storage úrovně Standard. Nasazení DBMS na jednotkách uvedených v druhé tabulce poznámky se nepodporuje.
 
 

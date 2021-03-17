@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: odeslání žádosti o vyhledávání do REST API pomocí Node.js-Vyhledávání entit Bingu'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání entit Bingu REST API pomocí jazyka C# a přijmout odpověď JSON.
+description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání entit Bingu REST API pomocí Node.js a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,15 +10,20 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 82bdd8f3890f1685aa442463287fe72bde08d518
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: b9311329ea4115d49f36dd7d39782bbd748a356b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405955"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106100"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý Start: odeslání žádosti o vyhledávání Vyhledávání entit Bingu REST API pomocí Node.js
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
 
@@ -82,15 +87,15 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
     let json = JSON.stringify(JSON.parse(body), null, '  ');
     console.log (json);
     });
-        ```
+    ```
 
-## Send a request
+## <a name="send-a-request"></a>Odeslání požadavku
 
-1. Create a function called `Search()` to send a search request. In it, perform the following steps:
+1. Vytvořte funkci volanou `Search()` k odeslání žádosti o vyhledávání. V takovém případě proveďte následující kroky:
 
-2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
+2. V rámci této funkce vytvořte objekt JSON, který obsahuje parametry žádosti. Použijte `Get` pro metodu a přidejte informace o hostiteli a cestě. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` . 
 
-3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
+3. Použijte `https.request()` k odeslání požadavku s obslužnou rutinou odpovědi vytvořenou dříve a parametry hledání.
     
    ```javascript
    let Search = function () {
@@ -181,4 +186,4 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
-* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

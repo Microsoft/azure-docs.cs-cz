@@ -3,18 +3,20 @@ title: Uživatelsky definované funkce (UDF) v Azure Cosmos DB
 description: Přečtěte si o uživatelsky definovaných funkcích v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9be2a6c4497806370c4c53cbd41d9f48779f8472
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 98698264f0beb25a8b4f74861f1150ae889d7115
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419746"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546331"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Uživatelsky definované funkce (UDF) v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Rozhraní SQL API poskytuje podporu pro uživatelsky definované funkce (UDF). Pomocí skalárního UDF můžete předat nula nebo mnoho argumentů a vrátit výsledek jednoho argumentu. Rozhraní API kontroluje každý argument pro platné hodnoty JSON.  
 
@@ -140,6 +142,6 @@ Jak ukazují předchozí příklady, UDF integruje sílu jazyka JavaScript s roz
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)
 - [Systémové funkce](sql-query-system-functions.md)
-- [Agregace](sql-query-aggregates.md)
+- [Agregace](sql-query-aggregate-functions.md)

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797521"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369127"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Úprava informací o skupině pomocí Azure Active Directory
 
@@ -53,7 +53,7 @@ Pomocí Azure Active Directory (Azure AD) můžete upravit nastavení skupiny, v
     
     - **Typ členství.** Změňte typ členství. Další informace o různých dostupných typech členství najdete v tématu [Postup: Vytvoření základní skupiny a přidání členů pomocí portálu Azure Active Directory](active-directory-groups-create-azure-portal.md).
     
-    - **ID objektu** ID objektu nemůžete změnit, ale můžete ho zkopírovat, abyste ho mohli použít v příkazech PowerShellu pro danou skupinu. Další informace o použití rutin PowerShellu najdete v tématu [rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-v2-cmdlets.md).
+    - **ID objektu** ID objektu nemůžete změnit, ale můžete ho zkopírovat, abyste ho mohli použít v příkazech PowerShellu pro danou skupinu. Další informace o použití rutin PowerShellu najdete v tématu [rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../enterprise-users/groups-settings-v2-cmdlets.md).
 
 ## <a name="next-steps"></a>Další kroky
 Následující články poskytují další informace o službě Azure Active Directory.
@@ -64,7 +64,7 @@ Následující články poskytují další informace o službě Azure Active Dir
 
 - [Postup přidání nebo odebrání členů ze skupiny](active-directory-groups-members-azure-portal.md)
 
-- [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-create-rule.md)
+- [Správa dynamických pravidel pro uživatele ve skupině](../enterprise-users/groups-create-rule.md)
 
 - [Správa členství ve skupině](active-directory-groups-membership-azure-portal.md)
 

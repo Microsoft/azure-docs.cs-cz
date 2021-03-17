@@ -2,20 +2,20 @@
 title: Řešení potíží s přihlašováním v Azure AD Domain Services | Microsoft Docs
 description: Naučte se řešit běžné problémy s přihlašováním uživatelů a chyby v Azure Active Directory Domain Services.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: d48c5f94de7aa663f618401e13fdc19777d42095
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: justinha
+ms.openlocfilehash: 85b261b8754f35c7705690d15671144b858c0a43
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039649"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618565"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Řešení potíží s přihlašováním k účtu pomocí spravované domény Azure Active Directory Domain Services
 
@@ -76,7 +76,7 @@ Pokud stále máte problémy s připojením k VIRTUÁLNÍmu počítači ke sprav
 
 <!-- INTERNAL LINKS -->
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
-[azure-ad-connect-phs]: active-directory-ds-getting-started-password-sync-synced-tenant.md
+[azure-ad-connect-phs]: ./tutorial-configure-password-hash-sync.md
 [enable-user-accounts]:  tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds
 [phs-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [azure-ad-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

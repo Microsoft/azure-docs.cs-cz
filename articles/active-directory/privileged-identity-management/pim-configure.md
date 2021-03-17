@@ -10,24 +10,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 07/01/2020
+ms.date: 09/29/2020
 ms.author: curtand
-ms.custom: pim
+ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c85f273a0b245d54b966a43d7a69abe761a2dcaf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023906"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370181"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) je služba, která umožňuje spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci. Tyto prostředky zahrnují prostředky v Azure AD, Azure a další online služby Microsoftu, jako je Office 365 nebo Microsoft Intune.
+ Privileged Identity Management (PIM) je služba v Azure Active Directory (Azure AD), která umožňuje spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci. Tyto prostředky zahrnují prostředky v Azure AD, Azure a další online služby Microsoftu, například Microsoft 365 nebo Microsoft Intune. Následující video vás seznámí s důležitými koncepty a funkcemi PIM.
+<br><br>
+
+> [!VIDEO https://www.youtube.com/embed/f-0K7mRUPpQ]
 
 ## <a name="reasons-to-use"></a>Důvody k použití
 
-Organizace chtějí minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože snižuje riziko, že škodlivý objekt actor získá takový přístup, nebo oprávněný uživatel neúmyslně ovlivnit citlivý prostředek. Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům udělit privilegovaný přístup podle potřeby (JIT) k prostředkům Azure a k Azure AD. Je potřeba mít přehled o tom, co dělají uživatelé s oprávněními správce.
+Organizace chtějí minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože snižuje riziko, že škodlivý objekt actor získá takový přístup, nebo oprávněný uživatel neúmyslně ovlivnit citlivý prostředek. Uživatelé ale stále potřebují provádět privilegované operace v aplikacích Azure AD, Azure, Microsoft 365 nebo SaaS. Organizace můžou uživatelům udělit privilegovaný přístup k prostředkům Azure a Azure AD za běhu. Je potřeba mít přehled o tom, co dělají uživatelé s oprávněními správce.
 
 ## <a name="what-does-it-do"></a>Co to dělá?
 
@@ -44,7 +47,7 @@ Privileged Identity Management poskytuje aktivaci rolí na základě času a sch
 
 ## <a name="what-can-i-do-with-it"></a>Co s tím můžu dělat?
 
-Jakmile nastavíte Privileged Identity Management, v levé navigační nabídce uvidíte možnosti **úlohy**, **Spravovat**a **aktivity** . Jako správce si zvolíte, že budete spravovat **role Azure AD** a role **prostředků Azure** . Když zvolíte typ rolí, které se mají spravovat, zobrazí se podobná sada možností pro daný typ role.
+Jakmile nastavíte Privileged Identity Management, v levé navigační nabídce uvidíte možnosti **úlohy**, **Spravovat**a **aktivity** . Jako správce si zvolíte mezi možnostmi, jako je Správa **rolí Azure AD**, Správa rolí **prostředků Azure** nebo privilegovaných přístupových skupin. Když zvolíte, co chcete spravovat, zobrazí se příslušná sada možností pro tuto možnost.
 
 ![Snímek obrazovky Privileged Identity Management Azure Portal](./media/pim-configure/pim-quickstart.png)
 
@@ -80,10 +83,10 @@ Privileged Identity Management podporuje následující scénáře:
 
 Chcete-li lépe pochopit Privileged Identity Management a dokumentaci, měli byste si projít následující výrazy.
 
-| Termín nebo koncept | Kategorie přiřazení role | Description |
+| Termín nebo koncept | Kategorie přiřazení role | Popis |
 | --- | --- | --- |
 | způsobil | Typ | Přiřazení role, které vyžaduje, aby uživatel prováděl jednu nebo více akcí pro použití role. Pokud uživatel nastavil nárok na roli, to znamená, že může roli aktivovat, když potřebují provádět privilegované úlohy. Neexistuje žádný rozdíl v přístupu pro někoho, kdo má trvalé přiřazení oprávnění oproti oprávněné roli. Jediným rozdílem je, že někteří lidé nepotřebují přístup ke všemu času. |
-| aktivně | Typ | Přiřazení role, které nevyžaduje, aby uživatel prováděl žádnou akci pro použití role. Uživatelé přiřazení jako aktivní mají oprávnění přiřazená k roli. |
+| active | Typ | Přiřazení role, které nevyžaduje, aby uživatel prováděl žádnou akci pro použití role. Uživatelé přiřazení jako aktivní mají oprávnění přiřazená k roli. |
 | aktivovat |  | Proces provádění jedné nebo více akcí pro použití role, pro kterou má uživatel nárok. Akce můžou zahrnovat provádění kontroly vícefaktorového ověřování (MFA), poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů. |
 | přiřazení | Stav | Uživatel, který má přiřazené aktivní roli. |
 | Aktivujte | Stav | Uživatel, který má oprávněné přiřazení role, provedl akce pro aktivaci role a je teď aktivní.  Po aktivaci může uživatel tuto roli použít pro předem nakonfigurovanou časovou dobu, než se bude muset znovu aktivovat. |
@@ -103,5 +106,5 @@ Informace o licencích pro uživatele najdete v tématu [licenční požadavky p
 ## <a name="next-steps"></a>Další kroky
 
 - [Licenční požadavky pro použití Privileged Identity Management](subscription-requirements.md)
-- [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Nasazení technologie Privileged Identity Management](pim-deployment-plan.md)

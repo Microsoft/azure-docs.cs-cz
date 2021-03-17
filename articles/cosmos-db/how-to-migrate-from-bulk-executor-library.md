@@ -3,29 +3,32 @@ title: Migrace z knihovny hromadného prováděcího modulu do hromadné podpory
 description: Naučte se migrovat aplikaci z použití knihovny hromadných prováděcích modulů na hromadnou podporu v sadě Azure Cosmos DB SDK v3.
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: 1f204b6d73f121b8f05c807d6be47c36c006f607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 24d6b475964e4bf7745495e9c41d0e89bb76f7e9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341276"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrace z knihovny hromadného prováděcího modulu do hromadné podpory v sadě Azure Cosmos DB .NET V3 SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje nezbytné kroky pro migraci kódu existující aplikace, který používá [knihovnu hromadného prováděcího modulu .NET](bulk-executor-dot-net.md) , do funkce [Hromadná podpora](tutorial-sql-api-dotnet-bulk-import.md) v nejnovější verzi sady .NET SDK.
 
 ## <a name="enable-bulk-support"></a>Povolit hromadnou podporu
 
-Povolit hromadnou podporu `CosmosClient` instance prostřednictvím konfigurace [AllowBulkExecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) :
+Povolit hromadnou podporu `CosmosClient` instance prostřednictvím konfigurace [AllowBulkExecution](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) :
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Initialization":::
 
 ## <a name="create-tasks-for-each-operation"></a>Vytvořit úkoly pro každou operaci
 
-Hromadná podpora v sadě .NET SDK funguje pomocí operací [Task Parallel Library](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl) a seskupování, ke kterým dochází současně. 
+Hromadná podpora v sadě .NET SDK funguje pomocí operací [Task Parallel Library](/dotnet/standard/parallel-programming/task-parallel-library-tpl) a seskupování, ke kterým dochází současně. 
 
 V sadě SDK neexistuje žádná jediná metoda, která by převzala váš seznam dokumentů nebo operací jako vstupní parametr, ale místo toho je potřeba vytvořit úlohu pro každou operaci, kterou chcete provést hromadně, a pak jednoduše počkat na dokončení.
 
@@ -33,15 +36,15 @@ Například pokud je vaším počátečním vstupem seznam položek, kde má ka�
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Pokud chcete hromadné importy (podobně jako v používání BulkExecutor. BulkImportAsync), musíte mít souběžné volání `CreateItemAsync` . Příklad:
+Pokud chcete hromadné importy (podobně jako v používání BulkExecutor. BulkImportAsync), musíte mít souběžné volání `CreateItemAsync` . Například:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-Chcete-li provést hromadnou *aktualizaci* (podobně jako při použití [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)), je nutné mít souběžné volání `ReplaceItemAsync` metody po aktualizaci hodnoty položky. Příklad:
+Chcete-li provést hromadnou *aktualizaci* (podobně jako při použití [BulkExecutor. BulkUpdateAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)), je nutné mít souběžné volání `ReplaceItemAsync` metody po aktualizaci hodnoty položky. Například:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-A pokud chcete hromadné *odstranění* (podobně jako při použití [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)), musíte mít souběžné volání `DeleteItemAsync` s `id` klíčem oddílu a každé položky. Příklad:
+A pokud chcete hromadné *odstranění* (podobně jako při použití [BulkExecutor. BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)), musíte mít souběžné volání `DeleteItemAsync` s `id` klíčem oddílu a každé položky. Například:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
@@ -67,7 +70,7 @@ Pro sledování rozsahu celého seznamu úkolů používáme tuto pomocnou tří
 
 ## <a name="capture-statistics"></a>Zachytit statistiku
 
-Předchozí kód počká, dokud nebudou dokončeny všechny operace, a vypočítává požadované statistiky. Tyto statistiky jsou podobné jako [BulkImportResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)knihovny hromadného prováděcího modulu.
+Předchozí kód počká, dokud nebudou dokončeny všechny operace, a vypočítává požadované statistiky. Tyto statistiky jsou podobné jako [BulkImportResponse](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)knihovny hromadného prováděcího modulu.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="ResponseType":::
 
@@ -80,9 +83,9 @@ Předchozí kód počká, dokud nebudou dokončeny všechny operace, a vypočít
 
 ## <a name="retry-configuration"></a>Opakovat konfiguraci
 
-V knihovně hromadných prováděcích knihoven byly [doprovodné](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) materiály, které jsou zmíněny k nastavení `MaxRetryWaitTimeInSeconds` a `MaxRetryAttemptsOnThrottledRequests` [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) k `0` delegování řízení do knihovny.
+V knihovně hromadných prováděcích knihoven byly [doprovodné](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) materiály, které jsou zmíněny k nastavení `MaxRetryWaitTimeInSeconds` a `MaxRetryAttemptsOnThrottledRequests` [RetryOptions](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) k `0` delegování řízení do knihovny.
 
-Pro hromadnou podporu v sadě .NET SDK neexistuje žádné skryté chování. Možnosti opakování můžete nakonfigurovat přímo přes [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) a [CosmosClientOptions. MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests).
+Pro hromadnou podporu v sadě .NET SDK neexistuje žádné skryté chování. Možnosti opakování můžete nakonfigurovat přímo přes [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) a [CosmosClientOptions. MaxRetryWaitTimeOnRateLimitedRequests](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests).
 
 > [!NOTE]
 > V případech, kdy jsou zřízené jednotky žádosti mnohem nižší než očekávané na základě množství dat, můžete zvážit jejich nastavení na vysoké hodnoty. Hromadná operace bude trvat déle, ale bude mít větší šanci na naprostou úspěch z důvodu vyššího počtu opakovaných pokusů.

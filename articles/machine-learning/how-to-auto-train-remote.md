@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: 0dcb8f1f484f9c24a6376aef8836b6dc50d5278a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 402af581e0ca6de9936b78106840a4fe273069d8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321552"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503449"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaného strojového učení v cloudu
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 V Azure Machine Learning můžete svůj model vyškolit na různých typech výpočetních prostředků, které spravujete. Cílem výpočtů může být místní počítač nebo prostředek v cloudu.
 
@@ -43,7 +43,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Vytvoření prostředku
 
-Vytvořte [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) cíl v pracovním prostoru ( `ws` ), pokud ještě neexistuje.
+Vytvořte [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29) cíl v pracovním prostoru ( `ws` ), pokud ještě neexistuje.
 
 **Časový odhad**: Vytvoření cíle AmlCompute trvá přibližně 5 minut.
 
@@ -90,7 +90,7 @@ Mezi omezení názvu clusteru patří:
 
 ## <a name="access-data-using-tabulardataset-function"></a>Přístup k datům pomocí funkce TabularDataset
 
-Definováno training_data jako [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a popisek, který se předává do automatizovaného ml v [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) . `TabularDataset`Metoda `from_delimited_files` ve výchozím nastavení nastaví na `infer_column_types` hodnotu true, která bude automaticky odvodit typ sloupce. 
+Definováno training_data jako [`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset) a popisek, který se předává do automatizovaného ml v [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) . `TabularDataset`Metoda `from_delimited_files` ve výchozím nastavení nastaví na `infer_column_types` hodnotu true, která bude automaticky odvodit typ sloupce. 
 
 Pokud chcete ručně nastavit typy sloupců, můžete nastavit `set_column_types` argument tak, aby ručně nastavil typ každého sloupce. V následující ukázce kódu pocházejí data z balíčku skriptu sklearn.
 
@@ -159,7 +159,7 @@ Nyní odešlete konfiguraci pro automatický výběr algoritmu, parametrů techn
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, 'automl_remote')
+experiment = Experiment(ws, 'Tutorial-automl-remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>Prozkoumat výsledky
 
-Můžete použít stejnou [pomůcku Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) , jak je znázorněno v [kurzu školení](tutorial-auto-train-models.md#explore-the-results) pro zobrazení grafu a tabulky výsledků.
+Můžete použít stejnou [pomůcku Jupyter](/python/api/azureml-widgets/azureml.widgets) , jak je znázorněno v [kurzu školení](tutorial-auto-train-models.md#explore-the-results) pro zobrazení grafu a tabulky výsledků.
 
 ```python
 from azureml.widgets import RunDetails
@@ -220,7 +220,7 @@ Pokud nejste v Jupyter poznámkovém bloku, můžete zobrazit adresu URL z samot
 remote_run.get_portal_url()
 ```
 
-Ve vašem pracovním prostoru jsou k dispozici stejné informace.  Další informace o těchto výsledcích najdete v tématu [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md).
+Ve vašem pracovním prostoru jsou k dispozici stejné informace.  Další informace o těchto výsledcích najdete v tématu [vyhodnocení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md).
 
 ## <a name="example"></a>Příklad
 

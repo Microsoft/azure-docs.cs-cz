@@ -11,10 +11,10 @@ ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202547"
 ---
 # <a name="date-claims-transformations"></a>Transformace deklarací data
@@ -31,8 +31,8 @@ Kontroluje, že jedna deklarace identity data a času (datový typ String) je po
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | leftOperand | řetězec | Typ první deklarace, který by měl být pozdější než druhá deklarace identity. |
 | InputClaim | rightOperand | řetězec | Typ druhé deklarace identity, který by měl být dřívější než první deklarace identity. |
-| InputParameter | AssertIfEqualTo | Boolean | Určuje, zda má být tento kontrolní výraz splněn, je-li levý operand roven pravému operandu. |
-| InputParameter | AssertIfRightOperandIsNotPresent | Boolean | Určuje, zda má být tento kontrolní výraz splněn, pokud chybí pravý operand. |
+| InputParameter | AssertIfEqualTo | boolean | Určuje, zda má být tento kontrolní výraz splněn, je-li levý operand roven pravému operandu. |
+| InputParameter | AssertIfRightOperandIsNotPresent | boolean | Určuje, zda má být tento kontrolní výraz splněn, pokud chybí pravý operand. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Určuje počet milisekund, které mají být povoleny mezi dvěma hodnotami data a času, které mají být považovat za časy rovnající se (například pro účet pro časový posun). |
 
 Transformace deklarací **AssertDateTimeIsGreaterThan** je vždy prováděna z [technického profilu ověření](validation-technical-profile.md) , který je volán pomocí [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md). Metadata technického profilu **DateTimeGreaterThan** s vlastním uplatněním řídí chybovou zprávu, kterou poskytuje technický profil uživateli. Chybové zprávy lze [lokalizovat](localization-string-ids.md#claims-transformations-error-messages).
@@ -172,9 +172,9 @@ Určete, zda je jedno datum a čas pozdější, dřívější nebo stejné jako 
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | data a času. | První hodnota dateTime pro porovnání, zda je dřívější nebo pozdější než druhá hodnota dateTime. Hodnota null vyvolá výjimku. |
 | InputClaim | secondDateTime | data a času. | Druhý typ dateTime pro porovnání, zda je dřívější nebo pozdější než první datum a čas. Hodnota null se považuje za aktuální datetTime. |
-| InputParameter |  – operátor | řetězec | Jedna z následujících hodnot: totéž, později než nebo starší než. |
+| InputParameter | operátor | řetězec | Jedna z následujících hodnot: totéž, později než nebo starší než. |
 | InputParameter | timeSpanInSeconds | int | Přidejte časové rozpětí do prvního data a času. |
-| OutputClaim | result | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
+| OutputClaim | result | boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
 
 Pomocí této transformace deklarací identity určíte, zda jsou dva ClaimTypes stejné, pozdější nebo dřívější. Můžete například uložit čas poslední přijetí podmínek služby (TOS) uživatelem. Po 3 měsících můžete požádat uživatele, aby znovu přistupují ke službě TOS.
 Chcete-li spustit transformaci deklarace identity, musíte nejprve získat aktuální datum a čas a také čas, kdy uživatel akceptuje TOS.

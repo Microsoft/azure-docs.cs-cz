@@ -3,7 +3,7 @@ title: Import kolekce po pro volání REST služby Azure Live streamování
 description: Tento článek poskytuje definici následné kolekce pro volání REST Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,25 +11,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 69b5e8721b320e799fbdfb31ff83f2e78e513b40
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 542db385ac0c59bc20da8616444bb2e40e79ec5a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047510"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007842"
 ---
-# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Import kolekce po publikování s operacemi živého streamování 
+# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Import kolekce po publikování s operacemi živého streamování
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Tento článek obsahuje definici **následné** kolekce, která obsahuje seskupené požadavky HTTP, které volají **živé streamování** Azure Media Services rozhraní REST API. Informace o tom, jak nakonfigurovat **metodu post** , aby ji bylo možné volat Media Services rozhraní REST API najdete v kurzu věnovaném [konfiguraci služby post pro Media Services REST API volání](media-rest-apis-with-postman.md) .
 
-```
+```json
 {
     "info": {
         "name": "Azure Media Live Streaming Quickstart",
         "_postman_id": "0dc5e4c6-4865-cbe9-250c-78e40b634256",
-        "description": "Quickstart collection to use Live Streaming and Encding on Azure Media Services\n",
+        "description": "Quickstart collection to use Live Streaming and Encoding on Azure Media Services\n",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [

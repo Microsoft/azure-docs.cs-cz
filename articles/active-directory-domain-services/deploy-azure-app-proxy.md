@@ -2,7 +2,7 @@
 title: Nasadit Azure Proxy aplikací služby AD pro Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak zajistit zabezpečený přístup k interním aplikacím pro vzdálené procesy nasazením a konfigurací Proxy aplikací služby Azure Active Directory ve Azure Active Directory Domain Services spravované doméně.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 0880f697ceea9c10a070ede0a73235022ce0529d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: justinha
+ms.openlocfilehash: 8305b2190cf3b157973f5844c3237ffe73adba66
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220285"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619912"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Nasazení Azure Proxy aplikací služby AD pro zabezpečený přístup k interním aplikacím ve Azure Active Directory Domain Services spravované doméně
 
@@ -113,13 +113,13 @@ Pokud nasadíte více konektorů služby Azure Proxy aplikací služby AD, je nu
 
 ## <a name="next-steps"></a>Další kroky
 
-S Azure Proxy aplikací služby AD integrovány se službou Azure služba AD DS můžete publikovat aplikace pro uživatele, kteří budou mít přístup. Další informace najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md).
+S Azure Proxy aplikací služby AD integrovány se službou Azure služba AD DS můžete publikovat aplikace pro uživatele, kteří budou mít přístup. Další informace najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](../active-directory/manage-apps/application-proxy-add-on-premises-application.md).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
 [Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer

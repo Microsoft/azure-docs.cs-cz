@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/03/2017
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: a16e99df57da66d2633947f8aecdf1d2cef9ab15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f33c5f0fdf69737df0d8bd83499ded1e0e0f4f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737406"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898109"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Řešení potíží s připojením k Azure Network Watcher pomocí Azure Portal
 
@@ -37,7 +37,7 @@ V tomto článku se předpokládá, že máte následující zdroje:
 * Virtuální počítače pro řešení potíží s připojeními.
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Ověřte připojení k virtuálnímu počítači.
 
@@ -45,7 +45,7 @@ Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači p
 
 Přejděte do Network Watcher a klikněte na **řešení potíží s připojením**. Vyberte virtuální počítač, ze kterého se má kontrolovat připojení. V části **cíl** zvolte **Vybrat virtuální počítač** a zvolte správný virtuální počítač a port, který chcete otestovat.
 
-Po kliknutí na **zkontrolovat**se zkontroluje připojení mezi virtuálními počítači na daném portu. V tomto příkladu je cílový virtuální počítač nedosažitelný, zobrazí se seznam směrování.
+Po kliknutí na **zkontrolovat** se zkontroluje připojení mezi virtuálními počítači na daném portu. V tomto příkladu je cílový virtuální počítač nedosažitelný, zobrazí se seznam směrování.
 
 ![Podívejte se na výsledky připojení pro virtuální počítač.][1]
 

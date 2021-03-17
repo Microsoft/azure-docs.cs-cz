@@ -3,23 +3,23 @@ title: Datový model Azure Application Insights | Microsoft Docs
 description: Popisuje vlastnosti exportované z průběžného exportu ve formátu JSON a slouží jako filtry.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b4609d54c1c3c33a654dd58a3bceaca4974fda15
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324382"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584225"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights Exportovat datový model
 Tato tabulka obsahuje seznam vlastností telemetrie odeslaných z [Application Insights](./app-insights-overview.md) sad SDK na portál.
 Tyto vlastnosti se zobrazí ve výstupu dat z [průběžného exportu](export-telemetry.md).
-Zobrazují se také v filtrech vlastností v [Průzkumníkovi metrik](../platform/metrics-charts.md) a [diagnostickém vyhledávání](./diagnostic-search.md).
+Zobrazují se také v filtrech vlastností v [Průzkumníkovi metrik](../essentials/metrics-charts.md) a [diagnostickém vyhledávání](./diagnostic-search.md).
 
 Ukazuje na poznámku:
 
-* `[0]`v těchto tabulkách označuje bod v cestě, kam je nutné vložit index. ale ne vždycky 0.
+* `[0]` v těchto tabulkách označuje bod v cestě, kam je nutné vložit index. ale ne vždycky 0.
 * Doby trvání jsou desetiny sekundy, takže 10000000 = = 1 sekunda.
-* Data a časy jsou UTC a jsou uvedené ve formátu ISO.`yyyy-MM-DDThh:mm:ss.sssZ`
+* Data a časy jsou UTC a jsou uvedené ve formátu ISO. `yyyy-MM-DDThh:mm:ss.sssZ`
 
 ## <a name="example"></a>Příklad
 
@@ -138,7 +138,7 @@ Všechny typy telemetrie jsou doprovázeny kontextovým oddílem. Všechna tato 
 | context.operation.id |řetězec |Položky, které jsou stejné, `operation id` se zobrazí jako související položky na portálu. Obvykle je `request id` . |
 | context.operation.name |řetězec |Adresa URL nebo název žádosti |
 | Context. Operation. parentId |řetězec |Povoluje vnořené související položky. |
-| context.session.id |řetězec |`Id`skupiny operací ze stejného zdroje. Doba 30 minut bez operace signalizuje ukončení relace. |
+| context.session.id |řetězec |`Id` skupiny operací ze stejného zdroje. Doba 30 minut bez operace signalizuje ukončení relace. |
 | Context. Session.-First |boolean | |
 | Context. User. accountAcquisitionDate |řetězec | |
 | Context. User. accountId |řetězec | |
@@ -149,14 +149,14 @@ Všechny typy telemetrie jsou doprovázeny kontextovým oddílem. Všechna tato 
 | Context. User.-Authenticated |boolean | |
 | Context. User. storeRegion |řetězec | |
 | internal.data.documentVersion |řetězec | |
-| internal.data.id |řetězec | `Unique id`který je přiřazen při ingestování položky Application Insights |
+| internal.data.id |řetězec | `Unique id` který je přiřazen při ingestování položky Application Insights |
 
 ## <a name="events"></a>Události
 Vlastní události generované [TrackEvent ()](./api-custom-events-metrics.md#trackevent).
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| počet událostí [0] |celé číslo |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
+| počet událostí [0] |integer |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
 | název události [0] |řetězec |Název události  Maximální délka 250. |
 | Adresa URL události [0] |řetězec | |
 | událost [0] urlData. Base |řetězec | |
@@ -168,14 +168,14 @@ Oznamuje [výjimky](./asp-net-exceptions.md) na serveru a v prohlížeči.
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
 | basicException [0] sestavení |řetězec | |
-| basicException [0] počet |celé číslo |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
+| basicException [0] počet |integer |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
 | basicException [0] výjimka |řetězec | |
 | basicException [0] Typvýjimky |řetězec | |
 | basicException [0] failedUserCodeMethod |řetězec | |
 | basicException [0] failedUserCodeAssembly |řetězec | |
 | basicException [0] handledAt |řetězec | |
 | basicException [0] hasFullStack |boolean | |
-| basicException [0]`id` |řetězec | |
+| basicException [0] `id` |řetězec | |
 | basicException [0] – metoda |řetězec | |
 | Zpráva basicException [0] |řetězec |Zpráva výjimky Maximální délka 10 000. |
 | basicException [0] outerExceptionMessage |řetězec | |
@@ -185,8 +185,8 @@ Oznamuje [výjimky](./asp-net-exceptions.md) na serveru a v prohlížeči.
 | basicException [0] outerId |řetězec | |
 | basicException [0] parsedStack [0] sestavení |řetězec | |
 | basicException [0] parsedStack [0] fileName |řetězec | |
-| basicException [0] parsedStack [0] úroveň |celé číslo | |
-| basicException [0] parsedStack [0] řádek |celé číslo | |
+| basicException [0] parsedStack [0] úroveň |integer | |
+| basicException [0] parsedStack [0] řádek |integer | |
 | basicException [0] parsedStack [0] – metoda |řetězec | |
 | basicException [0] zásobník |řetězec |Maximální délka 10 000 |
 | basicException [0] typeName |řetězec | |
@@ -209,10 +209,10 @@ Odesílá TrackDependency. Slouží k hlášení výkonu a využití [volání z
 | remoteDependency [0] asynchronní |boolean | |
 | remoteDependency [0] – základ |řetězec | |
 | remoteDependency [0] příkaz |řetězec |Například "domů/index" |
-| remoteDependency [0] počet |celé číslo |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
+| remoteDependency [0] počet |integer |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
 | remoteDependency [0] dependencyTypeName |řetězec |HTTP, SQL,... |
 | remoteDependency [0] durationMetric. Value |číslo |Čas od volání k dokončení odpovědi podle závislosti |
-| remoteDependency [0]`id` |řetězec | |
+| remoteDependency [0] `id` |řetězec | |
 | remoteDependency [0] název |řetězec |Adresa URL. Maximální délka 250. |
 | remoteDependency [0] resultCode |řetězec |ze závislosti protokolu HTTP |
 | remoteDependency [0] úspěch |boolean | |
@@ -227,11 +227,11 @@ Odesílá [TrackRequest](./api-custom-events-metrics.md#trackrequest). Standardn
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| požadavek [0] počet |celé číslo |100/([vzorkovací](./sampling.md) frekvence). Příklad: 4 = &gt; 25%. |
+| požadavek [0] počet |integer |100/([vzorkovací](./sampling.md) frekvence). Příklad: 4 = &gt; 25%. |
 | požadavek [0] durationMetric. Value |číslo |Čas od žádosti přicházející do odpovědi 1E7 = = 1 |
-| žádost [0]`id` |řetězec |`Operation id` |
+| žádost [0] `id` |řetězec |`Operation id` |
 | žádost [0] název |řetězec |Základ pro GET/POST + URL  Maximální délka 250 |
-| žádost [0] responseCode |celé číslo |Odpověď HTTP se odeslala klientovi. |
+| žádost [0] responseCode |integer |Odpověď HTTP se odeslala klientovi. |
 | žádost [0] byla úspěšná. |boolean |Výchozí nastavení = = (responseCode &lt; 400) |
 | žádost [0] Adresa URL |řetězec |Nezahrnuje hostitel |
 | požadavek [0] urlData. Base |řetězec | |
@@ -245,12 +245,12 @@ Kontextové hodnoty znázorňují klientský operační systém a verzi prohlí�
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| clientPerformance [0] clientProcess. Value |celé číslo |Doba od konce příjmu HTML po zobrazení stránky. |
+| clientPerformance [0] clientProcess. Value |integer |Doba od konce příjmu HTML po zobrazení stránky. |
 | clientPerformance [0] název |řetězec | |
-| clientPerformance [0] networkConnection. Value |celé číslo |Doba potřebná k navázání připojení k síti |
-| clientPerformance [0] receiveRequest. Value |celé číslo |Doba od konce odeslání žádosti o přijetí kódu HTML v odpovědi. |
-| clientPerformance [0] sendRequest. Value |celé číslo |Doba od pořízení pro odeslání požadavku HTTP. |
-| clientPerformance [0] Celková hodnota |celé číslo |Čas od zahájení odesílání žádosti o zobrazení stránky |
+| clientPerformance [0] networkConnection. Value |integer |Doba potřebná k navázání připojení k síti |
+| clientPerformance [0] receiveRequest. Value |integer |Doba od konce odeslání žádosti o přijetí kódu HTML v odpovědi. |
+| clientPerformance [0] sendRequest. Value |integer |Doba od pořízení pro odeslání požadavku HTTP. |
+| clientPerformance [0] Celková hodnota |integer |Čas od zahájení odesílání žádosti o zobrazení stránky |
 | clientPerformance [0] Adresa URL |řetězec |Adresa URL této žádosti |
 | clientPerformance [0] urlData. Base |řetězec | |
 | clientPerformance [0] urlData. hashTag |řetězec | |
@@ -262,8 +262,8 @@ Odesílá se pomocí trackPageView () nebo [stopTrackPage](./api-custom-events-m
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| Zobrazit [0] počet |celé číslo |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
-| Zobrazit [0] durationMetric. Value |celé číslo |Hodnota volitelně nastavena v trackPageView () nebo pomocí startTrackPage ()-stopTrackPage (). Nejedná se o stejné hodnoty jako clientPerformance hodnoty. |
+| Zobrazit [0] počet |integer |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
+| Zobrazit [0] durationMetric. Value |integer |Hodnota volitelně nastavena v trackPageView () nebo pomocí startTrackPage ()-stopTrackPage (). Nejedná se o stejné hodnoty jako clientPerformance hodnoty. |
 | Zobrazit [0] název |řetězec |Nadpis stránky  Maximální délka 250 |
 | Zobrazit adresu URL [0] |řetězec | |
 | zobrazení [0] urlData. Base |řetězec | |
@@ -277,9 +277,9 @@ Oznamuje [webové testy dostupnosti](./monitor-web-app-availability.md).
 | --- | --- | --- |
 | dostupnost [0] availabilityMetric.name |řetězec |dostupnosti |
 | dostupnost [0] availabilityMetric. Value |číslo |1,0 nebo 0,0 |
-| počet dostupnosti [0] |celé číslo |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
+| počet dostupnosti [0] |integer |100/([vzorkovací](./sampling.md) frekvence). Například 4 = &gt; 25%. |
 | dostupnost [0] dataSizeMetric.name |řetězec | |
-| dostupnost [0] dataSizeMetric. Value |celé číslo | |
+| dostupnost [0] dataSizeMetric. Value |integer | |
 | dostupnost [0] durationMetric.name |řetězec | |
 | dostupnost [0] durationMetric. Value |číslo |Doba trvání testu. 1E7 = = 1 |
 | Zpráva o dostupnosti [0] |řetězec |Diagnostika selhání |
@@ -294,7 +294,7 @@ Vygenerováno pomocí TrackMetric ().
 
 Hodnota metriky se nachází v kontextu. Custom. Metrics [0]
 
-Například:
+Příklad:
 
 ```json
 {
@@ -324,7 +324,7 @@ Například:
 ```
 
 ## <a name="about-metric-values"></a>O hodnotách metriky
-Hodnoty metriky v sestavách metriky i jinde jsou hlášeny se standardní strukturou objektů. Například:
+Hodnoty metriky v sestavách metriky i jinde jsou hlášeny se standardní strukturou objektů. Příklad:
 
 ```json
 "durationMetric": {
@@ -350,7 +350,7 @@ Místo předagregačních metrik můžete použít [vzorkování](./sampling.md)
 ### <a name="durations"></a>Dob trvání
 S výjimkou případů, kdy je uvedeno jinak, jsou doby trvání vyjádřeny desáty sekundy, takže 10000000,0 znamená 1 sekundu.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 * [Application Insights](./app-insights-overview.md)
 * [Průběžný export](export-telemetry.md)
 * [Ukázky kódu](export-telemetry.md#code-samples)

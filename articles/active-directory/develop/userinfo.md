@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3bd0621d607b121f19bc47c717343b8e2e39b04f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119636"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752733"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity Platform – UserInfo – koncový bod
 
@@ -28,7 +28,7 @@ Koncový bod UserInfo je součástí [standardu OpenID Connect](https://openid.n
 
 Koncový bod UserInfo můžete programově zjistit pomocí dokumentu zjišťování OpenID Connect v `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Je uveden v `userinfo_endpoint` poli a tento model lze použít napříč cloudy, aby ukazoval na správný koncový bod.  Nedoporučujeme v aplikaci pevně zakódovat koncový bod UserInfo – použijte k vyhledání tohoto koncového bodu za běhu dokument zjišťování OIDC.
 
-V rámci specifikace OpenID Connect se koncový bod UserInfo často automaticky volá pomocí [knihoven vyhovujících OIDC](https://openid.net/developers/certified/) , aby se získaly informace o uživateli.  Bez hostování takového koncového bodu by technologie Microsoft Identity Platform nesplňovala standardy a některé knihovny selžou.  V [seznamu deklarací identity identifikovaných ve standardu OIDC](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) vytvoříme deklarace identity, deklarace identity subjektu a e-mail, pokud jsou dostupné a přijaté pro.  
+V rámci specifikace OpenID Connect se koncový bod UserInfo často automaticky volá pomocí [knihoven vyhovujících OIDC](https://openid.net/developers/certified/)  , aby se získaly informace o uživateli.  Bez hostování takového koncového bodu nedodržuje platforma Microsoft Identity Platform standardy a některé knihovny selžou.  V [seznamu deklarací identity identifikovaných ve standardu OIDC](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) vytvoříme deklarace identity, deklarace identity subjektu a e-mail, pokud jsou dostupné a přijaté pro.  
 
 ## <a name="consider-use-an-id-token-instead"></a>Zvažte možnost použít místo toho token ID.
 
@@ -42,7 +42,7 @@ UserInfo je standardní rozhraní API nosných tokenů OAuth, které se volá ja
 
 ### <a name="permissions"></a>Oprávnění
 
-K volání rozhraní API pro UserInfo použijte následující [OIDC oprávnění](v2-permissions-and-consent.md#openid-connect-scopes) . `openid`je vyžadováno a `profile` `email` obory a zajišťují, že v odpovědi jsou k dispozici další informace.
+K volání rozhraní API pro UserInfo použijte následující [OIDC oprávnění](v2-permissions-and-consent.md#openid-connect-scopes) . `openid` je vyžadováno a `profile` `email` obory a zajišťují, že v odpovědi jsou k dispozici další informace.
 
 |Typ oprávnění      | Oprávnění    |
 |:--------------------|:---------------------------------------------------------|
@@ -81,7 +81,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Il…
 }
 ```
 
-Deklarace, které jsou tady uvedené, včetně `sub` , jsou stejné jako deklarace identity, které by aplikace viděli v [tokenu ID](id-tokens.md) vydaném do aplikace.  
+Deklarace, které jsou tady uvedené, jsou všechny deklarace identity, které může koncový bod UserInfo vracet.  Jedná se o stejné hodnoty, které by aplikace viděli v [tokenu ID](id-tokens.md) vydaném do aplikace.  
 
 ## <a name="notes-and-caveats-on-the-userinfo-endpoint"></a>Poznámky a upozornění na koncovém bodu UserInfo
 

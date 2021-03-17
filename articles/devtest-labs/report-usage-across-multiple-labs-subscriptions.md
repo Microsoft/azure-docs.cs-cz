@@ -3,16 +3,16 @@ title: Azure DevTest Labs využití napříč několika cvičeními a předplatn
 description: Naučte se, jak ohlásit Azure DevTest Labs využití napříč několika cvičeními a předplatnými.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1e4d1f0abb5596c7fd9d22740bf052827c2ca666
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287279"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452641"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Nahlášení využití Azure DevTest Labs napříč několika cvičeními a předplatnými
 
-Většina velkých organizací chce pomocí těchto prostředků sledovat trendy a odlehlé využití prostředků, aby bylo možné s těmito prostředky lépe zefektivnit. Na základě využití prostředků můžou vlastníci testovacího prostředí nebo manažeři přizpůsobit cvičení, aby [vylepšili využití prostředků a náklady](../cost-management-billing/manage/getting-started.md). V Azure DevTest Labs můžete stáhnout využití prostředků na testovací prostředí, které vám umožní hlubší historický vzhled vzorců používání. Tyto vzorce používání můžou usnadnit změnu v vylepšení efektivity. Většina podniků má individuální využití testovacího prostředí a celkové využití v rámci [více cvičení a předplatných](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
+Většina velkých organizací chce pomocí těchto prostředků sledovat trendy a odlehlé využití prostředků, aby bylo možné s těmito prostředky lépe zefektivnit. Na základě využití prostředků můžou vlastníci testovacího prostředí nebo manažeři přizpůsobit cvičení, aby [vylepšili využití prostředků a náklady](../cost-management-billing/cost-management-billing-overview.md). V Azure DevTest Labs můžete stáhnout využití prostředků na testovací prostředí, které vám umožní hlubší historický vzhled vzorců používání. Tyto vzorce používání můžou usnadnit změnu v vylepšení efektivity. Většina podniků má individuální využití testovacího prostředí a celkové využití v rámci [více cvičení a předplatných](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
 
 Tento článek popisuje, jak zpracovávat informace o využití prostředků napříč několika cvičeními a předplatnými.
 
@@ -25,7 +25,7 @@ Tato část popisuje, jak exportovat využití prostředků v jednom testovacím
 Než budete moct exportovat využití prostředků DevTest Labs, musíte nastavit účet Azure Storage, aby bylo možné ukládat různé soubory, které obsahují data o využití. Existují dva běžné způsoby, jak spustit Export dat:
 
 * [REST API DevTest Labs](/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell AZ. Resource Module [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) s akcí `exportResourceUsage` , ID prostředku testovacího prostředí a potřebné parametry. 
+* PowerShell AZ. Resource Module [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) s akcí `exportResourceUsage` , ID prostředku testovacího prostředí a potřebné parametry. 
 
     Článek o [exportu nebo odstranění osobních údajů](personal-data-delete-export.md) obsahuje ukázkový skript prostředí PowerShell s podrobnými informacemi o exportovaných datech. 
 
@@ -82,5 +82,5 @@ Až se systém nastaví a data se přesunou do dlouhodobého úložiště, dalš
     Mají uživatelé výběr vysoce výkonných (dražších) velikostí virtuálních počítačů?
 -   Které image Marketplace se používají?
 
-    Jsou vlastní image nejběžnějším základem virtuálních počítačů, které by měly být sestavené jako [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md) nebo [objekt pro vytváření imagí](image-factory-create.md).
+    Jsou vlastní image nejběžnějším základem virtuálních počítačů, které by měly být sestavené jako [Galerie sdílených imagí](../virtual-machines/shared-image-galleries.md) nebo [objekt pro vytváření imagí](image-factory-create.md).
 -   Které vlastní image se používají nebo které se nepoužívají?

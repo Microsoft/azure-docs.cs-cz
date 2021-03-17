@@ -4,18 +4,20 @@ description: 'Kurz: Naučte se, jak nastavit globální distribuci Azure Cosmos 
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 9498c4a0e0dc5b528066ffadd6a9638fe99b1135
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: aacb8d4ffb98d553b17aa52e4c4b11a4837dc1c6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874788"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337859"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Kurz: nastavení globální distribuce Azure Cosmos DB pomocí rozhraní SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V tomto článku se dozvíte, jak pomocí Azure Portal nastavit globální distribuci Azure Cosmos DB a pak se připojit pomocí rozhraní SQL API.
 
@@ -23,12 +25,12 @@ Tento článek se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Konfigurace globální distribuce pomocí webu Azure Portal
-> * Konfigurace globální distribuce pomocí [rozhraní SQL API](sql-api-introduction.md)
+> * Konfigurace globální distribuce pomocí [rozhraní SQL API](./introduction.md)
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a>Připojení k preferované oblasti pomocí rozhraní SQL API
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> Připojení k preferované oblasti pomocí rozhraní SQL API
 
 Aby mohly využívat [globální distribuci](distribute-data-globally.md), můžou mít klientské aplikace určený seřazený seznam preferovaných oblastí, které se mají použít k provádění operací s dokumenty. V závislosti na konfiguraci účtu služby Azure Cosmos DB, aktuální regionální dostupnosti a zadaného seznamu preferencí zvolí sada SQL SDK optimální koncový bod, který bude provádět operace čtení a zápisu.
 
@@ -159,7 +161,7 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a>Sada Java v4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a> Sada Java v4 SDK
 
 Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí sady Java SDK:
 
@@ -179,7 +181,7 @@ Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí
 
 ## <a name="rest"></a>REST
 
-Po zpřístupnění účtu databáze ve více oblastech můžou klienti zadat dotaz na jeho dostupnost provedením žádosti o získání tohoto identifikátoru URI.`https://{databaseaccount}.documents.azure.com/`
+Po zpřístupnění účtu databáze ve více oblastech můžou klienti zadat dotaz na jeho dostupnost provedením žádosti o získání tohoto identifikátoru URI. `https://{databaseaccount}.documents.azure.com/`
 
 Služba vrátí seznam oblastí a jejich odpovídajících identifikátorů URI koncových bodů služby Azure Cosmos DB pro repliky. V odpovědi bude uvedená aktuální oblast pro zápis. Klient si pak může vybrat vhodný koncový bod pro všechny další požadavky rozhraní REST API následujícím způsobem.
 
@@ -240,4 +242,3 @@ Teď můžete přejít k dalšímu kurzu, ve kterém se naučíte vyvíjet míst
 > [Místní vývoj s využitím emulátoru](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
-

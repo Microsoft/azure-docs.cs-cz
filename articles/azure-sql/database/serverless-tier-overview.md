@@ -4,19 +4,19 @@ description: Tento článek popisuje novou výpočetní vrstvu bez serveru a por
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: test sqldbrb=1
+ms.custom: test sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 8/7/2020
-ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.reviewer: sstein
+ms.date: 2/22/2021
+ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121353"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658584"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ Výpočetní vrstva bez serveru pro izolovanou databázi v Azure SQL Database je
 ### <a name="performance-configuration"></a>Konfigurace výkonu
 
 - **Minimální virtuální jádra** a **Maximální virtuální jádra** jsou konfigurovatelné parametry, které definují rozsah výpočetní kapacity dostupné pro databázi. Limity paměti a vstupně-výstupních operací jsou úměrné zadanému rozsahu vCore.  
-- **Prodleva automatického pozastavení** je konfigurovatelný parametr definující časové období, po které musí být databáze neaktivní, než bude automaticky pozastavena. Databáze se automaticky obnoví, když dojde k dalšímu přihlášení nebo jiné aktivitě.  Alternativně je možné zakázat autopauzu.
+- **Prodleva automatického pozastavení** je konfigurovatelný parametr definující časové období, po které musí být databáze neaktivní, než bude automaticky pozastavena. Databáze se automaticky obnoví, když dojde k dalšímu přihlášení nebo jiné aktivitě.  Případně může být automatické pozastavení zakázané.
 
 ### <a name="cost"></a>Náklady
 
@@ -57,7 +57,7 @@ Bezserverová architektura nabízí optimální poměr cena/výkon pro jednoúč
 ### <a name="scenarios-well-suited-for-provisioned-compute"></a>Scénáře vhodné pro zřízené výpočetní prostředky
 
 - Izolované databáze s pravidelnými a předvídatelnými způsoby použití a vyšším využitím výpočetního využití v průběhu času.
-- Databáze, které nemůžou tolerovat kompromisy na výkonu, což vede k častému oříznutí paměti nebo zpoždění při automatického obnovení z pozastaveného stavu.
+- Databáze, které nemůžou tolerovat kompromisy na výkonu, což vede k častější zkracování paměti nebo prodlevám při obnovení z pozastaveného stavu.
 - Víc databází s přerušovanými a nepředvídatelnými vzorci použití, které se dají konsolidovat do elastických fondů pro lepší optimalizaci cen.
 
 ## <a name="comparison-with-provisioned-compute-tier"></a>Porovnání se zřízenou výpočetní vrstvou
@@ -93,41 +93,42 @@ Na rozdíl od zřízených výpočetních databází je paměť z mezipaměti SQ
 - Využití aktivní mezipaměti se považuje za nepatrné, pokud celková velikost naposledy použitých položek mezipaměti klesne pod prahovou hodnotu po určitou dobu.
 - Při aktivaci opětovného získání mezipaměti se cílová velikost mezipaměti zmenší přírůstkově na zlomek její předchozí velikosti a obnovení bude pokračovat pouze v případě, že je využití nízké.
 - Když dojde k recyklování mezipaměti, zásada pro výběr položek mezipaměti k vyřazení je stejná jako zásada výběru pro zřízené výpočetní databáze, pokud je tlak paměti vysoký.
-- Velikost mezipaměti se nikdy nesnižuje pod minimálním limitem paměti definovaným min virtuální jádra, který se dá nakonfigurovat.
+- Velikost mezipaměti se nikdy nesnižuje pod minimálním limitem paměti definovaným na minimum virtuální jádra, který se dá nakonfigurovat.
 
 V neserverových a zřízených výpočetních databázích se můžou položky mezipaměti vyřadit, pokud se použije veškerá dostupná paměť.
 
-Všimněte si, že pokud je využití procesoru nízké, může využití aktivní mezipaměti zůstat vysoké v závislosti na způsobu použití a zabránit recyklaci paměti.  V důsledku pravidelného zpracování na pozadí reaguje na předchozí činnost uživatele může také docházet k dalšímu zpoždění po zastavení aktivity uživatele před tím, než dojde k opakovanému získávání paměti.  Například operace delete generují opuštěné záznamy, které jsou označené k odstranění, ale nejsou fyzicky odstraněny, dokud nebude spuštěn proces čištění Ghost, který může zahrnovat čtení datových stránek do mezipaměti.
+Všimněte si, že pokud je využití procesoru nízké, může využití aktivní mezipaměti zůstat vysoké v závislosti na způsobu použití a zabránit recyklaci paměti.  Také může docházet k dalším prodlevám po zastavení aktivity uživatele před tím, než dojde k recyklaci paměti z důvodu pravidelného zpracování na pozadí, které reaguje na předchozí činnost uživatele.  Například úlohy odstranit operace a vyčištění QDS generují opuštěné záznamy, které jsou označené k odstranění, ale nejsou fyzicky smazány, dokud se nespustí proces čištění Ghost, který může zahrnovat čtení datových stránek do mezipaměti.
 
 #### <a name="cache-hydration"></a>Vysazování mezipaměti
 
 Mezipaměť SQL roste, protože data se načítají z disku stejným způsobem a se stejnou rychlostí jako u zřízených databází. Pokud je databáze zaneprázdněná, může být velikost mezipaměti až do maximálního limitu paměti neomezená.
 
-## <a name="autopausing-and-autoresuming"></a>Autopozastavování a autoobnovování
+## <a name="auto-pausing-and-auto-resuming"></a>Automatické pozastavení a automatické obnovení
 
-### <a name="autopausing"></a>Autopozastavování
+### <a name="auto-pausing"></a>Automatické pozastavení
 
-Automatické pauzy se aktivují, pokud jsou splněné všechny následující podmínky po dobu trvání prodlevy při automatickém pozastavení:
+Automatické pauzy se aktivují, pokud jsou splněné všechny následující podmínky po dobu trvání prodlevy automatického pozastavení:
 
 - Počet relací = 0
 - CPU = 0 pro úlohy uživatele běžící ve fondu uživatelů
 
-V případě potřeby je k dispozici možnost pro vypnutí autopauzy.
+K dispozici je možnost pro vypnutí automatického pozastavení v případě potřeby.
 
-Následující funkce nepodporují automatické pozastavení, ale podporují automatické škálování.  To znamená, že pokud použijete některou z následujících funkcí, zůstane databáze online bez ohledu na dobu nečinnosti databáze:
+Následující funkce nepodporují automatické pozastavování, ale podporují automatické škálování.  Pokud použijete některou z následujících funkcí, je třeba vypnout automatické pozastavování a databáze zůstane online bez ohledu na dobu nečinnosti databáze:
 
 - Geografická replikace (aktivní geografická replikace a skupiny s automatickým převzetím služeb při selhání).
 - Dlouhodobé uchovávání záloh (LTR).
-- Synchronizovaná databáze použitá v synchronizaci dat SQL  Na rozdíl od synchronizace databází databáze hub a členské databáze podporují automatické pozastavení.
+- Synchronizovaná databáze použitá v synchronizaci dat SQL  Na rozdíl od synchronizace databází databáze hub a členské databáze podporují automatické pozastavování.
+- Aliasy DNS
 - Databáze úlohy používaná v elastických úlohách (Preview).
 
-Při nasazování některých aktualizací služby, které vyžadují databázi online, se dočasně brání v dočasném pozastavení.  V takových případech se po dokončení aktualizace služby znovu povolí opětovné pozastavení.
+Automatické pozastavení je dočasně znemožněno při nasazování některých aktualizací služby, které vyžadují databázi online.  V takových případech se automatické pozastavení po dokončení aktualizace služby znovu povolí.
 
-### <a name="autoresuming"></a>Probíhá autoobnovování
+### <a name="auto-resuming"></a>Automatické obnovení
 
 Automatické obnovení se aktivuje, pokud platí kterákoli z následujících podmínek v libovolnou dobu:
 
-|Příznak|Aktivační událost autoresume|
+|Funkce|Automaticky obnovit aktivační událost|
 |---|---|
 |Ověřování a autorizace|Přihlásit|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
@@ -137,7 +138,8 @@ Automatické obnovení se aktivuje, pokud platí kterákoli z následujících p
 |Transparentní šifrování dat|Zobrazení stavu nebo stavu transparentního šifrování dat|
 |Posouzení ohrožení zabezpečení|Kontroly ad hoc a pravidelné kontroly, pokud je povoleno|
 |Dotaz (výkon) úložiště dat|Úprava nebo zobrazení nastavení úložiště dotazů|
-|Automatického ladění|Aplikace a ověření doporučení automatického ladění, jako je automatické indexování|
+|Doporučení k výkonu|Zobrazení nebo použití doporučení pro výkon|
+|Automatické ladění|Aplikace a ověřování doporučení pro automatické ladění, jako je automatické indexování|
 |Kopírování databáze|Vytvoří databázi jako kopii.<br>Exportujte do souboru BACPAC.|
 |Synchronizace dat SQL|Synchronizace mezi centrem a členskými databázemi, které se spouští podle konfigurovatelného plánu, nebo se provádí ručně|
 |Úprava určitých metadat databáze|Přidávání nových značek databáze.<br>Změna maximálního virtuální jádra, minimální virtuální jádra nebo prodlevy při autopauze.|
@@ -145,7 +147,7 @@ Automatické obnovení se aktivuje, pokud platí kterákoli z následujících p
 
 Monitorování, Správa nebo jiná řešení provádějící jakoukoli z výše uvedených operací spustí automatické obnovení.
 
-Automatické obnovení se také aktivuje při nasazení některých aktualizací služby, které vyžadují, aby byla databáze online.
+Automatické obnovení se také aktivuje při nasazení některých aktualizací služby, které vyžadují databázi online.
 
 ### <a name="connectivity"></a>Připojení
 
@@ -153,7 +155,7 @@ Pokud je databáze bez serveru pozastavená, pak se při prvním přihlášení 
 
 ### <a name="latency"></a>Latence
 
-Latence pro autoresume a autopauza databáze bez serveru je obvykle na hodnotu 1 minuta k autoresume a 1-10 minut pro autopauzu.
+Latence automatického obnovení a automatického pozastavení databáze bez serveru je obecně jedna z těchto dob: 1 minuta pro automatické obnovení a 1-10 minut na automatické pozastavení.
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Transparentní šifrování dat spravované zákazníkem (BYOK)
 
@@ -194,7 +196,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
-  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+  -e GeneralPurpose -f Gen5 --min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
 
@@ -207,7 +209,7 @@ CREATE DATABASE testdb
 ( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
 ```
 
-Podrobnosti najdete v tématu [Vytvoření databáze](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+Podrobnosti najdete v tématu [Vytvoření databáze](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true).  
 
 ### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Přesun databáze ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru
 
@@ -232,14 +234,14 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Použití jazyka Transact-SQL (T-SQL)
 
-Při použití T-SQL se výchozí hodnoty aplikují na minimum virtuální jádra a prodleva automatického pozastavení.
+Při použití T-SQL se výchozí hodnoty aplikují na minimum virtuální jádra a zpoždění automatického pozastavení.
 
 ```sql
 ALTER DATABASE testdb 
 MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 ```
 
-Podrobnosti najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
+Podrobnosti najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true).
 
 ### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Přesun databáze z výpočetní vrstvy bez serveru do zřízené výpočetní vrstvy
 
@@ -256,7 +258,7 @@ Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlev
 Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí `capacity` `min-capacity` argumentů, a `auto-pause-delay` .
 
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="resources-used-and-billed"></a>Využité a fakturované prostředky
 
@@ -274,7 +276,7 @@ Fond zdrojů uživatele je vnitřní hranice správy prostředků pro databázi 
 
 Metriky pro monitorování využití prostředků balíčku aplikace a fondu uživatelů v databázi bez serveru jsou uvedené v následující tabulce:
 
-|Entita|Metrika|Popis|Jednotky|
+|Entita|Metric|Popis|Jednotky|
 |---|---|---|---|
 |Balíček aplikace|app_cpu_percent|Procento virtuální jádra, které aplikace používá vzhledem k maximálnímu virtuální jádra povolenému pro aplikaci|Procento|
 |Balíček aplikace|app_cpu_billed|Množství COMPUTE, které aplikace účtuje během období generování sestav. Částka placená během tohoto období je produktem této metriky a Jednotková cena vCore. <br><br>Hodnoty této metriky se určují tak, že se v průběhu času vyhodnotí maximální využití procesoru a využitá paměť každou sekundu. Pokud je využité množství menší než minimální zajištěné množství, které je stanoveno minimálním virtuální jádra a minimální pamětí, účtuje se minimální stanovený objem.Aby bylo možné porovnat procesor s pamětí pro účely fakturace, je paměť normalizována na jednotky virtuální jádra tím, že převýší množství paměti v GB o 3 GB na vCore.|vCore sekund|

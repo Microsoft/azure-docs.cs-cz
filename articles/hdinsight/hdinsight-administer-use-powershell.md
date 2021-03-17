@@ -1,33 +1,30 @@
 ---
 title: Správa clusterů Apache Hadoop pomocí prostředí PowerShell – Azure HDInsight
 description: Naučte se provádět úlohy správy pro Apache Hadoop clustery v HDInsight pomocí Azure PowerShell.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 1839cfe0f7295af583b7bd5397957a223e888d3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8581c2288eacb47fb9475a3b0a584434c8604f6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086485"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942809"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure PowerShell
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell lze použít k řízení a automatizaci nasazení a správy úloh v Azure. V tomto článku se naučíte spravovat [Apache Hadoop](https://hadoop.apache.org/) clustery ve službě Azure HDInsight pomocí Azure PowerShell AZ Module. Seznam rutin prostředí PowerShell pro HDInsight najdete v tématu [AZ. HDInsight reference](https://docs.microsoft.com/powershell/module/az.hdinsight).
+Azure PowerShell lze použít k řízení a automatizaci nasazení a správy úloh v Azure. V tomto článku se naučíte spravovat [Apache Hadoop](https://hadoop.apache.org/) clustery ve službě Azure HDInsight pomocí Azure PowerShell AZ Module. Seznam rutin prostředí PowerShell pro HDInsight najdete v tématu [AZ. HDInsight reference](/powershell/module/az.hdinsight).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
+Prostředí PowerShell [AZ Module](/powershell/azure/) installed.
 
 ## <a name="create-clusters"></a>Vytváření clusterů
 
@@ -75,7 +72,7 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
 ## <a name="update-http-user-credentials"></a>Aktualizovat přihlašovací údaje uživatele HTTP
 
-[Set-AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) nastaví přihlašovací údaje protokolu HTTP brány clusteru Azure HDInsight.
+[Set-AzHDInsightGatewayCredential](/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) nastaví přihlašovací údaje protokolu HTTP brány clusteru Azure HDInsight.
 
 ```powershell
 $clusterName = "CLUSTERNAME"
@@ -146,7 +143,7 @@ Viz [Nahrání dat do služby HDInsight](hdinsight-upload-data.md).
 
 ## <a name="see-also"></a>Viz také
 
-* [AZ. HDInsight – rutiny](https://docs.microsoft.com/powershell/module/az.hdinsight/?view=azps-3.1.0#hdinsight)
+* [AZ. HDInsight – rutiny](/powershell/module/az.hdinsight/#hdinsight)
 * [Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal](hdinsight-administer-use-portal-linux.md)
 * [Správa HDInsight pomocí rozhraní příkazového řádku](hdinsight-administer-use-command-line.md)
 * [Vytváření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md)

@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync síťové požadavky | Microsoft Docs
-description: Přehled možností sítě pro Azure File Sync.
+description: Naučte se konfigurovat síť pro použití Azure File Sync k ukládání souborů do mezipaměti v místním prostředí.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76d97e3312c1df51193d8a881f3ee07fcd155d75
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512573"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629355"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync síťové požadavky
 Ke sdílené složce Azure se můžete připojit dvěma způsoby:
@@ -55,7 +55,7 @@ Azure File Sync vyžaduje rozsahy IP adres pro následující služby, které id
 | Azure Resource Manager | Azure Resource Manager je rozhraní pro správu Azure. Všechna volání správy, včetně úloh registrace serveru Azure File Sync a probíhající synchronizace serveru, probíhají prostřednictvím Azure Resource Manager. | `AzureResourceManager` |
 | Azure Active Directory | Azure Active Directory nebo Azure AD obsahuje uživatelské objekty, které jsou potřebné k autorizaci registrace serveru vůči službě synchronizace úložiště, a instanční objekty vyžadované pro Azure File Sync oprávnění pro přístup k vašim cloudovým prostředkům. | `AzureActiveDirectory` |
 
-Pokud používáte Azure File Sync v rámci Azure, a to i v případě, že se jedná o jinou oblast, můžete k povolení provozu do této služby použít název značky služby přímo ve skupině zabezpečení sítě. Další informace o tom, jak to provést, najdete v tématu [skupiny zabezpečení sítě](../../virtual-network/security-overview.md). 
+Pokud používáte Azure File Sync v rámci Azure, a to i v případě, že se jedná o jinou oblast, můžete k povolení provozu do této služby použít název značky služby přímo ve skupině zabezpečení sítě. Další informace o tom, jak to provést, najdete v tématu [skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md). 
 
 Pokud používáte Azure File Sync v místním prostředí, můžete k získání specifických rozsahů IP adres pro seznam povolených bran firewall použít rozhraní API tag služby. Existují dvě metody pro získání těchto informací:
 
@@ -65,9 +65,9 @@ Pokud používáte Azure File Sync v místním prostředí, můžete k získán�
     - [Azure (Čína)](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure (Německo)](https://www.microsoft.com/download/details.aspx?id=57064)
 - Rozhraní API zjišťování značek služby (Preview) umožňuje programové načtení aktuálního seznamu značek služeb. Ve verzi Preview může rozhraní API zjišťování značek služby vracet informace, které jsou méně aktuální než informace vrácené z dokumentů JSON publikovaných na webu Microsoft Download Center. Plochu rozhraní API můžete použít na základě preference automatizace:
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 Další informace o tom, jak používat rozhraní API značek služby k načtení adres vašich služeb, najdete v tématu [povolení Azure File Sync IP adres v seznamu povolených](storage-sync-files-firewall-and-proxy.md#allow-list-for-azure-file-sync-ip-addresses).
 
@@ -142,7 +142,7 @@ TimeToExpiration       : 2419200
 DefaultTTL             : 300
 ```
 
-Pokud spustíte stejný příkaz z místního prostředí, uvidíte, že stejný název účtu úložiště se přeloží na veřejnou IP adresu účtu úložiště. `storageaccount.file.core.windows.net`je záznam CNAME pro `storageaccount.privatelink.file.core.windows.net` , který je zase záznam CNAME pro cluster úložiště Azure hostující účet úložiště:
+Pokud spustíte stejný příkaz z místního prostředí, uvidíte, že stejný název účtu úložiště se přeloží na veřejnou IP adresu účtu úložiště. `storageaccount.file.core.windows.net` je záznam CNAME pro `storageaccount.privatelink.file.core.windows.net` , který je zase záznam CNAME pro cluster úložiště Azure hostující účet úložiště:
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -170,6 +170,6 @@ Připojení od agenta Azure File Sync k vaší sdílené složce Azure nebo slu�
 
 Další informace o šifrování v přenosu najdete v tématu [vyžadování zabezpečeného přenosu ve službě Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
 - [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)

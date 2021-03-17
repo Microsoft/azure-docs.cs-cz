@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 091e4dc0759ce1b227349d5d1b6b08b9eda66ee0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72050ff4887642ba16d52948c1c1253ca01443c0
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84237659"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473842"
 ---
-* Převod vyžaduje restartování virtuálního počítače, proto naplánujte migraci virtuálních počítačů během už existujícího časového období údržby. 
+* Při převodu se virtuální počítač restartuje, takže se naplánuje migrace vašich virtuálních počítačů během již existujícího časového období údržby. 
 
 * Převod je nevratný. 
 

@@ -3,19 +3,19 @@ title: Nepodporovaná nasazení jazyků – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: V tomto článku se dozvíte, jak nasadit nepodporované páry jazyků v Azure Cognitive Services vlastního překladatele.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 04/24/2019
+ms.author: lajanuar
+ms.openlocfilehash: fb31388647fc6022a2e6670baf7b3e73f345c36a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964681"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898066"
 ---
 # <a name="unsupported-language-deployments"></a>Nasazení nepodporovaného jazyka
 
@@ -35,11 +35,11 @@ Aby byly vaše modely kandidátem na nasazení, musí splňovat následující k
 ## <a name="process"></a>Proces
 Po migraci modelů z centra, které jsou kandidáty na nasazení, je můžete najít tak, že přejdete na stránku **Nastavení** pro váš pracovní prostor a přejdete na konec stránky, kde se zobrazí **Nepodporovaná část školení centra překladatelů** .  Tato část se zobrazí pouze v případě, že máte projekty, které splňují výše zmíněné požadavky.
 
-![Postup migrace z centra](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Snímek obrazovky, který zvýrazní oddíl nepodporovaného školení centra překladatelů.](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 Na stránce s výběrem **nepodporovaného výběru školení centra překladatelů** obsahuje karta **nežadatelé školení** modely, které mají nárok na nasazení.  Vyberte modely, které chcete nasadit, a odešlete žádost.   Před uplynutím 30. dubna můžete vybrat tolik modelů, kolik chcete pro nasazení.
  
-![Postup migrace z centra](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![Snímek obrazovky, na které se zobrazuje karta nežádosti o školení](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 Po odeslání nebude model na kartě **nevyžádaných** **školení** dostupný a místo toho se zobrazí na kartě požadované školení.  Požadované školení můžete kdykoli zobrazit.
 
@@ -47,7 +47,7 @@ Po odeslání nebude model na kartě **nevyžádaných** **školení** dostupný
 
 ## <a name="whats-next"></a>Co dále?
 
-Modely, které jste vybrali pro nasazení, se uloží až po vyřazení centra a všechny modely se odsadí.  Dokud nebudete moct odesílat žádosti o nasazení nepodporovaných modelů, budete muset 24.  Tyto modely budeme nasazovat do 15. června, od tohoto okamžiku budou přístupné prostřednictvím překladatele v3.  Kromě toho budou k dispozici prostřednictvím aplikace Translator v2 až do 1. července.  
+Modely, které jste vybrali pro nasazení, se uloží až po vyřazení centra a všechny modely se odsadí.  Dokud nebudete moct odesílat žádosti o nasazení nepodporovaných modelů, budete muset 24.  Tyto modely budeme nasazovat do 15. června, od tohoto okamžiku budou přístupné prostřednictvím rozhraní API pro překladatele v3.  Kromě toho budou k dispozici prostřednictvím rozhraní v2 API až do 1. července.  
 
 Další informace o důležitých datech v vyřazení centra najdete [tady](https://www.microsoft.com/translator/business/hub/).
 Po nasazení budou platit normální poplatky za hostování.  Podrobnosti najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .  
@@ -57,4 +57,4 @@ Na rozdíl od standardních vlastních modelů překladatelů budou modely rozbo
 ## <a name="next-steps"></a>Další kroky
 
 - [Výuka modelu](how-to-train-model.md).
-- Začněte používat nasazený vlastní model překladu prostřednictvím [překladatele V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Začněte používat nasazený vlastní model překladu přes [Microsoft Translator text API V3](../reference/v3-0-translate.md?tabs=curl).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: aec1967f0652e18c4a24ca258c14a103355b22af
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844236"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219311"
 ---
 # <a name="api-management-policy-expressions"></a>API Management výrazy zásad
 Tento článek popisuje syntaxi výrazů zásad v jazyce C# 7. Každý výraz má přístup k implicitně zadané [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné a povolené [podmnožině](api-management-policy-expressions.md#CLRTypes) typů .NET Framework.
@@ -33,12 +33,12 @@ Další informace najdete tady:
 - Pokud chcete stáhnout příkazy zásad, přečtěte si úložiště GitHub [API-Management-Samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) .
 
 
-## <a name="syntax"></a><a name="Syntax"></a>Syntaktick
+## <a name="syntax"></a><a name="Syntax"></a> Syntaktick
 Výrazy jednoho příkazu jsou uzavřeny v `@(expression)` , kde `expression` je ve správném formátu C# příkaz výrazu.
 
 Výrazy s více příkazy jsou uzavřeny v `@{expression}` . Všechny cesty kódu v rámci výrazů vícenásobného příkazu musí končit `return` příkazem.
 
-## <a name="examples"></a><a name="PolicyExpressionsExamples"></a>4.6
+## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> 4.6
 
 ```
 @(true)
@@ -71,7 +71,7 @@ Výrazy lze použít jako hodnoty atributů nebo textové hodnoty v jakékoli [z
 > [!IMPORTANT]
 > Když použijete výrazy zásad, je při definování zásady k dispozici jenom omezené ověření výrazů zásad. Za běhu jsou výrazy spouštěné bránou, takže všechny výjimky vygenerované výrazy zásad mají za následek chybu za běhu.
 
-## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a>Typy .NET Framework povolené ve výrazech zásad
+## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> Typy .NET Framework povolené ve výrazech zásad
 Následující tabulka uvádí typy .NET Framework a jejich členy, které jsou povoleny ve výrazech zásad.
 
 |Typ|Podporovaní členové|
@@ -156,7 +156,7 @@ Následující tabulka uvádí typy .NET Framework a jejich členy, které jsou 
 |System. Security. Cryptography. SymmetricAlgorithm|Vše|
 |System. Security. Cryptography. X509Certificates. PublicKey|Vše|
 |System. Security. Cryptography. X509Certificates. RSACertificateExtensions|Vše|
-|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Název|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Name|
 |System. Security. Cryptography. X509Certificates. certifikátu x509|Vše|
 |System. Security. Cryptography. X509Certificates. X509Certificate2|Vše|
 |System. Security. Cryptography. X509Certificates. X509ContentType|Vše|
@@ -205,7 +205,7 @@ Následující tabulka uvádí typy .NET Framework a jejich členy, které jsou 
 |System.Xml. LINQ. XText|Vše|
 |System.Xml.XmlNodeType|Vše|
 
-## <a name="context-variable"></a><a name="ContextVariables"></a>Kontextová proměnná
+## <a name="context-variable"></a><a name="ContextVariables"></a> Kontextová proměnná
 Proměnná s názvem `context` je implicitně dostupná ve všech [výrazech](api-management-policy-expressions.md#Syntax)zásad. Jeho členové poskytují informace, které jsou užitečné pro `\request` . Všichni `context` Členové jsou jen pro čtení.
 
 |Kontextová proměnná|Povolené metody, vlastnosti a hodnoty parametrů|
@@ -220,7 +220,7 @@ Proměnná s názvem `context` je implicitně dostupná ve všech [výrazech](ap
 |<a id="ref-context-request-headers"></a>kontext řetězce. Request. Headers. GetValueOrDefault (Header: řetězec, defaultValue: String)|záhlaví: řetězec<br /><br /> VýchozíHodnota: řetězec<br /><br /> Vrátí hodnoty záhlaví žádosti oddělené čárkou nebo `defaultValue` , pokud záhlaví není nalezeno.|
 |<a id="ref-context-response"></a>souvislost. Základě|Tělo: [IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers): IReadOnlyDictionary<String, String [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: řetězec|
 |<a id="ref-context-response-headers"></a>kontext řetězce. Response. Headers. GetValueOrDefault (Header: řetězec, defaultValue: String)|záhlaví: řetězec<br /><br /> VýchozíHodnota: řetězec<br /><br /> Vrátí hodnoty záhlaví odpovědi oddělené čárkou nebo `defaultValue` Pokud záhlaví není nalezeno.|
-|<a id="ref-context-subscription"></a>souvislost. Formě|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> ID: řetězec<br /><br /> Klíč: řetězec<br /><br /> Název: řetězec<br /><br /> PrimaryKey: řetězec<br /><br /> SecondaryKey: řetězec<br /><br /> StartDate: DateTime?|
+|<a id="ref-context-subscription"></a>souvislost. Formě|CreatedDate: DateTime<br /><br /> EndDate: DateTime?<br /><br /> ID: řetězec<br /><br /> Klíč: řetězec<br /><br /> Název: řetězec<br /><br /> PrimaryKey: řetězec<br /><br /> SecondaryKey: řetězec<br /><br /> StartDate: DateTime?|
 |<a id="ref-context-user"></a>souvislost. Uživatelský|E-mail: řetězec<br /><br /> FirstName: řetězec<br /><br /> Skupiny: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Identity: IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: String<br /><br /> Poznámka: řetězec<br /><br /> RegistrationDate: DateTime|
 |<a id="ref-iapi"></a>IApi|ID: řetězec<br /><br /> Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Protokoly: IEnumerable<řetězec\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|ID: řetězec<br /><br /> Název: řetězec|
@@ -253,4 +253,4 @@ Další informace o práci se zásadami najdete v těchto tématech:
 + [Zásady v API Management](api-management-howto-policies.md)
 + [Transformační rozhraní API](transform-api.md)
 + [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
-+ [Ukázky zásad](policy-samples.md)
++ [Ukázky zásad](./policy-reference.md)

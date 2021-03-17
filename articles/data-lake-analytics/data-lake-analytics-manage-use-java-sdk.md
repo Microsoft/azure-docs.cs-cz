@@ -1,26 +1,24 @@
 ---
 title: Správa Azure Data Lake Analytics pomocí sady Azure Java SDK
 description: Tento článek popisuje, jak pomocí sady Azure Java SDK psát aplikace, které spravují Data Lake Analytics úlohy, zdroje dat, & uživatelé.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: bac13f187c99166bc868112792d80833387a84dc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 86e84d825bd1dd3774cfd2774e0b96e540bb3cd2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373772"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218472"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Správa Azure Data Lake Analytics pomocí aplikace Java
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí aplikace napsané pomocí Azure Java SDK. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Java Development Kit (JDK) 8** (pomocí java verze 1,8).
 * **IntelliJ** nebo jiný vhodný Java Development Environment. Pokyny v tomto dokumentu používají IntelliJ.
 * Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md). Identifikátor URI a klíč odpovědi jsou k dispozici na portálu, jakmile máte vytvořenou aplikaci a vygenerujete klíč.
@@ -318,6 +316,6 @@ Zadejte hodnoty pro parametry, které jsou vyvolány ve fragmentu kódu:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](https://docs.microsoft.com/u-sql/).
+* Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](/u-sql/).
 * Informace o úlohách správy najdete v tématu [správa Azure Data Lake Analytics pomocí Azure Portal](data-lake-analytics-manage-use-portal.md).
 * Přehled Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).

@@ -15,17 +15,17 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: e4a7fb72d40f5db65e8e30264e9d68b2727749e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154402"
 ---
 # <a name="web-apps"></a>Webové aplikace
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Webové aplikace jsou aplikace, které ověřují uživatele ve webovém prohlížeči na webové aplikace. V tomto scénáři webová aplikace nasměruje prohlížeč uživatele, aby je přihlásil do služby Azure AD. Azure AD vrátí odpověď pro přihlášení prostřednictvím prohlížeče uživatele, který obsahuje deklarace identity uživatele v tokenu zabezpečení. Tento scénář podporuje přihlašování pomocí protokolů OpenID Connect, SAML 2,0 a WS-Federation.
+Webové aplikace jsou aplikace, které ověřují uživatele ve webovém prohlížeči na webové aplikace. V tomto scénáři webová aplikace nasměruje prohlížeč uživatele, aby je přihlásil do služby Azure AD. Azure AD vrátí odpověď pro přihlášení prostřednictvím prohlížeče uživatele, který obsahuje deklarace identity uživatele v tokenu zabezpečení. Tento scénář podporuje přihlášení pomocí protokolů OpenID Connect, SAML 2,0 a WS-Federation.
 
 ## <a name="diagram"></a>Diagram
 
@@ -42,7 +42,7 @@ Webové aplikace jsou aplikace, které ověřují uživatele ve webovém prohlí
 
 Podívejte se na ukázky kódu pro webový prohlížeč ve scénářích webové aplikace. A pravidelně se podívejte na to, jak se často přidávají nové ukázky.
 
-## <a name="app-registration"></a>Registrace aplikace
+## <a name="app-registration"></a>Registrace aplikací
 
 Pokud chcete zaregistrovat webovou aplikaci, přečtěte si téma [Registrace aplikace](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

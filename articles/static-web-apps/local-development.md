@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9988adea8e4d2dab39de64f9fd155a9d0b02cae
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432970"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91326163"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Nastavení místního vývoje pro Azure static Web Apps Preview
 
@@ -28,7 +28,7 @@ Tento článek popisuje doporučené osvědčené postupy pro místní vývoj, v
 - Ladění a spuštění aplikace
 - Osvědčené postupy pro strukturu souborů a složek vaší aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code
@@ -69,13 +69,13 @@ Live Server Extension for Visual Studio Code poskytuje místní vývojový webov
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="Nové okno úložiště GitHubu":::
 
-1. Otevřete nástroj Visual Studio Code.
+1. Otevřete Visual Studio Code.
 
 1. Stisknutím klávesy **F1** otevřete paletu příkazů.
 
 1. Do vyhledávacího pole zadejte **Clone** a vyberte **git: Clone**.
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="možnost klonování Git v Visual Studio Code":::
+    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="Nové okno úložiště GitHubu":::
 
 1. Jako **adresu URL úložiště**zadejte následující hodnotu.
 
@@ -87,7 +87,7 @@ Live Server Extension for Visual Studio Code poskytuje místní vývojový webov
 
 1. Po zobrazení výzvy k otevření klonovaného úložiště vyberte **otevřít**.
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="Otevřít v novém okně":::
+    :::image type="content" source="media/local-development/open-new-window.png" alt-text="Nové okno úložiště GitHubu":::
 
 Visual Studio Code otevře Klonovaný projekt v editoru.
 
@@ -99,7 +99,7 @@ Visual Studio Code otevře Klonovaný projekt v editoru.
 
     Otevře se karta prohlížeče pro zobrazení aplikace.
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="Jednoduchý statický web běžící v prohlížeči":::
+    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="Nové okno úložiště GitHubu":::
 
     Tato aplikace provede požadavek HTTP na `api/message` koncový bod. V tuto chvíli se tato žádost nezdařila, protože část rozhraní API této aplikace musí být spuštěná.
 
@@ -113,13 +113,13 @@ V rámci procesu vytváření rozhraní API je pro Visual Studio Code vytvořena
 
 1. Otevře se nová instance Terminálové služby, která zobrazuje výstup z procesu sestavení rozhraní API.
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="Rozhraní API běžící v Visual Studio Code terminálu":::
+    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="Nové okno úložiště GitHubu":::
 
    Stavový řádek v Visual Studio Code je nyní oranžová. Tato barva indikuje, že rozhraní API je teď spuštěné a že je připojený ladicí program.
 
 1. Potom stiskněte **kombinaci kláves Ctrl/Cmd** a kliknutím na adresu URL v terminálu otevřete okno prohlížeče, které volá rozhraní API.
 
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="Prohlížeč výsledek volání rozhraní API":::
+    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="Nové okno úložiště GitHubu":::
 
 ### <a name="debugging-the-api"></a>Ladění rozhraní API
 
@@ -127,19 +127,19 @@ V rámci procesu vytváření rozhraní API je pro Visual Studio Code vytvořena
 
 1. Klikněte na levý okraj na řádku 2 a nastavte zarážku. Zobrazí se červená tečka, která indikuje, že je nastavená zarážka.
 
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Zarážka v Visual Studio Code":::
+    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Nové okno úložiště GitHubu":::
 
 1. V prohlížeči aktualizujte stránku běžící na <http://127.0.0.1:7071/api/message> .
 
 1. Zarážka je v Visual Studio Code a spuštění programu je pozastavené.
 
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Pozice zarážky v Visual Studio Code":::
+   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Nové okno úložiště GitHubu":::
 
    V Visual Studio Code pro vaše rozhraní API [je k dispozici kompletní prostředí ladění](https://code.visualstudio.com/Docs/editor/debugging) .
 
 1. Pokračujte v provádění kliknutím na tlačítko **pokračovat** na panelu ladění.
 
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="Tlačítko pokračovat v Visual Studio Code":::
+    :::image type="content" source="media/local-development/continue-button.png" alt-text="Nové okno úložiště GitHubu":::
 
 ### <a name="calling-the-api-from-the-application"></a>Volání rozhraní API z aplikace
 
@@ -192,7 +192,7 @@ Další informace o konfiguraci souborů prostředí pro front-endové rozhraní
 
 1. Zadejte **živý Server** a vyberte **živý Server: zastavit živý Server**.
 
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Příkaz Zastavit živý Server v paletě příkazů sady Visual Studio":::
+    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Nové okno úložiště GitHubu":::
 
 1. Stisknutím klávesy **F1** otevřete paletu příkazů.
 
@@ -200,7 +200,7 @@ Další informace o konfiguraci souborů prostředí pro front-endové rozhraní
 
 1. Aktualizujte aplikaci běžící na `http://locahost:3000` . V prohlížeči se teď zobrazí zpráva vrácená z rozhraní API.
 
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="Hello z rozhraní API zobrazeného v prohlížeči":::
+    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="Nové okno úložiště GitHubu":::
 
 ## <a name="next-steps"></a>Další kroky
 

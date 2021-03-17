@@ -1,19 +1,19 @@
 ---
-title: Vytvoření virtuálního počítače se systémem Linux pomocí Azure CLI
-description: Vytvoření virtuálního počítače se systémem Linux v zóně dostupnosti pomocí Azure CLI
+title: Vytvoření virtuálního počítače v zóně pomocí Azure CLI
+description: Vytvoření virtuálního počítače v zóně dostupnosti pomocí Azure CLI
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3405468c64a7130bb0d71543403dd4ce5ef9c241
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828995"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558368"
 ---
-# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux v zóně dostupnosti pomocí Azure CLI
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-cli"></a>Vytvoření virtuálního počítače v zóně dostupnosti pomocí Azure CLI
 
 Tento článek popisuje použití Azure CLI k vytvoření virtuálního počítače se systémem Linux v zóně dostupnosti Azure. [Zóna dostupnosti](../../availability-zones/az-overview.md) je fyzicky oddělená zóna v oblasti Azure. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
 

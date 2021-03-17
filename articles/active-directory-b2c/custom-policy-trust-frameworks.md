@@ -1,5 +1,5 @@
 ---
-title: Rozhraní pro vztahy důvěryhodnosti referencí v Azure Active Directory B2C | Microsoft Docs
+title: Přehled Azure AD B2C vlastní zásady | Microsoft Docs
 description: Téma o Azure Active Directory B2C vlastních zásadách a prostředí identit.
 services: active-directory-b2c
 author: msmimart
@@ -7,121 +7,167 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/04/2017
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d29bd05f67d00047499dc256e5e1a82f98693a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388795"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592836"
 ---
-# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definování vztahů důvěryhodnosti pomocí Azure AD B2C Framework Experience identity
+# <a name="azure-ad-b2c-custom-policy-overview"></a>Přehled Azure AD B2C vlastní zásady
 
-Azure Active Directory B2C (Azure AD B2C) vlastní zásady, které používají architekturu prostředí identity, poskytují vaší organizaci centralizovanou službu. Tato služba snižuje složitost federace identit ve velké komunitě zájmu. Složitost se zkracuje na jeden vztah důvěryhodnosti a na jednu výměnu metadat.
+Vlastní zásady jsou konfigurační soubory, které definují chování klienta Azure Active Directory B2C (Azure AD B2C). I když jsou [toky uživatelů](user-flow-overview.md) předdefinované na portálu Azure AD B2C pro nejběžnější úlohy identity, můžou vlastní zásady plně upravit vývojář identity, aby dokončili mnoho různých úloh.
 
-Azure AD B2C vlastní zásady používají rozhraní identity Experience Framework, které vám umožní zodpovědět následující otázky:
+Vlastní zásady jsou plně konfigurovatelné a řízené zásadami. Vlastní zásady orchestrují vztah důvěryhodnosti mezi entitami ve standardních formátech protokolů, jako jsou OpenID Connect, OAuth, SAML a několik nestandardních, například REST APIch výměn deklarací z systému na systém. Rozhraní vytváří uživatelsky přívětivé prostředí s bílým označením.
 
-- Jaké jsou právní a bezpečnostní zásady zabezpečení, ochrany osobních údajů a ochrany dat, které musí dodržovat?
-- Kdo jsou kontakty a jaké procesy se stanou neschváleným účastníkem?
-- Kdo jsou poskytovatelé informací o identitě (označované také jako poskytovatelé deklarací identity) a co nabízejí?
-- Kdo jsou akreditační předávající strany (a volitelně co vyžadují)?
-- Jaké jsou technické požadavky na interoperabilitu pro účastníky?
-- Jaké jsou provozní pravidla "runtime", která se musí vymáhat pro výměnu informací o digitální identitě?
+Vlastní zásady jsou reprezentovány jako jeden nebo více souborů ve formátu XML, které na sebe navzájem odkazují v hierarchickém řetězu. Prvky XML definují stavební bloky, interakci s uživatelem a další strany a obchodní logiku. 
 
-Pokud chcete odpovědět na všechny tyto otázky, Azure AD B2C vlastní zásady, které používají architekturu identity Experience Framework, použijte konstrukci Trust Framework (TF). Pojďme vzít v úvahu tento konstruktor a to, co poskytuje.
+## <a name="custom-policy-starter-pack"></a>Startovní sada vlastních zásad
 
-## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>Pochopení architektury vztahu důvěryhodnosti a základu správy federace
+[Počáteční sada](custom-policy-get-started.md#get-the-starter-pack) vlastních zásad Azure AD B2C obsahuje několik předem připravených zásad, které vám umožní rychle se vrátit. Každá z těchto startovních sad obsahuje nejmenší počet technických profilů a cest uživatelů potřebných k dosažení popsaných scénářů:
 
-Vztah důvěryhodnosti je písemná specifikace pro zásady týkající se identity, zabezpečení, ochrany osobních údajů a ochrany dat, které musí splňovat účastníci ve komunitě zájmu.
+- **LocalAccounts** – povoluje pouze použití místních účtů.
+- **SocialAccounts** – povoluje pouze použití sociálních (nebo federovaných) účtů.
+- **SocialAndLocalAccounts** – povolí použití místních i sociálních účtů. Většina našich ukázek odkazuje na tuto zásadu.
+- **SocialAndLocalAccountsWithMFA** – povolí možnosti pro sociální, místní a Multi-Factor Authentication.
 
-Federované identity poskytuje základ pro zajištění identity identity koncových uživatelů v internetovém měřítku. Delegováním správy identit na třetí strany se dá použít jedna Digitální identita pro koncového uživatele s více předávajícími stranami.
+## <a name="understanding-the-basics"></a>Seznámení se základy 
 
-Identity Assurance vyžaduje, aby zprostředkovatelé identity (zprostředkovatelů identity) a zprostředkovatelé atributů (AtPs) dodržovali konkrétní zabezpečení, ochranu osobních údajů a provozní zásady a postupy.  Pokud nemohou provádět přímé kontroly, musí předávající strany (RPs) vyvíjet vztahy důvěryhodnosti s zprostředkovatelů identity a AtPs, se kterými se uživatelé rozhodnou pracovat.
+### <a name="claims"></a>Deklarace identit
 
-Vzhledem k tomu, že se počet spotřebitelů a poskytovatelé informací o digitální identitě roste, je obtížné pokračovat ve správě těchto vztahů důvěryhodnosti, nebo dokonce na základě výměny technických metadat, která jsou potřebná pro připojení k síti.  Federační centra se dosáhlo pouze omezené úspěšnosti při řešení těchto problémů.
+Deklarace identity poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. Může ukládat informace o uživateli, jako je například křestní jméno, příjmení nebo jakákoli jiná deklarace identity získaná od uživatele nebo jiných systémů (výměny deklarací identity). [Schéma deklarací identity](claimsschema.md) je místo, kde deklarujete deklarace identity. 
 
-### <a name="what-a-trust-framework-specification-defines"></a>Definice specifikace architektury pro vztahy důvěryhodnosti
-TFs jsou linchpins modelu rozhraní OIX (Open identity Exchange) pro vztah důvěryhodnosti, kde se každá komunita zájmů řídí konkrétní specifikací TF. Taková specifikace TF definuje:
+Když se zásada spustí, Azure AD B2C odesílá a přijímá deklarace identity z interních a externích stran a pak odešle podmnožinu těchto deklarací do vaší aplikace předávající strany jako součást tokenu. Deklarace identity se používají v těchto ohledech: 
 
-- **Metrika zabezpečení a ochrany osobních údajů v komunitě zájmu s definicí:**
-    - Úrovně Assurance (LOA), které jsou nabídnuty nebo požadovány účastníky; například uspořádaná sada hodnocení spolehlivosti pro pravost informací o digitální identitě.
-    - Úrovně ochrany (LOP), které jsou nabídnuty nebo požadovány účastníky; například uspořádaná sada hodnocení spolehlivosti pro ochranu informací o digitální identitě, která je pořízena účastníky v komunitě zájmu.
+- Deklarace identity se uloží, přečte nebo aktualizuje s objektem uživatele adresáře.
+- Od externího zprostředkovatele identity je obdržená deklarace identity.
+- Deklarace identity se odesílají nebo přijímají pomocí vlastní REST API služby.
+- Data se shromažďují jako deklarace identity od uživatele během toků profilů registrace nebo úprav.
 
-- **Popis informací o digitální identitě, které jsou nabídnuty nebo požadovány účastníky**.
+### <a name="manipulating-your-claims"></a>Manipulace s deklaracemi
 
-- **Technické zásady pro produkci a spotřebu informací o digitální identitě, a to pro měření LOA a LOP. Tyto napsané zásady obvykle obsahují následující kategorie zásad:**
-    - Zásady pro kontrolu identity, například: *jak silně je prověřené informace o identitě uživatele?*
-    - Zásady zabezpečení, například: *jak silné jsou integrita informací a ochrana důvěrnosti?*
-    - Zásady ochrany osobních údajů, například: *jaký ovládací prvek má uživatel více identifikovatelné osobní údaje (PII)*?
-    - Zásady přežití, například: *Pokud poskytovatel přestává operace, jak funguje kontinuita a ochrana funkce PII?*
+[Transformace deklarací identity](claimstransformations.md) jsou předdefinované funkce, které je možné použít k převedení dané deklarace na jinou, vyhodnocení deklarace identity nebo nastavení hodnoty deklarace identity. Například přidání položky do kolekce řetězců, změna velikosti písmen řetězce nebo vyhodnocení deklarace data a času. Transformace deklarací určuje metodu transformace. 
 
-- **Technické profily pro produkci a spotřebu informací o digitální identitě. Mezi tyto profily patří:**
-    - Rozhraní oboru, pro které jsou k dispozici informace o digitální identitě v zadaném LOA.
-    - Technické požadavky na interoperabilitu s přenosem.
+### <a name="customize-and-localize-your-ui"></a>Přizpůsobení a lokalizace uživatelského rozhraní
 
-- **Popisy různých rolí, které mohou účastníci komunity provádět, a kvalifikace, které jsou nutné ke splnění těchto rolí.**
+Pokud chcete shromažďovat informace od uživatelů tak, že ve svém webovém prohlížeči prezentujete stránku, použijte [technický profil s vlastním uplatněním](self-asserted-technical-profile.md). Technický profil s vlastním uplatněním můžete upravit [a přidat deklarace identity a přizpůsobit uživatelský vstup](./configure-user-input.md).
 
-Proto specifikace TF určuje, jak se vyměňují informace o identitě mezi účastníky komunity zájmu: předávající strany, poskytovatelé identit a atributů a ověřovatele atributů.
+Chcete-li [přizpůsobit uživatelské rozhraní](customize-ui-with-html.md) pro technický profil s vlastním uplatněním, zadejte adresu URL v prvku [definice obsahu](contentdefinitions.md) s přizpůsobeným obsahem HTML. V technickém profilu s vlastním uplatněním odkazujete na toto ID definice obsahu.
 
-Specifikace TF je jeden nebo několik dokumentů, které slouží jako reference pro zásady správného řízení komunity zájmu, které řídí kontrolní výraz a spotřebu informací o digitální identitě v rámci komunity. Jedná se o popsanou sadu zásad a postupů, které jsou určené k navázání vztahu důvěryhodnosti v digitálních identitách, které se používají pro online transakce mezi členy komunity zájmu.
+Chcete-li přizpůsobit řetězce pro konkrétní jazyk, použijte element [Localization](localization.md) . Definice obsahu může obsahovat odkaz na [lokalizaci](localization.md) , který určuje seznam lokalizovaných prostředků, které se mají načíst. Azure AD B2C sloučí prvky uživatelského rozhraní s obsahem HTML načteným z vaší adresy URL a pak zobrazí stránku uživateli. 
 
-Jinými slovy specifikace TF definuje pravidla pro vytvoření životaschopného ekosystému federované identity pro komunitu.
+## <a name="relying-party-policy-overview"></a>Přehled zásad předávající strany
 
-V současné době existuje širší dohoda o výhodách takového přístupu. Neexistují žádné pochybnosti, že specifikace architektury pro vztah důvěryhodnosti usnadňují vývoj digitálních ekosystémů identity pomocí ověřitelných vlastností zabezpečení, záruky a ochrany osobních údajů, což znamená, že je možné je znovu použít napříč několika komunitami, které vás zajímají.
+Aplikace předávající strany, která je v protokolu SAML, se označuje jako poskytovatel služeb, volá [zásady předávající strany](relyingparty.md) , aby spustily konkrétní cestu uživatele. Zásady předávající strany určují cestu uživatele, která se má spustit, a seznam deklarací identity, které token zahrnuje. 
 
-Z tohoto důvodu Azure AD B2C vlastní zásady, které používají architekturu identity Experience Framework, k usnadnění interoperability slouží jako základ své reprezentace dat pro TF.
+![Diagram znázorňující tok spuštění zásad](./media/custom-policy-trust-frameworks/custom-policy-execution.png)
 
-Azure AD B2C vlastní zásady, které využívají architekturu prostředí identity, reprezentují specifikaci TF jako kombinaci lidského a strojově čitelného data. Některé části tohoto modelu (obvykle oddíly, které se orientují směrem k zásadám správného řízení) jsou reprezentovány jako odkazy na publikovanou dokumentaci o zabezpečení a zásadách ochrany osobních údajů spolu se souvisejícími postupy (pokud existují). Ostatní oddíly popisují podrobně metadata konfigurace a pravidla modulu runtime, která usnadňují provozní automatizaci.
+Všechny aplikace předávající strany, které používají stejné zásady, obdrží stejné deklarace identity a uživatel projde stejnou cestou uživatele.
 
-## <a name="understand-trust-framework-policies"></a>Principy zásad pro rozhraní Trust Framework
+### <a name="user-journeys"></a>Cesty uživatelů
 
-V souvislosti s implementací TF se specifikace TF skládá ze sady zásad, které umožňují úplnou kontrolu nad chováním identity a prostředími.  Azure AD B2C vlastní zásady, které využívají architekturu prostředí identit, umožňují vytvářet a vytvářet vlastní TF prostřednictvím takových deklarativních zásad, které můžou definovat a konfigurovat:
+Pomocí cest [uživatelů](userjourneys.md) můžete definovat obchodní logiku s cestou, přes kterou bude uživatel postupovat, aby získal přístup k vaší aplikaci. Uživatel se převezme cestou uživatele, aby načetl deklarace identity, které mají být prezentovány vaší aplikaci. Cesta uživatele je sestavena z posloupnosti [kroků orchestrace](userjourneys.md#orchestrationsteps). Uživatel se musí dostat k poslednímu kroku, aby získal token. 
 
-- Odkaz na dokument nebo odkazy definující ekosystém federované identity komunity, který se vztahuje k TF. Jsou odkazy na dokumentaci TF. (Předdefinovaná) Provozní pravidla "runtime" nebo uživatelské cesty, které automatizují nebo řídí výměnu a používání deklarací identity. Tyto cesty uživatelů jsou přidruženy k LOA (a LOP). Zásada může mít proto cestu uživatele s různou LOAsou (a LOPs).
+Následující pokyny popisují, jak můžete přidat kroky orchestrace do zásady pro [účet Starter pro sociální a místní účet](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) . Zde je příklad volání REST API, které bylo přidáno.
 
-- Poskytovatelé identit a atributů nebo poskytovatelé deklarací identity v komunitě zájmu a technické profily, které podporují, spolu s LOP schválením na základě kategorie (mimo pásmo), která souvisí s nimi.
+![přizpůsobená cesta uživatele](media/custom-policy-trust-frameworks/user-journey-flow.png)
 
-- Integrace s ověřovateli atributů nebo zprostředkovateli deklarací identity.
 
-- Předávající strany ve Společenství (odvozením).
+### <a name="orchestration-steps"></a>Kroky orchestrace
 
-- Metadata pro vytvoření síťové komunikace mezi účastníky. Tato metadata spolu s technickými profily se používají během transakce na domovní spolupráci mezi předávající stranou a ostatními účastníky komunity.
+Krok Orchestration odkazuje na metodu, která implementuje zamýšlený účel nebo funkčnost. Tato metoda se nazývá [technický profil](technicalprofiles.md). Když vaše cesta uživatele potřebuje větvení, aby lépe představovala obchodní logiku, krok orchestrace odkazuje na [dílčí cestu](subjourneys.md). Dílčí cesta obsahuje svou vlastní sadu kroků orchestrace.
 
-- Převod protokolu, pokud existuje (například SAML 2,0, OAuth2, WS-Federation a OpenID Connect).
+Uživatel se musí dostat k poslednímu kroku orchestrace v cestě uživatele a získat tak token. Ale uživatelé nemusí projít všemi kroky orchestrace. Kroky orchestrace můžou být podmíněně spouštěny na základě [předběžných podmínek](userjourneys.md#preconditions) definovaných v kroku orchestrace. 
 
-- Požadavky na ověřování.
+Po dokončení kroku orchestrace Azure AD B2C uloží vložené deklarace do **kontejneru deklarací identity**. Deklarace identity v kontejneru deklarací identity můžou být využívány dalšími kroky orchestrace v cestě uživatele.
 
-- Orchestrace s více fakty, pokud nějaká existuje.
+Následující diagram znázorňuje, jak můžou kroky orchestrace cest uživatelů získat přístup k kontejneru deklarací identity.
 
-- Sdílené schéma pro všechny deklarace identity, které jsou k dispozici, a mapování účastníků zájmu komunity.
+![Azure AD B2C cestu uživatele](media/custom-policy-trust-frameworks/user-journey-diagram.png)
 
-- Všechny transformace deklarací identity společně s možnou minimalizováním dat v tomto kontextu začlení výměnu a používání deklarací identity.
+### <a name="technical-profile"></a>Technický profil
 
-- Vazba a šifrování.
+Technický profil poskytuje rozhraní pro komunikaci s různými typy stran. Cesta uživatele kombinuje volání technických profilů prostřednictvím kroků orchestrace k definování obchodní logiky.
 
-- Úložiště deklarací identity.
+Všechny typy technických profilů sdílejí stejný koncept. Můžete odesílat vstupní deklarace identity, spouštět transformaci deklarací identity a komunikovat s nakonfigurovanou stranou. Až se proces dokončí, technický profil vrátí do kontejneru deklarací identity výstupní deklarace identity. Další informace najdete v tématu [Přehled technických profilů](technicalprofiles.md).
 
-### <a name="understand-claims"></a>Pochopení deklarací identity
+### <a name="validation-technical-profile"></a>Technický profil ověřování
 
-> [!NOTE]
-> Souhrnně odkazujeme na všechny možné typy informací o identitách, které se můžou vyměňovat jako deklarace identity: deklarace identity pro přihlašovací údaje koncového uživatele, dozvíte ČSFD identity, komunikační zařízení, fyzické umístění, identifikovatelné atributy atd.
->
-> Používáme pojem "deklarace identity", a ne "atributy" – protože v online transakcích nejsou tyto artefakty dat fakty, které je možné přímo ověřit předávající stranou. Jsou to ale kontrolní výrazy nebo deklarace identity. informace o skutečnostech, pro které předávající strana musí vyvíjet dostatečnou důvěru pro udělení požadované transakce koncovému uživateli.
->
-> Používáme také pojem "deklarace identity", protože Azure AD B2C vlastní zásady, které používají architekturu prostředí identity, jsou navržené tak, aby se zjednodušila Výměna všech typů informací o digitální identitě konzistentním způsobem bez ohledu na to, zda je příslušný protokol definován pro ověřování uživatelů nebo pro načtení atributů.  Podobně používáme pojem "zprostředkovatelé deklarací identity" ke shromáždění informací o zprostředkovatelích identity, poskytovatelích atributů a ověřovatelích atributů, když nechcete rozlišovat mezi jejich konkrétními funkcemi.
+Když uživatel komunikuje s uživatelským rozhraním, může být vhodné ověřit shromážděná data. Pro interakci s uživatelem se musí použít [technický profil s vlastním uplatněním](self-asserted-technical-profile.md) .
 
-Proto určují, jak se vyměňují informace o identitě mezi předávající stranou, zprostředkovatelem identity a atributů a ověřovateli atributů. Řídí, která zprostředkovatelé identity a atributů se vyžadují pro ověřování předávající strany. Měly by se brát v úvahu jako jazyk specifického pro doménu (DSL), což je jazyk počítače, který je specializovaný na určitou doménu aplikace s děděním, *Pokud* se jedná o příkazy, polymorfismus.
+K ověření vstupu uživatele se z technického profilu s vlastním uplatněním zavolá [technický profil ověření](validation-technical-profile.md) . Technický profil ověření je metoda volání libovolného neinteraktivního technického profilu. V takovém případě může technický profil vracet deklarace výstupů nebo chybovou zprávu. Chybová zpráva se vykreslí uživateli na obrazovce, takže se uživatel bude moct pokusit opakovat.
 
-Tyto zásady představují strojově čitelnou část konstruktoru TF v Azure AD B2C vlastní zásady využívající architekturu prostředí identity. Zahrnují všechny provozní údaje, včetně metadat zprostředkovatelů deklarací identity a technických profilů, definic schémat deklarací identity, transformačních funkcí deklarací identity a cest uživatelů, které jsou vyplněny k usnadnění provozní Orchestrace a automatizace.
+Následující diagram znázorňuje, jak Azure AD B2C používá k ověření přihlašovacích údajů uživatele technický profil ověřování.
 
-Předpokládá se, že se jedná o *živý dokument* , protože je velmi pravděpodobné, že se jejich obsah v průběhu času týká aktivních účastníků deklarovaných v zásadách. Je také možné, že se podmínky a ujednání pro účastníka mohou změnit.
+![Diagram technického profilu ověření](media/custom-policy-trust-frameworks/validation-technical-profile.png)
 
-Nastavení a údržba federace se značně zjednodušují ochranou předávající strany od probíhajících konfigurací vztahů důvěryhodnosti a připojení, protože různí poskytovatelé deklarací identity a Ověřovač se připojují nebo nechávají (komunita reprezentovaná) sadou zásad.
+## <a name="inheritance-model"></a>Model dědičnosti
 
-Interoperabilita je další důležitou výzvou. Další zprostředkovatelé nebo ověřovatele deklarací identity musí být integrováni, protože předávající strany pravděpodobně nebudou podporovat všechny potřebné protokoly. Azure AD B2C vlastní zásady tento problém řeší podporou standardních protokolů a použitím konkrétních cest uživatelů k předávání požadavků, když předávající strany a zprostředkovatelé atributů nepodporují stejný protokol.
+Každá Startovní sada obsahuje následující soubory:
 
-Mezi cesty uživatelů patří profily protokolu a metadata, která se používají na domovní spolupráci mezi předávající stranou a dalšími účastníky. K dispozici jsou také pravidla provozního běhu, která se používají pro zprávy žádosti a odpovědi výměny informací o identitě pro vynucování dodržování zásad publikovaných v rámci specifikace TF. Nápad uživatelských cest je klíč k přizpůsobení prostředí pro zákazníky. Také se tím uvolňuje, jak systém funguje na úrovni protokolu.
+- **Základní** soubor, který obsahuje většinu definic. Pro pomoc s řešením potíží a dlouhodobou údržbou zásad se pokuste minimalizovat počet změn, které provedete v tomto souboru.
+- **Příponový** soubor, který obsahuje jedinečné změny konfigurace vašeho tenanta. Tento soubor zásad je odvozen ze základního souboru. Pomocí tohoto souboru můžete přidat nové funkce nebo přepsat existující funkce. Pomocí tohoto souboru můžete například federovat s novými zprostředkovateli identity.
+- Soubor **předávající strany (RP)** , který je jedním souborem zaměřeným na úlohy, který je vyvolán přímo pomocí aplikace předávající strany, jako jsou webové, mobilní nebo desktopové aplikace. Každý jedinečný úkol, jako je registrace, přihlášení, resetování hesla nebo úprava profilu, vyžaduje vlastní soubor zásad předávající strany. Tento soubor zásad je odvozený od souboru rozšíření.
 
-Na tomto základě můžou aplikace a portály předávající strany v závislosti na jejich kontextu vyvolat Azure AD B2C vlastní zásady, které využívají architekturu identity Experience Framework, předávají název konkrétní zásady a přesně vyměňují chování a informace, které chtějí, bez jakéhokoli muss, Fuss nebo rizika.
+Model dědičnosti je následující:
+
+- Podřízená zásada na libovolné úrovni může dědit z nadřazené zásady a rozšiřuje ji přidáním nových elementů.
+- U složitějších scénářů můžete přidat další úrovně dědičnosti (celkem až 10).
+- Můžete přidat další zásady předávající strany. Například Odstraňte svůj účet, změňte telefonní číslo, zásadu předávající strany SAML a další.
+
+Následující diagram znázorňuje vztah mezi soubory zásad a aplikacemi předávající strany.
+
+![Diagram znázorňující model dědičnosti zásad pro pravidlo důvěryhodnosti](media/custom-policy-trust-frameworks/policies.png)
+
+
+## <a name="guidance-and-best-practices"></a>Doprovodné materiály a osvědčené postupy
+
+### <a name="best-practices"></a>Osvědčené postupy
+
+V rámci Azure AD B2C vlastní zásady můžete integrovat vlastní obchodní logiku, která bude vytvářet uživatelské prostředí, které vyžadujete a rozšiřujete funkčnost služby. Máme sadu osvědčených postupů a doporučení, abyste mohli začít.
+
+- Vytvořte logiku v rámci **zásad rozšíření** nebo **zásad předávající strany**. Můžete přidat nové prvky, které nahradí základní zásady odkazem na stejné ID. To vám umožní horizontální navýšení kapacity projektu a pozdější upgrade základních zásad, pokud společnost Microsoft vydává nové úvodní balíčky.
+- V rámci **základních zásad** důrazně doporučujeme vyhnout se jakýmkoli změnám. V případě potřeby udělejte komentáře, kde byly provedeny změny.
+- Při přepisování elementu, jako jsou metadata technického profilu, se nekopíruje celý technický profil ze základních zásad. Místo toho zkopírujte pouze požadovanou část elementu. Příklad provedení změny najdete v tématu [Zakázání ověřování e-mailem](./disable-email-verification.md) .
+- Pokud chcete omezit duplicity technických profilů, ve kterých se sdílí základní funkce, použijte [zahrnutí technického profilu](technicalprofiles.md#include-technical-profile).
+- Vyhněte se zápisu do adresáře služby Azure AD během přihlašování, což může vést k omezení problémů.
+- Pokud vaše zásada obsahuje externí závislosti, například rozhraní REST API, zajistí, že budou vysoce dostupné.
+- Pro lepší uživatelské prostředí se ujistěte, že vlastní šablony HTML jsou globálně nasazené pomocí [online doručování obsahu](../cdn/index.yml). Azure Content Delivery Network (CDN) umožňuje zkrátit dobu načítání, ušetřit šířku pásma a zvýšit rychlost odezvy.
+- Pokud chcete provést změnu na cestu uživatele, zkopírujte celou cestu uživatele ze základní zásady do zásady rozšíření. Zadejte jedinečné ID cesty uživatele pro cestu k uživateli, kterou jste zkopírovali. Pak v [zásadách předávající strany](relyingparty.md)změňte [výchozí prvek cesty uživatele](relyingparty.md#defaultuserjourney) tak, aby odkazoval na novou cestu uživatele.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Při vývoji pomocí zásad Azure AD B2C můžete při provádění cesty uživatele spustit chyby nebo výjimky. Lze prozkoumat pomocí Application Insights.
+
+- Integruje Application Insights s Azure AD B2C a [diagnostikuje výjimky](troubleshoot-with-application-insights.md).
+- [Rozšíření Azure AD B2C pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) vám může pomáhat při přístupu k [protokolům a jejich vizualizaci](https://github.com/azure-ad-b2c/vscode-extension/blob/master/src/help/app-insights.md) na základě názvu a času zásad.
+- Nejběžnější Chyba při nastavování vlastních zásad je nesprávně naformátované XML. Použijte [ověřování schématu XML](troubleshoot-custom-policies.md) k identifikaci chyb před nahráním souboru XML.
+
+## <a name="continuous-integration"></a>Kontinuální integrace
+
+Pomocí kanálu průběžné integrace a doručování (CI/CD), který jste nastavili v Azure Pipelines, můžete [zahrnout vlastní zásady Azure AD B2C v rámci poskytování softwaru](deploy-custom-policies-devops.md) a automatizace řízení kódu. Při nasazení do různých Azure AD B2C prostředí, například pro vývoj, testování a produkci, doporučujeme odebrat ruční procesy a provádět automatizované testování pomocí Azure Pipelines.
+
+## <a name="prepare-your-environment"></a>Příprava prostředí
+
+Začnete s vlastními zásadami Azure AD B2C:
+
+1. [Vytvoření tenanta Azure AD B2C](tutorial-create-tenant.md)
+1. [Zaregistrujte webovou aplikaci](tutorial-register-applications.md) pomocí Azure Portal, abyste mohli svoje zásady testovat.
+1. Přidejte potřebné [klíče zásad](custom-policy-get-started.md#add-signing-and-encryption-keys) a [Zaregistrujte aplikace architektury identity Experience Framework](custom-policy-get-started.md#register-identity-experience-framework-applications).
+1. [Získejte úvodní sadu zásad Azure AD B2C](custom-policy-get-started.md#get-the-starter-pack) a nahrajte ji do svého tenanta. 
+1. Po nahrání počátečního balíčku [otestujte zásady registrace nebo přihlašování](custom-policy-get-started.md#test-the-custom-policy).
+1. Doporučujeme, abyste si stáhli a nainstalovali [Visual Studio Code](https://code.visualstudio.com/) (vs Code). Visual Studio Code je jednoduchý, ale výkonný editor zdrojového kódu, který běží na vaší ploše a je dostupný pro Windows, macOS a Linux. Pomocí VS Code můžete rychle procházet a upravovat soubory XML vlastních zásad Azure AD B2C tím, že nainstalujete [rozšíření Azure AD B2C pro vs Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)
+ 
+## <a name="next-steps"></a>Další kroky
+
+Po nastavení a otestování zásad Azure AD B2C můžete začít přizpůsobovat zásady. V následujících článcích se dozvíte, jak:
+
+- [Přidání deklarací identity a přizpůsobení uživatelského vstupu](./configure-user-input.md) pomocí vlastních zásad. Zjistěte, jak definovat deklaraci identity a přidat deklaraci identity do uživatelského rozhraní přizpůsobením některých technických profilů pro počáteční Pack.
+- [Přizpůsobte uživatelské rozhraní](customize-ui-with-html.md) aplikace pomocí vlastní zásady. Naučte se vytvářet vlastní obsah HTML a přizpůsobovat definici obsahu.
+- [Lokalizovat uživatelské rozhraní](./language-customization.md) aplikace pomocí vlastních zásad. Přečtěte si, jak nastavit seznam podporovaných jazyků a zadat popisky specifické pro jazyk přidáním prvku lokalizovaných prostředků.
+- Během vývoje a testování zásad můžete [zakázat ověřování e-mailů](./disable-email-verification.md). Přečtěte si, jak přepsat metadata technického profilu.
+- [Nastavte přihlášení pomocí účtu Google](./identity-provider-google.md) pomocí vlastních zásad. Naučte se, jak vytvořit nového zprostředkovatele deklarací identity pomocí OAuth2 Technical Profile. Pak upravte cestu uživatele tak, aby zahrnovala možnost přihlášení Google.
+- K diagnostice problémů s vlastními zásadami můžete [shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights](troubleshoot-with-application-insights.md). Naučte se přidávat nové technické profily a konfigurovat zásady předávající strany.

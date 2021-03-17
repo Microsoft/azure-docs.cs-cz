@@ -5,16 +5,16 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 20c220bcb44a1a47e308f57d1466aee2773111a4
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 71f762ac0effc9ad14510c02679109362163f66d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985678"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008533"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Obnovení odstraněné aplikace App Service pomocí PowerShellu
 
-Pokud jste nastali omylem odstranit aplikaci v Azure App Service, můžete ji obnovit pomocí příkazů z [modulu AZ PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0).
+Pokud jste nastali omylem odstranit aplikaci v Azure App Service, můžete ji obnovit pomocí příkazů z [modulu AZ PowerShell](/powershell/azure/).
 
 > [!NOTE]
 > - Odstraněné aplikace se po počátečním odstranění odstraní ze systému 30 dní. Po vyprázdnění aplikace nebude možné ji obnovit.
@@ -53,7 +53,7 @@ Podrobné informace zahrnují:
 ## <a name="restore-deleted-app"></a>Obnovit odstraněnou aplikaci
 
 >[!NOTE]
-> `Restore-AzDeletedWebApp`nepodporuje se pro aplikace Function App.
+> `Restore-AzDeletedWebApp` nepodporuje se pro aplikace Function App.
 
 Po identifikaci aplikace, kterou chcete obnovit, ji můžete obnovit pomocí `Restore-AzDeletedWebApp` .
 
@@ -61,7 +61,7 @@ Po identifikaci aplikace, kterou chcete obnovit, ji můžete obnovit pomocí `Re
 Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
-> Nasazovací sloty nejsou v rámci vaší aplikace obnoveny. Pokud potřebujete obnovit přípravný slot, použijte `-Slot <slot-name>` příznak.
+> Nasazovací sloty nejsou v rámci vaší aplikace obnoveny. Pokud potřebujete obnovit přípravný slot, použijte `-Slot <slot-name>`  příznak.
 >
 
 Vstupy pro příkaz jsou:
@@ -76,4 +76,4 @@ Ve výchozím nastavení `Restore-AzDeletedWebApp` obnoví vaše konfigurace apl
 > Pokud se aplikace hostuje a pak se odstraní z App Service Environment, dá se obnovit jenom v případě, že odpovídající App Service Environment existuje.
 >
 
-Úplný odkaz na rutiny najdete tady: [Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).
+Úplný odkaz na rutiny najdete tady: [Restore-AzDeletedWebApp](/powershell/module/az.websites/restore-azdeletedwebapp).

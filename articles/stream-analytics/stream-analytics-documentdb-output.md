@@ -1,24 +1,23 @@
 ---
 title: Azure Stream Analytics výstup do Azure Cosmos DB
 description: Tento článek popisuje, jak pomocí Azure Stream Analytics uložit výstup do Azure Cosmos DB pro výstup JSON, pro archivaci dat a pro dotazy s nízkou latencí v nestrukturovaných datech JSON.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d00d489ff248ecf5599d78e0a351c93248cf8ee
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83848037"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018085"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics výstup do Azure Cosmos DB  
-Azure Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument popisuje některé osvědčené postupy pro implementaci této konfigurace.
+Azure Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument popisuje některé osvědčené postupy pro implementaci této konfigurace. Doporučujeme, abyste nastavili úlohu na úroveň kompatibility 1,2 při použití Azure Cosmos DB jako výstupu.
 
-Pokud nejste obeznámeni s Azure Cosmos DB, přečtěte si téma [dokumentace Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) a začněte. 
+Pokud nejste obeznámeni s Azure Cosmos DB, přečtěte si téma [dokumentace Azure Cosmos DB](../cosmos-db/index.yml) a začněte. 
 
 > [!Note]
 > V tuto chvíli Stream Analytics podporuje připojení k Azure Cosmos DB jenom přes *rozhraní SQL API*.
@@ -27,7 +26,7 @@ Pokud nejste obeznámeni s Azure Cosmos DB, přečtěte si téma [dokumentace Az
 ## <a name="basics-of-azure-cosmos-db-as-an-output-target"></a>Základy Azure Cosmos DB jako cíle výstupu
 Výstup Azure Cosmos DB v Stream Analytics umožňuje zapisovat výsledky zpracování streamu jako výstup JSON do kontejnerů Azure Cosmos DB. 
 
-Stream Analytics ve vaší databázi nevytváří kontejnery. Místo toho vyžaduje, abyste je vytvořili předem. Pak můžete řídit náklady na fakturaci Azure Cosmos DB kontejnerů. Výkon, konzistenci a kapacitu kontejnerů můžete také ladit přímo pomocí [rozhraní api Azure Cosmos DB](https://msdn.microsoft.com/library/azure/dn781481.aspx).
+Stream Analytics ve vaší databázi nevytváří kontejnery. Místo toho vyžaduje, abyste je vytvořili předem. Pak můžete řídit náklady na fakturaci Azure Cosmos DB kontejnerů. Výkon, konzistenci a kapacitu kontejnerů můžete také ladit přímo pomocí [rozhraní api Azure Cosmos DB](/rest/api/cosmos-db/).
 
 > [!Note]
 > Do seznamu povolených IP adres z brány Azure Cosmos DB firewall musíte přidat 0.0.0.0.
@@ -61,7 +60,7 @@ Pokud má příchozí dokument JSON existující pole ID, toto pole se automatic
 Pokud chcete uložit *všechny* dokumenty včetně těch, které mají duplicitní ID, přejmenujte pole ID v dotazu (pomocí klíčového slova **as** ). Nechejte Azure Cosmos DB vytvořit pole ID nebo nahradit ID jinou hodnotou sloupce (pomocí klíčového slova **as** nebo pomocí nastavení **ID dokumentu** ).
 
 ## <a name="data-partitioning-in-azure-cosmos-db"></a>Dělení dat v Azure Cosmos DB
-Azure Cosmos DB automaticky škálují oddíly na základě vašich úloh. Proto doporučujeme [neomezeným](../cosmos-db/partition-data.md) kontejnerům jako metodu pro dělení dat. Když Stream Analytics zapisuje do neomezených kontejnerů, používá jako předchozí krok dotazu nebo vstupní schéma dělení tolik paralelních zapisovačů.
+Azure Cosmos DB automaticky škálují oddíly na základě vašich úloh. Proto doporučujeme [neomezeným](../cosmos-db/partitioning-overview.md) kontejnerům jako metodu pro dělení dat. Když Stream Analytics zapisuje do neomezených kontejnerů, používá jako předchozí krok dotazu nebo vstupní schéma dělení tolik paralelních zapisovačů.
 
 > [!NOTE]
 > Azure Stream Analytics podporuje v nejvyšší úrovni pouze neomezený počet kontejnerů s klíči oddílů. Například `/region` je podporován. Vnořené klíče oddílů (například `/region/name` ) nejsou podporovány. 
@@ -72,7 +71,9 @@ V závislosti na zvoleném klíči oddílu se může zobrazit toto _Upozornění
 
 Je důležité zvolit vlastnost klíče oddílu, která má několik různých hodnot a která umožňuje rovnoměrně distribuovat úlohy napříč těmito hodnotami. V rámci přirozeného artefaktu dělení jsou požadavky, které zahrnují stejný klíč oddílu, omezené maximální propustností jednoho oddílu. 
 
-Velikost úložiště pro dokumenty, které patří do stejného klíče oddílu, je omezená na 20 GB. Ideální klíč oddílu je takový, který se často objevuje jako filtr ve vašich dotazech a má dostatečnou mohutnost pro zajištění škálovatelnosti vašeho řešení.
+Velikost úložiště pro dokumenty, které patří do stejné hodnoty klíče oddílu, je omezená na 20 GB ( [omezení velikosti fyzického oddílu](../cosmos-db/partitioning-overview.md) je 50 GB). [Ideální klíč oddílu](../cosmos-db/partitioning-overview.md#choose-partitionkey) je takový, který se často objevuje jako filtr ve vašich dotazech a má dostatečnou mohutnost pro zajištění škálovatelnosti vašeho řešení.
+
+Klíče oddílů používané pro Stream Analytics dotazy a Cosmos DB nemusejí být identické. Plně paralelní topologie doporučuje použít *klíč vstupního oddílu*, `PartitionId` jako klíč oddílu Stream Analyticsho dotazu, ale nemusí být doporučená volba pro klíč oddílu Cosmos DB kontejneru.
 
 Klíč oddílu je také hranice pro transakce v uložených procedurách a triggerech pro Azure Cosmos DB. Měli byste zvolit klíč oddílu, aby dokumenty, ke kterým dojde společně v transakcích, sdílely stejnou hodnotu klíče oddílu. Článek [dělení Azure Cosmos DB](../cosmos-db/partitioning-overview.md) obsahuje další podrobnosti o výběru klíče oddílu.
 
@@ -87,7 +88,7 @@ Vylepšený mechanismus zápisu je k dispozici na nové úrovni kompatibility kv
 
 S úrovněmi před 1,2 Stream Analytics používá vlastní uloženou proceduru k hromadnému Upsert dokumentů na klíč oddílu do Azure Cosmos DB. Zde se zapisuje dávka jako transakce. I v případě, že jeden záznam narazí na přechodnou chybu (omezování), musí se celá dávka opakovat. Díky tomu mají scénáře i přiměřené omezení poměrně pomalu.
 
-Následující příklad ukazuje dvě stejné úlohy Stream Analytics čtené ze stejného vstupu Azure Event Hubs. Obě úlohy Stream Analytics jsou [plně rozdělené](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) pomocí předávacího dotazu a zapisují je do identických Azure Cosmos DB kontejnerů. Metriky na levé straně jsou z úlohy nakonfigurované s úrovní kompatibility 1,0. Metriky na pravé straně mají nakonfigurovanou 1,2. Klíč oddílu Azure Cosmos DB kontejneru je jedinečný identifikátor GUID, který pochází ze vstupní události.
+Následující příklad ukazuje dvě stejné úlohy Stream Analytics čtené ze stejného vstupu Azure Event Hubs. Obě úlohy Stream Analytics jsou [plně rozdělené](./stream-analytics-parallelization.md#embarrassingly-parallel-jobs) pomocí předávacího dotazu a zapisují je do identických Azure Cosmos DB kontejnerů. Metriky na levé straně jsou z úlohy nakonfigurované s úrovní kompatibility 1,0. Metriky na pravé straně mají nakonfigurovanou 1,2. Klíč oddílu Azure Cosmos DB kontejneru je jedinečný identifikátor GUID, který pochází ze vstupní události.
 
 ![Porovnání metrik Stream Analytics](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-3.png)
 
@@ -95,7 +96,7 @@ Míra příchozích událostí v Event Hubs je dvakrát větší než Azure Cosm
 
 ![Porovnání metrik Azure Cosmos DB](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-S 1,2 je Stream Analytics více inteligentních procesů, které využívají 100 procent dostupné propustnosti v Azure Cosmos DB s velmi malým počtem opětovného odeslání od omezení nebo omezení rychlosti. To poskytuje lepší možnosti pro jiné úlohy, jako jsou dotazy běžící na kontejneru ve stejnou dobu. Pokud chcete zjistit, jak Stream Analytics škálovat s Azure Cosmos DB jako jímku pro 1 000 až 10 000 zpráv za sekundu, vyzkoušejte [Tento ukázkový projekt Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb).
+S 1,2 je Stream Analytics více inteligentních procesů, které využívají 100 procent dostupné propustnosti v Azure Cosmos DB s velmi malým počtem opětovného odeslání od omezení nebo omezení rychlosti. To poskytuje lepší možnosti pro jiné úlohy, jako jsou dotazy běžící na kontejneru ve stejnou dobu. Pokud chcete zjistit, jak Stream Analytics škálovat s Azure Cosmos DB jako jímku pro 1 000 až 10 000 zpráv za sekundu, vyzkoušejte  [Tento ukázkový projekt Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb).
 
 Propustnost výstupu Azure Cosmos DB je shodná s 1,0 a 1,1. *Důrazně doporučujeme* , abyste v Stream Analytics s Azure Cosmos DB používali úroveň kompatibility 1,2.
 
@@ -105,19 +106,19 @@ Použití Azure Cosmos DB jako výstupu v Stream Analytics generuje následujíc
 
 ![Informační pole pro výstupní datový proud Azure Cosmos DB](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|Pole           | Description|
+|Pole           | Popis|
 |-------------   | -------------|
 |Alias pro výstup    | Alias pro odkazování na tento výstup v dotazu Stream Analytics.|
 |Předplatné    | Předplatné Azure.|
 |Account ID      | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB.|
 |Klíč účtu     | Sdílený přístupový klíč pro účet Azure Cosmos DB.|
-|databáze        | Azure Cosmos DB název databáze.|
+|Databáze        | Azure Cosmos DB název databáze.|
 |Název kontejneru | Název kontejneru, například `MyContainer` . Musí existovat jeden kontejner s názvem `MyContainer` .  |
 |ID dokumentu     | Nepovinný parametr. Název sloupce ve výstupních událostech použitý jako jedinečný klíč, na kterém musí být operace INSERT nebo Update založená. Pokud necháte pole prázdné, budou vloženy všechny události bez možnosti aktualizace.|
 
-Jakmile nakonfigurujete Azure Cosmos DB výstup, můžete ho použít v dotazu jako cíl [příkazu into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Pokud používáte výstup Azure Cosmos DB, je [třeba nastavit klíč oddílu explicitně](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). 
+Jakmile nakonfigurujete Azure Cosmos DB výstup, můžete ho použít v dotazu jako cíl [příkazu into](/stream-analytics-query/into-azure-stream-analytics). Pokud používáte výstup Azure Cosmos DB, je [třeba nastavit klíč oddílu explicitně](./stream-analytics-parallelization.md#partitions-in-inputs-and-outputs). 
 
-Výstupní záznam musí obsahovat sloupec s rozlišováním velkých a malých písmen pojmenovaný za klíčem oddílu v Azure Cosmos DB. Pro dosažení většího paralelismu může příkaz vyžadovat [klauzuli partition by](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) , která používá stejný sloupec.
+Výstupní záznam musí obsahovat sloupec s rozlišováním velkých a malých písmen pojmenovaný za klíčem oddílu v Azure Cosmos DB. Pro dosažení většího paralelismu může příkaz vyžadovat [klauzuli partition by](./stream-analytics-parallelization.md#embarrassingly-parallel-jobs) , která používá stejný sloupec.
 
 Tady je ukázkový dotaz:
 
@@ -135,3 +136,17 @@ Pokud dojde k přechodnému selhání, nedostupnost služby nebo omezování, kd
 - NotFound (kód chyby HTTP 404)
 - Zakázáno (kód chyby HTTP 403)
 - Důvodu chybného požadavku (kód chyby HTTP 400)
+
+## <a name="common-issues"></a>Běžné problémy
+
+1. Do kolekce je přidáno jedinečné omezení indexu a výstupní data z Stream Analytics porušují toto omezení. Zajistěte, aby výstupní data z Stream Analytics neporušila jedinečná omezení nebo odebrala omezení. Další informace najdete v tématu [omezení jedinečnosti klíčů v Azure Cosmos DB](../cosmos-db/unique-keys.md).
+
+2. `PartitionKey`Sloupec neexistuje.
+
+3. `Id`Sloupec neexistuje.
+
+## <a name="next-steps"></a>Další kroky
+
+* [Porozumění výstupům z Azure Stream Analytics](stream-analytics-define-outputs.md) 
+* [Azure Stream Analytics výstup do Azure SQL Database](stream-analytics-sql-output-perf.md)
+* [Azure Stream Analytics vlastní dělení výstupu objektů BLOB](stream-analytics-custom-path-patterns-blob-storage-output.md)

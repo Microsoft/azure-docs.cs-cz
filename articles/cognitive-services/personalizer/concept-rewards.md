@@ -1,18 +1,20 @@
 ---
 title: Skóre záměna – Přizpůsobte si
 description: Skóre odměňování indikuje, jak dobře vlastní individuální nastavení RewardActionID a způsobilo pro uživatele. Hodnota skóre odměňování je určena vaší obchodní logikou na základě pozorování chování uživatele. Přizpůsobené vlaky modely strojového učení vyhodnocením neprospěchu.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f3249ba2089c3d9650aa46f665353ad392d0e773
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219365"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365563"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Skóre odměňování indikuje úspěch přizpůsobení
 
-Skóre odměňování indikuje, jak dobře vlastní individuální nastavení [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response)a způsobilo pro uživatele. Hodnota skóre odměňování je určena vaší obchodní logikou na základě pozorování chování uživatele.
+Skóre odměňování indikuje, jak dobře vlastní individuální nastavení [RewardActionID](/rest/api/cognitiveservices/personalizer/rank/rank#response)a způsobilo pro uživatele. Hodnota skóre odměňování je určena vaší obchodní logikou na základě pozorování chování uživatele.
 
 Přizpůsobené vlaky modely strojového učení vyhodnocením neprospěchu.
 
@@ -20,11 +22,11 @@ Přečtěte si, [jak](how-to-settings.md#configure-rewards-for-the-feedback-loop
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Použití API pro odměnu pro posílání skóre nedostatku do přizpůsobení
 
-Do přizpůsobení přizpůsobeného pomocí API pro [odměnu](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)se posílají ceny. Odměňování je obvykle číslo od 0 do 1. V některých scénářích může být záporná odměna s hodnotou-1 a měla by se používat jenom v případě, že máte zkušenosti s posílením učení (RL). Přizpůsobené vlaky je modelem, který dosáhne nejvyšší možné ceny v průběhu času.
+Do přizpůsobení přizpůsobeného pomocí API pro [odměnu](/rest/api/cognitiveservices/personalizer/events/reward)se posílají ceny. Odměňování je obvykle číslo od 0 do 1. V některých scénářích může být záporná odměna s hodnotou-1 a měla by se používat jenom v případě, že máte zkušenosti s posílením učení (RL). Přizpůsobené vlaky je modelem, který dosáhne nejvyšší možné ceny v průběhu času.
 
 Ceny jsou odesílány poté, co došlo k chování uživatele, což může být několik dní později. Maximální doba přizpůsobování času bude počkat, dokud se událost nepovažuje za neurčitou, nebo pokud se výchozí měna nakonfiguruje s [dobou čekání](#reward-wait-time) na Azure Portal.
 
-Pokud se skóre pro událost nedostalo v **době čekání na odměnu**, použije se **Výchozí měna** . **[Výchozí odměna](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** je obvykle nastavena na hodnotu nula.
+Pokud se skóre pro událost nedostalo v **době čekání na odměnu** , použije se **Výchozí měna** . **[Výchozí odměna](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** je obvykle nastavena na hodnotu nula.
 
 
 ## <a name="behaviors-and-data-to-consider-for-rewards"></a>Chování a data, která je třeba zvážit při neprospěchu
@@ -70,24 +72,24 @@ Můžete také volat API pro odměnu pomocí stejného ID události, která pos�
 
 Hodnoty agregace:
 
-*  **First**: vybere pro událost první obdržené skóre odměňování a zbytek se zahodí.
-* **Sum**: vezme všechny skóre pro celou měnu shromážděné pro ID události a přidá je dohromady.
+*  **First** : vybere pro událost první obdržené skóre odměňování a zbytek se zahodí.
+* **Sum** : vezme všechny skóre pro celou měnu shromážděné pro ID události a přidá je dohromady.
 
-Všechny odměny za události, které jsou obdrženy po **dobu čekání na odměnu**, se zahodí a neovlivňují školení modelů.
+Všechny odměny za události, které jsou obdrženy po **dobu čekání na odměnu** , se zahodí a neovlivňují školení modelů.
 
 Pokud přidáte skóre pro každou měnu, vaše konečná odměna může být mimo očekávaný rozsah skóre. Tím nedojde k selhání služby.
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Osvědčené postupy pro výpočet skóre odměňování
 
-* **Vezměte v úvahu pravdivé indikátory úspěšného přizpůsobení**: snadno se můžete domnívat, že se jedná o kliknutí, ale dobrá odměna je založená na tom, co chcete, aby uživatelé *měli místo toho* , co chcete, aby mohli *dělat*.  Například odměňování za kliknutí může vést k výběru obsahu, který je clickbait náchylnější.
+* **Vezměte v úvahu pravdivé indikátory úspěšného přizpůsobení** : snadno se můžete domnívat, že se jedná o kliknutí, ale dobrá odměna je založená na tom, co chcete, aby uživatelé *měli místo toho* , co chcete, aby mohli *dělat*.  Například odměňování za kliknutí může vést k výběru obsahu, který je clickbait náchylnější.
 
-* **Použití skóre odměňování pro to, jak dobrým způsobem přizpůsobení fungovalo**: přizpůsobením návrhu filmu by se snado, že uživatel sleduje film a dává jim vysoké hodnocení. Vzhledem k tomu, že hodnocení filmu pravděpodobně závisí na mnoha věcech (kvalita jednání, nálada uživatele), není dobrým signálem pro to, jak dobře *přizpůsobení* fungovalo. Uživatel sleduje několik prvních minut filmu, ale může to být lepší signál účinnosti přizpůsobení a odeslání odměna 1 až 5 minut bude lepším signálem.
+* **Použití skóre odměňování pro to, jak dobrým způsobem přizpůsobení fungovalo** : přizpůsobením návrhu filmu by se snado, že uživatel sleduje film a dává jim vysoké hodnocení. Vzhledem k tomu, že hodnocení filmu pravděpodobně závisí na mnoha věcech (kvalita jednání, nálada uživatele), není dobrým signálem pro to, jak dobře *přizpůsobení* fungovalo. Uživatel sleduje několik prvních minut filmu, ale může to být lepší signál účinnosti přizpůsobení a odeslání odměna 1 až 5 minut bude lepším signálem.
 
-* **Ceny se vztahují jenom na RewardActionID**: přizpůsobování platí pro pochopení účinnosti akce zadané v RewardActionID. Pokud se rozhodnete zobrazit další akce a uživatel na ně klikne, odměna by měla být nulová.
+* **Ceny se vztahují jenom na RewardActionID** : přizpůsobování platí pro pochopení účinnosti akce zadané v RewardActionID. Pokud se rozhodnete zobrazit další akce a uživatel na ně klikne, odměna by měla být nulová.
 
-* **Zvažte nezamýšlené důsledky**: Vytvořte funkce odměňování, které vedou k odpovědným výsledkům s [etickým a odpovědným používáním](ethics-responsible-use.md).
+* **Zvažte nezamýšlené důsledky** : Vytvořte funkce odměňování, které vedou k odpovědným výsledkům s [etickým a odpovědným používáním](ethics-responsible-use.md).
 
-* **Použití přírůstků**: Přidání částečných odčítání pro menší uživatelské chování pomáhá přizpůsobovat, aby se zajistilo lepší ceny. Tato přírůstková odměna umožňuje algoritmu poznat, že je přiblížný k uživateli v konečném požadovaném chování.
+* **Použití přírůstků** : Přidání částečných odčítání pro menší uživatelské chování pomáhá přizpůsobovat, aby se zajistilo lepší ceny. Tato přírůstková odměna umožňuje algoritmu poznat, že je přiblížný k uživateli v konečném požadovaném chování.
     * Pokud se zobrazuje seznam filmů, pokud uživatel po chvíli najede myší na jednu z nich, můžete určit, že došlo k nějakému uživateli – zapojení. Chování se může počítat s skóre pro odměnu 0,1.
     * Pokud uživatel stránku otevřel a pak skončil, může být skóre odměňování 0,2.
 

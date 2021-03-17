@@ -7,20 +7,20 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7798d7e960286d4f8aa971eb2eb0b03d24bd6360
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224056"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589453"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Firewall webových aplikací Azure a Azure Policy
 
 Firewall webových aplikací Azure (WAF) v kombinaci s Azure Policy může pomáhat vyhovět standardům organizace a vyhodnocovat dodržování předpisů pro prostředky WAF v rozsahu. Azure Policy je nástroj zásad správného řízení, který poskytuje agregované zobrazení pro vyhodnocení celkového stavu prostředí s možností přechodu k podrobnostem na jednotlivé prostředky a členitosti podle zásad. Zásady Azure také pomáhají přenést prostředky do dodržování předpisů prostřednictvím hromadné nápravy pro stávající prostředky a automatickou nápravu nových prostředků.
 
-## <a name="azure-policies-for-web-application-firewall"></a>Zásady Azure pro Firewall webových aplikací
+## <a name="azure-policy-for-web-application-firewall"></a>Azure Policy pro Firewall webových aplikací
 
-K dispozici je několik integrovaných zásad Azure pro správu prostředků WAF. Členění zásad a jejich funkce jsou následující:
+K dispozici je několik předdefinovaných Azure Policy definic pro správu prostředků WAF. Rozpis definic zásad a jejich funkce jsou následující:
 
 1. **Firewall webových aplikací (WAF) by měl být povolený pro službu Azure front-dveří**: služby Azure front-dveří jsou vyhodnoceny, pokud existuje WAF při vytváření prostředků. Zásady mají tři důsledky: audit, DENY a Disable. Audit sleduje, když služba Azure front-dveří nemá WAF a umožňuje uživatelům zjistit, co služba Azure front dveří nedodržuje. Při odepření se zabrání vytvoření služby Azure front-dveří, pokud není WAF připojené. Disabled vypne tuto zásadu.
 
@@ -30,31 +30,25 @@ K dispozici je několik integrovaných zásad Azure pro správu prostředků WAF
 
 4. **Firewall webových aplikací (WAF) by měl používat zadaný režim pro Application Gateway**: v zásadách firewallu webových aplikací pro Application Gateway musí být použití režimu detekce nebo prevence aktivní. Zásady mají tři důsledky: audit, DENY a Disable. Audit sleduje, když se WAF nevejde do zadaného režimu. Deny zabrání v vytváření jakýchkoli WAF, pokud není ve správném režimu. Disabled vypne tuto zásadu.
 
-
 ## <a name="launch-an-azure-policy"></a>Spustit Azure Policy
-
 
 1.  Na domovské stránce Azure zadejte do panelu hledání zásady a klikněte na ikonu Azure Policy
 
-2.  Ve službě Azure Policy v části **vytváření**vyberte **přiřazení**.
+2.  Ve službě Azure Policy v části **vytváření obsahu** vyberte **přiřazení**.
 
-[!div class="mx-imgBorder"]
-![Firewall webových aplikací Azure](../media/waf-azure-policy/policy-home.png)
+:::image type="content" source="../media/waf-azure-policy/policy-home.png" alt-text="Karta přiřazení v rámci Azure Policy":::
 
 3.  Na stránce přiřazení vyberte ikonu **přiřadit zásadu** v horní části.
 
-[!div class="mx-imgBorder"]
-![Firewall webových aplikací Azure](../media/waf-azure-policy/assign-policy.png)
+:::image type="content" source="../media/waf-azure-policy/assign-policy.png" alt-text="Karta základy na stránce přiřadit zásady":::
 
 4.  Na kartě základy stránky pro přiřazení zásad aktualizujte následující pole:
-    1.  **Rozsah**: vyberte, na jaké Předplatné a skupiny prostředků Azure by měl mít vliv Azure Policy.
-    2.  **Vyloučení**: vyberte všechny prostředky z oboru, které se mají vyloučit ze zásad. 
-    3.  **Definice zásady**: vyberte Azure Policy, který se má použít u oboru s vyloučeními. Na panelu hledání zadejte "Firewall webových aplikací" a vyberte odpovídající Azure Policy firewallu webových aplikací.
+    1.  **Rozsah**: vyberte, na jaké Předplatné a skupiny prostředků Azure by měla být ovlivněna definice zásad.
+    2.  **Vyloučení**: vyberte všechny prostředky z oboru, které chcete vyloučit z přiřazení zásad.
+    3.  **Definice zásady**: Vyberte definici zásady, která se má použít pro obor s vyloučeními. Na panelu hledání zadejte "Firewall webových aplikací" a vyberte odpovídající Azure Policy firewallu webových aplikací.
 
-[!div class="mx-imgBorder"]
-![Firewall webových aplikací Azure](../media/waf-azure-policy/policy-listing.png)
+:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="Snímek obrazovky zobrazující kartu Definice zásad na stránce available definitions (dostupné definice)":::
 
+5.  Vyberte kartu **parametry** a aktualizujte parametry přiřazení zásad. Pro lepší objasnění toho, co parametr dělá, najeďte myší na ikonu informace vedle názvu parametru pro další objasnění.
 
-5.  Vyberte kartu **parametry** a aktualizujte parametry zásad. Pro lepší objasnění toho, co parametr dělá, najeďte myší na ikonu informace vedle názvu parametru pro další objasnění.
-
-6.  Vyberte **zkontrolovat + vytvořit** a dokončete zásady Azure. Azure Policy bude trvat přibližně 15 minut, než bude aktivní pro nové prostředky.
+6.  Kliknutím na tlačítko **zkontrolovat + vytvořit** dokončete přiřazení zásad. Přiřazení zásady trvá přibližně 15 minut, dokud nebude aktivní pro nové prostředky.

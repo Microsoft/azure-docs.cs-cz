@@ -10,11 +10,11 @@ ms.date: 05/23/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 55e57d12b6d632f19318f221a49668804724e865
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67659772"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002101"
 ---
 Následující tabulka obsahuje informace o tom, jak přidat podporu pro tuto vazbu v každém vývojovém prostředí.
 

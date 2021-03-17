@@ -3,15 +3,15 @@ title: Správa skupin aplikací pro virtuální desktopový portál Windows – 
 description: Správa skupin aplikací virtuálních počítačů s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e495288bcd2c966dab49925a55507ab1f2379f64
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659479"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930267"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Kurz: Správa skupin aplikací pomocí Azure Portal
 
@@ -30,7 +30,10 @@ V tomto kurzu získáte informace o těchto tématech:
 
 Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Portal nebo PowerShellu, můžete přidat skupiny aplikací z Azure Portal pomocí následujícího postupu:
 
-1.  Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+   
+    >[!NOTE]
+    > Pokud se přihlašujete k portálu US Gov, použijte [https://portal.azure.us/](https://portal.azure.us/) místo toho.
 
 2.  Vyhledejte a vyberte **virtuální počítač s Windows**.
 
@@ -119,6 +122,9 @@ Proces nasazení provede následující akce:
 - Publikujte skupinu aplikací publikovanou pro uživatele a skupiny uživatelů, které jste vybrali.
 - Pokud se rozhodnete tuto skupinu aplikací provést, zaregistrujte ji.
 - Vytvořte odkaz na šablonu Azure Resource Manager na základě konfigurace, kterou si můžete stáhnout a uložit pro pozdější verzi.
+
+>[!IMPORTANT]
+>Pro každého tenanta Azure Active Directory lze vytvořit pouze 200 skupin aplikací. Tento limit jsme přidali kvůli omezením služby pro načítání informačních kanálů pro naše uživatele. Toto omezení se nevztahuje na skupiny aplikací vytvořené ve virtuální ploše Windows (Classic).
 
 ## <a name="next-steps"></a>Další kroky
 

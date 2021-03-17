@@ -4,10 +4,10 @@ description: Monitorování trasování aplikace pomocí Azure Application Insig
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: 2b27860adfc1652b58fe9c51d4d0b0a6c271fc0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539869"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Snížení výkonu v poměru závažnosti trasování (Preview)

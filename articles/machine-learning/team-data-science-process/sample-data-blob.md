@@ -1,6 +1,6 @@
 ---
-title: Ukázková data v úložišti objektů BLOB v Azure – vědecké zpracování týmových dat
-description: Vzorkování dat uložených v úložišti objektů BLOB v Azure jejich stažením prostřednictvím kódu programu a následným vzorkováním pomocí postupů napsaných v Pythonu.
+title: Ukázková data v Azure Blob Storage – vědecký proces týmového zpracování dat
+description: Vzorkování dat uložených v Azure Blob Storage jejich stažením prostřednictvím kódu programu a následným vzorkováním pomocí postupů napsaných v Pythonu.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,24 +11,24 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04528d28e9f54710cd0a63372e32b099c2e07fb5
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c5827a0e07e537b66684f852d8f3e1500cd9febb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026164"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788837"
 ---
-# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Ukázková data ve službě Azure Blob Storage
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Ukázková data v Azure Blob Storage
 
-Tento článek popisuje vzorkování dat uložených v úložišti objektů BLOB v Azure tím, že ho stáhne programově a pak ho vypíše pomocí postupů napsaných v Pythonu.
+Tento článek popisuje vzorkování dat uložených v Azure Blob Storage jejich stažením prostřednictvím kódu programu a následným vzorkováním pomocí postupů napsaných v Pythonu.
 
 **Proč vzorkovat data?**
 Pokud je datová sada, kterou plánujete analyzovat, rozsáhlá, je obvykle vhodné ji vyvzorkovat, aby se snížila na menší, ale jenom se zástupcem a více spravovatelnými velikostmi. Vzorkování usnadňuje porozumění datům, průzkumům a inženýrům funkcí. Jeho rolí v procesu Cortana Analytics je povolit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
-Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](./index.yml).
 
 ## <a name="download-and-down-sample-data"></a>Stažení a snížení ukázkových dat
-1. Stáhněte si data z úložiště objektů BLOB v Azure pomocí Blob service v následujícím ukázkovém kódu Pythonu: 
+1. Stáhněte si data z Azure Blob Storage pomocí Blob service z následujícího ukázkového kódu Pythonu: 
 
     ```python
     from azure.storage.blob import BlobService
@@ -102,7 +102,6 @@ Následující vzorový kód můžete použít k rozstupnému vzorkování dat a
         print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
     ```
 
-3. Přečtěte si data z objektu blob Azure pomocí Azure Machine Learning [importujte data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) , jak je znázorněno na následujícím obrázku:
+3. Přečtěte si data z objektu blob Azure pomocí Azure Machine Learning [importujte data](/azure/machine-learning/studio-module-reference/import-data) , jak je znázorněno na následujícím obrázku:
 
 ![objekt BLOB čtečky](./media/sample-data-blob/reader_blob.png)
-

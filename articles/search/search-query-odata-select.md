@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: dfe438f6940d3ccd5632a47be1389a30748716b0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 54b6ae227fc4b3b951717799660543c02874dda0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206884"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88919654"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Syntaxe $select OData v Azure Kognitivní hledání
 
  Pomocí [parametru OData **$Select** ](query-odata-filter-orderby-syntax.md) můžete zvolit, která pole se mají zahrnout do výsledků hledání z Azure kognitivní hledání. V tomto článku se podrobně popisuje syntaxe **$Select** . Obecnější informace o tom, jak používat **$Select** při prezentaci výsledků hledání, najdete v tématu [jak pracovat s výsledky hledání v Azure kognitivní hledání](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
-Parametr **$Select** určuje, která pole pro každý dokument jsou vrácena v sadě výsledků dotazu. Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro parametr **$Select** :
+Parametr **$Select** určuje, která pole pro každý dokument jsou vrácena v sadě výsledků dotazu. Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro **$Select** parametr:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -117,4 +117,4 @@ Příklad výsledku může vypadat takto:
 - [Jak pracovat s výsledky hledání v Azure Kognitivní hledání](search-pagination-page-layout.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

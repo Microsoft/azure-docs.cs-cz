@@ -3,12 +3,12 @@ title: Odeslání události do vlastního Azure Event Grid tématu
 description: Tento článek popisuje, jak odeslat událost do vlastního tématu. Zobrazuje formát dat pro odeslání a událost.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ed126487938e524264c94544903460854ffc4d41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108239"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681596"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Příspěvek do vlastního tématu pro Azure Event Grid
 
@@ -34,7 +34,7 @@ Chcete-li získat koncový bod pro vlastní téma s Azure PowerShell, použijte:
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>Záhlaví
+## <a name="header"></a>Hlavička
 
 V žádosti zahrňte hodnotu záhlaví s názvem `aeg-sas-key` , která obsahuje klíč pro ověření.
 
@@ -71,10 +71,7 @@ Pro vlastní témata data nejvyšší úrovně obsahují stejná pole jako stand
 ]
 ```
 
-Popis těchto vlastností najdete v tématu [Azure Event Grid schéma událostí](event-schema.md). Při odesílání událostí do tématu Event gridu může mít pole celkovou velikost až 1 MB. Každá událost v poli je omezená na 64 KB (Obecná dostupnost) nebo 1 MB (Preview).
-
-> [!NOTE]
-> K události velikosti až 64 KB se vztahuje Obecná dostupnost (GA) smlouva SLA (SLA). Podpora pro událost velikosti až 1 MB je v současnosti ve verzi Preview. Události větší než 64 KB se účtují v přírůstcích po 64 až KB. 
+Popis těchto vlastností najdete v tématu [Azure Event Grid schéma událostí](event-schema.md). Při odesílání událostí do tématu Event gridu může mít pole celkovou velikost až 1 MB. Maximální povolená velikost události je také 1 MB. Události větší než 64 KB se účtují v přírůstcích po 64 až KB. 
 
 Například platné schéma dat událostí je:
 
@@ -98,9 +95,9 @@ Po odeslání do koncového bodu tématu obdržíte odpověď. Odpověď je stan
 
 |Výsledek  |Odpověď  |
 |---------|---------|
-|Úspěch  | 200 OK  |
-|Data události mají nesprávný formát. | 400 Chybný požadavek |
-|Neplatný přístupový klíč | 401 Neautorizováno |
+|Success  | 200 OK  |
+|Data události mají nesprávný formát. | 400 – Chybný požadavek |
+|Neplatný přístupový klíč | 401 – Neautorizováno |
 |Nesprávný koncový bod | 404 Nenalezeno |
 |Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 

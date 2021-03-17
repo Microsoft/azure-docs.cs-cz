@@ -9,32 +9,40 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d8ae8c5e3218959a483e78f70a6502bf7a5a47
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7a8b013723707c4a3a087a90674227c3d41c5108
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799096"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836933"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Úložiště dat identity pro evropské zákazníky v Azure Active Directory
-Data identity ukládá služba Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je třeba Office 365 a Azure. Informace o tom, kde jsou uložená data identity, můžete najít v části [umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.
+Data identity ukládá služba Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je Microsoft 365 a Azure. Informace o tom, kde jsou uložená data identity, můžete najít v části [umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.
 
 Pro zákazníky, kteří získali adresu v Evropě, uchovává Azure AD většinu dat identity v rámci evropských datových center. Tento dokument poskytuje informace o všech datech, která jsou uložená mimo Evropu službami Azure AD.
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure Multi-Factor Authentication (MFA)
-    
-- Všechna dvojúrovňové ověřování pomocí telefonních hovorů nebo SMS pocházejících z Datacenter USA a jsou směrována i globálními poskytovateli.
-- Nabízená oznámení, která používají aplikaci Microsoft Authenticator, pocházejí z datových center USA. Kromě toho mohou vzniknout také služby specifické pro dodavatele zařízení a tyto služby můžou být mimo Evropu.
-- Kódy OATH se vždy ověřují v USA. 
+## <a name="microsoft-azure-ad-multi-factor-authentication"></a>Microsoft Azure AD Multi-Factor Authentication
 
-Další informace o tom, jaké informace o uživateli shromažďuje služba Azure Multi-Factor Authentication Server (MFA Server) a cloudová služba Azure MFA, najdete v článku [shromažďování uživatelských dat v azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
+Pro cloudové Multi-Factor Authentication Azure AD se ověřování dokončí v nejbližším datacentru pro uživatele. Datová centra pro Azure AD Multi-Factor Authentication existují v Severní Amerika, Evropě a Asie a Tichomoří.
+
+* Multi-Factor Authentication využívající telefonní hovory pocházející z Datacenter USA a jsou směrováni globálními poskytovateli.
+* Multi-Factor Authentication pomocí SMS je směrováni globálními poskytovateli.
+* Žádosti o vícefaktorové ověřování využívající nabízená oznámení aplikace Microsoft Authenticator, která pocházejí z datových center EU, se zpracovávají v datových centrech EU.
+    * Služby specifické pro dodavatele zařízení, jako např. nabízená oznámení Apple, můžou být mimo Evropu.
+* Žádosti o vícefaktorové ověřování pomocí kódů OATH, které pocházejí z datových center EU, se ověřují v EU.
+
+Další informace o tom, jaké informace o uživateli shromažďuje služba Azure Multi-Factor Authentication Server (MFA Server) a cloudová služba Azure AD MFA, najdete v článku [shromažďování uživatelských dat v azure Multi-Factor Authentication](../authentication/howto-mfa-reporting-datacollection.md).
+
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Jeden Sign-On pro podnikové aplikace založený na heslech
+ 
+Pokud zákazník vytvoří novou podnikovou aplikaci (ať už přes Galerii Azure AD nebo mimo galerii) a povolí jednotné přihlašování založené na heslech, přihlašovací adresa URL aplikace a vlastní zachytávání přihlašovacích polí se ukládají do USA. Další informace o této funkci najdete v tématu [Konfigurace jednotného přihlašování založeného na heslech](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) .
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
-Konfigurační data zásad Azure AD B2C a kontejnery klíčů se ukládají v datacentrech v USA. Neobsahují žádné osobní údaje uživatele. Další informace o konfiguracích zásad najdete v článku [Azure Active Directory B2C: Předdefinované zásady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies).
+Konfigurační data zásad Azure AD B2C a kontejnery klíčů se ukládají v datacentrech v USA. Neobsahují žádné osobní údaje uživatele. Další informace o konfiguracích zásad najdete v článku [Azure Active Directory B2C: Předdefinované zásady](../../active-directory-b2c/user-flow-overview.md).
 
 ## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
@@ -50,7 +58,7 @@ Azure AD DS uchovává data uživatelů ve stejném umístění jako virtuální
 - Seznam schválených federovaných domén pro aplikaci
 - Veřejný klíč pro podepsání tokenu aplikace 
 
-Další informace o federaci na serveru Microsoft Exchange naleznete v článku [federace: Exchange 2013 Help](https://docs.microsoft.com/exchange/federation-exchange-2013-help) .
+Další informace o federaci na serveru Microsoft Exchange naleznete v článku [federace: Exchange 2013 Help](/exchange/federation-exchange-2013-help) .
 
 
 ## <a name="other-considerations"></a>Další důležité informace
@@ -61,12 +69,12 @@ Další informace o rezidenci dat služeb Microsoftu najdete v části [Jaké je
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o všech funkcích a funkcích popsaných výše najdete v těchto článcích:
-- [Co je Multi-Factor Authentication?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
+- [Co je Multi-Factor Authentication?](../authentication/concept-mfa-howitworks.md)
 
-- [Samoobslužné resetování hesla Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)
+- [Samoobslužné resetování hesla Azure AD](../authentication/concept-sspr-howitworks.md)
 
-- [Co je Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+- [Co je Azure Active Directory B2C?](../../active-directory-b2c/overview.md)
 
-- [Co je spolupráce B2B ve službě Azure AD?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+- [Co je spolupráce B2B ve službě Azure AD?](../external-identities/what-is-b2b.md)
 
-- [Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)
+- [Azure Active Directory (AD) Domain Services](../../active-directory-domain-services/overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření fondu SQL pomocí šablony Azure Resource Manager
+title: Vytvoření vyhrazeného fondu SQL (dřív SQL DW) pomocí šablony Azure Resource Manager
 description: Naučte se vytvořit fond SQL Azure synapse Analytics pomocí šablony Azure Resource Manager.
 services: azure-resource-manager
 author: julieMSFT
@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 29d4e4d696b34aa493714c870ebb466f491c47fe
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 70adb7409c44a79345a192df173a1a073cc9b7dd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641870"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460733"
 ---
-# <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>Rychlý Start: Vytvoření fondu SQL Azure synapse Analytics pomocí šablony ARM
+# <a name="quickstart-create-an-azure-synapse-analytics-dedicated-sql-pool-formerly-sql-dw-by-using-an-arm-template"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL ve službě Azure synapse Analytics (dřív SQL DW) pomocí šablony ARM
 
-Tato šablona Azure Resource Manager (šablona ARM) vytvoří fond SQL Azure synapse Analytics s povoleným transparentní šifrování dat. Synapse fond SQL odkazuje na funkce podnikových dat v datovém skladu, které jsou všeobecně dostupné v Azure synapse.
+Tato šablona Azure Resource Manager (šablona ARM) vytvoří vyhrazený fond SQL (dřív SQL DW) s povoleným transparentní šifrování dat. Vyhrazený fond SQL (dřív SQL DW) odkazuje na funkce podnikového datového skladu, které jsou všeobecně dostupné v Azure synapse.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Vyberte následující obrázek pro přihlášení do Azure a otevřete šablonu. Tato šablona vytvoří synapse fond SQL.
+1. Vyberte následující obrázek pro přihlášení do Azure a otevřete šablonu. Tato šablona vytvoří vyhrazený fond SQL (dřív SQL DW).
    
    [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-sql-data-warehouse-transparent-encryption-create%2Fazuredeploy.json)
 
@@ -53,7 +53,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
    * **SQL Server název**: přijměte výchozí název nebo zadejte název pro název SQL Server.
    * **Přihlášení správce SQL**: zadejte uživatelské jméno správce pro SQL Server.
    * **Heslo správce SQL**: zadejte heslo správce pro SQL Server.
-   * **Název datového skladu**: zadejte název fondu SQL.
+   * **Název datového skladu**: zadejte vyhrazený název fondu SQL.
    * **Transparentní šifrování dat**: přijměte výchozí hodnotu povoleno. 
    * **Cíl na úrovni služby**: přijměte výchozí DW400c.
    * **Umístění**: přijměte výchozí umístění skupiny prostředků.
@@ -67,7 +67,7 @@ Můžete použít Azure Portal ke kontrole nasazených prostředků nebo k vyps�
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 ```azurecli-interactive
-echo "Enter the resource group where your Synapse SQL pool exists:" &&
+echo "Enter the resource group where your dedicated SQL pool (formerly SQL DW) exists:" &&
 read resourcegroupName &&
 az resource list --resource-group $resourcegroupName 
 ```
@@ -75,7 +75,7 @@ az resource list --resource-group $resourcegroupName
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name where your SQL pool account exists"
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name where your dedicated SQL pool (formerly SQL DW) account exists"
 (Get-AzResource -ResourceType "Microsoft.Sql/servers/databases" -ResourceGroupName $resourceGroupName).Name
  Write-Host "Press [ENTER] to continue..."
 ```
@@ -107,7 +107,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili fond SQL Azure synapse Analytics pomocí šablony ARM a ověřili nasazení. Další informace o službě Azure synapse Analytics a Azure Resource Manager najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili vyhrazený fond SQL (dřív SQL DW) pomocí šablony ARM a ověřili nasazení. Další informace o službě Azure synapse Analytics a Azure Resource Manager najdete v následujících článcích.
 
 - Přečtěte si [Přehled služby Azure synapse Analytics](sql-data-warehouse-overview-what-is.md)
 - Další informace o [Azure Resource Manageru](../../azure-resource-manager/management/overview.md)

@@ -6,14 +6,15 @@ ms.author: banders
 ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f328f17b1d64bc9b8f0be35321aecaba0cb85fa6
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: fc9b6c4edc5d08c30b1eadb5084155b10d0e55a3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142414"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601503"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat investice do cloudu se službou Azure Cost Management
 
@@ -102,7 +103,7 @@ Další informace o různých možnostech najdete v tématu o [možnostech náku
 
 #### <a name="enterprise-agreement"></a>[Smlouva Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-- Možnosti předběžných peněžních závazků
+- Možnosti předběžného Azure Prepaymentu (dřív označovaný jako peněžní závazek)
 - Přístup k nižším cenám Azure
 
 #### <a name="azure-in-csp"></a>[Azure v CSP](https://azure.microsoft.com/offers/ms-azr-0145p/)
@@ -125,7 +126,7 @@ Další informace najdete v tématu [Cenová kalkulačka Azure](https://azure.mi
 
 Azure Migrate je služba, která vyhodnotí aktuální úlohy vaší organizace v místních datacentrech. Pomůže vám získat přehled o prostředcích potřebných pro náhradní řešení v Azure. Služba Migrate nejprve analyzuje místní počítače, aby zjistila, jestli je migrace proveditelná. Pak doporučí velikost virtuálních počítačů v Azure, aby maximalizovala výkon. Nakonec také odhadne náklady na řešení založené na Azure.
 
-Další informace najdete v tématu o službě [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview).
+Další informace najdete v tématu o službě [Azure Migrate](../../migrate/migrate-services-overview.md).
 
 ## <a name="analyze-and-manage-your-costs"></a>Analýza a správa nákladů
 

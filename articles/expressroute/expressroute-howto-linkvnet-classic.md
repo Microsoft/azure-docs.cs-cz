@@ -2,17 +2,18 @@
 title: 'Azure ExpressRoute: propojení virtuální sítě s okruhem: Classic'
 description: Tento dokument poskytuje přehled, jak propojit virtuální sítě (virtuální sítě) se ExpressRoute okruhy pomocí modelu nasazení Classic a PowerShellu.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: cherylmc
-ms.openlocfilehash: 5a289284fa27055c76e1e0594e3b0655e746159b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0e8a1d48934d73f1035c6f2c4c76e56d9a0e4052
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737083"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206966"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí prostředí PowerShell (Classic)
 > [!div class="op_single_selector"]
@@ -41,7 +42,7 @@ K okruhu ExpressRoute můžete propojit až 10 virtuálních sítí. Všechny vi
    * Podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-classic.md) a umožněte vašemu poskytovateli připojení okruh.
    * Ujistěte se, že máte pro váš okruh nakonfigurovaný privátní partnerský vztah Azure. Pokyny k směrování najdete v článku věnovaném [konfiguraci směrování](expressroute-howto-routing-classic.md) .
    * Ujistěte se, že je nakonfigurovaný privátní partnerský vztah Azure a že partnerský vztah protokolu BGP mezi vaší sítí a Microsoftem je tak, aby bylo možné povolit kompletní připojení.
-   * Musíte mít virtuální síť a bránu virtuální sítě vytvořenou a plně zřízenou. Podle pokynů [nakonfigurujte virtuální síť pro ExpressRoute](expressroute-howto-vnet-portal-classic.md).
+   * Musíte mít virtuální síť a bránu virtuální sítě vytvořenou a plně zřízenou. Podle pokynů [nakonfigurujte virtuální síť pro ExpressRoute](./expressroute-howto-add-gateway-portal-resource-manager.md).
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Stáhnout nejnovější rutiny PowerShellu
 
@@ -84,7 +85,7 @@ Vlastník okruhu má kdykoliv oprávnění upravovat a odvolat. Odvolání autor
 
 **Vytváření autorizace**
 
-Vlastník okruhu autorizuje správce jiných předplatných k používání zadaného okruhu. V následujícím příkladu správce okruhu (Contoso IT) umožňuje správci jiného předplatného (vývoj-test) propojit až dvě virtuální sítě s okruhem. Správce IT společnosti Contoso to umožňuje zadáním ID pro vývoj a testování společnosti Microsoft. Rutina nepošle e-mail na zadané ID Microsoftu. Vlastník okruhu musí explicitně informovat jiného vlastníka předplatného, že se autorizace dokončila.
+Vlastník okruhu autorizuje správce jiných předplatných k používání zadaného okruhu. V následujícím příkladu správce okruhu (Contoso IT) umožňuje správci jiného předplatného (vývoj-test) propojit až dvě virtuální sítě s okruhem. Správce IT společnosti Contoso to umožňuje zadáním ID Dev-Test společnosti Microsoft. Rutina nepošle e-mail na zadané ID Microsoftu. Vlastník okruhu musí explicitně informovat jiného vlastníka předplatného, že se autorizace dokončila.
 
 ```powershell
 New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'

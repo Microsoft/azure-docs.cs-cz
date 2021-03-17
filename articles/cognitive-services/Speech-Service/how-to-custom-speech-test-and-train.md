@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 2c98546d20e9f977a605ccbac21010aa9b1dbadc
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628059"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232490"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
 
@@ -39,6 +39,8 @@ Model vyškolený v podmnožině scénářů může v těchto scénářích prov
 > Začněte s malými sadami ukázkových dat, která se shodují s jazykem, a akustickým využitím modelu.
 > Například zaznamenejte malý, ale reprezentativní vzorek zvuku na stejném hardwaru a ve stejném akustickém prostředí, ve kterém bude model Hledat v produkčních scénářích.
 > Malé datové sady reprezentativních dat můžou vystavovat problémy předtím, než budete investovat do shromažďování mnohem větších datových sad pro školení.
+>
+> Pokud chcete rychle začít, zvažte použití ukázkových dat. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Ukázková Custom Speechová data</a> najdete v tomto úložišti GitHubu.
 
 ## <a name="data-types"></a>Typy dat
 
@@ -46,20 +48,29 @@ Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít ka
 
 | Datový typ | Používá se pro testování. | Doporučené množství | Používá se pro školení. | Doporučené množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Zvuk](#audio-data-for-testing) | Yes<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | Není k dispozici |
-| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Yes | 1 – 1000 hodin zvukového přenosu |
+| [Zvuk](#audio-data-for-testing) | Yes<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | – |
+| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Yes | 1-20 hodin zvukového přenosu |
 | [Související text](#related-text-data-for-training) | No | Není k dispozici | Yes | 1-200 MB souvisejícího textu |
 
 Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor. zip. Každá datová sada může obsahovat pouze jeden datový typ.
 
 > [!TIP]
-> Pokud chcete rychle začít, zvažte použití ukázkových dat. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Ukázková Custom Speechová data <span class="docon docon-navigate-external x-hidden-focus"></span> </a> najdete v tomto úložišti GitHubu.
+> Při učení nového modelu začněte s [souvisejícím textem](#related-text-data-for-training). Tato data budou již vylepšit rozpoznávání speciálních pojmů a frází. Školení s textem je mnohem rychlejší než školení na zvuk (minuty vs. dny).
+
+> [!NOTE]
+> Ne všechny základní modely podporují školení se zvukem. Pokud základní model ho nepodporuje, služba řeči bude používat jenom text z přepisů a zvuk bude ignorovat. Seznam základních modelů, které podporují školení se zvukovými daty, najdete v tématu [jazyková podpora](language-support.md#speech-to-text) . I v případě, že základní model podporuje školení se zvukovými daty, může služba použít jenom část zvuku. Pořád bude používat všechny přepisy.
+>
+> V případech, kdy změníte základní model používaný pro školení a máte zvuk v datové sadě školení, *vždy* ověřte, zda nový vybraný základní model [podporuje školení se zvukovými daty](language-support.md#speech-to-text). Pokud dřív použitý základní model nepodporoval školení se zvukovými daty a datová sada pro školení obsahuje zvuk, může se výrazně zvýšit doba školení s novým základním modelem a může se stát, **že budete moct** snadno přejít z několika hodin na několik dní. To platí hlavně v **případě, že** vaše předplatné služby Speech není v [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
+>
+> Pokud se setkáte s problémem popsaným v předchozím odstavci, můžete rychle zkrátit dobu školení tím, že snížíte velikost zvuku v datové sadě nebo zcela odeberete a necháte jenom text. Tato možnost se důrazně doporučuje, pokud vaše předplatné služby Speech **není v** [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
+>
+> V oblastech s vyhrazeným hardwarem pro školení bude služba řeči používat až 20 hodin zvukového školení. V jiných oblastech bude používat jenom až 8 hodin zvuku.
 
 ## <a name="upload-data"></a>Nahrání dat
 
-Data odešlete tak, že přejdete na <a href="https://speech.microsoft.com/customspeech" target="_blank">portál <span class="docon docon-navigate-external x-hidden-focus"></span> Custom Speech </a>. Na portálu klikněte na **nahrát data** a spusťte průvodce a vytvořte svou první datovou sadu. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
+Pokud chcete nahrát data, přejděte do sady <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio </a>. Na portálu klikněte na **nahrát data** a spusťte průvodce a vytvořte svou první datovou sadu. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
 
-![Výběr zvuku z portálu pro rozpoznávání řeči](./media/custom-speech/custom-speech-select-audio.png)
+![Snímek obrazovky, který zvýrazní možnost nahrávání zvuku z portálu pro rozpoznávání řeči.](./media/custom-speech/custom-speech-select-audio.png)
 
 Každá datová sada, kterou nahráváte, musí splňovat požadavky na datový typ, který zvolíte. Data musí být před nahráním správně naformátována. Správně naformátovaná data zajišťuje jejich správné zpracování službou Custom Speech. Požadavky jsou uvedené v následujících oddílech.
 
@@ -80,7 +91,7 @@ Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně form
 | Vzorkovací frekvence              | 8 000 Hz nebo 16 000 Hz |
 | Kanály                 | 1 (mono)              |
 | Maximální délka na zvuk | 2 hodiny               |
-| Vzorový formát            | PCM, 16 bitů           |
+| Formát ukázky            | PCM, 16 bitů           |
 | Formát archivu           | .zip                  |
 | Maximální velikost archivu     | 2 GB                  |
 
@@ -89,9 +100,9 @@ Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně form
 > [!TIP]
 > Při nahrávání školicích a testovacích dat nemůže být velikost souboru ZIP větší než 2 GB. Pokud potřebujete další data pro školení, rozdělte je do několika souborů zip a nahrajte je samostatně. Později můžete zvolit výuku z *více* datových sad. Můžete však testovat pouze z *jedné* datové sady.
 
-Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ověřte vlastnosti zvuku nebo převeďte existující zvuk do příslušných formátů. Níže jsou uvedeny některé příklady, jak lze jednotlivé aktivity provést prostřednictvím příkazového řádku SoX:
+Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox </a> ověřte vlastnosti zvuku nebo převeďte existující zvuk do příslušných formátů. Níže jsou uvedeny některé příklady, jak lze jednotlivé aktivity provést prostřednictvím příkazového řádku SoX:
 
-| Aktivita | Popis | SoX – příkaz |
+| Aktivita | Description | SoX – příkaz |
 |----------|-------------|-------------|
 | Kontrolovat zvukový formát | Pomocí tohoto příkazu ověřte<br>formát zvukového souboru. | `sox --i <filename>` |
 | Převod zvukového formátu | Tento příkaz slouží k převodu<br>zvukový soubor do jednoho kanálu, 16bitová, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -108,7 +119,7 @@ Zvukové soubory mohou mít na začátku a na konci záznamu tiché ukončení. 
 | Vzorkovací frekvence              | 8 000 Hz nebo 16 000 Hz               |
 | Kanály                 | 1 (mono)                            |
 | Maximální délka na zvuk | 2 hodiny (testování)/60 s (školení) |
-| Vzorový formát            | PCM, 16 bitů                         |
+| Formát ukázky            | PCM, 16 bitů                         |
 | Formát archivu           | .zip                                |
 | Maximální velikost souboru ZIP         | 2 GB                                |
 
@@ -117,13 +128,16 @@ Zvukové soubory mohou mít na začátku a na konci záznamu tiché ukončení. 
 > [!NOTE]
 > Při nahrávání školicích a testovacích dat nemůže být velikost souboru ZIP větší než 2 GB. Můžete provést test pouze z *jedné* datové sady, nezapomeňte ji zachovat v rámci příslušné velikosti souboru. Kromě toho každý školicí soubor nemůže být delší než 60 sekund, jinak dojde k chybě.
 
-Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slovech přibližně 10 až 1 000 hodin zvukového přenosu. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
+Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slově na 1 až 20 hodin zvukového přenosu. Nicméně, a to až 30 minut, může pomoci zlepšit výsledky rozpoznávání. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
 
-  Například:
-```
-  speech01.wav  speech recognition is awesome
-  speech02.wav  the quick brown fox jumped all over the place
-  speech03.wav  the lazy dog was not amused
+Například:
+
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
+speech01.wav    speech recognition is awesome
+speech02.wav    the quick brown fox jumped all over the place
+speech03.wav    the lazy dog was not amused
 ```
 
 > [!IMPORTANT]
@@ -131,10 +145,14 @@ Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování s
 
 Přepisy se budou normalizovat, aby je mohl systém zpracovat. Existují však některé důležité normalizace, které je nutné provést před odesláním dat do sady Speech Studio. Příslušný jazyk, který se má použít, když připravujete přepisy, najdete v tématu [Vytvoření přepisu s popiskem](how-to-custom-speech-human-labeled-transcriptions.md) .
 
-Až shromáždíte zvukové soubory a odpovídající přepisy, před nahráním na <a href="https://speech.microsoft.com/customspeech" target="_blank">portál <span class="docon docon-navigate-external x-hidden-focus"></span> Custom Speech </a>je zabalíte jako jeden soubor. zip. Níže je příklad datové sady se třemi zvukovými soubory a soubor přepisu s popisem:
+Až shromáždíte zvukové soubory a odpovídající přepisy, před nahráním do <a href="https://speech.microsoft.com/customspeech" target="_blank">studia pro rozpoznávání řeči </a>je zabalíte jako jeden soubor. zip. Níže je příklad datové sady se třemi zvukovými soubory a soubor přepisu s popisem:
 
 > [!div class="mx-imgBorder"]
 > ![Výběr zvuku z portálu pro rozpoznávání řeči](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+
+Seznam doporučených oblastí pro vaše předplatná služby Speech najdete v tématu [Nastavení účtu Azure](custom-speech-overview.md#set-up-your-azure-account) . Nastavení předplatných pro rozpoznávání řeči v jedné z těchto oblastí zkrátí dobu potřebnou k učení modelu. V těchto oblastech může školení zpracovávat zhruba 10 hodin zvukového záznamu v porovnání s jednou jednou hodinu za den v jiných oblastech. Pokud školení modelu nelze dokončit během týdne, model bude označen jako neúspěšný.
+
+Ne všechny základní modely podporují školení se zvukovými daty. Pokud ho základní model nepodporuje, služba ignoruje zvuk a jenom vlak s textem přepisů. V takovém případě bude školení stejné jako školení se souvisejícím textem. Seznam základních modelů, které podporují školení se zvukovými daty, najdete v tématu [jazyková podpora](language-support.md#speech-to-text) .
 
 ## <a name="related-text-data-for-training"></a>Související textová data pro školení
 
@@ -145,7 +163,9 @@ Názvy produktů nebo funkce, které jsou jedinečné, by měly obsahovat souvis
 | Věty (projevy) | Zvyšte přesnost při rozpoznávání názvů produktů nebo slovníku specifického pro konkrétní obor v kontextu věty. |
 | Výslovnost | Zlepšení výslovnosti neobvyklých pojmů, akronymů nebo jiných slov pomocí nedefinovaných výslovnosti. |
 
-Věty lze zadat jako jeden textový soubor nebo více textových souborů. Chcete-li zlepšit přesnost, používejte textová data, která se blíží očekávanému mluvenému projevy. Výslovnost by se měla zadat jako jediný textový soubor. Všechno se dá zabalit jako jeden soubor zip a nahrát na <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech portál <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Věty lze zadat jako jeden textový soubor nebo více textových souborů. Chcete-li zlepšit přesnost, používejte textová data, která se blíží očekávanému mluvenému projevy. Výslovnost by se měla zadat jako jediný textový soubor. Všechno se dá zabalit jako jeden soubor zip a nahrát do <a href="https://speech.microsoft.com/customspeech" target="_blank">studia pro rozpoznávání řeči </a>.
+
+Školení se souvisejícím textem obvykle dokončí během několika minut.
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>Pokyny k vytvoření souboru s větami
 
@@ -163,7 +183,7 @@ Pomocí této tabulky zajistěte, aby byl správně naformátován váš souvise
 
 Navíc se budete chtít přihlédnout k následujícím omezením:
 
-* Nepoužívejte opakující se znaky víckrát než čtyřikrát. Například: "AAAA" nebo "uuuu".
+* Vyhněte se opakujícím se znakům, slovům nebo skupinám slov více než třikrát. Například: "AAAA", "Ano Ano Ano Ano", nebo "to je to, to je to, co je to". Služba rozpoznávání řeči může odstranit řádky s příliš mnoha opakováními.
 * Nepoužívejte speciální znaky ani znaky UTF-8 uvedené výše `U+00A1` .
 * Identifikátory URI se odmítnou.
 
@@ -203,5 +223,5 @@ Pomocí následující tabulky ověřte, zda je váš související datový soub
 
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
-* [Nasazení modelu](how-to-custom-speech-deploy-model.md)
+* [Trénování modelu](how-to-custom-speech-train-model.md)
+* [Nasazení modelu](./how-to-custom-speech-train-model.md)

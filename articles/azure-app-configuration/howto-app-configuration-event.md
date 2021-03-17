@@ -1,23 +1,23 @@
 ---
-title: Odeslání událostí do webového koncového bodu pomocí konfigurace aplikace Azure
+title: Použití Event Grid k oznamování změn konfiguračních dat aplikace
 description: Naučte se používat odběry událostí Azure App Configuration k odesílání událostí úprav klíč-hodnota do webového koncového bodu.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 02/25/2020
-ms.author: lcozzens
+ms.date: 03/04/2020
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dc816f54a690a4c72c44d70ecbf2cc0156ac84ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c188a4b7fe8e9223faa1cdeb52ae01ed83b94d84
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498306"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549775"
 ---
-# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Směrování událostí konfigurace aplikace Azure do webového koncového bodu pomocí Azure CLI
+# <a name="use-event-grid-for-app-configuration-data-change-notifications"></a>Použití Event Grid k oznamování změn konfiguračních dat aplikace
 
 V tomto článku se dozvíte, jak nastavit odběry událostí konfigurace aplikací Azure pro odesílání událostí úprav klíč-hodnota do webového koncového bodu. Uživatelé Azure App Configuration se můžou přihlásit k odběru událostí emitovaných při změně klíčových hodnot. Tyto události mohou aktivovat Webhooky, Azure Functions, Azure Storage fronty nebo jakékoli jiné obslužné rutiny událostí, které Azure Event Grid podporuje. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -64,7 +64,7 @@ Nahraďte `<your-site-name>` jedinečným názvem vaší webové aplikace. Náze
 ```azurecli-interactive
 $sitename=<your-site-name>
 
-az group deployment create \
+az deployment group create \
   --resource-group <resource_group_name> \
   --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
   --parameters siteName=$sitename hostingPlanName=viewerhost
@@ -135,6 +135,6 @@ az group delete --name <resource_group_name>
 
 Když teď víte, jak vytvářet témata a odběry událostí, přečtěte si další informace o událostech klíč-hodnota a o tom, co Event Grid vám může pomáhat:
 
-- [Reakce na události klíč-hodnota](concept-app-configuration-event.md)
+- [Reakce na události Key-Value](concept-app-configuration-event.md)
 - [Informace o službě Event Grid](../event-grid/overview.md)
 - [Obslužné rutiny Azure Event Grid](../event-grid/event-handlers.md)

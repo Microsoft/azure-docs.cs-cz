@@ -3,23 +3,22 @@ title: Kurz použití konfigurace aplikace Azure Key Vault odkazy v aplikaci Jav
 description: V tomto kurzu se naučíte používat odkazy na Key Vault Azure App Configuration z aplikace Java na jaře.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 12/16/2019
-ms.author: lcozzens
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 5977aced8354694a631cce05bf6d6b913ea79118
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/11/2020
+ms.author: alkemper
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 04d9c7a343570349851a206fd69fdda822f790a4
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121591"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981472"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Kurz: použití odkazů Key Vault v aplikaci Java pružiny
 
@@ -44,32 +43,32 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Podporovaná [sada Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
+* Podporovaná [sada Java Development Kit (JDK)](/java/azure/jdk) s verzí 8.
 * [Apache Maven](https://maven.apache.org/download.cgi) verze 3,0 nebo vyšší.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
 1. V levém horním rohu Azure Portal vyberte možnost **vytvořit prostředek** :
 
-    ![Výstup po dokončení vytvoření trezoru klíčů](./media/quickstarts/search-services.png)
+    ![Snímek obrazovky ukazuje možnost vytvořit prostředek v Azure Portal.](./media/quickstarts/search-services.png)
 1. Do vyhledávacího pole zadejte **Key Vault**.
 1. V seznamu výsledků vyberte na levé straně **trezory klíčů** .
-1. V **trezorech klíčů**vyberte **Přidat**.
-1. Na pravé straně v části **Vytvoření trezoru klíčů**zadejte následující informace:
+1. V **trezorech klíčů** vyberte **Přidat**.
+1. Na pravé straně v části **Vytvoření trezoru klíčů** zadejte následující informace:
     * Vyberte **předplatné** a zvolte předplatné.
-    * V případě **skupiny prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
-    * V **názvu trezoru klíčů**je vyžadován jedinečný název. Pro tento kurz zadejte **Contoso-vault2**.
+    * V případě **skupiny prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    * V **názvu trezoru klíčů** je vyžadován jedinečný název. Pro tento kurz zadejte **Contoso-vault2**.
     * V rozevíracím seznamu **oblast** vyberte umístění.
 1. Ostatní možnosti **Vytvoření trezoru klíčů** ponechte výchozí hodnoty.
 1. Vyberte **Vytvořit**.
 
 V tomto okamžiku je váš účet Azure jediným autorizovaným oprávněním pro přístup k tomuto novému trezoru.
 
-![Výstup po dokončení vytvoření trezoru klíčů](./media/quickstarts/vault-properties.png)
+![Snímek obrazovky se zobrazí v trezoru klíčů.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
 
-Pokud chcete do trezoru přidat tajný klíč, musíte provést několik dalších kroků. V takovém případě přidejte zprávu, kterou můžete použít k otestování Key Vault načítání. Zpráva se nazývá **zpráva**a v ní uložíte hodnotu Hello z Key Vault.
+Pokud chcete do trezoru přidat tajný klíč, musíte provést několik dalších kroků. V takovém případě přidejte zprávu, kterou můžete použít k otestování Key Vault načítání. Zpráva se nazývá **zpráva** a v ní uložíte hodnotu Hello z Key Vault.
 
 1. Na stránkách vlastností Key Vault vyberte **tajné klíče**.
 1. Vyberte **Generovat/importovat**.
@@ -82,19 +81,19 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
-1. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
+1. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů** a pak zadejte následující hodnoty:
     * **Klíč**: vyberte **/Application/config.keyvaultmessage**
     * **Popisek**: Nechte tuto hodnotu prázdnou.
-    * **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající hodnotám v trezoru klíčů, který jste vytvořili v předchozí části.
+    * **Předplatné**, **Skupina prostředků** a **Trezor klíčů**: zadejte hodnoty odpovídající hodnotám v trezoru klíčů, který jste vytvořili v předchozí části.
     * **Tajný kód**: vyberte tajný kód s názvem **zpráva** , kterou jste vytvořili v předchozí části.
 
 ## <a name="connect-to-key-vault"></a>Připojení k Key Vault
 
-1. V tomto kurzu použijete k ověřování Key Vault instanční objekt. Tento instanční objekt vytvoříte pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
+1. V tomto kurzu použijete k ověřování Key Vault instanční objekt. Tento instanční objekt vytvoříte pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) :
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
@@ -129,7 +128,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Vytvořte proměnné prostředí **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET**a **AZURE_TENANT_ID**. Použijte hodnoty pro instanční objekt, který byl zobrazen v předchozích krocích. Na příkazovém řádku spusťte následující příkazy a restartujte příkazový řádek, aby se změna projevila:
+1. Vytvořte proměnné prostředí **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET** a **AZURE_TENANT_ID**. Použijte hodnoty pro instanční objekt, který byl zobrazen v předchozích krocích. Na příkazovém řádku spusťte následující příkazy a restartujte příkazový řádek, aby se změna projevila:
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"

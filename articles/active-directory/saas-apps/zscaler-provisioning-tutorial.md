@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: a3424a42e86b47d4103dd41ca143b5bc7be3796a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9f368a4aebc4d5de38ebbab800241366650633e6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545909"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936579"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v Zscaler a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Zscaler.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 
 ## <a name="prerequisites"></a>Požadavky
@@ -65,7 +65,7 @@ Azure Active Directory používá koncept nazvaný "přiřazení" k určení už
 
 Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Zscaler. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Zscaler podle pokynů uvedených tady:
 
-* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler"></a>Důležité tipy pro přiřazení uživatelů k Zscaler
 
@@ -80,79 +80,82 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 > [!TIP]
 > Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Zscaler podle pokynů uvedených v [kurzu Zscaler jednotného přihlašování](zscaler-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
+> [!NOTE]
+> Pokud jsou uživatelé a skupiny zřízené nebo nezřízené, doporučujeme, abyste pravidelně restartovali zřizování, aby se zajistilo, že členství ve skupině bude správně aktualizováno. Při restartování dojde k vynucení, aby naše služba znovu vyhodnotila všechny skupiny a aktualizovala členství. 
+
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zscaler ve službě Azure AD:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Zscaler**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Zscaler**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Zscaler**.
 
     ![Odkaz Zscaler v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
+    ![Snímek obrazovky s postranním panelem Zscaler-Provisioning pro podnikovou aplikaci se zvýrazněnou možností zřizování](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
+    ![Snímek stránky zřizování s režimem zřizování nastaveným na automatické.](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** účtu Zscaler, jak je popsáno v kroku 6.
 
 6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, přejděte do části **Správa > nastavení ověřování** v uživatelském rozhraní portálu Zscaler a klikněte na protokol **SAML** pod položkou **typ ověřování**.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/secret-token-1.png)
+    ![Snímek obrazovky se stránkou nastavení ověřování.](./media/zscaler-provisioning-tutorial/secret-token-1.png)
 
     Kliknutím na **nakonfigurovat SAML** otevřete nastavení možnosti **SAML** .
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/secret-token-2.png)
+    ![Snímek obrazovky s dialogovým oknem konfigurovat S A M L se základními textovými poli pro R L a nosičem s tokeny](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
-    Vyberte **Povolit zřizování na základě SCIM** k načtení **základní adresy URL** a **nosného tokenu**a pak nastavení uložte. Zkopírujte **základní adresu URL** na **adresu URL tenanta**a **token nosiče**  do **tajného tokenu** v Azure Portal.
+    Vyberte **povolit SCIM-Based zřizování** pro načtení **základní adresy URL** a **nosného tokenu** a pak nastavení uložte. Zkopírujte **základní adresu URL** na **adresu URL tenanta** a **token nosiče**  do **tajného tokenu** v Azure Portal.
 
 7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Zscaler. Pokud se připojení nepovede, ujistěte se, že má váš účet Zscaler oprávnění správce, a zkuste to znovu.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/test-connection.png)
+    ![Snímek obrazovky s oddílem přihlašovací údaje správce s možností připojení testu s názvem.](./media/zscaler-provisioning-tutorial/test-connection.png)
 
 8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k selhání**.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/notification.png)
+    ![Snímek obrazovky s textovým e-mailem s oznámením](./media/zscaler-provisioning-tutorial/notification.png)
 
 9. Klikněte na **Uložit**.
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Zscaler**.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/user-mappings.png)
+    ![Snímek obrazovky oddílu mapování s zvýrazněnou možností synchronizovat Azure Active Directory uživatele do Zscaler](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
 11. Zkontrolujte atributy uživatele synchronizované z Azure AD do Zscaler v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Zscaler pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
+    ![Snímek obrazovky s oddílem mapování atributů se zobrazenými sedmi mapováními](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
 12. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Zscaler**.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/group-mappings.png)
+    ![Snímek obrazovky s oddílem mapování se zvýrazněnou možností synchronizovat Azure Active Directory skupin do Zscaler](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
 13. Zkontrolujte atributy skupiny synchronizované z Azure AD do Zscaler v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Zscaler pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
+    ![Snímek obrazovky oddílu mapování atributů se třemi zobrazenými mapováními](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](./../active-directory-saas-scoping-filters.md).
+14. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 15. Pokud chcete povolit službu Azure AD Provisioning pro Zscaler, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/provisioning-status.png)
+    ![Snímek obrazovky s možností stavu zřizování nastaven na zapnuto](./media/zscaler-provisioning-tutorial/provisioning-status.png)
 
 16. Definujte uživatele nebo skupiny, které chcete zřídit pro Zscaler, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/scoping.png)
+    ![Snímek obrazovky s nastavením oboru se zvýrazněnou možností synchronizovat pouze přiřazení uživatelé a skupiny.](./media/zscaler-provisioning-tutorial/scoping.png)
 
-17. Až budete připraveni zřídit, klikněte na **Uložit**.
+17. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Zřizování Zscaler](./media/zscaler-provisioning-tutorial/save-provisioning.png)
+    ![Snímek obrazovky s postranním panelem Zscaler-Provisioning pro podnikovou aplikaci pomocí možnosti uložit s názvem.](./media/zscaler-provisioning-tutorial/save-provisioning.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Zscaler.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
@@ -161,7 +164,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../active-directory-saas-provisioning-reporting.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/zscaler-provisioning-tutorial/tutorial-general-01.png

@@ -3,13 +3,13 @@ title: Odstranění clusteru Service Fabric v Azure
 description: V tomto kurzu se dozvíte, jak odstranit cluster Service Fabric hostovaný v Azure a všechny jeho prostředky. Můžete odstranit skupinu prostředků obsahující cluster nebo selektivně odstranit jednotlivé prostředky.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 38ddc7173f54a34d68c41ce1180c8dbeaf3d7962
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 60c43adddd4799a639c2d58e0293086eb1776588
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244959"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791084"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Kurz: Odebrání clusteru Service Fabric běžícího v Azure
 
@@ -43,7 +43,7 @@ Než začnete s tímto kurzem:
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Odstranění skupiny prostředků obsahující cluster Service Fabric
 Nejjednodušší způsob, jak odstranit cluster a všechny prostředky, které využívá, je odstranit příslušnou skupinu prostředků.
 
-Přihlaste se k Azure a vyberte ID předplatného, se kterým chcete cluster odebrat.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstraňte skupinu prostředků a všechny prostředky clusteru pomocí rutiny [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) nebo příkazu [AZ Group Delete](/cli/azure/group?view=azure-cli-latest) .
+Přihlaste se k Azure a vyberte ID předplatného, se kterým chcete cluster odebrat.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstraňte skupinu prostředků a všechny prostředky clusteru pomocí rutiny [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) nebo příkazu [AZ Group Delete](/cli/azure/group) .
 
 ```powershell
 Connect-AzAccount

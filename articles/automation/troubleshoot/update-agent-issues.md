@@ -2,19 +2,15 @@
 title: Řešení potíží s agentem Windows Update v Azure Automation
 description: Tento článek popisuje, jak řešit problémy s agentem Windows Update během Update Management a řešit z něj problémy.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/16/2020
-ms.topic: conceptual
-ms.service: automation
+ms.date: 01/25/2020
+ms.topic: troubleshooting
 ms.subservice: update-management
-manager: carmonm
-ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9516210021ce48f069ae3b3b4e02503527e0db24
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187128"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580890"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Řešení problémů s agentem Windows Update
 
@@ -27,10 +23,10 @@ Může to mít spoustu důvodů, proč se Váš počítač během nasazování U
 > [!NOTE]
 > Mezi zobrazením Azure Portal a aktuálním stavem počítače může být mírné zpoždění.
 
-Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z Azure Portal a počítačů mimo Azure ve [scénáři offline](#troubleshoot-offline). 
+Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z Azure Portal a počítačů mimo Azure ve [scénáři offline](#troubleshoot-offline).
 
 > [!NOTE]
-> Skript Poradce při potížích teď obsahuje kontrolu Windows Server Update Services (WSUS) a pro klíče pro autostažení a instalaci. 
+> Skript Poradce při potížích teď obsahuje kontrolu Windows Server Update Services (WSUS) a pro klíče pro autostažení a instalaci.
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
@@ -91,7 +87,7 @@ Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid 
 
 Tato kontrolu určuje, zda je na počítači spuštěn Agent Log Analytics pro systém Windows ( `healthservice` ). Další informace o řešení potíží se službou najdete v tématu [agent Log Analytics pro Windows není spuštěný](hybrid-runbook-worker.md#mma-not-running).
 
-Chcete-li přeinstalovat agenta Log Analytics pro systém Windows, přečtěte si téma [instalace agenta pro systém Windows](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+Chcete-li přeinstalovat agenta Log Analytics pro systém Windows, přečtěte si téma [instalace agenta pro systém Windows](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
 ### <a name="monitoring-agent-service-events"></a>Události služby Monitoring Agent
 
@@ -110,7 +106,7 @@ Při kontrole přístupu ke složce kryptografických souborů se určuje, jestl
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Řešení potíží offline
 
-Poradce při potížích s Hybrid Runbook Worker můžete použít offline spuštěním skriptu místně. Získejte následující skript z Galerie prostředí PowerShell: [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Pokud chcete skript spustit, musíte mít nainstalovanou verzi WMF 4,0 nebo novější. Pokud si chcete stáhnout nejnovější verzi PowerShellu, přečtěte si téma [instalace různých verzí PowerShellu](/powershell/scripting/install/installing-powershell).
+Poradce při potížích s Hybrid Runbook Worker můžete použít offline spuštěním skriptu místně. Z GitHubu Získejte následující skript: [UM_Windows_Troubleshooter_Offline.ps1](https://github.com/Azure/updatemanagement/blob/main/UM_Windows_Troubleshooter_Offline.ps1). Pokud chcete skript spustit, musíte mít nainstalovanou verzi WMF 4,0 nebo novější. Pokud si chcete stáhnout nejnovější verzi PowerShellu, přečtěte si téma [instalace různých verzí PowerShellu](/powershell/scripting/install/installing-powershell).
 
 Výstup tohoto skriptu vypadá jako v následujícím příkladu:
 

@@ -1,17 +1,17 @@
 ---
 title: Zabezpečení – Azure Database for MySQL
 description: Přehled funkcí zabezpečení v Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: aac2641913331095550c0e19cc587257a996fcce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90855059461fcd5f8ed8d2733d2b6d4addaccde3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537019"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535040"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Zabezpečení ve službě Azure Database for MySQL
 
@@ -23,7 +23,7 @@ K ochraně dat na vašem serveru Azure Database for MySQL je k dispozici několi
 Azure Database for MySQL zabezpečuje vaše data šifrováním přenášených dat pomocí Transport Layer Security. Šifrování (SSL/TLS) se ve výchozím nastavení vynutilo.
 
 ### <a name="at-rest"></a>V klidovém případě
-Služba Azure Database for MySQL používá šifrovací modul ověřený 140-2 Standard FIPS pro šifrování úložiště neaktivních dat. Data včetně záloh se šifrují na disku, s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá algoritmus AES 256-bit, který je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
+Služba Azure Database for MySQL používá šifrovací modul ověřený 140-2 Standard FIPS pro šifrování úložiště neaktivních dat. Data včetně záloh se šifrují na disku, včetně dočasných souborů vytvořených při spouštění dotazů. Služba používá algoritmus AES 256-bit, který je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
 
 ## <a name="network-security"></a>Zabezpečení sítě
@@ -38,14 +38,14 @@ Pravidla brány firewall protokolu IP udělují přístup k serverům na základ
 Koncové body služby virtuální sítě prodlužují připojení k virtuální síti přes páteřní síť Azure. Pomocí pravidel virtuální sítě můžete povolit serveru Azure Database for MySQL, aby bylo možné povolit připojení z vybraných podsítí ve virtuální síti. Další informace najdete v tématu [Přehled koncového bodu služby virtuální sítě](concepts-data-access-and-security-vnet.md).
 
 ### <a name="private-ip"></a>Privátní IP adresa
-Privátní odkaz vám umožní připojit se k vašemu Azure Database for MySQL v Azure prostřednictvím privátního koncového bodu. Privátní propojení Azure v podstatě přináší služby Azure do privátního Virtual Network (VNet). K prostředkům PaaS se dá dostat pomocí privátní IP adresy stejně jako u jakéhokoli jiného prostředku ve virtuální síti. Další informace najdete v tématu [Přehled privátních odkazů](concepts-data-access-security-private-link.md) .
+Privátní odkaz vám umožní připojit se k vašemu Azure Database for MySQL v Azure prostřednictvím privátního koncového bodu. Azure Private Link v podstatě přináší služby Azure do vaší privátní virtuální sítě. K prostředkům PaaS je možné přistupovat přes privátní IP adresu stejně jako k jakýmkoli jiným prostředkům ve virtuální síti. Další informace najdete v tématu [Přehled privátních odkazů](concepts-data-access-security-private-link.md) .
 
 ## <a name="access-management"></a>Správa přístupu
 
 Při vytváření Azure Database for MySQLho serveru poskytnete přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů MySQL.
 
 
-## <a name="threat-protection"></a>Ochrana před internetovými útoky
+## <a name="threat-protection"></a>Ochrana před hrozbami
 
 Můžete se rozhodnout pro [rozšířenou ochranu před internetovými útoky](concepts-data-access-and-security-threat-protection.md) , která detekuje neobvyklé aktivity indikující neobvyklé a potenciálně nebezpečné pokusy o přístup k serverům nebo jejich zneužití.
 

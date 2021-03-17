@@ -6,28 +6,28 @@ author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 228e6f144a1d6e3d0fc4f8fd8cb35c6f4e989ee9
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 2ba42e5e800ae607631e00aee50954bf2638ae43
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085038"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007123"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Vytvoření aplikace s více kontejnery (Preview) pomocí konfigurace Docker Compose
 
 > [!NOTE]
 > Vícenásobný kontejner je ve verzi Preview.
 
-Služba [Web App for Containers](overview.md#app-service-on-linux) poskytuje flexibilní způsob, jak používat image Dockeru. V tomto rychlém startu se dozvíte, jak nasadit aplikaci s více kontejnery (Preview), která Web App for Containers v [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) pomocí konfigurace Docker Compose.
-
-Tento rychlý start absolvujete ve službě Cloud Shell, ale uvedené příkazy můžete spustit také místně v [Azure CLI](/cli/azure/install-azure-cli) (verze 2.0.32 nebo novější). 
+Služba [Web App for Containers](overview.md#app-service-on-linux) poskytuje flexibilní způsob, jak používat image Dockeru. V tomto rychlém startu se dozvíte, jak nasadit aplikaci s více kontejnery (Preview), která Web App for Containers v [Cloud Shell](../cloud-shell/overview.md) pomocí konfigurace Docker Compose.
 
 ![Ukázková vícekontejnerová aplikace ve službě Web App for Containers][1]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.32 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -55,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-V Cloud Shell vytvořte skupinu prostředků pomocí [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) příkazu. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
+V Cloud Shell vytvořte skupinu prostředků pomocí [`az group create`](/cli/azure/group#az-group-create) příkazu. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -67,7 +67,7 @@ Po dokončení příkazu se ve výstupu JSON zobrazí vlastnosti skupiny prostř
 
 ## <a name="create-an-azure-app-service-plan"></a>Vytvoření plánu služby Azure App Service
 
-V Cloud Shell vytvořte pomocí příkazu plán App Service ve skupině prostředků [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) .
+V Cloud Shell vytvořte pomocí příkazu plán App Service ve skupině prostředků [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) .
 
 Následující příklad vytvoří plán služby App Service s názvem `myAppServicePlan` v cenové úrovni **Standard** (`--sku S1`) a v kontejneru Linuxu (`--is-linux`).
 
@@ -100,7 +100,7 @@ Po vytvoření plánu služby App Service se v rozhraní příkazového řádku 
 > [!NOTE]
 > V tuto chvíli má Docker Compose v Azure App Services aktuálně povolený limit 4 000 znaků.
 
-V terminálu Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](overview.md#app-service-on-linux) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit _\<app_name>_ jedinečným názvem aplikace (platné znaky jsou `a-z` , `0-9` a `-` ).
+V terminálu Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](overview.md#app-service-on-linux) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit _\<app_name>_ jedinečným názvem aplikace (platné znaky jsou `a-z` , `0-9` a `-` ).
 
 ```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml

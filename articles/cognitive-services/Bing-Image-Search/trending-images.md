@@ -12,14 +12,19 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf7d1baf895d44730eb913b658ee4c7fe7eb7b11
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66383435"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341610"
 ---
 # <a name="get-trending-images-from-the-web"></a>Získat obrázky z vývoje z webu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Pokud chcete získat dnešní vývojové obrázky, pošlete následující požadavek GET:  
 
@@ -39,7 +44,7 @@ Rozhraní API pro vývojové obrázky aktuálně podporuje jenom tyto trhy:
 - EN-AU (angličtina, Austrálie)  
 - zh-CN (čínština, Čína)
 
-Odpověď obsahuje objekt [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) , který obsahuje obrázky podle kategorie. `title` K seskupení imagí v uživatelském prostředí použijte kategorii. Kategorie se můžou každý den měnit.  
+Odpověď obsahuje objekt [TrendingImages](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) , který obsahuje obrázky podle kategorie. `title`K seskupení imagí v uživatelském prostředí použijte kategorii. Kategorie se můžou každý den měnit.  
 
 ```json
 {
@@ -88,9 +93,9 @@ Odpověď obsahuje objekt [TrendingImages](https://docs.microsoft.com/rest/api/c
 }  
 ```  
 
-Každá dlaždice obsahuje obrázek a možnosti pro získání souvisejících imagí. Chcete-li získat související image, můžete použít dotaz `text` pro volání [rozhraní API vyhledávání obrázků](./search-the-web.md) a zobrazení souvisejících imagí sami. Nebo můžete použít adresu URL v aplikaci `webSearchUrl` a převzít uživatele na stránku výsledků hledání imagí Bingu, která obsahuje související obrázky.
+Každá dlaždice obsahuje obrázek a možnosti pro získání souvisejících imagí. Chcete-li získat související image, můžete použít dotaz `text` pro volání [rozhraní API vyhledávání obrázků](./overview.md) a zobrazení souvisejících imagí sami. Nebo můžete použít adresu URL v aplikaci `webSearchUrl` a převzít uživatele na stránku výsledků hledání imagí Bingu, která obsahuje související obrázky.
 
-Pokud zavoláte rozhraní API Vyhledávání obrázků, abyste získali související image, nastavte parametr dotazu [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) na ID v `id` poli. Zadání ID zajistí, že odpověď obsahuje obrázek (Jedná se o první obrázek v odpovědi) a jeho související obrázky. Také nastavte parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) na text v `query` `text` poli objektu.
+Pokud zavoláte rozhraní API Vyhledávání obrázků, abyste získali související image, nastavte parametr dotazu [ID](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) na ID v `id` poli. Zadání ID zajistí, že odpověď obsahuje obrázek (Jedná se o první obrázek v odpovědi) a jeho související obrázky. Také nastavte parametr dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) na text v `query` `text` poli objektu.
 
 Následující příklad ukazuje, jak použít ID obrázku k získání souvisejících imagí Mr. Smith v předchozí reakci rozhraní API pro vývojové obrázky.
 
@@ -101,4 +106,4 @@ X-MSEdge-ClientIP: 999.999.999.999
 X-Search-Location: lat:47.60357;long:-122.3295;re:100  
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
-```  
+```

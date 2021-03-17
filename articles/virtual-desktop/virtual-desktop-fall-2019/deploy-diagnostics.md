@@ -3,25 +3,20 @@ title: Nasazení diagnostického nástroje pro virtuální plochu Windows (Class
 description: Postup nasazení nástroje Diagnostika UX pro virtuální plochu Windows (Classic)
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9bdba36e2ff4721bd024369788c7dc04f066e9a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691407"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565576"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Nasazení diagnostického nástroje pro virtuální počítače s Windows (Classic)
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
-
->[!IMPORTANT]
->Od 16. března 2020 jsme dočasně vypnuli diagnostické dotazy, které ovlivnily uživatelské prostředí kvůli zvýšené poptávce na službě. Tím dojde k tomu, že nástroj přestane fungovat, protože spoléhá na to, jaké dotazy mají fungovat. Tento článek aktualizujeme, až budou diagnostické dotazy znovu k dispozici.
->
->Dokud pak nebudete, doporučujeme, abyste pro průběžné monitorování [používali Log Analytics](diagnostics-log-analytics-2019.md) .
 
 Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Windows umožňuje:
 
@@ -32,7 +27,7 @@ Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Window
 - Odeslat zprávu aktivním uživatelům na konkrétním hostiteli relace.
 - Odhlaste uživatele z hostitele relace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj, je nutné vytvořit registraci aplikace Azure Active Directory a pracovní prostor Log Analytics. Vy nebo správce k tomu potřebují tato oprávnění:
 
@@ -43,8 +38,8 @@ Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj
 
 Tyto dva moduly PowerShellu je potřeba nainstalovat i před zahájením práce:
 
-- [Modul Azure PowerShellu](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Modul Azure AD](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Modul Azure PowerShellu](/powershell/azure/install-az-ps)
+- [Modul Azure AD](/powershell/azure/active-directory/install-adv2)
 
 Ujistěte se, že máte ID předplatného připravené pro přihlášení.
 
@@ -94,9 +89,9 @@ Spuštění skriptu prostředí PowerShell:
 2.  Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a spustit skript **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** v PowerShellu.
 3. Zadejte následující hodnoty parametrů:
 
-    - Pro **ResourceGroupName**zadejte název skupiny prostředků.
-    - Pro **LogAnalyticsWorkspaceName**zadejte jedinečný název pro váš pracovní prostor Log Analytics.
-    - Do pole **umístění**zadejte oblast Azure, kterou používáte.
+    - Pro **ResourceGroupName** zadejte název skupiny prostředků.
+    - Pro **LogAnalyticsWorkspaceName** zadejte jedinečný název pro váš pracovní prostor Log Analytics.
+    - Do pole **umístění** zadejte oblast Azure, kterou používáte.
     - Zadejte **ID předplatného Azure**, které můžete najít v Azure Portal v části **předplatná**.
 
 4. Zadejte přihlašovací údaje uživatele, který má přístup k delegovanému správci.
@@ -113,7 +108,7 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
 1. Otevřete internetový prohlížeč a přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce.
 2. V dalším kroku přejdete do části **Log Analytics pracovní prostory** , ve kterých si prohlédnete nakonfigurované čítače výkonu systému Windows.
 3. V části **Nastavení** vyberte  **Upřesnit nastavení**.
-4. Potom přejděte do části **Data**  >  **čítače výkonu data systému Windows** a přidejte následující čítače:
+4. Potom přejděte do části   >  **čítače výkonu data systému Windows** a přidejte následující čítače:
 
     -   Logický disk ( \* ) \\ % volného místa
     -   Logický disk (C:) \\ prům. délka fronty disku
@@ -121,7 +116,7 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
     -   \*Čas procesoru () informace o procesoru \\
     -   Zpoždění vstupu uživatele na relaci ( \* ) \\ Max. zpoždění vstupu
 
-Přečtěte si další informace o čítačích výkonu ve [zdrojích dat výkonu systému Windows a Linux v Azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
+Přečtěte si další informace o čítačích výkonu ve [zdrojích dat výkonu systému Windows a Linux v Azure monitor](../../azure-monitor/agents/data-sources-performance-counters.md).
 
 >[!NOTE]
 >Jakékoli další čítače, které nakonfigurujete, se nezobrazí v samotném nástroji pro diagnostiku. Aby se zobrazila v nástroji pro diagnostiku, je nutné nakonfigurovat konfigurační soubor nástroje. Pokyny k tomu, jak to provést s pokročilou správou, budou k dispozici v GitHubu později.
@@ -144,8 +139,8 @@ Chcete-li zajistit, aby registrace aplikace měla oprávnění rozhraní API:
 Abyste se ujistili, že váš pracovní prostor Log Analytics má předkonfigurované čítače výkonu systému Windows:
 
 1. V [Azure Portal](https://portal.azure.com/)můžete zkontrolovat nakonfigurované čítače výkonu systému Windows, přejít do **Log Analytics pracovních prostorů** .
-2. V části **Nastavení**vyberte **Upřesnit nastavení**.
-3. Pak přejdete na **Data**  >  **čítače výkonu data Windows**.
+2. V části **Nastavení** vyberte **Upřesnit nastavení**.
+3. Pak přejdete na   >  **čítače výkonu data Windows**.
 4. Ujistěte se, že jsou předem nakonfigurované následující čítače:
 
    - Logický disk ( \* ) \\ % volné místo: zobrazuje množství volného místa celkového použitelného místa na disku v procentech.
@@ -162,17 +157,17 @@ Aby bylo možné zobrazit stav virtuálních počítačů, musíte povolit Log A
 2. Přejít do pracovního prostoru Log Analytics.
 3. Na levém panelu v části zdroje dat pracovního prostoru vyberte **virtuální počítače**.
 4. Vyberte název virtuálního počítače, ke kterému se chcete připojit.
-5. Vyberte **Připojit**.
+5. Vyberte **Connect** (Připojit).
 
 ## <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
 Nasazení šablony Azure Resource Management pro nástroj pro diagnostiku:
 
-1.  Přejít na [stránku GitHub Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy).
+1.  Přejít na [stránku Azure na webu GitHub RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy).
 2.  Nasaďte šablonu do Azure a postupujte podle pokynů v šabloně. Ujistěte se, že máte k dispozici následující informace:
 
-    -   ID klienta
-    -   Tajný kód klienta
+    -   Client-Id
+    -   Client-Secret
     -   ID pracovního prostoru služby Log Analytics
 
 3.  Až budou zadané vstupní parametry, přijměte podmínky a ujednání a pak vyberte **koupit**.
@@ -191,7 +186,7 @@ Nastavení identifikátoru URI přesměrování:
 4.  Na levém panelu v části spravovat oddíl vyberte **ověřování**.
 5.  Do textového pole **identifikátor URI pro přesměrování** zadejte požadovaný identifikátor URI pro přesměrování a pak v levém horním rohu nabídky vyberte **Save (Uložit** ).
 6. V rozevírací nabídce Typ vyberte **Web** .
-7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Například: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Příklad: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    > [!div class="mx-imgBorder"]
    > ![Stránka s identifikátorem URI pro přesměrování](../media/redirect-uri-page.png)
@@ -204,7 +199,7 @@ Nastavení identifikátoru URI přesměrování:
 
 Před zpřístupněním diagnostického nástroje pro uživatele se ujistěte, že mají následující oprávnění:
 
-- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
+- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../../azure-monitor/roles-permissions-security.md).
 -  Uživatelé potřebují taky oprávnění ke čtení pro tenanta virtuálních počítačů s Windows (role čtenářů služby Vzdálená plocha). Další informace najdete v tématu [delegovaný přístup na virtuálním počítači s Windows](delegated-access-virtual-desktop-2019.md).
 
 Také musíte uživatelům poskytnout následující informace:

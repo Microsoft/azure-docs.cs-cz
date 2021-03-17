@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6471108cbbb1ec7fffeb53de61ac71f94927019b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 373b7b8dbf2ccc516edbbb3b87e284d88dfaf0c2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684167"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508477"
 ---
 Když spustíte graf médií, výsledky z uzlu procesor rozšíření HTTP procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně **výstup** , obsahují `body` oddíl a `applicationProperties` oddíl. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](../../../../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -82,20 +82,12 @@ V následujícím příkladu byly ve stejném snímku videa zjištěny dvě auto
         "type": "entity"
       }
     ]
-  },
-  "applicationProperties": {
-    "topic": "/subscriptions/{subscriptionID}/resourceGroups/{name}/providers/microsoft.media/mediaservices/hubname",
-    "subject": "/graphInstances/GRAPHINSTANCENAMEHERE/processors/inferenceClient",
-    "eventType": "Microsoft.Media.Graph.Analytics.Inference",
-    "eventTime": "2020-04-23T06:37:16.097Z"
   }
 }
 ```
 
 V části zprávy si všimněte následujících podrobností:
 
-* V `applicationProperties` aplikaci `subject` odkazuje na uzel v topologii grafu, ze které byla zpráva generována. 
-* V `applicationProperties` nástroji `eventType` označuje, že tato událost je analytická událost.
 * `eventTime`Hodnota je čas, kdy došlo k události.
 * `body`Oddíl obsahuje data o události analýzy. V tomto případě je událost odvozená událost, takže tělo obsahuje `inferences` data.
 * `inferences`Část označuje, že `type` je `entity` . Tato část obsahuje další informace o entitě.

@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: Apache Kafka & zákaznických rozhraní API pro zákazníky – Azure HDInsight'
 description: Zjistěte, jak používat rozhraní Apache Kafka Producer and Consumer API se systémem Kafka ve službě HDInsight. V tomto kurzu zjistíte, jak používat tato rozhraní API se systémem Kafka ve službě HDInsight z aplikace Java.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e5a635a8837aadaf423c6f3a0925dbac4080e60f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681813"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945176"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
 
@@ -21,7 +18,7 @@ Zjistěte, jak používat rozhraní Apache Kafka Producer and Consumer API se sy
 
 Rozhraní Kafka Producer API umožňuje aplikacím odesílat datové proudy do clusteru Kafka. Rozhraní Kafka Consumer API umožňuje aplikacím číst datové proudy z clusteru.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Požadavky
@@ -34,9 +31,9 @@ Další informace o rozhraních API najdete v dokumentaci k rozhraní [Producer 
 ## <a name="prerequisites"></a>Požadavky
 
 * Apache Kafka v clusteru HDInsight. Informace o tom, jak vytvořit cluster, najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalent, jako je například OpenJDK.
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) nebo ekvivalent, jako je například OpenJDK.
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
-* Klient SSH, jako je například výstup. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH, jako je například výstup. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
@@ -73,7 +70,7 @@ V souboru `pom.xml` je důležité porozumět následujícímu:
 
 ### <a name="producerjava"></a>Producer.java
 
-Producent komunikuje s hostiteli zprostředkovatelů Kafka (pracovní uzly) a odesílá data do tématu Kafka. Následující fragment kódu pochází ze souboru [producent. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) z [úložiště GitHub](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) a ukazuje, jak nastavit vlastnosti producenta. U clusterů s podporou podnikového zabezpečení je nutné přidat další vlastnost "Properties. setProperty (CommonClientConfigs. SECURITY_PROTOCOL_CONFIG," SASL_PLAINTEXT ");"
+Producent komunikuje s hostiteli zprostředkovatelů Kafka (pracovní uzly) a odesílá data do tématu Kafka. Následující fragment kódu pochází ze souboru [producent. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) z [úložiště GitHub](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) a ukazuje, jak nastavit vlastnosti producenta. U clusterů s podporou podnikového zabezpečení je nutné přidat další vlastnost "Properties. setProperty (CommonClientConfigs.SECURITY_PROTOCOL_CONFIG," SASL_PLAINTEXT ");"
 
 ```java
 Properties properties = new Properties();
@@ -87,7 +84,7 @@ KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
 ### <a name="consumerjava"></a>Consumer.java
 
-Konzument komunikuje s hostiteli zprostředkovatelů Kafka (pracovní uzly) a ve smyčce čte záznamy. Následující fragment kódu ze souboru [Consumer. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) nastaví vlastnosti příjemce. U clusterů s podporou podnikového zabezpečení je nutné přidat další vlastnost "Properties. setProperty (CommonClientConfigs. SECURITY_PROTOCOL_CONFIG," SASL_PLAINTEXT ");"
+Konzument komunikuje s hostiteli zprostředkovatelů Kafka (pracovní uzly) a ve smyčce čte záznamy. Následující fragment kódu ze souboru [Consumer. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) nastaví vlastnosti příjemce. U clusterů s podporou podnikového zabezpečení je nutné přidat další vlastnost "Properties. setProperty (CommonClientConfigs.SECURITY_PROTOCOL_CONFIG," SASL_PLAINTEXT ");"
 
 ```java
 KafkaConsumer<String, String> consumer;
@@ -135,7 +132,7 @@ Chcete-li tento krok přeskočit, lze předem sestavené jar stáhnout z `Prebui
     mvn clean package
     ```
 
-    Tento příkaz vytvoří adresář s názvem `target`, který bude obsahovat soubor s názvem `kafka-producer-consumer-1.0-SNAPSHOT.jar`. Pro clustery ESP bude soubor`kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
+    Tento příkaz vytvoří adresář s názvem `target`, který bude obsahovat soubor s názvem `kafka-producer-consumer-1.0-SNAPSHOT.jar`. Pro clustery ESP bude soubor `kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
 
 3. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Zadejte následující příkaz, který zkopíruje `kafka-producer-consumer-1.0-SNAPSHOT.jar` soubor do clusteru HDInsight. Po zobrazení výzvy zadejte heslo uživatele SSH.
 
@@ -143,7 +140,7 @@ Chcete-li tento krok přeskočit, lze předem sestavené jar stáhnout z `Prebui
     scp ./target/kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
-## <a name="run-the-example"></a><a id="run"></a>Spustit příklad
+## <a name="run-the-example"></a><a id="run"></a> Spustit příklad
 
 1. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Zadáním následujícího příkazu otevřete připojení SSH ke clusteru. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH.
 
@@ -217,9 +214,9 @@ Záznamy uložené v Kafka jsou uloženy v pořadí, v jakém jsou přijímány 
 
 ## <a name="common-issues-faced"></a>Běžné problémy
 
-1. Nepovedlo se **vytvořit téma** Pokud je váš cluster povolený v sadě Enterprise Security Pack, používejte [předem připravené soubory JAR pro producenta a příjemce](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Sklenice ESP může být sestavena z kódu v [ `DomainJoined-Producer-Consumer` podadresáři](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer). Všimněte si, že vlastnosti producent a příjemce mají k dispozici dodatečnou vlastnost `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` pro clustery s podporou protokolu ESP.
+1. Nepovedlo se **vytvořit téma** Pokud je váš cluster povolený v sadě Enterprise Security Pack, používejte [předem připravené soubory JAR pro producenta a příjemce](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Sklenice ESP může být sestavena z kódu v [ `DomainJoined-Producer-Consumer` podadresáři](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer). Vlastnosti producent a příjemce mají dodatečnou vlastnost `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` pro clustery s podporou protokolu ESP.
 
-2. **Vystavené potíže s clustery s povolenou podporou ESP** Pokud dojde k selhání operací a pokud používáte cluster s povoleným protokolem ESP, ověřte, že se uživatel `kafka` nachází ve všech zásadách Ranger. Pokud není k dispozici, přidejte ji do všech zásad Ranger.
+2. **Selhání v clusterech s povoleným** protokolem ESP: Pokud dojde k selhání operací a používání clusteru s povoleným protokolem ESP, ověřte, jestli `kafka` se uživatel nachází ve všech zásadách Ranger. Pokud není k dispozici, přidejte ji do všech zásad Ranger.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

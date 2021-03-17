@@ -8,13 +8,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.custom: amqp
-ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733389"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142515"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitou identitou (.NET)
 
@@ -32,9 +32,9 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 > [!NOTE]
 > Informace o sadách SDK služby Azure IoT Hub, s jejichž pomocí můžete sestavit aplikace, které poběží v zařízení, i back-end vašeho řešení, najdete v tématu [Sady SDK služby IoT Hub](iot-hub-devguide-sdks.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Visual Studio.
+* Visual Studio
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -70,7 +70,7 @@ Než začnete, Získejte připojovací řetězec modulu. Přihlaste se k [portá
 
 1. Vyhledejte a vyberte **Microsoft. Azure. Devices. Client**a pak vyberte **nainstalovat**.
 
-    ![Instalace aktuální verze sady Azure IoT Hub .NET Service SDK](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
+    ![Snímek obrazovky s vybraným názvem Microsoft. Azure. Devices. Client a zvýrazněným tlačítkem nainstalovat](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
 1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
@@ -181,4 +181,4 @@ Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další s
 
 * [Začínáme se správou zařízení](iot-hub-node-node-device-management-get-started.md)
 
-* [Začínáme se službou IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Začínáme se službou IoT Edge](../iot-edge/quickstart-linux.md)

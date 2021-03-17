@@ -13,12 +13,12 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd7a5b186ebc98babe1baacc9f56f39dc8fbc093
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb1c3bc9f89db3f4b694803a63293a5537d4b98b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80049375"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89278748"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Co je federace se službou Azure AD?
 
@@ -35,7 +35,7 @@ Můžete federovat své místní prostředí pomocí Azure AD a použít tuto fe
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je hybridní identita?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+- [Co je hybridní identita?](./whatis-hybrid-identity.md)
 - [Co je Azure AD Connect a Connect Health?](whatis-azure-ad-connect.md)
 - [Co je synchronizace hodnot hash hesel?](whatis-phs.md)
 - [Co je federace?](whatis-fed.md)

@@ -1,6 +1,6 @@
 ---
 title: Generování & přenos klíčů chráněných HSM – Azure Key Vault
-description: Tento článek vám může pomáhat při plánování, generování a přenosu vlastních klíčů chráněných HSM pro použití s Azure Key Vault. Označuje se také jako BYOK nebo Přineste si vlastní klíč.
+description: Naučte se, jak naplánovat, vygenerovat a pak přenést vlastní klíče chráněné HSM pro použití s Azure Key Vault. Označuje se také jako BYOK nebo Přineste si vlastní klíč.
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -8,18 +8,18 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 76b10dbd9b6d801d93cd5d9704531eb1a6de36a5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a7e709ba9a4de5ff77524a2d2b1b64a5933131a2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585488"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489408"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Import klíčů chráněných modulem HSM do služby Key Vault
 
-Pro zvýšení zabezpečení při použití Azure Key Vault můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy nezanechají hranici HSM. Tento scénář se často označuje jako *bring your own key * (použití vlastního klíče) nebo BYOK. Azure Key Vault používá hardwarového nshieldou rodinu HSM (FIPS 140-2 Level 2) k ochraně vašich klíčů.
+Pro zvýšení zabezpečení při použití Azure Key Vault můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy nezanechají hranici HSM. Tento scénář se často označuje jako *bring your own key* (použití vlastního klíče) nebo BYOK. Azure Key Vault používá hardwarového nshieldou rodinu HSM (FIPS 140-2 Level 2) k ochraně vašich klíčů.
 
 Tato funkce není pro Azure Čína 21Vianet k dispozici.
 
@@ -33,14 +33,18 @@ Přenos klíčů chráněných modulem HSM do Key Vault se podporuje dvěma růz
 
 |Název dodavatele|Typ dodavatele|Podporované modely HSM|Podporovaná metoda přenosu klíče HSM|
 |---|---|---|---|
-|[Podpůrný software nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Výrobců<br/>HSM jako služba|<ul><li>Hardwarového nShield rodina HSM</li><li>Hardwarového nShield jako služba</ul>|**Metoda 1:** [podpůrný software nCipher BYOK](hsm-protected-keys-ncipher.md) (se silným ověřením pro import klíče a ověření HSM)<br/>**Metoda 2:** [použití nové metody BYOK](hsm-protected-keys-byok.md) |
+|[Podpůrný software nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Výrobců<br/>HSM jako služba|<ul><li>Hardwarového nShield rodina HSM</li><li>Hardwarového nShield jako služba</ul>|**Metoda 1:** [podpůrný software nCipher BYOK](hsm-protected-keys-ncipher.md) (zastaralé)<br/>**Metoda 2:** [použití nové metody BYOK](hsm-protected-keys-byok.md) (doporučeno)|
 |Thales|Manufacturer|<ul><li>Luna HSM 7 Family s firmwarem verze 7,3 nebo novější</li></ul>| [Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
-|Fortanix|Výrobců<br/>HSM jako služba|<ul><li>Služba správy klíčů (SDKMS) pro samoobslužné naobranu</li><li>Equinix SmartKey</li></ul>|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
+|Fortanix|Výrobců<br/>HSM jako služba|<ul><li>Služba správy klíčů Self-Defending (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
 |PERC|Manufacturer|Všechny LiquidSecurity HSM s<ul><li>Firmware verze 2.0.4 nebo novější</li><li>Firmware verze 3,2 nebo novější</li></ul>|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Podpůrný software nCipher</li><li>Thales</li><li>Utimaco</li></ul>Podrobnosti najdete v tématu [Cryptomathic web](https://www.cryptomathic.com/azurebyok) .|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
-
+|Securosys SA|Výrobců<br/>HSM jako služba|Primus, rodina HSM, Securosys cloudy HSM|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
+|StorMagic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Utimaco</li><li>Thales</li><li>Podpůrný software nCipher</li></ul>Podrobnosti najdete v tématu [StorMagic web](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm) .|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
+|IBM|Manufacturer|IBM 476x, CryptoExpress|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
+|Utimaco|Výrobců<br/>HSM jako služba|Kotva u. Trust, CryptoServer|[Použít novou metodu BYOK](hsm-protected-keys-byok.md)|
+|||||
 
 ## <a name="next-steps"></a>Další kroky
 
-* Dodržujte [Key Vault osvědčené postupy](../general/best-practices.md) , abyste zajistili zabezpečení, odolnost a monitorování vašich klíčů.
-* Úplný popis nové metody BYOK najdete v tématu [BYOK Specification](https://docs.microsoft.com/azure/key-vault/keys/byok-specification) .
+* Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md) , abyste zajistili zabezpečení, odolnost a monitorování vašich klíčů.
+* Úplný popis nové metody BYOK najdete v tématu [BYOK Specification](./byok-specification.md) .

@@ -1,20 +1,26 @@
 ---
 title: Připojení SSL/TLS – Azure Database for MariaDB
 description: Informace o konfiguraci Azure Database for MariaDB a přidružených aplikací pro správné používání připojení SSL
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 5072710378d0a179b3b96ae9b698e9a92d81cf44
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6c4ee8c6d12a6350c319e40bbe30046af4932311
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290242"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550636"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>Připojení SSL/TLS v Azure Database for MariaDB
 Azure Database for MariaDB podporuje připojení vašeho databázového serveru k klientským aplikacím pomocí SSL (Secure Sockets Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
+
+>[!NOTE]
+> Na základě zpětné vazby od zákazníků jsme rozšířili vyřazení kořenových certifikátů pro naši stávající kořenovou certifikační autoritu Baltimore do 15. února 2021 (02/15/2021).
+
+> [!IMPORTANT] 
+> Platnost kořenového certifikátu SSL je nastavená na vypršení platnosti od 15. února 2021 (02/15/2021). Aktualizujte prosím svoji aplikaci, aby používala [nový certifikát](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Další informace najdete v tématu [plánované aktualizace certifikátů](concepts-certificate-rotation.md) .
 
 ## <a name="default-settings"></a>Výchozí nastavení
 Ve výchozím nastavení by databázová služba měla být nakonfigurovaná tak, aby při připojení k MariaDB vyžadovala připojení SSL.  Doporučujeme, abyste se vyhnuli vypnutí možnosti SSL, kdykoli to bude možné.
@@ -53,6 +59,17 @@ Například nastavení hodnoty minimální verze nastavení TLS na TLS 1,0 zname
 > Jakmile vynucujete minimální verzi protokolu TLS, nemůžete později zakázat vynucení minimální verze.
 
 Informace o nastavení nastavení TLS pro Azure Database for MariaDB najdete v tématu [Konfigurace nastavení TLS](howto-tls-configurations.md).
+
+## <a name="cipher-support-by-azure-database-for-mariadb"></a>Podpora šifry pomocí Azure Database for MariaDB
+
+V rámci komunikace SSL/TLS se šifrovací sady ověřují a podporují jenom šifrovací obleky, které můžou komunikovat s databázovým serverem. Ověřování šifrovací sady se řídí ve [vrstvě brány](concepts-connectivity-architecture.md#connectivity-architecture) a ne explicitně na samotném uzlu. Pokud šifrovací sady neodpovídají jedné z níže uvedených sad, připojení příchozích klientů se odmítnou.
+
+### <a name="cipher-suite-supported"></a>Podporovaná šifrovací sada
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [pravidlech brány firewall serveru](concepts-firewall-rules.md)

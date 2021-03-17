@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80548592"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Jak zadat lístek podpory pro událost zabezpečení
@@ -43,7 +43,7 @@ ms.locfileid: "80548592"
     - Pokud k vašemu problému potřebujete komunikovat s námi, použijte potvrzovací číslo ve všech korespondencích.
     - Průběh můžete kdykoli zobrazit v případě svého problému.
 
-5. Co se stane dál? V závislosti na problému a závažnosti je možné provést následující kroky:
+5. Co bude dál? V závislosti na problému a závažnosti je možné provést následující kroky:
 
     - Budeme informovat o výsledku hodnocení. V závislosti na výsledku můžeme odebrat nebo požádat o úpravu vaší nabídky. V takovém případě budeme spolupracovat s vámi, abyste zajistili minimalizaci přerušení na ovlivněné zákazníky.
     - S vámi budeme spolupracovat, abychom vám pomohli zmírnit dopad incidentu nebo ohrožení zabezpečení pro naše vzájemné zákazníky.

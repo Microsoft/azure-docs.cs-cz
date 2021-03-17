@@ -10,15 +10,15 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17a60ae604a74cf98f3a11e0cbee6d22898c1336
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7ed27eba66b3d18bed8017934fce85928b961392
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122018"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520043"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Shromažďování souborů protokolu kanálu Machine Learning v Application Insights pro výstrahy a ladění
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Knihovna Pythonu [OpenCensus](https://opencensus.io/quickstart/python/) se dá použít k směrování protokolů, které se Application Insights ze skriptů. Agregace protokolů z kanálu na jednom místě umožňuje vytvářet dotazy a diagnostikovat problémy. Použití Application Insights vám umožní sledovat protokoly v průběhu času a porovnat protokoly kanálu v různých spuštěních.
 
@@ -26,7 +26,7 @@ V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Podle pokynů vytvořte pracovní prostor [Azure Machine Learning](./how-to-manage-workspace.md) a [vytvořte svůj první kanál](./how-to-create-your-first-pipeline.md) .
+* Podle pokynů vytvořte pracovní prostor [Azure Machine Learning](./how-to-manage-workspace.md) a [vytvořte svůj první kanál](./how-to-create-machine-learning-pipelines.md) .
 * [Nakonfigurujte vývojové prostředí](./how-to-configure-environment.md) pro instalaci sady Azure Machine Learning SDK.
 * Místní instalace balíčku [OpenCensus Azure monitor Exportér](https://pypi.org/project/opencensus-ext-azure/) :
   ```python
@@ -34,11 +34,11 @@ V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k
   ```
 * Vytvoření [instance Application Insights](../azure-monitor/app/opencensus-python.md) (Tento dokument obsahuje také informace o získání připojovacího řetězce pro prostředek)
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 V této části je Úvod specifický pro použití OpenCensus z kanálu Azure Machine Learning. Podrobný kurz najdete v tématu [OpenCensus Azure monitor vývozců](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure) .
 
-Přidejte PythonScriptStep do kanálu Azure ML. Nakonfigurujte své [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) se závislostí na opencensus-EXT-Azure. Nakonfigurujte `APPLICATIONINSIGHTS_CONNECTION_STRING` proměnnou prostředí.
+Přidejte PythonScriptStep do kanálu Azure ML. Nakonfigurujte své [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) se závislostí na opencensus-EXT-Azure. Nakonfigurujte `APPLICATIONINSIGHTS_CONNECTION_STRING` proměnnou prostředí.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -134,7 +134,7 @@ custom_dimensions = {
 }
 
 # Assumes AzureLogHandler was already registered above
-logger.info("I will be sent to Application Insights with Custom Dimensions", custom_dimensions)
+logger.info("I will be sent to Application Insights with Custom Dimensions", extra= {"custom_dimensions":custom_dimensions})
 ```
 
 ## <a name="opencensus-python-logging-considerations"></a>OpenCensus požadavky na protokolování Pythonu
@@ -153,7 +153,7 @@ Výsledek v Application Insights zobrazí zprávu protokolu a úroveň, cestu k 
 
 ### <a name="additional-helpful-queries"></a>Další užitečné dotazy
 
-Některé z následujících dotazů používají ' customDimensions. Level '. Tyto úrovně závažnosti odpovídají úrovni, pomocí které byl protokol Python původně odeslán. Další informace o dotazech najdete v tématu [Azure monitor dotazů protokolu](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Některé z následujících dotazů používají ' customDimensions. Level '. Tyto úrovně závažnosti odpovídají úrovni, pomocí které byl protokol Python původně odeslán. Další informace o dotazech najdete v tématu [Azure monitor dotazů protokolu](/azure/data-explorer/kusto/query/).
 
 | Případ použití                                                               | Dotaz                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -164,6 +164,6 @@ Některé z následujících dotazů používají ' customDimensions. Level '. T
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile budete mít v instanci Application Insights protokoly, dají se použít k nastavení [Azure monitor výstrahy](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) na základě výsledků dotazu.
+Jakmile budete mít v instanci Application Insights protokoly, dají se použít k nastavení [Azure monitor výstrahy](../azure-monitor/alerts/alerts-overview.md#what-you-can-alert-on) na základě výsledků dotazu.
 
-Můžete také přidat výsledky z dotazů na [řídicí panel Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query) pro další přehledy.
+Můžete také přidat výsledky z dotazů na [řídicí panel Azure](../azure-monitor/app/tutorial-app-dashboards.md#add-logs-query) pro další přehledy.

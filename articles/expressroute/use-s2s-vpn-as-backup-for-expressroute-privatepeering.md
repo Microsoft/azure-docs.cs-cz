@@ -2,17 +2,17 @@
 title: Použití S2S VPN jako zálohy pro privátní partnerské vztahy Azure ExpressRoute | Microsoft Docs
 description: Tato stránka poskytuje doporučení pro architekturu pro zálohování privátního partnerského vztahu Azure ExpressRoute pomocí S2S VPN.
 services: networking
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
-ms.author: rambala
-ms.openlocfilehash: 68596b881ef1b62187bdb7194b364c9477b4e04d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: duau
+ms.openlocfilehash: 752edea8078cf55fc3965bdc7aa9e1b4269dee34
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244767"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207916"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>Použití S2S VPN jako zálohy privátního partnerského vztahu ExpressRoute
 
@@ -315,13 +315,10 @@ Pro urychlení konvergence BGP po ExpressRoute selhání [NAKONFIGURUJTE BFD př
 [2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "Konfigurace GS sítě VPN"
 
 <!--Link References-->
-[DR-PP]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering
-[Conf-CoExist]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager
-[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
-[VPN Troubleshoot]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-site-to-site-cannot-connect
-[VPN-alerts]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric
-[BFD]: https://docs.microsoft.com/azure/expressroute/expressroute-bfd
-[RST]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-reset-peering
-
-
-
+[DR-PP]: ./designing-for-disaster-recovery-with-expressroute-privatepeering.md
+[Conf-CoExist]: ./expressroute-howto-coexist-resource-manager.md
+[HA]: ./designing-for-high-availability-with-expressroute.md
+[VPN Troubleshoot]: ../vpn-gateway/vpn-gateway-troubleshoot-site-to-site-cannot-connect.md
+[VPN-alerts]: ../vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+[BFD]: ./expressroute-bfd.md
+[RST]: ./expressroute-howto-reset-peering.md

@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 16cd4685f513eb628372802cc158195b81bce72a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211881"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736167"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -39,7 +39,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 
 4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na **Uložit**.
 
-    ![Spravovaná identita v App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+    ![Snímek obrazovky, který ukazuje, kde přepnout stav na zapnuto a pak vyberte Uložit.](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
@@ -52,7 +52,7 @@ K nastavení spravované identity pomocí Azure CLI budete muset použít `az we
 
 - Použijte [Azure Cloud Shell](../cloud-shell/overview.md) z Azure Portal.
 - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu níže.
-- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 nebo novější). 
+- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](/cli/azure/install-azure-cli) (2.0.31 nebo novější). 
 
 Následující kroky vás provedou vytvořením webové aplikace a přiřazením identity pomocí rozhraní příkazového řádku:
 
@@ -109,7 +109,7 @@ Následující kroky vás provedou vytvořením aplikace a přiřazením identit
 
 1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/)a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
 
-2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
+2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](/powershell/module/az.functions/#functions):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ Následující kroky vás provedou vytvořením aplikace a přiřazením identit
 
 1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/)a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
 
-2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions). Níže uvedený skript také využívá k `New-AzUserAssignedIdentity` tomu, že se musí nainstalovat samostatně podle potřeby pro [Vytvoření, výpis nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](/powershell/module/az.functions/#functions). Níže uvedený skript také využívá k `New-AzUserAssignedIdentity` tomu, že se musí nainstalovat samostatně podle potřeby pro [Vytvoření, výpis nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -308,7 +308,7 @@ Aplikace může pomocí spravované identity získat tokeny pro přístup k jin�
 Možná budete muset nakonfigurovat cílový prostředek, aby povoloval přístup z vaší aplikace. Například pokud požadujete token pro přístup k Key Vault, musíte se ujistit, že jste přidali zásadu přístupu, která zahrnuje identitu vaší aplikace. V opačném případě budou volání Key Vault odmítnuta, a to i v případě, že obsahují token. Další informace o tom, které prostředky podporují Azure Active Directory tokeny, najdete v tématu [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 > [!IMPORTANT]
-> Back-endové služby pro spravované identity udržují po dobu přibližně 8 hodin identifikátor URI na jeden prostředek. Pokud aktualizujete zásady přístupu určitého cílového prostředku a hned načtete token pro tento prostředek, můžete i nadále získat token uložený v mezipaměti se zastaralými oprávněními, dokud tento token nevyprší. V tuto chvíli neexistuje způsob, jak vynutit aktualizaci tokenu.
+> Back-endové služby spravovaných identit udržují po dobu přibližně 24 hodin identifikátor URI na jeden prostředek. Pokud aktualizujete zásady přístupu určitého cílového prostředku a hned načtete token pro tento prostředek, můžete i nadále získat token uložený v mezipaměti se zastaralými oprávněními, dokud tento token nevyprší. V tuto chvíli neexistuje způsob, jak vynutit aktualizaci tokenu.
 
 K získání tokenu v App Service a Azure Functions existuje jednoduchý protokol REST. Tato možnost se dá použít pro všechny aplikace a jazyky. Pro .NET a Java poskytuje sada Azure SDK abstrakci prostřednictvím tohoto protokolu a usnadňuje místní vývojové prostředí.
 
@@ -328,7 +328,7 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | prostředek          | Dotaz  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
 > | verze-api       | Dotaz  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
-> | X-IDENTITY – HLAVIČKA | Záhlaví | Hodnota proměnné prostředí IDENTITY_HEADER. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).                                                                                                                                                                                                    |
+> | X-IDENTITY – HLAVIČKA | Hlavička | Hodnota proměnné prostředí IDENTITY_HEADER. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).                                                                                                                                                                                                    |
 > | client_id         | Dotaz  | Volitelné ID klienta, které má uživatel přiřazenou identitu použít. Nelze použít na žádost, která obsahuje `principal_id` , `mi_res_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                             |
 > | principal_id      | Dotaz  | Volitelné ID objektu zabezpečení přiřazené identity uživatele, která se má použít `object_id` je alias, který může být použit místo toho. Nelze použít pro požadavek, který obsahuje client_id, mi_res_id nebo object_id. Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem. |
 > | mi_res_id         | Dotaz  | Volitelné ID prostředku Azure pro uživatelem přiřazenou identitu, která se má použít. Nelze použít na žádost, která obsahuje `principal_id` , `client_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                      |
@@ -345,9 +345,9 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 > | expires_on    | Časový interval pro přístup k vypršení platnosti přístupového tokenu Datum se reprezentuje jako počet sekund od "1970-01-01T0:0: 0Z UTC" (odpovídá `exp` deklaraci identity tokenu).                                                                                |
 > | not_before    | Časové rozpětí, kdy se přístupový token projeví a lze jej přijmout. Datum se reprezentuje jako počet sekund od "1970-01-01T0:0: 0Z UTC" (odpovídá `nbf` deklaraci identity tokenu).                                                      |
 > | prostředek      | Prostředek, pro který byl požadován přístupový token, který odpovídá `resource` parametru řetězce dotazu žádosti.                                                                                                                               |
-> | token_type    | Určuje hodnotu typu tokenu. Jediným typem, který Azure AD podporuje, je FBearer. Další informace o nosných tokenech najdete v části [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+> | token_type    | Určuje hodnotu typu tokenu. Jediným typem, který podporuje Azure AD, je nosič. Další informace o nosných tokenech najdete v části [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
-Tato odpověď je stejná jako [odpověď pro žádost o přístup k tokenu služby Azure AD na službu](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
+Tato odpověď je stejná jako [odpověď pro žádost o přístup k tokenu služby Azure AD na službu](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 ### <a name="rest-protocol-examples"></a>Příklady protokolu REST
 
@@ -395,7 +395,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
         uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,
@@ -522,7 +522,8 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Zabezpečený přístup SQL Database pomocí spravované identity](app-service-web-tutorial-connect-msi.md)
+- [Zabezpečený přístup SQL Database pomocí spravované identity](app-service-web-tutorial-connect-msi.md)
+- [Zabezpečený přístup Azure Storage pomocí spravované identity](scenario-secure-app-access-storage.md)
+- [Bezpečné volání Microsoft Graph pomocí spravované identity](scenario-secure-app-access-microsoft-graph-as-app.md)
 
-[Referenční informace k Microsoft. Azure. Services. AppAuthentication]: https://go.microsoft.com/fwlink/p/?linkid=862452
+[Referenční informace k Microsoft. Azure. Services. AppAuthentication]: /dotnet/api/overview/azure/service-to-service-authentication

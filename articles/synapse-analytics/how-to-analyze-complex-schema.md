@@ -5,32 +5,30 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fdf3dc56575a45ad0c9e716054184ba2691133ba
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a35cdebe5ff4db562b19dc4ceed069a831af4305
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831698"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219993"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Analýza složitých datových typů ve službě Azure synapse Analytics
 
-Tento článek se týká souborů Parquet a kontejnerů v [odkazu na synapse pro Azure Cosmos DB](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md). Vysvětluje, jak můžou uživatelé pomocí Sparku nebo SQL číst nebo transformovat data pomocí složitých schémat, jako jsou pole nebo vnořené struktury. Následující příklad je dokončen s jedním dokumentem, ale lze jej snadno škálovat na miliardy dokumentů pomocí Sparku nebo SQL. Kód obsažený v tomto článku používá PySpark (Python).
+Tento článek se týká souborů a kontejnerů Parquet v [odkazu na Azure synapse pro Azure Cosmos DB](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md). Spark nebo SQL můžete použít ke čtení nebo transformaci dat pomocí složitých schémat, jako jsou pole nebo vnořené struktury. Následující příklad je dokončen s jedním dokumentem, ale může snadno škálovat na miliardy dokumentů pomocí Sparku nebo SQL. Kód obsažený v tomto článku používá PySpark (Python).
 
 ## <a name="use-case"></a>Případ použití
 
-Komplexní datové typy jsou stále běžné a představují výzvu pro inženýry dat při analýze vnořeného schématu a polí, které mají za úkol zahrnovat časově náročné a složité dotazy SQL. Kromě toho může být obtížné přejmenovat nebo přetypovat datový typ vnořené sloupce. Problémy s výkonem také vznikají při práci s hluboce vnořenými objekty.
+Komplexní datové typy jsou stále běžné a představují výzvu pro inženýry dat. Analýza vnořeného schématu a polí může zahrnovat časově náročné a složité dotazy SQL. Kromě toho může být obtížné přejmenovat nebo přetypovat datový typ vnořené sloupce. Při práci s hluboce vnořenými objekty můžete také narazit na problémy s výkonem.
 
-Technici dat potřebují porozumět tomu, jak efektivně zpracovávat komplexní datové typy a snadno dostupné všem.
-
-V následujícím příkladu se synapse Spark používá ke čtení a transformaci objektů do ploché struktury prostřednictvím datových rámců. Synapse SQL Server bez serveru se používá k dotazování takových objektů přímo a vrácení těchto výsledků jako běžné tabulky.
+Technici dat potřebují porozumět tomu, jak efektivně zpracovávat komplexní datové typy a snadno dostupné všem. V následujícím příkladu použijete Spark ve službě Azure synapse Analytics ke čtení a transformaci objektů do ploché struktury prostřednictvím datových rámců. Model SQL bez serveru v Azure synapse Analytics použijete k dotazování těchto objektů přímo a vrátíte tyto výsledky jako běžnou tabulku.
 
 ## <a name="what-are-arrays-and-nested-structures"></a>Co jsou pole a vnořené struktury?
 
-Následující objekt pochází z [přehledu aplikace](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). V tomto objektu jsou vnořené struktury a pole obsahující vnořené struktury.
+Následující objekt pochází z [Application Insights](../azure-monitor/app/app-insights-overview.md). V tomto objektu jsou vnořené struktury a pole obsahující vnořené struktury.
 
 ```json
 {
@@ -72,22 +70,24 @@ Následující objekt pochází z [přehledu aplikace](https://docs.microsoft.co
 ### <a name="schema-example-of-arrays-and-nested-structures"></a>Příklad schématu polí a vnořených struktur
 Při tisku schématu datového rámce objektu (s názvem **DF**) pomocí příkazu se `df.printschema` zobrazí následující reprezentace:
 
-* Žlutá barva představuje vnořenou strukturu
-* Zelená barva představuje pole se dvěma elementy.
+* Žlutá reprezentuje vnořené struktury.
+* Zelená představuje pole se dvěma prvky.
 
-[![Původ schématu](./media/how-to-complex-schema/schema-origin.png)](./media/how-to-complex-schema/schema-origin.png#lightbox)
+[![Kód se žlutým a zeleným zvýrazněním, který ukazuje původ schématu](./media/how-to-complex-schema/schema-origin.png)](./media/how-to-complex-schema/schema-origin.png#lightbox)
 
-**_rid**, **_ts**a **_etag** byly přidány do systému, protože dokument byl zařazen do Azure Cosmos DB transakčního úložiště.
+`_rid`, `_ts` a byly `_etag` přidány do systému, protože dokument byl přijat do transakčního úložiště Azure Cosmos DB.
 
-Výše uvedený datový rámec se počítá pro 5 sloupců a 1 řádek. Po transformaci bude mít datový rámec s obdobu 13 sloupců a 2 řádky ve formátu tabulky.
+Předchozí datový rámec se počítá jenom z 5 sloupců a 1 řádek. Po transformaci bude mít datový rámec s obdobu 13 sloupců a 2 řádky ve formátu tabulky.
 
-## <a name="flatten-nested-structures-and-explode-arrays-with-apache-spark"></a>Sloučit vnořené struktury a rozbalit pole pomocí Apache Spark
+## <a name="flatten-nested-structures-and-explode-arrays"></a>Shrnout vnořené struktury a rozbalit pole
 
-Pomocí synapse Sparku je snadné transformovat vnořené struktury na sloupce a prvky pole na více řádků. K implementaci lze použít následující kroky.
+Pomocí Sparku ve službě Azure synapse Analytics je možné snadno transformovat vnořené struktury na sloupce a prvky pole na více řádků. K implementaci použijte následující postup.
 
-[![Kroky pro transformace Sparku](./media/how-to-complex-schema/spark-transform-steps.png)](./media/how-to-complex-schema/spark-transform-steps.png#lightbox)
+[![Vývojový diagram znázorňující kroky pro transformace Spark](./media/how-to-complex-schema/spark-transform-steps.png)](./media/how-to-complex-schema/spark-transform-steps.png#lightbox)
 
-**Krok 1**: definujeme funkci pro sloučení vnořeného schématu. Tato funkce se dá použít bez změny. Vytvořte v [PySpark poznámkovém bloku](quickstart-apache-spark-notebook.md) buňku s následující funkcí:
+### <a name="define-a-function-to-flatten-the-nested-schema"></a>Definovat funkci pro sloučení vnořeného schématu
+
+Tuto funkci můžete použít beze změny. Vytvořte v [PySpark poznámkovém bloku](quickstart-apache-spark-notebook.md) buňku s následující funkcí:
 
 ```python
 from pyspark.sql.functions import col
@@ -120,7 +120,9 @@ def flatten_df(nested_df):
     return nested_df.select(columns)
 ```
 
-**Krok 2**: použití funkce pro sloučení vnořeného schématu datového rámce (**DF**) do nového datového rámce `df_flat` :
+### <a name="use-the-function-to-flatten-the-nested-schema"></a>Použití funkce pro sloučení vnořeného schématu
+
+V tomto kroku sloučíte vnořené schéma datového rámce (**DF**) do nového datového rámce ( `df_flat` ):
 
 ```python
 from pyspark.sql.types import StringType, StructField, StructType
@@ -130,7 +132,9 @@ display(df_flat.limit(10))
 
 Funkce Display by měla vracet 10 sloupců a 1 řádek. Pole a jeho vnořené prvky jsou stále k dispozici.
 
-**Krok 3**: transformace pole `context_custom_dimensions` v datovém rámečku `df_flat` do nového datového rámce `df_flat_explode` . V následujícím kódu definujeme, který sloupec vybrat:
+### <a name="transform-the-array"></a>Transformovat pole
+
+Zde můžete transformovat pole, `context_custom_dimensions` v datovém rámečku na `df_flat` nový datový rámec `df_flat_explode` . V následujícím kódu můžete také definovat, který sloupec vybrat:
 
 ```python
 from pyspark.sql.functions import explode
@@ -144,7 +148,9 @@ display(df_flat_explode.limit(10))
 
 Funkce Display by měla vracet 10 sloupců a 2 řádky. Dalším krokem je sloučení vnořených schémat pomocí funkce definované v kroku 1.
 
-**Krok 4**: použití funkce pro sloučení vnořeného schématu datového rámce `df_flat_explode` do nového datového rámce `df_flat_explode_flat` :
+### <a name="use-the-function-to-flatten-the-nested-schema"></a>Použití funkce pro sloučení vnořeného schématu
+
+Nakonec použijete funkci pro sloučení vnořeného schématu datového rámce `df_flat_explode` do nového datového rámce `df_flat_explode_flat` :
 ```python
 df_flat_explode_flat = flatten_df(df_flat_explode)
 display(df_flat_explode_flat.limit(10))
@@ -154,26 +160,23 @@ Funkce Display by měla zobrazit 13 sloupců a 2 řádky.
 
 Funkce `printSchema` datového rámce `df_flat_explode_flat` vrátí následující výsledek:
 
-[![Schéma – konečné](./media/how-to-complex-schema/schema-final.png)](./media/how-to-complex-schema/schema-final.png#lightbox)
+[![Kód zobrazující konečné schéma](./media/how-to-complex-schema/schema-final.png)](./media/how-to-complex-schema/schema-final.png#lightbox)
 
-## <a name="read-arrays-and-nested-structures-directly-with-sql-serverless"></a>Čtení polí a vnořených struktur přímo bez SQL serveru
+## <a name="read-arrays-and-nested-structures-directly"></a>Číst pole a vnořené struktury přímo
 
-Dotazování a vytváření zobrazení a tabulek přes tyto objekty je možné bez SQL serveru.
+S modelem SQL bez serveru můžete zadávat dotazy a vytvářet zobrazení a tabulky nad těmito objekty.
 
-V závislosti na tom, jak byla data uložena, by uživatelé měli použít následující taxonomii. Všechno zobrazené v HORNÍm případě je specifické pro váš případ použití:
+V závislosti na tom, jak byla data uložena, by uživatelé měli použít následující taxonomii. Vše zobrazené velkými písmeny je specifické pro váš případ použití:
 
-| ROZMĚR              | FORMAT |
-| -------------------- | --- |
+| Hromadné ingestování | Formát |
+| ------ | ------ |
 | 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet' |' Parquet ' (ADLSg2)|
-| N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; account = Account; Database = DatabaseName; Collection = CollectionName; region = REGIONTOQUERY ', Secret = ' YOURSECRET ' |' CosmosDB ' (odkaz synapse)|
+| N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; account = Account; Database = DatabaseName; Collection = CollectionName; region = REGIONTOQUERY ', Secret = ' YOURSECRET ' |' CosmosDB ' (odkaz Azure synapse)|
 
-
-> [!NOTE]
-> SQL Server bude podporovat propojenou službu pro synapse propojení Azure Cosmos a AAD PassThrough. Tato funkce je v současné době v rámci ověřované verze Preview pro synapse odkaz.
 
 Jednotlivá pole nahraďte následujícím způsobem:
-* ' Vaše HROMADná výše ' = připojovací řetězec zdroje dat, ke kterému se připojujete
-* ' Váš typ výše ' = formát, který používáte pro připojení ke zdroji
+* ' Vaše HROMADně nahoře je připojovací řetězec zdroje dat, ke kterému se připojujete.
+* ' Váš typ výše ' je formát, který používáte pro připojení ke zdroji.
 
 ```sql
 select *
@@ -200,22 +203,22 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
 
 Existují dva různé typy operací:
 
-První typ operace je uveden v následujícím řádku kódu, který definuje sloupec `contextdataeventTime` s názvem, který odkazuje na vnořený element: Context. data. čas události 
-```sql
-contextdataeventTime varchar(50) '$.context.data.eventTime'
-```
+- První typ operace je uveden v následujícím řádku kódu, který definuje sloupec `contextdataeventTime` s názvem, který odkazuje na vnořený element, `Context.Data.eventTime` . 
+  ```sql
+  contextdataeventTime varchar(50) '$.context.data.eventTime'
+  ```
 
-Tento řádek definuje sloupec s názvem contextdataeventTime, který odkazuje na vnořený element: Context>data>čas události
+  Tento řádek definuje sloupec s názvem `contextdataeventTime` , který odkazuje na vnořený element `Context>Data>eventTime` .
 
-Druhý typ operace používá `cross apply` k vytvoření nových řádků pro každý prvek v poli a poté s definuje každý vnořený objekt podobný prvnímu bodu odrážky: 
-```sql
-cross apply openjson (contextcustomdimensions) 
-with ( ProfileType varchar(50) '$.customerInfo.ProfileType', 
-```
+- Druhý typ operace používá `cross apply` k vytvoření nových řádků pro každý prvek v poli. Pak definuje každý vnořený objekt. 
+  ```sql
+  cross apply openjson (contextcustomdimensions) 
+  with ( ProfileType varchar(50) '$.customerInfo.ProfileType', 
+  ```
 
-Pokud má pole 5 prvků se 4 vnořenými strukturami, SQL Server bez serveru vrátí 5 řádků a 4 sloupce. SQL bez serveru se může dotazovat na místě, mapovat pole ve dvou řádcích a zobrazit všechny vnořené struktury do sloupců.
+  Pokud má pole 5 prvků se 4 vnořenými strukturami, model SQL bez serveru vrátí 5 řádků a 4 sloupce. Model SQL bez serveru se může dotazovat na místě, namapovat pole ve dvou řádcích a zobrazit všechny vnořené struktury na sloupce.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Naučte se dotazovat synapse odkaz na Azure Cosmos DB pomocí Sparku.](./synapse-link/how-to-query-analytical-store-spark.md)
-* [Vnořené typy dotazů Parquet](./sql/query-parquet-nested-types.md) 
+* [Dotazování vnořených typů Parquet](./sql/query-parquet-nested-types.md)

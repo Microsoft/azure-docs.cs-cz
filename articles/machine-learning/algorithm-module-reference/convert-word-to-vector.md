@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fad3e4862b0c40c9edd00a5b9d47b245e529396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753894"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536728"
 ---
 # <a name="convert-word-to-vector-module"></a>Převést Word na vektorový modul
 
-Tento článek popisuje, jak použít modul převést Word na vektor v Návrháři Azure Machine Learning (Preview) k provedení těchto úloh:
+Tento článek popisuje, jak použít modul převést Word na vektor v Návrháři Azure Machine Learning k provedení těchto úloh:
 
 - Použijte různé modely Word2Vec (Word2Vec, FastText, šetrnější předvlaked model) na corpus textu, který jste zadali jako vstup.
 - Vygenerujte slovník pomocí vkládání slov.
@@ -27,9 +27,9 @@ Tento modul používá knihovnu Gensim. Další informace o Gensim najdete v jeh
 
 ### <a name="more-about-converting-words-to-vectors"></a>Další informace o konverzi slov na vektory
 
-Obecně řečeno, převod slov na vektory nebo vektorování slov je proces zpracování přirozeného jazyka (NLP). Proces používá jazykové modely nebo techniky k mapování slov na vektorové místo, což znamená, aby každé slovo představovalo vektor reálných čísel. Mezitím to umožňuje, aby slova s podobnými významy měla podobná reprezentace.
+Převod slov na vektory nebo vektorování slov je proces zpracování přirozeného jazyka (NLP). Proces používá jazykové modely k mapování slov do vektorového prostoru. Vektorové místo představuje každé slovo pomocí vektoru reálných čísel. Také umožňuje, aby slova s podobnými významy měla podobná reprezentace.
 
-Vkládání slov lze použít jako počáteční vstup pro NLP úkoly, jako je například klasifikace textu a analýza mínění.
+Používejte vkládání slov jako počáteční vstup pro NLP úkoly, jako je například klasifikace textu a analýza mínění.
 
 V rámci různých technologií pro vkládání slov v tomto modulu jsme implementovali tři široce používané metody. Dva, Word2Vec a FastText, jsou online – školicí modely. Druhý je předem vydaný model šetrnější-wiki-gigaword-100. 
 
@@ -37,9 +37,9 @@ Online – modely školení se vyškole na vstupní data. Předběžně použív
 
 Zde jsou některé informace o metodách:
 
-+ Word2Vec je jedním z nejoblíbenějších techniků pro seznámení s vkládáním slov pomocí omezené sítě neuronové. Teoretická je diskutována v tomto dokumentu, která je k dispozici jako soubor PDF ke stažení: [efektivní odhad reprezentace slov ve vektorovém prostoru, od Mikolov, Tomas, et al](https://arxiv.org/pdf/1301.3781.pdf). Implementace v tomto modulu je založena na [knihovně Gensim pro Word2Vec](https://radimrehurek.com/gensim/models/word2vec.html).
++ Word2Vec je jedním z nejoblíbenějších techniků pro seznámení s vkládáním slov pomocí omezené sítě neuronové. Teorie je popsána v tomto dokumentu, který je k dispozici jako soubor PDF ke stažení: [efektivní odhad reprezentace slov ve vektorovém prostoru](https://arxiv.org/pdf/1301.3781.pdf). Implementace v tomto modulu je založena na [knihovně Gensim pro Word2Vec](https://radimrehurek.com/gensim/models/word2vec.html).
 
-+ V tomto dokumentu je vysvětlena teoretická FastText, která je k dispozici jako soubor PDF ke stažení: [rozšíření vektorů slov pomocí informací o podslovech, Bojanowski, Piotr, et al](https://arxiv.org/pdf/1607.04606.pdf). Implementace v tomto modulu je založena na [knihovně Gensim pro FastText](https://radimrehurek.com/gensim/models/fasttext.html).
++ V tomto dokumentu je vysvětlena teoretická FastText, která je k dispozici jako soubor PDF ke stažení: [rozšíření vektorů slov o informace o podslovech](https://arxiv.org/pdf/1607.04606.pdf). Implementace v tomto modulu je založena na [knihovně Gensim pro FastText](https://radimrehurek.com/gensim/models/fasttext.html).
 
 + Šetrnější předvlaked model je šetrnější-wiki-gigaword-100. Jedná se o kolekci předwikipediich vektorů založených na text corpus, který obsahuje 5 600 000 000 tokeny a 400 000 nev nepodle slov. Je k dispozici stažení PDF: [šetrnější: globální vektory pro reprezentace slov](https://nlp.stanford.edu/pubs/glove.pdf).
 
@@ -55,7 +55,7 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu. Předzpracova
 
     Vzhledem k tomu, že tento modul vytvoří slovník z textu, obsah sloupců se liší, což vede k různým obsahům slovníku. Proto modul přijímá pouze jeden cílový sloupec.
 
-4. V případě **strategie Word2Vec**vyberte z **šetrnější předvlaked English model**, **Gensim Word2Vec**a **Gensim FastText**.
+4. V případě  **strategie Word2Vec**vyberte z **šetrnější předvlaked English model**, **Gensim Word2Vec**a **Gensim FastText**.
 
 5. Pokud je **Word2Vec strategie** **Gensim Word2Vec** nebo **Gensim FastText**:
 
@@ -71,13 +71,13 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu. Předzpracova
 
         Výchozí velikost okna je 5.
 
-    + V poli **počet epochs**určete počet epochs (iterací) na corpus. Toto nastavení odpovídá `iter` parametru v Gensim.
+    + V poli **počet epochs**určete počet epochs (iterací) na corpus. Odpovídá `iter` parametru v Gensim.
 
         Výchozí epocha číslo je 5.
 
 6. V poli **maximální velikost slovníku**určete maximální počet slov v generovaném slovníku.
 
-    Pokud existuje více jedinečných slov, vyřadí se zřídka.
+    Pokud existuje více jedinečných slov, než je maximální velikost, vyřadí se zřídka.
 
     Výchozí velikost slovníku je 10 000.
 
@@ -93,11 +93,11 @@ Modul má jeden výstup:
 
 + **Slovník s vložením**: obsahuje generovaný slovník spolu s vložením každého slova. Jedna dimenze zabírá jeden sloupec.
 
-Následující příklad ukazuje, jak funguje modul Convert Word to Vector. Tento modul se používá s výchozím nastavením pro předzpracovaný Wikipedii datovou sadu SP 500 zadanou v Azure Machine Learning (Preview).
+Následující příklad ukazuje, jak funguje modul Convert Word to Vector. Používá převod Wordu na vektor s výchozím nastavením na předzpracovaný Wikipedii datovou sadu SP 500.
 
 ### <a name="source-dataset"></a>Zdrojová datová sada
 
-Datová sada obsahuje sloupec kategorie společně s celým textem načteným z Wikipedii. Tato tabulka obsahuje jenom několik reprezentativních příkladů.
+Datová sada obsahuje sloupec kategorie společně s celým textem načteným z Wikipedii. Následující tabulka obsahuje několik reprezentativních příkladů.
 
 |Text|
 |----------|
@@ -136,17 +136,17 @@ V této části najdete tipy a odpovědi na nejčastější dotazy.
 
     V tomto převodu Wordu na vektorový modul jsme získali tři různé strategie: dva modely online školení a jeden předem vydaný model. Modely online školení využívají vstupní datovou sadu jako školicí data a generují vektory a slovní vektory během školení. Předem vydaný model je již vyškolený o mnohem větší corpus textu, jako je například Wikipedii nebo text na Twitteru. Předvlakový model je ve skutečnosti kolekcí párů slov/vkládání.  
 
-    Pokud je předem vyškolený model šetrnější zvolen jako strategie dělení slov, shrnuje slovník ze vstupní datové sady a generuje vektor vložení pro každé slovo z předem připraveného modelu. Bez online školení může použití předvýukového modelu ušetřit dobu výuky. Má lepší výkon, zejména v případě, že velikost vstupní datové sady je relativně malá.
+    Předučený model šetrnější shrnuje slovník ze vstupní datové sady a generuje vektor vložení pro každé slovo z předem připraveného modelu. Bez online školení může použití předvýukového modelu ušetřit dobu výuky. Má lepší výkon, zejména v případě, že velikost vstupní datové sady je relativně malá.
 
 + Velikost vložení:
 
-    Obecně platí, že délka vkládání slov je nastavená na několik set (například 100, 200, 300), aby se dosáhlo dobrého výkonu. Důvodem je, že malá velikost vložení znamená malý vektorový prostor, což může způsobit kolizi vkládání slov.  
+    Obecně platí, že délka vkládání slov je nastavena na několik set. Například 100, 200, 300. Velikost malého vložení znamená malý vektorový prostor, což může způsobit kolizi vkládání slov.  
 
-    U předem vydaných modelů je délka vkládání slov pevná. V této implementaci je velikost vkládání šetrnější-wiki-gigaword-100 100.
+    Délka vkládání slov je určena pro předem vypracované modely. V tomto příkladu je velikost vložení šetrnější-wiki-gigaword-100 100.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
 
-Seznam chyb, které jsou specifické pro moduly návrháře (Preview), najdete v tématu [kódy chyb Machine Learning](designer-error-codes.md).
+Seznam chyb, které jsou specifické pro moduly návrháře, najdete v tématu [kódy chyb Machine Learning](designer-error-codes.md).

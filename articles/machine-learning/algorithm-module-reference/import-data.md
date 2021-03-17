@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/13/2020
+ms.openlocfilehash: 69d27c102ca059974da87224e44f0ad7aa103fff
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611811"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592630"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete načíst data do kanálu strojového učení z existujících cloudových datových služeb. 
 
@@ -45,7 +45,7 @@ Jakmile definujete požadovaná data a připojíte se ke zdroji, **[importujte d
 Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a přidat nová data tak, že znovu spustíte [importovaná data](./import-data.md).
 
 > [!WARNING]
-> Pokud je váš pracovní prostor ve virtuální síti, musíte nakonfigurovat úložiště dat tak, aby používalo funkce vizualizace dat daného návrháře. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [izolace sítě během školení & odvození s privátními virtuálními sítěmi](../how-to-enable-virtual-network.md#machine-learning-studio).
+> Pokud je váš pracovní prostor ve virtuální síti, musíte nakonfigurovat úložiště dat tak, aby používalo funkce vizualizace dat daného návrháře. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [použití Azure Machine Learning studia ve službě Azure Virtual Network](../how-to-enable-studio-virtual-network.md).
 
 
 ## <a name="how-to-configure-import-data"></a>Jak konfigurovat importovaná data
@@ -54,15 +54,23 @@ Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a při
 
 1. Výběrem modulu otevřete pravé podokno.
 
-1. Vyberte **zdroj dat**a vyberte typ zdroje dat. Může se jednat o protokol HTTP nebo úložiště dat.
+1. Vyberte **zdroj dat** a vyberte typ zdroje dat. Může se jednat o protokol HTTP nebo úložiště dat.
 
-    Pokud zvolíte úložiště dat, můžete vybrat existující úložiště dat, která jsou už zaregistrovaná v pracovním prostoru Azure Machine Learning, nebo vytvořit nové úložiště dat. Pak definujte cestu k datům, která chcete importovat do úložiště dat. Cestu můžete snadno procházet kliknutím na **Procházet cesta** ![ import-data-cesta.](media/module/import-data-path.png)
+    Pokud zvolíte úložiště dat, můžete vybrat existující úložiště dat, která jsou už zaregistrovaná v pracovním prostoru Azure Machine Learning, nebo vytvořit nové úložiště dat. Pak definujte cestu k datům, která chcete importovat do úložiště dat. Cestu můžete snadno procházet kliknutím na Procházet obrázek **cesta** ![ snímek obrazovky. zobrazí se dialogové okno pro procházení cesty, které otevře dialog výběr cesty.](media/module/import-data-path.png)
+
+    > [!NOTE]
+    > Modul **importu dat** slouží pouze k **tabulkovým** datům.
+    > Pokud chcete importovat více tabelárních datových souborů jednou, je nutné, aby byly splněny následující podmínky, jinak dojde k chybám:
+    > 1. Chcete-li zahrnout všechny datové soubory ve složce, je třeba zadat `folder_name/**` **cestu**.
+    > 2. Všechny datové soubory musí být kódované v kódování Unicode-8.
+    > 3. Všechny datové soubory musí mít stejná čísla sloupců a názvy sloupců.
+    > 4. Výsledkem importu více datových souborů je zřetězení všech řádků z více souborů v daném pořadí.
 
 1. Vyberte schéma verze Preview pro filtrování sloupců, které chcete zahrnout. V možnostech analýzy můžete také definovat upřesňující nastavení, jako je oddělovač.
 
     ![import-data-Preview](media/module/import-data.png)
 
-1. Zaškrtávací políčko **znovu vygenerovat výstup**určuje, zda se má spustit modul pro opětovné vygenerování výstupu za běhu. 
+1. Zaškrtávací políčko **znovu vygenerovat výstup** určuje, zda se má spustit modul pro opětovné vygenerování výstupu za běhu. 
 
     Ve výchozím nastavení je Nevybraná, což znamená, že pokud byl modul spuštěn se stejnými parametry dřív, systém použije výstup z posledního spuštění k omezení doby běhu. 
 
@@ -79,9 +87,9 @@ Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a při
 
 ## <a name="results"></a>Výsledky
 
-Po dokončení importu klikněte na výstupní datovou sadu a vyberte **vizualizovat** , abyste viděli, jestli se data úspěšně importovala.
+Až se import dokončí, klikněte pravým tlačítkem na výstupní datovou sadu a vyberte **vizualizovat** a zkontrolujte, jestli se data úspěšně importovala.
 
-Pokud chcete data uložit pro opakované použití, místo importu nové sady dat pokaždé, když je kanál spuštěný, vyberte ikonu **zaregistrovat datovou sadu** na kartě **výstupy** na pravém panelu modulu. Vyberte název datové sady. Uložená datová sada zachovává data v době uložení, datová sada se při opětovném spuštění kanálu neaktualizuje, i když se datová sada v kanálu změní. To může být užitečné při pořizování snímků dat.
+Pokud chcete data uložit pro opakované použití, místo importu nové sady dat pokaždé, když je kanál spuštěný, vyberte ikonu **zaregistrovat datovou sadu** na kartě **výstupy a protokoly** v pravém panelu modulu. Vyberte název datové sady. Uložená datová sada zachovává data v době uložení, datová sada se při opětovném spuštění kanálu neaktualizuje, i když se datová sada v kanálu změní. To může být užitečné při pořizování snímků dat.
 
 Po importu dat možná budete potřebovat další přípravy na modelování a analýzu:
 

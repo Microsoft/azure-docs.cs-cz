@@ -1,17 +1,17 @@
 ---
 title: Microsoft Threat Modeling Tool verze 07/14/2020 – Azure
-description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
+description: Dokumentace k verzi nástroje pro modelování hrozeb verze 7.3.00714.2.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 741d8c96059d379ae453f7ac1da1d5a02127a680
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 60ab9290dd204b9e65fcc612d1b590785450ebed
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839867"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516862"
 ---
 # <a name="threat-modeling-tool-update-release-73007142---07142020"></a>Threat Modeling Tool vydání aktualizace 7.3.00714.2-07/14/2020
 
@@ -30,7 +30,7 @@ ms.locfileid: "87839867"
 
 ## <a name="documentation-and-feedback"></a>Dokumentace a zpětná vazba
 
-- Dokumentace k Threat Modeling Tool je umístěna na [docs.Microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)a obsahuje informace [o použití nástroje](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
+- Dokumentace k Threat Modeling Tool je umístěna na [docs.Microsoft.com](./threat-modeling-tool.md)a obsahuje informace [o použití nástroje](./threat-modeling-tool-getting-started.md).
 
 ## <a name="next-steps"></a>Další kroky
 

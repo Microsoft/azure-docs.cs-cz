@@ -2,20 +2,20 @@
 title: Koncepty správy pro Azure AD Domain Services | Microsoft Docs
 description: Informace o tom, jak spravovat Azure Active Directory Domain Services spravovanou doménu a chování uživatelských účtů a hesel
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.author: iainfou
-ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 03/10/2021
+ms.author: justinha
+ms.openlocfilehash: 5473ef46751d64fdbbf1d52f39c66f49d707e615
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489669"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631383"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Koncepce správy uživatelských účtů, hesel a správy v Azure Active Directory Domain Services
 
@@ -80,7 +80,7 @@ V Azure služba AD DS jsou dostupné výkony a funkce založené na SKU. SKU vyb
 
 | Název SKU   | Maximální počet objektů | Frekvence zálohování | Maximální počet odchozích vztahů důvěryhodnosti doménové struktury |
 |------------|----------------------|------------------|----|
-| Standard   | Unlimited            | Každých 7 dní     | 0  |
+| Standard   | Unlimited            | Každých 5 dní     | 0  |
 | Enterprise | Unlimited            | Každé 3 dny     | 5  |
 | Premium    | Unlimited            | Každý den            | 10 |
 

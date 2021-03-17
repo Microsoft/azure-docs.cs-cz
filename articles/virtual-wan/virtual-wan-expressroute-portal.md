@@ -1,19 +1,19 @@
 ---
-title: Kurz – vytvoření připojení ExpressRoute pomocí Azure Virtual WAN
+title: 'Kurz: vytvoření připojení ExpressRoute pomocí Azure Virtual WAN'
 description: V tomto kurzu se naučíte používat Azure Virtual WAN k vytváření připojení ExpressRoute k prostředím Azure a místním prostředím.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 080136b8fc25b08a6b96464f0a61115a4bb2f3f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77209422"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426603"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Změna velikosti brány
 > * Inzerování výchozí trasy
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -38,11 +38,11 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 * Vaše virtuální síť nemá žádné brány virtuální sítě. Pokud má vaše virtuální síť bránu (buď VPN, nebo ExpressRoute), musíte odebrat všechny brány. Tato konfigurace vyžaduje, aby se virtuální sítě místo toho připojovaly k virtuální bráně WAN hub.
 
-* Zařiďte rozsah IP adres pro oblast vašeho rozbočovače. Centrum je virtuální síť, kterou vytváří a používá virtuální síť WAN. Rozsah adres, který zadáte pro centrum, se nemůže překrývat s žádnou ze stávajících virtuálních sítí, ke kterým se připojujete. Taky se nesmí překrývat s rozsahy adres, ke kterým se připojujete v místním prostředí. Pokud neznáte rozsahy IP adres nacházející se v konfiguraci vaší místní sítě, zajistěte koordinaci s někým, kdo vám poskytne tyto podrobnosti.
+* Zařiďte rozsah IP adres pro oblast vašeho rozbočovače. Centrum je virtuální síť, kterou vytváří a používá virtuální síť WAN. Rozsah adres, který zadáte pro centrum, se nemůže překrývat s žádnou ze stávajících virtuálních sítí, ke kterým se připojujete. Také se nemůže překrývat s rozsahy adres, ke kterým se připojujete místně. Pokud neznáte rozsahy IP adres nacházející se v konfiguraci vaší místní sítě, zajistěte koordinaci s někým, kdo vám poskytne tyto podrobnosti.
 
-* Okruh ExpressRoute musí být okruh Premium, aby se mohl připojit k bráně centra.
+* Okruh ExpressRoute musí být okruhem Standard nebo Standard, aby se mohl připojit k bráně centra.
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>Vytvoření virtuální sítě WAN
 
@@ -86,7 +86,7 @@ Bránu můžete vytvořit také v existujícím centru úpravou.
 
 ### <a name="to-view-a-gateway"></a>Zobrazení brány
 
-Jakmile vytvoříte bránu ExpressRoute, můžete zobrazit podrobnosti o bráně. Přejděte do centra, vyberte **ExpressRoute**a podívejte se na bránu.
+Jakmile vytvoříte bránu ExpressRoute, můžete zobrazit podrobnosti o bráně. Přejděte do centra, vyberte **ExpressRoute** a podívejte se na bránu.
 
 ![Zobrazit bránu](./media/virtual-wan-expressroute-portal/viewgw.png "Zobrazit bránu")
 
@@ -105,7 +105,7 @@ V této části vytvoříte připojení partnerských vztahů mezi centrem a vir
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Připojení okruhu k bráně centra
 
-Po vytvoření brány můžete k ní připojit [okruh ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . Okruhy ExpressRoute Premium, které jsou v ExpressRoute Global Reach – podporovaná umístění se můžou připojit k virtuální síti WAN ExpressRoute Gateway.
+Po vytvoření brány můžete k ní připojit [okruh ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . ExpressRoute úrovně Standard nebo Premium, které jsou v ExpressRoute Global Reach – podporovaná umístění se můžou připojit k virtuální síti WAN ExpressRoute Gateway a využívat všechny možnosti služby Virtual WAN pro přenos dat (VPN-to-VPN, VPN a ExpressRoute Transit). ExpressRoute úrovně Standard a Premium, které se nacházejí v neGlobal Reachch umístěních, se můžou připojit k prostředkům Azure, ale nebudou moct využívat možnosti služby Virtual WAN pro přenos. ExpressRoute Local se podporuje u rozbočovačů Azure Virtual WAN, pokud je paprskový virtuální sítě připojený k virtuálnímu rozbočovači WAN ve stejné oblasti jako virtuální centrum sítě WAN.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Připojení okruhu k bráně centra
 
@@ -122,7 +122,7 @@ Použijte autorizační klíč a identifikátor URI okruhu, který jste zadali z
 
 1. Na stránce ExpressRoute klikněte na **+ uplatnit autorizační klíč** .
 
-   ![uplatnit](./media/virtual-wan-expressroute-portal/redeem.png "uplatnit")
+   ![Snímek obrazovky zobrazuje ExpressRoute pro virtuální rozbočovač s vybraným autorizačním klíčem uplatnit.](./media/virtual-wan-expressroute-portal/redeem.png "uplatnit")
 2. Na stránce autorizační klíč uplatnit zadejte hodnoty.
 
    ![hodnoty klíčů pro uplatnění](./media/virtual-wan-expressroute-portal/redeemkey2.png "hodnoty klíčů pro uplatnění")
@@ -153,6 +153,15 @@ Pokud chcete, aby virtuální rozbočovač Azure inzeroval výchozí trasu 0.0.0
 
    ![Rozšířit výchozí trasu](./media/virtual-wan-expressroute-portal/defaultroute2.png "Rozšířit výchozí trasu")
 
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Vyčištění prostředků
+
+Když už nepotřebujete prostředky, které jste vytvořili, odstraňte je. Některé virtuální prostředky sítě WAN je potřeba z důvodu závislostí odstranit v určitém pořadí. Dokončení odstranění může trvat přibližně 30 minut.
+
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Virtual WAN najdete v článku [Přehled služby Virtual WAN](virtual-wan-about.md).
+Další informace o virtuální síti WAN najdete tady:
+
+> [!div class="nextstepaction"]
+> * [Nejčastější dotazy ke službě Virtual WAN](virtual-wan-faq.md)

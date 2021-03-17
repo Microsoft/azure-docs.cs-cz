@@ -3,18 +3,21 @@ title: OŘÍZNOUT v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o funkcích systému SQL pro OŘEZÁVÁNÍ v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 073efbd91e637a17693617b16c7787d61e150ad7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 377aa042919f94ec31549f6d672a4dabc6c86859
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78304238"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340732"
 ---
 # <a name="trim-azure-cosmos-db"></a>TRIM (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí řetězcový výraz po odebrání počátečních a koncových prázdných znaků.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -54,4 +57,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

@@ -4,8 +4,7 @@ titleSuffix: Azure App Configuration
 description: V tomto kurzu se naučíte spravovat příznaky funkcí odděleně od vaší aplikace pomocí Azure App Configuration.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -13,14 +12,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0410a1cde12b9ef762d348a286d78b35f7b14bfd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209949"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932298"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Kurz: Správa příznaků funkcí v konfiguraci aplikací Azure
 
@@ -56,6 +55,7 @@ Přidání nového příznaku funkce:
     |---|---|
     | Microsoft. PERCENTAGE | {"Value": 0-100%} |
     | Microsoft. TimeWindow | {"Start": čas UTC, "konec": světový čas UTC} |
+    | Microsoft. Targeting | {"Publikum": objekty blob JSON definující uživatele, skupiny a procenta zavedení. Podívejte se na příklad v rámci `EnabledFor` elementu [tohoto souboru nastavení](https://github.com/microsoft/FeatureManagement-Dotnet/blob/master/examples/FeatureFlagDemo/appsettings.json) }
 
     ![Filtr příznaků funkcí](./media/azure-app-configuration-feature-flag-filter.png)
 

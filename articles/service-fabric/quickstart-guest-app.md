@@ -3,19 +3,19 @@ title: Rychlé nasazení existující aplikace do clusteru
 description: Použijte cluster Azure Service Fabric k hostování existující aplikace Node.js pomocí sady Visual Studio.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9b39e14b18a784274f1bac12072f4fa39de2bb87
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430729"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013594"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostování aplikace Node.js na platformě Azure Service Fabric
 
 Tento rychlý start vám pomůže s nasazením existující aplikace (v tomto příkladu Node.js) do clusteru Service Fabric spuštěného v Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte [nastavené vývojové prostředí](service-fabric-get-started.md). Který zahrnuje instalaci Service Fabric SDK a sady Visual Studio 2019 nebo 2015.
 
@@ -31,7 +31,7 @@ Vytvořte projekt pomocí klávesové zkratky `CTRL`+`SHIFT`+`N`.
 
 V dialogovém okně **Nový projekt** zvolte **Cloud > Aplikace Service Fabric**.
 
-Pojmenujte aplikaci **MyGuestApp** a stiskněte **OK**.
+Pojmenujte aplikaci **MyGuestApp** a stiskněte **vytvořit**.
 
 >[!IMPORTANT]
 >Node.js může snadno překročit omezení 260 znaků pro cesty v systému Windows. Pro samotný projekt použijte krátkou cestu, například **c:\code\svc1**. Volitelně můžete postupovat podle **[těchto pokynů](https://stackoverflow.com/a/41687101/1664231)** a povolit dlouhé cesty k souborům ve Windows 10.
@@ -61,7 +61,7 @@ Projekt aplikace (**MyGuestApp**) neobsahuje přímo kód. Projekt odkazuje na s
 * **Profily publikování**  
 Předvolby nástrojů pro různá prostředí.
 
-* **Skripty**  
+* **Znakové**  
 Skript PowerShellu pro nasazení/upgrade aplikace.
 
 * **Definice aplikace**  
@@ -98,13 +98,13 @@ Vyberte cílový profil **PublishProfiles\Cloud.xml**.
 
 Pokud jste to neudělali dříve, zvolte účet Azure, do kterého se má nasazení provést. Pokud ještě žádný nemáte, [zaregistrujte si bezplatný účet][create-account].
 
-V části **Koncový bod připojení** vyberte cluster Service Fabric, do kterého se má nasazení provést. Pokud ho ještě nemáte, vyberte ** &lt; vytvořit nový cluster... &gt; ** tím se otevře okno webového prohlížeče s Azure Portal. Další informace najdete v tématu popisujícím [vytvoření clusteru na portálu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+V části **Koncový bod připojení** vyberte cluster Service Fabric, do kterého se má nasazení provést. Pokud ho ještě nemáte, vyberte **&lt; vytvořit nový cluster... &gt;** tím se otevře okno webového prohlížeče s Azure Portal. Další informace najdete v tématu popisujícím [vytvoření clusteru na portálu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Při vytváření clusteru Service Fabric nezapomeňte nastavit nastavení **Vlastní koncové body** na hodnotu **80**.
 
 ![Konfigurace typu uzlu Service Fabric s vlastním koncovým bodem][custom-endpoint]
 
-Dokončení vytvoření nového clusteru Service Fabric nějakou dobu trvá. Jakmile se vytvoří, vraťte se do dialogového okna publikovat a vyberte ** &lt; aktualizovat &gt; **. Nový cluster bude uveden v rozevíracím seznamu, vyberte ho.
+Dokončení vytvoření nového clusteru Service Fabric nějakou dobu trvá. Jakmile se vytvoří, vraťte se do dialogového okna publikovat a vyberte **&lt; aktualizovat &gt;**. Nový cluster bude uveden v rozevíracím seznamu, vyberte ho.
 
 Stiskněte **Publikovat** a počkejte na dokončení nasazení.
 

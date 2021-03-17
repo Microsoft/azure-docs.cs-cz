@@ -1,0 +1,75 @@
+### YamlMime:Landing
+title: Dokumentace k nabídce Azure Data Box Gateway – online přenos
+summary: Zařízení Azure Data Box Gateway můžete využít pro přenosy dat v rámci sítě pro účely archivace, zotavení po havárii nebo zpracování dat v cloudovém měřítku.
+metadata:
+  title: Dokumentace k nabídce Azure Data Box Gateway – online přenos
+  description: Dokumentace k nabídce Data Box Gateway pro vysoce výkonné přenosy dat prostřednictvím sítě do Azure
+  services: databox
+  ms.service: databox
+  ms.subservice: gateway
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 10/29/2020
+  ms.openlocfilehash: 5c2d66f93a7dc0cc3cf0535147bacd8d581bd294
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101710035"
+landingContent:
+- title: Informace o nabídce Data Box Gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Data Box Gateway?
+      url: data-box-gateway-overview.md
+  - linkListType: architecture
+    links:
+    - text: Volba možností přenosu dat
+      url: ../storage/common/storage-choose-data-transfer-solution.md
+    - text: Použití síťového nebo offline přenosu
+      url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
+  - linkListType: whats-new
+    links:
+    - text: zpráva k vydání verze 2101 – aktuální
+      url: data-box-gateway-2101-release-notes.md
+- title: Požadavky a omezení
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Požadavky
+      url: data-box-gateway-system-requirements.md
+    - text: Omezení
+      url: data-box-gateway-limits.md
+- title: Nasazení
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Příprava nasazení
+      url: data-box-gateway-deploy-prep.md
+    - text: Zřizování v prostředí Hyper-V
+      url: data-box-gateway-deploy-provision-hyperv.md
+    - text: Připojení, nastavení, aktivace
+      url: data-box-gateway-deploy-connect-setup-activate.md
+    - text: Přenos dat
+      url: data-box-gateway-deploy-add-shares.md
+- title: Spravovat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa sdílených složek
+      url: data-box-gateway-manage-shares.md
+    - text: Správa pomocí PowerShellu
+      url: data-box-gateway-connect-powershell-interface.md
+- title: Odstranit potíže
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Odstranit potíže
+      url: data-box-gateway-troubleshoot.md
+    - text: Monitorování
+      url: data-box-gateway-monitor.md
+    - text: Otevření lístku podpory
+      url: ../databox-online/azure-stack-edge-contact-microsoft-support.md

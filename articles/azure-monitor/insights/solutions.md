@@ -1,17 +1,17 @@
 ---
 title: Monitorování řešení v Azure Monitor | Microsoft Docs
 description: Řešení monitorování v Azure Monitor jsou kolekce pravidel pro logiku, vizualizaci a získávání dat, která poskytují metriky v určité oblasti problému.  Tento článek poskytuje informace o instalaci a používání řešení monitorování.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/07/2020
-ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.date: 10/16/2020
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: a63db154d055675b834e2949a330375633a5761d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135521"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728582"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
 
@@ -19,16 +19,16 @@ Monitorování řešení v Azure Monitor poskytují analýzu provozu konkrétní
 
 ## <a name="use-monitoring-solutions"></a>Použití řešení monitorování
 
-Stránka **Přehled** řešení v Azure monitor zobrazuje dlaždici pro každé řešení nainstalované v pracovním prostoru Log Analytics. Tuto stránku otevřete tak, že v [Azure Portal](https://ms.portal.azure.com)přejdete na **Azure monitor** . V nabídce **přehledy** vyberte **Další** a otevřete **centrum Insights**a pak klikněte na **Log Analytics pracovní prostory**.
+Stránka **Přehled** řešení v Azure monitor zobrazuje dlaždici pro každé řešení nainstalované v pracovním prostoru Log Analytics. Tuto stránku otevřete tak, že v [Azure Portal](https://ms.portal.azure.com)přejdete na **Azure monitor** . V nabídce **přehledy** vyberte **Další** a otevřete **centrum Insights** a pak klikněte na **Log Analytics pracovní prostory**.
 
 [![Centrum Insights](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
 
 Pomocí rozevíracích seznamů v horní části obrazovky změňte pracovní prostor nebo časový rozsah použitý pro dlaždice. Klikněte na dlaždici pro řešení a otevřete jeho zobrazení, které obsahuje podrobnější analýzu shromážděných dat.
 
-[![Přehled](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
+[![Snímek obrazovky se zobrazí v nabídce Azure Portal s vybranými řešeními a řešeními, která se zobrazují v podokně řešení.](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-Řešení monitorování mohou obsahovat více typů prostředků Azure a můžete si Zobrazit všechny prostředky, které jsou součástí řešení, stejně jako všechny ostatní prostředky. Například všechny dotazy protokolu zahrnuté v řešení jsou uvedeny v části **dotazy řešení** v [Průzkumníku dotazů](../log-query/get-started-portal.md#load-queries) . Tyto dotazy můžete použít při provádění analýzy ad hoc pomocí [dotazů protokolu](../log-query/log-query-overview.md).
+Řešení monitorování mohou obsahovat více typů prostředků Azure a můžete si Zobrazit všechny prostředky, které jsou součástí řešení, stejně jako všechny ostatní prostředky. Například všechny dotazy protokolu zahrnuté v řešení jsou uvedeny v části **dotazy řešení** v [Průzkumníku dotazů](../logs/log-analytics-tutorial.md). Tyto dotazy můžete použít při provádění analýzy ad hoc pomocí [dotazů protokolu](../logs/log-query-overview.md).
 
 ## <a name="list-installed-monitoring-solutions"></a>Výpis nainstalovaných řešení monitorování
 
@@ -61,13 +61,28 @@ az monitor log-analytics solution list --subscription MySubscription
 az monitor log-analytics solution list --resource-group MyResourceGroup
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Pomocí rutiny [Get-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution) můžete zobrazit seznam řešení monitorování nainstalovaných ve vašem předplatném. Před spuštěním těchto příkazů postupujte podle požadavků uvedených v části [instalace řešení monitorování](#install-a-monitoring-solution).
+
+```azurepowershell-interactive
+# List all log-analytics solutions in the current subscription.
+Get-AzMonitorLogAnalyticsSolution
+
+# List all log-analytics solutions for a specific subscription
+Get-AzMonitorLogAnalyticsSolution -SubscriptionId 00000000-0000-0000-0000-000000000000
+
+# List all log-analytics solutions in a resource group
+Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
+```
+
 * * *
 
 ## <a name="install-a-monitoring-solution"></a>Instalace řešení monitorování
 
 ### <a name="portal"></a>[Azure Portal](#tab/portal)
 
-Řešení monitorování od Microsoftu a partnerů jsou k dispozici na [Azure Marketplace](https://azuremarketplace.microsoft.com). Dostupná řešení můžete vyhledat a nainstalovat pomocí následujícího postupu. Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](../platform/manage-access.md) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data.
+Řešení monitorování od Microsoftu a partnerů jsou k dispozici na [Azure Marketplace](https://azuremarketplace.microsoft.com). Dostupná řešení můžete vyhledat a nainstalovat pomocí následujícího postupu. Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](../logs/manage-access.md) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data.
 
 1. V [seznamu řešení pro vaše předplatné](#list-installed-monitoring-solutions)klikněte na **Přidat**.
 1. Vyhledejte řešení nebo ho vyhledejte. Řešení můžete také procházet pomocí [tohoto odkazu pro hledání](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions).
@@ -97,7 +112,7 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
 
    Před spuštěním příkazů odkazů CLI musíte [nainstalovat rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) .  Pokud budete chtít, můžete k dokončení kroků v tomto článku použít také Azure Cloud Shell.  Azure Cloud Shell je interaktivní prostředí prostředí, které používáte v prohlížeči.  Spusťte Cloud Shell pomocí jedné z následujících metod:
 
-   - Otevřete Cloud Shell tak, že na[https://shell.azure.com](https://shell.azure.com)
+   - Otevřete Cloud Shell tak, že na [https://shell.azure.com](https://shell.azure.com)
 
    - Vyberte tlačítko **Cloud Shell** na řádku nabídek v pravém horním rohu [Azure Portal](https://portal.azure.com)
 
@@ -109,23 +124,23 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
     az login
     ```
 
-1. Nainstalovat `log-analytics` rozšíření
+1. Nainstalovat `log-analytics-solution` rozšíření
 
-   `log-analytics`Příkaz je experimentálním rozšířením základního rozhraní příkazového řádku Azure. Další informace o odkazech na rozšíření v [používání rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview?).
+   `log-analytics-solution`Příkaz je experimentálním rozšířením základního rozhraní příkazového řádku Azure. Další informace o odkazech na rozšíření v [používání rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview?).
 
    ```azurecli
-   az extension add --name log-analytics
+   az extension add --name log-analytics-solution
    ```
 
    Očekává se následující upozornění.
 
    ```output
-   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   The installed extension `log-analytics-solution` is experimental and not covered by customer support.  Please use with discretion.
    ```
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Instalace řešení pomocí Azure CLI
 
-Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](../platform/manage-access.md) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data.  Pomocí Azure CLI můžete pracovní prostory spravovat pomocí příkazů [AZ monitor Log-Analytics pracovní prostor](/cli/azure/monitor/log-analytics/workspace) .  Pokud chcete propojit pracovní prostor a účet, postupujte podle kroků popsaných v [Log Analytics pracovního prostoru a účtu Automation](#log-analytics-workspace-and-automation-account) .
+Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](../logs/manage-access.md) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data.  Pomocí Azure CLI můžete pracovní prostory spravovat pomocí příkazů [AZ monitor Log-Analytics pracovní prostor](/cli/azure/monitor/log-analytics/workspace) .  Pokud chcete propojit pracovní prostor a účet, postupujte podle kroků popsaných v [Log Analytics pracovního prostoru a účtu Automation](#log-analytics-workspace-and-automation-account) .
 
 K instalaci řešení monitorování použijte [řešení AZ monitor Log-Analytics Create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) .  Parametry v hranatých závorkách jsou volitelné.
 
@@ -151,15 +166,62 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
                                            Microsoft.OperationalInsights/workspaces/{WorkspaceName}"
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+### <a name="prepare-your-environment"></a>Příprava prostředí
+
+1. Instalace prostředí Azure PowerShell
+
+   Před spuštěním příkazů Azure PowerShell odkazů je potřeba [nainstalovat Azure PowerShell](/powershell/azure/install-az-ps) . Pokud budete chtít, můžete k dokončení kroků v tomto článku použít také Azure Cloud Shell. Azure Cloud Shell je interaktivní prostředí prostředí, které používáte v prohlížeči. Spusťte Cloud Shell pomocí jedné z následujících metod:
+
+   - Otevřete Cloud Shell tak, že na [https://shell.azure.com](https://shell.azure.com)
+
+   - Vyberte tlačítko **Cloud Shell** na řádku nabídek v pravém horním rohu [Azure Portal](https://portal.azure.com)
+
+   > [!IMPORTANT]
+   > I když je modul PowerShell **AZ. MonitoringSolutions** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Jakmile bude tento powershellový modul obecně dostupný, stane se součástí budoucích verzí modulu Az PowerShellu a bude ve výchozím nastavení dostupný v rámci Azure Cloud Shellu.
+
+   ```azurepowershell-interactive
+   Install-Module -Name Az.MonitoringSolutions
+   ```
+
+1. Přihlaste se.
+
+   Pokud používáte místní instalaci PowerShellu, přihlaste se pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Proces ověřování dokončíte podle kroků zobrazených v prostředí PowerShell.
+
+   ```azurepowershell
+   Connect-AzAccount
+   ```
+
+### <a name="install-a-solution-with-azure-powershell"></a>Instalace řešení pomocí Azure PowerShell
+
+Když nainstalujete řešení, musíte vybrat [Log Analytics pracovní prostor](../logs/manage-access.md) , kde se bude řešení instalovat a kde se budou shromažďovat jeho data. Pomocí Azure PowerShell můžete pracovní prostory spravovat pomocí rutin v modulu PowerShell [AZ. MonitoringSolutions](/powershell/module/az.monitoringsolutions) . Pokud chcete propojit pracovní prostor a účet, postupujte podle kroků popsaných v [Log Analytics pracovního prostoru a účtu Automation](#log-analytics-workspace-and-automation-account) .
+
+K instalaci řešení monitorování použijte rutinu [New-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution) . Parametry v hranatých závorkách jsou volitelné.
+
+```azurepowershell
+New-AzMonitorLogAnalyticsSolution -ResourceGroupName <string> -Type <string> -Location <string>
+-WorkspaceResourceId <string> [-SubscriptionId <string>] [-Tag <hashtable>]
+[-DefaultProfile <psobject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+[-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <uri>] [-ProxyCredential <pscredential>]
+[-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+Následující příklad vytvoří řešení monitorování Log Analytics pro pracovní prostor Log Analytics.
+
+```azurepowershell-interactive
+$workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName MyResourceGroup -Name WorkspaceName
+New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName MyResourceGroup -Location $workspace.Location -WorkspaceResourceId $workspace.ResourceId
+```
+
 * * *
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics pracovní prostor a účet Automation
 
-Všechna řešení monitorování vyžadují [Log Analytics pracovní prostor](../platform/manage-access.md) k ukládání dat shromažďovaných řešením a k hostování jeho prohledávání a zobrazení protokolů. Některá řešení také vyžadují [účet Automation](../../automation/automation-security-overview.md) , který obsahuje Runbooky a související prostředky. Pracovní prostor a účet musí splňovat následující požadavky.
+Všechna řešení monitorování vyžadují [Log Analytics pracovní prostor](../logs/manage-access.md) k ukládání dat shromažďovaných řešením a k hostování jeho prohledávání a zobrazení protokolů. Některá řešení také vyžadují [účet Automation](../../automation/automation-security-overview.md) , který obsahuje Runbooky a související prostředky. Pracovní prostor a účet musí splňovat následující požadavky.
 
 * Každá instalace řešení může použít jenom jeden Log Analytics pracovní prostor a jeden účet Automation. Řešení můžete nainstalovat samostatně do několika pracovních prostorů.
 * Pokud řešení vyžaduje účet Automation, musí být tento pracovní prostor Log Analytics a účet Automation vzájemně propojený. Log Analytics pracovní prostor může být propojený jenom s jedním účtem Automation a účet Automation se dá propojit jenom s jedním pracovním prostorem Log Analytics.
-* Aby bylo možné je propojit, musí být pracovní prostor Log Analytics a účet Automation ve stejném předplatném, ale mohou být v různých skupinách prostředků nasazených do stejné oblasti. Výjimkou je pracovní prostor v Východní USA oblasti a účet Automation v Východní USA 2.
 
 Když nainstalujete řešení prostřednictvím Azure Marketplace, budete vyzváni k zadání pracovního prostoru a účtu Automation. Propojení mezi nimi je vytvořeno, pokud již nejsou propojena.
 
@@ -188,10 +250,18 @@ az monitor log-analytics solution delete --name
                                          [--yes]
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+K odebrání nainstalovaného řešení pomocí Azure PowerShell použijte rutinu [Remove-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/remove-azmonitorloganalyticssolution) .
+
+```azurepowershell-interactive
+Remove-AzMonitorLogAnalyticsSolution  -ResourceGroupName MyResourceGroup -Name WorkspaceName
+```
+
 * * *
 
 ## <a name="next-steps"></a>Další kroky
 
 * Získejte [seznam řešení monitorování od Microsoftu](../monitor-reference.md).
-* Naučte se [vytvářet dotazy](../log-query/log-query-overview.md) k analýze dat shromažďovaných monitorovacími řešeními.
+* Naučte se [vytvářet dotazy](../logs/log-query-overview.md) k analýze dat shromažďovaných monitorovacími řešeními.
 * Podívejte se [na všechny příkazy rozhraní příkazového řádku Azure pro Azure monitor](/cli/azure/azure-cli-reference-for-monitor).

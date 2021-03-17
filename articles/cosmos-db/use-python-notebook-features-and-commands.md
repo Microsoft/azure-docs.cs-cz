@@ -3,17 +3,19 @@ title: Použití integrovaných příkazů a funkcí poznámkového bloku v Azur
 description: Naučte se používat integrované příkazy a funkce k provádění běžných operací pomocí integrovaných poznámkových bloků Pythonu Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761191"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165820"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Použití integrovaných příkazů a funkcí poznámkového bloku v Azure Cosmos DB poznámkových blocích Pythonu (Preview)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Integrované poznámkové bloky Jupyter v Azure Cosmos DB umožňují analyzovat a vizualizovat data z Azure Portal. Tento článek popisuje, jak pomocí integrovaných příkazů a funkcí poznámkového bloku provádět běžné operace v poznámkových blocích Pythonu.
 
@@ -122,6 +124,8 @@ Total RUs consumed : 25022.58
 ```
 S využitím výstupních statistik můžete vypočítat efektivní RU/s, který se použije k nahrání položek. Například pokud 25 000 ru bylo spotřebováno více než 38 sekund, efektivní RU/s je 25 000 ru/38 sekund = 658 RU/s.
 
+Soubory (například CSV nebo soubory JSON) můžete ukládat do místního pracovního prostoru poznámkového bloku. Pro uložení souborů doporučujeme přidat do svého poznámkového bloku buňku. Tyto soubory můžete zobrazit z integrovaného terminálu v prostředí poznámkového bloku. Uložené soubory můžete zobrazit pomocí příkazu ls. Tyto soubory se ale odeberou, když pracovní prostor resetujete. Proto doporučujeme místo místního pracovního prostoru použít trvalé úložiště, jako je GitHub nebo účet úložiště.
+
 ## <a name="run-another-notebook-in-current-notebook"></a>Spustit jiný Poznámkový blok v aktuálním poznámkovém bloku 
 Pomocí ``%%run`` příkazu Magic můžete v pracovním prostoru spustit jiný Poznámkový blok z aktuálního poznámkového bloku. Použijte syntaxi:
 
@@ -164,10 +168,10 @@ Viz [ukázky sady Python SDK](https://github.com/Azure/azure-sdk-for-python/tree
 > [!IMPORTANT]
 > Integrovaná sada Python SDK je podporována pouze pro účty rozhraní SQL (Core) API. U jiných rozhraní API budete muset [nainstalovat příslušný ovladač Pythonu](#install-a-new-package) , který odpovídá rozhraní API. 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>Vytvoření vlastní instance``cosmos_client``
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Vytvoření vlastní instance ``cosmos_client``
 Pro větší flexibilitu můžete vytvořit vlastní instanci nástroje s ``cosmos_client`` cílem:
 
-- Přizpůsobení [zásad připojení](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview)
+- Přizpůsobení [zásad připojení](/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?preserve-view=true&view=azure-python-preview)
 - Spuštění operací s jiným účtem Azure Cosmos, než v jakém jste
 
 K připojovacímu řetězci a primárnímu klíči aktuálního účtu můžete přistupovat pomocí [proměnných prostředí](#access-the-account-endpoint-and-primary-key-env-variables). 

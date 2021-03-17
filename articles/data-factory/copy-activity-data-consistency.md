@@ -1,33 +1,23 @@
 ---
 title: Ověření konzistence dat v aktivitě kopírování
 description: Přečtěte si, jak povolit ověřování konzistence dat v aktivitě kopírování v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b71657f67c1b9c623d6d48f33b986ac43533cca6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522903"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373012"
 ---
-#  <a name="data-consistency-verification-in-copy-activity-preview"></a>Ověření konzistence dat v aktivitě kopírování (Preview)
+#  <a name="data-consistency-verification-in-copy-activity"></a>Ověření konzistence dat v aktivitě kopírování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Když přesunete data ze zdrojového do cílového úložiště, Azure Data Factory aktivita kopírování poskytuje možnost provést další ověření konzistence dat, aby se zajistilo, že data nebudou úspěšně zkopírována ze zdroje do cílového úložiště, ale také ověřena tak, aby byla konzistentní mezi zdrojovým a cílovým úložištěm. Po nalezení nekonzistentních souborů během přesunu dat můžete buď přerušit aktivitu kopírování, nebo pokračovat ve kopírování zbývajících souborů tak, že povolíte nastavení odolnosti proti chybám, aby se přeskočily nekonzistentní soubory. Vynechané názvy souborů můžete získat povolením nastavení protokol relace v aktivitě kopírování. 
-
-> [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview s následujícími omezeními, na kterých aktivně pracujeme:
->- Když v aktivitě kopírování povolíte nastavení protokolu relace, aby se zaprotokoloval nekonzistentní soubory, jejichž platnost se přeskočila, nemůže být soubor protokolu 100% garantuje se, pokud se aktivita kopírování nezdařila.
->- Protokol relace obsahuje pouze nekonzistentní soubory, kde byly úspěšně zkopírovány soubory, které dosud nebyly zaznamenány.
+Když přesunete data ze zdrojového do cílového úložiště, Azure Data Factory aktivita kopírování poskytuje možnost provést další ověření konzistence dat, aby se zajistilo, že data nebudou úspěšně zkopírována ze zdroje do cílového úložiště, ale také ověřena tak, aby byla konzistentní mezi zdrojovým a cílovým úložištěm. Po nalezení nekonzistentních souborů během přesunu dat můžete buď přerušit aktivitu kopírování, nebo pokračovat ve kopírování zbývajících souborů tak, že povolíte nastavení odolnosti proti chybám, aby se přeskočily nekonzistentní soubory. Vynechané názvy souborů můžete získat povolením nastavení protokol relace v aktivitě kopírování. Další podrobnosti najdete v tématu věnovaném [protokolu relace v aktivitě kopírování](copy-activity-log.md) .
 
 ## <a name="supported-data-stores-and-scenarios"></a>Podporovaná úložiště dat a scénáře
 
@@ -60,13 +50,20 @@ Následující příklad poskytuje definici JSON pro povolení ověření konzis
     "skipErrorFile": { 
         "dataInconsistency": true 
     }, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2_storage", 
-            "type": "LinkedServiceReference" 
-        }, 
-        "path": "/sessionlog/" 
-} 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
+    }
 } 
 ```
 
@@ -74,12 +71,12 @@ Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | -------- 
 validateDataConsistency | Pokud pro tuto vlastnost nastavíte hodnotu true, při kopírování binárních souborů bude aktivita kopírování kontrolovat velikost souboru, lastModifiedDate a kontrolní součet MD5 pro každý binární soubor zkopírovaný ze zdrojového do cílového úložiště, aby se zajistila konzistence dat mezi zdrojovým a cílovým úložištěm. Při kopírování tabulkových dat zkontroluje aktivita kopírování celkový počet řádků po dokončení úlohy, aby se zajistilo, že celkový počet řádků načtených ze zdroje je stejný jako počet řádků zkopírovaných ze zdroje a počet nekompatibilních řádků, které se přeskočily. Mějte na paměti, že pokud tuto možnost povolíte, bude to mít vliv na výkon kopírování.  | Ano<br/>False (výchozí) | No
 dataInconsistency | Jedna z párů klíč-hodnota v kontejneru vlastností skipErrorFile k určení, jestli chcete přeskočit nekonzistentní soubory. <br/> -True: chcete zkopírovat zbytek vynecháním nekonzistentních souborů.<br/> -False: chcete přerušit aktivitu kopírování po nalezení nekonzistentního souboru.<br/>Počítejte s tím, že tato vlastnost je platná, pouze pokud kopírujete binární soubory a nastavíte validateDataConsistency na hodnotu true.  | Ano<br/>False (výchozí) | No
-logStorageSettings | Skupina vlastností, které lze zadat pro povolení protokolu relace pro přeskočení souborů. | | No
+logSettings | Skupina vlastností, které lze zadat pro povolení protokolu relace pro přeskočení souborů. | | No
 linkedServiceName | Propojená služba [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) ukládat soubory protokolu relace. | Názvy `AzureBlobStorage` `AzureBlobFS` propojených služeb typu nebo, které odkazují na instanci, kterou používáte k ukládání souborů protokolu. | No
 program | Cesta souborů protokolu. | Zadejte cestu, do které chcete ukládat soubory protokolu. Pokud cestu nezadáte, služba vytvoří kontejner. | No
 
 >[!NOTE]
->- Při kopírování binárních souborů z nebo do objektů BLOB nebo Azure Data Lake Storage Gen2 v Azure využívá ADF k ověřování kontrolního součtu MD5 na úrovni bloku využití [rozhraní Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) a [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers). Pokud se ContentMD5 soubory v objektu blob Azure nebo Azure Data Lake Storage Gen2 jako zdroje dat, ADF provede ověření kontrolního součtu MD5 na úrovni souboru i po přečtení souborů. Po zkopírování souborů do objektu blob Azure nebo Azure Data Lake Storage Gen2 jako cíle dat zapíše ADF ContentMD5 do Azure Blob nebo Azure Data Lake Storage Gen2, které se můžou dál využívat pro ověřování konzistence dat v podřízených aplikacích.
+>- Při kopírování binárních souborů z nebo do objektů BLOB nebo Azure Data Lake Storage Gen2 v Azure využívá ADF k ověřování kontrolního součtu MD5 na úrovni bloku využití [rozhraní Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) a [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers). Pokud se ContentMD5 soubory v objektu blob Azure nebo Azure Data Lake Storage Gen2 jako zdroje dat, ADF provede ověření kontrolního součtu MD5 na úrovni souboru i po přečtení souborů. Po zkopírování souborů do objektu blob Azure nebo Azure Data Lake Storage Gen2 jako cíle dat zapíše ADF ContentMD5 do Azure Blob nebo Azure Data Lake Storage Gen2, které se můžou dál využívat pro ověřování konzistence dat v podřízených aplikacích.
 >- ADF zajišťuje ověřování velikosti souboru při kopírování binárních souborů mezi všemi úložišti úložiště.
 
 ## <a name="monitoring"></a>Monitorování
@@ -95,7 +92,7 @@ Po úplném spuštění aktivity kopírování se můžete podívat na výsledek
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 
@@ -125,7 +122,7 @@ Schéma souboru protokolu je následující:
 Sloupec | Popis 
 -------- | -----------  
 Timestamp | Časové razítko, když ADF přeskočí soubory, které nejsou konzistentní
-Úroveň | Úroveň protokolu této položky. U položky, která zobrazuje přeskočení souboru, bude na úrovni upozornění.
+Level | Úroveň protokolu této položky. U položky, která zobrazuje přeskočení souboru, bude na úrovni upozornění.
 OperationName | Provozní chování aktivity kopírování ADF u každého souboru Pokud chcete určit soubor, který se má přeskočit, bude přeskočena.
 OperationItem | Název souboru, který se má přeskočit.
 Zpráva | Další informace, které znázorňují, proč se soubory přeskočily.
@@ -144,5 +141,3 @@ Další články o aktivitě kopírování najdete v článcích:
 
 - [Přehled aktivit kopírování](copy-activity-overview.md)
 - [Odolnost proti chybám aktivity kopírování](copy-activity-fault-tolerance.md)
-
-

@@ -3,18 +3,21 @@ title: PŘIHLÁŠENÍ Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o Azure Cosmos DB přihlašování funkcí systému SQL.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 84335acbee1e4166e5346f5c5cac6ef8dae11e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02fceb8ac594a8caff8942b8a7cb0c6bcd2a47e3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302062"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339598"
 ---
 # <a name="sign-azure-cosmos-db"></a>SIGN (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí kladné znaménko (+ 1), nula (0) nebo záporné (-1) znaménko zadaného číselného výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -54,4 +57,4 @@ Tato systémová funkce nebude index využívat.
 
 - [Matematické funkce Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

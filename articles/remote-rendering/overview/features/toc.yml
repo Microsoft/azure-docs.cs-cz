@@ -2,8 +2,12 @@
   href: cut-planes.md
 - name: Ladění vykreslování
   href: debug-rendering.md
+- name: Fresnelův efekt
+  href: fresnel-effect.md
 - name: Přepsání hierarchického stavu
   href: override-hierarchical-state.md
+- name: Camera
+  href: camera.md
 - name: Prostor scény
   href: stage-space.md
 - name: Reprojekce pozdní fáze
@@ -16,6 +20,8 @@
   href: color-materials.md
 - name: Vykreslování obrysů
   href: outlines.md
+- name: Vykreslování prostředí
+  href: shell-effect.md
 - name: Jednostranné vykreslování
   href: single-sided-rendering.md
 - name: Prostorové dotazy

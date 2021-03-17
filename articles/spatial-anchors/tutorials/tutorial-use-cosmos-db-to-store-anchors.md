@@ -1,19 +1,19 @@
 ---
 title: 'Kurz: sdílení kotev pomocí Azure Cosmos DB'
 description: V tomto kurzu se dozvíte, jak sdílet identifikátory prostorových kotev Azure v zařízeních s Androidem/iOS v Unity pomocí back-endové služby a Azure Cosmos DB.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8ff431c27dd53e82f9003b658c82ceb3efb5d320
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: ff888cd98cc79f3e2d508b01f092102eaa038c86
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810016"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494756"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Kurz: sdílení prostorových kotev Azure napříč relacemi a zařízeními pomocí back-endu Azure Cosmos DB
 
@@ -33,13 +33,13 @@ Zkopírujte si `Connection String` ho, protože ho budete potřebovat.
 
 ## <a name="make-minor-changes-to-the-sharingservice-files"></a>Udělejte drobné změny v souborech SharingService.
 
-V **Průzkumník řešení**otevřete `SharingService\Startup.cs` .
+V **Průzkumník řešení** otevřete `SharingService\Startup.cs` .
 
 Vyhledejte `#define INMEMORY_DEMO` v horní části souboru a odkomentujte tento řádek. Uložte soubor.
 
-V **Průzkumník řešení**otevřete `SharingService\appsettings.json` .
+V **Průzkumník řešení** otevřete `SharingService\appsettings.json` .
 
-Vyhledejte `StorageConnectionString` vlastnost a nastavte ji jako `Connection String` hodnotu, která je stejná jako hodnota, kterou jste zkopírovali v [kroku vytvoření databázového účtu](#create-a-database-account). Soubor uložte.
+Vyhledejte `StorageConnectionString` vlastnost a nastavte ji jako `Connection String` hodnotu, která je stejná jako hodnota, kterou jste zkopírovali v [kroku vytvoření databázového účtu](#create-a-database-account). Uložte soubor.
 
 Službu sdílení můžete znovu publikovat a spustit ukázkovou aplikaci.
 

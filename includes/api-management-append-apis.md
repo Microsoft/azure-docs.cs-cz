@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67175523"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183810"
 ---
 ## <a name="append-other-apis"></a>Připojení dalších rozhraní API
 

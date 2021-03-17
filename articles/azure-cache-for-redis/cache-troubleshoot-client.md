@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008963"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Řešení potíží se službou Azure Cache for Redis na straně klienta
@@ -30,7 +30,7 @@ Tlak paměti na klientském počítači vede ke všem druhům problémů s výko
 Rozpoznání zatížení paměti klienta:
 
 - Monitorujte využití paměti na počítači a ujistěte se, že nepřekračuje dostupnou paměť.
-- Monitoruje `Page Faults/Sec` čítač výkonu klienta. Při běžném provozu má většina systémů chyby stránky. Špičky chyb stránkování, které odpovídají časovým limitům požadavků, mohou označovat tlak na paměť.
+- Monitoruje `Page Faults/Sec` čítač výkonu klienta. Při běžném provozu má většina systémů chyby stránky. Špičky chyb stránkování odpovídající vypršením časových limitů požadavků můžou značit zatížení paměti.
 
 Vysoký tlak v paměti klienta může být omezen několika způsoby:
 

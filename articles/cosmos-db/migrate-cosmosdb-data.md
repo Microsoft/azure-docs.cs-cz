@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263540"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018067"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB může uchovávat terabajty dat. Můžete provést rozsáhlou migraci dat a přesunout svou produkční úlohu do služby Azure Cosmos DB. Tento článek popisuje výzvy spojené s přesunem velkých objemů dat do služby Azure Cosmos DB a představuje nástroj, který pomáhá tyto výzvy řešit a migruje data do služby Azure Cosmos DB. V této případové studii zákazník použil rozhraní SQL API služby Cosmos DB.  
 
@@ -28,7 +29,7 @@ Azure Cosmos DB strategie migrace se aktuálně liší podle volby rozhraní API
 
 Stávající nástroje pro migraci dat na Azure Cosmos DB mají určitá omezení, která se budou obzvláště vymezit velkými škálami:
 
- * **Omezené možnosti horizontálního**navýšení kapacity: aby bylo možné migrovat terabajty dat do Azure Cosmos DB co nejrychleji a efektivně spotřebovat celou zřízenou propustnost, klienti migrace by měli mít možnost horizontálního navýšení kapacity navýšit na neomezenou dobu.  
+ * **Omezené možnosti horizontálního** navýšení kapacity: aby bylo možné migrovat terabajty dat do Azure Cosmos DB co nejrychleji a efektivně spotřebovat celou zřízenou propustnost, klienti migrace by měli mít možnost horizontálního navýšení kapacity navýšit na neomezenou dobu.  
 
 * **Nedostatek sledování průběhu a vracení se změnami**: je důležité sledovat průběh migrace a vracet se změnami při migraci velkých datových sad. V opačném případě všechny chyby, ke kterým dojde během migrace, zastaví migraci a vy budete muset proces začít od začátku. Nepovedlo se vám neproduktivní restartování celého procesu migrace, až 99% z něj už je dokončený.  
 
@@ -38,11 +39,11 @@ Mnohé z těchto omezení se stanovují pro nástroje, jako je Azure Data Factor
 
 ## <a name="custom-tool-with-bulk-executor-library"></a>Vlastní nástroj s knihovnou hromadných prováděcích modulů 
 
-Výzvy popsané v předchozí části se dají vyřešit pomocí vlastního nástroje, který je možné snadno škálovat napříč několika instancemi a je odolný vůči přechodným chybám. Navíc může vlastní nástroj pozastavit a obnovit migraci v různých kontrolních bodech. Azure Cosmos DB již poskytuje [knihovnu hromadného prováděcího modulu](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) , která zahrnuje některé z těchto funkcí. Například knihovna hromadného prováděcího modulu již má funkce pro zpracování přechodných chyb a může škálovat vlákna v jednom uzlu, aby se spotřeboval přibližně 500 K ru na uzel. Knihovna hromadného prováděcího modulu také rozdělí zdrojovou datovou sadu do mikrodávkování, které se provozují nezávisle jako forma kontrolního bodu.  
+Výzvy popsané v předchozí části se dají vyřešit pomocí vlastního nástroje, který je možné snadno škálovat napříč několika instancemi a je odolný vůči přechodným chybám. Navíc může vlastní nástroj pozastavit a obnovit migraci v různých kontrolních bodech. Azure Cosmos DB již poskytuje [knihovnu hromadného prováděcího modulu](./bulk-executor-overview.md) , která zahrnuje některé z těchto funkcí. Například knihovna hromadného prováděcího modulu již má funkce pro zpracování přechodných chyb a může škálovat vlákna v jednom uzlu, aby se spotřeboval přibližně 500 K ru na uzel. Knihovna hromadného prováděcího modulu také rozdělí zdrojovou datovou sadu do mikrodávkování, které se provozují nezávisle jako forma kontrolního bodu.  
 
 Vlastní nástroj používá knihovnu hromadného prováděcího modulu a podporuje horizontální navýšení kapacity mezi více klienty a sledování chyb během procesu příjmu. Aby bylo možné použít tento nástroj, zdrojová data by měla být rozdělená do samostatných souborů v Azure Data Lake Storage (ADLS), aby různé procesy migrace mohly každý soubor vybírat a ingestovat do Azure Cosmos DB. Vlastní nástroj využívá samostatnou kolekci, která ukládá metadata o průběhu migrace pro každý jednotlivý zdrojový soubor v ADLS a sleduje případné chyby, které jsou k nim přidruženy.  
 
-Následující obrázek popisuje proces migrace pomocí tohoto vlastního nástroje. Nástroj je spuštěný v sadě virtuálních počítačů a každý virtuální počítač se dotazuje kolekce sledování v Azure Cosmos DB, aby získal zapůjčení na jednom ze zdrojových datových oddílů. Až to uděláte, zdrojový oddíl dat přečte nástroj a ingestuje se do Azure Cosmos DB pomocí knihovny hromadného prováděcího modulu. V dalším kroku se kolekce sledování aktualizuje, aby se zaznamenal průběh přijímání dat a případné chyby. Po zpracování datového oddílu se nástroj pokusí zadat dotaz na další dostupný zdrojový oddíl. I nadále zpracovává další zdrojový oddíl, dokud nebudou všechna data migrována. Zdrojový kód pro nástroj je k dispozici [zde](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion).  
+Následující obrázek popisuje proces migrace pomocí tohoto vlastního nástroje. Nástroj je spuštěný v sadě virtuálních počítačů a každý virtuální počítač se dotazuje kolekce sledování v Azure Cosmos DB, aby získal zapůjčení na jednom ze zdrojových datových oddílů. Až to uděláte, zdrojový oddíl dat přečte nástroj a ingestuje se do Azure Cosmos DB pomocí knihovny hromadného prováděcího modulu. V dalším kroku se kolekce sledování aktualizuje, aby se zaznamenal průběh přijímání dat a případné chyby. Po zpracování datového oddílu se nástroj pokusí zadat dotaz na další dostupný zdrojový oddíl. I nadále zpracovává další zdrojový oddíl, dokud nebudou všechna data migrována. Zdrojový kód pro nástroj je k dispozici v úložišti [Azure Cosmos DB hromadných přijímání](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) .  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Nastavení nástroje pro migraci" border="false":::
@@ -142,14 +143,8 @@ Po dokončení požadovaných součástí můžete migrovat data pomocí násled
 
 Po dokončení migrace můžete ověřit, že je počet dokumentů v Azure Cosmos DB stejný jako počet dokumentů ve zdrojové databázi. V tomto příkladu je celková velikost v Azure Cosmos DB zapnula na 65 terabajty. Po migraci je možné indexování selektivně zapnout a ru se dá snížit na úroveň požadovanou operacemi úloh.
 
-## <a name="contact-the-azure-cosmos-db-team"></a>Kontaktovat tým Azure Cosmos DB
-I když můžete postupovat podle tohoto průvodce k úspěšné migraci velkých datových sad do Azure Cosmos DB pro velké objemy migrace se doporučuje získat od Azure Cosmos DBho produktového týmu, abyste ověřili modelování dat a obecnou kontrolu architektury. V závislosti na datové sadě a úloze může produktový tým také navrhovat další optimalizace výkonu a nákladů, které by vám mohly platit. Chcete-li kontaktovat tým Azure Cosmos DB pro pomoc s migrací ve velkém rozsahu, můžete otevřít lístek podpory pod typem problému "Obecné poradenství" a "velké (TB +) migrace", jak je uvedeno níže.
-
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Téma podpory migrace":::
-
-
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace získáte vyzkoušením ukázkových aplikací, které využívají knihovnu hromadných prováděcích modulů v jazycích [.NET](bulk-executor-dot-net.md) a [Java](bulk-executor-java.md). 
 * Knihovna hromadného prováděcího modulu je integrovaná do konektoru Cosmos DB Spark. Další informace najdete v článku [Azure Cosmos DB Spark Connector](spark-connector.md) .  
-* Obraťte se na Azure Cosmos DB produktového týmu otevřením lístku podpory v části problémový typ problému "Obecné poradenství" a "velké (TB +) migrace" pro další nápovědu k migracím ve velkém měřítku. 
+* Obraťte se na Azure Cosmos DB produktového týmu otevřením lístku podpory v části problémový typ problému "Obecné poradenství" a "velké (TB +) migrace" pro další nápovědu k migracím ve velkém měřítku.

@@ -4,10 +4,10 @@ description: Začínáme s Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85117858"
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
@@ -123,7 +123,7 @@ Možnost stažení respektuje všechny filtry, které jste použili na řídicí
 
 Další informace o službě Advisor najdete v těchto tématech:
 
-- [Úvod do Azure Advisor](advisor-overview.md)
+- [Seznámení s Azure Advisorem](advisor-overview.md)
 - [Doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md)
 - [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
 - [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)

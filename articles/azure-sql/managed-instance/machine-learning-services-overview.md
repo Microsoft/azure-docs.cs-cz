@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: garyericson
 ms.author: garye
-ms.reviewer: carlrab, davidph
+ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: ad25a9a62757e1e031ce8b93a44e6f2ada4d9964
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c805bacbd4a2219fb79168ad6426efd8b0a390df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689503"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324512"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services ve spravované instanci Azure SQL (Preview)
 
@@ -44,7 +44,7 @@ Pomocí Machine Learning Services s podporou R/Pythonu ve službě Azure SQL Man
 
 - **Nasaďte modely a skripty do produkčního prostředí v uložených procedurách** – skripty a školené modely je možné provozovat jednoduše pouhým vložením v uložených procedurách T-SQL. Aplikace, které se připojují ke spravované instanci Azure SQL, můžou využívat výhod předpovědi a Intelligence v těchto modelech pouhým voláním uložené procedury. K zprovoznění modelů pro rychlé hodnocení ve vysoce souběžných scénářích bodování v reálném čase můžete také použít nativní funkci PREDIKTIVNÍch T-SQL.
 
-Základní distribuce Pythonu a R jsou součástí Machine Learning Services. Kromě balíčků Microsoft pro [revoscalepy](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-revoscalepy) a [microsoftml](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-microsoftml) pro Python a [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler), [microsoftml](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml), [OLAP](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-olapr)a [sqlrutils](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-sqlrutils) pro R můžete nainstalovat a používat Open Source balíčky a architektury, jako jsou PyTorch, TensorFlow a scikit-učení.
+Základní distribuce Pythonu a R jsou součástí Machine Learning Services. Kromě balíčků Microsoft pro [revoscalepy](/sql/advanced-analytics/python/ref-py-revoscalepy) a [microsoftml](/sql/advanced-analytics/python/ref-py-microsoftml) pro Python a [RevoScaleR](/sql/advanced-analytics/r/ref-r-revoscaler), [microsoftml](/sql/advanced-analytics/r/ref-r-microsoftml), [OLAP](/sql/advanced-analytics/r/ref-r-olapr)a [sqlrutils](/sql/advanced-analytics/r/ref-r-sqlrutils) pro R můžete nainstalovat a používat Open Source balíčky a architektury, jako jsou PyTorch, TensorFlow a scikit-učení.
 
 <a name="signup"></a>
 
@@ -54,21 +54,29 @@ Tato omezená verze Public Preview podléhá [podmínkám Azure Preview](https:/
 
 Pokud se zajímáte o připojení k programu verze Preview a přijmout tyto podmínky, můžete požádat o registraci vytvořením lístku podpory Azure na adrese [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) . 
 
-1. Vyberte následující možnosti:
+1. Na stránce **vytvořit lístek podpory** klikněte na **vytvořit incident**.
+
+1. Na stránce **pomoc a podpora** klikněte na **Nová žádost o podporu** a vytvořte novou lístek.
+
+1. Zadejte následující možnosti:
    - Typ problému – **technický**
    - Předplatné – *Vyberte své předplatné* .
-   - **Spravovaná Instance SQL Database** služby
+   - Služba – **spravovaná instance SQL**
+   - Prostředek – *Výběr spravované instance*
    - Shrnutí – *Zadejte stručný popis vaší žádosti* .
    - Typ problému – **Machine Learning Services pro spravovanou instanci SQL (Preview)**
    - Problémový podtyp – **jiný problém nebo "How to" (otázky** )
 
 1. Klikněte na **Další: řešení**.
 
-1. Přečtěte si informace o verzi Preview a klikněte na tlačítko **Podrobnosti**.
+1. Přečtěte si informace o verzi Preview a potom klikněte na **Další: podrobnosti**.
 
-1. Do pole **Popis**zadejte konkrétní požadavky vaší žádosti, včetně názvu logického serveru, oblasti a ID předplatného, které chcete zaregistrovat ve verzi Preview. Podle potřeby zadejte další podrobnosti.
+1. Na této stránce:
+   - U otázky, **kterou se pokoušíte zaregistrovat ve verzi Preview**, vyberte **Ano**. 
+   - Jako **Popis** zadejte konkrétní požadavek, včetně názvu logického serveru, oblasti a ID předplatného, které chcete zaregistrovat ve verzi Preview. Podle potřeby zadejte další podrobnosti.
+   - Vyberte preferovanou metodu kontaktu. 
 
-1. Až skončíte, klikněte na **Další: Zkontrolujte + vytvořit**a pak klikněte na **vytvořit**.
+1. Až skončíte, klikněte na **Další: Zkontrolujte + vytvořit** a pak klikněte na **vytvořit**.
 
 Po registraci do programu vás Microsoft připojí k verzi Public Preview a povolí službu Machine Learning Services pro vaši stávající nebo novou databázi.
 
@@ -77,6 +85,6 @@ Ve verzi Public Preview se služba Machine Learning Services ve službě SQL Man
 ## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na [klíčové rozdíly od SQL Server Machine Learning Services](machine-learning-services-differences.md).
-- Informace o použití Pythonu v Machine Learning Services najdete v tématu [spuštění skriptů Pythonu](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15).
-- Informace o použití R v Machine Learning Services najdete v tématu [spuštění skriptů r](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15).
-- Další informace o strojovém učení na jiných platformách SQL najdete v [dokumentaci ke službě SQL Machine Learning](https://docs.microsoft.com/sql/machine-learning/).
+- Informace o použití Pythonu v Machine Learning Services najdete v tématu [spuštění skriptů Pythonu](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15).
+- Informace o použití R v Machine Learning Services najdete v tématu [spuštění skriptů r](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15).
+- Další informace o strojovém učení na jiných platformách SQL najdete v [dokumentaci ke službě SQL Machine Learning](/sql/machine-learning/).

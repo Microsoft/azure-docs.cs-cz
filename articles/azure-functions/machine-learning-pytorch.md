@@ -5,13 +5,13 @@ author: gvashishtha
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
-ms.custom: devx-track-python
-ms.openlocfilehash: ebedb7f205553f91e38e3976a02b0912cbee1fb0
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-azurepowershell
+ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852425"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422837"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Kurz: nasazení předem připraveného modelu klasifikace imagí pro Azure Functions s využitím PyTorch
 
@@ -23,7 +23,7 @@ V tomto článku se naučíte, jak pomocí Pythonu, PyTorch a Azure Functions na
 > * Sestavte rozhraní HTTP API bez serveru pro klasifikaci obrázku jako jednu z 1000 [tříd](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)ImageNet.
 > * Využívání rozhraní API z webové aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Python 3.7.4 nebo novější](https://www.python.org/downloads/release/python-374/). (Pomocí Azure Functions se ověřují taky Python 3.8. x a Python 3.6. x.)
@@ -109,13 +109,13 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     > [!TIP]
     > Vzhledem k tomu, že projekt funkce je svázán s konkrétním modulem runtime, všechny funkce v projektu musí být zapsány stejným jazykem.
 
-1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a `--template` argument určuje Trigger funkce. `func new`Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfigurační soubor s názvem *function.jsv*.
+1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a `--template` argument určuje Trigger funkce. `func new` Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfigurační soubor s názvem *function.jsv*.
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    Tento příkaz vytvoří složku, která odpovídá názvu funkce, *klasifikovat*. V této složce jsou dva soubory: * \_ \_ init \_ \_ . py*, který obsahuje kód funkce a *function.jsv*, které popisují Trigger funkce a její vstupní a výstupní vazby. Podrobnosti o obsahu těchto souborů najdete v tématu [prohlédnutí obsahu souboru](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents) v rychlém startu Pythonu.
+    Tento příkaz vytvoří složku, která odpovídá názvu funkce, *klasifikovat*. V této složce jsou dva soubory: *\_ \_ init \_ \_ . py* , který obsahuje kód funkce a *function.jsv* , které popisují Trigger funkce a její vstupní a výstupní vazby. Podrobnosti o obsahu těchto souborů najdete v tématu [prohlédnutí obsahu souboru](./create-first-function-cli-python.md#optional-examine-the-file-contents) v rychlém startu Pythonu.
 
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
@@ -172,7 +172,7 @@ Chcete-li upravit `classify` funkci pro klasifikaci obrázku na základě jeho o
     torchvision==0.6.0+cpu
     ```
 
-1. Uložte *requirements.txt*a potom spuštěním následujícího příkazu z *úvodní* složky nainstalujte závislosti.
+1. Uložte *requirements.txt* a potom spuštěním následujícího příkazu z *úvodní* složky nainstalujte závislosti.
 
 
     ```

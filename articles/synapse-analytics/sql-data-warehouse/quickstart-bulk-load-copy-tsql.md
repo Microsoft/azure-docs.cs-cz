@@ -7,20 +7,20 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
-ms.date: 06/18/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: f82bedc6ef638714b2641003e8274c2024a86c2e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 547f697c4f8ffb903006e48e94086433d64225c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213002"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681332"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Rychlý Start: hromadné načtení dat pomocí příkazu COPY
 
-V tomto rychlém startu budete hromadně načítat data do fondu SQL pomocí jednoduchého a flexibilního [příkazu kopírování](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) pro příjem dat s vysokou propustností. Příkaz COPY je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně pružně načíst data poskytnutím funkčnosti:
+V tomto rychlém startu budete hromadně načítat data do vyhrazeného fondu SQL pomocí jednoduchého a flexibilního [příkazu kopírování](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro příjem dat s vysokou propustností. Příkaz COPY je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně pružně načíst data poskytnutím funkčnosti:
 
 - Povolení načtení nižších privilegovaných uživatelů bez nutnosti přísného řízení pro datový sklad
 - Využijte jenom jeden příkaz T-SQL, aniž byste museli vytvářet žádné další databázové objekty.
@@ -34,7 +34,7 @@ V tomto rychlém startu budete hromadně načítat data do fondu SQL pomocí jed
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu se předpokládá, že už máte fond SQL. Pokud se fond SQL nevytvořil, použijte rychlý Start pro [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
+V tomto rychlém startu se předpokládá, že už máte vyhrazený fond SQL. Pokud nevytvoříte vyhrazený fond SQL, použijte rychlý Start pro [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
 
 ## <a name="set-up-the-required-permissions"></a>Nastavte požadovaná oprávnění.
 
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Osvědčené postupy při načítání dat najdete v tématu [osvědčené postupy pro načítání dat](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data).
-- Informace o tom, jak spravovat prostředky pro načtení dat, najdete v tématu věnovaném [izolaci úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql). 
+- Osvědčené postupy při načítání dat najdete v tématu [osvědčené postupy pro načítání dat](./guidance-for-loading-data.md).
+- Informace o tom, jak spravovat prostředky pro načtení dat, najdete v tématu věnovaném [izolaci úloh](./quickstart-configure-workload-isolation-tsql.md).

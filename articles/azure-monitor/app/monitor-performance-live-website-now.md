@@ -3,12 +3,13 @@ title: Monitorování živé webové aplikace v ASP.NET pomocí Azure Applicatio
 description: Monitorování výkonu webu bez opětovného nasazení. Funguje s ASP.NET webovými aplikacemi hostovanými místně nebo na virtuálních počítačích.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 79e14c171adde89c43c5ea82a60db39133157293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310442"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576428"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
@@ -39,14 +40,14 @@ Tady je rekapitulace toho, co každý způsob přináší:
 
 |  | Při sestavení | Za běhu |
 | --- | --- | --- |
-| **Vyžádá & výjimky.** |Ano |Ano |
-| **[Podrobnější výjimky](./asp-net-exceptions.md)** | |Ano |
+| **Vyžádá & výjimky.** |Yes |Yes |
+| **[Podrobnější výjimky](./asp-net-exceptions.md)** | |Yes |
 | **[Diagnostika závislostí](./asp-net-dependencies.md)** |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
-| **[Čítače výkonu systému](./performance-counters.md)** |Ano |Ano |
-| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |Ne |
-| **[Integrace protokolu trasování](./asp-net-trace-logs.md)** |Ano |Ne |
-| **[Zobrazení stránky & uživatelských dat](./javascript.md)** |Ano |Ne |
-| **Nutnost znovu sestavit kód** |Ano | Ne |
+| **[Čítače výkonu systému](./performance-counters.md)** |Yes |Yes |
+| **[Rozhraní API pro vlastní telemetrii][api]** |Yes |No |
+| **[Integrace protokolu trasování](./asp-net-trace-logs.md)** |Yes |No |
+| **[Zobrazení stránky & uživatelských dat](./javascript.md)** |Yes |No |
+| **Nutnost znovu sestavit kód** |Yes | No |
 
 
 
@@ -92,7 +93,7 @@ Tady je několik kroků, pomocí kterých můžete ověřit, že se instalace ú
 
 - Ověřte, že se soubor applicationInsights.config nachází v adresáři cílové aplikace a obsahuje vaše ikey.
 
-- Pokud se domníváte, že chybí data, můžete spustit dotaz v části [Analytics](../log-query/get-started-portal.md) a zobrazit seznam všech cloudových rolí, které aktuálně odesílají telemetrii.
+- Pokud se domníváte, že chybí data, můžete spustit dotaz v části [Analytics](../logs/log-analytics-tutorial.md) a zobrazit seznam všech cloudových rolí, které aktuálně odesílají telemetrii.
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -129,7 +130,7 @@ Oprava web.config aktualizace:
 </dependentAssembly>
 ```
 
-Tento problém sledujeme [tady](https://github.com/Microsoft/ApplicationInsights-Home/issues/301).
+Tento problém sledujeme [tady](https://github.com/MohanGsk/ApplicationInsights-Home).
 
 
 ### <a name="application-diagnostic-messages"></a>Diagnostické zprávy aplikace
@@ -140,7 +141,7 @@ Tento problém sledujeme [tady](https://github.com/Microsoft/ApplicationInsights
   
 ### <a name="detailed-logs"></a>Podrobné protokoly
 
-* Ve výchozím nastavení bude Monitorování stavu výstupem diagnostických protokolů na:`C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Ve výchozím nastavení bude Monitorování stavu výstupem diagnostických protokolů na: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
 * Pro výstup podrobných protokolů upravte konfigurační soubor: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` a přidejte `<add key="TraceLevel" value="All" />` do `appsettings` .
 Pak restartujte monitorování stavu.
@@ -243,7 +244,7 @@ Zjistěte, které aplikace se monitorují:
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`: Název webové aplikace v IIS.
-* `-InstrumentationKey`(Volitelné.) Toto použijte ke změně prostředku, na který se má telemetrie aplikace odeslat.
+* `-InstrumentationKey` (Volitelné.) Toto použijte ke změně prostředku, na který se má telemetrie aplikace odeslat.
 * Tato rutina:
   * Upgrady pojmenované aplikace na verzi sady SDK naposledy stažené v tomto počítači. (Funguje pouze v případě `SdkState==EnabledAfterDeployment`)
   * Pokud jste zadali kód instrumentace, pojmenovaná aplikace se překonfiguruje na odeslání telemetrie do prostředku s tímto klíčem. (Funguje v případě `SdkState != Disabled`)
@@ -265,7 +266,7 @@ Desktopová aplikace, kterou instalujete s webovým serverem IIS. Pomáhá prov�
 
 ### <a name="can-i-close-it-after-it-runs"></a>Můžu ji po spuštění zavřít?
 
-Yes. Poté, co se provedla instrumentaci vybraných webových stránek, můžete ji zavřít.
+Ano. Poté, co se provedla instrumentaci vybraných webových stránek, můžete ji zavřít.
 
 Sama o sobě telemetrii neshromažďuje. Pouze nakonfiguruje webové aplikace a nastaví některá oprávnění.
 
@@ -319,9 +320,9 @@ Pro aplikace již instrumentované v době kompilace:
 
 Zobrazení telemetrických dat:
 
-* [Zkoumání metrik](../platform/metrics-charts.md) pro monitorování výkonu a využití
+* [Zkoumání metrik](../essentials/metrics-charts.md) pro monitorování výkonu a využití
 * [Prohledávání událostí a protokolů][diagnostic] pro diagnostiku problémů
-* [Analýzy](../log-query/log-query-overview.md) pro pokročilejší dotazy
+* [Analýzy](../logs/log-query-overview.md) pro pokročilejší dotazy
 
 Přidání další telemetrie:
 
@@ -339,4 +340,3 @@ Přidání další telemetrie:
 [qna]: ../faq.md
 [roles]: ./resources-roles-access-control.md
 [usage]: ./javascript.md
-

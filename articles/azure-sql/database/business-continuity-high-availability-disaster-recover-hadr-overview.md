@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 7bd991bd709bb4be69325afe967d7e5600a9e1a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982468"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222560"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -67,11 +67,11 @@ Pokud není maximální podporovaná doba uchovávání záloh pro obnovení k u
 |:---------------------------------------------| :-------------- | :----------------|
 | **Automatické převzetí služeb při selhání**                          |     No          |      Yes         |
 | **Převzetí služeb při selhání více databází současně**  |     No          |      Yes         |
-| **Uživatel musí po převzetí služeb při selhání aktualizovat připojovací řetězec.**      |     Yes         |      No          |
-| **Podpora spravované instance SQL**                   |     No          |      Yes         |
+| **Uživatel musí po převzetí služeb při selhání aktualizovat připojovací řetězec**      |     Yes         |      No          |
+| **Podpora SQL Managed Instance**                   |     No          |      Yes         |
 | **Může být ve stejné oblasti jako primární**             |     Yes         |      No          |
 | **Více replik**                            |     Yes         |      No          |
-| **Podporuje čtení i škálování.**                          |     Ano         |      Ano         |
+| **Podporuje škálování čtení**                          |     Yes         |      Yes         |
 
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Obnovení databáze na existujícím serveru
@@ -86,7 +86,7 @@ Při vývoji plánu provozní kontinuity musíte pochopit maximální přijateln
 
 Různé metody obnovení nabízejí různé úrovně bodu RPO a RTO. Můžete zvolit konkrétní metodu obnovení nebo použít kombinaci metod k dosažení úplného obnovení aplikace. Následující tabulka porovnává RPO a RTO jednotlivých možností obnovení. Skupiny automatického převzetí služeb při selhání zjednodušují nasazení a využití geografické replikace a přidávají další možnosti, jak je popsáno v následující tabulce.
 
-| Metoda obnovení | RTO | Cíl bodu obnovení |
+| Metoda obnovení | RTO | RPO |
 | --- | --- | --- |
 | Geografické obnovení ze geograficky replikovaných záloh | 12 h | 1 h |
 | Skupiny automatického převzetí služeb při selhání | 1 h | 5 s |
@@ -141,7 +141,7 @@ Po obnovení s použitím libovolného mechanismu musíte provést následujíc�
 
 - Přesměrujte klienty a klientské aplikace na nový server a obnovenou databázi.
 - Zajistěte, aby se pro uživatele připojovala příslušná pravidla brány firewall na úrovni serveru, aby je bylo možné povolit, aby mohli používat [brány firewall na úrovni databáze](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
-- Zajistěte, aby byla k dismístě příslušná přihlášení a oprávnění na úrovni hlavní databáze (nebo použijte [omezení uživatelů](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
+- Zajistěte, aby byla k dismístě příslušná přihlášení a oprávnění na úrovni hlavní databáze (nebo použijte [omezení uživatelů](/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
 - Podle potřeby nakonfigurujte auditování.
 - Podle potřeby nakonfigurujte výstrahy.
 

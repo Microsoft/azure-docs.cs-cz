@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/29/2020
-ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 02/15/2021
+ms.openlocfilehash: 7dd58a7d4a94b832e52930f8ac6507cdd8f7a20e
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448544"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534817"
 ---
 # <a name="data-flow-script-dfs"></a>Skript toku dat (DFS)
 
@@ -176,13 +176,13 @@ aggregate(groupBy(movie),
 Použijte tento kód ve vašem skriptu toku dat k vytvoření nového odvozeného sloupce ```DWhash``` s názvem, který vytvoří ```sha1``` hodnotu hash se třemi sloupci.
 
 ```
-derive(DWhash = sha1(Name,ProductNumber,Color))
+derive(DWhash = sha1(Name,ProductNumber,Color)) ~> DWHash
 ```
 
 Pomocí tohoto skriptu níže můžete vygenerovat hodnotu hash řádku pomocí všech sloupců, které se nachází ve vašem datovém proudu, aniž byste museli pojmenovat jednotlivé sloupce:
 
 ```
-derive(DWhash = sha1(columns()))
+derive(DWhash = sha1(columns())) ~> DWHash
 ```
 
 ### <a name="string_agg-equivalent"></a>Ekvivalent String_agg
@@ -191,7 +191,7 @@ Tento kód bude fungovat jako funkce T-SQL ```string_agg()``` a bude agregovat �
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
-Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+Aggregate1 derive(string_agg = toString(string_agg)) ~> StringAgg
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Počet aktualizací, upsertuje, vložení, odstranění
@@ -210,6 +210,65 @@ Tento fragment kódu přidá novou agregovanou transformaci do toku dat, který 
 ```
 aggregate(groupBy(mycols = sha2(256,columns())),
     each(match(true()), $$ = first($$))) ~> DistinctRows
+```
+
+### <a name="check-for-nulls-in-all-columns"></a>Kontrolovat hodnoty NULL ve všech sloupcích
+Toto je fragment kódu, který můžete vložit do toku dat a obecně kontrolovat všechny sloupce pro hodnoty NULL. Tato technika využívá posun schématu k prohlédnutí všech sloupců ve všech řádcích a používá podmíněné rozdělení k oddělení řádků s hodnotami NULL z řádků bez hodnot NULL. 
+
+```
+split(contains(array(columns()),isNull(#item)),
+    disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
+```
+
+### <a name="automap-schema-drift-with-a-select"></a>AutoMap schématu se posunem k výběru
+Pokud potřebujete načíst existující schéma databáze z neznámé nebo dynamické sady příchozích sloupců, je nutné namapovat sloupce na pravé straně v transformaci jímky. To je nutné pouze v případě, že načítáte existující tabulku. Přidejte tento fragment kódu před jímku, aby se vytvořila možnost automatického mapování sloupců. Ponechte mapování jímky na automatickou mapu.
+
+```
+select(mapColumn(
+        each(match(true()))
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> automap
+```
+
+### <a name="persist-column-data-types"></a>Zachovat datové typy sloupců
+Přidejte tento skript do definice odvozeného sloupce a uložte názvy sloupců a datové typy z toku dat do trvalého úložiště pomocí jímky.
+
+```
+derive(each(match(type=='string'), $$ = 'string'),
+    each(match(type=='integer'), $$ = 'integer'),
+    each(match(type=='short'), $$ = 'short'),
+    each(match(type=='complex'), $$ = 'complex'),
+    each(match(type=='array'), $$ = 'array'),
+    each(match(type=='float'), $$ = 'float'),
+    each(match(type=='date'), $$ = 'date'),
+    each(match(type=='timestamp'), $$ = 'timestamp'),
+    each(match(type=='boolean'), $$ = 'boolean'),
+    each(match(type=='long'), $$ = 'long'),
+    each(match(type=='double'), $$ = 'double')) ~> DerivedColumn1
+```
+
+### <a name="fill-down"></a>Vyplnit dolů
+Tady je postup implementace společného problému "vyplňování dat" pomocí datových sad, když chcete nahradit hodnoty NULL hodnotou z předchozí hodnoty, která není NULL v sekvenci. Všimněte si, že tato operace může mít negativní dopad na výkon, protože v celé sadě dat musíte vytvořit syntetické okno s hodnotou "fiktivní" kategorie. Kromě toho je nutné řadit podle hodnoty pro vytvoření správné sekvence dat pro vyhledání předchozí hodnoty, která není NULL. Tento fragment kódu níže vytvoří syntetickou kategorii jako "fiktivní" a seřadí je pomocí náhradního klíče. Náhradní klíč můžete odebrat a použít vlastní klíč řazení specifický pro data. Tento fragment kódu předpokládá, že jste už přidali transformaci zdroje s názvem. ```source1```
+
+```
+source1 derive(dummy = 1) ~> DerivedColumn
+DerivedColumn keyGenerate(output(sk as long),
+    startAt: 1L) ~> SurrogateKey
+SurrogateKey window(over(dummy),
+    asc(sk, true),
+    Rating2 = coalesce(Rating, last(Rating, true()))) ~> Window1
+```
+
+### <a name="moving-average"></a>Klouzavý průměr
+Klouzavý průměr lze v datových tocích snadno implementovat pomocí transformačního programu systému Windows. Tento příklad níže vytvoří 15 dní klouzavý průměr cen akcií pro společnost Microsoft.
+
+```
+window(over(stocksymbol),
+    asc(Date, true),
+    startRowOffset: -7L,
+    endRowOffset: 7L,
+    FifteenDayMovingAvg = round(avg(Close),2)) ~> Window1
 ```
 
 ## <a name="next-steps"></a>Další kroky

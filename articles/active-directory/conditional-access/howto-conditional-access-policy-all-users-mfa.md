@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e99556b0a0c5b7559cc03b152a19e78aeb58f6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6e6185c4bde71285fc163cae2af46f64ba052195
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283040"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994753"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Podmíněný přístup: vyžadovat MFA pro všechny uživatele
 
@@ -31,7 +31,7 @@ Pokyny v tomto článku vám pomůžou vaší organizaci vytvořit vyvážené z
 Zásady podmíněného přístupu jsou výkonné nástroje. doporučujeme, abyste z zásad vyloučili následující účty:
 
 * **Nouzový přístup** nebo účty pro **přerušení** , které zabrání uzamknutí účtu na úrovni tenanta. V nepravděpodobném scénáři jsou všichni správci zamčeni z vašeho tenanta, účet pro správu pro nouzový přístup se dá použít k přihlášení k tenantovi a přijímá kroky pro obnovení přístupu.
-   * Další informace najdete v článku [Správa účtů pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md).
+   * Další informace najdete v článku [Správa účtů pro nouzový přístup ve službě Azure AD](../roles/security-emergency-access.md).
 * **Účty služeb** a **instanční objekty**, jako je například účet Azure AD Connect Sync. Účty služeb jsou neinteraktivní účty, které nejsou vázány na konkrétního uživatele. Obvykle jsou používány back-endové služby, které umožňují programový přístup k aplikacím, ale používají se také pro přihlášení k systémům pro účely správy. Účty služby by měly být vyloučené, protože MFA nelze dokončit programově. Podmíněný přístup neblokuje volání prováděná instančními objekty.
    * Pokud má vaše organizace tyto účty používané ve skriptech nebo v kódu, zvažte jejich nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md). Jako dočasné řešení můžete tyto konkrétní účty z základní zásady vyloučit.
 
@@ -44,17 +44,17 @@ Organizace můžou mít k dispozici mnoho cloudových aplikací. Ne všechny tyt
 Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu, která bude vyžadovat, aby všichni uživatelé prováděli službu Multi-Factor Authentication.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup** zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout**vyberte **Všichni uživatelé** .
-   1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
+1. V části **přiřazení** vyberte **Uživatelé a skupiny** .
+   1. V části **Zahrnout** vyberte **Všichni uživatelé** .
+   1. V části **vyloučit** vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **všechny cloudové aplikace**.
-   1. V části **vyloučit**vyberte všechny aplikace, které nevyžadují vícefaktorové ověřování.
+1. V části **cloudové aplikace nebo akce**  >  **Include** vyberte **všechny cloudové aplikace**.
+   1. V části **vyloučit** vyberte všechny aplikace, které nevyžadují vícefaktorové ověřování.
 1. V části **podmínky**  >  **klientské aplikace (Preview)** v části **Vyberte klientské aplikace, na které se bude tato zásada vztahovat, aby** se vybrala všechna výchozí nastavení a vyberte **Hotovo**.
-1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a vyberte **Vybrat**.
+1. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování** a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 
@@ -64,7 +64,7 @@ Organizace se můžou rozhodnout zahrnout známá síťová umístění známá 
 
 V příkladech výše uvedených zásad se může organizace rozhodnout Nevyžadovat vícefaktorové ověřování, pokud přistupuje k cloudové aplikaci ze své podnikové sítě. V takovém případě by mohli do zásad přidat následující konfiguraci:
 
-1. V části **přiřazení**vyberte **Conditions**  >  **umístění**podmínek.
+1. V části **přiřazení** vyberte **Conditions**  >  **umístění** podmínek.
    1. Nakonfigurujte **Ano**.
    1. Uveďte **libovolné umístění**.
    1. Vylučte **všechna důvěryhodná umístění**.
@@ -76,6 +76,6 @@ V příkladech výše uvedených zásad se může organizace rozhodnout Nevyžad
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 
-[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
+[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-insights-reporting.md)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

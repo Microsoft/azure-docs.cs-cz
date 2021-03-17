@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 4e82be0e81e5e8c0182e061a0fba0f880bd45cc6
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116796"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632386"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace v Azure Container Registry
 
@@ -18,10 +18,11 @@ Společnosti, které chtějí místní přítomnost, nebo horkou zálohu, se roz
 
 Geograficky replikovaný registr nabízí tyto výhody:
 
-* V několika oblastech se dá použít jediný název registru, image nebo značky.
-* Přístup k registru v blízkosti sítě z místních nasazení
-* Žádné další poplatky za výchozí provoz, protože se image načítají z místního replikovaného registru ve stejné oblasti jako hostitel kontejneru
+* V několika oblastech se dá použít jeden registr, obrázek a názvy značek.
+* Zvýšení výkonu a spolehlivosti regionálních nasazení s přístupem k registru pro ukončení sítě
+* Snížení nákladů na přenos dat pomocí vrstev imagí z místního, replikovaného registru ve stejné nebo blízké oblasti jako hostitele kontejneru
 * Jedna správa registru mezi různými oblastmi
+* Odolnost registru, pokud dojde k oblastnímu výpadku
 
 > [!NOTE]
 > Pokud potřebujete zachovat kopie imagí kontejneru ve více než jednom registru kontejneru Azure, Azure Container Registry také podporuje [Import obrázků](container-registry-import-images.md). Například v pracovním postupu DevOps můžete importovat image z registru pro vývoj do produkčního registru, aniž byste museli používat příkazy Docker.
@@ -55,9 +56,13 @@ Mezi obvyklé výzvy k více registrům patří:
 
 Pomocí funkce geografické replikace Azure Container Registry jsou tyto výhody realizované:
 
-* Správa jednoho registru ve všech oblastech:`contoso.azurecr.io`
-* Spravujte jednu konfiguraci nasazení imagí, protože všechny oblasti používají stejnou adresu URL obrázku:`contoso.azurecr.io/public/products/web:1.2`
-* Doručovat do jednoho registru, zatímco ACR spravuje geografickou replikaci. Místní [Webhooky](container-registry-webhook.md) můžete nakonfigurovat tak, aby vás upozornily na události v určitých replikách.
+* Správa jednoho registru ve všech oblastech: `contoso.azurecr.io`
+* Spravujte jednu konfiguraci nasazení imagí, protože všechny oblasti používají stejnou adresu URL obrázku: `contoso.azurecr.io/public/products/web:1.2`
+* Doručovat do jednoho registru, zatímco ACR spravuje geografickou replikaci. ACR replikuje jenom jedinečné vrstvy, což snižuje přenos dat napříč oblastmi. 
+* Nakonfigurujte místní [Webhooky](container-registry-webhook.md) , aby vás upozornily na události v konkrétních replikách.
+* Poskytněte vysoce dostupný registr, který je odolný vůči výpadkům v oblasti regionu.
+
+Azure Container Registry taky podporuje [zóny dostupnosti](zone-redundancy.md) pro vytvoření odolného a vysoce dostupného registru kontejnerů Azure v oblasti Azure. Kombinace zón dostupnosti pro redundanci v rámci jedné oblasti a geografická replikace napříč několika oblastmi zvyšuje spolehlivost a výkon registru.
 
 ## <a name="configure-geo-replication"></a>Konfigurace geografické replikace
 
@@ -138,7 +143,7 @@ Pokud chcete zakázat směrování do existující replikace, nejdřív spusťte
 az acr replication list --registry --output table
 
 # Disable routing to replication
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled false
 ```
@@ -146,7 +151,7 @@ az acr replication update update --name westus \
 Postup obnovení směrování do replikace:
 
 ```azurecli
-az acr replication update update --name westus \
+az acr replication update --name westus \
   --registry myregistry --resource-group MyResourceGroup \
   --region-endpoint-enabled true
 ```

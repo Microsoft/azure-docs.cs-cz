@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 70c77caebfd8f9bfd36c7384255cf7b66416a379
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550099"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012029"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Darwinbox
 
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak integrovat Darwinbox s Azure Active Directory (Az
 * Řízení ve službě Azure AD, která má přístup k Darwinbox.
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Darwinbox svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -99,25 +99,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Darwinbox.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Darwinbox**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -131,43 +131,42 @@ Ke konfiguraci jednotného přihlašování na straně **Darwinbox** je potřeba
 
 ### <a name="create-darwinbox-test-user"></a>Vytvořit testovacího uživatele Darwinbox
 
-V této části vytvoříte uživatele s názvem B. Simon v Darwinbox. Pokud chcete přidat uživatele na platformě Darwinbox, pracujte s [týmem podpory Darwinbox](https://darwinbox.com/contact-us.php) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v Darwinbox. Pokud chcete přidat uživatele na platformě Darwinbox, pracujte s [týmem podpory Darwinbox](https://darwinbox.com/contact-us.php) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Darwinbox, měli byste se automaticky přihlásit k Darwinbox, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Darwinbox, měli byste se automaticky přihlásit k Darwinbox, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="test-sso-for-darwinbox-mobile"></a>Testování jednotného přihlašování pro Darwinbox (mobilní zařízení)
 
 1. Otevřete mobilní aplikaci Darwinbox. Klikněte na **zadat adresu URL organizace** , do textového pole zadejte adresu URL vaší organizace a klikněte na tlačítko se šipkou.
 
-    ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    ![Snímek obrazovky, na které se zobrazuje mobilní aplikace "Darwinbox" s vybranou možností "zadat organizaci U R L", a zvýrazní se vzorové tlačítko "šipka".](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. Pokud máte více domén, klikněte na doménu.
 
-    ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![Snímek obrazovky zobrazující obrazovku zvolit vaši doménu s ukázkovou doménou, která je vybrána.](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. Do aplikace Darwinbox zadejte svůj e-mail Azure AD a klikněte na **Další**.
 
-    ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    ![Snímek obrazovky zobrazující obrazovku Přihlásit se zvýrazněným tlačítkem Další](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
-1. Do aplikace Darwinbox zadejte heslo Azure AD a klikněte na **Přihlásit**se.
+1. Do aplikace Darwinbox zadejte heslo Azure AD a klikněte na **Přihlásit** se.
 
-    ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    ![Snímek obrazovky zobrazující obrazovku "zadání hesla" se zvýrazněným tlačítkem Další.](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. Nakonec po úspěšném přihlášení se zobrazí domovská stránka aplikace.
 
     ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile05.jpg)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Darwinbox s Azure AD](https://aad.portal.azure.com/)
-

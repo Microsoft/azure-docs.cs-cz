@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32978257c3e209dc78a29c6e8ae0d1c4ae016a5b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174970"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563984"
 ---
 ## <a name="update-resources"></a>Aktualizace prostředků
 
 Existují určitá omezení, která je možné aktualizovat. Následující položky lze aktualizovat: 
 
 Galerie sdílených imagí:
-- Description
+- Popis
 
 Definice Image:
 - Doporučené vCPU
 - Doporučená paměť
-- Description
+- Popis
 - Datum konce životnosti
 
 Verze Image:
@@ -36,7 +36,7 @@ Verze Image:
 
 Pokud plánujete přidání oblastí repliky, neodstraňujte zdrojovou spravovanou bitovou kopii. Zdrojová image spravovaná při replikaci verze image do dalších oblastí je nutná. 
 
-Pokud chcete aktualizovat popis galerie, použijte [Update-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery).
+Pokud chcete aktualizovat popis galerie, použijte [Update-AzGallery](/powershell/module/az.compute/update-azgallery).
 
 ```azurepowershell-interactive
 Update-AzGallery `
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-Tento příklad ukazuje, jak použít [Update-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) k aktualizaci data ukončení životnosti pro naši definici obrázku.
+Tento příklad ukazuje, jak použít [Update-AzGalleryImageDefinition](/powershell/module/az.compute/update-azgalleryimagedefinition) k aktualizaci data ukončení životnosti pro naši definici obrázku.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-Tento příklad ukazuje, jak použít [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) k vyloučení této verze image z použití jako *posledního* obrázku.
+Tento příklad ukazuje, jak použít [Update-AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) k vyloučení této verze image z použití jako *posledního* obrázku.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -65,6 +65,16 @@ Update-AzGalleryImageVersion `
    -PublishingProfileExcludeFromLatest
 ```
 
+Tento příklad ukazuje, jak použít [Update-AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) k zahrnutí této verze bitové kopie do brány pro *nejnovější* obrázek.
+
+```azurepowershell-interactive
+Update-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name `
+   -GalleryName $gallery.Name `
+   -Name $galleryVersion.Name `
+   -ResourceGroupName $resourceGroup.Name `
+   -PublishingProfileExcludeFromLatest:$false
+```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -93,4 +103,3 @@ Remove-AzGallery `
 
 Remove-AzResourceGroup -Name $resourceGroup
 ```
-

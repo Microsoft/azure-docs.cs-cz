@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 24a0d16a6ff052df4b7a9bcdd078542987b4fd50
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: a9c68bca4d50af734a0a2cd8a91c7e46d9b56ff1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661176"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963211"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>Rychlý Start: vytvoření instance Azure Database Migration Service pomocí šablony ARM
 
@@ -59,7 +59,7 @@ Další šablony služby Azure Database Migration Services najdete v [galerii š
     * **Oblast**: umístění, kam budou prostředky nasazeny.
     * **Název služby**: název nové migrační služby.
     * **Umístění**: umístění skupiny prostředků, ponechte výchozí hodnotu `[resourceGroup().location]` .
-    * **Název virtuální**sítě: název nové virtuální sítě.
+    * **Název virtuální** sítě: název nové virtuální sítě.
     * **Název podsítě**: název nové podsítě přidružené k virtuální síti.
 
 
@@ -109,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [ Kurz: vytvoření a nasazení první šablony ARM](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ Kurz: vytvoření a nasazení první šablony ARM](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Další způsoby nasazení Azure Database Migration Service najdete v následujících tématech: 
 - [Azure Portal](quickstart-create-data-migration-service-portal.md)

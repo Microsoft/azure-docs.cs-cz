@@ -6,20 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/27/2020
-ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/30/2020
+ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192337"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522202"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 <br>
 
 V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor Azure Machine Learning pomocí šablon Azure Resource Manager. Šablona Správce prostředků usnadňuje vytváření prostředků jako jediné koordinované operace. Šablona je dokument JSON, který definuje prostředky, které jsou potřebné pro nasazení. Může také specifikovat parametry nasazení. Parametry slouží k poskytnutí vstupních hodnot při použití šablony.
@@ -30,7 +30,13 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) , nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](/powershell/azure/) , nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+
+* Některé scénáře vyžadují, abyste otevřeli lístek podpory. Například použití pracovního prostoru s povoleným privátním propojením s klíčem spravovaným zákazníkem. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+
+## <a name="limitations"></a>Omezení
+
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="workspace-resource-manager-template"></a>Šablona Správce prostředků pracovního prostoru
 
@@ -62,7 +68,7 @@ Ukázková šablona má dva **požadované** parametry:
 > [!TIP]
 > Zatímco šablona přidružená k tomuto dokumentu vytvoří novou Azure Container Registry, můžete také vytvořit nový pracovní prostor bez vytvoření registru kontejneru. Ten se vytvoří při provedení operace, která vyžaduje Registry kontejneru. Například školení nebo nasazení modelu.
 >
-> Místo vytvoření nové služby můžete také odkazovat na existující registr kontejnerů nebo účet úložiště v šabloně Azure Resource Manager. Používaný registr kontejneru ale musí mít povolený __účet správce__ . Informace o povolení účtu správce najdete v tématu [účet správce](/azure/container-registry/container-registry-authentication#admin-account).
+> Místo vytvoření nové služby můžete také odkazovat na existující registr kontejnerů nebo účet úložiště v šabloně Azure Resource Manager. Když to uděláte, musíte buď [použít spravovanou identitu](how-to-use-managed-identities.md) (Preview), nebo [Povolit účet správce](../container-registry/container-registry-authentication.md#admin-account) pro registr kontejnerů.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -70,7 +76,7 @@ Další informace o šablonách najdete v následujících článcích:
 
 * [Vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 * [Nasazení aplikace pomocí šablon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md)
-* [Typy prostředků Microsoft. MachineLearningServices](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Typy prostředků Microsoft. MachineLearningServices](/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
@@ -120,7 +126,7 @@ New-AzResourceGroupDeployment `
 Ve výchozím nastavení jsou všechny prostředky vytvořené jako součást šablony nové. Můžete ale také využít možnost použít stávající prostředky. Zadáním dalších parametrů do šablony můžete použít stávající prostředky. Pokud třeba chcete použít existující účet úložiště, nastavte hodnotu **storageAccountOption** na **stávající** a v parametru **storageAccountName** zadejte název svého účtu úložiště.
 
 > [!IMPORTANT]
-> Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve výchozím účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů.
+> Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve výchozím účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů. V rámci _výchozího_ účtu úložiště pracovního prostoru nejsou podporovány ani úrovně Premium Storage ani hierarchické obory názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -154,169 +160,63 @@ New-AzResourceGroupDeployment `
 
 Následující příklad šablony ukazuje, jak vytvořit pracovní prostor se třemi nastaveními:
 
-* Povolit nastavení vysoké důvěrnosti pro pracovní prostor
-* Povolení šifrování pro pracovní prostor
-* Použije existující Azure Key Vault k načtení klíčů spravovaných zákazníkem.
+* Povolit nastavení vysoké důvěrnosti pro pracovní prostor. Tím se vytvoří nová instance Cosmos DB.
+* Povolte šifrování pro pracovní prostor.
+* Používá existující Azure Key Vault k načtení klíčů spravovaných zákazníkem. Klíče spravované zákazníkem slouží k vytvoření nové instance Cosmos DB pracovního prostoru.
+
+    [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 > [!IMPORTANT]
 > Po vytvoření pracovního prostoru nemůžete změnit nastavení pro důvěrná data, šifrování, ID trezoru klíčů nebo identifikátory klíčů. Chcete-li tyto hodnoty změnit, je nutné vytvořit nový pracovní prostor s použitím nových hodnot.
 
-Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-enterprise-security.md#encryption-at-rest).
+Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-data-encryption.md#encryption-at-rest).
 
 > [!IMPORTANT]
 > Než použijete tuto šablonu, musí vaše předplatné splňovat tyto požadavky:
->
-> * Aplikace __Azure Machine Learning__ musí být __přispěvatelem__ vašeho předplatného Azure.
 > * Musíte mít existující Azure Key Vault, která obsahuje šifrovací klíč.
-> * V Azure Key Vault musíte mít zásadu přístupu, která uděluje přístup k aplikaci __Azure Cosmos DB__ k __získání__, __zabalení__a __rozbalení__ .
 > * Azure Key Vault musí být ve stejné oblasti, ve které plánujete vytvořit pracovní prostor Azure Machine Learning.
+> * Je nutné zadat ID Azure Key Vault a identifikátor URI šifrovacího klíče.
 
-Pokud __chcete přidat aplikaci Azure Machine Learning jako přispěvatele__, použijte následující příkazy:
+__Chcete-li získat hodnoty__ pro `cmk_keyvault` (ID Key Vault) a `resource_cmk_uri` parametry (identifikátor URI klíče) vyžadované touto šablonou, použijte následující postup:    
 
-1. Přihlaste se k účtu Azure a Získejte ID vašeho předplatného. Toto předplatné musí být stejné, které obsahuje váš pracovní prostor Azure Machine Learning.  
+1. Chcete-li získat ID Key Vault, použijte následující příkaz:  
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az account list --query '[].[name,id]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv   
+    ``` 
 
-    > [!TIP]
-    > Pokud chcete vybrat jiné předplatné, použijte `az account set -s <subscription name or ID>` příkaz a zadejte název nebo ID předplatného, na které chcete přepnout. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzSubscription
-    ```
-
-    > [!TIP]
-    > Pokud chcete vybrat jiné předplatné, použijte `Az-SetContext -SubscriptionId <subscription ID>` příkaz a zadejte název nebo ID předplatného, na které chcete přepnout. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0).
-
-    ---
-
-1. K získání ID objektu aplikace Azure Machine Learning použijte následující příkaz. Hodnota se může lišit pro každé z vašich předplatných Azure:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
-    ```
-
-    ---
-    Tento příkaz vrátí ID objektu, což je identifikátor GUID.
-
-1. Pokud chcete přidat ID objektu jako přispěvatele k vašemu předplatnému, použijte následující příkaz. Nahraďte `<object-ID>` ID objektu instančního objektu. Nahraďte `<subscription-ID>` názvem nebo ID vašeho předplatného Azure:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
-    ```
-
-    ---
-
-1. Pokud chcete vygenerovat klíč v existující Azure Key Vault, použijte jeden z následujících příkazů. Nahraďte `<keyvault-name>` názvem trezoru klíčů. Nahraďte `<key-name>` názvem, který se má použít pro klíč:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
-    ```
+    ```azurepowershell  
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'    
+    ``` 
     --- 
 
-Pokud chcete __do trezoru klíčů přidat zásady přístupu, použijte následující příkazy__:
+    Tento příkaz vrátí hodnotu podobnou `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .  
 
-1. K získání ID objektu aplikace Azure Cosmos DB použijte následující příkaz. Hodnota se může lišit pro každé z vašich předplatných Azure:
+1. Chcete-li získat hodnotu identifikátoru URI pro spravovaný klíč zákazníka, použijte následující příkaz:    
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv  
+    ``` 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
-    ```
-    ---
+    ```azurepowershell  
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>' 
+    ``` 
+    --- 
 
-    Tento příkaz vrátí ID objektu, což je identifikátor GUID. Uložit pro pozdější
+    Tento příkaz vrátí hodnotu podobnou `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` . 
 
-1. Chcete-li nastavit zásadu, použijte následující příkaz. Nahraďte `<keyvault-name>` názvem existující Azure Key Vault. Nahraďte `<object-ID>` identifikátorem GUID z předchozího kroku:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-    
-    ```azurepowershell
-    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
-    ```
-    ---    
-
-__Chcete-li získat hodnoty__ pro `cmk_keyvault` (ID Key Vault) a `resource_cmk_uri` parametry (identifikátor URI klíče) vyžadované touto šablonou, použijte následující postup:
-
-1. Chcete-li získat ID Key Vault, použijte následující příkaz:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault show --name <keyvault-name> --query 'id' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
-    ```
-    ---
-
-    Tento příkaz vrátí hodnotu podobnou `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .
-
-1. Chcete-li získat hodnotu identifikátoru URI pro spravovaný klíč zákazníka, použijte následující příkaz:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
-    ```
-    ---
-
-    Tento příkaz vrátí hodnotu podobnou `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Po vytvoření pracovního prostoru nemůžete změnit nastavení pro důvěrná data, šifrování, ID trezoru klíčů nebo identifikátory klíčů. Chcete-li tyto hodnoty změnit, je nutné vytvořit nový pracovní prostor s použitím nových hodnot.
 
-Po úspěšném dokončení výše uvedených kroků nasaďte šablonu, jako byste to udělali normálně. Pokud chcete povolit použití spravovaných klíčů zákazníka, nastavte následující parametry:
+Pokud chcete povolit použití zákaznických klíčů, nastavte při nasazování šablony následující parametry:
 
 * **Encryption_status** **Povolit**.
 * **cmk_keyvault** na `cmk_keyvault` hodnotu získanou v předchozích krocích.
@@ -351,7 +251,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-Při použití klíče spravovaného zákazníkem Azure Machine Learning vytvoří sekundární skupinu prostředků, která obsahuje instanci Cosmos DB. Další informace najdete v tématu [šifrování v klidovém Cosmos DB](concept-enterprise-security.md#encryption-at-rest).
+Při použití klíče spravovaného zákazníkem Azure Machine Learning vytvoří sekundární skupinu prostředků, která obsahuje instanci Cosmos DB. Další informace najdete v tématu [šifrování v klidovém Cosmos DB](concept-data-encryption.md#encryption-at-rest).
 
 Další konfigurací, kterou můžete pro data poskytnout, je nastavení parametru **confidential_data** na **hodnotu true**. Uděláte to takto:
 
@@ -363,7 +263,7 @@ Další konfigurací, kterou můžete pro data poskytnout, je nastavení paramet
     > [!IMPORTANT]
     > Po vytvoření pracovního prostoru nemůžete změnit nastavení pro důvěrná data, šifrování, ID trezoru klíčů nebo identifikátory klíčů. Chcete-li tyto hodnoty změnit, je nutné vytvořit nový pracovní prostor s použitím nových hodnot.
 
-  Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-enterprise-security.md#encryption-at-rest).
+  Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-data-encryption.md#encryption-at-rest).
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>Nasazení pracovního prostoru za virtuální sítí
 
@@ -380,7 +280,7 @@ Nastavením `vnetOption` hodnoty parametru na buď `new` nebo `existing` můžet
 Pokud vaše přidružené prostředky nejsou za virtuální sítí, můžete nastavit parametr **privateEndpointType** na `AutoAproval` nebo `ManualApproval` pro nasazení pracovního prostoru za soukromým koncovým bodem. To se dá udělat pro nové i existující pracovní prostory. Když aktualizujete existující pracovní prostor, vyplňte parametry šablony informacemi z existujícího pracovního prostoru.
 
 > [!IMPORTANT]
-> Použití privátního odkazu Azure k vytvoření privátního koncového bodu pro Azure Machine Learning pracovní prostor je momentálně ve verzi Public Preview. Tato funkce je k dispozici pouze v oblastech **USA – východ** a **USA – západ 2** . Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není v oblastech Azure Government k dispozici.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -640,7 +540,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Až přijdete na obrazovku __Vybrat šablonu__ , v rozevíracím seznamu vyberte šablonu **201-Machine-Learning-Advanced** .
+1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template). Až přijdete na obrazovku __Vybrat šablonu__ , v rozevíracím seznamu vyberte šablonu **201-Machine-Learning-Advanced** .
 1. Vyberte __možnost vybrat šablonu__ a šablonu použijte. V závislosti na scénáři nasazení zadejte následující požadované informace a všechny další parametry.
 
    * Předplatné: vyberte předplatné Azure, které chcete použít pro tyto prostředky.
@@ -675,7 +575,7 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    Další informace o použití `accessPolicies` části šablony naleznete v tématu [AccessPolicyEntry Object reference](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
+    Další informace o použití `accessPolicies` části šablony naleznete v tématu [AccessPolicyEntry Object reference](/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
 
 * Ověřte, zda prostředek Key Vault již existuje. Pokud tomu tak není, nevytvářejte ho znovu prostřednictvím šablony. Chcete-li například použít existující Key Vault místo vytvoření nové, proveďte následující změny šablony:
 

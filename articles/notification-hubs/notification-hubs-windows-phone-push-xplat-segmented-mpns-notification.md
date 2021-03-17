@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: fd8b1478b6e5112092349eddb5f24d20f6902621
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520251"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88998233"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Kurz: odeslání nabízených oznámení do konkrétních telefonů Windows pomocí Azure Notification Hubs
 
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 > * Posílání označených oznámení
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončete [kurz Zasílání nabízených oznámení aplikacím pro Windows Phone službou Azure Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md). V tomto kurzu aktualizujete mobilní aplikaci, abyste si mohli zaregistrovat kategorie nejnovějších zpráv, které vás zajímají, a dostávat nabízená oznámení jenom k těmto kategoriím.
 

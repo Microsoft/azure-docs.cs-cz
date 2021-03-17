@@ -2,15 +2,15 @@
 title: Konfigurace aplikací ASP.NET
 description: Naučte se konfigurovat aplikaci ASP.NET v Azure App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 67816544e173c19cbc85c5779ffeba92578e00b2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211860"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744157"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Konfigurace aplikace ASP.NET pro Azure App Service
 
@@ -71,7 +71,7 @@ ConfigurationManager.ConnectionStrings["MyConnection"];
 }
 ```
 
-Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v *web.config*, hodnota App Service má přednost před *web.configou * hodnotou. Hodnota místního *web.config* umožňuje místní ladění aplikace, ale hodnota App Service umožňuje spuštění aplikace v produktu s nastavením produkčního prostředí. Připojovací řetězce fungují stejným způsobem. Tímto způsobem můžete zachovat tajné klíče aplikace mimo vaše úložiště kódu a přistupovat k odpovídajícím hodnotám beze změny kódu.
+Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v *web.config* , hodnota App Service má přednost před *web.configou* hodnotou. Hodnota místního *web.config* umožňuje místní ladění aplikace, ale hodnota App Service umožňuje spuštění aplikace v produktu s nastavením produkčního prostředí. Připojovací řetězce fungují stejným způsobem. Tímto způsobem můžete zachovat tajné klíče aplikace mimo vaše úložiště kódu a přistupovat k odpovídajícím hodnotám beze změny kódu.
 
 ## <a name="deploy-multi-project-solutions"></a>Nasazení řešení s více projekty
 
@@ -83,7 +83,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="get-detailed-exceptions-page"></a>Získat podrobné stránky výjimek
 
-Když aplikace ASP.NET generuje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradí obecná chybová zpráva. Chcete-li zobrazit stránku podrobností o výjimce v App Service, otevřete soubor *Web.config* a přidejte `<customErrors mode="Off"/>` prvek pod `<system.web>` element. Například:
+Když aplikace ASP.NET generuje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradí obecná chybová zpráva. Chcete-li zobrazit stránku podrobností o výjimce v App Service, otevřete soubor *Web.config* a přidejte `<customErrors mode="Off"/>` prvek pod `<system.web>` element. Příklad:
 
 ```xml
 <system.web>
@@ -91,11 +91,11 @@ Když aplikace ASP.NET generuje výjimku v ladicím programu sady Visual Studio,
 </system.web>
 ```
 
-Znovu nasaďte aplikaci s aktualizovaným *Web.config*. Teď byste měli vidět stejnou stránku podrobností o výjimce.
+Znovu nasaďte aplikaci s aktualizovaným *Web.config* . Teď byste měli vidět stejnou stránku podrobností o výjimce.
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
-Můžete přidat diagnostické zprávy do kódu aplikace pomocí [System. Diagnostics. Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace). Například: 
+Můžete přidat diagnostické zprávy do kódu aplikace pomocí [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace). Příklad: 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace

@@ -2,17 +2,17 @@
 title: O branách virtuální sítě ExpressRoute – Azure | Microsoft Docs
 description: Přečtěte si informace o branách virtuální sítě pro ExpressRoute. Tento článek obsahuje informace o SKU a typech bran.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: mialdrid
-ms.openlocfilehash: e7779e0638ea61c70758394dc212910ba8f1d7f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 038e018a22af3546f5d3c66f6d8ee3963483cce1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081130"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615053"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>O branách virtuální sítě ExpressRoute
 
@@ -53,7 +53,7 @@ Než vytvoříte bránu ExpressRoute, musíte vytvořit podsíť brány. Podsí�
 
 Při vytváření podsítě brány zadáte počet IP adres, které podsíť obsahuje. IP adresy v podsíti brány jsou přiděleny virtuálním počítačům brány a službám brány. Některé konfigurace vyžadují víc IP adres než jiné. 
 
-Při plánování velikosti podsítě brány si přečtěte dokumentaci ke konfiguraci, kterou plánujete vytvořit. Například konfigurace s ExpressRoute/VPN Gateway vyžaduje větší podsíť brány než většina ostatních konfigurací. Kromě toho můžete chtít zajistit, aby podsíť brány obsahovala dostatek IP adres, aby mohla pojmout možné budoucí další konfigurace. I když můžete vytvořit podsíť brány, která je menší než/29, doporučujeme vytvořit podsíť brány o velikosti/27 nebo větší (/27,/26 atd.), pokud máte dostupný adresní prostor. To bude vyhovovat většině konfigurací.
+Při plánování velikosti podsítě brány si přečtěte dokumentaci ke konfiguraci, kterou plánujete vytvořit. Například konfigurace s ExpressRoute/VPN Gateway vyžaduje větší podsíť brány než většina ostatních konfigurací. Kromě toho můžete chtít zajistit, aby podsíť brány obsahovala dostatek IP adres, aby mohla pojmout možné budoucí další konfigurace. I když můžete vytvořit podsíť brány, která je menší než/29, doporučujeme vytvořit podsíť brány o velikosti/27 nebo větší (/27,/26 atd.), pokud máte dostupný adresní prostor. Pokud vytváříte podsíť s duálním zásobníkem brány, doporučujeme použít také rozsah IPv6/64 nebo vyšší. To bude vyhovovat většině konfigurací.
 
 Následující příklad Správce prostředků PowerShell ukazuje podsíť brány s názvem GatewaySubnet. Můžete vidět, že zápis CIDR určuje/27, což umožňuje dostatek IP adres pro většinu konfigurací, které aktuálně existují.
 
@@ -77,6 +77,11 @@ Redundantní brány v zóně používají pro bránu ExpressRoute konkrétní no
 
 Nové SKU brány podporují také další možnosti nasazení, které nejlépe vyhovují vašim potřebám. Při vytváření brány virtuální sítě pomocí nových SKU brány máte také možnost nasazení brány do konkrétní zóny. Tento postup se označuje jako brána pro oblast. Když nasadíte bránu pro oblast, všechny instance brány se nasadí ve stejné zóně dostupnosti.
 
+> [!IMPORTANT]
+> Pokud máte v úmyslu používat privátní partnerský vztah založený na protokolu IPv6 přes ExpressRoute, ujistěte se, že jste vybrali AZ SKU pro bránu, kterou nasadíte v podsíti brány Dual Stack.
+> 
+>
+
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
 Brána virtuální sítě ExpressRoute je navržená pro výměnu síťových tras a směrování síťového provozu. FastPath je navržená tak, aby vylepšila výkon datových cest mezi vaší místní sítí a virtuální sítí. Pokud je povoleno, FastPath odesílá síťový provoz přímo virtuálním počítačům ve virtuální síti a vynechá bránu.
@@ -86,10 +91,10 @@ Další informace o FastPath, včetně omezení a požadavků, najdete v tématu
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>Rozhraní REST API a rutiny PowerShellu
 Další technické materiály a specifické požadavky na syntaxi při použití rozhraní REST API a rutin PowerShellu pro konfigurace brány virtuální sítě najdete na následujících stránkách:
 
-| **Klasický** | **Resource Manager** |
+| **Standardním** | **Resource Manager** |
 | --- | --- |
-| [PowerShell](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
-| [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
+| [PowerShell](/powershell/module/servicemanagement/azure.service/#azure) |[PowerShell](/powershell/module/az.network#networking) |
+| [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/virtual-network/) |
 
 ## <a name="next-steps"></a>Další kroky
 

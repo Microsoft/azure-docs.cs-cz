@@ -2,17 +2,18 @@
 title: Připojení datového disku k virtuálnímu počítači s Windows v Azure pomocí PowerShellu
 description: Jak připojit nový nebo existující datový disk k virtuálnímu počítači s Windows pomocí PowerShellu s modelem nasazení Správce prostředků.
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: da4f9fd9fd4305029f42dbe63326c8782d22d907
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d5c638a63e4e8dc1a55c07f4bdf713fd36ca6b3d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825442"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550871"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu
 
@@ -20,7 +21,7 @@ V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuá
 
 Nejprve si přečtěte tyto tipy:
 
-* Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Další informace najdete v tématu [velikosti pro virtuální počítače](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Další informace najdete v tématu [velikosti pro virtuální počítače](../sizes.md).
 * Pokud chcete používat prémiové SSD, budete potřebovat [typ virtuálního počítače s podporou úložiště Premium](../sizes-memory.md), jako je třeba virtuální počítač řady DS-Series nebo GS-Series.
 
 Tento článek používá PowerShell v rámci [Azure Cloud Shell](../../cloud-shell/overview.md), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
@@ -117,4 +118,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>Další kroky
 
-Spravované disky můžete nasadit také pomocí šablon. Další informace najdete v tématu [použití Managed disks v šablonách Azure Resource Manager](using-managed-disks-template-deployments.md) nebo v [šabloně pro rychlé](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) zprovoznění pro nasazení více datových disků.
+Spravované disky můžete nasadit také pomocí šablon. Další informace najdete v tématu [použití Managed disks v šablonách Azure Resource Manager](../using-managed-disks-template-deployments.md) nebo v [šabloně pro rychlé](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) zprovoznění pro nasazení více datových disků.

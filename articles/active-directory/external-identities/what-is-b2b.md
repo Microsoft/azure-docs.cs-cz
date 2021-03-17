@@ -5,26 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8bee6a007004253106703ae2c19b940bf3de5d44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926718"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649287"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
 Spolupráce B2B (Business-to-Business) Azure Active Directory (Azure AD) je funkce v rámci externích identit, která umožňuje pozvat uživatele typu Host, aby mohli spolupracovat s vaší organizací. Díky spolupráci B2B můžete bezpečně sdílet aplikace a služby společnosti s uživateli typu host z jakékoli jiné organizace a přitom zachovat kontrolu nad vašimi podnikovými daty. Spolupracujte bezpečně s velkými i malými externími partnery, i když nemají Azure AD ani oddělení IT. Díky jednoduchému postupu založenému na pozvánce a jejím uplatnění můžou partneři, kteří přistupují k vašim firemním prostředkům, používat vlastní přihlašovací údaje. Vývojáři můžou v rozhraní API pro spolupráci B2B v Azure AD přizpůsobit postup pozvání nebo napsat aplikace, jako jsou portály pro samoobslužnou registraci. Informace o licencování a cenách souvisejících s uživateli typu Host najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).  
 
-   > [!IMPORTANT]
-   > **Od 31. března 2021**přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+> [!IMPORTANT]
+> - **Od 4. ledna 2021** je Google [zastaralá podpora přihlašování v nástroji WebView](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Pokud používáte Google Federation nebo samoobslužnou registraci pomocí služby Gmail, měli byste [testovat kompatibilitu vašich obchodních nativních aplikací](google-federation.md#deprecation-of-webview-sign-in-support).
+> - **Od října 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>Spolupráce s partnery s využitím jejich vlastních identit
 
@@ -74,8 +75,8 @@ Správu uživatelů typu host můžete delegovat na vlastníky aplikací, aby do
 
 Přizpůsobte svým externím partnerům způsoby přizpůsobení potřebám vaší organizace.
 
-- Využijte [správu nároků Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) ke konfiguraci zásad, které [spravují přístup pro externí uživatele](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
-- Použijte [rozhraní API pro pozvánky B2B pro spolupráci](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) k přizpůsobení prostředí připojování.
+- Využijte [správu nároků Azure AD](../governance/entitlement-management-overview.md) ke konfiguraci zásad, které [spravují přístup pro externí uživatele](../governance/entitlement-management-external-users.md#how-access-works-for-external-users).
+- Použijte [rozhraní API pro pozvánky B2B pro spolupráci](/graph/api/resources/invitation) k přizpůsobení prostředí připojování.
 
 ## <a name="integrate-with-identity-providers"></a>Integrace s poskytovateli identity
 
@@ -84,7 +85,7 @@ Azure AD podporuje externí zprostředkovatele identity, jako je Facebook, účt
 ![Snímek obrazovky zobrazující stránku zprostředkovatelé identit](media/what-is-b2b/identity-providers.png)
 
 
-## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Vytvoření samoobslužného uživatelského toku pro registraci (Preview)
+## <a name="create-a-self-service-sign-up-user-flow"></a>Vytvoření samoobslužného uživatelského toku pro registraci
 
 Pomocí samoobslužného uživatelského toku registrace můžete vytvořit prostředí pro registraci externích uživatelů, kteří chtějí přistupovat k aplikacím. V rámci toku registrace můžete poskytnout možnosti pro různé poskytovatele identity v sociálních sítích nebo podnikových organizacích a shromažďovat informace o uživateli. Přečtěte si o [samoobslužném přihlášení a způsobu jeho nastavení](self-service-sign-up-overview.md).
 
@@ -95,6 +96,6 @@ Pomocí samoobslužného uživatelského toku registrace můžete vytvořit pros
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Pokyny k licencování spolupráce B2B v Azure AD](licensing-guidance.md)
+- [Externí identity – ceny](external-identities-pricing.md)
 - [Přidání uživatelů typu host na portálu pro spolupráci B2B](add-users-administrator.md)
 - [Vysvětlení postupu při uplatnění pozvánky](redemption-experience.md)

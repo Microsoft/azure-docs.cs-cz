@@ -3,24 +3,23 @@ title: Úvod do Azure Stream Analyticsch funkcí okna
 description: Tento článek popisuje čtyři funkce okna (bubny, skákající, klouzavé, relace), které se používají v úlohách Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/16/2020
+ms.openlocfilehash: feea44741fbc2c81d781f0bba12b280abdb9f68a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075910"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020244"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Úvod do Stream Analyticsch funkcí okna
 
 V rámci scénářů streamování je provádění operací s daty obsaženými v dočasných oknech běžným vzorem. Stream Analytics má nativní podporu pro funkce oken a umožňuje vývojářům vytvářet složité úlohy zpracování streamů s minimálním úsilím.
 
-Existují čtyři druhy dočasná okna, ze kterých můžete vybírat: [**bubny**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**skákající**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [**posuvné**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)a okna [**relace**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) .  Použijte funkce okna v klauzuli [**Group by**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) syntaxe dotazu v úlohách Stream Analytics. Můžete také agregovat události do více oken pomocí [funkce **Windows ()** ](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
+Existuje pět druhů dočasných oken, ze kterých můžete vybírat: [**bubny**](/stream-analytics-query/tumbling-window-azure-stream-analytics), [**skákající**](/stream-analytics-query/hopping-window-azure-stream-analytics), [**klouzavé**](/stream-analytics-query/sliding-window-azure-stream-analytics), [**relační**](/stream-analytics-query/session-window-azure-stream-analytics)a [**snímková**](/stream-analytics-query/snapshot-window-azure-stream-analytics) okna.  Použijte funkce okna v klauzuli [**Group by**](/stream-analytics-query/group-by-azure-stream-analytics) syntaxe dotazu v úlohách Stream Analytics. Můžete také agregovat události do více oken pomocí [funkce **Windows ()**](/stream-analytics-query/windows-azure-stream-analytics).
 
-Na **konci** okna se vrátí výstup všech operací s operacemi [Window](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) . Výstupem okna bude jediná událost založená na použité agregační funkci. Výstupní událost bude mít časové razítko konce okna a všechny funkce okna budou definovány s pevnou délkou. 
+Na **konci** okna se vrátí výstup všech operací s operacemi [Window](/stream-analytics-query/windowing-azure-stream-analytics) . Všimněte si, že při spuštění úlohy Stream Analytics můžete zadat *čas spuštění výstupu úlohy* a systém automaticky načte předchozí události v příchozích datových proudech, aby se v zadaném čase načetl výstup do prvního okna. Například pokud začnete s možností *nyní* , začne ihned generovat data. Výstupem okna bude jediná událost založená na použité agregační funkci. Výstupní událost bude mít časové razítko konce okna a všechny funkce okna budou definovány s pevnou délkou. 
 
 ![Stream Analytics – koncepty funkcí okna](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -30,13 +29,13 @@ Funkce bubnového okna se používají k segmentaci datového proudu do různýc
 ![Okno Stream Analyticsho bubnu](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
 ## <a name="hopping-window"></a>Okno skákající
-Funkce skákajících oken skáčou v čase dopředu o pevně danou dobu. Můžete si je jednoduše představit jako přeskakující okna, která se překrývají, takže události můžou v sadě výsledků dotazu patřit do několika skákajících oken. Chcete-li, aby okno skákající bylo stejné jako okno s bubnem, určete velikost segmentu směrování, který bude stejný jako velikost okna. 
+Funkce skákajících oken skáčou v čase dopředu o pevně danou dobu. Je možné je snadno představit jako Bubnová okna, která se můžou překrývat a vysílat častěji než velikost okna. Události mohou patřit do více než jedné sady výsledků okna skákající. Chcete-li, aby okno skákající bylo stejné jako okno s bubnem, určete velikost segmentu směrování, který bude stejný jako velikost okna. 
 
 ![Stream Analytics okno skákající](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Posuvné okno
 
-Posuvná okna, na rozdíl od bubnu nebo skákající Windows, jsou výstupní události jenom pro body v čase, kdy se obsah okna skutečně změní. Jinými slovy, když událost vstoupí do okna nebo je ukončí. Každé okno má alespoň jednu událost, například v případě skákající Windows, můžou události patřit do více než jednoho posuvního okna.
+Posuvná okna, na rozdíl od bubnu nebo skákající Windows, jsou výstupní události jenom pro body v čase, kdy se obsah okna skutečně změní. Jinými slovy, když událost vstoupí do okna nebo je ukončí. Každé okno má tedy alespoň jednu událost. Podobně jako skákající okna můžou události patřit do více než jednoho posuvního okna.
 
 ![Posuvné okno Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -53,7 +52,7 @@ Při zadání klíče oddílu se události seskupí podle klíče a okno relace 
 
 ## <a name="snapshot-window"></a>Okno snímku
 
-Snapshot Windows seskupuje události, které mají stejné časové razítko. Na rozdíl od jiných typů oken, které vyžadují konkrétní funkci okna (například [SessionWindow ()](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics), můžete použít okno snímku přidáním System. timestamp () do klauzule GROUP by.
+Snapshot Windows seskupuje události, které mají stejné časové razítko. Na rozdíl od jiných typů oken, které vyžadují konkrétní funkci okna (například [SessionWindow ()](/stream-analytics-query/session-window-azure-stream-analytics), můžete použít okno snímku přidáním System. timestamp () do klauzule GROUP by.
 
 ![Stream Analytics okno snímku](media/stream-analytics-window-functions/snapshot.png)
 
@@ -61,6 +60,5 @@ Snapshot Windows seskupuje události, které mají stejné časové razítko. Na
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

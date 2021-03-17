@@ -5,20 +5,22 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Vyhledejte odpovědi na některé běžné otázky týkající se Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 739cfdb4f930d384e180ffd0f3ce2311cd41c70a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e83bed86714e4b92c63f4e7b7eb55df7a2a7eaff
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207994"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548830"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Nejčastější dotazy týkající se Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Tato adresa obsahuje nejčastější dotazy týkající se Azure Dev Spaces.
 
 ## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Jaké verze Kubernetes se podporují pro Azure Dev Spaces?
 
-Azure Dev Spaces podporuje všechny [aktuálně podporované obecné dostupnosti (GA) Kubernetes v AKS][aks-supported-k8s].
+Azure Dev Spaces podporuje [aktuálně podporované verze Kubernetes ve všeobecné dostupnosti (GA) v AKS až 1,18][aks-supported-k8s]. Kubernetes 1,19 a novější na AKS používá kontejner jako modul runtime kontejneru, který nefunguje s Azure Dev Spaces.
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Které oblasti Azure aktuálně poskytují Azure Dev Spaces?
 
@@ -70,9 +72,9 @@ Ano, můžete použít Azure Dev Spaces u clusterů AKS s povolenými [rozsahy I
 
 Ano, v případě, že jsou povolené správné plně kvalifikované názvy domén, můžete použít Azure Dev Spaces v clusterech AKS s [omezeným přenosem dat pro uzly clusteru][aks-restrict-egress-traffic] povolené. Další informace o použití AKS clusterů s omezeným přenosem dat pro uzly clusteru s povoleným Azure Dev Spaces je k dispozici [zde](configure-networking.md#ingress-and-egress-network-traffic-requirements).
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Můžu použít Azure Dev Spaces u clusterů AKS s podporou RBAC?
+## <a name="can-i-use-azure-dev-spaces-on-kubernetes-rbac-enabled-aks-clusters"></a>Můžu použít Azure Dev Spaces v clusterech AKS s podporou RBAC a Kubernetes?
 
-Ano, můžete použít Azure Dev Spaces v clusterech AKS s povolenou RBAC nebo bez ní.
+Ano, můžete použít Azure Dev Spaces v clusterech AKS s povoleným nebo bez Kubernetes řízení přístupu na základě role (Kubernetes RBAC).
 
 ## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Co se stane, když povolím příchozí přenos dat pro projekt v aplikaci Visual Studio?
 

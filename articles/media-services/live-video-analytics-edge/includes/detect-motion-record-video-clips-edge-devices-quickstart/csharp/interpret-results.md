@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 870b5b54c4a5afb39b43063bd00d3cb73e8ee0f9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88682124"
 ---
 Když spustíte graf médií, výsledky z uzlu procesoru snímače pohybu procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně **výstup** Visual Studio Code obsahují `body` oddíl a `applicationProperties` oddíl. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](../../../../../iot-hub/iot-hub-devguide-messages-construct.md).

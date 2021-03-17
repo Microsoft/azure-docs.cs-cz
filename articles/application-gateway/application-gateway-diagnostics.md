@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517871"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065316"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -41,7 +41,7 @@ Zpráva o stavu back-endu odráží výstup Application Gateway sondy stavu do b
 
 V portálu je stav back-end k dispozici automaticky. V existující aplikační bráně vyberte **monitorování**  >  **stavu back-endu**.
 
-Každý člen ve fondu back-end je uveden na této stránce (bez ohledu na to, zda se jedná o síťovou kartu, IP adresu nebo plně kvalifikovaný název domény). Zobrazí se název záložního fondu, port, back-end nastavení HTTP a stav. Platné hodnoty pro stav stavu jsou **v pořádku** **, nejsou v pořádku a**nejsou **známy**.
+Každý člen ve fondu back-end je uveden na této stránce (bez ohledu na to, zda se jedná o síťovou kartu, IP adresu nebo plně kvalifikovaný název domény). Zobrazí se název záložního fondu, port, back-end nastavení HTTP a stav. Platné hodnoty pro stav stavu jsou **v pořádku** **, nejsou v pořádku a** nejsou **známy**.
 
 > [!NOTE]
 > Pokud vidíte stav back-endu **Neznámý**, zajistěte, aby byl přístup k back-endu zablokován pravidlem NSG, uživatelem definovanou trasou (udr) nebo vlastním DNS ve virtuální síti.
@@ -95,7 +95,7 @@ Následující fragment kódu ukazuje příklad odpovědi:
 
 Pomocí různých typů protokolů v Azure můžete spravovat a řešit potíže s aplikačními bránami. Některé z těchto protokolů jsou přístupné z webu Azure Portal. Všechny protokoly se dají extrahovat z úložiště objektů BLOB v Azure a zobrazovat v různých nástrojích, jako jsou [protokoly Azure monitor](../azure-monitor/insights/azure-networking-analytics.md), excelu a Power BI. Další informace o různých typech protokolů najdete v následujícím seznamu:
 
-* **Protokol aktivit**: k zobrazení všech operací odeslaných do vašeho předplatného Azure a jejich stavu můžete použít [protokoly aktivit Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dřív označované jako operační protokoly a protokoly auditu). Položky protokolu aktivit se ve výchozím nastavení shromažďují a můžete si je zobrazit na webu Azure Portal.
+* **Protokol aktivit**: k zobrazení všech operací odeslaných do vašeho předplatného Azure a jejich stavu můžete použít [protokoly aktivit Azure](../azure-resource-manager/management/view-activity-logs.md) (dřív označované jako operační protokoly a protokoly auditu). Položky protokolu aktivit se ve výchozím nastavení shromažďují a můžete si je zobrazit na webu Azure Portal.
 * **Protokol přístupu**: pomocí tohoto protokolu můžete zobrazit vzory přístupu Application Gateway a analyzovat důležité informace. Patří sem IP adresa volajícího, požadovaná adresa URL, latence odpovědi, návratový kód a bajtů. Protokol přístupu se shromáždí každých 60 sekund. Tento protokol obsahuje jeden záznam na instanci Application Gateway. Instance Application Gateway je identifikována vlastností instanceId.
 * **Protokol výkonu**: pomocí tohoto protokolu můžete zobrazit, jak probíhá Application Gateway instance. Tento protokol zachycuje informace o výkonu pro každou instanci, včetně celkového počtu zpracovaných požadavků, propustnosti v bajtech, celkových zpracovaných požadavků, počtu neúspěšných žádostí a stavu back-endu back-endu v pořádku. Protokol výkonu se shromáždí každých 60 sekund. Protokol výkonu je k dispozici pouze pro SKU v1. Pro SKU v2 použijte [metriky](application-gateway-metrics.md) pro data výkonu.
 * **Protokol brány firewall**: pomocí tohoto protokolu můžete zobrazit požadavky, které se protokolují v režimu detekce nebo prevence služby Application Gateway, která je nakonfigurovaná s bránou firewall webových aplikací. Protokoly brány firewall se shromažďují každých 60 sekund. 
@@ -152,7 +152,7 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
 
 ### <a name="activity-log"></a>Protokol aktivit
 
-Azure ve výchozím nastavení generuje protokol aktivit. Protokoly se uchovávají po 90 dnech v úložišti protokolů událostí Azure. Další informace o těchto protokolech najdete v článku [zobrazení událostí a protokolu aktivit](../monitoring-and-diagnostics/insights-debugging-with-events.md) .
+Azure ve výchozím nastavení generuje protokol aktivit. Protokoly se uchovávají po 90 dnech v úložišti protokolů událostí Azure. Další informace o těchto protokolech najdete v článku [zobrazení událostí a protokolu aktivit](../azure-resource-manager/management/view-activity-logs.md) .
 
 ### <a name="access-log"></a>Přístup k protokolu
 
@@ -173,7 +173,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |httpVersion     | Verze protokolu HTTP požadavku.        |
 |receivedBytes     | Velikost přijatého paketu (v bajtech)        |
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
-|timeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
+|timeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že pole Time-Taken obvykle obsahuje čas, kdy se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace s back-end fondy používala protokol TLS/SSL. Platné hodnoty jsou zapnuté a vypnuté.|
 |Hostitel| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
 |originalHost| Název hostitele, se kterým Application Gateway požadavek přijal z klienta.|
@@ -208,7 +208,6 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |---------|---------|
 |instanceId     | Application Gateway instance, která zpracovala požadavek.        |
 |IP adresa klienta     | Původní IP adresa pro požadavek.        |
-|clientPort     | Původní port pro požadavek.       |
 |httpMethod     | Metoda HTTP, kterou požadavek používá       |
 |requestUri     | Identifikátor URI přijatého požadavku        |
 |UserAgent     | Uživatelský agent z hlavičky požadavku HTTP.        |
@@ -216,14 +215,14 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |httpVersion     | Verze protokolu HTTP požadavku.        |
 |receivedBytes     | Velikost přijatého paketu (v bajtech)        |
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
-|timeTaken| Doba (v **sekundách**), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
+|timeTaken| Doba (v **sekundách**), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že pole Time-Taken obvykle obsahuje čas, kdy se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace se fondy back-end používala protokol TLS. Platné hodnoty jsou zapnuté a vypnuté.|
 |sslCipher| Šifrovací sada používaná pro komunikaci TLS (Pokud je povolený protokol TLS).|
 |sslProtocol| Používá se protokol SSL/TLS (Pokud je povolený protokol TLS).|
 |serverRouted| Back-end Server, na který Aplikační brána směruje požadavek.|
 |serverStatus| Stavový kód HTTP back-end serveru.|
 |serverResponseLatency| Latence odpovědi ze serveru back-end.|
-|Hostitel| Adresa uvedená v hlavičce hostitele žádosti. Pokud je přepsáno, toto pole obsahuje aktualizovaný název hostitele.|
+|Hostitel| Adresa uvedená v hlavičce hostitele žádosti. Pokud přepíšete pomocí přepisu hlavičky, toto pole obsahuje aktualizovaný název hostitele.|
 |originalRequestUriWithArgs| Toto pole obsahuje původní adresu URL požadavku. |
 |requestUri| Toto pole obsahuje adresu URL po operaci přepsání u Application Gateway |
 |originalHost| Toto pole obsahuje původní název hostitele žádosti.
@@ -236,7 +235,6 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
     "properties": {
         "instanceId": "appgw_1",
         "clientIP": "191.96.249.97",
-        "clientPort": 46886,
         "httpMethod": "GET",
         "requestUri": "/phpmyadmin/scripts/setup.php",
         "userAgent": "-",
@@ -353,7 +351,7 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 Data protokolu aktivit si můžete zobrazit použitím jedné z následujících metod:
 
 * **Nástroje Azure**: Načtěte informace z protokolu aktivit prostřednictvím Azure PowerShellu, Azure CLI, rozhraní Azure REST API nebo webu Azure Portal. Podrobné pokyny k jednotlivým metodám najdete v článku o [operacích s protokoly aktivit ve Správci prostředků](../azure-resource-manager/management/view-activity-logs.md).
-* **Power BI**: Pokud ještě účet [Power BI](https://powerbi.microsoft.com/pricing) nemáte, můžete ho vyzkoušet zdarma. Pomocí [aplikací Power BI šablon](https://docs.microsoft.com/power-bi/service-template-apps-overview)můžete analyzovat data.
+* **Power BI**: Pokud ještě účet [Power BI](https://powerbi.microsoft.com/pricing) nemáte, můžete ho vyzkoušet zdarma. Pomocí [aplikací Power BI šablon](/power-bi/service-template-apps-overview)můžete analyzovat data.
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Zobrazení a analýza protokolů přístupu, výkonu a brány firewall
 

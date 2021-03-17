@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: odesílání vlastních událostí do fronty úložiště – Event Grid, Azure CLI'
 description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI můžete publikovat téma a přihlásit se k odběru této události. Pro koncový bod se používá fronta úložiště.'
-ms.date: 07/07/2020
+ms.date: 02/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 00808e7eca13824833673ef820d39b70bf618dd2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497337"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493256"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí do Azure Queue Storage pomocí rozhraní příkazového řádku Azure a Event Grid
 
@@ -17,12 +17,11 @@ Azure Event Grid je služba zpracování událostí pro cloud. Azure Queue Stora
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud používáte Azure CLI nebo Azure PowerShell na svém místním počítači místo použití Cloud Shell v Azure Portal, ujistěte se, že máte následující verze rozhraní příkazového řádku Azure CLI a Azure PowerShell. 
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.56 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-- Azure CLI verze 2.0.56 nebo vyšší. Pokyny k instalaci nejnovější verze rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
-- Azure PowerShell verze 1.1.0 nebo novější. Stáhněte si nejnovější verzi Azure PowerShell na počítači s Windows ze složky [Azure downloads – nástroje příkazového řádku](https://azure.microsoft.com/downloads/). 
+- Pokud používáte Azure PowerShell v místním počítači místo použití Cloud Shell v Azure Portal, ujistěte se, že máte Azure PowerShell verze 1.1.0 nebo novější. Stáhněte si nejnovější verzi Azure PowerShell na počítači s Windows ze složky [Azure downloads – nástroje příkazového řádku](https://azure.microsoft.com/downloads/). 
 
 Tento článek obsahuje příkazy pro použití rozhraní příkazového řádku Azure CLI. 
 
@@ -117,6 +116,11 @@ done
 Přejděte na portálu na Queue Storage a všimněte si, že služba Event Grid odeslala tyto tři události do fronty.
 
 ![Zobrazit zprávy](./media/custom-event-to-queue-storage/messages.png)
+
+> [!NOTE]
+> Pokud pro Azure Functions pro frontu, která přijímá zprávy od Event Grid, používáte [Trigger služby Azure Queue Storage](../azure-functions/functions-bindings-storage-queue-trigger.md) , může se při provádění funkce zobrazit následující chybová zpráva: `The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`
+> 
+> Důvodem je to, že když použijete [Trigger úložiště front Azure](../azure-functions/functions-bindings-storage-queue-trigger.md), Azure Functions očekávat **řetězec kódovaný v kódování base64**, ale Event Grid posílá zprávy do fronty úložiště v textovém formátu v prostém textu. V současné době není možné nakonfigurovat Trigger fronty pro Azure Functions pro příjem prostého textu. 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

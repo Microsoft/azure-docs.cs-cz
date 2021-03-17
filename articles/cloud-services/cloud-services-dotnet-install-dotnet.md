@@ -1,23 +1,25 @@
 ---
-title: Instalace rozhraní .NET v Azure Cloud Services rolích | Microsoft Docs
+title: Nainstalovat .NET v Azure Cloud Services (Classic) role | Microsoft Docs
 description: Tento článek popisuje, jak ručně nainstalovat .NET Framework na webové role a role pracovních procesů cloudové služby.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/22/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: aa05fc9f02c26192762ed34db54b60b4760bf3bf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79214720"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061847"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>Instalace rozhraní .NET pro Azure Cloud Services rolí
+# <a name="install-net-on-azure-cloud-services-classic-roles"></a>Instalace rolí .NET v Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Tento článek popisuje, jak nainstalovat verze .NET Framework, které nepřichází v hostovaném operačním systému Azure. .NET v hostovaném operačním systému můžete použít ke konfiguraci webových rolí a rolí pracovních procesů cloudové služby.
 
 Můžete například nainstalovat .NET Framework 4.6.2 v hostovaném operačním systému řady 4, který nepochází z verze .NET Framework 4,6. (Řada hostovaných operačních systémů 5 se dodává s .NET Framework 4,6.) Nejnovější informace o vydáních hostovaného operačního systému Azure najdete v článku [novinky k vydání hostovaného operačního systému Azure](cloud-services-guestos-update-matrix.md). 
@@ -30,12 +32,12 @@ Pokud chcete nainstalovat .NET na webové a pracovní role, přidejte do projekt
 ## <a name="add-the-net-installer-to-your-project"></a>Přidání instalačního programu .NET do projektu
 Chcete-li stáhnout webový instalační program pro .NET Framework, vyberte verzi, kterou chcete nainstalovat:
 
-* [Webová instalační služba .NET Framework 4,8](https://dotnet.microsoft.com/download/thank-you/net48)
+* [Webová instalační služba .NET Framework 4,8](https://go.microsoft.com/fwlink/?LinkId=2150985)
 * [Webová instalační služba .NET Framework 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [Webová instalační služba .NET Framework 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Přidání instalačního programu pro *webovou* roli:
-  1. V **Průzkumník řešení**v části **role** v projektu cloudové služby klikněte pravým tlačítkem na *webovou* roli a vyberte **Přidat**  >  **novou složku**. Vytvořte složku s názvem **bin**.
+  1. V **Průzkumník řešení** v části **role** v projektu cloudové služby klikněte pravým tlačítkem na *webovou* roli a vyberte **Přidat**  >  **novou složku**. Vytvořte složku s názvem **bin**.
   2. Klikněte pravým tlačítkem na složku bin a vyberte **Přidat**  >  **existující položku**. Vyberte instalační program .NET a přidejte ho do složky bin.
   
 Postup přidání instalačního programu pro roli *pracovního procesu* :
@@ -197,7 +199,7 @@ Když se soubory přidávají tímto způsobem do složky obsahu role, automatic
    EXIT /B 0
    ```
 
-3. Pomocí příkazu **Přidat**existující položku v Průzkumník řešení přidejte do každé role soubor Install. cmd  >  **Existing Item** , jak je popsáno dříve v tomto tématu. **Solution Explorer** 
+3. Pomocí příkazu **Přidat** existující položku v Průzkumník řešení přidejte do každé role soubor Install. cmd  >   , jak je popsáno dříve v tomto tématu.  
 
     Po dokončení tohoto kroku musí mít všechny role soubor Instalační služby .NET a soubor Install. cmd.
 
@@ -222,7 +224,7 @@ Tento kód XML provede konfiguraci diagnostiky pro přenos souborů v adresáři
 ## <a name="deploy-your-cloud-service"></a>Nasazení cloudové služby
 Když nasadíte cloudovou službu, úlohy po spuštění nainstalují .NET Framework, pokud ještě není nainstalovaná. Role cloudové služby jsou po instalaci rozhraní v *zaneprázdněném* stavu. Pokud instalace rozhraní vyžaduje restart, můžou se taky restartovat role služby. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 * [Instalace rozhraní .NET Framework][Installing the .NET Framework]
 * [Určit, které verze .NET Framework jsou nainstalovány][How to: Determine Which .NET Framework Versions Are Installed]
 * [Řešení potíží s .NET Framework instalací][Troubleshooting .NET Framework Installations]

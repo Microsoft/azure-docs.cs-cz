@@ -3,18 +3,24 @@ title: Vytvoření privátního clusteru pomocí Azure Red Hat OpenShift 3,11 | 
 description: Vytvoření privátního clusteru pomocí Azure Red Hat OpenShift 3,11
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: ARO, OpenShift, soukromý cluster, Red Hat
-ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28a21635da770a990a21e0da2a8034c754f4f7aa
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727645"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633236"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Vytvoření privátního clusteru pomocí Azure Red Hat OpenShift 3,11
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3,11 bude vyřazeno 30. června 2022. Podpora pro vytváření nových clusterů Azure Red Hat OpenShift 3,11 pokračuje do 30. listopadu 2020. Po vyřazení z provozu budou zbývající clustery Azure Red Hat OpenShift 3,11 vypnuté, aby se předešlo chybám zabezpečení.
+> 
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](tutorial-create-cluster.md).
+> Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:arofeedback@microsoft.com).
 
 Soukromé clustery poskytují následující výhody:
 
@@ -23,7 +29,7 @@ Soukromé clustery poskytují následující výhody:
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Pole v následujícím fragmentu konfigurace jsou nová a musí být zahrnutá v konfiguraci clusteru. `managementSubnetCidr`musí se nacházet v rámci virtuální sítě clusteru a služba Azure ji používá ke správě clusteru.
+Pole v následujícím fragmentu konfigurace jsou nová a musí být zahrnutá v konfiguraci clusteru. `managementSubnetCidr` musí se nacházet v rámci virtuální sítě clusteru a služba Azure ji používá ke správě clusteru.
 
 ```json
 properties:

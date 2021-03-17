@@ -2,14 +2,13 @@
 title: Scénáře použití virtuální sítě
 description: Scénáře, prostředky a omezení pro nasazení skupin kontejnerů do služby Azure Virtual Network.
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: danlep
-ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/11/2020
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259541"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033825"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scénáře a prostředky virtuální sítě
 
@@ -34,6 +33,7 @@ Skupiny kontejnerů nasazené do služby Azure Virtual Network povolují scéná
 * **Azure Load Balancer** – umístění Azure Load Balancer před instancemi kontejnerů v síťové skupině kontejnerů se nepodporuje.
 * **Globální partnerský vztah virtuální sítě** – globální partnerský vztah (propojení virtuálních sítí napříč oblastmi Azure) není podporovaný.
 * **Veřejná IP adresa nebo popisek DNS** – skupiny kontejnerů nasazené ve virtuální síti aktuálně nepodporují vystavování kontejnerů přímo na internetu s použitím veřejné IP adresy nebo plně kvalifikovaného názvu domény.
+* **Virtual Network NAT** – skupiny kontejnerů nasazené do virtuální sítě momentálně nepodporují použití prostředku brány NAT pro odchozí připojení k Internetu.
 
 ## <a name="other-limitations"></a>Další omezení
 
@@ -42,6 +42,9 @@ Skupiny kontejnerů nasazené do služby Azure Virtual Network povolují scéná
 * [Spravovanou identitu](container-instances-managed-identity.md) nemůžete použít ve skupině kontejnerů nasazené do virtuální sítě.
 * V rámci skupiny kontejnerů nasazených do virtuální sítě nemůžete povolit [test živého provozu](container-instances-liveness-probe.md) nebo test [připravenosti](container-instances-readiness-probe.md) .
 * Kvůli dalším zapojení síťových prostředků jsou nasazení do virtuální sítě obvykle pomalejší než nasazení standardní instance kontejneru.
+* Pokud připojujete skupinu kontejnerů k účtu Azure Storage, musíte do tohoto prostředku přidat [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) .
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="where-to-deploy"></a>Místo nasazení
 
@@ -78,6 +81,7 @@ V následujícím diagramu byly nasazeny některé skupiny kontejnerů do podsí
 * Příklady nasazení pomocí Azure CLI najdete v tématu [nasazení instancí kontejnerů do služby Azure Virtual Network](container-instances-vnet.md).
 * Postup nasazení nové virtuální sítě, podsítě, profilu sítě a skupiny kontejnerů pomocí šablony Správce prostředků najdete v tématu [Vytvoření skupiny kontejnerů Azure s virtuální](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )sítí.
+* Při použití [Azure Portal](container-instances-quickstart-portal.md) k vytvoření instance kontejneru můžete zadat také nastavení pro novou nebo exsting virtuální síť na kartě **síť** .
 
 
 <!-- IMAGES -->

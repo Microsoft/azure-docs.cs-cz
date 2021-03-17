@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 301c75df6bedf430af64bbeff63f2eb759691355
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 64bb5e94c4b18626d1f85d7e61252aae74202eb9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86210400"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680628"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>Kurz: kopírování dat z Azure Data Box přes systém souborů NFS (Preview)
+# <a name="tutorial-copy-data-from-azure-data-box-via-nfs"></a>Kurz: kopírování dat z Azure Data Box přes systém souborů NFS
 
 V tomto kurzu se dozvíte, jak se připojit ke svému místnímu datovému serveru pomocí systému souborů NFS a kopírovat z něj data z místního webového uživatelského rozhraní Data Box. Data ve vašem Data Box jsou exportována z účtu Azure Storage.
 
@@ -23,21 +23,19 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Připojení k Data Boxu
-> * Kopírovat data z Data Box
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
+> * Kopírování dat z Data Boxu
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Nastavili jste pořadí pro Azure Data Box.
-    - Pro pořadí importu si přečtěte téma [kurz: Azure Data box Order](data-box-deploy-ordered.md).
-    - Objednávky exportu najdete v tématu [kurz: Azure Data box Order](data-box-deploy-export-ordered.md).
+1. Zadali jste objednávku Azure Data Boxu.
+    - V případě objednávky importu si projděte [Kurz: Objednání Azure Data Boxu](data-box-deploy-ordered.md).
+    - V případě objednávky exportu si projděte [Kurz: Objednání Azure Data Boxu](data-box-deploy-export-ordered.md).
 2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**.
-3. Máte hostitelský počítač, na který chcete kopírovat data z Data Box. Hostitelský počítač musí splňovat tyto požadavky:
+3. Máte hostitelský počítač, do kterého chcete zkopírovat data z Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
    * Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
    * Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud nemáte k dispozici připojení 10 GbE, použijte datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování.
 
@@ -45,15 +43,17 @@ Než začnete, ujistěte se, že:
 
 [!INCLUDE [data-box-shares](../../includes/data-box-shares.md)]
 
-Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího postupu nakonfigurujte Data Box tak, aby povoloval přístup klientům systému souborů NFS.
+Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího postupu nakonfigurujte Data Box tak, aby povoloval přístup klientům systému souborů NFS. Data Box se může připojit až po dobu pěti klientů systému souborů NFS.
 
-1. Zadejte IP adresy klientů s povoleným přístupem ke sdílené složce. V místním webovém uživatelském rozhraní přejděte na stránku **Připojit a kopírovat**. V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**. 
+1. Zadejte IP adresy povolených klientů, kteří mají přístup ke sdílené složce:
 
-    ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
+    1.  V místním webovém uživatelském rozhraní přejdete na stránku **připojit a kopírovat** . V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**. 
 
-2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na **OK**.
+        ![Otevření přístupu klienta NFS](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
 
-    ![Konfigurace přístupu klientů systému souborů NFS 2](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
+    1. Chcete-li přidat klienta systému souborů NFS, zadejte IP adresu klienta a klikněte na tlačítko **Přidat**. Data Box se může připojit až po dobu pěti klientů systému souborů NFS. Po dokončení klikněte na tlačítko **OK**.
+
+         ![Přidání klienta NFS](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
 
 2. Ujistěte se, že je na hostitelském počítači s Linuxem nainstalovaná [podporovaná verze](data-box-system-requirements.md) klienta systému souborů NFS. Použijte konkrétní verzi pro vaši distribuci Linuxu. 
 
@@ -71,17 +71,17 @@ Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího p
 
     **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené ve sdílených složkách objektů blob bloku a objektů blob stránky představují kontejnery, do kterých se data nahrávají jako objekty blob. Soubory nemůžete kopírovat přímo do složky *root* v účtu úložiště.
 
-## <a name="copy-data-from-data-box"></a>Kopírovat data z Data Box
+## <a name="copy-data-from-data-box"></a>Kopírování dat z Data Boxu
 
 Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat.
 
 [!INCLUDE [data-box-export-review-logs](../../includes/data-box-export-review-logs.md)]
 
- Teď můžete začít kopírovat data. Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
+ Teď můžete začít kopírovat data. Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Některé alternativy dostupné v systému Linux jsou [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [úlohách](https://www.cis.upenn.edu/~bcpierce/unison/)nebo [Ultracopier](https://ultracopier.first-world.info/).  
 
 Jednou z nejlepších možností, jak zkopírovat adresář, je příkaz `cp`. Další informace o jeho použití najdete na [manuálových stránkách pro příkaz cp](http://man7.org/linux/man-pages/man1/cp.1.html).
 
-Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte podle těchto pokynů:
+Pokud používáte `rsync` možnost kopírování s více vlákny, postupujte podle těchto pokynů:
 
 * V závislosti na systému souborů, který používá váš klient Linuxu, nainstalujte balíček **CIFS Utils** nebo **NFS Utils**.
 
@@ -89,7 +89,7 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 
     `sudo apt-get install nfs-utils`
 
-* Nainstalujte **rsync** a **Parallel** (liší se v závislosti na distribuované verzi systému Linux).
+* Instalace `rsync` a **paralelní** (liší se v závislosti na distribuované verzi systému Linux).
 
     `sudo apt-get install rsync`
    
@@ -118,9 +118,9 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 > [!IMPORTANT]
 > Následující typy souborů systému Linux nejsou podporovány: symbolické odkazy, soubory znaků, blokovat soubory, sokety a kanály. Tyto typy souborů budou mít za následek chyby během **Příprava k odeslání** kroku.
 
-Po dokončení kopírování přejdete na **řídicí panel** a ověřte využité místo a volné místo na vašem zařízení.
+Po dokončení kopírování přejděte k **řídicímu panelu** a zkontrolujte využité a volné místo na zařízení.
 
-Nyní můžete přejít k dodávání Data Box společnosti Microsoft.
+Teď můžete přistoupit k odeslání Data Boxu do Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -130,7 +130,7 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 >
 > * Požadavky
 > * Připojení k Data Boxu
-> * Kopírovat data z Data Box
+> * Kopírování dat z Data Boxu
 
 V dalším kurzu se dozvíte, jak Data Box odeslat zpět do Microsoftu.
 

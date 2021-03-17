@@ -7,20 +7,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 308e1bcf042feb15179d32844d8c569af6166619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495059"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571668"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery s využitím protokolů Azure Monitoru
 
-Tento článek popisuje, jak monitorovat počítače replikované pomocí Azure [Site Recovery](site-recovery-overview.md), pomocí [protokolů Azure monitor](../azure-monitor/platform/data-platform-logs.md)a [Log Analytics](../azure-monitor/log-query/log-query-overview.md).
+Tento článek popisuje, jak monitorovat počítače replikované pomocí Azure [Site Recovery](site-recovery-overview.md), pomocí [protokolů Azure monitor](../azure-monitor/logs/data-platform-logs.md)a [Log Analytics](../azure-monitor/logs/log-query-overview.md).
 
 Protokoly Azure Monitor poskytují datovou platformu protokolu, která shromažďuje protokoly aktivit a prostředků spolu s dalšími daty monitorování. V protokolech Azure Monitor používáte Log Analytics k zápisu a testování dotazů protokolu a k interaktivní analýze dat protokolu. Můžete vizualizovat výsledky protokolu a dotazovat se na ně a nakonfigurovat výstrahy tak, aby na základě monitorovaných dat probíhat akce.
 
-V případě Site Recovery můžete Azure Monitor protokoly, které vám pomohou s těmito kroky:
+Pro Site Recovery můžete použít protokoly Azure Monitor, které vám pomůžou s tímto:
 
 - **Monitoruje stav a stav Site Recovery**. Můžete například monitorovat stav replikace, stav testovacího převzetí služeb při selhání, Site Recovery události, cíle bodu obnovení (RPO) pro chráněné počítače a míry změny disků a dat.
 - **Nastavte výstrahy pro Site Recovery**. Můžete například nakonfigurovat výstrahy pro stav počítače, stav testovacího převzetí služeb při selhání nebo Site Recovery stav úlohy.
@@ -35,8 +35,8 @@ Použití protokolů Azure Monitor s Site Recovery podporuje replikaci z **Azure
 Zde je seznam toho, co k tomu potřebujete:
 
 - Aspoň jeden počítač chráněný v úložišti Recovery Services.
-- Log Analytics pracovní prostor pro ukládání protokolů Site Recovery. [Přečtěte si o](../azure-monitor/learn/quick-create-workspace.md) nastavení pracovního prostoru.
-- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/get-started-portal.md).
+- Log Analytics pracovní prostor pro ukládání protokolů Site Recovery. [Přečtěte si o](../azure-monitor/logs/quick-create-workspace.md) nastavení pracovního prostoru.
+- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Přečtěte si další informace](../azure-monitor/logs/log-analytics-tutorial.md).
 
 Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkající se monitorování](monitoring-common-questions.md) .
 
@@ -46,7 +46,7 @@ Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkajíc�
 
     ![Snímek obrazovky znázorňující možnost Přidat nastavení diagnostiky](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. V okně **nastavení diagnostiky**zadejte název a zaškrtněte políčko **Odeslat do Log Analytics**.
+2. V okně **nastavení diagnostiky** zadejte název a zaškrtněte políčko **Odeslat do Log Analytics**.
 3. Vyberte odběr Azure Monitor protokoly a pracovní prostor Log Analytics.
 4. V přepínači vyberte **Azure Diagnostics** .
 5. V seznamu protokol vyberte všechny protokoly s předponou **AzureSiteRecovery**. Pak klikněte na **OK**.
@@ -62,9 +62,9 @@ V místním prostředí můžete zachytit informace o míře četnosti změn dat
 1. Přejděte do pracovního prostoru Log Analytics a klikněte na **Upřesnit nastavení**.
 2. Klikněte na stránku **připojené zdroje** a dále vyberte **Windows servery**.
 3. Na procesovém serveru Stáhněte agenta pro Windows (64 bitů). 
-4. [Získání ID a klíče pracovního prostoru](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
-5. [Nakonfigurovat agenta na používání protokolu TLS 1,2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. [Dokončete instalaci agenta](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) poskytnutím získaného ID a klíče pracovního prostoru.
+4. [Získání ID a klíče pracovního prostoru](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
+5. [Nakonfigurovat agenta na používání protokolu TLS 1,2](../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Dokončete instalaci agenta](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard) poskytnutím získaného ID a klíče pracovního prostoru.
 7. Po dokončení instalace přejděte do pracovního prostoru Log Analytics a klikněte na **Upřesnit nastavení**. Přejděte na **datovou** stránku a dále klikněte na **čítače výkonu systému Windows**. 
 8. Kliknutím na **+** přidejte následující dva čítače s intervalem vzorkování 300 sekund:
 
@@ -76,7 +76,7 @@ Data míry změn a nahrávání začnou dodávat do pracovního prostoru.
 
 ## <a name="query-the-logs---examples"></a>Dotazování protokolů – příklady
 
-Data z protokolů načítáte pomocí dotazů protokolu napsaných pomocí [dotazovacího jazyka Kusto](../azure-monitor/log-query/get-started-queries.md). V této části najdete několik příkladů běžných dotazů, které můžete použít pro Site Recovery monitorování.
+Data z protokolů načítáte pomocí dotazů protokolu napsaných pomocí [dotazovacího jazyka Kusto](../azure-monitor/logs/get-started-queries.md). V této části najdete několik příkladů běžných dotazů, které můžete použít pro Site Recovery monitorování.
 
 > [!NOTE]
 > Některé příklady používají **replicationProviderName_s** nastavené na **A2A**. Tím se načte virtuální počítače Azure, které se replikují do sekundární oblasti Azure pomocí Site Recovery. V těchto příkladech můžete měnit **A2A** pomocí **InMageAzureV2**, pokud chcete načíst místní virtuální počítače VMware nebo fyzické servery, které se replikují do Azure pomocí Site Recovery.
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Nastavení upozornění – příklady
 
-Můžete nastavit Site Recovery výstrahy na základě Azure Monitor dat. [Přečtěte si další informace](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) o nastavení upozornění protokolu. 
+Můžete nastavit Site Recovery výstrahy na základě Azure Monitor dat. [Přečtěte si další informace](../azure-monitor/alerts/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) o nastavení upozornění protokolu. 
 
 > [!NOTE]
 > Některé příklady používají **replicationProviderName_s** nastavené na **A2A**. Tím se nastaví výstrahy pro virtuální počítače Azure, které se replikují do sekundární oblasti Azure. V těchto příkladech můžete měnit **A2A** pomocí **InMageAzureV2** , pokud chcete nastavit upozornění pro místní virtuální počítače VMware nebo fyzické servery replikované do Azure.

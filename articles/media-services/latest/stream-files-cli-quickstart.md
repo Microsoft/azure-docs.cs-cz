@@ -1,9 +1,9 @@
 ---
-title: Streamování videosouborů pomocí Azure Media Services a Azure CLI
-description: Pomocí kroků v tomto kurzu vytvoříte nový účet Azure Media Services, zakódujete soubor a Streamujte ho do Azure Media Player.
+title: Streamování videosouborů pomocí Azure Media Services CLI
+description: Postupujte podle kroků v tomto kurzu a pomocí Azure CLI vytvořte nový účet Azure Media Services, zakódovat soubor a Streamujte ho do Azure Media Player.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: azure media services, stream
@@ -11,16 +11,18 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 5a90e1fdc50a6e2b1544a06f587362bf43b80369
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: c78205d7e2b41628de9e8b92c9fa5506e82158cb
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504445"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954492"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamování videa – Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V tomto kurzu se dozvíte, jak pomocí Azure Media Services a Azure CLI snadno kódovat a streamovat videa na nejrůznějších prohlížečích a zařízeních. Vstupní obsah můžete zadat pomocí adres URL protokolu HTTPS nebo SAS nebo cest k souborům v úložišti objektů BLOB v Azure.
 
@@ -46,7 +48,7 @@ az group create -n amsResourceGroup -l westus2
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
-V tomto příkladu vytvoříme účet Standard LRS pro obecné účely v2.
+V tomto příkladu vytvoříme účet General-Purpose v2 úrovně Standard LRS.
 
 Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS` . Když vybíráte SKU pro produkci, zvažte použití nástroje `--sku Standard_RAGRS` , který zajišťuje geografickou replikaci pro kontinuitu podnikových prostředí. Další informace najdete v tématu [účty úložiště](/cli/azure/storage/account).
 

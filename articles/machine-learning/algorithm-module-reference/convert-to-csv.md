@@ -1,7 +1,7 @@
 ---
 title: 'Převést na sdílený svazek clusteru: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul převést do sdíleného svazku clusteru v Azure Machine Learning k převodu datové sady do formátu CSV, který se dá stáhnout, exportovat nebo sdílet s moduly R nebo Python Script.
+description: Naučte se používat modul převést do sdíleného svazku clusteru v Návrháři Azure Machine Learning k převodu datové sady na soubor CSV, který se dá později znovu použít.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: fc2a043e8f1565cf5fe45ba0b072ad015076635e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477676"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421919"
 ---
 # <a name="convert-to-csv-module"></a>Převést na modul CSV
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete převést datovou sadu na formát CSV, který se dá stáhnout, exportovat nebo sdílet s moduly R nebo Python Script.
 
@@ -26,7 +26,7 @@ Pomocí tohoto modulu můžete převést datovou sadu na formát CSV, který se 
 
 Formát CSV, který představuje "hodnoty oddělené čárkami", je formát souboru, který používá mnoho externích nástrojů strojového učení. CSV je běžný formát pro výměnu při práci s open source jazyky, jako je R nebo Python.
 
-I v případě, že většinu práce v Azure Machine Learning používáte, v některých případech může být užitečné převést datovou sadu na CSV a použít ji v externích nástrojích. Příklad:
+I v případě, že většinu práce v Azure Machine Learning používáte, v některých případech může být užitečné převést datovou sadu na CSV a použít ji v externích nástrojích. Například:
 
 + Stáhněte soubor CSV a otevřete ho v Excelu nebo ho importujte do relační databáze.  
 + Uložte soubor CSV do cloudového úložiště a připojte se k němu z Power BI, abyste mohli vytvářet vizualizace.  
@@ -46,11 +46,11 @@ Když datovou sadu převedete na CSV, uloží se sdílený svazek clusteru do pr
 ### <a name="results"></a>Výsledky
   
 
-Vyberte kartu **výstupy** v pravém panelu **převést na sdílený svazek clusteru**a v části **výstupy portů**vyberte jednu z těchto ikon.  
+Vyberte kartu **výstupy** v pravém panelu **převést na sdílený svazek clusteru** a v části **výstupy portů** vyberte jednu z těchto ikon.  
 
-+ **Registrovat datovou sadu**: vyberte ikonu a uložte soubor CSV zpátky do pracovního prostoru Azure ml jako samostatnou datovou sadu. Datovou sadu můžete najít jako modul ve stromu modulu pod částí **Moje datové sady** .
++ **Registrovat datovou sadu** : vyberte ikonu a uložte soubor CSV zpátky do pracovního prostoru Azure ml jako samostatnou datovou sadu. Datovou sadu můžete najít jako modul ve stromu modulu pod částí **Moje datové sady** .
 
- + **Zobrazit výstup**: vyberte ikonu oka a postupujte podle pokynů pro procházení složky **Results_dataset** a stáhněte data.csv soubor.
+ + **Zobrazit výstup** : vyberte ikonu oka a postupujte podle pokynů pro procházení složky **Results_dataset** a stáhněte data.csv soubor.
 
 ## <a name="next-steps"></a>Další kroky
 

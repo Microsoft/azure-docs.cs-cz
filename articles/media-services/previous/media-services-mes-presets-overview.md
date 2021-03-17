@@ -1,7 +1,7 @@
 ---
 title: Přednastavení úloh pro Media Encoder Standard (status) | Microsoft Docs
 description: Téma obsahuje přehled předdefinovaných vzorů definovaných službou pro Media Encoder Standard (status).
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: johndeu
 services: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 74e557aa02f5ab83828262209653bf8a78fdd2d0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038438"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011642"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Přednastavené ukázky pro Media Encoder Standard (status)
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 **Media Encoder Standard** definuje sadu předem definovaných předvoleb kódování systému, které můžete použít při vytváření úloh kódování. Pokud chcete zakódovat video pro streamování pomocí Media Services, doporučuje se použít přednastavení adaptivního streamování. Když zadáte tuto předvolbu, Media Encoder Standard [automaticky vygeneruje žebřík přenosové rychlosti](media-services-autogen-bitrate-ladder-with-mes.md). 
 

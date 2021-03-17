@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/06/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 29a202b3833bbc6ee550df89b240d95ecb38ef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d27e5b22fc0e24850a8c454ef1f07e77341ac15a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742056"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282548"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Použití kolekcí na portálu moje aplikace
 
@@ -26,13 +26,13 @@ Kolekce jsou různá zobrazení aplikací, která vidíte na portálu **Moje apl
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
+>Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](../manage-apps/access-panel-collections.md).
 
 ## <a name="access-apps-using-collections"></a>Přístup k aplikacím pomocí kolekcí
 
 Seznam kolekcí na portálu **Moje aplikace** je ve výchozím nastavení zobrazený s názvem **všechny aplikace**, ke kterému máte přístup všechny aplikace, ke kterým máte přístup:
 
-![Stránka všechny aplikace na portálu moje aplikace](media/my-applications-portal-workspaces/my-apps-all.png)
+![Stránka všechny aplikace na portálu moje aplikace](media/my-applications-portal-workspaces/my-apps-all-apps.png)
 
 Všechny ostatní kolekce, které vidíte v tomto seznamu, vytvořil správce a sdílí se s vámi. Jednu z těchto kolekcí si můžete vybrat, abyste viděli více vymezených aplikací, jako je například *Podpora* v následujícím příkladu:
 

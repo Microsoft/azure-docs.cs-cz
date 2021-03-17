@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31eeb31fb78a4e9552e64121e0e85b5fd8d9b773
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455558"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210627"
 ---
 # <a name="check-resource-usage-against-limits"></a>Kontrola využití prostředků s ohledem na limity
 
@@ -29,10 +29,10 @@ V tomto článku se dozvíte, jak zobrazit počet všech typů síťových prost
 2. V levém horním rohu Azure Portal vyberte **všechny služby**.
 3. Do pole **Filtr** zadejte *odběry* . Když se ve výsledcích hledání zobrazí položka **Předplatná**, klikněte na ni.
 4. Vyberte název předplatného, pro který chcete zobrazit informace o použití.
-5. V části **Nastavení**vyberte **využití + kvóta**.
+5. V části **Nastavení** vyberte **využití + kvóta**.
 6. Můžete vybrat následující možnosti:
    - **Typy prostředků**: můžete vybrat všechny typy prostředků nebo vybrat konkrétní typy prostředků, které chcete zobrazit.
-   - **Zprostředkovatelé**: můžete vybrat všechny poskytovatele prostředků nebo vybrat **výpočetní**prostředky, **síť**nebo **úložiště**.
+   - **Zprostředkovatelé**: můžete vybrat všechny poskytovatele prostředků nebo vybrat **výpočetní** prostředky, **síť** nebo **úložiště**.
    - **Umístění**: můžete vybrat všechna umístění Azure nebo vybrat konkrétní umístění.
    - Můžete vybrat možnost Zobrazit všechny prostředky nebo pouze prostředky, ve kterých je nasazen alespoň jeden prostředek.
 
@@ -40,7 +40,7 @@ V tomto článku se dozvíte, jak zobrazit počet všech typů síťových prost
 
        ![Zobrazit data o využití](./media/check-usage-against-limits/view-usage.png)
 
-     Sloupce můžete seřadit výběrem záhlaví sloupce. Zobrazená omezení jsou omezení pro vaše předplatné. Pokud potřebujete zvýšit výchozí limit, vyberte **žádost zvýšení**a pak dokončete a odešlete žádost o podporu. Všechny prostředky mají maximální limit uvedený v [omezeních](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)Azure. Pokud je aktuální limit již na maximálním počtu, nelze tento limit zvýšit.
+     Sloupce můžete seřadit výběrem záhlaví sloupce. Zobrazená omezení jsou omezení pro vaše předplatné. Pokud potřebujete zvýšit výchozí limit, vyberte **žádost zvýšení** a pak dokončete a odešlete žádost o podporu. Všechny prostředky mají maximální limit uvedený v [omezeních](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)Azure. Pokud je aktuální limit již na maximálním počtu, nelze tento limit zvýšit.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -48,7 +48,7 @@ V tomto článku se dozvíte, jak zobrazit počet všech typů síťových prost
 
 Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spustíte PowerShell z počítače, budete potřebovat modul Azure PowerShell, verze 1.0.0 nebo novější. Pokud `Get-Module -ListAvailable Az` chcete najít nainstalovanou verzi, spusťte v počítači. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzAccount` pro přihlášení k Azure.
 
-Podívejte se na použití omezení pomocí [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage). Následující příklad získá využití pro prostředky, ve kterých je nasazen alespoň jeden prostředek v umístění Východní USA:
+Podívejte se na použití omezení pomocí [Get-AzNetworkUsage](/powershell/module/az.network/get-aznetworkusage). Následující příklad získá využití pro prostředky, ve kterých je nasazen alespoň jeden prostředek v umístění Východní USA:
 
 ```azurepowershell-interactive
 Get-AzNetworkUsage `
@@ -73,7 +73,7 @@ Network Watchers                   1     1
 
 Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento článek vyžaduje Azure CLI verze 2.0.32 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte spustit taky, `az login` abyste se přihlásili k Azure.
 
-Zobrazte si použití omezení pomocí [AZ Network list-Usage](/cli/azure/network?view=azure-cli-latest#az-network-list-usages). Následující příklad získá využití prostředků v umístění Východní USA:
+Zobrazte si použití omezení pomocí [AZ Network list-Usage](/cli/azure/network#az-network-list-usages). Následující příklad získá využití prostředků v umístění Východní USA:
 
 ```azurecli-interactive
 az network list-usages \

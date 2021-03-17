@@ -4,7 +4,9 @@
   items:
     - name: Co je služba Azure NetApp Files
       href: azure-netapp-files-introduction.md
-    - name: Vysvětlení hierarchie úložiště
+    - name: Co je nového
+      href: whats-new.md
+    - name: Hierarchie úložiště služby Azure NetApp Files
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Rychlé starty
   expanded: true
@@ -27,12 +29,26 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Srovnávací testy výkonu pro Linux
           href: performance-benchmarks-linux.md
+        - name: Dopad na výkon protokolu Kerberos v NFSv 4.1
+          href: performance-impact-kerberos.md
+        - name: Výkon databází Oracle na jednoduchých svazcích Azure NetApp Files
+          href: performance-oracle-single-volumes.md
         - name: Nejčastější dotazy k výkonu SMB
           href: azure-netapp-files-smb-performance.md
     - name: Model nákladů pro Azure NetApp Files
       href: azure-netapp-files-cost-model.md
     - name: Pokyny pro plánování sítě Azure NetApp Files
       href: azure-netapp-files-network-topologies.md
+    - name: Jak fungují snímky Azure NetApp Files
+      href: snapshots-introduction.md
+    - name: Fond ručně zřizované kapacity QoS
+      href: manual-qos-capacity-pool-introduction.md
+    - name: Replikace mezi oblastmi
+      items:
+        - name: Principy replikace mezi oblastmi
+          href: cross-region-replication-introduction.md
+        - name: Požadavky a aspekty replikace mezi oblastmi
+          href: cross-region-replication-requirements-considerations.md
     - name: Řešení
       items:
         - name: Architektury řešení s využitím Azure NetApp Files
@@ -47,6 +63,10 @@
               href: solutions-windows-virtual-desktop.md
     - name: Nejčastější dotazy k Azure NetApp Files
       href: azure-netapp-files-faqs.md
+    - name: Co je nástroj Azure Application Consistent Snapshot
+      href: azacsnap-introduction.md
+    - name: Co se změní na Volume Hard quoty
+      href: volume-hard-quota-guidelines.md
 - name: Návody
   items:
     - name: Registrace pro Azure NetApp Files
@@ -55,8 +75,12 @@
       href: azure-netapp-files-create-netapp-account.md
     - name: Nastavení fondu kapacity
       href: azure-netapp-files-set-up-capacity-pool.md
+    - name: Správa fondu ručně zřizovaného kapacity QoS
+      href: manage-manual-qos-capacity-pool.md
     - name: Delegování podsítě do Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
+    - name: Vytváření a Správa připojení ke službě Active Directory
+      href: create-active-directory-connections.md
     - name: Vytvoření a správa svazku NFS
       items:
         - name: Vytvoření svazku NFS
@@ -81,22 +105,70 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: Dynamická změna úrovně služeb svazku
       href: dynamic-change-volume-service-level.md
+    - name: Správa replikace mezi oblastmi
+      items:
+        - name: Vytvoření replikace svazku
+          href: cross-region-replication-create-peering.md
+        - name: Zobrazení stavu vztahu replikace
+          href: cross-region-replication-display-health-status.md
+        - name: Správa zotavení po havárii
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: Odstranění svazků nebo replikací svazků
+          href: cross-region-replication-delete.md
     - name: Vývoj
       items:
         - name: REST API
           href: azure-netapp-files-develop-with-rest-api.md
         - name: REST API s využitím PowerShellu
           href: develop-rest-api-powershell.md
-        - name: Sady Azure NetApp Files SDK a nástroje CLI
+        - name: 'Sady SDK, nástroje CLI a šablony ARM'
           href: azure-netapp-files-sdk-cli.md
-        - name: Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s fondy kapacity
+          href: troubleshoot-capacity-pools.md
+        - name: Řešení potíží s replikací mezi oblastmi
+          href: troubleshoot-cross-region-replication.md
+        - name: Řešení potíží se svazky SMB nebo Dual-Protocol
+          href: troubleshoot-dual-protocol-volumes.md
+        - name: Řešení potíží se svazky NFSv4.1 s protokolem Kerberos
+          href: troubleshoot-nfsv41-kerberos-volumes.md
+        - name: Řešení potíží se zásadami snímků
+          href: troubleshoot-snapshot-policies.md
+        - name: Řešení potíží s chybami poskytovatele prostředků
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Referenční informace
   items:
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/netapp/'
+      href: /rest/api/netapp/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Nástroj Azure Application Consistent Snapshot (AzAcSnap)
+      items:
+        - name: Začínáme s nástrojem AzAcSnap
+          href: azacsnap-get-started.md
+        - name: Instalace nástroje AzAcSnap
+          href: azacsnap-installation.md
+        - name: Zotavení po havárii s využitím nástroje AzAcSnap
+          href: azacsnap-disaster-recovery.md
+        - name: Tipy a triky pro používání nástrojem AzAcSnap
+          href: azacsnap-tips.md
+        - name: Řešení potíží s nástrojem AzAcSnap
+          href: azacsnap-troubleshoot.md
+        - name: Přehled příkazů nástroje AzAcSnap
+          items:
+            - name: Konfigurace nástroje AzAcSnap
+              href: azacsnap-cmd-ref-configure.md
+            - name: Test nástrojem AzAcSnap
+              href: azacsnap-cmd-ref-test.md
+            - name: Zálohování pomocí nástroje AzAcSnap
+              href: azacsnap-cmd-ref-backup.md
+            - name: Získání podrobností pomocí nástroje AzAcSnap
+              href: azacsnap-cmd-ref-details.md
+            - name: Odstranění pomocí nástroje AzAcSnap
+              href: azacsnap-cmd-ref-delete.md
+            - name: Obnovení pomocí nástroje AzAcSnap
+              href: azacsnap-cmd-ref-restore.md
 - name: Zdroje a prostředky
   items:
     - name: Ceny

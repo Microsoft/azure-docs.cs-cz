@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-ms.openlocfilehash: 5d52cd134c8c0f1702f57bff1f60bffa12ef6f4d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2930a3ca2ecb9d8217fdfea1cbcb0e669f61775
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81687226"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960032"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Rychlé zprovoznění: Zřízení simulovaného zařízení TPM s využitím sady Azure IoT C SDK
 
@@ -25,7 +25,7 @@ ms.locfileid: "81687226"
 
 V tomto rychlém zprovoznění se dozvíte, jak vytvořit a spustit simulátor zařízení TPM (Trusted Platform Module) na vývojovém počítači s Windows. Toto simulované zařízení připojíte k IoT Hubu pomocí instance služby Device Provisioning. Ukázkový kód ze sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) se použije při registraci zařízení s využitím služby Device Provisioning a simulaci spouštěcí sekvence pro toto zařízení.
 
-Pokud nejste obeznámeni s procesem automatického zřizování, přečtěte si téma [Automatické zřizování konceptů](concepts-auto-provisioning.md). Než budete pokračovat v tomto rychlém zprovoznění, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
+Pokud nejste obeznámeni s procesem autozřizování, přečtěte si přehled [zřizování](about-iot-dps.md#provisioning-process) . Než budete pokračovat v tomto rychlém zprovoznění, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 Služba Azure IoT Device Provisioning podporuje dva typy registrací:
 - [Skupiny registrací:](concepts-service.md#enrollment-group) Slouží k registraci několika souvisejících zařízení.
@@ -39,7 +39,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou [vývoj desktopových aplikací v jazyce C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) . Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
 
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
@@ -47,7 +47,7 @@ Následující požadavky jsou pro vývojové prostředí systému Windows. Info
 
 ## <a name="prepare-a-development-environment-for-the-azure-iot-c-sdk"></a>Příprava vývojového prostředí pro Azure IoT C SDK
 
-V této části připravíte vývojové prostředí použité k sestavení [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) a ukázky simulátoru zařízení [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview).
+V této části připravíte vývojové prostředí použité k sestavení [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) a ukázky simulátoru zařízení [TPM](/windows/device-security/tpm/trusted-platform-module-overview).
 
 1. Stáhněte si [sestavovací systém cmake](https://cmake.org/download/).
 
@@ -65,7 +65,7 @@ V této části připravíte vývojové prostředí použité k sestavení [Azur
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z `azure-iot-sdk-c` adresáře spusťte následující příkazy:
+4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z adresáře spusťte následující příkazy `azure-iot-sdk-c` :
 
     ```cmd/sh
     mkdir cmake
@@ -74,7 +74,7 @@ V této části připravíte vývojové prostředí použité k sestavení [Azur
 
 ## <a name="build-the-sdk-and-run-the-tpm-device-simulator"></a>Sestavení SDK a spuštění simulátoru zařízení TPM
 
-V této části sestavíte sadu Azure IoT C SDK, která zahrnuje ukázkový kód simulátoru zařízení TPM. Tato ukázka poskytuje [mechanismus osvědčení](concepts-security.md#attestation-mechanism) TPM prostřednictvím ověřování tokenu sdíleného přístupového podpisu (SAS).
+V této části sestavíte sadu Azure IoT C SDK, která zahrnuje ukázkový kód simulátoru zařízení TPM. Tato ukázka poskytuje [mechanismus osvědčení](concepts-service.md#attestation-mechanism) TPM prostřednictvím ověřování tokenu sdíleného přístupového podpisu (SAS).
 
 1. Z podadresáře `cmake`, ve kterém jste vytvořili úložiště azure-iot-sdk-c git, spusťte následující příkaz pro sestavení ukázky. Tento příkaz pro sestavení vygeneruje pro toto simulované zařízení také řešení Visual Studio.
 
@@ -82,7 +82,7 @@ V této části sestavíte sadu Azure IoT C SDK, která zahrnuje ukázkový kód
     cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
     ```
 
-    Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
@@ -100,7 +100,7 @@ V této části sestavíte sadu Azure IoT C SDK, která zahrnuje ukázkový kód
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-2. Přejděte ke kořenové složce úložiště Git, které jste naklonovali, a spusťte simulátor [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) s využitím cesty uvedené níž. Tento simulátor naslouchá přes soket na portech 2321 a 2322. Toto příkazové okno nezavírejte, simulátor je potřeba nechat spuštěný až do konce tohoto rychlého zprovoznění. 
+2. Přejděte ke kořenové složce úložiště Git, které jste naklonovali, a spusťte simulátor [TPM](/windows/device-security/tpm/trusted-platform-module-overview) s využitím cesty uvedené níž. Tento simulátor naslouchá přes soket na portech 2321 a 2322. Toto příkazové okno nezavírejte, simulátor je potřeba nechat spuštěný až do konce tohoto rychlého zprovoznění. 
 
    Pokud jste ve složce *cmake*, spusťte následující příkazy:
 
@@ -119,11 +119,11 @@ V této části sestavíte a spustíte příklad, který ze simulátoru TPM, kte
 
 1. Spusťte sadu Visual Studio a otevřete nový soubor řešení s názvem `azure_iot_sdks.sln`. Tento soubor řešení je umístěný ve složce `cmake`, kterou jste vytvořili v kořenovém adresáři úložiště Git azure-iot-sdk-c.
 
-2. V nabídce sady Visual Studio vyberte **sestavit** > **sestavení řešení** a sestavte všechny projekty v řešení.
+2. V nabídce sady Visual Studio vyberte **sestavit**  >  **sestavení řešení** a sestavte všechny projekty v řešení.
 
 3. V podokně *Průzkumník řešení* sady Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. 
 
-4. V nabídce sady Visual Studio vyberte **ladit** > **Spustit bez ladění** a spusťte řešení. Aplikace načte a zobrazí **_ID registrace_** a **_ověřovací klíč_**. Tyto hodnoty si poznamenejte nebo je zkopírujte. Použijí se v další části pro registraci zařízení. 
+4. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. Aplikace načte a zobrazí **_ID registrace_** a **_ověřovací klíč_**. Tyto hodnoty si poznamenejte nebo je zkopírujte. Použijí se v další části pro registraci zařízení. 
 
 
 <a id="portalenrollment"></a>
@@ -191,7 +191,7 @@ V této části nakonfigurujete ukázkový kód, aby použil [protokol AMQP (Adv
 
 6. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** a vyberte **Nastavit jako spouštěný projekt**. 
 
-7. V nabídce sady Visual Studio vyberte **ladit** > **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano**a znovu sestavte projekt před spuštěním.
+7. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano** a znovu sestavte projekt před spuštěním.
 
     Následující výstup je příkladem úspěšného spuštění ukázky klienta zřizování zařízení a připojení k instanci služby Device Provisioning pro získání informací o centru IoT hub a zajištění registrace:
 
@@ -209,7 +209,7 @@ V této části nakonfigurujete ukázkový kód, aby použil [protokol AMQP (Adv
     test-docs-hub.azure-devices.net, deviceId: test-docs-device
     ```
 
-8. Po zřízení simulovaného zařízení do služby IoT Hub službou zřizování se ID zařízení zobrazí se **zařízeními IoT**centra. 
+8. Po zřízení simulovaného zařízení do služby IoT Hub službou zřizování se ID zařízení zobrazí se **zařízeními IoT** centra. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/quick-create-simulated-device/hub-registration.png) 
 
@@ -220,7 +220,7 @@ Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zař�
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
 2. Zavřete na svém počítači okno simulátoru TPM.
-3. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete **spravovat registrace** pro vaši službu a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a pak stiskněte tlačítko **Odstranit** v horní části podokna. 
+3. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. Otevřete **spravovat registrace** pro vaši službu a pak vyberte kartu **jednotlivé registrace** . Zaškrtněte políčko vedle *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna. 
 4. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte Centrum IoT. Otevřete **zařízení IoT** pro vaše centrum, zaškrtněte políčko vedle *ID zařízení* , které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části podokna.
 
 ## <a name="next-steps"></a>Další kroky

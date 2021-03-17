@@ -1,20 +1,17 @@
 ---
 title: Spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL
 description: Naučte se spouštět balíčky SSIS pomocí agenta Azure SQL Managed instance.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: cf1bf9e05f83610fd43146cf4c99c5006fdc97b3
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 916d799ba08f46cb86ee2e22c4af7fc1b92b385f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171454"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386148"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL
 
@@ -24,19 +21,19 @@ Pomocí této funkce můžete spouštět balíčky SSIS uložené v SSISDB ve sp
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít tuto funkci, [Stáhněte](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) a nainstalujte nejnovější SQL Server Management Studio (SSMS). Podrobnosti o podpoře verze, jak je uvedeno níže:
+Chcete-li použít tuto funkci, [Stáhněte](/sql/ssms/download-sql-server-management-studio-ssms) a nainstalujte nejnovější SQL Server Management Studio (SSMS). Podrobnosti o podpoře verze, jak je uvedeno níže:
 
 - Pokud chcete spouštět balíčky v SSISDB nebo v systému souborů, nainstalujte SSMS verze 18,5 nebo vyšší.
 - Pokud chcete spouštět balíčky v obchodě s balíčky, nainstalujte SSMS verze 18,6 nebo novější.
 
-Také je potřeba [zřídit prostředí Azure-SSIS Integration runtime](tutorial-create-azure-ssis-runtime-portal.md) v Azure Data Factory. Používá spravovanou instanci SQL jako server koncového bodu.
+Také je potřeba [zřídit prostředí Azure-SSIS Integration runtime](./tutorial-deploy-ssis-packages-azure.md) v Azure Data Factory. Používá spravovanou instanci SQL jako server koncového bodu.
 
 ## <a name="run-an-ssis-package-in-ssisdb"></a>Spuštění balíčku SSIS v SSISDB
 
 V tomto postupu použijete agenta spravované instance SQL k vyvolání balíčku SSIS, který je uložený v SSISDB.
 
 1. V nejnovější verzi SSMS se připojte k spravované instanci SQL.
-1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server**klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
+1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server** klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
 
    ![Výběry pro vytvoření nové úlohy agenta](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -66,7 +63,7 @@ V tomto postupu použijete agenta spravované instance SQL k vyvolání balíčk
 V tomto postupu použijete agenta spravované instance SQL ke spuštění balíčku SSIS, který je uložený v systému souborů.
 
 1. V nejnovější verzi SSMS se připojte k spravované instanci SQL.
-1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server**klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
+1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server** klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
 
    ![Výběry pro vytvoření nové úlohy agenta](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -76,7 +73,7 @@ V tomto postupu použijete agenta spravované instance SQL ke spuštění balí�
 
 1. Na kartě **balíček** :
 
-   1. V případě **umístění balíčku**vyberte možnost **systém souborů**.
+   1. V případě **umístění balíčku** vyberte možnost **systém souborů**.
 
    1. Pro **typ zdroje souboru**:
 
@@ -86,7 +83,7 @@ V tomto postupu použijete agenta spravované instance SQL ke spuštění balí�
 
         Cesta k balíčku je **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** .
 
-        V části **přihlašovací údaje pro přístup k souboru balíčku**zadejte název účtu služby Azure a klíč účtu pro přístup k souboru Azure. Doména je nastavená jako **Azure**.
+        V části **přihlašovací údaje pro přístup k souboru balíčku** zadejte název účtu služby Azure a klíč účtu pro přístup k souboru Azure. Doména je nastavená jako **Azure**.
 
       - Pokud se balíček nahraje do sdílené síťové složky, vyberte **Síťová sdílená položka**.
 
@@ -111,7 +108,7 @@ V tomto postupu použijete agenta spravované instance SQL ke spuštění balí�
 V tomto postupu použijete agenta spravované instance SQL ke spuštění balíčku SSIS, který je uložený v úložišti balíčků Azure-SSIS IR.
 
 1. V nejnovější verzi SSMS se připojte k spravované instanci SQL.
-1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server**klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
+1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server** klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
 
    ![Výběry pro vytvoření nové úlohy agenta](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -121,7 +118,7 @@ V tomto postupu použijete agenta spravované instance SQL ke spuštění balí�
 
 1. Na kartě **balíček** :
 
-   1. V případě **umístění balíčku**vyberte možnost **obchod s balíčky**.
+   1. V případě **umístění balíčku** vyberte možnost **obchod s balíčky**.
 
    1. Pro **cestu k balíčku**:
 
@@ -159,4 +156,4 @@ Chcete-li zrušit spuštění balíčku z úlohy agenta spravované instance SQL
 1. Zastavte odpovídající operaci na základě **ExecutionID**.
 
 ## <a name="next-steps"></a>Další kroky
-Balíčky SSIS můžete také naplánovat pomocí Azure Data Factory. Podrobné pokyny najdete v tématu [Azure Data Factory Trigger události](how-to-create-event-trigger.md). 
+Balíčky SSIS můžete také naplánovat pomocí Azure Data Factory. Podrobné pokyny najdete v tématu [Azure Data Factory Trigger události](how-to-create-event-trigger.md).

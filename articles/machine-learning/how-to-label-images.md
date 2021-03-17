@@ -1,23 +1,24 @@
 ---
 title: Označení obrázků v projektu s popisem
 title.suffix: Azure Machine Learning
-description: Naučte se používat nástroje pro označování dat v Azure Machine Learning projektu značení.
+description: Naučte se používat nástroje pro označování dat k rychlé přípravě dat pro Machine Learning v projektu Azure Machine Learning značení.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: data4ml
+ms.openlocfilehash: 5ba399418d8f93204b168c1058be20ffc775ef70
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307195"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096962"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
-Poté, co správce projektu [vytvoří projekt označování](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro označování (Public Preview) k rychlé přípravě dat pro projekt Machine Learning. Tento článek popisuje:
+Poté, co správce projektu [vytvoří projekt popisků dat](./how-to-create-labeling-projects.md#create-a-data-labeling-project) v Azure Machine Learning, můžete použít nástroj pro popisování k rychlé přípravě dat projektu Machine Learning. Tento článek popisuje:
 
 > [!div class="checklist"]
 > * Jak získat přístup k projektům označování
@@ -62,11 +63,7 @@ Azure povolí tlačítko **Odeslat** , když jste označili všechny obrázky na
 
 Po odeslání značek pro data v Azure aktualizuje stránku pomocí nové sady imagí z pracovní fronty.
 
-### <a name="assisted-machine-learning-preview"></a>Strojové učení s asistencí (Preview) 
-
-> [!IMPORTANT]
-> Strojové učení s asistencí je aktuálně ve verzi Public Preview.
-> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+### <a name="assisted-machine-learning"></a>Strojové učení s asistencí
 
 Můžou se aktivovat algoritmy strojového učení. Pokud jsou tyto algoritmy v projektu povolené, může se zobrazit následující:
 
@@ -74,17 +71,24 @@ Můžou se aktivovat algoritmy strojového učení. Pokud jsou tyto algoritmy v 
 
 * Později se můžete podívat na úkoly, které jsou **označené** vedle názvu projektu.  Obrázky se pak zobrazí s navrhovaným popiskem, který pochází z modelu klasifikace Machine Learning. Žádný model strojového učení nemá 100% přesnost. I když používáme jenom image, pro které je model jistý, můžou být tyto image pořád nesprávně označené.  Když vidíte tyto popisky, před odesláním stránky opravte případné nesprávné popisky.  
 
-* Pro modely detekce objektů můžete vidět ohraničená pole a popisky, které už existují.  Opravte všechny, které jsou nesprávné před odesláním stránky.
+* U modelů pro identifikaci objektů můžete vidět ohraničená pole a popisky, které už existují.  Opravte všechny, které jsou nesprávné před odesláním stránky.
+
+* V případě modelů segmentace můžete vidět mnohoúhelníky a popisky, které už existují.  Opravte všechny, které jsou nesprávné před odesláním stránky. 
+
+    > [!IMPORTANT]
+    > Funkce uvedené ve verzi Preview jsou ve verzi Public Preview.   
+    > Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Model strojového učení, který je zvláště zpočátku v rámci označování projektu, může být dostatečně přesný, aby bylo možné předoznačit malou podmnožinu imagí. Po označení těchto imagí se projekt označování vrátí k ručnímu označování, aby se získalo více dat pro další kolo školení o modelu. V průběhu času se model bude spolehlivější o větší část imagí, což vede k pozdějšímu předznačení úkolů v projektu.
 
-## <a name="tag-images-for-multi-class-classification"></a>Obrázky značek pro klasifikaci více tříd
+## <a name="tag-images-for-multi-class-classification"></a>Označování obrázků pro účely klasifikace s více třídami
 
 Pokud je váš projekt typu "Multi-Class klasifikace obrázku", přiřadíte k celému obrázku jednu značku. Pokud si chcete projít pokyny kdykoli, navštivte stránku s **pokyny** a vyberte **Zobrazit podrobné pokyny**.
 
-Pokud si myslíte, že jste po přiřazení značky k imagi udělali chybu, můžete ji opravit. Vyberte**X**na popisku, který je zobrazený pod obrázkem, a vymažte značku. Případně vyberte obrázek a zvolte jinou třídu. Nově vybraná hodnota nahradí dřív použitou značku.
+Pokud si myslíte, že jste po přiřazení značky k imagi udělali chybu, můžete ji opravit. Vyberte **X** na popisku, který je zobrazený pod obrázkem, a vymažte značku. Případně vyberte obrázek a zvolte jinou třídu. Nově vybraná hodnota nahradí dřív použitou značku.
 
-## <a name="tag-images-for-multi-label-classification"></a>Obrázky značek pro klasifikaci s více štítky
+## <a name="tag-images-for-multi-label-classification"></a>Označování obrázků pro účely klasifikace s více popisky
 
 Pokud pracujete na projektu typu vícenásobný popisek klasifikace obrázku, použijete jednu *nebo více* značek pro obrázek. Chcete-li zobrazit směry specifické pro projekt, vyberte **pokyny** a přejděte k **zobrazení podrobných pokynů**.
 
@@ -103,7 +107,7 @@ Chcete-li opravit chybu, klikněte na "**X**", chcete-li vymazat jednotlivou zna
 Azure povolí tlačítko **Odeslat** jenom po použití aspoň jedné značky pro každý obrázek. Vyberte **Odeslat** a uložte svou práci.
 
 
-## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Tagování obrázků a určení ohraničujících polí pro detekci objektů
+## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Označování obrázků a určování ohraničujících rámečků pro účely detekce objektů
 
 Pokud je váš projekt typu "Identifikace objektu (ohraničující pole)", zadáte jeden nebo více ohraničujících polí v obrázku a použijete značku pro každé pole. Obrázky mohou mít více ohraničujících polí, z nichž každá má jednu značku. Použijte **Zobrazit podrobné pokyny** k určení, zda je v projektu použito více ohraničujících polí.
 
@@ -111,7 +115,7 @@ Pokud je váš projekt typu "Identifikace objektu (ohraničující pole)", zadá
 1. Vyberte **obdélníkový** panel nástrojů obdélníkového pole ![ ](./media/how-to-label-images/rectangular-box-tool.png) nebo vyberte R.
 3. Kliknutím a přetažením úhlopříčně v celém cíli vytvoříte hrubě ohraničující rámeček. Chcete-li upravit ohraničovací rámeček, přetáhněte okraje nebo rohy.
 
-![Snímek obrazovky ukazuje vytvoření základního ohraničovacího rámečku.](./media/how-to-label-images/bounding-box-sequence.png)
+![Vytváření ohraničovacího rámečku](./media/how-to-label-images/bounding-box-sequence.png)
 
 Chcete-li odstranit ohraničovací rámeček, klikněte na cíl ve tvaru X, který se po vytvoření zobrazí vedle ohraničujícího rámečku.
 
@@ -119,21 +123,44 @@ Nemůžete změnit značku existujícího ohraničovacího rámečku. Pokud udě
 
 Ve výchozím nastavení můžete upravit existující ohraničovací rámečky. Nástroj pro zamčení/odemčení **oblastí** nástroje ![ ](./media/how-to-label-images/lock-bounding-boxes-tool.png) nebo "L" přepíná toto chování. Pokud jsou oblasti zamčené, můžete změnit jenom tvar nebo umístění nového ohraničovacího rámečku.
 
-Chcete-li upravit existující ohraničovací rámeček, použijte nástroj pro manipulaci s oblastmi pro manipulaci s **oblastmi** ![ ](./media/how-to-label-images/regions-tool.png) nebo "M". Přetažením okrajů nebo rohů upravte tvar. Klikněte na vnitřek, abyste mohli přetahovat celý ohraničovací rámeček. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
+Použijte nástroj pro **manipulaci s oblastmi** ![ : ikona nástroje pro manipulaci s oblastmi – čtyři šipky směřující ven od středu, nahoru, doprava, dolů a doleva.](./media/how-to-label-images/regions-tool.png) nebo "M", chcete-li upravit existující ohraničovací rámeček. Přetažením okrajů nebo rohů upravte tvar. Klikněte na vnitřek, abyste mohli přetahovat celý ohraničovací rámeček. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
 
-**Template-based box** ![ ](./media/how-to-label-images/template-box-tool.png) K vytvoření více ohraničujících polí se stejnou velikostí použijte nástroj pro pole šablony založené na šablonách nebo "T". Pokud se v obrázku neobsahují žádná ohraničující pole a aktivujete pole na základě šablon, nástroj vytvoří pole 50 až 50-pixel. Pokud vytvoříte ohraničující rámeček a pak aktivujete pole založené na šablonách, budou mít všechny nové ohraničovací rámečky velikost posledního pole, které jste vytvořili. Po umístění lze změnit velikost polí založených na šablonách. Změna velikosti pole založeného na šablonách mění pouze velikost určitého pole.
+ ![ ](./media/how-to-label-images/template-box-tool.png) K vytvoření více ohraničujících polí se stejnou velikostí použijte nástroj pro pole šablony založené na šablonách nebo "T". Pokud se v obrázku neobsahují žádná ohraničující pole a aktivujete pole na základě šablon, nástroj vytvoří pole 50 až 50-pixel. Pokud vytvoříte ohraničující rámeček a pak aktivujete pole založené na šablonách, budou mít všechny nové ohraničovací rámečky velikost posledního pole, které jste vytvořili. Po umístění lze změnit velikost polí založených na šablonách. Změna velikosti pole založeného na šablonách mění pouze velikost určitého pole.
 
 Chcete-li odstranit *všechny* ohraničovací rámečky v aktuální imagi, vyberte nástroj **Odstranit všechny oblasti** nástroj ![ Odstranit oblasti ](./media/how-to-label-images/delete-regions-tool.png) .
 
 Po vytvoření ohraničujících polí pro obrázek vyberte **Odeslat** a uložte svou práci, jinak se vaše Nedokončená práce nebude ukládat.
 
+## <a name="tag-images-and-specify-polygons-for-image-segmentation"></a>Tagování obrázků a určení mnohoúhelníků pro segmentaci obrázků 
+
+Pokud je váš projekt typu "segmentace instancí (mnohoúhelník)", zadáte jeden nebo více mnohoúhelníků v obrázku a použijete značku na každý mnohoúhelník. Obrázky mohou mít více ohraničujících mnohoúhelníků, z nichž každá má jednu značku. Použijte **Zobrazit podrobné pokyny** k určení, zda je v projektu použito více ohraničujících mnohoúhelníků.
+
+1. Vyberte značku mnohoúhelníku, kterou chcete vytvořit.
+1. Vyberte nástroj **roztažení oblasti mnohoúhelníku** panel pro ![ vykreslení oblasti mnohoúhelníku ](./media/how-to-label-images/polygon-tool.png) nebo vyberte "P".
+1. Klikněte na každý bod mnohoúhelníku.  Po dokončení tohoto tvaru poklikejte na tlačítko Dokončit.
+
+    :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Vytváření mnohoúhelníků pro Cat a pes":::
+
+Chcete-li odstranit mnohoúhelník, klikněte na cíl ve tvaru X, který se po vytvoření zobrazí vedle mnohoúhelníku.
+
+Chcete-li změnit značku mnohoúhelníku, vyberte nástroj **přesunout oblast** , klikněte na mnohoúhelník a vyberte správnou značku.
+
+Můžete upravit existující mnohoúhelníky. Nástroj **oblasti uzamčení/odemknutí** ![ upraví mnohoúhelníky pomocí nástroje pro uzamknutí/odemknutí oblastí ](./media/how-to-label-images/lock-bounding-boxes-tool.png) nebo "L" přepíná toto chování. Pokud jsou oblasti zamčené, můžete změnit jenom tvar nebo umístění nového mnohoúhelníku.
+
+Použijte nástroj **Přidat nebo odebrat body mnohoúhelníku** ![ Toto je ikona nástroje Přidat nebo odebrat body mnohoúhelníku.](./media/how-to-label-images/add-remove-points-tool.png) nebo "U", chcete-li upravit existující mnohoúhelník. Kliknutím na mnohoúhelník přidáte nebo odeberete bod. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
+
+Chcete-li odstranit *všechny* mnohoúhelníky v aktuální imagi, vyberte nástroj **Odstranit všechny oblasti** nástroj ![ Odstranit všechny oblasti ](./media/how-to-label-images/delete-regions-tool.png) .
+
+Po vytvoření mnohoúhelníků pro obrázek vyberte **Odeslat** a uložte svou práci, jinak se vaše Nedokončená práce nebude ukládat.
+
 ## <a name="finish-up"></a>Dokončení
 
 Když odešlete stránku s tagovanými daty, Azure vám z pracovní fronty přiřadí nová neoznačená data. Pokud nejsou k dispozici žádná další neoznačená data, zobrazí se zpráva s odkazem na domovskou stránku portálu.
 
-Až budete s popiskem hotovi, vyberte své jméno v pravém horním rohu portálu pro označování a pak vyberte **Odhlásit**se. Pokud se odhlásíte, nakonec Azure vyprší časový limit a přiřadíte data jinému popisku.
+Až budete s popiskem hotovi, vyberte své jméno v pravém horním rohu portálu pro označování a pak vyberte **Odhlásit** se. Pokud se odhlásíte, nakonec Azure vyprší časový limit a přiřadíte data jinému popisku.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se naučit [modely klasifikace imagí v Azure](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml) .
+* Naučte se naučit [modely klasifikace imagí v Azure](./tutorial-train-models-with-aml.md) .
+
 

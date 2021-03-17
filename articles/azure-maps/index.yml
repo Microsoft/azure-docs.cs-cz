@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 01fb176ad6dc2ce097beddf03b724628ba3e1032
-  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+  ms.openlocfilehash: 17113e3a2564ed56ecbcf8e34de27c4fe398ce03
+  ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/18/2020
-  ms.locfileid: "88509922"
+  ms.lasthandoff: 12/18/2020
+  ms.locfileid: "97680675"
 landingContent:
 - title: Informace o službě Azure Maps
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Pokrytí služby Azure Maps
-      url: render-coverage.md
+      url: geographic-coverage.md
     - text: Podpora lokalizace
       url: supported-languages.md
     - text: Podporované styly map
@@ -40,6 +40,8 @@ landingContent:
     links:
     - text: Vytvoření webové aplikace s využitím Azure Maps
       url: quick-demo-map-app.md
+    - text: Vytvoření aplikace pro Android s využitím Azure Maps
+      url: quick-android-map.md
   - linkListType: concept
     links:
     - text: Volba vhodné cenové úrovně pro účet Maps
@@ -77,17 +79,17 @@ landingContent:
     - text: Použití modulu interiérových map
       url: how-to-use-indoor-module.md
     - text: Použití Azure Digital Twins k aktualizaci plánku vnitřních prostor
-      url: https://docs.microsoft.com/azure/digital-twins/how-to-integrate-maps
+      url: ../digital-twins/how-to-integrate-maps.md
   - linkListType: reference
     links:
     - text: Převodní služba
-      url: https://docs.microsoft.com/rest/api/maps/conversion
+      url: /rest/api/maps/conversion
     - text: Služba datových sad
-      url: https://docs.microsoft.com/rest/api/maps/dataset
+      url: /rest/api/maps/dataset
     - text: Služba sad dlaždic
-      url: https://docs.microsoft.com/rest/api/maps/tileset
+      url: /rest/api/maps/tileset
     - text: Služba stavu funkcí
-      url: https://docs.microsoft.com/rest/api/maps/featurestate
+      url: /rest/api/maps/featurestate
 - title: Vývoj s využitím sady Web SDK
   linkLists:
   - linkListType: concept
@@ -121,21 +123,35 @@ landingContent:
   - linkListType: reference
     links:
     - text: Mapový ovládací prvek
-      url: https://docs.microsoft.com/javascript/api/azure-maps-control/?view=azure-maps-typescript-latest
+      url: /javascript/api/azure-maps-control/
     - text: Modul nástrojů pro kreslení
-      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
+      url: /javascript/api/azure-maps-drawing-tools/
     - text: Modul služeb
-      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+      url: /javascript/api/azure-maps-rest/
     - text: Prostorový modul V/V
-      url: https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/?view=azure-maps-typescript-latest
+      url: /javascript/api/azure-maps-spatial-io/
 - title: Vývoj s využitím sady Android SDK
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Načítání dat GeoJSON do map
+      url: tutorial-load-geojson-file-android.md
   - linkListType: how-to-guide
     links:
     - text: Začínáme s mapovým ovládacím prvkem Androidu
       url: how-to-use-android-map-control-library.md
-    - text: Zobrazení informací o metadatech funkce
-      url: display-feature-information-android.md
+    - text: Vytvoření zdroje dat
+      url: create-data-source-android-sdk.md
+    - text: Přidání vrstvy bublin
+      url: map-add-bubble-layer-android.md
+    - text: Přidání vrstvy symbolů
+      url: how-to-add-symbol-to-android-map.md
+    - text: Přidání řádkové vrstvy
+      url: android-map-add-line-layer.md
+    - text: Přidání mnohoúhelníkové vrstvy
+      url: how-to-add-shapes-to-android-map.md
+    - text: Použití výrazů pro styly založené na datech
+      url: data-driven-style-expressions-android-sdk.md
     - text: Přidání vrstvy dlaždic do mapy
       url: how-to-add-tile-layer-android-map.md
     - text: Přidání tvarů do mapy
@@ -165,13 +181,23 @@ landingContent:
   - linkListType: reference
     links:
     - text: Služba Search
-      url: https://docs.microsoft.com/rest/api/maps/search
+      url: /rest/api/maps/search
     - text: Služba Route
-      url: https://docs.microsoft.com/rest/api/maps/route
+      url: /rest/api/maps/route
     - text: Služba Traffic
-      url: https://docs.microsoft.com/rest/api/maps/traffic
+      url: /rest/api/maps/traffic
     - text: Služba Time Zones
-      url: https://docs.microsoft.com/rest/api/maps/timezone
+      url: /rest/api/maps/timezone
+- title: Vývoj s využitím služby Elevation
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Jak načítat a používat údaje o zvýšení oprávnění
+      url: how-to-request-elevation-data.md
+  - linkListType: reference
+    links:
+    - text: Služba Elevation
+      url: /rest/api/maps/elevation/
 - title: Prostorová analýza
   linkLists:
   - linkListType: concept
@@ -187,9 +213,9 @@ landingContent:
   - linkListType: reference
     links:
     - text: Služba Data
-      url: https://docs.microsoft.com/rest/api/maps/data
+      url: /rest/api/maps/data
     - text: Služba Spatial
-      url: https://docs.microsoft.com/rest/api/maps/spatial
+      url: /rest/api/maps/spatial
 - title: Prostorové analýzy s využitím Power BI
   linkLists:
   - linkListType: how-to-guide
@@ -204,7 +230,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Datové struktury služeb Mobility
+    - text: Služby Mobility
       url: mobility-service-data-structure.md
   - linkListType: how-to-guide
     links:
@@ -214,19 +240,25 @@ landingContent:
       url: how-to-request-real-time-data.md
   - linkListType: reference
     links:
-    - text: Služba Mobility
-      url: https://docs.microsoft.com/rest/api/maps/mobility
-- title: Vývoj s využitím služeb Mobility
+    - text: Služby Mobility
+      url: /rest/api/maps/mobility
+- title: Vývoj s využitím služeb Weather
   linkLists:
   - linkListType: concept
     links:
     - text: Koncepce služby Weather
       url: weather-services-concepts.md
+    - text: Nejčastější dotazy ke službě Weather
+      url: weather-services-faq.md
   - linkListType: tutorial
     links:
     - text: Analýza dat o počasí s využitím Azure Notebooks (Python)
       url: weather-service-tutorial.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vyžádání předpovědí a údajů o počasí v reálném čase
+      url: how-to-request-weather-data.md
   - linkListType: reference
     links:
-    - text: Služba Weather
-      url: https://docs.microsoft.com/rest/api/maps/weather
+    - text: Služby Weather
+      url: /rest/api/maps/weather

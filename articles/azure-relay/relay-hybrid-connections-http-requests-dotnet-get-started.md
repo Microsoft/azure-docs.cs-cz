@@ -2,13 +2,14 @@
 title: Azure Relay požadavky HTTP Hybrid Connections v .NET
 description: Napište konzolovou aplikaci v jazyce C# pro požadavky HTTP Azure Relay Hybrid Connections v .NET.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 270e1bf0f9655705afe4d3657af03152957227c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a11abb984da3601a4d6aa921224e01f94d0871c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317053"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88922578"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Začínáme s požadavky HTTP Relay Hybrid Connections v .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -62,4 +63,4 @@ Blahopřejeme, vytvořili jste kompletní aplikaci Hybrid Connections!
 
 V tomto rychlém startu jste vytvořili klienta rozhraní .NET a serverové aplikace, které používaly protokol HTTP k odesílání a přijímání zpráv. Funkce Hybrid Connections Azure Relay také podporuje použití WebSockets k posílání a přijímání zpráv. Další informace o použití WebSockets s Azure Relay Hybrid Connections najdete v tématu [rychlý Start pro WebSockets](relay-hybrid-connections-dotnet-get-started.md).
 
-V tomto rychlém startu jste použili .NET Framework k vytváření klientských a serverových aplikací. Informace o tom, jak psát klientské a serverové aplikace pomocí Node.js, najdete v tématu [rychlý Start kNode.js WebSockets](relay-hybrid-connections-node-get-started.md) nebo v [rychlém startu proNode.js http](relay-hybrid-connections-http-requests-dotnet-get-started.md).
+V tomto rychlém startu jste použili .NET Framework k vytváření klientských a serverových aplikací. Informace o tom, jak psát klientské a serverové aplikace pomocí Node.js, najdete v tématu [ rychlý Start kNode.js WebSockets](relay-hybrid-connections-node-get-started.md) nebo v [ rychlém startu proNode.js http](relay-hybrid-connections-http-requests-dotnet-get-started.md).

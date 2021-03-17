@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
-ms.openlocfilehash: f04ae0d2e541be0a7984e944298fa8d7b47fd126
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "84872699"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021091"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>Kurz: vytvoření připojení ke službě peering Service
 
 V tomto kurzu se dozvíte, jak vytvořit prostředek služby partnerského vztahu a jak nakonfigurovat připojení ke službě peering Service. 
 
-1. Pokud chcete zaregistrovat připojení ke službě peering Service, vyberte **vytvořit službu pro vytváření**  >  **partnerských vztahů**k prostředkům.
+1. Pokud chcete zaregistrovat připojení ke službě peering Service, vyberte **vytvořit službu pro vytváření**  >  **partnerských vztahů** k prostředkům.
 
  
     ![Registrace služby Peering Service](./media/peering-service-portal/peering-servicecreate.png)
@@ -43,13 +43,13 @@ V tomto kurzu se dozvíte, jak vytvořit prostředek služby partnerského vztah
 
 1. Vyberte **klíč předpony** a přidejte klíč předpony, který vám dal poskytovatel (ISP nebo IXP). Tento klíč umožňuje společnosti Microsoft ověřit předponu a poskytovatele, kteří mají přidělenou předponu IP.
 
-    ![Zaregistrovat kartu konfigurace partnerského vztahu služby](./media/peering-service-portal/peering-serviceconfiguration.png)
+    ![Snímek obrazovky se zobrazí karta konfigurace na stránce vytvořit připojení ke službě partnerského vztahu, kde můžete zadat klíč předpony.](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. V levém dolním rohu stránky vyberte tlačítko **Revize + vytvořit** . Zobrazí se stránka **Revize + vytvořit** a Azure ověří vaši konfiguraci.
 
  1. Až se zobrazí zpráva s **potvrzením úspěšného ověření** , vyberte **vytvořit**.
 
-> ![Zaregistrovat kartu konfigurace partnerského vztahu služby](./media/peering-service-portal/peering-service-prefix.png)
+> ![Snímek obrazovky s kartou pro vytváření připojení ke službě peering Service se zobrazí na stránce pro kontrolu a vytvoření.](./media/peering-service-portal/peering-service-prefix.png)
 
 1. Po registraci připojení ke službě peering Service se pro zahrnuté předpony provede další ověřování. Stav ověření můžete zkontrolovat v části **předpony** názvu prostředku. Pokud se ověření nepovede, zobrazí se jedna z následujících chybových zpráv:
 

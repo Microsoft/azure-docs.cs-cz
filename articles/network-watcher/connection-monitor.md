@@ -12,17 +12,23 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76834650"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570847"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
+
+> [!NOTE]
+> Tento kurz se zabývá monitorováním připojení (Classic). Vyzkoušejte si nové a vylepšené monitorování [připojení](connection-monitor-overview.md) , aby se vylepšilo monitorování připojení.
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moct přidat nové monitorování připojení v monitorování připojení (klasické), ale můžete dál používat existující monitory připojení vytvořené před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte z monitoru připojení (Classic) na nové monitorování připojení](migrate-to-connection-monitor-from-connection-monitor-classic.md) v Azure Network Watcher před 29. února 2024.
 
 Úspěšná komunikace mezi virtuálním počítačem a koncovým bodem, jako je například jiný virtuální počítač, může být pro organizaci velmi důležitá. Někdy se zavádějí změny konfigurace, po kterých může dojít k narušení komunikace. V tomto kurzu se naučíte:
 
@@ -32,11 +38,13 @@ ms.locfileid: "76834650"
 > * Generovat upozornění na metriky monitorování připojení
 > * Diagnostikovat a vyřešit potíže s komunikací mezi dvěma virtuálními počítači
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Vytvoření virtuálních počítačů
 
@@ -52,7 +60,7 @@ Vytvořte dva virtuální počítače.
     |---|---|
     |Název|myVm1|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
     |Umístění| Vyberte **východní USA**|
@@ -73,7 +81,7 @@ Proveďte znovu kroky uvedené v části [Vytvoření prvního virtuálního po�
 |Krok|Nastavení|Hodnota|
 |---|---|---|
 | 1 | Vybrat verzi **serveru Ubuntu** |                                                                         |
-| 3 | Název                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Typ ověřování                   | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
 | 3 | Skupina prostředků                        | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
 | 6 | Rozšíření                            | **Agent Network Watcher pro Linux**                                             |
@@ -85,7 +93,7 @@ Nasazení virtuálního počítače trvá několik minut. Než budete pokračova
 Vytvořte monitorování připojení pro monitorování komunikace přes port TCP 22 z *myVm1* do *myVm2*.
 
 1. Na levé straně portálu vyberte **Všechny služby**.
-2. Do pole **Filtr** začněte psát *network watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
+2. Do pole **Filtr** začněte psát *network watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 3. V části **MONITOROVÁNÍ** vyberte **Monitorování připojení**.
 4. Vyberte **+ Přidat**.
 5. Zadejte nebo vyberte informace o připojení, které chcete monitorovat, a pak vyberte **Přidat**. V příkladu na následujícím obrázku se monitoruje připojení z virtuálního počítače *myVm1* do virtuálního počítače *myVm2* přes port 22:
@@ -129,7 +137,7 @@ Upozornění vytvářejí pravidla upozornění služby Azure Monitor. Pravidla 
 2. Klikněte na **Vybrat cíl** a pak vyberte prostředky, na které chcete cílit. Vyberte **Předplatné** a nastavte **Typ prostředku**, abyste vyfiltrovali monitorování připojení, které chcete použít.
 
     ![Obrazovka upozornění s vybraným cílem](./media/connection-monitor/set-alert-rule.png)
-1. Jakmile vyberete prostředek, na který chcete cílit, vyberte **Přidat kritéria**. Network Watcher nabízí [metriky, podle kterých můžete vytvářet upozornění](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported). Nastavte **Dostupné signály** na metriky ProbesFailedPercent a AverageRoundtripMs:
+1. Jakmile vyberete prostředek, na který chcete cílit, vyberte **Přidat kritéria**. Network Watcher nabízí [metriky, podle kterých můžete vytvářet upozornění](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Nastavte **Dostupné signály** na metriky ProbesFailedPercent a AverageRoundtripMs:
 
     ![Stránka upozornění s vybranými signály](./media/connection-monitor/set-alert-signals.png)
 1. Vyplňte podrobnosti o upozornění, jako je název pravidla upozornění, popis a závažnost. K upozornění můžete také přidat skupinu akcí, která vám umožní automatizovat a přizpůsobit reakci na upozornění.

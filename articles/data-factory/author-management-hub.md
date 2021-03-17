@@ -1,20 +1,17 @@
 ---
 title: Centrum správy
 description: Správa připojení, konfigurace správy zdrojového kódu a vlastností globálního vytváření v centru pro správu Azure Data Factory
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-author: djpmsft
-ms.author: daperlov
-manager: anandsub
-ms.date: 06/02/2020
-ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+author: dcstwh
+ms.author: weetok
+ms.date: 02/01/2021
+ms.openlocfilehash: b4b9ecef84f8ffcc82107299ad6603466380d1c0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851977"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371494"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Centrum správy v Azure Data Factory
 
@@ -34,13 +31,17 @@ Propojené služby definují informace o připojení pro Azure Data Factory pro 
 
 Prostředí Integration runtime je výpočetní infrastruktura, kterou používá Azure Data Factory k poskytování možností integrace dat napříč různými síťovými prostředími. Další informace získáte v [konceptech modulu runtime integrace](concepts-integration-runtime.md). V centru pro správu můžete vytvořit, odstranit a monitorovat prostředí Integration runtime.
 
-![Spravovat prostředí Integration runtime](media/author-management-hub/management-hub-integration-runtime.png)
+![Správa modulů runtime integrace](media/author-management-hub/management-hub-integration-runtime.png)
 
 ## <a name="manage-source-control"></a>Spravovat správu zdrojového kódu
 
 ### <a name="git-configuration"></a>Konfigurace Gitu
 
-Zobrazení a úprava nakonfigurovaných nastavení úložiště Git v centru pro správu. Další informace o [správě zdrojového kódu najdete v Azure Data Factory](source-control.md).
+Všechny informace týkající se Gitu můžete zobrazit nebo upravit v nastavení konfigurace Gitu v centru pro správu. 
+
+V seznamu jsou uvedené informace o naposledy publikovaných potvrzeních, které vám pomůžou pochopit přesné potvrzení, které bylo naposledy Publikováno nebo nasazeno v různých prostředích. Může to být užitečné i při opravách v produkčním prostředí.
+
+Další informace o [správě zdrojového kódu najdete v Azure Data Factory](source-control.md).
 
 ![Spravovat úložiště Git](media/author-management-hub/management-hub-git.png)
 
@@ -56,7 +57,7 @@ Chcete-li při publikování z větve spolupráce přepsat vygenerované paramet
 
 Triggery určují, kdy se má spustit spuštění kanálu. Aktuálně triggery můžou být na časovém plánu na zdi, pracují v pravidelných intervalech nebo závisí na události. Další informace najdete v informacích o [spuštění aktivační události](concepts-pipeline-execution-triggers.md#trigger-execution). V centru pro správu můžete vytvořit, upravit, odstranit nebo zobrazit aktuální stav triggeru.
 
-![Správa vlastních parametrů](media/author-management-hub/management-hub-triggers.png)
+![Snímek obrazovky, který ukazuje, kde vytvořit, upravit, odstranit nebo zobrazit aktuální stav triggeru](media/author-management-hub/management-hub-triggers.png)
 
 ### <a name="global-parameters"></a>Globální parametry
 

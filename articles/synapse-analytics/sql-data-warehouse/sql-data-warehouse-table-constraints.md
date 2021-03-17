@@ -1,43 +1,43 @@
 ---
 title: Primární, cizí a jedinečné klíče
-description: Podpora omezení tabulky v synapse fondu SQL ve službě Azure synapse Analytics
+description: Omezení tabulky podporují používání vyhrazeného fondu SQL ve službě Azure synapse Analytics
 services: synapse-analytics
-author: XiaoyuMSFT
+author: mstehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 09/05/2019
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 562e2cce317d8774ecf72971d53be4f66f9c3da4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88b63ce30000340a70811e9f623e4273ccbb272a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212764"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117278"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Primární klíč, cizí klíč a jedinečný klíč v synapse fondu SQL
+# <a name="primary-key-foreign-key-and-unique-key-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Primární klíč, cizí klíč a jedinečný klíč pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
-Přečtěte si o omezeních tabulek v synapse fondu SQL, včetně primárního klíče, cizího klíče a jedinečného klíče.
+Přečtěte si o omezeních tabulek ve vyhrazeném fondu SQL, včetně primárního klíče, cizího klíče a jedinečného klíče.
 
 ## <a name="table-constraints"></a>Omezení tabulky
 
-Synapse fond SQL podporuje tato omezení tabulky: 
+Vyhrazený fond SQL podporuje tato omezení tabulky: 
 - PRIMÁRNÍ klíč se podporuje jenom v případě, že se používají jenom neclusterované a nevynucované.    
 - JEDINEČNÉ omezení se podporuje jenom s nevynucovaném využitím.
 
-Pro syntaxi můžete zaškrtnout možnost [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) and [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse). 
+Pro syntaxi můžete zaškrtnout možnost [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) and [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse). 
 
-Omezení CIZÍho klíče není ve fondu SQL synapse podporováno.  
+Omezení CIZÍho klíče není ve vyhrazeném fondu SQL podporováno.  
 
 
 ## <a name="remarks"></a>Poznámky
 
-Pokud má primární klíč a/nebo jedinečný klíč, může synapse modul SQL Pool generovat optimální plán spouštění pro dotaz.  Všechny hodnoty ve sloupci primárního klíče nebo ve sloupci jedinečné omezení by měly být jedinečné.
+S primárním klíčem a/nebo jedinečným klíčem umožňuje vyhrazený modul SQL poolu vygenerovat pro dotaz optimální plán spouštění.  Všechny hodnoty ve sloupci primárního klíče nebo ve sloupci jedinečné omezení by měly být jedinečné.
 
-Po vytvoření tabulky s primárním klíčem nebo omezením Unique v synapse fondu SQL musí uživatelé zajistit, aby všechny hodnoty v těchto sloupcích byly jedinečné.  Porušení, které by mohlo způsobit, že dotaz vrátí nepřesný výsledek.  Tento příklad ukazuje, jak může dotaz vracet nepřesný výsledek, pokud sloupec primárního klíče nebo jedinečné omezení obsahuje duplicitní hodnoty.  
+Po vytvoření tabulky s primárním klíčem nebo jedinečným omezením ve vyhrazeném fondu SQL musí uživatelé zajistit, aby všechny hodnoty v těchto sloupcích byly jedinečné.  Porušení, které by mohlo způsobit, že dotaz vrátí nepřesný výsledek.  Tento příklad ukazuje, jak může dotaz vracet nepřesný výsledek, pokud sloupec primárního klíče nebo jedinečné omezení obsahuje duplicitní hodnoty.  
 
 ```sql
  -- Create table t1
@@ -164,12 +164,13 @@ a1          total
 
 ## <a name="examples"></a>Příklady
 
-Vytvořte tabulku synapse fondu SQL s primárním klíčem: 
+Vytvořte vyhrazenou tabulku fondu SQL s primárním klíčem: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Vytvořte tabulku synapse fondu SQL s jedinečným omezením:
+
+Vytvořte vyhrazenou tabulku fondu SQL s jedinečným omezením:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -177,4 +178,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření tabulek pro fond SQL synapse je dalším krokem načtení dat do tabulky. Kurz načítání najdete v tématu [načtení dat do synapse fondu SQL](load-data-wideworldimportersdw.md).
+Po vytvoření tabulek pro vyhrazený fond SQL je dalším krokem načtení dat do tabulky. Kurz načítání najdete v tématu [načtení dat do vyhrazeného fondu SQL](load-data-wideworldimportersdw.md).

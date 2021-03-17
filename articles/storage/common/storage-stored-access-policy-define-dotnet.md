@@ -10,12 +10,13 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c9c267097f681a78ba940283096b2c18d692e9cc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6cd6147fbe38710bcefd580e71be1d6f5d446a21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185362"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89010745"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>Vytvoření uložené zásady přístupu pomocí .NET
 

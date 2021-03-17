@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak vytvořit trezor Recovery Services,
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263414"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89180571"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 
@@ -24,25 +24,25 @@ Když zálohujete data v Azure, ukládáte tato data do prostředku Azure označ
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 Trezor služby Recovery Services obsahuje zálohovaná data a zásadu zálohování, která se používá pro chráněné virtuální počítače. Zálohování virtuálních počítačů je místní proces. Virtuální počítač nemůžete zálohovat z jednoho umístění do trezoru Recovery Services v jiném umístění. Pro každou oblast Azure s virtuálními počítači, které se mají zálohovat, tedy musí existovat alespoň jeden trezor služby Recovery Services.
 
-1. V nabídce vlevo vyberte **všechny služby**.
+1. V nabídce vlevo vyberte **Všechny služby**.
 
-    ![Vybrat všechny služby](./media/tutorial-backup-vm-at-scale/click-all-services.png)
+    ![Vyberte Všechny služby.](./media/tutorial-backup-vm-at-scale/click-all-services.png)
 
-1. V dialogovém okně **všechny služby** zadejte *Recovery Services*. Seznam prostředků se filtruje podle vašeho zadání. V seznamu prostředků vyberte **Recovery Services trezory**.
+1. V dialogovém okně **Všechny služby** zadejte *Recovery Services*. Seznam prostředků se filtruje podle vašeho zadání. Ze seznamu prostředků vyberte **Trezory služby Recovery Services**.
 
-    ![Zadejte a vyberte trezory Recovery Services.](./media/tutorial-backup-vm-at-scale/all-services.png)
+    ![Zadání a volba trezorů služby Recovery Services](./media/tutorial-backup-vm-at-scale/all-services.png)
 
-    Zobrazí se seznam trezorů Recovery Services v předplatném.
+    Zobrazí se seznam trezorů služby Recovery Services v předplatném.
 
-1. Na řídicím panelu **trezorů Recovery Services** vyberte **Přidat**.
+1. Na řídicím panelu **Trezory služby Recovery Services** vyberte **Přidat**.
 
-    ![Přidání trezoru Recovery Services](./media/tutorial-backup-vm-at-scale/add-button-create-vault.png)
+    ![Přidání trezoru služby Recovery Services](./media/tutorial-backup-vm-at-scale/add-button-create-vault.png)
 
 1. V nabídce Trezor služby Recovery Services:
 
@@ -53,15 +53,15 @@ Trezor služby Recovery Services obsahuje zálohovaná data a zásadu zálohová
 
     ![Recovery Services hodnoty trezoru](./media/tutorial-backup-vm-at-scale/review-and-create.png)
 
-    Trezor služby Recovery Services musí být ve stejném umístění jako chráněné virtuální počítače. Pokud máte virtuální počítače v několika oblastech, vytvořte trezor služby Recovery Services v každé z nich. V tomto kurzu se vytvoří trezor služby Recovery Services v oblasti *Západní Evropa*, protože tam se vytvořil virtuální počítač *myVM* (vytvořený pomocí rychlého startu).
+    Trezor služby Recovery Services musí být ve stejném umístění jako chráněné virtuální počítače. Pokud máte virtuální počítače v několika oblastech, vytvořte trezor služby Recovery Services v každé z nich. V tomto kurzu se vytvoří Recovery Services trezor v *západní Evropa* , protože to je místo, kde se vytvořilo *myVM* (virtuální počítač vytvořený pomocí rychlého startu).
 
-1. Až budete připraveni k vytvoření trezoru Recovery Services, vyberte **vytvořit**.
+1. Až budete připraveni vytvořit trezor služby Recovery Services, vyberte **Vytvořit**.
 
-    ![Vytvoření trezoru Recovery Services](./media/tutorial-backup-vm-at-scale/click-create-button.png)
+    ![Vytvoření trezoru služby Recovery Services](./media/tutorial-backup-vm-at-scale/click-create-button.png)
 
-1. Vytvoření trezoru Recovery Services může chvíli trvat. Sledujte oznámení o stavu v oblasti **oznámení** v pravém horním rohu portálu. Když je trezor vytvořený, zobrazí se v seznamu trezorů Recovery Services. Pokud váš trezor nevidíte, vyberte **aktualizovat**.
+1. Vytvoření trezoru služby Recovery Services může chvíli trvat. Sledujte oznámení o stavu v oblasti **Oznámení** v pravém horním rohu portálu. Po vytvoření se trezor zobrazí v seznamu trezorů služby Recovery Services. Pokud trezor nevidíte, vyberte **Aktualizovat**.
 
-     ![Aktualizuje seznam trezorů služby Backup.](./media/tutorial-backup-vm-at-scale/refresh-button.png)
+     ![Aktualizace seznamu trezorů záloh](./media/tutorial-backup-vm-at-scale/refresh-button.png)
 
 Když vytvoříte trezor služby Recovery Services, ve výchozím nastavení využívá geograficky redundantní úložiště. Geograficky redundantní úložiště za účelem zajištění odolnosti dat několikrát replikuje data mezi dvěma oblastmi Azure.
 
@@ -136,7 +136,7 @@ Spuštění úlohy zálohování na vyžádání:
 
 1. V místní nabídce vyberte **Zálohovat nyní**.
 
-    ![Místní nabídka](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![Místní nabídka – vybrat zálohování hned](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     Otevře se nabídka Zálohovat nyní.
 
@@ -166,7 +166,7 @@ Pokud máte v úmyslu pokračovat v práci s dalšími kurzy, neprovádějte či
 
 1. V nabídce **zálohované položky** vyberte tři tečky a otevřete tak kontextovou nabídku.
 
-    ![Místní nabídka](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![V nabídce zálohované položky otevřete místní nabídku.](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. V místní nabídce vyberte **Zastavit zálohování** a otevřete nabídku zastavit zálohování.
 

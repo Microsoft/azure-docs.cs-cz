@@ -2,15 +2,15 @@
 title: Testovací případy pro sadu nástrojů test Toolkit
 description: Popisuje testy, které jsou spuštěny pomocí sady nástrojů pro test šablon ARM.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5c18a2658ba1af9370699004860d1743603e8143
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255918"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674038"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Výchozí testovací případy pro sadu nástrojů pro test šablon ARM
 
@@ -102,13 +102,46 @@ Následující příklad **projde** tímto testem:
 }
 ```
 
+## <a name="environment-urls-cant-be-hardcoded"></a>Adresy URL prostředí nemůžou být pevně zakódované.
+
+Název testu: **DeploymentTemplate nesmí obsahovat identifikátor URI pevně zakódované**
+
+V šabloně nekódujte pevně adresy URL prostředí. Místo toho použijte [funkci prostředí](template-functions-deployment.md#environment) k dynamickému získání těchto adres URL během nasazování. Seznam hostitelských adres URL, které jsou blokovány, naleznete v [testovacím případu](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1).
+
+Následující příklad tento test **neprojde** , protože adresa URL je pevně zakódované.
+
+```json
+"variables":{
+    "AzureURL":"https://management.azure.com"
+}
+```
+
+Test se také **nezdařil** při použití s [identifikátorem](template-functions-string.md#uri) [Concat](template-functions-string.md#concat) nebo URI.
+
+```json
+"variables":{
+    "AzureSchemaURL1": "[concat('https://','gallery.azure.com')]",
+    "AzureSchemaURL2": "[uri('gallery.azure.com','test')]"
+}
+```
+
+Následující příklad **projde** tímto testem.
+
+```json
+"variables": {
+    "AzureSchemaURL": "[environment().gallery]"
+},
+```
+
 ## <a name="location-uses-parameter"></a>Umístění používá parametr
 
 Název testu: **umístění by nemělo být pevně zakódované**
 
-Uživatelé šablony mohou mít k dispozici omezené oblasti. Když nastavíte umístění prostředku na `"[resourceGroup().location]"` , je možné, že se skupina prostředků vytvořila v oblasti, ke které nemají přístup jiní uživatelé. Uživatelům se zablokuje použití šablony.
+Vaše šablony by měly mít parametr pojmenovaný Location. Tento parametr slouží k nastavení umístění prostředků ve vaší šabloně. V hlavní šabloně (s názvem azuredeploy.json nebo mainTemplate.json) se tento parametr může ve výchozím nastavení namístit pro skupinu prostředků. V propojených nebo vnořených šablonách by parametr umístění neměl mít výchozí umístění.
 
-Při definování umístění každého prostředku použijte parametr, který se nastaví jako výchozí pro umístění skupiny prostředků. Po zadání tohoto parametru můžou uživatelé použít výchozí hodnotu, pokud je to vhodné, ale taky zadat jiné umístění.
+Uživatelé šablony mohou mít k dispozici omezené oblasti. Když zadáte pevný kód pro umístění prostředku, můžou být uživatelé zablokovaný v vytváření prostředků v této oblasti. Uživatele můžete zablokovat i v případě, že nastavíte umístění prostředku na `"[resourceGroup().location]"` . Skupina prostředků mohla být vytvořena v oblasti, ke které nemají přístup jiní uživatelé. Uživatelům se zablokuje použití šablony.
+
+Když zadáte parametr umístění, který je ve výchozím nastavení pro umístění skupiny prostředků, můžou uživatelé použít výchozí hodnotu, pokud je to vhodné, ale taky zadat jiné umístění.
 
 Následující příklad tento test **neprojde** , protože umístění v prostředku je nastaveno na `resourceGroup().location` .
 
@@ -164,7 +197,7 @@ V dalším příkladu se používá parametr Location, ale tento test se **nezda
 }
 ```
 
-Místo toho vytvořte parametr, který je ve výchozím nastavení pro umístění skupiny prostředků, ale umožní uživatelům zadat jinou hodnotu. Následující příklad **projde** tímto testem.
+Místo toho vytvořte parametr, který je ve výchozím nastavení pro umístění skupiny prostředků, ale umožní uživatelům zadat jinou hodnotu. Následující příklad **projde** tento test, pokud je šablona použita jako hlavní šablona.
 
 ```json
 {
@@ -196,6 +229,8 @@ Místo toho vytvořte parametr, který je ve výchozím nastavení pro umístěn
     "outputs": {}
 }
 ```
+
+Pokud je však předchozí příklad použit jako propojená šablona, test se **nezdařil**. Pokud se používá jako propojená šablona, odeberte výchozí hodnotu.
 
 ## <a name="resources-should-have-location"></a>Prostředky by měly mít umístění
 
@@ -351,18 +386,18 @@ Toto upozornění se zobrazí také v případě, že zadáte minimální nebo m
 
 ## <a name="artifacts-parameter-defined-correctly"></a>Správně definovaný parametr artefaktů
 
-Název testu: **artefakty – parametr**
+Název testu: **parametr artefakty**
 
 Při zahrnutí parametrů pro `_artifactsLocation` a `_artifactsLocationSasToken` použijte správné výchozí hodnoty a typy. Aby bylo možné tento test předat, musí být splněny následující podmínky:
 
 * Pokud zadáte jeden parametr, je nutné zadat druhý.
-* `_artifactsLocation`musí být **řetězec**
-* `_artifactsLocation`musí mít výchozí hodnotu v hlavní šabloně.
-* `_artifactsLocation`ve vnořené šabloně nemůže být výchozí hodnota. 
-* `_artifactsLocation`musí mít buď `"[deployment().properties.templateLink.uri]"` nebo nezpracovaná adresa URL úložiště pro výchozí hodnotu.
-* `_artifactsLocationSasToken`musí se jednat o **secureString**
-* `_artifactsLocationSasToken`pro výchozí hodnotu může být jenom prázdný řetězec.
-* `_artifactsLocationSasToken`ve vnořené šabloně nemůže být výchozí hodnota. 
+* `_artifactsLocation` musí být **řetězec**
+* `_artifactsLocation` musí mít výchozí hodnotu v hlavní šabloně.
+* `_artifactsLocation` ve vnořené šabloně nemůže být výchozí hodnota. 
+* `_artifactsLocation` musí mít buď `"[deployment().properties.templateLink.uri]"` nebo nezpracovaná adresa URL úložiště pro výchozí hodnotu.
+* `_artifactsLocationSasToken` musí se jednat o **secureString**
+* `_artifactsLocationSasToken` pro výchozí hodnotu může být jenom prázdný řetězec.
+* `_artifactsLocationSasToken` ve vnořené šabloně nemůže být výchozí hodnota. 
 
 ## <a name="declared-variables-must-be-used"></a>Musí se použít deklarované proměnné.
 
@@ -514,9 +549,9 @@ Tento test platí pro:
 
 `reference`V případě a se `list*` Test **nezdařil** , pokud použijete `concat` k vytvoření ID prostředku.
 
-## <a name="dependson-cant-be-conditional"></a>dependsOn nemůže být podmíněný.
+## <a name="dependson-best-practices"></a>osvědčené postupy pro dependsOn
 
-Název testu: **DependsOn nesmí být podmíněný** .
+Název testu: **osvědčené postupy DependsOn**
 
 Při nastavování závislostí nasazení nepoužívejte funkci [if](template-functions-logical.md#if) k otestování podmínky. Pokud jeden prostředek závisí na prostředku, který je [podmíněně nasazený](conditional-resource-deployment.md), nastavte závislost jako u libovolného prostředku. Pokud není podmíněný prostředek nasazený, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
 
@@ -572,7 +607,7 @@ Pokud vaše šablona obsahuje virtuální počítač s imagí, ujistěte se, že
 
 ## <a name="use-stable-vm-images"></a>Použití stabilních imagí virtuálních počítačů
 
-Název testu: **Virtual-Machines-by-NOT-Preview**
+Název testu: **Virtual Machines by neměl být ve verzi Preview**
 
 Virtuální počítače by neměly používat náhled imagí.
 
@@ -658,4 +693,5 @@ Následující příklad se **nezdařil** , protože používá funkci [list *](
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o spuštění sady nástrojů test Toolkit najdete v tématu [použití sady nástrojů pro test šablon ARM](test-toolkit.md).
+- Další informace o spuštění sady nástrojů test Toolkit najdete v tématu [použití sady nástrojů pro test šablon ARM](test-toolkit.md).
+- Microsoft Learn modul, který se zabývá používáním sady nástrojů test Toolkit, najdete v tématu [Náhled změn a ověření prostředků Azure pomocí nástrojů co-if a šablony ARM test Toolkit](/learn/modules/arm-template-test/).

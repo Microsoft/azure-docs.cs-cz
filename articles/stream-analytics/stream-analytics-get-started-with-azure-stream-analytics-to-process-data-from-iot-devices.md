@@ -1,18 +1,17 @@
 ---
 title: Zpracování datových proudů IoT v reálném čase pomocí Azure Stream Analytics
 description: Zařízení SensorTag pro IoT, proudy dat, analytické funkce pro analýzu proudů dat a zpracování dat v reálném čase
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a438401ff93c20d8759e6128936c3626bd3de484
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043423"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012678"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Zpracování datových proudů IoT v reálném čase pomocí Azure Stream Analytics
 
@@ -125,7 +124,7 @@ HAVING Avg(temp)>100
 
 ![30sekundový dotaz filtru](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Měli byste vidět výsledky, které obsahují jenom 245 řádky a názvy senzorů, u kterých je průměr teplota překročila větší než 100. Tento dotaz seskupí toky událostí podle hodnoty **dspl**, což je název snímače, a pomocí 30sekundového **přeskakujícího okna**. Dočasné dotazy musí nastavovat způsob, jakým budete chtít čas sledovat. Pomocí klauzule **timestamp** by jste zadali sloupec **OUTPUTTIME** , který bude přidružit časy ke všem dočasným výpočtům. Podrobné informace najdete v tématu o funkcích [pro správu času](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) a [oknech](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics).
+Měli byste vidět výsledky, které obsahují jenom 245 řádky a názvy senzorů, u kterých je průměr teplota překročila větší než 100. Tento dotaz seskupí toky událostí podle hodnoty **dspl**, což je název snímače, a pomocí 30sekundového **přeskakujícího okna**. Dočasné dotazy musí nastavovat způsob, jakým budete chtít čas sledovat. Pomocí klauzule **timestamp** by jste zadali sloupec **OUTPUTTIME** , který bude přidružit časy ke všem dočasným výpočtům. Podrobné informace najdete v tématu o funkcích [pro správu času](/stream-analytics-query/time-management-azure-stream-analytics) a [oknech](/stream-analytics-query/windowing-azure-stream-analytics).
 
 ### <a name="query-detect-absence-of-events"></a>Dotaz: Zjištění neexistence událostí
 
@@ -148,9 +147,8 @@ WHERE t2.dspl IS NULL
 
 ![Zjištění neexistence událostí](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-V dotazu se používá příkaz **LEFT OUTER JOIN** na stejný datový proud (spojení sama na sebe). Při použití příkazu **INNER JOIN** se vrátí výsledek, pouze když je nalezena shoda.  Příkaz **LEFT OUTER JOIN** však v případě, že pro událost z levé strany spojení není nalezena shoda, vrátí řádek s hodnotami NULL pro všechny sloupce pravé strany. Tato technika je velmi užitečná k vyhledání absence událostí. Další informace najdete v tématu [Join](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics).
+V dotazu se používá příkaz **LEFT OUTER JOIN** na stejný datový proud (spojení sama na sebe). Při použití příkazu **INNER JOIN** se vrátí výsledek, pouze když je nalezena shoda.  Příkaz **LEFT OUTER JOIN** však v případě, že pro událost z levé strany spojení není nalezena shoda, vrátí řádek s hodnotami NULL pro všechny sloupce pravé strany. Tato technika je velmi užitečná k vyhledání absence událostí. Další informace najdete v tématu [Join](/stream-analytics-query/join-azure-stream-analytics).
 
 ## <a name="conclusion"></a>Závěr
 
 Účelem tohoto článku je Ukázat, jak psát různé dotazy na dotazovací jazyk Stream Analytics a zobrazit výsledky v prohlížeči. To je ale jenom k tomu, abyste mohli začít. Stream Analytics podporuje celou řadu vstupů a výstupů a může dokonce využít i funkce ve službě Azure Machine Learning. To z něj dělá robustní nástroj pro analýzu datových proudů. Další informace o tom, jak psát dotazy, najdete v článku o [běžných vzorech dotazů](stream-analytics-stream-analytics-query-patterns.md).
-

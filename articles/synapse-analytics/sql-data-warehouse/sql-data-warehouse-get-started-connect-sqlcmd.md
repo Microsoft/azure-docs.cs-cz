@@ -1,6 +1,6 @@
 ---
 title: Připojení pomocí sqlcmd
-description: Pomocí nástroje příkazového řádku Sqlcmd se můžete připojit k synapse fondu SQL a dotazovat se na něj.
+description: Pomocí nástroje příkazového řádku Sqlcmd se můžete připojit k vyhrazenému fondu SQL a dotazovat se na něj ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,33 +10,33 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2e76f48466d084d448cceea0490e44041e7d062e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: f8b4d54585bc70c3ee5f24846e216f75e985cf84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212135"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675731"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Připojení k synapse fondu SQL pomocí sqlcmd
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Připojení k vyhrazenému fondu SQL ve službě Azure synapse Analytics pomocí sqlcmd
 
 > [!div class="op_single_selector"]
 >
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-K připojení a dotazování fondu SQL použijte nástroj příkazového řádku [Sqlcmd] [Sqlcmd].  
+K připojení a dotazování vyhrazeného fondu SQL použijte nástroj příkazového řádku [Sqlcmd] [Sqlcmd].  
 
 ## <a name="1-connect"></a>1. připojení
 
-Chcete-li začít s nástrojem [Sqlcmd] [Sqlcmd], otevřete příkazový řádek a zadejte příkaz **Sqlcmd** následovaný připojovacím řetězcem pro vaši databázi fondu SQL. Připojovací řetězec bude muset mít následující parametry:
+Chcete-li začít s nástrojem [Sqlcmd] [Sqlcmd], otevřete příkazový řádek a zadejte příkaz **Sqlcmd** následovaný připojovacím řetězcem pro vyhrazený fond SQL. Připojovací řetězec bude muset mít následující parametry:
 
 * **Server (-S):** Server v následující podobě: `<`název serveru`>`.database.windows.net
-* **Database (-d):** Název databáze
-* **Povolit identifikátory v uvozovkách (-I):** Aby bylo možné připojit se k instanci fondu SQL, musí být povolené identifikátory v uvozovkách.
+* **Databáze (-d):** vyhrazený název fondu SQL.
+* **Povolit identifikátory v uvozovkách (-I):** Aby bylo možné se připojit k vyhrazené instanci fondu SQL, musí být povolené identifikátory v uvozovkách.
 
 Chcete-li používat ověřování systému SQL Server, je třeba přidat parametry uživatelského jména a hesla:
 
@@ -85,4 +85,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech dostupných v Sqlcmd najdete v tématu [dokumentace k nástroji Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Další informace o možnostech dostupných v Sqlcmd najdete v tématu [dokumentace k nástroji Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).

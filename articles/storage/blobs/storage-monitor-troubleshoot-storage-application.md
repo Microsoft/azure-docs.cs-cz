@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652157"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544781"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorování a řešení potíží s aplikací cloudového úložiště
 
@@ -43,7 +43,7 @@ V části **Nastavení diagnostiky (klasické)** u položky **Stav** vyberte **Z
 
 Po dokončení klikněte na **Uložit** .
 
-![Podokno Diagnostika](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
+![Snímek obrazovky, který zvýrazní oddíl obsahující nastavení konfigurace pro zapnutí protokolování a metriky.](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>Povolení upozornění
 
@@ -83,11 +83,11 @@ Následující obrázek představuje příklad upozornění založeného na simu
 
 Protokoly úložiště ukládají data ve vašem účtu úložiště v sadě objektů blob v kontejneru objektů blob s názvem **$logs**. Tento kontejner se nezobrazí při výpisu všech kontejnerů objektů blob ve vašem účtu, ale pokud k němu přistoupíte přímo, můžete zobrazit jeho obsah.
 
-V tomto scénáři použijete k práci se svým účtem úložiště Azure aplikaci [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
+V tomto scénáři použijete k práci se svým účtem úložiště Azure aplikaci [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide).
 
 ### <a name="download-microsoft-message-analyzer"></a>Stažení aplikace Microsoft Message Analyzer
 
-Stáhněte a nainstalujte aplikaci [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer).
+Stáhněte a nainstalujte aplikaci [Microsoft Message Analyzer](/message-analyzer/installing-and-upgrading-message-analyzer).
 
 Spusťte aplikaci a vyberte **soubor**  >  **otevřít**  >  **z jiných zdrojů souborů**.
 
@@ -97,7 +97,7 @@ V dialogovém okně **File Selector** (Selektor souborů) vyberte **+ Add Azure 
 
 Po připojení rozbalte kontejnery ve stromovém zobrazení úložiště a zobrazte objekty blob protokolů. Vyberte nejnovější protokol a klikněte na **OK**.
 
-![Microsoft Message Analyzer – Dialogové okno Add Azure Storage Connection (Přidat připojení k účtu úložiště Azure)](media/storage-monitor-troubleshoot-storage-application/figure4.png)
+![Snímek obrazovky, který zobrazuje analyzátor zpráv Microsoft a zvýrazňuje vybraný soubor protokolu.](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
 V dialogovém okně **New Session** (Nová relace) kliknutím na **Start** (Spustit) zobrazte protokol.
 

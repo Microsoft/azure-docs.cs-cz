@@ -5,34 +5,34 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6c16aad9bb04ffb4cb4df52799d63f7ec2e19725
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d2821a16e0b72b32cc392b7ae626d782734458a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210848"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674197"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
 
 Vstupní a výstupní vazby ve službě Azure Functions poskytují deklarativní způsob zpřístupnění k dat z externích služeb. V tomto rychlém startu použijete výstupní vazbu k vytvoření zprávy ve frontě, když požadavek HTTP aktivuje funkci. Pomocí kontejneru Azure Storage zobrazíte zprávy fronty, které funkce vytvoří.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 - Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Postupujte podle pokynů v části [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md) a neprovádějte krok **Vyčištění prostředků**. Tento rychlý start vytvoří aplikaci funkcí a funkci, kterou tady použijete.
+- Postupujte podle pokynů v části [Vytvoření první funkce na webu Azure Portal](./functions-get-started.md) a neprovádějte krok **Vyčištění prostředků**. Tento rychlý start vytvoří aplikaci funkcí a funkci, kterou tady použijete.
 
 ## <a name="add-an-output-binding"></a><a name="add-binding"></a>Přidání výstupní vazby
 
 V této části použijete uživatelské rozhraní portálu pro přidání výstupní vazby úložiště front do funkce, kterou jste vytvořili dříve. Tato vazba umožňuje napsat minimální kód pro vytvoření zprávy ve frontě. Nemusíte psát kód pro úlohy, jako je otevření připojení úložiště, vytvoření fronty nebo získání odkazu na frontu. O tyto věci se z vás postarají modul runtime Azure Functions a výstupní vazba fronty.
 
-1. Na webu Azure Portal otevřete stránku pro aplikaci funkcí, kterou jste vytvořili v tématu [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md). Stránku otevřete tak, že vyhledáte a vyberete **Function App**. Pak vyberte svou aplikaci Function App.
+1. Na webu Azure Portal otevřete stránku pro aplikaci funkcí, kterou jste vytvořili v tématu [Vytvoření první funkce na webu Azure Portal](./functions-get-started.md). Stránku otevřete tak, že vyhledáte a vyberete **Function App**. Pak vyberte svou aplikaci Function App.
 
 1. Vyberte aplikaci Function App a potom vyberte funkci, kterou jste vytvořili v předchozím rychlém startu.
 
-1. Vyberte **integrace**a pak vyberte **+ Přidat výstup**.
+1. Vyberte **integrace** a pak vyberte **+ Přidat výstup**.
 
    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding.png" alt-text="Vytvořte pro svou funkci výstupní vazbu." border="true":::
 
@@ -58,7 +58,7 @@ V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zp
 
 1. Aktualizujte kód funkce v závislosti na jazyku funkce:
 
-    # <a name="c"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[R\#](#tab/csharp)
 
     Přidejte parametr **outputQueueItem** do podpisu metody, jak ukazuje následující obrázek.
 
@@ -98,7 +98,7 @@ V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zp
 
     Všimněte si, že **text žádosti** jako `name` obsahuje hodnotu *Azure*. Tato hodnota se zobrazí ve zprávě fronty, která se vytvoří při vyvolání této funkce.
     
-    Jako alternativu k volbě **Spustit** můžete tuto funkci volat také tak, že zadáte adresu URL do prohlížeče a v řetězci dotazu uvedete hodnotu `name`. Metodu s použitím prohlížeče najdete v [předchozím rychlém startu](functions-create-first-azure-function.md#test-the-function).
+    Jako alternativu k volbě **Spustit** můžete tuto funkci volat také tak, že zadáte adresu URL do prohlížeče a v řetězci dotazu uvedete hodnotu `name`. Metodu s použitím prohlížeče najdete v [předchozím rychlém startu](./functions-get-started.md).
 
 1. Zkontrolujte protokoly a zkontrolujte, jestli se spuštění funkce zdařilo. 
 
@@ -109,9 +109,9 @@ Při prvním použití výstupní vazby vytvoří modul runtime Functions v úč
 
 1. Přejít do aplikace Function App a vybrat položku **Konfigurace**.
 
-1. V části **nastavení aplikace**vyberte **AzureWebJobsStorage**.
+1. V části **nastavení aplikace** vyberte **AzureWebJobsStorage**.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Vyhledejte účet úložiště připojený k AzureWebJobsStorage." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Snímek obrazovky zobrazující stránku konfigurace s AzureWebJobsStorage vybranými." border="true":::
 
 1. Vyhledejte a poznamenejte si název účtu.
 
@@ -121,7 +121,7 @@ Při prvním použití výstupní vazby vytvoří modul runtime Functions v úč
 
 1. Ve skupině prostředků aplikace Function App vyberte účet úložiště, který používáte pro tento rychlý Start.
 
-1. V části **Služba front**vyberte **fronty** a vyberte frontu s názvem **proqueue**. 
+1. V části **Služba front** vyberte **fronty** a vyberte frontu s názvem **proqueue**. 
 
    Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste tuto funkci volali s výchozí hodnotou `name` (*Azure*), zpráva fronty je *Name passed to the function: Azure*.
 

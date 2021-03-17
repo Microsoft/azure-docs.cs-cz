@@ -4,14 +4,14 @@ description: Nabízení a stahování artefaktů Open container Initiative (OCI)
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 02/03/2021
 ms.author: stevelas
-ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a73f295999888dab20531ffdd0fb042790a5357
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371048"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988225"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Vložení a vyžádání artefaktu OCI pomocí služby Azure Container Registry
 
@@ -34,7 +34,7 @@ V této části najdete dva navrhované pracovní postupy pro přihlášení k r
 
 ### <a name="sign-in-with-oras"></a>Přihlaste se pomocí ORAS
 
-Pomocí [instančního objektu](container-registry-auth-service-principal.md) s nabízenými právy spusťte `oras login` příkaz pro přihlášení k registru pomocí ID a hesla aplikace instančního objektu. V tomto případě *myregistry.azurecr.IO*zadejte plně kvalifikovaný název registru (všechna malá písmena). ID aplikace instančního objektu se předává do proměnné prostředí `$SP_APP_ID` a heslo v proměnné `$SP_PASSWD` .
+Pomocí [instančního objektu](container-registry-auth-service-principal.md) s nabízenými právy spusťte `oras login` příkaz pro přihlášení k registru pomocí ID a hesla aplikace instančního objektu. V tomto případě *myregistry.azurecr.IO* zadejte plně kvalifikovaný název registru (všechna malá písmena). ID aplikace instančního objektu se předává do proměnné prostředí `$SP_APP_ID` a heslo v proměnné `$SP_PASSWD` .
 
 ```bash
 oras login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
@@ -46,7 +46,7 @@ Pokud si chcete přečíst heslo ze standardního vstupu, použijte `--password-
 
 [Přihlaste](/cli/azure/authenticate-azure-cli) se do Azure CLI s vaší identitou a zasuňte a nahrajte artefakty z registru kontejnerů.
 
-Pak použijte příkaz Azure CLI [AZ ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) pro přístup k registru. Například pro ověření v registru s názvem *myregistry*:
+Pak použijte příkaz Azure CLI [AZ ACR Login](/cli/azure/acr#az-acr-login) pro přístup k registru. Například pro ověření v registru s názvem *myregistry*:
 
 ```azurecli
 az login
@@ -54,19 +54,19 @@ az acr login --name myregistry
 ```
 
 > [!NOTE]
-> `az acr login`k nastavení tokenu Azure Active Directory v souboru používá klienta Docker `docker.config` . Aby bylo možné dokončit jednotlivé směry ověřování, je nutné nainstalovat a spustit klienta Docker.
+> `az acr login` k nastavení tokenu Azure Active Directory v souboru používá klienta Docker `docker.config` . Aby bylo možné dokončit jednotlivé směry ověřování, je nutné nainstalovat a spustit klienta Docker.
 
 ## <a name="push-an-artifact"></a>Vložení artefaktu
 
 Vytvořte textový soubor v místním pracovním pracovním adresáři s nějakým ukázkovým textem. Například v prostředí bash:
 
 ```bash
-echo "Here is an artifact!" > artifact.txt
+echo "Here is an artifact" > artifact.txt
 ```
 
 Pomocí příkazu nahrajte `oras push` Tento textový soubor do svého registru. Následující příklad vloží vzorový textový soubor do `samples/artifact` úložiště. Registr se identifikuje s plně kvalifikovaným názvem registru *myregistry.azurecr.IO* (malými písmeny). Artefakt je označený `1.0` . Artefakt má Nedefinovaný typ, který je ve výchozím nastavení identifikován řetězcem *typu média* za názvem souboru `artifact.txt` . Další typy najdete v tématu [artefakty OCI](https://github.com/opencontainers/artifacts) . 
 
-**Linux**
+**Linux nebo macOS**
 
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
@@ -137,7 +137,7 @@ Ověřte, jestli se operace vyžádání úspěšně provedla:
 
 ```bash
 $ cat artifact.txt
-Here is an artifact!
+Here is an artifact
 ```
 
 ## <a name="remove-the-artifact-optional"></a>Odebrat artefakt (volitelné)
@@ -148,6 +148,37 @@ Pokud chcete odebrat artefakt ze služby Azure Container Registry, použijte př
 az acr repository delete \
     --name myregistry \
     --image samples/artifact:1.0
+```
+
+## <a name="example-build-docker-image-from-oci-artifact"></a>Příklad: sestavení image Docker z artefaktu OCI
+
+Zdrojový kód a binární soubory k sestavení image kontejneru se dají ukládat jako artefakty OCI do služby Azure Container Registry. Na zdrojový artefakt můžete odkazovat jako na kontext sestavení pro [úlohu ACR](container-registry-tasks-overview.md). Tento příklad ukazuje, jak uložit souboru Dockerfile jako artefakt OCI a pak odkazovat na artefakt a sestavit image kontejneru.
+
+Například vytvořte jednořádkový souboru Dockerfile:
+
+```bash
+echo "FROM mcr.microsoft.com/hello-world" > hello-world.dockerfile
+```
+
+Přihlaste se k cílovému registru kontejneru.
+
+```azurecli
+az login
+az acr login --name myregistry
+```
+
+Pomocí příkazu vytvořte a nahrajte nový artefakt OCI do cílového registru `oras push` . Tento příklad nastaví výchozí typ média pro artefakt.
+
+```bash
+oras push myregistry.azurecr.io/dockerfile:1.0 hello-world.dockerfile
+```
+
+Spuštěním příkazu [AZ ACR Build](/cli/azure/acr#az-acr-build) Sestavte image Hello-World pomocí nového artefaktu jako kontextu sestavení:
+
+```azurecli
+az acr build --registry myregistry --image builds/hello-world:v1 \
+  --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/dockerfile:1.0
 ```
 
 ## <a name="next-steps"></a>Další kroky

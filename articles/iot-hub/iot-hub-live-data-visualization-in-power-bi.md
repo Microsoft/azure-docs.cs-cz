@@ -1,5 +1,5 @@
 ---
-title: Vizualizace dat dat FRM Azure IoT Hub v reálném čase – Power BI
+title: Vizualizace dat v reálném čase z Azure IoT Hub – Power BI
 description: Použijte Power BI k vizualizaci dat o teplotě a vlhkosti shromažďovaných ze senzoru a odeslání do služby Azure IoT Hub.
 author: robinsh
 keywords: vizualizace dat v reálném čase, vizualizace živých dat, vizualizace dat senzorů
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82caf13618fe8483ab8d3a622c6c0d51ab05a206
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634377"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177330"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Vizualizace dat ze senzorů v reálném čase z Azure IoT Hub pomocí Power BI
 
@@ -34,11 +34,11 @@ Naučíte se vizualizovat data ze senzorů v reálném čase, která služba Azu
 
 * Vytvořte a publikujte sestavu Power BI k vizualizaci dat.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 * Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto články se týkají následujících požadavků:
   
-  * Aktivní předplatné Azure.
+  * Musíte mít aktivní předplatné Azure.
   * Azure IoT Hub v rámci vašeho předplatného.
   * Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
 
@@ -72,7 +72,7 @@ Pojďme začít vytvořením úlohy Stream Analytics. Po vytvoření úlohy defi
 
 2. V části **Topologie úlohy** vyberte **Vstupy**.
 
-3. V podokně **vstupy** vyberte **Přidat vstup streamu**a pak v rozevíracím seznamu vyberte **IoT Hub** . V podokně nový vstup zadejte následující informace:
+3. V podokně **vstupy** vyberte **Přidat vstup streamu** a pak v rozevíracím seznamu vyberte **IoT Hub** . V podokně nový vstup zadejte následující informace:
 
    **Vstupní alias**: Zadejte jedinečný alias pro vstup.
 
@@ -122,7 +122,7 @@ Pojďme začít vytvořením úlohy Stream Analytics. Po vytvoření úlohy defi
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
-1. V části **topologie úlohy**vyberte možnost **dotaz**.
+1. V části **Topologie úlohy** vyberte **Dotaz**.
 
 2. Nahraďte `[YourInputAlias]` názvem aliasu pro vstup úlohy.
 
@@ -134,15 +134,15 @@ Pojďme začít vytvořením úlohy Stream Analytics. Po vytvoření úlohy defi
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V Stream Analytics úlohy vyberte **Přehled**a pak vyberte **Spustit**  >  **Now**  >  .**Spustit**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
+V Stream Analytics úlohy vyberte **Přehled** a pak vyberte **Spustit**  >    >  .**Spustit**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
 ![Spuštění úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job.png)
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>Vytvoření a publikování sestavy Power BI k vizualizaci dat
 
-Následující kroky ukazují, jak vytvořit a publikovat sestavu pomocí služba Power BI. Pokud chcete v Power BI použít nový vzhled, můžete postupovat podle těchto kroků. Chcete-li porozumět rozdílům a postupům navigace v "novém hledání", přečtěte si téma ["nové hledání" služba Power BI](https://docs.microsoft.com/power-bi/consumer/service-new-look).
+Následující kroky ukazují, jak vytvořit a publikovat sestavu pomocí služba Power BI. Pokud chcete v Power BI použít nový vzhled, můžete postupovat podle těchto kroků. Chcete-li porozumět rozdílům a postupům navigace v "novém hledání", přečtěte si téma ["nové hledání" služba Power BI](/power-bi/consumer/service-new-look).
 
-1. Ujistěte se, že je na vašem zařízení spuštěná ukázková aplikace. Pokud ne, můžete se podívat na kurzy v části [nastavení zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started).
+1. Ujistěte se, že je na vašem zařízení spuštěná ukázková aplikace. Pokud ne, můžete se podívat na kurzy v části [nastavení zařízení](./iot-hub-raspberry-pi-kit-node-get-started.md).
 
 2. Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/en-us/).
 
@@ -187,7 +187,7 @@ Následující kroky ukazují, jak vytvořit a publikovat sestavu pomocí služb
     >
     > ![Obraťte se na oznámení správce.](./media/iot-hub-live-data-visualization-in-power-bi/contact-admin.png)
 
-11. Vyberte **vytvořit kód pro vložení**a pak vyberte **publikovat**.
+11. Vyberte **vytvořit kód pro vložení** a pak vyberte **publikovat**.
 
 Máte odkaz na sestavu, který můžete sdílet s kýmkoli pro přístup k sestavám a fragment kódu, který můžete použít k integraci sestavy do svého blogu nebo webu.
 

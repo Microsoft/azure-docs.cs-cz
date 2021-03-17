@@ -1,23 +1,23 @@
 ---
-title: Správa výpočetních prostředků Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak spravovat nastavení hraničních výpočtů, jako jsou triggery, moduly, zobrazit výpočetní konfiguraci, odebrat konfiguraci prostřednictvím Azure Portal na Azure Stack Edge.
+title: Správa výpočetních prostředků pro Azure Stack Edge pro | Microsoft Docs
+description: Popisuje, jak spravovat nastavení výpočtů hraničního přenosu, jako je Trigger, moduly, zobrazit výpočetní konfiguraci, odebrat konfiguraci prostřednictvím Azure Portal na Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 9d34bd1750b798407b493dcde01b04118d66a2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339820"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967775"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge"></a>Správa výpočetních prostředků na Azure Stack hraničních zařízeních
+# <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Správa výpočetních prostředků na Azure Stack Edge pro
 
-Tento článek popisuje, jak spravovat výpočetní prostředky na Azure Stack hraničních zařízeních. Výpočetní prostředky můžete spravovat prostřednictvím Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete spravovat moduly, triggery a výpočetní konfiguraci a místní webové uživatelské rozhraní pro správu výpočetních nastavení.
+Tento článek popisuje, jak spravovat výpočetní prostředky na Azure Stack Edge pro. Výpočetní prostředky můžete spravovat prostřednictvím Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete spravovat moduly, triggery a výpočetní konfiguraci a místní webové uživatelské rozhraní pro správu výpočetních nastavení.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -28,7 +28,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="manage-triggers"></a>Spravovat triggery
 
-Události jsou věci, ke kterým dochází ve vašem cloudovém prostředí nebo na zařízení, na kterém může být vhodné provést akci. Například když je soubor vytvořen ve sdílené složce, jedná se o událost. Triggery vyvolávají události. U Azure Stackového okraje můžou být triggery v reakci na události souboru nebo plán.
+Události jsou něco, co se děje v rámci cloudového prostředí nebo na zařízení, na co byste mohli chtít reagovat určitou akcí. Událostí je například vytvoření souboru ve sdílené složce. Události vyvolávají triggery. Pro Azure Stack Edge pro se triggery můžou nacházet v reakci na události souboru nebo plán.
 
 - **Soubor**: tyto triggery jsou v reakci na události souboru, jako je vytváření souboru, úprava souboru.
 - **Naplánované**: tyto triggery jsou v reakci na plán, který můžete definovat s počátečním datem, časem spuštění a intervalem opakování.
@@ -38,7 +38,7 @@ Události jsou věci, ke kterým dochází ve vašem cloudovém prostředí nebo
 
 Pokud chcete vytvořit Trigger, proveďte následující kroky v Azure Portal.
 
-1. V Azure Portal přejdete do svého prostředku Azure Stack Edge a pak přejdete na **> Trigger COMPUTE COMPUTE pro Edge**. Na panelu příkazů vyberte **+ Přidat aktivační událost** .
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **IoT Edge > triggery**. Na panelu příkazů vyberte **+ Přidat aktivační událost** .
 
     ![Vyberte Přidat aktivační událost.](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -68,31 +68,31 @@ Chcete-li odstranit aktivační událost, proveďte následující kroky v Azure
 
 1. V seznamu triggerů vyberte aktivační událost, kterou chcete odstranit.
 
-    ![Vybrat aktivační událost](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Vybrat aktivační událost](media/azure-stack-edge-manage-compute/delete-trigger-1.png)
 
 2. Klikněte pravým tlačítkem a pak vyberte **Odstranit**.
 
-    ![Vybrat odstranit](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Vybrat odstranit](media/azure-stack-edge-manage-compute/delete-trigger-2.png)
 
 3. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-    ![Potvrzení odstranění](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Potvrzení odstranění](media/azure-stack-edge-manage-compute/delete-trigger-3.png)
 
 Seznam triggerů se aktualizuje tak, aby odrážel odstranění.
 
 ## <a name="manage-compute-configuration"></a>Spravovat výpočetní konfiguraci
 
-Pomocí Azure Portal můžete zobrazit konfiguraci výpočtů, odebrat existující výpočetní konfiguraci nebo aktualizovat výpočetní konfiguraci pro synchronizaci přístupových klíčů pro zařízení IoT a IoT Edge zařízení pro Azure Stack Edge.
+Pomocí Azure Portal můžete zobrazit konfiguraci výpočtů, odebrat existující výpočetní konfiguraci nebo aktualizovat výpočetní konfiguraci pro synchronizaci přístupových klíčů pro zařízení IoT a zařízení IoT Edge pro Azure Stack Edge pro.
 
 ### <a name="view-compute-configuration"></a>Zobrazit konfiguraci výpočtů
 
 Proveďte následující kroky v Azure Portal, abyste zobrazili výpočetní konfiguraci pro vaše zařízení.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Edge compute > moduly**. Na panelu příkazů vyberte **zobrazení COMPUTE** .
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **IoT Edge > Overview**. 
 
     ![Vybrat zobrazení COMPUTE](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
-2. Poznamenejte si konfiguraci výpočtů na svém zařízení. Když jste nakonfigurovali výpočetní prostředky, vytvořili jste prostředek IoT Hub. V rámci tohoto IoT Hub prostředku se nakonfigurují zařízení IoT a IoT Edge zařízení. Pro spuštění na IoT Edgeovém zařízení jsou podporovány pouze moduly Linux.
+2. Přejít na stránku **vlastností** . Poznamenejte si konfiguraci výpočtů na svém zařízení. Když jste nakonfigurovali výpočetní prostředky, vytvořili jste prostředek IoT Hub. V rámci tohoto IoT Hub prostředku se nakonfigurují zařízení IoT a IoT Edge zařízení. Pro spuštění na IoT Edgeovém zařízení jsou podporovány pouze moduly Linux.
 
     ![Zobrazit konfiguraci](media/azure-stack-edge-manage-compute/view-compute-2.png)
 
@@ -101,25 +101,25 @@ Proveďte následující kroky v Azure Portal, abyste zobrazili výpočetní kon
 
 Proveďte následující kroky v Azure Portal k odebrání existující konfigurace hraničních výpočtů pro vaše zařízení.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Edge compute > Začínáme**. Na panelu příkazů vyberte **Odebrat výpočetní** prostředky.
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **IoT Edge > Overview**. Na panelu příkazů vyberte **Odebrat** .
 
     ![Vyberte odebrat výpočetní prostředky.](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
 2. Pokud odeberete konfiguraci výpočtů, budete muset zařízení znovu nakonfigurovat pro případ, že budete potřebovat výpočetní výkon znovu použít. Po zobrazení výzvy k potvrzení vyberte **Ano**.
 
-    ![Vyberte odebrat výpočetní prostředky.](media/azure-stack-edge-manage-compute/remove-compute-2.png)
+    ![Vyberte odebrat výpočetní prostředky 2.](media/azure-stack-edge-manage-compute/remove-compute-2.png)
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>Synchronizace přístupových klíčů zařízení IoT a IoT Edge
 
-Při konfiguraci výpočetní kapacity na Azure Stack hraničních zařízeních se vytvoří zařízení IoT a zařízení IoT Edge. Těmto zařízením jsou automaticky přiřazeny symetrické přístupové klíče. Z hlediska zabezpečení je nejvhodnější tyto klíče pravidelně střídat prostřednictvím služby IoT Hub.
+Když nakonfigurujete výpočetní prostředí na Azure Stack Edge pro, vytvoří se zařízení IoT a IoT Edge zařízení. Těmto zařízením jsou automaticky přiřazeny symetrické přístupové klíče. Z hlediska zabezpečení je nejvhodnější tyto klíče pravidelně střídat prostřednictvím služby IoT Hub.
 
 Pokud chcete tyto klíče otočit, můžete přejít na službu IoT Hub, kterou jste vytvořili, a vybrat zařízení IoT nebo IoT Edge zařízení. Každé zařízení má primární přístupový klíč a sekundární přístupové klíče. Přiřaďte primární přístupový klíč k sekundárnímu přístupovému klíči a pak znovu vygenerujte primární přístupový klíč.
 
-Pokud jsou vaše zařízení IoT a IoT Edge klíče zařízení otočené, musíte aktualizovat konfiguraci na Azure Stack Edge a získat nejnovější přístupové klíče. Synchronizace pomáhá zařízení získat nejnovější klíče pro zařízení IoT a zařízení IoT Edge. Azure Stack Edge používá pouze primární přístupové klíče.
+Pokud jsou vaše zařízení IoT a IoT Edge klíče zařízení otočené, musíte aktualizovat konfiguraci na Azure Stack Edge pro, abyste získali nejnovější přístupové klávesy. Synchronizace pomáhá zařízení získat nejnovější klíče pro zařízení IoT a zařízení IoT Edge. Azure Stack Edge pro používá jenom primární přístupové klíče.
 
 V Azure Portal proveďte následující kroky, které synchronizují přístupové klíče pro vaše zařízení.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Edge compute > Začínáme**. Na panelu příkazů vyberte **aktualizovat konfiguraci** .
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **IoT Edge > Overview**. Na panelu příkazů vyberte **aktualizovat konfiguraci** .
 
     ![Vybrat aktualizaci konfigurace](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 

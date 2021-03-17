@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
-ms.date: 11/26/2019
-ms.openlocfilehash: fbf753436a259993f6869372ae3ba7272f2a181a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 10/15/2020
+ms.reviewer: ''
+ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541698"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793173"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,16 +40,21 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 |**Smlouva SLA pro dobu provozu**|99,99 %|99,99 %|99,99 %|
 |**Maximální uchovávání záloh**|7 dní|35 dní|35 dní|
 |**Procesor**|Nízká|Nízká, střední, vysoká|Střední, vysoká|
-|**Propustnost vstupně-výstupních operací (přibližná)** |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
+|**IOPS (přibližná)**\* |1-4 IOPS na DTU| 1-4 IOPS na DTU | 25 IOPS na DTU|
 |**Latence v/v (přibližná)**|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
-|**Indexování columnstore** |–|S3 a vyšší|Podporováno|
+|**Indexování columnstore** |Není k dispozici|S3 a vyšší|Podporováno|
 |**OLTP v paměti**|N/A|N/A|Podporováno|
 
+\* Všechny vstupně-výstupní operace čtení a zápisu proti datovým souborům, včetně/v v/v (kontrolní bod a opožděný zápis)
+
 > [!IMPORTANT]
-> Úrovně služeb Basic, Standard S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší. 
+> Cíle služeb Basic, S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje cíl služby S3 nebo vyšší. 
 >
->V případě úložiště dat se úrovně služeb Basic, Standard S0 a S1 nacházejí v objektech blob stránky úrovně Standard. Objekty blob stránky úrovně Standard využívají úložná média založená na pevných discích (HDD) a jsou nejvhodnější pro vývoj, testování a jiné zřídka používané úlohy, které jsou méně citlivé na variabilitu výkonu.
+> V cílech služeb Basic, S0 a S1 se soubory databáze ukládají ve službě Azure Storage úrovně Standard, která využívá úložná média založená na pevných discích (HDD). Tyto cíle služeb jsou nejvhodnější pro vývoj, testování a jiné často používané úlohy, které jsou méně citlivé na variabilitu výkonu.
 >
+
+> [!TIP]
+> Pokud chcete zobrazit skutečná omezení [zásad správného řízení prostředků](resource-limits-logical-server.md#resource-governance) pro databázi nebo elastický fond, Dotazujte zobrazení [Sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) .
 
 > [!NOTE]
 > Pokud chcete prozkoumat Azure, můžete získat bezplatnou databázi v Azure SQL Database v základní úrovni služby ve spojení s bezplatným účtem Azure. Informace najdete v tématu [Vytvoření spravované cloudové databáze pomocí bezplatného účtu Azure](https://azure.microsoft.com/free/services/sql-database/).
@@ -68,7 +73,7 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení eDTU elastického fondu, úložiště a databáze ve fondu
 
-|| **Basic** | **Standard** | **Premium** |
+|| **Basic** | **Standard** | **Nárok** |
 | :-- | --: | --: | --: |
 | **Maximální velikost úložiště na databázi**  | 2 GB | 1 TB | 1 TB |
 | **Maximální velikost úložiště na fond** | 156 GB | 4 TB | 4 TB |
@@ -109,7 +114,7 @@ Databáze má velikost na základě "faktoru škálování". Faktor škálován�
 
 Zatížení se skládá z devíti typů transakcí, jak je znázorněno v následující tabulce. Každá transakce je navržena k zdůraznění konkrétní sady systémových vlastností v databázovém stroji a na systémovém hardwaru s vysokým kontrastem od ostatních transakcí. Tento přístup usnadňuje vyhodnocení dopadu různých komponent na celkový výkon. Například transakce "Read těžký" vytváří velký počet operací čtení z disku.
 
-| Transaction Type (Typ transakce) | Description |
+| Transaction Type (Typ transakce) | Popis |
 | --- | --- |
 | Přečíst Lite |VYBRALI v paměti; jen pro čtení |
 | Přečíst médium |VYBRALI hlavně v paměti; jen pro čtení |
@@ -171,7 +176,7 @@ Klíčové metriky v srovnávacím testu jsou propustnost a doba odezvy.
 | Třída služby | Míra propustnosti | Doba odezvy – požadavek |
 | --- | --- | --- |
 | Premium |Transakcí za sekundu |95. percentil v 0,5 sekundách |
-| Standard |Transakcí za minutu |90. percentil v 1,0 sekundách |
+| Standardní |Transakcí za minutu |90. percentil v 1,0 sekundách |
 | Základní |Transakcí za hodinu |80th percentil v 2,0 sekundách |
 
 ## <a name="next-steps"></a>Další kroky

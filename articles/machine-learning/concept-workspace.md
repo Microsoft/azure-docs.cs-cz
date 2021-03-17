@@ -1,28 +1,26 @@
 ---
 title: Co je pracovní prostor
 titleSuffix: Azure Machine Learning
-description: Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning. Udržuje historii všech školicích běhů, včetně protokolů, metrik, výstupu a snímků vašich skriptů. Pomocí těchto informací určíte, který školicí běh vytváří nejlepší model.
+description: Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning. Udržuje historii všech školicích běhů s protokoly, metrikami, výstupem a snímky vašich skriptů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/08/2020
-ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 09/22/2020
+ms.openlocfilehash: bf2419799ad6c229c6ffb891bc588479e134d427
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287223"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500389"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
 Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning, který poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při použití Azure Machine Learning.  Pracovní prostor uchovává historii všech školicích běhů, včetně protokolů, metrik, výstupu a snímků vašich skriptů. Pomocí těchto informací určíte, který školicí běh vytváří nejlepší model.  
 
 Jakmile máte model, který chcete, zaregistrujete ho v pracovním prostoru. Pak použijete zaregistrovaný model a skripty bodování k nasazení do Azure Container Instances, službě Azure Kubernetes nebo k poli FPGA (Array-programovatelné pole brány) jako koncový bod HTTP na bázi REST. Model můžete také nasadit do zařízení Azure IoT Edge jako modul.
-
-Dostupné ceny a funkce závisí na tom, jestli je pro tento pracovní prostor vybraná možnost [Basic nebo Enterprise Edition](overview-what-is-azure-ml.md#sku) . Edici vyberete při [vytváření pracovního prostoru](#create-workspace).  Můžete také [upgradovat](#upgrade) z edice Basic na Enterprise.
 
 ## <a name="taxonomy"></a>Taxonomie 
 
@@ -52,11 +50,11 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 > Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 + Na webu:
-    + [Azure Machine Learning Studio](https://ml.azure.com) 
-    + [Azure Machine Learning Designer (Preview)](concept-designer.md) – dostupné jenom v pracovních prostorech [Enterprise Edition](overview-what-is-azure-ml.md#sku) .
-+ V jakémkoli prostředí Pythonu s [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+    + [Azure Machine Learning Studio ](https://ml.azure.com) 
+    + [Návrhář služby Azure Machine Learning](concept-designer.md) 
++ V jakémkoli prostředí Pythonu s [Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro).
 + V jakémkoli prostředí R s [Azure Machine Learning SDK pro R (Preview)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
-+ Na příkazovém řádku pomocí [rozšíření Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
++ Na příkazovém řádku pomocí [rozšíření Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md)
 + [Rozšíření Azure Machine Learning VS Code](how-to-manage-resources-vscode.md#workspaces)
 
 
@@ -80,54 +78,61 @@ Můžete také provádět následující úlohy správy pracovního prostoru:
 |---------------------------|---------|---------|------------|------------|------------|
 | Vytvoření pracovního prostoru        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | Správa přístupu k pracovnímu prostoru    | **&check;**   || |  **&check;**    ||
-| Upgrade na Enterprise Edition    | **&check;** | **&check;**  | |     ||
 | Vytváření a Správa výpočetních prostředků    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
 | Vytvoření virtuálního počítače s poznámkovým blokem |   | **&check;** | |     ||
 
 > [!WARNING]
 > Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
 
-## <a name="create-a-workspace"></a><a name='create-workspace'></a>Vytvořit pracovní prostor
-
-Když vytváříte pracovní prostor, rozhodujete se, jestli se má vytvořit se systémem [Basic nebo Enterprise Edition](overview-what-is-azure-ml.md#sku). Edice určuje funkce, které jsou k dispozici v pracovním prostoru. Kromě dalších funkcí vám edice Enterprise dává přístup k [Azure Machine Learning designeru](concept-designer.md) a verzi studia pro vytváření [automatizovaných experimentů strojového učení](tutorial-first-experiment-automated-ml.md).  Další podrobnosti a informace o cenách najdete v článku [Azure Machine Learning ceny](https://azure.microsoft.com/pricing/details/machine-learning/).
+## <a name="create-a-workspace"></a><a name='create-workspace'></a> Vytvořit pracovní prostor
 
 Existuje několik způsobů, jak vytvořit pracovní prostor:  
 
-* Pomocí [Azure Portal](how-to-manage-workspace.md) pro rozhraní Point-to-Click vás provede jednotlivé kroky.
-* Použití [sady SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) k vytvoření pracovního prostoru ze skriptů Pythonu nebo poznámkových bloků Jupiter
+* Pomocí [Azure Portal](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) pro rozhraní Point-to-Click vás provede jednotlivé kroky.
+* Použití [sady SDK Azure Machine Learning pro Python](how-to-manage-workspace.md?tabs=python#create-a-workspace) k vytvoření pracovního prostoru ze skriptů Pythonu nebo poznámkových bloků Jupyter
 * Pokud potřebujete automatizovat nebo přizpůsobovat vytváření pomocí standardů podnikových zabezpečení, použijte [šablonu Azure Resource Manager](how-to-create-workspace-template.md) nebo [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) .
 * Pokud pracujete v Visual Studio Code, použijte [rozšíření vs Code](how-to-manage-resources-vscode.md#create-a-workspace).
 
 > [!NOTE]
 > V názvu pracovního prostoru se nerozlišují malá a velká písmena.
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Upgrade na Enterprise Edition
-
-[Pracovní prostor můžete upgradovat ze sady Basic na Enterprise Edition](how-to-manage-workspace.md#upgrade) pomocí Azure Portal. Pracovní prostor Enterprise Edition nelze downgradovat na pracovní prostor edice Basic. 
-
-## <a name="associated-resources"></a><a name="resources"></a>Přidružené prostředky
+## <a name="associated-resources"></a><a name="resources"></a> Přidružené prostředky
 
 Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik prostředků Azure, které pracovní prostor používá:
 
++ [Azure Storage účet](https://azure.microsoft.com/services/storage/): slouží jako výchozí úložiště dat pro pracovní prostor.  Jupyter poznámkové bloky používané s vašimi výpočetními instancemi Azure Machine Learning jsou také uloženy. 
+  
+  > [!IMPORTANT]
+  > Ve výchozím nastavení je účet úložiště účet pro obecné účely v1. Po vytvoření pracovního prostoru můžete [tuto verzi upgradovat na obecné účely verze 2](../storage/common/storage-account-upgrade.md) . Po upgradu na obecné účely v2 nepovolujte v účtu úložiště hierarchický obor názvů.
+
+  Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). V rámci _výchozího_ účtu úložiště pracovního prostoru nejsou podporovány ani úrovně Premium Storage ani hierarchické obory názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
+  
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): registruje kontejnery Docker, které používáte během školení a při nasazení modelu. Pro minimalizaci nákladů je ACR **opožděně načteno** , dokud se nevytvoří image nasazení.
-+ [Azure Storage účet](https://azure.microsoft.com/services/storage/): slouží jako výchozí úložiště dat pro pracovní prostor.  Jupyter poznámkové bloky používané s vašimi výpočetními instancemi Azure Machine Learning jsou také uloženy.
+
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): ukládá informace o monitorování vašich modelů.
+
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): ukládá tajné kódy používané výpočetními cíli a dalšími citlivými informacemi, které pracovní prostor potřebuje.
 
 > [!NOTE]
-> Kromě vytváření nových verzí můžete používat i existující služby Azure.
+> Místo toho můžete použít existující instance prostředků Azure, když vytvoříte pracovní prostor se sadou [Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace), [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html)nebo Azure Machine Learning CLI [pomocí šablony ARM](how-to-create-workspace-template.md).
 
-> [!IMPORTANT]
-> Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve _výchozím_ účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
+<a name="wheres-enterprise"></a>
+
+## <a name="what-happened-to-enterprise-edition"></a>Co se stalo se standardem Enterprise Edition
+
+Od září 2020 jsou teď všechny funkce dostupné v pracovních prostorech Enterprise Edition dostupné i v pracovních prostorech Basic Edition. Nové pracovní prostory v podniku již nelze vytvořit.  Všechna volání sady SDK, rozhraní příkazového řádku nebo Azure Resource Manager, která používají `sku` parametr, budou i nadále fungovat, ale bude zřízen základní pracovní prostor.
+
+Od 21. prosince budou všechny pracovní prostory edice Enterprise Edition automaticky nastaveny na základní edici, která má stejné možnosti. Během tohoto procesu nedojde k žádnému výpadku. Od 1. ledna 2021 bude edice Enterprise vyřazená z provozu. 
+
+V obou edicích jsou zákazníci odpovědni za náklady na spotřebované prostředky Azure a nebudou muset platit žádné další poplatky za Azure Machine Learning. Další podrobnosti najdete na [stránce s cenami Azure Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/) .
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít s Azure Machine Learning, přečtěte si:
 
 + [Přehled Azure Machine Learning](overview-what-is-azure-ml.md)
-+ [Vytvoření pracovního prostoru](how-to-manage-workspace.md)
-+ [Správa pracovního prostoru](how-to-manage-workspace.md)
-+ [Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK](tutorial-1st-experiment-sdk-setup.md)
-+ [Kurz: Začínáme s Azure Machine Learning s využitím sady R SDK](tutorial-1st-r-experiment.md)
-+ [Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení](tutorial-first-experiment-automated-ml.md) (dostupné jenom v pracovních prostorech [Enterprise Edition](overview-what-is-azure-ml.md#sku) )
-+ [Kurz: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md) (dostupné jenom v pracovních prostorech [Enterprise Edition](overview-what-is-azure-ml.md#sku) )
++ [Vytvoření a Správa pracovního prostoru](how-to-manage-workspace.md)
++ [Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí](tutorial-1st-experiment-sdk-setup-local.md)
++ [Kurz: Začínáme s vytvářením prvního experimentu ML na výpočetní instanci](tutorial-1st-experiment-sdk-setup.md)
++ [Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení](tutorial-first-experiment-automated-ml.md) 
++ [Kurz: Predikce ceny automobilů s využitím návrháře](tutorial-designer-automobile-price-train-score.md)

@@ -3,15 +3,15 @@ title: Vytvoření PowerShellového fondu virtuálních počítačů s Windows �
 description: Postup vytvoření fondu hostitelů na virtuálním počítači s Windows pomocí rutin prostředí PowerShell.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121149"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251450"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí PowerShellu
 
@@ -20,7 +20,7 @@ ms.locfileid: "88121149"
 
 Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů je možné přidružit k několika skupinám RemoteApp, jedné skupině aplikací klasické pracovní plochy a několika hostitelům relací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že už jste postupovali podle pokynů v tématu [nastavení modulu PowerShellu](powershell-module.md).
 
@@ -93,12 +93,15 @@ K úspěšnému připojení k doméně udělejte na každém virtuálním počí
 
 1. [Připojte se k virtuálnímu počítači](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
 2. Na virtuálním počítači spusťte **Ovládací panely** a vyberte možnost **systém**.
-3. Vyberte **název počítače**, vyberte **změnit nastavení**a pak zvolte **změnit...**
+3. Vyberte **název počítače**, vyberte **změnit nastavení** a pak zvolte **změnit...**
 4. Vyberte **doména** a pak zadejte doménu služby Active Directory ve virtuální síti.
 5. Proveďte ověření pomocí doménového účtu, který má oprávnění k počítačům připojeným k doméně.
 
     >[!NOTE]
     > Pokud se připojujete k virtuálním počítačům do prostředí Azure Active Directory Domain Services (Azure služba AD DS), ujistěte se, že je uživatel připojení k doméně také členem [skupiny správců AAD řadiče domény](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
+
+>[!IMPORTANT]
+>Doporučujeme Nepovolit žádné zásady ani konfigurace zakazující Instalační služba systému Windows. Pokud Instalační služba systému Windows zakážete, služba nebude moci instalovat aktualizace agenta na hostitele vaší relace a hostitelé relace nebudou správně fungovat.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
 
@@ -121,13 +124,13 @@ Pokud chcete zaregistrovat agenty virtuálních počítačů s Windows, udělejt
 
 Agenta budete muset aktualizovat, pokud jste v některé z následujících situací:
 
-- Chcete migrovat dříve registrovanou relaci do nového fondu hostitelů.
+- Chcete migrovat dříve registrovaného hostitele relace do nového fondu hostitelů
 - Po aktualizaci se hostitel relace nezobrazí ve fondu hostitelů.
 
 Aktualizace agenta:
 
 1. Přihlaste se k virtuálnímu počítači jako správce.
-2. Vyhledejte **služby**a pak zastavte procesy **Rdagent** a **Remote Desktop agent Loader** .
+2. Vyhledejte **služby** a pak zastavte procesy **Rdagent** a **Remote Desktop agent Loader** .
 3. Dále vyhledejte agenta a MSIs zaváděcího programu. Budou umístěny buď ve složce **C:\DeployAgent** , nebo podle umístění, do kterého jste ho uložili při instalaci.
 4. Vyhledejte následující soubory a odinstalujte je:
      
@@ -137,8 +140,8 @@ Aktualizace agenta:
    Pokud chcete tyto soubory odinstalovat, klikněte pravým tlačítkem na každý název souboru a vyberte **odinstalovat**.
 5. Volitelně můžete také odebrat následující nastavení registru:
      
-     - Počítač \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
-     - Počítač \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDInfraAgent
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDAgentBootLoader
 
 6. Po odinstalaci těchto položek by se měla odebrat všechna přidružení s původním fondem hostitelů. Pokud chcete tohoto hostitele znovu zaregistrovat ke službě, postupujte podle pokynů v části [registrace virtuálních počítačů do fondu hostitelů virtuálních počítačů s Windows](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
 

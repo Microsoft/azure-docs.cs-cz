@@ -1,17 +1,17 @@
 ---
 title: Jak funguje migrace Hyper-V v Azure Migrate?
 description: Další informace o migraci technologie Hyper-V pomocí Azure Migrate
-author: rayne-wiselman
-ms.service: azure-migrate
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 239918cc19eefbef9e3c3f12d5ddd3bb5434b490
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74185877"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751015"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Jak funguje replikace Hyper-V?
 
@@ -30,7 +30,7 @@ Migrace Azure Migrate serveru je nástroj pro migraci místních úloh a cloudov
 
 ## <a name="architectural-components"></a>Komponenty architektury
 
-![Architektura](./media/hyper-v-replication-architecture/architecture.png)
+![Diagram znázorňuje zdrojovou síť Hyper-V s datovým kanálem H T T P S, na Microsoft Azure s podrobnostmi popsanými v tabulce.](./media/hyper-v-replication-architecture/architecture.png)
 
 
 
@@ -70,9 +70,9 @@ Výkon replikace pro Hyper-V je ovlivněný faktory, které zahrnují velikost v
 
 
 1. Přihlaste se k hostiteli nebo uzlu clusteru technologie Hyper-V.
-2. Spuštěním složky **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**otevřete modul snap-in Windows Azure Backup MMC.
+2. Spuštěním složky **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc** otevřete modul snap-in Windows Azure Backup MMC.
 3. V modulu snap-in vyberte **změnit vlastnosti**.
-4. V případě **omezení**vyberte možnost **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
+4. V případě **omezení** vyberte možnost **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
 I
 
 ### <a name="influence-upload-efficiency"></a>Efektivita nahrávání vlivu
@@ -80,7 +80,7 @@ I
 Pokud máte volnou šířku pásma pro replikaci a chcete zvýšit nahrávání, můžete zvýšit počet vláken přidělených pro úlohu odeslání následujícím způsobem:
 
 1. Otevřete registr pomocí příkazu regedit.
-2. Přejděte na Key HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
+2. Přejít na klíčovou HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
 3. Zvyšte hodnotu počtu vláken používaných pro nahrávání dat pro každý virtuální počítač repliky. Výchozí hodnota je 4 a maximální hodnota je 32. 
 
 

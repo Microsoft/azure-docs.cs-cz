@@ -3,20 +3,20 @@ title: Připojení Azure Functions k Azure Storage pomocí Visual Studio Code
 description: Naučte se připojit Azure Functions ke frontě Azure Storage přidáním výstupní vazby do projektu Visual Studio Code.
 ms.date: 02/07/2020
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: ee10adea181c187bd630b5d334e4768545f4f6c8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 96384d2c50e7d5b4b5b6e652d01c4a89cd519573
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845370"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493368"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Připojení Azure Functions k Azure Storage pomocí Visual Studio Code
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-V tomto článku se dozvíte, jak pomocí Visual Studio Code připojit funkci, kterou jste vytvořili v [předchozím článku rychlý Start](functions-create-first-function-vs-code.md) pro Azure Storage. Výstupní vazba, kterou do této funkce přidáte, zapisuje data z požadavku HTTP do zprávy ve frontě úložiště Azure Queue. 
+V tomto článku se dozvíte, jak pomocí Visual Studio Code připojit Azure Storage k funkci, kterou jste vytvořili v předchozím článku rychlý Start. Výstupní vazba, kterou do této funkce přidáte, zapisuje data z požadavku HTTP do zprávy ve frontě úložiště Azure Queue. 
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Pro snazší použití účtu úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage` .  
 
@@ -32,13 +32,30 @@ Než začnete tento článek, musíte splnit následující požadavky:
 * Instalace [.NET Core CLIch nástrojů](/dotnet/core/tools/?tabs=netcore2x).
 ::: zone-end
 
-* Proveďte kroky v [části 1 rychlého startu Visual Studio Code](functions-create-first-function-vs-code.md). 
+::: zone pivot="programming-language-csharp"  
+* Proveďte kroky v [části 1 rychlého startu Visual Studio Code](create-first-function-vs-code-csharp.md). 
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+* Proveďte kroky v [části 1 rychlého startu Visual Studio Code](create-first-function-vs-code-node.md). 
+::: zone-end   
+::: zone pivot="programming-language-java"  
+* Proveďte kroky v [části 1 rychlého startu Visual Studio Code](create-first-function-vs-code-java.md). 
+::: zone-end   
+::: zone pivot="programming-language-typescript"  
+* Proveďte kroky v [části 1 rychlého startu Visual Studio Code](create-first-function-vs-code-typescript.md). 
+::: zone-end   
+::: zone pivot="programming-language-python"  
+* Proveďte kroky v [části 1 rychlého startu Visual Studio Code](create-first-function-vs-code-python.md). 
+::: zone-end   
+::: zone pivot="programming-language-powershell"  
+* Proveďte kroky v [části 1 rychlého startu Visual Studio Code](create-first-function-vs-code-powershell.md). 
+::: zone-end   
 
 V tomto článku se předpokládá, že jste už přihlášení k předplatnému Azure z Visual Studio Code. Přihlášení můžete spustit `Azure: Sign In` z palety příkazů. 
 
 ## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
-V [předchozím článku rychlý Start](functions-create-first-function-vs-code.md)jste vytvořili aplikaci funkcí v Azure spolu s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do local.settings.jsv souboru. 
+V [předchozím článku rychlý Start](./create-first-function-vs-code-csharp.md)jste vytvořili aplikaci funkcí v Azure spolu s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do local.settings.jsv souboru. 
 
 1. Stisknutím klávesy F1 otevřete paletu příkazů a pak vyhledejte a spusťte příkaz `Azure Functions: Download Remote Settings....` . 
 
@@ -79,7 +96,7 @@ Nyní můžete přidat výstupní vazbu úložiště do projektu.
 
 V Functions každý typ vazby vyžaduje `direction` , `type` , a jedinečný, `name` který má být definován v function.jsv souboru. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -131,31 +148,25 @@ Po definování vazby můžete použít `name` vazbu na k přístupu jako atribu
 
 [!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
 
+## <a name="update-the-tests"></a>Aktualizace testů
+
 [!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
 
 ::: zone-end  
 
-<!--- Local testing section --->
+## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
+1. Jako v předchozím článku spusťte stisknutím klávesy <kbd>F5</kbd> projekt Function App a základní nástroje. 
 
-[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
+1. Se základními nástroji, které běží, přejdete do oblasti **Azure: Functions** . V části **funkce** rozbalte **místní**  >  **funkce** projektu. Klikněte pravým tlačítkem (CTRL + klikněte na Mac) `HttpExample` funkce a pak vyberte **Spustit funkci...**
 
-::: zone-end
+    :::image type="content" source="../../includes/media/functions-run-function-test-local-vs-code/execute-function-now.png" alt-text="Spustit funkci hned z Visual Studio Code":::
 
-::: zone pivot="programming-language-powershell"
+1. V části **Zadejte text žádosti** se zobrazí hodnota tělo zprávy žádosti `{ "name": "Azure" }` . Stisknutím klávesy ENTER odešlete tuto zprávu požadavku vaší funkci.  
+ 
+1. Po vrácení odpovědi stiskněte <kbd>kombinaci kláves CTRL + C</kbd> a zastavte základní nástroje.
 
-[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
-
-::: zone-end
-
-V účtu úložiště se vytvoří nová fronta s názvem **front** . modul runtime Functions při prvním použití výstupní vazby. Pomocí Průzkumník služby Storage ověříte, že se vytvořila fronta spolu s novou zprávou.
-
-::: zone pivot="programming-language-java"  
-
-[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
-
-::: zone-end
+Vzhledem k tomu, že používáte připojovací řetězec úložiště, funkce se při místním spuštění připojuje k účtu úložiště Azure. V účtu úložiště se vytvoří nová fronta s názvem **front** . modul runtime Functions při prvním použití výstupní vazby. Pomocí Průzkumník služby Storage ověříte, že se vytvořila fronta spolu s novou zprávou.
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Propojení Průzkumníka služby Storage s vaším účtem
 
@@ -165,7 +176,7 @@ Pokud jste už Průzkumník služby Azure Storage nainstalovali a připojili ho 
 
     ![Přidat účet Azure do Průzkumník služby Microsoft Azure Storage](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
-1. V dialogovém okně **připojit** zvolte **Přidat účet Azure**, zvolte **prostředí Azure**a pak vyberte **Přihlásit se...**. 
+1. V dialogovém okně **připojit** zvolte **Přidat účet Azure**, zvolte **prostředí Azure** a pak vyberte **Přihlásit se...**. 
 
     ![Přihlášení k účtu Azure](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
 
@@ -191,47 +202,52 @@ Teď je čas na opětovné publikování aktualizované aplikace Function App do
 
 1. Vyberte aplikaci funkcí, kterou jste vytvořili v prvním článku. Vzhledem k tomu, že projekt znovu nasazujete do stejné aplikace, vyberte **nasadit** a zastavte tak upozornění týkající se přepsání souborů.
 
-1. Po dokončení nasazení můžete znovu použít kudrlinkou nebo prohlížeč k otestování znovu nasazené funkce. Stejně jako dřív přidejte řetězec dotazu `&name=<yourname>` k adrese URL, jako v následujícím příkladu:
-
-    ```bash
-    curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
-    ```
+1. Po dokončení nasazení můžete znovu použít funkci **Execute Function Now...** a aktivovat funkci v Azure.
 
 1. Opětovným [zobrazením zprávy ve frontě úložiště](#examine-the-output-queue) ověřte, zda výstupní vazba znovu generuje novou zprávu ve frontě.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V Azure se *prostředky* odkazují na aplikace Function App, funkce, účty úložiště a tak dále. Jsou seskupené do *skupin prostředků*a odstraněním skupiny můžete všechno odstranit ze skupiny.
+V Azure se *prostředky* odkazují na aplikace Function App, funkce, účty úložiště a tak dále. Jsou seskupené do *skupin prostředků* a odstraněním skupiny můžete všechno odstranit ze skupiny.
 
 Vytvořili jste prostředky k dokončení těchto rychlých startů. Tyto prostředky se vám mohou fakturovat, a to v závislosti na [stavu účtu](https://azure.microsoft.com/account/) a [cenách služeb](https://azure.microsoft.com/pricing/). Pokud prostředky už nepotřebujete, můžete k jejich odstranění použít tento postup:
 
-[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
+[!INCLUDE [functions-cleanup-resources-vs-code-inner.md](../../includes/functions-cleanup-resources-vs-code-inner.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Nyní se můžete dozvědět víc o vývoji funkcí pomocí Visual Studio Code:
 
 + [Vývoj Azure Functions pomocí Visual Studio Code](functions-develop-vs-code.md)
+
++ [Azure Functions triggery a vazby](functions-triggers-bindings.md).
 ::: zone pivot="programming-language-csharp"  
 + [Příklady kompletních projektů funkcí v jazyce C#](/samples/browse/?products=azure-functions&languages=csharp).
+
 + [Referenční informace pro vývojáře v jazyce C# Azure Functions](functions-dotnet-class-library.md)  
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
 + [Příklady kompletních projektů funkcí v JavaScriptu](/samples/browse/?products=azure-functions&languages=javascript).
+
 + [Azure Functions příručka pro vývojáře JavaScriptu](functions-reference-node.md)  
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Příklady kompletních projektů funkcí v jazyce Java](/samples/browse/?products=azure-functions&languages=java).
+
++ [Azure Functions příručka pro vývojáře Java](functions-reference-java.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 + [Příklady kompletních projektů funkcí v TypeScript](/samples/browse/?products=azure-functions&languages=typescript).
+
 + [Azure Functions příručka pro vývojáře TypeScript](functions-reference-node.md#typescript)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 + [Příklady kompletních projektů funkcí v Pythonu](/samples/browse/?products=azure-functions&languages=python)
+
 + [Příručka pro vývojáře Azure Functions Pythonu](functions-reference-python.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 + [Příklady kompletních projektů funkcí v prostředí PowerShell](/samples/browse/?products=azure-functions&languages=azurepowershell).
+
 + [Azure Functions příručka pro vývojáře PowerShellu](functions-reference-powershell.md) 
 ::: zone-end
-+ [Azure Functions triggery a vazby](functions-triggers-bindings.md).
-+ [Stránka s cenami funkcí](https://azure.microsoft.com/pricing/details/functions/)
-+ [Odhad nákladů na plán spotřeby](functions-consumption-costs.md)

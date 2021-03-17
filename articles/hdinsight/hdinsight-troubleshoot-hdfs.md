@@ -1,19 +1,16 @@
 ---
 title: Řešení potíží HDFS ve službě Azure HDInsight
 description: Získejte odpovědi na běžné otázky týkající se práce se službou HDFS a Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be7805493e5acc41254c57ca912b5a2ecf02dae
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82190672"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931466"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop HDFS s využitím Azure HDInsightu
 
@@ -115,7 +112,7 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 Můžete také hodnotu `fs.azure.write.request.size` globálně zvýšit pomocí Apache Ambari. Pomocí následujících kroků můžete změnit hodnotu ve webovém uživatelském rozhraní Ambari:
 
 1. V prohlížeči přejdete do webového uživatelského rozhraní Ambari pro váš cluster. Adresa URL je `https://CLUSTERNAME.azurehdinsight.net` , kde `CLUSTERNAME` je název vašeho clusteru. Po zobrazení výzvy zadejte jméno správce a heslo pro cluster.
-2. Na levé straně obrazovky vyberte **HDFS**a pak vyberte kartu **Konfigurace** .
+2. Na levé straně obrazovky vyberte **HDFS** a pak vyberte kartu **Konfigurace** .
 3. Do pole **Filter...** zadejte `fs.azure.write.request.size` .
 4. Změňte hodnotu z 262144 (256 KB) na novou hodnotu. Například 4194304 (4 MB).
 
@@ -149,10 +146,4 @@ hdfs dfs -rm hdfs://mycluster/tmp/testfile
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -4,14 +4,15 @@ description: Napíšete kód pro sledování požadavků pomocí Application Ins
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
+ms.custom: devx-track-csharp
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c59cbe852a91a91c7b3adb4452328700ec718a82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaa1d6df9faa20b1a561bfccdfea682af7645c18
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671592"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88930243"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Napsat kód pro sledování požadavků pomocí Application Insights
 

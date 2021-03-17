@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 001adaff1fed901638276e548ac1d5fdb41bdc53
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: cc12b4cb7e97a0808405baebc64ca83cdb742bf1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798303"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696944"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Správa přístupu uživatelů pomocí kontrol přístupu Azure AD
 
@@ -44,7 +44,7 @@ V rámci kontroly přístupu může revidujícími být mít jednoho nebo někol
 
 2. Rozhodněte, jestli má každý uživatel kontrolovat svůj vlastní přístup, nebo jestli má jeden nebo několik uživatelů kontrolovat přístup všech.
 
-3. Jako globální správce nebo Správce uživatelů přejdete na [stránku zásad správného řízení identity](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+3. V jedné z následujících rolí: globální správce, Správce uživatelů nebo (Preview) vlastník skupiny zabezpečení M365 nebo AAD, která se má zkontrolovat, najdete na [stránce zásad správného řízení identity](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 4. Vytvořte kontrolu přístupu. Další informace najdete v tématu [Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md).
 

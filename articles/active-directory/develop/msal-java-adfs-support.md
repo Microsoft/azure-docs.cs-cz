@@ -1,7 +1,7 @@
 ---
 title: Podpora AD FS (MSAL for Java)
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o podpoře Active Directory Federation Services (AD FS) (AD FS) v knihovně Microsoft Authentication Library pro Java (MSAL4j).
+description: Přečtěte si o podpoře Active Directory Federation Services (AD FS) (AD FS) v knihovně Microsoft Authentication Library for Java (MSAL4j).
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 11/21/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 5d01d1143563637e21aaa06a3f997c1507e4d8f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 82e3f3b32c6d96b83ec1d0402f344e7d65788c06
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114774"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063701"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>Podpora Active Directory Federation Services (AD FS) v MSAL pro Java
 

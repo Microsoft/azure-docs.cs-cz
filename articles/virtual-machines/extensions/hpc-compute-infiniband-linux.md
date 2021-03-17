@@ -1,23 +1,25 @@
 ---
 title: Rozšíření ovladače InfiniBand – virtuální počítače Azure Linux
 description: Microsoft Azure rozšíření pro instalaci ovladačů InfiniBand na výpočetní virtuální počítače H-a N-Series se systémem Linux.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: vermagit
 editor: ''
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: hpc
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1219f5befb4de81850681a53c10f03dc81249d53
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829046"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559727"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>Rozšíření ovladače InfiniBand pro Linux
 

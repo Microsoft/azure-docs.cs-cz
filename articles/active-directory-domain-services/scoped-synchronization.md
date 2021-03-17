@@ -2,21 +2,22 @@
 title: Vymezená synchronizace pro Azure AD Domain Services | Microsoft Docs
 description: Naučte se používat Azure Portal ke konfiguraci synchronizace s vymezeným oborem z Azure AD do spravované domény Azure Active Directory Domain Services.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
-ms.author: iainfou
-ms.openlocfilehash: 97c561b2ae919799343abe844b57239d04c26d90
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 01/20/2021
+ms.author: justinha
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 34692f5e563e4931a27ea59db84d9c88f27817da
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283125"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660894"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>Konfigurace vymezené synchronizace z Azure AD pro Azure Active Directory Domain Services pomocí Azure Portal
 
@@ -42,15 +43,14 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 Ve výchozím nastavení se všechny uživatele a skupiny z adresáře Azure AD synchronizují do spravované domény. Pokud k spravované doméně potřebuje jenom několik uživatelů, můžete synchronizovat jenom tyto uživatelské účty. Tato synchronizace s vymezeným oborem je založena na skupině. Když nakonfigurujete synchronizaci s rozsahem na základě skupin, budou se do spravované domény synchronizovat jenom uživatelské účty patřící do zadaných skupin. Vnořené skupiny se nesynchronizují, pouze konkrétní skupiny, které vyberete.
 
-Rozsah synchronizace můžete změnit při vytváření spravované domény nebo po jejím nasazení. V existující spravované doméně teď také můžete změnit rozsah synchronizace, aniž byste je museli znovu vytvořit.
+Obor synchronizace můžete změnit před nebo po vytvoření spravované domény. Rozsah synchronizace je definován instančním objektem s identifikátorem aplikace 2565bd9d-DA50-47d4-8B85-4c97f669dc36. Chcete-li zabránit ztrátě rozsahu, neodstraňujte ani neměňte instanční objekt. Pokud je omylem odstraněn, nelze obnovit rozsah synchronizace. 
+
+Při změně rozsahu synchronizace Pamatujte na následující upozornění:
+
+- Dojde k úplné synchronizaci.
+- Objekty, které již nejsou ve spravované doméně požadovány, jsou odstraněny. Ve spravované doméně se vytvoří nové objekty.
 
 Další informace o procesu synchronizace najdete [v tématu pochopení synchronizace v Azure AD Domain Services][concepts-sync].
-
-> [!WARNING]
-> Změna rozsahu synchronizace způsobí, že spravovaná doména znovu synchronizuje všechna data. Platí následující důležité informace:
->
->  * Když změníte rozsah synchronizace pro spravovanou doménu, dojde k úplné opakované synchronizaci.
->  * Objekty, které již nejsou ve spravované doméně požadovány, jsou odstraněny. Ve spravované doméně se vytvoří nové objekty.
 
 ## <a name="enable-scoped-synchronization"></a>Povolit vymezenou synchronizaci
 
@@ -58,7 +58,7 @@ Pokud chcete povolit vymezenou synchronizaci v Azure Portal, proveďte následuj
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte spravovanou doménu, například *aaddscontoso.com*.
 1. V nabídce na levé straně vyberte **synchronizace** .
-1. Jako *Typ synchronizace*vyberte **vymezený obor**.
+1. Jako *Typ synchronizace* vyberte **vymezený obor**.
 1. Zvolte **Vybrat skupiny**, vyhledejte a vyberte skupiny, které chcete přidat.
 1. Po provedení všech změn vyberte **Uložit rozsah synchronizace**.
 
@@ -82,7 +82,7 @@ Pokud chcete zakázat synchronizaci s rozsahem na základě skupin pro spravovan
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte spravovanou doménu, například *aaddscontoso.com*.
 1. V nabídce na levé straně vyberte **synchronizace** .
-1. Změňte *Typ synchronizace* z **oboru** na **vše**a pak vyberte **Uložit rozsah synchronizace**.
+1. Změňte *Typ synchronizace* z **oboru** na **vše** a pak vyberte **Uložit rozsah synchronizace**.
 
 Změna rozsahu synchronizace způsobí, že spravovaná doména znovu synchronizuje všechna data. Objekty, které již nejsou ve spravované doméně požadovány, jsou odstraněny a dokončení opakované synchronizace může trvat delší dobu.
 

@@ -6,15 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.subservice: blobs
+ms.openlocfilehash: 53f29c2b8f7a17ac2a23cc081660e8dcb4b9f387
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534262"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701854"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Zabránit anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB
 
@@ -34,7 +35,7 @@ Aby bylo možné pochopit, jakým způsobem může mít veřejný přístup vliv
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>Monitorování anonymních požadavků pomocí Průzkumník metrik
 
-Pokud chcete sledovat anonymní požadavky na účet úložiště, použijte Azure Průzkumník metrik v Azure Portal. Další informace o Průzkumník metrik najdete v tématu [Začínáme s Azure Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md).
+Pokud chcete sledovat anonymní požadavky na účet úložiště, použijte Azure Průzkumník metrik v Azure Portal. Další informace o Průzkumník metrik najdete v tématu [Začínáme s Azure Průzkumník metrik](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Pomocí těchto kroků můžete vytvořit metriku, která bude sledovat anonymní požadavky:
 
@@ -60,35 +61,37 @@ Po nakonfigurování metriky se v grafu začnou zobrazovat anonymní požadavky.
 
 :::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Snímek obrazovky znázorňující agregované anonymní požadavky na úložiště objektů BLOB":::
 
-Můžete také nakonfigurovat pravidlo výstrahy, které vás upozorní, když se na váš účet úložiště vytvoří určitý počet anonymních požadavků. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
+Můžete také nakonfigurovat pravidlo výstrahy, které vás upozorní, když se na váš účet úložiště vytvoří určitý počet anonymních požadavků. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="analyze-logs-to-identify-containers-receiving-anonymous-requests"></a>Analýza protokolů pro identifikaci kontejnerů, které přijímají anonymní požadavky
 
 Protokoly Azure Storage zaznamenávají informace o požadavcích provedených proti účtu úložiště, včetně způsobu autorizace žádosti. Protokoly můžete analyzovat a určit, které kontejnery přijímají anonymní požadavky.
 
-Pokud chcete protokolovat požadavky na účet Azure Storage za účelem vyhodnocení anonymních požadavků, můžete použít Azure Storage přihlášení Azure Monitor (Preview). Další informace najdete v tématu [monitorování Azure Storage](../common/monitor-storage.md).
+Pokud chcete protokolovat požadavky na účet Azure Storage za účelem vyhodnocení anonymních požadavků, můžete použít Azure Storage přihlášení Azure Monitor (Preview). Další informace najdete v tématu [monitorování Azure Storage](./monitor-blob-storage.md).
 
-Azure Storage přihlášení Azure Monitor podporuje použití dotazů protokolu k analýze dat protokolu. K dotazování protokolů můžete použít pracovní prostor Azure Log Analytics. Další informace o dotazech protokolu najdete v tématu [kurz: Začínáme s Log Analytics dotazy](../../azure-monitor/log-query/get-started-portal.md).
+Azure Storage přihlášení Azure Monitor podporuje použití dotazů protokolu k analýze dat protokolu. K dotazování protokolů můžete použít pracovní prostor Azure Log Analytics. Další informace o dotazech protokolu najdete v tématu [kurz: Začínáme s Log Analytics dotazy](../../azure-monitor/logs/log-analytics-tutorial.md).
+
+> [!NOTE]
+> Náhled Azure Storage Azure Monitor přihlášení se podporuje jenom ve veřejném cloudu Azure. Cloudy státní správy nepodporují protokolování pro Azure Storage s Azure Monitor.
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Vytvoření nastavení diagnostiky v Azure Portal
 
 Pokud chcete protokolovat data Azure Storage pomocí Azure Monitor a analyzovat je pomocí Azure Log Analytics, musíte nejdřív vytvořit nastavení diagnostiky, které indikuje, jaké typy požadavků a pro které služby úložiště chcete data protokolovat. Chcete-li v Azure Portal vytvořit nastavení diagnostiky, postupujte takto:
 
-1. Zaregistrujte se [Azure Storage přihlašování Azure monitor ve verzi Preview](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
-1. Vytvořte nový pracovní prostor Log Analytics v předplatném, které obsahuje váš Azure Storage účet. Po nakonfigurování protokolování účtu úložiště budou protokoly k dispozici v pracovním prostoru Log Analytics. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
+1. Vytvořte nový pracovní prostor Log Analytics v předplatném, které obsahuje váš Azure Storage účet. Po nakonfigurování protokolování účtu úložiště budou protokoly k dispozici v pracovním prostoru Log Analytics. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../azure-monitor/logs/quick-create-workspace.md).
 1. Na webu Azure Portal přejděte na svůj účet úložiště.
 1. V části monitorování vyberte **nastavení diagnostiky (Preview)**.
 1. Vyberte **objekt BLOB** pro protokolování požadavků provedených proti úložišti objektů BLOB.
 1. Vyberte **Přidat nastavení diagnostiky**.
 1. Zadejte název pro nastavení diagnostiky.
-1. V části **Podrobnosti o kategorii**v části **protokol** vyberte typy požadavků, které se mají protokolovat. Všechny anonymní požadavky budou přečteny, takže vyberte **StorageRead** pro zachycení anonymních požadavků.
-1. V části **Podrobnosti o cíli**vyberte **Odeslat do Log Analytics**. Vyberte své předplatné a Log Analytics pracovní prostor, který jste vytvořili dříve, jak je znázorněno na následujícím obrázku.
+1. V části **Podrobnosti o kategorii** v části **protokol** vyberte typy požadavků, které se mají protokolovat. Všechny anonymní požadavky budou přečteny, takže vyberte **StorageRead** pro zachycení anonymních požadavků.
+1. V části **Podrobnosti o cíli** vyberte **Odeslat do Log Analytics**. Vyberte své předplatné a Log Analytics pracovní prostor, který jste vytvořili dříve, jak je znázorněno na následujícím obrázku.
 
     :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
 
-Po vytvoření nastavení diagnostiky se požadavky na účet úložiště následně protokolují podle tohoto nastavení. Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure](../../azure-monitor/platform/diagnostic-settings.md).
+Po vytvoření nastavení diagnostiky se požadavky na účet úložiště následně protokolují podle tohoto nastavení. Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure](../../azure-monitor/essentials/diagnostic-settings.md).
 
-Odkaz na pole, která jsou k dispozici v Azure Storage protokoly v Azure Monitor, najdete v tématu [protokoly prostředků (Preview)](../common/monitor-storage-reference.md#resource-logs-preview).
+Odkaz na pole, která jsou k dispozici v Azure Storage protokoly v Azure Monitor, najdete v tématu [protokoly prostředků (Preview)](./monitor-blob-storage-reference.md#resource-logs-preview).
 
 #### <a name="query-logs-for-anonymous-requests"></a>Dotazy na protokoly pro anonymní požadavky
 
@@ -102,7 +105,7 @@ StorageBlobLogs
 | project TimeGenerated, AccountName, AuthenticationType, Uri
 ```
 
-Můžete také nakonfigurovat pravidlo výstrahy na základě tohoto dotazu, které vás upozorní na anonymní požadavky. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](../../azure-monitor/platform/alerts-log.md).
+Můžete také nakonfigurovat pravidlo výstrahy na základě tohoto dotazu, které vás upozorní na anonymní požadavky. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](../../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="remediate-anonymous-public-access"></a>Opravit anonymní veřejný přístup
 
@@ -160,7 +163,9 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 ### <a name="check-the-public-access-setting-for-multiple-accounts"></a>Podívejte se na nastavení veřejného přístupu pro víc účtů.
 
-Pokud chcete zjistit nastavení veřejného přístupu v rámci sady účtů úložiště s optimálním výkonem, můžete použít Průzkumníka Azure Resource graphu v Azure Portal. Další informace o používání Průzkumníka grafů prostředků najdete v tématu [rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu](/azure/governance/resource-graph/first-query-portal).
+Pokud chcete zjistit nastavení veřejného přístupu v rámci sady účtů úložiště s optimálním výkonem, můžete použít Průzkumníka Azure Resource graphu v Azure Portal. Další informace o používání Průzkumníka grafů prostředků najdete v tématu [rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu](../../governance/resource-graph/first-query-portal.md).
+
+Vlastnost **AllowBlobPublicAccess** není ve výchozím nastavení nastavena pro účet úložiště a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje veřejný přístup, pokud je hodnota vlastnosti buď **null** , nebo **true**.
 
 Když spustíte následující dotaz, v Průzkumníku grafu prostředků se vrátí seznam účtů úložiště a v každém účtu se zobrazí nastavení veřejného přístupu:
 
@@ -170,6 +175,10 @@ resources
 | extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
 | project subscriptionId, resourceGroup, name, allowBlobPublicAccess
 ```
+
+Následující obrázek znázorňuje výsledky dotazu v rámci předplatného. Všimněte si, že u účtů úložiště, kde byla vlastnost **AllowBlobPublicAccess** explicitně nastavena, se zobrazí ve výsledcích jako **true** nebo **false**. Pokud vlastnost **AllowBlobPublicAccess** nebyla nastavena pro účet úložiště, ve výsledcích dotazu se zobrazí jako prázdná (nebo null).
+
+:::image type="content" source="media/anonymous-read-access-prevent/check-public-access-setting-accounts.png" alt-text="Snímek obrazovky s výsledky dotazu pro nastavení veřejného přístupu napříč účty úložiště":::
 
 ## <a name="use-azure-policy-to-audit-for-compliance"></a>Auditovat dodržování předpisů pomocí Azure Policy
 
@@ -186,7 +195,7 @@ Pokud chcete vytvořit zásadu s účinkem auditu pro nastavení veřejného př
 1. Pokud chcete vytvořit novou definici zásady, vyberte **Přidat definici zásady** .
 1. V poli **umístění definice** vyberte tlačítko **Další** a určete, kde se nachází prostředek zásad auditu.
 1. Zadejte název zásady. Volitelně můžete zadat popis a kategorii.
-1. V části **pravidlo zásad**přidejte do části **policyRule** následující definici zásady.
+1. V části **pravidlo zásad** přidejte do části **policyRule** následující definici zásady.
 
     ```json
     {
@@ -277,6 +286,23 @@ Když vytvoříte zásadu s použitím efektu odepřít a přiřadíte ji k obor
 Následující obrázek ukazuje chybu, ke které dochází, když se pokusíte vytvořit účet úložiště, který umožňuje veřejný přístup (výchozí nastavení pro nový účet), když zásada s efektem odepření vyžaduje, aby byl veřejný přístup zakázán.
 
 :::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Snímek obrazovky znázorňující chybu při vytváření účtu úložiště při porušení zásad":::
+
+## <a name="permissions-for-allowing-or-disallowing-public-access"></a>Oprávnění pro povolení nebo zákaz veřejného přístupu
+
+Aby uživatel mohl nastavit vlastnost **AllowBlobPublicAccess** pro účet úložiště, musí mít oprávnění k vytváření a správě účtů úložiště. Role řízení přístupu na základě role Azure (Azure RBAC), které poskytují tato oprávnění, zahrnují **Microsoft. Storage/storageAccounts/Write** nebo **Microsoft. Storage/storageAccounts \* /** Action. Mezi předdefinované role s touto akcí patří:
+
+- Role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) Azure Resource Manager
+- Role [přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
+- Role [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+
+Tyto role neposkytují přístup k datům v účtu úložiště prostřednictvím služby Azure Active Directory (Azure AD). Zahrnují však **akci Microsoft. Storage/storageAccounts/klíče listkey/Action**, která uděluje přístup k klíčům pro přístup k účtu. S tímto oprávněním může uživatel použít přístupové klíče účtu pro přístup ke všem datům v účtu úložiště.
+
+Přiřazení rolí musí být vymezené na úrovni účtu úložiště nebo vyšší, aby uživatel mohl povolit nebo zakázat veřejný přístup k účtu úložiště. Další informace o rozsahu role najdete v tématu [vysvětlení oboru pro službu Azure RBAC](../../role-based-access-control/scope-overview.md).
+
+Buďte opatrní, abyste omezili přiřazení těchto rolí jenom na ty, kteří potřebují možnost vytvořit účet úložiště nebo aktualizovat jeho vlastnosti. Použijte princip nejnižších oprávnění, abyste měli jistotu, že uživatelé mají nejnižší oprávnění, která potřebují k tomu, aby mohli plnit své úkoly. Další informace o správě přístupu pomocí služby Azure RBAC najdete v tématu [osvědčené postupy pro službu Azure RBAC](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Správci služby pro klasický odběr role správce a Co-Administrator zahrnují ekvivalent role Azure Resource Manager [vlastníka](../../role-based-access-control/built-in-roles.md#owner) . Role **vlastníka** zahrnuje všechny akce, takže uživatel s jednou z těchto rolí pro správu může také vytvářet a spravovat účty úložiště. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ## <a name="next-steps"></a>Další kroky
 

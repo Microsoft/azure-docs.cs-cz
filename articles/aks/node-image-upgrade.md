@@ -1,37 +1,71 @@
 ---
 title: Upgrade imagí uzlu služby Azure Kubernetes Service (AKS)
 description: Naučte se upgradovat image na uzlech clusteru AKS a fondech uzlů.
-author: laurenhughes
-ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 08/17/2020
-ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 11/25/2020
+ms.author: jpalma
+ms.openlocfilehash: 83d7d48922806334e2b49494fe0ef1d15e1a7a6a
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654272"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531475"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade image uzlu služby Azure Kubernetes (AKS)
 
 AKS podporuje upgrade imagí na uzlu, takže budete mít nejnovější aktualizace operačního systému a modulu runtime. AKS poskytuje za týden jednu novou image s nejnovějšími aktualizacemi, takže je vhodné pravidelně upgradovat image vašeho uzlu na nejnovější funkce, včetně aktualizací pro Linux nebo Windows. V tomto článku se dozvíte, jak upgradovat image uzlů clusteru AKS a jak aktualizovat image fondu uzlů bez upgradu verze Kubernetes.
 
-Pokud vás zajímá informace o nejnovějších obrázcích poskytovaných službou AKS, přečtěte si [poznámky k verzi AKS](https://github.com/Azure/AKS/releases) , kde najdete další podrobnosti.
+Další informace o nejnovějších obrázcích, které poskytuje AKS, najdete v [poznámkách k verzi AKS](https://github.com/Azure/AKS/releases).
 
 Informace o tom, jak upgradovat verzi Kubernetes pro váš cluster, najdete v tématu [upgrade clusteru AKS][upgrade-cluster].
 
-## <a name="install-the-aks-cli-extension"></a>Instalace rozšíření CLI AKS
+> [!NOTE]
+> Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 
-Předtím, než bude vydána další základní verze rozhraní příkazového řádku, budete potřebovat rozšíření CLI *AKS-Preview* pro použití upgradu bitové kopie uzlu. Použijte příkaz [AZ Extension Add][az-extension-add] a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
+## <a name="check-if-your-node-pool-is-on-the-latest-node-image"></a>Ověřte, jestli je fond uzlů na nejnovější imagi uzlu.
+
+Můžete zjistit, jaká je nejnovější verze image uzlu dostupná pro váš fond uzlů, a to pomocí následujícího příkazu: 
 
 ```azurecli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
+az aks nodepool get-upgrades \
+    --nodepool-name mynodepool \
+    --cluster-name myAKSCluster \
+    --resource-group myResourceGroup
 ```
+
+Ve výstupu vidíte `latestNodeImageVersion` podobně jako v následujícím příkladu:
+
+```output
+{
+  "id": "/subscriptions/XXXX-XXX-XXX-XXX-XXXXX/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/nodepool1/upgradeProfiles/default",
+  "kubernetesVersion": "1.17.11",
+  "latestNodeImageVersion": "AKSUbuntu-1604-2020.10.28",
+  "name": "default",
+  "osType": "Linux",
+  "resourceGroup": "myResourceGroup",
+  "type": "Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles",
+  "upgrades": null
+}
+```
+
+Proto `nodepool1` je k dispozici nejnovější obrázek uzlu `AKSUbuntu-1604-2020.10.28` . Teď ji můžete porovnat s aktuální verzí image uzlu, kterou používá fond uzlů, a to spuštěním:
+
+```azurecli
+az aks nodepool show \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --query nodeImageVersion
+```
+
+Příklad výstupu:
+
+```output
+"AKSUbuntu-1604-2020.10.08"
+```
+
+V tomto příkladu můžete upgradovat z aktuální `AKSUbuntu-1604-2020.10.08` verze image na nejnovější verzi `AKSUbuntu-1604-2020.10.28` . 
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>Upgradovat všechny uzly ve všech fondech uzlů
 
@@ -124,13 +158,13 @@ az aks nodepool show \
 
 - Informace o nejnovějších imagích uzlů najdete v [poznámkách k vydání verze AKS](https://github.com/Azure/AKS/releases) .
 - Přečtěte si, jak upgradovat verzi Kubernetes pomocí [upgradu clusteru AKS][upgrade-cluster].
-- [Použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)][security-update]
+- [Automatické použití upgradu clusteru a fondu uzlů s akcemi GitHubu][github-schedule]
 - Přečtěte si další informace o více fondech uzlů a o tom, jak upgradovat fondy uzlů pomocí [vytváření a správy fondů více uzlů][use-multiple-node-pools].
 
 <!-- LINKS - internal -->
 [upgrade-cluster]: upgrade-cluster.md
-[security-update]: node-updates-kured.md
+[github-schedule]: node-upgrade-github-actions.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[max-surge]: upgrade-cluster.md#customize-node-surge-upgrade-preview
+[max-surge]: upgrade-cluster.md#customize-node-surge-upgrade
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update

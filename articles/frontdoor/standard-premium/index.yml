@@ -1,0 +1,127 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure front-ve standard/Premium (Preview)
+summary: Přední dveře Azure (verze Preview) je moderní Zabezpečená síťová platforma pro doručování aplikací, která poskytuje škálovatelnou síť CDN, DSA, GLB pro vaše globální webové aplikace.
+metadata:
+  title: Dokumentace ke službě Azure front-end Standard/Premium
+  description: Přední dveře Azure úrovně Standard/Premium (Preview) poskytují škálovatelný a zabezpečený vstupní bod pro rychlé doručování vašich globálních webových aplikací. Naučte se používat službu Front Door prostřednictvím našich rychlých zprovoznění, výukových kurzů a ukázek.
+  services: frontdoor
+  ms.service: frontdoor
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 02/18/2020
+  ms.openlocfilehash: 0fe35a2e83bb6737b1ff273390e5fb0c4db7bc6d
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101740320"
+landingContent:
+- title: Přečtěte si o službě Azure front dveří Standard/Premium (Preview).
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure front dveří Standard/Premium (Preview)?
+      url: overview.md
+- title: Vytvoření profilu front-dveří
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvořit profil front-Standard/Premium
+      url: create-front-door-portal.md
+- title: Konfigurace Správce koncových bodů
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Správce koncových bodů
+      url: concept-endpoint-manager.md
+    - text: Trasa
+      url: concept-route.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace Správce koncových bodů
+      url: how-to-configure-endpoint-manager.md
+- title: Přidat vlastní domény
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přidání vlastní domény
+      url: how-to-add-custom-domain.md
+- title: Správa skupin původních zdrojů
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zdroj
+      url: concept-origin.md
+    - text: Sondy stavu
+      url: concept-health-probes.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace skupiny zdrojů
+      url: how-to-create-origin.md
+- title: Konfigurace sady pravidel
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co je sada pravidel?
+      url: concept-rule-set.md
+    - text: Podmínky shody sady pravidel
+      url: concept-rule-set-match-conditions.md
+    - text: Akce sady pravidel
+      url: concept-rule-set-actions.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace sady pravidel
+      url: how-to-configure-rule-set.md
+- title: Zabezpečení aplikace
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Private Link
+      url: concept-private-link.md
+    - text: WAF ve frontě Azure na úrovni Standard/Premium
+      url: ../../web-application-firewall/afds/afds-overview.md
+    - text: Ochrana před útoky DDoS
+      url: concept-ddos.md
+  - linkListType: how-to-guide
+    links:
+    - text: Povolit privátní propojení
+      url: how-to-enable-private-link-web-app.md
+    - text: Konfigurace zásad WAF
+      url: ../../web-application-firewall/afds/waf-front-door-create-portal.md
+- title: Sestavy, metriky a protokoly
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Sestavy
+      url: how-to-reports.md
+    - text: Monitorování metrik a upozornění
+      url: how-to-monitor-metrics.md
+    - text: protokolování
+      url: how-to-logs.md
+- title: Ukládání a optimalizace do mezipaměti
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ukládání do mezipaměti
+      url: concept-caching.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vyprázdnění mezipaměti
+      url: how-to-cache-purge.md
+    - text: Komprese
+      url: how-to-compression.md
+- title: Řešení potíží se službou Azure Front Door
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Běžné problémy se směrováním
+      url: troubleshoot-route-issues.md
+    - text: Povolené certifikační autority
+      url: troubleshoot-allowed-certificate-authority.md
+- title: Další informace o službě Azure Front Door
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Front Door?
+      url: ../front-door-overview.md

@@ -4,13 +4,18 @@
   items:
     - name: Co je Azure Front Door?
       href: front-door-overview.md
-    - name: Novinky ve službě Azure Front Door
-      href: front-door-whats-new.md
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření služby Front Door
+    - name: Vytvoření služby Front Door – portál
       href: quickstart-create-front-door.md
+    - name: Vytvoření služby Front Door – PowerShell
+      href: quickstart-create-front-door-powershell.md
+    - name: Vytvoření služby Front Door – CLI
+      href: quickstart-create-front-door-cli.md
+    - name: Vytvoření služby Front Door – šablona ARM
+      displayName: Resource Manager
+      href: quickstart-create-front-door-template.md
 - name: Kurzy
   items:
     - name: Přidání vlastní domény do služby Front Door
@@ -31,10 +36,18 @@
       href: front-door-quickstart-template-samples.md
 - name: Koncepty
   items:
+    - name: SKU úrovně Standard/Premium
+      href: standard-premium/overview.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Back-endy a back-endové fondy
       href: front-door-backend-pool.md
     - name: Ukládání do mezipaměti s využitím služby Front Door
       href: front-door-caching.md
+    - name: Ochrana před útoky DDoS
+      href: front-door-ddos.md
     - name: Nejčastější dotazy ke službě Front Door
       href: front-door-faq.md
     - name: Geografické filtrování

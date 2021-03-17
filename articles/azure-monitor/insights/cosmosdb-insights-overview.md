@@ -1,17 +1,16 @@
 ---
 title: Monitorovat Azure Cosmos DB s Azure Monitor pro Cosmos DB | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro funkci Cosmos DB, která poskytuje Cosmos DBm vlastníkům rychlé porozumění problémům s výkonem a využitím jejich účtů CosmosDB.
-ms.subservice: ''
+author: lgayhardt
+ms.author: lagayhar
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498912"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725758"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Prozkoumejte Azure Monitor pro Azure Cosmos DB
 
@@ -38,7 +37,7 @@ Tato funkce nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. Tyto Azur
 
 Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **monitorování** a vyberte **monitor**.
 
@@ -50,7 +49,7 @@ Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi v
 
 ### <a name="overview"></a>Přehled
 
-V **přehledu**zobrazuje tabulka interaktivní metriky Azure Cosmos DB. Výsledky můžete filtrovat podle vybraných možností z následujících rozevíracích seznamů:
+V **přehledu** zobrazuje tabulka interaktivní metriky Azure Cosmos DB. Výsledky můžete filtrovat podle vybraných možností z následujících rozevíracích seznamů:
 
 * V seznamu **předplatných** jsou uvedena pouze předplatná, která mají prostředek Azure Cosmos DB.  
 
@@ -72,7 +71,7 @@ V horní části stránky vyberte **selhání** a otevře se část **selhání*
 
 ![Snímek obrazovky s chybami s rozpisem podle typu požadavku HTTP](./media/cosmosdb-insights-overview/failures.png)
 
-| Kód      |  Popis       | 
+| Kód |  Popis       | 
 |-----------|:--------------------|
 | `200 OK`  | Jedna z následujících operací REST byla úspěšná: </br>– ZÍSKAT u prostředku. </br> -PUT do prostředku. </br> – ZVEŘEJNĚNÍ na prostředku. </br> -POST v prostředku uložené procedury a spusťte uloženou proceduru.|
 | `201 Created` | Operace POST pro vytvoření prostředku je úspěšná. |
@@ -88,13 +87,51 @@ V horní části stránky vyberte **kapacitu** a v šabloně sešitu se otevře 
 
 Stejně jako u sešitu s přehledem se po výběru rozevíracího seznamu vedle Azure Cosmos DB prostředku ve sloupci **odběr** zobrazí rozpis jednotlivých kontejnerů, které tvoří databázi.
 
-### <a name="operations"></a>Operace 
+### <a name="operations"></a>Operace
 
-V horní části stránky vyberte **operace** a otevře se část **operace** v šabloně sešitu. Dává vám možnost Zobrazit vaše požadavky rozdělené podle typu vámi provedených požadavků. 
+V horní části stránky vyberte **operace** a otevře se část **operace** v šabloně sešitu. Dává vám možnost Zobrazit vaše požadavky rozdělené podle typu vámi provedených požadavků.
 
 Takže v příkladu níže vidíte, že se v rámci `eastus-billingint` toho dostávají požadavky na čtení, ale s malým počtem Upsert a požadavky na vytvoření. Vzhledem k tomu `westeurope-billingint` , že je k dispozici jen pro čtení z perspektivy žádosti, alespoň během posledních čtyř hodin, po které je sešit aktuálně vymezený prostřednictvím parametru časového rozsahu.
 
-![Sešit operací](./media/cosmosdb-insights-overview/operation.png) 
+![Sešit operací](./media/cosmosdb-insights-overview/operation.png)
+
+## <a name="view-from-an-azure-cosmos-db-resource"></a>Zobrazit z prostředku Azure Cosmos DB
+
+1. Vyhledejte nebo vyberte libovolný ze stávajících účtů Azure Cosmos DB.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-search.png" alt-text="Vyhledejte Azure Cosmos DB." border="true":::
+
+2. Po přechodu na účet Azure Cosmos DB v části monitorování vyberte **přehledy (Preview)** nebo **sešity** , abyste mohli provádět další analýzu propustnosti, požadavků, úložiště, dostupnosti, latence, správy systémů a účtů.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-overview.png" alt-text="Přehled Cosmos DB Insights" border="true":::
+
+### <a name="time-range"></a>Časové rozmezí
+
+Ve výchozím nastavení se v poli **časový rozsah** zobrazuje data za **posledních 24 hodin**. Časový rozsah můžete upravit tak, aby se data zobrazovala kdekoli za posledních 5 minut až po dobu posledních sedmi dnů. Selektor časového rozsahu zahrnuje také **vlastní** režim, který umožňuje zadat počáteční a koncové datum pro zobrazení vlastního časového rámce na základě dostupných dat pro vybraný účet.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-time-range.png" alt-text="Cosmos DB časový rozsah." border="true":::
+
+### <a name="insights-overview"></a>Přehled Insights
+
+Karta **Přehled** poskytuje nejběžnější metriky pro vybraný Azure Cosmos DB účet, včetně:
+
+* Požadavky celkem
+* Neúspěšné žádosti (429s)
+* Normalizovaná spotřeba RU (max)
+* Využití indexu & dat
+* Cosmos DB metriky účtu podle kolekce
+
+**Celkový počet požadavků:** Tento graf poskytuje zobrazení celkových požadavků na účet rozdělený podle stavového kódu. Jednotky v dolní části grafu jsou součtem celkových požadavků za období.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-total-requests.png" alt-text="Graf všech požadavků Cosmos DB celkem." border="true":::
+
+**Neúspěšné žádosti (429s)**: Tento graf poskytuje zobrazení neúspěšných žádostí se stavovým kódem 429. Jednotky v dolní části grafu jsou součtem celkových neúspěšných žádostí za dané období.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-429.png" alt-text="Graf neúspěšných žádostí Cosmos DB." border="true":::
+
+**Normalizovaná spotřeba ru (max)**: Tento graf poskytuje maximální procento mezi 0-100% normalizovaných jednotek ru spotřeby v zadaném období.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-normalized-ru.png" alt-text="Cosmos DB normalizované spotřeby RU." border="true":::
 
 ## <a name="pin-export-and-expand"></a>Připnout, exportovat a rozbalit
 
@@ -126,6 +163,6 @@ Pokyny k řešení potíží najdete v článku věnovaném [řešení potíží
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nakonfigurujte [Upozornění metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
+* Nakonfigurujte [Upozornění metrik](../alerts/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
 
-* Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).
+* Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../visualize/workbooks-overview.md).

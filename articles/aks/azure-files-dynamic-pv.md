@@ -5,12 +5,12 @@ description: Zjistěte, jak dynamicky vytvořit trvalý svazek se soubory Azure 
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 2ad2affee34348e8c2fc7b734c8b49d0aec8db40
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611394"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744905"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložišt
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-a-storage-class"></a>Vytvoření třídy úložiště
 
@@ -33,13 +33,14 @@ Třída úložiště se používá k definování způsobu vytvoření sdílené
 * *Standard_ZRS* – standardní zóna redundantního úložiště (ZRS)
 * *Standard_RAGRS* – standardní geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)
 * *Premium_LRS* – Premium místně redundantní úložiště (LRS)
+* *Premium_ZRS* – redundantní úložiště zóny Premium (ZRS)
 
 > [!NOTE]
 > Služba soubory Azure podporuje Prémiové úložiště v clusterech AKS, které používají Kubernetes 1,13 nebo vyšší, je minimální úroveň Premium pro sdílení souborů 100 GB
 
 Další informace o třídách úložiště Kubernetes pro soubory Azure najdete v tématu [třídy úložiště Kubernetes][kubernetes-storage-classes].
 
-Vytvořte soubor s názvem `azure-file-sc.yaml` a zkopírujte ho v následujícím ukázkovém manifestu. Další informace o *mountOptions*najdete v části [Možnosti připojení][mount-options] .
+Vytvořte soubor s názvem `azure-file-sc.yaml` a zkopírujte ho v následujícím ukázkovém manifestu. Další informace o *mountOptions* najdete v části [Možnosti připojení][mount-options] .
 
 ```yaml
 kind: StorageClass
@@ -54,6 +55,7 @@ mountOptions:
   - gid=0
   - mfsymlinks
   - cache=strict
+  - actimeo=30
 parameters:
   skuName: Standard_LRS
 ```
@@ -116,7 +118,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -145,7 +147,7 @@ Teď máte spuštěný pod složkou sdílené složky Azure, která je připojen
 Containers:
   mypod:
     Container ID:   docker://053bc9c0df72232d755aa040bfba8b533fa696b123876108dec400e364d2523e
-    Image:          nginx:1.15.5
+    Image:          mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     Image ID:       docker-pullable://nginx@sha256:d85914d547a6c92faa39ce7058bd7529baacab7e0cd4255442b04577c4d1f424
     State:          Running
       Started:      Fri, 01 Mar 2019 23:56:16 +0000
@@ -179,6 +181,7 @@ mountOptions:
   - gid=0
   - mfsymlinks
   - cache=strict
+  - actimeo=30
 parameters:
   skuName: Standard_LRS
 ```

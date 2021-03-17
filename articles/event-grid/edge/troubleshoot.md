@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171342"
 ---
 # <a name="common-issues"></a>Běžné problémy
@@ -100,7 +100,7 @@ Mezi obvyklé příčiny patří:
 
 * Přihlaste se k virtuálnímu počítači, kde je nasazený modul Event Grid a zobrazte jeho protokoly.
 
-* Zapněte protokolování doručení podle nastavení **Broker: logDeliverySuccess = true** a znovu nasaďte Event Grid modul a opakujte požadavek. Zapnutí protokolování pro doručování může mít vliv na propustnost a latenci, takže po dokončení ladění se toto doporučení zapíná zpátky na **zprostředkovatele: logDeliverySuccess = false** a znovu nasazuje Event Grid modul.
+* Zapněte protokolování doručení podle nastavení **Broker: logDeliverySuccess = true** a znovu nasaďte Event Grid modul a opakujte požadavek. Zapnutí protokolování pro doručování může mít vliv na propustnost a latenci, takže po dokončení ladění se toto doporučení zapíná zpátky na **zprostředkovatele: logDeliverySuccess = false**  a znovu nasazuje Event Grid modul.
 
 * Zapněte metriky nastavením **metrik: reportertype = konzola** a znovu nasaďte Event Grid modul. Všechny operace, které potom budou, budou mít za následek protokolování metrik v konzole modulu Event Grid, které lze použít k ladění. Naším doporučením je zapnout metriky jenom pro ladění a po dokončení jejich vypnutí tím, že nastavíte **metriky: reportertype = None** a znovu nasazujete Event Grid modul.
 

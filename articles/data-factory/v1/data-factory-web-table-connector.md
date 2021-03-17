@@ -1,23 +1,18 @@
 ---
 title: Přesunout data z webové tabulky pomocí Azure Data Factory
 description: Přečtěte si, jak přesunout data z tabulky na webové stránce pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: f54a26a4-baa4-4255-9791-5a8f935898e2
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7663848bd06244de7efb169a576e11a5c78204c1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689754"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392897"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Přesunutí dat ze zdroje webové tabulky pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -55,7 +50,7 @@ Chcete-li použít tento konektor webové tabulky, je nutné nastavit Integratio
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API. 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -70,11 +65,11 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu webu.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **Web** . |Yes |
 | URL |Adresa URL webového zdroje |Yes |
-| authenticationType |Anonymous. |Yes |
+| authenticationType |Anonymní. |Yes |
 
 ### <a name="using-anonymous-authentication"></a>Použití anonymního ověřování
 
@@ -98,10 +93,10 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **webtable** má následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ |Typ datové sady musí být nastavené na **Webtable** . |Yes |
-| cesta |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
+| program |Relativní adresa URL k prostředku, který obsahuje tabulku. |No. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
 | index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Yes |
 
 **Příklad:**
@@ -292,8 +287,8 @@ Seznam vlastností, které podporuje websource, najdete v tématu vlastnosti typ
 
     ![Z dialogového okna Web](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-    Adresa URL použitá v tomto příkladu:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Pokud se zobrazí dialogové okno **přístup k webovému obsahu** , vyberte správnou **adresu URL**, **ověřování**a klikněte na **připojit**.
+    Adresa URL použitá v tomto příkladu: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4. Pokud se zobrazí dialogové okno **přístup k webovému obsahu** , vyberte správnou **adresu URL**, **ověřování** a klikněte na **připojit**.
 
    ![Přístup k webovému obsahu – dialogové okno](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
 5. Kliknutím na položku **tabulky** ve stromovém zobrazení zobrazíte obsah z tabulky a potom v dolní části kliknete na tlačítko **Upravit** .  

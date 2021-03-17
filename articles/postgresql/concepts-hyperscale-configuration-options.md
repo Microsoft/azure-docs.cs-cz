@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 7/1/2020
-ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 1/12/2021
+ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964511"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165607"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – možnosti konfigurace Citus (AutoScale)
 
@@ -75,20 +75,20 @@ Skupiny serverů Citus () jsou k dispozici v následujících oblastech Azure:
 
 * Jižní
     * Střední Kanada
-    * USA – střed
-    * USA – východ
+    * Střední USA
+    * East US
     * USA – východ 2
     * USA – středosever
-    * USA – západ 2
+    * Západní USA 2
 * Asie a Tichomoří:
     * Austrálie – východ
-    * Japonsko – východ
+    * Japan East
     * Jižní Korea – střed
-    * Jihovýchodní Asie
+    * Southeast Asia
 * Evropským
     * Severní Evropa
     * Spojené království – jih
-    * Západní Evropa
+    * West Europe
 
 Některé z těchto oblastí se nemusí zpočátku aktivovat ve všech předplatných Azure. Pokud chcete použít oblast ze seznamu výše a nevidíte ji v předplatném, nebo pokud chcete použít oblast, která není v tomto seznamu, otevřete [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -118,6 +118,10 @@ Vytváření nových připojení trvá déle. Který funguje u většiny aplikac
 ### <a name="storage-size"></a>Velikost úložiště
 
 V koordinátorech a uzlech pracovních procesů je podporováno až 2 TiB úložiště. V části dostupné možnosti úložiště a výpočet IOPS [výše](#compute-and-storage) najdete pro velikost uzlů a clusterů.
+
+### <a name="database-creation"></a>Vytvoření databáze
+
+Azure Portal poskytuje přihlašovací údaje pro připojení k přesně jedné databázi na skupinu serverů Citus (databáze), `citus` databázi. Vytvoření jiné databáze není aktuálně povoleno a příkaz CREATE DATABASE selže a dojde k chybě.
 
 ## <a name="pricing"></a>Ceny
 Nejaktuálnější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/)služeb.

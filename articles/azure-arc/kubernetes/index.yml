@@ -1,0 +1,72 @@
+### YamlMime:Landing
+title: Kubernetes s podporou Azure Arc
+summary: Další informace o postupu při správě clusterů Kubernetes s využitím služby Azure Arc
+metadata:
+  title: Kubernetes s podporou Azure Arc
+  description: Další informace o správě místních počítačů v Azure
+  author: shashankbarsin
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 03/02/2021
+  ms.author: shasb
+  ms.openlocfilehash: e9acbb8206985fbc9edebba8d4183ca1a97736f7
+  ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102121656"
+landingContent:
+- title: Informace o protokolu Kubernetes s podporou Azure Arc
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Kubernetes s podporou Azure Arc?
+      url: overview.md
+    - text: Ověřovací program ARC Azure
+      url: validation-program.md
+  - linkListType: concept
+    links:
+    - text: Architektura agenta
+      url: conceptual-agent-architecture.md
+    - text: Konfigurace a GitOps
+      url: conceptual-configurations.md
+    - text: Pracovní postup CI/CD pomocí GitOps
+      url: conceptual-gitops-ci-cd.md
+    - text: Nejčastější dotazy
+      url: faq.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Připojit cluster ke službě Azure ARC
+      url: quickstart-connect-cluster.md
+- title: Nasazení konfigurací s využitím GitOps
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení konfigurací s využitím GitOps
+      url: tutorial-use-gitops-connected-cluster.md
+    - text: Implementace CI/CD pomocí GitOps
+      url: tutorial-gitops-ci-cd.md
+- title: Konfigurace, řízení a monitorování clusterů
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nasazení diagramů Helmu s využitím GitOps
+      url: use-gitops-with-helm.md
+    - text: Vynucení GitOps s využitím Azure Policy
+      url: use-azure-policy.md
+    - text: Nasazení úloh Azure IoT Edge
+      url: deploy-azure-iot-edge-workloads.md
+- title: Testování konceptu
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Rychlé zprovoznění
+      url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/
+- title: Referenční architektura
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Správa nasazení a konfigurací pro hybridní clustery Kubernetes
+      url: /azure/architecture/hybrid/arc-hybrid-kubernetes

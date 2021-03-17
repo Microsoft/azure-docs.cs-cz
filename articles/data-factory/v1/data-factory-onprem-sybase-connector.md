@@ -1,23 +1,18 @@
 ---
 title: Přesun dat z Sybase pomocí Azure Data Factory
 description: Přečtěte si informace o tom, jak přesunout data z databáze Sybase pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: b379ee10-0ff5-4974-8c87-c95f82f1c5c6
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/02/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8142ec51f93a066faafa1f3e44d0f87517187425
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707357"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387236"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Přesun dat z Sybase pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -48,7 +43,7 @@ Podporuje se SAP Sybase SQL kdekoli (ASA) verze 16 a vyšší. SWEETIQ a pomocn�
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API. 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -63,14 +58,14 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Sybase.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type musí být nastavená na: **OnPremisesSybase** . |Yes |
 | server |Název serveru Sybase. |Yes |
 | database |Název databáze Sybase |Yes |
-| XSD |Název schématu v databázi. |No |
+| schema |Název schématu v databázi. |No |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi Sybase. Možné hodnoty jsou: anonymní, základní a Windows. |Yes |
-| uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |No |
+| username |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |No |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |No |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi Sybase. |Yes |
 
@@ -79,7 +74,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu **relačních** objektů typu (který zahrnuje rozhraní Sybase DataSet) má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky instance databáze Sybase, na kterou odkazuje propojená služba |Ne (Pokud je zadán **dotaz** na **RelationalSource** ) |
 

@@ -14,6 +14,7 @@
     - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
     - name: Konfigurace protokolů toků NSG pomocí šablony ARM
+      displayName: Resource Manager
       href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: Kurzy
   items:
@@ -27,10 +28,12 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: Koncepty
   items:
-    - name: Monitorování připojení (Preview)
-      href: connection-monitor-preview.md
+    - name: Monitorování připojení
+      href: connection-monitor-overview.md
     - name: Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů
       href: network-watcher-ip-flow-verify-overview.md
+    - name: Diagnostika pravidel NSG a filtrování provozu
+      href: network-watcher-network-configuration-diagnostics-overview.md
     - name: Diagnostika potíží se směrováním virtuálních počítačů
       href: network-watcher-next-hop-overview.md
     - name: Diagnostika potíží s odchozí komunikací virtuálních počítačů
@@ -43,7 +46,7 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: Zobrazení skupin zabezpečení sítě
       href: network-watcher-security-group-view-overview.md
-    - name: Oprávnění pro řízení přístupu na základě rolí
+    - name: Oprávnění pro řízení přístupu na základě rolí v Azure
       href: required-rbac-permissions.md
     - name: Zabezpečení
       items:
@@ -55,20 +58,28 @@
   items:
     - name: Konfigurace Network Watcheru
       href: network-watcher-create.md
-    - name: Vytvoření funkce Monitorování připojení (Preview)
+    - name: Vytvoření monitorování připojení
       items:
         - name: Pomocí webu Azure Portal
-          href: connection-monitor-preview-create-using-portal.md
+          href: connection-monitor-create-using-portal.md
         - name: Pomocí ARMClienta
-          href: connection-monitor-preview-create-using-arm-client.md
+          href: connection-monitor-create-using-template.md
+        - name: Použití PowerShellu
+          href: connection-monitor-create-using-powershell.md
+    - name: Migrace na Monitorování připojení
+      items:
+        - name: Z Network Performance Monitoru
+          href: migrate-to-connection-monitor-from-network-performance-monitor.md
+        - name: Z Monitorování připojení (klasická verze)
+          href: migrate-to-connection-monitor-from-connection-monitor-classic.md
     - name: Diagnostika potíží se sítí virtuálních počítačů
       items:
         - name: Instalace rozšíření virtuálních počítačů
           items:
             - name: Windows
-              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
             - name: Linux
-              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
         - name: Diagnostika potíží se směrováním
           items:
             - name: Azure PowerShell
@@ -119,6 +130,8 @@
               href: network-watcher-nsg-flow-logging-rest.md
             - name: Azure Resource Manager
               href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+            - name: Předdefinovaná zásada
+              href: nsg-flow-logs-policy-portal.md
         - name: Odstranění objektů blob úložiště protokolu toků NSG
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: Analýza protokolů toku NSG
@@ -171,7 +184,7 @@
     - name: Určení relativní latence mezi umístěním a oblastí Azure
       href: view-relative-latencies.md
     - name: Sledování výkonu sítě
-      href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
     - name: Přesunutí prostředků
       items:
         - name: Přesun prostředků Network Watcheru
@@ -201,7 +214,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: Aktualizace služeb

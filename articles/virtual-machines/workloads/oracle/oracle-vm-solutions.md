@@ -1,24 +1,19 @@
 ---
 title: Řešení Oracle na virtuálních počítačích Azure | Microsoft Docs
 description: Přečtěte si o podporovaných konfiguracích a omezeních imagí virtuálních počítačů Oracle na Microsoft Azure.
-services: virtual-machines-linux
-documentationcenter: ''
-author: rgardler
-manager: ''
-tags: azure-resource-management
-ms.assetid: ''
-ms.service: virtual-machines-windows
+author: dbakevlar
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/12/2020
-ms.author: rogardle
-ms.openlocfilehash: 4489aae873c3fa4153974209074e14959307c772
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.author: kegorman
+ms.openlocfilehash: 2f34e0bb3c4abcf4efba807f95decd798bbc1f86
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690336"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669070"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure
 
@@ -111,14 +106,10 @@ Tyto možnosti jsou možné, protože Azure NetApp Files jsou založené na NetA
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Licencování Oracle Database & software v Azure
 
-Microsoft Azure je autorizované cloudové prostředí pro spouštění Oracle Database. Tabulka Oracle Core Factor se nedá použít při licencování databází Oracle v cloudu. Místo toho se při použití virtuálních počítačů s technologií Hyper-Threading povolených pro databáze edice Enterprise Edition počítá 2 vCPU jako ekvivalentní jedné licenci Oracle Processor, pokud je povolená možnost webthreading (jak je uvedeno v dokumentu zásady). Podrobnosti o zásadách najdete [tady](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
+Microsoft Azure je autorizované cloudové prostředí pro spouštění Oracle Database. Tabulka Oracle Core Factor se nedá použít při licencování databází Oracle v cloudu. Místo toho se při použití virtuálních počítačů s povolenou technologií Hyper-Threading pro databáze Enterprise Edition počítá dvě vCPU stejně jako jedna licence procesoru Oracle, pokud je povolená funkce webthreading (jak je uvedeno v dokumentu zásady). Podrobnosti o zásadách najdete [tady](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
 Databáze Oracle obecně vyžadují větší paměť a vstupně-výstupní operace. Z tohoto důvodu se pro tyto úlohy doporučují [paměťově optimalizované virtuální počítače](../../sizes-memory.md) . Pro lepší optimalizaci vašich úloh se doporučují [základní vcpu](../../constrained-vcpu.md) Oracle Database pro úlohy, které vyžadují vysoké množství paměti, úložiště a vstupně-výstupní propustnosti, ale ne vysoký počet jader.
 
 Když migrujete software Oracle a úlohy z místního prostředí do Microsoft Azure, Oracle nabízí mobilitu licencí, jak je uvedeno v tématu [Oracle on Azure – Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) .
-
-## <a name="oracle-real-application-cluster-oracle-rac"></a>Cluster reálné aplikace Oracle (Oracle RAC)
-
-Cluster reálné aplikace Oracle (Oracle RAC) je navržený tak, aby zmírnil selhání jednoho uzlu v místní konfiguraci clusteru s více uzly. Spoléhá se na dvě místní technologie, které nejsou nativní pro prostředí veřejného cloudu bez technologie Hyper-v: síťové vícenásobné vysílání a sdílený disk. Pokud vaše databázové řešení vyžaduje pro Azure RAC v Azure, budete potřebovat software třetích stran, který tyto technologie povoluje. Další informace o účtu Oracle RAC najdete na [stránce FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Požadavky na vysokou dostupnost a zotavení po havárii
 
@@ -132,7 +123,7 @@ Pomocí Oracle data Guard je možné dosáhnout vysoké dostupnosti s primární
 
 Kurz [implementace Oracle GoldenGate v Azure](configure-oracle-golden-gate.md) vás provede základními postupy nastavení v Azure.
 
-Kromě toho, že máte v Azure navržený řešení HA a zotavení po havárii, byste měli mít k dispozici strategii zálohování pro obnovení databáze. Kurz [zálohování a obnovení Oracle Database](oracle-backup-recovery.md) vás provede základním postupem pro vytvoření konzistentní zálohy.
+Kromě toho, že máte v Azure navržený řešení HA a zotavení po havárii, byste měli mít k dispozici strategii zálohování pro obnovení databáze. Kurz [zálohování a obnovení Oracle Database](./oracle-overview.md) vás provede základním postupem pro vytvoření konzistentní zálohy.
 
 ## <a name="support-for-jd-edwards"></a>Podpora pro řešení JD Edwards
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 92b068ee9b8aaf4c462002354bbb6490f4888a80
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520307"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455897"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Claromentis
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Claromentis s Azure Active Directory (
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Claromentis svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -112,7 +112,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -138,19 +138,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ikonu aplikace** a vyberte **správce**.
 
-    ![Konfigurace Claromentis](./media/claromentis-tutorial/config1.png)
+    ![Snímek obrazovky se zobrazí web Claromentis s vybraným správcem.](./media/claromentis-tutorial/config1.png)
 
 1. Vyberte kartu **vlastní obslužná rutina přihlašovacích** údajů.
 
-    ![Konfigurace Claromentis](./media/claromentis-tutorial/config2.png)
+    ![Snímek obrazovky se stránkou pro správu s vybraným vlastním popisovačem přihlašovacích údajů.](./media/claromentis-tutorial/config2.png)
 
 1. Vyberte položku **Konfigurace SAML**.
 
-    ![Konfigurace Claromentis](./media/claromentis-tutorial/config3.png)
+    ![Snímek obrazovky zobrazující konfigurační stránku SAML.](./media/claromentis-tutorial/config3.png)
 
 1. Na kartě **Konfigurace SAML** přejděte dolů k části **Konfigurace** a proveďte následující kroky:
 
-    ![Konfigurace Claromentis](./media/claromentis-tutorial/config4.png)
+    ![Snímek obrazovky se zobrazí konfigurační část stránky, kde můžete zadat informace popsané v tomto kroku.](./media/claromentis-tutorial/config4.png)
 
     a. Do textového pole **název technického kontaktu** zadejte jméno technické kontaktní osoby.
 
@@ -160,7 +160,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte dolů na **zdroje ověřování** a proveďte následující kroky:
 
-    ![Konfigurace Claromentis](./media/claromentis-tutorial/config5.png)
+    ![Snímek obrazovky se zobrazí v části zdroje ověřování, kde můžete zadat informace popsané v tomto kroku.](./media/claromentis-tutorial/config5.png)
 
     a. Do textového pole **IDP** zadejte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
@@ -172,7 +172,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Nyní si všimnete, že všechny adresy URL byly vyplněny v části **poskytovatel identity** v oddílu **Konfigurace SAML** .
 
-    ![Konfigurace Claromentis](./media/claromentis-tutorial/config6.png)
+    ![Snímek obrazovky se zobrazí stránka zprostředkovatele identity naplněná pomocí U R ls.](./media/claromentis-tutorial/config6.png)
 
     a. Hodnota kopírovat **identifikátor (ID entity):** tuto hodnotu vložte do textového pole **identifikátoru** v části **základní konfigurace SAML** v Azure Portal.
 
@@ -188,14 +188,14 @@ V této části se v Claromentis vytvoří uživatel s názvem B. Simon. Clarome
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Claromentis, měli byste se automaticky přihlásit k Claromentis, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Claromentis, měli byste se automaticky přihlásit k Claromentis, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Claromentis s Azure AD](https://aad.portal.azure.com/)

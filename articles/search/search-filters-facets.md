@@ -7,13 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/05/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084207"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91740866"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Postup sestavení filtru omezujících vlastností v Azure Kognitivní hledání 
 
@@ -28,7 +29,8 @@ Napravovaná navigace se používá pro filtrování na základě výsledků dot
 
 Omezující vlastnosti jsou dynamické a vracejí se v dotazu. Hledání odpovědí vede s těmito kategoriemi omezujícími vlastnostmi, které slouží k procházení výsledků. Pokud nejste obeznámeni s omezujícími vlastnostmi, následující příklad je ilustrace navigační struktury omezující vlastnosti.
 
-  ![Obrázek znázorňující dialogové okno hledání s filtrovanými výsledky hledání seskupenými podle obchodních titulů Šipka značí, že výsledky jsou omezující vlastnosti, které se zobrazí v navigační struktuře omezující vlastnosti.](./media/search-filters-facets/facet-nav.png)
+:::image type="complex" source="media/search-filters-facets/facet-nav.png" alt-text="filtrované výsledky hledání":::
+Obrázek znázorňující dialogové okno hledání s filtrovanými výsledky hledání seskupenými podle obchodních titulů Šipka indikuje, že výsledky jsou omezující vlastnosti, které se zobrazují ve struktuře navigace omezující vlastnosti. :::image-end:::
 
 Novinka s omezujícími podrobnostmi a chcete podrobnější informace? Přečtěte si téma [implementace omezující navigace v Azure kognitivní hledání](search-faceted-navigation.md).
 
@@ -38,12 +40,12 @@ Omezující vlastnosti se dají vypočítat přes pole s jednou hodnotou i pro k
 
 Omezující vlastnost je povolena pro pole po jednotlivých polích při vytváření indexu nastavením `facetable` atributu na `true` . Obecně byste také měli nastavit `filterable` atribut `true` pro taková pole, aby vaše vyhledávací aplikace mohla filtrovat tato pole na základě omezujících vlastností, které vybere koncový uživatel. 
 
-Při vytváření indexu pomocí REST API je libovolný [Typ pole](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , který by mohl být použit v naznačené navigaci, označen jako `facetable` výchozí:
+Při vytváření indexu pomocí REST API je libovolný [Typ pole](/rest/api/searchservice/supported-data-types) , který by mohl být použit v naznačené navigaci, označen jako `facetable` výchozí:
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ Typy číselného pole: `Edm.Int32` , `Edm.Int64` ,`Edm.Double`
++ Typy číselného pole: `Edm.Int32` , `Edm.Int64` , `Edm.Double`
 + Kolekce výše uvedených typů (například `Collection(Edm.String)` nebo `Collection(Edm.Double)` )
 
 Nemůžete použít `Edm.GeographyPoint` ani `Collection(Edm.GeographyPoint)` pole v omezující navigaci. Omezující vlastnosti fungují nejlépe u polí s nízkou mohutnost. Z důvodu rozlišení geografických souřadnic je pravděpodobné, že jakékoliv dvě sady souřadnice budou v dané datové sadě stejné. V takovém případě nejsou omezující vlastnosti pro geografické souřadnice podporovány. Podle umístění budete potřebovat pole město nebo oblast pro omezující vlastnost.
@@ -77,11 +79,11 @@ Atributy indexu, které řídí způsob použití pole, jsou přidány do jednot
 ```
 
 > [!Note]
-> Tato definice indexu je zkopírována z [části Vytvoření indexu služby Azure kognitivní hledání pomocí REST API](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Je stejný, s výjimkou povrchových rozdílů v definicích polí. `filterable`Atributy a `facetable` jsou explicitně přidány do `category` polí, `tags` , `parkingIncluded` , a `smokingAllowed` `rating` . V praxi `filterable` a `facetable` by bylo při použití REST API ve výchozím nastavení povoleno u těchto polí. Při použití sady .NET SDK musí být tyto atributy povoleny explicitně.
+> Tato definice indexu je zkopírována z [části Vytvoření indexu služby Azure kognitivní hledání pomocí REST API](./search-get-started-powershell.md). Je stejný, s výjimkou povrchových rozdílů v definicích polí. `filterable`Atributy a `facetable` jsou explicitně přidány do `category` polí, `tags` , `parkingIncluded` , a `smokingAllowed` `rating` . V praxi `filterable` a `facetable` by bylo při použití REST API ve výchozím nastavení povoleno u těchto polí. Při použití sady .NET SDK musí být tyto atributy povoleny explicitně.
 
 ## <a name="build-and-load-an-index"></a>Sestavení a načtení indexu
 
-Mezilehlého (a možná zjevné) kroku je, že před [vytvořením dotazu musíte sestavit a naplnit index](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) . Tento krok uvádíme pro úplnost. Jedním ze způsobů, jak zjistit, zda je index k dispozici, je kontrola seznamu indexů na [portálu](https://portal.azure.com).
+Mezilehlého (a možná zjevné) kroku je, že před [vytvořením dotazu musíte sestavit a naplnit index](./search-get-started-dotnet.md#1---create-an-index) . Tento krok uvádíme pro úplnost. Jedním ze způsobů, jak zjistit, zda je index k dispozici, je kontrola seznamu indexů na [portálu](https://portal.azure.com).
 
 ## <a name="add-facet-filters-to-a-query"></a>Přidání filtrů omezujících vlastností do dotazu
 
@@ -107,7 +109,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-Pokud uživatel klikne na hodnotu omezující vlastnosti pole kolekce `tags` , například na hodnotu "Pool", vaše aplikace by měla použít následující syntaxi filtru:`$filter=tags/any(t: t eq 'pool')`
+Pokud uživatel klikne na hodnotu omezující vlastnosti pole kolekce `tags` , například na hodnotu "Pool", vaše aplikace by měla použít následující syntaxi filtru: `$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>Tipy a alternativní řešení
 
@@ -124,5 +126,5 @@ I když se jedná o běžný případ použití, není to něco, že navigační
 ## <a name="see-also"></a>Viz také
 
 + [Filtry v Azure Kognitivní hledání](search-filters.md)
-+ [Vytvořit index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [Rozhraní API pro vyhledávání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Vytvořit index REST API](/rest/api/searchservice/create-index)
++ [Rozhraní API pro vyhledávání v dokumentech](/rest/api/searchservice/search-documents)

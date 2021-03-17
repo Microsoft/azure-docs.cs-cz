@@ -10,25 +10,25 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 06/16/2020
+ms.date: 02/16/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 3e4bca058f554f60dfa5c237633d1fecf06dfea7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: baf146bdd89d45c5d7e1ed359822a35d383b7b6c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507552"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561906"
 ---
 ### <a name="general-requirements"></a>Obecné požadavky
 
 * Virtuální síť musí být ve stejném předplatném a stejné oblasti jako účet Batch, který použijete k vytvoření fondu.
 
-* Fond využívající virtuální síť může mít maximálně 4 096 uzlů.
-
 * Podsíť zadaná pro fond musí obsahovat dostatek nepřiřazených IP adres pro všechny virtuální počítače, na které fond cílí, jejichž počet je součtem vlastností `targetDedicatedNodes` a `targetLowPriorityNodes` fondu. Pokud podsíť nemá dostatek nepřiřazených IP adres, fond částečně přidělí výpočetní uzly a dojde k chybě změny velikosti.
 
 * Všechny vlastní servery DNS obsluhující virtuální síť musí být schopné přeložit váš koncový bod služby Azure Storage. Konkrétně musí být možné přeložit adresy URL ve formátu `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` a `<account>.blob.core.windows.net`.
+
+* Ve stejné virtuální síti nebo ve stejné podsíti se dá vytvořit víc fondů (Pokud má dostatečný adresní prostor). Jeden fond nemůže existovat v rámci více virtuální sítě nebo podsítí.
 
 Další požadavky na virtuální síť se liší podle toho, jestli je fond Batch v konfiguraci virtuálního počítače nebo konfiguraci služby Cloud Services. Pro nová nasazení fondů do virtuální sítě se doporučuje konfigurace virtuálního počítače.
 
@@ -42,10 +42,10 @@ Další požadavky na virtuální síť se liší podle toho, jestli je fond Bat
 
 **Oprávnění** – Zkontrolujte, jestli vaše zásady zabezpečení nebo zámky na předplatném nebo skupině prostředků virtuální sítě neomezují oprávnění uživatele spravovat tuto virtuální síť.
 
-**Další síťové prostředky** – Batch automaticky přiděluje další síťové prostředky ve skupině prostředků obsahující virtuální síť.
+**Další síťové prostředky** – Batch automaticky vytvoří další síťové prostředky ve skupině prostředků, která obsahuje virtuální síť.
 
 > [!IMPORTANT]
-> Pro každý 100 vyhrazený uzel nebo uzly s nízkou prioritou dávka přiděluje: jednu skupinu zabezpečení sítě (NSG), jednu veřejnou IP adresu a jeden nástroj pro vyrovnávání zatížení. Pro tyto prostředky platí omezení [kvót prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. V případě velkých fondů možná bude potřeba požádat o navýšení kvóty pro jeden nebo několik z těchto prostředků.
+> Pro každý 100 vyhrazený uzel nebo uzly s nízkou prioritou vytvoří služba Batch: jednu skupinu zabezpečení sítě (NSG), jednu veřejnou IP adresu a jeden nástroj pro vyrovnávání zatížení. Pro tyto prostředky platí omezení [kvót prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. V případě velkých fondů možná bude potřeba požádat o navýšení kvóty pro jeden nebo několik z těchto prostředků.
 
 #### <a name="network-security-groups-batch-default"></a>Skupiny zabezpečení sítě: Výchozí hodnota služby Batch
 
@@ -65,23 +65,29 @@ Nemusíte zadávat skupin zabezpečení sítě na úrovni podsítě virtuální 
 
 Příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) nakonfigurujte pouze v případě, že potřebujete povolit vzdálený přístup k výpočetním uzlům z externích zdrojů. Pokud potřebujete zajistit podporu úkolů s více instancemi a některými moduly runtime MPI, možná bude potřeba v Linuxu povolit pravidla pro port 22. Výpočetní uzly ve fondu budou použitelné i bez povolení provozu na těchto portech.
 
+> [!WARNING]
+> IP adresy služby Batch se můžou v průběhu času měnit. Proto důrazně doporučujeme, abyste `BatchNodeManagement` pro pravidla NSG, která jsou uvedena v následujících tabulkách, používali značku služby (nebo místní varianta). Vyhněte se naplnění pravidel NSG s konkrétními IP adresami služby Batch.
+
 **Příchozí pravidla zabezpečení**
 
 | Zdrojové IP adresy | Značka zdrojové služby | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- | --- |
-| – | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) `BatchNodeManagement` (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | * | Všechny | 29876–29877 | TCP | Povolit |
+| – | `BatchNodeManagement`[značka služby](../articles/virtual-network/network-security-groups-overview.md#service-tags) (při použití regionální varianty ve stejné oblasti jako účet Batch) | * | Všechny | 29876–29877 | TCP | Povolit |
 | Zdrojové IP adresy uživatelů pro vzdálený přístup k výpočetním uzlům nebo podsíti výpočetních uzlů pro úlohy Linuxu s více instancemi, pokud je to potřeba | – | * | Všechny | 3389 (Windows), 22 (Linux) | TCP | Povolit |
-
-> [!WARNING]
-> IP adresy služby Batch se můžou v průběhu času měnit. Proto se důrazně doporučuje používat `BatchNodeManagement` pro pravidla NSG (neboli regionální variantu) značku služby. Vyhněte se naplnění pravidel NSG s konkrétními IP adresami služby Batch.
 
 **Odchozí pravidla zabezpečení**
 
 | Zdroj | Zdrojové porty | Cíl | Značka cílové služby | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- | --- |
-| Všechny | * | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | 443 | TCP | Povolit |
+| Všechny | * | [Značka služby](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | 443 | TCP | Povolit |
+| Všechny | * | [Značka služby](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `BatchNodeManagement` (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | 443 | TCP | Povolit |
+
+`BatchNodeManagement`Pro kontaktování služby Batch z výpočetních uzlů, jako jsou úlohy Správce úloh, se vyžaduje odchozí připojení.
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Fondy v konfigurace služby Cloud Services
+
+> [!WARNING]
+> Fondy konfigurace cloudové služby jsou zastaralé. Místo toho prosím použijte fondy konfigurací virtuálních počítačů.
 
 **Podporované virtuální sítě** – Pouze virtuální sítě Classic
 

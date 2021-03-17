@@ -1,108 +1,88 @@
 ---
 title: Připojení prostředí k Power BI-Azure Time Series Insights | Microsoft Docs
 description: Naučte se, jak připojit Azure Time Series Insights, abyste Power BI mohli sdílet, sestavovat a zobrazovat data napříč vaší organizací.
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: shreyasharmamsft
+ms.author: shresha
+manager: dpalled
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 12/14/2020
+ms.openlocfilehash: 38403eed56dc718afdfce13375dd2662beb13eb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046701"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374163"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Vizualizace dat z Azure Time Series Insights v Power BI
 
-Azure Time Series Insights je platforma pro ukládání, správu, dotazování a vizualizaci dat časových řad v cloudu. [Power BI](https://powerbi.microsoft.com) je nástroj pro obchodní analýzu s bohatou schopností vizualizace, který umožňuje sdílet přehledy a výsledky napříč vaší organizací. Obě služby se teď dají integrovat tak, aby co nejlépe Azure Time Series Insights základní možnosti vizualizace i Power BI.
+Azure Time Series Insights je platforma pro ukládání, správu, dotazování a vizualizaci dat časových řad v cloudu. [Power BI](https://powerbi.microsoft.com) je nástroj pro obchodní analýzu s bohatou schopností vizualizace, který umožňuje sdílet přehledy a výsledky napříč vaší organizací. Obě služby se teď dají integrovat, což vám umožní rozšířit výkonné analýzy Azure Time Series Insights díky funkcím silného sdílení dat a snadnému sdílení Power BI.
 
 Dozvíte se, jak provést tyto akce:
 
-* Připojení Azure Time Series Insights k Power BI pomocí cloudového konektoru
-* Vytvářejte vizuály s daty v Power BI
+* Připojení Azure Time Series Insights k Power BI pomocí nativního konektoru Azure Time Series Insights
+* Vytváření vizuálů s daty časových řad v Power BI
 * Publikování sestavy pro Power BI a sdílení se zbytkem vaší organizace
 
-V tomto případě se naučíte vizualizovat data časových řad prostřednictvím Azure Time Series Insights a vylepšit je pomocí funkcí pro zajištění snadného sdílení dat Power BI.
 
-Nezapomeňte si zaregistrovat [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="prerequisites"></a>Předpoklady
-
+* Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 * Stáhněte a nainstalujte si nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-* Vytvoření nebo vytvoření [prostředí Azure Time Series Insights Gen2](time-series-insights-update-how-to-manage.md)
+* Vytvoření nebo vytvoření [prostředí Azure Time Series Insights Gen2](./how-to-provision-manage.md)
+
+Zkontrolujte prosím [zásady přístupu k prostředí](./concepts-access-policies.md) a ujistěte se, že máte přímý přístup k Azure Time Series Insights Gen2 prostředí pro přístup hosta. 
 
 > [!IMPORTANT]
->
-> * Konektor je aktuálně podporovaný v Azure Time Series Insights prostředích Gen2 nakonfigurovaných jenom s využitím **výhradně pro úložiště**.
-> * Pokud máte přístup hosta k prostředí Azure Time Series Insights Gen2 z jiného tenanta Azure AD, nebudete mít přístup k konektoru. Přečtěte si o [zásadách přístupu k prostředí](./concepts-access-policies.md).
+> * Stáhněte a nainstalujte nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/downloads/). Pokud chcete postupovat podle kroků v tomto článku, ujistěte se, že máte nainstalovanou minimálně 2020 Power BI Desktop verzi z prosince. 
 
-## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Připojení dat z Azure Time Series Insights k Power BI
-
-Pokud chcete Power BI prostředí Azure Time Series Insights připojit, postupujte takto:
-
-1. Otevřít Azure Time Series Insights Explorer
-1. Exportovat data jako dotaz nebo jako nezpracovaná data
-1. Otevřít Power BI Desktop
-1. Načíst z vlastního dotazu
-
-### <a name="export-data-into-power-bi-desktop"></a>Export dat do Power BI plochy
+## <a name="export-data-from-azure-time-series-insights-into-power-bi-desktop"></a>Export dat z Azure Time Series Insights do aplikace Power BI Desktop
 
 Jak začít:
 
-1. Otevřete Azure Time Series Insights Průzkumníku Gen2 a dootevírejte data.
+1. Otevřete Azure Time Series Insights Průzkumníku Gen2 a dootevírejte data. Jedná se o data, která budou exportována do Power BI.
 1. Po vytvoření zobrazení, které jste splnili, přejděte do rozevírací nabídky **Další akce** a vyberte **připojit k Power BI**.
 
-    [![Export Průzkumníka Azure Time Series Insights Gen2](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Export Průzkumníka Azure Time Series Insights Gen2](media/how-to-connect-power-bi/export-from-explorer.jpg)](media/how-to-connect-power-bi/export-from-explorer.jpg#lightbox)
 
-1. Nastavte parametry v této kartě:
+1. Nastavte parametry pro export:
 
-   1. Zadejte relativní časový rámec, který chcete zobrazit. Pokud máte s existujícím zobrazením spokojeni, ponechte to jako **stávající časový rámec**.
-   
-   1. Vyberte mezi **agregovanými** a **nezpracovanými událostmi**. 
-   
+   * **Formát dat**: Určete, zda chcete exportovat **agregovaná data** nebo **nezpracované události** do Power BI. 
+
        > [!NOTE]
-       > Data můžete kdykoli agregovat později v Power BI, ale po agregaci nelze vrátit zpět na nezpracovaná data. 
-       
-       > [!NOTE]
-       > Pro data na úrovni nezpracované události je povolený limit počtu událostí 250 000.
+       > Pokud exportujete nezpracované události, můžete tato data později v Power BI agregovat. Pokud ale exportujete agregovaná data, nebudete se moct vrátit na nezpracovaná data v Power BI. Pro data na úrovni nezpracované události je povolený limit počtu událostí 250 000.
 
-       [![Připojit](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+   * **Časový rozsah**: vyberte, jestli se chcete podívat na **pevný** časový rozsah nebo **nejnovější** data v Power BI. Volba pevného časového rozsahu znamená, že se data v rozsahu hledání, která jste nastavili v grafu, exportují do Power BI. Když zvolíte poslední časový rozsah, znamená to, že Power BI načte nejnovější data pro rozsah hledání, který jste si zvolili (například Pokud seřadíte 1 hodinu dat a vyberete nastavení "poslední", Power BI konektor vždycky provede dotazy na nejnovější 1 hodinu dat.)
+  
+   * **Typ úložiště**: vyberte, jestli byste chtěli spustit vybraný dotaz pro úložiště s **teplem** nebo z **chladírenského** skladu. Pokud jste vybrali rozsah, který zahrnuje studené i teplé obchody, váš dotaz bude ve výchozím nastavení směrován do studeného úložiště, protože služba teplého úložiště bude obsahovat pouze nejnovější data. Ruční změna parametru storeType je povolená, ale nedoporučuje se pro optimální prostředí. 
 
-   1. Pokud jste nenakonfigurovali Azure Time Series Insights prostředí s využitím služby **teplé úložiště**, zobrazí se upozornění.
+    > [!TIP] 
+    > Azure Time Series Insights Explorer automaticky vybere Doporučené parametry v závislosti na rozsahu hledání a zobrazení dat, která jste se rozhodli exportovat. 
 
-       [![Upozornění na teplé úložiště](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+1. Po nakonfigurování nastavení vyberte **Kopírovat dotaz do schránky**.
 
-       > [!TIP]
-       > V Azure Portal můžete nakonfigurovat stávající instanci pro **teplé úložiště** .
+    [![Exportovat modální okno Průzkumníka Azure Time Series Insights](media/how-to-connect-power-bi/choose-explorer-parameters.jpg)](media/how-to-connect-power-bi/choose-explorer-parameters.jpg#lightbox)
 
-1. Vyberte **Kopírovat dotaz do schránky**.
-1. Nyní spusťte Power BI Desktop.
+1. Spusťte Power BI Desktop.
+   
 1. V Power BI Desktop na kartě **Domů** vyberte v levém horním rohu **získat data** a pak **Další**.
 
-    [![Rozevírací seznam domů](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
+    [![Získání dat v Power BI](media/how-to-connect-power-bi/get-data-power-bi.jpg)](media/how-to-connect-power-bi/get-data-power-bi.jpg#lightbox)
 
 1. Vyhledejte **Azure Time Series Insights**, vyberte **Azure Time Series Insights (beta)** a pak se **Připojte**.
 
-    [![Připojit Power BI k Azure Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![Připojit Power BI k Azure Time Series Insights](media/how-to-connect-power-bi/select-tsi-connector.jpg)](media/how-to-connect-power-bi/select-tsi-connector.jpg#lightbox)
 
     Případně přejděte na kartu **Azure** , vyberte **Azure Time Series Insights (beta)** a pak se **Připojte**.
-    
-1. Zobrazí se dialogové okno s žádostí o oprávnění k připojení k prostředkům třetích stran. Vyberte **pokračovat**.
 
-    [![Zvolit vytvořit vlastní dotaz](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
+1. Vložte dotaz, který jste zkopírovali z aplikace Azure Time Series Insights Explorer do pole **vlastní dotaz** , a pak stiskněte tlačítko **OK**.
 
-1. V rozevírací nabídce v části **zdroj dat**vyberte možnost **vytvořit vlastní dotaz**. Vložte ze schránky do volitelného pole **vlastní dotaz (volitelné)** níže a potom stiskněte **OK**.
+    [![Vložte vlastní dotaz a vyberte OK.](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-    [![Předejte vlastní dotaz a vyberte OK.](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
+1.  Tabulka dat se teď načte. Stisknutím klávesy **Load** se načtěte do Power BI. Pokud chcete data převést na data, můžete to udělat nyní kliknutím na **transformovat data**. Data můžete po načtení také transformovat.
 
-1. Tabulka dat se teď načte. Stisknutím klávesy **Load** se načtěte do Power BI.
-
-    [![Zkontrolujte načtená data v tabulce a vyberte načíst.](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
-
-Pokud jste dokončili tento postup, přeskočte dopředu k další části.
+    [![Zkontrolujte data v tabulce a vyberte načíst.](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 
 ## <a name="create-a-report-with-visuals"></a>Vytvoření sestavy s vizuály
 
@@ -110,42 +90,29 @@ Teď, když jste data importovali do Power BI, je čas sestavovat sestavu s vizu
 
 1. Na levé straně okna se ujistěte, že jste vybrali zobrazení **sestavy** .
 
-    [![Vybrat zobrazení sestavy](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![Snímek obrazovky zobrazuje ikonu zobrazení sestavy.](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  Ve sloupci **vizualizace** vyberte svůj vizuál výběru. Vyberte například **Spojnicový graf**. Tím se na plátno přidá prázdný spojnicový graf.
+1. Ve sloupci **vizualizace** vyberte svůj vizuál výběru. Vyberte například **Spojnicový graf**. Tím se na plátno přidá prázdný spojnicový graf.
 
-1.  V seznamu **pole** vyberte **_Timestamp** a přetáhněte ji do pole **osa** pro zobrazení položek podél osy X. Nezapomeňte přepnout na **_Timestamp** jako hodnotu pro **osu** (výchozí je **hierarchie data**).
+1.  V seznamu **pole** vyberte **_Timestamp** a přetáhněte ji do pole **osa** , abyste zobrazili čas podél osy X. Nezapomeňte přepnout na **_Timestamp** jako hodnotu pro **osu** (výchozí je **hierarchie data**).
 
-    [![Vybrat zobrazení sestavy](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![Vyberte _Timestamp](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1.  V seznamu **pole** vyberte **TimeSeriesId** a přetáhněte ji do pole **hodnoty** , abyste zobrazili položky podél osy Y.
+1.  Znovu v seznamu **pole** vyberte proměnnou, kterou chcete vykreslit, a přetáhněte ji do pole **hodnoty** , abyste zobrazili hodnoty podél osy Y. Vyberte svou hodnotu ID časové řady a přetáhněte ji do pole **Legenda** , abyste v grafu mohli vytvořit více řádků, jedno za ID časové řady. Tato akce vykreslí zobrazení podobné tomu, co je k dispozici v Průzkumníkovi Azure Time Series Insights. 
 
-    [![Vytvoření spojnicového grafu](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
+    [![Vytvoření základního spojnicového grafu](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Pokud chcete na plátno přidat další graf, vyberte kdekoliv na plátně mimo spojnicový graf a tento postup opakujte.
+1. Pokud chcete na plátno přidat další graf, vyberte kdekoliv na plátně mimo spojnicový graf a tento postup opakujte.
 
     [![Vytvoření dalších grafů ke sdílení](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
-Jakmile sestavu vytvoříte, můžete ji publikovat ve službě Power BI Reporting Services.
+Jakmile sestavu vytvoříte, můžete ji publikovat ve službě Power BI Reporting Services a sdílet s ostatními uživateli ve vaší organizaci.
 
 ## <a name="advanced-editing"></a>Rozšířené úpravy
-
-Pokud jste již datovou sadu načetli v Power BI, ale chcete upravit dotaz (například parametry data a času nebo ID prostředí), můžete to provést prostřednictvím funkce Rozšířený editor Power BI. Další informace najdete v [dokumentaci k Power BI](https://docs.microsoft.com/power-bi/desktop-query-overview) .
-
-Jako přehled:
-
-1. V Power BI Desktop vyberte **Upravit dotazy**.
-1. Stiskněte **Rozšířený editor**.
-
-    [![Upravit dotazy v Rozšířený editor](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
-
-1. Upravte datovou část JSON podle potřeby.
-1. Vyberte **Hotovo** a pak **zavřete & použít** v **okně editoru Power Query**.
-
-Rozhraní nyní bude odrážet požadované změny, které jste použili.  
+Pokud jste již datovou sadu načetli v Power BI, ale chcete upravit dotaz (například parametry data a času nebo ID prostředí), můžete to provést prostřednictvím funkce Rozšířený editor Power BI. Další informace o tom, jak provádět změny pomocí **editoru Power Query**, najdete v [dokumentaci k Power BI](/power-bi/desktop-query-overview) . 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [Power BI konceptech konektoru](https://docs.microsoft.com/power-bi/desktop-query-overview) pro Azure Time Series Insights.
+* Přečtěte si další informace o [Power BI desktopu](/power-bi/desktop-query-overview).
 
-* Přečtěte si další informace o [Power BI desktopu](https://docs.microsoft.com/power-bi/desktop-query-overview).
+* Přečtěte si informace o [dotazování na data](concepts-query-overview.md) v Azure Time Series Insights Gen2.

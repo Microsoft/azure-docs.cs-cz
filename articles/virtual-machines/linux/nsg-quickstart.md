@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4c57ec2edf43bf0a710f3c15f30836f751c4d52b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500159"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975123"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Otevření portů a koncových bodů pro virtuální počítač pomocí Azure CLI
 
@@ -89,4 +89,4 @@ Pro webové aplikace s vysokou dostupností byste měli své virtuální počít
 V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení přenosů HTTP. Informace o vytváření podrobnějších prostředí najdete v následujících článcích:
 
 * [Přehled Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-* [Co je skupina zabezpečení sítě (NSG)?](../../virtual-network/security-overview.md)
+* [Co je skupina zabezpečení sítě (NSG)?](../../virtual-network/network-security-groups-overview.md)

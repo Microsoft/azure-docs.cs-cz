@@ -1,22 +1,19 @@
 ---
 title: Vytváření datových kanálů pomocí sady Azure .NET SDK
 description: Naučte se programově vytvářet, monitorovat a spravovat datové továrny Azure pomocí Data Factory SDK.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 7d00801ccf67ff82dd0c00bf8aec616aa531668f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1b7f5d1ad671b6d97bd6597386c714b026c02232
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023479"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376849"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytváření, sledování a Správa datových továrn Azure pomocí sady Azure Data Factory .NET SDK
 > [!NOTE]
@@ -26,9 +23,9 @@ ms.locfileid: "87023479"
 Pomocí sady Data Factory .NET SDK můžete programově vytvářet, monitorovat a spravovat datové továrny Azure. Tento článek obsahuje návod, pomocí kterého můžete vytvořit ukázkovou konzolovou aplikaci .NET, která vytvoří a monitoruje datovou továrnu. 
 
 > [!NOTE]
-> Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. V tématu [Data Factory rozhraní .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) pro komplexní dokumentaci k rozhraní .NET api pro Data Factory. 
+> Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. V tématu [Data Factory rozhraní .NET API Reference](/dotnet/api/overview/azure/data-factory) pro komplexní dokumentaci k rozhraní .NET api pro Data Factory. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -50,7 +47,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
     ```powershell
     Get-AzSubscription
     ```
-4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure.
+4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte **&lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -92,7 +89,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
 9. Získejte ID aplikace.
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication    
     ```
     Poznamenejte si ID aplikace (applicationID) ve výstupu.
 
@@ -103,7 +100,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
 * ID aplikace
 * Heslo (zadané v prvním příkazu)
 
-## <a name="walkthrough"></a>Návod
+## <a name="walkthrough"></a>Názorný postup
 V tomto návodu vytvoříte datovou továrnu s kanálem, který obsahuje aktivitu kopírování. Aktivita kopírování kopíruje data ze složky ve vašem úložišti objektů BLOB v Azure do jiné složky ve stejném úložišti objektů BLOB. 
 
 Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Podrobnosti o aktivitě kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md).
@@ -116,7 +113,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
    5. Jako název zadejte **DataFactoryAPITestApp**.
    6. Jako umístění vyberte **C:\ADFGetStarted**.
    7. Kliknutím na tlačítko **OK** vytvořte projekt.
-2. Klikněte na **nástroje**, přejděte na **Správce balíčků NuGet**a klikněte na **Konzola správce balíčků**.
+2. Klikněte na **nástroje**, přejděte na **Správce balíčků NuGet** a klikněte na **Konzola správce balíčků**.
 3. V **Konzole Správce balíčků** postupujte takto:
    1. Spusťte následující příkaz a nainstalujte balíček služby Data Factory: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Spusťte následující příkaz pro instalaci balíčku Azure Active Directory (v kódu použijete rozhraní API Active Directory): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
@@ -137,7 +134,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         </appSettings>
     </configuration>
     ```
-5. V souboru App.Config aktualizujte hodnoty ** &lt; ID &gt; aplikace**, ** &lt; heslo &gt; **, ** &lt; ID &gt; předplatného**a ** &lt; ID &gt; tenanta** vlastními hodnotami.
+5. V souboru App.Config aktualizujte hodnoty **&lt; ID &gt; aplikace**, **&lt; heslo &gt;**, **&lt; ID &gt; předplatného** a **&lt; ID &gt; tenanta** vlastními hodnotami.
 6. Přidejte následující příkazy **using** do souboru **program.cs** v projektu.
 
     ```csharp
@@ -445,7 +442,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     }
     ```
 
-15. V Průzkumník řešení rozbalte projekt: **DataFactoryAPITestApp**, klikněte pravým tlačítkem na **odkazy**a pak klikněte na **Přidat odkaz**. Vyberte zaškrtávací políčko pro `System.Configuration` sestavení a klikněte na tlačítko **OK**.
+15. V Průzkumník řešení rozbalte projekt: **DataFactoryAPITestApp**, klikněte pravým tlačítkem na **odkazy** a pak klikněte na **Přidat odkaz**. Vyberte zaškrtávací políčko pro `System.Configuration` sestavení a klikněte na tlačítko **OK**.
 15. Sestavte konzolovou aplikaci. Klikněte v nabídce na **Sestavit** a potom klikněte na **Sestavit řešení**.
 16. Potvrďte, že kontejner adftutorial v Azure Blob Storage obsahuje alespoň jeden soubor. Pokud ne, vytvořte v Poznámkovém bloku soubor Emp.txt s následujícím obsahem a nahrajte ho do kontejneru adftutorial.
 

@@ -3,7 +3,7 @@ title: Použití spravovaných identit na virtuálním počítači Azure pro př
 description: Podrobné pokyny a příklady použití identit spravovaných virtuálním počítačem Azure pro instanční objekt služby Azure pro přihlašování a přístup k prostředkům klienta.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
-ms.author: markvi
+ms.date: 01/29/2021
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 058058b975116fabcbc242f46afb09dff8df08b6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 61e83bd27c9434c4222e0161e3b643b183d1aa84
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480437"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090956"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure pro přihlášení 
 
@@ -34,7 +34,7 @@ Tento článek poskytuje příklady skriptu PowerShellu a rozhraní příkazové
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Pokud máte v úmyslu použít Azure PowerShell nebo příklady Azure CLI v tomto článku, nezapomeňte nainstalovat nejnovější verzi [Azure PowerShell](/powershell/azure/install-az-ps) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud máte v úmyslu použít Azure PowerShell nebo příklady Azure CLI v tomto článku, nezapomeňte nainstalovat nejnovější verzi [Azure PowerShell](/powershell/azure/install-az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). 
 
 > [!IMPORTANT]
 > - Všechny ukázkové skripty v tomto článku předpokládají, že klient příkazového řádku je spuštěný na virtuálním počítači se spravovanými identitami pro prostředky Azure. Pomocí funkce připojit k VIRTUÁLNÍmu počítači ve Azure Portal se můžete vzdáleně připojit k vašemu VIRTUÁLNÍmu počítači. Podrobnosti o povolení spravovaných identit pro prostředky Azure na virtuálním počítači najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](qs-configure-portal-windows-vm.md)nebo některého z článků variant (pomocí PowerShellu, rozhraní příkazového řádku, šablony nebo sady Azure SDK). 
@@ -90,19 +90,8 @@ Odpovědi, jako například následující, mohou znamenat, že spravovaná iden
 - PowerShell: *Invoke-WebRequest: nejde se připojit ke vzdálenému serveru.*
 - CLI: *MSI: Nepodařilo se načíst token z `http://localhost:50342/oauth2/token` s chybou ' HTTPConnectionPool (host = ' localhost ', port = 50342)* 
 
-Pokud se zobrazí jedna z těchto chyb, vraťte se k virtuálnímu počítači Azure v [Azure Portal](https://portal.azure.com) a:
-
-- Přejít na stránku **Identita** a zajistěte, aby byl **přiřazený systém** nastaven na Ano.
-- Přejít na stránku **rozšíření** a ujistěte se, že se úspěšně nasadily rozšíření spravované identity pro prostředky Azure **(plánované pro vyřazení z ledna 2019)** .
-
-Pokud je některá z těchto chybná, možná budete muset znovu nasadit spravované identity pro prostředky Azure ve svém prostředku nebo vyřešit chybu nasazení. Pokud potřebujete pomoc s konfigurací virtuálních počítačů, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](qs-configure-portal-windows-vm.md) .
+Pokud se zobrazí jedna z těchto chyb, vraťte se k virtuálnímu počítači Azure ve [Azure Portal](https://portal.azure.com) a přejděte na stránku **Identita** a ujistěte se, že **přiřazený systém** je nastavený na Ano.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete povolit spravované identity pro prostředky Azure na virtuálním počítači Azure, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](qs-configure-powershell-windows-vm.md)nebo [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI](qs-configure-cli-windows-vm.md) .
-
-
-
-
-
-

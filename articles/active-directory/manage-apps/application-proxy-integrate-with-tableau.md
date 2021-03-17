@@ -3,7 +3,7 @@ title: Proxy aplikací služby Azure Active Directory a Tableau | Microsoft Docs
 description: Naučte se používat proxy aplikace Azure Active Directory (Azure AD) k poskytnutí vzdáleného přístupu k nasazení Tableau.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6720a5ad963bc73e11ef7b46150e946521928c01
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764498"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258621"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikací služby Azure Active Directory a Tableau 
 
@@ -42,7 +42,7 @@ Proxy aplikací podporuje tok udělení OAuth 2,0, který je nutný ke správné
 
 K publikování Tableau je potřeba publikovat aplikaci na webu Azure Portal.
 
-For
+Pro:
 
 - Podrobné pokyny k krokům 1-8 najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](application-proxy-add-on-premises-application.md). 
 - Informace o tom, jak najít hodnoty Tableau pro pole proxy aplikací, najdete v dokumentaci k Tableau.  
@@ -60,13 +60,13 @@ For
 
 5. Vyplňte požadovaná pole informacemi o vaší nové aplikaci. Pro nastavení použijte následující pokyny: 
 
-    - **Interní adresa URL**: Tato aplikace by měla mít interní adresu URL, která je Tableau adresou URL. Například, `https://adventure-works.tableau.com`. 
+    - **Interní adresa URL**: Tato aplikace by měla mít interní adresu URL, která je Tableau adresou URL. Například `https://adventure-works.tableau.com`. 
 
-    - **Metoda**předběžného ověřování: Azure Active Directory (doporučeno, ale není nutné). 
+    - **Metoda** předběžného ověřování: Azure Active Directory (doporučeno, ale není nutné). 
 
 6. V horní části okna vyberte **Přidat** . Vaše aplikace se přidá a otevře se nabídka rychlý Start. 
 
-7. V nabídce rychlý Start vyberte **přiřadit uživatele pro testování**a přidejte alespoň jednoho uživatele do aplikace. Ujistěte se, že tento testovací účet má přístup k místní aplikaci. 
+7. V nabídce rychlý Start vyberte **přiřadit uživatele pro testování** a přidejte alespoň jednoho uživatele do aplikace. Ujistěte se, že tento testovací účet má přístup k místní aplikaci. 
 
 8. Vyberte **přiřadit** a uložte přiřazení testovacího uživatele. 
 

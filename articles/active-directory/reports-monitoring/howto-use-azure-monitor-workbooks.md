@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ec492466e107eb6f4821f0e6d2caed9daa141a35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b84c38b28b51f867160272883465242fc81ff2bf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608946"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588054"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Použití Azure Monitorch sešitů pro sestavy Azure Active Directory
 
@@ -42,13 +42,13 @@ Chcete:
 
 - Získejte podrobnější přehled o dotazech na přihlášení. Tento sešit oznamuje, kolik uživatelů bylo uděleno nebo odepřeno přístupu, a kolik uživatelů při přístupu k prostředkům nepoužívá zásady podmíněného přístupu.
 
-- Abychom vám pomohli vyřešit tyto otázky, Azure Active Directory poskytuje sešity pro monitorování. [Azure monitor sešity](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) kombinují text, analytické dotazy, metriky a parametry do propracovaných interaktivních sestav.
+- Abychom vám pomohli vyřešit tyto otázky, Azure Active Directory poskytuje sešity pro monitorování. [Azure monitor sešity](../../azure-monitor/visualize/workbooks-overview.md) kombinují text, analytické dotazy, metriky a parametry do propracovaných interaktivních sestav.
 
 
 
 Tento článek:
 
-- Předpokládá, že máte zkušenosti s [vytvářením interaktivních sestav pomocí monitorování sešitů](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).
+- Předpokládá, že máte zkušenosti s [vytvářením interaktivních sestav pomocí monitorování sešitů](../../azure-monitor/visualize/workbooks-overview.md).
 
 - Vysvětluje, jak pomocí monitorovat sešity pochopit účinek zásad podmíněného přístupu, vyřešit problémy s přihlášením a identifikovat starší verze ověřování.
  
@@ -58,11 +58,11 @@ Tento článek:
 
 Pokud chcete používat monitorované sešity, potřebujete:
 
-- Tenant Azure Active Directory s licencí Premium (P1 nebo P2). Přečtěte si, jak [získat licenci](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)na úrovni Premium.
+- Tenant Azure Active Directory s licencí Premium (P1 nebo P2). Přečtěte si, jak [získat licenci](../fundamentals/active-directory-get-started-premium.md)na úrovni Premium.
 
-- [Log Analytics pracovní prostor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+- [Pracovní prostor služby Log Analytics](../../azure-monitor/logs/quick-create-workspace.md).
 
-- [Přístup](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
+- [Přístup](../../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
 - Následující role v Azure Active Directory (Pokud přistupujete Log Analytics prostřednictvím Azure Active Directoryového portálu)
     - Správce zabezpečení
     - Čtenář zabezpečení
@@ -70,7 +70,7 @@ Pokud chcete používat monitorované sešity, potřebujete:
     - Globální správce
 
 ## <a name="roles"></a>Role
-Musíte být v jedné z následujících rolí a mít [přístup k podkladovým Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) pracovním prostorům pro správu sešitů:
+Musíte být v jedné z následujících rolí a mít [přístup k podkladovým Log Analytics](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) pracovním prostorům pro správu sešitů:
 -   Globální správce
 -   Správce zabezpečení
 -   Čtenář zabezpečení
@@ -81,7 +81,7 @@ Musíte být v jedné z následujících rolí a mít [přístup k podkladovým 
 
 Přístup k sešitům:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Přejděte na **Azure Active Directory**  >  **monitorování**  >  **sešitů**. 
 
@@ -97,7 +97,7 @@ Tento sešit obsahuje následující trendy při přihlašování:
 
 - Všechna přihlášení
 
-- Úspěch
+- Success
 
 - Nedokončená akce uživatele
 
@@ -134,7 +134,7 @@ Tento sešit obsahuje následující trendy při přihlašování:
 
 - Všechna přihlášení
 
-- Úspěch
+- Success
 
 
 Jednotlivé trendy můžete filtrovat podle následujících kategorií:
@@ -174,7 +174,7 @@ Tento sešit zobrazuje trendy pro zakázané přihlášení. Jednotlivé trendy 
 
 Pro zakázaná přihlášení získáte rozpis stavu podmíněného přístupu.
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
+![Snímek obrazovky zobrazuje stav podmíněného přístupu a Poslední přihlášení.](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
 ## <a name="conditional-access-insights"></a>Přehled podmíněného přístupu
@@ -186,7 +186,7 @@ Sešity obsahují dotazy protokolu přihlášení, které mohou správcům IT po
 ### <a name="instructions"></a>Pokyny 
 Pokud chcete získat přístup k sešitu pro přehledy podmíněného přístupu, vyberte v části Podmíněný přístup sešit s **informacemi o podmíněném** přístupu. V tomto sešitu se zobrazuje očekávaný dopad na jednotlivé zásady podmíněného přístupu ve vašem tenantovi. V rozevíracím seznamu vyberte jednu nebo více zásad podmíněného přístupu a zužte rozsah sešitu použitím následujících filtrů: 
 
-- **Časový rozsah**
+- **Časové rozmezí**
 
 - **Uživatel**
 
@@ -194,12 +194,12 @@ Pokud chcete získat přístup k sešitu pro přehledy podmíněného přístupu
 
 - **Zobrazení dat**
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+![Snímek obrazovky se zobrazí v podokně podmíněný přístup, kde můžete vybrat zásadu podmíněného přístupu.](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
 Souhrn dopadů zobrazuje počet uživatelů nebo přihlášení, pro které měly vybrané zásady určitý výsledek. Total je počet uživatelů nebo přihlášení, pro které se vybrané zásady vyhodnotily ve vybraném časovém rozsahu. Kliknutím na dlaždici vyfiltrujete data v sešitu podle tohoto typu výsledku. 
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+![Snímek obrazovky zobrazuje dlaždice, které slouží k filtrování výsledků, jako je součet, úspěch a selhání.](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
 V tomto sešitu se také zobrazuje dopad vybraných zásad, které jsou rozdělené podle všech šesti podmínek: 
 - **Stav zařízení**
@@ -209,15 +209,11 @@ V tomto sešitu se také zobrazuje dopad vybraných zásad, které jsou rozděle
 - **Umístění**
 - **Aplikace**
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+![Snímek obrazovky zobrazuje podrobnosti z filtru celkový počet přihlášení.](./media/howto-use-azure-monitor-workbooks/device-platform.png)
 
 Můžete také prozkoumat jednotlivá přihlášení filtrovaná podle parametrů vybraných v sešitu. Vyhledávejte jednotlivé uživatele, seřazené podle četnosti přihlašování a Prohlédněte si jejich odpovídající přihlašovací události. 
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/filtered.png)
-
-
-
-
+![Snímek obrazovky zobrazuje jednotlivá přihlášení, která můžete zkontrolovat.](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 ## <a name="sign-ins-by-grant-controls"></a>Přihlášení pomocí ovládacích prvků grant
 
@@ -267,7 +263,7 @@ Tento sešit obsahuje následující trendy při přihlašování:
 
 - Všechna přihlášení
 
-- Úspěch
+- Success
 
 - Akce čeká na vyřízení
 
@@ -302,4 +298,4 @@ Při řešení potíží s přihlášením vám Azure Monitor poskytuje rozpis p
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytváření interaktivních sestav pomocí sledování sešitů](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).
+[Vytváření interaktivních sestav pomocí sledování sešitů](../../azure-monitor/visualize/workbooks-overview.md).

@@ -4,12 +4,12 @@ description: Naučte se, jak nastavit zotavení po havárii místních virtuáln
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130230"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89442816"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejjednodušší cestu k nasazení scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v článcích v [dokumentaci k Site Recovery](./index.yml)v části **návody** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste už dokončili následující kurzy:
 
@@ -83,7 +83,11 @@ Nainstalujte agenta na všechny hostitele Hyper-V obsahující virtuální poč�
 V Průvodci instalací agenta Microsoft Azure Recovery Services nakonfigurujte tato nastavení:
 
 1. **Kontrolu předpokladů**. Vyberte **Další**. Všechny chybějící požadované součásti se nainstalují automaticky.
-1. **Nastavení instalace**. Přijměte umístění instalace a umístění mezipaměti. Jednotka mezipaměti potřebuje alespoň 5 GB úložného prostoru. Doporučujeme jednotku s 600 GB nebo více volného místa. Pak vyberte **Nainstalovat**.
+1. **Nastavení instalace**. Přijměte umístění instalace. Pak vyberte **Nainstalovat**.
+
+    >[!NOTE]
+    >Pro Azure Site Recovery není **umístění mezipaměti** vyžadováno.
+
 1. **Instalace**. Po dokončení instalace vyberte **Zavřít** a dokončete průvodce.
 
    ![Nainstalovat agenta](./media/hyper-v-vmm-azure-tutorial/mars-install.png)

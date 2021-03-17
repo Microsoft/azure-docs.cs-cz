@@ -2,19 +2,21 @@
 title: Připojte Qlik smysl pro Azure Cosmos DB a vizualizaci dat
 description: Tento článek popisuje kroky potřebné k připojení Azure Cosmos DB k Qlik smyslům a vizualizaci dat.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2401786a82b6a3e5bf6c6a893a8e7cd3656f3402
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263343"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996949"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Připojte Qlik smysl pro Azure Cosmos DB a vizualizaci dat
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Qlik Sense je nástroj pro vizualizaci dat, který kombinuje data z různých zdrojů do jednoho zobrazení. Qlik Sense indexuje každou možnou relaci vašich dat, abyste mohli získat okamžité přehledy o datech. Azure Cosmos DB data můžete vizualizovat pomocí Qlikového rozpoznávání. Tento článek popisuje kroky potřebné k připojení Azure Cosmos DB k Qlik smyslům a vizualizaci dat. 
 

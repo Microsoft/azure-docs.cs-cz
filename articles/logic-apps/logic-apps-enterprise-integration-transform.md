@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 038c1d4c0f0b5ffd7b9aabea2de32e3a44e3b221
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832735"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654128"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Vytváření map transformujících XML mezi formáty v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
 
@@ -44,7 +44,7 @@ Teď, když jste se seznámili s požadavky, je čas vytvořit aplikaci logiky:
 4. Pokud chcete filtrovat všechny akce, které chcete použít, zadejte do vyhledávacího pole *transformaci* slova.  
    ![Snímek obrazovky ukazující, jak vyhledat akci transformace XML v rozevíracím seznamu zobrazit rozhraní API spravované Microsoftem, aby se mohla přidat do triggeru žádosti](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. Vybrat akci **transformace XML**   
-6. Přidejte **obsah** XML, který transformujete. Jako **obsah**můžete použít jakákoli data XML, která obdržíte v požadavku HTTP. V tomto příkladu vyberte tělo požadavku HTTP, který aktivoval aplikaci logiky.
+6. Přidejte **obsah** XML, který transformujete. Jako **obsah** můžete použít jakákoli data XML, která obdržíte v požadavku HTTP. V tomto příkladu vyberte tělo požadavku HTTP, který aktivoval aplikaci logiky.
 
    > [!NOTE]
    > Ujistěte se, že obsah pro **transformaci XML** je XML. Pokud obsah není ve formátu XML nebo je kódovaný v kódování Base64, je nutné zadat výraz, který zpracovává obsah. Například můžete použít [funkce](logic-apps-workflow-definition-language.md#functions), například ```@base64ToBinary``` pro dekódování obsahu nebo ```@xml``` pro zpracování obsahu jako XML.
@@ -95,17 +95,17 @@ Akce Transform podporuje také mapy nebo transformace s odkazem na externí sest
     <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
   </msxsl:script>
   <xsl:template match="data">
-     <circles>
-        <xsl:for-each select="circle">
-            <circle>
-                <xsl:copy-of select="node()"/>
-                    <circumference>
-                        <xsl:value-of select="user:circumference(radius)"/>
-                    </circumference>
-            </circle>
-        </xsl:for-each>
-     </circles>
-    </xsl:template>
+   <circles>
+    <xsl:for-each select="circle">
+      <circle>
+        <xsl:copy-of select="node()"/>
+          <circumference>
+            <xsl:value-of select="user:circumference(radius)"/>
+          </circumference>
+      </circle>
+    </xsl:for-each>
+   </circles>
+  </xsl:template>
     </xsl:stylesheet>
   ```
 

@@ -3,17 +3,20 @@ title: Jak převést formáty tokenů relací v sadě .NET SDK – Azure Cosmos 
 description: Přečtěte si, jak převést formáty tokenů relace, aby se zajistila kompatibilita mezi různými verzemi sady .NET SDK.
 author: vinhms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
-ms.openlocfilehash: 1f5609eae106e04928bc2c49bd84aa651b224611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7ed06eeb7330989b4a251dc77e516eb8ac578bff
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261575"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342041"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>Převod formátů tokenů relací v sadě .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek vysvětluje, jak převádět mezi různými formáty tokenů relace, aby se zajistila kompatibilita mezi verzemi SDK.
 
@@ -31,11 +34,11 @@ Existují dva formáty tokenů relace: **jednoduchý** a **vektorový**.  Tyto d
 
 ### <a name="simple-session-token"></a>Jednoduchý token relace
 
-Jednoduchý token relace má tento formát:`{pkrangeid}:{globalLSN}`
+Jednoduchý token relace má tento formát: `{pkrangeid}:{globalLSN}`
 
 ### <a name="vector-session-token"></a>Token vektorové relace
 
-Token relace Vector má následující formát:`{pkrangeid}:{Version}#{GlobalLSN}#{RegionId1}={LocalLsn1}#{RegionId2}={LocalLsn2}....#{RegionIdN}={LocalLsnN}`
+Token relace Vector má následující formát: `{pkrangeid}:{Version}#{GlobalLSN}#{RegionId1}={LocalLsn1}#{RegionId2}={LocalLsn2}....#{RegionIdN}={LocalLsnN}`
 
 ## <a name="convert-to-simple-session-token"></a>Převést na token jednoduchých relací
 
@@ -110,6 +113,6 @@ else
 Přečtěte si následující články:
 
 * [Použití tokenů relací ke správě konzistence v Azure Cosmos DB](how-to-manage-consistency.md#utilize-session-tokens)
-* [Vyberte správnou úroveň konzistence v Azure Cosmos DB](consistency-levels-choosing.md)
-* [Kompromisy konzistence, dostupnosti a výkonu v Azure Cosmos DB](consistency-levels-tradeoffs.md)
-* [Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
+* [Vyberte správnou úroveň konzistence v Azure Cosmos DB](./consistency-levels.md)
+* [Kompromisy konzistence, dostupnosti a výkonu v Azure Cosmos DB](./consistency-levels.md)
+* [Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](./consistency-levels.md)

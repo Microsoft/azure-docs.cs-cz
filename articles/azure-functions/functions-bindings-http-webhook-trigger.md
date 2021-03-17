@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 29ec547a6033b77d92ad7949df286dc94e3243a2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e8641cada03577cf22e6627bdf53b2a8a0e836ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213940"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216379"
 ---
 # <a name="azure-functions-http-trigger"></a>Aktivační událost Azure Functions HTTP
 
@@ -37,17 +37,21 @@ Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-libra
 ```cs
 [FunctionName("HttpTriggerCSharp")]
 public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] 
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]
     HttpRequest req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -100,11 +104,15 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -128,111 +136,6 @@ public static string Run(Person person, ILogger log)
 public class Person {
      public string Name {get; set;}
 }
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce vyhledá `name` parametr buď v řetězci dotazu, nebo v těle požadavku HTTP.
-
-Tady je *function.js* souboru:
-
-```json
-{
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
-
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
-
-Tady je kód JavaScriptu:
-
-```javascript
-module.exports = function(context, req) {
-    context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
-
-    if (req.query.name || (req.body && req.body.name)) {
-        context.res = {
-            // status defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Funkce vyhledá `name` parametr buď v řetězci dotazu, nebo v těle požadavku HTTP.
-
-Tady je *function.js* souboru:
-
-```json
-{
-    "scriptFile": "__init__.py",
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
-
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
-
-Tady je kód Pythonu:
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -421,6 +324,166 @@ public HttpResponseMessage run(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce vyhledá `name` parametr buď v řetězci dotazu, nebo v těle požadavku HTTP.
+
+Tady je *function.js* souboru:
+
+```json
+{
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
+
+Tady je kód JavaScriptu:
+
+```javascript
+module.exports = function(context, req) {
+    context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
+
+    if (req.query.name || (req.body && req.body.name)) {
+        context.res = {
+            // status defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci prostředí PowerShell](functions-reference-node.md). Funkce vyhledá `name` parametr buď v řetězci dotazu, nebo v těle požadavku HTTP.
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
+```
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$name = $Request.Query.Name
+if (-not $name) {
+    $name = $Request.Body.Name
+}
+
+$body = "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
+
+if ($name) {
+    $body = "Hello, $name. This HTTP triggered function executed successfully."
+}
+
+# Associate values to output bindings by calling 'Push-OutputBinding'.
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body       = $body
+})
+```
+
+
+# <a name="python"></a>[Python](#tab/python)
+
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Funkce vyhledá `name` parametr buď v řetězci dotazu, nebo v těle požadavku HTTP.
+
+Tady je *function.js* souboru:
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "$return"
+        }
+    ]
+}
+```
+
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
+
+Tady je kód Pythonu:
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
@@ -448,14 +511,6 @@ public static Task<IActionResult> Run(
 
 Skripty jazyka C# nepodporují atributy.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Atributy nejsou podporovány jazykem JavaScript.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python nepodporuje atributy.
-
 # <a name="java"></a>[Java](#tab/java)
 
 Tento příklad ukazuje, jak použít atribut [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) .
@@ -474,6 +529,18 @@ public HttpResponseMessage<String> HttpTrigger(
 
 Úplný příklad najdete v [příkladu triggeru](#example).
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Atributy nejsou podporovány jazykem JavaScript.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell nepodporuje atributy.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python nepodporuje atributy.
+
 ---
 
 ## <a name="configuration"></a>Konfigurace
@@ -487,7 +554,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 | **Jméno** | Není k dispozici| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Určuje, které klíče (pokud existují) musí být k žádosti přítomny, aby bylo možné funkci vyvolat. Úroveň autorizace může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;Není vyžadován žádný klíč rozhraní API.</li><li><code>function</code>&mdash;Klíč rozhraní API specifický pro funkci je povinný. Toto je výchozí hodnota, pokud není zadána žádná.</li><li><code>admin</code>&mdash;Hlavní klíč je povinný.</li></ul> Další informace najdete v části o [autorizačních klíčích](#authorization-keys). |
 | **způsobů** |**Metody** | Pole metod HTTP, na které funkce reaguje. Pokud není zadaný, funkce reaguje na všechny metody HTTP. Viz [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
-| **cestě** | **Trasa** | Definuje šablonu směrování, která řídí, které adresy URL žádostí vaše funkce reaguje. Výchozí hodnota, pokud není zadána, je `<functionname>` . Další informace najdete v tématu [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
+| **route** | **Cestě** | Definuje šablonu směrování, která řídí, které adresy URL žádostí vaše funkce reaguje. Výchozí hodnota, pokud není zadána, je `<functionname>` . Další informace najdete v tématu [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** | _Podporováno pouze pro modul runtime verze 1. x._<br/><br/>Nakonfiguruje Trigger HTTP tak, aby sloužil jako přijímač [Webhooku](https://en.wikipedia.org/wiki/Webhook) pro zadaného zprostředkovatele. `methods`Pokud jste nastavili tuto vlastnost, nenastavujte tuto vlastnost. Typ Webhooku může být jedna z následujících hodnot:<ul><li><code>genericJson</code>&mdash;Koncový bod Webhooku pro obecné účely bez logiky pro konkrétního zprostředkovatele. Toto nastavení omezuje požadavky jenom na ty, které používají HTTP POST a s `application/json` typem obsahu.</li><li><code>github</code>&mdash;Funkce reaguje na [Webhooky GitHubu](https://developer.github.com/webhooks/). Nepoužívejte vlastnost  _authLevel_ s Webhooky GitHubu. Další informace najdete v části Webhooky GitHubu dále v tomto článku.</li><li><code>slack</code>&mdash;Funkce reaguje na [Webhooky časové rezervy](https://api.slack.com/outgoing-webhooks). Nepoužívejte vlastnost _authLevel_ s Webhooky časové rezervy. Další informace najdete v části časová pole webhooků dále v tomto článku.</li></ul>|
 
 ## <a name="payload"></a>Délka
@@ -529,7 +596,7 @@ Pomocí této konfigurace je nyní funkce adresovat s následujícím směrován
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-Tato konfigurace umožňuje, aby kód funkce podporoval dva parametry v adrese, _kategorii_ a _ID_.
+Tato konfigurace umožňuje, aby kód funkce podporoval dva parametry v adrese, _kategorii_ a _ID_. Další informace o tom, jak jsou parametry směrování v adrese URL vyraženy, najdete v tématu [Směrování v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/routing#route-constraint-reference).
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -565,47 +632,6 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-V uzlu poskytuje modul runtime Functions tělo požadavku z `context` objektu. Další informace najdete v [příkladu triggeru JavaScriptu](#example).
-
-Následující příklad ukazuje, jak číst parametry směrování z `context.bindingData` .
-
-```javascript
-module.exports = function (context, req) {
-
-    var category = context.bindingData.category;
-    var id = context.bindingData.id;
-    var message = `Category: ${category}, ID: ${id}`;
-
-    context.res = {
-        body: message;
-    }
-
-    context.done();
-}
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Kontext spuštění funkce je zveřejněn prostřednictvím parametru deklarovaného jako `func.HttpRequest` . Tato instance umožňuje funkci přistupovat k parametrům datových tras, hodnotám řetězce dotazu a metodám, které umožňují vracet odpovědi HTTP.
-
-Po definování jsou parametry směrování k dispozici funkci voláním `route_params` metody.
-
-```python
-import logging
-
-import azure.functions as func
-
-def main(req: func.HttpRequest) -> func.HttpResponse:
-
-    category = req.route_params.get('category')
-    id = req.route_params.get('id')
-    message = f"Category: {category}, ID: {id}"
-
-    return func.HttpResponse(message)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Kontext spuštění funkce je vlastnosti tak, jak jsou deklarovány v `HttpTrigger` atributu. Atribut umožňuje definovat parametry směrování, úrovně autorizace, příkazy HTTP a instanci příchozího požadavku.
@@ -633,6 +659,63 @@ public class HttpTriggerJava {
         return request.createResponseBuilder(HttpStatus.OK).body(message).build();
     }
 }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+V uzlu poskytuje modul runtime Functions tělo požadavku z `context` objektu. Další informace najdete v [příkladu triggeru JavaScriptu](#example).
+
+Následující příklad ukazuje, jak číst parametry směrování z `context.bindingData` .
+
+```javascript
+module.exports = function (context, req) {
+
+    var category = context.bindingData.category;
+    var id = context.bindingData.id;
+    var message = `Category: ${category}, ID: ${id}`;
+
+    context.res = {
+        body: message;
+    }
+
+    context.done();
+}
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Parametry trasy deklarované v *function.js* souboru jsou přístupné jako vlastnost `$Request.Params` objektu.
+
+```powershell
+$Category = $Request.Params.category
+$Id = $Request.Params.id
+
+$Message = "Category:" + $Category + ", ID: " + $Id
+
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body = $Message
+})
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Kontext spuštění funkce je zveřejněn prostřednictvím parametru deklarovaného jako `func.HttpRequest` . Tato instance umožňuje funkci přistupovat k parametrům datových tras, hodnotám řetězce dotazu a metodám, které umožňují vracet odpovědi HTTP.
+
+Po definování jsou parametry směrování k dispozici funkci voláním `route_params` metody.
+
+```python
+import logging
+
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    category = req.route_params.get('category')
+    id = req.route_params.get('id')
+    message = f"Category: {category}, ID: {id}"
+
+    return func.HttpResponse(message)
 ```
 
 ---
@@ -666,9 +749,13 @@ Následující konfigurace ukazuje, jak `{id}` je parametr předán do vazby `ro
 }
 ```
 
+Když použijete parametry směrování, `invoke_URL_template` automaticky se vytvoří pro vaši funkci. Vaši klienti mohou pomocí šablony URL pochopit parametry, které musí předat v adrese URL při volání funkce pomocí adresy URL. V [Azure Portal](https://portal.azure.com) přejděte na jednu z funkcí AKTIVOVANÝch protokolem HTTP a vyberte **získat adresu URL funkce**.
+
+K rozhraní můžete programově přistupovat `invoke_URL_template` pomocí rozhraní Azure Resource Manager API pro [funkce seznamu](/rest/api/appservice/webapps/listfunctions) nebo [funkce Get](/rest/api/appservice/webapps/getfunction).
+
 ## <a name="working-with-client-identities"></a>Práce s identitami klientů
 
-Pokud vaše aplikace Function App používá [App Service ověřování/autorizaci](../app-service/overview-authentication-authorization.md), můžete zobrazit informace o ověřených klientech z vašeho kódu. Tyto informace jsou k dispozici jako [hlavičky požadavků vložené platformou](../app-service/app-service-authentication-how-to.md#access-user-claims). 
+Pokud vaše aplikace Function App používá [App Service ověřování/autorizaci](../app-service/overview-authentication-authorization.md), můžete zobrazit informace o ověřených klientech z vašeho kódu. Tyto informace jsou k dispozici jako [hlavičky požadavků vložené platformou](../app-service/app-service-authentication-how-to.md#access-user-claims).
 
 Tyto informace můžete také přečíst z dat vazby. Tato funkce je dostupná pouze pro modul runtime Functions v 2. x a vyšší. K dispozici je také v současnosti jenom pro jazyky .NET.
 
@@ -738,7 +825,15 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
 
@@ -746,9 +841,6 @@ Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP]
 
 Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
 
-# <a name="java"></a>[Java](#tab/java)
-
-Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
 
 ---
 
@@ -758,11 +850,17 @@ Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP]
 
 ## <a name="obtaining-keys"></a>Získání klíčů
 
-Klíče se ukládají jako součást aplikace Function App v Azure a jsou zašifrované v klidovém stavu. Chcete-li zobrazit klíče, vytvořte nové nebo zaveďte klíče k novým hodnotám, v [Azure Portal](https://portal.azure.com) přejděte na jednu z funkcí AKTIVOVANÝch protokolem HTTP a vyberte **Spravovat**.
+Klíče se ukládají jako součást aplikace Function App v Azure a jsou zašifrované v klidovém stavu. Chcete-li zobrazit klíče, vytvořit nové nebo klíče pro nové hodnoty, přejděte na jednu z funkcí aktivovaných protokolem HTTP v [Azure Portal](https://portal.azure.com) a vyberte možnost **klíče funkce**.
 
-![Spravujte klíče funkcí na portálu.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+Můžete také spravovat klíče hostitele. V [Azure Portal](https://portal.azure.com) přejděte do aplikace Function App a vyberte možnost **klíče aplikace**.
 
-Klíče funkcí můžete získat programově pomocí [rozhraní API pro správu klíčů](https://github.com/Azure/azure-functions-host/wiki/Key-management-API).
+Klíče funkce a hostitele můžete získat programově pomocí Azure Resource Manager rozhraní API. Existují rozhraní API k [vypsání klíčů funkcí](/rest/api/appservice/webapps/listfunctionkeys) a [výpisu klíčů hostitele](/rest/api/appservice/webapps/listhostkeys)a při použití slotů pro nasazení ekvivalentní rozhraní API jsou v [seznamu pozice funkcí](/rest/api/appservice/webapps/listfunctionkeysslot) a [seznam klíčů hostitele](/rest/api/appservice/webapps/listhostkeysslot).
+
+Nové klíče funkce a hostitele můžete také vytvořit programově pomocí kódu programu [vytvořit nebo aktualizovat](/rest/api/appservice/webapps/createorupdatefunctionsecret)tajný klíč funkce, [vytvořit](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)nebo aktualizovat tajný klíč [hostitele](/rest/api/appservice/webapps/createorupdatehostsecret) a [vytvořit nebo aktualizovat rozhraní API slotu pro tajný kód hostitele](/rest/api/appservice/webapps/createorupdatehostsecretslot) .
+
+Klíče funkce a hostitele je možné odstranit programově pomocí [funkce Odstranit tajný klíč](/rest/api/appservice/webapps/deletefunctionsecret), odstranit tajný klíč [funkce](/rest/api/appservice/webapps/deletefunctionsecretslot), [Odstranit tajný klíč hostitele](/rest/api/appservice/webapps/deletehostsecret)a odstranit rozhraní API [slotu pro tajný klíč hostitele](/rest/api/appservice/webapps/deletehostsecretslot) .
+
+[K získání klíčů funkcí můžete použít také starší rozhraní API správy klíčů](https://github.com/Azure/azure-functions-host/wiki/Key-management-API), ale místo toho se doporučuje používat rozhraní Azure Resource Manager API.
 
 ## <a name="api-key-authorization"></a>Autorizace klíče rozhraní API
 

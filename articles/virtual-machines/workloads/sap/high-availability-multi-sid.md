@@ -9,19 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5c3c0d9872fb4d50a0d4770e2c87b7be16c20bf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b04b1e873016d2b1e3f2acce6a358373381d8074
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652946"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671658"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Vytvoření konfigurace NetWeaver s více identifikátory SID pro SAP
 
@@ -455,7 +455,7 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Cluster služby WSFC byl již nakonfigurován pro jednu instanci SAP ASCS/SCS, jak je popsáno v [Průvodci pro vysoce DOSTUPNOU SAP NetWeaver na virtuálních počítačích s Windows][sap-ha-guide] a jak je znázorněno v tomto diagramu.
 
 ![Instance SAP ASCS/SCS s vysokou dostupností][sap-ha-guide-figure-6001]

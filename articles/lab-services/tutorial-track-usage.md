@@ -3,12 +3,12 @@ title: Sledování využití testovacího prostředí v Azure Lab Services | Mic
 description: V tomto kurzu budete jako autor nebo vlastník testovacího prostředí sledovat jeho využití.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: a9a9b49b568decc621be1969a8578d61ac7e4861
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 8a3ca9e011eb89b3db8b202bab11d14f10d74e7e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445028"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434613"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Kurz: Sledování využití testovacího prostředí v Azure Lab Services
 V tomto kurzu se dozvíte, jak může autor nebo vlastník testovacího prostředí sledovat jeho využití.
@@ -50,4 +50,4 @@ Další informace o správě fondu virtuálních počítačů pro testovací pro
 > Když Educator zapnete virtuální počítač studenta, neovlivní kvóta pro studenta. Kvóta pro uživatele určuje počet hodin testovacího prostředí uživatele mimo plánovaný čas třídy. Další informace o kvótách najdete v tématu [nastavení kvót pro uživatele](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o učebn Labs najdete v článcích v části [Průvodce postupy](how-to-manage-lab-accounts.md).
+Další informace o Labs najdete v článcích v části [Průvodce postupy](how-to-manage-lab-accounts.md).

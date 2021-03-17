@@ -6,18 +6,18 @@ documentationcenter: ''
 author: rdeltcheva
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: 030677276fa077c06a95e7c677fec956b9c2a947
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556316"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671562"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA škálování s využitím Azure NetApp Files na Red Hat Enterprise Linux
 
@@ -51,7 +51,7 @@ ms.locfileid: "88556316"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Tento článek popisuje, jak nakonfigurovat replikaci SAP HANA systému v nasazení se škálováním na více systémů, když jsou systémy souborů HANA připojené přes systém souborů NFS, pomocí Azure NetApp Files (ANF). V ukázkových příkazech konfigurace a instalace, číslo instance **03**a ID systému Hana **HN1** se používají. Replikace SAP HANA se skládá z jednoho primárního uzlu a alespoň jednoho sekundárního uzlu.
+Tento článek popisuje, jak nakonfigurovat replikaci SAP HANA systému v nasazení se škálováním na více systémů, když jsou systémy souborů HANA připojené přes systém souborů NFS, pomocí Azure NetApp Files (ANF). V ukázkových příkazech konfigurace a instalace, číslo instance **03** a ID systému Hana **HN1** se používají. Replikace SAP HANA se skládá z jednoho primárního uzlu a alespoň jednoho sekundárního uzlu.
 
 V případě, že kroky v tomto dokumentu jsou označeny následujícími předponami, význam je následující:
 
@@ -80,22 +80,23 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 - [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
 - [Replikace SAP HANA systému v clusteru Pacemaker.](https://access.redhat.com/articles/3004101)
 - Obecná dokumentace k RHEL
-    - [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-    - [Správa doplňku vysoké dostupnosti.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-    - [Odkaz na doplněk vysoké dostupnosti.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-    - [Konfigurace replikace systému SAP HANA v rámci škálování v clusteru Pacemaker v případě, že jsou systémy souborů HANA ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571)
+    - [Přehled Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+    - [Správa Add-On vysoké dostupnosti.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+    - [Referenční informace Add-On vysoké dostupnosti.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+    - [Konfigurace replikace systému SAP HANA v Scale-Up v clusteru Pacemaker v případě, že jsou systémy souborů HANA ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571)
 - Dokumentace k RHEL specifické pro Azure:
     - [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru.](https://access.redhat.com/articles/3131341)
-    - [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure.](https://access.redhat.com/articles/3252491)
+    - [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) High-Availability clusteru v Microsoft Azure.](https://access.redhat.com/articles/3252491)
     - [Nainstalujte SAP HANA na Red Hat Enterprise Linux pro použití v Microsoft Azure.](https://access.redhat.com/solutions/3193782)
     - [Konfigurace SAP HANA Pacemaker replikace systému do clusteru s možností horizontálního navýšení kapacity, když jsou systémy souborů HANA ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571)
 - [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
+- [Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>Přehled
 
-V prostředí s možností horizontálního rozšíření kapacity jsou všechny systémy souborů pro SAP HANA připojené z místního úložiště. Nastavení vysoké dostupnosti SAP HANA replikace systému při Red Hat Enterprise Linux je publikované v příručce [nastavení SAP HANA systémové replikace v RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+V prostředí s možností horizontálního rozšíření kapacity jsou všechny systémy souborů pro SAP HANA připojené z místního úložiště. Nastavení vysoké dostupnosti SAP HANA replikace systému při Red Hat Enterprise Linux je publikované v příručce [nastavení SAP HANA systémové replikace v RHEL](./sap-hana-high-availability-rhel.md)
 
-Abychom dosáhli SAP HANA vysoké dostupnosti systému pro horizontální navýšení kapacity v [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/) sdílené složky NFS, potřebujeme v clusteru další konfiguraci prostředků, aby se prostředky Hana obnovily, když jeden uzel ztratí přístup ke sdíleným složkám NFS na ANF.  Cluster spravuje připojení NFS, což umožňuje monitorovat stav prostředků. Jsou vynutily závislosti mezi připojeními systému souborů a SAP HANAmi prostředky.  
+Abychom dosáhli SAP HANA vysoké dostupnosti systému pro horizontální navýšení kapacity v [Azure NetApp Files](../../../azure-netapp-files/index.yml) sdílené složky NFS, potřebujeme v clusteru další konfiguraci prostředků, aby se prostředky Hana obnovily, když jeden uzel ztratí přístup ke sdíleným složkám NFS na ANF.  Cluster spravuje připojení NFS, což umožňuje monitorovat stav prostředků. Jsou vynutily závislosti mezi připojeními systému souborů a SAP HANAmi prostředky.  
 
 ![Horizontální navýšení kapacity SAP HANA vysoké dostupnosti v ANF](./media/sap-hana-high-availability-rhel/sap-hana-scale-up-netapp-files-red-hat.png)
 
@@ -125,29 +126,29 @@ Konfigurace replikace systému SAP HANA používá vyhrazeného virtuálního ho
 
 ## <a name="set-up-the-azure-netapp-file-infrastructure"></a>Nastavení infrastruktury souborů Azure NetApp
 
-Než budete pokračovat se sestavou pro Azure NetApp Files infrastrukturu, Seznamte se s [dokumentaci k souborům Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/).
+Než budete pokračovat se sestavou pro Azure NetApp Files infrastrukturu, Seznamte se s [dokumentaci k souborům Azure NetApp](../../../azure-netapp-files/index.yml).
 
 Azure NetApp Files je k dispozici v několika [oblastech Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Podívejte se, jestli vybraná oblast Azure nabízí Azure NetApp Files.
 
 Informace o dostupnosti Azure NetApp Files podle oblasti Azure najdete v tématu [Azure NetApp Files dostupnosti podle oblasti Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all).
 
-Než začnete s nasazením Azure NetApp Files, požádejte o [registraci pro Azure NetApp Files instrukcí pro](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)Azure NetApp Files.
+Než začnete s nasazením Azure NetApp Files, požádejte o [registraci pro Azure NetApp Files instrukcí pro](../../../azure-netapp-files/azure-netapp-files-register.md)Azure NetApp Files.
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Nasazení prostředků Azure NetApp Files
 
-V následujících pokynech se předpokládá, že jste už nasadili službu [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Azure NetApp Files prostředky a virtuální počítače, kde budou připojené prostředky Azure NetApp Files, musí být nasazené ve stejné virtuální síti Azure nebo ve virtuálních sítích Azure s partnerským vztahem.
+V následujících pokynech se předpokládá, že jste už nasadili službu [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md). Azure NetApp Files prostředky a virtuální počítače, kde budou připojené prostředky Azure NetApp Files, musí být nasazené ve stejné virtuální síti Azure nebo ve virtuálních sítích Azure s partnerským vztahem.
 
-1. Pokud jste ještě neimplementovali prostředky, požádejte o [registraci do Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).
+1. Pokud jste ještě neimplementovali prostředky, požádejte o [registraci do Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-register.md).
 
-2. Podle pokynů v části [Vytvoření účtu NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)vytvořte ve vybrané oblasti Azure účet NetApp.
+2. Podle pokynů v části [Vytvoření účtu NetApp](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)vytvořte ve vybrané oblasti Azure účet NetApp.
 
-3.  Nastavte fond kapacit Azure NetApp Files podle pokynů v části [nastavení fondu kapacity Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).
+3.  Nastavte fond kapacit Azure NetApp Files podle pokynů v části [nastavení fondu kapacity Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md).
 
-    Architektura HANA uvedená v tomto článku používá jeden Azure NetApp Files fond kapacit na úrovni služeb úrovně *Ultra* . Pro úlohy HANA v Azure doporučujeme použít Azure NetApp Files [úroveň služeb](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)pro *Ultra* nebo *Premium* .
+    Architektura HANA uvedená v tomto článku používá jeden Azure NetApp Files fond kapacit na úrovni služeb úrovně *Ultra* . Pro úlohy HANA v Azure doporučujeme použít Azure NetApp Files [úroveň služeb](../../../azure-netapp-files/azure-netapp-files-service-levels.md)pro *Ultra* nebo *Premium* .
 
-4.  Delegování podsítě na Azure NetApp Files, jak je popsáno v pokynech [delegování podsítě na Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).
+4.  Delegování podsítě na Azure NetApp Files, jak je popsáno v pokynech [delegování podsítě na Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md).
 
-5.  Nasaďte Azure NetApp Files svazky podle pokynů v tématu [vytvoření svazku NFS pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).
+5.  Nasaďte Azure NetApp Files svazky podle pokynů v tématu [vytvoření svazku NFS pro Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md).
 
     Při nasazování svazků nezapomeňte vybrat verzi NFSv 4.1. Nasaďte svazky v určené Azure NetApp Files podsíti. IP adresy svazků Azure NetApp se přiřazují automaticky.
 
@@ -171,10 +172,10 @@ Vzhledem k tomu, že vytváříte Azure NetApp Files pro SAP HANA systémy šká
 
 - Minimální fond kapacit je 4 tebibytes (TiB).
 - Minimální velikost svazku je 100 gibibajtech (GiB).
-- Azure NetApp Files a všechny virtuální počítače, na kterých budou připojené Azure NetApp Files svazky, musí být ve stejné virtuální síti Azure nebo v [partnerských virtuálních sítích](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) ve stejné oblasti.
+- Azure NetApp Files a všechny virtuální počítače, na kterých budou připojené Azure NetApp Files svazky, musí být ve stejné virtuální síti Azure nebo v [partnerských virtuálních sítích](../../../virtual-network/virtual-network-peering-overview.md) ve stejné oblasti.
 - Vybraná virtuální síť musí mít podsíť, která je delegována na Azure NetApp Files.
-- Propustnost Azure NetApp Filesho svazku je funkcí kvóty svazku a úrovně služeb, jak je uvedeno v části [úroveň služby pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). Když nakonfigurujete svazky NetApp HANA Azure, ujistěte se, že výsledná propustnost splňuje požadavky na systém HANA.
-- Pomocí Azure NetApp Files [zásady exportu](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)můžete řídit povolené klienty, typ přístupu (jen pro čtení i zápis, jen pro čtení atd.).
+- Propustnost Azure NetApp Filesho svazku je funkcí kvóty svazku a úrovně služeb, jak je uvedeno v části [úroveň služby pro Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). Když nakonfigurujete svazky NetApp HANA Azure, ujistěte se, že výsledná propustnost splňuje požadavky na systém HANA.
+- Pomocí Azure NetApp Files [zásady exportu](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)můžete řídit povolené klienty, typ přístupu (jen pro čtení i zápis, jen pro čtení atd.).
 - Funkce Azure NetApp Files ještě nezohledňuje zóny. V současné době není tato funkce nasazena ve všech zónách dostupnosti v oblasti Azure. Mějte na paměti, že v některých oblastech Azure máte vliv na potenciální latenci.
 
 > [!IMPORTANT]
@@ -182,7 +183,7 @@ Vzhledem k tomu, že vytváříte Azure NetApp Files pro SAP HANA systémy šká
 
 ### <a name="sizing-of-hana-database-on-azure-netapp-files"></a>Změna velikosti databáze HANA v Azure NetApp Files
 
-Propustnost Azure NetApp Filesho svazku je funkce velikosti svazku a úrovně služby, jak je uvedeno v části [úroveň služby pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels).
+Propustnost Azure NetApp Filesho svazku je funkce velikosti svazku a úrovně služby, jak je uvedeno v části [úroveň služby pro Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md).
 
 Při návrhu infrastruktury pro SAP v Azure si pamatujte na některé minimální požadavky na úložiště SAP, které se přeloží na minimální propustnost:
 
@@ -190,7 +191,7 @@ Při návrhu infrastruktury pro SAP v Azure si pamatujte na některé minimáln�
 - Aktivita čtení minimálně 400 MB/s pro/Hana/data pro velikosti vstupně-výstupních operací 16-MB a 64-MB
 - Aktivita zápisu alespoň 250 MB/s pro/Hana/data s velikostí I/O 16 MB a 64-MB.
 
-[Omezení propustnosti Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) na 1 TIB kvót:
+[Omezení propustnosti Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md) na 1 TIB kvót:
 
 - Premium Storage vrstva – 64 MiB/s.
 - Úroveň úložiště Ultra Storage – 128 MiB/s.
@@ -199,7 +200,7 @@ Aby splňovala požadavky na minimální propustnost SAP pro/Hana/data a/Hana/lo
 
 |    Svazek    | Velikost Premium Storage úrovně | Velikost úrovně Ultra Storage | Podporovaný protokol NFS |
 | :----------: | :--------------------------: | :------------------------: | :--------------------: |
-|  /hana/log   |            4 TiB             |           2 TB            |          v 4.1          |
+|  /hana/log   |            4 TiB             |           2 TiB            |          v 4.1          |
 |  /hana/data  |           6,3 TiB            |          3,2 TiB           |          v 4.1          |
 | /hana/shared |           1 x RAM            |          1 x RAM           |          V3 nebo v 4.1    |
 
@@ -227,27 +228,34 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Pak proveďte následují
 5.  Vytvořte virtuální počítač 1 (**hanadb1**). 
 6.  Vytvořte virtuální počítač 2 (**hanadb2**).  
 7.  Při vytváření virtuálního počítače nepřidáme žádný disk, protože všechny naše přípojné body budou sdílené složky NFS z Azure NetApp Files. 
+
+> [!IMPORTANT]
+> Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.    
+
+> [!NOTE] 
+> Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)
+
 8.  Pokud používáte standardní nástroj pro vyrovnávání zatížení, postupujte podle těchto kroků konfigurace:
     1.  Nejprve vytvořte front-end fond IP adres:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond** a vyberte **Přidat**.
         1.  Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
         1.  Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.32.0.10**).
         1.  Vyberte **OK**.
         1.  Až se vytvoří nový fond front-end IP adres, poznamenejte si IP adresu fondu.
     1.  Dále vytvořte fond back-end:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu** a vyberte **Přidat**.
         1.  Zadejte název nového fondu back-end (například **Hana-back-end**).
         1.  Vyberte **Přidat virtuální počítač**.
         1.  Vyberte * * virtuální počítač * *.
         1.  Vyberte virtuální počítače SAP HANA clusteru a jejich IP adresy.
         1.  Vyberte **Přidat**.
     1.  Potom vytvořte sondu stavu:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu** a vyberte **Přidat**.
         1.  Zadejte název nové sondy stavu (například **Hana-HP**).
-        1.  Jako protokol a port 625**03**vyberte TCP. Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+        1.  Jako protokol a port 625 **03** vyberte TCP. Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
         1.  Vyberte **OK**.
     1.  Dále vytvořte pravidla vyrovnávání zatížení:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
         1.  Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-kg**).
         1.  Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**, **Hana-back-endu** a **Hana-HP**).
         1.  Vyberte **porty ha**.
@@ -255,60 +263,58 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Pak proveďte následují
         1.  Ujistěte se, že jste **povolili plovoucí IP adresu**.
         1.  Vyberte **OK**.
 
-> [!NOTE] 
-> Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)
 
 9. Případně, pokud váš scénář používá základní nástroj pro vyrovnávání zatížení, postupujte podle těchto kroků konfigurace:
     1.  Nakonfigurujte Nástroj pro vyrovnávání zatížení. Nejprve vytvořte front-end fond IP adres:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond** a vyberte **Přidat**.
         1.  Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
         1.  Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.32.0.10**).
         1.  Vyberte **OK**.
         1.  Až se vytvoří nový fond front-end IP adres, poznamenejte si IP adresu fondu.
     1.  Dále vytvořte fond back-end:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu** a vyberte **Přidat**.
         1.  Zadejte název nového fondu back-end (například **Hana-back-end**).
         1.  Vyberte **Přidat virtuální počítač**.
         1.  Vyberte skupinu dostupnosti vytvořenou v kroku 3.
         1.  Vyberte virtuální počítače clusteru SAP HANA.
         1.  Vyberte **OK**.
     1.  Potom vytvořte sondu stavu:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu** a vyberte **Přidat**.
         1.  Zadejte název nové sondy stavu (například **Hana-HP**).
-        1.  Jako protokol a port 625**03**vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+        1.  Jako protokol a port 625 **03** vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
         1.  Vyberte **OK**.
     1.  Pro SAP HANA 1,0 vytvořte pravidla vyrovnávání zatížení:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-        1.  Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**15).
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
+        1.  Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3 **03** 15).
         1.  Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
-        1.  Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**15.
+        1.  Zachovejte **protokol** nastaven na **TCP** a zadejte port 3 **03** 15.
         1.  Zvyšte **časový limit nečinnosti** na 30 minut.
         1.  Ujistěte se, že jste **povolili plovoucí IP adresu**.
         1.  Vyberte **OK**.
-        1.  Opakujte tento postup pro port 3**03**17.
+        1.  Opakujte tento postup pro port 3 **03** 17.
     1.  Pro SAP HANA 2,0 vytvořte pravidla vyrovnávání zatížení pro systémovou databázi:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-        1.  Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**13).
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
+        1.  Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3 **03** 13).
         1.  Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
-        1.  Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**13.
+        1.  Zachovejte **protokol** nastaven na **TCP** a zadejte port 3 **03** 13.
         1.  Zvyšte **časový limit nečinnosti** na 30 minut.
         1.  Ujistěte se, že jste **povolili plovoucí IP adresu**.
         1.  Vyberte **OK**.
-        1.  Opakujte tento postup pro port 3**03**14.
+        1.  Opakujte tento postup pro port 3 **03** 14.
     1.  Pro SAP HANA 2,0 nejprve vytvořte pravidla vyrovnávání zatížení pro databázi tenanta:
-        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-        1.  Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**40).
+        1.  Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
+        1.  Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3 **03** 40).
         1.  Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **Hana-Endu**).
-        1.  Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**40.
+        1.  Zachovejte **protokol** nastaven na **TCP** a zadejte port 3 **03** 40.
         1.  Zvyšte **časový limit nečinnosti** na 30 minut.
         1.  Ujistěte se, že jste **povolili plovoucí IP adresu**.
         1.  Vyberte **OK**.
-        1.  Opakujte tyto kroky pro porty 3**03**41 a 3**03**42.
+        1.  Opakujte tyto kroky pro porty 3 **03** 41 a 3 **03** 42.
 
 Další informace o požadovaných portech pro SAP HANA naleznete v kapitole [připojení k databázím tenantů](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v průvodci [SAP HANA databáze klienta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) nebo v tématu SAP Note [2388694](https://launchpad.support.sap.com/#/notes/2388694).
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview). Viz také SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net.IPv4.tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md). Viz také SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>Připojit Azure NetApp Files svazek
 
@@ -457,7 +463,7 @@ Další informace o požadovaných portech pro SAP HANA naleznete v kapitole [p�
 
 ## <a name="configure-sap-hana-system-replication"></a>Konfigurace replikace systému SAP HANA
 
-Pomocí postupu v části nastavení [replikace systému SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication) nakonfigurujte replikaci systému SAP HANA. 
+Pomocí postupu v části nastavení [replikace systému SAP HANA](./sap-hana-high-availability-rhel.md#configure-sap-hana-20-system-replication) nakonfigurujte replikaci systému SAP HANA. 
 
 ## <a name="cluster-configuration"></a>Konfigurace clusteru
 
@@ -465,7 +471,7 @@ Tato část popisuje nezbytné kroky, které je potřeba ke bezproblémovému fu
 
 ### <a name="create-a-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
-Postupujte podle kroků v části [Nastavení Pacemaker na Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) v Azure a vytvořte pro tento server Hana základní cluster Pacemaker.
+Postupujte podle kroků v části [Nastavení Pacemaker na Red Hat Enterprise Linux](./high-availability-guide-rhel-pacemaker.md) v Azure a vytvořte pro tento server Hana základní cluster Pacemaker.
 
 ### <a name="configure-filesystem-resources"></a>Konfigurace prostředků systému souborů
 
@@ -536,11 +542,11 @@ V tomto příkladu mají každý uzel clusteru vlastní systémy souborů NFS sy
     ```
 
    > [!TIP]
-   > Pokud vaše konfigurace obsahuje souborové systémy, mimo skupinu `hanadb1_nfs` nebo `hanadb2_nfs` , pak zahrňte `sequential=false` možnost, takže mezi systémy souborů neexistují žádné závislosti v seřazení. Všechny systémy souborů musí být spuštěny před `hana_nfs1_active` , ale nemusejí být spouštěny v libovolném pořadí, které je vzájemně relativní. Další podrobnosti najdete v tématu [návody konfigurace replikace SAP HANA systému v rámci škálování v clusteru Pacemaker v případě, že jsou systémy souborů Hana ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571) .
+   > Pokud vaše konfigurace obsahuje souborové systémy, mimo skupinu `hanadb1_nfs` nebo `hanadb2_nfs` , pak zahrňte `sequential=false` možnost, takže mezi systémy souborů neexistují žádné závislosti v seřazení. Všechny systémy souborů musí být spuštěny před `hana_nfs1_active` , ale nemusejí být spouštěny v libovolném pořadí, které je vzájemně relativní. Další podrobnosti najdete v tématu [návody konfigurace replikace SAP HANA systému v Scale-Up v clusteru Pacemaker v případě, že jsou systémy souborů Hana ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571) .
 
 ### <a name="configure-sap-hana-cluster-resources"></a>Konfigurace prostředků clusteru SAP HANA
 
-1. Pokud chcete vytvořit prostředky SAP HANA v clusteru, postupujte podle kroků v části [vytvoření prostředků clusteru SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#create-sap-hana-cluster-resources) . Po vytvoření SAP HANAch prostředků musíme vytvořit omezení pravidla umístění mezi prostředky SAP HANA a systémy souborů (připojení NFS).
+1. Pokud chcete vytvořit prostředky SAP HANA v clusteru, postupujte podle kroků v části [vytvoření prostředků clusteru SAP HANA](./sap-hana-high-availability-rhel.md#create-sap-hana-cluster-resources) . Po vytvoření SAP HANAch prostředků musíme vytvořit omezení pravidla umístění mezi prostředky SAP HANA a systémy souborů (připojení NFS).
 
 2. **[1]** konfigurace omezení mezi prostředky SAP Hana a PŘIPOJENÍmi NFS
 
@@ -548,13 +554,18 @@ V tomto příkladu mají každý uzel clusteru vlastní systémy souborů NFS sy
 
     ```
     pcs constraint location SAPHanaTopology_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 7.x
     pcs constraint location SAPHana_HN1_03-master rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 8.x
+    pcs constraint location SAPHana_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
     # Take the cluster out of maintenance mode
     sudo pcs property set maintenance-mode=false
     ```
 
    Zkontroluje stav clusteru a všech prostředků.
-
+   > [!NOTE]
+   > Tento článek obsahuje odkazy na *podřízený* termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+   
     ```
     sudo pcs status
     
@@ -682,4 +693,11 @@ Tato část popisuje, jak můžete otestovat instalaci.
          vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hanadb2
     ```
 
-   Doporučujeme důkladně otestovat SAP HANA konfiguraci clusteru, a to tak, že provedete testy popsané v [nastavení SAP HANA systémová replikace v RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup).   
+   Doporučujeme důkladně otestovat SAP HANA konfiguraci clusteru, a to tak, že provedete testy popsané v [nastavení SAP HANA systémová replikace v RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup).
+
+## <a name="next-steps"></a>Další kroky
+
+* [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
+* [Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA](./hana-vm-operations-netapp.md)

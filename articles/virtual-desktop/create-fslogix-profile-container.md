@@ -7,11 +7,11 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002819"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016824"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Vytvoření kontejneru profilu pomocí Azure NetApp Files a služba AD DS
 
@@ -75,10 +75,10 @@ Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 8. Vyberte tlačítko **Přidat** .
 9. Po otevření karty **nového účtu NetApp** zadejte následující hodnoty:
 
-    - Jako **název**zadejte název účtu NetApp.
-    - V poli **předplatné**vyberte předplatné pro účet úložiště, které jste nastavili v kroku 4 z rozevírací nabídky.
-    - V poli **Skupina prostředků**vyberte z rozevírací nabídky existující skupinu prostředků nebo vytvořte novou výběrem možnosti **vytvořit nový**.
-    - V poli **umístění**vyberte oblast účtu NetApp z rozevírací nabídky. Tato oblast musí být stejná jako vaše virtuální počítače hostitele relace.
+    - Jako **název** zadejte název účtu NetApp.
+    - V poli **předplatné** vyberte předplatné pro účet úložiště, které jste nastavili v kroku 4 z rozevírací nabídky.
+    - V poli **Skupina prostředků** vyberte z rozevírací nabídky existující skupinu prostředků nebo vytvořte novou výběrem možnosti **vytvořit nový**.
+    - V poli **umístění** vyberte oblast účtu NetApp z rozevírací nabídky. Tato oblast musí být stejná jako vaše virtuální počítače hostitele relace.
 
    >[!NOTE]
    >Azure NetApp Files aktuálně nepodporuje připojení svazku mezi oblasti.
@@ -94,7 +94,7 @@ Pak vytvořte nový fond kapacity:
 3. Vyberte **Přidat fond**.
 4. Po otevření karty **Nový fond kapacit** zadejte následující hodnoty:
 
-    - Do pole **název**zadejte název nového fondu kapacity.
+    - Do pole **název** zadejte název nového fondu kapacity.
     - V rozevírací nabídce vyberte požadovanou hodnotu pro **úroveň služby**. Pro většinu prostředí doporučujeme **Premium** .
        >[!NOTE]
        >Nastavení Premium poskytuje minimální propustnost dostupnou pro úroveň Premium Service, která je 256 MB/s. Možná budete muset upravit tuto propustnost pro produkční prostředí. Konečná propustnost vychází z vztahu popsaného v části [omezení propustnosti](../azure-netapp-files/azure-netapp-files-service-levels.md).
@@ -113,27 +113,27 @@ Potom musíte připojit připojení ke službě Active Directory.
 
 2. Zadejte následující hodnoty na stránce připojit se ke **službě Active Directory** , abyste se připojili k připojení:
 
-    - V případě **primárního serveru DNS**zadejte IP adresu serveru DNS ve vašem prostředí, která může přeložit název domény.
-    - V případě **domény**zadejte plně kvalifikovaný název domény (FQDN).
+    - V případě **primárního serveru DNS** zadejte IP adresu serveru DNS ve vašem prostředí, která může přeložit název domény.
+    - V případě **domény** zadejte plně kvalifikovaný název domény (FQDN).
     - V poli **předpona serveru SMB (účet počítače)** zadejte řetězec, který chcete připojit k názvu účtu počítače.
-    - Jako **uživatelské jméno**zadejte název účtu s oprávněním k provedení připojení k doméně.
-    - Jako **heslo**zadejte heslo účtu.
+    - Jako **uživatelské jméno** zadejte název účtu s oprávněním k provedení připojení k doméně.
+    - Jako **heslo** zadejte heslo účtu.
 
 ## <a name="create-a-new-volume"></a>Vytvořit nový svazek
 
 V dalším kroku budete muset vytvořit nový svazek.
 
-1. Vyberte **svazky**a pak vyberte **Přidat svazek**.
+1. Vyberte **svazky** a pak vyberte **Přidat svazek**.
 
 2. Po otevření karty **vytvořit svazek** zadejte následující hodnoty:
 
-    - Jako **název svazku**zadejte název nového svazku.
-    - V poli **fond kapacit**vyberte fond kapacit, který jste právě vytvořili, z rozevírací nabídky.
+    - Jako **název svazku** zadejte název nového svazku.
+    - V poli **fond kapacit** vyberte fond kapacit, který jste právě vytvořili, z rozevírací nabídky.
     - Pro **kvótu (GIB)** zadejte velikost svazku, která je vhodná pro vaše prostředí.
-    - V případě **virtuální sítě**vyberte existující virtuální síť, která má připojení k řadiči domény z rozevírací nabídky.
-    - V části **podsíť**vyberte **vytvořit novou**. Pamatujte, že tato podsíť bude delegována na Azure NetApp Files.
+    - V případě **virtuální sítě** vyberte existující virtuální síť, která má připojení k řadiči domény z rozevírací nabídky.
+    - V části **podsíť** vyberte **vytvořit novou**. Pamatujte, že tato podsíť bude delegována na Azure NetApp Files.
 
-3.  Výběrem **Další: protokol \> \> ** otevřete kartu protokol a nakonfigurujte parametry přístupu ke svazku.
+3.  Výběrem **Další: protokol \> \>** otevřete kartu protokol a nakonfigurujte parametry přístupu ke svazku.
 
 ## <a name="configure-volume-access-parameters"></a>Konfigurace parametrů přístupu ke svazkům
 

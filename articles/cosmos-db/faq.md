@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81c959467c4bb3700120917cf150773fb18e866d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213087"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359825"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Jaké jsou typické případy použití pro Azure Cosmos DB?
 
@@ -40,7 +41,7 @@ Každé rozhraní API funguje nezávisle, s výjimkou Gremlin a SQL API, které 
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Je Azure Cosmos DB HIPAA kompatibilní?
 
-Ano, Azure Cosmos DB je kompatibilní s HIPAA. HIPAA zavádí požadavky na použití, zveřejnění a ochranu jednotlivě identifikovatelných zdravotních informací. Další informace najdete na [webu Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA).
+Ano, Azure Cosmos DB je kompatibilní s HIPAA. HIPAA zavádí požadavky na použití, zveřejnění a ochranu jednotlivě identifikovatelných zdravotních informací. Další informace najdete na [webu Microsoft Trust Center](/compliance/regulatory/offering-hipaa-hitech).
 
 ### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Jaká jsou omezení úložiště Azure Cosmos DB?
 
@@ -70,7 +71,7 @@ Pokud s Azure začínáte, můžete si zaregistrovat [bezplatný účet Azure](h
 
 Pokud se chcete zeptat na technický dotaz, můžete publikovat na jedno z těchto dvou fór otázek a odpovědí:
 
-* [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Stránka s otázkou Microsoft Q&](/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow je nejvhodnější pro otázky týkající se programování. Ujistěte se, že je váš dotaz [v rámci vašeho tématu](https://stackoverflow.com/help/on-topic) [, a uveďte co nejvíce podrobností a vymažte otázku a odpovězte na](https://stackoverflow.com/help/how-to-ask)ně.
 
 Pokud chcete požádat o nové funkce, vytvořte nový požadavek na [uživatelský hlas](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -85,7 +86,7 @@ Vyzkoušejte Azure Cosmos DB odběry se zobrazí v Azure Portal další předpla
 
 Následující podmínky se vztahují na zkoušení Azure Cosmos DB předplatných:
 
-* Přístup k účtu se dá udělit pro osobní účty Microsoft (MSA). Nepoužívejte účty nebo účty služby Active Directory (AAD) patřící k podnikovým klientům AAD, ale můžou mít omezení, která by mohla blokovat udělení přístupu.
+* Přístup k účtu se dá udělit pro osobní účty Microsoft (MSA). Nepoužívejte účty nebo účty Azure Active Directory (Azure AD) patřící k podnikovým klientům Azure AD, ale můžou mít omezení, která by mohla blokovat udělení přístupu.
 * Jeden [kontejner zřízený propustností](./set-throughput.md#set-throughput-on-a-container) na předplatné pro SQL, Gremlin API a účty tabulek.
 * Až tři [zajištěné propustnosti](./set-throughput.md#set-throughput-on-a-container) v rámci předplatného pro účty MongoDB.
 * Jedna [zajištěná propustnost databáze](./set-throughput.md#set-throughput-on-a-database) na jedno předplatné. Databáze zřízené v propustnosti můžou obsahovat libovolný počet kontejnerů.
@@ -102,9 +103,9 @@ Následující podmínky se vztahují na zkoušení Azure Cosmos DB předplatný
 
 Azure Cosmos DB je k dispozici v Azure Portal. Nejdřív si zaregistrujte předplatné Azure. Po registraci můžete do svého předplatného Azure přidat účet Azure Cosmos DB.
 
-### <a name="what-is-a-master-key"></a>Co je hlavní klíč?
+### <a name="what-is-a-primary-key"></a>Co je primární klíč?
 
-Hlavní klíč je token zabezpečení pro přístup ke všem prostředkům účtu. Jednotlivci s klíčem mají přístup pro čtení a zápis ke všem prostředkům v databázovém účtu. Při distribuci hlavních klíčů buďte opatrní. Primární hlavní klíč a sekundární hlavní klíč jsou k dispozici v okně **klíče** [Azure Portal][azure-portal]. Další informace o klíčích najdete v tématu [Zobrazení, kopírování a obnovení přístupových klíčů](manage-with-cli.md#list-account-keys).
+Primární klíč je token zabezpečení pro přístup ke všem prostředkům pro účet. Jednotlivci s klíčem mají přístup pro čtení a zápis ke všem prostředkům v databázovém účtu. Při distribuci primárních klíčů buďte opatrní. Primární primární klíč a sekundární primární klíč jsou k dispozici v okně **klíče** [Azure Portal][azure-portal]. Další informace o klíčích najdete v tématu [Zobrazení, kopírování a obnovení přístupových klíčů](manage-with-cli.md#list-account-keys).
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Jaké jsou oblasti, na které se PreferredLocations dá nastavit?
 
@@ -173,13 +174,13 @@ Dotazovací jazyk SQL podporovaný účty SQL API je rozšířená podmnožina f
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Podporuje rozhraní SQL API agregační funkce SQL?
 
-Rozhraní SQL API podporuje agregaci s nízkou latencí v jakémkoli měřítku prostřednictvím agregačních funkcí `COUNT` , `MIN` ,, `MAX` `AVG` a `SUM` prostřednictvím gramatiky SQL. Další informace najdete v tématu [agregační funkce](sql-query-aggregates.md).
+Rozhraní SQL API podporuje agregaci s nízkou latencí v jakémkoli měřítku prostřednictvím agregačních funkcí `COUNT` , `MIN` ,, `MAX` `AVG` a `SUM` prostřednictvím gramatiky SQL. Další informace najdete v tématu [agregační funkce](sql-query-aggregate-functions.md).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Jak rozhraní API SQL zajišťuje souběžnost?
 
-Rozhraní SQL API podporuje optimistické řízení souběžnosti (OCC) prostřednictvím značek entit HTTP nebo značek ETag. Každý prostředek rozhraní API SQL má ETag a značka ETag je nastavená na serveru pokaždé, když se dokument aktualizuje. Hlavička ETag a aktuální hodnota jsou zahrnuty ve všech zprávách s odpovědí. Značky ETag se dají použít spolu s hlavičkou If-Match, která umožňuje serveru rozhodnout, jestli se má prostředek aktualizovat. Hodnota If-Match je hodnota ETag, která se má zkontrolovat. Pokud hodnota ETag odpovídá hodnotě ETag serveru, prostředek se aktualizuje. Pokud značka ETag již není aktuální, server odmítne operaci s kódem odpovědi "selhání předběžné podmínky HTTP 412". Klient pak znovu načte prostředek, aby získal aktuální hodnotu ETag pro daný prostředek. Značky ETag lze navíc použít s hlavičkou If-None-Match k určení, zda je nutné znovu načíst prostředek.
+Rozhraní SQL API podporuje optimistické řízení souběžnosti (OCC) prostřednictvím značek entit HTTP nebo značek ETag. Každý prostředek rozhraní API SQL má ETag a značka ETag je nastavená na serveru pokaždé, když se dokument aktualizuje. Hlavička ETag a aktuální hodnota jsou zahrnuty ve všech zprávách s odpovědí. Značky ETag lze použít s hlavičkou If-Match, aby bylo možné serveru rozhodnout, zda má být prostředek aktualizován. Hodnota If-Match je hodnota ETag, která se má zkontrolovat. Pokud hodnota ETag odpovídá hodnotě ETag serveru, prostředek se aktualizuje. Pokud značka ETag již není aktuální, server odmítne operaci s kódem odpovědi "selhání předběžné podmínky HTTP 412". Klient pak znovu načte prostředek, aby získal aktuální hodnotu ETag pro daný prostředek. Značky ETag lze navíc použít s hlavičkou If-None-Match k určení, zda je nutné znovu načíst prostředek.
 
-Chcete-li použít optimistickou souběžnost v rozhraní .NET, použijte třídu [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) . Ukázku .NET najdete v tématu [program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) v ukázce DocumentManagement na GitHubu.
+Chcete-li použít optimistickou souběžnost v rozhraní .NET, použijte třídu [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) . Ukázku .NET najdete v tématu [program.cs](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/DocumentManagement/Program.cs) v ukázce DocumentManagement na GitHubu.
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Návody provádět transakce v rozhraní SQL API?
 
@@ -210,7 +211,7 @@ Toto je omezení JavaScriptu. JavaScript používá čísla formátu s plovoucí
 Vytváření oprávnění pomocí ResourceTokens je povoleno na úrovni kontejneru a jejích potomků (například dokumenty, přílohy). To znamená, že pokus o vytvoření oprávnění v databázi nebo na úrovni účtu není aktuálně povolen.
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>Další kroky
 

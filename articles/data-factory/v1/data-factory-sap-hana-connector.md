@@ -1,23 +1,18 @@
 ---
 title: Přesun dat z SAP HANA pomocí Azure Data Factory
 description: Přečtěte si informace o tom, jak přesouvat data z SAP HANA pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c192a5f84f36fbdea0dd1d280928aa40186d4ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707136"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386981"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesun dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -42,7 +37,7 @@ Pokud chcete povolit připojení k instanci SAP HANA, nainstalujte následujíc�
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního SAP HANA úložiště dat pomocí různých nástrojů/rozhraní API. 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -61,7 +56,7 @@ Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
 server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port` . | řetězec | Yes
 authenticationType | Typ ověřování. | . "Basic" nebo "Windows" | Yes 
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
+username | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
 heslo | Heslo pro tohoto uživatele. | řetězec | Yes
 gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP HANA | řetězec | Yes
 encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | No
@@ -69,7 +64,7 @@ encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetěz
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
-Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Pro SAP HANA datovou sadu **relačních**objektů typu není podporována žádná vlastnost specifická pro typ. 
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Pro SAP HANA datovou sadu **relačních** objektů typu není podporována žádná vlastnost specifická pro typ. 
 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
@@ -287,18 +282,18 @@ TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-REÁLNÉ | Jeden
-KLEPAT | Jeden
-NOTACI | Desetinné číslo
+REÁLNÉ | Jednoduché
+KLEPAT | Jednoduché
+NOTACI | Decimal
 DATOVÉHO | Byte
 VARCHAR | Řetězec
 NVARCHAR | Řetězec
 DATOVÝ typ CLOB | Byte []
 ALPHANUM | Řetězec
 PŘÍZNAKY | Byte []
-DATE (Datum) | DateTime
+DATE | DateTime
 ČAS | TimeSpan
-ČASOVÉ razítko | DateTime
+ČASOVÉ RAZÍTKO | DateTime
 SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>Známá omezení

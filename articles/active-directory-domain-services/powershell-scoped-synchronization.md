@@ -2,20 +2,20 @@
 title: Vymezená synchronizace pomocí prostředí PowerShell pro Azure AD Domain Services | Microsoft Docs
 description: Naučte se používat Azure AD PowerShell ke konfiguraci synchronizace s vymezeným oborem z Azure AD do spravované domény Azure Active Directory Domain Services.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
-ms.author: iainfou
-ms.openlocfilehash: 197ae37b0c63b19ebe4dcdf2732169be0f357a07
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 03/08/2021
+ms.author: justinha
+ms.openlocfilehash: f877a631fd3c89d74b9e3b47cf205bbcf173ebc0
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294077"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453406"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>Konfigurace vymezené synchronizace z Azure AD na Azure Active Directory Domain Services pomocí Azure AD PowerShellu
 
@@ -41,15 +41,14 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 Ve výchozím nastavení se všechny uživatele a skupiny z adresáře Azure AD synchronizují do spravované domény. Pokud k spravované doméně potřebuje jenom několik uživatelů, můžete synchronizovat jenom tyto uživatelské účty. Tato synchronizace s vymezeným oborem je založena na skupině. Když nakonfigurujete synchronizaci s rozsahem na základě skupin, budou se do spravované domény synchronizovat jenom uživatelské účty patřící do zadaných skupin. Vnořené skupiny se nesynchronizují, pouze konkrétní skupiny, které vyberete.
 
-Rozsah synchronizace můžete změnit při vytváření spravované domény nebo po jejím nasazení. V existující spravované doméně teď také můžete změnit rozsah synchronizace, aniž byste je museli znovu vytvořit.
+Obor synchronizace můžete změnit před nebo po vytvoření spravované domény. Rozsah synchronizace je definován instančním objektem s identifikátorem aplikace 2565bd9d-DA50-47d4-8B85-4c97f669dc36. Chcete-li zabránit ztrátě rozsahu, neodstraňujte ani neměňte instanční objekt. Pokud je omylem odstraněn, nelze obnovit rozsah synchronizace. 
+
+Při změně rozsahu synchronizace Pamatujte na následující upozornění:
+
+- Dojde k úplné synchronizaci.
+- Objekty, které již nejsou ve spravované doméně požadovány, jsou odstraněny. Ve spravované doméně se vytvoří nové objekty.
 
 Další informace o procesu synchronizace najdete [v tématu pochopení synchronizace v Azure AD Domain Services][concepts-sync].
-
-> [!WARNING]
-> Změna rozsahu synchronizace způsobí, že spravovaná doména znovu synchronizuje všechna data. Platí následující důležité informace:
->
->  * Když změníte rozsah synchronizace pro spravovanou doménu, dojde k úplné opakované synchronizaci.
->  * Objekty, které již nejsou ve spravované doméně požadovány, jsou odstraněny. Ve spravované doméně se vytvoří nové objekty.
 
 ## <a name="powershell-script-for-scoped-synchronization"></a>PowerShellový skript pro vymezenou synchronizaci
 
@@ -145,16 +144,16 @@ Pokud chcete povolit synchronizaci s rozsahem na základě skupin pro spravovano
     Po zobrazení výzvy zadejte přihlašovací údaje *globálního správce* pro přihlášení k vašemu TENANTOVI Azure AD pomocí rutiny [Connect-AzureAD][Connect-AzureAD] :
 
     ```powershell
-    // Connect to your Azure AD tenant
+    # Connect to your Azure AD tenant
     Connect-AzureAD
 
-    // Retrieve the Azure AD DS resource.
+    # Retrieve the Azure AD DS resource.
     $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServices"
 
-    // Enable group-based scoped synchronization.
+    # Enable group-based scoped synchronization.
     $enableScopedSync = @{"filteredSync" = "Enabled"}
 
-    // Update the Azure AD DS resource
+    # Update the Azure AD DS resource
     Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $enableScopedSync
     ```
 
@@ -175,7 +174,7 @@ Změna rozsahu synchronizace způsobí, že spravovaná doména znovu synchroniz
 
 Chcete-li upravit seznam skupin, jejichž uživatelé mají být synchronizováni do spravované domény, spusťte `Select-GroupsToSync.ps1` skript a zadejte nový seznam skupin pro synchronizaci.
 
-V následujícím příkladu skupiny pro synchronizaci již nezahrnují *GroupName2*a teď obsahují *GroupName3*.
+V následujícím příkladu skupiny pro synchronizaci již nezahrnují *GroupName2* a teď obsahují *GroupName3*.
 
 > [!WARNING]
 > V seznamu skupin pro účely vymezené synchronizace musíte zahrnout skupinu *správců řadiče domény AAD* . Pokud tuto skupinu nezadáte, je spravovaná doména nepoužitelná.
@@ -195,16 +194,16 @@ Pokud chcete zakázat synchronizaci s rozsahem na základě skupin pro spravovan
 Po zobrazení výzvy zadejte přihlašovací údaje *globálního správce* pro přihlášení k vašemu TENANTOVI Azure AD pomocí rutiny [Connect-AzureAD][Connect-AzureAD] :
 
 ```powershell
-// Connect to your Azure AD tenant
+# Connect to your Azure AD tenant
 Connect-AzureAD
 
-// Retrieve the Azure AD DS resource.
+# Retrieve the Azure AD DS resource.
 $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServices"
 
-// Disable group-based scoped synchronization.
+# Disable group-based scoped synchronization.
 $disableScopedSync = @{"filteredSync" = "Disabled"}
 
-// Update the Azure AD DS resource
+# Update the Azure AD DS resource
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScopedSync
 ```
 

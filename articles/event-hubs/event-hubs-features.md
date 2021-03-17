@@ -2,13 +2,13 @@
 title: Přehled funkcí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje podrobné informace o funkcích a terminologii Azure Event Hubs.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2de83be023c32df067712146937f880092025a44
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 02/19/2021
+ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172108"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739071"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -16,30 +16,53 @@ Azure Event Hubs je škálovatelná služba pro zpracování událostí, která 
 
 Tento článek sestaví informace v [článku Přehled](./event-hubs-about.md)a poskytuje podrobnosti o technické a implementaci Event Hubs komponentách a funkcích.
 
+> [!TIP]
+> [Podpora protokolu pro klienty **Apache Kafka**](event-hubs-for-kafka-ecosystem-overview.md)  (verze >= 1,0) poskytuje koncové body sítě, které umožňují aplikacím postaveným na použití Apache Kafka s jakýmkoli klientem pro použití Event Hubs. Většinu stávajících aplikací Kafka je možné jednoduše znovu nakonfigurovat tak, aby odkazovaly na obor názvů centra událostí místo na zaváděcí Server clusteru Kafka. 
+>
+>Z hlediska nákladů, provozní úsilí a spolehlivosti je Azure Event Hubs skvělou alternativou k nasazení a provozování vlastních clusterů Kafka a Zookeeper a k tomu, aby nabídky Kafka jako služby nebyly nativní pro Azure. 
+>
+> Kromě toho, že máte stejné základní funkce jako zprostředkovatel Apache Kafka, získáte také přístup k funkcím centra událostí Azure, jako je automatické vytváření dávek a archivování prostřednictvím služby [Event Hubs Capture](event-hubs-capture-overview.md), automatického škálování a vyrovnávání zatížení, zotavení po havárii, neneutrální podpoře zón dostupnosti, flexibilní a zabezpečené integrace sítě a podpora více protokolů, včetně protokolu AMQP-over-WebSockets.
+
+
 ## <a name="namespace"></a>Obor názvů
-Obor názvů Event Hubs poskytuje jedinečný obor kontejneru, na který odkazuje jeho [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), ve kterém můžete vytvořit jedno nebo několik témat centra událostí nebo Kafka témata. 
-
-## <a name="event-hubs-for-apache-kafka"></a>Event Hubs pro Apache Kafka
-
-[Tato funkce](event-hubs-for-kafka-ecosystem-overview.md) poskytuje koncový bod, který zákazníkům umožňuje komunikovat s Event Hubs pomocí protokolu Kafka. Tato integrace poskytuje zákazníkům koncový bod Kafka. Díky tomu můžou zákazníci nakonfigurovat své stávající aplikace Kafka, aby se mohli mluvit na Event Hubs, takže můžou spouštět vlastní clustery Kafka. Event Hubs pro Apache Kafka podporuje protokol Kafka 1,0 a novější. 
-
-Díky této integraci nemusíte spouštět clustery Kafka ani je spravovat pomocí Zookeeper. To vám taky umožní pracovat s některými nejnáročnějšími funkcemi Event Hubs jako je zachycení, automatické rozploché a geografické zotavení po havárii.
-
-Tato integrace také umožňuje aplikacím, jako je například reKafkaer nebo architektura, jako je například, připojit k pracovním clusterům bez jakýchkoli změn konfigurace. 
+Obor názvů Event Hubs poskytuje integrované síťové koncové body DNS a řadu funkcí řízení přístupu a správy integrace sítě, jako je [filtrování IP adres](event-hubs-ip-filtering.md), [koncový bod služby virtuální sítě](event-hubs-service-endpoints.md)a [privátní odkaz](private-link-service.md) a je kontejner správy pro jednu z několika instancí centra událostí (nebo témata v Kafka agilním).
 
 ## <a name="event-publishers"></a>Zdroje událostí
 
-Každá entita, která odesílá data do centra událostí, je výrobcem událostí nebo *vydavatelem události*. Vydavatelé událostí můžou publikovat události pomocí protokolu HTTPS nebo AMQP 1,0 nebo Kafka 1,0 a novějších. Zdroje událostí se v centru událostí identifikují pomocí tokenu sdíleného přístupového podpisu (SAS) a mohou mít jedinečnou identitu, nebo mohou používat společný token SAS.
+Každá entita, která odesílá data do centra událostí, je *vydavatelem událostí* (jako synonyma se používá u *výrobce událostí*). Vydavatelé událostí můžou publikovat události pomocí protokolu HTTPS nebo AMQP 1,0 nebo protokolu Kafka. Vydavatelé událostí používají ověřování založené na Azure Active Directory s tokeny JWT vydanými OAuth2 nebo tokenem sdíleného přístupového podpisu specifického pro centrum událostí, který získá přístup pro publikování.
 
 ### <a name="publishing-an-event"></a>Publikování události
 
-Událost můžete publikovat přes AMQP 1,0, Kafka 1,0 (a novější) nebo HTTPS. Event Hubs poskytuje [klientské knihovny a třídy](./event-hubs-dotnet-framework-getstarted-send.md) pro publikování událostí do centra událostí od klientů rozhraní .NET. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](https://qpid.apache.org/). Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) má omezení 1 MB bez ohledu na to, zda se jedná o jednu událost nebo dávku. Publikování událostí větších než tato prahová hodnota způsobí chybu. Osvědčeným postupem je, aby vydavatelé nevěděli o oddílech v centru událostí a zadali jenom *klíč oddílu* (zavedený v další části), nebo jejich identitu prostřednictvím tokenu SAS.
+Událost můžete publikovat prostřednictvím AMQP 1,0, protokolu Kafka nebo protokolu HTTPS. Služba Event Hubs poskytuje klientské knihovny pro [REST API](/rest/api/eventhub/) a [.NET](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [JavaScript](event-hubs-node-get-started-send.md)a na [cestách](event-hubs-go-get-started-send.md) pro publikování událostí do centra událostí. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](https://qpid.apache.org/). 
 
-Volba, jestli se použije protokol AMQP nebo HTTPS, závisí na konkrétním scénáři použití. Protokol AMQP vyžaduje nejen protokol TLS (Transport Level Security) nebo SSL/TLS, ale i vytvoření trvalého obousměrného soketu. AMQP má při inicializaci relace vyšší náklady na síť, ale protokol HTTPS vyžaduje pro každý požadavek další režii TLS. AMQP má pro často používané zdroje vyšší výkon.
+Volba, jestli se použije protokol AMQP nebo HTTPS, závisí na konkrétním scénáři použití. Protokol AMQP vyžaduje nejen protokol TLS (Transport Level Security) nebo SSL/TLS, ale i vytvoření trvalého obousměrného soketu. AMQP má při inicializaci relace vyšší náklady na síť, ale protokol HTTPS vyžaduje pro každý požadavek další režii TLS. AMQP má významně vyšší výkon pro časté vydavatele a při použití s asynchronním kódem publikování může dosáhnout mnohem nižších latencí.
 
-![Event Hubs](./media/event-hubs-features/partition_keys.png)
+Události můžete publikovat jednotlivě nebo v dávce. Jedna publikace má omezení 1 MB, bez ohledu na to, zda se jedná o jednu událost nebo dávku. Události, které jsou větší než tato prahová hodnota, budou odmítnuty. 
 
-Služba Event Hubs zajišťuje, aby se všechny události, které sdílejí hodnotu klíče oddílu, v pořádku doručily do stejného oddílu. Pokud se klíče oddílů používají společně se zásadami zdroje, musí si identita zdroje a hodnota klíče oddílu odpovídat. V opačném případě dojde k chybě.
+Event Hubs propustnost se škáluje pomocí oddílů a přidělení jednotek propustnosti (viz níže). Osvědčeným postupem je, že vydavatelé zůstanou nevědomé konkrétního modelu dělení vybraného pro centrum událostí a jenom určují *klíč oddílu* , který se používá k konzistentnímu přiřazování souvisejících událostí ke stejnému oddílu.
+
+![Klíče oddílu](./media/event-hubs-features/partition_keys.png)
+
+Event Hubs zajišťuje, aby všechny události sdílející hodnotu klíče oddílu byly uloženy společně a doručeny v pořadí doručení. Pokud se klíče oddílů používají společně se zásadami zdroje, musí si identita zdroje a hodnota klíče oddílu odpovídat. V opačném případě dojde k chybě.
+
+### <a name="event-retention"></a>Uchovávání událostí
+
+Publikované události se odeberou z centra událostí na základě konfigurovatelné zásady uchovávání na základě časových limitů. Tady je několik důležitých bodů:
+
+- **Výchozí** hodnota a **nejkratší** možné období uchování je **1 den (24 hodin)**.
+- Pro Event Hubs **Standard** je maximální doba uchovávání **7 dní**. 
+- Pro Event Hubs **vyhrazené** je maximální doba uchování **90 dní**.
+- Pokud změníte dobu uchování, bude platit pro všechny zprávy, včetně zpráv, které jsou již v centru událostí. 
+
+> [!NOTE]
+> Event Hubs je modul streamování událostí v reálném čase, který není určený pro použití namísto databáze nebo jako trvalé úložiště pro nekonečné uchovávání datových proudů událostí. 
+> 
+> Čím hlubší je historie datového proudu událostí, tím více budete potřebovat pomocné indexy pro vyhledání konkrétního historického řezu daného datového proudu. Kontrola datových částí a indexování událostí není v oboru funkcí Event Hubs (nebo Apache Kafka). Databáze a specializované analytické obchody a služby, jako je například [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md), [Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) a [Azure synapse](../synapse-analytics/overview-what-is.md) jsou proto mnohem vhodnější pro ukládání historických událostí.
+>
+> [Event Hubs Capture](event-hubs-capture-overview.md) se integruje přímo s Azure Blob Storage a Azure Data Lake Storage a prostřednictvím této integrace taky umožňuje [přesměrovat události přímo do Azure synapse](store-captured-data-data-warehouse.md).
+>
+> Pokud chcete pro vaši aplikaci použít vzor typu [události](/azure/architecture/patterns/event-sourcing) , měli byste sjednotit strategii snímků s omezeními uchovávání Event Hubs. Nevytvářejte záměr znovu sestavit materializovaná zobrazení z nezpracovaných událostí počínaje začátkem času. Měli byste se surely na tuto strategii, když je vaše aplikace v produkčním prostředí pro dobu, kdy se používá, a váš tvůrce projekce se při pokusu o zachycení až do nejnovějších a probíhajících změn musí rozniknout během let. 
+
 
 ### <a name="publisher-policy"></a>Zásady zdroje
 
@@ -86,13 +109,13 @@ Následující příklady znázorňují konvenci identifikátoru URI pro skupinu
 
 Následující obrázek znázorňuje architekturu zpracování datového proudu Event Hubs:
 
-![Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
+![Architektura Event Hubs](./media/event-hubs-about/event_hubs_architecture.svg)
 
 ### <a name="stream-offsets"></a>Posuny datového proudu
 
 *Posun* je pozice události v rámci oddílu. Posun si můžete představit jako kurzor na straně klienta. Posun je číslo bajtu události. Tento posun umožňuje příjemci události (čtenáři) určit bod v datovém proudu událostí, od kterého chce události začít číst. Posun můžete zadat v podobě časového razítka nebo hodnoty posunu. Příjemci si sami zodpovídají za uložení svých hodnot posunu mimo službu Event Hubs. Každá událost v rámci oddílu zahrnuje posun.
 
-![Event Hubs](./media/event-hubs-features/partition_offset.png)
+![Posun oddílu](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>Vytváření kontrolních bodů
 
@@ -100,11 +123,14 @@ Následující obrázek znázorňuje architekturu zpracování datového proudu 
 
 Pokud se čtenář z oddílu odpojí, začne při opětovném připojení číst od kontrolního bodu, který dříve zaslal poslední čtenář daného oddílu z této skupiny příjemců. Když se čtenář připojí, předá posun do centra událostí, aby určil umístění, ve kterém se má začít číst. Takto můžete vytváření kontrolních bodů použít jak k označování událostí jako „dokončených“, tak k zajištění ochrany pro případ, že nastane selhání u čtenářů spuštěných na různých strojích. Ke starším datům se je možné vrátit tak, že určíte nižší posun od tohoto kontrolního bodu. Díky tomuto mechanismu umožňuje vytváření kontrolních bodů nejen obnovu při selhání, ale i opakované přehrání datového proudu.
 
+> [!IMPORTANT]
+> Posuny poskytuje služba Event Hubs. Je odpovědností, že příjemce má vytvořit kontrolní bod při zpracování událostí.
+
 > [!NOTE]
 > Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 
-> - [Rozhraní .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [Rozhraní .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) nebo [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) nebo  [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
 
 ### <a name="common-consumer-tasks"></a>Běžné úlohy příjemce
@@ -138,10 +164,10 @@ Správa posunu je na vás.
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 
 - Začínáme se službou Event Hubs
-    - [.NET](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

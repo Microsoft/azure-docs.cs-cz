@@ -6,16 +6,16 @@ ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
 ms.topic: how-to
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
-ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701660"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011557"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Správa záznamů a sad záznamů DNS v Azure DNS pomocí rozhraní příkazového řádku Azure
 
@@ -137,7 +137,7 @@ az network dns record-set ptr add-record --resource-group myresourcegroup --zone
 
 ### <a name="create-an-srv-record"></a>Vytvoření záznamu SRV
 
-Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records)zadejte * \_ službu* a * \_ protokol* v názvu sady záznamů. \@Při vytváření sady záznamů SRV na vrcholu zóny není nutné zahrnout do názvu sady záznamů "".
+Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records)zadejte *\_ službu* a *\_ protokol* v názvu sady záznamů. \@Při vytváření sady záznamů SRV na vrcholu zóny není nutné zahrnout do názvu sady záznamů "".
 
 ```azurecli
 az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
@@ -167,7 +167,7 @@ az network dns record-set a show --resource-group myresourcegroup --zone-name co
 
 Pomocí příkazu můžete zobrazit seznam všech záznamů v zóně DNS `az network dns record-set list` . Nápovědu získáte příkazem `az network dns record-set list --help`.
 
-Tento příklad vrátí všechny sady záznamů v zóně *contoso.com*ve skupině prostředků *MyResourceGroup*, bez ohledu na název nebo typ záznamu:
+Tento příklad vrátí všechny sady záznamů v zóně *contoso.com* ve skupině prostředků *MyResourceGroup*, bez ohledu na název nebo typ záznamu:
 
 ```azurecli
 az network dns record-set list --resource-group myresourcegroup --zone-name contoso.com
@@ -193,7 +193,7 @@ Tento příkaz odstraní ze sady záznamů záznam DNS. Pokud se odstraní posle
 
 Je nutné zadat záznam, který chcete odstranit, a zónu, ze které má být odstraněn, pomocí stejných parametrů, jako při vytváření záznamu pomocí `az network dns record-set <record-type> add-record` . Tyto parametry jsou popsané v tématu [Vytvoření záznamu DNS](#create-a-dns-record) a [Vytvoření záznamů dalších typů](#create-records-of-other-types) .
 
-Následující příklad odstraní záznam A s hodnotou 1.2.3.4 ze sady záznamů s názvem *www* v zóně *contoso.com*ve skupině prostředků *MyResourceGroup*.
+Následující příklad odstraní záznam A s hodnotou 1.2.3.4 ze sady záznamů s názvem *www* v zóně *contoso.com* ve skupině prostředků *MyResourceGroup*.
 
 ```azurecli
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "www" --ipv4-address 1.2.3.4
@@ -220,9 +220,9 @@ Nemůžete přidávat, odebírat ani upravovat záznamy v sadě záznamů automa
 
 Na rozdíl od většiny ostatních typů záznamů může sada záznamů CNAME obsahovat jenom jeden záznam.  Proto nemůžete nahradit aktuální hodnotu přidáním nového záznamu a odebráním existujícího záznamu, stejně jako u jiných typů záznamů.
 
-Místo toho pro úpravu záznamu CNAME použijte `az network dns record-set cname set-record` . Nápovědu najdete v tématu.`az network dns record-set cname set-record --help`
+Místo toho pro úpravu záznamu CNAME použijte `az network dns record-set cname set-record` . Nápovědu najdete v tématu. `az network dns record-set cname set-record --help`
 
-V příkladu se změní *Webová* sada záznamů CNAME v zóně *contoso.com*ve skupině prostředků *MyResourceGroup*, aby odkazovala na ' www.fabrikam.NET ' namísto existující hodnoty:
+V příkladu se změní *Webová* sada záznamů CNAME v zóně *contoso.com* ve skupině prostředků *MyResourceGroup*, aby odkazovala na ' www.fabrikam.NET ' namísto existující hodnoty:
 
 ```azurecli
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.fabrikam.net

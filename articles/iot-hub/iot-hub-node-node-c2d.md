@@ -12,13 +12,13 @@ ms.date: 06/16/2017
 ms.custom:
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: 2d5baf0f1c4298d597b620f02f3e463a05203f5a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: e398138f12c38e5235a0004679d9574dbde607db
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424030"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91446872"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Node.js)
 
@@ -46,7 +46,7 @@ Na konci tohoto kurzu spustíte dvě Node.js konzolové aplikace:
 > IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení (včetně C, Java, Pythonu a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot).
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Node.js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node.js pro tento kurz v systému Windows nebo Linux.
 
@@ -77,11 +77,20 @@ V této části upravíte aplikaci simulovaného zařízení, kterou jste vytvo�
     });
     ```
 
-    V tomto příkladu zařízení vyvolá funkci **Complete** , aby upozornila IoT Hub, že zprávu zpracoval. Volání metody **Complete** není vyžadováno, pokud používáte přenos MQTT a lze je vynechat. Vyžaduje se pro HTTPS a AMQP.
+V tomto příkladu zařízení vyvolá **úplnou** funkci, aby upozornila IoT Hub, že zpracovala zprávu a že může být bezpečně odebrána z fronty zařízení. Volání metody **Complete** není vyžadováno, pokud používáte přenos MQTT a lze je vynechat. Vyžaduje se pro AMQP a HTTPS.
+
+V případě AMQP a HTTPS, ale ne MQTT, může zařízení také:
+
+* Opuštění zprávy, která má za následek IoT Hub uchování zprávy ve frontě zařízení pro budoucí spotřebu.
+* Odmítněte zprávu, která trvale odstraní zprávu z fronty zařízení.
+
+Pokud dojde k nějakému problému, který zabrání zařízení v dokončení, zrušení nebo odmítnutí zprávy, IoT Hub po pevném časovém limitu zařadí do fronty zprávu pro doručení znovu. Z tohoto důvodu musí být logika zpracování zpráv v aplikaci zařízení *idempotentní*, aby se stejná zpráva zobrazovala vícekrát, což má stejný výsledek.
+
+Podrobnější informace o tom, jak IoT Hub zpracovává zprávy typu cloud-zařízení, včetně podrobností o životním cyklu zpráv z cloudu na zařízení, najdete v tématu [posílání zpráv z cloudu na zařízení ze služby IoT Hub](iot-hub-devguide-messages-c2d.md).
   
-   > [!NOTE]
-   > Pokud jako přenos použijete HTTPS místo MQTT nebo AMQP, zkontroluje instance **DeviceClient** zprávy z IoT Hub zřídka (méně než každých 25 minut). Další informace o rozdílech mezi MQTT, AMQP a podporou protokolu HTTPS a omezením IoT Hub najdete v příručce pro [vývojáře IoT Hub](iot-hub-devguide-messaging.md).
-   >
+> [!NOTE]
+> Pokud jako přenos použijete HTTPS místo MQTT nebo AMQP, zkontroluje instance **DeviceClient** zprávy z IoT Hub zřídka (minimálně každých 25 minut). Další informace o rozdílech mezi podporou MQTT, AMQP a HTTPS najdete v tématu [pokyny pro komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md) a [Vyberte komunikační protokol](iot-hub-devguide-protocols.md).
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 

@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 18ded2713ec89a9a0666cd00221d437c1c9ef090
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e477e4bb3b31477f9407e981d4c8da2340411f55
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092418"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615733"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Přesunout data z databáze SQL Server do SQL Database pomocí Azure Data Factory
 
@@ -43,16 +43,16 @@ Nastavili jsme kanál ADF, který bude vytvářet dvě aktivity migrace dat. Spo
 * Zkopírujte data z účtu Azure Blob Storage do Azure SQL Database.
 
 > [!NOTE]
-> Popsané kroky byly přizpůsobené z podrobnějšího kurzu poskytnutého týmem ADF: [kopírování dat z databáze SQL Server do Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) odkazy na relevantní části tohoto tématu jsou uvedené v případě potřeby.
+> Popsané kroky byly přizpůsobené z podrobnějšího kurzu poskytnutého týmem ADF: [kopírování dat z databáze SQL Server do Azure Blob Storage](../../data-factory/tutorial-hybrid-copy-portal.md) odkazy na relevantní části tohoto tématu jsou uvedené v případě potřeby.
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
 V tomto kurzu se předpokládá, že máte následující:
 
 * **Předplatné Azure** Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet služby Azure Storage**. K ukládání dat v tomto kurzu použijete účet služby Azure Storage. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Viz [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
-* Přístup k **Azure SQL Database**. Pokud musíte nastavit Azure SQL Database, téma [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci Azure SQL Database.
+* Přístup k **Azure SQL Database**. Pokud musíte nastavit Azure SQL Database, téma [Začínáme s Microsoft Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md) poskytuje informace o tom, jak zřídit novou instanci Azure SQL Database.
 * Instalace a konfigurace **Azure PowerShell** lokálně. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/).
 
 > [!NOTE]
@@ -60,18 +60,18 @@ V tomto kurzu se předpokládá, že máte následující:
 >
 >
 
-## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Nahrajte data do instance SQL Server.
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a> Nahrajte data do instance SQL Server.
 K předvedení procesu migrace používáme [datovou sadu NYC taxislužby](https://chriswhong.com/open-data/foil_nyc_taxi/) . Datová sada taxislužby NYC je k dispozici, jak je uvedeno v tomto příspěvku, v datech Azure Blob Storage [NYC taxislužby](https://www.andresmh.com/nyctaxitrips/). Data obsahují dva soubory, trip_data.csv soubor, který obsahuje podrobnosti o cestě, a soubor trip_far.csv, který obsahuje podrobnosti o tarifu placeného pro každou cestu. Ukázka a popis těchto souborů jsou k dispozici v [popisu datové sady NYC taxislužby TRIPS](sql-walkthrough.md#dataset).
 
 Můžete buď upravit proceduru, která je zde uvedena, do sady vlastních dat nebo postupovat podle kroků popsaných v datové sadě taxislužby NYC. Pokud chcete nahrát datovou sadu taxislužby NYC do databáze SQL Server, postupujte podle pokynů uvedených v [hromadném importu dat do SQL Server databáze](sql-walkthrough.md#dbload).
 
-## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Vytvoření Azure Data Factory
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a> Vytvoření Azure Data Factory
 K dispozici jsou pokyny pro vytvoření nové Azure Data Factory a skupiny prostředků v [Azure Portal](https://portal.azure.com/) [Vytvoření Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Pojmenujte novou instanci ADF *adfdsp* a pojmenujte skupinu prostředků, kterou vytvořila *adfdsprg*.
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Instalace a konfigurace Azure Data Factory Integration Runtime
 Integration Runtime je infrastruktura pro integraci dat spravovaná zákazníky, kterou používá Azure Data Factory k poskytování možností integrace dat napříč různými síťovými prostředími. Tento modul runtime se dřív nazýval "Správa dat Gateway".
 
-Pokud chcete nastavit, [postupujte podle pokynů pro vytvoření kanálu](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline) .
+Pokud chcete nastavit, [postupujte podle pokynů pro vytvoření kanálu](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline) .
 
 ## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>Vytvoření propojených služeb pro připojení k datovým prostředkům
 Propojená služba definuje informace potřebné pro připojení k datovému zdroji Azure Data Factory. V tomto scénáři máme tři prostředky, pro které jsou potřeba propojené služby:
@@ -87,7 +87,7 @@ Podrobný postup pro vytváření propojených služeb je k dispozici v části 
 Pomocí následujících postupů založených na skriptech vytvořte tabulky, které určují strukturu, umístění a dostupnost datových sad. Soubory JSON se používají k definování tabulek. Další informace o struktuře těchto souborů naleznete v tématu [datové sady](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> `Add-AzureAccount`Před spuštěním rutiny [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) byste měli spustit rutinu, abyste zkontrolovali, jestli je pro provedení příkazu vybraný správné předplatné Azure. Dokumentaci k této rutině najdete v tématu [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0).
+> `Add-AzureAccount`Před spuštěním rutiny [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) byste měli spustit rutinu, abyste zkontrolovali, jestli je pro provedení příkazu vybraný správné předplatné Azure. Dokumentaci k této rutině najdete v tématu [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount).
 >
 >
 
@@ -232,7 +232,7 @@ Pomocí výše uvedených definic tabulek je definice kanálu pro ADF uvedená n
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
+        "description" : "This pipeline has two activities: the first one copies data from SQL Server to Azure Blob, and the second one copies from Azure Blob to Azure Database Table",
         "activities":
         [
             {

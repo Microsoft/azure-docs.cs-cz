@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ffe1a4b9b32223cc57c6a6399fdc074a9d51d714
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047722"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322400"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Jak určit scénáře a plánovat zpracování dat pokročilé analýzy
 
@@ -66,7 +66,7 @@ Kde jsou vaše data potřeba pro zpracování nebo modelování?
 Postupy a prostředky k ingestování nebo načítání dat do nejrůznějších různých prostředí úložišť a zpracování najdete v těchto tématech:
 
 * [Načtení dat do prostředí úložiště pro analýzu](ingest-data.md)
-* [Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat](../studio/import-data.md)
+* [Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat](../classic/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Je potřeba data při migraci přesunout podle pravidelného plánu nebo změnit?
 
@@ -108,7 +108,7 @@ Tyto otázky jsou klíčem k plánování prostředí úložiště a zpracován�
 
 Vezměte v úvahu například prostředí Azure Machine Learning Studio (Classic):
 
-* Seznam formátů dat a typů podporovaných nástrojem Azure Machine Learning Studio najdete v části [formáty dat a podporované datové typy](../studio/import-data.md#supported-data-formats-and-data-types) .
+* Seznam formátů dat a typů podporovaných nástrojem Azure Machine Learning Studio najdete v části [formáty dat a podporované datové typy](../classic/import-data.md#supported-data-formats-and-data-types) .
 * Informace o omezeních ostatních služeb Azure, které se používají v procesu analýzy, najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Otázky kvality dat: průzkum a předběžné zpracování
@@ -146,10 +146,10 @@ K dispozici je celá řada možností pro jazyky, vývojová prostředí a nást
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>Jaké nástroje byste měli použít k analýze dat?
 
 * [Microsoft Azure PowerShell](/powershell/azure/) – skriptovací jazyk, který se používá ke správě prostředků Azure ve skriptovacím jazyce
-* [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
+* [Azure Machine Learning Studio](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 * [Analýza revoluce](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
-* [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
+* [Python Tools for Visual Studio](/visualstudio/python/)
 * [Anaconda](https://www.anaconda.com/)
 * [Jupyter poznámkové bloky](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)

@@ -4,16 +4,16 @@ description: Přečtěte si, jak omezit webový provoz pomocí brány firewall w
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
+ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50aaf4f2639f48e5536e6eeaba5edbc246b2bba7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 967d4d4a49809c2b5fa7a344286469bb67eec6cf
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501061"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217597"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Povolení firewallu webových aplikací pomocí rozhraní příkazového řádku Azure
 
@@ -21,21 +21,20 @@ Můžete omezit provoz brány Application Gateway pomocí [brány firewall webov
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
-> * Vytvoření škálovací sady virtuálních počítačů
-> * Vytvoření účtu úložiště a konfigurace diagnostiky
+ * Nastavit síť
+ * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
+ * Vytvoření škálovací sady virtuálních počítačů
+ * Vytvoření účtu úložiště a konfigurace diagnostiky
 
 ![Příklad brány firewall webových aplikací](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -142,9 +141,9 @@ az vmss extension set \
 
 V tomto článku používá Aplikační brána účet úložiště k ukládání dat pro účely detekce a prevence. K zaznamenávání dat můžete použít také protokoly Azure Monitor nebo centra událostí. 
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-K vytvoření účtu úložiště s názvem *myagstore1* použijte příkaz [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
+K vytvoření účtu úložiště s názvem *myagstore1* použijte příkaz [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 
 ```azurecli-interactive
 az storage account create \
@@ -157,7 +156,7 @@ az storage account create \
 
 ### <a name="configure-diagnostics"></a>Konfigurace diagnostiky
 
-Nakonfigurujte diagnostiku, aby se data zaznamenávala do protokolů ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog a ApplicationGatewayFirewallLog. Nahraďte `<subscriptionId>` identifikátorem předplatného a pak nakonfigurujte diagnostiku pomocí [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create).
+Nakonfigurujte diagnostiku, aby se data zaznamenávala do protokolů ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog a ApplicationGatewayFirewallLog. Nahraďte `<subscriptionId>` identifikátorem předplatného a pak nakonfigurujte diagnostiku pomocí [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 ```azurecli-interactive
 appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)

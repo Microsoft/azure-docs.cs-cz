@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 80cd1a4c92441fb17ce0a66814ff0a39a92fb287
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1b179ac555ea86aff381c1217e834b8d0aa85e8c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005563"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561700"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>Publikování integrovaných aplikací ve virtuálním počítači s Windows (Classic)
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak publikovat aplikace v prostředí virtuálníc
 Publikování předdefinované aplikace:
 
 1. Připojte se k jednomu z virtuálních počítačů ve fondu hostitelů.
-2. Postupujte podle pokynů v [tomto článku](/powershell/module/appx/get-appxpackage?view=win10-ps/)a získejte **PackageFamilyName** aplikace, kterou chcete publikovat.
+2. Postupujte podle pokynů v [tomto článku](/powershell/module/appx/get-appxpackage)a získejte **PackageFamilyName** aplikace, kterou chcete publikovat.
 3. Nakonec spusťte následující rutinu s `<PackageFamilyName>` nahrazeným **PackageFamilyName** , které jste našli v předchozím kroku:
 
    ```powershell

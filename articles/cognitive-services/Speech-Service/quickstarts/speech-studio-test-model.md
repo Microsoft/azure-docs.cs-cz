@@ -1,29 +1,29 @@
 ---
-title: 'Rychlý Start: testování modelu pomocí zvukových souborů – Speech Studio'
+title: Testování modelu pomocí zvukových souborů – Speech Studio
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete Speech Studio k testování rozpoznávání řeči v zvukovém souboru.
+description: V tomto postupu použijete Speech Studio k testování rozpoznávání řeči v zvukovém souboru.
 services: cognitive-services
 author: v-demjoh
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 02/12/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 76fb933893b624e9b289ddf51d2a0373b51e58d1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 93a0c171497faa9e87457a03da0b78003feaa533
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391532"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362263"
 ---
-# <a name="quickstart-test-a-model-using-an-audio-file-in-speech-studio"></a>Rychlý Start: testování modelu pomocí zvukového souboru v studiu řeči
+# <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Testování modelu pomocí zvukového souboru v studiu řeči
 
-V tomto rychlém startu použijete Speech Studio k převodu řeči ze zvukového souboru na text. Speech Studio umožňuje testovat, porovnávat, zlepšovat a nasazovat modely rozpoznávání řeči pomocí souvisejícího textu, zvukového přepisu a pokynů k výslovnosti, které zadáte.
+V tomto postupu použijete Speech Studio k převodu řeči ze zvukového souboru na text. Speech Studio umožňuje testovat, porovnávat, zlepšovat a nasazovat modely rozpoznávání řeči pomocí souvisejícího textu, zvukového přepisu a pokynů k výslovnosti, které zadáte.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než použijete portál Speech, [postupujte podle těchto pokynů a vytvořte účet Azure a přihlaste se k odběru služby Speech](../how-to-custom-speech.md#set-up-your-azure-account). Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a Custom Speech Portal.
+Než budete používat Speech Studio, [postupujte podle těchto pokynů a vytvořte účet Azure a přihlaste se k odběru služby Speech](../custom-speech-overview.md#set-up-your-azure-account). Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a rozpoznávání řeči.
 
 ## <a name="download-an-audio-file"></a>Stažení zvukového souboru
 
@@ -32,7 +32,7 @@ Postupujte podle těchto kroků a Stáhněte si zvukový soubor, který obsahuje
 1. Stáhněte si **[ukázkový soubor WAV z tohoto odkazu](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)** tak, že kliknete pravým tlačítkem na odkaz a vyberete **Uložit odkaz jako**. Kliknutím na **Uložit** stáhněte `whatstheweatherlike.wav` soubor.
 2. Pomocí Průzkumníka souborů nebo okna terminálu s nástrojem zip vytvořte soubor zip s názvem `whatstheweatherlike.zip` , který obsahuje `whatstheweatherlike.wav` stažený soubor. V systému Windows můžete otevřít Průzkumníka Windows, přejít do `Downloads` složky, kliknout pravým tlačítkem myši `whatstheweatherliike.wav` , kliknout na možnost **Odeslat do**, kliknout na položku **Komprimovaná (metoda ZIP)** a stisknutím klávesy Enter přijměte výchozí název souboru.
 
-## <a name="create-a-project-in-the-custom-speech-portal"></a>Vytvoření projektu na portálu Custom Speech
+## <a name="create-a-project-in-the-speech-studio"></a>Vytvoření projektu v studiu řeči
 
 Pomocí těchto kroků můžete vytvořit projekt, který obsahuje váš soubor zip jednoho zvukového souboru.
 
@@ -58,8 +58,8 @@ Jakmile aplikace Speech Studio zpracuje obsah souboru zip, můžete přehrát zd
 
 Soubory, které popisují přepisy, si můžete stáhnout mnohem podrobněji. Soubory obsahují lexikální formu rozpoznávání řeči ve zvukových souborech a soubory JSON, které obsahují informace o posunu, trvání a přepisu každého slova. Tyto soubory zobrazíte pomocí následujícího postupu.
 
-1. Klikněte na tlačítko **Stáhnout**.
-2. V dialogu pro stažení zrušte výběr **zvuku**a klikněte na **Stáhnout**.
+1. Klikněte na **Stáhnout**.
+2. V dialogu pro stažení zrušte výběr **zvuku** a klikněte na **Stáhnout**.
 3. Extrahujte stažený soubor zip a prověřte extrahované soubory.
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1e5a61bd4e3287c1100ff1f54fda797c1add438b
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652776"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466407"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -35,24 +35,28 @@ Přečtěte si další informace o [tom, co můžete zálohovat](backup-overview
 
 ## <a name="where-is-data-backed-up"></a>Kde se data zálohují?
 
-Azure Backup ukládá zálohovaná data do trezoru Recovery Services. Trezor je online entita v Azure, která se používá k ukládání dat, jako jsou záložní kopie, body obnovení a zásady zálohování.
+Azure Backup ukládá zálohovaná data v trezorech – Recovery Services trezory a trezory služby Backup. Trezor je online entita v Azure, která se používá k ukládání dat, jako jsou záložní kopie, body obnovení a zásady zálohování.
 
-Recovery Services trezory mají následující funkce:
+Trezory mají následující funkce:
 
 - Trezory usnadňují uspořádání zálohovaných dat a současně minimalizují nároky na správu.
-- V každém předplatném Azure můžete vytvořit až 500 trezorů.
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](../storage/common/storage-redundancy.md).
-  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](../storage/common/storage-redundancy.md).
+  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Zóna – redundantní úložiště (ZRS)**: replikuje vaše data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. [Další informace](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
+
+Recovery Services trezory mají následující další funkce:
+
+- V každém předplatném Azure můžete vytvořit až 500 trezorů.
 
 ## <a name="backup-agents"></a>Agenti zálohování
 
 Azure Backup poskytuje různé agenty zálohování v závislosti na tom, jaký typ počítače se zálohuje:
 
-**Agent** | **Podrobnosti**
+**Agenta** | **Podrobnosti**
 --- | ---
 **Agent MARS** | <ul><li>Spouští se na jednotlivých místních počítačích Windows serveru pro zálohování souborů, složek a stavu systému.</li> <li>Spouští se na virtuálních počítačích Azure pro zálohování souborů, složek a stavu systému.</li> <li>Spouští na serverech DPM nebo MABS k zálohování místního úložiště aplikace DPM/MABS do Azure.</li></ul>
 **Rozšíření virtuálního počítače Azure** | Spustí se na virtuálních počítačích Azure, které je zálohují do trezoru.
@@ -61,7 +65,7 @@ Azure Backup poskytuje různé agenty zálohování v závislosti na tom, jaký 
 
 Následující tabulka popisuje různé typy zálohování a jejich použití:
 
-**Typ zálohy** | **Podrobnosti** | **Použití**
+**Typ zálohování** | **Podrobnosti** | **Použití**
 --- | --- | ---
 **Do bloku** | Úplná záloha obsahuje celý zdroj dat. Trvá větší šířku pásma sítě než rozdílové nebo přírůstkové zálohy. | Slouží k prvotnímu zálohování.
 **Diferenciál** |  Rozdílové zálohování ukládá bloky, které se od počátečního úplného zálohování změnily. Používá menší množství sítě a úložiště a neuchovává redundantní kopie nezměněných dat.<br/><br/> Neefektivní vzhledem k tomu, že se přenesou a ukládají datové bloky nezměněné mezi novějšími zálohami. | Nepoužívá se Azure Backup.
@@ -71,10 +75,10 @@ Následující tabulka popisuje různé typy zálohování a jejich použití:
 
 Následující tabulka popisuje různé typy záloh používaných pro SQL Server databáze a četnost jejich používání:
 
-**Typ zálohy** | **Podrobnosti** | **Použití**
+**Typ zálohování** | **Podrobnosti** | **Použití**
 --- | --- | ---
 **Úplné zálohování** | Úplná záloha databáze zálohuje celou databázi. Obsahuje všechna data v konkrétní databázi nebo v sadě skupin souborů nebo souborů. Úplné zálohování také obsahuje dostatek protokolů pro obnovení těchto dat. | Maximálně můžete aktivovat jednu úplnou zálohu denně.<br/><br/> Můžete si zvolit, že chcete vytvořit úplnou zálohu na denní nebo týdenní interval.
-**Rozdílové zálohování** | Rozdílová záloha vychází z poslední předchozí zálohy na základě úplného zálohování dat.<br/><br/> Zachycuje jenom data, která se od úplného zálohování změnila. |  Ve většině případů můžete aktivovat jednu rozdílovou zálohu za den.<br/><br/> V jednom dni nemůžete nakonfigurovat úplnou zálohu a rozdílovou zálohu.
+**Rozdílové zálohování** | Rozdílová záloha vychází z poslední předchozí zálohy na základě úplného zálohování dat.<br/><br/> Zachycuje jenom data, která se od úplného zálohování změnila. |  Maximálně můžete aktivovat jedno rozdílové zálohování za den.<br/><br/> V jednom dni nemůžete nakonfigurovat úplnou zálohu a rozdílovou zálohu.
 **Zálohování protokolu transakcí** | Zálohování protokolu umožňuje obnovení k určitému bodu v čase až na určitou sekundu. | V tuto chvíli můžete nakonfigurovat zálohování transakčních protokolů každých 15 minut.
 
 ### <a name="comparison-of-backup-types"></a>Porovnání typů zálohování
@@ -83,8 +87,8 @@ Spotřeba úložiště, plánovaná doba obnovení (RTO) a spotřeba sítě se u
 
 - Zdroj dat A se skládá z 10 bloků úložiště a1 – A10, které se zálohují měsíčně.
 - Bloky A2, A3, A4 a A9 se mění první měsíc a blok A5 se mění následující měsíc.
-- Pro rozdílové zálohování se v druhém měsíci zálohují změněné bloky a2, a3, A4 a buňce 3. Třetí měsíc se znovu zálohují tyto stejné bloky, společně se změněným blokem A5. Změněné bloky se budou zálohovat až do doby, kdy dojde k dalšímu úplnému zálohování.
-- Pro přírůstkové zálohování se za druhý měsíc budou bloky a2, a3, A4 a 3 označovat jako změněné a přenesené. Třetí měsíc se označí a přenese pouze změněný blok A5.
+- U rozdílových záloh se v druhém měsíci zálohují bloky a2, a3, A4 a buňce 3. Třetí měsíc se znovu zálohují tyto stejné bloky, společně se změněným blokem A5. Změněné bloky se budou zálohovat až do doby, kdy dojde k dalšímu úplnému zálohování.
+- V případě přírůstkových záloh jsou v druhý měsíc bloky a2, a3, A4 a buňce označeny jako změněné a přenesené. Třetí měsíc se označí a přenese pouze změněný blok A5.
 
 ![Obrázek znázorňující porovnání metod zálohování](./media/backup-architecture/backup-method-comparison.png)
 
@@ -120,6 +124,12 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 - Při vytvoření trezoru se vytvoří také "DefaultPolicy" a můžete ho použít k zálohování prostředků.
 - Všechny změny provedené v době uchování zásady zálohování se použijí zpět na všechny starší body obnovení z nových.
 
+### <a name="impact-of-policy-change-on-recovery-points"></a>Dopad změny zásad na body obnovení
+
+- **Doba uchování se zvýšila nebo snížila:** Při změně doby uchování se nová doba uchování použije i na existující body obnovení. V důsledku toho se vyčistí některé body obnovení. Pokud se prodlouží doba uchovávání, budou mít existující body obnovení také zvýšené uchovávání.
+- **Změněno z denní na týdně:** Když se naplánované zálohy změní z každodenního na týdně, vyčistí se stávající denní body obnovení.
+- **Změněno z týdně na denní:** Stávající týdenní zálohy se uchovávají na základě počtu dní zbývajících v závislosti na aktuálních zásadách uchovávání informací.
+
 ### <a name="additional-reference"></a>Další referenční informace
 
 - Počítač Azure VM: jak [vytvářet](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) a [upravovat](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) zásady.
@@ -134,7 +144,7 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 
 1. Když povolíte zálohování pro virtuální počítač Azure, zálohování se spustí podle plánu, který zadáte.
 1. Při prvním zálohování se na virtuálním počítači nainstaluje rozšíření zálohování, pokud je virtuální počítač spuštěný.
-    - Pro virtuální počítače s Windows se nainstaluje rozšíření VMSnapshot.
+    - U virtuálních počítačů s Windows se nainstaluje rozšíření VMSnapshot.
     - Pro virtuální počítače se systémem Linux se nainstaluje rozšíření VMSnapshot Linux.
 1. Rozšíření používá snímek na úrovni úložiště.
     - Pro virtuální počítače s Windows, na kterých běží, se zaregistrují služby Windows služba Stínová kopie svazku (VSS), aby vybraly snímek konzistentní vzhledem k aplikacím virtuálního počítače. Ve výchozím nastavení provádí zálohování úplné zálohy VSS. Pokud zálohování nedokáže vytvořit snímek konzistentní vzhledem k aplikacím, převezme snímek konzistentní se souborem.
@@ -143,10 +153,10 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 1. Po pořízení snímku se data přenesou do trezoru.
     - Zkopírovány jsou pouze bloky dat, které se od posledního zálohování změnily.
     - Data nejsou šifrovaná. Azure Backup můžou zálohovat virtuální počítače Azure, které se šifrují pomocí Azure Disk Encryption.
-    - Data snímku se nemusí hned zkopírovat do trezoru. V časech špičky může zálohování trvat několik hodin. Celková doba zálohování pro virtuální počítač bude pro denní zásady zálohování kratší než 24 hodin.
+    - Data snímku se nemusí do trezoru zkopírovat okamžitě. V časech špičky může zálohování trvat několik hodin. Celková doba zálohování virtuálního počítače bude u zásad denního zálohování menší než 24 hodin.
 1. Po odeslání dat do trezoru se vytvoří bod obnovení. Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů, než se odstraní. Tato funkce umožňuje operaci obnovení z těchto snímků, takže vystřihuje časy obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. Informace najdete v tématu [Azure Backup možnosti okamžitého obnovení](./backup-instant-restore-capability.md).
 
-Nemusíte výslovně povolit připojení k Internetu pro zálohování virtuálních počítačů Azure.
+Nemusíte explicitně povolit připojení k Internetu pro zálohování virtuálních počítačů Azure.
 
 ![Zálohování virtuálních počítačů Azure](./media/backup-architecture/architecture-azure-vm.png)
 
@@ -157,7 +167,7 @@ Nemusíte výslovně povolit připojení k Internetu pro zálohování virtuáln
 1. Agent MARS používá službu Stínová kopie svazku k provedení snímků vybraných pro zálohování v čase.
     - Agent MARS používá pouze operaci zápisu systému Windows k zachycení snímku.
     - Vzhledem k tomu, že agent nepoužívá žádné aplikace zapisovače služby VSS, nezachycuje snímky konzistentní vzhledem k aplikacím.
-1. Po pořízení snímku pomocí VSS vytvoří agent MARS virtuální pevný disk (VHD) ve složce mezipaměti, kterou jste zadali při konfiguraci zálohování. Agent také ukládá kontrolní součty pro každý blok dat.
+1. Po pořízení snímku pomocí VSS vytvoří agent MARS virtuální pevný disk (VHD) ve složce mezipaměti, kterou jste zadali při konfiguraci zálohování. Agent také ukládá kontrolní součty pro každý blok dat. Tyto změny se použijí později ke zjištění změněných bloků pro následné přírůstkové zálohování.
 1. Přírůstkové zálohování se spouští podle plánu, který zadáte, Pokud nespustíte zálohování na vyžádání.
 1. V přírůstkových zálohách se identifikují změněné soubory a vytvoří se nový virtuální pevný disk. Virtuální pevný disk je komprimovaný a zašifrovaný a pak se pošle do trezoru.
 1. Po dokončení přírůstkového zálohování se nový virtuální pevný disk sloučí s virtuálním pevným diskem vytvořeným po počáteční replikaci. Tento sloučený virtuální pevný disk poskytuje nejnovější stav, který se má použít pro porovnání probíhajícího zálohování.

@@ -3,19 +3,19 @@ title: Koncepty – základy Kubernetes pro služby Azure Kubernetes (AKS)
 description: Seznamte se se základními komponentami clusterů a úloh Kubernetes a s tím, jak se vztahují k funkcím ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 12/07/2020
+ms.openlocfilehash: 2a1718d906ab5f51ea71be9b304028576c9fffa0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251854"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122438"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
 Vzhledem k tomu, že vývoj aplikací se přesouvá směrem k přístupu založenému na kontejneru, je potřeba orchestrovat a spravovat prostředky, které jsou důležité. Kubernetes je přední platforma, která poskytuje možnost poskytovat spolehlivé plánování úloh aplikací odolných proti chybám. Služba Azure Kubernetes Service (AKS) je spravovaná Kubernetes nabídka, která dále zjednodušuje nasazování a správu aplikací založených na kontejnerech.
 
-V tomto článku se seznámíte se základními komponentami infrastruktury Kubernetes, jako je například *řídicí plocha*, *uzly*a *fondy uzlů*. Společně s postupem seskupení prostředků do *oborů názvů*se zavádějí i prostředky úlohy, jako jsou *lusky*, *nasazení*a *sady* .
+V tomto článku se seznámíte se základními komponentami infrastruktury Kubernetes, jako je například *řídicí plocha*, *uzly* a *fondy uzlů*. Společně s postupem seskupení prostředků do *oborů názvů* se zavádějí i prostředky úlohy, jako jsou *lusky*, *nasazení* a *sady* .
 
 ## <a name="what-is-kubernetes"></a>Co je Kubernetes?
 
@@ -31,8 +31,8 @@ Služba Azure Kubernetes Service (AKS) poskytuje spravovanou službu Kubernetes,
 
 Cluster Kubernetes je rozdělen do dvou součástí:
 
-- *Řídicí uzly ovládacích prvků* poskytují základní služby Kubernetes a orchestraci úloh aplikací.
-- *Uzly* spouštějí úlohy vaší aplikace.
+- *Rovina ovládacího prvku* poskytuje základní služby Kubernetes a orchestraci úloh aplikací.
+- *Uzly* , které spouštějí úlohy vaší aplikace.
 
 ![Rovina ovládacího prvku Kubernetes a součásti uzlu](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 
@@ -57,11 +57,11 @@ Související osvědčené postupy najdete [v tématu osvědčené postupy pro z
 
 ## <a name="nodes-and-node-pools"></a>Fondy uzlů a uzlů
 
-Chcete-li spustit aplikace a podpůrné služby, potřebujete *uzel*Kubernetes. Cluster AKS má jeden nebo více uzlů, což je virtuální počítač Azure, který spouští součásti uzlu Kubernetes a modul runtime kontejneru:
+Chcete-li spustit aplikace a podpůrné služby, potřebujete *uzel* Kubernetes. Cluster AKS má jeden nebo více uzlů, což je virtuální počítač Azure, který spouští součásti uzlu Kubernetes a modul runtime kontejneru:
 
 - `kubelet`Je agent Kubernetes, který zpracovává požadavky orchestrace z řídicí roviny a plánuje spouštění požadovaných kontejnerů.
 - Virtuální sítě zpracovává *Kube-proxy* na každém uzlu. Proxy směruje síťový provoz a spravuje přidělování IP adres pro služby a lusky.
-- *Modul runtime kontejneru* je komponenta, která umožňuje spuštění kontejnerových aplikací a interakce s dalšími prostředky, jako je například virtuální síť a úložiště. V AKS se jako modul runtime kontejneru používá Moby.
+- *Modul runtime kontejneru* je komponenta, která umožňuje spuštění kontejnerových aplikací a interakce s dalšími prostředky, jako je například virtuální síť a úložiště. Clustery AKS s využitím fondů uzlů Kubernetes verze 1,19 a větším využitím `containerd` jako modul runtime kontejneru. Clustery AKS využívající Kubernetes před a v 1.19 pro fondy uzlů používají jako svůj modul runtime kontejneru [Moby](https://mobyproject.org/) (nadřazený Docker).
 
 ![Virtuální počítač Azure a podpůrné prostředky pro uzel Kubernetes](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -69,7 +69,7 @@ Velikost virtuálního počítače Azure pro vaše uzly definuje, kolik procesor
 
 V AKS je image virtuálního počítače pro uzly v clusteru v současné době založená na Ubuntu Linux nebo Windows serveru 2019. Při vytváření clusteru AKS nebo při horizontálním navýšení kapacity počtu uzlů vytvoří platforma Azure požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace, kterou byste mohli provést. Uzly agentů se účtují jako standardní virtuální počítače, takže se automaticky aplikují všechny slevy, které používáte pro velikost virtuálního počítače (včetně [rezervací Azure][reservation-discounts]).
 
-Pokud potřebujete použít jiný hostitelský operační systém, modul runtime kontejneru nebo zahrnout vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [AKS-Engine][aks-engine]. Funkce pro odesílání dat `aks-engine` a poskytuje možnosti konfigurace, než jsou oficiálně podporované v clusterech AKS. Pokud například chcete použít modul runtime kontejneru jiný než Moby, můžete použít `aks-engine` ke konfiguraci a nasazení clusteru Kubernetes, který splňuje vaše aktuální potřeby.
+Pokud potřebujete použít jiný hostitelský operační systém, modul runtime kontejneru nebo zahrnout vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [AKS-Engine][aks-engine]. Funkce pro odesílání dat `aks-engine` a poskytuje možnosti konfigurace, než jsou oficiálně podporované v clusterech AKS. Pokud například chcete použít modul runtime kontejneru jiný než `containerd` nebo Moby, můžete použít `aks-engine` ke konfiguraci a nasazení clusteru Kubernetes, který splňuje vaše aktuální potřeby.
 
 ### <a name="resource-reservations"></a>Rezervace prostředků
 
@@ -78,7 +78,6 @@ Prostředky uzlů využívají AKS k zajištění funkce uzlu jako součásti cl
 Chcete-li najít prostředky ALLOCATABLE uzlu, spusťte příkaz:
 ```kubectl
 kubectl describe node [NODE_NAME]
-
 ```
 
 Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány na jednotlivých uzlech pomocí AKS. V případě, že uzel roste větší množství prostředků, rezervace prostředků roste v důsledku většího počtu uživatelů nasazených v části s potřebnou správou lusků.
@@ -86,22 +85,24 @@ Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány n
 >[!NOTE]
 > Použití doplňků AKS, jako je Container Insights (OMS), bude spotřebovávat další prostředky uzlů.
 
+Jsou rezervované dva typy prostředků:
+
 - PROCESOR vyhrazený pro **procesor** závisí na typu uzlu a konfiguraci clusteru, což může způsobit, že by ALLOCATABLE procesor byl v důsledku spuštění dalších funkcí.
 
-| Jádra procesoru na hostiteli | 1    | 2    | 4    | 8    | 16 | 32|64|
-|---|---|---|---|---|---|---|---|
-|Kube – rezervováno (millicores)|60|100|140|180|260|420|740|
+   | Jádra procesoru na hostiteli | 1    | 2    | 4    | 8    | 16 | 32|64|
+   |---|---|---|---|---|---|---|---|
+   |Kube – rezervováno (millicores)|60|100|140|180|260|420|740|
 
 - **Paměť,** kterou využívá AKS, zahrnuje součet dvou hodnot.
 
-1. Démon kubelet je nainstalován na všech uzlech agenta Kubernetes za účelem správy vytváření a ukončování kontejneru. Ve výchozím nastavení má démon následující pravidlo vyřazení: *paměť. k dispozici<750Mi*, což znamená, že uzel musí vždy mít alespoň 750 mi ALLOCATABLE.  Když je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jednu z běžících lusků, aby uvolnil paměť na hostitelském počítači a chránil ji. Tato akce se aktivuje až po snížení dostupné paměti za prahovou hodnotu 750Mi.
+   1. Démon kubelet je nainstalován na všech uzlech agenta Kubernetes za účelem správy vytváření a ukončování kontejneru. Ve výchozím nastavení má démon následující pravidlo vyřazení: *paměť. k dispozici<750Mi*, což znamená, že uzel musí vždy mít alespoň 750 mi ALLOCATABLE.  Když je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jednu z běžících lusků, aby uvolnil paměť na hostitelském počítači a chránil ji. Tato akce se aktivuje až po snížení dostupné paměti za prahovou hodnotu 750Mi.
 
-2. Druhá hodnota je regresivní míra rezervací paměti pro správnou funkci démona kubelet (Kube – rezervováno).
-    - 25% prvních 4 GB paměti
-    - 20% z dalších 4 GB paměti (až 8 GB)
-    - 10% z dalších 8 GB paměti (až 16 GB)
-    - 6% z dalších 112 GB paměti (až 128 GB)
-    - 2% libovolné paměti nad 128 GB
+   2. Druhá hodnota je regresivní míra rezervací paměti pro správnou funkci démona kubelet (Kube – rezervováno).
+      - 25% prvních 4 GB paměti
+      - 20% z dalších 4 GB paměti (až 8 GB)
+      - 10% z dalších 8 GB paměti (až 16 GB)
+      - 6% z dalších 112 GB paměti (až 128 GB)
+      - 2% libovolné paměti nad 128 GB
 
 Výše uvedená pravidla pro paměť a přidělení procesoru se používají k udržení dobrých uzlů agentů, včetně některých z nich hostujících prostředí, které jsou pro stav clusteru zásadní. Tato pravidla přidělení také způsobí, že uzel hlásí méně ALLOCATABLE paměť a procesor, než by normálně neměl být součástí clusteru Kubernetes. Výše uvedené rezervace prostředků se nedají změnit.
 
@@ -138,7 +139,7 @@ metadata:
 spec:
   containers:
     - name: myfrontend
-      image: nginx:1.15.12
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.12-alpine
   nodeSelector:
     "beta.kubernetes.io/os": linux
 ```
@@ -184,7 +185,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.15.2
+        image: mcr.microsoft.com/oss/nginx/nginx:1.15.2-alpine
         ports:
         - containerPort: 80
         resources:

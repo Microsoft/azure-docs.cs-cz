@@ -1,24 +1,26 @@
 ---
 title: Azure Event Grid schémat pro události Media Services
-description: Popisuje vlastnosti, které jsou k dispozici pro Media Services události s Azure Event Grid
+description: Přečtěte si o vlastnostech, které jsou k dispozici pro Media Services události s Azure Event Grid.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 02/25/2020
-ms.author: juliako
-ms.openlocfilehash: 3733a641bc116b57556c5ad4f5750bec69e10e9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 47ba1af15101ae68cf5311ed73f7078bf9fc7f35
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393734"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91336424"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémat pro události Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Tento článek poskytuje schémata a vlastnosti pro Media Services události.
 
@@ -134,7 +136,7 @@ Následující příklad ukazuje schéma události **JobStateChange** :
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | previousState | řetězec | Stav úlohy před událostí. |
 | state | řetězec | Nový stav úlohy, která se v této události oznamuje. Například "naplánované: úloha je připravena k zahájení" nebo "dokončeno: úloha je dokončena".|
@@ -204,7 +206,7 @@ Ukázkové schéma pro každou poslední změnu stavu úlohy (například JobFin
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | činnosti | Pole | Získá výstupy úlohy.|
 
@@ -320,7 +322,7 @@ Následující příklad ukazuje schéma události **LiveEventConnectionRejected
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | streamId | řetězec | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník je zodpovědný za přidání tohoto ID do adresy URL ingestování. |  
 | ingestUrl | řetězec | Adresa URL příjmu poskytovaná živou událostí |  
@@ -356,7 +358,7 @@ Následující příklad ukazuje schéma události **LiveEventEncoderConnected**
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | streamId | řetězec | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník zodpovídá za poskytnutí tohoto ID v adrese URL ingestování. |
 | ingestUrl | řetězec | Adresa URL příjmu poskytovaná živou událostí |
@@ -390,7 +392,7 @@ Následující příklad ukazuje schéma události **LiveEventEncoderDisconnecte
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | streamId | řetězec | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník je zodpovědný za přidání tohoto ID do adresy URL ingestování. |  
 | ingestUrl | řetězec | Adresa URL příjmu poskytovaná živou událostí |  
@@ -402,7 +404,7 @@ Kódy výsledku chyby můžete najít v části [kódy chyb živé události](li
 
 Kódy výsledků řádného odpojení:
 
-| Kód výsledku | Popis |
+| Kód výsledku | Description |
 | ----------- | ----------- |
 | S_OK | Kodér byl úspěšně odpojen. |
 | MPE_CLIENT_TERMINATED_SESSION | Kodér byl odpojen (RTMP). |
@@ -440,11 +442,11 @@ Následující příklad ukazuje schéma události **LiveEventIncomingDataChunkD
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
+| rychlostí | integer | Přenosová rychlost stopy |
 | časové razítko | řetězec | Časové razítko přehozených bloků dat |
 | měřítk | řetězec | Časová osa časového razítka. |
 | resultCode | řetězec | Důvod přetažení datového bloku **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
@@ -480,11 +482,11 @@ Následující příklad ukazuje schéma události **LiveEventIncomingStreamRece
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
+| rychlostí | integer | Přenosová rychlost stopy |
 | ingestUrl | řetězec | Adresa URL příjmu poskytovaná živou událostí |
 | encoderIp | řetězec  | IP adresa kodéru. |
 | encoderPort | řetězec | Port kodéru, ze kterého přichází tento datový proud. |
@@ -519,7 +521,7 @@ Následující příklad ukazuje schéma události **LiveEventIncomingStreamsOut
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | minLastTimestamp | řetězec | Minimální počet posledních časových razítek mezi všemi skladbami (zvuk nebo video). |
 | typeOfTrackWithMinLastTimestamp | řetězec | Typ stopy (zvuk nebo video) s minimálním posledním časovým razítkem. |
@@ -555,7 +557,7 @@ Následující příklad ukazuje schéma události **LiveEventIncomingVideoStrea
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | firstTimestamp | řetězec | Bylo přijato časové razítko pro jednu z úrovní sledování a kvality typu video. |
 | firstDuration | řetězec | Doba trvání datového bloku s prvním časovým razítkem. |
@@ -597,17 +599,17 @@ Následující příklad ukazuje schéma události **LiveEventIngestHeartbeat** 
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
-| incomingBitrate | celé číslo | Vypočtená přenosová rychlost založená na datových blocích přicházejících z kodéru. |
+| rychlostí | integer | Přenosová rychlost stopy |
+| incomingBitrate | integer | Vypočtená přenosová rychlost založená na datových blocích přicházejících z kodéru. |
 | lastTimestamp | řetězec | Poslední přijaté časové razítko pro stopu za posledních 20 sekund. |
 | měřítk | řetězec | Časové měřítko, ve kterém jsou vyjádřena časová razítka. |
-| overlapCount | celé číslo | Počet bloků dat má překrývající se časová razítka za posledních 20 sekund. |
-| discontinuityCount | celé číslo | Počet nekontinuity zjištěných za posledních 20 sekund. |
-| nonIncreasingCount | celé číslo | Počet datových bloků s časovými razítky v minulosti byl přijat za posledních 20 sekund. |
+| overlapCount | integer | Počet bloků dat má překrývající se časová razítka za posledních 20 sekund. |
+| discontinuityCount | integer | Počet nekontinuity zjištěných za posledních 20 sekund. |
+| nonIncreasingCount | integer | Počet datových bloků s časovými razítky v minulosti byl přijat za posledních 20 sekund. |
 | unexpectedBitrate | bool | Pokud se očekává a Skutečná přenosová rychlost se v posledních 20 sekundách liší od více než povoleného limitu. Je true pouze v případě, že incomingBitrate >= 2 * přenosová rychlost nebo incomingBitrate <= přenosová rychlost/2 nebo IncomingBitrate = 0. |
 | state | řetězec | Stav živé události. |
 | v pořádku | bool | Uvádí, zda je příjem dat v pořádku v závislosti na počtu a příznacích. V pořádku má hodnotu true, pokud overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false. |
@@ -641,11 +643,11 @@ Následující příklad ukazuje schéma události **LiveEventTrackDiscontinuity
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
+| rychlostí | integer | Přenosová rychlost stopy |
 | previousTimestamp | řetězec | Časové razítko předchozího fragmentu |
 | newTimestamp | řetězec | Časové razítko aktuálního fragmentu |
 | discontinuityGap | řetězec | Mezera mezi více než dvěma časovými razítky. |
@@ -655,14 +657,14 @@ Datový objekt má následující vlastnosti:
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Téma EventGrid Tato vlastnost má ID prostředku pro účet Media Services. |
 | závislosti | řetězec | Cesta prostředku pro kanál Media Services pod účtem Media Services Zřetězením tématu a předmětu získáte ID prostředku pro úlohu. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. Například "Microsoft. Media. JobStateChange". |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. Například "Microsoft. Media. JobStateChange". |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | odkazy objektů | Media Services data události. |
+| data | object | Media Services data události. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -670,7 +672,7 @@ Událost má následující data nejvyšší úrovně:
 
 [Zaregistrujte se na události změny stavu úlohy.](job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [EventGrid .NET SDK zahrnující události Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)

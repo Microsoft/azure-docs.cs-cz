@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 04/05/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 7c820f0cbf2e5d7b68451263315766895839716b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: dc76798ff97aa49d358b639557255b41872bab4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011188"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89070900"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>Vytvoření škálovací sady virtuálních počítačů s jednou zónou pomocí PowerShellu
 Tento skript vytvoří škálovací sadu virtuálních počítačů s Windows Serverem 2016 v jedné zóně dostupnosti. Po spuštění skriptu můžete k virtuálnímu počítači přistupovat přes protokol RDP.

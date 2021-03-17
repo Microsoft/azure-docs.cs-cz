@@ -3,14 +3,14 @@ title: Přehled verzí Durable Functions – Azure Functions
 description: Přečtěte si o Durable Functions verzích.
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/23/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4c8a536086e426a2d83d26538f9d0efe1ea63eb4
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: c4d10bab06428295bbc8c5319bd47787d7b1fb34
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705788"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763366"
 ---
 # <a name="durable-functions-versions-overview"></a>Přehled verzí Durable Functions
 
@@ -46,9 +46,11 @@ Tato část popisuje, jak migrovat existující verzi 1. x Durable Functions na 
 
 Do projektu nainstalujte nejnovější verzi 2. x rozšíření Durable Functions vazby.
 
-#### <a name="javascript-and-python"></a>JavaScript a Python
+#### <a name="javascript-python-and-powershell"></a>JavaScript, Python a PowerShell
 
 Durable Functions 2. x je k dispozici ve verzi 2. x sady [rozšíření Azure Functions](../functions-bindings-register.md#extension-bundles).
+
+Podpora Pythonu v Durable Functions vyžaduje Durable Functions 2. x.
 
 Chcete-li aktualizovat verzi balíčku rozšíření v projektu, otevřete host.jsv části a aktualizujte `extensionBundle` oddíl na použití verze 2. x ( `[2.*, 3.0.0)` ).
 
@@ -61,6 +63,9 @@ Chcete-li aktualizovat verzi balíčku rozšíření v projektu, otevřete host.
     }
 }
 ```
+
+> [!NOTE]
+> Pokud Visual Studio Code po změně verze balíčku rozšíření nezobrazuje správné šablony, znovu načtěte okno spuštěním příkazu *vývojář: znovu načíst okno* (<kbd>CTRL + R</kbd> v systému Windows a Linux, <kbd>Command + R</kbd> v MacOS).
 
 #### <a name="net"></a>.NET
 

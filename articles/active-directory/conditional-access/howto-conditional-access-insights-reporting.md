@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253269"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574169"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Přehledy podmíněného přístupu a vytváření sestav
 
@@ -43,15 +43,15 @@ Uživatelé také potřebují jednu z následujících Log Analytics rolí praco
 
 Pokud jste protokoly služby Azure AD neintegroval s protokoly Azure Monitor, bude nutné provést následující kroky předtím, než se sešit načte:  
 
-1. [Vytvoří Log Analytics pracovní prostor v Azure monitor](../../azure-monitor/learn/quick-create-workspace.md).
+1. [Vytvoří Log Analytics pracovní prostor v Azure monitor](../../azure-monitor/logs/quick-create-workspace.md).
 1. [Integrujte protokoly služby Azure AD s protokoly Azure monitor](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 ## <a name="how-it-works"></a>Jak to funguje 
 
 Přístup k sešitu Insights a vytváření sestav:  
 
-1. Přihlaste se k **portálu Azure Portal**.
-1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  a přehled**podmíněného přístupu**  >  **a vytváření sestav**.
+1. Přihlaste se na **Azure Portal**.
+1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  a přehled **podmíněného přístupu**  >  **a vytváření sestav**.
 
 ### <a name="get-started-select-parameters"></a>Začínáme: Výběr parametrů 
 
@@ -97,13 +97,29 @@ Zobrazení rozpisu uživatelů nebo přihlášení ke každé z těchto podmíne
 
 Přihlášení konkrétního uživatele můžete prozkoumat také tak, že v dolní části řídicího panelu vyhledáte přihlášení. Dotaz na levé straně zobrazuje nejčastěji uživatele. Když se uživatel vybere, bude dotaz filtrovat vpravo.  
 
+> [!NOTE]
+> Když stahujete protokoly přihlášení, vyberte formát JSON, který bude obsahovat data o výsledku podmíněného přístupu pouze sestavy.
+
+## <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Konfigurace zásad podmíněného přístupu v režimu pouze sestavy
+
+Konfigurace zásad podmíněného přístupu v režimu pouze pro sestavy:
+
+1. Přihlaste se k **Azure Portal** jako správce podmíněného přístupu, správce zabezpečení nebo globální správce.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
+1. Vyberte existující zásadu nebo vytvořte novou zásadu.
+1. V části **Povolit zásadu** nastavte přepínač na režim **pouze pro sestavy** .
+1. Vyberte **Uložit**.
+
+> [!TIP]
+> Úprava stavu **zásad povolení** u existující zásady z **na na** **sestavu – zakáže jenom** existující vynucení zásad. 
+
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Proč se dotazy nedaří kvůli chybě oprávnění?
 
 Aby bylo možné získat přístup k sešitu, potřebujete správná oprávnění služby Azure AD a také Log Analytics oprávnění k pracovnímu prostoru. Pokud chcete otestovat, jestli máte správná oprávnění k pracovnímu prostoru, spusťte ukázkový dotaz Log Analytics:
 
-1. Přihlaste se k **portálu Azure Portal**.
+1. Přihlaste se na **Azure Portal**.
 1. Přejděte na **Azure Active Directory**  >  **protokoly**.
 1. `SigninLogs`Do pole dotaz zadejte a vyberte **Spustit**.
 1. Pokud dotaz nevrátí žádné výsledky, váš pracovní prostor možná není správně nakonfigurovaný. 
@@ -111,6 +127,10 @@ Aby bylo možné získat přístup k sešitu, potřebujete správná oprávněn�
 ![Řešení neúspěšných dotazů](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
 
 Další informace o tom, jak streamovat protokoly přihlášení do služby Azure AD do pracovního prostoru Log Analytics, najdete v článku [integrace protokolů služby Azure AD pomocí protokolů Azure monitor](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
+
+### <a name="why-are-the-queries-in-the-workbook-failing"></a>Proč se dotazy v sešitu nedaří?
+
+Zákazníci si všimli, že dotazy někdy selžou, pokud jsou k sešitu přidruženy nesprávné nebo více pracovních prostorů. Pokud chcete tento problém vyřešit, klikněte v horní části sešitu na **Upravit** a pak na nastavení ozubeného kola. Vyberte a potom odeberte pracovní prostory, které nejsou přidružené k sešitu. K jednotlivým sešitům by měl být přidružen pouze jeden pracovní prostor.
 
 ### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Proč je parametr zásad podmíněného přístupu prázdný?
 
@@ -126,7 +146,7 @@ Pokud svazek přihlášení překračuje kapacitu dotazu Log Analytics, vrátí 
 
 ### <a name="can-i-save-my-parameter-selections"></a>Můžu uložit výběry parametrů?  
 
-Výběry parametrů můžete uložit v horní části sešitu tak, že na **Azure Active Directory**  >  **sešity**vydáte  >  **přehledy podmíněného přístupu a vytváření sestav**. Tady najdete šablonu sešitu, kde můžete sešit upravovat a ukládat do svého pracovního prostoru kopii, včetně výběrů parametrů, v **mých sestavách** nebo ve **sdílených sestavách**. 
+Výběry parametrů můžete uložit v horní části sešitu tak, že na **Azure Active Directory**  >  **sešity** vydáte  >  **přehledy podmíněného přístupu a vytváření sestav**. Tady najdete šablonu sešitu, kde můžete sešit upravovat a ukládat do svého pracovního prostoru kopii, včetně výběrů parametrů, v **mých sestavách** nebo ve **sdílených sestavách**. 
 
 ### <a name="can-i-edit-and-customize-the-workbook-with-additional-queries"></a>Můžu sešit upravovat a přizpůsobovat dalším dotazům? 
 
@@ -134,4 +154,8 @@ Sešit můžete upravit a přizpůsobit tak, že kliknete na **Azure Active Dire
  
 ## <a name="next-steps"></a>Další kroky
 
-[Režim pouze sestavy podmíněného přístupu](concept-conditional-access-report-only.md)
+- [Režim pouze sestavy podmíněného přístupu](concept-conditional-access-report-only.md)
+
+- Další informace o sešitech Azure AD najdete v článku [Jak používat Azure monitor sešity pro Azure Active Directory sestavy](../reports-monitoring/howto-use-azure-monitor-workbooks.md).
+
+- [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)

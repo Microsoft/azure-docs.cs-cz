@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro použití pokročilých fu
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530057"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107342"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánování ve službě Azure Kubernetes Service (AKS)
 
@@ -52,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -80,14 +80,14 @@ Když upgradujete fond uzlů v AKS, příchuti a tolerovánosti se řídí vzore
 - **Výchozí clustery, které používají Virtual Machine Scale Sets**
   - [Nodepool][taint-node-pool] z rozhraní AKS API můžete nastavit tak, aby se nově škálované uzly dostaly do uzlů rozhraní API.
   - Předpokládejme, že máte dva uzly clusteru – *Uzel1* a *Uzel2*. Upgradujete fond uzlů.
-  - Vytvoří se dva další uzly, *Uzel3* a *Uzel4*a v uvedeném pořadí se přenesou příchuti.
+  - Vytvoří se dva další uzly, *Uzel3* a *Uzel4* a v uvedeném pořadí se přenesou příchuti.
   - Původní *Uzel1* a *Uzel2* se odstraní.
 
 - **Clustery bez podpory sady škálování virtuálních počítačů**
   - Pak Předpokládejme, že máte dva uzly cluster- *Uzel1* a *Uzel2*. Při upgradu se vytvoří další uzel (*Uzel3*).
   - Od *Uzel1* se aplikují příchuti na *Uzel3*, *Uzel1* se pak odstraní.
-  - Vytvoří se další nový uzel (s názvem *Uzel1*, protože předchozí *Uzel1* byl odstraněn) a na nový *Uzel1*se aplikují *uzel2é* chuti. Pak se *Uzel2* odstraní.
-  - V podstatě *Uzel1* se bude *Uzel3*a *Uzel2* se bude *Uzel1*.
+  - Vytvoří se další nový uzel (s názvem *Uzel1*, protože předchozí *Uzel1* byl odstraněn) a na nový *Uzel1* se aplikují *uzel2é* chuti. Pak se *Uzel2* odstraní.
+  - V podstatě *Uzel1* se bude *Uzel3* a *Uzel2* se bude *Uzel1*.
 
 Při horizontálním navýšení kapacity fondu uzlů v AKS se neprovádí návrh.
 
@@ -113,7 +113,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -131,7 +131,7 @@ Další informace o používání selektorů uzlů najdete v tématu [přiřazen
 
 ### <a name="node-affinity"></a>Spřažení uzlů
 
-Selektor uzlů je základní způsob, jak přiřadit lusky k danému uzlu. K dispozici je větší flexibilita s použitím *spřažení uzlů*. U spřažení uzlů definujete, co se stane, pokud se pod nedá spárovat s uzlem. Můžete *požadovat* , aby Plánovač Kubernetes odpovídal znaku pod pod názvem hostitele. Nebo můžete *preferovat* shodu, ale pokud není k dispozici, nechejte možnost naplánovaná na jiném hostiteli.
+Selektor uzlů je základní způsob, jak přiřadit lusky k danému uzlu. K dispozici je větší flexibilita s použitím *spřažení uzlů*. U spřažení uzlů definujete, co se stane, pokud se pod nedá spárovat s uzlem. Můžete *požadovat* , aby Plánovač Kubernetes odpovídal znaku pod pod názvem hostitele. Nebo můžete *preferovat* shodu, ale nechat možnost v případě, že má být naplánováno na jiném hostiteli, pokud není k dispozici žádná shoda.
 
 Následující příklad nastaví spřažení uzlu na *requiredDuringSchedulingIgnoredDuringExecution*. Tento spřažení vyžaduje, aby plán Kubernetes používal uzel se shodným popiskem. Pokud není k dispozici žádný uzel, musí čekat na pokračování plánování. Chcete-li nechat naplánovaná hodnota v poli pod jiným uzlem, můžete místo toho nastavit hodnotu na *preferredDuringSchedulingIgnoreDuringExecution*:
 
@@ -143,7 +143,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/02/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 590a0a1ce474d48e95163081dcdcacb52233badf
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926072"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678878"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: kopírování dat do Azure Data Box přes systém souborů NFS
 
@@ -58,11 +58,11 @@ Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího p
 
 1. Zadejte IP adresy klientů s povoleným přístupem ke sdílené složce. V místním webovém uživatelském rozhraní přejděte na stránku **Připojit a kopírovat**. V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**. 
 
-    ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
+    ![Konfigurace přístupu klienta NFS](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
 2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na **OK**.
 
-    ![Konfigurace přístupu klientů systému souborů NFS 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
+    ![Konfigurace IP adresy klienta NFS](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
 2. Ujistěte se, že je na hostitelském počítači s Linuxem nainstalovaná [podporovaná verze](data-box-system-requirements.md) klienta systému souborů NFS. Použijte konkrétní verzi pro vaši distribuci Linuxu. 
 
@@ -85,7 +85,7 @@ Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího p
 Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat. Než začnete s kopírováním dat, projděte si následující důležité informace:
 
 * Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Kopírovat virtuální pevné disky do objektů blob stránky. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
-*  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení úložiště Azure a Data Boxu](data-box-limits.md). 
+*  Při kopírování dat se ujistěte, že velikost dat odpovídá omezení velikosti popsané v [omezeních velikosti účtu úložiště Azure](data-box-limits.md#azure-storage-account-size-limits).
 * Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
 * Doporučujeme, abyste nepoužívali protokol SMB a systém souborů NFS současně a abyste nekopírovali stejná data do stejného cíle v Azure. V takových případech není možné určit konečný výsledek.
 * **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené ve sdílených složkách objektů blob bloku a objektů blob stránky představují kontejnery, do kterých se data nahrávají jako objekty blob. Soubory nemůžete kopírovat přímo do složky *root* v účtu úložiště.
@@ -98,11 +98,11 @@ Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírován
 > [!IMPORTANT]
 > Než budete moct potvrdit, že zařízení Data Box převedlo data do Azure Storage, ujistěte se, že si uchováváte kopii zdrojových dat.
 
-Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
+Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Některé alternativy dostupné v systému Linux jsou [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [úlohách](https://www.cis.upenn.edu/~bcpierce/unison/)nebo [Ultracopier](https://ultracopier.first-world.info/).  
 
 Jednou z nejlepších možností, jak zkopírovat adresář, je příkaz `cp`. Další informace o jeho použití najdete na [manuálových stránkách pro příkaz cp](http://man7.org/linux/man-pages/man1/cp.1.html).
 
-Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte podle těchto pokynů:
+Pokud použijete `rsync` možnost pro kopírování s více vlákny, postupujte podle těchto pokynů:
 
 * V závislosti na systému souborů, který používá váš klient Linuxu, nainstalujte balíček **CIFS Utils** nebo **NFS Utils**.
 
@@ -110,7 +110,7 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 
     `sudo apt-get install nfs-utils`
 
-* Nainstalujte **rsync** a **Parallel** (liší se v závislosti na distribuované verzi systému Linux).
+* Instalace `rsync` a **paralelní** (liší se v závislosti na distribuované verzi systému Linux).
 
     `sudo apt-get install rsync`
    
@@ -145,11 +145,11 @@ Pokud během procesu kopírování dojde k nějakým chybám, zobrazí se oznám
 
 Vyberte **Stáhnout seznam problémů**.
 
-![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-2.png)
+![Stažení seznamu problémů pro chybu kopírování](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Otevřete tento seznam, projděte si podrobnosti o chybě a vyberte adresu URL pro zobrazení doporučeného řešení.
 
-![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-3.png)
+![Problémy v seznamu problémů s chybou kopírování](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem](data-box-troubleshoot.md).
 

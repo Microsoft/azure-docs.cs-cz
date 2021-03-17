@@ -1,5 +1,5 @@
 ---
-title: Použití typu obsahu JSON pro klíčové hodnoty
+title: Použití záhlaví content-type JSON pro páry klíč-hodnota
 titleSuffix: Azure App Configuration
 description: Naučte se používat typ obsahu JSON pro klíčové hodnoty.
 services: azure-app-configuration
@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122007"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122149"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Využití typu obsahu k ukládání hodnot klíče JSON v konfiguraci aplikace
 
@@ -53,7 +53,7 @@ Mezi příklady platných hodnot JSON patří:
 - {"ObjectSetting": {"Targeting": {"default": true, "level": "Information"}}}
 
 > [!NOTE]
-> Ve zbývající části tohoto článku se jako **hodnota klíče JSON**označuje jakákoli klíčová hodnota v konfiguraci aplikace s platným typem obsahu JSON a platnou hodnotou JSON. 
+> Ve zbývající části tohoto článku se jako **hodnota klíče JSON** označuje jakákoli klíčová hodnota v konfiguraci aplikace s platným typem obsahu JSON a platnou hodnotou JSON. 
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -63,13 +63,11 @@ V tomto kurzu se naučíte:
 > * Využívání hodnot klíčového klíče JSON ve vašich aplikacích.
 
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
-- Nejnovější verzi rozhraní příkazového řádku Azure CLI (2.10.0 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI, musíte se nejdřív přihlásit pomocí `az login` . Volitelně můžete použít Azure Cloud Shell.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
+- V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.10.0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
@@ -177,12 +175,28 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 
 ## <a name="consuming-json-key-values-in-applications"></a>Využívání hodnot klíčového klíče JSON v aplikacích
 
-Nejjednodušší způsob, jak využít hodnoty klíčů JSON ve vaší aplikaci, je prostřednictvím knihoven zprostředkovatele konfigurace aplikace. Pomocí knihoven zprostředkovatelů nemusíte v aplikaci implementovat speciální zpracování hodnot klíčů JSON. Jsou vždy deserializovány pro vaši aplikaci stejným způsobem jako ostatní knihovny zprostředkovatele konfigurace JSON. 
+Nejjednodušší způsob, jak využít hodnoty klíčů JSON ve vaší aplikaci, je prostřednictvím knihoven zprostředkovatele konfigurace aplikace. Pomocí knihoven zprostředkovatelů nemusíte v aplikaci implementovat speciální zpracování hodnot klíčů JSON. Budou analyzovány a převedeny tak, aby odpovídaly nativní konfiguraci vaší aplikace.
+
+Například pokud máte v konfiguraci aplikace následující klíč-hodnota:
+
+| Klíč | Hodnota | Typ obsahu |
+|---|---|---|
+| Nastavení | {"FontSize": 24; "UseDefaultRouting": false} | application/json |
+
+Vaše konfigurace aplikace .NET bude mít následující klíčové hodnoty:
+
+| Klíč | Hodnota |
+|---|---|
+| Nastavení: FontSize | 24 |
+| Nastavení: UseDefaultRouting | false (nepravda) |
+
+K novým klíčům můžete přistupovat přímo nebo se můžete rozhodnout [navazovat konfigurační hodnoty na instance objektů .NET](/aspnet/core/fundamentals/configuration/#bind-hierarchical-configuration-data-using-the-options-pattern).
+
 
 > [!Important]
 > Nativní podpora pro hodnoty klíčového klíče JSON je k dispozici ve zprostředkovateli konfigurace .NET verze 4.0.0 (nebo novější). Další podrobnosti najdete v části [*Další kroky*](#next-steps) .
 
-Pokud používáte sadu SDK nebo REST API ke čtení hodnot klíče z konfigurace aplikace na základě typu obsahu, je vaše aplikace zodpovědná za deserializaci hodnoty klíčového hodnoty JSON pomocí libovolného standardního deserializace JSON.
+Pokud používáte sadu SDK nebo REST API ke čtení hodnot klíče z konfigurace aplikace na základě typu obsahu, je vaše aplikace zodpovědná za analýzu hodnoty klíčového hodnoty JSON.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

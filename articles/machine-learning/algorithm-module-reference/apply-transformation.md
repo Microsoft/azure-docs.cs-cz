@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/05/2020
-ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/26/2020
+ms.openlocfilehash: a5db3935ae445ee7dcf8129eb1d4c75fcb64302f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488626"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003901"
 ---
 # <a name="apply-transformation-module"></a>Použít transformační modul
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
-Pomocí tohoto modulu můžete upravit vstupní datovou sadu založenou na dříve vypočítané transformaci.
+Pomocí tohoto modulu můžete upravit vstupní datovou sadu založenou na dříve vypočítané transformaci. Tento modul je nezbytný v případě, že potřebujete aktualizovat transformace v odvozených kanálech.
 
 Pokud jste například použili z skóre k normalizování školicích dat pomocí modulu **normalizing data** Module, měli byste použít hodnotu z-skóre, která byla vypočítána pro školení v rámci fáze bodování. V Azure Machine Learning můžete metodu normalizace Uložit jako transformaci a pak pomocí **použít transformaci** použít pro vstupní data skóre před vyhodnocením.
 
@@ -46,7 +46,14 @@ Návrhář umožňuje uložit transformace dat jako datové **sady** , abyste je
   
 1. Připojte výstup objektu požadovaného modulu ke správnému vstupnímu portu modulu **použít transformaci** .
   
-1. Chcete-li použít transformaci na novou datovou sadu, spusťte kanál.  
+1. Chcete-li použít transformaci na novou datovou sadu, odešlete kanál.  
+
+> [!IMPORTANT]
+> Aby bylo zajištěno, že aktualizovaná transformace v školicích kanálech je také proveditelná v kanálech pro odvození, je nutné postupovat podle následujících kroků pokaždé, když je v školicím kanálu aktualizována transformace:
+> 1. V kanálu školení Zaregistrujte výstup pro [transformaci vybrat sloupce](select-columns-transform.md) jako datovou sadu.
+> ![Registrovat datovou sadu výstupu modulu](media/module/select-columns-transform-register-dataset.png)
+> 1. V kanálu odvození odeberte modul **td** a nahraďte ho registrovanou datovou sadou v předchozím kroku.
+> ![Nahradit modul TD](media/module/replace-tranformation-directory.png)
 
 ## <a name="next-steps"></a>Další kroky
 

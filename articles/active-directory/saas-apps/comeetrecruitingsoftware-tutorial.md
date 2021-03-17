@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a47721122456d32cef91de4bd5ef2b92738bf496
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d458d94a4bee4fce523819af2fd3e555db6e70df
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520095"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>Kurz: Azure Active Directory integrace s doplněním náborového softwaru
 
@@ -27,7 +27,7 @@ Integrací spolusplňující náborový software s Azure AD poskytuje následuj�
 * Můžete uživatelům povolit, aby se automaticky přihlásili k předplatnému náborovému softwaru (jednotné přihlašování) s účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci předvyhovujícího náborového softwaru 
 
 4. Do vyhledávacího pole zadejte text **dodržet náborový software**, vyberte možnost **přeplnit náborový software** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Vyhovující náborový software v seznamu výsledků](common/search-new-app.png)
+    ![Vyhovující náborový software v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -73,7 +73,7 @@ Aby se jednotné přihlašování fungovalo, je potřeba zřídit vztah propojen
 Pokud chcete konfigurovat a testovat jednotné přihlašování pomocí služby Azure AD, musíte provést následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování v rámci náborového softwaru](#configure-comeet-recruiting-software-single-sign-on)** a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování v rámci náborového softwaru](#configure-comeet-recruiting-software-single-sign-on)** , abyste na straně aplikace nakonfigurovali nastavení jednoho Sign-On.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte si tohoto uživatele testovacího náborového softwaru](#create-comeet-recruiting-software-test-user)** , abyste měli protějšek Britta Simon, který je v souladu s předstupujem náborového softwaru Azure AD.
@@ -93,13 +93,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Doplnění informací o jednotném přihlašování v doméně softwaru a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky s oddílem konfigurace "základní S A M L", který obsahuje zvýrazněné pole Uložit, "identifikátor" a "odpovědět U R L".](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
@@ -114,20 +114,20 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://app.comeet.co`
 
-5. Vyhovující náborový software aplikace očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na tlačítko **Upravit** a otevřete dialog **uživatelské atributy** .
+5. Vyhovující náborový software aplikace očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jeden Sign-On se** stránkou SAML kliknutím na tlačítko **Upravit** otevřete dialogové okno **atributy uživatele** .
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "atributy uživatele" s vybraným tlačítkem Upravit.](common/edit-attribute.png)
 
 6. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky: 
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | ---------------| --------------- |
     | nameidentifier | uživatel. pošta |
     | comeet_id | User. userPrincipalName |
 
     a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](common/new-save-attribute.png)
+    ![Snímek obrazovky, který zobrazuje oddíl deklarace identity uživatele se zvýrazněnými akcemi přidat nové deklarace identity a uložit](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -135,7 +135,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     c. Ponechte **obor názvů** prázdný.
 
-    d. Jako **atribut**vyberte zdroj.
+    d. Jako **atribut** vyberte zdroj.
 
     e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
@@ -143,7 +143,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     například Klikněte na **Uložit**.
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -157,7 +157,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-comeet-recruiting-software-single-sign-on"></a>Konfigurace jednotného přihlašování ze náborového softwaru
+### <a name="configure-comeet-recruiting-software-single-sign-on"></a>Konfigurace vyhovujícího náborového softwaru po jednom Sign-On
 
 Ke konfiguraci jednotného přihlašování na straně souběžného **náborového softwaru** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal pro [spoluuspokojení týmu podpory náborového softwaru](https://support.comeet.co/knowledgebase/adfs-single-sign-on/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -165,7 +165,7 @@ Ke konfiguraci jednotného přihlašování na straně souběžného **náborov�
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -178,21 +178,21 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k předplatnému náborového softwaru.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **dodržet náborový software**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **dodržet náborový software**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **dodržet náborový software**.
 
@@ -220,13 +220,12 @@ V této části vytvoříte uživatele s názvem Britta Simon ve vyhovujícím n
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici dodržet náborový software na přístupovém panelu byste se měli automaticky přihlášeni k předplatnému náborového softwaru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici dodržet náborový software na přístupovém panelu byste se měli automaticky přihlášeni k předplatnému náborového softwaru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

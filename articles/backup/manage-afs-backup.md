@@ -3,12 +3,12 @@ title: Správa záloh sdílených složek Azure
 description: Tento článek popisuje běžné úlohy správy a monitorování sdílených složek Azure, které jsou zálohované pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073299"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88757621"
 ---
 # <a name="manage-azure-file-share-backups"></a>Správa záloh sdílených složek Azure
 
@@ -143,7 +143,7 @@ Odstranění zálohovaných dat pro sdílenou složku Azure:
 
 ## <a name="unregister-a-storage-account"></a>Zrušení registrace účtu úložiště
 
-Chcete-li chránit sdílené složky v konkrétním účtu úložiště pomocí jiného trezoru služby Recovery Services, nejprve [Zastavte ochranu pro všechny sdílené složky](#stop-protection-on-a-file-share) v tomto účtu úložiště. Pak zrušte registraci účtu z aktuálního trezoru služby Recovery Services, který se používá k ochraně.
+Chcete-li chránit sdílené složky v konkrétním účtu úložiště pomocí jiného trezoru Recovery Services, nejprve [Zastavte ochranu pro všechny sdílené složky](#stop-protection-on-a-file-share) v tomto účtu úložiště. Pak zrušte registraci účtu z aktuálního trezoru Recovery Services používaného k ochraně.
 
 Následující postup předpokládá, že se ochrana zastavila pro všechny sdílené složky v účtu úložiště, který chcete zrušit.
 

@@ -12,13 +12,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: b424ea01d8283963c49d899a97120c9132d862f8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422534"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852553"
 ---
 # <a name="create-an-advanced-device-model"></a>Vytvoření pokročilého modelu zařízení
 
@@ -26,19 +26,15 @@ Tato příručka popisuje soubory JSON a JavaScript, které definují vlastní m
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle kroků v tomto průvodci, budete potřebovat nasazenou instanci simulace zařízení ve vašem předplatném Azure.
 
-Pokud jste Simulaci zařízení ještě nenasadili, měli byste dokončit rychlý start [Nasazení a spuštění simulace zařízení IoT v Azure](quickstart-device-simulation-deploy.md).
+Pokud jste ještě nasadili simulaci zařízení, přečtěte si téma [nasazení simulace zařízení](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) na GitHubu.
 
 ### <a name="open-device-simulation"></a>Otevření Simulace zařízení
 
-Pokud chcete spustit Simulaci zařízení v prohlížeči, nejprve přejděte na web [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com).
-
-Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
-
-Pak klikněte na tlačítko **Spustit** na dlaždici pro simulaci zařízení, které jste nasadili v [nasazení a spusťte simulaci zařízení IoT v](quickstart-device-simulation-deploy.md) rychlém startu Azure.
+Pokud jste ještě nasadili simulaci zařízení, přečtěte si téma [nasazení simulace zařízení](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) na GitHubu.
 
 ## <a name="device-models"></a>Modely zařízení
 
@@ -167,13 +163,13 @@ Pole uvedená ve schématu mohou mít následující typy:
 * Binární – serializovaný pomocí Base64
 * Text
 * Logická hodnota
-* Celé číslo
+* Integer
 * dvojité
 * DateTime
 
 ### <a name="supported-methods"></a>Podporované metody
 
-Simulovaná zařízení mohou také reagovat na volání metody. v takovém případě spouštějí určitou logiku a poskytnou určitou odpověď. Podobně jako simulace je logika metody uložena v souboru JavaScriptu a může komunikovat se stavem zařízení. Příklad:
+Simulovaná zařízení mohou také reagovat na volání metody. v takovém případě spouštějí určitou logiku a poskytnou určitou odpověď. Podobně jako simulace je logika metody uložena v souboru JavaScriptu a může komunikovat se stavem zařízení. Zde je příklad:
 
 ```json
 "CloudToDeviceMethods": {
@@ -263,7 +259,7 @@ Soubory JavaScriptu musí mít funkci **Main** , která přijímá dva parametry
     * **deviceModel**. Například **výtah**.
 * Objekt **stavu** , který je hodnotou vrácenou funkcí v předchozím volání. Tento stav zařízení je udržován službou simulace a používá se ke generování zpráv telemetrie.
 
-Funkce **Main** vrátí nový stav zařízení. Příklad:
+Funkce **Main** vrátí nový stav zařízení. Zde je příklad:
 
 ```JavaScript
 function main(context, state) {
@@ -520,4 +516,4 @@ Pokud vaše soubory prošly ověřením, klikněte na **Uložit** a model zaří
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce se dozvíte o souborech modelů zařízení používaných v simulaci zařízení a o tom, jak vytvořit pokročilý model zařízení. Dále můžete chtít prozkoumat, jak [použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).
+V této příručce se dozvíte o souborech modelů zařízení používaných v simulaci zařízení a o tom, jak vytvořit pokročilý model zařízení. Dále můžete chtít prozkoumat, jak [použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení](./iot-accelerators-device-simulation-time-series-insights.md).

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792049"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666363"
 ---
 # <a name="conditional-cognitive-skill"></a>Dovednost podmíněného vnímání
 
@@ -134,7 +134,7 @@ Následující výstup vytvoří anotaci ("/document/languageWithDefault"), kter
 
 ### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Ukázková dovednost definice 3: sloučení hodnot ze dvou polí do jedné
 
-V tomto příkladu mají některé věty vlastnost *frenchSentiment* . Pokaždé, když vlastnost *frenchSentiment* má hodnotu null, chceme použít hodnotu *englishSentiment* . Výstup přiřadíme členovi s názvem *mínění* ("/Document/sentiment/*/sentiment").
+V tomto příkladu mají některé věty vlastnost *frenchSentiment* . Pokaždé, když vlastnost *frenchSentiment* má hodnotu null, chceme použít hodnotu *englishSentiment* . Výstup přiřadíme členovi s názvem *mínění* ("/Document/Sentences/*/sentiment").
 
 ```json
 {

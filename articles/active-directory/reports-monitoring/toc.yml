@@ -6,6 +6,8 @@
       href: overview-reports.md
     - name: Co je sledování služby Azure AD?
       href: overview-monitoring.md
+    - name: Co je diagnostika přihlašování?
+      href: overview-sign-in-diagnostics.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -31,16 +33,18 @@
       href: plan-monitoring-and-reporting.md
     - name: Protokoly auditu
       href: concept-audit-logs.md
+    - name: Nové protokoly přihlašování – náhled
+      href: concept-all-sign-ins.md
     - name: Protokoly přihlašování
       href: concept-sign-ins.md
     - name: Sestava přehledů a využití
       href: concept-usage-insights-report.md
     - name: Riziková přihlášení
-      href: concept-risky-sign-ins.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Detekce rizik
-      href: concept-risk-events.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Ohrožení uživatelé
-      href: concept-user-at-risk.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Protokoly zřizování
       href: concept-provisioning-logs.md
     - name: Rozhraní API pro generování sestav
@@ -94,9 +98,9 @@
     - name: Rutiny Azure AD PowerShellu pro vytváření sestav
       href: reference-powershell-reporting.md
     - name: Referenční informace k rozhraní API protokolů auditu
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
+      href: /graph/api/resources/directoryaudit
     - name: Referenční informace k rozhraní API protokolů přihlašování
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
+      href: /graph/api/resources/signin
     - name: Aktivity auditu
       href: reference-audit-activities.md
     - name: Zásady uchovávání dat

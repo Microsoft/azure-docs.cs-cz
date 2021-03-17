@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.custom: mvc
-ms.openlocfilehash: b5ca24a68b271c08ea7cd4196d5b8659eb0262d2
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.custom: mvc, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: f7c5dbaf30965fdd5f438f0351cfa2cd60e05b70
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367372"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746557"
 ---
 # <a name="secure-access-to-application-data"></a>Zabezpečený přístup k datům aplikací
 
@@ -31,7 +31,7 @@ Ve třetí části této série se naučíte:
 
 [Úložiště objektů blob v Azure](../common/storage-introduction.md#blob-storage) představuje robustní službu pro ukládání souborů pro aplikace. Tento kurz rozšiřuje [předchozí téma][previous-tutorial] a ukazuje, jak bezpečně přistupovat k účtu úložiště z webové aplikace. Až budete hotovi, obrázky budou šifrované a webová aplikace bude pro přístup k obrázkům miniatur používat zabezpečené tokeny SAS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid][previous-tutorial].
 
@@ -160,7 +160,7 @@ Předchozí úloha využívá následující třídy, vlastnosti a metody:
 
 [Azure Storage šifrování](../common/storage-service-encryption.md) pomáhá chránit a chránit vaše data tím, že šifruje data v klidovém prostředí a zpracovává šifrování a dešifrování. Veškerá data se šifrují pomocí 256bitového [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). To je jedna z nejsilnějších dostupných variant blokového šifrování.
 
-Můžete zvolit, aby Microsoft spravoval šifrovací klíče, nebo můžete použít vlastní klíče s klíči spravovanými zákazníky pomocí Azure Key Vault. Další informace najdete v tématu [použití klíčů spravovaných zákazníkem a Azure Key Vault ke správě šifrování Azure Storage](../common/encryption-customer-managed-keys.md).
+Můžete zvolit, aby Microsoft spravoval šifrovací klíče, nebo můžete přinášet vlastní klíče pomocí klíčů spravovaných zákazníkem, které jsou uložené v Azure Key Vault nebo Key Vault spravovaného modelu hardwarového zabezpečení (HSM) (Preview). Další informace najdete v tématu [klíče spravované zákazníkem pro Azure Storage šifrování](../common/customer-managed-keys-overview.md).
 
 Azure Storage šifrování automaticky šifruje data ve všech úrovních výkonu (Standard a Premium), všechny modely nasazení (Azure Resource Manager a klasické) a všechny Azure Storage služby (objekt blob, fronta, tabulka a soubor).
 

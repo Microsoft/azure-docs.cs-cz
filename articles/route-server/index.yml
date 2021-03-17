@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Dokumentace k serveru Azure Route
+summary: Naučte se používat Azure Route Server ke zjednodušení dynamického směrování mezi síťovými virtuálními zařízeními a vaší virtuální sítí.
+metadata:
+  title: Dokumentace k serveru Azure Route
+  description: Informace o serveru Směrování Azure
+  services: route-server
+  ms.service: route-server
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 03/02/2021
+  ms.openlocfilehash: f235d7118ce207d793c4ba03d357e2db09662c1f
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101680666"
+landingContent:
+- title: O serveru Azure Route (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Route Server (Preview)?
+      url: overview.md
+- title: Začínáme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření a konfigurace serveru Směrování – PowerShell
+      url: quickstart-configure-route-server-powershell.md
+    - text: Vytvoření a konfigurace serveru tras – CLI
+      url: quickstart-configure-route-server-cli.md
+- title: Plánování
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Podpora ExpressRoute a VPN Gateway
+      url: expressroute-vpn-support.md
+    - text: Server trasy – Nejčastější dotazy
+      url: route-server-faq.md

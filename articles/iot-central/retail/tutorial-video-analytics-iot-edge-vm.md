@@ -1,6 +1,6 @@
 ---
 title: Kurz – vytvoření instance IoT Edge analýzy videí ve službě Azure IoT Central (virtuální počítač se systémem Linux)
-description: V tomto kurzu se dozvíte, jak vytvořit instanci IoT Edge analýzy videí pro použití s šablonou aplikace pro video Analytics – objekt a pohyb.
+description: V tomto kurzu se dozvíte, jak vytvořit instanci IoT Edge analýzy videí na virtuálním počítači se systémem Linux pro použití s šablonou aplikace pro video Analytics – objekt a pohyb.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 69e5b757036a2d68fa779e3fc232cc42a034e33c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 10ddbf3dde62380eb79af685ad41b22e4552cea1
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038345"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832619"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (virtuální počítač se systémem Linux)
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, měli byste v kurzu služby [Azure IoT Central vytvořit předchozí aplikaci video Analytics](./tutorial-video-analytics-create-app.md) .
+Než začnete, měli byste dokončit předchozí [Vytvoření aplikace video Analytics v azure IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [Vytvoření analýzy videí v Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) .
 
 Budete také potřebovat předplatné Azure. Pokud předplatné Azure nemáte, můžete si ho na [stránce pro registraci k Azure](https://aka.ms/createazuresubscription)vytvořit zdarma.
 
@@ -51,15 +51,15 @@ K dokončení formuláře **vlastního nasazení** použijte informace v násled
 | Předplatné | Vyberte své předplatné Azure. |
 | Skupina prostředků | *lva-RG* – skupina prostředků, kterou jste vytvořili v předchozím kurzu. |
 | Oblast       | *East US* |
-| Předpona popisku DNS | Vyberte jedinečnou předponu DNS pro virtuální počítač. |
+| Předpona popisku DNS | Vyberte jedinečnou předponu DNS pro virtuální počítač. Musí být všechny abecední znaky, žádné číslice ani speciální znaky. |
 | Uživatelské jméno správce | *AzureUser* |
 | Heslo správce | Zadejte heslo. Poznamenejte si heslo v souboru *scratchpad.txt* , budete ho používat později. |
 | ID oboru | **ID oboru** , které jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu, když jste přidali zařízení brány. |
-| ID zařízení | *lva-Gateway – 001* – zařízení brány, které jste vytvořili v předchozím kurzu. |
-| Klíč zařízení | Primární klíč zařízení, který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu, když jste přidali zařízení brány. |
+| ID zařízení | *Brána – 001* – zařízení brány, které jste vytvořili v předchozím kurzu. |
+| Klíč zařízení | **Primární klíč zařízení** , který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu, když jste přidali zařízení brány. |
 | Hostitel aplikace IoT Central | **Adresa URL aplikace** , kterou jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu. Například *Traders.azureiotcentral.com*. |
-| Token API aplikace IoT Central | Token rozhraní API pro operátora, na který jste si poznamenali v předchozím kurzu. |
-| Klíč pro zřizování zařízení IoT Central | Token sdíleného přístupového podpisu primární skupiny jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu. |
+| Token API aplikace IoT Central | **Token rozhraní API pro operátora** , který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu. |
+| Klíč pro zřizování zařízení IoT Central | **Primární klíč skupiny SAS-IoT-Devices** , který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu. |
 | Velikost virtuálního počítače | *Standard_DS1_v2* |
 | Verze operačního systému Ubuntu | *18,04 – LTS* |
 | Umístění | *[resourceName (). Location]* |
@@ -94,7 +94,7 @@ Nasazení nakonfigurovali následující pět modulů IoT Edge ke spuštění:
 
 Nasazení vytvořilo vlastní IoT Edge prostředí s požadovanými moduly pro Live video Analytics. Nasazení aktualizovalo výchozí **config. yaml** , aby se zajistilo, že modul runtime IoT Edge používal službu IoT Device Provisioning pro připojení k IoT Central. Nasazení také vytvořilo soubor s názvem **state.js** ve složce **/Data/Storage** , aby poskytoval další konfigurační data modulům. Další informace najdete v kurzu [vytvoření instance IoT Edge pro video Analytics (Intel NUC)](./tutorial-video-analytics-iot-edge-nuc.md) .
 
-Řešení potíží se zařízením s IoT Edge najdete v tématu [řešení potíží s IoT Edge zařízením](https://docs.microsoft.com/azure/iot-edge/troubleshoot) .
+Řešení potíží se zařízením s IoT Edge najdete v tématu [řešení potíží s IoT Edge zařízením](../../iot-edge/troubleshoot.md) .
 
 ## <a name="use-the-rtsp-simulator"></a>Použití simulátoru RTSP
 
@@ -118,6 +118,14 @@ sudo docker ps
 ```
 
 Seznam obsahuje kontejner nazvaný **LIVE555**.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste s aplikací hotoví, můžete odebrat všechny prostředky, které jste vytvořili následujícím způsobem:
+
+1. V aplikaci IoT Central přejděte na stránku **aplikace** v části **Správa** . Vyberte **Odstranit**.
+1. V Azure Portal odstraňte skupinu prostředků **lva-RG** .
+1. V místním počítači zastavte kontejner Docker pro **amp Viewer** .
 
 ## <a name="next-steps"></a>Další kroky
 

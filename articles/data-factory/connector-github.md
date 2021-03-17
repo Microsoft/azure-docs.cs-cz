@@ -3,16 +3,15 @@ title: Připojit ke GitHubu
 description: Použití GitHubu k zadání odkazů na entity modelu Common data model
 author: djpmsft
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: daperlov
-ms.openlocfilehash: 0e17580524d6a67934aed83c6f745583b92e2422
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d555d7bc4d3aae9c016cacbe17b68c30859d99a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771032"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372276"
 ---
 # <a name="use-github-to-read-common-data-model-entity-references"></a>Použití GitHubu ke čtení odkazů na entity modelu Common data model
 
@@ -24,7 +23,7 @@ Konektor GitHub v Azure Data Factory slouží pouze k přijetí schématu odkazu
 
 Pro propojenou službu GitHubu jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na **GitHub**. | ano
 | userName | Uživatelské jméno GitHubu | ano |

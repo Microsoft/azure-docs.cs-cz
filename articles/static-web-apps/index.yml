@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Static Web Apps
-summary: Služba Azure Static Web Apps umožňuje vytvářet webové aplikace v JavaScriptu, které se automaticky publikují ze změn provedených na GitHubu.
+summary: Služba Azure Static Web Apps umožňuje vytvářet moderní webové aplikace, které se automaticky publikují ze změn provedených na GitHubu.
 metadata:
   title: Dokumentace ke službě Azure Static Web Apps
-  description: Služba Azure Static Web Apps umožňuje vytvářet webové aplikace v JavaScriptu, které se automaticky publikují ze změn provedených na GitHubu.
+  description: Služba Azure Static Web Apps umožňuje vytvářet moderní webové aplikace, které se automaticky publikují ze změn provedených na GitHubu.
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 04/09/2020
-  ms.openlocfilehash: f70a746c948038b5bd67f4645e8dbd3df71b8b8a
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-  ms.translationtype: HT
+  ms.date: 12/08/2020
+  ms.openlocfilehash: e2673a6e642edf5e8769f0d848fc1d4516aca5d2
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86528651"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102617416"
 landingContent:
 - title: Informace o službě Static Web Apps
   linkLists:
@@ -36,8 +36,10 @@ landingContent:
       url: ./getting-started.md?tabs=vanilla-javascript
   - linkListType: learn
     links:
-    - text: Publikování rozhraní API a javascriptové aplikace v Angularu, Reactu, Svelte nebo Vue
+    - text: Publikování javascriptové aplikace v Angularu, Reactu, Svelte nebo Vue
       url: /learn/modules/publish-app-service-static-web-app-api
+    - text: Publikování rozhraní API
+      url: /learn/modules/publish-static-web-app-api-preview-url
   - linkListType: video
     links:
     - text: Sestavení a nasazení statické webové aplikace
@@ -54,14 +56,20 @@ landingContent:
       url: publish-vuepress.md
     - text: Publikování z Jekylla
       url: publish-jekyll.md
+    - text: Nasazení z Blazoru
+      url: deploy-blazor.md
     - text: Nasazení z Next.js
       url: deploy-nextjs.md
     - text: Nasazení z Nuxt.js
       url: deploy-nuxtjs.md
+    - text: Nasazení z Blazoru
+      url: deploy-blazor.md
   - linkListType: learn
     links:
     - text: Publikování statické webové aplikace s využitím Gatsby
       url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - text: Publikování statické webové aplikace s využitím Blazoru
+      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
 - title: Klíčové koncepty
   linkLists:
   - linkListType: concept

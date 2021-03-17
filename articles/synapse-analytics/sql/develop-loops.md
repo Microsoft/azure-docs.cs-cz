@@ -1,6 +1,6 @@
 ---
 title: Použití smyček T-SQL
-description: Tipy pro použití smyček T-SQL, výměna kurzorů a vývoj souvisejících řešení s fondem SQL ve synapse SQL.
+description: Tipy pro použití smyček T-SQL, výměna kurzorů a vývoj souvisejících řešení pomocí synapse SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,23 +10,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0d83e1305a851bf6bafb6c4c79f5caf73f8e44b6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495297"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120882"
 ---
-# <a name="use-t-sql-loops-in-synapse-sql"></a>Použití smyček T-SQL v synapse SQL
-Tento článek vám poskytne základní tipy pro používání smyček T-SQL, nahrazení kurzorů a vývoj souvisejících řešení s fondem SQL ve synapse SQL.
+# <a name="use-t-sql-loops-with-synapse-sql-in-azure-synapse-analytics"></a>Použití smyček T-SQL s synapse SQL ve službě Azure synapse Analytics
+
+Tento článek poskytuje základní tipy pro používání smyček T-SQL, nahrazování kurzorů a vývoj souvisejících řešení pomocí synapse SQL.
 
 ## <a name="purpose-of-while-loops"></a>Účel smyčky WHILe
 
-Synapse SQL podporuje smyčku [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK. 
+Synapse SQL podporuje smyčku [while](/sql/t-sql/language-elements/while-transact-sql?preserve-view=true&view=sql-server-ver15) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK. 
 
-Smyčky ve fondu SQL jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Takže smyčky [WHILe] jsou skvělou alternativou pro nahrazování kurzorů.
+Smyčky v synapse SQL jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Takže zatímco smyčky jsou skvělou alternativou pro nahrazování kurzorů.
 
-## <a name="replace-cursors-in-sql-pool"></a>Nahrazení kurzorů ve fondu SQL
+## <a name="replace-cursors-in-synapse-sql"></a>Nahrazení kurzorů v synapse SQL
 
 Před začnete v je třeba zvážit následující otázku: "Chcete-li tento kurzor přepsat, aby používal operace založené na nastavení?" V mnoha případech je odpověď ano a často se jedná o nejlepší přístup. Operace založená na sadě se často provádí rychleji než iterativní, řádek po řádku.
 

@@ -3,12 +3,12 @@ title: Spuštění rychlého úkolu se šablonou
 description: Zařazení spuštění úlohy ACR do fronty pro sestavení Image pomocí šablony Azure Resource Manager
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927764"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916061"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Spouštění úloh ACR pomocí šablon Správce prostředků
 
@@ -48,7 +48,7 @@ V tomto příkladu zadejte hodnoty pro následující parametry šablony:
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
-Nasaďte šablonu pomocí příkazu [AZ Deployment Group Create][az-deployment-group-create] . Tento příklad sestaví a vloží do registru s názvem *mycontainerregistry*obrázek *typu HelloWorld-Node: TestRun* .
+Nasaďte šablonu pomocí příkazu [AZ Deployment Group Create][az-deployment-group-create] . Tento příklad sestaví a vloží do registru s názvem *mycontainerregistry* obrázek *typu HelloWorld-Node: TestRun* .
 
 ```azurecli
 az deployment group create \
@@ -58,7 +58,7 @@ az deployment group create \
     registryName=mycontainerregistry \
     repository=helloworld-node \
     taskRunName=testrun \
-    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
  ```
 
 Předchozí příkaz předává parametry na příkazovém řádku. V případě potřeby je předejte do [souboru parametrů](../azure-resource-manager/templates/parameter-files.md).
@@ -112,8 +112,8 @@ Výstup zobrazuje protokol spuštění úlohy.
 Můžete také zobrazit protokol spuštění úlohy v Azure Portal. 
 
 1. Přejděte do registru kontejneru.
-2. V části **služby**vyberte **Tasks**možnost  >  **spuštěné**úlohy.
-3. V tomto případě *CA1*vyberte ID běhu. 
+2. V části **služby** vyberte možnost  >  **spuštěné** úlohy.
+3. V tomto případě *CA1* vyberte ID běhu. 
 
 Portál zobrazuje protokol spuštění úlohy.
 
@@ -187,12 +187,12 @@ V tomto příkladu zadejte hodnoty pro následující parametry šablony:
 |userAssignedIdentity |ID prostředku povoleného uživatelem přiřazené identity v úloze|
 |customRegistryIdentity | ID klienta povolené identity přiřazené uživatelem v úloze, která se používá k ověřování pomocí vlastního registru |
 |customRegistry |Název přihlašovacího serveru vlastního registru, ke kterému v úloze přistupoval, například *mybaseregistry.azurecr.IO*|
-|sourceLocation     |Vzdálený kontext pro úlohu sestavení, například * https://github.com/ \<your-GitHub-ID\> /ACR-Build-HelloWorld-Node.* |
+|sourceLocation     |Vzdálený kontext pro úlohu sestavení, například *https://github.com/ \<your-GitHub-ID\> /ACR-Build-HelloWorld-Node.* |
 |dockerFilePath | Cesta k souboru Dockerfile ve vzdáleném kontextu, která se používá k sestavení image. |
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
-Nasaďte šablonu pomocí příkazu [AZ Deployment Group Create][az-deployment-group-create] . Tento příklad sestaví a vloží do registru s názvem *mycontainerregistry*obrázek *typu HelloWorld-Node: TestRun* . Základní Image je načítána z *mybaseregistry.azurecr.IO*.
+Nasaďte šablonu pomocí příkazu [AZ Deployment Group Create][az-deployment-group-create] . Tento příklad sestaví a vloží do registru s názvem *mycontainerregistry* obrázek *typu HelloWorld-Node: TestRun* . Základní Image je načítána z *mybaseregistry.azurecr.IO*.
 
 ```azurecli
 az deployment group create \
@@ -204,7 +204,7 @@ az deployment group create \
     taskRunName=basetask \
     userAssignedIdentity=$resourceID \
     customRegistryIdentity=$clientID \
-    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git \
+    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git#main \
     dockerFilePath=Dockerfile-test \
     customRegistry=mybaseregistry.azurecr.io
 ```

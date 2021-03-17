@@ -11,22 +11,27 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 862a7f6c31df7395fe225cf89ad83425e917394e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d1fcac891db240def2e7bbdcb45b45caf7f49a82
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169980"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341899"
 ---
 # <a name="search-for-gif-images"></a>Hledání obrázků GIF 
 
-Rozhraní API Bingu pro vyhledávání obrázků vám umožní vyhledávat také v celém webu pro nejrelevantnější image. gif.Vývojáři mohou integrovat poutavé soubory GIF v různých scénářích konverzace. 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
+Rozhraní API Bingu pro vyhledávání obrázků vám umožní vyhledávat také v celém webu pro nejrelevantnější image. gif.  Vývojáři mohou integrovat poutavé soubory GIF v různých scénářích konverzace. 
 
 Následující adresa URL je dotaz pro animované obrázky. gif.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-Parametr [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) určuje hledané výrazy.  Předchozí dotaz také určuje `animatedGif` použití parametru filtru [ImageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) .
+Parametr [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) určuje hledané výrazy.  Předchozí dotaz také určuje `animatedGif` použití parametru filtru [ImageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) .
 
 Chcete-li zobrazit příklady výsledků, použijte následující adresu URL pro hledání bing.com.
 ```
@@ -35,27 +40,27 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 ```
 ## <a name="query-parameters"></a>Parametry dotazů
 
-Další informace o parametrech a parametrech dotazů naleznete v tématu [Reference k rozhraní vyhledávání obrázků API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters). V příkladu nadpisu se používá příklad, [kde můžete najít animovaný GIF pomocí jazyka Java](#gifExample).
+Další informace o parametrech a parametrech dotazů naleznete v tématu [Reference k rozhraní vyhledávání obrázků API](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters). V příkladu nadpisu se používá příklad, [kde můžete najít animovaný GIF pomocí jazyka Java](#gifExample).
 
 ## <a name="tips-and-suggestions"></a>Tipy a návrhy
 
-- Můžete zadat parametry [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) a [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) . Doporučujeme nastavit maxFileSize = 2000000 jako většinu GIF v našem indexu pod 2 MB.  Také pomáhá řídit velikost dat v případě, že se jedná o problém, jako je například v mobilním mobilním scénáři.
+- Můžete zadat parametry [maxFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) a [minFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) . Doporučujeme nastavit maxFileSize = 2000000 jako většinu GIF v našem indexu pod 2 MB.  Také pomáhá řídit velikost dat v případě, že se jedná o problém, jako je například v mobilním mobilním scénáři.
 - Aby bylo možné zvýšit výkon, napřed načtením zdrojové adresy URL nejprve načtěte miniaturu.  
 - Pro prostředí pro první spuštění nebo cílovou stránku, kde ještě nemáte dotaz na uživatele, zkuste použít naše vývojové hledání ve formátu GIF a pomoci z [rozhraní API pro vývojové obrázky](trending-images.md).
-- Pro parametr [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) existují tři nastavení.  `strict`Možnost blokuje obsah pro dospělé.
-- Úplný seznam jazyků a umístění, která jsou podporovaná, najdete v tématu [MKT](supported-countries-markets.md) .
+- Pro parametr [bezpečné hledání](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) existují tři nastavení.  `strict`Možnost blokuje obsah pro dospělé.
+- Úplný seznam jazyků a umístění, která jsou podporovaná, najdete v tématu [MKT](./language-support.md) .
 - *AnimatedGifHttps* vrátí pouze animované obrázky GIF, které jsou z adresy https. V případě zabezpečení mnoho aplikací vyžaduje připojení k externím webovým odkazům přes protokol HTTPS. Například App Store společnosti Apple vyžaduje připojení k webovým službám přes protokol HTTPS, která šifruje data uživatelů během přenosu.
 
 <a name="gifExample"></a>
 
 ## <a name="example-search-for-animated-gif-using-java"></a>Příklad hledání animovaného formátu GIF pomocí jazyka Java
 
-Následující adresa URL vyhledává animované obrázky GIF:`q=interesting`
+Následující adresa URL vyhledává animované obrázky GIF: `q=interesting`
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
 ```
-Jak je znázorněno v následujícím příkladu, dotaz URL vyžaduje hlavičku [OCP-APIM-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) .
+Jak je znázorněno v následujícím příkladu, dotaz URL vyžaduje hlavičku [OCP-APIM-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) .
 
 Následující příklad Java sestaví a odešle požadavek.
 

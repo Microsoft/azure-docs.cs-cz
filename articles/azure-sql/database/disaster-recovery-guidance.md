@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
-ms.openlocfilehash: c6f766dcf69b398aea0978f42f5094809a3e2f6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 322ef3b8ca30396bd4772850ff651f7545a21257
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84050412"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580746"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Obnovení Azure SQL Database nebo převzetí služeb při selhání sekundárním
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,7 +62,7 @@ Operace obnovení má vliv na aplikaci. Vyžaduje změnu připojovacího řetěz
 
 V závislosti na vaší tolerance vaší aplikace na výpadky a možné obchodní odpovědnosti můžete zvážit následující možnosti obnovení.
 
-K získání nejnovějšího geograficky replikovaného bodu obnovení použijte [databázi Get obnovitelné databáze](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*).
+K získání nejnovějšího geograficky replikovaného bodu obnovení použijte [databázi Get obnovitelné databáze](/previous-versions/azure/reference/dn800985(v=azure.100)) (*LastAvailableBackupDate*).
 
 ## <a name="wait-for-service-recovery"></a>Počkat na obnovení služby
 
@@ -109,7 +109,7 @@ Musíte zajistit, aby všechny přihlašovací údaje, které vaše aplikace pou
 
 Musíte zajistit, aby byla stávající nastavení pravidla upozornění aktualizována tak, aby se namapovala na obnovenou databázi a na jiný server.
 
-Další informace o pravidlech upozornění databáze najdete v tématu [příjem oznámení o výstrahách](../../azure-monitor/platform/alerts-overview.md) a [sledování Service Health](../../service-health/service-notifications.md).
+Další informace o pravidlech upozornění databáze najdete v tématu [příjem oznámení o výstrahách](../../azure-monitor/alerts/alerts-overview.md) a [sledování Service Health](../../service-health/service-notifications.md).
 
 ### <a name="enable-auditing"></a>Povolit auditování
 

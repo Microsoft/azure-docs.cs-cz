@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006589"
 ---
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 Vytvoření účtu NetApp umožňuje nastavit fond kapacity a následně vytvořit svazek. K vytvoření nového účtu NetApp se používá okno Azure NetApp Files.
@@ -29,9 +29,9 @@ Je nutné, abyste obdrželi e-mail od Azure NetApp Files týmu potvrzujícího, 
 
 Musíte taky zaregistrovat předplatné pro používání poskytovatele prostředků NetApp. Viz [registrace poskytovatele prostředků NetApp](azure-netapp-files-register.md#resource-provider).
 
-## <a name="steps"></a>Kroky 
+## <a name="steps"></a>Postup 
 
-1. Přihlaste se k portálu Azure. 
+1. Přihlaste se k webu Azure Portal. 
 2. Přejděte do okna Azure NetApp Files pomocí jedné z následujících metod:  
    * Vyhledejte **Azure NetApp Files** ve vyhledávacím poli webu Azure Portal.  
    * Klikněte na **Všechny služby** v navigaci a potom filtrujte Azure NetApp Files.  

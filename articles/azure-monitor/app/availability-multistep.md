@@ -2,13 +2,13 @@
 title: Monitorování pomocí multi-step web Tests – Azure Application Insights
 description: Nastavení webových testů s více kroky pro monitorování webových aplikací s využitím Azure Application Insights
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 02/14/2021
+ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024769"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719844"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 
@@ -37,11 +37,11 @@ Pro vyhledání požadovaných testovacích nástrojů. Spusťte **instalační 
 > [!WARNING]
 > Nedoporučujeme používat nahrávání více kroků. Zapisovač byl vyvinut pro statické stránky HTML se základními interakcemi a neposkytuje funkční prostředí pro moderní webové stránky.
 
-Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální dokumentaci k sadě Visual studio 2019](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
+Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální dokumentaci k sadě Visual studio 2019](/visualstudio/test/how-to-create-a-web-service-test).
 
 ## <a name="upload-the-web-test"></a>Nahrát webový test
 
-1. Na portálu Application Insights v podokně dostupnost vyberte **vytvořit test**test  >  **typu**  >  **multi-step Web test**.
+1. Na portálu Application Insights v podokně dostupnost vyberte **vytvořit test** test  >  **typu**  >  **multi-step Web test**.
 
 2. Nastavte umístění testu, četnost a parametry výstrahy.
 
@@ -65,7 +65,6 @@ Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální
 |Nastavení| Vysvětlení
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
-|**Klasický** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
 |**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota pro umístění upozornění**  =  **v umístění testovacích umístění – 2, minimálně pět umístění testu.**|
 
 ## <a name="configuration"></a>Konfigurace
@@ -139,7 +138,7 @@ Porovnáním různých relací identifikujte token předaný zpět z webu ověř
 Uložte webový test pomocí sady Visual Studio.
 Parametrizujte tokeny, nastavte parametr při vrácení tokenu z ověřovatele a použijte ho v dotazu na web. (Sada Visual Studio se pokusí o parametrizaci testu, ale nebude tokeny parametrizovat správně.)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 

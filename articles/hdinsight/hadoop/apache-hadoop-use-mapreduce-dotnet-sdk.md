@@ -1,19 +1,16 @@
 ---
 title: Odeslání úloh MapReduce pomocí sady HDInsight .NET SDK – Azure
 description: Naučte se odesílat MapReduce úlohy do Azure HDInsight Apache Hadoop pomocí sady HDInsight .NET SDK.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: c165663e19037bd2ebac410adb6b6d05fcc162e6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8fbcb66be11c7c77a9bfaf0e6ec790622dcbbda7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076347"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932186"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Spouštění úloh MapReduce pomocí sady HDInsight .NET SDK
 
@@ -169,10 +166,10 @@ Po úspěšném dokončení úlohy aplikace vytiskne obsah výstupního souboru 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o několika způsobech, jak vytvořit cluster HDInsight. Další informace najdete v následujících článcích:
+V tomto článku jste se dozvěděli o několika způsobech, jak vytvořit cluster HDInsight. Další informace najdete v těchto článcích:
 
 * Informace o odeslání úlohy podregistru najdete v tématu [spuštění dotazů Apache Hive pomocí sady HDInsight .NET SDK](apache-hadoop-use-hive-dotnet-sdk.md).
 * Informace o vytváření clusterů HDInsight najdete [v tématu Vytvoření clusterů Apache Hadoop se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 * Informace o správě clusterů HDInsight najdete v tématu [správa Apache Hadoop clusterů ve službě HDInsight](../hdinsight-administer-use-portal-linux.md).
-* Výukovou sadu SDK pro HDInsight .NET najdete v tématu Referenční informace k [sadě HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+* Výukovou sadu SDK pro HDInsight .NET najdete v tématu Referenční informace k [sadě HDInsight .NET SDK](/dotnet/api/overview/azure/hdinsight).
 * V případě neinteraktivního ověřování v Azure, přečtěte si téma [Vytvoření aplikací .NET HDInsight, které neumožňují interaktivní ověřování](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).

@@ -2,14 +2,15 @@
 title: Sledování vlastních operací pomocí sady Azure Application Insights .NET SDK
 description: Sledování vlastních operací pomocí sady Azure Application Insights .NET SDK
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320370"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88933303"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
 
@@ -213,7 +214,7 @@ Můžete taky chtít korelovat ID operace Application Insights s ID žádosti ú
 #### <a name="enqueue"></a>Zařazování
 Vzhledem k tomu, že fronty úložiště podporují rozhraní API protokolu HTTP, jsou všechny operace s frontou automaticky sledovány Application Insights. V mnoha případech by měla být tato instrumentace dostatečná. Chcete-li však korelovat trasování na straně spotřebitele pomocí trasování od výrobce, je nutné předat nějaký kontext korelace podobně jako v protokolu HTTP pro korelaci. 
 
-Tento příklad ukazuje, jak sledovat `Enqueue` operaci. Další možnosti:
+Tento příklad ukazuje, jak sledovat `Enqueue` operaci. Můžete:
 
  - **Korelace pokusů (pokud existují)**: všichni mají jednu společnou nadřazenou položku, která je `Enqueue` operace. V opačném případě jsou sledovány jako podřízené položky příchozího požadavku. Pokud fronta obsahuje více logických požadavků, může být obtížné zjistit, které volání vedlo k opakovaným pokusům.
  - **Korelace protokolů úložiště (Pokud je potřeba a v případě potřeby)**: jsou ve vztahu k Application Insights telemetrie.
@@ -347,9 +348,9 @@ Při odstraňování zprávy instrumentace se ujistěte, že jste nastavili iden
 ### <a name="dependency-types"></a>Typy závislostí
 
 Application Insights používá typ závislosti k přizpůsobení prostředí uživatelského rozhraní. Pro fronty rozpoznává následující typy `DependencyTelemetry` , které zlepšují [prostředí diagnostiky transakcí](./transaction-diagnostics.md):
-- `Azure queue`pro Azure Storage fronty
-- `Azure Event Hubs`pro Azure Event Hubs
-- `Azure Service Bus`pro Azure Service Bus
+- `Azure queue` pro Azure Storage fronty
+- `Azure Event Hubs` pro Azure Event Hubs
+- `Azure Service Bus` pro Azure Service Bus
 
 ### <a name="batch-processing"></a>Dávkové zpracování
 U některých front můžete vyřadit více zpráv s jednou žádostí. Zpracování takových zpráv je pravděpodobně nezávislé a patří do různých logických operací. Tuto operaci není možné korelovat `Dequeue` s konkrétní zpracovávanou zprávou.
@@ -388,7 +389,7 @@ async Task BackgroundTask()
 }
 ```
 
-V tomto příkladu `telemetryClient.StartOperation` vytvoří `DependencyTelemetry` a vyplní kontext korelace. Řekněme, že máte nadřazenou operaci, která byla vytvořena pomocí příchozích požadavků, které naplánovaly operaci. Pokud se `BackgroundTask` spustí ve stejném asynchronním toku řízení jako příchozí požadavek, je koreluje s touto nadřazenou operací. `BackgroundTask`a všechny vnořené položky telemetrie jsou automaticky korelační s požadavkem, který ji způsobil, i po ukončení žádosti.
+V tomto příkladu `telemetryClient.StartOperation` vytvoří `DependencyTelemetry` a vyplní kontext korelace. Řekněme, že máte nadřazenou operaci, která byla vytvořena pomocí příchozích požadavků, které naplánovaly operaci. Pokud se `BackgroundTask` spustí ve stejném asynchronním toku řízení jako příchozí požadavek, je koreluje s touto nadřazenou operací. `BackgroundTask` a všechny vnořené položky telemetrie jsou automaticky korelační s požadavkem, který ji způsobil, i po ukončení žádosti.
 
 Když se úloha spustí z vlákna na pozadí, ke kterému není přidružena žádná operace ( `Activity` ), nemá `BackgroundTask` žádnou nadřazenou položku. Může ale mít vnořené operace. Všechny položky telemetrie hlášené z úlohy jsou ve vztahu k `DependencyTelemetry` vytvořenému v `BackgroundTask` .
 
@@ -429,7 +430,7 @@ Operace disposing způsobí zastavení operace, takže ji můžete použít mís
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Paralelní zpracování a sledování operací
 
-`StopOperation`zastaví pouze operaci, která byla spuštěna. Pokud aktuální běžící operace neodpovídá hodnotě, kterou chcete zastavit, `StopOperation` neprovede nic. K této situaci může dojít, Pokud zahájíte paralelní spouštění více operací ve stejném kontextu spuštění:
+`StopOperation` zastaví pouze operaci, která byla spuštěna. Pokud aktuální běžící operace neodpovídá hodnotě, kterou chcete zastavit, `StopOperation` neprovede nic. K této situaci může dojít, Pokud zahájíte paralelní spouštění více operací ve stejném kontextu spuštění:
 
 ```csharp
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
@@ -469,11 +470,11 @@ public async Task RunAllTasks()
 ```
 
 ## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>Operace ApplicationInsights vs System. Diagnostics. Activity
-`System.Diagnostics.Activity`představuje kontext distribuovaného trasování a je používán architekturami a knihovnami k vytvoření a rozšíření kontextu uvnitř a vně procesu a korelaci položek telemetrie. Aktivita spolupracuje s `System.Diagnostics.DiagnosticSource` mechanismem oznámení mezi architekturou/knihovnou a oznamuje o zajímavých událostech (příchozí nebo odchozí požadavky, výjimky atd.).
+`System.Diagnostics.Activity` představuje kontext distribuovaného trasování a je používán architekturami a knihovnami k vytvoření a rozšíření kontextu uvnitř a vně procesu a korelaci položek telemetrie. Aktivita spolupracuje s `System.Diagnostics.DiagnosticSource` mechanismem oznámení mezi architekturou/knihovnou a oznamuje o zajímavých událostech (příchozí nebo odchozí požadavky, výjimky atd.).
 
 Aktivity jsou občany první třídy v Application Insights a Automatická závislost a shromažďování žádostí se na ně spoléhá i s `DiagnosticSource` událostmi. Pokud ve své aplikaci vytvoříte aktivitu – nebude to mít za následek vytvoření telemetrie Application Insights. Application Insights musí přijímat události DiagnosticSource a znát názvy událostí a datové části pro překlad aktivity do telemetrie.
 
-Každá operace Application Insights (požadavek nebo závislost) zahrnuje `Activity` – při `StartOperation` volání funkce se vytvoří aktivita pod ní. `StartOperation`je doporučeným způsobem, jak ručně sledovat telemetrií požadavků nebo závislostí, a zajistit, aby vše bylo korelujé.
+Každá operace Application Insights (požadavek nebo závislost) zahrnuje `Activity` – při `StartOperation` volání funkce se vytvoří aktivita pod ní. `StartOperation` je doporučeným způsobem, jak ručně sledovat telemetrií požadavků nebo závislostí, a zajistit, aby vše bylo korelujé.
 
 ## <a name="next-steps"></a>Další kroky
 

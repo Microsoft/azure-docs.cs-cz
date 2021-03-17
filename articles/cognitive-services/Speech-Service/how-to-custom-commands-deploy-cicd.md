@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: f4dde6831902c0d15d5f985208e382963125d200
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 686e342eb68e2e5c97bdbae9cd11bdff5819b5d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307548"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927596"
 ---
-# <a name="continuous-deployment-with-azure-devops"></a>Průběžné nasazování pomocí Azure DevOps
+# <a name="continuous-deployment-with-azure-devops"></a>Průběžné nasazování s využitím Azure DevOps
 
 V tomto článku se dozvíte, jak nastavit průběžné nasazování pro aplikace s vlastními příkazy. K dispozici jsou skripty pro podporu pracovního postupu CI/CD.
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak nastavit průběžné nasazování pro aplikac
 > [!div class = "checklist"]
 > * Aplikace pro vlastní příkazy pro vývoj (vývoj)
 > * Vlastní aplikace příkazů pro produkci (PROD)
-> * Zaregistrujte se [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
+> * Zaregistrujte se [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up)
 
 ## <a name="exportimportpublish"></a>Export/Import/publikování
 
@@ -72,7 +72,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
 1. Všimněte si, že tyto skripty předpokládají, že používáte oblast, v opačném `westus2` případě neaktualizují argumenty úkolů odpovídajícím způsobem.
 
     > [!div class="mx-imgBorder"]
-    > ![Datová část aktivity odeslání](media/custom-commands/cicd-new-pipeline-yaml.png)
+    > ![Snímek obrazovky, který zvýrazní hodnotu oblasti v argumentech.](media/custom-commands/cicd-new-pipeline-yaml.png)
 
 1. V tlačítku Uložit a spustit otevřete rozevírací seznam a klikněte na Uložit.
 
@@ -83,7 +83,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
 1. V pravém horním rohu vedle tlačítka Spustit vyberte **proměnné**. Klikněte na **Nová proměnná**.
 1. Přidejte tyto proměnné:
     
-    | Proměnná | Description |
+    | Proměnná | Popis |
     | ------- | --------------- | ----------- |
     | SourceAppId | ID aplikace pro vývojáře |
     | TargetAppId | ID aplikace VÝROBNÍho programu |
@@ -99,7 +99,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
 
 ## <a name="deploy-from-source-code"></a>Nasazení ze zdrojového kódu
 
-V případě, že chcete zachovat definici aplikace v úložišti, poskytujeme skripty pro nasazení ze zdrojového kódu. Vzhledem k tomu, že se skripty nacházejí v bash a používáte Windows, budete muset nainstalovat [subsystém Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+V případě, že chcete zachovat definici aplikace v úložišti, poskytujeme skripty pro nasazení ze zdrojového kódu. Vzhledem k tomu, že se skripty nacházejí v bash a používáte Windows, budete muset nainstalovat [subsystém Linux](/windows/wsl/install-win10).
 
 Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní příkazy](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/custom-commands). Naklonujte skripty v adresáři bash do svého úložiště. Ujistěte se, že jste zachovali stejnou cestu.
 
@@ -110,7 +110,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Arguments | Description |
+    | Argumenty | Popis |
     | ------- | --------------- | ----------- |
     | oblast | oblast aplikace, například westus2. |
     | subscriptionkey | klíč předplatného prostředku řeči |
@@ -159,7 +159,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
 1. V pravém horním rohu vedle tlačítka Spustit vyberte **proměnné**. Klikněte na **Nová proměnná**.
 1. Přidejte tyto proměnné:
 
-    | Proměnná | Description |
+    | Proměnná | Popis |
     | ------- | --------------- | ----------- |
     | TargetAppId | ID aplikace VÝROBNÍho programu |
     | SubscriptionKey | Klíč předplatného použitý pro obě aplikace |

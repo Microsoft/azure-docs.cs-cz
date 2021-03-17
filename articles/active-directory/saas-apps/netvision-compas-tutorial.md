@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f92ff60dacd78687207c7523504182521700a7b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 423ac882c81582f2843eeba37d11c660662ad6e2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554494"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519397"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s compasem Netvision
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Netvision COMPAS s Azure Active Direct
 * Umožněte uživatelům, aby se automaticky přihlásili k Netvision COMPAS s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * NetVision COMPAS podporuje **SP a IDP** iniciované jednotné přihlašování.
-* Po nakonfigurování Netvision COMPAS můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po nakonfigurování Netvision COMPAS můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 
 ## <a name="adding-netvision-compas-from-the-gallery"></a>Přidání Netvision COMPAS z Galerie
@@ -49,15 +49,15 @@ Pokud chcete nakonfigurovat integraci Netvision COMPAS do služby Azure AD, mus�
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Netvision COMPAS** .
 1. Z panelu výsledků vyberte **Netvision COMPAS** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netvision-compas"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Netvision COMPAS
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Netvision COMPAS s použitím testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Netvision COMPAS.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Netvision COMPAS s použitím testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Netvision COMPAS.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s Netvision COMPAS, dokončete následující stavební bloky:
 
@@ -72,8 +72,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s Ne
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **COMPAS Netvision** najděte část **Správa** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **COMPAS Netvision** najděte část **Správa** a vyberte **jednotné přihlašování** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -101,25 +101,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Netvision COMPAS.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte možnost **Netvision COMPAS**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte možnost **Netvision COMPAS** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -129,12 +129,12 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-netvision-compas-sso"></a>Konfigurace jednotného přihlašování Netvision COMPAS
 
-V této části povolíte jednotné přihlašování SAML v **Netvision COMPAS**.
+V této části povolíte jednotné přihlašování SAML v **Netvision COMPAS** .
 1. Přihlaste se k **Netvision COMPAS** pomocí účtu správce a přihlaste se k oblasti pro správu.
 
     ![Oblast pro správu](media/netvision-compas-tutorial/admin.png)
 
-1. Vyhledejte položku **Systémová** oblast a vyberte možnost **Zprostředkovatelé identity**.
+1. Vyhledejte položku **Systémová** oblast a vyberte možnost **Zprostředkovatelé identity** .
 
     ![Zprostředkovatelů identity správce](media/netvision-compas-tutorial/admin-idps.png)
 
@@ -142,11 +142,11 @@ V této části povolíte jednotné přihlašování SAML v **Netvision COMPAS**
 
     ![Přidat IDP](media/netvision-compas-tutorial/idps-add.png)
 
-1. Jako **Typ poskytovatele**vyberte **SAML** .
+1. Jako **Typ poskytovatele** vyberte **SAML** .
 1. Zadejte smysluplné hodnoty pro pole **Zobrazovaný název** a **Popis** .
 1. Přiřaďte uživatele **Netvisione COMPAS** k IDP tak, že vyberete ze seznamu **dostupných uživatelů** a pak vyberete tlačítko **Přidat vybrané** . Uživatelům se dá IDP přiřazovat taky během procesu zřizování.
 1. Pro možnost SAML **metadat** klikněte na tlačítko **zvolit soubor** a vyberte soubor metadat, který jste v počítači dříve uložili.
-1. Klikněte na **Uložit**.
+1. Klikněte na **Uložit** .
 
     ![Upravit IDP](media/netvision-compas-tutorial/idp-edit.png)
 
@@ -167,29 +167,29 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD.
 
 ### <a name="using-the-access-panel-idp-initiated"></a>Použití přístupového panelu (IDP inicied).
 
-Když na přístupovém panelu kliknete na dlaždici Netvision COMPAS, měli byste být automaticky přihlášeni k Netvision COMPAS, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Netvision COMPAS, měli byste být automaticky přihlášeni k Netvision COMPAS, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ### <a name="directly-accessing-netvision-compas-sp-initiated"></a>Přímý přístup k Netvision COMPAS (iniciovaná v SP).
 
 1. Přístup k adrese URL **Netvision COMPAS** Například, `https://tenant.compas.cloud`.
-1. Zadejte uživatelské jméno **Netvision COMPAS** a vyberte **Další**.
+1. Zadejte uživatelské jméno **Netvision COMPAS** a vyberte **Další** .
 
     ![Přihlášení uživatele](media/netvision-compas-tutorial/login-user.png)
 
-1. **(volitelné)** Pokud je uživateli přiřazeno více zprostředkovatelů identity v rámci **Netvision COMPAS**, zobrazí se seznam dostupných zprostředkovatelů identity. Vyberte Azure AD IDP nakonfigurovaný dříve v **Netvision COMPAS**.
+1. **(volitelné)** Pokud je uživateli přiřazeno více zprostředkovatelů identity v rámci **Netvision COMPAS** , zobrazí se seznam dostupných zprostředkovatelů identity. Vyberte Azure AD IDP nakonfigurovaný dříve v **Netvision COMPAS** .
 
     ![Výběr přihlášení](media/netvision-compas-tutorial/login-choose.png)
 
 1. Budete přesměrováni na službu Azure AD, aby bylo možné provést ověření. Po úspěšném ověření byste se měli automaticky přihlášeni k **Netvision COMPAS** , pro kterou jste nastavili jednotné přihlašování.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Netvision COMPAS s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

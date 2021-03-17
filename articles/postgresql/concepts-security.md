@@ -1,17 +1,17 @@
 ---
 title: Zabezpečení v Azure Database for PostgreSQL – jeden server
 description: Přehled funkcí zabezpečení v Azure Database for PostgreSQL-jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 02dc9e1ad9ee46b1a400e44b6ef737e70571a17a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be042a0ec076538cf0f0d155667acea6f1ae19cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75972589"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710477"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Zabezpečení v Azure Database for PostgreSQL – jeden server
 
@@ -23,7 +23,7 @@ K ochraně dat na vašem serveru Azure Database for PostgreSQL je k dispozici n�
 Azure Database for PostgreSQL zabezpečuje vaše data šifrováním přenášených dat pomocí Transport Layer Security. Šifrování (SSL/TLS) se ve výchozím nastavení vynutilo.
 
 ### <a name="at-rest"></a>V klidovém případě
-Služba Azure Database for PostgreSQL používá šifrovací modul ověřený 140-2 Standard FIPS pro šifrování úložiště neaktivních dat. Data včetně záloh se šifrují na disku, s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá algoritmus AES 256-bit, který je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
+Služba Azure Database for PostgreSQL používá šifrovací modul ověřený 140-2 Standard FIPS pro šifrování úložiště neaktivních dat. Data včetně záloh se šifrují na disku, včetně dočasných souborů vytvořených při spouštění dotazů. Služba používá algoritmus AES 256-bit, který je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
 
 ## <a name="network-security"></a>Zabezpečení sítě
@@ -38,7 +38,7 @@ Pravidla brány firewall protokolu IP udělují přístup k serverům na základ
 Koncové body služby virtuální sítě prodlužují připojení k virtuální síti přes páteřní síť Azure. Pomocí pravidel virtuální sítě můžete povolit serveru Azure Database for PostgreSQL, aby bylo možné povolit připojení z vybraných podsítí ve virtuální síti. Další informace najdete v tématu [Přehled koncového bodu služby virtuální sítě](concepts-data-access-and-security-vnet.md).
 
 ### <a name="private-ip"></a>Privátní IP adresa
-Privátní odkaz vám umožní připojit se k vašemu Azure Database for PostgreSQLmu jednomu serveru v Azure prostřednictvím privátního koncového bodu. Privátní propojení Azure v podstatě přináší služby Azure do privátního Virtual Network (VNet). K prostředkům PaaS se dá dostat pomocí privátní IP adresy stejně jako u jakéhokoli jiného prostředku ve virtuální síti. Další informace najdete v tématu [Přehled privátních odkazů](concepts-data-access-and-security-private-link.md) .
+Privátní odkaz vám umožní připojit se k vašemu Azure Database for PostgreSQLmu jednomu serveru v Azure prostřednictvím privátního koncového bodu. Azure Private Link v podstatě přináší služby Azure do vaší privátní virtuální sítě. K prostředkům PaaS je možné přistupovat přes privátní IP adresu stejně jako k jakýmkoli jiným prostředkům ve virtuální síti. Další informace najdete v tématu [Přehled privátních odkazů](concepts-data-access-and-security-private-link.md) .
 
 
 ## <a name="access-management"></a>Správa přístupu
@@ -48,12 +48,15 @@ Při vytváření Azure Database for PostgreSQL serveru poskytujete přihlašova
 K serveru se můžete připojit taky pomocí [ověřování Azure Active Directory (AAD)](concepts-aad-authentication.md).
 
 
-## <a name="threat-protection"></a>Ochrana před internetovými útoky
+## <a name="threat-protection"></a>Ochrana před hrozbami
 
 Můžete se rozhodnout pro [rozšířenou ochranu před internetovými útoky](concepts-data-access-and-security-threat-protection.md) , která detekuje neobvyklé aktivity indikující neobvyklé a potenciálně nebezpečné pokusy o přístup k serverům nebo jejich zneužití.
 
 [Protokolování auditu](concepts-audit.md) je k dispozici ke sledování aktivity ve vašich databázích. 
 
+## <a name="migrating-from-oracle"></a>Migrace z Oracle
+
+Oracle podporuje transparentní šifrování dat (TDE) k šifrování dat tabulky a tabulkového prostoru. V Azure pro PostgreSQL se data automaticky šifrují v různých vrstvách. Přečtěte si část "on-REST" na této stránce a také se podívejte na různá témata zabezpečení, včetně [spravovaných klíčů zákazníků](./concepts-data-encryption-postgresql.md) a [dvojitého šifrování infrastruktury](./concepts-infrastructure-double-encryption.md). Můžete také zvážit použití rozšíření [pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html) , které je podporováno v [Azure pro PostgreSQL](./concepts-extensions.md).
 
 ## <a name="next-steps"></a>Další kroky
 - Povolit pravidla brány firewall pro [IP adresy](concepts-firewall-rules.md) nebo [virtuální sítě](concepts-data-access-and-security-vnet.md)

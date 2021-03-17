@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556243"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518664"
 ---
 # <a name="msix-app-attach-glossary"></a>Glosář připojení aplikace MSIX
 
@@ -25,7 +25,7 @@ Kontejner MSIX je místo, kde se spouštějí aplikace MSIX. Další informace n
 
 ## <a name="msix-application"></a>Aplikace MSIX 
 
-Aplikace uložená v souboru MSIX.
+Aplikace uložená v. Soubor MSIX
 
 ## <a name="msix-package"></a>Balíček MSIX 
 
@@ -35,13 +35,17 @@ Balíček MSIX je soubor nebo aplikace MSIX.
 
 Sdílená složka MSIX je sdílená síťová složka, která obsahuje rozšířené balíčky MSIX. Sdílené složky MSIX podporují protokol SMB 3 nebo novější. Aplikace se připravené z této sdílené složky MSIX bez nutnosti přesunout soubory aplikace na systémovou jednotku.
 
+## <a name="msix-image"></a>Obrázek MSIX
+
+MSIX Image je soubor VHD, VHDx nebo CIM, který obsahuje jednu nebo více zabalených aplikací MSIX. Každá aplikace je dodávána v imagi MSIX pomocí nástroje MSIXMGR.
+
 ## <a name="repackage"></a>Znovu zabalit
 
 Opětovné sbalení přebírá aplikaci, která není MSIX, a převede ji na MSIX pomocí nástroje pro sbalení MSIX (MPT). Další informace najdete v tématu [Přehled nástrojů pro MSIX balení](/windows/msix/packaging-tool/tool-overview).
 
-## <a name="expand"></a>Rozbalit
+## <a name="expand-an-msix-package"></a>Rozbalení balíčku MSIX
 
-Rozbalování balíčku MSIX je proces s více kroky. Převezme soubor MSIX a umístí jeho obsah do souboru VHD (x) nebo CIM. 
+Rozbalení balíčku MSIX je proces s více kroky. Rozšíření vezme soubor MSIX a vloží jeho obsah do souboru VHD (x) nebo CIM. 
 
 Postup rozšíření balíčku MSIX:
 
@@ -63,11 +67,11 @@ Nahrání balíčku MSIX zahrnuje nahrávání VHD (x) nebo [CIM](#cim) , který
 
 Na virtuálním počítači s Windows se nahrávají pro každou sdílenou složku MSIX. Po nahrání balíčku se na něj můžou odkazovat všechny fondy hostitelů ve stejném předplatném.
 
-## <a name="publish-an-msix-package"></a>Publikování balíčku MSIX
+## <a name="add-an-msix-package"></a>Přidání balíčku MSIX
 
-Při publikování balíčku MSIX na virtuálním počítači ve Windows se vytvoří odkaz na vzdálenou aplikaci nebo Desktop.
+Na virtuálním počítači s Windows se přidá balíček MSIX, který ho propojí s fondem hostitelů.
 
-## <a name="assign-an-msix-package"></a>Přiřazení balíčku MSIX 
+## <a name="publish-an-msix-package"></a>Publikování balíčku MSIX 
 
 Na virtuálním počítači s Windows musí být publikovaný balíček MSIX přiřazený uživateli služby Doména služby Active Directory (služba AD DS) nebo skupině uživatelů Azure Active Directory (Azure AD).
 
@@ -106,7 +110,19 @@ Defázování upozorní operační systém, že balíček MSIX nebo aplikace, kt
 
 . CIM je nová přípona souboru přidružená k systému souborů kompozitních imagí (CimFS). Připojení a odpojení souborů CIM je rychlejší pro soubory VHD. CIM také spotřebovává méně procesoru a paměti než virtuální pevný disk.
 
-Následující tabulka představuje porovnání výkonu mezi VHD a CimFS. Tato čísla byla výsledkem testovacího běhu s 800 MB souborů v každém formátu spuštěném na DSv4 počítači.
+Soubor CIM je soubor s příponou. Rozšíření CIM obsahující metadata a alespoň šest dalších souborů, které obsahují skutečná data. Soubory v souboru CIM nemají rozšíření. V následující tabulce je seznam ukázkových souborů, které byste našli v modelu CIM:
+
+| Název souboru | Rozšíření | Velikost |
+|-----------|-----------|------|
+| VIRTUÁLNÍ čipové karty | CIM | 1 kB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | Není k dispozici | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | Není k dispozici | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | Není k dispozici | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | Není k dispozici | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | Není k dispozici | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | Není k dispozici | 264 132 KB |
+
+Následující tabulka představuje porovnání výkonu mezi VHD a CimFS. Tato čísla byla výsledkem testovacího běhu s 500 300 MB souborů v každém formátu spuštěném na DSv4 počítači.
 
 |  Specifikace                          | VHD                    | CimFS   |
 |---------------------------------|--------------------------|-----------|
@@ -118,4 +134,3 @@ Následující tabulka představuje porovnání výkonu mezi VHD a CimFS. Tato �
 ## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět víc o připojení aplikace MSIX, podívejte se na náš [Přehled](what-is-app-attach.md) a [Nejčastější dotazy](app-attach-faq.md). V opačném případě začněte s [nastavením připojit k aplikaci](app-attach.md).
-

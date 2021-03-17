@@ -1,22 +1,22 @@
 ---
-title: Nejčastější dotazy týkající se privátního propojení Azure
+title: Nejčastější dotazy ke službě Azure Private Link
 description: Přečtěte si o privátních odkazech Azure.
 services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d06e90a691389b99d8f439364203b921f49b2305
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349942"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496469"
 ---
-# <a name="azure-private-link-frequently-asked-questions-faq"></a>Nejčastější dotazy týkající se privátního propojení Azure
+# <a name="azure-private-link-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Private Link
 
-## <a name="private-link"></a>Privátní propojení
+## <a name="private-link"></a>Private Link
 
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Co je privátní koncový bod Azure a služba privátního propojení Azure?
 
@@ -24,14 +24,19 @@ ms.locfileid: "75349942"
 - **[Služba privátního propojení Azure](private-link-service-overview.md)**: služba privátního propojení Azure je služba vytvořená poskytovatelem služeb. V současné době může být služba privátního propojení připojena k konfiguraci protokolu IP front-endu Standard Load Balancer. 
 
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Jak se posílá provoz při použití privátního propojení?
-Provoz se odesílá soukromě přes páteřní síť Microsoftu. Neprojde internetem.  
+Provoz se odesílá soukromě přes páteřní síť Microsoftu. Neprojde internetem. Privátní odkaz na Azure neukládá zákaznická data.
  
-### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Jaký je rozdíl mezi koncovými body služby a soukromými koncovými body?
-- Při použití privátních koncových bodů se k přístupu k síti přidělí konkrétní prostředky za danou službou, která poskytuje podrobné segmentování, provoz se taky může spojit s prostředkem služby z místního prostředí bez použití veřejných koncových bodů.
+### <a name="what-is-the-difference-between-service-endpoints-and-private-endpoints"></a>Jaký je rozdíl mezi koncovými body služby a soukromými koncovými body?
+- Soukromé koncové body udělují síťovému přístupu specifickým prostředkům za danou službu, která poskytuje podrobné segmentace. Provoz se může spojit s prostředkem služby z místního prostředí bez použití veřejných koncových bodů.
 - Koncový bod služby zůstane veřejně směrovatelné IP adresy.  Soukromý koncový bod je privátní IP adresa v adresním prostoru virtuální sítě, ve které je nakonfigurovaný privátní koncový bod.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Jaký je vztah mezi službou privátního propojení a soukromým koncovým bodem?
-Soukromý koncový bod poskytuje přístup k několika typům prostředků privátního propojení, včetně služeb Azure PaaS a vlastní služby privátního propojení. Jedná se o vztah 1: n. Jedna služba privátního propojení může přijímat připojení z více privátních koncových bodů. Na druhé straně se jeden privátní koncový bod může připojit jenom k jedné službě privátního propojení.    
+Více typů prostředků privátního propojení podporuje přístup prostřednictvím privátního koncového bodu. Mezi prostředky patří služby Azure PaaS a vaše vlastní služba privátních odkazů. Je to vztah 1: n. 
+
+Služba privátního propojení přijímá připojení z více privátních koncových bodů. Privátní koncový bod se připojí k jedné službě privátního propojení.    
+
+### <a name="do-i-need-to-disable-network-policies-for-private-link"></a>Potřebuji zakázat zásady sítě pro privátní propojení
+Ano. Privátní koncový bod i služba privátního propojení potřebují zakázat zásady sítě, aby fungovaly správně. Mají obě vlastnosti nezávisle na sobě.
 
 ## <a name="private-endpoint"></a>Privátní koncový bod 
  
@@ -41,11 +46,19 @@ Ano. Můžete mít několik privátních koncových bodů ve stejné virtuální
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>Vyžadujem vyhrazenou podsíť pro privátní koncové body? 
 Ne. U privátních koncových bodů nevyžadujete vyhrazenou podsíť. Můžete vybrat IP adresu privátního koncového bodu z jakékoli podsítě z virtuální sítě, ve které je vaše služba nasazená.  
  
-### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>Může se privátní koncový bod připojit ke službě privátního připojení napříč klienty Azure Active Directory? 
-Ano. Privátní koncové body se můžou připojovat ke službám privátního propojení nebo Azure PaaS napříč klienty služby AD.  
+### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>Může se privátní koncový bod připojit ke službám privátního propojení napříč klienty Azure Active Directory? 
+Ano. Privátní koncové body se můžou připojovat ke službám privátního propojení nebo k Azure PaaS napříč klienty Azure Active Directory. Privátní koncové body, které se připojují přes klienty, vyžadují schválení ruční žádosti. 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Může se privátní koncový bod připojit k prostředkům Azure PaaS napříč oblastmi Azure?
 Ano. Privátní koncové body se můžou připojit k prostředkům Azure PaaS napříč oblastmi Azure.
+
+### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>Můžu změnit své privátní síťové rozhraní (NIC)?
+Po vytvoření privátního koncového bodu je přiřazena síťová karta jen pro čtení. Tuto informaci nejde upravit a zůstane pro životní cyklus privátního koncového bodu.
+
+### <a name="how-do-i-achieve-availability-while-using-private-endpoints-in-case-of-regional-failures-"></a>Návody dosáhnout dostupnosti při používání privátních koncových bodů v případě regionálních selhání?
+
+Soukromé koncové body jsou vysoce dostupné prostředky s 99,99% SLA [[SLA pro privátní propojení Azure]](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/). Ale vzhledem k tomu, že se jedná o regionální prostředky, může dopad na dostupnost všech oblastí Azure ovlivnit. Aby bylo možné dosáhnout dostupnosti v případě regionálních selhání, může být v různých oblastech nasazeno více verzí PEs připojených ke stejnému cílovému prostředku. Tímto způsobem můžete v případě, že dojde k výpadku jedné oblasti, směrovat provoz pro vaše scénáře obnovení prostřednictvím PE v různých oblastech pro přístup k cílovému prostředku. Informace o tom, jak se na straně cílové služby zpracovávají regionální selhání, najdete v dokumentaci ke službě pro převzetí služeb při selhání a obnovení. Přenosy privátních odkazů následují Azure DNS rozlišení cílového koncového bodu. 
+
 
 ## <a name="private-link-service"></a>Služba privátního propojení
  
@@ -58,24 +71,30 @@ Službu privátního propojení můžete škálovat několika různými způsoby
 - Přidejte IP adresu ke službě privátního propojení. Povolujeme až 8 IP adres na jednu službu privátního propojení.  
 - Přidejte novou službu privátního propojení do Standard Load Balancer. Pro každý nástroj pro vyrovnávání zatížení povolujeme až osm služeb privátních odkazů.   
 
+### <a name="what-is-natnetwork-address-translation-ip-configuration-used-in-private-link-service-how-can-i-scale-in-terms-of-available-ports-and-connections"></a>Co je konfigurace protokolu IP NAT (překladu síťových adres) použitá ve službě soukromé vazby? Jak můžu škálovat z pohledu dostupných portů a připojení? 
+
+Konfigurace protokolu IP NAT zajišťuje, aby nedošlo ke konfliktu IP adres mezi zdrojovým a cílovým adresním prostorem (poskytovatelem služeb) a poskytováním zdrojového překladu adres na přenosech privátních odkazů na straně cíle (na straně poskytovatele služeb). IP adresa překladu adres (NAT) se zobrazí jako zdrojová IP adresa pro všechny pakety přijaté službou a cílovou IP adresou pro všechny pakety odesílané vaší službou.  IP adresu NAT si můžete vybrat z libovolné podsítě ve virtuální síti poskytovatele služeb. 
+
+Každá IP adresa NAT poskytuje pro každý virtuální počítač za Standard Load Balancer 64 000 připojení TCP (64 portů). Aby bylo možné škálovat a přidávat další připojení, můžete buď přidat nové IP adresy NAT, nebo přidat další virtuální počítače za Standard Load Balancer. Provedete to tak, že budete škálovat dostupnost portů a povolíte další připojení. Připojení se budou distribuovat napříč IP adresami NAT a virtuálními počítači za Standard Load Balancer.
+
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Můžu připojit službu k více soukromým koncovým bodům?
 Ano. Jedna služba privátního propojení může přijímat připojení z více privátních koncových bodů. Jeden privátní koncový bod se ale může připojit jenom k jedné službě privátního propojení.  
  
 ### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Jak mám řídit expozici mé služby privátního propojení?
 Můžete řídit expozici pomocí konfigurace viditelnosti ve službě privátního propojení. Viditelnost podporuje tři nastavení:
 
-- **Žádné** – pouze odběry s přístupem RBAC můžou službu najít. 
-- Jenom **omezující** odběry, které jsou na seznamu povolených a které mají přístup RBAC, můžou službu najít. 
+- **Žádná** – pouze předplatná s přístupem k Azure RBAC můžou službu najít. 
+- Jenom **omezující** odběry, které jsou schválené a které mají přístup k Azure RBAC, můžou službu najít. 
 - **Všechno** – může službu najít kdokoli. 
  
-### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Můžu vytvořit službu privátního propojení se základní Load Balancer? 
-Ne. Služba privátního propojení přes základní Load Balancer není podporována.
+### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Můžu vytvořit službu privátního propojení se základním nástrojem pro vyrovnávání zatížení? 
+Ne. Služba privátního propojení přes základní nástroj pro vyrovnávání zatížení není podporována.
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Vyžaduje se pro službu privátního propojení vyhrazená podsíť? 
 Ne. Služba privátního propojení nevyžaduje vyhrazenou podsíť. Můžete zvolit libovolnou podsíť ve virtuální síti, kde je vaše služba nasazená.   
 
-### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Jsem poskytovatelem služeb pomocí privátního propojení Azure. Musím se muset ujistit, že všichni moji zákazníci mají jedinečný adresní prostor IP adres a nepřekrývat ho s mým adresním prostorem? 
-Ne. Pro vás tato funkce poskytuje soukromý odkaz Azure. Proto nemusíte mít překrývající se adresní prostor s adresním prostorem zákazníka. 
+### <a name="im-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Jsem poskytovatelem služeb pomocí privátního propojení Azure. Musím se muset ujistit, že všichni moji zákazníci mají jedinečný adresní prostor IP adres a nepřekrývat ho s mým adresním prostorem? 
+Ne. Pro vás tato funkce poskytuje soukromý odkaz Azure. Nemusíte mít překrývající se adresní prostor s adresním prostorem zákazníka. 
 
 ##  <a name="next-steps"></a>Další kroky
 

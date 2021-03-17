@@ -4,16 +4,16 @@ description: Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou re
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6abf1b7a524bc7dd28f1704a362749ac84de2389
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259530"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826071"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
-Registr kontejnerů Azure je privátní registr Dockeru nasazený v Azure, který můžete uchovávat v síti blízké vašim nasazením. V této sérií tří kurzů zjistíte, jak s využitím geografické replikace nasadit webovou aplikaci ASP.NET Core spuštěnou v kontejneru Linuxu do dvou instancí služby [Web App for Containers](../app-service/containers/index.yml). Uvidíte, jak Azure automaticky nasadí image do obou instancí webové aplikace z nejbližšího geograficky replikovaného úložiště.
+Registr kontejnerů Azure je privátní registr Dockeru nasazený v Azure, který můžete uchovávat v síti blízké vašim nasazením. V této sérií tří kurzů zjistíte, jak s využitím geografické replikace nasadit webovou aplikaci ASP.NET Core spuštěnou v kontejneru Linuxu do dvou instancí služby [Web App for Containers](../app-service/index.yml). Uvidíte, jak Azure automaticky nasadí image do obou instancí webové aplikace z nejbližšího geograficky replikovaného úložiště.
 
 V tomto kurzu, který je první částí třídílné série, se naučíte:
 
@@ -44,7 +44,7 @@ Pro tento kurz potřebujete službu Azure Container Registry ve vrstvě služeb 
 
 Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-Vyberte **vytvořit**  >  **kontejnery**prostředků  >  **Azure Container Registry**.
+Vyberte **vytvořit**  >  **kontejnery** prostředků  >  **Azure Container Registry**.
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Vytvoření registru kontejnerů na webu Azure Portal":::
 
@@ -52,7 +52,7 @@ Nakonfigurujte nový registr s následujícím nastavením. Na kartě **základy
 
 * **Název registru:** Vytvořte název registru, který je globálně jedinečný v rámci Azure a obsahuje 5 až 50 alfanumerických znaků.
 * **Skupina prostředků**: **vytvořit novou** > `myResourceGroup`
-* **Umístění**:`West US`
+* **Umístění**: `West US`
 * **SKU**: `Premium` (vyžadováno pro geografickou replikaci)
 
 Vyberte **zkontrolovat + vytvořit** a pak **vytvořit** a vytvořte instanci registru.
@@ -68,7 +68,7 @@ V celé zbývající části tohoto kurzu používáme `<acrName>` jako zástupn
 
 Když teď máte registr úrovně Premium, můžete nakonfigurovat geografickou replikaci. Vaše webová aplikace, kterou v dalším kurzu nakonfigurujete pro spouštění ve dvou oblastech, si pak bude moci stáhnout image kontejnerů z nejbližšího registru.
 
-Přejděte do nového registru kontejneru v Azure Portal a v části **služby**vyberte **replikace** :
+Přejděte do nového registru kontejneru v Azure Portal a v části **služby** vyberte **replikace** :
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Replikace v uživatelském rozhraní registru kontejnerů na webu Azure Portal":::
 
@@ -89,7 +89,7 @@ Po dokončení replikace se na portálu u obou oblastí zobrazí stav *Připrave
 
 V dalších kurzech nasadíte image kontejneru z registru přímo do Web App for Containers. Pokud chcete tuto funkci povolit, musíte taky povolit [účet správce](container-registry-authentication.md#admin-account)registru.
 
-Přejděte do nového registru kontejneru v Azure Portal a v části **Nastavení**vyberte **přístupové klíče** . V části **Uživatel s rolí správce** vyberte **Povolit**.
+Přejděte do nového registru kontejneru v Azure Portal a v části **Nastavení** vyberte **přístupové klíče** . V části **Uživatel s rolí správce** vyberte **Povolit**.
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Povolit účet správce v Azure Portal":::
 
@@ -123,19 +123,19 @@ Pokud nemáte nainstalovaný `git`, můžete si [stáhnout archiv ZIP][acr-hello
 
 ## <a name="update-dockerfile"></a>Aktualizace souboru Dockerfile
 
-Soubor Dockerfile, který je součástí ukázky, ukazuje postup sestavení kontejneru. Spustí se z oficiální image [aspnetcore][dockerhub-aspnetcore], zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti, zkompiluje výstup pomocí oficiální image [aspnetcore-build][dockerhub-aspnetcore-build] a nakonec sestaví optimalizovanou image aspnetcore.
+Soubor Dockerfile, který je součástí ukázky, ukazuje postup sestavení kontejneru. Začíná od oficiální image ASP.NET Core za běhu, kopíruje soubory aplikace do kontejneru, nainstaluje závislosti, zkompiluje výstup pomocí oficiálního .NET Core SDK image a nakonec vytvoří optimalizovanou image aspnetcore.
 
 Soubor [Dockerfile][dockerfile] se v naklonovaném zdroji nachází v umístění `./AcrHelloworld/Dockerfile`.
 
 ```Dockerfile
-FROM microsoft/aspnetcore:2.0 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 # Update <acrName> with the name of your registry
 # Example: uniqueregistryname.azurecr.io
 ENV DOCKER_REGISTRY <acrName>.azurecr.io
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY AcrHelloworld/AcrHelloworld.csproj AcrHelloworld/
@@ -187,8 +187,8 @@ Během sestavování image Dockeru se zobrazí několik řádků výstupu (tady 
 
 ```bash
 Sending build context to Docker daemon  523.8kB
-Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
-2.0: Pulling from microsoft/aspnetcore
+Step 1/18 : FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+2.2: Pulling from mcr.microsoft.com/dotnet/core/aspnet
 3e17c6eae66c: Pulling fs layer
 
 [...]
@@ -245,6 +245,4 @@ Přejděte k dalšímu kurzu, kde nasadíte kontejner do více instancí služby
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
 [aspnet-core]: https://dot.net
-[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
-[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

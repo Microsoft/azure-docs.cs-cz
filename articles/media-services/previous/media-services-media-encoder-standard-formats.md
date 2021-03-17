@@ -3,7 +3,7 @@ title: Formáty a kodeky Media Encoder Standard – Azure
 description: Tento článek poskytuje přehled formátů Media Encoder Standard a kodeků.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: f34e3a3d1e0245180ce923fc3ec7353ab1a176be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7aada042254a2794602002614df51646be90c7cd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086349"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013138"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a standardní formáty kodéru médií
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
 > * [Verze 2](media-services-media-encoder-standard-formats.md)

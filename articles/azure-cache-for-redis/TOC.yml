@@ -4,6 +4,8 @@
   items:
     - name: Informace o službě Azure Cache for Redis
       href: cache-overview.md
+    - name: Co je nového
+      href: cache-whats-new.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -27,6 +29,10 @@
           href: cache-nodejs-get-started.md
         - name: Aplikace v Pythonu
           href: cache-python-get-started.md
+        - name: Aplikace Go
+          href: cache-go-get-started.md
+        - name: Aplikace Rust
+          href: cache-rust-get-started.md
 - name: Kurzy
   items:
     - name: ASP.NET
@@ -38,50 +44,70 @@
     - name: Java Spring
       items:
         - name: Použití aplikace Spring Boot Initializer
-          href: cache-java-spring-boot-initializer-with-redis-cache.md
+          href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
+    - name: Azure Event Grid
+      items:
+        - name: Směrování událostí s Azure Portal
+          href: cache-event-grid-quickstart-portal.md
+        - name: Směrování událostí pomocí Azure CLI
+          href: cache-event-grid-quickstart-cli.md
+        - name: Směrování událostí pomocí PowerShellu
+          href: cache-event-grid-quickstart-powershell.md
     - name: Vytváření tabulek výsledků
       href: cache-web-app-cache-aside-leaderboard.md
+    - name: Nasazení modelu strojového učení
+      href: cache-ml.md
     - name: Správa pomocí Azure PowerShellu
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Správa pomocí Azure CLI
       href: cli-samples.md
 - name: Koncepty
   items:
+    - name: Vysoká dostupnost
+      href: cache-high-availability.md
     - name: Převzetí služeb při selhání a opravy
       href: cache-failover.md
     - name: Osvědčené postupy
       href: cache-best-practices.md
     - name: Zabezpečení
       items:
+        - name: Možnosti izolace sítě
+          href: cache-network-isolation.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
     - name: Architektura mezipaměti
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+      href: /azure/architecture/best-practices/caching?toc=%2fazure%2fredis-cache%2ftoc.json
 - name: Návody
   items:
     - name: Plánování
       items:
         - name: Volba úrovně mezipaměti
           href: cache-overview.md#choosing-the-right-tier
+        - name: Nastavení verze Redis
+          href: cache-how-to-version.md
         - name: Distribuovaná mezipaměť pomocí clusterování
           href: cache-how-to-premium-clustering.md
         - name: Zachování mezipaměti pomocí trvalosti dat Redis
           href: cache-how-to-premium-persistence.md
+        - name: Přidání dalších replik
+          href: cache-how-to-multi-replicas.md
         - name: Zabezpečení mezipaměti pomocí virtuální sítě
           href: cache-how-to-premium-vnet.md
         - name: Privátní připojení k mezipaměti
           href: cache-private-link.md
-        - name: Nastavení geografické replikace
+        - name: Povolení zónové redundance
+          href: cache-how-to-zone-redundancy.md
+        - name: Nastavení geografické replikace OSS
           href: cache-how-to-geo-replication.md
+        - name: Nastavení podnikové aktivní geografické replikace
+          href: cache-how-to-active-geo-replication.md
         - name: Uložení s využitím rezervované kapacity
           href: cache-reserved-pricing.md
         - name: Migrace na Azure Cache for Redis
           href: cache-migration-guide.md
-        - name: Migrace ze služby Managed Cache Service (zastaralá)
-          href: cache-migrate-to-redis.md
         - name: Nejčastější dotazy k plánování
           href: cache-planning-faq.md
     - name: Sestavení
@@ -94,9 +120,11 @@
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: Nasazení a správa pomocí Azure CLI
           href: cli-samples.md
-        - name: Zřízení služby Azure Cache for Redis
+        - name: Vytvoření mezipaměti Redis – šablona ARM
+          displayName: Resource Manager
           href: cache-redis-cache-arm-provision.md
-        - name: Zřízení webové aplikace s využitím služby Azure Cache for Redis
+        - name: Vytvoření webové aplikace s využitím mezipaměti Redis – šablona ARM
+          displayName: Resource Manager
           href: cache-web-app-arm-with-redis-cache-provision.md
     - name: Spravovat
       items:
@@ -110,6 +138,8 @@
           href: cache-administration.md#schedule-updates
         - name: Konfigurace přístupu k redis-cli.exe
           href: cache-how-to-redis-cli-tool.md
+        - name: Publikování mezipaměti Azure pro události Redis
+          href: cache-event-grid.md
         - name: Odebrání TLS 1.0 a 1.1
           href: cache-remove-tls-10-11.md
         - name: Nejčastější dotazy ke správě
@@ -155,11 +185,12 @@
     - name: Azure CLI
       href: /cli/azure/redis
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/redis/'
+      href: /rest/api/redis/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.cache/allversions
     - name: Integrované služby Azure Policy
-      href: ./policy-samples.md
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Příkazy Redis
       href: 'https://redis.io/commands#'
 - name: Zdroje a prostředky
@@ -169,7 +200,7 @@
     - name: Videa
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'
+      href: /answers/topics/azure-cache-redis.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Získávání dovedností pomocí Microsoft Learn

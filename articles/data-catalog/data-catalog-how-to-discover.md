@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081198"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009411"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Postup zjišťování zdrojů dat v Azure Data Catalog
 
@@ -39,7 +39,7 @@ I když je výchozí volné vyhledávání jednoduché a intuitivní, můžete t
 | Rozsah vlastností |Vrátí pouze zdroje dat, ve kterých je hledaný termín shodný se zadanou vlastností. |`name:finance` |
 | Logické operátory |Rozrozšiřte nebo zužte hledání pomocí logických operací. |`finance NOT corporate` |
 | Seskupení s kulatými závorkami |Použijte kulaté závorky k seskupení částí dotazu k dosažení logické izolace, zejména ve spojení s logickými operátory. |`name:finance AND (tags:Q1 OR tags:Q2)` |
-| Operátory porovnávání |Použijte porovnání jiné než rovnost pro vlastnosti, které mají číselné a datové datové typy. |`modifiedTime > "11/05/2014"` |
+| Operátory porovnání |Použijte porovnání jiné než rovnost pro vlastnosti, které mají číselné a datové datové typy. |`modifiedTime > "11/05/2014"` |
 
 Další informace o Data Catalog hledání naleznete v článku [Azure Data Catalog](/rest/api/datacatalog/#search-syntax-reference) .
 
@@ -56,7 +56,7 @@ Ve výchozím zobrazení dlaždice Každá dlaždice zobrazená ve výsledcích 
 
  ![Zvýrazňování přístupů a shody hledání na Azure Data Catalogovém portálu](./media/data-catalog-how-to-discover/search-matches.png)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Vzhledem k tomu, že registrace zdroje dat s Data Catalog kopíruje strukturální a popisné metadata ze zdroje dat do služby katalogu, bude zdroj dat snazší zjistit a pochopit. Po zaregistrování zdroje dat ho můžete zjistit pomocí filtrování a hledání v rámci Data Catalogového portálu.
 

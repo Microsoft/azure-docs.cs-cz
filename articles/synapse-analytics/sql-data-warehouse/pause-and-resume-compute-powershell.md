@@ -1,5 +1,5 @@
 ---
-title: Pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL pomocí Azure PowerShell
+title: 'Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL pomocí Azure PowerShell'
 description: Pomocí Azure PowerShell můžete pozastavit a obnovit synapse fond SQL (datový sklad). výpočetní prostředky.
 services: synapse-analytics
 author: kevinvngo
@@ -10,24 +10,24 @@ ms.subservice: sql-dw
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f502c93b4df6db83756f3fe9853ac598b40074ef
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
+ms.openlocfilehash: 6022974b80a7f691edc9b9a11b972035b203187c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212696"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121035"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL pomocí Azure PowerShell
 
 Azure PowerShell můžete použít k pozastavení a obnovení výpočetních prostředků fondu SQL synapse (datový sklad).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-V tomto rychlém startu se předpokládá, že už máte fond SQL, který můžete pozastavit a obnovit. Pokud ho potřebujete vytvořit, můžete vytvořit fond SQL s názvem **mySampleDataWarehouse**pomocí [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
+V tomto rychlém startu se předpokládá, že už máte fond SQL, který můžete pozastavit a obnovit. Pokud ho potřebujete vytvořit, můžete vytvořit fond SQL s názvem **mySampleDataWarehouse** pomocí [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -55,7 +55,7 @@ Vyhledejte název databáze, název serveru a skupinu prostředků pro fond SQL,
 
 Pomocí těchto kroků můžete najít informace o poloze pro váš fond SQL:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. Na levé straně Azure Portal klikněte na **Azure synapse Analytics (dřív SQL DW)** .
 1. Vyberte **mySampleDataWarehouse** ze stránky **Azure synapse Analytics (dříve SQL DW)** . Otevře se fond SQL.
 
@@ -130,10 +130,10 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 3. Pokud chcete odebrat fond SQL, abyste vám neúčtovali výpočetní výkon nebo úložiště, klikněte na **Odstranit**.
 
-4. Pokud chcete odebrat vytvořený SQL Server, klikněte na **sqlpoolservername.Database.Windows.NET**a pak klikněte na **Odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+4. Pokud chcete odebrat vytvořený SQL Server, klikněte na **sqlpoolservername.Database.Windows.NET** a pak klikněte na **Odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět víc o fondu SQL, přejděte k článku o [načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) . Další informace o správě výpočetních funkcí najdete v článku [Správa výpočetních přehledů](sql-data-warehouse-manage-compute-overview.md) .
+Pokud se chcete dozvědět víc o fondu SQL, přejděte k článku o [načtení dat do fondu SQL](./load-data-from-azure-blob-storage-using-copy.md) . Další informace o správě výpočetních funkcí najdete v článku [Správa výpočetních přehledů](sql-data-warehouse-manage-compute-overview.md) .

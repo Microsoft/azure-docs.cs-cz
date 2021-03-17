@@ -1,18 +1,18 @@
 ---
-title: Průvodce zpracováním chyb Azure Functions
-description: Naučte se zpracovávat chyby v Azure Functions s odkazy na konkrétní chyby vazby.
+title: Azure Functions zpracování chyb a pokyny pro opakování
+description: Naučte se zpracovávat chyby a opakovat události v Azure Functions s odkazy na konkrétní chyby vazby.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: befdb4a8cceaef18961c1e9297e23ed5d405ff50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e52babd5b0612b4590f1422a941b25ba30c3f169
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77586185"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284462"
 ---
-# <a name="azure-functions-error-handling"></a>Zpracování chyb Azure Functions
+# <a name="azure-functions-error-handling-and-retries"></a>Azure Functions zpracování a opakování chyb
 
 Zpracování chyb v Azure Functions je důležité k tomu, abyste se vyhnuli ztrátě dat, nezmeškaným událostem a mohli monitorovat stav vaší aplikace.
 
@@ -20,7 +20,7 @@ Tento článek popisuje obecné strategie pro zpracování chyb spolu s odkazy n
 
 ## <a name="handling-errors"></a>Zpracování chyb
 
-[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
+[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-retries.md)]
 
 ## <a name="binding-error-codes"></a>Kódy chyb vazby
 
@@ -28,7 +28,7 @@ Při integraci se službami Azure mohou chyby vzcházet z rozhraní API základn
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
-+ [Úložiště objektů BLOB](functions-bindings-storage-blob-output.md#exceptions-and-return-codes)
++ [Blob Storage](functions-bindings-storage-blob-output.md#exceptions-and-return-codes)
 
 + [Event Hubs](functions-bindings-event-hubs-output.md#exceptions-and-return-codes)
 
@@ -40,4 +40,4 @@ Při integraci se službami Azure mohou chyby vzcházet z rozhraní API základn
 
 + [Service Bus](functions-bindings-service-bus-output.md#exceptions-and-return-codes)
 
-+ [Úložiště tabulek](functions-bindings-storage-table.md#exceptions-and-return-codes)
++ [Table Storage](functions-bindings-storage-table-output.md#exceptions-and-return-codes)

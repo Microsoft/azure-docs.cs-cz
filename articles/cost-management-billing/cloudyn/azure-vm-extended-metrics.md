@@ -7,14 +7,15 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: da2e20e333fe499998fff72b175442650f5f1e28
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481615"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595309"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Přidání rozšířených metrik pro virtuální počítače Azure
 
@@ -30,7 +31,7 @@ Když povolíte shromažďování metrik, získáte tyto možnosti:
 Budete například chtít monitorovat procento využití procesoru a paměti ve vašich virtuálních počítačích Azure. Tomu odpovídají metriky virtuálních počítačů Azure _Procento procesoru_ a _\Paměť\% využití potvrzených bajtů paměti_.
 
 > [!NOTE]
-> Rozšířené shromažďování dat metrik je podporováno jenom s monitorováním na úrovni hosta Azure. Cloudyn není kompatibilní s [agentem Log Analytics](../../azure-monitor/platform/agents-overview.md).
+> Rozšířené shromažďování dat metrik je podporováno jenom s monitorováním na úrovni hosta Azure. Cloudyn není kompatibilní s [agentem Log Analytics](../../azure-monitor/agents/agents-overview.md).
 
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
@@ -49,7 +50,7 @@ Standardní metriky jsou metriky hostitelských počítačů. Příkladem je _Pr
 
 Povolení rozšířených metrik je jednoduché. Pro každý virtuální počítač povolte monitorování na úrovni hosta. Když povolíte monitorování na úrovni hosta, na virtuálním počítači se nainstaluje agent Azure Diagnostics. Standardně se přidává základní sada rozšířených metrik. Následující postup je stejný pro klasické a běžné virtuální počítače a pro virtuální počítače se systémem Windows i Linux.
 
-Mějte na paměti, že k monitorování na úrovni hosta v Azure i Linuxu je nutný účet úložiště. Povolením monitorování na úrovni hosta se vám účet úložiště vytvoří, pokud si nevyberete existující.
+Mějte na paměti, že k monitorování na úrovni hosta ve Windows i Linuxu je nutný účet úložiště. Povolením monitorování na úrovni hosta se vám účet úložiště vytvoří, pokud si nevyberete existující.
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Povolení monitorování na úrovni hosta u existujících virtuálních počítačů
 
@@ -73,7 +74,7 @@ Další informace o povolení rozšířených metrik pro virtuální počítače
 
 ## <a name="resource-manager-credentials"></a>Přihlašovací údaje služby Resource Manager
 
-Jakmile povolíte rozšířené metriky, ujistěte se, že má služba Cloudyn přístup k [přihlašovacím údajům služby Resource Manager](../../cost-management/activate-subs-accounts.md). Aby služba Cloudyn mohla shromažďovat a zobrazovat údaje o výkonu vašich virtuálních počítačů, jsou nutné vaše přihlašovací údaje. Používají se také k vytváření doporučení pro optimalizaci nákladů. Služba Cloudyn potřebuje data o výkonu instance alespoň za tři dny, aby mohla určit, zda se jedná o kandidáta pro doporučené zmenšení velikosti.
+Jakmile povolíte rozšířené metriky, ujistěte se, že má služba Cloudyn přístup k [přihlašovacím údajům služby Resource Manager](./activate-subs-accounts.md). Aby služba Cloudyn mohla shromažďovat a zobrazovat údaje o výkonu vašich virtuálních počítačů, jsou nutné vaše přihlašovací údaje. Používají se také k vytváření doporučení pro optimalizaci nákladů. Služba Cloudyn potřebuje data o výkonu instance alespoň za tři dny, aby mohla určit, zda se jedná o kandidáta pro doporučené zmenšení velikosti.
 
 ## <a name="enable-vm-metrics-with-a-script"></a>Povolení metrik virtuálních počítačů pomocí skriptu
 
@@ -87,4 +88,4 @@ Pokud chcete zobrazit metriky výkonu instancí Azure na portálu Cloudyn, přej
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud jste ještě nepovolili přístup rozhraní API Azure Resource Manager pro vaše účty, pokračujte k článku [Aktivace účtů a předplatných Azure](../../cost-management/activate-subs-accounts.md).
+- Pokud jste ještě nepovolili přístup rozhraní API Azure Resource Manager pro vaše účty, pokračujte k článku [Aktivace účtů a předplatných Azure](./activate-subs-accounts.md).

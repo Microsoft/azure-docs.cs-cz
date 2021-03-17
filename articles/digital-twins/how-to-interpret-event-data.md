@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587629"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045253"
 ---
 # <a name="understand-event-data"></a>Pochopení dat událostí
 
@@ -103,11 +103,11 @@ Oznámení životního cyklu se aktivují v těchto případech:
 
 Tady jsou pole v těle oznámení o životním cyklu.
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id` je jedinečný pro každou událost DISTINCT. |
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET* |
-| `specversion` | *1.0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
+| `specversion` | *1,0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID digitálního vlákna |
@@ -189,11 +189,11 @@ Tady je další příklad digitálního vlákna. Tento model je založen na [mod
 
 Tady jsou pole v těle oznámení o změně hrany.
 
-| Name    | Hodnota |
+| Název    | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id` je jedinečný pro každou událost DISTINCT |
 | `source` | Název instance digitálního vlákna Azure, jako je *mydigitaltwins.westus2.azuredigitaltwins.NET* |
-| `specversion` | *1.0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
+| `specversion` | *1,0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
 | `subject` | ID vztahu, např. `<twinID>/relationships/<relationshipID>` |
@@ -202,7 +202,7 @@ Tady jsou pole v těle oznámení o změně hrany.
 
 #### <a name="body-details"></a>Podrobnosti těla
 
-Tělo je datová část relace, také ve formátu JSON. Používá stejný formát jako `GET` požadavek pro relaci prostřednictvím [rozhraní DigitalTwins API](how-to-use-apis-sdks.md). 
+Tělo je datová část relace, také ve formátu JSON. Používá stejný formát jako `GET` požadavek pro relaci prostřednictvím [rozhraní DigitalTwins API](/rest/api/digital-twins/dataplane/twins). 
 
 "Aktualizace vztahu" znamená, že došlo ke změně vlastností vztahu. 
 
@@ -245,11 +245,11 @@ Při aktualizaci digitálního vlákna se aktivují **oznámení o změně digit
 
 Tady jsou pole v těle oznámení o změně digitálního vlákna.
 
-| Name    | Hodnota |
+| Název    | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id` je jedinečný pro každou událost DISTINCT |
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET*
-| `specversion` | *1.0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
+| `specversion` | *1,0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID digitálního vlákna |
@@ -262,20 +262,7 @@ Tělo `Twin.Update` oznámení je dokument opravy JSON obsahující aktualizaci 
 
 Řekněme například, že digitální vlákna bylo aktualizováno pomocí následující opravy.
 
-```json
-[
-    {
-        "op": "replace",
-        "value": 40,
-        "path": "/Temperature"
-    },
-    {
-        "op": "add",
-        "value": 30,
-        "path": "/comp1/prop1"
-    }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
 
 Příslušné oznámení (Pokud synchronně vykonává služba, například digitální vlákna Azure, které aktualizují digitální vlákna) by mělo tělo, jako je:
 

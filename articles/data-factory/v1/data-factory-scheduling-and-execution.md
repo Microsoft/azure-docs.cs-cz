@@ -1,22 +1,18 @@
 ---
 title: Plánování a spouštění pomocí Data Factory
 description: Naučte se aspekty plánování a spouštění Azure Data Factory aplikačního modelu.
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfdae688f7736149fe7ddf04cd3833d9adf30818
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319716"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382714"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Plánování a provádění Data Factory
 > [!NOTE]
@@ -182,7 +178,7 @@ V části dostupnost definice datové sady jste viděli použití vlastností č
 ### <a name="dataset-availability"></a>Dostupnost datové sady 
 Následující tabulka obsahuje popis vlastností, které můžete použít v části **dostupnost** :
 
-| Vlastnost | Popis | Vyžadováno | Výchozí |
+| Vlastnost | Popis | Povinné | Výchozí |
 | --- | --- | --- | --- |
 | frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Yes |NA |
 | interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka</b>: Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. |Yes |NA |
@@ -230,7 +226,7 @@ Datová sada může mít definované zásady ověřování, které určují, jak
 
 Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat. Následující tabulka obsahuje popis vlastností, které můžete použít v části **Policy (zásady** ):
 
-| Název zásady | Description | Použito pro | Vyžadováno | Výchozí |
+| Název zásady | Popis | Použito pro | Vyžadováno | Výchozí |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |No |NA |
 | minimumRows | Ověří, jestli data v **Azure SQL Database** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |NA |
@@ -294,7 +290,7 @@ Diagram ukazuje, že se třemi posledními řezy nedošlo k selhání při vytv�
 
 Data Factory nástroje pro monitorování a správu umožňují přejít k podrobnostem o diagnostických protokolech pro neúspěšnou výseč, abyste mohli snadno najít hlavní příčinu problému a opravit ho. Po vyřešení problému můžete snadno spustit běh aktivity a vytvořit tak neúspěšný řez. Další informace o tom, jak znovu spustit a pochopit přechody stavu pro datové řezy, najdete v tématu [monitorování a Správa kanálů pomocí Azure Portalch](data-factory-monitor-manage-pipelines.md) oken nebo [aplikací pro monitorování a správu](data-factory-monitor-manage-app.md).
 
-Po opětovném spuštění průřezu 9-10 pro **Dataset2**spustí Data Factory pro výslednou datovou sadu 9-10 závislý řez.
+Po opětovném spuštění průřezu 9-10 pro **Dataset2** spustí Data Factory pro výslednou datovou sadu 9-10 závislý řez.
 
 ![Opětovné spuštění řezu, který selhal](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
@@ -597,7 +593,7 @@ Aktivita podregistru přijímá dva vstupy a vytváří výstupní řez každý 
 
 Seznam funkcí a systémových proměnných, které Data Factory podporuje, najdete v tématu [Data Factory functions a systémových proměnných](data-factory-functions-variables.md) .
 
-## <a name="appendix"></a>Příloha
+## <a name="appendix"></a>Přílohy
 
 ### <a name="example-copy-sequentially"></a>Příklad: kopírování sekvenčně
 Je možné spustit více operací kopírování jeden po druhém sekvenčním a seřazeným způsobem. Například můžete mít dvě aktivity kopírování v kanálu (soubor copyactivity1 a CopyActivity2) s následujícími vstupními datovými sadami výstupních dat:   

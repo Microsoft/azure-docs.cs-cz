@@ -3,7 +3,7 @@ title: Pochopení a řešení potíží s Proxy aplikací služby AD CORS pro Az
 description: Poskytuje informace o CORS v Azure Proxy aplikací služby AD a o tom, jak identifikovat a řešit problémy CORS.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,18 +11,18 @@ ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b57fc7e3af99819c9b27b6bc796e501d1db02818
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759925"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259164"
 ---
-# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Pochopení a řešení potíží s Proxy aplikací služby Azure Active Directory CORS
+# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Vysvětlení a řešení problémů s CORS proxy aplikací Azure Active Directory
 
-[Sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/)   v některých případech může docházet k problémům s aplikacemi a rozhraními API, která publikujete prostřednictvím Proxy aplikací služby Azure Active Directory. Tento článek popisuje problémy a řešení pro Azure Proxy aplikací služby AD CORS.
+[Sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/) může někdy představovat výzvy pro aplikace a rozhraní API, které publikujete prostřednictvím proxy aplikací služby Azure Active Directory. Tento článek popisuje problémy a řešení pro Azure Proxy aplikací služby AD CORS.
 
-Zabezpečení prohlížeče obvykle brání webové stránce v provádění požadavků AJAX na jinou doménu. Toto omezení se nazývá *zásady stejného původu*a brání škodlivému webu v čtení citlivých dat z jiné lokality. V některých případech však můžete chtít povolit jiným webům volat vaše webové rozhraní API. CORS je standard W3C, který umožňuje serveru zmírnit zásady stejného původce a při zamítnutí dalších požadavků umožnit některé žádosti mezi zdroji.
+Zabezpečení prohlížeče obvykle brání webové stránce v provádění požadavků AJAX na jinou doménu. Toto omezení se nazývá *zásady stejného původu* a brání škodlivému webu v čtení citlivých dat z jiné lokality. V některých případech však můžete chtít povolit jiným webům volat vaše webové rozhraní API. CORS je standard W3C, který umožňuje serveru zmírnit zásady stejného původce a při zamítnutí dalších požadavků umožnit některé žádosti mezi zdroji.
 
 ## <a name="understand-and-identify-cors-issues"></a>Pochopení a identifikace problémů s CORS
 
@@ -44,7 +44,7 @@ Problémy CORS můžete identifikovat pomocí ladicích nástrojů prohlížeče
 
 1. Spusťte prohlížeč a přejděte k webové aplikaci.
 1. Stisknutím klávesy **F12** otevřete konzolu ladění.
-1. Zkuste reprodukování transakce a zkontrolujte zprávu konzoly. Porušení CORS vyvolá chybu konzoly týkající se původu.
+1. Zkuste transakci reprodukovat a projděte si zprávu konzoly. Při porušení CORS se v konzole zobrazí chyba související se zdrojem.
 
 Na následujícím snímku obrazovky se při výběru tlačítka **vyzkoušet** vyvolala chybová zpráva CORS, že protokol https: \/ /corswebclient-contoso.msappproxy.NET nebyl nalezen v hlavičce Access-Control-Allow-Origin.
 
@@ -66,7 +66,7 @@ Předchozí problém CORS můžete vyřešit některým z několika způsobů.
 
 ### <a name="option-1-set-up-a-custom-domain"></a>Možnost 1: nastavení vlastní domény
 
-Použijte [vlastní doménu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) Azure proxy aplikací služby AD k publikování ze stejného původu, aniž byste museli dělat změny v původních aplikacích, kódu nebo hlavičkách. 
+Použijte [vlastní doménu](./application-proxy-configure-custom-domain.md) Azure proxy aplikací služby AD k publikování ze stejného původu, aniž byste museli dělat změny v původních aplikacích, kódu nebo hlavičkách. 
 
 ### <a name="option-2-publish-the-parent-directory"></a>Možnost 2: publikování nadřazeného adresáře
 
@@ -112,9 +112,9 @@ Aplikaci můžete změnit tak, aby podporovala CORS přidáním hlavičky Access
 
 ### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>Možnost 5: prodloužení životnosti přístupového tokenu
 
-Některé problémy CORS nelze vyřešit, například když vaše aplikace přesměruje na *Login.microsoftonline.com* k ověření a platnost přístupového tokenu vyprší. Volání CORS pak neproběhne úspěšně. Alternativním řešením pro tento scénář je prodloužení životnosti přístupového tokenu, aby nedocházelo k vypršení jeho platnosti během uživatelské relace. Další informace o tom, jak to udělat, najdete [v tématu konfigurovatelné životnosti tokenů ve službě Azure AD](../develop/active-directory-configurable-token-lifetimes.md).
+Některé problémy CORS nelze vyřešit, například když vaše aplikace přesměruje na *Login.microsoftonline.com* k ověření a platnost přístupového tokenu vyprší. Volání CORS pak selže. Alternativním řešením v tomto scénáři je prodloužit životnost přístupového tokenu, aby se zabránilo vypršení jeho platnosti během relace uživatele. Další informace o tom, jak to udělat, najdete [v tématu konfigurovatelné životnosti tokenů ve službě Azure AD](../develop/active-directory-configurable-token-lifetimes.md).
 
 ## <a name="see-also"></a>Viz také
 - [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md) 
-- [Plánování nasazení služby Azure Proxy aplikací služby AD](application-proxy-deployment-plan.md) 
-- [Vzdálený přístup k místním aplikacím prostřednictvím Proxy aplikací služby Azure Active Directory](application-proxy.md) 
+- [Naplánování nasazení proxy aplikací služby Azure AD](application-proxy-deployment-plan.md) 
+- [Vzdálený přístup k místním aplikacím prostřednictvím Proxy aplikací služby Azure Active Directory](application-proxy.md)

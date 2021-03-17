@@ -3,13 +3,13 @@ title: Integrace Azure NetApp Files se službou Azure Kubernetes
 description: Naučte se integrovat Azure NetApp Files se službou Azure Kubernetes.
 services: container-service
 ms.topic: article
-ms.date: 09/26/2019
-ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/23/2020
+ms.openlocfilehash: 1d5aa8232b5d0aaa68e6d7e3dcbb9a7d70d0e8f8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465639"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182141"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrace Azure NetApp Files se službou Azure Kubernetes
 
@@ -21,22 +21,21 @@ V tomto článku se předpokládá, že máte existující cluster AKS. Pokud po
 > [!IMPORTANT]
 > Cluster AKS musí být také [v oblasti, která podporuje Azure NetApp Files][anf-regions].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ### <a name="limitations"></a>Omezení
 
 Při použití Azure NetApp Files platí následující omezení:
 
 * Azure NetApp Files je k dispozici pouze [ve vybraných oblastech Azure][anf-regions].
-* Předtím, než budete moci použít Azure NetApp Files, je nutné udělit přístup ke službě Azure NetApp Files. Pokud chcete požádat o přístup, můžete použít [formulář pro odeslání Azure NetApp Files pořadníku][anf-waitlist]. Ke službě Azure NetApp Files nemůžete získat přístup, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
-* Vaše služba Azure NetApp Files musí být vytvořená ve stejné virtuální síti jako cluster AKS.
+* Předtím, než budete moci použít Azure NetApp Files, je nutné udělit přístup ke službě Azure NetApp Files. Pokud chcete požádat o přístup, můžete použít [formulář pro odeslání Azure NetApp Files pořadníku][anf-waitlist] nebo přejít na https://azure.microsoft.com/services/netapp/#getting-started . Ke službě Azure NetApp Files nemůžete získat přístup, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
 * Po počátečním nasazení clusteru AKS se podporuje pouze statické zřizování pro Azure NetApp Files.
 * Pokud chcete používat dynamické zřizování s Azure NetApp Files, nainstalujte a nakonfigurujte [NetApp Trident](https://netapp-trident.readthedocs.io/) verze 19,07 nebo novější.
 
 ## <a name="configure-azure-netapp-files"></a>Konfigurace Azure NetApp Files
 
 > [!IMPORTANT]
-> Než budete moct zaregistrovat poskytovatele prostředků *Microsoft. NetApp* , musíte pro své předplatné vyplnit [formulář pro odeslání služby Azure NetApp Files pořadníku][anf-waitlist] . Prostředek nejde zaregistrovat, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
+> Než budete moct zaregistrovat poskytovatele prostředků  *Microsoft. NetApp* , musíte dokončit [formulář pro odeslání služby Azure NetApp Files pořadníku][anf-waitlist] , nebo přejít na https://azure.microsoft.com/services/netapp/#getting-started pro vaše předplatné. Prostředek nejde zaregistrovat, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
 
 Zaregistrujte poskytovatele prostředků *Microsoft. NetApp* :
 
@@ -106,7 +105,7 @@ VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAM
 SUBNET_NAME=MyNetAppSubnet
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP --vnet-name $VNET_NAME --name $SUBNET_NAME --query "id" -o tsv)
 VOLUME_SIZE_GiB=100 # 100 GiB
-UNIQUE_FILE_PATH="myfilepath2" # Please note that creation token needs to be unique within all ANF Accounts
+UNIQUE_FILE_PATH="myfilepath2" # Please note that file path needs to be unique within all ANF Accounts
 
 az netappfiles volume create \
     --resource-group $RESOURCE_GROUP \
@@ -118,7 +117,7 @@ az netappfiles volume create \
     --vnet $VNET_ID \
     --subnet $SUBNET_ID \
     --usage-threshold $VOLUME_SIZE_GiB \
-    --creation-token $UNIQUE_FILE_PATH \
+    --file-path $UNIQUE_FILE_PATH \
     --protocol-types "NFSv3"
 ```
 
@@ -146,7 +145,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Vytvoří `pv-nfs.yaml` definici PersistentVolume. Nahraďte `path` *creationToken* a parametrem `server` *ipAddress* z předchozího příkazu. Příklad:
+Vytvoří `pv-nfs.yaml` definici PersistentVolume. Nahraďte `path` *creationToken* a parametrem `server` *ipAddress* z předchozího příkazu. Například:
 
 ```yaml
 ---
@@ -159,6 +158,8 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - vers=3
   nfs:
     server: 10.0.0.4
     path: /myfilepath2
@@ -178,7 +179,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>Vytvoření PersistentVolumeClaim
 
-Vytvoří `pvc-nfs.yaml` definici PersistentVolume. Příklad:
+Vytvoří `pvc-nfs.yaml` definici PersistentVolume. Například:
 
 ```yaml
 apiVersion: v1
@@ -208,7 +209,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Připojit pomocí pod
 
-Vytvořte `nginx-nfs.yaml` definici pod, která používá PersistentVolumeClaim. Příklad:
+Vytvořte `nginx-nfs.yaml` definici pod, která používá PersistentVolumeClaim. Například:
 
 ```yaml
 kind: Pod
@@ -217,7 +218,7 @@ metadata:
   name: nginx-nfs
 spec:
   containers:
-  - image: nginx
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     name: nginx-nfs
     command:
     - "/bin/sh"
@@ -247,11 +248,11 @@ kubectl describe pod nginx-nfs
 Ověřte, že je svazek připojený k rozhraní pod, pomocí [kubectl exec][kubectl-exec] a `df -h` Ověřte, jestli je svazek připojený.
 
 ```console
-$ kubectl exec -it nginx-nfs -- bash
+$ kubectl exec -it nginx-nfs -- sh
 ```
 
 ```output
-root@nginx-nfs:/# df -h
+/ # df -h
 Filesystem             Size  Used Avail Use% Mounted on
 ...
 10.0.0.4:/myfilepath2  100T  384K  100T   1% /mnt/azure
@@ -272,11 +273,11 @@ Další informace o Azure NetApp Files najdete v tématu [co je Azure NetApp Fil
 [anf-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all
 [anf-waitlist]: https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[az-netappfiles-account-create]: /cli/azure/netappfiles/account?view=azure-cli-latest#az-netappfiles-account-create
-[az-netappfiles-pool-create]: /cli/azure/netappfiles/pool?view=azure-cli-latest#az-netappfiles-pool-create
-[az-netappfiles-volume-create]: /cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-create
-[az-netappfiles-volume-show]: /cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-show
-[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-create
+[az-netappfiles-account-create]: /cli/azure/netappfiles/account#az-netappfiles-account-create
+[az-netappfiles-pool-create]: /cli/azure/netappfiles/pool#az-netappfiles-pool-create
+[az-netappfiles-volume-create]: /cli/azure/netappfiles/volume#az-netappfiles-volume-create
+[az-netappfiles-volume-show]: /cli/azure/netappfiles/volume#az-netappfiles-volume-show
+[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
 [install-azure-cli]: /cli/azure/install-azure-cli
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

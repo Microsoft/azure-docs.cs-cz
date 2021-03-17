@@ -3,14 +3,19 @@ title: Najít ukázky sítě Azure Service Fabric
 description: Tady je rejstřík dostupných ukázkových aplikací pro Service Fabricovou mřížku. Zdrojový kód v těchto příkladech ukazuje, jak dosáhnout konkrétního scénáře pomocí modelu Service Fabric prostředků.
 ms.date: 12/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 64d9e4e112f26f83eedd02b034c8191c6f677618
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2b38cd6a6c0f3aaab4ff5b77be82aee242afef23
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261269"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627024"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>Hledání ukázek Service Fabricch mřížek
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Tato tabulka obsahuje přehled dostupných ukázkových aplikací pro Service Fabricovou mřížku. Zdrojový kód v těchto příkladech ukazuje, jak dosáhnout konkrétního scénáře pomocí modelu Service Fabric prostředků.
 

@@ -16,12 +16,12 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1983b5090604516265ea8e041ac68200ca2dc7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359581"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89279903"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizace certifikátu TLS/SSL pro farmu Active Directory Federation Services (AD FS) (AD FS)
 
@@ -34,7 +34,7 @@ Celou operaci aktualizace certifikátu TLS/SSL pro AD FSovou farmu napříč vš
 
 
 >[!NOTE]
->Další informace o certifikátech, které používá AD FS, najdete v tématu [Principy certifikátů používaných v AD FS](https://technet.microsoft.com/library/cc730660.aspx).
+>Další informace o certifikátech, které používá AD FS, najdete v tématu [Principy certifikátů používaných v AD FS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc730660(v=ws.11)).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -109,4 +109,3 @@ Po dokončení konfigurace Azure AD Connect zobrazí zprávu, která indikuje st
 
 - [Azure AD Connect a federace](how-to-connect-fed-whatis.md)
 - [Active Directory Federation Services (AD FS) Správa a přizpůsobení pomocí Azure AD Connect](how-to-connect-fed-management.md)
-

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace se systémem auditování na základě vysvětlení | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a systémem auditování na základě vysvětlení.
+title: 'Kurz: Azure Active Directory Integration se systémem Explanation-Based auditování | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Explanation-Basedm systémem auditování.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,45 +11,45 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 68f163442c3e13c822b6f4dfa987d0eb26ccafe3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d63b1fa82400d95b18c6dbd7f37ec321f72b3a7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519701"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453701"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>Kurz: Azure Active Directory integrací se systémem auditování na základě vysvětlení
+# <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>Kurz: Azure Active Directory Integration se systémem Explanation-Based auditování
 
-V tomto kurzu se naučíte integrovat systém auditování založený na vysvětlení s Azure Active Directory (Azure AD).
-Integrace systému auditování založeného na vysvětlení s Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte, jak integrovat Explanation-Based auditový systém s Azure Active Directory (Azure AD).
+Integrace Explanation-Basedho systému auditování se službou Azure AD poskytuje následující výhody:
 
-* Můžete řídit v Azure AD, který má přístup k systému auditování založenému na vysvětlení.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k systému auditování založenému na vysvětlení (jednotné přihlašování) se svými účty Azure AD.
+* Můžete řídit v Azure AD, který má přístup k systému Explanation-Based auditování.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k Explanation-Based auditování systému (jednotné přihlašování) s účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s využitím systému auditování založeného na vysvětlení budete potřebovat následující položky:
+Ke konfiguraci integrace služby Azure AD se systémem Explanation-Based auditování potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* V předplatném auditování jednotného přihlašování k systému založenému na vysvětlení
+* Explanation-Based předplatného jednotného přihlašování s povoleným systémovým auditováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Systém auditování založený na vysvětlení podporuje jednotné přihlašování založené na **SP**
+* Systém auditování Explanation-Based podporuje jednotné přihlašování (SSO) iniciované **SP**
 
-* Systém auditování založený na vysvětlení podporuje zřizování uživatelů **za běhu** 
+* Systém auditování Explanation-Based podporuje zřizování uživatelů **za běhu** 
 
-## <a name="adding-explanation-based-auditing-system-from-the-gallery"></a>Přidání systému auditování založeného na vysvětlení z Galerie
+## <a name="adding-explanation-based-auditing-system-from-the-gallery"></a>Přidání systému auditování Explanation-Based z Galerie
 
-Pokud chcete nakonfigurovat integraci systému auditování založeného na vysvětlení do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat systém auditování založený na vysvětlení z galerie.
+Pokud chcete nakonfigurovat integraci Explanation-Basedho systému auditování do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Explanation-Based systém auditu z galerie.
 
-**Chcete-li přidat systém auditování založený na vysvětlení z Galerie, proveďte následující kroky:**
+**Pokud chcete do galerie přidat systém auditování Explanation-Based, proveďte následující kroky:**
 
 1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
@@ -65,27 +65,27 @@ Pokud chcete nakonfigurovat integraci systému auditování založeného na vysv
 
 4. Do vyhledávacího pole zadejte **systém auditování založený na vysvětlení**, vyberte **systém auditování založený na vysvětlení** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Systém auditování založený na vysvětlení v seznamu výsledků](common/search-new-app.png)
+     ![Explanation-Based auditování systému v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí systému auditování založeného na vysvětlení na základě testovacího uživatele s názvem **Britta Simon**.
-Aby bylo možné jednotné přihlašování pracovat, je nutné zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v systému auditování na základě vysvětlení.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Explanation-Basedho systému auditování založeného na testovacím uživateli s názvem **Britta Simon**.
+Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Explanation-Based auditování systému.
 
-Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí systému auditování založeného na vysvětlení, musíte dokončit tyto stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Explanation-Based auditování systému, je potřeba, abyste dokončili tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování pomocí auditování založené na vysvětlení](#configure-explanation-based-auditing-system-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování v systému Explanation-Based auditování](#configure-explanation-based-auditing-system-single-sign-on)** – pro konfiguraci nastavení jednoho Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte uživatele testovacího systému na základě vysvětlení](#create-explanation-based-auditing-system-test-user)** , abyste měli protějšek Britta Simon v systému auditování na základě vysvětlení, který je propojený s reprezentací uživatele Azure AD.
+5. **[Vytvoření Explanation-Basedho testovacího systému uživatele](#create-explanation-based-auditing-system-test-user)** – Britta Simon Explanation-Based v systému auditování, který je propojený s reprezentací uživatele Azure AD.
 6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí systému auditování založeného na vysvětlení, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Explanation-Based systému auditování, proveďte následující kroky:
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **systémových aplikací auditování na základě vysvětlení** vyberte **jednotné přihlašování**.
 
@@ -95,21 +95,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí systému
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Vysvětlení – informace o jednotném přihlašování v systémové doméně a adresách URL systému založené na vysvětlení](common/sp-signonurl.png)
+    ![Explanation-Based auditování informací o jednotném přihlašování k systémové doméně a adresám URL](common/sp-signonurl.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://ebas.maizeanalytics.com`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na Kopírovat tlačítko a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-explanation-based-auditing-system-single-sign-on"></a>Konfigurace jednotného přihlašování systému auditování založeného na vysvětlení
+### <a name="configure-explanation-based-auditing-system-single-sign-on"></a>Konfigurace Explanation-Basedho auditování v systému jednoho Sign-On
 
 Chcete-li konfigurovat jednotné přihlašování na straně **systému auditování na základě vysvětlení** , je třeba odeslat **adresu URL federačních metadat aplikace** [týmu podpory pro auditování na základě vysvětlení](mailto:support@maizeanalytics.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -136,19 +136,19 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k systému auditování založenému na vysvětlení.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k systému auditování Explanation-Based.
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **systém auditování založený na vysvětlení**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **systém auditování založený na vysvětlení**.
 
-    ![Odkaz na systém auditování založený na vysvětlení v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Explanation-Based auditování systému v seznamu aplikací](common/all-applications.png)
 
 3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
@@ -164,21 +164,20 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-explanation-based-auditing-system-test-user"></a>Vytvořit uživatele testovacího systému auditování založeného na vysvětlení
+### <a name="create-explanation-based-auditing-system-test-user"></a>Vytvořit uživatele testovacího systému pro Explanation-Based auditování
 
-V této části se uživatel s názvem Britta Simon vytvoří v systému auditování založeném na vysvětlení. Systém auditování založený na vysvětlení podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povoleno. V této části není žádná položka akce. Pokud uživatel již v systému auditování na základě vysvětlení neexistuje, vytvoří se po ověření nový.
+V této části se v Explanation-Based auditování systému vytvoří uživatel s názvem Britta Simon. Systém auditování Explanation-Based podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel už v systému Explanation-Based auditování neexistuje, vytvoří se po ověření nový.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici systém auditování na základě vysvětlení, měli byste být automaticky přihlášeni do systému auditování založeného na vysvětlení, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Explanation-Based auditování systému na přístupovém panelu byste měli být automaticky přihlášení do systému Explanation-Based auditování, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

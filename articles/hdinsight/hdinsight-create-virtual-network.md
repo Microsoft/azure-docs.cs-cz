@@ -1,19 +1,16 @@
 ---
 title: Vytváření virtuálních sítí pro clustery Azure HDInsight
 description: Naučte se, jak vytvořit Virtual Network Azure pro připojení HDInsight k ostatním cloudovým prostředkům nebo prostředkům ve vašem datovém centru.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/16/2020
-ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43d57eac94cabb5c648183911e0c0bf72889946d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946065"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Vytváření virtuálních sítí pro clustery Azure HDInsight
 
@@ -27,8 +24,8 @@ Před spuštěním některé z ukázek kódu v tomto článku se porozumí síť
 
 Další požadavky pro ukázky v tomto článku zahrnují následující položky:
 
-* Pokud používáte PowerShell, budete muset nainstalovat [modul AZ Module](https://docs.microsoft.com/powershell/azure/).
-* Pokud chcete použít rozhraní příkazového řádku Azure a ještě není nainstalované, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Pokud používáte PowerShell, budete muset nainstalovat [modul AZ Module](/powershell/azure/).
+* Pokud chcete použít rozhraní příkazového řádku Azure a ještě není nainstalované, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]  
 > Pokud hledáte podrobné pokyny k připojení HDInsight k místní síti pomocí Virtual Network Azure, přečtěte si téma [připojení HDInsight k místní síťové síti](connect-on-premises-network.md) .
@@ -212,7 +209,7 @@ Následující kód ukazuje, jak povolit přístup přes SSH z Internetu:
 az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 ```
 
-## <a name="example-dns-configuration"></a><a id="example-dns"></a>Příklad: Konfigurace DNS
+## <a name="example-dns-configuration"></a><a id="example-dns"></a> Příklad: Konfigurace DNS
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>Překlad názvů mezi virtuální sítí a připojenou místní sítí
 
@@ -289,7 +286,7 @@ Na vlastním serveru DNS ve virtuální síti:
     
     * Hodnotu nahraďte `192.168.0.1` IP adresou vašeho místního serveru DNS. Tato položka směruje všechny ostatní požadavky DNS na místní server DNS.
 
-1. Chcete-li použít konfiguraci, restartujte službu BIND. Například, `sudo service bind9 restart`.
+1. Chcete-li použít konfiguraci, restartujte službu BIND. Například `sudo service bind9 restart`.
 
 1. Přidejte podmíněný Server pro směrování do místního serveru DNS. Nakonfigurujte podmíněný Server pro přeposílání tak, aby odesílal požadavky na příponu DNS z kroku 1 na vlastní server DNS.
 
@@ -377,6 +374,6 @@ Po dokončení těchto kroků se můžete připojit k prostředkům ve virtuáln
 * Informace týkající se konfigurace geografické replikace Apache HBA najdete [v tématu Nastavení replikace clusteru Apache HBA v Azure Virtual Networks](hbase/apache-hbase-replication.md).
 * Další informace o virtuálních sítích Azure najdete v tématu [Přehled azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
-* Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
+* Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 
 * Další informace o trasách definovaných uživatelem najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).

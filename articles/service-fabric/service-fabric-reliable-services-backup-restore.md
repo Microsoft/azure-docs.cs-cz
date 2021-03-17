@@ -5,12 +5,13 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: bf004b913c032d8a121bf4d508adf4cf9be1c7f9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2674d1285544e4bc9b6fcb3d0b2e6f4b607786a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253316"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791607"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Zálohování a obnovení Reliable Services a Reliable Actors
 Azure Service Fabric je platforma s vysokou dostupností, která replikuje stav napříč několika uzly a udržuje tak vysokou dostupnost.  Proto i v případě, že jeden uzel v clusteru dojde k chybě, služby budou nadále k dispozici. I když je tato integrovaná redundance poskytovaná platformou dostatečná, může být v některých případech žádoucí, aby služba mohla zálohovat data (do externího úložiště).
@@ -80,7 +81,7 @@ Uživatelé mohou zvýšit pravděpodobnost, že bude možné provádět přír�
 Zvýšením počtu těchto hodnot se zvýší využití disku na jednu repliku.
 Další informace najdete v tématu [konfigurace Reliable Services](service-fabric-reliable-services-configuration.md) .
 
-`BackupInfo`obsahuje informace týkající se zálohování, včetně umístění složky, do které modul runtime uložil zálohu ( `BackupInfo.Directory` ). Funkce zpětného volání může přesunout `BackupInfo.Directory` do externího úložiště nebo do jiného umístění.  Tato funkce také vrátí logickou hodnotu, která označuje, zda byla schopna úspěšně přesunout složku záloha do jejího cílového umístění.
+`BackupInfo` obsahuje informace týkající se zálohování, včetně umístění složky, do které modul runtime uložil zálohu ( `BackupInfo.Directory` ). Funkce zpětného volání může přesunout `BackupInfo.Directory` do externího úložiště nebo do jiného umístění.  Tato funkce také vrátí logickou hodnotu, která označuje, zda byla schopna úspěšně přesunout složku záloha do jejího cílového umístění.
 
 Následující kód ukazuje, jak `BackupCallbackAsync` lze metodu použít k nahrání zálohy do Azure Storage:
 
@@ -137,19 +138,19 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-`RestoreDescription`předání do `RestoreContext.RestoreAsync` volání obsahuje člen s názvem `BackupFolderPath` .
+`RestoreDescription` předání do `RestoreContext.RestoreAsync` volání obsahuje člen s názvem `BackupFolderPath` .
 Při obnovování jediné úplné zálohy `BackupFolderPath` by měla být tato nastavení nastavena na místní cestu ke složce, která obsahuje úplnou zálohu.
 Při obnovování úplné zálohy a počtu přírůstkových záloh `BackupFolderPath` byste měli nastavit místní cestu ke složce, která obsahuje pouze úplné zálohování, ale také všechny přírůstkové zálohy.
-`RestoreAsync`volání může být vyvoláno, `FabricMissingFullBackupException` Pokud `BackupFolderPath` zadané neobsahuje úplnou zálohu.
+`RestoreAsync` volání může být vyvoláno, `FabricMissingFullBackupException` Pokud `BackupFolderPath` zadané neobsahuje úplnou zálohu.
 Může také vyvolat výjimku, `ArgumentException` Pokud `BackupFolderPath` má porušený řetězec přírůstkových záloh.
 Například pokud obsahuje úplnou zálohu, první přírůstkové a třetí přírůstkové zálohování, ale ne druhou přírůstkovou zálohu.
 
 > [!NOTE]
-> RestorePolicy je ve výchozím nastavení standardně nastavená na hodnotu Safe.  To znamená, že `RestoreAsync` rozhraní API selže s chybou ArgumentException, pokud zjistí, že složka pro zálohování obsahuje stav, který je starší než nebo roven stavu obsaženému v této replice.  `RestorePolicy.Force`dá se použít k přeskočení této kontroly bezpečnosti. Tento parametr je určen jako součást `RestoreDescription` .
+> RestorePolicy je ve výchozím nastavení standardně nastavená na hodnotu Safe.  To znamená, že `RestoreAsync` rozhraní API selže s chybou ArgumentException, pokud zjistí, že složka pro zálohování obsahuje stav, který je starší než nebo roven stavu obsaženému v této replice.  `RestorePolicy.Force` dá se použít k přeskočení této kontroly bezpečnosti. Tento parametr je určen jako součást `RestoreDescription` .
 > 
 
 ## <a name="deleted-or-lost-service"></a>Odstraněná nebo ztracená služba
-Je-li služba odebrána, je nutné nejprve znovu vytvořit službu, aby bylo možné data obnovit.  Je důležité vytvořit službu se stejnou konfigurací, například pomocí schématu dělení, aby bylo možné data snadno obnovit.  Jakmile je služba spuštěná, `OnDataLossAsync` musí se v každém oddílu této služby vyvolávat rozhraní API pro obnovení dat (výše). Jedním ze způsobů, jak toho dosáhnout, je použít [FabricClient. TestManagementClient. StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient?view=azure-dotnet#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) na každém oddílu.  
+Je-li služba odebrána, je nutné nejprve znovu vytvořit službu, aby bylo možné data obnovit.  Je důležité vytvořit službu se stejnou konfigurací, například pomocí schématu dělení, aby bylo možné data snadno obnovit.  Jakmile je služba spuštěná, `OnDataLossAsync` musí se v každém oddílu této služby vyvolávat rozhraní API pro obnovení dat (výše). Jedním ze způsobů, jak toho dosáhnout, je použít [FabricClient. TestManagementClient. StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) na každém oddílu.  
 
 Od tohoto okamžiku je implementace stejná jako u výše uvedeného scénáře. Každý oddíl musí obnovit poslední relevantní zálohu z externího úložiště. Jedna výstraha znamená, že ID oddílu se teď může změnit, protože modul runtime vytvoří ID oddílů dynamicky. Proto služba potřebuje Uložit příslušné informace o oddílu a název služby k identifikaci správné poslední zálohy pro obnovení pro každý oddíl.
 
@@ -223,7 +224,7 @@ Když je zapnuté přírůstkové zálohování, `KvsActorStateProvider` nepouž
 Při obnovení ze záložního řetězce, podobně jako Reliable Services, by měl BackupFolderPath obsahovat podadresáře s jedním podadresářem obsahujícím úplné zálohování a další podadresáře, které obsahují přírůstkové zálohování. Pokud selže ověření řetězu zálohování, vrátí rozhraní API pro obnovení výjimku FabricException s příslušnou chybovou zprávou. 
 
 > [!NOTE]
-> `KvsActorStateProvider`v současné době ignoruje možnost RestorePolicy. safe. Podpora pro tuto funkci se plánuje v nadcházející verzi.
+> `KvsActorStateProvider` v současné době ignoruje možnost RestorePolicy. safe. Podpora pro tuto funkci se plánuje v nadcházející verzi.
 > 
 
 ## <a name="testing-back-up-and-restore"></a>Testování zálohování a obnovení
@@ -251,12 +252,12 @@ To znamená, že pro StatefulService Implements nebude `RunAsync` volána, dokud
 Pak `OnDataLossAsync` bude vyvolána na novém primárním.
 Dokud služba toto rozhraní API úspěšně dokončí (vrátí hodnotu true nebo false) a dokončí příslušnou novou konfiguraci, rozhraní API se v tuto chvíli bude dál volat.
 
-`RestoreAsync`nejprve zahodí všechny existující stavy v primární replice, na které byla volána. Správce Reliable State pak vytvoří všechny spolehlivé objekty, které existují ve složce Backup. V dalším kroku jsou spolehlivé objekty pokyny k obnovení ze svých kontrolních bodů ve složce Backup. Nakonec správce spolehlivého stavu obnoví svůj vlastní stav ze záznamů protokolu ve složce zálohy a provede obnovení. V rámci procesu obnovení jsou operace začínající od "počátečního bodu", které mají potvrzené záznamy protokolu v zálohovací složce, přehrávány do spolehlivých objektů. Tento krok zajistí, že obnovený stav je konzistentní.
+`RestoreAsync` nejprve zahodí všechny existující stavy v primární replice, na které byla volána. Správce Reliable State pak vytvoří všechny spolehlivé objekty, které existují ve složce Backup. V dalším kroku jsou spolehlivé objekty pokyny k obnovení ze svých kontrolních bodů ve složce Backup. Nakonec správce spolehlivého stavu obnoví svůj vlastní stav ze záznamů protokolu ve složce zálohy a provede obnovení. V rámci procesu obnovení jsou operace začínající od "počátečního bodu", které mají potvrzené záznamy protokolu v zálohovací složce, přehrávány do spolehlivých objektů. Tento krok zajistí, že obnovený stav je konzistentní.
 
 ## <a name="next-steps"></a>Další kroky
   - [Reliable Collections](service-fabric-work-with-reliable-collections.md)
   - [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start.md)
   - [Oznámení Reliable Services](service-fabric-reliable-services-notifications.md)
   - [Konfigurace Reliable Services](service-fabric-reliable-services-configuration.md)
-  - [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  - [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   - [Pravidelné zálohování a obnovení v Azure Service Fabric](service-fabric-backuprestoreservice-quickstart-azurecluster.md)

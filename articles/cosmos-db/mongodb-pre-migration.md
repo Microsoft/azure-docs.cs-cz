@@ -1,20 +1,31 @@
 ---
 title: Kroky před migrací pro migraci dat do rozhraní API Azure Cosmos DB pro MongoDB
 description: Tento dokument poskytuje přehled požadavků na migraci dat z MongoDB do Cosmos DB.
-author: LuisBosquez
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/04/2020
-ms.author: lbosq
-ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/02/2021
+ms.author: anfeldma
+ms.openlocfilehash: cdc5dc9cee3520d9a3f22ff710dfa193e6ef4fed
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263054"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553285"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Kroky před migrací pro migraci dat z MongoDB Azure Cosmos DB do rozhraní API pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
+> [!IMPORTANT]  
+> Tato příručka před migrací MongoDB je první v řadě při migraci MongoDB Azure Cosmos DB na škálování rozhraní API Mongo. Zákazníci s licencováním a nasazením MongoDB v samoobslužné infrastruktuře můžou chtít snížit a spravovat náklady na jejich datovou infrastrukturu migrací na spravovanou cloudovou službu, jako je Azure Cosmos DB s cenami průběžných plateb a elastickou škálovatelností. Cílem této série je absolvovat zákazníka prostřednictvím procesu migrace:
+>
+> 1. [Předběžná migrace](mongodb-pre-migration.md) – inventarizace stávajících MongoDB dat, plánování migrace a výběr příslušných nástrojů pro migraci.
+> 2. Provádění – migrace z MongoDB na Azure Cosmos DB pomocí uvedených [kurzů]().
+> 3. [Po migraci](mongodb-post-migration.md) se aktualizuje a optimalizuje stávající aplikace, aby se spouštěly na novou Azure Cosmos DB datovou nemovitost.
+>
+
+Plán pevné migrace může mít vliv na časovou osu a úspěšnost migrace vašeho týmu. Dobrá analogie pro před migrací se spouští nový projekt – můžete začít definováním požadavků a pak podílet na nejdůležitějších úkolech a také nastavit prioritu pro největší úkoly, které je třeba řešit jako první. To pomáhá zajistit předvídatelný plán projektu, ale samozřejmě, neočekávané požadavky mohou vyvstat a zkomplikovat plán projektu. Když se vrátíte zpátky k migraci – sestavení komplexního plánu spuštění v rámci fáze před migrací minimalizuje riziko, že v průběhu migrace dojde k opoždění neočekávaných úloh migrace, ušetříte čas během migrace a pomůže vám zajistit splnění cílů.
 
 Před migrací dat z MongoDB (místně nebo v cloudu), abyste Azure Cosmos DB rozhraní API pro MongoDB, měli byste:
 
@@ -36,7 +47,7 @@ Níže jsou uvedené specifické charakteristiky rozhraní API Azure Cosmos DB p
 
 - **Elastická kapacita**: kapacita pro danou kolekci nebo databázi se může kdykoli změnit. Díky tomu bude databáze pružně přizpůsobena požadavkům na propustnost vašich úloh.
 
-- **Automaticky horizontálního dělení**: Azure Cosmos DB poskytuje systém automatického dělení, který vyžaduje jenom horizontálních oddílů (nebo klíč oddílu). [Automatický mechanismus dělení](partition-data.md) se sdílí napříč všemi rozhraními API Azure Cosmos DB a umožňuje bezproblémová data a celou škálu až po horizontální distribuci.
+- **Automaticky horizontálního dělení**: Azure Cosmos DB poskytuje systém automatického dělení, který vyžaduje jenom horizontálních oddílů (nebo klíč oddílu). [Automatický mechanismus dělení](partitioning-overview.md) se sdílí napříč všemi rozhraními API Azure Cosmos DB a umožňuje bezproblémová data a celou škálu až po horizontální distribuci.
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>Možnosti migrace pro rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -44,13 +55,12 @@ Níže jsou uvedené specifické charakteristiky rozhraní API Azure Cosmos DB p
 
 |**Typ migrace**|**Řešení**|**Důležité informace**|
 |---------|---------|---------|
-|Offline|[Nástroj pro migraci dat](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Snadné nastavení a podpora více zdrojů <br/>&bull;Není vhodné pro velké datové sady.|
-|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Snadné nastavení a podpora více zdrojů <br/>&bull;Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull;Vhodné pro velké datové sady <br/>&bull;Nedostatečná kontrolní bod znamená, že při migraci by se vyžadovalo restartování celého procesu migrace.<br/>&bull;Nedostatku fronty nedoručených zpráv by znamenalo, že několik chybných souborů může zastavit celý proces migrace. <br/>&bull;Vyžaduje vlastní kód pro zvýšení propustnosti čtení pro určité zdroje dat.|
-|Offline|[Existující nástroje Mongo (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull;Snadné nastavení a integrace <br/>&bull;Pro omezení potřebuje vlastní zpracování|
-|Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull;Plně spravovaná služba migrace.<br/>&bull;Poskytuje řešení pro hostování a monitorování pro úlohu migrace. <br/>&bull;Vhodné pro velké datové sady a postará se o replikaci živých změn <br/>&bull;Funguje jenom s jinými MongoDB zdroji.|
+|Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady a postará se o replikaci živých změn <br/>&bull; Funguje jenom s jinými MongoDB zdroji.|
+|Offline|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady a postará se o replikaci živých změn <br/>&bull; Funguje jenom s jinými MongoDB zdroji.|
+|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)|&bull; Snadné nastavení a podpora více zdrojů <br/>&bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady <br/>&bull; Nedostatečná kontrolní bod znamená, že při migraci by se vyžadovalo restartování celého procesu migrace.<br/>&bull; Nedostatku fronty nedoručených zpráv by znamenalo, že několik chybných souborů může zastavit celý proces migrace. <br/>&bull; Vyžaduje vlastní kód pro zvýšení propustnosti čtení pro určité zdroje dat.|
+|Offline|[Existující nástroje Mongo (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; Snadné nastavení a integrace <br/>&bull; Pro omezení potřebuje vlastní zpracování|
 
-
-## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a>Odhad propustnosti pro vaše úlohy
+## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a> Odhad propustnosti pro vaše úlohy
 
 V Azure Cosmos DB propustnost je zajištěná předem a měří se v jednotkách žádosti (RU) za sekundu. Na rozdíl od virtuálních počítačů nebo místních serverů se ru snadno škáluje nahoru a dolů. Počet zřízených ru můžete okamžitě změnit. Další informace najdete v tématu [jednotky žádostí v Azure Cosmos DB](request-units.md).
 
@@ -71,16 +81,16 @@ Tento příkaz vytvoří výstup dokumentu JSON podobný následujícímu:
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-[Nastavení diagnostiky](cosmosdb-monitor-resource-logs.md) můžete použít také k pochopení četnosti a vzorců dotazů provedených proti Azure Cosmos DB. Výsledky z diagnostických protokolů je možné odeslat do účtu úložiště, do instance EventHub nebo do [Azure Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).  
+[Nastavení diagnostiky](cosmosdb-monitor-resource-logs.md) můžete použít také k pochopení četnosti a vzorců dotazů provedených proti Azure Cosmos DB. Výsledky z diagnostických protokolů je možné odeslat do účtu úložiště, do instance EventHub nebo do [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md).  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>Zvolit klíč oddílu
 Rozdělení na oddíly, označované také jako horizontálního dělení, je klíčovým bodem, který je potřeba zvážit před migrací dat. Azure Cosmos DB používá plně spravované dělení ke zvýšení kapacity databáze, aby splňovala požadavky na úložiště a propustnost. Tato funkce nepotřebuje hostování nebo konfiguraci směrovacích serverů.   
 
-Podobným způsobem funkce dělení automaticky přičítá kapacitu a znovu vyvažuje data. Podrobnosti a doporučení pro výběr správného klíče oddílu pro vaše data najdete v [článku o výběru klíče oddílu](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
+Podobným způsobem funkce dělení automaticky přičítá kapacitu a znovu vyvažuje data. Podrobnosti a doporučení pro výběr správného klíče oddílu pro vaše data najdete v [článku o výběru klíče oddílu](partitioning-overview.md#choose-partitionkey). 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Indexování vašich dat
 
-Rozhraní Azure Cosmos DB API pro server MongoDB verze 3,6 automaticky indexuje `_id` pole. Toto pole nelze vyřadit. Automaticky vynutila jedinečnost `_id` pole na horizontálních oddílů klíč. Chcete-li indexovat další pole, použijte příkazy pro správu indexů MongoDB. Tato výchozí zásada indexování se liší od Azure Cosmos DB rozhraní SQL API, které ve výchozím nastavení indexuje všechna pole.
+Rozhraní Azure Cosmos DB API pro server MongoDB verze 3,6 a vyšší automaticky indexuje `_id` pole pouze. Toto pole nelze vyřadit. Automaticky vynutila jedinečnost `_id` pole na horizontálních oddílů klíč. Chcete-li indexovat další pole, použijte [příkazy pro správu indexů MongoDB](mongodb-indexing.md). Tyto výchozí zásady indexování se liší od rozhraní SQL API služby Azure Cosmos DB, které ve výchozím nastavení indexuje všechna pole.
 
 Možnosti indexování poskytované Azure Cosmos DB zahrnují přidání složených indexů, jedinečných indexů a indexů TTL (Time-to-Live). Rozhraní pro správu indexů je namapováno na `createIndex()` příkaz. Další informace najdete [v článku o indexování v tématu Azure Cosmos DB API pro MongoDB](mongodb-indexing.md).
 
@@ -89,7 +99,7 @@ Možnosti indexování poskytované Azure Cosmos DB zahrnují přidání složen
 ## <a name="next-steps"></a>Další kroky
 * [Migrujte data MongoDB na Cosmos DB pomocí Database Migration Service.](../dms/tutorial-mongodb-cosmos-db.md) 
 * [Zajištění propustnosti v kontejnerech a databázích Azure Cosmos](set-throughput.md)
-* [Dělení ve službě Azure Cosmos DB](partition-data.md)
+* [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
 * [Globální distribuce v Azure Cosmos DB](distribute-data-globally.md)
 * [Indexování ve službě Azure Cosmos DB](index-overview.md)
 * [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)

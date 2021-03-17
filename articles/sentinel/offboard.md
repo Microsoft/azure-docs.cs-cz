@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/29/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77581680"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90885840"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Odebrání služby Azure Sentinel z pracovního prostoru
 
-Pokud už nechcete používat službu Azure Sentinel, Tento článek vysvětluje, jak ho odebrat z pracovního prostoru.
+Pokud už nechcete používat Azure Sentinel, Tento článek vysvětluje, jak ho odebrat z pracovního prostoru.
 
 ## <a name="how-to-remove-azure-sentinel"></a>Jak odebrat Sentinel Azure
 
@@ -48,13 +48,13 @@ Po zjištění odpojení se spustí proces zrušení.
 
 -   AWS
 
--   Výstrahy zabezpečení služeb Microsoftu (ATP Azure, Microsoft Cloud App Security včetně Cloud Discovery stínových sestav IT, Azure AD Identity Protection, ATP v programu Microsoft Defender, Azure Security Center)
+-   Výstrahy zabezpečení služeb Microsoftu: Microsoft Defender pro identitu (*dřív Azure ATP*), Microsoft Cloud App Security včetně Cloud Discovery stínových sestav IT, Azure AD Identity Protection, Microsoft Defenderu pro koncový bod (*dříve Microsoft Defender ATP*), výstrahy v Azure Defenderu od Azure Security Center
 
 -   Analýza hrozeb
 
--   Běžné protokoly zabezpečení (včetně protokolů založených na CEF, Barracuda a syslog) (Pokud máte Azure Security Center, budou tyto protokoly i nadále shromažďovány.)
+-   Běžné protokoly zabezpečení (včetně protokolů založených na CEF, Barracuda a syslog) (Pokud obdržíte výstrahy Azure Defenderu od Azure Security Center, budou se tyto protokoly dál shromažďovat.)
 
--   Události zabezpečení systému Windows (Pokud máte Azure Security Center budou tyto protokoly nadále shromažďovány.)
+-   Události zabezpečení Windows (Pokud obdržíte výstrahy Azure Defenderu od Azure Security Center, budou se tyto protokoly dál shromažďovat.)
 
 Během prvních 48 hodin už nebudou pravidla pro data a analýzy (včetně konfigurace automatizace v reálném čase) dostupná ani Queryable ve službě Azure Sentinel.
 

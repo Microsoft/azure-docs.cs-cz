@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, mathoma
+ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708631"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182753"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze ve spravované instanci Azure SQL k předchozímu bodu v čase
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,8 +46,8 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 |           |Obnovení existující databáze na stejnou instanci spravované instance SQL| Obnovit existující databázi do jiné spravované instance SQL|Obnovit vyřazenou databázi do stejné spravované instance SQL|Obnovit vyřazenou databázi do jiné spravované instance SQL|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Yes|No |Yes|No|
-|**Azure CLI**|Ano |Ano |No|No|
+|**Azure Portal**| Ano|Ne |Ano|Ne|
+|**Azure CLI**|Ano |Ano |Ne|Ne|
 |**PowerShell**| Ano|Ano |Ano|Ano|
 
 ## <a name="restore-an-existing-database"></a>Obnovení existující databáze
@@ -56,7 +56,7 @@ Obnovte stávající databázi na stejnou spravovanou instanci SQL pomocí Azure
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 2. Přejít do spravované instance SQL a vybrat databázi, kterou chcete obnovit.
 3. Na stránce databáze vyberte **obnovit** :
 
@@ -67,7 +67,7 @@ Obnovte stávající databázi na stejnou spravovanou instanci SQL pomocí Azure
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokud ještě nemáte nainstalované Azure PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud ještě nemáte nainstalované Azure PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 Chcete-li obnovit databázi pomocí prostředí PowerShell, zadejte hodnoty pro parametry v následujícím příkazu. Pak spusťte příkaz:
 
@@ -106,11 +106,11 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceName $targetInstanceName 
 ```
 
-Podrobnosti najdete v tématu [Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase).
+Podrobnosti najdete v tématu [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud ještě nemáte nainstalované rozhraní příkazového řádku Azure, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud ještě nemáte nainstalované rozhraní příkazového řádku Azure, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Pokud chcete obnovit databázi pomocí rozhraní příkazového řádku Azure, zadejte hodnoty pro parametry v následujícím příkazu. Pak spusťte příkaz:
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Podrobné vysvětlení dostupných parametrů naleznete v dokumentaci k rozhraní [příkazového řádku pro obnovení databáze ve spravované instanci SQL](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore).
+Podrobné vysvětlení dostupných parametrů naleznete v dokumentaci k rozhraní [příkazového řádku pro obnovení databáze ve spravované instanci SQL](/cli/azure/sql/midb#az-sql-midb-restore).
 
 ---
 
@@ -162,7 +162,7 @@ $targetDatabaseName = "<target database name>"
 $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
 -InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `
@@ -176,7 +176,7 @@ Chcete-li obnovit databázi do jiné spravované instance SQL, zadejte také ná
 $targetResourceGroupName = "<Resource group of target SQL Managed Instance>"
 $targetInstanceName = "<Target SQL Managed Instance name>"
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `
@@ -205,9 +205,9 @@ DROP DATABASE WorldWideImporters;
 
 Pomocí jedné z následujících metod se připojte k databázi ve spravované instanci SQL:
 
-- [SSMS/Azure Data Studio přes virtuální počítač Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Point-to-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Veřejný koncový bod](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [SSMS/Azure Data Studio přes virtuální počítač Azure](./connect-vm-instance-configure.md)
+- [Připojení typu point-to-site](./point-to-site-p2s-configure.md)
+- [Veřejný koncový bod](./public-endpoint-configure.md)
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -247,9 +247,9 @@ ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 
 Pro připojení k databázi ve spravované instanci SQL použijte jednu z následujících metod:
 
-- [Virtuální počítač Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Point-to-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Veřejný koncový bod](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Virtuální počítač Azure](./connect-vm-instance-configure.md)
+- [Připojení typu point-to-site](./point-to-site-p2s-configure.md)
+- [Veřejný koncový bod](./public-endpoint-configure.md)
 
 ## <a name="next-steps"></a>Další kroky
 

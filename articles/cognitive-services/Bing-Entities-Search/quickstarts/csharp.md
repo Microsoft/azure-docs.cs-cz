@@ -8,16 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 10/19/2020
 ms.author: aahi
-ms.openlocfilehash: cd89f2ae13b10c83c3fc22023fc2e3cae1770c98
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a0a77faba971f328c6ae1c5a03f8faf7ccfcf60d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650270"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351482"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí jazyka C #
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace v jazyce C# pošle do rozhraní API dotaz pro hledání zpráv a zobrazí odpověď. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
 
@@ -27,21 +33,20 @@ I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba 
 ## <a name="prerequisites"></a>Požadavky
 
 - Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
-
-- Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet. Instalace balíčku NuGet v aplikaci Visual Studio:
-
-   1. V **Průzkumník řešení**klikněte pravým tlačítkem na svůj projekt.
-   2. Vyberte **Spravovat balíčky NuGet**.
-   3. Vyhledejte a vyberte *Newtonsoft. JSON*a pak balíček nainstalujte.
-
-- Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
+- Nebo pokud používáte Linux nebo MacOS, můžete postupovat podle tohoto rychlého startu pomocí [Visual Studio Code](https://code.visualstudio.com/) a [.NET Core](/dotnet/core/install/macos) .
+- [Bezplatný účet Azure](https://azure.microsoft.com/free/dotnet)
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nové řešení konzoly C# v aplikaci Visual Studio. Pak přidejte následující obory názvů do hlavního souboru kódu:
+1. Vytvořte nové řešení konzoly C# v aplikaci Visual Studio. 
+1. Přidejte [Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) do balíčku NuGet.
+    1. V **Průzkumník řešení** klikněte pravým tlačítkem na svůj projekt.
+    2. Vyberte **Spravovat balíčky NuGet**.
+    3. Vyhledejte a vyberte *Newtonsoft.Jsna* a pak balíček nainstalujte.
+1. Pak přidejte následující obory názvů do hlavního souboru kódu:
     
     ```csharp
     using Newtonsoft.Json;
@@ -180,4 +185,4 @@ I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba 
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
-* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

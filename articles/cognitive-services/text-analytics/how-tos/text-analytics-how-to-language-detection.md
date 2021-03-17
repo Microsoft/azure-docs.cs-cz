@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 05/13/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: ef40201a13412cc735a5e15bf468e2c934ec81ab
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142380"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656797"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Příklad: zjištění jazyka pomocí Analýza textu
 
@@ -37,30 +37,30 @@ Je nutné mít dokumenty JSON v tomto formátu: ID a text.
 Velikost dokumentu musí být v rozmezí 5 120 znaků na dokumentu. Pro každou kolekci můžete mít až 1 000 položek (ID). Kolekce se posílá v textu žádosti. Následující ukázka je příkladem obsahu, který můžete odeslat pro detekci jazyka:
 
 ```json
-    {
-        "documents": [
-            {
-                "id": "1",
-                "text": "This document is in English."
-            },
-            {
-                "id": "2",
-                "text": "Este documento está en inglés."
-            },
-            {
-                "id": "3",
-                "text": "Ce document est en anglais."
-            },
-            {
-                "id": "4",
-                "text": "本文件为英文"
-            },
-            {
-                "id": "5",
-                "text": "Этот документ на английском языке."
-            }
-        ]
-    }
+{
+    "documents": [
+        {
+            "id": "1",
+            "text": "This document is in English."
+        },
+        {
+            "id": "2",
+            "text": "Este documento está en inglés."
+        },
+        {
+            "id": "3",
+            "text": "Ce document est en anglais."
+        },
+        {
+            "id": "4",
+            "text": "本文件为英文"
+        },
+        {
+            "id": "5",
+            "text": "Этот документ на английском языке."
+        }
+    ]
+}
 ```
 
 ## <a name="step-1-structure-the-request"></a>Krok 1: Struktura žádosti
@@ -69,7 +69,7 @@ Další informace o definici žádosti naleznete v tématu [Call the rozhraní A
 
 + Vytvořte žádost POST. Dokumentaci k rozhraní API pro tento požadavek najdete v tématu [rozhraní API pro rozpoznávání jazyka](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages).
 
-+ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Použijte buď prostředek Analýza textu v Azure, nebo [kontejner analýza textu](text-analytics-how-to-install-containers.md)s instancemi. `/text/analytics/v3.0/languages`Do adresy URL musíte zahrnout. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`.
++ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Použijte buď prostředek Analýza textu v Azure, nebo [kontejner analýza textu](text-analytics-how-to-install-containers.md)s instancemi. `/text/analytics/v3.0/languages`Do adresy URL musíte zahrnout. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 
@@ -97,55 +97,67 @@ Kladné skóre 1.0 vyjadřuje nejvyšší možnou úroveň spolehlivosti analýz
 
 ```json
 {
-    "documents": [
+    "documents":[
         {
-            "id": "1",
-            "detectedLanguage": {
-                "name": "English",
-                "iso6391Name": "en",
-                "confidenceScore": 1.0
+            "detectedLanguage":{
+                "confidenceScore":0.99,
+                "iso6391Name":"en",
+                "name":"English"
             },
-            "warnings": []
+            "id":"1",
+            "warnings":[
+                
+            ]
         },
         {
-            "id": "2",
-            "detectedLanguage": {
-                "name": "Spanish",
-                "iso6391Name": "es",
-                "confidenceScore": 1.0
+            "detectedLanguage":{
+                "confidenceScore":1.0,
+                "iso6391Name":"es",
+                "name":"Spanish"
             },
-            "warnings": []
+            "id":"2",
+            "warnings":[
+                
+            ]
         },
         {
-            "id": "3",
-            "detectedLanguage": {
-                "name": "French",
-                "iso6391Name": "fr",
-                "confidenceScore": 1.0
+            "detectedLanguage":{
+                "confidenceScore":1.0,
+                "iso6391Name":"fr",
+                "name":"French"
             },
-            "warnings": []
+            "id":"3",
+            "warnings":[
+                
+            ]
         },
         {
-            "id": "4",
-            "detectedLanguage": {
-                "name": "Chinese_Simplified",
-                "iso6391Name": "zh_chs",
-                "confidenceScore": 1.0
+            "detectedLanguage":{
+                "confidenceScore":1.0,
+                "iso6391Name":"zh_chs",
+                "name":"Chinese_Simplified"
             },
-            "warnings": []
+            "id":"4",
+            "warnings":[
+                
+            ]
         },
         {
-            "id": "5",
-            "detectedLanguage": {
-                "name": "Russian",
-                "iso6391Name": "ru",
-                "confidenceScore": 1.0
+            "detectedLanguage":{
+                "confidenceScore":1.0,
+                "iso6391Name":"ru",
+                "name":"Russian"
             },
-            "warnings": []
+            "id":"5",
+            "warnings":[
+                
+            ]
         }
     ],
-    "errors": [],
-    "modelVersion": "2019-10-01"
+    "errors":[
+        
+    ],
+    "modelVersion":"2020-09-01"
 }
 ```
 
@@ -158,19 +170,19 @@ Například "nemožné" je běžné pro angličtinu i francouzštinu a v přípa
 **Vstup**
 
 ```json
-    {
-        "documents": [
-            {
-                "id": "1",
-                "text": "impossible"
-            },
-            {
-                "id": "2",
-                "text": "impossible",
-                "countryHint": "fr"
-            }
-        ]
-    }
+{
+    "documents": [
+        {
+            "id": "1",
+            "text": "impossible"
+        },
+        {
+            "id": "2",
+            "text": "impossible",
+            "countryHint": "fr"
+        }
+    ]
+}
 ```
 
 Služba teď má další kontext, aby se zajistilo lepší rozhodnutí: 
@@ -178,46 +190,60 @@ Služba teď má další kontext, aby se zajistilo lepší rozhodnutí:
 **Výstup**
 
 ```json
-    {
-        "documents": [
-            {
-                "id": "1",
-                "detectedLanguages": [
-                    {
-                        "name": "English",
-                        "iso6391Name": "en",
-                        "confidenceScore": 1
-                    }
-                ]
+{
+    "documents":[
+        {
+            "detectedLanguage":{
+                "confidenceScore":0.62,
+                "iso6391Name":"en",
+                "name":"English"
             },
-            {
-                "id": "2",
-                "detectedLanguages": [
-                    {
-                        "name": "French",
-                        "iso6391Name": "fr",
-                        "confidenceScore": 1
-                    }
-                ]
-            }
-        ],
-        "errors": []
-    }
+            "id":"1",
+            "warnings":[
+                
+            ]
+        },
+        {
+            "detectedLanguage":{
+                "confidenceScore":1.0,
+                "iso6391Name":"fr",
+                "name":"French"
+            },
+            "id":"2",
+            "warnings":[
+                
+            ]
+        }
+    ],
+    "errors":[
+        
+    ],
+    "modelVersion":"2020-09-01"
+}
 ```
 
 Pokud analyzátor nemůže analyzovat vstup, vrátí `(Unknown)` . Příkladem je, že odešlete textový blok, který se skládá pouze z arabských číslic.
 
 ```json
-    {
-        "id": "5",
-        "detectedLanguages": [
-            {
-                "name": "(Unknown)",
-                "iso6391Name": "(Unknown)",
-                "confidenceScore": "NaN"
-            }
-        ]
-    }
+{
+    "documents":[
+        {
+            "detectedLanguage":{
+                "confidenceScore":0.0,
+                "iso6391Name":"(Unknown)",
+                "name":"(Unknown)"
+            },
+            "id":"1",
+            "warnings":[
+                
+            ]
+        }
+    ],
+    "errors":[
+        
+    ],
+    "modelVersion":"2020-09-01"
+}
 ```
 
 ### <a name="mixed-language-content"></a>Obsah pro smíšený jazyk
@@ -227,14 +253,14 @@ Obsah smíšených jazyků v rámci stejného dokumentu vrátí jazyk s největ�
 **Vstup**
 
 ```json
-    {
-      "documents": [
+{
+    "documents": [
         {
-          "id": "1",
-          "text": "Hello, I would like to take a class at your University. ¿Se ofrecen clases en español? Es mi primera lengua y más fácil para escribir. Que diriez-vous des cours en français?"
+            "id": "1",
+            "text": "Hello, I would like to take a class at your University. ¿Se ofrecen clases en español? Es mi primera lengua y más fácil para escribir. Que diriez-vous des cours en français?"
         }
-      ]
-    }
+    ]
+}
 ```
 
 **Výstup**
@@ -242,24 +268,28 @@ Obsah smíšených jazyků v rámci stejného dokumentu vrátí jazyk s největ�
 Výsledný výstup se skládá z předpřevládajícího jazyka s skóre menším než 1,0, což znamená slabší úroveň spolehlivosti.
 
 ```json
-    {
-      "documents": [
+{
+    "documents":[
         {
-          "id": "1",
-          "detectedLanguages": [
-            {
-              "name": "Spanish",
-              "iso6391Name": "es",
-              "confidencescore": 0.94
-            }
-          ]
+            "detectedLanguage":{
+                "confidenceScore":0.94,
+                "iso6391Name":"es",
+                "name":"Spanish"
+            },
+            "id":"1",
+            "warnings":[
+                
+            ]
         }
-      ],
-      "errors": []
-    }
+    ],
+    "errors":[
+        
+    ],
+    "modelVersion":"2020-09-01"
+}
 ```
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postup pro detekci jazyka pomocí Analýza textu ve službě Azure Cognitive Services. Následující body byly vysvětleny a ukázaly:
 
@@ -270,6 +300,6 @@ V tomto článku jste zjistili koncepty a pracovní postup pro detekci jazyka po
 
 ## <a name="see-also"></a>Viz také
 
-* [Přehled Analýza textu](../overview.md)
-* [Použití klientské knihovny Analýza textu](../quickstarts/text-analytics-sdk.md)
+* [Přehled analýzy textu](../overview.md)
+* [Použití klientské knihovny Analýza textu](../quickstarts/client-libraries-rest-api.md)
 * [Co je nového](../whats-new.md)

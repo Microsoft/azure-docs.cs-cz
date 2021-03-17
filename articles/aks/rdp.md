@@ -5,12 +5,12 @@ description: Přečtěte si, jak vytvořit připojení RDP s clustery Windows se
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfac73c66969148927897de7ed6da0c56aa276a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208036"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173813"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Připojení pomocí protokolu RDP ke službě Azure Kubernetes (AKS) clustery Windows serveru pro účely údržby nebo řešení potíží
 
@@ -20,9 +20,9 @@ V tomto článku se dozvíte, jak vytvořit připojení RDP s uzlem AKS pomocí 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že máte existující cluster AKS s uzlem Windows serveru. Pokud potřebujete cluster AKS, přečtěte si článek o [Vytvoření clusteru AKS s kontejnerem Windows pomocí Azure CLI][aks-windows-cli]. Pro uzel Windows serveru, pro který chcete řešit potíže, budete potřebovat uživatelské jméno a heslo správce systému Windows. Potřebujete také klienta protokolu RDP, například [Vzdálená plocha Microsoft][rdp-mac].
+V tomto článku se předpokládá, že máte existující cluster AKS s uzlem Windows serveru. Pokud potřebujete cluster AKS, přečtěte si článek o [Vytvoření clusteru AKS s kontejnerem Windows pomocí Azure CLI][aks-windows-cli]. Pro uzel Windows serveru, pro který chcete řešit potíže, budete potřebovat uživatelské jméno a heslo správce systému Windows. Pokud je neznáte, můžete je resetovat pomocí následujícího [resetování služby Vzdálená plocha nebo jejího hesla správce na virtuálním počítači s Windows ](../virtual-machines/troubleshooting/reset-rdp.md). Potřebujete také klienta protokolu RDP, například [Vzdálená plocha Microsoft][rdp-mac].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.61 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Nasazení virtuálního počítače do stejné podsítě jako cluster
 
@@ -149,7 +149,7 @@ az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --n
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další data pro řešení potíží, můžete [Zobrazit protokoly nebo Azure monitor Kubernetes hlavního uzlu][view-master-logs] . [Azure Monitor][azure-monitor-containers]
+Pokud potřebujete další data pro řešení potíží, můžete [Zobrazit protokoly nebo Azure monitor Kubernetes hlavního uzlu][view-master-logs] . [][azure-monitor-containers]
 
 <!-- EXTERNAL LINKS -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
@@ -158,10 +158,10 @@ Pokud potřebujete další data pro řešení potíží, můžete [Zobrazit prot
 
 <!-- INTERNAL LINKS -->
 [aks-windows-cli]: windows-container-cli.md
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-vm-delete]: /cli/azure/vm#az-vm-delete
-[azure-monitor-containers]: ../azure-monitor/insights/container-insights-overview.md
+[azure-monitor-containers]: ../azure-monitor/containers/container-insights-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [ssh-steps]: ssh.md
 [view-master-logs]: view-master-logs.md

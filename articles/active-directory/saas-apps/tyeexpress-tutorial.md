@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a601b7ec7e2615053203e23ea61fc6d2efc85bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f44a67b4943c6897f82aedf47d493b36e5e2d3b9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533439"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Kurz: Azure Active Directory integrace s T&E Express
 
@@ -27,10 +27,10 @@ Integrace T&E Express s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k T&E Express (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s T&E Express budete potřebovat následující položky:
 
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz me
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí T&E Express, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte T&E Express jednotného přihlašování](#configure-te-express-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte T&E Express jednotného přihlašování](#configure-te-express-single-sign-on)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte T&E Express Test User](#create-te-express-test-user)** – abyste měli protějšek Britta Simon v T&E Express, který je propojený s reprezentací uživatele v Azure AD.
@@ -93,11 +93,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s T&E Express, p
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML proveďte následující kroky:
 
     ![T&E expresní informace o jednotném přihlašování v doméně a adresách URL](common/idp-intiated.png)
 
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s T&E Express, p
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Tady doporučujeme, abyste v identifikátoru použili jedinečnou hodnotu řetězce. Chcete-li získat tyto hodnoty, obraťte se na kontakt [T&E tým podpory klientů](https://www.tyeexpress.com/contacto.aspx) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -122,17 +122,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s T&E Express, p
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-te-express-single-sign-on"></a>Konfigurace T&E expresního jednotného přihlašování
+### <a name="configure-te-express-single-sign-on"></a>Konfigurovat T&E Express Single Sign-On
 
 1. Pokud chcete nakonfigurovat jednotné přihlašování na **T&e** na straně Express, přihlaste se k aplikaci t&e Express bez jednotného přihlašování pomocí SAML s použitím přihlašovacích údajů správce.
 
 1. Na kartě **správce** kliknutím na **doména SAML** otevřete stránku nastavení SAML.
 
-    ![Konfigurace jednotného přihlašování](./media/tyeexpress-tutorial/tye-SAML.png)
+    ![Snímek obrazovky zobrazuje doménu SAML vybranou v nabídce správce.](./media/tyeexpress-tutorial/tye-SAML.png)
 
 1. Vyberte možnost **activar (aktivovat)** od **ne** po **(Ano)**. Do textového pole **metadata poskytovatele identity** vložte XML metadat, které jste stáhli z Azure Portal.
 
-    ![Konfigurace jednotného přihlašování](./media/tyeexpress-tutorial/tyeAdmin.png)
+    ![Snímek obrazovky se zobrazí stránka Dominio SAML, kde můžete zadat metadata.](./media/tyeexpress-tutorial/tyeAdmin.png)
 
 1. Kliknutím na tlačítko **Guardar (Uložit)** nastavení uložte.
 
@@ -159,7 +159,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -167,7 +167,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **T&E Express**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **T&E Express**.
 
@@ -197,29 +197,28 @@ Aby se uživatelé Azure AD mohli přihlásit k T&E Expressu, musí se zřídit 
 
 1. V části značka Správce klikněte na uživatelé a otevřete stránku předloha uživatelé.
 
-    ![Přidat zaměstnance](./media/tyeexpress-tutorial/tye-adminusers.png)
+    ![Snímek obrazovky se zobrazí uživatelé vybraní z nabídky správce.](./media/tyeexpress-tutorial/tye-adminusers.png)
 
 1. Na domovské stránce klikněte na tlačítko **+** a přidejte uživatele.
 
-    ![Přidat zaměstnance](./media/tyeexpress-tutorial/tye-usershome.png)
+    ![Snímek obrazovky zobrazuje ikonu Plus pro přidání uživatelů.](./media/tyeexpress-tutorial/tye-usershome.png)
 
 1. Zadejte všechny povinné podrobnosti ve formuláři a kliknutím na tlačítko Uložit uložte podrobnosti.
 
-    ![Přidat zaměstnance](./media/tyeexpress-tutorial/tye-usersadd.png)
+    ![Snímek obrazovky se zobrazí v sekci informace o uživateli, kde můžete zadat příslušné hodnoty.](./media/tyeexpress-tutorial/tye-usersadd.png)
 
-    ![Přidat zaměstnance](./media/tyeexpress-tutorial/tye-userssave.png)
+    ![Snímek obrazovky se zobrazí v sekcích schvalovatelé a asistent, kde můžete zadat příslušné hodnoty.](./media/tyeexpress-tutorial/tye-userssave.png)
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici T&E Express na přístupovém panelu, měli byste se automaticky přihlásit k E-&E Expressu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici T&E Express na přístupovém panelu, měli byste se automaticky přihlásit k E-&E Expressu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

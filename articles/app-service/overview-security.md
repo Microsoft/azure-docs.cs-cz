@@ -5,16 +5,16 @@ keywords: Azure App Service, Webová aplikace, mobilní aplikace, aplikace API, 
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6c8aeeaded659fb7fd37409c3d9e495aa711fa6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080296"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736101"
 ---
-# <a name="security-in-azure-app-service"></a>Zabezpečení v Azure App Service
+# <a name="security-in-azure-app-service"></a>Zabezpečení ve službě Azure App Service
 
-V tomto článku se dozvíte, jak [Azure App Service](overview.md) pomáhá zabezpečit webovou aplikaci, back-end mobilní aplikace, aplikaci API a [aplikaci Function App](/azure/azure-functions/). Také ukazuje, jak můžete aplikaci dále zabezpečit pomocí integrovaných funkcí App Service.
+V tomto článku se dozvíte, jak [Azure App Service](overview.md) pomáhá zabezpečit webovou aplikaci, back-end mobilní aplikace, aplikaci API a [aplikaci Function App](../azure-functions/index.yml). Také ukazuje, jak můžete aplikaci dále zabezpečit pomocí integrovaných funkcí App Service.
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
@@ -43,7 +43,7 @@ App Service podporuje FTP i FTPS pro nasazování souborů. Nicméně FTPS by se
 
 Ve výchozím nastavení vaše aplikace App Service přijímá požadavky ze všech IP adres z Internetu, ale můžete tento přístup omezit na malou podmnožinu IP adres. App Service ve Windows vám umožní definovat seznam IP adres, které mají povolený přístup k vaší aplikaci. Seznam povolených adres může zahrnovat jednotlivé IP adresy nebo rozsah IP adres definovaných maskou podsítě. Další informace najdete v tématu [Azure App Service omezení statických IP adres](app-service-ip-restrictions.md).
 
-Pro App Service ve Windows můžete také dynamicky omezit IP adresy tím, že nakonfigurujete _web.config_. Další informace najdete v tématu [dynamické zabezpečení \<dynamicIpSecurity> protokolu IP ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Pro App Service ve Windows můžete také dynamicky omezit IP adresy tím, že nakonfigurujete _web.config_. Další informace najdete v tématu [dynamické zabezpečení \<dynamicIpSecurity> protokolu IP](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ověřování a autorizace klienta
 
@@ -55,7 +55,7 @@ Ověřování a autorizace App Service podporují více poskytovatelů ověřov�
 
 Při ověřování proti back-endové službě poskytuje App Service v závislosti na vašich potřebách dva různé mechanismy:
 
-- **Identita služby** – Přihlaste se ke vzdálenému prostředku pomocí samotné identity aplikace. App Service vám umožní snadno vytvořit [spravovanou identitu](overview-managed-identity.md), kterou můžete použít k ověření pomocí jiných služeb, jako je například [Azure SQL Database](/azure/sql-database/) nebo [Azure Key Vault](/azure/key-vault/). Ucelený kurz tohoto přístupu najdete v tématu [zabezpečené Azure SQL Database připojení z App Service pomocí spravované identity](app-service-web-tutorial-connect-msi.md).
+- **Identita služby** – Přihlaste se ke vzdálenému prostředku pomocí samotné identity aplikace. App Service vám umožní snadno vytvořit [spravovanou identitu](overview-managed-identity.md), kterou můžete použít k ověření pomocí jiných služeb, jako je například [Azure SQL Database](/azure/sql-database/) nebo [Azure Key Vault](../key-vault/index.yml). Ucelený kurz tohoto přístupu najdete v tématu [zabezpečené Azure SQL Database připojení z App Service pomocí spravované identity](app-service-web-tutorial-connect-msi.md).
 - **OBO (za běhu)** – zajistěte delegovaný přístup ke vzdáleným prostředkům jménem uživatele. V případě Azure Active Directory jako poskytovatele ověřování může vaše aplikace App Service provádět delegované přihlašování ke vzdálené službě, jako je například [rozhraní api Microsoft Graph](../active-directory/develop/microsoft-graph-intro.md) nebo Vzdálená aplikace api v App Service. Ucelený kurz tohoto přístupu najdete v tématu [ověřování a autorizace uživatelů v Azure App Service](tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Připojení ke vzdáleným prostředkům
@@ -70,13 +70,13 @@ V každém z těchto případů App Service poskytuje způsob, jak provádět za
 
 ### <a name="azure-resources"></a>Prostředky Azure
 
-Když se vaše aplikace připojí k prostředkům Azure, jako jsou [SQL Database](https://azure.microsoft.com/services/sql-database/) a [Azure Storage](/azure/storage/), připojení zůstane v Azure a nepřekračuje žádné hranice sítě. Připojení se ale prochází přes sdílené sítě v Azure, takže se vždycky ujistěte, že je vaše připojení šifrované. 
+Když se vaše aplikace připojí k prostředkům Azure, jako jsou [SQL Database](https://azure.microsoft.com/services/sql-database/) a [Azure Storage](../storage/index.yml), připojení zůstane v Azure a nepřekračuje žádné hranice sítě. Připojení se ale prochází přes sdílené sítě v Azure, takže se vždycky ujistěte, že je vaše připojení šifrované. 
 
 Pokud je vaše aplikace hostována v [prostředí App Service](environment/intro.md), měli byste [se připojit k podporovaným službám Azure pomocí koncových bodů služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Prostředky v rámci Azure Virtual Network
 
-Vaše aplikace má přístup k prostředkům v [Azure Virtual Network](/azure/virtual-network/) prostřednictvím [integrace Virtual Network](web-sites-integrate-with-vnet.md). Integrace je navázána s Virtual Network pomocí sítě VPN typu Point-to-site. Aplikace pak může získat přístup k prostředkům v Virtual Network pomocí jejich privátních IP adres. Připojení Point-to-site ale pořád projde sdílené sítě v Azure. 
+Vaše aplikace má přístup k prostředkům v [Azure Virtual Network](../virtual-network/index.yml) prostřednictvím [integrace Virtual Network](web-sites-integrate-with-vnet.md). Integrace je navázána s Virtual Network pomocí sítě VPN typu Point-to-site. Aplikace pak může získat přístup k prostředkům v Virtual Network pomocí jejich privátních IP adres. Připojení Point-to-site ale pořád projde sdílené sítě v Azure. 
 
 Pokud chcete zcela izolovat připojení k prostředkům ze sdílených sítí v Azure, vytvořte si aplikaci v [prostředí App Service](environment/intro.md). Vzhledem k tomu, že App Service prostředí je vždycky nasazené do vyhrazené Virtual Network, je připojení mezi vaší aplikací a prostředky v rámci Virtual Network plně izolované. Další aspekty zabezpečení sítě v prostředí App Service najdete v tématu [izolace sítě](#network-isolation).
 
@@ -85,21 +85,21 @@ Pokud chcete zcela izolovat připojení k prostředkům ze sdílených sítí v 
 K místním prostředkům, jako jsou databáze, můžete bezpečně přistupovat třemi způsoby: 
 
 - [Hybridní připojení](app-service-hybrid-connections.md) – naváže připojení typu Point-to-Point ke vzdálenému prostředku prostřednictvím tunelu TCP. Tunel TCP je vytvořen pomocí klíčů TLS 1,2 s klíči sdíleného přístupového podpisu (SAS).
-- [Virtual Network integrace](web-sites-integrate-with-vnet.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
-- [App Service prostředí](environment/intro.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
+- [Virtual Network integrace](web-sites-integrate-with-vnet.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/tutorial-site-to-site-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
+- [App Service prostředí](environment/intro.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/tutorial-site-to-site-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
 
 ## <a name="application-secrets"></a>Tajné klíče aplikace
 
 Neukládejte tajné klíče aplikace, jako jsou přihlašovací údaje databáze, tokeny API a privátní klíče, do kódu nebo konfiguračních souborů. Běžně přijímaným přístupem je přístup k těmto [proměnným prostředí](https://wikipedia.org/wiki/Environment_variable) pomocí standardního vzoru ve zvoleném jazyce. V App Service způsob definování proměnných prostředí je prostřednictvím [nastavení aplikace](configure-common.md#configure-app-settings) (a zejména pro aplikace .NET, [připojovací řetězce](configure-common.md#configure-connection-strings)). Nastavení aplikace a připojovací řetězce se ukládají v Azure jako šifrované a dešifrují se jenom předtím, než se vloží do paměti procesu vaší aplikace při spuštění aplikace. Šifrovací klíče se pravidelně otáčí.
 
-Alternativně můžete svou aplikaci App Service integrovat s [Azure Key Vault](/azure/key-vault/) pro pokročilou správu tajných klíčů. Když [přístup k Key Vault ke spravované identitě](../key-vault/tutorial-web-application-keyvault.md), vaše aplikace App Service může zabezpečeně přistupovat k tajným údajům, které potřebujete.
+Alternativně můžete svou aplikaci App Service integrovat s [Azure Key Vault](../key-vault/index.yml) pro pokročilou správu tajných klíčů. Když [přístup k Key Vault ke spravované identitě](../key-vault/general/tutorial-net-create-vault-azure-web-app.md), vaše aplikace App Service může zabezpečeně přistupovat k tajným údajům, které potřebujete.
 
 ## <a name="network-isolation"></a>Izolace sítě
 
-S výjimkou cenové úrovně **inizolace** všechny úrovně spouštějí vaše aplikace na sdílené síťové infrastruktuře v App Service. Například veřejné IP adresy a nástroje pro vyrovnávání zatížení front-end jsou sdíleny s ostatními klienty. **Izolovaná** vrstva poskytuje kompletní izolaci sítě spuštěním aplikací v [prostředí vyhrazené App Service](environment/intro.md). Prostředí App Service běží ve vaší vlastní instanci [Azure Virtual Network](/azure/virtual-network/). Umožňuje vám: 
+S výjimkou cenové úrovně **inizolace** všechny úrovně spouštějí vaše aplikace na sdílené síťové infrastruktuře v App Service. Například veřejné IP adresy a nástroje pro vyrovnávání zatížení front-end jsou sdíleny s ostatními klienty. **Izolovaná** vrstva poskytuje kompletní izolaci sítě spuštěním aplikací v [prostředí vyhrazené App Service](environment/intro.md). Prostředí App Service běží ve vaší vlastní instanci [Azure Virtual Network](../virtual-network/index.yml). Umožňuje vám: 
 
 - Obsluhujte své aplikace prostřednictvím vyhrazeného veřejného koncového bodu s vyhrazenými front-endy.
 - Obsluhovat interní aplikace s využitím interního nástroje pro vyrovnávání zatížení (interního nástroje), který umožňuje přístup pouze zevnitř vaší služby Azure Virtual Network. INTERNÍHO nástroje má IP adresu z vaší privátní podsítě, která poskytuje celkovou izolaci vašich aplikací z Internetu.
 - [Použijte interního nástroje za bránou firewall webových aplikací (WAF)](environment/integrate-with-application-gateway.md). WAF nabízí ochranu na podnikové úrovni pro vaše veřejné aplikace, jako je například ochrana DDoS, filtrování identifikátorů URI a prevence injektáže SQL.
 
-Další informace najdete v tématu [Úvod do Azure App Service prostředí](environment/intro.md). 
+Další informace najdete v tématu [Úvod do Azure App Service prostředí](environment/intro.md).

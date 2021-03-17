@@ -1,29 +1,30 @@
 ---
-title: Vytvoření první funkce v Azure pomocí Kotlin a Maven
-description: Vytvoření a publikování funkce aktivované protokolem HTTP do Azure pomocí Kotlin a Maven.
+title: Vytvoření funkce Kotlin v Azure Functions pomocí Maven
+description: Vytvoření a publikování aplikace funkcí aktivované protokolem HTTP pro Azure Functions s využitím Kotlin a Maven.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 721fbaf1a3b2418677d07e8ac39fa733164c1459
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506294"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179557"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rychlý Start: Vytvoření první funkce pomocí Kotlin a Maven
 
-Tento článek vás provede použitím nástroje příkazového řádku Maven k vytvoření a publikování projektu funkce Kotlin pro Azure Functions. Až budete hotovi, kód funkce poběží v [plánu Consumption](functions-scale.md#consumption-plan) v Azure a je možné ho aktivovat prostřednictvím požadavku HTTP.
+Tento článek vás provede použitím nástroje příkazového řádku Maven k vytvoření a publikování projektu funkce Kotlin pro Azure Functions. Až budete hotovi, kód funkce poběží v [plánu Consumption](consumption-plan.md) v Azure a je možné ho aktivovat prostřednictvím požadavku HTTP.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vývoji funkcí pomocí Kotlin musíte mít nainstalované následující:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks) verze 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) verze 8
 - [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější
 - [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo vyšší
@@ -31,9 +32,9 @@ K vývoji funkcí pomocí Kotlin musíte mít nainstalované následující:
 > [!IMPORTANT]
 > Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
 
-## <a name="generate-a-new-functions-project"></a>Vygenerování nového projektu Functions
+## <a name="generate-a-new-azure-functions-project"></a>Vygenerovat nový projekt Azure Functions
 
-Spuštěním následujícího příkazu v prázdné složce vygenerujte projekt Functions z [archetypu Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
+V prázdné složce spusťte následující příkaz, který vygeneruje Azure Functions projekt z [archetypeu Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
@@ -157,13 +158,13 @@ Pomocí klávesové zkratky `Ctrl-C` v terminálu zastavte kód aplikace.
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
-V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. Než budete pokračovat, [Přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
+V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. Než budete pokračovat, [Přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
 
 ```azurecli
 az login
 ```
 
-Nasaďte svůj kód do nové aplikace funkcí s použitím cíle Maven `azure-functions:deploy`.
+Nasaďte svůj kód do nové aplikace Function App s použitím `azure-functions:deploy` cíle Maven.
 
 > [!NOTE]
 > Když použijete Visual Studio Code k nasazení aplikace Function App, nezapomeňte zvolit předplatné bez bezplatného předplatného nebo se zobrazí chyba. Své předplatné můžete sledovat na levé straně rozhraní IDE.
@@ -172,7 +173,7 @@ Nasaďte svůj kód do nové aplikace funkcí s použitím cíle Maven `azure-fu
 mvn azure-functions:deploy
 ```
 
-Po dokončení nasazení se zobrazí adresa URL, pomocí které můžete přistupovat k vaší aplikaci funkcí Azure:
+Po dokončení nasazení se zobrazí adresa URL, kterou můžete použít pro přístup k aplikaci Function App:
 
 <pre>
 [INFO] Successfully deployed Function App with package.
@@ -197,7 +198,7 @@ Hello AzureFunctions!
 
 ## <a name="make-changes-and-redeploy"></a>Provedení změn a opětovné nasazení
 
-Abyste upravili text vrácený aplikací funkcí, upravte ve vygenerovaném projektu zdrojový soubor `src/main.../Function.java`. Změňte tento řádek:
+Upravte `src/main.../Function.java` zdrojový soubor ve vygenerovaném projektu, abyste změnili text vrácený aplikací Function App. Změňte tento řádek:
 
 ```kotlin
 return request
@@ -230,7 +231,7 @@ Hi, AzureFunctionsTest
 
 ## <a name="reference-bindings"></a>Referenční vazby
 
-Pokud chcete pracovat s [triggery funkcí a dalšími vazbami](functions-triggers-bindings.md) než Trigger http a Trigger časovače, musíte nainstalovat rozšíření vazby. I když tento článek nepožadujete, budete muset znát, jak povolit rozšíření při práci s jinými typy vazeb.
+Pokud chcete pracovat s [Azure Functions triggery a jinými vazbami](functions-triggers-bindings.md) než Trigger http a Trigger časovače, musíte nainstalovat rozšíření vazby. I když tento článek nepožadujete, budete muset znát, jak povolit rozšíření při práci s jinými typy vazeb.
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -238,7 +239,7 @@ Pokud chcete pracovat s [triggery funkcí a dalšími vazbami](functions-trigger
 
 Vytvořili jste aplikaci funkcí Kotlin s jednoduchou triggerem HTTP a nasadili ji na Azure Functions.
 
-- Další informace o vývoji funkcí Java a Kotlin najdete v [příručce pro vývojáře Java Functions](functions-reference-java.md) .
+- Další informace o vývoji funkcí Java a Kotlin najdete v [Azure Functions příručce pro vývojáře Java](functions-reference-java.md) .
 - Do svého projektu můžete přidat další funkce s jinými triggery s použitím cíle Maven `azure-functions:add`.
 - Funkce můžete psát a ladit místně pomocí nástrojů [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) a [Eclipse](functions-create-maven-eclipse.md). 
 - Funkce ladění můžete do Azure nasadit pomocí editoru Visual Studio Code. Pokyny najdete v dokumentaci editoru Visual Studio Code o [aplikacích bez serveru v Javě](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).

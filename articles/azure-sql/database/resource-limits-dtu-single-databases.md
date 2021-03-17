@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: references_regions, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: fa15a5f95c2163309ecfd9cc0130d1860eb3b634
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: fd9a811fd1c19d115f3ff15194b7e632114140df
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542683"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790249"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu DTU – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 5 |
 | Zahrnuté úložiště (GB) | 2 |
 | Maximální velikost úložiště (GB) | 2 |
-| Maximální úložiště OLTP v paměti (GB) |– |
+| Maximální úložiště OLTP v paměti (GB) |Není k dispozici |
 | Maximální počet souběžných pracovních procesů (požadavků) | 30 |
 | Maximální počet souběžných relací | 300 |
 |||
@@ -103,7 +103,7 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 > [!IMPORTANT]
 > Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed a Německo – severovýchod. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 > [!NOTE]
-> `tempdb`Omezení najdete v tématu [omezení tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
+> `tempdb`Omezení najdete v tématu [omezení tempdb](/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
 ## <a name="next-steps"></a>Další kroky
 

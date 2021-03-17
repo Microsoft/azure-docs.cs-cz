@@ -5,23 +5,24 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 0644dad9e8e6f2999acfa24ea1088207f6d5e692
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6a6b0d9740d19270f8daa3608bc125edd0fbec37
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028034"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005078"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analýza formulářů pro páry klíč-hodnota a tabulky
 
 V dalším kroku použijete svůj nově vyškolený model k analýze dokumentu a extrakci párů klíč-hodnota a tabulek z něj. Volejte rozhraní API pro **[analýzu formuláře](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** spuštěním následujícího kódu v novém skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
 
-1. Nahraďte `<file path>` cestou k souboru vašeho formuláře (například C:\temp\file.pdf). Může to být také adresa URL vzdáleného souboru. Pro účely tohoto rychlého startu můžete použít soubory ve složce **test** sady [ukázkových dat](https://go.microsoft.com/fwlink/?linkid=2090451).
+1. Nahraďte `<file path>` cestou k souboru vašeho formuláře (například C:\temp\file.pdf). Může to být také adresa URL vzdáleného souboru. Pro účely tohoto rychlého startu můžete použít soubory ve složce **test** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip*).
 1. Nahraďte `<model_id>` ID modelu, které jste obdrželi v předchozí části.
 1. Nahraďte `<endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
 1. Nahraďte `<file type>` typem souboru. Podporované typy: `application/pdf` , `image/jpeg` , `image/png` , `image/tiff` .
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 
+    # <a name="v20"></a>[v2.0](#tab/v2-0)
     ```python
     ########### Python Form Recognizer Async Analyze #############
     import json
@@ -56,7 +57,48 @@ V dalším kroku použijete svůj nově vyškolený model k analýze dokumentu a
     except Exception as e:
         print("POST analyze failed:\n%s" % str(e))
         quit() 
-    ```
+    ```    
+    # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)
+    ```python
+    ########### Python Form Recognizer Async Analyze #############
+    import json
+    import time
+    from requests import get, post
+    
+    # Endpoint URL
+    endpoint = r"<endpoint>"
+    apim_key = "<subsription key>"
+    model_id = "<model_id>"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/custom/models/%s/analyze" % model_id
+    source = r"<file path>"
+    params = {
+        "includeTextDetails": True
+    }
+    
+    headers = {
+        # Request headers
+        'Content-Type': '<file type>',
+        'Ocp-Apim-Subscription-Key': apim_key,
+    }
+    with open(source, "rb") as f:
+        data_bytes = f.read()
+    
+    try:
+        resp = post(url = post_url, data = data_bytes, headers = headers, params = params)
+        if resp.status_code != 202:
+            print("POST analyze failed:\n%s" % json.dumps(resp.json()))
+            quit()
+        print("POST analyze succeeded:\n%s" % resp.headers)
+        get_url = resp.headers["operation-location"]
+    except Exception as e:
+        print("POST analyze failed:\n%s" % str(e))
+        quit() 
+    ```    
+
+
+    ---
+
+
 
 1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-Analyze.py*.
 1. Otevřete okno příkazového řádku.

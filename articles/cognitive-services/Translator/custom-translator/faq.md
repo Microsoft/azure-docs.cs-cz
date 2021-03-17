@@ -2,19 +2,19 @@
 title: Nejčastější dotazy – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vlastního překladatele Azure Cognitive Services.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: reference
-ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 001314817b0c18a8023258d01bcfb02eaaffe79b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507225"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895828"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Vlastní Překladatel – Nejčastější dotazy
 
@@ -41,7 +41,7 @@ Nasazení obvykle trvá méně než hodinu.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Jak přistupujete k nasazenému systému?
 
-Nasazené systémy jsou k dispozici prostřednictvím Microsoft Translator Text API V3 zadáním KódKategorie. Další informace o Translator Text API najdete na webové stránce [referenčního rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
+Nasazené systémy jsou k dispozici prostřednictvím Microsoft Translator Text API V3 zadáním KódKategorie. Další informace o Translator Text API najdete na webové stránce [referenčního rozhraní API](../reference/v3-0-reference.md) .
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Návody přeskočit zarovnání a konce věty, pokud jsou moje data už zarovnané na větu?
 

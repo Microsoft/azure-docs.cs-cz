@@ -6,26 +6,26 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 83c5595dc64b46e1c30f3c36866e0efbbd8d3c7f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494821"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674136"
 ---
-# <a name="design-tables-using-synapse-sql"></a>Návrh tabulek pomocí synapse SQL
+# <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Návrh tabulek pomocí SQL synapse ve službě Azure synapse Analytics
 
-Tento dokument obsahuje klíčové koncepty pro navrhování tabulek s využitím fondu SQL a SQL na vyžádání (Preview).  
+Tento dokument obsahuje klíčové koncepty pro navrhování tabulek s vyhrazeným fondem SQL a bez serveru SQL.  
 
-[SQL na vyžádání (Preview)](on-demand-workspace-overview.md) je dotazovací služba na základě dat ve službě Data Lake. Nemá místní úložiště pro přijímání dat. [Fond SQL](best-practices-sql-pool.md) představuje kolekci analytických prostředků, které se zřídí při používání synapse SQL. Velikost fondu SQL je určena jednotkami datového skladu (DWU).
+[Neserverový fond SQL](on-demand-workspace-overview.md) je dotazovací služba nad daty ve službě Data Lake. Nemá místní úložiště pro přijímání dat. [Vyhrazený fond SQL](best-practices-sql-pool.md) představuje kolekci analytických prostředků, které se zřídí při používání synapse SQL. Velikost vyhrazeného fondu SQL je určena jednotkami datového skladu (DWU).
 
-V následující tabulce jsou uvedena témata týkající se fondu SQL a SQL na vyžádání:
+V následující tabulce jsou uvedena témata týkající se vyhrazeného fondu SQL a SQL Server bez serveru:
 
-| Téma                                                        | Fond SQL | SQL na vyžádání |
+| Téma                                                        | vyhrazený fond SQL | Bezserverový fond SQL |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
 | [Určení kategorie tabulky](#determine-table-category)        | Ano                | Ne                      |
 | [Názvy schémat](#schema-names)                                | Ano                | Ano                     |
@@ -40,7 +40,7 @@ V následující tabulce jsou uvedena témata týkající se fondu SQL a SQL na 
 | [Replikované tabulky](#replicated-tables)                      | Ano                | Ne                      |
 | [Tabulky kruhového dotazování](#round-robin-tables)                    | Ano                | Ne                      |
 | [Běžné metody distribuce pro tabulky](#common-distribution-methods-for-tables) | Ano                | Ne                      |
-| [Oddíly](#partitions)                                    | Ano                | Ano                     |
+| [Disk](#partitions)                                    | Ano                | Ano                     |
 | [Indexy Columnstore](#columnstore-indexes)                  | Ano                | Ne                      |
 | [Statistika](#statistics)                                    | Ano                | Ano                     |
 | [Primární klíč a jedinečný klíč](#primary-key-and-unique-key)    | Ano                | Ne                      |
@@ -61,7 +61,7 @@ V následující tabulce jsou uvedena témata týkající se fondu SQL a SQL na 
 
 ## <a name="schema-names"></a>Názvy schémat
 
-Schémata jsou dobrým způsobem, jak seskupit objekty, které jsou používány podobným způsobem. Následující kód vytvoří [uživatelsky definované schéma](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) s názvem WWI.
+Schémata jsou dobrým způsobem, jak seskupit objekty, které jsou používány podobným způsobem. Následující kód vytvoří [uživatelsky definované schéma](/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest&preserve-view=true) s názvem WWI.
 
 ```sql
 CREATE SCHEMA wwi;
@@ -69,14 +69,14 @@ CREATE SCHEMA wwi;
 
 ## <a name="table-names"></a>Názvy tabulek
 
-Pokud migrujete více databází z řešení Prem do fondu SQL, osvědčeným postupem je migrace všech tabulek fakt, Dimension a Integration do jednoho schématu fondu SQL. Můžete například uložit všechny tabulky v ukázkovém datovém skladu [WideWorldImportersDW](/sql/samples/wide-world-importers-dw-database-catalog?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) v rámci jednoho schématu s názvem WWI.
+Pokud migrujete více databází z řešení Prem do vyhrazeného fondu SQL, osvědčeným postupem je migrace všech tabulek fakt, Dimension a Integration do jednoho schématu fondu SQL. Můžete například uložit všechny tabulky v ukázkovém datovém skladu [WideWorldImportersDW](/sql/samples/wide-world-importers-dw-database-catalog?view=azure-sqldw-latest&preserve-view=true) v rámci jednoho schématu s názvem WWI.
 
-Chcete-li zobrazit organizaci tabulek ve fondu SQL, můžete použít fakt, Dim a int jako předpony názvů tabulek. V následující tabulce jsou uvedeny některé ze schémat a názvů tabulek pro WideWorldImportersDW.  
+Chcete-li zobrazit organizaci tabulek ve vyhrazeném fondu SQL, můžete jako předpony v názvech tabulek použít fakt, Dim a int. V následující tabulce jsou uvedeny některé ze schémat a názvů tabulek pro WideWorldImportersDW.  
 
-| Tabulka WideWorldImportersDW  | Typ tabulky | Fond SQL |
+| Tabulka WideWorldImportersDW  | Typ tabulky | vyhrazený fond SQL |
 |:-----|:-----|:------|:-----|
-| Město | Dimenze | WWI. DimCity |
-| Objednání | Fact | WWI. FactOrder |
+| City (Město) | Dimenze | WWI. DimCity |
+| Objednávka | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Trvalost tabulek
 
@@ -92,27 +92,27 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ### <a name="temporary-table"></a>Dočasná tabulka
 
-Dočasná tabulka existuje pouze po dobu trvání relace. Můžete použít dočasnou tabulku a zabránit tak ostatním uživatelům v prohlížení dočasných výsledků. Použití dočasných tabulek také snižuje nutnost vyčištění.  Dočasné tabulky využívají místní úložiště a ve fondu SQL mohou nabízet rychlejší výkon.  
+Dočasná tabulka existuje pouze po dobu trvání relace. Můžete použít dočasnou tabulku a zabránit tak ostatním uživatelům v prohlížení dočasných výsledků. Použití dočasných tabulek také snižuje nutnost vyčištění.  Dočasné tabulky využívají místní úložiště a v vyhrazených fondech SQL mohou nabízet rychlejší výkon.  
 
-SQL na vyžádání podporuje dočasné tabulky. Ale jeho použití je omezené, protože můžete vybrat z dočasné tabulky, ale nemůžete se k nim připojit pomocí souborů v úložišti.
+Fond SQL bez serveru podporuje dočasné tabulky. Ale jeho použití je omezené, protože můžete vybrat z dočasné tabulky, ale nemůžete se k nim připojit pomocí souborů v úložišti.
 
-Další informace najdete v tématu [dočasné tabulky](develop-tables-temporary.md).
+Další informace najdete v tématu  [dočasné tabulky](develop-tables-temporary.md).
 
 ### <a name="external-table"></a>Externí tabulka
 
 [Externí tabulky](develop-tables-external-tables.md) odkazují na data umístěná v Azure Storage objekt blob nebo Azure Data Lake Storage.
 
-Importujte data z externích tabulek do fondu SQL pomocí příkazu [CREATE TABLE AS Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . Kurz načítání najdete v tématu [použití základny k načítání dat z úložiště objektů BLOB v Azure](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Importujte data z externích tabulek do vyhrazených fondů SQL pomocí příkazu [CREATE TABLE AS Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . Kurz načítání najdete v tématu [použití základny k načítání dat z úložiště objektů BLOB v Azure](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
-V případě SQL na vyžádání můžete pomocí [CETAS](develop-tables-cetas.md) uložit výsledek dotazu do externí tabulky v Azure Storage.
+Pro fond SQL bez serveru můžete použít [CETAS](develop-tables-cetas.md) k uložení výsledků dotazu do externí tabulky v Azure Storage.
 
-## <a name="data-types"></a>Datové typy
+## <a name="data-types"></a>Typy dat
 
-Fond SQL podporuje nejběžněji používané datové typy. Seznam podporovaných datových typů najdete v tématu [datové typy v CREATE TABLE odkaz](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) v příkazu CREATE TABLE. Další informace o použití datových typů najdete v tématu [datové typy](../sql/develop-tables-data-types.md).
+Vyhrazený fond SQL podporuje nejběžněji používané datové typy. Seznam podporovaných datových typů najdete v tématu [datové typy v CREATE TABLE odkaz](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest#DataTypes&preserve-view=true) v příkazu CREATE TABLE. Další informace o použití datových typů najdete v tématu [datové typy](../sql/develop-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Distribuované tabulky
 
-Základní funkcí fondu SQL je způsob, jakým může ukládat a fungovat v tabulkách napříč [distribucí](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions).  Fond SQL podporuje tři metody pro distribuci dat:
+Základní funkcí vyhrazeného fondu SQL je způsob, jak může ukládat a pracovat s tabulkami napříč [distribucí](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions).  Vyhrazený fond SQL podporuje tři metody pro distribuci dat:
 
 - Kruhové dotazování (výchozí)
 - Hodnoty hash
@@ -148,12 +148,12 @@ Kategorie tabulka často určuje optimální možnost pro distribuci tabulky.
 
 ## <a name="partitions"></a>Oddíly
 
-V rámci fondu SQL ukládá tabulka dělená a spouští operace na řádcích tabulky podle rozsahu dat. Například tabulka může být rozdělená podle dne, měsíce nebo roku. Můžete zlepšit výkon dotazů prostřednictvím eliminace oddílu, což omezuje vyhledávání dotazů na data v rámci oddílu.
+V vyhrazených fondech SQL uchovává tabulka dělená a spouští operace na řádcích tabulky podle rozsahů dat. Například tabulka může být rozdělená podle dne, měsíce nebo roku. Můžete zlepšit výkon dotazů prostřednictvím eliminace oddílu, což omezuje vyhledávání dotazů na data v rámci oddílu.
 
-Data můžete také udržovat pomocí přepínání oddílů. Vzhledem k tomu, že data ve fondu SQL jsou již distribuována, může být příliš mnoho oddílů pomalý výkon dotazů. Další informace najdete v tématu [pokyny k dělení](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  
+Data můžete také udržovat pomocí přepínání oddílů. Vzhledem k tomu, že data ve vyhrazeném fondu SQL jsou již distribuována, může být příliš mnoho oddílů pomalý výkon dotazů. Další informace najdete v tématu [pokyny k dělení](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  
 
 > [!TIP]
-> Při přepínání oddílu do oddílů tabulky, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET v příkazu [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , pokud se mají zkrátit existující data.
+> Při přepínání oddílu do oddílů tabulky, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET v příkazu [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) , pokud se mají zkrátit existující data.
 
 Následující kód přepne transformovaná denní data do SalesFact oddílu a přepíše všechna existující data.
 
@@ -161,7 +161,7 @@ Následující kód přepne transformovaná denní data do SalesFact oddílu a p
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
 ```
 
-V SQL na vyžádání můžete omezit soubory nebo složky (oddíly), které budou dotazy číst. Dělení podle cesty je podporováno pomocí funkcí FilePath a FileInfo popsaných v tématu [dotazování na soubory úložiště](develop-storage-files-overview.md). Následující příklad přečte složku s daty pro rok 2017:
+Ve fondu SQL bez serveru můžete omezit soubory nebo složky (oddíly), které budou dotazy číst. Dělení podle cesty je podporováno pomocí funkcí FilePath a FileInfo popsaných v tématu [dotazování na soubory úložiště](develop-storage-files-overview.md). Následující příklad přečte složku s daty pro rok 2017:
 
 ```sql
 SELECT
@@ -185,15 +185,14 @@ ORDER BY
 
 ## <a name="columnstore-indexes"></a>Indexy Columnstore
 
-Ve výchozím nastavení fond SQL ukládá tabulku jako clusterovaný index columnstore. Tato forma úložiště dat dosahuje vysoké komprese dat a výkonu dotazů ve velkých tabulkách.  Clusterovaný index columnstore je obvykle nejlepší volbou, ale v některých případech je clusterový index nebo halda odpovídající strukturou úložiště.  
+Ve výchozím nastavení vyhrazený fond SQL ukládá tabulku jako clusterovaný index columnstore. Tato forma úložiště dat dosahuje vysoké komprese dat a výkonu dotazů ve velkých tabulkách.  Clusterovaný index columnstore je obvykle nejlepší volbou, ale v některých případech je clusterový index nebo halda odpovídající strukturou úložiště.  
 
 > [!TIP]
 > Tabulka haldy může být obzvláště užitečná pro načítání přechodných dat, jako je například pracovní tabulka, která se transformuje na konečnou tabulku.
 
-Seznam funkcí columnstore najdete v tématu [co je nového pro indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Pokud chcete zlepšit výkon indexu columnstore, přečtěte si téma [maximalizace kvality skupiny řádků pro indexy columnstore](../sql/data-load-columnstore-compression.md).
+Seznam funkcí columnstore najdete v tématu [co je nového pro indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?view=azure-sqldw-latest&preserve-view=true). Pokud chcete zlepšit výkon indexu columnstore, přečtěte si téma [maximalizace kvality skupiny řádků pro indexy columnstore](../sql/data-load-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statistika
-
 
 Optimalizátor dotazů používá při vytváření dotazu statistiku na úrovni sloupce. Pro zlepšení výkonu dotazů je důležité mít statistiku pro jednotlivé sloupce, zejména sloupce používané v dotazech na dotazy. Synapse SQL podporuje automatické vytváření statistik. 
 
@@ -201,46 +200,46 @@ Statistická aktualizace se neprovádí automaticky. Aktualizuje statistiku po p
 
 ## <a name="primary-key-and-unique-key"></a>Primární klíč a jedinečný klíč
 
-PRIMÁRNÍ klíč se podporuje jenom v případě, že se používají jenom neclusterované a nevynucované.  JEDINEČNÉ omezení se podporuje jenom v případě, že se používá vynutilo.  Další informace najdete v článku [omezení pro tabulku fondů SQL](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+V případě vyhrazeného fondu SQL se primární klíč podporuje jenom v případě, že se používají jenom neclusterované a nevynucované.  JEDINEČNÉ omezení se podporuje jenom v případě, že se používá vynutilo.  Další informace najdete v článku [omezení pro tabulku fondů SQL](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
 ## <a name="commands-for-creating-tables"></a>Příkazy pro vytváření tabulek
 
-Tabulku můžete vytvořit jako novou prázdnou tabulku. Můžete také vytvořit a naplnit tabulku pomocí výsledků příkazu SELECT. Níže jsou uvedené příkazy T-SQL pro vytvoření tabulky.
+Pro vyhrazený fond SQL můžete vytvořit tabulku jako novou prázdnou tabulku. Můžete také vytvořit a naplnit tabulku pomocí výsledků příkazu SELECT. Níže jsou uvedené příkazy T-SQL pro vytvoření tabulky.
 
 | Příkaz T-SQL | Popis |
 |:----------------|:------------|
-| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
-| [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří externí tabulku. Definice tabulky je uložena ve fondu SQL. Data tabulky se ukládají do služby Azure Blob Storage nebo Azure Data Lake Storage. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Naplní novou tabulku výsledky příkazu SELECT. Sloupce tabulky a datové typy jsou založené na výsledcích příkazu SELECT. K importu dat tento příkaz může vybrat z externí tabulky. |
-| [VYTVOŘIT EXTERNÍ TABULKU JAKO SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří novou externí tabulku exportováním výsledků příkazu SELECT do externího umístění.  Umístění je buď úložiště objektů BLOB v Azure, nebo Azure Data Lake Storage. |
+| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
+| [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Vytvoří externí tabulku. Definice tabulky je uložená ve vyhrazeném fondu SQL. Data tabulky se ukládají do služby Azure Blob Storage nebo Azure Data Lake Storage. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Naplní novou tabulku výsledky příkazu SELECT. Sloupce tabulky a datové typy jsou založené na výsledcích příkazu SELECT. K importu dat tento příkaz může vybrat z externí tabulky. |
+| [VYTVOŘIT EXTERNÍ TABULKU JAKO SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Vytvoří novou externí tabulku exportováním výsledků příkazu SELECT do externího umístění.  Umístění je buď úložiště objektů BLOB v Azure, nebo Azure Data Lake Storage. |
 
 ## <a name="align-source-data-with-the-data-warehouse"></a>Zarovnávání zdrojových dat s datovým skladem
 
-Tabulky datového skladu jsou vyplněny načtením dat z jiného zdroje dat. Aby bylo možné dosáhnout úspěšného zatížení, musí být počet a datové typy sloupců ve zdrojových datech v souladu s definicí tabulky v datovém skladu.
+Vyhrazené tabulky fondu SQL jsou vyplněny načtením dat z jiného zdroje dat. Aby bylo možné dosáhnout úspěšného zatížení, musí být počet a datové typy sloupců ve zdrojových datech v souladu s definicí tabulky v datovém skladu.
 
 > [!NOTE]
 > Získání dat k zarovnání může být nejzávažnější součástí návrhu tabulek.
 
-Pokud data přicházejí z více úložišť dat, můžete data přenést do datového skladu a uložit je do integrační tabulky. Jakmile jsou data v tabulce integrace, můžete použít sílu fondu SQL k implementaci transformačních operací. Jakmile budou data připravena, můžete je vložit do provozních tabulek.
+Pokud data přicházejí z více úložišť dat, můžete data přenést do datového skladu a uložit je do integrační tabulky. Jakmile jsou data v tabulce integrace, můžete k implementaci transformačních operací použít sílu vyhrazeného fondu SQL. Jakmile budou data připravena, můžete je vložit do provozních tabulek.
 
 ## <a name="unsupported-table-features"></a>Nepodporované funkce tabulky
 
-Fond SQL podporuje mnoho, ale ne všechny, z funkcí tabulky nabízených jinými databázemi.  V následujícím seznamu jsou uvedeny některé funkce tabulky, které nejsou podporovány ve fondu SQL.
+Vyhrazený fond SQL podporuje mnoho, ale ne všechny, z funkcí tabulky nabízených jinými databázemi.  V následujícím seznamu jsou uvedeny některé funkce tabulky, které nejsou podporované ve vyhrazeném fondu SQL.
 
-- Cizí klíč, [omezení CHECK Table](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Vypočítané sloupce](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Indexovaná zobrazení](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Zhuštěné sloupce](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- Cizí klíč, [omezení CHECK Table](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Vypočítané sloupce](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Indexovaná zobrazení](/sql/relational-databases/views/create-indexed-views?view=azure-sqldw-latest&preserve-view=true)
+- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Zhuštěné sloupce](/sql/relational-databases/tables/use-sparse-columns?view=azure-sqldw-latest&preserve-view=true)
 - Náhradní klíče, implementace s [identitou](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Synonyma](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Triggery](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Jedinečné indexy](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Uživatelsky definované typy](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Synonyma](/sql/t-sql/statements/create-synonym-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Triggery](/sql/t-sql/statements/create-trigger-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Jedinečné indexy](/sql/t-sql/statements/create-index-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Uživatelsky definované typy](/sql/relational-databases/native-client/features/using-user-defined-types?view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="table-size-queries"></a>Dotazy na velikost tabulky
 
-Jedním z jednoduchých způsobů, jak identifikovat prostor a řádky spotřebované v tabulce v každé z distribucí 60, je použití [příkazu DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+V vyhrazeném fondu SQL jedním z jednoduchých způsobů, jak identifikovat prostor a řádky spotřebované v tabulce v každé z distribucí 60, je použití [příkazu DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -441,4 +440,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření tabulek pro datový sklad je dalším krokem načtení dat do tabulky.  Kurz načítání najdete v tématu [načtení dat do fondu SQL](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool).
+Po vytvoření tabulek pro datový sklad je dalším krokem načtení dat do tabulky.  Kurz načítání najdete v tématu [načtení dat do vyhrazeného fondu SQL](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool).

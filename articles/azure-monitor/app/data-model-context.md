@@ -4,12 +4,12 @@ description: Model dat kontextu telemetrie Application Insights
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 76f3be510494a1f005b0080ee8f2390a3fbc3622
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322665"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91767849"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Kontext telemetrie: Application Insights datový model
 
@@ -85,7 +85,7 @@ Maximální délka: 128
 
 ## <a name="authenticated-user-id"></a>ID ověřeného uživatele
 
-ID ověřeného uživatele Opakem ID anonymního uživatele Toto pole představuje uživatele s popisným názvem. Vzhledem k tomu, že informace o PII nejsou shromažďovány ve výchozím nastavení většinou v sadě SDK.
+ID ověřeného uživatele Opakem ID anonymního uživatele Toto pole představuje uživatele s popisným názvem. Toto je shromažďováno pouze ve výchozím nastavení pomocí sady SDK ASP.NET Framework [`AuthenticatedUserIdTelemetryInitializer`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/WEB/Src/Web/Web/AuthenticatedUserIdTelemetryInitializer.cs) .  
 
 Maximální délka: 1024
 
@@ -113,7 +113,7 @@ Maximální délka: 256
 
 ## <a name="internal-sdk-version"></a>Interní: verze sady SDK
 
-Verze sady SDK. Informace najdete v [tomto článku](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md) .
+Verze sady SDK. Informace najdete v [tomto článku](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md) .
 
 Maximální délka: 64
 

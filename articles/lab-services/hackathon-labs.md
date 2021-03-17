@@ -3,12 +3,12 @@ title: Použití Azure Lab Services pro Hackathon
 description: Tento článek popisuje, jak používat Azure Lab Services pro vytváření testovacích prostředí, která můžete použít ke spuštění hackathony.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4648def48557d70547ef7d41d6c3e516671849e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445878"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452726"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Použít Azure Lab Services pro další Hackathon
 Azure Lab Services je navržená tak, aby byla nenáročná a snadno použitelná, takže můžete rychle vymezit nové prostředí virtuálních počítačů (VM) pro vaši Hackathon.  Pomocí následujícího kontrolního seznamu zajistěte, aby váš Hackathon byl co nejrychleji. Tento kontrolní seznam by měl dokončit vaše IT oddělení nebo vyučující, kteří zodpovídají za vytváření a správu testovacího prostředí Hackathon. 
@@ -39,7 +39,7 @@ Pokud chcete používat služby testovacího prostředí pro Hackathon, ujistět
 
 - **Rozhodněte, jestli se má omezit přístup k testovacímu prostředí**. 
 
-    Při přidávání uživatelů do testovacího prostředí je k dispozici možnost omezit přístup, která je ve výchozím nastavení povolená. Tato funkce vyžaduje, abyste přidali všechny e-maily účastníků Hackathon do seznamu předtím, než se budou moct zaregistrovat a přistupovat k testovacímu prostředí pomocí odkazu registrace. Pokud máte Hackathon, kde nevíte, kdo budou účastníci před událostí, můžete zakázat možnost omezit přístup, která umožňuje komukoli zaregistrovat se do testovacího prostředí pomocí odkazu na registraci. Další informace najdete v [příručce Průvodce přidáváním uživatelů](how-to-configure-student-usage.md#add-users-to-a-lab).
+    Při přidávání uživatelů do testovacího prostředí je k dispozici možnost omezit přístup, která je ve výchozím nastavení povolená. Tato funkce vyžaduje, abyste přidali všechny e-maily účastníků Hackathon do seznamu předtím, než se budou moct zaregistrovat a přistupovat k testovacímu prostředí pomocí odkazu registrace. Pokud máte Hackathon, kde nevíte, kdo budou účastníci před událostí, můžete zakázat možnost omezit přístup, která umožňuje komukoli zaregistrovat se do testovacího prostředí pomocí odkazu na registraci. Další informace najdete v [příručce Průvodce přidáváním uživatelů](how-to-configure-student-usage.md).
 
 - **Ověřte nastavení plánu, kvót a automatické vypnutí**. 
 
@@ -51,7 +51,7 @@ Pokud chcete používat služby testovacího prostředí pro Hackathon, ujistět
 
     Automatické **vypnutí**: Pokud je tato možnost povolená, nastavení automatického [vypnutí](how-to-enable-shutdown-disconnect.md) způsobí, že se virtuální počítače s Windows po uplynutí určité doby automaticky vypnou, jakmile se student odpojí od své relace RDP. Standardně je toto nastavení zakázáno.
 
-- **Nakonfigurujte nastavení brány firewall tak, aby povolovala připojení k testovacím virtuálním**počítačům. 
+- **Nakonfigurujte nastavení brány firewall tak, aby povolovala připojení k testovacím virtuálním** počítačům. 
 
     Ujistěte se, že nastavení brány firewall ve škole nebo ve vaší organizaci umožňuje připojení k virtuálním počítačům testovacího prostředí pomocí RDP\SSH.. Další informace najdete v tématu [Průvodce konfigurací nastavení brány firewall vaší sítě](how-to-configure-firewall-settings.md).
 
@@ -83,7 +83,7 @@ Tato část popisuje kroky pro dokončení dne vašeho hackathonu.
     - Přihlašovací údaje, které by měly být použity pro připojení k počítači. Tento krok se vztahuje pouze v případě, že testovací prostředí používá bitovou kopii systému Windows a Vy jste nakonfigurovali všechny virtuální počítače, aby používaly stejné heslo.
     - Pokyny, jak účastníci SSH and\or RDP ke svým počítačům.
 
-        Další informace najdete v tématu Návod, [Jak odesílat pozvánky uživatelům](how-to-configure-student-usage.md?branch=master#send-invitations-to-users) a [připojovat se k virtuálním počítačům se systémem Linux](how-to-use-remote-desktop-linux-student.md?branch=master). 
+        Další informace najdete v tématu Návod, [Jak odesílat pozvánky uživatelům](how-to-configure-student-usage.md#send-invitations-to-users) a [připojovat se k virtuálním počítačům se systémem Linux](how-to-use-remote-desktop-linux-student.md). 
 
 ## <a name="next-steps"></a>Další kroky
-Začněte vytvořením účtu testovacího prostředí v učebně Labs podle pokynů v článku [kurz: nastavení účtu testovacího prostředí pomocí Azure Lab Services](tutorial-setup-lab-account.md).
+Začněte vytvořením účtu testovacího prostředí v cvičení podle pokynů v článku [kurz: nastavení účtu testovacího prostředí pomocí Azure Lab Services](tutorial-setup-lab-account.md).

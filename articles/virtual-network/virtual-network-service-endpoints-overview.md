@@ -13,33 +13,34 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132819"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576663"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
 Koncový bod služby Virtual Network (VNet) poskytuje zabezpečené a přímé připojení ke službám Azure přes optimalizovanou trasu přes páteřní síť Azure. Koncové body umožňují svázat vaše důležité prostředky služeb Azure pouze s vašimi virtuálními sítěmi. Koncové body služby umožňují privátním IP adresám ve virtuální síti dosáhnout koncového bodu služby Azure bez nutnosti veřejné IP adresy ve virtuální síti.
 
-Tato funkce je k dispozici pro následující služby a oblasti Azure. *Microsoft. \* * Resource je v závorkách. Povolit tento prostředek ze strany podsítě při konfiguraci koncových bodů služby pro vaši službu:
+Tato funkce je k dispozici pro následující služby a oblasti Azure. *Microsoft. \** Resource je v závorkách. Povolit tento prostředek ze strany podsítě při konfiguraci koncových bodů služby pro vaši službu:
 
 **Obecná dostupnost**
 
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (*Microsoft. Storage*): všeobecně dostupné ve všech oblastech Azure.
 - **[Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné ve všech oblastech Azure.
-- **[Azure SQL Data Warehouse](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné ve všech oblastech Azure.
+- **[Azure synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupná ve všech oblastech Azure pro vyhrazené fondy SQL (dřív SQL DW).
 - **[Azure Database for PostgreSQL Server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné v oblastech Azure, kde je databázová služba k dispozici.
 - **[Azure Database for MySQL server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné v oblastech Azure, kde je databázová služba k dispozici.
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft. SQL*): všeobecně dostupné v oblastech Azure, kde je databázová služba k dispozici.
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureCosmosDB*): všeobecně dostupné ve všech oblastech Azure.
+- **[Azure Database for MariaDB](../mariadb/concepts-data-access-security-vnet.md)** (*Microsoft. SQL*): všeobecně dostupné v oblastech Azure, kde je databázová služba k dispozici.
+- **[Azure Cosmos DB](../cosmos-db/how-to-configure-vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureCosmosDB*): všeobecně dostupné ve všech oblastech Azure.
 - **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (*Microsoft. klíčů trezor*): všeobecně dostupné ve všech oblastech Azure.
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. ServiceBus*): všeobecně dostupné ve všech oblastech Azure.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. EventHub*): všeobecně dostupné ve všech oblastech Azure.
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. Azureactivedirectory selhala*): všeobecně dostupná ve všech oblastech Azure, kde je adls Gen1 k dispozici.
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*Microsoft. Web*): všeobecně dostupné ve všech oblastech Azure, kde je dostupná služba App Service.
+- **[Azure App Service](../app-service/app-service-ip-restrictions.md)** (*Microsoft. Web*): všeobecně dostupné ve všech oblastech Azure, kde je dostupná služba App Service.
+- **[Azure Cognitive Services](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*Microsoft. Cognitiveservices Account*): všeobecně dostupné ve všech oblastech Azure, kde jsou k dispozici služby pro rozpoznávání.
 
 **Public Preview**
 
@@ -61,7 +62,7 @@ Koncové body služby poskytují následující výhody:
 
 - Tato funkce je dostupná pouze pro virtuální sítě nasazené pomocí modelu nasazení Azure Resource Manager.
 - Koncové body jsou povolené na podsítích nakonfigurovaných ve virtuálních sítích Azure. Koncové body není možné použít pro provoz z vašich místních služeb do služeb Azure. Další informace najdete v tématu [zabezpečení přístupu ke službě Azure z místního](#secure-azure-services-to-virtual-networks) prostředí.
-- Pro Azure SQL se koncový bod služby vztahuje jenom na provoz služeb Azure v rámci oblasti virtuální sítě. V případě Azure Storage se koncové body také rozšíří tak, aby zahrnovaly spárované oblasti, ve kterých nasadíte virtuální síť, která podporuje přenos geograficky redundantního úložiště s přístupem pro čtení (RA-GRS) a geograficky redundantní úložiště (GRS). Další informace najdete v tématu [spárované oblasti Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+- Pro Azure SQL se koncový bod služby vztahuje jenom na provoz služeb Azure v rámci oblasti virtuální sítě. V případě Azure Storage se koncové body také rozšíří tak, aby zahrnovaly spárované oblasti, ve kterých nasadíte virtuální síť pro podporu provozu služby Read-Access Geo-Redundant Storage (RA-GRS) a úložiště Geo-Redundant (GRS). Další informace najdete v tématu [spárované oblasti Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
 - V případě Azure Data Lake Storage (ADLS) 1. generace je možnost integrace virtuální sítě dostupná jenom pro virtuální sítě v rámci stejné oblasti. Také si všimněte, že integrace virtuální sítě pro ADLS Gen1 používá ke generování dalších deklarací zabezpečení v přístupovém tokenu zabezpečení koncového bodu služby virtuální sítě mezi vaší virtuální sítí a Azure Active Directory (Azure AD). Tyto deklarace identity pak slouží k ověření vaší virtuální sítě v účtu Data Lake Storage Gen1 a povolení přístupu. Značka *Microsoft. azureactivedirectory selhala* uvedená v části služby podporující koncové body služby se používá jenom pro podporu koncových bodů služby na ADLSu Gen 1. Azure AD nepodporuje nativně koncové body služby. Další informace o Azure Data Lake Store integraci virtuální sítě 1. generace najdete [v tématu zabezpečení sítě v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="secure-azure-services-to-virtual-networks"></a>Zabezpečení služeb Azure pro virtuální sítě
@@ -76,7 +77,7 @@ Koncové body služby poskytují následující výhody:
 
   Ve výchozím nastavení nejsou prostředky služeb Azure zabezpečené pro virtuální sítě dosažitelné z místních sítí. Pokud chcete povolený provoz z místního prostředí, musíte taky z místního nebo ExpressRoute povolených IP adres veřejných (obvykle NAT). Tyto IP adresy můžete přidat prostřednictvím konfigurace brány firewall protokolu IP pro prostředky služeb Azure.
 
-  ExpressRoute: Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro veřejné partnerské vztahy nebo partnerské vztahy Microsoftu z vašich místních prostředí, budete muset identifikovat IP adresy NAT, které používáte. U veřejných partnerských vztahů každý okruh ExpressRoute používá ve výchozím nastavení dvě IP adresy překladu adres (NAT), které se ve výchozím nastavení použijí na provoz služeb Azure, když přenos vstoupí do sítě Microsoft Azure páteřní sítě. U partnerského vztahu Microsoftu jsou IP adresy NAT buď poskytnuté zákazníkem, nebo poskytované poskytovatelem služeb.Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku.Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o překladu adres (NAT) pro veřejný partnerský vztah ExpressRoute a partnerského vztahu Microsoftu najdete v článku [požadavky na EXPRESSROUTE NAT](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
+  ExpressRoute: Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro veřejné partnerské vztahy nebo partnerské vztahy Microsoftu z vašich místních prostředí, budete muset identifikovat IP adresy NAT, které používáte. U veřejných partnerských vztahů každý okruh ExpressRoute používá ve výchozím nastavení dvě IP adresy překladu adres (NAT), které se ve výchozím nastavení použijí na provoz služeb Azure, když přenos vstoupí do sítě Microsoft Azure páteřní sítě. U partnerského vztahu Microsoftu jsou IP adresy NAT buď poskytnuté zákazníkem, nebo poskytované poskytovatelem služeb. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o překladu adres (NAT) pro veřejný partnerský vztah ExpressRoute a partnerského vztahu Microsoftu najdete v článku [požadavky na EXPRESSROUTE NAT](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
 
 ![Svázání služeb Azure s virtuálními sítěmi](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -97,7 +98,7 @@ Koncové body služby poskytují následující výhody:
 
 - Skupiny zabezpečení sítě (NSG) s koncovými body služby:
   - Ve výchozím nastavení skupin zabezpečení sítě povoluje odchozí internetový provoz a také umožňuje provoz z vaší virtuální sítě do služeb Azure. Tento provoz bude i nadále pracovat s koncovými body služby, jak je. 
-  - Pokud chcete zakázat veškerý odchozí internetový provoz a povolit jenom přenosy na konkrétní služby Azure, můžete to udělat pomocí [značek služeb ve službě](security-overview.md#service-tags) skupin zabezpečení sítě. V pravidlech NSG můžete zadat podporované služby Azure jako cíl a Azure taky poskytuje údržbu IP adres, které jsou základem jednotlivých značek. Další informace najdete v tématu [Značky služeb Azure pro skupiny zabezpečení sítě](security-overview.md#service-tags). 
+  - Pokud chcete zakázat veškerý odchozí internetový provoz a povolit jenom přenosy na konkrétní služby Azure, můžete to udělat pomocí [značek služeb ve službě](./network-security-groups-overview.md#service-tags) skupin zabezpečení sítě. V pravidlech NSG můžete zadat podporované služby Azure jako cíl a Azure taky poskytuje údržbu IP adres, které jsou základem jednotlivých značek. Další informace najdete v tématu [Značky služeb Azure pro skupiny zabezpečení sítě](./network-security-groups-overview.md#service-tags). 
 
 ### <a name="scenarios"></a>Scénáře
 
@@ -125,7 +126,7 @@ Koncové body služby je možné konfigurovat na virtuálních sítích nezávis
 
 Další informace o předdefinovaných rolích najdete v tématu [předdefinované role Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Další informace o přiřazení konkrétních oprávnění k vlastním rolím najdete v tématu [vlastní role Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Pokud jsou virtuální síť a prostředky služeb Azure v různých předplatných, musí být prostředky ve stejném tenantovi Active Directory (AD). 
+Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Některé služby Azure (ne všechny), například Azure Storage a Azure Key Vault také podporují koncové body služby v různých klientech služby Active Directory (AD), tj. virtuální síť a prostředek služby Azure mohou být v různých klientech služby Active Directory (AD). Další podrobnosti najdete v dokumentaci k jednotlivým službám.  
 
 ## <a name="pricing-and-limits"></a>Ceny a omezení
 
@@ -137,18 +138,18 @@ Některé služby Azure, například účty Azure Storage, můžou vymáhat omez
 
 ## <a name="vnet-service-endpoint-policies"></a>Zásady koncového bodu služby virtuální sítě 
 
-Zásady koncového bodu služby virtuální sítě umožňují filtrovat provoz virtuální sítě do služeb Azure. Tento filtr povoluje jenom určité prostředky služeb Azure nad koncovými body služby. Zásady koncového bodu služby poskytují podrobné řízení přístupu k provozu virtuální sítě do služeb Azure. Další informace najdete v tématu [Virtual Network zásady koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+Zásady koncového bodu služby virtuální sítě umožňují filtrovat provoz virtuální sítě do služeb Azure. Tento filtr povoluje jenom určité prostředky služeb Azure nad koncovými body služby. Zásady koncového bodu služby poskytují podrobné řízení přístupu k provozu virtuální sítě do služeb Azure. Další informace najdete v tématu [Virtual Network zásady koncového bodu služby](./virtual-network-service-endpoint-policies-overview.md).
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-Nejčastější dotazy najdete v tématu [Virtual Network časté otázky týkající se koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints).
+Nejčastější dotazy najdete v tématu [Virtual Network časté otázky týkající se koncového bodu služby](./virtual-networks-faq.md#virtual-network-service-endpoints).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace koncových bodů služby pro virtuální síť](tutorial-restrict-network-access-to-resources.md)
+- [Konfigurace koncových bodů služby virtuální sítě](tutorial-restrict-network-access-to-resources.md)
 - [Zabezpečení účtu Azure Storage k virtuální síti](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Zabezpečení Azure SQL Database k virtuální síti](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Zabezpečení Azure SQL Data Warehouse k virtuální síti](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
+- [Zabezpečení služby Azure synapse Analytics na virtuální síť](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Integrace služeb Azure ve virtuálních sítích](virtual-network-for-azure-services.md)
-- [Virtual Network zásady koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Virtual Network zásady koncového bodu služby](./virtual-network-service-endpoint-policies-overview.md)
 - [Šablona Azure Resource Manageru](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

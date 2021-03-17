@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75966646"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342242"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Pokyny pro zotavení po havárii pro avere vFXT pro Azure
 
@@ -117,7 +117,7 @@ Pokud chcete získat přístup k kontejneru zálohování z avere vFXT pro clust
 * Další informace o přizpůsobení nastavení pro avere vFXT pro Azure najdete v tématu [ladění clusteru](avere-vfxt-tuning.md).
 * Další informace o zotavení po havárii a vytváření odolných aplikací v Azure:
 
-  * [Technické pokyny k odolnosti Azure](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-  * [Zotavení z přerušení služeb na úrovni celé oblasti](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
-  * [Zotavení po havárii a vysoká dostupnost pro aplikace Azure](<https://docs.microsoft.com/azure/resiliency/resiliency-disaster-recovery-high-availability-azure-applications>)
+  * [Technické pokyny k odolnosti Azure](/azure/architecture/framework/resiliency/overview)
+  * [Zotavení z přerušení služeb na úrovni celé oblasti](/azure/architecture/resiliency/recovery-loss-azure-region)
+  * [Zotavení po havárii a vysoká dostupnost pro aplikace Azure](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

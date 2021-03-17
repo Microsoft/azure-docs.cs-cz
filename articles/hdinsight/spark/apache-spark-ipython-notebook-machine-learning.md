@@ -1,19 +1,16 @@
 ---
 title: 'Kurz: sestavení aplikace Spark Machine Learning – Azure HDInsight'
-description: Kurz – podrobné pokyny k sestavení aplikace Apache Spark Machine Learning v clusterech HDInsight Spark pomocí poznámkového bloku Jupyter
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+description: Kurz – podrobné pokyny k vytvoření Apache Spark aplikace Machine Learning v clusterech HDInsight Spark pomocí Jupyter Notebook.
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 88a71eb5a8ca9a6f2bf1d17fc4eaf9780527d2cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873921"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930549"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Kurz: Vytvoření aplikace Apache Spark Machine Learning ve službě Azure HDInsight
 
@@ -41,7 +38,7 @@ Aplikace používá ukázková **HVAC.csv** data, která jsou ve výchozím nast
 
 Tato aplikace používá k zařazení dokumentu [kanál Spark ml](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) . Kanály ML poskytují jednotnou sadu rozhraní API na vysoké úrovni postavených nad datovými snímky. Datové rámce pomůžou uživatelům vytvářet a ladit praktické kanály strojového učení. V kanálu rozdělíte dokument na slova, převedete slova na vektory číselné funkce a nakonec pomocí vektorů číselné funkce a popisků sestavíte prediktivní model. Chcete-li vytvořit aplikaci, proveďte následující kroky.
 
-1. Vytvořte poznámkový blok Jupyter pomocí jádra PySpark. Pokyny najdete v tématu [Vytvoření poznámkového bloku Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
+1. Pomocí jádra PySpark vytvořte Jupyter Notebook. Pokyny najdete v tématu [Vytvoření souboru Jupyter notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
 
 1. Naimportujte typy potřebné pro tento scénář. Do prázdné buňky vložte následující fragment kódu a pak stiskněte **SHIFT + ENTER**.
 
@@ -186,7 +183,7 @@ Tato aplikace používá k zařazení dokumentu [kanál Spark ml](https://spark.
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Použití knihovny Anaconda scikit-learn pro strojové učení Sparku
 
-Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich součástí je také knihovna **scikit-learn** pro strojové učení. Knihovna obsahuje také různé datové sady, které můžete použít k vytváření ukázkových aplikací přímo z poznámkového bloku Jupyter. Příklady použití knihovny scikit-učení naleznete v tématu [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) .
+Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich součástí je také knihovna **scikit-learn** pro strojové učení. Knihovna také obsahuje různé sady dat, které můžete použít k vytvoření ukázkových aplikací přímo z Jupyter Notebook. Příklady použití knihovny scikit-učení naleznete v tématu [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -196,7 +193,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste
 
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 
-1. V části **služby**vyberte **clustery HDInsight** .
+1. V části **služby** vyberte **clustery HDInsight** .
 
 1. V seznamu clusterů HDInsight, které se zobrazí, vyberte **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.
 

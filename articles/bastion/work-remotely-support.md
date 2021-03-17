@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mialdrid
-ms.openlocfilehash: 182195190fed70b46185f98f595de6b6c32bbffe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 515a6f7175aee23c6f720258b7fdaefe76b3b5d6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80619385"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077945"
 ---
 # <a name="working-remotely-using-azure-bastion"></a>Vzdálená práce pomocí Azure bastionu
 
@@ -26,10 +26,10 @@ Azure bastionu hraje v podpoře vzdálených pracovních scénářů pivotovou r
 
 Konkrétně Azure bastionu poskytuje zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům v rámci virtuální sítě Azure přímo v Azure Portal bez použití veřejné IP adresy. Další informace o architektuře a klíčových funkcích Azure bastionu najdete v části [co je Azure bastionu](bastion-overview.md).
 
-Azure bastionu se nasazuje na virtuální síť, což znamená, že společnosti můžou nakonfigurovat a spravovat jednu službu Azure bastionu a rychle tak podporovat vzdálený přístup uživatelů k virtuálním počítačům v rámci virtuální sítě Azure. Pokyny k vytvoření a správě Azure bastionu najdete v tématu [Vytvoření hostitele bastionu](bastion-create-host-portal.md).
+Azure bastionu se nasazuje na virtuální síť, což znamená, že společnosti můžou nakonfigurovat a spravovat jednu službu Azure bastionu a rychle tak podporovat vzdálený přístup uživatelů k virtuálním počítačům v rámci virtuální sítě Azure. Pokyny k vytvoření a správě Azure bastionu najdete v tématu [Vytvoření hostitele bastionu](./tutorial-create-host-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nakonfigurujte Azure bastionu pomocí [Azure Portal](bastion-create-host-portal.md), [PowerShellu](bastion-create-host-powershell.md)nebo rozhraní příkazového řádku Azure.
+* Nakonfigurujte Azure bastionu pomocí [Azure Portal](./tutorial-create-host-portal.md), [PowerShellu](bastion-create-host-powershell.md)nebo rozhraní příkazového řádku Azure.
 
 * Další informace najdete v tématu [bastionu – Nejčastější dotazy](bastion-faq.md) .

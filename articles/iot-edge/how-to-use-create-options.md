@@ -9,14 +9,16 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ee5536562eb3f2008908a36ff296ef2cfa337ea
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80550341"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200622"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>Jak nakonfigurovat možnosti vytváření kontejnerů pro IoT Edge moduly
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Parametr **createOptions** v manifestu nasazení umožňuje konfigurovat kontejnery modulu za běhu. Tento parametr rozbalí vaši kontrolu nad moduly a umožňuje úlohy, jako je povolení nebo omezení přístupu modulu k prostředkům hostitelského zařízení nebo konfigurace sítě.
 
@@ -52,17 +54,17 @@ Manifest nasazení IoT Edge přijímá možnosti vytváření formátované jako
 
 Tento příklad edgeHub používá parametr **Hostconfig. PortBindings** k mapování vystavených portů na kontejneru na port v hostitelském zařízení.
 
-Pokud používáte rozšíření Azure IoT Tools pro Visual Studio nebo Visual Studio Code, můžete napsat možnosti vytvoření ve formátu JSON v **deployment.template.js** souboru. Poté, když použijete rozšíření k sestavení IoT Edge řešení nebo vygenerování manifestu nasazení, bude stringify JSON pro vás ve formátu, který očekává IoT Edge runtime. Příklad:
+Pokud používáte rozšíření Azure IoT Tools pro Visual Studio nebo Visual Studio Code, můžete napsat možnosti vytvoření ve formátu JSON v **deployment.template.js** souboru. Poté, když použijete rozšíření k sestavení IoT Edge řešení nebo vygenerování manifestu nasazení, bude stringify JSON pro vás ve formátu, který očekává IoT Edge runtime. Například:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-Jedním z tipů pro psaní možností vytváření je použití `docker inspect` příkazu. V rámci procesu vývoje spusťte modul místně pomocí nástroje `docker run <container name>` . Jakmile modul funguje způsobem, který chcete, spusťte `docker inspect <container name>` . Tento příkaz vypíše podrobnosti o modulu ve formátu JSON. Vyhledejte parametry, které jste nakonfigurovali, a zkopírujte kód JSON. Příklad:
+Jedním z tipů pro psaní možností vytváření je použití `docker inspect` příkazu. V rámci procesu vývoje spusťte modul místně pomocí nástroje `docker run <container name>` . Jakmile modul funguje způsobem, který chcete, spusťte `docker inspect <container name>` . Tento příkaz vypíše podrobnosti o modulu ve formátu JSON. Vyhledejte parametry, které jste nakonfigurovali, a zkopírujte kód JSON. Například:
 
-[![Výsledky kontroly edgeHub ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) Docker](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![Výsledky kontroly edgeHub Docker](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png)](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
-## <a name="common-scenarios"></a>Typické scénáře
+## <a name="common-scenarios"></a>Obvyklé scénáře
 
 Možnosti vytváření kontejnerů umožňují řadu scénářů, ale tady je několik, které se při sestavování IoT Edgech řešení často vyskytují:
 
@@ -131,5 +133,5 @@ Po dokument pro finální manifest nasazení by tyto hodnoty vypadaly jako v ná
 
 Další příklady vytvoření možností v akci najdete v následujících ukázkách IoT Edge:
 
-* [Custom Vision a Azure IoT Edge na malinu PI 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
+* [Custom Vision a Azure IoT Edge na malinu PI 3](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi)
 * [Ukázka úložiště objektů blob Azure IoT Edge](https://github.com/Azure-Samples/azure-iotedge-blobstorage-sample)

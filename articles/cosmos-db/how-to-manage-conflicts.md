@@ -3,18 +3,20 @@ title: Správa konfliktů mezi oblastmi v Azure Cosmos DB
 description: Přečtěte si, jak spravovat konflikty v Azure Cosmos DB vytvořením zásad pro službu WINS pro poslední zápis nebo vlastní řešení konfliktů.
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0f823c00f4362fc018fb52b2d8458fa58d6831d2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422245"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339338"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktů v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V případě zápisů ve více oblastech může dojít ke konfliktům, pokud více klientů zapisuje ke stejné položce. Pokud dojde ke konfliktu, můžete konflikt vyřešit pomocí různých zásad řešení konfliktů. Tento článek popisuje, jak spravovat zásady řešení konfliktů.
 
@@ -22,7 +24,7 @@ V případě zápisů ve více oblastech může dojít ke konfliktům, pokud ví
 
 V těchto ukázkách se dozvíte, jak nastavit kontejner pomocí zásad řešení konfliktů pro poslední zápis a službu WINS. Výchozí cesta pro poslední zapisovač – WINS je pole časového razítka nebo `_ts` vlastnost. Pro rozhraní SQL API to může být také nastaveno na uživatelsky definovanou cestu s číselným typem. V konfliktu je nejvyšší hodnota služba WINS. Pokud cesta není nastavena nebo je neplatná, nastaví se jako výchozí `_ts` . Konflikty vyřešené s touto zásadou se v informačním kanálu konfliktu nezobrazují. Tuto zásadu můžou používat všechna rozhraní API.
 
-### <a name="net-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -54,7 +56,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-javav4"></a>Sada Java v4 SDK
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-javav4"></a> Sada Java v4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -74,7 +76,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 # <a name="async-java-v2-sdk"></a>[Async Java v2 SDK](#tab/async)
 
-[Async Java v2 SDK](sql-api-sdk-async-java.md)   (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java v2 SDK](sql-api-sdk-async-java.md) (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -86,7 +88,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 # <a name="sync-java-v2-sdk"></a>[Synchronizace sady Java v2 SDK](#tab/sync)
 
-[Synchronizace sady Java v2 SDK](sql-api-sdk-java.md)   (Maven [com. Microsoft. Azure:: Azure-DocumentDB](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[Synchronizace sady Java v2 SDK](sql-api-sdk-java.md) (Maven [com. Microsoft. Azure:: Azure-DocumentDB](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 DocumentCollection lwwCollection = new DocumentCollection();
@@ -134,10 +136,10 @@ Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešen�
 
 Uložené procedury řešení Custom konfliktů by se měly implementovat pomocí signatury funkce uvedené níže. Název funkce se nemusí shodovat s názvem použitým při registraci uložené procedury s kontejnerem, ale zjednodušuje pojmenování. Zde je popis parametrů, které musí být pro tuto uloženou proceduru implementovány.
 
-- **incomingItem**: položka, která je vložena nebo aktualizována v potvrzení, které generuje konflikty. Má hodnotu null pro operace odstranění.
-- **existingItem**: aktuálně potvrzená položka. Tato hodnota je v aktualizaci jiná než null a pro vložení nebo odstranění je null.
-- neoznačovatelné **položky: logická**hodnota označující, jestli je incomingItem v konfliktu s dříve odstraněnou položkou. V případě hodnoty true je existingItem také null.
-- **conflictingItems**: pole zapsané verze všech položek v kontejneru, které jsou v konfliktu s INCOMINGITEM na ID nebo jakékoli jiné jedinečné vlastnosti indexu.
+- **incomingItem** : položka, která je vložena nebo aktualizována v potvrzení, které generuje konflikty. Má hodnotu null pro operace odstranění.
+- **existingItem** : aktuálně potvrzená položka. Tato hodnota je v aktualizaci jiná než null a pro vložení nebo odstranění je null.
+- neoznačovatelné **položky: logická** hodnota označující, jestli je incomingItem v konfliktu s dříve odstraněnou položkou. V případě hodnoty true je existingItem také null.
+- **conflictingItems** : pole zapsané verze všech položek v kontejneru, které jsou v konfliktu s INCOMINGITEM na ID nebo jakékoli jiné jedinečné vlastnosti indexu.
 
 > [!IMPORTANT]
 > Stejně jako u jakékoli uložené procedury má vlastní procedura řešení konfliktů přístup k jakýmkoli datům se stejným klíčem oddílu a může provést jakoukoli operaci vložení, aktualizace nebo odstranění pro vyřešení konfliktů.
@@ -198,7 +200,7 @@ function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
 }
 ```
 
-### <a name="net-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -242,7 +244,7 @@ await container.Scripts.CreateStoredProcedureAsync(
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav4"></a>Sada Java v4 SDK
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav4"></a> Sada Java v4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -262,7 +264,7 @@ await container.Scripts.CreateStoredProcedureAsync(
 
 # <a name="async-java-v2-sdk"></a>[Async Java v2 SDK](#tab/async)
 
-[Async Java v2 SDK](sql-api-sdk-async-java.md)   (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java v2 SDK](sql-api-sdk-async-java.md) (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -274,7 +276,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 # <a name="sync-java-v2-sdk"></a>[Synchronizace sady Java v2 SDK](#tab/sync)
 
-[Synchronizace sady Java v2 SDK](sql-api-sdk-java.md)   (Maven [com. Microsoft. Azure:: Azure-DocumentDB](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[Synchronizace sady Java v2 SDK](sql-api-sdk-java.md) (Maven [com. Microsoft. Azure:: Azure-DocumentDB](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 DocumentCollection udpCollection = new DocumentCollection();
@@ -327,7 +329,7 @@ Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů. Tyto konflikty se zobrazí v informačním kanálu o konfliktech.
 
-### <a name="net-sdk"></a><a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="create-custom-conflict-resolution-policy-dotnet"></a>SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -357,7 +359,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-javav4"></a>Sada Java v4 SDK
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-javav4"></a> Sada Java v4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -377,7 +379,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 # <a name="async-java-v2-sdk"></a>[Async Java v2 SDK](#tab/async)
 
-[Async Java v2 SDK](sql-api-sdk-async-java.md)   (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java v2 SDK](sql-api-sdk-async-java.md) (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -389,7 +391,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 # <a name="sync-java-v2-sdk"></a>[Synchronizace sady Java v2 SDK](#tab/sync)
 
-[Synchronizace sady Java v2 SDK](sql-api-sdk-java.md)   (Maven [com. Microsoft. Azure:: Azure-DocumentDB](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[Synchronizace sady Java v2 SDK](sql-api-sdk-java.md) (Maven [com. Microsoft. Azure:: Azure-DocumentDB](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 DocumentCollection manualCollection = new DocumentCollection();
@@ -431,7 +433,7 @@ manual_collection = client.CreateContainer(database['_self'], collection)
 
 Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Konflikty se v informačním kanálu zobrazí jenom v případě, že se nevyřešily automaticky nebo pokud používáte zásady vlastního konfliktu.
 
-### <a name="net-sdk"></a><a id="read-from-conflict-feed-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="read-from-conflict-feed-dotnet"></a>SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -466,7 +468,7 @@ while (conflictFeed.HasMoreResults)
 
 # <a name="async-java-v2-sdk"></a>[Async Java v2 SDK](#tab/async)
 
-[Async Java v2 SDK](sql-api-sdk-async-java.md)   (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java v2 SDK](sql-api-sdk-async-java.md) (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 FeedResponse<Conflict> response = client.readConflicts(this.manualCollectionUri, null)
@@ -477,7 +479,7 @@ for (Conflict conflict : response.getResults()) {
 ```
 # <a name="sync-java-v2-sdk"></a>[Synchronizace sady Java v2 SDK](#tab/sync)
 
-[Synchronizace sady Java v2 SDK](sql-api-sdk-java.md)   (Maven [com. Microsoft. Azure:: Azure-DocumentDB](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[Synchronizace sady Java v2 SDK](sql-api-sdk-java.md) (Maven [com. Microsoft. Azure:: Azure-DocumentDB](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 Iterator<Conflict> conflictsIterator = client.readConflicts(this.collectionLink, null).getQueryIterator();
@@ -513,9 +515,9 @@ while conflict:
 Přečtěte si o následujících konceptech Azure Cosmos DB:
 
 - [Globální distribuce – pod pokličkou](global-dist-under-the-hood.md)
-- [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md)
+- [Jak nakonfigurovat zápisy ve více oblastech v aplikacích](how-to-multi-master.md)
 - [Konfigurace klientů pro vícedomé služby](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [Přidat nebo odebrat oblasti z Azure Cosmos DB účtu](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md).
-- [Dělení a distribuce dat](partition-data.md)
-- [Indexování ve službě Azure Cosmos DB](indexing-policies.md)
+- [Jak v aplikacích configuremulti zápisy do oblastí](how-to-multi-master.md).
+- [Dělení a distribuce dat](partitioning-overview.md)
+- [Indexování ve službě Azure Cosmos DB](index-policy.md)

@@ -1,23 +1,18 @@
 ---
 title: Přesun dat do a z SQL Server
 description: Přečtěte si, jak přesunout data do nebo z SQL Server databáze, která je místní nebo na virtuálním počítači Azure pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 864ece28-93b5-4309-9873-b095bbe6fedd
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe9a50b5557e6165835abf1df67f7486c260c1c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd1e1d652db3bbd91344ea828278d057baeb060
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195926"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368808"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Přesun dat do a z SQL Server pomocí Azure Data Factory
 
@@ -56,7 +51,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do/z
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -74,15 +69,15 @@ Vytvoříte propojenou službu typu **OnPremisesSqlServer** , která bude propoj
 
 Následující tabulka uvádí popis pro prvky JSON specifické pro SQL Server propojenou službu.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | typ |Vlastnost Type by měla být nastavená na: **OnPremisesSqlServer**. |Yes |
 | připojovací řetězec |Zadejte informace připojovacího řetězce potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. |Yes |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k databázi SQL Server. |Yes |
-| uživatelské jméno |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příklad: **DomainName \\ uživatelské_jméno**. |No |
+| username |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příklad: **DomainName \\ uživatelské_jméno**. |No |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |No |
 
-Přihlašovací údaje můžete šifrovat pomocí rutiny **New-AzDataFactoryEncryptValue** a použít je v připojovacím řetězci, jak je znázorněno v následujícím příkladu (vlastnost**EncryptedCredential** ):
+Přihlašovací údaje můžete šifrovat pomocí rutiny **New-AzDataFactoryEncryptValue** a použít je v připojovacím řetězci, jak je znázorněno v následujícím příkladu (vlastnost **EncryptedCredential** ):
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -131,7 +126,7 @@ V ukázkách jste použili datovou sadu typu **SQLServer** , která představuje
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **SQLServer** má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky nebo zobrazení v instanci databáze SQL Server, na kterou odkazuje propojená služba |Yes |
 
@@ -161,7 +156,7 @@ Alternativně můžete zadat uloženou proceduru zadáním **sqlReaderStoredProc
 Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, jsou sloupce definované v oddílu Structure použity k vytvoření dotazu SELECT pro spuštění v databázi SQL Server. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
 
 > [!NOTE]
-> Při použití **sqlReaderStoredProcedureName**je stále nutné zadat hodnotu pro vlastnost **TableName** v datové sadě JSON. V této tabulce neexistují žádná ověření, která by byla provedena.
+> Při použití **sqlReaderStoredProcedureName** je stále nutné zadat hodnotu pro vlastnost **TableName** v datové sadě JSON. V této tabulce neexistují žádná ověření, která by byla provedena.
 
 ### <a name="sqlsink"></a>SqlSink
 **SqlSink** podporuje následující vlastnosti:
@@ -542,16 +537,16 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 ```
 
 ## <a name="troubleshooting-connection-issues"></a>Řešení potíží s připojením
-1. Nakonfigurujte SQL Server, aby přijímala vzdálená připojení. Spusťte **SQL Server Management Studio**, klikněte pravým tlačítkem na **Server**a pak klikněte na **vlastnosti**. V seznamu vyberte **připojení** a zaškrtněte políčko **povoluje vzdálená připojení k serveru**.
+1. Nakonfigurujte SQL Server, aby přijímala vzdálená připojení. Spusťte **SQL Server Management Studio**, klikněte pravým tlačítkem na **Server** a pak klikněte na **vlastnosti**. V seznamu vyberte **připojení** a zaškrtněte políčko **povoluje vzdálená připojení k serveru**.
 
     ![Povolit vzdálená připojení](./media/data-factory-sqlserver-connector/AllowRemoteConnections.png)
 
-    Podrobné pokyny najdete v části [Konfigurace serveru vzdáleného přístupu](https://msdn.microsoft.com/library/ms191464.aspx) .
+    Podrobné pokyny najdete v části [Konfigurace serveru vzdáleného přístupu](/sql/database-engine/configure-windows/configure-the-remote-access-server-configuration-option) .
 2. Spusťte **SQL Server Configuration Manager**. Rozbalte **SQL Server konfigurace sítě** pro požadovanou instanci a vyberte **protokoly pro MSSQLSERVER**. V pravém podokně by se měly zobrazit protokoly. Povolte protokol TCP/IP kliknutím pravým tlačítkem na **TCP/IP** a kliknutím na **Povolit**.
 
     ![Povolit protokol TCP/IP](./media/data-factory-sqlserver-connector/EnableTCPProptocol.png)
 
-    Podrobnosti a alternativní způsoby povolení protokolu TCP/IP najdete v tématu [Povolení nebo zakázání síťového protokolu serveru](https://msdn.microsoft.com/library/ms191294.aspx) .
+    Podrobnosti a alternativní způsoby povolení protokolu TCP/IP najdete v tématu [Povolení nebo zakázání síťového protokolu serveru](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol) .
 3. Ve stejném okně poklikejte na **TCP/IP** a spustí se okno **vlastností protokolu TCP/IP** .
 4. Přepněte na kartu **IP adresy** . Posuňte se dolů a podívejte se na část **IPAll** . Poznamenejte si **port TCP**(výchozí hodnota je **1433**).
 5. Vytvořte **pravidlo pro bránu Windows Firewall** na počítači, aby se povolil příchozí přenos prostřednictvím tohoto portu.
@@ -661,21 +656,21 @@ Mapování je stejné jako SQL Server mapování datových typů pro ADO.NET.
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
-| Desetinné číslo |Desetinné číslo |
+| Decimal |Decimal |
 | Atribut FILESTREAM (varbinary (max)) |Byte [] |
-| Float |Double |
+| Float |dvojité |
 | image |Byte [] |
 | int |Int32 |
-| papír |Desetinné číslo |
+| papír |Decimal |
 | nchar |Řetězec, znak [] |
 | ntext |Řetězec, znak [] |
-| numerické |Desetinné číslo |
+| numerické |Decimal |
 | nvarchar |Řetězec, znak [] |
-| real |Jeden |
+| real |Jednoduché |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Desetinné číslo |
+| smallmoney |Decimal |
 | sql_variant |Předmětů |
 | text |Řetězec, znak [] |
 | time |TimeSpan |

@@ -4,10 +4,10 @@ description: Tento článek poskytuje pokyny pro získání připojovacího řet
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537169"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Získání připojovacího řetězce Event Hubs
@@ -25,7 +25,7 @@ Připojovací řetězec pro Azure Event Hubs obsahuje následující komponenty,
 Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 ```
 
-Příklad připojovacího řetězce může vypadat takto.`Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
+Příklad připojovacího řetězce může vypadat takto. `Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
 
 Tento článek vás provede různými způsoby získání připojovacího řetězce.
 

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84353dd3c8b803f27073d113d6946152f059d9be
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 763e628183e5f6ad7b7bdbb8ee7ce6db572f44ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873411"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577782"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Co je monitorování Azure Active Directory?
 
@@ -39,6 +39,22 @@ V současné době můžete směrovat protokoly do následujících umístění:
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Licencování a předpoklady pro Azure AD Reporting a monitoring
+
+Pro přístup k protokolům přihlášení Azure AD budete potřebovat licenci Azure AD Premium.
+
+Podrobné informace o funkcích a licencování najdete v [Azure Active Directory cenové příručce](https://azure.microsoft.com/pricing/details/active-directory/).
+
+K nasazení monitorování a vytváření sestav Azure AD budete potřebovat uživatele, který je globálním správcem nebo správcem zabezpečení pro tenanta Azure AD.
+
+V závislosti na konečném cíli dat protokolu budete potřebovat jednu z následujících možností:
+
+* Účet úložiště Azure, pro který máte oprávnění ListKeys. Doporučujeme použít obecný účet úložiště, ne účet úložiště objektů blob. Informace o cenách úložiště najdete v [cenové kalkulačce služby Azure Storage](https://azure.microsoft.com/pricing/calculator/?service=storage).
+
+* Obor názvů Azure Event Hubs, který se má integrovat s řešeními SIEM třetích stran.
+
+* Pracovní prostor Azure Log Analytics k odesílání protokolů do protokolů Azure Monitor.
 
 ## <a name="diagnostic-settings-configuration"></a>Konfigurace nastavení diagnostiky
 
@@ -63,7 +79,7 @@ Směrování protokolů do centra událostí Azure vám umožní provést integr
 
 ## <a name="send-logs-to-azure-monitor-logs"></a>Odeslat protokoly do protokolů Azure Monitor
 
-[Protokoly Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) jsou řešení, které konsoliduje data monitorování z různých zdrojů a poskytuje dotazovací jazyk a analytické moduly, které vám poskytnou přehled o provozu aplikací a prostředků. Odesláním protokolů aktivit Azure AD do Azure Monitor protokolů můžete rychle načíst, monitorovat a upozornit shromážděná data. Naučte se [odesílat data do protokolů Azure monitor](howto-integrate-activity-logs-with-log-analytics.md).
+[Protokoly Azure monitor](../../azure-monitor/logs/log-query-overview.md) jsou řešení, které konsoliduje data monitorování z různých zdrojů a poskytuje dotazovací jazyk a analytické moduly, které vám poskytnou přehled o provozu aplikací a prostředků. Odesláním protokolů aktivit Azure AD do Azure Monitor protokolů můžete rychle načíst, monitorovat a upozornit shromážděná data. Naučte se [odesílat data do protokolů Azure monitor](howto-integrate-activity-logs-with-log-analytics.md).
 
 Můžete také nainstalovat předem připravená zobrazení, aby protokoly aktivit služby Azure AD monitorovaly běžné scénáře včetně událostí přihlášení a auditu. Naučte se [instalovat a používat zobrazení Log Analytics pro protokoly aktivit Azure AD](howto-install-use-log-analytics-views.md).
 

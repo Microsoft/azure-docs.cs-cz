@@ -3,12 +3,12 @@ title: Analýza využití pomocí Azure Application Insights | Dokumentace Micro
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: d9de1e10363f2100b9dfe557dc12e0be951ce6b8
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800207"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489034"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -26,35 +26,37 @@ Nejlepší prostředí získáte instalací Application Insights jak v kódu apl
 
 2. **Kód webové stránky:** Před zavřením přidejte na svou webovou stránku následující skript ``</head>`` . Nahraďte klíč instrumentace příslušnou hodnotou pro váš Application Insights prostředek:
     
+    Aktuální fragment (uvedený níže) je verze "5", verze je ve fragmentu kódování zakódována jako sv: "#" a [aktuální verze je také k dispozici na GitHubu](https://go.microsoft.com/fwlink/?linkid=2156318).
+
     ```html
     <script type="text/javascript">
-    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
-    {
+    !function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+    src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", // The SDK URL Source
+    // name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+    // ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+    // useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+    crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
+    // onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
+    cfg: { // Application Insights Configuration
       instrumentationKey:"INSTRUMENTATION_KEY"
-    }
-    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    }});
     </script>
     ```
 
     Další informace o pokročilejších konfiguracích pro monitorování webů najdete v [referenčním článku o sadě JavaScript SDK](./javascript.md).
 
-3. **Kód mobilní aplikace:** Pomocí sady App Center SDK můžete shromažďovat události z vaší aplikace a pak tyto události poslat do Application Insights pro účely analýzy pomocí [této příručky](../learn/mobile-center-quickstart.md).
+3. **Kód mobilní aplikace:** Pomocí sady App Center SDK můžete shromažďovat události z vaší aplikace a pak tyto události poslat do Application Insights pro účely analýzy pomocí [této příručky](../app/mobile-center-quickstart.md).
 
 4. **Získat telemetrii:** Spusťte projekt v režimu ladění po dobu několika minut a potom vyhledejte výsledky v okně Přehled v Application Insights.
 
     Publikováním aplikace můžete monitorovat výkon vaší aplikace a zjistit, co uživatelé s vaší aplikací dělají.
-
-## <a name="include-user-and-session-id-in-your-telemetry"></a>Zahrnutí ID uživatele a relace do telemetrie
-Aby bylo možné sledovat uživatele v průběhu času, Application Insights vyžaduje způsob jejich identifikace. Jediným nástrojem pro použití, který nevyžaduje ID uživatele nebo ID relace, je nástroj Events.
-
-Zahajte odesílání ID uživatelů a relací pomocí [tohoto procesu](./usage-send-user-context.md).
 
 ## <a name="explore-usage-demographics-and-statistics"></a>Prozkoumat demografické údaje o využití a statistiky
 Zjistěte, kdy lidé používají vaši aplikaci, jaké stránky mají nejvíc zajímat, kde se nacházejí vaši uživatelé, jaké prohlížeče a operační systémy používají. 
 
 Sestavy uživatelé a relace filtrují data podle stránek nebo vlastních událostí a segmentují je podle vlastností, jako je umístění, prostředí a stránka. Můžete také přidat vlastní filtry.
 
-![Uživatelé](./media/usage-overview/users.png)  
+![Snímek obrazovky znázorňuje stránku s přehledem uživatelů pro fiktivní firmu.](./media/usage-overview/users.png)  
 
 Přehledy o tom, jaké jsou zajímavé vzory v sadě dat, najdete na pravé straně.  
 
@@ -65,13 +67,13 @@ Přehledy o tom, jaké jsou zajímavé vzory v sadě dat, najdete na pravé stra
 
 ## <a name="retention---how-many-users-come-back"></a>Uchování – kolik uživatelů se vrátí?
 
-Uchovávání vám pomůže pochopit, jak často se uživatelé budou vracet k používání své aplikace, na základě kohorty uživatelů, kteří provedli některé obchodní akce během určitého časového intervalu. 
+Uchovávání vám pomůže pochopit, jak často se uživatelé budou vracet k používání své aplikace, na základě kohorty uživatelů, kteří provedli některé obchodní akce během určitého časového intervalu. 
 
 - Informace o tom, jaké konkrétní funkce způsobí, že se uživatelé budou moci vrátit více než jiné 
 - Forma hypotézy založená na datech reálného uživatele 
 - Zjistěte, jestli je uchovávání problému v produktu. 
 
-![Uchovávání](./media/usage-overview/retention.png) 
+![Snímek obrazovky znázorňuje stránku s přehledem uchovávání informací, která zobrazuje informace o tom, jak často se uživatelé vracejí k používání jejich aplikace.](./media/usage-overview/retention.png) 
 
 Ovládací prvky uchování v horní části umožňují definovat konkrétní události a časový rozsah pro výpočet uchovávání. Graf uprostřed poskytuje vizuální znázornění celkového procenta uchování v zadaném časovém rozsahu. Graf v dolní části představuje individuální uchování v daném časovém období. Tato úroveň podrobností vám umožní pochopit, co dělají vaši uživatelé a co může ovlivnit vracení uživatelů na podrobnější členitost.  
 
@@ -79,7 +81,9 @@ Ovládací prvky uchování v horní části umožňují definovat konkrétní u
 
 ## <a name="custom-business-events"></a>Vlastní obchodní události
 
-Chcete-li získat jasné informace o tom, co uživatelé s vaší aplikací dělají, je vhodné vložit řádky kódu do protokolu pro vlastní události. Tyto události mohou sledovat cokoli od podrobných uživatelských akcí, jako je například kliknutí na určitá tlačítka, na důležitější obchodní události, jako je například vytvoření nákupu nebo získání hry. 
+Chcete-li získat jasné informace o tom, co uživatelé s vaší aplikací dělají, je vhodné vložit řádky kódu do protokolu pro vlastní události. Tyto události mohou sledovat cokoli od podrobných uživatelských akcí, jako je například kliknutí na určitá tlačítka, na důležitější obchodní události, jako je například vytvoření nákupu nebo získání hry.
+
+K shromažďování vlastních událostí můžete také použít [modul plug-in pro automatické shromažďování a analýzu](javascript-click-analytics-plugin.md) .
 
 I když v některých případech mohou zobrazení stránky představovat užitečné události, neplatí obecně. Uživatel může otevřít stránku produktu bez nákupu produktu. 
 
@@ -110,7 +114,7 @@ Přečtěte si další informace o [vlastních událostech](./api-custom-events-
 ### <a name="slice-and-dice-events"></a>Události řezů a kostek
 
 V nástrojích uživatelé, relace a události můžete rozřezat a indexovat vlastní události podle uživatele, názvu události a vlastností.
-![Uživatelé](./media/usage-overview/users.png)  
+![Snímek obrazovky znázorňuje stránku s přehledem uživatelů pro fiktivní firmu.](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>Návrh telemetrie s aplikací
 
@@ -175,8 +179,6 @@ Všechny nové TelemetryClients automaticky přidají hodnotu vlastnosti, kterou
 ## <a name="next-steps"></a>Další kroky
    - [Uživatelé, relace, události](usage-segmentation.md)
    - [Trychtýře](usage-funnels.md)
-   - [Uchovávání](usage-retention.md)
+   - [Toalet](usage-retention.md)
    - [Toky uživatelů](usage-flows.md)
-   - [Workbooks](../platform/workbooks-overview.md)
-   - [Přidat kontext uživatele](usage-send-user-context.md)
-
+   - [Workbooks](../visualize/workbooks-overview.md)

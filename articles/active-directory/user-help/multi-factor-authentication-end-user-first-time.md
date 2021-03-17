@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: fc95e988b3f89402967cdbedd06c4b945a99f99a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266249"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88795979"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Co je stránka pro dodatečné ověření?
 
@@ -33,7 +33,7 @@ Dvojúrovňové ověřování je bezpečnější než heslo, protože spoléhá 
 Dvojúrovňové ověřování může přispět k zastavení škodlivého hackera před tím, než budete mít v úmyslu. I když mají vaše heslo, lichá je, že nemají vaše zařízení.
 
 >[!Important]
->Pokud jste správcem a hledáte informace o tom, jak zapnout dvojúrovňové ověřování pro zaměstnance nebo jiné uživatele, přečtěte si [dokumentaci k ověřování Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/). Tento článek je určený pro uživatele, kteří se pokoušejí použít dvojúrovňové ověřování pomocí pracovního nebo školního účtu (například alain@contoso.com ).
+>Pokud jste správcem a hledáte informace o tom, jak zapnout dvojúrovňové ověřování pro zaměstnance nebo jiné uživatele, přečtěte si [dokumentaci k ověřování Azure Active Directory](../authentication/index.yml). Tento článek je určený pro uživatele, kteří se pokoušejí použít dvojúrovňové ověřování pomocí pracovního nebo školního účtu (například alain@contoso.com ).
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Kdo se rozhodne, jestli tuto funkci používáte?
 
@@ -60,7 +60,7 @@ Když vaše organizace zapne dvojúrovňové ověřování, zobrazí se při ka�
 
 2. Na stránce **Další ověření zabezpečení** vyberte metodu dvou faktorů ověřování, kterou chcete použít k ověření, na koho jste se přihlásili k pracovnímu nebo školnímu účtu. Můžete vybrat:
 
-    | Kontakt – metoda | Popis |
+    | Kontakt – metoda | Description |
     | --- | --- |
     | Mobilní aplikace | <ul><li>**Dostanou oznámení k ověření.** Tato možnost vloží oznámení do aplikace ověřovatele na telefonu Smartphone nebo tabletu. Podívejte se na oznámení a pokud je legitimní, vyberte v aplikaci **ověřit** . Vaše práce nebo škola může vyžadovat zadání kódu PIN před ověřením.</li><li>**Použijte ověřovací kód.** V tomto režimu aplikace vygeneruje ověřovací kód, který se aktualizuje každých 30 sekund. Do přihlašovací obrazovky zadejte nejaktuálnější ověřovací kód.<br>Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594) a [iOS](https://go.microsoft.com/fwlink/?linkid=866594).</li></ul> |
     | Telefon pro ověření | <ul><li>**Telefonní hovor** vede automatizované hlasové volání na telefonní číslo, které zadáte. Přivolejte volání a stisknutím křížku (#) na klávesnici telefonu proveďte ověření.</li><li>**Textová zpráva** končí textovou zprávou obsahující ověřovací kód. Po zobrazení výzvy v textu odpovězte buď na textovou zprávu, nebo zadejte ověřovací kód, který jste zadali do přihlašovacího rozhraní.</li></ul> |

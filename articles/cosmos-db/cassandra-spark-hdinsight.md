@@ -8,18 +8,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 4848bdceef084d587c839f2af93d1ff5a43c850b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e09ac39037024b5c360af4bb6ada26590b142924
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260565"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359587"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Přístup k Azure Cosmos DB rozhraní API Cassandra ze Sparku na PŘÍZi pomocí HDInsight
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Tento článek popisuje, jak získat přístup k Azure Cosmos DB rozhraní API Cassandra ze Sparku na PŘÍZi pomocí HDInsight-Spark z Spark-Shell. HDInsight je Hortonworks Hadoop PaaS v Azure, který využívá úložiště objektů pro HDFS a je v několika různých charakterech, jako je [Spark](../hdinsight/spark/apache-spark-overview.md).  Obsah tohoto dokumentu odkazuje na HDInsight-Spark, ale vztahuje se na všechny distribuce Hadoop.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Zřídit Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -114,11 +115,11 @@ Prostředí Spark se používá pro účely testování/průzkumu.
 
 ## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Přístup k Azure Cosmos DB rozhraní API Cassandra z poznámkových bloků Jupyter
 
-HDInsight – Spark přichází se službami Zeppelin a Jupyter notebook. Jsou to webová poznámková bloková prostředí, která podporují Scala a Python. Poznámkové bloky jsou skvělé pro interaktivní průzkumné analýzy a spolupráci, ale nejsou určeny pro provozní a produkční procesy.
+HDInsight-Spark se dodává se službami poznámkových bloků Zeppelin a Jupyter. Jsou to webová poznámková bloková prostředí, která podporují Scala a Python. Poznámkové bloky jsou skvělé pro interaktivní průzkumné analýzy a spolupráci, ale nejsou určeny pro provozní a produkční procesy.
 
 Následující poznámkové bloky Jupyter se dají nahrát do clusteru HDInsight Spark a poskytnou připravené ukázky pro práci s Azure Cosmos DB rozhraní API Cassandra. Nezapomeňte si projít první Poznámkový blok `1.0-ReadMe.ipynb` a zkontrolovat konfiguraci služby Spark pro připojení k Azure Cosmos DB rozhraní API Cassandra.
 
-Stáhněte si tyto poznámkové bloky v části [Azure-Cosmos-DB-Cassandra-API-Spark-poznámkové bloky – Jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) do počítače.
+Stáhněte si tyto poznámkové bloky v části [Azure-Cosmos-DB-Cassandra-API-Spark-poznámkové bloky – Jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/main/scala/) do počítače.
   
 ### <a name="how-to-upload"></a>Jak nahrát:
 Když spustíte Jupyter, přejděte na Scala. Nejprve vytvořte adresář a pak poznámkové bloky nahrajte do tohoto adresáře. Tlačítko pro nahrání je v horní části, pravé na straně.  
@@ -134,6 +135,6 @@ Pro automatizované procesy v produkčním prostředí se programy Spark odesíl
 
 * [Jak vytvořit program Spark Scala v integrovaném vývojovém prostředí a odeslat ho do clusteru HDInsight Spark prostřednictvím Livy ke spuštění](../hdinsight/spark/apache-spark-create-standalone-application.md)
 
-* [Jak se připojit k Azure Cosmos DB rozhraní API Cassandra z programu Spark Scala](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Jak se připojit k Azure Cosmos DB rozhraní API Cassandra z programu Spark Scala](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/main/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
 
 * [Úplný seznam ukázek kódu pro práci s rozhraní API Cassandra](cassandra-spark-generic.md)

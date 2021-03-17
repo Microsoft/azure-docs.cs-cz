@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 99c8ee79c51205c33d14328530f527ad8e3ff7b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4bfac9be5041fdf4ebfe7ea56f064b8b85806703
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085452"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98859684"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Podporované distribuce a ovladače
 
@@ -31,9 +31,11 @@ Microsoft redistribuuje instalační programy ovladačů NVIDIA GRID pro virtuá
 
 Ovladače mřížky znovu distribuované pomocí Azure nefungují na virtuálních počítačích bez řady NV, jako jsou například NC, NCv2, NCv3, ND a NDv2-Series VM.
 
-| Distribuce | Ovladač |
+|Distribuce|Ovladač|
 | --- | -- |
-|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,6 až 7,8, 8,0, 8,1<br/><br/>CentOS-based 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11, R450 Branch ovladačů|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,7 až 7,9, 8,0, 8,1<br/><br/>SUSE Linux Enterprise Server 12 SP2 <br/><br/>SUSE Linux Enterprise Server 15 SP2 | NVIDIA GRID 12,0, [R460](https://go.microsoft.com/fwlink/?linkid=874272)větví ovladače (. exe)|
+
+Úplný seznam všech předchozích odkazů ovladačů NVIDIA GRID najdete na [GitHubu](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) .
 
 > [!WARNING] 
 > Instalace softwaru třetích stran na produkty Red Hat může mít vliv na podmínky podpory Red Hat. Informace najdete v [článku znalostní báze Red Hat](https://access.redhat.com/articles/1067).

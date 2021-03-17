@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273197"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059717"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služby Application Gateway v2 
 
@@ -21,7 +21,7 @@ Application Gateway je k dispozici v rámci Standard_v2 SKU. Firewall webových 
 
 Nová SKU v2 obsahuje následující vylepšení:
 
-- Automatické **škálování**: Application Gateway nebo WAF nasazení v rámci SKU automatického škálování se dá škálovat nahoru nebo dolů na základě změny schémat zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Tato SKU nabízí skutečnou pružnost. V Standard_v2 a WAF_v2 SKU může Application Gateway fungovat v pevné kapacitě (automatické škálování je zakázané) a v režimu s povoleným automatickým škálováním. Režim pevné kapacity je vhodný pro scénáře s konzistentními a předvídatelnými úlohami. Režim automatického škálování je užitečný v aplikacích, které se zobrazují jako odchylka v provozu aplikací.
+- Automatické **škálování**: Application Gateway nebo WAF nasazení pod skladovou jednotkou automatického škálování se dá škálovat nebo na základě změny schémat zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Tato SKU nabízí skutečnou pružnost. V Standard_v2 a WAF_v2 SKU může Application Gateway fungovat v pevné kapacitě (automatické škálování je zakázané) a v režimu s povoleným automatickým škálováním. Režim pevné kapacity je vhodný pro scénáře s konzistentními a předvídatelnými úlohami. Režim automatického škálování je užitečný v aplikacích, které se zobrazují jako odchylka v provozu aplikací.
 - **Redundance zóny**: nasazení Application Gateway nebo WAF může zahrnovat více zóny dostupnosti a odstraňuje nutnost zřídit v každé zóně samostatné instance Application Gateway Traffic Manager. Můžete zvolit jednu zónu nebo několik zón, ve kterých se Application Gateway instance nasazují, což zjednodušuje selhání zóny. Back-end fond pro aplikace se dá v rámci zón dostupnosti podobně distribuovat.
 
   Redundance zóny je dostupná jenom v případě, že jsou dostupné zóny Azure. V ostatních oblastech jsou všechny ostatní funkce podporované. Další informace najdete v tématech [oblasti a zóny dostupnosti v Azure](../availability-zones/az-overview.md) .
@@ -47,87 +47,7 @@ V případě SKU verze v2 je cenový model založený na spotřebě a již není
 
 Každá jednotka kapacity se skládá z maximálně: 1 výpočetní jednotka, 2500 trvalá připojení a propustnost 2,22-MB/s.
 
-Doprovodné materiály k výpočetním jednotkám:
-
-- **Standard_v2** – pro každý výpočetní jednotku je možné, že certifikát TLS s klíčem RSA 2048 je schopný přibližně 50 připojení za sekundu.
-- **WAF_v2** – každá výpočetní jednotka může podporovat přibližně 10 souběžných požadavků za sekundu po 70-30% kombinace provozu s 70% požadavky menší než 2 KB pro získání/odeslání a zbývající vyšší. WAF výkon aktuálně neovlivní velikost odpovědí.
-
-> [!NOTE]
-> Každá instance teď může podporovat přibližně 10 kapacitních jednotek.
-> Počet požadavků, které může výpočetní jednotka zpracovat, závisí na různých kritériích velikosti klíče certifikátu TLS, algoritmu výměny klíčů, přepisování hlaviček a v případě příchozí velikosti požadavku WAF. Doporučujeme, abyste provedli testy aplikací k určení míry požadavků na výpočetní jednotku. Jednotka kapacity i výpočetní jednotka budou k dispozici jako metrika před zahájením fakturace.
-
-V následující tabulce jsou uvedeny ukázkové ceny a jsou pouze pro ilustrativní účely.
-
-**Ceny v USA – východ**:
-
-|              Název SKU                             | Pevná cena ($/h)  | Jednotková cena kapacity ($/CU-hr)   |
-| ------------------------------------------------- | ------------------- | ------------------------------- |
-| Standard_v2                                       |    0,20             | 0,0080                          |
-| WAF_v2                                            |    0.36             | 0,0144                          |
-
-Další informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/application-gateway/). 
-
-**Příklad 1**
-
-Standard_v2 Application Gateway se zřídí bez automatického škálování v režimu ručního škálování s pevnou kapacitou pět instancí.
-
-Pevná cena = 744 (hodiny) × $0,20 = $148,8 <br>
-Jednotky kapacity = 744 (hodiny) * 10 jednotek kapacity na instanci * 5 instancí * $0,008 na kapacitu jednotky = $297,6
-
-Total Price = $148,8 + $297,6 = $446,4
-
-**Příklad 2**
-
-Application Gateway standard_v2 se zřídí za měsíc, s nulovými minimálními instancemi a během této doby obdrží 25 nových připojení TLS/s, průměr 8,88 – MB/s a přenos dat. Za předpokladu, že připojení jsou krátkodobá, vaše cena by byla:
-
-Pevná cena = 744 (hodiny) × $0,20 = $148,8
-
-Jednotková cena kapacity = 744 (hodiny) * Max (25/50 výpočetních jednotek pro připojení/s, jednotka kapacity 8.88/2.22 pro propustnost) * $0,008 = 744 × 4 * 0,008 = $23,81
-
-Total Price = $148.8 + 23.81 = $172,61
-
-Jak vidíte, účtují se jenom čtyři jednotky kapacity, ne celá instance. 
-
-> [!NOTE]
-> Funkce Max vrátí největší hodnotu ve dvojici hodnot.
-
-
-**Příklad 3**
-
-Standard_v2 Application Gateway je zřízena po měsících s minimálně pěti instancemi. Za předpokladu, že nedochází k žádným přenosům dat a připojení, bude vaše cena:
-
-Pevná cena = 744 (hodiny) × $0,20 = $148,8
-
-Jednotková cena kapacity = 744 (hodiny) * Max (0/50 výpočetních jednotek pro připojení/s, 0/2.22 jednotka kapacity pro propustnost) * $0,008 = 744 * 50 * 0,008 = $297,60
-
-Total Price = $148.80 + 297.60 = $446,4
-
-V takovém případě se vám účtuje celé pět instancí, i když nedochází k provozu.
-
-**Příklad 4**
-
-Standard_v2 Application Gateway se zřídí po měsících, minimálně v pěti instancích, ale v tuto chvíli je k dispozici průměr přenosu dat 125 MB/s a 25 připojení TLS za sekundu. Za předpokladu, že nedochází k žádným přenosům dat a připojení, bude vaše cena:
-
-Pevná cena = 744 (hodiny) × $0,20 = $148,8
-
-Jednotková cena kapacity = 744 (hodiny) * Max (25/50 výpočetních jednotek pro připojení/s, 125/2.22 jednotka kapacity pro propustnost) * $0,008 = 744 * 57 * 0,008 = $339,26
-
-Total Price = $148.80 + 339.26 = $488,06
-
-V takovém případě se vám bude účtovat celá pět instancí a navíc sedm jednotek kapacity (což je 7/10 instance).  
-
-**Příklad 5**
-
-WAF_v2 Application Gateway zřídit po dobu měsíce. Během této doby obdrží 25 nových připojení TLS za sekundu, průměrně 8,88 MB/s přenos dat a požadavek 80 za sekundu. Za předpokladu, že připojení jsou krátkodobá a že výpočet výpočetní jednotky pro aplikaci podporuje 10 RPS na výpočetní jednotku, vaše cena by byla:
-
-Pevná cena = 744 (hodiny) × $0,36 = $267,84
-
-Jednotková cena kapacity = 744 (hodiny) * Max (maximální výpočetní jednotka (25/50 za připojení/s, 80/10 WAF RPS), 8.88/2.22 kapacita jednotky pro propustnost) * $0,0144 = 744 × 8 × 0,0144 = $85,71
-
-Total Price = $267,84 + $85,71 = $353,55
-
-> [!NOTE]
-> Funkce Max vrátí největší hodnotu ve dvojici hodnot.
+Další informace najdete v tématu [Principy cen](understanding-pricing.md).
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Škálování Application Gateway a WAF v2
 
@@ -148,7 +68,7 @@ Vytvoření nové instance může ale nějakou dobu trvat (přibližně po šest
 
 Následující tabulka porovnává funkce, které jsou k dispozici u jednotlivých SKU.
 
-| Funkce                                           | SKU v1   | V2 SKU   |
+| Příznak                                           | SKU v1   | V2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatické škálování                                       |          | &#x2713; |
 | Zónová redundance                                   |          | &#x2713; |
@@ -180,8 +100,8 @@ Tato část popisuje funkce a omezení skladové položky v2, která se liší o
 |--|--|
 |Ověřovací certifikát|Nepodporováno<br>Další informace najdete v tématu [Přehled koncového protokolu TLS s Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Nepodporováno|
-|Trasa definovaná uživatelem (UDR) na Application Gateway podsíti|Podporované (konkrétní scénáře) Ve verzi Preview.<br> Další informace o podporovaných scénářích najdete v tématu [Přehled konfigurace Application Gateway](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).|
-|NSG pro rozsah portů pro příchozí spojení| -65200 až 65535 pro Standard_v2 SKU<br>-65503 až 65534 pro SKU Standard.<br>Další informace najdete v [nejčastějších dotazech](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
+|User-Defined trasa (UDR) v Application Gateway podsíti|Podporované (konkrétní scénáře) Ve verzi Preview.<br> Další informace o podporovaných scénářích najdete v tématu [Přehled konfigurace Application Gateway](configuration-infrastructure.md#supported-user-defined-routes).|
+|NSG pro rozsah portů pro příchozí spojení| -65200 až 65535 pro Standard_v2 SKU<br>-65503 až 65534 pro SKU Standard.<br>Další informace najdete v [nejčastějších dotazech](application-gateway-faq.yml#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Protokoly výkonu v diagnostice Azure|Nepodporováno<br>Měly by se používat metriky Azure.|
 |Fakturace|Fakturace naplánovala zahájení od 1. července 2019.|
 |Režim FIPS|V tuto chvíli se nepodporují.|

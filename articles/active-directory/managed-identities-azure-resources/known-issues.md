@@ -3,7 +3,7 @@ title: Nejčastější dotazy a známé problémy se spravovanými identitami �
 description: Známé problémy se spravovanými identitami pro prostředky Azure.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/06/2020
-ms.author: markvi
+ms.date: 02/04/2021
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 484f5443702b1151dc3f83af11b5f12a2c0a177d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3f1be2e64435cb0bcdb369a398a9a65fc3714fb2
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902231"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008532"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
 
@@ -33,23 +33,25 @@ ms.locfileid: "87902231"
 > [!NOTE]
 > Spravované identity prostředků Azure jsou novým názvem služby, která se dříve jmenovala Identita spravované služby (MSI).
 
-
 ### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>Jak můžete najít prostředky, které mají spravovanou identitu?
 
 Seznam prostředků, které mají spravovanou identitu přiřazenou systémem, najdete pomocí následujícího příkazu rozhraní příkazového řádku Azure: 
 
-`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
-
-
-
+```azurecli-interactive
+az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
+```
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>Mají spravované identity zálohovaný objekt aplikace?
 
-Ne. Spravované identity a registrace Aplikace Azure AD nejsou v adresáři stejné. 
+No. Spravované identity a registrace Aplikace Azure AD nejsou v adresáři stejné. 
 
 Registrace aplikací mít dvě komponenty: objekt aplikace + objekt instančního objektu. Spravované identity pro prostředky Azure mají jenom jednu z těchto součástí: instanční objekt služby. 
 
 Spravované identity nemají v adresáři objekt aplikace, což je to, co se běžně používá k udělení oprávnění aplikace pro MS Graph. Místo toho je třeba oprávnění MS Graph pro spravované identity udělit přímo k instančnímu objektu.  
+
+### <a name="can-the-same-managed-identity-be-used-across-multiple-regions"></a>Může se stejná spravovaná identita používat napříč několika oblastmi?
+
+V krátkém případě ano, můžete použít spravované identity přiřazené uživatelem ve více než jedné oblasti Azure. Delší odpověď je, že při vytváření spravovaných identit přiřazených uživateli jako regionálních prostředků je přidružený [objekt služby](../develop/app-objects-and-service-principals.md#service-principal-object) (SPN) vytvořený ve službě Azure AD k dispozici globálně. Instanční objekt se dá použít v jakékoli oblasti Azure a jeho dostupnost závisí na dostupnosti služby Azure AD. Například pokud jste vytvořili spravovanou identitu přiřazenou uživatelem v South-Central oblasti a tato oblast nebude k dispozici, bude tento problém mít vliv jenom na aktivity [roviny řízení](../../azure-resource-manager/management/control-plane-and-data-plane.md) na samotné spravované identitě.  Nebudou ovlivněny aktivity prováděné všemi prostředky, které již byly nakonfigurovány pro použití spravovaných identit.
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Pracují spravované identity prostředků Azure se službou Azure Cloud Services?
 
@@ -72,24 +74,61 @@ Hranice zabezpečení identity je prostředek, ke kterému je připojen. Napří
 - Pokud není povolená spravovaná identita přiřazená systémem a existuje jenom jedna spravovaná identita přiřazená uživatelem, IMDS se použije jako výchozí pro tento jediný uživatel přiřazenou spravovanou identitu. 
 - Pokud není povolená spravovaná identita přiřazená systémem a existuje víc spravovaných identit přiřazených uživateli, pak se vyžaduje určení spravované identity v žádosti.
 
-
-
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Budou spravované identity znovu automaticky vytvořeny při přesunu předplatného do jiného adresáře?
 
-Ne. Pokud přesunete předplatné do jiného adresáře, budete ho muset ručně znovu vytvořit a znovu udělit přiřazení rolí Azure.
+No. Pokud přesunete předplatné do jiného adresáře, budete ho muset ručně znovu vytvořit a znovu udělit přiřazení rolí Azure.
 - Pro spravované identity přiřazené systémem: zakažte a znovu povolte. 
-- Pro spravované identity přiřazené uživateli: Odstraňte, znovu ho vytvořte a znovu připojte k potřebným prostředkům (např. virtuální počítače).
+- U spravovaných identit přiřazených uživateli: Odstraňte, znovu vytvořte a připojte je znovu k potřebným prostředkům (například virtuálním počítačům).
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Můžu použít spravovanou identitu pro přístup k prostředkům v jiném adresáři nebo tenantovi?
 
-Ne. Spravované identity v současné době nepodporují scénáře pro více adresářů. 
+No. Spravované identity v současné době nepodporují scénáře pro více adresářů. 
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jaká oprávnění Azure RBAC jsou vyžadována pro spravovanou identitu prostředku? 
 
-- Spravovaná identita přiřazená systémem: ke zdroji potřebujete oprávnění k zápisu. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Tato akce je zahrnutá v předdefinovaných rolích specifických pro prostředky, jako je [Přispěvatel virtuálních počítačů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
-- Spravovaná identita přiřazená uživatelem: k prostředku potřebujete oprávnění k zápisu. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Kromě spravované identity se přiřazení role [operátora identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) .
+- Spravovaná identita přiřazená systémem: ke zdroji potřebujete oprávnění k zápisu. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Tato akce je zahrnutá v předdefinovaných rolích specifických pro prostředky, jako je [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+- Spravovaná identita přiřazená uživatelem: k prostředku potřebujete oprávnění k zápisu. Například v případě virtuálních počítačů potřebujete oprávnění Microsoft.Compute/virtualMachines/write. Kromě spravované identity se přiřazení role [operátora identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) .
 
+### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>Návody zabránit vytváření spravovaných identit přiřazených uživatelem?
 
+Uživatelům můžete zabránit v vytváření spravovaných identit přiřazených uživatelem pomocí [Azure Policy](../../governance/policy/overview.md)
+
+- Přejděte na [Azure Portal](https://portal.azure.com) a přejděte na **zásady**.
+- Zvolit **definice**
+- Vyberte **+ definice zásad** a zadejte potřebné informace.
+- V části pravidlo zásad vložte
+
+```json
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.ManagedIdentity/userAssignedIdentities"
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {}
+}
+
+```
+
+Až zásadu vytvoříte, přiřaďte ji ke skupině prostředků, kterou chcete použít.
+
+- Přejděte do skupiny prostředků.
+- Vyhledejte skupinu prostředků, kterou používáte pro testování.
+- V nabídce vlevo vyberte **zásady** .
+- Vybrat **přiřadit zásadu**
+- V části **základy** zadejte:
+    - **Rozsah** Skupina prostředků, kterou používáme pro testování
+    - **Definice zásad**: zásady, které jsme vytvořili dříve.
+- Ponechte všechna ostatní nastavení na výchozí hodnoty a klikněte na tlačítko **zkontrolovat + vytvořit** .
+
+V tomto okamžiku se nezdaří pokus o vytvoření spravované identity přiřazené uživatelem ve skupině prostředků.
+
+  ![Porušení zásad](./media/known-issues/policy-violation.png)
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -112,7 +151,7 @@ Pokud virtuální počítač přesunete do běžícího stavu, během přesunu s
 Aktivujte na virtuálním počítači aktualizaci, aby mohla získat správné hodnoty pro spravované identity prostředků Azure. Změnou vlastnosti virtuálního počítače můžete aktualizovat odkaz na spravované identity pro identitu prostředků Azure. Můžete například nastavit novou hodnotu značky na virtuálním počítači pomocí následujícího příkazu:
 
 ```azurecli-interactive
- az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
+az vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 ```
  
 Tento příkaz nastaví novou značku "fixVM" s hodnotou 1 na virtuálním počítači. 
@@ -125,8 +164,6 @@ Po spuštění virtuálního počítače se dá značku odebrat pomocí následu
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-
-
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Převod předplatného mezi adresáři služby Azure AD
 
 Spravované identity se při přesunu nebo přenosu předplatného do jiného adresáře neaktualizují. V důsledku toho budou přerušeny všechny existující spravované identity přiřazené systémem nebo uživatelem. 
@@ -134,9 +171,9 @@ Spravované identity se při přesunu nebo přenosu předplatného do jiného ad
 Alternativní řešení pro spravované identity v předplatném, které se přesunulo do jiného adresáře:
 
  - Pro spravované identity přiřazené systémem: zakažte a znovu povolte. 
- - Pro spravované identity přiřazené uživateli: Odstraňte, znovu ho vytvořte a znovu připojte k potřebným prostředkům (např. virtuální počítače).
+ - U spravovaných identit přiřazených uživateli: Odstraňte, znovu vytvořte a připojte je znovu k potřebným prostředkům (například virtuálním počítačům).
 
-Další informace najdete v tématu věnovaném [převodu předplatných Azure do jiného adresáře Azure AD (Preview)](../../role-based-access-control/transfer-subscription.md).
+Další informace najdete v tématu věnovaném [převodu předplatných Azure do jiného adresáře Azure AD](../../role-based-access-control/transfer-subscription.md).
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Přesunutí spravované identity přiřazené uživatelem do jiné skupiny prostředků nebo předplatného
 

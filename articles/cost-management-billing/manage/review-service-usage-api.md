@@ -3,15 +3,16 @@ title: Kontrola využití prostředků služeb Azure s využitím rozhraní REST
 description: Zjistěte, jak pomocí rozhraní Azure REST API zkontrolovat využití prostředků služeb Azure. Vytvořte sestavu správy nákladů a vyfiltrujte konkrétní typy prostředků.
 author: lleonard-msft
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 89767ff64da0473feef9e1d340ee4046cd4a1373
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 018e61fbc74091fa25211b8a25ce067862a0cc7d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461710"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132393"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Kontrola využití prostředků Azure pomocí rozhraní REST API
 
@@ -152,4 +153,4 @@ Pokud chcete nastavit jiné časové období, než jsou předdefinované možnos
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Začínáme s Azure REST API](https://docs.microsoft.com/rest/api/azure/)   
+- [Začínáme s Azure REST API](/rest/api/azure/)

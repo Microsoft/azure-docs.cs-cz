@@ -1,22 +1,18 @@
 ---
 title: Instalace licencovaných komponent pro Azure-SSIS Integration runtime
 description: Přečtěte si, jak může ISV vyvíjet a instalovat placené nebo licencované vlastní komponenty pro prostředí Azure-SSIS Integration runtime.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-manager: mflasko
-ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 77eedbfc65b54ce128e1adbd93375bc624ef38cd
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: fd62822e111346ee9a81a5d1bcce55191b19da02
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187607"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386284"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Instalace placených nebo licencovaných vlastních komponent pro prostředí Azure-SSIS Integration Runtime
 

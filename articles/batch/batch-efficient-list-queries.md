@@ -3,13 +3,13 @@ title: Návrh efektivních dotazů na seznam
 description: Zvyšte výkon filtrováním dotazů při žádosti o informace o prostředcích služby Batch, jako jsou fondy, úlohy, úlohy a výpočetní uzly.
 ms.topic: how-to
 ms.date: 06/18/2020
-ms.custom: seodec18
-ms.openlocfilehash: bcf99dbc55d708af70a28155a3f98c20003e51f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960601"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88933510"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivní vytváření dotazů k vypsání prostředků Batch
 
@@ -55,7 +55,7 @@ V tomto ukázkovém scénáři platí, že pokud je v úloze tisíce úkolů, v�
 
 Rozhraní REST API služby [Batch .NET](/dotnet/api/microsoft.azure.batch) a [Batch](/rest/api/batchservice/) poskytují možnost omezit počet položek, které jsou vráceny v seznamu, a také množství informací, které jsou pro každý z nich vráceny. Provedete to tak, že zadáte **Filter**, **Select**a **rozbalíte řetězce** při provádění dotazů seznamu.
 
-### <a name="filter"></a>Filtr
+### <a name="filter"></a>Filtrování
 
 Řetězec filtru je výraz, který snižuje počet vrácených položek. Můžete například vypsat pouze spuštěné úlohy pro úlohu nebo zobrazit seznam pouze výpočetních uzlů, které jsou připraveny ke spouštění úkolů.
 
@@ -88,8 +88,8 @@ Tento příklad rozbalení řetězce určuje, že se mají pro každou položku 
 - U všech názvů vlastností se rozlišují velká a malá písmena, ale v hodnotách vlastností se nerozlišují malá a velká písmena.
 - Řetězce data a času mohou být v jednom ze dvou formátů a musí předcházet `DateTime` .
   
-  - Příklad formátu W3C-DTF:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  - Příklad formátu RFC 1123:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  - Příklad formátu W3C-DTF: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  - Příklad formátu RFC 1123: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 - Logické řetězce jsou buď `true` nebo `false` .
 - Pokud je zadána neplatná vlastnost nebo operátor, `400 (Bad Request)` bude výsledkem chyba.
 

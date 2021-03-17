@@ -2,19 +2,20 @@
 title: Vytváření imagí Linux bez agenta zřizování
 description: Vytvářejte generalizované image pro Linux bez zřizovacího agenta v Azure.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 07/06/2020
+ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c7ca147f0a5b907ee0c5c66d53a219fe75ab2179
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045327"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551704"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Vytváření zobecněných imagí bez zřizovacího agenta
 
@@ -154,7 +155,7 @@ wireserver_conn.close()
 
 Pokud na vašem VIRTUÁLNÍm počítači není nainstalovaný Python nebo je k dispozici, můžete tuto logiku skriptu prostřednictvím kódu programu znovu vyvolat pomocí následujících kroků:
 
-1. Načte `ContainerId` a `InstanceId` analyzuje odpověď z WireServer: `curl -X GET -H 'x-ms-version: 2012-11-30' http://$168.63.129.16/machine?comp=goalstate` .
+1. Načte `ContainerId` a `InstanceId` analyzuje odpověď z WireServer: `curl -X GET -H 'x-ms-version: 2012-11-30' http://168.63.129.16/machine?comp=goalstate` .
 
 2. Sestavte následující data XML vložením analyzovaných `ContainerId` a `InstanceId` z výše uvedeného kroku:
    ```xml
@@ -174,13 +175,13 @@ Pokud na vašem VIRTUÁLNÍm počítači není nainstalovaný Python nebo je k d
    </Health>
    ```
 
-3. Publikujte tato data do WireServer:`curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
+3. Publikujte tato data do WireServer: `curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
 
 ### <a name="automating-running-the-code-at-first-boot"></a>Automatizace spouštění kódu při prvním spuštění
 
 Tato ukázka používá systém, který je nejběžnějším systémem init v moderních distribuce systému Linux. Proto nejjednodušší a nejtivněný způsob, jak zajistit, aby tato sestava připravená na sestavu běžela ve správný čas, je vytvoření jednotky systémové služby. Do `/etc/systemd/system` (příklad názvu souboru jednotky) můžete přidat následující soubor jednotek `azure-provisioning.service` :
 
-```
+```bash
 [Unit]
 Description=Azure Provisioning
 
@@ -199,12 +200,12 @@ WantedBy=multi-user.target
 Tato služba systému poskytuje tři věci pro základní zřizování:
 
 1. Sestavy připravené k Azure (k indikaci úspěšného úspěšného dokončení)
-1. Přejmenuje virtuální počítač na základě názvu virtuálního počítače zadaného uživatelem načtením těchto dat z IMDS.
+1. Přejmenuje virtuální počítač na základě názvu virtuálního počítače zadaného uživatelem načtením těchto dat z [Azure instance metadata Service (IMDS)](./instance-metadata-service.md). **Poznámka:** IMDS také poskytuje další [metadata instance](./instance-metadata-service.md#access-azure-instance-metadata-service), jako jsou například veřejné klíče SSH, takže můžete nastavit více než název hostitele.
 1. Zakáže sám sebe, aby se spouštěla jenom při prvním spuštění, a ne při následném restartování.
 
 S jednotkou v systému souborů spusťte následující příkaz pro povolení:
 
-```
+```bash
 $ sudo systemctl enable azure-provisioning.service
 ```
 
@@ -214,14 +215,14 @@ Virtuální počítač je teď připravený k zobecnění a z něho se vytvořil
 
 Zpátky na svém vývojovém počítači spusťte následující příkaz a připravte se na vytvoření image ze základního virtuálního počítače:
 
-```
+```bash
 $ az vm deallocate --resource-group demo1 --name demo1
 $ az vm generalize --resource-group demo1 --name demo1
 ```
 
 A vytvořte image z tohoto virtuálního počítače:
 
-```
+```bash
 $ az image create \
     --resource-group demo1 \
     --source demo1 \
@@ -231,7 +232,7 @@ $ az image create \
 
 Teď jsme připraveni vytvořit nový virtuální počítač (nebo několik virtuálních počítačů) z Image:
 
-```
+```bash
 $ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
 $ az vm create \
     --resource-group demo12 \
@@ -249,7 +250,7 @@ $ az vm create \
 
 Tento virtuální počítač by se měl úspěšně zřídit. Přihlášení k nově zřizovacímu virtuálnímu počítači byste měli být schopni zobrazit výstup služby, která je připravená pro sestavy:
 
-```
+```bash
 $ sudo journalctl -u azure-provisioning.service
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...

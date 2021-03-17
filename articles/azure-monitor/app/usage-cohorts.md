@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c35356951560b11a605334aba4c26dbc38086de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671082"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583546"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -41,9 +41,9 @@ Váš tým definuje určitého uživatele jako kdokoli, kdo v daném měsíci po
     Pro tento kohorta existují tři parametry:
     * **Aktivity**, kde si zvolíte, které události a zobrazení stránek se počítají jako "využití".
     * **Období**– definice měsíce.
-    * **UsedAtLeastCustom**počet pokusů, kolikrát uživatelé potřebují použít nějakou dobu v rámci období, aby se mohli počítat jako zařazené.
+    * **UsedAtLeastCustom** počet pokusů, kolikrát uživatelé potřebují použít nějakou dobu v rámci období, aby se mohli počítat jako zařazené.
 
-4. Změňte **UsedAtLeastCustom** na **5 dní**a nechte **dobu** ve výchozím nastavení 28 dnů.
+4. Změňte **UsedAtLeastCustom** na **5 dní** a nechte **dobu** ve výchozím nastavení 28 dnů.
 
     ![Zapojení uživatelé](./media/usage-cohorts/003.png)
 
@@ -131,7 +131,7 @@ Kohorty a filtry se liší. Předpokládejme, že máte kohorta uživatele ze Sp
 
 ## <a name="learn-more"></a>Další informace
 
-* [Analytický dotazovací jazyk](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Analytický dotazovací jazyk](../logs/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Uživatelé, relace, události](usage-segmentation.md)
-* [Toky uživatelů](usage-flows.md)
+* [Toky uživatele](usage-flows.md)
 * [Přehled využití](usage-overview.md)

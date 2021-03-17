@@ -3,19 +3,19 @@ title: Metoda detekce překladatele
 titleSuffix: Azure Cognitive Services
 description: Identifikujte jazyk části textu pomocí metody zjišťování překladatele Azure Cognitive Services.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: lajanuar
+ms.openlocfilehash: cb6660585b5f2b9ab56eaf863f1ec431e5e85109
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592283"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895522"
 ---
 # <a name="translator-30-detect"></a>Překladatel 3,0: zjištění
 
@@ -49,7 +49,7 @@ Hlavičky požadavku zahrnují:
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
+    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
   </tr>
   <tr>
     <td>Typ obsahu</td>
@@ -67,7 +67,7 @@ Hlavičky požadavku zahrnují:
 
 ## <a name="request-body"></a>Text požadavku
 
-Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text` . Rozpoznávání jazyka je použito pro hodnotu `Text` Vlastnosti. Vzorový text žádosti vypadá nějak takto:
+Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text` . Rozpoznávání jazyka je použito pro hodnotu `Text` Vlastnosti. Automatické zjišťování jazyka funguje lépe s delším vstupním textem. Vzorový text žádosti vypadá nějak takto:
 
 ```json
 [
@@ -78,7 +78,6 @@ Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností �
 Platí následující omezení:
 
 * Pole může mít maximálně 100 prvků.
-* Textová hodnota prvku pole nesmí být delší než 10 000 znaků včetně mezer.
 * Celý text zahrnutý v požadavku nesmí být delší než 50 000 znaků včetně mezer.
 
 ## <a name="response-body"></a>Text odpovědi
@@ -170,7 +169,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
 </table> 
 
-Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [referenční stránce překladatele V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [referenční stránce překladatele V3](./v3-0-reference.md#errors). 
 
 ## <a name="examples"></a>Příklady
 

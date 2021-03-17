@@ -3,7 +3,7 @@ title: Sledujte průběh úlohy kódování pomocí Azure Portal
 description: Tento kurz vás provede jednotlivými kroky monitorování průběhu úlohy pomocí Azure Portal.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: bb4e3ee3-1ab9-46d0-9ae7-848d945bc0b8
@@ -12,19 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: c99c8d9558b39a55c199c63dbd6ee151bcda51bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: b59d64607c60b9b09e5c962cd706e7e00404266b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084598"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008327"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Sledujte průběh úlohy kódování pomocí Azure Portal
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 ## <a name="overview"></a>Přehled
 
@@ -32,7 +34,7 @@ Když spouštíte úlohy, často potřebujete způsob, jak sledovat průběh úl
 
 Pokud chcete monitorovat průběh úlohy kódování, klikněte na **Nastavení** (v horní části stránky) a pak vyberte **Úlohy**.
 
-![Úlohy](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![Snímek obrazovky, který zobrazuje "úlohy" vybrané v nabídce nastavení.](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 Kliknutím na úlohu můžete zobrazit další podrobnosti.
 

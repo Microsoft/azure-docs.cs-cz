@@ -3,7 +3,7 @@ title: Přehled živého streamování pomocí Azure Media Services | Microsoft 
 description: Tento článek poskytuje přehled živého streamování pomocí Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
@@ -12,19 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: b28e200cab2edb4c1f603e4c67264cdc1c46d7f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 195333f5f06145a1dfa84f0de2c5984190e3d7ca
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042842"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014821"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Přehled živého streamování pomocí Media Services
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 ## <a name="overview"></a>Přehled
 
@@ -81,7 +83,7 @@ Následující tabulka poskytuje návod pro porovnání dvou typů kanálů podp
 | Maximální doba běhu |non |8 hodin |
 | Podpora pro vložení SLAT |No |Yes |
 | Podpora pro signalizaci AD |No |Yes |
-| Předávací titulky CEA 608/708 |Ano |Ano |
+| Předávací titulky CEA 608/708 |Yes |Yes |
 | Podpora pro neuniformní vstupní GOPs |Yes |Ne – vstup musí být pevně 2sec GOPs. |
 | Podpora pro vstup variabilní frekvence snímků |Yes |Ne – vstupní hodnota musí být pevná snímková frekvence.<br/>Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kodér ale nemůže přetahovat na 10 snímků za sekundu. |
 | Automatické shutoff kanálů při ztrátě vstupního kanálu |No |V případě, že není spuštěn žádný program, po 12 hodinách. |
@@ -90,7 +92,7 @@ Následující tabulka poskytuje návod pro porovnání dvou typů kanálů podp
 
 Následující diagram znázorňuje hlavní části platformy AMS, které se podílejí na **průchozím** pracovním postupu.
 
-![Živý pracovní postup](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
+![Diagram, který zobrazuje hlavní části platformy A M S pro pracovní postup předávacího procesu.](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
 
 Další informace najdete v článku o [práci s kanály, které přijímají živé streamování s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
 
@@ -141,9 +143,9 @@ Zodpovídáte za zastavování kanálů po dokončení práce s kanálem. Při z
 Aktuální stav kanálu. Mezi možné hodnoty patří:
 
 * **Zastaveno**. Toto je počáteční stav kanálu po jeho vytvoření (Pokud jste na portálu nevybrali Automatické spuštění). V tomto stavu nedochází k žádnému fakturaci. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povoleno.
-* **Spouští**se. Kanál se spouští. V tomto stavu nedochází k žádnému fakturaci. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu Zastaveno.
+* **Spouští** se. Kanál se spouští. V tomto stavu nedochází k žádnému fakturaci. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu Zastaveno.
 * **Spuštěno**. Kanál dokáže zpracovávat živé streamy. Nyní je využití fakturace. Aby se zabránilo dalšímu fakturaci, je nutné kanál zastavit.
-* **Zastavuje**se. Kanál se zastavuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Zastavuje** se. Kanál se zastavuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
 * **Probíhá odstraňování**. Kanál se odstraňuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
 
 Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace.
@@ -151,7 +153,7 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje se fakturace? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěný |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
+| Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
 | Zastaveno |Zastaveno |No |
 

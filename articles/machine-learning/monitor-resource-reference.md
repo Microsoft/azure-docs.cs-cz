@@ -1,7 +1,6 @@
 ---
-title: Referenční informace o monitorování dat | Microsoft Docs
-titleSuffix: Azure Machine Learning
-description: Seznamte se s daty a prostředky shromážděnými pro Azure Machine Learning a k dispozici v Azure Monitor. Azure Monitor shromažďuje a dostavuje data o pracovním prostoru Azure Machine Learning a umožňuje vám zobrazovat metriky, nastavit výstrahy a analyzovat data protokolu.
+title: Referenční informace o Azure Machine Learning dat monitorování | Microsoft Docs
+description: Referenční dokumentace k monitorování Azure Machine Learning. Seznamte se s daty & prostředky shromážděnými a dostupnými v Azure Monitor.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +8,128 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 04/27/2020
-ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: subject-monitoring
+ms.date: 10/02/2020
+ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82856031"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521335"
 ---
-# <a name="azure-machine-learning-monitoring-data-reference"></a>Referenční informace o monitorování služby Azure Machine Learning
+# <a name="monitoring-azure-machine-learning-data-reference"></a>Referenční informace k datům monitorování Azure Machine Learning
 
 Seznamte se s daty a prostředky shromažďovanými nástrojem Azure Monitor z pracovního prostoru Azure Machine Learning. Podrobnosti o shromažďování a analýze dat monitorování najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md) .
 
+## <a name="metrics"></a>Metriky
+
+V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Machine Learning. Poskytovatel prostředků pro tyto metriky je [Microsoft. MachineLearningServices/Workspaces](../azure-monitor/essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
+
+**Modelování**
+
+| Metric | Jednotka | Description |
+| ----- | ----- | ----- |
+| Nasazení modelu selhalo. | Počet | Počet nasazení modelů, které selhaly. |
+| Nasazení modelu začalo | Počet | Počet spuštěných nasazení modelu |
+| Nasazení modelu bylo úspěšné. | Počet | Počet nasazení modelů, které byly úspěšně dokončeny. |
+| Nepovedlo se zaregistrovat model | Počet | Počet registrací modelu, které selhaly. |
+| Registr modelu byl úspěšný. | Počet | Počet registrací modelů, které byly úspěšně dokončeny. |
+
+**Kvóta**
+
+Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
+
+| Metric | Jednotka | Description |
+| ----- | ----- | ----- |
+| Aktivní jádra | Počet | Počet aktivních výpočetních jader. |
+| Aktivní uzly | Počet | Počet aktivních uzlů. |
+| Jádra nečinných | Počet | Počet nečinných výpočetních jader. |
+| Nečinné uzly | Počet | Počet nečinných výpočetních uzlů. |
+| Vynechávání jader | Počet | Počet opouštících jader. |
+| Ukončení uzlů | Počet | Počet opouštících uzlů. |
+| Zrušené jádra | Počet | Počet zrušených jader. |
+| Přepnuté uzly | Počet | Počet přerušených uzlů. |
+| Procento využití kvóty | Procento | Procento využité kvóty |
+| Celkem jader | Počet | Celkový počet jader. |
+| Celkem uzlů | Počet | Celkový počet uzlů. |
+| Nepoužitelné jádra | Počet | Počet nepoužitelných jader. |
+| Nepoužité uzly | Počet | Počet nepoužitelných uzlů. |
+
+**Prostředek**
+
+| Metric | Jednotka | Description |
+| ----- | ----- | ----- |
+| CpuUtilization | Procento | Kolik procent procesoru bylo využito pro daný uzel během běhu nebo úlohy. Tato metrika je publikována pouze v případě, že úloha běží na uzlu. Jedna úloha může používat jeden nebo více uzlů. Tato metrika je publikována na jeden uzel. |
+| GpuUtilization | Procento | Kolik procent GPU bylo využito pro daný uzel během běhu nebo úlohy. Jeden uzel může mít jeden nebo více GPU. Tato metrika je publikována na základě GPU na jeden uzel. |
+
+**Spustit**
+
+Informace o spuštěných školicích kurzech.
+
+| Metric | Jednotka | Description |
+| ----- | ----- | ----- |
+| Dokončená spuštění | Počet | Počet dokončených spuštění. |
+| Neúspěšná spuštění | Počet | Počet neúspěšných spuštění. |
+| Spuštěná spuštění | Počet | Počet spuštěných spuštění. |
+
+## <a name="metric-dimensions"></a>Dimenze metriky
+
+Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
+
+Azure Machine Learning má k jeho metrikám přidružené následující dimenze.
+
+| Dimenze | Description |
+| ---- | ---- |
+| Název clusteru | Název prostředku Compute Cluster. K dispozici pro všechny metriky kvót. |
+| Název rodiny virtuálních počítačů | Název rodiny virtuálních počítačů, kterou cluster používá. K dispozici pro procento využití kvóty. |
+| Priorita virtuálního počítače | Priorita virtuálního počítače. K dispozici pro procento využití kvóty.
+| CreatedTime | K dispozici pouze pro CpuUtilization a GpuUtilization. |
+| DeviceId | ID zařízení (GPU) K dispozici pouze pro GpuUtilization. |
+| NodeId | ID uzlu, který byl vytvořen v případě běhu úlohy. K dispozici pouze pro CpuUtilization a GpuUtilization. |
+| RunId | ID běhu/úlohy K dispozici pouze pro CpuUtilization a GpuUtilization. |
+| ComputeType | Typ výpočtu, který se používá. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
+| PipelineStepType | Typ [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep) použitý v běhu. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
+| PublishedPipelineId | ID publikovaného kanálu používaného v běhu K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
+| RunType | Typ běhu. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
+
+Platné hodnoty pro dimenzi RunType jsou:
+
+| Hodnota | Popis |
+| ----- | ----- |
+| Experiment | Spuštění bez kanálu. |
+| PipelineRun | Spuštění kanálu, které je nadřazeným objektem StepRun. |
+| StepRun | Spuštění pro krok kanálu. |
+| ReusedStepRun | Spuštění pro krok kanálu, který znovu používá předchozí běh. |
+
+## <a name="activity-log"></a>Protokol aktivit
+
+V následující tabulce jsou uvedeny operace týkající se Azure Machine Learning, které mohou být vytvořeny v protokolu aktivit.
+
+| Operace | Description |
+|:---|:---|
+| Vytvoří nebo aktualizuje pracovní prostor Machine Learning. | Pracovní prostor se vytvořil nebo aktualizoval. |
+| CheckComputeNameAvailability | Zkontroluje, jestli se tento výpočetní název už používá. |
+| Vytvoří nebo aktualizuje výpočetní prostředky. | Výpočetní prostředek se vytvořil nebo aktualizoval. |
+| Odstraní výpočetní prostředky. | Výpočetní prostředek se odstranil. |
+| Výpis tajných kódů | Při operaci s uvedenými tajnými klíči pro Machine Learning pracovní prostor |
+
 ## <a name="resource-logs"></a>Protokoly prostředků
 
-V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protokolů prostředků při jejich shromažďování v protokolech Azure Monitor nebo Azure Storage.
+V této části jsou uvedené typy protokolů prostředků, které můžete shromažďovat pro Azure Machine Learning pracovní prostor.
+
+Poskytovatel prostředků a typ: [Microsoft. MachineLearningServices/Workspace](../azure-monitor/essentials/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
+
+| Kategorie | Zobrazovaný název |
+| ----- | ----- |
+| AmlComputeClusterEvent | AmlComputeClusterEvent |
+| AmlComputeClusterNodeEvent | AmlComputeClusterNodeEvent |
+| AmlComputeCpuGpuUtilization | AmlComputeCpuGpuUtilization |
+| AmlComputeJobEvent | AmlComputeJobEvent |
+| AmlRunStatusChangedEvent | AmlRunStatusChangedEvent |
+
+## <a name="schemas"></a>Schémata
+
+Následující schémata používá Azure Machine Learning
 
 ### <a name="amlcomputejobevents-table"></a>Tabulka AmlComputeJobEvents
 
@@ -42,8 +148,8 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | ResourceGroupName | Název skupiny prostředků |
 | JobName | Název úlohy |
 | ClusterId | ID clusteru |
-| Typ události | Typ události úlohy, například JobSubmitted, JobRunning, JobFailed, JobSucceeded atd. |
-| ExecutionState | Stav úlohy (běh), např. ve frontě, spuštěno, úspěšné, neúspěšné |
+| Typ události | Typ události úlohy Například JobSubmitted, JobRunning, JobFailed, JobSucceeded. |
+| ExecutionState | Stav úlohy (spuštění). Například ve frontě, spuštění, úspěšné, neúspěšné |
 | ErrorDetails | Podrobnosti o chybě úlohy |
 | CreationApiVersion | Verze rozhraní API, která se používá k vytvoření úlohy |
 | ClusterResourceGroupName | Název skupiny prostředků clusteru |
@@ -109,7 +215,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | VmSize | Velikost virtuálního počítače uzlu |
 | VmFamilyName | Rodina virtuálních počítačů, do které uzel patří |
 | VmPriority | Priorita uzlu, který byl vytvořen jako vyhrazený/LowPriority |
-| Publisher | Vydavatel image virtuálního počítače, třeba Microsoft-dsvm |
+| Publisher | Vydavatel image virtuálního počítače Například Microsoft-dsvm |
 | Nabídka | Nabídka přidružená k vytvoření virtuálního počítače |
 | Skladová jednotka (SKU) | SKU vytvořeného uzlu nebo virtuálního počítače |
 | Verze | Verze image, která se používá při vytváření uzlu nebo virtuálního počítače |
@@ -122,93 +228,8 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | StartTaskEndTime | Čas, kdy byl dokončen úkol přiřazený uzlu |
 | TotalE2ETimeInSeconds | Celkový čas aktivního uzlu |
 
-### <a name="metrics"></a>Metriky
-
-V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro Azure Machine Learning všechny metriky jsou uloženy v oboru názvů **pracovní prostor Azure Machine Learning**.
-
-**Model**
-
-| Metrika | Jednotka | Description |
-| ----- | ----- | ----- |
-| Nasazení modelu selhalo. | Počet | Počet nasazení modelů, které selhaly. |
-| Nasazení modelu začalo | Počet | Počet spuštěných nasazení modelu |
-| Nasazení modelu bylo úspěšné. | Počet | Počet nasazení modelů, které byly úspěšně dokončeny. |
-| Nepovedlo se zaregistrovat model | Počet | Počet registrací modelu, které selhaly. |
-| Registr modelu byl úspěšný. | Počet | Počet registrací modelů, které byly úspěšně dokončeny. |
-
-**Kvóta**
-
-Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
-
-| Metrika | Jednotka | Description |
-| ----- | ----- | ----- |
-| Aktivní jádra | Počet | Počet aktivních výpočetních jader. |
-| Aktivní uzly | Počet | Počet aktivních uzlů. |
-| Jádra nečinných | Počet | Počet nečinných výpočetních jader. |
-| Nečinné uzly | Počet | Počet nečinných výpočetních uzlů. |
-| Vynechávání jader | Počet | Počet opouštících jader. |
-| Ukončení uzlů | Počet | Počet opouštících uzlů. |
-| Zrušené jádra | Počet | Počet zrušených jader. |
-| Přepnuté uzly | Počet | Počet přerušených uzlů. |
-| Procento využití kvóty | Procento | Procento využité kvóty |
-| Celkem jader | Počet | Celkový počet jader. |
-| Celkem uzlů | Počet | Celkový počet uzlů. |
-| Nepoužitelné jádra | Počet | Počet nepoužitelných jader. |
-| Nepoužité uzly | Počet | Počet nepoužitelných uzlů. |
-
-Níže jsou uvedené dimenze, které lze použít k filtrování metrik kvót:
-
-| Dimenze | Metriky dostupné s | Description |
-| ---- | ---- | ---- |
-| Název clusteru | Všechny metriky kvót | Název výpočetní instance. |
-| Název rodiny virtuálních počítačů | Procento využití kvóty | Název rodiny virtuálních počítačů, kterou cluster používá. |
-| Priorita virtuálního počítače | Procento využití kvóty | Priorita virtuálního počítače.
-
-**Prostředek**
-
-| Metrika | Jednotka | Description |
-| ----- | ----- | ----- |
-| CpuUtilization | Procento | Kolik procent procesoru bylo využito pro daný uzel během běhu nebo úlohy. Tato metrika je publikována pouze v případě, že úloha běží na uzlu. Jedna úloha může používat jeden nebo více uzlů. Tato metrika je publikována na jeden uzel. |
-| GpuUtilization | Procento | Kolik procent GPU bylo využito pro daný uzel během běhu nebo úlohy. Jeden uzel může mít jeden nebo více GPU. Tato metrika je publikována na základě GPU na jeden uzel. |
-
-Níže jsou uvedené dimenze, které lze použít k filtrování metrik prostředků:
-
-| Dimenze | Description |
-| ----- | ----- |
-| CreatedTime | |
-| DeviceId | ID zařízení (GPU) K dispozici pouze pro GpuUtilization. |
-| NodeId | ID uzlu, který byl vytvořen v případě běhu úlohy. |
-| RunId | ID běhu/úlohy |
-
-**Spustit**
-
-Informace o spuštěných školicích kurzech.
-
-| Metrika | Jednotka | Description |
-| ----- | ----- | ----- |
-| Dokončená spuštění | Počet | Počet dokončených spuštění. |
-| Neúspěšná spuštění | Počet | Počet neúspěšných spuštění. |
-| Spuštěná spuštění | Počet | Počet spuštěných spuštění. |
-
-Níže jsou uvedené dimenze, které lze použít k filtrování metrik spuštění:
-
-| Dimenze | Description |
-| ---- | ---- |
-| ComputeType | Typ výpočtu, který se používá. |
-| PipelineStepType | Typ [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py) použitý v běhu. |
-| PublishedPipelineId | ID publikovaného kanálu používaného v běhu |
-| RunType | Typ běhu. |
-
-Platné hodnoty pro dimenzi RunType jsou:
-
-| Hodnota | Description |
-| ----- | ----- |
-| Experiment | Spuštění bez kanálu. |
-| PipelineRun | Spuštění kanálu, které je nadřazeným objektem StepRun. |
-| StepRun | Spuštění pro krok kanálu. |
-| ReusedStepRun | Spuštění pro krok kanálu, který znovu používá předchozí běh. |
 
 ## <a name="see-also"></a>Viz také
 
 - Popis Azure Machine Learning monitorování najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md) .
-- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource) .
+- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/essentials/monitor-azure-resource.md) .

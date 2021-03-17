@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
-ms.custom: seodec18
-ms.openlocfilehash: 0d2ef4af8af8ad9545277202f0aa7842ac05ea67
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: abb367b64da0811a1ff46efe60b60485375f809f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957898"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486059"
 ---
 # <a name="call-the-computer-vision-api"></a>Volání rozhraní API pro počítačové zpracování obrazu
 
@@ -38,7 +38,7 @@ Tyto funkce nabízí následující možnosti:
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 * Adresa URL obrázku nebo cesta k místně uložené imagi
@@ -177,7 +177,7 @@ Tady je příklad:
 }
 ```
 
-Pole | Typ | Obsah
+Pole | Typ | Content
 ------|------|------|
 Značky  | `object` | Objekt nejvyšší úrovně pro pole značek.
 tags[].Name | `string`    | Klíčové slovo z třídění značek.
@@ -239,7 +239,7 @@ U modelů specifických pro doménu pomocí možnosti 2 (vylepšená analýza) j
 
 Pole kategorie je seznam jednoho nebo více [kategorií 86](../Category-Taxonomy.md) v původní taxonomii. Kategorie, které končí podtržítkem, odpovídají této kategorii a jejím dětem (například "people_" nebo "people_group" pro model celebrit).
 
-Pole    | Typ    | Obsah
+Pole    | Typ    | Content
 ------|------|------|
 categories | `object`    | Objekt nejvyšší úrovně.
 categories[].name     | `string`    | Název ze seznamu taxonomie 86-Category.
@@ -254,4 +254,4 @@ Tyto chyby jsou stejné jako v Vision. Analyzujte s další chybou NotSupportedM
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete použít REST API, přejděte k [referenčním informacím k rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f21b).
+Pokud chcete použít REST API, přejděte k [referenčním informacím k rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b).

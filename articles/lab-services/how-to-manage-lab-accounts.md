@@ -3,15 +3,15 @@ title: Správa účtů testovacího prostředí v Azure Lab Services | Microsoft
 description: Naučte se, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí v předplatném Azure.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 13b477504833b8d72845735304563eef334c49ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ff28401b73698e320735613b32c96bf3de58f2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445487"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434086"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Vytvoření a správa účtů testovacího prostředí
-V Azure Lab Services účet testovacího prostředí je kontejner pro spravované typy testovacích prostředí, jako je například učeben Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. Tento článek popisuje, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí.
+V Azure Lab Services účet testovacího prostředí je kontejnerem pro spravované typy testovacích prostředí, jako jsou Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. Tento článek popisuje, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí.
 
 ## <a name="create-a-lab-account"></a>Vytvoření účtu testovacího prostředí
 Následující kroky ukazují postup vytvoření účtu testovacího prostředí se službou Azure Lab Services pomocí webu Azure Portal. 
@@ -34,7 +34,7 @@ Následující kroky ukazují postup vytvoření účtu testovacího prostředí
 5. Vyberte **Další: Upřesnit** v dolní části stránky, přejděte na kartu **Upřesnit** a proveďte následující kroky: 
     1. Vyberte existující **galerii sdílených imagí** nebo ji vytvořte. Virtuální počítač šablony můžete uložit do galerie sdílených imagí, aby ho mohli znovu použít jiní uživatelé. Podrobné informace o galeriích sdílených imagí najdete [v tématu použití Galerie sdílených imagí v Azure Lab Services](how-to-use-shared-image-gallery.md).
     2. Určete, jestli chcete, aby se **virtuální počítače s Windows automaticky vypnuly** , když se z nich uživatelé odpojí. Určete, jak dlouho by měly virtuální počítače čekat na opětovné připojení uživatele, než se automaticky vypíná. 
-    3. Pro **partnerský virtuální síť**vyberte partnerský virtuální síť (VNET) pro síť laboratoře. Laboratoře vytvořené v tomto účtu jsou připojené k vybrané virtuální síti a mají přístup k prostředkům ve vybrané virtuální síti. Další informace najdete v tématu [připojení virtuální sítě testovacího prostředí k partnerské virtuální síti](how-to-connect-peer-virtual-network.md).    
+    3. Pro **partnerský virtuální síť** vyberte partnerský virtuální síť (VNET) pro síť laboratoře. Laboratoře vytvořené v tomto účtu jsou připojené k vybrané virtuální síti a mají přístup k prostředkům ve vybrané virtuální síti. Další informace najdete v tématu [připojení virtuální sítě testovacího prostředí k partnerské virtuální síti](how-to-connect-peer-virtual-network.md).    
     8. Zadejte **Rozsah adres** pro virtuální počítače v testovacím prostředí. Rozsah adres by měl být v notaci směrování mezi doménami (například: 10.20.0.0/23). Virtuální počítače v testovacím prostředí se vytvoří v tomto rozsahu adres. Další informace najdete v tématu [určení rozsahu adres pro virtuální počítače v testovacím prostředí](how-to-connect-peer-virtual-network.md#specify-an-address-range-for-vms-in-the-lab-account) .  
 
         > [!NOTE]
@@ -43,12 +43,12 @@ Následující kroky ukazují postup vytvoření účtu testovacího prostředí
         ![Vytvoření účtu testovacího prostředí – > pokročilé](./media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
 6. Vyberte **Další: značky** v dolní části stránky a přepněte na kartu **značky** . Přidejte všechny značky, které chcete přidružit k účtu testovacího prostředí. Značky jsou páry název-hodnota, které umožňují kategorizaci prostředků a zobrazení konsolidované fakturace, a to použitím stejné značky na více prostředků a skupin prostředků. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md).
 
-    ![Vytvoření účtu testovacího prostředí – > značek](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
+    ![Snímek obrazovky zobrazující stránku vytvořit účet testovacího prostředí se zvýrazněnou kartou značky](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
 7. V dolní části této stránky vyberte **zkontrolovat + vytvořit** , abyste přešli na kartu **Revize + vytvořit** . 
 4. Zkontrolujte souhrnné informace na této stránce a vyberte **vytvořit**. 
 
     ![Vytvoření účtu testovacího prostředí – > značek](./media/how-to-manage-lab-accounts/create-lab-account-review-create.png)
-5. Počkejte, až se nasazení dokončí, rozbalte **Další kroky**a vyberte **Přejít k prostředku** , jak je znázorněno na následujícím obrázku: 
+5. Počkejte, až se nasazení dokončí, rozbalte **Další kroky** a vyberte **Přejít k prostředku** , jak je znázorněno na následujícím obrázku: 
 
     Můžete také vybrat **ikonu zvonku** na panelu nástrojů (**oznámení**), potvrdit, že nasazení proběhlo úspěšně, a pak vybrat **Přejít k prostředku**. 
 

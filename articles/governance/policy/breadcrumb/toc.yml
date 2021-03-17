@@ -18,3 +18,9 @@
         - name: Zásada
           tocHref: /azure/aks
           topicHref: /azure/governance/policy
+        - name: Zásada
+          tocHref: /azure/storage
+          topicHref: /azure/governance/policy
+        - name: Zásada
+          tocHref: /azure/web-application-firewall
+          topicHref: /azure/governance/policy

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
 ms.openlocfilehash: 293037832917457724eecad4d04eded513e6ac3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102565"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187521"
 ---
 Všechny [ukázky sady Speech SDK](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples) můžete zobrazit nebo stáhnout na GitHubu. 

@@ -1,7 +1,7 @@
 ---
 title: Shromažďování dat v produkčních modelech
 titleSuffix: Azure Machine Learning
-description: Naučte se shromažďovat data z nasazeného Azure Machine Learning modelu.
+description: Naučte se shromažďovat data z modelu Azure Machine Learning nasazeného v clusteru Azure Kubernetes Service (AKS).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,15 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, data4ml
+ms.openlocfilehash: f42a2f9e606eaa0475f2e35c479e99545ecf8193
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320183"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521896"
 ---
 # <a name="collect-data-from-models-in-production"></a>Shromažďování dat z modelů v produkčním prostředí
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Tento článek ukazuje, jak shromažďovat data z modelu Azure Machine Learning nasazeného v clusteru Azure Kubernetes Service (AKS). Shromážděná data se pak ukládají ve službě Azure Blob Storage.
 
@@ -67,11 +65,11 @@ Cesta k výstupním datům v objektu BLOB se řídí touto syntaxí:
 
 - Potřebujete cluster AKS. Informace o tom, jak vytvořit a nasadit do něj, najdete v tématu [Jak nasadit a kde](how-to-deploy-and-where.md).
 
-- [Nastavte prostředí](how-to-configure-environment.md) a nainstalujte [sadu Azure Machine Learning monitoring SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+- [Nastavte prostředí](how-to-configure-environment.md) a nainstalujte [sadu Azure Machine Learning monitoring SDK](/python/api/overview/azure/ml/install).
 
 ## <a name="enable-data-collection"></a>Povolení shromažďování dat
 
-[Shromažďování dat](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py) můžete povolit bez ohledu na model, který nasazujete prostřednictvím Azure Machine Learning nebo jiných nástrojů.
+[Shromažďování dat](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector) můžete povolit bez ohledu na model, který nasazujete prostřednictvím Azure Machine Learning nebo jiných nástrojů.
 
 Chcete-li povolit shromažďování dat, je třeba:
 
@@ -87,7 +85,7 @@ Chcete-li povolit shromažďování dat, je třeba:
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3", "feat4", "feat5", "feat6"])
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
@@ -117,6 +115,12 @@ Chcete-li povolit shromažďování dat, je třeba:
     ```
 
 1. Pokud chcete vytvořit novou image a nasadit model Machine Learning, přečtěte si [článek Jak nasadit a kde](how-to-deploy-and-where.md).
+
+1. Přidejte balíček PIP ' Azure-Monitoring ' do conda závislostí prostředí webové služby:
+  ```Python
+    env = Environment('webserviceenv')
+    env.python.conda_dependencies = CondaDependencies.create(conda_packages=['numpy'],pip_packages=['azureml-defaults','azureml-monitoring','inference-schema[numpy-support]'])
+  ```
 
 
 ## <a name="disable-data-collection"></a>Zakázání shromažďování dat
@@ -149,15 +153,15 @@ Pro analýzu dat shromažďovaných v úložišti objektů blob můžete zvolit 
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a>Analýza dat modelu pomocí Power BI
+### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a> Analýza dat modelu pomocí Power BI
 
 1. Stáhněte a otevřete [Power BI Desktop](https://www.powerbi.com).
 
-1. Vyberte **získat data** a vyberte [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
+1. Vyberte **získat data** a vyberte [**Azure Blob Storage**](/power-bi/desktop-data-sources).
 
     [![Nastavení objektu BLOB Power BI](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace můžete najít tak, že **Settings**  >  v objektu BLOB vyberete nastavení**přístupové klíče** .
+1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace můžete najít tak, že   >  v objektu BLOB vyberete nastavení **přístupové klíče** .
 
 1. Vyberte kontejner **dat modelu** a vyberte **Upravit**.
 
@@ -185,9 +189,9 @@ Pro analýzu dat shromažďovaných v úložišti objektů blob můžete zvolit 
 
 1. Začněte vytvářet vlastní sestavy pro data modelu.
 
-### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a>Analýza dat modelu pomocí Azure Databricks
+### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> Analýza dat modelu pomocí Azure Databricks
 
-1. Vytvořte [pracovní prostor Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+1. Vytvořte [pracovní prostor Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 
 1. Přejdete do pracovního prostoru datacihly.
 

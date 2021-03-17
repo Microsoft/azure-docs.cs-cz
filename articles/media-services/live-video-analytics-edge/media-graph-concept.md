@@ -3,12 +3,12 @@ title: Koncept Media graphu – Azure
 description: Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. Tento článek obsahuje podrobný popis konceptu Media graphu.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690676"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401096"
 ---
 # <a name="media-graph"></a>Graf médií
 
@@ -21,7 +21,8 @@ ms.locfileid: "88690676"
 
 Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. To provedete tak, že podle potřeby propojíte součásti nebo uzly. Diagram níže poskytuje grafické znázornění grafu médií.  
 
-![Grafická reprezentace mediálního grafu](./media/media-graph/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/media-graph.svg" alt-text="Graf médií":::
 
 Live video Analytics na IoT Edge podporuje různé typy zdrojů, procesorů a jímky.
 
@@ -37,19 +38,29 @@ Hodnoty pro parametry v topologii jsou určeny při vytváření instancí grafu
 
 ## <a name="media-graph-states"></a>Stavy mediálního grafu  
 
-Mediální graf může být v jednom z následujících stavů:
+Životní cyklus topologií grafu a instancí grafu je zobrazený v následujícím diagramu stavu.
 
-* Neaktivní – představuje stav, ve kterém je nakonfigurované mediální graf, ale není aktivní.
-* Aktivace – stav při vytváření instance mediálního grafu (tj. přechodový stav mezi neaktivním a aktivním).
-* Aktivní – stav, kdy je mediální graf aktivní 
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Životní cyklus topologie grafu a životního cyklu instance grafu":::
 
-    > [!NOTE]
-    >  Mediální graf může být aktivní bez toku dat (například vstupní zdroj videa přejde do režimu offline).
-* Deaktivace – jedná se o stav, když je mediální graf převedený z aktivní na neaktivní.
+Začnete s [vytvářením topologie grafu](direct-methods.md#graphtopologyset). Potom pro každý živý informační kanál videa, který chcete s touto topologií zpracovávat, [vytvoříte instanci grafu](direct-methods.md#graphinstanceset). 
 
-Následující diagram znázorňuje Stavový počítač Media Graph.
+Instance grafu bude ve `Inactive` stavu nečinnosti.
 
-![Stavový počítač Media graphu](./media/media-graph/media-graph-state-machine.png)
+Až budete připraveni odeslat živý kanál videa do instance grafu, [aktivujete](direct-methods.md#graphinstanceactivate) ho. Instance grafu se krátce prochází přechodovým `Activating` stavem a pokud je úspěšná, přejděte do `Active` stavu. Ve `Active` stavu bude zpracováno médium (Pokud instance grafu obdrží vstupní data).
+
+> [!NOTE]
+>  Instance grafu může být aktivní bez toku dat (například fotoaparát přejde do režimu offline).
+> Vaše předplatné Azure bude účtováno, pokud je instance grafu v aktivním stavu.
+
+Můžete opakovat proces vytváření a aktivace jiných instancí grafu pro stejnou topologii, pokud máte další aktivní kanály videa pro zpracování.
+
+Po dokončení zpracování živého kanálu videa můžete instanci grafu [deaktivovat](direct-methods.md#graphinstancedeactivate) . Instance grafu se krátce prochází přechodovým `Deactivating` stavem, vyprázdní všechna data, která má, a pak se vrátí do `Inactive` stavu.
+
+Instanci grafu lze [Odstranit](direct-methods.md#graphinstancedelete) pouze v případě, že je ve `Inactive` stavu.
+
+Po odstranění všech instancí grafu odkazujících na konkrétní topologii grafu můžete [Odstranit topologii grafu](direct-methods.md#graphtopologydelete).
+
 
 ## <a name="sources-processors-and-sinks"></a>Zdroje, procesory a jímky  
 
@@ -59,7 +70,7 @@ Live video Analytics na IoT Edge podporuje následující typy uzlů v rámci me
 
 #### <a name="rtsp-source"></a>Zdroj RTSP 
 
-Zdrojový uzel RTSP umožňuje ingestovat média z [RTSP] ( https://tools.ietf.org/html/rfc2326 serveru. Fotoaparáty a kamery založené na protokolu IP odesílají data do protokolu s názvem RTSP (Real-time-streaming Protocol), který se liší od jiných typů zařízení, jako jsou telefony a video kamery. Tento protokol se používá k navázání a řízení relací multimédií mezi serverem (fotoaparátem) a klientem. Uzel zdroje RTSP v mediálním grafu funguje jako klient a může vytvořit relaci se serverem RTSP. Řada zařízení, jako je většina [fotoaparátů IP](https://en.wikipedia.org/wiki/IP_camera) , má integrovaný server RTSP. [ONVIF](https://www.onvif.org/) pověření RTSP, která budou podporována v definici [profilů G, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibilních zařízení. Zdrojový uzel RTSP vyžaduje, abyste zadali adresu URL protokolu RTSP spolu s přihlašovacími údaji, aby bylo možné povolit ověřované připojení.
+Zdrojový uzel RTSP vám umožní ingestovat média ze serveru [RTSP](https://tools.ietf.org/html/rfc2326) . Fotoaparáty a kamery založené na protokolu IP odesílají data do protokolu s názvem RTSP (Real-time-streaming Protocol), který se liší od jiných typů zařízení, jako jsou telefony a video kamery. Tento protokol se používá k navázání a řízení relací multimédií mezi serverem (fotoaparátem) a klientem. Uzel zdroje RTSP v mediálním grafu funguje jako klient a může vytvořit relaci se serverem RTSP. Řada zařízení, jako je většina [fotoaparátů IP](https://en.wikipedia.org/wiki/IP_camera) , má integrovaný server RTSP. [ONVIF](https://www.onvif.org/) pověření RTSP, která budou podporována v definici [profilů G, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibilních zařízení. Zdrojový uzel RTSP vyžaduje, abyste zadali adresu URL protokolu RTSP spolu s přihlašovacími údaji, aby bylo možné povolit ověřované připojení.
 
 #### <a name="iot-hub-message-source"></a>IoT Hub zdroj zprávy 
 
@@ -76,14 +87,16 @@ Uzel procesoru pro detekci pohybu umožňuje detekovat pohyb v živém videu. Pr
 #### <a name="frame-rate-filter-processor"></a>Procesor filtru snímkové rychlosti  
 
 Uzel procesor filtru frekvence snímků umožňuje vzorkovat snímky z příchozího streamu videa v zadané míře. Díky tomu můžete snížit počet rámců poslaných komponentám mimo datový proud (například uzel procesoru rozšíření HTTP) pro další zpracování.
+>[!WARNING]
+> Tento procesor je **zastaralý** v nejnovější verzi nástroje Live video Analytics v modulu IoT Edge. Správa frekvence snímků se teď podporuje v rámci samotného procesoru rozšíření grafu.
 
 #### <a name="http-extension-processor"></a>Procesor rozšíření HTTP
 
-Uzel procesoru rozšíření HTTP umožňuje připojit vlastní modul IoT Edge k mediálnímu grafu. Tento uzel přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu HTTP REST vystaveného vaším modulem. V případě potřeby je možné tento uzel ověřit pomocí koncového bodu REST. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem do koncového bodu REST. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP.
+Uzel procesoru rozšíření HTTP umožňuje připojit vlastní modul IoT Edge k mediálnímu grafu. Tento uzel přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu HTTP REST vystaveného vaším modulem. V případě potřeby je možné tento uzel ověřit pomocí koncového bodu REST. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem do koncového bodu REST. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP. Přečtěte si další informace [o procesoru.](media-graph-extension-concept.md#http-extension-processor)
 
 #### <a name="grpc-extension-processor"></a>procesor rozšíření gRPC
 
-Uzel procesoru rozšíření gRPC přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu gRPC vystaveného vaším modulem. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem na koncový bod gRPC. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP.
+Uzel procesoru rozšíření gRPC přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu [gRPC](terminology.md#grpc) vystaveného vaším modulem. Uzel podporuje přenos dat pomocí [sdílené paměti](https://en.wikipedia.org/wiki/Shared_memory) nebo přímý vkládání obsahu do textu zpráv gRPC. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem na koncový bod gRPC. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP. Přečtěte si další informace [o procesoru.](media-graph-extension-concept.md#grpc-extension-processor)
 
 #### <a name="signal-gate-processor"></a>Procesor brány signálu  
 
@@ -97,15 +110,16 @@ Uzel jímka assetu umožňuje zapisovat data médií (videa nebo zvuku) do prost
 
 #### <a name="file-sink"></a>Jímka souborů  
 
-Uzel jímky souborů umožňuje zapisovat data médií (videa nebo zvuku) do umístění v místním systému souborů IoT Edgeho zařízení. V mediálním grafu může být jenom jeden uzel jímky souborů a musí se jednat o uzel procesoru brány signálu. Tím se omezí doba trvání výstupních souborů na hodnoty zadané ve vlastnostech uzlu procesoru brány signálu.
-
+Uzel jímky souborů umožňuje zapisovat data médií (videa nebo zvuku) do umístění v místním systému souborů IoT Edgeho zařízení. V mediálním grafu může být jenom jeden uzel jímky souborů a musí se jednat o uzel procesoru brány signálu. Tím se omezí doba trvání výstupních souborů na hodnoty zadané ve vlastnostech uzlu procesoru brány signálu. Aby bylo zajištěno, že vaše hraniční zařízení nemá nedostatek místa na disku, můžete také nastavit maximální velikost, kterou může aplikace Live video Analytics v modulu IoT Edge použít k ukládání dat.  
+> [!NOTE]
+Pokud se jímka souboru zaplní, Live video Analytics v modulu IoT Edge začne odstraňovat nejstarší data a nahradí je novým.
 #### <a name="iot-hub-message-sink"></a>IoT Hub jímka zpráv  
 
 Uzel jímky zpráv IoT Hub umožňuje publikovat události do centra IoT Edge. Centrum IoT Edge pak může směrovat data do jiných modulů nebo aplikací na hraničním zařízení nebo do IoT Hub v cloudu (na trasách uvedených v manifestu nasazení). Uzel jímky zpráv IoT Hub může přijímat události z nadřazených procesorů, jako je například uzel procesoru detekce pohybu, nebo externí odvozenou službu přes uzel procesoru rozšíření HTTP.
 
 ## <a name="rules-on-the-use-of-nodes"></a>Pravidla pro použití uzlů
 
-Další pravidla týkající se použití různých uzlů v mediálním grafu najdete v tématu [kvóty](quotas-limitations.md#limitations-on-graph-topologies-at-preview) .
+Viz [omezení pro topologie grafů](quotas-limitations.md#limitations-on-graph-topologies-at-preview) pro další pravidla, jak lze v mediálním grafu použít různé uzly.
 
 ## <a name="scenarios"></a>Scénáře
 

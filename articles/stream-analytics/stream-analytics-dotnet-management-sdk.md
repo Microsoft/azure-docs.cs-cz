@@ -3,29 +3,28 @@ title: Sada Management .NET SDK pro Azure Stream Analytics
 description: Začínáme se sadou Stream Analytics Management .NET SDK Přečtěte si, jak nastavit a spustit analytické úlohy. Vytvoření projektu, vstupů, výstupů a transformací.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: de152a636d8751616744887a521b2f94bbd386a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 3/12/2021
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 9adc4c92e3e637b9d3e18249b5de00782a94baab
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077758"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232881"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: nastavení a spuštění analytických úloh pomocí rozhraní Azure Stream Analytics API pro .NET
 Naučte se, jak nastavit a spustit analytické úlohy pomocí rozhraní Stream Analytics API pro .NET pomocí sady Management .NET SDK. Nastavte projekt, vytvořte vstupní a výstupní zdroje, transformace a spusťte a zastavte úlohy. Pro úlohy analýzy můžete streamovat data z úložiště objektů BLOB nebo z centra událostí.
 
-Přečtěte si [referenční dokumentaci správy pro rozhraní Stream Analytics API pro rozhraní .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+Přečtěte si [referenční dokumentaci správy pro rozhraní Stream Analytics API pro rozhraní .NET](/previous-versions/azure/dn889315(v=azure.100)).
 
 Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dostupná a škálovatelná a složitá zpracování událostí při streamování dat v cloudu s nízkou latencí. Stream Analytics zákazníkům umožňuje nastavovat úlohy streamování pro analýzu datových proudů a umožnit jim tak vyřídit analýzy v reálném čase.  
 
 > [!NOTE]
-> Aktualizovali jsme ukázkový kód v tomto článku se sadou Azure Stream Analytics Management .NET SDK V2 verze 2. x. Ukázku kódu pomocí sady SDK používá lagecy (1. x), viz [použití sady Management .NET SDK v1. x pro Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
+> Aktualizovali jsme ukázkový kód v tomto článku se sadou Azure Stream Analytics Management .NET SDK V2 verze 2. x. Ukázku kódu pomocí sady SDK používá lagecy (1. x), viz [použití sady Management .NET SDK v1. x pro Stream Analytics]().
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete tento článek, musíte mít následující požadavky:
 
 * Nainstalujte Visual Studio 2019 nebo 2015.
@@ -208,6 +207,12 @@ Metoda **TestConnection** testuje, zda se Stream Analytics úloha může připoj
    // Test the connection to the input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
+Výsledek volání TestConnection je objekt *ResourceTestResult* , který obsahuje dvě vlastnosti:
+
+- *stav*: může to být jeden z následujících řetězců: ["TestNotAttempted", "TestSucceeded", "TestFailed"]
+- *Chyba*: typ ErrorResponse obsahuje následující vlastnosti:
+   - *kód*: požadovaná vlastnost typu String. Hodnota je standardní System .NET. HttpStatusCode přijaté při testování.
+   - *zpráva*: požadovaná vlastnost typu String představuje chybu. 
 
 ## <a name="create-a-stream-analytics-output-target"></a>Vytvoření cíle výstupu Stream Analytics
 Vytvoření cíle výstupu je podobné jako vytvoření zdroje vstupu Stream Analytics. Podobně jako vstupní zdroje jsou výstupní cíle vázány na konkrétní úlohu. Chcete-li použít stejný cíl výstupu pro různé úlohy, je nutné zavolat metodu znovu a zadat jiný název úlohy.
@@ -285,17 +290,17 @@ Metoda **Delete** Odstraní úlohu i podkladové dílčí prostředky, včetně 
    ```
 
 ## <a name="get-support"></a>Získání podpory
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
-Seznámili jste se se základy používání sady .NET SDK pro vytváření a spouštění analytických úloh. Další informace najdete v následujících článcích:
+Seznámili jste se se základy používání sady .NET SDK pro vytváření a spouštění analytických úloh. Další informace najdete v těchto článcích:
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Sada Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Sada Azure Stream Analytics Management .NET SDK](/previous-versions/azure/dn889315(v=azure.100)).
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
@@ -305,17 +310,17 @@ Seznámili jste se se základy používání sady .NET SDK pro vytváření a sp
 
 <!--Link references-->
 [azure.blob.storage]: https://azure.microsoft.com/documentation/services/storage/
-[azure.blob.storage.use]: https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/
+[azure.blob.storage.use]: ../storage/blobs/storage-quickstart-blobs-dotnet.md
 
 [azure.event.hubs]: https://azure.microsoft.com/services/event-hubs/
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
 [stream.analytics.forum]: https://go.microsoft.com/fwlink/?LinkId=512151
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.developer.guide]: stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

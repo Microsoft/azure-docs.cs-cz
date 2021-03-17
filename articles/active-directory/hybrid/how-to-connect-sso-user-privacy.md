@@ -1,5 +1,5 @@
 ---
-title: Ochrana osobních údajů uživatelů a bezproblémové jednotné přihlašování v Azure AD | Microsoft Docs
+title: Ochrana osobních údajů uživatelů a bezproblémové jednoduché Sign-On služby Azure AD | Microsoft Docs
 description: Tento článek se zabývá Azure Active Directory (Azure AD) bez problémů s jednotným přihlašováním a dodržováním předpisů GDPR.
 services: active-directory
 keywords: Co je Azure AD Connect, GDPR, požadované součásti pro Azure AD, jednotné přihlašování
@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 467b9b2e613e43b95007142a120d39be1272de93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aa1a30c548ef60cd9b596031f4115297dd20844
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357830"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89278594"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Ochrana osobních údajů uživatelů a bezproblémové jednotné přihlašování Azure AD
 
@@ -64,7 +64,7 @@ Další informace o souvisejících požadavcích Azure AD Connect GDPR najdete 
 
 ### <a name="note-about-domain-controller-logs"></a>Poznámka o protokolech řadičů domény
 
-Pokud je povoleno protokolování auditu, může tento produkt generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu najdete v tomto [článku](https://technet.microsoft.com/library/dd277403.aspx).
+Pokud je povoleno protokolování auditu, může tento produkt generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu najdete v tomto [článku](/previous-versions/tn-archive/dd277403(v=technet.10)).
 
 ## <a name="next-steps"></a>Další kroky
 

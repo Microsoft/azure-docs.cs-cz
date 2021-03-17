@@ -1,26 +1,20 @@
 ---
 title: Kurz – Správa disků v Azure pomocí Azure CLI
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvářet a spravovat disky Azure pro virtuální počítače.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2018
+ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 48d9c51c5d008bf652e782573c891cb0e0580f8c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 202125dfa1cd2760695672fb948fb47bfc3ca0c9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831307"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564641"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Kurz – Správa disků v Azure pomocí Azure CLI
 
@@ -49,20 +43,20 @@ Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další
 
 ## <a name="vm-disk-types"></a>Typy disků virtuálního počítače
 
-Azure nabízí dva typy disků: Standard a Premium.
+Azure poskytuje dva typy disků.
 
-### <a name="standard-disk"></a>Disk Standard
+**Disky Standard:** využívají pevné disky a poskytují nákladově efektivní úložiště se zachováním výkonu. Disky Standard jsou ideální pro nákladově efektivní vývoj a testování.
 
-Služba Storage úrovně Standard je založená na jednotkách HDD a poskytuje nákladově efektivní úložiště se zachováním výkonu. Disky Standard jsou ideální pro nákladově efektivní vývoj a testování.
+**Disky Premium založené na discích** SSD s vysokým výkonem a nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Velikosti virtuálních počítačů s názvem  **s** v [názvu velikosti](../vm-naming-conventions.md), obvykle podporují Premium Storage. Například virtuální počítače DS-Series, DSv2-Series, GS-Series a FS-series podporují Prémiové úložiště. Při výběru se hodnota velikosti disku zaokrouhluje nahoru na nejbližší typ. Například pokud je velikost disku větší než 64 GB, ale menší než 128 GB, je typ disku P10. 
 
-### <a name="premium-disk"></a>Disk Premium
+<br>
 
-Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Služba Premium Storage podporuje virtuální počítače řad DS, DSv2, GS a FS. Při výběru se hodnota velikosti disku zaokrouhluje nahoru na nejbližší typ. Pokud je například velikost disku menší než 128 GB, typ disku je P10. Pokud je velikost disku mezi 129 až 512 GB, jde o typ (velikost) P20. V případě velikosti větší než 512 GB jde o typ P30.
 
-### <a name="premium-disk-performance"></a>Výkon disků Premium
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekundu (IOPS), ale prokládáním více datových disků je možné dosáhnout i vyšší úrovně výkonu. Virtuální počítač Standard_GS5 může například dosáhnout maximálně 80 000 IOPS. Podrobné informace o maximálních hodnotách IOPS u virtuálních počítačů najdete v článku o [velikostech virtuálních počítačů s Linuxem](../sizes.md).
+Když zřizujete disk služby Premium Storage na rozdíl od standardního úložiště, zaručujete si kapacitu, IOPS a propustnost tohoto disku. Pokud například vytvoříte P50 disk, Azure zřídí 4 095 GB kapacity úložiště, 7 500 IOPS a propustnost 250 MB/s pro tento disk. Vaše aplikace může využívat celou kapacitu a výkon. SSD úrovně Premium disky jsou navržené tak, aby poskytovaly nízké latence v řádu milisekund a cílové IOPS a propustnost popsané v předchozí tabulce 99,9% času.
+
+V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekundu (IOPS), ale prokládáním více datových disků je možné dosáhnout i vyšší úrovně výkonu. Například k virtuálnímu počítači Standard_GS5 je možné připojit 64 datových disků. Pokud je velikost každého z těchto disků P30, můžete dosáhnout maximální hodnoty 80 000 IOPS. Podrobné informace o maximálních hodnotách IOPS u virtuálních počítačů najdete v článku o [velikostech a typech virtuálních počítačů](../sizes.md).
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -119,16 +113,17 @@ Vytvořte připojení SSH k virtuálnímu počítači. Ukázkovou IP adresu nahr
 ssh 10.101.10.10
 ```
 
-Rozdělte disk na oddíly pomocí příkazu `fdisk`.
+Rozdělte disk na oddíly pomocí příkazu `parted`.
 
 ```bash
-(echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 ```
 
-Zapište na oddíl systém souborů pomocí příkazu `mkfs`.
+Zapište na oddíl systém souborů pomocí příkazu `mkfs`. Použijte `partprobe` k tomu, aby operační systém tuto změnu věděli.
 
 ```bash
-sudo mkfs -t ext4 /dev/sdc1
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
 Připojte nový disk, aby byl přístupný v operačním systému.
@@ -137,18 +132,19 @@ Připojte nový disk, aby byl přístupný v operačním systému.
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-Disk je teď přístupný prostřednictvím přípojného bodu *datadrive*, což můžete ověřit spuštěním příkazu `df -h`.
+K disku je teď možné přistupovat prostřednictvím `/datadrive` přípojný bod, který se dá ověřit spuštěním `df -h` příkazu.
 
 ```bash
-df -h
+df -h | grep -i "sd"
 ```
 
-Ve výstupu uvidíte novou jednotku připojenou na přípojném bodu */datadrive*.
+Výstup ukazuje nově připojenou jednotku `/datadrive` .
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1        30G  1.4G   28G   5% /
-/dev/sdb1       6.8G   16M  6.4G   1% /mnt
+/dev/sda1        29G  2.0G   27G   7% /
+/dev/sda15      105M  3.6M  101M   4% /boot/efi
+/dev/sdb1        14G   41M   13G   1% /mnt
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
@@ -161,14 +157,25 @@ sudo -i blkid
 Ve výstupu se zobrazí identifikátor UUID jednotky, v tomto případě `/dev/sdc1`.
 
 ```bash
-/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="xfs"
 ```
 
-Přidejte do souboru */etc/fstab* řádek podobný následujícímu.
+> [!NOTE]
+> Nesprávná úprava souboru **/etc/fstab** by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, podívejte se do dokumentace k distribuci, kde najdete informace o tom, jak soubor správně upravit. Doporučuje se také vytvořit zálohu souboru/etc/fstab před úpravou.
+
+Otevřete `/etc/fstab` soubor v textovém editoru následujícím způsobem:
 
 ```bash
-UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
+sudo nano /etc/fstab
 ```
+
+Do souboru */etc/fstab* přidejte řádek podobný tomuto: Nahraďte hodnotu UUID vlastními.
+
+```bash
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  xfs    defaults,nofail   1  2
+```
+
+Až budete hotovi s úpravou souboru, použijte `Ctrl+O` k zápisu souboru a `Ctrl+X` k ukončení editoru.
 
 Po dokončení konfigurace disku zavřete relaci SSH.
 
@@ -182,7 +189,7 @@ Když pořídíte snímek disku, Azure vytvoří kopii disku k danému okamžiku
 
 ### <a name="create-snapshot"></a>Vytvoření snímku
 
-Před vytvořením snímku disku virtuálního počítače potřebujete ID nebo název disku. K vrácení ID disku použijte příkaz [AZ VM show](/cli/azure/vm#az-vm-show) . V tomto příkladu se ID disku uloží do proměnné, aby se mohlo použít v pozdějším kroku.
+Před vytvořením snímku potřebujete ID nebo název disku. K snímku ID disku použijte [AZ VM show](/cli/azure/vm#az-vm-show) . V tomto příkladu se ID disku uloží do proměnné, aby se mohlo použít v pozdějším kroku.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -192,7 +199,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-Jakmile máte ID disku virtuálního počítače, můžete jeho snímek vytvořit pomocí následujícího příkazu.
+Teď, když máte ID, vytvořte snímek disku pomocí [AZ Snapshot Create](/cli/azure/snapshot#az-snapshot-create) .
 
 ```azurecli-interactive
 az snapshot create \
@@ -203,7 +210,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>Vytvoření disku ze snímku
 
-Tento snímek pak můžete převést na disk a jeho pomocí znovu vytvořit virtuální počítač.
+Tento snímek se pak dá převést na disk pomocí [AZ disk Create](/cli/azure/disk#az-disk-create), který se dá použít k opětovnému vytvoření virtuálního počítače.
 
 ```azurecli-interactive
 az disk create \
@@ -214,7 +221,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Obnovení virtuálního počítače ze snímku
 
-Abychom si předvedli obnovení virtuálního počítače, odstraníme napřed existující virtuální počítač.
+Pokud chcete předvést obnovení virtuálního počítače, odstraňte existující virtuální počítač pomocí [AZ VM Delete](/cli/azure/vm#az-vm-delete).
 
 ```azurecli-interactive
 az vm delete \
@@ -236,7 +243,7 @@ az vm create \
 
 K virtuálnímu počítači bude potřeba znovu připojit všechny datové disky.
 
-Napřed zjistěte název datového disku pomocí příkazu [az disk list](/cli/azure/disk#az-disk-list). V tomto příkladu se název disku uloží do proměnné s názvem *datadisk*, která se použije v dalším kroku.
+Pomocí příkazu [AZ disk list](/cli/azure/disk#az-disk-list) vyhledejte název datového disku. V tomto příkladu se umístí název disku do proměnné s názvem `datadisk` , která se používá v dalším kroku.
 
 ```azurecli-interactive
 datadisk=$(az disk list \

@@ -4,18 +4,18 @@ description: Použití blockchain Data Manager pro službu Azure blockchain k od
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79533177"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91283445"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Kurz: použití Data Manager blockchain k odesílání dat do Azure Cosmos DB
 
 V tomto kurzu použijete blockchain Data Manager pro službu Azure blockchain k záznamu dat transakcí blockchain v Azure Cosmos DB. Blockchain Data Manager zachycuje, transformuje a doručuje Blockchainá data pro Azure Event Grid témata. Z Azure Event Grid k vytváření dokumentů v databázi Azure Cosmos DB používáte konektor aplikace logiky Azure. Po dokončení kurzu můžete prozkoumat data blockchain transakcí v Azure Cosmos DB Průzkumník dat.
 
-[![Podrobnosti transakce blockchain](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![Snímek obrazovky ukazuje podrobnosti transakce blockchain.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 V tomto kurzu jste:
 
@@ -29,7 +29,7 @@ V tomto kurzu jste:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * Kompletní [rychlé zprovoznění: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
@@ -41,7 +41,7 @@ V tomto kurzu jste:
 
 Instance blockchain Data Manager se připojuje a monitoruje uzel transakcí služby Azure blockchain. Instance zachycuje všechna nepracovaná data bloku a nezpracovaná transakce z uzlu transakce. Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejít na člen služby Azure blockchain, který jste vytvořili v části [rychlý Start: Vytvoření členu blockchain pomocí Azure Portal](create-member.md). Vyberte **Blockchain data Manager**.
 1. Vyberte **Přidat**.
 
@@ -76,7 +76,7 @@ Smlouva ABI definuje rozhraní inteligentních kontraktů. Popisuje, jak pracova
 
     Kontrakt ABI je zkopírován do schránky.
 
-1. Uložte pole **ABI** jako soubor JSON. Například *ABI. JSON*. Tento soubor použijete v pozdějším kroku.
+1. Uložte pole **ABI** jako soubor JSON. Například *abi.jsna*. Tento soubor použijete v pozdějším kroku.
 
 Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontrakt. Nasazený bajt se liší od bajtového kódu inteligentního kontraktu. K zkopírování bytového kódu do schránky použijte rozšíření Azure blockchain Development Kit.
 
@@ -88,11 +88,11 @@ Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontr
 
     Kód bajtu je zkopírován do schránky.
 
-1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Příklad: *bytového kódu. JSON*. Tento soubor použijete v pozdějším kroku.
+1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Například *bytecode.jsna*. Tento soubor použijete v pozdějším kroku.
 
-Následující příklad ukazuje soubory *ABI. JSON* a *bytového souboru. JSON* otevřené v editoru vs Code. Soubory by měly vypadat podobně.
+Následující příklad ukazuje *abi.js* a *bytecode.js* souborů otevřených v editoru vs Code. Soubory by měly vypadat podobně.
 
-![Příklad souborů ABI. JSON a bytového souboru. JSON](./media/data-manager-cosmosdb/contract-files.png)
+![Příklad abi.jsa bytecode.jssouborů](./media/data-manager-cosmosdb/contract-files.png)
 
 ### <a name="create-contract-abi-and-bytecode-url"></a>Vytvořit kontrakt ABI a adresu URL bytového kódu
 
@@ -119,7 +119,7 @@ Blockchain Data Manager vyžaduje, aby při přidávání aplikace byly v adrese
 
     ![Nahrát objekt BLOB](./media/data-manager-cosmosdb/upload-blobs.png)
 
-    Vyberte **nahrát**.
+    Vyberte **Nahrát**.
 
 #### <a name="generate-url"></a>Vygenerovat adresu URL
 
@@ -235,7 +235,7 @@ Přidejte akci pro vytvoření dokumentu v Cosmos DB pro každou transakci. Pro 
     Výraz Získá datovou část zprávy a nastaví ID na hodnotu časového razítka.
 
 1. Vyberte **Přidat nový parametr** a zvolte **hodnota klíč oddílu**.
-1. Nastavte **hodnotu klíče oddílu** na `"@{triggerBody()['data']['MessageType']}"`. Hodnota musí být obklopena dvojitými uvozovkami.
+1. Nastavte **hodnotu klíče oddílu** na `"@{triggerBody()['data']['MessageType']}"` . Hodnota musí být obklopena dvojitými uvozovkami.
 
     ![Logic Apps návrháře s nastavením Cosmos DB](./media/data-manager-cosmosdb/create-action.png)
 
@@ -271,7 +271,7 @@ Teď, když jste se připojili Data Manager blockchain k Azure Cosmos DB, může
 
 1. Procházejte zprávami tak, že vyberete ID položky a vyhledáte zprávu s hodnotou hash transakce odpovídajícího transakce.
 
-    [![Podrobnosti transakce blockchain](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![Snímek obrazovky ukazuje podrobnosti transakce blockchain pro vybranou položku.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
     Zpráva o nezpracované transakci obsahuje podrobnosti o transakci. Informace o vlastnostech jsou ale šifrované.
 

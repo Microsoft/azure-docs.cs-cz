@@ -3,18 +3,18 @@ title: Automatizace Azure Application Insights s využitím PowerShellu | Micros
 description: Automatizujte vytváření a správu prostředků, upozornění a testů dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 53cdf338db5cc4ea359f729297fe57e63853aa5c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c2e3d33be487b6a92cb7038d814e17fcd5a10064
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322478"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589810"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-V tomto článku se dozvíte, jak automaticky automatizovat vytváření a aktualizaci [Application Insightsch](./app-insights-overview.md) prostředků pomocí správy prostředků Azure. Můžete to například udělat jako součást procesu sestavení. Spolu se základním prostředkem Application Insights můžete vytvářet [webové testy dostupnosti](./monitor-web-app-availability.md), nastavit [výstrahy](../platform/alerts-log.md), nastavit [cenové schéma](pricing.md)a vytvářet další prostředky Azure.
+V tomto článku se dozvíte, jak automaticky automatizovat vytváření a aktualizaci [Application Insightsch](./app-insights-overview.md) prostředků pomocí správy prostředků Azure. Můžete to například udělat jako součást procesu sestavení. Spolu se základním prostředkem Application Insights můžete vytvářet [webové testy dostupnosti](./monitor-web-app-availability.md), nastavit [výstrahy](../alerts/alerts-log.md), nastavit [cenové schéma](pricing.md)a vytvářet další prostředky Azure.
 
 Klíčem k vytváření těchto prostředků jsou šablony JSON pro [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md). Základní postup: Stáhněte si definice JSON existujících prostředků; parametrizovat určité hodnoty, jako jsou názvy; a pak šablonu spusťte vždy, když chcete vytvořit nový prostředek. Můžete zabalit několik prostředků dohromady a vytvořit je vše v jednom z nich – například monitorování aplikací s testy dostupnosti, výstrahy a úložiště pro průběžný export. Existují některé odlišností k některým z parameterizations, které tady vysvětlíme.
 
@@ -188,8 +188,8 @@ Vytvoření nového souboru. JSON – Pojďme ho zavolat `template1.json` v tomt
 
 ### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>Vytvoření nového prostředku Application Insights pomocí šablony Správce prostředků
 
-1. Přihlášení do Azure pomocí prostředí PowerShell`$Connect-AzAccount`
-2. Nastavte svůj kontext na předplatné s`Set-AzContext "<subscription ID>"`
+1. Přihlášení do Azure pomocí prostředí PowerShell `$Connect-AzAccount`
+2. Nastavte svůj kontext na předplatné s `Set-AzContext "<subscription ID>"`
 2. Pokud chcete vytvořit nový prostředek Application Insights, spusťte nové nasazení:
    
     ```PS
@@ -199,9 +199,9 @@ Vytvoření nového souboru. JSON – Pojďme ho zavolat `template1.json` v tomt
 
     ``` 
    
-   * `-ResourceGroupName`je skupina, ve které chcete vytvořit nové prostředky.
-   * `-TemplateFile`musí se nacházet před vlastními parametry.
-   * `-appName`Název prostředku, který se má vytvořit
+   * `-ResourceGroupName` je skupina, ve které chcete vytvořit nové prostředky.
+   * `-TemplateFile` musí se nacházet před vlastními parametry.
+   * `-appName` Název prostředku, který se má vytvořit
 
 Můžete přidat další parametry – jejich popisy najdete v části Parameters (parametry) v šabloně.
 
@@ -404,12 +404,12 @@ Tím nastavíte denní limit na 200 GB za den, nakonfigurujete denní dobu reset
 
 ## <a name="add-a-metric-alert"></a>Přidat upozornění metriky
 
-Pokud chcete automatizovat vytváření výstrah metrik, Projděte si [článek šablona výstrahy metriky](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert) .
+Pokud chcete automatizovat vytváření výstrah metrik, Projděte si [článek šablona výstrahy metriky](../alerts/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert) .
 
 
 ## <a name="add-an-availability-test"></a>Přidat test dostupnosti
 
-Pokud chcete automatizovat testy dostupnosti, Projděte si [článek šablona výstrahy metrik](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
+Pokud chcete automatizovat testy dostupnosti, Projděte si [článek šablona výstrahy metrik](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="add-more-resources"></a>Přidat další zdroje
 
@@ -431,7 +431,6 @@ Chcete-li automatizovat vytváření jakýchkoli dalších prostředků jakéhok
    
     Každý webový test má přidružené pravidlo výstrahy, takže je nutné oba zkopírovat.
    
-    Můžete také zahrnout výstrahy na metriky. [Názvy metrik](powershell-alerts.md#metric-names).
 5. Vložit tento řádek do každého prostředku:
    
     `"apiVersion": "2015-05-01",`
@@ -451,7 +450,7 @@ Tady jsou příklady náhrad, které chcete udělat. Existuje několik výskytů
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`(malá písmena) |`"[toLower(parameters('appName'))]"` |
+| `"myappname"` (malá písmena) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`|
 
 ### <a name="set-dependencies-between-the-resources"></a>Nastavení závislostí mezi prostředky
@@ -470,8 +469,6 @@ Azure by měl nastavit prostředky v přísném pořadí. Chcete-li zajistit, ab
 Další články o automatizaci:
 
 * [Vytvořte rychlou metodu Application Insights prostředků](./create-new-resource.md#creating-a-resource-automatically) bez použití šablony.
-* [Nastavení výstrah](powershell-alerts.md)
-* [Vytvářejte webové testy](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
+* [Vytvářejte webové testy](../alerts/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [Odesílání Azure Diagnostics do Application Insights](powershell-azure-diagnostics.md)
-* [Vytvořit poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
-
+* [Vytvořit poznámky k verzi](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

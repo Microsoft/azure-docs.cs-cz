@@ -1,14 +1,14 @@
 ---
 title: Import a export modrotisky pomocí PowerShellu
 description: Naučte se pracovat s definicemi podrobného plánu jako s kódem. Sdílení, Správa zdrojového kódu a jejich správa pomocí příkazů exportu a importu.
-ms.date: 05/06/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 7cc6bc241dc6b7b4baa669e64a0d5e43641a55b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5b1adda0b02e2e2490441c5958ca9334febc24c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864041"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919982"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import a export definic podrobných plánů pomocí PowerShellu
 

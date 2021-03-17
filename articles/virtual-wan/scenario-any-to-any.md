@@ -6,30 +6,30 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553423"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525784"
 ---
 # <a name="scenario-any-to-any"></a>Scénář: Any-to-Any
 
-Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V jakémkoli scénáři je možné, že každý paprsek má přístup k jinému paprsku. Pokud existuje víc rozbočovačů, je ve výchozím nastavení Standard Virtual WAN povolené směrování centra (označované také jako u služby Inter-hub). Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V jakémkoli scénáři je možné, že každý paprsek má přístup k jinému paprsku. Pokud existuje víc rozbočovačů, je ve výchozím nastavení Standard Virtual WAN povolené směrování centra (označované také jako u služby Inter-hub). Tuto konfiguraci můžete vytvořit pomocí různých metod, jako je Azure Portal nebo [Šablona Azure pro rychlý Start](quickstart-any-to-any-template.md). Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md). 
 
 ## <a name="design"></a><a name="design"></a>Návrh
 
-Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba ve scénáři virtuální sítě WAN, můžete vytvořit matici připojení, kde každá buňka představuje, jestli zdroj (řádek) může komunikovat s cílovým sloupcem (sloupec). Matice připojení v tomto scénáři je triviální, ale je zahrnutá, aby byla konzistentní s jinými scénáři.
+Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba ve scénáři virtuální sítě WAN, můžete vytvořit matici připojení, kde každá buňka představuje, jestli zdroj (řádek) může komunikovat s cílovým sloupcem (sloupec).
 
 | Z |   Záměr |  *Virtuální sítě* | *Větve* |
 | -------------- | -------- | ---------- | ---|
-| Virtuální sítě     | &#8594;|      X     |     X    |
-| Větve   | &#8594;|    X     |     X    |
+| Virtuální sítě     | &#8594;| Direct | Direct |
+| Větve   | &#8594;| Direct  | Direct |
 
-Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů.
+Každá z buněk v předchozí tabulce popisuje, jestli připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků) komunikuje s předponou cíle (stranu "do" toku, záhlaví sloupce kurzívou). V tomto scénáři nejsou k dispozici žádné brány firewall ani síťová virtuální zařízení, takže komunikace toků přímo přes virtuální síť WAN (tedy slovo "Direct" v tabulce).
 
 Vzhledem k tomu, že všechna připojení z virtuální sítě i větví (VPN, ExpressRoute a User VPN) mají stejné požadavky na připojení, vyžaduje se jedna směrovací tabulka. V důsledku toho budou všechna připojení přidružená a šířena ke stejné směrovací tabulce, výchozí směrovací tabulce:
 
@@ -44,7 +44,7 @@ Další informace o směrování virtuálních rozbočovačů najdete v tématu 
 
 ## <a name="architecture"></a><a name="architecture"></a>Architektura
 
-Na **obrázku 1**se může vzájemně navázat všechny virtuální sítě a větve (VPN, EXPRESSROUTE, P2S). Ve virtuálním rozbočovači fungují připojení následujícím způsobem:
+Na **obrázku 1** se může vzájemně navázat všechny virtuální sítě a větve (VPN, EXPRESSROUTE, P2S). Ve virtuálním rozbočovači fungují připojení následujícím způsobem:
 
 * Připojení VPN připojuje síť VPN k bráně VPN.
 * Připojení k virtuální síti připojuje virtuální síť k virtuálnímu rozbočovači. Směrovač virtuálního rozbočovače poskytuje funkci přenosu mezi virtuální sítě.

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/18/2020
-ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03f80ebeb7b30d8c0fe14060335541d77b7523b0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984893"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90898624"
 ---
 # <a name="create-python-model-module"></a>Vytvořit modul Python model
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Naučte se používat modul vytvořit model Python k vytvoření nevýukového modelu ze skriptu Pythonu. Model můžete založit na jakémkoli učení, které je součástí balíčku Pythonu v prostředí návrháře Azure Machine Learning. 
 

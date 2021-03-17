@@ -1,14 +1,14 @@
 ---
 title: Obnovení databází SAP HANA na virtuálních počítačích Azure
-description: V tomto článku zjistíte, jak obnovit SAP HANA databáze, které běží na Azure Virtual Machines.
+description: V tomto článku zjistíte, jak obnovit SAP HANA databáze, které běží na Azure Virtual Machines. K obnovení databází do sekundární oblasti můžete také použít obnovení mezi oblastmi.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: c62ea68683355fc703a5258e6e5fa0f3795f7e34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503587"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021669"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Obnovení databází SAP HANA na virtuálních počítačích Azure
 
@@ -24,7 +24,7 @@ Azure Backup může obnovit databáze SAP HANA, které běží na virtuálních 
 
 * Obnovení do konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před obnovením databáze mějte na paměti následující:
 
@@ -36,21 +36,21 @@ Před obnovením databáze mějte na paměti následující:
 
 * Pokud chcete mít jistotu, že je cílová instance SAP HANA připravená k obnovení, zkontrolujte její stav **připravenosti na zálohování** :
 
-  1. Otevřete trezor, ve kterém je instance cílového SAP HANA zaregistrovaná.
+  1. Otevřete trezor, ve kterém je instance cílového SAP HANA zaregistrována.
 
-  1. Na řídicím panelu trezoru v části **Začínáme**klikněte na **zálohování** .
+  1. Na řídicím panelu trezoru v části **Začínáme** klikněte na **zálohovat**.
 
       ![Zálohování na řídicím panelu trezoru](media/sap-hana-db-restore/getting-started-backup.png)
 
-  1. V části **zálohování**v části **co chcete zálohovat?** vyberte **SAP HANA na virtuálním počítači Azure** .
+  1. V části **zálohování** v části **co chcete zálohovat?** na **virtuálním počítači Azure vyberte SAP HANA**.
 
       ![Výběr SAP HANA na virtuálním počítači Azure](media/sap-hana-db-restore/sap-hana-backup.png)
 
-  1. V části **zjišťování databáze na virtuálních počítačích**klikněte na **Zobrazit podrobnosti.**
+  1. V části **zjišťování databáze na virtuálních počítačích** vyberte **Zobrazit podrobnosti**.
 
       ![Zobrazit podrobnosti](media/sap-hana-db-restore/view-details.png)
 
-  1. Kontrola **připravenosti na zálohování** cílového virtuálního počítače
+  1. Zkontrolujte **připravenost na zálohování** cílového virtuálního počítače.
 
       ![Chráněné servery](media/sap-hana-db-restore/protected-servers.png)
 
@@ -68,11 +68,11 @@ K obnovení potřebujete následující oprávnění:
 
 1. Otevřete trezor, ve kterém se má zaregistrovat SAP HANA databáze, která se má obnovit.
 
-1. Na řídicím panelu trezoru v části **chráněné položky**vyberte **zálohované položky** .
+1. Na řídicím panelu trezoru v části **chráněné položky** vyberte **zálohované položky** .
 
     ![Zálohované položky](media/sap-hana-db-restore/backup-items.png)
 
-1. V části **zálohované položky**v části **typ správy zálohování** vyberte **SAP HANA na virtuálním počítači Azure** .
+1. V části **zálohované položky** v části **typ správy zálohování** vyberte **SAP HANA na virtuálním počítači Azure** .
 
     ![Typ správy zálohování](media/sap-hana-db-restore/backup-management-type.png)
 
@@ -90,7 +90,7 @@ K obnovení potřebujete následující oprávnění:
 
 1. Vybrat **obnovit databázi**
 
-1. V části **obnovení konfigurace**určete, kam (nebo jak) se mají obnovit data:
+1. V části **obnovení konfigurace** určete, kam (nebo jak) se mají obnovit data:
 
     * **Alternativní umístění**: Obnovte databázi do alternativního umístění a zachovejte původní zdrojovou databázi.
 
@@ -100,7 +100,7 @@ K obnovení potřebujete následující oprávnění:
 
 ### <a name="restore-to-alternate-location"></a>Obnovit do alternativního umístění
 
-1. V nabídce **obnovit konfiguraci** v části **kde se má obnovit**vyberte **alternativní umístění**.
+1. V nabídce **obnovit konfiguraci** v části **kde se má obnovit** vyberte **alternativní umístění**.
 
     ![Obnovit do alternativního umístění](media/sap-hana-db-restore/restore-alternate-location.png)
 
@@ -116,23 +116,23 @@ K obnovení potřebujete následující oprávnění:
 
     ![Obnovit konfiguraci – finální obrazovka](media/sap-hana-db-restore/restore-configuration-last.png)
 
-1. V **části vybrat bod obnovení**vyberte **protokoly (časové** okamžiky), které chcete [obnovit do konkrétního bodu v čase](#restore-to-a-specific-point-in-time). Případně můžete vybrat možnost **úplného rozdílu &** pro [obnovení do konkrétního bodu obnovení](#restore-to-a-specific-recovery-point).
+1. V **části vybrat bod obnovení** vyberte **protokoly (časové** okamžiky), které chcete [obnovit do konkrétního bodu v čase](#restore-to-a-specific-point-in-time). Případně můžete vybrat možnost **úplného rozdílu &** pro [obnovení do konkrétního bodu obnovení](#restore-to-a-specific-recovery-point).
 
 ### <a name="restore-and-overwrite"></a>Obnovit a přepsat
 
-1. V nabídce **obnovit konfiguraci** v části **kde se má obnovení**vyberte **přepsat databázi**  >  **OK**.
+1. V nabídce **obnovit konfiguraci** v části **kde se má obnovení** vyberte **přepsat databázi**  >  **OK**.
 
     ![Přepsání databáze](media/sap-hana-db-restore/overwrite-db.png)
 
-1. V **části vybrat bod obnovení**vyberte **protokoly (časové** okamžiky), které chcete [obnovit do konkrétního bodu v čase](#restore-to-a-specific-point-in-time). Případně můžete vybrat možnost **úplného rozdílu &** pro [obnovení do konkrétního bodu obnovení](#restore-to-a-specific-recovery-point).
+1. V **části vybrat bod obnovení** vyberte **protokoly (časové** okamžiky), které chcete [obnovit do konkrétního bodu v čase](#restore-to-a-specific-point-in-time). Případně můžete vybrat možnost **úplného rozdílu &** pro [obnovení do konkrétního bodu obnovení](#restore-to-a-specific-recovery-point).
 
 ### <a name="restore-as-files"></a>Obnovit jako soubory
 
 Chcete-li obnovit data zálohy jako soubory místo databáze, vyberte možnost **Obnovit jako soubory**. Jakmile jsou soubory v zadané cestě, můžete tyto soubory převést na libovolný SAP HANA počítač, ve kterém je chcete obnovit jako databázi. Vzhledem k tomu, že můžete tyto soubory přesunout na libovolný počítač, teď můžete data obnovit v rámci předplatných a oblastí.
 
-1. V nabídce **obnovit konfiguraci** v části **kde a postup obnovení**vyberte **Obnovit jako soubory**.
+1. V nabídce **obnovit konfiguraci** v části **kde a postup obnovení** vyberte **Obnovit jako soubory**.
 1. Vyberte název serveru **Host** /Hana, na který chcete záložní soubory obnovit.
-1. V **cílové cestě na serveru**zadejte cestu ke složce na serveru, který jste vybrali v kroku 2. Toto je umístění, ve kterém bude služba vypsat všechny nezbytné soubory zálohy.
+1. V **cílové cestě na serveru** zadejte cestu ke složce na serveru, který jste vybrali v kroku 2. Toto je umístění, ve kterém bude služba vypsat všechny nezbytné soubory zálohy.
 
     Soubory, které jsou dumpingové, jsou:
 
@@ -161,7 +161,7 @@ Chcete-li obnovit data zálohy jako soubory místo databáze, vyberte možnost *
         chown -R <SID>adm:sapsys <directory>
         ```
 
-    1. Spusťte další sadu příkazů jako`<SID>adm`
+    1. Spusťte další sadu příkazů jako `<SID>adm`
 
         ```bash
         su - <sid>adm
@@ -173,11 +173,11 @@ Chcete-li obnovit data zálohy jako soubory místo databáze, vyberte možnost *
         hdbbackupdiag --generate --dataDir <DataFileDir> --logDirs <LogFilesDir> -d <PathToPlaceCatalogFile>
         ```
 
-        Ve výše uvedeném příkazu:
+        V příkazu výše:
 
-        * `<DataFileDir>`– Složka obsahující úplné zálohy
-        * `<LogFilesDir>`– Složka, která obsahuje zálohy protokolu
-        * `<PathToPlaceCatalogFile>`– Složka, ve které se musí umístit vygenerovaný katalogový soubor
+        * `<DataFileDir>` – Složka obsahující úplné zálohy
+        * `<LogFilesDir>` – Složka, která obsahuje zálohy protokolu
+        * `<PathToPlaceCatalogFile>` – Složka, ve které se musí umístit vygenerovaný katalogový soubor
 
     1. Obnovte pomocí nově vygenerovaného souboru katalogu přes HANA Studio nebo spusťte dotaz HDBSQL Restore s tímto nově vygenerovaným katalogem. Dotazy na HDBSQL jsou uvedeny níže:
 
@@ -191,13 +191,13 @@ Chcete-li obnovit data zálohy jako soubory místo databáze, vyberte možnost *
         RECOVER DATABASE FOR <DatabaseName> UNTIL TIMESTAMP '<TimeStamp>' CLEAR LOG USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING LOG PATH (' <LogFileDir>') USING DATA PATH ('<DataFileDir>') USING BACKUP_ID <BackupIdFromJsonFile> CHECK ACCESS USING FILE
         ```
 
-        * `<DatabaseName>`– Název nové databáze nebo existující databáze, kterou chcete obnovit.
-        * `<Timestamp>`– Přesné časové razítko obnovení bodu v čase
-        * `<DatabaseName@HostName>`– Název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém je umístěna Tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Takže není potřeba ho zadat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
-        * `<PathToGeneratedCatalogInStep3>`-Cesta k souboru katalogu vygenerovanému v **kroku C**
-        * `<DataFileDir>`– Složka obsahující úplné zálohy
-        * `<LogFilesDir>`– Složka, která obsahuje zálohy protokolu
-        * `<BackupIdFromJsonFile>`– **BackupId** extrahovaný v **kroku C**
+        * `<DatabaseName>` – Název nové databáze nebo existující databáze, kterou chcete obnovit.
+        * `<Timestamp>` – Přesné časové razítko obnovení bodu v čase
+        * `<DatabaseName@HostName>` – Název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém je umístěna Tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Takže není potřeba ho zadat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
+        * `<PathToGeneratedCatalogInStep3>` -Cesta k souboru katalogu vygenerovanému v **kroku C**
+        * `<DataFileDir>` – Složka obsahující úplné zálohy
+        * `<LogFilesDir>` – Složka, která obsahuje zálohy protokolu
+        * `<BackupIdFromJsonFile>` – **BackupId** extrahovaný v **kroku C**
 
     * Postup obnovení do konkrétního úplného nebo rozdílového zálohování:
 
@@ -207,13 +207,13 @@ Chcete-li obnovit data zálohy jako soubory místo databáze, vyberte možnost *
         RECOVER DATA FOR <DatabaseName> USING BACKUP_ID <BackupIdFromJsonFile> USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING DATA PATH ('<DataFileDir>')  CLEAR LOG
         ```
 
-        * `<DatabaseName>`– název nové databáze nebo existující databáze, kterou chcete obnovit.
-        * `<Timestamp>`– přesné časové razítko obnovení bodu v čase
-        * `<DatabaseName@HostName>`– název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém se nachází tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Proto není nutné zadávat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
-        * `<PathToGeneratedCatalogInStep3>`– Cesta k souboru katalogu vygenerovanému v **kroku C**
-        * `<DataFileDir>`– Složka obsahující úplné zálohy
-        * `<LogFilesDir>`– Složka, která obsahuje zálohy protokolu
-        * `<BackupIdFromJsonFile>`– **BackupId** extrahovaný v **kroku C**
+        * `<DatabaseName>` – název nové databáze nebo existující databáze, kterou chcete obnovit.
+        * `<Timestamp>` – přesné časové razítko obnovení bodu v čase
+        * `<DatabaseName@HostName>` – název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém se nachází tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Proto není nutné zadávat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
+        * `<PathToGeneratedCatalogInStep3>` – Cesta k souboru katalogu vygenerovanému v **kroku C**
+        * `<DataFileDir>` – Složka obsahující úplné zálohy
+        * `<LogFilesDir>` – Složka, která obsahuje zálohy protokolu
+        * `<BackupIdFromJsonFile>` – **BackupId** extrahovaný v **kroku C**
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Obnovení k určitému bodu v čase
 
@@ -249,6 +249,51 @@ Pokud jste jako typ obnovení vybrali možnost **úplný & rozdíl** , udělejte
 
     > [!NOTE]
     > V rámci více databázových kontejnerů (MDC) se obnoví po obnovení systémové databáze do cílové instance jedna musí znovu spustit skript před registrací. Jenom potom se obnoví i následné obnovení databáze tenanta. Další informace najdete v tématu [řešení potíží – MDC Restore](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore).
+
+## <a name="cross-region-restore"></a>Obnovení mezi oblastmi
+
+Jedna z možností obnovení (CRR) vám umožňuje obnovit SAP HANA databáze hostované na virtuálních počítačích Azure v sekundární oblasti, která je spárována se službou Azure.
+
+Pokud chcete připojit funkci během verze Preview, přečtěte si [část než začnete](./backup-create-rs-vault.md#set-cross-region-restore).
+
+Pokud chcete zjistit, jestli je CRR povolený, postupujte podle pokynů v tématu [Konfigurace obnovení mezi oblastmi](backup-create-rs-vault.md#configure-cross-region-restore) .
+
+### <a name="view-backup-items-in-secondary-region"></a>Zobrazit zálohované položky v sekundární oblasti
+
+Pokud je povolená možnost CRR, můžete zobrazit zálohované položky v sekundární oblasti.
+
+1. Na portálu přejdete do části **Recovery Services trezoru**  >  **zálohované položky**.
+1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
+
+>[!NOTE]
+>V seznamu se zobrazí pouze typy správy zálohování podporující funkci CRR. V současné době je povolena pouze podpora obnovení dat sekundární oblasti do sekundární oblasti.
+
+![Zálohované položky v sekundární oblasti](./media/sap-hana-db-restore/backup-items-secondary-region.png)
+
+![Databáze v sekundární oblasti](./media/sap-hana-db-restore/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>Obnovení v sekundární oblasti
+
+Funkce obnovení koncového uživatele v sekundární oblasti bude podobná primární oblasti obnovení uživatelského prostředí. Při konfiguraci podrobností v podokně obnovit konfiguraci pro konfiguraci obnovení se zobrazí výzva k zadání pouze sekundárních parametrů oblasti.
+
+![Kde a jak obnovit](./media/sap-hana-db-restore/restore-secondary-region.png)
+
+>[!NOTE]
+>Virtuální síť v sekundární oblasti musí být přiřazena jedinečně a nelze ji použít pro žádné jiné virtuální počítače v dané skupině prostředků.
+
+![Oznámení o průběhu obnovení aktivační události](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>* Po aktivaci obnovení a ve fázi přenosu dat nelze úlohu obnovení zrušit.
+>* Role Azure potřebné k obnovení v sekundární oblasti jsou stejné jako v primární oblasti.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>Monitorování úloh obnovení sekundární oblasti
+
+1. Na portálu přejdete na **Recovery Services vault**  >  **úlohy zálohování** služby Recovery Services trezor.
+1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
+
+    ![Filtrované úlohy zálohování](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Další kroky
 

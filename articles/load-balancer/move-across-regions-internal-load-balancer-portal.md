@@ -6,21 +6,21 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: eb3605249578b15d67bdd9764490d61812b21c18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68a2cb6926cb41956711a9e3c15d21c250d27f0b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808441"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698466"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Přesunout interní Load Balancer Azure do jiné oblasti pomocí Azure Portal
 
 Existují různé scénáře, ve kterých byste chtěli přesunout stávající interní nástroj pro vyrovnávání zatížení z jedné oblasti do druhé. Například může být vhodné vytvořit interní nástroj pro vyrovnávání zatížení se stejnou konfigurací pro testování. Interní nástroj pro vyrovnávání zatížení můžete také přesunout do jiné oblasti v rámci plánování zotavení po havárii.
 
-Interní nástroje pro vyrovnávání zatížení Azure nejde přesunout z jedné oblasti do druhé. Můžete ale použít šablonu Azure Resource Manager k exportu existující konfigurace a virtuální sítě interního nástroje pro vyrovnávání zatížení.  Pak můžete tento prostředek připravit v jiné oblasti tak, že vyexportujete Nástroj pro vyrovnávání zatížení a virtuální síť do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablony nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+Interní nástroje pro vyrovnávání zatížení Azure nejde přesunout z jedné oblasti do druhé. Můžete ale použít šablonu Azure Resource Manager k exportu existující konfigurace a virtuální sítě interního nástroje pro vyrovnávání zatížení.  Pak můžete tento prostředek připravit v jiné oblasti tak, že vyexportujete Nástroj pro vyrovnávání zatížení a virtuální síť do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablony nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že interní nástroj pro vyrovnávání zatížení Azure je v oblasti Azure, ze které chcete přejít.
 
@@ -32,7 +32,7 @@ Interní nástroje pro vyrovnávání zatížení Azure nejde přesunout z jedn�
 
 - Ověřte, že vaše předplatné Azure umožňuje vytvářet interní nástroje pro vyrovnávání zatížení v cílové oblasti, která se používá. O povolení požadované kvóty požádejte podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání nástrojů pro vyrovnávání zatížení pro tento proces.  Viz [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání nástrojů pro vyrovnávání zatížení pro tento proces.  Viz [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>Příprava a přesun
@@ -43,7 +43,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>Exportujte šablonu virtuální sítě a nasaďte ji z Azure Portal
 
-1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků**Azure Portal.
+1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků** Azure Portal.
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojovou virtuální síť, a klikněte na ni.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
@@ -194,7 +194,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>Exportujte šablonu interního nástroje pro vyrovnávání zatížení a nasaďte ji z Azure PowerShell
 
-1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků**Azure Portal.
+1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků** Azure Portal.
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojový interní nástroj pro vyrovnávání zatížení, a klikněte na ni.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
@@ -220,7 +220,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
     1. Přihlaste se k [Azure Portal](https://portal.azure.com)  >  **skupinám prostředků** na jiné kartě nebo okně prohlížeče.
     2. Vyhledejte cílovou skupinu prostředků, která obsahuje přesunutou virtuální síť z výše uvedených kroků, a klikněte na ni.
-    3. Vyberte > **Settings**  >  **vlastnosti**nastavení.
+    3. Vyberte > **Settings**  >  **vlastnosti** nastavení.
     4. V okně vpravo zvýrazněte **ID prostředku** a zkopírujte ho do schránky.  Případně můžete kliknout na tlačítko **Kopírovat do schránky** napravo od cesty k **ID prostředku** .
     5. Vložte ID prostředku do vlastnosti **DefaultValue** v editoru **úprav parametrů** otevřeném v jiném okně nebo na kartě prohlížeče:
 
@@ -259,7 +259,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 10. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard změnou **sku**  >  vlastnosti**název** SKU v **template.jsv** souboru:
+    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard změnou **sku**  >  vlastnosti **název** SKU v **template.jsv** souboru:
 
         ```json
         "resources": [
@@ -273,7 +273,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
                 "tier": "Regional"
             },
         ```
-      Další informace o rozdílech mezi nástroji pro vyrovnávání zatížení Basic a Standard SKU najdete v tématu [Přehled služby Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) .
+      Další informace o rozdílech mezi nástroji pro vyrovnávání zatížení Basic a Standard SKU najdete v tématu [Přehled služby Azure Standard Load Balancer](./load-balancer-overview.md) .
 
     * **Pravidla vyrovnávání zatížení** – můžete přidat nebo odebrat pravidla vyrovnávání zatížení v konfiguraci přidáním nebo odebráním položek do části **loadBalancingRules** **template.js** souboru:
 
@@ -305,7 +305,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
                     }
                 ]
         ```
-       Další informace o pravidlech vyrovnávání zatížení najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+       Další informace o pravidlech vyrovnávání zatížení najdete v tématu [co je Azure Load Balancer?](./load-balancer-overview.md)
 
     * **Sondy** – pro nástroj pro vyrovnávání zatížení můžete v konfiguraci přidat nebo odebrat test, a to přidáním nebo odebráním položek do části **sondy** **template.jsv** souboru:
 
@@ -325,7 +325,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
                     }
                 ],
         ```
-       Další informace o sondách stavu Azure Load Balancer najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) .
+       Další informace o sondách stavu Azure Load Balancer najdete v tématu [Load Balancer sondy stavu](./load-balancer-custom-probe-overview.md) .
 
     * **Příchozí pravidla NAT** – pravidla příchozího překladu adres (NAT) pro nástroj pro vyrovnávání zatížení můžete přidat nebo odebrat zadáním nebo odebráním položek do části **inboundNatRules** **template.jsv** souboru:
 
@@ -373,7 +373,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
             }
         }
         ```
-        Další informace o příchozích pravidlech NAT najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+        Další informace o příchozích pravidlech NAT najdete v tématu [co je Azure Load Balancer?](./load-balancer-overview.md)
 
 12. V online Editoru klikněte na **Uložit** .
 
@@ -402,5 +402,5 @@ Chcete-li potvrdit změny a dokončit přesun virtuální sítě a interního n�
 V tomto kurzu jste přesunuli interní nástroj pro vyrovnávání zatížení Azure z jedné oblasti na jiný a vyčistili zdrojové prostředky.  Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
-- [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Přesun virtuálních počítačů Azure do jiné oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Přesun virtuálních počítačů Azure do jiné oblasti](../site-recovery/azure-to-azure-tutorial-migrate.md)

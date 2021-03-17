@@ -3,17 +3,19 @@ title: Poddotazy SQL pro Azure Cosmos DB
 description: Přečtěte si o poddotazech SQL a jejich běžných případech použití a různých typech poddotazů v Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5f209229d17a2587258d21ee90e7560e629d082
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74870560"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340851"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Příklady poddotazů SQL pro Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Poddotaz je dotaz vnořený do jiného dotazu. Poddotaz se také nazývá vnitřní dotaz nebo vnitřní výběr. Příkaz, který obsahuje poddotaz, se obvykle nazývá vnější dotaz.
 
@@ -23,16 +25,16 @@ Tento článek popisuje poddotazy SQL a jejich běžné případy použití v Az
 
 Existují dva hlavní typy poddotazů:
 
-* **Korelace**: poddotaz, který odkazuje na hodnoty z vnějšího dotazu. Poddotaz se vyhodnocuje jednou pro každý řádek, který zpracovává vnější dotaz.
-* **Bez korelace**: poddotaz, který je nezávislý na vnějším dotazu. Dá se spustit samostatně, aniž by se musel spoléhat na vnější dotaz.
+* **Korelace** : poddotaz, který odkazuje na hodnoty z vnějšího dotazu. Poddotaz se vyhodnocuje jednou pro každý řádek, který zpracovává vnější dotaz.
+* **Bez korelace** : poddotaz, který je nezávislý na vnějším dotazu. Dá se spustit samostatně, aniž by se musel spoléhat na vnější dotaz.
 
 > [!NOTE]
 > Azure Cosmos DB podporuje pouze korelační poddotazy.
 
 Poddotazy lze dále klasifikovat na základě počtu řádků a sloupců, které vrátí. Existují tři typy:
-* **Table**: vrátí více řádků a více sloupců.
-* **Multi-Value**: vrátí více řádků a jeden sloupec.
-* **Skalární**: vrátí jeden řádek a jeden sloupec.
+* **Table** : vrátí více řádků a více sloupců.
+* **Multi-Value** : vrátí více řádků a jeden sloupec.
+* **Skalární** : vrátí jeden řádek a jeden sloupec.
 
 Dotazy SQL v Azure Cosmos DB vždycky vracejí jeden sloupec (buď jednoduchou hodnotu, nebo složitý dokument). Proto se v Azure Cosmos DB použijí pouze vícehodnotové a skalární poddotazy. Poddotaz s více hodnotami lze použít pouze v klauzuli FROM jako relační výraz. Skalární poddotaz lze použít jako skalární výraz v klauzuli SELECT nebo WHERE nebo jako relační výraz v klauzuli FROM.
 
@@ -124,7 +126,7 @@ WHERE AvgNutritionValue > 80
 
 Zvažte například tuto sadu referenčních dat:
 
-| **Jednotce** | **Název**            | **Koeficient** | **Základní jednotka** |
+| **Jednotka** | **Název**            | **Koeficient** | **Základní jednotka** |
 | -------- | ------------------- | -------------- | ------------- |
 | plyn       | Nanogram            | 1,00 e-09       | Gram          |
 | μg       | Microgram           | 1,00 e-06       | Gram          |

@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 0a7ec2f4f8fdf631a6bc5096296275291ec41751
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924202"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967121"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Komunikace s DPS pomocí protokolu MQTT
 
@@ -29,13 +29,13 @@ DPS není plnohodnotný zprostředkovatel MQTT a nepodporuje všechna chování 
 Všechna komunikace zařízení s DPS musí být zabezpečená pomocí protokolu TLS/SSL. Proto DPS nepodporuje nezabezpečená připojení přes port 1883.
 
  > [!NOTE] 
- > DPS v současné době nepodporuje zařízení, která používají [mechanismus ověření](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism) TPM přes protokol MQTT.
+ > DPS v současné době nepodporuje zařízení, která používají [mechanismus ověření](./concepts-service.md#attestation-mechanism) TPM přes protokol MQTT.
 
 ## <a name="connecting-to-dps"></a>Připojování k DPS
 
 Zařízení může používat protokol MQTT pro připojení k DPS pomocí kterékoli z následujících možností.
 
-* Knihovny v sadách [SDK pro zřizování Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks).
+* Knihovny v sadách [SDK pro zřizování Azure IoT](../iot-hub/iot-hub-devguide-sdks.md#microsoft-azure-provisioning-sdks).
 * Protokol MQTT přímo.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Přímé použití protokolu MQTT (jako zařízení)
@@ -44,11 +44,11 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
 * Pro pole **ClientID** použijte **registrationId**.
 
-* V poli **uživatelské jméno** použijte `{idScope}/registrations/{registration_id}/api-version=2019-03-31` , kde `{idScope}` je [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) v DPS.
+* V poli **uživatelské jméno** použijte `{idScope}/registrations/{registration_id}/api-version=2019-03-31` , kde `{idScope}` je [idScope](./concepts-service.md#id-scope) v DPS.
 
 * V poli **heslo** použijte token SAS. Formát tokenu SAS je stejný jako u protokolů HTTPS a AMQP:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`ResourceURI by měl být ve formátu `{idScope}/registrations/{registration_id}` . Název zásad by měl být `registration` .
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration` ResourceURI by měl být ve formátu `{idScope}/registrations/{registration_id}` . Název zásad by měl být `registration` .
 
   > [!NOTE]
   > Pokud používáte ověřování pomocí certifikátu X. 509, hesla tokenů SAS se nevyžadují.
@@ -70,8 +70,8 @@ Pokud chcete protokol MQTT použít přímo, *musí* se klient připojit přes T
 
 Pokud chcete zařízení zaregistrovat přes DPS, zařízení by se mělo přihlásit `$dps/registrations/res/#` jako **Filtr tématu**. Zástupný znak na více úrovních `#` v rámci filtru tématu slouží pouze k tomu, aby zařízení přijímalo další vlastnosti v názvu tématu. DPS nepovoluje použití `#` `?` zástupných znaků nebo pro filtrování dílčích témat. Vzhledem k tomu, že DPS není modul pro zasílání zpráv v rámci služby Pub pro obecné účely, podporuje pouze dokumentované názvy témat a filtry témat.
 
-Zařízení by mělo publikovat registrační zprávu k DPS pomocí `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` **názvu tématu**. Datová část by měla obsahovat objekt [registrace zařízení](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) ve formátu JSON.
-V úspěšném scénáři obdrží zařízení odpověď na `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` název tématu, kde x je hodnota opakování v sekundách. Datová část odpovědi bude obsahovat objekt [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) ve formátu JSON.
+Zařízení by mělo publikovat registrační zprávu k DPS pomocí `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` **názvu tématu**. Datová část by měla obsahovat objekt [registrace zařízení](/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) ve formátu JSON.
+V úspěšném scénáři obdrží zařízení odpověď na `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` název tématu, kde x je hodnota opakování v sekundách. Datová část odpovědi bude obsahovat objekt [RegistrationOperationStatus](/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) ve formátu JSON.
 
 ## <a name="polling-for-registration-operation-status"></a>Cyklické dotazování na stav operace registrace
 

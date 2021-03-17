@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8779381425d4180cc7320f251de9c2cfdd1f0510
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737916"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223419"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí prostředí PowerShell
 
@@ -48,11 +48,11 @@ V tomto článku se předpokládá, že máte následující zdroje:
 * Virtuální počítač s povoleným rozšířením zachytávání paketů.
 
 > [!IMPORTANT]
-> Zachytávání paketů vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension` . Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Zachytávání paketů vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension` . Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/extensions/network-watcher-windows.md) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/extensions/network-watcher-linux.md).
 
 ## <a name="install-vm-extension"></a>Instalace rozšíření virtuálních počítačů
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
@@ -97,7 +97,7 @@ Abyste měli jistotu, že je agent nainstalovaný, spusťte `Get-AzVMExtension` 
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Následující ukázka je příkladem reakce na spuštění`Get-AzVMExtension`
+Následující ukázka je příkladem reakce na spuštění `Get-AzVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -123,12 +123,12 @@ ForceUpdateTag          :
 
 Po dokončení předchozích kroků se na virtuálním počítači nainstaluje agent zachytávání paketů.
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Dalším krokem je načtení instance Network Watcher. Tato proměnná je předána `New-AzNetworkWatcherPacketCapture` rutině v kroku 4.
 
 ```powershell
-$networkWatcher = Get-AzResource -ResourceType "Microsoft.Network/networkWatchers" | Where {$_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher  | Where {$_.Location -eq "westcentralus" }
 ```
 
 ### <a name="step-2"></a>Krok 2
@@ -266,7 +266,7 @@ Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCapt
 
 ## <a name="download-a-packet-capture"></a>Stažení zachytávání paketů
 
-Po dokončení relace zachycení paketů se zachytávací soubor dá nahrát do úložiště objektů BLOB nebo do místního souboru na VIRTUÁLNÍm počítači. Umístění úložiště zachycení paketu je definováno při vytváření relace. Pohodlný nástroj pro přístup k těmto sběrným souborům uloženým do účtu úložiště je Průzkumník služby Microsoft Azure Storage, který se dá stáhnout tady:https://storageexplorer.com/
+Po dokončení relace zachycení paketů se zachytávací soubor dá nahrát do úložiště objektů BLOB nebo do místního souboru na VIRTUÁLNÍm počítači. Umístění úložiště zachycení paketu je definováno při vytváření relace. Pohodlný nástroj pro přístup k těmto sběrným souborům uloženým do účtu úložiště je Průzkumník služby Microsoft Azure Storage, který se dá stáhnout tady:  https://storageexplorer.com/
 
 Pokud je zadaný účet úložiště, soubory zachytávání paketů se uloží do účtu úložiště v následujícím umístění:
 
@@ -281,17 +281,3 @@ Podívejte se, jak automatizovat zachycení paketů s výstrahami virtuálních 
 Zjistěte, jestli je na VIRTUÁLNÍm počítači povolený určitý provoz, a to tak, že navštíví [kontrolu toku IP](diagnose-vm-network-traffic-filtering-problem.md) .
 
 <!-- Image references -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,9 +10,6 @@
     - name: Index
       displayName: 'template, sample'
       href: ./samples/index.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./samples/policy-samples.md
 - name: Koncepty
   items:
     - name: Správa delegovaných prostředků Azure
@@ -27,66 +24,87 @@
     - name: Nabídky spravovaných služeb na Azure Marketplace
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: Doporučené postupy zabezpečení
-      displayName: 'mfa, authentication, secure, group'
-      href: ./concepts/recommended-security-practices.md
-    - name: Aspekty programu Cloud Solution Provider
+    - name: Program Cloud Solution Provider
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
-    - name: Azure Lighthouse v podnikových scénářích
+    - name: Podnikové scénáře
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: Scénáře ISV
+      displayName: 'independent, software, vendor, saas'
+      href: ./concepts/isv-scenarios.md
     - name: Azure Lighthouse a spravované aplikace Azure
       displayName: 'managed apps, ama'
       href: ./concepts/managed-applications.md
+    - name: Zabezpečení
+      items:
+        - name: Doporučené postupy zabezpečení
+          displayName: 'mfa, authentication, secure, group'
+          href: ./concepts/recommended-security-practices.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
-    - name: Onboarding zákazníků do služby Azure Lighthouse
-      displayName: resource management
-      href: ./how-to/onboard-customer.md
-    - name: Publikování nabídek spravovaných služeb na Azure Marketplace
-      displayName: 'managed services offer, azure marketplace, publish, marketplace'
-      href: ./how-to/publish-managed-services-offers.md
-    - name: Zobrazení a správa zákazníků
-      displayName: my customers
-      href: ./how-to/view-manage-customers.md
-    - name: Odebrání přístupu k delegování
-      displayName: 'delete, undelegate'
-      href: ./how-to/remove-delegation.md
-    - name: Integrace služby Azure Monitor
-      items:
-        - name: Použití protokolů Azure Monitoru ve velkém měřítku
-          displayName: 'log, analytics, analyze, activity'
-          href: ./how-to/monitor-at-scale.md
-        - name: Monitorování změn delegování
-          displayName: activity log
-          href: ./how-to/monitor-delegation-changes.md
-    - name: Integrace Azure Policy
-      items:
-        - name: Nasazení zásad ve velkém
-          displayName: storage
-          href: ./how-to/policy-at-scale.md
-        - name: 'Nasazení zásady, která se dá napravit'
-          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
-          href: ./how-to/deploy-policy-remediation.md
-    - name: Integrace Azure Sentinelu
-      href: ./how-to/manage-sentinel-workspaces.md
     - name: Akce zákazníka
       items:
         - name: Zobrazení a správa poskytovatelů služeb
-          displayName: 'customer, update'
+          displayName: 'customer, update, visibility, control'
           href: ./how-to/view-manage-service-providers.md
         - name: Zobrazení aktivity poskytovatele služeb
-          displayName: 'monitor, log'
+          displayName: 'monitor, log, customer, visibility, transparency, control'
           href: ./how-to/view-service-provider-activity.md
+    - name: Připojování a Správa delegování
+      items:
+        - name: Zprovoznění zákazníků
+          displayName: 'ARM, template, delegation, authorization, resource management'
+          href: ./how-to/onboard-customer.md
+        - name: Publikování nabídek spravovaných služeb na Azure Marketplace
+          displayName: 'managed services offer, azure marketplace, publish, marketplace'
+          href: ./how-to/publish-managed-services-offers.md
+        - name: Aktualizovat delegování
+          displayName: upgrade
+          href: ./how-to/update-delegation.md
+        - name: Odebrat přístup k delegováním
+          displayName: 'delete, undelegate'
+          href: ./how-to/remove-delegation.md
+        - name: Monitorování změn delegování
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
+    - name: Zobrazení a správa zákazníků
+      displayName: my customers
+      href: ./how-to/view-manage-customers.md
+    - name: Propojení ID partnera
+      displayName: 'partner earned credit, pec, mpn'
+      href: ./how-to/partner-earned-credit.md
+    - name: Integrace služeb Azure
+      items:
+        - name: Integrace služby 0Azure Arc
+          displayName: 'server, kubernetes, hybrid, infrastructure'
+          href: ./how-to/manage-hybrid-infrastructure-arc.md
+        - name: Integrace služby Azure Migrate
+          displayName: 'migration, project, on-prem'
+          href: ./how-to/migration-at-scale.md
+        - name: Integrace služby Azure Monitor
+          displayName: 'log, analytics, analyze, activity'
+          href: ./how-to/monitor-at-scale.md
+        - name: Integrace Azure Policy
+          items:
+            - name: Nasazení zásad ve velkém
+              displayName: storage
+              href: ./how-to/policy-at-scale.md
+            - name: 'Nasazení zásady, která se dá napravit'
+              displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+              href: ./how-to/deploy-policy-remediation.md
+        - name: Integrace Azure Sentinelu
+          href: ./how-to/manage-sentinel-workspaces.md
 - name: Referenční informace
   items:
     - name: Azure CLI
-      href: /cli/azure/managedservices?view=azure-cli-latest
+      href: /cli/azure/managedservices
     - name: Azure PowerShell
-      href: /powershell/module/az.managedservices/?view=azps-2.4.0#managed_services
+      href: /powershell/module/az.managedservices#managed_services
     - name: Sada Azure SDK pro .NET
-      href: /dotnet/api/Microsoft.Azure.Management.ManagedServices?view=azure-dotnet
+      href: /dotnet/api/Microsoft.Azure.Management.ManagedServices
     - name: Azure SDK pro .NET (NuGet)
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/'
     - name: Azure SDK pro Python
@@ -95,6 +113,13 @@
       href: /rest/api/managedservices/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-reference.md
+    - name: Terraform
+      href: 'https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html'
+    - name: Ansible
+      href: 'https://docs.ansible.com/ansible/latest/collections/azure/azcollection/index.html#plugins-in-azure-azcollection'
 - name: Zdroje a prostředky
   items:
     - name: Microsoft Q&A pro Azure Lighthouse
@@ -103,5 +128,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: UserVoice
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all'
+    - name: Zpětná vazba k produktu
       href: 'https://feedback.azure.com/forums/922753'

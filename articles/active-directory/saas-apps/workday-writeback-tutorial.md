@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3a623a487dd31caf8c85b18771d90e3a6306df68
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526826"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954000"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD na Workday
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zpětném zápisu atributů z Azure AD do Workday. Aplikace pro zřizování zpětného zápisu do pracovního dne podporuje přiřazení hodnot k následujícím atributům Workday:
@@ -34,7 +34,7 @@ Když nastavíte příchozí integraci zřizování pomocí [Workday do místní
 
 Toto řešení pro zpětný zápis uživatelů v pracovní den je ideální pro:
 
-* Organizace používající Office 365, které chtějí vracet autoritativní atributy, které jí spravuje (například e-mailová adresa, uživatelské jméno a telefonní číslo) zpátky do Workday
+* Organizace, které používají Microsoft 365, které chtějí ke zpětným voláním používat autoritativní atributy (jako je e-mailová adresa, uživatelské jméno a telefonní číslo) zpátky do Workday
 
 ## <a name="configure-integration-system-user-in-workday"></a>Konfigurace uživatele integračního systému v Workday
 
@@ -56,15 +56,15 @@ Podle těchto pokynů nakonfigurujte zpětný zápis e-mailových adres a uživa
 
 2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
-3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
+3. Vyberte **podnikové aplikace** a pak **všechny aplikace**.
 
-4. Vyberte **Přidat aplikaci**a pak vyberte kategorii **vše** .
+4. Vyberte **Přidat aplikaci** a pak vyberte kategorii **vše** .
 
-5. Vyhledejte **zpětný zápis do Workday**a přidejte tuto aplikaci z galerie.
+5. Vyhledejte **zpětný zápis do Workday** a přidejte tuto aplikaci z galerie.
 
 6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování**.
 
-7. Změňte režim **zřizování** **Mode** na **automaticky**.
+7. Změňte režim **zřizování**  na **automaticky**.
 
 8. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
 
@@ -82,7 +82,7 @@ Podle těchto pokynů nakonfigurujte zpětný zápis e-mailových adres a uživa
 
 V této části nakonfigurujete, jak atributy zpětného zápisu z Azure AD do Workday budou. 
 
-1. Na kartě zřizování v části **mapování**klikněte na název mapování.
+1. Na kartě zřizování v části **mapování** klikněte na název mapování.
 
 2. V poli **obor zdrojového objektu** můžete volitelně filtrovat, které sady uživatelů v Azure Active Directory by měly být součástí zpětného zápisu. Výchozí obor je "Všichni uživatelé v Azure AD".
 
@@ -133,7 +133,7 @@ V této části nakonfigurujete, jak atributy zpětného zápisu z Azure AD do W
      Replace([mobile], , "[()\\s-]+", , "", , )
      ```
 
-6. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části oddílu mapování atributů.
+6. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části Attribute-Mapping části.
 
 ## <a name="enable-and-launch-user-provisioning"></a>Povolení a spuštění zřizování uživatelů
 
@@ -144,20 +144,36 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
+1. V rozevíracím seznamu **obor** vyberte **synchronizovat všechny uživatele a skupiny**. Pomocí této možnosti přepíše aplikace zpětného zápisu zpátky mapované atributy všech uživatelů ze služby Azure AD do pracovního dne v souladu s pravidly oboru definovanými v   ->  **oboru mapování zdrojového objektu**. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Vybrat obor zpětného zápisu](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > Aplikace pro zřizování zpětného zápisu do Workday nepodporuje možnost **synchronizovat jenom přiřazené uživatele a skupiny**.
+ 
+
 2. Klikněte na **Uložit**.
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů se nachází ve zdrojovém adresáři. V indikátoru průběhu můžete sledovat průběh cyklu synchronizace. 
 
-4. Na kartě **protokoly auditu** v Azure Portal můžete kdykoli zjistit, jaké akce služba zřizování provedla. Protokoly auditu vypíše všechny jednotlivé události synchronizace prováděné službou zřizování, například to, kteří uživatelé jsou importováni ze zdroje a exportováni do cílové aplikace.  
+4. V každém okamžiku zkontrolujte kartu **zřizovacích protokolů** v Azure Portal a podívejte se, jaké akce služba zřizování provedla. Protokoly auditu vypíše všechny jednotlivé události synchronizace prováděné službou zřizování, například to, kteří uživatelé jsou importováni ze zdroje a exportováni do cílové aplikace.  
 
 5. Po dokončení počáteční synchronizace bude na kartě **zřizování** napsána Souhrnná sestava, jak je znázorněno níže.
 
      > [!div class="mx-imgBorder"]
      > ![Indikátor průběhu zřizování](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
+## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
+
+* Aplikace zpětného zápisu používá předem definovanou hodnotu pro parametry **Communication_Usage_Type_ID** a **Phone_Device_Type_ID**. Pokud váš tenant Workday používá pro tyto atributy jinou hodnotu, operace zpětného zápisu nebude úspěšná. Alternativním řešením je aktualizovat Type_IDs v Workday. 
+* Když je aplikace zpětného zápisu nakonfigurovaná tak, aby aktualizovala sekundární telefonní čísla, nenahradí stávající sekundární telefonní číslo v Workday. Přidá k záznamu pracovního procesu jedno další sekundární telefonní číslo. K tomuto chování neexistuje žádné alternativní řešení. 
+
+
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Další informace o scénářích Integrace Azure AD a Workday a volání webové služby](../app-provisioning/workday-integration-reference.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Workday a Azure Active Directory](workday-tutorial.md)
 * [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Naučte se exportovat a importovat vaše konfigurace zřizování.](../app-provisioning/export-import-provisioning-configuration.md)

@@ -1,22 +1,22 @@
 ---
 title: Vysvětlení nevláken zařízení v Azure IoT Hub | Microsoft Docs
 description: Příručka pro vývojáře – pomocí vláken zařízení můžete synchronizovat stav a konfigurační data mezi IoT Hub a vašimi zařízeními.
-author: ash2017
+author: nehsin
 manager: philmea
-ms.author: asrastog
+ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327765"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093035"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Pochopení a používání vláken zařízení v IoT Hub
 
@@ -42,6 +42,8 @@ Použít vlákna zařízení k těmto akcím:
 Pokyny k používání hlášených vlastností, zpráv zařízení-Cloud nebo nahrání souborů najdete v tématu [pokyny k komunikace zařízení a cloudu](iot-hub-devguide-d2c-guidance.md) .
 
 Pokyny k používání požadovaných vlastností, přímých metod nebo zpráv z cloudu na zařízení najdete v tématu [pokyny k komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md) .
+
+Informace o tom, jak se zařízení dotýkají modelu zařízení, který používá zařízení technologie Plug and Play Azure IoT, najdete v tématu [vysvětlení technologie Plug and Play digitálních vláken typu IoT](../iot-pnp/concepts-digital-twin.md).
 
 ## <a name="device-twins"></a>Vlákna zařízení
 
@@ -122,7 +124,7 @@ V předchozím příkladu obsahuje vlákna zařízení `batteryLevel` vlastnost,
 
 ### <a name="desired-property-example"></a>Požadovaný příklad vlastnosti
 
-V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a aplikace pro zařízení používá k synchronizaci konfigurace telemetrie pro toto zařízení, aby bylo požadované a hlášené vlastnosti zařízení. Například:
+V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a aplikace pro zařízení používá k synchronizaci konfigurace telemetrie pro toto zařízení, aby bylo požadované a hlášené vlastnosti zařízení. Příklad:
 
 1. Back-end řešení nastaví požadovanou vlastnost s požadovanou konfigurační hodnotou. Tady je část dokumentu s požadovanou sadou vlastností:
 
@@ -185,7 +187,7 @@ Back-end řešení funguje na vlákna zařízení pomocí následujících atomi
 
   - Vlastnosti
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     $content – typ | application/json |
     $iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -201,7 +203,7 @@ Back-end řešení funguje na vlákna zařízení pomocí následujících atomi
 
   - Text
         
-    Tato část obsahuje všechny zdvojené změny ve formátu JSON. Používá stejný formát jako oprava, s rozdílem, který může obsahovat všechny nedokončené oddíly: Tagy, Properties. hlášené, Properties. revisioned a obsahuje prvky "$metadata". Příklad:
+    Tato část obsahuje všechny zdvojené změny ve formátu JSON. Používá stejný formát jako oprava, s rozdílem, který může obsahovat všechny nedokončené oddíly: Tagy, Properties. hlášené, Properties. revisioned a obsahuje prvky "$metadata". Třeba
 
     ```json
     {
@@ -250,7 +252,7 @@ Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s ná
 
 * **Keys**: všechny klíče v objektech JSON jsou v kódování UTF-8, Velká a malá písmena a dlouhé až 1 KB. Povolené znaky vyloučí řídicí znaky UNICODE (segmenty C0 a C1), a `.` , a `$` SP.
 
-* **Hodnoty**: všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole nejsou povolena.
+* **Hodnoty**: všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole jsou také podporována.
 
     * Celá čísla můžou mít minimální hodnotu-4503599627370496 a maximální hodnotu 4503599627370495.
 
@@ -308,9 +310,9 @@ IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost `tags
 
 ## <a name="device-twin-metadata"></a>Zařízení s dvojitou metadatou
 
-IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v požadovaném a hlášeném vlastnosti zařízení. Časová razítka jsou v UTC a kódovaná ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátu ISO8601 `YYYY-MM-DDTHH:MM:SS.mmmZ` .
+IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v požadovaném a hlášeném vlastnosti zařízení. Časová razítka jsou v UTC a kódovaná ve [](https://en.wikipedia.org/wiki/ISO_8601) formátu ISO8601 `YYYY-MM-DDTHH:MM:SS.mmmZ` .
 
-Například:
+Příklad:
 
 ```json
 {
@@ -339,7 +341,9 @@ Například:
             "batteryLevel": "55%",
             "$metadata": {
                 "telemetryConfig": {
-                    "sendFrequency": "5m",
+                    "sendFrequency": {
+                        "$lastUpdated": "2016-03-31T16:35:48.789Z"
+                    },
                     "status": {
                         "$lastUpdated": "2016-03-31T16:35:48.789Z"
                     },

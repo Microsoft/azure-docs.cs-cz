@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – místní připojení pomocí ExpressRoute
 description: Popisuje, jak požádat o místní připojení pomocí ExpressRoute ze sítě CloudSimple region.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77019617"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899231"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Připojení z místního prostředí k CloudSimple pomocí ExpressRoute
 

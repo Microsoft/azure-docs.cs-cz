@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat pomocí nástroje Azure Kopírování dat
-description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat zkopírujte data z jednoho umístění v úložišti objektů blob v Azure do jiného.
-services: data-factory
-documentationcenter: ''
+description: Vytvořte Azure Data Factory a pak pomocí nástroje Kopírování dat zkopírujte data z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/10/2020
-ms.openlocfilehash: 756c62aa070f05c4b66de0cde6c7df59d9b1d09a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 11/09/2020
+ms.openlocfilehash: 48624e415649be2fb76aed99c5cb0e1b3b12f04b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735183"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372854"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Rychlý Start: použití nástroje Kopírování dat ke kopírování dat
 
@@ -36,21 +31,21 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přejít na [Azure Portal](https://portal.azure.com). 
-1. V nabídce Azure Portal vyberte vytvořit data Factory **Resource**  >  **Analytics**  >  **Data Factory**:
+1. Přejděte na [Azure Portal](https://portal.azure.com). 
+1. V nabídce Azure Portal vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  :
 
     ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Na stránce **Nová datová továrna** jako **Název** zadejte **ADFTutorialDataFactory**. 
  
-   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například na ** &lt; &gt; ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název Azure Data Factory musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například na **&lt; &gt; ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chyba: název není k dispozici](./media/doc-common-process/name-not-available-error.png)
 1. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
 1. Pro položku **Skupina prostředků** proveďte jeden z následujících kroků:
      
    - Vyberte **Použít existující** a ze seznamu vyberte existující skupinu prostředků. 
-   - Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
+   - Vyberte **vytvořit novou** a zadejte název skupiny prostředků.   
          
    Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 1. V poli **Verze** vyberte **V2**.
@@ -111,7 +106,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 
     ![Stránka Deployment complete (Nasazení dokončeno)](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. Aplikace se přepne na kartu **monitorování** . Na této kartě se zobrazí stav kanálu. Pokud chcete seznam aktualizovat, vyberte **aktualizovat** . Kliknutím na odkaz **název kanálu** zobrazíte podrobnosti o spuštění aktivit nebo znovu spustíte kanál. 
+1. Aplikace se přepne na kartu **monitorování** . Na této kartě se zobrazí stav kanálu. Vyberte **aktualizovat** , aby se seznam aktualizoval. Kliknutím na odkaz **název kanálu** zobrazíte podrobnosti o spuštění aktivit nebo znovu spustíte kanál. 
    
     ![Aktualizovat kanál](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
 

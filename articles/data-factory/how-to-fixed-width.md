@@ -1,23 +1,21 @@
 ---
 title: Zpracování textových souborů s pevnou délkou s použitím mapování toků dat v Azure Data Factory
 description: Naučte se zpracovávat textové soubory s pevnou délkou v Azure Data Factory pomocí mapování toků dat.
-services: data-factory
 author: balakreshnan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: d629a9031f032a77efc953311a45b55996568191
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2297364e8f1a531b4512f2497bc4d99963d61179
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414374"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386199"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Zpracování textových souborů s pevnou délkou pomocí Data Factory mapování datových toků
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Pomocí mapování toků dat v Microsoft Azure Data Factory můžete transformovat data z textových souborů s pevnou šířkou. V následujícím úkolu definujeme datovou sadu pro textový soubor bez oddělovače a pak nastavíte dílčí řetězce rozdělení na základě pořadového čísla pozice.
 

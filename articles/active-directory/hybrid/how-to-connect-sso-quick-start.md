@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: bezproblémové jednotné přihlašování – rychlý Start | Microsoft Docs'
-description: Tento článek popisuje, jak začít s Azure Active Directory bezproblémové jednotné přihlašování.
+title: 'Azure AD Connect: bezproblémové jednoduché Sign-On rychlé zprovoznění | Microsoft Docs'
+description: Tento článek popisuje, jak začít s Azure Active Directory bezproblémovém jednoduchém Sign-On
 services: active-directory
 keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
@@ -16,18 +16,18 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115758"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644778"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
-## <a name="deploy-seamless-single-sign-on"></a>Nasazení bezproblémového jednotného přihlašování
+## <a name="deploy-seamless-single-sign-on"></a>Snadné nasazení jednoduchého Sign-On
 
-Azure Active Directory (Azure AD) bezproblémové jednotné přihlašování (bezproblémové jednotné přihlašování) se automaticky přihlásí k podnikovým plochám, které jsou připojené k podnikové síti. Bezproblémové jednotné přihlašování poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez nutnosti dalších místních komponent.
+Azure Active Directory (Azure AD) bezproblémové jednoduché Sign-On (bezproblémové jednotné přihlašování) se automaticky přihlásí k podnikovým plochám, které jsou připojené k podnikové síti. Bezproblémové jednotné přihlašování poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez nutnosti dalších místních komponent.
 
 Chcete-li nasadit bezproblémové jednotné přihlašování, postupujte podle těchto kroků.
 
@@ -37,10 +37,10 @@ Ujistěte se, že jsou splněné následující požadavky:
 
 * **Nastavení serveru Azure AD Connect**: Pokud jako metodu přihlašování použijete [předávací ověřování](how-to-connect-pta.md) , nevyžaduje se žádná další Kontrola požadavků. Pokud jako metodu přihlašování použijete [synchronizaci hodnot hash hesel](how-to-connect-password-hash-synchronization.md) , a pokud je mezi Azure AD Connect a službou Azure AD brána firewall, zajistěte, aby:
    - Použijete 1.1.644.0 nebo novější verzi Azure AD Connect. 
-   - Pokud vaše brána firewall nebo proxy server povolí, přidejte připojení do seznamu povolených adres URL ** \* . msappproxy.NET** přes port 443. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
+   - Pokud vaše brána firewall nebo proxy server povolí, přidejte připojení do seznamu povolených adres URL **\* . msappproxy.NET** přes port 443. Pokud pro konfiguraci proxy serveru vyžadujete určitou adresu URL, ale nemusíte použít zástupný znak, můžete nakonfigurovat **tenantid.Registration.msappproxy.NET**, kde tenantid je identifikátor GUID tenanta, ve kterém tuto funkci konfigurujete. Pokud ve vaší organizaci nejsou možné výjimky proxy serveru založené na adrese URL, můžete místo toho umožnit přístup k [rozsahům IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
 
     >[!NOTE]
-    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) , _kde najdete další_ informace.
+    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](./reference-connect-version-history.md) , _kde najdete další_ informace.
 
 * **Použití podporované topologie Azure AD Connect**: Ujistěte se, že používáte jednu z podporovaných topologií Azure AD Connect, které jsou popsané [tady](plan-connect-topologies.md).
 
@@ -51,9 +51,9 @@ Ujistěte se, že jsou splněné následující požadavky:
     * Synchronizujete se do Azure AD prostřednictvím Azure AD Connect.
     * Obsahuje uživatele, které chcete povolit pro bezproblémové přihlašování.
     
-* **Povolit moderní ověřování**: aby tato funkce fungovala, musíte ve svém tenantovi povolit [moderní ověřování](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) .
+* **Povolit moderní ověřování**: aby tato funkce fungovala, musíte ve svém tenantovi povolit [moderní ověřování](/office365/enterprise/modern-auth-for-office-2013-and-2016) .
 
-* **Použijte nejnovější verze klientů office 365**: Chcete-li získat tiché přihlašování pomocí klientů Office 365 (Outlook, Word, Excel a další), musí uživatelé používat verze 16.0.8730. xxxx nebo vyšší.
+* **Použijte nejnovější verze Microsoft 365 klientů**: Pokud chcete získat tiché přihlašování s Microsoft 365 klienty (Outlook, Word, Excel a další), musí uživatelé používat verze 16.0.8730. xxxx nebo vyšší.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: povolení funkce
 
@@ -107,7 +107,7 @@ Bezproblémovou přihlašování pro uživatele můžete postupně zavádět pom
 Kromě toho musíte povolit nastavení zásad zóny intranetu **s názvem povolit aktualizace stavového řádku prostřednictvím skriptu** prostřednictvím zásady skupiny. 
 
 >[!NOTE]
-> Následující pokyny fungují pouze pro Internet Explorer a Google Chrome ve Windows (Pokud sdílí sadu adres URL důvěryhodných webů s Internet Explorerem). V další části najdete pokyny k nastavení Mozilla Firefox a Google Chrome v macOS.
+> Následující pokyny fungují pouze pro Internet Explorer, Microsoft Edge a Google Chrome ve Windows (Pokud sdílí sadu adres URL důvěryhodných webů s Internet Explorerem). V další části najdete pokyny k nastavení Mozilla Firefox a Google Chrome v macOS.
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Proč je potřeba upravit nastavení intranetové zóny uživatelů?
 
@@ -124,15 +124,15 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 1. Otevřete nástroj Editor pro správu zásad skupiny.
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
-3. Přejděte do části zásady **Konfigurace uživatele**  >  **Policy**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**  >  Stránka zabezpečení**ovládacích panelů Internetu**  >  **Security Page**. Pak vyberte **seznam přiřazení lokality k zóně**.
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso6.png)
+3. Přejděte na **zásady konfigurace uživatele**  >    >  **šablony pro správu**  >  **součásti systému Windows**  >    >  Stránka zabezpečení **ovládacích panelů Internetu** aplikace Internet Explorer  >  . Pak vyberte **seznam přiřazení lokality k zóně**.
+    ![Snímek obrazovky se zvolenou stránkou zabezpečení se seznamem pro přiřazení na webu k zóně](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Povolte tuto zásadu a v dialogovém okně zadejte následující hodnoty:
    - **Název hodnoty**: adresa URL služby Azure AD, na které se předávají lístky protokolu Kerberos.
    - **Hodnota** (data): **1** označuje zónu intranetu.
 
      Výsledek vypadá takto:
 
-     Název hodnoty:`https://autologon.microsoftazuread-sso.com`
+     Název hodnoty: `https://autologon.microsoftazuread-sso.com`
   
      Hodnota (data): 1
 
@@ -142,31 +142,31 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 5. Vyberte **OK** a potom znovu vyberte **OK**.
 
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso7.png)
+    ![Snímek obrazovky zobrazující okno zobrazit obsah s vybraným přiřazením zóny](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Přejděte do části zásady **Konfigurace uživatele**  >  **Policy**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer Internet Explorer**  >  Stránka zabezpečení**ovládací panel**  >  **stránky**  >  **intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
+6. Přejděte do části zásady **Konfigurace uživatele**  >    >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer Internet Explorer**  >  Stránka zabezpečení **ovládací panel**  >  **stránky**  >  **intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
 
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso11.png)
+    ![Snímek obrazovky zobrazující stránku intranetová zóna s vybraným příkazem pro povolení aktualizací stavového řádku prostřednictvím skriptu.](./media/how-to-connect-sso-quick-start/sso11.png)
 
 7. Povolte nastavení zásad a pak vyberte **OK**.
 
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso12.png)
+    ![Snímek obrazovky zobrazující, že okno Povolit aktualizace stavového řádku prostřednictvím skriptu s povoleným nastavením zásad](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="group-policy-preference-option---detailed-steps"></a>Možnost "Předvolby zásad skupiny" – podrobný postup
 
 1. Otevřete nástroj Editor pro správu zásad skupiny.
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
-3. Přejděte do okna Předvolby **Konfigurace uživatele**  >  **Preferences**  >  **registr nastavení systému Windows**  >  **Registry**  >  **Nová**  >  **položka registru**.
+3. Přejděte do okna Předvolby **Konfigurace uživatele**  >    >  **registr nastavení systému Windows**  >    >  **Nová**  >  **položka registru**.
 
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso15.png)
+    ![Snímek obrazovky s vybraným registrem a položkou registru](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Do příslušných polí zadejte následující hodnoty a klikněte na **OK**.
-   - **Cesta ke klíči**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
-   - **Název hodnoty**: ***https***
-   - **Typ hodnoty**: ***REG_DWORD***
-   - **Data hodnoty**: ***00000001***
+   - **Cesta ke klíči**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_**
+   - **Název hodnoty**: **_https_**
+   - **Typ hodnoty**: **_REG_DWORD_**
+   - **Data hodnoty**: **_00000001_**
  
-     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![Snímek obrazovky se zobrazeným oknem "nové vlastnosti registru".](./media/how-to-connect-sso-quick-start/sso16.png)
  
      ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso17.png)
 
@@ -187,11 +187,11 @@ Ujistěte se, že počítač, na kterém běží macOS, je připojený ke služb
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Microsoft Edge na základě chromu (všechny platformy)
 
-Pokud jste ve svém prostředí přepsali nastavení zásad [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) nebo [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) , ujistěte se, že jste do nich přidali taky adresu URL služby Azure AD `https://autologon.microsoftazuread-sso.com` .
+Pokud jste ve svém prostředí přepsali nastavení zásad [AuthNegotiateDelegateAllowlist](/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) nebo [AuthServerAllowlist](/DeployEdge/microsoft-edge-policies#authserverallowlist) , ujistěte se, že jste do nich přidali taky adresu URL služby Azure AD `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Microsoft Edge na základě chromu (macOS a dalších platforem mimo systém Windows)
 
-Informace o tom, jak přidat adresu URL služby Azure AD pro integrované ověřování do seznamu povolených aplikací, najdete v tématu [Microsoft Edge na](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) bázi MacOS a dalších platformách jiných než Windows.
+Informace o tom, jak přidat adresu URL služby Azure AD pro integrované ověřování do seznamu povolených aplikací, najdete v tématu [Microsoft Edge na](/DeployEdge/microsoft-edge-policies#authserverallowlist) bázi MacOS a dalších platformách jiných než Windows.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (všechny platformy)
 
@@ -205,21 +205,21 @@ Použití rozšíření služby Active Directory Zásady skupiny třetích stran
 
 #### <a name="known-browser-limitations"></a>Známá omezení prohlížeče
 
-Bezproblémové jednotné přihlašování nefunguje v privátním režimu procházení v prohlížeči Firefox a v prohlížečích Microsoft Edge. Nefunguje také v aplikaci Internet Explorer, pokud prohlížeč běží v rozšířeném chráněném režimu. Pro další verzi Microsoft Edge založenou na Chromu nebude fungovat v režimu InPrivate a hosta podle návrhu.
+Bezproblémové jednotné přihlašování nefunguje v privátním režimu procházení pro Firefox a prohlížeče Microsoft Edge (starší verze). Nefunguje také v aplikaci Internet Explorer, pokud prohlížeč běží v rozšířeném chráněném režimu. Bezproblémové jednotné přihlašování podporuje další verzi Microsoft Edge založenou na Chromu a funguje v režimu InPrivate a hosta podle návrhu.
 
 ## <a name="step-4-test-the-feature"></a>Krok 4: testování funkce
 
 Chcete-li otestovat funkci pro konkrétního uživatele, ujistěte se, že jsou splněny všechny následující podmínky:
   - Uživatel se přihlásí v podnikovém zařízení.
-  - Zařízení je připojené k doméně služby Active Directory. Zařízení _není_ nutné [připojit k Azure AD](../active-directory-azureadjoin-overview.md).
+  - Zařízení je připojené k doméně služby Active Directory. Zařízení _není_ nutné [připojit k Azure AD](../devices/overview.md).
   - Zařízení má přímé připojení k řadiči domény (DC) v podnikové kabelové nebo bezdrátové síti nebo prostřednictvím připojení vzdáleného přístupu, jako je třeba připojení k síti VPN.
   - Tuto [funkci](#step-3-roll-out-the-feature) jste do tohoto uživatele zavedli prostřednictvím zásady skupiny.
 
 Chcete-li otestovat scénář, ve kterém uživatel zadá pouze uživatelské jméno, ale ne heslo:
-   - Přihlaste se k `https://myapps.microsoft.com/` nové privátní relaci prohlížeče.
+   - Přihlaste se k https://myapps.microsoft.com/ . Nezapomeňte buď vymazat mezipaměť prohlížeče, nebo použít novou privátní relaci prohlížeče s jakýmkoli podporovaným prohlížečem v privátním režimu.
 
 Chcete-li otestovat situaci, kdy uživatel nemusí zadávat uživatelské jméno nebo heslo, použijte jeden z následujících kroků: 
-   - Přihlaste se k `https://myapps.microsoft.com/contoso.onmicrosoft.com` nové privátní relaci prohlížeče. Nahraďte *Contoso* názvem vašeho tenanta.
+   - Přihlaste se a `https://myapps.microsoft.com/contoso.onmicrosoft.com` nezapomeňte buď vymazat mezipaměť prohlížeče, nebo použít novou privátní relaci prohlížeče s jakýmkoli podporovaným prohlížečem v privátním režimu. Nahraďte *Contoso* názvem vašeho tenanta.
    - Přihlaste se k `https://myapps.microsoft.com/contoso.com` nové privátní relaci prohlížeče. Nahraďte *contoso.com* ověřenou doménou (ne federované domény) ve vašem tenantovi.
 
 ## <a name="step-5-roll-over-keys"></a>Krok 5: Převeďte klíče
@@ -236,7 +236,7 @@ Pokyny k postupu při převzetí klíčů najdete v tématu [Azure Active Direct
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Technický hluboký podrobně](how-to-connect-sso-how-it-works.md): pochopení fungování funkce bezproblémového jednotného přihlašování.
+- [Technický hluboký podrobně](how-to-connect-sso-how-it-works.md): Zjistěte, jak funguje bezproblémové jednoduché funkce Sign-On.
 - [Nejčastější dotazy](how-to-connect-sso-faq.md): Získejte odpovědi na nejčastější dotazy týkající se bezproblémového jednotného přihlašování.
-- [Řešení potíží](tshoot-connect-sso.md): Naučte se řešit běžné problémy s funkcí bezproblémového jednotného přihlašování.
+- [Řešení potíží](tshoot-connect-sso.md): Naučte se řešit běžné problémy s bezproblémové jednou Sign-On funkcí.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte Fórum Azure Active Directory k započetí nových požadavků na funkce.

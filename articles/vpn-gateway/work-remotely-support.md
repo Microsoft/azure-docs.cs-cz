@@ -2,17 +2,17 @@
 title: 'Vzdálená práce s P2S: Azure VPN Gateway'
 description: Tato stránka popisuje, jak můžete využít VPN Gateway, aby bylo možné vzdáleně pracovat z Pandemic COVID-19.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 302706b67900bd0dd82aabfa750bba48918b134a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb0291b18952efc643de18e111154ebe58f041af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525360"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880080"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Vzdálená práce s využitím Azure VPN Gateway Point-to-site
 
@@ -30,13 +30,13 @@ Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečen
 
 V následující tabulce jsou uvedeny klientské operační systémy a možnosti ověřování, které jsou pro ně k dispozici. Je užitečné vybrat metodu ověřování založenou na operačním systému klienta, který se už používá. Vyberte například OpenVPN s ověřováním na základě certifikátu, pokud máte kombinaci klientských operačních systémů, které se potřebují připojit. Upozorňujeme také, že síť VPN typu Point-to-site je podporována pouze u bran sítě VPN založených na trasách.
 
-![Point-to-site](./media/working-remotely-support/ostable.png "Operační systém")
+![Snímek obrazovky se zobrazenými klientskými operačními systémy a dostupnými možnostmi ověřování.](./media/working-remotely-support/ostable.png "Operační systém")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>Scénář 1 – uživatelé potřebují přístup k prostředkům jenom v Azure
 
 V tomto scénáři potřebují vzdálení uživatelé přístup jenom k prostředkům, které jsou v Azure.
 
-![Point-to-site](./media/working-remotely-support/scenario1.png "Scénář 1")
+![Diagram, který zobrazuje scénář Point-to-site pro uživatele, kteří potřebují přístup k prostředkům jenom v Azure.](./media/working-remotely-support/scenario1.png "Scénář 1")
 
 Aby se uživatelé mohli bezpečně připojit k prostředkům Azure, je na nejvyšší úrovni potřeba provést tyto kroky:
 
@@ -55,7 +55,7 @@ Aby se uživatelé mohli bezpečně připojit k prostředkům Azure, je na nejvy
 
 V tomto scénáři potřebují vzdálení uživatelé přístup k prostředkům, které jsou v Azure, a v místních datových centrech.
 
-![Point-to-site](./media/working-remotely-support/scenario2.png "Scénář 2")
+![Diagram, který zobrazuje scénář pro uživatele, kteří potřebují přístup k prostředkům v Azure.](./media/working-remotely-support/scenario2.png "Scénář 2")
 
 Aby se uživatelé mohli bezpečně připojit k prostředkům Azure, je na nejvyšší úrovni potřeba provést tyto kroky:
 
@@ -65,7 +65,7 @@ Aby se uživatelé mohli bezpečně připojit k prostředkům Azure, je na nejvy
 4. Nakonfigurujte místní zařízení pro připojení k bráně virtuální sítě Azure.
 5. Stažení profilu Point-to-Site z Azure Portal a distribuce do klientů
 
-Informace o nastavení tunelu VPN typu Site-to-site najdete na [tomto odkazu](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Informace o nastavení tunelu VPN typu Site-to-site najdete na [tomto odkazu](./tutorial-site-to-site-portal.md).
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>Nejčastější dotazy k nativnímu ověřování certifikátů Azure
 

@@ -3,16 +3,19 @@ title: Úložiště centrálních tajných kódů Azure Service Fabric
 description: Tento článek popisuje, jak používat úložiště centrálních tajných kódů v Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9fd435803ad5354b0eb2d4f5de50009a8cbbfe2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197770"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88869751"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Úložiště centrálních tajných kódů v Azure Service Fabric 
 Tento článek popisuje, jak v Azure Service Fabric použít centrální úložiště tajných kódů (CSS) k vytváření tajných kódů v Service Fabricch aplikacích. CSS je místní mezipaměť úložiště tajných klíčů, která uchovává citlivá data, například heslo, tokeny a klíče, zašifrované v paměti.
 
+  > [!NOTE] 
+  > Při první aktivaci šablon stylů CSS před SF verze 7,1. CU3, aktivace může selhat a opustit šablonu stylů CSS v trvale nesprávném stavu, pokud je v clusteru ověřovaném systémem Windows aktivována šablona stylů CSS; Šablona stylů CSS je aktivována v jakémkoli clusteru `EncryptionCertificateThumbprint` , ale je nesprávně deklarována nebo není nainstalován odpovídající certifikát/seznam ACL-Ed na uzlech. V případě clusteru ověřování systému Windows přejděte do 7,1. Než budete pokračovat, CU3. U ostatních clusterů Prosím překontrolujte tyto nevarianty nebo je přidejte do 7,1. CU3.
+  
 ## <a name="enable-central-secrets-store"></a>Povolit úložiště centrálních tajných kódů
 Přidejte následující skript do konfigurace clusteru v části `fabricSettings` pro povolení šablon stylů CSS. Pro šablony stylů CSS doporučujeme použít jiný certifikát než certifikát clusteru. Ujistěte se, že je šifrovací certifikát nainstalovaný na všech uzlech a `NetworkService` má oprávnění ke čtení pro privátní klíč certifikátu.
   ```json

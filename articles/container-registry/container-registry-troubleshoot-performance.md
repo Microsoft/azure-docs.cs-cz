@@ -3,12 +3,12 @@ title: Řešení potíží s výkonem registru
 description: Příznaky, příčiny a řešení běžných potíží s výkonem registru
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 414e3a92b8ebd4ff58528fc5e9ec4794471bd775
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227231"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148405"
 ---
 # <a name="troubleshoot-registry-performance"></a>Řešení potíží s výkonem registru
 
@@ -115,7 +115,5 @@ Pokud se vám problém nevyřeší, přečtěte si následující možnosti.
   * [Řešení potíží s přihlášením k registru](container-registry-troubleshoot-login.md)
   * [Řešení potíží se sítí pomocí registru](container-registry-troubleshoot-access.md)
 * Možnosti [podpory komunity](https://azure.microsoft.com/support/community/)
-* [Microsoft – otázky a odpovědi](https://docs.microsoft.com/answers/products/)
+* [Microsoft – otázky a odpovědi](/answers/products/)
 * [Otevření lístku podpory](https://azure.microsoft.com/support/create-ticket/)
-
-

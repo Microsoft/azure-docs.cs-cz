@@ -1,22 +1,24 @@
 ---
-title: Kodéry živého streamování doporučují Media Services – Azure | Microsoft Docs
+title: Kodéry živého streamování doporučují Media Services
 description: Přečtěte si o službě Live streamování pro místní kodéry Doporučené Media Services
 services: media-services
 keywords: kódování; kodéry; média
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 04/16/2020
-ms.topic: article
+ms.date: 11/10/2020
+ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 67c26cbad2a723fa21fbe1719c6e43d3d63f2547
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf282b3fbba0f22cd41c0420014c46ddb7c958eb
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030661"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955135"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Ověřená místní kodéry živého streamování
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V Azure Media Services [živá událost](/rest/api/media/liveevents) (kanál) představuje kanál pro zpracování obsahu živého streamování. Živá událost přijímá živé vstupní proudy jedním ze dvou způsobů.
 
@@ -48,6 +50,7 @@ Při streamování přes RTMPS zkontrolujte nastavení brány firewall nebo prox
 > Kodéry musí podporovat protokol TLS 1,2 při použití protokolů RTMPs.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Antix digitální](http://www.antixdigital.com/) StreamZ Live (dřív představa Communications SelenioFlex Live)
 - [Blackmagic ATEM Mini a ATEM Mini PRO](https://www.blackmagicdesign.com/products/atemmini)
 - [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Element-Live (verze 2.14.15 a vyšší)
@@ -76,11 +79,11 @@ Media Services doporučuje použít jeden z následujících živých kodérů, 
 > Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS.
 
 - Ateme TITAN Live
+- [Antix digitální](http://www.antixdigital.com/) StreamZ Live (dřív představa Communications SelenioFlex Live)
 - Cisco Digital Media Encoder 2200
 - Element-Live (verze 2.14.15 a vyšší z důvodu požadavku TLS 1,2)
 - Envivio 4Caster C4 Gen III 
 - [FFmpeg](https://www.ffmpeg.org)
-- Představte si Communications Selenio MCP3
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
 
 > [!TIP]

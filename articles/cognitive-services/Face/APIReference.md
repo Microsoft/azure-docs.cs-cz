@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: reference
-ms.date: 03/01/2018
+ms.date: 02/17/2021
 ms.author: sbowles
-ms.openlocfilehash: 431525964eb69431600d36ba8249c6dc465a5df3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 712b18b471b7595f5278c77ead9f845048d4783e
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76169932"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100642381"
 ---
-# <a name="face-api-reference-list"></a>Seznam odkazů na Face API
+# <a name="face-api-reference-list"></a>Seznam odkazů na rozhraní API pro rozpoznávání tváře
 
 Azure Face je cloudová služba, která poskytuje algoritmy pro detekci a rozpoznávání obličeje. Rozhraní API pro rozpoznávání tváře se skládají z následujících kategorií:
 

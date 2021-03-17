@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030075"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485371"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Zálohování a obnovení v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -35,11 +35,11 @@ Aktuální ceny za úložiště zálohování najdete na [stránce s cenami](htt
 V Azure Database for PostgreSQL vytvoří cluster Citus (s obnovením) nový cluster z původních záloh uzlů. 
 
 > [!IMPORTANT]
->Cluster s škálováním na úrovni Standard můžete obnovit jenom v rámci stejného předplatného a skupiny prostředků a s jiným názvem clusteru.
+>Cluster Citus () můžete obnovit pouze v rámci stejného předplatného a skupiny prostředků a s jiným názvem clusteru.
 
 
 > [!IMPORTANT]
-> Odstraněné clustery Citus) se nedají obnovit. Pokud cluster odstraníte, odstraní se všechny uzly patřící do clusteru a nebude možné je obnovit. Pro ochranu prostředků clusteru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](/azure/azure-resource-manager/management/lock-resources).
+> Odstraněné clustery Citus) se nedají obnovit. Pokud cluster odstraníte, odstraní se všechny uzly patřící do clusteru a nebude možné je obnovit. Pro ochranu prostředků clusteru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="point-in-time-restore-pitr"></a>Obnovení k bodu v čase (PITR)
 
@@ -65,5 +65,5 @@ Po obnovení z některého mechanismu obnovení byste měli provést následují
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [zónách dostupnosti Azure](/azure/availability-zones/az-overview).
-* Nastavte [navrhované výstrahy](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts) na skupiny serverů Citus ().
+* Přečtěte si o [zónách dostupnosti Azure](../availability-zones/az-overview.md).
+* Nastavte [navrhované výstrahy](./howto-hyperscale-alert-on-metric.md#suggested-alerts) na skupiny serverů Citus ().

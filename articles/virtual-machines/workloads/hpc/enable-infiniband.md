@@ -1,24 +1,19 @@
 ---
 title: Povolení InifinBand na virtuálních počítačích HPC – Azure Virtual Machines | Microsoft Docs
 description: Naučte se, jak povolit InfiniBand na virtuálních počítačích Azure HPC.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: hpc
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 11/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0cbfed307cea1bd98bf864046a8c08edb849226a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: cd4d928217ceba80fa5ea0252a6ed20803a812d3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797981"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666950"
 ---
 # <a name="enable-infiniband"></a>Povolení sítí Infiniband
 
@@ -66,7 +61,7 @@ Pro Windows Stáhněte a nainstalujte [ovladače Mellanox OFED for Windows](http
 Pokud máte v plánu spouštět úlohy MPI, obvykle nepotřebujete IPoIB. Knihovna MPI bude používat rozhraní příkazů pro komunikaci IB (pokud explicitně nepoužíváte kanál TCP/IP knihovny MPI). Pokud ale máte aplikaci, která pro komunikaci používá protokol TCP/IP a chcete ji spustit přes IB, můžete IPoIB použít přes rozhraní IB. K povolení protokolu IP přes InfiniBand použijte následující příkazy (pro RHEL/CentOS).
 
 ```bash
-sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo sed -i -e 's/# OS.EnableRDMA=n/OS.EnableRDMA=y/g' /etc/waagent.conf
 sudo systemctl restart waagent
 ```
 

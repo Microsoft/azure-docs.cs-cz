@@ -3,14 +3,13 @@ title: Vytvoření aplikace typu kontejner pro Linux v Service Fabric v Azure
 description: V tomto rychlém startu sestavíte image Dockeru s vaší aplikací, nahrajete image do registru kontejneru a pak nasadíte kontejner do clusteru Service Fabric.
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: d765168ea2eddaf42715536b5da67f15bb8a8cee
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258554"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788158"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Linuxu do Service Fabric
 
@@ -20,13 +19,13 @@ V tomto rychlém startu se dozvíte, jak nasadit kontejnery Linux do clusteru Se
 
 ![Webová stránka hlasovací aplikace][quickstartpic]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 1. Vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete, pokud nemáte předplatné.
 
-2. Instalace rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+2. Instalace rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-apt)
 
 3. Instalace [sady Service Fabric SDK a](service-fabric-get-started-linux.md#installation-methods) rozhraní PŘÍKAZového řádku
 
@@ -53,14 +52,14 @@ Pokud chcete nasadit aplikaci do Azure, potřebujete cluster Service Fabric, ve 
 #!/bin/bash
 
 # Variables
-ResourceGroupName="containertestcluster" 
-ClusterName="containertestcluster" 
-Location="eastus" 
-Password="q6D7nN%6ck@6" 
-Subject="containertestcluster.eastus.cloudapp.azure.com" 
-VaultName="containertestvault" 
-VmPassword="Mypa$$word!321"
-VmUserName="sfadminuser"
+ResourceGroupName='containertestcluster' 
+ClusterName='containertestcluster' 
+Location='eastus' 
+Password='q6D7nN%6ck@6' 
+Subject='containertestcluster.eastus.cloudapp.azure.com' 
+VaultName='containertestvault' 
+VmPassword='Mypa$$word!321'
+VmUserName='sfadminuser'
 
 # Login to Azure and set the subscription
 az login
@@ -108,7 +107,7 @@ Mozilla Firefox je výchozím prohlížečem v Ubuntu 16,04. Pokud chcete certif
     ./install.sh
     ```
 
-3. Otevřete webový prohlížeč a přejděte na koncový bod Service Fabric Exploreru pro váš cluster. Koncový bod má následující formát: **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; například `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
+3. Otevřete webový prohlížeč a přejděte na koncový bod Service Fabric Exploreru pro váš cluster. Koncový bod má následující formát:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; například `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Rozbalením uzlu **aplikace** zjistíte, že nyní existuje položka pro typ hlasovací aplikace a instanci, kterou jste vytvořili.
 
@@ -169,7 +168,7 @@ Pomocí odinstalačního skriptu (uninstall.sh), který je součástí šablony,
 
 Nejjednodušší způsob, jak odstranit cluster a všechny prostředky, které využívá, je odstranit příslušnou skupinu prostředků.
 
-Přihlaste se k Azure a vyberte ID předplatného, se kterým chcete cluster odebrat. Své ID předplatného můžete zjistit po přihlášení k webu Azure Portal. Pomocí [příkazu AZ Group Delete](/cli/azure/group?view=azure-cli-latest)odstraňte skupinu prostředků a všechny prostředky clusteru.
+Přihlaste se k Azure a vyberte ID předplatného, se kterým chcete cluster odebrat. Své ID předplatného můžete zjistit po přihlášení k webu Azure Portal. Pomocí [příkazu AZ Group Delete](/cli/azure/group)odstraňte skupinu prostředků a všechny prostředky clusteru.
 
 ```azurecli
 az login
@@ -178,7 +177,7 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-Pokud už jste dokončili práci se svým clusterem, můžete odebrat certifikát ze svého úložiště certifikátů. Příklad:
+Pokud už jste dokončili práci se svým clusterem, můžete odebrat certifikát ze svého úložiště certifikátů. Například:
 - Windows: Použijte [modul snap-in Certifikáty v konzole MMC](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Při přidávání modulu snap-in nezapomeňte vybrat možnost **Můj uživatelský účet**. Přejděte do umístění `Certificates - Current User\Personal\Certificates` a odeberte certifikát.
 - Mac: Použijte aplikaci Klíčenka.
 - Ubuntu: Postupujte podle kroků, pomocí kterých jste zobrazili certifikáty a odebrali certifikát.

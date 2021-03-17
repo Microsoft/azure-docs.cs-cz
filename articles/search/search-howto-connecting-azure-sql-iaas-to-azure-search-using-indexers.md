@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: eacfc75b31efaf9a53ed116ed9e75983146d8575
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dce4c41d0d6f15ac9dc33e687c9a5ac7b7b96e06
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084122"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200790"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer pro SQL Server na virtuálním počítači Azure
 
@@ -29,7 +29,7 @@ Azure Kognitivní hledání vyžaduje šifrovaný kanál pro všechny požadavky
 
 1. Zkontrolujte vlastnosti certifikátu a ověřte, že název subjektu je plně kvalifikovaný název domény (FQDN) virtuálního počítače Azure. K zobrazení vlastností můžete použít nástroj jako například CertUtil nebo modul snap-in Certifikáty. Plně kvalifikovaný název domény můžete získat z oddílu základy v okně služby VM, a to v poli **název veřejné IP adresy/název DNS popisek** v [Azure Portal](https://portal.azure.com/).
    
-   * Pro virtuální počítače vytvořené pomocí novější šablony **Správce prostředků** je plně kvalifikovaný název domény formátovaný jako`<your-VM-name>.<region>.cloudapp.azure.com`
+   * Pro virtuální počítače vytvořené pomocí novější šablony **Správce prostředků** je plně kvalifikovaný název domény formátovaný jako `<your-VM-name>.<region>.cloudapp.azure.com`
    * U starších virtuálních počítačů vytvořených jako **klasický** virtuální počítač je plně kvalifikovaný název domény formátovaný jako `<your-cloud-service-name.cloudapp.net>` .
 
 2. Nakonfigurujte SQL Server k použití certifikátu pomocí Editoru registru (Regedit). 
@@ -53,7 +53,7 @@ Azure Kognitivní hledání vyžaduje šifrovaný kanál pro všechny požadavky
 Po nastavení šifrovaného připojení, které vyžaduje Azure Kognitivní hledání, existují další vnitřní kroky konfigurace pro SQL Server na virtuálních počítačích Azure. Pokud jste to ještě neudělali, je dalším krokem dokončení konfigurace pomocí jednoho z těchto článků:
 
 * **Správce prostředků** virtuálního počítače najdete v tématu [připojení k virtuálnímu počítači s SQL Server na Azure pomocí Správce prostředků](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md). 
-* Pro **klasický** virtuální počítač najdete informace v tématu [připojení k virtuálnímu počítači s SQL Server v Azure Classic](../virtual-machines/windows/classic/sql-connect.md).
+* Pro **klasický** virtuální počítač najdete informace v tématu [připojení k virtuálnímu počítači s SQL Server v Azure Classic](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect).
 
 Konkrétně si projděte část v každém článku věnované "připojování přes Internet".
 
@@ -63,34 +63,24 @@ Není neobvyklé konfigurovat NSG a odpovídající koncový bod Azure ani sezna
 Odkazy níže poskytují pokyny týkající se konfigurace NSG pro nasazení virtuálních počítačů. Tyto pokyny použijte k řízení přístupu ke koncovému bodu Azure Kognitivní hledání na základě jeho IP adresy.
 
 > [!NOTE]
-> Základní informace najdete v tématu [co je skupina zabezpečení sítě](../virtual-network/security-overview.md) .
+> Základní informace najdete v tématu [co je skupina zabezpečení sítě](../virtual-network/network-security-groups-overview.md) .
 > 
 > 
 
 * **Správce prostředků** virtuálního počítače najdete v tématu [jak vytvořit skupin zabezpečení sítě pro nasazení ARM](../virtual-network/tutorial-filter-network-traffic.md). 
-* Pro **klasický** virtuální počítač si přečtěte téma [jak vytvořit skupin zabezpečení sítě pro nasazení Classic](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
+* Pro **klasický** virtuální počítač si přečtěte téma [jak vytvořit skupin zabezpečení sítě pro nasazení Classic](/previous-versions/azure/virtual-network/virtual-networks-create-nsg-classic-ps).
 
 Přidělování IP adres může představovat několik výzev, které je možné snadno překonat, pokud víte o problému a možných alternativních řešeních. Zbývající části poskytují doporučení pro zpracování problémů souvisejících s IP adresami v seznamu ACL.
 
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Omezení přístupu k Azure Kognitivní hledání
-Důrazně doporučujeme, abyste omezili přístup k IP adrese vaší vyhledávací služby a rozsahu IP adres `AzureCognitiveSearch` [service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) v seznamu ACL místo toho, aby byly virtuální počítače SQL Azure otevřené pro všechny požadavky na připojení.
+Důrazně doporučujeme, abyste omezili přístup k IP adrese vaší vyhledávací služby a rozsahu IP adres `AzureCognitiveSearch` [](../virtual-network/service-tags-overview.md#available-service-tags) v seznamu ACL místo toho, aby byly virtuální počítače SQL Azure otevřené pro všechny požadavky na připojení.
 
-IP adresu můžete zjistit tak, že otestujete plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net` ) pro vaši vyhledávací službu.
+IP adresu můžete zjistit tak, že otestujete plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net` ) pro vaši vyhledávací službu. I když je možné změnit IP adresu vyhledávací služby, je pravděpodobné, že se změní. IP adresa je v rámci životnosti služby obvykle statická.
 
-Rozsah IP adres `AzureCognitiveSearch` [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) můžete zjistit buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) , nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
-
-#### <a name="managing-ip-address-fluctuations"></a>Správa výkyvů IP adres
-Pokud vaše vyhledávací služba obsahuje jenom jednu jednotku vyhledávání (tj. jednu repliku a jeden oddíl), IP adresa se během rutiny běžného spuštění služby změní a naruší se platnost stávajícího seznamu ACL s IP adresou vaší vyhledávací služby.
-
-Jedním ze způsobů, jak se vyhnout následné chybě připojení, je použít více než jednu repliku a jeden oddíl v Azure Kognitivní hledání. Tím se zvýší náklady, ale také se vyřeší problém s IP adresou. V Azure Kognitivní hledání se IP adresy nemění, pokud máte více než jednu jednotku vyhledávání.
-
-Druhý postup je, aby bylo možné připojení selhat a pak znovu nakonfigurovat seznamy řízení přístupu (ACL) v NSG. V průměru můžete očekávat, že se IP adresy mění každých několik týdnů. Pro zákazníky, kteří provedli průběžné indexování, může být tento přístup životaschopný.
-
-Třetí schopný (ale ne obzvláště zabezpečený) přístup je zadání rozsahu IP adres oblasti Azure, ve které se vaše vyhledávací služba zřídí. Seznam rozsahů IP adres, ze kterých se k prostředkům Azure přiděluje veřejné IP adresy, se zveřejňuje v [rozsahu IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). 
+Rozsah IP adres `AzureCognitiveSearch` [značky služby](../virtual-network/service-tags-overview.md#available-service-tags) můžete zjistit buď pomocí [souborů JSON ke stažení](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) , nebo přes [rozhraní API pro zjišťování značek služby](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
 
 #### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Zahrnutí IP adres portálu Azure Kognitivní hledání
 Pokud k vytvoření indexeru použijete Azure Portal, logika portálu Azure Kognitivní hledání také potřebuje přístup k vašemu VIRTUÁLNÍmu počítači s SQL Azure během vytváření. IP adresy portálu Azure Kognitivní hledání můžete najít pomocí nástroje Testing `stamp2.search.ext.azure.com` .
 
 ## <a name="next-steps"></a>Další kroky
 Kvůli nedostatku konfigurace teď můžete jako zdroj dat pro službu Azure Kognitivní hledání indexer zadat SQL Server na virtuálním počítači Azure. Další informace najdete v tématu [připojení Azure SQL Database k Azure kognitivní hledání pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .
-

@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: f4a1cc432a50a555fe6e050ca318b4cfaf1092d4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dfb887004cd29b5bd9f1d9886b7dfa5f43c83dbe
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682125"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531845"
 ---
-Soubory MP4 jsou zapsány do adresáře na hraničním zařízení, které jste nakonfigurovali v souboru *. env* pomocí klíče OUTPUT_VIDEO_FOLDER_ON_DEVICE. Pokud jste použili výchozí hodnotu, výsledky by se měly nacházet ve složce */var/Media/* .
+Soubory MP4 jsou zapsány do adresáře na hraničním zařízení, které jste nakonfigurovali v souboru *. env* pomocí klíče VIDEO_OUTPUT_FOLDER_ON_DEVICE. Pokud jste použili výchozí hodnotu, výsledky by se měly nacházet ve složce */var/Media/* .
 
 Přehrání klipu MP4:
 

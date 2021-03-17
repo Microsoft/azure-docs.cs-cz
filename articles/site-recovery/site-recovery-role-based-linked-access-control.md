@@ -1,21 +1,21 @@
 ---
 title: Správa řízení přístupu na základě role v Azure v Azure Site Recovery
-description: Tento článek popisuje, jak pro správu přístupu k Azure Site Recovery použít řízení přístupu na základě role (RBAC).
+description: Tento článek popisuje, jak použít řízení přístupu na základě role Azure (Azure RBAC) ke správě přístupu k Azure Site Recovery.
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d3e1334f513e8ac587d639758d83ce080c5b4ab9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927160"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516898"
 ---
-# <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu Site Recovery pomocí řízení přístupu na základě role (RBAC)
+# <a name="manage-site-recovery-access-with-azure-role-based-access-control-azure-rbac"></a>Správa přístupu k Site Recovery pomocí řízení přístupu na základě role Azure (RBAC)
 
-Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC můžete oddělit zodpovědnosti v rámci svého týmu a k provádění konkrétních úloh udělit uživatelům pouze konkrétní přístupová oprávnění.
+Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí Azure RBAC můžete oddělit zodpovědnosti v rámci svého týmu a k provádění konkrétních úloh udělit uživatelům pouze konkrétní přístupová oprávnění.
 
 Azure Site Recovery poskytuje 3 předdefinované role pro řízení operací správy Site Recovery. Další informace o [předdefinovaných rolích Azure](../role-based-access-control/built-in-roles.md)
 
@@ -72,9 +72,9 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 Zvažte použití [předdefinovaných rolí](../role-based-access-control/built-in-roles.md) Přispěvatel virtuálních počítačů a klasického přispěvatele virtuálních počítačů pro modely nasazení Správce prostředků a Classic.
 
 ## <a name="next-steps"></a>Další kroky
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Začněte s RBAC v Azure Portal.
+* [Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Začínáme s Azure RBAC v Azure Portal.
 * Naučte se spravovat přístup pomocí:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Řešení potíží s Access Control na základě rolí](../role-based-access-control/troubleshooting.md): Získejte návrhy pro řešení běžných problémů.
+* [Řešení potíží s Azure RBAC](../role-based-access-control/troubleshooting.md): Získejte návrhy na řešení běžných problémů.

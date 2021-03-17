@@ -1,68 +1,82 @@
 ---
-title: Podporovaná úložiště dat v Azure Data Share
-description: Přečtěte si o úložištích dat, která jsou podporovaná pro použití Azure Data Share.
+title: Podporovaná úložiště dat ve službě Azure Data Share
+description: Přečtěte si o úložištích dat podporovaných pro použití v Azure Data Share.
 ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 08/14/2020
-ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.date: 12/16/2020
+ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258595"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963675"
 ---
-# <a name="supported-data-stores-in-azure-data-share"></a>Podporovaná úložiště dat v Azure Data Share
+# <a name="supported-data-stores-in-azure-data-share"></a>Podporovaná úložiště dat ve službě Azure Data Share
 
-Azure data Shared poskytuje otevřené a flexibilní sdílení dat, včetně možnosti sdílení z a do různých úložišť dat. Poskytovatelé dat můžou sdílet data z jednoho typu úložiště dat a jejich příjemci dat si můžou zvolit, do kterého úložiště dat se mají přijímat data. 
+Azure data Shared poskytuje otevřené a flexibilní sdílení dat, včetně možnosti sdílení z a do různých úložišť dat. Poskytovatelé dat můžou sdílet data z jednoho typu úložiště dat a příjemci dat můžou zvolit úložiště dat pro příjem dat. 
 
-V tomto článku se seznámíte s bohatou sadou úložišť dat Azure, která jsou podporovaná v Azure Data Share. Můžete také najít informace o kombinacích úložišť dat, která mohou využívat poskytovatelé dat a spotřebitelé dat. 
+V tomto článku se seznámíte s bohatou sadou úložišť dat Azure, která podporuje Azure Data Share. Naučíte se také, jak můžou poskytovatelé dat a příjemci dat kombinovat různá úložiště dat. 
 
-## <a name="what-data-stores-are-supported-in-azure-data-share"></a>Jaká úložiště dat jsou podporovaná v Azure Data Share? 
+## <a name="supported-data-stores"></a>Podporované zdroje dat 
 
-Následující tabulka uvádí podporované zdroje dat pro sdílenou složku Azure. 
+V následující tabulce jsou popsána úložiště dat, která podporuje sdílená data Azure. 
 
-| Úložiště dat | Sdílení na základě snímků | Místní sdílení 
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob Storage |✓ | |
-| Azure Data Lake Storage Gen1 |✓ | |
-| Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Database |Public Preview | |
-| Azure synapse Analytics (dříve Azure SQL DW) |Public Preview | |
-| Průzkumník dat Azure | |✓ |
+| Úložiště dat | Sdílení na základě úplných snímků | Sdílení na základě přírůstkových snímků | Probíhá sdílení 
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob Storage |✓ |✓ | |
+| Azure Data Lake Storage Gen1 |✓ |✓ | |
+| Azure Data Lake Storage Gen2 |✓ |✓ ||
+| Azure SQL Database |✓ | | |
+| Azure Synapse Analytics (dříve Azure SQL Data Warehouse) |✓ | | |
+| Vyhrazený fond SQL ve službě Azure synapse Analytics (pracovní prostor) |✓ | | |
+| Průzkumník dat Azure | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Matice podpory úložiště dat
 
-Azure Data Share nabízí flexibilitu uživatelů dat při rozhodování v úložišti dat, ve kterém se mají přijímat data. Například data, která jsou sdílena z Azure SQL Database, lze přijímat do Azure Data Lake Store Gen2, Azure SQL Database nebo Azure synapse Analytics. Zákazníci si můžou vybrat, v jakém formátu se mají data přijímat, když nakonfigurujete příchozí sdílenou složku. 
+Azure Data Share umožňuje příjemcům dat zvolit úložiště dat pro příjem dat. Například data, která jsou sdílena z Azure SQL Database, lze přijímat do služby Azure Data Lake Storage Gen2, Azure SQL Database nebo Azure synapse Analytics. Když si zákazníci nastavili přijímající sdílenou složku, můžou zvolit formát pro příjem těchto dat. 
 
-Následující tabulka obsahuje podrobnosti různých kombinací a možností, které příjemci dat mají při přijetí a konfiguraci jejich sdílení dat. Další informace o konfiguraci mapování datových sad naleznete v tématu [How to Configure DataSet Mapping](how-to-configure-mapping.md).
+Následující tabulka vysvětluje kombinace a možnosti, které mohou uživatelé dat vybrat při přijímání a konfiguraci sdílení dat. Další informace najdete v tématu [Konfigurace mapování datových sad](how-to-configure-mapping.md).
 
-| Úložiště dat | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics | Průzkumník dat Azure
-|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob Storage | ✓ || ✓ ||
-| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
-| Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
-| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ ||
-| Azure synapse Analytics (dříve Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ ||
-| Průzkumník dat Azure |||||| ✓ |
+| Úložiště dat | Blob Storage | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Databáze SQL | Synapse Analytics (dříve SQL Data Warehouse) | Vyhrazený fond SQL synapse Analytics (pracovní prostor) | Data Explorer
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
+| Blob Storage | ✓ || ✓ |||
+| Data Lake Storage Gen1 | ✓ | | ✓ |||
+| Data Lake Storage Gen2 | ✓ | | ✓ |||
+| Databáze SQL | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Synapse Analytics (dříve SQL Data Warehouse) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Vyhrazený fond SQL synapse Analytics (pracovní prostor) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Sdílení z účtu úložiště
-Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V tuto chvíli se podporuje jenom objekt blob bloku. Když jsou systémy souborů, kontejnery nebo složky sdíleny ve sdílení založeném na snímcích, příjemce dat si může vytvořit úplnou kopii sdílených dat nebo využít možnost přírůstkového snímku pro kopírování pouze nových nebo aktualizovaných souborů. Přírůstkový snímek je založen na době poslední změny souborů. Existující soubory se stejným názvem budou přepsány.
+Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V současné době jsou podporovány pouze objekty blob bloku. 
+
+Když se v rámci sdílení na základě snímků sdílí systémy souborů, kontejnery nebo složky, můžou si příjemci dat vytvořit úplnou kopii sdílených dat. Nebo můžou použít funkci přírůstkového snímku ke kopírování jenom nových souborů nebo aktualizovaných souborů. 
+
+Přírůstkový snímek je založen na době poslední změny souborů. Existující soubory, které mají stejný název jako soubory v přijatých datech, se přepíší ve snímku. Soubory, které jsou odstraněny ze zdroje, nejsou v cíli smazány. 
+
+Další informace najdete v tématu [sdílení a příjem dat z Azure Blob Storage a Azure Data Lake Storage](how-to-share-from-storage.md).
 
 ## <a name="share-from-a-sql-based-source"></a>Sdílení ze zdroje založeného na jazyce SQL
-Azure Data Share podporuje sdílení tabulek nebo zobrazení z Azure SQL Database a Azure synapse Analytics (dříve Azure SQL DW). Příjemci dat můžou přijmout data do Azure Data Lake Store Gen2 nebo Azure Blob Storage jako soubor CSV nebo Parquet. Všimněte si, že ve výchozím nastavení jsou formáty souborů CSV. Příjemce dat se může rozhodnout, že obdrží data ve formátu Parquet v případě potřeby. To se dá udělat v nastavení mapování datové sady při přijímání dat. 
+Azure Data Share podporuje sdílení tabulek i zobrazení z Azure SQL Database a analýzy Azure synapse (dřív Azure SQL Data Warehouse). Podporuje sdílení tabulek z vyhrazeného fondu SQL Azure synapse Analytics (pracovní prostor). Sdílení z fondu SQL bez serveru Azure synapse Analytics (v pracovním prostoru) není aktuálně podporováno. 
 
-Při přijímání dat do Azure Data Lake Store Gen2 nebo Azure Blob Storage zapíše úplné snímky obsah cílového souboru. 
+Příjemci dat se můžou rozhodnout, že data přijměte do Azure Data Lake Storage Gen2 nebo Azure Blob Storage jako soubor CSV nebo soubor Parquet. Můžou také přijímat data jako tabulky do Azure SQL Database a Azure synapse Analytics.
 
-Příjemce dat se může rozhodnout pro příjem dat do tabulky podle svého výběru. Pokud v tomto scénáři cílová tabulka ještě neexistuje, vytvoří Azure Data Share tabulku SQL se zdrojovým schématem. Pokud cílová tabulka již existuje se stejným názvem, bude vynechána a přepíše se nejnovějším úplným snímkem. Při mapování cílové tabulky lze zadat alternativní název schématu a tabulky. Přírůstkové snímky se aktuálně nepodporují. 
+Když příjemci přijímají data do Azure Data Lake Storage Gen2 nebo Azure Blob Storage, budou úplné snímky přepsat obsah cílového souboru, pokud soubor již existuje. Po přijetí dat do tabulky a cílová tabulka už neexistuje, služba Azure Data Share vytvoří tabulku SQL pomocí zdrojového schématu. Pokud cílová tabulka již existuje a má stejný název, je vynechána a přepsána aktuálním úplným snímkem. Přírůstkové snímky se v současné době nepodporují.
 
-Sdílení ze zdrojů založených na SQL má požadavky související s pravidly a oprávněními brány firewall. Podrobnosti najdete v části požadavky v kurzu [sdílení dat](share-your-data.md) .
+Další informace najdete v tématech [sdílení a příjem dat z Azure SQL Database a Azure synapse Analytics](how-to-share-from-sql.md).
 
-## <a name="share-from-azure-data-explorer"></a>Sdílení z Azure Průzkumník dat
-Azure Data Share podporuje možnost místního sdílení databází z clusterů Azure Průzkumník dat. Poskytovatel dat může sdílet na úrovni databáze nebo clusteru. Při sdílení na úrovni databáze bude příjemce dat moct přistupovat jenom ke konkrétním databázím, které sdílí poskytovatel dat. Při sdílení na úrovni clusteru má příjemce dat přístup ke všem databázím z clusteru poskytovatele, včetně všech budoucích databází vytvořených poskytovatelem dat.
+## <a name="share-from-data-explorer"></a>Sdílet z Průzkumník dat
+Azure Data Share podporuje možnost místního sdílení databází z clusterů Azure Průzkumník dat. Poskytovatel dat může sdílet na úrovni databáze nebo clusteru. 
 
-Pro přístup ke sdíleným databázím musí mít příjemce dat svůj vlastní cluster Azure Průzkumník dat. Cluster Azure Průzkumník dat pro příjemce dat musí najít ve stejném datovém centru Azure jako cluster Azure Průzkumník dat poskytovatele dat. Když je navázán vztah sdílení, Azure Data Share vytvoří symbolický odkaz mezi clustery Průzkumník dat Azure pro poskytovatele a uživatele. Data ingestovaná pomocí dávkového režimu do zdrojového clusteru Azure Průzkumník dat se budou zobrazovat v cílovém clusteru během několika sekund až po několik minut.
+Když jsou data sdílena na úrovni databáze, příjemci dat mají přístup pouze k databázím, které jsou sdíleny poskytovatelem dat. Když poskytovatel sdílí data na úrovni clusteru, příjemci dat mají přístup ke všem databázím z clusteru poskytovatele, včetně všech budoucích databází, které poskytovatel dat vytvoří.
+
+Pro přístup ke sdíleným databázím potřebují spotřebitelé dat svůj vlastní cluster Azure Průzkumník dat. Cluster se musí nacházet ve stejném datovém centru Azure jako cluster Azure Průzkumník dat poskytovatele dat. 
+
+Když je vytvořen vztah sdílení, Azure Data Share vytvoří symbolický odkaz mezi clusterem poskytovatele a clusterem zákazníka. Data, která se ingestují do zdrojového clusteru pomocí dávkového režimu, se během několika minut objeví v cílovém clusteru.
+
+Další informace najdete v tématu [sdílení a příjem dat z Azure Průzkumník dat](/azure/data-explorer/data-share). 
 
 ## <a name="next-steps"></a>Další kroky
 

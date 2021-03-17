@@ -1,64 +1,83 @@
 ---
 title: Správa registrace zařízení pro Azure IoT Hub Device Provisioning Service v Azure Portal
-description: Správa registrace zařízení pro službu Device Provisioning Service (DPS) na webu Azure Portal
+description: Správa registrace zařízení pro službu Device Provisioning Service (DPS) v Azure Portal
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/05/2018
+ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotgra
+ms.openlocfilehash: 6ec146a05df1b896f8ca594d29cf13341b70765a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974934"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010958"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Jak spravovat registrace zařízení pomocí webu Azure Portal
+# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Správa registrace zařízení pomocí Azure Portal
 
-*Registrace zařízení* vytvoří záznam o jednom zařízení nebo skupině zařízení, která se můžou v některých bodech zaregistrovat u služby Azure IoT Hub Device Provisioning Service. Záznam zápisu obsahuje počáteční požadovanou konfiguraci pro zařízení v rámci této registrace, včetně požadovaného centra IoT Hub. V tomto článku se dozvíte, jak spravovat registraci zařízení pro vaši službu zřizování.
+*Registrace zařízení* vytvoří záznam o jednom zařízení nebo skupině zařízení, která se můžou v některých bodech zaregistrovat u služby Azure IoT Hub Device Provisioning Service. Záznam zápisu obsahuje počáteční konfiguraci zařízení v rámci této registrace. Součástí konfigurace je centrum IoT, ke kterému se zařízení přiřadí nebo zásadu přidělení, která nakonfiguruje centrum ze sady Center. V tomto článku se dozvíte, jak spravovat registraci zařízení pro vaši službu zřizování.
 
 
 ## <a name="create-a-device-enrollment"></a>Vytvoření registrace zařízení
 
 Existují dva způsoby, jak můžete zařízení zaregistrovat pomocí služby zřizování:
 
-* **Skupina** registrací je položka pro skupinu zařízení, která sdílí běžný mechanismus ověřování certifikátů X. 509, podepsaný stejným podpisovým certifikátem, který může být [kořenovým certifikátem](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) nebo [zprostředkujícím certifikátem](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate), který se používá k vytvoření certifikátu zařízení na fyzickém zařízení. Doporučujeme používat skupinu registrací pro velký počet zařízení, která sdílejí požadovanou počáteční konfiguraci, nebo pro zařízení, která se budou napojovat do stejného tenanta. Všimněte si, že můžete registrovat jenom zařízení, která používají mechanismus ověřování X. 509 jako *skupiny*registrací. 
+* **Skupina** registrací je položka pro skupinu zařízení, která sdílí společný mechanismus ověřování. Doporučujeme používat skupinu registrací pro velký počet zařízení, která sdílejí počáteční konfiguraci, nebo pro zařízení, která se budou napojovat do stejného tenanta. Podporují se zařízení s využitím [symetrického klíče](concepts-symmetric-key-attestation.md) nebo [certifikátů X. 509](concepts-x509-attestation.md) . 
+
+    Podrobné pokyny k vytváření a používání skupin registrací s symetrickými klíči najdete v kurzu [zřízení zařízení pomocí symetrických klíčů](how-to-legacy-device-symm-key.md) .
 
     Skupinu zařízení můžete na portálu vytvořit pomocí následujících kroků:
 
-  1. Přihlaste se k Azure Portal a v nabídce na levé straně klikněte na **všechny prostředky** .  
-  1. V seznamu prostředků klikněte na službu Device Provisioning, ze které chcete zařízení zaregistrovat.  
-  1. Ve vaší službě zřizování:  
-     a. Klikněte na **spravovat registrace**a pak vyberte kartu **skupiny** registrací.  
-     b. Klikněte na tlačítko **Přidat** v horní části.  
-     c. Jakmile se zobrazí panel Přidat skupinu registrací, zadejte informace pro položku seznamu registrace.  **Název skupiny** je povinný. Jako **typ certifikátu**vyberte taky CA nebo zprostředkující a nahrajte kořenový **primární certifikát** pro skupinu zařízení.  
-     d. Klikněte na **Uložit**. Po úspěšném vytvoření skupiny registrací by se na kartě **skupiny** registrací měl zobrazit název skupiny.  
+    1. Přihlaste se k Azure Portal a v nabídce na levé straně klikněte na **všechny prostředky** .  
+    1. V seznamu prostředků klikněte na službu Device Provisioning, ze které chcete zařízení zaregistrovat.  
+    1. Ve vaší službě zřizování klikněte na **spravovat registrace** a pak klikněte na tlačítko **Přidat skupinu** registrací v horní části.  
+     
+        ![Skupina registrace na portálu](./media/how-to-manage-enrollments/add-group-enrollment.png)
+        
+    1. Jakmile se zobrazí panel Přidat skupinu registrací, zadejte informace o registraci a klikněte na **Uložit**.  
+     
+        [![Přidání skupiny registrací k portálu](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+        
+        | Pole | Description |
+        | :--- | :--- |
+        | **Název skupiny** | Požadovaný název vaší skupiny zařízení. |
+        | **Typ ověření identity** | Klikněte na **certifikát** nebo **symetrický klíč** pro typ ověření identity v závislosti na metodě ověření, kterou vaše zařízení bude používat. |
+        | **Typ certifikátu** | K dispozici, pokud používáte ověření identity certifikátu. Vyberte **certifikát certifikační autority** nebo **zprostředkující** na základě certifikátu podepsaného certifikáty zařízení. |
+        | **Primární certifikát** | Pokud podepisujete certifikáty zařízení s kořenovým certifikátem certifikační autority, musí mít certifikát od kořenové certifikační autority dokončené [vlastnictví](how-to-verify-certificates.md) . Pak ho můžete vybrat jako **primární certifikát** pro skupinu zařízení.<br><br>Pokud podepisujete certifikáty zařízení pomocí zprostředkujícího certifikátu, bude k dispozici tlačítko pro nahrání, které vám umožní nahrát svůj zprostředkující certifikát. Certifikát, který podepsal zprostředkující, musí také mít k [dispozici důkaz o jejich](how-to-verify-certificates.md) vyhotovení. |
 
-     [![Skupina registrace na portálu](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+        
     
 
-* **Jednotlivá registrace** je záznam pro jedno zařízení, které se může zaregistrovat. Jednotlivé registrace můžou použít buď certifikáty x509, nebo tokeny SAS (z fyzického nebo virtuálního čipu TPM) jako mechanismy ověřování. Pro zařízení, která vyžadují jedinečné počáteční konfigurace, doporučujeme používat jednotlivé registrace nebo pro zařízení, která jako mechanismus ověřování můžou jako mechanismus ověřování používat jenom tokeny SAS přes TPM nebo virtuální čip TPM. Jednotlivé registrace můžou mít zadané požadované ID zařízení centra IoT.
+* **Jednotlivá registrace** je záznam pro jedno zařízení, které může být přiřazeno ke IoT Hub. Podporují se zařízení s využitím [symetrického klíče](concepts-symmetric-key-attestation.md), [certifikátů X. 509](concepts-x509-attestation.md)a [ověření identity čipem TPM](concepts-tpm-attestation.md) . 
 
     Jednotlivé registrace můžete vytvořit na portálu pomocí následujících kroků:
 
     1. Přihlaste se k Azure Portal a v nabídce na levé straně klikněte na **všechny prostředky** .
     1. V seznamu prostředků klikněte na službu Device Provisioning, ze které chcete zařízení zaregistrovat.
-    1. Ve vaší službě zřizování:  
-       a. Klikněte na **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** .  
-       b. Klikněte na tlačítko **Přidat** v horní části.   
-       c. Jakmile se zobrazí panel Přidat registraci, zadejte informace pro položku seznamu registrace. Nejdřív vyberte **mechanismus** ověření identity pro zařízení (X. 509 nebo TPM). X. 509 Attestation vyžaduje, abyste nahráli **primární certifikát** na úrovni zařízení. ČIP TPM vyžaduje, abyste zadali **ověřovací klíč** a **ID registrace** pro zařízení.  
-       d. Klikněte na **Uložit**. Po úspěšném vytvoření skupiny registrací by se zařízení mělo zobrazit na kartě **jednotlivé registrace** .  
+    1. Ve vaší službě zřizování klikněte na **spravovat registrace** a pak klikněte na tlačítko **přidat jednotlivou registraci** v horní části.   
 
-       [![Jednotlivé registrace na portálu](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+       [![Přidání jednotlivé registrace na portálu](./media/how-to-manage-enrollments/add-individual-enrollment.png)](./media/how-to-manage-enrollments/add-individual-enrollment.png#lightbox)
+
+    1. Jakmile se zobrazí panel Přidat registraci, zadejte informace o registraci jednotlivých zařízení a klikněte na **Uložit**. 
+     
+        [![Jednotlivé registrace na portálu](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+    
+        | Pole | Description |
+        | :--- | :--- |
+        | **Mechanismus** | V závislosti na metodě ověření, kterou budou zařízení používat, vyberte **X. 509**, **TPM** nebo **symetrický klíč** pro mechanismus ověřování. |
+        | Nastavení ověření identity | Podrobné pokyny týkající se vytváření a používání jednotlivých registrací s symetrickými klíči nebo s certifikáty X. 509 najdete v jednom z těchto [zřízení symetrického zařízení](quick-create-simulated-device-symmetric-key-java.md#create-a-device-enrollment) nebo [zřízení certifikátu x. 509](quick-create-simulated-device-x509-java.md#create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry) pro rychlé zprovoznění.<br><br>Podrobné pokyny k vytváření a používání jednotlivých registrací pomocí ověření identity pomocí čipu TPM najdete v jedné ze [zřízení simulovaných ukázek zařízení TPM](quick-create-simulated-device-tpm-java.md#create-a-device-enrollment-entry) .|
+        | **ID zařízení IoT Hub** |  Toto ID bude představovat vaše zařízení. Musí splňovat pravidla pro ID zařízení. Další informace najdete v tématu [Vlastnosti identity zařízení](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).<br><br>Při použití certifikátů X. 509 musí být tento text názvem subjektu v certifikátu zařízení, který nahrajete pro registraci. Tento název subjektu musí odpovídat pravidlům pro ID zařízení.|
+            
+
 
 ## <a name="update-an-enrollment-entry"></a>Aktualizace položky registrace
 Existující položku registrace můžete aktualizovat na portálu pomocí následujících kroků:
 
 1. Otevřete službu Device Provisioning v Azure Portal a klikněte na **spravovat registrace**. 
 1. Přejděte na položku registrace, kterou chcete upravit. Klikněte na položku, která otevře souhrnné informace o registraci zařízení. 
-1. Na této stránce můžete upravit jiné položky než typ zabezpečení a přihlašovací údaje, jako je třeba Centrum IoT, se kterým se má zařízení propojit, a také ID zařízení. Můžete také změnit počáteční stav vlákna zařízení. 
+1. Na této stránce můžete upravit jiné položky než typ zabezpečení a přihlašovací údaje, jako je například IoT Hub, se kterým má být zařízení propojeno, a ID zařízení. Můžete také změnit počáteční stav vlákna zařízení. 
 1. Po dokončení klikněte na **Uložit** a aktualizujte registraci zařízení. 
 
     ![Aktualizace registrace na portálu](./media/how-to-manage-enrollments/update-enrollment.png)
@@ -72,5 +91,3 @@ V případech, kdy vaše zařízení není nutné zřídit do služby IoT Hub, m
 1. Až se akce dokončí, uvidíte, že se vaše položka odebrala ze seznamu registrací zařízení. 
  
     ![Odebrání registrace na portálu](./media/how-to-manage-enrollments/remove-enrollment.png)
-
-

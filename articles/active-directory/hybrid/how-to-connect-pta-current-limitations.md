@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6efff54d2c28659af27161ab4cd4753302210006
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e9c4489f59f72e4d0b5c7a0b911da188eb0828c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358408"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89280192"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory předávací ověřování: aktuální omezení
 
@@ -43,9 +43,9 @@ Podporovány jsou následující scénáře:
 
 Následující scénáře _nejsou podporovány:_
 
-- Rozpoznávání uživatelů s [nevrácenými přihlašovacími údaji](../reports-monitoring/concept-risk-events.md#leaked-credentials).
+- Rozpoznávání uživatelů s [nevrácenými přihlašovacími údaji](../identity-protection/overview-identity-protection.md).
 - Azure AD Domain Services vyžaduje, aby byla v tenantovi povolená synchronizace hodnot hash hesel. Proto klienti, kteří používají předávací ověřování, nefungují _jenom_ u scénářů, které potřebují Azure AD Domain Services.
-- Předávací ověřování není integrováno s [Azure AD Connect Health](whatis-hybrid-identity-health.md).
+- Předávací ověřování není integrováno s [Azure AD Connect Health](./whatis-azure-ad-connect.md).
 
 > [!IMPORTANT]
 > Alternativním řešením pro nepodporované scénáře _(_ s výjimkou Azure AD Connect Health integrace) je povolení synchronizace hodnot hash hesel na stránce [volitelné funkce](how-to-connect-install-custom.md#optional-features) v průvodci Azure AD Connect.

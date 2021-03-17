@@ -1,24 +1,18 @@
 ---
 title: 'Kurz: použití REST API k vytvoření kanálu Azure Data Factory '
 description: V tomto kurzu použijete REST API k vytvoření kanálu Azure Data Factory s aktivitou kopírování ke kopírování dat z úložiště objektů BLOB v Azure do Azure SQL Database.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 91a92f9dd0eaf55b8ba35f38102ee30b8cda4bfa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7488834252dcd4e231c2d91a1435838befe7b1d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053813"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377019"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Kurz: Použití rozhraní REST API k vytvoření kanálu Azure Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -46,7 +40,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 >  
 > Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -70,7 +64,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
      ```PowerShell     
      Get-AzSubscription
      ``` 
-  3. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure. 
+  3. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte **&lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure. 
      
      ```PowerShell
      Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -121,7 +115,7 @@ Podrobné informace o vlastnostech JSON najdete v tématu [Propojená služba 
 
 ### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice.jsna
 > [!IMPORTANT]
-> Položku **servername**, **DatabaseName**, **username**a **Password** nahraďte názvem serveru, názvem databáze SQL, uživatelským účtem a heslem pro tento účet.  
+> Položku **servername**, **DatabaseName**, **username** a **Password** nahraďte názvem serveru, názvem databáze SQL, uživatelským účtem a heslem pro tento účet.  
 > 
 >
 
@@ -343,7 +337,7 @@ V tomto kroku vytvoříte objekt služby Azure Data Factory s názvem **ADFCopyT
     ```PowerShell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. Zkontrolujte výsledky. Pokud se Datová továrna úspěšně vytvořila, zobrazí se ve **výsledcích**JSON pro datovou továrnu. v opačném případě se zobrazí chybová zpráva.  
+3. Zkontrolujte výsledky. Pokud se Datová továrna úspěšně vytvořila, zobrazí se ve **výsledcích** JSON pro datovou továrnu. v opačném případě se zobrazí chybová zpráva.  
    
     ```
     Write-Host $results
@@ -351,7 +345,7 @@ V tomto kroku vytvoříte objekt služby Azure Data Factory s názvem **ADFCopyT
 
 Je třeba počítat s následujícím:
 
-* Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se ve výsledcích zobrazí chyba **Název objektu pro vytváření dat „ADFCopyTutorialDF“ není k dispozici**, proveďte následující kroky:  
+* Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se ve výsledcích zobrazí chyba: **název objektu pro vytváření dat "ADFCopyTutorialDF" není k dispozici**, proveďte následující kroky:  
   
   1. Změňte název (například yournameADFCopyTutorialDF) v souboru **datafactory.json**.
   2. V prvním příkazu, kde je proměnné **$cmd** přiřazena hodnota, nahraďte ADFCopyTutorialDF novým názvem a spusťte příkaz. 
@@ -519,7 +513,7 @@ Spouštějte Invoke-Command a další příkaz, dokud se u řezu neobjeví sta
 
 U každého řezu se do tabulky EMP v Azure SQL Database zkopírují dva řádky dat ze zdrojového souboru. Proto po úspěšném zpracování všech řezů (stav Připraveno) uvidíte v tabulce emp 24 nových záznamů. 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 V tomto kurzu jste použili REST API k vytvoření datové továrny Azure ke zkopírování dat z objektu blob Azure do Azure SQL Database. Zde jsou základní kroky, které jste v tomto kurzu provedli:  
 
 1. Vytvořili jste **objekt pro vytváření dat** Azure.

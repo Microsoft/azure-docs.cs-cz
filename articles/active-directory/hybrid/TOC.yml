@@ -31,7 +31,7 @@
         - name: Co je Azure AD Connect a Connect Health?
           href: whatis-azure-ad-connect.md
         - name: Volba vhodného ověřování
-          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
+          href: ./choose-ad-authn.md
         - name: Synchronizace identit a odolnost duplicitních atributů
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: Synchronizace hodnot hash hesel
@@ -132,6 +132,8 @@
           href: how-to-connect-install-existing-tenant.md
         - name: Úlohy po skončení instalace
           href: how-to-connect-post-installation.md
+        - name: Odinstalace služby Azure AD Connect
+          href: how-to-connect-uninstall.md
     - name: Plánování a návrh
       items:
         - name: Koncepty návrhu
@@ -252,6 +254,8 @@
           href: how-to-connect-health-adfs.md
         - name: Sestava rizikových IP adres pro Azure AD Connect Health se službou AD FS
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: AD FS Sign-Ins ve službě Azure AD s Connect Health
+          href: how-to-connect-health-ad-fs-sign-in.md
         - name: Použití služby Azure AD Connect Health k synchronizaci
           href: how-to-connect-health-sync.md
         - name: Použití služby Azure AD Connect Health se službou AD DS
@@ -262,6 +266,8 @@
           href: how-to-connect-health-diagnose-sync-errors.md
         - name: Katalog upozornění služby Azure AD Connect Health
           href: how-to-connect-health-alert-catalog.md
+        - name: Načítání dat ve službě Azure AD Connect Health
+          href: how-to-connect-health-data-retrieval.md
     - name: Správa synchronizace Azure AD Connect
       items:
         - name: Pracovní server a zotavení po havárii
@@ -339,7 +345,7 @@
     - name: Historie verzí agenta předávacího ověřování Azure AD
       href: reference-connect-pta-version-history.md
     - name: Historie verzí konektoru
-      href: reference-connect-sync-connector-version-history.md
+      href: /microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history
     - name: Účty a oprávnění
       href: reference-connect-accounts-permissions.md
     - name: Azure AD Connect – nejčastější dotazy

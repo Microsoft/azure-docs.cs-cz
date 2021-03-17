@@ -3,13 +3,12 @@ title: Scénáře a návrh aplikací
 description: Přehled kategorií cloudových aplikací v Service Fabric. Popisuje návrh aplikace, který používá stavové a bezstavové služby.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.custom: sfrev
-ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6c3cc931a85b91fc02b8086ca5c2481153691e54
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248165"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575665"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric scénáře aplikací
 
@@ -23,7 +22,7 @@ Zvažte použití platformy Service Fabric pro následující typy aplikací:
 
 * **Shromažďování dat, zpracování a IoT**: Service Fabric zpracovává velký rozsah a má nízkou latenci prostřednictvím stavových služeb. Může napomáhat zpracování dat v milionech zařízení, kde se společně nacházejí data pro zařízení a výpočty.
 
-    Zákazníci, kteří sestavili služby IoT pomocí Service Fabric, zahrnují [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [vytváření PCL](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneider elektrických](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)a [mřížkové systémy](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
+    Zákazníci, kteří sestavili služby IoT pomocí Service Fabric, zahrnují [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [vytváření PCL](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure),  [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneider elektrických](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)a [mřížkové systémy](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
 
 * **Hraní her a interaktivní aplikace založené na relacích**: Service Fabric je užitečné, pokud vaše aplikace vyžaduje čtení a zápis s nízkou latencí, například v online herním nebo rychlém zasílání zpráv. Service Fabric vám umožní vytvářet tyto interaktivní a stavové aplikace, aniž byste museli vytvářet samostatné úložiště nebo mezipaměť. Pokyny k [používání Service Fabric v herních službách](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)najdete v [řešeních her v Azure](https://azure.microsoft.com/solutions/gaming/) .
 

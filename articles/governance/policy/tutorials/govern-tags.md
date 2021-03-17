@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Správa zásad správného řízení značek'
 description: V tomto kurzu použijete efekt změny Azure Policy k vytvoření a vykonání modelu zásad správného řízení pro nové a stávající prostředky.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9efeb27151cd3a32741f1bdb6d1d90d3304c5874
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545501"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876273"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Kurz: Správa řízení značek pomocí Azure Policy
 
@@ -126,7 +126,12 @@ Pro každé prostředí, které existuje ve vašem prostředí Azure, se vyžadu
         {
             "field": "name",
             "like": "prd-*"
+        },
+        {
+            "field": "tags['Env']",
+            "notEquals": "Production"
         }
+
     ]
     },
     "then": {

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a0c68bf11d81925c1b9c3e408434a6f7b1b2694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f328ed44252f7fb314552d6d05df9806f59d972
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608989"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591133"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrace protokolů služby Azure AD s protokoly Azure Monitor
 
@@ -46,6 +46,7 @@ Protokoly aktivit auditu a protokoly aktivit přihlašování můžete směrovat
 
 * **Protokoly auditu:**[Sestava aktivit protokolů auditu](concept-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
 * **Protokoly přihlašování:** Se [sestavou aktivit přihlašování](concept-sign-ins.md) můžete určit, kdo provedl úlohy hlášené v protokolech auditu.
+* **Protokoly zřizování**: pomocí [protokolů zřizování](../app-provisioning/application-provisioning-log-analytics.md)můžete sledovat, které uživatele se vytvořily, aktualizovaly a odstranily ve všech aplikacích třetích stran. 
 
 > [!NOTE]
 > Zatím není dostupná podpora protokolů aktivit auditu a přihlašování souvisejících s B2C.
@@ -58,7 +59,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 * Předplatné Azure. Pokud předplatné Azure nemáte, můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 * Tenanta Azure AD.
 * Uživatele, který je *globálním správcem* nebo *správcem zabezpečení* pro tohoto tenanta Azure AD.
-* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../../azure-monitor/logs/quick-create-workspace.md).
 
 ## <a name="licensing-requirements"></a>Licenční požadavky
 
@@ -66,7 +67,7 @@ Použití této funkce vyžaduje licenci Azure AD Premium P1 nebo P2. Pokud chce
 
 ## <a name="send-logs-to-azure-monitor"></a>Odeslat protokoly do Azure Monitor
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 2. Vyberte **Azure Active Directory**  >  **nastavení diagnostiky**  ->  **Přidat nastavení diagnostiky**. Můžete také vybrat **Exportovat nastavení** na stránce **protokoly auditu** nebo **přihlášení** a získat tak stránku konfigurace nastavení diagnostiky.  
     

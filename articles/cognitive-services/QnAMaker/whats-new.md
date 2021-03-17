@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3bb7311a16b71b9bb76f14b4ba7a29dd2dae4a96
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836867"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009993"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
 
@@ -23,10 +23,20 @@ Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, 
 
 Přečtěte si, co je nového v QnA Maker.
 
+### <a name="november-2020"></a>Listopad 2020
+
+* Nová verze QnA Maker v bezplatné Public Preview spuštěna. Další informace si můžete přečíst [zde](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575).
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-QnA-managed-Now-in-Public-Preview/player]
+* Zjednodušené vytváření prostředků
+* Podpora koncového konce oblasti
+* Model hodnocení hloubkového učení
+* Přesnější čtení počítačů pro přesné odpovědi
+  
 ### <a name="july-2020"></a>Červenec 2020
 
-* [Metadata: `OR` logická kombinace více párů metadat](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
-* [Postup](how-to/set-up-qnamaker-service-azure.md#configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet) konfigurace kognitivní hledáních koncových bodů jako soukromých, ale stále přístupná pro QnA maker.
+* [Metadata: `OR` logická kombinace více párů metadat](how-to/query-knowledge-base-with-metadata.md#logical-or-using-strictfilterscompoundoperationtype-property)
+* [Postup](how-to/network-isolation.md) konfigurace kognitivní hledáních koncových bodů jako soukromých, ale stále přístupná pro QnA maker.
 * Bezplatné Kognitivní hledání prostředky se po [90 dnech nečinnosti](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)odeberou.
 
 ### <a name="june-2020"></a>Červen 2020
@@ -35,7 +45,7 @@ Přečtěte si, co je nového v QnA Maker.
 
 ### <a name="may-2020"></a>Květen 2020
 
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](concepts/role-based-access-control.md)
+* [Řízení přístupu na základě role Azure (Azure RBAC)](concepts/role-based-access-control.md)
 * [Rozšířené úpravy textu](how-to/edit-knowledge-base.md#rich-text-editing-for-answer) pro odpovědi
 
 ### <a name="march-2020"></a>Březen 2020
@@ -48,17 +58,17 @@ Přečtěte si, co je nového v QnA Maker.
 
 ### <a name="november-2019"></a>Listopad 2019
 
-* [Podpora cloudu pro státní správu USA](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) pro QnA maker
-* Funkce [vícenásobného zapnutí](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) v GA
-* [CHITEST – podpora chatu](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support) dostupná v jazycích úrovně 1
+* [Podpora cloudu pro státní správu USA](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers) pro QnA maker
+* Funkce [vícenásobného zapnutí](./how-to/multiturn-conversation.md) v GA
+* [CHITEST – podpora chatu](./how-to/chit-chat-knowledge-base.md#language-support) dostupná v jazycích úrovně 1
 
 ### <a name="october-2019"></a>Říjen 2019
 
-* [Explicitně se nastavuje jazyk](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) pro všechny znalostní báze ve službě QnA maker.
+* Explicitně se nastavuje jazyk pro všechny znalostní báze ve službě QnA Maker.
 
 ### <a name="september-2019"></a>Září 2019
 
-* Import a export ve [formátu souboru XLS](concepts/content-types.md)
+* Import a export ve formátu souboru XLS.
 
 ### <a name="june-2019"></a>Červen 2019
 
@@ -72,7 +82,7 @@ Přečtěte si, co je nového v QnA Maker.
 ### <a name="march-2019"></a>Březen 2019
 
 * [Active Learning](how-to/improve-knowledge-base.md) poskytuje návrhy na nové alternativy dotazů na základě dotazů reálných uživatelů.
-* Vylepšený model klasifikátoru pro zpracování [ranker](concepts/query-knowledge-base.md#ranker-process) přirozeného jazyka (NLP) pro angličtinu
+* Vylepšený model klasifikátoru pro zpracování [](concepts/query-knowledge-base.md#ranker-process) přirozeného jazyka (NLP) pro angličtinu
 
 > [!div class="nextstepaction"]
 > [Vytvoření služby QnA Maker](how-to/set-up-qnamaker-service-azure.md)

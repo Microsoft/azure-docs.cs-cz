@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5043873b18f2d2115fd23e8b52959290393bfb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df70891ef090d44769aadbc235273e3193bc780e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604535"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837205"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s nastavením Enterprise State Roaming v Azure Active Directory
 
@@ -76,11 +76,11 @@ Enterprise State Roaming vyžaduje, aby zařízení bylo zaregistrované ve slu�
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming a Multi-Factor Authentication 
 
-Za určitých podmínek může Enterprise State Roaming selhat při synchronizaci dat, pokud je nakonfigurovaná Azure Multi-Factor Authentication. Další informace o těchto symptomech najdete v dokumentu podpory [KB3193683](https://support.microsoft.com/kb/3193683). 
+Za určitých podmínek může Enterprise State Roaming selhat při synchronizaci dat, pokud je nakonfigurovaná Multi-Factor Authentication Azure AD. Další informace o těchto symptomech najdete v dokumentu podpory [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Potenciální problém**: Pokud je vaše zařízení nakonfigurované tak, aby vyžadovalo Multi-Factor Authentication na portále Azure Active Directory, nemůžete při přihlašování k zařízení s Windows 10 pomocí hesla nakonfigurovat jeho nastavení. Tento typ konfigurace Multi-Factor Authentication slouží k ochraně účtu správce Azure. Uživatelé s oprávněními správce můžou pořád synchronizovat přihlášením ke svým zařízením s Windows 10 a jejich Microsoft Passport for Work kódem PIN nebo doplněním Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Office 365.
+**Potenciální problém**: Pokud je vaše zařízení nakonfigurované tak, aby vyžadovalo Multi-Factor Authentication na portále Azure Active Directory, nemůžete při přihlašování k zařízení s Windows 10 pomocí hesla nakonfigurovat jeho nastavení. Tento typ konfigurace Multi-Factor Authentication slouží k ochraně účtu správce Azure. Uživatelé s rolí správce můžou pořád synchronizovat přihlášením ke svým zařízením s Windows 10 a jejich Microsoft Passport for Work kódem PIN nebo doplněním Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Microsoft 365.
 
-**Možný problém**: synchronizace může selhat, pokud správce nakonfiguruje Active Directory Federation Services (AD FS) zásady podmíněného přístupu Multi-Factor Authentication a platnost přístupového tokenu v zařízení vyprší. Ujistěte se, že jste se přihlásili a odhlásili pomocí Microsoft Passport for Work kódu PIN nebo dokončete Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Office 365.
+**Možný problém**: synchronizace může selhat, pokud správce nakonfiguruje Active Directory Federation Services (AD FS) zásady podmíněného přístupu Multi-Factor Authentication a platnost přístupového tokenu v zařízení vyprší. Ujistěte se, že jste se přihlásili a odhlásili pomocí Microsoft Passport for Work PIN nebo dokončete Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Microsoft 365.
 
 ### <a name="event-viewer"></a>Prohlížeč událostí
 
@@ -90,7 +90,7 @@ Pro řešení potíží s pokročilými chybami se Prohlížeč událostí dá p
 
 ### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>Synchronizace nefunguje na zařízeních, která mají na straně aplikace nahraná pomocí softwaru MDM.
 
-Má vliv na zařízení s aktualizací Windows 10 pro výročí (verze 1607). V Prohlížeč událostí v rámci protokolů SettingSync – Azure se často zobrazuje ID události 6013 s chybou 80070259.
+Má vliv na zařízení s aktualizací Windows 10 pro výročí (verze 1607). V Prohlížeč událostí v protokolech SettingSync-Azure se často zobrazuje ID události 6013 s chybou 80070259.
 
 **Doporučená akce**  
 Ujistěte se, že klient Windows 10 v1607 má 23. srpna 2016 kumulativní aktualizaci ([KB3176934](https://support.microsoft.com/kb/3176934) OS Build 14393,82). 
@@ -108,7 +108,7 @@ Ujistěte se, že má klient Windows 10 v1511 kumulativní aktualizaci z červen
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Motiv se nesynchronizuje a data chráněná pomocí Windows Information Protection 
 
-Aby nedošlo k úniku dat, data, která jsou chráněná pomocí [windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) , se nesynchronizují prostřednictvím Enterprise State Roaming pro zařízení s aktualizací Windows 10 pro výročí.
+Aby nedošlo k úniku dat, data, která jsou chráněná pomocí [windows Information Protection](/windows/security/information-protection/windows-information-protection/protect-enterprise-data-using-wip) , se nesynchronizují prostřednictvím Enterprise State Roaming pro zařízení s aktualizací Windows 10 pro výročí.
 
 **Doporučená akce**  
 Žádné Tyto potíže mohou vyřešit budoucí aktualizace systému Windows.
@@ -159,8 +159,8 @@ Pokud má uživatel smíšený hlavní název uživatele (například uživatels
 Uživatel bude muset zařízení odpojovat a znovu připojit ke cloudu. Provedete to tak, že se přihlásíte jako uživatel místního správce a odpojíte zařízení tak, že v části **Nastavení**  >  **systému**  >  **About** zvolíte možnost spravovat nebo odpojit od práce nebo školy. Níže tyto soubory vyčistěte a pak Azure AD připojte zařízení znovu v systému **Nastavení**  >  **System**  >  **About** a vyberte připojit k práci nebo školu. Pokračujte tím, že se připojíte k zařízení Azure Active Directory a dokončíte tok.
 
 V kroku vyčištění vyčistěte následující soubory:
-- Settings. dat v`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- Všechny soubory ve složce`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+- Settings. dat v `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- Všechny soubory ve složce `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 

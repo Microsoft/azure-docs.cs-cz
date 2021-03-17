@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e3ef202a1a98b8193b55bcc4c2cb616d4a2000d8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037759"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90892866"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Principy stavu aplikací v Azure Spring Cloudu
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 Uživatelské rozhraní pro jarní cloudové prostředí Azure poskytuje informace o stavu spuštěných aplikací.  K dispozici je možnost **aplikace** pro každou skupinu prostředků v rámci předplatného, která zobrazuje obecný stav typů aplikací.  Pro každý typ aplikace jsou zobrazeny **instance aplikace**.
 
@@ -32,7 +34,7 @@ Chcete-li zobrazit celkový stav typu aplikace, vyberte možnost **aplikace** v 
 
 | Výčet | Definice |
 |:--:|:----------------:|
-| Spuštěný | Nasazení by mělo být spuštěné. |
+| Spuštěno | Nasazení by mělo být spuštěné. |
 | Zastaveno | Nasazení by se mělo zastavit. |
 
 **Stav zřizování je přístupný pouze z rozhraní příkazového řádku.  Je hlášena jako jedna z následujících hodnot:**
@@ -58,7 +60,7 @@ Pokud chcete zobrazit stav konkrétní instance nasazené aplikace, klikněte na
 | Výčet | Definice |
 |:--:|:----------------:|
 | Spouštění | Binární soubor byl úspěšně nasazen do dané instance. Instance, která spouští soubor JAR, může selhat, protože jar nemůže správně fungovat. |
-| Spuštěný | Instance funguje. |
+| Spuštěno | Instance funguje. |
 | Neúspěšný | Instance aplikace nedokázala spustit binární soubor uživatele po několika opakovaných pokusech. |
 | Ukončena | Instance aplikace se vypíná. |
 
@@ -72,4 +74,4 @@ Pokud chcete zobrazit stav konkrétní instance nasazené aplikace, klikněte na
 
 
 ## <a name="see-also"></a>Viz také
-* [Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure](spring-cloud-tutorial-prepare-app-deployment.md)
+* [Příprava aplikace pružiny nebo Steeltoe pro nasazení v jarním cloudu Azure](spring-cloud-tutorial-prepare-app-deployment.md)

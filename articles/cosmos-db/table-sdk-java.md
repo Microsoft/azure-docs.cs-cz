@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB rozhraní API pro tabulky pro jazyk Java
-description: Seznamte se s Azure Cosmos DB rozhraní API pro tabulky včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi.
+description: Seznamte se s Azure Cosmos DB rozhraní API pro tabulky pro jazyk Java, včetně dat o verzích, data odchodu a změn provedených mezi jednotlivými verzemi.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: java
@@ -9,14 +9,16 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: fc78688a413bf182d2a0489189a3ad9348ac4d21
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a94064be54c1d957d6e7acb030ffae6a39634f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308113"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101183"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky pro jazyk Java: poznámky k verzi a prostředky
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -41,7 +43,7 @@ ms.locfileid: "87308113"
 * Verze pro obecné dostupnosti
 
 ## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení
-Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** .
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců** , aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi.
 
 Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
 
@@ -52,6 +54,6 @@ Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SD
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Viz také:
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) . 
+## <a name="see-also"></a>Viz také
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). 
 

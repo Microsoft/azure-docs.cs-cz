@@ -3,7 +3,7 @@ title: Přehled komunity Azure Media Services | Microsoft Docs
 description: 'Tato Azure Media Servicesová stránka komunity (AMS) popisuje různé způsoby, jak získat aktualizace AMS, najdete v článku nová videa a podcasty, položte otázky a sdělte nám svůj názor. '
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0df020f4-8297-4f31-92bf-de098283e997
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 5e8318b480cfa0d399a7fb2a0e7f6ebed1488397
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 8c566484d5a594e81a0900d5a5ab5a3e34bfffa8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836492"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016909"
 ---
-# <a name="azure-media-services-community"></a>Komunita Azure Media Services  
+# <a name="azure-media-services-community"></a>Komunita Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Tato Azure Media Servicesová stránka komunity (AMS) popisuje různé způsoby, jak můžete získat aktualizace AMS. Můžete si také zobrazit nová videa a podcasty, klást otázky a poskytovat zpětnou vazbu.   
 
@@ -48,11 +50,11 @@ Následující fóra se dají použít k dotazování otázek týkajících se a
 
 V současné době je MSDN Media Servicesm hlavním komunitním fóru týmu.
 
-[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
+[:::image type="icon" source="./media/media-services-community/msdn.png" border="false":::](/answers/topics/azure-media-services.html) 
 
 Tým také sleduje otázky označené Stack Overflow pomocí Azure-Media-Services.
 
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[:::image type="icon" source="./media/media-services-community/stack-overflow.png" border="false":::](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="need-help"></a>Potřebujete pomoc?
 

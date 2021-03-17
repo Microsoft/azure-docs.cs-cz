@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707850"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015914"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Konfigurace privátní IP adresy pro virtuální počítač pomocí Azure Portal
 
@@ -49,22 +49,22 @@ Pokud chcete vytvořit virtuální počítač s názvem *DNS01* v podsíti *fron
 2. Vyberte **výpočetní**  >  **virtuální počítač**.
 
     ![Vytvoření virtuálního počítače, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
-3. V části **základy**zadejte hodnoty pro položky, jak je popsáno v následující tabulce. Pak vyberte **Další &nbsp; : &nbsp; disky** a pak **Další &nbsp; : &nbsp; sítě**.
+3. V části **základy** zadejte hodnoty pro položky, jak je popsáno v následující tabulce. Pak vyberte **Další &nbsp; : &nbsp; disky** a pak **Další &nbsp; : &nbsp; sítě**.
 
     | Položka | Hodnota |
     | --- | --- |
     | **Předplatné** | Vaše aktuální předplatné |
     | **Skupina prostředků** | **TestRG** (výběr z rozevíracího seznamu) |
     | **Název virtuálního počítače** | *DNS01* |
-    | **Věřitel** | **VYLEPŠENÍ Východní USA** |
-    | **Image** | **Windows Server 2019 Datacenter** |
+    | **Oblast** | **(USA) USA – východ** |
+    | **Obrázek** | **Windows Server 2019 Datacenter** |
     | **Velikost** | **Velikost virtuálního počítače** **B1ls**, **Nabídka** **Standard** |
-    | **Jmen** | Uživatelské jméno účtu správce |
+    | **Uživatelské jméno** | Uživatelské jméno účtu správce |
     | **Heslo** | Heslo pro uživatelské jméno účtu správce |
-    | **Potvrdit heslo** | Znovu heslo |
+    | **Potvrzení hesla** | Znovu heslo |
 
     ![Karta základy, vytvořit virtuální počítač, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
-4. V části **sítě**zadejte hodnoty pro položky, jak je popsáno v následující tabulce, a pak vyberte **Další**.
+4. V části **sítě** zadejte hodnoty pro položky, jak je popsáno v následující tabulce, a pak vyberte **Další**.
 
     | Položka | Hodnota |
     | --- | --- |
@@ -72,10 +72,10 @@ Pokud chcete vytvořit virtuální počítač s názvem *DNS01* v podsíti *fron
     | **Podsíť** | **FrontEnd** |
 
     ![Karta sítě, vytvořte virtuální počítač Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
-5. V části **Správa**vyberte v části **účet úložiště diagnostiky**možnost **vnetstorage**. Pokud se tento účet úložiště v seznamu nezobrazuje, vyberte **vytvořit nový**, zadejte **název** *vnetstorage*a vyberte **OK**. Nakonec vyberte **zkontrolovat &nbsp; + &nbsp; vytvořit**.
+5. V části **Správa** vyberte v části **účet úložiště diagnostiky** možnost **vnetstorage**. Pokud se tento účet úložiště v seznamu nezobrazuje, vyberte **vytvořit nový**, zadejte **název** *vnetstorage* a vyberte **OK**. Nakonec vyberte **zkontrolovat &nbsp; + &nbsp; vytvořit**.
 
     ![Karta Správa, vytvořit virtuální počítač, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-management.png)
-6. V části **Revize + vytvořit**zkontrolujte informace o přehledu a potom vyberte **vytvořit**.
+6. V části **Revize + vytvořit** zkontrolujte informace o přehledu a potom vyberte **vytvořit**.
 
     ![Projděte si kartu + vytvořit, vytvořte virtuální počítač Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-review-create.png)
 
@@ -94,15 +94,15 @@ Chcete-li zobrazit informace o privátních IP adresách pro nový virtuální p
 
     ![Seznam virtuálních počítačů, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/virtual-machine-list.png)
 
-3. Zvolte **sítě**a vyberte jediné síťové rozhraní v seznamu.
+3. Zvolte **sítě** a vyberte jediné síťové rozhraní v seznamu.
 
     ![Síťové rozhraní, sítě, virtuální počítač, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/networking-network-interface.png)
 
-4. Zvolte **Konfigurace protokolu IP**a vyberte konfiguraci protokolu IP uvedenou v tabulce.
+4. Zvolte **Konfigurace protokolu IP** a vyberte konfiguraci protokolu IP uvedenou v tabulce.
 
     ![Konfigurace protokolu IP, síťové rozhraní, sítě, virtuální počítač, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/network-interface-ip-configurations.png)
 
-5. V **Nastavení privátní IP adresa**v části virtuální síť nebo podsíť **TestVNet/front-endu** si poznamenejte hodnotu **přiřazení** (**dynamickou** nebo **statickou**) a **IP adresu**.
+5. V **Nastavení privátní IP adresa** v části virtuální síť nebo podsíť **TestVNet/front-endu** si poznamenejte hodnotu **přiřazení** (**dynamickou** nebo **statickou**) a **IP adresu**.
 
     ![Dynamické nebo statické přiřazení, staré nastavení privátních IP adres, konfigurace protokolu IP, síťové rozhraní, sítě, virtuální počítač, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-old.png)
 
@@ -110,7 +110,7 @@ Chcete-li zobrazit informace o privátních IP adresách pro nový virtuální p
 Přidání statické privátní IP adresy do nového virtuálního počítače:
 
 1. Na stránce konfigurace protokolu IP nastavte přiřazení privátní IP adresy na **statickou**.
-2. Změňte svou privátní **IP adresu** na *192.168.1.101*a pak vyberte **Uložit**.
+2. Změňte svou privátní **IP adresu** na *192.168.1.101* a pak vyberte **Uložit**.
    
     ![Dynamické nebo statické přiřazení, nové nastavení privátních IP adres, konfigurace protokolu IP, síťové rozhraní, sítě, virtuální počítač, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-new.png)
 
@@ -120,7 +120,7 @@ Přidání statické privátní IP adresy do nového virtuálního počítače:
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Odebrání statické privátní IP adresy z virtuálního počítače
 Odebrání statické privátní IP adresy z virtuálního počítače:
 
-Na stránce konfigurace protokolu IP nastavte možnost přiřazení privátní IP adresy na **dynamickou**a pak vyberte **Uložit**.
+Na stránce konfigurace protokolu IP nastavte možnost přiřazení privátní IP adresy na **dynamickou** a pak vyberte **Uložit**.
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>Nastavení IP adres v operačním systému
 

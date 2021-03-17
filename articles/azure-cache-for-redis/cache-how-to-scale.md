@@ -1,21 +1,20 @@
 ---
-title: Jak škálovat Azure cache pro Redis
+title: Škálování mezipaměti Azure pro instanci Redis
 description: Naučte se škálovat mezipaměť Azure pro instance Redis pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.date: 04/11/2017
-ms.openlocfilehash: e780ef0b82240ac6771059f8bd239b90395135d9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 02/08/2021
+ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213329"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382391"
 ---
-# <a name="how-to-scale-azure-cache-for-redis"></a>Jak škálovat Azure cache pro Redis
-Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti můžete velikost a cenovou úroveň mezipaměti škálovat, pokud se změní požadavky vaší aplikace. V tomto článku se dozvíte, jak škálovat mezipaměť pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
+# <a name="scale-an-azure-cache-for-redis-instance"></a>Škálování mezipaměti Azure pro instanci Redis
+Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. V případě mezipaměti Basic, Standard nebo Premium můžete změnit její velikost a úroveň, aby se zajistilo, že budou splňovat požadavky vaší aplikace. V tomto článku se dozvíte, jak škálovat mezipaměť pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
 
 ## <a name="when-to-scale"></a>Kdy škálovat
 Funkce [monitorování](cache-how-to-monitor.md) mezipaměti Azure cache pro Redis můžete použít k monitorování stavu a výkonu mezipaměti a k určení, kdy se má mezipaměť škálovat. 
@@ -30,7 +29,7 @@ Můžete monitorovat následující metriky, abyste zjistili, jestli potřebujet
 Pokud zjistíte, že vaše mezipaměť již nesplňuje požadavky vaší aplikace, můžete škálovat na větší nebo menší cenovou úroveň mezipaměti, která je pro vaši aplikaci nejvhodnější. Další informace o určení cenové úrovně, která se má použít, najdete v tématu [Volba správné úrovně](cache-overview.md#choosing-the-right-tier).
 
 ## <a name="scale-a-cache"></a>Škálování mezipaměti
-Pokud chcete škálovat mezipaměť, [přejděte do mezipaměti](cache-configure.md#configure-azure-cache-for-redis-settings) v [Azure Portal](https://portal.azure.com) a v **nabídce prostředků**klikněte na **škálovat** .
+Pokud chcete škálovat mezipaměť, [přejděte do mezipaměti](cache-configure.md#configure-azure-cache-for-redis-settings) v [Azure Portal](https://portal.azure.com) a v **nabídce prostředků** klikněte na **škálovat** .
 
 ![Měřítko](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
@@ -65,7 +64,7 @@ Kromě škálování instancí mezipaměti v Azure Portal můžete škálovat po
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Mezipaměť Azure můžete škálovat pro instance Redis pomocí prostředí PowerShell pomocí rutiny [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) při `Size` `Sku` změně vlastností,, nebo `ShardCount` . Následující příklad ukazuje, jak škálovat mezipaměť s názvem `myCache` na 2,5 GB mezipaměti. 
+Mezipaměť Azure můžete škálovat pro instance Redis pomocí prostředí PowerShell pomocí rutiny [set-AzRedisCache](/powershell/module/az.rediscache/set-azrediscache) při `Size` `Sku` změně vlastností,, nebo `ShardCount` . Následující příklad ukazuje, jak škálovat mezipaměť s názvem `myCache` na 2,5 GB mezipaměti. 
 
 ```powershell
    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB

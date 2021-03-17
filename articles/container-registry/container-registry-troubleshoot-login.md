@@ -3,12 +3,12 @@ title: Řešení potíží s přihlášením k registru
 description: Příznaky, příčiny a řešení běžných potíží při přihlašování do služby Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 8fbb96be8223001ac52db47788c31609e9b86e35
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227232"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052074"
 ---
 # <a name="troubleshoot-registry-login"></a>Řešení potíží s přihlášením k registru
 
@@ -39,6 +39,8 @@ Může zahrnovat jednu nebo více z následujících možností:
 Pokud chcete získat další informace o stavu prostředí registru a volitelně získat přístup k cílovému registru, spusťte příkaz [AZ ACR check-Health](/cli/azure/acr#az-acr-check-health) . Například Diagnostikujte chyby konfigurace Docker nebo Azure Active Directory problémy s přihlášením. 
 
 Příklady příkazů najdete v tématu o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md) . Pokud dojde k chybám, přečtěte si [referenční informace o chybě](container-registry-health-error-reference.md) a v následujících oddílech, kde najdete doporučená řešení.
+
+Pokud máte potíže s použitím služby Registry wih Azure Kubernetes, spusťte pomocí příkazu [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) , zda je registr přístupný z clusteru AKS.
 
 > [!NOTE]
 > Pokud existují konfigurace brány firewall nebo sítě, které brání přístupu k registru, může dojít k nějakým chybám ověřování nebo autorizaci taky. Přečtěte si téma [řešení potíží se sítí pomocí registru](container-registry-troubleshoot-access.md).
@@ -79,8 +81,9 @@ Ověřte platnost přihlašovacích údajů, které jste ve svém scénáři pou
 * Pokud používáte instanční objekt služby Active Directory, ujistěte se, že používáte správné přihlašovací údaje v tenantovi služby Active Directory:
   * Uživatelské jméno – ID aplikace instančního objektu (označuje se také jako *ID klienta*)
   * Heslo – hlavní heslo služby (označuje se taky jako *tajný klíč klienta*)
-* Pokud k registru přistupujete pomocí služby Azure, jako je služba Azure Kubernetes nebo Azure DevOps, potvrďte konfiguraci registru pro vaši službu.
+* Pokud k registru přistupujete pomocí služby Azure, jako je služba Azure Kubernetes nebo Azure DevOps, potvrďte konfiguraci registru pro vaši službu. 
 * Pokud jste spustili `az acr login` s `--expose-token` možností, která umožňuje přihlášení do registru bez použití démona Docker, ujistěte se, že jste s uživatelským jménem ověřili `00000000-0000-0000-0000-000000000000` .
+* Pokud je váš registr nakonfigurovaný pro [anonymní přístup s přístupem k přístupu](container-registry-faq.md#how-do-i-enable-anonymous-pull-access), může anonymní přístup zabránit existujícím přihlašovacím údajům z doku uložených z předchozího přihlášení k dokovacímu zařízení. Spusťte `docker logout` před pokusem o anonymní operaci Pull v registru.
 
 Související odkazy:
 
@@ -95,19 +98,21 @@ Související odkazy:
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>Ověření přihlašovacích údajů má oprávnění pro přístup k registru.
 
-Potvrďte oprávnění registru, která jsou přidružená k přihlašovacím údajům, jako je například `AcrPull` role RBAC pro vyžádání imagí z registru nebo `AcrPush` role pro vložení imagí. 
+Potvrďte oprávnění registru, která jsou přidružená k přihlašovacím údajům, jako je například `AcrPull` role Azure pro vyžádání imagí z registru nebo `AcrPush` role pro vložení imagí. 
 
-Přístup k registru v portálu nebo správě registru pomocí rozhraní příkazového řádku Azure CLI vyžaduje aspoň `Reader` roli k provádění operací Azure Resource Manager.
+Přístup k registru v portálu nebo správě registru pomocí rozhraní příkazového řádku Azure CLI vyžaduje aspoň `Reader` roli nebo ekvivalentní oprávnění k provádění operací Azure Resource Manager.
+
+Pokud se vaše oprávnění v nedávné době změnila tak, aby povolovala přístup k registru i přes portál, možná budete muset v prohlížeči vyzkoušet anonymním nebo soukromou relaci, aby nedocházelo k zastaralým mezipaměťm prohlížeče nebo souborům cookie
 
 K přidání nebo odebrání přiřazení rolí musí mít vlastník v rámci předplatného dostatečná oprávnění.
 
 Související odkazy:
 
-* [Role a oprávnění RBAC – Azure Container Registry](container-registry-roles.md)
+* [Role a oprávnění Azure – Azure Container Registry](container-registry-roles.md)
 * [Přihlášení s tokenem s oborem úložiště](container-registry-repository-scoped-permissions.md)
-* [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md)
+* [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](../role-based-access-control/role-assignments-portal.md)
 * [Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Vytvořit nový tajný klíč aplikace](../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)
+* [Vytvoření nového tajného klíče aplikace](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)
 * [Ověřování a autorizační kódy Azure AD](../active-directory/develop/reference-aadsts-error-codes.md)
 
 ### <a name="check-that-credentials-arent-expired"></a>Ověřte platnost přihlašovacích údajů ještě nevypršela.
@@ -142,7 +147,5 @@ Pokud se vám problém nevyřeší, přečtěte si následující možnosti.
   * [Řešení potíží se sítí pomocí registru](container-registry-troubleshoot-access.md)
   * [Řešení potíží s výkonem registru](container-registry-troubleshoot-performance.md)
 * Možnosti [podpory komunity](https://azure.microsoft.com/support/community/)
-* [Microsoft – otázky a odpovědi](https://docs.microsoft.com/answers/products/)
+* [Microsoft – otázky a odpovědi](/answers/products/)
 * [Otevření lístku podpory](https://azure.microsoft.com/support/create-ticket/) založeného na informacích, které poskytnete, může být spuštění rychlé diagnostiky pro chyby ověřování v registru.
-
-

@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024073"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098463"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – Přehled zabezpečení
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – přehled zabezpečení
 
 [Přehled zabezpečení](https://aka.ms/IdentityProtectionRefresh) v Azure Portal poskytuje přehled o stav zabezpečení vaší organizace. Pomáhá identifikovat možné útoky a pochopit efektivitu vašich zásad.
 
@@ -27,7 +27,7 @@ Přehled zabezpečení je široce rozdělen do dvou částí:
 - Trendy na levé straně poskytují časovou osu rizika ve vaší organizaci.
 - Dlaždice na pravé straně, zvýrazněte klíčové problémy ve vaší organizaci a navrhněte, jak rychle provést akci.
 
-![Přehled zabezpečení](./media/concept-identity-protection-security-overview/01.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/01.png" alt-text="Snímek obrazovky s přehledem zabezpečení Azure Portal Pruhové grafy zobrazují počet rizik v průběhu času. Dlaždice shrnují informace o uživatelích a přihlášeních." border="false":::
   
 ## <a name="trends"></a>Trendy
 
@@ -45,7 +45,7 @@ Tento graf znázorňuje počet rizikových přihlášení zjištěných ve zvole
 
 Na dlaždici uživatelé s vysokým rizikem se zobrazuje nejnovější počet uživatelů s vysokou pravděpodobností ohrožení identity. Ty by měly být nejvyšší prioritou pro šetření. Kliknutím na dlaždici s vysokým rizikovým uživatelům se přesměruje na filtrované zobrazení sestavy rizikové uživatele, která zobrazuje jenom uživatele s úrovní rizika vysoká. Pomocí této sestavy můžete získat další informace a opravit tyto uživatele s resetováním hesla.
 
-![Přehled zabezpečení](./media/concept-identity-protection-security-overview/02.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Snímek obrazovky s přehledem zabezpečení Azure Portal Pruhové grafy zobrazují počet rizik v průběhu času. Dlaždice shrnují informace o uživatelích a přihlášeních." border="false":::
 
 ### <a name="medium-risk-users"></a>Středně rizikové uživatele
 Dlaždice středně rizikové uživatele zobrazuje nejnovější počet uživatelů se střední pravděpodobností ohrožení identity. Kliknutím na dlaždici středně rizikové uživatele se přesměruje na filtrované zobrazení sestavy rizikové uživatele, která zobrazuje jenom uživatele, kteří mají úroveň rizika střední. Pomocí této sestavy můžete tyto uživatele dále prozkoumat a opravit.

@@ -3,16 +3,13 @@ title: Dodaný procesor v Apache HBA clusteru – Azure HDInsight
 description: Řešení potíží s dodaným PROCESORem na serveru oblastí v clusteru Apache HBA ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/01/2019
-ms.openlocfilehash: 16c994029e91d743f1c2a7e2eab51eb86fc378e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d0cf139f06bb296b486d2932d95b53fc1167a5d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75887304"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937026"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Scénář: doložení procesoru na serveru oblasti v clusteru Apache HBA v Azure HDInsight
 
@@ -38,7 +35,7 @@ Pokud spouštíte clustery HBA v 3.4, možná jste dosáhli potenciální chyby 
 
 1. Přejděte na **adaptéry HBA->konfigurace – >pokročilé – >Upřesnit** `hbase-env configs` a změňte proměnnou `JAVA_HOME` na `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64` . Uložte změnu konfigurace.
 
-1. [Volitelné, ale Doporučené] [Vyprázdnit všechny tabulky v clusteru](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+1. [Volitelné, ale Doporučené] [Vyprázdnit všechny tabulky v clusteru](/archive/blogs/azuredatalake/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables).
 
 1. V uživatelském rozhraní Ambari restartujte všechny HBA služby, které vyžadují restart.
 
@@ -52,10 +49,4 @@ ps -aux | grep regionserver, and verify the version like '''/usr/lib/jvm/java-8-
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

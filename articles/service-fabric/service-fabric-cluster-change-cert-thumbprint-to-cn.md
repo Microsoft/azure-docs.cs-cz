@@ -1,126 +1,108 @@
 ---
 title: Aktualizace clusteru tak, aby používal běžný název certifikátu
-description: Naučte se, jak přepínat Cluster Service Fabric, aby používal kryptografické otisky certifikátů k použití běžného názvu certifikátu.
+description: Přečtěte si, jak převést certifikát clusteru Azure Service Fabric z deklarací založených na kryptografických otiskech na běžné názvy.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: a90290430616302dbbe9ab9cf717510070936529
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247910"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900786"
 ---
-# <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změna z kryptografického otisku certifikátu clusteru na běžný název
-Žádné dva certifikáty nemohou mít stejný kryptografický otisk, což způsobuje, že je změna nebo Správa certifikátu clusteru obtížná. Více certifikátů však může mít stejný společný název nebo předmět.  Přepnutím nasazeného clusteru z použití kryptografických otisků certifikátů na použití běžných názvů certifikátů je Správa certifikátů mnohem jednodušší. Tento článek popisuje, jak aktualizovat běžící cluster Service Fabric tak, aby místo kryptografického otisku certifikátu používal běžný název certifikátu.
+# <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Převod certifikátů clusteru z deklarací založených na kryptografických otiskech na běžné názvy
 
->[!NOTE]
-> Pokud máte v šabloně deklarované dva kryptografické otisky, musíte provést dvě nasazení.  První nasazení se provádí před provedením kroků v tomto článku.  První nasazení nastaví vlastnost **kryptografický otisku** v šabloně na použitý certifikát a odstraní vlastnost **thumbprintSecondary** .  Pro druhé nasazení postupujte podle kroků v tomto článku.
- 
+Podpis certifikátu (obvykle se označuje jako kryptografický otisk) je jedinečný. Certifikát clusteru deklarovaný pomocí kryptografického otisku odkazuje na konkrétní instanci certifikátu. Tato specifičnost usnadňuje výměnu a správu certifikátů všeobecně, těžko a Explicit. Každá změna vyžaduje orchestraci upgradů clusteru a základních hostitelských počítačů.
+
+Převádění deklarací certifikátů clusteru Azure Service Fabric z kryptografických otisků na základě běžného názvu subjektu certifikátu usnadňuje správu významně. Konkrétně převrácení certifikátu už nevyžaduje upgrade clusteru. Tento článek popisuje, jak převést existující cluster na deklarace založené na CN bez výpadků.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-a-certificate"></a>Získat certifikát
-Nejdřív Získejte certifikát od certifikační [autority (CA)](https://wikipedia.org/wiki/Certificate_authority).  Běžný název certifikátu by měl být pro vlastní doménu, kterou vlastníte, a koupit z doménového registrátora. Například "azureservicefabricbestpractices.com"; Uživatelé, kteří nejsou zaměstnanci Microsoftu, nemůžou zřídit certifikáty pro domény MS, takže nebudete moct používat jako běžné názvy pro svůj certifikát názvy DNS ani Traffic Manager, a pokud vaše vlastní doména budete moct přeložit v Azure, budete muset zřídit [Azure DNS zónu](../dns/dns-delegate-domain-azure-dns.md) . Pokud chcete, aby portál odrážel vlastní alias domény pro váš cluster, budete také chtít deklarovat vlastní doménu, kterou vlastníte jako "managementEndpoint" clusteru.
+## <a name="move-to-certificate-authority-signed-certificates"></a>Přesunout do certifikátů podepsaných certifikační autoritou
 
-Pro účely testování byste mohli získat certifikát podepsaný certifikační autoritou od bezplatné nebo otevřené certifikační autority.
+Zabezpečení clusteru, jehož certifikát je deklarovaný pomocí kryptografického otisku, se na skutečnost, že je nemožné nebo je neproveditelné, aby zfalšovat certifikát se stejnou signaturou jako jiný. V tomto případě je provenience certifikátu méně důležitá, takže certifikáty podepsané svým držitelem jsou dostatečné.
 
-> [!NOTE]
-> Certifikáty podepsané svým držitelem, včetně těch generovaných při nasazení clusteru Service Fabric v Azure Portal, nejsou podporovány. 
+Naopak zabezpečení clusteru, jehož certifikáty jsou deklarovány toky CN z implicitního vztahu důvěryhodnosti, vlastník clusteru má svého poskytovatele certifikátů. Poskytovatel je služba infrastruktura veřejných klíčů (PKI), která certifikát vystavila. Vztah důvěryhodnosti je založený mimo jiné faktory na certifikačních postupech infrastruktury veřejných klíčů, ať už jsou jejich provozní zabezpečení auditovány a schváleny ještě jinými důvěryhodnými stranami atd.
+
+Vlastník clusteru musí také mít podrobné znalosti o tom, které certifikační autority (CA) vydávají své certifikáty, protože se jedná o zásadní aspekt ověřování certifikátů podle předmětu. To také znamená, že certifikáty podepsané svým držitelem jsou pro tento účel zcela nevhodné. Doslova kdokoli může vygenerovat certifikát s daným subjektem.
+
+Certifikát deklarovaný pomocí CN je obvykle považován za platný, pokud:
+
+* Řetěz se dá úspěšně sestavit.
+* Subjekt má očekávaný element CN.
+* Jeho Vystavitel (bezprostřední nebo vyšší v řetězu) je důvěryhodný agentem, který provádí ověřování.
+
+Service Fabric podporuje deklaraci certifikátů pomocí CN dvěma způsoby:
+
+* U *implicitních* vystavitelů to znamená, že řetěz musí končit kotvou vztahu důvěryhodnosti.
+* U vystavitelů deklarovaných pomocí kryptografického otisku, který se označuje jako připnutí vystavitele.
+
+Další informace najdete v tématu [deklarace ověřování certifikátů založeného na běžných názvech](cluster-security-certificates.md#common-name-based-certificate-validation-declarations).
+
+Chcete-li převést cluster pomocí certifikátu podepsaného svým držitelem deklarovaného kryptografickým otiskem do CN, musí být cílový certifikát podepsaný certifikační autoritou nejprve zaveden do clusteru podle kryptografického otisku. Pouze pak je převod z kryptografického otisku na CN možný.
+
+Pro účely testování *může* být certifikát podepsaný svým držitelem DEKLAROVÁN pomocí CN, ale pouze v případě, že je Vystavitel připnuté ke svému vlastnímu kryptografickému otisku. Z hlediska zabezpečení je tato akce skoro ekvivalentem deklarace stejného certifikátu pomocí kryptografického otisku. Úspěšný převod tohoto druhu nezaručuje úspěšný převod z kryptografického otisku na CN s certifikátem podepsaným certifikační autoritou. Doporučujeme otestovat převod s řádným certifikátem podepsaným certifikační autoritou. Pro toto testování existují bezplatné možnosti.
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Nahrajte certifikát a nainstalujte ho do sady škálování.
-V Azure je Cluster Service Fabric nasazený v sadě škálování virtuálního počítače.  Nahrajte certifikát do trezoru klíčů a nainstalujte ho do sady škálování virtuálních počítačů, na které je cluster spuštěný.
 
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+Doporučený mechanismus pro získání a zřizování certifikátů v Azure zahrnuje Azure Key Vault a jeho nástroje. Certifikát odpovídající deklaraci certifikátu clusteru musí být zřízený do každého uzlu sady škálování virtuálních počítačů, které tvoří cluster. Další informace najdete v tématu [tajné klíče ve virtuálních počítačích Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm).
 
-$SubscriptionId  =  "<subscription ID>"
+Před provedením změn v deklaracích certifikátů clusteru je důležité nainstalovat aktuální i cílové certifikáty clusteru na virtuální počítače každého typu uzlu clusteru. Cesta od vystavení certifikátu až po zřízení do Service Fabricho uzlu je podrobněji popsána v [cestě k certifikátu](cluster-security-certificate-management.md#the-journey-of-a-certificate).
 
-# Sign in to your Azure account and select your subscription
-Login-AzAccount -SubscriptionId $SubscriptionId
+## <a name="bring-the-cluster-to-an-optimal-starting-state"></a>Převést cluster do optimálního počátečního stavu
 
-$region = "southcentralus"
-$KeyVaultResourceGroupName  = "mykeyvaultgroup"
-$VaultName = "mykeyvault"
-$certFilename = "C:\users\sfuser\myclustercert.pfx"
-$certname = "myclustercert"
-$Password  = "P@ssw0rd!123"
-$VmssResourceGroupName     = "myclustergroup"
-$VmssName                  = "prnninnxj"
+Převod deklarace certifikátu z kryptografického otisku na základě dopadů na bázi CN:
 
-# Create new Resource Group 
-New-AzResourceGroup -Name $KeyVaultResourceGroupName -Location $region
+- Jak každý uzel v clusteru vyhledává a prezentuje své přihlašovací údaje jiným uzlům.
+- Jak každý uzel ověřuje přihlašovací údaje svého protějšku při navázání zabezpečeného připojení.
 
-# Create the new key vault
-$newKeyVault = New-AzKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName `
-    -Location $region -EnabledForDeployment 
-$resourceId = $newKeyVault.ResourceId 
+Než budete pokračovat, zkontrolujte [pravidla prezentace a ověření pro obě konfigurace](cluster-security-certificates.md#certificate-configuration-rules) . Nejdůležitějším aspektem při převodu kryptografických otisků na CN je to, že upgradované a dosud Neupgradované uzly (tj. uzly patřící do různých upgradovacích domén) musí být schopné provést kdykoli úspěšné vzájemné ověřování. Doporučený způsob, jak dosáhnout tohoto chování, je deklarovat cílový nebo cílový certifikát podle kryptografického otisku v počátečním upgradu. Pak dokončete přechod do CN v pozdějším případě. Pokud je cluster již v doporučeném počátečním stavu, můžete tuto část přeskočit.
 
-# Add the certificate to the key vault.
-$PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName `
-    -FilePath $certFilename -Password $PasswordSec
+Pro převod existuje několik platných počátečních stavů. Invariantní je, že cluster už používá cílový certifikát (deklarovaný pomocí kryptografického otisku) na začátku upgradu na CN. Zvažujeme `GoalCert` , `OldCert1` a `OldCert2` v tomto článku.
 
-$CertificateThumbprint = $KVSecret.Thumbprint
-$CertificateURL = $KVSecret.SecretId
-$SourceVault = $resourceId
-$CommName    = $KVSecret.Certificate.SubjectName.Name
+#### <a name="valid-starting-states"></a>Platné počáteční stavy
 
-Write-Host "CertificateThumbprint    :"  $CertificateThumbprint
-Write-Host "CertificateURL           :"  $CertificateURL
-Write-Host "SourceVault              :"  $SourceVault
-Write-Host "Common Name              :"  $CommName    
+- `Thumbprint: GoalCert, ThumbprintSecondary: None`
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, kde `GoalCert` má pozdější `NotBefore` datum než `OldCert1`
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, kde `GoalCert` má pozdější `NotBefore` datum než `OldCert1`
 
-Set-StrictMode -Version 3
-$ErrorActionPreference = "Stop"
+> [!NOTE]
+> Před verzí 7.2.445 (7,2 CU4) Service Fabric vybrali certifikát s nejstarším vypršením platnosti (certifikát s nejvyšším "NotAfter"), takže výše uvedené počáteční stavy před 7,2 CU4 vyžadují, aby GoalCert pozdější `NotAfter` datum než `OldCert1`
 
-$certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -CertificateStore "My"
+Pokud váš cluster není v některém z výše uvedených platných stavů, přečtěte si informace o tom, jak tento stav dosáhnout, v části na konci tohoto článku.
 
-# Get current VM scale set 
-$vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
+## <a name="select-the-desired-cn-based-certificate-validation-scheme"></a>Vyberte požadované schéma ověřování certifikátů založeného na CN.
 
-# Add new secret to the VM scale set.
-$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault `
-    -VaultCertificate $certConfig
+Jak bylo popsáno dříve, Service Fabric podporuje deklaraci certifikátů pomocí CN s implicitním kotvou vztahu důvěryhodnosti nebo explicitním připnutím kryptografických otisků vystavitele. Další informace najdete v tématu [deklarace ověřování certifikátů založeného na běžných názvech](cluster-security-certificates.md#common-name-based-certificate-validation-declarations).
 
-# Update the VM scale set 
-Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
-    -Name $VmssName -VirtualMachineScaleSet $vmss 
-```
+Ujistěte se, že máte dobré znalosti o rozdílech a důsledky výběru obou mechanismů. Syntakticky, tento rozdíl nebo volba je určena hodnotou `certificateIssuerThumbprintList` parametru. Prázdné znamená, že se spoléhá na důvěryhodnou kořenovou certifikační autoritu (kotvu vztahu důvěryhodnosti), zatímco sada kryptografických otisků omezuje povolené přímé vystavitele certifikátů clusteru.
 
->[!NOTE]
-> Tajné klíče sady škálování nepodporují stejné ID prostředku pro dvě samostatné tajné klíče, protože každý tajný klíč je jedinečným prostředkem verze. 
+   > [!NOTE]
+   > `certificateIssuerThumbprint`Pole vám umožní zadat očekávané přímé vystavitele certifikátů deklarovaných podle CN předmětu. Přijatelné hodnoty jsou jeden nebo více kryptografických otisků SHA1 oddělených čárkami. Tato akce posílí ověřování certifikátu.
+   >
+   > Pokud nejsou zadáni žádní vydavatelé nebo je seznam prázdný, certifikát bude přijat k ověřování, pokud lze jeho řetěz vytvořit. Certifikát pak skončí v kořenu, který validátor považuje za důvěryhodný. Pokud je zadán jeden nebo více kryptografických otisků vystavitelů, bude certifikát přijat, pokud otisk jeho přímého vystavitele, který je extrahován z řetězce, odpovídá libovolné hodnotě uvedené v tomto poli. Certifikát se přijme, pokud je kořenový adresář důvěryhodný.
+   >
+   > Infrastruktura veřejných klíčů (PKI) může použít jiné certifikační autority (označované také jako *Vystavitelé*) k podepisování certifikátů s daným subjektem. Z tohoto důvodu je důležité pro tento předmět zadat všechny očekávané kryptografické otisky vystavitele. Jinými slovy, prodloužení platnosti certifikátu nemůže být podepsáno stejným vydavatelem jako certifikát, který se právě obnovuje.
+   >
+   > Zadání vystavitele je považováno za osvědčený postup. Vynechání vystavitele bude i nadále fungovat pro certifikáty zřetězené až k důvěryhodnému kořenovému adresáři, ale toto chování má omezení a v blízké budoucnosti může být ukončeno. Clustery nasazené v Azure zabezpečené pomocí certifikátů x509 vydaných privátní infrastrukturou veřejných klíčů (PKI), které jsou deklarované subjektem, nemusí být možné ověřit pomocí Service Fabric (pro komunikaci mezi clustery). Ověření vyžaduje, aby byly zásady certifikátů infrastruktury veřejných klíčů dostupné, dostupné a dostupné.
 
-## <a name="download-and-update-the-template-from-the-portal"></a>Stažení a aktualizace šablony z portálu
-Certifikát je nainstalovaný v základní sadě škálování, ale musíte taky aktualizovat Cluster Service Fabric, aby se tento certifikát a jeho běžný název používal.  Teď Stáhněte šablonu pro nasazení clusteru.  Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do skupiny prostředků hostující cluster.  V **Nastavení**vyberte **nasazení**.  Vyberte nejnovější nasazení a klikněte na **Zobrazit šablonu**.
+## <a name="update-the-clusters-azure-resource-manager-template-and-deploy"></a>Aktualizace šablony Azure Resource Manager a nasazení clusteru
 
-![Zobrazit šablony][image1]
+Spravujte Service Fabric clusterů pomocí šablon Azure Resource Manager (ARM). Alternativou, která také používá artefakty JSON, je [Azure Resource Explorer (Preview)](https://resources.azure.com). V tuto chvíli není v Azure Portal k dispozici ekvivalentní prostředí.
 
-Stáhněte si soubory JSON šablony a Parameters do svého místního počítače.
+Pokud není k dispozici původní šablona odpovídající existujícímu clusteru, můžete v Azure Portal získat ekvivalentní šablonu. Přejděte do skupiny prostředků, která obsahuje cluster, a v nabídce **Automatizace** na levé straně vyberte **Exportovat šablonu** . Pak vyberte prostředky, které chcete. Minimálně je potřeba exportovat sadu škálování virtuálního počítače a prostředky clusteru. Vygenerovanou šablonu lze také stáhnout. Tato šablona může vyžadovat změny před jejich úplným nasazením. Šablona také nemusí přesně odpovídat původnímu. Jedná se o reflexi aktuálního stavu prostředku clusteru.
 
-Nejprve v textovém editoru otevřete soubor parametrů a přidejte následující hodnotu parametru:
+Nezbytné změny jsou následující:
+
+- Aktualizuje se definice rozšíření Service Fabric uzlu (v prostředku virtuálního počítače). Pokud cluster definuje více typů uzlů, bude nutné aktualizovat definici každé odpovídající sady škálování virtuálních počítačů.
+- Aktualizuje se definice prostředků clusteru.
+
+Zde jsou uvedené podrobné příklady.
+
+### <a name="update-the-virtual-machine-scale-set-resources"></a>Aktualizace prostředků sady škálování virtuálních počítačů
+Z:
 ```json
-"certificateCommonName": {
-    "value": "myclustername.southcentralus.cloudapp.azure.com"
-},
-```
-
-Pak otevřete soubor šablony v textovém editoru a proveďte tři aktualizace, aby podporovaly běžný název certifikátu.
-
-1. Do části **Parameters (parametry** ) přidejte parametr *certificateCommonName* :
-    ```json
-    "certificateCommonName": {
-        "type": "string",
-        "metadata": {
-            "description": "Certificate Commonname"
-        }
-    },
-    ```
-
-    Zvažte také odebrání *certificateThumbprint*, již na něj nelze odkazovat v šabloně správce prostředků.
-
-2. V prostředku **Microsoft. COMPUTE/virtualMachineScaleSets** aktualizujte rozšíření virtuálního počítače tak, aby místo kryptografického otisku používalo běžný název v nastavení certifikátu.  V **virtualMachineProfile** -> nastavení rozšíření virtualMachineProfile**extensionProfile** -> **Extensions**– -> **vlastnosti** -> **settings** -> **certifikátu**, přidat `"commonNames": ["[parameters('certificateCommonName')]"],` a odebrat `"thumbprint": "[parameters('certificateThumbprint')]",` .
-    ```json
-        "virtualMachineProfile": {
+"virtualMachineProfile": {
         "extensionProfile": {
             "extensions": [
                 {
@@ -129,17 +111,36 @@ Pak otevřete soubor šablony v textovém editoru a proveďte tři aktualizace, 
                         "type": "ServiceFabricNode",
                         "autoUpgradeMinorVersion": true,
                         "protectedSettings": {
-                            "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
-                            "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                            ...
                         },
                         "publisher": "Microsoft.Azure.ServiceFabric",
                         "settings": {
-                            "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                            "nodeTypeRef": "[variables('vmNodeType0Name')]",
-                            "dataPath": "D:\\SvcFab",
-                            "durabilityLevel": "Bronze",
-                            "enableParallelJobs": true,
-                            "nicPrefixOverride": "[variables('subnet0Prefix')]",
+                            ...
+                            "certificate": {
+                                "thumbprint": "[parameters('certificateThumbprint')]",
+                                "x509StoreName": "[parameters('certificateStoreValue')]"
+                            }
+                        },
+                        ...
+                    }
+                },
+```
+Do:
+```json
+"virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
+                    "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
+                    "properties": {
+                        "type": "ServiceFabricNode",
+                        "autoUpgradeMinorVersion": true,
+                        "protectedSettings": {
+                            ...
+                        },
+                        "publisher": "Microsoft.Azure.ServiceFabric",
+                        "settings": {
+                            ...
                             "certificate": {
                                 "commonNames": [
                                     "[parameters('certificateCommonName')]"
@@ -147,41 +148,65 @@ Pak otevřete soubor šablony v textovém editoru a proveďte tři aktualizace, 
                                 "x509StoreName": "[parameters('certificateStoreValue')]"
                             }
                         },
-                        "typeHandlerVersion": "1.0"
+                        ...
                     }
                 },
-    ```
+```
 
-3.  V prostředku **Microsoft. ServiceFabric/clustery** aktualizujte verzi rozhraní API na "2018-02-01".  Přidejte také nastavení **certificateCommonNames** s vlastností **commonNames** a odeberte nastavení **certifikátu** (s vlastností kryptografický otisk), jak je znázorněno v následujícím příkladu:
-    ```json
+### <a name="update-the-cluster-resource"></a>Aktualizace prostředku clusteru
+
+Do prostředku **Microsoft. ServiceFabric/clustery** přidejte vlastnost **CertificateCommonNames** s nastavením **commonNames** a úplně odstraňte vlastnost **certifikátu** (všechna jeho nastavení).
+
+Z:
+```json
     {
         "apiVersion": "2018-02-01",
         "type": "Microsoft.ServiceFabric/clusters",
         "name": "[parameters('clusterName')]",
         "location": "[parameters('clusterLocation')]",
         "dependsOn": [
-            "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+            ...
         ],
         "properties": {
             "addonFeatures": [
-                "DnsService",
-                "RepairManager"
+                ...
+            ],
+            "certificate": {
+              "thumbprint": "[parameters('certificateThumbprint')]",
+              "x509StoreName": "[parameters('certificateStoreValue')]"
+            },
+        ...
+```
+Do:
+```json
+    {
+        "apiVersion": "2018-02-01",
+        "type": "Microsoft.ServiceFabric/clusters",
+        "name": "[parameters('clusterName')]",
+        "location": "[parameters('clusterLocation')]",
+        "dependsOn": [
+            ...
+        ],
+        "properties": {
+            "addonFeatures": [
+                ...
             ],
             "certificateCommonNames": {
                 "commonNames": [
                     {
                         "certificateCommonName": "[parameters('certificateCommonName')]",
-                        "certificateIssuerThumbprint": ""
+                        "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprintList')]"
                     }
                 ],
                 "x509StoreName": "[parameters('certificateStoreValue')]"
             },
         ...
-    ```
+```
 
-Další informace najdete v tématu [nasazení Service Fabric clusteru, který místo kryptografického otisku používá běžný název certifikátu.](./service-fabric-create-cluster-using-cert-cn.md)
+Další informace najdete v tématu [nasazení clusteru Service Fabric, který místo kryptografického otisku používá běžný název certifikátu](./service-fabric-create-cluster-using-cert-cn.md).
 
 ## <a name="deploy-the-updated-template"></a>Nasazení aktualizované šablony
+
 Po provedení změn znovu nasaďte aktualizovanou šablonu.
 
 ```powershell
@@ -191,9 +216,25 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
     -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
+## <a name="achieve-a-valid-starting-state-for-converting-a-cluster-to-cn-based-certificate-declarations"></a>Dosažení platného počátečního stavu pro převod clusteru na deklarace certifikátů na základě CN
+
+| Počáteční stav | Upgrade 1 | Upgrade 2 |
+| :--- | :--- | :--- |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` a `GoalCert` má pozdější `NotBefore` datum než `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` a `OldCert1` má pozdější `NotBefore` datum než `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, kde `OldCert1` má pozdější `NotBefore` datum než `GoalCert` | Upgradovat na `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, kde `OldCert1` má pozdější `NotBefore` datum než `GoalCert` | Upgradovat na `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | Odebrat jeden z `OldCert1` nebo `OldCert2` pro získání stavu `Thumbprint: OldCertx, ThumbprintSecondary: None` | Pokračovat z nového počátečního stavu |
+
+> [!NOTE]
+> Pro cluster na verzi starší než verze 7.2.445 (7,2 CU4) nahraďte `NotBefore` `NotAfter` ve výše uvedených stavech.
+
+Pokyny, jak provést některý z těchto upgradů, najdete v tématu [Správa certifikátů v clusteru Azure Service Fabric](service-fabric-cluster-security-update-certs-azure.md).
+
 ## <a name="next-steps"></a>Další kroky
+
 * Přečtěte si o [zabezpečení clusteru](service-fabric-cluster-security.md).
-* Informace o tom, jak [vyměnit certifikát clusteru](service-fabric-cluster-rollover-cert-cn.md)
-* [Aktualizace a Správa certifikátů clusteru](service-fabric-cluster-security-update-certs-azure.md)
+* Naučte se [převádět certifikát clusteru běžným názvem](service-fabric-cluster-rollover-cert-cn.md).
+* Naučte se [konfigurovat cluster pro bezdotykovou výměnu](cluster-security-certificate-management.md).
 
 [image1]: ./media/service-fabric-cluster-change-cert-thumbprint-to-cn/PortalViewTemplates.png

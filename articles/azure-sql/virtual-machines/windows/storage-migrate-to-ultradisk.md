@@ -8,18 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: management
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 42d7760d25f6ab591c19889eb2159711d6de1b07
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653239"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356748"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrovat disk protokolu na Ultra disk
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +51,7 @@ Pokud chcete povolit kompatibilitu, postupujte podle těchto kroků:
 
 1. Vyberte **Ano** , pokud chcete **Povolit kompatibilitu s Ultra diskem**. 
 
-   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="V části nastavení v Azure Portal vyberte další nastavení pro disky.":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Snímek obrazovky zobrazující možnost Ano":::
 
 1. Vyberte **Uložit**. 
 
@@ -58,7 +59,7 @@ Pokud chcete povolit kompatibilitu, postupujte podle těchto kroků:
 
 ### <a name="attach-disk"></a>Připojit disk
 
-Pomocí Azure Portal připojte k virtuálnímu počítači Ultra disk. Podrobnosti najdete v tématu [připojení Ultra disk](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal) .
+Pomocí Azure Portal připojte k virtuálnímu počítači Ultra disk. Podrobnosti najdete v tématu [připojení Ultra disk](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk).
 
 Po připojení disku spusťte virtuální počítač ještě jednou pomocí Azure Portal. 
 

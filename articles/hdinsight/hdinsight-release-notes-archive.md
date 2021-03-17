@@ -1,19 +1,16 @@
 ---
 title: Archivované poznámky k verzi pro Azure HDInsight
 description: Archivovaná zpráva k vydání verze pro Azure HDInsight Získejte tipy pro vývoj a podrobnosti pro Hadoop, Spark, R Server, podregistr a další.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 08/09/2020
-ms.openlocfilehash: 29caccd666294add98882d080a2a0fd3bd9dd660
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 02/08/2021
+ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036619"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705649"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
@@ -21,16 +18,213 @@ ms.locfileid: "88036619"
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky pro Open Source Apache Hadoop a Apache Spark analýzy v Azure.
 
+## <a name="release-date-11182020"></a>Datum vydání: 11/18/2020
+
+Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+
+### <a name="new-features"></a>Nové funkce
+#### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>Automatické střídání klíčů pro šifrování spravovaného klíče zákazníka v klidovém umístění
+Od této verze můžou zákazníci používat adresy URL šifrovacího klíče bez verze Azure KeyValut pro šifrování spravovaného klíče zákazníka v klidovém provozu. HDInsight tyto klíče automaticky otočí, jakmile vyprší platnost, nebo je nahradí novými verzemi. Další podrobnosti najdete [tady](./disk-encryption.md).
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Možnost výběru různých velikostí virtuálních počítačů s Zookeeper pro služby Spark, Hadoop a ML
+Služba HDInsight dřív nepodporovala přizpůsobení velikosti uzlu Zookeeper pro typy clusterů Spark, Hadoop a ML. Ve výchozím nastavení se A2_v2/a2 velikosti virtuálních počítačů, které jsou poskytovány zdarma. Z této verze můžete vybrat velikost virtuálního počítače Zookeeper, která je pro váš scénář nejvhodnější. Budou se účtovat uzly Zookeeper s velikostí virtuálního počítače jinou než A2_v2/a2. Virtuální počítače A2_v2 a a2 jsou stále poskytovány zdarma.
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od této verze se služba postupně migruje na [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
+
+### <a name="deprecation"></a>Vyřazení
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Vyřazení clusteru HDInsight 3,6 ML Services
+Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nebudou moct vytvořit nové clustery 3,6 ML Services po prosinci 31 2020. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
+
+#### <a name="disabled-vm-sizes"></a>Zakázané velikosti virtuálních počítačů
+Od listopadu 16 2020 bude HDInsight zablokuje novým zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Stávající zákazníci, kteří použili tyto velikosti virtuálních počítačů v posledních třech měsících, to neovlivní. Počínaje formulářem leden 9 2021 bude HDInsight blokovat všem zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Existující clustery se spustí, jak je. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
+
+### <a name="behavior-changes"></a>Změny chování
+#### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Přidat kontrolu pravidel NSG před operací škálování
+HDInsight přidal skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr), která má kontrolu nad operací škálování. Stejné ověřování se provádí pro škálování clusteru Kromě vytváření clusteru. Toto ověření pomáhá zabránit nepředvídatelným chybám. Pokud ověření neprojde, škálování se nezdařilo. Další informace o tom, jak správně nakonfigurovat skupin zabezpečení sítě a udr, najdete v tématu věnovaném [IP adresám správy HDInsight](./hdinsight-management-ip-addresses.md).
+
+### <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
+
+## <a name="release-date-11092020"></a>Datum vydání: 11/09/2020
+
+Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+
+### <a name="new-features"></a>Nové funkce
+#### <a name="hdinsight-identity-broker-hib-is-now-ga"></a>HDInsight identity broker (HIB) je teď GA.
+HDInsight identity broker (HIB), který umožňuje ověřování OAuth pro clustery ESP, je teď v této verzi všeobecně dostupné. Clustery HIB vytvořené po této verzi budou mít nejnovější funkce HIB:
+- Vysoká dostupnost (HA)
+- Podpora pro Multi-Factor Authentication (MFA)
+- Přihlášení federovaných uživatelů bez synchronizace hodnot hash hesel do AAD-DS Další informace najdete v [dokumentaci k Hib](./domain-joined/identity-broker.md).
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od této verze se služba postupně migruje na [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
+
+### <a name="deprecation"></a>Vyřazení
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Vyřazení clusteru HDInsight 3,6 ML Services
+Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nevytvoří nové clustery 3,6 ML Services po prosinci 31 2020. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md#supported-hdinsight-versions)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
+
+#### <a name="disabled-vm-sizes"></a>Zakázané velikosti virtuálních počítačů
+Od listopadu 16 2020 bude HDInsight zablokuje novým zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Stávající zákazníci, kteří použili tyto velikosti virtuálních počítačů v posledních třech měsících, to neovlivní. Počínaje formulářem leden 9 2021 bude HDInsight blokovat všem zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Existující clustery se spustí, jak je. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
+
+### <a name="behavior-changes"></a>Změny chování
+Žádná změna chování pro tuto verzi.
+
+### <a name="upcoming-changes"></a>Nadcházející změny
+V nadcházejících verzích dojde k následujícím změnám.
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Možnost výběru různých velikostí virtuálních počítačů s Zookeeper pro služby Spark, Hadoop a ML
+HDInsight dnes nepodporuje přizpůsobení velikosti uzlů Zookeeper pro typy clusterů Spark, Hadoop a ML. Ve výchozím nastavení se A2_v2/a2 velikosti virtuálních počítačů, které jsou poskytovány zdarma. V nadcházející verzi můžete vybrat velikost virtuálního počítače Zookeeper, která je pro váš scénář nejvhodnější. Budou se účtovat uzly Zookeeper s velikostí virtuálního počítače jinou než A2_v2/a2. Virtuální počítače A2_v2 a a2 jsou stále poskytovány zdarma.
+
+#### <a name="default-cluster-version-will-be-changed-to-40"></a>Výchozí verze clusteru se změní na 4,0.
+Od února 2021 se výchozí verze clusteru HDInsight změní z 3,6 na 4,0. Další informace o dostupných verzích najdete v tématu [podporované verze](./hdinsight-component-versioning.md#supported-hdinsight-versions). Další informace o tom, co je nového ve službě [HDInsight 4,0](./hdinsight-version-release.md)
+
+#### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>Podpora HDInsight 3,6 na konci 30 2021. června
+Podpora HDInsight 3,6 bude ukončena. Počínaje formulářem červeně 30 2021 nemohou zákazníci vytvářet nové clustery HDInsight 3,6. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
+
+### <a name="bug-fixes"></a>Opravy chyb
+HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
+#### <a name="fix-issue-for-restarting-vms-in-cluster"></a>Oprava problému pro restartování virtuálních počítačů v clusteru
+Problém pro restartování virtuálních počítačů v clusteru byl vyřešen, můžete použít [PowerShell nebo REST API k restartování uzlů v clusteru](./cluster-reboot-vm.md) .
+
+### <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
+
+## <a name="release-date-10082020"></a>Datum vydání: 10/08/2020
+
+Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+
+### <a name="new-features"></a>Nové funkce
+#### <a name="hdinsight-private-clusters-with-no-public-ip-and-private-link-preview"></a>Privátní clustery HDInsight bez veřejné IP adresy a privátního propojení (Preview)
+HDInsight teď podporuje vytváření clusterů bez přístupu veřejných IP adres a privátních odkazů do clusterů ve verzi Preview. Zákazníci můžou pomocí nových pokročilých nastavení sítě vytvořit plně izolovaný cluster bez veřejné IP adresy a používat pro přístup ke clusteru vlastní privátní koncové body. 
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od této verze se služba postupně migruje na [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
+
+### <a name="deprecation"></a>Vyřazení
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Vyřazení clusteru HDInsight 3,6 ML Services
+Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nevytvoří nové clustery služby 3,6 ML. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md#supported-hdinsight-versions)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
+
+### <a name="behavior-changes"></a>Změny chování
+Žádná změna chování pro tuto verzi.
+
+### <a name="upcoming-changes"></a>Nadcházející změny
+V nadcházejících verzích dojde k následujícím změnám.
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Možnost výběru různých velikostí virtuálních počítačů s Zookeeper pro služby Spark, Hadoop a ML
+HDInsight dnes nepodporuje přizpůsobení velikosti uzlů Zookeeper pro typy clusterů Spark, Hadoop a ML. Ve výchozím nastavení se A2_v2/a2 velikosti virtuálních počítačů, které jsou poskytovány zdarma. V nadcházející verzi můžete vybrat velikost virtuálního počítače Zookeeper, která je pro váš scénář nejvhodnější. Budou se účtovat uzly Zookeeper s velikostí virtuálního počítače jinou než A2_v2/a2. Virtuální počítače A2_v2 a a2 jsou stále poskytovány zdarma.
+
+### <a name="bug-fixes"></a>Opravy chyb
+HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
+
+### <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
+
+## <a name="release-date-09282020"></a>Datum vydání: 09/28/2020
+
+Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+
+### <a name="new-features"></a>Nové funkce
+#### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>Automatické škálování pro interaktivní dotaz s HDInsight 4,0 je teď všeobecně dostupné.
+Automatické škálování pro typ clusteru interaktivních dotazů je teď všeobecně dostupné (GA) pro HDInsight 4,0. Všechna interaktivní clustery dotazů 4,0 vytvořená po 27. srpna 2020 budou mít podporu GA pro automatické škálování.
+
+#### <a name="hbase-cluster-supports-premium-adls-gen2"></a>Cluster HBA podporuje prémiové ADLS Gen2
+HDInsight teď podporuje Premium ADLS Gen2 jako primární účet úložiště pro clustery HDInsight 3,6 a 4,0. Společně s [akcelerovanými zápisy](./hbase/apache-hbase-accelerated-writes.md)můžete dosáhnout lepšího výkonu clusterů HBA.
+
+#### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Kafka rozdělení oddílu do domén selhání Azure
+Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Předtím, než HDInsight Kafka může ukládat všechny repliky oddílů ve stejné doméně selhání. Od této verze už HDInsight podporuje automatickou distribuci oddílů Kafka na základě domén selhání Azure. 
+
+#### <a name="encryption-in-transit"></a>Šifrování během přenosu
+Zákazníci můžou povolit šifrování při přenosu mezi uzly clusteru pomocí šifrování IPSec s klíči spravovanými platformou. Tuto možnost můžete povolit v době vytváření clusteru. Přečtěte si další podrobnosti o [tom, jak povolit šifrování při přenosu](./domain-joined/encryption-in-transit.md).
+
+#### <a name="encryption-at-host"></a>Šifrování na hostiteli
+Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuálního počítače se zašifrují v klidovém stavu a toky se zašifrují do služby úložiště. V této verzi můžete při vytváření clusteru **zapnout šifrování na hostiteli na dočasném datovém disku** . Šifrování na hostiteli se podporuje jenom u [některých SKU virtuálních počítačů v omezených oblastech](../virtual-machines/disks-enable-host-based-encryption-portal.md). HDInsight podporuje [následující konfiguraci uzlů a SKU](./hdinsight-supported-node-configuration.md). Podívejte se na další podrobnosti o [tom, jak povolit šifrování na hostiteli](./disk-encryption.md#encryption-at-host-using-platform-managed-keys).
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od této verze se služba postupně migruje na [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
+
+### <a name="deprecation"></a>Vyřazení
+Pro tuto verzi není zastaralost.
+
+### <a name="behavior-changes"></a>Změny chování
+Žádná změna chování pro tuto verzi.
+
+### <a name="upcoming-changes"></a>Nadcházející změny
+V nadcházejících verzích dojde k následujícím změnám.
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Možnost výběru různých Zookeeper SKU pro služby Spark, Hadoop a ML
+HDInsight dnes nepodporuje změnu Zookeeper SKU pro typy clusterů Spark, Hadoop a ML. Používá A2_v2 SKU/a2 pro uzly Zookeeper a zákazníkům se za ně neúčtují poplatky. V nadcházející verzi můžou zákazníci podle potřeby měnit SKU Zookeeper pro služby Spark, Hadoop a ML. Zookeeper uzly s jinou skladovou jednotkou než A2_v2/a2 budou účtovány. Výchozí SKU bude i nadále A2_V2/a2 a zadarmo.
+
+### <a name="bug-fixes"></a>Opravy chyb
+HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
+
+### <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
+
+## <a name="release-date-08092020"></a>Datum vydání: 08/09/2020
+
+Tato verze se vztahuje jenom na HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+
+### <a name="new-features"></a>Nové funkce
+#### <a name="support-for-sparkcruise"></a>Podpora pro SparkCruise
+SparkCruise je systém automatického využití výpočtů pro Spark. Vybere běžné dílčí výrazy, které se vyhodnotit na základě úlohy minulého dotazu. SparkCruise materializuje tyto dílčí výrazy jako součást zpracování dotazů a opakované použití výpočtu se automaticky aplikují na pozadí. Můžete využívat výhod SparkCruise bez jakýchkoli úprav kódu Sparku.
+ 
+#### <a name="support-hive-view-for-hdinsight-40"></a>Podpora zobrazení podregistru pro HDInsight 4,0
+Zobrazení podregistru Apache Ambari je navržené tak, aby vám usnadnilo vytváření, optimalizaci a spouštění dotazů na podregistr z webového prohlížeče. Zobrazení podregistru se nativně podporuje pro clustery HDInsight 4,0 od této verze. Neplatí pro existující clustery. K získání integrovaného zobrazení podregistru budete potřebovat vyřadit a znovu vytvořit cluster.
+ 
+#### <a name="support-tez-view-for-hdinsight-40"></a>Podpora zobrazení tez pro HDInsight 4,0
+Zobrazení Apache Tez slouží ke sledování a ladění provádění úlohy tez podregistru. Zobrazení tez se nativně podporuje pro HDInsight 4,0 od této verze. Neplatí pro existující clustery. Pokud chcete získat integrované zobrazení tez, musíte cluster vyřadit a znovu vytvořit.
+
+### <a name="deprecation"></a>Vyřazení
+#### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Ukončení podpory Sparku 2.1 a 2.2 v clusteru HDInsight 3.6 Spark
+Od července 1 2020 nemohou zákazníci vytvářet nové clustery Spark pomocí Sparku 2,1 a 2,2 ve službě HDInsight 3,6. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2,3 ve službě HDInsight 3,6 pomocí června 30 2020, aby se předešlo potenciálnímu přerušení systému/podpory.
+ 
+#### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Ukončení podpory Sparku 2.3 v clusteru HDInsight 4.0 Spark
+Od července 1 2020 nemohou zákazníci vytvářet nové clustery Spark se Sparkem 2,3 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2.4 v HDInsight 4.0 nejpozději do 30. června 2020, abyste se vyhnuli možnému přerušení služeb nebo podpory.
+ 
+#### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Ukončení podpory Kafka 1.1 v clusteru HDInsight 4.0 Kafka
+Od července 1 2020 nebudou zákazníci moci vytvářet nové clustery Kafka s Kafka 1,1 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Kafka 2.1 v HDInsight 4.0 nejpozději do 30. června 2020, abyste se vyhnuli možnému přerušení služeb nebo podpory.
+
+### <a name="behavior-changes"></a>Změny chování
+#### <a name="ambari-stack-version-change"></a>Změna verze zásobníku Ambari
+V této verzi se verze Ambari mění z 2. x. x. x na 4,1. Můžete ověřit verzi zásobníku (HDInsight 4,1) v Ambari: Ambari > verze > uživatele.
+
+### <a name="upcoming-changes"></a>Nadcházející změny
+Žádné nadcházející nepotřebné změny, ke kterým byste měli věnovat pozornost.
+
+### <a name="bug-fixes"></a>Opravy chyb
+HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
+
+Pod JIRAs jsou pro podregistr back-Transported:
+* [PODREGISTR-23619](https://issues.apache.org/jira/browse/HIVE-23619)
+* [PODREGISTR-21223](https://issues.apache.org/jira/browse/HIVE-21223)
+* [PODREGISTR-22599](https://issues.apache.org/jira/browse/HIVE-22599)
+* [PODREGISTR-22121](https://issues.apache.org/jira/browse/HIVE-22121)
+* [PODREGISTR-22136](https://issues.apache.org/jira/browse/HIVE-22136)
+* [PODREGISTR-18786](https://issues.apache.org/jira/browse/HIVE-18786)
+
+Pod JIRAs jsou pro adaptéry HBA back-Transported:
+* [HBA – 21458](https://issues.apache.org/jira/browse/HBASE-21458)
+* [HBA – 24208](https://issues.apache.org/jira/browse/HBASE-24208)
+* [HBA – 24205](https://issues.apache.org/jira/browse/HBASE-24205)
+
+### <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
+
+### <a name="known-issues"></a>Známé problémy
+
+V Azure Portal byl opraven problém, ve kterém došlo k chybě při vytváření clusteru Azure HDInsight pomocí typu ověřování SSH veřejného klíče. Když uživatelé kliknuli na **Zkontrolovat a vytvořit**, zobrazila se jim chyba Nesmí obsahovat žádné tři po sobě jdoucí znaky z uživatelského jména SSH. Tento problém se již vyřešil, ale možná budete muset stisknutím CTRL + F5 aktualizovat mezipaměť prohlížeče, aby se načetlo opravené zobrazení. Alternativním řešením tohoto problému je vytvořit cluster pomocí šablony ARM. 
+
 ## <a name="release-date-07132020"></a>Datum vydání: 07/13/2020
 
 Tato verze platí pro HDInsight 3,6 a 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
 
 ### <a name="new-features"></a>Nové funkce
 #### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>Podpora Customer Lockbox pro Microsoft Azure
-Azure HDInsight teď podporuje Azure Customer Lockbox. Poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se, když Microsoft inženýr potřebuje přístup k zákaznickým datům během žádosti o podporu. Další informace najdete v tématu [Customer Lockbox pro Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview).
+Azure HDInsight teď podporuje Azure Customer Lockbox. Poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se, když Microsoft inženýr potřebuje přístup k zákaznickým datům během žádosti o podporu. Další informace najdete v tématu [Customer Lockbox pro Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview).
 
 #### <a name="service-endpoint-policies-for-storage"></a>Zásady koncového bodu služby pro úložiště
-Zákazníci teď můžou používat zásady koncového bodu služby (SEP) v podsíti clusteru HDInsight. Přečtěte si další informace o [zásadách koncového bodu služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+Zákazníci teď můžou používat zásady koncového bodu služby (SEP) v podsíti clusteru HDInsight. Přečtěte si další informace o [zásadách koncového bodu služby Azure](../virtual-network/virtual-network-service-endpoint-policies-overview.md).
 
 ### <a name="deprecation"></a>Vyřazení
 #### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Ukončení podpory Sparku 2.1 a 2.2 v clusteru HDInsight 3.6 Spark
@@ -60,7 +254,7 @@ Došlo k potížím při použitelnosti konektoru skladu z podregistru v předch
 Zeppelin nesprávně zkrátila úvodní nuly ve výstupu tabulky pro formát řetězce. V této verzi jsme tento problém vyřešili.
 
 ### <a name="component-version-change"></a>Změna verze součásti
-Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
 
 ## <a name="release-date-06112020"></a>Datum vydání: 06/11/2020
 
@@ -68,7 +262,7 @@ Tato verze platí pro HDInsight 3,6 a 4,0. Vydání HDInsight je zpřístupněno
 
 ### <a name="new-features"></a>Nové funkce
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
-HDInsight pomocí virtuálních počítačů Azure zřídí cluster. V této verzi se nově vytvořené clustery HDInsight začnou používat na Azure Virtual Machine Scale set. Tato změna se provádí postupně. Neměli byste očekávat žádné zásadní změny. Přečtěte si další informace o [službě Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+HDInsight pomocí virtuálních počítačů Azure zřídí cluster. V této verzi se nově vytvořené clustery HDInsight začnou používat na Azure Virtual Machine Scale set. Tato změna se provádí postupně. Neměli byste očekávat žádné zásadní změny. Přečtěte si další informace o [službě Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md).
  
 #### <a name="reboot-vms-in-hdinsight-cluster"></a>Restartování virtuálních počítačů v clusteru HDInsight
 V této verzi podporujeme restartování virtuálních počítačů v clusteru HDInsight k restartování nereagujících uzlů. V současné době je možné ji provést pouze prostřednictvím rozhraní API, podpora PowerShellu a rozhraní příkazového řádku. Další informace o rozhraní API najdete v [tomto dokumentu](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json).
@@ -96,10 +290,10 @@ Až 80% pracovních uzlů je připraveno, cluster přejde do **provozní** fáze
 Po skončení **provozní** fáze vyčká cluster dalších 20% pracovních uzlů za 60 minut. Na konci tohoto 60 minut se cluster přesune do **běžící** fáze, i když všechny pracovní uzly stále nejsou k dispozici. Jakmile cluster vstoupí do **běžící** fáze, můžete ho použít jako normální. Jsou přijímány i operace plánu řízení, jako je například vertikální navýšení/snížení kapacity a operace datového tarifu, jako je spouštění skriptů a úloh. Pokud některé z požadovaných pracovních uzlů nejsou k dispozici, bude cluster označen jako částečný úspěch. Účtují se vám poplatky za uzly, které se úspěšně nasadily. 
  
 #### <a name="create-new-service-principal-through-hdinsight"></a>Vytvoření nového instančního objektu prostřednictvím služby HDInsight
-Při vytváření clusteru mohli zákazníci v minulosti vytvořit nový instanční objekt pro přístup k připojenému účtu ADLS fin 1 v rámci služby Azure Portal. Od června 15 2020 nemůže zákazníci vytvořit nový instanční objekt ve službě HDInsight pro vytváření pracovních postupů, podporuje se jenom existující instanční objekt. Viz téma [Vytvoření instančního objektu a certifikátů pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Při vytváření clusteru mohli zákazníci v minulosti vytvořit nový instanční objekt pro přístup k připojenému účtu ADLS fin 1 v rámci služby Azure Portal. Od června 15 2020 nemůže zákazníci vytvořit nový instanční objekt ve službě HDInsight pro vytváření pracovních postupů, podporuje se jenom existující instanční objekt. Viz téma [Vytvoření instančního objektu a certifikátů pomocí Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="time-out-for-script-actions-with-cluster-creation"></a>Časový limit pro akce skriptu s vytvořením clusteru
-HDInsight podporuje spouštění akcí skriptů s vytvářením clusteru. Z této verze musí být všechny akce skriptů s vytvořením clusteru dokončeny během **60 minut**nebo vypršel časový limit. Akce skriptu odeslané na spuštěné clustery neovlivní. Další podrobnosti najdete [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process).
+HDInsight podporuje spouštění akcí skriptů s vytvářením clusteru. Z této verze musí být všechny akce skriptů s vytvořením clusteru dokončeny během **60 minut** nebo vypršel časový limit. Akce skriptu odeslané na spuštěné clustery neovlivní. Další podrobnosti najdete [tady](./hdinsight-hadoop-customize-cluster-linux.md#script-action-in-the-cluster-creation-process).
  
 ### <a name="upcoming-changes"></a>Nadcházející změny
 Žádné nadcházející nepotřebné změny, ke kterým byste měli věnovat pozornost.
@@ -117,7 +311,7 @@ Verze Sparku se upgraduje z verze 2.4.0 na 2.4.4.
 #### <a name="kafka-210-to-211"></a>Kafka 2.1.0 na 2.1.1
 Verze Kafka je upgradována z verze 2.1.0 na verzi 2.1.1.
  
-V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) najdete aktuální verze komponent pro HDInsight 4,0 ad HDInsight 3,6.
+V [tomto dokumentu](./hdinsight-component-versioning.md) najdete aktuální verze komponent pro HDInsight 4,0 ad HDInsight 3,6.
 
 ### <a name="known-issues"></a>Známé problémy
 
@@ -135,7 +329,7 @@ Protokol TLS (Transport Layer Security) a SSL (Secure Sockets Layer) (SSL) jsou 
 V této verzi se zákazníci můžou rozhodnout k TLS 1,2 jenom pro všechna připojení prostřednictvím koncového bodu veřejného clusteru. V rámci této podpory je zavedena nová vlastnost **minSupportedTlsVersion** , která se dá zadat při vytváření clusteru. Pokud vlastnost není nastavená, cluster stále podporuje TLS 1,0, 1,1 a 1,2, což je stejné jako dnešní chování. Zákazníci mohou tuto vlastnost nastavit na hodnotu "1,2", což znamená, že cluster podporuje pouze TLS 1,2 a vyšší. Další informace najdete v tématu [zabezpečení transportní vrstvy](./transport-layer-security.md).
 
 #### <a name="bring-your-own-key-for-disk-encryption"></a>Přineste si vlastní klíč pro šifrování disků
-Všechny spravované disky v HDInsight jsou chráněné pomocí šifrování služby Azure Storage (SSE). Data na těchto discích jsou ve výchozím nastavení šifrována pomocí klíčů spravovaných Microsoftem. Od této verze můžete Bring Your Own Key (BYOK) pro šifrování disků a spravovat je pomocí Azure Key Vault. Šifrování BYOK je při vytváření clusteru jedním krokem konfigurace bez dalších poplatků. Stačí zaregistrovat HDInsight jako spravovanou identitu pomocí Azure Key Vault a přidat šifrovací klíč při vytváření clusteru. Další informace najdete v tématu [šifrování klíčového disku spravovaného zákazníkem](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
+Všechny spravované disky v HDInsight jsou chráněné pomocí šifrování služby Azure Storage (SSE). Data na těchto discích jsou ve výchozím nastavení šifrována pomocí klíčů spravovaných Microsoftem. Od této verze můžete Bring Your Own Key (BYOK) pro šifrování disků a spravovat je pomocí Azure Key Vault. Šifrování BYOK je při vytváření clusteru jedním krokem konfigurace bez dalších poplatků. Stačí zaregistrovat HDInsight jako spravovanou identitu pomocí Azure Key Vault a přidat šifrovací klíč při vytváření clusteru. Další informace najdete v tématu [šifrování klíčového disku spravovaného zákazníkem](./disk-encryption.md).
 
 ### <a name="deprecation"></a>Vyřazení
 Pro tuto verzi nejsou žádné zastaralosti. Chcete-li se připravit na nadcházející zastaralost, Projděte si [nadcházející změny](#upcoming-changes).
@@ -186,7 +380,7 @@ Tato verze platí pro HDInsight 3,6 a 4,0.
 ### <a name="new-features"></a>Nové funkce
 
 #### <a name="service-tags"></a>Značky služeb
-Značky služeb zjednodušují zabezpečení virtuálních počítačů Azure a virtuálních sítí Azure tím, že umožňují snadno omezit síťový přístup ke službám Azure. Pomocí značek služeb ve skupinách zabezpečení sítě (NSG) můžete povolit nebo odepřít provoz do konkrétní služby Azure globálně nebo podle oblasti Azure. Azure poskytuje údržbu IP adres, které jsou základem jednotlivých značek. Značky služby HDInsight pro skupiny zabezpečení sítě (skupin zabezpečení sítě) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny vám pomůžou minimalizovat složitost pro vytváření pravidel zabezpečení. Zákazníci HDInsight můžou povolit značku služby prostřednictvím Azure Portal, PowerShellu a REST API. Další informace najdete v tématu [značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags).
+Značky služeb zjednodušují zabezpečení virtuálních počítačů Azure a virtuálních sítí Azure tím, že umožňují snadno omezit síťový přístup ke službám Azure. Pomocí značek služeb ve skupinách zabezpečení sítě (NSG) můžete povolit nebo odepřít provoz do konkrétní služby Azure globálně nebo podle oblasti Azure. Azure poskytuje údržbu IP adres, které jsou základem jednotlivých značek. Značky služby HDInsight pro skupiny zabezpečení sítě (skupin zabezpečení sítě) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny vám pomůžou minimalizovat složitost pro vytváření pravidel zabezpečení. Zákazníci HDInsight můžou povolit značku služby prostřednictvím Azure Portal, PowerShellu a REST API. Další informace najdete v tématu [značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight](./hdinsight-service-tags.md).
 
 #### <a name="custom-ambari-db"></a>Vlastní Ambari DB
 HDInsight teď umožňuje používat pro Apache Ambari vlastní SQL DB. Tuto vlastní Ambari DB můžete nakonfigurovat z šablony Azure Portal nebo prostřednictvím Správce prostředků.  Tato funkce umožňuje zvolit správnou databázi SQL pro potřeby zpracování a kapacity. Můžete také snadno upgradovat, aby odpovídaly požadavkům na obchodní růst. Další informace najdete v tématu [Nastavení clusterů HDInsight s vlastní AMBARI DB](hdinsight-custom-ambari-db.md).
@@ -210,7 +404,7 @@ Od další verze se budete moci přihlásit a nakonfigurovat nové clustery HDIn
 Později v roce začíná v 6/30/2020. Azure HDInsight vynutila TLS 1,2 nebo novější verze pro všechna připojení HTTPS. Doporučujeme, abyste zajistili, že všichni klienti jsou připraveni na zpracování TLS 1,2 nebo novějších verzí.
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
-HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od února 2020 (pozdější datum bude sděleno později) HDInsight použije místo toho službu Azure Virtual Machine Scale Sets. Přečtěte si další informace o [službě Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od února 2020 (pozdější datum bude sděleno později) HDInsight použije místo toho službu Azure Virtual Machine Scale Sets. Přečtěte si další informace o [službě Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md).
 
 #### <a name="esp-spark-cluster-node-size-change"></a>Změna velikosti uzlu clusteru pro Spark Spark 
 V nadcházející verzi:
@@ -230,7 +424,7 @@ Pro HDInsight 4,0 se nezměnila žádná verze součásti.
 
 Apache Zeppelin v HDInsight 3,6:0.7.0-->0.7.3. 
 
-Nejaktuálnější verze komponent můžete najít z [tohoto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions).
+Nejaktuálnější verze komponent můžete najít z [tohoto dokumentu](./hdinsight-component-versioning.md).
 
 ### <a name="new-regions"></a>Nové oblasti
 
@@ -250,7 +444,7 @@ Služba HDInsight identity broker (HIB) umožňuje uživatelům přihlásit se k
 
 #### <a name="kafka-rest-api-proxy-preview"></a>Proxy Kafka REST API (Preview)
 
-Kafka REST API poskytuje nasazení s vysokou dostupností služby REST proxy s clusterem Kafka prostřednictvím zabezpečeného ověřování AAD a protokolu OAuth jediným kliknutím. 
+Kafka REST API poskytuje nasazení s vysoce dostupnými servery REST proxy s Kafka pomocí zabezpečeného ověřování Azure AD a protokolu OAuth jedním kliknutím. 
 
 #### <a name="auto-scale"></a>Automatické škálování
 
@@ -258,19 +452,19 @@ Automatické škálování pro Azure HDInsight je teď všeobecně dostupné ve 
 
 V závislosti na vašich požadavcích můžete zvolit automatické škálování založené na zatížení a na základě plánu. Díky automatickému škálování na základě zatížení se dá velikost clusteru škálovat nahoru a dolů na základě aktuálních potřeb prostředků, zatímco automatické škálování na základě plánu může měnit velikost clusteru podle předdefinovaného plánu. 
 
-Podpora automatického škálování pro HBA a LLAP úlohy je také Public Preview. Další informace najdete v tématu [Automatické škálování clusterů Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters).
+Podpora automatického škálování pro HBA a LLAP úlohy je také Public Preview. Další informace najdete v tématu [Automatické škálování clusterů Azure HDInsight](./hdinsight-autoscale-clusters.md).
 
 #### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Urychlené zápisy HDInsight pro Apache HBA 
 
-Zrychlené zápisy s využitím spravovaných disků Azure SSD úrovně Premium zvyšují výkon dopředného protokolování Apache HBase. Další informace najdete v tématu [Zrychlené zápisy služby Azure HDInsight pro Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes).
+Zrychlené zápisy s využitím spravovaných disků Azure SSD úrovně Premium zvyšují výkon dopředného protokolování Apache HBase. Další informace najdete v tématu [Zrychlené zápisy služby Azure HDInsight pro Apache HBase](./hbase/apache-hbase-accelerated-writes.md).
 
 #### <a name="custom-ambari-db"></a>Vlastní Ambari DB
 
-HDInsight teď nabízí novou kapacitu, která zákazníkům umožní používat vlastní SQL DB pro Ambari. Zákazníci si teď můžou zvolit správnou databázi SQL DB pro Ambari a snadno ji upgradovat na základě jejich vlastního požadavku na růst firmy. Nasazení se provádí pomocí šablony Azure Resource Manager. Další informace najdete v tématu [Nastavení clusterů HDInsight s vlastní AMBARI DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db).
+HDInsight teď nabízí novou kapacitu, která zákazníkům umožní používat vlastní SQL DB pro Ambari. Zákazníci si teď můžou zvolit správnou databázi SQL DB pro Ambari a snadno ji upgradovat na základě jejich vlastního požadavku na růst firmy. Nasazení se provádí pomocí šablony Azure Resource Manager. Další informace najdete v tématu [Nastavení clusterů HDInsight s vlastní AMBARI DB](./hdinsight-custom-ambari-db.md).
 
 #### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>Virtuální počítače řady F-Series jsou teď dostupné v HDInsight.
 
-Virtuální počítače řady F-Series jsou vhodné pro zahájení práce s HDInsight s požadavky na lehké zpracování. Za nižší ceníkové sazby za hodinu nabízí řada F-series nejlepší poměr cena–výkon v portfoliu Azure, pokud jde o množství výpočetních jednotek Azure (ACU) na virtuální procesor. Další informace najdete v tématu [Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size).
+Virtuální počítače řady F-Series jsou vhodné pro zahájení práce s HDInsight s požadavky na lehké zpracování. Za nižší ceníkové sazby za hodinu nabízí řada F-series nejlepší poměr cena–výkon v portfoliu Azure, pokud jde o množství výpočetních jednotek Azure (ACU) na virtuální procesor. Další informace najdete v tématu [Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight](./hdinsight-selecting-vm-size.md).
 
 ### <a name="deprecation"></a>Vyřazení
 
@@ -289,7 +483,7 @@ HDInsight poskytuje spravované místo na disku clusteru. Z této verze se velik
 V nadcházejících verzích dojde k následujícím změnám. 
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
-HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od prosince bude HDInsight místo toho používat službu Azure Virtual Machine Scale Sets. Přečtěte si další informace o [službě Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od prosince bude HDInsight místo toho používat službu Azure Virtual Machine Scale Sets. Přečtěte si další informace o [službě Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md).
 
 #### <a name="hbase-20-to-21"></a>HBA 2,0 až 2,1
 V nadcházející verzi HDInsight 4,0 bude verze HBA upgradována z verze 2,0 na 2,1.
@@ -301,7 +495,7 @@ Virtuální počítače řady A-Series můžou způsobovat problémy s clusterem
 HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
 
 ### <a name="component-version-change"></a>Změna verze součásti
-Pro tuto verzi neexistuje žádná změna verze součásti. Aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6 najdete [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Pro tuto verzi neexistuje žádná změna verze součásti. Aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6 najdete [tady](./hdinsight-component-versioning.md).
 
 
 ## <a name="release-date-08072019"></a>Datum vydání: 08/07/2019
@@ -423,7 +617,7 @@ Služby Apache Storm a ML nejsou v HDInsight 4,0 dostupné.
 
 Nové aktualizace a možnosti spadají do následujících kategorií:
 
-*  ***Aktualizace Hadoop a další Open-source projekty*** – kromě 1000 a dalších oprav chyb v rámci 20 a open source projektů obsahuje tato aktualizace novou verzi **sparku (2,3)** a **Kafka (1,0)**.
+*  ***Aktualizace Hadoop a další Open source projekty** _ – kromě 1000 a oprav chyb v rámci 20 a open source projektů obsahuje tato aktualizace novou verzi _ *Spark (2,3)** a **Kafka (1,0)**.
 
     a.  [**Nové funkce v Apache Spark 2,3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
@@ -433,7 +627,7 @@ Nové aktualizace a možnosti spadají do následujících kategorií:
 
 *  ***Podpora Azure Data Lake Storage Gen2*** – HDInsight bude podporovat verzi Preview služby Azure Data Lake Storage Gen2. V dostupných oblastech budou zákazníci moci zvolit účet ADLS Gen2 jako primární nebo sekundární úložiště pro své clustery HDInsight.
 
-*  Služba ***HDInsight balíček zabezpečení podniku Updates (Preview)*** – (preview) [Virtual Network koncových bodů služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pro Azure Blob Storage, adls Gen1, Cosmos DB a Azure DB.
+*  Služba ***HDInsight balíček zabezpečení podniku Updates (Preview)*** – (preview) [Virtual Network koncových bodů služby](../virtual-network/virtual-network-service-endpoints-overview.md) pro Azure Blob Storage, adls Gen1, Cosmos DB a Azure DB.
 
 ### <a name="component-versions"></a>Verze komponent
 
@@ -697,7 +891,7 @@ Tato verze poskytuje kromě následujících oprav také podregistr 1.2.1 a 2.1.
 
 -   [*Podregistr-18189*](https://issues.apache.org/jira/browse/HIVE-18189): dotaz na podregistr vrací nesprávné výsledky při nastavení podregistru. GroupBy. OrderBy. Position. alias na hodnotu true.
 
--   [*Podregistr-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektory: zmenšení skupiny podle MERGEPARTIAL s duplicitními sloupci je přerušeno.
+-   [*Podregistr-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vector: Reduce-Side Group by MERGEPARTIAL s duplicitními sloupci je přerušený.
 
 -   [*Podregistr-18293*](https://issues.apache.org/jira/browse/HIVE-18293): podregistr se nedaří komprimovat tabulky obsažené ve složce, která není vlastněna identitou, která používá HiveMetaStore.
 
@@ -779,7 +973,7 @@ Tato verze poskytuje kromě následujících oprav také podregistr 1.2.1 a 2.1.
 
 -   [*Podregistr-17621*](https://issues.apache.org/jira/browse/HIVE-17621): nastavení webu v podregistru se při výpočtu HCatInputFormat rozdělení ignorují.
 
--   [*Podregistr-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: mají konfiguraci seznamu povolených nebo zakázaných adres, která umožňuje selektivní ukládání tabulek/oddílů do mezipaměti a povoluje čtení při zahřívání.
+-   [*Podregistr-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: má schválenou/neschválenou konfiguraci umožňující selektivní ukládání tabulek/oddílů do mezipaměti a povoluje čtení při zahřívání.
 
 -   [*Podregistr-17636*](https://issues.apache.org/jira/browse/HIVE-17636): přidejte více \_ AGG. q test pro BlobStores.
 
@@ -805,7 +999,7 @@ Tato verze poskytuje kromě následujících oprav také podregistr 1.2.1 a 2.1.
 
 -   [*Podregistr-18189*](https://issues.apache.org/jira/browse/HIVE-18189): pozice ORDER by nefunguje, když je CBO zakázaný.
 
--   [*Podregistr-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektory: zmenšení skupiny podle MERGEPARTIAL s duplicitními sloupci je přerušeno.
+-   [*Podregistr-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vector: Reduce-Side Group by MERGEPARTIAL s duplicitními sloupci je přerušený.
 
 -   [*Podregistr-18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: rychlá LLAP v/v s pomalým zpracováním kanálu může vést k OOM.
 
@@ -927,7 +1121,7 @@ V HDP-2.3. x a 2.4. x místo odeslání konkrétní verze nástroje Mahout pro A
 
 Bod revize zvolený pro Mahout v HDP 2.3. x a 2.4. x je od větve "Mahout-0.10. x" ze sítě Apache Mahout, od 19. prosince 2014, revize 0f037cb03e77c096 v GitHubu.
 
-V HDP-2.5. x a 2.6. x jsme odebrali knihovnu "gethttpclient" z Mahout, protože ji zobrazujeme jako zastaralou knihovnu s možnými problémy se zabezpečením a upgradovali jste klienta Hadoop-Client v Mahout na verzi 2.7.3, stejnou verzi, kterou používá HDP-2,5. Výsledek:
+V HDP-2.5. x a 2.6. x jsme odebrali knihovnu "gethttpclient" z Mahout, protože ji zobrazujeme jako zastaralou knihovnu s možnými problémy zabezpečení a upgradujete Hadoop-Client v Mahout na verzi 2.7.3, stejnou verzi, kterou používá HDP-2,5. Výsledek:
 
 -   Dříve zkompilované Mahout úlohy bude nutné znovu zkompilovat v prostředí HDP-2,5 nebo 2,6.
 
@@ -1085,7 +1279,7 @@ Tato verze poskytuje Spark 2.3.0 a následující opravy Apache:
 
 -   [Spark-23598](https://issues.apache.org/jira/browse/SPARK-23598): zpřístupněte metody v BufferedRowIterator veřejné, aby nedošlo k chybě modulu runtime pro velký dotaz.
 
--   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): přidejte generátor UUID z pseudo-náhodných čísel.
+-   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): přidejte generátor UUID z Pseudo-Random čísel.
 
 -   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): použijte RandomUUIDGenerator ve výrazu UUID.
 
@@ -1167,7 +1361,7 @@ Tato verze poskytuje Spark 2.3.0 a následující opravy Apache:
 
 Tato verze poskytuje Sqoop 1.4.6 bez dalších oprav Apache.
 
-#### <a name="storm"></a>Bouře
+#### <a name="storm"></a>Storm
 
 Tato verze poskytuje Zaplavu 1.1.1 a následující opravy Apache:
 
@@ -1304,7 +1498,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 | CHYBA-92957              | [PODREGISTR-11266](https://issues.apache.org/jira/browse/HIVE-11266)                                                                                                                                                                                                                 | počet ( \* ) špatný výsledek založený na statistikách tabulky pro externí tabulky                                                   |
 | CHYBA-93097              | [RANGER-1944](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | Filtr akcí pro audit správce nepracuje.                                                                           |
 | CHYBA-93335              | [PODREGISTR-12315](https://issues.apache.org/jira/browse/HIVE-12315)                                                                                                                                                                                                                 | zkrácené rozstupné depozice \_ \_ . q má špatný problém s výsledkem pro dvojitý výpočet.                                      |
-| CHYBA-93415              | [Podregistr-18258](https://issues.apache.org/jira/browse/HIVE-18258), [podregistr-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektorizace: rozčlenění skupin na více stranách podle MERGEPARTIAL s duplicitními sloupci                                      |
+| CHYBA-93415              | [Podregistr-18258](https://issues.apache.org/jira/browse/HIVE-18258), [podregistr-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vector: Reduce-Side GROUP BY MERGEPARTIAL s duplicitními sloupci je přerušená.                                      |
 | CHYBA-93939              | [ATLAS – 2294](https://issues.apache.org/jira/browse/ATLAS-2294)                                                                                                                                                                                                                 | Při vytváření typu se přidaly navíc parametr Description.                                                               |
 | CHYBA-94007              | [Phoenix-1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [Phoenix-3112](https://issues.apache.org/jira/browse/PHOENIX-3112)                                                                                                                                         | Dotazy v Phoenixu vrací hodnoty null z důvodu částečných řádků HBA                                                          |
 | CHYBA-94266              | [PODREGISTR-12505](https://issues.apache.org/jira/browse/HIVE-12505)                                                                                                                                                                                                                 | Vložením přepisu do stejné zašifrované zóny se tiše nepovede odebrat některé existující soubory.                                   |
@@ -1475,7 +1669,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 | CHYBA-92373              | [FALCON-2314](https://issues.apache.org/jira/browse/FALCON-2314)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | TestNG verzi 6.13.1, aby se předešlo BeanShell závislosti                                                                                    |
 | CHYBA-92381              | –                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | testContainerLogsWithNewAPI a testContainerLogsWithOldAPI UT selžou                                                                           |
 | CHYBA-92389              | [ZAPLAVENÍ-2841](https://issues.apache.org/jira/browse/STORM-2841)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | testNoAcksIfFlushFails UT se nezdařila s NullPointerException                                                                                      |
-| CHYBA-92586              | [Spark-17920](https://issues.apache.org/jira/browse/SPARK-17920), [Spark-20694](https://issues.apache.org/jira/browse/SPARK-20694), [Spark-21642](https://issues.apache.org/jira/browse/SPARK-21642), [Spark-22162](https://issues.apache.org/jira/browse/SPARK-22162), [Spark-22289](https://issues.apache.org/jira/browse/SPARK-22289), [Spark-22373](https://issues.apache.org/jira/browse/SPARK-22373), [Spark-22495](https://issues.apache.org/jira/browse/SPARK-22495), [Spark-22574](https://issues.apache.org/jira/browse/SPARK-22574), [Spark-22591](https://issues.apache.org/jira/browse/SPARK-22591), [Spark-22595](https://issues.apache.org/jira/browse/SPARK-22595), [Spark-22601](https://issues.apache.org/jira/browse/SPARK-22601), [Spark-22603](https://issues.apache.org/jira/browse/SPARK-22603), [Spark-22607](https://issues.apache.org/jira/browse/SPARK-22607), [Spark-22635](https://issues.apache.org/jira/browse/SPARK-22635), [Spark-22637](https://issues.apache.org/jira/browse/SPARK-22637), [Spark-22653](https://issues.apache.org/jira/browse/SPARK-22653), [Spark-22654](https://issues.apache.org/jira/browse/SPARK-22654), [Spark-22686](https://issues.apache.org/jira/browse/SPARK-22686), [Spark-22688](https://issues.apache.org/jira/browse/SPARK-22688), [Spark-22817](https://issues.apache.org/jira/browse/SPARK-22817), [Spark-22862](https://issues.apache.org/jira/browse/SPARK-22862), [Spark-](https://issues.apache.org/jira/browse/SPARK-22889)22889, [Spark-22972](https://issues.apache.org/jira/browse/SPARK-22972), [Spark](https://issues.apache.org/jira/browse/SPARK-22975) [-22975,](https://issues.apache.org/jira/browse/SPARK-23001)Spark [-22982](https://issues.apache.org/jira/browse/SPARK-22982), [Spark-](https://issues.apache.org/jira/browse/SPARK-22983) [22983](https://issues.apache.org/jira/browse/SPARK-23095) [SPARK-22984](https://issues.apache.org/jira/browse/SPARK-22984) [SPARK-23038](https://issues.apache.org/jira/browse/SPARK-23038) | Aktualizovat Spark2 v aktuálním stavu na 2.2.1 (leden. 16)                                                                                                    |
+| CHYBA-92586              | [Spark-17920](https://issues.apache.org/jira/browse/SPARK-17920), [Spark-20694](https://issues.apache.org/jira/browse/SPARK-20694), [Spark-21642](https://issues.apache.org/jira/browse/SPARK-21642), [Spark-22162](https://issues.apache.org/jira/browse/SPARK-22162), [Spark-22289](https://issues.apache.org/jira/browse/SPARK-22289), [Spark-22373](https://issues.apache.org/jira/browse/SPARK-22373), [Spark-22495](https://issues.apache.org/jira/browse/SPARK-22495), [Spark-22574](https://issues.apache.org/jira/browse/SPARK-22574), [Spark-22591](https://issues.apache.org/jira/browse/SPARK-22591), [Spark-22595](https://issues.apache.org/jira/browse/SPARK-22595), [Spark-22601](https://issues.apache.org/jira/browse/SPARK-22601), [Spark-22603](https://issues.apache.org/jira/browse/SPARK-22603), [Spark-22607](https://issues.apache.org/jira/browse/SPARK-22607), [Spark-22635](https://issues.apache.org/jira/browse/SPARK-22635), [Spark-22637](https://issues.apache.org/jira/browse/SPARK-22637), [Spark-22653](https://issues.apache.org/jira/browse/SPARK-22653), [Spark-22654](https://issues.apache.org/jira/browse/SPARK-22654), [Spark-22686](https://issues.apache.org/jira/browse/SPARK-22686), [Spark-22688](https://issues.apache.org/jira/browse/SPARK-22688), [Spark-22817](https://issues.apache.org/jira/browse/SPARK-22817), [Spark-22862](https://issues.apache.org/jira/browse/SPARK-22862), [Spark-](https://issues.apache.org/jira/browse/SPARK-22889)22889, [Spark-22972](https://issues.apache.org/jira/browse/SPARK-22972), [Spark](https://issues.apache.org/jira/browse/SPARK-22975) [-22975,](https://issues.apache.org/jira/browse/SPARK-23001)Spark [-22982](https://issues.apache.org/jira/browse/SPARK-22982), [Spark-](https://issues.apache.org/jira/browse/SPARK-22983) [22983](https://issues.apache.org/jira/browse/SPARK-23095) [](https://issues.apache.org/jira/browse/SPARK-22984) [](https://issues.apache.org/jira/browse/SPARK-23038) | Aktualizovat Spark2 v aktuálním stavu na 2.2.1 (leden. 16)                                                                                                    |
 | CHYBA-92680              | [ATLAS – 2288](https://issues.apache.org/jira/browse/ATLAS-2288)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Výjimka NoClassDefFoundError při spouštění skriptu import-podregistr při vytváření tabulky HBA prostřednictvím podregistru                                           |
 | CHYBA-92760              | [ACCUMULO-4578](https://issues.apache.org/jira/browse/ACCUMULO-4578)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Zrušit rozpad operace komprimace neuvolní zámek oboru názvů.                                                                               |
 | CHYBA-92797              | [HDFS-10267](https://issues.apache.org/jira/browse/HDFS-10267), [HDFS – 8496](https://issues.apache.org/jira/browse/HDFS-8496)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Zmenšení kolizí zámků datanode v určitých případech použití                                                                                    |
@@ -1534,7 +1728,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 | CHYBA-97605              | [PODREGISTR-18858](https://issues.apache.org/jira/browse/HIVE-18858)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Při odesílání úlohy MR se nevyřešily vlastnosti systému v konfiguraci úlohy.                                                                     |
 | CHYBA-97674              | [OOZIE-3186](https://issues.apache.org/jira/browse/OOZIE-3186)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Oozie nemůže použít konfiguraci propojenou pomocí jceks://file/...                                                                             |
 | CHYBA-97743              | –                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Java. lang. NoClassDefFoundError výjimka při nasazení topologie přejímky                                                                        |
-| CHYBA-97756              | [PHOENIX-4576](https://issues.apache.org/jira/browse/PHOENIX-4576)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Oprava selhání testů LocalIndexSplitMergeIT v hlavní větvi                                                                                      |
+| CHYBA-97756              | [PHOENIX-4576](https://issues.apache.org/jira/browse/PHOENIX-4576)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Oprava selhání testů LocalIndexSplitMergeIT |
 | CHYBA-97771              | [HDFS – 11711](https://issues.apache.org/jira/browse/HDFS-11711)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Rozlišující název by neměl odstranit blok u příliš velkého počtu otevřených souborů.                                                                              |
 | CHYBA-97869              | [KNOX-1190](https://issues.apache.org/jira/browse/KNOX-1190)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Podpora Knox jednotného přihlašování pro Google OIDC je poškozená.                                                                                                    |
 | CHYBA-97879              | [PHOENIX-4489](https://issues.apache.org/jira/browse/PHOENIX-4489)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Nevracení připojení v rámci úloh Phoenix MR                                                                                                       |
@@ -1570,7 +1764,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 | CHYBA-97864              | [PODREGISTR-18833](https://issues.apache.org/jira/browse/HIVE-18833)   | Automatické sloučení se při vložení do adresáře jako orcfile nezdařilo.                                      |
 | CHYBA-98814              | [HDFS – 13314](https://issues.apache.org/jira/browse/HDFS-13314)   | NameNode by měl volitelně skončit, pokud zjistí poškození FsImage                              |
 
-**Přejít**
+**Upgrade**
 
 | **ID chyby Hortonworks** | **Apache JIRA**                                                                                                                | **Souhrn**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -1692,12 +1886,12 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 
 |**Součást Apache**|**Apache JIRA**|**Souhrn**|**Podrobnosti**|
 |--|--|--|--|
-|**Spark 2,3** |**–** |**Změny popsané v poznámkách k verzi Apache Spark** |– Existuje "zastaralý" dokument a příručka "Změna chování",https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Pro součást SQL existuje další Podrobná příručka migrace (od 2,2 do 2,3).https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**NENÍ K DISPOZICI** |**Změny popsané v poznámkách k verzi Apache Spark** |– Existuje "zastaralý" dokument a příručka "Změna chování", https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Pro součást SQL existuje další Podrobná příručka migrace (od 2,2 do 2,3). https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**PODREGISTR-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Úloha Sparku se úspěšně dokončí, ale dojde k úplné chybě kvóty disku HDFS. |**Scénář:** Pokud je nastavena kvóta ve složce odpadkového uživatele, který spouští příkaz, je spuštění příkazu **Vložit přepsat** .<br /><br />**Předchozí chování:** Úloha se zdaří i v případě, že se nepodaří přesunout data do koše. Výsledek může obsahovat chybná data, která dříve existovala v tabulce.<br /><br />**Nové chování:** Když přesun do složky odpadků dojde k chybě, soubory se trvale odstraní.|
-|**Kafka 1,0**|**–**|**Změny popsané v poznámkách k verzi Apache Spark** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1,0**|**NENÍ K DISPOZICI**|**Změny popsané v poznámkách k verzi Apache Spark** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Podregistr/Ranger** | |Další zásady podregistru Ranger vyžadované pro přepsání INSERT |**Scénář:** Další zásady podregistru Ranger vyžadované pro **přepsání INSERT**<br /><br />**Předchozí chování:** Do podregistru **vložte** dotazy, které jsou obvykle úspěšné.<br /><br />**Nové chování:** Po upgradu na HDP-2.6. x dojde k neočekávanému selhání **vložení** podregistru do registru s chybou:<br /><br />Chyba při kompilování příkazu: SELHALo: HiveAccessControlException oprávnění odepřeno: uživatel pnovak nemá oprávnění k zápisu na/TMP/ \* (State = 42000, Code = 40 000).<br /><br />Od HDP-2.6.0 vyžaduje zásada pro **vložení přepisu** Ranger zásadu, která povoluje operace zápisu, a to i v případě, že má uživatel oprávnění k zápisu udělené prostřednictvím zásad HDFS.<br /><br />**Alternativní řešení/Očekávaná akce zákazníka:**<br /><br />1. v úložišti podregistru vytvořte novou zásadu.<br />2. v rozevíracím seznamu, kde vidíte databázi, vyberte možnost URI.<br />3. Aktualizujte cestu (příklad:/tmp/*)<br />4. přidejte uživatele a skupinu a uložte je.<br />5. znovu spusťte dotaz pro vložení.|
-|**HDFS**|**–** |HDFS by měl podporovat více identifikátorů URI služby správy klíčů. |**Předchozí chování:** pro konfiguraci cesty poskytovatele služby správy klíčů se použila vlastnost DFS. Encryption. Key. Provider. URI.<br /><br />**Nové chování:** DFS. Encryption. Key. Provider. URI je teď zastaralé místo pro konfiguraci cesty poskytovatele služby správy klíčů (Hadoop. Security. Key. Provider. Path).|
-|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Možnost zakázání plánovače |**Ovlivněná součást:** Zeppelin – Server<br /><br />**Předchozí chování:** V předchozích verzích Zeppelin existovala možnost pro zákaz plánovače.<br /><br />**Nové chování:** Ve výchozím nastavení se uživatelům nezobrazí Plánovač, protože je ve výchozím nastavení zakázaný.<br /><br />**Alternativní řešení/Očekávaná akce zákazníka:** Pokud chcete povolit Plánovač, budete muset přidat azeppelin. Poznámkový. cron. Enable s hodnotou true v části Custom Zeppelin web v nastavení Zeppelin z Ambari.|
+|**HDFS**|**NENÍ K DISPOZICI** |HDFS by měl podporovat více identifikátorů URI služby správy klíčů. |**Předchozí chování:** pro konfiguraci cesty poskytovatele služby správy klíčů se použila vlastnost DFS. Encryption. Key. Provider. URI.<br /><br />**Nové chování:** DFS. Encryption. Key. Provider. URI je teď zastaralé místo pro konfiguraci cesty poskytovatele služby správy klíčů (Hadoop. Security. Key. Provider. Path).|
+|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Možnost zakázání plánovače |**Ovlivněná součást:** Zeppelin-Server<br /><br />**Předchozí chování:** V předchozích verzích Zeppelin existovala možnost pro zákaz plánovače.<br /><br />**Nové chování:** Ve výchozím nastavení se uživatelům nezobrazí Plánovač, protože je ve výchozím nastavení zakázaný.<br /><br />**Alternativní řešení/Očekávaná akce zákazníka:** Pokud chcete povolit Plánovač, budete muset přidat azeppelin. Poznámkový. cron. Enable s hodnotou true v části Custom Zeppelin web v nastavení Zeppelin z Ambari.|
 
 ### <a name="known-issues"></a>Známé problémy
 
@@ -1828,8 +2022,8 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-### <a name="upgrading"></a>Inovován
+### <a name="upgrading"></a>Upgrade
 
-Všechny tyto funkce jsou dostupné v HDInsight 3,6. Pokud chcete získat nejnovější verzi Sparku, Kafka a R Server (Machine Learning Services), zvolte prosím při [vytváření clusteru HDInsight 3,6](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)verzi služby Spark, Kafka, ml. Pokud chcete získat podporu pro ADLS, můžete jako možnost zvolit typ úložiště ADLS. Existující clustery se automaticky neupgradují na tyto verze.
+Všechny tyto funkce jsou dostupné v HDInsight 3,6. Pokud chcete získat nejnovější verzi Sparku, Kafka a R Server (Machine Learning Services), zvolte prosím při [vytváření clusteru HDInsight 3,6](./hdinsight-hadoop-provision-linux-clusters.md)verzi služby Spark, Kafka, ml. Pokud chcete získat podporu pro ADLS, můžete jako možnost zvolit typ úložiště ADLS. Existující clustery se automaticky neupgradují na tyto verze.
 
-Všechny nové clustery vytvořené po června 2018 budou automaticky získávat opravy 1000 chyb ve všech open source projektech. Doporučené postupy při upgradu na novější verzi služby HDInsight najdete v [tomto](https://docs.microsoft.com/azure/hdinsight/hdinsight-upgrade-cluster) průvodci.
+Všechny nové clustery vytvořené po června 2018 budou automaticky získávat opravy 1000 chyb ve všech open source projektech. Doporučené postupy při upgradu na novější verzi služby HDInsight najdete v [tomto](./hdinsight-upgrade-cluster.md) průvodci.

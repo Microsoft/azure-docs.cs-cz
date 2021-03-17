@@ -10,10 +10,10 @@ ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: 12b1d083ae1481f7c8b5fe60cac9156a56aeaa0a
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87875468"
 ---
 # <a name="get-started-with-device-twins-python"></a>Začínáme se zdvojením zařízení (Python)
@@ -34,7 +34,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace Python:
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -116,7 +116,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která přidá metada
 
     Objekt **IoTHubRegistryManager** zpřístupňuje všechny metody potřebné pro interakci se zařízeními ze služby. Kód nejprve inicializuje objekt **IoTHubRegistryManager** , pak aktualizuje dvojitou dobu zařízení pro **DEVICE_ID**a nakonec spustí dva dotazy. Nejdřív se vybere jenom zařízení, která se nacházejí v **Redmond43** , a druhá ho podrobná a vybere jenom zařízení, která jsou taky připojená přes mobilní síť.
 
-6. Přidejte následující kód na konec **AddTagsAndQuery.py** k implementaci funkce **iothub_service_sample_run** :
+6. Přidejte následující kód na konec  **AddTagsAndQuery.py** k implementaci funkce **iothub_service_sample_run** :
 
     ```python
     if __name__ == '__main__':
@@ -138,7 +138,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která přidá metada
 
 V další části vytvoříte aplikaci pro zařízení, která oznamuje informace o připojení a mění výsledek dotazu v předchozí části.
 
-## <a name="create-the-device-app"></a>Vytvoření aplikace pro zařízení
+## <a name="create-the-device-app"></a>Vytvoření aplikace zařízení
 
 V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k vašemu rozbočovači jako vaše **{ID zařízení}**, a pak aktualizuje nahlášené vlastnosti, které jsou v zařízení nahlášeny, aby obsahovaly informace, které jsou připojené pomocí mobilní sítě.
 
@@ -199,7 +199,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k
 
     Objekt **IoTHubModuleClient** zpřístupňuje všechny metody, které vyžadujete pro interakci se zařízeními ze zařízení. Předchozí kód po inicializaci objektu **IoTHubModuleClient** načte do zařízení pro vaše zařízení vlákna a aktualizuje jeho hlášenou vlastnost informacemi o připojení.
 
-6. Přidejte následující kód na konec **ReportConnectivity.py** k implementaci funkce **iothub_client_sample_run** :
+6. Přidejte následující kód na konec  **ReportConnectivity.py** k implementaci funkce **iothub_client_sample_run** :
 
     ```python
     if __name__ == '__main__':

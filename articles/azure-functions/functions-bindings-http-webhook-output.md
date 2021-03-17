@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84697438"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions výstupní vazby HTTP
@@ -18,8 +18,8 @@ K reakci na odesílatele požadavku HTTP použijte vazbu výstupu HTTP. Tato vaz
 
 Výchozí návratová hodnota funkce aktivované protokolem HTTP je:
 
-- `HTTP 204 No Content`prázdné tělo ve funkcích 2. x a vyšší
-- `HTTP 200 OK`prázdné tělo ve funkcích 1. x
+- `HTTP 204 No Content` prázdné tělo ve funkcích 2. x a vyšší
+- `HTTP 200 OK` prázdné tělo ve funkcích 1. x
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -28,7 +28,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |Vlastnost  |Popis  |
 |---------|---------|
 | **textový** |Musí být nastaven na hodnotu `http` . |
-| **direction** | Musí být nastaven na hodnotu `out` . |
+| **směr** | Musí být nastaven na hodnotu `out` . |
 | **Jméno** | Název proměnné použitý v kódu funkce pro odpověď nebo `$return` pro použití návratové hodnoty. |
 
 ## <a name="usage"></a>Využití
@@ -71,7 +71,7 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 |HSTS|Nepovoleno|Když `isEnabled` je nastavená na `true` , vynutilo se [chování HSTS (http Strict Transport Security) .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) , jak je definované ve [ `HstsOptions` třídě](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0). Výše uvedený příklad nastaví [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) vlastnost na hodnotu 10 dní. Podporované vlastnosti `hsts` : <table><tr><th>Vlastnost</th><th>Popis</th></tr><tr><td>excludedHosts</td><td>Pole řetězců názvů hostitelů, pro které není přidáno záhlaví HSTS.</td></tr><tr><td>includeSubDomains</td><td>Logická hodnota, která označuje, zda je povolen parametr includeSubDomain hlavičky Strict-Transport-Security.</td></tr><tr><td>maxAge</td><td>Řetězec definující parametr maximálního stáří záhlaví Strict-Transport-Security.</td></tr><tr><td>preload</td><td>Logická hodnota, která označuje, zda je povolen parametr přednačtení záhlaví Strict-Transport-Security.</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|Maximální počet funkcí HTTP, které jsou spouštěny paralelně. Tato hodnota vám umožní řídit souběžnost, která může pomáhat spravovat využití prostředků. Můžete mít například funkci HTTP, která používá velký počet systémových prostředků (paměť/procesor/sokety), což způsobí, že dojde k problémům, pokud je souběžnost příliš vysoká. Nebo může být funkce, která vytváří odchozí požadavky na službu třetí strany, a tato volání musí být omezená. V těchto případech vám může pomáhat použití omezení. <br/><sup>*</sup>Výchozí hodnota pro plán spotřeby je 100. Výchozí hodnota pro vyhrazený plán je neohraničená ( `-1` ).|
 |maxOutstandingRequests|200<sup>\*</sup>|Maximální počet nezpracovaných požadavků, které jsou v daném okamžiku uchovávány. Tento limit zahrnuje požadavky, které jsou ve frontě, ale nezačaly běžet, a také jakékoli probíhající provádění. Všechny příchozí žádosti přes toto omezení se odmítnou s 429 "příliš zaneprázdněnou" odezvou. Umožňuje volajícím využívat strategie opakování na základě času a také vám pomůže řídit maximální latenci žádostí. Tato možnost řídí služby Řízení front zpráv, ke kterým dochází v cestě spuštění hostitele skriptu. Další fronty, například fronta žádostí ASP.NET, budou stále platit a nebudou ovlivněny tímto nastavením. <br/><sup>\*</sup>Výchozí hodnota pro plán spotřeby je 200. Výchozí hodnota pro vyhrazený plán je neohraničená ( `-1` ).|
-|routePrefix|rozhraní api|Předpona trasy, která se vztahuje na všechny trasy. K odebrání výchozí předpony použijte prázdný řetězec. |
+|routePrefix|api|Předpona trasy, která se vztahuje na všechny trasy. K odebrání výchozí předpony použijte prázdný řetězec. |
 
 ## <a name="next-steps"></a>Další kroky
 

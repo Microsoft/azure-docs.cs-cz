@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b2f3a61e2167067bd6e61ee2a36bb1d22950d8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419661"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837885"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Kurz: Konfigurace vlastního zakázaného hesla pro Azure Active Directory ochranu heslem
 
@@ -65,8 +65,8 @@ Pojďme povolit vlastní seznam zakázaných hesel a přidat nějaké položky. 
 Pokud chcete povolit seznam vlastních zakázaných hesel a přidávat do něj položky, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu s oprávněními *globálního správce* .
-1. Vyhledejte a vyberte **Azure Active Directory**a pak v nabídce na levé straně zvolte **zabezpečení** .
-1. V záhlaví nabídky **Spravovat** vyberte **metody ověřování**a pak **ochrana heslem**.
+1. Vyhledejte a vyberte **Azure Active Directory** a pak v nabídce na levé straně zvolte **zabezpečení** .
+1. V záhlaví nabídky **Spravovat** vyberte **metody ověřování** a pak **ochrana heslem**.
 1. Nastavte možnost pro **vysazení vlastního seznamu** na *Ano*.
 1. Přidejte řetězce do **seznamu vlastních zakázaných hesel**, jeden řetězec na řádek. Následující hlediska a omezení se vztahují na vlastní seznam zakázaných hesel:
 
@@ -109,8 +109,8 @@ Chcete-li zobrazit vlastní seznam zakázaných hesel v akci, zkuste změnit hes
 Pokud už nechcete používat vlastní seznam zakázaných hesel, který jste nakonfigurovali v rámci tohoto kurzu, proveďte následující kroky:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-1. Vyhledejte a vyberte **Azure Active Directory**a pak v nabídce na levé straně zvolte **zabezpečení** .
-1. V záhlaví nabídky **Spravovat** vyberte **metody ověřování**a pak **ochrana heslem**.
+1. Vyhledejte a vyberte **Azure Active Directory** a pak v nabídce na levé straně zvolte **zabezpečení** .
+1. V záhlaví nabídky **Spravovat** vyberte **metody ověřování** a pak **ochrana heslem**.
 1. Nastavte možnost **vymáhat vlastní seznam** na *ne*.
 1. Pokud chcete aktualizovat vlastní konfiguraci zakázaného hesla, vyberte **Uložit**.
 
@@ -124,4 +124,4 @@ V tomto kurzu jste povolili a nakonfigurovali vlastní seznamy ochrany heslem pr
 > * Testování změn hesel pomocí zakázaného hesla
 
 > [!div class="nextstepaction"]
-> [Zapnutí služby Azure Multi-Factor Authentication na základě rizikové události](tutorial-mfa-applications.md)
+> [Povolit Multi-Factor Authentication Azure AD založené na rizicích](./tutorial-enable-azure-mfa.md)

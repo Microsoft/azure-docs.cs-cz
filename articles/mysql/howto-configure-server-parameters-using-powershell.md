@@ -1,23 +1,26 @@
 ---
 title: Konfigurace parametrů serveru-Azure PowerShell-Azure Database for MySQL
 description: Tento článek popisuje, jak nakonfigurovat parametry služby v Azure Database for MySQL pomocí prostředí PowerShell.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: how-to
-ms.date: 4/29/2020
+ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb17c8631392972c429220b846720447be48cecf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 973025dfd8c0141ed0884539fe5207cc64ec822c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495807"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541857"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>Konfigurace parametrů serveru v Azure Database for MySQL pomocí prostředí PowerShell
 
 Pomocí prostředí PowerShell můžete vypsat, zobrazit a aktualizovat parametry konfigurace serveru Azure Database for MySQL. Podmnožina konfigurací modulu se zveřejňuje na úrovni serveru a dá se upravit.
+
+>[!Note]
+> Parametry serveru je možné aktualizovat globálně na úrovni serveru pomocí [Azure CLI](./howto-configure-server-parameters-using-cli.md), [PowerShellu](./howto-configure-server-parameters-using-powershell.md) nebo webu [Azure Portal](./howto-server-parameters.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +53,7 @@ Definice všech uvedených parametrů naleznete v části referenční dokumenta
 
 Chcete-li zobrazit podrobnosti o konkrétním parametru konfigurace pro server, spusťte `Get-AzMySqlConfiguration` rutinu a zadejte parametr **Name** .
 
-Tento příklad ukazuje podrobnosti parametru konfigurace serveru **pomalého \_ dotazu \_ ** pro server **mydemoserver** v části Skupina prostředků **myresourcegroup**.
+Tento příklad ukazuje podrobnosti parametru konfigurace serveru **pomalého \_ dotazu \_** pro server **mydemoserver** v části Skupina prostředků **myresourcegroup**.
 
 ```azurepowershell-interactive
 Get-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -60,7 +63,7 @@ Get-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup
 
 Můžete také změnit hodnotu určitého parametru konfigurace serveru, který aktualizuje základní konfigurační hodnotu pro modul serveru MySQL. Pokud chcete aktualizovat konfiguraci, použijte `Update-AzMySqlConfiguration` rutinu.
 
-Pokud chcete aktualizovat parametr konfigurace serveru s **pomalým \_ dotazem \_ ** na serveru **mydemoserver** v části Skupina prostředků **myresourcegroup**.
+Pokud chcete aktualizovat parametr konfigurace serveru s **pomalým \_ dotazem \_** na serveru **mydemoserver** v části Skupina prostředků **myresourcegroup**.
 
 ```azurepowershell-interactive
 Update-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver -Value On

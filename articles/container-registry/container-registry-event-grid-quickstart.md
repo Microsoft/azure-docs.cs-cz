@@ -3,13 +3,13 @@ title: Rychlý Start – odeslání událostí do Event Grid
 description: V tomto rychlém startu povolíte Event Grid události pro registr kontejnerů a potom zadáte události pro vložení a odstranění image kontejneru do ukázkové aplikace.
 ms.topic: article
 ms.date: 08/23/2018
-ms.custom: seodec18
-ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: b4038bb232c14278e838f2c34706dcc103def7e4
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78403232"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919659"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý Start: odeslání událostí z privátního registru kontejneru do Event Grid
 
@@ -19,11 +19,11 @@ Po dokončení kroků v tomto článku se v ukázkové webové aplikaci zobrazí
 
 ![Webový prohlížeč, který vykresluje ukázkovou webovou aplikaci se třemi přijatými událostmi][sample-app-01]
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][azure-account], ještě než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátované pro prostředí **bash** Shell. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazový řádek, možná budete muset odpovídajícím způsobem upravit řádky pro pokračování řádku nebo přiřazení proměnných. V tomto článku se k minimalizaci velikosti požadovaných příkazů používají proměnné.
+- Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátované pro prostředí **bash** Shell. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazový řádek, možná budete muset odpovídajícím způsobem upravit řádky pro pokračování řádku nebo přiřazení proměnných. V tomto článku se k minimalizaci velikosti požadovaných příkazů používají proměnné.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -35,7 +35,7 @@ RESOURCE_GROUP_NAME=myResourceGroup
 az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 V dalším kroku nasaďte registr kontejneru do skupiny prostředků pomocí následujících příkazů. Před spuštěním příkazu [AZ ACR Create][az-acr-create] nastavte `ACR_NAME` na název svého registru. Název musí být v rámci Azure jedinečný a omezený na 5-50 alfanumerických znaků.
 
@@ -78,7 +78,7 @@ Pokud chcete ukázkovou aplikaci nasadit, nastavte `SITE_NAME` na jedinečný n�
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -144,7 +144,7 @@ Teď, když je ukázková aplikace spuštěná a že jste se k odběru svého re
 Spuštěním následujícího příkazu Azure CLI sestavíte image kontejneru z obsahu úložiště GitHub. Ve výchozím nastavení ACR úlohy automaticky do registru vloží úspěšně sestavenou image, která událost vygeneruje `ImagePushed` .
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
 ```
 
 Měl by se zobrazit výstup podobný následujícímu při sestavování úloh ACR a následném vložení image. Následující vzorový výstup byl zkrácen pro zkrácení.

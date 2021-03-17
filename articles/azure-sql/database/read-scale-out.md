@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein, carlrab
-ms.date: 06/26/2020
-ms.openlocfilehash: cf9f48b0907d3bfe1d07dcffcc0d0b9534f74c83
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.reviewer: sstein
+ms.date: 01/20/2021
+ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135893"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663981"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Přesměrování zatížení dotazů jen pro čtení pomocí replik jen pro čtení
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-V rámci [architektury vysoké dostupnosti](high-availability-sla.md#premium-and-business-critical-service-tier-availability)se každá databáze a spravovaná instance v úrovni služeb Premium a pro důležité obchodní informace automaticky zřídí s primární replikou pro čtení a zápis a několika sekundárními replikami jen pro čtení. Sekundární repliky se zřídí se stejnou výpočetní velikostí jako primární replika. Funkce *škálování čtení* na více instancí umožňuje přesměrovat úlohy jen pro čtení pomocí výpočetní kapacity jedné z replik jen pro čtení namísto jejich spuštění v replice pro čtení i zápis. Tímto způsobem mohou být některé úlohy jen pro čtení izolované od úloh pro čtení a zápis a nebudou mít vliv na jejich výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako je například analýza. V úrovních služeb Premium a Pro důležité obchodní informace můžou aplikace získat výhody výkonu na základě této další kapacity bez dalších poplatků.
+V rámci [architektury vysoké dostupnosti](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)se každá samostatná databáze, databáze elastického fondu a spravovaná instance v úrovni služeb Premium a pro důležité obchodní informace automaticky zřídí s primární replikou pro čtení a zápis a několika sekundárními replikami jen pro čtení. Sekundární repliky se zřídí se stejnou výpočetní velikostí jako primární replika. Funkce *škálování čtení* na více instancí umožňuje přesměrovat úlohy jen pro čtení pomocí výpočetní kapacity jedné z replik jen pro čtení namísto jejich spuštění v replice pro čtení i zápis. Tímto způsobem mohou být některé úlohy jen pro čtení izolované od úloh pro čtení a zápis a nebudou mít vliv na jejich výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako je například analýza. V úrovních služeb Premium a Pro důležité obchodní informace můžou aplikace získat výhody výkonu na základě této další kapacity bez dalších poplatků.
 
 Funkce *škálování pro čtení* je k dispozici také v úrovni služby škálování na více instancí, pokud je vytvořena alespoň jedna sekundární replika. Pro úlohy vyrovnávání zatížení, které vyžadují více prostředků, než je k dispozici v jedné sekundární replice, lze použít více sekundárních replik.
 
@@ -36,7 +36,7 @@ Funkce *škálování čtení* na více instancí je ve výchozím nastavení po
 > [!NOTE]
 > U Pro důležité obchodní informace úrovně služby spravované instance je škálování pro čtení vždy povolené.
 
-Pokud je v připojovacím řetězci SQL nakonfigurován `ApplicationIntent=ReadOnly` , aplikace bude přesměrována do repliky, která je jen pro čtení této databáze nebo spravované instance. Informace o použití `ApplicationIntent` vlastnosti naleznete v tématu [určení záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+Pokud je v připojovacím řetězci SQL nakonfigurován `ApplicationIntent=ReadOnly` , aplikace bude přesměrována do repliky, která je jen pro čtení této databáze nebo spravované instance. Informace o použití `ApplicationIntent` vlastnosti naleznete v tématu [určení záměru aplikace](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
 Pokud chcete zajistit, aby se aplikace připojovala k primární replice bez ohledu na `ApplicationIntent` nastavení v připojovacím řetězci SQL, je nutné explicitně zakázat horizontální navýšení kapacity čtení při vytváření databáze nebo změny konfigurace. Pokud například upgradujete databázi ze úrovně Standard nebo Pro obecné účely na úroveň Premium, Pro důležité obchodní informace nebo úrovně škálování a chcete zajistit, aby všechna vaše připojení pokračovala v přechodu na primární repliku, zakažte horizontální navýšení kapacity čtení. Podrobnosti o tom, jak ho zakázat, najdete v tématu [povolení a zakázání horizontálního navýšení kapacity pro čtení](#enable-and-disable-read-scale-out).
 
@@ -45,7 +45,7 @@ Pokud chcete zajistit, aby se aplikace připojovala k primární replice bez ohl
 
 ## <a name="data-consistency"></a>Konzistence dat
 
-Jednou z výhod repliky je, že repliky jsou vždycky v konzistentním stavu, ale v různých časových okamžicích může dojít k malé latenci mezi různými replikami. Škálování na více instancí podporuje konzistenci na úrovni relace. To znamená, že pokud se relace jen pro čtení znovu připojí po chybě připojení způsobené nedostupností repliky, může být přesměrována do repliky, která není 100%, s replikou pro čtení i zápis. Podobně platí, že pokud aplikace zapisuje data pomocí relace čtení i zápisu a hned ji načte pomocí relace jen pro čtení, je možné, že nejnovější aktualizace nejsou hned viditelné v replice. Latence je způsobena operací opakování asynchronního transakčního protokolu.
+Jednou z výhod repliky je, že repliky jsou vždycky v konzistentním stavu, ale v různých časových okamžicích může dojít k malé latenci mezi různými replikami. Škálování na více instancí podporuje konzistenci na úrovni relace. To znamená, že pokud se relace jen pro čtení znovu připojí po chybě připojení způsobené nedostupností repliky, může být přesměrována do repliky, která není 100%, s replikou pro čtení i zápis. Podobně platí, že pokud aplikace zapisuje data pomocí relace čtení i zápisu a hned ji přečte pomocí relace jen pro čtení, je možné, že nejnovější aktualizace nejsou v replice hned viditelné. Latence je způsobena operací opakování asynchronního transakčního protokolu.
 
 > [!NOTE]
 > Latence replikace v rámci oblasti je nízká a tato situace je vzácná. Pokud chcete monitorovat latenci replikace, přečtěte si téma [monitorování a řešení potíží s replikou jen pro čtení](#monitoring-and-troubleshooting-read-only-replicas).
@@ -87,16 +87,16 @@ Běžně používaná zobrazení:
 
 | Name | Účel |
 |:---|:---|
-|[sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Poskytuje metriky využití prostředků za poslední hodinu, včetně CPU, v/v v/v, a využití zápisu do protokolu vzhledem k omezením cíle služby.|
-|[sys. dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Poskytuje agregované statistiky čekání pro instanci databázového stroje. |
-|[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Poskytuje stav repliky a statistiku synchronizace. Velikost fronty znovu a rychlost opakování slouží jako indikátory latence dat v replice jen pro čtení. |
-|[sys. dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Poskytuje čítače výkonu databázového stroje.|
-|[sys. dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Poskytuje statistiku spouštění podle dotazů, jako je počet spuštění, použitý čas procesoru atd.|
-|[sys. dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Poskytuje plány dotazů v mezipaměti. |
-|[sys. dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Poskytuje text dotazu pro plán dotazů v mezipaměti.|
-|[sys. dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Poskytuje dotaz v reálném čase během provádění dotazů.|
-|[sys. dm_exec_query_plan_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Poskytuje poslední známý skutečný plán spuštění včetně statistik za běhu pro dotaz.|
-|[sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Poskytuje statistiku vstupně-výstupních operací úložiště, propustnosti a latence pro všechny soubory databáze. |
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Poskytuje metriky využití prostředků za poslední hodinu, včetně CPU, v/v v/v, a využití zápisu do protokolu vzhledem k omezením cíle služby.|
+|[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Poskytuje agregované statistiky čekání pro instanci databázového stroje. |
+|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Poskytuje stav repliky a statistiku synchronizace. Velikost fronty znovu a rychlost opakování slouží jako indikátory latence dat v replice jen pro čtení. |
+|[sys.dm_os_performance_counters](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Poskytuje čítače výkonu databázového stroje.|
+|[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Poskytuje statistiku spouštění podle dotazů, jako je počet spuštění, použitý čas procesoru atd.|
+|[sys.dm_exec_query_plan ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Poskytuje plány dotazů v mezipaměti. |
+|[sys.dm_exec_sql_text ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Poskytuje text dotazu pro plán dotazů v mezipaměti.|
+|[sys.dm_exec_query_profiles](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Poskytuje dotaz v reálném čase během provádění dotazů.|
+|[sys.dm_exec_query_plan_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Poskytuje poslední známý skutečný plán spuštění včetně statistik za běhu pro dotaz.|
+|[sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Poskytuje statistiku vstupně-výstupních operací úložiště, propustnosti a latence pro všechny soubory databáze. |
 
 > [!NOTE]
 > `sys.resource_stats`Zobrazení dynamické správy a `sys.elastic_pool_resource_stats` v logické hlavní databázi vrátí data o využití prostředků primární repliky.
@@ -109,21 +109,21 @@ Relace rozšířené události v replice jen pro čtení, která je založena na
 
 ### <a name="transaction-isolation-level-on-read-only-replicas"></a>Úroveň izolace transakce v replikách jen pro čtení
 
-Dotazy, které jsou spouštěny v replikách jen pro čtení, jsou vždy mapovány na úroveň izolace transakce [snímku](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) . Izolace snímku používá správu verzí řádků, aby nedocházelo k blokování scénářů, kde čtenáři blokují zapisovače.
+Dotazy, které jsou spouštěny v replikách jen pro čtení, jsou vždy mapovány na úroveň izolace transakce [snímku](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) . Izolace snímku používá správu verzí řádků, aby nedocházelo k blokování scénářů, kde čtenáři blokují zapisovače.
 
-Ve výjimečných případech, pokud transakce izolace snímku přistupuje k metadatům objektů, které byly upraveny v jiné souběžné transakci, může docházet k chybě [3961](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error), v databázi%. * ls se nezdařila transakce izolace snímku, protože objekt, k němuž byl přístup proveden příkazem, byl od spuštění této transakce ZMĚNĚN příkazem DDL v jiné souběžné transakci. Tato akce je zakázaná, protože metadata nemají verze. Souběžná aktualizace metadat může vést k nekonzistenci, pokud je smíšená s izolací snímku. "
+Ve výjimečných případech, pokud transakce izolace snímku přistupuje k metadatům objektů, které byly upraveny v jiné souběžné transakci, může docházet k chybě [3961](/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error), v databázi%. * ls se nezdařila transakce izolace snímku, protože objekt, k němuž byl přístup proveden příkazem, byl od spuštění této transakce ZMĚNĚN příkazem DDL v jiné souběžné transakci. Tato akce je zakázaná, protože metadata nemají verze. Souběžná aktualizace metadat může vést k nekonzistenci, pokud je smíšená s izolací snímku. "
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Dlouhotrvající dotazy v replikách jen pro čtení
 
-Dotazy, které běží na replikách jen pro čtení, musí mít přístup k metadatům pro objekty, na které se odkazuje v dotazu (tabulky, indexy, statistiky atd.). Ve výjimečných případech platí, že pokud se objekt metadat v primární replice změní, zatímco dotaz drží zámek na stejném objektu repliky jen pro čtení, může dotaz [blokovat](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) proces, který aplikuje změny z primární repliky do repliky jen pro čtení. Pokud by byl takový dotaz po dlouhou dobu spuštěný, mohl by být replika jen pro čtení výrazně nesynchronizovaná s primární replikou. 
+Dotazy, které běží na replikách jen pro čtení, musí mít přístup k metadatům pro objekty, na které se odkazuje v dotazu (tabulky, indexy, statistiky atd.). Ve výjimečných případech platí, že pokud se objekt metadat v primární replice změní, zatímco dotaz drží zámek na stejném objektu repliky jen pro čtení, může dotaz [blokovat](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) proces, který aplikuje změny z primární repliky do repliky jen pro čtení. Pokud by byl takový dotaz po dlouhou dobu spuštěný, mohl by být replika jen pro čtení výrazně nesynchronizovaná s primární replikou.
 
-Pokud dlouhotrvající dotaz na repliku, která je jen pro čtení, způsobuje tento typ blokování, bude automaticky ukončen a v relaci se zobrazí chyba 1219, "Vaše relace byla odpojena z důvodu operace DDL s vysokou prioritou".
+Pokud dlouhotrvající dotaz na repliku, která je jen pro čtení, způsobuje tento druh blokování, automaticky se ukončí. V relaci se zobrazí chyba 1219, "Vaše relace byla odpojena z důvodu operace DDL s vysokou prioritou" nebo "Chyba 3947", "transakce byla přerušena, protože sekundární výpočet nedokázal zachytit znovu. Opakujte transakci. "
 
 > [!NOTE]
-> Pokud se zobrazí chyba 3961 nebo chyba 1219 při spouštění dotazů proti replice jen pro čtení, opakujte dotaz.
+> Pokud při spouštění dotazů na repliku jen pro čtení dojde k chybě 3961, 1219 nebo 3947, zkuste dotaz zopakovat.
 
 > [!TIP]
-> V úrovních služby Premium a Pro důležité obchodní informace se při připojení k replice jen pro čtení `redo_queue_size` `redo_rate` používají sloupce a v [Sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV k monitorování procesu synchronizace dat, který slouží jako indikátory latence dat v replice jen pro čtení.
+> V úrovních služby Premium a Pro důležité obchodní informace jsou při připojení k replice jen pro čtení `redo_queue_size` `redo_rate` použity sloupce a v [Sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV k monitorování procesu synchronizace dat, který slouží jako indikátory latence dat v replice jen pro čtení.
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>Povolit a zakázat horizontální navýšení kapacity čtení
@@ -144,7 +144,7 @@ V okně **Konfigurovat** databázi můžete spravovat nastavení škálování p
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modul je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Modul Azure Resource Manager bude i nadále přijímat opravy chyb, dokud nebude aspoň 2020. prosince.  Argumenty pro příkazy v modulu AZ Module a in Azure Resource Manager jsou v podstatě identické. Další informace o jejich kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-Správa škálování čtení na více instancí v Azure PowerShell vyžaduje vydání Azure PowerShell verze z prosince 2016 nebo novější. Nejnovější verzi PowerShellu najdete v tématu [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Správa škálování čtení na více instancí v Azure PowerShell vyžaduje vydání Azure PowerShell verze z prosince 2016 nebo novější. Nejnovější verzi PowerShellu najdete v tématu [Azure PowerShell](/powershell/azure/install-az-ps).
 
 Můžete zakázat nebo znovu povolit horizontální navýšení kapacity čtení v Azure PowerShell vyvoláním rutiny [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) a předáním požadované hodnoty ( `Enabled` nebo `Disabled` ) pro `-ReadScale` parametr.
 
@@ -166,7 +166,7 @@ Opětovné povolení horizontálního navýšení kapacity pro čtení v existuj
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Chcete-li vytvořit databázi s vypnutým škálováním pro čtení nebo změnit nastavení pro existující databázi, použijte následující metodu s `readScale` vlastností nastavenou na `Enabled` nebo `Disabled` , jako v následujícím ukázkovém požadavku.
 
@@ -180,7 +180,7 @@ Body: {
 }
 ```
 
-Další informace najdete v tématu [databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+Další informace najdete v tématu [databáze – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate).
 
 ## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>Použití `tempdb` databáze v replice jen pro čtení
 

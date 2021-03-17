@@ -7,15 +7,15 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 801f4840d0d1447f839e5c2c4bc3168741b62b63
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170796"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586245"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Řešení chyb HTTP z "502 špatné brány" a "503 Služba není dostupná" v Azure App Service
-"502 Chybná brána" a "503 Služba není k dispozici" jsou běžné chyby v aplikaci hostované v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tento článek vám pomůže vyřešit tyto chyby.
+"502 Chybná brána" a "503 Služba není k dispozici" jsou běžné chyby v aplikaci hostované v [Azure App Service](./overview.md). Tento článek vám pomůže vyřešit tyto chyby.
 
 Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a ve Stack Overflowch fórech](https://azure.microsoft.com/support/forums/). Případně můžete také použít incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na **získat podporu**.
 
@@ -42,7 +42,7 @@ Tento problém je často způsoben problémy na úrovni aplikace, například:
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. Sledujte a sledujte chování aplikace
 #### <a name="track-service-health"></a>Sledovat stav služby
-Microsoft Azure publicizes pokaždé, když dojde k přerušení služby nebo snížení výkonu. Stav služby můžete sledovat na webu [Azure Portal](https://portal.azure.com/). Další informace najdete v tématu [sledování stavu služby](../monitoring-and-diagnostics/insights-service-health.md).
+Microsoft Azure publicizes pokaždé, když dojde k přerušení služby nebo snížení výkonu. Stav služby můžete sledovat na webu [Azure Portal](https://portal.azure.com/). Další informace najdete v tématu [sledování stavu služby](../service-health/service-notifications.md).
 
 #### <a name="monitor-your-app"></a>Monitorování aplikace
 Tato možnost umožňuje zjistit, jestli má aplikace nějaké problémy. V okně vaší aplikace klikněte na dlaždici **požadavky a chyby** . V okně **metriky** se zobrazí všechny metriky, které můžete přidat.
@@ -57,10 +57,10 @@ Některé metriky, které můžete chtít monitorovat pro vaši aplikaci, jsou
 
 ![monitorování aplikace pro řešení chyb HTTP 502 chybných bran a 503 Služba není k dispozici](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 * [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
-* [Zobrazování oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [Zobrazování oznámení o výstrahách](../azure-monitor/alerts/alerts-overview.md)
 
 <a name="collect"></a>
 
@@ -108,5 +108,4 @@ To je často nejjednodušší způsob, jak provést zotavení při jednorázový
 
  ![Restartujte aplikaci, aby se vyřešily chyby HTTP 502 Chybná brána a služba 503 není dostupná.](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-Svou aplikaci můžete spravovat i pomocí Azure PowerShellu. Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
-
+Svou aplikaci můžete spravovat i pomocí Azure PowerShellu. Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](../azure-resource-manager/management/manage-resources-powershell.md).

@@ -1,19 +1,19 @@
 ---
 title: Vytvoření privátního koncového bodu pro zabezpečené připojení
 titleSuffix: Azure Cognitive Search
-description: Nastavení privátního koncového bodu ve virtuální síti pro zabezpečené připojení ke službě Azure Kognitivní hledání
+description: Nastavte privátní koncový bod ve virtuální síti pro zabezpečené připojení ke službě Azure Kognitivní hledání.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: markheff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 02/16/2021
+ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206889"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545526"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Vytvoření privátního koncového bodu pro zabezpečené připojení k Azure Kognitivní hledání
 
@@ -21,12 +21,14 @@ V tomto článku použijete Azure Portal k vytvoření nové instance služby Az
 
 Soukromé koncové body poskytuje služba [Azure Private Link](../private-link/private-link-overview.md)jako samostatnou službu. Další informace o nákladech najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/private-link/).
 
-> [!Important]
-> Podporu privátního koncového bodu pro Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/). Pokud je koncový bod služby privátní, některé funkce portálu jsou zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený.
+V Azure Portal můžete vytvořit privátní koncový bod, jak je popsáno v tomto článku. Alternativně můžete použít [REST API správy verze 2020-03-13](/rest/api/searchmanagement/), [Azure POWERSHELL](/powershell/module/az.search)nebo [Azure CLI](/cli/azure/search).
+
+> [!NOTE]
+> Pokud je koncový bod služby privátní, některé funkce portálu jsou zakázané. Můžete zobrazit a spravovat informace o úrovni služby, ale informace o indexu, indexerech a dovednosti se z bezpečnostních důvodů skryjí. Jako alternativu k portálu můžete použít [rozšíření vs Code](https://aka.ms/vscode-search) k interakci s různými komponentami ve službě.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Proč používat privátní koncový bod pro zabezpečený přístup?
 
-[Privátní koncové body](../private-link/private-endpoint-overview.md) pro Azure kognitivní hledání umožňují klientovi ve virtuální síti zabezpečený přístup k datům v indexu vyhledávání prostřednictvím [privátního odkazu](../private-link/private-link-overview.md). Privátní koncový bod používá IP adresu z [adresního prostoru virtuální sítě](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) pro vaši vyhledávací službu. Síťový provoz mezi klientem a vyhledávací službou prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. Seznam dalších služeb PaaS Services, které podporují privátní propojení, najdete v [části dostupnost](../private-link/private-link-overview.md#availability) v dokumentaci k produktu.
+[Privátní koncové body](../private-link/private-endpoint-overview.md) pro Azure kognitivní hledání umožňují klientovi ve virtuální síti zabezpečený přístup k datům v indexu vyhledávání prostřednictvím [privátního odkazu](../private-link/private-link-overview.md). Privátní koncový bod používá IP adresu z [adresního prostoru virtuální sítě](../virtual-network/private-ip-addresses.md) pro vaši vyhledávací službu. Síťový provoz mezi klientem a vyhledávací službou prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. Seznam dalších služeb PaaS Services, které podporují privátní propojení, najdete v [části dostupnost](../private-link/private-link-overview.md#availability) v dokumentaci k produktu.
 
 Soukromé koncové body vaší vyhledávací služby vám umožní:
 
@@ -40,12 +42,12 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 
 1. Na kartě Azure Portal domů vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
 
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+1. V nástroji **vytvořit virtuální síť** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK** . |
+    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup* a pak vyberte **OK** . |
     | Název | Zadejte *MyVirtualNetwork* |
     | Oblast | Vyberte požadovanou oblast. |
     |||
@@ -58,7 +60,7 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
 
 1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek**  >  **Web**  >  **Azure kognitivní hledání**.
 
-1. V **New Search Service základy**zadejte nebo vyberte tyto informace:
+1. V **New Search Service základy** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -75,32 +77,32 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
 
 1. Ponechte hodnoty jako výchozí a vyberte **Další: sítě**.
 
-1. V **New Search Service-Networking**vyberte pro **připojení koncového bodu (data)** možnost **privátní** .
+1. V **New Search Service-Networking** vyberte pro **připojení koncového bodu (data)** možnost **privátní** .
 
-1. V **New Search Service-Networking**vyberte **+ Přidat** pod **soukromým koncovým bodem**. 
+1. V **New Search Service-Networking** vyberte **+ Přidat** pod **soukromým koncovým bodem**. 
 
-1. V **Vytvoření privátního koncového bodu**zadejte nebo vyberte tyto informace:
+1. V **Vytvoření privátního koncového bodu** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | Umístění | Vyberte **západní USA**.|
-    | Název | Zadejte *myPrivateEndpoint*.  |
+    | Name | Zadejte *myPrivateEndpoint*.  |
     | Cílový dílčí prostředek | Ponechte výchozí **searchService**. |
     | **SÍTĚ** |  |
     | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
     | Podsíť | Vyberte *mySubnet*. |
-    | **INTEGRACE PRIVÁTNÍ DNS** |  |
-    | Integrace s privátní zónou DNS  | Ponechte výchozí **hodnotu Ano**. |
+    | **INTEGRACE S PRIVÁTNÍM DNS** |  |
+    | Integrovat s privátní zónou DNS  | Ponechte výchozí **hodnotu Ano**. |
     | Zóna privátního DNS  | Ponechte výchozí * * (New) privatelink.search.windows.net * *. |
     |||
 
 1. Vyberte **OK**. 
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci. 
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**. 
 
 1. Po dokončení zřizování nové služby přejděte k prostředku, který jste právě vytvořili.
 
@@ -110,9 +112,9 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač**Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >    >  **virtuální počítač** Compute.
 
-1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
+1. V nástroji **vytvořit virtuální počítač základy** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -127,20 +129,20 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
-    | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Heslo | Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Potvrdit heslo | Zadejte znovu heslo. |
     | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
     | Veřejné příchozí porty | Ponechte výchozí **povoleno vybrané porty**. |
-    | Vybrat příchozí porty | Ponechte výchozí **RDP (3389)**. |
-    | **ÚSPORA PENĚZ** |  |
+    | Vyberte příchozí porty | Ponechte výchozí **RDP (3389)**. |
+    | **UŠETŘETE PENÍZE** |  |
     | Máte už licenci na Windows? | Ponechte výchozí hodnotu **ne**. |
     |||
 
 1. Vyberte **Další: disky**.
 
-1. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
+1. V okně **Vytvořit virtuální počítač – Disky** nechte vybrané výchozí hodnoty a vyberte **Další: Sítě**.
 
-1. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
+1. V nástroji **vytvořit virtuální počítač – síť** vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -149,19 +151,25 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)**.|
     | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Vyberte **http** a **RDP**.|
+    | Vyberte příchozí porty | Vyberte **http** a **RDP**.|
     ||
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+   > [!NOTE]
+   > Adresy IPv4 lze vyjádřit ve formátu [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Nezapomeňte se vyhnout rozsahu IP adres rezervovanému pro privátní sítě, jak je popsáno v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918):
+   >
+   > - `10.0.0.0 - 10.255.255.255  (10/8 prefix)`
+   > - `172.16.0.0 - 172.31.255.255  (172.16/12 prefix)`
+   > - `192.168.0.0 - 192.168.255.255 (192.168/16 prefix)`
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**. 
 
 ## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
 Stáhněte si a pak se připojte k virtuálnímu počítači *myVm* následujícím způsobem:
 
-1. Na panelu hledání na portálu zadejte *myVm*.
+1. Na portálu zadejte na panelu hledání *myVm*.
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
@@ -174,14 +182,13 @@ Stáhněte si a pak se připojte k virtuálnímu počítači *myVm* následujíc
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
-
 
 ## <a name="test-connections"></a>Test připojení
 
@@ -189,7 +196,7 @@ V této části ověříte přístup ke službě Search pomocí privátní sít�
 
 Pokud je koncový bod vyhledávací služby privátní, některé funkce portálu jsou zakázané. Budete moct zobrazit a spravovat nastavení úrovně služby, ale přístup k indexovým datům a různým dalším součástem ve službě, jako je index, indexer a definice dovednosti, se z bezpečnostních důvodů omezuje.
 
-1. Ve vzdálené ploše *myVM*otevřete PowerShell.
+1. Ve vzdálené ploše *myVM* otevřete PowerShell.
 
 1. Zadejte příkaz nslookup [Search [název služby]. Search. Windows. NET.
 
@@ -203,7 +210,7 @@ Pokud je koncový bod vyhledávací služby privátní, některé funkce portál
     Aliases:  [search service name].search.windows.net
     ```
 
-1. Z virtuálního počítače se připojte ke službě Search a vytvořte index. Můžete postupovat podle tohoto [rychlého](search-get-started-postman.md) startu a pomocí REST API vytvořit nový index vyhledávání ve vaší službě. Nastavení požadavků od post vyžaduje koncový bod vyhledávací služby (https://[název vyhledávací služby]. Search. Windows. NET) a klíč rozhraní API pro správu, který jste zkopírovali v předchozím kroku.
+1. Z virtuálního počítače se připojte ke službě Search a vytvořte index. Můžete postupovat podle tohoto [rychlého](search-get-started-rest.md) startu a vytvořit nový index vyhledávání ve vaší službě pomocí REST API. Nastavování žádostí z nástroje Web API test Tool vyžaduje koncový bod vyhledávací služby (https://[název vyhledávací služby]. Search. Windows. NET) a klíč rozhraní API pro správu, který jste zkopírovali v předchozím kroku.
 
 1. Dokončení rychlého startu z virtuálního počítače je vaším potvrzením, že služba je plně funkční.
 
@@ -213,9 +220,9 @@ Pokud je koncový bod vyhledávací služby privátní, některé funkce portál
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 Po dokončení používání privátního koncového bodu, služby vyhledávání a virtuálního počítače odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
-1.  *myResourceGroup*   Do **vyhledávacího** pole v horní části portálu zadejte myResourceGroup a ve výsledcích hledání vyberte *myResourceGroup*   . 
+1.  **   Do **vyhledávacího** pole v horní části portálu zadejte myResourceGroup a ve výsledcích hledání vyberte  *myResourceGroup*   . 
 1. Vyberte **Odstranit skupinu prostředků**. 
-1. Zadejte *myResourceGroup*   pro **typ název skupiny prostředků** a vyberte **Odstranit**.
+1. Zadejte  *myResourceGroup*   pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste vytvořili virtuální počítač ve virtuální síti a vyhledávací službě s privátním koncovým bodem. Připojili jste se k virtuálnímu počítači z Internetu a bezpečně komunikovali se službou Search pomocí privátního odkazu. Další informace o privátním koncovém bodu najdete v tématu [co je privátní koncový bod Azure](../private-link/private-endpoint-overview.md).

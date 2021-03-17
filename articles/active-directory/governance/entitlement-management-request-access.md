@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 527255653bf2779b36e0e463cd32a0b334c00f96
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798490"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996640"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Požádat o přístup k balíčku přístupu v Azure AD – Správa nároků
 
@@ -51,7 +51,7 @@ Po nalezení balíčku přístupu na portálu pro přístup můžete odeslat ž�
 
 **Požadovaná role:** Žadatele
 
-1. V seznamu vyhledejte balíček pro přístup.  V případě potřeby můžete hledat zadáním hledaného řetězce a následným výběrem filtru **název**, **katalog**nebo **prostředky** .
+1. V seznamu vyhledejte balíček pro přístup.  V případě potřeby můžete hledat zadáním hledaného řetězce a následným výběrem filtru **název**, **katalog** nebo **prostředky** .
 
     ![Můj portál pro přístup – vyhledávání prostředků](./media/entitlement-management-request-access/my-access-resource-search.png)
 
@@ -80,6 +80,12 @@ Po nalezení balíčku přístupu na portálu pro přístup můžete odeslat ž�
 Pokud požadujete přístup k balíčku přístupu, který má víc zásad, které platí, můžete být požádáni, abyste vybrali zásadu. Správce balíčků pro přístup může například nakonfigurovat balíček přístupu se dvěma zásadami pro dvě skupiny interních zaměstnanců. První zásada může mít povolený přístup po 60 dnech a vyžaduje schválení. Druhá zásada může mít povolený přístup 2 dny a nemusí vyžadovat schválení. Pokud se setkáte s tímto scénářem, musíte vybrat zásadu, kterou chcete použít.
 
 ![Můj portál přístupu – žádost o přístup-více zásad](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+### <a name="fill-out-requestor-information"></a>Vyplnit informace o žadateli
+
+Než udělíte přístup k balíčku přístupu, můžete požádat o přístup k balíčku pro přístup, který vyžaduje obchodní odůvodnění a další informace o žadateli. Vyplňte všechny informace žadatele vyžadované pro přístup k balíčku přístupu.
+
+![Můj portál přístupu – žádost o přístup-vyplnit informace žadatele](./media/entitlement-management-request-access/my-access-requestor-information.png)
 
 ## <a name="resubmit-a-request"></a>Odeslat žádost znovu
 

@@ -1,6 +1,6 @@
 ---
 title: Import aplikace API jako rozhraní API pomocí webu Azure Portal | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak pomocí služby API Management (APIM) importovat aplikaci API jako rozhraní API.
+description: V tomto článku se dozvíte, jak pomocí API Management (APIM) importovat aplikaci API jako rozhraní API.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 41209233ec59f578db4ff7fd344bb96aefeb975e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249486"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994736"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Import aplikace API jako rozhraní API
 
@@ -56,7 +56,7 @@ V tomto článku získáte informace o těchto tématech:
 
     * **Starter**
     * **Unlimited**   
-7. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
+7. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#import-and-publish-a-backend-api) .
 8. Vyberte **Vytvořit**.
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal

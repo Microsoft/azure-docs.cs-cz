@@ -1,18 +1,16 @@
 ---
 title: Optimalizace Apache Spark konfigurace clusteru – Azure HDInsight
 description: Naučte se konfigurovat cluster Apache Spark pro maximalizaci propustnosti v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 464f0dcab3debf92605d2f13be9b25ece63f4bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f70e9f242b0f12abf58e72554e7cb6819ce8f7a9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737678"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944736"
 ---
 # <a name="cluster-configuration-optimization-for-apache-spark"></a>Optimalizace konfigurace clusteru pro Apache Spark
 

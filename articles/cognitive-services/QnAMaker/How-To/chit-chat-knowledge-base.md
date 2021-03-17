@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124421"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376638"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidání funkce CHITEST – chat do znalostní báze
 
@@ -60,7 +60,15 @@ Při vytváření znalostní báze je po přidání vašich zdrojových adres UR
 ## <a name="add-chit-chat-to-an-existing-kb"></a>Přidat CHITEST – chat do existující znalostní báze
 Vyberte své znalostní báze a přejděte na stránku **Nastavení** . V příslušném formátu **. TSV** je odkaz na všechny datové sady CHITEST-chat. Stáhněte si osobnost, kterou chcete, a pak ji nahrajte jako zdroj souborů. Ujistěte se, že při stažení a nahrání souboru neupravujte formát ani metadata.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 ![Přidat CHITEST – chat do existující znalostní báze](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+![Přidat CHITEST – chat do existující verze Preview verze Preview](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
+
+---
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>Úprava funkce CHITEST – dotazy a odpovědi chatu
 Při úpravách znalostní báze se zobrazí nový zdroj pro funkce CHITEST-chat na základě vámi vybrané preference. Nyní můžete přidat změněné otázky nebo upravit odpovědi stejně jako u jakéhokoli jiného zdroje.
@@ -72,7 +80,7 @@ Chcete-li zobrazit metadata, vyberte možnost **zobrazení možností** na panel
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Přidat další funkce CHITEST – otázky a odpovědi chatu
 Můžete přidat nový pár CHITEST-chat QnA, který není v předdefinované sadě dat. Ujistěte se, že neduplikujete dvojici QnA, která je již pokryta v sadě CHITEST-chat. Když přidáte všechny nové funkce CHITEST-chat QnA, přidají se do vašeho **redakčního** zdroje. Chcete-li zajistit, aby toto pořadí porozumělo tomu, že se jedná o funkci CHITEST-chat, přidejte dvojici klíč/hodnota metadat "redakční: chitchat", jak je vidět na následujícím obrázku:
 
-![! [Přidání funkce CHITEST-chat QnAs] (.. /Media/qnamaker-How-to-Chit-Chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+:::image type="content" source="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png" alt-text="Přidání funkce CHITEST – chat QnAs" lightbox="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png":::
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Odstranit CHITEST – chat z existující znalostní báze
 Vyberte své znalostní báze a přejděte na stránku **Nastavení** . Konkrétní funkce CHITEST-chat je uvedena jako soubor s vybraným názvem preference. Tuto možnost můžete odstranit jako zdrojový soubor.

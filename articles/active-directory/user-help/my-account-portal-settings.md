@@ -9,22 +9,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 4566d32682c8d0345c66d99ba5e4fd58695a325d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 249b013a35df8978a7296086b4e5ada3b78b2c52
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424771"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093824"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>Zobrazení nebo změna nastavení na portálu Můj účet
 
 Nastavení účtu můžete zobrazit nebo změnit na portálu Můj účet, jako je například jazyk nebo časové pásmo, na stránce **nastavení & osobních údajů** na portálu **můj účet** .
 
+>[!Note]
+> Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-and-manage-your-language-and-regional-settings"></a>Umožňuje zobrazit a spravovat váš jazyk a místní nastavení.
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na https://myaccount.microsoft.com/ stránku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na https://myaccount.microsoft.com/ stránku. Pokud se přihlašujete pomocí osobního účet Microsoft, můžete se i nadále přihlašovat pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z těchto adres URL:
+
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 1. V levém navigačním podokně vyberte **nastavení & ochrany osobních údajů** nebo v části **Nastavení & blokování ochrany** osobních údajů vyberte odkaz **Zobrazit nastavení a soukromí** .
 
@@ -47,7 +56,7 @@ Po změně jazyka zobrazení se doporučujeme odhlásit a přihlásit ke svému 
 
 Po změně nastavení portálu Můj účet můžete:
 
-- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
+- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](./security-info-setup-signin.md).
 
 - Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
 

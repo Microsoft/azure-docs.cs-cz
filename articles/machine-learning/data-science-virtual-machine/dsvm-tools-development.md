@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Seznamte se s nástroji a integrovanými vývojovými prostředími dostupnými na Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 42a595246f45b2c7423aaf77c95f17243cf8813c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cecc195b8b97ffd9b25cf12898726352ddd698a9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012379"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519435"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Vývojové nástroje na Data Science Virtual Machine Azure
 
@@ -63,7 +62,7 @@ Sada Data Science Virtual Machine (DSVM) má několik oblíbených nástrojů v 
 | Co to je?   | Webové prostředí IDE pro R    |
 | Podporované verze DSVM      | Linux      |
 | Typická použití      |  Vývoj v jazyce R     |
-| Jak použít a spustit      | Povolte službu pomocí nástroje _systemctl Enable RStudio-Server_a pak službu spusťte pomocí _systemctl Start RStudio-Server_. Pak se přihlaste k serveru RStudio na adrese http: \/ /Your-VM-IP: 8787.       |
+| Jak použít a spustit      | Povolte službu pomocí nástroje _systemctl Enable RStudio-Server_ a pak službu spusťte pomocí _systemctl Start RStudio-Server_. Pak se přihlaste k serveru RStudio na adrese http: \/ /Your-VM-IP: 8787.       |
 | Související nástroje na DSVM      |   Visual Studio, Visual Studio Code RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 

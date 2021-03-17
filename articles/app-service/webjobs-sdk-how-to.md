@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 25aaf49d32da29fe5fb082e6e4481cd9266f88e1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 063924dccb7d7b95b962b24ecc1af1870a855194
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208628"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617127"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak použít sadu Azure WebJobs SDK k událostmi řízenému zpracování na pozadí
 
@@ -23,14 +23,14 @@ Tento článek poskytuje pokyny pro práci s Azure WebJobs SDK. Pokud chcete za�
 Toto jsou klíčové rozdíly mezi verzí 3. *x* a verze 2. *x* sady WebJobs SDK:
 
 * Verze 3. *x* přidává podporu pro .NET Core.
-* Ve verzi 3. *x*, musíte explicitně nainstalovat rozšíření vazby úložiště, které vyžaduje Sada WebJobs SDK. Ve verzi 2. *x*byly vazby úložiště součástí sady SDK.
-* Nástroje sady Visual Studio pro .NET Core (3.* x*) projekty se liší od nástrojů pro .NET Framework (2.* x*) projektů. Další informace najdete v tématu [vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
+* Ve verzi 3. *x*, musíte explicitně nainstalovat rozšíření vazby úložiště, které vyžaduje Sada WebJobs SDK. Ve verzi 2. *x* byly vazby úložiště součástí sady SDK.
+* Nástroje sady Visual Studio pro .NET Core (3.*x*) projekty se liší od nástrojů pro .NET Framework (2.*x*) projektů. Další informace najdete v tématu [vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
 
 Pokud je to možné, jsou k dispozici příklady pro obě verze 3. *x* a verze 2. *x*.
 
 > [!NOTE]
 > [Azure Functions](../azure-functions/functions-overview.md) je postavená na sadě WebJobs SDK a tento článek obsahuje odkazy na dokumentaci k Azure Functions pro některá témata. Všimněte si těchto rozdílů mezi funkcemi a sadou WebJobs SDK:
-> * Azure Functions verze 2 *x* odpovídá sadě WebJobs SDK verze 3. *x*a Azure Functions 1. *x* odpovídá sadě WebJobs SDK 2. *x*. Úložiště zdrojového kódu používají číslování sady SDK pro WebJobs.
+> * Azure Functions verze 2 *x* odpovídá sadě WebJobs SDK verze 3. *x* a Azure Functions 1. *x* odpovídá sadě WebJobs SDK 2. *x*. Úložiště zdrojového kódu používají číslování sady SDK pro WebJobs.
 > * Vzorový kód pro knihovny tříd Azure Functions C# jako kód sady SDK pro WebJobs, s výjimkou, že nepotřebujete `FunctionName` atribut v projektu sady WebJobs SDK.
 > * Některé typy vazeb se podporují jenom ve funkcích, jako je HTTP (Webhooky) a Event Grid (založené na HTTP).
 >
@@ -66,7 +66,8 @@ static void Main(string[] args)
 }
 ```
 
-Protože verze 3. *x* používá výchozí rozhraní API pro konfiguraci .NET Core, neexistuje žádné rozhraní API pro změnu názvů připojovacích řetězců.
+> [!NOTE]
+> Protože verze 3. *x* používá výchozí rozhraní API pro konfiguraci .NET Core, neexistuje žádné rozhraní API pro změnu názvů připojovacích řetězců. Viz [vývoj a nasazení WebJobs pomocí sady Visual Studio](webjobs-dotnet-deploy-vs.md)
 
 ### <a name="host-development-settings"></a>Nastavení vývoje hostitele
 
@@ -120,11 +121,11 @@ static void Main()
 }
 ```
 
-### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>Správa souběžných připojení (verze 2* ) ×*)
+### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>Správa souběžných připojení (verze 2 *) ×*)
 
-Ve verzi 3. *x*se limit připojení nastaví jako nekonečná připojení. Pokud z nějakého důvodu potřebujete tento limit změnit, můžete použít [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) vlastnost [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) třídy.
+Ve verzi 3. *x* se limit připojení nastaví jako nekonečná připojení. Pokud z nějakého důvodu potřebujete tento limit změnit, můžete použít [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) vlastnost [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) třídy.
 
-Ve verzi 2. *x*můžete řídit počet souběžných připojení k hostiteli pomocí rozhraní API [Třída ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) . V 2. *x*, před spuštěním hostitele WebJobs byste tuto hodnotu měli zvýšit od výchozí hodnoty 2.
+Ve verzi 2. *x* můžete řídit počet souběžných připojení k hostiteli pomocí rozhraní API [Třída ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) . V 2. *x*, před spuštěním hostitele WebJobs byste tuto hodnotu měli zvýšit od výchozí hodnoty 2.
 
 Všechny odchozí požadavky HTTP, které jste provedli z funkce pomocí `HttpClient` toku `ServicePointManager` . Po dosažení hodnoty nastavené v `DefaultConnectionLimit` spustí aplikace `ServicePointManager` před odesláním požadavky do fronty. Předpokládejme, že `DefaultConnectionLimit` je nastavené na 2 a váš kód bude 1 000 požadavků HTTP. Zpočátku jsou do operačního systému povoleny pouze dvě požadavky. Ostatní 998 jsou zařazeny do fronty, dokud pro ně neexistují místnosti. To znamená, že váš `HttpClient` časový limit vypršel, protože se zdá, že byl požadavek proveden, ale požadavek nebyl nikdy odeslán operačním systémem do cílového serveru. Takže se může zobrazit chování, které se jeví jako smysl: požadavek vaší místní `HttpClient` služby trvá 10 sekund, ale služba vrací každý požadavek v 200 ms. 
 
@@ -369,7 +370,7 @@ Můžete nakonfigurovat následující vazby:
 * [Vazba SendGrid](#sendgrid-binding-configuration-version-3x)
 * [Aktivační událost Service Bus](#service-bus-trigger-configuration-version-3x)
 
-### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Konfigurace aktivační události Azure CosmosDB (verze 3* ) ×*)
+### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Konfigurace aktivační události Azure CosmosDB (verze 3 *) ×*)
 
 Tento příklad ukazuje, jak nakonfigurovat aktivační událost Azure Cosmos DB:
 
@@ -398,7 +399,7 @@ static async Task Main()
 
 Další podrobnosti najdete v článku věnovaném [vazbám Azure CosmosDB](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings) .
 
-### <a name="event-hubs-trigger-configuration-version-3x"></a>Konfigurace aktivační události Event Hubs (verze 3* ×*)
+### <a name="event-hubs-trigger-configuration-version-3x"></a>Konfigurace aktivační události Event Hubs (verze 3 *×*)
 
 Tento příklad ukazuje, jak nakonfigurovat aktivační událost Event Hubs:
 
@@ -424,7 +425,7 @@ static async Task Main()
 }
 ```
 
-Další podrobnosti najdete v článku věnovaném [vazbě Event Hubs](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json) .
+Další podrobnosti najdete v článku věnovaném [vazbě Event Hubs](../azure-functions/functions-bindings-event-hubs.md#host-json) .
 
 ### <a name="queue-storage-trigger-configuration"></a>Konfigurace triggeru služby Queue Storage
 
@@ -473,7 +474,7 @@ static void Main(string[] args)
 
 Další podrobnosti najdete v referenčních informacích o [host.jsv v1. x](../azure-functions/functions-host-json-v1.md#queues).
 
-### <a name="sendgrid-binding-configuration-version-3x"></a>Konfigurace vazeb SendGrid (verze 3* ) ×*)
+### <a name="sendgrid-binding-configuration-version-3x"></a>Konfigurace vazeb SendGrid (verze 3 *) ×*)
 
 Tento příklad ukazuje, jak nakonfigurovat výstupní vazbu SendGrid:
 
@@ -500,7 +501,7 @@ static async Task Main()
 
 Další podrobnosti najdete v článku věnovaném [vazbě SendGrid](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) .
 
-### <a name="service-bus-trigger-configuration-version-3x"></a>Konfigurace aktivační události Service Bus (verze 3* ×*)
+### <a name="service-bus-trigger-configuration-version-3x"></a>Konfigurace aktivační události Service Bus (verze 3 *×*)
 
 Tento příklad ukazuje, jak nakonfigurovat aktivační událost Service Bus:
 
@@ -793,7 +794,7 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 
 ### <a name="viewing-lease-blobs"></a>Zobrazení objektů BLOB zapůjčení
 
-Sada WebJobs SDK používá [zapůjčení Azure Blob](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) v rámci pokrývání k implementaci distribuovaného zamykání. Objekty blob zapůjčení používané pomocí typu Singleton najdete v `azure-webjobs-host` kontejneru v `AzureWebJobsStorage` účtu úložiště pod cestou "zámky". Například cesta objektu BLOB zapůjčení pro první `ProcessImage` příklad zobrazená výše může být `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` . Všechny cesty zahrnují ID JobHost, v tomto případě 061851c758f04938a4426aa9ab3869c0.
+Sada WebJobs SDK používá [zapůjčení Azure Blob](../storage/blobs/concurrency-manage.md#pessimistic-concurrency-for-blobs) v rámci pokrývání k implementaci distribuovaného zamykání. Objekty blob zapůjčení používané pomocí typu Singleton najdete v `azure-webjobs-host` kontejneru v `AzureWebJobsStorage` účtu úložiště pod cestou "zámky". Například cesta objektu BLOB zapůjčení pro první `ProcessImage` příklad zobrazená výše může být `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` . Všechny cesty zahrnují ID JobHost, v tomto případě 061851c758f04938a4426aa9ab3869c0.
 
 ## <a name="async-functions"></a>Asynchronní funkce
 
@@ -815,7 +816,7 @@ Pokud chcete zajistit, aby se jenom jedna instance funkce spouštěla i v příp
 
 ## <a name="filters"></a>Filtry
 
-Filtry funkcí (Preview) poskytují způsob přizpůsobení kanálu spuštění webové úlohy pomocí vlastní logiky. Filtry jsou podobné [filtrům ASP.NET Core](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters). Můžete je implementovat jako deklarativní atributy, které jsou použity pro vaše funkce nebo třídy. Další informace najdete v tématu [filtry funkcí](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
+Filtry funkcí (Preview) poskytují způsob přizpůsobení kanálu spuštění webové úlohy pomocí vlastní logiky. Filtry jsou podobné [filtrům ASP.NET Core](/aspnet/core/mvc/controllers/filters). Můžete je implementovat jako deklarativní atributy, které jsou použity pro vaše funkce nebo třídy. Další informace najdete v tématu [filtry funkcí](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
@@ -847,7 +848,7 @@ Verze 3. *x* sady SDK spoléhá na filtrování integrované do .NET Core. `LogC
 using Microsoft.Azure.WebJobs.Logging; 
 ```
 
-Následující příklad vytvoří filtr, který ve výchozím nastavení filtruje všechny protokoly na `Warning` úrovni. `Function`Kategorie a `results` (ekvivalent `Host.Results` verze 2).* x*) jsou filtrovány na `Error` úrovni. Filtr porovná aktuální kategorii na všechny registrované úrovně v `LogCategories` instanci a zvolí nejdelší shodu. To znamená, že `Debug` úroveň zaregistrovaná pro `Host.Triggers` shody `Host.Triggers.Queue` nebo `Host.Triggers.Blob` . To vám umožní ovládat širší kategorie bez nutnosti přidávat je.
+Následující příklad vytvoří filtr, který ve výchozím nastavení filtruje všechny protokoly na `Warning` úrovni. `Function`Kategorie a `results` (ekvivalent `Host.Results` verze 2).*x*) jsou filtrovány na `Error` úrovni. Filtr porovná aktuální kategorii na všechny registrované úrovně v `LogCategories` instanci a zvolí nejdelší shodu. To znamená, že `Debug` úroveň zaregistrovaná pro `Host.Triggers` shody `Host.Triggers.Queue` nebo `Host.Triggers.Blob` . To vám umožní ovládat širší kategorie bez nutnosti přidávat je.
 
 ```cs
 static async Task Main(string[] args)
@@ -878,7 +879,7 @@ static async Task Main(string[] args)
 
 Ve verzi 2. *x* sady SDK, použijete `LogCategoryFilter` třídu k řízení filtrování. `LogCategoryFilter`Má `Default` vlastnost s počáteční hodnotou `Information` , což znamená, že všechny zprávy na `Information` `Warning` úrovních,, nebo jsou `Error` `Critical` protokolovány, ale všechny zprávy na úrovni `Debug` nebo `Trace` jsou odfiltrovány.
 
-Stejně jako `LogCategories` ve verzi 3.* x*, `CategoryLevels` vlastnost umožňuje zadat úrovně protokolu pro konkrétní kategorie, abyste mohli vyladit výstup protokolování. Pokud se ve slovníku nenajde žádná shoda `CategoryLevels` , filtr se vrátí k `Default` hodnotě při rozhodování o tom, jestli se má zpráva filtrovat.
+Stejně jako `LogCategories` ve verzi 3.*x*, `CategoryLevels` vlastnost umožňuje zadat úrovně protokolu pro konkrétní kategorie, abyste mohli vyladit výstup protokolování. Pokud se ve slovníku nenajde žádná shoda `CategoryLevels` , filtr se vrátí k `Default` hodnotě při rozhodování o tom, jestli se má zpráva filtrovat.
 
 Následující příklad vytvoří filtr, který ve výchozím nastavení filtruje všechny protokoly na `Warning` úrovni. `Function`Kategorie a `Host.Results` jsou filtrovány na `Error` úrovni. `LogCategoryFilter`Porovná aktuální kategorii se všemi registrovanými `CategoryLevels` a zvolí nejdelší shodu. Takže `Debug` úroveň zaregistrovaná pro `Host.Triggers` bude odpovídat `Host.Triggers.Queue` nebo `Host.Triggers.Blob` . To vám umožní ovládat širší kategorie bez nutnosti přidávat je.
 
@@ -986,7 +987,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-`SamplingPercentageEstimatorSettings`Objekt nakonfiguruje [adaptivní vzorkování](https://docs.microsoft.com/azure/application-insights/app-insights-sampling). To znamená, že v některých scénářích s vysokým objemem se v aplikacích Application Insights pošle vybraná podmnožina dat telemetrie na server.
+`SamplingPercentageEstimatorSettings`Objekt nakonfiguruje [adaptivní vzorkování](../azure-monitor/app/sampling.md). To znamená, že v některých scénářích s vysokým objemem se v aplikacích Application Insights pošle vybraná podmnožina dat telemetrie na server.
 
 Jakmile vytvoříte objekt pro vytváření telemetrie, předáte ho do poskytovatele protokolování Application Insights:
 

@@ -5,13 +5,13 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1480b5e1ddab86761adb1c7caef808de89a3d947
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428984"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316661"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
 
@@ -42,7 +42,7 @@ Ve všech prostředích musí být nainstalované následující požadavky.
 
 Pro vývoj v jazyce Java je nutné nainstalovat následující požadavky:
 
-* [Java SDK](https://aka.ms/azure-jdks) (verze 1,8)
+* [Java SDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) (verze 1,8)
 * [Gradle](https://gradle.org/install/)
 * [Ladicí program pro rozšíření Java vs Code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Nutné pro ladění služeb Java. Ladění služeb Java je podporováno pouze v systému Linux. Instalaci můžete provést kliknutím na ikonu rozšíření na **řádku aktivity** vs Code a hledáním rozšíření nebo na webu vs Code Marketplace.
 

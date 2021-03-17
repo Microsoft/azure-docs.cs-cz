@@ -7,14 +7,14 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: d041bfe1187c48e5544e8933763eaf45a507a424
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: db6575894904e6ced2d4be48fec5961f5b8b8a54
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701497"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602625"
 ---
-# <a name="reduce-costs-with-azure-disks-reservation"></a>Snížení nákladů pomocí rezervovaného disku Azure
+# <a name="reduce-costs-with-azure-disks-reservation"></a>Snížení nákladů pomocí rezervací disků Azure
 
 Pomocí rezervované kapacity ušetříte Azure Disk Storage využití. Azure Disk Storage rezervace v kombinaci s Azure Reserved Virtual Machine Instances vám umožní snížit celkový počet nákladů na virtuální počítač (VM). Sleva rezervace se automaticky použije na příslušné disky ve vybraném oboru rezervací. Z důvodu této automatické aplikace nemusíte ke spravovanému disku přiřadit rezervaci a získat slevy.
 
@@ -31,7 +31,7 @@ Rezervace disku je provedena na diskovou jednotku. V důsledku toho je vyhrazen�
 Předpokládejme například, že rezervujete jeden disk P40, který má 2 TiBy zřízené kapacity úložiště. Předpokládejme také, že přidělíte pouze dva P30 disky. V takovém případě P40 rezervace nevytváří účet pro P30 spotřebu a platíte sazbu průběžných plateb na disky P30.
 <br/>
 <br/>
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="purchase-considerations"></a>Důležité informace o nákupu
 
@@ -55,7 +55,7 @@ Ve výjimečných případech Azure omezuje nákup nových rezervací na podmno�
 
 ## <a name="buy-a-disk-reservation"></a>Nákup rezervovaného disku
 
-Můžete zakoupit Azure Disk Storage rezervace prostřednictvím [Azure Portal](https://portal.azure.com/). Můžete zaplatit za rezervaci buď předem, nebo s měsíčními platbami. Další informace o nákupu s měsíčními platbami najdete v tématu [Nákup rezervací s měsíčními platbami](~/articles/cost-management-billing/reservations/monthly-payments-reservations.md).
+Můžete zakoupit Azure Disk Storage rezervace prostřednictvím [Azure Portal](https://portal.azure.com/). Můžete zaplatit za rezervaci buď předem, nebo s měsíčními platbami. Další informace o nákupu s měsíčními platbami najdete v tématu [Nákup rezervací s měsíčními platbami](../cost-management-billing/reservations/prepare-buy-reservation.md#buy-reservations-with-monthly-payments).
 
 K zakoupení rezervované kapacity použijte následující postup:
 
@@ -70,7 +70,7 @@ K zakoupení rezervované kapacity použijte následující postup:
    |Element  |Popis  |
    |---------|---------|
    |**Rozsah**   |  Kolik předplatných může využívat fakturační výhody spojené s rezervací. Tato hodnota také určuje, jak se rezervace použije u konkrétních předplatných. <br/><br/> Pokud vyberete **Shared (sdílená**), použije se sleva rezervace pro Azure Storage kapacity v rámci každého předplatného v rámci vašeho fakturačního kontextu. Fakturační kontext vychází z toho, jak jste se zaregistrovali do Azure. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami, sdílený obor zahrnuje všechna jednotlivá předplatná s tarify průběžných plateb vytvořenými správcem účtu.  <br/><br/>  Pokud vyberete **jedno předplatné**, použije se sleva rezervace pro Azure Storage kapacity ve vybraném předplatném. <br/><br/> Když vyberete **jednu skupinu prostředků**, použije se sleva rezervace pro Azure Storage kapacity ve vybraném předplatném a v vybrané skupině prostředků tohoto předplatného. <br/><br/> Po zakoupení rezervace můžete obor rezervací změnit.  |
-   |**Předplatné**  | Předplatné, které používáte pro platbu za Azure Storage rezervaci. Způsob platby ve vybraném předplatném se používá při zpoplatnění nákladů. Předplatné musí být jeden z následujících typů:<br/><ul><li> Smlouva Enterprise (nabídka čísla MS-AZR-0017P a MS-AZR-0148P). U podnikového předplatného se poplatky odečtou z bilance peněžního závazku registrace nebo se účtují jako nadlimitní využití.</li><br/><li>Individuální předplatné s tarify průběžných plateb (nabídky Numbers MS-AZR-0003P a MS-AZR-0023P). U jednotlivých předplatných s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.</li></ul>    |
+   |**Předplatné**  | Předplatné, které používáte pro platbu za Azure Storage rezervaci. Způsob platby ve vybraném předplatném se používá při zpoplatnění nákladů. Předplatné musí být jeden z následujících typů:<br/><ul><li> Smlouva Enterprise (nabídka čísla MS-AZR-0017P a MS-AZR-0148P). U podnikového předplatného se poplatky odečtou od předplatného Azure v rámci předplatného (dříve nazývaného peněžního závazku), nebo se účtují jako nadlimitní využití.</li><br/><li>Individuální předplatné s tarify průběžných plateb (nabídky Numbers MS-AZR-0003P a MS-AZR-0023P). U jednotlivých předplatných s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.</li></ul>    |
    | **Disky** | Skladová položka, kterou chcete vytvořit. |
    | **Oblast** | Oblast, ve které je rezervace platná. |
    | **Četnost fakturace** | Jak často se účtuje účet pro rezervaci. Mezi možnosti patří **měsíční** a **předem**. |
@@ -89,7 +89,7 @@ Po zakoupení rezervace se automaticky použije na všechny existující Disk St
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 
-Rezervace můžete v určitých omezeních zrušit, vyměnit nebo vrátit. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Rezervace můžete v určitých omezeních zrušit, vyměnit nebo vrátit. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="expiration-of-a-reservation"></a>Vypršení platnosti rezervace
 
@@ -103,5 +103,5 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co jsou rezervace Azure?](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [Principy uplatnění slevy za rezervaci ve službě Azure Disk Storage](~/articles/cost-management-billing/reservations/understand-disk-reservations.md)
+- [Co jsou rezervace Azure?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Pochopení způsobu použití slevy rezervace pro Azure Disk Storage](../cost-management-billing/reservations/understand-disk-reservations.md)

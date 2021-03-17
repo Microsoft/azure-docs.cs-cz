@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fa502f5ca95b1726da7f00f987b35be362ae865a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520766"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021754"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI
 
@@ -27,25 +27,15 @@ Azure CLI je prostředí příkazového řádku Azure pro správu prostředků A
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-## <a name="install-the-azure-cli-locally"></a>Místní instalace Azure CLI
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi Azure CLI 2.0.46 nebo novější. Svou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
-
-Pokud používáte Azure CLI místně, musíte se přihlásit a ověřit. Tento krok není nutný, pokud používáte Azure Cloud Shell. Pokud se chcete přihlásit ke službě Azure CLI, spusťte `az login` a ověřte v okně prohlížeče:
-
-```azurecli
-az login
-```
-
-Další informace o ověřování pomocí rozhraní příkazového řádku Azure najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.46 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="authorize-access-to-blob-storage"></a>Autorizace přístupu k úložišti objektů BLOB
 
 Přístup k úložišti objektů blob můžete autorizovat z Azure CLI buď pomocí přihlašovacích údajů Azure AD, nebo pomocí přístupového klíče účtu úložiště. Doporučuje se použít přihlašovací údaje Azure AD. Tento článek ukazuje, jak autorizovat operace BLOB Storage pomocí Azure AD.
 
-Příkazy rozhraní příkazového řádku Azure pro datové operace s úložištěm objektů BLOB podporují `--auth-mode` parametr, který umožňuje určit, jak autorizovat danou operaci. Nastavte `--auth-mode` parametr na `login` autorizaci pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [autorizace přístupu k datům BLOB nebo Queue pomocí Azure CLI](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Příkazy rozhraní příkazového řádku Azure pro datové operace s úložištěm objektů BLOB podporují `--auth-mode` parametr, který umožňuje určit, jak autorizovat danou operaci. Nastavte `--auth-mode` parametr na `login` autorizaci pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [autorizace přístupu k datům BLOB nebo Queue pomocí Azure CLI](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Pouze datové operace služby Blob Storage podporují `--auth-mode` parametr. Operace správy, jako je vytvoření skupiny prostředků nebo účtu úložiště, automaticky používají přihlašovací údaje Azure AD k autorizaci.
 
@@ -61,7 +51,7 @@ az group create \
     --location <location>
 ```
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Účet úložiště pro obecné účely vytvoříte příkazem [az storage account create](/cli/azure/storage/account). Účet úložiště pro obecné účely můžete použít pro všechny čtyři služby: objekty blob, soubory, tabulky a fronty.
 
@@ -99,7 +89,7 @@ az storage container create \
 > [!IMPORTANT]
 > Rozšiřování přiřazení rolí Azure může trvat několik minut.
 
-K autorizaci operace vytvoření kontejneru můžete použít taky klíč účtu úložiště. Další informace o autorizaci operací s daty pomocí Azure CLI najdete v tématu [autorizace přístupu k objektům blob nebo Queue data ve frontě pomocí Azure CLI](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json).
+K autorizaci operace vytvoření kontejneru můžete použít taky klíč účtu úložiště. Další informace o autorizaci operací s daty pomocí Azure CLI najdete v tématu [autorizace přístupu k objektům blob nebo Queue data ve frontě pomocí Azure CLI](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="upload-a-blob"></a>Nahrání objektu blob
 
@@ -111,7 +101,7 @@ Nejdřív vytvořte soubor, který se nahraje do objektu blob bloku. Pokud použ
 vi helloworld
 ```
 
-Po otevření souboru stiskněte **Vložit**. Zadejte *Hello World*a pak stiskněte klávesu **ESC**. Dále zadejte *: x*a potom stiskněte klávesu **ENTER**.
+Po otevření souboru stiskněte **Vložit**. Zadejte *Hello World* a pak stiskněte klávesu **ESC**. Dále zadejte *: x* a potom stiskněte klávesu **ENTER**.
 
 V tomto příkladu nahrajete objekt blob do kontejneru, který jste vytvořili v předchozím kroku, a to pomocí příkazu [az storage blob upload](/cli/azure/storage/blob). Není nutné zadávat cestu k souboru, protože soubor byl vytvořen v kořenovém adresáři. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
@@ -128,7 +118,7 @@ Tato operace vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, p
 
 Pokud chcete nahrát více souborů najednou, můžete použít příkaz [az storage blob upload-batch](/cli/azure/storage/blob).
 
-## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+## <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Pomocí příkazu [az storage blob list](/cli/azure/storage/blob) zobrazte seznam objektů blob v kontejneru. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
@@ -179,4 +169,4 @@ az group delete \
 V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním systémem souborů a kontejnerem v úložišti objektů BLOB v Azure. Další informace o práci s úložištěm objektů BLOB pomocí Azure CLI najdete v ukázkách Azure CLI pro úložiště objektů BLOB.
 
 > [!div class="nextstepaction"]
-> [Ukázky v Azure CLI pro úložiště objektů BLOB](/azure/storage/blobs/storage-samples-blobs-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Ukázky v Azure CLI pro úložiště objektů BLOB](./storage-samples-blobs-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

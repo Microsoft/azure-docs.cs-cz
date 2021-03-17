@@ -1,19 +1,16 @@
 ---
 title: Použití škálování a Sparku v Azure HDInsight
 description: Použití škálování a Sparku pro manipulaci s daty a vývoj modelů pomocí služeb ML ve službě Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 95fcca289b0776cc19464b13eb7d243ca4f8d5ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082271"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945505"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
 
@@ -25,7 +22,7 @@ Tento příklad se původně sdílel v hovořit na úrovni vrstvy 2016 od Mario 
 
 Kód byl původně napsán pro ML Server běžící na Sparku v clusteru HDInsight v Azure. Ale koncept kombinace použití Sparku a nástroje pro škálování v jednom skriptu je platný i v kontextu místních prostředí.
 
-Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalostí R a že je knihovna pro [škálování](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ml Server. Při procházení tohoto scénáře jste zavedeni do [Sparku](https://spark.apache.org/docs/2.1.0/sparkr.html) .
+Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalostí R a že je knihovna pro [škálování](/machine-learning-server/r/concept-what-is-revoscaler) ml Server. Při procházení tohoto scénáře jste zavedeni do [Sparku](https://spark.apache.org/docs/2.1.0/sparkr.html) .
 
 ## <a name="the-airline-and-weather-datasets"></a>Letecké a počasí datové sady
 
@@ -506,7 +503,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Bodování jinde
 
-Model pro vyhodnocování dat můžete použít také na jiné platformě. Uložením do souboru RDS a následným převodem a importem této služby RDS do cílového prostředí bodování, jako je například MIcrosoft SQL Server R Services. Je důležité zajistit, aby úrovně faktoru dat, které mají být hodnoceny, odpovídaly hodnotám, na kterých byl model sestaven. Tuto shodu je možné dosáhnout extrakcí a uložením informací o sloupcích přidružených k datům modelování prostřednictvím `rxCreateColInfo()` funkce škálování a následným použitím informací o tomto sloupci na vstupní zdroj dat pro předpověď. V následujícím příkladu ušetříme několik řádků testovací datové sady a extrahujete a použijeme informace o sloupci z této ukázky ve skriptu předpovědi:
+Model pro vyhodnocování dat můžete použít také na jiné platformě. Uložením do souboru RDS a následným převodem a importem této služby RDS do cílového prostředí bodování, jako je Microsoft SQL Server R Services. Je důležité zajistit, aby úrovně faktoru dat, které mají být hodnoceny, odpovídaly hodnotám, na kterých byl model sestaven. Tuto shodu je možné dosáhnout extrakcí a uložením informací o sloupcích přidružených k datům modelování prostřednictvím `rxCreateColInfo()` funkce škálování a následným použitím informací o tomto sloupci na vstupní zdroj dat pro předpověď. V následujícím příkladu kódu ukládáme několik řádků testovací sady dat a extrahujete a použijeme informace o sloupci z této ukázky ve skriptu předpovědi:
 
 ```
 # save the model and a sample of the test dataset 
@@ -535,7 +532,7 @@ V tomto článku jsme ukázali, jak je možné kombinovat použití Sparku k man
 
 ## <a name="next-steps-and-more-information"></a>Další kroky a další informace
 
-- Další informace o použití ML Server v Apache Spark najdete v [příručce Začínáme](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
+- Další informace o použití ML Server v Apache Spark najdete v [příručce Začínáme](/machine-learning-server/r/how-to-revoscaler-spark).
 
 - Informace o službách ML ve službě HDInsight najdete v tématu [Přehled služeb ml v HDInsight](r-server/r-server-overview.md).
 
@@ -543,4 +540,4 @@ Další informace o použití Sparku najdete v těchto tématech:
 
 - [Dokument Apache Spark](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
-- [Sparkový přehled](https://docs.databricks.com/spark/latest/sparkr/overview.html) z datacihly.
+- [Spark – přehled](/azure/databricks/spark/latest/sparkr/overview)

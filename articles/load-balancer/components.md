@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6bf090cde7262fdae9c98ef55227bf2925937dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589703"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739827"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer komponenty
 
@@ -36,7 +36,7 @@ IP adresa vašeho Azure Load Balancer. Je to kontaktní bod pro klienty. Tyto IP
 
 Povaha IP adresy určuje **typ** vytvořeného nástroje pro vyrovnávání zatížení. Výběr privátních IP adres vytvoří interní nástroj pro vyrovnávání zatížení. Výběr veřejné IP adresy vytvoří veřejný Nástroj pro vyrovnávání zatížení.
 
-|  | Veřejný Load Balancer  | Interní nástroj pro vyrovnávání zatížení |
+|  | Veřejný nástroj pro vyrovnávání zatížení  | Interní nástroj pro vyrovnávání zatížení |
 | ---------- | ---------- | ---------- |
 | **Konfigurace IP adresy front-endu**| Veřejná IP adresa | Privátní IP adresa|
 | **Popis** | Veřejný Nástroj pro vyrovnávání zatížení mapuje veřejnou IP adresu a port příchozího provozu na privátní IP adresu a port virtuálního počítače. Nástroj pro vyrovnávání zatížení mapuje jiný způsob provozování odezvy z virtuálního počítače. Pomocí pravidel vyrovnávání zatížení můžete distribuovat konkrétní typy provozu napříč několika virtuálními počítači nebo službami. Můžete například rozložit zatížení provozu webových požadavků mezi několik webových serverů.| Interní nástroj pro vyrovnávání zatížení distribuuje provoz do prostředků, které jsou uvnitř virtuální sítě. Azure omezuje přístup k IP adresám front-endu virtuální sítě s vyrovnáváním zatížení. Front-endové IP adresy a virtuální sítě se nikdy přímo nezveřejňují do internetového koncového bodu. Interní obchodní aplikace se spouštějí v Azure a přistupuje se k nim v rámci Azure nebo z místních prostředků. |
@@ -44,7 +44,7 @@ Povaha IP adresy určuje **typ** vytvořeného nástroje pro vyrovnávání zat�
 
 ![Příklad vrstveného nástroje pro vyrovnávání zatížení](./media/load-balancer-overview/load-balancer.png)
 
-Load Balancer může mít několik front-endové IP adresy. Další informace o [několika front-endu](load-balancer-multivip-overview.md).
+Nástroj pro vyrovnávání zatížení může mít několik front-endové IP adresy. Další informace o [několika front-endu](load-balancer-multivip-overview.md).
 
 ## <a name="backend-pool"></a>Back-endový fond
 
@@ -58,27 +58,25 @@ Při zvažování, jak navrhnout back-end fond, můžete navrhnout minimální p
 
 Sonda stavu se používá k určení stavu instancí ve fondu back-endu. Během vytváření nástroje pro vyrovnávání zatížení nakonfigurujte sondu stavu pro použití nástroje pro vyrovnávání zatížení.  Tato sonda stavu určí, jestli je instance v pořádku a může přijímat provoz.
 
-Pro sondy stavu můžete definovat prahovou hodnotu, která není v pořádku. Když sonda přestane reagovat, Load Balancer zastaví odesílání nových připojení k instancím, které nejsou v pořádku. Selhání sondy nemá vliv na existující připojení. Připojení pokračuje do aplikace:
+Pro sondy stavu můžete definovat prahovou hodnotu, která není v pořádku. Když sonda přestane reagovat, nástroj pro vyrovnávání zatížení zastaví odesílání nových připojení do instancí, které nejsou v pořádku. Selhání sondy nemá vliv na existující připojení. Připojení pokračuje do aplikace:
 
 - Ukončí tok.
 - Vypršel časový limit nečinnosti
 - Virtuální počítač se vypne.
 
-Load Balancer poskytuje pro koncové body různé typy sond stavu: TCP, HTTP a HTTPS. [Přečtěte si další informace o Load Balancer sondy stavu](load-balancer-custom-probe-overview.md).
+Nástroj pro vyrovnávání zatížení poskytuje pro koncové body různé typy sond stavu: TCP, HTTP a HTTPS. [Přečtěte si další informace o Load Balancer sondy stavu](load-balancer-custom-probe-overview.md).
 
-Základní Load Balancer nepodporují testy HTTPS. Základní Load Balancer ukončí všechna připojení TCP (včetně zavedených připojení).
+Nástroj pro vyrovnávání zatížení úrovně Basic nepodporuje testy protokolu HTTPS. Nástroj pro vyrovnávání zatížení úrovně Basic uzavře všechna připojení TCP (včetně zavedených připojení).
 
 ## <a name="load-balancing-rules"></a>Pravidla vyrovnávání zatížení
 
-Pravidlo Load Balancer slouží k definování způsobu distribuce příchozího provozu do **všech** instancí v rámci fondu back-endu. Pravidlo vyrovnávání zatížení mapuje danou konfiguraci IP adresy front-endu a port na více IP adres a portů back-endu.
+Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce příchozího provozu do **všech** instancí v rámci fondu back-endu. Pravidlo vyrovnávání zatížení mapuje danou konfiguraci IP adresy front-endu a port na více IP adres a portů back-endu.
 
-Použijte například pravidlo vyrovnávání zatížení pro port 80 ke směrování provozu z IP adresy front-endu na port 80 vašich back-end instancí.
+Použijte například pravidlo vyrovnávání zatížení pro port 80 ke směrování provozu z vaší front-endu IP na port 80 back-end instancí.
 
-<p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="Pravidla vyrovnávání zatížení">
-</p>
+:::image type="content" source="./media/load-balancer-components/lbrules.png" alt-text="Referenční diagram pravidla nástroje pro vyrovnávání zatížení" border="false":::
 
-*Obrázek: pravidla vyrovnávání zatížení*
+*Obrázek: Load-Balancing pravidla*
 
 ## <a name="high-availability-ports"></a>Porty s vysokou dostupností
 
@@ -108,11 +106,7 @@ Další informace o [portech ha](load-balancer-ha-ports-overview.md).
 
 Příchozí pravidlo překladu adres (NAT) přepošle příchozí provoz odeslaný do kombinace IP adresy a portu front-endu. Přenosy se odesílají do **konkrétního** virtuálního počítače nebo instance ve fondu back-endu. Předávání portů se provádí stejnou distribucí založenou na hodnotě hash jako vyrovnávání zatížení.
 
-Například pokud chcete, aby relace protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) oddělují instance virtuálních počítačů ve fondu back-endu. Do portů na stejné IP adrese front-endu lze namapovat více interních koncových bodů. IP adresy front-endu lze použít k vzdálené správě virtuálních počítačů bez dalšího pole s odkazem.
-
-<p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="Příchozí pravidla NAT">
-</p>
+:::image type="content" source="./media/load-balancer-components/inboundnatrules.png" alt-text="Referenční diagram pravidla příchozího překladu adres (NAT)" border="false":::
 
 *Obrázek: příchozí pravidla NAT*
 
@@ -126,16 +120,29 @@ Přečtěte si další informace o [odchozích připojeních a pravidlech](load-
 
 Load Balancer úrovně Basic nepodporuje odchozí pravidla.
 
+:::image type="content" source="./media/load-balancer-components/outbound-rules.png" alt-text="Referenční diagram odchozího pravidla" border="false":::
+
+*Obrázek: odchozí pravidla*
+
+## <a name="limitations"></a>Omezení
+
+- Další informace o [limitech](../azure-resource-manager/management/azure-subscription-service-limits.md) pro vyrovnávání zatížení 
+- Nástroj pro vyrovnávání zatížení poskytuje vyrovnávání zatížení a přesměrování portů pro konkrétní protokoly TCP a UDP. Pravidla vyrovnávání zatížení a pravidla příchozího překladu adres (NAT) podporují protokoly TCP a UDP, ale ne jiné protokoly IP, včetně protokolu ICMP.
+- Odchozí tok z back-endu virtuálního počítače do front-endu interního Load Balancer se nezdaří.
+- Pravidlo nástroje pro vyrovnávání zatížení nemůže zahrnovat dvě virtuální sítě.  Front-endové a jejich instance back-endu se musí nacházet ve stejné virtuální síti.  
+- Předávání fragmentů IP adres není u pravidel vyrovnávání zatížení podporováno. Pro pravidla vyrovnávání zatížení se nepodporují fragmentace paketů UDP a TCP. Pravidla pro vyrovnávání zatížení portů HA lze použít k přeposílání stávajících fragmentů IP adres. Další informace najdete v tématu [Přehled portů vysoké dostupnosti](load-balancer-ha-ports-overview.md).
+- Na jednu skupinu dostupnosti můžete mít jenom 1 veřejné Load Balancer a 1 interní Load Balancer
+
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete začít s používáním Load Balancer, přečtěte si téma [Vytvoření veřejné Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) .
+- Pokud chcete začít s používáním Load Balancer, přečtěte si téma [vytvoření veřejného nástroje pro vyrovnávání zatížení](quickstart-load-balancer-standard-public-portal.md) .
 - Přečtěte si další informace o [Azure Load Balancer](load-balancer-overview.md).
-- Informace o [veřejné IP adrese](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- Informace o [privátní IP adrese](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)
-- Přečtěte si o používání [Standard Load Balancer a zóny dostupnosti](load-balancer-standard-availability-zones.md).
-- Další informace o [diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md).
+- Informace o [veřejné IP adrese](../virtual-network/virtual-network-public-ip-address.md)
+- Informace o [privátní IP adrese](../virtual-network/private-ip-addresses.md)
+- Přečtěte si o používání [nástroje Load Balancer úrovně Standard a zóny dostupnosti](load-balancer-standard-availability-zones.md).
+- Seznamte se s [diagnostikou standardního nástroje pro vyrovnávání zatížení](load-balancer-standard-diagnostics.md).
 - Přečtěte si o [resetování protokolu TCP při nečinnosti](load-balancer-tcp-reset.md).
-- Přečtěte si o [Standard Load Balancer s pravidly pro vyrovnávání zatížení portů vysoké dostupnosti](load-balancer-ha-ports-overview.md).
-- Přečtěte si další informace o [skupinách zabezpečení sítě](../virtual-network/security-overview.md).
-- Přečtěte si další informace o [limitech pro vyrovnávání zatížení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer).
-- Přečtěte si informace o používání [přesměrování portů](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal).
+- Seznamte [se s nástrojem Load Balancer úrovně Standard s porty vysoké dostupnosti](load-balancer-ha-ports-overview.md).
+- Přečtěte si další informace o [skupinách zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
+- Přečtěte si další informace o [limitech pro vyrovnávání zatížení](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer).
+- Přečtěte si informace o používání [přesměrování portů](./tutorial-load-balancer-port-forwarding-portal.md).

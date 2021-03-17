@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552788"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "92459675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Azure Active Directory integrace s ITRP
 
@@ -27,11 +27,11 @@ Tato integrace poskytuje tyto výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k ITRP (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s ITRP, musíte mít:
 
@@ -54,7 +54,7 @@ K nastavení integrace ITRP do služby Azure AD je nutné přidat ITRP z Galerie
 
 2. Přejít k **podnikovým aplikacím**  >  **všechny aplikace**:
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat aplikaci, vyberte v horní části okna možnost **Nová aplikace** :
 
@@ -92,9 +92,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ITRP, pr
 
     ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** a otevřete DIALOGOVÉ okno **základní konfigurace SAML** :
+3. Na stránce **nastavit jeden Sign-On s SAML** vyberte ikonu **Upravit** a otevřete DIALOGOVÉ okno **základní konfigurace SAML** :
 
-    ![Ikona úprav](common/edit-urls.png)
+    ![Snímek obrazovky s vybranou ikonou pro úpravu zobrazí stránku nastavit jednu Sign-On se stránkou SAML.](common/edit-urls.png)
 
 4. V dialogovém okně **základní konfigurace SAML** proveďte následující kroky.
 
@@ -113,7 +113,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ITRP, pr
 
 5. V části **podpisový certifikát SAML** vyberte ikonu **Upravit** a otevřete dialogové okno **podpisový certifikát SAML** :
 
-    ![Ikona úprav](common/edit-certificate.png)
+    ![Snímek obrazovky se stránkou podpisového certifikátu SAML se zvolenou ikonou pro úpravy.](common/edit-certificate.png)
 
 6. V dialogovém okně **podpisový certifikát SAML** Zkopírujte hodnotu **kryptografického otisku** a uložte ji:
 
@@ -139,13 +139,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ITRP, pr
 
 1. V levém podokně vyberte **jednotné přihlašování**:
 
-    ![Vyberte jednotné přihlašování.](./media/itrp-tutorial/ic775571.png "Vyberte jednotné přihlašování.")
+    ![Vyberte jednotné přihlašování.](./media/itrp-tutorial/ic775571.png "Vyberte jeden Sign-On")
 
 1. V části konfigurace **jednotného přihlašování** proveďte následující kroky.
 
-    ![Oddíl jednotného přihlašování](./media/itrp-tutorial/ic775572.png "Oddíl jednotného přihlašování")
+    ![Snímek obrazovky ukazuje jednu Sign-On oddíl s povoleným vybraným.](./media/itrp-tutorial/ic775572.png "Oddíl s jednou Sign-On")
 
-    ![Oddíl jednotného přihlašování](./media/itrp-tutorial/ic775573.png "Oddíl jednotného přihlašování")
+    ![Snímek obrazovky zobrazuje jednu část Sign-On, do které můžete přidat informace popsané v tomto kroku.](./media/itrp-tutorial/ic775573.png "Oddíl s jednou Sign-On")
 
     1. Vyberte **Povoleno**.
 
@@ -161,7 +161,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ITRP, pr
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory** , vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**:
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory** , vyberte **Uživatelé** a pak vyberte **Všichni uživatelé**:
 
     ![Vyberte Všichni uživatelé.](common/users.png)
 
@@ -175,9 +175,9 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Například BrittaSimon@contoso.com .)
+    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Například BrittaSimon@contoso.com .)
 
-    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která je uvedena v poli **heslo** .
+    1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu, která je uvedena v poli **heslo** .
 
     1. Vyberte **Vytvořit**.
 
@@ -185,9 +185,9 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k ITRP.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **ITRP**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **ITRP**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte možnost **ITRP**.
 
@@ -197,7 +197,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     ![Vyberte Uživatelé a skupiny.](common/users-groups-blade.png)
 
-4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
@@ -242,12 +242,12 @@ Chcete-li vytvořit uživatelský účet, proveďte následující kroky:
 
 Teď je potřeba otestovat konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu vyberete dlaždici ITRP, měli byste se automaticky přihlásit k instanci ITRP, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici ITRP, měli byste se automaticky přihlásit k instanci ITRP, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

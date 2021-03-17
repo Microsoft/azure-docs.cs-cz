@@ -3,7 +3,7 @@ title: Správa zařízení pomocí StorSimple Snapshot Manager | Microsoft Docs
 description: Popisuje, jak pomocí modulu snap-in StorSimple Snapshot Manager konzoly MMC připojit a spravovat zařízení StorSimple.
 services: storsimple
 documentationcenter: ''
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513986"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022968"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Připojení a Správa zařízení StorSimple pomocí Snapshot Manager StorSimple
 ## <a name="overview"></a>Přehled
@@ -31,10 +31,10 @@ Pomocí uzlů v podokně StorSimple Snapshot Manager **Scope** můžete ověřit
 
 V závislosti na výběru **zobrazení** zobrazuje podokno **výsledků** následující informace o jednotlivých zařízeních. (Další informace o konfiguraci zobrazení naleznete v [nabídce Zobrazit](storsimple-use-snapshot-manager.md#view-menu).
 
-| Sloupec výsledků | Description |
+| Sloupec výsledků | Popis |
 |:--- |:--- |
-| Name |Název zařízení, jak je nakonfigurované na portálu Azure Classic |
-| Model |Číslo modelu zařízení |
+| Název |Název zařízení, jak je nakonfigurované na portálu Azure Classic |
+| Modelování |Číslo modelu zařízení |
 | Verze |Verze softwaru nainstalovaného v zařízení |
 | Status |Zda je zařízení k dispozici |
 | Poslední synchronizace |Datum a čas poslední synchronizace zařízení |
@@ -110,7 +110,7 @@ Pomocí následujícího postupu synchronizujte připojená zařízení StorSimp
 
 #### <a name="to-refresh-connected-devices"></a>Aktualizace připojených zařízení
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
-2. V podokně **obor** klikněte pravým tlačítkem na **zařízení**a pak klikněte na **aktualizovat zařízení**. Tím se synchronizují připojená zařízení s StorSimple Snapshot Manager, abyste mohli zobrazit skupiny svazků a zálohy včetně všech nedávných přídavků. 
+2. V podokně **obor** klikněte pravým tlačítkem na **zařízení** a pak klikněte na **aktualizovat zařízení**. Tím se synchronizují připojená zařízení s StorSimple Snapshot Manager, abyste mohli zobrazit skupiny svazků a zálohy včetně všech nedávných přídavků. 
    
     ![Aktualizace zařízení StorSimple](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
 
@@ -193,7 +193,7 @@ Pokud zařízení StorSimple selhalo a nahrazuje ho pohotovostním zařízením 
    1. Spusťte Správce serveru.
    2. Na řídicím panelu Správce serveru v nabídce **nástroje** vyberte **služby**.
    3. V okně **služby** vyberte **službu Microsoft StorSimple Management Service**.
-   4. V pravém podokně v části **Služba správy Microsoft StorSimple**klikněte na **Zastavit službu**.
+   4. V pravém podokně v části **Služba správy Microsoft StorSimple** klikněte na **Zastavit službu**.
 2. Odeberte konfigurační informace související se starým zařízením:
    
    1. V Průzkumníku souborů přejděte na C:\ProgramData\Microsoft\StorSimple\BACatalog.
@@ -202,7 +202,7 @@ Pokud zařízení StorSimple selhalo a nahrazuje ho pohotovostním zařízením 
    
    1. Na řídicím panelu Správce serveru v nabídce **nástroje** vyberte **služby**.
    2. V okně **služby** vyberte **službu Microsoft StorSimple Management Service**.
-   3. V pravém podokně v části **Služba správy Microsoft StorSimple**klikněte na **restartovat službu**.
+   3. V pravém podokně v části **Služba správy Microsoft StorSimple** klikněte na **restartovat službu**.
 4. Spusťte StorSimple Snapshot Manager.
 5. Pokud chcete nakonfigurovat nové zařízení StorSimple, postupujte podle kroků v části Krok 2: připojení zařízení StorSimple v části [nasazení StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
 6. Klikněte pravým tlačítkem myši na uzel nejvyšší úrovně v podokně **oboru** (StorSimple Snapshot Manager v příkladu) a pak klikněte na **Přepnout zobrazení importy**. 

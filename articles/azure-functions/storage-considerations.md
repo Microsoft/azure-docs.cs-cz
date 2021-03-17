@@ -3,12 +3,12 @@ title: Požadavky na úložiště pro Azure Functions
 description: Seznamte se s požadavky na úložiště Azure Functions a o šifrování uložených dat.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c4ffb622482585e35337caf8e43b69e0f3b0385c
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318177"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517259"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Požadavky na úložiště pro Azure Functions
 
@@ -18,7 +18,7 @@ Azure Functions vyžaduje účet Azure Storage při vytváření instance aplika
 |Služba úložiště  | Využití funkcí  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Zachovat stav vazeb a klíče funkcí  <br/>Používá se také pro [centra úloh v Durable Functions](durable/durable-functions-task-hubs.md). |
-| [Soubory Azure](../storage/files/storage-files-introduction.md)  | Sdílená složka používaná k ukládání a spouštění kódu aplikace Function App v [plánu spotřeby](functions-scale.md#consumption-plan) a [plánu Premium](functions-scale.md#premium-plan). |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | Sdílená složka používaná k ukládání a spouštění kódu aplikace Function App v [plánu spotřeby](consumption-plan.md) a [plánu Premium](functions-premium-plan.md). |
 | [Úložiště front Azure](../storage/queues/storage-queues-introduction.md)     | Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).   |
 | [Azure Table storage](../storage/tables/table-storage-overview.md)  |  Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).       |
 
@@ -27,15 +27,21 @@ Azure Functions vyžaduje účet Azure Storage při vytváření instance aplika
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-Při vytváření aplikace Function App musíte vytvořit nebo propojit s Azure Storage účet pro obecné účely, který podporuje úložiště objektů blob, front a tabulek. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování. Některé účty úložiště nepodporují fronty a tabulky. Tyto účty zahrnují účty úložiště jen pro objekty blob, Azure Premium Storage a účty úložiště pro obecné účely s replikací ZRS. Tyto nepodporované účty se při vytváření aplikace Function App odfiltrují z okna účtu úložiště.
+Při vytváření aplikace Function App musíte vytvořit nebo propojit s Azure Storage účet pro obecné účely, který podporuje úložiště objektů blob, front a tabulek. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování. Některé účty úložiště nepodporují fronty a tabulky. Tyto účty zahrnují účty úložiště jen pro objekty BLOB a Azure Premium Storage.
 
 Další informace o typech účtů úložiště najdete v tématu [Seznámení se službami Azure Storage](../storage/common/storage-introduction.md#core-storage-services). 
 
-I když pomocí aplikace Function App můžete použít existující účet úložiště, musíte se ujistit, že splňuje tyto požadavky. Účty úložiště vytvořené jako součást služby Function App vytvořit tok jsou zaručené splňovat tyto požadavky na účet úložiště.  
+I když pomocí aplikace Function App můžete použít existující účet úložiště, musíte se ujistit, že splňuje tyto požadavky. Účty úložiště vytvořené jako součást aplikace Function App vytvořit tok v Azure Portal jsou zaručené splňovat tyto požadavky na účet úložiště. Na portálu se při výběru existujícího účtu úložiště při vytváření aplikace Function App odfiltrují nepodporované účty. V tomto toku můžete zvolit jenom existující účty úložiště ve stejné oblasti jako aplikace Function App, kterou vytváříte. Další informace najdete v tématu [umístění účtu úložiště](#storage-account-location).
+
+<!-- JH: Does using a Premium Storage account improve perf? -->
 
 ## <a name="storage-account-guidance"></a>Doprovodné materiály k účtu úložiště
 
 Každá aplikace Function App vyžaduje, aby účet úložiště fungoval. Pokud se tento účet odstraní, aplikace Function App se nespustí. Pokud chcete řešit problémy související s úložištěm, přečtěte si téma řešení [potíží souvisejících s úložištěm](functions-recover-storage-account.md). Následující další požadavky platí pro účet úložiště používaný aplikacemi Function App.
+
+### <a name="storage-account-location"></a>Umístění účtu úložiště
+
+Nejlepšího výkonu dosáhnete, když vaše aplikace Function App používá účet úložiště ve stejné oblasti, což snižuje latenci. Azure Portal Tento osvědčený postup vynutil. Pokud z nějakého důvodu potřebujete použít účet úložiště v jiné oblasti než aplikace Function App, musíte vytvořit aplikaci Function App mimo portál. 
 
 ### <a name="storage-account-connection-setting"></a>Nastavení připojení účtu úložiště
 
@@ -55,11 +61,19 @@ Je možné, že více aplikací Function App sdílí stejný účet úložiště
 
 [!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
-## <a name="mount-file-shares-linux"></a>Připojit sdílené soubory (Linux)
+### <a name="in-region-data-residency"></a>Zasídlí dat v oblasti
+
+Když všechna zákaznická data musí zůstat v rámci jedné oblasti, musí mít účet úložiště přidružený k aplikaci Function App jednu s [redundancí v oblasti](../storage/common/storage-redundancy.md). Pro [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection)se musí použít taky redundantní účet úložiště ve vaší oblasti.
+
+Jiná zákaznická data spravovaná platformou se ukládají jenom v rámci této oblasti, když se hostuje v App Service Environment pro vyrovnávání zatížení interně s vyrovnáváním zatížení. Další informace najdete v tématu [redundance zóny pomocného mechanismu](../app-service/environment/zone-redundancy.md#in-region-data-residency).
+
+## <a name="mount-file-shares"></a>Připojit sdílené složky
+
+_Tato funkce je k dispozici pouze v případě, že je spuštěna v systému Linux._ 
 
 Existující sdílené složky Azure můžete připojit k aplikacím funkcí pro Linux. Připojením sdílené složky k aplikaci Functions pro Linux můžete využít stávající modely strojového učení nebo jiná data ve vašich funkcích. Pomocí [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) příkazu můžete připojit existující sdílenou složku k aplikaci Functions pro Linux. 
 
-V tomto příkazu `share-name` je název existující sdílené složky Azure Files a `custom-id` může to být libovolný řetězec, který jedinečně definuje sdílenou složku, když je připojená k aplikaci Function App. Také `mount-path` je cesta, ze které je sdílená složka k dispozici ve vaší aplikaci Function App. `mount-path`musí být ve formátu `/dir-name` a nemůže začínat na `/home` .
+V tomto příkazu `share-name` je název existující sdílené složky Azure Files a `custom-id` může to být libovolný řetězec, který jedinečně definuje sdílenou složku, když je připojená k aplikaci Function App. Také `mount-path` je cesta, ze které je sdílená složka k dispozici ve vaší aplikaci Function App. `mount-path` musí být ve formátu `/dir-name` a nemůže začínat na `/home` .
 
 Úplný příklad najdete ve skriptech v tématu [Vytvoření aplikace funkcí Pythonu a připojení sdílené složky služby soubory Azure](scripts/functions-cli-mount-files-storage-linux.md). 
 

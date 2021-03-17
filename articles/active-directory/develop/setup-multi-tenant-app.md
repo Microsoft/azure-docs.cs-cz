@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: d865ac8bae475365dbfc6c8bad990a1acc7998f0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9c6272901600886958d4339d067ca75bb9a73793
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116746"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649117"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Jak nakonfigurovat novou aplikaci pro více tenantů
 
@@ -28,4 +29,4 @@ Tady je seznam doporučených témat, kde najdete další informace o víceklien
 - Podrobnější informace najdete v tématu [Konfigurace a kódování aplikace pro více tenantů](./howto-convert-app-to-be-multi-tenant.md), včetně postupu registrace, použití "běžného" koncového bodu, implementace souhlasu "User" a "admin", jak implementovat pokročilejší scénáře s více vrstvami.
 
 ## <a name="next-steps"></a>Další kroky
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

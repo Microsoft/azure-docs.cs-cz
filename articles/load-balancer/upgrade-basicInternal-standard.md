@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 10a0c186bb1a0d9f974d485e7d2d1d7326bd849c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 1b7bdbdb9e1d642f2ef4a715d4993e4f449ccd0a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033151"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050693"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Upgradovat interní Load Balancer Azure – nevyžaduje se žádné odchozí připojení.
-[Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](https://docs.microsoft.com/azure/load-balancer/skus#skus).
+[Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](./skus.md#skus).
 
 Tento článek představuje skript prostředí PowerShell, který vytvoří Standard Load Balancer se stejnou konfigurací jako základní Load Balancer a migrací provozu ze základní Load Balancer na Standard Load Balancer.
 
@@ -23,32 +23,32 @@ Tento článek představuje skript prostředí PowerShell, který vytvoří Stan
 
 K dispozici je skript Azure PowerShell, který provede následující akce:
 
-* Vytvoří standardní interní SKU Load Balancer v umístění, které zadáte. Všimněte si, že standardní interní Load Balancer nebude poskytovat žádné [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .
+* Vytvoří standardní interní SKU Load Balancer v umístění, které zadáte. Všimněte si, že standardní interní Load Balancer nebude poskytovat žádné [odchozí připojení](./load-balancer-outbound-connections.md) .
 * Bezproblémově kopíruje konfiguraci základní SKU Load Balancer do nově vytvořené Standard Load Balancer.
 * Můžete bez problémů přesunout privátní IP adresy ze základních Load Balancer do nově vytvořené Standard Load Balancer.
 * Virtuální počítače můžete bez problémů přesunout ze back-endu základního Load Balancer do fondu back-endu Standard Load Balancer
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Skript podporuje pouze interní Load Balancer upgrade, pokud není nutné žádné odchozí připojení. Pokud jste pro některé z vašich virtuálních počítačů vyžádali [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , přečtěte si prosím na této [stránce](upgrade-InternalBasic-To-PublicStandard.md) pokyny. 
+* Skript podporuje pouze interní Load Balancer upgrade, pokud není nutné žádné odchozí připojení. Pokud jste pro některé z vašich virtuálních počítačů vyžádali [odchozí připojení](./load-balancer-outbound-connections.md) , přečtěte si prosím na této [stránce](upgrade-InternalBasic-To-PublicStandard.md) pokyny. 
 * Základní Load Balancer musí být ve stejné skupině prostředků jako virtuální počítače back-end a síťové adaptéry.
 * Pokud se standardní nástroj pro vyrovnávání zatížení vytvoří v jiné oblasti, nebudete moct k nově vytvořeným Standard Load Balancer přidružit virtuální počítače existující ve staré oblasti. Pokud chcete toto omezení obejít, nezapomeňte vytvořit nový virtuální počítač v nové oblasti.
 * Pokud vaše Load Balancer nemá front-end IP konfiguraci ani back-end fond, pravděpodobně při spuštění skriptu dojde k chybě. Ujistěte se, že nejsou prázdné.
 
 ## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>Změňte metodu přidělování IP adres na statickou pro konfiguraci IP adresy front-endu (Tento krok ignorujte, pokud už je statický).
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte základní Load Balancer.
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a potom v seznamu prostředků vyberte základní Load Balancer.
 
-2. V části **Nastavení**vyberte **Konfigurace IP adresy front-endu**a vyberte první konfiguraci IP adresy front-endu. 
+2. V části **Nastavení** vyberte **Konfigurace IP adresy front-endu** a vyberte první konfiguraci IP adresy front-endu. 
 
-3. Jako **přiřazení**vyberte **static** .
+3. Jako **přiřazení** vyberte **static** .
 
 4. Opakujte krok 3 pro všechny konfigurace protokolu IP front-endu základní Load Balancer.
 
 
 ## <a name="download-the-script"></a>Stáhnout skript
 
-Stáhněte si skript migrace z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureILBUpgrade/4.0).
+Stáhněte si skript migrace z  [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureILBUpgrade/5.0).
 ## <a name="use-the-script"></a>Použití skriptu
 
 V závislosti na nastaveních a preferencích místního prostředí PowerShellu jsou k dispozici dvě možnosti:
@@ -58,7 +58,7 @@ V závislosti na nastaveních a preferencích místního prostředí PowerShellu
 
 Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az` . Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
 
-### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody install-Script
+### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody Install-Script
 
 Pokud chcete použít tuto možnost, musíte mít v počítači nainstalované moduly AZ pro Azure. Pokud jsou nainstalovány, následující příkaz zobrazí chybu. Můžete buď odinstalovat moduly AZ pro Azure, nebo použít jinou možnost ke stažení skriptu ručně a jeho spuštění.
   
@@ -96,15 +96,11 @@ Spuštění skriptu:
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Existují nějaká omezení Azure PowerShell skriptu pro migraci konfigurace z V1 na v2?
 
-Ano. Podívejte se na [Upozornění a omezení](#caveatslimitations).
+Yes. Podívejte se na [Upozornění a omezení](#caveatslimitations).
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Přepíná Azure PowerShell skript také přenos z mé základní Load Balancer na nově vytvořenou Standard Load Balancer?
 
 Ano, migruje provoz. Pokud byste chtěli migrovat provoz osobně, použijte [Tento skript](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0) , který pro vás nepřesouvá virtuální počítače.
-
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
-  
-Můžete odeslat e-mail slbupgradesupport@microsoft.com , otevřít případ podpory s podporou Azure nebo obojí.
 
 ## <a name="next-steps"></a>Další kroky
 

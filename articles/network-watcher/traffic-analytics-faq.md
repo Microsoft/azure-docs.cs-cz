@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479842"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579240"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
 
@@ -56,9 +56,9 @@ Postup kontroly rolí přiřazených uživateli pro předplatné:
 
 2. Vyberte požadované předplatné pomocí **Select-AzSubscription**. 
 
-3. Pokud chcete zobrazit seznam všech rolí, které jsou přiřazené k zadanému uživateli, použijte příkaz **Get-AzRoleAssignment-SignInName [User email]-IncludeClassicAdministrators**. 
+3. Pokud chcete zobrazit seznam všech rolí, které jsou přiřazené k zadanému uživateli, použijte příkaz  **Get-AzRoleAssignment-SignInName [User email]-IncludeClassicAdministrators**. 
 
-Pokud nevidíte žádný výstup, obraťte se na příslušného Správce předplatného a získejte přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [Správa řízení přístupu na základě rolí pomocí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+Pokud nevidíte žádný výstup, obraťte se na příslušného Správce předplatného a získejte přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Ve kterých oblastech Azure je Analýza provozu k dispozici?
@@ -126,7 +126,7 @@ Ano.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Můžu použít stávající pracovní prostor?
 
-Ano. Pokud vyberete existující pracovní prostor, ujistěte se, že byl migrován do nového dotazovacího jazyka. Pokud pracovní prostor nechcete upgradovat, je nutné vytvořit nový. Další informace o novém dotazovacím jazyku najdete v tématu [Azure monitor protokoluje upgrade na nové prohledávání protokolu](../log-analytics/log-analytics-log-search-upgrade.md).
+Ano. Pokud vyberete existující pracovní prostor, ujistěte se, že byl migrován do nového dotazovacího jazyka. Pokud pracovní prostor nechcete upgradovat, je nutné vytvořit nový. Další informace o novém dotazovacím jazyku najdete v tématu [Azure monitor protokoluje upgrade na nové prohledávání protokolu](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Může být můj účet Azure Storage v jednom předplatném a pracovní prostor Log Analytics má v jiném předplatném?
 
@@ -176,7 +176,7 @@ Informace o prostředcích vidíte na řídicím panelu. Nicméně nejsou k disp
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Je možné nakonfigurovat analýzu provozu pomocí PowerShellu nebo šablony Azure Resource Manager nebo klienta?
 
-Analýzu provozu můžete nakonfigurovat pomocí Windows PowerShellu z verze 6.2.1 a vyšší. Pokud chcete nakonfigurovat protokolování toku a analýzu provozu pro konkrétní NSG pomocí rutiny Set, přečtěte si téma [set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Pokud chcete získat stav protokolování toku a analýzy provozu pro konkrétní NSG, přečtěte si téma [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
+Analýzu provozu můžete nakonfigurovat pomocí Windows PowerShellu z verze 6.2.1 a vyšší. Pokud chcete nakonfigurovat protokolování toku a analýzu provozu pro konkrétní NSG pomocí rutiny Set, přečtěte si téma [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Pokud chcete získat stav protokolování toku a analýzy provozu pro konkrétní NSG, přečtěte si téma [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
 
 V současné době nemůžete použít šablonu Azure Resource Manager ke konfiguraci analýzy provozu.
 
@@ -250,7 +250,7 @@ Například podle [cenového plánu](https://azure.microsoft.com/pricing/details
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Jak často Analýza provozu data procesu?
 
-Viz [část agregace dat](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) v dokumentu Analýza provozu schématu a agregace dat
+Viz [část agregace dat](./traffic-analytics-schema.md#data-aggregation) v dokumentu Analýza provozu schématu a agregace dat
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Jak se Analýza provozu rozhodnout, že je IP adresa škodlivá? 
 
@@ -262,7 +262,7 @@ Analýza provozu nemá integrovanou podporu pro výstrahy. Vzhledem k tomu, že 
 - Nabídne můžete použít pro Log Analytics v Analýza provozu. 
 - Pro psaní dotazů použijte [zde dokumentované schéma](traffic-analytics-schema.md) . 
 - Pokud chcete vytvořit upozornění, klikněte na nové pravidlo upozornění.
-- Informace o vytvoření výstrahy najdete v [dokumentaci k protokolům výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) .
+- Informace o vytvoření výstrahy najdete v [dokumentaci k protokolům výstrah](../azure-monitor/alerts/alerts-log.md) .
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Návody ověřit, které virtuální počítače přijímají většinu místních přenosů?
 
@@ -348,14 +348,14 @@ Stránka geografického mapování obsahuje dvě hlavní části:
 - Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6` se fokus přesune na jeden ze zvýrazněných uzlů (**datacentrum Azure** nebo **země/oblast**) v zobrazení mapy.
 - Chcete-li přejít na jiné zvýrazněné uzly v mapě, použijte buď `Tab` klíč, nebo `Right arrow` pro pohyb vpřed. Použijte `Shift+Tab` klíč nebo `Left arrow` pro zpětný pohyb.
 - Pokud chcete vybrat libovolný zvýrazněný uzel na mapě, použijte `Enter` `Down arrow` klávesu nebo.
-- Při výběru všech takových uzlů se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko uzavřeno v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` klávesy a a `Left arrow` přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
+- Při výběru všech takových uzlů se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko uzavřeno v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` klávesy a a `Left arrow` přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj** vyberte tlačítko s fokusem.
 - Když stisknete klávesu `Tab` , když je fokus v **poli Information Tool**, přesune se fokus do koncových bodů stejného kontinentu jako vybraný uzel. `Right arrow` `Left arrow` K přesunu těchto koncových bodů použijte klávesy a.
 - Chcete-li přejít na jiné koncové body toku nebo kontinenty, použijte k přemístění `Tab` vpřed a `Shift+Tab` k zpětnému přesunu.
 - Pokud je fokus v **clusterech s kontinentem**, `Enter` `Down` zvýrazněte koncové body v rámci clusteru s kontinentem nebo pomocí kláves se šipkami. Chcete-li přejít mezi koncovými body a tlačítkem Zavřít v informačním poli clusteru kontinentů, použijte `Right arrow` buď `Left arrow` klávesu nebo, pro dopředu a zpětnou pohyb v uvedeném pořadí. U libovolného koncového bodu můžete použít `Shift+L` k přepnutí na linku připojení z vybraného uzlu do koncového bodu. Opětovným stisknutím klávesy můžete `Shift+L` Přejít na vybraný koncový bod.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Navigace na klávesnici v libovolné fázi
     
-- `Esc`sbalí rozbalený výběr.
+- `Esc` sbalí rozbalený výběr.
 - `Up-arrow`Klíč provádí stejnou akci jako `Esc` . `Down arrow`Klíč provádí stejnou akci jako `Enter` .
 - Slouží `Shift+Plus` k přiblížení a oddálení `Shift+Minus` .
 
@@ -377,7 +377,7 @@ Stránka topologie virtuálních sítí obsahuje dvě hlavní části:
     
 - Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6` se fokus přesune na jeden ze zvýrazněných uzlů (**VNet**) v zobrazení topologie.
 - Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte `Shift+Right arrow` klávesu pro dopředný pohyb. 
-- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , `Right arrow` použijte `Left arrow` klávesy a k přesunutí vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
+- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , `Right arrow` použijte `Left arrow` klávesy a k přesunutí vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj** vyberte tlačítko s fokusem.
 - Po výběru všech takových uzlů můžete navštívit všechna jeho připojení, a to tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.
     
 
@@ -399,5 +399,8 @@ Stránka topologie virtuální podsítě obsahuje dvě hlavní části:
     
 - Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6` se fokus přesune do jednoho ze zvýrazněných uzlů (**podsítě**) v zobrazení topologie.
 - Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte `Shift+Right arrow` klávesu pro dopředný pohyb. 
-- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` klávesy a a `Left arrow` přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
-- Na výběr všech takových uzlů můžete všechny své připojení navštívit tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.    
+- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` klávesy a a `Left arrow` přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj** vyberte tlačítko s fokusem.
+- Na výběr všech takových uzlů můžete všechny své připojení navštívit tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.
+
+## <a name="are-classic-nsgs-supported"></a>Jsou podporovány klasické skupin zabezpečení sítě?
+Ne, Analýza provozu nepodporuje klasický NSG. Doporučuje se migrovat prostředky IaaS z modelu Classic na Azure Resource Manager, protože klasické prostředky budou [zastaralé](../virtual-machines/classic-vm-deprecation.md). V tomto článku najdete informace [o tom, jak provést migraci](../virtual-machines/migration-classic-resource-manager-overview.md).

@@ -1,0 +1,80 @@
+- name: Dokumentace ke službě Managed HSM
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Managed HSM
+      href: overview.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Rozhraní příkazového řádku
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: Šablona Azure Resource Manageru
+      href: quick-create-template.md
+- name: Kurzy
+  items:
+    - name: Správa pomocí Azure CLI
+      href: key-management.md
+    - name: Správa rolí pro Managed HSM
+      href: role-management.md
+    - name: Zabezpečený přístup ke službě Managed HSM
+      href: secure-your-managed-hsm.md
+    - name: Nastavení protokolování pro Managed HSM
+      href: logging.md
+    - name: Zotavení po havárii
+      href: disaster-recovery-guide.md
+    - name: Import klíčů chráněných modulem HSM do služby Key Vault
+      href: hsm-protected-keys-byok.md
+    - name: Zálohování a obnovení
+      href: backup-restore.md
+- name: Koncepty
+  items:
+    - name: Doména zabezpečení
+      href: security-domain.md
+    - name: Osvědčené postupy
+      href: best-practices.md
+    - name: Řízení přístupu
+      href: access-control.md
+    - name: Místní předdefinované role řízení přístupu na základě role
+      href: built-in-roles.md
+- name: Referenční informace
+  items:
+    - name: Azure PowerShell
+      href: /powershell/azure#key_vault
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault
+    - name: Java
+      href: /java/api/overview/azure/keyvault
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault-index
+    - name: Python
+      href: /python/api/overview/azure/key-vault-index
+    - name: REST
+      href: /rest/api/keyvault
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: Zdroje a prostředky
+  items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-key-vault
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: Dostupnost v oblastech
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: Smlouvy o úrovni služeb (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: Omezení služby
+      href: ../general/service-limits.md
+    - name: Stav služby
+      href: 'https://azure.microsoft.com/status/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: Blog
+      href: /archive/blogs/kv/
+    - name: Zpětná vazba k produktu
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

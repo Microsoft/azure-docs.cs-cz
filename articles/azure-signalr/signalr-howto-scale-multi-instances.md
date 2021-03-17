@@ -4,14 +4,15 @@ description: V mnoha scénářích škálování zákazník často potřebuje z�
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74158156"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89439210"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Jak škálovat službu signálu pomocí více instancí?
 Nejnovější sada SDK služby signalizace podporuje více koncových bodů pro instance služby Signal. Pomocí této funkce můžete škálovat souběžná připojení nebo je použít pro zasílání zpráv mezi oblastmi.
@@ -26,7 +27,7 @@ Pokud klíč začíná `Azure:SignalR:ConnectionString:` , měl by být ve form�
 
 Připojovací řetězce s více instancemi můžete přidat pomocí následujících `dotnet` příkazů:
 
-```batch
+```cmd
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-a <ConnectionString1>
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-b:primary <ConnectionString2>
 dotnet user-secrets set Azure:SignalR:ConnectionString:backup:secondary <ConnectionString3>
@@ -217,7 +218,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 `ServiceEndpoint`Objekt má `EndpointType` vlastnost s hodnotou `primary` nebo `secondary` .
 
-`primary`koncové body jsou upřednostňovanými koncovými body pro příjem klientského provozu a považují se za spolehlivější síťová připojení. `secondary`koncovým bodům se považují méně spolehlivá síťová připojení a používají se pouze k přebírání přenosů mezi servery, například při vysílání zpráv, nikoli pro přenos klientů na server.
+`primary` koncové body jsou upřednostňovanými koncovými body pro příjem klientského provozu a považují se za spolehlivější síťová připojení. `secondary` koncovým bodům se považují méně spolehlivá síťová připojení a používají se pouze k přebírání přenosů mezi servery, například při vysílání zpráv, nikoli pro přenos klientů na server.
 
 V případech různých oblastí může být síť nestabilní. U jednoho serveru aplikace umístěného v *východní USA*se koncový bod služby Signal umístěný ve stejné *východní USA* oblasti dá nakonfigurovat jako `primary` a koncové body v jiných oblastech označených jako `secondary` . V této konfiguraci můžou koncové body služby v jiných oblastech **přijímat** zprávy z tohoto *východní USA* serveru aplikace, ale na tento aplikační server se nesměrují žádní klienti pro **různé oblasti** . Architektura se zobrazuje v následujícím diagramu:
 

@@ -3,20 +3,20 @@ title: Publikování aplikace – LUIS
 titleSuffix: Azure Cognitive Services
 description: Až dokončíte sestavování a testování vaší aktivní aplikace LUIS, zpřístupněte ji klientské aplikaci tím, že ji publikujete do koncového bodu.
 services: cognitive-services
-author: diberry
+author: aahill
 manager: nitinme
+ms.author: aahi
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: e9c8b607b1dc3f7f67ee1fdad353d15023318947
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 01/12/2021
+ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340687"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558902"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikujte svou aktivní, školenou aplikaci do pracovního nebo produkčního koncového bodu.
 
@@ -38,7 +38,7 @@ Po dokončení sestavování, školení a testování vaší aktivní aplikace L
 Po zobrazení automaticky otevíraného okna vyberte správný slot:
 
 * Příprava
-* Produkce
+* Provoz
 
 Pomocí obou slotů pro publikování vám to umožňuje mít v publikovaných koncových bodech k dispozici dvě různé verze aplikace nebo stejnou verzi ve dvou různých koncových bodech.
 
@@ -46,7 +46,7 @@ Pomocí obou slotů pro publikování vám to umožňuje mít v publikovaných k
 
 Aplikace se publikuje do všech oblastí přidružených k prostředkům koncového bodu předpovědi Luis přidaným na portálu Luis ze stránky **Správa**  ->  **[prostředků Azure](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** .
 
-Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud vytvoříte prostředek Luis ve dvou oblastech, **westus** a **eastus**a přidáte je do aplikace jako prostředky, aplikace se publikuje v obou oblastech. Další informace o oblastech LUIS najdete v tématu [oblasti](luis-reference-regions.md).
+Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud vytvoříte prostředek Luis ve dvou oblastech, **westus** a **eastus** a přidáte je do aplikace jako prostředky, aplikace se publikuje v obou oblastech. Další informace o oblastech LUIS najdete v tématu [oblasti](luis-reference-regions.md).
 
 > [!TIP]
 > Existují tři oblasti vytváření obsahu. Musíte vytvořit oblast, do které chcete publikovat. Pokud potřebujete publikovat ve všech oblastech, je nutné spravovat proces vytváření obsahu a výsledný model vyškolený ve všech třech oblastech vytváření obsahu.
@@ -57,7 +57,6 @@ Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud
 Po výběru slotu nakonfigurujte nastavení publikování pro:
 
 * Analýza mínění
-* [Oprava pravopisu](luis-tutorial-bing-spellcheck.md) – pouze koncový bod verze V2 – předpověď
 * Neprojevení řeči
 
 Po publikování jsou tato nastavení dostupná ke kontrole na stránce **Správa** **Nastavení publikování** oddílu. Nastavení můžete změnit při každém publikování. Pokud zrušíte publikování, všechny změny, které jste provedli během publikování, se také zruší.
@@ -79,12 +78,6 @@ Nemusíte zadávat Analýza textu klíč a za tuto službu se neúčtují žádn
 Mínění data jsou skóre mezi 1 a 0 značící kladné (blíže k 1) nebo záporné (navýšení na 0) mínění dat. Popisek mínění `positive` , `neutral` a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina.
 
 Další informace o odpovědích koncových bodů JSON s analýzou mínění najdete v tématu [Analýza mínění](luis-reference-prebuilt-sentiment.md) .
-
-## <a name="spelling-correction"></a>Oprava pravopisu
-
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
-
-Opravy pro kontrolu pravopisu se provádí před předvídáním LUIS uživatele utterance. V odpovědi můžete zobrazit všechny změny v původních utterance, včetně pravopisu.
 
 ## <a name="speech-priming"></a>Neprojevení řeči
 

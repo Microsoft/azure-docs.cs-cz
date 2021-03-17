@@ -4,25 +4,25 @@ description: Jak najít nepřipojené disky spravované v Azure a nespravované 
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4d31ce4b6086c44de913afd1083bae25fa3d44cd
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542734"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898151"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Vyhledání a odstranění nepřipojených spravovaných a nespravovaných disků Azure – Azure Portal
 
-Při odstranění virtuálního počítače v Azure se ve výchozím nastavení neodstraní všechny disky připojené k virtuálnímu počítači. To pomáhá zabránit ztrátě dat kvůli neúmyslnému odstranění virtuálních počítačů. Po odstranění virtuálního počítače budete platit za nepřipojené disky. V tomto článku se dozvíte, jak najít a odstranit všechny nepřipojené disky pomocí Azure Portal a omezit zbytečné náklady.
+Při odstranění virtuálního počítače v Azure se ve výchozím nastavení neodstraní všechny disky připojené k virtuálnímu počítači. To pomáhá zabránit ztrátě dat kvůli neúmyslnému odstranění virtuálních počítačů. Po odstranění virtuálního počítače budete platit za nepřipojené disky. V tomto článku se dozvíte, jak najít a odstranit všechny nepřipojené disky pomocí Azure Portal a omezit zbytečné náklady. Odstranění jsou trvalá, po odstranění disku nebudete moct data obnovit.
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>Spravované disky: najít a odstranit nepřipojené disky
 
 Pokud máte nepřipojené spravované disky a už je nepotřebujete, následující postup vysvětluje, jak je najít z Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Vyhledejte a vyberte **disky**.
 
     V okně **disky** se zobrazí seznam všech disků. Každý disk, který má **-** ve sloupci **vlastník** "", je nepřipojený disk.
@@ -40,7 +40,7 @@ Nespravované disky jsou soubory VHD, které se ukládají jako [objekty blob st
 
 Pokud máte nespravované disky, které nejsou připojené k virtuálnímu počítači, už je nepotřebujete, a chcete je odstranit, následující postup vysvětluje, jak to udělat z Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Vyhledejte a vyberte **disky (klasické)**.
 
     Zobrazí se seznam všech nespravovaných disků. Libovolný disk, který má **-** ve sloupci **připojeno k** , je nepřipojený disk.

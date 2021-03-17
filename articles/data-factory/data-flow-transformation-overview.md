@@ -1,18 +1,17 @@
 ---
 title: Přehled transformace toku dat
 description: Přehled různých transformací dostupných v toku mapování dat
-author: djpmsft
-ms.author: daperlov
-manager: anandsub
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/27/2020
+ms.openlocfilehash: ba2ff2b5f108d7910958b374cc4b602a84a3f53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606273"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367907"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Přehled transformace toku dat
 
@@ -20,7 +19,7 @@ ms.locfileid: "81606273"
 
 Níže je uveden seznam transformací aktuálně podporovaných v mapování toku dat. Kliknutím na jednotlivé transformace se dozvíte podrobnosti o konfiguraci.
 
-| Name | Kategorie | Description |
+| Name | Kategorie | Popis |
 | ---- | -------- | ----------- |
 | [Agregace](data-flow-aggregate.md) | Modifikátor schématu | Definujte různé typy agregací, jako například SUM, MIN, MAX a COUNT seskupené podle existujících nebo počítaných sloupců. | 
 | [Změna řádku](data-flow-alter-row.md) | Modifikátor řádku | Nastavení zásad vložení, odstranění, aktualizace a Upsert na řádcích |
@@ -29,10 +28,11 @@ Níže je uveden seznam transformací aktuálně podporovaných v mapování tok
 | [Existuje](data-flow-exists.md) | Několik vstupů/výstupů | Ověřte, jestli vaše data existují v jiném zdroji nebo streamu. | 
 | [Filtr](data-flow-filter.md) | Modifikátor řádku | Filtruje řádek na základě podmínky. |
 | [Zploštění](data-flow-flatten.md) | Modifikátor schématu |  Hodnoty polí v hierarchických strukturách, jako je JSON, a jejich rozveďte do jednotlivých řádků. |
-| [Připojit](data-flow-join.md) | Několik vstupů/výstupů |  Kombinovat data ze dvou zdrojů nebo datových proudů. |
+| [Join](data-flow-join.md) (Spojení) | Několik vstupů/výstupů |  Kombinovat data ze dvou zdrojů nebo datových proudů. |
 | [Vyhledávání](data-flow-lookup.md) | Několik vstupů/výstupů | Referenční data z jiného zdroje. |
 | [Nová větev](data-flow-new-branch.md) | Několik vstupů/výstupů | Použijte několik sad operací a transformací proti stejnému datovému proudu. |
 | [Převést na sloupce](data-flow-pivot.md) | Modifikátor schématu | Agregace, ve které má jeden nebo více sloupců seskupení jedinečné hodnoty řádků transformované na jednotlivé sloupce. |
+| [Rank](data-flow-rank.md) | Modifikátor schématu | Vygenerovat seřazené hodnocení na základě podmínek řazení |
 | [Výběr](data-flow-select.md) | Modifikátor schématu | Sloupce aliasů a názvy datových proudů a přetáhnout nebo změnit uspořádání sloupců |
 | [Jímka](data-flow-sink.md) | - | Konečný cíl pro vaše data |
 | [Seřadit](data-flow-sort.md) | Modifikátor řádku | Seřadit příchozí řádky v aktuálním datovém proudu |

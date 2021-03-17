@@ -3,17 +3,19 @@ title: Skalární výrazy v Azure Cosmos DBch dotazech SQL
 description: Seznamte se s syntaxí skalárního výrazu SQL pro Azure Cosmos DB. Tento článek také popisuje, jak kombinovat skalární výrazy do složitých výrazů pomocí operátorů.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74870730"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339627"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalární výrazy v Azure Cosmos DBch dotazech SQL
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [Klauzule SELECT](sql-query-select.md) podporuje skalární výrazy. Skalární výraz je kombinací symbolů a operátorů, které lze vyhodnotit, aby získala jedinou hodnotu. Příklady skalárních výrazů: konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na aliasy nebo volání funkcí. Skalární výrazy lze kombinovat do složitých výrazů pomocí operátorů.
 
@@ -55,7 +57,7 @@ ms.locfileid: "74870730"
 - `input_alias`  
   
    Představuje hodnotu definovanou `input_alias` klauzulí představenou v `FROM` klauzuli.  
-  Tato hodnota se garantuje jako **nedefinovaná** –**nedefinované** hodnoty ve vstupu se přeskočí.  
+  Tato hodnota se garantuje jako **nedefinovaná** – **nedefinované** hodnoty ve vstupu se přeskočí.  
   
 - `<scalar_expression>.property_name`  
   
@@ -141,6 +143,6 @@ Výsledky jsou následující:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)
 - [Ukázky Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Poddotazy](sql-query-subquery.md)

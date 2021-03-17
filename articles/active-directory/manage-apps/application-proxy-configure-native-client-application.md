@@ -4,7 +4,7 @@ description: Obsahuje informace o tom, jak povolit nativním klientským aplikac
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f8494852bcff49602645c940470b529302f119f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e830b52accefa0bcb76cc3434cae2fe94eed97db
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165069"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258658"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Jak povolit nativní klientské aplikace pro interakci s proxy aplikacemi
 
@@ -31,7 +31,7 @@ Pro podporu nativních klientských aplikací akceptuje proxy aplikací tokeny v
 
 ![Vztah mezi koncovými uživateli, službou Azure AD a publikovanými aplikacemi](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-K publikování nativních aplikací použijte knihovnu Microsoft Authentication Library, která se stará o ověřování a podporuje mnoho klientských prostředí. Proxy aplikace se zahodí do [aplikace klasické pracovní plochy, která volá webové rozhraní API jménem přihlášeného uživatelského](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user) scénáře.
+K publikování nativních aplikací použijte knihovnu Microsoft Authentication Library, která se stará o ověřování a podporuje mnoho klientských prostředí. Proxy aplikace se zahodí do [aplikace klasické pracovní plochy, která volá webové rozhraní API jménem přihlášeného uživatelského](../develop/authentication-flows-app-scenarios.md#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user) scénáře.
 
 Tento článek vás provede čtyřmi kroky k publikování nativní aplikace s proxy aplikací a knihovnou ověřování Azure AD.
 
@@ -56,8 +56,8 @@ Teď musíte aplikaci zaregistrovat ve službě Azure AD, a to takto:
    - Pokud chcete cílit jenom na účty, které jsou pro vaši organizaci interní, vyberte **účty jenom v tomto organizačním adresáři**.
    - Pokud chcete cílit jenom na obchodní nebo vzdělávací zákazníky, vyberte **účty v jakémkoli adresáři organizace**.
    - Pokud chcete cílit na nejširší sadu identit Microsoftu, vyberte **účty v libovolném organizačním adresáři a v osobních účtech Microsoft**.
-1. V části **identifikátor URI pro přesměrování**vyberte **veřejný klient (mobilní & Desktop)** a pak zadejte identifikátor URI `https://login.microsoftonline.com/common/oauth2/nativeclient` pro přesměrování vaší aplikace.
-1. Vyberte a přečtěte si **Zásady platformy Microsoftu**a pak vyberte **zaregistrovat**. Vytvoří a zobrazí se stránka s přehledem pro novou registraci aplikace.
+1. V části **identifikátor URI pro přesměrování** vyberte **veřejný klient (mobilní & Desktop)** a pak zadejte identifikátor URI `https://login.microsoftonline.com/common/oauth2/nativeclient` pro přesměrování vaší aplikace.
+1. Vyberte a přečtěte si **Zásady platformy Microsoftu** a pak vyberte **zaregistrovat**. Vytvoří a zobrazí se stránka s přehledem pro novou registraci aplikace.
 
 Podrobnější informace o vytvoření nové registrace aplikace najdete v tématu [integrování aplikací pomocí Azure Active Directory](../develop/quickstart-register-app.md).
 
@@ -68,7 +68,7 @@ Teď, když jste zaregistrovali nativní aplikaci, můžete v tomto případě p
 1. V bočním panelu na stránce Nová registrace aplikace vyberte **oprávnění rozhraní API**. Zobrazí se stránka **oprávnění rozhraní API** pro novou registraci aplikace.
 1. Vyberte **Přidat oprávnění**. Zobrazí se stránka **oprávnění API pro vyžádání** .
 1. V části **Vybrat nastavení rozhraní API** vyberte **rozhraní API moje organizace používá**. Zobrazí se seznam obsahující aplikace ve vašem adresáři, které zveřejňují rozhraní API.
-1. Do vyhledávacího pole zadejte nebo přejděte na proxy aplikaci, kterou jste publikovali v [kroku 1: publikování aplikace proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-native-client-application#step-1-publish-your-proxy-application)a pak vyberte aplikaci proxy.
+1. Do vyhledávacího pole zadejte nebo přejděte na proxy aplikaci, kterou jste publikovali v [kroku 1: publikování aplikace proxy](#step-1-publish-your-proxy-application)a pak vyberte aplikaci proxy.
 1. V poli **jaký typ oprávnění vyžaduje vaše aplikace?** vyberte typ oprávnění. Pokud vaše nativní aplikace potřebuje přístup k rozhraní API aplikace proxy jako přihlášený uživatel, vyberte **delegovaná oprávnění**.
 1. V záhlaví **vybrat oprávnění** vyberte požadované oprávnění a pak vyberte **Přidat oprávnění**. Stránka **oprávnění API** pro vaši nativní aplikaci teď zobrazuje proxy aplikace a rozhraní API pro přístup, které jste přidali.
 

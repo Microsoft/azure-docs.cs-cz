@@ -12,28 +12,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66f8020ec2561bf06716db0720a7ec4292f36eb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 76aeb63feb006e6962efeb3687363f18acb59904
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034118"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746690"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD
 
 
-Pomocí služby Azure Active Directory (Azure AD) můžete snadno povolit spolupráci napříč hranicemi organizace pomocí [funkce Azure AD B2B](../b2b/what-is-b2b.md). Správce nebo [jiní uživatelé](../b2b/what-is-b2b.md)můžou [pozvat](../b2b/add-users-administrator.md) uživatele typu host z jiných tenantů. Tato možnost platí i pro sociální identity, jako jsou účty Microsoft.
+Pomocí služby Azure Active Directory (Azure AD) můžete snadno povolit spolupráci napříč hranicemi organizace pomocí [funkce Azure AD B2B](../external-identities/what-is-b2b.md). Správce nebo [jiní uživatelé](../external-identities/what-is-b2b.md)můžou [pozvat](../external-identities/add-users-administrator.md) uživatele typu host z jiných tenantů. Tato možnost platí i pro sociální identity, jako jsou účty Microsoft.
 
 Můžete taky snadno zajistit, aby měli uživatelé typu Host odpovídající přístup. Můžete požádat hosty nebo rozhodovacího tvůrce, aby se účastnili kontroly přístupu a recertifikace (nebo potvrzení) pro přístup hostů. Revidující se mohou vyjádřit k nutnosti dalšího přístupu pro jednotlivé uživatele, a to na základě návrhů z Azure AD. Po dokončení kontroly přístupu pak můžete provést změny a odebrat přístup hostům, kteří ho už nepotřebují.
 
 > [!NOTE]
 > Tento dokument se zaměřuje na kontrolu přístupu uživatelů typu Host. Pokud chcete zkontrolovat přístup všech uživatelů, nikoli jenom hosté, přečtěte si téma [Správa přístupu uživatelů pomocí kontrol přístupu](manage-user-access-with-access-reviews.md). Pokud chcete zkontrolovat členství uživatelů v rolích pro správu, jako je například globální správce, přečtěte si téma [spuštění kontroly přístupu v Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure AD Premium P2
 
@@ -41,7 +41,12 @@ Další informace najdete v [licenčních požadavcích](access-reviews-overview
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Vytvoření a provedení kontroly přístupu pro hosty
 
-Nejdřív jako globální správce nebo Správce uživatelů přejděte na [stránku zásad správného řízení identity](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) , abyste měli jistotu, že jsou recenze pro přístup připravené pro vaši organizaci.
+Nejdřív je potřeba přiřadit jednu z následujících rolí:
+- globální správce
+- Správce uživatelů
+- Tisk Vlastník skupiny zabezpečení M365 nebo AAD, která se má zkontrolovat
+
+Potom přejděte na [stránku zásad správného řízení identity](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) , abyste měli jistotu, že jsou recenze pro přístup připravené pro vaši organizaci.
 
 Azure AD umožňuje několik scénářů pro kontrolu uživatelů typu Host.
 
@@ -120,10 +125,3 @@ V některých organizacích nemusí hosté vědět o jejich členství ve skupin
 ## <a name="next-steps"></a>Další kroky
 
 [Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md)
-
-
-
-
-
-
-

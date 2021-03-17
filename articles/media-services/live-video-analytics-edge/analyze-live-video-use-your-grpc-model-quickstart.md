@@ -4,12 +4,12 @@ description: V tomto rychlém startu použijete počítačovou vizi k analýze �
 ms.topic: quickstart
 ms.date: 08/14/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: ac11ced68ab8463da26b9978a5b0b02c4cd1a402
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 907d402a4b0ef5d5e437322d02431a0ccd2d8da3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691762"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "89421513"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model"></a>Rychlý Start: Analýza živého videa pomocí vlastního modelu gRPC
 
@@ -56,11 +56,11 @@ V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT 
 ## <a name="create-and-deploy-the-media-graph"></a>Vytvoření a nasazení mediálního grafu
 
 ::: zone pivot="programming-language-csharp"
-[!INCLUDE [create and deply the media graph](includes/analyze-live-video-your-grpc-model-quickstart/csharp/create-deploy-media-graph.md)]
+[!INCLUDE [create and deploy the media graph](includes/analyze-live-video-your-grpc-model-quickstart/csharp/create-deploy-media-graph.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-[!INCLUDE [create and deply the media graph](includes/analyze-live-video-your-grpc-model-quickstart/python/create-deploy-media-graph.md)]
+[!INCLUDE [create and deploy the media graph](includes/analyze-live-video-your-grpc-model-quickstart/python/create-deploy-media-graph.md)]
 ::: zone-end
 
 ## <a name="interpret-results"></a>Interpretace výsledků
@@ -79,4 +79,9 @@ Pokud máte v úmyslu vyzkoušet další rychlé starty, ponechte prostředky, k
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkuste spustit různé topologie mediálních grafů pomocí protokolu gRPC.
+* Zkuste spustit různé topologie mediálních grafů pomocí protokolu gRPC.
+* **Sestavování a spouštění ukázkových rozšíření LVA (Live video Analytics)**
+<br/>Vyzkoušejte si naše ukázkové poznámkové bloky Jupyter, které vám umožní vytvářet a spouštět modely YOLO založené na [ONNX](http://onnx.ai/) jako rozšíření Live video Analytics (LVA).
+    * [Vzorový model YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/notebooks/Yolo/yolov3/yolov3-grpc-icpu-onnx/readme.md)
+    * [Vzorový model YOLOv4](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/Yolo/yolov4/yolov4-grpc-icpu-onnx/readme.md)
+

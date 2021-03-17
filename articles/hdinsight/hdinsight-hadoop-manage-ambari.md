@@ -1,19 +1,16 @@
 ---
 title: Monitorování a Správa Azure HDInsight pomocí webového uživatelského rozhraní Ambari
 description: Naučte se používat uživatelské rozhraní Apache Ambari k monitorování a správě clusterů HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/16/2020
-ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 01/12/2021
+ms.openlocfilehash: 087f284bed7ab0c9eb551c1629ab4f9196c80d76
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281378"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945704"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -61,7 +58,7 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 |správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
 |Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="alerts"></a>Výstrahy
 
@@ -88,7 +85,7 @@ Můžete spravovat metody upozorňování a vytvářet oznámení výstrah z nab
 
 Nakonec vyberte __možnost spravovat nastavení výstrah__ z nabídky __Akce__ a nastavte počet pokusů, které se musí objevit před odesláním oznámení. Toto nastavení se dá použít k tomu, aby se zabránilo oznámením přechodným chybám.
 
-Kurz oznámení o výstrahách pomocí bezplatného [účtu SendGrid](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)najdete v tématu [Konfigurace e-mailových oznámení Apache Ambari ve službě Azure HDInsight](./apache-ambari-email.md).
+Kurz oznámení o výstrahách pomocí bezplatného [účtu SendGrid](../sendgrid-dotnet-how-to-send-email.md)najdete v tématu [Konfigurace e-mailových oznámení Apache Ambari ve službě Azure HDInsight](./apache-ambari-email.md).
 
 ### <a name="cluster"></a>Cluster
 
@@ -139,7 +136,7 @@ Výběrem kteréhokoli z těchto odkazů otevřete v prohlížeči novou kartu, 
 Práce s uživateli, skupinami a oprávněními je podporována. Místní správa najdete v tématu [autorizace uživatelů pro zobrazení Apache Ambari](./hdinsight-authorize-users-to-ambari.md). Clustery připojené k doméně najdete v tématu [Správa clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
-> Neměňte heslo sledovacího zařízení Ambari (hdinsightwatchdog) v clusteru HDInsight se systémem Linux. Změna hesla zruší schopnost používat akce skriptu nebo provádět operace škálování s vaším clusterem.
+> V clusteru HDInsight se systémem Linux neodstraňujte ani neměňte heslo pro sledovací Ambari (hdinsightwatchdog). Změna hesla zruší schopnost používat akce skriptu nebo provádět operace škálování s vaším clusterem.
 
 ### <a name="hosts"></a>Hostitelé
 
@@ -163,7 +160,7 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
     |Vypnout režim údržby|Vrátí hostitele do normálního upozorňování.|
     |Zastavit|Zastaví na hostiteli datanode nebo NodeManagers.|
     |Spustit|Spustí na hostiteli datanode nebo NodeManagers.|
-    |Restartování|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
+    |Restartovat|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
     |Vyřazení|Odebere hostitele z clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
     |Reprovize|Přidá dříve vyřazeného hostitele do clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
 

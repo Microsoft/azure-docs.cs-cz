@@ -2,13 +2,13 @@
 title: Přehled úloh ACR
 description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 ms.topic: article
-ms.date: 01/22/2020
-ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087281"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562850"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -58,8 +58,8 @@ Aktivovat sestavení image kontejneru nebo úlohu s více kroky, když je kód p
 
 | Trigger | Ve výchozím nastavení povolená |
 | ------- | ------------------ |
-| Potvrzení | Yes |
-| Žádost o přijetí změn | No |
+| Potvrzení | Ano |
+| Žádost o přijetí změn | Ne |
 
 Pokud chcete nakonfigurovat aktivační proceduru aktualizace zdrojového kódu, je nutné zadat úlohu pomocí tokenu PAT (Personal Access token) pro nastavení Webhooku ve veřejném nebo privátním úložišti GitHubu nebo Azure DevOps.
 
@@ -100,17 +100,18 @@ Přečtěte si o úlohách s více kroky při [spouštění více kroků sestave
 
 ## <a name="context-locations"></a>Umístění kontextu
 
-Následující tabulka ukazuje několik příkladů podporovaných umístění kontextu pro úlohy ACR:
+V následující tabulce jsou uvedeny příklady podporovaných umístění kontextu pro úlohy ACR:
 
 | Umístění kontextu | Popis | Příklad |
 | ---------------- | ----------- | ------- |
 | Místní systém souborů | Soubory v adresáři v místním systému souborů. | `/home/user/projects/myapp` |
-| Větev hlavní větve GitHubu | Soubory v rámci hlavní větve (nebo jiné výchozí) ve veřejném nebo privátním úložišti GitHub.  | `https://github.com/gituser/myapp-repo.git` |
+| Hlavní větev GitHubu | Soubory v hlavní (nebo jiné výchozí) větvi veřejného nebo privátního úložiště GitHubu.  | `https://github.com/gituser/myapp-repo.git` |
 | Větev GitHubu | Konkrétní větev veřejného nebo privátního úložiště GitHubu.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | Podsložka GitHubu | Soubory v podsložce ve veřejném nebo privátním úložišti GitHub. Příklad zobrazuje kombinaci specifikace větve a podsložky. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | Potvrzení GitHubu | Konkrétní potvrzení ve veřejném nebo privátním úložišti GitHub. Příklad zobrazuje kombinaci specifikace SHA (commit hash) a podsložky. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Podsložka Azure DevOps | Soubory v podsložce ve veřejném nebo privátním úložišti Azure. Příklad ukazuje kombinaci specifikace větve a podsložek. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Vzdálená tarballu | Soubory v komprimovaném archivu na vzdáleném serveru webserver. | `http://remoteserver/myapp.tar.gz` |
+| Artefakt v registru kontejneru | Soubory [artefaktů OCI](container-registry-oci-artifacts.md) v úložišti registru kontejnerů. | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > Když jako kontext pro úlohu použijete privátní úložiště Git, musíte zadat token pro osobní přístup (PAT).
@@ -137,10 +138,6 @@ Až budete připraveni automatizovat sestavení a údržbu imagí kontejneru v c
 Volitelně můžete nainstalovat [rozšíření Docker pro Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) a rozšíření [účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) pro práci se službou Azure Container Registry. Vyhrajte a nahrajte image do služby Azure Container registry nebo spouštějte ACR úlohy, a to všechno v rámci Visual Studio Code.
 
 <!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 

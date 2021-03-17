@@ -1,21 +1,22 @@
 ### YamlMime:Landing
 title: Dokumentace ke Cost Managementu a fakturaci Azure
-summary: Cost Management a fakturace Azure vám pomůže seznámit se s fakturací Azure, spravovat váš účet a předplatná, monitorovat a řídit útraty za Azure a optimalizovat využití prostředků. Naučíte se analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
+summary: Azure Cost Management + Billing vám pomůže pochopit fakturu (vyúčtování) za Azure, spravovat fakturační účet a předplatná, monitorovat a řídit útraty za Azure a optimalizovat využití prostředků. Naučíte se analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
 metadata:
   title: Cost Management a fakturace
-  description: Cost Management a fakturace Azure vám pomůže seznámit se s fakturací Azure, spravovat váš účet a předplatná, monitorovat a řídit útraty za Azure a optimalizovat využití prostředků. Naučíte se analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
+  description: Azure Cost Management + Billing vám pomůže pochopit fakturu (vyúčtování) za Azure, spravovat fakturační účet a předplatná, monitorovat a řídit útraty za Azure a optimalizovat využití prostředků. Naučíte se analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
   ms.service: cost-management-billing
+  ms.subservice: common
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 06/01/2020
-  ms.openlocfilehash: c999417f091d82adf09df5d6962de146ef58b285
-  ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+  ms.date: 11/21/2020
+  ms.openlocfilehash: 4b3308b7475d9f1adc5446907e19d363fc4faca0
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/16/2020
-  ms.locfileid: "88257380"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92367019"
 landingContent:
 - title: Analýza nákladů
   linkLists:
@@ -26,7 +27,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Učte se tempem, které vám vyhovuje
-      url: https://aka.ms/costmgmt/learn
+      url: /learn/paths/control-spending-manage-bills/?WT.mc_id=ignite2020_collections
     - text: Videa k Azure Cost Managementu
       url: https://www.youtube.com/c/AzureCostManagement
     - text: Začínáme s analýzou nákladů
@@ -36,7 +37,7 @@ landingContent:
     - text: Použití analýzy nákladů pro běžné úlohy
       url: costs/cost-analysis-common-uses.md
     - text: Analýza nákladů s využitím aplikace šablony Power BI
-      url: https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app
+      url: ./costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md
     - text: Propojení s Power BI Desktopem
       url: /power-bi/desktop-connect-azure-cost-management
   - linkListType: tutorial
@@ -58,7 +59,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Správa nákladů s využitím automatizace
-      url: https://docs.microsoft.com/azure/cost-management-billing/costs/manage-automation
+      url: ./costs/manage-automation.md
     - text: Vysvětlení podmínek použití
       url: understand/understand-usage.md
     - text: Vysvětlení podmínek fakturace
@@ -71,14 +72,10 @@ landingContent:
     links:
     - text: Použití upozornění na náklady
       url: costs/cost-mgt-alerts-monitor-usage-spending.md
-    - text: Alokace nákladů
-      url: costs/allocate-costs.md
     - text: Zobrazení a stažení faktury za Azure
       url: understand/download-azure-invoice.md
     - text: Zobrazení a stažení informací o využití a poplatcích za Azure
       url: understand/download-azure-daily-usage.md
-    - text: Zobrazení poplatků za externí služby
-      url: understand/understand-azure-marketplace-charges.md
 - title: Optimalizace nákladů
   linkLists:
   - linkListType: concept
@@ -93,16 +90,16 @@ landingContent:
       url: costs/tutorial-acm-opt-recommendations.md
   - linkListType: how-to-guide
     links:
-    - text: Jak zabránit neočekávaným poplatkům
-      url: manage/getting-started.md
+    - text: Analýza neočekávaných poplatků
+      url: understand/analyze-unexpected-charges.md
   - linkListType: learn
     links:
     - text: Začněte s optimalizací nákladů ještě dnes
       url: https://azure.microsoft.com/overview/cost-optimization/
     - text: Predikce nákladů a optimalizace útraty pro Azure
-      url: https://docs.microsoft.com/learn/modules/predict-costs-and-optimize-spending/
+      url: /learn/modules/predict-costs-and-optimize-spending/
     - text: Dobře navržená architektura Microsoft Azure – optimalizace nákladů
-      url: https://docs.microsoft.com/learn/modules/azure-well-architected-cost-optimization/
+      url: /learn/modules/azure-well-architected-cost-optimization/
 - title: Konfigurace správy nákladů a fakturace
   linkLists:
   - linkListType: concept
@@ -141,23 +138,3 @@ landingContent:
       url: understand/mca-download-tax-document.md
     - text: Platba vyúčtování Smlouvy se zákazníkem Microsoftu
       url: understand/pay-bill.md
-- title: Nákup rezervací
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Volba rezervace k zakoupení
-      url: reservations/determine-reservation-purchase.md
-    - text: Výměny rezervací a vrácení peněz
-      url: reservations/exchange-and-refund-azure-reservations.md
-  - linkListType: how-to-guide
-    links:
-    - text: Nákup rezervace
-      url: reservations/prepare-buy-reservation.md
-    - text: Správa rezervací
-      url: reservations/manage-reserved-vm-instance.md
-    - text: Zobrazení nákupů rezervací
-      url: reservations/view-purchase-refunds.md
-    - text: Zpětné vyúčtování rezervací
-      url: reservations/charge-back-usage.md
-    - text: Obnovení rezervací
-      url: reservations/reservation-renew.md

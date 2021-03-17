@@ -1,19 +1,19 @@
 ---
 title: Nejčastější dotazy
 description: Nejčastější dotazy týkající se služby prostorových kotev Azure
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 05/18/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 01eb0ce83efa54366e027d35d9c3c3bbf86eff7b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091483"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487363"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy týkající se prostorových kotev Azure
 
@@ -33,7 +33,7 @@ Další informace najdete v tématu [Přehled prostorových kotev Azure](overvie
 
 **Otázka: Jaké jsou požadavky na připojení pro prostorové kotvy Azure?**
 
-**A:** Prostorové kotvy Azure fungují s připojením Wi-Fi a mobilní širokopásmové připojení.
+**A:** Prostorové kotvy Azure fungují s Wi-Fi a mobilními širokopásmovými připojeními.
 
 **Otázka: jak přesně můžou kotvy prostorů Azure najít kotvy?**
 
@@ -51,11 +51,11 @@ Další informace najdete v tématu [Přehled prostorových kotev Azure](overvie
 
 **Otázka: jak Azure prostorové kotvy ukládají data?**
 
-**A:** Všechna data jsou ukládána šifrovanou pomocí šifrovacího klíče spravovaných Microsoftem.
+**A:** Všechna data jsou ukládána šifrovanou pomocí šifrovacího klíče spravovaných Microsoftem a všechna data jsou pro každý z těchto prostředků ukládána do regionu.
 
 **Otázka: Jaké informace o prostředí se přenáší a ukládají do služby při použití prostorových kotev Azure? Jsou obrázky prostředí přenášeny a uloženy?**
 
-Odpověď **: při**vytváření nebo hledání kotev jsou obrázky prostředí zpracovávány v zařízení do odvozeného formátu. Tento odvozený formát je přenášen do služby a uložen ve službě.
+Odpověď **: při** vytváření nebo hledání kotev jsou obrázky prostředí zpracovávány v zařízení do odvozeného formátu. Tento odvozený formát je přenášen do služby a uložen ve službě.
 
 K zajištění transparentnosti níže je obrázek prostředí a odvozeného cloudu řídce používaného bodu. V cloudu Point se zobrazuje geometrická reprezentace prostředí, které se přenáší a ukládá do služby. Pro každý bod v cloudu se zhuštěným bodem odesíláme a ukládáme hodnotu hash vizuálních vlastností tohoto bodu. Hodnota hash je odvozena z, ale neobsahuje data v pixelech.
 
@@ -128,4 +128,4 @@ Začněte s [vývojem tady](index.yml).
 
 **Otázka: jaké porty a protokoly používá prostorové kotvy Azure?**
 
-**A:** Prostorové kotvy Azure komunikují přes port TCP 443 pomocí šifrovaného protokolu. Pro ověřování používá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/), který komunikuje pomocí protokolu HTTPS přes port 443.
+**A:** Prostorové kotvy Azure komunikují přes port TCP 443 pomocí šifrovaného protokolu. Pro ověřování používá [Azure Active Directory](../active-directory/index.yml), který komunikuje pomocí protokolu HTTPS přes port 443.

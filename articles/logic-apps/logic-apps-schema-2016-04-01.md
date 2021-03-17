@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520711"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000313"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizace schématu pro Azure Logic Apps – 1. června 2016
 
@@ -21,7 +21,7 @@ ms.locfileid: "86520711"
 
 * [Obory](#scopes) umožňují seskupit nebo vnořovat akce jako kolekci akcí.
 * [Podmínky a smyčky](#conditions-loops) jsou nyní akce první třídy.
-* Přesnější řazení pro spouštění akcí s `runAfter` vlastností, která nahrazuje`dependsOn`
+* Přesnější řazení pro spouštění akcí s `runAfter` vlastností, která nahrazuje `dependsOn`
 
 Pokud chcete upgradovat aplikace logiky ze schématu verze 1, 2015 Preview na schéma 1. června 2016, [Podívejte se do části Upgrade](#upgrade-your-schema).
 
@@ -121,7 +121,7 @@ Pokud chcete upgradovat na nejnovější [schéma](https://schema.management.azu
    > [!NOTE]
    > Pokud používáte Trigger manuální nebo Request, adresa URL zpětného volání se změní v nové aplikaci logiky. Otestujte novou adresu URL, aby se zajistilo, že bude fungovat na konci. Chcete-li zachovat předchozí adresy URL, můžete klonovat stávající aplikaci logiky.
 
-6. *Volitelné* Pokud chcete předchozí aplikaci logiky přepsat novou verzí schématu, klikněte na panelu nástrojů na tlačítko **klonovat**a vedle možnosti **Aktualizovat schéma**. Tento krok je nutný jenom v případě, že chcete zachovat stejné ID prostředku nebo adresu URL triggeru požadavku vaší aplikace logiky.
+6. *Volitelné* Pokud chcete předchozí aplikaci logiky přepsat novou verzí schématu, klikněte na panelu nástrojů na tlačítko **klonovat** a vedle možnosti **Aktualizovat schéma**. Tento krok je nutný jenom v případě, že chcete zachovat stejné ID prostředku nebo adresu URL triggeru požadavku vaší aplikace logiky.
 
 ## <a name="upgrade-tool-notes"></a>Poznámky k nástroji pro upgrade
 
@@ -153,7 +153,7 @@ Chcete-li filtrovat velké pole dolů na menší sadu položek, je nový `filter
 
 ### <a name="new-trackedproperties-for-actions"></a>New ' trackedProperties ' pro akce
 
-Akce teď můžou mít navolanou další vlastnost `trackedProperties` , která je stejná jako `runAfter` u `type` vlastností a. Tento objekt určuje konkrétní vstupy a výstupy akcí, které chcete zahrnout do diagnostické telemetrie Azure, které jsou vygenerovány jako součást pracovního postupu. Příklad:
+Akce teď můžou mít navolanou další vlastnost `trackedProperties` , která je stejná jako `runAfter` u `type` vlastností a. Tento objekt určuje konkrétní vstupy a výstupy akcí, které chcete zahrnout do diagnostické telemetrie Azure, které jsou vygenerovány jako součást pracovního postupu. Například:
 
 ``` json
 {

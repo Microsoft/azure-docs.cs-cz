@@ -1,9 +1,9 @@
 ---
-title: Práce se stávajícími místními proxy servery a Azure AD | Microsoft Docs
-description: Obsahuje informace o tom, jak pracovat se stávajícími místními proxy servery.
+title: Práce se stávajícími místními proxy servery a Azure Active Directory
+description: Obsahuje informace o tom, jak pracovat se stávajícími místními proxy servery pomocí Azure Active Directory.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 09a257c4b80fd796ac4e1e8203f00857d2d95eaf
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077505"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259113"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -111,18 +111,19 @@ Existují čtyři aspekty, které je třeba vzít v úvahu při použití odchoz
 
 Povolte přístup k následujícím adresám URL:
 
-| URL | Jak se používá |
-| --- | --- |
-| \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Konektor používá tyto adresy URL k ověření certifikátů. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.NET <br> *. msauthimages.net<br>*. msecnd.NET <br> *. msftauth.net<br>*. msftauthimages.NET <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | Konektor tyto adresy URL používá během procesu registrace. |
+| URL | Port |  K čemu slouží |
+| --- | --- | --- |
+| &ast;. msappproxy.net<br>&ast;. servicebus.windows.net | 443/HTTPS | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | Konektor používá tyto adresy URL k ověření certifikátů. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS | Konektor tyto adresy URL používá během procesu registrace. |
+| ctldl.windowsupdate.com | 80/HTTP | Konektor používá tuto adresu URL během procesu registrace. |
 
-Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě je potřeba, abyste povolili přístup k [rozsahům IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
+Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET.
 
 Pokud nemůžete připojení podle plně kvalifikovaného názvu domény a potřebujete místo toho zadat rozsahy IP adres, použijte tyto možnosti:
 
 * Povolí konektoru odchozí přístup ke všem cílům.
-* Povolí konektoru odchozí přístup ke všem [rozsahům IP adres datacentra Azure](https://www.microsoft.com//download/details.aspx?id=41653). Výzvou k použití seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. K zajištění toho, aby se pravidla přístupu aktualizovala, je potřeba umístit proces. Pouze použití podmnožiny IP adres může způsobit přerušení vaší konfigurace.
+* Povolí konektoru odchozí přístup ke všem rozsahům IP adres datacentra Azure. Výzvou k použití seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. K zajištění toho, aby se pravidla přístupu aktualizovala, je potřeba umístit proces. Pouze použití podmnožiny IP adres může způsobit přerušení vaší konfigurace. Pokud si chcete stáhnout nejnovější rozsahy IP adres datového centra Azure, přejděte na [https://download.microsoft.com](https://download.microsoft.com) adresu a vyhledejte "rozsahy IP adres Azure a značky služeb". Ujistěte se, že jste vybrali relevantní Cloud. Například rozsahy IP adres veřejných cloudu najdete v tématu "rozsahy IP adres Azure a značky služeb – veřejný cloud". Cloud pro státní správu USA můžete najít hledáním "rozsahy IP adres Azure a značky služeb – cloud pro státní správu USA".
 
 #### <a name="proxy-authentication"></a>Ověřování proxy
 
@@ -144,7 +145,7 @@ Použití předávacího proxy serveru pro komunikaci směrem k back-endové apl
 Pokud to chcete povolit, postupujte prosím podle následujících kroků:
 
 ### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Krok 1: přidejte do serveru požadovanou hodnotu registru
-1. Pokud chcete povolit použití výchozího proxy serveru, přidejte následující hodnotu registru (DWORD) `UseDefaultProxyForBackendRequests = 1` do klíče registru konfigurace konektoru, který najdete v části HKEY_LOCAL_MACHINE \SOFTWARE\MICROSOFT\MICROSOFT AAD App proxy Connector.
+1. Pokud chcete povolit použití výchozího proxy serveru, přidejte `UseDefaultProxyForBackendRequests = 1` do klíče registru konfigurace konektoru, který se nachází v HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector, následující hodnotu registru (DWORD).
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Krok 2: ruční konfigurace proxy server pomocí příkazu netsh
 1.  Povolte zásadám skupiny vytvořit nastavení proxy serveru na počítač. Najdete ho v: počítač \ \ součásti systému Windows\internet Explorer. Tento postup je potřeba nastavit, aby tato zásada nebyla nastavená na jednotlivé uživatele.
@@ -166,6 +167,9 @@ Nyní byste měli vidět veškerý tok provozu prostřednictvím proxy serveru. 
 Nejlepším způsobem, jak identifikovat a řešit potíže s připojením konektoru, je zařídit síťové zachycení při spuštění služby konektoru. Tady jsou některé rychlé tipy pro zachytávání a filtrování trasování sítě.
 
 Můžete použít nástroj pro monitorování podle vašeho výběru. Pro účely tohoto článku jsme použili Microsoft Message Analyzer.
+
+> [!NOTE]
+> [Služba Microsoft Message Analyzer (MMA) byla vyřazena](/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) a balíčky pro stažení byly z webů Microsoft.com odebrány od listopadu 25 2019.  V současné době teď není ve vývoji žádná náhrada Microsoftu pro Microsoft Message Analyzer.  U podobných funkcí zvažte použití nástroje analyzátoru síťových protokolů od jiného výrobce, jako je třeba Wireshark.
 
 Následující příklady jsou specifické pro analyzátor zpráv, ale zásady je možné použít na jakýkoli nástroj pro analýzu.
 
@@ -207,4 +211,4 @@ Pokud vidíte další kódy odpovědí, například 407 nebo 502, znamená to, �
 ## <a name="next-steps"></a>Další kroky
 
 * [Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
-* Pokud máte problémy s připojením konektoru, zeptejte se na stránku s [dotazem na Microsoft Q&pro Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) nebo vytvořte lístek s týmem podpory.
+* Pokud máte problémy s připojením konektoru, zeptejte se na stránku s [dotazem na Microsoft Q&pro Azure Active Directory](/answers/topics/azure-active-directory.html) nebo vytvořte lístek s týmem podpory.

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d3343838216522abfc11ec3f202ae2da1c0e38f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203448"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611874"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu s vlastním uplatněním v Azure Active Directory B2C vlastní zásady
 
@@ -24,9 +24,9 @@ ms.locfileid: "85203448"
 
 Všechny interakce v Azure Active Directory B2C (Azure AD B2C), kde se očekává, že uživatel zadává vstup, jsou technické profily s vlastním uplatněním. Například stránku pro registraci, přihlašovací stránku nebo stránku pro resetování hesla.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
-Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C, pro samoobslužné vyhodnocení:`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C, pro samoobslužné vyhodnocení: `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 Následující příklad ukazuje technický profil s vlastním uplatněním pro registraci e-mailu:
 
@@ -175,6 +175,14 @@ Následující příklad ukazuje použití technického profilu s vlastním upla
 </TechnicalProfile>
 ```
 
+### <a name="output-claims-sign-up-or-sign-in-page"></a>Výstupní stránka pro registraci a přihlášení deklarací identity
+
+Na stránce s kombinovaným registrací a přihlášením si všimněte následujícího při použití prvku definice obsahu [DataUri](contentdefinitions.md#datauri) , který určuje `unifiedssp` `unifiedssd` typ stránky nebo:
+
+- Vykreslí se jenom deklarace identity uživatelského jména a hesla.
+- První dvě výstupní deklarace identity musí být uživatelské jméno a heslo (v tomto pořadí). 
+- Žádné další deklarace identity se nevykreslují. u těchto deklarací musíte nastavit `defaultValue` nebo vyvolat technický profil ověření formuláře deklarací identity. 
+
 ## <a name="persist-claims"></a>Zachovat deklarace identity
 
 Element PersistedClaims se nepoužívá. Technický profil s vlastním uplatněním neuchovává data Azure AD B2C. Místo toho je provedeno volání na technický profil ověření, který je zodpovědný za uchování dat. Například zásada registrace používá `LocalAccountSignUpWithLogonEmail` ke shromáždění nového profilu uživatele technický profil s vlastním uplatněním. `LocalAccountSignUpWithLogonEmail`Technický profil volá technický profil ověření pro vytvoření účtu v Azure AD B2C.
@@ -197,16 +205,20 @@ Pomocí obchodní logiky můžete také volat REST API technický profil, přeps
 | EnforceEmailVerification | No | Pro registraci nebo úpravy profilu vynutilo ověřování e-mailů. Možné hodnoty: `true` (výchozí), nebo `false` . |
 | nastavení. retryLimit | No | Určuje počet pokusů, kolikrát se uživatel může pokusit zadat data, která jsou zkontrolována na technický profil ověření. Uživatel se například pokusí zaregistrovat pomocí účtu, který už existuje, a pokračuje v tom, dokud nedosáhne limitu.
 | SignUpTarget <sup>1</sup>| No | Identifikátor cílového Exchange registrace. Když uživatel klikne na tlačítko pro registraci, Azure AD B2C spustí zadaný identifikátor Exchange. |
-| nastavení. showCancelButton | No | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí), nebo`false` |
-| nastavení. showContinueButton | No | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí), nebo`false` |
-| nastavení. showSignupLink <sup>2</sup>| No | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí), nebo`false` |
-| nastavení. forgotPasswordLinkLocation <sup>2</sup>| No| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky nebo `None` odebere odkaz zapomenuté heslo.|
-| nastavení. enableRememberMe <sup>2</sup>| No| Zobrazí zaškrtávací políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . Možné hodnoty: `true` , nebo `false` (výchozí). |
-| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| nastavení. showCancelButton | No | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí), nebo `false` |
+| nastavení. showContinueButton | No | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí), nebo `false` |
+| nastavení. showSignupLink <sup>2</sup>| No | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí), nebo `false` |
+| nastavení. forgotPasswordLinkLocation <sup>2</sup>| No| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterLabel` (výchozí) zobrazí odkaz přímo po popisku nebo po poli zadání hesla, když není k dispozici popisek, zobrazuje odkaz  `AfterInput` za polem zadání hesla, `AfterButtons` zobrazuje odkaz v dolní části formuláře za tlačítky nebo `None` odebere odkaz na Zapomenuté heslo.|
+| nastavení. enableRememberMe <sup>2</sup>| No| Zobrazí zaškrtávací políčko [zůstat přihlášeni](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) . Možné hodnoty: `true` , nebo `false` (výchozí). |
+| nastavení. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| No| Zlepšuje činnost koncového uživatele čekáním, až uživatel přestane psát, a pak hodnotu ověří. Výchozí hodnota je 2000 milisekund. |
+| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+|forgotPasswordLinkOverride <sup>4</sup>| No | Provede se výměna deklarací resetování hesla. Další informace najdete v tématu [Samoobslužné resetování hesla](add-password-reset-policy.md). |
 
 Poznámky:
 1. K dispozici pro [DataUri](contentdefinitions.md#datauri) typ definice obsahu `unifiedssp` nebo `unifiedssd` .
 1. K dispozici pro [DataUri](contentdefinitions.md#datauri) typ definice obsahu `unifiedssp` nebo `unifiedssd` . [Rozložení stránky verze](page-layout.md) 1.1.0 a vyšší.
+1. K dispozici pro [rozložení stránky verze](page-layout.md) 1.2.0 a vyšší.
+1. K dispozici pro [DataUri](contentdefinitions.md#datauri) typ definice obsahu `unifiedssp` . [Rozložení stránky verze](page-layout.md) 2.1.2 a vyšší.
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 

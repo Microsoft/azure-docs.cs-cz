@@ -1,17 +1,17 @@
 ---
 title: Odolnost konfigurace aplikace Azure a zotavení po havárii
 description: Vyštíhlá implementace odolnosti a zotavení po havárii s využitím konfigurace aplikací Azure.
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 07/09/2020
+ms.openlocfilehash: 7910e2092259081aade799fc662052e5a1375e25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207187"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930479"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odolnost a zotavení po havárii
 
@@ -72,7 +72,7 @@ Pomocí funkce **exportu** v konfiguraci aplikace můžete kopírovat data z pri
 
 Z Azure Portal můžete vložit změnu do jiného úložiště konfigurace pomocí následujících kroků.
 
-1. Otevřete kartu **Import/export** a vyberte **exportovat**  >  **Cíl konfigurace aplikace**  >  **Target**  >  **Vybrat prostředek**.
+1. Otevřete kartu **Import/export** a vyberte **exportovat**  >  **Cíl konfigurace aplikace**  >    >  **Vybrat prostředek**.
 
 1. V novém okně, které se otevře, zadejte předplatné, skupinu prostředků a název prostředku svého sekundárního úložiště a pak vyberte **použít**.
 

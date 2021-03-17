@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d015cec30e516541b50c2acfac38fad898965e1b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320047"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436347"
 ---
 # <a name="managed-application-metered-billing"></a>Spravovaná fakturace podle objemu spravované aplikace 
 
@@ -22,7 +22,7 @@ Pomocí služby měření na webu Marketplace můžete vytvořit plány spravova
 
 Aby plán spravované aplikace mohl použít účtované podle objemu dat, musí:
 
-* Seznamte se se všemi požadavky na nabídku, jak je uvedeno v části [Vytvoření nabídky aplikací Azure](create-new-azure-apps-offer.md).
+* Seznamte se se všemi požadavky na nabídku, jak je uvedeno v části [Vytvoření nabídky aplikací Azure](../create-new-azure-apps-offer.md).
 * Nakonfigurujte **ceny** pro zpoplatnění zákazníků za měsíc za službu. Cena může být nulová, pokud nechcete účtovat fixní poplatek a místo toho se spoléhá výhradně na účtované poplatky.
 * Nastavte **fakturační dimenze** pro události měření, za které se zákazník za paušální sazbou platíte.
 * Integrujte s [rozhraními API služby pro měření na webu Marketplace](./marketplace-metering-service-apis.md) a informujte společnost Microsoft o fakturovatelných událostech.
@@ -67,7 +67,7 @@ Fakturační dimenze se sdílejí napříč všemi plány nabídky. Některé at
 Atributy, které definují vlastní dimenzi, jsou sdíleny ve všech plánech nabídky. Před publikováním této nabídky ovlivní změna těchto atributů z kontextu libovolného plánu definici dimenze ve všech plánech. Po publikování této nabídky již nebude možné tyto atributy upravovat. Atributy jsou:
 
 * Identifikátor
-* Název
+* Name
 * Jednotka měření
 
 Ostatní atributy dimenze jsou specifické pro každý plán a můžou mít různé hodnoty od plánu k plánování.  Před publikováním plánu můžete tyto hodnoty upravit a bude to mít vliv pouze na tento plán. Po publikování plánu už tyto atributy nebude možné upravovat. Atributy jsou:
@@ -93,7 +93,7 @@ Dimenze použitá v rámci služby měření na webu Marketplace představuje po
 Po publikování nabídky s dimenzí již nelze změnit podrobnosti na úrovni nabídky pro tuto dimenzi:
 
 * Identifikátor
-* Název
+* Name
 * Jednotka měření
 
 Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
@@ -107,7 +107,7 @@ Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
 
 ### <a name="upper-limits"></a>Horní meze
 
-Maximální počet dimenzí, které lze konfigurovat pro jednu nabídku, je 18 jedinečných dimenzí.
+Maximální počet dimenzí, které lze konfigurovat pro jednu nabídku, je 30 jedinečných dimenzí.
 
 ## <a name="get-support"></a>Získání podpory
 
@@ -117,7 +117,7 @@ Pokud máte některý z následujících problémů, můžete otevřít lístek 
 * Problém, který je potřeba eskalovat z důvodu chyby nebo chyby na vaší straně (např. nesprávná událost použití)
 * Jakékoli další problémy související s měřením podle objemu.
 
-Postupujte podle pokynů v [části Podpora programu komerčního tržiště v partnerském centru](./support.md) , abyste pochopili možnosti podpory vydavatele a otevřeli lístek podpory s Microsoftem.
+Postupujte podle pokynů v [části Podpora programu komerčního tržiště v partnerském centru](../support.md) , abyste pochopili možnosti podpory vydavatele a otevřeli lístek podpory s Microsoftem.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: bd2a6e16d34bf6c5b59ce7fa5c99975d44947770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9679be03c69090a0c11d007cfc542bae70bd3cbc
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021666"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592190"
 ---
 # <a name="components"></a>Komponenty
 
@@ -26,8 +27,8 @@ Komponenty můžete snadno přidat, odebrat a manipulovat programově:
 
 ```cs
 // create a point light component
-AzureSession session = GetCurrentlyConnectedSession();
-PointLightComponent lightComponent = session.Actions.CreateComponent(ObjectType.PointLightComponent, ownerEntity) as PointLightComponent;
+RenderingSession session = GetCurrentlyConnectedSession();
+PointLightComponent lightComponent = session.Connection.CreateComponent(ObjectType.PointLightComponent, ownerEntity) as PointLightComponent;
 
 lightComponent.Color = new Color4Ub(255, 150, 20, 255);
 lightComponent.Intensity = 11;
@@ -41,9 +42,9 @@ lightComponent = null;
 
 ```cpp
 // create a point light component
-ApiHandle<AzureSession> session = GetCurrentlyConnectedSession();
+ApiHandle<RenderingSession> session = GetCurrentlyConnectedSession();
 
-ApiHandle<PointLightComponent> lightComponent = session->Actions()->CreateComponent(ObjectType::PointLightComponent, ownerEntity)->as<PointLightComponent>();
+ApiHandle<PointLightComponent> lightComponent = session->Connection()->CreateComponent(ObjectType::PointLightComponent, ownerEntity)->as<PointLightComponent>();
 
 // ...
 
@@ -52,7 +53,6 @@ lightComponent->Destroy();
 lightComponent = nullptr;
 ```
 
-
 Komponenta je připojena k entitě při vytváření. Nedá se přesunout na jinou entitu později. Komponenty se explicitně odstraní pomocí `Component.Destroy()` nebo automaticky, když je zničena entita vlastníka součásti.
 
 V jednom okamžiku může být do entity přidána pouze jedna instance každého typu součásti.
@@ -60,6 +60,15 @@ V jednom okamžiku může být do entity přidána pouze jedna instance každéh
 ## <a name="unity-specific"></a>Specifické pro Unity
 
 Integrace Unity má další funkce rozšíření pro interakci s komponentami. Viz [objekty a komponenty hry Unity](../how-tos/unity/objects-components.md).
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [C# ComponentBase](/dotnet/api/microsoft.azure.remoterendering.componentbase)
+* [C# RenderingConnection. CreateComponent ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.createcomponent)
+* [Entita jazyka C#. FindComponentOfType ()](/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
+* [ComponentBase C++](/cpp/api/remote-rendering/componentbase)
+* [C++ RenderingConnection:: CreateComponent ()](/cpp/api/remote-rendering/renderingconnection#createcomponent)
+* [Entita C++:: FindComponentOfType ()](/cpp/api/remote-rendering/entity#findcomponentoftype)
 
 ## <a name="next-steps"></a>Další kroky
 

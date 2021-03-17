@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ff2464705a770e257010347f0f04e9b695bb6e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 483377d0376a5a98d822392af1fa2d84ad8498e0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540047"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Kurz: Azure Active Directory integrace s cloudem Lifesize
 
@@ -27,7 +27,7 @@ Integrace Lifesize cloudu s Azure AD poskytuje následující výhody:
 * Můžete uživatelům povolit, aby se automaticky přihlásili k Lifesize cloudu (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -78,7 +78,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí cloudu Lifesize, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Lifesize Cloud](#configure-lifesize-cloud-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Lifesize Cloud](#configure-lifesize-cloud-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte uživatele cloudového testu Lifesize](#create-lifesize-cloud-test-user)** , abyste měli protějšek Britta Simon v cloudu Lifesize, který je propojený s reprezentací uživatele v Azure AD.
@@ -98,7 +98,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudu L
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -115,9 +115,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudu L
     d. Do textového pole **stav přenosu** zadejte adresu URL pomocí následujícího vzoru: `https://webapp.lifesizecloud.com/?ent=<identifier>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a stavu přenosu. Obraťte se na [tým podpory Lifesize cloudového klienta](https://www.lifesize.com/en/support) , aby získal přihlašovací adresu URL, a hodnoty identifikátoru a můžete získat stav přenosu z konfigurace jednotného přihlašování, která je vysvětlena dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a stavu přenosu. Obraťte se na [tým podpory Lifesize cloudového klienta](https://www.lifesize.com/en/support) , který získá adresu URL Sign-On a hodnoty identifikátoru a můžete získat hodnotu stavu přenosu z konfigurace jednotného přihlašování, která je vysvětlena dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -131,21 +131,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudu L
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-lifesize-cloud-single-sign-on"></a>Konfigurace jednotného přihlašování Lifesize cloudu
+### <a name="configure-lifesize-cloud-single-sign-on"></a>Konfigurace Lifesize cloudu s jedním Sign-On
 
 1. Pokud chcete pro vaši aplikaci nakonfigurovat jednotné přihlašování (SSO), přihlaste se do cloudové aplikace Lifesize s oprávněními správce.
 
 2. V pravém horním rohu klikněte na své jméno a pak klikněte na **nastavení zálohy**.
 
-    ![Konfigurace jednotného přihlašování](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
+    ![Snímek obrazovky se zobrazí položka nabídky Upřesnit nastavení.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
 3. V nastavení zálohy teď klikněte na odkaz **Konfigurace jednotného přihlašování** . Otevře se stránka konfigurace jednotného přihlašování pro vaši instanci.
 
-    ![Konfigurace jednotného přihlašování](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
+    ![Snímek obrazovky ukazuje upřesňující nastavení, kde můžete vybrat konfiguraci S.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
 4. Teď v uživatelském rozhraní konfigurace jednotného přihlašování nakonfigurujte následující hodnoty.
 
-    ![Konfigurace jednotného přihlašování](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
+    ![Snímek obrazovky se zobrazí na stránce konfigurace S S/O, kde můžete zadat hodnoty, které jsou popsány.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
 
     a. Do textového pole **vystavitele zprostředkovatele identity** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
 
@@ -191,7 +191,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -199,7 +199,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Cloud Lifesize**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Cloud Lifesize**.
 
@@ -229,12 +229,12 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Cloud Lifesize, měli byste získat přihlašovací stránku cloudové aplikace Lifesize. Zde je třeba zadat své uživatelské jméno a poté, co budete přesměrováni na domovskou stránku aplikace.
 
-Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

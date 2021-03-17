@@ -3,7 +3,7 @@ title: Použití Azure CLI k vytvoření aplikace Azure AD a její konfiguraci p
 description: V tomto tématu se dozvíte, jak pomocí Azure CLI vytvořit aplikaci Azure AD a nakonfigurovat ji pro přístup k rozhraní Azure Media Services API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,30 +11,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2019
-ms.author: juliako
-ms.openlocfilehash: 82d5c605baf6f95df7fee62379772ce13d696ac6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 6517cc8224a1a4e2e3319fde52fb621e4f7ab564
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000801"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016929"
 ---
-# <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Použití Azure CLI k vytvoření aplikace Azure AD a její konfiguraci pro přístup k rozhraní Media Services API 
+# <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Použití Azure CLI k vytvoření aplikace Azure AD a její konfiguraci pro přístup k rozhraní Media Services API
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 V tomto tématu se dozvíte, jak pomocí Azure CLI vytvořit aplikaci Azure Active Directory (Azure AD) a instančního objektu pro přístup k prostředkům Azure Media Services. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 - Účet Media Services. Další informace najdete v tématu [Vytvoření účtu Azure Media Services pomocí Azure Portal](media-services-portal-create-account.md).
 
 ## <a name="use-the-azure-cloud-shell"></a>Použití Azure Cloud Shell
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Spusťte Cloud Shell v horním navigačním podokně portálu.
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 
@@ -49,7 +51,7 @@ az ad sp create-for-rbac --name <appName>
 az role assignment create --assignee < user/app id> --role Contributor --scope <subscription/subscription id>
 ```
 
-Příklad:
+Například:
 
 ```azurecli
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
@@ -65,7 +67,7 @@ Může to být například jedna z následujících úrovní:
 
 Další informace najdete v tématu [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli) .
 
-Viz také [správa Access Control na základě rolí pomocí rozhraní příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md). 
+Viz také téma [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Další kroky
 

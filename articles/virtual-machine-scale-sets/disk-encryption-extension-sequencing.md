@@ -1,6 +1,6 @@
 ---
 title: Sekvence rozšíření pro Azure Disk Encryption a Azure Virtual Machine Scale Sets
-description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro virtuální počítače s IaaS Linux.
+description: V tomto článku se dozvíte, jak povolit Microsoft Azure šifrování disku pro virtuální počítače s IaaS Linux.
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1aff05e51bcbc99f33325efb905ade819ae22e02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117253"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90988031"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Použití Azure Disk Encryption s pořadím rozšíření pro škálování sady virtuálních počítačů
 

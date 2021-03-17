@@ -3,7 +3,7 @@ title: Vkládání reklam na straně klienta | Microsoft Docs
 description: Tento článek ukazuje, jak vložit reklamy do média na straně klienta.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594861"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014951"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Tento článek obsahuje informace o tom, jak vložit různé typy reklam na straně klienta.
 
 Informace o uzavřených titulkech a podpoře AD v živém streamování videí najdete v článku [podporované uzavřené titulky a standardy pro vkládání reklam](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
@@ -160,7 +164,7 @@ V elementu jsou také určeny nelineární reklamy `<Creative>` . Následující
     </Creative>
 ```
 
-Element <**NonLinearAds**> může obsahovat jeden nebo více <**nelineárních**> prvků, z nichž každá může popsat nelineární službu AD. Nelineární **NonLinear**> prvek <Určuje prostředek pro nelineární službu AD. Prostředkem může být <**StaticResource**>, <**IFrameResource**> nebo <**HTMLResource**>. \<**StaticResource**>Popisuje prostředek, který není HTML, a definuje atribut creativeType, který určuje, jak se prostředek zobrazuje:
+Element <**NonLinearAds**> může obsahovat jeden nebo více <**nelineárních**> prvků, z nichž každá může popsat nelineární službu AD. Nelineární > prvek <Určuje prostředek pro nelineární službu AD. Prostředkem může být <**StaticResource**>, <**IFrameResource**> nebo <**HTMLResource**>. \<**StaticResource**> Popisuje prostředek, který není HTML, a definuje atribut creativeType, který určuje, jak se prostředek zobrazuje:
 
 Image/gif, obrázek/JPEG, obrázek/png – prostředek se zobrazí ve značce HTML <**img**>.
 
@@ -239,9 +243,9 @@ V rámci `<AdBreak>` elementu může být jeden <**AdSource**> element. Element 
 
 Prvek <> **AdSource** poskytuje přehrávači vloženou odpověď AD nebo odkaz na odpověď AD. Může obsahovat jeden z následujících prvků:
 
-* `<VASTAdData>`indikuje, že v souboru VMAP je vložená nepřeberná odpověď AD.
-* `<AdTagURI>`identifikátor URI, který odkazuje na odpověď služby AD z jiného systému
-* `<CustomAdData>`-libovolný řetězec, který představuje neobrovské odpovědi
+* `<VASTAdData>` indikuje, že v souboru VMAP je vložená nepřeberná odpověď AD.
+* `<AdTagURI>` identifikátor URI, který odkazuje na odpověď služby AD z jiného systému
+* `<CustomAdData>` -libovolný řetězec, který představuje neobrovské odpovědi
 
 V tomto příkladu je zadána vložená odpověď AD s `<VASTAdData>` prvkem, který obsahuje obrovské odpovědi AD. Další informace o ostatních prvcích naleznete v tématu [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
@@ -276,7 +280,7 @@ Následující příklad ukazuje soubor VMAP, který určuje události sledován
     </vmap:VMAP>
 ```
 
-Další informace o <prvky> **TrackingEvents** a jejích podřízených prvcích naleznete v tématuhttp://iab.net/VMAP.pdf
+Další informace o <prvky> **TrackingEvents** a jejích podřízených prvcích naleznete v tématu http://iab.net/VMAP.pdf
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Použití souboru šablony pro abstraktní sekvencování médií (MAST)
 Soubor MAST umožňuje zadat triggery, které definují, kdy se AD zobrazí. Následuje příklad souboru MAST, který obsahuje aktivační události pro předběžnou službu AD, službu AD a následnou službu AD.
@@ -327,7 +331,7 @@ Soubor MAST umožňuje zadat triggery, které definují, kdy se AD zobrazí. Ná
 
 Soubor MAST začíná elementem **mast** , který obsahuje jeden element **Triggers** . `<triggers>`Element obsahuje jeden nebo více elementů **triggeru** , které definují, kdy má být služba AD přehrána.
 
-**Aktivační** element obsahuje element **startConditions** , který určuje, kdy má služba AD začít hrát. Element **startConditions** obsahuje jeden nebo více `<condition>` elementů. Když se každý `<condition>` vyhodnotí jako true, Trigger se iniciuje nebo odvolá v závislosti na tom, jestli `<condition>` je obsažený v **startConditions** nebo **endConditions** elementu. Pokud `<condition>` je přítomno více prvků, jsou považovány za implicitní nebo, jakákoli podmínka vyhodnocení na hodnotu true způsobí inicializaci triggeru. `<condition>`prvky mohou být vnořené. V případě `<condition>` , že jsou podřízené prvky přednastaveny, jsou považovány za implicitní a, všechny podmínky se musí vyhodnotit na hodnotu true pro inicializaci triggeru. `<condition>`Element obsahuje následující atributy definující podmínku:
+**Aktivační** element obsahuje element **startConditions** , který určuje, kdy má služba AD začít hrát. Element **startConditions** obsahuje jeden nebo více `<condition>` elementů. Když se každý `<condition>` vyhodnotí jako true, Trigger se iniciuje nebo odvolá v závislosti na tom, jestli `<condition>` je obsažený v **startConditions** nebo **endConditions** elementu. Pokud `<condition>` je přítomno více prvků, jsou považovány za implicitní nebo, jakákoli podmínka vyhodnocení na hodnotu true způsobí inicializaci triggeru. `<condition>` prvky mohou být vnořené. V případě `<condition>` , že jsou podřízené prvky přednastaveny, jsou považovány za implicitní a, všechny podmínky se musí vyhodnotit na hodnotu true pro inicializaci triggeru. `<condition>`Element obsahuje následující atributy definující podmínku:
 
 1. **typ** – určuje typ podmínky, události nebo vlastnosti.
 2. **název** – název vlastnosti nebo události, která se má použít při vyhodnocování
@@ -349,7 +353,7 @@ Soubor MAST začíná elementem **mast** , který obsahuje jeden element **Trigg
     </trigger>
 ```
 
-### <a name="using-video-player-ad-interface-definition-vpaid"></a>Použití přehrávače videa – definice rozhraní AD (VPAID)
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>Použití definice rozhraní video Player-Ad (VPAID)
 VPAID je rozhraní API pro povolení komunikace spustitelných jednotek AD s přehrávačem videa. To umožňuje vysoce interaktivní prostředí Active Directory. Uživatel může komunikovat se službou AD a služba AD může reagovat na akce podniknuté prohlížečem. Například reklama může zobrazit tlačítka, která uživateli umožňují zobrazit další informace nebo delší verzi služby AD. Přehrávač videa musí podporovat rozhraní VPAID API a spustitelný soubor AD musí implementovat rozhraní API. Když hráč vyžádá reklamu ze serveru AD, server může reagovat s obrovské odezvy, která obsahuje VPAID AD.
 
 V kódu, který musí být spuštěn v běhovém prostředí, jako je například Adobe Flash™ nebo JavaScript, který lze spustit ve webovém prohlížeči, je vytvořen spustitelný objekt AD. Pokud server AD vrátí nepřebernou odpověď obsahující VPAID AD, hodnota atributu apiFramework v `<MediaFile>` elementu musí být "VPAID". Tento atribut určuje, že obsažená služba AD je VPAID spustitelná služba AD. Atribut Type musí být nastaven na typ MIME spustitelného souboru, například application/x-Shockwave-Flash nebo Application/x-JavaScript. Následující fragment kódu XML ukazuje `<MediaFile>` prvek z obrovské odpovědi obsahující spustitelnou službu AD VPAID.

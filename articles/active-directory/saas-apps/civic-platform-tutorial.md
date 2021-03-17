@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 26109d4b8875dd0b442521513dbd219dc0de06e0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520376"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455965"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Kurz: integrace platformy Civic s Azure Active Directory
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat platformu Civic s Azure Active Directo
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Civic platformě pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,7 +64,7 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD s platformou Civi
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s platformou Civic, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat jednotné přihlašování pro Civic platformu](#configure-civic-platform-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurovat jednotné přihlašování k platformě Civic](#configure-civic-platform-sso)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 5. **[Vytvořte uživatele s Civic platformou pro testování](#create-civic-platform-test-user)** , abyste měli protějšek B. Simon na platformě Civic, která je propojená s reprezentací uživatele v Azure AD.
@@ -76,7 +76,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **platformy Civic** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -89,9 +89,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Hodnota adresy URL pro přihlášení není v reálném čase. Aktualizujte tuto hodnotu skutečnou adresou URL pro přihlášení. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory Civic Platform Client](mailto:skale@accela.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na Kopírovat tlačítko a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
+    ![Snímek obrazovky se zobrazí stránka podpisového certifikátu SAML, kde můžete kopírovat federační metadata aplikací.](common/copy-metadataurl.png)
 
 1. V Azure AD přejděte na **Azure Active Directory**  >  **Registrace aplikací** a vyberte svou aplikaci.
 
@@ -120,21 +120,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **standardní volby**.
 
-    ![Odkaz na stažení certifikátu](media/civic-platform-tutorial/standard-choices.png)
+    ![Snímek obrazovky ukazuje cloudový web Atlassian se standardními možnostmi vyvolanými v části nástroje pro správu.](media/civic-platform-tutorial/standard-choices.png)
 
 1. Vytvořte standardní možnost **ssoconfig**.
 
 1. Vyhledejte **ssoconfig**  a odešlete.
 
-    ![Odkaz na stažení certifikátu](media/civic-platform-tutorial/sso-config.png)
+    ![Snímek obrazovky zobrazuje standardní možnosti hledání s zadaným názvem s příponou o.](media/civic-platform-tutorial/sso-config.png)
 
 1. Rozbalte SSOCONFIG kliknutím na červenou tečku.
 
-    ![Odkaz na stažení certifikátu](media/civic-platform-tutorial/sso-config01.png)
+    ![Snímek obrazovky zobrazuje standardní volby, které jsou k dispozici pro vyhledání s konfigurací s.](media/civic-platform-tutorial/sso-config01.png)
 
 1. Zadejte informace o konfiguraci související s jednotným přihlašováním v následujícím kroku:
 
-    ![Odkaz na stažení certifikátu](media/civic-platform-tutorial/sso-config02.png)
+    ![Snímek obrazovky zobrazuje standardní možnosti úprav položek pro S konfigurací S S-O.](media/civic-platform-tutorial/sso-config02.png)
 
     1. Do pole **ApplicationId** zadejte hodnotu **ID aplikace** , kterou jste zkopírovali z Azure Portal.
 
@@ -154,7 +154,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -182,13 +182,12 @@ V této části vytvoříte uživatele s názvem B. Simon na platformě Civic. P
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Civic Platform na přístupovém panelu, měli byste se automaticky přihlásit k platformě Civic, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Civic Platform na přístupovém panelu, měli byste se automaticky přihlásit k platformě Civic, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

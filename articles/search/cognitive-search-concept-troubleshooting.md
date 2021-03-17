@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5882cc949d88e8c2a4102362cf5d2a3613e1d714
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510862"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475484"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tipy pro rozšíření AI v Azure Kognitivní hledání
 
@@ -54,7 +54,7 @@ V takovém případě může být vhodné říct indexeru, aby ignoroval chyby. 
 
 ## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>Tip 4: použití relací ladění k identifikaci a řešení problémů s dovednosti 
 
-Relace ladění je vizuální editor, který pracuje s existujícím dovednosti v Azure Portal. V rámci ladicí relace můžete identifikovat a vyřešit chyby, ověřovat změny a potvrzovat změny v produkčním dovednosti v kanálu pro rozšíření AI. Tato funkce verze Preview [si přečte dokumentaci](https://docs.microsoft.com/azure/search/cognitive-search-debug-session). Další informace o konceptech a o tom, jak začít, najdete v tématu [relace ladění](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions).
+Relace ladění je vizuální editor, který pracuje s existujícím dovednosti v Azure Portal. V rámci ladicí relace můžete identifikovat a vyřešit chyby, ověřovat změny a potvrzovat změny v produkčním dovednosti v kanálu pro rozšíření AI. Tato funkce verze Preview [si přečte dokumentaci](./cognitive-search-debug-session.md). Další informace o konceptech a o tom, jak začít, najdete v tématu [relace ladění](./cognitive-search-tutorial-debug-sessions.md).
 
 Relace ladění fungují na jednom dokumentu, což je skvělý způsob, jak iterativním sestavovat složitější kanály pro obohacení.
 
@@ -100,7 +100,7 @@ Analýza obrázků je poměrně náročná pro dokonce i jednoduché případy, 
 
 Maximální doba běhu se liší podle úrovně: několik minut na úrovni Free, ve 24hodinovém indexování na fakturovatelných úrovních. Pokud se zpracování nepovede do 24 hodin po zpracování na vyžádání, přepněte na plán, aby indexovací služba vybrala zpracování tam, kde skončila. 
 
-V případě naplánovaných indexerů se indexování obnoví podle plánu v posledním známém dobrém dokumentu. Pomocí opakovaného plánu může indexer pracovat svým způsobem prostřednictvím nevyřízených položek imagí v rámci série hodin nebo dnů, dokud nebudou zpracovány všechny nezpracované image. Další informace o syntaxi plánu najdete v [kroku 3: Create-a-indexer](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) nebo v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
+V případě naplánovaných indexerů se indexování obnoví podle plánu v posledním známém dobrém dokumentu. Pomocí opakovaného plánu může indexer pracovat svým způsobem prostřednictvím nevyřízených položek imagí v rámci série hodin nebo dnů, dokud nebudou zpracovány všechny nezpracované image. Další informace o syntaxi plánu najdete v tématu [Naplánování indexeru](search-howto-schedule-indexers.md).
 
 > [!NOTE]
 > Pokud je indexer nastavený na určitý plán, ale opakovaně selže na stejném dokumentu a znovu se pokaždé, když se spustí, indexer začne běžet v kratším intervalu (až do maximálního počtu alespoň každých 24 hodin), dokud to znovu neudělá.  Pokud se domníváte, že jste se rozhodli, že jste si myslíte, že byl problém, který způsobil, že se indexer zablokoval v určitém bodě, můžete na vyžádání provést indexer a pokud se to úspěšně dokončí, indexer se znovu vrátí do intervalu nastaveného plánu.
@@ -110,12 +110,11 @@ V případě indexování na základě portálu (jak je popsáno v rychlém star
 ## <a name="tip-8-increase-indexing-throughput"></a>Tip 8: zvýšení propustnosti indexování
 
 V případě [paralelního indexování](search-howto-large-index.md)umístěte data do více kontejnerů nebo více virtuálních složek uvnitř stejného kontejneru. Pak vytvořte více datových zdrojů a párů indexerů. Všechny indexery můžou používat stejný dovednosti a zapisovat do stejného cílového vyhledávacího indexu, takže si vaše vyhledávací aplikace nemusí být vědomá tohoto dělení.
-Další informace najdete v tématu [indexování velkých datových sad](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Viz také
+
 + [Rychlý Start: vytvoření kanálu pro rozšíření AI na portálu](cognitive-search-quickstart-blob.md)
 + [Kurz: Seznámení s rozhraními REST API pro obohacení AI](cognitive-search-tutorial-blob.md)
-+ [Zadání přihlašovacích údajů ke zdroji dat](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [Indexování velkých datových sad](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
++ [Jak nakonfigurovat indexery objektů BLOB](search-howto-indexing-azure-blob-storage.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Mapování obohacených polí na index](cognitive-search-output-field-mapping.md)

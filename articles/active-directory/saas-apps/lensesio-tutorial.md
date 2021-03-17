@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 48a1e50d451abb429e9bc33308909b368283644f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661448"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458604"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k portálu DataOps pro Lenses.io
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat portál [lenses.IO](https://lenses.io/
 * Umožněte uživatelům, aby se automaticky přihlásili k objektivu pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure AD](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -42,7 +42,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Lenses.io podporuje poskytovatele služeb (SP) iniciované jednotné přihlašování.
 
-* Po nakonfigurování Lenses.io můžete vynutili řízení relace. Řízení relace chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování Lenses.io můžete vynutili řízení relace. Řízení relace chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-lensesio-from-the-gallery"></a>Přidání Lenses.io z Galerie
 
@@ -164,20 +164,20 @@ Další informace najdete v tématu [mapování skupin Azure-čočky](https://do
 
 V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupového panelu.
 
-Když na přístupovém panelu vyberete dlaždici Lenses.io, měli byste se automaticky přihlásit k portálu Lenses.io. Další informace najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici Lenses.io, měli byste se automaticky přihlásit k portálu Lenses.io. Další informace najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
 - [Nastavení jednotného přihlašování v instanci Lenses.io](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure AD](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí služby Azure AD?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí služby Azure AD?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup ve službě Azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure AD?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Lenses.io s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit Lenses.io pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit Lenses.io pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

@@ -1,15 +1,15 @@
 ---
-author: craigktreasure
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/2/2019
-ms.author: crtreasu
-ms.openlocfilehash: 5c1e076406ba774f5abe056e05b8af1b574c9d0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: f69d09fa0cd42a07b732e20d8c0d4ecfd63c052a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422233"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185244"
 ---
 Naklonujte [úložiště ukázek](https://github.com/Azure/azure-spatial-anchors-samples) spuštěním následujících příkazů:
 

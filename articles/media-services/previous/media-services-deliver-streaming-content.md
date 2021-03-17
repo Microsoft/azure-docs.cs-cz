@@ -1,7 +1,7 @@
 ---
 title: Publikování obsahu Azure Media Services pomocí .NET | Microsoft Docs
 description: Naučte se, jak vytvořit lokátor, který se používá k vytvoření adresy URL streamování. Ukázky kódu jsou napsané v jazyce C# a používají sadu Media Services SDK pro .NET.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 9c7a29ebb355a5733201ff01af9e38f371def1cf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a1a06c9a5fdac1082a57bee71cccad271a6aae81
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962811"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015790"
 ---
-# <a name="publish-media-services-content-using-net"></a>Publikování obsahu Media Services pomocí .NET  
+# <a name="publish-media-services-content-using-net"></a>Publikování obsahu Media Services pomocí .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)

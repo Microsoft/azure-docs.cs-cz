@@ -5,12 +5,13 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 2d9ebf77862f7b9b019507613e269126501abfd8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 012a49762596adee39988614ed0c1020cd8bc104
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244918"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791100"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
 Reverzní proxy server integrovaný do Azure Service Fabric pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http.
@@ -94,18 +95,18 @@ Níže jsou uvedené prostředky pro službu:
 
 Pokud služba používá schéma dělení na oddíly singleton, parametry řetězce dotazu *PartitionKey* a *PartitionKind* se nevyžadují a služba může být dostupná pomocí brány jako:
 
-* Externě`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
-* Užit`http://localhost:19081/MyApp/MyService`
+* Externě `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
+* Užit `http://localhost:19081/MyApp/MyService`
 
 Pokud služba používá jednotné schéma dělení na oddíly (Int64), musí se pro přístup k oddílu služby použít parametry řetězce dotazu *PartitionKey* a *PartitionKind* :
 
-* Externě`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
-* Užit`http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Externě `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Užit `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
 Pokud chcete dosáhnout prostředků, které služba zpřístupňuje, jednoduše umístěte cestu prostředku za název služby v adrese URL:
 
-* Externě`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
-* Užit`http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
+* Externě `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+* Užit `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
 Brána pak tyto požadavky přepošle na adresu URL služby:
 
@@ -117,7 +118,7 @@ Service Fabric reverzní proxy server se znovu pokusí znovu přeložit adresu s
 
 Repliky nebo instance služby však mohou sdílet hostitelský proces a mohou také sdílet port, pokud je hostován webovým serverem http.sys, včetně:
 
-* [System .NET. HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
+* [System .NET. HttpListener](/dotnet/api/system.net.httplistener)
 * [ASP.NET Core weblisten](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 

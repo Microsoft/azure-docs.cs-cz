@@ -2,28 +2,28 @@
 title: Nasazení vyhrazených hostitelů Azure pomocí Azure PowerShell
 description: Nasaďte virtuální počítače na vyhrazené hostitele pomocí Azure PowerShell.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 08/01/2019
+ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 599d13daac2e062c8f71f5f7d7133646a1447123
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ed6319d5374db56cfe85e7ef9413480e523d9a34
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266584"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050881"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
 
-Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
+Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](../dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
 Ujistěte se, že máte nainstalovanou Azure PowerShell verze 2.8.0 nebo novější a jste přihlášení k účtu Azure v rámci `Connect-AzAccount` . 
 
 ## <a name="limitations"></a>Omezení
 
-- Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
 - Typy velikosti a hardwaru, které jsou dostupné pro vyhrazené hostitele, se v jednotlivých oblastech liší. Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
 
 ## <a name="create-a-host-group"></a>Vytvoření skupiny hostitelů
@@ -49,6 +49,10 @@ $hostGroup = New-AzHostGroup `
    -ResourceGroupName $rgName `
    -Zone 1
 ```
+
+
+Přidejte `-SupportAutomaticPlacement true` parametr, který bude mít vaše virtuální počítače a instance sady škálování automaticky umístěné na hostitelích v rámci skupiny hostitelů. Další informace najdete v tématu [Ruční a automatické umístění ](../dedicated-hosts.md#manual-vs-automatic-placement).
+
 
 ## <a name="create-a-host"></a>Vytvoření hostitele
 
@@ -165,6 +169,27 @@ Location               : eastus
 Tags                   : {}
 ```
 
+## <a name="create-a-scale-set"></a>Vytvoření škálovací sady 
+
+Když nasadíte sadu škálování, zadáte skupinu hostitelů.
+
+```azurepowershell-interactive
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -VMScaleSetName "myDHScaleSet" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -PublicIpAddressName "myPublicIPAddress" `
+  -LoadBalancerName "myLoadBalancer" `
+  -UpgradePolicyMode "Automatic"`
+  -HostGroupId $hostGroup.Id
+```
+
+Pokud chcete ručně zvolit, který hostitel má nasadit sadu škálování na, přidejte a zadejte `--host` název hostitele.
+
+
+
 ## <a name="add-an-existing-vm"></a>Přidat existující virtuální počítač 
 
 Existující virtuální počítač můžete přidat do vyhrazeného hostitele, ale tento virtuální počítač musí být nejdříve Stop\Deallocated. Před přesunutím virtuálního počítače na vyhrazeného hostitele se ujistěte, že je konfigurace virtuálních počítačů podporovaná:
@@ -244,4 +269,4 @@ Remove-AzResourceGroup -Name $rgName
 
 - [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.
 
-- Můžete také nasadit vyhrazené hostitele pomocí [Azure Portal](dedicated-hosts-portal.md).
+- Můžete také nasadit vyhrazené hostitele pomocí [Azure Portal](../dedicated-hosts-portal.md).

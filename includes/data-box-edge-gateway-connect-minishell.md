@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 881d22592e57ef14885eedf2330c71ffa154a136
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175469"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603320"
 ---
 V závislosti na operačním systému klienta se postupy pro vzdálené připojení k zařízení liší.
 
@@ -23,6 +23,8 @@ Pomocí těchto kroků se můžete vzdáleně připojit z klienta Windows.
 2. Ujistěte se, že je ve vašem klientovi spuštěná služba Vzdálená správa systému Windows. Na příkazovém řádku zadejte:
 
     `winrm quickconfig`
+
+    Další informace najdete v tématu [instalace a konfigurace pro vzdálená správa systému Windows](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration).
 
 3. Přiřaďte proměnnou k IP adrese zařízení.
 
@@ -58,17 +60,17 @@ Pomocí těchto kroků se můžete vzdáleně připojit z klienta Windows.
 
 V klientovi se systémem Linux, který budete používat pro připojení:
 
-- [Nainstalujte nejnovější prostředí PowerShell Core pro Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) z GitHubu, abyste získali funkci Vzdálená komunikace SSH. 
+- [Nainstalujte nejnovější prostředí PowerShell Core pro Linux](/powershell/scripting/install/installing-powershell-core-on-linux) z GitHubu, abyste získali funkci Vzdálená komunikace SSH. 
 - [Nainstalujte jenom `gss-ntlmssp` balíček z modulu NTLM](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). U klientů Ubuntu použijte následující příkaz:
     - `sudo apt-get install gss-ntlmssp`
 
-Pokud potřebujete další informace, přečtěte si [v protokolu SSH Vzdálená komunikace PowerShellu](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6).
+Pokud potřebujete další informace, přečtěte si [v protokolu SSH Vzdálená komunikace PowerShellu](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
 
 Pomocí těchto kroků se můžete vzdáleně připojit z klienta NFS.
 
 1. K otevření relace PowerShellu zadejte:
 
-    `sudo pwsh`
+    `pwsh`
  
 2. Pro připojení pomocí vzdáleného klienta zadejte:
 

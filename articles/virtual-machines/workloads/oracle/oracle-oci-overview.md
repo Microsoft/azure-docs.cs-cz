@@ -1,25 +1,19 @@
 ---
 title: Integrace Microsoft Azure s cloudovou infrastrukturou Oracle | Microsoft Docs
 description: Seznamte se s řešeními, která integrují aplikace Oracle běžící na Microsoft Azure s databázemi v Oracle Cloud Infrastructure (OCI).
-services: virtual-machines-linux
-documentationcenter: ''
-author: rgardler
-manager: ''
-tags: ''
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/01/2020
-ms.author: rogardle
-ms.custom: ''
-ms.openlocfilehash: d93446f4db914c736235daeb4e08e82b9ff00e62
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: kegorman
+ms.openlocfilehash: b27db94775e2ba8275dbdab4bf5bd61cc0fdf5c8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224498"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666865"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu
 
@@ -55,6 +49,7 @@ Připojení mezi cloudy je omezené na tyto oblasti:
 * Azure Canada Central (CanadaCentral) & OCI Toronto (Kanada – jihovýchod)
 * Azure Západní Evropa (WestEurope) & OCI Amsterdam (Nizozemsko – severozápadní)
 * Azure Japonsko – východ (JapanEast) & OCI – Tokio (Japonsko – východ)
+* Azure Západní USA (WestUS) & OCI San Jose (USA – západ)
 
 ## <a name="networking"></a>Sítě
 
@@ -68,7 +63,7 @@ Pomocí ExpressRoute a FastConnect můžou zákazníci vytvořit partnerský vzt
 
 Zabezpečení sítě je zásadní součástí libovolné podnikové aplikace a je centrální k tomuto řešení pro více cloudů. Veškerý provoz procházející ExpressRoute a FastConnect se předává přes soukromou síť. Tato konfigurace umožňuje zabezpečenou komunikaci mezi virtuální sítí Azure a virtuální cloudovou sítí Oracle. Nemusíte zadávat veřejnou IP adresu pro žádné virtuální počítače v Azure. Obdobně nepotřebujete internetovou bránu v rozhraní OCI. Veškerá komunikace probíhá prostřednictvím privátní IP adresy počítačů.
 
-Kromě toho můžete nastavit [seznamy zabezpečení](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) ve vaší virtuální cloudové síti OCI a pravidla zabezpečení (připojené ke [skupinám zabezpečení sítě](../../../virtual-network/security-overview.md)Azure). Pomocí těchto pravidel můžete řídit tok provozu mezi počítači ve virtuálních sítích. Pravidla zabezpečení sítě je možné přidat na úrovni počítače, na úrovni podsítě a také na úrovni virtuální sítě.
+Kromě toho můžete nastavit [seznamy zabezpečení](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) ve vaší virtuální cloudové síti OCI a pravidla zabezpečení (připojené ke [skupinám zabezpečení sítě](../../../virtual-network/network-security-groups-overview.md)Azure). Pomocí těchto pravidel můžete řídit tok provozu mezi počítači ve virtuálních sítích. Pravidla zabezpečení sítě je možné přidat na úrovni počítače, na úrovni podsítě a také na úrovni virtuální sítě.
 
 [Aplikace WebLogic Server Azure](oracle-weblogic.md) každý vytvoří skupinu zabezpečení sítě, která je předem nakonfigurovaná tak, aby fungovala s konfiguracemi portů serveru WebLogic Server.
  

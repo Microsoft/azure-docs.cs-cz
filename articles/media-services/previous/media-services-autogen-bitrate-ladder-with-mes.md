@@ -3,7 +3,7 @@ title: Použití Media Encoder Standard k automatickému vytvoření žebříku 
 description: V tomto tématu se dozvíte, jak použít Media Encoder Standard (status) k automatickému vygenerování přenosové žebříky na základě vstupních rozlišení a přenosové rychlosti.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 6ea28d61cc142c3191d591721b92e08d651c7ed5
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896022"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014396"
 ---
-#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Použití Media Encoder Standard k automatickému vygenerování žebříku přenosové rychlosti  
+#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Použití Media Encoder Standard k automatickému vygenerování žebříku přenosové rychlosti
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 ## <a name="overview"></a>Přehled
 
@@ -174,7 +176,7 @@ Tato část ukazuje tři příklady výstupních vrstev vyprodukovaných pomocí
 ### <a name="example-1"></a>Příklad 1
 Zdroj s výškou "1080" a snímkem "29,970" vytváří 6 vrstev videa:
 
-|Vrstva|Vlastnost Height|impulzu|Přenosová rychlost (KB/s)|
+|Vrstva|Height (Výška)|Width (Šířka)|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -186,7 +188,7 @@ Zdroj s výškou "1080" a snímkem "29,970" vytváří 6 vrstev videa:
 ### <a name="example-2"></a>Příklad 2
 Zdroj s výškou "720" a snímkem "23,970" vytváří 5 vrstev videa:
 
-|Vrstva|Vlastnost Height|impulzu|Přenosová rychlost (KB/s)|
+|Vrstva|Height (Výška)|Width (Šířka)|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -197,7 +199,7 @@ Zdroj s výškou "720" a snímkem "23,970" vytváří 5 vrstev videa:
 ### <a name="example-3"></a>Příklad 3
 Zdroj s výškou "360" a snímkem "29,970" vytvoří 3 vrstvy videa:
 
-|Vrstva|Vlastnost Height|impulzu|Přenosová rychlost (KB/s)|
+|Vrstva|Height (Výška)|Width (Šířka)|Přenosová rychlost (KB/s)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

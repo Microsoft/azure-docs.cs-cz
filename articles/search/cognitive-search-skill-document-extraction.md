@@ -1,5 +1,5 @@
 ---
-title: Rozpoznávání extrakce dokumentů – dovednost (Preview)
+title: Rozpoznávání extrakce dokumentů – dovednost
 titleSuffix: Azure Cognitive Search
 description: Extrahuje obsah ze souboru v rámci kanálu pro obohacení. Tato dovednost je aktuálně ve verzi Public Preview.
 manager: nitinme
@@ -8,17 +8,14 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 144e8058e640f98dc6b0ef60534405525532b00e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080870"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547862"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Rozpoznávání extrakce dokumentů – dovednost
-
-> [!IMPORTANT] 
-> Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
 Dovednost **extrakce dokumentu** extrahuje obsah ze souboru v rámci kanálu pro obohacení. Díky tomu můžete využít krok extrakce dokumentu, ke kterému obvykle dochází před spuštěním dovednosti se soubory, které mohou být generovány jinými dovednostmi.
 
@@ -34,15 +31,15 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy            | Povolené hodnoty | Description |
+| Vstupy | Povolené hodnoty | Description |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | Nastavte na `default` pro extrakci dokumentů ze souborů, které nejsou čistě textové nebo JSON. Nastavte na `text` , aby se zlepšil výkon souborů ve formátu prostého textu. Nastavte na `json` extrakci strukturovaného obsahu ze souborů JSON. Pokud `parsingMode` není definováno explicitně, bude nastaveno na `default` . |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Nastavte na `contentAndMetadata` pro extrakci všech metadat a textových obsahu z každého souboru. Nastavte na `allMetadata` extrakci pouze [metadat specifických pro typ obsahu](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) (například metadata jedinečná pouze pro soubory PNG). Pokud `dataToExtract` není definováno explicitně, bude nastaveno na `contentAndMetadata` . |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Nastavte na `contentAndMetadata` pro extrakci všech metadat a textových obsahu z každého souboru. Nastavte na `allMetadata` k extrakci pouze [vlastností metadat pro daný typ obsahu](search-blob-metadata-properties.md) (například metadata jsou jedinečná pouze pro soubory PNG). Pokud `dataToExtract` není definováno explicitně, bude nastaveno na `contentAndMetadata` . |
 | `configuration` | Viz níže. | Slovník volitelných parametrů, který upravuje způsob, jakým se provádí extrakce dokumentu. Popisy podporovaných vlastností konfigurace najdete v následující tabulce. |
 
 | Konfigurační parametr   | Povolené hodnoty | Description |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Nastavte na `none` Ignorovat vložené obrázky nebo soubory obrázků v sadě dat. Toto nastavení je výchozí. <br/>V případě [analýzy obrázků s využitím zkušeností s rozpoznáváním](cognitive-search-concept-image-scenarios.md)nastavte, aby `generateNormalizedImages` dovednost vytvořila pole normalizovaných imagí jako součást odhalující dokumentu. Tato akce vyžaduje, aby `parsingMode` byl nastaven na hodnotu `default` a `dataToExtract` byl nastaven na hodnotu `contentAndMetadata` . Normalizovaná bitová kopie odkazuje na další zpracování, které vede k podpoře konzistentního vykreslování při zahrnutí obrázků do výsledků vizuálního vyhledávání (například fotografií stejné velikosti v ovládacím prvku graf, jak je vidět v [ukázce JFK](https://github.com/Microsoft/AzureSearch_JFK_Files)). Tyto informace jsou vygenerovány pro každý obrázek při použití této možnosti.  <br/>Pokud nastavíte na `generateNormalizedImagePerPage` , soubory PDF budou zpracovávány jinak než při extrakci vložených obrázků, každá stránka bude vygenerována jako obrázek a v odpovídajícím způsobem provede normální nastavení.  Typy souborů, které nejsou v PDF, se budou považovat za stejné, jako kdyby `generateNormalizedImages` byla nastavena.
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Nastavte na `none` Ignorovat vložené obrázky nebo soubory obrázků v sadě dat. Tato možnost je výchozí. <br/>V případě [analýzy obrázků s využitím zkušeností s rozpoznáváním](cognitive-search-concept-image-scenarios.md)nastavte, aby `generateNormalizedImages` dovednost vytvořila pole normalizovaných imagí jako součást odhalující dokumentu. Tato akce vyžaduje, aby `parsingMode` byl nastaven na hodnotu `default` a `dataToExtract` byl nastaven na hodnotu `contentAndMetadata` . Normalizovaná bitová kopie odkazuje na další zpracování, které vede k podpoře konzistentního vykreslování při zahrnutí obrázků do výsledků vizuálního vyhledávání (například fotografií stejné velikosti v ovládacím prvku graf, jak je vidět v [ukázce JFK](https://github.com/Microsoft/AzureSearch_JFK_Files)). Tyto informace jsou vygenerovány pro každý obrázek při použití této možnosti.  <br/>Pokud nastavíte na `generateNormalizedImagePerPage` , soubory PDF budou zpracovávány jinak než při extrakci vložených obrázků, každá stránka bude vygenerována jako obrázek a v odpovídajícím způsobem provede normální nastavení.  Typy souborů, které nejsou v PDF, se budou považovat za stejné, jako kdyby `generateNormalizedImages` byla nastavena.
 | `normalizedImageMaxWidth` | Libovolné celé číslo mezi 50-10000 | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. | 
 | `normalizedImageMaxHeight` | Libovolné celé číslo mezi 50-10000 | Maximální výška (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. |
 
@@ -100,17 +97,17 @@ Tento objekt odkazu na soubor může být vygenerován jedním ze tří způsob�
     "outputs": [
       {
         "name": "content",
-        "targetName": "content"
+        "targetName": "extracted_content"
       },
       {
         "name": "normalized_images",
-        "targetName": "normalized_images"
+        "targetName": "extracted_normalized_images"
       }
     ]
   }
 ```
 
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {

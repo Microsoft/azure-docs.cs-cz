@@ -10,35 +10,35 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: 85667dfcc33d7bc8d1bab5b73119be2ef3b81c40
-  ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
-  ms.translationtype: HT
+  ms.openlocfilehash: 5af26d889ae6cfa6943bfa09ff47cc19d5977b4c
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/13/2020
-  ms.locfileid: "88185991"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102615886"
 highlightedContent:
   items:
   - title: Co je Azure IoT?
     itemType: overview
     url: ../iot-fundamentals/iot-introduction.md
+  - title: Začínáme s vývojem zařízení ve službě Azure IoT
+    itemType: get-started
+    url: ../iot-develop/index.yml
   - title: Instalace nástrojů VS Code pro Azure IoT
     itemType: download
     url: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools
   - title: Začínáme sestavovat s využitím Azure CLI pro Azure IoT
     itemType: reference
-    url: https://docs.microsoft.com/en-us/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest
+    url: /cli/azure/azure-cli-reference-for-IoT
   - title: Procházení ukázek kódu Azure IoT
     itemType: overview
-    url: https://docs.microsoft.com/samples/browse/?term=iot
-  - title: Zabezpečení nasazení Azure IoT
-    itemType: concept
-    url: ../iot-fundamentals/security-recommendations.md
+    url: /samples/browse/?term=iot
   - title: Referenční architektura Azure IoT
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/reference-architectures/iot/
+    url: /azure/architecture/reference-architectures/iot/
   - title: Azure IoT na Microsoft Learn
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&term=iot
+    url: /learn/browse/?products=azure&term=iot
   - title: Možnosti pomoci a podpory
     itemType: how-to-guide
     url: ../iot-fundamentals/iot-support-help.md
@@ -57,6 +57,9 @@ conceptualContent:
     - url: ../iot-hub/quickstart-control-device-node.md
       itemType: quickstart
       text: Ovládání zařízení z cloudu
+    - url: /azure-stack/operator/iot-hub-rp-overview
+      itemType: overview
+      text: IoT Hub v Azure Stack Hubu
     footerLink:
       url: ../iot-hub/index.yml
       text: Další informace
@@ -68,11 +71,11 @@ conceptualContent:
     - url: ../iot-central/core/quick-deploy-iot-central.md
       itemType: quickstart
       text: Vytvoření aplikace IoT Central
-    - url: ../iot-central/core/tutorial-connect-device-nodejs.md
+    - url: ../iot-central/core/tutorial-connect-device.md
       itemType: tutorial
       text: Připojení zařízení
     footerLink:
-      url: ../iot-central/core/index.yml
+      url: ../iot-central/index.yml
       text: Další informace
   - title: Spuštění inteligentních cloudových funkcí na hraničních zařízeních
     links:
@@ -90,13 +93,13 @@ conceptualContent:
       text: Další informace
   - title: Vytvoření propojené a inteligentní infrastruktury
     links:
-    - url: ../digital-twins/about-digital-twins.md
+    - url: ../digital-twins/overview.md
       itemType: overview
       text: Co je služba Azure Digital Twins?
-    - url: ../digital-twins/quickstart-view-occupancy-dotnet.md
+    - url: /previous-versions/azure/digital-twins/quickstart-view-occupancy-dotnet
       itemType: quickstart
       text: Vyhledání prázdných místností v budově
-    - url: ../digital-twins/tutorial-facilities-setup.md
+    - url: /previous-versions/azure/digital-twins/tutorial-facilities-setup
       itemType: tutorial
       text: Monitorování kancelářské budovy
     footerLink:
@@ -120,25 +123,39 @@ conceptualContent:
     links:
     - url: ../iot-pnp/overview-iot-plug-and-play.md
       itemType: overview
-      text: Co je IoT Plug and Play Preview?
-    - url: ../iot-pnp/quickstart-connect-device-node.md
+      text: Co je IoT Plug and Play?
+    - url: ../iot-pnp/quickstart-connect-device.md
       itemType: quickstart
       text: Připojení ukázkového zařízení ke službě IoT Hub
-    - url: ../iot-pnp/concepts-developer-guide.md
+    - url: ../iot-pnp/concepts-developer-guide-device.md
       itemType: concept
       text: Příručka pro vývojáře
     footerLink:
       url: ../iot-pnp/index.yml
       text: Další informace
+  - title: Aktualizace zařízení IoT Hub
+    links:
+    - url: ../iot-hub-device-update/understand-device-update.md
+      itemType: overview
+      text: Co je aktualizace zařízení?
+    - url: ../iot-hub-device-update/device-update-simulator.md
+      itemType: tutorial
+      text: Použití aktualizace zařízení na simulátoru
+    - url: ../iot-hub-device-update/device-update-ubuntu-agent.md
+      itemType: tutorial
+      text: Aktualizace balíčku na serveru Ubuntu
+    footerLink:
+      url: ../iot-hub-device-update/index.yml
+      text: Další informace
   - title: Zkoumání a analýza dat zařízení
     links:
-    - url: ../time-series-insights/time-series-insights-update-overview.md
+    - url: ../time-series-insights/overview-what-is-tsi.md
       itemType: overview
       text: Co je Azure Time Series Insights?
     - url: ../time-series-insights/time-series-quickstart.md
       itemType: quickstart
       text: Prozkoumat službu Time Series Insights
-    - url: ../time-series-insights/tutorial-create-tsi-sample-spa.md
+    - url: https://tsiclientsample.azurewebsites.net/
       itemType: tutorial
       text: Vytvoření webové aplikace Time Series Insights
     footerLink:
@@ -163,9 +180,6 @@ conceptualContent:
     - url: ../iot-accelerators/about-iot-accelerators.md
       itemType: overview
       text: Co jsou akcelerátory řešení Azure IoT?
-    - url: ../iot-accelerators/quickstart-remote-monitoring-deploy.md
-      itemType: quickstart
-      text: Vyzkoušení řešení pro vzdálené monitorování
     - url: ../iot-accelerators/quickstart-connected-factory-deploy.md
       itemType: quickstart
       text: Vyzkoušení řešení propojené továrny
@@ -178,16 +192,16 @@ tools:
   items:
   - title: Referenční informace k sadě Azure IoT SDK pro C
     imageSrc: https://docs.microsoft.com/media/logos/logo_c.svg
-    url: https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/
+    url: /azure/iot-hub/iot-c-sdk-ref/
   - title: Azure IoT SDK pro Python
     imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
     url: https://github.com/Azure/azure-iot-sdk-python
   - title: Referenční informace k sadě Azure IoT SDK pro Node.js
     imageSrc: https://docs.microsoft.com/media/logos/logo_nodejs.svg
-    url: https://docs.microsoft.com/javascript/api/overview/azure/iot-hub?view=azure-node-latest
+    url: /javascript/api/overview/azure/iot-hub
   - title: Referenční informace k sadě Azure IoT SDK pro Javu
     imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
-    url: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service?view=azure-java-stable
+    url: /java/api/com.microsoft.azure.sdk.iot.service
   - title: Referenční informace k sadě Azure IoT SDK pro .NET
     imageSrc: https://docs.microsoft.com/media/logos/logo_NET.svg
-    url: https://docs.microsoft.com/dotnet/api/overview/azure/iot?view=azure-dotnet
+    url: /dotnet/api/overview/azure/iot

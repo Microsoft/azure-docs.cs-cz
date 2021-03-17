@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 3957d7501634be01a978481787885ae13ad3273b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 7a857b887b53ccb2288507742ca52d72d90ff548
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225950"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214350"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Odeslání e-mailu pomocí SendGrid z Java v nasazení Azure
 Následující příklad ukazuje, jak můžete použít SendGrid k posílání e-mailů z webové stránky hostované v Azure. Výsledná aplikace zobrazí uživateli výzvu k zadání hodnot e-mailu, jak je znázorněno na následujícím snímku obrazovky.
@@ -40,7 +40,7 @@ Chcete-li použít kód v tomto tématu, musíte provést následující:
 
 K odeslání e-mailu musíte mít také vlastní uživatelské jméno a heslo pro SendGrid. Pokud chcete začít pracovat s SendGrid, přečtěte si téma [odeslání e-mailu pomocí SendGrid z Java](store-sendgrid-java-how-to-send-email.md).
 
-Kromě toho se seznamte s informacemi při [vytváření Hello World aplikace pro Azure v zatmění](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)nebo s jinými postupy pro hostování aplikací Java v Azure, pokud nepoužíváte zatmění, důrazně se doporučuje.
+Kromě toho se seznamte s informacemi při [vytváření Hello World aplikace pro Azure v zatmění](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)nebo s jinými postupy pro hostování aplikací Java v Azure, pokud nepoužíváte zatmění, důrazně se doporučuje.
 
 ## <a name="create-a-web-form-for-sending-email"></a>Vytvoření webového formuláře pro odesílání e-mailů
 Následující kód ukazuje, jak vytvořit webový formulář pro načtení uživatelských dat pro odesílání e-mailů. Pro účely tohoto obsahu se soubor JSP jmenuje **emailform.jsp**.
@@ -215,11 +215,11 @@ Kromě posílání e-mailů poskytuje emailform.jsp výsledek pro uživatele. P�
 ![Odeslat výsledek pošty][emailresult]
 
 ## <a name="next-steps"></a>Další kroky
-Nasaďte aplikaci do emulátoru služby COMPUTE a v rámci prohlížeče spusťte emailform.jsp, zadejte hodnoty do formuláře, klikněte na **Odeslat tento e-mail**a potom se podívejte na výsledky v sendemail.jsp.
+Nasaďte aplikaci do emulátoru služby COMPUTE a v rámci prohlížeče spusťte emailform.jsp, zadejte hodnoty do formuláře, klikněte na **Odeslat tento e-mail** a potom se podívejte na výsledky v sendemail.jsp.
 
 Tento kód vám ukáže, jak používat SendGrid v jazyce Java v Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Například: 
 
-* Pomocí objektů BLOB služby Azure Storage nebo SQL Database můžete ukládat e-mailové adresy a e-mailové zprávy místo používání webového formuláře. Informace o použití objektů BLOB služby Azure Storage v jazyce Java najdete v tématu [How to use the BLOB Storage Service from Java](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). Informace o použití SQL Database v jazyce Java najdete v tématu [použití SQL Database v jazyce Java](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java).
+* Pomocí objektů BLOB služby Azure Storage nebo SQL Database můžete ukládat e-mailové adresy a e-mailové zprávy místo používání webového formuláře. Informace o použití objektů BLOB služby Azure Storage v jazyce Java najdete v tématu [How to use the BLOB Storage Service from Java](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). Informace o použití SQL Database v jazyce Java najdete v tématu [použití SQL Database v jazyce Java](./azure-sql/database/connect-query-java.md).
 * Další informace o používání SendGrid v jazyce Java najdete v tématu [odeslání e-mailu pomocí SendGrid z Java](store-sendgrid-java-how-to-send-email.md).
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

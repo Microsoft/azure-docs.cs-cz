@@ -3,21 +3,20 @@ title: Osvědčené postupy pro konfiguraci aplikací Azure | Microsoft Docs
 description: Naučte se osvědčené postupy při používání konfigurace aplikací Azure. Mezi zahrnutá témata patří například seskupení klíčů, kompozice hodnot klíčů, zavedení konfigurace aplikace a další.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588054"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371545"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
 
@@ -42,7 +41,7 @@ Je důležité si uvědomit, že klíče jsou v souladu s tím, jak kód aplikac
 
 Konfigurace aplikace považuje všechny klíče uložené s nimi jako nezávislé entity. Konfigurace aplikace se nepokouší odvodit žádnou relaci mezi klíči nebo zdědit hodnoty klíčů na základě jejich hierarchie. Můžete agregovat více sad klíčů, ale pomocí popisků, které jsou v kódu aplikace v kombinaci se správnými konfiguračními balíčky.
 
-Podívejme se na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit v závislosti na vývojovém prostředí. Pomocí prázdného popisku a popisku s názvem "vývoj" vytvoříte klíč s názvem "Asset1". Do prvního popisku vložíte výchozí hodnotu pro **Asset1**a do druhé hodnoty vložíte určitou hodnotu "vývoj".
+Podívejme se na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit v závislosti na vývojovém prostředí. Pomocí prázdného popisku a popisku s názvem "vývoj" vytvoříte klíč s názvem "Asset1". Do prvního popisku vložíte výchozí hodnotu pro **Asset1** a do druhé hodnoty vložíte určitou hodnotu "vývoj".
 
 Ve vašem kódu nejdříve načtete hodnoty klíčů bez popisků a potom navedete stejnou sadu hodnot klíčů podruhé s označením "vývoj". Při druhém načtení hodnot se přepíší předchozí hodnoty klíčů. Konfigurační systém .NET Core umožňuje "sestavovat" více sad konfiguračních dat nad sebou. Pokud klíč existuje ve více než jedné sadě, použije se poslední sada, která ho obsahuje. V případě moderního programovacího rozhraní, jako je .NET Core, získáte tuto funkci zásobníku zdarma, pokud pro přístup ke konfiguraci aplikací použijete nativního poskytovatele konfigurace. Následující fragment kódu ukazuje, jak lze implementovat skládání do aplikace .NET Core:
 
@@ -69,7 +68,7 @@ Lepší možností je použít funkci spravované identity v Azure Active Direct
 Přístup ke konfiguraci aplikací pro webové aplikace nebo funkce můžete zajistit pomocí kterékoli z následujících metod:
 
 * Prostřednictvím Azure Portal do nastavení aplikace App Service zadejte připojovací řetězec do úložiště konfigurace aplikace.
-* Uložte připojovací řetězec do úložiště konfigurace aplikace v Key Vault a [odkázat ho z App Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Uložte připojovací řetězec do úložiště konfigurace aplikace v Key Vault a [odkázat ho z App Service](../app-service/app-service-key-vault-references.md).
 * Použijte spravované identity Azure pro přístup k úložišti konfigurace aplikace. Další informace najdete v tématu [integrace se spravovanými identitami Azure](howto-integrate-azure-managed-service-identity.md).
 * Doručovat konfiguraci z konfigurace aplikace do App Service. Konfigurace aplikace poskytuje funkci exportu (v Azure Portal a Azure CLI), která odesílá data přímo do App Service. V této metodě nemusíte vůbec měnit kód aplikace.
 
@@ -79,17 +78,21 @@ Nadměrné požadavky na konfiguraci aplikací můžou mít za následek omezen�
 
 * Zvyšte časový limit aktualizace, zejména v případě, že se konfigurační hodnoty nemění často. Zadejte nový časový limit aktualizace pomocí [ `SetCacheExpiration` metody](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration).
 
-* Sledujte jeden *klíč ověřovacího klíče*místo sledování jednotlivých klíčů. Aktualizuje veškerou konfiguraci pouze v případě, že se změní klíč Sentinel. Příklad najdete v tématu [použití dynamické konfigurace v aplikaci ASP.NET Core](enable-dynamic-configuration-aspnet-core.md) .
+* Sledujte jeden *klíč ověřovacího klíče* místo sledování jednotlivých klíčů. Aktualizuje veškerou konfiguraci pouze v případě, že se změní klíč Sentinel. Příklad najdete v tématu [použití dynamické konfigurace v aplikaci ASP.NET Core](enable-dynamic-configuration-aspnet-core.md) .
 
 * Použijte Azure Event Grid k přijímání oznámení při změnách konfigurace, a ne při průběžném dotazování na změny. Další informace najdete v tématu [Směrování událostí konfigurace aplikace Azure do koncového bodu webu](./howto-app-configuration-event.md) .
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>Import konfiguračních dat do konfigurace aplikace
 
-Konfigurace aplikací nabízí možnost hromadného [importu](https://aka.ms/azconfig-importexport1) nastavení konfigurace z vašich aktuálních konfiguračních souborů pomocí Azure Portal nebo CLI. Můžete také použít stejné možnosti pro export hodnot z konfigurace aplikace, například mezi souvisejícími obchody. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHub, můžete použít naši [akci GitHubu](https://aka.ms/azconfig-gha2) , abyste mohli nadále používat stávající postupy správy zdrojového kódu a přitom získat výhody konfigurace aplikace.
+Konfigurace aplikací nabízí možnost hromadného [importu](./howto-import-export-data.md) nastavení konfigurace z vašich aktuálních konfiguračních souborů pomocí Azure Portal nebo CLI. Můžete také použít stejné možnosti pro export hodnot z konfigurace aplikace, například mezi souvisejícími obchody. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHub, můžete použít naši [akci GitHubu](./concept-github-action.md) , abyste mohli nadále používat stávající postupy správy zdrojového kódu a přitom získat výhody konfigurace aplikace.
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>Nasazení ve více oblastech v konfiguraci aplikace
 
 Konfigurace aplikace je regionální služba. Pro aplikace s různými konfiguracemi v jednotlivých oblastech může ukládání těchto konfigurací v jedné instanci vytvořit jediný bod selhání. Nasazení jedné instance konfigurace aplikace na oblast napříč více oblastmi může být lepší volbou. Může pomáhat s regionálním zotavením po havárii, výkonem a silou zabezpečení. Konfigurace podle oblastí taky zlepšuje latenci a používá kvóty pro oddělené omezování, protože omezování je na instanci. Pokud chcete použít zmírnění zotavení po havárii, můžete použít [víc úložišť konfigurací](./concept-disaster-recovery.md). 
+
+## <a name="client-applications-in-app-configuration"></a>Klientské aplikace v konfiguraci aplikace 
+
+Nadměrné požadavky na konfiguraci aplikací můžou mít za následek omezení nebo překročení limitu. Aplikace využívají ukládání do mezipaměti a inteligentní aktualizace aktuálně dostupné k optimalizaci počtu požadavků, které odesílají. Tento proces se dá zrcadlit v klientských aplikacích s vysokým objemem, protože se vyhnete přímým připojením k úložišti konfigurace. Místo toho se klientské aplikace připojí k vlastní službě a tato služba komunikuje s úložištěm konfigurace. Toto řešení proxy může zajistit, aby klientské aplikace nepřístuply k omezení omezení v úložišti konfigurací. Další informace o omezování najdete v [nejčastějších dotazech](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Další kroky
 

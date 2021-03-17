@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: d7eea031e50a0f54a57d8a9c857d52ca137f3283
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b2763372cc63637f73610e1936e3ea54a4524e7d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760545"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356600"
 ---
 # <a name="what-is-a-keyword"></a>Co je klíčové slovo?
 
@@ -60,6 +61,6 @@ Vytvoření efektivního klíčového slova je důležité pro zajištění, že
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+* [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 * [Získat sadu Speech SDK](speech-sdk.md)
 * [Další informace o hlasových asistentech](voice-assistants.md)

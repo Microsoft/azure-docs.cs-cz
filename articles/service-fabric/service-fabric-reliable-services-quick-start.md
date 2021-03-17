@@ -3,13 +3,13 @@ title: 'Vytvoření první aplikace Service Fabric v jazyce C #'
 description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric se stavovou a stavovou službou.
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: sfrev
-ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: sfrev, devx-track-csharp
+ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260478"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791523"
 ---
 # <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
 
@@ -103,7 +103,7 @@ Platforma volá tuto metodu, když je umístěna instance služby a je připrave
 
 Tato orchestrace je spravovaná systémem, aby byla vaše služba vysoce dostupná a správně vyvážená.
 
-`RunAsync()`nemělo by se blokovat synchronně. Vaše implementace RunAsync by měla vrátit úlohu nebo očekávat jakékoli dlouhotrvající nebo blokující operace, aby bylo možné pokračovat v běhu. Poznámka ve `while(true)` smyčce v předchozím příkladu se používá vrácení úlohy `await Task.Delay()` . Pokud vaše úloha musí blokovat synchronně, měli byste naplánovat novou úlohu `Task.Run()` v rámci vaší `RunAsync` implementace.
+`RunAsync()` nemělo by se blokovat synchronně. Vaše implementace RunAsync by měla vrátit úlohu nebo očekávat jakékoli dlouhotrvající nebo blokující operace, aby bylo možné pokračovat v běhu. Poznámka ve `while(true)` smyčce v předchozím příkladu se používá vrácení úlohy `await Task.Delay()` . Pokud vaše úloha musí blokovat synchronně, měli byste naplánovat novou úlohu `Task.Run()` v rámci vaší `RunAsync` implementace.
 
 Zrušení úloh je úsilí v družstvu, které provádí poskytnutý token zrušení. Systém bude čekat na ukončení úlohy (po úspěšném dokončení, zrušení nebo chybě), než se přesune. Je důležité přijmout token zrušení, dokončit práci a skončit `RunAsync()` co nejrychleji, když systém požaduje zrušení.
 
@@ -161,7 +161,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 ### <a name="runasync"></a>RunAsync
 
-`RunAsync()`funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()` . Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
+`RunAsync()` funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()` . Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a správce spolehlivého stavu
 
@@ -169,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) je slovníková implementace, kterou můžete použít k spolehlivému ukládání stavu ve službě. Pomocí Service Fabric a spolehlivých kolekcí můžete přímo ukládat data do vaší služby, aniž by bylo nutné externí trvalé úložiště. Spolehlivé kolekce zajistí vysokou dostupnost vašich dat. Service Fabric toho dosahuje vytvořením a správou více *replik* vaší služby za vás. Poskytuje také rozhraní API, které abstrakce zjednodušuje správu těchto replik a jejich přechodů na stav.
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2#microsoft_servicefabric_data_collections_ireliabledictionary_2) je slovníková implementace, kterou můžete použít k spolehlivému ukládání stavu ve službě. Pomocí Service Fabric a spolehlivých kolekcí můžete přímo ukládat data do vaší služby, aniž by bylo nutné externí trvalé úložiště. Spolehlivé kolekce zajistí vysokou dostupnost vašich dat. Service Fabric toho dosahuje vytvořením a správou více *replik* vaší služby za vás. Poskytuje také rozhraní API, které abstrakce zjednodušuje správu těchto replik a jejich přechodů na stav.
 
 Spolehlivé kolekce můžou ukládat jakýkoli typ .NET, včetně vašich vlastních typů, s několika upozorněními:
 
-* Service Fabric zajistí, aby byl stav vysoce dostupný při *replikaci* do všech uzlů, a spolehlivé kolekce ukládají vaše data na místní disk v každé replice. To znamená, že všechno, co je uloženo ve spolehlivých kolekcích, musí být *serializovatelný*. Ve výchozím nastavení používají spolehlivé kolekce [kontrakt DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) pro serializaci, takže je důležité zajistit, aby byly vaše typy [podporovány serializátorem kontraktu dat](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) při použití výchozího serializátoru.
+* Service Fabric zajistí, aby byl stav vysoce dostupný při *replikaci* do všech uzlů, a spolehlivé kolekce ukládají vaše data na místní disk v každé replice. To znamená, že všechno, co je uloženo ve spolehlivých kolekcích, musí být *serializovatelný*. Ve výchozím nastavení používají spolehlivé kolekce [kontrakt DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute) pro serializaci, takže je důležité zajistit, aby byly vaše typy [podporovány serializátorem kontraktu dat](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) při použití výchozího serializátoru.
 * Objekty jsou při potvrzení transakcí u spolehlivých kolekcí replikovány pro zajištění vysoké dostupnosti. Objekty uložené ve spolehlivých kolekcích jsou v rámci služby uchovávány v místní paměti. To znamená, že máte místní odkaz na objekt.
   
    Je důležité, abyste nemuseli provádět místní instance těchto objektů bez provedení operace aktualizace pro spolehlivou kolekci v transakci. Důvodem je to, že změny místních instancí objektů nebudou replikovány automaticky. Objekt je nutné znovu vložit zpět do slovníku nebo použít jednu z metod *aktualizace* ve slovníku.
@@ -198,7 +198,7 @@ Spolehlivé kolekce obsahují mnohé ze stejných operací, které `System.Colle
 Spolehlivé operace shromažďování dat jsou *transakční*, takže můžete udržovat stav konzistentní napříč několika spolehlivými kolekcemi a operacemi. Můžete například vyřadit pracovní položku ze spolehlivé fronty, provést na ní operaci a výsledek uložit ve spolehlivém slovníku, který je v rámci jedné transakce. Tato možnost se považuje za atomickou operaci a zaručuje, že celá operace bude úspěšná nebo se vrátí celá operace. Pokud dojde k chybě po vyřazení položky z fronty, ale před uložením výsledku, je celá transakce vrácena zpět a položka zůstane ve frontě ke zpracování.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
-Nyní se vrátíme do aplikace *HelloWorld* . Nyní můžete vytvářet a nasazovat vaše služby. Po stisknutí klávesy **F5**bude vaše aplikace sestavena a nasazena do místního clusteru.
+Nyní se vrátíme do aplikace *HelloWorld* . Nyní můžete vytvářet a nasazovat vaše služby. Po stisknutí klávesy **F5** bude vaše aplikace sestavena a nasazena do místního clusteru.
 
 Po spuštění služeb můžete v okně **diagnostické události** zobrazit generované události trasování událostí pro Windows (ETW). Všimněte si, že zobrazené události jsou ze stavové služby a stavové služby v aplikaci. Datový proud můžete pozastavit kliknutím na tlačítko **pozastavit** . Můžete si prohlédnout podrobnosti zprávy rozbalením této zprávy.
 

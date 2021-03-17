@@ -2,16 +2,16 @@
 title: Podpora zdrojového mapování pro aplikace JavaScriptu – Azure Monitor Application Insights
 description: Naučte se nahrávat zdrojová mapování do vlastního kontejneru objektů BLOB v účtu úložiště pomocí Application Insights.
 ms.topic: conceptual
-author: markwolff
-ms.author: marwolff
+author: DavidCBerry13
+ms.author: daberry
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: de475cbd7cbb0d8dbcda026109b0387da14bedff
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 79462dcb503e5835254b89f7ebaa7a9ee34946d3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386788"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933938"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>Podpora zdrojového mapování pro aplikace JavaScriptu
 
@@ -67,7 +67,7 @@ Pokud chcete nakonfigurovat nebo změnit účet úložiště nebo kontejner obje
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>Požadované nastavení řízení přístupu na základě role (RBAC) na kontejneru objektů BLOB
+### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>Požadované nastavení řízení přístupu na základě role Azure (RBAC) na kontejneru objektů BLOB
 
 Každý uživatel na portálu, který tuto funkci používá, musí být aspoň přiřazený jako [čtečka dat objektů BLOB úložiště][storage blob data reader] do kontejneru objektů BLOB. Tuto roli musíte přiřadit někomu jinému, kdo bude používat zdrojové mapy prostřednictvím této funkce.
 
@@ -78,12 +78,12 @@ Každý uživatel na portálu, který tuto funkci používá, musí být aspoň 
 
 1. Ověřte, jestli se odpovídající zdrojová mapa nahrála do správného kontejneru objektů BLOB.
 2. Ověřte, zda je zdrojový soubor mapování pojmenován po souboru JavaScriptu, na který je namapován, s příponou `.map` .
-    - Vyhledá třeba `/static/js/main.4e2ca5fa.chunk.js` objekt BLOB s názvem`main.4e2ca5fa.chunk.js.map`
+    - Vyhledá třeba `/static/js/main.4e2ca5fa.chunk.js` objekt BLOB s názvem `main.4e2ca5fa.chunk.js.map`
 3. Zkontrolujte konzolu prohlížeče a zjistěte, jestli se nějaké chyby protokolují. Zahrňte do libovolného lístku podpory.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úloha kopírování souborů Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
+* [Úloha kopírování souborů Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy)
 
 
 <!-- Remote URLs -->

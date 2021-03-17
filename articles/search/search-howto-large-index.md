@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/25/2020
+ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484565"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358388"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indexování velkých datových sad v Azure Kognitivní hledání
 
@@ -25,34 +25,37 @@ Stejné techniky platí i pro dlouhotrvající procesy. Konkrétně postup, kter
 
 V následujících částech najdete techniky pro indexování velkých objemů dat pomocí rozhraní push API i indexerů.
 
-## <a name="push-api"></a>Rozhraní API pro vložení
+## <a name="use-the-push-api"></a>Použití rozhraní API push
 
-Když zadáte data do indexu, je k dispozici několik klíčových důležitých informací, které mají vliv na rychlost indexování rozhraní API push. Tyto faktory jsou popsány v následující části. 
+Při nahrávání dat do indexu pomocí metody [Add documents REST API](/rest/api/searchservice/addupdate-or-delete-documents) nebo [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments)existuje několik klíčových důležitých informací, které mají vliv na rychlost indexování. Tyto faktory jsou popsány v níže uvedené části a rozsah z nastavení kapacity služby na optimalizace kódu.
 
-Kromě informací v tomto článku můžete také využít výhod ukázek kódu v [kurzu optimalizace indexování](tutorial-optimize-indexing-push-api.md) , kde se dozvíte víc.
+Další informace a ukázky kódu, které ilustrují indexování modelu nabízených oznámení, najdete v tématu [kurz: optimalizace propustnosti indexování](tutorial-optimize-indexing-push-api.md).
 
-### <a name="service-tier-and-number-of-partitionsreplicas"></a>Úroveň služby a počet oddílů/replik
+### <a name="capacity-of-your-service"></a>Kapacita vaší služby
 
-Při přidávání oddílů nebo zvýšení úrovně služby vyhledávání dojde ke zvýšení rychlosti indexování.
+Jako první krok zkontrolujte charakteristiky a [omezení](search-limits-quotas-capacity.md) vrstvy, na které jste službu zřídili. Jedním z klíčových různých faktorů mezi cenovými úrovněmi je velikost a rychlost oddílů, která má přímý vliv na rychlost indexování. Pokud jste službu vyhledávání zřídili na úrovni, která pro úlohu není dostatečná, upgrade na novou úroveň může být nejjednodušší a nejúčinnější řešení pro zvýšení propustnosti indexování.
 
-Přidání dalších replik může také zvýšit rychlost indexování, ale není zaručeno. Na druhé straně další repliky zvyšují objem dotazů, které vaše služba vyhledávání může zpracovat. Repliky představují také klíčovou komponentu pro získání [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Až budete s vrstvou spokojeni, může vám další krok zvýšit počet oddílů. Přidělení oddílu se dá po počátečním indexování znovu upravit, aby se snížily celkové náklady na provoz služby.
 
-Než začnete přidávat oddíly a repliky nebo upgradovat na vyšší úroveň, vezměte v úvahu peněžní náklady a čas přidělení. Přidávání oddílů může významně zvýšit rychlost indexování, ale přidání nebo odebrání může trvat až 15 minut až několik hodin. Další informace najdete v dokumentaci k [Nastavení kapacity](search-capacity-planning.md).
+> [!NOTE]
+> Přidání dalších replik může také zvýšit rychlost indexování, ale není zaručeno. Na druhé straně další repliky zvyšují objem dotazů, které vaše služba vyhledávání může zpracovat. Repliky představují také klíčovou komponentu pro získání [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+>
+> Než začnete přidávat oddíly a repliky nebo upgradovat na vyšší úroveň, vezměte v úvahu peněžní náklady a čas přidělení. Přidávání oddílů může významně zvýšit rychlost indexování, ale přidání nebo odebrání může trvat až 15 minut až několik hodin. Další informace najdete v dokumentaci k [Nastavení kapacity](search-capacity-planning.md).
+>
 
-### <a name="index-schema"></a>Schéma indexu
+### <a name="review-index-schema"></a>Kontrola schématu indexu
 
-Schéma indexu hraje důležitou roli při indexování dat. Při přidávání polí a přidávání dalších vlastností do těchto polí (například *prohledávatelné*, *plošky*nebo *filtrovatelné*) snižte rychlost indexování.
-
-Obecně doporučujeme, abyste do polí přidávali jenom další vlastnosti, pokud je máte v úmyslu použít.
+Schéma indexu hraje důležitou roli při indexování dat. Další pole, která máte, a další vlastnosti, které jste nastavili (například *prohledávatelné* , *plošky* nebo *filtrovatelné* ), přispívají ke zvýšení času indexování. Obecně platí, že byste měli vytvořit a zadat jenom pole, která skutečně potřebujete ve vyhledávacím indexu.
 
 > [!NOTE]
 > Aby se zachovala velikost dokumentu, vyhněte se přidávání nequeryablech dat do indexu. Image a další binární data se nedají přímo prohledávat a v indexu by se neměly ukládat. Pro integraci nequeryablech dat do výsledků hledání byste měli definovat pole bez možností vyhledávání, které ukládá odkaz na adresu URL do daného prostředku.
 
-### <a name="batch-size"></a>Velikost dávky
+### <a name="check-the-batch-size"></a>Zkontroluje velikost dávky.
 
-Jedním z nejjednodušších mechanismů indexování větší sady dat je odeslání více dokumentů nebo záznamů v jednom požadavku. Pokud je celá datová část kratší než 16 MB, může požadavek zpracovat až 1000 dokumentů v operaci hromadného nahrávání. Tato omezení platí bez ohledu na to, zda používáte metodu [Add documents REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) nebo [index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) v sadě .NET SDK. Pro obě rozhraní API byste měli v těle každého požadavku zabalit 1000 dokumentů.
+Jedním z nejjednodušších mechanismů indexování větší sady dat je odeslání více dokumentů nebo záznamů v jednom požadavku. Pokud je celá datová část kratší než 16 MB, může požadavek zpracovat až 1000 dokumentů v operaci hromadného nahrávání. Tato omezení platí bez ohledu na to, jestli v sadě .NET SDK používáte metodu [Add documents REST API](/rest/api/searchservice/addupdate-or-delete-documents) nebo [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) . Pro obě rozhraní API byste měli v těle každého požadavku zabalit 1000 dokumentů.
 
 Použití dávek k indexování dokumentů významně vylepšuje výkon při indexování. Stanovení optimální velikosti dávky pro vaše data je klíčovou součástí Optimalizace rychlosti indexování. Optimální velikost dávky ovlivňují tyto dva primární faktory:
+
 + Schéma indexu
 + Velikost dat
 
@@ -74,14 +77,14 @@ Tuto ukázku a test můžete upravit pomocí různých počtů vláken, abyste z
 > [!NOTE]
 > Když zvýšíte úroveň služby vyhledávání nebo zvětšíte oddíly, měli byste také zvýšit počet souběžných vláken.
 
-Při navýšení požadavků na službu vyhledávání dojde v případě, že se zobrazí [stavové kódy http](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) indikující, že požadavek nebyl zcela úspěšný. Při indexování jsou dva běžné stavové kódy HTTP:
+Při navýšení požadavků na službu vyhledávání dojde v případě, že se zobrazí [stavové kódy http](/rest/api/searchservice/http-status-codes) indikující, že požadavek nebyl zcela úspěšný. Při indexování jsou dva běžné stavové kódy HTTP:
 
 + **služba 503 není k dispozici** – Tato chyba znamená, že systém je zatížen velkým zatížením a váš požadavek nejde v tuto chvíli zpracovat.
 + **207 s více stavy** – Tato chyba znamená, že některé dokumenty byly úspěšně dokončeny, ale nejméně jedna se nezdařila.
 
-### <a name="retry-strategy"></a>Strategie opakování 
+### <a name="retry-strategy"></a>Strategie opakování
 
-Pokud dojde k selhání, žádosti by se měly opakovat pomocí [exponenciální strategie omezení rychlosti opakování](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
+Pokud dojde k selhání, žádosti by se měly opakovat pomocí [exponenciální strategie omezení rychlosti opakování](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
 
 Sada .NET SDK pro Azure Kognitivní hledání automaticky opakuje 503s a další neúspěšné požadavky, ale budete muset implementovat vlastní logiku a zkusit to znovu 207s. K implementaci strategie opakování můžete také použít Open Source nástroje, jako je [Polly](https://github.com/App-vNext/Polly) .
 
@@ -89,20 +92,20 @@ Sada .NET SDK pro Azure Kognitivní hledání automaticky opakuje 503s a další
 
 Rychlost přenosu dat v síti může být omezujícím faktorem při indexování dat. Indexování dat z prostředí Azure je snadný způsob, jak urychlit indexování.
 
-## <a name="indexers"></a>Indexery
+## <a name="use-indexers-pull-api"></a>Použití indexerů (rozhraní API pro vyžádání obsahu)
 
 [Indexery](search-indexer-overview.md) se používají k procházení podporovaných zdrojů dat Azure pro prohledávatelný obsah. I když není specificky určená pro indexování ve velkém měřítku, je k dispozici několik možností indexeru, které jsou zvláště užitečné při používání větších datových sad:
 
 + Plánovače umožňují v pravidelných intervalech vyřídit indexování, takže je můžete v průběhu času rozložit.
 + Naplánované indexování může pokračovat v posledním známém bodu zastavení. Pokud zdroj dat není plně procházen v průběhu 24 hodin, indexer bude pokračovat v indexování dvou dnů na všech místech, kde se nachází na levé straně.
-+ Rozdělení dat na menší jednotlivé zdroje dat umožňuje paralelní zpracování. Zdrojová data můžete rozdělit do menších součástí, například do více kontejnerů v úložišti objektů BLOB v Azure, a pak vytvořit odpovídající více [objektů zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) v Azure kognitivní hledání, které je možné indexovat paralelně.
++ Rozdělení dat na menší jednotlivé zdroje dat umožňuje paralelní zpracování. Zdrojová data můžete rozdělit do menších součástí, například do více kontejnerů v úložišti objektů BLOB v Azure, a pak vytvořit odpovídající více [objektů zdroje dat](/rest/api/searchservice/create-data-source) v Azure kognitivní hledání, které je možné indexovat paralelně.
 
 > [!NOTE]
 > Indexery jsou specifické pro zdroj dat. použití přístupu indexeru je možné realizovat jenom pro vybrané zdroje dat v Azure: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [BLOB Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
 
-### <a name="batch-size"></a>Velikost dávky
+### <a name="check-the-batchsize-argument-on-create-indexer"></a>Podívejte se na argument batchSize u Create indexer.
 
-Podobně jako u rozhraní push API umožňují indexerům nakonfigurovat počet položek na dávku. U indexerů založených na [REST API vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)můžete nastavit `batchSize` argument pro přizpůsobení tohoto nastavení tak, aby lépe odpovídal charakteristikám vašich dat. 
+Podobně jako u rozhraní push API umožňují indexerům nakonfigurovat počet položek na dávku. U indexerů založených na [REST API vytvořit indexer](/rest/api/searchservice/Create-Indexer)můžete nastavit `batchSize` argument pro přizpůsobení tohoto nastavení tak, aby lépe odpovídal charakteristikám vašich dat. 
 
 Výchozí velikosti dávek jsou specifické pro zdroj dat. Azure SQL Database a Azure Cosmos DB mají výchozí velikost dávky 1000. Indexování objektů blob Azure naopak nastavuje velikost dávky na 10 dokumentů v rozpoznávání větší průměrné velikosti dokumentu. 
 
@@ -112,7 +115,7 @@ Plánování indexeru je důležitým mechanismem pro zpracování rozsáhlých 
 
 Podle návrhu plánované indexování začíná v určitých intervalech a úloha se obvykle dokončuje před pokračováním v dalším naplánovaném intervalu. Pokud se ale zpracování nedokončilo v intervalu, zastaví se indexer (protože byl mimo čas). V dalším intervalu se zpracování pokračuje tam, kde naposledy skončila, a systém udržuje přehled o tom, kde k tomu dochází. 
 
-V praktických případech se pro zatížení indexů, které pokrývá několik dní, dá indexer vložit do 24 hodin. Když indexování pokračuje za dalších 24 hodin, restartuje se v posledním známém dokumentu. Tímto způsobem může indexer pracovat svým způsobem prostřednictvím nevyřízených položek dokumentů v rámci série dnů, dokud nebudou zpracovány všechny nezpracované dokumenty. Další informace o tomto přístupu najdete v tématu [indexování velkých datových sad v úložišti objektů BLOB v Azure](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Další informace o obecném nastavení plánů najdete v tématu [Vytvoření indexeru REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) nebo v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
+V praktických případech se pro zatížení indexů, které pokrývá několik dní, dá indexer vložit do 24 hodin. Když indexování pokračuje za dalších 24 hodin, restartuje se v posledním známém dokumentu. Tímto způsobem může indexer pracovat svým způsobem prostřednictvím nevyřízených položek dokumentů v rámci série dnů, dokud nebudou zpracovány všechny nezpracované dokumenty. Další informace o obecném nastavení plánů najdete v tématu [Vytvoření indexeru REST API](/rest/api/searchservice/Create-Indexer) nebo v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 
@@ -125,8 +128,8 @@ Pro Neběžné, výpočetní požadavky na indexování, jako je rozpoznávání
 Paralelní zpracování má tyto prvky:
 
 + Rozdělte zdrojová data mezi více kontejnerů nebo více virtuálních složek uvnitř stejného kontejneru. 
-+ Namapujte každou Mini datovou sadu na vlastní [zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source), který se spáruje s vlastním [indexerem](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
-+ Pro rozpoznávání rozpoznávání se v každé definici indexeru odkázat na stejný [dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) .
++ Namapujte každou Mini datovou sadu na vlastní [zdroj dat](/rest/api/searchservice/create-data-source), který se spáruje s vlastním [indexerem](/rest/api/searchservice/create-indexer).
++ Pro rozpoznávání rozpoznávání se v každé definici indexeru odkázat na stejný [dovednosti](/rest/api/searchservice/create-skillset) .
 + Zapište do stejného cílového vyhledávacího indexu. 
 + Naplánujte, aby se všechny indexery spouštěly ve stejnou dobu.
 
@@ -139,7 +142,7 @@ U indexerů se kapacita zpracování volně vychází z jednoho subsystému inde
 
 1. V [Azure Portal](https://portal.azure.com)na stránce **Přehled** řídicího panelu vyhledávací služby zkontrolujte **cenovou úroveň** a potvrďte, že se může přizpůsobit paralelnímu indexování. Úrovně Basic a Standard nabízejí více replik.
 
-2. Můžete spustit libovolný počet indexerů paralelně jako počet jednotek hledání ve vaší službě. V **Nastavení**  >  **škálování**můžete [Zvětšit repliky](search-capacity-planning.md) nebo oddíly pro paralelní zpracování: jednu další repliku nebo oddíl pro každou úlohu indexeru. Ponechte dostatečný počet pro existující svazek dotazu. Omezení zatížení dotazů na indexování není dobré kompromisy.
+2. Můžete spustit libovolný počet indexerů paralelně jako počet jednotek hledání ve vaší službě. V **Nastavení**  >  **škálování** můžete [Zvětšit repliky](search-capacity-planning.md) nebo oddíly pro paralelní zpracování: jednu další repliku nebo oddíl pro každou úlohu indexeru. Ponechte dostatečný počet pro existující svazek dotazu. Omezení zatížení dotazů na indexování není dobré kompromisy.
 
 3. Distribuujte data do více kontejnerů na úrovni, které můžou Azure Kognitivní hledání indexerům dosáhnout. Může se jednat o více tabulek v Azure SQL Database, více kontejnerů v úložišti objektů BLOB v Azure nebo víc kolekcí. Definujte jeden objekt zdroje dat pro každou tabulku nebo kontejner.
 

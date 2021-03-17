@@ -2,13 +2,14 @@
 title: Přehled rozhraní API pro Azure Relay .NET Standard | Microsoft Docs
 description: Tento článek shrnuje část klíče a přehled Azure Relay rozhraní API Hybrid Connections .NET Standard.
 ms.topic: article
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 1d5aeed2ea76f47608ef03103b11fa236ec0362e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 724fb1a62b82036b4a0fa8b9f4f3608293f608a9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532896"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625127"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Přehled rozhraní API pro Azure Relay Hybrid Connections .NET Standard
 
@@ -82,7 +83,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>Příjem dat
 
-Třída [HybridConnectionStream][HCStream] umožňuje obousměrnou komunikaci. Ve většině případů nepřetržitě přijímáte z datového proudu. Pokud čtete text z datového proudu, můžete také použít objekt [StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1) , který umožňuje snazší analýzu dat. Například můžete číst data jako text, nikoli jako `byte[]` .
+Třída [HybridConnectionStream][HCStream] umožňuje obousměrnou komunikaci. Ve většině případů nepřetržitě přijímáte z datového proudu. Pokud čtete text z datového proudu, můžete také použít objekt [StreamReader](/dotnet/api/system.io.streamreader) , který umožňuje snazší analýzu dat. Například můžete číst data jako text, nikoli jako `byte[]` .
 
 Následující kód přečte jednotlivé řádky textu ze streamu, dokud se nepožaduje zrušení:
 
@@ -109,14 +110,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>Odesílání dat
 
-Po navázání připojení můžete odeslat zprávu na koncový bod Relay. Vzhledem k tomu, že objekt připojení dědí [datový proud](/dotnet/api/system.io.stream?view=netcore-3.1), odešlete data jako `byte[]` . Následující příklad ukazuje, jak to provést:
+Po navázání připojení můžete odeslat zprávu na koncový bod Relay. Vzhledem k tomu, že objekt připojení dědí [datový proud](/dotnet/api/system.io.stream), odešlete data jako `byte[]` . Následující příklad ukazuje, jak to provést:
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-Pokud však chcete odeslat text přímo, aniž byste museli zakódovat řetězec pokaždé, můžete zabalit `hybridConnectionStream` objekt pomocí objektu [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) .
+Pokud však chcete odeslat text přímo, aniž byste museli zakódovat řetězec pokaždé, můžete zabalit `hybridConnectionStream` objekt pomocí objektu [StreamWriter](/dotnet/api/system.io.streamwriter) .
 
 ```csharp
 // The StreamWriter object only needs to be created once

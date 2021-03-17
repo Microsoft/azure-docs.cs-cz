@@ -1,21 +1,19 @@
 ---
 title: Přehled služby analýzy chyb
 description: Tento článek popisuje službu analýzy chyb v Service Fabric pro vyvolání chyb a spouštění testovacích scénářů pro vaše služby.
-author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.author: anmola
-ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e879b0b39d58f115b4661d47cf2ae564ba14e5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75465564"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531373"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Seznámení se službou analýzy chyb
 Služba analýzy chyb je navržena pro testování služeb, které jsou postaveny na Microsoft Azure Service Fabric. Pomocí služby analýzy chyb můžete navolávat smysluplné chyby a spouštět kompletní testovací scénáře pro vaše aplikace. Tyto chyby a scénáře cvičení a ověřují množství stavů a přechodů, ke kterým dojde v průběhu své životnosti, a to vše v kontrolovaném, bezpečném a konzistentním způsobem.
 
-Akce jsou jednotlivé chyby, které cílí na službu pro její otestování. Vývojář služby může tyto prvky použít jako stavební bloky pro psaní složitých scénářů. Příklad:
+Akce jsou jednotlivé chyby, které cílí na službu pro její otestování. Vývojář služby může tyto prvky použít jako stavební bloky pro psaní složitých scénářů. Například:
 
 * Restartujte uzel, aby se simuloval libovolný počet situací, kdy se počítač nebo virtuální počítač restartuje.
 * Přesuňte repliku stavové služby pro simulaci vyrovnávání zatížení, převzetí služeb při selhání nebo upgradu aplikace.

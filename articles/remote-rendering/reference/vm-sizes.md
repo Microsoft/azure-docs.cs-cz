@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: b9479c2ab5b63440a03bd74d2503930108a49091
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0e2687954fb05ce826e780ae0dbd3931d899885f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511181"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594396"
 ---
 # <a name="server-sizes"></a>Velikosti serverů
 
@@ -22,33 +23,42 @@ Vzdálené vykreslování s `Standard` velikostí serveru má maximální veliko
 
 Když zobrazovací jednotka na standardní velikosti serveru narazí na toto omezení, přepne vykreslování na šachovnicové pozadí:
 
-![Šachovnicový](media/checkerboard.png)
+![Snímek obrazovky zobrazuje mřížku černého a bílého čtverečku pomocí nabídky nástroje.](media/checkerboard.png)
 
 ## <a name="specify-the-server-size"></a>Zadejte velikost serveru.
 
 Požadovaný typ konfigurace serveru je nutné zadat při generování inicializace relace vykreslování. Nedá se změnit v běžící relaci. Následující příklady kódu ukazují místo, kde je nutné zadat velikost serveru:
 
 ```cs
-async void CreateRenderingSession(AzureFrontend frontend)
+async void CreateRenderingSession(RemoteRenderingClient client)
 {
-    RenderingSessionCreationParams sessionCreationParams = new RenderingSessionCreationParams();
-    sessionCreationParams.Size = RenderingSessionVmSize.Standard; // or  RenderingSessionVmSize.Premium
+    RenderingSessionCreationOptions sessionCreationOptions = default;
+    sessionCreationOptions.Size = RenderingSessionVmSize.Standard; // or  RenderingSessionVmSize.Premium
 
-    AzureSession session = await frontend.CreateNewRenderingSessionAsync(sessionCreationParams).AsTask();
+    CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(sessionCreationOptions);
+    if (result.ErrorCode == Result.Success)
+    {
+        RenderingSession session = result.Session;
+        // do something with the session
+    }
 }
 ```
 
 ```cpp
-void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
+void CreateRenderingSession(ApiHandle<RemoteRenderingClient> client)
 {
-    RenderingSessionCreationParams sessionCreationParams;
-    sessionCreationParams.Size = RenderingSessionVmSize::Standard; // or  RenderingSessionVmSize::Premium
+    RenderingSessionCreationOptions sessionCreationOptions;
+    sessionCreationOptions.Size = RenderingSessionVmSize::Standard; // or  RenderingSessionVmSize::Premium
 
-    if (auto createSessionAsync = frontend->CreateNewRenderingSessionAsync(sessionCreationParams))
-    {
-        // ...
-    }
+    client->CreateNewRenderingSessionAsync(sessionCreationOptions, [](Status status, ApiHandle<CreateRenderingSessionResult> result) {
+        if (status == Status::OK && result->GetErrorCode() == Result::Success)
+        {
+            ApiHandle<RenderingSession> session = result->GetSession();
+            // do something with the session
+        }
+    });
 }
+
 ```
 
 V případě [ukázkových skriptů PowerShellu](../samples/powershell-example-scripts.md)je nutné zadat požadovanou velikost serveru v rámci `arrconfig.json` souboru:
@@ -75,8 +85,8 @@ To znamená, že je možné napsat aplikaci, která cílí na `standard` velikos
 ### <a name="how-to-determine-the-number-of-polygons"></a>Jak určit počet mnohoúhelníků
 
 Existují dva způsoby, jak určit počet mnohoúhelníků modelu nebo scény, které přispívají k omezením rozpočtu `standard` velikosti konfigurace:
-* Na straně převod modelu načtěte [výstupní soubor JSON převodu](../how-tos/conversion/get-information.md)a podívejte se na `numFaces` položku v [části *inputStatistics* ](../how-tos/conversion/get-information.md#the-inputstatistics-section) .
-* Pokud vaše aplikace pracuje s dynamickým obsahem, Počet vykreslených mnohoúhelníků se dá dynamicky dotazovat za běhu. Použijte [dotaz vyhodnocování výkonu](../overview/features/performance-queries.md#performance-assessment-queries) a ověřte `polygonsRendered` člena ve `FrameStatistics` struktuře. `polygonsRendered`Pole bude nastaveno na hodnotu, `bad` Pokud zobrazovací jednotka narazí na omezení mnohoúhelníku. V případě prodlevy se u šachovnicového pozadí vždy zvolna zaručí, že akce uživatele může být provedena po tomto asynchronním dotazu. Akce uživatele může být například skrývání nebo odstraňování instancí modelu.
+* Na straně převod modelu načtěte [výstupní soubor JSON převodu](../how-tos/conversion/get-information.md)a podívejte se na `numFaces` položku v [části *inputStatistics*](../how-tos/conversion/get-information.md#the-inputstatistics-section) .
+* Pokud vaše aplikace pracuje s dynamickým obsahem, Počet vykreslených mnohoúhelníků se dá dynamicky dotazovat za běhu. Použijte [dotaz vyhodnocování výkonu](../overview/features/performance-queries.md#performance-assessment-queries) a ověřte `polygonsRendered` člena ve `FrameStatistics` struktuře. `PolygonsRendered`Pole bude nastaveno na hodnotu, `bad` Pokud zobrazovací jednotka narazí na omezení mnohoúhelníku. V případě prodlevy se u šachovnicového pozadí vždy zvolna zaručí, že akce uživatele může být provedena po tomto asynchronním dotazu. Akce uživatele může být například skrývání nebo odstraňování instancí modelu.
 
 ## <a name="pricing"></a>Ceny
 

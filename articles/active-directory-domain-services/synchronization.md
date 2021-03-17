@@ -2,7 +2,7 @@
 title: Jak funguje synchronizace v Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak proces synchronizace funguje pro objekty a přihlašovací údaje z tenanta Azure AD nebo místního prostředí Active Directory Domain Services do Azure Active Directory Domain Services spravované domény.
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -10,19 +10,21 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: justinha
+ms.openlocfilehash: 41ba337765b4a0a93be52f08ae6656707cf7aa73
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039836"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618803"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Způsob synchronizace objektů a přihlašovacích údajů ve spravované doméně Azure Active Directory Domain Services
 
 Objekty a přihlašovací údaje ve spravované doméně Azure Active Directory Domain Services (Azure služba AD DS) se dají místně vytvořit v doméně nebo synchronizovat z klienta služby Azure Active Directory (Azure AD). Při prvním nasazení služby Azure služba AD DS se konfiguruje Automatická Jednosměrná synchronizace, která se spustí pro replikaci objektů z Azure AD. Tato Jednosměrná synchronizace dál běží na pozadí, aby se zajistila aktuálnost spravované domény Azure služba AD DS se všemi změnami ze služby Azure AD. Z Azure služba AD DS zpět do Azure AD nedochází k žádné synchronizaci.
 
 V hybridním prostředí se můžou objekty a přihlašovací údaje z místní služba AD DS domény synchronizovat s Azure AD pomocí Azure AD Connect. Jakmile jsou tyto objekty úspěšně synchronizovány do Azure AD, automatické synchronizace na pozadí pak tyto objekty a přihlašovací údaje zpřístupní aplikacím, které používají spravovanou doménu.
+
+Pokud je Prem služba AD DS a služba Azure AD je nakonfigurovaná pro federované ověřování pomocí služby AD FS, není v Azure DS dostupná žádná (aktuální/platná) hodnota hash hesla. Uživatelské účty Azure AD vytvořené před implementací dodaného ověřováním můžou mít starou hodnotu hash hesla, ale pravděpodobně neodpovídají hodnotě hash hesla on-Prem. Proto Azure služba AD DS nebude moci ověřit přihlašovací údaje uživatelů.
 
 Následující diagram znázorňuje, jak synchronizace funguje mezi Azure služba AD DS, Azure AD a volitelným místním prostředím služba AD DS:
 

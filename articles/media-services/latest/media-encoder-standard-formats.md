@@ -3,25 +3,27 @@ title: Formáty a kodeky Standard Encoder – Azure
 description: Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít se službou StandardEncoderPreset.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: dd8c38f9f08bbcaccc39d2f0d1843af720c12932
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f0cf89a755090010bb80507c52f90baa2a4e804a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053228"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617620"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Formáty a kodeky Standard Encoder
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Tento článek obsahuje seznam nejběžnějších formátů souborů pro import a export, které můžete použít se službou [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Informace o tom, jak vytvořit vlastní přednastavení pomocí **StandardEncoderPreset**, najdete v tématu [Vytvoření transformace s vlastní předvolbumi](customize-encoder-presets-how-to.md).
 
@@ -96,7 +98,7 @@ V následující tabulce jsou uvedeny kodeky a formáty souborů, které jsou po
 
 | Formát souboru | Kodek videa | Zvukový kodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(včetně kontejnerů MP4 s více přenosovými rychlostmi) |H. 264 (profily vysoké, hlavní a základní) |AAC-LC, HE-AAC V1, IT-AAC v2 |
+| MP4 <br/><br/>(včetně kontejnerů MP4 s více přenosovými rychlostmi) |H. 264 (profily vysoké, hlavní a základní), HEVC (H. 265) 8 bitů |AAC-LC, HE-AAC V1, IT-AAC v2 |
 | MPEG2 – TS |H. 264 (profily vysoké, hlavní a základní) |AAC-LC, HE-AAC V1, IT-AAC v2 |
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak používat Live video Anal
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e456bb5b8d6d6658158af0c58f05ab38fe4693b8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e4334cdd14242337a2a870f31886606020654685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682176"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498349"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Rychlý Start: detekce a nahrávání videa na hraničních zařízeních
  
@@ -123,4 +123,4 @@ Pokud máte v úmyslu vyzkoušet ostatní rychlé starty, potom ponechejte prost
 * Přečtěte si další výzvy pro pokročilé uživatele:
 
     * Místo používání simulátoru RTSP použijte [fotoaparát IP](https://en.wikipedia.org/wiki/IP_camera) , který podporuje RTSP. Kamery protokolu IP, které podporují protokol RTSP, najdete na stránce vyhovující [ONVIF produktů](https://www.onvif.org/conformant-products) . Vyhledejte zařízení, která jsou v souladu s profily G, S nebo T.
-    * Místo použití virtuálního počítače se systémem Linux v Azure použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Pak postupujte podle pokynů v části [nasazení prvního IoT Edge modulu do zařízení s Virtual Linux](../../iot-edge/quickstart-linux.md) a zaregistrujte zařízení ve službě Azure IoT Hub.
+    * Místo použití virtuálního počítače se systémem Linux v Azure použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge.md). Pak postupujte podle pokynů v části [nasazení prvního IoT Edge modulu do zařízení s Virtual Linux](../../iot-edge/quickstart-linux.md) a zaregistrujte zařízení ve službě Azure IoT Hub.

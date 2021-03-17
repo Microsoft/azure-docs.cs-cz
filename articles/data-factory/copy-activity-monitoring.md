@@ -1,22 +1,17 @@
 ---
 title: Monitorování aktivity kopírování
 description: Přečtěte si, jak monitorovat provádění aktivit kopírování v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036364"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388290"
 ---
 # <a name="monitor-copy-activity"></a>Monitorování aktivity kopírování
 
@@ -30,7 +25,7 @@ Po vytvoření a publikování kanálu v Azure Data Factory ho můžete přidru�
 
 Pokud chcete monitorovat běh aktivity kopírování, v uživatelském rozhraní služby Data Factory **Author & monitorujte** . Na kartě **monitorování** se zobrazí seznam spuštění kanálu, kliknutím na odkaz **název kanálu** získáte přístup k seznamu spuštění aktivit v běhu kanálu.
 
-![Monitorování spuštění aktivity kopírování](./media/copy-activity-overview/monitor-pipeline-run.png)
+![Monitorování spuštění kanálu](./media/copy-activity-overview/monitor-pipeline-run.png)
 
 Na této úrovni můžete zobrazit odkazy na vstup aktivity kopírování, výstup a chyby (Pokud se aktivita kopírování nezdařila) a také statistiku, jako je doba trvání/stav. Kliknutím na tlačítko **Podrobnosti** (brýlí) vedle názvu aktivity kopírování získáte podrobné informace o spuštění aktivity kopírování. 
 
@@ -38,7 +33,7 @@ Na této úrovni můžete zobrazit odkazy na vstup aktivity kopírování, výst
 
 V tomto zobrazení grafického monitorování vám Azure Data Factory ukáže informace o spuštění aktivity kopírování, včetně objemu načtených/zapsaných dat, počtu souborů/řádků dat zkopírovaných ze zdroje do jímky, propustnosti, konfigurací použitých pro váš scénář kopírování, kroků aktivity kopírování, včetně odpovídajících dob trvání a podrobností a dalších. V [této tabulce](#monitor-programmatically) najdete všechny možné metriky a její podrobný popis. 
 
-V některých scénářích se při spuštění aktivity kopírování v Data Factory v horní části zobrazení monitorování aktivit kopírování zobrazí informace o **Vyladění výkonu** , jak je znázorněno v příkladu. Tipy označují kritické body identifikované pomocí ADF pro konkrétní kopírování a návrhy na to, co se má změnit, aby se zvýšila propustnost kopírování. Přečtěte si další informace o [tipůch automatického ladění výkonu](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
+V některých scénářích se při spuštění aktivity kopírování v Data Factory v horní části zobrazení monitorování aktivit kopírování zobrazí informace o **Vyladění výkonu**  , jak je znázorněno v příkladu. Tipy označují kritické body identifikované pomocí ADF pro konkrétní kopírování a návrhy na to, co se má změnit, aby se zvýšila propustnost kopírování. Přečtěte si další informace o [tipůch automatického ladění výkonu](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
 
 Dolní **Podrobnosti a trvání spuštění** popisují klíčové kroky, kterými aktivita kopírování prochází, což je zvláště užitečné při řešení potíží s výkonem kopírování. Kritické místo pro váš běh kopírování je ten, který má nejdelší dobu trvání. Přečtěte si téma [řešení potíží s výkonem aktivity kopírování](copy-activity-performance-troubleshooting.md) v pro jednotlivé fáze představují a podrobné pokyny k odstraňování potíží.
 
@@ -48,9 +43,9 @@ Dolní **Podrobnosti a trvání spuštění** popisují klíčové kroky, který
 
 ## <a name="monitor-programmatically"></a>Monitorování prostřednictvím kódu programu
 
-V části výstup **výsledků spuštění aktivity kopírování**  >  **Output** , která se používá k vykreslování zobrazení monitorování uživatelského rozhraní, se také vrátí podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Následuje úplný seznam vlastností, které mohou být vráceny. Uvidíte jenom vlastnosti, které se vztahují k vašemu scénáři kopírování. Informace o tom, jak programově monitorovat spuštění aktivit prostřednictvím kódu programu, najdete v tématu [programové sledování služby Azure Data Factory](monitor-programmatically.md).
+V části výstup **výsledků spuštění aktivity kopírování**  >   , která se používá k vykreslování zobrazení monitorování uživatelského rozhraní, se také vrátí podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Následuje úplný seznam vlastností, které mohou být vráceny. Uvidíte jenom vlastnosti, které se vztahují k vašemu scénáři kopírování. Informace o tom, jak programově monitorovat spuštění aktivit prostřednictvím kódu programu, najdete v tématu [programové sledování služby Azure Data Factory](monitor-programmatically.md).
 
-| Název vlastnosti  | Popis | Jednotka ve výstupu |
+| Název vlastnosti  | Description | Jednotka ve výstupu |
 |:--- |:--- |:--- |
 | Čtení z | Skutečné množství dat načtených ze zdroje. | Hodnota Int64, v bajtech |
 | Napsáno | Skutečná připojená Data zapsaná nebo potvrzená do jímky. Velikost může být jiná než `dataRead` velikost, protože souvisí s tím, jak jednotlivé úložiště dat data ukládají. | Hodnota Int64, v bajtech |
@@ -67,7 +62,7 @@ V části výstup **výsledků spuštění aktivity kopírování**  >  **Output
 | throughput | Rychlost přenosu dat | Číslo s plovoucí desetinnou čárkou, v KB/s |
 | sourcePeakConnections | Nejvyšší počet souběžných připojení navázaných ke zdrojovému úložišti dat během spuštění aktivity kopírování. | Hodnota Int32 (žádná jednotka) |
 | sinkPeakConnections| Nejvyšší počet souběžných připojení navázaných na úložiště dat jímky během spuštění aktivity kopírování.| Hodnota Int32 (žádná jednotka) |
-| sqlDwPolyBase | Určuje, zda se používá základna při kopírování dat do SQL Data Warehouse. | Logická hodnota |
+| sqlDwPolyBase | Určuje, zda se používá základna při kopírování dat do služby Azure synapse Analytics. | Logická hodnota |
 | redshiftUnload | Určuje, zda je při kopírování dat z RedShift použito uvolnění. | Logická hodnota |
 | hdfsDistcp | Určuje, zda se při kopírování dat ze HDFS používá DistCp. | Logická hodnota |
 | effectiveIntegrationRuntime | Prostředí Integration runtime (IR) nebo modulu runtime, které slouží k napájení spuštění aktivity, ve formátu `<IR name> (<region if it's Azure IR>)` . | Text (String) |

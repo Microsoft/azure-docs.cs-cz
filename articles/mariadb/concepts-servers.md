@@ -1,17 +1,17 @@
 ---
 title: Servery – Azure Database for MariaDB
 description: V tomto tématu najdete informace a pokyny pro práci s Azure Database for MariaDB servery.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 444d7f1574cf1517b01250bcb9d810731030182d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abe17556d9ff62c44a33bfe4c4546a284785522e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79527788"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664125"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Koncepty serveru v Azure Database for MariaDB
 Tento článek popisuje informace a pokyny pro práci s Azure Database for MariaDB servery.
@@ -40,16 +40,29 @@ Následující prvky vám pomůžou zajistit bezpečný přístup k vaší datab
 |||
 | :--| :--|
 | **Ověřování a autorizace** | Azure Database for MariaDB Server podporuje nativní ověřování MySQL. K serveru se můžete připojit a ověřit pomocí přihlašovacích údajů správce serveru. |
-| **Protocol (Protokol)** | Služba podporuje protokol založený na zprávách, který používá MySQL. |
+| **Protokol** | Služba podporuje protokol založený na zprávách, který používá MySQL. |
 | **TCP/IP** | Protokol je podporován přes protokoly TCP/IP a přes rozhraní UNIX-Domain Sockets. |
-| **Servery** | Pro lepší ochranu dat pravidlo brány firewall zabraňuje všem přístupům k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Viz [pravidla brány firewall serveru Azure Database for MariaDB](./concepts-firewall-rules.md). |
+| **Brána firewall** | Pro lepší ochranu dat pravidlo brány firewall zabraňuje všem přístupům k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Viz [pravidla brány firewall serveru Azure Database for MariaDB](./concepts-firewall-rules.md). |
 | **SSL** | Služba podporuje vynucování připojení SSL mezi vašimi aplikacemi a vaším databázovým serverem. Pokud chcete bezpečně připojit k Azure Database for MariaDB, přečtěte si téma [Konfigurace připojení SSL ve vaší aplikaci](./howto-configure-ssl.md). |
+
+## <a name="stopstart-an-azure-database-for-mariadb-preview"></a>Zastavení/spuštění Azure Database for MariaDB (Preview)
+Azure Database for MariaDB vám umožní **zastavit** Server, pokud se nepoužívá, a **Spustit** Server při obnovení aktivity. To je v podstatě hotové, aby se ušetřily náklady na databázové servery a platily jenom za prostředek, který se používá. To je ještě důležitější pro úlohy vývoje a testování, a pokud server používáte jenom během dne. Po zastavení serveru budou všechna aktivní připojení vyhozena. Později, pokud chcete převést Server zpátky do režimu online, můžete použít [Azure Portal](../mysql/how-to-stop-start-server.md) nebo [CLI](../mysql/how-to-stop-start-server.md).
+
+Pokud je server v **zastaveném** stavu, výpočetní služba se neúčtuje. Úložiště se ale nadále bude účtovat, protože úložiště serveru zůstává, aby se zajistilo, že datové soubory budou k dispozici, až se server znovu spustí.
+
+> [!IMPORTANT]
+> Když **zastavíte** Server, zůstane v tomto stavu po dobu dalších 7 dnů roztažení. Pokud ji během této doby **nespustíte** ručně, server bude automaticky spuštěn na konci 7 dnů. Pokud nepoužíváte server, můžete ho znovu **zastavit** .
+
+Během tohoto časového serveru nelze na serveru provádět žádné operace správy. Aby bylo možné změnit nastavení konfigurace na serveru, bude nutné [spustit server](../mysql/how-to-stop-start-server.md).
+
+### <a name="limitations-of-stopstart-operation"></a>Omezení operace zastavení/spuštění
+- Nepodporováno s konfigurací repliky pro čtení (zdroj a repliky).
 
 ## <a name="how-do-i-manage-a-server"></a>Návody spravovat Server?
 Azure Database for MariaDB servery můžete spravovat pomocí Azure Portal nebo rozhraní příkazového řádku Azure.
 
 ## <a name="next-steps"></a>Další kroky
 - Přehled služby najdete v tématu [přehled Azure Database for MariaDB](./overview.md) .
-- Informace o konkrétních kvótách prostředků a omezeních založených na vaší **úrovni služby**najdete v tématu [úrovně služeb](./concepts-pricing-tiers.md) .
+- Informace o konkrétních kvótách prostředků a omezeních založených na vaší **úrovni služby** najdete v tématu [úrovně služeb](./concepts-pricing-tiers.md) .
 
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

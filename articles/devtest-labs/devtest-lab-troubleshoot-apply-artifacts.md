@@ -4,10 +4,10 @@ description: Naučte se řešit problémy, ke kterým dochází při aplikován�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483189"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Řešení potíží při aplikování artefaktů ve Azure DevTest Labsm virtuálním počítači
@@ -58,7 +58,7 @@ Když se zdá, že artefakt přestane reagovat, nejprve určete, kde je zablokov
     - K protokolu aktivit můžete přistupovat z navigačního panelu stránky testovacího virtuálního počítače. Když vyberete tuto možnost, zobrazí se položka pro **aplikování artefaktů na virtuální počítač** (Pokud se operace použít artefakty aktivovala přímo) nebo **přidá nebo upraví virtuální počítače** (Pokud operace aplikování artefaktů byla součástí procesu vytváření virtuálního počítače).
     - Vyhledejte chyby pod těmito položkami. V některých případech se chyba nebude označit příznakem odpovídajícím způsobem a bude nutné prozkoumat každou položku.
     - Při zkoumání podrobností každého záznamu nezapomeňte zkontrolovat obsah datové části JSON. V dolní části dokumentu se může zobrazit chyba.
-- **Při pokusu o spuštění artefaktu**. Důvodem může být problémy se sítí nebo úložištěm. Podrobnosti najdete v příslušné části dále v tomto článku. Může k tomu také dojít z důvodu způsobu, jakým je skript vytvořen. Příklad:
+- **Při pokusu o spuštění artefaktu**. Důvodem může být problémy se sítí nebo úložištěm. Podrobnosti najdete v příslušné části dále v tomto článku. Může k tomu také dojít z důvodu způsobu, jakým je skript vytvořen. Například:
     - Skript PowerShellu má **povinné parametry**, ale jednomu z nich se nepovede zadat jeho hodnotu, buď proto, že uživateli povolíte jeho prázdné pole, nebo protože nemáte výchozí hodnotu pro vlastnost v artifactfile.jsv definičním souboru. Skript přestane reagovat, protože čeká na vstup uživatele.
     - Skript PowerShellu **vyžaduje vstup uživatele** jako součást provádění. Skripty musí být zapsány pro tichou práci bez nutnosti zásahu uživatele.
 - **Agent virtuálního počítače bude mít dobu potřebnou k přípravě**. Při prvním spuštění virtuálního počítače nebo při první instalaci rozšíření vlastních skriptů k obsluze žádosti o použití artefaktů může virtuální počítač vyžadovat buď upgrade agenta virtuálního počítače, nebo počkat na inicializaci agenta virtuálního počítače. Může se jednat o služby, na kterých agent virtuálního počítače závisí na tom, že se při inicializaci trvá dlouhou dobu. V takových případech najdete další informace o řešení potíží v tématu [Přehled agenta virtuálních počítačů Azure](../virtual-machines/extensions/agent-windows.md) .

@@ -2,26 +2,28 @@
 title: Odstranění historie nasazení
 description: Popisuje, jak Azure Resource Manager automaticky odstranit nasazení z historie nasazení. Nasazení se odstraní, když se historie blíží k překročení limitu 800.
 ms.topic: conceptual
-ms.date: 08/07/2020
-ms.openlocfilehash: 736a25a3c73f8f4c70c5fb6c686fa2b8bb86666d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 10/01/2020
+ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986504"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91652478"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatické odstraňování z historie nasazení
 
 Pokaždé, když nasadíte šablonu, informace o nasazení se zapisují do historie nasazení. Každá skupina prostředků je v historii nasazení omezená na 800 nasazení.
 
-Azure Resource Manager automaticky odstraní nasazení z historie, protože se blíží limitu. Automatické odstranění je změna oproti dřívějšímu chování. Dřív jste museli ručně odstranit nasazení z historie nasazení, aby nedošlo k chybě. **Tato změna byla implementována 6. srpna 2020.**
+Azure Resource Manager automaticky odstraní nasazení z historie, protože se blíží limitu. Automatické odstranění je změna oproti dřívějšímu chování. Dřív jste museli ručně odstranit nasazení z historie nasazení, aby nedošlo k chybě. Tato změna byla implementována 6. srpna 2020.
+
+**Pro nasazení skupin prostředků se podporují automatické odstraňování. V současné době se nasazení v historii pro [předplatné](deploy-to-subscription.md), [skupinu pro správu](deploy-to-management-group.md)a nasazení [klientů](deploy-to-tenant.md) neodstraní automaticky.**
 
 > [!NOTE]
 > Odstranění nasazení z historie neovlivní žádné z nasazených prostředků.
 
 ## <a name="when-deployments-are-deleted"></a>Po odstranění nasazení
 
-Nasazení se odstraní z historie při dosažení 775 nebo více nasazení. Azure Resource Manager odstraní nasazení, dokud nebude historie nižší až 750. Nejstarší nasazení se vždy odstraní jako první.
+Nasazení se odstraní z historie, pokud překročíte 775 nasazení. Azure Resource Manager odstraní nasazení, dokud nebude historie nižší až 750. Nejstarší nasazení se vždy odstraní jako první.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Odstranění z historie nasazení":::
 

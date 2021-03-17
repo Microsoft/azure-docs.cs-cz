@@ -12,20 +12,24 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7746cc55e81593a1788608cced1253f295a5c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683788"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738374"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Řešení potíží s aplikacemi, které nepodporují protokol TLS 1,2
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Tento článek popisuje, jak povolit starší protokoly TLS (TLS 1,0 a 1,1) a jak používat starší šifrovací sady pro podporu dalších protokolů na webu a rolích pracovních procesů cloudové služby v systému Windows 2019 Server. 
 
 Chápeme, že při provádění kroků k vyřazení TLS 1,0 a TLS 1,1 můžou naši zákazníci potřebovat podporu starších protokolů a šifrovacích sad, dokud je nemůžou naplánovat jejich vyřazení.  I když tyto starší hodnoty nedoporučujeme znovu povolit, poskytujeme pokyny pro pomoc zákazníkům. Zákazníkům doporučujeme, aby před implementací změn uvedených v tomto článku vyhodnotili riziko regrese. 
 
 > [!NOTE]
-> Vydání verze s operačním systémem Host 6 vynutila TLS 1,2 tím, že explicitně zakáže TLS 1,0 a 1,1 a definuje konkrétní sadu šifrovacích sad. Další informace o rodinách hostovaných operačních systémů najdete v článku [novinky pro vydání hostovaného operačního systému](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> Vydání verze s operačním systémem Host 6 vynutila TLS 1,2 tím, že explicitně zakáže TLS 1,0 a 1,1 a definuje konkrétní sadu šifrovacích sad. Další informace o rodinách hostovaných operačních systémů najdete v článku [novinky pro vydání hostovaného operačního systému](./cloud-services-guestos-update-matrix.md#family-6-releases)
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Vyřazení podpory pro TLS 1,0, TLS 1,1 a starší šifrovací sady 
@@ -312,13 +316,13 @@ Do existujícího souboru definice služby přidejte následující fragment kó
 Tady je příklad, který ukazuje roli pracovního procesu i webovou roli. 
 
 ```
-<?xmlversion="1.0"encoding="utf-8"?> 
-<ServiceDefinitionname="CloudServiceName"xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition"schemaVersion="2015-04.2.6"> 
-    <WebRolename="WebRole1"vmsize="Standard_D1_v2"> 
+<?xmlversion="1.0" encoding="utf-8"?> 
+<ServiceDefinitionname="CloudServiceName" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6"> 
+    <WebRolename="WebRole1" vmsize="Standard_D1_v2"> 
         <Sites> 
             <Sitename="Web"> 
                 <Bindings> 
-                    <Bindingname="Endpoint1"endpointName="Endpoint1"/> 
+                    <Bindingname="Endpoint1" endpointName="Endpoint1"/> 
                 </Bindings> 
             </Site> 
         </Sites> 
@@ -327,10 +331,10 @@ Tady je příklad, který ukazuje roli pracovního procesu i webovou roli.
             </Task> 
         </Startup> 
         <Endpoints> 
-            <InputEndpointname="Endpoint1"protocol="http"port="80"/> 
+            <InputEndpointname="Endpoint1" protocol="http" port="80"/> 
         </Endpoints> 
     </WebRole> 
-<WorkerRolename="WorkerRole1"vmsize="Standard_D1_v2"> 
+<WorkerRolename="WorkerRole1" vmsize="Standard_D1_v2"> 
     <Startup> 
         <Task executionContext="elevated" taskType="simple" commandLine="RunTLSSettings.cmd"> 
         </Task> 
@@ -342,7 +346,7 @@ Tady je příklad, který ukazuje roli pracovního procesu i webovou roli.
 ## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>Krok 4: Přidání skriptů do cloudové služby 
 
 1) V aplikaci Visual Studio klikněte pravým tlačítkem myši na webrole nebo role pracovního procesu
-2) Vyberte **Přidat**
+2) Vyberte **Přidat**.
 3) Vybrat **existující položku**
 4) V Průzkumníku souborů přejděte do počítače, kam jste uložili soubory **TLSsettings.ps1** a **RunTLSSettings. cmd.** 
 5) Vyberte dva soubory, které chcete přidat do projektu Cloud Services
@@ -362,4 +366,3 @@ Teď, když jste výše uvedené kroky dokončili, publikujte aktualizaci do st�
 
 [SSLLabs](https://www.ssllabs.com/) můžete použít k ověření stavu TLS koncových bodů. 
 
- 

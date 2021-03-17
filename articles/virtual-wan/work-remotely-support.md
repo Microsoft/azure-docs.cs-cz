@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753770"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023482"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Virtuální síť WAN Azure a podpora vzdálené práce
 
@@ -53,7 +53,7 @@ Základní virtuální síť WAN poskytuje pouze síť Site-to-Site VPN. Aby se 
 
 Virtuální síť WAN podporuje jedno rozbočovače na oblast nebo umístění. Informace o umístění naleznete v článku [virtuální partneři a umístění sítě WAN](virtual-wan-locations-partners.md) . Každé centrum podporuje až 10 000 vzdálených uživatelských připojení, 1 000 připojení k síti, čtyři okruhy ExpressRoute a až 500 Virtual Network připojení. Při horizontálním navýšení kapacity, pokud máte nějaké dotazy, se váhají na to, že vám pošle e-mail odesláním e-mailu azurevirtualwan@microsoft.com . Pokud potřebujete technickou podporu, otevřete lístek podpory z Azure Portal a pomůže vám to.
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 

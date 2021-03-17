@@ -4,16 +4,16 @@ description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) �
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 9ab45495283f8751912d93e9799958a8effc887a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.topic: quickstart
+ms.openlocfilehash: b3bb8736eb7a8e24f47812fc4feecbf96628dfb6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323736"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599819"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Java V8 SDK
 
@@ -38,7 +38,7 @@ Pomocí [Gitu](https://git-scm.com/) si stáhněte kopii aplikace do vývojovéh
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 ```
 
-Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete projekt otevřít, spusťte Eclipse a zavřete uvítací obrazovku. Vyberte **File** (Soubor) a pak **Open Projects from File System** (Otevřít projekty ze systému souborů). Ujistěte se, že je zaškrtnuté políčko **Detect and configure project natures** (Detekovat a nakonfigurovat povahu projektu). Vyberte **Directory** (Adresář) a pak přejděte do umístění, kam jste uložili naklonované úložiště. V naklonovaném úložišti vyberte složku**blobAzureApp**. Ujistěte se, že se projekt **blobAzureApp** zobrazí jako projekt Eclipse, a pak vyberte **Finish** (Dokončit).
+Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete projekt otevřít, spusťte Eclipse a zavřete uvítací obrazovku. Vyberte **File** (Soubor) a pak **Open Projects from File System** (Otevřít projekty ze systému souborů). Ujistěte se, že je zaškrtnuté políčko **Detect and configure project natures** (Detekovat a nakonfigurovat povahu projektu). Vyberte **Directory** (Adresář) a pak přejděte do umístění, kam jste uložili naklonované úložiště. V naklonovaném úložišti vyberte složku **blobAzureApp**. Ujistěte se, že se projekt **blobAzureApp** zobrazí jako projekt Eclipse, a pak vyberte **Finish** (Dokončit).
 
 Po dokončení importu projektu otevřete **soubor azureapp. Java** (umístěný v **blobQuickstart. blobAzureApp** uvnitř elementu **Src/Main/Java**) a nahraďte `accountname` a `accountkey` uvnitř `storageConnectionString` řetězce. Pak aplikaci spusťte. Konkrétní pokyny k dokončení těchto úloh jsou popsané v následujících částech.
 
@@ -76,7 +76,7 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
-Než budete pokračovat, vyhledejte ukázkový soubor ve výchozím adresáři (*C:\Users \<user> \AppData\Local\Temp*pro uživatele Windows). Obsah souboru v úložišti objektů blob můžete zobrazit zkopírováním adresy URL objektu blob z okna konzoly a jejím vložením do prohlížeče. Pokud porovnáte ukázkový soubor ve vašem adresáři s obsahem uloženým v úložišti objektů blob, uvidíte, že se shodují.
+Než budete pokračovat, vyhledejte ukázkový soubor ve výchozím adresáři (*C:\Users \<user> \AppData\Local\Temp* pro uživatele Windows). Obsah souboru v úložišti objektů blob můžete zobrazit zkopírováním adresy URL objektu blob z okna konzoly a jejím vložením do prohlížeče. Pokud porovnáte ukázkový soubor ve vašem adresáři s obsahem uloženým v úložišti objektů blob, uvidíte, že se shodují.
 
   >[!NOTE]
   >K zobrazení souborů v úložišti objektů blob můžete použít také nástroj, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště.
@@ -104,7 +104,7 @@ První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty slouží
     Jakmile budete mít **CloudBlobContainer**, můžete vytvořit instanci objektu [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) , která odkazuje na konkrétní objekt blob, který vás zajímá, a provádět nahrávání, stahování, kopírování nebo jiné operace.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí být malými písmeny. Další informace o kontejnerech najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí být malými písmeny. Další informace o kontejnerech najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
@@ -125,7 +125,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
-Pokud chcete nahrát soubor do objektu blob bloku, získejte odkaz na objekt BLOB v cílovém kontejneru. Jakmile budete mít tento odkaz na objekt blob, můžete do něj nahrát data pomocí [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblockblob.upload). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo objekt blob přepíše, pokud už existuje.
+Pokud chcete nahrát soubor do objektu blob bloku, získejte odkaz na objekt BLOB v cílovém kontejneru. Jakmile budete mít tento odkaz na objekt blob, můžete do něj nahrát data pomocí [CloudBlockBlob.Upload](/java/api/com.microsoft.azure.storage.blob.cloudblockblob.upload). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo objekt blob přepíše, pokud už existuje.
 
 Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor k nahrání uloží do proměnné **source** a název objektu blob do proměnné **blob**. Následující příklad nahraje soubor do kontejneru **quickstartcontainer**.
 
@@ -149,9 +149,9 @@ V případě úložiště objektů blob můžete použít několik metod `upload
 
 Objekty blob bloku můžou být jakýmkoli typem textového nebo binárního souboru. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob můžete použít k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Většina objektů uložených v úložišti objektů blob je objekty blob bloku.
 
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+### <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
-Seznam souborů v kontejneru můžete získat pomocí [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobs). Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí identifikátory URI nalezených objektů blob. Soubor můžete zobrazit zkopírováním identifikátoru URI z příkazového okna a jeho vložením do prohlížeče.
+Seznam souborů v kontejneru můžete získat pomocí [CloudBlobContainer.ListBlobs](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobs). Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí identifikátory URI nalezených objektů blob. Soubor můžete zobrazit zkopírováním identifikátoru URI z příkazového okna a jeho vložením do prohlížeče.
 
 ```java
 //Listing contents of container
@@ -162,7 +162,7 @@ for (ListBlobItem blobItem : container.listBlobs()) {
 
 ### <a name="download-blobs"></a>Stáhnout objekty blob
 
-Objekty blob můžete stáhnout na místní disk pomocí [CloudBlob.DownloadToFile](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblob.downloadtofile).
+Objekty blob můžete stáhnout na místní disk pomocí [CloudBlob.DownloadToFile](/java/api/com.microsoft.azure.storage.blob.cloudblob.downloadtofile).
 
 Následující kód stáhne objekt blob nahraný v předchozí části a k názvu objektu blob přidá příponu „_DOWNLOADED“, takže na místním disku uvidíte oba soubory.
 
@@ -177,7 +177,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete objekty blob, které jste nahráli, můžete celý kontejner odstranit pomocí [CloudBlobContainer. DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists). Tato metoda odstraní také soubory v kontejneru.
+Pokud už nepotřebujete objekty blob, které jste nahráli, můžete celý kontejner odstranit pomocí [CloudBlobContainer. DeleteIfExists](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists). Tato metoda odstraní také soubory v kontejneru.
 
 ```java
 try {
@@ -201,5 +201,5 @@ sourceFile.deleteOnExit();
 V tomto článku jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů BLOB v Azure pomocí jazyka Java. Další informace o práci s Javou najdete v našem úložišti zdrojového kódu na GitHubu.
 
 > [!div class="nextstepaction"]
-> Reference k rozhraní [Java API](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy) 
+> Reference k rozhraní [Java API](/java/api/overview/azure/storage?view=azure-java-legacy&preserve-view=true) 
 >  [Ukázky kódu pro Java](../common/storage-samples-java.md)

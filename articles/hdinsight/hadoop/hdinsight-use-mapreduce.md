@@ -1,19 +1,16 @@
 ---
 title: MapReduce s Apache Hadoop v HDInsight
 description: Naučte se spouštět úlohy Apache MapReduce na Apache Hadoop v clusterech HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 8b683f12a17d6aabbcdce3190a34675951567f64
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 33d96262ca2e2ff3003fbf2b40ce9ceb496337ae
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075837"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944250"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce v Apache Hadoopu ve službě HDInsight
 

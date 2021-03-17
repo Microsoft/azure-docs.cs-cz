@@ -3,14 +3,14 @@ title: Kurz Kubernetes v Azure – Aktualizace aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) zjistíte, jak aktualizovat existující nasazení aplikace do AKS o novou verzi kódu aplikace.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77593372"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250651"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje ap
 > * Odeslání image kontejneru do služby Azure Container Registry
 > * Nasazení aktualizované image kontejneru
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS.
 
@@ -50,7 +50,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Uložte soubor a zavřete ho. V `vi`použijte `:wq`.
+Uložte soubor a zavřete ho. V `vi` použijte `:wq` .
 
 ## <a name="update-the-container-image"></a>Aktualizace image kontejneru
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 Pokud chcete ověřit, že se v aktualizované imagi kontejneru projevily provedené změny, otevřete místní webový prohlížeč a přejděte na adresu `http://localhost:8080`.
 
-![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Snímek obrazovky, který ukazuje příklad aktualizované image kontejneru Azure hlasovací aplikace běžící místně na místním webovém prohlížeči":::
 
 Aktualizované hodnoty uvedené v souboru *config_file. cfg* se zobrazí ve spuštěné aplikaci.
 
@@ -79,13 +79,13 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 K označení image použijte [docker tag][docker-tag]. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru ACR nebo názvem hostitele veřejného registru a aktualizujte verzi image na *:v2* následujícím způsobem:
 
 ```console
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
+docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v2
 ```
 
 Teď pomocí příkazu [docker push][docker-push] nahrajte image do registru. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru ACR.
 
 > [!NOTE]
-> Pokud máte potíže s vložením do registru ACR, ujistěte se, že jste stále přihlášeni. Spusťte příkaz [AZ ACR Login][az-acr-login] s použitím názvu vašeho Azure Container Registry, který jste vytvořili v kroku [Vytvoření Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Například, `az acr login --name <azure container registry name>`.
+> Pokud máte potíže s vložením do registru ACR, ujistěte se, že jste stále přihlášeni. Spusťte příkaz [AZ ACR Login][az-acr-login] s použitím názvu vašeho Azure Container Registry, který jste vytvořili v kroku [Vytvoření Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Například `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -143,13 +143,13 @@ Pokud chcete zobrazit aktualizovanou aplikaci, nejprve získejte externí IP adr
 kubectl get service azure-vote-front
 ```
 
-Nyní otevřete místní webový prohlížeč na IP adresu vaší služby:
+Nyní otevřete webový prohlížeč na IP adresu vaší služby:
 
-![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Snímek obrazovky s příkladem aktualizované aplikace Azure hlasovacího obrázku běžícího v clusteru AKS otevřeném v místním webovém prohlížeči.":::
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste aktualizovali aplikaci a tuto aktualizaci zavedli do clusteru AKS. Naučili jste se tyto postupy:
+V tomto kurzu jste aktualizovali aplikaci a tuto aktualizaci zavedli do clusteru AKS. Naučili jste se:
 
 > [!div class="checklist"]
 > * Aktualizace kódu front-endu aplikace

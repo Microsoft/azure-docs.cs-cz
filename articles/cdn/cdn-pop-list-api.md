@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 13d4587a80cbbe66e18eb1bec8f3154221ac62b5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4197b1a5f047190872d055dc2ba8ccaa11efbe6c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192559"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376339"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Načte aktuální seznam IP adres POP pro Azure CDN.
 
@@ -28,7 +28,7 @@ ms.locfileid: "88192559"
 
 Pomocí REST API můžete načíst sadu IP adres pro servery POP (Point of Presence) Verizon. Tyto servery POP vytvářejí požadavky na zdrojové servery, které jsou přidružené k koncovým bodům služby Azure Content Delivery Network (CDN) v profilu Verizon (**Azure CDN Standard Verizon** nebo **Azure CDN Premium z Verizon**). Všimněte si, že tato sada IP adres se liší od IP adres, které klient uvidí při přijímání požadavků na body POP. 
 
-Syntaxi operace REST API pro načtení seznamu POP naleznete v tématu [Edge Nodes-list](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
+Syntaxi operace REST API pro načtení seznamu POP naleznete v tématu [Edge Nodes-list](/rest/api/cdn/cdn/edgenodes/list).
 
 ## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Načte aktuální seznam IP adres Microsoft POP pro Azure CDN.
 
@@ -48,4 +48,4 @@ Z bezpečnostních důvodů můžete pomocí tohoto seznamu IP adres vymezit, ab
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o REST API najdete v tématu [Azure CDN REST API](https://docs.microsoft.com/rest/api/cdn/).
+Informace o REST API najdete v tématu [Azure CDN REST API](/rest/api/cdn/).

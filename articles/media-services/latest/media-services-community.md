@@ -3,7 +3,7 @@ title: Přehled komunity Azure Media Services V3
 description: Tato Azure Media Servicesová stránka komunity popisuje různé způsoby, jak můžete klást otázky, poskytovat zpětnou vazbu a získávat aktualizace Media Services.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/22/2020
-ms.author: juliako
-ms.openlocfilehash: 9c47488915997f054487d8343c7c3c032135dcdb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 445155ed48334c9680dfa0be7b5402d057c98cef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833059"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329716"
 ---
-# <a name="azure-media-services-v3-community"></a>Komunita Azure Media Services V3  
+# <a name="azure-media-services-v3-community"></a>Komunita Azure Media Services V3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]  
 
 Tato Azure Media Servicesová stránka komunity popisuje různé způsoby, jak můžete klást otázky, poskytovat zpětnou vazbu a získávat aktualizace Media Services.
 
@@ -40,7 +42,7 @@ Následující fóra se dají použít k dotazování otázek týkajících se a
 
 V současné době je MSDN Media Servicesm hlavním komunitním fóru týmu.
 
-[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
+[![Snímek obrazovky s logem MSDN pro hlavní Komunitní fórum Media Services týmu.](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 Tým také sleduje otázky označené Stack Overflow pomocí Azure-Media-Services.
 

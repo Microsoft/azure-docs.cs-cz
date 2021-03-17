@@ -7,10 +7,10 @@ ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: d53d20510db70d81aab796efab48de40c880bb3a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87316120"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Vzdálená komunikace služby v jazyce Java s Reliable Services
@@ -26,7 +26,7 @@ Pro služby, které nejsou vázané na konkrétní komunikační protokol ani z�
 Nastavení vzdálené komunikace pro službu se provádí ve dvou jednoduchých krocích:
 
 1. Vytvořte rozhraní pro implementaci služby. Toto rozhraní definuje metody, které jsou k dispozici pro vzdálené volání procedur ve vaší službě. Metody musí být asynchronní metody vracející úlohy. Rozhraní musí implementovat `microsoft.serviceFabric.services.remoting.Service` k signalizaci, že služba má rozhraní vzdálené komunikace.
-2. V rámci služby použijte naslouchací proces vzdálené komunikace. Toto je `CommunicationListener` implementace, která poskytuje možnosti vzdálené komunikace. `FabricTransportServiceRemotingListener`dá se použít k vytvoření naslouchacího procesu vzdálené komunikace pomocí výchozího přenosového protokolu vzdálené komunikace.
+2. V rámci služby použijte naslouchací proces vzdálené komunikace. Toto je `CommunicationListener` implementace, která poskytuje možnosti vzdálené komunikace. `FabricTransportServiceRemotingListener` dá se použít k vytvoření naslouchacího procesu vzdálené komunikace pomocí výchozího přenosového protokolu vzdálené komunikace.
 
 Například následující Bezstavová služba zpřístupňuje jedinou metodu pro získání "Hello World" prostřednictvím vzdáleného volání procedury.
 
@@ -86,7 +86,7 @@ Vytváření ServiceProxy je odlehčená operace, takže můžete vytvořit toli
 ### <a name="serviceproxyfactory-lifetime"></a>Doba života ServiceProxyFactory
 [FabricServiceProxyFactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) je objekt pro vytváření, který vytváří proxy pro různá rozhraní pro vzdálenou komunikaci. Pokud používáte rozhraní API `ServiceProxyBase.create` pro vytvoření proxy serveru, pak rozhraní vytvoří `FabricServiceProxyFactory` .
 Je vhodné ho vytvořit ručně, když potřebujete přepsat vlastnosti [ServiceRemotingClientFactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) .
-Továrna je náročná operace. `FabricServiceProxyFactory`udržuje mezipaměť komunikačních klientů.
+Továrna je náročná operace. `FabricServiceProxyFactory` udržuje mezipaměť komunikačních klientů.
 Osvědčeným postupem je ukládání do mezipaměti `FabricServiceProxyFactory` , pokud je to možné.
 
 ## <a name="remoting-exception-handling"></a>Zpracování výjimek vzdálené komunikace

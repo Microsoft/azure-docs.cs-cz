@@ -1,44 +1,40 @@
 ---
-title: Volání, triggery nebo vnořené aplikace logiky
-description: Nastavení koncových bodů HTTPS pro volání, triggery nebo vnoření pracovních postupů aplikací logiky v Azure Logic Apps
+title: Volání, triggery nebo vnořování Logic Apps pomocí triggerů požadavků
+description: Nastavení koncových bodů HTTPS pro volání, spouštění nebo vnoření pracovních postupů aplikací logiky v Azure Logic Apps
 services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 11/19/2020
+ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078665"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981200"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Volání, triggery nebo vnořování aplikací logiky pomocí koncových bodů HTTPS v Azure Logic Apps
 
-Pokud chcete, aby aplikace logiky mohla přijímat příchozí žádosti z jiných služeb, můžete nativně vystavit synchronní koncový bod HTTPS jako Trigger v této aplikaci logiky. Když nastavíte tuto možnost, můžete aplikaci logiky vnořit do jiných Logic Apps, které vám umožní vytvořit vzor koncových bodů, které lze volat.
+Aby se aplikace logiky dokázala volat přes adresu URL a mohla přijímat příchozí žádosti z jiných služeb, můžete nativně vystavit synchronní koncový bod HTTPS pomocí triggeru na základě požadavku ve vaší aplikaci logiky. Díky této funkci můžete svou aplikaci logiky volat z jiných aplikací logiky a vytvořit vzor koncových bodů, které lze volat. K nastavení možného koncového bodu pro zpracování příchozích volání můžete použít některý z těchto typů triggerů:
 
-K nastavení možného koncového bodu můžete použít některý z těchto typů triggerů, které umožňují Logic Apps přijímat příchozí požadavky:
-
-* [Request](../connectors/connectors-native-reqres.md)
+* [Žádost](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 * Aktivační události spravovaného konektoru, které mají [typ vstupech apiconnectionwebhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) a můžou přijímat příchozí požadavky HTTPS
 
-> [!NOTE]
-> V těchto příkladech se používá aktivační událost žádosti, ale můžete použít libovolný Trigger na základě požadavků HTTPS, který je v předchozím seznamu. Všechny zásady se stejným způsobem vztahují na tyto další typy triggerů.
+Tento článek ukazuje, jak vytvořit volající koncový bod ve vaší aplikaci logiky pomocí triggeru žádosti a zavolat tento koncový bod z jiné aplikace logiky. Všechny zásady se vztahují stejným způsobem na jiné typy triggerů, které můžete použít pro příjem příchozích požadavků.
 
-Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Předpoklady
+Další informace o zabezpečení autorizace a šifrování příchozích volání do vaší aplikace logiky, jako je například TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), vystavení vaší aplikace logiky pomocí služby Azure API Management nebo omezení IP adres, které pocházejí z příchozích volání, najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-* Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+## <a name="prerequisites"></a>Požadavky
 
-* Aplikace logiky, ve které chcete aktivační proceduru použít k vytvoření možného koncového bodu. Můžete začít buď s prázdnou aplikací logiky, nebo s existující aplikací logiky, kde chcete nahradit aktuální Trigger. Tento příklad začíná prázdnou aplikací logiky.
+* Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+
+* Aplikace logiky, ve které chcete aktivační proceduru použít k vytvoření možného koncového bodu. Můžete začít buď s prázdnou aplikací logiky, nebo s existující aplikací logiky, kde můžete nahradit aktuální Trigger. Tento příklad začíná prázdnou aplikací logiky. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-callable-endpoint"></a>Vytvořit volatelné koncové body
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). Vytvořte a otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
-
-   V tomto příkladu se používá aktivační událost žádosti, ale můžete použít libovolný Trigger, který může přijímat příchozí požadavky HTTPS. Všechny zásady se na tyto triggery vztahují stejně. Další informace o triggeru žádosti najdete v tématu [příjem a odpověď na příchozí volání HTTPS pomocí Azure Logic Apps](../connectors/connectors-native-reqres.md).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vytvořte a otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V poli hledání vyberte **předdefinované**. Do vyhledávacího pole zadejte `request` jako filtr. V seznamu triggery vyberte, **kdy se přijme požadavek HTTP**.
 
@@ -108,7 +104,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
    * Napravo od pole **Adresa URL http post** vyberte **Kopírovat adresu URL** (ikona zkopírovat soubory).
 
-   * Provést toto volání příspěvku:
+   * Toto volání proveďte pomocí metody, kterou Trigger požadavku očekává. Tento příklad používá `POST` metodu:
 
      `POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01`
 
@@ -128,7 +124,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
 ## <a name="select-expected-request-method"></a>Vybrat očekávanou metodu žádosti
 
-Ve výchozím nastavení očekává aktivační událost požadavek POST. Můžete zadat jinou metodu, která má být očekávána, ale pouze jediná metoda.
+Ve výchozím nastavení očekává Trigger žádosti `POST` požadavek. Můžete však zadat jinou metodu, kterou volající musí použít, ale pouze jedinou metodu.
 
 1. V aktivační události žádosti otevřete seznam **Přidat nový parametr** a vyberte **metodu**, která do triggeru přidá tuto vlastnost.
 
@@ -166,11 +162,11 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
    1. V části Trigger žádosti vyberte **Nový krok**  >  **přidat akci**.
    
-   1. V části **zvolit akci**zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
+   1. V části **zvolit akci** zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
 
 1. Chcete-li vytvořit `triggerOutputs()` výraz, který načte hodnotu parametru, postupujte takto:
 
-   1. Klikněte do vlastnosti **tělo** akce odpovědi, aby se zobrazil seznam dynamického obsahu a **výraz**SELECT.
+   1. Klikněte do vlastnosti **tělo** akce odpovědi, aby se zobrazil seznam dynamického obsahu a **výraz** SELECT.
 
    1. Do pole **výraz** zadejte tento výraz, nahraďte `parameter-name` názvem parametru a vyberte **OK**.
 
@@ -200,7 +196,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
    `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?{parameter-name=parameter-value}&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-   Prohlížeč vrátí odpověď s tímto textem:`Postal Code: 123456`
+   Prohlížeč vrátí odpověď s tímto textem: `Postal Code: 123456`
 
    ![Odpověď odeslání požadavku na adresu URL zpětného volání](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
@@ -210,12 +206,12 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
    Tento příklad ukazuje adresu URL zpětného volání s názvem a hodnotou ukázkového parametru `postalCode=123456` v rámci adresy URL v různých pozicích:
 
-   * 1. pozice:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+   * 1. pozice: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-   * druhá pozice:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+   * druhá pozice: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
 > [!NOTE]
-> Pokud chcete do identifikátoru URI zahrnout symbol hash nebo symbol křížku ( **#** ), použijte místo toho tuto kódovanou verzi:`%25%23`
+> Pokud chcete do identifikátoru URI zahrnout symbol hash nebo symbol křížku ( **#** ), použijte místo toho tuto kódovanou verzi: `%25%23`
 
 <a name="relative-path"></a>
 
@@ -233,7 +229,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
    1. V části Trigger žádosti vyberte **Nový krok**  >  **přidat akci**.
 
-   1. V části **zvolit akci**zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
+   1. V části **zvolit akci** zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
 
 1. Do vlastnosti **tělo** akce odpovědi přidejte token, který představuje parametr, který jste zadali v relativní cestě triggeru.
 
@@ -257,16 +253,16 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
 1. Pokud chcete otestovat vyvolaný koncový bod, zkopírujte aktualizovanou adresu URL zpětného volání z triggeru žádosti, vložte adresu URL do jiného okna prohlížeče, nahraďte adresu `{postalCode}` URL řetězcem `123456` a stiskněte klávesu ENTER.
 
-   Prohlížeč vrátí odpověď s tímto textem:`Postal Code: 123456`
+   Prohlížeč vrátí odpověď s tímto textem: `Postal Code: 123456`
 
    ![Odpověď odeslání požadavku na adresu URL zpětného volání](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
 > [!NOTE]
-> Pokud chcete do identifikátoru URI zahrnout symbol hash nebo symbol křížku ( **#** ), použijte místo toho tuto kódovanou verzi:`%25%23`
+> Pokud chcete do identifikátoru URI zahrnout symbol hash nebo symbol křížku ( **#** ), použijte místo toho tuto kódovanou verzi: `%25%23`
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Volání aplikace logiky prostřednictvím adresy URL koncového bodu
 
-Po vytvoření koncového bodu můžete aktivovat aplikaci logiky odesláním `POST` požadavku https na úplnou adresu URL koncového bodu. Logic Apps mají integrovanou podporu koncových bodů s přímým přístupem.
+Po vytvoření koncového bodu můžete aktivovat aplikaci logiky odesláním požadavku HTTPS na úplnou adresu URL koncového bodu. Logic Apps mají integrovanou podporu koncových bodů s přímým přístupem.
 
 <a name="generated-tokens"></a>
 
@@ -306,11 +302,11 @@ Například pokud přidáte další vlastnosti, například `"suite"` , do sché
 
 ## <a name="create-nested-logic-apps"></a>Vytváření vnořených aplikací logiky
 
-Pracovní postupy můžete v aplikaci logiky vnořovat přidáním dalších aplikací logiky, které můžou přijímat požadavky. Pokud chcete zahrnout tyto Logic Apps, postupujte takto:
+Pracovní postupy můžete do aplikace logiky vnořovat přidáním dalších aplikací logiky, které můžou přijímat požadavky. Pokud chcete zahrnout tyto Logic Apps, postupujte takto:
 
 1. V kroku, kde chcete zavolat jinou aplikaci logiky, vyberte **Nový krok**  >  **přidat akci**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `logic apps` jako filtr. V seznamu akce vyberte **možnost zvolit pracovní postup Logic Apps**.
+1. V části **zvolit akci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `logic apps` jako filtr. V seznamu akce vyberte **možnost zvolit pracovní postup Logic Apps**.
 
    ![Vnoření aplikace logiky do aktuální aplikace logiky](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -388,13 +384,15 @@ Pokud chcete zobrazit definici JSON pro akci odpovědi a kompletní definici JSO
 
 #### <a name="q-what-about-url-security"></a>Otázka: co je zabezpečení adresy URL?
 
-Odpověď **: Azure**bezpečně generuje adresy URL zpětného volání aplikace logiky pomocí [sdíleného přístupového podpisu (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature). Tento podpis projde jako parametr dotazu a musí být ověřený předtím, než bude možné spustit aplikaci logiky. Azure vygeneruje signaturu pomocí jedinečné kombinace tajného klíče na aplikaci logiky, názvu triggeru a prováděné operace. Takže pokud nikdo nemá přístup k klíči tajné aplikace logiky, nemůže vygenerovat platný podpis.
+Odpověď **: Azure** bezpečně generuje adresy URL zpětného volání aplikace logiky pomocí [sdíleného přístupového podpisu (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature). Tento podpis projde jako parametr dotazu a musí být ověřený předtím, než bude možné spustit aplikaci logiky. Azure vygeneruje signaturu pomocí jedinečné kombinace tajného klíče na aplikaci logiky, názvu triggeru a prováděné operace. Takže pokud nikdo nemá přístup k klíči tajné aplikace logiky, nemůže vygenerovat platný podpis.
 
 > [!IMPORTANT]
 > Pro produkční a vyšší systémy zabezpečení důrazně doporučujeme volat aplikaci logiky přímo z prohlížeče z těchto důvodů:
 >
 > * V adrese URL se zobrazí sdílený přístupový klíč.
 > * Nemůžete spravovat zásady obsahu zabezpečení kvůli sdíleným doménám mezi Azure Logic Apps zákazníky.
+
+Další informace o zabezpečení autorizace a šifrování příchozích volání do vaší aplikace logiky, jako je například TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), vystavení vaší aplikace logiky pomocí služby Azure API Management nebo omezení IP adres, které pocházejí z příchozích volání, najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>Otázka: můžu dále konfigurovat nastavované koncové body?
 
@@ -408,3 +406,4 @@ Odpověď **: Ano**, koncové body https podporují pokročilejší konfiguraci 
 ## <a name="next-steps"></a>Další kroky
 
 * [Příjem příchozích volání HTTPS a jejich reakce pomocí Azure Logic Apps](../connectors/connectors-native-reqres.md)
+* [Zabezpečený přístup a data v Azure Logic Apps – přístup pro příchozí volání na triggery na základě požadavků](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

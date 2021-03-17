@@ -3,15 +3,15 @@ title: Přizpůsobení vlastností protokolu RDP pomocí prostředí PowerShell 
 description: Postup přizpůsobení vlastností protokolu RDP pro virtuální počítače s Windows pomocí rutin prostředí PowerShell.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 439f009d70775428a00f627160bf4d6b8ab9b089
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009099"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018303"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) pro fond hostitelů
 
@@ -20,7 +20,17 @@ ms.locfileid: "88009099"
 
 Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu hostitelů, jako je například prostředí pro více monitorů a přesměrování zvuku, umožňuje poskytovat optimální prostředí pro uživatele podle svých potřeb. Vlastnosti protokolu RDP na virtuálním počítači s Windows můžete přizpůsobit buď pomocí Azure Portal, nebo pomocí parametru *-CustomRdpProperty* v rutině **Update-AzWvdHostPool** .
 
-Úplný seznam podporovaných vlastností a jejich výchozích hodnot najdete v tématu [podporované nastavení souboru RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
+Úplný seznam podporovaných vlastností a jejich výchozích hodnot najdete v tématu [podporované nastavení souboru RDP](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext) .
+
+## <a name="default-rdp-file-properties"></a>Výchozí vlastnosti souboru RDP
+
+Soubory RDP mají ve výchozím nastavení následující vlastnosti:
+
+|Vlastnost RDP|Na ploše|Jako Vzdálená aplikace RemoteApp|
+|---|---|---|
+|Režim více monitorů|Zakázáno|Povoleno|
+|Přesměrování jednotky povolena|Jednotky, schránka, tiskárny, porty COM a čipové karty|Jednotky, schránka a tiskárny|
+|Režim vzdáleného zvuku|Přehrát místně|Přehrát místně|
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,8 +45,9 @@ Konfigurace vlastností protokolu RDP v Azure Portal:
 3. V části služby vyberte **virtuální klient Windows**.
 4. Na stránce virtuální počítač s Windows vyberte **fondy hostitelů** v nabídce na levé straně obrazovky.
 5. Vyberte **název hostitelského fondu** , který chcete aktualizovat.
-6. V nabídce na levé straně obrazovky vyberte **vlastnosti** .
-7. Na kartě **vlastnosti** otevřete **Nastavení RDP** a začněte upravovat vlastnosti protokolu RDP. Vlastnosti by měly být ve formátu odděleném středníkem, jako jsou příklady PowerShellu.
+6. V nabídce na levé straně obrazovky vyberte **Vlastnosti protokolu RDP** .
+7. Nastavte vlastnost, kterou chcete.
+   - Alternativně můžete otevřít kartu **Upřesnit** a přidat vlastnosti protokolu RDP ve formátu odděleném středníkem, jako jsou příklady PowerShellu v následujících oddílech.
 8. Až budete hotovi, vyberte **Uložit** a uložte provedené změny.
 
 V dalších částech se dozvíte, jak ručně upravit vlastní vlastnosti protokolu RDP v prostředí PowerShell.

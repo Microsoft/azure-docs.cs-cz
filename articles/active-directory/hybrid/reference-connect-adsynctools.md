@@ -5,17 +5,18 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11c9d66f891e8f5d53fc2a965e75f095417d20d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1652c52dcc6870e396d74a2f38fe63c304d37df5
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184006"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672264"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: Reference prostředí PowerShell ADSyncTools
 Následující dokumentace obsahuje referenční informace pro modul ADSyncTools. psm1 PowerShell, který je součástí nástroje Azure AD Connect.
@@ -26,7 +27,9 @@ Pokud chcete nainstalovat modul prostředí ADSyncTools PowerShell, postupujte t
 1.  Otevření prostředí Windows PowerShell s práva pro správu
 2.  Zadejte nebo zkopírujte a vložte následující text: 
     ``` powershell
-    Import-module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools"
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+        Import-module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools"
     ```
 3.  Stiskněte ENTER.
 4.  Pokud chcete ověřit, že je modul nainstalovaný, zadejte nebo zkopírujte a vložte následující:
@@ -36,7 +39,7 @@ Pokud chcete nainstalovat modul prostředí ADSyncTools PowerShell, postupujte t
 5.  Nyní byste měli vidět informace o modulu.
 
 
-## <a name="clear-adsynctoolsconsistencyguid"></a>Clear – ADSyncToolsConsistencyGuid
+## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>SYNOPSE
 Zrušte zaškrtnutí políčka mS-DS-ConsistencyGuid od uživatele AD.
@@ -83,7 +86,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-adsynctoolsadmoduleloaded"></a>Potvrdit – ADSyncToolsADModuleLoaded
+## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="synopsis"></a>SYNOPSE
 {{Vyplnit v souhrnech}}
@@ -106,7 +109,7 @@ PS C:\> {{ Add example code here }}
 
 {{Sem přidejte Příklad popisu}}
 
-## <a name="connect-adsyncdatabase"></a>Connect – AdSyncDatabase
+## <a name="connect-adsyncdatabase"></a>Connect-AdSyncDatabase
 
 ### <a name="synopsis"></a>SYNOPSE
 {{Vyplnit v souhrnech}}
@@ -211,7 +214,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export – ADSyncToolsConsistencyGuidMigration
+## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SYNOPSE
 Exportovat sestavu ConsistencyGuid
@@ -224,7 +227,7 @@ Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipal
 ```
 
 ### <a name="description"></a>POPIS
-Vygeneruje sestavu ConsistencyGuid založenou na importovaném souboru CSV z import-ADSyncToolsImmutableIdMigration.
+Vygeneruje sestavu ConsistencyGuid založenou na importovaném souboru CSV z Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -553,8 +556,8 @@ Funkce dotazuje historii spuštění AAD Connect a exportuje všechny uživatele
 #Required Parameters
 ```
 
-$sourcePath = Read-Host-prompt "zadejte cestu k souboru protokolu s názvem souboru" # " \<Source_Path\> " $outputPath = Read-Host-prompt "zadejte cestu k souboru out s názvem souboru" # " \<Out_Path\> "
- 
+$sourcePath = Read-Host-prompt "zadejte cestu k souboru protokolu s názvem souboru" # " \<Source_Path\> " $outputPath = Read-Host-prompt "zadejte cestu k souboru s názvem souboru" # " \<Out_Path\> ".
+
  Get-ADSyncToolsUsersSourceAnchorChanged-zdrojová_cesta $sourcePath-outputPath $outputPath
 
 #### <a name="example-2"></a>PŘÍKLAD 2
@@ -598,7 +601,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="import-adsynctoolsimmutableidmigration"></a>Import – ADSyncToolsImmutableIdMigration
+## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="synopsis"></a>SYNOPSE
 Import ImmutableID z AAD
@@ -662,7 +665,7 @@ Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 
-## <a name="invoke-adsyncdatabasequery"></a>Invoke – AdSyncDatabaseQuery
+## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
 
 ### <a name="synopsis"></a>SYNOPSE
 {{Vyplnit v souhrnech}}
@@ -753,7 +756,7 @@ Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = Users, OU = Corp, DC = cont
 Delete Expired Certs from all Computer objects in target OU - Expired Certificates will be copied to files and removed from AD
 ```
 
-Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = Computers, OU = Corp, DC = contoso, DC = com"-ObjectClass Computer-ne$false
+Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = počítače, OU = Corp, DC = contoso, DC = com"-ObjectClass Computer-bez možnosti přihlášení $false
 
 ### <a name="parameters"></a>PARAMETRY
 
@@ -806,7 +809,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="repair-adsynctoolsautoupgradestate"></a>Opravit – ADSyncToolsAutoUpgradeState
+## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
 
 ### <a name="synopsis"></a>SYNOPSE
 Krátký popis
@@ -832,7 +835,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="resolve-adsynchostaddress"></a>Vyřešit – ADSyncHostAddress
+## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAddress
 
 ### <a name="synopsis"></a>SYNOPSE
 {{Vyplnit v souhrnech}}
@@ -872,7 +875,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="restore-adsynctoolsexpiredcertificates"></a>Obnovit – ADSyncToolsExpiredCertificates
+## <a name="restore-adsynctoolsexpiredcertificates"></a>Restore-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>SYNOPSE
 (do) Obnoví atribut AD UserCertificate ze souboru certifikátu.
@@ -960,7 +963,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="test-adsyncnetworkport"></a>Test – ADSyncNetworkPort
+## <a name="test-adsyncnetworkport"></a>Test-ADSyncNetworkPort
 
 ### <a name="synopsis"></a>SYNOPSE
 {{Vyplnit v souhrnech}}
@@ -1015,7 +1018,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="trace-adsynctoolsadimport"></a>Trace – ADSyncToolsADImport
+## <a name="trace-adsynctoolsadimport"></a>Trace-ADSyncToolsADImport
 
 ### <a name="synopsis"></a>SYNOPSE
 Vytvoří trasovací soubor z a krok importu služby AD.
@@ -1139,7 +1142,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="trace-adsynctoolsldapquery"></a>Trace – ADSyncToolsLdapQuery
+## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
 ### <a name="synopsis"></a>SYNOPSE
 Krátký popis
@@ -1232,7 +1235,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update – ADSyncToolsConsistencyGuidMigration
+## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SYNOPSE
 Aktualizuje uživatele novou ConsistencyGuid (ImmutableId).

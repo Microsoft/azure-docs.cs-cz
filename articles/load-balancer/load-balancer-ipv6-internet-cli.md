@@ -9,17 +9,17 @@ keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, n
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 714fb92e8757fed6e11a09528b60cda3e945175e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001569"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218889"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného nástroje pro vyrovnávání zatížení s protokolem IPv6 pomocí Azure CLI
 
@@ -48,7 +48,7 @@ Následující kroky ukazují, jak vytvořit veřejný Nástroj pro vyrovnáván
 
 Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonfigurujte následující objekty:
 
-* **Konfigurace front-ENDOVÉ IP**adresy: obsahuje veřejné IP adresy pro příchozí síťový provoz.
+* **Konfigurace front-ENDOVÉ IP** adresy: obsahuje veřejné IP adresy pro příchozí síťový provoz.
 * **Fond back-endové adresy**: obsahuje síťová rozhraní (nic) pro virtuální počítače pro příjem síťového provozu z nástroje pro vyrovnávání zatížení.
 * **Pravidla vyrovnávání zatížení**: obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back-end adres.
 * **Pravidla příchozího překladu adres**(NAT): obsahuje pravidla překladu síťových adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port pro konkrétní virtuální počítač v rámci fondu back-end adres.
@@ -58,7 +58,7 @@ Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonf
 
 V tomto příkladu spustíte nástroje rozhraní příkazového řádku Azure CLI v příkazovém okně PowerShellu. Pro zlepšení čitelnosti a opakovaného použití využívají skriptovací možnosti prostředí PowerShell, nikoli rutiny Azure PowerShell.
 
-1. [Nainstalujte a nakonfigurujte Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) podle kroků v propojeném článku a přihlaste se ke svému účtu Azure.
+1. [Nainstalujte a nakonfigurujte Azure CLI](/cli/azure/install-azure-cli) podle kroků v propojeném článku a přihlaste se ke svému účtu Azure.
 
 2. Nastavení proměnných PowerShellu pro použití s příkazy Azure CLI:
 
@@ -157,7 +157,7 @@ Tento příklad vytvoří následující položky:
 * Pravidlo překladu adres (NAT) pro překlad veškerého příchozího provozu na portu 3391 na port 3389 pro protokol RDP (Remote Desktop Protocol).\*
 * Pravidlo nástroje pro vyrovnávání zatížení, které vyrovnává veškerý příchozí provoz na portu 80 na port 80 u adres ve fondu back-end.
 
-\*Pravidla překladu adres (NAT) jsou přidružená ke konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz, který se dorazí na port 3389, se pošle na konkrétní virtuální počítač a port, který je přidružený k pravidlu NAT. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Ke stejnému portu nemůžete přiřadit oba protokoly.
+\* Pravidla překladu adres (NAT) jsou přidružená ke konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz, který se dorazí na port 3389, se pošle na konkrétní virtuální počítač a port, který je přidružený k pravidlu NAT. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Ke stejnému portu nemůžete přiřadit oba protokoly.
 
 1. Nastavte proměnné PowerShellu:
 
@@ -284,7 +284,7 @@ Pokud chcete vytvořit virtuální počítače, musíte mít účet úložiště
     ```
 
     > [!WARNING]
-    > V tomto příkladu se pro virtuální počítače používá uživatelské jméno a heslo v nešifrovaném textu. Pokud tyto přihlašovací údaje použijete v nešifrovaném textu, postupujte opatrně. Bezpečnější metoda zpracování přihlašovacích údajů v PowerShellu najdete v tématu [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) rutina.
+    > V tomto příkladu se pro virtuální počítače používá uživatelské jméno a heslo v nešifrovaném textu. Pokud tyto přihlašovací údaje použijete v nešifrovaném textu, postupujte opatrně. Bezpečnější metoda zpracování přihlašovacích údajů v PowerShellu najdete v tématu [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential) rutina.
 
 2. Vytvořte skupinu dostupnosti:
 
@@ -299,5 +299,3 @@ Pokud chcete vytvořit virtuální počítače, musíte mít účet úložiště
 
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
-
-

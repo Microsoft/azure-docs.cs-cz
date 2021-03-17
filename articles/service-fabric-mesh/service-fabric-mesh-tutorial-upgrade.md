@@ -1,19 +1,24 @@
 ---
 title: Kurz – upgrade aplikace sítě pro Azure Service Fabric
 description: Tento kurz je čtvrtou částí série a ukazuje, jak upgradovat aplikaci Service Fabric sítě Azure přímo ze sady Visual Studio.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-csharp
+ms.openlocfilehash: 1020613eb43177ba159601f253848f8d03f385a8
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75351718"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625428"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Kurz: informace o tom, jak upgradovat Service Fabric aplikaci pomocí sady Visual Studio
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Tento kurz je čtvrtou částí série a ukazuje, jak upgradovat aplikaci Service Fabric sítě Azure přímo ze sady Visual Studio. Upgrade bude zahrnovat aktualizaci kódu i aktualizaci konfigurace. Uvidíte, že kroky pro upgrade a publikování v rámci sady Visual Studio jsou stejné.
 
@@ -47,21 +52,21 @@ Když vytvoříte aplikaci Service Fabric mřížka, Visual Studio přidá soubo
 
 Aktualizujeme `WebFrontEnd_cpu` parametr a aktualizujeme prostředky procesoru na, aby se `1.5` předpokládalo, že se služba **webendu** bude intenzivně používat.
 
-1. V projektu **todolistapp** v části **prostředí**  >  **cloudu**otevřete soubor **Parameters. yaml** . Změňte `WebFrontEnd_cpu` hodnotu na `1.5` . Název parametru je před názvem služby `WebFrontEnd_` doporučený postup pro odlišení od parametrů stejného názvu, které se vztahují k různým službám.
+1. V projektu **todolistapp** v části **prostředí**  >  **cloudu** otevřete soubor **Parameters. yaml** . Změňte `WebFrontEnd_cpu` hodnotu na `1.5` . Název parametru je před názvem služby `WebFrontEnd_` doporučený postup pro odlišení od parametrů stejného názvu, které se vztahují k různým službám.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Otevřete soubor **Service. yaml** projektu **webendu** v části **WebFrontEnd**  >  **prostředky služby**webendu.
+2. Otevřete soubor **Service. yaml** projektu **webendu** v části   >  **prostředky služby** webendu.
 
-    Všimněte si, že v `resources:` části v `cpu:` je nastavena na `"[parameters('WebFrontEnd_cpu')]"` . Pokud projekt sestavíte pro Cloud, hodnota pro `'WebFrontEnd_cpu` bude provedena z **Environments**  >  **cloudových**  >  **parametrů prostředí. yaml** soubor a bude `1.5` . Pokud je projekt sestaven tak, aby běžel místně, hodnota bude provedena z **prostředí**  >  **místních**  >  **parametrů. yaml** a bude "0,5".
+    Všimněte si, že v `resources:` části v `cpu:` je nastavena na `"[parameters('WebFrontEnd_cpu')]"` . Pokud projekt sestavíte pro Cloud, hodnota pro `'WebFrontEnd_cpu` bude provedena z   >  **cloudových**  >  **parametrů prostředí. yaml** soubor a bude `1.5` . Pokud je projekt sestaven tak, aby běžel místně, hodnota bude provedena z **prostředí**  >  **místních**  >  **parametrů. yaml** a bude "0,5".
 
 > [!Tip]
 > Ve výchozím nastavení se soubor parametrů, který je partnerským souborem profilu. yaml, použije k zadání hodnot pro tento soubor Profile. yaml.
 > Například prostředí > cloudových > Parameters. yaml poskytuje hodnoty parametrů pro prostředí > cloudového > Profile. yaml.
 >
-> To můžete přepsat přidáním následujícího do souboru Profile. yaml `parametersFilePath=”relative or full path to the parameters file”` , například `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` nebo.`parametersFilePath=”..\CommonParameters.yaml”`
+> To můžete přepsat přidáním následujícího do souboru Profile. yaml `parametersFilePath=”relative or full path to the parameters file”` , například `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` nebo. `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>Úprava modelu
 

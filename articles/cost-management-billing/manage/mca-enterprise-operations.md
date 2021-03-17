@@ -4,15 +4,16 @@ description: Naučte se provádět úkoly ze smlouvy Enterprise v novém faktura
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: a92298fa3ba4de123cd89404855df15e38692aa8
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: e5b1ecfd7b434ceefcff65178b7532575a759d45
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244801"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440622"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Provádění úkolů ze smlouvy Enterprise ve fakturačním účtu pro smlouvu se zákazníkem Microsoftu
 

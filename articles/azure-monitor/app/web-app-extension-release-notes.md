@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 07ba61f630b849a377f1c7ba881f95518eb73606
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539716"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042602"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Poznámky k verzi pro rozšíření webové aplikace Azure pro Application Insights
 
@@ -27,6 +27,24 @@ Tento článek obsahuje poznámky k verzím pro rozšíření Azure Web Apps pro
     - Odinstalujte rozšíření privátních webů, protože už není podporovaná.
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="2838"></a>2.8.38
+
+- Rozšíření JAVA: upgrade na [3.0.2 agenta Java (GA)](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.0.2) z 2.5.1.
+- Rozšíření Node.js: aktualizace AI SDK na [1.8.8](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/1.8.8) z 1.8.7.
+- .NET Core: odstranily se verze mimo podporu (2,0, 2,2, 3,0). Podporované verze jsou 2,1 a 3,1.
+
+### <a name="2837"></a>2.8.37
+
+- Rozšíření AppSvc Windows: .Net Core fungovat s jakoukoli verzí System.Diagnostics.DiagnosticSource.dll.
+
+### <a name="2836"></a>2.8.36
+
+- Rozšíření AppSvc systému Windows: v .NET Core bylo povoleno mezi operačními systémy AI SDK.
+
+### <a name="2835"></a>2.8.35
+
+- AppSvc Windows Extension: přidala se podpora .NET Core 3,1.
 
 ### <a name="2833"></a>2.8.33
 

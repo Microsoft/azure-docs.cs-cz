@@ -9,15 +9,15 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830678"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91818544"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Řešení potíží s automatickým škálováním se škálovacími sadami virtuálních počítačů
-**Problém** – pomocí služby Virtual Machine Scale Sets jste v Azure Resource Manager vytvořili infrastrukturu automatického škálování – například nasazením šablony, jako je tato: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – máte definovaná pravidla škálování a funguje Skvělé, ale bez ohledu na to, kolik dat jste do virtuálních počítačů umístili, nefunguje automatické škálování.
+**Problém** – pomocí služby Virtual Machine Scale Sets jste v Azure Resource Manager vytvořili infrastrukturu automatického škálování – například nasazením šablony, jako je tato: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale  – máte definovaná pravidla škálování a funguje Skvělé, ale bez ohledu na to, kolik dat jste do virtuálních počítačů umístili, nefunguje automatické škálování.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 Mezi ty, které je potřeba vzít v úvahu, patří:
@@ -62,11 +62,11 @@ Mezi ty, které je potřeba vzít v úvahu, patří:
     
     Pokud služba Insights nemůže číst data z virtuálních počítačů, doporučujeme vám poslat e-mail. Můžete například získat e-mail, pokud jsou virtuální počítače mimo provoz. Nezapomeňte zkontrolovat e-mail na e-mailovou adresu, kterou jste zadali při vytváření účtu Azure.
     
-    Můžete se také podívat na data sami. Podívejte se na účet služby Azure Storage pomocí Průzkumníka cloudu. Pomocí [Průzkumníka cloudu sady Visual Studio](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)se například přihlaste a vyberte předplatné Azure, které používáte. Pak se podívejte na název účtu úložiště diagnostiky, na který odkazuje definice rozšíření diagnostiky v šabloně nasazení.
+    Můžete se také podívat na data sami. Podívejte se na účet služby Azure Storage pomocí Průzkumníka cloudu. Například pomocí [Průzkumníka cloudu sady Visual Studio](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)se přihlaste a vyberte předplatné Azure, které používáte. Pak se podívejte na název účtu úložiště diagnostiky, na který odkazuje definice rozšíření diagnostiky v šabloně nasazení.
     
     ![Průzkumník cloudu][explorer]
     
-    Zobrazí se spousta tabulek, ve kterých se ukládají data z každého virtuálního počítače. Pokud chcete jako příklad využít Linux a metriku procesoru, podívejte se na nejnovější řádky. Průzkumník cloudu sady Visual Studio podporuje dotazovací jazyk, takže můžete spustit dotaz. Můžete například spustit dotaz pro "timestamp gt DateTime" 2016-02-02T21:20:00Z "", abyste se ujistili, že jste získali nejaktuálnější události. Časové pásmo odpovídá času UTC. Odpovídají data zobrazená v části pravidla škálování, která jste nastavili? V následujícím příkladu se procesor pro počítač 20 začal zvyšovat na 100% za posledních pět minut.
+    Zobrazí se spousta tabulek, ve kterých se ukládají data z každého virtuálního počítače. Pokud chcete jako příklad využít Linux a metriku procesoru, podívejte se na nejnovější řádky. Visual Studio Cloud Explorer podporuje dotazovací jazyk, takže můžete spustit dotaz. Můžete například spustit dotaz pro "timestamp gt DateTime" 2016-02-02T21:20:00Z "", abyste se ujistili, že jste získali nejaktuálnější události. Časové pásmo odpovídá času UTC. Odpovídají data zobrazená v části pravidla škálování, která jste nastavili? V následujícím příkladu se procesor pro počítač 20 začal zvyšovat na 100% za posledních pět minut.
     
     ![Tabulky úložiště][tables]
     

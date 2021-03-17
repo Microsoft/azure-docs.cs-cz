@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 9030080d0b8c8e032cb2992a62275efcdb04aabc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 574507fcc6a3c05919c441bd6d0ec9c573d4b6ae
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798133"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652597"
 ---
 V následující tabulce jsou uvedené funkce JMS (Java Message Service), které Azure Service Bus aktuálně podporuje. Zobrazuje také funkce, které nejsou podporovány.
 
 
-| Příznak | Rozhraní API |Status |
+| Funkce | Rozhraní API |Status |
 |---|---|---|
 | Fronty   | <ul> <li> JMSContext. createQueue (řetězec ve frontě) </li> </ul>| **Podporováno** |
 | Témata   | <ul> <li> JMSContext. createTopic (řetězec v tématu String) </li> </ul>| **Podporováno** |
@@ -34,4 +34,5 @@ V následující tabulce jsou uvedené funkce JMS (Java Message Service), které
 | Selektory zpráv | závisí na vytvořeném spotřebiteli. | **Podporováno** |
 | Zpoždění doručení (naplánované zprávy) | <ul> <li> JMSProducer. setDeliveryDelay (Long deliveryDelay) </li> </ul>|**Podporováno**|
 | Zpráva vytvořena |<ul> <li> JMSContext.createMessage() </li> <li> JMSContext.createBytesMessage() </li> <li> JMSContext.createMapMessage() </li> <li> JMSContext. createObjectMessage (serializovatelný objekt) </li> <li> JMSContext.createStreamMessage() </li> <li> JMSContext.createTextMessage() </li> <li> JMSContext. createTextMessage (text řetězce) </li> </ul>| **Podporováno** |
+| Transakce mezi entitami |<ul> <li> Connection. createSession (true, Session.SESSION_TRANSACTED) </li> </ul> | **Podporováno** |
 | Distribuované transakce || Nepodporováno |

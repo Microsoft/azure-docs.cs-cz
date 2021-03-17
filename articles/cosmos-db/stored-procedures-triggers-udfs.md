@@ -3,20 +3,22 @@ title: Práce s uloženými procedurami, triggery a UDF v Azure Cosmos DB
 description: V tomto článku se seznámíte s koncepty, jako jsou uložené procedury, triggery a uživatelsky definované funkce v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad9e6b99b396465c2cff95bd6ab340ef9d668085
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82509665"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575953"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelsky definované funkce
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB poskytuje transakční spouštění JavaScriptu integrované do jazyka. Při použití rozhraní SQL API v Azure Cosmos DB můžete v jazyce JavaScript zapisovat **uložené procedury**, **triggery**a **uživatelsky definované funkce (UDF)** . Vlastní logiku můžete psát v JavaScriptu, který se spouští v databázovém stroji. Můžete vytvářet a spouštět triggery, uložené procedury a UDF pomocí [Azure Portal](https://portal.azure.com/), [integrovaného rozhraní Query API jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md) nebo klientských SADÁCH [SDK Cosmos DB SQL API](how-to-use-stored-procedures-triggers-udfs.md).
+Azure Cosmos DB poskytuje transakční spouštění JavaScriptu integrované do jazyka. Při použití rozhraní SQL API v Azure Cosmos DB můžete v jazyce JavaScript zapisovat **uložené procedury**, **triggery** a **uživatelsky definované funkce (UDF)** . Vlastní logiku můžete psát v JavaScriptu, který se spouští v databázovém stroji. Můžete vytvářet a spouštět triggery, uložené procedury a UDF pomocí [Azure Portal](https://portal.azure.com/), [integrovaného rozhraní Query API jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md) nebo klientských SADÁCH [SDK Cosmos DB SQL API](how-to-use-stored-procedures-triggers-udfs.md).
 
 ## <a name="benefits-of-using-server-side-programming"></a>Výhody používání programování na straně serveru
 
@@ -24,7 +26,7 @@ Zápis uložených procedur, triggerů a uživatelsky definovaných funkcí (UDF
 
 * **Procesní logika:** JavaScript jako programovací jazyk vysoké úrovně, který poskytuje bohatou a známou rozhraní pro Express Business Logic. Můžete provést sekvenci komplexních operací s daty.
 
-* **Atomické transakce:** Azure Cosmos DB garantuje, že databázové operace, které se provádějí v rámci jedné uložené procedury nebo triggeru, jsou atomické. Tato atomická funkce umožňuje aplikaci zkombinovat související operace do jedné dávky, aby všechny operace byly úspěšné nebo žádné z nich nebyly úspěšné.
+* **Atomické transakce:** Operace Azure Cosmos DB Database, které se provádějí v rámci jedné uložené procedury nebo triggeru, jsou atomické. Tato atomická funkce umožňuje aplikaci zkombinovat související operace do jedné dávky, aby všechny operace byly úspěšné nebo žádné z nich nebyly úspěšné.
 
 * **Výkon:** Data JSON jsou vnitřně mapována na systém typů jazyka JavaScript. Toto mapování umožňuje několik optimalizací, jako je opožděné dematerializace dokumentů JSON ve fondu vyrovnávací paměti a jejich zpřístupnění na vyžádání spouštěcímu kódu. K odeslání obchodní logiky do databáze jsou k dispozici další výhody související s výkonem, které zahrnují:
 
@@ -41,7 +43,7 @@ Zápis uložených procedur, triggerů a uživatelsky definovaných funkcí (UDF
 
 ## <a name="transactions"></a>Transakce
 
-Transakce v typické databázi může být definována jako posloupnost operací prováděná jako jediná logická jednotka práce. Každá transakce poskytuje **záruky vlastností kyselosti**. KYSELost je známý akronym, **který představuje: tomicity,** **C**onsistency, **I**solation a **D**urability. 
+Transakce v typické databázi může být definována jako posloupnost operací prováděná jako jediná logická jednotka práce. Každá transakce poskytuje **záruky vlastností kyselosti**. KYSELost je známý akronym, **který představuje: tomicity,** **C** onsistency, **I** solation a **D** urability. 
 
 * Nedělitelnost zaručuje, že všechny operace provedené uvnitř transakce jsou považovány za jednu jednotku a všechny z nich jsou potvrzeny nebo žádné z nich. 
 
@@ -55,7 +57,7 @@ V Azure Cosmos DB je JavaScript Runtime hostovaný v databázovém stroji. Proto
 
 ### <a name="scope-of-a-transaction"></a>Rozsah transakce
 
-Uložené procedury jsou přidružené k kontejneru Azure Cosmos a provádění uložených procedur je vymezeno na klíč logického oddílu. Uložené procedury musí zahrnovat hodnotu klíče logického oddílu během provádění, která definuje logický oddíl pro obor transakce. Další informace najdete v článku o [dělení Azure Cosmos DB](partition-data.md) .
+Uložené procedury jsou přidružené k kontejneru Azure Cosmos a provádění uložených procedur je vymezeno na klíč logického oddílu. Uložené procedury musí zahrnovat hodnotu klíče logického oddílu během provádění, která definuje logický oddíl pro obor transakce. Další informace najdete v článku o [dělení Azure Cosmos DB](partitioning-overview.md) .
 
 ### <a name="commit-and-rollback"></a>Potvrdit změny a vrátit se zpátky
 
@@ -63,14 +65,14 @@ Transakce jsou nativně integrované do programovacího modelu Azure Cosmos DB J
 
 ### <a name="data-consistency"></a>Konzistence dat
 
-Uložené procedury a triggery se vždycky spouštějí na primární replice kontejneru Azure Cosmos. Tato funkce zajišťuje, že čtení z uložených procedur nabízí [silnou konzistenci](consistency-levels-tradeoffs.md). Dotazy využívající uživatelsky definované funkce lze provádět na primární nebo libovolné sekundární replice. Uložené procedury a triggery jsou určené k podpoře transakčních zápisů – zatímco logika jen pro čtení se nejlépe implementuje jako logika na straně aplikace a dotazy pomocí [Azure Cosmos DB SQL API SDK](sql-api-dotnet-samples.md), vám pomůže sytost propustnosti databáze. 
+Uložené procedury a triggery se vždycky spouštějí na primární replice kontejneru Azure Cosmos. Tato funkce zajišťuje, že čtení z uložených procedur nabízí [silnou konzistenci](./consistency-levels.md). Dotazy využívající uživatelsky definované funkce lze provádět na primární nebo libovolné sekundární replice. Uložené procedury a triggery jsou určené k podpoře transakčních zápisů – zatímco logika jen pro čtení se nejlépe implementuje jako logika na straně aplikace a dotazy pomocí [Azure Cosmos DB SQL API SDK](sql-api-dotnet-samples.md), vám pomůže sytost propustnosti databáze. 
 
 > [!TIP]
 > Dotazy, které byly provedeny v uložené proceduře nebo triggeru, nemusí zobrazit změny v položkách provedených stejnou transakcí skriptu. Tento příkaz se vztahuje na dotazy SQL, jako je například, i na `getContent().getCollection.queryDocuments()` integrované jazykové dotazy, jako je `getContext().getCollection().filter()` .
 
 ## <a name="bounded-execution"></a>Omezené spouštění
 
-Všechny operace Azure Cosmos DB musí být dokončeny v rámci zadaného časového limitu. Toto omezení se vztahuje na funkce jazyka JavaScript – uložené procedury, triggery a uživatelsky definované funkce. Pokud se operace v tomto časovém limitu nedokončí, transakce se vrátí zpět.
+Všechny operace Azure Cosmos DB musí být dokončeny v rámci zadaného časového limitu. Uložené procedury mají časový limit 5 sekund. Toto omezení se vztahuje na funkce jazyka JavaScript – uložené procedury, triggery a uživatelsky definované funkce. Pokud se operace v tomto časovém limitu nedokončí, transakce se vrátí zpět.
 
 Můžete buď zajistit, aby se funkce JavaScriptu dokončily v rámci časového limitu, nebo implementovat model založený na pokračování pro dávku nebo pokračování v provádění. Aby bylo možné zjednodušit vývoj uložených procedur a triggerů za účelem zpracování časových omezení, všechny funkce v kontejneru Azure Cosmos (například vytváření, čtení, aktualizace a odstraňování položek) vrací logickou hodnotu, která představuje, zda bude tato operace dokončena. Pokud je tato hodnota false, znamená to, že procedura musí zabalit provádění, protože skript spotřebovává více času nebo zřídil propustnost, než je nakonfigurovaná hodnota. Operace zařazené do fronty před prvním nepřijatnou operací úložiště jsou zaručené k dokončení, pokud se uložená procedura dokončí v čase, a nezařazuje žádné další požadavky. Operace by tedy měly být zařazeny po jednom pomocí konvence zpětného volání JavaScriptu ke správě toku řízení skriptu. Vzhledem k tomu, že se skripty spouštějí v prostředí na straně serveru, jsou výhradně řízeny. Skripty, které opakovaně narušují hranice provádění, mohou být označeny jako neaktivní a nelze je spustit, aby bylo možné akceptovat hranice spouštění.
 

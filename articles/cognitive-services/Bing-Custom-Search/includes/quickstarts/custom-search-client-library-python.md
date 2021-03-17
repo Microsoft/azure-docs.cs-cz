@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: ec0ffdcf86e67a7126a3100c1e20b6e5c3474e35
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3019881c42e0f7b64cc766b8b9e575eb60612432
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252881"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947419"
 ---
 Začněte s knihovnou klienta Vlastní vyhledávání Bingu pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet v přizpůsobených prostředích vyhledávání bez reklamy pro témata, která vás zajímají. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py).
 
 Použití klientské knihovny Vlastní vyhledávání Bingu pro Python pro:
 * Vyhledá výsledky hledání na webu z vaší instance Vlastní vyhledávání Bingu.
 
-[Reference documentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python) | [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/) balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch) | knihovny Referenční dokumentace[(PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) | 
+[Referenční dokumentace](/python/api/azure-cognitiveservices-search-customsearch/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch)  |  [Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -58,13 +58,13 @@ from msrest.authentication import CognitiveServicesCredentials
     endpoint = 'your-endpoint'
     ```
 
-2. Vytvořte instanci `CustomSearchClient`pomocí `CognitiveServicesCredentials` objektu s klíčem předplatného. 
+2. Vytvořte instanci `CustomSearchClient` pomocí `CognitiveServicesCredentials` objektu s klíčem předplatného. 
 
     ```python
     client = CustomSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
-3. Odešlete žádost o vyhledávání `client.custom_instance.search()`pomocí. Přidejte hledaný termín k `query` parametru a nastavte `custom_config` na vlastní ID konfigurace, aby bylo možné použít vaši instanci hledání. Své ID můžete získat z [portálu vlastní vyhledávání Bingu](https://www.customsearch.ai/)kliknutím na kartu **Výroba** .
+3. Odešlete žádost o vyhledávání pomocí `client.custom_instance.search()` . Přidejte hledaný termín k `query` parametru a nastavte `custom_config` na vlastní ID konfigurace, aby bylo možné použít vaši instanci hledání. Své ID můžete získat z [portálu vlastní vyhledávání Bingu](https://www.customsearch.ai/)kliknutím na kartu **Výroba** .
 
     ```python
     web_data = client.custom_instance.search(query="xbox", custom_config="your-configuration-id")

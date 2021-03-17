@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4e6c2db5333962d7ae43534998ffc1c48b0dba45
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6d2ed00f3fc6f5b52a9a13a96f1e1659e30f02d5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80244558"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532597"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Detekce typů obrázků pomocí Počítačové zpracování obrazu
 
-Pomocí rozhraní API pro [analýzu imagí](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) počítačové zpracování obrazu může analyzovat typ obsahu imagí, který označuje, jestli je obrázek Klipart nebo kreslení čáry.
+Pomocí rozhraní API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) počítačové zpracování obrazu může analyzovat typ obsahu imagí, který označuje, jestli je obrázek Klipart nebo kreslení čáry.
 
 ## <a name="detecting-clip-art"></a>Detekce klipartu
 
@@ -115,7 +115,6 @@ Následující odpovědi JSON znázorňují, co Počítačové zpracování obra
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Funkce detekce typu obrázku je součástí rozhraní API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Toto rozhraní API můžete zavolat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. Do `ImageType` parametru dotazu **visualFeatures** zahrňte. Až získáte úplnou odpověď ve formátu JSON, stačí analyzovat řetězec pro obsah `"imageType"` oddílu.
+Funkce detekce typu obrázku je součástí rozhraní API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) . Toto rozhraní API můžete zavolat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. `ImageType`Do parametru dotazu **visualFeatures** zahrňte. Až získáte úplnou odpověď ve formátu JSON, stačí analyzovat řetězec pro obsah `"imageType"` oddílu.
 
-* [Rychlý Start: Počítačové zpracování obrazu .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [Rychlý Start: analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)
+* [Rychlý Start: Počítačové zpracování obrazu REST API nebo klientské knihovny](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

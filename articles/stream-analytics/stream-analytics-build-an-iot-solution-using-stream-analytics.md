@@ -1,19 +1,18 @@
 ---
 title: Sestavte řešení IoT pomocí Azure Stream Analytics
 description: Úvodní kurz pro Stream Analytics řešení IoT ve scénáři Tollbooth
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044579"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016146"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavte řešení IoT pomocí Stream Analytics
 
@@ -43,7 +42,7 @@ Toto řešení pracuje se dvěma datovými proudy. Senzory nainstalované ve vst
 ### <a name="entry-data-stream"></a>Záznam datového streamu
 Datový proud záznamu obsahuje informace o automobilůch při zadávání telefonních stanic. Události data ukončení jsou živé streamování do fronty centra událostí z webové aplikace obsažené v ukázkové aplikaci.
 
-| TollID | EntryTime | LicensePlate | Stav | Značka | Model | VehicleType | VehicleWeight | Placená | Značka |
+| TollID | EntryTime | LicensePlate | State | Značka | Model | VehicleType | VehicleWeight | Placená | Značka |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -54,12 +53,12 @@ Datový proud záznamu obsahuje informace o automobilůch při zadávání telef
 
 Tady je krátký popis sloupců:
 
-| Sloupec | Description |
+| Sloupec | Popis |
 | --- | --- |
 | TollID |ID kabiny pro telefonní číslo, které jedinečně identifikuje telefonní kabinu |
 | EntryTime |Datum a čas vstupu vozidla na telefonní kabinu v UTC |
 | LicensePlate |Číslo licenční tabulky vozidla |
-| Stav |Stav v USA |
+| State |Stav v USA |
 | Značka |Výrobce automobilu |
 | Model |Číslo modelu automobilu |
 | VehicleType |1 pro osobní vozidla nebo 2 pro komerční vozidla |
@@ -81,7 +80,7 @@ Výstupní datový proud obsahuje informace o vozidlech opouštějících telefo
 
 Tady je krátký popis sloupců:
 
-| Sloupec | Description |
+| Sloupec | Popis |
 | --- | --- |
 | TollID |ID kabiny pro telefonní číslo, které jedinečně identifikuje telefonní kabinu |
 | ExitTime |Datum a čas ukončení vozidla ze záplatku v UTC |
@@ -101,7 +100,7 @@ Tady je krátký popis sloupců:
 
 Tady je krátký popis sloupců:
 
-| Sloupec | Description |
+| Sloupec | Popis |
 | --- | --- |
 | LicensePlate |Číslo licenční tabulky vozidla |
 | RegistrationId |Registrační ID vozidla |
@@ -163,7 +162,7 @@ Existuje několik prostředků, které lze snadno nasadit ve skupině prostředk
 
    Řekněme, že k parafrázovali záměru dotazu, je třeba spočítat počet vozidel, která vstupují do kabiny. Vzhledem k tomu, že kabina silničního mýtné má souvislý proud vozidel vstupujících do provozu, jsou úvodní události analogické ke streamu, který se nikdy nezastaví. Chcete-li vyčíslit datový proud, je nutné definovat "časový interval" pro měření. Pojďme tuto otázku podrobněji zpřesnit, abyste mohli "kolik vozidel vstupuje v telefonním kabině každé tři minuty?" To se běžně označuje jako počet bubnů.
 
-   Jak vidíte, Azure Stream Analytics používá dotazovací jazyk, který jako SQL, a přidává několik rozšíření pro určení aspektů dotazu souvisejících s časem.  Další podrobnosti najdete v článku o [správě času](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) a konstrukcích [okna](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) použitých v dotazu.
+   Jak vidíte, Azure Stream Analytics používá dotazovací jazyk, který jako SQL, a přidává několik rozšíření pro určení aspektů dotazu souvisejících s časem.  Další podrobnosti najdete v článku o [správě času](/stream-analytics-query/time-management-azure-stream-analytics) a konstrukcích [okna](/stream-analytics-query/windowing-azure-stream-analytics) použitých v dotazu.
 
 3. Prověřte vstupy vzorové úlohy TollApp. V aktuálním dotazu se používá pouze vstup EntryStream.
    - **EntryStream** input je připojení centra událostí, které při každém vstupu automobilu do Tollbooth na dálnici zařadí data do fronty. Webová aplikace, která je součástí ukázky, vytváří události a tato data jsou zařazená do fronty v tomto centru událostí. Všimněte si, že tento vstup je dotazován v klauzuli FROM dotazu streamování.
@@ -189,7 +188,7 @@ Pomocí těchto kroků spusťte úlohu streamování:
 
 3. Vyberte záhlaví **Průzkumník dat** pro otevření stránky Průzkumník dat.
 
-4. Rozbalte dokumenty **tollAppDatabase**  >  **tollAppCollection**  >  **Documents**.
+4. Rozbalte dokumenty **tollAppDatabase**  >  **tollAppCollection**  >  .
 
 5. V seznamu ID se několik dokumentů zobrazuje až po zpřístupnění výstupu.
 

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c9feb1131f6d2d0eb75ac71e27dc46c226c52c1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707391"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961052"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Nasazení místního zařízení StorSimple (Update 3 a novější)
 
@@ -34,7 +34,7 @@ K dokončení této instalace a procesu konfigurace potřebujete oprávnění sp
 ## <a name="deployment-steps"></a>Kroky nasazení
 Pomocí níže uvedených požadovaných kroků zařízení StorSimple nakonfigurujte a připojte ke službě Správce zařízení StorSimple. Kromě požadovaných kroků existují ještě některé volitelné kroky a postupy, které může být vhodné při nasazení provést. Informace o tom, kdy je vhodné provést jednotlivé volitelné kroky, jsou vždy uvedeny v příslušných požadovaných krocích nasazení.
 
-| Krok | Description |
+| Krok | Popis |
 | --- | --- |
 | **POŽADOVANÝ** |Tyto požadavky je nutné splnit v rámci přípravy na nasazení. |
 | [Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist) |Kontrolní seznam použijte ke shromáždění a zaznamenání informací před nasazením a během nasazení. |
@@ -166,7 +166,7 @@ Dokončili jste konfiguraci zařízení.
 ## <a name="configure-a-new-storage-account-for-the-service"></a>Konfigurace nového účtu úložiště pro službu
 Toto je volitelný krok, který je potřeba provést pouze v případě, že jste ve své službě nepovolili automatické vytvoření účtu úložiště. K vytvoření kontejneru svazků zařízení StorSimple je potřeba účet služby Microsoft Azure Storage.
 
-Pokud potřebujete vytvořit účet služby Azure Storage v jiné oblasti, postupujte podle pokynů v tématu [Účty Azure Storage](../storage/common/storage-create-storage-account.md).
+Pokud potřebujete vytvořit účet služby Azure Storage v jiné oblasti, postupujte podle pokynů v tématu [Účty Azure Storage](../storage/common/storage-account-create.md).
 
 Na webu Azure Portal na stránce **služby Správce zařízení StorSimple** proveďte následující kroky.
 
@@ -207,4 +207,3 @@ Konektor DB9 se zdířkami je označený jako P1 a 3,5mm konektor jako P2.
 ## <a name="next-steps"></a>Další kroky
 * [Konfigurace řešení StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md)
 * [Použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md)
-

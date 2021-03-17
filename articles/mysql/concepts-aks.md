@@ -1,17 +1,17 @@
 ---
 title: Připojení ke službě Azure Kubernetes – Azure Database for MySQL
 description: Seznamte se s připojením služby Azure Kubernetes pomocí Azure Database for MySQL
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c4a5f5d792a60ed3fef07797fdbdfa0c9cfb8fe
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519860"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534326"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Připojení služby Azure Kubernetes a Azure Database for MySQL
 
@@ -43,5 +43,5 @@ az network nic list --resource-group nodeResourceGroup -o table
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření clusteru služby Azure Kubernetes Service](../aks/kubernetes-walkthrough.md)
-- Naučte se [instalovat WordPress z grafu Helm pomocí OSBA a Azure Database for MySQL](../aks/integrate-azure.md)
+- [Vytvoření clusteru služby Azure Kubernetes](../aks/kubernetes-walkthrough.md)
+- Naučte se [instalovat WordPress z grafu Helm pomocí OSBA a Azure Database for MySQL](../aks/index.yml)

@@ -2,20 +2,20 @@
 title: Nasměrování internetové domény na Traffic Manager – Azure Traffic Manager
 description: Tento článek vám pomůže nasměrovat název domény společnosti na název domény Traffic Manageru.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
-ms.author: rohink
-ms.openlocfilehash: 69bdf9a0e04b4d9c2a55f1c0f346d601830ded09
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: e0e2acfb0ec0068dcd08ae660e397f65e039a665
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053061"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183740"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Nasměrování internetové domény společnosti na doménu Azure Traffic Manageru
 
@@ -33,5 +33,5 @@ Všechny požadavky na provoz na *webové \. contoso.com* se přesměrují na *c
 ## <a name="next-steps"></a>Další kroky
 
 * [Metody směrování Traffic Manageru](traffic-manager-routing-methods.md)
-* [Traffic Manager – Zakázání, povolení nebo odstranění profilu](disable-enable-or-delete-a-profile.md)
-* [Traffic Manager – Zakázání nebo povolení koncového bodu](disable-or-enable-an-endpoint.md)
+* [Traffic Manager – Zakázání, povolení nebo odstranění profilu](./traffic-manager-manage-profiles.md)
+* [Traffic Manager – Zakázání nebo povolení koncového bodu](./traffic-manager-manage-endpoints.md)

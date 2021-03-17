@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c664d4859a306387b4eafa2f19ab5877ccf6eb1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81686963"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078999"
 ---
 # <a name="run-opc-publisher"></a>Spuštění vydavatele OPC
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Tento článek popisuje, jak spustit vydavatele služby AD Debug OPC Publisher. Také řeší požadavky na výkon a paměť.
 
@@ -367,7 +370,7 @@ Zkontrolujte [Docker Hub](https://hub.docker.com/_/microsoft-iotedge-opc-publish
 
 ## <a name="run-as-an-azure-iot-edge-module"></a>Spustit jako modul Azure IoT Edge
 
-Vydavatel OPC je připravený k použití jako modul [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) . Pokud používáte OPC Publisher jako modul IoT Edge, jediné podporované přenosové protokoly jsou **Amqp_Tcp_Only** a **Mqtt_Tcp_Only**.
+Vydavatel OPC je připravený k použití jako modul [Azure IoT Edge](../iot-edge/index.yml) . Pokud používáte OPC Publisher jako modul IoT Edge, jediné podporované přenosové protokoly jsou **Amqp_Tcp_Only** a **Mqtt_Tcp_Only**.
 
 Pokud chcete přidat vydavatele OPC jako modul do nasazení IoT Edge, v Azure Portal klikněte na nastavení IoT Hub a proveďte následující kroky:
 
@@ -375,7 +378,7 @@ Pokud chcete přidat vydavatele OPC jako modul do nasazení IoT Edge, v Azure Po
 1. Vyberte možnost **nastavit moduly**.
 1. V části **moduly nasazení** vyberte **přidat** a pak **IoT Edge modul**.
 1. Do pole **název** zadejte **Publisher**.
-1. Do pole **identifikátor URI image** zadejte`mcr.microsoft.com/iotedge/opc-publisher:<tag>`
+1. Do pole **identifikátor URI image** zadejte `mcr.microsoft.com/iotedge/opc-publisher:<tag>`
 1. Dostupné značky najdete v [Docker Hub](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) .
 1. Vložte následující JSON do pole **možnosti vytvoření kontejneru** :
 
@@ -519,7 +522,7 @@ Běhové prostředí má vliv na to, jak jsou certifikáty trvalé. Vyhněte se 
 
 - Spouštění nativně v systému Windows nemůžete použít úložiště certifikátů aplikace typu, `Directory` protože přístup k privátnímu klíči se nezdařil. V takovém případě použijte možnost `--at X509Store` .
 - Běží jako kontejner Docker pro Linux. úložiště certifikátů můžete namapovat na systém souborů hostitele pomocí možnosti Spustit jako pro Docker `-v <hostdirectory>:/appdata` . Tato možnost způsobí, že se certifikát v rámci aplikace bude trvalý.
-- Běží jako kontejner Docker pro Linux a pro certifikát aplikace chcete použít úložiště x509, použijte možnost Spustit jako Docker `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` a možnost aplikace.`--at X509Store`
+- Běží jako kontejner Docker pro Linux a pro certifikát aplikace chcete použít úložiště x509, použijte možnost Spustit jako Docker `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` a možnost aplikace. `--at X509Store`
 
 ## <a name="performance-and-memory-considerations"></a>Požadavky na výkon a paměť
 
@@ -531,9 +534,9 @@ Když spustíte OPC Publisher, budete muset znát požadavky na výkon a paměť
 
 Výkon a výkon jsou závislé na konfiguraci, kolik uzlů nakonfigurujete pro publikování. Zajistěte, aby splňovaly vaše požadavky následující parametry:
 
-- Interval odesílání IoT Hub:`--si`
-- Velikost zprávy IoT Hub (výchozí `1` ):`--ms`
-- Kapacita fronty monitorovaných položek:`--mq`
+- Interval odesílání IoT Hub: `--si`
+- Velikost zprávy IoT Hub (výchozí `1` ): `--ms`
+- Kapacita fronty monitorovaných položek: `--mq`
 
 `--mq`Parametr určuje horní mez kapacity interní fronty, která ukládá do vyrovnávací paměti všechna oznámení o změně hodnot uzlu OPC. Pokud Vydavatel OPC nemůže odesílat zprávy, aby IoT Hub dostatečně rychle, tato fronta ukládá oznámení do vyrovnávací paměti. Parametr nastaví počet oznámení, která lze ukládat do vyrovnávací paměti. Pokud vidíte, že počet položek v této frontě roste v testovacích běhůch, pak se vyhnete ztrátě zpráv, které byste měli:
 

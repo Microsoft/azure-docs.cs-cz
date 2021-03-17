@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/11/2020
+ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: 5283e20b6121dbdc3ce57587d188ad5ad0e1b6b9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041026"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660691"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Přidání připojení typu Site-to-site k virtuální síti s existujícím připojením brány VPN (Classic)
 
@@ -71,8 +71,8 @@ Pokud už máte síť VPN typu Site-to-site s bránou dynamického směrování,
 2. Nakonfigurujte novou bránu a vytvořte tunel VPN. Pokyny najdete v tématu [určení typu SKU a sítě VPN](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Ujistěte se, že jste zadali typ směrování jako dynamický.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Pokud nemáte virtuální síť typu Site-to-site:
-1. Pomocí těchto pokynů vytvořte virtuální síť Site-to-site: [vytvořte Virtual Network s připojením VPN typu Site-to-site](vpn-gateway-site-to-site-create.md).  
-2. Pomocí těchto pokynů nakonfigurujte bránu dynamického směrování: [nakonfigurujte VPN Gateway](vpn-gateway-configure-vpn-gateway-mp.md). Ujistěte se, že jste vybrali možnost **dynamické směrování** pro typ brány.
+1. Pomocí těchto pokynů vytvořte virtuální síť Site-to-site: [vytvořte Virtual Network s připojením VPN typu Site-to-site](./vpn-gateway-howto-site-to-site-classic-portal.md).  
+2. Pomocí těchto pokynů nakonfigurujte bránu dynamického směrování: [nakonfigurujte VPN Gateway](./vpn-gateway-howto-site-to-site-classic-portal.md). Ujistěte se, že jste vybrali možnost **dynamické směrování** pro typ brány.
 
 ## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. exportujte konfigurační soubor sítě.
 
@@ -174,7 +174,7 @@ Importujte soubor konfigurace sítě. Při importu tohoto souboru se změnami bu
 ## <a name="6-download-keys"></a>6. stažení klíčů
 Až budou vaše nové tunely přidané, pomocí rutiny Get-AzureVNetGatewayKey v PowerShellu Získejte předsdílené klíče IPsec/IKE pro každé tunelové propojení.
 
-Příklad:
+Například:
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"

@@ -9,32 +9,38 @@
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – portál
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
+      href: quickstart-load-balancer-standard-public-powershell.md
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – šablona ARM
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
     - name: Vytvoření interního nástroje pro vyrovnávání zatížení – portál
       href: quickstart-load-balancer-standard-internal-portal.md
+    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – PowerShell
+      href: quickstart-load-balancer-standard-internal-powershell.md
+    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure CLI
+      href: quickstart-load-balancer-standard-internal-cli.md
+    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – šablona ARM
+      displayName: Resource Manager
+      href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: Kurzy
   items:
-    - name: Interní nástroj pro vyrovnávání zatížení
-      items:
-        - name: Vytvoření interního nástroje pro vyrovnávání zatížení – portál
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Vytvoření interního nástroje pro vyrovnávání zatížení – šablona ARM
-          href: load-balancer-get-started-ilb-arm-template.md
     - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Vyrovnávání zatížení virtuálního počítače v konkrétní zóně dostupnosti
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Konfigurace přesměrování portů v Load Balanceru
       href: tutorial-load-balancer-port-forwarding-portal.md
+    - name: Nástroj pro vyrovnávání zatížení mezi oblastmi
+      items:
+        - name: Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi – portál
+          href: tutorial-cross-region-portal.md
+        - name: Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi – PowerShell
+          href: tutorial-cross-region-powershell.md
+        - name: Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi – Azure CLI
+          href: tutorial-cross-region-cli.md
 - name: ukázky
   items:
     - name: Azure CLI
@@ -43,11 +49,13 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
+    - name: Nástroj pro vyrovnávání zatížení mezi oblastmi
+      href: cross-region-overview.md
     - name: Co je nového?
       href: whats-new.md
     - name: Komponenty
       href: components.md
-    - name: Koncepty
+    - name: Algoritmus vyrovnávání zatížení
       href: concepts.md
     - name: Skladové položky
       href: skus.md
@@ -55,9 +63,11 @@
       items:
         - name: Sondy stavu
           href: load-balancer-custom-probe-overview.md
+        - name: Přehledy Azure Monitoru pro Load Balancer
+          href: load-balancer-insights.md
         - name: Diagnostika a metriky Load Balanceru úrovně Standard
           href: load-balancer-standard-diagnostics.md
-        - name: Protokoly služby Azure Monitor pro Load Balancer úrovně Basic
+        - name: Protokoly Azure Monitoru pro Load Balancer
           href: load-balancer-monitor-log.md
         - name: Získání metrik nástroje pro vyrovnávání zatížení s využitím REST
           href: load-balancer-query-metrics-rest-api.md
@@ -65,22 +75,36 @@
       href: load-balancer-ha-ports-overview.md
     - name: Několik front-endů
       href: load-balancer-multivip-overview.md
-    - name: Odchozí připojení
+    - name: SNAT pro odchozí připojení k internetu
       href: load-balancer-outbound-connections.md
+    - name: Konfigurace pravidel odchozích přenosů
+      href: outbound-rules.md
     - name: Časový limit resetování při nečinnosti TCP
       href: load-balancer-tcp-reset.md
     - name: Load Balancer úrovně Standard a zóny dostupnosti
       href: load-balancer-standard-availability-zones.md
-    - name: Integrované ovládací prvky zabezpečení
-      href: load-balancer-security-controls.md
+    - name: Konfigurace plovoucí IP adresy
+      href: load-balancer-floating-ip.md
+    - name: Režimy distribuce
+      href: distribution-mode-concepts.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Správa back-endových fondů
       href: backend-pool-management.md
     - name: Standard Load Balancer a Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
-- name: Postup
+    - name: Načtení informací pomocí Instance Metadata Service Azure
+      href: instance-metadata-service-load-balancer.md
+- name: Postupy
   items:
+    - name: Nastavení portálu
+      href: manage.md
     - name: Škálovací sady virtuálních počítačů
       items:
+        - name: Aktualizace nebo odstranění stávajícího Azure Load Balanceru využívaného škálovací sadou virtuálních počítačů
+          href: update-load-balancer-with-vm-scale-set.md
         - name: Použití s existujícím Azure Load Balancerem – portál
           href: configure-vm-scale-set-portal.md
         - name: Použití s existujícím Azure Load Balancerem – PowerShell
@@ -98,13 +122,13 @@
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
+          href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
-          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
+          href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
         - name: Šablona Azure Resource Manageru
-          href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
+          href: ../virtual-network/ipv6-configure-standard-load-balancer-template-json.md
           displayName: ARM
-    - name: Konfigurace časového limitu nečinnosti protokolu TCP nástroje Load Balancer
+    - name: Konfigurace časového limitu nečinnosti a resetování TCP
       href: load-balancer-tcp-idle-timeout.md
     - name: Konfigurace distribučního režimu Load Balanceru
       href: load-balancer-distribution-mode.md
@@ -128,14 +152,20 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí
       href: egress-only.md
+    - name: Načtení metadat pomocí Azure IMDS
+      href: howto-load-balancer-imds.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
           href: load-balancer-troubleshoot.md
-        - name: Řešení potíží s běžnými chybami nasazení
-          href: load-balancer-common-deployment-errors.md
-        - name: Řešení běžných problémů s odchozím připojením
+        - name: Stav sondy stavu
+          href: load-balancer-troubleshoot-health-probe-status.md
+        - name: Provoz back-endového fondu (virtuální počítač)
+          href: load-balancer-troubleshoot-backend-traffic.md
+        - name: Běžné problémy s odchozím připojením
           href: troubleshoot-outbound-connection.md
+        - name: Potíže se stavem prostředků a příchozí dostupností
+          href: troubleshoot-rhc.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů
@@ -155,10 +185,14 @@
     - name: Python
       href: /python/api/azure-mgmt-network/azure.mgmt.network.v2019_02_01.operations.loadbalancersoperations
     - name: REST
-      href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
+      href: /rest/api/load-balancer/loadbalancers
     - name: Šablona Resource Manageru
-      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers'
+      href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
+    - name: Běžné kódy chyb pro Azure Instance Metadata Service (IMDS)
+      href: troubleshoot-load-balancer-imds.md
+    - name: Běžné chyby nasazení
+      href: load-balancer-common-deployment-errors.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

@@ -1,18 +1,15 @@
 ---
 title: Optimalizace výkonu pro clustery Apache Kafka HDInsight
 description: Poskytuje přehled postupů pro optimalizaci Apache Kafka úloh v Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
-ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d24527efe6adce6f16b7c890f23c755545f5d5a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75494924"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935893"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Optimalizace výkonu pro clustery Apache Kafka HDInsight
 
@@ -50,7 +47,7 @@ Požadovaná konfigurace producent `acks` určí počet potvrzování vyžadovan
 
 Kafka výrobce je možné nakonfigurovat tak, aby před odesláním do zprostředkovatelů mohli Komprimovat zprávy. `compression.type`Nastavení určuje Kompresní kodek, který se má použít. Podporované kompresní kodeky jsou "gzip", "přichyceno" a "LZ4". Komprese je prospěšná a měla by se brát v úvahu, pokud dojde k omezení kapacity disku.
 
-Mezi dvěma běžně používanými kompresními kodeky `gzip` a `snappy` `gzip` má vyšší kompresní poměr, což vede ke snížení využití disku za cenu vyššího zatížení procesoru. `snappy`Kodek poskytuje méně komprese s nižšími nároky na výkon procesoru. Podle toho, který kodek se má použít, můžete rozhodnout na základě omezení na disku nebo procesoru zprostředkovatele. `gzip`může komprimovat data v poměru pěti krát větší než `snappy` .
+Mezi dvěma běžně používanými kompresními kodeky `gzip` a `snappy` `gzip` má vyšší kompresní poměr, což vede ke snížení využití disku za cenu vyššího zatížení procesoru. `snappy`Kodek poskytuje méně komprese s nižšími nároky na výkon procesoru. Podle toho, který kodek se má použít, můžete rozhodnout na základě omezení na disku nebo procesoru zprostředkovatele. `gzip` může komprimovat data v poměru pěti krát větší než `snappy` .
 
 Při použití komprese dat se zvýší počet záznamů, které lze uložit na disk. Může taky zvýšit nároky na procesor v případech, kdy dojde ke neshodě mezi formáty komprese používanými producentem a zprostředkovatelem. protože před zpracováním je nutné data zkomprimovat a pak je dekomprimovat.
 

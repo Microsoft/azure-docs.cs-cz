@@ -1,23 +1,23 @@
 ---
 title: Kurz – přidání parametrů do šablony
-description: Přidejte parametry do šablony Azure Resource Manager, abyste je mohli opakovaně používat.
+description: Přidejte parametry do šablony Azure Resource Manager (šablona ARM), abyste je mohli opakovaně používat.
 author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b1454106c4498f4519972633df8a871585d254f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e983f8499cbeaf400a8da6f48d7f6c8b75c4795a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497541"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107058"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Kurz: Přidání parametrů do šablony ARM
 
-V [předchozím kurzu](template-tutorial-add-resource.md)jste zjistili, jak do šablony přidat účet úložiště a nasadit ho. V tomto kurzu se naučíte, jak vylepšit šablonu Azure Resource Manager (ARM) přidáním parametrů. Dokončení tohoto kurzu trvá přibližně **14 minut** .
+V [předchozím kurzu](template-tutorial-add-resource.md)jste zjistili, jak do šablony přidat účet úložiště a nasadit ho. V tomto kurzu se naučíte, jak vylepšit šablonu Azure Resource Manager (šablonu ARM) přidáním parametrů. Dokončení tohoto kurzu trvá přibližně **14 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz o prostředcích](template-tutorial-add-resource.md), ale není to nutné.
 
@@ -29,11 +29,11 @@ Na konci předchozího kurzu má vaše šablona následující JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
-Možná jste si všimli, že došlo k potížím s touto šablonou. Název účtu úložiště je pevně kódovaný. Tuto šablonu můžete použít jenom k nasazení stejného účtu úložiště pokaždé, když. Chcete-li nasadit účet úložiště s jiným názvem, bude nutné vytvořit novou šablonu, což zjevně není praktický způsob, jak automatizovat nasazení.
+Možná jste si všimli, že došlo k potížím s touto šablonou. Název účtu úložiště je pevně zakódovaný. Danou šablonu proto můžete použít jen k nasazení stejného účtu úložiště. Chcete-li nasadit účet úložiště s jiným názvem, bude nutné vytvořit novou šablonu, což zjevně není praktický způsob, jak automatizovat nasazení.
 
 ## <a name="make-template-reusable"></a>Nastavit šablonu jako znovu
 
-Aby bylo možné šablonu znovu použít, přidejte parametr, který můžete použít k předání názvu účtu úložiště. Zvýrazněný kód JSON v následujícím příkladu ukazuje, co se změnilo ve vaší šabloně. Parametr **úložiště** je identifikován jako řetězec. Maximální délka je nastavená na 24 znaků, aby nedocházelo k příliš dlouhým názvům.
+Aby bylo možné šablonu znovu použít, přidejte parametr, který můžete použít k předání názvu účtu úložiště. Zvýrazněný kód JSON v následujícím příkladu ukazuje, co se změnilo ve vaší šabloně. `storageName`Parametr je identifikován jako řetězec. Maximální délka je nastavená na 24 znaků, aby nedocházelo k příliš dlouhým názvům.
 
 Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
@@ -43,7 +43,7 @@ Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
 Pojďme šablonu nasadit. Následující příklad nasadí šablonu pomocí Azure CLI nebo PowerShellu. Všimněte si, že jako jednu z hodnot v příkazu nasazení zadáte název účtu úložiště. Jako název účtu úložiště zadejte stejný název, který jste použili v předchozím kurzu.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili `templateFile` proměnnou na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -81,11 +81,11 @@ Tato možnost manipulace s aktualizacemi znamená, že vaše šablona může zah
 
 Parametry umožňují přizpůsobit nasazení tím, že zadáte hodnoty vhodné pro konkrétní prostředí. Můžete například předat různé hodnoty na základě toho, jestli nasazujete do prostředí pro vývoj, testování a produkci.
 
-Předchozí šablona vždycky nasadila Standard_LRS účet úložiště. Možná budete chtít, aby flexibilita nasadila různé SKU v závislosti na prostředí. Následující příklad ukazuje změny pro přidání parametru pro SKLADOVOU položku. Zkopírujte celý soubor a vložte ho do šablony.
+Předchozí šablona vždycky nasadila **Standard_LRS** účet úložiště. Možná budete chtít, aby flexibilita nasadila různé SKU v závislosti na prostředí. Následující příklad ukazuje změny pro přidání parametru pro SKLADOVOU položku. Zkopírujte celý soubor a vložte ho do šablony.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
-Parametr **storageSKU** má výchozí hodnotu. Tato hodnota se používá v případě, že při nasazení není zadána hodnota. Obsahuje také seznam povolených hodnot. Tyto hodnoty odpovídají hodnotám, které jsou potřeba k vytvoření účtu úložiště. Nechcete, aby uživatelé šablony předávali do SKU, které nefungují.
+`storageSKU`Parametr má výchozí hodnotu. Tato hodnota se používá v případě, že při nasazení není zadána hodnota. Obsahuje také seznam povolených hodnot. Tyto hodnoty odpovídají hodnotám, které jsou potřeba k vytvoření účtu úložiště. Nechcete, aby uživatelé šablony předávali do SKU, které nefungují.
 
 ## <a name="redeploy-template"></a>Opětovné nasazení šablony
 
@@ -114,7 +114,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, použijte k zobrazení protokolů ladění přepínač **ladění** s příkazem nasazení.  Můžete také použít **podrobný** přepínač k zobrazení úplných protokolů ladění.
+> Pokud se nasazení nepovedlo, pomocí `verbose` přepínače Získejte informace o vytvářených prostředcích. K `debug` získání dalších informací pro ladění použijte přepínač.
 
 Chcete-li zobrazit flexibilitu šablony, nasaďte se znovu. Tentokrát nastavte parametr SKU na **Standard_GRS**. Můžete buď předat nový název a vytvořit jiný účet úložiště, nebo použít stejný název k aktualizaci stávajícího účtu úložiště. Obě možnosti fungují.
 

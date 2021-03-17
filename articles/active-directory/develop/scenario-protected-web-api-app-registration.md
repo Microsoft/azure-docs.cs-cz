@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dcfedf2cceddb59d456d421c4846f3cd252a65b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518270"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651860"
 ---
 # <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: registrace aplikace
 
@@ -27,7 +27,7 @@ Běžné kroky k registraci aplikace najdete v tématu [rychlý Start: registrac
 
 ## <a name="accepted-token-version"></a>Verze přijatého tokenu
 
-Koncový bod platformy Microsoft Identity může vydávat tokeny v 1.0 a tokeny v 2.0. Další informace o těchto tokenech najdete v tématu [přístupové tokeny](access-tokens.md).
+Platforma identity Microsoftu může vydávat tokeny v 1.0 a tokeny v 2.0. Další informace o těchto tokenech najdete v tématu [přístupové tokeny](access-tokens.md).
 
 Verze tokenu, kterou vaše rozhraní API může přijmout, závisí na **podporovaných typech účtů** při vytváření registrace aplikace webového rozhraní api v Azure Portal.
 
@@ -44,7 +44,7 @@ Po vytvoření aplikace můžete zjistit nebo změnit verzi přijatého tokenu p
 1. Pokud jste změnili verzi tokenu, vyberte **Uložit**.
 
 > [!NOTE]
-> Webové rozhraní API určuje, která verze tokenu přijímá. Když klient požádá o token webového rozhraní API z koncového bodu Microsoft Identity Platform (v 2.0), klient získá token, který indikuje, kterou verzi tokenu webové rozhraní API přijímá.
+> Webové rozhraní API určuje, která verze tokenu přijímá. Když klient požádá o token webového rozhraní API z platformy Microsoft identity, klient získá token, který indikuje, kterou verzi tokenu webové rozhraní API přijímá.
 
 ## <a name="no-redirect-uri"></a>Žádný identifikátor URI pro přesměrování
 
@@ -58,17 +58,17 @@ Další nastavení specifická pro webová rozhraní API jsou vystavená rozhran
 
 Rozsahy mají obvykle formu `resourceURI/scopeName` . Pro Microsoft Graph mají obory zkratky. Například `User.Read` je zástupce pro `https://graph.microsoft.com/user.read` .
 
-Během registrace aplikace je potřeba definovat tyto parametry:
+Během registrace aplikace definujte tyto parametry:
 
 - Identifikátor URI prostředku
 - Jeden nebo více oborů
 - Jedna nebo více aplikačních rolí
 
-Portál pro registraci aplikací standardně doporučuje použít identifikátor URI prostředku `api://{clientId}` . Tento identifikátor URI je jedinečný, ale není čitelný pro lidské čtení. Pokud identifikátor URI změníte, ujistěte se, že je nová hodnota jedinečná. Portál pro registraci aplikací bude mít jistotu, že používáte [nakonfigurovanou doménu vydavatele](howto-configure-publisher-domain.md) .
+Portál pro registraci aplikací standardně doporučuje použít identifikátor URI prostředku `api://{clientId}` . Tento identifikátor URI je jedinečný, ale není čitelný pro lidské čtení. Pokud identifikátor URI změníte, ujistěte se, že je nová hodnota jedinečná. Portál pro registraci aplikací bude mít jistotu, že používáte [nakonfigurovanou doménu vydavatele](howto-configure-publisher-domain.md).
 
 Pro klientské aplikace se obory zobrazují jako *delegovaná oprávnění* a role aplikace se jako oprávnění aplikace pro vaše webové rozhraní API zobrazují jako *oprávnění aplikace* .
 
-Obory se také zobrazí v okně pro vyjádření souhlasu, které jsou prezentovány uživatelům vaší aplikace. Proto je nutné zadat odpovídající řetězce, které popisují rozsah:
+Obory se také zobrazí v okně pro vyjádření souhlasu, které jsou prezentovány uživatelům vaší aplikace. Proto zadejte odpovídající řetězce, které popisují rozsah:
 
 - Jak je vidět uživatel.
 - Jak je vidět správce klienta, který může udělit souhlas správce.
@@ -99,7 +99,7 @@ V této části se dozvíte, jak zaregistrovat chráněné webové rozhraní API
 
 #### <a name="exposing-application-permissions-app-roles"></a>Vystavení oprávnění aplikace (aplikační role)
 
-Chcete-li zveřejnit oprávnění aplikace, je nutné upravit manifest.
+Chcete-li zveřejnit oprávnění aplikace, upravte manifest.
 
 1. V registraci aplikace pro vaši aplikaci vyberte možnost **manifest**.
 1. Chcete-li upravit manifest, vyhledejte `appRoles` nastavení a přidejte aplikační role. Definice rolí jsou k dispozici v následujícím ukázkovém bloku JSON.
@@ -112,7 +112,7 @@ Následující příklad ukazuje obsah `appRoles` , kde hodnota `id` může být
 
 ```json
 "appRoles": [
-    {
+  {
     "allowedMemberTypes": [ "Application" ],
     "description": "Accesses the TodoListService-Cert as an application.",
     "displayName": "access_as_application",
@@ -121,7 +121,7 @@ Následující příklad ukazuje obsah `appRoles` , kde hodnota `id` může být
     "lang": null,
     "origin": "Application",
     "value": "access_as_application"
-    }
+  }
 ],
 ```
 
@@ -132,7 +132,7 @@ Webové rozhraní API kontroluje aplikační roli. Tato role představuje způso
 Přidání tohoto zvýšeného zabezpečení:
 
 1. Přejít na stránku **Přehled** aplikace pro registraci vaší aplikace
-1. **V části spravovaná aplikace v místním adresáři**vyberte odkaz s názvem vaší aplikace. Popisek tohoto výběru může být oříznutý. Například se může zobrazit **spravovaná aplikace v...**
+1. **V části spravovaná aplikace v místním adresáři** vyberte odkaz s názvem vaší aplikace. Popisek tohoto výběru může být oříznutý. Například se může zobrazit **spravovaná aplikace v...**
 
    > [!NOTE]
    >
@@ -153,5 +153,4 @@ Přidání tohoto zvýšeného zabezpečení:
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Konfigurace kódu aplikace](scenario-protected-web-api-app-configuration.md)
+Přejděte k dalšímu článku v tomto scénáři, [Konfigurace kódu aplikace](scenario-protected-web-api-app-configuration.md).

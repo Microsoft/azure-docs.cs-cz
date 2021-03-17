@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515443"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967087"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Použití služby StorSimple Device Manager ke správě virtuálního pole StorSimple
 ![průběh procesu nastavení](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -34,7 +34,7 @@ Po přečtení tohoto článku budete umět:
 * Správa virtuálního pole StorSimple prostřednictvím služby StorSimple Device Manager
 
 > [!NOTE]
-> Pokud chcete zobrazit možnosti správy dostupné pro zařízení řady StorSimple 8000, přečtěte si část [použití služby StorSimple Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
+> Pokud chcete zobrazit možnosti správy dostupné pro zařízení řady StorSimple 8000, přečtěte si část [použití služby StorSimple Manager ke správě zařízení StorSimple](./storsimple-8000-manager-service-administration.md).
 > 
 > 
 
@@ -63,7 +63,7 @@ Chcete-li získat další informace o jednotlivých pracovních postupech, klikn
 | Informace o účtech úložiště</br>Přidat účet úložiště</br>Úprava účtu úložiště</br>Odstranění účtu úložiště |[Správa účtů úložiště pro virtuální pole StorSimple](storsimple-virtual-array-manage-storage-accounts.md) |
 | O záznamech řízení přístupu</br>Přidat nebo upravit záznam řízení přístupu </br>Odstranění záznamu řízení přístupu |[Správa záznamů řízení přístupu pro virtuální pole StorSimple](storsimple-virtual-array-manage-acrs.md) |
 | Zobrazení podrobností o úloze |[Správa úloh virtuálních polí StorSimple](storsimple-virtual-array-manage-jobs.md) |
-| Konfigurace nastavení výstrah</br>Zobrazování oznámení o výstrahách</br>Správa výstrah</br>Zkontrolovat výstrahy |[Zobrazení a správa výstrah pro virtuální pole StorSimple](storsimple-virtual-array-manage-alerts.md) |
+| Konfigurace nastavení upozornění</br>Zobrazování oznámení o výstrahách</br>Správa výstrah</br>Procházení výstrah |[Zobrazení a správa výstrah pro virtuální pole StorSimple](storsimple-virtual-array-manage-alerts.md) |
 | Úprava hesla správce zařízení |[Změna hesla správce zařízení StorSimple Virtual Array](storsimple-virtual-array-change-device-admin-password.md) |
 | Instalovat aktualizace softwaru |[Aktualizace virtuálního pole](storsimple-virtual-array-install-update.md) |
 
@@ -78,4 +78,3 @@ Chcete-li získat další informace o jednotlivých pracovních postupech, klikn
 
 ## <a name="next-steps"></a>Další kroky
 Informace o webovém uživatelském rozhraní a jeho použití najdete [v tématu použití webového uživatelského rozhraní StorSimple ke správě virtuálních polí StorSimple](storsimple-ova-web-ui-admin.md).
-

@@ -4,19 +4,21 @@ description: Tento článek popisuje různé možnosti, které jsou k dispozici 
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 23f99dc5c648948ce07f1b40106667d24906328a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7021367e1230573343ddf57ccd399d998ad5280e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236790"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339270"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Čtení z kanálu změn služby Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-S kanálem pro změnu Azure Cosmos DB můžete pracovat pomocí modelu push nebo modelu Pull. Při použití modelu nabízených oznámení se server (kanál změn) doručí na práci klienta, který má obchodní logiku pro zpracování této práce. Složitá kontrola práce a ukládání stavu pro poslední zpracovávanou práci se však zpracovává na serveru.
+S kanálem pro změnu Azure Cosmos DB můžete pracovat pomocí modelu push nebo modelu Pull. V případě modelu push přenáší procesor změn na klienta, který má obchodní logiku pro zpracování této práce. Složitá kontrola práce a ukládání stavu pro poslední zpracovávanou práci je ale zpracována v rámci procesoru Change feed.
 
 U modelu Pull musí klient vyžádat si práci ze serveru. Klient, v tomto případě má nejen obchodní logiku pro zpracování práce, ale také ukládá stav pro poslední zpracovávanou práci, zpracovává vyrovnávání zatížení mezi více klienty zpracovávajících práci paralelně a zpracovává chyby.
 
@@ -27,7 +29,7 @@ Při čtení z kanálu změn Azure Cosmos DB obvykle doporučujeme použít mode
 - Vyrovnávání zatížení mezi více klienty, které spotřebovávají změny. Například pokud jeden klient nemůže uchovávat změny zpracování a další má dostupnou kapacitu.
 - [Zpracování chyb](change-feed-processor.md#error-handling). Například automatické opakování neúspěšných změn, které nebyly správně zpracovány po neošetřené výjimce v kódu nebo přechodný problém sítě.
 
-Většina scénářů, které používají kanál změny Azure Cosmos DB, bude používat jednu z možností modelu nabízených oznámení. Existují však situace, kdy můžete chtít další řízení nízké úrovně pro model Pull. Tady jsou některé z nich:
+Většina scénářů, které používají kanál změny Azure Cosmos DB, bude používat jednu z možností modelu nabízených oznámení. Existují však situace, kdy můžete chtít další řízení nízké úrovně pro model Pull. Mezi ně patří:
 
 - Čtení změn z konkrétního klíče oddílu
 - Řízení tempa, ve kterém klient přijímá změny ke zpracování
@@ -39,7 +41,7 @@ Použití modelu nabízeného oznámení je nejjednodušší způsob, jak číst
 
 ### <a name="azure-functions"></a>Azure Functions
 
-Azure Functions je nejjednodušší volbou v případě, že právě začínáte používat kanál změn. Vzhledem k jednoduchosti je to také doporučená možnost pro většinu případů použití kanálu změn. Když vytvoříte aktivační událost Azure Functions pro Azure Cosmos DB, vyberete kontejner, který se má připojit, a funkce Azure se aktivuje, kdykoli dojde ke změně v kontejneru. Vzhledem k tomu, že Azure Functions používá procesor změn v kanálu na pozadí, automaticky parallelizes změnu zpracování v [oddílech](partition-data.md)kontejneru.
+Azure Functions je nejjednodušší volbou v případě, že právě začínáte používat kanál změn. Vzhledem k jednoduchosti je to také doporučená možnost pro většinu případů použití kanálu změn. Když vytvoříte aktivační událost Azure Functions pro Azure Cosmos DB, vyberete kontejner, který se má připojit, a funkce Azure se aktivuje, kdykoli dojde ke změně v kontejneru. Vzhledem k tomu, že Azure Functions používá procesor změn v kanálu na pozadí, automaticky parallelizes změnu zpracování v [oddílech](partitioning-overview.md)kontejneru.
 
 Vývoj v prostředí Azure Functions je jednoduchý a může být rychlejší než nasazení procesoru Change feed. Aktivační události se dají vytvořit pomocí Azure Functionsového portálu nebo programově pomocí sad SDK. Visual Studio a VS Code poskytují podporu pro psaní Azure Functions a můžete dokonce používat rozhraní příkazového řádku Azure Functions pro vývoj pro různé platformy. Můžete napsat a ladit kód na ploše a pak nasadit funkci jediným kliknutím. Další informace najdete v tématu [výpočetní databáze bez serveru s využitím Azure Functions](serverless-computing-database.md) a [používáním informačního kanálu se Azure Functionsmi](change-feed-functions.md) články.
 
@@ -68,7 +70,7 @@ Můžete paralelizovat zpracování změn napříč více klienty, stejně jako 
 Pro model Pull není k dispozici žádná předdefinovaná "záruka na doručení" alespoň jednou ". Model pro vyžádání obsahu poskytuje řízení nízké úrovně pro rozhodování o tom, jakým způsobem chcete zpracovávat chyby.
 
 > [!NOTE]
-> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.9.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
+> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Změna kanálu rozhraní API pro Cassandra a MongoDB
 

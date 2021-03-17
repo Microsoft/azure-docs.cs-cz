@@ -1,24 +1,19 @@
 ---
 title: Přehled agenta virtuálního počítače Azure
 description: Přehled agenta virtuálního počítače Azure
-services: virtual-machines-windows
-documentationcenter: virtual-machines
-author: mimckitt
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
-ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.author: amjads
+author: amjads1
+ms.collection: windows
 ms.date: 07/20/2019
-ms.author: akjosh
-ms.openlocfilehash: 42470df5391a976e8023467758d2a3fd0890883e
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 1b1766c0385303993af436911391a1c858bbff61
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041472"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547454"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled agenta virtuálního počítače Azure
 Agent virtuálního počítače Microsoft Azure (agent virtuálního počítače) je zabezpečený a odlehčený proces, který spravuje interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli při povolování a provádění rozšíření virtuálních počítačů Azure. Rozšíření virtuálních počítačů umožňují konfiguraci po nasazení virtuálního počítače, jako je instalace a konfigurace softwaru. Rozšíření virtuálních počítačů také umožňují funkce pro obnovení, jako je resetování hesla pro správu virtuálního počítače. Bez agenta virtuálního počítače Azure nejde spustit rozšíření virtuálních počítačů.
@@ -70,11 +65,11 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Agent virtuálního počítače s Windows potřebuje ke spuštění aspoň Windows Server 2008 (64), přičemž rozhraní .NET Framework 4,0. Podívejte [se na podporu minimálních verzí pro agenty virtuálních počítačů v Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) .
+- Agent virtuálního počítače s Windows potřebuje ke spuštění aspoň Windows Server 2008 SP2 (64-bit) a .NET Framework 4,0. Podívejte [se na podporu minimálních verzí pro agenty virtuálních počítačů v Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
 - Ujistěte se, že váš virtuální počítač má přístup k IP adrese 168.63.129.16. Další informace najdete v tématu [co je IP adresa 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
-- Zajistěte, aby byl v hostovaném virtuálním počítači povolený protokol DHCP. Tato možnost je nutná k získání adresy hostitele nebo prostředků infrastruktury z protokolu DHCP pro agenta virtuálního počítače IaaS a rozšíření pro fungování. Pokud potřebujete statickou privátní IP adresu, měli byste ji nakonfigurovat přes Azure Portal nebo PowerShell a zajistěte, aby byla ve virtuálním počítači povolená možnost DHCP. [Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o nastavení statické IP adresy pomocí PowerShellu.
+- Zajistěte, aby byl v hostovaném virtuálním počítači povolený protokol DHCP. Tato možnost je nutná k získání adresy hostitele nebo prostředků infrastruktury z protokolu DHCP pro agenta virtuálního počítače IaaS a rozšíření pro fungování. Pokud potřebujete statickou privátní IP adresu, měli byste ji nakonfigurovat přes Azure Portal nebo PowerShell a zajistěte, aby byla ve virtuálním počítači povolená možnost DHCP. [Přečtěte si další informace](../../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o nastavení statické IP adresy pomocí PowerShellu.
 
 
 ## <a name="detect-the-vm-agent"></a>Zjištění agenta virtuálního počítače
@@ -87,7 +82,7 @@ Modul Azure Resource Manager PowerShellu se dá použít k načtení informací 
 Get-AzVM
 ```
 
-Následující zhuštěný příklad výstupu ukazuje vlastnost *ProvisionVMAgent* vnořenou v *OSProfile*. Tato vlastnost slouží k určení, jestli je na virtuálním počítači nasazený agent virtuálního počítače:
+Následující zhuštěný příklad výstupu ukazuje vlastnost *ProvisionVMAgent* vnořenou v rámci `OSProfile` . Tato vlastnost slouží k určení, jestli je na virtuálním počítači nasazený agent virtuálního počítače:
 
 ```powershell
 OSProfile                  :
@@ -115,10 +110,19 @@ Když se přihlásíte k virtuálnímu počítači s Windows, můžete ke kontro
 
 
 ## <a name="upgrade-the-vm-agent"></a>Upgrade agenta virtuálního počítače
-Agent virtuálního počítače Azure pro Windows se automaticky upgraduje na Image nasazené z webu Azure Marketplace. Když se do Azure nasadí nové virtuální počítače, dostanou nejnovějšího agenta virtuálního počítače při zřizování virtuálních počítačů. Pokud jste agenta nainstalovali ručně nebo nasazujete vlastní image virtuálních počítačů, budete muset ručně aktualizovat, aby se při vytváření image zahrnul nový agent virtuálního počítače.
+Agent virtuálního počítače Azure pro Windows se automaticky upgraduje na Image nasazené z Azure Marketplace. Když se do Azure nasadí nové virtuální počítače, dostanou nejnovějšího agenta virtuálního počítače při zřizování virtuálních počítačů. Pokud jste agenta nainstalovali ručně nebo nasazujete vlastní image virtuálních počítačů, budete muset ručně aktualizovat, aby se při vytváření image zahrnul nový agent virtuálního počítače.
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Kolekce automatických protokolů agenta hosta systému Windows
 Agent hosta systému Windows obsahuje funkci pro automatické shromáždění některých protokolů. Tato funkce je řadičem procesu CollectGuestLogs.exe. Existuje jak pro PaaS Cloud Services, tak pro IaaS Virtual Machines a jejím cílem je rychle & automaticky shromažďovat některé diagnostické protokoly z virtuálního počítače, aby se mohly použít pro offline analýzu. Shromážděné protokoly jsou protokoly událostí, protokoly operačního systému, protokoly Azure a některé klíče registru. Vytvoří soubor ZIP, který se přenese na hostitele virtuálního počítače. Tento soubor ZIP si pak můžete prověřit technickými týmy a odborníky na podporu a prozkoumat problémy na žádost zákazníka, který vlastní virtuální počítač.
+
+## <a name="guest-agent-and-osprofile-certificates"></a>Agent hosta a certifikáty OSProfile
+Agent virtuálního počítače Azure zodpovídá za instalaci certifikátů, na které odkazuje virtuální počítač `OSProfile` nebo sada škálování virtuálního počítače. Pokud tyto certifikáty z konzoly MMC certifikáty v rámci hostovaného virtuálního počítače odeberete ručně, očekává se, že Agent hosta je přidá zpátky.
+Chcete-li certifikát trvale odebrat, bude nutné jej odebrat z `OSProfile` portálu a pak jej odebrat z hostovaného operačního systému.
+
+U virtuálního počítače odeberte certifikáty z nástroje pomocí [Remove-AzVMSecret]() `OSProfile` .
+
+Další informace o certifikátech sady škálování virtuálních počítačů najdete v tématu [Virtual Machine Scale Sets-návody odebrání zastaralých certifikátů?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates)
+
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o rozšíření virtuálních počítačů najdete v tématu [Přehled rozšíření a funkcí virtuálních počítačů Azure](overview.md).

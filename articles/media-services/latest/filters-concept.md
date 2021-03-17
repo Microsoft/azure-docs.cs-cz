@@ -3,30 +3,32 @@ title: Definování filtrů v Azure Media Services
 description: V tomto tématu se dozvíte, jak vytvořit filtry, aby je klient mohl používat ke streamování konkrétních oddílů datového proudu. Media Services vytvoří dynamické manifesty pro dosažení tohoto selektivního streamování.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 05/23/2019
-ms.author: juliako
-ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023224"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89291544"
 ---
 # <a name="filters"></a>Filtry
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Při doručování obsahu zákazníkům (živé události streamování nebo video na vyžádání) může váš klient potřebovat větší flexibilitu než popis, který je popsaný v souboru manifestu výchozího prostředku. Azure Media Services nabízí [dynamické manifesty](filters-dynamic-manifest-overview.md) založené na předem definovaných filtrech. 
 
 Filtry jsou pravidla na straně serveru, která zákazníkům umožňují provádět například tyto akce: 
 
-- Přehrát jenom část videa (místo přehrávání celého videa) Příklad:
+- Přehrát jenom část videa (místo přehrávání celého videa) Například:
   - Snižte manifest pro zobrazení dílčího klipu živé události ("filtrování dílčích klipů") nebo
   - Ořízne začátek videa ("ořezávání videa").
 - Doručovat pouze zadané verze a/nebo zadané stopy jazyka podporované zařízením, které se používá k přehrání obsahu ("filtrování verzí"). 

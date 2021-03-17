@@ -3,7 +3,7 @@ title: Ladit aplikace proxy aplikací – Azure Active Directory | Microsoft Doc
 description: Problémy s laděním u aplikací proxy aplikace Azure Active Directory (Azure AD).
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2066030b04feae4e50fee3442a663209801d5875
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555051"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253387"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Ladění problémů s aplikací Proxy aplikací 
 
@@ -39,12 +39,12 @@ Tento vývojový diagram vás provede kroky pro ladění některých nejběžně
 
 ![Vývojový diagram znázorňující kroky pro ladění aplikace](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-| Krok | Akce | Description |
+| Krok | Akce | Popis |
 |---------|---------|---------|
 |1 | Otevřete prohlížeč, přejděte do aplikace a zadejte svoje přihlašovací údaje. | Zkuste použít přihlašovací údaje pro přihlášení k aplikaci a vyhledat všechny chyby související s uživatelem, třeba [Tato podniková aplikace není dostupná](application-proxy-sign-in-bad-gateway-timeout-error.md). |
 |2 | Ověření přiřazení uživatele k aplikaci | Ujistěte se, že váš uživatelský účet má oprávnění pro přístup k aplikaci zevnitř podnikové sítě, a pak otestujte přihlášení k aplikaci pomocí kroků v části [test aplikace](application-proxy-add-on-premises-application.md#test-the-application). Pokud se problémy s přihlášením trvají, přečtěte si téma [jak řešit chyby při přihlašování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).  |
 |3 | Otevřete prohlížeč a pokuste se získat přístup k aplikaci. | Pokud se zobrazí chyba okamžitě, zkontrolujte, jestli je proxy aplikací správně nakonfigurovaný. Podrobnosti o konkrétních chybových zprávách najdete v tématu [řešení potíží se službou Application proxy a chybovými zprávami](application-proxy-troubleshoot.md).  |
-|4 | Projděte si vlastní nastavení domény nebo odstraňte chybu. | Pokud se stránka vůbec nezobrazuje, ujistěte se, že je vaše vlastní doména správně nakonfigurovaná, a to tak, že zkontrolujete [práci s vlastními doménami](application-proxy-configure-custom-domain.md).<br></br>Pokud se stránka nenačte a zobrazí se chybová zpráva, vyřešte problém pomocí odkazu na [řešení potíží s proxy aplikací a chybové zprávy](application-proxy-troubleshoot.md). <br></br>Pokud se zobrazí chybová zpráva delší než 20 sekund, může dojít k potížím s připojením. Přejít na článek řešení potíží [konektory proxy aplikace pro ladění](application-proxy-debug-connectors.md) .  |
+|4 | Projděte si vlastní nastavení domény nebo odstraňte chybu. | Pokud se stránka vůbec nezobrazuje, ujistěte se, že je vaše vlastní doména správně nakonfigurovaná, a to tak, že zkontrolujete [práci s vlastními doménami](application-proxy-configure-custom-domain.md).<br></br>Pokud se stránka nenačte a zobrazí se chybová zpráva, vyřešte problém pomocí odkazu na  [řešení potíží s proxy aplikací a chybové zprávy](application-proxy-troubleshoot.md). <br></br>Pokud se zobrazí chybová zpráva delší než 20 sekund, může dojít k potížím s připojením. Přejít na článek řešení potíží [konektory proxy aplikace pro ladění](application-proxy-debug-connectors.md) .  |
 |5 | Pokud problémy přetrvávají, přejdete na ladění konektoru. | Mohlo dojít k potížím s připojením mezi proxy serverem a konektorem nebo mezi konektorem a back-end. Přejít na článek řešení potíží [konektory proxy aplikace pro ladění](application-proxy-debug-connectors.md) . |
 |6 | Publikování všech prostředků, kontroly vývojářských nástrojů v prohlížeči a oprava odkazů | Ujistěte se, že cesta publikování zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Podrobnosti najdete v tématu [Přidání místní aplikace do služby Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). <br></br>Použijte vývojářské nástroje v prohlížeči (nástroje F12 v aplikaci Internet Explorer nebo Microsoft Edge) a vyhledejte problémy publikování, jak je popsáno na [stránce aplikace. nezobrazuje se správně](application-proxy-page-appearance-broken-problem.md). <br></br>Kontrola možností pro řešení přerušených odkazů v [odkazech na stránce nefunguje](application-proxy-page-links-broken-problem.md). |
 |7 | Kontrolovat latenci sítě | Pokud se stránka načítá pomalu, přečtěte si informace o způsobech minimalizace latence sítě v části [požadavky na snížení latence](application-proxy-network-topology.md#considerations-for-reducing-latency). | 

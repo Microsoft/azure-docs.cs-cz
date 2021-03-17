@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 465adbb71abaa45160399ecba2ebfb692a8307c2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: 60a07145e38c19f577ad9864efb599e7b244aa83
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120673"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653707"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Jak nakonfigurovat jednotné přihlašování pro aplikaci
 
@@ -40,6 +41,6 @@ Informace o iOS najdete [v tématu povolení jednotného přihlašování mezi a
 
 [Integrace aplikací do AzureAD](./quickstart-register-app.md)<br>
 
-[Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform](./v2-permissions-and-consent.md)<br>
+[Oprávnění a souhlas na platformě Microsoft identity](./v2-permissions-and-consent.md)<br>
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

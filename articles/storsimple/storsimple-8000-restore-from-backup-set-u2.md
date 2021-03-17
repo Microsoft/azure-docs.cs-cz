@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527825"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950723"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovení svazku StorSimple ze zálohovacího skladu
 
@@ -59,11 +59,11 @@ Pro obnovení na základě heatmapu se vztahují následující upozornění:
 
 Rutiny Windows PowerShellu se v Update 4 dají použít k dotazování na spouštění úloh pro vystavování, zrušení úlohy pro dehydrataci a získání stavu úlohy pro dosazování.
 
-* `Get-HcsRehydrationJob`– Tato rutina načte stav úlohy opětovného nasazování. Pro jeden svazek se aktivuje jediná úloha pro vysazování.
+* `Get-HcsRehydrationJob` – Tato rutina načte stav úlohy opětovného nasazování. Pro jeden svazek se aktivuje jediná úloha pro vysazování.
 
-* `Set-HcsRehydrationJob`– Tato rutina umožňuje pozastavit, zastavit a obnovit úlohu opětovného nasazování, když probíhá dosazování.
+* `Set-HcsRehydrationJob` – Tato rutina umožňuje pozastavit, zastavit a obnovit úlohu opětovného nasazování, když probíhá dosazování.
 
-Další informace o rutinách pro vysazování najdete v referenčních informacích k [rutinám Windows PowerShellu pro StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+Další informace o rutinách pro vysazování najdete v referenčních informacích k [rutinám Windows PowerShellu pro StorSimple](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 
 Při automatickém vysazování se očekává obvykle vyšší výkon přechodného čtení. Skutečná velikost vylepšení závisí na různých faktorech, jako je vzor přístupu, četnost změn dat a datový typ. 
 
@@ -115,7 +115,7 @@ K obnovení svazku StorSimple z konkrétní zálohy můžete použít okno **kat
    
 4. Přejděte zpět na kartu **katalog záloh** a vyberte zálohovací sklad. Klikněte pravým tlačítkem a potom v místní nabídce vyberte **obnovit**.
 
-    ![Seznam zálohovacích skladů](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Seznam zálohovacích skladů 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. Zobrazí se výzva k potvrzení. Zkontrolujte informace o obnovení a pak zaškrtněte políčko potvrzení.
    
@@ -123,7 +123,7 @@ K obnovení svazku StorSimple z konkrétní zálohy můžete použít okno **kat
 
 7. Klikněte na **obnovit**. Tím se spustí úloha obnovení, kterou můžete zobrazit pomocí přístupu na stránku **úlohy** .
 
-   ![Stránka potvrzení](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![Stránka s potvrzením 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. Po dokončení obnovení ověřte, že obsah svazků je nahrazen svazky ze zálohy.
 
@@ -137,4 +137,3 @@ Chcete-li dokončit operaci obnovení, zaveďte svazek do režimu offline na hos
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [Spravovat StorSimple svazky](storsimple-8000-manage-volumes-u2.md).
 * Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
-

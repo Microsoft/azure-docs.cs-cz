@@ -1,0 +1,184 @@
+- name: Dokumentace pro podnikové uživatele
+  href: index.yml
+- name: Přehled
+  items:
+    - name: 'Uživatelé, skupiny, licencování a role Azure AD'
+      href: directory-overview-user-model.md
+- name: Rychlé starty
+  items:
+    - name: Přidání uživatelů do Azure AD
+      href: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - name: Přiřazení licencí k uživatelům
+      href: ../fundamentals/license-users-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - name: Nastavení konce platnosti skupiny
+      href: groups-quickstart-expiration.md
+    - name: Nastavení zásad pojmenování skupin
+      href: groups-quickstart-naming-policy.md
+- name: Kurzy
+  items:
+    - name: Vytvoření dynamické skupiny
+      href: groups-dynamic-tutorial.md
+- name: Koncepty
+  expanded: true
+  items:
+    - name: Porovnání výchozích uživatelských oprávnění
+      href: ../fundamentals/users-default-permissions.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - name: Základy licencování na základě skupin
+      href: ../fundamentals/active-directory-licensing-whatis-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - name: Správa přístupu s využitím skupin
+      href: ../fundamentals/active-directory-manage-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- name: Návody
+  expanded: true
+  items:
+    - name: Správa uživatelů
+      items:
+        - name: Vytvoření uživatelů
+          href: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Hromadné vytváření uživatelů
+          href: users-bulk-add.md
+        - name: Správa uživatelských profilů
+          href: ../fundamentals/active-directory-users-profile-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Stahování informací o uživatelích
+          href: users-bulk-download.md
+        - name: Sdílení uživatelských účtů
+          href: users-sharing-accounts.md
+        - name: Přiřazení uživatelů k rolím správce
+          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Vylepšení správy uživatelů
+          href: users-search-enhanced.md
+        - name: Hromadné odstraňování uživatelů
+          href: users-bulk-delete.md
+        - name: Obnovit odstraněného uživatele
+          href: ../fundamentals/active-directory-users-restore.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Hromadné obnovování uživatelů
+          href: users-bulk-restore.md
+        - name: Odvolání přístupu uživatele
+          href: users-revoke-access.md
+        - name: Zavření účtu v nespravovaném adresáři
+          href: users-close-account.md
+        - name: Přidání uživatelů typu host
+          href: ../external-identities/what-is-b2b.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Přiřazení rolí uživatelům typu host
+          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Omezení přístupu uživatelů typu host
+          href: users-restrict-guest-permissions.md
+        - name: Dynamické skupiny a hosté
+          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - name: Správa organizace
+      items:
+        - name: Organizace Azure AD
+          href: ../fundamentals/active-directory-whatis.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Správa názvů domén
+          href: domains-manage.md
+        - name: Ověření subdomén jako spravovaných
+          href: domains-verify-custom-subdomain.md
+        - name: Odstranění adresáře
+          href: directory-delete-howto.md
+        - name: Několik adresářů
+          href: licensing-directory-independence.md
+        - name: Samoobslužné přihlášení
+          href: directory-self-service-signup.md
+        - name: Převzetí adresáře
+          href: domains-admin-takeover.md
+        - name: Azure AD Connect
+          href: ../hybrid/whatis-hybrid-identity.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - name: Správa skupin
+      items:
+        - name: Správa přístupu s využitím skupin
+          href: ../fundamentals/active-directory-manage-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Vytvoření skupiny (Azure Portal)
+          href: ../fundamentals/active-directory-groups-create-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Správa skupin s využitím PowerShellu pro Graph (v2)
+          href: groups-settings-v2-cmdlets.md
+        - name: Správa skupin MSOnline s využitím MSOnline PowerShellu
+          href: groups-settings-cmdlets.md
+        - name: Hledání v seznamech členů a skupin
+          href: groups-members-owners-search.md
+        - name: Přidání nebo odebrání členů skupin
+          href: ../fundamentals/active-directory-groups-members-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Dynamické skupiny
+          items:
+            - name: Vytvoření dynamické skupiny
+              href: groups-create-rule.md
+            - name: Syntaxe pravidel dynamických skupin
+              href: groups-dynamic-membership.md
+            - name: Ověření pravidla členství
+              href: groups-dynamic-rule-validation.md
+            - name: Změna typu členství ve skupině
+              href: groups-change-type.md
+        - name: Hromadné přidávání členů
+          href: groups-bulk-import-members.md
+        - name: Hromadné odebírání členů
+          href: groups-bulk-remove-members.md
+        - name: Hromadné stahování seznamu členů
+          href: groups-bulk-download-members.md
+        - name: Hromadné stahování seznamu skupin
+          href: groups-bulk-download.md
+        - name: Obnovení odstraněných skupin
+          href: groups-restore-deleted.md
+        - name: Správa nastavení skupin
+          href: ../fundamentals/active-directory-groups-settings-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Správa vlastníků skupin
+          href: ../fundamentals/active-directory-accessmanagement-managing-group-owners.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Správa skupin ve skupinách
+          href: ../fundamentals/active-directory-groups-membership-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Přidání skupinového přístupu k aplikacím SaaS
+          href: groups-saasapps.md
+        - name: Nastavení zásad pojmenování skupin
+          href: groups-naming-policy.md
+        - name: Nastavení zásad vypršení platnosti skupin
+          href: groups-lifecycle.md
+        - name: Nastavení samoobslužných funkcí pro skupiny
+          href: groups-self-service-management.md
+        - name: Přiřazení popisků citlivosti dat
+          href: groups-assign-sensitivity-labels.md
+    - name: Přiřazení licencí
+      items:
+        - name: Přiřazení licencí k uživatelům
+          href: ../fundamentals/license-users-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Přiřazení licencí ke skupině
+          href: licensing-groups-assign.md
+        - name: Řešení problémů se skupinovými licencemi
+          href: licensing-groups-resolve-problems.md
+        - name: Změna uživatelů na skupinové licencování
+          href: licensing-groups-migrate-users.md
+        - name: Změna licencí pro uživatele nebo skupinu
+          href: licensing-groups-change-licenses.md
+        - name: Další scénáře
+          href: licensing-group-advanced.md
+        - name: Skupinové licencování s využitím PowerShellu a Graphu
+          href: licensing-ps-examples.md
+        - name: ID plánů služeb pro licencování
+          href: licensing-service-plan-reference.md
+    - name: Správa přihlašování
+      items:
+        - name: Přizpůsobení brandingu společnosti
+          href: ../fundamentals/customize-branding.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Možnosti přihlášení
+          href: signin-account-support.md
+        - name: Zjišťování domovské sféry
+          href: signin-realm-discovery.md
+    - name: Integrace služeb s Azure AD
+      items:
+        - name: Integrace LinkedInu s Azure AD
+          href: linkedin-integration.md
+        - name: Sdílení dat LinkedInu
+          href: linkedin-user-consent.md
+    - name: Řešení potíží
+      items:
+        - name: Získání podpory pro Azure AD
+          href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Řešení potíží se skupinami
+          href: groups-troubleshooting.md
+        - name: Řešení potíží se skupinovým licencováním
+          href: licensing-groups-resolve-problems.md
+- name: Referenční informace
+  items:
+    - name: Graph API
+      href: /graph/api/resources/azure-ad-overview
+    - name: Azure AD CLI
+      href: /cli/azure/ad
+    - name: Azure AD PowerShell pro Graph
+      href: /powershell/azure/active-directory/install-adv2
+    - name: Omezení služby Azure AD
+      href: directory-service-limits-restrictions.md

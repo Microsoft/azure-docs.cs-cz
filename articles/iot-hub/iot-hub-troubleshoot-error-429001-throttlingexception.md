@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 3095e398d7e5cfe59085144d5bb4e8dc33618064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2f12a6982886eeaa375151c5b8a73acc573aab9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76960695"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545357"
 ---
 # <a name="429001-throttlingexception"></a>429001 ThrottlingException
 
@@ -21,7 +21,7 @@ Tento článek popisuje příčiny a řešení 429001 chyb **ThrottlingException
 
 ## <a name="symptoms"></a>Příznaky
 
-Vaše požadavky na IoT Hub selžou s chybou **429001 ThrottlingException**.
+Vaše požadavky na IoT Hub selžou s chybou **429001 ThrottlingException** .
 
 ## <a name="cause"></a>Příčina
 
@@ -29,7 +29,7 @@ Pro požadovanou operaci byly překročeny [limity omezení](./iot-hub-devguide-
 
 ## <a name="solution"></a>Řešení
 
-Podívejte se, jestli jste nedosáhli limitu omezování, porovnáním metriky *odesílání pokusů o odeslání zpráv* na základě výše uvedených omezení. Můžete také kontrolovat metriky *chyb při omezování* . Další informace o těchto a dalších metrikách, které jsou k dispozici pro IoT Hub, najdete v tématu [IoT Hub metriky a jejich použití](./iot-hub-metrics.md#iot-hub-metrics-and-how-to-use-them).
+Podívejte se, jestli jste nedosáhli limitu omezování, porovnáním metriky *odesílání pokusů o odeslání zpráv* na základě výše uvedených omezení. Můžete také kontrolovat metriky *chyb při omezování* . Informace o těchto metrikách najdete v tématu [metriky telemetrie zařízení](monitor-iot-hub-reference.md#device-telemetry-metrics). Informace o tom, jak používat metriky, které vám pomůžou s monitorováním služby IoT Hub, najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md).
 
 IoT Hub vrátí 429 ThrottlingException až po porušení limitu příliš dlouhého období. To se provádí tak, že vaše zprávy nejsou vyřazené, pokud vaše centrum IoT získá nárůst provozu. IoT Hub mezitím zpracovává zprávy rychlostí odpovídající omezení šířky pásma, která může být nízká, pokud je v backlogu příliš velký provoz. Další informace najdete v tématu věnovaném [formování provozu služby IoT Hub](./iot-hub-devguide-quotas-throttling.md#traffic-shaping).
 

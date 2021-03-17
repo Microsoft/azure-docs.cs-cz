@@ -3,16 +3,16 @@ title: Nasazování šablon pro aplikace logiky
 description: Naučte se, jak nasadit šablony Azure Resource Manager vytvořené pro Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 08/01/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: d3ef4275e5b309bb499338fe90c0f527aeaeb71f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/25/2020
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 5f5db3fd88f04e7fe569cd675936445dcf730288
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501504"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705332"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Nasazování šablon Azure Resource Manageru pro Azure Logic Apps
 
@@ -57,7 +57,7 @@ Pokud chcete nasadit šablonu aplikace logiky z projektu skupiny prostředků Az
 
 ## <a name="deploy-with-azure-powershell"></a>Nasazení pomocí Azure PowerShellu
 
-K nasazení do konkrétní *skupiny prostředků Azure*použijte tento příkaz:
+K nasazení do konkrétní *skupiny prostředků Azure* použijte tento příkaz:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -72,16 +72,16 @@ Další informace najdete v těchto tématech:
 
 ## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
-K nasazení do konkrétní *skupiny prostředků Azure*použijte tento příkaz:
+K nasazení do konkrétní *skupiny prostředků Azure* použijte tento příkaz:
 
 ```azurecli
-az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+az deployment group create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
 Další informace najdete v těchto tématech:
 
 * [Nasazení prostředků pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure](../azure-resource-manager/templates/deploy-cli.md)
-* [`az group deployment create`](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [`az deployment group create`](/cli/azure/deployment/group#az_deployment_group_create)
 
 <a name="azure-pipelines"></a>
 
@@ -119,13 +119,20 @@ Tady jsou obecné kroky vysoké úrovně pro použití Azure Pipelines:
 
 ## <a name="authorize-oauth-connections"></a>Autorizovat připojení OAuth
 
-Po nasazení aplikace logiky funguje na konci až po platné parametry. Přesto však musíte autorizovat všechna připojení OAuth pro vygenerování platných přístupových tokenů pro [ověřování vašich přihlašovacích údajů](../active-directory/develop/authentication-vs-authorization.md). Tady je způsob, jak můžete autorizovat připojení OAuth:
+Po nasazení vaše aplikace logiky funguje na konci s platnými parametry, ale pro vygenerování platných přístupových tokenů pro [ověřování vašich přihlašovacích údajů](../active-directory/develop/authentication-vs-authorization.md)je stále nutné autorizovat nebo používat předem vytvořená připojení OAuth. Stačí ale nasadit a ověřit prostředky připojení rozhraní API jenom jednou, což znamená, že je nemusíte zahrnovat do následujících nasazení, pokud nepotřebujete aktualizovat informace o připojení. Pokud používáte kanál průběžné integrace a průběžného nasazování, nasadíte jenom aktualizované Logic Apps prostředky a nemusíte je pokaždé znovu autorizovat.
 
-* Pro automatizovaná nasazení můžete použít skript, který poskytuje souhlas pro každé připojení OAuth. Tady je ukázkový skript v GitHubu v projektu [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) .
+Tady je několik návrhů pro zpracování autorizačních připojení:
 
-* Pokud chcete ručně autorizovat připojení OAuth, otevřete aplikaci logiky v návrháři aplikace logiky, a to buď v Azure Portal nebo v aplikaci Visual Studio. V Návrháři autorizujte všechna požadovaná připojení.
+* Předběžně autorizovat a sdílejte prostředky připojení rozhraní API napříč Logic Apps, které jsou ve stejné oblasti. Připojení rozhraní API existují jako prostředky Azure nezávisle na Logic Apps. I když aplikace logiky mají závislosti na prostředcích připojení rozhraní API, prostředky připojení rozhraní API nemají závislosti na Logic Apps a zůstávají i po odstranění závislých aplikací logiky. Logic Apps taky můžou používat připojení rozhraní API, která existují v jiných skupinách prostředků. Návrhář aplikace logiky ale podporuje vytváření připojení rozhraní API jenom ve stejné skupině prostředků jako vaše aplikace logiky.
 
-Pokud k autorizaci připojení používáte [instanční objekt](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory (Azure AD), zjistěte, jak [zadat parametry instančního objektu v šabloně aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
+  > [!NOTE]
+  > Pokud zvažujete sdílení připojení rozhraní API, ujistěte se, že vaše řešení dokáže [zvládnout možné problémy s omezením](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling). K omezování dochází na úrovni připojení, takže opakované použití stejného připojení napříč více Logic Apps může zvýšit potenciál pro problémy s omezením.
+
+* Pokud váš scénář zahrnuje služby a systémy, které vyžadují vícefaktorové ověřování, můžete použít skript prostředí PowerShell k poskytnutí souhlasu pro každé připojení OAuth tak, že spustíte pracovní proces nepřetržité integrace jako běžný uživatelský účet na virtuálním počítači, který má aktivní relace prohlížeče s autorizací a již uděleným souhlasem. Můžete například změnit účel ukázkového skriptu poskytnutého [projektem LogicAppConnectionAuth v úložišti GitHub Logic Apps](https://github.com/logicappsio/LogicAppConnectionAuth).
+
+* Ruční autorizaci připojení OAuth otevřením aplikace logiky v návrháři aplikace logiky, a to buď v Azure Portal nebo v aplikaci Visual Studio.
+
+* Pokud k autorizaci připojení používáte [instanční objekt](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory (Azure AD), zjistěte, jak [zadat parametry instančního objektu v šabloně aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
 
 ## <a name="next-steps"></a>Další kroky
 

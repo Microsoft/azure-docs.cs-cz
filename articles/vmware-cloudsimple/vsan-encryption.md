@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – konfigurace šifrování síti vSAN pro privátní cloud
 description: Popisuje, jak nakonfigurovat funkci síti vSAN software Encryption, aby privátní cloud CloudSimple mohl pracovat s klíčovým management server spuštěným ve službě Azure Virtual Network.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5da05c7f3c6878b0804799360e512676b9002d3
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77020637"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899044"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>Konfigurace šifrování síti vSAN pro privátní cloud CloudSimple
 

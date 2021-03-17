@@ -9,20 +9,21 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 814a5afbde548891a30d941365cdd71d227b4767
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835948"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674395"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Kognitivní hledání v Azure Portal
 
 > [!div class="op_single_selector"]
 >
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [Azure CLI](search-manage-azure-cli.md)
+> * [REST API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Azure Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
@@ -33,9 +34,9 @@ Azure Kognitivní hledání je plně spravovaná cloudová vyhledávací služba
 * Spravujte přístup pomocí stránky **klíče** vlevo.
 * Nastavte kapacitu pomocí stránky **škála** vlevo.
 
-Stejné úlohy, které se provádějí na portálu, můžete také zpracovat programově prostřednictvím [rozhraní API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/) a [modulu PowerShellu AZ. Search](search-manage-powershell.md). Úlohy správy jsou plně reprezentovány napříč portálem a programovým rozhraním. Neexistuje žádný konkrétní úkol správy, který je k dispozici pouze v jedné z nich.
+Stejné úlohy, které se provádějí na portálu, můžete také zpracovat programově prostřednictvím [rozhraní API pro správu](/rest/api/searchmanagement/) a [modulu PowerShellu AZ. Search](search-manage-powershell.md). Úlohy správy jsou plně reprezentovány napříč portálem a programovým rozhraním. Neexistuje žádný konkrétní úkol správy, který je k dispozici pouze v jedné z nich.
 
-Azure Kognitivní hledání využívá další služby Azure pro hlubší monitorování a správu. Samostatně platí, že jediná data uložená ve vyhledávací službě jsou obsah (indexy, indexer a definice zdrojů dat a další objekty). Metriky hlášené na stránkách portálu jsou načítány z interních protokolů na více než 30 dní cyklů. V případě uchovávání protokolů řízených uživatelem a dalších událostí budete potřebovat [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/). 
+Azure Kognitivní hledání využívá další služby Azure pro hlubší monitorování a správu. Samostatně platí, že jediná data uložená ve vyhledávací službě jsou obsah (indexy, indexer a definice zdrojů dat a další objekty). Metriky hlášené na stránkách portálu jsou načítány z interních protokolů na více než 30 dní cyklů. V případě uchovávání protokolů řízených uživatelem a dalších událostí budete potřebovat [Azure monitor](../azure-monitor/index.yml). 
 
 ## <a name="fixed-service-properties"></a>Vlastnosti pevné služby
 
@@ -58,7 +59,7 @@ Pro přístup ke koncovému bodu má přístup kdokoli s přístupem k adrese UR
 
 Práva na zařízení pro zřizování služby se udělují prostřednictvím přiřazení rolí. [Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md) je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) pro zřizování prostředků Azure. 
 
-V kontextu Azure Kognitivní hledání určí [přiřazení rolí Azure](search-security-rbac.md) , kdo může provádět úlohy bez ohledu na to, jestli používají [portál](search-manage.md), [PowerShell](search-manage-powershell.md)nebo [rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api):
+V kontextu Azure Kognitivní hledání určí [přiřazení rolí Azure](search-security-rbac.md) , kdo může provádět úlohy bez ohledu na to, jestli používají [portál](search-manage.md), [PowerShell](search-manage-powershell.md)nebo [rozhraní REST API pro správu](/rest/api/searchmanagement/search-howto-management-rest-api):
 
 * Vytvoření nebo odstranění služby
 * Škálování služby
@@ -73,12 +74,12 @@ V kontextu Azure Kognitivní hledání určí [přiřazení rolí Azure](search-
 
 Na úrovni Basic a vyšší Microsoft sleduje všechny služby Azure Kognitivní hledání Services pro 99,9% dostupnost podle smluv o úrovni služeb (SLA). Pokud je služba pomalá nebo propustnost žádosti klesne pod prahové hodnoty smlouvy SLA, Prohlédněte si všechny soubory protokolů, které jsou pro ně k dispozici, a vyřešte problém.
 
-Azure Kognitivní hledání využívá [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) ke shromažďování a ukládání aktivity indexování a dotazů. Vyhledávací služba sám o sobě ukládá jenom svůj obsah (indexy, definice indexerů, definice zdrojů dat, definice dovednosti a mapování synonym). Informace o ukládání do mezipaměti a protokolu se ukládají mimo službu, často v účtu Azure Storage. Další informace o protokolování indexování a úlohách dotazů najdete v tématu [shromažďování a analýza dat protokolu](search-monitor-logs.md).
+Azure Kognitivní hledání využívá [Azure monitor](../azure-monitor/index.yml) ke shromažďování a ukládání aktivity indexování a dotazů. Vyhledávací služba sám o sobě ukládá jenom svůj obsah (indexy, definice indexerů, definice zdrojů dat, definice dovednosti a mapování synonym). Informace o ukládání do mezipaměti a protokolu se ukládají mimo službu, často v účtu Azure Storage. Další informace o protokolování indexování a úlohách dotazů najdete v tématu [shromažďování a analýza dat protokolu](search-monitor-logs.md).
 
 V souvislosti s obecnými informacemi o vaší službě se pomocí jenom těch zařízení integrovaných do Azure Kognitivní hledání sám získat informace následujícími způsoby:
 
 * Pomocí stránky s **přehledem** služby prostřednictvím oznámení, vlastností a zpráv o stavu.
-* Použití [PowerShellu](search-manage-powershell.md) nebo [REST API správy](https://docs.microsoft.com/rest/api/searchmanagement/) k [získání vlastností služby](https://docs.microsoft.com/rest/api/searchmanagement/services). V programové vrstvě nejsou k dispozici žádné nové informace ani operace. Rozhraní existují, abyste mohli psát skripty.
+* Použití [PowerShellu](search-manage-powershell.md) nebo [REST API správy](/rest/api/searchmanagement/) k [získání vlastností služby](/rest/api/searchmanagement/services). V programové vrstvě nejsou k dispozici žádné nové informace ani operace. Rozhraní existují, abyste mohli psát skripty.
 
 ## <a name="monitor-resource-usage"></a>Monitorování využití prostředků
 
@@ -86,8 +87,8 @@ V řídicím panelu je monitorování prostředků omezené na informace zobraze
 
 Pomocí REST API vyhledávací služby můžete získat počet dokumentů a indexů programově: 
 
-* [Získat statistiku indexu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Počet dokumentů](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Získat statistiku indexu](/rest/api/searchservice/Get-Index-Statistics)
+* [Počet dokumentů](/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Zotavení po havárii a výpadky služeb
 
@@ -135,11 +136,11 @@ Na rozdíl od odebrání replik, které nevyžadují žádné další úsilí na
 
 Neexistuje žádná metoda detekce, která oznamuje, že se horizontálních oddílů indexů ukládají na konkrétní oddíly. Každý oddíl poskytuje úložiště přibližně 25 GB, takže budete muset omezit úložiště na velikost, kterou můžete přizpůsobit podle počtu oddílů, které máte. Pokud se chcete vrátit k jednomu oddílu, bude nutné, aby se všechny 12 horizontálních oddílůy.
 
-Pro pomoc s budoucím plánováním můžete chtít ověřit úložiště (pomocí funkce [získat statistiku indexu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)) a zjistit, kolik jste skutečně používali. 
+Pro pomoc s budoucím plánováním můžete chtít ověřit úložiště (pomocí funkce [získat statistiku indexu](/rest/api/searchservice/Get-Index-Statistics)) a zjistit, kolik jste skutečně používali. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Automatizace pomocí [PowerShellu](search-manage-powershell.md)
+* Automatizace pomocí [PowerShellu](search-manage-powershell.md) nebo rozhraní příkazového [řádku Azure](search-manage-azure-cli.md)
 
 * Kontrola [výkonu a technik optimalizace](search-performance-optimization.md)
 

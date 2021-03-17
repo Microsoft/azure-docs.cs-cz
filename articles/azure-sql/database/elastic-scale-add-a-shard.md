@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 62f7f93b4baeeb4132e867a90e4f911187967f42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efab0234d428a8283845946289cdd1e8a17ded26
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84047591"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792051"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Přidání horizontálních oddílů pomocí nástrojů Elastic Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Pokud nový rozsah hodnot klíče již není součástí stávajícího mapován
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Příklad: Přidání horizontálních oddílů a jeho rozsahu do existující mapy horizontálních oddílů
 
-Tato ukázka používá TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) , metody a vytvoří instanci třídy ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)). V níže uvedené ukázce se vytvořila databáze s názvem **sample_shard_2** a všechny potřebné objekty schématu v ní, aby se nastavil rozsah [300, 400).  
+Tato ukázka používá TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.NET](/previous-versions/azure/dn823929(v=azure.100))) CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) , metody a vytvoří instanci třídy ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)). V níže uvedené ukázce se vytvořila databáze s názvem **sample_shard_2** a všechny potřebné objekty schématu v ní, aby se nastavil rozsah [300, 400).  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -79,6 +79,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Důležité**: tuto techniku použijte pouze v případě, že jste si jisti, že rozsah aktualizovaných mapování je prázdný.  Předchozí metody nekontrolují data pro rozsah, který se přesouvá, takže je nejlepší zahrnout do kódu kontroly.  Pokud řádky existují v převáděném rozsahu, skutečná distribuce dat se neshoduje s aktualizovanou mapou horizontálních oddílů. K provedení této operace použijte [Nástroj pro dělení a slučování](elastic-scale-overview-split-and-merge.md) , a to místo v těchto případech.  
+**Důležité** : tuto techniku použijte pouze v případě, že jste si jisti, že rozsah aktualizovaných mapování je prázdný.  Předchozí metody nekontrolují data pro rozsah, který se přesouvá, takže je nejlepší zahrnout do kódu kontroly.  Pokud řádky existují v převáděném rozsahu, skutečná distribuce dat se neshoduje s aktualizovanou mapou horizontálních oddílů. K provedení této operace použijte [Nástroj pro dělení a slučování](elastic-scale-overview-split-and-merge.md) , a to místo v těchto případech.  
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

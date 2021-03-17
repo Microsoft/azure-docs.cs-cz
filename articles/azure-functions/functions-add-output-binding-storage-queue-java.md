@@ -7,24 +7,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: 9f512e3bbf7947361fa9890e9514693610c9f99d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b4381c4acbea8a3b7d86d9c32aaf9cea24cf15fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321951"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422650"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Připojte funkci jazyka Java k Azure Storage
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlý Start](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) s frontou Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
+V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlý Start](./create-first-function-cli-java.md?tabs=bash,browser) s frontou Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage` .  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu Java](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser).
+Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu Java](./create-first-function-cli-java.md?tabs=bash,browser).
 
 ## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
@@ -112,7 +112,7 @@ Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do f
 Dále byste měli povolit Application Insights monitorování aplikace Function App:
 
 > [!div class="nextstepaction"]
-> [Povolení integrace Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Povolení integrace Application Insights](configure-monitoring.md#add-to-an-existing-function-app)
 
 
 [Azure Storage Explorer]: https://storageexplorer.com/

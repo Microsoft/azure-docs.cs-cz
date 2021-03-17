@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Couchbase pomocí Azure Data Factory (Preview)
 description: Naučte se, jak kopírovat data z Couchbase do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: d78d533bc4a863a0a70b1dbb47bdfa85d539884f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8de7982e99e258f0a72bd507ac0d8de16a7227a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417441"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383649"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopírování dat z Couchbase pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,11 +45,11 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Couchbase jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Couchbase** . | Ano |
-| připojovací řetězec | Připojovací řetězec ODBC, který se má připojit k Couchbase. <br/>Do Azure Key Vault také můžete vložit řetězec přihlašovacích údajů a z `credString` připojovacího řetězce si pak tuto konfiguraci vyžádat. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ | Vlastnost Type musí být nastavená na: **Couchbase** . | Yes |
+| připojovací řetězec | Připojovací řetězec ODBC, který se má připojit k Couchbase. <br/>Do Azure Key Vault také můžete vložit řetězec přihlašovacích údajů a z `credString` připojovacího řetězce si pak tuto konfiguraci vyžádat. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 **Příklad:**
 
@@ -83,13 +78,13 @@ Pro propojenou službu Couchbase jsou podporovány následující vlastnosti:
         "type": "Couchbase",
         "typeProperties": {
             "connectionString": "Server=<server>; Port=<port>;AuthMech=1;",
-            "credString": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "credString": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -106,9 +101,9 @@ Pro propojenou službu Couchbase jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z Couchbase, nastavte vlastnost Type datové sady na **CouchbaseTable**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **CouchbaseTable** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **CouchbaseTable** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 
@@ -137,10 +132,10 @@ Chcete-li kopírovat data z Couchbase, nastavte vlastnost Type datové sady na *
 
 Chcete-li kopírovat data z Couchbase, nastavte typ zdroje v aktivitě kopírování na **CouchbaseSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **CouchbaseSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **CouchbaseSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

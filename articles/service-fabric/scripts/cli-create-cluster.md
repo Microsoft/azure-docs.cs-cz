@@ -13,18 +13,18 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a0a17e3f352c9e39f118baec7e045521289f5ed0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b69f62f6f47c656921f4f2230a296e293e423fa4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502405"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035288"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Vytvoření zabezpečeného clusteru Service Fabric Linux v Azure
 
 Tento příkaz vytvoří certifikát podepsaný svým držitelem (self-signed certificate), přidá ho do trezoru klíčů a stáhne certifikát místně.  Nový certifikát se použije k zabezpečení clusteru při nasazování.  Nemusíte vytvářet nový certifikát, místo toho můžete použít certifikát stávající.  V obou případech musí název subjektu certifikátu odpovídat doméně, kterou používáte pro přístup ke clusteru Service Fabric. Tato shoda se vyžaduje k poskytnutí TLS pro koncové body správy HTTPS clusteru a Service Fabric Explorer. Certifikát TLS/SSL nemůžete od certifikační autority pro `.cloudapp.azure.com` doménu získat. Pro svůj cluster musíte získat název vlastní domény. Pokud požádáte o certifikát od certifikační autority, musí název subjektu certifikátu odpovídat názvu vlastní domény, který používáte pro svůj cluster.
 
-V případě potřeby nainstalujte [Azure CLI](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+V případě potřeby nainstalujte [Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -45,7 +45,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) | Vytvoří nový cluster Service Fabric.  |
+| [az sf cluster create](/cli/azure/sf/cluster) | Vytvoří nový cluster Service Fabric.  |
 
 ## <a name="next-steps"></a>Další kroky
 

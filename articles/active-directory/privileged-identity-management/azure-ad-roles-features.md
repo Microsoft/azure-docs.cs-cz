@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256624"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371507"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Možnosti správy pro role Azure AD v Privileged Identity Management
 
@@ -56,7 +56,7 @@ Akce iniciované uživatelem vyžadují schválení od správce globálního spr
 
 ## <a name="api-changes"></a>Změny rozhraní API
 
-Když zákazníci mají aktualizovanou verzi, která je zahrnutá ve své organizaci Azure AD, existující rozhraní Graph API přestane fungovat. Abyste mohli použít [Graph API pro role prostředků Azure](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta), musíte přejít. Pokud chcete spravovat role Azure AD pomocí tohoto rozhraní API, Proměňte ho `/azureResources` `/aadroles` v signatuře a použijte ID adresáře pro `resourceId` .
+Když zákazníci mají aktualizovanou verzi, která je zahrnutá ve své organizaci Azure AD, existující rozhraní Graph API přestane fungovat. Abyste mohli použít [Graph API pro role prostředků Azure](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta), musíte přejít. Pokud chcete spravovat role Azure AD pomocí tohoto rozhraní API, Proměňte ho `/azureResources` `/aadroles` v signatuře a použijte ID adresáře pro `resourceId` .
 
 Snažili jsme se co nejlépe kontaktovat všem zákazníkům, kteří používají předchozí rozhraní API, a informovat o této změně ještě před časem. Pokud se vaše organizace Azure AD přesunula na novou verzi a pořád závisí na starém rozhraní API, obraťte se na tým na adrese pim_preview@microsoft.com .
 
@@ -69,4 +69,4 @@ Pro zákazníky, kteří používají modul Privileged Identity Management Power
 - [Přiřazení vlastní role Azure AD](azure-ad-custom-roles-assign.md)
 - [Odebrání nebo aktualizace přiřazení vlastní role Azure AD](azure-ad-custom-roles-update-remove.md)
 - [Konfigurace přiřazení vlastní role Azure AD](azure-ad-custom-roles-configure.md)
-- [Definice rolí v Azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Definice rolí v Azure AD](../roles/permissions-reference.md)

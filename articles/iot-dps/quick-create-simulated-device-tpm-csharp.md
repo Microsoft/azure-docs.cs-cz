@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 82bd284ede23e8880f79c614f4a6e2f588a4293c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74976991"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90528414"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení v jazyce C# pro IoT Hub Device Provisioning Service
 
@@ -23,7 +23,7 @@ Tyto kroky ukazují, jak používat [ukázky Azure IoT pro jazyk C#](https://git
 
 Vzorový kód používá simulátor Windows TPM jako [modul hardwarového zabezpečení (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) zařízení. 
 
-Pokud nejste obeznámeni s procesem automatického zřizování, nezapomeňte také zkontrolovat [Koncepty pro Automatické zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
+Pokud nejste obeznámeni s procesem autozřizování, přečtěte si přehled [zřizování](about-iot-dps.md#provisioning-process) . Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 Služba Azure IoT Device Provisioning podporuje dva typy registrací:
 
@@ -65,7 +65,7 @@ V tomto článku si předvedeme jednotlivé registrace.
     dotnet run <IDScope>
     ```
 
-    Tento příkaz spustí simulátor čipu TPM v samostatném příkazovém řádku. V systému Windows se může zobrazit výstraha zabezpečení systému Windows s dotazem, zda chcete pro komunikaci s veřejnými sítěmi umožňovat simulátor. exe. Pro účely této ukázky můžete žádost zrušit.
+    Tento příkaz spustí simulátor čipu TPM v samostatném příkazovém řádku. V systému Windows se může zobrazit výstraha zabezpečení systému Windows s dotazem, zda chcete, aby Simulator.exe mohl komunikovat s veřejnými sítěmi. Pro účely této ukázky můžete žádost zrušit.
 
 1. V původním příkazovém okně se zobrazí **_ověřovací klíč_**, **_ID registrace_** a navrhované **_ID zařízení_** potřebné pro registraci zařízení. Poznamenejte si tyto hodnoty. Tato hodnota se používá k vytvoření jednotlivé registrace v instanci služby Device Provisioning. 
    > [!NOTE]

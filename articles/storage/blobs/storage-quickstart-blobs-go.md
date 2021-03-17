@@ -7,18 +7,18 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68726463"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544645"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
 
 V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -32,7 +32,7 @@ Ujistěte se, že máte nainstalované následující další požadavky:
     ``` 
 
     > [!NOTE]
-    > Ujistěte se, že je `Azure` v adrese URL velká písmena, aby nedocházelo k problémům s importem případu při práci se sadou SDK. Také velká `Azure` písmena v příkazech importu.
+    > Ujistěte se, že je `Azure` v adrese URL velká písmena, aby nedocházelo k problémům s importem případu při práci se sadou SDK. Také velká písmena `Azure` v příkazech importu.
     
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) použitá v tomto rychlém startu je základní aplikace v jazyce Go.  
@@ -108,7 +108,7 @@ První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty Containe
 Jakmile budete mít objekt ContainerURL, můžete vytvořit instanci objektu **BlobURL** odkazující na objekt blob a provádět například operace nahrávání, stahování a kopírování.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 V této části vytvoříte nový kontejner. Kontejner má název **quickstartblobs-[náhodný_řetězec]**. 
 
@@ -149,9 +149,9 @@ handleErrors(err)
 
 Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: Upload (PutBlob), StageBlock nebo CommitBlockList (PutBlock nebo PutBlockList). 
 
-Sada SDK případně nabízí [rozhraní API vysoké úrovně](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) založená na rozhraních REST API nízké úrovně. Příkladem je funkce ***UploadFileToBlockBlob***, která používá operace StageBlock (PutBlock) k souběžnému nahrání souboru po částech za účelem optimalizace propustnosti. Pokud je soubor menší než 256 MB, použije místo toho operaci Upload (PutBlob) k dokončení přenosu v rámci jediné transakce.
+Sada SDK případně nabízí [rozhraní API vysoké úrovně](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) založená na rozhraních REST API nízké úrovně. Například funkce **_UploadFileToBlockBlob_* _ používá operace StageBlock (PutBlock) pro souběžné nahrání souboru do bloků dat pro optimalizaci propustnosti. Pokud je soubor menší než 256 MB, použije místo toho operaci Upload (PutBlob) k dokončení přenosu v rámci jediné transakce.
 
-Následující příklad nahraje soubor do kontejneru **quickstartblobs-[náhodný_řetězec]**.
+Následující příklad nahraje soubor do vašeho kontejneru s názvem _ * quickstartblobs-[randomstring] * *.
 
 ```go
 // Create a file to test the upload and download.
@@ -182,7 +182,7 @@ _, err = azblob.UploadFileToBlockBlob(ctx, file, blobURL, azblob.UploadToBlockBl
 handleErrors(err)
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+### <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Seznam souborů v kontejneru získáte pomocí metody **ListBlobs** s použitím objektu **ContainerURL**. Metoda ListBlobs vrací jeden segment objektů blob (až 5 000) počínaje zadanou **značkou**. Pokud chcete začít výčet od začátku, použijte prázdnou značku. Názvy objektů blob se vrací ve slovníkovém pořadí. Po získání segmentu ho zpracujte a pak znovu zavolejte metodu ListBlobs a předejte jí dříve vrácenou značku.  
 

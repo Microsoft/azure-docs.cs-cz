@@ -1,24 +1,20 @@
 ---
-title: Spravovat přihlašovací údaje v Azure Automation
+title: Správa přihlašovacích údajů ve službě Automation
 description: V tomto článku se dozvíte, jak vytvořit assety přihlašovacích údajů a použít je v sadě Runbook nebo konfiguraci DSC.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/31/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 6b95eeaf7dd72c85c3940e3cdc2a71c193c35ff5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9b9e42d55a982aeb55d7c9e26f7b1a6cbca32e0a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008604"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052800"
 ---
-# <a name="manage-credentials-in-azure-automation"></a>Spravovat přihlašovací údaje v Azure Automation
+# <a name="manage-credentials-in-azure-automation"></a>Správa přihlašovacích údajů ve službě Automation
 
-Asset přihlašovacích údajů pro automatizaci obsahuje objekt, který obsahuje zabezpečovací pověření, například uživatelské jméno a heslo. Runbooky a konfigurace DSC používají rutiny, které přijímají pro ověřování objekt [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) . Případně mohou extrahovat uživatelské jméno a heslo `PSCredential` objektu, které mají být k dispozici pro některé aplikace nebo služby vyžadující ověřování. 
+Asset přihlašovacích údajů pro automatizaci obsahuje objekt, který obsahuje zabezpečovací pověření, například uživatelské jméno a heslo. Runbooky a konfigurace DSC používají rutiny, které přijímají pro ověřování objekt [PSCredential](/dotnet/api/system.management.automation.pscredential) . Případně mohou extrahovat uživatelské jméno a heslo `PSCredential` objektu, které mají být k dispozici pro některé aplikace nebo služby vyžadující ověřování.
 
 >[!NOTE]
 >Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Azure Automation ukládá klíč do Key Vault spravovaném systémem. Před uložením zabezpečeného assetu Automation načte klíč z Key Vault a pak ho použije k zašifrování prostředku. 
@@ -31,10 +27,10 @@ Rutiny v následující tabulce vytvářejí a spravují přihlašovací údaje 
 
 | Rutina | Popis |
 |:--- |:--- |
-| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Načte objekt [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) obsahující metadata o přihlašovacích údajích. Rutina nenačte `PSCredential` samotný objekt.  |
-| [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Vytvoří nové přihlašovací údaje automatizace. |
-| [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Odebere přihlašovací údaje automatizace. |
-| [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Nastaví vlastnosti pro existující přihlašovací údaje automatizace. |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential) |Načte objekt [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo) obsahující metadata o přihlašovacích údajích. Rutina nenačte `PSCredential` samotný objekt.  |
+| [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential) |Vytvoří nové přihlašovací údaje automatizace. |
+| [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential) |Odebere přihlašovací údaje automatizace. |
+| [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential) |Nastaví vlastnosti pro existující přihlašovací údaje automatizace. |
 
 ## <a name="other-cmdlets-used-to-access-credentials"></a>Další rutiny používané pro přístup k přihlašovacím údajům
 
@@ -43,23 +39,23 @@ Rutiny v následující tabulce se používají pro přístup k přihlašovacím
 | Rutina | Popis |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |Získá `PSCredential` objekt, který se má použít v sadě Runbook nebo konfiguraci DSC. Nejčastěji byste měli místo rutiny použít tuto [interní rutinu](modules.md#internal-cmdlets) `Get-AzAutomationCredential` , protože ta načte jenom informace o přihlašovacích údajích. Tyto informace nejsou obvykle užitečné k předání jiné rutině. |
-| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Získá přihlašovací údaje s výzvou k zadání uživatelského jména a hesla. Tato rutina je součástí výchozího modulu Microsoft. PowerShell. Security. Viz [výchozí moduly](modules.md#default-modules).|
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) | Vytvoří Asset přihlašovacích údajů. Tato rutina je součástí výchozího modulu Azure. Viz [výchozí moduly](modules.md#default-modules).|
+| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) |Získá přihlašovací údaje s výzvou k zadání uživatelského jména a hesla. Tato rutina je součástí výchozího modulu Microsoft. PowerShell. Security. Viz [výchozí moduly](modules.md#default-modules).|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential) | Vytvoří Asset přihlašovacích údajů. Tato rutina je součástí výchozího modulu Azure. Viz [výchozí moduly](modules.md#default-modules).|
 
 Chcete-li načíst `PSCredential` objekty v kódu, musíte importovat `Orchestrator.AssetManagement.Cmdlets` modul. Další informace najdete v tématu [Správa modulů v Azure Automation](modules.md).
 
-```azurepowershell
+```powershell
 Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 ```
 
 > [!NOTE]
 > Nepoužívejte proměnné v `Name` parametru `Get-AutomationPSCredential` . Jejich použití může zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a assety přihlašovacích údajů v době návrhu.
 
-## <a name="python-2-functions-that-access-credentials"></a>Funkce Python 2, které přistupují k přihlašovacím údajům
+## <a name="python-functions-that-access-credentials"></a>Python – funkce pro přístup k přihlašovacím údajům
 
-Funkce v následující tabulce slouží k přístupu k přihlašovacím údajům v sadě Runbook Python 2.
+Funkce v následující tabulce slouží k přístupu k přihlašovacím údajům v sadě Runbook Python 2 a 3. Sady Python 3 Runbooky jsou momentálně ve verzi Preview.
 
-| Funkce | Popis |
+| Funkce | Description |
 |:---|:---|
 | `automationassets.get_automation_credential` | Načte informace o assetu přihlašovacích údajů. |
 
@@ -72,16 +68,16 @@ Pomocí Azure Portal nebo Windows PowerShellu můžete vytvořit nový prostřed
 
 ### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>Vytvoření nového assetu přihlašovacích údajů pomocí Azure Portal
 
-1. Z účtu Automation v části **sdílené prostředky**vyberte **přihlašovací údaje** .
-1. Vyberte **Přidat pověření**.
-2. V podokně nové přihlašovací údaje zadejte odpovídající název přihlašovacích údajů podle standardů pojmenování. 
-3. Do pole **uživatelské jméno** zadejte své přístupové ID. 
-4. Pro obě pole hesla zadejte svůj tajný přístupový klíč.
+1. Z účtu Automation v levém podokně vyberte **přihlašovací údaje** v části **sdílené prostředky**.
+2. Na stránce **pověření** vyberte **Přidat pověření**.
+3. V podokně nové přihlašovací údaje zadejte odpovídající název přihlašovacích údajů podle standardů pojmenování.
+4. Do pole **uživatelské jméno** zadejte své přístupové ID.
+5. Pro obě pole hesla zadejte svůj tajný přístupový klíč.
 
     ![Vytvořit nové přihlašovací údaje](../media/credentials/credential-create.png)
 
-5. Pokud je zaškrtnuto políčko Multi-Factor Authentication, zrušte jeho zaškrtnutí. 
-6. Kliknutím na **vytvořit** uložte nový prostředek přihlašovacích údajů.
+6. Pokud je zaškrtnuto políčko Multi-Factor Authentication, zrušte jeho zaškrtnutí.
+7. Kliknutím na **vytvořit** uložte nový prostředek přihlašovacích údajů.
 
 > [!NOTE]
 > Azure Automation nepodporuje uživatelské účty, které používají službu Multi-Factor Authentication.
@@ -104,52 +100,37 @@ Sada Runbook nebo konfigurace DSC načte Asset přihlašovacích údajů pomocí
 > [!NOTE]
 > `Get-AzAutomationCredential`Rutina nenačte `PSCredential` objekt, který lze použít k ověřování. Poskytuje jenom informace o přihlašovacích údajích. Pokud potřebujete použít přihlašovací údaje v sadě Runbook, je nutné ji načíst jako `PSCredential` objekt pomocí `Get-AutomationPSCredential` .
 
-Alternativně můžete použít metodu [GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) k načtení objektu [NetworkCredential](/dotnet/api/system.net.networkcredential) , který představuje nezabezpečenou verzi hesla.
+Alternativně můžete použít metodu [GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential) k načtení objektu [NetworkCredential](/dotnet/api/system.net.networkcredential) , který představuje nezabezpečenou verzi hesla.
 
 ### <a name="textual-runbook-example"></a>Příklad textového Runbooku
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Následující příklad ukazuje způsob použití přihlašovacích údajů prostředí PowerShell v Runbooku. Načte přihlašovací údaje a přiřadí jí uživatelské jméno a heslo k proměnným.
 
-
-```azurepowershell
+```powershell
 $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCredential.UserName
 $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-Přihlašovací údaje můžete použít také k ověření v Azure pomocí [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.3.0). Ve většině případů byste měli použít [účet Spustit jako](../manage-runas-account.md) a načíst připojení pomocí rutiny [Get-AzAutomationConnection](../automation-connections.md).
+Přihlašovací údaje můžete použít také k ověření v Azure pomocí [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Ve většině případů byste měli použít [účet Spustit jako](../automation-security-overview.md#run-as-accounts) a načíst připojení pomocí rutiny [Get-AzAutomationConnection](../automation-connections.md).
 
-
-```azurepowershell
+```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
 
-$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
 Connect-AzAccount -Credential $myPsCred
 ```
 
-### <a name="graphical-runbook-example"></a>Příklad grafického Runbooku
-
-Aktivitu pro interní `Get-AutomationPSCredential` rutinu můžete do grafického Runbooku přidat tak, že kliknete pravým tlačítkem na přihlašovací údaje v podokně Knihovna v grafickém editoru a vyberete **Přidat na plátno**.
-
-![Přidat přihlašovací údaje na plátno](../media/credentials/credential-add-canvas.png)
-
-Následující obrázek ukazuje příklad použití přihlašovacích údajů v grafickém Runbooku. V takovém případě přihlašovací údaje poskytují ověřování pro sadu Runbook prostředky Azure, jak je popsáno v tématu [použití Azure AD v Azure Automation k ověření v Azure](../automation-use-azure-ad.md). První aktivita načte přihlašovací údaje, které mají přístup k předplatnému Azure. Aktivita připojení k účtu pak pomocí těchto přihlašovacích údajů poskytuje ověřování pro všechny aktivity, které jsou po ní. [Odkaz na kanál](../automation-graphical-authoring-intro.md#use-links-for-workflow) se tady používá, protože `Get-AutomationPSCredential` očekává jeden objekt.  
-
-![Přidat přihlašovací údaje na plátno](../media/credentials/get-credential.png)
-
-## <a name="use-credentials-in-a-dsc-configuration"></a>Použití přihlašovacích údajů v konfiguraci DSC
-
-I když konfigurace DSC v Azure Automation můžou pracovat s assety přihlašovacích údajů pomocí `Get-AutomationPSCredential` , můžou taky předávat assety přihlašovacích údajů prostřednictvím parametrů. Další informace najdete v tématu [kompilace konfigurací v Azure Automation DSC](../automation-dsc-compile.md#credential-assets).
-
-## <a name="use-credentials-in-a-python-2-runbook"></a>Použití přihlašovacích údajů v sadě Runbook Python 2
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 Následující příklad ukazuje příklad přístupu k přihlašovacím údajům v sadách Python 2 Runbooky.
-
 
 ```python
 import automationassets
@@ -161,8 +142,38 @@ print cred["username"]
 print cred["password"]
 ```
 
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+Následující příklad ukazuje příklad přístupu k přihlašovacím údajům v Python 3 Runbooky (Preview).
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
+```
+
+---
+
+### <a name="graphical-runbook-example"></a>Příklad grafického Runbooku
+
+Aktivitu pro interní `Get-AutomationPSCredential` rutinu můžete do grafického Runbooku přidat tak, že kliknete pravým tlačítkem na přihlašovací údaje v podokně Knihovna v grafickém editoru a vyberete **Přidat na plátno**.
+
+![Přidat rutinu přihlašovacích údajů na plátno](../media/credentials/credential-add-canvas.png)
+
+Následující obrázek ukazuje příklad použití přihlašovacích údajů v grafickém Runbooku. V takovém případě přihlašovací údaje poskytují ověřování pro sadu Runbook prostředky Azure, jak je popsáno v tématu [použití Azure AD v Azure Automation k ověření v Azure](../automation-use-azure-ad.md). První aktivita načte přihlašovací údaje, které mají přístup k předplatnému Azure. Aktivita připojení k účtu pak pomocí těchto přihlašovacích údajů poskytuje ověřování pro všechny aktivity, které jsou po ní. [Odkaz na kanál](../automation-graphical-authoring-intro.md#use-links-for-workflow) se tady používá, protože `Get-AutomationPSCredential` očekává jeden objekt.  
+
+![Příklad pracovního postupu pověření s odkazem na kanál](../media/credentials/get-credential.png)
+
+## <a name="use-credentials-in-a-dsc-configuration"></a>Použití přihlašovacích údajů v konfiguraci DSC
+
+I když konfigurace DSC v Azure Automation můžou pracovat s assety přihlašovacích údajů pomocí `Get-AutomationPSCredential` , můžou taky předávat assety přihlašovacích údajů prostřednictvím parametrů. Další informace najdete v tématu [kompilace konfigurací v Azure Automation DSC](../automation-dsc-compile.md#credential-assets).
+
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o rutinách používaných pro přístup k certifikátům najdete v tématu [Správa modulů v Azure Automation](modules.md).
 * Obecné informace o sadách Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md).
-* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md). 
+* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md).

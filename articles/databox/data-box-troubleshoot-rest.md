@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: troubleshooting
-ms.date: 04/19/2019
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558552"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796057"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Řešení potíží souvisejících s Azure Data Box BLOB Storage
 
@@ -26,7 +26,7 @@ Tato část podrobně popisuje některé problémy při použití Průzkumník s
 |Chybová zpráva  |Doporučená akce |
 |---------|---------|
 |Nelze načíst podřízené prostředky. Hodnota pro jednu z hlaviček protokolu HTTP není ve správném formátu.|V nabídce **Upravit** vyberte **cílová Azure Stack rozhraní API**. <br>Restartujte Průzkumník služby Azure Storage.|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v této cestě: <li>`C:\Windows\System32\drivers\etc\hosts`ve Windows nebo </li><li> `/etc/hosts`v systému Linux.</li>|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v této cestě: <li>`C:\Windows\System32\drivers\etc\hosts` ve Windows nebo </li><li> `/etc/hosts` v systému Linux.</li>|
 |Nelze načíst podřízené prostředky. <br>Podrobnosti: certifikát podepsaný svým držitelem |Importujte certifikát TLS/SSL pro vaše zařízení do Průzkumník služby Azure Storage: <li>Stáhněte si certifikát z Azure Portal. Další informace najdete v [části stažení certifikátu](data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>V nabídce **Upravit** vyberte **certifikáty SSL** a pak vyberte **importovat certifikáty**.</li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>Chyby, které se zobrazují v AzCopy pro Windows
@@ -35,7 +35,7 @@ Tato část podrobně popisuje některé problémy při použití AzCopy pro Win
 
 |Chybová zpráva  |Doporučená akce |
 |---------|---------|
-|Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na minutu: <br>Nepovedlo se vytvořit výčet adresáře https://... Vzdálený název se nedal přeložit.`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `C:\Windows\System32\drivers\etc\hosts` .|
+|Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na minutu: <br>Nepovedlo se vytvořit výčet adresáře https://... Vzdálený název se nedal přeložit. `<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `C:\Windows\System32\drivers\etc\hosts` .|
 |Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na minutu: <br>Při analýze zdrojového umístění došlo k chybě. Základní připojení bylo uzavřeno: nelze vytvořit vztah důvěryhodnosti pro zabezpečený kanál SSL/TLS.|Importujte certifikát TLS/SSL pro vaše zařízení do úložiště certifikátů systému. Další informace najdete v [části stažení certifikátu](data-box-deploy-copy-data-via-rest.md#download-certificate).|
 
 
@@ -55,7 +55,7 @@ Tato část podrobně popisuje některé hlavní problémy, na které čelí bě
 |Chybová zpráva  |Doporučená akce |
 |---------|---------|
 |Hodnota pro jednu z hlaviček protokolu HTTP není ve správném formátu. |Data Box není podporována nainstalovaná verze knihovny Microsoft Azure Storage pro Python. Podporované verze najdete v tématu Azure Data Box požadavky na úložiště objektů BLOB.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu TLS s kódováním Base64 (viz jak [Stáhnout certifikát](data-box-deploy-copy-data-via-rest.md#download-certificate)). <br>Příklad:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. <br> Například na Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu TLS s kódováním Base64 (viz jak [Stáhnout certifikát](data-box-deploy-copy-data-via-rest.md#download-certificate)). <br>Například:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. <br> Například na Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>Běžné chyby
@@ -65,6 +65,7 @@ Tyto chyby nejsou specifické pro žádnou aplikaci.
 |Chybová zpráva  |Doporučená akce |
 |---------|---------|
 |Vypršel časový limit připojení. |Přihlaste se k zařízení Data Box a ověřte, že je odemčený. Pokaždé, když se zařízení restartuje, zůstane uzamčené, dokud se někdo přihlásí.|
+|Ověřování REST API se nepovedlo s chybou: Server nemohl ověřit požadavek. Ujistěte se, že hodnota hlavičky autorizace je správně vytvořená, včetně signatury. ErrorCode: AuthenticationFailed. |Jedním z důvodů, proč k tomu může dojít, je, že čas zařízení není synchronizovaný s úložištěm Azure. Pokud dojde k velkému časovému zkosení, REST API ověřování dojde při pokusu o kopírování dat do Data Box prostřednictvím REST API. V takové situaci můžete otevřít odchozí port UDP 123, abyste povolili přístup k `time.windows.com` . Jakmile se čas zařízení synchronizuje s Azure, ověřování by mělo být úspěšné. |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,24 +1,19 @@
 ---
 title: Stackify znovu trasovat rozšíření agenta Azure Linux
 description: Nasaďte agenta Stackify Retrace pro Linux na virtuálním počítači se systémem Linux.
-services: virtual-machines-linux
-documentationcenter: ''
-author: darinhoward
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 04/12/2018
-ms.author: akjosh
-ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1fc437637fde524da125af9191bf9de79a2e9c37
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088848"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558997"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Rozšíření agenta Stackify retracee pro Linux
 
@@ -37,7 +32,7 @@ Přetrasování je jediný nástroj, který poskytuje všechny následující fu
 
 Toto rozšíření poskytuje instalační cestu pro agenta pro Linux pro opětovné trasování. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém 
 
@@ -148,7 +143,7 @@ Při umístění JSON rozšíření v kořenovém adresáři šablony obsahuje n
 ```
 
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 `Set-AzVMExtension`Příkaz se dá použít k nasazení rozšíření virtuálního počítače Stackify Retrace agenta pro Linux do existujícího virtuálního počítače. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu.
 

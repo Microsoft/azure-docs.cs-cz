@@ -1,6 +1,6 @@
 ---
-title: Transparentní šifrování dat (portál)
-description: Transparentní šifrování dat (TDE) ve službě Azure synapse Analytics
+title: Transparentní šifrování dat (portál) pro vyhrazený fond SQL (dříve SQL DW)
+description: Transparentní šifrování dat (TDE) pro vyhrazený fond SQL (dříve SQL DW) ve službě Azure synapse Analytics
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,19 +11,19 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b530b3a049f41a54ab98cc7d1454018cfc990f75
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: da4be6f4bc8335e0976a0a4a87c4d232b2a2285f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495665"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676302"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-azure-synapse-analytics"></a>Začínáme s transparentní šifrování dat (TDE) ve službě Azure synapse Analytics
+# <a name="get-started-with-transparent-data-encryption-tde-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Začínáme s transparentní šifrování dat (TDE) pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
 > [!div class="op_single_selector"]
 >
 > * [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md)
-> * [Ověřování](sql-data-warehouse-authentication.md)
+> * [Authentication](sql-data-warehouse-authentication.md)
 > * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
@@ -38,7 +38,7 @@ Pokud chcete povolit TDE, postupujte podle následujících kroků:
 1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
 2. V okně databáze klikněte na tlačítko **Nastavení** .
 3. Vyberte nastavení portálu možnosti **šifrování transparentního šifrování dat** . ![](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. Vyberte nastavení **On** ![ nastavení portálu zapnuto.](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
+4. Vyberte nastavení  ![ nastavení portálu zapnuto.](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
 5. Vybrat **Uložit** 
     ![ nastavení portálu Uložit](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
 
@@ -57,5 +57,5 @@ Pokud chcete zakázat TDE, postupujte podle následujících kroků:
 
 Šifrování lze potvrdit pomocí následujících zobrazení dynamické správy:
 
-* [sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [sys. dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

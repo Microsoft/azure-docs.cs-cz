@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 8806ff41edabcd3c0875d3c02360dc9a275e3878
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189923"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460824"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault funkce zákaznických dat
 
-Azure Key Vault přijímá zákaznická data během vytváření nebo aktualizaci trezorů, klíčů, tajných klíčů, certifikátů a spravovaných účtů úložiště. Tato zákaznická data jsou přímo viditelná v Azure Portal a prostřednictvím REST API. Zákaznická data se dají upravovat nebo odstraňovat pomocí aktualizace nebo odstranění objektu, který obsahuje data.
+Azure Key Vault přijímá zákaznická data během vytváření nebo aktualizace trezorů, spravovaných fondů HSM, klíčů, tajných klíčů, certifikátů a spravovaných účtů úložiště. Tato zákaznická data jsou přímo viditelná v Azure Portal a prostřednictvím REST API. Zákaznická data se dají upravovat nebo odstraňovat pomocí aktualizace nebo odstranění objektu, který obsahuje data.
 
 Protokoly přístupu k systému jsou generovány, když uživatel nebo aplikace přistupuje Key Vault. Podrobné protokoly přístupu jsou k dispozici pro zákazníky, kteří používají Azure Insights.
 
@@ -52,14 +52,14 @@ Azure Key Vault diagnostické protokoly, které obsahují osobní údaje, lze na
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Protokolování Azure Key Vault](logging.md))
+- [Protokolování Azure Key Vault](logging.md)
 
-- [Přehled obnovitelného odstranění ve službě Azure Key Vault](soft-delete-cli.md)
+- [Přehled obnovitelného odstranění ve službě Azure Key Vault](./key-vault-recovery.md)
 
-- [Azure Key Vault operací klíčů](https://docs.microsoft.com/rest/api/keyvault/key-operations)
+- [Azure Key Vault operací klíčů](/rest/api/keyvault/key-operations)
 
-- [Azure Key Vault operace tajného klíče](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Azure Key Vault operace tajného klíče](/rest/api/keyvault/secret-operations)
 
-- [Azure Key Vault certifikátů a zásad](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Azure Key Vault certifikátů a zásad](/rest/api/keyvault/certificates-and-policies)
 
-- [Azure Key Vault operací účtu úložiště](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Azure Key Vault operací účtu úložiště](/rest/api/keyvault/storage-account-key-operations)

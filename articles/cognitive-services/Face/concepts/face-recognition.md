@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 00dadf8a91b7ed01ab9f91933d296744305a95af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73743072"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518802"
 ---
 # <a name="face-recognition-concepts"></a>Koncepce rozpoznávání obličeje
 
@@ -30,14 +30,14 @@ Operace rozpoznávání používají hlavně následující datové struktury. T
 |DetectedFace| Tato reprezentace jedné plochy je načítána operací [detekce obličeje](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) . Jeho ID vyprší 24 hodin po jeho vytvoření.|
 |PersistedFace| Když se do skupiny přidají objekty DetectedFace, jako je například FaceList nebo person, stanou se objekty PersistedFace. Můžete je kdykoli [načíst](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) a nemusíte vypršet jeho platnost.|
 |[FaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b) nebo [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)| Tato datová struktura je seznam roztříděných PersistedFace objektů. FaceList má jedinečné ID, řetězec názvu a volitelně uživatelský Datový řetězec.|
-|[Person (Osoba)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| Tato datová struktura je seznam objektů PersistedFace, které patří stejné osobě. Má jedinečné ID, řetězec názvu a volitelně uživatelský Datový řetězec.|
+|[Osoba](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| Tato datová struktura je seznam objektů PersistedFace, které patří stejné osobě. Má jedinečné ID, řetězec názvu a volitelně uživatelský Datový řetězec.|
 |[Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) nebo [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)| Tato datová struktura je seznam objektů osob. Má jedinečné ID, řetězec názvu a volitelně uživatelský Datový řetězec. Předtím, než se dá použít při operacích rozpoznávání, musí být [školená](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) osoba.|
 
 ## <a name="recognition-operations"></a>Operace rozpoznávání
 
 V této části se dozvíte, jak čtyři operace rozpoznávání používají výše popsané datové struktury. Obecný popis jednotlivých operací rozpoznávání najdete v tématu [Přehled](../Overview.md).
 
-### <a name="verify"></a>Ověřit
+### <a name="verify"></a>Ověření
 
 Operace [ověřování](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) vezme ID obličeje z DetectedFace nebo PersistedFace a buď jiné ID obličeje, nebo objekt Person a určí, zda patří stejné osobě. Pokud předáte objekt person, můžete volitelně předat do objektu person, ke kterému osoba patří, aby vylepšila výkon.
 
@@ -45,7 +45,7 @@ Operace [ověřování](https://westus.dev.cognitive.microsoft.com/docs/services
 
 Operace [Najít podobná](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) má ID obličeje z DetectedFace nebo PersistedFace a buď FaceList, nebo pole jiných ID obličeje. S FaceList vrátí menší FaceList obličeje, které jsou podobné dané ploškě. S polem ID tváře, podobně vrátí menší pole.
 
-### <a name="group"></a>Skupina
+### <a name="group"></a>Group (Skupina)
 
 Operace [skupiny](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) převezme pole roztříděné ID obličeje z DetectedFace nebo PersistedFace a vrátí stejné identifikátory seskupené do několika menších polí. Každé pole "skupiny" obsahuje ID tváře, které se zobrazí jako podobné. Jedno pole "messyGroup" obsahuje ID obličeje, pro které nebyly nalezeny žádné podobnosti.
 
@@ -58,7 +58,7 @@ Operace [Identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/
 Pomocí následujících tipů zajistěte, aby vaše vstupní image poskytovaly nejpřesnější výsledky rozpoznávání:
 
 * Podporované formáty vstupních obrázků jsou JPEG, PNG, GIF (první snímek), BMP.
-* Velikost souboru obrázku by neměla být větší než 4 MB.
+* Velikost souboru obrázku by neměla být větší než 6 MB.
 * Když vytváříte objekty osob, používejte fotky, které mají různé druhy úhlů a osvětlení.
 * Některé plošky nemusí být rozpoznané z důvodu technických problémů, jako například:
   * Obrázky s extrémním osvětlením, například vážným světelnou signalizací.
@@ -69,6 +69,6 @@ Pomocí následujících tipů zajistěte, aby vaše vstupní image poskytovaly 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste obeznámení s koncepty rozpoznávání obličeje, se naučíte napsat skript, který identifikuje plošky s školenými osobami.
+Teď, když jste obeznámení se základními pojmy rozpoznávání obličeje, můžete napsat skript, který identifikuje plošky s školenými osobami.
 
-* [Identifikace plošek na obrázcích](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [Rychlý úvod do klientské knihovny](../Quickstarts/client-libraries.md)

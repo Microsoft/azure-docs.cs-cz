@@ -4,15 +4,16 @@ description: Přečtěte si, jak pomocí rezervované kapacity ušetřit náklad
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4597268a177773266f0d42eaf5acb9b18bcb3edb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bd43b668c318b825c5c5b6f36fc1da1055863bed
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286525"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599100"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Úspora nákladů na poplatky za Azure Synapse Analytics s využitím rezervované kapacity
 
@@ -26,7 +27,7 @@ Když rezervovaná kapacita vyprší, instance služby Azure Synapse Analytics p
 
 Informace o cenách najdete v [nabídce rezervované kapacity služby Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-Rezervovanou kapacitu služby Azure Synapse Analytics si můžete koupit na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](monthly-payments-reservations.md). Pro nákup rezervované kapacity platí:
+Rezervovanou kapacitu služby Azure Synapse Analytics si můžete koupit na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](./prepare-buy-reservation.md). Pro nákup rezervované kapacity platí:
 
 - Musíte mít roli vlastníka alespoň pro jedno předplatné se smlouvou Enterprise nebo s průběžnými platbami.
 - U předplatných se smlouvou Enterprise musí být na portálu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Pokud je toto nastavení zakázané, musíte být správcem EA.
@@ -45,7 +46,7 @@ Předpokládejme například, že vaše celková spotřeba kapacity služby Azur
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Všechny služby** > **Rezervace**.
 3. Vyberte předplatné. K výběru předplatného, které se použije k placení rezervované kapacity, použijte seznam předplatných. Náklady na rezervovanou kapacitu se účtují pomocí způsobu platby zvoleného pro předplatné. Musí se jednat o předplatné se smlouvou Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo předplatné s průběžnými platbami (číslo nabídky: MS-AZR-0003P nebo MS-AZR-0023P).
-   - V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
+   - V případě předplatného se smlouvou Enterprise se poplatky strhávají ze zůstatku Azure Prepaymentu (dřív označovaný jako peněžní závazek) v rámci dané registrace nebo se účtují jako nadlimitní využití.
    - V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.
 4. Vyberte rozsah. K výběru rozsahu předplatného použijte seznam Rozsah.
    - Rozsah **Jedna skupina prostředků** – sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.

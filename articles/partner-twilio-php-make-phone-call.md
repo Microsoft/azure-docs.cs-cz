@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: e75b5a265ba85813581e39a548d897ea57a33da6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: ef0642b26898249d78f5103e8a8f80198887bed9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080554"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542520"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio v aplikaci PHP v Azure
 Následující příklad ukazuje, jak můžete pomocí Twilio uskutečnit volání z webové stránky PHP hostované v Azure. Výsledná aplikace zobrazí uživateli výzvu k zadání hodnot telefonních hovorů, jak je znázorněno na následujícím snímku obrazovky.
@@ -29,7 +29,7 @@ Chcete-li použít kód v tomto tématu, musíte provést následující:
 1. Získejte účet Twilio a ověřovací token z [konzoly Twilio][twilio_console]. Pokud chcete začít s Twilio, vyhodnoťte ceny na adrese [https://www.twilio.com/pricing][twilio_pricing] . Zkušební účet si můžete zaregistrovat na adrese [https://www.twilio.com/try-twilio][try_twilio] .
 2. Získejte [knihovnu Twilio pro php](https://github.com/twilio/twilio-php) nebo ji nainstalujte jako balíček pro hrušky. Další informace najdete v [souboru Readme](https://github.com/twilio/twilio-php/blob/master/README.md).
 3. Nainstalujte sadu Azure SDK pro PHP. 
-<!-- For an overview of the SDK and instructions on installing it, see [Set up the Azure SDK for PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md) -->
+<!-- For an overview of the SDK and instructions on installing it, see [Set up the Azure SDK for PHP](./app-service/quickstart-php.md) -->
 
 ## <a name="create-a-web-form-for-making-a-call"></a>Vytvoření webového formuláře pro volání
 Následující kód HTML ukazuje, jak vytvořit webovou stránku (**callform.html**), která načte uživatelská data pro volání:
@@ -129,8 +129,8 @@ Další informace o Twilio najdete v tématu [https://www.twilio.com/docs][twili
 [twilio_api_service]: https://api.twilio.com
 [build_php_azure_app]: http://azurephp.interoperabilitybridges.com/articles/build-and-deploy-a-windows-azure-php-application
 [howto_twilio_voice_sms_php]: partner-twilio-php-how-to-use-voice-sms.md
-[howto_blob_storage_php]: https://azure.microsoft.com/documentation/articles/storage-php-how-to-use-blobs/
-[howto_sql_azure_php]: https://azure.microsoft.com/documentation/articles/sql-database-php-how-to-use/
+[howto_blob_storage_php]: ./storage/blobs/storage-quickstart-blobs-php.md
+[howto_sql_azure_php]: ./azure-sql/database/connect-query-content-reference-guide.md
 [twilio_call_properties]: https://www.twilio.com/docs/api/rest/call#instance-properties
 [twilio_docs_security]: https://www.twilio.com/docs/security
 [twilio_docs]: https://www.twilio.com/docs

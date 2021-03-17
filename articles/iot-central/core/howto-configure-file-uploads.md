@@ -4,15 +4,15 @@ description: Jak nakonfigurovat nahrávání souborů z vašich zařízení do c
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/06/2020
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 6b717fd15b25ae4abd2af3520dba2e72f8f9f3a4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ed2eff4d6ccbb9f85dfaf7049fa3cc18711bae0f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556248"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796900"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>Nahrání souborů ze zařízení do cloudu
 
@@ -54,7 +54,7 @@ Pokud chcete zakázat nahrávání souborů zařízení do aplikace IoT Central:
 
 ## <a name="upload-a-file-from-a-device"></a>Nahrání souboru ze zařízení
 
-IoT Central používá možnost nahrávání souborů IoT Hub k tomu, aby zařízení mohla nahrávat soubory. Vzorový kód, který ukazuje, jak nahrát soubory ze zařízení, najdete v [ukázce zařízení IoT Central File upload](https://docs.microsoft.com/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/).
+IoT Central používá možnost nahrávání souborů IoT Hub k tomu, aby zařízení mohla nahrávat soubory. Vzorový kód, který ukazuje, jak nahrát soubory ze zařízení, najdete v [ukázce zařízení IoT Central File upload](/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/).
 
 ## <a name="next-steps"></a>Další kroky
 

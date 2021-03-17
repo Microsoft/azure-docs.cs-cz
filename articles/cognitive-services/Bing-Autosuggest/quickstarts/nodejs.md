@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Node.js'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
+description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu a Node.js.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,15 +10,20 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6a78c2ae4145a65739d5db56a70dca498d7d6a82
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 03545aafa1cbf6efa82ae063e7e966443b1d5e8b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406482"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106117"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Rychlý Start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Node.js
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické návrhy Bingu a číst odpověď JSON. Tato jednoduchá Node.js aplikace pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) .
 
@@ -38,7 +43,7 @@ V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické n�
     let https = require ('https');
     ```
 
-2. Vytvořte proměnné pro hostitele koncového bodu rozhraní API a cestu, klíč předplatného, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a hledaný termín. Použijte globální koncový bod v následujícím kódu nebo použijte vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro hostitele koncového bodu rozhraní API a cestu, klíč předplatného, [kód trhu](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a hledaný termín. Použijte globální koncový bod v následujícím kódu nebo použijte vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -75,20 +80,19 @@ V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické n�
     }
     ```
 
- 1. Ve stejné funkci použijte knihovnu požadavků k odeslání dotazu do rozhraní API. `response_handler`je definován v následující části.
+ 1. Ve stejné funkci použijte knihovnu požadavků k odeslání dotazu do rozhraní API. `response_handler` je definován v následující části.
     
     ```javascript
         //...
         let req = https.request(request_params, response_handler);
         req.end();
-        ```
+    ```
 
-## Create a search handler
+## <a name="create-a-search-handler"></a>Vytvoření obslužné rutiny vyhledávání
 
-1. Define a function named `response_handler` that takes an HTTP call, `response`, as a parameter. 
-Do the following steps within this function:
+1. Definujte funkci s názvem `response_handler` , která přijímá volání http, `response` jako parametr. V rámci této funkce proveďte následující kroky:
     
-    1. Define a variable to contain the body of the JSON response.  
+    1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
 
         ```javascript
         let response_handler = function (response) {
@@ -96,7 +100,7 @@ Do the following steps within this function:
         };
         ```
 
-    2. Store the body of the response when the `data` flag is called
+    2. Uložit tělo odpovědi při `data` volání příznaku
         
         ```javascript
         response.on ('data', function (d) {
@@ -104,7 +108,7 @@ Do the following steps within this function:
         });
         ```
 
-    3. When an `end` flag is signaled, use `JSON.parse()` and `JSON.stringify()` to print the response.
+    3. Pokud `end` je příznak signalizována, použijte `JSON.parse()` a `JSON.stringify()` k vytištění odpovědi.
     
         ```javascript
         response.on ('end', function () {
@@ -117,11 +121,11 @@ Do the following steps within this function:
         });
         ```
 
-2. Call `get_suggestions()` to send the request to the Bing Autosuggest API.
+2. Voláním `get_suggestions()` odešlete požadavek do rozhraní API pro automatické návrhy Bingu.
 
-## Example JSON response
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
-A successful response is returned in JSON, as shown in the following example: 
+Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
 ```json
 {
@@ -193,4 +197,4 @@ A successful response is returned in JSON, as shown in the following example:
 > [Vytvoření jednostránkové webové aplikace](../tutorials/autosuggest.md)
 
 - [Co jsou Automatické návrhy Bingu?](../get-suggested-search-terms.md)
-- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

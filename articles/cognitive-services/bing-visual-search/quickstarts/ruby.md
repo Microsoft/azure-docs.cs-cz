@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Získání přehledů obrázků pomocí REST API a Ruby-Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
+description: Naučte se nahrát obrázek pomocí rozhraní API pro vizuální vyhledávání Bingu a Ruby a získat přehled o imagi.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,23 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: d907e10484b1873974ec9707d0aec1a89ab9eb50
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870364"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499022"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a Ruby
 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Tento rychlý Start použijte k provedení prvního volání rozhraní API pro vizuální vyhledávání Bingu pomocí programovacího jazyka Ruby. Požadavek POST nahraje obrázek do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o obrázcích podobně jako nahraný obrázek.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [Ruby 2,4 nebo novější](https://www.ruby-lang.org/en/downloads/).
 * Získejte klíč předplatného.

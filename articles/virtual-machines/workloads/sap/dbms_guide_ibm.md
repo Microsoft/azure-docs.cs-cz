@@ -3,21 +3,22 @@ title: Nasazení IBM Db2 Azure Virtual Machines DBMS pro úlohy SAP | Microsoft 
 description: Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
 services: virtual-machines-linux,virtual-machines-windows
 author: msjuergent
-manager: patfilot
+manager: bburns
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+keywords: Azure, Db2, SAP, IBM
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/18/2020
+ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3f89f218c82505fd6bc261d41938d4619b32bf8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649608"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675961"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
 
@@ -30,7 +31,7 @@ V této části najdete různé články o úlohách SAP v Azure, které jsou vy
 
 Následující poznámky SAP se týkají SAP v Azure, které se týkají oblasti popsané v tomto dokumentu:
 
-| Číslo poznámky |Title |
+| Číslo poznámky |Nadpis |
 | --- |--- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] |SAP v Microsoft Azure: požadavky na podporu |
@@ -54,9 +55,10 @@ Informace o podporovaných produktech SAP a typech virtuálních počítačů Az
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfiguraci IBM Db2 pro Linux, UNIX a Windows pro instalace SAP na virtuálních počítačích Azure
 ### <a name="storage-configuration"></a>Konfigurace úložiště
-Přehled typů úložiště Azure pro úlohy SAP najdete v článku [Azure Storage typy pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) . všechny soubory databáze musí být uložené na připojených discích úložiště bloků Azure (Windows: NFFS, Linux: XFS, EXT4 nebo EXT3). Všechny typy síťových jednotek nebo vzdálených sdílených složek, jako jsou následující služby Azure **, nejsou pro soubory databáze podporované:** 
+Přehled typů úložiště Azure pro úlohy SAP najdete v článku [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md) . všechny soubory databáze musí být uložené na připojených discích úložiště bloků Azure (Windows: NFFS, Linux: XFS, EXT4 nebo EXT3). Všechny typy síťových jednotek nebo vzdálených sdílených složek, jako jsou následující služby Azure **, nejsou pro soubory databáze podporované:** 
 
-* [Microsoft Azure Souborová služba](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure Souborová služba](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 Pomocí disků založených na službě Azure Page Storage nebo Managed Disks se příkazy provedené v části [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) vztahují i na nasazení s využitím Db2 DBMS.
@@ -71,7 +73,7 @@ Alternativně můžete použít fondy úložiště Windows (k dispozici jenom ve
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je nutné zadat velikost sektoru fyzického disku 512 KB. Při používání fondů úložiště Windows je potřeba vytvořit fondy úložiště ručně prostřednictvím rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault` . Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+Pro disky obsahující cesty úložiště Db2 pro vaše `sapdata` `saptmp` adresáře a musíte zadat velikost sektoru fyzického disku 512 KB. Při používání fondů úložiště Windows je potřeba vytvořit fondy úložiště ručně prostřednictvím rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault` . Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 U virtuálních počítačů Azure řady M-Series se při použití Azure Akcelerátor zápisu můžou latence zápisu do protokolů transakcí snížit podle faktorů v porovnání s výkonem Azure Premium Storage. Proto byste měli nasadit Azure Akcelerátor zápisu pro virtuální pevné disky, které tvoří svazek pro protokoly transakcí Db2. Podrobnosti lze přečíst v dokumentu [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
 
@@ -79,58 +81,58 @@ U virtuálních počítačů Azure řady M-Series se při použití Azure Akcele
 
 Aplikace IBM Db2 pro SAP NetWeaver se podporují u libovolného typu virtuálního počítače uvedeného v poznámce SAP Support Note [1928533].  Doporučené rodiny virtuálních počítačů pro spuštění databáze IBM Db2 jsou Esd_v4/Eas_v4/Es_v3 a M/M_v2-Series pro velké databáze s více terabajty. Zvýšení výkonu zápisu na disk protokolu transakcí IBM Db2 lze zlepšit povolením Akcelerátor zápisu řady M-Series. 
 
-Následuje základní konfigurace pro různé velikosti a použití nasazení SAP na Db2 z malých až velkých důvodů:
+Následuje základní konfigurace pro různé velikosti a použití nasazení SAP na Db2 z malých až velkých. Seznam je založený na službě Azure Premium Storage. Azure Ultra disk se ale plně podporuje i s Db2 a dá se taky použít. Jednoduše použijte hodnoty pro kapacitu, propustnost shluku a shlukový IOPS a definujte konfiguraci Ultra disk. IOPS pro/DB2//log_dir můžete omezit na <SID> přibližně 5000 IOPS. 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>Velmi malý systém SAP: velikost databáze 50-200 GB: ukázkový správce řešení
 | Název/velikost virtuálního počítače |Přípojný bod Db2 |Disk Azure typu Premium |Počet disků |IOPS |Propustnost [MB/s] |Velikost [GB] |Shlukový IOPS |Shlukový p [GB] | Velikost pruhu | Ukládání do mezipaměti |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
-|vCPU: 4 |/DB2/ <SID> /sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 kB |ReadOnly |
-|Paměť RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
-| |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 kB ||
-| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
+|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3 500  |170  ||  |
+|vCPU: 4 |/DB2/ <SID> /sapdata |P10 |2 |1 000  |200  |256  |7 000  |340  |256 kB |ReadOnly |
+|Paměť RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3 500  |170  | ||
+| |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7 000  |340  |64 kB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3 500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>Malý systém SAP: velikost databáze 200-750 GB: sada malých firem
 | Název/velikost virtuálního počítače |Přípojný bod Db2 |Disk Azure typu Premium |Počet disků |IOPS |Propustnost [MB/s] |Velikost [GB] |Shlukový IOPS |Shlukový p [GB] | Velikost pruhu | Ukládání do mezipaměti |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU: 16 |/DB2/ <SID> /sapdata |P15 |4 |4,400  |500  |1,024  |14,000  |680  |256 kB |ReadOnly |
-|Paměť RAM: 128 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 kB ||
-| |/DB2/ <SID> /log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 kB ||
-| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
+|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3 500  |170  || |
+|vCPU: 16 |/DB2/ <SID> /sapdata |P15 |4 |4 400  |500  |1,024  |14 000  |680  |256 kB |ReadOnly |
+|Paměť RAM: 128 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7 000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P15 |2 |2 200  |250  |512  |7 000  |340  |64 kB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3 500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>Střední systém SAP: velikost databáze 500-1000 GB: sada malých firem
 | Název/velikost virtuálního počítače |Přípojný bod Db2 |Disk Azure typu Premium |Počet disků |IOPS |Propustnost [MB/s] |Velikost [GB] |Shlukový IOPS |Shlukový p [GB] | Velikost pruhu | Ukládání do mezipaměti |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU: 32 |/DB2/ <SID> /sapdata |P30 |2 |10,000  |400  |2,048  |10,000  |400  |256 kB |ReadOnly |
-|Paměť RAM: 256 GiB |/DB2/ <SID> /saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 kB ||
-| |/DB2/ <SID> /log_dir |P20 |2 |4,600  |300  |1,024  |7,000  |340  |64 kB ||
-| |/DB2/ <SID> /offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
+|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3 500  |170  || |
+|vCPU: 32 |/DB2/ <SID> /sapdata |P30 |2 |10 000  |400  |2,048  |10 000  |400  |256 kB |ReadOnly |
+|Paměť RAM: 256 GiB |/DB2/ <SID> /saptmp |P10 |2 |1 000  |200  |256  |7 000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P20 |2 |4 600  |300  |1,024  |7 000  |340  |64 kB ||
+| |/DB2/ <SID> /offline_log_dir |P15 |1 |1 100  |125  |256  |3 500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>Velký systém SAP: velikost databáze 750-2000 GB: Business Suite
 | Název/velikost virtuálního počítače |Přípojný bod Db2 |Disk Azure typu Premium |Počet disků |IOPS |Propustnost [MB/s] |Velikost [GB] |Shlukový IOPS |Shlukový p [GB] | Velikost pruhu | Ukládání do mezipaměti |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU: 64 |/DB2/ <SID> /sapdata |P30 |4 |20,000  |800  |4,096  |20,000  |800  |256 kB |ReadOnly |
-|Paměť RAM: 504 GiB |/DB2/ <SID> /saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 kB ||
-| |/DB2/ <SID> /log_dir |P20 |4 |9,200  |600  |2,048  |14,000  |680  |64 kB ||
-| |/DB2/ <SID> /offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
+|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3 500  |170  || |
+|vCPU: 64 |/DB2/ <SID> /sapdata |P30 |4 |20 000  |800  |4,096  |20 000  |800  |256 kB |ReadOnly |
+|Paměť RAM: 504 GiB |/DB2/ <SID> /saptmp |P15 |2 |2 200  |250  |512  |7 000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P20 |4 |9 200  |600  |2,048  |14 000  |680  |64 kB ||
+| |/DB2/ <SID> /offline_log_dir |P20 |1 |2 300  |150  |512  |3 500  |170  || |
 
-#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>Velký systém SAP pro více terabajtů: velikost databáze 2 TB +: globální systém sady Business Suite
+#### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>Velký systém SAP pro více terabajtů: velikost databáze 2 TB +: globální systém sady Business Suite
 | Název/velikost virtuálního počítače |Přípojný bod Db2 |Disk Azure typu Premium |Počet disků |IOPS |Propustnost [MB/s] |Velikost [GB] |Shlukový IOPS |Shlukový p [GB] | Velikost pruhu | Ukládání do mezipaměti |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
-|vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30,000  |1,000  |8,192  |30,000  |1,000  |256 kB |ReadOnly |
-|Paměť RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4,600  |300  |1,024  |7,000  |340  |128 kB ||
-| |/DB2/ <SID> /log_dir |P30 |4 |20,000  |800  |4,096  |20,000  |800  |64 kB |WriteAccelerator |
-| |/DB2/ <SID> /offline_log_dir |P30 |1 |5,000  |200  |1,024  |5,000  |200  || |
+|M128s |/db2 |P10 |1 |500  |100  |128  |3 500  |170  || |
+|vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30 000  |1,000  |8,192  |30 000  |1,000  |256 kB |ReadOnly |
+|Paměť RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4 600  |300  |1,024  |7 000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P30 |4 |20 000  |800  |4,096  |20 000  |800  |64 kB |WriteAccelerator |
+| |/DB2/ <SID> /offline_log_dir |P30 |1 |5 000  |200  |1,024  |5 000  |200  || |
 
 
-### <a name="backuprestore"></a>Zálohování/obnovení
+### <a name="backuprestore"></a>Zálohování a obnovení
 Funkce zálohování a obnovení pro IBM Db2 pro LUW se podporuje stejným způsobem jako u standardních operačních systémů Windows Server a Hyper-V.
 
-Musíte se ujistit, že máte zavedenou platnou strategii zálohování databáze. 
+Ujistěte se, že máte na místě platnou strategii zálohování databáze. 
 
 Stejně jako v případě nasazení v holém prostředí závisí výkon zálohování a obnovení na tom, kolik svazků je možné paralelně číst a co může být propustnost těchto svazků. Navíc spotřeba procesoru využitá kompresí zálohování může hrát významnou roli na virtuálních počítačích s až osmi vlákny procesoru. Proto může jeden předpokládat:
 
@@ -160,7 +162,7 @@ Server Microsoft Clustering (MSCS) není podporován.
 
 Podporuje se zotavení po havárii Db2 s vysokou dostupností (HADR). Pokud virtuální počítače konfigurace HA obsahují překlad IP adres, nastavení v Azure se neliší od žádného nastavení, které se provádí v místním prostředí. Nedoporučuje se spoléhat jenom na rozlišení IP.
 
-Nepoužívejte geografickou replikaci pro účty úložiště, které ukládají databázové disky. Další informace najdete v dokumentu věnovaném [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
+Nepoužívejte Geo-Replication pro účty úložiště, které ukládají databázové disky. Další informace najdete v dokumentu věnovaném [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
 
 ### <a name="accelerated-networking"></a>Akcelerované síťové služby
 Pro nasazení Db2 ve Windows se důrazně doporučuje používat funkce Azure pro urychlené síťové služby, jak je popsáno v dokumentu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení týkající se [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
@@ -175,7 +177,7 @@ Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 Všechny ostatní obecné oblasti, jako jsou skupiny dostupnosti Azure nebo monitorování SAP, jsou popsané v dokumentu [týkajícím se nasazení azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) pro nasazení virtuálních počítačů s využitím i databáze IBM.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -225,6 +227,12 @@ Všechny ostatní obecné oblasti, jako jsou skupiny dostupnosti Azure nebo moni
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
+
+
+## <a name="next-steps"></a>Další kroky
+Přečtěte si článek 
+
+- [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md)
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com

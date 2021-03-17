@@ -1,20 +1,25 @@
 ---
-title: Co je model a balíček cloudové služby | Microsoft Docs
+title: Co je model a balíček cloudové služby (Classic) | Microsoft Docs
 description: Popisuje model cloudové služby (. csdef,. cscfg) a balíček (. cspkg) v Azure.
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 1cf8e966b80e005a0cb2cf7ea46f355e38cb0011
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79247485"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741532"
 ---
-# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co je model cloudové služby a jak ho mám zabalit?
+# <a name="what-is-the-cloud-service-classic-model-and-how-do-i-package-it"></a>Co je model cloudové služby (Classic) a jak ho zabalit?
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Cloudová služba se vytvoří ze tří součástí, definice služby *(. csdef)*, konfigurace služby *(. cscfg)* a balíčku služby *(. cspkg)*. Soubory **ServiceDefinition. csdef** a **ServiceConfig. cscfg** jsou založené na jazyce XML a popisují strukturu cloudové služby a způsob jejich konfigurace. souhrnně označovaný jako model. **ServicePack. cspkg** je soubor zip, který je generován z **ServiceDefinition. csdef** a mimo jiné, obsahuje všechny požadované binární závislosti. Azure vytvoří cloudovou službu z nástroje **ServicePack. cspkg** a **ServiceConfig. cscfg**.
 
 Jakmile je cloudová služba spuštěná v Azure, můžete ji překonfigurovat prostřednictvím souboru **ServiceConfig. cscfg** , ale nemůžete definici změnit.
@@ -289,9 +294,6 @@ Používám aplikaci Visual Studio a chci...
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md
 [vs_remote]: cloud-services-role-enable-remote-desktop-visual-studio.md
-[vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
-[vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
-[vs_create]: ../vs-azure-tools-azure-project-create.md
-
-
-
+[vs_deploy]: /visualstudio/azure/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio
+[vs_reconfigure]: /visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service
+[vs_create]: /visualstudio/azure/vs-azure-tools-azure-project-create

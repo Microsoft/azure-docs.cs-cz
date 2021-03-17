@@ -2,18 +2,18 @@
 title: Analýza mínění na Twitteru v reálném čase pomocí Azure Stream Analytics
 description: Tento článek popisuje, jak použít Stream Analytics analýzy mínění pro Twitter v reálném čase. Podrobné pokyny pro generování událostí pro data na aktivním řídicím panelu.
 services: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040771"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734830"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analýza subjektivního hodnocení na Twitteru v reálném čase v Azure Stream Analytics
 
@@ -33,17 +33,21 @@ Aby bylo možné v reálném čase na Twitteru identifikovat témata týkající
 
 V této příručce se naučíte používat klientskou aplikaci, která se připojuje k Twitteru a hledá tweety s určitými hashtagy (které můžete nastavit). Pokud chcete spustit aplikaci a analyzovat tweety pomocí Azure Stream Analytics, musíte mít následující:
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
 * Účet na [Twitteru](https://twitter.com) .
 
 * Aplikace TwitterClientCore, která čte kanál Twitteru. Chcete-li získat tuto aplikaci, Stáhněte si [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore).
 
-* Nainstalujte [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) verze 2.1.0.
+* Nainstalujte [.NET Core CLI](/dotnet/core/tools/?tabs=netcore2x) verze 2.1.0.
+
+Níže je uvedená Architektura řešení, kterou budete implementovat.
+
+   ![Diagram znázorňující různé části služeb a aplikací, které se používají k sestavení řešení.](./media/stream-analytics-twitter-sentiment-analysis-trends/solution-diagram.png "Diagram řešení")
 
 ## <a name="create-an-event-hub-for-streaming-input"></a>Vytvoření centra událostí pro vstup streamování
 
-Ukázková aplikace generuje události a předává je do centra událostí Azure. Azure Event Hubs jsou upřednostňovanou metodou přijímání událostí pro Stream Analytics. Další informace najdete v dokumentaci k [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md).
+Ukázková aplikace generuje události a předává je do centra událostí Azure. Azure Event Hubs jsou upřednostňovanou metodou přijímání událostí pro Stream Analytics. Další informace najdete v dokumentaci k [Azure Event Hubs](../event-hubs/event-hubs-about.md).
 
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>Vytvoření oboru názvů centra událostí a centra událostí
 V této části vytvoříte obor názvů centra událostí a přidáte do tohoto oboru názvů centrum událostí. Obory názvů centra událostí se používají k logickému seskupení souvisejících instancí sběrnice událostí. 
@@ -56,7 +60,7 @@ V této části vytvoříte obor názvů centra událostí a přidáte do tohoto
  
 4. Až se dokončí nasazení oboru názvů, přejděte do skupiny prostředků a v seznamu prostředků Azure Najděte obor názvů centra událostí. 
 
-5. Z nového oboru názvů vyberte ** + &nbsp; centrum událostí**. 
+5. Z nového oboru názvů vyberte **+ &nbsp; centrum událostí**. 
 
 6. Pojmenujte nové centrum událostí *socialtwitter-eh*. Můžete použít jiný název. Pokud to uděláte, poznamenejte si ho, protože ho budete potřebovat později. Pro centrum událostí není nutné nastavovat žádné jiné možnosti.
  
@@ -106,11 +110,11 @@ Pokud ještě nemáte aplikaci Twitter, kterou můžete použít pro tento prův
 
 1. Z webového prohlížeče, navštivte [Twitter pro vývojáře](https://developer.twitter.com/en/apps), vytvořte vývojářský účet a vyberte **vytvořit aplikaci**. Může se zobrazit zpráva oznamující, že je potřeba požádat o vývojářský účet pro Twitter. Nebojte se tak a po schválení vaší aplikace by se měl zobrazit potvrzovací e-mail. Schválení pro vývojářský účet může trvat několik dní.
 
-   ![Podrobnosti o aplikaci Twitter](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Podrobnosti o aplikaci Twitter")
+   ![Snímek obrazovky se zobrazí tlačítko vytvořit aplikaci.](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Podrobnosti o aplikaci Twitter")
 
 2. Na stránce **Create an application** (Vytvoření aplikace) zadejte podrobnosti o nové aplikaci a pak vyberte **Create your Twitter application** (Vytvořit aplikaci Twitter).
 
-   ![Podrobnosti o aplikaci Twitter](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Podrobnosti o aplikaci Twitter")
+   ![Snímek obrazovky se zobrazí v podokně podrobností aplikace, kde můžete zadat hodnoty pro vaši aplikaci.](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Podrobnosti o aplikaci Twitter")
 
 3. Na stránce aplikace vyberte kartu **klíče a tokeny** a zkopírujte hodnoty **klíč rozhraní API příjemce** a **tajného klíče rozhraní API příjemce**. Pokud chcete generovat přístupové tokeny, vyberte také možnost **vytvořit** v části **přístupový token a tajný klíč přístupového tokenu** . Zkopírujte hodnoty **Access Token** (Přístupový token) a **Access Token Secret** (Tajný klíč přístupového tokenu).
 
@@ -152,9 +156,9 @@ Teď, když jsou události ve službě Twitter streamované v reálném čase, m
 
 ## <a name="specify-the-job-input"></a>Zadat vstup úlohy
 
-1. V úloze Stream Analytics v nabídce vlevo v části **topologie úlohy**vyberte **vstupy** .
+1. V úloze Stream Analytics v nabídce vlevo v části **topologie úlohy** vyberte **vstupy** .
 
-2. Vyberte ** + &nbsp; přidat datový proud**  >  **centrum událostí**vstupu. Vyplňte **nový vstupní** formulář s následujícími informacemi:
+2. Vyberte **+ &nbsp; přidat datový proud**  >  **centrum událostí** vstupu. Vyplňte **nový vstupní** formulář s následujícími informacemi:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
@@ -168,11 +172,11 @@ Teď, když jsou události ve službě Twitter streamované v reálném čase, m
 
 ## <a name="specify-the-job-query"></a>Zadat dotaz úlohy
 
-Stream Analytics podporuje jednoduchý deklarativní model dotazu, který popisuje transformace. Další informace o tomto jazyce najdete v referenčních informacích k jazyku [Azure Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). Tento průvodce vám pomůže vytvořit a otestovat několik dotazů přes data z Twitteru.
+Stream Analytics podporuje jednoduchý deklarativní model dotazu, který popisuje transformace. Další informace o tomto jazyce najdete v referenčních informacích k jazyku [Azure Stream Analytics dotazů](/stream-analytics-query/stream-analytics-query-language-reference). Tento průvodce vám pomůže vytvořit a otestovat několik dotazů přes data z Twitteru.
 
-Chcete-li porovnat počet zmínk mezi tématy, můžete použít [bubnové okno](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) a získat počet slov, který bude v tématu každých pět sekund.
+Chcete-li porovnat počet zmínk mezi tématy, můžete použít [bubnové okno](/stream-analytics-query/tumbling-window-azure-stream-analytics) a získat počet slov, který bude v tématu každých pět sekund.
 
-1. V okně **Přehled**úlohy vyberte **Upravit dotaz** v pravém horním rohu pole dotazu. Azure obsahuje seznam vstupů a výstupů, které jsou pro úlohu nakonfigurované, a umožňuje vytvořit dotaz pro transformaci vstupního streamu, když se pošle do výstupu.
+1. V okně **Přehled** úlohy vyberte **Upravit dotaz** v pravém horním rohu pole dotazu. Azure obsahuje seznam vstupů a výstupů, které jsou pro úlohu nakonfigurované, a umožňuje vytvořit dotaz pro transformaci vstupního streamu, když se pošle do výstupu.
 
 2. V editoru dotazů změňte dotaz na následující:
 
@@ -205,7 +209,7 @@ V této příručce se naučíte zapisovat agregované události se změnami z d
 
 1. V části **topologie úlohy** v levé navigační nabídce vyberte **výstupy**. 
 
-2. Na stránce **výstupy** klikněte na ** + &nbsp; Přidat** a **BLOB Storage/Data Lake Storage Gen2**:
+2. Na stránce **výstupy** klikněte na **+ &nbsp; Přidat** a **BLOB Storage/Data Lake Storage Gen2**:
 
    * **Alias pro výstup**: použijte název `TwitterStream-Output` . 
    * **Možnosti importu**: vyberte **ze svých předplatných možnost vybrat úložiště**.
@@ -222,14 +226,14 @@ Je určen vstup, dotaz a výstup úlohy. Jste připraveni začít úlohu Stream 
 
 2. V přehledu úlohy vyberte **Spustit**.
 
-3. Na stránce **Spustit úlohu** pro **čas spuštění výstupu úlohy**vyberte **nyní** a pak vyberte **Spustit**.
+3. Na stránce **Spustit úlohu** pro **čas spuštění výstupu úlohy** vyberte **nyní** a pak vyberte **Spustit**.
 
 ## <a name="get-support"></a>Získání podpory
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

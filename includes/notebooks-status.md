@@ -3,17 +3,14 @@ author: joshuapartlow
 ms.author: joshuapa
 ms.service: azure-notebooks
 ms.topic: include
-ms.date: 07/01/2020
-ms.openlocfilehash: 5011a5d265c61cf26520f6c012037a67a8afacae
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 02/08/2020
+ms.openlocfilehash: bbf834a25c65403933d7576eb059b86e6e22b94c
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181487"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987490"
 ---
 > [!IMPORTANT]
-> Dne 9. října 2020 se web Azure Notebooks verze Public Preview vyřadí z provozu a nahradí ho integrované služby ze sady Visual Studio, platformy Azure a GitHubu.
-> [Přečtěte si další informace](https://aka.ms/aznb-notebooks-at-msft/) o možnostech a našich dalších poznámkových blocích od Microsoftu.
->
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> 15. ledna 2021 byl web Azure Notebooks Public Preview vyřazený a byl nahrazen integrovanými službami ze sady Visual Studio, Azure a GitHubu. Pokud chcete vytvořit nový nebo spustit obsah poznámkového bloku, [Přečtěte si další informace](https://aka.ms/aznb-notebooks-at-msft/) o našich dalších poznámkových blocích od Microsoftu.
+

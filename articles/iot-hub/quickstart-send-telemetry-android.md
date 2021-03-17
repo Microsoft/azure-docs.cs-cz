@@ -1,5 +1,5 @@
 ---
-title: Odeslání telemetrie do služby Azure IoT Hub Starter (Android) | Microsoft Docs
+title: Rychlý Start – odeslání telemetrie do služby Azure IoT Hub rychlý Start (Android) | Microsoft Docs
 description: V tomto rychlém startu spustíte ukázkovou aplikaci pro Android, která bude odesílat simulovanou telemetrii do služby IoT Hub a číst telemetrii ze služby IoT Hub ke zpracování v cloudu.
 author: wesmc7777
 manager: philmea
@@ -11,14 +11,15 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
+- devx-track-azurecli
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: 1e5e11d5d04c31fa77adcb0488447c91b0d05254
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e1e44f5aa4250d63c2addafd2661b09bae2b38e3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317956"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199913"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Rychlý Start: odeslání telemetrie IoT ze zařízení s Androidem
 
@@ -36,15 +37,7 @@ V tomto rychlém startu odešlete telemetrii do Azure IoT Hub z aplikace pro And
 
 * Port 8883 otevřete v bráně firewall. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
-
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -71,7 +64,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyAndroidDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyAndroidDevice --output table
     ```
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá takto:
@@ -90,7 +83,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. V Android Studio klikněte na **File**  >  **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
+3. V Android Studio klikněte na   >  **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
 
    > [!NOTE]
    > Pokud synchronizace projektu neproběhne úspěšně, může to být z některého z následujících důvodů:
@@ -107,7 +100,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrie z centra
 
-V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) , abyste mohli monitorovat zprávy zařízení odesílané zařízením s Androidem.
+V této části použijete Azure Cloud Shell s [rozšířením IoT](/cli/azure/ext/azure-iot/iot) , abyste mohli monitorovat zprávy zařízení odesílané zařízením s Androidem.
 
 1. Pomocí služby Azure Cloud Shell spusťte následující příkaz, který provede připojení a čtení zpráv z centra IoT:
 

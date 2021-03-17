@@ -1,14 +1,16 @@
 ---
 title: Režim učni – Přizpůsobte si
-description: ''
+description: Naučte se, jak pomocí režimu učni získat důvěru v modelu beze změny kódu.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 531917d9c48915f71354b4cd35747ecd9d33a6f8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385026"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Použití režimu učně ke školení přizpůsobené aplikace bez ovlivnění vaší stávající aplikace
 
@@ -30,7 +32,7 @@ V režimu učni máte důvěru v rámci služby přizpůsobeného a funkce machi
 
 K použití režimu učni mají dva hlavní důvody:
 
-* Zmírnění **studeného**startu: režim učni pomáhá spravovat a vyhodnocovat náklady na "nový" školicí čas modelu – Pokud nevrací nejlepší akci a nedosáhli uspokojivé úrovně efektivity přibližně 60-80%.
+* Zmírnění **studeného** startu: režim učni pomáhá spravovat a vyhodnocovat náklady na "nový" školicí čas modelu – Pokud nevrací nejlepší akci a nedosáhli uspokojivé úrovně efektivity přibližně 60-80%.
 * **Ověřování funkcí akcí a kontextu**: funkce odesílané v akcích a kontextu mohou být nedostatečné nebo nepřesné, příliš málo, jsou příliš velké, nesprávné nebo příliš specifické pro přizpůsobení výuky, aby dosáhli ideální míry účinnosti. Pomocí [hodnocení funkcí](concept-feature-evaluation.md) můžete vyhledat a opravit problémy s funkcemi.
 
 ## <a name="when-should-you-use-apprentice-mode"></a>Kdy byste měli použít režim učni?
@@ -57,11 +59,11 @@ Režim učni je užitečný pro vývojáře, odborníky na data a pracovníky pr
 
 Naučíte se, když se v režimu učni liší od režimu online následujícími způsoby.
 
-|Oblast|Začátečnický režim|Online režim|
+|Plošný|Začátečnický režim|Online režim|
 |--|--|--|
 |Dopad na činnost koncového uživatele|Stávající chování uživatelů můžete použít ke školení přizpůsobeného uživatele tím, že mu umožníte sledovat (neovlivňuje), co vaše **výchozí akce** bude, a to, jakou má získaná měna. To znamená, že budou mít vliv na uživatelské prostředí a jejich obchodní výsledky.|Zobrazit horní akci vrácenou z volání pořadí, která ovlivní chování uživatele|
 |Rychlost učení|Přizpůsobování se v režimu učně pomaleji, než když se naučíte v online režimu. V režimu učni se můžete seznámit jenom s tím, že se vyhodnotí ceny získané **výchozí akcí**, což omezuje rychlost učení, protože není možné provádět průzkum.|Rychleji se naučí, protože může využít aktuální model a prozkoumat nové trendy.|
-|Strop pro efektivitu studia|Přizpůsobování může být přibližná, velmi zřídka a nikdy nepřesahují výkon základní obchodní logiky (celková celková hodnota dosažená **výchozí akcí** každého volání pořadí).|Přizpůsobený modul by měl přesáhnout směrný plán aplikací a v čase, kdy se zablokuje, byste měli provádět testování v režimu offline a vyhodnocení funkcí, aby bylo možné dál získat vylepšení modelu. |
+|Strop pro efektivitu studia|Přizpůsobování může být přibližná, velmi zřídka a nikdy nepřesahují výkon základní obchodní logiky (celková celková hodnota dosažená **výchozí akcí** každého volání pořadí). Tato hranice odhadu se snižuje o průzkum. Například s průzkumem na 20% je velmi nepravděpodobné, že výkon režimu učni by přesáhl 80%, a 60% je přiměřeným cílem, při kterém se dokončí online režim.|Přizpůsobený modul by měl přesáhnout směrný plán aplikací a v čase, kdy se zablokuje, byste měli provádět testování v režimu offline a vyhodnocení funkcí, aby bylo možné dál získat vylepšení modelu. |
 |Hodnota rozhraní API pro řazení pro rewardActionId|Činnost uživatelů se netýká, protože _rewardActionId_ je vždy první akcí, kterou jste odeslali v žádosti o zařazení. Jinými slovy, rozhraní API řazení není pro vaši aplikaci v režimu učni nic viditelné. Rozhraní API pro odměnu v aplikaci by se nemělo měnit způsob, jakým používá API pro odměnu mezi jedním a druhým režimem.|Uživatelské prostředí se změní podle _rewardActionId_ , který přizpůsobuje pro vaši aplikaci. |
 |Vyhodnocení|Přizpůsobuje srovnání celkových odměna, které vaše výchozí obchodní logika načítá, a přizpůsobení součtu odměna by se v online režimu v tomto okamžiku dostal. V Azure Portal pro daný prostředek je k dispozici porovnání.|Vyhodnotit efektivitu přizpůsobeného přizpůsobeného [offline hodnocením](concepts-offline-evaluation.md), které vám umožní porovnat celkový přizpůsobený program na základě potenciálních odchylek v rámci směrného plánu aplikace.|
 
@@ -88,7 +90,7 @@ Je vhodné provést testy přizpůsobení a/B jenom po ověření a učení v on
 
 I v případě, že je _přidaný přidaný,_ je při ověřování dat pro přizpůsobení školení k dispozici stejná výzva. Místo toho se dá použít režim učni, s 100% provozu a všemi uživateli, kteří získají řízení (neovlivněné) prostředí.
 
-Jakmile budete mít případ použití pomocí přizpůsobeného a online učení, experimenty a/B vám umožní provádět řízené kohorty a vědecké porovnání výsledků, které mohou být složitější než signály využité k dispozici. Příkladem otázky, kterou může test A/B odpovídat:`In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
+Jakmile budete mít případ použití pomocí přizpůsobeného a online učení, experimenty a/B vám umožní provádět řízené kohorty a vědecké porovnání výsledků, které mohou být složitější než signály využité k dispozici. Příkladem otázky, kterou může test A/B odpovídat: `In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
 
 ## <a name="next-steps"></a>Další kroky
 

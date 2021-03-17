@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6ea16da3844b8098d87d65e1016f92c69ae34067
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035463"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945162"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Přidružení veřejné IP adresy k virtuálnímu počítači
 
@@ -26,11 +26,11 @@ V tomto článku se dozvíte, jak přidružit veřejnou IP adresu k existující
 
 K virtuálnímu počítači můžete přidružit veřejnou IP adresu pomocí [Azure Portal](#azure-portal), [rozhraní příkazového řádku](#azure-cli) Azure (CLI) nebo [PowerShellu](#powershell) .
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyhledejte virtuální počítač, do kterého chcete přidat veřejnou IP adresu, nebo ho vyhledejte a vyberte.
-3. V části **Nastavení**vyberte **sítě**a pak vyberte síťové rozhraní, do kterého chcete přidat veřejnou IP adresu, jak je znázorněno na následujícím obrázku:
+3. V části **Nastavení** vyberte **sítě** a pak vyberte síťové rozhraní, do kterého chcete přidat veřejnou IP adresu, jak je znázorněno na následujícím obrázku:
 
    ![Vybrat síťové rozhraní](./media/associate-public-ip-address-vm/select-nic.png)
 
@@ -44,7 +44,7 @@ K virtuálnímu počítači můžete přidružit veřejnou IP adresu pomocí [Az
    > [!NOTE]
    > Veřejné IP adresy jsou přidruženy k konfiguracím protokolu IP pro síťové rozhraní. V předchozím obrázku má síťové rozhraní jednu konfiguraci protokolu IP. Pokud má síťové rozhraní více konfigurací protokolu IP, všechny se zobrazí v seznamu a Vy byste vybrali konfiguraci protokolu IP, ke které chcete přidružit veřejnou IP adresu.
 
-5. Vyberte možnost **povoleno**a pak vyberte možnost **IP adresa (*Konfigurace požadovaných nastavení*)**. Vyberte existující veřejnou IP adresu, která automaticky zavře pole **zvolit veřejnou IP adresu** . Pokud nemáte uvedené žádné veřejné IP adresy, musíte si ho vytvořit. Informace o postupu najdete v tématu [Vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address). Vyberte **Save (Uložit**), jak je znázorněno na následujícím obrázku, a potom pole pro konfiguraci protokolu IP zavřete.
+5. Vyberte možnost **povoleno** a pak vyberte možnost **IP adresa (*Konfigurace požadovaných nastavení*)**. Vyberte existující veřejnou IP adresu, která automaticky zavře pole **zvolit veřejnou IP adresu** . Pokud nemáte uvedené žádné veřejné IP adresy, musíte si ho vytvořit. Informace o postupu najdete v tématu [Vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address). Vyberte **Save (Uložit**), jak je znázorněno na následujícím obrázku, a potom pole pro konfiguraci protokolu IP zavřete.
 
    ![Povolit veřejnou IP adresu](./media/associate-public-ip-address-vm/enable-public-ip-address.png)
 
@@ -65,7 +65,7 @@ K virtuálnímu počítači můžete přidružit veřejnou IP adresu pomocí [Az
 Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)nebo použijte Azure Cloud Shell. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. V následujících příkazech rozhraní příkazového řádku vyberte tlačítko **vyzkoušet** . Výběrem možnosti **vyzkoušet** vyvoláte Cloud Shell, pomocí které se můžete přihlásit ke svému účtu Azure.
 
 1. Pokud používáte rozhraní příkazového řádku místně v bash, přihlaste se k Azure pomocí `az login` .
-2. Veřejná IP adresa je přidružená ke konfiguraci protokolu IP síťového rozhraní připojeného k virtuálnímu počítači. Pomocí příkazu [AZ Network nic-IP-config Update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) PŘIDRUŽTE veřejnou IP adresu ke konfiguraci protokolu IP. Následující příklad přidruží existující veřejnou IP adresu s názvem *myVMPublicIP* k konfiguraci protokolu IP s názvem *ipconfigmyVM* stávajícího síťového rozhraní s názvem *myVMVMNic* , které existuje ve skupině prostředků s názvem *myResourceGroup*.
+2. Veřejná IP adresa je přidružená ke konfiguraci protokolu IP síťového rozhraní připojeného k virtuálnímu počítači. Pomocí příkazu [AZ Network nic-IP-config Update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) PŘIDRUŽTE veřejnou IP adresu ke konfiguraci protokolu IP. Následující příklad přidruží existující veřejnou IP adresu s názvem *myVMPublicIP* k konfiguraci protokolu IP s názvem *ipconfigmyVM* stávajícího síťového rozhraní s názvem *myVMVMNic* , které existuje ve skupině prostředků s názvem *myResourceGroup*.
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -75,7 +75,7 @@ Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-c
      --public-ip-address myVMPublicIP
    ```
 
-   - Pokud nemáte existující veřejnou IP adresu, vytvořte ji pomocí příkazu [AZ Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) . Například následující příkaz vytvoří veřejnou IP adresu s názvem *myVMPublicIP* ve skupině prostředků s názvem *myResourceGroup*.
+   - Pokud nemáte existující veřejnou IP adresu, vytvořte ji pomocí příkazu [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) . Například následující příkaz vytvoří veřejnou IP adresu s názvem *myVMPublicIP* ve skupině prostředků s názvem *myResourceGroup*.
   
      ```azurecli-interactive
      az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
@@ -84,7 +84,7 @@ Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-c
      > [!NOTE]
      > Předchozí příkaz vytvoří veřejnou IP adresu s výchozími hodnotami pro několik nastavení, která budete možná chtít přizpůsobit. Další informace o všech nastaveních veřejné IP adresy najdete v tématu [Vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address). Adresa je přiřazená z fondu veřejných IP adres, které se používají pro každou oblast Azure. Seznam fondů adres používaných v jednotlivých oblastech najdete v tématu [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653).
 
-   - Pokud neznáte název síťového rozhraní připojeného k vašemu VIRTUÁLNÍmu počítači, zobrazte ho pomocí příkazu [AZ VM nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) . Například následující příkaz vypíše názvy síťových rozhraní připojených k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+   - Pokud neznáte název síťového rozhraní připojeného k vašemu VIRTUÁLNÍmu počítači, zobrazte ho pomocí příkazu [AZ VM nic list](/cli/azure/vm/nic#az-vm-nic-list) . Například následující příkaz vypíše názvy síťových rozhraní připojených k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -98,13 +98,13 @@ Nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-c
 
      V předchozím příkladu je *myVMVMNic* název síťového rozhraní.
 
-   - Pokud název konfigurace protokolu IP pro síťové rozhraní neznáte, načtěte ho pomocí příkazu [AZ Network nic IP-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) . Například následující příkaz vypíše názvy konfigurací IP pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
+   - Pokud název konfigurace protokolu IP pro síťové rozhraní neznáte, načtěte ho pomocí příkazu [AZ Network nic IP-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) . Například následující příkaz vypíše názvy konfigurací IP pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-3. Pomocí příkazu [AZ VM list-IP-](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) addresss ZOBRAZTE veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP. Následující příklad zobrazuje IP adresy přiřazené existujícímu virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
+3. Pomocí příkazu [AZ VM list-IP-](/cli/azure/vm#az-vm-list-ip-addresses) addresss ZOBRAZTE veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP. Následující příklad zobrazuje IP adresy přiřazené existujícímu virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
 
    ```azurecli-interactive
    az vm list-ip-addresses --name myVM --resource-group myResourceGroup --out table
@@ -214,4 +214,4 @@ Než se budete moct připojit k veřejné IP adrese z Internetu, ujistěte se, �
 
 ## <a name="next-steps"></a>Další kroky
 
-Povolí příchozí internetový provoz do virtuálního počítače pomocí skupiny zabezpečení sítě. Informace o tom, jak vytvořit skupinu zabezpečení sítě, najdete v tématu [práce se skupinami zabezpečení sítě](manage-network-security-group.md#work-with-network-security-groups). Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení](security-overview.md).
+Povolí příchozí internetový provoz do virtuálního počítače pomocí skupiny zabezpečení sítě. Informace o tom, jak vytvořit skupinu zabezpečení sítě, najdete v tématu [práce se skupinami zabezpečení sítě](manage-network-security-group.md#work-with-network-security-groups). Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení](./network-security-groups-overview.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887706"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778663"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -55,7 +55,7 @@ Tento řídicí panel se skládá z těchto:
     ![Tlačítko Spravovat okno profilu CDN](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Otevře se portál pro správu CDN.
-2. Najeďte myší na kartu **Analytics** a pak najeďte myší na informační rámeček **analýzy výkonu Edge** .  Klikněte na **řídicí panel**.
+2. Najeďte myší na kartu **Analytics** a pak najeďte myší na informační rámeček **analýzy výkonu Edge** .  Klikněte na **řídicí panel** .
    
     Zobrazí se řídicí panel analýzy hraničního uzlu.
 
@@ -84,7 +84,7 @@ Tento řídicí panel se skládá z těchto:
   * Snížené provozní náklady.
 * Vylepšená akcelerace doručování dat, protože další požadavky budou obsluhovány přímo ze sítě CDN.
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Efektivita mezipaměti |Určuje procento přenesených dat, která byla obsluhována z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu v mezipaměti doručována přímo z sítě CDN (hraniční servery) žadatelům (například ve webovém prohlížeči). |
 | Rychlost volání |Označuje procento požadavků, které byly obsluhovány z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu v mezipaměti doručována přímo z sítě CDN (hraniční servery) žadateli (například webový prohlížeč). |
@@ -102,7 +102,7 @@ Tento řídicí panel se skládá z těchto:
 > 
 > 
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Ave bajty z |Označuje průměrný počet přenesených bajtů pro každý požadavek, který je poskytován od sítě CDN (hraniční servery) žadateli (například webový prohlížeč). |
 | Žádná četnost bajtů konfigurace mezipaměti |Označuje procento provozu poskytovaného ze sítě CDN (hraniční servery) žadateli (například webový prohlížeč), který nebude uložen do mezipaměti z důvodu funkce vynechat mezipaměť. |
@@ -114,7 +114,7 @@ Tento řídicí panel se skládá z těchto:
 #### <a name="performance-metrics"></a>Metriky výkonu
 Účelem těchto metrik je sledovat celkový výkon sítě CDN pro váš provoz.
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Přenosová rychlost |Určuje průměrnou rychlost přenosu obsahu z CDN do žadatele. |
 | Doba trvání |Označuje průměrný čas (v milisekundách), který trvalo doručení assetu žadateli (například webový prohlížeč). |
@@ -126,7 +126,7 @@ Tento řídicí panel se skládá z těchto:
 #### <a name="secure-traffic-metrics"></a>Metriky zabezpečeného provozu
 Účelem těchto metrik je sledovat výkon sítě CDN pro přenosy přes protokol HTTPS.
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Efektivita zabezpečené mezipaměti |Označuje procento přenesených dat pro požadavky HTTPS, které byly obsluhovány z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu v mezipaměti doručována přímo z sítě CDN (hraniční servery) do žadatelů (například webový prohlížeč) prostřednictvím protokolu HTTPS. |
 | Rychlost zabezpečeného přenosu |Určuje průměrnou rychlost, s jakou byl obsah přenesen ze sítě CDN (hraniční servery) na žadatele (např. webové servery) prostřednictvím protokolu HTTPS. |
@@ -143,7 +143,7 @@ Každá sestava v tomto modulu obsahuje graf a statistiku využití šířky pá
     ![Tlačítko Spravovat okno profilu CDN](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Otevře se portál pro správu CDN.
-2. Najeďte myší na kartu **Analytics** a pak najeďte myší na informační rámeček **analýzy výkonu Edge** .  Klikněte na **large object http**.
+2. Najeďte myší na kartu **Analytics** a pak najeďte myší na informační rámeček **analýzy výkonu Edge** .  Klikněte na **large object http** .
    
     Zobrazí se obrazovka sestavy analýzy hraničního uzlu.
 
@@ -173,8 +173,8 @@ Každá sestava v tomto modulu obsahuje graf a statistiku využití šířky pá
 | Typy komprese |Obsahuje prstencový graf, který rozděluje požadované prostředky podle toho, zda byly komprimovány našimi hraničními servery. Procento komprimovaných prostředků je rozděleno podle použitého typu komprese. Podrobné informace jsou uvedeny pod grafem pro každý typ a stav komprese. |
 | Typy souborů |Obsahuje pruhový graf, který zobrazuje prvních 10 typů souborů, které byly vyžádány prostřednictvím našeho CDN pro váš účet. Pro účely této sestavy je typ souboru definovaný příponou názvu souboru prostředku a typem internetového média (např. HTML \[ text/HTML \] ,. htm \[ text/HTML \] ,. aspx \[ text/HTML \] atd.). Podrobné informace jsou uvedené pod grafem pro nejvyšší 100 typy souborů. |
 | Jedinečné soubory |Obsahuje graf, který zobrazuje celkový počet jedinečných prostředků, které byly vyžádány v určitém dni určitého dne v zadaném časovém období. |
-| Souhrn ověření tokenu |Obsahuje výsečový graf, který poskytuje rychlý přehled o tom, zda byly požadované prostředky chráněny ověřováním na základě tokenu. Chráněné prostředky se v grafu zobrazí podle výsledků jejich pokusů o ověření. |
-| Podrobnosti zamítnutí ověření tokenu |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které byly zamítnuty z důvodu ověřování založeného na tokenech. |
+| Souhrn ověření tokenu |Obsahuje výsečový graf, který poskytuje rychlý přehled o tom, zda byly požadované prostředky chráněny ověřováním Token-Based. Chráněné prostředky se v grafu zobrazí podle výsledků jejich pokusů o ověření. |
+| Podrobnosti zamítnutí ověření tokenu |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které byly zamítnuty kvůli Token-Based ověřování. |
 | Kódy odpovědí HTTP |Poskytuje rozpis stavových kódů HTTP (např. 200 OK, 403 zakázané, 404 Nenalezeno atd.), které byly doručeny vašim klientům HTTP prostřednictvím našich hraničních serverů. Výsečový graf vám umožní rychle posoudit, jak byly vaše prostředky obsluhovány. Podrobné statistické údaje jsou k dispozici pro každý kód odpovědi pod grafem. |
 | chyby 404 |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, jejichž výsledkem byl 404 nenalezený kód odpovědi. |
 | chyby 403 |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které vedly k 403 zakázanému kódu odpovědi. Pokud je žádost zamítnuta serverem původu zákazníka nebo hraničním serverem na našem místním serveru, bude kód odpovědi 403 zakázaný. |
@@ -186,6 +186,5 @@ Každá sestava v tomto modulu obsahuje graf a statistiku využití šířky pá
 ## <a name="see-also"></a>Viz také
 * [CDN Azure – Přehled](cdn-overview.md)
 * [Statistiky v reálném čase v Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Přepsání výchozího chování HTTP pomocí modulu pravidel](cdn-rules-engine.md)
+* [Přepsání výchozího chování HTTP pomocí modulu pravidel](./cdn-verizon-premium-rules-engine.md)
 * [Rozšířené sestavy HTTP](cdn-advanced-http-reports.md)
-

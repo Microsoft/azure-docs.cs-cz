@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171635"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
@@ -137,7 +137,7 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 
 Důležité informace při připojování:
 
-* `user@tenant.onmicrosoft.com`je název uživatele nebo skupiny Azure AD, se kterou se snažíte připojit.
+* `user@tenant.onmicrosoft.com` je název uživatele nebo skupiny Azure AD, se kterou se snažíte připojit.
 * Po názvu uživatele nebo skupiny Azure AD vždy připojovat název serveru (např. `@mydb` )
 * Nezapomeňte použít přesný způsob, jakým je zadán název uživatele nebo skupiny Azure AD.
 * V názvech uživatelů a skupin Azure AD se rozlišují velká a malá písmena.
@@ -155,7 +155,7 @@ Pokud chcete do databáze Azure Database for PostgreSQL přidat uživatele Azure
 3. Vytvořit roli `<user>@yourtenant.onmicrosoft.com` v Azure Database for PostgreSQL.
 4. Vytvořte `<user>@yourtenant.onmicrosoft.com` člena role azure_ad_user. Tento postup je třeba udělit jenom uživatelům Azure AD.
 
-**Případě**
+**Příklad:**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
@@ -168,7 +168,7 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 Pokud chcete skupině Azure AD povolit přístup k vaší databázi, použijte stejný mechanismus jako u uživatelů, ale místo toho zadejte název skupiny:
 
-**Případě**
+**Příklad:**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;

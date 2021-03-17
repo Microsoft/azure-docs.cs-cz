@@ -2,19 +2,19 @@
 title: 'Rychlý start: Export dat pro Microsoft Azure Data Box'
 description: Přečtěte si, jak rychle vyexportovat data Azure Data Boxu pomocí webu Azure Portal.
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
 ms.date: 07/17/2020
-ms.author: v-grpr
+ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fbe14151845d19dd1d0f2a4069afb2badb125077
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 789bd2f62673e7faf562d3a407bf2f0a4fd861bf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122233"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125488"
 ---
 # <a name="quickstart-get-started-with-azure-data-box-to-export-data-from-azure"></a>Rychlý start: Začínáme s Azure Data Boxem pro export dat z Azure
 
@@ -28,7 +28,7 @@ Než začnete:
 
 * Typ předplatného, které používáte pro službu Data Box, musí být jeden z následujících:
   * Smlouva Microsoft Enterprise (EA). Další informace o [předplatných se smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
-  * Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+  * Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](/azure/cloud-solution-provider/overview/azure-csp-overview).
   * Microsoft Azure Sponsorship. Získejte další informace o [programu Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
 
 * Pokud chcete vytvořit objednávku Data Boxu, potřebujete mít u předplatného přístup vlastníka nebo přispěvatele.
@@ -96,7 +96,7 @@ Tento krok trvá 5 až 7 minut.
 
 Doba trvání této operace závisí na množství dat a rychlosti sítě.
 
-1. Pokud používáte klienta pro Windows, použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB, jako je třeba Robocopy. Pro hostitele systému souborů NFS použijte ke kopírování dat příkaz `cp` nebo `rsync`. Další informace o tom, jak použít Robocopy ke kopírování dat, získáte v tématu [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+1. Pokud používáte klienta pro Windows, použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB, jako je třeba Robocopy. Pro hostitele systému souborů NFS použijte ke kopírování dat příkaz `cp` nebo `rsync`. Další informace o tom, jak použít Robocopy ke kopírování dat, získáte v tématu [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)).
 2. Připojte se ke sdíleným složkám zařízení a začněte kopírovat data na hostitelský počítač.
 <!-- 1. Connect to the device shares using the path:`\\<IP address of your device>\ShareName`. To get the share access credentials, go to the **Connect & copy** page in the local web UI of the Data Box. --> 
 

@@ -1,22 +1,18 @@
 ---
 title: Migrace dat z Amazonu S3 do Azure Storage
 description: Pomocí Azure Data Factory migrujte data z Amazon S3 do Azure Storage.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2be8a9c7476bda6952ed1eaa15d29fe9c01b59a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416422"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371307"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Migrace dat ze služby Amazon S3 do Azure Storage pomocí Azure Data Factory 
 
@@ -37,13 +33,13 @@ ADF nabízí architekturu bez serveru, která umožňuje paralelismus na různý
 
 Zákazníci úspěšně migrovali petabajty dat sestávající ze stovek milionů souborů z Amazon S3 do Azure Blob Storage s trvalou propustností 2 GB/s a vyšší. 
 
-![výkon](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+![Diagram znázorňuje několik oddílů souborů v úložišti A W S S3 s přidruženými akcemi kopírování do Azure Blob Storage A D L S Gen2.](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
 Obrázek výše znázorňuje, jak můžete dosáhnout velkých rychlostí přesunu dat prostřednictvím různých úrovní paralelismu:
  
-- Jediná aktivita kopírování může využít výhod škálovatelných výpočetních prostředků: při použití Azure Integration Runtime můžete pro každou aktivitu kopírování v rámci serveru zadat [až 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) . Při použití Integration Runtime v místním prostředí můžete ručně navýšení kapacity počítače nebo horizontální navýšení kapacity na více počítačů ([až 4 uzly](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) a jedna aktivita kopírování bude rozdělit svou sadu souborů napříč všemi uzly. 
+- Jediná aktivita kopírování může využít výhod škálovatelných výpočetních prostředků: při použití Azure Integration Runtime můžete pro každou aktivitu kopírování v rámci serveru zadat [až 256 DIUs](./copy-activity-performance.md#data-integration-units) . Při použití Integration Runtime v místním prostředí můžete ručně navýšení kapacity počítače nebo horizontální navýšení kapacity na více počítačů ([až 4 uzly](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)) a jedna aktivita kopírování bude rozdělit svou sadu souborů napříč všemi uzly. 
 - Jedna aktivita kopírování čte z a zapisuje do úložiště dat pomocí více vláken. 
-- Tok řízení ADF může spustit více aktivit kopírování paralelně, například pomocí [pro každou smyčku](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+- Tok řízení ADF může spustit více aktivit kopírování paralelně, například pomocí [pro každou smyčku](./control-flow-for-each-activity.md). 
 
 ## <a name="resilience"></a>Odolnost
 
@@ -61,7 +57,7 @@ Případně, pokud nechcete, aby byla data přenášena prostřednictvím veřej
 
 Migrace dat prostřednictvím veřejného Internetu:
 
-![řešení – architektura – veřejná síť](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+![Diagram znázorňuje migraci prostřednictvím Internetu H T T P z úložiště A W S S3 prostřednictvím Azure Integration Runtime v D F Azure pro Azure Storage. Modul runtime má řídicí kanál s Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
 
 - V této architektuře se data přenáší zabezpečeně pomocí protokolu HTTPS prostřednictvím veřejného Internetu. 
 - Zdroj Amazon S3 i cílový Blob Storage Azure nebo Azure Data Lake Storage Gen2 jsou nakonfigurované tak, aby povolovaly provoz ze všech síťových IP adres.  Informace o tom, jak omezit přístup k síti na konkrétní rozsah IP adres, najdete v druhé níže uvedené architektuře. 
@@ -70,21 +66,21 @@ Migrace dat prostřednictvím veřejného Internetu:
 
 Migrovat data prostřednictvím privátního propojení: 
 
-![řešení – architektura – privátní síť](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+![Diagram znázorňuje migraci prostřednictvím privátního partnerského připojení z úložiště A W S S3 prostřednictvím místního prostředí Integration runtime na virtuální počítače Azure do koncových bodů služby V síti, které Azure Storage. Modul runtime má řídicí kanál s Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
 - V této architektuře se migrace dat provádí přes propojení privátního partnerského vztahu mezi AWS přímým připojením a trasou Azure Express, což znamená, že data nikdy neprochází přes veřejný Internet.  Vyžaduje použití AWS VPC a Azure Virtual Network. 
 - Aby bylo možné dosáhnout této architektury, je nutné nainstalovat modul runtime integrace ADF (autohostd) na virtuální počítač s Windows v rámci služby Azure Virtual Network.  Ruční horizontální navýšení kapacity virtuálních počítačů IR nebo jejich horizontální navýšení kapacity na více virtuálních počítačů (až 4 uzly) můžete použít k plnému využití vaší sítě a IOPS/šířky pásma úložiště. 
-- Pokud je přijatelné přenášet data přes protokol HTTPS, ale chcete uzamknout síťový přístup ke zdrojové S3 do konkrétního rozsahu IP adres, můžete tuto architekturu přijmout odebráním AWS VPC a nahrazením privátního propojení s protokolem HTTPS.  Na virtuálním počítači Azure budete chtít udržovat Azure Virtual a v místním prostředí IR, abyste mohli pro účely přidávání do seznamu povolených statických IP adres používat statickou veřejnou IP adresu. 
+- Pokud je přijatelné přenášet data přes protokol HTTPS, ale chcete uzamknout síťový přístup ke zdrojové S3 do konkrétního rozsahu IP adres, můžete tuto architekturu přijmout odebráním AWS VPC a nahrazením privátního propojení s protokolem HTTPS.  Na virtuálním počítači Azure budete chtít zachovat virtuální a místní prostředí IR Azure, abyste mohli mít statickou veřejně směrovatelný IP adresu pro účely filtrování. 
 - Pomocí této architektury se dá dosáhnout jak migrace dat počátečního snímku, tak migrace rozdílových dat. 
 
 ## <a name="implementation-best-practices"></a>Osvědčené postupy implementace 
 
 ### <a name="authentication-and-credential-management"></a>Ověřování a Správa přihlašovacích údajů 
 
-- K ověření v účtu Amazon S3 musíte použít [přístupová klávesu pro účet IAM](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties). 
-- Pro připojení k Azure Blob Storage se podporuje víc typů ověřování.  Použití [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) se důrazně doporučuje: postavené na automaticky spravované identifikaci ADF ve službě Azure AD umožňuje konfigurovat kanály bez zadání přihlašovacích údajů v definici propojené služby.  Případně můžete provést ověření v Azure Blob Storage pomocí [instančního objektu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [sdíleného přístupového podpisu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)nebo [klíče účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
-- Pro připojení k Azure Data Lake Storage Gen2 se podporuje taky více typů ověřování.  Použití [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) se důrazně doporučuje, i když je možné také použít [instanční objekt](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) nebo [klíč účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) . 
-- Pokud nepoužíváte spravované identity pro prostředky Azure, důrazně se doporučuje [ukládat přihlašovací údaje v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) , aby bylo snazší centrálně spravovat a střídat klíče bez nutnosti úprav propojených služeb ADF.  Toto je také jedním z [osvědčených postupů pro CI/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- K ověření v účtu Amazon S3 musíte použít [přístupová klávesu pro účet IAM](./connector-amazon-simple-storage-service.md#linked-service-properties). 
+- Pro připojení k Azure Blob Storage se podporuje víc typů ověřování.  Použití [spravovaných identit pro prostředky Azure](./connector-azure-blob-storage.md#managed-identity) se důrazně doporučuje: postavené na automaticky spravované identifikaci ADF ve službě Azure AD umožňuje konfigurovat kanály bez zadání přihlašovacích údajů v definici propojené služby.  Případně můžete provést ověření v Azure Blob Storage pomocí [instančního objektu](./connector-azure-blob-storage.md#service-principal-authentication), [sdíleného přístupového podpisu](./connector-azure-blob-storage.md#shared-access-signature-authentication)nebo [klíče účtu úložiště](./connector-azure-blob-storage.md#account-key-authentication). 
+- Pro připojení k Azure Data Lake Storage Gen2 se podporuje taky více typů ověřování.  Použití [spravovaných identit pro prostředky Azure](./connector-azure-data-lake-storage.md#managed-identity) se důrazně doporučuje, i když je možné také použít [instanční objekt](./connector-azure-data-lake-storage.md#service-principal-authentication) nebo [klíč účtu úložiště](./connector-azure-data-lake-storage.md#account-key-authentication) . 
+- Pokud nepoužíváte spravované identity pro prostředky Azure, důrazně se doporučuje [ukládat přihlašovací údaje v Azure Key Vault](./store-credentials-in-key-vault.md) , aby bylo snazší centrálně spravovat a střídat klíče bez nutnosti úprav propojených služeb ADF.  Toto je také jedním z [osvědčených postupů pro CI/CD](./continuous-integration-deployment.md#best-practices-for-cicd). 
 
 ### <a name="initial-snapshot-data-migration"></a>Migrace dat počátečního snímku 
 
@@ -122,7 +118,7 @@ Když narazíte na chyby omezování hlášené aktivitou kopírování ADF, zme
 
 Vezměte v úvahu následující kanál vytvořený pro migraci dat ze S3 do Azure Blob Storage: 
 
-![ceny – kanál](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+![Diagram znázorňuje kanál pro migraci dat, s ručním tokem triggerem pro vyhledávání, Flowing do příkazu ForEach a přechodem k dílčímu kanálu pro každý oddíl, který obsahuje kopírování toků do uložené procedury. Mimo kanál je uložený postup uložený do Azure SQL D B, který přetéká na vyhledávání a toky s W S S3 ke kopírování, které přecházejí do úložiště objektů BLOB.](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
 
 Můžeme předpokládat následující: 
 
@@ -135,22 +131,22 @@ Můžeme předpokládat následující:
 
 Tady je odhadovaná cena na základě výše uvedených předpokladů: 
 
-![ceny – tabulka](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+![Snímek obrazovky tabulky zobrazuje odhadovanou cenu.](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>Další odkazy 
-- [Konektor služby Amazon Simple Storage Service Connector](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Konektor Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Konektor Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Průvodce laděním výkonu aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Vytváření a konfigurace Integration Runtime pro místní hostování](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Vysoce hostované prostředí Integration runtime – HA a škálovatelnost](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Aspekty zabezpečení přesunu dat](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Uložení přihlašovacích údajů v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Kopírovat soubor postupně na základě názvu souboru s oddíly](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
-- [Kopírování nových a změněných souborů na základě LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [Konektor služby Amazon Simple Storage Service Connector](./connector-amazon-simple-storage-service.md)
+- [Konektor Azure Blob Storage](./connector-azure-blob-storage.md)
+- [Konektor Azure Data Lake Storage Gen2](./connector-azure-data-lake-storage.md)
+- [Průvodce laděním výkonu aktivity kopírování](./copy-activity-performance.md)
+- [Vytváření a konfigurace Integration Runtime pro místní hostování](./create-self-hosted-integration-runtime.md)
+- [Vysoce hostované prostředí Integration runtime – HA a škálovatelnost](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Aspekty zabezpečení přesunu dat](./data-movement-security-considerations.md)
+- [Uložení přihlašovacích údajů v Azure Key Vault](./store-credentials-in-key-vault.md)
+- [Kopírovat soubor postupně na základě názvu souboru s oddíly](./tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
+- [Kopírování nových a změněných souborů na základě LastModifiedDate](./tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 - [Stránka s cenami ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="template"></a>Šablona
+## <a name="template"></a>Template (Šablona)
 
 Tady je [Šablona](solution-template-migration-s3-azure.md) , která se má začít používat k migraci petabajty dat složených ze stovek milionů souborů z Amazon S3 do Azure Data Lake Storage Gen2.
 

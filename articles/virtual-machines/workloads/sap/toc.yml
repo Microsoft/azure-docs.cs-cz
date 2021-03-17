@@ -85,7 +85,7 @@
         - name: Migrace HLI do virtuálního počítače Azure
           href: hana-large-instance-virtual-machine-migration.md
         - name: Nákup rezervace pro Velké instance SAP HANA
-          href: ../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+          href: ../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md
 - name: SAP HANA ve službě Azure Virtual Machines
   items:
     - name: Instalace SAP HANA na virtuálních počítačích Azure
@@ -96,6 +96,8 @@
       href: hana-vm-operations.md
     - name: Konfigurace úložiště virtuálních počítačů Azure SAP HANA
       href: hana-vm-operations-storage.md
+    - name: Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA
+      href: hana-vm-operations-netapp.md
     - name: Dostupnost SAP HANA ve službě Azure Virtual Machines
       items:
         - name: Přehled dostupnosti SAP HANA v Azure
@@ -112,6 +114,8 @@
           href: sap-hana-high-availability-netapp-files-red-hat.md
         - name: Řešení potíží se škálováním na více instancí SAP HANA a Pacemaker na SLES
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
+        - name: HSR se škálováním SAP HANA na více instancí s využitím Pacemakeru na RHEL
+          href: sap-hana-high-availability-scale-out-hsr-rhel.md
         - name: Škálování na více instancí SAP HANA na uzlu v pohotovostním režimu se službou Azure NetApp Files na SLES
           href: sap-hana-scale-out-standby-netapp-files-suse.md
         - name: Škálování na více instancí SAP HANA na uzlu v pohotovostním režimu se službou Azure NetApp Files na RHEL
@@ -193,6 +197,8 @@
               href: high-availability-guide-rhel.md
             - name: HA v Red Hat Enterprise Linuxu pro instanci (A)SCS s využitím Azure NetApp Files
               href: high-availability-guide-rhel-netapp-files.md
+            - name: Velké instance HA pro SAP v RHEL
+              href: large-instance-high-availability-rhel.md
         - name: Příprava infrastruktury Azure
           items:
             - name: Windows se sdíleným diskem pro instanci (A)SCS
@@ -227,6 +233,8 @@
               href: high-availability-guide-rhel-netapp-files.md
         - name: SAP s několika SID
           items:
+            - name: Windows se sdíleným diskem Azure pro instanci (A)SCS
+              href: sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
             - name: Windows se sdíleným diskem pro instanci (A)SCS
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows se sdílenou složkou SOFS pro instanci (A)SCS
@@ -239,40 +247,46 @@
       href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: Skupiny umístění bezkontaktní komunikace Azure pro optimální latenci sítě s aplikacemi SAP
       href: sap-proximity-placement-scenarios.md
+- name: Platforma SAP BusinessObjects Business Intelligence v Azure
+  items:
+    - name: Průvodce plánováním a implementací platformy SAP BusinessObjects BI v Azure
+      href: businessobjects-deployment-guide.md
+    - name: Průvodce nasazením platformy SAP BusinessObjects BI pro Linux v Azure
+      href: businessobjects-deployment-guide-linux.md
 - name: Integrace Azure AD s aplikacemi SAP
   items:
     - name: Zřizování uživatelů ze SAP SuccessFactors do Active Directory
-      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md
     - name: Zřizování uživatelů ze SAP SuccessFactors do Azure AD
-      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md
     - name: Zpětný zápis uživatelů z Azure AD do SAP SuccessFactors
-      href: ../../../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md
     - name: Zřizování uživatelů ve službě SAP Cloud Platform Identity Authentication
-      href: ../../../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím služby SAP Cloud Platform Identity Authentication
-      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím SAP SuccessFactors
-      href: ../../../active-directory/saas-apps/successfactors-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/successfactors-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím SAP Analytics Cloudu
-      href: ../../../active-directory/saas-apps/sapboc-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sapboc-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím SAP Fiori
-      href: ../../../active-directory/saas-apps/sap-fiori-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-fiori-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím SAP Qualtrics
-      href: ../../../active-directory/saas-apps/qualtrics-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/qualtrics-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím služby SAP Ariba
-      href: ../../../active-directory/saas-apps/ariba-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/ariba-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím služby SAP Concur Travel and Expense
-      href: ../../../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/concur-travel-and-expense-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím cloudové platformy SAP
-      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím SAP NetWeaveru
-      href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím SAP Business ByDesignu
-      href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím SAP HANA
-      href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/saphana-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím služby SAP Cloud for Customer
-      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md
     - name: Konfigurace jednotného přihlašování s využitím služby SAP Fiori Launchpad
       href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
 - name: Integrace služeb Azure do SAPu
@@ -291,14 +305,18 @@
       href: azure-monitor-overview.md
     - name: Azure Monitor for SAP Solutions – poskytovatelé
       href: azure-monitor-providers.md
-    - name: Konfigurace Azure Monitoru for SAP Solutions
+    - name: Konfigurace Azure Monitoru for SAP Solutions – portál
       href: azure-monitor-sap-quickstart.md
+    - name: Konfigurace Azure Monitoru for SAP Solutions – Azure PowerShell
+      href: azure-monitor-sap-quickstart-powershell.md
     - name: Azure Monitor for SAP Solutions – nejčastější dotazy
       href: azure-monitor-faq.md
 - name: Referenční informace
   items:
     - name: Azure CLI
       href: /cli/azure/ext/sap-hana/hanainstance
+    - name: Azure PowerShell
+      href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

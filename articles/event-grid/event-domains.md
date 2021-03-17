@@ -3,12 +3,12 @@ title: Domény událostí v Azure Event Grid
 description: Tento článek popisuje, jak pomocí domén událostí spravovat tok vlastních událostí v různých obchodních organizacích, zákaznících nebo aplikacích.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114359"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198647"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Porozumění doménám událostí pro správu Event Grid témata
 
@@ -25,25 +25,18 @@ Doména události je nástroj pro správu velkého počtu Event Gridch témat t�
 
 Domény událostí zpřístupňují stejnou architekturu, kterou používají služby Azure (například úložiště a IoT Hub) k publikování jejich událostí. Umožňují publikovat události do tisíců témat. Domény také poskytují autorizaci a kontrolu ověřování pro jednotlivá témata, abyste mohli rozdělit klienty na oddíly.
 
-### <a name="example-use-case"></a>Příklad případu použití
-
-Domény událostí se nejsnadněji vysvětlí pomocí příkladu. Řekněme, že spouštíte výrobní stroj contoso, kde vytváříte traktory, prozkoumá vybavení a další těžká zařízení. V rámci provozu firmy zadáváte zákazníkům informace o údržbě zařízení, stavu systémů a aktualizacích smluv v reálném čase. Všechny tyto informace se přenášejí do různých koncových bodů, včetně vaší aplikace, koncových bodů zákazníka a jiné infrastruktury, kterou si zákazníci nastavili.
-
-Domény událostí umožňují modelovat strojová konstrukce společnosti Contoso jako jednu entitu událostí. Každý z vašich zákazníků je reprezentován jako téma v rámci domény. Ověřování a autorizace jsou zpracovávány pomocí Azure Active Directory. Každý z vašich zákazníků se může přihlásit k odběru svého tématu a získat jejich události do nich. Spravovaný přístup prostřednictvím domény události zajišťuje, že budou moct přistupovat jenom k jejich tématu.
-
-Poskytuje taky jeden koncový bod, na který můžete publikovat všechny události zákazníků. Event Grid se postará o to, aby každé téma bylo důležité pouze o událostech, které jsou vymezeny pro svého tenanta.
-
-![Příklad konstrukce contoso](./media/event-domains/contoso-construction-example.png)
+## <a name="example-use-case"></a>Příklad případu použití
+[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="access-management"></a>Správa přístupu
 
-V rámci domény získáte prostřednictvím řízení přístupu na základě role (RBAC) v Azure podrobné řízení autorizace a ověřování pro každé téma. Pomocí těchto rolí můžete omezit každého tenanta ve vaší aplikaci jenom na témata, ke kterým chcete udělit přístup.
+S doménou můžete pomocí řízení přístupu založeného na rolích Azure (Azure RBAC) získat podrobné řízení ověřování a ověřování pro každé téma. Pomocí těchto rolí můžete omezit každého tenanta ve vaší aplikaci jenom na témata, ke kterým chcete udělit přístup.
 
-RBAC v doménách událostí funguje stejným způsobem jako [spravované řízení přístupu](security-authorization.md) ve zbývajících Event Grid a Azure. Pomocí RBAC vytvořte a vynuťte definice vlastních rolí v doménách událostí.
+Funkce Azure RBAC v doménách událostí funguje stejným způsobem jako [spravované řízení přístupu](security-authorization.md) ve zbývajících Event Grid a Azure. Pomocí Azure RBAC můžete vytvářet a vymáhat definice vlastních rolí v doménách událostí.
 
 ### <a name="built-in-roles"></a>Předdefinované role
 
-Event Grid má dvě předdefinované definice rolí, které zjednodušují práci s doménami událostí. Tyto role jsou **EventGrid EventSubscription Přispěvatel (Preview)** a **EventGrid EventSubscription Reader (Preview)**. Tyto role přiřadíte uživatelům, kteří se potřebují přihlašovat k odběru témat v doméně událostí. Přiřadíte rozsah přiřazení role pouze k tématu, které uživatelé potřebují k přihlášení k odběru.
+Event Grid má dvě předdefinované definice rolí, které usnadňují práci s doménami služby Azure RBAC. Tyto role jsou **EventGrid EventSubscription Přispěvatel (Preview)** a **EventGrid EventSubscription Reader (Preview)**. Tyto role přiřadíte uživatelům, kteří se potřebují přihlašovat k odběru témat v doméně událostí. Přiřadíte rozsah přiřazení role pouze k tématu, které uživatelé potřebují k přihlášení k odběru.
 
 Informace o těchto rolích najdete v tématu [předdefinované role pro Event Grid](security-authorization.md#built-in-roles).
 
@@ -107,6 +100,8 @@ Pokud vám tato omezení neodpovídají, můžete se obrátit na produktového t
 Domény událostí používají stejné [ceny operací](https://azure.microsoft.com/pricing/details/event-grid/) jako u všech ostatních funkcí v Event Grid použít.
 
 Operace fungují v doménách událostí stejně jako v uživatelských tématech. Každá příchozí událost události do domény události je operace a každý pokus o doručení události je operace.
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

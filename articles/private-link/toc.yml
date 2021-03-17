@@ -1,4 +1,4 @@
-- name: Dokumentace k privátnímu propojení Azure
+- name: Dokumentace k Private Linku
   href: index.yml
 - name: Přehled
   items:
@@ -24,28 +24,47 @@
     - name: Vytvoření služby Private Link – šablona Resource Manageru
       displayName: Resource Manager
       href: create-private-link-service-template.md
+  expanded: true
+- name: Kurzy
+  items:
+    - name: Připojení k účtu úložiště
+      href: tutorial-private-endpoint-storage-portal.md
+    - name: Připojení k účtu Cosmos DB
+      href: tutorial-private-endpoint-cosmosdb-portal.md
+    - name: Připojení k webové aplikaci
+      href: tutorial-private-endpoint-webapp-portal.md
+    - name: SQL
+      items:
+        - name: Připojení k serveru SQL – portál
+          href: tutorial-private-endpoint-sql-portal.md
+        - name: Připojení k serveru SQL – PowerShell
+          href: tutorial-private-endpoint-sql-powershell.md
+        - name: Připojení k serveru SQL – Azure CLI
+          href: tutorial-private-endpoint-sql-cli.md
 - name: Koncepty
   items:
+    - name: Dostupnost
+      href: availability.md
     - name: Privátní koncový bod
       href: private-endpoint-overview.md
     - name: Služba privátního propojení
       href: private-link-service-overview.md
     - name: Integrace DNS privátního koncového bodu
       href: private-endpoint-dns.md
-- name: Postup
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
+- name: Postupy
   items:
-    - name: Privátní připojení k účtu úložiště
-      href: create-private-endpoint-storage-portal.md
-    - name: Privátní připojení k účtu Cosmos DB
-      href: create-private-endpoint-cosmosdb-portal.md
-    - name: Privátní připojení k webové aplikaci
-      href: create-private-endpoint-webapp-portal.md
     - name: Zablokování síťových zásad pro privátní koncový bod
       href: disable-private-endpoint-network-policy.md
     - name: Zablokování síťových zásad pro službu privátního propojení
       href: disable-private-link-service-network-policy.md
     - name: Správa privátních koncových bodů
       href: manage-private-endpoint.md
+    - name: Kontrola provozu pomocí služby Azure Firewall
+      href: inspect-traffic-with-azure-firewall.md
     - name: Řešení potíží
       items:
         - name: Řešení problémů s připojením privátního koncového bodu
@@ -63,7 +82,7 @@
     - name: Java
       href: /java/api/
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+      href: /javascript/azure#azure-sdk
     - name: Python
       href: 'https://azure.microsoft.com/develop/python/'
     - name: REST
@@ -81,7 +100,7 @@
     - name: Blog o sítích
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Stránka s dotazy ohledně sítí na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Názory na sítě
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: Ceny

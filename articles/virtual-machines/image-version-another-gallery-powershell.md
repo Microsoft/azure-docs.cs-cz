@@ -3,18 +3,18 @@ title: Kopírování obrázku z jiné galerie pomocí PowerShellu
 description: Kopírování obrázku z jiné galerie pomocí Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 48f0a247ed023583c8489994439a790944b90fdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9bbe40e35bdad6fac5c5ccb0b15b909e77b938c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082592"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564012"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopírování obrázku z jiné galerie pomocí PowerShellu
 
@@ -114,7 +114,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
    -Name 'myDestinationImgDef' `
    -OsState specialized `
    -OsType Windows `
-   -HyperVGeneration v1
+   -HyperVGeneration v1 `
    -Publisher 'myPublisher' `
    -Offer 'myOffer' `
    -Sku 'mySKU'
@@ -127,7 +127,7 @@ Vytvořte verzi Image pomocí [New-AzGalleryImageVersion](/powershell/module/az.
 
 Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
 
-V tomto příkladu má cílová Galerie název *myDestinationGallery*ve skupině prostředků *myDestinationRG* v umístění *západní USA* . Verze našeho obrázku je *1.0.0* a my vytvoříme 1 repliku v oblasti *střed USA – jih* a 2 repliky v oblasti *západní USA* . 
+V tomto příkladu má cílová Galerie název *myDestinationGallery* ve skupině prostředků *myDestinationRG* v umístění *západní USA* . Verze našeho obrázku je *1.0.0* a my vytvoříme 1 repliku v oblasti *střed USA – jih* a 2 repliky v oblasti *západní USA* . 
 
 
 ```azurepowershell-interactive
@@ -164,6 +164,6 @@ $job.State
 
 Vytvořte virtuální počítač z [zobecněné](vm-generalized-image-version-powershell.md) nebo [specializované](vm-specialized-image-version-powershell.md) verze image.
 
-[Azure image Builder (Preview)](./linux/image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
+[Azure image Builder (Preview)](./image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
 
 Informace o tom, jak dokoupit informace o plánu nákupu, najdete v tématu [zadání informací o plánu nákupu Azure Marketplace při vytváření imagí](marketplace-images.md).

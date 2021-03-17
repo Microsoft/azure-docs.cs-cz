@@ -4,14 +4,20 @@ description: Spravujte tajné klíče aplikace, abyste mohli bezpečně vytvoři
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 379560b73c38558fe0b712ed5e036c7a3736b600
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b3be0c2b21c3405f4f42b2ff4d02ca95c78956de
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500704"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626956"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Správa tajných klíčů pro aplikace Service Fabric sítě
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
+
 Service Fabricová síť podporuje tajné klíče jako prostředky Azure. Service Fabric se může jednat o informace o citlivých textech, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by se měly bezpečně ukládat a přenášet. V tomto článku se dozvíte, jak používat Service Fabric Zabezpečené úložiště přihlašovacích údajů k nasazení a údržbě tajných kódů.
 
 Tajný kód aplikace sítě se skládá z těchto součástí:

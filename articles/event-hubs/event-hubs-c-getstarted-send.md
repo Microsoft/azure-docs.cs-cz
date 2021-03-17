@@ -4,10 +4,10 @@ description: 'Rychlý Start: Tento článek popisuje postup vytvoření aplikace
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85315663"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Rychlý Start: odeslání událostí do Azure Event Hubs pomocí jazyka C
@@ -17,7 +17,7 @@ Azure Event Hubs je platforma pro streamování velkých objemů dat a služba p
 
 V tomto kurzu se dozvíte, jak odesílat události do centra událostí pomocí konzolové aplikace v jazyce C. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro absolvování tohoto kurzu potřebujete:
 
 * Vývojové prostředí jazyka C. V tomto kurzu se předpokládá, že se zásobník RSZ na virtuálním počítači Azure Linux s Ubuntu 14,04.
@@ -140,7 +140,7 @@ V této části se dozvíte, jak napsat aplikaci v jazyce C pro odesílání ud�
 
 Spusťte aplikaci, aby odesílala zprávy do centra událostí. 
 
-Gratulujeme! Nyní jste odeslali zprávy do centra událostí.
+Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si následující články:

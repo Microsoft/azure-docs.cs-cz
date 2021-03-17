@@ -1,23 +1,23 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/29/2019
-ms.author: rgarcia
-ms.openlocfilehash: cfd5cf77b9df8cdd5b856a0b36b9010077a7078a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 88fbe9d58f1742ae311958a6bb15134ffec3bdac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68562502"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185271"
 ---
-Otevřete **nastavení sestavení** výběrem**nastavení sestavení** **souboru** > .
+Otevřete **nastavení sestavení** výběrem **File**  >  **nastavení sestavení** souboru.
 
 V části **platforma** vyberte **iOS**.
 
 Vyberte **přepínač platforma** pro změnu platformy na **iOS**. V Unity se může zobrazit výzva k instalaci součástí podpory iOS, pokud chybí.
 
-![Okno nastavení sestavení Unity](./media/spatial-anchors-unity/unity-ios-build-settings.png)
+![Snímek obrazovky okna nastavení sestavení Unity](./media/spatial-anchors-unity/unity-ios-build-settings.png)
 
 Zavřete okno **nastavení sestavení** .
 

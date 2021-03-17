@@ -1,22 +1,23 @@
 ---
-title: Použít skupiny umístění pro Proximity
+title: Vytvoření skupiny umístění blízkosti pomocí Azure CLI
 description: Seznamte se s vytvářením a používáním skupin umístění blízkosti pro virtuální počítače v Azure.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 10/30/2019
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: ee172203d6aa54b4b539356835f8a6bf2d21bad3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a347c9284608340811f9c2388df26129baeb8837
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288411"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505643"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Nasazení virtuálních počítačů do skupin umístění pro Proximity pomocí Azure CLI
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Nasazování virtuálních počítačů do skupin umístění bezkontaktní komunikace pomocí Azure CLI
 
-Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](co-location.md#proximity-placement-groups).
+Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](../co-location.md#proximity-placement-groups).
 
 Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
 
@@ -67,7 +68,7 @@ Ve skupině umístění blízkosti můžete také vytvořit skupinu dostupnosti.
 
 ## <a name="scale-sets"></a>Škálovací sady
 
-Ve skupině umístění blízkosti můžete také vytvořit sadu škálování. Použijte stejný `--ppg` parametr s příkazem [AZ VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) k vytvoření sady škálování a všechny instance se vytvoří ve stejné skupině umístění blízkosti.
+Ve skupině umístění blízkosti můžete také vytvořit sadu škálování. Použijte stejný `--ppg` parametr s příkazem [AZ VMSS Create](/cli/azure/vmss#az_vmss_create) k vytvoření sady škálování a všechny instance se vytvoří ve stejné skupině umístění blízkosti.
 
 ## <a name="next-steps"></a>Další kroky
 

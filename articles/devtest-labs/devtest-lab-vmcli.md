@@ -3,12 +3,12 @@ title: Vytváření a správa virtuálních počítačů v DevTest Labs pomocí 
 description: Naučte se používat Azure DevTest Labs k vytváření a správě virtuálních počítačů pomocí Azure CLI.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482832"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201460"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Vytváření a správa virtuálních počítačů pomocí DevTest Labs pomocí Azure CLI
 Tento rychlý Start vás provede vytvořením, spuštěním, připojením, aktualizací a vyčištěním vývojového počítače ve vašem testovacím prostředí. 
@@ -147,10 +147,10 @@ Následující vzorový příkaz zastaví virtuální počítač.
 az lab vm stop --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
-Odstraní virtuální počítač.
+Odstraníte virtuální počítač.
 ```azurecli
 az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na následující obsah: dokumentace k rozhraní příkazového [řádku Azure pro Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 
+Podívejte se na následující obsah: dokumentace k rozhraní příkazového [řádku Azure pro Azure DevTest Labs](/cli/azure/lab). 

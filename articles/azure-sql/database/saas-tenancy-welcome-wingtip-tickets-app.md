@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2c8c094efdfa9f46c6e6c42e34fd4010e43fa972
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2969ce6ceda0d1b71ec991b32f5b10acf9bfa12
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84051196"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780372"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Aplikace SaaS lístky Wingtip
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,13 +36,13 @@ K dispozici jsou tři verze aplikace. Každý z nich zkoumá jiný model archite
 
 Samostatná aplikace na model tenanta používá pro každého tenanta jednu aplikaci tenanta s databází. Aplikace každého tenanta, včetně její databáze, je nasazená do samostatné skupiny prostředků Azure. Skupinu prostředků je možné nasadit v rámci předplatného poskytovatele služeb nebo předplatného tenanta a spravovat ji poskytovatelem v zastoupení tenanta. Samostatná aplikace na model tenanta poskytuje největší izolaci tenanta, ale je to ale nejdražší, protože není k dispozici možnost sdílení prostředků mezi více klienty.  Tento model je vhodný pro aplikace, které mohou být složitější a které jsou nasazené na menší počet klientů.  Díky samostatným nasazením se aplikace dá přizpůsobit pro každého tenanta snadněji než v jiných vzorcích.  
 
-Přečtěte si [kurzy][docs-tutorials-for-wingtip-sa] a kód na GitHubu [. ../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
+Přečtěte si [kurzy][docs-tutorials-for-wingtip-sa] a kód na GitHubu  [. ../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
 
 ## <a name="database-per-tenant-pattern"></a>Model databáze na tenanta
 
 Model databáze na tenanta je vhodný pro poskytovatele služeb, kteří se zabývají izolací klientů a chtějí provozovat centralizovanou službu, která umožňuje nákladově efektivní využívání sdílených prostředků. Databáze se vytvoří pro každé místo nebo tenanta a všechny databáze se centrálně spravují. Databáze je možné hostovat v elastických fondech, aby poskytovaly cenově efektivní a snadnou správu výkonu, která využívá nepředvídatelné vzorce úloh klientů. Databáze katalogu obsahuje mapování mezi klienty a jejich databázemi. Toto mapování je spravováno pomocí funkcí správy mapy horizontálních oddílů v [klientské knihovně elastic Database](elastic-database-client-library.md), která poskytuje efektivní správu připojení k aplikaci.
 
-Přečtěte si [kurzy][docs-tutorials-for-wingtip-dpt] a kód na GitHubu [. ../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
+Přečtěte si [kurzy][docs-tutorials-for-wingtip-dpt] a kód na GitHubu  [. ../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
 
 ## <a name="sharded-multi-tenant-database-pattern"></a>Horizontálně dělené vzor databáze pro více tenantů
 
@@ -50,7 +50,7 @@ Víceklientské databáze jsou platné pro poskytovatele služeb, kteří hledaj
 
 Tento vzor také umožňuje *hybridní* model, ve kterém je možné optimalizovat pro náklady s více klienty v databázi, nebo optimalizovat pro izolaci s jedním klientem ve vlastní databázi. Možnost volby se dá udělat na základě tenanta, a to buď při zřizování tenanta, nebo později, bez dopadu na aplikaci.  Tento model se dá efektivně použít, když je potřeba, aby se skupiny tenantů nacházely jinak. Například klienti s nízkými náklady se dají přiřadit ke sdíleným databázím, zatímco klienti úrovně Premium se dají přiřadit ke svým vlastním databázím. 
 
-Přečtěte si [kurzy][docs-tutorials-for-wingtip-mt] a kód na GitHubu [. ../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
+Přečtěte si [kurzy][docs-tutorials-for-wingtip-mt] a kód na GitHubu  [. ../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -84,12 +84,11 @@ Přečtěte si [kurzy][docs-tutorials-for-wingtip-mt] a kód na GitHubu [. ../Mi
 
 <!-- WWWeb http references. -->
 
-[docs-tutorials-for-wingtip-sa]: https://aka.ms/wingtipticketssaas-sa
+[docs-tutorials-for-wingtip-sa]: ./saas-standaloneapp-get-started-deploy.md
 [github-code-for-wingtip-sa]: https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp
 
-[docs-tutorials-for-wingtip-dpt]: https://aka.ms/wingtipticketssaas-dpt
+[docs-tutorials-for-wingtip-dpt]: ./saas-dbpertenant-wingtip-app-overview.md
 [github-code-for-wingtip-dpt]: https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant
 
-[docs-tutorials-for-wingtip-mt]: https://aka.ms/wingtipticketssaas-mt
+[docs-tutorials-for-wingtip-mt]: ./saas-multitenantdb-get-started-deploy.md
 [github-code-for-wingtip-mt]: https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb
-

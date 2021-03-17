@@ -3,17 +3,20 @@ title: Vytvoření více nezávislých triggerů Azure Functions pro Cosmos DB
 description: Naučte se konfigurovat více nezávislých Azure Functions triggerů, které Cosmos DB k vytváření architektur řízených událostmi.
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261592"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336669"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Vytvoření více triggerů Azure Functions pro Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje, jak nakonfigurovat několik triggerů služby Azure Functions pro službu Cosmos DB tak, aby fungovaly paralelně a nezávisle reagovaly na změny.
 
@@ -23,7 +26,7 @@ Tento článek popisuje, jak nakonfigurovat několik triggerů služby Azure Fun
 
 Při sestavování architektur bez serveru pomocí [Azure Functions](../azure-functions/functions-overview.md) [doporučujeme](../azure-functions/functions-best-practices.md#avoid-long-running-functions) vytvořit malé sady funkcí, které budou společně fungovat místo velkých dlouho běžících funkcí.
 
-Při sestavování toků bez serveru založeného na událostech pomocí [Azure Functions triggeru pro Cosmos DB](./change-feed-functions.md)spustíte ve scénáři, ve kterém chcete provést několik akcí, když dojde k nové události v konkrétním [kontejneru Azure Cosmos](./databases-containers-items.md#azure-cosmos-containers). Pokud akce, které chcete spustit, jsou nezávisle na sobě, ideální řešení by mělo **vytvořit jednu Azure Functions triggery pro Cosmos DB na akci** , kterou chcete provést, a to vše, které naslouchá změnám ve stejném kontejneru Azure Cosmos.
+Při sestavování toků bez serveru založeného na událostech pomocí [Azure Functions triggeru pro Cosmos DB](./change-feed-functions.md)spustíte ve scénáři, ve kterém chcete provést několik akcí, když dojde k nové události v konkrétním [kontejneru Azure Cosmos](./account-databases-containers-items.md#azure-cosmos-containers). Pokud akce, které chcete spustit, jsou nezávisle na sobě, ideální řešení by mělo **vytvořit jednu Azure Functions triggery pro Cosmos DB na akci** , kterou chcete provést, a to vše, které naslouchá změnám ve stejném kontejneru Azure Cosmos.
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Optimalizace kontejnerů pro vícenásobné triggery
 
@@ -31,7 +34,7 @@ Vzhledem k *požadavkům* Azure Functions triggeru pro Cosmos DB potřebujeme dr
 
 Tady máte dvě možnosti:
 
-* Vytvoření **jednoho kontejneru zapůjčení na funkci**: Tento přístup se může překládat na další náklady, pokud nepoužíváte [sdílenou databázi propustnosti](./set-throughput.md#set-throughput-on-a-database). Pamatujte na to, že minimální propustnost na úrovni kontejneru je 400 [jednotek žádostí](./request-units.md)a v případě kontejneru zapůjčení se používá jenom k vytvoření kontrolního bodu a stavu jeho údržby.
+* Vytvoření **jednoho kontejneru zapůjčení na funkci** : Tento přístup se může překládat na další náklady, pokud nepoužíváte [sdílenou databázi propustnosti](./set-throughput.md#set-throughput-on-a-database). Pamatujte na to, že minimální propustnost na úrovni kontejneru je 400 [jednotek žádostí](./request-units.md)a v případě kontejneru zapůjčení se používá jenom k vytvoření kontrolního bodu a stavu jeho údržby.
 * Mít **jeden kontejner zapůjčení a sdílet ho** pro všechny vaše funkce: Tato druhá možnost zajišťuje lepší využití jednotek zřízené žádosti na kontejneru, protože umožňuje sdílení a používání stejné zřízené propustnosti více Azure Functions.
 
 Cílem tohoto článku je provést druhou možnost.

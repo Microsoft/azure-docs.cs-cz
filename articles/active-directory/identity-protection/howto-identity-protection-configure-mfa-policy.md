@@ -11,27 +11,27 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072db1d47abd95844075aeedfeddc4f8cf6bf936
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464330"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835862"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Postupy: Konfigurace zásad registrace Azure Multi-Factor Authentication
+# <a name="how-to-configure-the-azure-ad-multi-factor-authentication-registration-policy"></a>Postupy: Konfigurace zásad registrace Multi-Factor Authentication služby Azure AD
 
-Azure AD Identity Protection vám pomůže spravovat zavedení registrace Azure Multi-Factor Authentication (MFA) konfigurací zásady podmíněného přístupu, která vyžaduje registraci MFA, bez ohledu na to, ke které aplikaci moderního ověřování se přihlašujete.
+Azure AD Identity Protection vám pomůže spravovat registraci služby Azure AD Multi-Factor Authentication (MFA) pomocí konfigurace zásady podmíněného přístupu, která bude vyžadovat registraci MFA bez ohledu na to, k jakou aplikaci moderního ověřování se přihlašujete.
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Co je zásada registrace v Azure Multi-Factor Authentication?
+## <a name="what-is-the-azure-ad-multi-factor-authentication-registration-policy"></a>Jaké jsou zásady registrace Multi-Factor Authentication služby Azure AD?
 
-Azure Multi-Factor Authentication poskytuje způsob, jak ověřit, kdo používáte víc než jenom uživatelské jméno a heslo. Poskytuje druhou vrstvu zabezpečení pro přihlášení uživatelů. Aby uživatelé mohli reagovat na výzvy MFA, musí se nejdřív zaregistrovat pro Azure Multi-Factor Authentication.
+Azure AD Multi-Factor Authentication poskytuje způsob, jak ověřit, kdo používáte víc než jenom uživatelské jméno a heslo. Poskytuje druhou vrstvu zabezpečení pro přihlášení uživatelů. Aby uživatelé mohli reagovat na výzvy MFA, musí se nejdřív zaregistrovat pro Azure AD Multi-Factor Authentication.
 
-Doporučujeme, abyste pro přihlášení uživatelů vyžadovali Multi-Factor Authentication Azure, protože:
+Doporučujeme, abyste pro přihlášení uživatelů vyžadovali Multi-Factor Authentication Azure AD, protože:
 
 - Poskytuje silné ověřování prostřednictvím řady možností ověřování.
 - Hraje klíčovou roli v rámci přípravy vaší organizace na automatickou nápravu z detekce rizik v rámci Identity Protection.
 
-Další informace o Azure Multi-Factor Authentication najdete v tématu [co je azure Multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md)
+Další informace o Multi-Factor Authentication Azure AD najdete v tématu [co je Azure ad Multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md)
 
 ## <a name="policy-configuration"></a>Konfigurace zásad
 
@@ -41,7 +41,7 @@ Další informace o Azure Multi-Factor Authentication najdete v tématu [co je a
       1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
          1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
    1. Pod **ovládacími prvky**
-      1. Zajistěte, aby bylo zaškrtnuté políčko **vyžadovat registraci Azure MFA** , a zvolte **Vybrat**.
+      1. Zkontrolujte, jestli je zaškrtnuté políčko **vyžadovat registraci Azure AD MFA** , a zvolte **Vybrat**.
    1. **Vyhovět zásadám**  -  **Zapnuto**
    1. **Uložit**
 
@@ -59,4 +59,4 @@ Přehled souvisejícího uživatelského prostředí najdete v těchto tématech
 
 - [Povolit Samoobslužné resetování hesla služby Azure AD](../authentication/howto-sspr-deployment.md)
 
-- [Povolení služby Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [Povolit Multi-Factor Authentication služby Azure AD](../authentication/howto-mfa-getstarted.md)

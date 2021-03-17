@@ -1,19 +1,16 @@
 ---
 title: Vytváření clusterů Apache Hadoop pomocí šablon – Azure HDInsight
 description: Naučte se vytvářet clustery pro HDInsight pomocí šablon Správce prostředků.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/07/2020
-ms.openlocfilehash: 533fe0f391779a5bbe53bf7f2a136c3e9fb19017
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 43f9736ce902d4c195d6b07cfdf7011ba9ca0c2c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702738"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Vytváření clusterů Apache Hadoop ve službě HDInsight pomocí šablon Správce prostředků
 
@@ -51,11 +48,11 @@ Správce prostředků umožňuje exportovat šablonu Správce prostředků z exi
 
 ## <a name="deploy-using-powershell"></a>Nasazení pomocí PowerShellu
 
-Šablonu Správce prostředků můžete nasadit pomocí Azure PowerShell. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) a [nasazení privátní šablony Správce prostředků pomocí tokenu SAS a Azure PowerShell](../azure-resource-manager/resource-manager-powershell-sas-token.md).
+Šablonu Správce prostředků můžete nasadit pomocí Azure PowerShell. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) a [nasazení privátní šablony Správce prostředků pomocí tokenu SAS a Azure PowerShell](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="deploy-using-azure-cli"></a>Nasazení s využitím rozhraní příkazového řádku Azure
 
-Pomocí Azure CLI můžete nasadit šablonu Správce prostředků. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md) a [nasazení privátních správce prostředků šablony s tokenem SAS a](../azure-resource-manager/resource-manager-cli-sas-token.md)rozhraním příkazového řádku Azure CLI.
+Pomocí Azure CLI můžete nasadit šablonu Správce prostředků. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md) a [nasazení privátních správce prostředků šablony s tokenem SAS a](../azure-resource-manager/templates/secure-template-with-sas-token.md)rozhraním příkazového řádku Azure CLI.
 
 ## <a name="deploy-using-the-rest-api"></a>Nasazení pomocí REST API
 
@@ -73,11 +70,11 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o několika způsobech, jak vytvořit cluster HDInsight. Další informace najdete v následujících článcích:
+V tomto článku jste se dozvěděli o několika způsobech, jak vytvořit cluster HDInsight. Další informace najdete v těchto článcích:
 
 * Další šablony související s HDInsight najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight).
-* Příklad nasazení prostředků prostřednictvím klientské knihovny .NET najdete v tématu [nasazení prostředků pomocí knihoven .NET a šablony](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Příklad nasazení prostředků prostřednictvím klientské knihovny .NET najdete v tématu [nasazení prostředků pomocí knihoven .NET a šablony](/previous-versions/azure/virtual-machines/windows/csharp-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Podrobný příklad nasazení aplikace najdete v tématu věnovaném [zřizování a nasazování mikroslužeb v Azure](../app-service/deploy-complex-application-predictably.md).
-* Pokyny pro nasazení řešení do různých prostředí najdete v článku věnovaném [testovacím a vývojovým prostředím v Microsoft Azure](../solution-dev-test-environments.md).
+* Pokyny pro nasazení řešení do různých prostředí najdete v článku věnovaném [testovacím a vývojovým prostředím v Microsoft Azure](../devtest-labs/devtest-lab-overview.md).
 * Další informace o částech šablony Azure Resource Manager najdete v tématu [vytváření šablon](../azure-resource-manager/templates/template-syntax.md).
 * Seznam funkcí, které můžete použít v šabloně Azure Resource Manager, najdete v tématu [funkce šablon](../azure-resource-manager/templates/template-functions.md).

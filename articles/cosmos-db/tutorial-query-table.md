@@ -8,14 +8,16 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
-ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e184d85e3daee41f530334aa0034fc98f40a8766
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391889"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099214"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní Table API
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 Rozhraní [Table API](table-introduction.md) služby Azure Cosmos DB podporuje dotazy OData a [LINQ](/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) na data párů klíč-hodnota (tabulková data).  
 
@@ -36,7 +38,7 @@ Podrobnosti o dotazování pomocí rozhraní Table API najdete v tématu [Dotazo
 
 Další informace o prémiových funkcích, které služba Azure Cosmos DB nabízí, najdete v tématech [Rozhraní Table API služby Azure Cosmos DB](table-introduction.md) a [Vývoj v .NET s využitím rozhraní Table API](tutorial-develop-table-dotnet.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby tyto dotazy fungovaly, musíte mít účet služby Azure Cosmos DB a data entit v kontejneru. Něco z toho nemáte? Vytvořte účet a naplňte databázi dokončením [pětiminutového rychlého startu](create-table-dotnet.md) nebo [kurzu pro vývojáře](tutorial-develop-table-dotnet.md).
 
@@ -83,7 +85,7 @@ Další informace o vytváření výrazů filtru pro různé datové typy najdet
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
-Dotazy na vlastnosti DateTime nevrátí žádná data při spuštění v rozhraní API pro tabulky Azure Cosmos DB. Zatímco služba Azure Table Storage ukládá hodnoty data s časovou hustotou tiků, rozhraní API pro tabulky v Azure Cosmos DB používá `_ts` vlastnost. `_ts`Vlastnost je druhá úroveň členitosti, což není filtr OData. Proto jsou dotazy na vlastnosti časového razítka blokované Azure Cosmos DB. Jako alternativní řešení můžete definovat vlastnost vlastního datového typu DateTime nebo Long a nastavit hodnotu data z klienta.
+Dotazy na vlastnosti DateTime nevrátí žádná data při spuštění v rozhraní API pro tabulky Azure Cosmos DB. Zatímco služba Azure Table Storage ukládá hodnoty data s časovou hustotou tiků, rozhraní API pro tabulky v Azure Cosmos DB používá  `_ts` vlastnost. `_ts`Vlastnost je druhá úroveň členitosti, což není filtr OData. Proto jsou dotazy na vlastnosti časového razítka blokované Azure Cosmos DB. Jako alternativní řešení můžete definovat vlastnost vlastního datového typu DateTime nebo Long a nastavit hodnotu data z klienta.
 
 ## <a name="query-by-using-linq"></a>Dotazování pomocí jazyka LINQ 
 Dotazovat můžete také pomocí jazyka LINQ, který se přeloží na odpovídající výrazy dotazu OData. Tady je příklad sestavování dotazů pomocí sady .NET SDK:

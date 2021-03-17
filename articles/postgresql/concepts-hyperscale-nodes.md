@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/28/2019
-ms.openlocfilehash: a02583825f4a1ef15992aa2307e7f666d5abeaba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b3eda2c8de8319552f32938f20ff98af0e0a49fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136452"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91314822"
 ---
 # <a name="nodes-and-tables-in-azure-database-for-postgresql--hyperscale-citus"></a>Uzly a tabulky v Azure Database for PostgreSQL – škálovatelné (Citus)
 
@@ -24,7 +24,7 @@ Typ hostingu Citus () Azure Database for PostgreSQL umožňuje, aby se servery (
 
 Každá skupina serverů má uzel koordinátora a více pracovních procesů. Aplikace odesílají své dotazy do uzlu koordinátora, který je přenáší na příslušné pracovníky a shromažďuje jejich výsledky. Aplikace se nemůžou přímo připojit k pracovníkům.
 
-Citus () umožňuje správci databáze *distribuovat* tabulky a ukládat různé řádky do různých pracovních uzlů. Distribuované tabulky jsou klíčem k výkonu škálovatelného škálování. Selhání při distribuci tabulek ponechá je zcela v uzlu koordinátora a nemůže využít paralelní paralelismuy mezi počítači.
+Citus () umožňuje správci databáze *distribuovat* tabulky a ukládat různé řádky do různých pracovních uzlů. Distribuované tabulky jsou klíčem k výkonu Citus (Performance Scale). Selhání při distribuci tabulek ponechá je zcela v uzlu koordinátora a nemůže využít paralelní paralelismuy mezi počítači.
 
 Pro každý dotaz v distribuovaných tabulkách ho koordinátor směruje buď na jeden pracovní uzel, nebo ho parallelizes napříč několika v závislosti na tom, jestli jsou požadovaná data umístěná na jednom nebo několika uzlech. Koordinátor rozhodne o tom, co dělat v rámci konzultací s tabulkami metadat. Tyto tabulky sledují názvy DNS a stav pracovních uzlů a distribuci dat napříč uzly.
 

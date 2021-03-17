@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c301ed2b612c2f3a7aca40ed5ed733800323adcc
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230966"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751021"
 ---
 Můžete zvolit správu šifrování na úrovni každého spravovaného disku s vlastními klíči. Šifrování na straně serveru pro spravované disky pomocí klíčů spravovaných zákazníkem nabízí integrované prostředí s Azure Key Vault. Můžete buď importovat [klíče RSA](../articles/key-vault/keys/hsm-protected-keys.md) do svého Key Vault, nebo vygenerovat nové klíče rsa v Azure Key Vault. 
 
@@ -22,8 +22,6 @@ Azure Managed disks zpracovává šifrování a dešifrování plně transparent
 #### <a name="full-control-of-your-keys"></a>Úplné řízení klíčů
 
 Abyste mohli používat klíče pro šifrování a dešifrování klíč DEK, musíte udělit přístup ke spravovaným diskům ve vašem Key Vault. To vám umožní plnou kontrolu nad daty a klíči. Můžete kdykoli zakázat vaše klíče nebo odvolat přístup ke spravovaným diskům. Pomocí monitorování Azure Key Vault taky můžete auditovat použití šifrovacího klíče a zajistit, aby se ke klíčům přistupovaly jenom spravované disky nebo jiné důvěryhodné služby Azure.
-
-Když klíč zakážete nebo odstraníte, všechny virtuální počítače s disky, které tento klíč používají, se automaticky vypnou. Po tomto případě nebudou virtuální počítače použitelné, pokud se klíč znovu nepovolí nebo přiřadíte nový klíč.
 
 Pro Premium SSD, Standard SSD a Standard HDD: když zakážete nebo odstraníte klíč, všechny virtuální počítače s disky, které tento klíč používají, se automaticky vypnou. Po tomto případě nebudou virtuální počítače použitelné, pokud se klíč znovu nepovolí nebo přiřadíte nový klíč.    
 
@@ -44,4 +42,8 @@ Následující seznam popisuje diagram podrobněji:
 1. Spravované disky používají spravovanou identitu k posílání požadavků do Azure Key Vault.
 1. Pro čtení nebo zápis dat odesílají spravované disky požadavky na Azure Key Vault k šifrování (zabalení) a dešifrování (rozbalení) šifrovacího klíče dat, aby bylo možné provádět šifrování a dešifrování dat. 
 
-Pokud chcete odvolat přístup k klíčům spravovaným zákazníkem, přečtěte si téma [Azure Key Vault PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) a [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault). Odvolání přístupu efektivně zablokuje přístup ke všem datům v účtu úložiště, protože šifrovací klíč je nepřístupný Azure Storage.
+Pokud chcete odvolat přístup k klíčům spravovaným zákazníkem, přečtěte si téma [Azure Key Vault PowerShellu](/powershell/module/azurerm.keyvault/) a [Azure Key Vault CLI](/cli/azure/keyvault). Odvolání přístupu efektivně zablokuje přístup ke všem datům v účtu úložiště, protože šifrovací klíč je nepřístupný Azure Storage.
+
+#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>Automatické střídání klíčů pro klíče spravované zákazníkem (Preview)
+
+Můžete zvolit, že se má povolit automatické střídání klíčů na nejnovější verzi klíče. Disk odkazuje na klíč přes sadu Disk Encryption. Když povolíte automatické otočení pro sadu šifrování disků, systém automaticky aktualizuje všechny spravované disky, snímky a image, které odkazují na šifrování disků, aby používala novou verzi klíče do jedné hodiny. Tato funkce je aktuálně dostupná v omezených oblastech ve verzi Preview. Informace o regionální dostupnosti najdete v části [podporované oblasti](#supported-regions) .

@@ -3,16 +3,16 @@ title: Co jsou šablony aplikací v Azure IoT Central | Microsoft Docs
 description: Šablony aplikací pro Azure IoT Central umožňují přejít do vývoje řešení IoT.
 author: philmea
 ms.author: philmea
-ms.date: 10/25/2019
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b581242ad5a23072731fc7d30e09e461590ec1ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801321"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797124"
 ---
 # <a name="what-are-application-templates"></a>Co jsou šablony aplikací?
 
@@ -30,12 +30,7 @@ ms.locfileid: "85801321"
 
 ## <a name="custom-templates"></a>Vlastní šablony
 
-Pokud chcete vytvořit aplikaci od začátku, vyberte jednu ze dvou šablon vlastní aplikace:
-
-- Custom application (Vlastní aplikace)
-- Vlastní aplikace (starší verze)
-
-Pokud nemáte konkrétní důvod k použití starší šablony aplikace, vyberte šablonu **vlastní aplikace** .
+Pokud chcete vytvořit aplikaci od začátku, vyberte jednu ze šablon **vlastní aplikace** .
 
 ## <a name="industry-focused-templates"></a>Šablony zaměřené na odvětví
 
@@ -47,6 +42,7 @@ Azure IoT Central je nezávislá aplikační platforma pro odvětví. Šablony a
   - Analýzy v obchodě – monitorování podmínek
   - Analýza v obchodě – rezervace
   - Správa inteligentních inventářů
+  - Analýza videa – detekce objektů a pohybu
 - [Energetický sektor](../energy/overview-iot-central-energy.md)
   - Monitorování inteligentních měřičů
   - Sledování panelu slunečníku

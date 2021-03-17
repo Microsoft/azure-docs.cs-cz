@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509196"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578576"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal
 
@@ -40,9 +40,9 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 
     ![Vytvořit nový účet Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Vytvořit nový účet Data Lake Storage Gen1")
 
-   * **Název**. Zadejte jedinečný název Data Lake Storage Gen1 účtu.
+   * **Název:** Zadejte jedinečný název Data Lake Storage Gen1 účtu.
    * **Předplatné**. Vyberte předplatné, ve kterém chcete vytvořit nový účet Data Lake Storage Gen1.
-   * **Skupina prostředků**. Vyberte existující skupinu prostředků nebo ji vytvořte pomocí možnosti **Vytvořit novou**. Skupina prostředků je kontejner, který obsahuje související prostředky pro aplikaci. Další informace najdete v tématu [Skupiny prostředků v Azure](../azure-resource-manager/management/overview.md#resource-groups).
+   * **Skupina prostředků:** Vyberte existující skupinu prostředků nebo ji vytvořte pomocí možnosti **Vytvořit novou**. Skupina prostředků je kontejner, který obsahuje související prostředky pro aplikaci. Další informace najdete v tématu [Skupiny prostředků v Azure](../azure-resource-manager/management/overview.md#resource-groups).
    * **Umístění**: vyberte umístění, kde chcete vytvořit účet Data Lake Storage Gen1.
    * **Nastavení šifrování**. Existují tři možnosti:
 
@@ -50,7 +50,7 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
      * Pokud chcete Data Lake Storage Gen1 spravovat šifrovací klíče, **použijte klíče spravované pomocí Data Lake Storage Gen1**.
      * **Použít klíče z vašeho vlastního trezoru klíčů**. Můžete vybrat existující službu Azure Key Vault nebo vytvořit novou. Chcete-li používat klíče z Key Vault, je nutné přiřadit oprávnění pro účet Data Lake Storage Gen1 pro přístup k Azure Key Vault. Pokyny najdete v části [Přiřazení oprávnění pro Azure Key Vault](#assign-permissions-to-azure-key-vault).
 
-        ![Data Lake Storage Gen1 šifrování](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage Gen1 šifrování")
+        ![Snímek obrazovky s novým Data Lake Storage oknem pro obecné 1 a nastavení šifrování](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage Gen1 šifrování")
 
         Klikněte na **OK** v okně **Nastavení šifrování**.
 
@@ -64,10 +64,10 @@ Pokud jste použili klíče z Azure Key Vault ke konfiguraci šifrování pro Da
 
 1. Pokud jste použili klíče z Azure Key Vault, zobrazí okno pro Data Lake Storage Gen1 účet upozornění v horní části. Kliknutím na upozornění otevřete **Šifrování**.
 
-    ![Data Lake Storage Gen1 šifrování](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage Gen1 šifrování")
+    ![Snímek obrazovky okna Data Lake Storage Gen1 účtu s upozorněním, že je nutná konfigurace oprávnění trezoru klíčů Instalaci zobrazíte kliknutím sem.](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage Gen1 šifrování")
 2. V okně se zobrazují dvě možnosti pro konfiguraci přístupu.
 
-    ![Data Lake Storage Gen1 šifrování](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage Gen1 šifrování")
+    ![Snímek obrazovky okna šifrování](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage Gen1 šifrování")
 
    * V první možnosti kliknutím na **Udělit oprávnění** nakonfigurujte přístup. První možnost je povolena, pouze pokud je uživatel, který vytvořil účet Data Lake Storage Gen1, také správcem pro Azure Key Vault.
    * Druhou možností je spustit rutinu PowerShellu zobrazenou v okně. Musíte být vlastníkem Azure Key Vaultu nebo mít možnost udělovat oprávnění pro Azure Key Vault. Po spuštění rutiny se vraťte do okna a kliknutím na **Povolit** nakonfigurujte přístup.
@@ -87,10 +87,10 @@ Můžete vytvořit složky pod účtem Data Lake Storage Gen1, abyste mohli spra
 1. Otevřete účet Data Lake Storage Gen1, který jste vytvořili. V levém podokně klikněte na **všechny prostředky**a potom v okně **všechny prostředky** klikněte na název účtu, pod kterým chcete vytvořit složky. Pokud jste účet připnuli na úvodní panel, klikněte na dlaždici tohoto účtu.
 2. V okně Data Lake Storage Gen1 účtu klikněte na **Průzkumník dat**.
 
-    ![Vytváření složek v účtu Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Vytváření složek v účtu Data Lake Storage Gen1")
+    ![Snímek obrazovky okna Data Lake Storage účet 1. generace s možností Průzkumník dat s názvem.](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Vytváření složek v účtu Data Lake Storage Gen1")
 3. V okně Průzkumník dat klikněte na **Nová složka**, zadejte název nové složky a pak klikněte na **OK**.
 
-    ![Vytváření složek v účtu Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Vytváření složek v účtu Data Lake Storage Gen1")
+    ![Snímek obrazovky okna Průzkumník dat s možností nová složka a textové pole vytvořit novou složku s názvem.](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Vytváření složek v účtu Data Lake Storage Gen1")
 
     Nově vytvořená složka se zobrazí v okně **Průzkumník dat**. Můžete vytvářet vnořené složky až po libovolnou úroveň.
 

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření externího datového proudu (Transact-SQL) – Azure SQL Edge (Preview)
-description: Přečtěte si o příkazu CREATE EXTERNAL STREAM ve službě Azure SQL Edge (Preview).
+title: Vytvoření externího datového proudu (Transact-SQL) – Azure SQL Edge
+description: Přečtěte si o příkazu CREATE EXTERNAL STREAM v Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: d4ad11d156fd3a672e93b5e039c82d16b2aebdc3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 203abe2b6def478dc1747dd4ce638b5b62707612
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321730"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659218"
 ---
 # <a name="create-external-stream-transact-sql"></a>VYTVOŘIT externí datový proud (Transact-SQL)
 
@@ -26,9 +26,9 @@ Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy 
 
 | Typ zdroje dat | Vstup | Výstup | Popis |
 |------------------|-------|--------|------------------|
-| Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| Databáze SQL | N | A | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
-| Kafka | A | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Podpora Kafka není k dispozici pro ARM64 verze Azure SQL Edge.|
+| Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
+| Databáze SQL | N | Y | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
+| Kafka | Y | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Podpora Kafka není k dispozici pro ARM64 verze Azure SQL Edge.|
 
 
 
@@ -96,11 +96,11 @@ WITH  ( <with_options> )
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
 - **Location**: Určuje název skutečných dat nebo umístění ve zdroji dat. 
    - V případě objektů Edge nebo Kafka datových proudů určuje umístění název centra Edge nebo Kafka pro čtení nebo zápis do.
-   - Pro objekty SQL Stream (SQL Server, Azure SQL Database nebo Azure SQL Edge) umístění Určuje název tabulky. Pokud je datový proud vytvořen ve stejné databázi a schématu jako cílová tabulka, stačí pouze název tabulky. V opačném případě musíte plně kvalifikovat (<database_name. schema_name. table_name) název tabulky.
+   - Pro objekty SQL Stream (SQL Server, Azure SQL Database nebo Azure SQL Edge) umístění Určuje název tabulky. Pokud je datový proud vytvořen ve stejné databázi a schématu jako cílová tabulka, stačí pouze název tabulky. V opačném případě musíte plně kvalifikovat (<název_databáze. schema_name. TABLE_NAME) název tabulky.
    - Pro umístění objektu služby Azure Blob Storage Stream odkazuje na vzor cesty, který se má použít uvnitř kontejneru objektů BLOB. Další informace o této funkci najdete v tématu (/articles/Stream-Analytics/Stream-Analytics-define-Outputs.MD # BLOB-Storage-and-Azure-Data-Lake-Gen2).
 
 - **INPUT_OPTIONS**: Zadejte možnosti jako páry klíč-hodnota pro služby, jako je například Kafka, IoT Edge centrum, které jsou vstupy pro streamování dotazů.
-    - ODDÍLY: počet oddílů definovaných pro téma
+    - ODDÍLY: počet oddílů definovaných pro téma. Maximální počet oddílů, které lze použít, je omezen na 32.
       - Platí pro vstupní datové proudy Kafka
     - CONSUMER_GROUP: centra událostí a IoT omezují počet čtenářů v jedné skupině příjemců (na 5). Když necháte toto pole prázdné, použije se skupina příjemců $Default.
       - Vyhrazeno pro budoucí použití. Neplatí pro Azure SQL Edge.  
@@ -141,7 +141,7 @@ WITH  ( <with_options> )
   - MAXIMUM_BATCH_COUNT:  
     Maximální počet událostí odeslaných funkci na volání funkce Azure Functions – výchozí hodnota je 100. Pro SQL Database to představuje maximální počet záznamů odeslaných s každou hromadnou operací vložení – výchozí hodnota je 10 000. 
     - Platí pro všechny výstupy založené na SQL serveru 
-  - STAGING_AREA: externí objekt zdroje dat, který Blob Storage pracovní oblast pro příjem dat s vysokou propustností do SQL Data Warehouse 
+  - STAGING_AREA: externí objekt zdroje dat, který Blob Storage pracovní oblast pro příjem dat s vysokou propustností do Azure synapse Analytics 
     - Vyhrazeno pro budoucí použití. Neplatí pro Azure SQL Edge.
 
 
@@ -162,7 +162,7 @@ WITH
  
 CREATE EXTERNAL FILE FORMAT myFileFormat  
 WITH (  
-   FORMAT_TYPE = 'JSON', 
+   FORMAT_TYPE = JSON, 
 ); 
  
 CREATE EXTERNAL STREAM Stream_A  
@@ -245,8 +245,6 @@ WITH
 ); 
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-- [ALTER EXTERNAL STREAM (Transact-SQL)](alter-external-stream-transact-sql.md) 
-- [Vynechat externí datový proud (Transact-SQL)](drop-external-stream-transact-sql.md) 
-
+- [Vynechat externí datový proud (Transact-SQL)](drop-external-stream-transact-sql.md)

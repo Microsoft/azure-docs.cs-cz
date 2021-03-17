@@ -1,40 +1,46 @@
 ---
 title: 'Kurz: vyhledání více tras podle režimu cestování | Mapy Microsoft Azure'
-description: Naučte se používat Azure Maps k nalezení tras pro konkrétní cestovní režimy až po body zájmu. Podívejte se, jak zobrazit více tras na mapách.
+description: Kurz týkající se použití Azure Maps k nalezení tras pro konkrétní cestovní režimy až po body zájmu. Podívejte se, jak zobrazit více tras na mapách.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/14/2020
+ms.date: 09/10/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 7d17b9474edef245f7db16f33c72d722f356f712
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 5e7f38e4bbc95e04bf54f8f7a2dd80e21891e8df
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037588"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215489"
 ---
-# <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Kurz: Vyhledání tras pro různé režimy cestování pomocí Azure Maps
+# <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Kurz: vyhledání a zobrazení tras pro různé režimy cestování pomocí Azure Maps
 
-V tomto kurzu se dozvíte, jak používat účet Azure Maps a službu Směrování. Služba směrování může trasu najít do svého bodu zájmu a nastavit prioritu podle vašeho způsobu cestování. Na mapě můžete zobrazit dvě různé trasy, jednu pro automobily a jednu pro nákladní automobily. Směrovací služba vezme v úvahu omezení z důvodu výšky a váhy vozidla nebo v případě, že vozidlo uskutečňuje nebezpečný náklad. V tomto kurzu se naučíte:
+V tomto kurzu se dozvíte, jak pomocí [služby Azure Maps Route Service](/rest/api/maps/route) a [mapového ovládacího prvku](./how-to-use-map-control.md) zobrazit směr směrování jak u privátních vozidel, tak z komerčních vozidel (nákladní automobily) `USHazmatClass2` typu nákladu. Kromě toho vás provedeme tak, jak vizualizovat data o přenosech dat v reálném čase na mapě. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
-> * Vizualizace aktuálního provozu na mapě
-> * Vytvoření dotazů na trasy s deklarací režimu dopravy
-> * Zobrazení více tras na mapě
+> * Vytvoření a zobrazení mapového ovládacího prvku na webové stránce
+> * Vykreslování dat o přenosech dat v reálném čase na mapě
+> * Vyžádat a zobrazit trasy privátních a komerčních vozidel na mapě
 
 ## <a name="prerequisites"></a>Požadavky
-Než budete pokračovat, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) a vyberte cenovou úroveň S1. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
-## <a name="create-a-new-map"></a>Vytvoření nové mapy
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky.
+2. [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account).
+
+3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
+
+Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel).
+
+## <a name="create-a-new-web-page-using-the-map-control-api"></a>Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
+
+Následující kroky ukazují, jak vytvořit a zobrazit mapový ovládací prvek na webové stránce.
 
 1. Na místním počítači vytvořte nový soubor s názvem **MapTruckRoute.html**.
-2. Přidejte do souboru následující součásti HTML:
+2. Zkopírujte nebo vložte následující kód HTML do souboru.
 
     ```HTML
     <!DOCTYPE html>
@@ -79,7 +85,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
     </html>
     ```
 
-    Všimněte si, že hlavička HTML zahrnuje soubory prostředků šablon stylů CSS a JavaScriptu hostované knihovnou Ovládací prvek Mapa v Azure. V těle stránky si všimněte události `onload`, která po načtení těla stránky zavolá funkci `GetMap`. Tato funkce bude obsahovat vložený kód JavaScriptu pro přístup k rozhraním Azure Maps API.
+     Hlavička HTML obsahuje soubory prostředků CSS a JavaScript hostované knihovnou Azure Ovládací prvek Mapa. `onload`Událost těla volá `GetMap` funkci. V dalším kroku přidáme inicializační kód mapového ovládacího prvku.
 
 3. Do funkce `GetMap` přidejte následující kód JavaScriptu. Nahraďte řetězec `<Your Azure Maps Key>` primárním klíčem, který jste zkopírovali z účtu Maps.
 
@@ -94,15 +100,13 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
     });
     ```
 
-    `atlas.Map`Třída poskytuje ovládací prvek pro vizuální a interaktivní webovou mapu a je součástí rozhraní API služby Azure ovládací prvek mapa.
+4. Uložte soubor a otevřete ho v prohlížeči. Zobrazí se jednoduchá.
 
-4. Uložte soubor a otevřete ho v prohlížeči. V tuto chvíli máte základní mapu, kterou můžete dále rozvíjet.
+    :::image type="content" source="./media/tutorial-prioritized-routes/basic-map.png" alt-text="Základní vykreslování mapy mapového ovládacího prvku":::
 
-   ![Zobrazení základní mapy](./media/tutorial-prioritized-routes/basic-map.png)
+## <a name="render-real-time-traffic-data-on-a-map"></a>Vykreslování dat o přenosech dat v reálném čase na mapě
 
-## <a name="visualize-traffic-flow"></a>Vizualizace aktuálního provozu
-
-1. Přidejte do mapy zobrazení aktuálního provozu. Událost Maps `ready` počká, dokud se prostředky map nenačte a neumožní bezpečně pracovat s ní.
+1. Do funkce přidejte následující kód JavaScriptu `GetMap` . Tento kód implementuje `ready` obslužnou rutinu události mapového ovládacího prvku. Zbytek kódu v tomto kurzu bude umístěn uvnitř `ready` obslužné rutiny události.
 
     ```javascript
     map.events.add("ready", function() {
@@ -113,54 +117,56 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
     });
     ```
 
-    V `ready` obslužné rutině události mapy je nastavení toku přenosu na mapě nastaveno na `relative` , což je rychlost provozu vzhledem k volnému toku. Můžete také nastavit hodnotu rychlosti silniční dopravy `absolute` nebo `relative-delay`, která zobrazuje relativní rychlost, pokud se liší od volného toku.
+    V `ready` obslužné rutině události mapy je nastavení toku přenosu na mapě nastaveno na `relative` , což je rychlost provozu vzhledem k volnému toku. Další možnosti přenosů naleznete v tématu [TrafficOptions Interface](/javascript/api/azure-maps-control/atlas.trafficoptions).
 
-2. Uložte soubor **MapTruckRoute.html** a aktualizujte stránku v prohlížeči. Pokud s mapou pracujete a přiblížíte se k Los Angeles, měla by se zobrazit ulice s aktuálními daty o provozu.
+2. Uložte soubor **MapTruckRoute.html** a aktualizujte stránku v prohlížeči. Pokud se přiblížíte k libovolnému městu, třeba k Los Angeles, uvidíte, že se ulic zobrazuje s aktuálními daty toku provozu.
 
-   ![Zobrazení provozu na mapě](./media/tutorial-prioritized-routes/traffic-map.png)
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Zobrazení provozu na mapě":::
 
 <a id="queryroutes"></a>
 
-## <a name="define-how-the-route-will-be-rendered"></a>Definice způsobu vykreslení trasy
+## <a name="define-route-display-rendering"></a>Definovat vykreslování zobrazení tras
 
-V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna trasa využívá silnice pro automobilovou dopravu a druhá využívá silnice pro nákladní dopravu. Když se vykreslí, zobrazí se ikona pro začátek a konec trasy a pro každou cestu cesty se vytvoří různé barevné čáry.
+V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. První trasa se vypočítá pro privátní vozidlo (automobil). Druhá trasa se vypočítá pro komerční vozidlo (nákladní vůz), aby se zobrazil rozdíl mezi výsledky. Při vykreslení bude mapa zobrazovat ikonu symbolu pro počáteční a koncový bod trasy a spojnici geometrií čáry s různými barvami pro každou cestu trasy. Další informace o přidávání vrstev čar naleznete v tématu [Přidání čáry čáry do mapy](map-add-line-layer.md). Další informace o vrstvách symbolů naleznete v tématu [Přidání vrstvy symbolů na mapu](map-add-pin.md).
 
-1. Po inicializaci mapy přidejte do obslužné rutiny události Maps následující kód jazyka JavaScript `ready` .
+1. V `ready` obslužné rutině události mapového ovládacího prvku přidejte následující kód.
 
     ```JavaScript
-    //Wait until the map resources have fully loaded.
-    map.events.add('ready', function () {
 
-        //Create a data source and add it to the map.
-        datasource = new atlas.source.DataSource();
-        map.sources.add(datasource);
+    //Create a data source and add it to the map.
+    datasource = new atlas.source.DataSource();
+    map.sources.add(datasource);
 
-        //Add a layer for rendering the route lines and have it render under the map labels.
-        map.layers.add(new atlas.layer.LineLayer(datasource, null, {
-            strokeColor: ['get', 'strokeColor'],
-            strokeWidth: ['get', 'strokeWidth'],
-            lineJoin: 'round',
-            lineCap: 'round'
-        }), 'labels');
+    //Add a layer for rendering the route lines and have it render under the map labels.
+    map.layers.add(new atlas.layer.LineLayer(datasource, null, {
+        strokeColor: ['get', 'strokeColor'],
+        strokeWidth: ['get', 'strokeWidth'],
+        lineJoin: 'round',
+        lineCap: 'round'
+    }), 'labels');
 
-        //Add a layer for rendering point data.
-        map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
-            iconOptions: {
-                image: ['get', 'icon'],
-                allowOverlap: true
-            },
-            textOptions: {
-                textField: ['get', 'title'],
-                offset: [0, 1.2]
-            },
-            filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
-        }));
-    });
+    //Add a layer for rendering point data.
+    map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
+        iconOptions: {
+            image: ['get', 'icon'],
+            allowOverlap: true
+        },
+        textOptions: {
+            textField: ['get', 'title'],
+            offset: [0, 1.2]
+        },
+        filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
+    }));
+
     ```
-    
-    V `ready` obslužné rutině události Maps se vytvoří zdroj dat, který bude ukládat řádky trasy a počáteční a koncové body. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Ve funkci čáry trasy se tloušťka a barva čáry načte z vlastností pomocí výrazů. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že řádek trasy nepokrývá popisky cest. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak budou vykresleny počáteční a koncové body. V tomto případě byly přidány výrazy pro načtení obrázku ikony a informace o popisku textu z vlastností u jednotlivých objektů objektu Point. 
-    
-2. Pro účely tohoto kurzu jako počáteční bod nastavte fiktivní společnost Fabrikam v Seattlu a jako cílový bod nastavte pobočku Microsoftu. V `ready` obslužné rutině události Maps přidejte následující kód.
+
+
+    V `ready` obslužné rutině události mapového ovládacího prvku je vytvořen zdroj dat pro uložení trasy od začátku do konce. [Výrazy](data-driven-style-expressions-web-sdk.md) se používají k načtení šířky čáry a barvy z vlastností funkce řádek trasy. Aby se zajistilo, že řádek trasy nepokrývá popisky cest, předali jsme druhý parametr s hodnotou `'labels'` .
+
+    Dále je vytvořena vrstva symbolu a připojena ke zdroji dat. Tato vrstva určuje způsob vykreslování počátečních a koncových bodů. Přidaly se výrazy pro načtení obrázku ikony a informací o popisku textu z vlastností u každého objektu Point. Další informace o výrazech naleznete v tématu [výrazy stylu na základě dat](data-driven-style-expressions-web-sdk.md).
+
+2. Nastavte počáteční bod jako fiktivní společnost v Seattlu označované jako Fabrikam a koncový bod jako Microsoft Office.  V `ready` obslužné rutině události mapového ovládacího prvku přidejte následující kód.
+
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -173,13 +179,7 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna t
         title: 'Microsoft - Lincoln Square',
         icon: 'pin-round-blue'
     });
-    ```
 
-    Tento kód vytvoří dva [objekty GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) představující počáteční a koncový bod trasy. Ke každému bodu se přidají vlastnosti `title` a `icon`.
-
-3. Dále přidáním následujícího kódu JavaScriptu přidejte na mapu špendlíky pro počáteční a koncový bod:
-
-    ```JavaScript
     //Add the data to the data source.
     datasource.add([startPoint, endPoint]);
 
@@ -188,25 +188,27 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna t
         bounds: atlas.data.BoundingBox.fromData([startPoint, endPoint]),
         padding: 100
     });
+
     ```
 
-    Počáteční a koncový bod se přidají ke zdroji dat. Ohraničující rámeček pro počáteční a koncový bod se vypočítá pomocí funkce `atlas.data.BoundingBox.fromData`. Toto ohraničovací pole slouží k nastavení zobrazení mapy kamer přes celou trasu pomocí `map.setCamera` funkce. Přidá se odsazení, které kompenzuje rozměry ikon symbolů v pixelech.
+    Tento kód vytvoří dva [objekty typu bodový kód](https://en.wikipedia.org/wiki/GeoJSON) pro zobrazení dat, které představují počáteční a koncové body, které jsou poté přidány do zdroje dat.
 
-4. Uložte soubor a aktualizujte prohlížeč. Na mapě se zobrazí špendlíky. Mapa se teď nacentruje na střed Seattle. Můžete zobrazit kulatě modrý kód PIN, který označuje počáteční bod a modrý kód PIN označující bod dokončení.
+    Poslední blok kódu nastaví zobrazení kamery pomocí zeměpisné šířky a délky počátečního a koncového bodu. Počáteční a koncový bod se přidají ke zdroji dat. Ohraničující rámeček pro počáteční a koncový bod se vypočítá pomocí funkce `atlas.data.BoundingBox.fromData`. Toto ohraničovací pole slouží k nastavení zobrazení mapy kamer přes celou trasu pomocí `map.setCamera` funkce. Je přidáno odsazení, které umožňuje kompenzovat rozměry ikon symbolů v pixelech. Další informace o vlastnosti setCamera mapového ovládacího prvku naleznete v tématu [setCamera (CameraOptions | Vlastnost CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) .
 
-   ![Zobrazení mapy s počátečním a koncovým bodem](./media/tutorial-prioritized-routes/pins-map.png)
+3. Uložte **TruckRoute.html** a aktualizujte prohlížeč. Mapa se teď nacentruje na střed Seattle. Modrý kód pro 15kolíkový označí počáteční bod. Kulatě modrý kód PIN označuje koncový bod.
+
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Zobrazení mapy s počátečním a koncovým bodem":::
 
 <a id="multipleroutes"></a>
 
-## <a name="render-routes-prioritized-by-mode-of-travel"></a>Vykreslovat trasy s určenou prioritou podle režimu dopravy
+## <a name="request-and-display-private-and-commercial-vehicle-routes-on-a-map"></a>Vyžádat a zobrazit trasy privátních a komerčních vozidel na mapě
 
-V této části se dozvíte, jak používat rozhraní API služby mapy tras. Rozhraní API trasy se používá k vyhledání několika tras z daného počátečního bodu až po koncový bod na základě vašeho režimu přenosu. Služba Směrování poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *ekonomické*nebo *Thrilling* trasy. Nejen naplánují trasy rozhraní API mezi dvěma umístěními, ale také zvažte aktuální podmínky provozu. 
+V této části se dozvíte, jak používat službu Azure Maps Route k získání pokynů od jednoho bodu k druhému v závislosti na vašem režimu přenosu. Budeme používat dva způsoby přenosu: nákladní auto a auto.
 
-Rozhraní API pro směrování umožňuje uživatelům plánovat trasy v budoucnu pomocí rozsáhlé historické databáze přenosů Azure. Rozhraní API může předpovědět dobu trvání tras pro daný den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). 
+>[!TIP]
+>Služba Směrování poskytuje rozhraní API k plánování *nejrychlejší*, *nejkratší*, *ekonomické* nebo *Thrilling* trasy na základě vzdálenosti, přenosových podmínek a použitého přenosu. Tato služba také umožňuje uživatelům plánovat budoucí trasy na základě historických přenosových podmínek. Uživatelé mohou zobrazit předpovědi trvání tras pro určitou dobu. Další informace najdete v tématu [získání rozhraní API pro směr směrování](/rest/api/maps/route/getroutedirections).
 
-Všechny následující bloky kódu by měly být přidány **v rámci naslouchacího procesu událostí zatížení mapy** , aby bylo zajištěno, že budou načteny po úplném načtení mapy.
-
-1. Do funkce GetMap přidejte následující kód JavaScript Code.
+1. Do `GetMap` funkce uvnitř `ready` obslužné rutiny události ovládacího prvku přidejte následující kód jazyka JavaScript.
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
@@ -219,9 +221,9 @@ Všechny následující bloky kódu by měly být přidány **v rámci nasloucha
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential`Vytvoří a `SubscriptionKeyCredentialPolicy` OVĚŘÍ požadavky HTTP, které se mají Azure Maps pomocí klíče předplatného. `atlas.service.MapsURL.newPipeline()`Zásada převezme `SubscriptionKeyCredential` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `routeURL`Představuje adresu URL pro Azure Maps operací [Směrování](https://docs.microsoft.com/rest/api/maps/route) .
+   `SubscriptionKeyCredential`Vytvoří a `SubscriptionKeyCredentialPolicy` OVĚŘÍ požadavky HTTP, které se mají Azure Maps pomocí klíče předplatného. `atlas.service.MapsURL.newPipeline()`Zásada převezme `SubscriptionKeyCredential` a vytvoří instanci [kanálu](/javascript/api/azure-maps-rest/atlas.service.pipeline) . `routeURL`Představuje adresu URL pro Azure Maps operací [Směrování](/rest/api/maps/route) .
 
-2. Po nastavení přihlašovacích údajů a adresy URL přidejte následující kód JavaScriptu, který vytvoří trasu od začátku do koncového bodu pro nákladní automobil, který vede USHazmatClass2 náklad na vydanou třídu a zobrazí výsledky.
+2. Po nastavení přihlašovacích údajů a adresy URL přidejte následující kód JavaScriptu, který vytvoří trasu trasy vozíku od začátku do koncového bodu. Tato trasa se vytvoří a zobrazí pro nákladní automobil, který přepravuje náklad na vydanou `USHazmatClass2` třídu.
 
     ```JavaScript
     //Start and end point input to the routeURL
@@ -248,9 +250,12 @@ Všechny následující bloky kódu by měly být přidány **v rámci nasloucha
     });
     ```
 
-    Tento fragment kódu výše se dotazuje směrovací služby Azure Maps pomocí metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Z odpovědi, která je extrahována pomocí metody, je následně extrahována z kolekce funkcí injson `geojson.getFeatures()` . Řádek trasy se pak přidá do zdroje dat. Index 0 zajistí, že se vykreslí před všemi ostatními řádky ve zdroji dat. To se provádí, protože výpočet trasy vozíku bude často pomalejší než výpočet trasy auta. Pokud je čára postupu nákladní jednotky přidána do zdroje dat po trase auta, vykreslí se nad ní. Do řádku trasy vozíku se přidají dvě vlastnosti, Barva tahu, která je dobrým barevným trendem modrou, a tloušťka čáry devět pixelů.
+    Výše uvedený kód se dotazuje služby směrování Azure Maps prostřednictvím [rozhraní API pro Azure Maps trasy tras](/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-). Z odpovědi, která je extrahována pomocí metody, je následně extrahována z kolekce funkcí injson `geojson.getFeatures()` . Nakonec se přidá řádek trasy do zdroje dat. Přidáváme ho do indexu 0, aby se zajistilo, že se trasa na nákladní vozík vykreslí před všemi ostatními řádky ve zdroji dat, protože výpočet trasy vozíku bude často pomalejší než výpočet trasy auta. Pokud je čára postupu nákladní jednotky přidána do zdroje dat po trase auta, vykreslí se nad ní. Do řádku trasy vozíku se přidají dvě vlastnosti: modrou barvu tahu a šířku tahu devět pixelů.
 
-3. Přidáním následujícího kódu jazyka JavaScript vytvořte trasu pro automobil a zobrazte výsledky.
+    >[!TIP]
+    > Pokud chcete zobrazit všechny možné možnosti a hodnoty rozhraní API pro Azure Maps tras, přečtěte si téma [parametry identifikátoru URI pro směr směrování post](/rest/api/maps/route/postroutedirections#uri-parameters).
+
+3. Nyní k vytvoření trasy pro automobil přidejte následující kód JavaScriptu.
 
     ```JavaScript
     routeURL.calculateRouteDirections(atlas.service.Aborter.timeout(10000), coordinates).then((directions) => {
@@ -263,39 +268,30 @@ Všechny následující bloky kódu by měly být přidány **v rámci nasloucha
         routeLine.properties.strokeColor = '#B76DAB';
         routeLine.properties.strokeWidth = 5;
 
-        //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.  
+        //Add the route line to the data source. This will add the car route after the truck route.  
         datasource.add(routeLine);
     });
     ```
 
-    Tento fragment kódu výše se dotazuje směrovací služby Azure Maps pomocí metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Z odpovědi, která je extrahována pomocí metody, je následně extrahována z kolekce funkcí injson `geojson.getFeatures()` . Řádek trasy se pak přidá do zdroje dat. Do řádku trasy automobilu jsou přidány dvě vlastnosti, Barva tahu, která je vybarvení fialová a šířka tahu je 5 pixelů.  
+    Výše uvedený kód provede dotazování směrovací služby Azure Maps pomocí metody  [rozhraní API pro Azure Maps trasy](/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) . Z odpovědi, která je extrahována pomocí metody, je následně extrahována z kolekce funkcí injson `geojson.getFeatures()` . Nakonec se přidá řádek trasy do zdroje dat. Do řádku trasy vozíku jsou přidány dvě vlastnosti: fialová barva tahu a šířka tahu na pět pixelů.
 
-4. Uložte soubor **MapTruckRoute.html**, aktualizujte prohlížeč a prohlédněte si výsledek. V případě úspěšného připojení s použitím rozhraní Maps API by se měla zobrazit mapa podobná následující.
+4. Uložte soubor **TruckRoute.html** a aktualizujte webový prohlížeč. Mapa by nyní měla zobrazovat trasy nákladní automobil a auto.
 
-    ![Trasy s určenou prioritou s použitím rozhraní API Route Service v prostředí Azure](./media/tutorial-prioritized-routes/prioritized-routes.png)
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Směrování privátních a komerčních vozidel na mapě s využitím Azure Route Service":::
 
-    Směr nákladní automobil je silný modrou a trasa automobilu je tenká fialová. Trasa automobilu projde přes Lake Washington prostřednictvím I-90, který prochází tunely v rámci domácích oblastí. Vzhledem k tomu, že tunely jsou blízko domácích oblastí, je zakázaný nebezpečný odpadní náklad. Směr nákladní lodě, který určuje typ nákladu USHazmatClass2, je směrován na použití jiné dálnice.
+    Trasa za nákladní vůz se zobrazuje pomocí tlusté modré čáry. Trasa auta se zobrazí s použitím tenké fialové čáry. Trasa automobilu prochází přes Lake Washington prostřednictvím I-90 a prochází tunely pod místními oblastmi. Vzhledem k tomu, že tunely jsou blízko domácích oblastí, je zakázaný nebezpečný odpadní náklad. Směr nákladní lodě, který určuje `USHazmatClass2` typ nákladu, je směrován na použití jiné dálnice.
+
+Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel).
+
+Můžete také [použít výrazy stylu řízené daty](data-driven-style-expressions-web-sdk.md) .
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
 
 ## <a name="next-steps"></a>Další kroky
-
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
-> * Vizualizace aktuálního provozu na mapě
-> * Vytvoření dotazů na trasy s deklarací režimu dopravy
-> * Zobrazení více tras na mapě
-
-> [!div class="nextstepaction"]
-> [Zobrazit úplný zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)
-
-> [!div class="nextstepaction"]
-> [Zobrazit ukázku živého vysílání](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
 
 V dalším kurzu se dozvíte, jak vytvořit jednoduchý Lokátor úložiště pomocí Azure Maps.
 
 > [!div class="nextstepaction"]
 > [Vytvoření lokátoru úložiště pomocí Azure Maps](./tutorial-create-store-locator.md)
-
-> [!div class="nextstepaction"]
-> [Použití výrazů pro styly založené na datech](data-driven-style-expressions-web-sdk.md)

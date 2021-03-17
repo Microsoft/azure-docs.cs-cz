@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a42790e079985b003776b381c74f837b0ba619b1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533414"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359200"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Kurz: Konfigurace Tableau online pro Automatické zřizování uživatelů
 
@@ -45,7 +45,7 @@ Pokud chcete na webu Marketplace přidat Tableau online, postupujte podle těcht
 
     ![Ikona Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -61,7 +61,7 @@ Pokud chcete na webu Marketplace přidat Tableau online, postupujte podle těcht
 
 Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé nebo skupiny, které jsou přiřazené k aplikaci v Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, rozhodněte se, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k Tableau online. Pokud chcete přiřadit tyto uživatele nebo skupiny k Tableau online, postupujte podle pokynů v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
+Než nakonfigurujete a povolíte automatické zřizování uživatelů, rozhodněte se, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k Tableau online. Pokud chcete přiřadit tyto uživatele nebo skupiny k Tableau online, postupujte podle pokynů v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md).
 
 ### <a name="important-tips-for-assigning-users-to-tableau-online"></a>Důležité tipy pro přiřazení uživatelů k Tableau online
 
@@ -80,17 +80,17 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**  >  **Tableau online**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **Tableau online**.
 
     ![Online odkaz Tableau v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
     ![Online zřizování Tableau](./media/tableau-online-provisioning-tutorial/ProvisioningTab.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Tableau režim zřizování online](./media/tableau-online-provisioning-tutorial/ProvisioningCredentials.png)
 
@@ -98,7 +98,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
    * V poli **doména** vyplňte subdoménu na základě kroku 6.
 
-   * V poli **uživatelské jméno správce** Vyplňte uživatelské jméno účtu správce v tenantovi Clarizen. Příklad: admin@contoso.com.
+   * V poli **uživatelské jméno správce** Vyplňte uživatelské jméno účtu správce v online tenantovi Tableau. Příklad: admin@contoso.com.
 
    * Do pole **heslo správce** zadejte heslo účtu správce, který odpovídá uživatelskému jménu správce.
 
@@ -133,7 +133,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
 11. Zkontrolujte atributy uživatelů synchronizované z Azure AD a Tableau online v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Tableau online pro operace aktualizace. Chcete-li uložit všechny změny, vyberte možnost **Uložit**.
 
-    ![Tableau online, které odpovídají atributy uživatele](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
+    ![Tableau online, které odpovídají atributy uživatele](./media/tableau-online-provisioning-tutorial/attribute.png)
 
 12. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Tableau**.
 
@@ -163,14 +163,17 @@ V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupova
 
 Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="change-log"></a>Protokol změn
+* 09/30/2020 – byla přidána podpora atributu "authSetting" pro uživatele.
+
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/tableau-online-provisioning-tutorial/tutorial_general_01.png

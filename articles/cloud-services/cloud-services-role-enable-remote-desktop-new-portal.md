@@ -1,22 +1,24 @@
 ---
 title: Použití portálu k povolení vzdálené plochy pro roli
-titleSuffix: Azure Cloud Services
 description: Konfigurace aplikace cloudové služby Azure tak, aby povolovala připojení ke vzdálené ploše
-services: cloud-services
-documentationcenter: ''
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: memccror
-ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 8fa0d3c0e29c53e6fe9cb32ddf02168686be1efe
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696775"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743249"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic"></a>Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -33,7 +35,7 @@ Azure Portal používá přístup k rozšíření vzdálené plochy, takže mů�
 
 1. Klikněte na **Cloud Services**, vyberte název cloudové služby a pak vyberte **Vzdálená plocha**.
 
-    ![Služba Cloud Services Remote Desktop](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
+    ![obrázek ukazuje službu Cloud Services Remote Desktop](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
 2. Zvolte, zda chcete povolit vzdálenou plochu pro jednotlivé role nebo pro všechny role, a pak změňte hodnotu přepínač na **povoleno**.
 
@@ -44,7 +46,7 @@ Azure Portal používá přístup k rozšíření vzdálené plochy, takže mů�
    > [!WARNING]
    > Všechny instance role se restartují při prvním povolení vzdálené plochy a výběr **OK** (zaškrtnutí). Aby nedocházelo k restartování, musí se v této roli nainstalovat certifikát používaný k zašifrování hesla. Abyste zabránili restartování, [Nahrajte certifikát pro cloudovou službu](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate) a pak se vraťte do tohoto dialogu.
 
-4. V části **role**vyberte roli, kterou chcete aktualizovat, nebo vyberte možnost **vše** pro všechny role.
+4. V části **role** vyberte roli, kterou chcete aktualizovat, nebo vyberte možnost **vše** pro všechny role.
 
 5. Po dokončení aktualizací konfigurace vyberte **Uložit**. Než budou instance rolí připravené na příjem připojení, bude chvíli trvat.
 
@@ -56,13 +58,13 @@ Jakmile je na rolích povolena vzdálená plocha, můžete iniciovat připojení
 2. Vyberte instanci role, která má nakonfigurovanou vzdálenou plochu.
 3. Kliknutím na **připojit** Stáhněte soubor RDP pro instanci role.
 
-    ![Služba Cloud Services Remote Desktop](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
+    ![Obrázek vzdálené plochy Cloud Services](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
 
 4. Klikněte na **otevřít** a pak na **připojit** a spusťte připojení ke vzdálené ploše.
 
 >[!NOTE]
 > Pokud se vaše cloudová služba koná za NSG, možná budete muset vytvořit pravidla, která povolují provoz na portech **3389** a **20000**.  Vzdálená plocha používá port **3389**.  Instance cloudových služeb jsou vyrovnávány zatížení, takže nemůžete přímo určovat, ke které instanci se má připojit.  Agenti *RemoteForwarder* a *RemoteAccess* spravují provoz protokolu RDP a umožňují klientovi odeslat soubor cookie RDP a zadat jednotlivou instanci, ke které se připojí.  Agenti *RemoteForwarder* a *RemoteAccess* vyžadují, aby byl otevřený port **20000***, který může být zablokován, pokud máte NSG.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 [Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

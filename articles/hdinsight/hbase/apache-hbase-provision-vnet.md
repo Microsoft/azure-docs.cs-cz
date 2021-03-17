@@ -1,19 +1,16 @@
 ---
 title: Vytváření clusterů HBA v Virtual Network – Azure
 description: Začněte používat HBA ve službě Azure HDInsight. Naučte se vytvářet clustery HDInsight HBA na Azure Virtual Network.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087737"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946123"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Vytváření clusterů Apache HBA v HDInsight v Azure Virtual Network
 
@@ -43,7 +40,7 @@ V této části vytvoříte cluster Apache HBA založený na systému Linux s z�
 > * **Název podsítě**: SUBNET1
 > * **Rozsah adres podsítě**: 10.0.0.0/24
 >
-> `CLUSTERNAME`je nahrazen názvem clusteru, který zadáte při použití šablony.
+> `CLUSTERNAME` je nahrazen názvem clusteru, který zadáte při použití šablony.
 
 1. Výběrem následujícího obrázku otevřete šablonu v Azure Portal. Šablona se nachází v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
@@ -58,7 +55,7 @@ V této části vytvoříte cluster Apache HBA založený na systému Linux s z�
     |Vlastnost |Hodnota |
     |---|---|
     |Předplatné|Vyberte předplatné Azure, které se používá k vytvoření clusteru HDInsight, závislého účtu úložiště a virtuální sítě Azure.|
-    Skupina prostředků|Vyberte **vytvořit novou**a zadejte název nové skupiny prostředků.|
+    Skupina prostředků|Vyberte **vytvořit novou** a zadejte název nové skupiny prostředků.|
     |Umístění|Vyberte umístění skupiny prostředků.|
     |Název clusteru|Zadejte název clusteru Hadoop, který se má vytvořit.|
     |Uživatelské jméno a heslo pro přihlášení ke clusteru|Výchozí uživatelské jméno je **admin**. Zadejte heslo.|
@@ -92,11 +89,11 @@ Pokud se k připojení k adaptérům HBA vzdáleně připojujete pomocí aplikac
 
 * Pomocí webového prohlížeče proveďte volání [Apache Ambari](https://ambari.apache.org/) :
 
-    Přejděte na `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts?minimal_response=true`. Vrátí soubor JSON s příponami DNS.
+    Přejděte na adresu `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts?minimal_response=true`. Vrátí soubor JSON s příponami DNS.
 
 * Použijte web Ambari:
 
-    1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net`.
+    1. Přejděte na adresu `https://CLUSTERNAME.azurehdinsight.net`.
     2. V horní nabídce vyberte **hostitelé** .
 
 * Pro volání REST použijte oblé:
@@ -111,7 +108,7 @@ V vrácených datech JavaScript Object Notation (JSON) vyhledejte položku "host
 "host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
 ```
 
-Část názvu domény začínající názvem clusteru je přípona DNS. Například, `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Část názvu domény začínající názvem clusteru je přípona DNS. Například `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
 <!--
 3.    Change the primary DNS suffix configuration of the virtual machine. This enables the virtual machine to automatically resolve the host name of the HBase cluster without explicit specification of the suffix. For example, the *workernode0* host name will be correctly resolved to workernode0 of the HBase cluster.
@@ -130,7 +127,7 @@ V vrácených datech JavaScript Object Notation (JSON) vyhledejte položku "host
 
 ### <a name="verify-communication-inside-virtual-network"></a>Ověření komunikace uvnitř virtuální sítě
 
-Pokud chcete ověřit, jestli virtuální počítač může komunikovat s clusterem HBA, použijte příkaz `ping headnode0.<dns suffix>` z virtuálního počítače. Například, `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Pokud chcete ověřit, jestli virtuální počítač může komunikovat s clusterem HBA, použijte příkaz `ping headnode0.<dns suffix>` z virtuálního počítače. Například `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
 Pokud chcete tyto informace použít v aplikaci Java, můžete postupovat podle kroků v části [použití Apache Maven k vytváření aplikací v jazyce Java, které používají Apache HBA s HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) k vytvoření aplikace. Chcete-li aplikaci připojit ke vzdálenému serveru HBA, upravte soubor **hbase-site.xml** v tomto příkladu tak, aby používal plně kvalifikovaný název domény pro Zookeeper. Příklad:
 
@@ -146,7 +143,7 @@ Pokud chcete tyto informace použít v aplikaci Java, můžete postupovat podle 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak vytvořit cluster Apache HBA. Další informace naleznete v tématu:
+V tomto článku jste zjistili, jak vytvořit cluster Apache HBA. Další informace najdete v následujících tématech:
 
 * [Začínáme se službou HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Použití prázdných hraničních uzlů v HDInsight](../hdinsight-apps-use-edge-node.md)

@@ -1,18 +1,18 @@
 ---
 title: Rychlý Start pro přidání příznaků funkcí do pružinového spouštění pomocí konfigurace aplikace Azure
 description: Přidání příznaků funkcí do aplikací pro spouštění pružin a jejich správa pomocí konfigurace aplikací Azure
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/18/2020
-ms.author: lcozzens
+ms.date: 08/06/2020
+ms.author: alkemper
 ms.custom: devx-track-java
-ms.openlocfilehash: 615815f11264578bc2a5930553c8e6f5bfed937f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e931b974fc48d07237b2698e7782c48be20745d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121897"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930704"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
 
@@ -20,17 +20,17 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do webové aplika
 
 Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou příznaků funkcí. Tyto **knihovny nemají závislost** na žádné knihovně Azure. Bez problémů se integruje s konfigurací aplikací prostřednictvím poskytovatele konfigurace spouštění pružiny.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Podporovaná [sada Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
+* Podporovaná [sada Java Development Kit SDK](/java/azure/jdk) s verzí 8.
 * [Apache Maven](https://maven.apache.org/download.cgi) verze 3,0 nebo vyšší.
 
 ## <a name="create-an-app-configuration-instance"></a>Vytvoření instance konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
+7. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![Povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
@@ -54,7 +54,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 ## <a name="add-feature-management"></a>Přidat správu funkcí
 
-1. Po extrahování souborů v místním systému je vaše aplikace pro spouštění pružiny připravená k úpravám. Vyhledejte *pom.xml* v kořenovém adresáři aplikace.
+1. Po extrahování souborů v místním systému je vaše aplikace pro spouštění pružiny připravená k úpravám. Vyhledejte  *pom.xml* v kořenovém adresáři aplikace.
 
 1. V textovém editoru otevřete soubor *pom.xml* a přidejte následující text do seznamu `<dependencies>` :
 
@@ -97,7 +97,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     ```
 
 > [!Note]
-> Je k dispozici knihovna správy neweb Feature, která nemá závislost na jaře-Web. Rozdíly najdete v [dokumentaci](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) k GitHubu.
+> Je k dispozici knihovna správy neweb Feature, která nemá závislost na jaře-Web. Rozdíly najdete v [dokumentaci](https://github.com/microsoft/spring-cloud-azure) k GitHubu.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
@@ -228,7 +228,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
         </header>
         <div class="container body-content">
             <h1 class="mt-5">Welcome</h1>
-            <p>Learn more about <a href="https://github.com/microsoft/spring-cloud-azure/blob/master/spring-cloud-azure-feature-management/README.md">Feature Management with Spring Cloud Azure</a></p>
+            <p>Learn more about <a href="https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/appconfiguration/azure-spring-cloud-feature-management/README.md">Feature Management with Spring Cloud Azure</a></p>
 
         </div>
         <footer class="footer">
@@ -286,9 +286,9 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Otevřete okno prohlížeče a použijte adresu URL: `http://localhost:8080/welcome` .
 
-    ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![Snímek obrazovky s uvítací zprávou zobrazuje okno prohlížeče.](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Na portálu konfigurace aplikace vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
+1. Na portálu konfigurace aplikace vyberte **správce funkcí** a změňte stav **beta** klíče na **zapnuto**:
 
     | Klíč | State |
     |---|---|
@@ -296,7 +296,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
 
-    ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![Snímek obrazovky se zobrazí okno prohlížeče s úvodní zprávou a odkaz na verzi beta s názvem.](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -304,7 +304,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikací a použili ho ke správě funkcí v rámci webové aplikace ve jarních aplikacích pomocí [knihoven pro správu funkcí](https://go.microsoft.com/fwlink/?linkid=2074664).
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikací a použili ho ke správě funkcí v rámci webové aplikace ve jarních aplikacích pomocí [knihoven pro správu funkcí](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
 
 * Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
 * [Správa příznaků funkcí](./manage-feature-flags.md).

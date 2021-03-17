@@ -1,38 +1,42 @@
 ---
-title: Podpora Azure Cosmos DB Gremlin
-description: Přečtěte si o jazyce Gremlin od společnosti Apache TinkerPop. Dozvíte se, které funkce a kroky jsou dostupné ve službě Azure Cosmos DB.
-author: LuisBosquez
+title: Podpora Gremlin Azure Cosmos DB a kompatibilita s TinkerPop funkcemi
+description: Přečtěte si o jazyce Gremlin od společnosti Apache TinkerPop. Zjistěte, které funkce a kroky jsou k dispozici v Azure Cosmos DB a rozdíly v kompatibilitě modulu graphu TinkerPop.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 04/23/2020
-ms.author: lbosq
-ms.openlocfilehash: ba3b20f263f37d85389bb11c0674584408a0c223
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 11/11/2020
+ms.author: sngun
+ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82161635"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630747"
 ---
-# <a name="azure-cosmos-db-gremlin-graph-support"></a>Podpora grafu Gremlin ve službě Azure Cosmos DB
-Azure Cosmos DB podporuje jazyk procházení grafů [Apache Tinkerpop](https://tinkerpop.apache.org) , který se označuje jako [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity. 
+# <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Podpora Gremlin graphu a kompatibility s funkcemi TinkerPop Azure Cosmos DB
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-V tomto článku poskytujeme rychlý názor na Gremlin a výčet funkcí Gremlin podporovaných rozhraním API Gremlin.
+Azure Cosmos DB podporuje jazyk procházení grafů [Apache Tinkerpop](https://tinkerpop.apache.org) , který se označuje jako [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity.
+
+Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) , ale existují rozdíly v implementaci, které jsou specifické pro Azure Cosmos DB. V tomto článku poskytujeme rychlý názor na Gremlin a výčet funkcí Gremlin podporovaných rozhraním API Gremlin.
 
 ## <a name="compatible-client-libraries"></a>Kompatibilní klientské knihovny
 
 Následující tabulka ukazuje oblíbené ovladače Gremlin, které můžete použít vůči Azure Cosmos DB:
 
-| Stáhnout | Zdroj | začínáme | Podporovaná verze konektoru |
+| Stáhnout | Zdroj | Začínáme | Podporovaná verze konektoru |
 | --- | --- | --- | --- |
-| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Vytvoření grafu pomocí jazyka .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [.NET](https://tinkerpop.apache.org/docs/3.4.6/reference/#gremlin-DotNet) | [Gremlin.NET na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Vytvoření grafu pomocí jazyka .NET](create-graph-dotnet.md) | 3.4.6 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Vytvoření grafu pomocí jazyka Java](create-graph-java.md) | 3.2.0 nebo novější |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Vytvoření grafu pomocí jazyka Node.js](create-graph-nodejs.md) | 3.3.4 + |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Vytvoření grafu pomocí jazyka Python](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP na GitHubu](https://github.com/PommeVerte/gremlin-php) | [Vytvoření grafu pomocí jazyka PHP](create-graph-php.md) | 3.1.0 |
+| [Přejít do jazyka](https://github.com/supplyon/gremcos/) | [Přejít do jazyka](https://github.com/supplyon/gremcos/) | | Tato knihovna je sestavena externími přispěvateli. Tým Azure Cosmos DB nenabízí žádnou podporu ani údržbu knihovny. |
 | [Konzola Gremlin](https://tinkerpop.apache.org/downloads.html) | [Dokumentace k TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Vytvoření grafu pomocí konzoly Gremlin](create-graph-gremlin-console.md) | 3.2.0 nebo novější |
 
 ## <a name="supported-graph-objects"></a>Podporované objekty grafu
+
 TinkerPop je standard, který zahrnuje širokou řadu grafových technologií. Proto má standardní terminologii popisující, které funkce poskytovatel grafu nabízí. Azure Cosmos DB poskytuje trvalou grafovou databázi s možností zápisu a vysokou souběžností, kterou je možné rozdělit na více serverů nebo clusterů. 
 
 V následující tabulce najdete přehled funkcí TinkerPop, které Azure Cosmos DB implementuje: 
@@ -91,7 +95,7 @@ Vlastnosti používané ve formátu JSON pro vrcholy jsou popsány níže:
 
 | Vlastnost | Popis | 
 | --- | --- | --- |
-| `id` | ID vrcholu. Musí být jedinečný (v kombinaci s hodnotou `_partition` Pokud je to možné). Pokud není zadána žádná hodnota, bude automaticky doplněna identifikátorem GUID. | 
+| `id` | ID vrcholu. Musí být jedinečný (v kombinaci s hodnotou Pokud je `_partition` to možné). Pokud není zadána žádná hodnota, bude automaticky doplněna identifikátorem GUID. | 
 | `label` | Popisek vrcholu. Tato vlastnost slouží k popisu typu entity. |
 | `type` | Slouží k odlišení vrcholů od jiných než grafových dokumentů. |
 | `properties` | Sada uživatelem definovaných vlastností přidružených k vrcholu. Každá vlastnost může mít více hodnot. |
@@ -102,7 +106,7 @@ Hrana obsahuje následující informace, které usnadňují navigaci do ostatní
 
 | Vlastnost | Popis |
 | --- | --- |
-| `id` | ID okraje. Musí být jedinečné (v kombinaci s hodnotou `_partition` Pokud je to možné). |
+| `id` | ID okraje. Musí být jedinečné (v kombinaci s hodnotou Pokud je `_partition` to možné). |
 | `label` | Popisek okraje. Tato vlastnost je volitelná a slouží k popisu typu vztahu. |
 | `inV` | Tato vlastnost obsahuje seznam vrcholů pro hranici. Ukládání informací o sousedství spolu s okraj umožňuje rychlé procházení. Vrcholy jsou seskupeny podle svých popisků. |
 | `properties` | Sada uživatelem definovaných vlastností přidružených k okraji. Každá vlastnost může mít více hodnot. |
@@ -114,6 +118,7 @@ Každá vlastnost může ukládat více hodnot v rámci pole.
 | `value` | Hodnota vlastnosti
 
 ## <a name="gremlin-steps"></a>Kroky v jazyce Gremlin
+
 Nyní se podívejme na kroky v jazyce Gremlin, které Azure Cosmos DB podporuje. Úplné referenční informace o jazyce Gremlin najdete v [referenčních materiálech ke standardu TinkerPop](https://tinkerpop.apache.org/docs/3.3.2/reference).
 
 | Krok | Popis | Dokumentace TinkerPop 3.2 |
@@ -148,9 +153,9 @@ Nyní se podívejme na kroky v jazyce Gremlin, které Azure Cosmos DB podporuje.
 | `sample` | Slouží k zobrazení ukázkových výsledků z procházení. | [sample step](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | Slouží k zobrazení výsledků z procházení. |  [select step](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | Slouží k zobrazení neblokujících agregací z procházení. | [store step](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti začínající na začátku daného řetězce. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti s koncem daného řetězce. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti s obsahem daného řetězce. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro krok, `has()` který odpovídá vlastnosti začínající na začátku daného řetězce. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  Funkce filtrování řetězců. Tato funkce se používá jako predikát pro krok, `has()` který odpovídá vlastnosti s koncem daného řetězce. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro krok, `has()` který odpovídá vlastnosti s obsahem daného řetězce. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.notStartingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti, která nezačíná zadaným řetězcem. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.notEndingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti, která nekončí daným řetězcem. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.notContaining(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti, která neobsahuje daný řetězec. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
@@ -162,6 +167,61 @@ Nyní se podívejme na kroky v jazyce Gremlin, které Azure Cosmos DB podporuje.
 
 Modul optimalizovaný pro zápis, který Azure Cosmos DB poskytuje, podporuje ve výchozím nastavení automatické indexování všech vlastností v rámci vrcholů a okrajů. Proto se dotazy s filtry, rozsahové dotazy, řazení nebo agregace u všech vlastností zpracovávají z indexu a efektivně předávají. Další informace o tom, jak funguje indexování ve službě Azure Cosmos DB, najdete v našem dokumentu, který se věnuje [indexování bez schémat](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
+## <a name="behavior-differences"></a>Rozdíly v chování
+
+* Modul graphu Azure Cosmos DB spouští ***šíře-First** _ průchod, zatímco je TinkerPop Gremlin na úrovni hloubka. Toto chování dosahuje lepšího výkonu v horizontálním škálovatelném systému, jako je Cosmos DB.
+
+## <a name="unsupported-features"></a>Nepodporované funkce
+
+_ ***[Gremlin bajt](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)** _ je programovací jazyk nezávislá specifikace pro Graph procházení. Cosmos DB Graph ho ještě nepodporuje. Použijte `GremlinClient.SubmitAsync()` a předejte procházení jako textový řetězec.
+
+_ * **`property(set, 'xyz', 1)`** _ sada mohutnosti není dnes podporována. Místo toho použijte `property(list, 'xyz', 1)`. Další informace najdete v tématu [vlastnosti vrcholu pomocí TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
+
+_ ***`match()` Krok** _ není aktuálně k dispozici. Tento krok poskytuje možnosti deklarativního dotazování.
+
+_ ***Objekty jako vlastnosti** _ na vrcholech nebo hranách nejsou podporovány. Vlastnosti můžou být pouze primitivní typy nebo pole.
+
+_ ***Řazení podle vlastností pole** _ `order().by(<array property>)` není podporováno. Podporuje se řazení pouze podle primitivních typů.
+
+_ ***Neprimitivní typy JSON** _ nejsou podporovány. Použijte `string` `number` typy, nebo `true` / `false` . `null` hodnoty nejsou podporovány. 
+
+Serializátor _ ***GraphSONv3** _ není aktuálně podporován. `GraphSONv2`V konfiguraci připojení použijte třídy serializátoru, čtecího zařízení a zapisovače. Výsledky vracené rozhraním API Azure Cosmos DB Gremlin nemají stejný formát jako formát GraphSON. 
+
+_ **Výrazy lambda a funkce** nejsou aktuálně podporovány. To zahrnuje `.map{<expression>}` `.by{<expression>}` funkce, a `.filter{<expression>}` . Další informace a informace o tom, jak je přepsat pomocí Gremlin kroků, najdete v [poznámce pro výrazy lambda](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
+
+* ***Transakce** _ nejsou podporovány z důvodu distribuované povahy systému.  Nakonfigurujte vhodný model konzistence v účtu Gremlin na číst vlastní zápisy a pomocí optimistické souběžnosti vyřešte konfliktní zápisy.
+
+## <a name="known-limitations"></a>Známá omezení
+
+_ **Využití indexu pro dotazy Gremlin s `.V()` kroky středního průchodu**: v současné době pouze první `.V()` volání průchodu použije index k vyřešení všech filtrů nebo predikátů, které jsou k nim připojeny. Následná volání nebudou vyhledávat v indexu, což může zvýšit latenci a náklady na dotaz.
+    
+Předpokládá se výchozí indexování. typický dotaz Read Gremlin, který začíná `.V()` krokem, by v rámci svých připojených kroků filtrování používal parametry, jako je `.has()` nebo `.where()` pro optimalizaci nákladů a výkonu dotazu. Například:
+
+```java
+g.V().has('category', 'A')
+```
+
+Pokud `.V()` je však v dotazu Gremlin obsažen více než jeden krok, nemusí být řešení dat pro dotaz optimální. Jako příklad proveďte následující dotaz:
+
+```java
+g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+```
+
+Tento dotaz vrátí dvě skupiny vrcholů na základě své vlastnosti s názvem `category` . V takovém případě pouze první volání `g.V().has('category', 'A')` provede použití indexu k vyřešení vrcholů na základě hodnot jejich vlastností.
+
+Alternativním řešením pro tento dotaz je použití kroků pro procházení, jako jsou `.map()` a `union()` . Toto je exemplified níže:
+
+```java
+// Query workaround using .map()
+g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+
+// Query workaround using .union()
+g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+```
+
+Výkon dotazů můžete zkontrolovat pomocí [ `executionProfile()` kroku Gremlin](graph-execution-profile.md).
+
 ## <a name="next-steps"></a>Další kroky
+
 * Pusťte se do vytváření grafové aplikace [pomocí našich sad SDK](create-graph-dotnet.md). 
 * Přečtěte si další informace o [podpoře grafu](graph-introduction.md) ve službě Azure Cosmos DB.

@@ -1,146 +1,119 @@
 ---
-title: 'Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API | Azure'
+title: 'Rychlý Start: registrace a vystavení webového rozhraní API | Azure'
 titleSuffix: Microsoft identity platform
-description: V tomto rychlém startu se dozvíte, jak nakonfigurovat aplikaci, aby vystavila nové oprávnění, obor a roli k zpřístupnění aplikace klientským aplikacím.
+description: V tomto rychlém startu zaregistrujeme webové rozhraní API s platformou Microsoft identity a nakonfigurujete jeho obory, čímž klientům vystavíte přístup k prostředkům rozhraní API na základě oprávnění.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/05/2020
-ms.author: ryanwi
-ms.custom: aaddev
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 93b0c3392a32a6ff18a285d34fdaede6ceea6528
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 820bc7dfe9123db495c151cd5cd0ea5ae337619f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830287"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103970"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API
 
-Můžete vyvinout webové rozhraní API a zpřístupnit ho klientským aplikacím zveřejněním [oprávnění nebo oborů](developer-glossary.md#scopes) a [rolí](developer-glossary.md#roles). Správně nakonfigurované webové rozhraní API bude k dispozici stejně jako ostatní webová rozhraní API Microsoftu, včetně rozhraní Graph API a rozhraní API pro Office 365.
-
-V tomto rychlém startu se dozvíte, jak nakonfigurovat aplikaci, aby vystavila nový obor, který zpřístupní klientským aplikacím.
+V tomto rychlém startu zaregistrujete webové rozhraní API s platformou Microsoft identity a zpřístupníte ho klientským aplikacím přidáním ukázkového oboru. Díky registraci webového rozhraní API a jeho zpřístupnění prostřednictvím oborů můžete poskytnout přístup k prostředkům na základě oprávnění autorizovaným uživatelům a klientským aplikacím, které mají přístup k vašemu rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Dokončení [rychlého startu: registrace aplikace s platformou Microsoft Identity](quickstart-register-app.md)
+* Účet Azure s aktivním předplatným – [vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Dokončení [rychlého startu: nastavení tenanta](quickstart-create-new-tenant.md)
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Přihlášení k webu Azure Portal a výběr aplikace
+## <a name="register-the-web-api"></a>Registrace webového rozhraní API
 
-Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
+Pokud chcete poskytnout vymezený přístup k prostředkům ve webovém rozhraní API, musíte nejdřív zaregistrovat rozhraní API s platformou Microsoft identity.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
-1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
-1. Zvolte metodu, kterou chcete ke zveřejnění nového oboru použít – uživatelské rozhraní nebo manifest aplikace:
-    * [Zveřejnění nového oboru prostřednictvím uživatelského rozhraní](#expose-a-new-scope-through-the-ui)
-    * [Zveřejnění nového oboru nebo role prostřednictvím manifestu aplikace](#expose-a-new-scope-or-role-through-the-application-manifest)
+1. Proveďte kroky v části **Registrace aplikace** v [rychlém startu: registrace aplikace pomocí platformy Microsoft Identity](quickstart-register-app.md).
+1. Přeskočte oddíly **Přidat identifikátor URI pro přesměrování** a **Konfigurovat nastavení platformy** . Pro webové rozhraní API nemusíte konfigurovat identifikátor URI přesměrování, protože není interaktivně přihlášený žádný uživatel.
+1. Přeskočte si oddíl **Přidat přihlašovací údaje** pro teď. Jenom v případě, že rozhraní API přistupuje k rozhraní API pro příjem dat, bude potřebovat vlastní přihlašovací údaje, scénář, který není popsaný v tomto článku.
 
-## <a name="expose-a-new-scope-through-the-ui"></a>Zveřejnění nového oboru prostřednictvím uživatelského rozhraní
+Díky zaregistrovanému webovému rozhraní API jste připraveni přidat obory, které může váš kód rozhraní API použít k zajištění podrobných oprávnění pro uživatele vašeho rozhraní API.
 
-[![Ukazuje, jak vystavit rozhraní API pomocí uživatelského rozhraní.](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+## <a name="add-a-scope"></a>Přidání oboru
 
-Zveřejnění nového oboru prostřednictvím uživatelského rozhraní:
+Kód v klientské aplikaci požaduje oprávnění k provádění operací definovaných vaším webovým rozhraním API předáním přístupového tokenu spolu se svými požadavky na chráněný prostředek (webové rozhraní API). Vaše webové rozhraní API pak provede požadovanou operaci pouze v případě, že přístupový token, který obdrží, obsahuje obory vyžadované pro operaci.
 
-1. Na stránce **Přehled** aplikace vyberte část **Zveřejnit rozhraní API**.
+Nejprve pomocí těchto kroků vytvořte příklad oboru s názvem `Employees.Read.All` :
 
-1. Vyberte **Přidat obor**.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
+1. Vyberte **Azure Active Directory**  >  **Registrace aplikací** a pak vyberte registraci aplikace vašeho rozhraní API.
+1. Vyberte **zveřejnit rozhraní API**  >  **Přidat obor**.
 
-1. Pokud jste nenastavili **Identifikátor URI ID aplikace**, zobrazí se výzva k jeho zadání. Zadejte identifikátor URI ID vaší aplikace nebo použijte uvedený identifikátor a pak vyberte **Uložit a pokračovat**.
+    :::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-02-expose-api.png" alt-text="V Azure Portal se vystavuje podokno API pro registraci aplikace":::
 
-1. Jakmile se zobrazí stránka **Přidat obor**, zadejte informace o vašem oboru:
+1. Pokud jste ještě nenakonfigurovali **identifikátor URI ID aplikace** , budete vyzváni k jeho zadání.
 
-    | Pole | Popis |
-    |-------|-------------|
-    | **Název oboru** | Zadejte smysluplný název oboru.<br><br>Například, `Employees.Read.All`. |
-    | **Kdo může vyjádřit souhlas** | Vyberte, jestli tento obor můžou odsouhlasit uživatelé, nebo jestli se vyžaduje souhlas správce. Pro oprávnění s vyššími privilegii vyberte možnost **Jen správci**. |
-    | **Zobrazovaný název souhlasu správce** | Zadejte smysluplný popis oboru, který se zobrazí správcům.<br><br>Například `Read-only access to Employee records`. |
-    | **Popis souhlasu správce** | Zadejte smysluplný popis oboru, který se zobrazí správcům.<br><br>Například `Allow the application to have read-only access to all Employee data.`. |
+   Identifikátor URI ID aplikace funguje jako předpona pro rozsahy, na které budete odkazovat v kódu rozhraní API, a musí být globálně jedinečný. Můžete použít zadanou výchozí hodnotu, která je ve formuláři `api://<application-client-id>` , nebo zadat čitelnější identifikátor URI, jako je například `https://contoso.com/api` .
 
-    Pokud váš obor můžou odsouhlasit uživatelé, přidejte také hodnoty pro následující pole:
+1. V dalším kroku zadejte atributy oboru v podokně **Přidat obor** . Pro tento návod můžete použít ukázkové hodnoty nebo zadat vlastní.
 
-    | Pole | Popis |
-    |-------|-------------|
-    | **Zobrazovaný název souhlasu uživatele** | Zadejte smysluplný název oboru, který se zobrazí uživatelům.<br><br>Například `Read-only access to your Employee records`. |
-    | **Popis souhlasu uživatele** | Zadejte smysluplný popis oboru, který se zobrazí uživatelům.<br><br>Například `Allow the application to have read-only access to your Employee data.`. |
+    | Pole | Popis | Příklad |
+    |-------|-------------|---------|
+    | **Název oboru** | Název vašeho oboru. Společná konvence vytváření názvů oborů je `resource.operation.constraint` . | `Employees.Read.All` |
+    | **Kdo může vyjádřit souhlas** | Zda je možné tento obor zaslat uživatelům nebo zda je vyžadován souhlas správce. Pro oprávnění s vyššími privilegii vyberte možnost **Jen správci**. | **Správci a uživatelé** |
+    | **Zobrazovaný název souhlasu správce** | Krátký popis účelu oboru, který uvidí jenom správci. | `Read-only access to Employee records` |
+    | **Popis souhlasu správce** | Podrobnější popis oprávnění uděleného oborem, který uvidí jenom správci. | `Allow the application to have read-only access to all Employee data.` |
+    | **Zobrazovaný název souhlasu uživatele** | Krátký popis účelu oboru Zobrazuje se uživatelům pouze v případě, že jste nastavili **, kdo může udělit souhlas** **správcům a uživatelům**. | `Read-only access to your Employee records` |
+    | **Popis souhlasu uživatele** | Podrobnější popis oprávnění uděleného oborem. Zobrazuje se uživatelům pouze v případě, že jste nastavili **, kdo může udělit souhlas** **správcům a uživatelům**. | `Allow the application to have read-only access to your Employee data.` |
 
-1. Nastavte **Stav** a jakmile budete hotovi, vyberte **Přidat obor**.
+1. Nastavte **stav** na **povoleno** a pak vyberte **Přidat obor**.
 
-1. Volitelné Chcete-li potlačit zobrazení výzvy ke souhlasu uživatelů vaší aplikace s definovanými obory, můžete "předběžně autorizovat" klientská aplikace pro přístup k webovému rozhraní API. Měli byste předběžně autorizovat *jenom* ty klientské aplikace, kterým důvěřujete, protože uživatelé nebudou mít možnost odmítnout souhlas.
-    1. V části **autorizované klientské aplikace**vyberte **Přidat klientskou aplikaci** .
+1. Volitelné Chcete-li potlačit zobrazení výzvy ke souhlasu uživatelů vaší aplikace s definovanými obory, můžete *předběžně autorizovat* , aby klientská aplikace měla přístup k webovému rozhraní API. Předem autorizujte *pouze* ty klientské aplikace, kterým důvěřujete, protože uživatelé nebudou mít možnost odmítnout souhlas.
+    1. V části **autorizované klientské aplikace** vyberte **Přidat klientskou aplikaci** .
     1. Zadejte **aplikaci (ID klienta)** klientské aplikace, kterou chcete předběžně autorizovat. Například u webové aplikace, kterou jste předtím zaregistrovali.
-    1. V části **autorizované obory**vyberte obory, pro které chcete potlačit zobrazování výzev k vyjádření souhlasu, a pak vyberte **Přidat aplikaci**.
+    1. V části **autorizované obory** vyberte obory, pro které chcete potlačit zobrazování výzev k vyjádření souhlasu, a pak vyberte **Přidat aplikaci**.
 
-    Klientská aplikace je teď předem autorizovaná klientská aplikace (DPS) a uživatelé se při přihlašování k nim nebudou vyzváni k souhlasu.
+    Pokud jste postupovali podle tohoto volitelného kroku, klientská aplikace je nyní předem autorizovanými klientskými aplikacemi (DPS) a uživatelé nebudou při přihlašování k tomuto souhlasu vyzváni k jejich souhlasu.
 
-1. Postupujte podle pokynů a [ověřte, že je webové rozhraní API zveřejněné ostatním aplikacím](#verify-the-web-api-is-exposed-to-other-applications).
+## <a name="add-a-scope-requiring-admin-consent"></a>Přidání rozsahu vyžadujícího souhlas správce
 
-## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Zveřejnění nového oboru nebo role prostřednictvím manifestu aplikace
+Pak přidejte další vzorový obor s názvem `Employees.Write.All` , ke kterému můžou udělit souhlas jenom správci. Obory, které vyžadují souhlas správce, se obvykle používají pro poskytování přístupu k vyššímu privilegovanému provozu a často klientské aplikace, které běží jako back-end služby nebo procesy, které se neinteraktivně přihlašovat k uživateli.
 
-Manifest aplikace slouží jako mechanismus pro aktualizaci entity aplikace definující atributy registrace aplikace služby Azure AD.
+Pokud chcete přidat `Employees.Write.All` vzorový obor, postupujte podle kroků v části [Přidání oboru](#add-a-scope) a v podokně **Přidat obor** zadejte tyto hodnoty:
 
-[![Vystavení nového oboru pomocí kolekce oauth2Permissions v manifestu](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
+| Pole                          | Příklad hodnoty                                                      |
+|--------------------------------|--------------------------------------------------------------------|
+| **Název oboru**                 | `Employees.Write.All`                                              |
+| **Kdo může vyjádřit souhlas**            | **Pouze správci**                                                    |
+| **Zobrazovaný název souhlasu správce** | `Write access to Employee records`                                 |
+| **Popis souhlasu správce**  | `Allow the application to have write access to all Employee data.` |
+| **Zobrazovaný název souhlasu uživatele**  | *Žádné (nechat prázdné)*                                               |
+| **Popis souhlasu uživatele**   | *Žádné (nechat prázdné)*                                               |
 
-K vystavení nového oboru úpravou manifestu aplikace:
+## <a name="verify-the-exposed-scopes"></a>Ověření vystavených oborů
 
-1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se editor manifestu na webovém základu, který vám umožní na webu Azure Portal manifest **Upravit**. Volitelně můžete vybrat **Stáhnout**, upravit manifest místně a potom ho **Nahrát** zpět do aplikace.
+Pokud jste úspěšně přidali oba příklady oborů popsané v předchozích částech, zobrazí se v podokně **Zobrazit rozhraní API** registrace aplikace webového rozhraní API podobně jako na tomto obrázku:
 
-    Následující příklad ukazuje, jak v prostředku nebo rozhraní API zveřejnit nový obor `Employees.Read.All` přidáním následujícího elementu JSON do kolekce `oauth2Permissions`.
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Snímek obrazovky s podoknem vystavení rozhraní API, ve kterém jsou dva vystavené obory":::
 
-    Vygenerujte `id` hodnotu programově nebo pomocí nástroje pro generování identifikátoru GUID, jako je například [Guidgen](https://www.microsoft.com/download/details.aspx?id=55984).
+Jak je znázorněno na obrázku, úplný řetězec oboru je zřetězení **identifikátoru URI ID aplikace** webového rozhraní API a **názvu** oboru oboru.
 
-      ```json
-      {
-        "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
-        "adminConsentDisplayName": "Read-only access to Employee records",
-        "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
-        "isEnabled": true,
-        "type": "User",
-        "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
-        "userConsentDisplayName": "Read-only access to your Employee records",
-        "value": "Employees.Read.All"
-      }
-      ```
-
-1. Jakmile budete hotoví, klikněte na **Uložit**. Webové rozhraní API je teď nakonfigurované k použití jinými aplikacemi v adresáři.
-1. Postupujte podle pokynů a [ověřte, že je webové rozhraní API zveřejněné ostatním aplikacím](#verify-the-web-api-is-exposed-to-other-applications).
-
-Další informace o entitě aplikace a jejím schématu najdete v tématu Referenční dokumentace k typu prostředku [aplikace][ms-graph-application] Microsoft Graph.
-
-Další informace o manifestu aplikace, včetně referenčního schématu, najdete v tématu [Principy manifestu aplikace Azure AD](reference-app-manifest.md).
-
-## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Ověření, že je webové rozhraní API zveřejněné ostatním aplikacím
-
-1. Vraťte se do tenanta služby Azure AD, vyberte **Registrace aplikací**a pak vyhledejte a vyberte klientskou aplikaci, kterou chcete nakonfigurovat.
-1. Zopakujte postup popsaný v části [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md).
-1. Když se dostanete k kroku [výběru rozhraní API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis), vyberte prostředek (registrace aplikace webového rozhraní API).
-    * Pokud jste vytvořili registraci aplikace webového rozhraní API pomocí Azure Portal, váš prostředek rozhraní API je uvedený na kartě **Moje rozhraní** API.
-    * Pokud jste aplikaci Visual Studio povolili vytvoření registrace aplikace webového rozhraní API během vytváření projektu, je váš prostředek rozhraní API uveden v části **rozhraní API moje organizace používá** kartu.
-
-Po výběru prostředku webového rozhraní API byste měli vidět nový rozsah dostupný pro žádosti o oprávnění klienta.
-
-## <a name="using-the-exposed-scopes"></a>Použití vystavených oborů
-
-Jakmile je klient vhodně nakonfigurovaný s oprávněními pro přístup k webovému rozhraní API, může ho Azure AD vystavit přístupový token OAuth 2,0. Když klient volá webové rozhraní API, prezentuje přístupový token, který má `scp` deklaraci identity () nastavenou na oprávnění požadovaná při registraci aplikace.
-
-Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že webové rozhraní API může zveřejnit více oborů přidružených k celé řadě různých funkcí. Váš prostředek může za běhu řídit přístup k webovému rozhraní API tak, že bude vyhodnocovat deklaraci/deklarace identity oboru (`scp`) v přijatém přístupovém tokenu OAuth 2.0.
-
-V aplikacích je úplná hodnota oboru zřetězením **identifikátoru URI ID aplikace** webového rozhraní API (prostředku) a **názvu oboru**.
-
-Pokud je například identifikátor URI ID aplikace webového rozhraní API `https://contoso.com/api` a název vašeho oboru je `Employees.Read.All` , úplný rozsah je:
+Pokud je například identifikátor URI ID aplikace webového rozhraní API `https://contoso.com/api` a název oboru je `Employees.Read.All` , úplný rozsah je:
 
 `https://contoso.com/api/Employees.Read.All`
 
+## <a name="using-the-exposed-scopes"></a>Použití vystavených oborů
+
+V dalším článku této série nakonfigurujete registraci klientské aplikace s přístupem k vašemu webovému rozhraní API a obory, které jste definovali podle pokynů v tomto článku.
+
+Jakmile je registraci klientské aplikace udělené oprávnění pro přístup k webovému rozhraní API, může být klient vystavený přístupového tokenu OAuth 2,0 platformou Microsoft identity. Když klient volá webové rozhraní API, prezentuje token přístupu, jehož `scp` deklarace identity () je nastavená na oprávnění, která jste zadali v registraci aplikace klienta.
+
+Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že vaše webové rozhraní API může vystavovat několik oborů přidružených k několika operacím. Váš prostředek může řídit přístup k webovému rozhraní API za běhu vyhodnocením deklarací Scope ( `scp` ) v rámci přístupového tokenu OAuth 2,0, který obdrží.
+
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste nastavili své webové rozhraní API tak, že nakonfigurujete jeho obory, nakonfigurujte registraci klientské aplikace s oprávněním pro přístup k těmto oborům.
+Teď, když jste nastavili své webové rozhraní API tak, že nakonfigurujete jeho obory, nakonfigurujte registraci klientské aplikace s oprávněním pro přístup k oborům.
 
 > [!div class="nextstepaction"]
 > [Konfigurace registrace aplikace pro přístup k webovému rozhraní API](quickstart-configure-app-access-web-apis.md)

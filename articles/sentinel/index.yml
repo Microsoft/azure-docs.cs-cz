@@ -12,12 +12,12 @@ metadata:
   author: yelevin
   ms.author: yelevin
   ms.date: 06/25/2020
-  ms.openlocfilehash: d4e86295020ab68c6769ac34d6259bd78cf9934e
-  ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
-  ms.translationtype: HT
+  ms.openlocfilehash: 8d2271fefa6d7044a216a3566290f34be964ddb2
+  ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/25/2020
-  ms.locfileid: "85374555"
+  ms.lasthandoff: 03/08/2021
+  ms.locfileid: "102449641"
 landingContent:
 - title: Informace o Azure Sentinelu
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: Co je Azure Sentinel?
       url: overview.md
+    - text: Co je nového v Azure Sentinel?
+      url: whats-new.md
 - title: Začínáme
   linkLists:
   - linkListType: quickstart
@@ -65,6 +67,10 @@ landingContent:
       url: tutorial-monitor-your-data.md
     - text: Šetření incidentů
       url: tutorial-investigate-cases.md
+  - linkListType: reference
+    links:
+    - text: Běžně používané sešity Sentinel Azure
+      url: top-workbooks.md
 - title: Detekce hrozeb
   linkLists:
   - linkListType: tutorial

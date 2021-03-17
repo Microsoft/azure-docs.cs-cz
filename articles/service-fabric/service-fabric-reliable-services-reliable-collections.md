@@ -3,12 +3,12 @@ title: Seznámení s Reliable Collections
 description: Service Fabric stavové služby poskytují spolehlivé kolekce, které umožňují psát vysoce dostupné a škálovatelné cloudové aplikace a s nízkou latencí.
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7d705f81b4ad31559886e43226febcd4cf1d345d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245122"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784372"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Úvod do spolehlivých kolekcí ve stavových službách Azure Service Fabric
 
@@ -35,14 +35,14 @@ Aby se zajistila slabší konzistence, můžou aplikace před vrácením asynchr
 Spolehlivé kolekce rozhraní API jsou vývoj souběžných kolekcí rozhraní API (najdete je v oboru názvů **System. Collections. a souběžně** ):
 
 * Asynchronní: vrátí úlohu, protože na rozdíl od souběžných kolekcí se operace replikují a uchovávají.
-* Žádné výstupní parametry: používá `ConditionalValue<T>` pro návrat `bool` a hodnotu namísto parametrů out. `ConditionalValue<T>`je jako, `Nullable<T>` ale nevyžaduje T jako strukturu.
+* Žádné výstupní parametry: používá `ConditionalValue<T>` pro návrat `bool` a hodnotu namísto parametrů out. `ConditionalValue<T>` je jako, `Nullable<T>` ale nevyžaduje T jako strukturu.
 * Transakce: používá transakční objekt k tomu, aby uživatel mohl seskupit akce v několika spolehlivých kolekcích v transakci.
 
 Dnes, **Microsoft. ServiceFabric. data. Collections** obsahuje tři kolekce:
 
-* [Reliable Dictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2): představuje replikovanou, transakční a asynchronní kolekci párů klíč/hodnota. Podobně jako **ConcurrentDictionary**, klíč i hodnota mohou být libovolného typu.
-* [Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1): představuje replikovanou, transakční a asynchronní striktní metodu first-in, First-out (FIFO). Podobně jako **ConcurrentQueue**, hodnota může být libovolného typu.
-* [Spolehlivá souběžná fronta](service-fabric-reliable-services-reliable-concurrent-queue.md): představuje replikované, transakční a asynchronní frontu pro řazení osvědčených procesů pro vysokou propustnost. Podobně jako u **ConcurrentQueue**může být hodnota libovolného typu.
+* [Reliable Dictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2#microsoft_servicefabric_data_collections_ireliabledictionary_2): představuje replikovanou, transakční a asynchronní kolekci párů klíč/hodnota. Podobně jako **ConcurrentDictionary**, klíč i hodnota mohou být libovolného typu.
+* [Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1): představuje replikovanou, transakční a asynchronní striktní metodu first-in, First-out (FIFO). Podobně jako **ConcurrentQueue**, hodnota může být libovolného typu.
+* [Spolehlivá souběžná fronta](service-fabric-reliable-services-reliable-concurrent-queue.md): představuje replikované, transakční a asynchronní frontu pro řazení osvědčených procesů pro vysokou propustnost. Podobně jako u **ConcurrentQueue** může být hodnota libovolného typu.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -51,10 +51,10 @@ Dnes, **Microsoft. ServiceFabric. data. Collections** obsahuje tři kolekce:
 * [Transakce a zámky](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Správa dat
   * [Zálohování a obnovení](service-fabric-reliable-services-backup-restore.md)
-  * [Připomenutí](service-fabric-reliable-services-notifications.md)
+  * [Oznámení](service-fabric-reliable-services-notifications.md)
   * [Spolehlivá serializace kolekcí](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [Serializace a upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Konfigurace spolehlivého správce stavu](service-fabric-reliable-services-configuration.md)
 * Ostatní
   * [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start.md)
-  * [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

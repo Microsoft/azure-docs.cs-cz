@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 19a471b9339828250baa190b1de57c86eb22b30c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2c149bfdf79102779abf7544fed9fb78796a50e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554457"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649946"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s novým Relic podle účtu
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat nové Relic pomocí účtu s Azure Act
 * Řízení ve službě Azure AD, která má přístup k novým Relic podle účtu.
 * Umožněte uživatelům, aby se automaticky přihlásili k novým Relic pomocí účtu s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,24 +39,22 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Nový Relic podle účtu podporuje jednotné přihlašování (SSO) spouštěné v **SP**
 
-* Jakmile nakonfigurujete nový Relic podle účtu, můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-## <a name="adding-new-relic-by-account-from-the-gallery"></a>Přidávání nových Relic podle účtu z Galerie
+## <a name="add-new-relic-by-account-from-the-gallery"></a>Přidání nového Relic podle účtu z Galerie
 
 Pokud chcete nakonfigurovat integraci nového Relic pomocí účtu do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat nový Relic podle účtu z galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Nový Relic podle účtu** .
 1. Vyberte **Nový Relic podle účtu** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-new-relic-by-account"></a>Konfigurace a testování jednotného přihlašování Azure AD pro nové Relic podle účtu
+## <a name="configure-and-test-azure-ad-sso-for-new-relic-by-account"></a>Konfigurace a testování jednotného přihlašování Azure AD pro nové Relic podle účtu
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD s novým Relic podle účtu pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v New Relic podle obchodního vztahu.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s novým Relic podle účtu, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s novým Relic podle účtu, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -71,20 +67,21 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s no
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce Nová integrace aplikace **Relic podle účtu** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce Nová integrace aplikace **Relic podle účtu** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` – Nezapomeňte nahradit `acc_id` vlastní ID účtu novým Relic podle účtu.
+    `https://rpm.newrelic.com:443/accounts/{acc_id}/sso/saml/finalize` – Nezapomeňte nahradit `acc_id` vlastní ID účtu novým Relic podle účtu.
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL: `rpm.newrelic.com`
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -92,40 +89,28 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k novému Relic podle účtu.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Nový Relic podle účtu**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-new-relic-by-account-sso"></a>Konfigurace nového Relic pomocí jednotného přihlašování k účtu
@@ -134,15 +119,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. V nabídce v horní části klikněte na **Nastavení účtu**.
    
-    ![Nastavení účtu](./media/new-relic-tutorial/ic797036.png "Nastavení účtu")
+    ![Snímek obrazovky s vybraným nastavením účtu zobrazuje úvodní stránku.](./media/new-relic-tutorial/settings.png "Nastavení účtu")
 
 3. Klikněte na kartu **zabezpečení a ověřování** a pak klikněte na kartu **jednotné přihlašování** .
    
-    ![Jednotné přihlašování](./media/new-relic-tutorial/ic797037.png "Jednotné přihlašování")
+    ![Jednotné přihlašování](./media/new-relic-tutorial/single-sign-on-tab.png "Jednotné přihlašování")
 
 4. Na stránce dialogu SAML proveďte následující kroky:
    
-    ![SAML](./media/new-relic-tutorial/ic797038.png "SAML")
+    ![SAML](./media/new-relic-tutorial/save.png "SAML")
    
     a. Klikněte na **zvolit soubor** a nahrajte stažený Azure Active Directory certifikát.
 
@@ -158,15 +143,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. V nabídce v horní části klikněte na **Nastavení účtu**.
    
-    ![Nastavení účtu](./media/new-relic-tutorial/ic797040.png "Nastavení účtu")
+    ![Snímek obrazovky zobrazuje nastavení účtu vybrané na úvodní stránce.](./media/new-relic-tutorial/account.png "Nastavení účtu")
 
-3. V podokně **účet** na levé straně klikněte na **Souhrn**a pak klikněte na **Přidat uživatele**.
+3. V podokně **účet** na levé straně klikněte na **Souhrn** a pak klikněte na **Přidat uživatele**.
    
-    ![Nastavení účtu](./media/new-relic-tutorial/ic797041.png "Nastavení účtu")
+    ![Snímek obrazovky se zobrazí v podokně Souhrn, kde můžete vybrat přidat uživatele.](./media/new-relic-tutorial/add.png "Nastavení účtu")
 
 4. V dialogovém okně **aktivní uživatelé** proveďte následující kroky:
    
-    ![Aktivní uživatelé](./media/new-relic-tutorial/ic797042.png "Aktivní uživatelé")
+    ![Aktivní uživatelé](./media/new-relic-tutorial/user.png "Aktivní uživatelé")
    
     a. Do textového pole **e-mail** zadejte e-mailovou adresu platného Azure Active Directory uživatele, kterého chcete zřídit.
 
@@ -179,18 +164,14 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Po kliknutí na dlaždici nový účet Relic podle účtu na přístupovém panelu byste měli být automaticky přihlášeni k novému Relic podle účtu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na nové Relic podle adresy URL pro přihlášení k účtu, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další zdroje
+* Přejít na nový Relic podle adresy URL pro přihlášení k účtu a spustit tok přihlášení přímo z těchto účtů.
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici nový účet Relic podle účtu v části Moje aplikace, přesměruje se na nové Relic podle přihlašovací adresy URL účtu. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Vyzkoušejte si nové Relic podle účtu s Azure AD](https://aad.portal.azure.com/)
-
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+Po nakonfigurování nových Relic podle účtu můžete vyhovět řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

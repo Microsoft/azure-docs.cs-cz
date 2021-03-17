@@ -3,18 +3,20 @@ title: Registrace a použití uložených procedur, triggerů a uživatelsky def
 description: Naučte se registrovat a volat uložené procedury, triggery a uživatelsky definované funkce pomocí sad Azure Cosmos DB SDK.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: fccd3209d88ecd0f7e2baa06a55555a1370c4ec4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 022a45199cfc2d467b1d0d408e86cb5d621070d9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586303"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339842"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup registrace a používání uložených procedur, triggerů a funkcí definovaných uživatelem ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Rozhraní SQL API ve službě Azure Cosmos DB podporuje registraci a vyvolávání uložených procedur, triggerů a funkcí definovaných uživatelem napsaných v JavaScriptu. K registraci a vyvolání uložených procedur můžete použít sady SDK rozhraní SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md)nebo [Python](sql-api-sdk-python.md) . Po definování jednoho nebo více uložených procedur, triggerů a uživatelsky definovaných funkcí je můžete načíst a zobrazit v [Azure Portal](https://portal.azure.com/) pomocí Průzkumník dat.
 
@@ -196,33 +198,46 @@ const {body: result} = await container.scripts.storedProcedure(sprocId).execute(
 
 ### <a name="stored-procedures---python-sdk"></a>Uložené procedury – Python SDK
 
-Následující příklad ukazuje, jak registrovat uloženou proceduru pomocí sady Python SDK
+Následující příklad ukazuje, jak zaregistrovat uloženou proceduru pomocí sady Python SDK:
 
 ```python
+import azure.cosmos.cosmos_client as cosmos_client
+
+url = "your_cosmos_db_account_URI"
+key = "your_cosmos_db_account_key"
+database_name = 'your_cosmos_db_database_name'
+container_name = 'your_cosmos_db_container_name'
+
 with open('../js/spCreateToDoItems.js') as file:
     file_contents = file.read()
-container_link = 'dbs/myDatabase/colls/myContainer'
-sproc_definition = {
-    'id': 'spCreateToDoItems',
+
+sproc = {
+    'id': 'spCreateToDoItem',
     'serverScript': file_contents,
 }
 client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
-sproc = container.create_stored_procedure(container_link, sproc_definition)
+created_sproc = container.scripts.create_stored_procedure(body=sproc) 
 ```
 
-Následující kód ukazuje, jak volat uloženou proceduru pomocí sady Python SDK
+Následující kód ukazuje, jak volat uloženou proceduru pomocí sady Python SDK:
 
 ```python
-sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItems'
-new_item = [{
-    'category':'Personal',
-    'name':'Groceries',
-    'description':'Pick up strawberries',
-    'isComplete': False
-}]
-container.execute_stored_procedure(sproc_link, new_item, {'partitionKey': 'Personal'}
+import uuid
+
+new_id= str(uuid.uuid4())
+
+# Creating a document for a container with "id" as a partition key.
+
+new_item =   {
+      "id": new_id, 
+      "category":"Personal",
+      "name":"Groceries",
+      "description":"Pick up strawberries",
+      "isComplete":False
+   }
+result = container.scripts.execute_stored_procedure(sproc=created_sproc,params=[[new_item]], partition_key=new_id) 
 ```
 
 ## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>Jak spustit předběžné triggery
@@ -361,29 +376,34 @@ await container.items.create({
 Následující kód ukazuje, jak zaregistrovat předběžnou aktivační proceduru pomocí sady Python SDK:
 
 ```python
+import azure.cosmos.cosmos_client as cosmos_client
+
+url = "your_cosmos_db_account_URI"
+key = "your_cosmos_db_account_key"
+database_name = 'your_cosmos_db_database_name'
+container_name = 'your_cosmos_db_container_name'
+
 with open('../js/trgPreValidateToDoItemTimestamp.js') as file:
     file_contents = file.read()
-container_link = 'dbs/myDatabase/colls/myContainer'
+
 trigger_definition = {
     'id': 'trgPreValidateToDoItemTimestamp',
     'serverScript': file_contents,
     'triggerType': documents.TriggerType.Pre,
-    'triggerOperation': documents.TriggerOperation.Create
+    'triggerOperation': documents.TriggerOperation.All
 }
 client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
-trigger = container.create_trigger(container_link, trigger_definition)
+trigger = container.scripts.create_trigger(trigger_definition)
 ```
 
 Následující kód ukazuje, jak zavolat předběžnou aktivační proceduru pomocí sady Python SDK:
 
 ```python
-container_link = 'dbs/myDatabase/colls/myContainer'
 item = {'category': 'Personal', 'name': 'Groceries',
         'description': 'Pick up strawberries', 'isComplete': False}
-container.create_item(container_link, item, {
-                  'pre_trigger_include': 'trgPreValidateToDoItemTimestamp'})
+container.create_item(item, {'pre_trigger_include': 'trgPreValidateToDoItemTimestamp'})
 ```
 
 ## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>Spuštění po triggerech
@@ -511,29 +531,34 @@ await container.items.create(item, {postTriggerInclude: [triggerId]});
 Následující kód ukazuje, jak pomocí sady Python SDK zaregistrovat aktivační událost po triggeru:
 
 ```python
-with open('../js/trgPostUpdateMetadata.js') as file:
+import azure.cosmos.cosmos_client as cosmos_client
+
+url = "your_cosmos_db_account_URI"
+key = "your_cosmos_db_account_key"
+database_name = 'your_cosmos_db_database_name'
+container_name = 'your_cosmos_db_container_name'
+
+with open('../js/trgPostValidateToDoItemTimestamp.js') as file:
     file_contents = file.read()
-container_link = 'dbs/myDatabase/colls/myContainer'
+
 trigger_definition = {
-    'id': 'trgPostUpdateMetadata',
+    'id': 'trgPostValidateToDoItemTimestamp',
     'serverScript': file_contents,
     'triggerType': documents.TriggerType.Post,
-    'triggerOperation': documents.TriggerOperation.Create
+    'triggerOperation': documents.TriggerOperation.All
 }
 client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
-trigger = container.create_trigger(container_link, trigger_definition)
+trigger = container.scripts.create_trigger(trigger_definition)
 ```
 
 Následující kód ukazuje, jak volat po triggeru pomocí sady Python SDK:
 
 ```python
-container_link = 'dbs/myDatabase/colls/myContainer'
-item = {'name': 'artist_profile_1023', 'artist': 'The Band',
-        'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
-container.create_item(container_link, item, {
-                  'post_trigger_include': 'trgPostUpdateMetadata'})
+item = {'category': 'Personal', 'name': 'Groceries',
+        'description': 'Pick up strawberries', 'isComplete': False}
+container.create_item(item, {'post_trigger_include': 'trgPreValidateToDoItemTimestamp'})
 ```
 
 ## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>Jak pracovat s uživatelsky definovanými funkcemi
@@ -658,9 +683,15 @@ const {result} = await container.items.query(sql).toArray();
 Následující kód ukazuje, jak zaregistrovat uživatelsky definovanou funkci pomocí sady Python SDK:
 
 ```python
+import azure.cosmos.cosmos_client as cosmos_client
+
+url = "your_cosmos_db_account_URI"
+key = "your_cosmos_db_account_key"
+database_name = 'your_cosmos_db_database_name'
+container_name = 'your_cosmos_db_container_name'
+
 with open('../js/udfTax.js') as file:
     file_contents = file.read()
-container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
     'id': 'Tax',
     'serverScript': file_contents,
@@ -668,15 +699,14 @@ udf_definition = {
 client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
-udf = container.create_user_defined_function(container_link, udf_definition)
+udf = container.scripts.create_user_defined_function(udf_definition)
 ```
 
 Následující kód ukazuje, jak volat uživatelsky definovanou funkci pomocí sady Python SDK:
 
 ```python
-container_link = 'dbs/myDatabase/colls/myContainer'
 results = list(container.query_items(
-    container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
+    'query': 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
 ## <a name="next-steps"></a>Další kroky

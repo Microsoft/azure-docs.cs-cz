@@ -1,7 +1,7 @@
 ---
 title: Vytvoření a Správa prostředků VS Code rozšíření (Preview)
 titleSuffix: Azure Machine Learning
-description: Vytváření a Správa prostředků pomocí rozšíření VS Code
+description: Naučte se vytvářet a spravovat Azure Machine Learning prostředky pomocí rozšíření Azure Machine Learning Visual Studio Code.
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 07/09/2020
-ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 11/16/2020
+ms.openlocfilehash: f8eb18b190b72381f1a93575eb39b3d19d8d431b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306141"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010669"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Správa prostředků Azure Machine Learning s rozšířením VS Code (Preview)
 
@@ -44,10 +44,10 @@ Další informace najdete v tématu [pracovní prostory](concept-workspace.md).
     1. Zvolte svoje předplatné Azure.
     1. Vyberte nebo vytvořte novou skupinu prostředků, ve které se má pracovní prostor zřídit.
     1. Vyberte umístění, kam chcete zřídit pracovní prostor.
-    1. Vyberte si z edice *Basic* a *Enterprise* . Přečtěte si další informace o různých [edicích Azure Machine Learning](concept-editions.md).
 
 Mezi alternativní metody vytvoření pracovního prostoru patří:
 
+- Otevřete zobrazení palety příkazů **> paleta příkazů** a zadejte text do příkazového řádku **Azure ml: vytvořit pracovní prostor**.
 - Klikněte na `+` ikonu v horní části zobrazení Azure Machine Learning.
 - Po zobrazení výzvy k výběru pracovního prostoru během zřizování jiných prostředků vytvořte nový pracovní prostor.
 
@@ -90,7 +90,7 @@ Další informace najdete v tématu [úložiště dat](concept-data.md#datastore
 1. Vyberte úložiště dat, které chcete:
     - *Nastavit jako výchozí*. Při každém spuštění experimentů se jedná o úložiště dat, které bude použito.
     - *Zkontrolujte nastavení jen pro čtení*.
-    - *Upravit*. Změňte typ ověřování a přihlašovací údaje. Mezi podporované typy ověřování patří klíč účtu a token SAS.
+    - *Modify*. Změňte typ ověřování a přihlašovací údaje. Mezi podporované typy ověřování patří klíč účtu a token SAS.
 
 ## <a name="datasets"></a>Datové sady
 
@@ -201,6 +201,7 @@ Další informace najdete v tématu [experimenty](concept-azure-machine-learning
 1. Rozbalte uzel **experimenty** v pracovním prostoru.
 1. Klikněte pravým tlačítkem na experiment, který chcete spustit.
 1. Na řádku aktivity vyberte ikonu pro **Spuštění experimentu** .
+1. Vyberte, zda chcete experiment spustit místně nebo vzdáleně. Další informace o místním spouštění a ladění experimentů najdete v [Průvodci laděním](how-to-debug-visual-studio-code.md) .
 1. Zvolte vaše předplatné.
 1. Vyberte Azure pracovní prostor ML ke spuštění experimentu v rámci.
 1. Vyberte experiment.
@@ -243,6 +244,39 @@ Po dokončení běhu budete možná chtít stáhnout protokoly a prostředky, ja
 
 V rozšíření můžete zkontrolovat metadata, jako je například konfigurace spuštění používaná pro běh a také podrobnosti o spuštění.
 
+## <a name="compute-instances"></a>Instance služby Compute
+
+Další informace najdete v tématu [výpočetní instance](concept-compute-instance.md).
+
+### <a name="create-compute-instance"></a>Vytvořit výpočetní instanci
+
+1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
+1. Rozbalte uzel pracovního prostoru, ve kterém chcete vytvořit výpočetní instanci.
+1. Klikněte pravým tlačítkem na uzel **výpočetní instance** a vyberte **vytvořit výpočetní instanci**.
+1. Na příkazovém řádku:
+    1. Zadejte název instance služby Compute.
+    1. V seznamu vyberte velikost virtuálního počítače.
+    1. Vyberte, jestli chcete povolit přístup přes SSH.
+        1. Pokud povolíte přístup přes SSH, budete muset zadat také veřejný klíč SSH nebo soubor obsahující klíč. Další informace najdete v příručce k [vytváření a používání klíčů ssh v Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
+
+### <a name="stop-or-restart-compute-instance"></a>Zastavení nebo restartování výpočetní instance
+
+1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
+1. Rozbalte uzel **výpočetní instance** do svého pracovního prostoru.
+1. Pravým tlačítkem myši klikněte na výpočetní instanci, kterou chcete zastavit nebo restartovat, a vyberte **zastavit výpočetní instanci** nebo **restartovat výpočetní instanci** v uvedeném pořadí.
+
+### <a name="view-compute-instance-configuration"></a>Zobrazit konfiguraci výpočetní instance
+
+1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
+1. Rozbalte uzel **výpočetní instance** do svého pracovního prostoru.
+1. Klikněte pravým tlačítkem na výpočetní instanci, kterou chcete zkontrolovat, a vyberte **Zobrazit vlastnosti instance COMPUTE**.
+
+### <a name="delete-compute-instance"></a>Odstranit výpočetní instanci
+
+1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
+1. Rozbalte uzel **výpočetní instance** do svého pracovního prostoru.
+1. Klikněte pravým tlačítkem na výpočetní instanci, kterou chcete odstranit, a vyberte **Odstranit výpočetní instanci**.
+
 ## <a name="compute-clusters"></a>Výpočetní clustery
 
 Rozšíření podporuje následující výpočetní typy:
@@ -256,10 +290,10 @@ Další informace najdete v tématu [výpočetní cíle](concept-compute-target.
 
 1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
 1. Rozbalte uzel pracovního prostoru, ve kterém chcete vytvořit výpočetní cluster.
-1. Klikněte pravým tlačítkem na uzel **COMPUTE clustery** a vyberte **vytvořit výpočetní**prostředky.
+1. Klikněte pravým tlačítkem na uzel **COMPUTE clustery** a vyberte **vytvořit výpočetní** prostředky.
 1. Na příkazovém řádku:
     1. Zvolit výpočetní typ
-    1. Vyberte velikost virtuálního počítače. Přečtěte si další informace o [velikostech virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+    1. Vyberte velikost virtuálního počítače. Přečtěte si další informace o [velikostech virtuálních počítačů](../virtual-machines/sizes.md).
     1. Zadejte název pro výpočetní výkon.
 
 ### <a name="view-compute-configuration"></a>Zobrazit konfiguraci výpočtů
@@ -272,14 +306,14 @@ Další informace najdete v tématu [výpočetní cíle](concept-compute-target.
 
 1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
 1. Rozbalte uzel **výpočetní clustery** do vašeho pracovního prostoru.
-1. Klikněte pravým tlačítkem na výpočetní výkon, který chcete upravit, a vyberte **Upravit výpočetní**prostředky.
+1. Klikněte pravým tlačítkem na výpočetní výkon, který chcete upravit, a vyberte **Upravit výpočetní** prostředky.
 1. V editoru se otevře konfigurační soubor pro výpočetní výkon. Pokud jste s konfigurací spokojeni, vyberte **Uložit a pokračovat** nebo otevřete vs Code paletu příkazů (**zobrazení > paleta příkazů**) a zadejte **Azure ml: Uložit a pokračovat**.
 
 ### <a name="delete-compute"></a>Odstranit výpočetní prostředky
 
 1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
 1. Rozbalte uzel **výpočetní clustery** do vašeho pracovního prostoru.
-1. Klikněte pravým tlačítkem na výpočet, který chcete odstranit, a vyberte **Odstranit výpočetní**prostředky.
+1. Klikněte pravým tlačítkem na výpočet, který chcete odstranit, a vyberte **Odstranit výpočetní** prostředky.
 
 ### <a name="create-run-configuration"></a>Vytvořit konfiguraci spuštění
 
@@ -287,7 +321,7 @@ Postup vytvoření konfigurace spuštění v rozšíření:
 
 1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
 1. Rozbalte uzel **výpočetní clustery** do vašeho pracovního prostoru.
-1. Klikněte pravým tlačítkem na cíl výpočtů, který chcete vytvořit, a vyberte **vytvořit konfiguraci spuštění**.
+1. Klikněte pravým tlačítkem na cíl výpočtů, na kterém chcete vytvořit konfiguraci spuštění, a vyberte **vytvořit konfiguraci spuštění**.
 1. Na příkazovém řádku:
     1. Zadejte název pro svůj cíl služby Compute.
     1. Vyberte nebo vytvořte nové prostředí.
@@ -362,7 +396,7 @@ Další informace najdete v tématu [koncové body webové služby](concept-azur
 1. Klikněte pravým tlačítkem myši na uzel **koncové body** a vyberte **nasadit službu**.
 1. Na příkazovém řádku:
     1. Vyberte, zda chcete použít již registrovaný model nebo místní soubor modelu.
-    1. Výběr modelu
+    1. Vyberte svůj model.
     1. Vyberte cíl nasazení, do kterého chcete model nasadit.
     1. Zadejte název pro svůj model.
     1. Zadejte skript, který se má spustit při bodování modelu.

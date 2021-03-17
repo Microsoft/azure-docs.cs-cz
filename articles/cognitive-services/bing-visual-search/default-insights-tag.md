@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b44b77445192aec68e2be803978ab3aad64906d6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512635"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486993"
 ---
 # <a name="default-insights-tag"></a>Výchozí značka Insights
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Výchozí značka Insights je ta s `displayName` polem nastaveným na prázdný řetězec. Následující příklad ukazuje možný seznam výchozích přehledů (akcí). Seznam akcí, které odpověď zahrnuje, závisí na obrázku. U každé akce se seznam vlastností může lišit podle obrázku, proto ověřte, zda vlastnost existuje a teprve potom ji zkuste použít.
 

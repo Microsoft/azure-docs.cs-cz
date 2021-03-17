@@ -3,12 +3,12 @@ title: Ověřování mezi registry z ACR úlohy
 description: Konfigurace úlohy Azure Container Registry (úloha ACR) pro přístup k jinému privátnímu registru služby Azure Container Registry pomocí spravované identity pro prostředky Azure
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 789d2c141f8b7c3f2eb8daa31d99090e3d028a43
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057347"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915824"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Ověřování mezi registry v úloze ACR pomocí identity spravované službou Azure 
 
@@ -39,16 +39,12 @@ Pokud ještě nemáte potřebné registry kontejnerů Azure, přečtěte si tém
 
 ## <a name="prepare-base-registry"></a>Příprava základního registru
 
-Nejprve vytvořte pracovní adresář a pak vytvořte soubor s názvem souboru Dockerfile s následujícím obsahem. V tomto jednoduchém příkladu se vytvoří základní image Node.js z veřejné image v Docker Hub.
-    
-```bash
-echo FROM node:9-alpine > Dockerfile
-```
+Pro demonstrační účely, jako jednorázovou operaci, spusťte příkaz [az ACR Import] [az-ACR-Import], abyste importovali veřejnou Node.js image z Docker Hub do svého základního registru. V praxi může jiný tým nebo proces v organizaci uchovávat image v základním registru.
 
-V aktuálním adresáři spuštěním příkazu [AZ ACR Build][az-acr-build] Sestavte a nahrajte základní image do základního registru. V praxi může jiný tým nebo proces v organizaci uchovávat základní Registry.
-    
 ```azurecli
-az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
+az acr import --name mybaseregistry \
+  --source docker.io/library/node:15-alpine \
+  --image baseimages/node:15-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>Definování kroků úkolu v souboru YAML
@@ -59,7 +55,7 @@ Kroky pro tento příklad [úlohy s více kroky](container-registry-tasks-multi-
 version: v1.1.0
 steps:
 # Replace mybaseregistry with the name of your registry containing the base image
-  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
+  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git#main -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
   - push: ["$Registry/hello-world:$ID"]
 ```
 
@@ -194,8 +190,8 @@ Waiting for an agent...
 2019/06/14 22:47:45 Launching container with name: acb_step_0
 Sending build context to Docker daemon   25.6kB
 Step 1/6 : ARG REGISTRY_NAME
-Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
-9-alpine: Pulling from baseimages/node
+Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
+15-alpine: Pulling from baseimages/node
 [...]
 Successfully built 41b49a112663
 Successfully tagged myregistry.azurecr.io/hello-world:cf10
@@ -215,7 +211,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
   runtime-dependency:
     registry: mybaseregistry.azurecr.io
     repository: baseimages/node
-    tag: 9-alpine
+    tag: 15-alpine
     digest: sha256:e8e92cffd464fce3be9a3eefd1b65dc9cbe2484da31c11e813a4effc6105c00f
   git:
     git-head-revision: 0f988779c97fe0bfc7f2f74b88531617f4421643

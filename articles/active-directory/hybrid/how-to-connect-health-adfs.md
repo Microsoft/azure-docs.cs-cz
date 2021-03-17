@@ -18,12 +18,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9401532964e984147436f664b366fd613f3f919f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26fdf202cb9bcacee94c83578432f7a399f90a0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359377"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91306272"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o monitorování Azure AD Connect (synchronizace) s Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health ke synchronizaci](how-to-connect-health-sync.md). Další informace o sledování Active Directory Domain Services pomocí Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health s služba AD DS](how-to-connect-health-adds.md).
@@ -33,7 +33,7 @@ Následující dokumentace se věnuje sledování infrastruktury služby AD FS v
 
 Dvojitým kliknutím na aktivní nebo vyřešené upozornění můžete otevřít nové okno s doplňujícími informacemi, kroky, které můžete k vyřešení upozornění použít, a odkazy na relevantní dokumentaci. Můžete si zobrazit i historické údaje o dříve vyřešených upozorněních.
 
-![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/alert2.png)
+![Snímek obrazovky, Azure AD Connect Health na které se zobrazuje stránka výstrahy s vybraným upozorněním a zobrazené okno Podrobnosti výstrahy](./media/how-to-connect-health-adfs/alert2.png)
 
 ## <a name="usage-analytics-for-ad-fs"></a>Funkce analýzy využití služby AD FS
 Funkce analýzy využití služby Azure AD Connect Health analyzuje ověřovací provoz na federačních serverech. Dvojitým kliknutím na políčko funkce analýzy využití můžete otevřít okno analýzy využití, ve kterém je zobrazeno několik metrik a seskupení.
@@ -43,7 +43,7 @@ Funkce analýzy využití služby Azure AD Connect Health analyzuje ověřovací
 >
 >
 
-![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report1.png)
+![Snímek obrazovky zobrazující stránku Azure AD Connect Health Analytics využití](./media/how-to-connect-health-adfs/report1.png)
 
 Pokud chcete vybrat další metriky, určit časový rozsah nebo změnit seskupení, klikněte pravým tlačítkem na graf analýzy využití a vyberte Upravit graf. Potom můžete zadat časový rozsah, vybrat jiné metriky a změnit seskupení. Distribuci ověřovacího provozu můžete zobrazit podle různých „metrik“ a jednotlivé metriky můžete seskupit pomocí příslušných parametrů možnosti „Seskupit podle“, které jsou uvedené v následující části:
 
@@ -78,7 +78,7 @@ Pokud chcete vybrat další metriky, určit časový rozsah nebo změnit seskupe
 ## <a name="performance-monitoring-for-ad-fs"></a>Sledování výkonu služby AD FS
 Sledování výkonu služby Azure AD Connect Health poskytuje sledovací informace o metrikách. Po zaškrtnutí políčka sledování se otevře nové okno s podrobnými informacemi o metrikách.
 
-![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/perf1.png)
+![Snímek obrazovky zobrazující stránku monitorování výkonu Azure AD Connect Health.](./media/how-to-connect-health-adfs/perf1.png)
 
 Výběrem možnosti Filtrovat (v horní části okna) můžete filtrovat podle serveru a prohlédnout si metriky na jednotlivých serverech. Pokud chcete změnit metriky, klikněte pravým tlačítkem na graf sledování pod oknem sledování a vyberte Upravit graf (nebo vyberte tlačítko Upravit graf). V nově otevřeném okně můžete vybrat další metriky pomocí rozevíracího seznamu a také zadat časový rozsah pro zobrazení dat výkonu.
 
@@ -89,7 +89,7 @@ Existují však i další důvody, které mohou mít za následek neočekávaný
 
 Azure AD Connect Health pro ADFS poskytuje sestavy s nejčastějšími 50 uživateli, kteří se neúspěšně přihlašovali pomocí neplatného uživatelského jména nebo hesla. Tuto sestavu můžete vytvořit zpracováním událostí auditu, které generují všechny servery AD FS ve farmách.
 
-![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report1a.png)
+![Snímek obrazovky, který zobrazuje část sestavy s počtem špatných pokusů o zadání hesla za posledních 30 dní.](./media/how-to-connect-health-adfs/report1a.png)
 
 V rámci této sestavy máte snadný přístup k následujícím informacím:
 
@@ -119,7 +119,6 @@ Sestava obsahuje následující informace:
 > Sestava se každých 12 hodin automaticky aktualizuje novými informacemi, které se za tu dobu shromáždily. V důsledku tohoto postupu nemusí být v sestavě zahrnuté pokusy o přihlášení za posledních 12 hodin.
 
 ## <a name="related-links"></a>Související odkazy
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Instalace agenta Azure AD Connect Health](how-to-connect-health-agent-install.md)
 * [Sestava rizikových IP adres](how-to-connect-health-adfs-risky-ip.md)
-

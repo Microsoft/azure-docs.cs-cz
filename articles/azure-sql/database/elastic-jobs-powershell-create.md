@@ -1,27 +1,27 @@
 ---
-title: Vytvoření agenta elastických úloh pomocí PowerShellu
+title: Vytvoření agenta elastické úlohy pomocí prostředí PowerShell (Preview)
 description: Zjistěte, jak vytvořit agenta elastických úloh pomocí PowerShellu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-ms.date: 03/13/2019
-ms.openlocfilehash: 84f3bbc01d7161dd6d7002102cc006dfae3ce3e4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 10/21/2020
+ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118157"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368825"
 ---
-# <a name="create-an-elastic-job-agent-using-powershell"></a>Vytvoření agenta elastických úloh pomocí PowerShellu
+# <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Vytvoření agenta elastické úlohy pomocí prostředí PowerShell (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Elastické úlohy (Preview)](job-automation-overview.md#elastic-database-jobs-preview) umožňují paralelní spuštění jednoho nebo více skriptů jazyka Transact-SQL (T-SQL) paralelně napříč mnoha databázemi.
+[Elastické úlohy (Preview)](job-automation-overview.md) umožňují paralelní spuštění jednoho nebo více skriptů jazyka Transact-SQL (T-SQL) paralelně napříč mnoha databázemi.
 
 V tomto kurzu se seznámíte s kroky potřebnými ke spuštění dotazu napříč více databázemi:
 
@@ -53,7 +53,7 @@ Find-Package PowerShellGet | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Install and import the Az.Sql module, then confirm
-Install-Module -Name Az.Sql
+Install-Module -Name Az.Sql
 Import-Module Az.Sql
 
 Get-Module Az.Sql
@@ -63,7 +63,7 @@ Kromě modulu **AZ. SQL** vyžaduje tento kurz také modul *SQL SQLServer* . Pod
 
 ## <a name="create-required-resources"></a>Vytvoření požadovaných prostředků
 
-K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší), která se použije jako [databáze úloh](job-automation-overview.md#job-database).
+K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší), která se použije jako [databáze úloh](job-automation-overview.md#elastic-job-database).
 
 Následující skript vytvoří novou skupinu prostředků, server a databázi, která se použije jako databáze úloh. Druhý skript vytvoří druhý server se dvěma prázdnými databázemi pro provádění úloh s.
 
@@ -123,19 +123,11 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Použití elastických úloh
-
-Pokud chcete použít elastické úlohy, zaregistrujte funkci v předplatném Azure spuštěním následujícího příkazu. Spusťte tento příkaz jednou pro předplatné, ve kterém máte v úmyslu zřídit agenta elastické úlohy. Odběry, které obsahují pouze databáze, které jsou cílem úlohy, nemusí být registrovány.
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>Vytvoření agenta elastických úloh
 
 Agent elastických úloh je prostředek Azure určený k vytváření, spouštění a správě úloh. Agent spouští úlohy na základě plánu nebo jako jednorázové úlohy.
 
-Rutina **New-AzSqlElasticJobAgent** vyžaduje databázi v Azure SQL Database, aby již existovala, takže parametry *resourceGroupName*, *servername*a *DatabaseName* musí všechny odkazovat na stávající prostředky.
+Rutina **New-AzSqlElasticJobAgent** vyžaduje databázi v Azure SQL Database, aby již existovala, takže parametry *resourceGroupName*, *servername* a *DatabaseName* musí všechny odkazovat na stávající prostředky.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -165,12 +157,12 @@ $params = @{
   'username' = $adminLogin
   'password' = $adminPassword
   'outputSqlErrors' = $true
-  'query' = "CREATE LOGIN masteruser WITH PASSWORD='password!123'"
+  'query' = 'CREATE LOGIN masteruser WITH PASSWORD=''password!123'''
 }
 Invoke-SqlCmd @params
 $params.query = "CREATE USER masteruser FROM LOGIN masteruser"
 Invoke-SqlCmd @params
-$params.query = "CREATE LOGIN jobuser WITH PASSWORD='password!123'"
+$params.query = 'CREATE LOGIN jobuser WITH PASSWORD=''password!123'''
 Invoke-SqlCmd @params
 
 # for each target database
@@ -192,7 +184,7 @@ $targetDatabases | % {
 
 # create job credential in Job database for master user
 Write-Output "Creating job credentials..."
-$loginPasswordSecure = (ConvertTo-SecureString -String "password!123" -AsPlainText -Force)
+$loginPasswordSecure = (ConvertTo-SecureString -String 'password!123' -AsPlainText -Force)
 
 $masterCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "masteruser", $loginPasswordSecure
 $masterCred = $jobAgent | New-AzSqlElasticJobCredential -Name "masteruser" -Credential $masterCred
@@ -205,7 +197,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [Cílová skupina](job-automation-overview.md#target-group) definuje sadu jedné nebo více databází, pro které se provede určitý krok úlohy.
 
-Následující fragment kódu vytvoří dvě cílové skupiny: skupiny *serverů*a *serverGroupExcludingDb2*. *serverová* aplikace cílí na všechny databáze, které existují na serveru v době spuštění, a *serverGroupExcludingDb2* cílí na všechny databáze na serveru s výjimkou *targetDb2*:
+Následující fragment kódu vytvoří dvě cílové skupiny: skupiny *serverů* a *serverGroupExcludingDb2*. *serverová* aplikace cílí na všechny databáze, které existují na serveru v době spuštění, a *serverGroupExcludingDb2* cílí na všechny databáze na serveru s výjimkou *targetDb2*:
 
 ```powershell
 Write-Output "Creating test target groups..."

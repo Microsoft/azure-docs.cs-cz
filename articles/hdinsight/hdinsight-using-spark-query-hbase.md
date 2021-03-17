@@ -1,25 +1,22 @@
 ---
 title: Použití Sparku ke čtení a zápisu dat HBA – Azure HDInsight
 description: Konektor Spark HBA slouží ke čtení a zápisu dat z clusteru Spark do clusteru HBA.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 344caf4080380f5d9dfdaf452798ada6d1dc9f1c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166939"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931227"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
 
 Apache Hbas se obvykle dotazuje buď pomocí rozhraní API na nižší úrovni (vyhledávání, získání a vložení), nebo pomocí syntaxe SQL pomocí Apache Phoenix. Apache taky poskytuje konektor Apache Spark HBA. Konektor je praktická a efektivní alternativa k dotazování a úpravám dat uložených pomocí adaptérů HBA.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Ve stejné [virtuální síti](./hdinsight-plan-virtual-network-deployment.md)jsou nasazené dva samostatné clustery HDInsight. Je nainstalovaná jedna z adaptérů HBA a jedna Spark s aspoň Spark 2,1 (HDInsight 3,6). Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -94,11 +91,11 @@ __Poznámka__: než budete pokračovat, ujistěte se, že jste přidali účet �
     |Vlastnost | Hodnota |
     |---|---|
     |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
-    |Typ (typy) uzlů|Oblast|
+    |Typ (typy) uzlů|Region (Oblast)|
     |Parametry|`-s SECONDARYS_STORAGE_URL`|
     |Trvalé|ano|
 
-    * `SECONDARYS_STORAGE_URL`je adresa URL výchozího úložiště na straně Spark. Příklad parametru:`-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
+    * `SECONDARYS_STORAGE_URL` je adresa URL výchozího úložiště na straně Spark. Příklad parametru: `-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
 
 
 2.  Použijte akci skriptu v clusteru Spark pro použití změn s následujícími požadavky:
@@ -107,7 +104,7 @@ __Poznámka__: než budete pokračovat, ujistěte se, že jste přidali účet �
     |---|---|
     |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-spark.sh`|
     |Typ (typy) uzlů|Vedoucí pracovník, Zookeeper|
-    |Parametry|`-s "SPARK-CRON-SCHEDULE"`(volitelné) `-h "HBASE-CRON-SCHEDULE"` volitelné|
+    |Parametry|`-s "SPARK-CRON-SCHEDULE"` (volitelné) `-h "HBASE-CRON-SCHEDULE"` volitelné|
     |Trvalé|ano|
 
 
@@ -162,8 +159,8 @@ Příklad: v následující tabulce jsou uvedeny dvě verze a odpovídající p�
 
     |Verze Sparku| Verze HDI HBA  | Verze SHC    |  Příkaz  |
     | :-----------:| :----------: | :-----------: |:----------- |
-    |      2.1    | HDI 3,6 (HBA 1,1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2,4    | HDI 4,0 (HBA 2,0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    |      2.1    | HDI 3,6 (HBA 1,1) | 1.1.1-2.1-s_2.11    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2,4    | HDI 4,0 (HBA 2,0) | 1.1.0.3.1.2.2-1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
 2. Nechte tuto instanci prostředí Sparku otevřenou a pokračujte [definováním katalogu a dotazu](#define-a-catalog-and-query). Pokud nenajdete jar, který odpovídá vašim verzím v úložišti SHC Core, pokračujte ve čtení. 
 

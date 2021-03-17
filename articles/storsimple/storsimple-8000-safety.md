@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514531"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950750"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Bezpečné instalace a obsluha zařízení StorSimple
 ![Ikona varování ](./media/storsimple-safety/IC740879.png)
@@ -30,7 +30,7 @@ Přečtěte si veškeré informace o bezpečnosti a stavu v tomto článku, kter
 ## <a name="safety-icon-conventions"></a>Bezpečnostní konvence ikon
 Tady jsou ikony, které najdete, když provedete kontrolu bezpečnostních opatření, která se mají pozorovat při nastavování a spouštění zařízení Microsoft Azure StorSimple.
 
-| Ikona | Description |
+| Ikona | Popis |
 |:--- |:--- |
 | ![](./media/storsimple-safety/IC740879.png) **Nebezpečí** ikony nebezpečí |Označuje nebezpečnou situaci, která, pokud se nevyhne, má za následek smrt nebo vážnou škodu. Toto slovo signálu se bude omezovat na nejvíce extrémních situací. |
 | ![Upozornění na ikonu upozornění ](./media/storsimple-safety/IC740879.png) **!** |Označuje nebezpečnou situaci, že pokud se nevyhnete, může dojít k úmrtí nebo závažné újmě. |
@@ -114,7 +114,7 @@ Zařízení je navržené tak, aby fungovalo se dvěma PCMs. Každý z PCMs má 
 
 Pro snížení pravděpodobnosti zranění, elektrického úrazu nebo smrti:
 
-* Neodstraňujte vazby ze služby PCM. Je nebezpečí elektrického úrazu uvnitř. Pokud chcete vrátit PCM a získat náhradní, [kontaktní podpora Microsoftu](storsimple-contact-microsoft-support.md).
+* Neodstraňujte vazby ze služby PCM. Je nebezpečí elektrického úrazu uvnitř. Pokud chcete vrátit PCM a získat náhradní, [kontaktní podpora Microsoftu](./storsimple-8000-contact-microsoft-support.md).
 
 ![Oznámení ikony oznámení ](./media/storsimple-safety/IC740881.png) **:**
 
@@ -148,7 +148,7 @@ Pro snížení rizika krátkodobého, požáru, výbuchu, zranění nebo smrti:
 
 ![Oznámení ikony oznámení ](./media/storsimple-safety/IC740881.png) **:**
 
-Při přepravování nebo jinak přepravování baterií pomocí Air postupujte podle pokynů v dokumentu s pokyny k baterii IATA pro baterii v[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+Při přepravování nebo jinak přepravování baterií pomocí Air postupujte podle pokynů v dokumentu s pokyny k baterii IATA pro baterii v [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 Po kontrole těchto bezpečnostních oznámení se v dalších krocích rozbalí zařízení do racku a zapojte do jeho kabelu.
 

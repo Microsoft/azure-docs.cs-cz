@@ -1,30 +1,39 @@
 ---
 title: Řešení potíží s Azure Application Insights Profiler
-description: Tento článek představuje postup řešení potíží a informace, které vývojářům umožňují problémy s povolením nebo používáním Application Insights Profiler.
+description: Tento článek představuje postup řešení potíží a informace, které vývojářům pomůžou povolit a používat Application Insights Profiler.
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 622a83c6d91bf2a30c2844e3279d6fd4b89d429f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049784"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213789"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Řešení potíží s povolením nebo zobrazením Application Insights Profiler
 
-> [!CAUTION]
-> Při spuštění profileru pro ASP.NET Core aplikací na Azure App Service došlo k chybě. Máme opravu, ale pro nasazení celého světa bude trvat několik týdnů. Tuto chybu můžete obejít tak, že do své aplikace přidáte sadu Application Insights SDK s [pokyny.](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)
-
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Obecné řešení potíží
+
+### <a name="make-sure-youre-using-the-appropriate-profiler-endpoint"></a>Ujistěte se, že používáte příslušný koncový bod profileru.
+
+V současné době jsou k [disAzure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) a [Azure Čína](https://docs.microsoft.com/azure/china/resources-developer-guide)jedinými oblastmi, které vyžadují úpravy koncových bodů.
+
+|Nastavení aplikace    | Cloud pro státní správu USA | Čína – Cloud |   
+|---------------|---------------------|-------------|
+|ApplicationInsightsProfilerEndpoint         | `https://profiler.monitor.azure.us`    | `https://profiler.monitor.azure.cn` |
+|ApplicationInsightsEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profily se odesílají jenom v případě, že vaše aplikace obsahuje žádosti, když je profiler spuštěný.
 
-Azure Application Insights Profiler shromažďuje data profilování po dobu dvou minut každou hodinu. Shromažďuje také data po výběru tlačítka **profilace nyní** v podokně **Konfigurovat Application Insights Profiler** . Data profilování se ale odesílají jenom v případě, že je možné je připojit k požadavku, ke kterému došlo během běhu profileru. 
+Azure Application Insights Profiler shromažďuje data dvě minuty každou hodinu. Může také shromažďovat data, když v podokně **konfigurace Application Insights Profiler** vyberete tlačítko **profil nyní** .
 
-Profiler zapisuje trasovací zprávy a vlastní události do prostředku Application Insights. Pomocí těchto událostí můžete zjistit, jak profiler běží. Pokud si myslíte, že Profiler by měl běžet a zachytávání trasování, ale nezobrazuje se v podokně **výkon** , můžete zjistit, jak profiler běží:
+> [!NOTE]
+> Data profilování se nahrají jenom v případě, že je možné je připojit k žádosti, ke které došlo během běhu profileru. 
+
+Profiler zapisuje trasovací zprávy a vlastní události do prostředku Application Insights. Pomocí těchto událostí můžete zjistit, jak profiler běží:
 
 1. Vyhledejte trasovací zprávy a vlastní události odeslané profilerem do vašeho prostředku Application Insights. Pomocí tohoto vyhledávacího řetězce můžete najít relevantní data:
 
@@ -35,33 +44,36 @@ Profiler zapisuje trasovací zprávy a vlastní události do prostředku Applica
     
    * Na levé straně aplikace nepřijímá požadavky, pokud je spuštěn Profiler. Zpráva vysvětluje, že nahrávání bylo zrušeno z důvodu žádné aktivity. 
 
-   * Na pravé straně Profiler zahájil a odeslal vlastní události, když zjistili, jaké požadavky nastaly během běhu profileru. Pokud se zobrazí vlastní událost ServiceProfilerSample, znamená to, že Profiler připojil trasování k žádosti a vy můžete zobrazit trasování v podokně **výkon Application Insights** .
+   * Na pravé straně Profiler zahájil a odeslal vlastní události, když zjistili, jaké požadavky nastaly během běhu profileru. Pokud `ServiceProfilerSample` se vlastní událost zobrazí, znamená to, že byl profil zachycen a je k dispozici v podokně **výkon Application Insights** .
 
-     Pokud se nezobrazí žádná telemetrie, Profiler neběží. Informace o řešení problémů najdete v částech věnovaném řešení potíží pro konkrétní typ aplikace dále v tomto článku.  
+     Pokud se nezobrazí žádné záznamy, Profiler neběží. Informace o řešení problémů najdete v částech věnovaném řešení potíží pro konkrétní typ aplikace dále v tomto článku.  
 
      ![Prohledat telemetrii profileru][profiler-search-telemetry]
-
-1. Pokud byly během běhu profileru nějaké žádosti, ujistěte se, že požadavky jsou zpracovávány součástí vaší aplikace, která má povolený Profiler. I když se aplikace někdy skládají z několika součástí, je profiler povolen pouze pro některé součásti. V podokně **konfigurace Application Insights Profiler** se zobrazují součásti, které odeslaly trasování.
 
 ### <a name="other-things-to-check"></a>Další věci ke kontrole
 * Ujistěte se, že je vaše aplikace spuštěná na .NET Framework 4,6.
 * Pokud je vaše webová aplikace ASP.NET Core aplikace, musí běžet aspoň ASP.NET Core 2,0.
 * Pokud se data, která se snažíte zobrazit, starší než několik týdnů, zkuste omezit filtr času a zkusit to znovu. Trasování se odstraní po sedmi dnech.
-* Ujistěte se, že proxy nebo brána firewall neblokovaly přístup k https://gateway.azureserviceprofiler.net .
+* Zajistěte, aby proxy nebo brána firewall neblokovaly přístup k https://gateway.azureserviceprofiler.net .
 * Profiler není podporován na plánech Free nebo Shared App Service. Pokud používáte některý z těchto plánů, zkuste škálovat na jeden ze základních plánů a Profiler by měl začít pracovat.
 
 ### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>Dvojité počítání v paralelních vláknech
 
 V některých případech je celková časová metrika v prohlížeči zásobníku delší než doba trvání žádosti.
 
-K této situaci může dojít, když jsou k žádosti přidruženy dva nebo více vláken a pracují paralelně. V takovém případě je celkový čas vlákna větší než uplynulý čas. Jedno vlákno může čekat na dokončení. Prohlížeč se pokusí zjistit tuto situaci a vynechá nevýznamové čekání. V takovém případě se synchronizací na straně zobrazení příliš velkého množství informací, nikoli z toho, co by mohlo být důležité informace.
+K této situaci může dojít, pokud jsou k žádosti přidruženy dva nebo více paralelních vláken. V takovém případě je celkový čas vlákna větší než uplynulý čas.
 
-Když vidíte paralelní vlákna ve svých trasováních, určete, která vlákna čekají, abyste mohli zjistit kritickou cestu pro požadavek. Vlákno, které rychle směřuje do stavu čekání, obvykle čeká na ostatní vlákna. Soustřeďte se na ostatní vlákna a ignorujte čas ve čekajících vláknech.
+Jedno vlákno může čekat na dokončení. Prohlížeč se pokusí zjistit tuto situaci a vynechá nevýznamové čekání. V takovém případě se synchronizací na straně zobrazení příliš velkého množství informací, nikoli z toho, co by mohlo být důležité informace.
+
+Když vidíte paralelní vlákna ve svých trasováních, určete, která vlákna čekají, abyste mohli identifikovat kritickou cestu pro požadavek.
+
+Vlákno, které rychle směřuje do stavu čekání, obvykle čeká na ostatní vlákna. Soustřeďte se na ostatní vlákna a ignorujte čas ve čekajících vláknech.
 
 ### <a name="error-report-in-the-profile-viewer"></a>Zpráva o chybách v prohlížeči profilů
 Odešlete lístek podpory na portálu. Nezapomeňte do chybové zprávy zahrnout ID korelace.
 
 ## <a name="troubleshoot-profiler-on-azure-app-service"></a>Řešení potíží s profilerem v Azure App Service
+
 Pro správné fungování profileru postupujte takto:
 * Váš plán služby Web App Service musí být na úrovni Basic nebo vyšší.
 * Vaše webová aplikace musí mít povolený Application Insights.
@@ -79,14 +91,38 @@ Pro správné fungování profileru postupujte takto:
    1. V nabídce **nástroje** vyberte možnost **řídicí panel WebJobs**.  
       Otevře se podokno webové **úlohy** . 
    
-      ![Profiler – webová úloha]   
+      ![Snímek obrazovky zobrazuje podokno webové úlohy, ve kterém se zobrazuje název, stav a čas posledního spuštění úloh.][profiler-webjob]   
    
    1. Chcete-li zobrazit podrobnosti webové úlohy, včetně protokolu, vyberte odkaz **ApplicationInsightsProfiler3** .  
      Otevře se podokno **Podrobnosti nepřetržité úlohy WebJob** .
 
-      ![Profiler-webová úloha – protokol]
+      ![Snímek obrazovky se zobrazí v podokně podrobností nepřetržité úlohy WebJob.][profiler-webjob-log]
 
-Pokud nemůžete zjistit, proč Profiler nefunguje za vás, můžete si ho stáhnout a poslat mu v našem týmu, kde získáte pomoc serviceprofilerhelp@microsoft.com . 
+Pokud profiler nefunguje za vás, můžete si ho stáhnout a poslat mu do našeho týmu, kde získáte pomoc serviceprofilerhelp@microsoft.com .
+
+### <a name="check-the-diagnostic-services-site-extension-status-page"></a>Zkontroluje stavovou stránku rozšíření webu diagnostické služby.
+Pokud byl Profiler povolen přes [podokno Application Insights](profiler.md) na portálu, byl povolen rozšířením webu diagnostické služby.
+
+> [!NOTE]
+> Nekódovatelné instalace Application Insights Profiler se řídí zásadami podpory .NET Core.
+> Další informace o podporovaných modulech runtime najdete v tématu [zásady podpory .NET Core](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+
+Stavovou stránku tohoto rozšíření můžete zaškrtnout na následující adrese URL: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
+
+> [!NOTE]
+> Doména odkazu na stavové stránce se bude lišit v závislosti na cloudu.
+Tato doména bude stejná jako Kudu pro správu serveru pro App Service.
+
+Tato stránka stavu zobrazuje stav instalace agentů profileru a Snapshot Collector. V případě, že došlo k neočekávané chybě, zobrazí se a ukáže, jak je opravit.
+
+K získání základní adresy URL této stránky stavu můžete použít web pro správu Kudu pro App Service:
+1. Otevřete aplikaci App Service v Azure Portal.
+2. Vyberte **Rozšířené nástroje** nebo vyhledejte **Kudu**.
+3. Vyberte **Přejít**.
+4. Až budete na webu pro správu Kudu, přidejte v adrese URL **následující příkaz `/DiagnosticServices` a stiskněte klávesu ENTER**.
+ Bude končit tímto způsobem: `https://<kudu-url>/DiagnosticServices`
+
+Zobrazí se stránka stavu podobná následující: ![ stavová stránka diagnostické služby](./media/diagnostic-services-site-extension/status-page.png)
     
 ### <a name="manual-installation"></a>Ruční instalace
 
@@ -107,7 +143,7 @@ Při konfiguraci profileru se aktualizace provedou v nastavení webové aplikace
 
 ### <a name="too-many-active-profiling-sessions"></a>Příliš mnoho aktivních relací profilování
 
-V současné době můžete profiler povolit na maximálně čtyři webové aplikace Azure a sloty nasazení, které běží ve stejném plánu služeb. Pokud máte více než čtyři webové aplikace spuštěné v jednom plánu služby App Service, může Profiler vyvolat *Microsoft. ServiceProfiler. Exceptions. TooManyETWSessionException*. Profiler se spouští samostatně pro každou webovou aplikaci a pokusy o spuštění relace trasování událostí pro Windows (ETW) pro každou aplikaci. V jednom okamžiku může být aktivní jenom omezený počet relací ETW. Pokud webová úloha profileru hlásí příliš mnoho aktivních relací profilování, přesuňte některé webové aplikace na jiný plán služby.
+Profiler můžete povolit maximálně ze čtyř Web Apps, které běží ve stejném plánu služby. Pokud máte více než čtyři, může Profiler vyvolat *Microsoft. ServiceProfiler. Exceptions. TooManyETWSessionException*. Pokud ho chcete vyřešit, přesuňte některé webové aplikace do jiného plánu služeb.
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Chyba nasazení: adresář není prázdný. d: \\ Domovská stránka \\ \\ wwwroot \\ App_Data \\ úlohy
 
@@ -115,7 +151,7 @@ Pokud znovu nasazujete webovou aplikaci do prostředku Web Apps s povoleným pro
 
 *Adresář není prázdný. d: \\ Domovská stránka \\ \\ wwwroot \\ App_Data \\ úlohy*
 
-K této chybě dojde, pokud spouštíte Nasazení webu ze skriptů nebo z kanálu nasazení Azure DevOps. Řešením je přidání následujících dalších parametrů nasazení do úlohy Nasazení webu:
+K této chybě dojde, pokud spouštíte Nasazení webu ze skriptů nebo z Azure Pipelines. Řešením je přidání následujících parametrů nasazení do úlohy Nasazení webu:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'
@@ -131,8 +167,8 @@ Profiler běží jako Průběžná webová úloha ve webové aplikaci. Prostřed
 
 >**Byla opravena chyba v profileru, která se dodává v WAD pro Cloud Services.** Nejnovější verze WAD (1.12.2.0) pro Cloud Services funguje se všemi nejnovějšími verzemi sady App Insights SDK. Hostitelé cloudové služby budou upgradovat WAD automaticky, ale nejsou okamžité. K vynucení upgradu můžete znovu nasadit službu nebo restartovat uzel.
 
-Pokud chcete zjistit, jestli je profiler správně nakonfigurovaný pomocí Azure Diagnostics, udělejte následující tři věci: 
-1. Nejprve zkontrolujte, zda obsah Azure Diagnostics konfigurace, která byla nasazena, je to, co očekáváte. 
+Pokud chcete zjistit, jestli je profiler správně nakonfigurovaný pomocí Azure Diagnostics, postupujte podle následujících kroků: 
+1. Ověřte, jestli je nasazený obsah konfigurace Azure Diagnostics, který jste očekávali. 
 
 1. Potom se ujistěte, že Azure Diagnostics předá do příkazového řádku profileru správné iKey. 
 
@@ -170,7 +206,7 @@ Chcete-li kontrolovat nastavení, která byla použita pro konfiguraci Azure Dia
 
 1. Pomocí cesty, která se nachází v předchozí *config.js* souboru, vyhledejte soubor protokolu profileru s názvem **BootstrapN. log**. Zobrazí informace o ladění, které určují nastavení používané profilerem. Zobrazuje taky stavové a chybové zprávy z profileru.  
 
-    V případě virtuálních počítačů je tento soubor obvykle:
+    V případě virtuálních počítačů je tento soubor:
     ```
     C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
     ```
@@ -187,9 +223,11 @@ Chcete-li kontrolovat nastavení, která byla použita pro konfiguraci Azure Dia
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>Upravit síťová proxy nebo pravidla brány firewall
 
-Pokud se vaše aplikace připojuje k Internetu prostřednictvím proxy serveru nebo brány firewall, možná budete muset upravit pravidla, aby aplikace mohla komunikovat se službou Application Insights Profiler. IP adresy, které používá Application Insights Profiler, jsou součástí značky služby Azure Monitor.
+Pokud se vaše aplikace připojuje k Internetu prostřednictvím proxy serveru nebo brány firewall, možná budete muset aktualizovat pravidla ke komunikaci se službou profileru.
+
+IP adresy, které používá Application Insights Profiler, jsou součástí značky služby Azure Monitor. Další informace najdete v [dokumentaci k značkám služby](../../virtual-network/service-tags-overview.md).
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[Profiler – webová úloha]:./media/profiler-troubleshooting/Profiler-webjob.png
-[Profiler-webová úloha – protokol]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
+[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png

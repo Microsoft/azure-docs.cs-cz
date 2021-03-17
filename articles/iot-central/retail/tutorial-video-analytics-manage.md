@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 30e123b24a5d2c9e45df6ee6dc6debfb88b920f3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038347"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832602"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Kurz: monitorování a Správa aplikace video Analytics – objekt a detekce pohybu
 
@@ -26,8 +26,8 @@ V tomto kurzu se naučíte:
 
 Než začnete, měli byste dokončit:
 
-* Kurz [Vytvoření aplikace Live video Analytics v Azure IoT Central](./tutorial-video-analytics-create-app.md) kurzu.
-* Jedna z předchozích [vytvoření instance IoT Edge pro Live video Analytics (virtuální počítač se systémem Linux)](tutorial-video-analytics-iot-edge-vm.md) nebo [vytvoření instance IoT Edge pro kurzy pro virtuální počítače se systémem Linux (Live video Analytics)](tutorial-video-analytics-iot-edge-nuc.md) .
+* Jedna z předchozích [vytvoření živé aplikace video Analytics v azure IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [Vytvoření analýzy videí v Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) kurzy.
+* Jedna z předchozích [vytvoření instance IoT Edge pro Live video Analytics (virtuální počítač se systémem Linux)](tutorial-video-analytics-iot-edge-vm.md) nebo [vytvoření instance IoT Edge pro kurzy NUC (Live video Analytics)](tutorial-video-analytics-iot-edge-nuc.md) .
 
 Měli byste mít na svém místním počítači nainstalovaný [Docker](https://www.docker.com/products/docker-desktop) pro spuštění aplikace Prohlížeč videa.
 
@@ -37,7 +37,7 @@ V IoT Central aplikaci přejděte na zařízení s **bránou lva 001** , které 
 
 Použijte hodnoty v následující tabulce jako hodnoty parametrů příkazu **Přidat žádost o fotoaparát** . Hodnoty uvedené v tabulce předpokládají, že používáte simulovanou kameru na virtuálním počítači Azure. Pokud používáte skutečnou kameru, upravte hodnoty odpovídajícím způsobem:
 
-| Pole| Popis| Ukázková hodnota|
+| Pole| Description| Ukázková hodnota|
 |---------|---------|---------|
 | ID kamery      | ID zařízení pro zřizování | kamera – 003 |
 | Název kamery    | Popisný název           | Kamera detekce objektu |
@@ -55,7 +55,7 @@ Vyberte **Spustit** pro přidání zařízení fotoaparátu:
 
 ## <a name="add-a-motion-detection-camera-optional"></a>Přidat kameru detekce pohybu (volitelné)
 
-Pokud máte k zařízení IoT Edge brány připojené dva fotoaparáty, opakujte předchozí kroky a přidejte do aplikace kameru detekce pohybu. Použijte jiné hodnoty pro **ID kamery**, **Název kamery**a parametry **adresy URL pro RTSP** .
+Pokud máte k zařízení IoT Edge brány připojené dva fotoaparáty, opakujte předchozí kroky a přidejte do aplikace kameru detekce pohybu. Použijte jiné hodnoty pro **ID kamery**, **Název kamery** a parametry **adresy URL pro RTSP** .
 
 ## <a name="view-the-downstream-devices"></a>Zobrazit zařízení pro příjem dat
 
@@ -155,22 +155,22 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 |amsResourceGroup| ResourceGroup |
 |amsAccountName| AccountName|
 
-V aplikaci přejděte na řídicí panel **monitorování** . Pak klikněte na jeden z hypertextových odkazů detekce zachyceného objektu na dlaždici **video pro odvození události** . Video se zobrazí na stránce zobrazené v místním přehrávači videa:
+Přejděte na zařízení **kamera-003** a vyberte kartu **řídicí panel** . Pak klikněte na jeden z hypertextových odkazů detekce zachyceného objektu na dlaždici **video pro odvození události** . Video se zobrazí na stránce zobrazené v místním přehrávači videa:
 
 :::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Fragment videa":::
 
-## <a name="change-the-simulated-devices-in-application-dashboard"></a>Změna simulovaných zařízení v řídicím panelu aplikace
+## <a name="change-the-simulated-devices-in-application-dashboards"></a>Změna simulovaných zařízení v řídicích panelech aplikací
 
 Řídicí panely aplikace se původně naplní telemetrie a vlastnostmi generovanými z IoT Central simulovaných zařízení. Pokud chcete nakonfigurovat dlaždice na telemetrii z reálných kamer nebo simulátoru Live555, postupujte takto:
 
-1. Přejděte na řídicí panel **monitorování reálné kamery** .
+1. Přejděte na řídicí panel aplikace **(ukázka) Real Camera Monitor** .
 1. Vyberte **Upravit**.
+1. Vyberte dlaždici **poznámek** a odstraňte ji.
+1. Změňte název řídicího panelu na *monitor reálné kamery*.
 1. Na dlaždici **počet odvození** vyberte ikonu konfigurace.
 1. V části **Konfigurace grafu** vyberte jeden nebo více reálných kamer ve skupině zařízení **lva Edge Object detektor** .
 1. Vyberte `AI Inference Interface/Inference Count` pole telemetrie.
 1. Vyberte **Aktualizovat**.
-
-   
 
 1. Opakujte postup pro následující dlaždice:
     1. **Zjišťování** výsečového grafu používá `AI Inference Interface/Inference/entity/tag/value` typ telemetrie.
@@ -195,7 +195,7 @@ Můžete pozastavit živé zpracování analýzy videí v aplikaci:
     * Klikněte na prostředek **koncového bodu streamování** .
     * Na stránce **Podrobnosti koncového bodu streamování** vyberte **zastavit**.
 
-## <a name="tidy-up"></a>Uklizený nahoru
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud jste s aplikací hotoví, můžete odebrat všechny prostředky, které jste vytvořili následujícím způsobem:
 

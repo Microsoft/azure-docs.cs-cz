@@ -2,17 +2,17 @@
 title: Používání privátních koncových bodů pro konfiguraci aplikací Azure
 description: Zabezpečení úložiště konfigurace aplikací pomocí privátních koncových bodů
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 3/12/2020
-ms.author: lcozzens
-ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/15/2020
+ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042124"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929839"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Používání privátních koncových bodů pro konfiguraci aplikací Azure
 
@@ -71,5 +71,5 @@ Další informace o vytvoření privátního koncového bodu pro úložiště ko
 
 Naučte se konfigurovat server DNS pomocí privátních koncových bodů:
 
-- [Překlad názvů pro prostředky ve virtuálních sítích Azure](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [Konfigurace DNS pro privátní koncové body](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Překlad názvů pro prostředky ve virtuálních sítích Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [Konfigurace DNS pro privátní koncové body](../private-link/private-endpoint-overview.md#dns-configuration)

@@ -1,36 +1,36 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření a spuštění úlohy | Microsoft Docs
+title: Ukázkový skript Azure CLI – vytvoření a odeslání úlohy
 description: Skript Azure CLI v tomto tématu znázorňuje, jak odeslat úlohu k transformaci s jednoduchým kódováním pomocí adresy URL s protokolem HTTPs.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/01/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c89fe37bb443dbdbb312f2c930a4df8a708bb597
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b58280a7a1a49bdc8fc81900a32ee4edc115c71f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500687"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216152"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>Ukázka CLI: Vytvoření a odeslání úlohy
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, musíte službu Media Services informovat, kde najde vstupní video. Jednou z možností je určit adresu URL HTTPS jako vstup úlohy (jak je znázorněno v tomto článku). 
 
 ## <a name="prerequisites"></a>Požadavky 
 
 [Vytvořte účet Media Services](./create-account-howto.md).
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Ukázkový skript
 
@@ -88,4 +88,4 @@ Dostanete odpověď podobnou této:
 
 ## <a name="next-steps"></a>Další kroky
 
-[AZ AMS Job (CLI)](/cli/azure/ams/job?view=azure-cli-latest)
+[AZ AMS Job (CLI)](/cli/azure/ams/job)

@@ -6,22 +6,23 @@ author: v-miegge
 manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 01/28/2021
 ms.author: v-miegge
-ms.openlocfilehash: 0cf6f1c0fcc9a2da0bbfacc9e51076add107ed26
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
-ms.translationtype: HT
+ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102697"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054157"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
 
 Při pokusu o registraci nového účtu na portálu Microsoft Azure nebo v Centru účtů Azure může dojít k problému. Tato stručná příručka vás provede procesem registrace a probere běžné potíže pro jednotlivé kroky.
 
 > [!NOTE]
-> Pokud už máte účet a hledáte pokyny pro řešení potíží s přihlašováním, přečtěte si téma [Řešení potíží s přihlášením k předplatnému Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue).
+> Pokud už máte účet a hledáte pokyny pro řešení potíží s přihlašováním, přečtěte si téma [Řešení potíží s přihlášením k předplatnému Azure](./troubleshoot-sign-in-issue.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -75,8 +76,8 @@ Pokud chcete tento problém vyřešit, překontrolujte, jestli jsou pravdivá n�
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>Zobrazí se zpráva typu Váš aktuální typ účtu se nepodporuje.
 
-K tomuto problému může dojít, pokud je účet registrován v [nespravovaném adresáři Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup) a není v adresáři Azure AD vaší organizace.
-Pokud chcete tento problém vyřešit, zaregistrujte si účet Azure pomocí jiného účtu nebo převezměte nespravovaný adresář služby AD. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover).
+K tomuto problému může dojít, pokud je účet registrován v [nespravovaném adresáři Azure AD](../../active-directory/enterprise-users/directory-self-service-signup.md) a není v adresáři Azure AD vaší organizace.
+Pokud chcete tento problém vyřešit, zaregistrujte si účet Azure pomocí jiného účtu nebo převezměte nespravovaný adresář služby AD. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../../active-directory/enterprise-users/domains-admin-takeover.md).
 
 ## <a name="identity-verification-by-phone"></a>Telefonické ověření identity
 
@@ -106,7 +107,7 @@ Tady jsou některé další tipy:
 
 #### <a name="credit-card-declined-or-not-accepted"></a>Platební karta byla odmítnuta nebo nebyla přijata
 
-Při platbě za předplatná Azure se nepřijímají virtuální nebo předplacené kreditní nebo debetní karty. Další informace o tom, co dalšího může být příčinou odmítnutí vaší karty, najdete v tématu [Řešení potíží s odmítnutou kartou při registraci do Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card).
+Při platbě za předplatná Azure se nepřijímají virtuální nebo předplacené kreditní nebo debetní karty. Další informace o tom, co dalšího může být příčinou odmítnutí vaší karty, najdete v tématu [Řešení potíží s odmítnutou kartou při registraci do Azure](./troubleshoot-declined-card.md).
 
 #### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Formulář platební karty nepodporuje vaši fakturační adresu
 
@@ -130,7 +131,7 @@ Aktualizujte nastavení souborů cookie v prohlížeči následujícím postupem
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>Na účtu bezplatné zkušební verze vidím naúčtovaný poplatek
 
-Po registraci se na účtu platební karty může objevit dočasné ověřovací zadržení malé částky. Bude odebráno do tří až pěti dnů. Pokud máte obavy o správu nákladů, přečtěte si další informace o [prevenci neočekávaných nákladů](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started).
+Po registraci se na účtu platební karty může objevit dočasné ověřovací zadržení malé částky. Bude odebráno do tří až pěti dnů. Pokud máte obavy o správu nákladů, přečtěte si další informace o [analýze neočekávaných poplatků](../understand/analyze-unexpected-charges.md).
 
 ## <a name="agreement"></a>Smlouva
 
@@ -138,19 +139,18 @@ Dokončete smlouvu.
 
 ## <a name="other-issues"></a>Další problémy
 
-### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Nejde aktivovat plán výhod Azure, jako je MSDN, BizSpark, BizSparkPlus nebo MPN
+### <a name="cant-activate-azure-benefit-plan-like-visual-studio-bizspark-bizsparkplus-or-mpn"></a>Nejde aktivovat plán výhod Azure, jako je Visual Studio, BizSpark, BizSparkPlus nebo MPN.
 
 Zkontrolujte, že k přihlášení používáte správné přihlašovací údaje. Potom zkontrolujte program výhod a ujistěte se, že jste pro něj způsobilí.
-- MSDN
-  - Stav způsobilosti si můžete ověřit na [stránce účtu MSDN](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
-  - Pokud si stav nemůžete ověřit, kontaktujte [centra služeb zákazníkům pro předplatná MSDN](https://msdn.microsoft.com/library/aa493452.aspx).
+- Visual Studio
+  - Ověřte svůj stav způsobilosti na [stránce účtu aplikace Visual Studio](https://my.visualstudio.com/Benefits).
+  - Pokud nemůžete ověřit svůj stav, obraťte se na [podporu Visual Studio Subscription](https://visualstudio.microsoft.com/subscriptions/support/).
 - Microsoft for Startups
   - Přihlaste se na [portál Microsoft for Startups](https://startups.microsoft.com/#start-two) a ověřte si stav způsobilosti pro Microsoft for Startups.
   - Pokud si stav nemůžete ověřit, můžete získat pomoc ve [fórech programu Microsoft for Startups](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
 - MPN
   - Přihlaste se na [portál MPN](https://mspartner.microsoft.com/Pages/Locale.aspx) a ověřte si stav způsobilosti. Pokud máte příslušné [kompetence pro cloudovou platformu](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx), můžete být způsobilí pro další výhody.
   - Pokud si stav nemůžete ověřit, kontaktujte [podporu MPN](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx).
-
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Nejde aktivovat předplatné Azure v rámci licenčního programu Open
 
@@ -160,10 +160,10 @@ Pokud chcete vytvořit předplatné Azure v rámci licenčního programu Open, m
 
 Další články týkající se řešení potíží s fakturací a předplatnými Azure
 
-- [Odmítnutá karta](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Problémy s přihlašováním k předplatnému](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Nenalezena žádná předplatná](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Zákaz zobrazení firemních nákladů](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Odmítnutá karta](./troubleshoot-declined-card.md)
+- [Problémy s přihlašováním k předplatnému](./troubleshoot-sign-in-issue.md)
+- [Nenalezena žádná předplatná](./no-subscriptions-found.md)
+- [Zákaz zobrazení firemních nákladů](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>Kontaktujte nás, abychom vám pomohli
 
@@ -171,4 +171,4 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="find-out-more-about-azure-cost-management"></a>Další informace o službě Azure Cost Management
 
-- [Dokumentace ke správě nákladů a fakturaci Azure](https://docs.microsoft.com/azure/cost-management-billing)
+- [Dokumentace ke správě nákladů a fakturaci Azure](../index.yml)

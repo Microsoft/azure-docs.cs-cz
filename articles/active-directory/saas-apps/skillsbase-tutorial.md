@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9b712756b6daf7380998bb98f56113cab29ebb59
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552233"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Kurz: Azure Active Directory integrace se základem dovedností
 
@@ -27,7 +27,7 @@ Integrace dovedností v rámci Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k vašim dovednostem (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -77,7 +77,7 @@ Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah odkazu mezi
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD se základem dovedností, je nutné dokončit následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování na základě dovedností](#configure-skills-base-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Konfigurace jednotného přihlašování na základě dovedností](#configure-skills-base-single-sign-on)** – pro konfiguraci nastavení jediného Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření testovacího uživatele](#create-skills-base-test-user)** založeného na dovednostech – abyste měli protějšek Britta Simon v základu dovedností, která je propojená s reprezentací uživatele v Azure AD.
@@ -97,7 +97,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD se základem dov
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -108,9 +108,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD se základem dov
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE]
-    > Přihlašovací adresu URL můžete získat od základové aplikace dovedností. Přihlaste se jako správce a přejděte k nastavení správce->-> podrobnosti instance – > odkaz na zástupce. Zkopírujte přihlašovací adresu URL a vložte ji do textového pole výše.
+    > Adresu URL Sign-On můžete získat od základové aplikace dovedností. Přihlaste se jako správce a přejděte k nastavení správce->-> podrobnosti instance – > odkaz na zástupce. Zkopírujte adresu URL Sign-On a vložte ji do textového pole výše.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD se základem dov
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-skills-base-single-sign-on"></a>Konfigurace jednotného přihlašování na základě dovedností
+### <a name="configure-skills-base-single-sign-on"></a>Konfigurace základních dovedností v jednom Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste ke odbornosti jako správce zabezpečení.
 
@@ -132,13 +132,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD se základem dov
 
     ![Správce](./media/skillsbase-tutorial/tutorial_skillsbase_auth.png)
 
-3. Na stránce **ověřování** vyberte možnost jednotné přihlašování jako **SAML 2**.
+3. Na stránce **ověřování** vyberte jednu Sign-On jako **SAML 2**.
 
-    ![Jedna](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![Snímek obrazovky se zobrazí stránka ověřování s protokolem SAML 2, kterou jste vybrali pro přihlášení k webu.](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
 4. Na stránce **ověřování** proveďte následující kroky:
 
-    ![Jedna](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![Snímek obrazovky se zobrazí stránka ověřování, kde můžete zadat hodnoty, které jsou popsány.](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. Klikněte na tlačítko **aktualizovat metadata IDP** vedle možnosti **stav** a vložte obsah XML metadat, který jste stáhli z Azure Portal v zadaném textovém poli.
 
@@ -151,7 +151,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD se základem dov
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -170,15 +170,15 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k základu dovedností.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **základ dovedností**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **základ dovedností**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **základ dovedností**.
 
@@ -209,12 +209,12 @@ V této části se v základu dovedností vytvoří uživatel s názvem Britta S
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici základ dovedností na přístupovém panelu, měli byste se automaticky přihlásit k základu dovedností, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici základ dovedností na přístupovém panelu, měli byste se automaticky přihlásit k základu dovedností, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

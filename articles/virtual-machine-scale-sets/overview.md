@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 76d3bc1e1736e648316bcd81bf8897d1d2f272a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648662"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672588"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co jsou škálovací sady virtuálních počítačů?
 Azure Virtual Machine Scale Sets vám umožní vytvořit a spravovat skupinu virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat v reakci na poptávku nebo podle určeného rozvrhu. Škálovací sady zajišťují vysokou dostupnost aplikací a umožňují centrálně spravovat, konfigurovat a aktualizovat velký počet virtuálních počítačů. S využitím škálovacích sad virtuálních počítačů můžete sestavovat rozsáhlé služby pro oblasti, jako jsou výpočty, velké objemy dat a úlohy kontejneru.
@@ -46,7 +46,7 @@ Za účelem zajištění redundance a vyššího výkonu se aplikace obvykle dis
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Rozdíly mezi virtuálními počítači a škálovacími sadami
 Škálovací sady se sestavují z virtuálních počítačů. Škálovací sady poskytují vrstvy správy a automatizace pro spouštění a škálování aplikací. Místo toho můžete ručně vytvářet a spravovat jednotlivé virtuální počítače nebo integrovat stávající nástroje a vytvořit tak podobnou úroveň automatizace. Následující tabulka popisuje výhody škálovacích sad v porovnání s ruční správou několika instancí virtuálních počítačů.
 
-| Scénář                           | Ručně vytvořená skupina virtuálních počítačů                                                                    | Škálovací sada virtuálních počítačů |
+| Scenario                           | Ručně vytvořená skupina virtuálních počítačů                                                                    | Škálovací sada virtuálních počítačů |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
 | Přidání dalších instancí virtuálních počítačů        | Ruční proces vytvoření, konfigurace a zajištění dodržování předpisů                             | Automatické vytvoření s využitím centrální konfigurace |
 | Vyrovnávání a distribuce provozu | Ruční proces vytvoření a konfigurace nástroje pro vyrovnávání zatížení Azure nebo služby Application Gateway      | Možnost automatického vytvoření nástroje pro vyrovnávání zatížení Azure nebo služby Application Gateway a integrace s nimi |
@@ -57,13 +57,13 @@ Za použití škálovacích sad se neúčtují žádné další poplatky. Platí
 
 ## <a name="how-to-monitor-your-scale-sets"></a>Jak monitorovat sady škálování
 
-Použijte [Azure monitor pro virtuální počítače](../azure-monitor/insights/vminsights-overview.md), který má jednoduchý proces připojování a bude automatizovat shromažďování důležitých ČÍTAČŮ výkonu procesoru, paměti, disku a sítě z virtuálních počítačů ve vaší sadě škálování. Obsahuje také další možnosti monitorování a předdefinované vizualizace, které vám pomůžou se zaměřit na dostupnost a výkon vašich sad škálování.
+Použijte [Azure monitor pro virtuální počítače](../azure-monitor/vm/vminsights-overview.md), který má jednoduchý proces připojování a bude automatizovat shromažďování důležitých ČÍTAČŮ výkonu procesoru, paměti, disku a sítě z virtuálních počítačů ve vaší sadě škálování. Obsahuje také další možnosti monitorování a předdefinované vizualizace, které vám pomůžou se zaměřit na dostupnost a výkon vašich sad škálování.
 
 Pokud chcete shromažďovat podrobné informace o vaší aplikaci, včetně zobrazení stránek, žádostí o aplikace a výjimek, povolte monitorování pro [aplikaci Virtual Machine Scale set](../azure-monitor/app/azure-vm-vmss-apps.md) s Application Insights. Dále ověřte dostupnost aplikace konfigurací [testu dostupnosti](../azure-monitor/app/monitor-web-app-availability.md) pro simulaci provozu uživatelů.
 
-## <a name="singapore-data-residency"></a>Zasídlí dat Singapuru
+## <a name="data-residency"></a>Rezidence dat
 
-V Azure je funkce pro ukládání zákaznických dat v jedné oblasti v současnosti dostupná jenom v oblasti jihovýchodní Asie (Singapur) Asie a Tichomoří geografické oblasti. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky. Další informace najdete v tématu [Centrum zabezpečení](https://azuredatacentermap.azurewebsites.net/).
+Funkce pro ukládání zákaznických dat v rámci Azure je v tuto chvíli dostupná jenom v oblasti jihovýchodní Asie (Singapur) oblasti Asie a Tichomoří geografická a Brazílie – jih (stát Svatý Paulo) Brazílie geograficky. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky. Další informace najdete v tématu [Centrum zabezpečení](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ## <a name="next-steps"></a>Další kroky
 Začněte vytvořením své první škálovací sady virtuálních počítačů na webu Azure Portal.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72bf252488878c8b6fabb2ea2d61658a2cd87e14
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75891503"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966203"
 ---
 # <a name="storsimple-security-and-data-protection"></a>Zabezpečení a ochrana dat v StorSimple
 
@@ -269,7 +269,7 @@ Tady jsou uvedené otázky a odpovědi týkající se zabezpečení a Microsoft 
 
 **A:** Můžete si stáhnout nový certifikát ze služby StorSimple Device Manager a pak ho poskytnout do úložiště certifikátů klientů vzdáleného přístupu. Pokyny najdete tady:
 
-* [Rutina Import-certifikát](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
+* [Rutina Import-certifikát](/powershell/module/pkiclient/import-certificate)
 
 **Otázka:** Je moje data chráněná, pokud dojde k ohrožení bezpečnosti služby StorSimple Device Manager?
 
@@ -288,4 +288,3 @@ Tady jsou uvedené otázky a odpovědi týkající se zabezpečení a Microsoft 
 ## <a name="next-steps"></a>Další kroky
 
 [Nasaďte zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
-

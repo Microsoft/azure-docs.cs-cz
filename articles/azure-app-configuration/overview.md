@@ -1,17 +1,17 @@
 ---
 title: Co je Azure App Configuration?
 description: Přečtěte si přehled služby Azure App Configuration. Zjistěte, proč byste chtěli použít konfiguraci aplikace, a Naučte se, jak ji můžete použít.
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
-ms.openlocfilehash: f38b8de37e84cd8a65c5a5caadf8d3b6b71ce455
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9786ff20c1d3f467e217d5fe34518fcc9494863e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587068"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930105"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co je Azure App Configuration?
 

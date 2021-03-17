@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
-ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 6a637dc431b0f9cd8c40cfa1c048559a56a6b97f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169357"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518052"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -45,11 +45,11 @@ Následující tabulka obsahuje důležité odkazy, které vám pomohou začít 
 | **4** | [Další informace o generovaných kategoriích hrozeb](threat-modeling-tool-threats.md)   |
 | **5** | [Hledání rizik pro vygenerované hrozby](threat-modeling-tool-mitigations.md) |
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 Tady je několik starších článků, které ještě jsou v současnosti relevantní pro modelování hrozeb:
 
-* [Článek o významu modelování hrozeb](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
+* [Článek o významu modelování hrozeb](/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [Školení publikované důvěryhodným výpočetním prostředím](https://www.microsoft.com/download/details.aspx?id=16420)
 
 Podívejte se, co několik expertů Threat Modeling Tool udělalo:

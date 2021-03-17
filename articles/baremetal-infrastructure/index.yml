@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: Dokumentace ke službě BareMetal Infrastructure
+summary: Naučte se používat BareMetal Infrastructure k vytváření, nasazování a správě virtuálních počítačů v Microsoft Azure.
+metadata:
+  title: Dokumentace ke službě BareMetal Infrastructure
+  description: Naučte se používat BareMetal Infrastructure k vytváření, nasazování a správě virtuálních počítačů v Microsoft Azure.
+  services: virtual-machines
+  ms.service: baremetal-infrastructure
+  ms.topic: landing-page
+  author: shortpatti
+  ms.author: v-patsho
+  ms.date: 12/31/2020
+  ms.openlocfilehash: 285421d12b656290ef5ddbe21136345b718e0ca1
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98730268"
+landingContent:
+- title: Informace o službě BareMetal Infrastructure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je BareMetal Infrastructure v Azure?
+      url: workloads/sap/baremetal-overview-architecture.md
+    - text: Seznámení s podmínkami
+      url: know-baremetal-terms.md
+  - linkListType: reference
+    links:
+    - text: Typy úloh služby BareMetal
+      url: ../virtual-machines/workloads/sap/get-started.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+- title: Jednotky instancí služby BareMetal
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa jednotek instancí služby BareMetal v Azure
+      url: workloads/sap/baremetal-infrastructure-portal.md

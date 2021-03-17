@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Digital Twins Preview
+title: Dokumentace ke službě Azure Digital Twins
 summary: Naučte se využívat službu Azure Digital Twins k vytvoření digitální reprezentace vašich prostředků, prostředí a obchodních systémů, abyste mohli vytvářet řešení IoT nové generace, která modelují reálný svět.
 metadata:
-  title: Dokumentace ke službě Azure Digital Twins Preview – kurzy, reference k rozhraní API | Microsoft Docs
+  title: Dokumentace ke službě Azure Digital Twins – kurzy, reference k rozhraní API | Microsoft Docs
   description: Naučte se využívat Azure Digital Twins k propojování osob, míst a věcí a sestavování řešení IoT s využitím inteligentních prostorových analýz.
   ms.service: digital-twins
   ms.topic: landing-page
@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: e5c05e41ba209607649fbcffb8ee12d0dc66029e
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-  ms.translationtype: HT
+  ms.openlocfilehash: 29f3b0bf0a00c9e4e238e8bb514f80e7451d30a6
+  ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87079132"
+  ms.lasthandoff: 02/09/2021
+  ms.locfileid: "100007750"
 landingContent:
 - title: Informace o službě Azure Digital Twins
   linkLists:
@@ -23,7 +23,21 @@ landingContent:
     links:
     - text: Co je služba Azure Digital Twins?
       url: overview.md
-- title: Začínáme s kurzy
+  - linkListType: concept
+    links:
+    - text: Vlastní modely
+      url: concepts-models.md
+    - text: Digitální dvojčata a graf dvojčat
+      url: concepts-twins-graph.md
+    - text: Dotazovací jazyk
+      url: concepts-query-language.md
+- title: Začínáme s rychlým zprovozněním
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Prozkoumání ukázkového scénáře
+      url: quickstart-adt-explorer.md
+- title: Podrobnější kurzy
   linkLists:
   - linkListType: tutorial
     links:
@@ -37,20 +51,6 @@ landingContent:
     links:
     - text: Připojení kompletního řešení
       url: tutorial-end-to-end.md
-- title: Informace
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Vlastní modely
-      url: concepts-models.md
-  - linkListType: concept
-    links:
-    - text: Digitální dvojčata a graf dvojčat
-      url: concepts-twins-graph.md
-  - linkListType: concept
-    links:
-    - text: Dotazovací jazyk
-      url: concepts-query-language.md
 - title: Vývoj
   linkLists:
   - linkListType: how-to-guide
@@ -60,22 +60,68 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Nastavení instance a ověřování
-      url: how-to-set-up-instance-scripted.md
+      url: how-to-set-up-instance-portal.md
   - linkListType: how-to-guide
     links:
     - text: Zápis ověřovacího kódu aplikace
       url: how-to-authenticate-client.md
-- title: API – referenční informace
+- title: Seznámení s rozhraními API
   linkLists:
+  - linkListType: reference
+    links:
+    - text: Rozhraní REST API
+      url: /rest/api/azure-digitaltwins/
   - linkListType: how-to-guide
     links:
     - text: Použití rozhraní API a sad SDK služby Azure Digital Twins
       url: how-to-use-apis-sdks.md
   - linkListType: how-to-guide
     links:
+    - text: Vytváření požadavků s využitím Postmana
+      url: how-to-use-postman.md
+  - linkListType: how-to-guide
+    links:
     - text: Vytváření vlastních sad SDK s využitím AutoRestu
       url: how-to-create-custom-sdks.md
-  - linkListType: reference
+- title: Procházení ukázek kódu
+  linkLists:
+  - linkListType: sample
     links:
-    - text: Rozhraní REST API
-      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/
+    - text: Kompletní ukázky
+      url: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: Průzkumník Azure Digital Twins (ukázka)
+      url: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer
+  - linkListType: sample
+    links:
+    - text: Validátor DTDL (ukázka)
+      url: /samples/azure-samples/dtdl-validator/dtdl-validator/
+  - linkListType: sample
+    links:
+    - text: Ukázka integrace ioT Hubu a DPS
+      url: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
+  - linkListType: sample
+    links:
+    - text: Ukázka integrace SignalR
+      url: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: Vlastní swaggery pro konektor Logic Apps
+      url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+- title: Učení na základě scénářů s Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 'Výuková cesta: vývoj s využitím digitálních vláken Azure'
+      url: /learn/paths/develop-azure-digital-twins/
+  - linkListType: learn
+    links:
+    - text: 'Seznámení s modulem: Úvod do digitálních vláken Azure'
+      url: /learn/modules/develop-with-azure-digital-twins/introduction-to-azure-digital-twins/
+    - text: 'Seznámení s modulem: sestavení grafu digitálních vláken Azure pro výrobní linku v Čokoládé výrobě'
+      url: /learn/modules/develop-with-azure-digital-twins/build-azure-digital-twins-graph-for-chocolate-factory/
+    - text: 'Seznámení s modulem: ingestování dat do digitálních vláken Azure'
+      url: /learn/modules/develop-with-azure-digital-twins/ingest-data-into-azure-digital-twins/
+    - text: 'Seznámení s modulem: výstup z digitálních vláken Azure na navazující služby'
+      url: /learn/modules/develop-with-azure-digital-twins/route-output-from-azure-digital-twins-to-downstream-services/

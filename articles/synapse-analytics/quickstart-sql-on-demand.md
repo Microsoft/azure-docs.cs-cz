@@ -1,32 +1,32 @@
 ---
-title: 'Rychlý Start: použití SQL na vyžádání'
-description: V tomto rychlém startu uvidíte a naučíte se, jak se snadno dotazovat na různé typy souborů pomocí SQL na vyžádání (Preview).
+title: 'Rychlý Start: použití fondu SQL bez serveru'
+description: V tomto rychlém startu se dozvíte, jak snadné je dotazování různých typů souborů pomocí fondu SQL bez serveru.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: fe07192b0077518cdd73092f53342c298034cfa8
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 8607355069bbae5983239ddbd3e8752143f31497
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274165"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676344"
 ---
-# <a name="quickstart-use-sql-on-demand"></a>Rychlý Start: použití SQL na vyžádání
+# <a name="quickstart-use-serverless-sql-pool"></a>Rychlý Start: použití fondu SQL bez serveru
 
-Synapse SQL na vyžádání (Preview) je služba pro dotazování bez serveru, která umožňuje spouštět dotazy SQL na souborech umístěných v Azure Storage. V tomto rychlém startu se dozvíte, jak zadávat dotazy na různé typy souborů pomocí SQL na vyžádání. Podporované formáty jsou uvedeny ve funkci [OpenRowset](sql/develop-openrowset.md).
+Synapse fond SQL bez serveru je služba dotazů bez serveru, která umožňuje spouštět dotazy SQL na souborech umístěných v Azure Storage. V tomto rychlém startu se dozvíte, jak zadávat dotazy na různé typy souborů pomocí SQL fondu bez serveru. Podporované formáty jsou uvedeny ve funkci [OpenRowset](sql/develop-openrowset.md).
 
 V tomto rychlém startu se zobrazí dotazování: CSV, Apache Parquet a soubory JSON.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Zvolit klienta SQL pro vydávání dotazů:
+Vyberte si klienta SQL pro vydávání dotazů:
 
-- [Azure synapse Studio](quickstart-synapse-studio.md) je webový nástroj, který můžete použít k procházení souborů v úložišti a vytváření dotazů SQL.
+- [Azure synapse Studio](./get-started-create-workspace.md) je webový nástroj, který můžete použít k procházení souborů v úložišti a vytváření dotazů SQL.
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) je klientský nástroj, který umožňuje spouštět dotazy a poznámkové bloky SQL v databázi na vyžádání.
 - [SQL Server Management Studio](sql/get-started-ssms.md) je klientský nástroj, který umožňuje spouštět dotazy SQL v databázi na vyžádání.
 
@@ -34,8 +34,8 @@ Parametry pro tento rychlý Start:
 
 | Parametr                                 | Popis                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adresa koncového bodu služby SQL na vyžádání    | Používá se jako název serveru.                                   |
-| Oblast koncového bodu služby SQL na vyžádání     | Slouží k určení, jaké úložiště se bude používat v ukázkách. |
+| Adresa koncového bodu služby fondu SQL bez serveru    | Používá se jako název serveru.                                   |
+| oblast koncového bodu služby fondu SQL bez serveru     | Slouží k určení, jaké úložiště se bude používat v ukázkách. |
 | Uživatelské jméno a heslo pro přístup ke koncovému bodu | Používá se pro přístup ke koncovému bodu.                               |
 | Databáze používaná k vytváření zobrazení         | Databáze použitá jako počáteční bod v ukázkách       |
 
@@ -44,7 +44,7 @@ Parametry pro tento rychlý Start:
 Než použijete ukázky:
 
 - Vytvoření databáze pro zobrazení (pro případ, že chcete použít zobrazení)
-- Vytvoření přihlašovacích údajů, které budou používat SQL na vyžádání pro přístup k souborům v úložišti
+- Vytvoření přihlašovacích údajů, které bude používat fond SQL bez serveru pro přístup k souborům v úložišti
 
 ### <a name="create-database"></a>Vytvoření databáze
 
@@ -62,7 +62,7 @@ CREATE DATABASE mydbname
 
 ### <a name="create-data-source"></a>Vytvořit zdroj dat
 
-Pokud chcete spouštět dotazy pomocí SQL na vyžádání, vytvořte zdroj dat, který může SQL na vyžádání použít k přístupu k souborům v úložišti.
+Pokud chcete spouštět dotazy pomocí neserverového fondu SQL, vytvořte zdroj dat, který fond SQL bez serveru může použít k přístupu k souborům v úložišti.
 Spusťte následující fragment kódu pro vytvoření zdroje dat používaného v ukázkách v této části:
 
 ```sql
@@ -80,7 +80,7 @@ CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
 );
 ```
 
-## <a name="query-csv-files"></a>Dotazování na soubory CSV
+## <a name="query-csv-files"></a>Dotazování souborů CSV
 
 Následující obrázek je náhled souboru, který se má dotazovat:
 
@@ -115,7 +115,7 @@ Další příklady najdete v tématu Postup [dotazování souboru CSV](sql/query
 Následující příklad ukazuje schopnosti automatického odvození schématu pro dotazování souborů Parquet. Vrátí počet řádků v září 2017 bez zadání schématu.
 
 > [!NOTE]
-> Při čtení souborů Parquet není nutné zadávat sloupce v `OPENROWSET WITH` klauzuli. V takovém případě SQL na vyžádání využívá metadata v souboru Parquet a váže sloupce podle názvu.
+> Při čtení souborů Parquet není nutné zadávat sloupce v `OPENROWSET WITH` klauzuli. V takovém případě fond SQL bez serveru používá metadata v souboru Parquet a váže sloupce podle názvu.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -133,7 +133,7 @@ Přečtěte si další informace o [dotazování souborů Parquet](sql/query-par
 
 ### <a name="json-sample-file"></a>Ukázkový soubor JSON
 
-Soubory jsou uloženy v kontejneru *JSON* , v *knihách*složek a obsahují jednu položku knihy s následující strukturou:
+Soubory jsou uloženy v kontejneru *JSON* , v *knihách* složek a obsahují jednu položku knihy s následující strukturou:
 
 ```json
 {  
@@ -153,7 +153,7 @@ Soubory jsou uloženy v kontejneru *JSON* , v *knihách*složek a obsahují jedn
 
 ### <a name="query-json-files"></a>Dotazování souborů JSON
 
-Následující dotaz ukazuje, jak použít [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení skalárních hodnot (title, Publisher) z knihy s názvem *pravděpodobnostní a statistickými metodami v Cryptology, Úvod do vybraných článků*:
+Následující dotaz ukazuje, jak použít [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) k načtení skalárních hodnot (title, Publisher) z knihy s názvem *pravděpodobnostní a statistickými metodami v Cryptology, Úvod do vybraných článků*:
 
 ```sql
 SELECT

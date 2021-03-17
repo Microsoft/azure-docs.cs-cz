@@ -1,18 +1,15 @@
 ---
 title: 'Kurz: Konfigurace e-mailových oznámení Apache Ambari v Azure HDInsight'
 description: Tento článek popisuje, jak používat SendGrid s Apache Ambari pro e-mailová oznámení.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80082311"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946963"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Kurz: Konfigurace e-mailových oznámení Apache Ambari v Azure HDInsight
 
@@ -26,7 +23,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* SendGrid e-mailový účet. Pokyny najdete v tématu [odeslání e-mailu pomocí SendGrid s Azure](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email) .
+* SendGrid e-mailový účet. Pokyny najdete v tématu [odeslání e-mailu pomocí SendGrid s Azure](../sendgrid-dotnet-how-to-send-email.md) .
 
 * Cluster An HDInsight. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](./hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -34,7 +31,7 @@ V tomto kurzu se naučíte:
 
 1. Z [Azure Portal](https://portal.azure.com)přejděte na prostředek SendGrid.
 
-1. Na stránce Přehled vyberte **Spravovat**a pro svůj účet navštivte webovou stránku SendGrid.
+1. Na stránce Přehled vyberte **Spravovat** a pro svůj účet navštivte webovou stránku SendGrid.
 
     ![Přehled SendGrid na webu Azure Portal](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
 
@@ -48,13 +45,13 @@ V tomto kurzu se naučíte:
 
 ## <a name="configure-ambari-e-mail-notification"></a>Konfigurace e-mailových oznámení Ambari
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
 1. V rozevíracím seznamu **Akce** vyberte **spravovat oznámení**.
 
 1. V okně **Správa oznámení výstrah** vyberte **+** ikonu.
 
-    ![Oznámení o vytvoření výstrahy Ambari](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně Správa oznámení výstrah.](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. V dialogovém okně **vytvořit oznámení výstrah** zadejte následující informace:
 
@@ -62,7 +59,7 @@ V tomto kurzu se naučíte:
     |---|---|
     |Název|Zadejte název oznámení.|
     |Skupiny|Nakonfigurujte podle potřeby.|
-    |Severity|Nakonfigurujte podle potřeby.|
+    |Závažnost|Nakonfigurujte podle potřeby.|
     |Popis|Nepovinný parametr.|
     |Metoda|Ponechte v **e-mailu**.|
     |E-mail na|Zadejte e-maily pro příjem oznámení, oddělené čárkou.|
@@ -75,7 +72,7 @@ V tomto kurzu se naučíte:
     |Potvrzení hesla|Zadejte znovu heslo.|
     |Spustit TLS|Zaškrtněte toto políčko.|
 
-    ![Oznámení o vytvoření výstrahy Ambari](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně vytvořit oznámení výstrah.](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     Vyberte **Uložit**. Vrátíte se do okna **spravovat oznámení výstrah** .
 

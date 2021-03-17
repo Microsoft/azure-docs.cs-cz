@@ -2,16 +2,15 @@
 title: Vybrat prostředek pro vytváření
 ms.topic: include
 ms.date: 03/25/2020
-ms.openlocfilehash: b16e720e8b28d9440cde4fdf5e84dbfc00c00ca8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b8544ca5cea6b717863410c0add303d32386157c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658685"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128126"
 ---
 ## <a name="select-subscription-and-authoring-resource"></a>Vybrat odběr a prostředek pro vytváření
 
-Chcete-li zobrazit seznam aplikací nebo vytvořit aplikaci, vyberte na portálu LUIS a vyberte prostředek pro odběr a vytváření. K aplikacím se otevírá prostředek pro vytváření obsahu LUIS.
+Když vyberete konkrétní předplatné a prostředek pro vytváření obsahu, zobrazí se seznam aplikací, které jsou k němu přidružené.
 
-> [!div class="mx-imgBorder"]
-> ![Výběr vytváření předplatného a prostředku pro vytváření](../media/select-authoring-resource/select-authoring-resource-my-english-app.png)
+:::image type="content" source="../media/select-authoring-resource/select-authoring-resource-my-english-app-2.png" alt-text="Výběr vytváření předplatného a prostředku pro vytváření" lightbox="../media/select-authoring-resource/select-authoring-resource-my-english-app-2.png":::

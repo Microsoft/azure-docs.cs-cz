@@ -4,12 +4,12 @@ description: Naučte se, jak zpracovávat lidské interakce a časové limity v 
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd7f8416b2f4520ec8e94c8608f753f7412afc4d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335746"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627368"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Ukázka lidské interakce v Durable Functions-telefon ověřování
 
@@ -38,6 +38,9 @@ Tento článek vás provede následujícími funkcemi v ukázkové aplikaci:
 * `E4_SmsPhoneVerification`: [Funkce Orchestrator](durable-functions-bindings.md#orchestration-trigger) , která provádí proces ověření telefonu, včetně správy časových limitů a opakovaných pokusů.
 * `E4_SendSmsChallenge`: [Funkce Activity](durable-functions-bindings.md#activity-trigger) , která odesílá kód prostřednictvím textové zprávy.
 
+> [!NOTE]
+> `HttpStart`Funkce v [ukázkové aplikaci a rychlý Start](#prerequisites) funguje jako [klient orchestrace](durable-functions-bindings.md#orchestration-client) , který aktivuje funkci Orchestrator.
+
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification funkce Orchestrator
 
 # <a name="c"></a>[C#](#tab/csharp)
@@ -45,7 +48,7 @@ Tento článek vás provede následujícími funkcemi v ukázkové aplikaci:
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> V první době nemusí být zřejmé, ale tato funkce Orchestrator je zcela deterministické. Je deterministický `CurrentUtcDateTime` , protože vlastnost se používá k výpočtu času vypršení platnosti časovače a vrací stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby bylo zajištěno, že budou stejné `winner` výsledky z každého opakovaného volání `Task.WhenAny` .
+> Nemusí být zpočátku zřejmé, ale tento produkt Orchestrator nerušuje [omezení deterministické orchestrace](durable-functions-code-constraints.md). Je deterministický `CurrentUtcDateTime` , protože vlastnost se používá k výpočtu času vypršení platnosti časovače a vrací stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby bylo zajištěno, že budou stejné `winner` výsledky z každého opakovaného volání `Task.WhenAny` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -58,7 +61,20 @@ Zde je kód, který implementuje funkci:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> V první době nemusí být zřejmé, ale tato funkce Orchestrator je zcela deterministické. Je deterministický `currentUtcDateTime` , protože vlastnost se používá k výpočtu času vypršení platnosti časovače a vrací stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby bylo zajištěno, že budou stejné `winner` výsledky z každého opakovaného volání `context.df.Task.any` .
+> Nemusí být zpočátku zřejmé, ale tento produkt Orchestrator nerušuje [omezení deterministické orchestrace](durable-functions-code-constraints.md). Je deterministický `currentUtcDateTime` , protože vlastnost se používá k výpočtu času vypršení platnosti časovače a vrací stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby bylo zajištěno, že budou stejné `winner` výsledky z každého opakovaného volání `context.df.Task.any` .
+
+# <a name="python"></a>[Python](#tab/python)
+
+Funkce **E4_SmsPhoneVerification** používá standardní *function.js* pro funkce nástroje Orchestrator.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/function.json)]
+
+Zde je kód, který implementuje funkci:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/\_\_init\_\_.py)]
+
+> [!NOTE]
+> Nemusí být zpočátku zřejmé, ale tento produkt Orchestrator nerušuje [omezení deterministické orchestrace](durable-functions-code-constraints.md). Je deterministický `currentUtcDateTime` , protože vlastnost se používá k výpočtu času vypršení platnosti časovače a vrací stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby bylo zajištěno, že budou stejné `winner` výsledky z každého opakovaného volání `context.df.Task.any` .
 
 ---
 
@@ -94,6 +110,16 @@ Funkce **E4_SendSmsChallenge** používá vazbu Twilio k odeslání zprávy SMS 
 A zde je kód, který generuje kód výzvy se čtyřmi číslicemi a odesílá zprávu SMS:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+*function.jsv* je definován následujícím způsobem:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/function.json)]
+
+A zde je kód, který generuje kód výzvy se čtyřmi číslicemi a odesílá zprávu SMS:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/\_\_init\_\_.py)]
 
 ---
 

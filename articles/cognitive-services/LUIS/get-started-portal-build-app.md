@@ -1,38 +1,41 @@
 ---
 title: 'Rychlý Start: vytvoření nové aplikace na portálu LUIS'
 description: V tomto rychlém startu vytvoříte základní části aplikace, záměry a entity a otestujete je pomocí Sample utterance na portálu LUIS.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/19/2020
-ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 11/30/2020
+ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697258"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436670"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
 
-V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Nejdřív vytvořte základní části aplikace, **záměrů**a **entit**. Pak otestujte aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
+V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Nejdřív vytvořte základní části aplikace, **záměrů** a **entit**. Pak otestujte aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>Vytvoření aplikace
 
-1. Z panelu nástrojů kontextu vyberte **+ Nová aplikace pro konverzaci** a pak znovu vyberte **+ Nová aplikace pro konverzaci** .
+Pokud chcete vytvořit aplikaci, vyberte **+ Nová aplikace**. 
 
-    > [!div class="mx-imgBorder"]
-    > [![Snímek obrazovky s vytvářením nové aplikace na portálu LUIS](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+V okně, které se zobrazí, zadejte následující informace:
 
-1. V automaticky otevíraném okně nakonfigurujte aplikaci s následujícím nastavením a potom vyberte **Hotovo**.
+|Název  |Popis  |
+|---------|---------|
+|Název     | Název vaší aplikace. Například "domácí automatizace". Povinná hodnota.        |
+|Kultura     | Jazyk, který vaše aplikace chápe a mluví. Povinná hodnota.   |
+|Popis | Popis vaší aplikace Nepovinný parametr.
+|Prostředek předpovědi | Předpověď prostředku, který bude přijímat dotazy. Nepovinný parametr. |
 
-   |Název nastavení| Hodnota | Účel|
-   |--|--|--|
-   |Name|`myEnglishApp`|Jedinečný název aplikace LUIS<br>vyžadováno|
-   |Kultura|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>vyžadováno|
-   |Popis (volitelné)|`App made with LUIS Portal`|Popis aplikace<br>optional|
-   |Prostředek předpovědi (volitelné) |-  |Nevybírejte. LUIS vám nabízí počáteční klíč, který můžete zdarma použít pro vytváření a 1 000 požadavků na koncový bod předpovědi. |
+Vyberte **Hotovo**.
 
-   ![Snímek obrazovky s zadáním nového nastavení aplikace](./media/get-started-portal-build-app/create-new-app-settings.png)
+>[!NOTE]
+>Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi.
+
 
 ## <a name="create-intents"></a>Vytvořit záměry
 
@@ -50,7 +53,7 @@ Dvě různé _záměry_ aplikace jsou v souladu s následujícími záměry:
 
 Chcete-li vytvořit záměry, proveďte následující kroky:
 
-1. Po vytvoření aplikace se nacházíte na stránce **záměry** v části **sestavení** . Vyberte **Vytvořit**.
+1. Po vytvoření aplikace se ujistěte, že jste na stránce **záměry** v části **sestavení** . Vyberte **Vytvořit**.
 
    [![Snímek obrazovky s výběrem možnosti ' vytvořit ' pro vytvoření nového záměru](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -58,14 +61,9 @@ Chcete-li vytvořit záměry, proveďte následující kroky:
 
 ## <a name="add-an-example-utterance"></a>Přidat příklad utterance
 
-Můžete přidat příklad projevy po vytvoření záměrů. Příkladem projevy je text, který uživatel zadá do robota chatu nebo jiné klientské aplikace. Namapují záměr textu uživatele na LUIS záměr.
+Můžete přidat příklad projevy po vytvoření záměrů. Příkladem projevy je text, který uživatel zadá do robota chatu nebo jiné klientské aplikace. Namapují záměr textu uživatele na LUIS záměr. Pro tento příklad `FindForm` záměru aplikace bude vzorový projevy obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění požadavku uživatele číslo formuláře, takže je důležité ho zahrnout do utterance.
 
-Pro tento příklad `FindForm` záměru aplikace bude vzorový projevy obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění požadavku uživatele číslo formuláře, takže je důležité ho zahrnout do utterance.
-
-> [!div class="mx-imgBorder"]
-> [![Snímek obrazovky se vstupním příkladem projevy pro záměr FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
-
-Přidejte následující 15 příkladů projevy k `FindForm` záměru.
+Na stránce **záměry** pro `FindForm` přidejte následující příklad projevy v části **příklad utterance**, 
 
 |#|Ukázkové promluvy|
 |--|--|
@@ -135,7 +133,7 @@ Příklad projevy záměru **none** by měl být mimo vaši doménu klientské a
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Podívejte se na entitu regulární výraz v příkladu projevy
 
-1. Ověřte, že se entita nachází v **FindForm** záměru tím, že v nabídce vlevo vyberete **záměry** . Pak vyberte **FindForm** záměr.
+1. Ověřte, že se entita nachází v **FindForm**  záměru tím, že v nabídce vlevo vyberete **záměry** . Pak vyberte **FindForm** záměr.
 
    Entita je označena tak, jak se zobrazuje v příkladu projevy.
 
@@ -161,7 +159,7 @@ Pomocí interaktivního **testovacího** podokna na portálu Luis ověřte, že 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi a nepřesouváte se k dalšímu rychlému startu, vyberte **Moje aplikace** z horní navigační nabídky. Pak ze seznamu vyberte levé políčko aplikace a na panelu nástrojů kontext vyberte tlačítko **Odstranit** nad seznamem.
+Až budete s tímto rychlým startem hotovi a nepřesouváte se k dalšímu rychlému startu, vyberte **Moje aplikace** z horní navigační nabídky. Pak ze seznamu vyberte levé políčko aplikace a na panelu nástrojů kontext vyberte tlačítko  **Odstranit** nad seznamem.
 
 ## <a name="next-steps"></a>Další kroky
 

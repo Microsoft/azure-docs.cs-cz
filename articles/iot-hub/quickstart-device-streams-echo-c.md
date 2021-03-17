@@ -1,20 +1,20 @@
 ---
-title: Komunikace s aplikací zařízení v C s datovými proudy zařízení v Azure IoT Hub
+title: Rychlý Start – komunikace s aplikací zařízení v C s datovými proudy zařízení v Azure IoT Hub
 description: V tomto rychlém startu spustíte aplikaci na straně zařízení v jazyce C, která komunikuje se zařízením IoT přes datový proud zařízení.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 7b5487233e2bd0e532efad4e108c41f188b51d91
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: fd179bf17f481ae84f768d619c6ddc0b9afab280
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "83727152"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202548"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v C prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
@@ -36,9 +36,7 @@ Aplikace C na straně zařízení v tomto rychlém startu má následující fun
 
 Kód ukazuje proces iniciace datového proudu zařízení a také způsob, jak ho použít k posílání a přijímání dat.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,17 +46,13 @@ Potřebujete následující požadavky:
 
 * Nainstalujte nejnovější verzi [Git](https://git-scm.com/download/).
 
-* Spuštěním následujícího příkazu přidejte rozšíření Azure IoT pro Azure CLI do instance Cloud Shell. Rozšíření IOT přidá do Azure CLI příkazy, které jsou specifické pro služby IoT Hub, IoT Edge a IoT Device Provisioning (DPS).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
-  * Střední USA
+  * USA – střed
   * Střed USA EUAP
   * Severní Evropa
   * Jihovýchodní Asie
@@ -120,7 +114,7 @@ V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk
 
 ## <a name="register-a-device"></a>Registrace zařízení
 
-Abyste se mohli připojit, musíte zařízení zaregistrovat ve službě IoT Hub. V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
+Abyste se mohli připojit, musíte zařízení zaregistrovat ve službě IoT Hub. V této části použijete Azure Cloud Shell s [rozšířením IoT](/cli/azure/ext/azure-iot/iot) k registraci simulovaného zařízení.
 
 1. Chcete-li vytvořit identitu zařízení, spusťte následující příkaz v Cloud Shell:
 
@@ -138,7 +132,7 @@ Abyste se mohli připojit, musíte zařízení zaregistrovat ve službě IoT Hub
    > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     Poznamenejte si vrácený připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:

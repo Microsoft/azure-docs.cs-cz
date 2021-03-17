@@ -1,19 +1,16 @@
 ---
 title: Aplikace Excel & Apache Hadoop s ovladačem rozhraní ODBC (Open Database Connectivity) – Azure HDInsight
 description: Naučte se, jak nastavit a použít ovladač ODBC pro podregistr Microsoft pro Excel k dotazování na data v clusterech HDInsight z Microsoft Excelu.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: b5499a8c4fd6ee200ca0fac800c8c17c92a1cc0c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2c528859ea5abc6267c10a2ede9c2ca99f84e22f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087839"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946804"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení aplikace Excel k Apache Hadoopu ve službě Azure HDInsight pomocí konektoru Microsoft Hive ODBC Driver
 
@@ -21,7 +18,7 @@ ms.locfileid: "86087839"
 
 Řešení pro velké objemy dat od Microsoftu integruje komponenty Microsoft Business Intelligence (BI) s Apache Hadoop clustery nasazenými v HDInsight. Příkladem je možnost připojení aplikace Excel k datovému skladu podregistru clusteru Hadoop. Připojte se pomocí ovladače ODBC (Open Database Connectivity) pro podregistr společnosti Microsoft.
 
-Data přidružená k clusteru HDInsight můžete připojit z Excelu k Microsoft Power Query doplňku pro Excel. Další informace najdete v tématu [připojení Excelu k HDInsight pomocí Power Query](../hdinsight-connect-excel-power-query.md).
+Data přidružená k clusteru HDInsight můžete připojit z Excelu k Microsoft Power Query doplňku pro Excel. Další informace najdete v tématu [připojení Excelu k HDInsight pomocí Power Query](./apache-hadoop-connect-excel-power-query.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,14 +41,14 @@ Následující kroky ukazují, jak vytvořit zdroj dat pro podregistr ODBC.
 
 1. Na kartě **uživatelský název DSN** vyberte **Přidat** a otevřete tak okno **vytvořit nový zdroj dat** .
 
-1. Vyberte **Microsoft Hive ODBC Driver**a pak vyberte **Dokončit** a otevřete tak okno **nastavení Microsoft Hive ODBC Driver DSN** .
+1. Vyberte **Microsoft Hive ODBC Driver** a pak vyberte **Dokončit** a otevřete tak okno **nastavení Microsoft Hive ODBC Driver DSN** .
 
 1. Zadejte nebo vyberte tyto hodnoty:
 
-   | Vlastnost | Description |
+   | Vlastnost | Popis |
    | --- | --- |
    |  Název zdroje dat |Zadejte název zdroje dat. |
-   |  Hostitelé: |Zadejte `HDInsightClusterName.azurehdinsight.net`. Například, `myHDICluster.azurehdinsight.net`. Poznámka: `HDInsightClusterName-int.azurehdinsight.net` podporuje se, pokud je klientský virtuální počítač v partnerském vztahu ke stejné virtuální síti. |
+   |  Hostitelé: |Zadejte `HDInsightClusterName.azurehdinsight.net`. Například `myHDICluster.azurehdinsight.net`. Poznámka: `HDInsightClusterName-int.azurehdinsight.net` podporuje se, pokud je klientský virtuální počítač v partnerském vztahu ke stejné virtuální síti. |
    |  Port |Použijte **443**. (Tento port se změnil z 563 na 443.) |
    |  databáze |Použijte **výchozí nastavení**. |
    |  Mechanismus |Výběr **služby Windows Azure HDInsight** |
@@ -90,13 +87,13 @@ Následující kroky popisují způsob, jak importovat data z tabulky podregistr
 
 4. Pro první použití se otevře dialogové okno **ovladače ODBC** . V nabídce vlevo vyberte **Windows** . Pak vyberte **připojit** a otevřete okno **navigátor** .
 
-5. Z **navigátoru**přejděte do **podregistru**  >  **Default**  >  **hivesampletable**a pak vyberte **načíst**. Před importováním dat do Excelu trvá chvíli chvilku.
+5. Z **navigátoru** přejděte do **podregistru**  >  **Default**  >  **hivesampletable** a pak vyberte **načíst**. Před importováním dat do Excelu trvá chvíli chvilku.
 
     ![Navigátor aplikace ODBC pro rozhraní HDInsight v Excelu](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Navigátor aplikace ODBC pro rozhraní HDInsight v Excelu")
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak pomocí ovladače Microsoft podregistr ODBC načíst data ze služby HDInsight do Excelu. Podobně můžete data ze služby HDInsight načíst do SQL Database. Data je také možné odeslat do služby HDInsight. Další informace naleznete v tématu:
+V tomto článku jste zjistili, jak pomocí ovladače Microsoft podregistr ODBC načíst data ze služby HDInsight do Excelu. Podobně můžete data ze služby HDInsight načíst do SQL Database. Data je také možné odeslat do služby HDInsight. Další informace najdete v následujících tématech:
 
 * [Vizualizujte Apache Hive data pomocí Microsoft Power BI ve službě Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
 * [Vizualizovat data podregistru interaktivního dotazu pomocí Power BI ve službě Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).

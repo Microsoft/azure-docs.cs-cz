@@ -3,12 +3,13 @@ title: Ladění aplikací Azure Service Fabric v systému Linux
 description: Naučte se monitorovat a diagnostikovat Service Fabric služby na místním vývojovém počítači se systémem Linux.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 523cb0d1a8e8f322c1936f1fe52a954399b2acc5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247553"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88999763"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Monitorování a diagnostika služeb v nastavení pro vývoj v místním počítači se systémem Linux
 

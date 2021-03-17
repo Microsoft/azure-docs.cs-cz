@@ -1,19 +1,18 @@
 ---
 title: Řešení potíží s výstupy Azure Stream Analytics
 description: Tento článek popisuje techniky řešení potíží s vašimi výstupními připojeními v Azure Stream Analytics úlohách.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 02a3a7ad73bf0434a215c5ab7a6e89c299e9518b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903183"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019852"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s výstupy Azure Stream Analytics
 
@@ -71,7 +70,7 @@ Chcete-li zobrazit podrobnosti výstupu, vyberte úlohu streamování v Azure Po
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Upozornění na porušení klíče s výstupem Azure SQL Database
 
-Když nakonfigurujete službu Azure SQL Database jako výstup do Stream Analytics úlohy, hromadně vloží záznamy do cílové tabulky. Obecně Azure Stream Analytics garantuje doručení do výstupní jímky [aspoň jednou](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) . V případě, že má tabulka SQL definováno jedinečné omezení, můžete přesto [dosáhnout přesně jednoho doručení]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) do výstupu SQL.
+Když nakonfigurujete službu Azure SQL Database jako výstup do Stream Analytics úlohy, hromadně vloží záznamy do cílové tabulky. Obecně Azure Stream Analytics garantuje doručení do výstupní jímky [aspoň jednou](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) . V případě, že má tabulka SQL definováno jedinečné omezení, můžete přesto [dosáhnout přesně jednoho doručení]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) do výstupu SQL.
 
 Když nastavíte omezení jedinečnosti klíčů pro tabulku SQL, Azure Stream Analytics odstraní duplicitní záznamy. Rozdělí data do dávek a rekurzivně je vloží, dokud nebude nalezen jediný duplicitní záznam. Proces rozdělení a vložení ignoruje duplicitní hodnoty v jednom okamžiku. Pro úlohu streamování, která má mnoho duplicitních řádků, je proces neefektivní a časově náročný. Pokud se v protokolu aktivit během předchozí hodiny zobrazí více výstražných zpráv o porušení klíčů, je pravděpodobný, že váš výstup SQL zpomaluje celou úlohu.
 
@@ -81,20 +80,42 @@ Při konfiguraci IGNORE_DUP_KEY pro několik typů indexů Pamatujte na následu
 
 * Nemůžete nastavit IGNORE_DUP_KEY pro primární klíč nebo jedinečné omezení, které používá příkaz ALTER INDEX. Index je potřeba vyřadit a znovu vytvořit.  
 * IGNORE_DUP_KEY můžete nastavit pomocí příkazu ALTER INDEX pro jedinečný index. Tato instance je odlišná od primárního KLÍČového a JEDINEČNÉho omezení a je vytvořena pomocí definice indexu nebo indexu.  
-* Možnost IGNORE_DUP_KEY neplatí pro indexy úložiště sloupců, protože pro ně nemůžete vymáhat jedinečnost.  
+* Možnost IGNORE_DUP_KEY neplatí pro indexy úložiště sloupců, protože pro ně nemůžete vymáhat jedinečnost.
+
+## <a name="sql-output-retry-logic"></a>Logika pro opakování výstupu SQL
+
+Když Stream Analytics úloha s výstupem SQL obdrží první dávku událostí, dojde k následujícím krokům:
+
+1. Úloha se pokusí připojit k SQL.
+2. Úloha načte schéma cílové tabulky.
+3. Úloha ověřuje názvy a typy sloupců oproti schématu cílové tabulky.
+4. Úloha připraví tabulku dat v paměti z výstupních záznamů v dávce.
+5. Úloha zapisuje tabulku dat do SQL pomocí rozhraní BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver).
+
+V průběhu těchto kroků může výstup SQL zacházet z následujících typů chyb:
+
+* Přechodné [chyby](../azure-sql/database/troubleshoot-common-errors-issues.md#transient-fault-error-messages-40197-40613-and-others) , které se opakují při použití exponenciální strategie omezení rychlosti opakování. Minimální interval opakování závisí na individuálním kódu chyby, ale intervaly jsou obvykle méně než 60 sekund. Horní limit může být nanejvýš pět minut. 
+
+   [Selhání přihlášení](../azure-sql/database/troubleshoot-common-errors-issues.md#unable-to-log-in-to-the-server-errors-18456-40531) a [problémy s bránou firewall](../azure-sql/database/troubleshoot-common-errors-issues.md#cannot-connect-to-server-due-to-firewall-issues) se zopakují nejméně 5 minut po předchozím pokusu a budou se opakovat, dokud nebudou úspěšné.
+
+* Chyby dat, jako je například přetypování chyb a porušení omezení schématu, jsou zpracovávány s výstupními zásadami chyb. Tyto chyby jsou zpracovávány opakováním binárních rozdělených dávek, dokud konkrétní záznam nezpůsobující chybu nebude zpracován pomocí akce přeskočit nebo opakovat. Primární porušení omezení jedinečnosti klíčů je [vždy zpracováváno](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output).
+
+* K nepřechodným chybám může dojít, pokud dojde k problémům s službami SQL nebo s interními nedostatky v kódu. Například pokud chyby například (kód 1132) Elastický fond zasáhne limit úložiště, nevyřeší opakované pokusy chybu. V těchto scénářích se Stream Analytics úlohy [degradují](job-states.md).
+* `BulkCopy` k vypršení časového limitu může dojít `BulkCopy` v kroku 5. `BulkCopy` může občas docházet k časovým limitům operací. Výchozí minimální nakonfigurovaný časový limit je pět minut a při následném volání se zdvojnásobí.
+Jakmile je časový limit vyšší než 15 minut, je maximální velikost pomocného parametru dávky `BulkCopy` snížena na polovinu, dokud nebudou 100 události na dávku ponechány.
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Názvy sloupců jsou malými písmeny v Azure Stream Analytics (1,0)
 
-Při použití původní úrovně kompatibility (1,0) Azure Stream Analytics změny názvů sloupců na malá písmena. Toto chování bylo opraveno v novějších úrovních kompatibility. Pokud chcete zachovat případ, přejděte na úroveň kompatibility 1,1 nebo novější. Další informace najdete v tématu [úroveň kompatibility pro úlohy Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
+Při použití původní úrovně kompatibility (1,0) Azure Stream Analytics změny názvů sloupců na malá písmena. Toto chování bylo opraveno v novějších úrovních kompatibility. Pokud chcete zachovat případ, přejděte na úroveň kompatibility 1,1 nebo novější. Další informace najdete v tématu [úroveň kompatibility pro úlohy Stream Analytics](./stream-analytics-compatibility-level.md).
 
 ## <a name="get-help"></a>Podpora
 
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční dokumentace jazyka Azure Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční informace o REST API správy Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční dokumentace jazyka Azure Stream Analytics dotazů](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční informace o REST API správy Azure Stream Analytics](/rest/api/streamanalytics/)

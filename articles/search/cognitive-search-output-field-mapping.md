@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214042"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001299"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>Jak mapovat pole obohacená AI na index s možností prohledávání
 
@@ -32,7 +32,7 @@ Příklady mapování polí výstupu:
 * Nemáte dovednosti, ale indexuje komplexní typ z databáze Cosmos DB. Chcete získat přístup k uzlu na tomto komplexním typu a namapovat ho do pole v indexu.
 
 > [!NOTE]
-> Nedávno jsme povolili funkci mapování funkcí pro mapování polí výstupu. Další podrobnosti o funkcích mapování najdete v tématu [funkce mapování polí](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions) .
+> Nedávno jsme povolili funkci mapování funkcí pro mapování polí výstupu. Další podrobnosti o funkcích mapování najdete v tématu [funkce mapování polí](./search-indexer-field-mappings.md#field-mapping-functions) .
 
 ## <a name="use-outputfieldmappings"></a>Použití outputFieldMappings
 

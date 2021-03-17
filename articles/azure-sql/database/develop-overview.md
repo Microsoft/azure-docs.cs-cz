@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ea3456dbd1d0942cba48c97d70982ae088d73f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254034"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782973"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>Přehled vývoje aplikací – SQL Database & spravované instance SQL
 
@@ -27,7 +27,7 @@ Tento článek vás provede základními informacemi, které by měl vývojář 
 
 K připojení a dotazování Azure SQL Database můžete použít různé [programovací jazyky a platformy](connect-query-content-reference-guide.md) . Můžete najít [ukázkové aplikace](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) , které můžete použít pro připojení k databázi.
 
-Můžete využít Open Source nástroje, jako je [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Můžete také využít Azure Portal, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
+Můžete využít Open Source nástroje, jako je [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms). Můžete také využít Azure Portal, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
 
 ## <a name="authentication"></a>Authentication
 
@@ -39,7 +39,7 @@ Přečtěte si další informace o [správě přístupu k databázi a přihláš
 
 V logice připojování klienta přepište výchozí časový limit na 30 sekund. Výchozí hodnota 15 sekund je příliš krátká pro připojení, která jsou závislá na internetu.
 
-Pokud používáte [fond připojení](https://msdn.microsoft.com/library/8xx3tyca.aspx), ukončete připojení v okamžiku, kdy ho program aktivně nepoužívá a není připravený na opakované použití.
+Pokud používáte [fond připojení](/dotnet/framework/data/adonet/sql-server-connection-pooling), ukončete připojení v okamžiku, kdy ho program aktivně nepoužívá a není připravený na opakované použití.
 
 Nepoužívejte dlouhotrvající transakce, protože jakákoli infrastruktura nebo selhání připojení může transakci vrátit zpět. Pokud je to možné, rozdělte transakci v několika menších transakcích a pomocí [dávkování Vylepšete výkon](../performance-improve-use-batching.md).
 

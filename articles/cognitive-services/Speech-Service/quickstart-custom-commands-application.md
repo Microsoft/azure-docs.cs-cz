@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: references_regions
+ms.openlocfilehash: e046f8cbf6fa0418244f20e9a0c6f75f6da34136
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289428"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434623"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Vytvoření hlasového asistenta pomocí vlastních příkazů
 
-V tomto rychlém startu vytvoříte a otestujete základní aplikaci Custom Commands pomocí nástroje Speech Studio. K této aplikaci budete mít přístup taky z klientské aplikace pro Windows. **Vlastní příkazy** usnadňují vytváření bohatě bohatých aplikací pro hlasové příkazy optimalizovaných pro prostředí s prvními interakcemi hlasu. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a poměrně nižší složitost, což vám pomůže soustředit se na vytváření nejlepšího řešení pro scénáře hlasových příkazů.
+V tomto rychlém startu vytvoříte a otestujete základní aplikaci Custom Commands pomocí nástroje Speech Studio. K této aplikaci budete mít přístup taky z klientské aplikace pro Windows.
 
 ## <a name="region-availability"></a>Dostupnost oblasti
 V současné době vlastní příkazy podporují odběry řeči vytvořené v těchto oblastech:
@@ -27,17 +28,17 @@ V současné době vlastní příkazy podporují odběry řeči vytvořené v t�
 * USA – západ 2
 * East US
 * USA – východ 2
+* USA – středozápad
 * Severní Evropa
 * West Europe
-* USA – středozápad
-* Indie – střed
 * Východní Asie
 * Southeast Asia
+* Indie – střed
 
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvořte prostředek řeči Azure v oblasti, která podporuje vlastní příkazy.<span class="docon docon-navigate-external x-hidden-focus"></span></a> Seznam podporovaných oblastí najdete výše v části **dostupnost oblasti** .
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvořte prostředek řeči Azure v oblasti, která podporuje vlastní příkazy.</a> Seznam podporovaných oblastí najdete výše v části **dostupnost oblasti** .
 > * Stáhněte si ukázkový soubor JSON pro [inteligentní místnost Lite](https://aka.ms/speech/cc-quickstart) .
 > * Stáhněte si nejnovější verzi [klienta Windows Voice Assistant](https://aka.ms/speech/va-samples-wvac).
 
@@ -66,7 +67,7 @@ V současné době vlastní příkazy podporují odběry řeči vytvořené v t�
     > [!div class="mx-imgBorder"]
     > ![Vytvoření projektu](media/custom-commands/import-project.png)
 
-1.  V seznamu **prostředek pro vytváření Luis** vyberte prostředek pro vytváření obsahu. Pokud neexistují žádné platné prostředky pro vytváření obsahu, vytvořte si ho tak, že vyberete **vytvořit nový prostředek pro vytváření obsahu Luis**.
+1.  V seznamu **prostředek pro vytváření Luis** vyberte prostředek pro vytváření obsahu. Pokud neexistují žádné platné prostředky pro vytváření obsahu, vytvořte si ho tak, že vyberete  **vytvořit nový prostředek pro vytváření obsahu Luis**.
 
     > [!div class="mx-imgBorder"]
     > ![Vytvoření prostředku](media/custom-commands/create-new-luis-resource.png)
@@ -101,7 +102,7 @@ Než budete moct k této aplikaci přistupovat z vnějšího nástroje Speech St
 ### <a name="update-prediction-luis-resource"></a>Aktualizovat LUIS prostředek předpovědi
 
 
-1. V levém podokně vyberte **Nastavení** a v prostředním podokně vyberte **Luis prostředky** .
+1. V levém podokně vyberte **Nastavení** a v prostředním podokně vyberte  **Luis prostředky** .
 1. Vyberte prostředek předpovědi, nebo ho vytvořte výběrem možnosti **vytvořit nový prostředek**.
 1. Vyberte **Uložit**.
     
@@ -113,7 +114,7 @@ Než budete moct k této aplikaci přistupovat z vnějšího nástroje Speech St
 
 ### <a name="publish-the-application"></a>Publikování aplikace
 
-V pravém horním podokně vyberte **publikovat** . Po dokončení publikování se zobrazí nové okno. Poznamenejte si z něj hodnotu **ID aplikace** a **klíč prostředku pro rozpoznávání řeči** . Tyto dvě hodnoty budete potřebovat, abyste měli přístup k aplikaci z vnější řeči Studio.
+V pravém horním podokně vyberte  **publikovat** . Po dokončení publikování se zobrazí nové okno. Poznamenejte si z něj hodnotu **ID aplikace** a **klíč prostředku pro rozpoznávání řeči** . Tyto dvě hodnoty budete potřebovat, abyste měli přístup k aplikaci z vnější řeči Studio.
 
 Případně můžete tyto hodnoty získat také tak, že vyberete **Nastavení**  >  **Obecné** oddíl.
 
@@ -123,7 +124,7 @@ V rozsahu tohoto článku budeme používat klienta Windows Voice Assistant, kte
 1. Spusťte **VoiceAssistantClient.exe**.
 1. Vytvořte nový profil publikování a zadejte hodnotu pro **profil připojení**. V části **Obecné nastavení** zadejte hodnotu **klíč předplatného** (to je stejná jako hodnota **klíče prostředku řeči** , kterou jste uložili při publikování aplikace), **oblast klíče předplatného** a **vlastní příkazy ID aplikace**.
     > [!div class="mx-imgBorder"]
-    > ![WVAC vytvořit profil](media/custom-commands/create-profile.png)
+    > ![Snímek obrazovky, který zvýrazní oddíl Obecné nastavení pro vytvoření profilu WVAC](media/custom-commands/create-profile.png)
 1. Vyberte **Uložit a použít profil**.
 1. Teď vyzkoušejte následující vstupy přes řeč/text
     > [!div class="mx-imgBorder"]
@@ -135,4 +136,4 @@ V rozsahu tohoto článku budeme používat klienta Windows Voice Assistant, kte
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste použili existující aplikaci. Dále se v [oddílech s postupy](how-to-custom-commands-create-application-with-simple-commands.md)naučíte navrhovat, vyvíjet, ladit, testovat a integrovat vlastní aplikace s příkazy od začátku.
+V tomto článku jste použili existující aplikaci. Dále se v [oddílech s postupy](./how-to-develop-custom-commands-application.md)naučíte navrhovat, vyvíjet, ladit, testovat a integrovat vlastní aplikace s příkazy od začátku.

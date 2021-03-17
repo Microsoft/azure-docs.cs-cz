@@ -3,19 +3,19 @@ title: Zřizování aplikací s filtry oborů | Microsoft Docs
 description: Naučte se používat filtry oborů, abyste zabránili tomu, aby objekty v aplikacích, které podporují automatizované zřizování uživatelů, nebyly zřízené, pokud objekt nesplňuje vaše podnikové požadavky.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7fff456b7ad6e980fc3c9bda36cfcab02e2ed863
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235804"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255827"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -64,7 +64,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 2. Vyberte aplikaci, pro kterou jste nakonfigurovali Automatické zřizování: například "ServiceNow".
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
 4. V části **mapování** vyberte mapování, pro které chcete nakonfigurovat filtr oboru: například "synchronizovat Azure Active Directory uživatelů do ServiceNow".
 
@@ -72,7 +72,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 6. Vyberte **Přidat filtr oborů**.
 
-7. Definujte klauzuli tak, že vyberete **název zdrojového atributu**, **operátor**a **hodnotu atributu** pro porovnání. Podporovány jsou následující operátory:
+7. Definujte klauzuli tak, že vyberete **název zdrojového atributu**, **operátor** a **hodnotu atributu** pro porovnání. Podporovány jsou následující operátory:
 
    a. **Je rovno**. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá hodnotě vstupního řetězce (rozlišuje velká a malá písmena).
 
@@ -86,7 +86,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
    f. není **null**. Klauzule vrátí hodnotu true, pokud vyhodnocený atribut není prázdný.
 
-   například **porovnávání regulárních**znaků. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
+   například **porovnávání regulárních** znaků. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
 
    h. **NEshoda s regulárním výrazem** Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje se vzorem regulárního výrazu.
    
@@ -94,7 +94,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
    
    j. **Greater_Than_OR_EQUALS.** Klauzule vrátí "true", pokud je vyhodnocený atribut větší nebo roven hodnotě. Hodnota zadaná ve filtru oboru musí být celé číslo a atribut na tomto uživateli musí být celé číslo [0, 1, 2,...]. 
    
-   k. **Zahrnující.** Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje hodnotu řetězce (rozlišuje velká a malá písmena), jak je popsáno [zde](/dotnet/api/system.string.contains?view=netframework-4.8). 
+   k. **Zahrnující.** Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje hodnotu řetězce (rozlišuje velká a malá písmena), jak je popsáno [zde](/dotnet/api/system.string.contains). 
 
 
 >[!IMPORTANT] 
@@ -103,7 +103,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 9. Volitelně můžete opakováním kroků 7-8 přidat další klauzule rozsahu.
 
-10. V části **název filtru oboru**přidejte název filtru oborů.
+10. V části **název filtru oboru** přidejte název filtru oborů.
 
 11. Vyberte **OK**.
 

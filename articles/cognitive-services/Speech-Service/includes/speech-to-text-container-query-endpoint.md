@@ -4,17 +4,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 04/29/2020
+ms.date: 08/18/2020
 ms.author: aahi
-ms.openlocfilehash: e5f38da6a18e8a4c59bea77f4ddd5a68db1e1902
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 167e33ff4a3af463e2537e2714e9e9bf5e125b61
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610734"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947897"
 ---
-### <a name="speech-to-text-or-custom-speech-to-text"></a>Převod řeči na text nebo Custom Speech na text
-
 Kontejner poskytuje rozhraní API koncových bodů dotazů založených na protokolu WebSocket, která jsou k dispozici prostřednictvím [sady Speech SDK](../index.yml). Sada Speech SDK standardně používá online hlasové služby. Chcete-li použít kontejner, je nutné změnit inicializační metodu.
 
 > [!TIP]
@@ -22,7 +21,7 @@ Kontejner poskytuje rozhraní API koncových bodů dotazů založených na proto
 
 Podívejte se na následující příklad:
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Změnit z použití tohoto volání inicializace Azure-Cloud:
 
@@ -30,7 +29,7 @@ Změnit z použití tohoto volání inicializace Azure-Cloud:
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-do tohoto volání pomocí [hostitele](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)kontejneru:
+Použití tohoto volání u [hostitele](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost)kontejneru:
 
 ```csharp
 var config = SpeechConfig.FromHost(
@@ -44,6 +43,13 @@ Změnit z použití tohoto volání inicializace Azure-Cloud:
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
+```
+
+Pro použití tohoto volání s [koncovým bodem](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)kontejneru:
+
+```python
+speech_config = speechsdk.SpeechConfig(
+    endpoint="ws://localhost:5000/speech/recognition/conversation/cognitiveservices/v1"
 ```
 
 ---

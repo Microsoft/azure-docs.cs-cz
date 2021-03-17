@@ -1,18 +1,19 @@
 ---
 title: Co jsou rezervace Azure?
-description: Informace o rezervacích Azure a úsporách nákladů na virtuální počítače, databáze SQL, službu Azure Cosmos DB a další prostředky
+description: Informace o rezervacích Azure a úsporách nákladů na rezervované instance pro virtuální počítače, databáze SQL, službu Azure Cosmos DB a další prostředky
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 08/04/2020
+ms.subservice: reservations
+ms.topic: overview
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 437344d1a0e3cc1178c21efb4bfa26f192d23e5c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
-ms.translationtype: HT
+ms.openlocfilehash: 7c2cf88eed3d8b727147f57ef9e2b52afd07de59
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760035"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039134"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -49,21 +50,22 @@ Další informace najdete v tématu  [Určení rezervace k zakoupení](determi
 
 Rezervace si můžete koupit prostřednictvím webu Azure Portal, rozhraní API, PowerShellu nebo rozhraní příkazového řádku. 
 
-Pokud chcete provést nákup, přejděte na web Azure Portal (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs). 
+Pokud chcete provést nákup, přejděte na [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs).
 
-Další informace najdete v tématu  [Nákup rezervace](prepare-buy-reservation.md). 
+Další informace najdete v tématu  [Nákup rezervace](prepare-buy-reservation.md).
 
 ## <a name="how-is-a-reservation-billed"></a>Jak se rezervace fakturuje? 
 
-Rezervace se fakturuje za použití způsobu platby spojeného s předplatným. Náklady na rezervaci se odečtou ze zůstatku peněžního závazku, pokud je k dispozici. Pokud zůstatek peněžního závazku nepokryje náklady na rezervaci, bude se vám účtovat nadlimitní využití. Pokud máte předplatné z individuálního plánu s průběžnými platbami, z platební karty přidružené k vašemu účtu se ihned strhne částka za nákup placený předem. Měsíční platby se objeví na vaší faktuře a částka se bude každý měsíc strhávat z vaší platební karty. Při fakturaci na základě faktury uvidíte poplatky na vaší další faktuře. 
+Rezervace se fakturuje za použití způsobu platby spojeného s předplatným. Náklady na rezervaci se odečtou ze zůstatku Azure Prepaymentu (dřív označovaný jako peněžní závazek), pokud je k dispozici. Pokud zůstatek Azure Prepaymentu nepokryje náklady na rezervaci, bude se vám účtovat nadlimitní využití. Pokud máte předplatné z individuálního plánu s průběžnými platbami, z platební karty přidružené k vašemu účtu se ihned strhne částka za nákup placený předem. Měsíční platby se objeví na vaší faktuře a částka se bude každý měsíc strhávat z vaší platební karty. Při fakturaci na základě faktury uvidíte poplatky na vaší další faktuře. 
 
-## <a name="permissions-to-view-and-manage-reservations"></a>Oprávnění k zobrazení a správě rezervací 
+## <a name="who-can-manage-a-reservation-by-default"></a>Kdo může ve výchozím nastavení spravovat rezervaci
 
-Uživatel, který rezervaci zakoupí, a správce účtu předplatného sloužícího k fakturaci rezervace získají roli vlastníka objednávky rezervace a samotné rezervace.
+Ve výchozím nastavení mohou rezervace zobrazovat a spravovat následující uživatelé:
 
-Správu rezervace můžete delegovat přidáním lidí do rolí rezervace nebo objednávky rezervace. Role se přiřazují na webu Azure Portal nebo pomocí rozhraní API a PowerShellu. 
+- Do objednávky rezervace se přidá osoba, která rezervaci koupí, a správce účtu pro fakturační předplatné použité k nákupu rezervace.
+- Správci fakturace pro smlouvy Enterprise a Smlouvy se zákazníkem Microsoftu
 
-Další informace najdete v tématu  [Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation). 
+Pokud chcete správu rezervací umožnit ostatním, projděte si téma [Správa rezervací prostředků Azure](manage-reserved-vm-instance.md).
 
 ## <a name="get-reservation-details-and-utilization-after-purchase"></a>Získání podrobností o rezervaci a informací o využití po nákupu
 
@@ -89,7 +91,8 @@ Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz 
 - **Rezervovaná instance virtuálního počítače** – Rezervace se vztahuje jenom na náklady na výpočetní funkce virtuálních počítačů a cloudových služeb. Nevztahuje se na další poplatky za software, Windows, sítě nebo úložiště.
 - **Rezervovaná kapacita služby Azure Storage** – Rezervace pokrývá kapacitu úložiště pro účty úložiště úrovně Standard ve službách Blob Storage nebo Azure Data Lake Storage Gen2. Rezervace se nevztahuje na šířku pásma ani rychlost transakcí.
 - **Rezervovaná kapacita služby Azure Cosmos DB** – Rezervace se vztahuje na propustnost zřízenou pro vaše prostředky. Nevztahuje se na poplatky za úložiště a sítě.
-- **Rezervované virtuální jádro služby SQL Database** – Rezervace se vztahuje jenom na náklady na výpočetní funkce. Licence SQL se účtuje samostatně.
+- **Azure Data Factory toky dat** – rezervace pokrývá náklady na modul runtime integrace pro výpočetní typ a počet zakoupených jader.
+- **Rezervované virtuální jádro služby SQL Database** – Rezervace se vztahuje na SQL Managed Instance i SQL Database ve variantě Elastický fond / Jednoúčelová databáze. Součástí rezervace jsou jenom náklady na výpočetní funkce. Licence SQL se účtuje samostatně.
 - **Azure Synapse Analytics** – Rezervace se vztahuje na využití cDWU. Nevztahuje se na poplatky za úložiště nebo sítě související s využitím služby Azure Synapse Analytics.
 - **Azure Databricks** – Rezervace se vztahuje pouze na využití DBU. Další poplatky, například za výpočetní prostředky, úložiště a sítě, se účtují zvlášť.
 - **Poplatek za kolek služby App Service** – Rezervace se vztahuje na využití kolku. Nevztahuje se na pracovní procesy, takže všechny další prostředky přidružené ke kolku se účtují samostatně.
@@ -105,11 +108,10 @@ Softwarové plány:
 
 - **SUSE Linux** – Rezervace se vztahuje na náklady na plán softwaru. Slevy se vztahují pouze na měřiče SUSE, a ne na využití virtuálního počítače.
 - **Plány Red Hat** – Rezervace se vztahuje na náklady na plán softwaru. Slevy se vztahují pouze na měřiče Red Hat, a ne na využití virtuálního počítače.
-- **Azure VMware Solution by CloudSimple** – Rezervace se vztahuje na uzly VMWare CloudSimple. Stále se však účtují další náklady na software.
+- **Azure VMware Solution by CloudSimple** – Rezervace se vztahuje na uzly VMware CloudSimple. Stále se však účtují další náklady na software.
 - **Azure Red Hat OpenShift** – Rezervace se vztahuje na náklady na OpenShift, ne na infrastrukturu Azure.
 
 U virtuálních počítačů s Windows a SQL Database se sleva za rezervaci nevztahuje na náklady na software. Licenční náklady můžete pokrýt pomocí programu [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
@@ -125,9 +127,9 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
     - [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](/partner-center/azure-reservations)
 
 - Další informace o rezervacích pro plány služby:
-    - [Virtuální počítače se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Virtuální počítače se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
     - [Prostředky Azure Cosmos DB s rezervovanou kapacitou služby Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
     - [Výpočetní prostředky SQL Database s rezervovanou kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
     - [Prostředky Azure Cache for Redis s rezervovanou kapacitou služby Azure Cache for Redis](../../azure-cache-for-redis/cache-reserved-pricing.md) Další informace o rezervacích pro softwarové plány:
-    - [Plány softwaru Red Hat z rezervací Azure](../../virtual-machines/linux/prepay-rhel-software-charges.md)
+    - [Plány softwaru Red Hat z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
     - [Plány softwaru SUSE z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)

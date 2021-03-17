@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650939"
 ---
 # <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>Nasazení přidružení pro spravovanou aplikaci pomocí Azure Policy
@@ -32,7 +32,7 @@ Další informace o přidruženích najdete v tématu věnovaném [registraci pr
 ### <a name="prerequisites"></a>Požadavky
 Pokud spravovaná aplikace potřebuje k provedení akce oprávnění k předplatnému, nasazení zásad prostředku přidružení by nefungovalo bez udělení oprávnění.
 
-### <a name="policy-assignment"></a>Přiřazení zásad
+### <a name="policy-assignment"></a>Přiřazení zásady
 Pokud chcete použít předdefinovanou zásadu, vytvořte přiřazení zásady a přiřaďte přidružení nasazení pro zásadu spravované aplikace. Po úspěšném přiřazení zásady budou zásady identifikovat prostředky, které nedodržují předpisy, a nasazovat přidružení pro tyto prostředky.
 
 ![Přiřazení předdefinovaných zásad](media/concepts-built-in-policy/assign-builtin-policy-managedapp.png)

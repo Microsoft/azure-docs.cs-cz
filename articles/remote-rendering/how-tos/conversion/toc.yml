@@ -6,7 +6,9 @@
   href: conversion-rest-api.md
 - name: Konfigurace převodu modelů
   href: configure-model-conversion.md
+- name: Příprava souborů pro převod
+  href: layout-files-for-conversion.md
 - name: Potlačení materiálů během převodu modelů
   href: override-materials.md
-- name: Získání informací o převedeném modelu
+- name: Získání informací o převodech
   href: get-information.md

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 83bd4a7ae0082d24f7ac617719e628f4db4baeb9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057666"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197624"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Vytvoření účtu Azure Remote Renderingu
 
@@ -52,12 +52,12 @@ Projděte si [seznam dostupných oblastí](../reference/regions.md) pro vyplňov
 
 Hodnoty pro **`arrAccountId`** a **`arrAccountKey`** lze nalézt na portálu, jak je popsáno v následujícím postupu:
 
-* Přejít na [Azure Portal](https://www.portal.azure.com)
+* Přejděte na web [Azure Portal](https://www.portal.azure.com).
 * Najít **účet vzdáleného vykreslování** – měl by být v seznamu **Poslední prostředky** . Můžete ji také vyhledat na panelu hledání v horní části. V takovém případě se ujistěte, že odběr, který chcete použít, je vybraný ve výchozím filtru předplatného (ikona filtru vedle panelu hledání):
 
 ![Filtr předplatných](./media/azure-subscription-filter.png)
 
-Kliknutím na svůj účet přejdete na tuto obrazovku, ve které se hned zobrazuje **ID účtu** :
+Kliknutím na svůj účet přejdete na tuto obrazovku, ve které se hned zobrazuje  **ID účtu** :
 
 ![ID účtu Azure](./media/azure-account-id.png)
 
@@ -71,35 +71,28 @@ Hodnota pro **`arrAccountKey`** může být buď primární, nebo sekundární k
 
 Tento článek vysvětluje, jak propojit účty úložiště s účtem vzdáleného vykreslování. Pokud je propojen účet úložiště, není nutné vygenerovat identifikátor URI SAS pokaždé, když chcete pracovat s daty ve vašem účtu, například při načítání modelu. Místo toho můžete použít názvy účtů úložiště přímo, jak je popsáno v [části načtení modelu](../concepts/models.md#loading-models).
 
-Kroky v tomto odstavci je třeba provést pro každý účet úložiště, který by měl používat tuto alternativní metodu přístupu. Pokud jste ještě nevytvořili účty úložiště, můžete si projít příslušný krok v části [převedení modelu pro rychlý Start vykreslování](../quickstarts/convert-model.md#storage-account-creation).
+Kroky v tomto odstavci je třeba provést pro každý účet úložiště, který by měl používat tuto metodu přístupu. Pokud jste ještě nevytvořili účty úložiště, můžete si projít příslušný krok v části [převedení modelu pro rychlý Start vykreslování](../quickstarts/convert-model.md#storage-account-creation).
 
 Nyní se předpokládá, že máte účet úložiště. Přejděte na portál na účet úložiště a přejděte na kartu **Access Control (IAM)** pro tento účet úložiště:
 
 ![Úložiště IAM účtu úložiště](./media/azure-storage-account.png)
 
- Ujistěte se, že máte oprávnění vlastníka pro tento účet úložiště, abyste měli jistotu, že můžete přidat přiřazení rolí. Pokud nemáte přístup, bude možnost **Přidat přiřazení role** zakázaná.
+Ujistěte se, že máte oprávnění vlastníka pro tento účet úložiště, abyste měli jistotu, že můžete přidat přiřazení rolí. Pokud nemáte přístup, bude možnost **Přidat přiřazení role** zakázaná.
 
- Musíte přidat tři samostatné role, jak je popsáno v následujících krocích. Pokud nezadáte všechny tři úrovně přístupu, při pokusu o přístup k účtu úložiště dojde k problémům s oprávněním.
+Kliknutím na tlačítko **Přidat** na dlaždici přidat přiřazení role přidejte roli.
 
- Kliknutím na tlačítko **Přidat** na dlaždici přidat přiřazení role přidejte první roli:
+![Účet úložiště IAM – přidání přiřazení role](./media/azure-add-role-assignment.png)
 
-![Úložiště IAM účtu úložiště](./media/azure-add-role-assignment.png)
-
-* První role, která se má přiřadit, je **vlastník** , jak je znázorněno na snímku obrazovky výše.
-* V rozevíracím seznamu **přiřadit přístup k** vyberte **účet vzdáleného vykreslování** .
+* Přiřaďte roli **Přispěvatel dat objektu BLOB úložiště** , jak je znázorněno na snímku obrazovky výše.
+* Vyberte spravovanou identitu přiřazenou systémem **účtu vzdáleného vykreslování**  z rozevíracího seznamu **přiřadit přístup k** .
 * V posledních rozevíracích seznamech vyberte své předplatné a účet vzdáleného vykreslování.
+* Kliknutím na Uložit uložte změny.
 
 > [!WARNING]
 > V případě, že váš účet vzdáleného vykreslování není uveden, přečtěte si [téma věnované tomuto problému](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
-Pro odpovídající výběry v rozevírací nabídce **role** znovu přidejte další nové role:
-
-* **Přispěvatel účtů úložiště**
-* **Přispěvatel dat objektu BLOB služby Storage**
-
-Ostatní rozevírací seznamy jsou vybrány jako v prvním kroku.
-
-Pokud jste přidali všechny tři role, má účet vzdáleného vykreslování Azure přístup k vašemu účtu úložiště pomocí identit spravované služby přiřazené systémem.
+> [!IMPORTANT]
+> Přiřazení rolí Azure se Azure Storage ukládá do mezipaměti, takže může trvat až 30 minut, než udělíte přístup k účtu vzdáleného vykreslování a když ho můžete použít pro přístup k účtu úložiště. Podrobnosti najdete v [dokumentaci řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806807"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592365"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Monitorování operací a aktivit Azure Kognitivní hledání
 
@@ -37,7 +37,7 @@ Azure Kognitivní hledání udržuje interní data v kumulovaných 30denní plá
 Následující snímek obrazovky vám pomůže najít informace o monitorování na portálu. Data budou k dispozici hned po zahájení používání služby. Stránky portálu se aktualizují každých několik minut.
 
 * Karta **monitorování** na hlavní stránce Přehled zobrazuje objem dotazů, latenci a informace o tom, zda je služba pod tlakem.
-* **Protokol aktivit**v levém navigačním podokně je připojený k Azure Resource Manager. Sestavy protokolu aktivit jsou založené na akcích, které provádí Správce prostředků: dostupnost služby a stav, změny kapacity (repliky a oddíly) a aktivity týkající se klíčů rozhraní API.
+* **Protokol aktivit** v levém navigačním podokně je připojený k Azure Resource Manager. Sestavy protokolu aktivit jsou založené na akcích, které provádí Správce prostředků: dostupnost služby a stav, změny kapacity (repliky a oddíly) a aktivity týkající se klíčů rozhraní API.
 * Nastavení **monitorování** , dále mimo provoz, poskytuje konfigurovatelné výstrahy, metriky a diagnostické protokoly. Můžete je vytvořit, až je budete potřebovat. Po shromáždění a uložení dat můžete zadávat dotazy nebo vizualizovat informace pro přehledy.
 
 ![Azure Monitor integrace ve službě vyhledávání](./media/search-monitor-usage/azure-monitor-search.png
@@ -59,7 +59,7 @@ Pomocí následujících rozhraní API můžete načíst stejné informace, jak�
 
 ### <a name="activity-logs-and-service-health"></a>Protokoly aktivit a stav služby
 
-Stránka [**Protokol aktivit**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) na portálu shromažďuje informace z Azure Resource Manager a sestavy o změnách stavu služby. Protokol aktivit můžete monitorovat pro kritické, chybové a varovné podmínky související se stavem služby.
+Stránka [**Protokol aktivit**](../azure-monitor/essentials/activity-log.md#view-the-activity-log) na portálu shromažďuje informace z Azure Resource Manager a sestavy o změnách stavu služby. Protokol aktivit můžete monitorovat pro kritické, chybové a varovné podmínky související se stavem služby.
 
 Mezi běžné položky patří odkazy na klíče rozhraní API – obecná informační oznámení, jako je *získání klíče správce* a *získání klíčů dotazů*. Tyto aktivity označují požadavky, které byly provedeny pomocí klíče správce (vytváření nebo odstraňování objektů) nebo klíče dotazu, ale nezobrazují samotný požadavek. Pro informace o tomto zrnitosti je nutné nakonfigurovat protokolování diagnostiky.
 
@@ -75,13 +75,13 @@ Následující obrázek je pro bezplatnou službu, která je omezené na 3 objek
  "Stav použití vzhledem k omezením úrovně")
 
 > [!NOTE]
-> Výstrahy související s úložištěm nejsou aktuálně k dispozici. spotřeba úložiště není agregovaná ani přihlášená do tabulky **AzureMetrics** v Azure monitor. Chcete-li získat výstrahy úložiště, budete muset [vytvořit vlastní řešení](../azure-monitor/insights/solutions-creating.md) , které vysílá oznámení související s prostředky, kde váš kód kontroluje velikost úložiště a zpracovává odpověď.
+> Výstrahy související s úložištěm nejsou aktuálně k dispozici. spotřeba úložiště není agregovaná ani přihlášená do tabulky **AzureMetrics** v Azure monitor. Chcete-li získat výstrahy úložiště, budete muset [vytvořit vlastní řešení](../azure-monitor/insights/solutions.md) , které vysílá oznámení související s prostředky, kde váš kód kontroluje velikost úložiště a zpracovává odpověď.
 
 <a name="add-azure-monitor"></a>
 
 ## <a name="add-on-monitoring-with-azure-monitor"></a>Monitorování doplňku pomocí Azure Monitor
 
-Řada služeb, včetně Azure Kognitivní hledání, se integruje s [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) pro další výstrahy, metriky a diagnostická data protokolování. 
+Řada služeb, včetně Azure Kognitivní hledání, se integruje s [Azure monitor](../azure-monitor/index.yml) pro další výstrahy, metriky a diagnostická data protokolování. 
 
 [Povolte protokolování diagnostiky](search-monitor-logs.md) pro vyhledávací službu, pokud chcete řídit shromažďování a ukládání dat. Události zaznamenané v Azure Monitor jsou uloženy v tabulce **AzureDiagnostics** a tvoří provozní data související s dotazy a indexováním.
 
@@ -90,7 +90,7 @@ Azure Monitor poskytuje několik možností úložiště a vaše volba určí, j
 * Pokud chcete [vizualizovat data protokolu](search-monitor-logs-powerbi.md) v sestavě Power BI, vyberte úložiště objektů BLOB v Azure.
 * Vyberte možnost Log Analytics, pokud chcete prozkoumat data prostřednictvím dotazů Kusto.
 
-Azure Monitor má svou vlastní fakturační strukturu a diagnostické protokoly, na které se odkazuje v této části, mají přidružené náklady. Další informace najdete v tématu [využití a odhadované náklady v Azure monitor](../azure-monitor/platform/usage-estimated-costs.md).
+Azure Monitor má svou vlastní fakturační strukturu a diagnostické protokoly, na které se odkazuje v této části, mají přidružené náklady. Další informace najdete v tématu [využití a odhadované náklady v Azure monitor](../azure-monitor//usage-estimated-costs.md).
 
 ## <a name="monitor-user-access"></a>Sledovat přístup uživatelů
 
@@ -107,4 +107,4 @@ Neexistuje žádný způsob, jak tyto informace zaprotokolovat odděleně od ře
 Fluency s Azure Monitor jsou nezbytné pro dohled nad jakoukoliv službou Azure, včetně prostředků, jako je Azure Kognitivní hledání. Pokud nejste obeznámeni s Azure Monitor, přečtěte si článek o prostředcích souvisejících s prostředky. Kromě kurzů je vhodným místem pro spuštění následující článek.
 
 > [!div class="nextstepaction"]
-> [Monitorování prostředků Azure pomocí Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)
+> [Monitorování prostředků Azure s využitím služby Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md)

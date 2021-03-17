@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 04/01/2018
+ms.date: 10/23/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1822e41c8cfb3646ab43fde1b9a86569ce2c399
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: bd4d42e1cafa58aaf6a47188c9e86c24ac175047
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796756"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514385"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odebrání nedávno odstraněného uživatele pomocí Azure Active Directory
-Po odstranění uživatele zůstane účet v pozastaveném stavu po dobu 30 dnů. Během tohoto 30denní okna se může uživatelský účet obnovit spolu se všemi jeho vlastnostmi. Po uplynutí tohoto 30denní okna se uživatel automaticky a trvale odstraní.
+Po odstranění uživatele zůstane účet v pozastaveném stavu po dobu 30 dnů. Během tohoto 30denní okna se může uživatelský účet obnovit spolu se všemi jeho vlastnostmi. Po uplynutí 30 dnů se automaticky spustí proces trvalého odstranění.
 
 Můžete si Zobrazit uživatele obnovitelné, obnovit odstraněného uživatele nebo trvale odstranit uživatele pomocí Azure Active Directory (Azure AD) v Azure Portal.
 
@@ -77,10 +77,10 @@ Uživatele můžete z vaší organizace trvale odstranit, aniž byste čekali na
 
 2. Vyberte možnost **odstranit trvale**.
 
-    ![Uživatelé – stránka odstraněné uživatele s zvýrazněnou možností obnovit uživatele](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
+    ![Uživatelé – stránka odstraněné uživatele s zvýrazněnou možností odstranit uživatele](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>Další kroky
-Po obnovení nebo odstranění uživatelů můžete provádět následující základní procesy:
+Po obnovení nebo odstranění uživatelů můžete:
 
 - [Přidání nebo odstranění uživatelů](add-users-azure-active-directory.md)
 
@@ -88,6 +88,6 @@ Po obnovení nebo odstranění uživatelů můžete provádět následující z�
 
 - [Přidat nebo změnit informace o profilu](active-directory-users-profile-azure-portal.md)
 
-- [Přidat uživatele typu host z jiné organizace](../b2b/what-is-b2b.md)
+- [Přidat uživatele typu host z jiné organizace](../external-identities/what-is-b2b.md)
 
-Další informace o dalších dostupných úkolech správy uživatelů najdete v [dokumentaci správy uživatelů Azure AD](../users-groups-roles/index.yml).
+Další informace o dalších dostupných úkolech správy uživatelů najdete v [dokumentaci správy uživatelů Azure AD](../enterprise-users/index.yml).

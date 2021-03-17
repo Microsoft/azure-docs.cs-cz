@@ -1,30 +1,30 @@
 ---
 title: Přiřadit proměnné
-description: V tomto článku najdete základní tipy pro přiřazování proměnných T-SQL ve fondu SQL.
+description: V tomto článku najdete základní tipy pro přiřazování proměnných T-SQL pro vyhrazené fondy SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0cbadc10fb817c70bd259397c840aae68abc2d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 87448ea737c11af13a52632e5bf4f67dc54d9ae3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213325"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459218"
 ---
-# <a name="assign-variables-in-synapse-sql-pool"></a>Přiřazení proměnných ve fondu SQL synapse
+# <a name="assign-variables-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Přiřazení proměnných pro vyhrazené fondy SQL ve službě Azure synapse Analytics
 
-V tomto článku najdete základní tipy pro přiřazování proměnných T-SQL ve fondu SQL.
+V tomto článku najdete základní tipy pro přiřazování proměnných T-SQL ve vyhrazeném fondu SQL.
 
 ## <a name="set-variables-with-declare"></a>Nastavení proměnných pomocí příkazu DECLARE
 
-Proměnné ve fondu SQL jsou nastaveny pomocí `DECLARE` příkazu nebo `SET` příkazu. Inicializace proměnných pomocí příkazu DECLARE je jedním z nejpružnější způsob, jak nastavit hodnotu proměnné ve fondu SQL.
+Proměnné ve vyhrazeném fondu SQL jsou nastaveny pomocí `DECLARE` příkazu nebo `SET` příkazu. Inicializace proměnných pomocí příkazu DECLARE je jedním z nejpružnější způsob, jak nastavit hodnotu proměnné ve fondu SQL.
 
 ```sql
 DECLARE @v  int = 0

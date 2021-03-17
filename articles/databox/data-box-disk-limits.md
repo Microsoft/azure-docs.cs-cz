@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9975533e00b0ca184e7cc16c5d8ea51d4eafa0a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203523"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361702"
 ---
 # <a name="azure-data-box-disk-limits"></a>Omezení Azure Data Box Disk
 
@@ -35,16 +35,16 @@ Tato část popisuje omezení pro službu Azure Storage Service a požadované z
 
 Nejnovější informace o omezeních služby Azure Storage a osvědčených postupech pro pojmenování sdílených složek, kontejnerů a souborů najdete tady:
 
-- [Pojmenování kontejnerů a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Pojmenování sdílených složek a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Zásady objektů blob bloku a objektů blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Pojmenování kontejnerů a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Pojmenování sdílených složek a odkazování na ně](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Zásady objektů blob bloku a objektů blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
 > Pokud existují nějaké soubory nebo adresáře, které překračují omezení služby Azure Storage, nebo nevyhovuje zásadám vytváření názvů souborů Azure nebo objektů blob, pak se tyto soubory nebo adresáře ingestují do Azure Storage prostřednictvím služby data box.
 
 ## <a name="data-upload-caveats"></a>Výhody a rizika nahrávání dat
 
-- Nekopírujte data přímo do disků. Zkopírujte data na předem vytvořené složky *BlockBlob*,*PageBlob*a *AzureFile* .
+- Nekopírujte data přímo do disků. Zkopírujte data na předem vytvořené složky *BlockBlob*,*PageBlob* a *AzureFile* .
 - Složka pod *BlockBlob* a *PageBlob* je kontejner. Například kontejnery jsou vytvořeny jako *BlockBlob/Container* a *PageBlob/Container*.
 - Pokud máte v cloudu existující objekt Azure (například objekt BLOB) se stejným názvem, jako má kopírovaný objekt, Data Box Disk soubor přejmenuje jako soubor (1) v cloudu.
 - Každý soubor zapsaný do sdílených složek *BlockBlob* a *PageBlob* se nahraje jako objekt blob bloku a objekt blob stránky v uvedeném pořadí.
@@ -64,7 +64,7 @@ Tady jsou omezení velikosti dat, která se dají zkopírovat do účtu úloži�
 
 | Typ dat             | Výchozí omezení          |
 |--------------------------|------------------------|
-| objekt blob bloku, objekt blob stránky    | Aktuální informace o těchto omezeních najdete v tématu [cíle škálování služby Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage), [cíle škálování Azure úrovně Standard](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)a [cíl škálování souborů Azure](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets). <br /><br /> Omezení zahrnují data ze všech zdrojů, včetně Data Box Disk.|
+| objekt blob bloku, objekt blob stránky    | Aktuální informace o těchto omezeních najdete v tématu [cíle škálování služby Azure Blob Storage](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [cíle škálování Azure úrovně Standard](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)a [cíle škálování souborů Azure](../storage/files/storage-files-scale-targets.md). <br /><br /> Omezení zahrnují data ze všech zdrojů, včetně Data Box Disk.|
 
 
 ## <a name="azure-object-size-limits"></a>Omezení velikosti objektů Azure
@@ -76,7 +76,7 @@ Tady jsou velikosti objektů Azure, které se dají zapsat. Zajistěte, aby vše
 | Objekt blob bloku        | ~ 4,75 TiB                                                 |
 | Objekt blob stránky         | 8 TiB <br> (Každý soubor nahraný ve formátu objektu blob stránky musí být 512 bajtů, jinak se nahrávání nepovede. <br> VHD i VHDX jsou zarovnaný 512 bajtů.) |
 |Azure Files        | 1 TiB <br> Max. Velikost sdílené složky je 5 TiB.     |
-| Spravované disky     |4 TiB <br> Další informace o velikosti a omezeních najdete v těchto tématech: <li>[Cíle škálovatelnosti pro spravované disky](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| Spravované disky     |4 TiB <br> Další informace o velikosti a omezeních najdete v těchto tématech: <li>[Cíle škálovatelnosti pro spravované disky](../virtual-machines/disks-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Zásady pro pojmenovávání objektů blob bloku Azure, objektů blob stránky a názvů souborů
@@ -84,7 +84,7 @@ Tady jsou velikosti objektů Azure, které se dají zapsat. Zajistěte, aby vše
 | Entita                                       | Konvence                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Názvy kontejnerů pro objekt blob bloku a objekt blob stránky <br> Názvy sdílených složek pro soubory Azure | Musí se jednat o platný název DNS, který má délku 3 až 63 znaků. <br>  Musí začínat písmenem nebo číslicí. <br> Může obsahovat jenom malá písmena, číslice a spojovník (-). <br> Každé pomlčce (-) musí bezprostředně předcházet číslice (0–9) nebo malé písmeno (a–z) a také po ní musí následovat. <br> Názvy nesmí obsahovat po sobě jdoucí pomlčky. |
-| Názvy adresářů a souborů pro soubory Azure     |<li> Bez rozlišování velkých a malých písmen a nesmí překročit 255 znaků. </li><li> Nemůže končit lomítkem (/). </li><li>Pokud je tato akce k dispozici, bude automaticky odebrána. </li><li> Nejsou povoleny následující znaky:<code>" \\ / : \| < > * ?</code></li><li> Vyhrazené znaky v adresách URL musí být správně uzavřené do uvozovek. </li><li> Neplatné znaky cesty URL nejsou povoleny. Kódové body, jako \\ je uE000, nejsou platné znaky Unicode. Některé znaky ASCII nebo Unicode, například řídicí znaky (0x00 až 0x1F, \\ u0081 atd.), nejsou také povoleny. Pravidla upravující řetězce Unicode v HTTP/1.1 najdete v dokumentu RFC 2616, oddíl 2,2: základní pravidla a RFC 3987. </li><li> Následující názvy souborů nejsou povoleny: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, tečka (.) a dva tečky (..).</li>|
+| Názvy adresářů a souborů pro soubory Azure     |<li> Bez rozlišování velkých a malých písmen a nesmí překročit 255 znaků. </li><li> Nemůže končit lomítkem (/). </li><li>Pokud je tato akce k dispozici, bude automaticky odebrána. </li><li> Nejsou povoleny následující znaky: <code>" \\ / : \| < > * ?</code></li><li> Vyhrazené znaky v adresách URL musí být správně uzavřené do uvozovek. </li><li> Neplatné znaky cesty URL nejsou povoleny. Kódové body, jako \\ je uE000, nejsou platné znaky Unicode. Některé znaky ASCII nebo Unicode, například řídicí znaky (0x00 až 0x1F, \\ u0081 atd.), nejsou také povoleny. Pravidla upravující řetězce Unicode v HTTP/1.1 najdete v dokumentu RFC 2616, oddíl 2,2: základní pravidla a RFC 3987. </li><li> Následující názvy souborů nejsou povoleny: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, tečka (.) a dva tečky (..).</li>|
 | Názvy objektů blob bloku a objektů blob stránky      | Názvy objektů blob rozlišují velká a malá písmena a smí obsahovat libovolnou kombinaci znaků. <br> Název objektu blob musí mít délku 1 až 1024 znaků. <br> Vyhrazené znaky v adresách URL musí být správně uzavřené do uvozovek. <br>Počet segmentů cesty, ze kterých se název objektu blob skládá, nesmí překročit 254. Segment cesty je řetězec mezi po sobě jdoucími znaky oddělovače (třeba lomítko „/“), který odpovídá názvu virtuálního adresáře. |
 
 ## <a name="managed-disk-naming-conventions"></a>Zásady vytváření názvů spravovaných disků

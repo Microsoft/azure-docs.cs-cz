@@ -1,24 +1,20 @@
 ---
 title: Kopírování dat z MySQL pomocí Azure Data Factory
 description: Přečtěte si o konektoru MySQL v Azure Data Factory, který umožňuje kopírovat data z databáze MySQL do úložiště dat podporovaného jako jímka.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 9fbf4062304dda7112e89ecd4abd5288533f28ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83635778"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375251"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopírování dat z MySQL pomocí Azure Data Factory
+
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-onprem-mysql-connector.md)
 > * [Aktuální verze](connector-mysql.md)
@@ -56,7 +52,7 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu MySQL jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **MySQL** . | Yes |
 | připojovací řetězec | Zadejte informace potřebné pro připojení k instanci Azure Database for MySQL.<br/> Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `password` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Yes |
@@ -66,7 +62,9 @@ Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 
 | Vlastnost | Popis | Možnosti | Vyžadováno |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Tato možnost určuje, zda ovladač při připojování k MySQL používá šifrování TLS a ověřování. Např.:`SSLMode=<0/1/2/3/4>`| DISABLEd (0)/PREFEROVÁNo (1) **(výchozí)** /požadováno (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | No |
+| SSLMode | Tato možnost určuje, zda ovladač při připojování k MySQL používá šifrování TLS a ověřování. Například  `SSLMode=<0/1/2/3/4>` .| DISABLEd (0)/PREFEROVÁNo (1) **(výchozí)** /požadováno (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | No |
+| SSLCert | Úplná cesta a název souboru. pem obsahujícího certifikát SSL, který se používá k prokázání identity klienta. <br/> Chcete-li zadat privátní klíč pro šifrování tohoto certifikátu před jeho odesláním na server, použijte `SSLKey` vlastnost.| | Ano, pokud se používá obousměrné ověřování SSL. |
+| SSLKey | Úplná cesta a název souboru, který obsahuje privátní klíč použitý k šifrování certifikátu na straně klienta během obousměrného ověřování SSL.|  | Ano, pokud se používá obousměrné ověřování SSL. |
 | UseSystemTrustStore | Tato možnost určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| Povoleno (1)/zakázáno (0) **(výchozí)** | No |
 
 **Příklad:**
@@ -96,13 +94,13 @@ Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
         "type": "MySql",
         "typeProperties": {
             "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -145,7 +143,7 @@ Pokud jste používali propojenou službu MySQL s následující datovou část�
 
 Chcete-li kopírovat data z MySQL, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **MySQL** . | Yes |
 | tableName | Název tabulky v databázi MySQL | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
@@ -178,10 +176,10 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Chcete-li kopírovat data z MySQL, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MySqlSource** . | Yes |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

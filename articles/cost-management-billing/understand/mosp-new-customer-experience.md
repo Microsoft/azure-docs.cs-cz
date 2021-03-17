@@ -4,15 +4,16 @@ description: Začněte pracovat s aktualizovaným fakturačním účtem Azure a 
 author: bandersmsft
 ms.reviewer: amberbhargava
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: 37b50e8761609f864d2cb16e7869614db64bac71
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
-ms.translationtype: HT
+ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844911"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575462"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Začínáme s aktualizovaným fakturačním účtem Azure
 
@@ -39,9 +40,9 @@ Fakturační profil slouží ke správě faktur a způsobů platby. Na začátku
 
 Po aktualizaci účtu se pro každé předplatné automaticky vytvoří fakturační profil. Poplatky za předplatné se naúčtují příslušnému fakturačnímu profilu a zobrazují se na jeho faktuře.
 
-K rolím ve fakturačních profilech se vážou oprávnění pro zobrazování a správu faktur a způsobů platby. Tyto role by se měly přiřazovat uživatelům, kteří hradí faktury, například členům účetního týmu ve vaší organizaci. Podrobnosti najdete v části [Role a úlohy související s fakturačním profilem](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks). 
+K rolím ve fakturačních profilech se vážou oprávnění pro zobrazování a správu faktur a způsobů platby. Tyto role by se měly přiřazovat uživatelům, kteří hradí faktury, například členům účetního týmu ve vaší organizaci. Podrobnosti najdete v části [Role a úlohy související s fakturačním profilem](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
 
-Po aktualizaci účtu se pro každé předplatné, pro které jste ostatním poskytli oprávnění [zobrazovat faktury](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice), uživatelům, kteří mají roli vlastníka, přispěvatele, čtenáře nebo čtenáře fakturace Azure RBAC, poskytne pro příslušný fakturační profil role čtenáře.
+Po aktualizaci účtu se pro každé předplatné, pro které jste ostatním poskytli oprávnění [zobrazovat faktury](download-azure-invoice.md#allow-others-to-download-your-subscription-invoice), uživatelům, kteří mají roli vlastníka, přispěvatele, čtenáře nebo čtenáře fakturace Azure, poskytne pro příslušný fakturační profil role čtenáře.
 
 ## <a name="invoice-sections"></a>Oddíly faktury
 
@@ -81,7 +82,7 @@ Vaše nové prostředí zahrnuje následující možnosti fakturace a správy n�
 
 **Přiřazení několika správců pro provádění fakturačních operací:** Oprávnění k fakturaci můžete přiřadit několika uživatelům, kteří budou spravovat fakturaci pro váš účet. Poskytnutím možnosti čtení, zápisu nebo obou těchto možností dalším uživatelům získáte potřebnou flexibilitu.
 
-**Vytváření dalších předplatných přímo na webu Azure Portal:** Na webu Azure Portal můžete předplatná vytvářet jedním kliknutím.
+**Vytváření dalších předplatných přímo na webu Azure Portal:** Na webu Azure Portal můžete předplatná vytvářet jedním výběrem.
 
 #### <a name="api-support"></a>Podpora rozhraní API
 
@@ -103,8 +104,59 @@ Pokud k dotazování nebo aktualizaci fakturačních dat nebo údajů o využit�
 
 |Rozhraní API | Změny  |
 |---------|---------|
-|[Fakturační účty – seznam](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/billingaccounts/list) | V rozhraní API pro fakturační účty – seznam má starý fakturační účet jako typ smlouvy nastavený **MicrosoftOnlineServiceProgram**, v novém fakturačním účtu bude nastavený typ smlouvy **MicrosoftCustomerAgreement**. Pokud využíváte závislost na typu smlouvy, proveďte prosím příslušnou aktualizaci. |
-|[Faktury – seznam podle předplatného pro fakturaci](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Toto rozhraní API vrátí jenom faktury, které se vygenerovaly před aktualizací vašeho účtu. Pokud chcete získat faktury vygenerované v novém fakturačním účtu, musíte použít rozhraní API pro [faktury seznam podle fakturačního účtu](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount). |
+|[Fakturační účty – seznam](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | V rozhraní API pro fakturační účty – seznam má starý fakturační účet jako typ smlouvy nastavený **MicrosoftOnlineServiceProgram**, v novém fakturačním účtu bude nastavený typ smlouvy **MicrosoftCustomerAgreement**. Pokud využíváte závislost na typu smlouvy, proveďte příslušnou aktualizaci. |
+|[Faktury – seznam podle předplatného pro fakturaci](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Toto rozhraní API vrátí jenom faktury, které se vygenerovaly před aktualizací vašeho účtu. Pokud chcete získat faktury vygenerované v novém fakturačním účtu, musíte použít rozhraní API pro [faktury seznam podle fakturačního účtu](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount). |
+
+## <a name="cost-management-updates-after-account-update"></a>Aktualizace Cost Managementu po aktualizaci účtu
+
+Aktualizovaný fakturační účet Azure pro Smlouvu se zákazníkem poskytuje přístup k novému a rozšířenému prostředí Cost Managementu na webu Azure Portal, které pro účet s průběžnými platbami nebylo k dispozici.
+
+### <a name="new-capabilities"></a>Nové funkce
+
+Pro fakturační účet Azure jsou k dispozici následující nové funkce.
+
+#### <a name="new-billing-scopes"></a>Nové rozsahy fakturace
+
+V rámci aktualizovaného účtu máte ve službě Cost Management + Billing k dispozici nové rozsahy. Kromě pomoci s hierarchickým uspořádáním a fakturací představují také způsob, jak zobrazit kombinované poplatky z několika základních předplatných. Další informace o rozsazích fakturace najdete v tématu [Rozsahy smluv se zákazníkem Microsoftu](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes).
+
+Můžete také využít rozhraní API služby Cost Management a získat tak kombinované zobrazení nákladů ve větším rozsahu. Všechna rozhraní API služby Cost Management, která využívají rozsah předplatného, jsou stále k dispozici s některými drobnými změnami ve schématu. Další informace o těchto rozhraních API najdete v tématu věnovaném [rozhraním API služby Azure Cost Management](/rest/api/cost-management/) a [rozhraním API služby Azure Consumption](/rest/api/consumption/).
+
+#### <a name="cost-allocation"></a>Alokace nákladů
+
+S aktualizovaným účtem můžete pomocí funkcí pro alokaci nákladů distribuovat náklady ze sdílených služeb v rámci vaší organizace. Další informace o alokaci nákladů najdete v tématu [Vytváření a správa pravidel alokace nákladů na Azure](../costs/allocate-costs.md).
+
+#### <a name="power-bi"></a>Power BI
+
+Konektor služby Azure Cost Management pro Power BI Desktop vám pomůže vytvářet vlastní sestavy a vizualizace využití a výdajů za Azure. K údajům o nákladech a využití máte přístup po připojení k aktualizovanému účtu. Další informace o konektoru služby Azure Cost Management pro Power BI Desktop najdete v tématu [Vytvoření vizuálů a sestav s konektorem Azure Cost Management v aplikaci Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management).
+
+### <a name="updated-capabilities"></a>Aktualizované možnosti
+
+Pro fakturační účet Azure jsou k dispozici následující aktualizované funkce.
+
+#### <a name="cost-analysis"></a>Analýza nákladů
+
+Můžete dál zobrazovat a sledovat náklady za jednotlivé měsíce a nově můžete v rámci analýzy nákladů zobrazit náklady na rezervace a náklady na nákup na webu Marketplace.
+
+Při použití aktualizovaného účtu dostanete jednu fakturu se všemi poplatky za Azure. Máte teď také zjednodušené zobrazení měsíčního kalendáře, které nahrazuje dříve používané zobrazení fakturačních období.
+
+Pokud například vaše fakturační období pro původní účet bylo od 24. listopadu do 23. prosince, po upgradu se přejde na období od 1. listopadu do 30. listopadu, od 1. prosince do 31. prosince atd.
+
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Obrázek s porovnáním starých a nových fakturačních období" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+
+#### <a name="budgets"></a>Rozpočty
+
+Nově můžete vytvářet rozpočty pro fakturační účet, které vám umožní sledovat náklady v rámci předplatných. Máte také možnost udržovat si prostřednictvím rozpočtů přehled o poplatcích za nákupy. Další informace o rozpočtech najdete v tématu [Vytváření a správa rozpočtů Azure](../costs/tutorial-acm-create-budgets.md).
+
+#### <a name="exports"></a>exporty
+
+Nový fakturační účet nabízí vylepšené funkce exportu. Můžete například vytvořit exporty pro skutečné náklady, které zahrnují nákupy nebo amortizované náklady (náklady na nákup rezervací rozprostřené v rámci nákupního období). Můžete také vytvořit export pro fakturační účet a získat tak údaje o využití a poplatcích napříč všemi předplatnými ve fakturačním účtu. Další informace o exportu najdete v tématu [Vytvoření a správa exportovaných dat](../costs/tutorial-export-acm-data.md).
+
+> [!NOTE]
+> Exporty vytvořené před aktualizací účtu pomocí **měsíčního exportu nákladů za poslední měsíc** budou obsahovat data za poslední kalendářní měsíc, nikoli za poslední fakturační období.
+
+Například pro fakturační období od 23. prosince do 22. ledna budou ve vyexportovaném souboru CSV k dispozici údaje o nákladech a využití za tuto dobu. Po dokončení aktualizace bude export obsahovat data za kalendářní měsíc. Například od 1. ledna do 31. ledna atd.
+
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Obrázek s porovnáním podrobností starých a nových exportů" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>Další informace
 
@@ -112,7 +164,7 @@ Následující oddíly obsahují další informace týkající se nového prost�
 
 **Žádné výpadky služeb:** Služby Azure ve vašem předplatném poběží i nadále bez přerušení. Jediná aktualizace, ke které dojde, je aktualizace fakturačního prostředí. Stávající prostředky, skupiny prostředků ani skupiny pro správu to neovlivní.
 
-**Žádné změny prostředků Azure:** Tato aktualizace neovlivňuje přístup k prostředkům Azure, které byly nastavené pomocí řízení přístupu na základě role v Azure (RBAC).
+**Žádné změny prostředků Azure:** Tato aktualizace neovlivňuje přístup k prostředkům Azure, které byly nastavené pomocí řízení přístupu na základě role v Azure (Azure RBAC).
 
 **Dostupnost dřívějších faktur v novém prostředí:** Faktury vygenerované před aktualizací vašeho účtu budou dál dostupné na webu Azure Portal.
 

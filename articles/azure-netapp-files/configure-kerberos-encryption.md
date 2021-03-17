@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/18/2021
 ms.author: b-juche
-ms.openlocfilehash: 05d173b715a8bc060e2f4d9cdcc7e3aef5630109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 6ff87d046c60f588e133010895ec3e7ce08cb71f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535389"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740558"
 ---
-# <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurace šifrování protokolu Kerberos NFSv 4.1 pro Azure NetApp Files
+# <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurace šifrování Kerberos NFSv4.1 pro Azure NetApp Files
 
 Azure NetApp Files podporuje šifrování klienta NFS v režimech Kerberos (krb5, Krb5i a krb5p) pomocí šifrování AES-256. Tento článek popisuje požadované konfigurace pro použití svazku NFSv 4.1 s šifrováním protokolu Kerberos.
 
@@ -40,7 +40,7 @@ Pro šifrování klientů NFSv 4.1 se platí následující požadavky:
 
 1.  Pokud chcete vytvořit svazek NFSv 4.1, postupujte podle kroků v části [vytvoření svazku NFS pro Azure NetApp Files](azure-netapp-files-create-volumes.md) .   
 
-    Na stránce vytvořit svazek nastavte verzi NFS na **nfsv 4.1**a nastavte protokol Kerberos na **povoleno**.
+    Na stránce vytvořit svazek nastavte verzi NFS na **nfsv 4.1** a nastavte protokol Kerberos na **povoleno**.
 
     > [!IMPORTANT] 
     > Po vytvoření svazku již nelze změnit výběr povolení protokolu Kerberos.
@@ -57,11 +57,11 @@ Pro šifrování klientů NFSv 4.1 se platí následující požadavky:
 
 ## <a name="configure-the-azure-portal"></a>Nakonfigurovat Azure Portal 
 
-1.  Postupujte podle pokynů v tématu [vytvoření připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection).  
+1.  Postupujte podle pokynů v tématu [vytvoření připojení ke službě Active Directory](create-active-directory-connections.md).  
 
     Protokol Kerberos vyžaduje, abyste ve službě Active Directory vytvořili aspoň jeden účet počítače. Informace o účtu, které poskytnete, se používají k vytváření účtů pro svazky Kerberos protokolu SMB *i* nfsv 4.1. Tento počítač je vytvořen automaticky během vytváření svazku.
 
-2.  V části **sféra protokolu Kerberos**zadejte **název serveru AD** a **IP** adresu služby KDC.
+2.  V části **sféra protokolu Kerberos** zadejte **název serveru AD** a **IP** adresu služby KDC.
 
     Server AD a IP adresa služby KDC můžou být na stejném serveru. Tyto informace slouží k vytvoření účtu počítače hlavního názvu služby, který používá Azure NetApp Files. Po vytvoření účtu počítače Azure NetApp Files použije záznamy DNS serveru k vyhledání dalších serverů služby KDC podle potřeby. 
 
@@ -75,7 +75,7 @@ Konfigurace protokolu Kerberos pro NFSv 4.1 vytvoří dva účty počítačů ve
 * Účet počítače pro sdílené složky SMB
 * Počítačový účet pro NFSv 4.1 – Tento účet můžete identifikovat pomocí předpony `NFS-` . 
 
-Po vytvoření prvního svazku protokolu Kerberos NFSv 4.1 nastavte typ šifrování nebo účet počítače pomocí následujícího příkazu PowerShellu:
+Po vytvoření prvního svazku protokolu Kerberos NFSv 4.1 nastavte typ šifrování pro účet počítače pomocí následujícího příkazu PowerShellu:
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -89,18 +89,18 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 
 2. Pokud chcete zobrazit pokyny, vyberte ze svazku **pokyny k připojení** .
 
-    Příklad: 
+    Například: 
 
     ![Pokyny pro připojení ke svazkům protokolu Kerberos](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 
 3. Vytvořte adresář (přípojný bod) pro nový svazek.  
 
 4. Nastavte výchozí typ šifrování na AES 256 pro účet počítače:  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * Tento příkaz musíte spustit pouze jednou pro každý účet počítače.
     * Tento příkaz můžete spustit z řadiče domény nebo z počítače s nainstalovanými [RSAT](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) . 
-    * `$COMPUTERACCOUNT`Proměnná je účet počítače vytvořený ve službě Active Directory při nasazení svazku Kerberos. Jedná se o účet s předponou `NFS-` . 
+    * `$NFSCOMPUTERACCOUNT`Proměnná je účet počítače vytvořený ve službě Active Directory při nasazení svazku Kerberos. Jedná se o účet s předponou `NFS-` . 
     * `$ANFSERVICEACCOUNT`Proměnná je uživatelský účet služby Active Directory bez oprávnění s delegovanými ovládacími prvky v rámci organizační jednotky, ve které byl účet počítače vytvořen. 
 
 5. Připojte svazek na hostiteli: 
@@ -112,67 +112,13 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 
 ## <a name="performance-impact-of-kerberos-on-nfsv41"></a><a name="kerberos_performance"></a>Dopad na výkon protokolu Kerberos v NFSv 4.1 
 
-V této části se seznámíte s dopadem na výkon protokolu Kerberos v NFSv 4.1.
-
-### <a name="available-security-options"></a>Dostupné možnosti zabezpečení 
-
-Možnosti zabezpečení, které jsou aktuálně dostupné pro svazky NFSv 4.1, jsou následující: 
-
-* **SEK = sys** používá k ověření operací systému souborů NFS místní identifikátory UID a GIDs AUTH_SYS v systému UNIX.
-* **SEK = krb5** používá k ověřování uživatelů protokol Kerberos V5 namísto místních identifikátorů UID a GIDS systému UNIX.
-* **SEK = Krb5i** používá protokol Kerberos V5 k ověřování uživatelů a provádí kontrolu integrity operací systému souborů NFS pomocí zabezpečených kontrolních součtů, které zabraňují manipulaci s daty.
-* **SEK = krb5p** používá protokol Kerberos V5 pro ověřování uživatelů a kontrolu integrity. Šifruje provoz systému souborů NFS, aby nedocházelo ke sledování provozu. Tato možnost je nejbezpečnější nastavení, ale zahrnuje i nejvyšší nároky na výkon.
-
-### <a name="performance-vectors-tested"></a>Testované vektory výkonu
-
-Tato část popisuje jeden vliv na výkon různých možností na straně klienta `sec=*` .
-
-* Dopad na výkon byl testován na dvou úrovních: nízká Concurrency (nízké zatížení) a vysoká souběžnost (horní meze vstupně-výstupních operací a propustnosti).  
-* Byly testovány tři typy úloh:  
-    * Nízká operace náhodným čtením/zápisem (pomocí FIO)
-    * Sekvenční operace čtení/zápisu velkých operací (pomocí FIO)
-    * Metadata vysoké zátěže generované aplikacemi, jako je git
-
-### <a name="expected-performance-impact"></a>Očekávaný dopad na výkon 
-
-Existují dvě oblasti výběru: světlo zatížení a horní mez. Následující seznamy popisují nastavení zabezpečení vlivu na výkon podle nastavení zabezpečení a scénáře podle scénáře. Všechna porovnání jsou provedena proti `sec=sys` parametru zabezpečení.
-
-Dopad na výkon krb5:
-
-* Nízká souběžná (r/w):
-    * Sekvenční latence zvýšené o 0,3 MS.
-    * Náhodná vstupně-výstupní latence vzrostla 0,2 MS.
-    * I/O latence metadat vzrostla 0,2 MS.
-* Vysoká souběžnost (r/w): 
-    * Krb5 neovlivnila maximální Sekvenční propustnost.
-    * Maximální počet náhodných vstupně-výstupních operací se snížil o 30% pro úlohy čistého čtení s celkovým dopadem na hodnotu nula, protože se zatížení posune na čistý zápis. 
-    * Maximální zatížení metadat se snížilo na 30%.
-
-Dopad na výkon Krb5i: 
-
-* Nízká souběžná (r/w):
-    * Sekvenční latence zvýšené o 0,5 ms.
-    * Náhodná vstupně-výstupní latence vzrostla 0,2 MS.
-    * I/O latence metadat vzrostla 0,2 MS.
-* Vysoká souběžnost (r/w): 
-    * Maximální následná propustnost se snížila o 70% celkových bez ohledu na kombinaci úloh.
-    * Maximální počet náhodných vstupně-výstupních operací se snížil o 50% pro úlohy čistého čtení s celkovým dopadem snížení na 25% při posunu zátěže na čistý zápis. 
-    * Maximální zatížení metadat se snížilo na 30%.
-
-Dopad na výkon krb5p:
-
-* Nízká souběžná (r/w):
-    * Sekvenční latence zvýšené o 0,8 ms.
-    * Náhodná vstupně-výstupní latence vzrostla 0,2 MS.
-    * I/O latence metadat vzrostla 0,2 MS.
-* Vysoká souběžnost (r/w): 
-    * Maximální následná propustnost se snížila o 85% celkových bez ohledu na kombinaci úloh. 
-    * Maximální počet náhodných vstupně-výstupních operací poklesl o 65% pro úlohy čistého čtení s celkovým dopadem snížení na 43% při posunování zatížení na čistý zápis. 
-    * Maximální zatížení metadat se snížilo na 30%.
+Měli byste pochopit možnosti zabezpečení, které jsou k dispozici pro svazky NFSv 4.1, testované vektory výkonu a očekávaný dopad na výkon protokolu Kerberos. Podrobnosti najdete v podrobnostech o [dopadu protokolu Kerberos na svazcích nfsv 4.1](performance-impact-kerberos.md) .  
 
 ## <a name="next-steps"></a>Další kroky  
 
+* [Dopad na výkon protokolu Kerberos na svazcích NFSv 4.1](performance-impact-kerberos.md)
+* [Řešení potíží se svazkem NFSv 4.1 protokolu Kerberos](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Nejčastější dotazy týkající se Azure NetApp Files](azure-netapp-files-faqs.md)
 * [Vytvoření svazku NFS pro službu Azure NetApp Files](azure-netapp-files-create-volumes.md)
-* [Vytvoření připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)
+* [Vytvoření připojení ke službě Active Directory](create-active-directory-connections.md)
 * [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md) 

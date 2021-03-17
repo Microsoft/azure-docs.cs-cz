@@ -62,12 +62,8 @@
       href: walkthroughs-azure-data-lake.md
     - name: 'R, Python a T-SQL s SQL Serverem'
       href: walkthroughs-sql-server.md
-    - name: T-SQL a Python s SQL DW
+    - name: T-SQL a Python se službou Azure Synapse Analytics
       href: walkthroughs-sql-data-warehouse.md
-- name: Pomůcky a nástroje
-  items:
-    - name: Nástroje pro modelování a zkoumání dat (GitHub)
-      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
 - name: Školení
   items:
     - name: Pro odborníky na data
@@ -80,23 +76,23 @@
       href: environment-setup.md
       items:
         - name: Účty služby Azure Storage
-          href: /azure/storage/common/storage-create-storage-account?context=azure/machine-learning/team-data-science-process/context/ml-context
+          href: ../../storage/common/storage-account-create.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
         - name: Platformy a nástroje
           href: platforms-and-tools.md
         - name: R a Python v clusterech HDInsight
           items:
             - name: Představujeme Spark ve službě HDInsight
-              href: /azure/hdinsight/spark/apache-spark-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-overview.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: Vytvoření clusteru Apache Spark ve službě Azure HDInsight
-              href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: Jádra PySpark pro poznámkový blok Jupyter
-              href: /azure/hdinsight/spark/apache-spark-jupyter-notebook-kernels?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: R Server v HDInsightu
-              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: Začínáme používat R Server ve službě HDInsight
-              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
         - name: Pracovní prostor Machine Learning Studio (classic)
-          href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
+          href: ../classic/create-workspace.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
     - name: Analýza obchodních potřeb
       items:
         - name: Určení scénáře
@@ -115,9 +111,9 @@
                 - name: Použití Storage Exploreru
                   href: move-data-to-azure-blob-using-azure-storage-explorer.md
                 - name: Použití AzCopy
-                  href: 'https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10'
+                  href: ../../storage/common/storage-use-azcopy-v10.md
                 - name: Použití Pythonu
-                  href: /azure/storage/blobs/storage-python-how-to-use-blob-storage?context=azure/machine-learning/team-data-science-process/context/ml-context
+                  href: ../../storage/blobs/storage-quickstart-blobs-python.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
                 - name: Použití SSIS
                   href: move-data-to-azure-blob-using-ssis.md
             - name: Přechod na SQL na virtuálním počítači
@@ -148,7 +144,7 @@
               items:
                 - name: Přehled
                   href: sample-data.md
-                - name: Použití služby Blob Storage
+                - name: Použít Blob Storage
                   href: sample-data-blob.md
                 - name: Použití SQL Serveru
                   href: sample-data-sql-server.md
@@ -185,15 +181,15 @@
         - name: Vytvoření a trénování modelů
           items:
             - name: Volba algoritmů
-              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../how-to-select-algorithms.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: Tahák s algoritmy
-              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../algorithm-cheat-sheet.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
     - name: Nasazení modelů v produkčním prostředí
       href: deploy-models-in-production.md
 - name: Související
   items:
     - name: Cognitive Services
-      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+      href: ../../cognitive-services/index.yml
     - name: Detekce anomálií
       href: apps-anomaly-detection-api.md
     - name: Prediktivní údržba
@@ -215,7 +211,7 @@
     - name: Související prostředky Microsoftu
       items:
         - name: Stránka s dotazy na Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html'
+          href: /answers/topics/azure-machine-learning-studio-classic.html
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
         - name: Videa

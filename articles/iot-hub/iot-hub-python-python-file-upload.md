@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 7ac634944c9df479617af4c9171faf0f99df4b1b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 77d51b2c839a64567838fa4d6308d203a6bb8b82
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876644"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501137"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Python)
 
@@ -33,6 +33,8 @@ Na konci tohoto kurzu spustíte konzolovou aplikaci v Pythonu:
 * **FileUpload.py**, který nahraje soubor do úložiště pomocí sady SDK pro zařízení Python.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,7 +109,7 @@ V této části vytvoříte aplikaci pro zařízení pro nahrání souboru do ce
             return (False, ex)
     ```
 
-    Tato funkce analyzuje předanou strukturu *blob_info* , aby VYTVOŘILA adresu URL, kterou používá k inicializaci [Azure. Storage. blob. BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python). Pak tento soubor nahraje do úložiště objektů BLOB v Azure pomocí tohoto klienta.
+    Tato funkce analyzuje předanou strukturu *blob_info* , aby VYTVOŘILA adresu URL, kterou používá k inicializaci [Azure. Storage. blob. BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient). Pak tento soubor nahraje do úložiště objektů BLOB v Azure pomocí tohoto klienta.
 
 1. Přidejte následující kód pro připojení klienta a nahrání souboru:
 
@@ -207,6 +209,6 @@ V tomto kurzu jste zjistili, jak používat možnosti nahrávání souborů IoT 
 
 Další informace o Azure Blob Storage s následujícími odkazy:
 
-* [Dokumentace k Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/)
+* [Dokumentace k Azure Blob Storage](../storage/blobs/index.yml)
 
-* [Dokumentace k rozhraní Python API pro Azure Blob Storage](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Dokumentace k rozhraní Python API pro Azure Blob Storage](/python/api/overview/azure/storage-blob-readme)

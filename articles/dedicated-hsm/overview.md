@@ -1,6 +1,6 @@
 ---
 title: Co je Dedicated HSM? – Vyhrazený modul HARDWAROVÉho zabezpečení Azure | Microsoft Docs
-description: Přehled vyhrazeného modulu HARDWAROVÉho zabezpečení Azure poskytuje klíčové možnosti úložiště v Azure, které vyhovují certifikaci FIPS 140-2 Level 3.
+description: Přečtěte si, jak je vyhrazený modul HARDWAROVÉho zabezpečení Azure služba Azure, která poskytuje úložiště kryptografických klíčů v Azure.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70881071"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90970196"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Co je Azure Dedicated HSM?
 
@@ -60,7 +60,7 @@ Vyhrazený modul HARDWAROVÉho zabezpečení Azure je specializovaná služba, k
 
 ### <a name="best-fit"></a>Nejlépe přizpůsobit
 
-Vyhrazený modul HARDWAROVÉho zabezpečení Azure je nejvhodnější pro scénáře "zvednutí a posunutí", které vyžadují přímý a výhradní přístup k zařízením HSM. Příklady obsahují:
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure je nejvhodnější pro scénáře "zvednutí a posunutí", které vyžadují přímý a výhradní přístup k zařízením HSM. Příklady:
 
 - Migrace aplikací z místního prostředí do Azure Virtual Machines
 - Migrace aplikací z Amazon AWS EC2 na virtuální počítače, které používají službu AWS Cloud HSM Classic (Amazon nenabízí tuto službu novým zákazníkům)

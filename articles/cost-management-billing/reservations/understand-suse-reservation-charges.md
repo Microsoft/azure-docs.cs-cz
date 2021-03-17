@@ -4,15 +4,16 @@ description: Zjistěte, jak se na software na virtuálních počítačích uplat
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: banders
-ms.openlocfilehash: b8e4c4188b0a3b862715a2e4eec2f31dd3f55ac9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2c17b2f9dc12fa7bff2dae8603bcf95a3a8ddfa0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902061"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350836"
 ---
 # <a name="azure-software-plan-discount"></a>Sleva za plán softwaru Azure
 
@@ -122,7 +123,7 @@ Další informace o rezervacích najdete v následujících článcích:
 
 - [Co jsou rezervace Azure?](save-compute-costs-reservations.md)
 - [Předplacení plánů softwaru SUSE z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Správa rezervací Azure](manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervací u smlouvy Enterprise](understand-reserved-instance-usage-ea.md)

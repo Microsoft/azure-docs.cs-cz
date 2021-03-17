@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure DDoS Protection úrovně Standard
+summary: Zjistěte, jak služba Azure DDoS Protection úrovně Standard v kombinaci s osvědčenými postupy návrhu aplikací poskytuje ochranu před útoky DDoS.
+metadata:
+  description: Zjistěte, jak služba Azure DDoS Protection úrovně Standard v kombinaci s osvědčenými postupy návrhu aplikací poskytuje ochranu před útoky DDoS.
+  keywords: azure ddos protection standard
+  author: yitoh
+  ms.author: yitoh
+  ms.date: 09/04/2019
+  ms.service: ddos-protection
+  ms.topic: landing-page
+  ms.custom: azure-ddos-protection
+  ms.openlocfilehash: 50f871b08e2a945c599f7217ce680669da39af40
+  ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 12/30/2020
+  ms.locfileid: "97813968"
+landingContent:
+- title: Další informace o službě Azure DDoS Protection úrovně Standard
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure DDoS Protection na úrovni Standard?
+      url: ddos-protection-overview.md
+  - linkListType: architecture
+    links:
+    - text: Funkce služby Azure DDoS Protection úrovně Standard
+      url: ddos-protection-standard-features.md
+    - text: Referenční architektury
+      url: ddos-protection-reference-architectures.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření plánu ochrany před útoky DDoS – portál
+      url: manage-ddos-protection.md
+- title: Konfigurace analýz útoků
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zobrazení a konfigurace telemetrie ochrany před útoky DDoS
+      url: telemetry.md
+    - text: Zobrazení a konfigurace protokolování diagnostiky DDoS
+      url: diagnostic-logging.md
+    - text: Zobrazení a konfigurace upozornění ochrany před útoky DDoS
+      url: alerts.md
+- title: Reakce na útoky DDoS
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Typy útoků
+      url: types-of-attacks.md
+    - text: Základní osvědčené postupy
+      url: fundamental-best-practices.md
+    - text: Komponenty strategie reakce na útoky DDoS
+      url: ddos-response-strategy.md
+  - linkListType: how-to-guide
+    links:
+    - text: Využití DDR (DDoS Rapid Response)
+      url: ddos-rapid-response.md

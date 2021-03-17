@@ -1,16 +1,14 @@
 ---
 title: Příprava nasazení samostatného clusteru
 description: Dokumentace týkající se přípravy prostředí a vytvoření konfigurace clusteru, která se má zvážit před nasazením clusteru určeného pro zpracování produkčního zatížení.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.author: dekapur
-ms.openlocfilehash: 6b07e3fe14478cf45df2f02378da4e83853cf9ea
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261037"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790948"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plánování a příprava nasazení samostatného clusteru Service Fabric
 
@@ -59,10 +57,10 @@ Tady jsou doporučené specifikace pro počítače ve Service Fabricm clusteru:
 * Připojení k zabezpečené síti nebo sítím pro všechny počítače
 * Nainstalovaný operační systém Windows Server (platné verze: 2012 R2, 2016, 1709 nebo 1803). Verze Service Fabric 6.4.654.9590 a novější také podporuje servery 2019 a 1809.
 * Úplná instalace [.NET Framework 4.5.1 nebo vyšší](https://www.microsoft.com/download/details.aspx?id=40773)verze
-* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell)
 * [Služba RemoteRegistry](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11)) by měla běžet na všech počítačích
 * **Instalační jednotka Service Fabric musí být systém souborů NTFS.**
-* ** *Protokoly výkonu* služeb systému Windows & výstrahy a *protokol událostí systému Windows* musí [být povoleny](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))**.
+* ***Protokoly výkonu* služeb systému Windows & výstrahy a *protokol událostí systému Windows* musí [být povoleny](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))**.
 
 > [!IMPORTANT]
 > Cluster, který nasazuje a konfiguruje správce clusteru, musí mít na každém z těchto počítačů [oprávnění správce](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) . Service Fabric nelze nainstalovat na řadič domény.
@@ -105,7 +103,7 @@ Když správce clusteru nakonfiguruje samostatný cluster Service Fabric, je pot
 5. Pokud počítače clusteru nejsou přístupné z Internetu, nastavte v konfiguraci clusteru následující:
    * Zakázat telemetrii: v části *vlastnosti* nastavené na *konfiguračního EnableTelemetry: false*
    * Zakázat automatické stažení verze prostředků infrastruktury & oznámením, že aktuální verze clusteru končí na konci podpory: v části *vlastnosti* nastavené na *"fabricClusterAutoupgradeEnabled": false*
-   * Případně, pokud je síťový přístup k Internetu omezený na bílé domény v seznamu, vyžadují se následující domény pro automatický upgrade: go.microsoft.com download.microsoft.com
+   * Případně platí, že pokud je síťový přístup k Internetu omezený na allowlisted domény, vyžadují se následující domény pro automatický upgrade: go.microsoft.com download.microsoft.com
 
 6. Nastavte vhodná Service Fabric vyloučení antivirové ochrany:
 

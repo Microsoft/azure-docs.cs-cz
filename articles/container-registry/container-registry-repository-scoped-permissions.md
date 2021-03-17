@@ -2,17 +2,17 @@
 title: Oprávnění k úložištím v Azure Container Registry
 description: Vytvoření tokenu s oprávněním vymezeným pro konkrétní úložiště v registru Premium pro vyžádání nebo vložení obrázků nebo provádění dalších akcí
 ms.topic: article
-ms.date: 05/27/2020
-ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/04/2021
+ms.openlocfilehash: ceec69d746f77ea7a23bc70d029c8b3736e7f292
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509402"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988253"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Vytvoření tokenu s oprávněními vymezenými úložištěm
 
-Tento článek popisuje, jak vytvořit tokeny a mapy oboru pro správu oprávnění vymezeného úložiště v registru kontejnerů. Díky vytvoření tokenů může vlastník registru poskytnout uživatelům nebo službám s vymezeným časem omezený přístup k úložištím a vyžádat si obrázky nebo provádět jiné akce. Token poskytuje přesnější oprávnění než jiné [Možnosti ověřování](container-registry-authentication.md)registru, které mají rozsah oprávnění k celému registru. 
+Tento článek popisuje, jak vytvořit tokeny a mapy oboru pro správu přístupu ke konkrétním úložištím v registru kontejnerů. Díky vytvoření tokenů může vlastník registru poskytnout uživatelům nebo službám s vymezeným časem omezený přístup k úložištím a vyžádat si obrázky nebo provádět jiné akce. Token poskytuje přesnější oprávnění než jiné [Možnosti ověřování](container-registry-authentication.md)registru, které mají rozsah oprávnění k celému registru. 
 
 Mezi scénáře vytvoření tokenu patří:
 
@@ -61,7 +61,7 @@ Následující obrázek znázorňuje vztah mezi tokeny a mapami rozsahu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Azure CLI** – příkazy rozhraní příkazového řádku Azure pro vytváření a správu tokenů jsou k dispozici v Azure CLI verze 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+* **Azure CLI** – příklady příkazů pro příkazy Azure CLI v tomto článku vyžadují Azure CLI verze 2.17.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 * **Docker** – k ověření pomocí registru pro vyžádání nebo vložení imagí potřebujete místní instalaci Docker. Docker poskytuje pokyny k instalaci pro systémy [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
 * **Registr kontejneru** – Pokud ho nemáte, vytvořte v předplatném Azure službu Premium Container registry nebo upgradujte existující registr. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md). 
 
@@ -79,7 +79,7 @@ az acr token create --name MyToken --registry myregistry \
   content/write content/read
 ```
 
-Výstup zobrazuje podrobnosti o tokenu. Ve výchozím nastavení se generují dvě hesla. Doporučuje se ukládat hesla na bezpečném místě, aby je bylo možné později použít k ověřování. Hesla se znovu nedají načíst, ale můžou se vygenerovat nové.
+Výstup zobrazuje podrobnosti o tokenu. Ve výchozím nastavení jsou vygenerována dvě hesla, jejichž platnost nevyprší, ale můžete také nastavit datum vypršení platnosti. Doporučuje se ukládat hesla na bezpečném místě, aby je bylo možné později použít k ověřování. Hesla se znovu nedají načíst, ale můžou se vygenerovat nové.
 
 ```console
 {
@@ -113,7 +113,7 @@ Výstup zobrazuje podrobnosti o tokenu. Ve výchozím nastavení se generují dv
 ```
 
 > [!NOTE]
-> Pokud chcete znovu vygenerovat hesla tokenu a nastavit dobu vypršení platnosti hesla, přečtěte si téma [obnovení hesla k tokenům](#regenerate-token-passwords) dále v tomto článku.
+> Chcete-li znovu vygenerovat hesla a období vypršení platnosti tokenu, přečtěte si téma [znovu vygenerovat hesla k tokenům](#regenerate-token-passwords) dále v
 
 Výstup obsahuje podrobnosti o mapování oboru, který příkaz vytvořil. `MyToken-scope-map`K použití stejných akcí v úložišti pro jiné tokeny můžete použít mapu rozsahu, který je zde pojmenován. Nebo aktualizujte mapování oboru později a změňte oprávnění přidružených tokenů.
 
@@ -141,7 +141,7 @@ az acr token create --name MyToken \
 Výstup zobrazuje podrobnosti o tokenu. Ve výchozím nastavení se generují dvě hesla. Doporučuje se ukládat hesla na bezpečném místě, aby je bylo možné později použít k ověřování. Hesla se znovu nedají načíst, ale můžou se vygenerovat nové.
 
 > [!NOTE]
-> Pokud chcete znovu vygenerovat hesla tokenu a nastavit dobu vypršení platnosti hesla, přečtěte si téma [obnovení hesla k tokenům](#regenerate-token-passwords) dále v tomto článku.
+> Chcete-li znovu vygenerovat hesla a období vypršení platnosti tokenu, přečtěte si téma [znovu vygenerovat hesla k tokenům](#regenerate-token-passwords) dále v
 
 ## <a name="create-token---portal"></a>Vytvoření tokenu – portál
 
@@ -150,14 +150,14 @@ Pomocí Azure Portal můžete vytvořit tokeny a mapy oborů. Stejně jako u `az
 Následující příklad vytvoří token a vytvoří mapu oboru s následujícími oprávněními pro `samples/hello-world` úložiště: `content/write` a `content/read` .
 
 1. Na portálu přejděte do registru kontejneru.
-1. V části **oprávnění úložiště**vyberte **tokeny (Preview) > + přidat**.
+1. V části **oprávnění úložiště** vyberte **tokeny (Preview) > + přidat**.
 
       :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-add.png" alt-text="Vytvoření tokenu na portálu":::
 1. Zadejte název tokenu.
-1. V části **Mapa oboru**vyberte **vytvořit novou**.
+1. V části **Mapa oboru** vyberte **vytvořit novou**.
 1. Nakonfigurujte mapu oboru:
     1. Zadejte název a popis mapy oboru. 
-    1. V části **úložiště**zadejte a `samples/hello-world` v části **oprávnění**vyberte `content/read` a `content/write` . Pak vyberte **+ Přidat**.  
+    1. V části **úložiště** zadejte a `samples/hello-world` v části **oprávnění** vyberte  `content/read` a `content/write` . Pak vyberte **+ Přidat**.  
 
         :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Vytvořit mapu oboru na portálu":::
 
@@ -171,8 +171,8 @@ Po ověření a vytvoření tokenu se na obrazovce **tokeny** zobrazí podrobnos
 Pokud chcete použít token vytvořený na portálu, musíte vygenerovat heslo. Můžete vygenerovat jedno nebo dvě hesla a nastavit datum vypršení platnosti pro každé z nich. 
 
 1. Na portálu přejděte do registru kontejneru.
-1. V části **oprávnění úložiště**vyberte **tokeny (Preview)** a vyberte token.
-1. V podrobnostech tokenu vyberte **Heslo1** nebo **password2**a vyberte ikonu generovat.
+1. V části **oprávnění úložiště** vyberte **tokeny (Preview)** a vyberte token.
+1. V podrobnostech tokenu vyberte **Heslo1** nebo **password2** a vyberte ikonu generovat.
 1. Na obrazovce heslo volitelně nastavte datum vypršení platnosti hesla a vyberte **Generovat**. Doporučuje se nastavit datum vypršení platnosti.
 1. Po vygenerování hesla ho zkopírujte a uložte na bezpečné místo. Po zavření obrazovky nelze načíst vygenerované heslo, ale můžete vygenerovat nové.
 
@@ -186,11 +186,11 @@ Metoda ověřování závisí na konfigurované akci nebo akcích přidruženýc
 
 |Akce  |Ověřování  |
   |---------|---------|
-  |`content/delete`    | `az acr repository delete`v Azure CLI<br/><br/>Příklad: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
-  |`content/read`     |  `docker login`<br/><br/>`az acr login`v Azure CLI<br/><br/>Příklad: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
-  |`content/write`     |  `docker login`<br/><br/>`az acr login`v Azure CLI     |
-  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests`v Azure CLI   |
-  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update`v Azure CLI |
+  |`content/delete`    | `az acr repository delete` v Azure CLI<br/><br/>Příklad: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
+  |`content/read`     |  `docker login`<br/><br/>`az acr login` v Azure CLI<br/><br/>Příklad: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
+  |`content/write`     |  `docker login`<br/><br/>`az acr login` v Azure CLI     |
+  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests` v Azure CLI   |
+  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update` v Azure CLI |
 
 ## <a name="examples-use-token"></a>Příklady: použití tokenu
 
@@ -198,13 +198,13 @@ V následujících příkladech se používá token vytvořený dříve v tomto 
 
 ### <a name="pull-and-tag-test-images"></a>Načíst a označit image testu
 
-V následujících příkladech si načetli `hello-world` `alpine` image a z dokovacího centra a označíte je jako registr a úložiště.
+V následujících příkladech můžete získat veřejné `hello-world` a `nginx` image z Microsoft Container registry a označit je pro registry a úložiště.
 
 ```bash
-docker pull hello-world
-docker pull alpine
-docker tag hello-world myregistry.azurecr.io/samples/hello-world:v1
-docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
+docker pull mcr.microsoft.com/hello-world
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+docker tag mcr.microsoft.com/hello-world myregistry.azurecr.io/samples/hello-world:v1
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine myregistry.azurecr.io/samples/nginx:v1
 ```
 
 ### <a name="authenticate-using-token"></a>Ověřování pomocí tokenu
@@ -234,17 +234,17 @@ Po úspěšném přihlášení se pokusí do registru odeslat označené obrázk
 docker push myregistry.azurecr.io/samples/hello-world:v1
 ```
 
-Token nemá oprávnění k `samples/alpine` úložišti, takže následující pokus o vložení se nezdaří s chybou, která je podobná této `requested access to the resource is denied` :
+Token nemá oprávnění k `samples/nginx` úložišti, takže následující pokus o vložení se nezdaří s chybou, která je podobná této `requested access to the resource is denied` :
 
 ```bash
-docker push myregistry.azurecr.io/samples/alpine:v1
+docker push myregistry.azurecr.io/samples/nginx:v1
 ```
 
 ### <a name="update-token-permissions"></a>Aktualizovat oprávnění tokenu
 
 Pokud chcete aktualizovat oprávnění tokenu, aktualizujte oprávnění v přidružené mapě oboru. Aktualizovaná mapa oboru se okamžitě použije na všechny přidružené tokeny. 
 
-Například proveďte aktualizaci `MyToken-scope-map` pomocí `content/write` akcí a `content/read` v `samples/alpine` úložišti a odeberte `content/write` akci v `samples/hello-world` úložišti.  
+Například proveďte aktualizaci `MyToken-scope-map` pomocí `content/write` akcí a `content/read` v `samples/ngnx` úložišti a odeberte `content/write` akci v `samples/hello-world` úložišti.  
 
 Pokud chcete použít rozhraní příkazového řádku Azure, spusťte příkaz [AZ ACR Scope-map Update][az-acr-scope-map-update] , aby se aktualizovala mapa oboru:
 
@@ -252,21 +252,21 @@ Pokud chcete použít rozhraní příkazového řádku Azure, spusťte příkaz 
 az acr scope-map update \
   --name MyScopeMap \
   --registry myregistry \
-  --add samples/alpine content/write content/read \
-  --remove samples/hello-world content/write 
+  --add-repository samples/nginx content/write content/read \
+  --remove-repository samples/hello-world content/write 
 ```
 
 Na webu Azure Portal:
 
 1. Přejděte do registru kontejneru.
-1. V části **oprávnění úložiště**vyberte **mapy oboru (Preview)** a vyberte mapu oboru, která se má aktualizovat.
-1. V části **úložiště**zadejte a `samples/alpine` v části **oprávnění**vyberte `content/read` a `content/write` . Pak vyberte **+ Přidat**.
-1. V části **úložiště**vyberte `samples/hello-world` a v části **oprávnění**zrušte výběr `content/write` . Pak vyberte **Uložit**.
+1. V části **oprávnění úložiště** vyberte **mapy oboru (Preview)** a vyberte mapu oboru, která se má aktualizovat.
+1. V části **úložiště** zadejte a `samples/nginx` v části **oprávnění** vyberte `content/read` a `content/write` . Pak vyberte **+ Přidat**.
+1. V části **úložiště** vyberte `samples/hello-world` a v části **oprávnění** zrušte výběr `content/write` . Pak vyberte **Uložit**.
 
 Po aktualizaci mapy oboru proběhne následující nabízení oznámení:
 
 ```bash
-docker push myregistry.azurecr.io/samples/alpine:v1
+docker push myregistry.azurecr.io/samples/nginx:v1
 ```
 
 Vzhledem k tomu, že mapa oboru má pouze `content/read` oprávnění k `samples/hello-world` úložišti, pokus o nahrání tohoto `samples/hello-world` úložiště nyní selhává:
@@ -278,12 +278,12 @@ docker push myregistry.azurecr.io/samples/hello-world:v1
 Navýšení imagí z obou úložišť je úspěšné, protože mapa oboru poskytuje `content/read` oprávnění pro obě úložiště:
 
 ```bash
-docker pull myregistry.azurecr.io/samples/alpine:v1
+docker pull myregistry.azurecr.io/samples/nginx:v1
 docker pull myregistry.azurecr.io/samples/hello-world:v1
 ```
 ### <a name="delete-images"></a>Odstranění imagí
 
-Aktualizujte mapu oboru přidáním `content/delete` akce do `alpine` úložiště. Tato akce povolí odstranění imagí v úložišti nebo odstranění celého úložiště.
+Aktualizujte mapu oboru přidáním `content/delete` akce do `nginx` úložiště. Tato akce povolí odstranění imagí v úložišti nebo odstranění celého úložiště.
 
 V případě zkrácení se pro aktualizaci mapy oboru zobrazuje jenom příkaz [AZ ACR Scope-map Update][az-acr-scope-map-update] :
 
@@ -291,16 +291,16 @@ V případě zkrácení se pro aktualizaci mapy oboru zobrazuje jenom příkaz [
 az acr scope-map update \
   --name MyScopeMap \
   --registry myregistry \
-  --add samples/alpine content/delete
+  --add-repository samples/nginx content/delete
 ``` 
 
 Postup aktualizace mapy oboru pomocí portálu najdete v [předchozí části](#update-token-permissions).
 
-K odstranění úložiště použijte následující příkaz [AZ ACR úložiště Delete][az-acr-repository-delete] `samples/alpine` . Pokud chcete odstranit Image nebo úložiště, předejte do příkazu název a heslo tokenu. Následující příklad používá proměnné prostředí vytvořené dříve v článku:
+K odstranění úložiště použijte následující příkaz [AZ ACR úložiště Delete][az-acr-repository-delete] `samples/nginx` . Pokud chcete odstranit Image nebo úložiště, předejte do příkazu název a heslo tokenu. Následující příklad používá proměnné prostředí vytvořené dříve v článku:
 
 ```azurecli
 az acr repository delete \
-  --name myregistry --repository samples/alpine \
+  --name myregistry --repository samples/nginx \
   --username $TOKEN_NAME --password $TOKEN_PWD
 ```
 
@@ -314,7 +314,7 @@ V případě zkrácení se pro aktualizaci mapy oboru zobrazuje jenom příkaz [
 az acr scope-map update \
   --name MyScopeMap \
   --registry myregistry \
-  --add samples/hello-world metadata/read 
+  --add-repository samples/hello-world metadata/read 
 ```  
 
 Postup aktualizace mapy oboru pomocí portálu najdete v [předchozí části](#update-token-permissions).
@@ -382,7 +382,7 @@ V následujícím příkladu je vygenerována nová hodnota pro Heslo1 pro token
 
 ```azurecli
 TOKEN_PWD=$(az acr token credential generate \
-  --name MyToken --registry myregistry --days 30 \
+  --name MyToken --registry myregistry --expiration-in-days 30 \
   --password1 --query 'passwords[0].value' --output tsv)
 ```
 
@@ -397,7 +397,7 @@ az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-Na portálu na obrazovce **tokeny (Preview)** vyberte token a v části **Mapa oboru**vyberte jinou mapu oboru.
+Na portálu na obrazovce **tokeny (Preview)** vyberte token a v části **Mapa oboru** vyberte jinou mapu oboru.
 
 > [!TIP]
 > Po aktualizaci tokenu pomocí nové mapy oboru můžete vygenerovat nová hesla tokenů. Pomocí příkazu [AZ ACR token Credential Generate][az-acr-token-credential-generate] nebo znovu vygenerujte heslo tokenu v Azure Portal.
@@ -413,7 +413,7 @@ az acr token update --name MyToken --registry myregistry \
   --status disabled
 ```
 
-Na portálu vyberte na obrazovce **tokeny (Preview)** token a v části **stav**vyberte **zakázáno** .
+Na portálu vyberte na obrazovce **tokeny (Preview)** token a v části **stav** vyberte **zakázáno** .
 
 Pokud chcete odstranit token pro trvalé zrušení platnosti přístupu kýmkoli, kdo používá jeho přihlašovací údaje, spusťte příkaz [AZ ACR token Delete][az-acr-token-delete] . 
 

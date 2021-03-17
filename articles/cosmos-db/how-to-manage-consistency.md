@@ -3,18 +3,20 @@ title: Správa konzistence v Azure Cosmos DB
 description: Naučte se konfigurovat a spravovat úrovně konzistence v Azure Cosmos DB pomocí Azure Portal, sady .NET SDK, Java SDK a různých dalších sad SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 48f728e697e3ca92eee0469c8368e966479fe7fb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: b0c03c2f5313605fbdf288a9262df0852e066efd
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422228"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333456"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek vysvětluje, jak spravovat úrovně konzistence v Azure Cosmos DB. Naučíte se, jak nakonfigurovat výchozí úroveň konzistence, přepsat výchozí konzistenci, ručně spravovat tokeny relací a pochopit metriku služby PBS (probabilistically Bounded).
 
@@ -65,7 +67,7 @@ Klienti můžou přepsat výchozí úroveň konzistence nastavenou službou. Úr
 > [!TIP]
 > Konzistenci je možné **zmírnit** jenom na úrovni žádosti. Pokud chcete přejít ze slabé na silnější konzistenci, aktualizujte výchozí konzistenci účtu Cosmos.
 
-### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -93,7 +95,7 @@ var response = await client.GetContainer(databaseName, containerName)
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Sada Java v4 SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -109,7 +111,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
 --- 
 
-### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a>Sady SDK pro Java v2
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Sady SDK pro Java v2
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -166,7 +168,7 @@ Jednou z úrovní konzistence v Azure Cosmos DB je konzistence *relace* . Toto j
 
 Chcete-li spravovat tokeny relace ručně, Získejte token relace z odpovědi a nastavte je na požadavek. Pokud nepotřebujete spravovat tokeny relací ručně, nemusíte tyto ukázky používat. Sada SDK automaticky sleduje tokeny relací. Pokud nenastavíte token relace ručně, použije sada SDK nejnovější token relace.
 
-### <a name="net-sdk"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="utilize-session-tokens-dotnet"></a>SADA .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -194,7 +196,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Sada Java v4 SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -279,7 +281,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorování metriky Pravděpodobnostně omezená neaktuálnost (PBS)
 
-Jak co má být konečná konzistence? V případě průměrného případu můžeme nabídnout neplatnost hranic s ohledem na historii a čas verzí. Metrika služby [**PBS (probabilistically Bounded)**](https://pbs.cs.berkeley.edu/) se pokusí vyčíslit pravděpodobnost neaktuálnosti a zobrazí ji jako metriku. Metriku služby PBS zobrazíte tak, že v Azure Portal přejdete na svůj účet Azure Cosmos. Otevřete podokno **metriky** a vyberte kartu **konzistence** . Podívejte se do grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
+Jak co má být konečná konzistence? V případě průměrného případu můžeme nabídnout neplatnost hranic s ohledem na historii a čas verzí. Metrika služby [**PBS (probabilistically Bounded)**](https://pbs.cs.berkeley.edu/) se pokusí vyčíslit pravděpodobnost neaktuálnosti a zobrazí ji jako metriku. Metriku služby PBS zobrazíte tak, že v Azure Portal přejdete na svůj účet Azure Cosmos. Otevřete podokno **metriky** a vyberte kartu **konzistence** . Podívejte se na graf s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Graf PBS v Azure Portal":::
 
@@ -288,8 +290,9 @@ Jak co má být konečná konzistence? V případě průměrného případu mů�
 Přečtěte si další informace o tom, jak spravovat konflikty dat, nebo přejděte k dalšímu klíčovému konceptu v Azure Cosmos DB. Viz následující články:
 
 * [Úrovně konzistence v Azure Cosmos DB](consistency-levels.md)
+* [Dělení a distribuce dat](./partitioning-overview.md)
 * [Správa konfliktů mezi oblastmi](how-to-manage-conflicts.md)
-* [Dělení a distribuce dat](partition-data.md)
+* [Dělení a distribuce dat](partitioning-overview.md)
 * [Návrh moderních systémů distribuovaných databází – kompromisy v konzistenci](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [Vysoká dostupnost](high-availability.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

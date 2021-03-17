@@ -1,25 +1,26 @@
 ---
 title: 'Kurz: zabezpečení webového serveru Linux s certifikáty TLS/SSL v Azure'
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI zabezpečit virtuální počítač s Linuxem, na kterém běží webový server NGINX, pomocí certifikátů SSL uložených ve službě Azure Key Vault.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 7964f96afc59464c28cabb9e1d5c7961fc765a3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3f762597ad81dfaba907115cbcf6074d81ec2fa4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501768"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549579"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Kurz: zabezpečení webového serveru na virtuálním počítači se systémem Linux v Azure s certifikáty TLS/SSL uloženými v Key Vault
 Aby bylo možné zabezpečit webové servery, lze pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL), použít certifikát k šifrování webového provozu. Tyto certifikáty TLS/SSL můžou být uložené v Azure Key Vault a umožňují zabezpečená nasazení certifikátů do virtuálních počítačů se systémem Linux v Azure. Co se v tomto kurzu naučíte:
@@ -135,7 +136,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Testování zabezpečené webové aplikace
-Nyní můžete otevřít webový prohlížeč a zadat *https: \/ \/ \<publicIpAddress> * na adresním řádku. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
+Nyní můžete otevřít webový prohlížeč a zadat *https: \/ \/ \<publicIpAddress>* na adresním řádku. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
 
 ![Přijetí upozornění zabezpečení ve webovém prohlížeči](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -157,4 +158,4 @@ V tomto kurzu jste zabezpečený webový server NGINX s certifikátem TLS/SSL ul
 Na tomto odkazu najdete předem připravené ukázky skriptů pro virtuální počítače.
 
 > [!div class="nextstepaction"]
-> [Ukázky skriptů pro virtuální počítače s Linuxem](./cli-samples.md)
+> [Ukázky skriptů pro virtuální počítače s Linuxem](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

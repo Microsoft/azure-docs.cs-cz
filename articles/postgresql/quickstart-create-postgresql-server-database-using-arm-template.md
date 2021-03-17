@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: Vytvoření šablony Azure DB pro PostgreSQL – ARM'
-description: V tomto článku se dozvíte, jak vytvořit Azure Database for PostgreSQL jediný server pomocí šablony Azure Resource Manager.
-author: mgblythe
+description: V tomto rychlém startu se dozvíte, jak vytvořit Azure Database for PostgreSQL jediný server pomocí šablony Azure Resource Manager.
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
-ms.date: 05/14/2020
-ms.openlocfilehash: 0661e743fb2493b9eab4b90dcb65297e99c2cc64
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 02/11/2021
+ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661210"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382187"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for PostgreSQL-Single
 
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte
 
 Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
-[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,33 +66,33 @@ Další ukázky šablon Azure Database for PostgreSQL najdete v [šablonách ryc
 
 Vyberte následující odkaz pro nasazení šablony Azure Database for PostgreSQL serveru do Azure Portal:
 
-[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 Na stránce **nasadit Azure Database for PostgreSQL se sítí VNET** :
 
-1. V poli **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
+1. V poli **Skupina prostředků** vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
 
 2. Pokud jste vytvořili novou skupinu prostředků, vyberte **umístění** pro skupinu prostředků a nový server.
 
-3. Zadejte **název serveru**, **přihlašovací jméno správce**a **přihlašovací heslo správce**.
+3. Zadejte **název serveru**, **přihlašovací jméno správce** a **přihlašovací heslo správce**.
 
-    ![Nasazení Azure Database for PostgreSQL s oknem VNet, šablonou Azure pro rychlý Start, Azure Portal](./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png)
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Nasazení Azure Database for PostgreSQL s oknem VNet, šablonou Azure pro rychlý Start, Azure Portal":::
 
 4. Pokud chcete, změňte další výchozí nastavení:
 
     * **Předplatné**: předplatné Azure, které chcete použít pro server.
-    * **Kapacita SKU**: kapacita Vcore, která může být *2* (výchozí), *4*, *8*, *16*, *32*nebo *64*.
+    * **Kapacita SKU**: kapacita Vcore, která může být *2* (výchozí), *4*, *8*, *16*, *32* nebo *64*.
     * **Název SKU**: Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1*, *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32*.
     * **Velikost SKU MB**: velikost úložiště pro Azure Database for PostgreSQL Server (standardně *51200*) v megabajtech.
     * **Úroveň SKU**: vrstva nasazení, jako je například *Basic*, *GeneralPurpose* (výchozí), nebo *MemoryOptimized*.
     * **Rodina SKU**: *COMPUTE GEN4 –* nebo *Gen5* (výchozí), která indikuje generování hardwaru pro nasazení serveru.
-    * **Verze PostgreSQL**: verze serveru PostgreSQL, která se má nasadit, například *9,5*, *9,6*, *10*nebo *11* (výchozí).
+    * **Verze PostgreSQL**: verze serveru PostgreSQL, která se má nasadit, například *9,5*, *9,6*, *10* nebo *11* (výchozí).
     * **Dny uchovávání záloh**: požadované období pro uchování geograficky redundantního zálohování ve dnech (výchozí *7*).
     * **Geograficky redundantní zálohování**: *povoleno* nebo *zakázáno* (výchozí nastavení), v závislosti na geograficky se zotavení po havárii (GEO-Dr).
     * **Virtual Network název**: název virtuální sítě (výchozí *azure_postgresql_vnet*).
     * **Název podsítě**: název podsítě (výchozí *azure_postgresql_subnet*).
     * **Virtual Network název pravidla**: název pravidla virtuální sítě, které povoluje podsíť (výchozí *AllowSubnet*).
-    * **Předpona adresy virtuální**sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16*).
+    * **Předpona adresy virtuální** sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16*).
     * **Předpona podsítě**: Předpona adresy pro podsíť (výchozí *10.0.0.0/16*).
 
 5. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
@@ -174,6 +174,34 @@ read -p "Press [ENTER] to continue: "
 ```
 
 ---
+
+## <a name="exporting-arm-template-from-the-portal"></a>Export šablony ARM z portálu
+[Šablonu ARM můžete exportovat](../azure-resource-manager/templates/export-template-portal.md) z Azure Portal. Existují dva způsoby, jak exportovat šablonu:
+
+- [Exportujte ze skupiny prostředků nebo prostředku](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Tato možnost vygeneruje novou šablonu z existujících prostředků. Vyexportovaná šablona je "snímek" aktuálního stavu skupiny prostředků. V rámci této skupiny prostředků můžete exportovat celou skupinu prostředků nebo konkrétní prostředky.
+- [Exportujte před nasazením nebo z historie](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Tato možnost načte přesnou kopii šablony, která se používá k nasazení.
+
+Při exportování šablony ```"properties":{ }```  si všimněte, že v části prostředku serveru PostgreSQL si všimnete, že ```administratorLogin``` a nebudou ```administratorLoginPassword``` zahrnuty z bezpečnostních důvodů. Tyto parametry **musíte** před nasazením šablony přidat do šablony, jinak se šablona nezdařila.
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
+
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

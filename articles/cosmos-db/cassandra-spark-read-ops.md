@@ -10,14 +10,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4ecb7758ee5f58345fccc2c490cee4d23043a20c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceede96cbf3be12a6129e27d34e318e4c4163458
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85257410"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073492"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Čtení dat z Azure Cosmos DB rozhraní API Cassandra tabulek pomocí Sparku
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
  Tento článek popisuje, jak číst data uložená v Azure Cosmos DB rozhraní API Cassandra ze Sparku.
 
@@ -86,17 +87,10 @@ readBooksDF.show
 K zajištění lepších optimalizovaných dotazů Spark můžete do databáze přejít predikáty. Predikát je podmínka pro dotaz, který vrací hodnotu true nebo false, která se obvykle nachází v klauzuli WHERE. Predikát push dolů filtruje data v databázovém dotazu, snižuje počet položek načtených z databáze a zvyšuje výkon dotazů. Rozhraní API datové sady Spark standardně automaticky přeskočí platné klauzule WHERE do databáze. 
 
 ```scala
-val readBooksDF = spark
-  .read
-  .format("org.apache.spark.sql.cassandra")
-  .options(Map( "table" -> "books", "keyspace" -> "books_ks"))
-  .load
-  .select("book_name","book_author", "book_pub_year")
-  .filter("book_pub_year > 1891")
-//.filter("book_name IN ('A sign of four','A study in scarlet')")
-//.filter("book_name='A sign of four' OR book_name='A study in scarlet'")
-//.filter("book_author='Arthur Conan Doyle' AND book_pub_year=1890")
-//.filter("book_pub_year=1903")  
+val df = spark.read.cassandraFormat("books", "books_ks").load
+df.explain
+val dfWithPushdown = df.filter(df("book_pub_year") > 1891)
+dfWithPushdown.explain
 
 readBooksDF.printSchema
 readBooksDF.explain
@@ -145,7 +139,7 @@ select * from books_vw where book_pub_year > 1891
 Níže najdete další články o práci s Azure Cosmos DB rozhraní API Cassandra ze Sparku:
  
  * [Operace Upsert](cassandra-spark-upsert-ops.md)
- * [Operace odstranění](cassandra-spark-delete-ops.md)
+ * [Operace Delete](cassandra-spark-delete-ops.md)
  * [Operace agregace](cassandra-spark-aggregation-ops.md)
  * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
 

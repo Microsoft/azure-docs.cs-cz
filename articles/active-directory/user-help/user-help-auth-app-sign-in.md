@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 06/03/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 4b2d79b24263a848d146bbbe8d42f23ec28f49b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fd0aa19d52adb4bf06c9d21d4182e27497a531b
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415878"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471762"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se ke svým účtům pomocí aplikace Microsoft Authenticator.
 
@@ -51,15 +51,18 @@ Přihlášení telefonem je dostupné jenom v zařízeních s iOS a Androidem, n
 
 Otevřete aplikaci Microsoft Authenticator, pokračujte na svůj pracovní nebo školní účet a zapněte přihlašování telefonem.
 
-- **Po klepnutí na dlaždici účtu**se zobrazí zobrazení celé obrazovky účtu. Pokud se zobrazí **přihlašování telefonem** , znamená to, že jste plně nastavili, abyste se přihlásili bez hesla. Pokud se zobrazí možnost **Povolit přihlašování telefonem**, klepněte na něj a zapněte přihlášení k telefonu.
+- **Po klepnutí na dlaždici účtu** se zobrazí zobrazení celé obrazovky účtu. Pokud se zobrazí **přihlašování telefonem** , znamená to, že jste plně nastavili, abyste se přihlásili bez hesla. Pokud se zobrazí možnost **Povolit přihlašování telefonem**, klepněte na něj a zapněte přihlášení k telefonu.
 - **Pokud jste už aplikaci používali pro dvoustupňové ověřování**, můžete klepnutím na dlaždici účet zobrazit zobrazení celého účtu na celé obrazovce. Pak klepnutím na **Povolit přihlášení k telefonu** zapněte přihlášení telefonem.
 - **Pokud svůj pracovní nebo školní účet nemůžete najít** na obrazovce **účty** aplikace, znamená to, že jste ho ještě nepřidali do aplikace. Přidejte svůj pracovní nebo školní účet podle kroků v [nápovědě k přidání pracovního nebo školního účtu](user-help-auth-app-add-work-school-account.md).
+
+> [!NOTE]
+> Microsoft nepodporuje kombinaci registrace zařízení a ověřování založeného na certifikátech v rámci ověřovatele v iOS. Místo toho musí před přihlášením uživatel zařízení zaregistrovat ručně prostřednictvím nastavení ověřovatele.
 
 Po zapnutí telefonického přihlášení se můžete přihlásit jenom pomocí aplikace Microsoft Authenticator. Jak na to:
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-    Po zadání uživatelského jména se zobrazí obrazovka **schválit přihlášení** , která vám ukáže dvoumístné číslo a požádá vás, abyste se přihlásili prostřednictvím aplikace Microsoft Authenticator. Pokud nechcete používat tuto metodu přihlašování, můžete **místo toho vybrat použít heslo**a přihlásit se pomocí hesla.
+    Po zadání uživatelského jména se zobrazí obrazovka **schválit přihlášení** , která vám ukáže dvoumístné číslo a požádá vás, abyste se přihlásili prostřednictvím aplikace Microsoft Authenticator. Pokud nechcete používat tuto metodu přihlašování, můžete **místo toho vybrat použít heslo** a přihlásit se pomocí hesla.
 
     ![Schválení přihlašovacího pole v počítači](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
 
@@ -82,7 +85,7 @@ Pro osobní účet Microsoft můžete zapnout přihlášení telefonem, napřík
 
 Otevřete aplikaci Microsoft Authenticator, pokračujte na svůj pracovní nebo školní účet a zapněte přihlašování telefonem.
 
-- **Po klepnutí na dlaždici účtu**se zobrazí zobrazení celé obrazovky účtu. Pokud se zobrazí **přihlašování telefonem** , znamená to, že jste plně nastavili, abyste se přihlásili bez hesla. Pokud se zobrazí možnost **Povolit přihlašování telefonem**, klepněte na něj a zapněte přihlášení k telefonu.
+- **Po klepnutí na dlaždici účtu** se zobrazí zobrazení celé obrazovky účtu. Pokud se zobrazí **přihlašování telefonem** , znamená to, že jste plně nastavili, abyste se přihlásili bez hesla. Pokud se zobrazí možnost **Povolit přihlašování telefonem**, klepněte na něj a zapněte přihlášení k telefonu.
 - **Pokud už aplikaci používáte pro dvoustupňové ověřování**, můžete klepnutím na dlaždici účet zobrazit zobrazení celého účtu na celé obrazovce. Pak klepnutím na **Povolit přihlášení k telefonu** zapněte přihlášení telefonem.
 - **Pokud váš účet nemůžete najít** na obrazovce **účty** aplikace, znamená to, že jste ho ještě nepřidali do aplikace. Pomocí postupu v článku [Přidání osobních účtů Microsoft](user-help-auth-app-add-personal-ms-account.md) přidejte své osobní účet Microsoft.
 
@@ -110,8 +113,8 @@ Kroky nezbytné pro přihlášení k pracovnímu nebo školnímu účtu nebo k v
 | Jak se přihlašujem pomocí mého telefonu bezpečnější než zadání hesla? | Dnešní uživatelé se přihlásí k webům nebo aplikacím pomocí uživatelského jména a hesla. Bohužel můžou být hesla ztracená, odcizená nebo považovat za hackeři.<br><br>Po nastavení Microsoft Authenticator aplikace se na telefonu vytvoří klíč, který odemkne váš účet chráněný PIN kódem nebo biometrickým zámkem. Tento klíč se pak použije k prokázání vaší identity během přihlašování.<br><br>**Důležité upozornění**<br>Vaše data se používají jenom k místní ochraně klíče. Nikdy se neposílá ani neukládá do cloudu. |
 | Nahrazuje se telefonický ověřením dva kroky? Mám ho vypnout? | Přihlášení telefonem je typ dvou ověření kroku, kdy se oba kroky vyskytují v mobilním zařízení. Měli byste zajistit, aby bylo zapnuté dvoustupňové ověřování, které vám pomůžou zajistit další zabezpečení vašeho účtu. |
 | Pokud je u svého účtu zapnuté dvoustupňové ověřování, musím ke schválení dvou oznámení? | Ne. Přihlášení k vašemu účet Microsoft pomocí telefonu se také počítá jako dvoustupňové ověřování, takže není nutné žádné druhé schválení. |
-| Co když mi přijdem telefon nebo ho už nemáte? Návody přistupovat k mému účtu? | Na přihlašovací stránce můžete vždycky vybrat odkaz použít heslo místo toho a přejít zpátky k používání hesla. Pokud ale používáte dvoustupňové ověřování, budete k ověření vaší identity pořád potřebovat druhou metodu.<br><br>**Důležité upozornění**<br>Důrazně doporučujeme, abyste se ujistili, že máte k vašemu účtu přiřazenou více než jednu, aktuální metodu ověřování.<br><br>Metody ověřování pro osobní účty můžete spravovat ze stránky [nastavení zabezpečení](https://account.live.com/proofs/manage) . Pro pracovní nebo školní účty můžete přejít na stránku [Další ověření zabezpečení](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) vaší organizace nebo na stránku **zachovat zabezpečený účet** , pokud správce zapnul bezpečnostní údaje. Další informace o bezpečnostních informacích najdete v tématu [Přehled informací o zabezpečení (Preview)](user-help-security-info-overview.md).<br><br>Pokud nemůžete spravovat metody ověřování, musíte se obrátit na správce. |
-| Návody ukončit používání této funkce a vrátit se k používání mého hesla? | U osobních účtů zaškrtněte políčko **použít místo toho heslo** odkaz při přihlášení. Vaše nejnovější volba se pamatuje a při příštím přihlášení se nabídne ve výchozím nastavení. Pokud se budete chtít kdykoli vrátit k používání telefonického přihlášení, vyberte při přihlášení odkaz **použít aplikaci** .<br><br>Pro pracovní nebo školní účty musíte buď zrušit registraci zařízení na stránce **Nastavení** aplikace Microsoft Authenticator, nebo zařízení zakázat v oblasti **aktivity & zařízení** vašeho profilu. Další informace o zakázání zařízení z vašeho profilu najdete v tématu [aktualizace informací o profilu a účtu na portálu moje aplikace](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information). |
+| Co když mi přijdem telefon nebo ho už nemáte? Návody přistupovat k mému účtu? | Na přihlašovací stránce můžete vždycky vybrat odkaz použít heslo místo toho a přejít zpátky k používání hesla. Pokud ale používáte dvoustupňové ověřování, budete k ověření vaší identity pořád potřebovat druhou metodu.<br><br>**Důležité upozornění**<br>Důrazně doporučujeme, abyste se ujistili, že máte k vašemu účtu přiřazenou více než jednu, aktuální metodu ověřování.<br><br>Metody ověřování pro osobní účty můžete spravovat ze stránky [nastavení zabezpečení](https://account.live.com/proofs/manage) . Pro pracovní nebo školní účty můžete přejít na stránku [Další ověření zabezpečení](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) vaší organizace nebo na stránku **zachovat zabezpečený účet** , pokud správce zapnul bezpečnostní údaje. Další informace o bezpečnostních informacích najdete v tématu [Přehled informací o zabezpečení (Preview)](./security-info-setup-signin.md).<br><br>Pokud nemůžete spravovat metody ověřování, musíte se obrátit na správce. |
+| Návody ukončit používání této funkce a vrátit se k používání mého hesla? | U osobních účtů zaškrtněte políčko **použít místo toho heslo** odkaz při přihlášení. Vaše nejnovější volba se pamatuje a při příštím přihlášení se nabídne ve výchozím nastavení. Pokud se budete chtít kdykoli vrátit k používání telefonického přihlášení, vyberte při přihlášení odkaz **použít aplikaci** .<br><br>Pro pracovní nebo školní účty musíte buď zrušit registraci zařízení na stránce **Nastavení** aplikace Microsoft Authenticator, nebo zařízení zakázat v oblasti **aktivity & zařízení** vašeho profilu. Další informace o zakázání zařízení z vašeho profilu najdete v tématu [aktualizace informací o profilu a účtu na portálu moje aplikace](./my-account-portal-devices-page.md#disable-a-device). |
 | Proč pro přihlašování telefonem nemůžem použít více než jeden pracovní nebo školní účet? | Telefon musí být zaregistrovaný do jednoho pracovního nebo školního účtu. Pokud chcete zapnout přihlášení k telefonu pro jiný pracovní nebo školní účet, musíte zrušit registraci účtu na tomto zařízení prostřednictvím stránky **Nastavení** . |
 | Můžu se k počítači přihlásit pomocí telefonu? | Pro váš počítač doporučujeme přihlásit se pomocí Windows Hello ve Windows 10. Windows Hello vám umožní přihlašovat se pomocí svého obličeje, otisku prstu nebo PIN kódu. |
 
@@ -123,4 +126,4 @@ Kroky nezbytné pro přihlášení k pracovnímu nebo školnímu účtu nebo k v
 
 - Pokud chcete získat další informace o dvoustupňovém ověřování, přečtěte si téma [Nastavení mého účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
 
-- Pokud chcete získat další informace o zabezpečení, přečtěte si téma [Přehled informací o zabezpečení (Preview)](user-help-security-info-overview.md) .
+- Pokud chcete získat další informace o zabezpečení, přečtěte si téma [Přehled informací o zabezpečení (Preview)](./security-info-setup-signin.md) .

@@ -1,32 +1,32 @@
 ---
 title: 'Rychlý Start: připojení s Ruby-Azure Database for PostgreSQL – jeden server'
 description: V tomto rychlém startu najdete ukázku kódu Ruby, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 98814060fb9ae669fc4e9a90fcda6319bbfaeacf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 20e45454284af230da74896d5b3f5e9da676dbb4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182540"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831699"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Ruby k připojení a dotazování dat v Azure Database for PostgreSQL – jeden server
 
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace v [Ruby](https://www.ruby-lang.org). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Ruby a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 Je také nutné nainstalovat:
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
-- Ruby PG, modul PostgreSQL pro Ruby
+- [Ruby pg](https://rubygems.org/gems/pg/), modul PostgreSQL pro Ruby
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
@@ -35,17 +35,17 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for PostgreSQL](./media/connect-ruby/1-connection-string.png)
+ :::image type="content" source="./media/connect-ruby/1-connection-string.png" alt-text="Název serveru Azure Database for PostgreSQL":::
 
 > [!NOTE]
-> `@`Symbol v uživatelském jménu Azure Postgres byl kódovaný jako adresa URL `%40` ve všech připojovacích řetězcích. 
+> `@`Symbol v uživatelském jménu Azure Postgres byl kódovaný jako adresa URL `%40` ve všech připojovacích řetězcích.
 
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
 Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.
 
-Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazů DROP, CREATE TABLE a INSERT INTO. Kód kontroluje chyby pomocí třídy [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
+Kód používá ```PG::Connection``` objekt s konstruktorem ```new``` pro připojení k Azure Database for PostgreSQL. Poté volá metodu ```exec()``` pro spuštění příkazů drop, CREATE TABLE a INSERT INTO. Kód kontroluje chyby pomocí ```PG::Error``` třídy. Poté volá metodu ```close()``` pro uzavření připojení před ukončením. Další informace o těchto třídách a metodách naleznete v referenční dokumentaci k Ruby PG.
 
-Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami. 
+Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami.
 
 
 ```ruby
@@ -77,19 +77,19 @@ begin
     puts 'Inserted 3 rows of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
 ```
 
 ## <a name="read-data"></a>Čtení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. 
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL.
 
-Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazu SELECT a výsledky uloží do sady výsledků dotazu. Nad kolekcí sady výsledků dotazu se iteruje pomocí smyčky `resultSet.each do` a hodnoty aktuálního řádku se ukládají do proměnné `row`. Kód kontroluje chyby pomocí třídy [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
+Kód používá  ```PG::Connection``` objekt s konstruktorem ```new``` pro připojení k Azure Database for PostgreSQL. Poté volá metodu ```exec()``` pro spuštění příkazu SELECT a udržování výsledků v sadě výsledků dotazu. Nad kolekcí sady výsledků dotazu se iteruje pomocí smyčky `resultSet.each do` a hodnoty aktuálního řádku se ukládají do proměnné `row`. Kód kontroluje chyby pomocí ```PG::Error``` třídy. Poté volá metodu ```close()``` pro uzavření připojení před ukončením. Další informace o těchto třídách a metodách naleznete v referenční dokumentaci k Ruby PG.
 
-Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami. 
+Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami.
 
 ```ruby
 require 'pg'
@@ -111,8 +111,8 @@ begin
     end
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
@@ -121,9 +121,9 @@ end
 ## <a name="update-data"></a>Aktualizace dat
 Pomocí následujícího kódu se připojte a aktualizujte data s využitím příkazu **UPDATE** jazyka SQL.
 
-Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazu UPDATE. Kód kontroluje chyby pomocí třídy [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
+Kód používá  ```PG::Connection``` objekt s konstruktorem ```new``` pro připojení k Azure Database for PostgreSQL. Pak volá metodu ```exec()``` pro spuštění příkazu Update. Kód kontroluje chyby pomocí ```PG::Error``` třídy. Poté volá metodu ```close()``` pro uzavření připojení před ukončením. Další informace o těchto třídách a metodách naleznete v [referenční dokumentaci k Ruby pg](https://rubygems.org/gems/pg) .
 
-Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami. 
+Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami.
 
 ```ruby
 require 'pg'
@@ -144,8 +144,8 @@ begin
     puts 'Updated 1 row of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
@@ -153,11 +153,11 @@ end
 
 
 ## <a name="delete-data"></a>Odstranění dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. 
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL.
 
-Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazu UPDATE. Kód kontroluje chyby pomocí třídy [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
+Kód používá  ```PG::Connection``` objekt s konstruktorem ```new``` pro připojení k Azure Database for PostgreSQL. Pak volá metodu ```exec()``` pro spuštění příkazu Update. Kód kontroluje chyby pomocí ```PG::Error``` třídy. Poté volá metodu ```close()``` pro uzavření připojení před ukončením.
 
-Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami. 
+Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami.
 
 ```ruby
 require 'pg'
@@ -178,13 +178,26 @@ begin
     puts 'Deleted 1 row of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
+
 ## <a name="next-steps"></a>Další kroky
+
 > [!div class="nextstepaction"]
-> [Migrace vaší databáze pomocí exportu a importu](./howto-migrate-using-export-and-import.md)
+> [Migrace vaší databáze pomocí exportu a importu](./howto-migrate-using-export-and-import.md) <br/>
+> [!div class="nextstepaction"]
+> [Referenční dokumentace k Ruby pg](https://rubygems.org/gems/pg)

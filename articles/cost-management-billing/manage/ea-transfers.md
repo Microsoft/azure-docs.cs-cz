@@ -4,15 +4,17 @@ description: Popisuje převody Azure EA.
 author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 01/27/2021
 ms.author: banders
-ms.openlocfilehash: 2c9801cbca7ebd35ed331c88f745eaf5d4848c6f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
-ms.translationtype: HT
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 7aa57fa20c3a043cdb210ccd8a5ddbf61323716d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243645"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943692"
 ---
 # <a name="azure-enterprise-transfers"></a>Převody Azure Enterprise
 
@@ -53,22 +55,22 @@ Převod registrace se bere v úvahu v těchto případech:
 - Registrace je ve stavu vypršení platnosti nebo prodloužení a dojednává se nová smlouva.
 - Máte více registrací a chcete zkombinovat všechny účty a fakturaci v rámci jediné registrace.
 
-Tato část je určená jenom k informativním účelům, protože tuto akci nemůže provést podnikový správce. Pro převod podnikové registrace na novou se vyžaduje žádost o podporu.
+Tato část je určená jenom k informativním účelům, protože tuto akci nemůže provést podnikový správce. Žádost o podporu je nutná k přenosu podnikového zápisu na nový, pokud registrace neplatí pro [přenos automatického zápisu](#auto-enrollment-transfer).
 
 Pokud požádáte o převod celé podnikové registrace do jiné registrace, provedou se následující akce:
 
 - Na novou registraci se převedou všechny služby Azure, všechna předplatná, účty, oddělení a celá struktura registrace, včetně všech správců oddělení EA.
 - U registrace se nastaví stav _Přenesené_. Přenesená registrace bude k dispozici jenom pro sestavy, které se týkají historie použití.
-- Do přenesené registrace už nemůžete přidávat role ani předplatná. Přenesený stav brání dalšímu použití této registrace.
+- Do přenesené registrace už nemůžete přidávat role ani předplatná. Přenesený stav zabraňuje většímu využití při registraci.
 - Zbývající zůstatek zálohy na Azure ve smlouvě se ruší, včetně budoucích podmínek.
--    Pokud registrace, ze které provádíte převod, obsahuje zakoupené rezervované instance, kupní cena rezervovaných instancí zůstane ve zdrojové registraci, ale všechny výhody rezervovaných instancí se převedou do nové registrace.
--    Jednorázový poplatek za nákup na marketplace ani žádné měsíční paušální poplatky již vzniklé ve staré registraci se do nové registrace nepřevedou. Poplatky za marketplace na základě spotřeby se převedou.
+-    Pokud registrace, ze které přenášíte, má nákupy na rezervované instance, zachová se v registraci zdrojového kódu, ale všechny výhody rezervované pro ostatní instance se budou přenášet v rámci nového zápisu.
+-    Jednorázový nákupní poplatek na tržišti a jakékoli měsíční pevné poplatky, které už vznikly na staré registraci, se přenesou do nové registrace. Poplatky za marketplace na základě spotřeby se převedou.
 
 ### <a name="effective-transfer-date"></a>Platné datum převodu
 
 Platným datem převodu může být datum, které je stejné nebo následuje po počátečním datu cílové registrace.
 
-Využití zdrojové registrace se odečte od zálohy na Azure nebo se účtuje jako nadlimitní využití. Využití, ke kterému dojde po platném datu převodu, se přenese do nové registrace, kde se odpovídajícím způsobem odúčtuje.
+Využití zdrojové registrace se odečte od zálohy na Azure nebo se účtuje jako nadlimitní využití. Využití, ke kterému dojde po přenosu platného data přenosu, se přenese na nový zápis a účtuje se.
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -76,13 +78,24 @@ K žádosti o převod registrace je potřeba sdělit následující informace:
 
 - U zdrojové registrace uveďte její číslo.
 - U cílové registrace uveďte číslo registrace, do které probíhá převod.
-- Platné datum převodu registrace může být stejné datum, jako je počáteční datum cílové registrace, nebo datum pozdější. Vybrané datum neovlivňuje použití u již vydaných faktur za nadlimitní využití.
+- Platné datum převodu registrace může být stejné datum, jako je počáteční datum cílové registrace, nebo datum pozdější. Zvolené datum nemůže mít vliv na využití již vystavené faktury za nadlimitní využití.
 
 Další body, na které je potřeba myslet před převodem registrace:
 
 - Cílovou a zdrojovou registraci musí schválit správci EA.
 - Pokud převod registrace vašim požadavkům nevyhovuje, zvažte možnost převodu účtu.
 - Stav zdrojové registrace se změní na Převedeno nesený a bude k dispozici jenom pro účely generování sestav historie využití.
+
+### <a name="auto-enrollment-transfer"></a>Přenos automatického zápisu
+
+Může se stát, že registrace má **přenesený** stav, a to i v případě, že jste neodeslali lístek podpory pro vyžádání přenosu registrace. Stav **přenesených** výsledků z procesu přenosu automatického zápisu. Aby se proces přenosu automatického zápisu provedl během fráze pro obnovení, je potřeba, abyste v nové smlouvě zahrnuli několik položek:
+
+- Předchozí číslo registrace (musí existovat na portálu EA)
+- Datum vypršení platnosti čísla předchozí registrace je jeden den před počátečním datem nové smlouvy.
+- Nová smlouva má fakturovanou objednávku předplatného Azure, která má aktuální datum nebo datum zahájení platnosti.
+- Nový zápis se vytvoří na portálu EA.
+
+Pokud na portálu EA neexistují žádná data o využití mezi předchozím zápisem a novým zápisem, nemusíte vytvářet lístek podpory přenosu.
 
 ### <a name="azure-prepayment"></a>Záloha na Azure
 
@@ -92,9 +105,13 @@ Zálohu na Azure nejde převést mezi registracemi. Zůstatky zálohy na Azure j
 
 Při převodu účtu nebo registrace nedochází k výpadkům. Pokud jsou poskytnuté všechny požadované informace, může převod proběhnout tentýž den jako požadavek.
 
-## <a name="change-account-owner"></a>Změna vlastníka účtu
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>Přenos předplatného Enterprise na předplatné s průběžnými platbami
 
-Na portálu Azure EA můžete převádět předplatná od jednoho vlastníka účtu k jinému. Další informace najdete v tématu o [změně vlastníka účtu](ea-portal-get-started.md#change-account-owner).
+Pokud chcete převést předplatné Enterprise na jednotlivé předplatné s průběžnými platbami, musíte na portálu Azure Enterprise vytvořit novou žádost o podporu. Žádost o podporu vytvoříte výběrem možnosti **+ New support request** (+ Nová žádost o podporu) v oblasti **Help and Support** (Nápověda a podpora).
+
+## <a name="change-azure-subscription-or-account-ownership"></a>Změna vlastnictví účtu nebo předplatného Azure
+
+Na portálu Azure EA můžete převádět předplatná od jednoho vlastníka účtu k jinému. Další informace najdete v části [Změna vlastnictví účtu nebo předplatného Azure](ea-portal-administration.md#change-azure-subscription-or-account-ownership).
 
 ## <a name="subscription-transfer-effects"></a>Účinek převodu předplatného
 

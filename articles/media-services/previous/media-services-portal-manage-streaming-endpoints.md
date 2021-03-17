@@ -3,7 +3,7 @@ title: Správa koncových bodů streamování pomocí Azure Portal | Microsoft D
 description: Tento článek ukazuje, jak spravovat koncové body streamování pomocí Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -13,16 +13,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 627eca1f9a775f12fc9d504629c2a3abbcc919a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: bda244267e81d959abbc4ae0a8532ddce68d5726
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084496"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017388"
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Správa koncových bodů streamování s využitím webu Azure Portal 
+# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Správa koncových bodů streamování s využitím webu Azure Portal
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Tento článek ukazuje, jak použít Azure Portal ke správě koncových bodů streamování. 
 
@@ -38,7 +40,7 @@ Pokud chcete začít spravovat koncové body streamování pro svůj účet, ud�
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
 2. V okně **Nastavení** vyberte **koncové body streamování**.
    
-    ![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
+    ![Snímek obrazovky, který zobrazuje stránku Media Services se zvolenými možnostmi "koncové body streamování" v okně nastavení.](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
 > [!NOTE]
 > Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
@@ -57,7 +59,7 @@ Pokud chcete přidat nebo odstranit koncový bod streamování pomocí Azure Por
 2. Pokud chcete odstranit koncový bod streamování, stiskněte tlačítko **Odstranit** .      
 3. Kliknutím na tlačítko **Spustit** spusťte koncový bod streamování.
    
-    ![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
+    ![Snímek obrazovky s vybraným názvem "Endpoint" a zobrazeným podoknem "Podrobnosti o koncovém bodu streamování".](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
 ## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>Konfigurace koncového bodu streamování
@@ -79,7 +81,7 @@ Koncový bod streamování můžete nakonfigurovat následujícím způsobem:
 
 Následuje stručný popis polí.
 
-![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
+![Snímek obrazovky, který zobrazuje akci nastavení vybranou pro koncový bod streamování.](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
 1. Maximální zásada mezipaměti: slouží ke konfiguraci životního cyklu mezipaměti pro prostředky poskytované prostřednictvím tohoto koncového bodu streamování. Pokud není nastavená žádná hodnota, použije se výchozí hodnota. Výchozí hodnoty lze také definovat přímo ve službě Azure Storage. Pokud je pro koncový bod streamování povolené Azure CDN, neměli byste nastavit hodnotu zásad mezipaměti na míň než 600 sekund.  
 2. Povolené IP adresy: slouží k zadání IP adres, které se můžou připojit k publikovanému koncovému bodu streamování. Pokud nejsou zadané žádné IP adresy, může se připojit jakákoli IP adresa. IP adresy je možné zadat buď jako jednu IP adresu (například 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (například 10.0.0.1/22), nebo rozsah IP adres pomocí IP adresy a masky podsítě s tečkami (například 10.0.0.1 (255.255.255.0)).

@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d9a4da6fe65fda07609c7399518fa324017ea44c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116311"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649341"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat AppSource Certified pro Azure Active Directory
 
@@ -113,9 +113,9 @@ Další informace o zkušebním prostředí AppSource najdete v [tomto videu](ht
 
 ## <a name="get-support"></a>Získání podpory
 
-Pro integraci služby Azure AD používáme pro poskytování podpory [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou.
+Pro integraci služby Azure AD používáme pro poskytování podpory [Microsoft Q&A](/answers/products/) společně s komunitou.
 
-Důrazně doporučujeme, abyste si nejdřív položili své dotazy na Stack Overflow a mohli si projít stávající problémy, abyste zjistili, jestli se někdo na svůj dotaz předá. Ujistěte se, že jsou vaše dotazy nebo komentáře označeny pomocí [ `[azure-active-directory]` a `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Důrazně doporučujeme, abyste si položili své dotazy na Microsoft Q&a Projděte si stávající problémy, abyste zjistili, jestli se někdo na vaši otázku předá dotaz. Ujistěte se, že jsou vaše dotazy nebo komentáře označené pomocí [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) .
 
 Následující komentáře vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a obsloužit náš obsah.
 

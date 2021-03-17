@@ -1,19 +1,25 @@
 ---
 title: Seznámení se službou Azure Service Fabric Networking
 description: Přečtěte si o sítích, branách a inteligentním směrování provozu v Service Fabric sítě.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef8b40be366afe24b960f7419d84cc2a9976b592
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75459132"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625697"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Úvod do sítě v aplikacích Service Fabric sítě
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
+
 Tento článek popisuje různé typy nástrojů pro vyrovnávání zatížení, jak brány spojují síť s vašimi aplikacemi s ostatními sítěmi a jak se směruje provoz mezi službami ve vašich aplikacích.
 
 ## <a name="layer-4-vs-layer-7-load-balancers"></a>Nástroje pro vyrovnávání zatížení vrstvy 4 vs. 7

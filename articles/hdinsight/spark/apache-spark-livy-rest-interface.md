@@ -1,19 +1,16 @@
 ---
 title: Použití Livy Sparku k odesílání úloh do clusteru Spark v Azure HDInsight
 description: Naučte se, jak pomocí Apache Spark REST API vzdáleně odesílat úlohy Spark do clusteru Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: e5ed8fd2eba175a170c12c032e7c6ecf6a926b64
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ff63f4fbadd7cb9e7584e2aa045583a35e0363fd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084609"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930125"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Odesílání vzdálených úloh do clusteru HDInsight Spark pomocí rozhraní Apache Spark REST API
 
@@ -27,7 +24,7 @@ Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytvářen
 
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>Odeslání dávkové úlohy pro Apache Livy Spark
 
-Před odesláním úlohy služby Batch je nutné nahrát jar aplikace do úložiště clusteru přidruženého ke clusteru. Můžete k tomu použít nástroj příkazového řádku [AzCopy](../../storage/common/storage-use-azcopy.md). Existují různé další klienty, které můžete použít k nahrání dat. Další informace najdete v informacích o [nahrání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).
+Před odesláním úlohy služby Batch je nutné nahrát jar aplikace do úložiště clusteru přidruženého ke clusteru. Můžete k tomu použít nástroj příkazového řádku [AzCopy](../../storage/common/storage-use-azcopy-v10.md). Existují různé další klienty, které můžete použít k nahrání dat. Další informace najdete v informacích o [nahrání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).
 
 ```cmd
 curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
@@ -97,7 +94,7 @@ V této části se podíváme na příklady, jak pomocí Livy Spark odeslat dáv
 * Už jste zkopírovali přes jar aplikace do účtu úložiště přidruženého ke clusteru.
 * Nastavili jste na počítač, na který se pokoušíte tyto kroky, máte nainstalovanou svou práci.
 
-Proveďte následující kroky:
+Proveďte tyto kroky:
 
 1. Pro snadné použití nastavte proměnné prostředí. Tento příklad je založený na prostředí Windows, podle potřeby si můžete prohlédnout proměnné, které jsou potřeba pro vaše prostředí. Nahraďte `CLUSTERNAME` a `PASSWORD` příslušnými hodnotami.
 
@@ -155,7 +152,7 @@ Proveďte následující kroky:
     {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Všimněte si, jak poslední řádek výstupu říká **stav: spouští**se. Také uvádí, **ID: 0**. Tady je **0** ID dávky.
+    Všimněte si, jak poslední řádek výstupu říká **stav: spouští** se. Také uvádí, **ID: 0**. Tady je **0** ID dávky.
 
 1. Nyní můžete načíst stav této konkrétní dávky pomocí ID dávky.
 

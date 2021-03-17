@@ -1,19 +1,18 @@
 ---
 title: Kurz – zápis uživatelem definovaných funkcí C# pro úlohy Azure Stream Analytics v aplikaci Visual Studio (Preview)
 description: V tomto kurzu se dozvíte, jak psát funkce definované uživatelem v jazyce c# pro úlohy Stream Analytics v aplikaci Visual Studio.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: 7bcf656b1fa0a73021a92113eb5879312d100823
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974496"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020464"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Kurz: zápis uživatelsky definované funkce jazyka C# pro Azure Stream Analytics úlohy (Preview)
 
@@ -30,13 +29,13 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte [Nástroje Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md) a sadu funkcí **Vývoj pro Azure** nebo **Ukládání a zpracování dat**.
 * Pokud vytváříte úlohu IoT Edge, podívejte se na stávající [Průvodce vývojem Stream Analytics Edge](stream-analytics-tools-for-visual-studio-edge-jobs.md) .
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>Vytvoření kontejneru v účtu služby Azure Storage
 
-Kontejner, který vytvoříte, bude použit k uložení zkompilovaného balíčku jazyka C#. Pokud vytvoříte hraniční úlohu, použije se k nasazení balíčku do zařízení IoT Edge taky tento účet úložiště. Pro každou úlohu Stream Analytics použijte vyhrazený kontejner. Opakované používání stejného kontejneru pro více úloh Stream Analytics Edge se nepodporuje. Pokud už máte účet úložiště s existujícími kontejnery, můžete je použít. Pokud ne, budete muset [vytvořit nový kontejner](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). 
+Kontejner, který vytvoříte, bude použit k uložení zkompilovaného balíčku jazyka C#. Pokud vytvoříte hraniční úlohu, použije se k nasazení balíčku do zařízení IoT Edge taky tento účet úložiště. Pro každou úlohu Stream Analytics použijte vyhrazený kontejner. Opakované používání stejného kontejneru pro více úloh Stream Analytics Edge se nepodporuje. Pokud už máte účet úložiště s existujícími kontejnery, můžete je použít. Pokud ne, budete muset [vytvořit nový kontejner](../storage/blobs/storage-quickstart-blobs-portal.md). 
 
 ## <a name="create-a-stream-analytics-project-in-visual-studio"></a>Vytvoření projektu Stream Analytics v aplikaci Visual Studio
 
@@ -44,7 +43,7 @@ Kontejner, který vytvoříte, bude použit k uložení zkompilovaného balíčk
 
 2. Vyberte **Soubor > Nový > Projekt**.
 
-3. V seznamu šablon na levé straně vyberte **Stream Analytics**a pak vyberte **Azure Stream Analytics aplikace Edge** nebo **Azure Stream Analytics aplikaci**.
+3. V seznamu šablon na levé straně vyberte **Stream Analytics** a pak vyberte **Azure Stream Analytics aplikace Edge** nebo **Azure Stream Analytics aplikaci**.
 
 4.  Zadejte **Název** projektu, **Umístění** a **Název řešení** a vyberte **OK**.
 
@@ -144,7 +143,7 @@ Jakmile místně otestujete svůj dotaz, v editoru skriptů vyberte **Odeslat do
 ![Odeslání úlohy Stream Analytics Edge do Azure ze sady Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-submit-job.png)
 
 ## <a name="deploy-to-iot-edge-devices"></a>Nasazení do zařízení IoT Edge
-Pokud jste se rozhodli vytvořit úlohu Stream Analytics Edge, můžete ji teď nasadit jako modul IoT Edge. Postupujte podle [rychlého startu pro IoT Edge](https://docs.microsoft.com/azure/iot-edge/quickstart) a vytvořte službu IoT Hub, zaregistrujte zařízení IoT Edge a nainstalujte a spusťte na svém zařízení modul runtime IoT Edge. Pak postupujte podle kurzu [nasazení úlohy](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job) a nasaďte svou úlohu Stream Analytics jako modul IoT Edge. 
+Pokud jste se rozhodli vytvořit úlohu Stream Analytics Edge, můžete ji teď nasadit jako modul IoT Edge. Postupujte podle [rychlého startu pro IoT Edge](../iot-edge/quickstart.md) a vytvořte službu IoT Hub, zaregistrujte zařízení IoT Edge a nainstalujte a spusťte na svém zařízení modul runtime IoT Edge. Pak postupujte podle kurzu [nasazení úlohy](../iot-edge/tutorial-deploy-stream-analytics.md#deploy-the-job) a nasaďte svou úlohu Stream Analytics jako modul IoT Edge. 
 
 ## <a name="next-steps"></a>Další kroky
 

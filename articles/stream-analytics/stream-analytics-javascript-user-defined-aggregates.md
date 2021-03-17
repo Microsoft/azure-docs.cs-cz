@@ -3,17 +3,16 @@ title: Uživatelsky definované agregace JavaScriptu v Azure Stream Analytics
 description: Tento článek popisuje, jak provádět pokročilé mechanismy dotazů s uživatelsky definovanými agregacemi jazyka JavaScript v Azure Stream Analytics.
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 433b9ad0f86b84538163b142d762d4e2fb7e8159
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: e9695a268d1c6ec43a737afd36536e4ec2a41a41
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430830"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012474"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics uživatelsky definovaných agregací jazyka JavaScript
  
@@ -174,7 +173,7 @@ Teď vytvoříme UDA JavaScriptu v existující úloze ASA pomocí následujíc�
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>Volání JavaScriptu UDA v dotazu ASA
 
-V Azure Portal a otevřete svoji úlohu, upravte dotaz a zavolejte funkci TWA () s předponou mandátu "Uda". Příklad:
+V Azure Portal a otevřete svoji úlohu, upravte dotaz a zavolejte funkci TWA () s předponou mandátu "Uda". Například:
 
 ```SQL
 WITH value AS
@@ -226,12 +225,12 @@ Vytvořte místní soubor JSON s níže uvedeným obsahem, nahrajte soubor do St
 
 ## <a name="get-help"></a>Podpora
 
-Pokud chcete získat další nápovědu, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další nápovědu, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční dokumentace jazyka Azure Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční informace o REST API správy Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční dokumentace jazyka Azure Stream Analytics dotazů](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční informace o REST API správy Azure Stream Analytics](/rest/api/streamanalytics/)

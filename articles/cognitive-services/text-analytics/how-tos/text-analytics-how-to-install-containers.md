@@ -1,36 +1,38 @@
 ---
-title: Instalace a spuštění kontejnerů – Analýza textu
+title: Instalace a spuštění kontejnerů Docker pro rozhraní API pro analýzu textu
 titleSuffix: Azure Cognitive Services
-description: Postup stažení, instalace a spuštění kontejnerů pro Analýza textu v tomto výukovém kurzu.
+description: Kontejnery Docker pro rozhraní API pro analýzu textu slouží k provádění přirozeného jazyka, jako je například analýza mínění, v místním prostředí.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 03/02/2021
 ms.author: aahi
-ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: místní, Docker, kontejner, analýza mínění, zpracování přirozeného jazyka
+ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545654"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432056"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
 
 > [!NOTE]
-> * Kontejner pro Analýza mínění v3 je teď všeobecně dostupný. Kontejnery extrakce klíčových frází a rozpoznávání jazyka jsou dostupné v nechráněné verzi Public Preview.
+> * Kontejner pro Analýza mínění a rozpoznávání jazyka jsou teď všeobecně dostupné. Kontejner extrakce klíčových frází je k dispozici jako nebraná verze Public Preview.
 > * Entity Linking a NER nejsou aktuálně k dispozici jako kontejner.
-> * Za využití kontejneru Analýzy textu pro zdravotnictví se v současné době neúčtují žádné poplatky.
+> * Přístup k Analýza textu pro kontejner stavu vyžaduje [formulář žádosti](https://aka.ms/csgate). V současné době se vám nebude účtovat využití.
+> * Nedávno se změnila umístění imagí kontejneru. Přečtěte si tento článek, kde najdete aktualizované umístění pro tento kontejner.
 
 Kontejnery umožňují spouštět rozhraní API Analýzy textu ve vlastním prostředí a jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. Kontejnery Analýza textu poskytují pokročilé zpracování přirozeného jazyka v nezpracovaném textu a zahrnují tři hlavní funkce: analýzu mínění, extrakci klíčových frází a detekci jazyka. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 > [!IMPORTANT]
-> Bezplatný účet je omezený na 5 000 transakcí za měsíc a pro kontejnery jsou platné jenom **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">cenové úrovně <span class="docon docon-navigate-external x-hidden-focus"></span> </a> **Free** a Standard. Další informace o sazbách požadavků na transakce najdete v tématu [omezení pro data](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits).
+> Bezplatný účet je omezený na 5 000 transakcí za měsíc a pro kontejnery jsou platné jenom  <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">cenové úrovně</a> **Free** a Standard. Další informace o sazbách požadavků na transakce najdete v tématu [omezení pro data](../overview.md#data-limits).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,9 +44,9 @@ Před použitím Analýza textu kontejnerů musíte splnit následující předp
 
 |Vyžadováno|Účel|
 |--|--|
-|Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
+|Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
-|Prostředek Analýza textu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek služby Azure [Analýza textu](../../cognitive-services-apis-create-account.md) , který získá přidružený klíč rozhraní API a identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách Analýza textu přehledu a klíčů Azure Portal a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled**|
+|Prostředek Analýza textu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure [Analýza textu](../../cognitive-services-apis-create-account.md) s [cenovou úrovní](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)Free (F0) nebo Standard (y). K získání klíče rozhraní API a identifikátoru URI koncového bodu budete potřebovat přejít na stránku **klíč a koncový bod** prostředku v Azure Portal. <br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků. <br><br>**{ENDPOINT_URI}**: koncový bod pro váš prostředek. |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -59,7 +61,7 @@ V následující tabulce jsou popsány minimální a doporučené specifikace pr
 |  | Minimální specifikace hostitele | Doporučené specifikace hostitele | Minimální TPS | Maximální TPS|
 |---|---------|-------------|--|--|
 | **Detekce jazyka, extrakce klíčových frází**   | 1 jádro, 2 GB paměti | 1 jádro, 4GB paměti |15 | 30|
-| **Analýza mínění V3**   | 1 jádro, 2 GB paměti | 4 jádra, 8 GB paměti |15 | 30|
+| **Analýza mínění**   | 1 jádro, 2 GB paměti | 4 jádra, 8 GB paměti |15 | 30|
 | **Analýza textu pro stav-1 dokument/požadavek**   |  4 jádra, 10 GB paměti | 6 jader, 12GB paměť |15 | 30|
 | **Analýza textu pro stav – 10 dokumentů/žádostí**   |  6 jader, 16GB paměť | 8 jader, 20 GB paměť |15 | 30|
 
@@ -71,7 +73,7 @@ Jádro procesoru a paměť odpovídají `--cpus` `--memory` nastavení a, která
 
 Image kontejneru pro Analýza textu jsou k dispozici na Container Registry Microsoft.
 
-# <a name="sentiment-analysis-v3"></a>[Analýza mínění V3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Analýza mínění ](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -79,7 +81,7 @@ Image kontejneru pro Analýza textu jsou k dispozici na Container Registry Micro
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[Rozpoznávání jazyka (Preview)](#tab/language)
+# <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
@@ -103,9 +105,9 @@ Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandl
 > [!IMPORTANT]
 > * Příkazy Docker v následujících částech používají zpětné lomítko, `\` jako znak pro pokračování řádku. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. 
 > * `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
-> * Kontejner mínění Analysis v3 je teď všeobecně dostupný, což vrátí [popisky mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) v odpovědi. Extrakce klíčových frází a kontejnery pro detekci jazyka používají v2 rozhraní API a jsou ve verzi Preview.
+> * Jsou všeobecně dostupné kontejnery pro analýzu mínění a rozpoznávání jazyka. Kontejner extrakce klíčových frází používá v2 rozhraní API a je ve verzi Preview.
 
-# <a name="sentiment-analysis-v3"></a>[Analýza mínění V3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Analýza mínění](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -113,7 +115,7 @@ Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandl
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[Rozpoznávání jazyka (Preview)](#tab/language)
+# <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
@@ -153,18 +155,14 @@ Kontejnery Analýza textu odesílají informace o fakturaci do Azure pomocí pro
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](../text-analytics-resource-container-config.md).
 
-<!--blogs/samples/video course -->
-
-[!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
-
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Analýza textu. Souhrn:
 
 * Analýza textu poskytuje pro Docker tři kontejnery pro Linux, které zapouzdřují různé možnosti:
    * *Analýza mínění*
    * *Extrakce klíčových frází (Preview)* 
-   * *Rozpoznávání jazyka (Preview)*
+   * *Rozpoznávání jazyka*
    * *Analýza textu pro stav (Preview)*
 * Image kontejneru se stáhnou ze služby Microsoft Container Registry (MCR) nebo z úložiště kontejnerů ve verzi Preview.
 * Image kontejneru se spouštějí v Docker.

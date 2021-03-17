@@ -1,18 +1,15 @@
 ---
 title: Optimalizace Apache Hive s Apache Ambari v Azure HDInsight
 description: Ke konfiguraci a optimalizaci Apache Hive použijte webové uživatelské rozhraní Apache Ambari.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084354"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939255"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache Hive s Apache Ambari v Azure HDInsight
 
@@ -100,7 +97,7 @@ Podregistr zpracovává řádek data řádku. Rozvektorování směruje podregis
 
 Ve výchozím nastavení používá podregistr sadu pravidel pro vyhledání jednoho optimálního plánu spuštění dotazu. Optimalizace na základě nákladů (CBO) vyhodnocuje více plánů pro spuštění dotazu. A přiřadí každému plánu náklady a pak určí plán nejlevnější pro spuštění dotazu.
 
-Pokud chcete povolit CBO, přejděte na nastavení konfigurace **podregistru**  >  **Configs**  >  **Settings** a vyhledejte **optimalizaci na základě nákladů**a pak přepněte přepínací tlačítko na **zapnuto**.
+Pokud chcete povolit CBO, přejděte na nastavení konfigurace **podregistru**  >    >   a vyhledejte **optimalizaci na základě nákladů** a pak přepněte přepínací tlačítko na **zapnuto**.
 
 ![Optimalizátor založený na cenách HDInsight](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -137,7 +134,7 @@ K dispozici jsou tyto typy komprese:
 | GZIP | GZIP | DEFLATE | `.gz` | No |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
 | LZO | `Lzop` | LZO | `.lzo` | Ano, pokud je indexovaný |
-| Snappy | Není k dispozici | Snappy | Snappy | No |
+| Snappy | – | Snappy | Snappy | No |
 
 Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, jinak se vytvoří několik mapovačů. Pokud jsou vstupní data text, `bzip2` je to nejlepší možnost. V případě formátu ORC je přichycení nejrychlejší možnost komprese.
 
@@ -152,13 +149,13 @@ Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, 
 
 1. Přidání vlastního nastavení:
 
-    a. Přejděte ke **konfiguraci podregistru**  >  **Configs**  >  **Upřesnit**  >  **vlastní podregistr – lokalita**.
+    a. Přejděte ke **konfiguraci podregistru**  >    >  **Upřesnit**  >  **vlastní podregistr – lokalita**.
 
     b. V dolní části podokna vlastní podregistr-web vyberte **Přidat vlastnost...**
 
     c. V okně Přidat vlastnost zadejte `mapred.map.output.compression.codec` jako klíč a `org.apache.hadoop.io.compress.SnappyCodec` jako hodnotu.
 
-    d. Vyberte možnost **Přidat**.
+    d. Vyberte **Přidat**.
 
     ![Přidat vlastní vlastnost Apache Hive](./media/optimize-hive-ambari/hive-custom-property.png)
 
@@ -223,7 +220,7 @@ Následující části popisují další optimalizace týkající se podregistru
 
 Výchozím typem spojení v podregistru je *náhodné spojení*. V podregistru speciální mapovače přečtou vstup a vygeneruje dvojici klíč/hodnota JOIN k mezilehlému souboru. Hadoop seřadí a sloučí tyto páry v náhodně připravené fázi. Tato fáze náhodného zpracování je náročná. Výběr správného spojení na základě vašich dat může významně zlepšit výkon.
 
-| Typ spojení | Kdy | Postup | Nastavení podregistru | Komentáře |
+| Typ spojení | Když | Jak | Nastavení podregistru | Komentáře |
 | --- | --- | --- | --- | --- |
 | Náhodně připojit | <ul><li>Výchozí volba</li><li>Vždy funguje</li></ul> | <ul><li>Čtení z části jedné z tabulek</li><li>Intervaly a řazení podle klávesy JOIN</li><li>Každé omezení pošle jednu sadu.</li><li>Spojení se provádí na straně snížení</li></ul> | Není potřeba žádné významné nastavení podregistru | Funguje kdykoli |
 | Připojit k mapě | <ul><li>Jedna tabulka se může vejít do paměti.</li></ul> | <ul><li>Přečte malou tabulku do tabulky hash paměti.</li><li>Streamování prostřednictvím části velkého souboru</li><li>Spojí každý záznam z zatřiďovací tabulky.</li><li>Spojení jsou pouze mapovačem.</li></ul> | `hive.auto.confvert.join=true` | Rychlá, ale omezená |
@@ -233,7 +230,7 @@ Výchozím typem spojení v podregistru je *náhodné spojení*. V podregistru s
 
 Další doporučení pro optimalizaci spouštěcího modulu podregistru:
 
-| Nastavení | Doporučené | Výchozí nastavení HDInsight |
+| Nastavení | Doporučeno | Výchozí nastavení HDInsight |
 | --- | --- | --- |
 | `hive.mapjoin.hybridgrace.hashtable` | True = bezpečnější, pomalejší; false = rychlejší | false (nepravda) |
 | `tez.am.resource.memory.mb` | horní mez velikosti 4 GB pro většinu | Automaticky laděné |

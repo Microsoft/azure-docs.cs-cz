@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 3e4913c4be0d59bc37e3da2358c4f8ec302a26e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06ac110da35a5a77157bd4e31caaa5aa5fd015cc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233784"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566562"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro PHP pomocí Azure DevOps Starter
 
@@ -30,9 +30,9 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
  DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit bezplatnou novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Projects taky vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Microsoft Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
@@ -70,9 +70,9 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. Na levé straně přejdete do souboru **Resources/views/Welcome. Blade. php** .
 
-1. Vyberte **Upravit**a pak proveďte změnu textu.  Změňte například text v některé ze značek div.
+1. Vyberte **Upravit** a pak proveďte změnu textu.  Změňte například text v některé ze značek div.
 
-1. Vyberte **Potvrdit**a potom změny uložte.
+1. Vyberte **Potvrdit** a potom změny uložte.
 
 1. V prohlížeči přejdete na řídicí panel DevOps Starter. Nyní by se mělo zobrazit sestavení probíhá. Změny, které jste právě provedli, jsou automaticky vytvořeny a nasazeny prostřednictvím kanálu CI/CD.
 
@@ -90,7 +90,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. V horní části kanálu buildu, vyberte název kanálu buildu.
 
-1. Změňte název kanálu sestavení na výstižnější, vyberte, **uložte & frontu**a potom vyberte **Uložit**.
+1. Změňte název kanálu sestavení na výstižnější, vyberte, **uložte & frontu** a potom vyberte **Uložit**.
 
 1. Pod názvem kanálu buildu vyberte **Historie**.  V podokně **Historie** se zobrazí záznam o tom, jak vaše poslední změny sestavení provést. Azure Pipelines sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
@@ -98,7 +98,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. Vyberte **Uchování**. V závislosti na vašem scénáři můžete určit zásady, které zachovají nebo odeberou určitý počet sestavení.
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1. Vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje kanál, který definuje proces vydání. 
 
@@ -110,7 +110,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. Na pravé straně vyberte **Zobrazit vydané verze** , aby se zobrazila Historie verzí.
 
-1. Vyberte tři tečky (...) vedle jedné z vašich vydání a pak vyberte **otevřít**. Toto zobrazení obsahuje několik nabídek, které můžete prozkoumat, například souhrn verze, související pracovní položky a testy.
+1. Vyberte tři tečky (...) vedle jedné z vašich vydání a pak vyberte  **otevřít**. Toto zobrazení obsahuje několik nabídek, které můžete prozkoumat, například souhrn verze, související pracovní položky a testy.
 
 1. Vyberte **Potvrzení**. Toto zobrazení ukazuje potvrzení kódu, která jsou přidružená ke konkrétnímu nasazení. 
 
@@ -125,4 +125,4 @@ Pokud už je nepotřebujete, můžete Azure App Service a další související 
 Při konfiguraci procesu CI/CD byly automaticky vytvořeny kanály sestavení a vydání. Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Další informace o kanálu CI/CD najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení procesu CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Přizpůsobení procesu CD](/azure/devops/pipelines/release/define-multistage-release-process)

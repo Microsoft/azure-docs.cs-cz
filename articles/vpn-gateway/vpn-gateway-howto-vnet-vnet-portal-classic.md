@@ -6,34 +6,31 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 10/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d81e0474d898ffee7f128c0bcea61f077c3d758
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84985471"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103216"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (Classic)
 
+Tento článek vám pomůže vytvořit připojení brány VPN mezi virtuálními sítěmi. Virtuální sítě se můžou nacházet ve stejné oblasti nebo v různých oblastech a můžou patřit do stejného předplatného nebo do různých předplatných.
+
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png" alt-text="Diagram znázorňující klasickou architekturu VNet-to-VNet":::
+
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
-Tento článek vám pomůže vytvořit připojení brány VPN mezi virtuálními sítěmi. Virtuální sítě se můžou nacházet ve stejné oblasti nebo v různých oblastech a můžou patřit do stejného předplatného nebo do různých předplatných. Postup v tomto článku se týká modelu nasazení Classic a Azure Portal. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
+Postup v tomto článku se týká modelu nasazení Classic a Azure Portal. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
-> * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
-> * [Azure Portal (Classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [Propojení různých modelů nasazení – Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
-> * [Propojení různých modelů nasazení – PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+> * [Klasický](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+> * [Resource Manager](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Připojení virtuální sítě v různých modelech nasazení](vpn-gateway-connect-different-deployment-models-portal.md)
 >
 >
-
-![Diagram připojení virtuální sítě k virtuální síti](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
-
-
 
 ## <a name="about-vnet-to-vnet-connections"></a>Informace o propojeních VNet-to-VNet
 
@@ -41,7 +38,7 @@ Připojení virtuální sítě k jiné virtuální síti (VNet-to-VNet) v modelu
 
 Virtuální sítě, které se připojíte, může být v různých předplatných a různých oblastech. Můžete zkombinovat virtuální síť k síti VNet s konfiguracemi s více lokalitami. Díky tomu je možné vytvářet topologie sítí, ve kterých se používá propojování více míst i propojování virtuálních sítí.
 
-![Připojení VNet-to-VNet](./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png)
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="Diagram znázorňující klasickou architekturu VNet-to-VNet":::
 
 ### <a name="why-connect-virtual-networks"></a><a name="why"></a>Proč propojovat virtuální sítě?
 
@@ -61,42 +58,24 @@ Virtuální sítě může být vhodné propojit z následujících důvodů:
 
 Další informace o propojeních VNet-to-VNet najdete v části [Aspekty propojení VNet-to-VNet](#faq) na konci tohoto článku.
 
-### <a name="working-with-azure-powershell"></a><a name="powershell"></a>Práce s Azure PowerShell
+## <a name="prerequisites"></a>Předpoklady
 
-Portál používáme pro většinu kroků, ale k vytvoření připojení mezi virtuální sítě je potřeba použít PowerShell. Připojení nemůžete vytvořit pomocí Azure Portal. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
+Portál používáme pro většinu kroků, ale k vytvoření připojení mezi virtuální sítě je potřeba použít PowerShell. Nemůžete vytvořit připojení pomocí Azure Portal, protože na portálu neexistuje žádný způsob, jak zadat sdílený klíč. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-## <a name="step-1---plan-your-ip-address-ranges"></a><a name="plan"></a>Krok 1: Plánování rozsahů IP adres
+## <a name="planning"></a><a name="planning"></a>Plánování
 
 Je důležité určit rozsahy, které budete používat ke konfiguraci virtuálních sítí. V případě této konfigurace se ujistěte, že se žádný z rozsahů virtuální sítě nepřekrývá mezi sebou nebo pomocí kterékoli z místních sítí, ke kterým se připojují.
 
-Následující tabulka ukazuje příklad definování virtuální sítě. Rozsahy používejte jenom jako základní pravidla. Zapište rozsahy pro virtuální sítě. Tyto informace budete potřebovat pro pozdější kroky.
+### <a name="vnets"></a><a name="vnet"></a>Virtuální sítě
 
-**Příklad**
-
-| Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
-|:--- |:--- |:--- |:--- |
-| Virtuální sítě testvnet1 |Virtuální sítě testvnet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| Virtuální sítě testvnet4 |Virtuální sítě testvnet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
-
-## <a name="step-2---create-the-virtual-networks"></a><a name="vnetvalues"></a>Krok 2 – Vytvoření virtuálních sítí
-
-Vytvořte v [Azure Portal](https://portal.azure.com)dvě virtuální sítě. Postup vytvoření klasických virtuálních sítí najdete v tématu [Vytvoření klasické virtuální sítě](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). 
-
-Při použití portálu k vytvoření klasické virtuální sítě musíte přejít na stránku virtuální síť pomocí následujících kroků, jinak se nezobrazí možnost vytvořit klasický virtuální síť:
-
-1. Kliknutím na ' + ' otevřete stránku ' nový '.
-2. Do pole Hledat na Marketplace zadejte ' Virtual Network '. Pokud místo toho vyberte síť – > Virtual Network, nebudete mít možnost vytvořit klasickou virtuální síť.
-3. Vyhledejte ' Virtual Network ' ze seznamu vrácených a kliknutím na něj otevřete stránku Virtual Network. 
-4. Na stránce virtuální síť vyberte Classic a vytvořte klasickou virtuální síť. 
-
-Pokud používáte tento článek jako cvičení, můžete použít následující příklady hodnot:
+Pro toto cvičení používáme následující příklady hodnot:
 
 **Hodnoty pro virtuální sítě testvnet1**
 
 Název: virtuální sítě testvnet1<br>
 Adresní prostor: 10.11.0.0/16, 10.12.0.0/16 (volitelné)<br>
 Název podsítě: výchozí<br>
-Rozsah adres podsítě: 10.11.0.1/24<br>
+Rozsah adres podsítě: 10.11.0.0/24<br>
 Skupina prostředků: ClassicRG<br>
 Umístění: USA – východ<br>
 GatewaySubnet: 10.11.1.0/27
@@ -106,10 +85,28 @@ GatewaySubnet: 10.11.1.0/27
 Název: virtuální sítě testvnet4<br>
 Adresní prostor: 10.41.0.0/16, 10.42.0.0/16 (volitelné)<br>
 Název podsítě: výchozí<br>
-Rozsah adres podsítě: 10.41.0.1/24<br>
+Rozsah adres podsítě: 10.41.0.0/24<br>
 Skupina prostředků: ClassicRG<br>
 Umístění: USA – západ<br>
 GatewaySubnet: 10.41.1.0/27
+
+### <a name="connections"></a><a name="plan"></a>Připojení
+
+V následující tabulce je uveden příklad, jak budete připojovat své virtuální sítě. Rozsahy používejte jenom jako základní pravidla. Zapište rozsahy pro virtuální sítě. Tyto informace budete potřebovat pro pozdější kroky.
+
+V tomto příkladu se virtuální sítě testvnet1 připojuje k místní síťové lokalitě, kterou vytvoříte s názvem "VNet4Local". Nastavení pro VNet4Local obsahují předpony adres pro virtuální sítě testvnet4.
+Místní lokalita pro každou virtuální síť je druhá virtuální síť. Následující příklady hodnot se používají pro naši konfiguraci:
+
+**Příklad**
+
+| Virtual Network | Adresní prostor | Umístění | Připojí se k místní síťové lokalitě. |
+|:--- |:--- |:--- |:--- |
+| Virtuální sítě testvnet1 |Virtuální sítě testvnet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |SiteVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| Virtuální sítě testvnet4 |Virtuální sítě testvnet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |SiteVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+
+## <a name="create-virtual-networks"></a><a name="vnetvalues"></a>Vytvoření virtuálních sítí
+
+V tomto kroku vytvoříte dvě klasické virtuální sítě, virtuální sítě testvnet1 a virtuální sítě testvnet4. Pokud používáte tento článek jako cvičení, použijte [příklady hodnot](#vnet).
 
 **Při vytváření virtuální sítě Pamatujte na následující nastavení:**
 
@@ -125,51 +122,58 @@ GatewaySubnet: 10.41.1.0/27
 
 * **DNS servery** – zadejte název a IP adresu serveru DNS. Toto nastavení neslouží k vytvoření serveru DNS. Umožňuje určit server DNS, který chcete použít pro překlad názvů pro tuto virtuální síť.
 
-V této části nakonfigurujete typ připojení, místní lokalitu a vytvoříte bránu.
+### <a name="to-create-a-classic-virtual-network"></a>Vytvoření klasické virtuální sítě
 
-## <a name="step-3---configure-the-local-site"></a><a name="localsite"></a>Krok 3 – Konfigurace místní lokality
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
+
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
+
+## <a name="configure-sites-and-gateways"></a><a name="localsite"></a>Konfigurace lokalit a bran
 
 Azure používá nastavení zadaná v každé místní síťové lokalitě k určení způsobu směrování provozu mezi virtuální sítě. Každá virtuální síť musí ukazovat na příslušnou místní síť, do které chcete směrovat provoz. Určíte název, který chcete použít k odkazování na jednotlivé místní síťové lokality. Je nejvhodnější použít něco popisného.
 
 Například virtuální sítě testvnet1 se připojí k místní síťové lokalitě, kterou vytvoříte s názvem "VNet4Local". Nastavení pro VNet4Local obsahují předpony adres pro virtuální sítě testvnet4.
 
-Místní lokalita pro každou virtuální síť je druhá virtuální síť. Následující příklady hodnot se používají pro naši konfiguraci:
+Mějte na paměti, že místní lokalita pro každou virtuální síť je druhá virtuální síť.
 
-| Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
+| Virtual Network | Adresní prostor | Umístění | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
-| Virtuální sítě testvnet1 |Virtuální sítě testvnet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| Virtuální sítě testvnet4 |Virtuální sítě testvnet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| Virtuální sítě testvnet1 |Virtuální sítě testvnet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |SiteVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| Virtuální sítě testvnet4 |Virtuální sítě testvnet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |SiteVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
-1. Vyhledejte virtuální sítě testvnet1 v Azure Portal. V části **připojení VPN** na stránce klikněte na **Brána**.
+### <a name="to-configure-a-site"></a><a name="site"></a>Konfigurace lokality
 
-    ![Žádná brána](./media/vpn-gateway-howto-vnet-vnet-portal-classic/nogateway.png)
-2. Na stránce **nové připojení VPN** vyberte **site-to-site**.
-3. Kliknutím na **místní lokalitu** otevřete stránku místní lokality a nakonfigurujte nastavení.
-4. Na stránce **místní lokalita** pojmenujte místní lokalitu. V našem příkladu pojmenuje místní lokalitu ' VNet4Local '.
-5. Pro **IP adresu brány VPN**můžete použít libovolnou IP adresu, kterou požadujete, pokud je v platném formátu. Obvykle byste použili skutečnou externí IP adresu pro zařízení VPN. Pro klasickou konfiguraci VNet-to-VNet ale použijete veřejnou IP adresu, která je přiřazená bráně pro vaši virtuální síť. Vzhledem k tom, že jste ještě nevytvořili bránu virtuální sítě, zadáte jako zástupný symbol jakoukoli platnou veřejnou IP adresu.<br>Nenechávejte toto pole prázdné – pro tuto konfiguraci není volitelné. V pozdějším kroku se vrátíte do těchto nastavení a nakonfigurujete je s odpovídajícími IP adresami brány virtuální sítě, jakmile ji Azure vygeneruje.
-6. Pro **adresní prostor klienta**použijte adresní prostor druhé virtuální sítě. Podívejte se na příklad vašeho plánování. Kliknutím na **OK** uložte nastavení a vraťte se zpátky na stránku **nové připojení k síti VPN** .
+Místní lokalita obvykle odkazuje na vaše místní umístění. Obsahuje IP adresu zařízení VPN, ke kterému vytvoříte připojení, a rozsah IP adres, které budou do tohoto zařízení VPN směrovány přes bránu VPN.
 
-    ![místní lokalita](./media/vpn-gateway-howto-vnet-vnet-portal-classic/localsite.png)
+1. Na stránce pro virtuální síť v části **Nastavení**vyberte **připojení Site-to-site**.
+1. Na stránce připojení Site-to-site vyberte **+ Přidat**.
+1. Na stránce **Konfigurovat připojení k síti VPN a bránu** pro **Typ připojení**ponechte vybranou možnost **site-to-site** .
 
-## <a name="step-4---create-the-virtual-network-gateway"></a><a name="gw"></a>Krok 4 – Vytvoření brány virtuální sítě
+   * **IP adresa brány VPN:** Toto je veřejná IP adresa zařízení VPN pro vaši místní síť. Pro toto cvičení můžete umístit zástupnou adresu, protože ještě nemáte IP adresu pro bránu VPN pro druhý Web. Například 5.4.3.2. Později, až nakonfigurujete bránu pro jinou virtuální síť, můžete tuto hodnotu upravit.
 
-Každá virtuální síť musí mít bránu virtuální sítě. Brána virtuální sítě směruje a šifruje provoz.
+   * **Adresní prostor klienta:** Vypíše rozsahy IP adres, které chcete směrovat do jiné virtuální sítě prostřednictvím této brány. Můžete přidat více různých rozsahů adres. Ujistěte se, že se zde zadané rozsahy nepřekrývají s rozsahy jiných sítí, ke kterým se vaše virtuální síť připojuje, nebo s rozsahy adres samotné virtuální sítě.
+1. V dolní části stránky nevybírejte možnost zkontrolovat + vytvořit. Místo toho vyberte **Další:>brány **.
 
-1. Na stránce **Nové připojení VPN** zaškrtněte políčko **Vytvořit bránu hned**.
-2. Klikněte na **podsíť, velikost a typ směrování**. Na stránce **Konfigurace brány** klikněte na **podsíť**.
-3. Název podsítě brány se vyplní automaticky s požadovaným názvem ' GatewaySubnet '. **Rozsah adres** obsahuje IP adresy, které jsou přiděleny službám brány VPN. Některé konfigurace umožňují podsíť brány/29, ale je vhodné použít a/28 nebo/27, aby vyhovovaly budoucím konfiguracím, které mohou vyžadovat více IP adres pro služby brány. V našem příkladu nastavení používáme 10.11.1.0/27. Upravte adresní prostor a pak klikněte na **OK**.
-4. Nakonfigurujte **Velikost brány**. Toto nastavení odkazuje na [SKU brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
-5. Nakonfigurujte **typ směrování**. Typ směrování pro tuto konfiguraci musí být **dynamický**. Typ směrování nemůžete později změnit, pokud nechcete bránu odtrhnout a vytvořit novou.
-6. Klikněte na **OK**.
-7. Na stránce **nové připojení VPN** klikněte na **OK** a začněte vytvářet bránu virtuální sítě. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové jednotce (SKU) brány.
+### <a name="to-configure-a-virtual-network-gateway"></a><a name="sku"></a>Konfigurace brány virtuální sítě
 
-## <a name="step-5---configure-testvnet4-settings"></a><a name="vnet4settings"></a>Krok 5 – Konfigurace nastavení virtuální sítě testvnet4
+1. Na stránce **Brána** vyberte následující hodnoty:
 
-Zopakováním kroků [vytvořte místní lokalitu](#localsite) a [vytvořte bránu virtuální sítě](#gw) pro konfiguraci virtuální sítě testvnet4 a v případě potřeby nahraďte hodnoty. Pokud tento postup provádíte jako cvičení, použijte [Ukázkové hodnoty](#vnetvalues).
+   * **Velikost:** Toto je SKU brány, které použijete k vytvoření brány virtuální sítě. Brány VPN Classic používají staré (starší) skladové položky brány. Další informace o starších skladových položkách brány najdete v tématu [Práce se skladovými položkami bran virtuálních sítí (staré skladové položky)](vpn-gateway-about-skus-legacy.md). Pro toto cvičení můžete vybrat **standardní** .
 
-## <a name="step-6---update-the-local-sites"></a><a name="updatelocal"></a>Krok 6 – aktualizace místních lokalit
+   * **Typ směrování:** Vyberte typ směrování pro bránu. Označuje se také jako typ sítě VPN. Je důležité vybrat správný typ, protože bránu nemůžete převést z jednoho typu na jiný. Zařízení VPN musí být kompatibilní s typem směrování, který zvolíte. Další informace o typu směrování najdete v tématu [informace o nastaveních VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md#vpntype). Můžete narazit na články, které odkazují na typy sítě VPN RouteBased a PolicyBased. Typ Dynamická odpovídá RouteBased a Statická odpovídá PolicyBased. Pro tuto konfiguraci vyberte **Dynamická**.
 
-Až budou brány virtuální sítě vytvořené pro obě virtuální sítě, musíte upravit hodnoty **IP adresy místní lokality brány VPN** .
+   * **Podsíť brány:** Velikost podsítě brány, kterou určíte, závisí na konfiguraci brány VPN, kterou chcete vytvořit. Přestože je možné vytvořit tak malou podsíť brány, jako je /29, doporučujeme použít /27 nebo /28. Vytvoří se tak vetší podsíť zahrnující více adres. Použitím větší podsítě brány zajistíte dostatek IP adres pro případné další konfigurace.
+
+1. V dolní části stránky vyberte **zkontrolovat + vytvořit** a ověřte nastavení. Vyberte **vytvořit** k nasazení. Vytvoření brány virtuální sítě může trvat až 45 minut v závislosti na vybrané skladové jednotce brány.
+1. Při vytváření této brány můžete začít pokračovat k dalšímu kroku.
+
+### <a name="configure-testvnet4-settings"></a>Konfigurace nastavení virtuální sítě testvnet4
+
+Opakujte postup pro [vytvoření lokality a brány](#localsite) pro konfiguraci virtuální sítě testvnet4 a nahrazování hodnot v případě potřeby. Pokud tento postup provádíte jako cvičení, použijte [Ukázkové hodnoty](#planning).
+
+## <a name="update-local-sites"></a><a name="updatelocal"></a>Aktualizace místních lokalit
+
+Až budou brány virtuální sítě vytvořené pro obě virtuální sítě, musíte upravit vlastnosti místní lokality pro **IP adresu brány VPN**.
 
 |Název virtuální sítě|Připojený Web|IP adresa brány|
 |:--- |:--- |:--- |
@@ -178,83 +182,42 @@ Až budou brány virtuální sítě vytvořené pro obě virtuální sítě, mus
 
 ### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>Část 1 – získání veřejné IP adresy brány virtuální sítě
 
-1. Vyhledejte virtuální síť v Azure Portal.
-2. Kliknutím otevřete stránku s **přehledem** virtuální sítě. Na stránce v části **připojení VPN**můžete zobrazit IP adresu brány virtuální sítě.
+1. Přejděte do této virtuální sítě tak, že přejdete do **skupiny prostředků** a vyberete virtuální síť.
+1. Na stránce pro virtuální síť v podokně **základy** na pravé straně vyhledejte **IP adresu brány** a zkopírujte do schránky.
 
-   ![Veřejná IP adresa](./media/vpn-gateway-howto-vnet-vnet-portal-classic/publicIP.png)
-3. Zkopírujte IP adresu. Budete ho používat v další části.
-4. Opakujte tyto kroky pro virtuální sítě testvnet4
+### <a name="part-2---modify-the-local-site-properties"></a>Část 2 – Změna vlastností místní lokality
 
-### <a name="part-2---modify-the-local-sites"></a>Část 2 – Změna místních lokalit
+1. V části připojení Site-to-site vyberte připojení. Například SiteVNet4.
+1. Na stránce **vlastnosti** pro připojení Site-to-site vyberte **upravit místní lokalitu**.
+1. Do pole **IP adresa brány VPN** vložte IP adresu brány VPN, kterou jste zkopírovali v předchozí části.
+1. Vyberte **OK**.
+1. Pole je aktualizováno v systému. Tuto metodu můžete také použít k přidání další IP adresy, kterou chcete směrovat na tento webový server.
 
-1. Vyhledejte virtuální síť v Azure Portal.
-2. Na stránce **Přehled** virtuální sítě klikněte na místní lokalitu.
+### <a name="part-3---repeat-steps-for-the-other-vnet"></a>Část 3 – opakování kroků pro druhou virtuální síť
 
-   ![Vytvořila se místní lokalita](./media/vpn-gateway-howto-vnet-vnet-portal-classic/local.png)
-3. Na stránce **připojení VPN typu Site-to-site** klikněte na název místní lokality, kterou chcete upravit.
+Opakujte kroky pro virtuální sítě testvnet4.
 
-   ![Otevřít místní lokalitu](./media/vpn-gateway-howto-vnet-vnet-portal-classic/openlocal.png)
-4. Klikněte na **místní lokalitu** , kterou chcete upravit.
+## <a name="retrieve-configuration-values"></a><a name="getvalues"></a>Načtení hodnot konfigurace
 
-   ![Upravit web](./media/vpn-gateway-howto-vnet-vnet-portal-classic/connections.png)
-5. Aktualizujte **IP adresu brány VPN** a kliknutím na **OK** nastavení uložte.
+[!INCLUDE [retrieve values](../../includes/vpn-gateway-values-classic.md)]
 
-   ![IP adresa brány](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
-6. Zavřete ostatní stránky.
-7. Opakujte tyto kroky pro virtuální sítě testvnet4.
+## <a name="create-connections"></a><a name="createconnections"></a>Vytvoření připojení
 
-## <a name="step-7---retrieve-values-from-the-network-configuration-file"></a><a name="getvalues"></a>Krok 7 – načtení hodnot z konfiguračního souboru sítě
-
-Když v Azure Portal vytvoříte klasický virtuální sítě, název, který si zobrazíte, není úplný název, který používáte pro PowerShell. Například virtuální síť, která se na portálu zdá být pojmenovaná **virtuální sítě testvnet1** , může mít v konfiguračním souboru sítě mnohem delší název. Název může vypadat nějak takto: **Group ClassicRG virtuální sítě testvnet1**. Při vytváření připojení je důležité použít hodnoty, které vidíte v souboru konfigurace sítě.
-
-V následujících krocích se připojíte ke svému účtu Azure a stáhnete a zobrazíte soubor konfigurace sítě, abyste získali hodnoty požadované pro vaše připojení.
-
-1. Stáhněte a nainstalujte si nejnovější verzi rutin PowerShellu pro správu služeb Azure (SM). Další informace najdete v tématu [práce s Azure PowerShell](#powershell).
-
-2. Otevřete konzolu PowerShellu se zvýšenými právy. Použijte následující příklady, které vám pomůžou se připojit. Tyto příkazy musíte spustit místně pomocí modulu pro správu služby PowerShell. Chcete-li přepnout na správu služeb, použijte tento příkaz:
-
-   ```powershell
-   azure config mode asm
-   ```
-3. Připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
-
-   ```powershell
-   Add-AzureAccount
-   ```
-4. Zkontrolujte předplatná pro příslušný účet.
-
-   ```powershell
-   Get-AzureSubscription
-   ```
-5. Máte-li více předplatných, vyberte předplatné, které chcete použít.
-
-   ```powershell
-   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
-   ```
-6. Exportujte a zobrazte konfigurační soubor sítě. Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. V tomto příkladu je konfigurační soubor sítě exportován do **C:\AzureNet**.
-
-   ```powershell
-   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
-   ```
-7. Otevřete soubor pomocí textového editoru a zobrazte názvy pro virtuální sítě a weby. Tyto názvy budou názvy, které použijete při vytváření připojení.<br>Názvy virtuální sítě jsou uvedené jako **VirtualNetworkSite název =**<br>Názvy webů jsou uvedené jako **LocalNetworkSiteRef název =**
-
-## <a name="step-8---create-the-vpn-gateway-connections"></a><a name="createconnections"></a>Krok 8 – vytvoření připojení brány VPN Gateway
-
-Po dokončení všech předchozích kroků můžete nastavit předsdílené klíče IPsec/IKE a vytvořit připojení. Tato sada kroků používá PowerShell. Připojení typu VNet-to-VNet pro model nasazení Classic nelze konfigurovat v Azure Portal.
+Po dokončení všech předchozích kroků můžete nastavit předsdílené klíče IPsec/IKE a vytvořit připojení. Tato sada kroků používá PowerShell. Připojení typu VNet-to-VNet pro model nasazení Classic Nejde nakonfigurovat v Azure Portal, protože sdílený klíč nejde zadat na portálu.
 
 V příkladech si všimněte, že je sdílený klíč přesně stejný. Sdílený klíč musí vždy odpovídat. Nezapomeňte hodnoty v těchto příkladech nahradit přesnými názvy pro virtuální sítě a místní síťové lokality.
 
-1. Vytvořte připojení virtuální sítě TestVNet1 k virtuální síti TestVNet4.
+1. Vytvořte připojení virtuální sítě TestVNet1 k virtuální síti TestVNet4. Ujistěte se, že jste hodnoty změnili.
 
    ```powershell
    Set-AzureVNetGatewayKey -VNetName 'Group ClassicRG TestVNet1' `
-   -LocalNetworkSiteName '17BE5E2C_VNet4Local' -SharedKey A1b2C3D4
+   -LocalNetworkSiteName 'value for _VNet4Local' -SharedKey A1b2C3D4
    ```
 2. Vytvořte připojení virtuální sítě TestVNet4 k virtuální síti TestVNet1.
 
    ```powershell
    Set-AzureVNetGatewayKey -VNetName 'Group ClassicRG TestVNet4' `
-   -LocalNetworkSiteName 'F7F7BFC7_VNet1Local' -SharedKey A1b2C3D4
+   -LocalNetworkSiteName 'value for _VNet1Local' -SharedKey A1b2C3D4
    ```
 3. Počkejte na inicializaci připojení. Po inicializaci brány se jedná o stav "úspěch".
 
@@ -267,7 +230,10 @@ V příkladech si všimněte, že je sdílený klíč přesně stejný. Sdílen�
    StatusCode     : OK
    ```
 
-## <a name="vnet-to-vnet-considerations-for-classic-vnets"></a><a name="faq"></a>Požadavky VNet-to-VNet pro klasický virtuální sítě
+## <a name="faq-and-considerations"></a><a name="faq"></a>Nejčastější dotazy a požadavky
+
+Tyto požadavky platí pro klasické virtuální sítě a brány klasických virtuálních sítí.
+
 * Virtuální sítě mohou být ve stejném nebo jiném předplatném.
 * Virtuální sítě se můžou nacházet ve stejné oblasti (umístění) Azure nebo v různých oblastech.
 * Cloudová služba nebo koncový bod pro vyrovnávání zatížení nemůžou být napříč virtuálními sítěmi, i když se vzájemně spojí.
@@ -281,4 +247,5 @@ V příkladech si všimněte, že je sdílený klíč přesně stejný. Sdílen�
 * Provoz VNet-to-VNet prochází přes páteřní síť Azure.
 
 ## <a name="next-steps"></a>Další kroky
+
 Ověřte stav připojení. Viz [ověření VPN Gatewayho připojení](vpn-gateway-verify-connection-resource-manager.md).

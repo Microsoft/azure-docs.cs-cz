@@ -2,16 +2,17 @@
 title: Distribuované trasování v Azure Application Insights | Microsoft Docs
 description: Poskytuje informace o podpoře Microsoftu pro distribuované trasování prostřednictvím našeho partnerství v projektu OpenCensus.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 142daec93724fe4c25fd5c65dd387856dfb582c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a47b41a8b7f4e18be58c32c97cf279b9229f26da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324433"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579517"
 ---
 # <a name="what-is-distributed-tracing"></a>Co je distribuované trasování?
 
@@ -33,10 +34,10 @@ Povolení distribuovaného trasování napříč službami v aplikaci je jednodu
 
 Všechna Application Insights agenti a sady SDK pro .NET, .NET Core, Java, Node.js a JavaScript podporují nativně distribuované trasování. Pokyny k instalaci a konfiguraci každé Application Insights SDK jsou k dispozici níže:
 
-* [.NET](../learn/quick-monitor-portal.md)
-* [.NET Core](../learn/dotnetcore-quick-start.md)
+* [.NET](asp-net.md)
+* [.NET Core](asp-net-core.md)
 * [Java](./java-in-process-agent.md)
-* [Node.js](../learn/nodejs-quick-start.md)
+* [Node.js](../app/nodejs-quick-start.md)
 * [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
@@ -56,5 +57,5 @@ Web OpenCensus udržuje referenční dokumentaci rozhraní API pro [Python](http
 
 * [Průvodce používáním Pythonu v OpenCensus](https://opencensus.io/api/python/trace/usage.html)
 * [Mapa aplikace](./app-map.md)
-* [Monitorování výkonu na konci](../learn/tutorial-performance.md)
+* [Monitorování výkonu na konci](../app/tutorial-performance.md)
 

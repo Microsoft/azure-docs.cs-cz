@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: a74fae74a2d0ebbb71d65420475e5772e44a8d84
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79f3f93338d15562dcc37857d63bc8b2d7e96b05
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507089"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530548"
 ---
 # <a name="remote-rendering-sessions"></a>Relace Remote Renderingu
 
@@ -24,13 +25,13 @@ To znamená, že když používáte vzdálené vykreslování Azure, musí být 
 
 ## <a name="managing-sessions"></a>Správa relací
 
-Existuje několik způsobů, jak spravovat relace a pracovat s nimi. Nezávisle na způsobu vytváření, aktualizace a vypínání relací jsou prostřednictvím [REST API správy relací](../how-tos/session-rest-api.md). V jazyce C# a C++ se tyto operace zveřejňují prostřednictvím tříd `AzureFrontend` a `AzureSession` . Pro aplikace Unity existují další obslužné funkce poskytované `ARRServiceUnity` komponentou.
+Existuje několik způsobů, jak spravovat relace a pracovat s nimi. Nezávisle na způsobu vytváření, aktualizace a vypínání relací jsou prostřednictvím [REST API správy relací](../how-tos/session-rest-api.md). V jazyce C# a C++ se tyto operace zveřejňují prostřednictvím tříd `RemoteRenderingClient` a `RenderingSession` . Pro aplikace Unity existují další obslužné funkce poskytované `ARRServiceUnity` komponentou.
 
-Jakmile budete *připojeni* k aktivní relaci, operace jako [načítání modelů](models.md) a interakce s scénou jsou zpřístupněny prostřednictvím `AzureSession` třídy.
+Jakmile budete *připojeni* k aktivní relaci, operace jako [načítání modelů](models.md) a interakce s scénou jsou zpřístupněny prostřednictvím `RenderingSession` třídy.
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Správa více relací současně
 
-*Připojení* k několika relacím z jednoho zařízení není možné. V rámci jedné aplikace ale můžete vytvořit, sledovat a vypnout libovolný počet relací. Dokud se aplikace nechce připojit k relaci, nemusíte ji spouštět na zařízení jako HoloLens 2, a to buď. Případ použití pro takovou implementaci může být, pokud chcete řídit relace prostřednictvím centrálního mechanismu. Například jedna může vytvořit webovou aplikaci, do které se může přihlásit více tabletů a HoloLenses. Pak se aplikace může zobrazit na tabletech, například na to, který model CAD se má zobrazit. Pokud uživatel provede výběr, budou tyto informace sděleny všem HoloLenses, aby mohli vytvořit sdílené prostředí.
+*Připojení* k několika relacím z jednoho zařízení není možné. V rámci jedné aplikace ale můžete vytvořit, sledovat a vypnout libovolný počet relací. Dokud se aplikace nechce připojit k relaci, nemusíte ji spouštět na zařízení jako HoloLens 2, a to buď. Případ použití pro takovou implementaci může být, pokud chcete řídit relace prostřednictvím centrálního mechanismu. Například jedna může vytvořit webovou aplikaci, do které se může přihlásit víc tabletů a zařízení HoloLens. Pak se aplikace může zobrazit na tabletech, například na to, který model CAD se má zobrazit. Pokud uživatel provede výběr, budou tyto informace sděleny všem zařízením HoloLens, aby bylo možné vytvořit sdílené prostředí.
 
 ## <a name="session-phases"></a>Fáze relace
 
@@ -38,9 +39,9 @@ Každá relace projde několik fází.
 
 ### <a name="session-startup"></a>Spuštění relace
 
-Když požádáte o [Vytvoření nové relace](../how-tos/session-rest-api.md#create-a-session)pomocí ARR, je první věc, kterou vrátí [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)relace. Tento identifikátor UUID vám umožní zadat dotaz na informace o relaci. Identifikátor UUID a některé základní informace o relaci jsou trvalé po dobu 30 dnů, takže je můžete zadat dotaz na tyto informace i po zastavení relace. V tomto okamžiku bude **stav relace** hlášen jako **spuštění**.
+Když požádáte o [Vytvoření nové relace](../how-tos/session-rest-api.md)pomocí ARR, je první věc, kterou vrátí [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)relace. Tento identifikátor UUID vám umožní zadat dotaz na informace o relaci. Identifikátor UUID a některé základní informace o relaci jsou trvalé po dobu 30 dnů, takže je můžete zadat dotaz na tyto informace i po zastavení relace. V tomto okamžiku bude **stav relace** hlášen jako **spuštění**.
 
-V dalším kroku se vzdálené vykreslování Azure pokusí najít server, který může hostovat vaši relaci. Pro toto hledání existují dva parametry. Nejprve bude vyhradit jenom servery ve vaší [oblasti](../reference/regions.md). Důvodem je, že latence sítě v různých oblastech může být příliš vysoká, aby se zaručilo dáté prostředí. Druhý faktor je požadovaná *Velikost* , kterou jste určili. V každé oblasti je k dispozici omezený počet serverů, které mohou splňovat požadavky na velikost [*Standard*](../reference/vm-sizes.md) nebo [*Premium*](../reference/vm-sizes.md) . V důsledku toho platí, že pokud jsou všechny servery požadované velikosti aktuálně používány ve vaší oblasti, vytvoření relace se nezdaří. Důvodem selhání [může být dotazování](../how-tos/session-rest-api.md#get-sessions-properties).
+V dalším kroku se vzdálené vykreslování Azure pokusí najít server, který může hostovat vaši relaci. Pro toto hledání existují dva parametry. Nejprve bude vyhradit jenom servery ve vaší [oblasti](../reference/regions.md). Důvodem je, že latence sítě v různých oblastech může být příliš vysoká, aby se zaručilo dáté prostředí. Druhý faktor je požadovaná *Velikost* , kterou jste určili. V každé oblasti je k dispozici omezený počet serverů, které mohou splňovat požadavky na velikost [*Standard*](../reference/vm-sizes.md) nebo [*Premium*](../reference/vm-sizes.md) . V důsledku toho platí, že pokud jsou všechny servery požadované velikosti aktuálně používány ve vaší oblasti, vytvoření relace se nezdaří. Důvodem selhání [může být dotazování](../how-tos/session-rest-api.md).
 
 > [!IMPORTANT]
 > Pokud vyžádáte velikost *standardního* serveru a požadavek selže kvůli vysokému vyžádání, neznamená to, že požadavek na *prémiový* server selže i nadále. Takže pokud je to pro vás možnost, můžete se pokusit vrátit se k velikosti *Premium* serveru.
@@ -65,7 +66,7 @@ Když je zařízení připojené k relaci, pokusy jiných zařízení, aby se p�
 
 Když vyžádáte novou relaci, zadáte *maximální dobu zapůjčení*, obvykle v rozsahu 1 až 8 hodin. Toto je doba, po kterou bude hostitel akceptovat vaše zadání.
 
-Relace končí dvěma pravidelnými důvody. Buď ručně vyžádáte relaci, která se má zastavit, nebo vyprší maximální doba zapůjčení. V obou případech se jakékoli aktivní připojení k hostiteli hned ukončí a služba se na tomto serveru vypne. Server se pak vrátí zpátky do fondu Azure a může získat další účely. Zastavení relace nelze vrátit zpět nebo zrušit. Dotazování **stavu relace** na zastavené relaci vrátí hodnotu **Zastaveno** nebo **vypršela jeho platnost**v závislosti na tom, zda byl ručně vypnut nebo protože byla dosažena maximální doba zapůjčení.
+Relace končí dvěma pravidelnými důvody. Buď ručně vyžádáte relaci, která se má zastavit, nebo vyprší maximální doba zapůjčení. V obou případech se jakékoli aktivní připojení k hostiteli hned ukončí a služba se na tomto serveru vypne. Server se pak vrátí zpátky do fondu Azure a může získat další účely. Zastavení relace nelze vrátit zpět nebo zrušit. Dotazování **stavu relace** na zastavené relaci vrátí hodnotu **Zastaveno** nebo **vypršela jeho platnost** v závislosti na tom, zda byl ručně vypnut nebo protože byla dosažena maximální doba zapůjčení.
 
 V důsledku nějaké chyby se může také zastavit relace.
 
@@ -76,7 +77,7 @@ Ve všech případech se po zastavení relace neúčtují další poplatky.
 
 #### <a name="extend-a-sessions-lease-time"></a>Prodloužení doby zapůjčení relace
 
-[Dobu zapůjčení](../how-tos/session-rest-api.md#update-a-session) aktivní relace můžete prodloužit, pokud se tak stane, že ji budete potřebovat.
+[Dobu zapůjčení](../how-tos/session-rest-api.md) aktivní relace můžete prodloužit, pokud se tak stane, že ji budete potřebovat.
 
 ## <a name="example-code"></a>Příklad kódu
 
@@ -88,25 +89,29 @@ RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 
 RemoteManagerStatic.StartupRemoteRendering(init);
 
-AzureFrontendAccountInfo accountInfo = new AzureFrontendAccountInfo();
-// fill out accountInfo details...
+SessionConfiguration sessionConfig = new SessionConfiguration();
+// fill out sessionConfig details...
 
-AzureFrontend frontend = new AzureFrontend(accountInfo);
+RemoteRenderingClient client = new RemoteRenderingClient(sessionConfig);
 
-RenderingSessionCreationParams sessionCreationParams = new RenderingSessionCreationParams();
-// fill out sessionCreationParams...
+RenderingSessionCreationOptions rendererOptions = new RenderingSessionCreationOptions();
+// fill out rendererOptions...
 
-AzureSession session = await frontend.CreateNewRenderingSessionAsync(sessionCreationParams).AsTask();
+CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(rendererOptions);
 
+RenderingSession session = result.Session;
 RenderingSessionProperties sessionProperties;
 while (true)
 {
-    sessionProperties = await session.GetPropertiesAsync().AsTask();
+    var propertiesResult = await session.GetPropertiesAsync();
+    sessionProperties = propertiesResult.SessionProperties;
     if (sessionProperties.Status != RenderingSessionStatus.Starting &&
         sessionProperties.Status != RenderingSessionStatus.Unknown)
     {
         break;
     }
+    // REST calls must not be issued too frequently, otherwise the server returns failure code 429 ("too many requests"). So we insert the recommended delay of 10s
+    await Task.Delay(TimeSpan.FromSeconds(10));
 }
 
 if (sessionProperties.Status != RenderingSessionStatus.Ready)
@@ -115,34 +120,43 @@ if (sessionProperties.Status != RenderingSessionStatus.Ready)
 }
 
 // Connect to server
-Result connectResult = await session.ConnectToRuntime(new ConnectToRuntimeParams()).AsTask();
+ConnectionStatus connectStatus = await session.ConnectAsync(new RendererInitOptions());
 
 // Connected!
 
-while(...)
+while (...)
 {
     // per frame update
 
-    session.Actions.Update();
+    session.Connection.Update();
 }
 
 // Disconnect
-session.DisconnectFromRuntime();
+session.Disconnect();
 
 // stop the session
-await session.StopAsync().AsTask();
+await session.StopAsync();
 
 // shut down the remote rendering SDK
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Více `AzureFrontend` `AzureSession` instancí a lze spravovat, manipulovat a dotazovat z kódu. V jednom okamžiku se ale může připojit jenom jedno zařízení `AzureSession` .
+Více `RemoteRenderingClient` `RenderingSession` instancí a lze spravovat, manipulovat a dotazovat z kódu. V jednom okamžiku se ale může připojit jenom jedno zařízení `RenderingSession` .
 
-Životnost virtuálního počítače není vázaná na `AzureFrontend` instanci nebo `AzureSession` instanci. `AzureSession.StopAsync` se musí volat, aby se zastavila relace.
+Životnost virtuálního počítače není vázaná na `RemoteRenderingClient` instanci nebo `RenderingSession` instanci. `RenderingSession.StopAsync` se musí volat, aby se zastavila relace.
 
-Na ID trvalé relace se dá dotazovat `AzureSession.SessionUUID()` místně pomocí mezipaměti. S tímto ID může aplikace volat `AzureFrontend.OpenSession` , aby se k této relaci navázala.
+Na ID trvalé relace se dá dotazovat `RenderingSession.SessionUuid()` místně pomocí mezipaměti. S tímto ID může aplikace volat `RemoteRenderingClient.OpenRenderingSessionAsync` , aby se k této relaci navázala.
 
-Pokud `AzureSession.IsConnected` je hodnota true, `AzureSession.Actions` vrátí instanci `RemoteManager` , která obsahuje funkce pro [načtení modelů](models.md), manipulaci s [entitami](entities.md)a dotazy na [informace](../overview/features/spatial-queries.md) o vykreslené scéně.
+Pokud `RenderingSession.IsConnected` je hodnota true, `RenderingSession.Connection` vrátí instanci `RenderingConnection` , která obsahuje funkce pro [načtení modelů](models.md), manipulaci s [entitami](entities.md)a dotazy na [informace](../overview/features/spatial-queries.md) o vykreslené scéně.
+
+## <a name="api-documentation"></a>Dokumentace k rozhraní API
+
+* [Třída C# RenderingSession](/dotnet/api/microsoft.azure.remoterendering.renderingsession)
+* [C# RemoteRenderingClient. CreateNewRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.createnewrenderingsessionasync)
+* [C# RemoteRenderingClient. OpenRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.openrenderingsessionasync)
+* [Třída C++ RenderingSession](/cpp/api/remote-rendering/renderingsession)
+* [C++ RemoteRenderingClient:: CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/remoterenderingclient#createnewrenderingsessionasync)
+* [C++ RemoteRenderingClient:: OpenRenderingSession](/cpp/api/remote-rendering/remoterenderingclient#openrenderingsession)
 
 ## <a name="next-steps"></a>Další kroky
 

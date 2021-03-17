@@ -1,25 +1,19 @@
 ---
 title: Implementace Oracle Zlaté brány na virtuálním počítači Azure Linux | Microsoft Docs
 description: Rychle Získejte v prostředí Azure zlatou bránu Oracle a spusťte ji.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+author: dbakevlar
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.openlocfilehash: fee6770108cbcc2334b2d8fb3ccc3b1e923772d9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088355"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673253"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace Oracle Zlaté brány na virtuálním počítači Azure Linux 
 
@@ -68,7 +62,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 
-Následující krok je nepovinný, ale doporučuje se. Další informace najdete v tématu [Průvodce skupinami dostupnosti Azure](../../windows/infrastructure-example.md).
+Následující krok je nepovinný, ale doporučuje se. Další informace najdete v tématu [Průvodce skupinami dostupnosti Azure](/previous-versions/azure/virtual-machines/windows/infrastructure-example).
 
 ```azurecli
 az vm availability-set create \
@@ -354,7 +348,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Stáhnout software Zlaté brány
 Pokud chcete stáhnout a připravit software pro Oracle zlatou bránu, proveďte následující kroky:
 
-1. Stáhněte soubor **fbo_ggs_Linux_x64_shiphome.zip** ze stránky pro [Stažení aplikace Oracle Zlaté brány](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). V části stažení názvu **Oracle GoldenGate 12. x. x. x pro Oracle Linux X86-64**by měl být k dispozici sada souborů. zip ke stažení.
+1. Stáhněte soubor **fbo_ggs_Linux_x64_shiphome.zip** ze stránky pro [Stažení aplikace Oracle Zlaté brány](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). V části stažení názvu **Oracle GoldenGate 12. x. x. x pro Oracle Linux X86-64** by měl být k dispozici sada souborů. zip ke stažení.
 
 2. Po stažení souborů zip do klientského počítače použijte protokol SCP (Secure Copy Protocol) ke zkopírování souborů na virtuální počítač:
 
@@ -384,7 +378,7 @@ Pokud chcete stáhnout a připravit software pro Oracle zlatou bránu, proveďte
    ```
 
 ### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Příprava klienta a virtuálního počítače na spouštění X11 (jenom pro klienty se systémem Windows)
-Toto je volitelný krok. Tento krok můžete přeskočit, pokud používáte klienta se systémem Linux nebo pokud již máte instalační program X11.
+Tento krok je volitelný. Tento krok můžete přeskočit, pokud používáte klienta se systémem Linux nebo pokud již máte instalační program X11.
 
 1. Stáhněte si a Xming do počítače s Windows:
 
@@ -449,19 +443,19 @@ Pokud chcete nainstalovat Oracle zlatou bránu, proveďte následující kroky:
 
 4. Změňte adresář inventáře a pokračujte výběrem **Další** .
 
-   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![Snímek obrazovky s instalační stránkou, která zobrazuje instalační adresář](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. Na obrazovce **souhrnu** pokračujte výběrem **nainstalovat** .
 
-   ![Snímek obrazovky s výběrem instalační stránky instalační služby](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![Snímek obrazovky zobrazující stránku vybrat instalaci a tlačítko nainstalovat](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. Může se zobrazit výzva ke spuštění skriptu jako "root". Pokud ano, otevřete samostatnou relaci, SSH k virtuálnímu počítači, sudo do kořenového adresáře a potom spusťte skript. Vyberte **OK** pokračovat.
 
-   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![Snímek obrazovky zobrazující umístění skriptu a postup spuštění konfiguračního skriptu.](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. Po dokončení instalace vyberte **Zavřít** a proces dokončete.
 
-   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![Snímek obrazovky se stránkou pro instalaci, na které se zobrazuje tlačítko Zavřít](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Nastavení služby v myVM1 (primární)
 
@@ -823,4 +817,4 @@ az group delete --name myResourceGroup
 
 [Kurz vytvoření virtuálního počítače s vysokou dostupností](../../linux/create-cli-complete.md)
 
-[Prozkoumejte ukázky nasazení virtuálního počítače pomocí rozhraní příkazového řádku](../../linux/cli-samples.md)
+[Prozkoumejte ukázky nasazení virtuálního počítače pomocí rozhraní příkazového řádku](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

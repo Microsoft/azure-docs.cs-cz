@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281187"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726508"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Přepsat hlavičky a adresu URL protokolu HTTP pomocí Application Gateway
 
- Application Gateway umožňuje přepsat vybraný obsah požadavků a odpovědí. Pomocí této funkce můžete překládat adresy URL, parametry řetězce dotazu a také upravovat hlavičky požadavků a odpovědí. Umožňuje taky přidat podmínky, abyste zajistili, že se adresa URL nebo zadaná záhlaví přepíší jenom v případě, že jsou splněné určité podmínky. Tyto podmínky jsou založené na informacích o žádosti a odpovědi.
+ Application Gateway umožňuje přepsat vybraný obsah požadavků a odpovědí. Pomocí této funkce můžete překládat adresy URL, parametry řetězce dotazu a také upravovat hlavičky požadavků a odpovědí. Umožňuje taky přidat podmínky, abyste zajistili, že se adresa URL nebo zadaná záhlaví přepíší jenom v případě, že jsou splněné určité podmínky. Tyto podmínky vycházejí z informací o požadavku a odpovědi.
 
 >[!NOTE]
 >Funkce hlaviček protokolu HTTP a přepis adres URL jsou k dispozici pouze pro [SKU Application Gateway v2](application-gateway-autoscaling-zone-redundant.md) .
@@ -50,7 +50,7 @@ Pomocí funkce pro přepsání adresy URL v Application Gateway můžete:
 
 Informace o tom, jak přepsat adresu URL pomocí Application Gateway pomocí Azure Portal, najdete [tady](rewrite-url-portal.md).
 
-![obrázek](./media/rewrite-http-headers-url/url-rewrite-overview.png)
+![Diagram, který popisuje proces přepisu adresy URL pomocí Application Gateway.](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
 >[!NOTE]
 > Funkce přepisu adresy URL je ve verzi Preview a je k dispozici pouze pro Standard_v2 a WAF_v2 SKU Application Gateway. Nedoporučuje se používat v produkčním prostředí. Další informace o verzi Preview najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -60,9 +60,9 @@ Informace o tom, jak přepsat adresu URL pomocí Application Gateway pomocí Azu
 Akce přepisu slouží k zadání adresy URL, hlaviček požadavků nebo hlaviček odpovědí, které chcete přepsat, a nové hodnoty, do které chcete přepsat. Hodnota adresy URL nebo nová nebo existující hlavička může být nastavena na tyto typy hodnot:
 
 * Text
-* Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_*header*}.
-* Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_*header*}.
-* Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_*serverVariable*}. Zobrazit seznam podporovaných proměnných serveru
+* Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_ *header*}.
+* Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_ *header*}.
+* Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_ *serverVariable*}. Zobrazit seznam podporovaných proměnných serveru
 * Kombinace textu, hlavičky požadavku, hlavičky odpovědi a serverové proměnné. 
 
 ## <a name="rewrite-conditions"></a>Podmínky přepisu
@@ -100,7 +100,7 @@ Pokud chcete použít celou hodnotu, neměli byste toto číslo uvádět. Stač�
 
 ## <a name="server-variables"></a>Serverové proměnné
 
-Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_*serverVariableName*}.
+Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_ *serverVariableName*}.
 
 Application Gateway podporuje následující proměnné serveru:
 
@@ -113,21 +113,21 @@ Application Gateway podporuje následující proměnné serveru:
 | client_port               | Port klienta.                                             |
 | client_tcp_rtt            | Informace o připojení TCP klienta. K dispozici v systémech, které podporují možnost soketu TCP_INFO. |
 | client_user               | Když se použije ověřování protokolem HTTP, uživatelské jméno zadané pro ověřování. |
-| Hostitel                      | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: v požadavku `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` bude hodnota hostitele`contoso.com` |
+| Hostitel                      | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: v požadavku `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` bude hodnota hostitele `contoso.com` |
 | *název* cookie_             | *Název* souboru cookie.                                           |
 | http_method               | Metoda použitá pro vytvoření žádosti adresy URL Například GET nebo POST. |
 | http_status               | Stav relace. Například 200, 400 nebo 403.           |
 | http_version              | Protokol žádosti. Obvykle HTTP/1.0, HTTP/1.1 nebo HTTP/2.0. |
-| query_string              | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING hodnota`id=123&title=fabrikam` |
+| query_string              | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING hodnota `id=123&title=fabrikam` |
 | received_bytes            | Délka požadavku (včetně řádku žádosti, hlavičky a textu žádosti) |
 | request_query             | Argumenty na řádku požadavku.                           |
 | request_scheme            | Schéma žádosti: http nebo HTTPS.                           |
-| request_uri               | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` REQUEST_URI hodnota`/article.aspx?id=123&title=fabrikam` |
+| request_uri               | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` REQUEST_URI hodnota `/article.aspx?id=123&title=fabrikam` |
 | sent_bytes                | Počet bajtů odeslaných klientovi.                        |
 | server_port               | Port serveru, který přijal požadavek.              |
 | ssl_connection_protocol   | Protokol vytvořeného připojení TLS.               |
 | ssl_enabled               | "On", pokud připojení funguje v režimu TLS. V opačném případě prázdný řetězec. |
-| uri_path                  | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path hodnota`/article.aspx` |
+| uri_path                  | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path hodnota `/article.aspx` |
 
  
 
@@ -164,7 +164,7 @@ Když aplikace back-end pošle odezvu přesměrování, může být vhodné pře
 
 Vzhledem k tomu, že App Service je víceklientské služba, používá v žádosti hlavičku hostitele ke směrování požadavku na správný koncový bod. App Services mají výchozí název domény *. azurewebsites.net (řekněme contoso.azurewebsites.net), který se liší od názvu domény služby Application Gateway (řekněme contoso.com). Vzhledem k tomu, že původní požadavek od klienta má název domény služby Application Gateway (contoso.com) jako název hostitele, služba Application Gateway změní název hostitele na contoso.azurewebsites.net. Tato změna tuto změnu provede, aby služba App Service mohla požadavek směrovat do správného koncového bodu.
 
-Když služba App Service pošle odezvu přesměrování, používá stejný název hostitele v hlavičce umístění odpovědi jako v žádosti, kterou přijímá z aplikační brány. Proto klient provede požadavek přímo na contoso.azurewebsites.net/path2 namísto průchodu přes Aplikační bránu (contoso.com/path2). Obcházení aplikační brány není žádoucí.
+Když služba App Service pošle odezvu přesměrování, používá stejný název hostitele v hlavičce umístění odpovědi jako v žádosti, kterou přijímá z aplikační brány. Proto klient provede požadavek přímo na místo průchodu `contoso.azurewebsites.net/path2` přes Aplikační bránu ( `contoso.com/path2` ). Obcházení aplikační brány není žádoucí.
 
 Tento problém můžete vyřešit tak, že nastavíte název hostitele v hlavičce umístění na název domény služby Application Gateway.
 
@@ -205,11 +205,11 @@ Chcete-li dosáhnout scénářů, ve kterých chcete vybrat back-end fond na zá
 
 **Krok 2 (a):** Vytvořte sadu přepsání, která má 3 pravidla přepisu: 
 
-* První pravidlo má podmínku, která kontroluje *QUERY_STRING* proměnnou pro *kategorii = obuv* a má akci, která přepíše cestu URL k/*listing1* a má **znovu vyhodnotit mapu cest** povoleno.
+* První pravidlo má podmínku, která kontroluje *QUERY_STRING*  proměnnou pro *kategorii = obuv* a má akci, která přepíše cestu URL k/*listing1* a má **znovu vyhodnotit mapu cest** povoleno.
 
-* Druhé pravidlo má podmínku, která kontroluje *QUERY_STRING* proměnnou pro *Category = pytle* a má akci, která přepíše cestu URL k/*listing2* a má **znovu vyhodnotit mapu cest** .
+* Druhé pravidlo má podmínku, která kontroluje *QUERY_STRING*  proměnnou pro *Category = pytle* a má akci, která přepíše cestu URL k/*listing2*  a má **znovu vyhodnotit mapu cest** .
 
-* Třetí pravidlo má podmínku, která kontroluje *QUERY_STRING* proměnnou pro *kategorii = příslušenství* a má akci, která přepíše cestu URL k/*listing3* a má **znovu vyhodnotit mapu cest** zapnuto.
+* Třetí pravidlo má podmínku, která kontroluje *QUERY_STRING*  proměnnou pro *kategorii = příslušenství* a má akci, která přepíše cestu URL k/*listing3* a má **znovu vyhodnotit mapu cest** zapnuto.
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="Scénář přepsání adresy URL 1-2.":::
 
@@ -221,7 +221,7 @@ Chcete-li dosáhnout scénářů, ve kterých chcete vybrat back-end fond na zá
 
 Když teď uživatel požaduje *contoso.com/listing?Category=any*, pak se porovná s výchozí cestou, protože žádný ze vzorů cest v mapě cest (/listing1,/listing2,/listing3) se neshoduje. Vzhledem k tomu, že jste přidružili výše uvedenou sadu přepsání s touto cestou, vyhodnotí se tato sada přepisování. Vzhledem k tomu, že řetězec dotazu se neshoduje s podmínkou v žádném z 3 pravidel přepsání v této sadě přepsání, nebude provedena žádná akce přepisu, takže požadavek bude směrován beze změny do back-endu přidruženého k výchozí cestě (což je *GenericList*).
 
- Pokud uživatel požádá o *contoso.com/listing?Category=Shoes,* bude se shodovat výchozí cesta. V tomto případě se ale podmínka prvního pravidla bude shodovat, a proto se spustí akce přidružená k této podmínce, která přepíše cestu URL k/*listing1* a znovu vyhodnotí mapu cest. Když se znovu vyhodnotí mapování cest, požadavek se teď bude shodovat s cestou přidruženou ke vzorové */listing1* a požadavek se směruje do back-endu přidruženého k tomuto vzoru, což je ShoesListBackendPool.
+ Pokud uživatel požádá o *contoso.com/listing?Category=Shoes,* bude se shodovat výchozí cesta. V tomto případě se ale podmínka prvního pravidla bude shodovat, a proto se spustí akce přidružená k této podmínce, která přepíše cestu URL k/*listing1*  a znovu vyhodnotí mapu cest. Když se znovu vyhodnotí mapování cest, požadavek se teď bude shodovat s cestou přidruženou ke vzorové */listing1* a požadavek se směruje do back-endu přidruženého k tomuto vzoru, což je ShoesListBackendPool.
 
 >[!NOTE]
 >Tento scénář je možné rozšířit na jakékoli hodnoty hlaviček nebo souborů cookie, cestu URL, řetězec dotazu nebo proměnné serveru na základě definované podmínky a v podstatě vám umožní směrovat požadavky na základě těchto podmínek.
@@ -232,11 +232,11 @@ Vezměte v úvahu scénář nákupního webu, ve kterém by měl být viditelný
 
 V takovém případě Application Gateway může zachytit parametry z adresy URL a přidat páry klíč-hodnota řetězce dotazu z adresy URL. Řekněme například, že uživatel chce přezapisovat `https://www.contoso.com/fashion/shirts` do `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` , dá se dosáhnout pomocí následující konfigurace přepsání adresy URL.
 
-**Podmínka** – Pokud se proměnná serveru `uri_path` rovná vzoru`/(.+)/(.+)`
+**Podmínka** – Pokud se proměnná serveru `uri_path` rovná vzoru `/(.+)/(.+)`
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="Scénář přepsání adresy URL 2-1.":::
 
-**Action** – nastaví cestu URL k `buy.aspx` řetězci dotazu na`category={var_uri_path_1}&product={var_uri_path_2}`
+**Action** – nastaví cestu URL k `buy.aspx` řetězci dotazu na `category={var_uri_path_1}&product={var_uri_path_2}`
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="Scénář přepsání adresy URL 2-2.":::
 
@@ -252,7 +252,7 @@ V případě přesměrování adresy URL Application Gateway odešle klientovi o
 
 ## <a name="limitations"></a>Omezení
 
-- Pokud má odpověď více než jednu hlavičku se stejným názvem, pak přepsání hodnoty jednoho z těchto hlaviček způsobí vyřazení ostatních hlaviček v odpovědi. Tato situace může obvykle nastat s hlavičkou Set-cookie, protože v odpovědi můžete mít více než jednu hlavičku Set-cookie souborů cookie. Takový scénář se používá v případě, že používáte službu App Service s aplikační bránou a máte nakonfigurovanou spřažení relací na základě souborů cookie na aplikační bránu. V takovém případě bude odpověď obsahovat dvě hlavičky sady souborů cookie: jednu, kterou používá služba App Service, například: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` a druhý pro spřažení Application Gateway, například `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Přepsání jedné z hlaviček Set-cookie v tomto scénáři může mít za následek odebrání druhého záhlaví souboru cookie s nastavením z odpovědi.
+- Pokud má odpověď více než jednu hlavičku se stejným názvem, pak přepsání hodnoty jednoho z těchto hlaviček způsobí vyřazení ostatních hlaviček v odpovědi. K tomu obvykle dochází v Set-Cookie hlavičce, protože odpověď může obsahovat více než jednu Set-Cookie hlavičku. Takový scénář se používá v případě, že používáte službu App Service s aplikační bránou a máte nakonfigurovanou spřažení relací na základě souborů cookie na aplikační bránu. V takovém případě bude odpověď obsahovat dvě hlavičky Set-Cookie: jednu, kterou používá služba App Service, například: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` a další pro spřažení Application Gateway, například `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Přepsání jedné z hlaviček Set-Cookie v tomto scénáři může mít za následek odebrání druhé hlavičky Set-Cookie z odpovědi.
 - Přepsání nejsou podporována, pokud je brána Application Gateway nakonfigurována pro přesměrování požadavků nebo zobrazení vlastní chybové stránky.
 - Názvy hlaviček můžou obsahovat libovolné alfanumerické znaky a specifické symboly, jak jsou definované v [dokumentu RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). V názvech hlaviček Momentálně nepodporujeme speciální znak podtržítka (_).
 - Nelze přepsat hlavičky připojení a upgradu

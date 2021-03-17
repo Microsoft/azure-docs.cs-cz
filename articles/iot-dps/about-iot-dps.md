@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6b33b866a10ad4a44cef14f3c86d8ca1f40c4750
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81683296"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965370"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Zřizování zařízení pomocí služby Azure IoT Hub Device Provisioning Service
 Microsoft Azure poskytuje bohatou sadu integrovaných veřejných cloudových služeb pro všechny potřeby vašeho řešení IoT. IoT Hub Device Provisioning Service (DPS) je pomocná služba pro IoT Hub, která umožňuje nulovému zřizování za běhu do správného služby IoT Hub bez nutnosti zásahu člověka. DPS umožňuje bezpečným a škálovatelným způsobem zřizovat miliony zařízení.
@@ -81,14 +81,14 @@ DPS má mnoho funkcí, což je ideální pro zřizování zařízení.
 
 * Podpora **zabezpečeného osvědčení** pro identity založené na X.509 i TPM.
 * **Seznam registrací** obsahující úplné záznamy o zařízeních a skupinách zařízení, která se někdy můžou registrovat. Jakmile se zařízení zaregistruje, bude seznam registrací obsahovat informace o požadované konfiguraci zařízení a může se kdykoli aktualizovat.
-* **Vícenásobné zásady přidělování** , kterými se řídí, jak DPS přiřadí zařízení do centra IoT v podpoře vašich scénářů: nejnižší latence, rovnoměrně vážená distribuce (výchozí) a statická konfigurace prostřednictvím seznamu registrací. Latence je určena pomocí stejné metody jako [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
+* **Vícenásobné zásady přidělování** , kterými se řídí, jak DPS přiřadí zařízení do centra IoT v podpoře vašich scénářů: nejnižší latence, rovnoměrně vážená distribuce (výchozí) a statická konfigurace prostřednictvím seznamu registrací. Latence je určena pomocí stejné metody jako [Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#performance).
 * **Monitorování a protokolování diagnostiky** pro zajištění, že vše funguje správně.
 * **Podpora pro více rozbočovačů** umožňuje DPS přiřazovat zařízení do více než jednoho centra IoT. DPS může komunikovat s centry napříč několika předplatnými Azure.
 * **Podpora pro různé oblasti** umožňuje DPS přiřazovat zařízení do centra IoT v jiných oblastech.
 * **Šifrování dat v klidovém** stavu umožňuje, aby se data v DPS zašifroval a dešifroval transparentně pomocí 256 šifrování AES, což je jedno z nejúčinnějších šifrovacích šifr, která jsou kompatibilní se standardem FIPS 140-2.
 
 
-Další informace o konceptech a funkcích souvisejících se zřizováním zařízení najdete v [konceptech zařízení](concepts-device.md), [konceptech služby](concepts-service.md) a [konceptech zabezpečení](concepts-security.md).
+Další informace o konceptech a funkcích, které jsou součástí zřizování zařízení, najdete v tématu věnovaném [terminologii DPS](concepts-service.md) spolu s dalšími koncepčními tématy ve stejné části.
 
 ## <a name="cross-platform-support"></a>Podpora různých platforem
 Podobně jako všechny služby Azure IoT funguje DPS pro různé platformy s různými operačními systémy. Azure nabízí open source sady SDK v různých [jazycích](https://github.com/Azure/azure-iot-sdks), které usnadňují připojení zařízení a správu služby. DPS podporuje následující protokoly pro připojení zařízení:
@@ -119,11 +119,13 @@ Další podrobnosti o limitech kvót:
 * [Omezení služeb v předplatném Azure](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>Související komponenty Azure
-DPS automatizuje zřizování zařízení pomocí Azure IoT Hub. Další informace o službě [IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
+DPS automatizuje zřizování zařízení pomocí Azure IoT Hub. Přečtěte si další informace o [IoT Hub](../iot-hub/index.yml).
 
 ## <a name="next-steps"></a>Další kroky
 Teď máte přehled o zřizování zařízení IoT v Azure. Dalším krokem je vyzkoušet si kompletní scénář IoT.
-> [!div class="nextstepaction"]
-> [Nastavení IoT Hub Device Provisioning Service pomocí Azure Portal](quick-setup-auto-provision.md)
-> [Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md)
-> [nastavení zařízení pro zřizování](tutorial-set-up-device.md)
+
+[Nastavení IoT Hub Device Provisioning Service s Azure Portal](quick-setup-auto-provision.md)
+
+[Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md)
+
+[Nastavení zařízení pro zřizování](tutorial-set-up-device.md)

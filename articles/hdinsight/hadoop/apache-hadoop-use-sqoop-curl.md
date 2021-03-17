@@ -1,18 +1,15 @@
 ---
 title: Použití oblé k exportu dat s Apache Sqoop ve službě Azure HDInsight
 description: Naučte se vzdáleně odesílat úlohy Apache Sqoop do Azure HDInsight pomocí funkce kudrlinkou.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4de42bf30824fd71228aa27cc478a54ec3741da9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076262"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928360"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Spouštění úloh Apache Sqoop v HDInsight pomocí kudrlinkou
 
@@ -77,7 +74,7 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
 
     Parametry použité v tomto příkazu jsou následující:
 
-   * **-d** – vzhledem k tomu `-G` , že se nepoužívá, je požadavek nastaven na výchozí metodu post. `-d`Určuje hodnoty dat, které se odesílají spolu s požadavkem.
+   * **-d** – vzhledem k tomu `-G` , že se nepoužívá, je požadavek nastaven na výchozí metodu post. `-d` Určuje hodnoty dat, které se odesílají spolu s požadavkem.
 
        * **User.Name** – uživatel, který spouští příkaz.
 

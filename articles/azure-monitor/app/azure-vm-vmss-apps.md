@@ -3,45 +3,71 @@ title: Monitorování výkonu na virtuálních počítačích Azure – Azure Ap
 description: Sledování výkonu aplikací pro virtuální počítače Azure a Azure Virtual Machine Scale Sets. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024628"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711477"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Nasazení agenta Azure Monitor Application Insights na virtuální počítače Azure a Azure Virtual Machine Scale Sets
 
-Povolení monitorování webových aplikací založených na rozhraní .NET běžících na [virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/) a [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) je teď jednodušší než kdy dřív. Získejte všechny výhody použití Application Insights beze změny kódu.
+Povolení monitorování webových aplikací založených na platformě .NET nebo Java, které běží na [virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/) a [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) , je teď jednodušší než kdy dřív. Získejte všechny výhody použití Application Insights beze změny kódu.
 
 Tento článek vás provede povolením Application Insights monitorování pomocí agenta Application Insights a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
+> [!IMPORTANT]
+> Aplikace založené na **jazyce Java** běžící na virtuálních počítačích Azure a VMSS se monitorují pomocí **[Application Insightsho agenta Java 3,0](./java-in-process-agent.md)**, který je všeobecně dostupný.
 
 > [!IMPORTANT]
-> Agent Azure Application Insights pro .NET je momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
+> Agent Azure Application Insights pro aplikace ASP.NET běžící na **virtuálních počítačích Azure a VMSS** je momentálně ve verzi Public Preview. Pokud chcete monitorovat vaše aplikace ASP.Net spuštěné **v místním** prostředí, použijte [agenta Azure Application Insights pro místní servery](./status-monitor-v2-overview.md), které jsou všeobecně dostupné a plně podporované.
+> Verze Preview pro virtuální počítače Azure a VMSS se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
 Existují dva způsoby, jak povolit monitorování aplikací pro virtuální počítače Azure a hostované aplikace Azure Virtual Machine Scale Sets:
 
-* Bez **kódu** prostřednictvím agenta Application Insights
-    * Tato metoda je nejjednodušší pro povolení a není nutná žádná pokročilá konfigurace. Často se označuje jako monitorování za běhu.
+### <a name="auto-instrumentation-via-application-insights-agent"></a>Automatické instrumentace prostřednictvím agenta Application Insights
 
-    * Pro virtuální počítače Azure a službu Azure Virtual Machine Scale Sets doporučujeme, abyste tuto úroveň monitorování povedli minimálně. Na základě vašeho konkrétního scénáře můžete vyhodnotit, jestli je potřeba ruční instrumentace.
+* Tato metoda je nejjednodušší pro povolení a není nutná žádná pokročilá konfigurace. Často se označuje jako monitorování za běhu.
 
-    * Agent Application Insights automaticky shromažďuje stejné signály závislostí jako sadu .NET SDK. Další informace najdete v tématu [Automatická kolekce závislostí](./auto-collect-dependencies.md#net) .
-        > [!NOTE]
-        > V současné době jsou podporovány pouze aplikace hostované v rozhraní .NET IIS. Pomocí sady SDK můžete instrumentovat aplikace ASP.NET Core, Java a Node.js hostované na virtuálních počítačích Azure a ve službě Virtual Machine Scale Sets.
-
-* Pomocí sady SDK **založené na kódu**
-
-    * Tento přístup je mnohem přizpůsobitelnější, ale vyžaduje [Přidání závislosti na balíčky NuGet sady Application Insights SDK](./asp-net.md). Tato metoda také znamená, že je nutné spravovat aktualizace na nejnovější verzi balíčků sami.
-
-    * Pokud potřebujete vlastní volání rozhraní API ke sledování událostí nebo závislostí, které se ve výchozím nastavení nezachycují pomocí monitorování založeného na agentech, musíte použít tuto metodu. Další informace najdete v [článku rozhraní API pro vlastní události a metriky](./api-custom-events-metrics.md) .
+* Pro virtuální počítače Azure a službu Azure Virtual Machine Scale Sets doporučujeme, abyste tuto úroveň monitorování povedli minimálně. Na základě vašeho konkrétního scénáře můžete vyhodnotit, jestli je potřeba ruční instrumentace.
 
 > [!NOTE]
-> Pokud se zjistí jenom monitorování na základě agentů a ruční instrumentaci založené na sadě SDK, bude se dodržovat jenom ruční nastavení instrumentace. K tomu je potřeba zabránit odesílání duplicitních dat. Další informace o této části najdete v [části řešení potíží](#troubleshooting) níže.
+> Automatická instrumentace je aktuálně dostupná jenom pro aplikace hostované službou IIS a Java. Pomocí sady SDK můžete instrumentovat aplikace ASP.NET Core, Node.js a Pythonu hostované na virtuálních počítačích Azure a ve službě Virtual Machine Scale Sets.
+
+
+#### <a name="net"></a>.NET
+
+  * Agent Application Insights automaticky shromažďuje stejné signály závislostí jako sadu .NET SDK. Další informace najdete v tématu [Automatická kolekce závislostí](./auto-collect-dependencies.md#net) .
+        
+#### <a name="java"></a>Java
+  * Pro Java je doporučeným přístupem **[Agent java 3,0 Application Insights](./java-in-process-agent.md)** . Nejoblíbenější knihovny a architektury, jakož i protokoly a závislosti, se [shromažďují automaticky](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics), a to s využitím velkého množství [dalších konfigurací](./java-standalone-config.md) .
+
+### <a name="code-based-via-sdk"></a>Pomocí sady SDK založené na kódu
+    
+#### <a name="net"></a>.NET
+  * V případě aplikací .NET je tento přístup mnohem přizpůsobitelný, ale vyžaduje [Přidání závislosti na Application Insights balíčky NuGet sady SDK](./asp-net.md). Tato metoda také znamená, že je nutné spravovat aktualizace na nejnovější verzi balíčků sami.
+
+  * Pokud potřebujete vlastní volání rozhraní API ke sledování událostí nebo závislostí, které se ve výchozím nastavení nezachycují pomocí monitorování založeného na agentech, musíte použít tuto metodu. Další informace najdete v [článku rozhraní API pro vlastní události a metriky](./api-custom-events-metrics.md) .
+
+    > [!NOTE]
+    > Jenom pro aplikace .NET – při monitorování a ruční instrumentaci založené na sadě SDK se uplatní jenom ruční nastavení instrumentace. K tomu je potřeba zabránit odesílání duplicitních dat. Další informace o této části najdete v [části řešení potíží](#troubleshooting) níže.
+
+#### <a name="net-core"></a>.NET Core
+Chcete-li monitorovat aplikace .NET Core, použijte [sadu SDK](./asp-net-core.md) 
+
+#### <a name="java"></a>Java 
+
+Pokud potřebujete další vlastní telemetrii pro aplikace Java, přečtěte si téma co [je k dispozici](./java-in-process-agent.md#send-custom-telemetry-from-your-application), přidejte [Vlastní rozměry](./java-standalone-config.md#custom-dimensions)nebo použijte [procesory telemetrie](./java-standalone-telemetry-processors.md). 
+
+#### <a name="nodejs"></a>Node.js
+
+K instrumentaci aplikace Node.js použijte [sadu SDK](./nodejs.md).
+
+#### <a name="python"></a>Python
+
+Pokud chcete monitorovat aplikace v Pythonu, použijte [sadu SDK](./opencensus-python.md).
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Správa Application Insights agenta pro aplikace .NET na virtuálních počítačích Azure pomocí PowerShellu
 
@@ -49,7 +75,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro virtuální po�
 > Před instalací agenta Application Insights budete potřebovat připojovací řetězec. [Vytvořte nový prostředek Application Insights](./create-new-resource.md) nebo zkopírujte připojovací řetězec z existujícího prostředku Application Insights.
 
 > [!NOTE]
-> Začínáte s PowerShellem? Přečtěte si [příručku Začínáme](/powershell/azure/get-started-azureps?view=azps-2.5.0).
+> Začínáte s PowerShellem? Přečtěte si [příručku Začínáme](/powershell/azure/get-started-azureps).
 
 Instalace nebo aktualizace agenta Application Insights jako rozšíření pro virtuální počítače Azure
 ```powershell
@@ -163,12 +189,12 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions/ApplicationMonitoringWindows
 ```
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Přečtěte si tipy pro řešení potíží pro rozšíření Application Insights Monitoring Agent pro aplikace .NET běžící na virtuálních počítačích Azure a službě Virtual Machine Scale Sets.
 
 > [!NOTE]
-> Aplikace .NET Core, Java a Node.js se podporují jenom na virtuálních počítačích Azure a Azure Virtual Machine Scale Sets prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
+> Aplikace .NET Core, Node.js a Python jsou podporované jenom na virtuálních počítačích Azure a Azure Virtual Machine Scale Sets prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
 
 Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujících adresářích:
 ```Windows

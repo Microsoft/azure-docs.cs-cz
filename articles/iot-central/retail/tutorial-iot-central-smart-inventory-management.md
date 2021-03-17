@@ -5,24 +5,24 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 430f477422e040e0e7e28fd69a1cbc18bce7d656
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3dbb6ca64451cb60d5a8ec67ecdc528865a4438c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000543"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719079"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Kurz: nasazení a procházení šablonou aplikace pro správu inteligentního inventáře
 
-
-
 V tomto kurzu se dozvíte, jak začít tím, že nasadíte šablonu aplikace IoT Central **správy inteligentního inventáře** . Naučíte se, jak nasadit šablonu, co je součástí okna a co byste chtěli udělat dál.
 
-V tomto kurzu se naučíte, 
-* vytvořit aplikaci pro správu inteligentních zásob 
-* Procházení aplikací 
+V tomto kurzu se naučíte,
+
+> [!div class="checklist"]
+> * vytvořit aplikaci pro správu inteligentních zásob 
+> * Procházení aplikací 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,22 +35,19 @@ Aplikaci můžete vytvořit pomocí následujících kroků.
 
 1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
-    > [!div class="mx-imgBorder"]
-    > ![Řídicí panel pro správu inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png" alt-text="Snímek obrazovky ukazující, jak vybrat šablonu aplikace pro správu inteligentního inventáře":::
 
 2. Vyberte kartu **maloobchod** a v části **Správa inteligentního inventáře** vyberte **vytvořit aplikaci** .
 
 3. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
-   **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
-   **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
-   **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
-   **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
+    **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
+    **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
+    **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
+    **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
 
-    > [!div class="mx-imgBorder"]
-    > ![Řídicí panel pro správu inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png" alt-text="Snímek obrazovky ukazující, jak vytvořit aplikaci ze šablony aplikace pro správu inteligentního inventáře":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Informace o fakturaci správy inteligentních zásob](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png" alt-text="Snímek obrazovky znázorňující možnosti fakturace při vytváření aplikace":::
 
 ## <a name="walk-through-the-application"></a>Procházení aplikací 
 
@@ -63,14 +60,14 @@ Po úspěšném nasazení šablony aplikace je výchozím řídicím panelem por
    * Zobrazit umístění brány, podrobnosti o stavu & 
 
 > [!div class="mx-imgBorder"]
-> ![Řídicí panel pro správu inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
+> ![Snímek obrazovky znázorňující horní polovinu managementdashboard inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
 
    * Můžete snadno sledovat celkový počet bran, aktivních a neznámých značek.
    * Můžete provádět operace správy zařízení, jako je firmware aktualizace, zakázat senzor, zapnout senzor, práh aktualizace, aktualizovat intervaly telemetrie & aktualizovat kontrakty služby zařízení.
    * Zařízení brány můžou provádět správu inventáře na vyžádání s kompletní nebo přírůstkovou prohledáním.
 
 > [!div class="mx-imgBorder"]
-> ![Řídicí panel pro správu inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
+> ![Snímek obrazovky zobrazující spodní polovinu managementdashboard inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
 
 ## <a name="device-template"></a>Šablona zařízení
 Klikněte na kartu šablony zařízení a zobrazí se model schopností brány. Model schopností je strukturovaný kolem dvou různých rozhraní **telemetrie brány & vlastností** a **příkazů brány** .
@@ -78,13 +75,13 @@ Klikněte na kartu šablony zařízení a zobrazí se model schopností brány. 
 **Vlastnost telemetrie brány &** – toto rozhraní představuje veškerou telemetrii týkající se senzorů, umístění, informací o zařízení a možností vlastností, které jsou v zařízení, jako jsou prahové hodnoty brány a intervaly aktualizací.
 
 > [!div class="mx-imgBorder"]
-> ![Řídicí panel pro správu inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
+> ![Snímek obrazovky se šablonou zařízení brány inventáře v aplikaci](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
 
 
 **Příkazy brány** – toto rozhraní uspořádá všechny možnosti příkazů brány.
 
 > [!div class="mx-imgBorder"]
-> ![Řídicí panel pro správu inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
+> ![Snímek obrazovky s rozhraním příkazů brány v šabloně zařízení brány inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
 
 ## <a name="rules"></a>Pravidla
 Vyberte kartu pravidla a podívejte se na dvě různá pravidla, která existují v této šabloně aplikace. Tato pravidla jsou nakonfigurovaná tak, aby se pro další šetření použila e-mailová oznámení pro operátory.
@@ -94,7 +91,7 @@ Vyberte kartu pravidla a podívejte se na dvě různá pravidla, která existuj�
 **Neznámé značky**: je velmi důležité sledovat všechny štítky & v rámci RFID přidružené k assetu. Pokud brána zjišťuje příliš mnoho neznámých značek, znamená to, že se jedná o výzvy k synchronizaci s aplikacemi pro zdrojové značky.
 
 > [!div class="mx-imgBorder"]
-> ![Řídicí panel pro správu inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
+> ![Snímek obrazovky zobrazující seznam pravidel v managementapplication Smart Inventory](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
 ## <a name="jobs"></a>Úlohy
 Vyberte kartu úlohy pro zobrazení pěti různých úloh, které existují jako součást této šablony aplikace: můžete použít funkci Jobs k provádění operací v rámci řešení. Tady jsou uvedené úlohy správy inventáře, které používají příkazy zařízení a možnost provádět úlohy, jako je například,
@@ -103,16 +100,18 @@ Vyberte kartu úlohy pro zobrazení pěti různých úloh, které existují jako
    * proveďte kontrolu inventáře na vyžádání v rámci celého řešení.
 
 > [!div class="mx-imgBorder"]
-> ![Řídicí panel pro správu inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
+> ![Snímek obrazovky zobrazující seznam úloh v managementapplication Smart Inventory](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce**nastavení aplikace** **pro správu** > a klikněte na **Odstranit**.
+Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce   >  **nastavení aplikace** pro správu a klikněte na **Odstranit**.
 
 > [!div class="mx-imgBorder"]
-> ![Řídicí panel pro správu inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
+> ![Snímek obrazovky ukazující, jak aplikaci odstranit, když s ní jste hotovi](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [konceptu správy inteligentního inventáře](./architecture-smart-inventory-management.md) správy inteligentních zásob
-* Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .
+
+Další informace o správě inteligentního inventáře:
+
+> [!div class="nextstepaction"]
+> [Koncept správy inteligentních zásob](./architecture-smart-inventory-management.md)

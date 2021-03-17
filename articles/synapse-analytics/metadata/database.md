@@ -1,6 +1,6 @@
 ---
 title: Sdílená databáze
-description: Azure synapse Analytics poskytuje sdílený model metadat, ve kterém se při vytváření databáze v Apache Spark zpřístupní z jeho modulů SQL na vyžádání (Preview) a fondů SQL.
+description: Azure synapse Analytics poskytuje sdílený model metadat, ve kterém se vytváří databáze ve fondu Apache Spark bez serveru, takže bude přístupný z fondu SQL bez serveru a z fondů SQL.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -9,36 +9,35 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 196577741ae1560232f8ae193aacd51a446431c8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 93602e522338166abac98c3e4a198e1aff392d21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385530"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934964"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Sdílená databáze Azure synapse Analytics
 
-Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi jeho fondy Spark (Preview) a modulem SQL na vyžádání (Preview).
+Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky. Databáze a tabulky Parquet, které jsou vytvořeny v fondech Apache Spark, jsou v současné době sdíleny automaticky s modulem SQL Pooling Engine bez serveru.
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
+Databáze vytvořená pomocí úlohy Spark se bude zobrazovat se stejným názvem jako všechny aktuální a budoucí fondy Sparku v pracovním prostoru, včetně neserverového fondu SQL. Vlastní objekty (externí tabulky, zobrazení, procedury) přímo v této replikované databázi nemůžete přidat pomocí fondu SQL bez serveru.
 
-Databáze vytvořená pomocí úlohy Spark se bude zobrazovat se stejným názvem jako všechny aktuální a budoucí fondy Spark (Preview) v pracovním prostoru i v modulu SQL na vyžádání.
+Výchozí databáze Spark, která je volána `default` , bude také viditelná v kontextu fondu SQL bez serveru jako databáze s názvem `default` .
 
-Výchozí databáze Spark, která je volána `default` , bude v kontextu SQL na vyžádání zobrazena také jako databáze s názvem `default` .
-
-Vzhledem k tomu, že se databáze synchronizují na vyžádání SQL asynchronně, dojde k prodlevě, dokud se nezobrazí.
+Vzhledem k tomu, že jsou databáze synchronizovány do fondu SQL bez serveru asynchronně, dojde k prodlevě, dokud nebudou zobrazeny.
 
 ## <a name="manage-a-spark-created-database"></a>Správa databáze Spark vytvořené
 
 Pomocí Sparku můžete spravovat databáze Spark vytvořené. Můžete ho například odstranit pomocí úlohy fondu Spark a vytvořit v něm tabulky z Sparku.
 
-Při vytváření objektů v databázi Spark vytvořené pomocí SQL na vyžádání nebo při pokusu o vyřazení databáze bude operace úspěšná. Původní databáze Spark se ale nemění.
+Pokud vytvoříte objekty v databázi Spark vytvořené pomocí SQL fondu bez serveru, nebo se pokusíte databázi odpojit, operace bude úspěšná. Původní databáze Spark se ale nemění.
 
 ## <a name="how-name-conflicts-are-handled"></a>Jak se zpracovávají konflikty názvů
 
-Pokud název databáze Spark koliduje s názvem existující databáze SQL na vyžádání, připojí se k databázi Spark přípona v SQL na vyžádání. Přípona v SQL na vyžádání je `_<workspace name>-ondemand-DefaultSparkConnector` .
+Pokud název databáze Spark koliduje s názvem existující databáze fondu SQL bez serveru, je přípona připojena do fondu SQL bez serveru do databáze Spark. Přípona v neserverovém fondu SQL je `_<workspace name>-ondemand-DefaultSparkConnector` .
 
-Pokud je například databáze Spark `mydb` s názvem vytvořena v pracovním prostoru Azure synapse `myws` a databáze SQL na vyžádání s tímto názvem již existuje, bude na vyžádání databáze Spark v SQL na vyžádání odkazována pomocí názvu `mydb_myws-ondemand-DefaultSparkConnector` .
+Pokud se například `mydb` v pracovním prostoru Azure synapse vytvoří databáze Spark `myws` a databáze fondu SQL bez serveru s tímto názvem už existuje, pak se na databázi Sparku ve fondu SQL bez serveru bude odkazovat pomocí názvu `mydb_myws-ondemand-DefaultSparkConnector` .
 
 > [!CAUTION]
 > Upozornění: při tomto chování byste neměli mít závislost.
@@ -47,7 +46,7 @@ Pokud je například databáze Spark `mydb` s názvem vytvořena v pracovním pr
 
 Databáze a tabulky Spark spolu s jejich synchronizovanými reprezentacemi v modulu SQL budou zabezpečeny na základní úrovni úložiště.
 
-Objekt zabezpečení, který vytváří databázi, je považován za vlastníka této databáze a má všechna práva k databázi a jejím objektům.
+Objekt zabezpečení, který vytvoří databázi, se považuje za vlastníka databáze a má všechna práva k databázi a jejím objektům.
 
 Chcete-li objektu zabezpečení, například uživateli nebo skupině zabezpečení, získat přístup k databázi, zadejte příslušnou složku POSIX a oprávnění k souborům v `warehouse` adresáři. 
 
@@ -57,7 +56,7 @@ Pokud objekt zabezpečení vyžaduje možnost vytvářet objekty nebo vyřadit o
 
 ## <a name="examples"></a>Příklady
 
-### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>Vytvoření a připojení k databázi Spark pomocí SQL na vyžádání
+### <a name="create-and-connect-to-spark-database-with-serverless-sql-pool"></a>Vytvoření a připojení k databázi Spark s neserverovým fondem SQL
 
 Nejdřív vytvořte novou databázi Spark s názvem `mytestdb` pomocí clusteru Spark, který jste už vytvořili v pracovním prostoru. Toho můžete dosáhnout například pomocí poznámkového bloku Spark C# s následujícím příkazem .NET for Spark:
 
@@ -65,7 +64,7 @@ Nejdřív vytvořte novou databázi Spark s názvem `mytestdb` pomocí clusteru 
 spark.Sql("CREATE DATABASE mytestdb")
 ```
 
-Po krátké prodlevě můžete zobrazit databázi z SQL na vyžádání. Například spusťte následující příkaz z SQL na vyžádání.
+Po krátké prodlevě můžete zobrazit databázi z fondu SQL bez serveru. Například spusťte následující příkaz z fondu SQL bez serveru.
 
 ```sql
 SELECT * FROM sys.databases;

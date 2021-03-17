@@ -3,12 +3,12 @@ title: Vytvoření virtuálního počítače v DevTest Labs pomocí Azure PowerS
 description: Naučte se používat Azure DevTest Labs k vytváření a správě virtuálních počítačů s Azure PowerShell.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bcc1b8cfe1da7e5eafbee0af008a1defbe6f49d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f79b6ff92d633cf63477cddaabec918df352bec8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484107"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499250"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Vytvoření virtuálního počítače s DevTest Labs pomocí Azure PowerShell
 V tomto článku se dozvíte, jak vytvořit virtuální počítač v Azure DevTest Labs pomocí Azure PowerShell. PowerShellové skripty můžete použít k automatizaci vytváření virtuálních počítačů v testovacím prostředí v Azure DevTest Labs. 
@@ -17,10 +17,10 @@ V tomto článku se dozvíte, jak vytvořit virtuální počítač v Azure DevTe
 Než začnete:
 
 - [Vytvořte testovací prostředí](devtest-lab-create-lab.md) , pokud nechcete použít existující testovací prostředí k testování skriptu nebo příkazů v tomto článku. 
-- [Nainstalujte Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0) nebo použijte Azure Cloud Shell integrovaný do Azure Portal. 
+- [Nainstalujte Azure PowerShell](/powershell/azure/install-az-ps) nebo použijte Azure Cloud Shell integrovaný do Azure Portal. 
 
 ## <a name="powershell-script"></a>Skript prostředí PowerShell
-Vzorový skript v této části používá rutinu [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) .  Tato rutina převezme ID prostředku testovacího prostředí, název akce k provedení ( `createEnvironment` ) a parametry potřebné k provedení této akce. Parametry jsou v zatřiďovací tabulce, která obsahuje všechny vlastnosti popisu virtuálního počítače. 
+Vzorový skript v této části používá rutinu [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) .  Tato rutina převezme ID prostředku testovacího prostředí, název akce k provedení ( `createEnvironment` ) a parametry potřebné k provedení této akce. Parametry jsou v zatřiďovací tabulce, která obsahuje všechny vlastnosti popisu virtuálního počítače. 
 
 ```powershell
 [CmdletBinding()]

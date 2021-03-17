@@ -5,14 +5,15 @@ author: cynthn
 ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: how-to
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure
-ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3988d0ed01e5aa75f498f17f9bbd23e567cb9c07
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074254"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556294"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak povolit vnořenou virtualizaci na virtuálním počítači Azure
 
@@ -22,11 +23,9 @@ Tento článek vás provede povolením technologie Hyper-V na VIRTUÁLNÍm poč�
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Vytvoření vnořování podporujícího virtuální počítač Azure
 
-Vytvořte nový virtuální počítač Azure s Windows serverem 2016. Úplný seznam velikostí virtuálních počítačů, které podporují vnořování, najdete v [článku výpočetní jednotky Azure](../acu.md).
+Vytvořte nový virtuální počítač Azure s Windows serverem 2016 nebo Windows serverem 2019 pro hostitele. Ujistěte se, že jste zvolili velikost pro váš virtuální počítač, který podporuje vnořování, a je dostatečně velký pro splnění požadavků hostovaných virtuálních počítačů. Seznam velikostí virtuálních počítačů, které podporují vnořování, najdete v článku [výpočetní jednotky Azure](../acu.md) .
 
-Nezapomeňte si vybrat velikost virtuálního počítače dostatečně velkou, aby se podporovaly požadavky hostovaného virtuálního počítače. V tomto příkladu používáme D3_v3 velikosti virtuálního počítače Azure. 
-
-Místní dostupnost virtuálních počítačů s Dv3 nebo Ev3 Series můžete zobrazit [zde](https://azure.microsoft.com/regions/services/).
+Místní dostupnost velikostí virtuálních počítačů můžete zobrazit na stránce [produkty dostupné v oblasti](https://azure.microsoft.com/regions/services/) .
 
 >[!NOTE]
 >
@@ -94,7 +93,7 @@ Vytvořte nový virtuální síťový adaptér pro hostovaný virtuální počí
 4. Vytvořte IP adresu pro bránu NAT.
     
 Aby bylo možné bránu nakonfigurovat, potřebujete nějaké informace o vaší síti:    
-  * IPAddress – IP adresa brány NAT Určuje adresu IPv4 nebo IPv6, která se má použít jako adresa výchozí brány pro podsíť virtuální sítě. Obecný formulář je a. b. c. 1 (například "192.168.0.1"). I když poslední pozice nemusí být 1, obvykle je (na základě délky předpony). Obvykle byste měli použít adresní prostor privátní sítě RFC 1918. 
+  * IP adresa – IP adresa brány NAT Určuje adresu protokolu IPv4 nebo IPv6, která se má použít jako adresa výchozí brány pro podsíť virtuální sítě. Obecný formulář je a. b. c. 1 (například "192.168.0.1"). I když poslední pozice nemusí být 1, obvykle je (na základě délky předpony). Obvykle byste měli použít adresní prostor privátní sítě RFC 1918. 
   * PrefixLength – délka předpony podsítě definuje velikost místní podsítě (maska podsítě). Délka předpony podsítě bude celočíselná hodnota mezi 0 a 32. 0 by namapoval celý Internet, 32 by povoloval jenom jednu namapovanou IP adresu. Rozsahy běžných hodnot od 24 do 12 v závislosti na tom, kolik IP adres je potřeba připojit k překladu adres (NAT). Běžná PrefixLength je 24 – jedná se o masku podsítě 255.255.255.0.
   * InterfaceIndex- **ifIndex** je index rozhraní virtuálního přepínače vytvořeného v předchozím kroku. 
 
@@ -143,7 +142,7 @@ Pomocí následujících kroků nakonfigurujte DHCP na virtuálním počítači 
   
 2. V průvodci klikněte na **Další** , dokud nepřejdete na stránku role serveru.
   
-3. Zaškrtněte políčko **Server DHCP** , klikněte na **Přidat funkce**a potom klikněte na **Další** , dokud Průvodce nedokončíte.
+3. Zaškrtněte políčko **Server DHCP** , klikněte na **Přidat funkce** a potom klikněte na **Další** , dokud Průvodce nedokončíte.
   
 4. Klikněte na **Install** (Nainstalovat).
 
@@ -151,7 +150,7 @@ Pomocí následujících kroků nakonfigurujte DHCP na virtuálním počítači 
 
 1. Otevřete Správce DHCP.
   
-2. V navigačním podokně rozbalte název serveru, klikněte pravým tlačítkem na **IPv4**a pak klikněte na **Nový obor**. Zobrazí se Průvodce vytvořením oboru, klikněte na tlačítko **Další**.
+2. V navigačním podokně rozbalte název serveru, klikněte pravým tlačítkem na **IPv4** a pak klikněte na **Nový obor**. Zobrazí se Průvodce vytvořením oboru, klikněte na tlačítko **Další**.
   
 3. Zadejte název a popis oboru a klikněte na **Další**.
   

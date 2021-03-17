@@ -9,19 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: f78d5f839c5dd7816ae28eeed175503427abb43c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 76f67204b41a36d10541974e78a22f7d065e144b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035838"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669693"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certifikace a konfigurace SAP běžící na Microsoft Azure
 
@@ -34,7 +34,7 @@ Odkazy
 
 | Produkt SAP | Podporovaný operační systém | Nabídky Azure |
 | --- | --- | --- |
-| SAP HANA Developer Edition (včetně klientského softwaru HANA, který se skládá jenom z ovladače SQLDBC, ODBO-Windows, ovladače ODBC, JDBC, HANA Studio a HANA Database) | Red Hat Enterprise Linux, SUSE Linux Enterprise | Řada virtuálních počítačů řady D-Series |
+| SAP HANA Developer Edition (včetně klientského softwaru HANA, který se skládá z ovladače SQLDBC, ODBO-Windows jenom pro ODBC, ovladače JDBC, HANA Studio a HANA Database) | Red Hat Enterprise Linux, SUSE Linux Enterprise | Řada virtuálních počítačů řady D-Series |
 | Podnikání One v HANA | SUSE Linux Enterprise | DS14_v2, M32ts, M32ls, M64ls, M64s <br /> [SAP HANA certifikované platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
 | SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Řízená dostupnost pro GS5. Plná podpora pro M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2 M416ms_v2 <br /> SAP HANA v Azure (velké instance) [SAP HANA certifikované platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | Suite na HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, <br /> M416s_v2, M416ms_v2 SAP HANA v Azure (velké instance) [SAP HANA certifikovaných platforem IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |

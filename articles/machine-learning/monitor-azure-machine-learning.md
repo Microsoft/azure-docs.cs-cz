@@ -8,84 +8,68 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 03/05/2020
-ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: subject-monitoring
+ms.date: 10/01/2020
+ms.openlocfilehash: a18ee02b5e91b628a25655949a652270bd7436c4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78399097"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575138"
 ---
-# <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorování
+# <a name="monitor-azure-machine-learning"></a>Monitorování Azure Machine Learningu
 
-Tento článek popisuje data monitorování vygenerovaná nástrojem Azure Machine Learning. Také popisuje, jak můžete použít Azure Monitor k analýze dat a definování výstrah.
+Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná nástrojem Azure Machine Learning a postup analýzy a upozornění na tato data pomocí Azure Monitor.
 
 > [!TIP]
-> Informace v tomto dokumentu jsou primárně určené pro správce, protože popisují monitorování Azure Machine Learning. Pokud jste odborníkem na data nebo vývojářem a chcete monitorovat informace, které jsou specifické pro vaše běhy školicích kurzů, přečtěte si následující dokumenty:
+> Informace v tomto dokumentu jsou primárně určené pro __správce__, protože popisují monitorování služby Azure Machine Learning a přidružených služeb Azure. Pokud jste odborníkem na __data__ nebo __vývojářem__ a chcete monitorovat informace, které jsou specifické pro vaše *běhy školicích kurzů*, přečtěte si následující dokumenty:
 >
 > * [Spuštění, monitorování a zrušení školicích běhů](how-to-manage-runs.md)
 > * [Protokolování metrik pro tréninková spuštění](how-to-track-experiments.md)
 > * [Sledování experimentů s využitím MLflow](how-to-use-mlflow.md)
 > * [Vizualizace spuštění s využitím TensorBoardu](how-to-monitor-tensorboard.md)
+>
+> Pokud chcete monitorovat informace vygenerované modely nasazenými jako webové služby nebo moduly IoT Edge, přečtěte si téma [shromáždění dat modelu](how-to-enable-data-collection.md) a [monitorování pomocí Application Insights](how-to-enable-app-insights.md).
 
-## <a name="azure-monitor"></a>Azure Monitor
+## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
 
-Azure Machine Learning protokoluje data monitorování pomocí Azure Monitor, což je plná služba monitorování zásobníku v Azure. Azure Monitor poskytuje kompletní sadu funkcí pro monitorování prostředků Azure. Může také monitorovat prostředky v jiných cloudech i v místním prostředí.
+Azure Machine Learning vytváří data monitorování pomocí [Azure monitor](../azure-monitor/overview.md), což je plná služba monitorování zásobníku v Azure. Azure Monitor poskytuje kompletní sadu funkcí pro monitorování prostředků Azure. Může také monitorovat prostředky v jiných cloudech i v místním prostředí.
 
-Začněte s článkem [Azure monitor přehled](/azure/azure-monitor/overview), který poskytuje přehled možností monitorování. Následující části obsahují informace o těchto informacích, které poskytují konkrétní použití Azure Monitor s Azure Machine Learning.
+Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/essentials/monitor-azure-resource.md), který popisuje následující koncepty:
 
-Pokud chcete pochopit náklady spojené s Azure Monitor, přečtěte si téma [využití a odhadované náklady](/azure/azure-monitor/platform/usage-estimated-costs). Pokud chcete pochopit, jak dlouho trvá, aby se data zobrazovala v Azure Monitor, přečtěte si část [Doba přijímání dat protokolu](/azure/azure-monitor/platform/data-ingestion-time).
+- Co je Azure Monitor?
+- Náklady spojené s monitorováním
+- Monitorování dat shromážděných v Azure
+- Konfigurace shromažďování dat
+- Standardní nástroje v Azure pro analýzu a upozorňování na data monitorování
+
+Následující části jsou uvedené v tomto článku, které popisují konkrétní data shromážděná pro Azure Machine Learning. Tyto části obsahují také příklady konfigurace shromažďování dat a analýzy těchto dat pomocí nástrojů Azure.
+
+> [!TIP]
+> Pokud chcete pochopit náklady spojené s Azure Monitor, přečtěte si téma [využití a odhadované náklady](../azure-monitor//usage-estimated-costs.md). Pokud chcete pochopit, jak dlouho trvá, aby se data zobrazovala v Azure Monitor, přečtěte si část [Doba přijímání dat protokolu](../azure-monitor/logs/data-ingestion-time.md).
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Monitorování dat z Azure Machine Learning
 
-Azure Machine Learning shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Podrobné informace o protokolech a metrikách vytvořených pomocí Azure Machine Learning najdete v tématu [referenční informace k datům monitorování Azure Machine Learning](monitor-resource-reference.md) .
+Azure Machine Learning shromažďuje stejné typy dat monitorování jako další prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data). 
 
-## <a name="analyzing-metric-data"></a>Analýza dat metriky
+Podrobné informace o protokolech a metrikách vytvořených pomocí Azure Machine Learning najdete v tématu [referenční informace k datům monitorování Azure Machine Learning](monitor-resource-reference.md) .
 
-Metriky pro Azure Machine Learning můžete analyzovat otevřením **metrik** v nabídce **Azure monitor** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](/azure/azure-monitor/platform/metrics-getting-started) .
+<a id="configuration"></a>
 
-Všechny metriky pro Azure Machine Learning jsou v oboru názvů **Machine Learning pracovním prostoru služby**.
+## <a name="collection-and-routing"></a>Shromažďování a směrování
 
-![Průzkumník metrik s vybraným pracovním prostorem služby Machine Learning](./media/monitor-azure-machine-learning/metrics.png)
+Metriky platforem a protokol aktivit se shromažďují a ukládají automaticky, ale můžete je směrovat do jiných umístění pomocí diagnostického nastavení.  
 
-### <a name="filtering-and-splitting"></a>Filtrování a rozdělování
+Protokoly prostředků se neshromažďují a ukládají, dokud nevytvoříte nastavení diagnostiky a nebudete je směrovat do jednoho nebo více umístění.
 
-Pro metriky, které podporují dimenze, můžete použít filtry pomocí hodnoty dimenze. Například filtrování **aktivních jader** pro **název clusteru** `cpu-cluster` . 
-
-Metriku můžete také rozdělit podle dimenzí, abyste vizualizují, jak různé segmenty metriky jsou vzájemně porovnány. Například rozdělením **typu kroku kanálu** zobrazíte počet typů kroků použitých v kanálu.
-
-Další informace o filtrování a rozdělování najdete v tématu [Pokročilé funkce Azure monitor](/azure/azure-monitor/platform/metrics-charts).
-
-## <a name="alerts"></a>Výstrahy
-
-Výstrahy pro Azure Machine Learning můžete zpřístupnit otevřením **výstrahy** z nabídky **Azure monitor** . Podrobnosti o vytváření výstrah najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](/azure/azure-monitor/platform/alerts-metric) .
-
-V následující tabulce jsou uvedeny běžné a doporučené pravidla upozorňujících na metriky pro Azure Machine Learning:
-
-| Typ upozornění | Podmínka | Description |
-|:---|:---|:---|
-| Nasazení modelu se nezdařilo | Typ agregace: celkem, operátor: větší než, prahová hodnota: 0 | V případě neúspěchu jednoho nebo více nasazení modelů |
-| Procento využití kvóty | Typ agregace: průměr, operátor: větší než, prahová hodnota: 90| Pokud je procento využití kvóty větší než 90% |
-| Nepoužité uzly | Typ agregace: celkem, operátor: větší než, prahová hodnota: 0 | Když je jeden nebo více nepoužitelných uzlů |
-
-## <a name="configuration"></a>Konfigurace
+Podrobný postup pro vytvoření nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../azure-monitor/essentials/diagnostic-settings.md) . Při vytváření nastavení diagnostiky určíte, které kategorie protokolů se mají shromáždit. Kategorie pro Azure Machine Learning jsou uvedeny v referenčních informacích o [monitorování Azure Machine Learning](monitor-resource-reference.md#resource-logs).
 
 > [!IMPORTANT]
-> __Metriky pro Azure Machine Learning nemusíte konfigurovat__, jsou shromažďovány automaticky a jsou k dispozici v Průzkumník metrik pro monitorování a upozorňování.
-
-Můžete přidat nastavení diagnostiky pro konfiguraci následujících funkcí:
-
-* Archivujte informace protokolu a metrik do účtu služby Azure Storage.
-* Zasílat informace o protokolech a metrikách do centra událostí Azure.
-* Odesílat informace o protokolech a metrikách Azure Monitor Log Analytics.
-
-Povolení těchto nastavení vyžaduje další služby Azure (účet úložiště, centrum událostí nebo Log Analytics), což může zvýšit vaše náklady. Pokud chcete vypočítat odhadované náklady, přejděte na [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator).
-
-Další informace o vytváření nastavení diagnostiky najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](/azure/azure-monitor/platform/diagnostic-settings).
+> Povolení těchto nastavení vyžaduje další služby Azure (účet úložiště, centrum událostí nebo Log Analytics), což může zvýšit vaše náklady. Pokud chcete vypočítat odhadované náklady, přejděte na [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator).
 
 Pro Azure Machine Learning můžete nakonfigurovat následující protokoly:
 
-| Kategorie | Description |
+| Kategorie | Popis |
 |:---|:---|
 | AmlComputeClusterEvent | Události z Azure Machine Learning výpočetních clusterů. |
 | AmlComputeClusterNodeEvent | Události z uzlů v rámci Azure Machine Learning výpočetního clusteru. |
@@ -94,9 +78,34 @@ Pro Azure Machine Learning můžete nakonfigurovat následující protokoly:
 > [!NOTE]
 > Pokud povolíte metriky v nastavení diagnostiky, informace o dimenzích nejsou aktuálně zahrnuty jako součást informací odesílaných do účtu úložiště, centra událostí nebo Log Analytics.
 
-## <a name="analyzing-log-data"></a>Analýza dat protokolu
+Metriky a protokoly, které můžete shromažďovat, jsou popsány v následujících částech.
 
-Použití Azure Monitor Log Analytics vyžaduje, abyste vytvořili konfiguraci diagnostiky a povolili __odesílání informací do Log Analytics__. Další informace najdete v části věnované [konfiguraci](#configuration) .
+## <a name="analyzing-metrics"></a>Analýza metrik
+
+Metriky pro Azure Machine Learning můžete analyzovat společně s metrikami z jiných služeb Azure tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/essentials/metrics-getting-started.md) .
+
+Seznam shromážděných metrik platformy najdete v tématu [monitorování Azure Machine Learning metriky referenčních dat](monitor-resource-reference.md#metrics).
+
+Všechny metriky pro Azure Machine Learning jsou v oboru názvů **Machine Learning pracovním prostoru služby**.
+
+![Průzkumník metrik s vybraným pracovním prostorem služby Machine Learning](./media/monitor-azure-machine-learning/metrics.png)
+
+Pro referenci se zobrazí seznam [všech metrik prostředků, které jsou podporované v Azure monitor](../azure-monitor/essentials/metrics-supported.md).
+
+> [!TIP]
+> Data metrik Azure Monitor jsou k dispozici po dobu 90 dnů. Při vytváření grafů se ale dá vizuálně vymezit jenom 30 dní. Například pokud chcete zobrazit období 90 dne, musíte ho rozdělit na tři grafy po dobu 30 dnů v období 90 dne.
+### <a name="filtering-and-splitting"></a>Filtrování a rozdělování
+
+Pro metriky, které podporují dimenze, můžete použít filtry pomocí hodnoty dimenze. Například filtrování **aktivních jader** pro **název clusteru** `cpu-cluster` . 
+
+Metriku můžete také rozdělit podle dimenzí, abyste vizualizují, jak různé segmenty metriky jsou vzájemně porovnány. Například rozdělením **typu kroku kanálu** zobrazíte počet typů kroků použitých v kanálu.
+
+Další informace o filtrování a rozdělování najdete v tématu [Pokročilé funkce Azure monitor](../azure-monitor/essentials/metrics-charts.md).
+
+<a id="analyzing-log-data"></a>
+## <a name="analyzing-logs"></a>Analýza protokolů
+
+Použití Azure Monitor Log Analytics vyžaduje, abyste vytvořili konfiguraci diagnostiky a povolili __odesílání informací do Log Analytics__. Další informace najdete v části [shromažďování a směrování](#collection-and-routing) .
 
 Data v Azure Monitor protokoly se ukládají v tabulkách, přičemž každá tabulka má vlastní sadu jedinečných vlastností. Azure Machine Learning ukládá data v následujících tabulkách:
 
@@ -107,11 +116,14 @@ Data v Azure Monitor protokoly se ukládají v tabulkách, přičemž každá ta
 | AmlComputeJobEvent | Události z úloh běžících na Azure Machine Learning Compute. |
 
 > [!IMPORTANT]
-> Když v nabídce Azure Machine Learning vyberete **protokoly** , Log Analytics se otevře s oborem dotazu nastaveným na aktuální pracovní prostor. To znamená, že dotazy protokolu budou zahrnovat pouze data z tohoto prostředku. Pokud chcete spustit dotaz, který zahrnuje data z jiných databází nebo dat z jiných služeb Azure, vyberte z nabídky **Azure monitor** **protokoly** . Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope/) .
+> Když v nabídce Azure Machine Learning vyberete **protokoly** , Log Analytics se otevře s oborem dotazu nastaveným na aktuální pracovní prostor. To znamená, že dotazy protokolu budou zahrnovat pouze data z tohoto prostředku. Pokud chcete spustit dotaz, který zahrnuje data z jiných databází nebo dat z jiných služeb Azure, vyberte z nabídky **Azure monitor** **protokoly** . Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](../azure-monitor/logs/scope.md) .
 
 Podrobné informace o protokolech a metrikách naleznete v tématu Azure Machine Learning – referenční informace k [datům monitorování](monitor-resource-reference.md).
 
-### <a name="sample-queries"></a>Ukázkové dotazy
+### <a name="sample-kusto-queries"></a>Ukázkové dotazy Kusto
+
+> [!IMPORTANT]
+> Když vyberete **protokoly** v nabídce [Service-Name], Log Analytics se otevře s oborem dotazu nastaveným na aktuální Azure Machine Learning pracovní prostor. To znamená, že dotazy protokolu budou zahrnovat pouze data z tohoto prostředku. Pokud chcete spustit dotaz, který obsahuje data z jiných pracovních prostorů nebo dat z jiných služeb Azure, vyberte z nabídky **Azure monitor** **protokoly** . Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](../azure-monitor/logs/scope.md) .
 
 Níže jsou uvedené dotazy, které vám pomůžou monitorovat prostředky Azure Machine Learning: 
 
@@ -147,8 +159,20 @@ Níže jsou uvedené dotazy, které vám pomůžou monitorovat prostředky Azure
     | distinct NodeId
     ```
 
+## <a name="alerts"></a>Výstrahy
+
+Výstrahy pro Azure Machine Learning můžete zpřístupnit otevřením **výstrahy** z nabídky **Azure monitor** . Podrobnosti o vytváření výstrah najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../azure-monitor/alerts/alerts-metric.md) .
+
+V následující tabulce jsou uvedeny běžné a doporučené pravidla upozorňujících na metriky pro Azure Machine Learning:
+
+| Typ upozornění | Podmínka | Description |
+|:---|:---|:---|
+| Nasazení modelu se nezdařilo | Typ agregace: celkem, operátor: větší než, prahová hodnota: 0 | V případě neúspěchu jednoho nebo více nasazení modelů |
+| Procento využití kvóty | Typ agregace: průměr, operátor: větší než, prahová hodnota: 90| Pokud je procento využití kvóty větší než 90% |
+| Nepoužité uzly | Typ agregace: celkem, operátor: větší než, prahová hodnota: 0 | Když je jeden nebo více nepoužitelných uzlů |
+
 ## <a name="next-steps"></a>Další kroky
 
-- Referenční informace o protokolech a metrikách naleznete v tématu [Azure Machine Learning – referenční informace k datům monitorování](monitor-resource-reference.md).
+- Referenční informace o protokolech a metrikách naleznete v tématu [Monitoring Azure Machine Learning data reference](monitor-resource-reference.md).
 - Informace o práci s kvótami týkajícími se Azure Machine Learning najdete v tématu [Správa a vyžádání kvót pro prostředky Azure](how-to-manage-quotas.md).
-- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource).
+- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/essentials/monitor-azure-resource.md).

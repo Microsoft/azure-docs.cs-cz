@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/18/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511632"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602468"
 ---
 # <a name="understand-azure-role-definitions"></a>Vysvětlení definic rolí Azure
 
@@ -239,7 +239,7 @@ Vlastník
 &nbsp;&nbsp;&nbsp;&nbsp;Činností<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Přispěvatel dat objektu BLOB služby Storage
+Přispěvatel dat v objektech blob služby Storage
 
 &nbsp;&nbsp;&nbsp;&nbsp;Činností<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -291,11 +291,27 @@ Chcete-li zobrazit a používat operace s daty v REST API, je nutné nastavit pa
 
 ## <a name="notactions"></a>NotActions
 
-`NotActions`Oprávnění určuje operace správy, které jsou vyloučeny z povolených `Actions` . Oprávnění použijte v `NotActions` případě, že sada operací, které chcete zakázat, je snazší definovat s vyloučením operací s omezeným přístupem. Přístup udělený rolí (efektivní oprávnění) je vypočítán odečtením `NotActions` operací od `Actions` operací.
+`NotActions`Oprávnění určuje operace správy, které jsou odečteny nebo vyloučeny z povolených `Actions` znaků, které mají zástupný znak ( `*` ). Oprávnění použijte v `NotActions` případě, že sada operací, které chcete zakázat, je snazší definovat odečtením od `Actions` , která má zástupný znak ( `*` ). Přístup udělený rolí (efektivní oprávnění) je vypočítán odečtením `NotActions` operací od `Actions` operací.
+
+`Actions - NotActions = Effective management permissions`
+
+V následující tabulce jsou uvedeny dva příklady efektivních oprávnění pro operaci se zástupnými znaky [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement) :
+
+> [!div class="mx-tableFixed"]
+> | Actions | NotActions | Skutečná oprávnění pro správu |
+> | --- | --- | --- |
+> | `Microsoft.CostManagement/exports/*` | *žádný* | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/delete`</br>`Microsoft.CostManagement/exports/run/action` |
+> | `Microsoft.CostManagement/exports/*` | `Microsoft.CostManagement/exports/delete` | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/run/action` |
 
 > [!NOTE]
-> Pokud je uživateli přiřazena role, která vylučuje operaci v `NotActions` a je jí přiřazena druhá role, která uděluje přístup ke stejné operaci, uživatel může tuto operaci provést. `NotActions`není pravidlo Odepřít – jedná se o pohodlný způsob, jak vytvořit sadu povolených operací, pokud je potřeba vyloučit konkrétní operace.
+> Pokud je uživateli přiřazena role, která vylučuje operaci v `NotActions` a je jí přiřazena druhá role, která uděluje přístup ke stejné operaci, uživatel může tuto operaci provést. `NotActions` není pravidlo Odepřít – jedná se o pohodlný způsob, jak vytvořit sadu povolených operací, pokud je potřeba vyloučit konkrétní operace.
 >
+
+### <a name="differences-between-notactions-and-deny-assignments"></a>Rozdíly mezi NotActions a zamítnutými přiřazeními
+
+`NotActions` přiřazení zamítnutí nejsou stejná a slouží k různým účelům. `NotActions` představují pohodlný způsob, jak odečíst konkrétní akce před zástupnou `*` operací ().
+
+Zrušení přiřazení zabrání uživatelům provádět konkrétní akce, a to i v případě, že jim přiřazení role udělí přístup. Další informace najdete v tématu [Vysvětlení přiřazení odmítnutí Azure](deny-assignments.md).
 
 ## <a name="dataactions"></a>Akce dataactions
 
@@ -311,10 +327,20 @@ Chcete-li zobrazit a používat operace s daty v REST API, je nutné nastavit pa
 
 ## <a name="notdataactions"></a>NotDataActions
 
-`NotDataActions`Oprávnění určuje operace s daty, které jsou vyloučeny z povolených `DataActions` . Přístup udělený rolí (efektivní oprávnění) je vypočítán odečtením `NotDataActions` operací od `DataActions` operací. Každý poskytovatel prostředků poskytuje odpovídající sadu rozhraní API pro splnění operací s daty.
+`NotDataActions`Oprávnění určuje operace s daty, které jsou odečteny nebo vyloučeny z povolených `DataActions` znaků, které mají zástupný znak ( `*` ). Oprávnění použijte v `NotDataActions` případě, že sada operací, které chcete zakázat, je snazší definovat odečtením od `DataActions` , která má zástupný znak ( `*` ). Přístup udělený rolí (efektivní oprávnění) je vypočítán odečtením `NotDataActions` operací od `DataActions` operací. Každý poskytovatel prostředků poskytuje odpovídající sadu rozhraní API pro splnění operací s daty.
+
+`DataActions - NotDataActions = Effective data permissions`
+
+V následující tabulce jsou uvedeny dva příklady efektivních oprávnění pro operaci se zástupnými znaky [Microsoft. Storage](resource-provider-operations.md#microsoftstorage) :
+
+> [!div class="mx-tableFixed"]
+> | Akce dataactions | NotDataActions | Platná oprávnění pro data |
+> | --- | --- | --- |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | *žádný* | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
 
 > [!NOTE]
-> Pokud má uživatel přiřazenou roli, která vylučuje datovou operaci v a `NotDataActions` má přiřazenou druhou roli, která udělí přístup ke stejné datové operaci, uživatel může tuto datovou operaci provést. `NotDataActions`není pravidlo Odepřít – jedná se o pohodlný způsob, jak vytvořit sadu povolených datových operací, když je potřeba vyloučit konkrétní datové operace.
+> Pokud má uživatel přiřazenou roli, která vylučuje datovou operaci v a `NotDataActions` má přiřazenou druhou roli, která udělí přístup ke stejné datové operaci, uživatel může tuto datovou operaci provést. `NotDataActions` není pravidlo Odepřít – jedná se o pohodlný způsob, jak vytvořit sadu povolených datových operací, když je potřeba vyloučit konkrétní datové operace.
 >
 
 ## <a name="assignablescopes"></a>AssignableScopes
@@ -339,4 +365,4 @@ Informace o `AssignableScopes` vlastních rolích najdete v tématu [vlastní ro
 
 * [Předdefinované role Azure](built-in-roles.md)
 * [Vlastní role Azure](custom-roles.md)
-* [Operace poskytovatele prostředků Azure Resource Manager](resource-provider-operations.md)
+* [Operace poskytovatele prostředků Azure](resource-provider-operations.md)

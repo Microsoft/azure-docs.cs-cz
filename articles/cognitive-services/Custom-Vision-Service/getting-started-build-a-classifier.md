@@ -1,25 +1,27 @@
 ---
-title: Rychlý Start – vytvoření klasifikátoru – Custom Vision Service
+title: 'Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision Web'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model klasifikace imagí.
+description: V tomto rychlém startu se dozvíte, jak používat Custom Vision web k vytváření, školení a testování modelu klasifikace imagí.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+keywords: rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, vlastní vize
+ms.openlocfilehash: d25b226f5dfff34aa572b40d1e4de142cf8e0b7b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551348"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221240"
 ---
-# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision
+# <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision Web
 
-V tomto rychlém startu se dozvíte, jak vytvořit klasifikátor prostřednictvím webu Custom Vision. Jakmile sestavíte model třídění, můžete pro klasifikaci imagí použít službu Custom Vision.
+V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model klasifikace imagí. Jakmile model sestavíte, můžete ho otestovat pomocí nových imagí a následně ho integrovat do vlastní aplikace pro rozpoznávání imagí.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
@@ -27,13 +29,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 - Sada imagí, se kterými chcete své třídění proškolit. Tipy k výběru imagí najdete níže.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Vytvoření prostředků Custom Vision v Azure Portal
+## <a name="create-custom-vision-resources"></a>Vytvoření prostředků Custom Vision
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https://customvision.ai) a vyberte __Přihlásit__se. Přihlaste se pomocí stejného účtu, který jste použili k přihlášení do Azure Portal.
+Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https://customvision.ai) a vyberte __Přihlásit__ se. Přihlaste se pomocí stejného účtu, který jste použili k přihlášení do Azure Portal.
 
 ![Obrázek přihlašovací stránky](./media/browser-home.png)
 
@@ -45,9 +47,9 @@ Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https:/
 1. Zadejte název a popis projektu. Pak vyberte skupinu prostředků. Pokud je přihlášený účet přidružený k účtu Azure, zobrazí se v rozevíracím seznamu Skupina prostředků všechny skupiny prostředků Azure, které zahrnují prostředek Custom Vision Service. 
 
    > [!NOTE]
-   > Pokud není k dispozici žádná skupina prostředků, potvrďte prosím, že jste se k [customvision.AI](https://customvision.ai) přihlásili pomocí stejného účtu, jako jste použili k přihlášení do [Azure Portal](https://portal.azure.com/). Ověřte také, že jste na portálu Custom Vision vybrali stejný adresář jako adresář v Azure Portal, kde se nacházejí Custom Vision prostředky. V obou lokalitách můžete adresář vybrat v nabídce účtu rozevírací nabídky v pravém horním rohu obrazovky. 
+   > Pokud není k dispozici žádná skupina prostředků, potvrďte prosím, že jste se k [customvision.AI](https://customvision.ai) přihlásili pomocí stejného účtu, jako jste použili k přihlášení do [Azure Portal](https://portal.azure.com/). Ověřte také, že jste na webu Custom Vision vybrali stejný adresář jako adresář v Azure Portal, kde se nacházejí Custom Vision prostředky. V obou lokalitách můžete adresář vybrat v nabídce účtu rozevírací nabídky v pravém horním rohu obrazovky. 
 
-1. V části __typy projektů__vyberte __klasifikace__ . Pak v části __typy klasifikací__zvolte v závislosti na použitém případu použití buď více **štítků** , nebo více **tříd**. Klasifikace s více štítky aplikuje libovolný počet značek na obrázek (nula nebo více), zatímco klasifikace s více třídami řadí obrázky do jednoduchých kategorií (každý odeslaný obrázek bude seřazený do nejpravděpodobnější značky). V případě, že chcete, budete moci typ klasifikace později změnit.
+1. V části __typy projektů__ vyberte __klasifikace__ . Pak v části __typy klasifikací__ zvolte v závislosti na použitém případu použití buď více **štítků** , nebo více **tříd**. Klasifikace s více štítky aplikuje libovolný počet značek na obrázek (nula nebo více), zatímco klasifikace s více třídami řadí obrázky do jednoduchých kategorií (každý odeslaný obrázek bude seřazený do nejpravděpodobnější značky). V případě, že chcete, budete moci typ klasifikace později změnit.
 
 1. V dalším kroku vyberte jednu z dostupných domén. Každá doména optimalizuje klasifikátor pro konkrétní typy imagí, jak je popsáno v následující tabulce. V případě potřeby budete moci doménu později změnit.
 
@@ -69,7 +71,7 @@ Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https:/
 
 V této části nahrajete a ručně označíte obrázky, které vám pomůžou rozučit třídění. 
 
-1. Pokud chcete přidat obrázky, klikněte na tlačítko __Přidat image__ a pak vyberte __Procházet místní soubory__. Vyberte __otevřít__ a přejděte k označení. Výběr značek bude použit pro celou skupinu imagí, které jste vybrali k nahrání, takže je snazší nahrávat obrázky do samostatných skupin podle jejich požadovaných značek. Můžete také změnit značky pro jednotlivé obrázky po jejich nahrání.
+1. Pokud chcete přidat obrázky, vyberte __Přidat image__ a pak vyberte __Procházet místní soubory__. Vyberte __otevřít__ a přejděte k označení. Výběr značek bude použit pro celou skupinu imagí, které jste vybrali k nahrání, takže je snazší nahrávat obrázky do samostatných skupin podle jejich použitých značek. Můžete také změnit značky pro jednotlivé obrázky po jejich nahrání.
 
     ![Ovládací prvek přidat obrázky se zobrazí v levém horním rohu a jako tlačítko ve spodní části středu.](./media/getting-started-build-a-classifier/add-images01.png)
 
@@ -103,7 +105,7 @@ Po dokončení školení bude výkon modelu odhadnut a zobrazen. Custom Vision S
 
 ![Ve výsledcích školení se zobrazuje celková přesnost a odvolání a přesnost a odvolání jednotlivých značek v třídění.](./media/getting-started-build-a-classifier/train03.png)
 
-### <a name="probability-threshold"></a>Prahová hodnota pravděpodobnosti
+### <a name="probability-threshold"></a>Probability threshold
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
@@ -120,3 +122,4 @@ V tomto rychlém startu jste zjistili, jak vytvořit a naučit model klasifikace
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](test-your-model.md)
 
+* [Co je Custom Vision?](./overview.md)

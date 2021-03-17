@@ -3,23 +3,25 @@ title: Kvóty a omezení v Azure Media Services
 description: Toto téma popisuje kvóty a omezení v Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2020
-ms.author: juliako
-ms.openlocfilehash: c2845cd0fad8375db67d1aa86333f144222dc0aa
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 10/23/2020
+ms.author: inhenkel
+ms.openlocfilehash: d6ca7a444f2a3d4babe220548edb10bd37784be7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446323"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678109"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services kvóty a omezení
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V tomto článku jsou uvedené některé z nejběžnějších omezení Microsoft Azure Media Services, které se taky někdy označují jako kvóty.
 
@@ -30,7 +32,7 @@ V tomto článku jsou uvedené některé z nejběžnějších omezení Microsoft
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| [Účty Media Services](media-services-account-concept.md) v jednom předplatném | 25 (pevné) |
+| [Účty Media Services](media-services-account-concept.md) v jednom předplatném | 100 (fixní) |
 
 ## <a name="asset-limits"></a>Omezení assetu
 
@@ -88,7 +90,7 @@ Všechny záznamy úloh ve vašem účtu starším než 90 dnů budou automatick
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| [Koncové body streamování](streaming-endpoint-concept.md) (zastavené nebo spuštěné) na účet Media Services|2 |
+| [Koncové body streamování](streaming-endpoint-concept.md) (zastavené nebo spuštěné) na účet Media Services | 2 |
 | Jednotky streamování Premium | 10 |
 | [Filtry dynamických manifestů](filters-dynamic-manifest-overview.md)|100|
 | [Zásady streamování](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
@@ -100,9 +102,9 @@ Všechny záznamy úloh ve vašem účtu starším než 90 dnů budou automatick
 
 ## <a name="protection-limits"></a>Omezení ochrany
 
-| Prostředek | Výchozí omezení | 
-| --- | --- | 
-| Možnosti pro [zásady klíče obsahu](content-key-policy-concept.md) |30 | 
+| Prostředek | Výchozí omezení |
+| --- | --- |
+| Možnosti pro [zásady klíče obsahu](content-key-policy-concept.md) |30 |
 | Licence za měsíc pro každý typ DRM při Media Services Služba doručení klíčů na účet|1 000 000|
 
 ## <a name="support-ticket"></a>Lístek podpory

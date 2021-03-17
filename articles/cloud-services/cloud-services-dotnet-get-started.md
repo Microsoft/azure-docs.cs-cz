@@ -1,25 +1,27 @@
 ---
-title: Začínáme s cloudovými službami službou Azure Cloud Services a technologií ASP.NET | Dokumentace Microsoftu
+title: Začínáme s Azure Cloud Services (Classic) a ASP.NET | Microsoft Docs
 description: Naučte se vytvářet vícevrstvé aplikace s použitím technologie ASP.NET MVC a Azure. Aplikace běží v cloudové službě a obsahuje webovou roli a roli pracovního procesu. Používá nástroj Entity Framework, službu Azure SQL Database a fronty a objekty blob služby Azure Storage.
-services: cloud-services, storage
-documentationcenter: .net
-author: tgore03
-manager: carmonm
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: ac843ec2084cd019ec9d3bc90f6c8bbcb5c34279
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ae7fd5a7c9bc858cb18473374e7bd5589717eac6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590349"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742076"
 ---
-# <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
+# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a>Začínáme s Azure Cloud Services (Classic) a ASP.NET
 
 ## <a name="overview"></a>Přehled
+
+> [!IMPORTANT]
+> [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
+
 Tento kurz ukazuje, jak lze vytvářet vícevrstvé aplikace .NET s front-endem ASP.NET MVC a jak je nasadit do [cloudové služby Azure](cloud-services-choose-me.md). Aplikace používá [službu Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100)), [službu Azure Blob service](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) a [službu front Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt sady Visual Studio můžete stáhnout](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z galerie kódů MSDN.
 
 V kurzu se dozvíte, jak sestavit a spustit aplikaci místně, jak ji nasadit do Azure a spustit v cloudu a jak ji sestavit od nuly. Pokud chcete, můžete začít tím, že ji sestavíte od nuly, potom ji otestujete a nakonec provedete kroky nasazení.
@@ -27,12 +29,12 @@ V kurzu se dozvíte, jak sestavit a spustit aplikaci místně, jak ji nasadit d
 ## <a name="contoso-ads-application"></a>Aplikace Contoso Ads
 Aplikace slouží jako vývěsní tabule pro inzerci. Uživatelé vytvářejí reklamu tak, že zadají text a odešlou obrázek. Před sebou vidí seznam reklam s obrázky miniatur a plnou velikost obrázku s podrobnostmi si mohou zobrazit výběrem požadované reklamy.
 
-![Seznam reklam](./media/cloud-services-dotnet-get-started/list.png)
+![Obrázek zobrazuje seznam reklam](./media/cloud-services-dotnet-get-started/list.png)
 
 Aplikace používá [způsob práce zaměřený na fronty](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby vyvážila práci při vytváření miniatur (která je náročná na prostředky procesoru) vůči back-endovému procesu.
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternativní architektura: App Service a WebJobs
-Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [Azure App Service](/azure/app-service/) a použití funkce [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které nejlépe vyhovují vašemu scénáři, najdete v tématu [porovnání Azure App Service, Cloud Services a virtuálních počítačů](/azure/architecture/guide/technology-choices/compute-decision-tree).
+Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [Azure App Service](../app-service/index.yml) a použití funkce [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které nejlépe vyhovují vašemu scénáři, najdete v tématu [porovnání Azure App Service, Cloud Services a virtuálních počítačů](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="what-youll-learn"></a>Co se dozvíte
 * Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.
@@ -59,11 +61,11 @@ Pokud je nemáte, Visual Studio se vám může nainstalovat automaticky při ins
 ## <a name="application-architecture"></a>Architektura aplikace
 Aplikace ukládá reklamy do databáze SQL a k vytváření tabulky a přístupu k datům používá Entity Framework Code First. U každé reklamy databáze ukládá dvě adresy URL. Jednu pro obrázek v plné velikosti a druhou pro miniaturu.
 
-![Tabulka reklam](./media/cloud-services-dotnet-get-started/adtable.png)
+![Toto je obrázek tabulky AD.](./media/cloud-services-dotnet-get-started/adtable.png)
 
 Když uživatel odešle obrázek, front-end spuštěný ve webové roli obrázek uloží do [objektu blob Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage), který ukládá informace o reklamě do databáze s adresou URL, která odkazuje na objekt blob. Ve stejný okamžik zapíše zprávu do fronty Azure. Back-endový proces spuštěný v roli pracovního procesu se pravidelně dotazuje fronty na nové zprávy. Když se objeví nová zpráva, role pracovního procesu vytvoří miniaturu obrázku a zaktualizuje pole v databázi s adresou URL miniatury pro tuto reklamu. Následující diagram znázorňuje interakci částí aplikace.
 
-![Architektura Contoso Ads](./media/cloud-services-dotnet-get-started/apparchitecture.png)
+![Diagram, který ukazuje, jak části aplikace pracují.](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
@@ -82,11 +84,11 @@ Když uživatel odešle obrázek, front-end spuštěný ve webové roli obrázek
 
     Při prvním spuštění projektu cloudové služby může spuštění emulátorů trvat zhruba minutu. Když je spuštění emulátorů dokončené, výchozí prohlížeč otevře domovskou stránku aplikace.
 
-    ![Architektura Contoso Ads](./media/cloud-services-dotnet-get-started/home.png)
+    ![Contoso ADS – architektura 1](./media/cloud-services-dotnet-get-started/home.png)
 8. Klikněte na **Vytvořit reklamu**.
 9. Zadejte nějaká testovací data, vyberte obrázek *.jpg*, který chcete odeslat, a potom klikněte na **Vytvořit**.
 
-    ![Vytvoření stránky](./media/cloud-services-dotnet-get-started/create.png)
+    ![Obrázek ukazuje vytvořit stránku](./media/cloud-services-dotnet-get-started/create.png)
 
     Aplikace přejde na indexovou stránku, ale nezobrazí miniaturu nové reklamy, protože toto zpracování ještě neproběhlo.
 10. Chvíli počkejte a potom indexovou stránku aktualizujte. Miniatura se teď zobrazí.
@@ -124,11 +126,11 @@ Cloudová služba Azure je prostředí, ve kterém bude aplikace spuštěna.
 5. Vyberte oblast, ve které chcete aplikaci nasadit.
 
     Toto pole určuje datové centrum, které bude hostovat vaše cloudové služby. V případě produkční aplikace vyberte oblast, která je nejblíž k vašim zákazníkům. V tomto kurzu vyberte oblast, která je nejblíž k vám.
-5. Klikněte na možnost **Vytvořit**.
+5. Klikněte na **Vytvořit**.
 
     Na následujícím obrázku vidíte vytvoření cloudové služby s adresou URL CSvccontosoads.cloudapp.net.
 
-    ![Nová cloudová služba](./media/cloud-services-dotnet-get-started/newcs.png)
+    ![Image zobrazuje novou cloudovou službu](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Vytvoření databáze v Azure SQL Database
 Když aplikace běží v cloudu, používá cloudovou databázi.
@@ -153,7 +155,7 @@ Když aplikace běží v cloudu, používá cloudovou databázi.
 9. Klikněte na možnost **Vybrat** u nového serveru.
 
     ![Nový server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klikněte na možnost **Vytvořit**.
+10. Klikněte na **Vytvořit**.
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 Účet úložiště Azure poskytuje prostředky pro ukládání dat front a objektů blob v cloudu.
@@ -168,7 +170,7 @@ V reálné aplikaci byste obvykle vytvořili samostatné účty pro data aplikac
 
 4. V rozevíracím seznamu **Replikace** vyberte **Místně redundantní úložiště**.
 
-    Když má účet úložiště povolenou geografickou replikaci, bude se uložený obsah replikovat do sekundárního datacentra, které zajistí převzetí služeb při selhání v případě významnější havárie v primárním umístění. Geografická replikace může způsobit dodatečné náklady. V případě testovacích a vývojových účtů je zbytečné za geografickou replikaci platit. Další informace naleznete v článku o [vytvoření, správě nebo odstranění účtu úložiště](../storage/common/storage-create-storage-account.md).
+    Když má účet úložiště povolenou geografickou replikaci, bude se uložený obsah replikovat do sekundárního datacentra, které zajistí převzetí služeb při selhání v případě významnější havárie v primárním umístění. Geografická replikace může způsobit dodatečné náklady. V případě testovacích a vývojových účtů je zbytečné za geografickou replikaci platit. Další informace naleznete v článku o [vytvoření, správě nebo odstranění účtu úložiště](../storage/common/storage-account-create.md).
 
 5. V části **Skupina prostředků** klikněte na **Použít existující** a vyberte skupinu prostředků použitou pro cloudovou službu.
 6. V rozevíracím seznamu **Umístění** vyberte stejnou oblast, jakou jste zvolili pro cloudové služby.
@@ -176,7 +178,7 @@ V reálné aplikaci byste obvykle vytvořili samostatné účty pro data aplikac
     Když jsou cloudové služby a účet úložiště v různých datacentrech (různých oblastech), zvýší se latence a bude vám účtována šířka pásma mimo datové centrum. Šířka pásma v rámci datového centra je zdarma.
 
     Skupina vztahů Azure nabízí mechanismus pro minimalizaci vzdálenosti mezi prostředky v datovém centru (můžete tak omezit latenci). V tomto kurzu skupinu vztahů nepoužíváme. Další informace naleznete v článku o [vytváření skupiny vztahů v Azure](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Klikněte na možnost **Vytvořit**.
+7. Klikněte na **Vytvořit**.
 
     ![Nový účet úložiště](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -211,12 +213,12 @@ Pro webovou roli a nastavení prostředí cloudové služby pro roli pracovního
 
     ![Připojovací řetězce](./media/cloud-services-dotnet-get-started/connstrings.png)
 3. V transformačním souboru *Web.Release.config* odstraňte text `{connectionstring}` a na jeho místo vložte připojovací řetězec ADO.NET z portálu Azure Portal.
-4. V připojovacím řetězci, který jste vložili do transformačního souboru*Web.Release.config*, nahraďte text `{your_password_here}` heslem, které jste vytvořili pro novou databázi SQL.
+4. V připojovacím řetězci, který jste vložili do transformačního souboru *Web.Release.config*, nahraďte text `{your_password_here}` heslem, které jste vytvořili pro novou databázi SQL.
 5. Soubor uložte.  
 6. Vyberte a zkopírujte připojovací řetězec (bez okolních uvozovek), abyste ho mohli použít v následujících krocích konfigurace projektu role pracovního procesu.
 7. V **Průzkumníku řešení** v části **Role** v projektu cloudové služby klikněte pravým tlačítkem na **ContosoAdsWorker** a potom klikněte na **Vlastnosti**.
 
-    ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
+    ![Snímek obrazovky, který zvýrazní možnost nabídky vlastnosti](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
 8. Klikněte na kartu **Nastavení**.
 9. Změňte nastavení **Konfigurace služby** na **Cloud**.
 10. V nastavení `ContosoAdsDbConnectionString` vyberte pole **Hodnota** a vložte do něj připojovací řetězec, který jste zkopírovali v předchozí části kurzu.
@@ -229,7 +231,7 @@ Připojovací řetězce k účtu úložiště Azure pro projekt webové role i p
 
 1. V **Průzkumníku řešení** v části **Role** v projektu **ContosoAdsCloudService** klikněte pravým tlačítkem na **ContosoAdsWeb** a potom na **Vlastnosti**.
 
-    ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![Obrázek zobrazuje vlastnosti rolí](./media/cloud-services-dotnet-get-started/roleproperties.png)
 2. Klikněte na kartu **Nastavení** . V rozevíracím seznamu **Konfigurace služby** vyberte **Cloud**.
 
     ![Konfigurace cloudu](./media/cloud-services-dotnet-get-started/sccloud.png)
@@ -289,7 +291,7 @@ Nastavení `<Instances>` určuje počet virtuálních počítačů, na kterých 
 
     ![Krok Nastavení](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    Výchozí nastavení na kartě **Upřesnit** jsou pro účely tohoto kurzu vyhovující. Informace o kartě Upřesnit naleznete v článku o [průvodci publikováním aplikace Azure](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard).
+    Výchozí nastavení na kartě **Upřesnit** jsou pro účely tohoto kurzu vyhovující. Informace o kartě Upřesnit naleznete v článku o [průvodci publikováním aplikace Azure](/visualstudio/azure/vs-azure-tools-publish-azure-application-wizard).
 4. V kroku **Souhrn** klikněte na tlačítko **Publikovat**.
 
     ![Krok Souhrn](./media/cloud-services-dotnet-get-started/pubsummary.png)
@@ -377,7 +379,8 @@ V této části budete konfigurovat službu Azure Storage a připojovací řet�
 2. Uložte provedené změny.
 3. Klikněte v projektu ContosoAdsCloudService pravým tlačítkem v části **Role** na ContosoAdsWeb a potom klikněte na **Vlastnosti**.
 
-    ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![Obrázek vlastností role](./media/cloud-services-dotnet-get-started/roleproperties.png)
+
 4. V okně vlastností **ContosoAdsWeb [role]** klikněte na kartu **Nastavení** a potom klikněte na **Přidat nastavení**.
 
     Možnost **Konfigurace služby** nechte nastavenou na **Všechny konfigurace**.
@@ -743,7 +746,7 @@ Tento kód čte databázi, aby získal adresu URL obrázku, převede obrázek na
 Pokud by vám při procházení kurzem něco nefungovalo, následuje přehled běžných chyb a jejich řešení.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
-Azure poskytne objekt `RoleEnvironment` při spuštění aplikace v Azure nebo při spuštění místně pomocí emulátoru služby Výpočty v Azure.  Pokud se tato chyba objeví, když aplikaci spouštíte místně, zkontrolujte, jestli jste projekt ContosoAdsCloudService nastavili jako spouštěný projekt. Toto nastaví projekt tak, aby běžel pomocí emulátoru služby Výpočty v Azure.
+`RoleEnvironment`Objekt poskytuje Azure při spuštění aplikace v Azure nebo při místním spuštění pomocí emulátoru služby COMPUTE Azure.  Pokud se tato chyba objeví, když aplikaci spouštíte místně, zkontrolujte, jestli jste projekt ContosoAdsCloudService nastavili jako spouštěný projekt. Tím se projekt nastaví tak, aby se spouštěl pomocí emulátoru služby COMPUTE Azure.
 
 Jedna z věcí, ke kterým aplikace používá RoleEnvironment Azure, je získání hodnot připojovacích řetězců, které jsou uložené v souborech *.cscfg*, takže další možnou příčinou této výjimky je chybějící připojovací řetězec. Zkontrolujte, jestli jste v projektu ContosoAdsWeb vytvořili nastavení StorageConnectionString pro cloudovou i místní konfiguraci a jestli jste vytvořili oba připojovací řetězce pro obě konfigurace i v projektu ContosoAdsWorker. Pokud budete StorageConnectionString hledat pomocí možnosti **Najít všechny** v celém řešení, mělo by se zobrazit devětkrát v šesti souborech.
 
@@ -753,7 +756,7 @@ Změňte číslo portu, který používáte pro webový projekt. Klikněte prav�
 Další alternativní řešení problému najdete v následující části.
 
 ### <a name="other-errors-when-running-locally"></a>Další chyby při místním spuštění
-Nové projekty cloudových služeb ve výchozím nastavení používají expresní emulátor služby Výpočty v Azure k simulaci prostředí Azure. Jedná se o odlehčenou verzi úplného emulátoru služby Výpočty a za určitých podmínek bude úplný emulátor fungovat, když expresní verze nepracuje.  
+Ve výchozím nastavení používají nové projekty cloudových služeb k simulaci prostředí Azure Azure COMPUTE pro emulátor Azure. Jedná se o odlehčenou verzi úplného emulátoru služby Výpočty a za určitých podmínek bude úplný emulátor fungovat, když expresní verze nepracuje.  
 
 Pokud chcete změnit projekt, který používá úplný emulátor, klikněte pravým tlačítkem na projekt ContosoAdsCloudService a potom na **Vlastnosti**. V okně **Vlastnosti** klikněte na kartu **Web** a potom na přepínač **Použít úplný emulátor**.
 
@@ -775,5 +778,5 @@ Další informace naleznete v následujících zdrojích:
 
 * [Cloudové služby Azure Cloud Services část 1: Úvod](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)
-* [Azure Storage](https://docs.microsoft.com/azure/storage/)
+* [Azure Storage](../storage/index.yml)
 * [Jak vybrat poskytovatele cloudových služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

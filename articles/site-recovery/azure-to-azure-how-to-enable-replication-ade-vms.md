@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135792"
 ---
-# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů s podporou Azure Disk Encryption do jiné oblasti Azure
+# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů s podporou služby Azure Disk Encryption do jiné oblasti Azure
 
 Tento článek popisuje, jak replikovat virtuální počítače Azure s povoleným Azure Disk Encryption (ADE) z jedné oblasti Azure do jiné.
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak replikovat virtuální počítače Azure s povolen�
 > Site Recovery v současné době podporuje ADE s a bez Azure Active Directory (AAD) pro virtuální počítače s operačními systémy Windows. Pro operační systémy Linux podporujeme pouze ADE bez AAD. Pro počítače s ADE 1,1 (bez AAD) Navíc musí virtuální počítače používat spravované disky. Virtuální počítače s nespravovanými disky se nepodporují. Pokud přepnete z ADE 0,1 (s AAD) na 1,1, budete muset po povolení 1,1 zakázat replikaci a povolit replikaci pro virtuální počítač.
 
 
-## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Požadovaná uživatelská oprávnění
+## <a name="required-user-permissions"></a><a id="required-user-permissions"></a> Požadovaná uživatelská oprávnění
 Site Recovery vyžaduje, aby měl uživatel oprávnění k vytvoření trezoru klíčů v cílové oblasti a zkopírování klíčů z trezoru klíčů zdrojové oblasti do trezoru klíčů cílové oblasti.
 
 Aby bylo možné povolit replikaci virtuálních počítačů s povoleným šifrováním disku z Azure Portal, uživatel potřebuje následující oprávnění pro trezory klíčů **zdrojové oblasti i cílové oblasti** .
@@ -122,7 +122,7 @@ Pomocí těchto kroků upravíte Site Recovery výchozí nastavení cíle.
 4. Po povolení replikace virtuálních počítačů můžete u **replikovaných položek**ověřit stav virtuálních počítačů.
 
 >[!NOTE]
->Během počáteční replikace může aktualizace stavu nějakou dobu trvat, a to bez zjevného postupu. Kliknutím na **aktualizovat** získáte nejnovější stav.
+>Během počáteční replikace může aktualizace stavu nějakou dobu trvat, a to bez zjevného postupu. Kliknutím na **aktualizovat**  získáte nejnovější stav.
 
 ## <a name="update-target-vm-encryption-settings"></a>Aktualizovat nastavení šifrování cílového virtuálního počítače
 V následujících scénářích budete muset aktualizovat nastavení šifrování cílového virtuálního počítače:

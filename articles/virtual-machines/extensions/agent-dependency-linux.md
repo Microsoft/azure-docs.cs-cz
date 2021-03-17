@@ -1,25 +1,19 @@
 ---
 title: Rozšíření virtuálního počítače závislosti Azure Monitor pro Linux
 description: Nasaďte agenta závislostí Azure Monitor na virtuálním počítači se systémem Linux pomocí rozšíření virtuálního počítače.
-services: virtual-machines-linux
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 03/29/2019
+ms.service: virtual-machines
+ms.subservice: extensions
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: cf4653ea7e49404af9e6d46796a7b00d9373c6da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.collection: linux
+ms.date: 03/29/2019
+ms.openlocfilehash: d28f0a34f47942bba8776a0acd0bfe3aaf25df12
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996546"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566293"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače závislosti Azure Monitor pro Linux
 
@@ -29,7 +23,7 @@ Funkce mapa Azure Monitor pro virtuální počítače získá data od agenta zá
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření agenta závislostí virtuálních počítačů Azure pro Linux lze spustit s podporovanými operačními systémy uvedenými v části [podporované operační systémy](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) v článku věnovaném nasazení Azure monitor pro virtuální počítače.
+Rozšíření agenta závislostí virtuálních počítačů Azure pro Linux lze spustit s podporovanými operačními systémy uvedenými v části [podporované operační systémy](../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) v článku věnovaném nasazení Azure monitor pro virtuální počítače.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 

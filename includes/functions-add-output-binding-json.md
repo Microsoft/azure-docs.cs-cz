@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
-ms.openlocfilehash: 8530f4469a0c25f3c32e652e2b0752c51c28ff3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b3859d854b3900cc30eda6a95b8425da6763e59
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78191008"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94340978"
 ---
 Atributy vazby jsou definovány přímo v function.jsv souboru. V závislosti na typu vazby mohou být vyžadovány další vlastnosti. [Konfigurace výstupu fronty](../articles/azure-functions/functions-bindings-storage-queue-output.md#configuration) popisuje pole požadovaná pro vazbu fronty Azure Storage. Rozšíření usnadňuje přidávání vazeb do function.jssouborů. 
 
@@ -25,4 +25,4 @@ Vazbu vytvoříte tak, že kliknete pravým tlačítkem (CTRL + kliknete na macO
 
 Vazba je přidána do `bindings` pole v function.jsv, což by mělo vypadat takto:
 
-:::code language="son" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="18-24":::
+:::code language="json" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="18-24":::

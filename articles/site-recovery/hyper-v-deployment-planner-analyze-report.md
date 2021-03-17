@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653575"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999225"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovač nasazení služby Azure Site Recovery
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovače nasazení služby Azure Site Recovery
 Tento článek popisuje listy v sestavě aplikace Excel vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
 
 ## <a name="on-premises-summary"></a>On-premises summary (Přehled místního prostředí)
@@ -99,7 +99,7 @@ Informace o tom, proč se k replikaci vyžaduje volné místo, najdete v části
 ### <a name="maximum-copy-frequency"></a>Maximální frekvence kopírování
 Pro replikaci musí být nastavena doporučená maximální frekvence kopírování, aby se zajistil požadovaný cíl bodu obnovení. Výchozí hodnota je pět minut. Pro dosažení lepšího cíle bodu obnovení můžete frekvenci kopírování nastavit na 30 sekund.
 
-### <a name="what-if-analysis"></a>Analýza „co kdyby“
+### <a name="what-if-analysis"></a>Citlivostní analýza
 ![Analýza „co kdyby“](media/hyper-v-deployment-planner-analyze-report/what-if-analysis-h2a.png) Tato analýza ukazuje, ke kolika narušením by mohlo dojít během období profilace, pokud nastavíte menší šířku pásma pro splnění požadovaného cíle bodu obnovení pouze 90 % času. Každý den může dojít k jednomu nebo několika narušením cíle bodu obnovení. Graf ukazuje pro každý den špičku cíle bodu obnovení. Na základě této analýzy se můžete rozhodnout, jestli je se zadanou menší šířkou pásma přijatelný počet narušení cíle bodu obnovení ve všech dnech a denní dosažená špička cíle bodu obnovení. Pokud je to přijatelné, můžete pro replikaci přidělit menší šířku pásma. Pokud ne, podle návrhu přidělte větší šířku pásma pro splnění požadovaného cíle bodu obnovení 100 % času. 
 
 ### <a name="recommendation-for-successful-initial-replication"></a>Doporučení pro úspěšnou počáteční replikaci
@@ -154,7 +154,7 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 
 **Disk Storage Type:** Účet služby Storage úrovně Standard nebo Premium, který slouží k replikaci všech odpovídajících virtuálních počítačů uvedených ve sloupci **VMs to Place** (Virtuální počítače k umístění).
 
-**Suggested Prefix:** Navrhovaná tříznaková předpona, kterou můžete použít k pojmenování účtu úložiště. Můžete použít vlastní předponu, ale návrh nástroje se řídí [zásadami vytváření názvů pro oddíly účtů úložiště](https://aka.ms/storage-performance-checklist).
+**Suggested Prefix:** Navrhovaná tříznaková předpona, kterou můžete použít k pojmenování účtu úložiště. Můžete použít vlastní předponu, ale návrh nástroje se řídí [zásadami vytváření názvů pro oddíly účtů úložiště](/en-in/azure/storage/blobs/storage-performance-checklist).
 
 **Suggested Account Name:** Název účtu úložiště po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
 
@@ -220,7 +220,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 
 **VM Name:** Název virtuálního počítače, který se použil v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VHD) připojené k virtuálním počítačům. Názvy zahrnují názvy hostitelů Hyper-V, kam byly virtuální počítače umístěné, když je nástroj během období profilace rozpoznal.
 
-**VM Compatibility:** Označujte, proč je daný virtuální počítač nekompatibilní se Site Recovery. Pro každý nekompatibilní disk virtuálního počítače jsou popsané důvody. V závislosti na publikovaných [omezeních úložiště](https://aka.ms/azure-storage-scalbility-performance) může důvodem být některá z následujících možností:
+**VM Compatibility:** Označujte, proč je daný virtuální počítač nekompatibilní se Site Recovery. Pro každý nekompatibilní disk virtuálního počítače jsou popsané důvody. V závislosti na publikovaných [omezeních úložiště](/en-in/azure/storage/common/scalability-targets-standard-account) může důvodem být některá z následujících možností:
 
 * Velikost disku je větší než 4 095 GB. Azure Storage v současné době nepodporuje disky větší než 4 095 GB.
 

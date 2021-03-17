@@ -5,16 +5,16 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119000"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339741"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Řešení potíží s připojením – Azure Event Grid
 
-K dispozici jsou různé důvody pro klientské aplikace, které se nemohou připojit k Event Gridmu tématu nebo doméně. Problémy s připojením mohou být trvalé nebo přechodné. Pokud se problém projeví i po celou dobu (trvalý), můžete chtít ověřit nastavení brány firewall vaší organizace, nastavení brány firewall protokolu IP, značky služeb, privátní koncové body a další. V případě přechodných problémů se spouštěním příkazů pro kontrolu zrušených paketů a získání trasování sítě může pomáhat při řešení problémů.
+K dispozici jsou různé důvody pro klientské aplikace, které se nemohou připojit k Event Gridmu tématu nebo doméně. Problémy s připojením mohou být trvalé nebo přechodné. Pokud se problém projeví i po celou dobu (trvalý), možná budete chtít ověřit nastavení brány firewall vaší organizace, nastavení brány firewall protokolu IP, značky služeb, privátní koncové body a další. V případě přechodných problémů se spouštěním příkazů pro kontrolu zrušených paketů a získání trasování sítě může pomáhat při řešení problémů.
 
 Tento článek poskytuje tipy pro řešení potíží s připojením pomocí Azure Event Grid.
 
@@ -22,7 +22,7 @@ Tento článek poskytuje tipy pro řešení potíží s připojením pomocí Azu
 
 Pokud se aplikace nebude moci připojit ke službě Event Grid vůbec, postupujte podle kroků v této části a odstraňte problém.
 
-### <a name="check-if-there-is-a-service-outage"></a>Zkontroluje, jestli nedochází k výpadku služby.
+### <a name="check-if-theres-a-service-outage"></a>Podívejte se, jestli nedochází k výpadku služby.
 
 Podívejte se na výpadek služby Azure Event Grid v [lokalitě stav služby Azure](https://azure.microsoft.com/status/).
 
@@ -30,7 +30,7 @@ Podívejte se na výpadek služby Azure Event Grid v [lokalitě stav služby Azu
 
 Ověřte, že porty používané při komunikaci s Azure Event Grid nejsou blokované v bráně firewall vaší organizace. V následující tabulce najdete Odchozí porty, které musíte otevřít ke komunikaci s Azure Event Grid.
 
-| Protocol (Protokol) | Porty |
+| Protokol | Porty |
 | -------- | ----- |
 | HTTPS    | 443   |
 
@@ -50,18 +50,20 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Když pracujete s Azure, někdy je potřeba, abyste v podnikové bráně firewall nebo proxy povolili konkrétní rozsahy IP adres nebo adresy URL pro přístup ke všem službám Azure, které používáte nebo se pokoušíte použít. Ověřte, jestli je povolený provoz na IP adresách, které používá Event Grid. Pro IP adresy, které používá Azure Event Grid: Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519) a [značka služby – AzureEventGrid](network-security.md#service-tags).
 
+V dokumentu [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519) uvádí také IP adresy **podle oblasti**. Rozsahy adres pro **oblast tématu** a **spárované oblasti** ve vaší podnikové bráně firewall nebo proxy serveru můžete použít. V případě spárované oblasti pro oblast si přečtěte téma [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](../best-practices-availability-paired-regions.md). 
+
 > [!NOTE]
 > Do značky služby AzureEventGrid se přidaly nové IP adresy, i když to není obvyklé. Proto je vhodné provést týdenní kontrolu značek služeb.
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Ověřte, že ve skupinách zabezpečení sítě je povolený tag služby AzureEventGrid.
 
-Pokud je vaše aplikace spuštěná v podsíti a máte přidruženou skupinu zabezpečení sítě, zkontrolujte, jestli je povolený buď internetový odchozí, nebo je povolená značka služby AzureEventGrid. Podívejte se prosím na [značky služeb](../virtual-network/service-tags-overview.md) .
+Pokud je vaše aplikace spuštěná v podsíti a má přidruženou skupinu zabezpečení sítě, zkontrolujte, jestli je povolený buď internetový odchozí, nebo je povolená značka služby AzureEventGrid. Zobrazit [značky služeb](../virtual-network/service-tags-overview.md)
 
 ### <a name="check-the-ip-firewall-settings-for-your-topicdomain"></a>Ověřte nastavení brány firewall protokolu IP pro vaše téma nebo doménu.
 
 Ověřte, že veřejná IP adresa počítače, na kterém je aplikace spuštěná, není blokovaná EventGridým tématem nebo bránou firewall pro IP adresy domény.
 
-Ve výchozím nastavení jsou Event Grid tématy/doménami přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
+Ve výchozím nastavení jsou Event Grid tématy/doménami přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 Pravidla brány firewall protokolu IP se používají na úrovni Event Gridho tématu nebo domény. Proto se pravidla vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu. Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v Event Gridm tématu nebo doméně, jsou odmítnuté jako zakázané. Odpověď nezmiňuje pravidlo protokolu IP.
 
@@ -83,7 +85,7 @@ Povolit diagnostické protokoly pro Event Grid téma/doména [Povolit diagnostic
 
 ### <a name="check-if-the-eventgrid-topicdomain-can-be-accessed-using-only-a-private-endpoint"></a>Ověřte, jestli se k tématu nebo doméně EventGrid dá přistup jenom pomocí privátního koncového bodu.
 
-Pokud je v Event Grid téma/doména dostupná jenom přes privátní koncový bod, zkontrolujte, jestli klientská aplikace přistupuje k tématu nebo doméně přes soukromý koncový bod. Potvrďte to tak, že zkontrolujete, jestli klientská aplikace běží v podsíti a že je v této podsíti privátní koncový bod pro Event Grid téma nebo doménu.
+Pokud je v Event Grid téma/doména dostupná jenom přes privátní koncový bod, zkontrolujte, jestli klientská aplikace přistupuje k tématu nebo doméně přes soukromý koncový bod. Pokud ho chcete potvrdit, zkontrolujte, jestli je klientská aplikace spuštěná v podsíti a jestli je v této podsíti privátní koncový bod pro Event Grid téma nebo doménu.
 
 [Služba privátního propojení Azure](../private-link/private-link-overview.md) umožňuje přístup k Azure Event Grid přes **privátní koncový bod** ve vaší virtuální síti. Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
 
@@ -91,7 +93,7 @@ Další informace najdete v tématu [Konfigurace privátních koncových bodů](
 
 ## <a name="troubleshoot-transient-connectivity-issues"></a>Řešení potíží s přechodným připojením
 
-Pokud se setkáváte s přerušovanými problémy s připojením, přečtěte si následující části, kde najdete tipy k odstraňování potíží.
+Pokud máte občasné problémy s připojením, přečtěte si následující části Tipy pro řešení potíží.
 
 ### <a name="run-the-command-to-check-dropped-packets"></a>Spuštění příkazu pro kontrolu zrušených paketů
 

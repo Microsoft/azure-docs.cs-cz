@@ -3,16 +3,16 @@ title: Lsv2-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady Lsv2-Series.
 author: sasha-melamed
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-storage
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 787f9ada921e1580a34431568e87c41496b37f6a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654748"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563196"
 ---
 # <a name="lsv2-series"></a>Řada Lsv2
 
@@ -25,17 +25,16 @@ Funkce Lsv2-Series s vysokou propustností, nízkou latencí a přímo namapovan
 >
 > Další informace najdete v tématu Optimalizace výkonu na virtuálních počítačích Lsv2-Series pro [Windows](../virtual-machines/windows/storage-performance.md) nebo [Linux](../virtual-machines/linux/storage-performance.md).  
 
-ACU: 150-175
-
-Shluking: podporováno
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: nepodporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
+[ACU](acu.md): 150-175<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+Shluking: podporováno<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť (GiB) | Dočasný disk<sup>1</sup> (GIB) | Disky NVMe<sup>2</sup> | Propustnost disku NVMe<sup>3</sup> (čtení za sekundu/s) | Propustnost datového disku neuloženého v mezipaměti (IOPs/MB/s)<sup>4</sup> | Maximální propustnost datového disku neuloženého shluku (IOPs/MB/s)<sup>5</sup>| Maximální počet datových disků | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -54,7 +53,7 @@ Aktualizace pro zachování paměti: nepodporováno
 
 <sup>4</sup> virtuální počítače řady Lsv2-Series neposkytují mezipaměť hostitele pro datový disk, protože nevyužívají úlohy Lsv2.
 
-<sup>5</sup> virtuálních počítačů řady Lsv2- [Series můžou zvýšit](linux/disk-bursting.md) výkon svého disku po dobu až 30 minut. 
+<sup>5</sup> virtuálních počítačů řady Lsv2- [Series můžou zvýšit](./disk-bursting.md) výkon svého disku po dobu až 30 minut. 
 
 <sup>6</sup> virtuálních počítačů s více než 64 vCPU vyžadují jeden z těchto podporovaných hostovaných operačních systémů:
 
@@ -81,7 +80,7 @@ Aktualizace pro zachování paměti: nepodporováno
 - [Obecné účely](sizes-general.md)
 - [Optimalizované pro paměť](sizes-memory.md)
 - [Optimalizované pro úložiště](sizes-storage.md)
-- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Optimalizované z hlediska GPU.](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Předchozí generace](sizes-previous-gen.md)
 

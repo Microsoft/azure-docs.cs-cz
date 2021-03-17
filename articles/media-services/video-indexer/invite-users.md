@@ -3,19 +3,19 @@ title: Pozvání uživatelů k Video Indexer – Azure
 titleSuffix: Azure Media Services
 description: Tento článek popisuje, jak pozvat uživatele k Video Indexer.
 services: media-services
-author: ReutAmior
+author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 02/03/2021
 ms.author: juliako
-ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d3415ffad4820d8651841398ec6d47352869ce2
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79499747"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534730"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Rychlý Start: pozvání uživatelů k Video Indexer
 
@@ -27,29 +27,35 @@ Pokud chcete spolupracovat s kolegy, můžete je pozvat na účet Video Indexer.
 ## <a name="invite-new-users"></a>Pozvat nové uživatele
 
 1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/). Ujistěte se, že jste připojení k účtu správce.
-1. V horní nabídce klikněte na tlačítko **pozvat jiné** :
+1. Pokud jste správce, zobrazí se v pravém horním rohu tlačítko **sdílet účet** . Klikněte na tlačítko a můžete pozvat uživatele. 
 
-   ![Pozvat nové uživatele](./media/invite-users/invite-users.png)
+    :::image type="content" source="./media/invite-users/share-account.png" alt-text="Sdílení účtu":::
+1. V dialogovém okně **sdílet tento účet s ostatními** zadejte e-mailové adresy osoby, kterou chcete pozvat na účet video indexer:
 
-1. Přidejte e-mailové adresy osob, které chcete přidat do účtu Video Indexer:
+    :::image type="content" source="./media/invite-users/share-account-others.png" alt-text="Pozvat uživatele k tomuto účtu":::  
+1. Po stisknutí **pozvánky** se osoba přidá do seznamu nevyřízených pozvání. <br/>U každého pozvánky, která se ještě nepřipojila k účtu, si můžete vybrat ze dvou možností: **Odebrat pozvánku** nebo **zkopírovat adresu URL pozvánky**.
 
-    ![Pozvat uživatele k tomuto účtu](./media/invite-users/invite-to-account.png)
-        
-    >[!NOTE]
-    > Všichni uživatelé, kteří pozvali, budou mít oprávnění ke čtení a zápisu pro všechna videa ve vašem účtu.
-1. Uživatelé, které jste pozvali, obdrží e-mail s odkazem a budou mít přístup k účtu, Jakmile kliknete na odkaz **video indexer spojení** :
+    :::image type="content" source="./media/invite-users/invites-pending.png" alt-text="Čeká na pozvánky":::  
+1. Jakmile se Pozvánka připojí k účtu, zobrazí se tři možnosti, ze kterých si můžete vybrat. Dvě možnosti pro role: **Přispěvatel** (výchozí) nebo **vlastník**. V nástroji se můžete rozhodnout pro zrušení pozvánky stisknutím klávesy **Remove**.
 
-    ![Potvrzení](./media/invite-users/invite-msg.png)
+    :::image type="content" source="./media/invite-users/joined-invitee-options.png" alt-text="Připojené pozvánky":::  
 
-    Aby uživatel mohl získat přístup k účtu, musí kliknout na odkaz pro připojení. 
+    Uživatelé neobdrží oznámení po odebrání. Po odebrání nebudou uživatelé oprávněni přihlásit se.
 
-## <a name="removing-existing-users"></a>Odebírání stávajících uživatelů
+## <a name="manage-roles-invite-more-users"></a>Správa rolí, pozvání více uživatelů
 
-Pokud chcete odebrat uživatele, kteří mají přístup k vašemu účtu, můžete kliknout na symbol **X** vedle jeho jména:
+Vedle dialogu **sdílet tento účet s ostatními** klikněte na **sdílet účet** (jak je popsáno výše), můžete to udělat z **Nastavení**.
 
-![Odebrání uživatelů](./media/invite-users/remove-users.png)
+1. V otevřeném účtu klikněte na tlačítko **Nastavení** . 
 
-Uživatelé neobdrží oznámení po odebrání. Po odebrání nebudou uživatelé oprávněni přihlásit se.
+    :::image type="content" source="./media/invite-users/settings.png" alt-text="Nastavení účtu":::  
+1. Klikněte na tlačítko **Spravovat role** .
+1. Pokud chcete pozvat jiného uživatele, klikněte na **pozvat další lidi k tomuto účtu**.
+
+    :::image type="content" source="./media/invite-users/invite-more-people.png" alt-text="Pozvat více uživatelů":::  
+1. Po stisknutí tlačítka **pozvat na tento účet více lidem** se zobrazí dialogové okno pozvat
+ 
+    :::image type="content" source="./media/invite-users/share-account-others.png" alt-text="Pozvat uživatele k tomuto účtu":::  
 
 ## <a name="next-steps"></a>Další kroky
 

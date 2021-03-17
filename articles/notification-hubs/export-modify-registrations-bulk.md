@@ -13,12 +13,13 @@ ms.date: 08/04/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
-ms.openlocfilehash: b9199c5ca70f0846f48c7b4ebaaa6cb38b969173
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 73c19b72c75d9638213f3c813a708a272cbe2a1b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142328"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452335"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Hromadné export a import registrací Azure Notification Hubs
 
@@ -126,7 +127,7 @@ Kromě vstupních a výstupních adres URL tento příklad vytvoří `Notificati
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-Až se volání dokončí, úloha bude pokračovat centrem oznámení a můžete zjistit jeho stav voláním [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet).
+Až se volání dokončí, úloha bude pokračovat centrem oznámení a můžete zjistit jeho stav voláním [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync).
 
 Po dokončení úlohy můžete zkontrolovat výsledky zobrazením následujících souborů ve výstupním adresáři:
 

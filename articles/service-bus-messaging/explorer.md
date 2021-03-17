@@ -2,13 +2,13 @@
 title: Použití Průzkumníka Azure Service Bus k provádění operací s daty v Service Bus (Preview)
 description: Tento článek poskytuje informace o tom, jak používat Azure Service Bus Průzkumník na portálu pro přístup k datům Azure Service Bus.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/20/2020
+ms.openlocfilehash: 0b5274c492a1dfb2523c52d7aea2b7ebf8eae675
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340537"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738952"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Použití Průzkumníka Service Bus k provádění operací s daty v Service Bus (Preview)
 
@@ -30,13 +30,16 @@ Průzkumník Azure Service Bus rozšiřuje funkce portálu nad rámec operací s
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít nástroj Service Bus Explorer, budete muset zřídit obor názvů Azure Service Bus. 
+Chcete-li použít nástroj Service Bus Explorer, budete muset provést následující úlohy: 
 
-Po zřízení oboru názvů Service Bus je třeba vytvořit frontu pro odeslání a přijetí zprávy z nebo tématu s odběrem k otestování funkčnosti.
-
-Další informace o tom, jak vytvořit fronty, témata a odběry, najdete v následujících odkazech.
-   * [Rychlý Start – vytvoření front](service-bus-quickstart-portal.md)
-   * [Rychlý Start – vytvoření témat](service-bus-quickstart-topics-subscriptions-portal.md)
+- Zřídí obor názvů Azure Service Bus.
+- Vytvořte frontu pro odeslání a přijetí zprávy z nebo tématu s předplatným, abyste mohli otestovat funkčnost. Informace o tom, jak vytvořit fronty, témata a odběry, najdete v následujících článcích: 
+    - [Rychlý Start – vytvoření front](service-bus-quickstart-portal.md)
+    - [Rychlý Start – vytvoření témat](service-bus-quickstart-topics-subscriptions-portal.md)
+- Ujistěte se, že jste členem jedné z těchto rolí v oboru názvů: 
+    - [Service Bus vlastník dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
+    - [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) 
+    - [Vlastník](../role-based-access-control/built-in-roles.md#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>Použití Průzkumníka Service Bus
@@ -45,9 +48,9 @@ Chcete-li použít Průzkumníka Azure Service Bus, je nutné přejít na obor n
 
 Pokud chcete provádět operace s frontou, vyberte v navigační nabídce **možnost fronty** . Pokud chcete provádět operace s tématem (a souvisejícími předplatnými), vyberte **témata**. 
 
-:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="Výběr entity":::
+:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png" alt-text="Výběr entity":::
 
-Po výběru možnosti **fronty** nebo **témata**vyberte konkrétní frontu nebo téma.
+Po výběru možnosti **fronty** nebo **témata** vyberte konkrétní frontu nebo téma.
 
 V levé navigační nabídce vyberte **Service Bus Explorer (Preview).**
 
@@ -55,12 +58,12 @@ V levé navigační nabídce vyberte **Service Bus Explorer (Preview).**
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>Odeslání zprávy do fronty nebo tématu
 
-Pokud chcete odeslat zprávu do **fronty** nebo **tématu**, klikněte na kartu ***Odeslat*** v Průzkumníkovi Service Bus.
+Pokud chcete odeslat zprávu do **fronty** nebo **tématu**, klikněte na kartu **_Odeslat_** v Průzkumníkovi Service Bus.
 
 Vytvoření zprávy sem – 
 
 1. Vyberte **typ obsahu** , který se bude nacházet buď jako "text/prostý", "Application/XML" nebo "Application/JSON".
-2. Přidejte **obsah**zprávy. Zajistěte, aby odpovídaly dříve nastavenému **typu obsahu** .
+2. Přidejte **obsah** zprávy. Zajistěte, aby odpovídaly dříve nastavenému **typu obsahu** .
 3. Nastavení **rozšířených vlastností** (volitelné) – patří mezi ně ID korelace, ID zprávy, popisek, ReplyTo, doba TTL (Time to Live) a plánovaná doba zařazení do fronty (pro naplánované zprávy).
 4. Nastavení **vlastních vlastností** – může to být jakákoli vlastnost uživatele nastavená na klíč slovníku.
 
@@ -95,16 +98,16 @@ Příjem zprávy z fronty (nebo z podfronty nedoručených zpráv)
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. Vyberte mezi ***frontou*** nebo podfrontou ***nedoručených zpráv*** .
+3. Vyberte mezi podfrontou ***Queue** _ nebo _ *_nedoručených zpráv_**.
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. Klikněte na tlačítko ***přijmout*** a pak na ***Ano*** a potvrďte operaci přijmout a odstranit.
+4. Kliknutím na tlačítko ***přijmout** _ následovaným znakem _ *_Ano_** potvrďte operaci přijmout a odstranit.
 
 
 Po úspěšném dokončení operace Receive se v mřížce zobrazí podrobnosti zprávy, jak je uvedeno níže. Můžete vybrat zprávu z mřížky a zobrazit její podrobnosti.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Snímek obrazovky okna fronty v Průzkumníkovi Azure Service Bus s podrobnostmi o zprávě zobrazené v aktivní zprávě, která je vybrána ve frontě.":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Prohlížení zprávy z fronty
@@ -119,7 +122,7 @@ Pomocí funkce prohlížení můžete pomocí Průzkumníka Service Bus zobrazit
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. Pak vyberte mezi ***frontou*** nebo podfrontou ***nedoručených zpráv*** .
+3. Pak vyberte mezi **frontou * Queue** _ nebo _ *_nedoručených zpráv_**.
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
@@ -144,29 +147,29 @@ Stejně jako u fronty se operace Receive dá provést na základě předplatnéh
 > Pokud chcete procházet zprávy bez jejich odebrání z fronty, zvažte použití funkce ***prohlížení*** .
 >
 
-1. Klikněte na kartu ***přijmout*** a vyberte konkrétní ***předplatné*** z rozevíracího selektoru.
+1. Klikněte na kartu ***přijmout** _ a vyberte konkrétní *_předplatné_* _ * z rozevíracího selektoru.
 
     :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
 
-2. Vyberte si z ***předplatného*** nebo z dílčí entity ***nedoručených zpráv*** .
+2. Vyberte mezi ***předplatným** _ nebo _ *_nedoručených_* × subentity.
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-3. Klikněte na tlačítko ***přijmout*** a pak na ***Ano*** a potvrďte operaci přijmout a odstranit.
+3. Kliknutím na tlačítko ***přijmout** _ následovaným znakem _ *_Ano_** potvrďte operaci přijmout a odstranit.
 
 Po úspěšném dokončení operace Receive se v mřížce zobrazí přijatá zpráva, jak je uvedeno níže. Chcete-li zobrazit podrobnosti zprávy, klikněte na zprávu.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Snímek obrazovky s kartou Receive v Průzkumníkovi Azure Service Bus s podrobnostmi o zprávě zobrazenými v aktivní přijaté zprávě":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Prohlížení zprávy z předplatného
 
 Chcete-li jednoduše procházet zprávy v rámci předplatného nebo její podentita s nedoručenými zprávami, můžete také využít funkci ***prohlížení*** v rámci předplatného.
 
-1. Klikněte na kartu ***Náhled*** a v rozevíracím selektoru vyberte konkrétní ***předplatné*** .
+1. Klikněte na kartu ***Náhled** _ a vyberte konkrétní *_předplatné_* _ * z rozevíracího selektoru.
 
     :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
 
-2. Vyberte si mezi ***předplatným*** nebo podentitou ***nedoručených zpráv*** .
+2. Vyberte mezi podentitou ***předplatné** _ nebo _ *_nedoručené_**.
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 

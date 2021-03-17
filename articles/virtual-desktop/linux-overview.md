@@ -1,21 +1,21 @@
 ---
-title: Linux Support virtuálních počítačů s Windows – Azure
-description: Stručné informace o podpoře pro Linux pro virtuální počítače s Windows
+title: Podpora tenkých klientů Windows pro virtuální počítače – Azure
+description: Stručný přehled podpory tenkého klienta pro virtuální počítače s Windows
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd3cc6c5220e2e84cbbd30b29b8034f53c813f1e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 90459c3eb171e03b1c28c91e766d3a6b765565b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008691"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491465"
 ---
 # <a name="linux-support"></a>Podpora Linuxu
 
-K prostředkům virtuálních klientů s Windows můžete přistupovat ze zařízení se systémem Linux pomocí následujících podporovaných klientů, které poskytují naši klienti se systémem Linux tenkých klientů. Spolupracujeme s řadou partnerů, aby bylo možné podporovat Podporované klienty virtuálních počítačů s Windows na dalších operačních systémech a zařízeních se systémem Linux. Pokud budete chtít, aby virtuální počítač s Windows podporoval platformu Linux, která zde není uvedená, dejte nám prosím na naší [stránce UserVoice](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)informace.
+K prostředkům virtuálních klientů s Windows se můžete dostat ze zařízení se systémem Linux pomocí [webového klienta](connect-web.md) nebo následujících podporovaných klientů, které poskytují naši klienti se systémem Linux tenkých klientů. Pracujeme s řadou partnerů, aby bylo možné podporovat Podporované klienty virtuálních klientů Windows na dalších operačních systémech a zařízeních se systémem Linux. Pokud potřebujete podporu virtuálních počítačů s Windows na platformě Linux, která zde není uvedená, dejte nám na naší [stránce UserVoice](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)informace.
 
 ## <a name="connect-with-your-linux-device"></a>Připojení k zařízení se systémem Linux
 
@@ -23,31 +23,11 @@ Následující partneři mají schválená klienta virtuální plochy Windows pr
 
 |Partner|Dokumentace k partnerům|Partnerská podpora|
 |:------|:--------------------|:--------------|
-|![Logo IGEL](./media/partners/igel.png)|[Dokumentace ke klientovi IGEL](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[Podpora IGEL](https://www.igel.com/support/)|
-
-## <a name="what-is-the-linux-sdk"></a>Co je sada Linux SDK?
-
-Klienti se systémem Linux tenké klientů mohou pomocí rozhraní API sady Windows Virtual Desktop Linux SDK načíst kanály prostředků, připojit se k počítači nebo relace vzdálené aplikace a použít spoustu přesměrování, která naši klienti podporují. Sada SDK je kompatibilní s největším operačním systémem, který je založený na Ubuntu 18,04 nebo novějším.
-
-### <a name="feature-support"></a>Podpora funkcí
-
-Sada SDK podporuje více připojení k relacím na plochu a vzdálené aplikace. Jsou podporovány následující přesměrování:
-
-| Přesměrování       | Podporováno |
-| :---------------- | :-------: |
-| Klávesnice          | &#10004;  |
-| Myš             | &#10004;  |
-| Zvuk v          | &#10004;  |
-| Zvukový výstup         | &#10004;  |
-| Schránka (text)  | &#10004;  |
-| Schránka (obrázek) | &#10004;  |
-| Schránka (soubor)  | &#10004;  |
-| Pomocí         | &#10004;  |
-| Jednotka nebo složka      | &#10004;  |
-
-Sada SDK také podporuje více konfigurací zobrazení monitorování, pokud jsou monitory, které vyberete pro vaši relaci, souvislé.
-
-Tento dokument aktualizujeme, protože přidáváme podporu pro nové funkce a přesměrování. Pokud chcete navrhnout nové funkce a další vylepšení, navštivte [stránku UserVoice](https://go.microsoft.com/fwlink/?linkid=2116523).
+|Firm |[Dokumentace ke klientovi Dell](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Podpora Dell](https://www.dell.com/support)|
+|IGEL |[Dokumentace ke klientovi IGEL](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[Podpora IGEL](https://www.igel.com/support/)|
+|NComputing |[Dokumentace ke klientovi NComputing](https://www.ncomputing.com/microsoft)|[Podpora NComputing](https://www.ncomputing.com/support/support-options)|
+|Stratodesk |[Dokumentace ke klientovi Stratodesk](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Podpora Stratodesk](https://www.stratodesk.com/support/)|
+|EMULEX |[Dokumentace ke klientovi HP](https://h20195.www2.hp.com/v2/GetDocument.aspx?docname=c07051097)|[Podpora HP](https://support.hp.com/us-en/products/workstations-thin-clients)|
 
 ## <a name="next-steps"></a>Další kroky
 

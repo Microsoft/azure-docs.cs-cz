@@ -2,15 +2,16 @@
 title: Diagnostikujte selhání a výjimky pomocí Azure Application Insights
 description: Zachyťte výjimky z aplikací ASP.NET spolu s telemetrie žádostí.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.openlocfilehash: c91ab4bcf8a0d2172c89fa04bd7a3b4999b2217e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321356"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88936499"
 ---
-# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostikujte výjimky ve vašich webových aplikacích pomocí Application Insights
+# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve webových aplikacích pomocí služby Application Insights
 Výjimky v živé webové aplikaci jsou hlášeny [Application Insights](./app-insights-overview.md). Neúspěšné žádosti s výjimkami a dalšími událostmi můžete korelovat na straně klienta i serveru, abyste mohli rychle diagnostikovat příčiny.
 
 ## <a name="set-up-exception-reporting"></a>Nastavení generování sestav výjimek
@@ -91,10 +92,10 @@ Podrobnosti žádosti neobsahují data odesílaná do aplikace v příspěvku. P
 * Do aplikace vložte kód pro volání [Microsoft. ApplicationInsights. TrackTrace ()](./api-custom-events-metrics.md#tracktrace). Odešlete data POST v parametru zprávy. Povolená velikost je omezena, proto byste se měli pokusit odeslat jenom základní data.
 * Při prošetření neúspěšného požadavku Najděte přidružená trasování.
 
-## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>Zachycování výjimek a souvisejících diagnostických dat
+## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Zachycování výjimek a souvisejících diagnostických dat
 Nejdříve se na portálu nezobrazí všechny výjimky, které způsobují chyby ve vaší aplikaci. Zobrazí se všechny výjimky prohlížeče (Pokud používáte [sadu JavaScript SDK](./javascript.md) na webových stránkách). Ale většina výjimek serveru je zachycena službou IIS a je nutné napsat bitovou kopii pro jejich zobrazení.
 
-Další možnosti:
+Můžete:
 
 * **Protokolujte výjimky explicitně** vložením kódu do obslužných rutin výjimek pro hlášení výjimek.
 * **Automatické zachycení výjimek** konfigurací architektury ASP.NET Nezbytné doplňky jsou odlišné pro různé typy rozhraní.

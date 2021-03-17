@@ -4,16 +4,16 @@ description: zahrnout soubor
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: a078455b7630046a83a9ae1c896d0fc44bf8efad
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 11/09/2020
+ms.openlocfilehash: cbabfc1ae0c54c4ef20d3c689506e486bf4b6a66
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132878"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386608"
 ---
 Tento rychlý Start založený na složeném startu vás provede tím, že získáte odpověď ze znalostní báze.
 
@@ -34,9 +34,17 @@ Použijte znalostní bázi z předchozího rychlého dotazu pro odpověď na zá
 1. Na stránce **Nastavení** znalostní báze vyberte kartu **kudrlinkou** , abyste zobrazili příklad složeného příkazu, který slouží k vygenerování odpovědi ze znalostní báze.
 1. Zkopírujte příkaz do upravitelného prostředí (například textového souboru), abyste mohli příkaz Upravit. Upravte hodnotu otázky následujícím způsobem, aby se metadata `service:qna_maker` používala jako filtr pro páry QnA.
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+    
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H   "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
+    ```
+    ---
 
     Otázka je jenom jedno slovo, `size` které může vracet jednu z obou QnA párů. `strictFilters`Pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
 
@@ -89,9 +97,15 @@ Debug: {Enable:true}
 
 1. Úpravou příkazu kudrlinkou zahrňte vlastnost Debug pro zobrazení dalších informací.
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
+    ```
+    ---
 
 1. Odpověď obsahuje relevantní informace o odpovědi. V následujícím výstupu JSON byly některé detaily ladění nahrazeny třemi tečkami pro zkrácení.
 
@@ -194,11 +208,16 @@ isTest:true
 ```
 
 Příkaz složeného tvaru vypadá takto:
-
+# <a name="qna-maker-ga"></a>[QnA Maker GA](#tab/v1)
 ```bash
 curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
 ```
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+```bash
+curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
+```
 
+---
 Odpověď JSON používá stejné schéma jako publikovaný dotaz znalostní báze.
 
 > [!NOTE]
@@ -207,10 +226,17 @@ Odpověď JSON používá stejné schéma jako publikovaný dotaz znalostní bá
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Použití funkce kudrlinkou k dotazování na aplikaci CHITEST – chat – odpověď
 
 1. V terminálu s povoleným oblým použijte od uživatele příkaz k ukončení konverzace robota, jako je třeba `Thank you` otázka. Neexistují žádné další vlastnosti, které by bylo možné nastavit.
+    
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'thank you'}"
+    ```
+    ---
 
 1. Spusťte příkaz kudrlinkou a přijímají odpověď JSON, včetně skóre a odpovědi.
 
@@ -302,9 +328,15 @@ Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není pra
 
 1. Přidejte `threshold` vlastnost, která požaduje odpověď na odpověď `size` s prahovou hodnotou 80% nebo vyšší. Znalostní báze by neměl tuto odpověď najít, protože skóre otázky je 71%. Výsledek vrátí výchozí odpověď, kterou jste zadali při vytváření znalostní báze.
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+    ---
 
 1. Spusťte příkaz kudrlinkou a přijímají odpověď JSON.
 
@@ -328,10 +360,16 @@ Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není pra
     QnA Maker vrátilo skóre `0` , což znamená bez obav. Vrátila se také výchozí odpověď.
 
 1. Změňte prahovou hodnotu na 60% a požádejte o dotaz znovu:
-
+    
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
+    ```
+    ---
 
     Vrácený kód JSON nalezl odpověď.
 

@@ -1,7 +1,7 @@
 ---
-title: Kurz pro jednořádkový jednostránkové aplikaci – Azure
+title: 'Kurz: vytvoření úhlové aplikace, která pro ověřování používá platformu Microsoft Identity Platform | Azure'
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak se v aplikacích úhlového ověřování můžou volat rozhraní API, které vyžaduje přístupové tokeny z koncového bodu Microsoft Identity Platform.
+description: V tomto kurzu vytvoříte úhlovou jednostránkovou aplikaci (SPA), která používá Microsoft Identity Platform k přihlašování uživatelů a získání přístupového tokenu pro volání rozhraní API Microsoft Graph jménem.
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -11,31 +11,37 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: a58da8b11876d662173ae83de43d8ed74ab43e93
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118276"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756151"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové aplikace s jednou stránkou
 
-V tomto kurzu se dozvíte, jak může jednorozměrná aplikace s jednou stránkou (SPA):
-- Přihlaste se do osobních účtů, pracovních účtů nebo školních účtů.
-- Získání přístupového tokenu
-- Zavolejte Microsoft Graph rozhraní API nebo jiná rozhraní API, která vyžadují přístupové tokeny z *koncového bodu Microsoft Identity Platform*.
+V tomto kurzu vytvoříte úhlovou jednostránkovou aplikaci (SPA), která podepisuje uživatele a volá rozhraní Microsoft Graph API.
 
->[!NOTE]
->Tento kurz vás provede vytvořením nové úhlové lázně pomocí knihovny Microsoft Authentication Library (MSAL). Pokud si chcete stáhnout ukázkovou aplikaci, přečtěte si [rychlý Start](quickstart-v2-angular.md).
+V tomto kurzu:
+
+> [!div class="checklist"]
+> * Vytvoří úhlový projekt s `npm`
+> * Registrace aplikace v Azure Portal
+> * Přidat kód pro podporu přihlášení a odhlášení uživatele
+> * Přidat kód pro volání rozhraní API Microsoft Graph
+> * Otestování aplikace
+
+## <a name="prerequisites"></a>Požadavky
+
+* [Node.js](https://nodejs.org/en/download/) pro spuštění místního webového serveru.
+* [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný editor pro úpravu souborů projektu.
 
 ## <a name="how-the-sample-app-works"></a>Jak ukázková aplikace funguje
 
 ![Diagram znázorňující, jak ukázková aplikace vygenerovaná v tomto kurzu funguje](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
-### <a name="more-information"></a>Další informace
-
-Ukázková aplikace vytvořená v tomto kurzu umožňuje použití úhlového hesla pro dotazování rozhraní Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny z koncového bodu Microsoft Identity Platform. MSAL pro úhlovou knihovnu je obálkou základní knihovny MSAL.js. Umožňuje, aby se k ověřování podnikových uživatelů používaly úhlové (6 +) aplikace pomocí Microsoft Azure Active Directory, účet Microsoft uživatelů a uživatelů sociálních identit (například Facebooku, Google a LinkedIn). Knihovna také umožňuje aplikacím získat přístup k cloudovým službám nebo Microsoft Graph Microsoftu.
+Ukázková aplikace vytvořená v tomto kurzu umožňuje použití úhlového hesla pro dotazování rozhraní Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny vydané platformou Microsoft identity. Používá Microsoft Authentication Library (MSAL) pro úhlovou obálku základní knihovny MSAL.js. MSALá úhlová umožňuje, aby se k ověřování podnikových uživatelů používaly úhlové 6 + aplikace pomocí služby Azure Active Directory (Azure AD) a také uživatelé s účty Microsoft a sociálními identitami, jako je Facebook, Google nebo LinkedIn. Knihovna také umožňuje aplikacím získat přístup k cloudovým službám Microsoftu a Microsoft Graph.
 
 V tomto scénáři se po přihlášení uživatele vyžádá přístupový token a přidá se do požadavků HTTP prostřednictvím autorizační hlavičky. Získání a obnovení tokenu jsou zpracovávány pomocí MSAL.
 
@@ -48,13 +54,6 @@ V tomto kurzu se používá následující knihovna:
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript – úhlová obálka|
 
 Zdrojový kód knihovny MSAL.js můžete najít v úložišti [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) na GitHubu.
-
-## <a name="prerequisites"></a>Požadavky
-
-Pro spuštění tohoto kurzu budete potřebovat:
-
-* Místní webový server, například [Node.js](https://nodejs.org/en/download/). Pokyny v tomto kurzu jsou založené na Node.js.
-* Integrované vývojové prostředí (IDE), jako je například [Visual Studio Code](https://code.visualstudio.com/download), pro úpravu souborů projektu.
 
 ## <a name="create-your-project"></a>Vytvoření projektu
 
@@ -195,7 +194,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-Dále zadejte mapu chráněných prostředků `MsalModule.forRoot()` jako `protectedResourceMap` a přidejte tyto obory do `consentScopes` :
+Dále zadejte mapu chráněných prostředků `MsalModule.forRoot()` jako `protectedResourceMap` a přidejte tyto obory do `consentScopes` . Adresy URL, které zadáte v kolekci, rozlišují `protectedResourceMap` malá a velká písmena.
 
 ```javascript
 @NgModule({
@@ -267,12 +266,12 @@ V tomto kódu `scopes` obsahuje obory, které jsou požadovány k vrácení do p
 
 Například:
 
-* `["user.read"]`pro Microsoft Graph
-* `["<Application ID URL>/scope"]`pro vlastní webová rozhraní API (tj. `api://<Application ID>/access_as_user` )
+* `["user.read"]` pro Microsoft Graph
+* `["<Application ID URL>/scope"]` pro vlastní webová rozhraní API (tj. `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Identity Platform. Například:
+Někdy potřebujete, aby uživatel spolupracoval s platformou Microsoft identity. Například:
 
 * Uživatelé možná budou muset znovu zadat svoje přihlašovací údaje, protože vypršela platnost hesla.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.
@@ -280,7 +279,7 @@ Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Ide
 
 Doporučený vzor pro většinu aplikací je zavolat jako `acquireTokenSilent` první a pak zachytit výjimku a pak voláním `acquireTokenPopup` (nebo `acquireTokenRedirect` ) spustit interaktivní požadavek.
 
-`acquireTokenPopup`Výsledkem volání je automaticky otevírané okno pro přihlášení. Případně `acquireTokenRedirect` přesměruje uživatele na koncový bod Microsoft Identity Platform. V tomto okně si uživatelé musí potvrdit své přihlašovací údaje, udělit souhlas požadovanému prostředku nebo dokončit dvojúrovňové ověřování.
+`acquireTokenPopup`Výsledkem volání je automaticky otevírané okno pro přihlášení. Případně `acquireTokenRedirect` přesměruje uživatele na platformu Microsoft identity. V tomto okně si uživatelé musí potvrdit své přihlašovací údaje, udělit souhlas požadovanému prostředku nebo dokončit dvojúrovňové ověřování.
 
 ```javascript
   const requestObj = {
@@ -343,6 +342,7 @@ Pokud rozhraní API back-endu nevyžaduje obor (nedoporučuje se), můžete pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se správou identit a přístupů ještě nepoužíváte, máme několik článků, které vám pomůžou naučit se moderní koncepty ověřování, počínaje [ověřováním vs. Authorization](authentication-vs-authorization.md).
+Prodelvu hlubší vývoj aplikací na platformě Microsoft Identity Platform v naší řadě článků s více stránkami.
 
-Pokud byste chtěli podrobně hlubší vývoj aplikací na platformě Microsoft Identity Platform, scénář s více částmi: řada článků s [jednou stránkou](scenario-spa-overview.md) vám může pomáhat začít.
+> [!div class="nextstepaction"]
+> [Scénář: jednostránkové aplikace](scenario-spa-overview.md)

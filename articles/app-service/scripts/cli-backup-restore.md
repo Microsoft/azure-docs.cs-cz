@@ -9,12 +9,12 @@ ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8c3c0f4f57d21e5c07867a2c43ce3c3114f79a9b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8b7d20c3eee57d10a7025b05605603f82437cdb
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80058859"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006408"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Obnovení webové aplikace ze zálohy pomocí rozhraní příkazového řádku
 
@@ -38,11 +38,11 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Získá seznam záloh webové aplikace. |
-| [`az webapp config backup restore`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-restore) | Obnoví webovou aplikaci ze zálohy. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | Získá seznam záloh webové aplikace. |
+| [`az webapp config backup restore`](/cli/azure/webapp/config/backup#az-webapp-config-backup-restore) | Obnoví webovou aplikaci ze zálohy. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro službu App Service najdete v [dokumentaci ke službě Azure App Service](../samples-cli.md).

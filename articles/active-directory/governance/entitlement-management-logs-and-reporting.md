@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4756ced858210f86bb8e979705db99a563441490
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c5ab92fcc1d70d12e37ae351e768514b4e7522f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078186"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501698"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivace protokolů a vytváření sestav o správě nároků Azure AD v Azure Monitor
 
@@ -44,7 +44,7 @@ Archivace protokolů auditu Azure AD vyžaduje, abyste měli Azure Monitor v př
     ![Podokno nastavení diagnostiky](./media/entitlement-management-logs-and-reporting/audit-log-diagnostics-settings.png)
 
 
-1. Po odeslání protokolu do Azure Monitor vyberte **Log Analytics pracovní prostory**a vyberte pracovní prostor, který obsahuje protokoly auditu Azure AD.
+1. Po odeslání protokolu do Azure Monitor vyberte **Log Analytics pracovní prostory** a vyberte pracovní prostor, který obsahuje protokoly auditu Azure AD.
 
 1. Vyberte **využití a odhadované náklady** a klikněte na **uchovávání dat**. Změňte posuvník na počet dní, po které chcete zachovat data pro splnění požadavků auditování.
 
@@ -54,12 +54,12 @@ Archivace protokolů auditu Azure AD vyžaduje, abyste měli Azure Monitor v př
     
     1. Vyberte **Azure Active Directory** klikněte na **sešity**. 
     
-    1. Rozbalte část **Azure Active Directory řešení potíží**a klikněte na **Archivovaný rozsah dat protokolu**. 
+    1. Rozbalte část **Azure Active Directory řešení potíží** a klikněte na **Archivovaný rozsah dat protokolu**. 
 
 
 ## <a name="view-events-for-an-access-package"></a>Zobrazit události pro balíček pro přístup  
 
-Pokud chcete zobrazit události pro balíček pro přístup, musíte mít přístup k základnímu pracovnímu prostoru Azure monitor (informace najdete v tématu [Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) pro informace) a v jedné z následujících rolí: 
+Pokud chcete zobrazit události pro balíček pro přístup, musíte mít přístup k základnímu pracovnímu prostoru Azure monitor (informace najdete v tématu [Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) pro informace) a v jedné z následujících rolí: 
 
 - Globální správce  
 - Správce zabezpečení  
@@ -130,7 +130,7 @@ Chcete-li nastavit přiřazení role a vytvořit dotaz, proveďte následující
 
 ### <a name="install-azure-powershell-module"></a>Nainstalovat modul Azure PowerShell
 
-Jakmile budete mít příslušné přiřazení role, spusťte PowerShell a [nainstalujte Azure PowerShell modul](/powershell/azure/install-az-ps?view=azps-3.3.0) (Pokud jste to ještě neudělali), a to tak, že zadáte:
+Jakmile budete mít příslušné přiřazení role, spusťte PowerShell a [nainstalujte Azure PowerShell modul](/powershell/azure/install-az-ps) (Pokud jste to ještě neudělali), a to tak, že zadáte:
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
@@ -158,8 +158,7 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-Můžete znovu ověřit a přidružit relaci PowerShellu k tomuto předplatnému pomocí příkazu, jako je `Connect-AzAccount –Subscription $subs[0].id` . Další informace o tom, jak ověřit službu Azure z PowerShellu, včetně neinteraktivního, najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
-).
+Můžete znovu ověřit a přidružit relaci PowerShellu k tomuto předplatnému pomocí příkazu, jako je `Connect-AzAccount –Subscription $subs[0].id` . Další informace o tom, jak ověřit službu Azure z PowerShellu, včetně neinteraktivního, najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 Pokud máte v tomto předplatném více Log Analytics pracovních prostorů, rutina [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) vrátí seznam pracovních prostorů. Pak můžete najít tu, která má protokoly služby Azure AD. `CustomerId`Pole vrácené touto rutinou je stejné jako hodnota "ID pracovního prostoru", která se zobrazuje v Azure Portal v tématu Přehled pracovního prostoru Log Analytics.
  
@@ -169,8 +168,7 @@ $wks | ft CustomerId, Name
 ```
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Odeslat dotaz do pracovního prostoru Log Analytics
-Nakonec, když máte identifikovaný pracovní prostor, můžete k odeslání dotazu Kusto do tohoto pracovního prostoru použít [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) . Tyto dotazy jsou napsané v [jazyce dotazů Kusto](https://docs.microsoft.com/azure/kusto/query/).
+Nakonec, když máte identifikovaný pracovní prostor, můžete k odeslání dotazu Kusto do tohoto pracovního prostoru použít [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) . Tyto dotazy jsou napsané v [jazyce dotazů Kusto](/azure/kusto/query/).
  
 Můžete například načíst rozsah dat záznamů událostí auditu z pracovního prostoru Log Analytics a pomocí rutin prostředí PowerShell odeslat dotaz jako:
  
@@ -189,5 +187,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Další kroky:
-- [Vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../../azure-monitor/platform/workbooks-overview.md) 
-
+- [Vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../../azure-monitor/visualize/workbooks-overview.md)

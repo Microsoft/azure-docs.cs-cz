@@ -1,22 +1,18 @@
 ---
 title: Kopírování dat z SAP ECC
 description: Naučte se, jak kopírovat data z SAP ECC na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: 9088b36acead9f47e94949ee102d66a8aff2d226
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 10/28/2020
+ms.openlocfilehash: a3e701f3d433b5b52d8992035ac4ad75b78cb795
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529598"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386692"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,6 +42,13 @@ Konkrétně tento konektor SAP ECC podporuje:
   - Data nebo zprostředkující dokumenty (IDOCs) odeslané do integrace procesu SAP (PI), které lze přijmout jako OData prostřednictvím relativních adaptérů.
 
 - Kopírování dat pomocí základního ověřování.
+
+Verze 7,0 nebo novější odkazuje na verzi SAP NetWeaver namísto verze SAP ECC. Například SAP ECC 6,0 EHP 7 obecně má NetWeaver verzi >= 7,4. V případě, že si nejste jisti vaším prostředím, tady je postup, jak ověřit verzi ze systému SAP:
+
+1. Pomocí grafického uživatelského rozhraní SAP se připojte k systému SAP. 
+2. Přejít na   ->  **stav** systému. 
+3. Zkontrolujte vydání SAP_BASIS, ujistěte se, že je větší nebo rovno 701.  
+      ![Kontrolovat SAP_BASIS](./media/connector-sap-table/sap-basis.png)
 
 >[!TIP]
 >Pokud chcete kopírovat data z SAP ECC přes tabulku nebo zobrazení SAP, použijte konektor [SAP TABLE](connector-sap-table.md) Connector, který je rychlejší a škálovatelný.

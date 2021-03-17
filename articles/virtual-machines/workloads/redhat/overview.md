@@ -1,20 +1,19 @@
 ---
 title: Úlohy Red Hat na Azure – přehled | Microsoft Docs
 description: Seznamte se s nabídkami produktů Red Hat dostupnými v Azure.
-services: virtual-machines-linux
 author: asinn826
-manager: borisb2015
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd8f2e5b825f88d1b0e04ed231b85296ac47e998
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052112"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676046"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Úlohy Red Hat v Azure
 
@@ -37,15 +36,15 @@ Pokud se nechcete zabývat nezávisle na placení za příslušný počet předp
 ### <a name="red-hat-gold-images"></a>Image Red Hat Gold
 
 Azure nabízí také Red Hat Gold images ( `rhel-byos` ). Tyto obrázky můžou být užitečné pro zákazníky, kteří mají existující předplatné Red Hat a chtějí je používat v Azure. Abyste mohli povolit cloudový přístup Red Hat do Azure, budete si muset povolit svoje stávající předplatné Red Hat. Přístup k těmto obrázkům se uděluje automaticky, pokud jsou pro cloudový přístup povolená předplatná Red Hat a splňují požadavky na způsobilost. Použití těchto imagí umožňuje zákazníkovi vyhnout se dvojímu vyúčtování, které by mohlo vést k používání imagí s průběžnými platbami.
-* Naučte se, jak [Povolit předplatná Red Hat pro cloudový přístup pomocí Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs).
+* Naučte se, jak [Povolit předplatná Red Hat pro cloudový přístup pomocí Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access).
 * Přečtěte si [, jak najít obrázky Red Hat Gold v rutinách Azure Portal, Azure CLI nebo PowerShellu](./byos.md).
 
 > [!NOTE]
-> Pokud uživatel zaplatí dvakrát pro předplatná RHEL, účtuje se dvojitá fakturace. K tomuto scénáři obvykle dochází v případě, že zákazník používá k připojení nároku na RHEL virtuální počítač s průběžnými platbami na základě Red Hat. Například zákazník, který používá předplatné-Manager k připojení nároku na balíčky SAP na RHEL s průběžnými platbami, se nepřímo zdvojnásobí, protože platíte dvakrát za RHEL. Platíte jednou přes poplatek za průběžné platby za vás a jednou prostřednictvím předplatného SAP. Tento scénář se nestane BYOSým uživatelům obrazu.
+> Pokud uživatel zaplatí dvakrát pro předplatná RHEL, účtuje se dvojitá fakturace. K tomuto scénáři obvykle dochází, když zákazník používá Subscription-Manager Red Hat k připojení nároku na RHEL virtuální počítač s průběžnými platbami. Například zákazník, který používá Subscription-Manager k připojení oprávnění k balíčkům SAP na RHEL s průběžnými platbami, se nepřímo zdvojnásobí, protože platí dvakrát pro RHEL. Platíte jednou přes poplatek za průběžné platby za vás a jednou prostřednictvím předplatného SAP. Tento scénář se nestane BYOSým uživatelům obrazu.
 
 ### <a name="generation-2-images"></a>Image 2. generace
 
-Virtuální počítače generace 2 poskytují několik novějších funkcí v porovnání s virtuálními počítači 1. generace. Další informace najdete v dokumentaci k [generaci 2](../../linux/generation-2.md). Klíčovým rozdílem z hlediska image RHEL je, že virtuální počítače 2. generace používají rozhraní UEFI místo rozhraní firmware systému BIOS. Místo hlavního spouštěcího záznamu (MBR) v době spuštění používají také tabulku oddílů GUID (GPT). Použití GPT umožňuje mimo jiné velikost disků s operačním systémem větší než 2 TB. [Virtuální počítače řady Mv2](../../mv2-series.md) se navíc spouštějí jenom na imagí generace 2.
+Virtuální počítače generace 2 poskytují několik novějších funkcí v porovnání s virtuálními počítači 1. generace. Další informace najdete v dokumentaci k [generaci 2](../../generation-2.md). Klíčovým rozdílem z hlediska image RHEL je, že virtuální počítače 2. generace používají rozhraní UEFI místo rozhraní firmware systému BIOS. Místo hlavního spouštěcího záznamu (MBR) v době spuštění používají také tabulku oddílů GUID (GPT). Použití GPT umožňuje mimo jiné velikost disků s operačním systémem větší než 2 TB. [Virtuální počítače řady Mv2](../../mv2-series.md) se navíc spouštějí jenom na imagí generace 2.
 
 RHEL generace 2 jsou k dispozici v Azure Marketplace. V části SKU image vyhledejte "Gen2" v seznamu všech imagí, které se zobrazí při použití rozhraní příkazového řádku Azure CLI. Pokud chcete nasadit virtuální počítač 2. generace, v procesu nasazení virtuálního počítače přejít na kartu **Upřesnit** .
 

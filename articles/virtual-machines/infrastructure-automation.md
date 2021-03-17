@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7a702fbf405011a9df3e7e77936a9a37f0fdfad7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830542"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730634"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Použití nástrojů pro automatizaci infrastruktury s virtuálními počítači v Azure
 
 Aby bylo možné vytvářet a spravovat virtuální počítače Azure konzistentním způsobem ve velkém měřítku, obvykle je žádoucí určitá forma automatizace. Existuje mnoho nástrojů a řešení, které vám umožňují automatizovat kompletní životní cyklus nasazení a správy infrastruktury Azure. V tomto článku se seznámíte s některými nástroji pro automatizaci infrastruktury, které můžete použít v Azure. Tyto nástroje se běžně vejdou do jednoho z následujících přístupů:
 
 - Automatizace konfigurace virtuálních počítačů
-    - Mezi tyto nástroje patří [Chef](#chef)šablony [Ansible](#ansible), [Puppet](#puppet)a [Azure Resource Manager](#azure-resource-manager-template).
+    - Mezi tyto nástroje patří [](#chef)šablony [Ansible](#ansible), [Puppet](#puppet)a [Azure Resource Manager](#azure-resource-manager-template).
     - Mezi nástroje specifické pro přizpůsobení virtuálních počítačů patří [Cloud-init](#cloud-init) pro virtuální počítače se systémem Linux, [Konfigurace požadovaného stavu (DSC) prostředí PowerShell](#powershell-dsc)a [rozšíření vlastních skriptů Azure](#azure-custom-script-extension) pro všechny virtuální počítače Azure.
 
 - Automatizace správy infrastruktury
@@ -53,11 +53,11 @@ Naučte se:
 
 Naučte se:
 
-- [Nasaďte Puppet z Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview).
+- [Nasaďte Puppet](https://puppet.com/docs/puppet/5.5/install_windows.html).
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Vzhledem k tomu, že se během procesu prvotního spuštění volá Cloud-init, neexistují žádné další kroky ani nepotřebné agenti pro použití konfigurace.  Další informace o tom, jak správně zformátovat `#cloud-config` soubory, najdete v [webu dokumentace k inicializaci Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`soubory jsou textové soubory kódované v kódování Base64.
+[Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Vzhledem k tomu, že se během procesu prvotního spuštění volá Cloud-init, neexistují žádné další kroky ani nepotřebné agenti pro použití konfigurace.  Další informace o tom, jak správně zformátovat `#cloud-config` soubory, najdete v [webu dokumentace k inicializaci Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` soubory jsou textové soubory kódované v kódování Base64.
 
 Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 
@@ -87,8 +87,8 @@ Skripty si můžete stáhnout z Azure Storage nebo z libovolného veřejného um
 
 Naučte se:
 
-- [Vytvořte virtuální počítač se systémem Linux pomocí Azure CLI a použijte rozšíření vlastních skriptů](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Vytvořte virtuální počítač s Windows pomocí Azure PowerShell a použijte rozšíření vlastních skriptů](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+- [Vytvořte virtuální počítač se systémem Linux pomocí Azure CLI a použijte rozšíření vlastních skriptů](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx?toc=%2fcli%2fazure%2ftoc.json).
+- [Vytvořte virtuální počítač s Windows pomocí Azure PowerShell a použijte rozšíření vlastních skriptů](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis).
 
 
 ## <a name="packer"></a>Packeru
@@ -126,7 +126,7 @@ Naučte se:
 
 Přečtěte si další informace:
 
-- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts).
+- [Azure DevOps Services](/azure/devops/user-guide/index).
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -144,7 +144,7 @@ Naučte se:
 
 - [Nasaďte virtuální počítače s využitím šablony Správce prostředků](./linux/spot-template.md).
 - [Vytvoří virtuální počítač s Windows ze šablony Správce prostředků](./windows/ps-template.md).
-- [Stáhněte si šablonu pro virtuální počítač](./windows/download-template.md).
+- [Stáhněte si šablonu pro virtuální počítač](/previous-versions/azure/virtual-machines/windows/download-template).
 - [Vytvoří šablonu Azure image Builder](./linux/image-builder-json.md).
 
 ## <a name="next-steps"></a>Další kroky

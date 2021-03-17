@@ -4,15 +4,16 @@ description: Seznamte se s důležitými body, které vám pomůžou s nákupem 
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 68bcf725a6043b8ab19717845fa8005de2f88e35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-ms.translationtype: HT
+ms.openlocfilehash: a70d434b06fd19071f3576f9333579e0bd2b85e7
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287642"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574970"
 ---
 # <a name="buy-a-reservation"></a>Nákup rezervace
 
@@ -20,9 +21,9 @@ Rezervace Azure umožňují šetřit peníze tím, že potvrzují závazek využ
 
 ## <a name="who-can-buy-a-reservation"></a>Kdo si může koupit rezervaci
 
-Pokud si chcete koupit plán, musíte mít roli vlastníka předplatného v předplatném se smlouvou Enterprise (MS-AZR-0017P nebo MS-AZR-0148P), předplatném s průběžnými platbami (MS-AZR-0003P nebo MS-AZR-0023P) nebo předplatném se smlouvou se zákazníkem Microsoftu. Poskytovatelé cloudových řešení můžou nakupovat rezervace Azure prostřednictvím webu Azure Portal nebo  [Partnerského centra](/partner-center/azure-reservations) .
+Pokud si chcete koupit rezervaci, musíte mít roli vlastníka nebo nákupčího rezervací pro předplatné Azure se smlouvou Enterprise (MS-AZR-0017P nebo MS-AZR-0148P), předplatné s průběžnými platbami (MS-AZR-0003P nebo MS-AZR-0023P) nebo předplatné se Smlouvou se zákazníkem Microsoftu. Poskytovatelé cloudových řešení můžou nakupovat rezervace Azure prostřednictvím webu Azure Portal nebo  [Partnerského centra](/partner-center/azure-reservations) .
 
-Zákazníci se smlouvou Enterprise (EA) můžou omezit nákupy na správce EA tak, že na portálu EA Portal zakážou možnost **Přidat rezervované instance**. Aby správce EA mohl zakoupit rezervaci, musí být vlastníkem alespoň jednoho předplatného EA. Tato možnost je užitečná pro podniky, které chtějí, aby rezervace pro různá nákladová centra pořizoval centralizovaný tým. Po zakoupení můžou centralizované týmy přidat k rezervacím vlastníky nákladových center. Vlastníci potom vymezí rozsah rezervace na svoje předplatná. Centrální tým nemusí umožnit přístup vlastníka předplatného tam, kde se rezervace pořizuje.
+Zákazníci se smlouvou Enterprise (EA) můžou omezit nákupy na správce EA tak, že na portálu EA Portal zakážou možnost **Přidat rezervované instance**. Správci EA musí mít pro nákup rezervace přístup vlastníka nebo nákupčího rezervací alespoň pro jedno předplatné EA. Tato možnost je užitečná pro podniky, které chtějí, aby rezervace pořizoval centralizovaný tým.
 
 Sleva za rezervaci se vztahuje jenom na prostředky přidružené k předplatným zakoupeným prostřednictvím plánů Enterprise, Cloud Solution Provider (CSP), plánů se smlouvou se zákazníkem Microsoftu a individuálních plánů s průběžnými platbami.
 
@@ -66,12 +67,12 @@ Prostředky, které se spouští v rámci předplatného s jinými typy nabídek
 
 Rezervace si můžete koupit prostřednictvím webu Azure Portal, rozhraní API, PowerShellu nebo CLI. Přečtěte si následující články, ve kterých se dozvíte, kdy jste připravení koupit rezervace:
 
-- [App Service](prepay-app-service-isolated-stamp.md)
+- [App Service](prepay-app-service.md)
 - [Azure Cache for Redis](../../azure-cache-for-redis/cache-reserved-pricing.md)
 - [Databáze Cosmos](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Databricks](prepay-databricks-reserved-capacity.md)
 - [Data Explorer](/azure/data-explorer/pricing-reserved-capacity)
-- [Disk Storage](../../virtual-machines/linux/disks-reserved-capacity.md)
+- [Disk Storage](../../virtual-machines/disks-reserved-capacity.md)
 - [Dedicated Host](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [Softwarové plány](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Storage](../../storage/blobs/storage-blob-reserved-capacity.md)
@@ -80,7 +81,7 @@ Rezervace si můžete koupit prostřednictvím webu Azure Portal, rozhraní API,
 - [Azure Database for MySQL](../../mysql/concept-reserved-pricing.md)
 - [Azure Database for MariaDB](../../mariadb/concept-reserved-pricing.md)
 - [Azure Synapse Analytics](prepay-sql-data-warehouse-charges.md)
-- [Virtual Machines](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Virtual Machines](../../virtual-machines/prepay-reserved-vm-instances.md)
 
 ## <a name="buy-reservations-with-monthly-payments"></a>Nákup rezervací s měsíčními platbami
 
@@ -122,7 +123,7 @@ V závislosti na tom, jak za předplatné Azure platíte, odesíláme e-mailová
 U zákazníků s předplatnými EA:
 
 - Oznámení se odesílají jenom kontaktům pro oznámení EA.
-- Uživatelé přidaní k rezervaci pomocí oprávnění RBAC (IAM) nedostávají žádná e-mailová oznámení.
+- Uživatelé přidaní k rezervaci pomocí oprávnění Azure RBAC (IAM) nedostávají žádná e-mailová oznámení.
 
 U zákazníků s individuálními předplatnými:
 

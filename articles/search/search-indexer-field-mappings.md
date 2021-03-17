@@ -3,18 +3,17 @@ title: Mapování polí v indexerech
 titleSuffix: Azure Cognitive Search
 description: Nakonfigurujte mapování polí v indexeru na účet pro rozdíly v názvech polí a reprezentace dat.
 manager: nitinme
-author: mattmsft
-ms.author: magottei
-ms.devlang: rest-api
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 01/28/2021
+ms.openlocfilehash: fb3a77291d8b24d5774094533f8c214f1527d771
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208754"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430441"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
 
@@ -30,7 +29,7 @@ Některé situace, kdy je vhodné mapování polí:
 * Je potřeba kódovat nebo dekódovat data v kódování Base64. Mapování polí podporují několik **funkcí mapování**, včetně funkcí pro kódování a dekódování base64.
 
 > [!NOTE]
-> Mapování polí v indexerech je jednoduchý způsob, jak mapovat datová pole k indexovaným polím, a to s určitou možností pro převod dat s lehkým zatížením. Složitější data mohou vyžadovat předběžné zpracování, aby bylo možné je znovu natvarovat do formuláře, který je přispívající k indexování. Jedna z možností, kterou můžete zvážit, je [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
+> Mapování polí v indexerech je jednoduchý způsob, jak mapovat datová pole k indexovaným polím, a to s určitou možností pro převod dat s lehkým zatížením. Složitější data mohou vyžadovat předběžné zpracování, aby bylo možné je znovu natvarovat do formuláře, který je přispívající k indexování. Jedna z možností, kterou můžete zvážit, je [Azure Data Factory](../data-factory/index.yml).
 
 ## <a name="set-up-field-mappings"></a>Nastavení mapování polí
 
@@ -43,16 +42,15 @@ Mapování polí se skládá ze tří částí:
 Mapování polí jsou přidána do `fieldMappings` pole definice indexeru.
 
 > [!NOTE]
-> Pokud nejsou přidána žádná mapování polí, předpokládají indexery pole zdroje dat, které by měly být mapovány na indexová pole se stejným názvem. Přidáním mapování polí dojde k odebrání těchto výchozích mapování polí pro zdrojové a cílové pole. Některé indexery, jako [je indexer úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md), přidají mapování výchozích polí pro pole klíč indexu.
+> Pokud nejsou přidána žádná mapování polí, předpokládají indexery pole zdroje dat, které by měly být mapovány na indexová pole se stejným názvem. Přidáním mapování polí dojde k odebrání těchto výchozích mapování polí pro zdrojové a cílové pole. Některé indexery, jako je [indexer úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md), přidají mapování výchozích polí pro pole klíč indexu.
 
-## <a name="map-fields-using-the-rest-api"></a>Mapování polí pomocí REST API
+## <a name="map-fields-using-rest"></a>Mapování polí pomocí REST
 
-Mapování polí můžete přidat při vytváření nového indexeru pomocí požadavku [Create indexer](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) API. Mapování polí stávajícího indexeru můžete spravovat pomocí požadavku rozhraní API pro [aktualizaci indexeru](https://docs.microsoft.com/rest/api/searchservice/update-indexer) .
+Mapování polí můžete přidat při vytváření nového indexeru pomocí požadavku [Create indexer](/rest/api/searchservice/create-Indexer) API. Mapování polí stávajícího indexeru můžete spravovat pomocí požadavku rozhraní API pro [aktualizaci indexeru](/rest/api/searchservice/update-indexer) .
 
 Tady je příklad, jak namapovat zdrojové pole na cílové pole s jiným názvem:
 
 ```JSON
-
 PUT https://[service name].search.windows.net/indexers/myindexer?api-version=[api-version]
 Content-Type: application/json
 api-key: [admin key]
@@ -76,11 +74,10 @@ Na zdrojové pole se může odkazovat v mapování více polí. Následující p
 > [!NOTE]
 > Azure Kognitivní hledání používá porovnávání bez rozlišení velkých a malých písmen k překladu polí a názvů funkcí v mapování polí. To je pohodlné (nemusíte mít vše v pravém), ale to znamená, že váš zdroj dat nebo index nemůže obsahovat pole, která se liší pouze velikostí písmen.  
 >
->
 
-## <a name="map-fields-using-the-net-sdk"></a>Mapování polí pomocí sady .NET SDK
+## <a name="map-fields-using-net"></a>Mapování polí pomocí .NET
 
-Mapování polí v sadě .NET SDK definujete pomocí třídy [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) , která má vlastnosti a a `SourceFieldName` `TargetFieldName` volitelný `MappingFunction` odkaz.
+Mapování polí v sadě .NET SDK definujete pomocí třídy [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) , která má vlastnosti a a `SourceFieldName` `TargetFieldName` volitelný `MappingFunction` odkaz.
 
 Mapování polí můžete zadat při vytváření indexeru nebo později přímo nastavením `Indexer.FieldMappings` Vlastnosti.
 
@@ -125,7 +122,7 @@ Provádí kódování base64 ve vstupním řetězci *zabezpečeném adresou URL*
 
 #### <a name="example---document-key-lookup"></a>Příklad – vyhledávání klíčů dokumentu
 
-V klíči dokumentu Azure Kognitivní hledání se můžou vyskytovat jenom bezpečné znaky URL (protože zákazníci musí být schopni dokument adresovat pomocí [rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document) ). Pokud zdrojové pole pro klíč obsahuje nezabezpečené znaky URL, můžete použít `base64Encode` funkci k jejímu převodu v čase indexování. Nicméně klíč dokumentu (před i po převodu) nemůže být delší než 1 024 znaků.
+V klíči dokumentu Azure Kognitivní hledání se můžou vyskytovat jenom bezpečné znaky URL (protože zákazníci musí být schopni dokument adresovat pomocí [rozhraní API pro vyhledávání](/rest/api/searchservice/lookup-document) ). Pokud zdrojové pole pro klíč obsahuje nezabezpečené znaky URL, můžete použít `base64Encode` funkci k jejímu převodu v čase indexování. Nicméně klíč dokumentu (před i po převodu) nemůže být delší než 1 024 znaků.
 
 Když načtete kódovaný klíč v době hledání, můžete použít `base64Decode` funkci k získání původní hodnoty klíče a použít ji k načtení zdrojového dokumentu.
 
@@ -200,10 +197,10 @@ Azure Kognitivní hledání podporuje dvě různá kódování Base64. Při kód
 
 Azure Kognitivní hledání podporuje kódování Base64 s bezpečným URL a normální kódování Base64. Řetězec, který má kódování Base64 během indexování, by měl být později dekódovaný se stejnými možnostmi kódování nebo jinak výsledek nebude odpovídat původnímu.
 
-Pokud `useHttpServerUtilityUrlTokenEncode` parametry nebo `useHttpServerUtilityUrlTokenDecode` pro kódování a dekódování jsou nastaveny na, se `true` `base64Encode` chovají jako [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) a `base64Decode` chovají se jako [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+Pokud `useHttpServerUtilityUrlTokenEncode` parametry nebo `useHttpServerUtilityUrlTokenDecode` pro kódování a dekódování jsou nastaveny na, se `true` `base64Encode` chovají jako [HttpServerUtility. UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode) a `base64Decode` chovají se jako [HttpServerUtility. UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode).
 
 > [!WARNING]
-> Pokud `base64Encode` se používá k vytvoření hodnot klíče, `useHttpServerUtilityUrlTokenEncode` musí být nastaven na hodnotu true. Pro klíčové hodnoty lze použít pouze kódování Base64 v bezpečí adrese URL. Úplnou sadu omezení znaků v hodnotách klíčů najdete v tématu [pravidla Pojmenování &#40;Azure Kognitivní hledání&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) .
+> Pokud `base64Encode` se používá k vytvoření hodnot klíče, `useHttpServerUtilityUrlTokenEncode` musí být nastaven na hodnotu true. Pro klíčové hodnoty lze použít pouze kódování Base64 v bezpečí adrese URL. Úplnou sadu omezení znaků v hodnotách klíčů najdete v tématu [pravidla Pojmenování &#40;Azure Kognitivní hledání&#41;](/rest/api/searchservice/naming-rules) .
 
 Knihovny .NET v Azure Kognitivní hledání předpokládají úplný .NET Framework, který poskytuje integrované kódování. `useHttpServerUtilityUrlTokenEncode`Možnosti a využívají `useHttpServerUtilityUrlTokenDecode` tuto vestavěnou funkci. Pokud používáte .NET Core nebo jiné rozhraní, doporučujeme, abyste tyto možnosti nastavovat na `false` a přímo zavolali funkce kódování a dekódování vašeho rozhraní.
 

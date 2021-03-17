@@ -4,7 +4,7 @@ description: Obsahuje základní informace o tom, jak integrovat místní ShareP
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b5895d016e2d9d9b471218bc083ea7585254b45
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764532"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258677"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu k SharePointu s využitím Proxy aplikací služby Azure AD
 
@@ -47,9 +47,9 @@ Konfigurace SharePointu s proxy aplikací vyžaduje dvě adresy URL:
 > - V podnikové službě DNS (Domain Name System) vytvořte hostitele (A), který odkazuje na SharePoint WFE (nebo nástroj pro vyrovnávání zatížení), a ne na alias (CName).
 
 Tento článek používá následující hodnoty:
-- Interní adresa URL:`https://sharepoint`
-- Externí adresa URL:`https://spsites-demo1984.msappproxy.net/`
-- Účet fondu aplikací pro webovou aplikaci SharePoint:`Contoso\spapppool`
+- Interní adresa URL: `https://sharepoint`
+- Externí adresa URL: `https://spsites-demo1984.msappproxy.net/`
+- Účet fondu aplikací pro webovou aplikaci SharePoint: `Contoso\spapppool`
 
 ## <a name="step-1-configure-an-application-in-azure-ad-that-uses-application-proxy"></a>Krok 1: Konfigurace aplikace v Azure AD, která používá proxy aplikace
 
@@ -68,7 +68,7 @@ V tomto kroku vytvoříte v tenantovi Azure Active Directory aplikaci, která po
    1. Na stránce aplikace na portálu vyberte **Jednotné přihlašování**.
    1. Pro **Režim jednotného přihlašování** vyberte **Integrované ověřování systému Windows**.
    1. Nastavte **vnitřní hlavní název aplikace** na hodnotu, kterou jste nastavili dříve. V tomto příkladu je hodnota `HTTP/sharepoint` .
-   1. V části **delegovaná identita přihlášení**vyberte nejvhodnější možnost pro konfiguraci doménové struktury služby Active Directory. Pokud máte například v doménové struktuře jednu doménu Active Directory, vyberte možnost místní **název účtu SAM** (jak je znázorněno na následujícím snímku obrazovky). Pokud ale uživatelé nejsou ve stejné doméně jako SharePoint a na serverech konektoru proxy aplikací, vyberte **místní hlavní název uživatele** (nezobrazuje se na snímku obrazovky).
+   1. V části **delegovaná identita přihlášení** vyberte nejvhodnější možnost pro konfiguraci doménové struktury služby Active Directory. Pokud máte například v doménové struktuře jednu doménu Active Directory, vyberte možnost místní **název účtu SAM** (jak je znázorněno na následujícím snímku obrazovky). Pokud ale uživatelé nejsou ve stejné doméně jako SharePoint a na serverech konektoru proxy aplikací, vyberte **místní hlavní název uživatele** (nezobrazuje se na snímku obrazovky).
 
    ![Konfigurace integrovaného ověřování systému Windows pro jednotné přihlašování](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
@@ -103,7 +103,7 @@ Aby bylo možné správně pracovat s Azure Proxy aplikací služby AD, musí b�
        ```
 
     2. Otevřete web **centrální správy služby SharePoint** .
-    1. V části **nastavení systému**vyberte **Konfigurovat mapování alternativního přístupu**. Otevře se pole **kolekce mapování alternativního přístupu** .
+    1. V části **nastavení systému** vyberte **Konfigurovat mapování alternativního přístupu**. Otevře se pole **kolekce mapování alternativního přístupu** .
     1. Vyfiltrujte zobrazení pomocí nové webové aplikace a potvrďte, že se zobrazí něco podobného:
 
        ![Mapování alternativních přístupů webové aplikace](./media/application-proxy-integrate-with-sharepoint-server/new-webapp-aam.png)
@@ -126,7 +126,7 @@ Aby bylo možné správně pracovat s Azure Proxy aplikací služby AD, musí b�
        ```
 
     2. Otevřete web **centrální správy služby SharePoint** .
-    1. V části **nastavení systému**vyberte **Konfigurovat mapování alternativního přístupu**. Otevře se pole **kolekce mapování alternativního přístupu** .
+    1. V části **nastavení systému** vyberte **Konfigurovat mapování alternativního přístupu**. Otevře se pole **kolekce mapování alternativního přístupu** .
     1. Vyfiltrujte zobrazení pomocí rozšířené webové aplikace a potvrďte, že se zobrazí něco podobného:
 
         ![Mapování alternativních přístupů k rozšířené aplikaci](./media/application-proxy-integrate-with-sharepoint-server/extend-webapp-aam.png)
@@ -167,7 +167,7 @@ Teď můžete k webu služby SharePoint přistupovat externě prostřednictvím 
 
 ## <a name="step-3-configure-kerberos-constrained-delegation"></a>Krok 3: Konfigurace omezeného delegování protokolu Kerberos
 
-Uživatelé se zpočátku ověřují ve službě Azure AD a pak na SharePoint pomocí protokolu Kerberos prostřednictvím konektoru proxy Azure AD. Pokud chcete, aby konektor mohl získat token protokolu Kerberos jménem uživatele Azure AD, musíte nakonfigurovat omezené delegování protokolu Kerberos (KCD) s přechodem protokolu. Další informace o KCD najdete v tématu [Přehled omezeného delegování protokolu Kerberos](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)).
+Uživatelé se zpočátku ověřují ve službě Azure AD a pak na SharePoint pomocí protokolu Kerberos prostřednictvím konektoru proxy Azure AD. Pokud chcete, aby konektor mohl získat token protokolu Kerberos jménem uživatele Azure AD, musíte nakonfigurovat omezené delegování protokolu Kerberos (KCD) s přechodem protokolu. Další informace o KCD najdete v tématu [Přehled omezeného delegování protokolu Kerberos](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)).
 
 ### <a name="set-the-spn-for-the-sharepoint-service-account"></a>Nastavení hlavního názvu služby (SPN) pro účet služby SharePoint
 
@@ -176,7 +176,7 @@ Chcete-li zaregistrovat hlavní název `HTTP/sharepoint` služby (SPN) pro úče
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-`Setspn`Příkaz vyhledá hlavní název služby (SPN) před tím, než ho přidá. Pokud hlavní název služby (SPN) už existuje, zobrazí se chyba s **duplicitní hodnotou hlavního názvu** služby. V takovém případě zvažte odebrání existujícího hlavního názvu služby (SPN), pokud není nastaven v rámci správného účtu fondu aplikací. , Zda byl hlavní název služby (SPN) úspěšně přidán, můžete ověřit spuštěním `Setspn` příkazu s parametrem-L. Další informace o tomto příkazu najdete v tématu [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
+`Setspn`Příkaz vyhledá hlavní název služby (SPN) před tím, než ho přidá. Pokud hlavní název služby (SPN) už existuje, zobrazí se chyba s **duplicitní hodnotou hlavního názvu** služby. V takovém případě zvažte odebrání existujícího hlavního názvu služby (SPN), pokud není nastaven v rámci správného účtu fondu aplikací. , Zda byl hlavní název služby (SPN) úspěšně přidán, můžete ověřit spuštěním `Setspn` příkazu s parametrem-L. Další informace o tomto příkazu najdete v tématu [Setspn](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>Zajistěte, aby byl konektor důvěryhodný pro delegování do hlavního názvu služby (SPN), který byl přidán do účtu fondu aplikací služby SharePoint.
 
@@ -188,7 +188,7 @@ Ke konfiguraci KCD použijte následující postup pro každý počítač konekt
 1. Najděte počítač, na kterém běží konektor proxy služby Azure AD. V tomto příkladu je to samotný server SharePoint.
 1. Poklikejte na počítač a vyberte kartu **Delegování**.
 1. Ujistěte se, že možnosti delegování jsou nastavené tak, aby **důvěřovaly tomuto počítači pro delegování pouze určeným službám**. Pak vyberte **použít libovolný protokol pro ověřování**.
-1. Vyberte tlačítko **Přidat** , vyberte možnost **Uživatelé nebo počítače**a vyhledejte účet fondu aplikací služby SharePoint. Například: `Contoso\spapppool`.
+1. Vyberte tlačítko **Přidat** , vyberte možnost **Uživatelé nebo počítače** a vyhledejte účet fondu aplikací služby SharePoint. Příklad: `Contoso\spapppool`.
 1. V seznamu SPN vyberte ten, který jste předtím vytvořili pro účet služby.
 1. Vyberte **OK** a pak znovu vyberte **OK** , aby se změny uložily.
   
@@ -198,7 +198,7 @@ Nyní jste připraveni se přihlásit ke službě SharePoint pomocí externí ad
 
 ## <a name="troubleshoot-sign-in-errors"></a>Řešení chyb při přihlašování
 
-Pokud přihlášení k webu nefunguje, můžete získat další informace o problému v protokolech konektoru: z počítače, na kterém konektor spouštíte, otevřete Prohlížeč událostí, přejdete do části **protokoly aplikací a služeb**  >  **Microsoft**  >  **AadApplicationProxy**  >  **Connector**a zkontrolujte protokol **správce** .
+Pokud přihlášení k webu nefunguje, můžete získat další informace o problému v protokolech konektoru: z počítače, na kterém konektor spouštíte, otevřete Prohlížeč událostí, přejdete do části **protokoly aplikací a služeb**  >  **Microsoft**  >  **AadApplicationProxy**  >  **Connector** a zkontrolujte protokol **správce** .
 
 ## <a name="next-steps"></a>Další kroky
 

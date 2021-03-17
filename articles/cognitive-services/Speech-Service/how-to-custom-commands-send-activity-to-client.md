@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027609"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566091"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Odeslat aktivitu vlastních příkazů klientské aplikaci
 
@@ -29,22 +29,24 @@ Dokončili jste následující úkoly:
 ## <a name="prerequisites"></a>Požadavky
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) nebo vyšší. Tato příručka používá Visual Studio 2019
-> * Klíč předplatného Azure pro službu Speech Service: [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
-> * Dříve [vytvořená aplikace vlastních příkazů](quickstart-custom-commands-application.md)
+> * Klíč předplatného Azure pro službu Speech: [Získejte ho zdarma](overview.md#try-the-speech-service-for-free) nebo si ho vytvořte na webu [Azure Portal](https://portal.azure.com)
+> * Už [vytvořená aplikace Vlastní příkazy](quickstart-custom-commands-application.md)
 > * Klientská aplikace podporující sadu Speech SDK: [Postupy: integrace s klientskou aplikací pomocí sady Speech SDK](./how-to-custom-commands-setup-speech-sdk.md)
 
 ## <a name="setup-send-activity-to-client"></a>Nastavit aktivitu odeslání na klienta 
 1. Otevřete aplikaci Custom Commands, kterou jste vytvořili dříve.
 1. Vyberte příkaz **TurnOnOff** , v části pravidlo dokončování vyberte **ConfirmationResponse** a pak vyberte **přidat akci** .
-1. V části **nový typ akce**vyberte **Odeslat aktivitu do klienta** .
+1. V části **nový typ akce** vyberte **Odeslat aktivitu do klienta** .
 1. Zkopírujte obsah JSON níže do **obsahu aktivity** .
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
 1. Klikněte na **Uložit** a vytvořte nové pravidlo s akcí odeslat aktivitu, **výukou** a **publikováním** změny.
 
@@ -55,7 +57,7 @@ Dokončili jste následující úkoly:
 
 V tématu [Postupy: nastavení klientské aplikace pomocí sady Speech SDK (Preview)](./how-to-custom-commands-setup-speech-sdk.md)jste vytvořili klientskou aplikaci UWP se sadou Speech SDK, která zpracovává příkazy `turn on the tv` , jako je například `turn off the fan` . V případě přidaných vizuálů vidíte výsledek těchto příkazů.
 
-Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná**, přidejte následující blok XML StackPanel do `MainPage.xaml` .
+Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná** , přidejte následující blok XML StackPanel do `MainPage.xaml` .
 
 ```xml
 <StackPanel Orientation="Vertical" H......>
@@ -83,8 +85,8 @@ Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná
 Vzhledem k tomu, že jste vytvořili datovou část JSON, je nutné přidat odkaz na knihovnu [JSON.NET](https://www.newtonsoft.com/json) pro zpracování deserializace.
 
 1. Napravo od klienta vaše řešení.
-1. Zvolte možnost **Spravovat balíčky NuGet pro řešení**, vyberte **Procházet** . 
-1. Pokud jste již nainstalovali **Newtonsoft.jsna**, ujistěte se, že je její verze alespoň 12.0.3. Pokud ne, klikněte na **Spravovat balíčky NuGet pro řešení – aktualizace**a vyhledejte **Newtonsoft.jsna** webu. Tato příručka používá verzi 12.0.3.
+1. Zvolte možnost **Spravovat balíčky NuGet pro řešení** , vyberte **Procházet** . 
+1. Pokud jste již nainstalovali **Newtonsoft.jsna** , ujistěte se, že je její verze alespoň 12.0.3. Pokud ne, klikněte na **Spravovat balíčky NuGet pro řešení – aktualizace** a vyhledejte **Newtonsoft.jsna** webu. Tato příručka používá verzi 12.0.3.
 
     > [!div class="mx-imgBorder"]
     > ![Datová část aktivity odeslání](media/custom-commands/send-activity-to-client-json-nuget.png)
@@ -114,8 +116,8 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     if (name.Equals("UpdateDeviceState"))
     {
         Debug.WriteLine("Here");
-        var state = activity?.device != null ? activity.state.ToString() : string.Empty;
-        var device = activity?.device != null ? activity.device.ToString() : string.Empty;
+        var state = activity?.value?.state != null ? activity.value.state.ToString() : string.Empty;
+        var device = activity?.value?.device != null ? activity.value.device.ToString() : string.Empty;
 
         if (state.Equals("on") || state.Equals("off"))
         {
@@ -146,15 +148,15 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>Vyzkoušejte si to.
+## <a name="try-it-out"></a>Vyzkoušet
 
 1. Spuštění aplikace
-1. Vyberte Povolit mikrofon.
-1. Výběr tlačítka rozhovor
-1. Uvést`turn on the tv`
+1. Select Enable microphone (Povolit mikrofon).
+1. Vyberte tlačítko pro hlasové ovládání.
+1. Vyslovte `turn on the tv`.
 1. Vizuální stav televizoru by se měl změnit na zapnuto
    > [!div class="mx-imgBorder"]
-   > ![Datová část aktivity odeslání](media/custom-commands/send-activity-to-client-turn-on-tv.png)
+   > ![Snímek obrazovky, který ukazuje, že je teď vizuální stav na T V.](media/custom-commands/send-activity-to-client-turn-on-tv.png)
 
 ## <a name="next-steps"></a>Další kroky
 

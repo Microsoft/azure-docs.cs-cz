@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: frontdoor
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 05/09/2019
-ms.author: sharadag
+ms.date: 02/18/2021
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 148ec3eccce71ab7a4a6c1391c0fa4753c248bd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53d837883daefddd5fa3f0f543eae1d116a5e86a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335091"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102933"
 ---
 | Prostředek | Omezení |
 | --- | --- |
@@ -35,6 +35,31 @@ ms.locfileid: "80335091"
 | Délka názvu souboru cookie pro bránu firewall webových aplikací | 256 |
 | Kontrola velikosti textu požadavku protokolu HTTP v bráně firewall webových aplikací | 128 kB |
 | Délka textu vlastní odpovědi firewallu webových aplikací | 2 kB |
+
+### <a name="azure-front-door-standardpremium-preview-service-limits"></a>Omezení služby Azure front-Standard/Premium (Preview)
+
+*** *Maximální počet **500** profilů Standard a Premium na předplatné*
+
+| Prostředek | Limit standardních SKU | Limit SKU úrovně Premium |
+| --- | --- | --- |
+| Maximální počet koncových bodů na profil  | 10 | 25 |
+| Maximální vlastní doména na profil | 100 | 200 |
+| Maximální skupina původních souborů na profil | 100 | 200 |
+| Maximální počet tajných klíčů na profil | 100 | 200 |
+| Maximální zásada zabezpečení na profil | 100 | 200 |
+| Maximální nastavená sada pravidel na profil | 100 | 200 |
+| Maximální počet pravidel na sadu pravidel | 100 | 100 |
+| Maximální původ na skupinu původních zdrojů | 50 | 50 |
+| Maximální počet tras na koncový bod | 100 | 200 |
+| Podmínky shody brány firewall webových aplikací na vlastní pravidlo | 10 | 10 |
+| Rozsahy IP adres firewallu webových aplikací na shodnou podmínku | 600 | 600 |
+| Hodnoty shody řetězců firewallu webových aplikací za shodné podmínky | 10 | 10 |
+| Délka hodnoty shody řetězců firewallu webových aplikací | 256 | 256 |
+| Délka názvu parametru POST firewallu webových aplikací | 256 | 256 |
+| Délka názvu záhlaví protokolu HTTP brány firewall webových aplikací | 256 | 256 |
+| Délka názvu souboru cookie pro bránu firewall webových aplikací | 256 | 256|
+| Kontrola velikosti textu požadavku protokolu HTTP v bráně firewall webových aplikací | 128 kB | 128 kB |
+| Délka textu vlastní odpovědi firewallu webových aplikací | 2 kB | 2 kB |
 
 ### <a name="timeout-values"></a>Hodnoty časového limitu
 #### <a name="client-to-front-door"></a>Klient do front-dveří

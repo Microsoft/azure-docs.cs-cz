@@ -1,16 +1,15 @@
 ---
 title: Reliable Actors poznámky k serializaci typu objektu actor
 description: Popisuje základní požadavky pro definování serializovatelných tříd, které lze použít k definování Service Fabric Reliable Actors stavy a rozhraní.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2a1118e394046b217a288663659a2c910098e992
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349307"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576005"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Poznámky k Service Fabric Reliable Actors serializaci typu
 Argumenty všech metod, výsledné typy úloh vrácených každou metodou v rozhraní objektu actor a objekty uložené ve Správci stavu objektu actor musí být [serializovatelné kontraktu dat](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). To platí také pro argumenty metod definovaných v [rozhraních událostí objektu actor](service-fabric-reliable-actors-events.md). (Metody rozhraní události objektu actor vždy vracejí typ void.)

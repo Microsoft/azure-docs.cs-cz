@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
 ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "73498823"
 ---
 # <a name="what-is-microsoft-genomics"></a>Co je Microsoft Genomics?
@@ -35,5 +35,5 @@ Služba Microsoft Genomics je ISO 27001, ISO 27018 a ISO 9001 certifikováno a d
 Teď, když jste si přečetli Úvod do Microsoft Genomics, jste připraveni:
 - Na stránce s cenami najdete porovnání nákladů a kalkulačky. [Ceny](https://azure.microsoft.com/pricing/details/genomics/)
 - Začněte spuštěním prvního pracovního postupu prostřednictvím služby Microsoft Genomics. [Spuštění pracovního postupu prostřednictvím služby Microsoft Genomics](quickstart-run-genomics-workflow-portal.md)
-- Odeslání vlastních dat ke zpracování službou Microsoft Genomics: [Spárovaná souborů fastq](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | s[více souborů fastq nebo BAM](quickstart-input-multiple.md) 
+- Odeslání vlastních dat ke zpracování službou Microsoft Genomics: [Spárovaná souborů fastq](quickstart-input-pair-FASTQ.md)  |  [BAM](quickstart-input-BAM.md)s  |  [více souborů fastq nebo BAM](quickstart-input-multiple.md) 
 

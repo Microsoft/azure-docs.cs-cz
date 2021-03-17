@@ -2,17 +2,17 @@
 title: Nasazení první aplikace pro Cloud Foundry v Microsoft Azure
 description: Nasazení aplikace pro Cloud Foundry v Azure
 author: seanmck
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 037ac972dca49484f7b8c0ad8eed6942c901b997
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754501"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562924"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Nasazení první aplikace pro Cloud Foundry v Microsoft Azure
 
@@ -64,7 +64,7 @@ cf target -o testorg -s dev
 Když teď nasadíte aplikaci, automaticky se vytvoří v nové organizaci a prostoru. Pokud chcete potvrdit, že v nové organizaci nebo prostoru momentálně nejsou žádné aplikace, zadejte `cf apps` znovu.
 
 > [!NOTE] 
-> Další informace o organizace a mezerách a způsobu jejich použití pro řízení přístupu na základě role (RBAC) najdete v [dokumentaci k Cloud Foundry][cf-orgs-spaces-docs].
+> Další informace o organizace a mezerách a jejich použití pro Cloud Foundry řízení přístupu na základě role (Cloud Foundry RBAC) najdete v [dokumentaci k Cloud Foundry][cf-orgs-spaces-docs].
 
 ## <a name="deploy-an-application"></a>Nasazení aplikace
 
@@ -146,7 +146,7 @@ Spuštění `cf app` příkazu v aplikaci ukazuje, že Cloud Foundry vytváří 
 [oss-cf-bosh]: https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs
 [pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/pivotalcf/customizing/pcf_azure.html
 [cf-cli]: https://github.com/cloudfoundry/cli
-[cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
+[cloudshell-docs]: ../cloud-shell/overview.md
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
 [spring-framework]: https://spring.io

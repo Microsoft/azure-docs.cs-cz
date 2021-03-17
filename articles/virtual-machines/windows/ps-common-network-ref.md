@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088372"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Běžné příkazy PowerShellu pro virtuální sítě Azure
@@ -27,7 +27,7 @@ Některé proměnné mohou být užitečné při spuštění více než jednoho 
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-| Úkol | Příkaz |
+| Úloha | Příkaz |
 | ---- | ------- |
 | Vytvoření konfigurací podsítí |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-AddressPrefix xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2"-AddressPrefix XX. X. X. X/XX<BR><BR>Typická síť může mít podsíť pro [internetový nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md) a samostatnou podsíť pro [interní nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md). |
 | Vytvoření virtuální sítě |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $MyResourceGroup-Location $Location-AddressPrefix xx. X. X. X/XX-podsíť $subnet 1, $subnet 2 |
@@ -43,11 +43,11 @@ Některé proměnné mohou být užitečné při spuštění více než jednoho 
 
 ## <a name="get-information-about-network-resources"></a>Získat informace o síťových prostředcích
 
-| Úkol | Příkaz |
+| Úloha | Příkaz |
 | ---- | ------- |
 | Vypsat virtuální sítě |[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) -ResourceGroupName $myResourceGroup<BR><BR>Vypíše všechny virtuální sítě ve skupině prostředků. |
 | Získání informací o virtuální síti |Get-AzVirtualNetwork-Name "myVNet"-ResourceGroupName $myResourceGroup |
-| Vypíše podsítě ve virtuální síti. |Get-AzVirtualNetwork-Name "myVNet"-ResourceGroupName $myResourceGroup &#124; výběr podsítí |
+| Vypíše podsítě ve virtuální síti. |Get-AzVirtualNetwork-Name "myVNet"-ResourceGroupName $myResourceGroup &#124; vybrat podsítě |
 | Získání informací o podsíti |[Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) -Name "mySubnet1"-VirtualNetwork $VNet<BR><BR>Načte informace o podsíti v zadané virtuální síti. Hodnota $vnet představuje objekt vrácený funkcí get-AzVirtualNetwork. |
 | Seznam IP adres |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) -ResourceGroupName $myResourceGroup<BR><BR>Zobrazí seznam veřejných IP adres ve skupině prostředků. |
 | Seznam nástrojů pro vyrovnávání zatížení |[Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) -ResourceGroupName $myResourceGroup<BR><BR>Zobrazí seznam všech nástrojů pro vyrovnávání zatížení ve skupině prostředků. |
@@ -57,7 +57,7 @@ Některé proměnné mohou být užitečné při spuštění více než jednoho 
 
 ## <a name="manage-network-resources"></a>Správa síťových prostředků
 
-| Úkol | Příkaz |
+| Úloha | Příkaz |
 | ---- | ------- |
 | Přidání podsítě do virtuální sítě |[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix xx. X. X. X/XX-Name "mySubnet1"-VirtualNetwork $vnet<BR><BR>Přidá podsíť do existující virtuální sítě. Hodnota $vnet představuje objekt vrácený funkcí get-AzVirtualNetwork. |
 | Odstranění virtuální sítě |[Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $myResourceGroup<BR><BR>Odebere zadanou virtuální síť ze skupiny prostředků. |

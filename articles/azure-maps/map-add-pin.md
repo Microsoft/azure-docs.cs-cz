@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: d705a43da2b2db37c6601f5865ad6e569688b2a7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: c5434406af1f912c1c89123baa344dd3f9c7ff91
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010187"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891050"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Přidání vrstvy symbolů do mapy
 
@@ -59,13 +59,13 @@ K mapě je možné přidat čtyři různé typy dat bodu:
 - Geometrická geometrie bodu JSON – tento objekt obsahuje pouze souřadnici bodu a nic jiného. `atlas.data.Point`Pomocná třída se dá použít ke snadnému vytváření těchto objektů.
 - Geometrická geometrie systému pro data JSON – tento objekt obsahuje souřadnice více bodů a nic jiného. `atlas.data.MultiPoint`Pomocná třída se dá použít ke snadnému vytváření těchto objektů.
 - Geografická funkce JSON – tento objekt se skládá z libovolného geometrického geometrie a sady vlastností, které obsahují metadata přidružená k geometrii. `atlas.data.Feature`Pomocná třída se dá použít ke snadnému vytváření těchto objektů.
-- `atlas.Shape`Třída je podobná funkci s funkcí injson. Oba se skládají z geometrické geometrie a sady vlastností, které obsahují metadata přidružená k geometrii. Pokud je objekt typu "injson" přidán do zdroje dat, lze jej snadno vykreslit ve vrstvě. Nicméně, pokud je vlastnost souřadnice tohoto objektu. JSON aktualizována, zdroj dat a mapování se nemění. Důvodem je, že v objektu JSON není žádný mechanismus pro aktivaci aktualizace. Třída Shape poskytuje funkce pro aktualizaci dat, která obsahuje. Když je provedena změna, zdroj dat a mapa budou automaticky upozorňovány a aktualizovány. 
+- `atlas.Shape` Třída je podobná funkci s funkcí injson. Oba se skládají z geometrické geometrie a sady vlastností, které obsahují metadata přidružená k geometrii. Pokud je objekt typu "injson" přidán do zdroje dat, lze jej snadno vykreslit ve vrstvě. Nicméně, pokud je vlastnost souřadnice tohoto objektu. JSON aktualizována, zdroj dat a mapování se nemění. Důvodem je, že v objektu JSON není žádný mechanismus pro aktivaci aktualizace. Třída Shape poskytuje funkce pro aktualizaci dat, která obsahuje. Když je provedena změna, zdroj dat a mapa budou automaticky upozorňovány a aktualizovány. 
 
 Následující ukázka kódu vytvoří geometrii geometrického bodu JSON a předá ji do `atlas.Shape` třídy, aby se usnadnila její aktualizace. Uprostřed mapy se zpočátku používá k vykreslení symbolu. Událost Click je přidána na mapu, například v případě, že je aktivována, jsou souřadnice myši použity spolu s funkcí Shapes `setCoordinates` . Souřadnice myši se zaznamenávají v době události Click. Pak `setCoordinates` aktualizuje umístění symbolu na mapě.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Přepnout umístění PIN kódu' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>adresu PIN pro přepínač</a> pera Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přepnout umístění PIN kódu' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>adresu PIN pro přepínač</a> pera Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
@@ -77,7 +77,7 @@ Vrstvy symbolů se vykreslují pomocí WebGL. Jako takové všechny prostředky,
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Ikona obrázku vlastního symbolu' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Azure Maps <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Ikona obrázku vlastního symbolu</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'>CodePen</a>() se zobrazí na obrázku.
+<iframe height='500' scrolling='no' title='Ikona obrázku vlastního symbolu' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Azure Maps <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Ikona obrázku vlastního symbolu</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'>CodePen</a>() se zobrazí na obrázku.
 </iframe>
 
 > [!TIP]
@@ -89,7 +89,7 @@ Vrstva symbolů má k dispozici mnoho možností stylů. Tady je nástroj, kter�
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti vrstvy symbolů' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/PxVXje/'>Možnosti vrstvy symbolů</a> pera od Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti vrstvy symbolů' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/PxVXje/'>Možnosti vrstvy symbolů</a> pera od Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
@@ -100,16 +100,16 @@ Vrstva symbolů má k dispozici mnoho možností stylů. Tady je nástroj, kter�
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
+> [SymbolLayer](/javascript/api/azure-maps-control/atlas.layer.symbollayer)
 
 > [!div class="nextstepaction"]
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+> [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)
 
 > [!div class="nextstepaction"]
-> [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
+> [IconOptions](/javascript/api/azure-maps-control/atlas.iconoptions)
 
 > [!div class="nextstepaction"]
-> [TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
+> [TextOptions](/javascript/api/azure-maps-control/atlas.textoptions)
 
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 

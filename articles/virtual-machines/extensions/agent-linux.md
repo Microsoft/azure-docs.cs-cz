@@ -1,19 +1,19 @@
 ---
 title: Přehled agenta virtuálního počítače Azure Linux
 description: Naučte se instalovat a konfigurovat agenta pro Linux (waagent), abyste mohli spravovat interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure.
-author: axayjo
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.author: amjads
+author: amjads1
+ms.collection: linux
 ms.date: 10/17/2016
-ms.author: akjosh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e8851ddd5211536394614727d990a2b52d32bfcc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269117"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565373"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Porozumění a použití agenta Azure Linux
 
@@ -53,7 +53,7 @@ Agent Microsoft Azure Linux (waagent) spravuje systémy Linux & FreeBSD a intera
 * **Rozšíření virtuálního počítače**
   
   * Vložení součásti, kterou vytvořila Microsoft a partneři, do virtuálního počítače se systémem Linux (IaaS), aby bylo možné povolit automatizaci softwaru a konfigurace
-  * Implementace odkazu na rozšíření virtuálních počítačů na[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Implementace odkazu na rozšíření virtuálních počítačů na [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Komunikace
 Tok informací z platformy k agentům probíhá prostřednictvím dvou kanálů:
@@ -84,21 +84,24 @@ Jiné podporované systémy:
 
 Agent pro Linux závisí na některých systémových balíčcích, aby fungoval správně:
 
-* Python 2.6 +
-* OpenSSL 1.0 +
-* OpenSSH 5.3 +
+* Python 2.6 nebo novější
+* OpenSSL 1.0 nebo novější
+* OpenSSH 5.3 nebo novější
 * Nástroje systému souborů: sfdisk, fdisk, mkfs, částečněd
 * Nástroje pro heslo: chpasswd, sudo
 * Nástroje pro zpracování textu: sed, grep
 * Síťové nástroje: IP-Route
 * Podpora jádra pro připojení systémů souborů UDF.
 
+Ujistěte se, že váš virtuální počítač má přístup k IP adrese 168.63.129.16. Další informace najdete v tématu [co je IP adresa 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
+
+
 ## <a name="installation"></a>Instalace
 Upřednostňovanou metodou instalace a upgrade agenta Azure Linux je instalace použití balíčku ot./min. nebo balíčku DEB z úložiště balíčků distribuce. Všichni [poskytovatelé schválené distribuce](../linux/endorsed-distros.md) integrují balíček agenta Azure Linux do svých imagí a úložišť.
 
 Další možnosti instalace najdete v dokumentaci v [úložišti agenta Azure Linux na GitHubu](https://github.com/Azure/WALinuxAgent) , kde najdete rozšířené možnosti instalace, jako je například instalace ze zdroje nebo vlastní umístění nebo předpony.
 
-## <a name="command-line-options"></a>Možnosti příkazového řádku
+## <a name="command-line-options"></a>Možnosti Command-Line
 ### <a name="flags"></a>Příznaky
 * verbose: zvýšit podrobnost zadaného příkazu
 * Force: přeskočit interaktivní potvrzení u některých příkazů

@@ -13,12 +13,13 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 0574eb0b8ab0b5d4de671ad44a45a85e434393f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6a33da602eaa9bee20f155eaa550e558e5dcbeca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115573"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755556"
 ---
 # <a name="app-registration-reference"></a>Reference k registraci aplikací
 
@@ -26,7 +27,7 @@ Tento dokument obsahuje kontext a popisy různých funkcí, které najdete v Azu
 
 ## <a name="my-applications-or-converged-applications"></a>Moje aplikace nebo sblížené aplikace
 
-Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití s koncovým bodem Microsoft Identity Platform (v 2.0). Tyto aplikace mají možnost přihlásit uživatele pomocí osobních účtů Microsoft i pracovních nebo školních účtů z Azure Active Directory. Další informace o koncovém bodu platformy identity najdete v tématu [Přehled verze 2.0](./v2-overview.md). Tyto aplikace je také možné použít k integraci s koncovým bodem ověřování účet Microsoft `https://login.live.com` .
+Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití s platformou Microsoft identity. Tyto aplikace mají možnost přihlásit uživatele pomocí osobních účtů Microsoft i pracovních nebo školních účtů z Azure Active Directory. Další informace o platformě Microsoft identity najdete v tématu [Přehled verze 2.0](./v2-overview.md). Tyto aplikace je také možné použít k integraci s koncovým bodem ověřování účet Microsoft `https://login.live.com` .
 
 ## <a name="azure-ad-only-applications"></a>Jenom aplikace Azure AD
 

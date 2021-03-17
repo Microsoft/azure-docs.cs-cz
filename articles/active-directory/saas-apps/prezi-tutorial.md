@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 994d427fb91f04ea0d2002a2c95e12366f4c6420
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553559"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515317"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Prezi
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Prezi s Azure Active Directory (Azure 
 * Umožněte uživatelům, aby se automaticky přihlásili k Prezi pomocí svých účtů Azure AD.
 * Spravujte své účty v Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -41,7 +41,10 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Prezi podporuje jednotné přihlašování (SSO) spouštěné v SP a IDP.
 * Prezi podporuje zřizování uživatelů za běhu.
-* Po nakonfigurování Prezi můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. Další informace najdete v tématu [vymáhání řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování Prezi můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. Další informace najdete v tématu [vymáhání řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="add-prezi-from-the-gallery"></a>Přidání Prezi z Galerie
 
@@ -73,7 +76,7 @@ Postup při povolení jednotného přihlašování služby Azure AD v Azure Port
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Prezi** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** a upravte nastavení **základní konfigurace SAML**.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu **Upravit** a upravte nastavení **základní konfigurace SAML**.
 
    ![Upravit základní nastavení konfigurace SAML](common/edit-urls.png)
 
@@ -81,7 +84,7 @@ Postup při povolení jednotného přihlašování služby Azure AD v Azure Port
 
 1. Vyberte **nastavit další adresy URL**a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované pomocí **SP**:
 
-    Do pole **přihlašovací adresa** URL zadejte adresu URL `https://prezi.com/login/sso/` .
+    Do pole **přihlašovací adresa** URL zadejte adresu URL: `https://prezi.com/login/sso/` .
 
 1. Vyberte **Uložit**.
 
@@ -96,7 +99,7 @@ Postup při povolení jednotného přihlašování služby Azure AD v Azure Port
     | given_name | User. křestní jméno |
     | family_name | User. příjmení |
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -142,9 +145,9 @@ V této části povolíte B. Simon používat jednotné přihlašování Azure t
 
     ![Karta nastavení](./media/prezi-tutorial/settings-image.png)
 
-1. V části **jednotné přihlašování (SSO)** vyberte přepínač a povolte jednotné přihlašování.
+1. Pokud chcete povolit jednotné přihlašování, přepněte do části **Single Sign-On (SSO)** a zapněte přepínač.
     
-    ![Přepínač jednotného přihlašování (SSO)](./media/prezi-tutorial/single-signon.png)
+    ![Přepínač jednotného Sign-On (SSO)](./media/prezi-tutorial/single-signon.png)
 
 1. V části **jednotné přihlašování (SSO)** použijte následující postup:
 
@@ -166,14 +169,13 @@ V této části se v Prezi vytvoří uživatel s názvem Britta Simon. Prezi pod
 
 V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupového panelu.
 
-Když na přístupovém panelu vyberete dlaždici Prezi, měli byste se automaticky přihlásit k účtu Prezi, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici Prezi, měli byste se automaticky přihlásit k účtu Prezi, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 - [Vyzkoušejte si Prezi s Azure AD](https://aad.portal.azure.com/)
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [Jak chránit Prezi pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Jak chránit Prezi pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

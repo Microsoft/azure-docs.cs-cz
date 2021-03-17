@@ -5,15 +5,15 @@ description: Přečtěte si, jak omezit webový provoz pomocí brány firewall w
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: how-to
+ms.openlocfilehash: 3956c06a0120ad28599c47279b60e6f5dd30204e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74046281"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174508"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Povolení firewallu webových aplikací pomocí Azure PowerShell
 
@@ -21,17 +21,16 @@ Můžete omezit provoz brány Application Gateway pomocí [brány firewall webov
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
-> * Vytvoření škálovací sady virtuálních počítačů
-> * Vytvoření účtu úložiště a konfigurace diagnostiky
+* Nastavit síť
+* Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
+* Vytvoření škálovací sady virtuálních počítačů
+* Vytvoření účtu úložiště a konfigurace diagnostiky
 
 ![Příklad firewallu webových aplikací](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
 Pokud budete chtít, můžete tento článek dokončit pomocí [Azure Portal](application-gateway-web-application-firewall-portal.md) nebo rozhraní příkazového [řádku Azure CLI](tutorial-restrict-web-traffic-cli.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -75,7 +74,7 @@ $pip = New-AzPublicIpAddress `
   -Sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 V této části vytvoříte prostředky, které podporují aplikační bránu, a nakonec je vytvoříte a WAF. K vytvořeným prostředkům patří:
 
@@ -278,13 +277,13 @@ $store = Get-AzStorageAccount `
 Set-AzDiagnosticSetting `
   -ResourceId $appgw.Id `
   -StorageAccountId $store.Id `
-  -Categories ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog, ApplicationGatewayFirewallLog `
+  -Category ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog, ApplicationGatewayFirewallLog `
   -Enabled $true `
   -RetentionEnabled $true `
   -RetentionInDays 30
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy služby Application Gateway můžete použít [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 

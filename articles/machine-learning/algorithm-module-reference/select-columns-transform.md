@@ -1,24 +1,24 @@
 ---
 title: 'Vybrat sloupce transformace: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí modulu výběr sloupců transformace v Azure Machine Learning vytvořit transformaci, která vybere stejnou podmnožinu sloupců jako v dané datové sadě.
+description: Naučte se používat transformační modul Select Columns v Návrháři Azure Machine Learning k provedení transformace SELECT.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: a5264c14294f84858cd489f5892b8cdd19e117d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/10/2020
+ms.openlocfilehash: f03840e55366d7f105ca4b57bd60061c82833e72
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455906"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420712"
 ---
 # <a name="select-columns-transform"></a>Transformace pro výběr sloupců
 
-Tento článek popisuje, jak použít modul pro výběr sloupců transformace v Návrháři Azure Machine Learning (Preview). Účelem modulu transformace sloupce Select je zajistit, aby se v operacích navazujícího strojového učení používala předvídatelná a konzistentní sada sloupců.
+Tento článek popisuje, jak použít modul pro výběr sloupců transformace v Návrháři Azure Machine Learning. Účelem modulu transformace sloupce Select je zajistit, aby se v operacích navazujícího strojového učení používala předvídatelná a konzistentní sada sloupců.
 
 Tento modul je užitečný pro úlohy, jako je například bodování, které vyžadují konkrétní sloupce. Změny v dostupných sloupcích můžou kanál přerušit nebo změnit výsledky.
 
@@ -46,8 +46,14 @@ V tomto scénáři se předpokládá, že chcete pomocí výběru funkcí vygene
 
    *Nepřipojujte vstupní datovou sadu.* Místo toho přidejte modul [použít transformaci](apply-transformation.md) a připojte výstup transformace výběru funkce.
 
+   Struktura kanálu by měla vypadat nějak takto:
+
+   > [!div class="mx-imgBorder"]
+   > ![Vzorový kanál](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > Pro datovou sadu bodování nelze očekávat použití [výběru funkcí založených na filtrech](filter-based-feature-selection.md) a získat stejné výsledky. Vzhledem k tomu, že výběr funkcí je založený na hodnotách, může zvolit jinou sadu sloupců, což by způsobilo selhání operace bodování.
+    
 7. Odešlete kanál.
 
 Tento proces ukládání a následného výběru sloupce zajišťuje, aby bylo pro účely školení a bodování dostupné stejné schéma dat.

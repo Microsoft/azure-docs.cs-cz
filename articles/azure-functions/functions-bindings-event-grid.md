@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 115ff1b59ecbe3f4fdb089c2bd61da955fba3984
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957174"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104542"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid vazby pro Azure Functions
 
@@ -45,7 +45,7 @@ Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balí
 [core tools]: ./functions-run-local.md
 [Sada rozšíření]: ./functions-bindings-register.md#extension-bundles
 [Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid
-[Aktualizace rozšíření]: ./install-update-binding-extensions-manual.md
+[Aktualizace rozšíření]: ./functions-bindings-register.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x

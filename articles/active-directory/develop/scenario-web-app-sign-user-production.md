@@ -1,5 +1,6 @@
 ---
-title: Přesunutí webové aplikace, která se přihlašuje uživatelům, do produkční platformy Microsoft identity | Azure
+title: Přesunutí webové aplikace, která přihlásí uživatele do produkčního prostředí | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se, jak vytvořit webovou aplikaci, která přihlašuje uživatele (přesunout do produkčního prostředí).
 services: active-directory
 author: jmprieur
@@ -11,64 +12,49 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a45b52ac10a44b6efd54c41b3fec1e61a47a35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4a47112d2f66edc8af9b7f100d48bc205f2e85e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82181626"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584293"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Webová aplikace, která přihlašuje uživatele: Přesun do produkčního prostředí
 
-Když teď víte, jak získat token pro volání webových rozhraní API, přečtěte si, jak ho přesunout do produkčního prostředí.
+Teď, když víte, jak získat token pro volání webových rozhraní API, je zde několik věcí, které je potřeba vzít v úvahu při přesunu aplikace do produkčního prostředí.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="troubleshooting"></a>Řešení potíží
+Když se uživatelé poprvé přihlásí k webové aplikaci, budou muset souhlasit. V některých organizacích se ale uživatelům může zobrazit zpráva podobná následující: *AppName potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Než ho budete moct používat, požádejte správce, aby aplikaci udělil oprávnění.*
+Důvodem je to, že správce klienta **zakázal** možnost souhlasu uživatelů. V takovém případě se obraťte na správce klientů, aby učinil souhlas správce pro rozsahy vyžadované aplikací.
 
-### <a name="troubleshooting"></a>Řešení potíží
+## <a name="same-site"></a>Stejná lokalita
 
-> [!NOTE]
-> Když se uživatelé poprvé přihlásí k webové aplikaci, budou muset souhlasit. V některých organizacích se ale uživatelům může zobrazit zpráva podobná následující:
->
-> *AppName potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Než ho budete moct používat, požádejte správce, aby aplikaci udělil oprávnění.*
->
-> Důvodem je to, že správce klienta **zakázal** možnost souhlasu uživatelů. V takovém případě je potřeba kontaktovat správce klientů, aby učinili souhlas správce pro rozsahy vyžadované aplikací.
-
-### <a name="same-site"></a>Stejná lokalita
-
-Ujistěte se, že rozumíte možným problémům s novými verzemi prohlížeče Chrome.
-
-> [!div class="nextstepaction"]
-> [Postup zpracování změn souborů cookie SameSite v prohlížeči Chrome](howto-handle-samesite-cookie-changes-chrome-browser.md)
+Ujistěte se, že rozumíte možným problémům s novými verzemi prohlížeče Chrome: [jak zpracovávat změny souborů cookie SameSite v prohlížeči Chrome](howto-handle-samesite-cookie-changes-chrome-browser.md).
 
 Balíček NuGet Microsoft. identity. Web zpracovává nejběžnější SameSite problémy.
-
-### <a name="scenario-for-calling-web-apis"></a>Scénář pro volání webových rozhraní API
-
-Jakmile se webová aplikace přihlásí uživatelům, může volat webová rozhraní API jménem přihlášených uživatelů. Volání webových rozhraní API z webové aplikace je objektem následujícího scénáře:
-
-> [!div class="nextstepaction"]
-> [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md)
 
 ## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Hluboká podrobně: kurz ASP.NET Core webové aplikace
 
 Přečtěte si o dalších způsobech, jak se přihlašovat uživatelům pomocí tohoto ASP.NET Core kurzu: 
 
-> [!div class="nextstepaction"]
-> [Umožněte vašim webovým aplikacím přihlašovat uživatele a volat rozhraní API s platformou Microsoft identity pro vývojáře.](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+[Umožněte vašim webovým aplikacím přihlašovat uživatele a volat rozhraní API s platformou Microsoft identity pro vývojáře.](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)
 
 Tento postupný kurz obsahuje kód připravený pro produkční prostředí pro webovou aplikaci, včetně postupu přidání přihlášení pomocí účtů v nástroji:
 
 - Vaše organizace
 - Více organizací
 - Pracovní nebo školní účty nebo osobní účty Microsoft
-- [Azure AD B2C](https://aka.ms/aadb2c)
+- [Azure AD B2C](../../active-directory-b2c/overview.md)
 - Národní cloudy
 
 ## <a name="sample-code-java-web-app"></a>Vzorový kód: webová aplikace Java
 
 Přečtěte si další informace o webové aplikaci Java z této ukázky na GitHubu: 
 
-> [!div class="nextstepaction"]
-> [Webová aplikace Java, která přihlašuje uživatele pomocí platformy a volání Microsoft identity Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+[Webová aplikace Java, která přihlašuje uživatele pomocí platformy a volání Microsoft identity Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+
+## <a name="next-steps"></a>Další kroky
+
+Jakmile se webová aplikace přihlásí uživatelům, může volat webová rozhraní API jménem přihlášených uživatelů. Volání webových rozhraní API z webové aplikace je objektem následujícího scénáře: [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md).

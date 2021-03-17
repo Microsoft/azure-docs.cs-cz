@@ -2,18 +2,19 @@
 title: Kurz – vyrovnávání zatížení virtuálních počítačů s Windows v Azure
 description: V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu vytvořit nástroj pro vyrovnávání zatížení pro vysoce dostupnou a zabezpečenou aplikaci na třech virtuálních počítačích s Windows.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b93c8d48313dc41928400efdddf14e88c8a7e6c2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d6c872ecfbad6cb8bb01ad5a7c3df8c47aadaebe
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508114"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549103"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů s Windows v Azure za účelem vytvoření vysoce dostupné aplikace pomocí Azure PowerShellu
 Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto kurzu se seznámíte s různými komponentami nástroje pro vyrovnávání zatížení Azure, které distribuují provoz a zajišťují vysokou dostupnost. Získáte informace o těchto tématech:
@@ -188,7 +189,7 @@ $availabilitySet = New-AzAvailabilitySet `
   -PlatformUpdateDomainCount 2
 ```
 
-Pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce virtuálních počítačů:
+Pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) nastavte uživatelské jméno a heslo správce virtuálních počítačů:
 
 ```azurepowershell-interactive
 $cred = Get-Credential

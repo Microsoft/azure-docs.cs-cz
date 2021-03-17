@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 83827c7a39b2833ce1301e78a0bef4e6d61ec62b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185294"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995297"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Povolení a Správa obnovitelného odstranění pro objekty blob
 
-Částečný odstranění objektu BLOB chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Když je pro účet úložiště povolené obnovitelné odstranění objektů blob, objekty blob, verze objektů BLOB (Preview) a snímky v tomto účtu úložiště se po jejich odstranění můžou obnovit v době uchování, kterou zadáte.
+Částečný odstranění objektu BLOB chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Když je pro účet úložiště povolené obnovitelné odstranění objektů blob, můžou se objekty blob, verze objektů BLOB a snímky v tomto účtu úložiště po jejich odstranění obnovit v rámci doby uchování, kterou zadáte.
 
 Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout funkci BLOB Soft DELETE. V tomto článku se dozvíte, jak povolit obnovitelné odstranění pro objekty blob. Další podrobnosti o obnovitelném odstranění objektů BLOB najdete v tématu [obnovitelné odstranění pro objekty blob](soft-delete-blob-overview.md).
 
@@ -32,9 +32,9 @@ Další informace o tom, jak povolit obnovitelné odstranění kontejnerů, najd
 Povolit obnovitelné odstranění pro objekty BLOB v účtu úložiště pomocí Azure Portal:
 
 1. Na webu [Azure Portal](https://portal.azure.com/) přejděte ke svému účtu úložiště.
-1. V části **BLOB Service**Najděte možnost **Ochrana dat** .
+1. V části **BLOB Service** Najděte možnost **Ochrana dat** .
 1. Nastavte vlastnost **měkkého odstranění objektu BLOB** na *povolenou*.
-1. V části **zásady uchovávání informací**určete, jak dlouho se mají dočasně odstraněné objekty blob uchovávat pomocí Azure Storage.
+1. V části **zásady uchovávání informací** určete, jak dlouho se mají dočasně odstraněné objekty blob uchovávat pomocí Azure Storage.
 1. Uložte provedené změny.
 
 ![Snímek obrazovky webu Azure Portal se zvolenou službou data Protection BLOB](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
@@ -194,5 +194,5 @@ blockBlob.StartCopy(copySource);
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Obnovitelné odstranění pro úložiště objektů BLOB](soft-delete-overview.md)
-- [Správa verzí objektů BLOB (Preview)](versioning-overview.md)
+- [Obnovitelné odstranění pro úložiště objektů BLOB](./soft-delete-blob-overview.md)
+- [Správa verzí objektů BLOB](versioning-overview.md)

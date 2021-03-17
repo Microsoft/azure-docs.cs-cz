@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: ee071f2cf6e31d46ccd483935f137f16bcacf337
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d125471d4a6c68aff12921a8524a91ef75b6c51a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86545009"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532575"
 ---
 Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, což je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Vyberte **Kopírovat** a zkopírujte kód a vložte ho do Cloud Shell. Pak vyberte **ENTER** a spusťte ji. K dispozici je několik způsobů, jak spustit Cloud Shell:
 
@@ -27,6 +27,6 @@ Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, což je bezpla
 
 Pokud nechcete používat Azure Cloud Shell, můžete místo toho nainstalovat PowerShell místně. Pokud se rozhodnete nainstalovat a používat PowerShell místně, nezapomeňte nainstalovat nejnovější verzi rutin Azure Resource Manager PowerShellu. Rutiny PowerShellu se často aktualizují. Obvykle je potřeba aktualizovat rutiny PowerShellu, abyste získali nejnovější funkce funkcí. Pokud to neuděláte, může dojít k problémům.
 
-Verzi PowerShellu, kterou používáte místně, zjistíte pomocí rutiny **Get-Module-ListAvailable AZ** . Chcete-li provést aktualizaci, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). Další informace najdete v tématu [instalace a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/overview).
+Verzi PowerShellu, kterou používáte místně, zjistíte pomocí rutiny **Get-Module-ListAvailable AZ** . Chcete-li provést aktualizaci, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Další informace najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/azurerm/overview).
 
-Pokud používáte prostředí PowerShell v macOS, postupujte podle kroků v části [instalace prostředí PowerShell v MacOS.](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6)
+Pokud používáte prostředí PowerShell v macOS, postupujte podle kroků v části [instalace prostředí PowerShell v MacOS.](/powershell/scripting/install/installing-powershell-core-on-macos)

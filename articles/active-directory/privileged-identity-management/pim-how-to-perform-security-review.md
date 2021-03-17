@@ -14,16 +14,16 @@ ms.date: 04/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4096c65fa4375152f44891d4a0a5aac4b9077cf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dd0b63e08f44167b89b6e2d491722f3708b4036
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743843"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90055431"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Kontrola přístupu k rolím Azure AD v Privileged Identity Management
 
-Privileged Identity Management (PIM) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům v Azure Active Directory (AD) a dalších online služby Microsoftu, jako je například sada Office 365 nebo Microsoft Intune. Podle kroků v tomto článku můžete úspěšně zkontrolovat přiřazené role.
+Privileged Identity Management (PIM) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům v Azure Active Directory (AD) a dalších online služby Microsoftu, jako je Microsoft 365 nebo Microsoft Intune. Podle kroků v tomto článku můžete úspěšně zkontrolovat přiřazené role.
 
 Pokud jste přihlášeni k roli správce, může správce privilegovaných rolí vaší organizace požádat o pravidelné potvrzení, že pro vaši úlohu stále potřebujete tuto roli. Můžete obdržet e-mail, který obsahuje odkaz, nebo můžete přejít přímo na [Azure Portal](https://portal.azure.com) a začít.
 

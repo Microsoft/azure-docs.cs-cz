@@ -3,22 +3,18 @@ title: 'Rychlý Start: vytvoření účtu Automation – šablona Azure'
 titleSuffix: Azure Automation
 description: V tomto rychlém startu se dozvíte, jak vytvořit účet Automation pomocí šablony Azure Resource Manager.
 services: automation
-documentationcenter: na
-author: mgoedtel
 Customer intent: I want to create an Automation account by using an Azure Resource Manager template so that I can automate processes with runbooks.
-ms.service: automation
-ms.devlang: na
 ms.topic: quickstart
 ms.workload: infrastructure-services
-ms.date: 07/23/2020
+ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 37a619fe3279d1cb03763b14c3dfc9e315d850b9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4d7d4b5af9b86fe5116dc29f6ed1a789cdbf2047
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685625"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581091"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rychlý Start: vytvoření účtu Automation pomocí šablony ARM
 
@@ -44,7 +40,7 @@ Tato ukázková šablona provede následující:
 * Přidá do účtu ukázkové Runbooky pro automatizaci.
 
 >[!NOTE]
->Vytvoření účtu Automation spustit jako není podporované, když používáte šablonu ARM. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Správa účtů spustit jako](manage-runas-account.md).
+>Vytvoření účtu Automation spustit jako není podporované, když používáte šablonu ARM. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Vytvoření účtu Spustit jako](create-run-as-account.md).
 
 Po dokončení těchto kroků je potřeba [nakonfigurovat nastavení diagnostiky](automation-manage-send-joblogs-log-analytics.md) pro váš účet Automation, aby se odesílaly datové proudy úloh Runbooku do propojeného Log Analytics pracovního prostoru.
 
@@ -60,7 +56,7 @@ Následující tabulka uvádí verzi rozhraní API pro prostředky použité v t
 |:---|:---|:---|
 | [Pracovní prostor](/azure/templates/microsoft.operationalinsights/workspaces) | pracovní prostory | 2020-03-01 – Preview |
 | [Účet služby Automation](/azure/templates/microsoft.automation/automationaccounts) | automatizace | 2020-01-13 – Preview |
-| [Propojené služby v pracovním prostoru](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | worksapces | 2020-03-01 – Preview |
+| [Propojené služby v pracovním prostoru](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | pracovní prostory | 2020-03-01 – Preview |
 
 ### <a name="before-you-use-the-template"></a>Před použitím šablony
 
@@ -84,11 +80,11 @@ Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro Log
 
 Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste porozuměli následujícím podrobnostem o konfiguraci. Můžou vám zabránit chybám při pokusu o vytvoření, konfiguraci a používání pracovního prostoru Log Analytics propojeného s vaším novým účtem Automation.
 
-* Přečtěte si [Další podrobnosti](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) , abyste plně pochopili možnosti konfigurace pracovního prostoru, jako je režim řízení přístupu, cenová úroveň, uchování a úroveň rezervace kapacity.
+* Přečtěte si [Další podrobnosti](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace) , abyste plně pochopili možnosti konfigurace pracovního prostoru, jako je režim řízení přístupu, cenová úroveň, uchování a úroveň rezervace kapacity.
 
 * Zkontrolujte [mapování pracovních prostorů](how-to/region-mappings.md) a určete podporované oblasti v inline nebo v souboru parametrů. Pro propojení Log Analyticsho pracovního prostoru a účtu Automation v rámci předplatného se podporují jenom některé oblasti.
 
-* Pokud jste s protokoly Azure Monitor a ještě nemáte nasazený pracovní prostor, měli byste si projít pokyny k [návrhu pracovního prostoru](../azure-monitor/platform/design-logs-deployment.md). Pomůže vám se dozvědět o řízení přístupu a porozumět strategiích implementace návrhu, které doporučujeme pro vaši organizaci.
+* Pokud jste s protokoly Azure Monitor a ještě nemáte nasazený pracovní prostor, měli byste si projít pokyny k [návrhu pracovního prostoru](../azure-monitor/logs/design-logs-deployment.md). Pomůže vám se dozvědět o řízení přístupu a porozumět strategiích implementace návrhu, které doporučujeme pro vaši organizaci.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -104,7 +100,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal otevřete účet Automation, který jste právě vytvořili. 
 

@@ -3,27 +3,27 @@ title: Monitorování stavu aplikace IoT Central v Azure | Microsoft Docs
 description: Jako operátor nebo správce monitorujte celkový stav zařízení připojených k vaší IoT Central aplikaci.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001899"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577042"
 ---
-# <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>Monitorování celkového stavu zařízení připojených k aplikaci IoT Central
+# <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Monitorování celkového stavu aplikace IoT Central
 
 > [!NOTE]
 > Metriky jsou k dispozici pouze pro aplikace IoT Central verze 3. Informace o tom, jak zjistit verzi vaší aplikace, najdete v tématu [o vaší aplikaci](./howto-get-app-info.md).
 
 *Tento článek se týká operátorů a správců.*
 
-V tomto článku se naučíte, jak pomocí sady metrik poskytovaných pomocí IoT Central posoudit celkový stav zařízení připojených k vaší IoT Central aplikaci.
+V tomto článku se naučíte, jak pomocí sady metrik poskytovaných pomocí IoT Central vyhodnotit stav zařízení, která jsou připojená k vaší IoT Central aplikaci, a stav vašich spuštěných exportů dat.
 
-Metriky jsou ve výchozím nastavení povolené pro vaši aplikaci IoT Central a vy k nim přistupujete z [Azure Portal](https://portal.azure.com/). [Azure monitor datovou platformu zpřístupňuje tyto metriky](../../azure-monitor/platform/data-platform-metrics.md) a nabízí několik způsobů, jak s nimi pracovat. Například můžete použít grafy v Azure Portal, REST API nebo dotazech v prostředí PowerShell nebo v rozhraní příkazového řádku Azure CLI.
+Metriky jsou ve výchozím nastavení povolené pro vaši aplikaci IoT Central a vy k nim přistupujete z [Azure Portal](https://portal.azure.com/). [Azure monitor datovou platformu zpřístupňuje tyto metriky](../../azure-monitor/essentials/data-platform-metrics.md) a nabízí několik způsobů, jak s nimi pracovat. Například můžete použít grafy v Azure Portal, REST API nebo dotazech v prostředí PowerShell nebo v rozhraní příkazového řádku Azure CLI.
 
 ### <a name="trial-applications"></a>Zkušební verze aplikací
 
@@ -31,7 +31,7 @@ Aplikace, které používají bezplatný zkušební plán, nemají přidružené
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Zobrazit metriky v Azure Portal
 
-V následujících krocích se předpokládá, že máte [aplikaci IoT Central](./quick-deploy-iot-central.md) s některými [připojenými zařízeními](./tutorial-connect-device-nodejs.md).
+V následujících krocích se předpokládá, že máte [aplikaci IoT Central](./quick-deploy-iot-central.md) s některými [připojenými zařízeními](./tutorial-connect-device.md) nebo s [exportem](howto-export-data.md)běžících dat.
 
 Postup zobrazení IoT Centralch metrik na portálu:
 
@@ -46,7 +46,7 @@ Přístup k metrikám v Azure Portal spravuje [řízení přístupu na základě
 
 ## <a name="iot-central-metrics"></a>IoT Central metriky
 
-Seznam metrik, které jsou aktuálně k dispozici pro IoT Central, najdete v tématu [podporované metriky s Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps).
+Seznam metrik, které jsou aktuálně k dispozici pro IoT Central, najdete v tématu [podporované metriky s Azure monitor](../../azure-monitor/essentials/metrics-supported.md#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Metriky a faktury
 
@@ -60,4 +60,4 @@ Metriky se můžou lišit od čísel zobrazených na faktuře Azure IoT Central.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se seznámili s použitím šablon aplikací, je navržený další krok, kde se dozvíte, jak [spravovat IoT Central z Azure Portal](howto-manage-iot-central-from-portal.md)
+Teď, když jste se seznámili s použitím šablon aplikací, je navržený další krok, kde se dozvíte, jak [spravovat IoT Central z Azure Portal](howto-manage-iot-central-from-portal.md).

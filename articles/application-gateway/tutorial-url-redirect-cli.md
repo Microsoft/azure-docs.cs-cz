@@ -6,19 +6,19 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 03/05/2021
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9bde9f86987602b69907a36fe4d8298834b14c3e
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: aa247d868e19831b3e6f1c3f68e605fb209a0664
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245838"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218311"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Kurz: Vytvoření aplikační brány s Azure CLI se směrováním založeným na cestě URL
 
-Při vytváření [aplikační brány](application-gateway-introduction.md) můžete Azure CLI použít ke konfiguraci [pravidel směrování podle adres URL](tutorial-url-route-cli.md). V tomto kurzu vytvoříte back-endové fondy pomocí [škálovacích sad virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pak vytvoříte pravidla směrování adres URL, která zajistí přesměrování webového provozu na správný back-endový fond.
+Při vytváření [aplikační brány](./overview.md) můžete Azure CLI použít ke konfiguraci [pravidel směrování podle adres URL](tutorial-url-route-cli.md). V tomto kurzu vytvoříte back-endové fondy pomocí [škálovacích sad virtuálních počítačů](../virtual-machine-scale-sets/overview.md). Pak vytvoříte pravidla směrování adres URL, která zajistí přesměrování webového provozu na správný back-endový fond.
 
 V tomto kurzu se naučíte:
 
@@ -34,13 +34,11 @@ Na následujícím příkladu je vidět přesměrování webového provozu, kter
 
 Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](tutorial-url-redirect-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Požadavky 
-
-Pokud se rozhodnete nainstalovat a používat CLI místně, potřebujete k tomuto kurzu verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+ - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -238,7 +236,9 @@ az network application-gateway rule create \
 
 V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Vytvořené škálovací sady se budou jmenovat *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
 
-```azurecli-interactive
+Nahraďte \<azure-user> a \<password> názvem uživatelského jména a hesla podle svého výběru.
+
+```azurecli
 for i in `seq 1 3`; do
   if [ $i -eq 1 ]
   then
@@ -257,8 +257,8 @@ for i in `seq 1 3`; do
     --name myvmss$i \
     --resource-group myResourceGroupAG \
     --image UbuntuLTS \
-    --admin-username azureuser \
-    --admin-password Azure123456! \
+    --admin-username <azure-user> \
+    --admin-password <password> \
     --instance-count 2 \
     --vnet-name myVNet \
     --subnet myBackendSubnet \
@@ -318,4 +318,4 @@ az group delete --name myResourceGroupAG
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o možnostech aplikační brány](application-gateway-introduction.md)
+> [Další informace o možnostech aplikační brány](./overview.md)

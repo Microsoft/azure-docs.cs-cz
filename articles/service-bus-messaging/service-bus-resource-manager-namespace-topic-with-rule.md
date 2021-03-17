@@ -6,13 +6,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3a53cadbdf7529a2690594617122e84f355e0e46
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 3f3287dd67f89f678a9875ddce93e2d0d26b2209
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065654"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89077620"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů Service Bus s použitím tématu, předplatného a pravidla pomocí šablony Azure Resource Manager
 

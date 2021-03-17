@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 2fadfac3fe9e66c3a05e2cceed19def607ff72c3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aa4bab2f7ecb90c61e22de46b01a5ed81342a408
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539262"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319185"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s 123FormBuilder SSO
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování 123FormBuil
 * Umožněte uživatelům, aby se automaticky přihlásili k 123FormBuilder SSO pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * 123FormBuilder SSO podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 * 123FormBuilder jednotného přihlašování **podporuje jednotné** zřizování uživatelů.
-* Po nakonfigurování jednotného přihlašování 123FormBuilder můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování jednotného přihlašování 123FormBuilder můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-123formbuilder-sso-from-the-gallery"></a>Přidání jednotného přihlašování 123FormBuilder z Galerie
 
@@ -109,7 +109,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -133,7 +133,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Pokud chcete nakonfigurovat jednotné přihlašování na **123FORMBUILDER SSO** , použijte [https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/) následující postup a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/123formbuilder-tutorial/submit.png) 
+    ![Snímek obrazovky s přihlašováním – obrazovka konfigurace zprostředkovatele identity SAML](./media/123formbuilder-tutorial/submit.png) 
 
     a. Do textového pole **e-mail** zadejte e-maily uživatele, jako je `B.Simon@Contoso.com` .
 
@@ -143,7 +143,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. V **Microsoft Azure AD – jednotné přihlašování – konfigurovat nastavení aplikace** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/123formbuilder-tutorial/url3.png)
+    ![Konfigurace jednoho Sign-On](./media/123formbuilder-tutorial/url3.png)
 
     a. Pokud chcete nakonfigurovat aplikaci v **režimu iniciované IDP**, zkopírujte hodnotu **identifikátoru** instance a vložte ji do textového pole **identifikátoru** v základní části **Konfigurace SAML** na Azure Portal.
 
@@ -159,16 +159,16 @@ V této části se uživatel s názvem Britta Simon vytvoří v rámci 123FormBu
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici 123FormBuilder SSO na přístupovém panelu, měli byste se automaticky přihlásit k 123FormBuilder SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici 123FormBuilder SSO na přístupovém panelu, měli byste se automaticky přihlásit k 123FormBuilder SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si 123FormBuilder SSO pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

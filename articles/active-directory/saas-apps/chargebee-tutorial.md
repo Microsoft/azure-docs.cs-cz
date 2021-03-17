@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 22753b80931956af6ce448cfee974ae746fff6e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529473"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456209"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Kurz: integrace Chargebee s Azure Active Directory
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Chargebee s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Chargebee svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -61,7 +61,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-2. **[Nakonfigurujte CHARGEBEE SSO](#configure-chargebee-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte CHARGEBEE SSO](#configure-chargebee-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
     1. **[Vytvořte Chargebee Test User](#create-chargebee-test-user)** -to, abyste měli protějšek B. Simon v Chargebee, která je propojená s reprezentací uživatele v Azure AD.
 3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
@@ -71,7 +71,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Chargebee** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -88,7 +88,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > `<domainname>` je název domény, kterou uživatel vytvoří po vynucení účtu. V případě jakýchkoli dalších informací se obraťte na [tým podpory Chargebee Client](mailto:support@chargebee.com). Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -106,7 +106,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -132,11 +132,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. V levé části nabídky klikněte na **Nastavení**  >  **Security**  >  **Spravovat**zabezpečení.
 
-    ![Konfigurace Chargebee](./media/chargebee-tutorial/config01.png)
+    ![Snímek obrazovky zobrazuje web společnosti Chargebee s vybraným nastavením, zabezpečením a správou.](./media/chargebee-tutorial/config01.png)
 
 5. V automaticky otevíraném okně **jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace Chargebee](./media/chargebee-tutorial/config02.png)
+    ![Snímek obrazovky se zobrazí dialogové okno jedna Sign-On s vybraným SAML a možností pro potvrzení.](./media/chargebee-tutorial/config02.png)
 
     a. Vyberte **SAML**.
 
@@ -156,23 +156,22 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k Chargebee, musí být 
 
 2. Na levé straně nabídky klikněte na **zákazníci** a pak přejděte k **Vytvoření nového zákazníka**.
 
-    ![Konfigurace Freedcamp](./media/chargebee-tutorial/config03.png)
+    ![Snímek obrazovky s zákazníky zobrazuje web Chargebee a vytvoří nového zákazníka.](./media/chargebee-tutorial/config03.png)
 
 3. Na stránce **Nový zákazník** vyplňte příslušná pole, která jsou zobrazena níže, a klikněte na **vytvořit zákazníka** pro vytvoření uživatele.
 
-    ![Konfigurace Freedcamp](./media/chargebee-tutorial/config04.png)
+    ![Snímek obrazovky se zobrazí na stránce nového zákazníka, kde můžete zadat informace o zákaznících.](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Chargebee, měli byste se automaticky přihlásit k Chargebee, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Chargebee, měli byste se automaticky přihlásit k Chargebee, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

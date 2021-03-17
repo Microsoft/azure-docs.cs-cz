@@ -10,15 +10,15 @@ ms.date: 03/19/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.openlocfilehash: 2b3d4993406f150b2983d4d820f7d070b5de1e96
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87374814"
 ---
 V tomto rychlém startu můžete začít vyhledávat zprávy pomocí Vvyhledávání videí Bingu klientské knihovny pro Java. I když Vvyhledávání videí Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch)s dalšími poznámkami a funkcemi.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Sada Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
@@ -158,7 +158,7 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
 > [!div class="nextstepaction"]
 > [Vytvoření webové aplikace s jednou stránkou](../../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Viz také 
 
 * [Co je rozhraní API Bingu pro vyhledávání videí?](../../overview.md)
 * [Ukázky sady .NET SDK pro rozpoznávání služeb](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

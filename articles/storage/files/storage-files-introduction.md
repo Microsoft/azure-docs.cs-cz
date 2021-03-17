@@ -4,18 +4,18 @@ description: Přehled služby Soubory Azure, která umožňuje vytvářet a pou�
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 03/10/2018
+ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80666791"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070129"
 ---
-# <a name="what-is-azure-files"></a>Co je služba Soubory Azure?
-Azure Files nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. Sdílené složky Azure je navíc možné ukládat do mezipaměti ve Windows Serveru pomocí Synchronizace souborů Azure, aby byly rychle přístupné poblíž místa, kde se data používají.
+# <a name="what-is-azure-files"></a>Co je Azure Files?
+Soubory Azure nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardního standardního [protokolu SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) nebo [protokolu NFS (Network File System)](https://en.wikipedia.org/wiki/Network_File_System). Sdílené složky Azure je možné připojit souběžně pomocí cloudu nebo místních nasazení. Sdílené složky SMB souborů protokolu SMB jsou dostupné z klientů s Windows, Linuxem a macOS. Sdílené složky souborů NFS služby Azure jsou přístupné z klientů se systémem Linux nebo macOS. Kromě toho se sdílené složky SMB souborů protokolu SMB můžou ukládat do mezipaměti na serverech Windows s Azure File Sync pro rychlý přístup poblíž místa, kde se data používají.
 
 ## <a name="videos"></a>Videa
 | Představujeme Azure File Sync | Soubory Azure se synchronizací (Ignite 2019)  |
@@ -30,13 +30,13 @@ Tady jsou některá videa o běžných případech použití souborů Azure:
 Sdílené složky Azure lze použít k těmto činnostem:
 
 * **Nahrazení nebo doplnění místních souborových serverů:**  
-    Službu Soubory Azure je možné použít k úplnému nahrazení nebo doplnění tradičních místních souborových serverů nebo zařízení NAS. Oblíbené operační systémy jako Windows, macOS a Linux můžou sdílené složky Azure přímo připojit, bez ohledu na to, kde na světě se nacházejí. Sdílené složky Azure lze také pomocí Synchronizace souborů Azure replikovat na místní nebo cloudové servery Windows Server. Tím se zajistí výkonné a distribuované ukládání dat do mezipaměti v místě, kde se tato data používají. S nejnovější verzí [ověřování Azure File AD](storage-files-active-directory-overview.md)můžou sdílené složky Azure dál spolupracovat se službou AD hostované místně pro řízení přístupu. 
+    Službu Soubory Azure je možné použít k úplnému nahrazení nebo doplnění tradičních místních souborových serverů nebo zařízení NAS. Oblíbené operační systémy jako Windows, macOS a Linux můžou sdílené složky Azure přímo připojit, bez ohledu na to, kde na světě se nacházejí. Sdílené složky SMB souborů Azure je také možné replikovat pomocí Azure File Sync na servery Windows, a to buď místně, nebo v cloudu, pro výkon a distribuované ukládání dat do mezipaměti, kde se používají. S nejnovější verzí [ověřování Azure File AD](storage-files-active-directory-overview.md)můžou sdílené složky SMB souborů Azure dál spolupracovat se službou AD hostované místně pro řízení přístupu. 
 
 * **Aplikace typu "výtah a Shift"**:  
     Služba Soubory Azure usnadňuje migraci aplikací, které očekávají uchovávání souborové aplikace nebo uživatelských dat ve sdílené složce, do cloudu metodou „lift and shift“. Služba Soubory Azure podporuje klasický scénář migrace metodou „lift and shift“, při které se do Azure přesouvá aplikace i její data, i hybridní scénář migrace metodou „lift and shift“, při které se data aplikace přesouvají do služby Soubory Azure a aplikace se nadále spouští místně. 
 
 * **Zjednodušení vývoje pro Cloud**:  
-    S použitím služby Soubory Azure je také možné nejrůznějšími způsoby zjednodušit nové projekty vývoje pro cloud. Příklad:
+    S použitím služby Soubory Azure je také možné nejrůznějšími způsoby zjednodušit nové projekty vývoje pro cloud. Například:
     * **Nastavení sdílené aplikace**:  
         Běžným vzorem pro distribuované aplikace je mít konfigurační soubory v centralizovaném umístění, kde k nim může přistupovat mnoho instancí aplikací. Instance aplikací můžou načítat vlastní konfiguraci prostřednictvím souborového rozhraní REST API a uživatelé k nim můžou podle potřeby přistupovat připojením sdílené složky SMB v místním prostředí.
 
@@ -45,16 +45,20 @@ Sdílené složky Azure lze použít k těmto činnostem:
 
     * **Vývoj, testování a ladění:**  
         Vývojáři nebo správci při práci na virtuálních počítačích v cloudu často potřebují sadu nástrojů nebo pomůcek. Kopírování takových pomůcek a nástrojů na každý virtuální počítač může být časově náročné. Díky místnímu připojení sdílené složky Azure na virtuálních počítačích můžou vývojáři i správci rychle přistupovat ke svým nástrojům, aniž by museli provádět kopírování.
+* **Kontejner**:  
+    Sdílené složky Azure je možné použít jako trvalé svazky pro stavové kontejnery. Kontejnery dodávají "sestavování" jednou a spustí možnosti, které vývojářům umožňují zrychlit inovace. V případě kontejnerů, které při každém spuštění přistupují k nezpracovaným datům, se vyžaduje sdílený systém souborů, který umožňuje těmto kontejnerům přístup k systému souborů bez ohledu na to, ve které instanci se spouštějí.
 
 ## <a name="key-benefits"></a>Klíčové výhody
-* **Sdílený přístup**. Sdílené složky Azure podporují standardní oborový protokol SMB, takže můžete bez problémů nahradit místní sdílené složky za sdílené složky Azure, aniž by bylo potřeba řešit kompatibilitu aplikací. Schopnost sdílet systém souborů mezi několika počítači, aplikacemi a instancemi představuje výraznou výhodu služby Soubory Azure pro aplikace potřebující možnost sdílení. 
+* **Sdílený přístup**. Sdílené složky Azure podporují standardní oborové protokoly SMB a NFS, což znamená, že můžete bezproblémově nahradit místní sdílené složky sdílenými složkami Azure, aniž byste se museli starat o kompatibilitu aplikací. Schopnost sdílet systém souborů mezi několika počítači, aplikacemi a instancemi představuje výraznou výhodu služby Soubory Azure pro aplikace potřebující možnost sdílení. 
 * **Plně spravovaná**. Sdílené složky Azure je možné vytvářet bez nutnosti spravovat hardware nebo operační systém. To znamená, že se nemusíte starat o opravy operačního systému serveru pomocí důležitých upgradů zabezpečení ani o nahrazování vadných pevných disků.
-* **Skriptování a nástroje**. Rutiny PowerShellu a Azure CLI je možné použít k vytváření, připojování a správě sdílených složek Azure v rámci správy aplikací Azure. Sdílené složky Azure můžete vytvářet a spravovat pomocí webu Azure Portal a Průzkumníka služby Azure Storage. 
-* **Odolnost**proti chybám. Služba Soubory Azure je od základu vytvořena tak, aby byla vždy dostupná. Nahrazení místních sdílených složek za Soubory Azure znamená, že už se nebudete muset probouzet kvůli řešení místních výpadků napájení nebo problémů se sítí. 
-* **Známá programovatelnost**. Aplikace spuštěné v Azure můžou k datům ve sdílené složce přistupovat přes [rozhraní API pro vstup/výstup souborového systému](https://msdn.microsoft.com/library/system.io.file.aspx). Vývojáři tedy můžou využít svoje dovednosti a znalosti kódu při migraci stávajících aplikací. Kromě rozhraní API pro vstup/výstup systému můžete použít [klientské knihovny pro Azure Storage](https://msdn.microsoft.com/library/azure/dn261237.aspx) nebo [rozhraní REST API pro Azure Storage](/rest/api/storageservices/file-service-rest-api).
+* **Skriptování a nástroje**. Rutiny PowerShellu a Azure CLI je možné použít k vytváření, připojování a správě sdílených složek Azure v rámci správy aplikací Azure. Sdílené složky Azure můžete vytvářet a spravovat pomocí Azure Portal a Průzkumník služby Azure Storage. 
+* **Odolnost** proti chybám. Služba Soubory Azure je od základu vytvořena tak, aby byla vždy dostupná. Nahrazení místních sdílených složek za Soubory Azure znamená, že už se nebudete muset probouzet kvůli řešení místních výpadků napájení nebo problémů se sítí. 
+* **Známá programovatelnost**. Aplikace spuštěné v Azure můžou k datům ve sdílené složce přistupovat přes [rozhraní API pro vstup/výstup souborového systému](/dotnet/api/system.io.file). Vývojáři tedy můžou využít svoje dovednosti a znalosti kódu při migraci stávajících aplikací. Kromě rozhraní API pro vstup/výstup systému můžete použít [klientské knihovny pro Azure Storage](/previous-versions/azure/dn261237(v=azure.100)) nebo [rozhraní REST API pro Azure Storage](/rest/api/storageservices/file-service-rest-api).
 
 ## <a name="next-steps"></a>Další kroky
+* [Další informace o dostupných protokolech sdílení souborů](storage-files-compare-protocols.md)
 * [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md)
-* [Připojení a připojení ve Windows](storage-how-to-use-files-windows.md)
-* [Připojení a připojení v systému Linux](storage-how-to-use-files-linux.md)
-* [Připojení a připojení na macOS](storage-how-to-use-files-mac.md)
+* [Připojení a připojení sdílené složky SMB ve Windows](storage-how-to-use-files-windows.md)
+* [Připojení a připojení sdílené složky SMB v systému Linux](storage-how-to-use-files-linux.md)
+* [Připojení a připojení sdílené složky SMB na macOS](storage-how-to-use-files-mac.md)
+* [Postup vytvoření sdílené složky systému souborů NFS](storage-files-how-to-create-nfs-shares.md)

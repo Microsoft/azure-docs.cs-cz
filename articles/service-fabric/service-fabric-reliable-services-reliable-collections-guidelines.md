@@ -3,17 +3,17 @@ title: Pokyny pro spolehlivé kolekce
 description: Pokyny a doporučení pro použití Service Fabric spolehlivých kolekcí v aplikaci Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260912"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784321"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Pokyny a doporučení pro spolehlivé kolekce v Azure Service Fabric
 V této části najdete pokyny pro použití spolehlivého správce stavu a spolehlivých kolekcí. Cílem je pomáhat uživatelům vyhnout se běžným nástrah.
 
-Pokyny jsou uspořádané jako jednoduchá doporučení s předponou, zvažte *,* jestli *Consider* *nechcete a nechcete*. *Avoid*
+Pokyny jsou uspořádané jako jednoduchá doporučení s předponou, zvažte *,* jestli  *nechcete a nechcete*. 
 
 * Neupravujte objekt vlastního typu vráceného operacemi čtení (například `TryPeekAsync` nebo `TryGetValueAsync` ). Spolehlivé kolekce, stejně jako souběžné kolekce, vrátí odkaz na objekty a nikoli kopii.
 * Před úpravou přepište vrácený objekt vlastního typu. Vzhledem k tomu, že struktury a předdefinované typy jsou předávány, nemusíte provádět hloubkovou kopii, pokud neobsahují pole typu odkazu nebo vlastnosti, které chcete upravit.
@@ -40,17 +40,17 @@ Tady je několik věcí, které je potřeba vzít v úvahu:
   To znamená, že ve verzi dat, která je čtena z jednoho sekundárního, může být nepravdivá.
   Čtení z primární jsou vždycky stabilní: nedají se na něj nikdy zabývat.
 * Zabezpečení/Ochrana osobních údajů pro data trvalá vaší aplikací ve spolehlivé kolekci je vaším rozhodnutím a podléhá ochranám, které poskytuje vaše Správa úložiště; t. K ochraně vašich dat v klidovém režimu se dá použít šifrování disku s operačním systémem.
-* `ReliableDictionary`výčet používá seřazenou datovou strukturu seřazenou podle klíče. Aby bylo možné výčet efektivně provést, jsou potvrzení přidána do dočasné zatřiďovací tabulky a později přesunuta do hlavního kontrolního bodu s řazenou strukturou dat. Příkaz Přidat/aktualizovat/odstranit má nejlepší běhové prostředí o (1) a nejhorší běhové prostředí v (log n) v případě ověření přítomnosti klíče. Může se jednat O (1) nebo O (protokol n) v závislosti na tom, zda čtete z nedávného potvrzení nebo ze staršího potvrzení.
+* `ReliableDictionary` výčet používá seřazenou datovou strukturu seřazenou podle klíče. Aby bylo možné výčet efektivně provést, jsou potvrzení přidána do dočasné zatřiďovací tabulky a později přesunuta do hlavního kontrolního bodu s řazenou strukturou dat. Příkaz Přidat/aktualizovat/odstranit má nejlepší běhové prostředí o (1) a nejhorší běhové prostředí v (log n) v případě ověření přítomnosti klíče. Může se jednat O (1) nebo O (protokol n) v závislosti na tom, zda čtete z nedávného potvrzení nebo ze staršího potvrzení.
 
 ## <a name="volatile-reliable-collections"></a>Volatile Reliable Collections
 Při rozhodování o použití volatile spolehlivých kolekcí Vezměte v úvahu následující skutečnosti:
 
-* ```ReliableDictionary```má nestálou podporu
-* ```ReliableQueue```má nestálou podporu
-* ```ReliableConcurrentQueue```nemá nestálou podporu
+* ```ReliableDictionary``` má nestálou podporu
+* ```ReliableQueue``` má nestálou podporu
+* ```ReliableConcurrentQueue``` nemá nestálou podporu
 * Trvalé služby nelze nastavit jako nestálé. Změna ```HasPersistedState``` příznaku ```false``` vyžaduje opětovné vytvoření celé služby od začátku.
 * Nestálé služby nelze nastavit jako trvalé. Změna ```HasPersistedState``` příznaku ```true``` vyžaduje opětovné vytvoření celé služby od začátku.
-* ```HasPersistedState```je konfigurace na úrovni služby. To znamená, že **všechny** kolekce budou buď trvalé, nebo nestálé. Nemůžete kombinovat nestálé a trvalé kolekce.
+* ```HasPersistedState``` je konfigurace na úrovni služby. To znamená, že **všechny** kolekce budou buď trvalé, nebo nestálé. Nemůžete kombinovat nestálé a trvalé kolekce.
 * Při ztrátě kvora u těkavých oddílů dojde k úplné ztrátě dat.
 * Zálohování a obnovení není pro službu volatile k dispozici.
 
@@ -59,9 +59,9 @@ Při rozhodování o použití volatile spolehlivých kolekcí Vezměte v úvahu
 * [Transakce a zámky](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Správa dat
   * [Zálohování a obnovení](service-fabric-reliable-services-backup-restore.md)
-  * [Připomenutí](service-fabric-reliable-services-notifications.md)
+  * [Oznámení](service-fabric-reliable-services-notifications.md)
   * [Serializace a upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Konfigurace spolehlivého správce stavu](service-fabric-reliable-services-configuration.md)
 * Ostatní
   * [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start.md)
-  * [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 65b3d5a29028214a52e6b26430472394c91c6f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81c92b6ef5bdf89391364bc238f55200eb3679f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887063"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778169"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Monitorování stavu prostředků Azure CDN
   
-Stav prostředku Azure CDN je podmnožinou [stavu prostředků Azure](../resource-health/resource-health-overview.md).  Pomocí služby Azure Resource Health můžete monitorovat stav prostředků CDN a získávat užitečné pokyny k odstraňování problémů.
+Stav prostředku Azure CDN je podmnožinou [stavu prostředků Azure](../service-health/resource-health-overview.md).  Pomocí služby Azure Resource Health můžete monitorovat stav prostředků CDN a získávat užitečné pokyny k odstraňování problémů.
 
 >[!IMPORTANT] 
 >Azure CDN stav prostředků jenom v současnosti účty pro stav globálních doručování CDN a funkcí rozhraní API.  Azure CDN Resource Health neověřuje jednotlivé koncové body CDN.
@@ -38,7 +38,7 @@ Stav prostředku Azure CDN je podmnožinou [stavu prostředků Azure](../resourc
 
     ![Tlačítko Nastavení](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. V části *Podpora a řešení potíží*klikněte na **stav prostředků**.
+3. V části *Podpora a řešení potíží* klikněte na **stav prostředků** .
 
     ![Stav prostředku CDN](./media/cdn-resource-health/cdn-resource-health3.png)
 
@@ -51,7 +51,7 @@ Stav prostředku Azure CDN je podmnožinou [stavu prostředků Azure](../resourc
 
 Stavy týkající se Azure CDNho stavu prostředků najdete níže.
 
-|Zpráva | Doporučená akce |
+|Zpráva | Doporučená akce |
 |---|---|
 |Možná jste zastavili, odebrali nebo chybně nakonfigurovali nejméně jeden koncový bod CDN. | Možná jste zastavili, odebrali nebo chybně nakonfigurovali nejméně jeden koncový bod CDN.|
 |Je nám líto, ale služba pro správu CDN není aktuálně k dispozici. | Pokud chcete aktualizovat stav, vraťte se sem. Pokud váš problém přetrvává i po očekávané době řešení, obraťte se na podporu.|
@@ -62,6 +62,6 @@ Je nám líto, ale setkáváme se s problémy u některých z našich poskytovat
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přečtěte si přehled stavu prostředků Azure](../resource-health/resource-health-overview.md)
+- [Přečtěte si přehled stavu prostředků Azure](../service-health/resource-health-overview.md)
 - [Řešení potíží s kompresí CDN](./cdn-troubleshoot-compression.md)
 - [Řešení potíží s 404 chybami](./cdn-troubleshoot-endpoint.md)

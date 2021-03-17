@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: da7d56a0fd8571e796567331a7543074f0bf1eda
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 385d43e46cd3f9465c0fbf9a02eeae356f48fac4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808689"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966526"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí portálu Azure Portal
 
 > [!div class="op_single_selector"]
-> - [portál Azure](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
@@ -40,19 +40,19 @@ Skupina zabezpečení sítě (NSG) umožňuje filtrovat příchozí provoz do a 
 > * Stáhnout data protokolu
 > * Zobrazit data protokolu
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
-2. Vyberte **COMPUTE**a potom vyberte **Windows Server 2016 Datacenter** nebo verzi **Ubuntu serveru**.
+2. Vyberte **COMPUTE** a potom vyberte **Windows Server 2016 Datacenter** nebo verzi **Ubuntu serveru**.
 3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **OK**:
 
     |Nastavení|Hodnota|
     |---|---|
     |Název|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
     |Umístění| Vyberte **východní USA**|
@@ -67,7 +67,7 @@ Vytvoření virtuálního počítače trvá několik minut. Se zbývajícími kr
 
 Pokud už máte sledovací proces sítě v oblasti USA – východ povolený, přejděte na [Registrace poskytovatele Insights](#register-insights-provider).
 
-1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Pokud se ve výsledcích zobrazí **Network Watcher** , vyberte ji.
 2. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
 
     ![Povolení Network Watcheru](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
@@ -95,13 +95,13 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
     | ---            | ---   |
     | Název           | Délka 3–24 znaků, může obsahovat jenom malá písmena a čísla a musí být jedinečný v rámci všech účtů Azure Storage.                                                               |
     | Umístění       | Vyberte **východní USA**                                           |
-    | Skupina prostředků | Vyberte **použít existující**a pak vyberte **myResourceGroup** . |
+    | Skupina prostředků | Vyberte **použít existující** a pak vyberte **myResourceGroup** . |
 
     Vytvoření účtu úložiště může trvat kolem minuty. Se zbývajícími kroky nepokračujte, dokud se účet úložiště nevytvoří. Ve všech případech musí být účet úložiště ve stejné oblasti jako NSG.
-4. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
+4. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 5. Pod **PROTOKOLY** vyberte **Protokoly toku NSG**, jak je vidět na tomto obrázku:
 
-    ![Skupiny NSG](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
+    ![Snímek obrazovky zobrazuje protokoly toku Network Watcher NSG.](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. V seznamu NSG vyberte NSG s názvem **myVm-nsg**.
 7. V **Nastavení protokolů toku** vyberte **Zapnuto**.
@@ -111,8 +111,8 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 
 9. Vyberte účet úložiště, který jste vytvořili v kroku 3.
    > [!NOTE]
-   > Protokoly toku NSG nefungují s účty úložiště, které mají povolený [hierarchický obor názvů](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
-1. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
+   > Protokoly toku NSG nefungují s účty úložiště, které mají povolený [hierarchický obor názvů](../storage/blobs/data-lake-storage-namespace.md) .
+1. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 10. Nastavte **Doba uchování (dny)** na 5 a pak vyberte **Uložit**.
 
 ## <a name="download-flow-log"></a>Stažení toku protokolu
@@ -123,12 +123,12 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
    ![Stažení protokolů toku](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Vyberte účet úložiště, který jste nakonfigurovali ve 2. kroku [Povolení protokolu toku NSG](#enable-nsg-flow-log).
-4. V části **BLOB Service**vyberte **kontejnery**a pak vyberte kontejner **Insights-logs-networksecuritygroupflowevent** .
+4. V části **BLOB Service** vyberte **kontejnery** a pak vyberte kontejner **Insights-logs-networksecuritygroupflowevent** .
 5. V kontejneru přejděte do hierarchie složek, dokud se nedostanete k PT1H.jsv souboru, jak je znázorněno na následujícím obrázku. Soubory protokolu se zapisují do hierarchie složek, které následují po následujících konvencích vytváření názvů: https://{storageAccountName}. blob. Core. Windows. NET/Insights-logs-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {month}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.jsna
 
    ![Protokol toku](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
-6. Vyberte **... ** vpravo od souboru PT1H.json a vyberte **Stáhnout**.
+6. Vyberte **...** vpravo od souboru PT1H.json a vyberte **Stáhnout**.
 
 ## <a name="view-flow-log"></a>Zobrazení protokolu toku
 
@@ -211,8 +211,8 @@ Hodnota **mac** v předchozím výstupu je adresa MAC síťového rozhraní, kte
 | 10.0.0.4  | Zdrojová IP adresa      | Zdrojová IP adresa, ze které tok pocházel. 10.0.0.4 je privátní IP adresa virtuálního počítače, který jste vytvořili ve [Vytvoření virtuálního počítače](#create-a-vm).
 | 13.67.143.118     | Cílová IP adresa | Cílová IP adresa, kam tok mířil.                                                                                  |
 | 44931        | Zdrojový port            | Zdrojový port, ze které tok pocházel.                                           |
-| 443         | Cílový port       | Cílový port, do kterého tok mířil. Vzhledem k tomu, že provoz byl určen pro port 443, pravidlo s názvem **UserRule_default-Allow-RDP**v souboru protokolu zpracovalo tok.                                                |
-| T            | Protocol (Protokol)               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
+| 443         | Cílový port       | Cílový port, do kterého tok mířil. Vzhledem k tomu, že provoz byl určen pro port 443, pravidlo s názvem **UserRule_default-Allow-RDP** v souboru protokolu zpracovalo tok.                                                |
+| T            | Protokol               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
 | O            | Směr              | Jestli byl provoz příchozí (I) nebo odchozí (O).                                     |
 | A            | Akce                 | Jestli byl provoz povolený (A) nebo odmítnutý (D).  
 | C            | Pouze stav toku **verze 2** | Zachycuje stav toku. Možné stavy jsou při vytváření toku **B**: begin. Statistiky nejsou k dispozici. **C**: pokračuje se na průběžný tok. Statistika je k dispozici v intervalu 5 minut. **E**: end, když se ukončí tok. Statistiky jsou k dispozici. |

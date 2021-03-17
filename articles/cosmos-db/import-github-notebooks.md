@@ -4,16 +4,18 @@ description: Naučte se připojit k GitHubu a importovat poznámkové bloky z ú
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/22/2021
+ms.openlocfilehash: f7002b3968e91447a26315f31347ad469aa5daca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262884"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690647"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Import poznámkových bloků z úložiště GitHub do Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Po [Povolení podpory poznámkových bloků](enable-notebooks.md) pro účty Azure Cosmos můžete vytvářet nové poznámkové bloky, nahrávat nové poznámkové bloky z místního počítače nebo importovat stávající poznámkové bloky z vašich účtů GitHubu. Tento článek ukazuje, jak připojit pracovní prostor vašich poznámkových bloků k GitHubu a importovat poznámkové bloky z úložiště GitHub do svého účtu Azure Cosmos. Po importu je můžete spustit, provést změny a uložit změny zpátky do GitHubu.
 
@@ -27,7 +29,7 @@ Můžete se připojit k vlastním úložištím GitHubu nebo k jiným veřejným
 
 1. Vyberte položku nabídky **připojit k GitHubu** .
 
-1. Otevře se karta, kde se můžete rozhodnout, že se chcete připojit pouze k **veřejným** úložištím nebo **veřejným a soukromým**úložištím.  Po výběru požadované možnosti vyberte **autorizovat přístup**. Pro Azure Cosmos DB přístupu k úložištím ve vašem účtu GitHub se vyžaduje autorizace.
+1. Otevře se karta, kde se můžete rozhodnout, že se chcete připojit pouze k **veřejným** úložištím nebo **veřejným a soukromým** úložištím.  Po výběru požadované možnosti vyberte **autorizovat přístup**. Pro Azure Cosmos DB přístupu k úložištím ve vašem účtu GitHub se vyžaduje autorizace.
 
    :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="Autorizovat Azure Cosmos DB k přístupu k úložištím GitHubu":::
 
@@ -55,7 +57,12 @@ V normálním toku GitHub po potvrzení změn se obvykle dokončí změny do vzd
 
 :::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Upravit poznámkové bloky a potvrdit změny do GitHubu":::
 
+Po úpravě poznámkového bloku [ho můžete publikovat do galerie poznámkových bloků](publish-notebook-gallery.md). 
+
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si o výhodách [Azure Cosmos DB poznámkových blocích Jupyter.](cosmosdb-jupyter-notebooks.md)
-
+* [Prozkoumat galerii ukázek poznámkových bloků](https://cosmos.azure.com/gallery.html)
+* [Publikování poznámkových bloků do galerie poznámkových bloků Azure Cosmos DB](publish-notebook-gallery.md)
+* [Použití funkcí a příkazů poznámkového bloku Pythonu](use-python-notebook-features-and-commands.md)
+* [Použití funkcí a příkazů pro Poznámkový blok jazyka C#](use-csharp-notebook-features-and-commands.md)

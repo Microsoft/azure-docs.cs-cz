@@ -1,0 +1,37 @@
+- name: Azure Automanage
+  href: automanage-virtual-machines.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Povolení na virtuálních počítačích na webu Azure Portal
+      href: quick-create-virtual-machines-portal.md
+- name: Koncepty
+  expanded: true
+  items:
+    - name: Spravovat pro Linux
+      href: automanage-linux.md
+    - name: Autospravovat pro Windows Server
+      href: automanage-windows-server.md
+      items:
+        - name: Hotpatch pro nové virtuální počítače
+          href: automanage-hotpatch.md
+- name: Postup
+  expanded: true
+  items:
+    - name: Vytvoření vlastních předvoleb
+      href: virtual-machines-custom-preferences.md
+    - name: Povolení na virtuálních počítačích přes Azure Policy
+      href: virtual-machines-policy-enable.md
+    - name: Řešení chyb při připojování
+      href: common-errors.md
+    - name: Oprava poškozeného účtu Automanage
+      href: repair-automanage-account.md
+    - name: Přemístění spravovaného virtuálního počítače napříč oblastmi
+      href: move-automanaged-vms.md
+- name: Zdroje a prostředky
+  expanded: true
+  items:
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Architektura přechodu na cloud
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'

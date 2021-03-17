@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320557"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: datový model Application Insights
@@ -17,7 +17,7 @@ Položka telemetrie žádosti (v [Application Insights](./app-insights-overview.
 
 Telemetrie žádostí podporuje standardní rozšiřitelný model pomocí Custom `properties` a `measurements` .
 
-## <a name="name"></a>Název
+## <a name="name"></a>Name
 
 Název žádosti představuje cestu kódu pořízenou pro zpracování žádosti. Nízká hodnota mohutnosti, která umožňuje lepší seskupení požadavků. V případě požadavků HTTP představuje šablonu metoda HTTP a cestu adresy URL, například `GET /values/{id}` bez skutečné `id` hodnoty.
 

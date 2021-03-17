@@ -3,18 +3,20 @@ title: Migrace dat ze Oracle do Azure Cosmos DB rozhraní API Cassandra pomocí 
 description: Naučte se migrovat data z databáze Oracle do Azure Cosmos DB rozhraní API Cassandra pomocí Blitzz.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 882ba7f0b8f896c51e340fe921e53b27dd07ff8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15bcd0c54fc5f6614f4d1925759704309048acae
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262459"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336435"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrace dat z Oracle do Azure Cosmos DB účtu rozhraní API Cassandra pomocí Blitzz
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Rozhraní API Cassandra v Azure Cosmos DB se stal skvělou volbou pro podnikové úlohy spuštěné v Oracle z různých důvodů:
 
@@ -100,7 +102,7 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migraci dat z datab�
 
    Propustnost je nutné po dokončení migrace snížit. Na základě množství uložených dat a ru vyžadovaných pro jednotlivé operace můžete odhadnout propustnost vyžadovanou po migraci dat. Další informace o tom, jak odhadovat požadované ru, najdete v tématech [zřízení propustnosti pro kontejnery a databáze](set-throughput.md) a [odhad ru/s pomocí článků Azure Cosmos DB kapacity pro plánování](estimate-ru-with-capacity-planner.md) .
 
-1. V podokně **připojovací řetězec** Získejte **kontaktní bod, port, uživatelské jméno**a **primární heslo** účtu Azure Cosmos. Tyto hodnoty použijete v konfiguračním souboru.
+1. V podokně **připojovací řetězec** Získejte **kontaktní bod, port, uživatelské jméno** a **primární heslo** účtu Azure Cosmos. Tyto hodnoty použijete v konfiguračním souboru.
 
 1. V terminálu CLI nastavte konfiguraci cílové databáze. Otevřete konfigurační soubor pomocí **`vi conf/conn/cosmosdb.yml`** příkazu a přidejte čárkami oddělený seznam identifikátorů URI hostitele, číslo portu, uživatelské jméno, heslo a další požadované parametry. Následuje příklad obsahu v konfiguračním souboru:
 

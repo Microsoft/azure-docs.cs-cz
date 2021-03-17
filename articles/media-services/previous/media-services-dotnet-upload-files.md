@@ -1,9 +1,9 @@
 ---
 title: Nahrání souborů do Media Services účtu pomocí .NET | Microsoft Docs
-description: Naučte se, jak získat mediální obsah do Media Services vytvořením a nahráním prostředků.
+description: Naučte se, jak získat mediální obsah do Media Services vytvořením a nahráním prostředků pomocí .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: c9c86380-9395-4db8-acea-507c52066f73
@@ -12,19 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 4025ace5c2609783a8d0f09b99d60537addb6f08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ee9bcc6861245ce40c43570126445a3613cd2744
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060096"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013699"
 ---
-# <a name="upload-files-into-a-media-services-account-using-net"></a>Odeslání souborů do účtu Azure Media Services pomocí .NET 
+# <a name="upload-files-into-a-media-services-account-using-net"></a>Odeslání souborů do účtu Azure Media Services pomocí .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat) do prostředku. Entita **assetu** může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech.)  Po nahrání souborů je váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
 

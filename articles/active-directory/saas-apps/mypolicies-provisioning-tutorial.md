@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ea9a0e52ce424459b6c402eb136d06dd370bab7d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 221f63ab9a7eb3f71a4c730a11565dda64c9edc9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548034"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353579"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Kurz: Konfigurace myPolicies pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v myPolicies a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro myPolicies.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
@@ -66,7 +66,7 @@ Pokud chcete nakonfigurovat myPolicies pro Automatické zřizování uživatelů
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -87,56 +87,67 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-mypolicies-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro myPolicies ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **myPolicies**.
 
     ![Odkaz myPolicies v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
 5. V části **přihlašovací údaje správce** zadejte `https://<myPoliciesCustomDomain>.mypolicies.com/scim` **adresu URL tenanta** , kde `<myPoliciesCustomDomain>` se nachází vaše myPolicies vlastní doména. Z adresy URL můžete načíst svoji doménu zákazníka myPolicies.
 Příklad: `<demo0-qa>` . mypolicies.com.
 
-6. V části **tajný token**zadejte hodnotu tokenu, která byla načtena dříve. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k myPolicies. Pokud se připojení nepovede, ujistěte se, že má váš účet myPolicies oprávnění správce, a zkuste to znovu.
+6. V části **tajný token** zadejte hodnotu tokenu, která byla načtena dříve. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k myPolicies. Pokud se připojení nepovede, ujistěte se, že má váš účet myPolicies oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
 7. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![E-mail s oznámením](common/provisioning-notification-email.png)
+    ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
 8. Klikněte na **Uložit**.
 
 9. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé myPolicies**.
 
-    ![Mapování uživatelů myPolicies](media/mypolicies-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="Snímek obrazovky oddílu mapování V části název je synchronizace Azure Active Directory uživatelů na customappsso viditelná." border="false":::
 
 10. Zkontrolujte atributy uživatele synchronizované z Azure AD do myPolicies v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v myPolicies pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Mapování uživatelů myPolicies](media/mypolicies-provisioning-tutorial/userattribute.png)
+   |Atribut|Typ|
+   |---|---|
+   |userName|Řetězec|
+   |active|Logická hodnota|
+   |emails[type eq "work"].value|Řetězec|
+   |name.givenName|Řetězec|
+   |name.familyName|Řetězec|
+   |název. formátovaný|Řetězec|
+   |externalId|Řetězec|
+   |adresy [typ EQ "Work"]. Country|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
 
-11. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+
+11. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 12. Pokud chcete povolit službu Azure AD Provisioning pro myPolicies, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
 13. Definujte uživatele nebo skupiny, které chcete zřídit pro myPolicies, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-14. Až budete připraveni zřídit, klikněte na **Uložit**.
+14. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v myPolicies.
 
@@ -147,11 +158,15 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * myPolicies vždy vyžaduje **uživatelské jméno**, **e-mail** a **externalId**.
 * myPolicies nepodporuje pevné odstranění atributů uživatele.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="change-log"></a>Protokol změn
+
+* 09/15/2020 – pro uživatele byla přidána podpora pro atribut Country.
+
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

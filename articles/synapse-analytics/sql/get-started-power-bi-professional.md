@@ -1,36 +1,36 @@
 ---
-title: Připojení k Power BI Professional
-description: V tomto kurzu provedeme kroky, jak připojit Power BI Desktop k SQL na vyžádání (Preview).
+title: Připojení k synapse SQL pomocí Power BI Professional
+description: V tomto kurzu provedeme kroky, jak připojit Power BIou plochu k fondu SQL bez serveru.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 497c6f669699f1e1ce879c0c7da2593256b97448
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: b33edb99109b7516e1792497a936031cf954bc15
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501095"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451615"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Připojení k synapse SQL pomocí Power BI Professional
+# <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Připojení k fondu SQL bez serveru pomocí Power BI Professional
 
 > [!div class="op_single_selector"]
 >
 > - [Azure Data Studio](get-started-azure-data-studio.md)
 > - [Power BI](get-started-power-bi-professional.md)
 > - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> - [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-V tomto kurzu provedeme kroky pro připojení Power BI plochy k SQL na vyžádání (Preview).
+V tomto kurzu provedeme kroky pro připojení Power BIho desktopu k fondu SQL bez serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Nástroj pro vydávání dotazů:
+K vystavování dotazů potřebujete následující nástroje:
 
 - Klient SQL podle vašeho výběru:
 
@@ -43,17 +43,17 @@ Parametry:
 
 | Parametr                                 | Popis                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adresa koncového bodu služby SQL na vyžádání    | Bude použito jako název serveru.                                   |
-| Oblast koncového bodu služby SQL na vyžádání     | Použije se k určení, jaké úložiště se bude používat v ukázkách. |
+| Adresa koncového bodu služby fondu SQL bez serveru    | Bude použito jako název serveru.                                   |
+| Oblast koncového bodu služby fondu SQL bez serveru     | Použije se k určení, jaké úložiště se bude používat v ukázkách. |
 | Uživatelské jméno a heslo pro přístup ke koncovému bodu | Bude použito pro přístup ke koncovému bodu                               |
-| Databáze, kterou použijete k vytvoření zobrazení     | Tato databáze se použije jako výchozí bod v ukázkách.       |
+| Databáze, kterou použijete k vytvoření zobrazení       | Tato databáze se použije jako výchozí bod v ukázkách.       |
 
 ## <a name="first-time-setup"></a>Nastavení při prvním spuštění
 
 Před použitím ukázek jsou k dispozici dva kroky:
 
 1. Vytvoření databáze pro zobrazení
-2. Vytvoření přihlašovacích údajů, které budou používat SQL na vyžádání pro přístup k souborům v úložišti
+2. Vytvoření přihlašovacích údajů, které bude používat fond SQL bez serveru pro přístup k souborům v úložišti
 
 ### <a name="create-database"></a>Vytvoření databáze
 
@@ -70,10 +70,10 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Vytvořit pověření
 
-Než budete moct spustit dotazy, musíme vytvořit přihlašovací údaje. Tento přihlašovací údaj bude používat služba SQL na vyžádání pro přístup k souborům v úložišti.
+Než budete moct spustit dotazy, musíme vytvořit přihlašovací údaje. Tato pověření budou používána službou fondu SQL bez serveru pro přístup k souborům v úložišti.
 
 > [!NOTE]
-> Musíte vytvořit přihlašovací údaje pro přístup k účtu úložiště. I když může SQL na vyžádání získat přístup k úložišti z různých oblastí, úložiště a pracovní prostor Azure synapse ve stejné oblasti zajistí lepší výkon.
+> Musíte vytvořit přihlašovací údaje pro přístup k účtu úložiště. I když fond SQL bez serveru má přístup k úložišti z různých oblastí, úložiště a pracovní prostor Azure synapse ve stejné oblasti zajistí lepší výkon.
 
 **Fragment kódu při vytváření přihlašovacích údajů pro datové kontejnery pro sčítání**, spusťte:
 
@@ -108,5 +108,4 @@ Napište adresu URL pro databázi a název databáze, ve které se zobrazení na
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte k [souborům úložiště dotazů](get-started-azure-data-studio.md) a Naučte se, jak se připojit k SQL na vyžádání pomocí Azure Data Studio.
- 
+Přejděte k [souborům úložiště dotazů](get-started-azure-data-studio.md) a Naučte se, jak se připojit k fondu SQL bez serveru pomocí Azure Data Studio.

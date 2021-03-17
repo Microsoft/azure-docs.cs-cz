@@ -6,21 +6,20 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.reviewer: wiassaf, sstein
+ms.date: 03/03/2021
+ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373500"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042517"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Povolit automatické ladění v Azure Portal pro monitorování dotazů a zlepšení výkonu úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
 
 Azure SQL Database automaticky spravuje datové služby, které průběžně monitorují vaše dotazy a identifikují akci, kterou můžete provést za účelem zvýšení výkonu úloh. Můžete zkontrolovat doporučení a ručně je použít, nebo nechat Azure SQL Database automaticky použít opravné akce – jedná se o **Automatický režim optimalizace**.
 
@@ -28,7 +27,7 @@ Automatické ladění lze povolit na serveru nebo na úrovni databáze prostřed
 
 - [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [REST API](automatic-tuning-enable.md#rest-api) volání
-- Příkazy [T-SQL](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current)
+- Příkazy [T-SQL](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true)
 
 > [!NOTE]
 > U spravované instance Azure SQL je možné podporovanou možnost FORCE_LAST_GOOD_PLAN nakonfigurovat jenom pomocí [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) . Možnosti konfigurace založené na Azure Portal a automatické ladění indexu popsané v tomto článku se nevztahují na spravovanou instanci Azure SQL.
@@ -51,7 +50,7 @@ Na úrovni serveru můžete zvolit dědění konfigurace automatického ladění
 
 Pokud chcete povolit automatické ladění na [serveru](logical-servers.md) v Azure SQL Database, přejděte na server v Azure Portal a pak v nabídce vyberte **Automatické ladění** .
 
-![Server](./media/automatic-tuning-enable/server.png)
+![Snímek obrazovky zobrazuje automatické ladění v Azure Portal, kde můžete použít možnosti pro server.](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > Upozorňujeme, že možnost **DROP_INDEX** v tuto chvíli není kompatibilní s aplikacemi, které používají přepínání oddílů a pomocné parametry indexu a neměly by být v těchto případech povolené. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje.
@@ -62,7 +61,7 @@ Možnosti automatického ladění na serveru se aplikují na všechny databáze 
 
 ### <a name="rest-api"></a>REST API
 
-Další informace o použití REST API k povolení automatického ladění na **serveru**najdete v tématu [aktualizace automatického ladění serveru a získání metod http](/rest/api/sql/serverautomatictuning).
+Další informace o použití REST API k povolení automatického ladění na **serveru** najdete v tématu [aktualizace automatického ladění serveru a získání metod http](/rest/api/sql/serverautomatictuning).
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Povolit automatické ladění v individuální databázi
 
@@ -77,13 +76,13 @@ Pokud chcete povolit automatické ladění pro izolovanou **databázi**, přejd�
 
 Jednotlivá nastavení automatického ladění je možné pro každou databázi nakonfigurovat samostatně. Můžete ručně nakonfigurovat jednotlivou možnost automatického ladění nebo určit, že nastavení zdědí ze serveru.
 
-![Databáze](./media/automatic-tuning-enable/database.png)
+![Snímek obrazovky zobrazuje automatické ladění v Azure Portal, kde můžete použít možnosti pro jednu databázi.](./media/automatic-tuning-enable/database.png)
 
 Upozorňujeme, že možnost DROP_INDEX v tuto chvíli není kompatibilní s aplikacemi, které používají přepínání oddílů a pomocné parametry indexu a neměly by být v těchto případech povolené.
 
 Po výběru požadované konfigurace klikněte na **použít**.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Další informace o použití REST API k povolení automatického ladění pro jednu databázi najdete v tématu [Azure SQL Database aktualizace automatického ladění a získání metod http](/rest/api/sql/databaseautomatictuning).
 
@@ -109,13 +108,28 @@ Nastavení jednotlivé možnosti optimalizace na ZAPNUTo přepíše všechna nas
 > V případě [aktivní geografické replikace](auto-failover-group-overview.md)je nutné nakonfigurovat automatické ladění pouze v primární databázi. Automaticky použité akce optimalizace, například index Create nebo DELETE, se automaticky replikují do sekundárního režimu určeného jen pro čtení. Při pokusu o povolení automatického ladění přes T-SQL u sekundárního počítače jen pro čtení dojde k selhání, protože v sekundárním počítači určeném jen pro čtení není podporovaná jiná konfigurace ladění.
 >
 
-Další možnosti sousedit s T-SQL pro konfiguraci automatického ladění najdete v tématu věnovaném [možnostem ALTER DATABASE set (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
+Další možnosti sousedit s T-SQL pro konfiguraci automatického ladění najdete v tématu věnovaném [možnostem ALTER DATABASE set (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true).
 
-## <a name="disabled-by-the-system"></a>Zakázáno systémem
+## <a name="troubleshooting"></a>Řešení potíží
 
-Automatické ladění sleduje všechny akce, které v databázi provádí, a v některých případech může zjistit, že automatické ladění nemůže v databázi správně fungovat. V této situaci systém zakáže možnost optimalizace. Ve většině případů k tomu dochází, protože úložiště dotazů není povolené nebo je v konkrétní databázi ve stavu jen pro čtení.
+### <a name="automated-recommendation-management-is-disabled"></a>Automatizovaná správa doporučení je zakázaná.
 
-## <a name="permissions"></a>Oprávnění
+V případě chybových zpráv, které automatizovaná správa doporučení zakázala, nebo je jenom zakázaná systémem, nejběžnější příčiny:
+- Úložiště dotazů není povoleno, nebo
+- Úložiště dotazů je v režimu jen pro čtení pro zadanou databázi nebo
+- Úložiště dotazů bylo zastaveno, protože používalo přidělený prostor úložiště.
+
+K vyřešení tohoto problému je možné zvážit tyto kroky:
+- Vyčistěte úložiště dotazů nebo upravte dobu uchování dat na hodnotu "auto" pomocí T-SQL. Podívejte se, jak [nakonfigurovat Doporučené zásady uchovávání a zachytávání pro úložiště dotazů](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy).
+- Použijte SQL Server Management Studio (SSMS) a postupujte podle následujících kroků:
+  - Připojit k Azure SQL Database
+  - Klikněte pravým tlačítkem na databázi.
+  - Přejít na vlastnosti a kliknout na úložiště dotazů
+  - Změňte režim operace na Read-Write
+  - Změňte režim zachycení úložiště na automaticky.
+  - Změnit režim čištění založený na velikosti na automatické
+
+### <a name="permissions"></a>Oprávnění
 
 Vzhledem k tomu, že automatické ladění je funkce Azure, budete muset použít předdefinované role Azure. Použití pouze ověřování SQL nebude stačit k použití funkce z Azure Portal.
 
@@ -123,7 +137,7 @@ Chcete-li použít automatické ladění, je minimální požadovaná oprávněn
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurace e-mailových oznámení automatického ladění
 
-Přečtěte si příručku pro [e-mailová oznámení automatického ladění](automatic-tuning-email-notifications-configure.md) .
+Pokud chcete dostávat automatizovaná e-mailová oznámení o doporučeních provedených automatickým laděním, přečtěte si příručku pro [e-mailová oznámení](automatic-tuning-email-notifications-configure.md)
 
 ## <a name="next-steps"></a>Další kroky
 

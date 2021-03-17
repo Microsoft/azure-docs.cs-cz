@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321302"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880131"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Příklad: Vytvoření vlastní dovednosti pro rozpoznávání formulářů
 
@@ -28,20 +28,20 @@ V tomto příkladu Azure Kognitivní hledání dovednosti se dozvíte, jak vytvo
 
 [!INCLUDE [create resource](../cognitive-services/form-recognizer/includes/create-resource.md)]
 
-## <a name="train-your-model"></a>Trénování vašeho modelu
+## <a name="train-your-model"></a>Trénování modelu
 
-Předtím, než použijete tuto dovednost, budete muset vytvořit model rozpoznávání formulářů se vstupními formuláři. Postupujte podle pokynů pro [rychlý Start](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract) a Naučte se naučit model. Můžete použít ukázkové formuláře poskytované v rámci tohoto rychlého startu nebo můžete použít vlastní data. Po vyškolení modelu zkopírujte jeho hodnotu ID do zabezpečeného umístění.
+Předtím, než použijete tuto dovednost, budete muset vytvořit model rozpoznávání formulářů se vstupními formuláři. Postupujte podle pokynů pro [rychlý Start](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api) a Naučte se naučit model. Můžete použít ukázkové formuláře poskytované v rámci tohoto rychlého startu nebo můžete použít vlastní data. Po vyškolení modelu zkopírujte jeho hodnotu ID do zabezpečeného umístění.
 
 ## <a name="set-up-the-custom-skill"></a>Nastavení vlastní dovednosti
 
 V tomto kurzu se používá projekt [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) v úložišti GitHub [Azure Searchch dovedností pro napájení](https://github.com/Azure-Samples/azure-search-power-skills) . Naklonujte toto úložiště do místního počítače a přejděte ke službě **Vision/AnalyzeForm/** , abyste měli přístup k projektu. Pak otevřete _AnalyzeForm. csproj_ v aplikaci Visual Studio. Tento projekt vytvoří prostředek funkce Azure, který splňuje [vlastní dovednostní rozhraní](cognitive-search-custom-skill-interface.md) a dá se použít pro rozšíření Azure kognitivní hledání. Přebírá dokumenty jako vstupy a výstupy IT (jako text) páry klíč/hodnota, které zadáte.
 
 Nejprve přidejte proměnné prostředí na úrovni projektu. V levém podokně vyhledejte projekt **AnalyzeForm** , klikněte na něj pravým tlačítkem myši a vyberte možnost **vlastnosti**. V okně **vlastnosti** klikněte na kartu **ladění** a poté vyhledejte pole **proměnné prostředí** . Kliknutím na **Přidat** přidejte následující proměnné:
-* `FORMS_RECOGNIZER_ENDPOINT_URL`s hodnotou nastavenou na adresu URL koncového bodu.
-* `FORMS_RECOGNIZER_API_KEY`s hodnotou nastavenou na klíč předplatného.
-* `FORMS_RECOGNIZER_MODEL_ID`s hodnotou nastavenou na ID modelu, který jste vyškole.
-* `FORMS_RECOGNIZER_RETRY_DELAY`s hodnotou nastavenou na 1000. Tato hodnota je čas v milisekundách, po který bude program čekat před opakováním dotazu.
-* `FORMS_RECOGNIZER_MAX_ATTEMPTS`s hodnotou nastavenou na 100. Tato hodnota představuje počet pokusů, kolikrát program dotazuje službu při pokusu o získání úspěšné odpovědi.
+* `FORMS_RECOGNIZER_ENDPOINT_URL` s hodnotou nastavenou na adresu URL koncového bodu.
+* `FORMS_RECOGNIZER_API_KEY` s hodnotou nastavenou na klíč předplatného.
+* `FORMS_RECOGNIZER_MODEL_ID` s hodnotou nastavenou na ID modelu, který jste vyškole.
+* `FORMS_RECOGNIZER_RETRY_DELAY` s hodnotou nastavenou na 1000. Tato hodnota je čas v milisekundách, po který bude program čekat před opakováním dotazu.
+* `FORMS_RECOGNIZER_MAX_ATTEMPTS` s hodnotou nastavenou na 100. Tato hodnota představuje počet pokusů, kolikrát program dotazuje službu při pokusu o získání úspěšné odpovědi.
 
 Dále otevřete _AnalyzeForm.cs_ a najděte `fieldMappings` proměnnou, která odkazuje na *field-mappings.jsv* souboru. Tento soubor (a proměnná, která na něj odkazuje) definuje seznam klíčů, které chcete extrahovat z vašich formulářů, a vlastní popisek pro každý klíč. Například hodnota `{ "Address:", "address" }, { "Invoice For:", "recipient" }` znamená, že skript uloží pouze hodnoty pro zjištěné `Address:` a `Invoice For:` pole a označí tyto hodnoty pomocí `"address"` a v `"recipient"` uvedeném pořadí.
 
@@ -167,5 +167,5 @@ V této příručce jste vytvořili vlastní dovednost ze služby pro rozpoznáv
 * [Azure Search schopnosti napájení: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 * [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
 * [Definování dovedností](cognitive-search-defining-skillset.md)
-* [Vytvoření dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+* [Vytvoření dovednosti (REST)](/rest/api/searchservice/create-skillset)
 * [Obohacená pole mapy](cognitive-search-output-field-mapping.md)

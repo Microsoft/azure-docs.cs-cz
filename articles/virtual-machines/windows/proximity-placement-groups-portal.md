@@ -1,22 +1,23 @@
 ---
-title: Vytvoření skupiny umístění blízkosti pomocí portálu
+title: Vytvoření skupiny umístění bezkontaktní komunikace pomocí portálu
 description: Naučte se vytvořit skupinu umístění blízkosti pomocí Azure Portal.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daf844870670c14db5208f45fbd9c9adf46be985
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82190397"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504622"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>Vytvoření skupiny umístění blízkosti pomocí portálu
+# <a name="create-a-proximity-placement-group-using-the-azure-portal"></a>Vytvoření skupiny umístění blízkosti pomocí Azure Portal
 
-Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](co-location.md#proximity-placement-groups).
+Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](../co-location.md#proximity-placement-groups).
 
 Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
 
@@ -59,7 +60,7 @@ Pokud je virtuální počítač součástí skupiny dostupnosti, musíte před p
 1. Stop\deallocate každý virtuální počítač ve skupině dostupnosti tak, že vyberete virtuální počítač a potom na stránce pro virtuální počítač vyberete **zastavit** a pak vyberete **OK** , aby se virtuální počítač zastavil.
 1. Na stránce skupiny dostupnosti zajistěte, aby všechny virtuální počítače měly **stav** uvedený jako **Zastaveno (přidělení zrušeno)**.
 1. V nabídce vlevo vyberte **Konfigurace**.
-1. V části **Skupina umístění blízkosti**vyberte skupinu umístění z rozevíracího seznamu a pak vyberte **Uložit**.
+1. V části **Skupina umístění blízkosti** vyberte skupinu umístění z rozevíracího seznamu a pak vyberte **Uložit**.
 1. V nabídce vlevo vyberte **Přehled** , abyste mohli znovu zobrazit seznam virtuálních počítačů. 
 1. Vyberte každý virtuální počítač ve skupině dostupnosti a pak na stránce pro každý virtuální počítač vyberte **Spustit** . 
 
@@ -69,7 +70,7 @@ Pokud je virtuální počítač součástí skupiny dostupnosti, musíte před p
 
 1. Na stránce pro virtuální počítač vyberte **zastavit**.
 1. Jakmile je stav virtuálního počítače uvedený jako **Zastaveno (přidělení zrušeno)**, v levé nabídce vyberte **Konfigurace** .
-1. V části **Skupina umístění blízkosti**vyberte skupinu umístění z rozevíracího seznamu a pak vyberte **Uložit**.
+1. V části **Skupina umístění blízkosti** vyberte skupinu umístění z rozevíracího seznamu a pak vyberte **Uložit**.
 1. V nabídce vlevo vyberte **Přehled** a pak vyberte **Spustit** , aby se virtuální počítač restartoval.
 
  
@@ -77,4 +78,3 @@ Pokud je virtuální počítač součástí skupiny dostupnosti, musíte před p
 ## <a name="next-steps"></a>Další kroky
 
 Můžete také použít [Azure PowerShell](proximity-placement-groups.md) k vytvoření skupin umístění blízkosti.
-

@@ -3,18 +3,18 @@ title: Zálohování počítačů s Windows pomocí agenta MARS
 description: K zálohování počítačů s Windows použijte agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538628"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702764"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Zálohování souborů a složek Windows serveru do Azure
 
 Tento článek vysvětluje, jak zálohovat počítače s Windows pomocí služby [Azure Backup](backup-overview.md) a agenta Microsoft Azure Recovery Services (MARS). MARS se také označuje jako agent Azure Backup.
 
-V tomto článku se dozvíte, jak:
+V tomto článku se naučíte:
 
 > [!div class="checklist"]
 >
@@ -30,21 +30,21 @@ V tomto článku se dozvíte, jak:
 * [Ověřte přístup k Internetu](install-mars-agent.md#verify-internet-access) na počítačích, které chcete zálohovat.
 * Pokud není nainstalovaný agent MARS, zjistěte, jak ho nainstalovat [tady](install-mars-agent.md).
 
-## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
+## <a name="create-a-backup-policy"></a>Vytvoření zásad zálohování
 
 Zásady zálohování určují, kdy pořizovat snímky dat k vytvoření bodů obnovení. Také určuje, jak dlouho mají být body obnovení uchovávány. Pomocí agenta MARS nakonfigurujete zásady zálohování.
 
 Azure Backup automaticky nebere v úvahu letní čas (letní čas). Toto výchozí nastavení může způsobit nesoulad mezi skutečným časem a plánovaným časem zálohování.
 
-Vytvoření zásady zálohování:
+Vytvoření zásad zálohování:
 
 1. Po stažení a registraci agenta MARS otevřete konzolu agenta. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.  
 
-1. V části **Akce**vyberte **naplánovat zálohování**.
+1. V části **Akce** vyberte **naplánovat zálohování**.
 
     ![Naplánování zálohování Windows Serveru](./media/backup-configure-vault/schedule-first-backup.png)
 1. V Průvodci plánováním **zálohování vyberte začít**  >  **dál**.
-1. V části **Vybrat položky k zálohování**vyberte **Přidat položky**.
+1. V části **Vybrat položky k zálohování** vyberte **Přidat položky**.
 
     ![Přidat položky k zálohování](./media/backup-azure-manage-mars/select-item-to-backup.png)
 
@@ -104,7 +104,7 @@ Postup při offline přenosu:
 1. Zápis zálohovaných dat do pracovního umístění.
 1. Pomocí nástroje AzureOfflineBackupDiskPrep zkopírujte data z pracovního umístění na jeden nebo více disků SATA.
 
-    Nástroj vytvoří úlohu importu Azure. Další informace najdete v tématu [co je služba Azure import/export](../storage/common/storage-import-export-service.md).
+    Nástroj vytvoří úlohu importu Azure. Další informace najdete v tématu [co je služba Azure import/export](../import-export/storage-import-export-service.md).
 1. Odešlete disky SATA do datacentra Azure.
 
     V datacentru se data disku zkopírují do účtu služby Azure Storage. Azure Backup zkopíruje data z účtu úložiště do trezoru a naplánují se přírůstkové zálohy.

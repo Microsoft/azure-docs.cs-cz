@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 0c6ca03f535201059f107d6b53bc423b92d1c1c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f04e4b5a44dccdc3aaeabe6b4144836b0be7354c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073369"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790776"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>Použití PowerShellu k obnovení databáze spravované instance Azure SQL do jiné geografické oblasti
 
@@ -75,7 +75,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzResourceGroup](/powershell/module/az.resources/New-AzResourceGroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | Vytvoří geograficky redundantní zálohu databáze spravované instance SQL. |
 | [Obnovit – AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Vytvoří databázi na spravované instanci SQL z geografické zálohy. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |

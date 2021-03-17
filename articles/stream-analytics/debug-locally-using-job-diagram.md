@@ -3,16 +3,15 @@ title: Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v
 description: Tento článek popisuje, jak místně ladit dotazy pomocí diagramu úloh v Azure Stream Analyticsch nástrojích pro Visual Studio.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045395"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019444"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v aplikaci Visual Studio
 
@@ -52,7 +51,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 
 ![Zdroje dynamických vstupních zdrojů diagramu úloh](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**TaxiRide**| Název vstupu.|
 |**Centrum událostí** | Vstupní typ zdroje.|
@@ -68,7 +67,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 
 ![Zdroje místních vstupů diagramu úloh](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**TaxiRide**| Název vstupu.|
 |**Row Count**| Počet řádků vygenerovaných z kroku.|
@@ -79,7 +78,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 
 ![Krok dotazu na diagram úlohy](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**TripData**|Název dočasné sady výsledků.|
 |**Row Count**| Počet řádků vygenerovaných z kroku.|
@@ -87,9 +86,9 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
   
 #### <a name="output-sinks-live-output"></a>Výstupní jímky (živý výstup)
 
-![Místní výstupní jímky diagramu úloh](./media/debug-locally-using-job-diagram/live-output.png)
+![Diagram úlohy, který zobrazuje místní výstupní jímky.](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**regionaggEH**|Název výstupu.|
 |**Události**|Počet událostí výstupu do jímky.|
@@ -98,7 +97,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 
 ![Místní výstupní jímky diagramu úloh](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**regionaggEH**|Název výstupu.|
 |**Místní výstup**| Výstup výsledku do místního souboru.|
@@ -119,7 +118,7 @@ Další metriky na úrovni úlohy se zobrazí v místní konzole. Pokud chcete �
 
 * Výstupní jímky Power BI a Azure Data Lake Storage Gen1 nejsou v důsledku omezení modelu ověřování podporované.
 
-* Pouze možnosti cloudového vstupu mají podporu [časových zásad](stream-analytics-out-of-order-and-late-events.md) , zatímco možnosti místního vstupu ne.
+* Pouze možnosti cloudového vstupu mají podporu [časových zásad](./stream-analytics-time-handling.md) , zatímco možnosti místního vstupu ne.
 
 ## <a name="next-steps"></a>Další kroky
 

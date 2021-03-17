@@ -1,40 +1,62 @@
 ---
-title: Referenční informace pro vývojáře v jazyce C# Azure Functions
-description: Naučte se vyvíjet Azure Functions pomocí jazyka C#.
+title: Vývoj funkcí knihovny tříd C# pomocí Azure Functions
+description: Naučte se používat jazyk C# k vývoji a publikování kódu jako knihoven tříd, které se spouštějí v procesu pomocí modulu runtime Azure Functions.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c7d14599ec1ebbcb94e0c0f3985a3b857f9353dc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206197"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563876"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Referenční informace pro vývojáře v jazyce C# Azure Functions
+# <a name="develop-c-class-library-functions-using-azure-functions"></a>Vývoj funkcí knihovny tříd C# pomocí Azure Functions
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
 Tento článek je Úvod k vývoji Azure Functions pomocí jazyka C# v knihovnách tříd .NET.
 
+>[!IMPORTANT]
+>Tento článek podporuje funkce knihovny tříd .NET, které běží v procesu s modulem runtime. Funkce také podporují rozhraní .NET 5. x spuštěním funkcí C# mimo proces a izolací z modulu runtime. Další informace najdete v tématu [funkce izolovaného procesu .NET](dotnet-isolated-process-guide.md).
+
+Jako vývojář v jazyce C# může být také zajímat některé z následujících článků:
+
+| Začínáme | Koncepty| Učení s asistencí/ukázky |
+|--| -- |--| 
+| <ul><li>[Pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Používání nástroje Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Používání nástrojů příkazového řádku](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li><li>[Vývoj sady Visual Studio](functions-develop-vs.md)</li><li>[Injektáž závislostí](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Ukázky C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+
 Azure Functions podporuje programovací jazyky C# a C#. Pokud hledáte pokyny k [používání jazyka C# v Azure Portal](functions-create-function-app-portal.md), přečtěte si téma [referenční informace pro vývojáře skriptu jazyka c# (. csx)](functions-reference-csharp.md).
-
-V tomto článku se předpokládá, že už jste si přečetli následující články:
-
-* [Příručka pro vývojáře Azure Functions](functions-reference.md)
-* [Azure Functions nástroje sady Visual Studio 2019](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Podporované verze
 
-Verze běhových funkcí fungují s konkrétními verzemi .NET. Následující tabulka ukazuje nejvyšší úroveň rozhraní .NET Core a .NET Framework a .NET Core, které lze použít s určitou verzí funkcí v projektu. 
+Verze běhových funkcí fungují s konkrétními verzemi .NET. Další informace o verzích funkcí najdete v tématu [Přehled verzí Azure Functions runtime](functions-versions.md) .
+
+Následující tabulka ukazuje nejvyšší úroveň rozhraní .NET Core nebo .NET Framework, kterou lze použít s určitou verzí funkcí. 
 
 | Verze modulu runtime Functions | Maximální verze .NET |
 | ---- | ---- |
-| Funkce 3. x | .NET Core 3,1 |
-| Functions 2.x | .NET Core 2.2 |
+| Funkce 3. x | .NET Core 3.1<br/>.NET 5,0<sup>1</sup> |
+| Functions 2.x | .NET Core 2,2<sup>2</sup> |
 | Functions 1.x |  .NET Framework 4.7 |
 
-Další informace najdete v tématu [Přehled verzí Azure Functions runtime](functions-versions.md) .
+<sup>1</sup> musí běžet [mimo proces](dotnet-isolated-process-guide.md).  
+<sup>2</sup> podrobnosti najdete v tématu [informace o funkcích v2. x](#functions-v2x-considerations).   
+
+Nejnovější novinky o Azure Functions verzích, včetně odebrání určitých starších podverzí, najdete v části [Azure App Service oznámení](https://github.com/Azure/app-service-announcements/issues).
+
+### <a name="functions-v2x-considerations"></a>Pokyny k funkcím v2. x
+
+Aplikace Function App, které cílí na nejnovější verzi 2. x ( `~2` ), se automaticky upgradují tak, aby běžely v .NET Core 3,1. Vzhledem k zásadním změnám mezi verzemi .NET Core, ne všechny aplikace vyvíjené a zkompilované pro .NET Core 2,2, se dají bezpečně upgradovat na .NET Core 3,1. Tento upgrade můžete odhlásit připnutím aplikace Function App `~2.0` . Funkce také zjišťují nekompatibilní rozhraní API a můžou aplikaci připnout, aby `~2.0` nedocházelo k nesprávnému provádění .NET Core 3,1. 
+
+>[!NOTE]
+>Pokud je vaše aplikace Functions připnutá `~2.0` a změníte cílovou verzi na `~2` , vaše aplikace Function App může poškodit. Pokud nasadíte pomocí šablon ARM, Projděte si verzi v šablonách. Pokud k tomu dojde, změňte verzi zpátky na cílovou `~2.0` a opravte problémy s kompatibilitou. 
+
+Aplikace Function App, které cílí na `~2.0` běh i nadále pracují v .NET Core 2,2. Tato verze .NET Core už nepřijímá zabezpečení a další aktualizace údržby. Další informace najdete na [této stránce oznámení](https://github.com/Azure/app-service-announcements/issues/266). 
+
+Měli byste pracovat, aby byly funkce kompatibilní s .NET Core 3,1 co nejdříve. Po vyřešení těchto problémů změňte verzi na `~2` nebo upgradujte na `~3` . Další informace o cílení verzí modulu runtime Functions najdete v tématu [jak cílit na verze Azure Functions runtime](set-runtime-version.md).
+
+Při spuštění v systému Linux v plánu Premium nebo vyhrazený (App Service) připnete místo toho svou verzi tím, že nastavíte nastavení `linuxFxVersion` Konfigurace lokality tak `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` , aby se zjistilo, jak je nastavit `linuxFxVersion` , v tématu [Ruční aktualizace verzí na Linux](set-runtime-version.md#manual-version-updates-on-linux).
 
 ## <a name="functions-class-library-project"></a>Projekt knihovny tříd Functions
 
@@ -58,7 +80,7 @@ Při sestavování projektu se ve výstupním adresáři sestavení vygeneruje s
 Tento adresář se nasadí do vaší aplikace Function App v Azure. Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou [přidána do projektu jako balíčky NuGet](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Proces sestavení vytvořífunction.jspro každou funkci * v* souboru. Tato *function.jsv* souboru není určena k přímému upravování. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. Informace o tom, jak funkci zakázat, najdete v tématu [Jak zakázat funkce](disable-function.md).
+> Proces sestavení vytvořífunction.jspro každou funkci *v* souboru. Tato *function.jsv* souboru není určena k přímému upravování. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. Informace o tom, jak funkci zakázat, najdete v tématu [Jak zakázat funkce](disable-function.md).
 
 
 ## <a name="methods-recognized-as-functions"></a>Metody rozpoznané jako funkce
@@ -84,7 +106,7 @@ Atribut Trigger určuje typ triggeru a váže vstupní data k parametru metody. 
 
 ## <a name="method-signature-parameters"></a>Parametry signatury metody
 
-Signatura metody může obsahovat parametry jiné než ta, která se používá s atributem triggeru. Tady je několik dalších parametrů, které můžete zahrnout:
+Signatura metody může obsahovat parametry jiné než ta, která se používá s atributem triggeru. Tady jsou některé z dalších parametrů, které můžete použít:
 
 * [Vstupní a výstupní vazby](functions-triggers-bindings.md) označeny jako upravení s atributy.  
 * `ILogger`Parametr nebo `TraceWriter` ([pouze verze 1. x](functions-versions.md#creating-1x-apps)) pro [protokolování](#logging).
@@ -93,9 +115,11 @@ Signatura metody může obsahovat parametry jiné než ta, která se používá 
 
 Pořadí parametrů v signatuře funkce nezáleží. Můžete například vložit parametry triggeru před nebo za jiné vazby a parametr protokolovacího nástroje můžete vložit před nebo po Trigger nebo parametry vazby.
 
-### <a name="output-binding-example"></a>Příklad výstupní vazby
+### <a name="output-bindings"></a>Výstupní vazby
 
-Následující příklad upravuje předchozí rozhraní přidáním vazby výstupní fronty. Tato funkce zapíše zprávu fronty, která aktivuje funkci do nové zprávy fronty v jiné frontě.
+Funkce může mít nula nebo jednu výstupní vazbu, která je definována pomocí parametrů Output. 
+
+Následující příklad upravuje předchozí rozhraní přidáním vazby výstupní fronty s názvem `myQueueItemCopy` . Funkce zapíše obsah zprávy, která aktivuje funkci, do nové zprávy v jiné frontě.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -111,6 +135,8 @@ public static class SimpleExampleWithOutput
     }
 }
 ```
+
+Hodnoty přiřazené výstupním vazbám jsou zapsány při ukončení funkce. Můžete použít více než jednu výstupní vazbu ve funkci pouhým přiřazením hodnot k více výstupním parametrům. 
 
 Články s odkazy na vazby (například[fronty úložiště](functions-bindings-storage-queue.md)) vysvětlují typy parametrů, které můžete použít s atributy triggeru, vstupu a výstupu.
 
@@ -137,7 +163,7 @@ public static class BindingExpressionsExample
 
 Proces sestavení vytvoří *function.js* v souboru ve složce funkce ve složce sestavení. Jak bylo uvedeno dříve, tento soubor není určen k úpravám přímo. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. 
 
-Účelem tohoto souboru je poskytnout informace pro kontroler škálování pro použití při [rozhodování o škálování podle plánu spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work). Z tohoto důvodu má soubor pouze aktivační událost, nikoli vstupní nebo výstupní vazby.
+Účelem tohoto souboru je poskytnout informace pro kontroler škálování pro použití při [rozhodování o škálování podle plánu spotřeby](event-driven-scaling.md). Z tohoto důvodu soubor má pouze aktivační údaje, nikoli vstupní/výstupní vazby.
 
 Vygenerovaná *function.jsv* souboru obsahuje `configurationSource` vlastnost, která určuje, že modul runtime bude používat pro vazby atributy .NET namísto *function.jsv* konfiguraci. Tady je příklad:
 
@@ -160,22 +186,11 @@ Vygenerovaná *function.jsv* souboru obsahuje `configurationSource` vlastnost, k
 
 ## <a name="microsoftnetsdkfunctions"></a>Microsoft. NET. SDK. Functions
 
-*function.jspři* generování souboru provádí balíček NuGet [ \. funkce Microsoft .NET \. SDK \. ](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+*function.jspři* generování souboru provádí balíček NuGet [ \. funkce Microsoft .NET \. SDK \.](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
-Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functions. Cílová architektura je tím, že rozlišuje projekt 1. x z projektu 2. x. Tady jsou relevantní části souborů *. csproj* , které zobrazují různá cílová rozhraní a stejný `Sdk` balíček:
+Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functions. Cílová architektura je tím, že rozlišuje projekt 1. x z projektu 2. x. Tady jsou relevantní části souborů *. csproj* , které zobrazují různá cílová rozhraní se stejným `Sdk` balíčkem:
 
-**Functions 1.x**
-
-```xml
-<PropertyGroup>
-  <TargetFramework>net461</TargetFramework>
-</PropertyGroup>
-<ItemGroup>
-  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
-</ItemGroup>
-```
-
-**Functions 2.x**
+# <a name="v2x"></a>[v2. x +](#tab/v2)
 
 ```xml
 <PropertyGroup>
@@ -186,6 +201,19 @@ Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functi
   <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
 </ItemGroup>
 ```
+
+# <a name="v1x"></a>[V1. x](#tab/v1)
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+---
+
 
 Mezi `Sdk` závislostmi balíčku jsou triggery a vazby. Projekt 1. x odkazuje na události triggerů a vazeb 1. x, protože tyto triggery a vazby cílí na .NET Framework, zatímco 2. x Triggers a Bindings Target .NET Core.
 
@@ -205,7 +233,7 @@ Pokud nainstalujete základní nástroje pomocí NPM, neovlivní to základní v
 
 ## <a name="readytorun"></a>ReadyToRun
 
-Aplikaci Function App můžete zkompilovat jako [binární soubory ReadyToRun](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images). ReadyToRun je forma průběžné kompilace, která může zlepšit výkon při spuštění, aby se snížil dopad [studeného](functions-scale.md#cold-start) startu při spuštění v [plánu spotřeby](functions-scale.md#consumption-plan).
+Aplikaci Function App můžete zkompilovat jako [binární soubory ReadyToRun](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images). ReadyToRun je forma průběžné kompilace, která může zlepšit výkon při spuštění, aby se snížil dopad [studeného](event-driven-scaling.md#cold-start) startu při spuštění v [plánu spotřeby](consumption-plan.md).
 
 ReadyToRun je k dispozici v rozhraní .NET 3,0 a vyžaduje [verzi 3,0 modulu runtime Azure Functions](functions-versions.md).
 
@@ -259,25 +287,6 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>protokolování
-
-Chcete-li protokolovat výstup do protokolů streamování v jazyce C#, zahrňte argument typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme, abyste ho pojmenovat `log` jako v následujícím příkladu:  
-
-```csharp
-public static class SimpleExample
-{
-    [FunctionName("QueueTrigger")]
-    public static void Run(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        ILogger log)
-    {
-        log.LogInformation($"C# function processed: {myQueueItem}");
-    }
-} 
-```
-
-Nepoužívejte `Console.Write` v Azure Functions. Další informace najdete v tématu [zápis protokolů ve funkcích C#](functions-monitoring.md#write-logs-in-c-functions) v článku **monitorování Azure Functions** .
-
 ## <a name="async"></a>Async
 
 Chcete-li provést [asynchronní](/dotnet/csharp/programming-guide/concepts/async/)funkci, použijte `async` klíčové slovo a vraťte `Task` objekt.
@@ -328,6 +337,239 @@ public static class CancellationTokenExample
 }
 ```
 
+## <a name="logging"></a>protokolování
+
+V kódu funkce můžete napsat výstup do protokolů, které se zobrazí jako trasování v Application Insights. Doporučeným způsobem, jak zapisovat do protokolů, je zahrnout parametr typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger), který se obvykle nazývá `log` . Verze 1. x používaného modulu runtime Functions `TraceWriter` , který také zapisuje do Application Insights, ale nepodporuje strukturované protokolování. Nepoužívejte `Console.Write` k zápisu protokolů, protože tato data nejsou zachycena Application Insights. 
+
+### <a name="ilogger"></a>ILogger
+
+Do definice funkce zadejte parametr [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) , který podporuje [strukturované protokolování](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
+
+S `ILogger` objektem zavoláte `Log<level>` [metody rozšíření v ILogger](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) k vytváření protokolů. Následující kód zapisuje `Information` protokoly do kategorie `Function.<YOUR_FUNCTION_NAME>.User.` :
+
+```cs
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
+{
+    logger.LogInformation("Request for item with key={itemKey}.", id);
+```
+
+Další informace o tom, jak funkce implementují `ILogger` , najdete v tématu [shromažďování dat telemetrie](functions-monitoring.md#collecting-telemetry-data). Kategorie s předponou `Function` předpokládá, že používáte `ILogger` instanci. Pokud se rozhodnete místo toho použít `ILogger<T>` , název kategorie může být založen na `T` .  
+
+### <a name="structured-logging"></a>Strukturované protokolování
+
+Pořadí zástupných symbolů, nikoli jejich názvů, určuje, které parametry se použijí ve zprávě protokolu. Předpokládejme, že máte následující kód:
+
+```csharp
+string partitionKey = "partitionKey";
+string rowKey = "rowKey";
+logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionKey, rowKey);
+```
+
+Pokud zachováte stejný řetězec zprávy a obrátíte pořadí parametrů, výsledný text zprávy by měl mít hodnoty na nesprávných místech.
+
+Zástupné symboly jsou zpracovávány tímto způsobem, aby bylo možné provádět strukturované protokolování. Application Insights ukládá páry parametr název-hodnota a řetězec zprávy. Výsledkem je, že se argumenty zprávy stanou poli, se kterými se můžete dotazovat.
+
+Pokud vaše volání metody protokolovacího nástroje vypadá jako v předchozím příkladu, můžete zadat dotaz na pole `customDimensions.prop__rowKey` . `prop__`Je přidána předpona, aby se zajistilo, že mezi poli, které modul runtime přidává, nedochází k žádné kolizi, které přidávají kód funkce.
+
+Můžete také zadat dotaz na původní řetězec zprávy odkazem na pole `customDimensions.prop__{OriginalFormat}` .  
+
+Tady je ukázková reprezentace dat ve formátu JSON `customDimensions` :
+
+```json
+{
+  "customDimensions": {
+    "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
+    "Category":"Function",
+    "LogLevel":"Information",
+    "prop__message":"c9519cbf-b1e6-4b9b-bf24-cb7d10b1bb89"
+  }
+}
+```
+
+### <a name="log-custom-telemetry"></a><a name="log-custom-telemetry-in-c-functions"></a>Vlastní telemetrie protokolu
+
+Verze Application Insights SDK specifická pro konkrétní funkce, kterou můžete použít k posílání vlastních dat telemetrie z vašich funkcí do Application Insights: [Microsoft. Azure. WebJobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). K instalaci tohoto balíčku použijte následující příkaz z příkazového řádku:
+
+# <a name="command"></a>[Příkaz](#tab/cmd)
+
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+V tomto příkazu nahraďte `<VERSION>` verzi tohoto balíčku, která podporuje vaši nainstalovanou verzi [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/). 
+
+Následující příklady jazyka C# používají [vlastní rozhraní API telemetrie](../azure-monitor/app/api-custom-events-metrics.md). Příklad je pro knihovnu tříd .NET, ale kód Application Insights je stejný pro skript jazyka C#.
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+Verze 2. x a novější verze modulu runtime používají v Application Insights novějších funkcí k automatickému korelaci telemetrie s aktuální operací. Nemusíte ručně nastavit operaci `Id` , `ParentId` nebo `Name` pole.
+
+```cs
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public class HttpTrigger2
+    {
+        private readonly TelemetryClient telemetryClient;
+
+        /// Using dependency injection will guarantee that you use the same configuration for telemetry collected automatically and manually.
+        public HttpTrigger2(TelemetryConfiguration telemetryConfiguration)
+        {
+            this.telemetryClient = new TelemetryClient(telemetryConfiguration);
+        }
+
+        [FunctionName("HttpTrigger2")]
+        public Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
+            HttpRequest req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.Query
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Write an event to the customEvents table.
+            var evt = new EventTelemetry("Function called");
+            evt.Context.User.Id = name;
+            this.telemetryClient.TrackEvent(evt);
+
+            // Generate a custom metric, in this case let's use ContentLength.
+            this.telemetryClient.GetMetric("contentLength").TrackValue(req.ContentLength);
+
+            // Log a custom dependency in the dependencies table.
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            dependency.Context.User.Id = name;
+            this.telemetryClient.TrackDependency(dependency);
+
+            return Task.FromResult<IActionResult>(new OkResult());
+        }
+    }
+}
+```
+
+V tomto příkladu se vlastní data metriky agreguje hostitelem před odesláním do tabulky customMetrics. Další informace najdete v dokumentaci [getmetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) v tématu Application Insights. 
+
+Při místním spuštění je nutné přidat `APPINSIGHTS_INSTRUMENTATIONKEY` nastavení s klíčem Application Insights do [local.settings.jsv](functions-run-local.md#local-settings-file) souboru.
+
+
+# <a name="v1x"></a>[V1. x](#tab/v1)
+
+```cs
+using System;
+using System.Net;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.WebJobs;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public static class HttpTrigger2
+    {
+        private static string key = TelemetryConfiguration.Active.InstrumentationKey = 
+            System.Environment.GetEnvironmentVariable(
+                "APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process);
+
+        private static TelemetryClient telemetryClient = 
+            new TelemetryClient() { InstrumentationKey = key };
+
+        [FunctionName("HttpTrigger2")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+            HttpRequestMessage req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.GetQueryNameValuePairs()
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Get request body
+            dynamic data = await req.Content.ReadAsAsync<object>();
+
+            // Set name to query string or body data
+            name = name ?? data?.name;
+         
+            // Track an Event
+            var evt = new EventTelemetry("Function called");
+            UpdateTelemetryContext(evt.Context, context, name);
+            telemetryClient.TrackEvent(evt);
+            
+            // Track a Metric
+            var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
+            UpdateTelemetryContext(metric.Context, context, name);
+            telemetryClient.TrackMetric(metric);
+            
+            // Track a Dependency
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            UpdateTelemetryContext(dependency.Context, context, name);
+            telemetryClient.TrackDependency(dependency);
+        }
+        
+        // Correlate all telemetry with the current Function invocation
+        private static void UpdateTelemetryContext(TelemetryContext context, ExecutionContext functionContext, string userName)
+        {
+            context.Operation.Id = functionContext.InvocationId.ToString();
+            context.Operation.ParentId = functionContext.InvocationId.ToString();
+            context.Operation.Name = functionContext.FunctionName;
+            context.User.Id = userName;
+        }
+    }    
+}
+```
+---
+
+Nevolejte `TrackRequest` nebo `StartOperation<RequestTelemetry>` , protože se zobrazí duplicitní požadavky na vyvolání funkce.  Modul runtime Functions automaticky sleduje požadavky.
+
+Nenastaveno `telemetryClient.Context.Operation.Id` . Toto globální nastavení způsobuje nesprávnou korelaci, pokud mnoho funkcí běží současně. Místo toho vytvořte novou instanci telemetrie ( `DependencyTelemetry` , `EventTelemetry` ) a upravte její `Context` vlastnost. Pak předejte instanci telemetrie do odpovídající `Track` metody v `TelemetryClient` ( `TrackDependency()` , `TrackEvent()` , `TrackMetric()` ). Tato metoda zajišťuje, že telemetrie má správné korelační údaje pro aktuální vyvolání funkce.
+
+
 ## <a name="environment-variables"></a>Proměnné prostředí
 
 Chcete-li získat proměnnou prostředí nebo hodnotu nastavení aplikace, použijte `System.Environment.GetEnvironmentVariable` , jak je znázorněno v následujícím příkladu kódu:
@@ -343,7 +585,7 @@ public static class EnvironmentVariablesExample
         log.LogInformation(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
     }
 
-    public static string GetEnvironmentVariable(string name)
+    private static string GetEnvironmentVariable(string name)
     {
         return name + ": " +
             System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
@@ -399,7 +641,7 @@ public static class IBinderExample
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definuje vstupní nebo výstupní vazbu [objektu BLOB úložiště](functions-bindings-storage-blob.md) a [TextWriter](/dotnet/api/system.io.textwriter) je podporovaný výstupní typ vazby.
 
-### <a name="multiple-attribute-example"></a>Příklad více atributů
+### <a name="multiple-attributes-example"></a>Příklad více atributů
 
 Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Například:
 

@@ -1,25 +1,19 @@
 ---
 title: Implementace Oracle data Guard na virtuálním počítači Azure Linux | Microsoft Docs
 description: Do prostředí Azure se rychle dostanete a spusťte ochranu dat Oracle.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+author: dbakevlar
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.openlocfilehash: 1b04ef24ff01787c6904db0e288c23d4434e7dcf
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083374"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673829"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementace Oracle data Guard na virtuálním počítači Azure Linux 
 
@@ -57,7 +51,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 
-Vytvoření skupiny dostupnosti je volitelné, ale doporučujeme. Další informace najdete v tématu [pokyny k Azure Availability Sets](../../windows/infrastructure-example.md).
+Vytvoření skupiny dostupnosti je volitelné, ale doporučujeme. Další informace najdete v tématu [pokyny k Azure Availability Sets](/previous-versions/azure/virtual-machines/windows/infrastructure-example).
 
 ```azurecli
 az vm availability-set create \
@@ -273,16 +267,16 @@ SQL> ALTER DATABASE FORCE LOGGING;
 SQL> ALTER SYSTEM SWITCH LOGFILE;
 ```
 
-Vytvořit pohotovostní protokoly opakování:
+Vytvořte pohotovostní protokoly opětovného přihlášení a nastavte stejnou velikost a množství jako v případě protokolů opětovného provedení primární databáze:
 
 ```bash
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 50M;
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo02.log') SIZE 50M;
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo03.log') SIZE 50M;
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 200M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo02.log') SIZE 200M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo03.log') SIZE 200M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 200M;
 ```
 
-Zapněte Flashback (díky tomu bude obnovení mnohem jednodušší) a nastavte pohotovostní \_ \_ správu souborů na hodnotu automaticky. Ukončete SQL * plus a potom.
+Zapněte Flashback (což usnadňuje obnovení) a nastavte pohotovostní \_ \_ správu souborů na auto. Ukončete SQL * plus a potom.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -703,4 +697,4 @@ az group delete --name myResourceGroup
 
 [Kurz: Vytvoření virtuálních počítačů s vysokou dostupností](../../linux/create-cli-complete.md)
 
-[Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](../../linux/cli-samples.md)
+[Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

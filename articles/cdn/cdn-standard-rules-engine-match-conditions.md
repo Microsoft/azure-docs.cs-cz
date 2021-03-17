@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81259918"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Podmínky shody v modulu Standard rules pro Azure CDN
@@ -58,7 +58,7 @@ Identifikuje požadavky na základě informací o souborech cookie v příchozí
 
 Název souboru cookie | Operátor | Hodnota souboru cookie | Transformace případu
 ------------|----------|--------------|---------------
-Řetězec | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
+String | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
 #### <a name="key-information"></a>Informace o klíči
 
@@ -77,7 +77,7 @@ Identifikuje požadavky založené na argumentech definovaných pro metodu POST 
 
 Název argumentu | Operátor | Hodnota argumentu | Transformace případu
 --------------|----------|----------------|---------------
-Řetězec | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
+String | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
 ### <a name="query-string"></a>Řetězec dotazu
 
@@ -110,7 +110,7 @@ Neshoda IP adres | IP adresa (oddělená mezerami)
 - Pokud chcete zadat víc IP adres a bloků IP adres, použijte jednu mezeru mezi hodnotami:
   - **Příklad protokolu IPv4**: *1.2.3.4 10.20.30.40* odpovídá všem žádostem, které dorazí buď na adresu 1.2.3.4 nebo 10.20.30.40.
   - **Příklad IPv6**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* odpovídá všem žádostem, které přicházejí buď z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
-- Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Příklad:
+- Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Například:
   - **Příklad IPv4**: *5.5.5.64/26* odpovídá všem žádostem, které přicházejí z adres 5.5.5.64 prostřednictvím 5.5.5.127.
   - **Příklad IPv6**: *1:2:3:/48* odpovídá všem žádostem, které přicházejí z adres 1:2:3:0:0:0:0:0 až 1:2: ffff: ffff: ffff: ffff: ffff: FFFF.
 
@@ -132,7 +132,7 @@ Identifikuje požadavky, které v žádosti používají konkrétní hlavičku.
 
 Název hlavičky | Operátor | Hodnota hlavičky | Transformace případu
 ------------|----------|--------------|---------------
-Řetězec | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
+String | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
 ### <a name="request-method"></a>Request – metoda
 
@@ -221,13 +221,13 @@ Operátor | Hodnota | Transformace případu
 Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, platí následující operátory:
 
 - Všechny
-- Rovná se 
+- Je rovno 
 - Contains 
 - Začíná na 
 - Končí na 
-- Menší než
+- Je menší než
 - Je menší než nebo rovno
-- Větší než
+- Je větší než
 - Je větší než nebo rovno
 - Ne žádné
 - Neobsahuje

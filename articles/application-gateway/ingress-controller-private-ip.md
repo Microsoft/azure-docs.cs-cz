@@ -7,19 +7,19 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be37ed1da0da4da3db43ef4c1cd01ed962f24ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806786"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397304"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Použití soukromé IP adresy pro interní směrování pro koncový bod příchozího přenosu dat 
 
 Tato funkce umožňuje vystavit koncový bod příchozího přenosu dat v rámci `Virtual Network` používání privátní IP adresy.
 
 ## <a name="pre-requisites"></a>Požadavky  
-Application Gateway s [konfigurací privátní IP adresy](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)
+Application Gateway s [konfigurací privátní IP adresy](./configure-application-gateway-with-private-frontend-ip.md)
 
 Existují dva způsoby, jak řadič nakonfigurovat tak, aby používal privátní IP adresu pro příchozí přenosy,
 
@@ -66,4 +66,4 @@ Při konfiguraci naslouchacího procesu front-endu na Application Gateway bude a
 AGIC se bude tísňový a selhat, pokud `usePrivateIP: true` není přiřazená žádná privátní IP adresa.
 
 > [!NOTE]
-> SKU Application Gateway v2 vyžaduje veřejnou IP adresu. Pokud vyžadujete, Application Gateway být privátní, připojte se [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) k podsíti Application Gateway a omezte provoz.
+> SKU Application Gateway v2 vyžaduje veřejnou IP adresu. Pokud vyžadujete, Application Gateway být privátní, připojte se [`Network Security Group`](../virtual-network/network-security-groups-overview.md) k podsíti Application Gateway a omezte provoz.

@@ -1,26 +1,27 @@
 ---
-title: Převod úložiště spravovaných disků mezi Standard a SSD
-description: Jak převést úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard pomocí Azure CLI.
+title: Převod úložiště spravovaných disků mezi různými typy disků pomocí Azure CLI
+description: Jak převést spravované disky Azure mezi různými typy disků pomocí Azure CLI.
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
-ms.date: 07/12/2018
-ms.author: rogarana
+ms.date: 02/13/2021
+ms.author: albecker
 ms.subservice: disks
-ms.openlocfilehash: bf16ee0af1c5816822f6a201ad1d5a70127082db
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 35ba681ae35e60d7cd275c9e649b2463d2dc30a0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825374"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558453"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Převod úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard
 
-Existují čtyři typy disků Azure Managed disks: Azure Ultra SSD (Preview), Premium SSD, Standard SSD a Standard HDD. Na základě vašich požadavků na výkon můžete přepínat mezi třemi typy disků GA (Premium SSD, Standard SSD a Standard HDD). Ještě nejste schopni přepnout z nebo do Ultra SSD, musíte nasadit nový.
+Existují čtyři typy disků Azure Managed disks: disky Azure Ultra, Premium SSD, Standard SSD a standardní HDD. V závislosti na vašich požadavcích na výkon můžete přepínat mezi Premium SSD, Standard SSD a standardním pevným diskem. Ještě nejste schopni přepnout z nebo na disk Ultra, musíte nasadit nový.
 
 Tato funkce není podporovaná pro nespravované disky. Nespravovaný disk ale můžete snadno [převést na spravovaný disk](convert-unmanaged-to-managed-disks.md) , aby bylo možné přepínat mezi typy disků.
 
-V tomto článku se dozvíte, jak převést spravované disky z úrovně Standard na Premium nebo Premium na standard pomocí Azure CLI. Informace o instalaci nebo upgradu tohoto nástroje najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+V tomto článku se dozvíte, jak převést spravované disky z jednoho typu disku na jiný pomocí Azure CLI. Informace o instalaci nebo upgradu tohoto nástroje najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -28,9 +29,9 @@ V tomto článku se dozvíte, jak převést spravované disky z úrovně Standar
 * U nespravovaných disků nejprve [převeďte na spravované disky](convert-unmanaged-to-managed-disks.md) , abyste mohli přepínat mezi možnostmi úložiště.
 
 
-## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>Přepínání všech spravovaných disků virtuálního počítače v rámci úrovně Premium a Standard
+## <a name="switch-all-managed-disks-of-a-vm-between-from-one-account-to-another"></a>Přepínání všech spravovaných disků virtuálního počítače z jednoho účtu na jiný
 
-Tento příklad ukazuje, jak převést všechny disky virtuálního počítače z úrovně Standard na Premium Storage nebo z úrovně Premium na úložiště Standard. Pokud chcete používat službu Premium Managed disks, musí mít virtuální počítač [Velikost virtuálního počítače](../sizes.md) , která podporuje Premium Storage. Tento příklad také přepíná na velikost, která podporuje Premium Storage.
+Tento příklad ukazuje, jak převést všechny disky virtuálního počítače na Premium Storage. Když ale v tomto příkladu změníte proměnnou SKU, můžete převést typ disků virtuálního počítače na standardní SSD nebo standardní pevný disk. Mějte na paměti, že pokud chcete používat službu Premium Managed disks, musí mít virtuální počítač [Velikost virtuálního počítače](../sizes.md) , která podporuje Premium Storage. Tento příklad také přepíná na velikost, která podporuje Premium Storage.
 
  ```azurecli
 
@@ -44,7 +45,7 @@ vmName='yourVM'
 #Required only if converting from Standard to Premium
 size='Standard_DS2_v2'
 
-#Choose between Standard_LRS and Premium_LRS based on your scenario
+#Choose between Standard_LRS, StandardSSD_LRS and Premium_LRS based on your scenario
 sku='Premium_LRS'
 
 #Deallocate the VM before changing the size of the VM
@@ -65,9 +66,9 @@ az vm show -n $vmName -g $rgName --query storageProfile.osDisk.managedDisk -o ts
 az vm start --name $vmName --resource-group $rgName
 
 ```
-## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Přepnout jednotlivé spravované disky mezi standardem a Premium
+## <a name="switch-individual-managed-disks-from-one-disk-type-to-another"></a>Přepnout jednotlivé spravované disky z jednoho typu na jiný disk
 
-Pro vaše úlohy pro vývoj a testování můžete potřebovat kombinaci standardních a prémiových disků, abyste snížili náklady. Můžete si vybrat, jestli chcete upgradovat jenom ty disky, které potřebují lepší výkon. Tento příklad ukazuje, jak převést jeden disk virtuálního počítače z úrovně Standard na Premium Storage nebo z úrovně Premium na úložiště úrovně Standard. Pokud chcete používat službu Premium Managed disks, musí mít virtuální počítač [Velikost virtuálního počítače](../sizes.md) , která podporuje Premium Storage. Tento příklad také přepíná na velikost, která podporuje Premium Storage.
+Pro vaše úlohy pro vývoj a testování můžete potřebovat kombinaci standardních a prémiových disků, abyste snížili náklady. Můžete si vybrat, jestli chcete upgradovat jenom ty disky, které potřebují lepší výkon. Tento příklad ukazuje, jak převést jeden disk virtuálního počítače z úrovně Standard na Premium Storage. Když ale v tomto příkladu změníte proměnnou SKU, můžete převést typ disků virtuálního počítače na standardní SSD nebo standardní pevný disk. Pokud chcete používat službu Premium Managed disks, musí mít virtuální počítač [Velikost virtuálního počítače](../sizes.md) , která podporuje Premium Storage. Tento příklad také přepíná na velikost, která podporuje Premium Storage.
 
  ```azurecli
 
@@ -81,7 +82,7 @@ diskName='yourManagedDiskName'
 #Required only if converting from Standard to Premium
 size='Standard_DS2_v2'
 
-#Choose between Standard_LRS and Premium_LRS based on your scenario
+#Choose between Standard_LRS, StandardSSD_LRS and Premium_LRS based on your scenario
 sku='Premium_LRS'
 
 #Get the parent VM Id 
@@ -100,45 +101,18 @@ az disk update --sku $sku --name $diskName --resource-group $rgName
 az vm start --ids $vmId 
 ```
 
-## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Přepínat spravované disky mezi HDD úrovně Standard a SSD úrovně Standard
-
-Tento příklad ukazuje, jak převést jeden disk virtuálního počítače z HDD úrovně Standard na SSD úrovně Standard nebo z SSD úrovně Standard na HDD úrovně Standard.
-
- ```azurecli
-
-#resource group that contains the managed disk
-rgName='yourResourceGroup'
-
-#Name of your managed disk
-diskName='yourManagedDiskName'
-
-#Choose between Standard_LRS and StandardSSD_LRS based on your scenario
-sku='StandardSSD_LRS'
-
-#Get the parent VM ID 
-vmId=$(az disk show --name $diskName --resource-group $rgName --query managedBy --output tsv)
-
-#Deallocate the VM before changing the disk type
-az vm deallocate --ids $vmId 
-
-# Update the SKU
-az disk update --sku $sku --name $diskName --resource-group $rgName 
-
-az vm start --ids $vmId 
-```
-
-## <a name="switch-managed-disks-between-standard-and-premium-in-azure-portal"></a>Přepne spravované disky mezi Standard a Premium v Azure Portal
+## <a name="switch-managed-disks-from-one-disk-type-to-another"></a>Přepnout spravované disky z jednoho typu na jiný disk
 
 Postupujte takto:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. V seznamu **virtuálních počítačů**vyberte virtuální počítač.
+2. V seznamu **virtuálních počítačů** vyberte virtuální počítač.
 3. Pokud se virtuální počítač nezastavil, v horní části podokna **přehledu** virtuálních počítačů vyberte **zastavit** a počkejte, než se virtuální počítač zastaví.
 4. V podokně pro virtuální počítač vyberte z nabídky **disky** .
 5. Vyberte disk, který chcete převést.
 6. V nabídce vyberte **Konfigurace** .
-7. Změňte **typ účtu** z **HDD úrovně Standard** na **SSD úrovně Premium** nebo z **SSD úrovně Premium** na **HDD úrovně Standard**.
-8. Vyberte **Uložit**a zavřete podokno disk.
+7. Z původního typu disku změňte **typ účtu** na požadovaný typ disku.
+8. Vyberte **Uložit** a zavřete podokno disk.
 
 Aktualizace typu disku je okamžitá. Po převodu můžete restartovat virtuální počítač.
 

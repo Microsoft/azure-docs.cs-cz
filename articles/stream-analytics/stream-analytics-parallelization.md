@@ -3,16 +3,15 @@ title: Použití paralelního dotazování a škálování v Azure Stream Analyt
 description: Tento článek popisuje, jak škálovat úlohy Stream Analytics konfigurací vstupních oddílů, vyladěním definice dotazu a nastavením jednotek streamování úloh.
 author: JSeb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9149413d070bbb5eb8d0f8d0c99fe5ff705bcefb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296317"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012321"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využití paralelismu dotazů v Azure Stream Analytics
 V tomto článku se dozvíte, jak využít paralelismus v Azure Stream Analytics. Naučíte se, jak škálovat Stream Analytics úlohy konfigurací vstupních oddílů a optimalizací definice analytického dotazu.
@@ -22,7 +21,7 @@ Je možné, že budete chtít být obeznámeni s pojmem jednotky streamování p
 Definice úlohy Stream Analytics zahrnuje aspoň jeden vstup streamování, dotaz a výstup. Vstupy jsou místo, odkud úloha čte datový proud z. Dotaz slouží k transformaci vstupního datového proudu a výstup je, kde úloha odešle výsledky úlohy do.
 
 ## <a name="partitions-in-inputs-and-outputs"></a>Oddíly ve vstupech a výstupech
-Dělení umožňuje rozdělit data na podmnožiny na základě [klíče oddílu](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#partitions). Pokud je vaše zadání (například Event Hubs) rozdělené podle klíče, důrazně doporučujeme tento klíč oddílu zadat při přidávání vstupu do úlohy Stream Analytics. Škálování Stream Analytics úlohy využívá oddíly ve vstupu a výstupu. Stream Analytics úloha může spotřebovávat a zapisovat různé oddíly paralelně, což zvyšuje propustnost. 
+Dělení umožňuje rozdělit data na podmnožiny na základě [klíče oddílu](../event-hubs/event-hubs-scalability.md#partitions). Pokud je vaše zadání (například Event Hubs) rozdělené podle klíče, důrazně doporučujeme tento klíč oddílu zadat při přidávání vstupu do úlohy Stream Analytics. Škálování Stream Analytics úlohy využívá oddíly ve vstupu a výstupu. Stream Analytics úloha může spotřebovávat a zapisovat různé oddíly paralelně, což zvyšuje propustnost. 
 
 ### <a name="inputs"></a>Vstupy
 Všechny vstupy Azure Stream Analytics můžou využít dělení na oddíly:
@@ -41,14 +40,14 @@ Při práci s Stream Analytics můžete využívat dělení ve výstupech:
 -   Event Hubs (je potřeba nastavit klíč oddílu explicitně)
 -   IoT Hub (je potřeba nastavit klíč oddílu explicitně)
 -   Service Bus
-- SQL a SQL Data Warehouse s volitelným dělením oddílů: Další informace najdete na [stránce výstup do Azure SQL Database](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
+- SQL a Azure synapse Analytics s volitelným rozdělením na oddíly: Další informace najdete na [stránce výstup do Azure SQL Database](./stream-analytics-sql-output-perf.md).
 
 Power BI nepodporuje dělení. Můžete však stále rozdělit vstup, jak je popsáno v [této části](#multi-step-query-with-different-partition-by-values) . 
 
 Další informace o oddílech najdete v následujících článcích:
 
 * [Přehled funkcí Event Hubs](../event-hubs/event-hubs-features.md#partitions)
-* [Dělení dat](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning)
+* [Dělení dat](/azure/architecture/best-practices/data-partitioning)
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>Paralelní úlohy zpracovatelné
@@ -270,7 +269,7 @@ Následující poznámky používají úlohu Stream Analytics s dotazem bez stav
 | 5K     |    6    |  6.   |
 | 10K    |    12   |  10 Z  |
 
-Řešení [centra událostí](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) se škáluje lineárně v podobě jednotek streamování (SU) a propustnosti, takže je nejúčinnější a výkonný způsob analýzy a streamování dat z Stream Analytics. Úlohy je možné škálovat až do 192 SU, což zhruba souvisí se zpracováním až 200 MB/s, nebo 19 000 000 000 000 událostí za den.
+Řešení [centra událostí](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-eventhubs) se škáluje lineárně v podobě jednotek streamování (SU) a propustnosti, takže je nejúčinnější a výkonný způsob analýzy a streamování dat z Stream Analytics. Úlohy je možné škálovat až do 192 SU, což zhruba souvisí se zpracováním až 200 MB/s, nebo 19 000 000 000 000 událostí za den.
 
 #### <a name="azure-sql"></a>Azure SQL
 |Rychlost přijímání zpráv (události za sekundu) | Jednotky streamování | Výstupní prostředky  |
@@ -279,7 +278,7 @@ Následující poznámky používají úlohu Stream Analytics s dotazem bez stav
 |    5K   |   18 |  P4   |
 |    10K  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) podporuje zapisování paralelně, označované jako dědění oddílů, ale není ve výchozím nastavení povolené. Povolení dědění rozdělení na oddíly, společně s plně paralelním dotazem, ale nemusí být dostačující pro dosažení vyšší propustnosti. Propustnost zápisu SQL závisí významně na konfiguraci databáze a schématu tabulek. Článek o [výkonu SQL Output](./stream-analytics-sql-output-perf.md) obsahuje další podrobnosti o parametrech, které můžou maximalizovat propustnost zápisu. Jak je uvedeno ve [výstupu Azure Stream Analytics Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) článku, toto řešení se neškáluje lineárně jako plně paralelní kanál nad rámec 8 oddílů a může vyžadovat přerozdělení do výstupu SQL (viz [do](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Skladové jednotky úrovně Premium se potřebují pro udržení vysokého vstupně-výstupních operací spolu se režiemi ze záloh protokolů při každém několika minutách.
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-azuresql)  podporuje zapisování paralelně, označované jako dědění oddílů, ale není ve výchozím nastavení povolené. Povolení dědění rozdělení na oddíly, společně s plně paralelním dotazem, ale nemusí být dostačující pro dosažení vyšší propustnosti. Propustnost zápisu SQL závisí významně na konfiguraci databáze a schématu tabulek. Článek o [výkonu SQL Output](./stream-analytics-sql-output-perf.md) obsahuje další podrobnosti o parametrech, které můžou maximalizovat propustnost zápisu. Jak je uvedeno ve [výstupu Azure Stream Analytics Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) článku, toto řešení se neškáluje lineárně jako plně paralelní kanál nad rámec 8 oddílů a může vyžadovat přerozdělení do výstupu SQL (viz [do](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Skladové jednotky úrovně Premium se potřebují pro udržení vysokého vstupně-výstupních operací spolu se režiemi ze záloh protokolů při každém několika minutách.
 
 #### <a name="cosmos-db"></a>Databáze Cosmos
 |Rychlost přijímání zpráv (události za sekundu) | Jednotky streamování | Výstupní prostředky  |
@@ -288,7 +287,7 @@ Následující poznámky používají úlohu Stream Analytics s dotazem bez stav
 |  5K   |  24   | 60K RU  |
 |  10K  |  48   | 120K RU |
 
-[Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) výstup z Stream Analytics byl aktualizován tak, aby používal nativní integraci do [úrovně kompatibility 1,2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). Úroveň kompatibility 1,2 umožňuje významně vyšší propustnost a snižuje spotřebu RU v porovnání s 1,1, což je výchozí úroveň kompatibility pro nové úlohy. Toto řešení využívá kontejnery CosmosDB rozdělené na/deviceId a zbytek řešení je identický nakonfigurované.
+[Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb) výstup z Stream Analytics byl aktualizován tak, aby používal nativní integraci do [úrovně kompatibility 1,2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). Úroveň kompatibility 1,2 umožňuje významně vyšší propustnost a snižuje spotřebu RU v porovnání s 1,1, což je výchozí úroveň kompatibility pro nové úlohy. Toto řešení využívá kontejnery CosmosDB rozdělené na/deviceId a zbytek řešení je identický nakonfigurované.
 
 Všechny [datové proudy ve zkušebních ukázkách Azure](https://github.com/Azure-Samples/streaming-at-scale) používají jako vstup centrum událostí jako vstup, který je dodaný zátěží pro simulaci testovacích klientů. Každá vstupní událost je dokument 1 KB JSON, který překládá nakonfigurovanou rychlost přijímání do propustnosti (1 MB/s, 5 MB/s a 10 MB/s) snadno. Události simulují zařízení IoT odesílající následující data JSON (ve zkrácené formě) až do zařízení 1 tisíc:
 
@@ -313,15 +312,15 @@ Všechny [datové proudy ve zkušebních ukázkách Azure](https://github.com/Az
 
 Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kritická místa ve vašem kanálu. Zkontrolujte **vstupní/výstupní události** pro propustnost a ["zpoždění vodoznaku"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **nevyřízené události** , abyste viděli, jestli úloha nepracuje se vstupní sazbou. V případě metrik centra událostí vyhledejte **omezené požadavky** a odpovídajícím způsobem upravte prahové jednotky. V případě Cosmos DB metriky si přečtěte **maximální počet spotřebovaných ru/s na rozsah klíče oddílu** propustnost, abyste zajistili, že rozsahy klíčů oddílu budou jednotně spotřebovány. V případě služby Azure SQL DB Sledujte **protokol IO** a **CPU**.
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)
 
 <!--Image references-->
 
@@ -334,10 +333,9 @@ Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&
 <!--Link references-->
 
 [microsoft.support]: https://support.microsoft.com
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
-
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

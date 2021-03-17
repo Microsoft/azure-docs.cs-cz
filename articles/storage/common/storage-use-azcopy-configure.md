@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037180"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596949"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -22,19 +22,19 @@ AzCopy je nástroj příkazového řádku, pomocí kterého můžete kopírovat 
 > [!NOTE]
 > Pokud hledáte obsah, který vám pomůžete začít s AzCopy, přečtěte si některé z následujících článků:
 > - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
-> - [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
+> - [Přenos dat pomocí AzCopy a BLOB Storage](./storage-use-azcopy-v10.md#transfer-data)
 > - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 > - [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
-Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte `https_proxy` proměnnou prostředí. Pokud používáte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže ve Windows toto nastavení používat nemusíte. Pokud se rozhodnete toto nastavení použít ve Windows, přepíše se tím automatická detekce.
+Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte `HTTPS_PROXY` proměnnou prostředí. Pokud používáte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže ve Windows toto nastavení používat nemusíte. Pokud se rozhodnete toto nastavení použít ve Windows, přepíše se tím automatická detekce.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | V příkazovém řádku použijte:`set https_proxy=<proxy IP>:<proxy port>`<br> V prostředí PowerShell použijte:`$env:https_proxy="<proxy IP>:<proxy port>"`|
-| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | V příkazovém řádku použijte: `set HTTPS_PROXY=<proxy IP>:<proxy port>`<br> V prostředí PowerShell použijte: `$env:HTTPS_PROXY="<proxy IP>:<proxy port>"`|
+| **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
+| **macOS** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
 
 AzCopy v současné době nepodporuje proxy servery, které vyžadují ověřování pomocí protokolu NTLM nebo Kerberos.
 
@@ -183,7 +183,7 @@ Když úlohu obnovíte, AzCopy se podívá na soubor plánu úlohy. Soubor plán
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>Změna umístění plánu a souborů protokolu
 
-Ve výchozím nastavení se soubory schématu a protokolu nacházejí v `%USERPROFILE%\.azcopy` adresáři ve Windows nebo v adresáři v systému `$HOME$\.azcopy` Mac a Linux. Toto umístění můžete změnit.
+Ve výchozím nastavení se soubory schématu a protokolu nacházejí v `%USERPROFILE%\.azcopy` adresáři ve Windows nebo v adresáři v systému `$HOME/.azcopy` Mac a Linux. Toto umístění můžete změnit.
 
 ### <a name="change-the-location-of-plan-files"></a>Změna umístění souborů plánu
 
@@ -191,7 +191,7 @@ Použijte některý z těchto příkazů.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | Prostředí`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> V příkazovém řádku použijte::`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | Prostředí`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> V příkazovém řádku použijte:: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
@@ -203,7 +203,7 @@ Použijte některý z těchto příkazů.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | Prostředí`$env:AZCOPY_LOG_LOCATION="<value>"` <br> V příkazovém řádku použijte::`set AZCOPY_LOG_LOCATION=<value>`|
+| **Windows** | Prostředí`$env:AZCOPY_LOG_LOCATION="<value>"` <br> V příkazovém řádku použijte:: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
@@ -220,5 +220,3 @@ Dostupné úrovně protokolu jsou: `NONE` , `DEBUG` , `INFO` , `WARNING` , `ERRO
 Pokud chcete ze svého místního počítače odebrat všechny soubory plánu a protokolu, aby se ušetřilo místo na disku, použijte `azcopy jobs clean` příkaz.
 
 Chcete-li odebrat plán a soubory protokolu spojené pouze s jednou úlohou, použijte `azcopy jobs rm <job-id>` . `<job-id>`Zástupný symbol v tomto příkladu nahraďte ID úlohy úlohy.
-
-

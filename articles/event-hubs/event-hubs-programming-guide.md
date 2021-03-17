@@ -3,18 +3,19 @@ title: Průvodce programováním v .NET – Azure Event Hubs (starší verze) | 
 description: Tento článek poskytuje informace o tom, jak napsat kód pro Azure Event Hubs pomocí sady Azure .NET SDK.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 32c3c05b61d2ee8fc79d7c863ddbe84de5fe7e2b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074853"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432736"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Průvodce programováním v rozhraní .NET pro Azure Event Hubs (starší balíček Microsoft. Azure. EventHubs)
 Tento článek popisuje některé běžné scénáře psaní kódu pomocí Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](./event-hubs-about.md).
 
 > [!WARNING]
-> Tato příručka je určena pro starý balíček **Microsoft. Azure. EventHubs** . Doporučujeme, abyste při [migraci](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) kódu používali nejnovější balíček [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) .  
+> Tato příručka je určena pro starý balíček **Microsoft. Azure. EventHubs** . Doporučujeme, abyste při [migraci](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) kódu používali nejnovější balíček [Azure. Messaging. EventHubs](event-hubs-dotnet-standard-getstarted-send.md) .  
 
 
 ## <a name="event-publishers"></a>Zdroje událostí
@@ -56,7 +57,7 @@ Události odesíláte do centra událostí vytvořením instance [EventHubClient
 
 ## <a name="event-serialization"></a>Serializace událostí
 
-Třída [EventData][] má [dva přetížené konstruktory](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) , které přijímají různé parametry, bajty nebo bajtové pole, které reprezentují datovou část dat události. Pokud při práci s třídou [EventData][] používáte JSON, můžete načíst pole bajtů řetězce kódovaného ve formátu JSON pomocí metody **Encoding.UTF8.GetBytes()**. Příklad:
+Třída [EventData][] má [dva přetížené konstruktory](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) , které přijímají různé parametry, bajty nebo bajtové pole, které reprezentují datovou část dat události. Pokud při práci s třídou [EventData][] používáte JSON, můžete načíst pole bajtů řetězce kódovaného ve formátu JSON pomocí metody **Encoding.UTF8.GetBytes()**. Například:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -72,21 +73,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 > [!NOTE]
 > Pokud nejste obeznámeni s oddíly, přečtěte si [Tento článek](event-hubs-features.md#partitions). 
 
-Při odesílání dat události můžete zadat hodnotu, která má hash k vytvoření přiřazení oddílu. Oddíl určíte pomocí vlastnosti [PartitionSender. PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) . Rozhodnutí o použití oddílů ale implikuje možnost volby mezi dostupností a konzistencí. 
-
-### <a name="availability-considerations"></a>Aspekty dostupnosti
-
-Použití klíče oddílu je volitelné a měli byste pečlivě zvážit, zda jej použít. Pokud při publikování události nezadáte klíč oddílu, použije se přiřazení metodou kruhového dotazování. V mnoha případech je použití klíče oddílu dobrou volbou, pokud je řazení událostí důležité. Když použijete klíč oddílu, budou tyto oddíly vyžadovat dostupnost na jednom uzlu a výpadky můžou probíhat v průběhu času. například při restartu a opravě výpočetních uzlů. V takovém případě, pokud nastavíte ID oddílu a daný oddíl z nějakého důvodu nebude k dispozici, pokus o přístup k datům v tomto oddílu selže. Je-li nejdůležitější vysoká dostupnost, nezadávejte klíč oddílu; v takovém případě se události odesílají do oddílů pomocí modelu kruhového dotazování popsaného výše. V tomto scénáři provedete explicitní volbu mezi dostupností (bez ID oddílu) a konzistencí (připnutí událostí k IDENTIFIKÁTORu oddílu).
-
-Dalším aspektem je zpracování zpoždění při zpracování událostí. V některých případech může být vhodnější vyřadit data a opakovat se, než se pokusíte zachovat zpracování, což může potenciálně způsobit zpoždění při zpracování dat. Například u burzovních značek je lepší počkat na kompletní aktuální data, ale ve scénáři živého chatu nebo VOIP byste měli data rychle, a to i v případě, že není dokončená.
-
-Vzhledem k těmto hlediskům dostupnosti můžete v těchto scénářích zvolit jednu z následujících strategií zpracování chyb:
-
-- Zastavit (přerušit čtení z Event Hubs, dokud nebudou opraveny věci)
-- Drop (zprávy nejsou důležité, přetáhněte je)
-- Zkuste to znovu (podle potřeby zprávy zkuste zobrazit).
-
-Další informace a diskuzi o kompromisech mezi dostupností a konzistencí najdete v tématu [dostupnost a konzistence v Event Hubs](event-hubs-availability-and-consistency.md). 
+Při odesílání dat události můžete zadat hodnotu, která má hash k vytvoření přiřazení oddílu. Oddíl určíte pomocí vlastnosti [PartitionSender. PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) . Rozhodnutí o použití oddílů ale implikuje možnost volby mezi dostupností a konzistencí. Další informace najdete v tématu [dostupnost a konzistence](event-hubs-availability-and-consistency.md).
 
 ## <a name="batch-event-send-operations"></a>Dávkové operace odesílání událostí
 
@@ -96,7 +83,7 @@ Jedna dávka nesmí překročit omezení 1 MB události. Kromě toho každá zpr
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchronní odesílání a škálované odesílání
 
-Události se odesílají do centra událostí asynchronně. Odesílání asynchronně zvyšuje rychlost, s jakou klient může odesílat události. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) vrátí objekt [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) . K řízení možností opakování klienta můžete použít třídu [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) na klientovi.
+Události se odesílají do centra událostí asynchronně. Odesílání asynchronně zvyšuje rychlost, s jakou klient může odesílat události. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) vrátí objekt [Task](/dotnet/api/system.threading.tasks.task) . K řízení možností opakování klienta můžete použít třídu [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) na klientovi.
 
 ## <a name="event-consumers"></a>Příjemci událostí
 Třída [EventProcessorHost][] zpracovává data z center událostí (Event Hubs). Tuto implementaci byste měli používat při vytváření čtenářů událostí na platformě .NET. Třída [EventProcessorHost][] poskytuje pro implementace zpracovatelů událostí bezpečné prostředí runtime, které umožňuje bezpečné použití vláken a více procesů. Taky poskytuje možnost vytváření kontrolních bodů a správy „půjčování“ oddílu.
@@ -108,7 +95,7 @@ K použití třídy [EventProcessorHost][] může být potřeba implementovat ro
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-Pokud chcete spustit zpracování událostí, vytvořte instanci [EventProcessorHost][]a poskytněte příslušné parametry centra událostí. Příklad:
+Pokud chcete spustit zpracování událostí, vytvořte instanci [EventProcessorHost][]a poskytněte příslušné parametry centra událostí. Například:
 
 > [!NOTE]
 > EventProcessorHost a související třídy jsou k dispozici v balíčku **Microsoft. Azure. EventHubs. Processor** . Přidejte balíček do projektu sady Visual Studio podle pokynů v [tomto článku](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) nebo vyvoláním následujícího příkazu v okně [konzoly Správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) : `Install-Package Microsoft.Azure.EventHubs.Processor` .
@@ -143,7 +130,6 @@ Kromě pokročilých běhových funkcí pro hostitele procesoru událostí umož
 > [!NOTE]
 > V současné době tato funkce podporuje jenom REST API ([odvolání vydavatele](/rest/api/eventhub/revoke-publisher)).
 
-Další informace o odvolání zdroje a o tom, jak jako zdroj odesílat do centra událostí, najdete v ukázce [zabezpečeného publikování ve velkém rozsahu u služby Event Hubs](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab).
 
 ## <a name="next-steps"></a>Další kroky
 

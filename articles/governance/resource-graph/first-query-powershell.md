@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na PowerShell'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení modulu Resource Graph pro Azure PowerShell a spuštění prvního dotazu.
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 4cc7eb524060f2a797077f38321ae9ce6c9cf267
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 131bed4fe60035682a317e186f11561bc005b298
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056393"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917669"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell
 
@@ -88,7 +88,7 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
 Když se konečný dotaz několikrát spustí, předpokládá se, že se nic ve vašem prostředí nemění, vrácené výsledky jsou konzistentní a seřazené podle vlastnosti **Name** , ale pořád se omezí na pět nejlepších výsledků.
 
 > [!NOTE]
-> Pokud dotaz nevrátí výsledky z předplatného, ke kterému už máte přístup, a pak si všimněte, že se `Search-AzGraph` výchozí nastavení rutiny ve výchozím kontextu předplatným. Pokud chcete zobrazit seznam ID předplatných, která jsou součástí výchozího kontextu, spusťte tuto možnost `(Get-AzContext).Account.ExtendedProperties.Subscriptions` , pokud chcete hledat ve všech předplatných, ke kterým máte přístup, a jeden z nich může nastavit PSDefaultParameterValues pro `Search-AzGraph` rutinu spuštěním.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Pokud dotaz nevrátí výsledky z předplatného, ke kterému už máte přístup, a pak si všimněte, že se `Search-AzGraph` výchozí nastavení rutiny ve výchozím kontextu předplatným. Pokud chcete zobrazit seznam ID předplatných, která jsou součástí výchozího kontextu, spusťte tuto možnost `(Get-AzContext).Account.ExtendedProperties.Subscriptions` , pokud chcete hledat ve všech předplatných, ke kterým máte přístup, a jeden z nich může nastavit PSDefaultParameterValues pro `Search-AzGraph` rutinu spuštěním. `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

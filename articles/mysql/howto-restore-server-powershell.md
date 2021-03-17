@@ -1,25 +1,25 @@
 ---
 title: Zálohování a obnovení-Azure PowerShell-Azure Database for MySQL
 description: Naučte se zálohovat a obnovovat Server v Azure Database for MySQL pomocí Azure PowerShell.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 43ce39a1fc05c8ffedd1ae8404cc20c1a498a73f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837270"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539001"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for MySQL pomocí prostředí PowerShell
 
 Azure Database for MySQL servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto průvodce budete potřebovat:
 
@@ -41,7 +41,7 @@ Při vytváření serveru můžete vybrat možnost konfigurace serveru pro míst
 > [!NOTE]
 > Po vytvoření serveru se jeho druh redundance, geograficky redundantní vs místně redundantní nedá změnit.
 
-Při vytváření serveru prostřednictvím příkazu se `New-AzMySqlServer` rozhodne možnost redundance zálohování použít parametr **GeoRedundantBackup** . Pokud je **povoleno**, budou provedeny geograficky redundantní zálohy. Nebo pokud je **zakázaný**, provedou se místně redundantní zálohy.
+Při vytváření serveru prostřednictvím příkazu se `New-AzMySqlServer` rozhodne možnost redundance zálohování použít parametr **GeoRedundantBackup** . Pokud je **povoleno** , budou provedeny geograficky redundantní zálohy. Nebo pokud je **zakázaný** , provedou se místně redundantní zálohy.
 
 Doba uchovávání záloh je nastavená parametrem **BackupRetentionDay** .
 
@@ -75,9 +75,9 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Sada parametrů **PointInTimeRestore** `Restore-AzMySqlServer` rutiny vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
+| ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
 | Název | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například **2020-03-13T05:59:00-08:00**. Můžete také použít formát Zulu UTC, například **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | K obnovení použijte režim bodu v čase. |
@@ -106,7 +106,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Tento příklad vytvoří nový server s názvem **mydemoserver-geograficky obnovený** v oblasti východní USA, která patří k **myresourcegroup**. Je to Pro obecné účelyý Server Gen 5 s 8 virtuální jádra. Server se vytvoří z geograficky redundantní zálohy **mydemoserver**, a to i v **myresourcegroup**skupiny prostředků.
+Tento příklad vytvoří nový server s názvem **mydemoserver-geograficky obnovený** v oblasti východní USA, která patří k **myresourcegroup**. Je to Pro obecné účelyý Server Gen 5 s 8 virtuální jádra. Server se vytvoří z geograficky redundantní zálohy **mydemoserver** , a to i v **myresourcegroup** skupiny prostředků.
 
 Pokud chcete vytvořit nový server v jiné skupině prostředků z existujícího serveru, zadejte nový název skupiny prostředků pomocí parametru **ResourceGroupName** , jak je znázorněno v následujícím příkladu:
 
@@ -117,7 +117,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Sada **GeoRestore** parametrů pro dopředné obnovení `Restore-AzMySqlServer` rutiny vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Název skupiny prostředků, do které nový server patří|
 |Název | mydemoserver – geograficky obnovené | Název nového serveru. |

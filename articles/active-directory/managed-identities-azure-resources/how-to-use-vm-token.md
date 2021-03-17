@@ -3,7 +3,7 @@ title: Použití spravovaných identit na virtuálním počítači k získání 
 description: Podrobný postup a příklady použití spravovaných identit pro prostředky Azure na virtuálních počítačích pro získání přístupového tokenu OAuth.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
-ms.author: markvi
+ms.date: 11/03/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f254bef223294661180f21019ae8c5a842015c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 541f76ad825f492679530902c571096ca4b01902
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608377"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726227"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu 
 
@@ -47,7 +47,7 @@ Pokud plánujete použít Azure PowerShell příklady v tomto článku, nainstal
 
 Klientská aplikace může pro přístup k danému prostředku požádat o spravované identity [jenom přístupového tokenu](../develop/developer-glossary.md#access-token) pro prostředky Azure. Token je [založený na spravovaných identitách pro objekt služby Azure Resources](overview.md#managed-identity-types). V takovém případě není nutné, aby se klient zaregistroval k získání přístupového tokenu v rámci vlastního instančního objektu. Token je vhodný k použití jako nosný token ve [voláních služby-služba vyžadujících pověření klienta](../develop/v2-oauth2-client-creds-grant-flow.md).
 
-| Odkaz | Description |
+| Odkaz | Popis |
 | -------------- | -------------------- |
 | [Získání tokenu pomocí protokolu HTTP](#get-a-token-using-http) | Podrobnosti protokolu pro spravované identity pro koncový bod tokenu prostředků Azure |
 | [Získání tokenu pomocí knihovny Microsoft. Azure. Services. AppAuthentication pro .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Příklad použití knihovny Microsoft. Azure. Services. AppAuthentication z klienta .NET
@@ -70,7 +70,7 @@ Ukázková žádost s použitím koncového bodu Azure Instance Metadata Service
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| Prvek | Description |
+| Element | Popis |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Koncový bod spravovaných identit pro prostředky Azure pro Instance Metadata Service. |
@@ -88,7 +88,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Prvek | Description |
+| Element | Popis |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
 | `http://localhost:50342/oauth2/token` | Spravované identity pro koncové body prostředků Azure, kde 50342 je výchozí port a dá se konfigurovat. |
@@ -113,7 +113,7 @@ Content-Type: application/json
 }
 ```
 
-| Prvek | Description |
+| Element | Popis |
 | ------- | ----------- |
 | `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do `Authorization` pole Hlavička požadavku jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
 | `refresh_token` | Nepoužívá se spravovanými identitami pro prostředky Azure. |
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Získání tokenu pomocí knihovny Microsoft. Azure. Services. AppAuthentication pro .NET
 
-Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanými identitami prostředků Azure prostřednictvím balíčku Microsoft. Azure. Services. AppAuthentication. Tato knihovna vám také umožní testovat kód místně na vývojovém počítači pomocí uživatelského účtu ze sady Visual Studio, [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)nebo integrovaného ověřování služby Active Directory. Další informace o možnostech místního vývoje pomocí této knihovny najdete v [referenčních informacích k Microsoft. Azure. Services. AppAuthentication](/azure/key-vault/service-to-service-authentication). V této části se dozvíte, jak začít s knihovnou ve vašem kódu.
+Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanými identitami prostředků Azure prostřednictvím balíčku Microsoft. Azure. Services. AppAuthentication. Tato knihovna vám také umožní testovat kód místně na vývojovém počítači pomocí uživatelského účtu ze sady Visual Studio, [Azure CLI](/cli/azure)nebo integrovaného ověřování služby Active Directory. Další informace o možnostech místního vývoje pomocí této knihovny najdete v [referenčních informacích k Microsoft. Azure. Services. AppAuthentication](/dotnet/api/overview/azure/service-to-service-authentication). V této části se dozvíte, jak začít s knihovnou ve vašem kódu.
 
 1. Do své aplikace přidejte odkazy na balíčky [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft. Azure. trezoru](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) .
 
@@ -141,7 +141,7 @@ Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanými i
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Další informace o Microsoft. Azure. Services. AppAuthentication a o operacích, které zpřístupňuje, najdete v tématu Referenční dokumentace ke [službě Microsoft. Azure. Services. AppAuthentication](/azure/key-vault/service-to-service-authentication) a [App Service a trezoru klíčů se spravovanými identitami pro Azure Resources .NET – ukázka](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Další informace o Microsoft. Azure. Services. AppAuthentication a o operacích, které zpřístupňuje, najdete v tématu Referenční dokumentace ke [službě Microsoft. Azure. Services. AppAuthentication](/dotnet/api/overview/azure/service-to-service-authentication) a [App Service a trezoru klíčů se spravovanými identitami pro Azure Resources .NET – ukázka](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ## <a name="get-a-token-using-c"></a>Získání tokenu pomocí jazyka C #
 
@@ -362,7 +362,7 @@ Spravované identity pro prostředky Azure – koncový bod signalizuje chyby pr
 
 Pokud dojde k chybě, odpovídající tělo odpovědi HTTP obsahuje JSON s podrobnostmi o chybě:
 
-| Prvek | Description |
+| Element | Popis |
 | ------- | ----------- |
 | error   | Identifikátor chyby |
 | error_description | Podrobný popis chyby **Popisy chyb se můžou kdykoli změnit. Nepište kód, který se větví na základě hodnot v popisu chyby.**|
@@ -373,15 +373,15 @@ V této části se nacházejí možné chybové odpovědi. Stav "200 OK" je úsp
 
 | Stavový kód | Chyba | Popis chyby | Řešení |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Chybný požadavek | invalid_resource | AADSTS50001: aplikace s názvem nebyla *\<URI\>* v tenantovi s názvem nalezena *\<TENANT-ID\>* . K tomu může dojít v případě, že aplikace nebyla nainstalována správcem tenanta nebo nebyla odsouhlasena žádným uživatelem v tenantovi. Je možné, že jste odeslali žádost o ověření na špatného tenanta. \ | (Pouze Linux) |
-| 400 Chybný požadavek | bad_request_102 | Není zadáno požadované záhlaví metadat. | Buď `Metadata` chybí pole s hlavičkou žádosti, nebo je nesprávně naformátované. Hodnota musí být zadána jako `true` , v malých případech. Příklad najdete v části "Ukázkový požadavek" v předchozím oddílu REST.|
-| 401 Neautorizováno | unknown_source | Neznámý zdroj*\<URI\>* | Ověřte, zda je správně naformátován identifikátor URI žádosti HTTP GET. `scheme:host/resource-path`Část musí být zadána jako `http://localhost:50342/oauth2/token` . Příklad najdete v části "Ukázkový požadavek" v předchozím oddílu REST.|
+| 400 – Chybný požadavek | invalid_resource | AADSTS50001: aplikace s názvem nebyla *\<URI\>* v tenantovi s názvem nalezena *\<TENANT-ID\>* . K tomu může dojít v případě, že aplikace nebyla nainstalována správcem tenanta nebo nebyla odsouhlasena žádným uživatelem v tenantovi. Je možné, že jste odeslali žádost o ověření na špatného tenanta. \ | (Pouze Linux) |
+| 400 – Chybný požadavek | bad_request_102 | Není zadáno požadované záhlaví metadat. | Buď `Metadata` chybí pole s hlavičkou žádosti, nebo je nesprávně naformátované. Hodnota musí být zadána jako `true` , v malých případech. Příklad najdete v části "Ukázkový požadavek" v předchozím oddílu REST.|
+| 401 – Neautorizováno | unknown_source | Neznámý zdroj *\<URI\>* | Ověřte, zda je správně naformátován identifikátor URI žádosti HTTP GET. `scheme:host/resource-path`Část musí být zadána jako `http://localhost:50342/oauth2/token` . Příklad najdete v části "Ukázkový požadavek" v předchozím oddílu REST.|
 |           | invalid_request | V požadavku chybí povinný parametr, obsahuje neplatnou hodnotu parametru, obsahuje parametr více než jednou nebo je jinak poškozen. |  |
 |           | unauthorized_client | Klient nemá autorizaci k vyžádání přístupového tokenu pomocí této metody. | Důvodem je požadavek, který nepoužil místní zpětnou smyčku k volání rozšíření nebo na virtuálním počítači, který nemá spravované identity pro prostředky Azure správně nakonfigurovány. Pokud potřebujete pomoc s konfigurací virtuálních počítačů, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](qs-configure-portal-windows-vm.md) . |
 |           | access_denied | Vlastník prostředku nebo autorizační Server odepřel požadavek. |  |
 |           | unsupported_response_type | Autorizační Server nepodporuje získání přístupového tokenu pomocí této metody. |  |
 |           | invalid_scope | Požadovaný obor je neplatný, neznámý nebo poškozený. |  |
-| 500 interní chyba serveru | Neznámý | Nepovedlo se načíst token ze služby Active Directory. Podrobnosti najdete v tématu protokoly v*\<file path\>* | Ověřte, že na virtuálním počítači jsou povolené spravované identity pro prostředky Azure. Pokud potřebujete pomoc s konfigurací virtuálních počítačů, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](qs-configure-portal-windows-vm.md) .<br><br>Ověřte také, zda je identifikátor URI požadavku HTTP GET správně naformátovaný, zejména identifikátor URI prostředku zadaný v řetězci dotazu. V části "Ukázkový požadavek" v předchozí části REST najdete příklad nebo [služby Azure, které podporují ověřování Azure AD](services-support-msi.md) pro seznam služeb a jejich odpovídající ID prostředků.
+| Chyba „500 Internal server error“ | Neznámý | Nepovedlo se načíst token ze služby Active Directory. Podrobnosti najdete v tématu protokoly v *\<file path\>* | Ověřte, že na virtuálním počítači jsou povolené spravované identity pro prostředky Azure. Pokud potřebujete pomoc s konfigurací virtuálních počítačů, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](qs-configure-portal-windows-vm.md) .<br><br>Ověřte také, zda je identifikátor URI požadavku HTTP GET správně naformátovaný, zejména identifikátor URI prostředku zadaný v řetězci dotazu. V části "Ukázkový požadavek" v předchozí části REST najdete příklad nebo [služby Azure, které podporují ověřování Azure AD](./services-support-managed-identities.md) pro seznam služeb a jejich odpovídající ID prostředků.
 
 ## <a name="retry-guidance"></a>Pokyny pro opakování 
 
@@ -397,17 +397,9 @@ Pro opakování doporučujeme následující strategii:
 
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
 
-V tématu [služby Azure, které podporují ověřování Azure AD](services-support-msi.md) , najdete seznam prostředků, které podporují Azure AD a byly testovány se spravovanými identitami pro prostředky Azure a jejich příslušnými ID prostředků.
+V tématu [služby Azure, které podporují ověřování Azure AD](./services-support-managed-identities.md) , najdete seznam prostředků, které podporují Azure AD a byly testovány se spravovanými identitami pro prostředky Azure a jejich příslušnými ID prostředků.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete povolit spravované identity pro prostředky Azure na virtuálním počítači Azure, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](qs-configure-portal-windows-vm.md).
-
-
-
-
-
-
-
-

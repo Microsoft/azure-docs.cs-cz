@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: asrastog
-ms.openlocfilehash: 83d2fa59654e038586a7f23eedbe7c656873f35c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 352da24b36124ff0446a81c1ecbc584da545bb16
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976570"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142202"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>Šifrování neaktivních dat pomocí klíčů spravovaných zákazníkem pro IoT Hub
 
@@ -24,6 +24,6 @@ Tato funkce vyžaduje vytvoření nové IoT Hub (úroveň Basic nebo Standard). 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)
+* [Další informace o IoT Hub](./about-iot-hub.md)
 
-* [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Další informace o Azure Key Vault](../key-vault/general/overview.md)

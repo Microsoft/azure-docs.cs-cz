@@ -9,17 +9,17 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
 ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001481"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Kódování a dekódování plochých souborů v Azure Logic Apps s využitím řešení Enterprise Integration Pack
 
 Před odesláním obsahu XML obchodnímu partnerovi ve scénáři B2B (Business-to-Business) možná budete chtít takový obsah nejdřív zakódovat. Vytvořením aplikace logiky můžete kódovat a dekódovat ploché soubory pomocí konektoru **plochých souborů** . Aplikace logiky může získat tento obsah XML z různých zdrojů, jako je Trigger žádosti, jiná aplikace nebo jiné [konektory, které podporuje Azure Logic Apps](../connectors/apis-list.md). Další informace najdete v tématu [co je Azure Logic Apps](logic-apps-overview.md)?
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

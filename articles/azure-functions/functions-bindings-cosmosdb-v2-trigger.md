@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 838d6244127bc1b3609ab5e925e54dbab7fe3a2d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6f4e43efeb1882f52bd335d83a3660a94040ab8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729211"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Aktivační událost Azure Cosmos DB pro Azure Functions 2. x a vyšší
 
@@ -91,6 +91,27 @@ Tady je kód skriptu jazyka C#:
     }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Tato funkce je vyvolána, když jsou vloženy nebo aktualizovány v zadané databázi a kolekci.
+
+```java
+    @FunctionName("cosmosDBMonitor")
+    public void cosmosDbProcessor(
+        @CosmosDBTrigger(name = "items",
+            databaseName = "ToDoList",
+            collectionName = "Items",
+            leaseCollectionName = "leases",
+            createLeaseCollectionIfNotExists = true,
+            connectionStringSetting = "AzureCosmosDBConnection") String[] items,
+            final ExecutionContext context ) {
+                context.getLogger().info(items.length + "item(s) is/are changed.");
+            }
+```
+
+
+V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@CosmosDBTrigger` anotaci pro parametry, jejichž hodnota by pocházela z Cosmos DB.  Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable pomocí `Optional<T>` .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje Cosmos DB aktivační vazby v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při přidání nebo úpravě záznamů Cosmos DB.
@@ -118,6 +139,31 @@ Tady je kód JavaScriptu:
 
       context.done();
     }
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Následující příklad ukazuje, jak spustit funkci při změně dat v Cosmos DB.
+
+```json
+{
+  "type": "cosmosDBTrigger",
+  "name": "Documents",
+  "direction": "in",
+  "leaseCollectionName": "leases",
+  "connectionStringSetting": "MyStorageConnectionAppSetting",
+  "databaseName": "Tasks",
+  "collectionName": "Items",
+  "createLeaseCollectionIfNotExists": true
+}
+```
+
+V souboru _run.ps1_ máte přístup k dokumentu, který funkci spustí prostřednictvím `$Documents` parametru.
+
+```powershell
+param($Documents, $TriggerMetadata) 
+
+Write-Host "First document Id modified : $($Documents[0].id)" 
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -151,27 +197,6 @@ Tady je kód Pythonu:
             logging.info('First document Id modified: %s', documents[0]['id'])
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Tato funkce je vyvolána, když jsou vloženy nebo aktualizovány v zadané databázi a kolekci.
-
-```java
-    @FunctionName("cosmosDBMonitor")
-    public void cosmosDbProcessor(
-        @CosmosDBTrigger(name = "items",
-            databaseName = "ToDoList",
-            collectionName = "Items",
-            leaseCollectionName = "leases",
-            createLeaseCollectionIfNotExists = true,
-            connectionStringSetting = "AzureCosmosDBConnection") String[] items,
-            final ExecutionContext context ) {
-                context.getLogger().info(items.length + "item(s) is/are changed.");
-            }
-```
-
-
-V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@CosmosDBTrigger` anotaci pro parametry, jejichž hodnota by pocházela z Cosmos DB.  Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable pomocí `Optional<T>` .
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
@@ -184,9 +209,8 @@ Konstruktor atributu přebírá název databáze a název kolekce. Informace o t
 
 ```csharp
     [FunctionName("DocumentUpdates")]
-    public static void Run(
-        [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
-    IReadOnlyList<Document> documents,
+    public static void Run([CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
+        IReadOnlyList<Document> documents,
         ILogger log)
     {
         ...
@@ -199,17 +223,21 @@ Konstruktor atributu přebírá název databáze a název kolekce. Informace o t
 
 Skripty jazyka C# nepodporují atributy.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Z [běhové knihovny Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@CosmosDBInput` anotaci pro parametry, které čtou data z Cosmos DB.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány jazykem JavaScript.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell nepodporuje atributy.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python nepodporuje atributy.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Z [běhové knihovny Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@CosmosDBInput` anotaci pro parametry, které čtou data z Cosmos DB.
 
 ---
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 997a6941e2ccc26dabe1a593fe938094099bc98d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388982"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949477"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Návod: Přidání výměn deklarací identity REST API do vlastních zásad v Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ Následující kód JSON znázorňuje data Azure AD B2C odešle do vašeho konco
 ```json
 {
     "objectId": "User objectId",
-    "language": "Current UI language"
+    "lang": "Current UI language"
 }
 ```
 
@@ -53,7 +53,7 @@ Jakmile REST API ověří data, musí vrátit HTTP 200 (ok) s následujícími d
 }
 ```
 
-Nastavení koncového bodu REST API je mimo rámec tohoto článku. Vytvořili jsme ukázku [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) . K úplnému kódu funkce Azure můžete přistupovat na [GitHubu](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
+Nastavení koncového bodu REST API je mimo rámec tohoto článku. Vytvořili jsme ukázku [Azure Functions](../azure-functions/functions-reference.md) . K úplnému kódu funkce Azure můžete přistupovat na [GitHubu](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
 
 ## <a name="define-claims"></a>Definovat deklarace identity
 
@@ -75,7 +75,7 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>Konfigurace technického profilu rozhraní RESTful API 
+## <a name="add-the-restful-api-technical-profile"></a>Přidat technický profil rozhraní RESTful API 
 
 [Technický profil RESTful](restful-technical-profile.md) poskytuje podporu pro propojení s vlastní službou RESTful. Azure AD B2C odesílá data do služby RESTful v `InputClaims` kolekci a přijímá data zpátky v `OutputClaims` kolekci. V souboru vyhledejte element **ClaimsProviders** <em>**`TrustFrameworkExtensions.xml`**</em> a přidejte nového zprostředkovatele deklarací identity následujícím způsobem:
 
@@ -87,6 +87,7 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
       <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -107,9 +108,20 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-```
+``` 
 
 V tomto příkladu se do `userLanguage` služby REST pošle jako `lang` v datové části JSON. Hodnota `userLanguage` deklarace identity obsahuje ID jazyka aktuálního uživatele. Další informace najdete v tématu [překladač deklarací identity](claim-resolver-overview.md).
+
+### <a name="configure-the-restful-api-technical-profile"></a>Konfigurace technického profilu rozhraní RESTful API 
+
+Po nasazení REST API nastavte metadata `REST-ValidateProfile` technického profilu tak, aby odrážela vaše vlastní REST API, včetně:
+
+- **ServiceUrl**. Nastavte adresu URL koncového bodu REST API.
+- **SendClaimsIn**. Určete, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful.
+- **AuthenticationType**. Nastavte typ ověřování prováděného zprostředkovatelem deklarací RESTful. 
+- **AllowInsecureAuthInProduction**. V produkčním prostředí nezapomeňte nastavit tato metadata na `true`
+    
+Další konfigurace najdete v článku [metadata RESTful Technical Profile](restful-technical-profile.md#metadata) .
 
 Výše uvedené komentáře `AuthenticationType` a `AllowInsecureAuthInProduction` Určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, najdete v tématu [Secure RESTFUL API](secure-rest-api.md).
 
@@ -171,17 +183,17 @@ Pokud chcete vrátit `balance` deklaraci identity zpátky do aplikace předávaj
 </RelyingParty>
 ```
 
-Tento krok opakujte pro **ProfileEdit.xml**a **PasswordReset.xml** cestu k uživateli.
+Tento krok opakujte pro **ProfileEdit.xml** a **PasswordReset.xml** cestu k uživateli.
 
-Soubory, které jste změnili: *TrustFrameworkBase.xml*a *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*a *PasswordReset.xml*, uložte. 
+Soubory, které jste změnili: *TrustFrameworkBase.xml* a *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml* a *PasswordReset.xml*, uložte. 
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **architekturu prostředí identity**.
-1. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkBase.xml*a *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*a *PasswordReset.xml*. 
+1. Vyberte **Odeslat vlastní zásadu** a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkBase.xml* a *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml* a *PasswordReset.xml*. 
 1. Vyberte zásadu registrace nebo přihlašování, kterou jste nahráli, a klikněte na tlačítko **Spustit** .
 1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy nebo účtu Facebook.
 1. Token, který se odesílá zpátky do vaší aplikace, zahrnuje `balance` deklaraci identity.

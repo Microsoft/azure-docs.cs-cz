@@ -13,33 +13,33 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 656cb167fb47e44c28922afed75d8c46a460aaf1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771736"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584393"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Volání webového rozhraní API z mobilní aplikace
 
-Když se vaše aplikace přihlásí uživateli a obdrží tokeny, Microsoft Authentication Library (MSAL) zpřístupňuje informace o uživateli, prostředí uživatele a vydaných tokenech. Vaše aplikace může tyto hodnoty použít k volání webového rozhraní API nebo zobrazení uvítací zprávy uživateli.
+Jakmile se vaše aplikace přihlásí uživateli a obdrží tokeny, MSAL (Microsoft Authentication Library) zpřístupňuje informace o uživateli, prostředí uživatele a vydaných tokenech. Vaše aplikace může tyto hodnoty použít k volání webového rozhraní API nebo zobrazení uvítací zprávy uživateli.
 
 V tomto článku se nejprve podíváme na výsledek MSAL. Pak se podíváme na použití přístupového tokenu z `AuthenticationResult` nebo `result` k volání chráněného webového rozhraní API.
 
 ## <a name="msal-result"></a>Výsledek MSAL
 MSAL poskytuje následující hodnoty: 
 
-- `AccessToken`volá chráněná webová rozhraní API v žádosti nosiče HTTP.
-- `IdToken`obsahuje užitečné informace o přihlášeném uživateli. Tyto informace zahrnují jméno uživatele, domácího tenanta a jedinečný identifikátor úložiště.
-- `ExpiresOn`je čas vypršení platnosti tokenu. MSAL zpracovává automatickou aktualizaci aplikace.
-- `TenantId`je identifikátor tenanta, ke kterému se uživatel přihlásil. Pro uživatele typu Host ve službě Azure Active Directory (Azure AD) B2B tato hodnota identifikuje tenanta, ke kterému se uživatel přihlásil. Hodnota neidentifikuje svého domovského tenanta uživatele.  
-- `Scopes`označuje rozsahy, které byly uděleny s tokenem. Udělené obory můžou být podmnožinou požadovaných oborů.
+- `AccessToken` volá chráněná webová rozhraní API v žádosti nosiče HTTP.
+- `IdToken` obsahuje užitečné informace o přihlášeném uživateli. Tyto informace zahrnují jméno uživatele, domácího tenanta a jedinečný identifikátor úložiště.
+- `ExpiresOn` je čas vypršení platnosti tokenu. MSAL zpracovává automatickou aktualizaci aplikace.
+- `TenantId` je identifikátor tenanta, ke kterému se uživatel přihlásil. Pro uživatele typu Host ve službě Azure Active Directory (Azure AD) B2B tato hodnota identifikuje tenanta, ke kterému se uživatel přihlásil. Hodnota neidentifikuje svého domovského tenanta uživatele.  
+- `Scopes` označuje rozsahy, které byly uděleny s tokenem. Udělené obory můžou být podmnožinou požadovaných oborů.
 
 MSAL také poskytuje abstrakci pro `Account` hodnotu. `Account`Hodnota představuje účet přihlášeného aktuálního uživatele:
 
-- `HomeAccountIdentifier`Identifikuje svého domovského tenanta uživatele.
-- `UserName`je preferované uživatelské jméno uživatele. Tato hodnota může být pro Azure AD B2C uživatele prázdná.
-- `AccountIdentifier`identifikuje přihlášeného uživatele. Ve většině případů je tato hodnota stejná jako `HomeAccountIdentifier` hodnota, pokud se uživatel nejedná o hosta v jiném tenantovi.
+- `HomeAccountIdentifier` Identifikuje svého domovského tenanta uživatele.
+- `UserName` je preferované uživatelské jméno uživatele. Tato hodnota může být pro Azure AD B2C uživatele prázdná.
+- `AccountIdentifier` identifikuje přihlášeného uživatele. Ve většině případů je tato hodnota stejná jako `HomeAccountIdentifier` hodnota, pokud se uživatel nejedná o hosta v jiném tenantovi.
 
 ## <a name="call-an-api"></a>Volání rozhraní API
 
@@ -87,7 +87,7 @@ Po získání přístupového tokenu můžete zavolat webové rozhraní API. Va�
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL pro iOS a MacOS
 
-Metody získání tokenů vrací `MSALResult` objekt. `MSALResult`zpřístupňuje `accessToken` vlastnost. Můžete použít `accessToken` k volání webového rozhraní API. Před voláním k chráněnému webovému rozhraní API přidejte tuto vlastnost do hlavičky Authorization protokolu HTTP.
+Metody získání tokenů vrací `MSALResult` objekt. `MSALResult` zpřístupňuje `accessToken` vlastnost. Můžete použít `accessToken` k volání webového rozhraní API. Před voláním k chráněnému webovému rozhraní API přidejte tuto vlastnost do hlavičky Authorization protokolu HTTP.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -117,15 +117,15 @@ task.resume()
 
 ## <a name="make-several-api-requests"></a>Provedení několika požadavků rozhraní API
 
-Pokud potřebujete volat stejné rozhraní API několikrát nebo pokud potřebujete volat více rozhraní API, při sestavování aplikace Vezměte v úvahu následující témata:
+Chcete-li volat stejné rozhraní API několikrát nebo volat více rozhraní API, při sestavování aplikace Vezměte v úvahu následující předměty:
 
-- **Přírůstkový souhlas**: platforma Microsoft Identity Platform umožňuje aplikacím získat souhlas s uživatelem, pokud jsou požadovaná oprávnění, a ne vše na začátku. Pokaždé, když je vaše aplikace připravená volat rozhraní API, měla by vyžadovat pouze ty rozsahy, které potřebuje.
+- **Přírůstkový souhlas**: platforma Microsoft Identity Platform umožňuje aplikacím získat souhlas uživatele, když jsou požadovaná oprávnění, a ne vše na začátku. Pokaždé, když je vaše aplikace připravená volat rozhraní API, měla by vyžadovat pouze ty rozsahy, které potřebuje.
 
 - **Podmíněný přístup**: když provedete několik požadavků rozhraní API, může v některých scénářích být nutné splnit další požadavky podmíněného přístupu. Požadavky se můžou zvýšit tak, že první požadavek nemá žádné zásady podmíněného přístupu, a vaše aplikace se pokusí o tichý přístup k novému rozhraní API, které vyžaduje podmíněný přístup. Chcete-li tento problém vyřešit, Zachyťte chyby z tichých požadavků a připravte se na vytvoření interaktivního požadavku.  Další informace najdete v tématu [pokyny pro podmíněný přístup](../azuread-dev/conditional-access-dev-guide.md).
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Volání několika rozhraní API pomocí přírůstkového souhlasu a podmíněného přístupu
 
-Pokud pro stejného uživatele potřebujete zavolat několik rozhraní API, můžete po získání tokenu pro uživatele vyhnout se opakovanému vyžádání přihlašovacích údajů uživatelem, a to tak, že se následně zavolají `AcquireTokenSilent` k získání tokenu:
+Chcete-li volat několik rozhraní API pro stejného uživatele, po získání tokenu pro uživatele se můžete vyhnout opakovanému vyžádání přihlašovacích údajů uživatelem, a to tak, že následně zavoláte `AcquireTokenSilent` k získání tokenu:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -159,5 +159,4 @@ catch(MsalUiRequiredException ex)
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Přesunout do produkčního prostředí](scenario-mobile-production.md)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](scenario-mobile-production.md)prostředí.

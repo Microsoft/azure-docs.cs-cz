@@ -2,19 +2,16 @@
 title: PySpark interaktivní prostředí pomocí nástrojů Azure HDInsight
 description: Naučte se používat nástroje Azure HDInsight pro Visual Studio Code k vytváření a odesílání dotazů a skriptů.
 keywords: VScode, nástroje Azure HDInsight, podregistr, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, interaktivní podregistr, interaktivní dotaz
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 14f0c7177953e43b0c58b4f5432d0c08c5f03f45
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 337a9f3f2ea25e5a4d4fa4204a0f3fa4dcc9369b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876610"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940633"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Nastavení PySpark interaktivního prostředí pro Visual Studio Code
 
@@ -26,9 +23,7 @@ K sestavení virtuálního prostředí v cestě domů používáme příkaz **Py
 
    * Nainstalujte Python z [https://www.python.org/downloads/](https://www.python.org/downloads/) . 
    * Nainstalujte PIP z [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (Pokud není nainstalovaný z instalace Pythonu).
-   * Pomocí následujících příkazů ověřte, zda jsou Python a PIP úspěšně nainstalovány. (Nepovinné)
-
-        ![Ověření verze Python PIP – příkaz](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+   * Volitelně můžete ověřit, zda jsou Python a PIP úspěšně nainstalovány, pomocí příkazů `python --version` a v `pip --version` uvedeném pořadí. 
 
      > [!NOTE]
      > Místo používání výchozí verze macOS se doporučuje ručně nainstalovat Python.

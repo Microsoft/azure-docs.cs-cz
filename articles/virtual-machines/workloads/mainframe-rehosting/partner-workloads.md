@@ -1,7 +1,7 @@
 ---
 title: Úlohy sálových počítačů podporované v Azure | Microsoft Docs
 description: Použijte emulátor sálového počítače a další služby od partnerů Microsoftu k opětovnému hostování vašich sálových úloh, jako jsou například systémy na bázi IBM Z, pomocí Microsoft Azure.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 05/09/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 07234e5f456a5467adde4d899341a6124d128567
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 679cc68a0f43d6bff74fef85d705544db2f2585b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006121"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558249"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Úlohy sálových počítačů podporované v Azure
 

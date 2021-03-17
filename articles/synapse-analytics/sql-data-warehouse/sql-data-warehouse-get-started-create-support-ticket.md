@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acc05d6367a0dc4334bc1d9e3cbb340bdb8d24c0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212271"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677418"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Zvýšení kvóty žádostí a získání podpory pro Azure synapse Analytics
 
@@ -30,7 +30,7 @@ Pomocí následujících kroků můžete vytvořit novou žádost o podporu z Az
    ![Odkaz Help + support](./media/sql-data-warehouse-get-started-create-support-ticket/help-plus-support.png)
 
 
-1. V **okně pomoc a podpora**vyberte **Nová žádost o podporu**.
+1. V **okně pomoc a podpora** vyberte **Nová žádost o podporu**.
 
     ![Vytvořit novou žádost o podporu](./media/sql-data-warehouse-get-started-create-support-ticket/new-support-request.png)
 
@@ -42,7 +42,7 @@ Pomocí následujících kroků můžete vytvořit novou žádost o podporu z Az
 
    Pokud máte plán podpory Premier Support, můžete také ohlásit problémy Azure synapse Analytics na [portálu Microsoft Premier Online](https://premier.microsoft.com/). Další informace o různých plánech podpory, včetně rozsahu, doby odezvy, cen atd. najdete v tématu věnovaném [plánům podpory Azure](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) .  Nejčastější dotazy týkající se podpory Azure najdete v [nejčastějších](https://azure.microsoft.com/support/faq/)dotazech k podpoře Azure.
 
-1. Jako **typ problému**vyberte příslušný typ problému. V případě problémů s opravou chyby vyberte možnost **Technical**. U žádostí o zvýšení kvóty vyberte **omezení služby a předplatné (kvóty)**.
+1. Jako **typ problému** vyberte příslušný typ problému. V případě problémů s opravou chyby vyberte možnost **Technical**. U žádostí o zvýšení kvóty vyberte **omezení služby a předplatné (kvóty)**.
 
    ![Vyberte typ problému.](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-issue-type.png)  
 
@@ -117,7 +117,7 @@ Pokud chcete povolit přístup k oblasti pro předplatné, musíte provést nás
 
 V rozevírací nabídce Typ kvóty vyberte **jinou žádost** o kvótu pro jiné typy žádostí o kvótu:
 
-![Podrobnosti o jiné kvótě](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
+![Podrobnosti o jiné kvótě](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details.png)
 
 ## <a name="submit-your-request"></a>Odeslání žádosti
 
@@ -137,5 +137,4 @@ Po odeslání žádosti o podporu vás tým podpory Azure vás bude kontaktovat.
 
 ## <a name="other-resources"></a>Další prostředky
 
-Můžete se také připojit k komunitě Azure synapse Analytics na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) nebo prostřednictvím [stránky s otázkou Microsoft Q&pro Azure synapse Analytics](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
-
+Můžete se také připojit k komunitě Azure synapse Analytics na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) nebo prostřednictvím [stránky s otázkou Microsoft Q&pro Azure synapse Analytics](/answers/topics/azure-synapse-analytics.html).

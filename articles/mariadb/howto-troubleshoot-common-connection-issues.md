@@ -1,17 +1,17 @@
 ---
 title: Řešení potíží s připojením – Azure Database for MariaDB
 description: Přečtěte si, jak řešit potíže s připojením Azure Database for MariaDB, včetně přechodných chyb, které vyžadují opakované pokusy, problémy s bránou firewall a výpadky.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50bb6fc008e381855923da801b65198bf712f826
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82101446"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664728"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Řešení potíží s připojením ke službě Azure Database for MariaDB
 
@@ -47,7 +47,7 @@ Pokud se aplikace trvale nepřipojí k Azure Database for MariaDB, obvykle se je
 
 * Konfigurace brány firewall: Server Azure Database for MariaDB nebo brána firewall na straně klienta blokuje připojení.
 * Konfigurace sítě na straně klienta: byla přidána nová IP adresa nebo proxy server.
-* Chyba uživatele: například můžete mít chybné typové parametry připojení, jako je název serveru v připojovacím řetězci nebo chybějící přípona * \@ servername* v uživatelském jménu.
+* Chyba uživatele: například můžete mít chybné typové parametry připojení, jako je název serveru v připojovacím řetězci nebo chybějící přípona *\@ servername* v uživatelském jménu.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
 

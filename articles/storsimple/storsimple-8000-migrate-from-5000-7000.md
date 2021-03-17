@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 58b7b67842e9ba385b34ea4d8fdbcac190076218
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184291"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428162"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrace dat z řady StorSimple 5000-7000 na zařízení 8000 series
 
@@ -80,8 +80,8 @@ Než začnete s migrací, ujistěte se, že:
 
     ![Kontrolovat verzi softwaru na starším zařízení](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Pokud vaše živé zařízení neběží v 2.1.1.518 nebo novějším, upgradujte prosím systém na požadovanou minimální verzi. Podrobné pokyny najdete v tématu [upgrade systému na verzi v 2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518).
-    * Pokud používáte v 2.1.1.518, přejděte do webového uživatelského rozhraní a podívejte se, jestli nejsou nějaká oznámení o chybách obnovení registru. Pokud se obnovení registru nepovedlo, spusťte obnovení registru. Další informace najdete v tématu Jak [Spustit obnovení registru](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry).
+    * Pokud vaše živé zařízení neběží v 2.1.1.518 nebo novějším, upgradujte prosím systém na požadovanou minimální verzi. Možná budete muset pracovat s podpora Microsoftu, abyste mohli provést upgrade.
+    * Pokud používáte v 2.1.1.518, přejděte do webového uživatelského rozhraní a podívejte se, jestli nejsou nějaká oznámení o chybách obnovení registru. Pokud se obnovení registru nepovedlo, spusťte obnovení registru. Možná budete muset pracovat s podpora Microsoftu, abyste mohli obnovit registr.
     * Pokud máte zařízení, které neběží v 2.1.1.518, proveďte převzetí služeb při selhání na náhradní zařízení, které běží v 2.1.1.518. Podrobné pokyny najdete v tématu DR zařízení StorSimple Series 5000/7000.
     * Zálohujte data pro vaše zařízení pořizováním snímku v cloudu.
     * Vyhledejte všechny další aktivní úlohy zálohování, které běží na zdrojovém zařízení. To zahrnuje úlohy na hostiteli konzoly StorSimple data Protection. Počkejte, než se aktuální úlohy dokončí.
@@ -136,12 +136,12 @@ Provedením následujících kroků nainstalujete nástroj pro migraci StorSimpl
     ```
 2. Upravte hodnoty odpovídající klíčům a nahraďte:
 
-    * `UserName`– Uživatelské jméno pro přihlášení k Azure Portal.
-    * `SubscriptionName and SubscriptionId`– Název a ID vašeho předplatného Azure. Na úvodní stránce služby StorSimple Device Manager v části **Obecné**klikněte na **vlastnosti**. Zkopírujte název předplatného a ID předplatného přidruženého k vaší službě.
-    * `ResourceName`– Název služby StorSimple Device Manager v Azure Portal. Zobrazuje se také v části vlastnosti služby.
-    * `ResourceGroup`– Název skupiny prostředků přidružené ke službě StorSimple Device Manager v Azure Portal. Zobrazuje se také v části vlastnosti služby.
+    * `UserName` – Uživatelské jméno pro přihlášení k Azure Portal.
+    * `SubscriptionName and SubscriptionId` – Název a ID vašeho předplatného Azure. Na úvodní stránce služby StorSimple Správce zařízení v části **Obecné** klikněte na **vlastnosti**. Zkopírujte název předplatného a ID předplatného přidruženého k vaší službě.
+    * `ResourceName` – Název služby StorSimple Správce zařízení v Azure Portal. Zobrazuje se také v části vlastnosti služby.
+    * `ResourceGroup` – Název skupiny prostředků přidružené ke službě StorSimple Správce zařízení v Azure Portal. Zobrazuje se také v části vlastnosti služby.
     ![Ověřte vlastnosti služby pro cílové zařízení.](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId`– Azure Active Directory ID tenanta v Azure Portal. Přihlaste se k Microsoft Azure jako správce. V portál Microsoft Azure klikněte na **Azure Active Directory**. V části **Spravovat** klikněte na **Vlastnosti**. ID tenanta se zobrazí v poli **ID adresáře** .
+    * `TenantId` – Azure Active Directory ID tenanta v Azure Portal. Přihlaste se k Microsoft Azure jako správce. V portál Microsoft Azure klikněte na **Azure Active Directory**. V části **Spravovat** klikněte na **Vlastnosti**. ID tenanta se zobrazí v poli **ID adresáře** .
     ![Ověřte ID tenanta pro Azure Active Directory](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Uložte změny provedené v konfiguračním souboru.
@@ -150,4 +150,4 @@ Provedením následujících kroků nainstalujete nástroj pro migraci StorSimpl
   
 
 ## <a name="next-steps"></a>Další kroky
-Stáhněte si podrobné pokyny, jak [migrovat data z řady StorSimple 5000-7000 na zařízení řady 8000](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b).
+Stáhněte si podrobné pokyny, jak [migrovat data z řady StorSimple 5000-7000 na zařízení řady 8000](https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_Migration_Guide_20171115.pdf).

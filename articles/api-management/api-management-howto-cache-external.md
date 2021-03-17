@@ -11,12 +11,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: cfb7dd7a3831d90235b25af9598cfbc137ffcb3d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904951"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018218"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Použití externí mezipaměti kompatibilní s Redis v Azure API Management
 
@@ -60,7 +60,7 @@ Pro ukládání do mezipaměti jsou brány v místním prostředí závislé vý
 
 Pomocí následujících kroků přidejte externí mezipaměť Azure pro Redis do Azure API Management.
 
-![Přineste si vlastní mezipaměť do APIM](media/api-management-howto-cache-external/add-external-cache.png)
+![Snímek obrazovky, který ukazuje, jak přidat externí mezipaměť Azure pro Redis do Azure API Management.](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
 > Nastavení **použít z** určuje oblast Azure nebo umístění brány v místním prostředí, které bude používat nakonfigurovanou mezipaměť. Mezipaměti nakonfigurované jako **výchozí** budou přepsány mezipamětí s určitou platnou oblastí nebo hodnotou umístění.

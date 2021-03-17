@@ -2,20 +2,20 @@
 title: Kurz pro export dat z Azure Data Box | Microsoft Docs
 description: Přečtěte si o požadavcích na nasazení a o tom, jak exportovat data z Azure Data Box
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.author: v-grpr
-ms.openlocfilehash: 5b17488ebab8dc29221723fabf8efe0c00467509
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 12/18/2020
+ms.author: alkohli
+ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209321"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789191"
 ---
-# <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box (Preview)
+# <a name="tutorial-create-export-order-for-azure-data-box"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box
 
 Azure Data Box je hybridní řešení, které umožňuje přesunout data z Azure do svého umístění. V tomto kurzu se dozvíte, jak vytvořit objednávku exportu pro Azure Data Box. Hlavním důvodem pro vytvoření objednávky exportu je zotavení po havárii, pokud dojde k ohrožení zabezpečení úložiště v případě, že je nutné obnovit zálohování.
 
@@ -28,9 +28,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Sledovat objednávku exportu
 > * Zrušit export objednávky
 
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před objednáním zařízení dokončete následující požadavky na konfiguraci pro Data Box službu a zařízení.
 
@@ -58,11 +56,11 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
 
 2. Vyberte **+ Vytvořit prostředek** a vyhledejte *Azure Data Box*. Vyberte **Azure Data Box**.
 
-   ![Vytvoření prostředku](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
+   ![Vytvoření prostředku](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
 3. Vyberte **Vytvořit**.
 
-   ![Vytvořit Azure Data Box](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
+   ![Vytvoření prostředku Azure Data Box](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
 4. Ověřte, jestli je služba Azure Data Box ve vaší oblasti dostupná. Zadejte nebo vyberte následující informace a pak vyberte **Použít**.
 
@@ -74,13 +72,13 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |Zdrojová oblast Azure    |    Vyberte oblast Azure, ve které jsou vaše data aktuálně.         |
     |Cílová země     |     Vyberte zemi, ve které chcete zařízení dodávat.        |
 
-   ![Vyberte nastavení Data Box](media/data-box-deploy-export-ordered/azure-data-box-export-01.png)
+   ![Vyberte nastavení Data Box](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 
 5. Vyberte **Data Box**. Maximální použitelná kapacita pro jednu objednávku je 80 TB. V případě větších objemů dat můžete vytvořit více objednávek.
 
-   ![Výběr kapacity Data Box](media/data-box-deploy-export-ordered/azure-data-box-export-02b.png)
+   ![Výběr kapacity Data Box](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
-6. V poli **pořadí**zadejte **základní** podrobnosti o objednávce. Zadejte nebo vyberte následující informace a pak vyberte **Další**.
+6. V poli **pořadí** zadejte **základní** podrobnosti o objednávce. Zadejte nebo vyberte následující informace.
 
     |Nastavení  |Hodnota  |
     |---------|---------|
@@ -88,21 +86,21 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |Skupina prostředků | Skupina prostředků, kterou jste vybrali dříve. |
     |Název objednávky exportu     |  Zadejte popisný název pro sledování objednávky. <br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí.      |
 
-    ![Základy objednávky exportu](media/data-box-deploy-export-ordered/azure-data-box-export-03.png)
+    ![Základy objednávky exportu](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-order-name.png)
 
     Vyberte **Další: výběr dat** pro pokračování.
 
-7. V **výběru dat**vyberte **Přidat účet úložiště a typ exportu**.
+7. V **výběru dat** vyberte **Přidat účet úložiště a typ exportu**.
 
-    ![Přidat účet úložiště a typ exportu](media/data-box-deploy-export-ordered/azure-data-box-export-03b.png)
+    ![Přidat účet úložiště a typ exportu](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-add-storage.png)
 
-8. V **možnosti vybrat Export**zadejte podrobnosti možnosti exportu. Zadejte nebo vyberte následující informace a vyberte **Přidat**.
+8. V **možnosti vybrat Export** zadejte podrobnosti možnosti exportu. Zadejte nebo vyberte následující informace a vyberte **Přidat**.
 
     |Nastavení  |Hodnota  |
     |---------|---------|
     |Účet úložiště     | Účet Azure Storage, ze kterého chcete exportovat data. |
     |Typ exportu     | Určuje typ dat, který se má exportovat ze **všech objektů** a **použít soubor XML**.<ul><li> **Všechny objekty** – určuje, že úloha Exportuje všechna data v závislosti na výběru **možností přenosu**.</li><li> **Použít soubor XML** – určuje soubor XML, který obsahuje sadu cest a předpon pro objekty BLOB a soubory, které mají být exportovány z účtu úložiště. Soubor XML musí být v kontejneru vybraného účtu úložiště a výběr ze sdílených složek se v současné době nepodporuje. Soubor musí být neprázdný soubor. XML.</li></ul>        |
-    |Možnosti přenosu     |  Určuje možnosti přenosu dat z možností **Vybrat vše**, **všechny objekty blob**a **všechny soubory**. <ul><li> **Vybrat vše** – určuje, že se exportují všechny objekty BLOB a soubory Azure. Pokud používáte účet úložiště, který podporuje jenom objekty BLOB (Blob Storage účet), možnost **všechny soubory** nebude možné vybrat.</li><li> **Všechny objekty blob** – určuje, že se exportují jenom objekty blob bloku a stránky.</li><li> **Všechny soubory** – určuje, že všechny soubory jsou exportovány s výjimkou objektů BLOB. Typ účtu úložiště, který máte (GPv1 a GPv2, Premium Storage nebo BLOB Storage), určuje typy dat, která můžete exportovat. Další informace najdete v tématu [podporované účty úložiště pro export](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Možnosti přenosu     |  Určuje možnosti přenosu dat z možností **Vybrat vše**, **všechny objekty blob** a **všechny soubory**. <ul><li> **Vybrat vše** – určuje, že se exportují všechny objekty BLOB a soubory Azure. Pokud používáte účet úložiště, který podporuje jenom objekty BLOB (Blob Storage účet), možnost **všechny soubory** nebude možné vybrat.</li><li> **Všechny objekty blob** – určuje, že se exportují jenom objekty blob bloku a stránky.</li><li> **Všechny soubory** – určuje, že všechny soubory jsou exportovány s výjimkou objektů BLOB. Typ účtu úložiště, který máte (GPv1 a GPv2, Premium Storage nebo BLOB Storage), určuje typy dat, která můžete exportovat. Další informace najdete v tématu [podporované účty úložiště pro export](../import-export/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Zahrnout podrobný protokol     | Určuje, zda má být podrobný soubor protokolu, který obsahuje seznam všech souborů, které byly exportovány úspěšně.        |
 
     > [!NOTE]
@@ -111,71 +109,158 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
 
     Informace o tom, jak přidat soubor XML do kontejneru, naleznete v tématu [Export ORDER by using XML File](data-box-deploy-export-ordered.md#export-order-using-xml-file).
 
-   ![Vybrat možnost exportu](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+   ![Vybrat možnost exportu](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
    Příklad vstupu XML naleznete v tématu [Sample XML Input](data-box-deploy-export-ordered.md#sample-xml-file) .
 
-9. V poli **Výběr dat**zkontrolujte nastavení a vyberte **Další: kontaktní údaje>**.
+9. V poli **Výběr dat** zkontrolujte nastavení a vyberte **Další:>zabezpečení** , aby bylo možné pokračovat.
 
-   ![Kontaktní údaje](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+   ![Objednávka exportu, výběr dat](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-10. V **podrobnostech kontaktu**vyberte **+ Přidat dodací adresu** a zadejte informace o expedici.
+    Obrazovka **zabezpečení** vám umožňuje používat vlastní šifrovací klíč a zvolit šifrování pomocí dvojitého šifrování.
 
-    ![Přidat dodací adresu](media/data-box-deploy-export-ordered/azure-data-box-export-06.png)
+    Všechna nastavení na obrazovce **zabezpečení** jsou volitelná. Pokud žádná nastavení nezměníte, použijí se výchozí nastavení.
 
-11. Do pole **Přidat adresu příjemce**zadejte své křestní jméno a příjmení, jméno a poštovní adresu společnosti a platné telefonní číslo. Vyberte **Ověřit**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení.
+    ![Obrazovka zabezpečení Průvodce Data Boxem pro import](media/data-box-deploy-export-ordered/data-box-export-security-01.png)
 
-    ![Ověřit dodací adresu](media/data-box-deploy-export-ordered/azure-data-box-export-07.png)
+10. Pokud chcete chránit klíč odemknutí pro nový prostředek pomocí vlastního klíče spravovaného zákazníkem, rozbalte možnost **typ šifrování**.
+
+    Konfigurace klíče spravovaného zákazníkem pro vaši Azure Data Box je volitelná. Ve výchozím nastavení používá Data Box k ochraně klíče odemčení klíč Microsoft Managed Key.
+
+    Klíč spravovaný zákazníkem nemá vliv na to, jak se data v zařízení šifrují. Klíč se používá pouze k zašifrování klíče odemčení zařízení.
+
+    Pokud nechcete používat klíč spravovaný zákazníkem, přejděte ke kroku 16.
+
+    ![Obrazovka zabezpečení zobrazující nastavení typu šifrování](./media/data-box-deploy-export-ordered/customer-managed-key-01.png)
+
+11. Jako typ klíče vyberte **spravovaný klíč zákazníka** . Pak vyberte **možnost vybrat Trezor klíčů a klíč**.
+   
+    ![Obrazovka zabezpečení, nastavení pro klíč spravovaný zákazníkem](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
+
+12. Na obrazovce **Vybrat klíč z Azure Key Vault** se předplatné automaticky vyplní.
+
+    - V případě **trezoru klíčů** můžete v rozevíracím seznamu vybrat existující Trezor klíčů.
+
+      ![Vybrat klíč z Azure Key Vault obrazovky](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
+
+    - Můžete také vybrat **vytvořit nové** a vytvořit nový trezor klíčů. Na obrazovce **Vytvoření trezoru klíčů** zadejte skupinu prostředků a název trezoru klíčů. Zajistěte, aby byla zapnutá ochrana proti **odstranění** a **vyprázdnění** . Přijměte všechna ostatní výchozí nastavení a vyberte **zkontrolovat + vytvořit**.
+
+      ![Vytvořit nové nastavení Azure Key Vault](./media/data-box-deploy-export-ordered/customer-managed-key-04.png)
+
+      Zkontrolujte informace o vašem trezoru klíčů a vyberte **vytvořit**. Počkejte pár minut, než se vytváření trezoru klíčů dokončí.
+
+      ![Obrazovka nové kontroly Azure Key Vault](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
+
+13. Na obrazovce **Vybrat klíč z Azure Key Vault** můžete vybrat existující klíč v trezoru klíčů.
+
+    ![Vyberte existující klíč z Azure Key Vault](./media/data-box-deploy-export-ordered/customer-managed-key-06.png)
+
+    Pokud chcete vytvořit nový klíč, vyberte **vytvořit novou**. Je nutné použít klíč RSA. Velikost může být 2048 nebo vyšší. Zadejte název nového klíče, Přijměte ostatní výchozí hodnoty a vyberte **vytvořit**.
+
+      ![Vytvořit novou možnost klíče](./media/data-box-deploy-export-ordered/customer-managed-key-07.png)
+
+      Po vytvoření klíče v trezoru klíčů budete upozorněni.
+
+14. Vyberte **verzi** klíče, který se má použít, a pak zvolte **Vybrat**.
+
+      ![Nový klíč vytvořený v trezoru klíčů](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
+
+    Pokud chcete vytvořit novou verzi klíče, vyberte **vytvořit novou**.
+
+    ![Otevření dialogového okna pro vytvoření nové verze klíče](./media/data-box-deploy-export-ordered/customer-managed-key-08-a.png)
+
+    Na obrazovce **vytvořit nový klíč** zvolte nastavení pro novou verzi klíče a vyberte **vytvořit**.
+
+    ![Vytvořit novou verzi klíče](./media/data-box-deploy-export-ordered/customer-managed-key-08-b.png)
+
+    Nastavení **typ šifrování** na obrazovce **zabezpečení** zobrazuje Trezor klíčů a klíč.
+
+    ![Klíč a trezor klíčů pro klíč spravovaný zákazníkem](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
+
+15. Vyberte identitu uživatele, kterou budete používat ke správě přístupu k tomuto prostředku. Zvolte **Vybrat identitu uživatele**. V panelu na pravé straně vyberte předplatné a spravovanou identitu, kterou chcete použít. Pak zvolte **Vybrat**.
+
+    Spravovaná identita přiřazená uživatelem je samostatný prostředek Azure, který se dá použít ke správě několika prostředků. Další informace najdete v tématu [spravované typy identit](../active-directory/managed-identities-azure-resources/overview.md).  
+
+    Pokud potřebujete vytvořit novou spravovanou identitu, postupujte podle pokynů v části [Vytvoření, výpis, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
+    
+    ![Vyberte identitu uživatele.](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
+
+    Identita uživatele se zobrazí v nastavení **typ šifrování** .
+
+    Nyní můžete sbalit nastavení **typu šifrování** .
+
+    ![Vybraná identita uživatele zobrazená v nastavení typ šifrování](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
+
+16. Pokud chcete povolit dvojité šifrování založené na softwaru, rozbalte **dvojité šifrování (pro prostředí s vysokým zabezpečením)** a **pro objednávku vyberte Povolit dvojité šifrování**. 
+
+    Šifrování založené na softwaru se provádí kromě šifrování AES-256 dat na Data Box.
+
+    > [!NOTE]
+    > Povolení této možnosti může způsobit, že zpracování objednávek a kopírování dat trvá déle. Po vytvoření objednávky tuto možnost nemůžete změnit.
+
+    ![Obrazovka zabezpečení pro import datového boxu, dvojité šifrování](media/data-box-deploy-export-ordered/azure-data-box-export-order-security-double-encryption.png)
+
+    Chcete-li pokračovat, vyberte možnost **Další: kontaktní údaje** .
+
+11. V **podrobnostech kontaktu** vyberte **+ Přidat dodací adresu** a zadejte informace o expedici.
+
+    ![Přidat dodací adresu](media/data-box-deploy-export-ordered/azure-data-box-export-order-add-shipping-address.png)
+
+12. Do pole **Přidat adresu příjemce** zadejte své křestní jméno a příjmení, jméno a poštovní adresu společnosti a platné telefonní číslo. Vyberte **Ověřit**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení.
+
+    ![Ověřit dodací adresu](media/data-box-deploy-export-ordered/azure-data-box-export-order-validate-shipping-address.png)
 
     Pokud se rozhodnete v oblasti, kde je k dispozici samoobslužné odeslání, můžete tuto možnost vybrat. Další informace o samoobslužném expedici najdete v tématu [použití samostatně spravovaného expedice](data-box-portal-customer-managed-shipping.md).
 
-12. Po úspěšném ověření podrobností o expedici vyberte **Přidat dodací adresu** .
+13. Po úspěšném ověření podrobností o expedici vyberte **Přidat dodací adresu** .
 
-13. V **kontaktní údaje**zkontrolujte svou dodací adresu a e-mailovou adresu. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
+14. V **kontaktní údaje** zkontrolujte svou dodací adresu a e-mailovou adresu. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
 
     Doporučujeme použít skupinový e-mail, abyste oznámení mohli dostávat i tehdy, když odejde správce skupiny.
 
-    ![Podrobnosti objednávky](media/data-box-deploy-export-ordered/azure-data-box-export-09.png)
+    ![Podrobnosti o kontaktu](media/data-box-deploy-export-ordered/azure-data-box-export-order-contact-details.png)
 
-14. Vyberte **Další: zkontrolovat a objednat>**. Aby bylo možné pokračovat v vytváření objednávky, je nutné přijmout podmínky a ujednání.
+15. Vyberte **Další: zkontrolovat a objednat>**. Aby bylo možné pokračovat v vytváření objednávky, je nutné přijmout podmínky a ujednání.
 
-15. Vyberte **Objednat**. Vytvoření objednávky trvá několik minut.
+16. Vyberte **Objednat**. Vytvoření objednávky trvá několik minut.
 
-    ![Pořadí potvrzení](media/data-box-deploy-export-ordered/azure-data-box-export-10.png)
+    ![Pořadí potvrzení](media/data-box-deploy-export-ordered/azure-data-box-select-export-order-commit-order.png)
 
 ## <a name="export-order-using-xml-file"></a>Export objednávky pomocí souboru XML
 
 Pokud vyberete možnost **použít soubor XML**, můžete zadat konkrétní kontejnery a objekty BLOB (stránky a blok), které chcete exportovat. Pro formátování XML bude nutné postupovat podle pokynů v dokumentaci k [ukázkové tabulce souborů XML](#sample-xml-file) . Následující postup ukazuje, jak použít soubor XML pro export dat:
 
-1. Jako **typ exportu**vyberte **použít soubor XML**. Jedná se o soubor XML, který určuje konkrétní objekty BLOB a soubory Azure, které chcete exportovat. Chcete-li přidat soubor XML, vyberte **kliknutím sem vyberte soubor XML**.
-     ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+1. Jako **typ exportu** vyberte **použít soubor XML**. Jedná se o soubor XML, který určuje konkrétní objekty BLOB a soubory Azure, které chcete exportovat. Chcete-li přidat soubor XML, vyberte **kliknutím sem vyberte soubor XML**.
+
+     ![Výběr možnosti exportu, XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-select-xml-option.png)
 
 2. Vyberte **+ kontejner** pro vytvoření kontejneru.
-    ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
-3. Na kartě **Nový kontejner** , která se odhlásí od pravé strany Azure Portal přidejte název kontejneru. Název musí být malými písmeny a může obsahovat číslice a pomlčky (-). Pak v rozevíracím seznamu vyberte **úroveň veřejného přístupu** . Doporučujeme vybrat možnost **privátní (neanonymní přístup)** a zabránit tak ostatním uživatelům v přístupu k vašim datům. Další informace o úrovních přístupu kontejneru najdete v tématu [oprávnění k přístupu kontejnerů](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
+    ![Výběr možnosti exportu, kontejnerů](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-containers-option.png)
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+3. Na kartě **Nový kontejner** , která se odhlásí od pravé strany Azure Portal přidejte název kontejneru. Název musí být malými písmeny a může obsahovat číslice a pomlčky (-). Pak v rozevíracím seznamu vyberte **úroveň veřejného přístupu** . Doporučujeme vybrat možnost **privátní (neanonymní přístup)** a zabránit tak ostatním uživatelům v přístupu k vašim datům. Další informace o úrovních přístupu kontejneru najdete v tématu [oprávnění k přístupu kontejnerů](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
+
+   ![Výběr možnosti exportu, nastavení nového kontejneru](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
 4. Vyberte **Vytvořit**.
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![Vyberte možnost exportovat, vytvořit nový kontejner.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
    Pokud se kontejner úspěšně vytvoří, zobrazí se tato zpráva:
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![Kontejner se úspěšně vytvořil.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-container-success.png)
 
 5. Vyberte kontejner, který jste vytvořili, a dvakrát na něj klikněte.
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![Zobrazit podrobnosti kontejneru](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
 6. Dvojím kliknutím na kontejner se zobrazí zobrazení vlastností kontejneru. Nyní chcete připojit (nebo vyhledat) soubor XML, který obsahuje seznam objektů BLOB nebo souborů Azure, které chcete exportovat. Vyberte **Nahrát**.
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![Nahrát objekt blob do kontejneru](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
 7. Úspěšně jste přidali soubor XML do kontejneru. Budou exportovány pouze objekty BLOB a soubory Azure zadané v tomto souboru XML.
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![Soubor XML přidaný do kontejneru](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
 ## <a name="track-the-order"></a>Sledování objednávky
 
@@ -183,11 +268,11 @@ Po odeslání objednávky můžete její stav sledovat na webu Azure Portal. Př
 
 Až se dokončí příprava zařízení, zahájí se kopírování dat z vybraných účtů úložiště. Na portálu se zobrazuje pořadí probíhajících **kopírování dat** .
 
-![Data Box zpracovaná objednávka exportu](media/data-box-deploy-export-ordered/azure-data-box-export-15b.png)
+![Data Box objednávka exportu, probíhá kopírování dat](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-in-progress.png)
 
 Data Box kopíruje data ze zdrojových účtů úložiště. Jakmile je kopie dat dokončena, Data Box je uzamčena a na portálu se zobrazí pořadí ve stavu **dokončeno kopírování** .
 
-![Kopírování dat Data Box exportu dokončeno](media/data-box-deploy-export-ordered/azure-data-box-export-15c.png)
+![Data Box objednávka exportu, dokončení kopírování dat](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
 
 Pokud zařízení není k dispozici, zobrazí se oznámení. Pokud je zařízení k dispozici, Microsoft určí zařízení k odeslání a připraví zásilku. Během přípravy zařízení dojde k následujícím akcím:
 
@@ -197,11 +282,11 @@ Pokud zařízení není k dispozici, zobrazí se oznámení. Pokud je zařízen�
 
 Společnost Microsoft potom připraví a odesílá vaše zařízení prostřednictvím oblastního dopravce. Po odeslání zařízení obdržíte číslo pro sledování zásilky. Stav objednávky na portálu se změní na **Odesláno**.
 
-![Data Box objednávka exportu byla odeslána.](media/data-box-deploy-export-ordered/azure-data-box-export-16.png)
+![Data Box objednávka exportu byla odeslána.](media/data-box-deploy-export-ordered/azure-data-box-export-order-dispatched.png)
 
 Pokud jste vybrali samoobslužné odeslání, obdržíte e-mailové oznámení s dalšími kroky, až bude zařízení připravené na jeho výběr z datového centra. Další informace týkající se samoobslužného expedice najdete v tématu věnovaném [samoobslužné expedici](data-box-portal-customer-managed-shipping.md).
 
-![Příprava na samoobslužnou správu připravená na vyzvednutí](media/data-box-deploy-export-ordered/azure-data-box-export-17.png)
+![Příprava na samoobslužnou správu připravená na vyzvednutí](media/data-box-deploy-export-ordered/azure-data-box-export-order-ready-for-pickup.png)
 
 ## <a name="cancel-the-order"></a>Zrušení objednávky
 
@@ -217,7 +302,7 @@ Následující kód XML ukazuje příklad názvů objektů blob, předpon objekt
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-   <!-- BlobList/prefix/Container list for Blob storage for export  -->
+   <!-- BlobList/prefix/Container list for Blob storage for export  -->
    <BlobList>
       <BlobPath>/8tbpageblob/8tbpageblob/8tbpageblob</BlobPath>
       <BlobPathPrefix>/blockblob4dot75tbdata/</BlobPathPrefix>
@@ -226,7 +311,7 @@ Následující kód XML ukazuje příklad názvů objektů blob, předpon objekt
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
+   <!-- FileList/prefix/Share list for Azure File storage for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>

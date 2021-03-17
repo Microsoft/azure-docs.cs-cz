@@ -2,43 +2,60 @@
 title: Co je nového v Azure Migrate
 description: Seznamte se s novinkami a nejnovějšími aktualizacemi ve službě Azure Migrate.
 ms.topic: overview
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 41476c5f8165729caa6780f8e74eb6c3ae30a59c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85556921"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614628"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) pomáhá zjišťovat, vyhodnocovat a migrovat místní servery, aplikace a data do cloudu Microsoft Azure. Tento článek shrnuje nové verze a funkce v Azure Migrate.
 
+## <a name="update-march-2021"></a>Aktualizace (březen 2021)
+- Podpora poskytování více přihlašovacích údajů serveru v zařízení Azure Migrate pro zjišťování nainstalovaných aplikací (inventář softwaru), analýzy závislostí bez agentů a zjišťování SQL Server instancí a databází v prostředí VMware. [Další informace](tutorial-discover-vmware.md#provide-server-credentials)
+- Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. [Další informace](concepts-azure-sql-assessment-calculation.md)<br/>Pokud chcete tuto funkci vyzkoušet, použijte [tento odkaz](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Začněte tím, že si projdete kurzy [zjišťování](tutorial-discover-vmware.md) a [hodnocení](tutorial-assess-sql.md).
+- Migrace VMware bez agentů teď podporuje souběžnou replikaci 500 virtuálních počítačů na vCenter.
+- Azure Migrate teď automaticky nainstaluje do virtuálních počítačů VMware agenta virtuálních počítačů Azure při jejich migraci do Azure pomocí metody migrace VMware bez agentů.
+
+## <a name="update-january-2021"></a>Aktualizace (leden 2021)
+-  Azure Migrate: Nástroj pro migraci serveru teď umožňuje migrovat virtuální počítače VMware, fyzické servery a virtuální počítače z jiných cloudů na virtuální počítače Azure s disky šifrovanými pomocí šifrování na straně serveru pomocí klíčů spravovaných zákazníkem (CMK).
+
+## <a name="update-december-2020"></a>Aktualizace (prosince 2020)
+- Azure Migrate teď automaticky nainstaluje do virtuálních počítačů VMware agenta virtuálních počítačů Azure při jejich migraci do Azure pomocí metody migrace VMware bez agentů.
+- Migrace virtuálních počítačů VMware na virtuální počítače Azure s disky šifrovanými pomocí šifrování na straně serveru (SSE) pomocí klíčů spravovaných zákazníkem (CMK Azure Migrate) je teď k dispozici prostřednictvím služby Azure Portal.
+
+## <a name="update-september-2020"></a>Aktualizace (září 2020)
+- Migrace serverů do Zóny dostupnosti se teď podporuje.
+- Migrace virtuálních počítačů založených na rozhraní UEFI a fyzických serverů do virtuálních počítačů Azure generace 2 se teď podporuje. V této verzi Azure Migrate: Nástroj pro migraci serveru neprovede převod z virtuálního počítače 1. generace na virtuální počítač 1. generace během migrace.
+- K dispozici je nový řídicí panel posouzení Power BI Azure Migrate, který vám umožní porovnat náklady napříč různými nastaveními posouzení. Řídicí panel obsahuje nástroj PowerShell, který automaticky vytvoří posouzení, která se připojí k řídicímu panelu Power BI. [Další informace](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
+- Analýza závislostí (bez agenta) se teď dá na virtuálních počítačích 1000 současně spustit současně.
+- Analýza závislostí (bez agentů) se teď dá ve velkém měřítku povolit nebo zakázat pomocí skriptů PowerShellu. [Další informace](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- Vizualizujte síťová připojení v Power BI pomocí dat shromážděných pomocí analýzy závislostí (bez agentů) [. Další informace najdete](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) v části.
+- Migrace virtuálních počítačů VMware s velikostí datových disků až 32 TB je teď podporovaná pomocí Azure Migrate: Migrace serveru bez agenta pro migraci VMware.
+
+## <a name="update-august-2020"></a>Aktualizace (srpen 2020)
+
+- Vylepšené prostředí pro připojování, kde se vygeneruje Azure Migrate klíč projektu z portálu a používá se k dokončení registrace zařízení.
+- Možnost stažení souborů vajíček/VHD nebo skriptů instalačního programu z portálu a nastavení zařízení VMware a Hyper-V v uvedeném pořadí.
+- Aktualizovaný Správce konfigurace zařízení s pokročilým uživatelským prostředím
+- Podpora více přihlašovacích údajů pro zjišťování virtuálních počítačů Hyper-V.
+
+## <a name="update-july-2020"></a>Aktualizace (červenec 2020)
+
+- Migrace VMware bez agentů teď podporuje souběžnou replikaci 300 virtuálních počítačů na vCenter.
+
 ## <a name="update-june-2020"></a>Aktualizace (červen 2020)
 
-- Pro migraci místních virtuálních počítačů VMware do [Řešení Azure VMware (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) se teď podporuje vyhodnocení. [Další informace](how-to-create-azure-vmware-solution-assessment.md)
+- Pro migraci místních virtuálních počítačů VMware do [Řešení Azure VMware (AVS)](./concepts-azure-vmware-solution-assessment-calculation.md) se teď podporuje vyhodnocení. [Další informace](how-to-create-azure-vmware-solution-assessment.md)
 - Podpora více přihlašovacích údajů na zařízení pro zjištění fyzického serveru.
 - Podpora pro povolení přihlášení Azure ze zařízení pro tenanta, ve kterém je nakonfigurované omezení tenanta.
-- Nové verze Azure Migrate zařízení, jak je uvedeno níže.
-
-### <a name="azure-public-cloud"></a>Veřejný cloud Azure
-
-**Scénář** | **Stáhnout** | **SHA256**
---- | --- | ---
-Hyper-V (8,93 GB) | [Nejnovější verze](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
-VMware (10,9 GB) | [Nejnovější verze](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
-Fyzický (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
-
-
-### <a name="azure-government"></a>Azure Government
-
-**Scénář** | **Stáhnout** | **SHA256**
---- | --- | ---
-Hyper-V (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
-VMware (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
-Fyzický (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
-
 
 
 ## <a name="update-april-2020"></a>Aktualizace (duben 2020)
@@ -73,8 +90,8 @@ Do Azure Migrate bylo přidáno několik nových funkcí:
 
 Do Azure Migrate byly přidány nové nástroje pro posouzení a migraci:
 
-- **Rackware**: nabídka migrace do cloudu.
-- **Stěhovací**společnost: posouzení nabídky.
+- **RackWare**: nabídka migrace do cloudu.
+- **Stěhovací** společnost: posouzení nabídky.
 
 [Přečtěte si další informace](migrate-services-overview.md) o používání nástrojů a nabídek ISV pro posouzení a migraci v Azure Migrate.
 
@@ -104,4 +121,4 @@ Pokud používáte předchozí verzi Azure Migrate (podporuje se jenom posouzen�
 
 - [Další informace](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenách služby Azure Migrate.
 - [Přečtěte si nejčastější dotazy](resources-faq.md) ohledně služby Azure Migrate.
-- Vyzkoušejte si naše kurzy, abyste vyhodnotili [virtuální počítače VMware](tutorial-assess-vmware.md) a [virtuální počítače Hyper-V](tutorial-assess-hyper-v.md).
+- Vyzkoušejte si naše kurzy, abyste vyhodnotili [virtuální počítače VMware](./tutorial-assess-vmware-azure-vm.md) a [virtuální počítače Hyper-V](tutorial-assess-hyper-v.md).

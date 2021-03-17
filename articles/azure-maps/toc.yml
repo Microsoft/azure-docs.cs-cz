@@ -9,6 +9,8 @@
   items:
     - name: Vytvoření webové aplikace
       href: quick-demo-map-app.md
+    - name: Vytvoření aplikace pro Android
+      href: quick-android-map.md
 - name: Kurzy
   items:
     - name: Kurzy k Web SDK
@@ -21,6 +23,10 @@
           href: tutorial-prioritized-routes.md
         - name: Vytvoření lokátoru úložiště
           href: tutorial-create-store-locator.md
+    - name: Kurzy k sadě Android SDK
+      items:
+        - name: Načítání dat GeoJSON do map
+          href: tutorial-load-geojson-file-android.md
     - name: Kurzy k REST API
       items:
         - name: Vytváření interiérových map
@@ -33,6 +39,14 @@
           href: tutorial-ev-routing.md
         - name: Analýza dat o počasí s využitím Azure Notebooks (Python)
           href: weather-service-tutorial.md
+    - name: Migrace z Map Bing
+      items:
+        - name: Migrace z Map Bing
+          href: migrate-from-bing-maps.md
+        - name: Migrace webové aplikace
+          href: migrate-from-bing-maps-web-app.md
+        - name: Migrace webové služby
+          href: migrate-from-bing-maps-web-services.md
     - name: Migrace z Google Maps
       items:
         - name: Migrace z Google Maps
@@ -79,14 +93,18 @@
       href: supported-map-styles.md
     - name: Úrovně přiblížení a mřížka dlaždic
       href: zoom-levels-and-tile-grid.md
-    - name: Datová struktura Mobility Service
+    - name: Služby Mobility
       href: mobility-service-data-structure.md
-    - name: Koncepty povětrnostních služby
+    - name: Koncepce služby Weather
       href: weather-services-concepts.md
+    - name: Nejčastější dotazy ke službě Weather
+      href: weather-services-faq.md
 - name: Návody
   items:
     - name: Správa účtů Maps
       items:
+        - name: Vytvoření účtu se šablonou ARM
+          href: how-to-create-template.md
         - name: Správa účtů
           href: how-to-manage-account-keys.md
         - name: Správa ověřování
@@ -122,6 +140,10 @@
           href: how-to-request-transit-data.md
         - name: Vyžádání dat o veřejné dopravě v reálném čase
           href: how-to-request-real-time-data.md
+        - name: Vyžádání předpovědí a údajů o počasí v reálném čase
+          href: how-to-request-weather-data.md
+        - name: Vyžádání údajů o nadmořské výšce
+          href: how-to-request-elevation-data.md
     - name: Vývoj s využitím sady Web SDK
       items:
         - name: Mapový ovládací prvek
@@ -138,10 +160,10 @@
               href: create-data-source-web-sdk.md
             - name: Přidání vrstvy symbolů
               href: map-add-pin.md
-            - name: Přidání místního okna
-              href: map-add-popup.md
             - name: Přidání vrstvy bublin
               href: map-add-bubble-layer.md
+            - name: Přidání místního okna
+              href: map-add-popup.md
             - name: Přidání značek HTML
               href: map-add-custom-html.md
             - name: Přidání řádkové vrstvy
@@ -222,16 +244,34 @@
           href: how-to-use-android-map-control-library.md
         - name: Změna stylu mapy
           href: set-android-map-styles.md
+        - name: Přidání ovládacích prvků do mapy
+          href: map-add-controls-android.md
+        - name: Vytvoření zdroje dat
+          href: create-data-source-android-sdk.md
         - name: Přidání vrstvy symbolů
           href: how-to-add-symbol-to-android-map.md
-        - name: Přidání tvarů
-          href: how-to-add-shapes-to-android-map.md
+        - name: Přidání vrstvy bublin
+          href: map-add-bubble-layer-android.md
         - name: Zobrazení informací o funkci
           href: display-feature-information-android.md
+        - name: Přidání řádkové vrstvy
+          href: android-map-add-line-layer.md
+        - name: Přidání mnohoúhelníkové vrstvy
+          href: how-to-add-shapes-to-android-map.md
+        - name: Přidání vysunuté mnohoúhelníkové vrstvy
+          href: map-extruded-polygon-android.md
+        - name: Přidání vrstvy heat mapy
+          href: map-add-heat-map-layer-android.md
+        - name: Přidání vrstvy obrázků
+          href: map-add-image-layer-android.md
         - name: Přidání vrstvy dlaždic
           href: how-to-add-tile-layer-android-map.md
         - name: Zobrazení provozních dat
           href: how-to-show-traffic-android.md
+        - name: Použití výrazů založených na datech
+          href: data-driven-style-expressions-android-sdk.md
+        - name: Reakce na události
+          href: android-map-events.md
     - name: Použití Azure Maps v Power BI
       items:
         - name: Začínáme
@@ -271,55 +311,57 @@
     - name: REST
       items:
         - name: Datová služba
-          href: 'https://docs.microsoft.com/rest/api/maps/data'
+          href: /rest/api/maps/data
+        - name: Služba Elevation
+          href: /rest/api/maps/elevation
         - name: Služba geografické polohy
-          href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
-        - name: Služba Mobility
-          href: 'https://docs.microsoft.com/rest/api/maps/mobility'
+          href: /rest/api/maps/geolocation
+        - name: Služby Mobility
+          href: /rest/api/maps/mobility
         - name: Služba Render
-          href: 'https://docs.microsoft.com/rest/api/maps/render'
+          href: /rest/api/maps/render
         - name: Služba Render V2
-          href: 'https://docs.microsoft.com/rest/api/maps/renderv2'
+          href: /rest/api/maps/renderv2
         - name: Služba Route
-          href: 'https://docs.microsoft.com/rest/api/maps/route'
+          href: /rest/api/maps/route
         - name: Služba Search
-          href: 'https://docs.microsoft.com/rest/api/maps/search'
+          href: /rest/api/maps/search
         - name: Služba Spatial
-          href: 'https://docs.microsoft.com/rest/api/maps/spatial'
+          href: /rest/api/maps/spatial
         - name: Služba Timezone
-          href: 'https://docs.microsoft.com/rest/api/maps/timezone'
+          href: /rest/api/maps/timezone
         - name: Služba Traffic
-          href: 'https://docs.microsoft.com/rest/api/maps/traffic'
-        - name: Služba Weather
-          href: 'https://docs.microsoft.com/rest/api/maps/weather'
+          href: /rest/api/maps/traffic
+        - name: Služby Weather
+          href: /rest/api/maps/weather
         - name: Služba Maps Creator
           items:
             - name: Služba Alias
-              href: 'https://docs.microsoft.com/rest/api/maps/alias'
+              href: /rest/api/maps/alias
             - name: Převodní služba
-              href: 'https://docs.microsoft.com/rest/api/maps/conversion'
+              href: /rest/api/maps/conversion
             - name: Služba datových sad
-              href: 'https://docs.microsoft.com/rest/api/maps/dataset'
+              href: /rest/api/maps/dataset
             - name: Služba Feature State
-              href: 'https://docs.microsoft.com/rest/api/maps/featurestate'
+              href: /rest/api/maps/featurestate
             - name: Služba sad dlaždic
-              href: 'https://docs.microsoft.com/rest/api/maps/tileset'
+              href: /rest/api/maps/tileset
             - name: Služba WFS
-              href: 'https://docs.microsoft.com/rest/api/maps/wfs'
+              href: /rest/api/maps/wfs
         - name: Správa účtů služby Maps
-          href: 'https://docs.microsoft.com/rest/api/maps-management'
+          href: /rest/api/maps-management
     - name: JavaScript
       items:
         - name: Mapový ovládací prvek
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+          href: /javascript/api/azure-maps-javascript/
         - name: Nástroje pro kreslení
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
+          href: /javascript/api/azure-maps-drawing-tools/
         - name: Modul služeb
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+          href: /javascript/api/azure-maps-rest/
         - name: Prostorový modul V/V
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
+          href: /javascript/api/azure-maps-spatial-io/
         - name: Interiérový modul
-          href: 'https://aka.ms/am-indoor-module-websdk/'
+          href: /javascript/api/azure-maps-indoor/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.maps/accounts
     - name: Azure CLI
@@ -327,31 +369,31 @@
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/azure-maps/toc.json&bc=/azure/azure-maps/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: Akcelerátory řešení IoT
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT Plug and Play
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ./index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Sady Azure IoT SDK
       items:
         - name: Sady SDK pro služby IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: Sady SDK pro zařízení IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Podmínky použití služby Azure Maps
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Ceny služby Azure Maps

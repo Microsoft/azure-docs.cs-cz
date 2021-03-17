@@ -1,14 +1,14 @@
 ---
 title: Index ukázek zásad
 description: Index předdefinovaných funkcí pro Azure Policy Značky kategorií, dodržování předpisů, Key Vault, Kubernetes, konfigurace hostů a další.
-ms.date: 06/10/2020
+ms.date: 01/29/2021
 ms.topic: sample
-ms.openlocfilehash: 7528a22ad09db1e06aabf84ad946ef7af36a8430
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: HT
+ms.openlocfilehash: 7a6a5c5e7c7cb90399d1ba8c232ab7ee8431d112
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736777"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498740"
 ---
 # <a name="azure-policy-samples"></a>Ukázky Azure Policy
 
@@ -27,7 +27,7 @@ Následují příklady různých vzorů s využitím jazyka a operátorů ve slu
 - [Pole](./pattern-fields.md)
 - [Parametry](./pattern-parameters.md)
 - [Podrobnosti o efektu](./pattern-effect-details.md)
-- [Použití značek](./pattern-effect-details.md)
+- [Použití značek](./pattern-tags.md)
 - [Operátor hodnoty](./pattern-value-operator.md)
 - [Operátor počtu](./pattern-count-operator.md)
 - [Seskupení definic zásad v iniciativě](./pattern-group-with-initiative.md)
@@ -37,8 +37,14 @@ Následují příklady různých vzorů s využitím jazyka a operátorů ve slu
 
 Toto jsou integrované moduly [dodržování legislativní předpisů](../concepts/regulatory-compliance.md):
 
-- [Srovnávací test zabezpečení Azure](./azure-security-benchmark.md)
+- [Azure Security benchmark v2](./azure-security-benchmark.md)
+- [Srovnávací test zabezpečení Azure v1](./azure-security-benchmarkv1.md)
+- [CI Microsoft Azure Foundation – srovnávací testy v 1.3.0](./cis-azure-1-3-0.md)
 - [Srovnávací test CIS Microsoft Azure Foundations v1.1.0](./cis-azure-1-1-0.md)
+- [CMMC úrovně 3](./cmmc-l3.md)
+- [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)
+- [ISO 27001:2013](./iso-27001.md)
+- [Nový Zéland s omezením pro ISM](./new-zealand-ism.md)
 - [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 - [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 

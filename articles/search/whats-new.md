@@ -6,109 +6,93 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 08/01/2020
+ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: c5990faab1e06961a2c3d577a4677d2e1d504699
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b4dc8ab44d341b293c044843e6dff2a3b6d3102c
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904060"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233544"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
-Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
+Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu. Podívejte se na [seznam funkcí ve verzi Preview](search-api-preview.md) a zobrazte kompletní seznam funkcí, které ještě nejsou všeobecně dostupné.
 
-## <a name="feature-announcements-in-2020"></a>Oznámení funkcí v 2020
+## <a name="march-2021"></a>Březen 2021
 
-### <a name="august-2020"></a>Srpen 2020
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
+|------------------------------|---------------|---------------|
+| [Sémantické vyhledávání](semantic-search-overview.md) | Kolekce funkcí souvisejících s dotazy, které výrazně zlepšují relevanci výsledků hledání s velmi malým úsilím. </br></br>[Sémantické hodnocení](semantic-ranking.md) vypočítá relevanci skóre pomocí sémantického významu slov a obsahu. </br></br>[Sémantické titulky](semantic-how-to-query-request.md) jsou relevantní pasáže z dokumentu, který nejlépe shrnuje nejdůležitější výrazy nebo fráze. </br></br>[Sémantické odpovědi](semantic-answers.md) jsou klíčové pasáže, které se extrahují z hledaného dokumentu, které se formulují jako přímá odpověď na dotaz, který vypadá jako otázka. | Verze Public Preview ([podle žádosti](https://aka.ms/SemanticSearchPreviewSignup)) </br></br>V Azure Portal použijte soubory API pro [hledání (REST)](/rest/api/searchservice/preview-api/search-documents) – verze = 2020-06 -30-Preview a [Search Explorer](search-explorer.md) . </br></br>Platí omezení oblasti a úrovně. |
+| [Výrazy pro dotaz na kontrolu pravopisu](speller-how-to-add.md) | Předtím, než se na vyhledávacím panelu dostanou výrazy pro dotaz, můžete nechat zkontrolovat chyby pravopisu. `speller`Možnost funguje s libovolným typem dotazu (jednoduchý, úplný nebo sémantický). |  Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview|
+| [Indexer SharePointu Online](search-howto-index-sharepoint-online.md) | Tento indexer vás připojí k webu SharePointu Online, abyste mohli indexovat obsah z knihovny dokumentů. | Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview |
 
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
-|---------|------------------|-------------|---------------|
-| [dvojité šifrování](search-security-overview.md#encryption) | Zabezpečení | Povolte dvojité šifrování ve vrstvě úložiště nakonfigurováním šifrování CMK (Customer-Managed Key) pro nové vyhledávací služby. Vytvořte novou službu, [nakonfigurujte a používejte klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro indexy nebo mapy synonym a využijte při šifrování tohoto obsahu dvojité šifrování. | Všeobecně dostupná pro všechny služby vyhledávání vytvořené 1. srpna 2020 v těchto oblastech: Západní USA 2, Východní USA, Střed USA – jih, US Gov – Virginie US Gov – Arizona. K vytvoření služby použijte portál, rozhraní REST API pro správu nebo sady SDK. |
+## <a name="february-2021"></a>Únor 2021
 
-### <a name="july-2020"></a>Červenec 2020
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
+|------------------------------|---------------|---------------|
+| [Resetovat dokumenty (Preview)](search-howto-run-reset-indexers.md) |  Znovu zpracuje jednotlivě vybrané dokumenty hledání v úlohách indexeru. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) |
+| [Zóny dostupnosti](search-performance-optimization.md#availability-zones)| Vyhledávací služby se dvěma nebo více replikami v určitých oblastech, jak je uvedeno v [rozsahu pro výkon](search-performance-optimization.md#availability-zones), získáte odolnost při používání replik ve dvou nebo více různých fyzických umístěních.  | Oblast a datum vytvoření služby vyhledávání, která určuje dostupnost. Podrobnosti najdete v článku věnovaném škálování na výkon. |
+| [Azure CLI](/cli/azure/search) </br>[Azure PowerShell](/powershell/module/az.search/) | Nové revize teď poskytují celou škálu operací v rámci správy REST API 2020-08-01, včetně podpory pravidel brány firewall protokolu IP a privátního koncového bodu. | Všeobecně k dispozici. |
 
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
-|---------|------------------|-------------|---------------|
-| [Klientská knihovnaAzure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Sada Azure SDK pro .NET | Klientská knihovna .NET vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami .NET. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30, ale zatím nepodporuje znalostní bázi Knowledge Store, geoprostorové typy ani [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). <br/><br/>Další informace najdete v tématu [rychlý Start: vytvoření indexu](search-get-started-dotnet.md) a [upgrade na Azure.Search.Documents (V11)](search-dotnet-sdk-migration-version-11.md). | Všeobecně k dispozici. </br> Nainstalujte [balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) z NuGet. |
-| [Klientská knihovnaazure.search.documents](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK pro Python| Klientská knihovna Python vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami Pythonu. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [balíček Azure-Search-Documents](https://pypi.org/project/azure-search-documents/) z PyPI. |
-| [@azure/search-documentsKlientská knihovna](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure SDK for JavaScript | Klientská knihovna pro JavaScript vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami JavaScript. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [ @azure/search-documents balíček](https://www.npmjs.com/package/@azure/search-documents) z npm. |
+## <a name="january-2021"></a>Leden 2021
 
-### <a name="june-2020"></a>Červen 2020
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
+|------------------------------|-------------|---------------|
+| [Akcelerátor řešení pro Azure Kognitivní hledání a QnA Maker](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Vyžádá si otázky a odpovědi z dokumentu a navrhne relevantní odpovědi. Živou ukázkovou aplikaci najdete na adrese [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Open source projekt (bez smlouvy SLA) |
 
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
-|---------|------------------|-------------|---------------|
-[**Knowledge Store**](knowledge-store-concept-intro.md) | Obohacení AI | Výstup indexeru s obohaceným AI, který ukládá obsah v Azure Storage pro použití v jiných aplikacích a procesech. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější nebo na portálu. |
-| [**Hledat REST API 2020-06-30**](https://docs.microsoft.com/rest/api/searchservice/) | REST | Nová stabilní verze rozhraní REST API. Kromě znalostní báze Knowledge Store zahrnuje tato verze vylepšení vyhledávání relevance a bodování. | Všeobecně k dispozici. |
-| [**Okapi BM25 – algoritmus relevance**](https://en.wikipedia.org/wiki/Okapi_BM25) | Dotaz | Nový algoritmus hodnocení relevance se automaticky používá pro všechny nové služby vyhledávání vytvořené po 15. červenci. Pro služby, které jste vytvořili dřív, se můžete rozhodnout, že nastavíte `similarity` vlastnost u polí index. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
-| **executionEnvironment** | Zabezpečení (indexery) | Explicitně nastavte tuto vlastnost konfigurace indexeru tak, aby `private` vynutila všechna připojení k externím zdrojům dat v rámci privátního koncového bodu. Platí pouze pro služby vyhledávání, které využívají privátní propojení Azure. | Všeobecně k dispozici. </br> K nastavení tohoto obecného parametru konfigurace použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) . |
+## <a name="2020-archive"></a>Archiv 2020
 
-### <a name="may-2020-microsoft-build"></a>Květen 2020 (Microsoft Build)
+| Month (Měsíc) | Funkce | Popis |
+|-------|---------|-------------|
+| Listopad | [Šifrování klíče spravovaného zákazníkem (rozšířené)](search-security-manage-encryption-keys.md) | Rozšiřuje šifrování spravované zákazníkem v celém rozsahu prostředků vytvořených a spravovaných vyhledávací službou. Všeobecně k dispozici.|
+| Září | [Rozšíření Visual Studio Code pro Azure Kognitivní hledání](search-get-started-vs-code.md) | Přidá pracovní prostor, navigaci, IntelliSense a šablony pro vytváření indexů, indexerů, zdrojů dat a dovednosti. Tato funkce je aktuálně ve verzi Public Preview.| 
+| Září | [Identita spravované služby (indexery)](search-howto-managed-identities-data-sources.md) | Všeobecně k dispozici.  |
+| Září | [Odchozí požadavky pomocí privátního odkazu](search-indexer-howto-access-private.md) | Všeobecně k dispozici.  |
+| Září | [REST API správy (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | Všeobecně k dispozici. |
+| Září | [REST API správy (2020-08-01 – Preview)](/rest/api/searchmanagement/management-api-versions) | Přidá prostředek sdíleného privátního propojení pro databáze Azure Functions a Azure SQL pro MySQL. |
+| Září | [Sada Management .NET SDK 4,0](/dotnet/api/overview/azure/search/management) |  Aktualizace sady Azure SDK pro sadu Management SDK, cílené REST API verze 2020-08-01. Všeobecně k dispozici.|
+| Srpen | [dvojité šifrování](search-security-overview.md#encryption) | Všeobecně dostupná pro všechny služby vyhledávání vytvořené 1. srpna 2020 v těchto oblastech: Západní USA 2, Východní USA, Střed USA – jih, US Gov – Virginie US Gov – Arizona. |
+| Červenec | [ Klientská knihovnaAzure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) | Sada Azure SDK pro .NET, obecně dostupná. |
+| Červenec | [ Klientská knihovnaazure.search.documents](/python/api/overview/azure/search-documents-readme)  | Sada Azure SDK pro Python, obecně dostupná. |
+| Červenec | [@azure/search-documents Klientská knihovna](/javascript/api/overview/azure/search-documents-readme)  | Sada Azure SDK pro JavaScript, obecně dostupná. |
+| Červen | [Knowledge Store](knowledge-store-concept-intro.md) | Všeobecně k dispozici. |
+| Červen | [Hledat REST API 2020-06-30](/rest/api/searchservice/) | Všeobecně k dispozici. |
+| Červen | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/) | Přidá Reset dovednosti k selektivnímu rezpracování dovedností a přírůstkové obohacení. |
+| Červen | [Okapi BM25 – algoritmus relevance](index-ranking-similarity.md) | Všeobecně k dispozici. |
+| Červen |  **executionEnvironment** (platí pro služby vyhledávání pomocí privátního propojení Azure) | Všeobecně k dispozici. |
+| Červen | [AML dovednosti (Preview)](cognitive-search-aml-skill.md) | Vnímání dovedností, které rozšiřuje obohacení AI s vlastním modelem Azure Machine Learning (AML). |
+| Květen | [Relace ladění (Preview)](cognitive-search-debug-session.md) | Dovednosti Debugger na portálu.  |
+| Květen | [Pravidla protokolu IP pro podporu firewallu s vazbou](service-configure-firewall.md) | Všeobecně k dispozici.  |
+| Květen | [Privátní odkaz na Azure pro soukromý koncový bod hledání](service-create-private-endpoint.md) | Všeobecně k dispozici.  |
+| Květen | [Identita spravované služby (indexery) – (Preview)](search-howto-managed-identities-data-sources.md) | Připojte se ke zdrojům dat Azure pomocí spravované identity.  |
+| Květen | [parametr dotazu SessionID](index-similarity-and-scoring.md), [scoringStatistics = Global – parametr](index-similarity-and-scoring.md#scoring-statistics)  | Statistická Statistika hledání, užitečná pro [modely strojového učení (LearnToRank) pro vyhledávání relevance](https://github.com/Azure-Samples/search-ranking-tutorial).  |
+| Květen | [rozšíření skóre relevance featuresMode (Preview)](index-similarity-and-scoring.md#featuresMode-param)  |   |
+|Březen  | [Obnovitelné odstranění nativního objektu BLOB (Preview)](search-howto-index-changed-deleted-blobs.md) | Odstraní dokumenty hledání, pokud je zdrojový objekt BLOB v úložišti objektů BLOB Soft odstraněný. |
+|Březen  | [REST API správy (2020-03-13)](/rest/api/searchmanagement/management-api-versions) | Všeobecně k dispozici. |
+|Únor | [Dovednost pro detekci PII (Preview)](cognitive-search-skill-pii-detection.md)  | Vnímání dovedností, které extrahují a maskují osobní údaje. |
+|Únor | [Dovednosti při vyhledávání vlastních entit (Preview)](cognitive-search-skill-custom-entity-lookup.md) | Vnímání znalostí, které hledá slova a fráze ze seznamu a označí všechny dokumenty odpovídajícími entitami.  |
+|January (Leden) | [Šifrování klíčů spravované zákazníkem](search-security-manage-encryption-keys.md) | Obecná dostupnost  |
+|January (Leden) | [Pravidla protokolu IP pro podporu brány firewall vázané na hranice (Preview)](service-configure-firewall.md) | Nové vlastnosti **IpRule** a **NetworkRuleSet** v [rozhraní CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service).  |
+|January (Leden) | [Vytvoření privátního koncového bodu (Preview)](service-create-private-endpoint.md) | Nastavte privátní odkaz pro zabezpečená připojení k vaší vyhledávací službě. Tato funkce Preview má závislost [privátního propojení Azure](../private-link/private-link-overview.md) a [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) jako součást řešení. |
 
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
-|---------|------------------|-------------|---------------|
-| [**Ladicí relace**](cognitive-search-debug-session.md) | Obohacení AI | Relace ladění poskytují rozhraní založené na portálu pro zkoumání a řešení problémů s existujícím dovednosti. Opravy vytvořené v relaci ladění se dají uložit do produkčního dovednostiu. Začněte s [tímto kurzem](cognitive-search-tutorial-debug-sessions.md). | Public Preview na portálu. |
-| [**Pravidla protokolu IP pro podporu firewallu s vazbou**](service-configure-firewall.md) | Zabezpečení | Omezte přístup ke koncovému bodu vyhledávací služby na konkrétní IP adresy. | Všeobecně k dispozici. </br> Použijte [správu REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) nebo novější nebo na portálu. |
-| [**Privátní odkaz na Azure pro soukromý koncový bod hledání**](service-create-private-endpoint.md) | Zabezpečení| Propojte vyhledávací službu z veřejného Internetu tak, že ji spustíte jako prostředek privátního propojení, který je přístupný jenom pro klientské aplikace a další služby Azure ve stejné virtuální síti. | Všeobecně k dispozici. </br> Použijte [správu REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) nebo novější nebo na portálu. |
-| [**Identita spravovaná systémem (verze Preview)**](search-howto-managed-identities-data-sources.md) | Zabezpečení (indexery) | Zaregistrujte vyhledávací službu jako důvěryhodnou službu s Azure Active Directory pro nastavení připojení k podporovanému zdroji dat Azure pro indexování. Platí pro [indexery](search-indexer-overview.md) , které ingestují obsah ze zdrojů dat Azure, jako jsou Azure SQL Database, Azure Cosmos DB a Azure Storage. | Verze Public Preview. </br> K registraci vyhledávací služby použijte portál. |
-| [**parametr dotazu SessionID**](index-similarity-and-scoring.md), [scoringStatistics = Global – parametr](index-similarity-and-scoring.md#scoring-statistics) | Dotaz (relevance) | Přidejte sessionID do dotazu a navažte relaci pro výpočet skóre hledání s scoringStatistics = Global pro shromažďování skóre ze všech horizontálních oddílů a pro přesnější výpočty skóre hledání. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
-| [**featuresMode (Preview)**](index-similarity-and-scoring.md#featuresMode-param) | Dotaz | Přidejte tento parametr dotazu, abyste rozšířili skóre relevance tak, aby se zobrazilo více podrobností: skóre podobnosti za pole, frekvence termínů a počet jedinečných tokenů podle pole. Tyto datové body můžete využívat v algoritmech vlastního bodování. Ukázku, která tuto schopnost předvádí, najdete v tématu věnovaném [Přidání strojového učení (LearnToRank) k vyhledávání relevance](https://github.com/Azure-Samples/search-ranking-tutorial). | Verze Public Preview. </br> Použijte [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
+## <a name="2019-archive"></a>Archiv 2019
 
-### <a name="march-2020"></a>Březen 2020
-
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
-|---------|------------------|-------------|---------------|
-| [**Obnovitelné odstranění nativního objektu BLOB (Preview)**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexery | Indexovací člen služby Azure Blob Storage v Azure Kognitivní hledání rozpozná objekty blob, které jsou ve stavu undeleteded, a během indexování odebere odpovídající hledaný dokument. | Verze Public Preview. </br> Pomocí služby [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) a REST API 2019-05-06-Preview se spuštěním indexeru na zdroji dat objektu BLOB v Azure, který má povolené nativní "obnovitelné odstranění". |
-| [**REST API správy (2020-03-13)**](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Nové stabilní REST API pro vytváření a správu vyhledávací služby. Přidání podpory protokolu IP a privátních odkazů | Všeobecně k dispozici. |
-
-### <a name="february-2020"></a>Únor 2020
-
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
-|---------|------------------|-------------|---------------|
-| [**Detekce PII (Preview)**](cognitive-search-skill-pii-detection.md) | Obohacení AI | Nový způsob rozpoznávání používaný při indexování, který extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby. | Verze Public Preview. </br> Použijte portál nebo [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
-| [**Vyhledávání vlastních entit (Preview)**](cognitive-search-skill-custom-entity-lookup.md )| Obohacení AI | Nová schopnost rozpoznávání, která hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale ne přesně. | Verze Public Preview. </br> Použijte portál nebo [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
-
-### <a name="january-2020"></a>Leden 2020
-
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
-|---------|------------------|-------------|---------------|
-| [**Šifrovací klíče spravované zákazníkem**](search-security-manage-encryption-keys.md) |Zabezpečení | Kromě integrovaného šifrování platformy přidá další vrstvu šifrování. Pomocí šifrovacího klíče, který vytvoříte a spravujete, můžete šifrovat obsah indexu a mapy synonym před tím, než dosáhnete datové části služby vyhledávání. | Všeobecně k dispozici. </br> Použijte Search REST API 2019-05-06 nebo novější. Pro spravovaný kód je správný balíček stále [.NET SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , i když funkce není ve verzi Preview. |
-| [**Pravidla protokolu IP pro podporu brány firewall vázané na hranice (Preview)**](service-configure-firewall.md) | Zabezpečení | Omezte přístup ke koncovému bodu vyhledávací služby na konkrétní IP adresy. Rozhraní API ve verzi Preview má nové vlastnosti **IpRule** a **NetworkRuleSet** v [rozhraní CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Tato funkce ve verzi Preview je dostupná ve vybraných oblastech. |  Verze Public Preview s použitím rozhraní API-Version = 2019-10 -01-Preview.  |
-| [**Privátní odkaz Azure pro soukromý koncový bod hledání (Preview)**](service-create-private-endpoint.md) | Zabezpečení| Propojte vyhledávací službu z veřejného Internetu tak, že ji spustíte jako prostředek privátního propojení, který je přístupný jenom pro klientské aplikace a další služby Azure ve stejné virtuální síti. | Verze Public Preview s použitím rozhraní API-Version = 2019-10 -01-Preview.  |
-
-## <a name="feature-announcements-in-2019"></a>Oznámení funkcí v 2019
-
-### <a name="december-2019"></a>Prosinec 2019
-
-+ [Vytvořit ukázkovou aplikaci (Preview)](search-create-app-portal.md) je nový průvodce na portálu, který GENERUJE soubor HTML ke stažení s přístupem (jen pro čtení) k indexu. Soubor se dodává se skriptem Embedded, který vykreslí provozní webovou aplikaci ve stylu "localhost", která je svázána s indexem ve vaší vyhledávací službě. Stránky lze v průvodci konfigurovat a mohou obsahovat panel hledání, oblast výsledků, navigaci bočním panelem a podporu dotazů typeahead. Můžete upravit HTML v offline režimu pro rozšiřování nebo přizpůsobení pracovního postupu nebo vzhledu. Ukázkovou aplikaci není snadné rozšířit tak, aby zahrnovala vrstvy zabezpečení a hostování, které jsou obvykle potřeba v produkčních scénářích. Měli byste ho zvážit jako nástroj pro ověřování a testování, ale nemusíte ho zkrátit na celou klientskou aplikaci.
-
-+ [Vytvoření privátního koncového bodu pro zabezpečená připojení (Preview)](service-create-private-endpoint.md) vysvětluje, jak nastavit privátní propojení pro zabezpečená připojení k vaší vyhledávací službě. Tato funkce ve verzi Preview je dostupná po podání žádosti a jako součást řešení používá [privátní odkaz Azure](../private-link/private-link-overview.md) a [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) .
-
-### <a name="november-2019---ignite-conference"></a>Listopadu 2019 – konference Ignite
-
-+ [Přírůstkové obohacení (Preview)](cognitive-search-incremental-indexing-conceptual.md) přidá do kanálu pro rozšíření ukládání do mezipaměti a statefullness, aby bylo možné pracovat na konkrétních krocích nebo fázích, aniž by došlo ke ztrátě již zpracovávaného obsahu. Předchozí Změna kanálu rozšíření vyžadovala úplné opětovné sestavení. Při přírůstkovém obohacení se zachová výstup nákladné analýzy, zejména analýza obrazu.
-
-<!-- 
-+ Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->
-
-+ [Extrakce dokumentu (ve verzi Preview)](cognitive-search-skill-document-extraction.md) je vnímání dovedností, která se používá při indexování, která umožňuje extrakci obsahu souboru v rámci dovednosti. Dříve došlo k odhalení dokumentu pouze před dovednosti prováděním. Při přidání této dovednosti můžete tuto operaci provést i v rámci provádění dovednosti.
-
-+ [Překlad textu](cognitive-search-skill-text-translation.md) je vnímání znalostí používané při indexování, které vyhodnocuje text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka.
-
-+ [Šablony Power BI](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) můžou rychlé zprovoznění vaše vizualizace a analýzu obohaceného obsahu ve znalostní bázi Power BI Desktop. Tato šablona je určená pro projekce tabulky Azure vytvořené prostřednictvím [Průvodce importem dat](knowledge-store-create-portal.md).
-
-+ V indexerech jsou nyní podporovány [Azure Data Lake Storage Gen2 (Preview)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB Gremlin API (preview)](search-howto-index-cosmosdb.md)a [Cosmos DB rozhraní API Cassandra (Preview)](search-howto-index-cosmosdb.md) . Můžete se zaregistrovat pomocí [tohoto formuláře](https://aka.ms/azure-cognitive-search/indexer-preview). Po přijetí do programu Preview obdržíte e-mail s potvrzením.
-
-### <a name="july-2019"></a>Červenec 2019
-
-+ Obecně dostupné v [cloudu Azure Government](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search).
+| Month (Měsíc) | Funkce | Popis |
+|-------|---------|-------------|
+|Prosinec | [Vytvořit ukázkovou aplikaci (Preview)](search-create-app-portal.md) | Průvodce, který vygeneruje soubor HTML ke stažení s dotazem (jen pro čtení) s přístupem k indexu, který je určený jako nástroj pro ověřování a testování, a ne jenom krátce vyjmutím do úplné klientské aplikace.|
+|Listopad | [Přírůstkové obohacení (Preview)](cognitive-search-incremental-indexing-conceptual.md) | Ukládá do mezipaměti zpracování dovednosti pro budoucí opakované použití.  |
+|Listopad | [Dovednost extrakce dokumentu (Preview)](cognitive-search-skill-document-extraction.md) | Vnímání dovedností k extrakci obsahu souboru v rámci dovednosti.|
+|Listopad | [Dovednost překladu textu](cognitive-search-skill-text-translation.md) | Vnímání znalostí používané při indexování, který vyhodnocuje a překládá text. Všeobecně k dispozici.|
+|Listopad | [Šablony Power BI](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | Šablona pro vizualizaci obsahu ve znalostní bázi Store |
+|Listopad | [Azure Data Lake Storage Gen2 (Preview)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB Gremlin API (preview)](search-howto-index-cosmosdb.md)a [Cosmos DB rozhraní API Cassandra (Preview)](search-howto-index-cosmosdb.md) | Nové zdroje dat indexeru ve verzi Public Preview. |
+|Červenec | [Podpora cloudu Azure Government](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | Všeobecně k dispozici.|
 
 <a name="new-service-name"></a>
 
 ## <a name="new-service-name"></a>Nový název služby
 
-Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odráželo rozšířené (zatím volitelné) používání vnímání a zpracování AI v základních operacích. Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Nová a stávající řešení hledání nejsou ovlivněna změnou názvu služby.
+Azure Search se přejmenovala na **Azure kognitivní hledání** v říjnu 2019, aby odrážela rozbalené (ještě volitelné) používání vnímání a zpracování AI v základních operacích. Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Nová a stávající řešení hledání nejsou ovlivněna změnou názvu služby.
 
 ## <a name="service-updates"></a>Aktualizace služeb
 

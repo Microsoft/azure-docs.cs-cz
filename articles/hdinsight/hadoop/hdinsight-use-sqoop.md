@@ -1,18 +1,15 @@
 ---
 title: Spouštění úloh Apache Sqoop v Azure HDInsight (Apache Hadoop)
 description: Naučte se používat Azure PowerShell z pracovní stanice ke spuštění importu a exportu Sqoop mezi clusterem Hadoop a databází SQL Azure.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1c34b673cd970a9e7577b7ff01d27eb0e4cc1ac1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076874"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946421"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Použití Apache Sqoopu s Hadoopem ve službě HDInsight
 
@@ -95,7 +92,7 @@ Cluster, SQL Database a další objekty se vytvářejí prostřednictvím Azure 
     |Název souboru BacPac |Pokud nechcete použít vlastní soubor BacPac, použijte výchozí hodnotu.|
     |Umístění |Použijte výchozí hodnotu.|
 
-    Název [logického serveru SQL Server](../../azure-sql/database/logical-servers.md) bude `<ClusterName>dbserver` . Název databáze bude `<ClusterName>db` . Výchozí název účtu úložiště bude `e6qhezrh2pdqu` .
+    Název [logického serveru SQL Server](../../azure-sql/database/logical-servers.md) bude  `<ClusterName>dbserver` . Název databáze bude `<ClusterName>db` . Výchozí název účtu úložiště bude `e6qhezrh2pdqu` .
 
 3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**.
 
@@ -118,8 +115,8 @@ HDInsight může spouštět úlohy Sqoop pomocí různých metod. Pomocí násle
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak používat Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak používat Sqoop. Další informace najdete v následujících tématech:
 
-* [Použití Apache Hive se službou HDInsight](../hdinsight-use-hive.md)
+* [Použití Apache Hive se službou HDInsight](./hdinsight-use-hive.md)
 * [Nahrávání dat do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight/Azure Blob Storage.
 * [Import a export dat mezi Apache Hadoopem ve službě HDInsight a SQL Database pomocí Apache Sqoopu](./apache-hadoop-use-sqoop-mac-linux.md)

@@ -8,12 +8,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 36660854b9a7ae13431545392ef551694b48e97c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97ed9b6f3f21b6d9e220c1f4e17d4ba6b0d8b485
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628908"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555504"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Otevírání a ukládání souborů místně a v Azure s balíčky SSIS nasazenými v Azure
 
@@ -33,7 +33,7 @@ Pokud chcete i nadále používat místní **sdílené složky** při zvedání 
 
 2. Připojte se k místním sdíleným složkám do služby Azure Virtual Network.
 
-3. Připojte svůj Azure-SSIS IR ke stejné virtuální síti. Další informace najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+3. Připojte svůj Azure-SSIS IR ke stejné virtuální síti. Další informace najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](./join-azure-ssis-integration-runtime-virtual-network.md).
 
 4. Připojte svůj Azure-SSIS IR k místním sdíleným složkám ve stejné virtuální síti nastavením přihlašovacích údajů pro přístup, které používají ověřování systému Windows. Další informace najdete v tématu [připojení k datům a sdíleným složkám pomocí ověřování systému Windows](ssis-azure-connect-with-windows-auth.md).
 
@@ -51,6 +51,6 @@ Pokud chcete používat **soubory Azure** při zvedání a posunování balíčk
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nasaďte balíčky. Další informace najdete v tématu [nasazení projektu SSIS do Azure pomocí SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms).
-- Spusťte balíčky. Další informace najdete v tématu [spuštění balíčků SSIS v Azure pomocí SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms).
-- Naplánujte balíčky. Další informace najdete v tématu [plánování balíčků SSIS v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).
+- Nasaďte balíčky. Další informace najdete v tématu [nasazení projektu SSIS do Azure pomocí SSMS](/sql/integration-services/ssis-quickstart-deploy-ssms).
+- Spusťte balíčky. Další informace najdete v tématu [spuštění balíčků SSIS v Azure pomocí SSMS](/sql/integration-services/ssis-quickstart-run-ssms).
+- Naplánujte balíčky. Další informace najdete v tématu [plánování balíčků SSIS v Azure](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).

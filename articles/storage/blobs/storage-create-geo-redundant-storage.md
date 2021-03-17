@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, devx-track-python, devx-track-javascript
+ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 25f4c0244a027a0354809080bf13923e92d295f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0d597f0742cfc43f1c7fb38568b2a2bbda352beb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844588"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049334"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB
 
@@ -31,7 +31,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * vytvořit účet úložiště
+> * Vytvoření účtu úložiště
 > * Nastavit připojovací řetězec
 > * Spustit konzolovou aplikaci
 
@@ -39,18 +39,30 @@ V první části tohoto kurzu se naučíte:
 
 Pro absolvování tohoto kurzu potřebujete:
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoj pro Azure** .
 
   ![Azure – vývoj (v části Web a cloud)](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 * Instalace [Pythonu](https://www.python.org/downloads/)
 * Stáhnout a nainstalovat [sadu SDK služby Azure Storage pro Python](https://github.com/Azure/azure-storage-python)
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 * Nainstalujte [Node.js](https://nodejs.org).
 
@@ -60,7 +72,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Účet úložiště poskytuje jedinečný obor názvů pro ukládání a přístup k datovým objektům Azure Storage.
 
@@ -78,14 +90,18 @@ Pomocí těchto kroků vytvořte účet úložiště s přístupem Geo-Zone-redu
    | **Umístění** | *East US* | Zvolte umístění. |
    | **Výkon** | *Standard* | Standardní výkon je dobrou možností pro ukázkový scénář. |
    | **Druh účtu** | *StorageV2* | Doporučuje se použít účet úložiště pro obecné účely v2. Další informace o typech účtů úložiště Azure najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md). |
-   | **Replikace**| *Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)* | Primární oblast je redundantní v zóně a replikuje se do sekundární oblasti s povoleným přístupem pro čtení do sekundární oblasti. |
+   | **Replikace**| *Geograficky zónově redundantní úložiště s přístupem pro čtení (RA-GZRS)* | Primární oblast je redundantní v zóně a replikuje se do sekundární oblasti s povoleným přístupem pro čtení do sekundární oblasti. |
    | **Úroveň přístupu**| *Horká* | Pro často používaná data použijte vrstvu Hot. |
 
     ![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip) a extrahujte (rozbalte) soubor storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Ukázkový projekt obsahuje konzolovou aplikaci.
 
@@ -93,7 +109,11 @@ Pomocí těchto kroků vytvořte účet úložiště s přístupem Geo-Zone-redu
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip) a extrahujte (rozbalte) soubor storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Ukázkový projekt obsahuje základní aplikaci Pythonu.
 
@@ -101,7 +121,11 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) a rozbalte soubor. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Ukázkový projekt obsahuje základní aplikaci Node.js.
 
@@ -113,7 +137,11 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 V aplikaci je potřeba zadat připojovací řetězec pro váš účet úložiště. Tento připojovací řetězec můžete uložit do proměnné prostředí v místním počítači, na kterém aplikaci spouštíte. V závislosti na operačním systém vytvořte proměnnou prostředí pomocí jednoho z následujících příkladů.
 
@@ -131,7 +159,11 @@ export storageconnectionstring=<yourconnectionstring>
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 V aplikaci musíte zadat přihlašovací údaje účtu úložiště. Tyto informace můžete uložit do proměnných prostředí v místním počítači, na kterém je aplikace spuštěná. Použijte jeden z následujících příkladů v závislosti na operačním systému a vytvořte proměnné prostředí.
 
@@ -151,7 +183,11 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 Pokud chcete tuto ukázku spustit, musíte do souboru přidat svoje přihlašovací údaje účtu úložiště `.env.example` a pak ho přejmenovat na `.env` .
 
@@ -168,9 +204,13 @@ Nainstalujte požadované závislosti. Provedete to tak, že otevřete příkazo
 
 ## <a name="run-the-console-application"></a>Spustit konzolovou aplikaci
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-V aplikaci Visual Studio stiskněte klávesu **F5** nebo vyberte **začít** a zahajte ladění aplikace. Sada Visual Studio automaticky obnoví chybějící balíčky NuGet, pokud jsou nakonfigurované, a další informace najdete [v instalaci a přeinstalaci balíčků s obnovením balíčků](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) .
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+V aplikaci Visual Studio stiskněte klávesu **F5** nebo vyberte **začít** a zahajte ladění aplikace. Sada Visual Studio automaticky obnoví chybějící balíčky NuGet, pokud jsou nakonfigurované, a další informace najdete [v instalaci a přeinstalaci balíčků s obnovením balíčků](/nuget/consume-packages/package-restore#package-restore-overview) .
 
 Spustí se okno konzoly a aplikace začne běžet. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se image replikuje do sekundárního koncového bodu RA-GZRS. Potom začne stahovat obrázek až 999x. Každý přečtený je reprezentován hodnotou **P** nebo **s**. Kde **P** představuje primární koncový bod a **y** představuje sekundární koncový bod.
 
@@ -178,19 +218,27 @@ Spustí se okno konzoly a aplikace začne běžet. Aplikace nahraje obrázek **H
 
 Ve vzorovém kódu slouží úloha `RunCircuitBreakerAsync` v souboru `Program.cs` ke stažení obrázku z účtu úložiště pomocí metody [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync). Před stažením se definuje [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) . Kontext operace definuje obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 Pokud chcete aplikaci spustit na terminálu nebo v příkazovém řádku, přejděte do adresáře **circuitbreaker.py** a potom zadejte `python circuitbreaker.py`. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se image replikuje do sekundárního koncového bodu RA-GZRS. Potom začne stahovat obrázek až 999x. Každý přečtený je reprezentován hodnotou **P** nebo **s**. Kde **P** představuje primární koncový bod a **y** představuje sekundární koncový bod.
 
 ![Spuštěná konzolová aplikace](media/storage-create-geo-redundant-storage/figure3.png)
 
-Ve vzorovém kódu slouží metoda `run_circuit_breaker` v souboru `circuitbreaker.py` ke stažení obrázku z účtu úložiště pomocí metody [get_blob_to_path](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice?view=azure-python-previous#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-).
+Ve vzorovém kódu slouží metoda `run_circuit_breaker` v souboru `circuitbreaker.py` ke stažení obrázku z účtu úložiště pomocí metody [get_blob_to_path](/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-).
 
 Funkce opakování pro objekt Storage je nastavená na zásadu lineárního opakování. Funkce opakování určuje, jestli se má opakovat žádost, a určuje, kolik sekund se má čekat před opakováním žádosti. Nastavte hodnotu **retry\_to\_secondary** na true, pokud by se žádost měla opakovat na sekundární koncový bod v případě, že původní žádost na primární byla neúspěšná. V ukázkové aplikaci je vlastní zásada opakování definovaná ve funkci `retry_callback` objektu úložiště.
 
-Před stažením se definuje objekt služby [retry_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) a funkce [response_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) . Tyto funkce definují obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
+Před stažením se definuje objekt služby [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) a funkce [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) . Tyto funkce definují obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 Chcete-li spustit ukázku, otevřete příkazový řádek, přejděte do složky Sample a pak zadejte `node index.js` .
 
@@ -221,7 +269,11 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>Vysvětlení vzorového kódu
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ### <a name="retry-event-handler"></a>Obslužná rutina události opakování
 
@@ -272,11 +324,15 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-### <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ### <a name="retry-event-handler"></a>Obslužná rutina události opakování
 
-Obslužná rutina události `retry_callback` se volá, když se obrázek nepodaří stáhnout a je nastavená na opakování. Pokud se dosáhne maximálního počtu opakování, který je definovaný v aplikaci, [LocationMode](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) žádosti se změní na `SECONDARY`. Toto nastavení přinutí aplikaci, aby se pokusila stáhnout obrázek ze sekundárního koncového bodu. Tato konfigurace snižuje čas potřebný k vyžádání obrázku, protože opakování pro primární koncový bod není neomezené.
+Obslužná rutina události `retry_callback` se volá, když se obrázek nepodaří stáhnout a je nastavená na opakování. Pokud se dosáhne maximálního počtu opakování, který je definovaný v aplikaci, [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode) žádosti se změní na `SECONDARY`. Toto nastavení přinutí aplikaci, aby se pokusila stáhnout obrázek ze sekundárního koncového bodu. Tato konfigurace snižuje čas potřebný k vyžádání obrázku, protože opakování pro primární koncový bod není neomezené.
 
 ```python
 def retry_callback(retry_context):
@@ -300,7 +356,7 @@ def retry_callback(retry_context):
 
 ### <a name="request-completed-event-handler"></a>Obslužná rutina události provedené žádosti
 
-Obslužná rutina události `response_callback` se volá, když se obrázek podaří stáhnout. Pokud aplikace používá sekundární koncový bod, použije ho dále až 20x. Po 20 opakováních aplikace nastaví [LocationMode](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) zpět na `PRIMARY` a zkusí znovu primární koncový bod. Pokud je žádost úspěšná, bude aplikace dále číst z primárního koncového bodu.
+Obslužná rutina události `response_callback` se volá, když se obrázek podaří stáhnout. Pokud aplikace používá sekundární koncový bod, použije ho dále až 20x. Po 20 opakováních aplikace nastaví [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode) zpět na `PRIMARY` a zkusí znovu primární koncový bod. Pokud je žádost úspěšná, bude aplikace dále číst z primárního koncového bodu.
 
 ```python
 def response_callback(response):
@@ -315,7 +371,11 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 V sadě Node.js v10 za účelem SDK nejsou potřebné obslužné rutiny zpětného volání. Místo toho ukázka vytvoří kanál nakonfigurovaný s možnostmi opakování a sekundárním koncovým bodem. To umožňuje aplikaci automaticky přepnout na sekundární kanál, pokud se nepovede k vašim datům přes primární kanál.
 

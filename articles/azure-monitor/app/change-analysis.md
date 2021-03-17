@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0f541df091733c081c77e41ebff4d0d0d93dca96
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540158"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573925"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -28,6 +28,17 @@ Změna analýzy detekuje různé typy změn, od vrstvy infrastruktury po nasazen
 Následující diagram znázorňuje architekturu analýzy změn:
 
 ![Diagram architektury, jak analýza změn získává data změny a poskytuje je klientským nástrojům](./media/change-analysis/overview.png)
+
+## <a name="supported-resource-types"></a>Podporované typy prostředků
+
+Služba analýza změn aplikace podporuje změny na úrovni vlastností prostředků ve všech typech prostředků Azure, včetně běžných prostředků, jako jsou:
+- Virtuální počítač
+- Škálovací sada virtuálních počítačů
+- App Service
+- Služba Azure Kubernetes
+- Funkce Azure
+- Síťové prostředky: Skupina zabezpečení sítě, Virtual Network, Application Gateway atd.
+- Datové služby: Storage, SQL, Redis Cache, Cosmos DB atd.
 
 ## <a name="data-sources"></a>Zdroje dat
 
@@ -49,17 +60,32 @@ Změna analýz zachytí stav nasazení a konfigurace aplikace každé 4 hodiny. 
 
 ### <a name="dependency-changes"></a>Změny závislosti
 
-Změny závislostí prostředků mohou také způsobovat problémy ve webové aplikaci. Například pokud webová aplikace volá do mezipaměti Redis, může být SKU Redis Cache ovlivněn výkon webové aplikace. Pokud chcete zjistit změny v závislostech, změňte analýzu na záznam DNS webové aplikace. Tímto způsobem identifikuje změny ve všech součástech aplikace, které by mohly způsobovat problémy.
-V současné době jsou podporovány následující závislosti:
+Změny závislostí prostředků mohou také způsobovat problémy v prostředku. Například pokud webová aplikace volá do mezipaměti Redis, může být SKU Redis Cache ovlivněn výkon webové aplikace. Dalším příkladem je, že je port 22 uzavřený ve skupině zabezpečení sítě virtuálního počítače, způsobí chyby připojení.
+
+#### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Diagnostika a řešení problémů v aplikaci Web App (Preview)
+
+Pokud chcete zjistit změny v závislostech, změňte analýzu na záznam DNS webové aplikace. Tímto způsobem identifikuje změny ve všech součástech aplikace, které by mohly způsobovat problémy.
+V současné době jsou v **diagnostice a řešení problémů v rámci webové aplikace podporovány následující závislosti | Navigátor (Preview)**:
+
 - Web Apps
 - Azure Storage
 - Azure SQL
 
-## <a name="application-change-analysis-service"></a>Služba Analysis Services pro změny aplikace
+#### <a name="related-resources"></a>Související prostředky
+
+Analýza změny aplikace detekuje související prostředky. Běžnými příklady jsou skupiny zabezpečení sítě, Virtual Network, Application Gateway a Load Balancer související s virtuálním počítačem.
+Síťové prostředky se obvykle automaticky zřídí ve stejné skupině prostředků jako prostředky, které ji používají, takže filtrování změn podle skupiny prostředků zobrazí všechny změny pro virtuální počítač a související síťové prostředky.
+
+![Snímek obrazovky se změnami sítě](./media/change-analysis/network-changes.png)
+
+## <a name="application-change-analysis-service-enablement"></a>Povolení služby analýza změn aplikace
 
 Služba Analysis Services pro změny aplikace počítá a agreguje data změny ze zdrojů dat uvedených výše. Poskytuje sadu analýz pro uživatele, kteří můžou snadno procházet všemi změnami prostředků a určit, která změna je relevantní v kontextu řešení potíží nebo monitorování.
-Poskytovatel prostředků "Microsoft. ChangeAnalysis" musí být zaregistrován v rámci předplatného pro Azure Resource Manager sledované vlastnosti a data změny nastavení proxy, aby byla dostupná. Když zadáte nástroj Diagnostika a řešení problémů pro webovou aplikaci nebo spustíte kartu Change Analysis Standalone, tento poskytovatel prostředků se automaticky zaregistruje. Pro vaše předplatné nemá žádné implementace výkonu ani nákladů. Pokud povolíte analýzu změn pro webové aplikace (nebo povolíte nástroj Diagnostika a řešení problémů), bude mít zanedbatelný dopad na výkon webové aplikace a žádné fakturační náklady.
-V případě změn v hostu webové aplikace je potřeba samostatné povolení ke skenování souborů kódu v rámci webové aplikace. Další informace najdete v části o [změně analýzy v nástroji Diagnostika a řešení problémů](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) dále v tomto článku.
+Poskytovatel prostředků "Microsoft. ChangeAnalysis" musí být zaregistrován v rámci předplatného pro Azure Resource Manager sledované vlastnosti a data změny nastavení proxy, aby byla dostupná. Když zadáte nástroj Diagnostika a řešení problémů pro webovou aplikaci nebo spustíte kartu Change Analysis Standalone, tento poskytovatel prostředků se automaticky zaregistruje.
+V případě změn v hostu webové aplikace je potřeba samostatné povolení ke skenování souborů kódu v rámci webové aplikace. Další informace najdete v části o [změně analýzy v nástroji Diagnostika a řešení problémů](change-analysis-visualizations.md#application-change-analysis-in-the-diagnose-and-solve-problems-tool) dále v tomto článku.
+
+## <a name="cost"></a>Náklady
+Analýza změn aplikací je bezplatná služba – neúčtují se vám žádné fakturační náklady na předplatná, která jsou povolená. Služba také nemá žádný vliv na výkon při kontrole změn vlastností prostředků Azure. Povolíte-li analýzu změn pro webové aplikace změny souborů v hostovi (nebo povolíte nástroj Diagnostika a řešení problémů), bude mít zanedbatelný dopad na výkon webové aplikace a žádné fakturační náklady.
 
 ## <a name="visualizations-for-application-change-analysis"></a>Vizualizace pro analýzu změn aplikace
 
@@ -83,6 +109,11 @@ U jakékoli zpětné vazby použijte tlačítko Odeslat názor v okně nebo e-ma
 
 ![Snímek obrazovky s tlačítkem zpětné vazby v okně pro změnu analýzy](./media/change-analysis/change-analysis-feedback.png)
 
+#### <a name="multiple-subscription-support"></a>Podpora více předplatných
+Uživatelské rozhraní podporuje výběr více předplatných pro zobrazení změn prostředků. Použijte filtr předplatného:
+
+![Snímek obrazovky s filtrem předplatným, který podporuje výběr více předplatných](./media/change-analysis/multiple-subscriptions-support.png)
+
 ### <a name="web-app-diagnose-and-solve-problems"></a>Diagnostika a řešení problémů webové aplikace
 
 V Azure Monitor je analýza změn integrovaná i v prostředí pro samoobslužnou **diagnostiku a řešení problémů** . K tomuto prostředí se dostanete ze stránky **Přehled** vaší aplikace App Service.
@@ -101,7 +132,7 @@ Analýza změn aplikace je samostatný detektor ve webové aplikaci diagnostikuj
 
    ![Snímek obrazovky s tlačítkem pro zhroucení aplikace](./media/change-analysis/application-changes.png)
 
-3. Pokud chcete povolit analýzu změn, vyberte **Povolit nyní**.
+3. Odkaz vede k Aalysis uživatelského rozhraní změny aplikace na rozsah webové aplikace. Pokud není zapnuté sledování změn ve webové aplikaci, použijte k získání změn nastavení souborů a aplikací informační zprávu.
 
    ![Snímek obrazovky s možnostmi zhroucení aplikací](./media/change-analysis/enable-changeanalysis.png)
 
@@ -109,17 +140,38 @@ Analýza změn aplikace je samostatný detektor ve webové aplikaci diagnostikuj
 
     ![Snímek obrazovky s uživatelským rozhraním povolit analýzu změn](./media/change-analysis/change-analysis-on.png)
 
-5. Chcete-li získat přístup k analýze změn, vyberte možnost **Diagnostika a řešení problémů s**  >  **dostupností a výkonem**  >  **aplikace**výkonu. Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách. Ve výchozím nastavení se zobrazí změny za posledních 24 hodin, které vám pomůžou s okamžitými problémy.
+5. Možnost změnit data je také k dispozici v rozevíracích selektorech pro výběr **webové aplikace** a při **selhání aplikace** . Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách. Ve výchozím nastavení se zobrazí změny za posledních 24 hodin, které vám pomůžou s okamžitými problémy.
 
      ![Snímek obrazovky se zobrazením rozdílů změn](./media/change-analysis/change-view.png)
 
-### <a name="enable-change-analysis-at-scale"></a>Povolit škálovatelnou analýzu změn
+
+
+### <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnostika a řešení problémů s virtuálním počítačem
+
+Přejít na nástroj Diagnostika a řešení problémů pro virtuální počítač.  Přejděte na **Nástroje pro řešení potíží**, přejděte na stránku a vyberte **analyzovat poslední změny** a zobrazte změny na virtuálním počítači.
+
+![Snímek obrazovky s diagnostikou a řešením problémů s virtuálním počítačem](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+
+![Analyzátor změn v nástrojích pro řešení potíží](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="activity-log-change-history"></a>Historie změn protokolu aktivit
+Funkce [Zobrazit historii změn](../essentials/activity-log.md#view-change-history) v protokolu aktivit volá back-end služby Analysis Service v aplikaci, aby se získaly změny přidružené k operaci. **Historii změn** , která se používá k přímému volání [Azure Resource graphu](../../governance/resource-graph/overview.md) , ale přeměnila back-end na volání analýzy změn aplikace, takže vrácené změny budou zahrnovat změny úrovně prostředků z [Azure Resource graphu](../../governance/resource-graph/overview.md), vlastnosti prostředku z [Azure Resource Manager](../../azure-resource-manager/management/overview.md)a změny v hostu z PaaS Services, jako je App Services webová aplikace. Aby mohla služba Analysis Services pro změny aplikace kontrolovat změny v předplatných uživatelů, musí být zaregistrovaný poskytovatel prostředků. Při prvním zadání karty **historie změn** se nástroj automaticky spustí, aby zaregistroval poskytovatele prostředků **Microsoft. ChangeAnalysis** . Po registraci budou změny z **Azure Resource Graph** k dispozici okamžitě a budou zahrnovat posledních 14 dní. Změny z jiných zdrojů budou k dispozici po přibližně 4 hodinách po zprovoznění předplatného.
+
+![Integrace historie změn protokolu aktivit](./media/change-analysis/activity-log-change-history.png)
+
+### <a name="vm-insights-integration"></a>Integrace se službou VM Insights
+Uživatelé s povoleným [virtuálním počítačem Insights](../vm/vminsights-overview.md) můžou zobrazit, co se změnilo ve svých virtuálních počítačích, které by mohly způsobit jakékoli špičky v grafu metrik, jako je například procesor nebo paměť, a taky to, jestli to způsobilo. Data změny jsou integrovaná v navigačním panelu na straně virtuálních počítačů Insights. Uživatel může zobrazit, jestli na virtuálním počítači došlo ke změnám, a kliknout na **prozkoumat změny** a zobrazit podrobnosti o změně v uživatelském rozhraní pro analýzu změn aplikace.
+
+[![Integrace se službou VM Insights](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
+
+
+## <a name="enable-change-analysis-at-scale"></a>Povolit škálovatelnou analýzu změn
 
 Pokud vaše předplatné obsahuje mnoho webových aplikací, povolení služby na úrovni webové aplikace bude neefektivní. Spuštěním následujícího skriptu povolte všechny webové aplikace v rámci vašeho předplatného.
 
 Požadavky:
 
-- PowerShell AZ Module. Postupujte podle pokynů v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps?view=azps-2.6.0) .
+- PowerShell AZ Module. Postupujte podle pokynů v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) .
 
 Spusťte tento skript:
 
@@ -147,16 +199,9 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-### <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnostika a řešení problémů s virtuálním počítačem
-
-Přejít na nástroj Diagnostika a řešení problémů pro virtuální počítač.  Přejděte na **Nástroje pro řešení potíží**, přejděte na stránku a vyberte **analyzovat poslední změny** a zobrazte změny na virtuálním počítači.
-
-![Snímek obrazovky s diagnostikou a řešením problémů s virtuálním počítačem](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
-
-![Snímek obrazovky s diagnostikou a řešením problémů s virtuálním počítačem](./media/change-analysis/analyze-recent-changes.png)
-
 ## <a name="next-steps"></a>Další kroky
 
+- Další informace o [vizualizacích v analýze změn](change-analysis-visualizations.md)
+- Naučte se [řešit problémy při změně analýzy](change-analysis-troubleshoot.md) .
 - Povolí Application Insights pro [aplikace Azure App Services](azure-web-apps.md).
 - Povolte Application Insights pro virtuální počítače [Azure a Azure Virtual Machine Scale set pro aplikace hostované službou IIS](azure-vm-vmss-apps.md).
-- Přečtěte si další informace o [Azure Resource graphu](../../governance/resource-graph/overview.md), který pomáhá analyzovat změny napájení.

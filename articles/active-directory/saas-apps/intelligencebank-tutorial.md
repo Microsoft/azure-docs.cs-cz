@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9887c435c2aa8dc7ba8cab9481cf30195c4b334e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535573"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459930"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s IntelligenceBank
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat IntelligenceBank s Azure Active Direct
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k IntelligenceBank svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * IntelligenceBank podporuje jednotné přihlašování iniciované v **SP**
 
-* Po nakonfigurování IntelligenceBank můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování IntelligenceBank můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-intelligencebank-from-the-gallery"></a>Přidání IntelligenceBank z Galerie
 
@@ -111,7 +111,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -137,11 +137,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ověřovací data** a pak klikněte na **Přidat nový** .
 
-    ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/authenticator.PNG)
+    ![Snímek obrazovky se zobrazí karta správce a ikona Přidat nový.](./media/intelligencebank-tutorial/authenticator.PNG)
 
 1. Proveďte tyto kroky:
 
-    ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/urls.PNG)
+    ![Snímek obrazovky se zobrazí pole, kde v tomto kroku zadáte informace.](./media/intelligencebank-tutorial/urls.PNG)
 
     a. Do textového pole **název** zadejte například název jako `azureadsso` .
 
@@ -165,28 +165,28 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete **správce**  ->  **Users** a přidejte **uživatele**kliknutím na **ikonu Přidat nového uživatele** .
 
-    ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/creating-user.PNG)
+    ![Snímek obrazovky ukazuje ikonu uživatelé vybranou na kartě Uživatelé.](./media/intelligencebank-tutorial/creating-user.PNG)
 
 1. Vyplňte potřebná pole podle požadavků vaší organizace a klikněte na **Uložit**.
 
-    ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/creating-user-1.PNG)
+    ![Snímek obrazovky se stránkou přidat nového uživatele, kde zadáte informace o uživateli.](./media/intelligencebank-tutorial/creating-user-1.PNG)
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici IntelligenceBank, měli byste se automaticky přihlásit k IntelligenceBank, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici IntelligenceBank, měli byste se automaticky přihlásit k IntelligenceBank, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si IntelligenceBank s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit IntelligenceBank pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit IntelligenceBank pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

@@ -1,28 +1,24 @@
 ---
 title: Přírůstkové kopírování tabulky pomocí Azure Portal
-description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje data z databáze Azure SQL do úložiště Azure Blob Storage.
-services: data-factory
+description: V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data z tabulky v Azure SQL Database do úložiště objektů BLOB v Azure.
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 02/18/2021
+ms.openlocfilehash: 6f586cacaa983ea1e53b34f602f882c530a9bf28
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082654"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716325"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí Azure Portal
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z tabulky v Azure SQL Database do úložiště objektů BLOB v Azure.
+V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data z tabulky v Azure SQL Database do úložiště objektů BLOB v Azure.
 
 V tomto kurzu provedete následující kroky:
 
@@ -62,14 +58,14 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
     * Vytvořte aktivitu uložené procedury StoredProcedure, která aktualizuje hodnotu meze pro příští spuštění kanálu.
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 * **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 * **Azure Storage**. Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Vytvoření tabulky zdroje dat v databázi SQL
-1. Otevřete SQL Server Management Studio. V **Průzkumník serveru**klikněte pravým tlačítkem na databázi a vyberte **Nový dotaz**.
+1. Otevřete sadu SQL Server Management Studio. V **Průzkumník serveru** klikněte pravým tlačítkem na databázi a vyberte **Nový dotaz**.
 
 2. Spuštěním následujícího příkazu SQL na vaší databázi SQL vytvořte tabulku s názvem `data_source_table` jako úložiště zdroje dat:
 
@@ -143,8 +139,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
 
 END
@@ -153,20 +149,20 @@ END
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků:
+2. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  :
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. Na stránce **Nová datová továrna** jako **název** zadejte **ADFIncCopyTutorialDF**.
 
-   Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí červený vykřičník s následující chybou, změňte název datové továrny (například na vaše_jméno_ADFIncCopyTutorialDF) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název Azure Data Factory musí být **globálně jedinečný**. Pokud se zobrazí červený vykřičník s následující chybou, změňte název datové továrny (například na vaše_jméno_ADFIncCopyTutorialDF) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
 
     *Název objektu pro vytváření dat "ADFIncCopyTutorialDF" není k dispozici.*
 4. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
 5. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
 
       - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
-      - Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
+      - Vyberte **vytvořit novou** a zadejte název skupiny prostředků.   
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 6. Jako **verzi** vyberte **V2**.
@@ -183,26 +179,26 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 1. Na stránce **Začínáme** uživatelského rozhraní služby Data Factory klikněte na dlaždici **Vytvořit kanál**.
 
    ![Stránka Začínáme uživatelského rozhraní služby Data Factory](./media/doc-common-process/get-started-page.png)    
-3. Na panelu Obecné v části **vlastnosti**zadejte **IncrementalCopyPipeline** pro **název**. Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.
+3. Na panelu Obecné v části **vlastnosti** zadejte **IncrementalCopyPipeline** pro **název**. Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.
 
 4. Přidejme první aktivitu vyhledávání, která načte poslední hodnotu meze. V sadě nástrojů **Aktivity** rozbalte **Obecné** a přetáhněte aktivitu **Vyhledávání** na plochu návrháře kanálu. Změňte název aktivity na **LookupOldWaterMarkActivity**.
 
    ![První aktivita vyhledávání – název](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
 5. Přepněte na kartu **Nastavení** a klikněte na **+ Nová** u možnosti **Zdrojová datová sada**. V tomto kroku vytvoříte datovou sadu, která bude představovat data v tabulce **watermarktable**. Tato tabulka obsahuje starou mez, která se použila v předchozí operaci kopírování.
 
-6. V okně **Nová datová sada** vyberte **Azure SQL Database**a klikněte na **pokračovat**. Zobrazí se nové okno otevřené pro datovou sadu.
+6. V okně **Nová datová sada** vyberte **Azure SQL Database** a klikněte na **pokračovat**. Zobrazí se nové okno otevřené pro datovou sadu.
 
 7. V okně **nastavit vlastnosti** pro datovou sadu zadejte **WatermarkDataset** pro **název**.
 
-8. V poli **propojená služba**vyberte **Nový**a pak proveďte následující kroky:
+8. V poli **propojená služba** vyberte **Nový** a pak proveďte následující kroky:
 
     1. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**.
-    2. Jako **název serveru**vyberte svůj server.
+    2. Jako **název serveru** vyberte svůj server.
     3. Z rozevíracího seznamu vyberte **název vaší databáze** .
-    4. Zadejte heslo k **uživatelskému jménu**  &  **Password**.
+    4. Zadejte heslo k **uživatelskému jménu**  &  .
     5. Chcete-li otestovat připojení k vaší databázi SQL, klikněte na tlačítko **Test připojení**.
     6. Klikněte na **Finish** (Dokončit).
-    7. Potvrďte, že je pro **propojenou službu**vybraná možnost **AzureSqlDatabaseLinkedService** .
+    7. Potvrďte, že je pro **propojenou službu** vybraná možnost **AzureSqlDatabaseLinkedService** .
 
         ![Okno Nová propojená služba](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
     8. Vyberte **Dokončit**.
@@ -215,8 +211,8 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 
 12. V okně Vlastnosti druhé aktivity **Vyhledávání** přepněte na kartu **Nastavení** a klikněte na **Nový**. Vytvoříte datovou sadu, která bude odkazovat na zdrojovou tabulku obsahující novou hodnotu meze (maximální hodnota LastModifyTime).
 
-13. V okně **Nová datová sada** vyberte **Azure SQL Database**a klikněte na **pokračovat**.
-14. V okně **nastavit vlastnosti** jako **název**zadejte **SourceDataset** . Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
+13. V okně **Nová datová sada** vyberte **Azure SQL Database** a klikněte na **pokračovat**.
+14. V okně **nastavit vlastnosti** jako **název** zadejte **SourceDataset** . Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
 15. Vyberte **[dbo]. [ data_source_table]** pro tabulku. Později v tomto kurzu pro tuto datovou sadu zadáte dotaz. Dotaz má přednost před tabulkou, kterou zadáte v tomto kroku.
 16. Vyberte **Dokončit**.
 17. Přepněte na editor kanálu kliknutím na kartu kanálu v horní části nebo kliknutím na název kanálu ve stromovém zobrazení vlevo. V okně Vlastnosti aktivity **Vyhledávání** ověřte, že je v poli **Zdrojová datová sada** vybraná datová sada **SourceDataset**.
@@ -227,7 +223,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     ```
 
     ![Druhá aktivita vyhledávání – dotaz](./media/tutorial-incremental-copy-portal/query-for-new-watermark.png)
-19. Na panelu nástrojů **aktivity** rozbalte **přesunout & transformovat**a přetáhněte aktivitu **kopírování** z panelu nástrojů aktivity a nastavte název na **IncrementalCopyActivity**.
+19. Na panelu nástrojů **aktivity** rozbalte **přesunout & transformovat** a přetáhněte aktivitu **kopírování** z panelu nástrojů aktivity a nastavte název na **IncrementalCopyActivity**.
 
 20. **Propojte obě aktivity vyhledávání s aktivitou kopírování** přetažením **zeleného tlačítka** připojeného k aktivitám vyhledávání na aktivitu kopírování. Jakmile se barva ohraničení aktivity kopírování změní na modrou, uvolněte tlačítko myši.
 
@@ -247,16 +243,16 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
         ![Aktivita kopírování – zdroj](./media/tutorial-incremental-copy-portal/copy-activity-source.png)
 23. Přepněte na kartu **Jímka** a klikněte na **+ Nová** vedle pole **Datová sada jímky**.
 
-24. V tomto kurzu je úložiště dat jímky typu Azure Blob Storage. Proto vyberte **Azure Blob Storage**a v okně **Nová datová sada** klikněte na **pokračovat** .
+24. V tomto kurzu je úložiště dat jímky typu Azure Blob Storage. Proto vyberte **Azure Blob Storage** a v okně **Nová datová sada** klikněte na **pokračovat** .
 25. V okně **Vybrat formát** vyberte typ formátu dat a klikněte na **pokračovat**.
-25. V okně **nastavit vlastnosti** jako **název**zadejte **SinkDataset** . V případě **propojené služby**vyberte **+ Nová**. V tomto kroku vytvoříte připojení (propojenou službu) ke svému **úložišti objektů blob v Azure**.
+25. V okně **nastavit vlastnosti** jako **název** zadejte **SinkDataset** . V případě **propojené služby** vyberte **+ Nová**. V tomto kroku vytvoříte připojení (propojenou službu) ke svému **úložišti objektů blob v Azure**.
 26. V okně **Nová propojená služba (Azure Blob Storage)** proveďte následující kroky:
 
     1. Jako **Název** zadejte **AzureStorageLinkedService**.
     2. Jako **Název účtu úložiště** vyberte svůj účet služby Azure Storage.
     3. Otestujte připojení a pak klikněte na **Dokončit**.
 
-27. V okně **nastavit vlastnosti** potvrďte, že je pro **propojenou službu**vybraná možnost **AzureStorageLinkedService** . Pak vyberte **Dokončit**.
+27. V okně **nastavit vlastnosti** potvrďte, že je pro **propojenou službu** vybraná možnost **AzureStorageLinkedService** . Pak vyberte **Dokončit**.
 28. Přejít na kartu **připojení** SinkDataset a proveďte následující kroky:
     1. Do pole **cesta k souboru** zadejte **adftutorial/incrementalcopy**. **adftutorial** je název kontejneru objektů blob a **incrementalcopy** je název složky. Tento fragment kódu předpokládá, že ve svém úložišti objektů blob máte kontejner objektů blob s názvem adftutorial. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. Azure Data Factory automaticky vytvoří výstupní složku **incrementalcopy**, pokud neexistuje. Můžete také použít tlačítko **Procházet** u možnosti **Cesta k souboru** a přejít ke složce v kontejneru objektů blob.
     2. V části **soubor** **cesta k souboru** vyberte **Přidat dynamický obsah [ALT + P]** a potom `@CONCAT('Incremental-', pipeline().RunId, '.txt')` v otevřeném okně zadejte. Pak vyberte **Dokončit**. Název souboru se vygeneruje dynamicky pomocí tohoto výrazu. Každé spuštění kanálu má jedinečné ID. Aktivita kopírování používá ID spuštění k vygenerování názvu souboru.
@@ -266,14 +262,14 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 
 24. Vyberte v návrháři kanálu **aktivitu Uložená procedura** a změňte její název na **StoredProceduretoWriteWatermarkActivity**.
 
-25. Přepněte na kartu **účet SQL** a jako **propojená služba**vyberte **AzureSqlDatabaseLinkedService** .
+25. Přepněte na kartu **účet SQL** a jako **propojená služba** vyberte **AzureSqlDatabaseLinkedService** .
 
 26. Přepněte na kartu **Uložená procedura** a proveďte následující kroky:
 
-    1. Jako **název uložené procedury**vyberte **usp_write_watermark**.
+    1. Jako **název uložené procedury** vyberte **usp_write_watermark**.
     2. Pokud chcete zadat hodnoty parametrů uložené procedury, klikněte na **Importovat parametr** a zadejte následující hodnoty parametrů:
 
-        | Name | Typ | Hodnota |
+        | Název | Typ | Hodnota |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Řetězec | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -349,7 +345,7 @@ PersonID | Name | LastModifytime
 
 ## <a name="trigger-another-pipeline-run"></a>Aktivace dalšího spuštění kanálu
 
-1. Přepněte na kartu **Upravit** . Pokud není otevřený v návrháři, klikněte na kanál ve stromovém zobrazení.
+1. Přepněte na kartu **Upravit** . Pokud není otevřen v návrháři, klikněte na kanál ve stromovém zobrazení.
 
 2. Klikněte na tlačítko **Přidat aktivační událost** na panelu nástrojů a pak klikněte na **aktivovat nyní**.
 

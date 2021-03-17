@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114910"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561059"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Režim sdíleného zařízení pro zařízení s iOS
 
-> [!NOTE]
-> Tato funkce je ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>[!IMPORTANT]
+> Tato funkce [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 Firstline pracovní procesy, jako jsou maloobchodníci, členové posádky a pracovníci polních služeb často používají ke své práci sdílené mobilní zařízení. Tato sdílená zařízení mohou představovat bezpečnostní rizika, pokud uživatelé sdílejí svá hesla nebo kódy PIN, úmyslně nebo nechtějí získat přístup k datům zákazníků a podnikových dat na sdíleném zařízení.
 
@@ -43,7 +41,7 @@ Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a s
 
 1. **Správci zařízení** připraví zařízení pro sdílení pomocí poskytovatele správy mobilních zařízení (MDM), jako je Microsoft Intune ke správě zařízení v jejich organizaci. MDM vloží aplikaci Microsoft Authenticator do zařízení a zapne "sdílený režim" pro každé zařízení prostřednictvím aktualizace profilu na zařízení. V tomto nastavení sdíleného režimu se mění chování podporovaných aplikací na zařízení. Tato konfigurace od poskytovatele MDM nastavuje režim sdíleného zařízení pro zařízení a povoluje [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) , která se vyžadují pro režim sdíleného zařízení.
 
-1. [**Vyžadováno pouze během Public Preview**] Uživatel s rolí [správce cloudového zařízení](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) musí potom spustit [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a připojit své zařízení k organizaci.
+1. [ **Vyžadováno pouze během Public Preview** ] Uživatel s rolí [správce cloudového zařízení](../roles/permissions-reference.md#cloud-device-administrator) musí potom spustit [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a připojit své zařízení k organizaci.
 
     Pokud chcete nakonfigurovat členství vaší organizační role v Azure Portal: **Azure Active Directory**  >  **role a správci**  >  **cloudového zařízení správce**
 
@@ -58,11 +56,20 @@ Vaše zařízení musí být nakonfigurované tak, aby podporovalo režim sdíle
 
 1. Na portálu konfigurace Intune řekněte zařízení, aby povolilo [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) s následující konfigurací:
 
-    - **Typ**: přesměrování
-    - **ID rozšíření**: com. Microsoft. azureauthenticator. ssoextension
-    - **ID týmu**: SGGM6D27TK
-    - **Adresy URL**:https://login.microsoftonline.com
-    - Další data ke konfiguraci:
+    - **Typ** : přesměrování
+    - **ID rozšíření** : com. Microsoft. azureauthenticator. ssoextension
+    - **ID týmu** : (Toto pole není pro iOS potřeba)
+    - **Adresy URL** :   
+        - `https://login.microsoftonline.com`
+        - `https://login.microsoft.com`
+        - `https://sts.windows.net`
+        - `https://login.partner.microsoftonline.cn`
+        - `https://login.chinacloudapi.cn`
+        - `https://login.microsoftonline.de`
+        - `https://login.microsoftonline.us`
+        - `https://login.usgovcloudapi.net`
+        - `https://login-us.microsoftonline.com`
+    - **Další data ke konfiguraci** :
       - Klíč: sharedDeviceMode
       - Typ: Boolean
       - Hodnota: true

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6f089af71e4d32023e9cebd6613872f7db0eed7a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639847"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694955"
 ---
 # <a name="high-availability-ports-overview"></a>Přehled portů vysoké dostupnosti
 
-Azure Standard Load Balancer pomáhá vyrovnávat zatížení protokolů TCP a UDP na všech portech současně při použití interního nástroje pro vyrovnávání zatížení. 
+Azure Standard Load Balancer vám pomůže vyrovnávat zatížení **všech** toků protokolů na **všech** portech současně v případě, že používáte interní Load Balancer přes porty ha.
 
-Pravidlo vyrovnávání zatížení portů vysoké dostupnosti (HA) je variantou pravidla vyrovnávání zatížení, které je nakonfigurováno na interní Standard Load Balancer. Můžete zjednodušit použití nástroje pro vyrovnávání zatížení tím, že poskytnete jediné pravidlo pro vyrovnávání zatížení všech toků TCP a UDP, které přicházejí na všechny porty interního Standard Load Balancer. Rozhodnutí o vyrovnávání zatížení se provádí na jeden tok. Tato akce je založena na následujících pěti připojeních řazené kolekce členů: zdrojová IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol.
+Porty vysoké dostupnosti (HA) je typ pravidla vyrovnávání zatížení, které poskytuje snadný způsob vyrovnávání zatížení **všech** toků, které přicházejí na **všechny** porty interního Standard Load Balancer. Rozhodnutí o vyrovnávání zatížení se provádí na jeden tok. Tato akce je založena na následujících pěti připojeních řazené kolekce členů: zdrojová IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol.
 
 Pravidla vyrovnávání zatížení portů HA vám pomůžou s kritickými scénáři, jako je vysoká dostupnost a škálování síťových virtuálních zařízení (síťová virtuální zařízení) uvnitř virtuálních sítí. Tato funkce může také pomáhat při vyrovnávání zatížení velkého počtu portů. 
 
@@ -54,7 +54,7 @@ Následující diagram představuje nasazení virtuální sítě typu centrum a 
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>Vyrovnávání zatížení velkých čísel portů
 
-Porty HA můžete použít také pro aplikace, které vyžadují vyrovnávání zatížení velkého počtu portů. Tyto scénáře můžete zjednodušit pomocí interní [Standard Load Balancer](load-balancer-standard-overview.md) s porty ha. Jedno pravidlo vyrovnávání zatížení nahrazuje několik individuálních pravidel vyrovnávání zatížení, jednu pro každý port.
+Porty HA můžete použít také pro aplikace, které vyžadují vyrovnávání zatížení velkého počtu portů. Tyto scénáře můžete zjednodušit pomocí interní [Standard Load Balancer](./load-balancer-overview.md) s porty ha. Jedno pravidlo vyrovnávání zatížení nahrazuje několik individuálních pravidel vyrovnávání zatížení, jednu pro každý port.
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
@@ -66,7 +66,7 @@ Funkce porty vysoké dostupnosti je dostupná ve všech globálních oblastech A
 
 Tato konfigurace je základní konfigurace portů HA. Pomocí následujícího postupu můžete nakonfigurovat pravidlo vyrovnávání zatížení portů HA pro jednu front-end IP adresu:
 1. Při konfiguraci Standard Load Balancer zaškrtněte políčko **porty ha** v konfiguraci Load Balancer pravidla.
-2. V případě **plovoucí IP adresy**vyberte **zakázáno**.
+2. V případě **plovoucí IP adresy** vyberte **zakázáno**.
 
 Tato konfigurace nepovoluje žádnou jinou konfiguraci pravidla vyrovnávání zatížení v aktuálním prostředku nástroje pro vyrovnávání zatížení. Pro danou sadu back-endové instance taky neumožňuje žádnou jinou konfiguraci prostředků interního nástroje pro vyrovnávání zatížení.
 
@@ -99,5 +99,4 @@ Můžete nakonfigurovat *jeden* prostředek veřejného Standard Load Balancer p
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Naučte se konfigurovat porty ha pro váš interního nástroje prostřednictvím portálu](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), [PowerShellu](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), rozhraní příkazového [řádku](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)nebo [šablon](load-balancer-get-started-ilb-arm-template.md).
-- [Informace o Standard Load Balancer](load-balancer-standard-overview.md)
+- [Informace o Standard Load Balancer](load-balancer-overview.md)

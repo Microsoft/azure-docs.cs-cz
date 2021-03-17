@@ -5,28 +5,35 @@ author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
-ms.date: 08/19/2020
-ms.openlocfilehash: 7dd81afb3189055c194b8a94b4bcbdf48f85d6f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 10/30/2020
+ms.openlocfilehash: 1442720fdf48aaa7da76e181b168a04306ff3e33
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658514"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186452"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Rychlý Start: sdílení dat pomocí Azure Data Share v Azure Portal
 
-V tomto rychlém startu se dozvíte, jak nastavit novou sdílenou složku Azure pomocí Azure Portal.
+V tomto rychlém startu se dozvíte, jak nastavit novou sdílenou složku Azure pro sdílení dat z účtu úložiště pomocí Azure Portal.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Přihlašovací e-mailová adresa Azure vašeho příjemce (pomocí e-mailového aliasu nebude fungovat).
+* Pokud je zdrojové úložiště dat Azure v jiném předplatném Azure, než je ten, který použijete k vytvoření prostředku pro sdílení dat, zaregistrujte [poskytovatele prostředků Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) v předplatném, kde se nachází úložiště dat Azure. 
 
+### <a name="share-from-a-storage-account"></a>Sdílení z účtu úložiště
+
+* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](../storage/common/storage-account-create.md)
+* Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli **Přispěvatel**.
+* Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli **Vlastník**. 
 
 ## <a name="create-a-data-share-account"></a>Vytvoření účtu pro sdílení dat
 
 Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu portálu vyberte tlačítko **vytvořit prostředek** (+).
 
@@ -43,11 +50,11 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
    | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
    | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
 
-1. Vyberte **zkontrolovat + vytvořit**a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně.
+1. Vyberte **zkontrolovat + vytvořit** a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně.
 
 1. Po dokončení nasazení vyberte **Přejít k prostředku**.
 
-## <a name="create-a-data-share"></a>Vytvoření sdílené složky dat
+## <a name="create-a-share"></a>Vytvoření sdílené složky
 
 1. Přejděte na stránku s přehledem sdílení dat.
 
@@ -57,17 +64,17 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte **Vytvořit**.
 
-1. Vyplňte podrobnosti pro vaši sdílenou složku dat. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
+1. Vyplňte podrobnosti pro vaši sdílenou složku. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
 
    ![EnterShareDetails](./media/enter-share-details.png "Zadat podrobnosti o sdílené složce") 
 
-1. Vyberte **pokračovat**.
+1. Vyberte **Pokračovat**.
 
-1. Pokud chcete do sdílené složky dat přidat datové sady, vyberte **přidat datové sady**. 
+1. Chcete-li do sdílené složky přidat datové sady, vyberte možnost **přidat datové sady**. 
 
-   ![Datové sady](./media/datasets.png "Datové sady")
+   ![Přidání datových sad do sdílené složky](./media/datasets.png "Datové sady")
 
-1. Vyberte typ datové sady, který chcete přidat. V závislosti na typu sdílené položky (snímku nebo na místě), který jste vybrali v předchozím kroku, se zobrazí jiný seznam typů datových sad. Pokud sdílíte z Azure SQL Database nebo Azure SQL Data Warehouse, budete vyzváni k zadání některých přihlašovacích údajů SQL. Proveďte ověření pomocí uživatele, který jste vytvořili jako součást požadavků.
+1. Vyberte typ datové sady, který chcete přidat. V závislosti na typu sdílené položky (snímku nebo na místě), který jste vybrali v předchozím kroku, se zobrazí jiný seznam typů datových sad. 
 
    ![AddDatasets](./media/add-datasets.png "Přidat datové sady")    
 
@@ -79,7 +86,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
    ![AddRecipients](./media/add-recipient.png "Přidání příjemců") 
 
-1. Vyberte **pokračovat**.
+1. Vyberte **Pokračovat**.
 
 1. Pokud jste vybrali typ sdílené složky snímků, můžete nakonfigurovat plán snímků pro poskytování aktualizací vašich dat příjemci dat. 
 
@@ -87,7 +94,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte čas spuštění a interval opakování. 
 
-1. Vyberte **pokračovat**.
+1. Vyberte **Pokračovat**.
 
 1. Na kartě Revize + vytvořit zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Vyberte **Vytvořit**.
 

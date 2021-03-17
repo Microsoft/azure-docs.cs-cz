@@ -10,15 +10,15 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 07/27/2020
+  ms.date: 03/03/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 084dd49726dec837fc4135f272802b1023ba5aac
-  ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
-  ms.translationtype: HT
+  ms.openlocfilehash: 323172092a6530e97de36c1cf50fea855f38da28
+  ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87324059"
+  ms.lasthandoff: 03/11/2021
+  ms.locfileid: "103011166"
 highlightedContent:
   items:
   - title: Úvodní příručka pro vývojáře v Azure
@@ -26,17 +26,23 @@ highlightedContent:
     url: guides/developer/azure-developer-guide.md
   - title: Návrh aplikací s využitím Centra architektury Azure
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/
+    url: /azure/architecture/
   - title: Příprava vaší organizace s využitím architektury přechodu na cloud
     itemType: overview
-    url: https://docs.microsoft.com/azure/cloud-adoption-framework/
+    url: /azure/cloud-adoption-framework/
   - title: Získávání dovedností pomocí Microsoft Learn
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
+    url: /learn/browse/?products=azure&resource_type=learning%2bpath
 productDirectory:
   title: Produkty Azure
   items:
-  - title: Detektor anomálií (Preview)
+  - title: Percept Azure
+    summary: Edge Intelligence ze silikonu do služby
+    imageSrc: ./media/index/azure-percept.svg
+    azureCategories:
+    - iot
+    url: azure-percept/index.yml
+  - title: Detektor anomálií
     summary: Snadné přidání možností detekce anomálií do vašich aplikací
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
     azureCategories:
@@ -47,7 +53,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/bot-service.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/azure/bot-service/
+    url: /azure/bot-service/
   - title: Azure Cognitive Search
     summary: Cloudová vyhledávací služba využívající umělou inteligenci pro vývoj mobilních a webových aplikací
     imageSrc: https://static.docs.com/ui/media/product/azure/search.svg
@@ -71,6 +77,12 @@ productDirectory:
     - ai-machine-learning
     - analytics
     url: /azure/databricks/
+  - title: Robot stavu
+    summary: Účel spravované služby pro vývoj asistentů pro virtuální zdravotní péči.
+    imageSrc: media/index/health-bot-logo.svg
+    azureCategories:
+    - ai-machine-learning
+    url: /azure/health-bot/
   - title: Azure Machine Learning
     summary: Přístup k AI pro všechny díky komplexní, škálovatelné a důvěryhodné platformě se správou experimentů a modelů
     imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
@@ -89,7 +101,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/rtos.svg
     azureCategories:
     - iot
-    url: https://docs.microsoft.com/azure/rtos/
+    url: /azure/rtos/
   - title: Automatické návrhy Bingu
     summary: Zajištění možnosti inteligentních automatických návrhů pro vyhledávání pro vaše aplikace
     imageSrc: ./media/index/API_Bing_AutoSuggest.svg
@@ -144,6 +156,13 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/bing-web-search/overview.md
+  - title: Azure Communication Services (Preview)
+    summary: Vytvářejte rozsáhlá komunikační prostředí se stejnou zabezpečenou platformou, kterou používá aplikace Microsoft Teams.
+    imageSrc: ./media/index/communication-services.svg
+    azureCategories:
+    - web
+    - mobile
+    url: communication-services/overview.md
   - title: Computer Vision
     summary: Zjištění využitelných informací z obrázků
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -161,7 +180,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/custom-vision.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/Custom-Vision-Service/index.yml
+    url: cognitive-services/custom-vision-service/index.yml
   - title: Data Science Virtual Machine
     summary: Bohaté předem nakonfigurované prostředí pro vývoj AI
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
@@ -174,13 +193,13 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/face/index.yml
-  - title: Rozpoznávání formulářů (Preview)
+  - title: Rozpoznávání formulářů
     summary: Služba extrakce dokumentů s podporou AI, která rozumí vašim formulářům
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/form-recognizer/index.yml
-  - title: Asistivní čtečka (Preview)
+  - title: Asistivní čtečka
     summary: Zajištění možnosti číst text a porozumět mu pro uživatele libovolného věku a schopností
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
@@ -191,7 +210,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/ink-recognizer/index.yml
+    url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
   - title: Kinect DK
     summary: Sestavování modelů počítačového zpracování obrazu a řeči pomocí vývojářské sady s pokročilými senzory AI
     imageSrc: ./media/index/kinect-viewer.svg
@@ -212,6 +231,12 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: genomics/index.yml
+  - title: Metrics Advisor (Preview)
+    summary: Služba AI, která monitoruje metriky a diagnostikuje problémy
+    imageSrc: ./media/index/metrics-advisor.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/metrics-advisor/index.yml
   - title: Personalizace
     summary: Služba AI, která nabízí přizpůsobené uživatelské prostředí
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -223,7 +248,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/bonsai.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/bonsai/
+    url: /bonsai/
   - title: QnA Maker
     summary: Shrnutí informací do konverzačních odpovědí, které lze snadno procházet
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -235,19 +260,19 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/speaker-recognition/home.md
+    url: ./cognitive-services/speech-service/speaker-recognition-overview.md
   - title: Převod řeči na text
     summary: Převod mluveného slova na text pro přirozenější interakce
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=speechtotext
+    url: ./cognitive-services/speech-service/index-speech-to-text.yml
   - title: Překlad řeči
     summary: Snadná integrace překladu řeči v reálném čase do vaší aplikace
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=speechtranslation
+    url: ./cognitive-services/speech-service/index-speech-translation.yml
   - title: Analýza textu
     summary: Snadné vyhodnocování témat a mínění pro zjištění, co vaši uživatelé chtějí
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -259,8 +284,8 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=texttospeech
-  - title: Translator Text
+    url: ./cognitive-services/speech-service/index-text-to-speech.yml
+  - title: Translator
     summary: Snadný strojový překlad pomocí jednoduchého volání rozhraní REST API
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
@@ -300,24 +325,31 @@ productDirectory:
     - storage
     url: data-share/index.yml
   - title: Azure Stream Analytics
-    summary: Zpracování datových proudů z milionů zařízení IoT v reálném čase
+    summary: Analýzy rychlých streamů dat z aplikací a zařízení v reálném čase
     imageSrc: https://static.docs.com/ui/media/product/azure/stream-analytics.svg
     azureCategories:
     - analytics
     - iot
     url: stream-analytics/index.yml
   - title: Azure Synapse Analytics
-    summary: Neomezená analytická služba s bezkonkurenčně rychlým přístupem k přehledům (dříve SQL Data Warehouse)
+    summary: Neomezená analytická služba s mimořádně rychlým získáváním přehledů
     imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
     azureCategories:
     - analytics
-    url: synapse-analytics/sql-data-warehouse/index.yml
+    url: synapse-analytics/index.yml
   - title: Data Catalog
     summary: Lepší využití prostředků podnikových dat
     imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
     azureCategories:
     - analytics
     url: data-catalog/index.yml
+  - title: Azure Purview
+    summary: Zajištění maximální obchodní hodnoty s využitím jednotných zásad správného řízení dat
+    imageSrc: https://static.docs.com/ui/media/product/azure/purview.svg
+    azureCategories:
+    - analytics
+    - management-and-governance
+    url: purview/index.yml
   - title: Data Factory
     summary: Usnadnění hybridní integrace dat v podnikovém měřítku
     imageSrc: https://static.docs.com/ui/media/product/azure/data-factory.svg
@@ -354,7 +386,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/power-bi.svg
     azureCategories:
     - analytics
-    url: https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded
+    url: /power-bi/developer/azure-pbie-what-is-power-bi-embedded
   - title: R Server pro HDInsight
     summary: Prediktivní analýza, strojové učení a statistické modelování pro velký objem dat
     imageSrc: https://static.docs.com/ui/media/product/azure/hdinsight.svg
@@ -374,7 +406,7 @@ productDirectory:
     - blockchain
     url: blockchain/workbench/index.yml
   - title: Azure Cosmos DB
-    summary: Globálně distribuovaná databázová služba pro libovolné škálování
+    summary: Rychlá databáze NoSQL s otevřenými rozhraními API pro libovolné škálování
     imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
     azureCategories:
     - featured
@@ -382,6 +414,12 @@ productDirectory:
     - databases
     - iot
     url: cosmos-db/index.yml
+  - title: Spravovaná instance Azure pro Apache Cassandra
+    summary: Automatizace nasazení a škálování pro spravovaná Open Source datacentra Apache Cassandra
+    imageSrc: ./media/index/managed-instance-apache-cassandra.svg
+    azureCategories:
+    - databases
+    url: managed-instance-apache-cassandra/index.yml
   - title: Logic Apps
     summary: Automatizace přístupu a používání dat napříč cloudy bez psaní kódu
     imageSrc: https://static.docs.com/ui/media/product/azure/logic-apps.svg
@@ -412,13 +450,13 @@ productDirectory:
     imageSrc: ./media/index/logo_cyclecloud.svg
     azureCategories:
     - compute
-    url: https://docs.microsoft.com/azure/cyclecloud/index
+    url: /azure/cyclecloud/index
   - title: Azure Dedicated Host
     summary: Vyhrazený fyzický server pro hostování virtuálních počítačů Azure pro Windows a Linux
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
     azureCategories:
     - compute
-    url: virtual-machines/windows/dedicated-hosts.md
+    url: ./virtual-machines/dedicated-hosts.md
   - title: Azure Functions
     summary: Zpracování událostí s kódem bez serveru
     imageSrc: https://static.docs.com/ui/media/product/azure/functions.svg
@@ -436,6 +474,13 @@ productDirectory:
     - compute
     - containers
     url: aks/index.yml
+  - title: Azure (Preview)
+    summary: Vyzkoušejte si dopad na dnešek v dnešní době v Azure
+    imageSrc: ./media/index/quantum.svg
+    azureCategories:
+    - compute
+    - featured
+    url: /azure/quantum/
   - title: Azure Spring Cloud
     summary: Plně spravovaná služba Spring Cloud, kterou vytvořila a provozuje společnost Pivotal
     imageSrc: https://static.docs.com/ui/media/product/azure/spring-cloud.svg
@@ -474,13 +519,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/linux/index.yml
-  - title: SAP HANA ve velkých instancích Azure
-    summary: Spouštění i těch největších úloh SAP HANA libovolného poskytovatele cloudu s hyperškálováním
-    imageSrc: https://static.docs.com/ui/media/product/azure/sap.svg
-    azureCategories:
-    - compute
-    url: virtual-machines/workloads/sap/hana-overview-architecture.md
+    url: ./virtual-machines/index.yml
   - title: Service Fabric
     summary: Vývoj mikroslužeb a orchestrace kontejnerů ve Windows nebo v Linuxu
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
@@ -488,15 +527,15 @@ productDirectory:
     - compute
     - containers
     url: service-fabric/index.yml
-  - title: SQL Server na Azure Virtual Machines
+  - title: SQL Server na virtuálních počítačích
     summary: Hostování podnikových aplikací SQL Serveru v cloudu
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-server-vm.svg
     azureCategories:
     - compute
     - databases
-    url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
-  - title: Static Web Apps
-    summary: Sestavování a nasazování kompletní sady webových aplikací do Azure z úložiště GitHub
+    url: ./azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - title: Static Web Apps (Preview)
+    summary: Moderní služba webových aplikací, která nabízí zjednodušení kompletního vývoje ze zdrojového kódu a zajištění globální vysoké dostupnosti
     imageSrc: ./media/index/static-apps.svg
     azureCategories:
     - compute
@@ -530,7 +569,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/windows/index.yml
+    url: ./virtual-machines/index.yml
   - title: Azure Dev Spaces
     summary: Testování a iterativní vývoj aplikací mikroslužeb v Azure AKS
     imageSrc: ./media/index/AzureDevSpaceController_50x.svg
@@ -556,14 +595,14 @@ productDirectory:
     azureCategories:
     - containers
     - web
-    url: app-service/containers/index.yml
+    url: ./app-service/index.yml
   - title: Azure API for FHIR
     summary: Snadné vytvoření a nasazení služby FHIR pro interoperabilitu a řešení pro zdravotnická data
     imageSrc: https://static.docs.com/ui/media/product/azure/api-for-fhir.svg
     azureCategories:
     - databases
     - integration
-    url: healthcare-apis/index.yml
+    url: healthcare-apis/fhir/index.yml
   - title: Azure Cache for Redis
     summary: Zajištění vysoké propustnosti a nízké latence při přístupu k datům
     imageSrc: https://static.docs.com/ui/media/product/azure/cache-redis.svg
@@ -616,7 +655,7 @@ productDirectory:
     azureCategories:
     - databases
     url: azure-sql/managed-instance/index.yml
-  - title: Azure SQL Edge (Preview)
+  - title: Azure SQL Edge
     summary: Datový modul s malým využitím paměti a integrovanou umělou inteligencí, který je optimalizovaný pro hraniční zařízení
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
     azureCategories:
@@ -628,7 +667,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
     - databases
-    url: cosmos-db/table-storage-overview.md
+    url: ./storage/tables/table-storage-overview.md
   - title: App Configuration
     summary: Rychlé a škálovatelné úložiště parametrů pro konfigurace aplikací
     imageSrc: https://static.docs.com/ui/media/product/azure/app-configuration.svg
@@ -636,11 +675,11 @@ productDirectory:
     - developer-tools
     url: azure-app-configuration/index.yml
   - title: Azure Data Studio
-    summary: Jednoduchý editor, který může na vyžádání spouštět dotazy SQL a výsledky zobrazovat a ukládat jako text, JSON nebo Excel.
+    summary: Jednoduchý editor, který může spouštět dotazy bezserverových fondů SQL a výsledky zobrazovat a ukládat jako text, JSON nebo Excel.
     imageSrc: https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg
     azureCategories:
     - developer-tools
-    url: https://docs.microsoft.com/sql/azure-data-studio/
+    url: /sql/azure-data-studio/
   - title: Azure DevOps
     summary: Týmové služby určené ke sdílení kódu, sledování práce a dodávání softwaru
     imageSrc: https://static.docs.com/ui/media/product/azure/devops.svg
@@ -648,7 +687,7 @@ productDirectory:
     - developer-tools
     - devops
     - hybrid
-    url: https://docs.microsoft.com/azure/devops/
+    url: /azure/devops/
   - title: Azure DevTest Labs
     summary: Rychlé vytváření prostředí pomocí opakovaně použitelných šablon a artefaktů
     imageSrc: https://static.docs.com/ui/media/product/azure/devtest-labs.svg
@@ -668,13 +707,13 @@ productDirectory:
     azureCategories:
     - developer-tools
     - devops
-    url: https://docs.microsoft.com/azure/devops/pipelines/
+    url: /azure/devops/pipelines/
   - title: Visual Studio
     summary: Výkonné a flexibilní prostředí pro vývoj aplikací v cloudu
     imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
     azureCategories:
     - developer-tools
-    url: https://docs.microsoft.com/visualstudio/
+    url: /visualstudio/windows
   - title: Visual Studio Code
     summary: Výkonný a odlehčený editor kódu pro vývoj v cloudu
     imageSrc: https://docs.microsoft.com/media/logos/logo_vs-code.svg
@@ -686,7 +725,7 @@ productDirectory:
     imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
     azureCategories:
     - developer-tools
-    url: https://docs.microsoft.com/visualstudio/online/overview/what-is-vsonline
+    url: /visualstudio/online/overview/what-is-vsonline
   - title: Application Insights
     summary: Komplexní pozorování aplikací, infrastruktury a sítě
     imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
@@ -699,13 +738,13 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/artifacts.svg
     azureCategories:
     - devops
-    url: https://docs.microsoft.com/azure/devops/artifacts/
+    url: /azure/devops/artifacts/
   - title: Azure Boards
     summary: Plánování, sledování a diskuze o práci napříč týmy
     imageSrc: https://static.docs.com/ui/media/product/azure/boards.svg
     azureCategories:
     - devops
-    url: https://docs.microsoft.com/azure/devops/boards/
+    url: /azure/devops/boards/
   - title: Azure Monitor
     summary: Komplexní pozorování aplikací, infrastruktury a sítě
     imageSrc: https://static.docs.com/ui/media/product/azure/monitor.svg
@@ -718,20 +757,20 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/repos.svg
     azureCategories:
     - devops
-    url: https://docs.microsoft.com/azure/devops/repos/
+    url: /azure/devops/repos/
   - title: Azure Test Plans
     summary: Testování a dodávání bez obav s využitím sady nástrojů pro ruční a průzkumné testování
     imageSrc: https://static.docs.com/ui/media/product/azure/test-plans.svg
     azureCategories:
     - devops
-    url: https://docs.microsoft.com/azure/devops/test/
+    url: /azure/devops/test/
   - title: Akce GitHubu pro Azure
     summary: Sestavování, testování a nasazování libovolných aplikací z GitHubu do Azure
     imageSrc: ./media/index/github-actions-icon.svg
     azureCategories:
     - devops
     - developer-tools
-    url: https://docs.microsoft.com/en-us/azure/developer/github/github-actions
+    url: /azure/developer/github/github-actions
   - title: Azure Active Directory (AD)
     summary: Synchronizace místních adresářů a povolení jednotného přihlašování
     imageSrc: https://static.docs.com/ui/media/product/azure/active-directory.svg
@@ -765,13 +804,25 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/stack.svg
     azureCategories:
     - hybrid
-    url: https://docs.microsoft.com/azure-stack/
-  - title: Řešení Azure Stack HCI
-    summary: Provozování virtuálních počítačů v místním prostředí a snadné připojení k Azure s využitím řešení hyperkonvergované infrastruktury (HCI)
-    imageSrc: ./media/index/azure-stack-hci.svg
+    url: /azure-stack/
+  - title: Azure Stack HCI
+    summary: Integrace hyperkonvergované infrastruktury s Azure a hybridními službami pro spouštění virtuálních úloh v místním prostředí
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
     azureCategories:
     - hybrid
-    url: https://docs.microsoft.com/azure-stack/hci/
+    url: /azure-stack/hci/
+  - title: Azure Stack Hub
+    summary: Azure Stack Hub se prodává jako integrovaný hardwarový systém s předinstalovaným softwarem na prověřeném hardwaru.
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hub.svg
+    azureCategories:
+    - hybrid
+    url: /azure-stack/operator/
+  - title: Azure Stack Edge
+    summary: Zařízení spravované Azure, které přináší výpočetní prostředky, úložiště a inteligenci Azure do hraniční sítě
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack-edge.svg
+    azureCategories:
+    - hybrid
+    url: ./databox-online/index.yml
   - title: Security Center
     summary: Zajištění jednotné správy zabezpečení a pokročilé ochrany před hrozbami napříč hybridními cloudovými úlohami
     imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
@@ -786,12 +837,12 @@ productDirectory:
     - hybrid
     - iot
     url: iot-edge/index.yml
-  - title: Azure Active Directory B2C
+  - title: Externí identity Azure Active Directory
     summary: Správa identit a přístupu zákazníků v cloudu
     imageSrc: https://static.docs.com/ui/media/product/azure/active-directory-b2c.svg
     azureCategories:
     - identity
-    url: active-directory-b2c/index.yml
+    url: active-directory/external-identities/index.yml
   - title: Azure Active Directory Domain Services
     summary: Připojení virtuálních počítačů Azure k doménám bez řadičů domény
     imageSrc: https://static.docs.com/ui/media/product/azure/ad-domain-services.svg
@@ -805,7 +856,7 @@ productDirectory:
     azureCategories:
     - identity
     - security
-    url: https://docs.microsoft.com/azure/information-protection/
+    url: /azure/information-protection/
   - title: API Management
     summary: Bezpečné a škálovatelné publikování rozhraní API pro vývojáře, partnery a zaměstnance
     imageSrc: https://static.docs.com/ui/media/product/azure/api-management.svg
@@ -828,7 +879,7 @@ productDirectory:
     azureCategories:
     - integration
     url: service-bus-messaging/index.yml
-  - title: Azure Digital Twins (Preview)
+  - title: Azure Digital Twins
     summary: Sestavování řešení prostorové inteligence IoT nové generace
     imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
     azureCategories:
@@ -866,7 +917,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/sphere.svg
     azureCategories:
     - iot
-    url: https://docs.microsoft.com/azure-sphere/
+    url: /azure-sphere/
   - title: Azure Time Series Insights
     summary: Zkoumání a analýza dat časových řad ze zařízení IoT
     imageSrc: https://static.docs.com/ui/media/product/azure/time-series-insights-environments.svg
@@ -886,14 +937,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/iot-windows10-core-services.svg
     azureCategories:
     - iot
-    url: https://docs.microsoft.com/windows/iot-core/
-  - title: Security Center pro IoT
-    summary: Sjednocení správy zabezpečení a zajištění ochrany před hrozbami napříč řešeními Azure IoT
-    imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
-    azureCategories:
-    - iot
-    - security
-    url: asc-for-iot/index.yml
+    url: /windows/iot-core/
   - title: Automation
     summary: Zjednodušení správu cloudu pomocí automatizace procesů
     imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
@@ -950,6 +994,12 @@ productDirectory:
     azureCategories:
     - management-and-governance
     url: azure-resource-manager/index.yml
+  - title: Azure Resource Mover (Preview)
+    summary: Zjednodušení přesouvání více prostředků mezi oblastmi Azure
+    imageSrc: https://static.docs.com/ui/media/product/azure/resource-mover.svg
+    azureCategories:
+    - management-and-governance
+    url: resource-mover/index.yml
   - title: Šablony ARM
     summary: Poskytování infrastruktury jako kódu pro všechny prostředky Azure s využitím Resource Manageru
     imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
@@ -995,12 +1045,6 @@ productDirectory:
     - management-and-governance
     - networking
     url: network-watcher/index.yml
-  - title: Scheduler
-    summary: Spouštění úloh v rámci jednoduchých nebo složitých opakovaných plánů
-    imageSrc: https://static.docs.com/ui/media/product/azure/scheduler.svg
-    azureCategories:
-    - management-and-governance
-    url: scheduler/index.yml
   - title: Traffic Manager
     summary: Směrování příchozího provozu s cílem dosažení vysokého výkonu a dostupnosti
     imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg
@@ -1040,6 +1084,12 @@ productDirectory:
     azureCategories:
     - media
     url: media-services/latest/stream-live-tutorial-with-api.md
+  - title: Live Video Analytics (Preview)
+    summary: Sestavování inteligentních aplikací na bázi videa s využitím AI podle vašeho výběru
+    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
+    azureCategories:
+    - media
+    url: media-services/live-video-analytics-edge/overview.md
   - title: Media Services
     summary: Kódování, ukládání a streamování videa a zvuku škálovatelným způsobem
     imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
@@ -1053,6 +1103,12 @@ productDirectory:
     - migration
     - storage
     url: databox/index.yml
+  - title: Kotvy objektů (Preview)
+    summary: Automatické zarovnání a ukotvení 3D obsahu k objektům ve fyzickém světě
+    imageSrc: ./media/index/object-anchors.svg
+    azureCategories:
+    - mixed-reality
+    url: object-anchors/index.yml
   - title: Spatial Anchors
     summary: Vytváření prostředí smíšené reality přizpůsobených prostoru pro více uživatelů
     imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg
@@ -1060,7 +1116,7 @@ productDirectory:
     - mixed-reality
     - mobile
     url: spatial-anchors/index.yml
-  - title: Remote Rendering (Preview)
+  - title: Azure Remote Rendering
     summary: Vykreslování vysoce kvalitního interaktivního 3D obsahu a jeho streamování do zařízení v reálném čase
     imageSrc: https://static.docs.com/ui/media/product/azure/remote-rendering.svg
     azureCategories:
@@ -1071,13 +1127,13 @@ productDirectory:
     imageSrc: https://docs.microsoft.com/media/logos/logo_vs-mobile-center.svg
     azureCategories:
     - mobile
-    url: https://docs.microsoft.com/appcenter/
+    url: /appcenter/
   - title: Xamarin
     summary: Rychlejší vytváření mobilních aplikací s podporou cloudu
     imageSrc: https://docs.microsoft.com/media/logos/logo_xamarin.svg
     azureCategories:
     - mobile
-    url: https://docs.microsoft.com/xamarin/
+    url: /xamarin/
   - title: Application Gateway
     summary: Vytváření zabezpečených škálovatelných a vysoce dostupných webových front-endů v Azure
     imageSrc: https://static.docs.com/ui/media/product/azure/application-gateways.svg
@@ -1091,13 +1147,26 @@ productDirectory:
     azureCategories:
     - networking
     url: bastion/index.yml
+  - title: Azure Defender
+    summary: Ochrana hybridních cloudových úloh
+    imageSrc: ./media/index/defender.svg
+    azureCategories:
+    - security
+    url: security-center/azure-defender.md
+  - title: Azure Defender for IoT
+    summary: Průběžná správa prostředků a detekce hrozeb pro spravovaná i nespravovaná zařízení IoT/OT
+    imageSrc: ./media/index/defender-iot.svg
+    azureCategories:
+    - security
+    - iot
+    url: ./defender-for-iot/index.yml
   - title: Azure DDoS Protection
     summary: Ochrana aplikací před distribuovanými útoky s cílem odepření služeb (DDoS)
     imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg
     azureCategories:
     - networking
     - security
-    url: virtual-network/ddos-protection-overview.md
+    url: ./ddos-protection/ddos-protection-overview.md
   - title: Azure DNS
     summary: Hostování vaší DNS domény v Azure
     imageSrc: https://static.docs.com/ui/media/product/azure/dns.svg
@@ -1121,6 +1190,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
     azureCategories:
     - networking
+    - security
     url: frontdoor/index.yml
   - title: Azure Internet Analyzer (Preview)
     summary: Testování toho, jaký vliv mají změny síťové infrastruktury na výkon zákazníků
@@ -1140,6 +1210,12 @@ productDirectory:
     azureCategories:
     - networking
     url: load-balancer/index.yml
+  - title: Server tras Azure (Preview)
+    summary: Zjednodušení správy provozu síťových zařízení
+    imageSrc: ./media/index/azure-route-server.svg
+    azureCategories:
+    - networking
+    url: route-server/index.yml
   - title: Virtual Network
     summary: Zřizování privátních sítí s možností připojení k místním datovým centrům
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg
@@ -1164,6 +1240,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/frontdoor-waf-policies.svg
     azureCategories:
     - networking
+    - security
     url: web-application-firewall/index.yml
   - title: Rezervované HSM Azure
     summary: Správa hardwarových modulů zabezpečení, které používáte v cloudu
@@ -1214,23 +1291,17 @@ productDirectory:
     - storage
     url: storage/blobs/index.yml
   - title: Disk Storage
-    summary: Možnosti trvalého zabezpečeného disku s podporou virtuálních počítačů
+    summary: Vysoce výkonné a vysoce odolné úložiště pro virtuální počítače Azure
     imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
     azureCategories:
     - storage
-    url: virtual-machines/windows/managed-disks-overview.md
+    url: virtual-machines/managed-disks-overview.md
   - title: Soubory Azure
     summary: Sdílené složky, které využívají standardní protokol SMB 3.0
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-azure-files.svg
     azureCategories:
     - storage
     url: storage/files/index.yml
-  - title: Spravované disky
-    summary: Trvalá a zabezpečená disková úložiště pro virtuální počítače Azure
-    imageSrc: https://static.docs.com/ui/media/product/azure/disk.svg
-    azureCategories:
-    - storage
-    url: virtual-machines/windows/managed-disks-overview.md
   - title: Queue Storage
     summary: Efektivní škálování aplikací podle provozu
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
@@ -1238,7 +1309,7 @@ productDirectory:
     - storage
     url: storage/queues/index.yml
   - title: Storage
-    summary: Zajištění zabezpečeného, masivně škálovatelného cloudového úložiště pro data, aplikace a úlohy
+    summary: Trvalé a široce škálovatelné cloudové úložiště s vysokou dostupností
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
     - storage
@@ -1266,28 +1337,28 @@ tools:
   items:
   - title: Python
     imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
-    url: https://docs.microsoft.com/azure/developer/python/
+    url: /azure/developer/python/
   - title: .NET
     imageSrc: ./media/index/net-logo.svg
-    url: https://docs.microsoft.com/dotnet/azure/
+    url: /dotnet/azure/
   - title: JavaScript
     imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
-    url: https://docs.microsoft.com/azure/developer/javascript/
+    url: /azure/developer/javascript/
   - title: Java
     imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
-    url: https://docs.microsoft.com/azure/developer/java/
+    url: /azure/developer/java/
   - title: Přejít
     imageSrc: https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg
-    url: https://docs.microsoft.com/azure/developer/go/
+    url: /azure/developer/go/
   - title: REST API
     imageSrc: https://docs.microsoft.com/media/logos/logo_REST.svg
-    url: https://docs.microsoft.com/rest/api/
+    url: /rest/api/
   - title: Azure PowerShell
     imageSrc: https://docs.microsoft.com/media/logos/logo_powershell.svg
-    url: https://docs.microsoft.com/powershell/azure/
+    url: /powershell/azure/
   - title: Azure CLI
     imageSrc: https://docs.microsoft.com/media/logos/logo_CLIgeneric.svg
-    url: https://docs.microsoft.com/cli/azure/
+    url: /cli/azure/
   - title: Šablony ARM
     imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
     url: azure-resource-manager/templates/index.yml
@@ -1312,4 +1383,4 @@ additionalContent:
       url: germany/index.yml
     - title: Azure China 21Vianet
       summary: Vyhrazený cloud umístěný v Číně a provozovaný společností 21Vianet
-      url: https://docs.microsoft.com/azure/china/
+      url: /azure/china/

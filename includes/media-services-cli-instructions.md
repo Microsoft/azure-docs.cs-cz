@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1327ac49920af353d6adbbe592ab4189417e60e8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461210"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996885"
 ---
 ## <a name="use-cli-shell"></a>Použití prostředí CLI
 
-Pro spouštění příkazů rozhraní příkazového řádku se doporučuje použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) . **Cloud Shell** je bezplatné interaktivní prostředí, které můžete použít ke spuštění kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Poskytuje flexibilitu při výběru prostředí, které nejlépe vyhovuje vašemu stylu práce. Uživatelé Linuxu si můžou zvolit prostředí Bash, zatímco uživatelé Windows si můžou zvolit PowerShell.
+Pro spouštění příkazů rozhraní příkazového řádku se doporučuje použít [Azure Cloud Shell](../articles/cloud-shell/overview.md?view=azure-cli-latest) . **Cloud Shell** je bezplatné interaktivní prostředí, které můžete použít ke spuštění kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Poskytuje flexibilitu při výběru prostředí, které nejlépe vyhovuje vašemu stylu práce. Uživatelé Linuxu si můžou zvolit prostředí Bash, zatímco uživatelé Windows si můžou zvolit PowerShell.
 
-Rozhraní příkazového řádku můžete také nainstalovat místně. Pokyny pro vaši platformu najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+Rozhraní příkazového řádku můžete také nainstalovat místně. Pokyny pro vaši platformu najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli) .
 
 ### <a name="sign-in"></a>Přihlásit se
 

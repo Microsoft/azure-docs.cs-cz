@@ -4,20 +4,21 @@ description: Naučte se, jak nastavit a načíst systémové vlastnosti a uklád
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/12/2020
+ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 29fae4ffb08aba6a45a3879ffe28bf6b90f28a0e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182387"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521525"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>Správa vlastností a metadat objektů BLOB pomocí .NET
 
-Kromě dat, která obsahují, podporují objekty blob vlastnosti systému a uživatelsky definovaná metadata. V tomto článku se dozvíte, jak spravovat vlastnosti systému a uživatelsky definovaná metadata pomocí [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Kromě dat, která obsahují, podporují objekty blob vlastnosti systému a uživatelsky definovaná metadata. V tomto článku se dozvíte, jak spravovat vlastnosti systému a uživatelsky definovaná metadata pomocí [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage).
 
 ## <a name="about-properties-and-metadata"></a>O vlastnostech a metadatech
 
@@ -125,7 +126,7 @@ Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředk
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
 ---
 
-Páry název-hodnota metadat jsou platné hlavičky protokolu HTTP a měly by splňovat všechna omezení, kterými se řídí hlavičky protokolu HTTP. Názvy metadat musí být platné názvy hlaviček protokolu HTTP a platné identifikátory jazyka C#, mohou obsahovat pouze znaky ASCII a měly by se považovat za nerozlišování velkých a malých písmen. Hodnoty metadat kódování [Base64](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) nebo [URL](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode) , které obsahují znaky jiné než ASCII.
+Páry název-hodnota metadat jsou platné hlavičky protokolu HTTP a měly by splňovat všechna omezení, kterými se řídí hlavičky protokolu HTTP. Názvy metadat musí být platné názvy hlaviček protokolu HTTP a platné identifikátory jazyka C#, mohou obsahovat pouze znaky ASCII a měly by se považovat za nerozlišování velkých a malých písmen. Hodnoty metadat kódování [Base64](/dotnet/api/system.convert.tobase64string) nebo [URL](/dotnet/api/system.web.httputility.urlencode) , které obsahují znaky jiné než ASCII.
 
 Název vašich metadat musí odpovídat konvencím pojmenování identifikátorů C#. Názvy metadat udržují případ použitý při jejich vytvoření, ale při nastavení nebo čtení se nerozlišují malá a velká písmena. Pokud se pro prostředek odešlou dvě nebo víc hlaviček metadat s použitím stejného názvu, Azure Blob Storage vrátí kód chyby HTTP 400 (chybný požadavek).
 
@@ -167,7 +168,7 @@ Následující příklad kódu čte metadata v objektu BLOB.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-Chcete-li načíst metadata, zavolejte metodu [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) nebo [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) objektu BLOB nebo Container pro naplnění kolekce [metadat](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) a pak hodnoty přečtěte, jak je znázorněno v následujícím příkladu.
+Chcete-li načíst metadata, zavolejte metodu [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) nebo [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) objektu BLOB nebo Container pro naplnění kolekce [metadat](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) a pak hodnoty přečtěte, jak je znázorněno v následujícím příkladu. Metody **GetProperties** načítají vlastnosti objektu BLOB a metadata v jednom volání. To se liší od rozhraní REST API, která vyžadují samostatná volání pro [získání vlastností objektu BLOB](/rest/api/storageservices/get-blob-properties) a [získání metadat objektu BLOB](/rest/api/storageservices/get-blob-metadata).
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 

@@ -8,18 +8,52 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 67cc470b4f7f119b7f5b86bcb82ea284ab662dfe
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74106508"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463234"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Kurz: ucelené řešení využívající Azure Machine Learning a IoT Edge
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 Aplikace IoT často chtějí využívat inteligentní Cloud a inteligentní hraniční zařízení. V tomto kurzu Vás provedeme školením modelu strojového učení s daty shromážděnými ze zařízení IoT v cloudu, nasazením tohoto modelu IoT Edge a pravidelným udržováním a úpravami modelu.
 
+>[!NOTE]
+>Koncepty v této sadě kurzů se vztahují na všechny verze IoT Edge, ale ukázkové zařízení, které vytvoříte k vyzkoušení scénářů, se spouští IoT Edge verze 1,1.
+
 Hlavním cílem tohoto kurzu je zavést zpracování dat IoT pomocí strojového učení, konkrétně na hraničních zařízeních. I když jsme se dotkli mnoha aspektů obecného pracovního postupu strojového učení, tento kurz není určený jako podrobný Úvod do strojového učení. V takovém případě se nepokoušíme vytvořit vysoce optimalizovaný model pro případ použití – stačí, abyste ilustraci procesu vytváření a používání životaschopného modelu pro zpracování dat IoT.
+
+V této části kurzu se zabývá:
+
+> [!div class="checklist"]
+>
+> * Požadavky na dokončení dalších částí tohoto kurzu.
+> * Cílová skupina tohoto kurzu.
+> * Případ použití, který kurz simuluje.
+> * Celkový proces, který tento kurz sleduje, aby splnil případ použití.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Požadavky
+
+K dokončení tohoto kurzu potřebujete přístup k předplatnému Azure, ve kterém máte práva k vytváření prostředků. Některé ze služeb používaných v tomto kurzu se účtují za Azure. Pokud ještě nemáte předplatné Azure, možná budete moct začít s [bezplatným účtem Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
+
+Budete také potřebovat počítač s nainstalovaným prostředím PowerShell, kde můžete spouštět skripty pro nastavení virtuálního počítače Azure jako vývojového počítače.
+
+V tomto dokumentu používáme následující sadu nástrojů:
+
+* Azure IoT Hub pro zachycení dat
+
+* Azure Notebooks jako náš hlavní front-end pro přípravu dat a experimentování ve strojovém učení. Spuštění kódu Pythonu v poznámkovém bloku u podmnožiny ukázkových dat představuje skvělý způsob, jak rychle a interaktivní vyřízení při přípravě dat. Pomocí poznámkových bloků Jupyter můžete také připravovat skripty pro spouštění ve velkém měřítku v back-endu.
+
+* Azure Machine Learning jako back-end pro strojové učení ve velkém měřítku a pro generování imagí machine learningu. Azure Machine Learning back-end pomocí skriptů připravených a testovaných v poznámkových blocích Jupyter.
+
+* Azure IoT Edge pro necloudovou aplikaci image strojového učení
+
+V některých případech jsou k dispozici další možnosti. V některých scénářích můžete například IoT Central použít jako alternativu bez kódu k zachycení počátečních dat školení ze zařízení IoT.
 
 ## <a name="target-audience-and-roles"></a>Cílová skupina a role
 
@@ -30,11 +64,11 @@ Alternativně se můžete spojit s spolupracovníky různých rolí, které vám
 V obou případech, které vám pomůžou s orientací čtenářů, každý článek v tomto kurzu označuje roli uživatele. Mezi tyto role patří:
 
 * Vývoj pro Cloud (včetně cloudového vývojáře pracujícího v kapacitě DevOps)
-* Analýzy dat
+* Analýza dat
 
 ## <a name="use-case-predictive-maintenance"></a>Případ použití: prediktivní údržba
 
-Tento scénář vychází z případu použití prezentovaného na konferenci Prognostics and Health Management (PHM08) v 2008. Cílem je předpovědět zbývající dobu života (RUL) sady turbofanch motorů pro letadlo. Tato data byla vygenerována pomocí map jazyka C, komerční verze map (modulární simulace systému pro propohon prostředí). Tento software poskytuje flexibilní prostředí pro simulaci turbofan Engine pro pohodlné simulaci parametrů stavu, řízení a stroje.
+Tento scénář vychází z případu použití prezentovaného na konferenci Prognostics and Health Management (PHM08) v 2008. Cílem je předpovědět zbývající dobu života (RUL) sady turbofanch motorů pro letadlo. Tato data byla vygenerována pomocí map jazyka C, komerční verze map (modulární Aero-Propulsion systém simulace). Tento software poskytuje flexibilní prostředí pro simulaci turbofan Engine pro pohodlné simulaci parametrů stavu, řízení a stroje.
 
 Data použitá v tomto kurzu jsou pořízena ze [sady dat simulace degradace modulu Turbofan](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 
@@ -74,23 +108,9 @@ Následující obrázek znázorňuje přibližné kroky, které sledujeme v tomt
 
 1. **Udržujte a upřesněte model**. Naše práce se neprovádí po nasazení modelu. V mnoha případech chceme pokračovat ve shromažďování dat a pravidelné nahrávání těchto dat do cloudu. Tato data pak můžeme použít k reučení a upřesnění našeho modelu, který potom můžeme znovu nasadit do IoT Edge.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-K dokončení tohoto kurzu potřebujete přístup k předplatnému Azure, ve kterém máte práva k vytváření prostředků. Některé ze služeb používaných v tomto kurzu se účtují za Azure. Pokud ještě nemáte předplatné Azure, možná budete moct začít s [bezplatným účtem Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
-
-Budete také potřebovat počítač s nainstalovaným prostředím PowerShell, kde můžete spouštět skripty pro nastavení virtuálního počítače Azure jako vývojového počítače.
-
-V tomto dokumentu používáme následující sadu nástrojů:
-
-* Azure IoT Hub pro zachycení dat
-
-* Azure Notebooks jako náš hlavní front-end pro přípravu dat a experimentování ve strojovém učení. Spuštění kódu Pythonu v poznámkovém bloku u podmnožiny ukázkových dat představuje skvělý způsob, jak rychle a interaktivní vyřízení při přípravě dat. Pomocí poznámkových bloků Jupyter můžete také připravovat skripty pro spouštění ve velkém měřítku v back-endu.
-
-* Azure Machine Learning jako back-end pro strojové učení ve velkém měřítku a pro generování imagí machine learningu. Azure Machine Learning back-end pomocí skriptů připravených a testovaných v poznámkových blocích Jupyter.
-
-* Azure IoT Edge pro necloudovou aplikaci image strojového učení
-
-V některých případech jsou k dispozici další možnosti. V některých scénářích můžete například IoT Central použít jako alternativu bez kódu k zachycení počátečních dat školení ze zařízení IoT.
+Tento kurz je součástí sady, kde každý článek sestaví na práci, která se provádí v předchozích verzích. Počkejte prosím na vyčištění všech prostředků, dokud nedokončíte finální kurz.
 
 ## <a name="next-steps"></a>Další kroky
 

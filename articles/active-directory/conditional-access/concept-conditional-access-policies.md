@@ -5,26 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295329"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169677"
 ---
 # <a name="building-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
 Jak je vysvětleno v článku [co je podmíněný přístup](overview.md), zásada podmíněného přístupu je příkaz if-then, který slouží k **přiřazování** a **řízení přístupu**. Zásada podmíněného přístupu přináší signály dohromady, provede rozhodnutí a vynutila zásady organizace.
 
-Jak organizace vytváří tyto zásady? Co je potřeba?
+Jak organizace vytváří tyto zásady? Co je potřeba? Jak se používají?
 
 ![Podmíněný přístup (signály + rozhodnutí + vynucení = zásady)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+V každém okamžiku se může vztahovat na jednotlivé uživatele víc zásad podmíněného přístupu. V takovém případě musí být splněné všechny zásady, které platí. Pokud například jedna zásada vyžaduje vícefaktorové ověřování (MFA) a jiná vyžaduje vyhovující zařízení, je nutné provést ověřování MFA a použít vyhovující zařízení. Všechna přiřazení jsou logicky **ANDed**. Pokud máte nakonfigurované více než jedno přiřazení, musí být pro aktivaci zásady splněné všechna přiřazení.
+
+Všechny zásady se vynutily ve dvou fázích:
+
+- Fáze 1: shromáždění podrobností relace 
+   - Shromážděte podrobnosti o relaci, jako je síťové umístění a identita zařízení, které budou nezbytné pro vyhodnocení zásad. 
+   - Fáze 1 vyhodnocení zásad probíhá pro povolené zásady a zásady v [režimu pouze sestavy](concept-conditional-access-report-only.md).
+- Fáze 2: vynucení 
+   - Pomocí podrobností o relacích shromážděných ve fázi 1 identifikujte všechny požadavky, které nebyly splněny. 
+   - Pokud máte zásadu, která je nakonfigurovaná tak, aby blokovala přístup, pomocí ovládacího prvku udělení bloku zastavte vynucení a uživatel se zablokuje. 
+   - Uživatel bude vyzván k dokončení dalších požadavků na řízení udělení, které nebyly splněny během fáze 1 v následujícím pořadí, dokud nesplní zásady:  
+      - Ověřování pomocí služby Multi-Factor Authentication 
+      - Schválená klientská aplikace/zásada ochrany aplikací 
+      - Spravované zařízení (s odpovídajícím nebo hybridním připojením k Azure AD) 
+      - Podmínky použití 
+      - Vlastní ovládací prvky  
+   - Jakmile jsou všechny ovládací prvky grantu splněné, použijte ovládací prvky relace (vynutila aplikace, Microsoft Cloud App Security a životnost tokenu). 
+   - Fáze 2 vyhodnocení zásad probíhá u všech povolených zásad. 
 
 ## <a name="assignments"></a>Přiřazení
 
@@ -44,7 +63,7 @@ Zásada může obsahovat více [podmínek](concept-conditional-access-conditions
 
 #### <a name="sign-in-risk"></a>Riziko přihlášení
 
-Pro organizace, které mají [Azure AD Identity Protection](../identity-protection/overview.md), může detekce rizik ovlivnit vaše zásady podmíněného přístupu.
+Pro organizace, které mají [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md), může detekce rizik ovlivnit vaše zásady podmíněného přístupu.
 
 #### <a name="device-platforms"></a>Platformy zařízení
 
@@ -82,7 +101,7 @@ Blok přístupu zablokuje přístup pouze v rámci zadaných přiřazení. Ovlá
 
 Řízení grant může aktivovat vynucení jednoho nebo více ovládacích prvků. 
 
-- Vyžadovat Multi-Factor Authentication (Azure Multi-Factor Authentication)
+- Vyžadovat Multi-Factor Authentication (Azure AD Multi-Factor Authentication)
 - Vyžadovat, aby zařízení byla označená jako vyhovující (Intune)
 - Vyžadovat zařízení připojené k hybridní službě Azure AD
 - Vyžadovat klientskou aplikaci schválenou
@@ -115,10 +134,10 @@ Správci se mohou rozhodnout, že budou vyžadovat jeden z předchozích ovláda
 Zásada podmíněného přístupu musí obsahovat minimálně následující podmínky, které se mají vyhovět:
 
 - **Název** zásady
-- **Smí**
+- **Přiřazení**
    - **Uživatelé a skupiny** , u kterých se má zásada použít.
    - **Cloudové aplikace nebo akce** , na které se má zásada uplatnit
-- **Řízení přístupu**
+- **Ovládací prvky přístupu**
    - **Udělit** nebo **blokovat** ovládací prvky
 
 ![Prázdné zásady podmíněného přístupu](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
@@ -127,9 +146,11 @@ V článku [společné zásady podmíněného přístupu](concept-conditional-ac
 
 ## <a name="next-steps"></a>Další kroky
 
+[Vytvoření zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json#create-a-conditional-access-policy)
+
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
 
-[Plánování cloudového nasazení Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Plánování nasazení služby Azure AD založené na cloudu Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 
 [Správa dodržování předpisů zařízením pomocí Intune](/intune/device-compliance-get-started)
 

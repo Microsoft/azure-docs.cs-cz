@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: bezproblémové jednotné přihlašování – Nejčastější dotazy | Microsoft Docs'
+title: 'Azure AD Connect: bezproblémové jednoduché dotazy Sign-On-Nejčastější dotazy | Microsoft Docs'
 description: Odpovědi na nejčastější dotazy týkající se Azure Active Directory bezproblémové jednotné přihlašování.
 services: active-directory
 keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
@@ -16,16 +16,16 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589040"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107867"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: nejčastější dotazy
 
-V tomto článku se řeší často kladené otázky týkající se Azure Active Directory bezproblémového jednotného přihlašování (bezproblémové jednotné přihlašování). Pokračujte v kontrole nového obsahu.
+V tomto článku se řeší často kladené otázky týkající se Azure Active Directory bezproblémového jednoho Sign-On (bezproblémové jednotné přihlašování). Pokračujte v kontrole nového obsahu.
 
 **Otázka: Jaké metody přihlašování fungují bez problémů jednotného přihlašování**
 
@@ -37,7 +37,7 @@ Bezproblémové jednotné přihlašování je bezplatná funkce, takže nepotře
 
 **Otázka: je bezproblémové přihlašování k dispozici v [cloudu Microsoft Azure (Německo)](https://www.microsoft.de/cloud-deutschland) a [Microsoft Azure Governmentm cloudu](https://azure.microsoft.com/features/gov/)?**
 
-K dispozici je bezproblémové jednotné přihlašování pro cloud Azure Government. Podrobnosti najdete v [informacích o hybridní identitě pro Azure Government](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud).
+K dispozici je bezproblémové jednotné přihlašování pro cloud Azure Government. Podrobnosti najdete v [informacích o hybridní identitě pro Azure Government](./reference-connect-government-cloud.md).
 
 **Otázka: Jaké aplikace využívají `domain_hint` `login_hint` funkci nebo možnosti parametrů bezproblémového jednotného přihlašování?**
 
@@ -54,7 +54,7 @@ Kromě toho uživatelé získají tiché přihlašování, pokud aplikace odesí
 | Název aplikace | Adresa URL aplikace, která se má použít |
 | -- | -- |
 | SharePoint Online | https: \/ /contoso.SharePoint.com |
-| portál Azure | https: \/ /Portal.Azure.com/contoso.com |
+| Portál Azure Portal | https: \/ /Portal.Azure.com/contoso.com |
 
 Ve výše uvedených tabulkách nahraďte "contoso.com" názvem domény, aby se získaly správné adresy URL aplikací pro vašeho tenanta.
 
@@ -62,11 +62,11 @@ Pokud chcete, aby se v rámci tichého přihlašování používaly jiné aplika
 
 **Otázka: provádí bezproblémovou podporu jednotného přihlašování `Alternate ID` jako uživatelské jméno místo `userPrincipalName` ?**
 
-Ano. Bezproblémové jednotné přihlašování podporuje `Alternate ID` jako uživatelské jméno, pokud je nakonfigurované v Azure AD Connect, jak je znázorněno [zde](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID` . Informace o příkazu support najdete v dokumentaci konkrétní aplikace.
+Yes. Bezproblémové jednotné přihlašování podporuje `Alternate ID` jako uživatelské jméno, pokud je nakonfigurované v Azure AD Connect, jak je znázorněno [zde](how-to-connect-install-custom.md). Ne všechny Microsoft 365 aplikace podporují `Alternate ID` . Informace o příkazu support najdete v dokumentaci konkrétní aplikace.
 
-**Otázka: Jaký je rozdíl mezi prostředím jednotného přihlašování, které poskytuje [Azure AD JOIN](../active-directory-azureadjoin-overview.md) a bezproblémové jednotné přihlašování?**
+**Otázka: Jaký je rozdíl mezi prostředím jednotného přihlašování, které poskytuje [Azure AD JOIN](../devices/overview.md) a bezproblémové jednotné přihlašování?**
 
-[Připojení k Azure AD](../active-directory-azureadjoin-overview.md) poskytuje uživatelům jednotné přihlašování, pokud jsou jejich zařízení zaregistrovaná ve službě Azure AD. Tato zařízení nemusí být nutně připojená k doméně. Jednotné přihlašování se poskytuje s využitím *primárních tokenů aktualizace* nebo *PRTs*, nikoli pomocí protokolu Kerberos. Činnost koncového uživatele je optimální na zařízeních s Windows 10. Jednotné přihlašování proběhne automaticky v prohlížeči Microsoft Edge. Funguje taky na Chrome s použitím rozšíření prohlížeče.
+[Připojení k Azure AD](../devices/overview.md) poskytuje uživatelům jednotné přihlašování, pokud jsou jejich zařízení zaregistrovaná ve službě Azure AD. Tato zařízení nemusí být nutně připojená k doméně. Jednotné přihlašování se poskytuje s využitím *primárních tokenů aktualizace* nebo *PRTs*, nikoli pomocí protokolu Kerberos. Činnost koncového uživatele je optimální na zařízeních s Windows 10. Jednotné přihlašování proběhne automaticky v prohlížeči Microsoft Edge. Funguje taky na Chrome s použitím rozšíření prohlížeče.
 
 V tenantovi můžete použít jak připojení k Azure AD, tak bezproblémové jednotné přihlašování. Tyto dvě funkce jsou doplňující. Pokud jsou obě funkce zapnuté, má připojení SSO od služby Azure AD přednost před bezproblémové jednotné přihlašování.
 
@@ -83,9 +83,13 @@ Je důležité často přenášet dešifrovací klíč protokolu Kerberos `AZURE
 
 Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těchto kroků:
 
+   > [!NOTE]
+   >Pro následující postup budete potřebovat přihlašovací údaje správce domény i globální správce.
+   >Pokud nejste správce domény a přiřadili jste mu oprávnění správce domény, měli byste zavolat `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+
    **Krok 1. Získá seznam doménových struktur služby Active Directory, kde je povolené bezproblémové jednotné přihlašování.**
 
-   1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](/powershell/azure/active-directory/overview).
    2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
    3. Pomocí tohoto příkazu Importujte modul prostředí PowerShell pro bezproblémové přihlašování: `Import-Module .\AzureADSSO.psd1` .
    4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext` . Tento příkaz by vám měl poskytnout místní nabídku pro zadání přihlašovacích údajů globálního správce vašeho tenanta.
@@ -103,10 +107,10 @@ Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těc
 
    2. Volání `Update-AzureADSSOForest -OnPremCredentials $creds` . Tento příkaz aktualizuje dešifrovací klíč protokolu Kerberos pro `AZUREADSSO` účet počítače v této konkrétní doménové struktuře služby AD a aktualizuje ho v Azure AD.
    
-   >[!NOTE]
-   >Pokud nejste správce domény a přiřadili jste mu oprávnění správce domény, měli byste zavolat `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
-   
    3. Předchozí kroky opakujte pro každou doménovou strukturu služby AD, na které jste tuto funkci nastavili.
+   
+  >[!NOTE]
+   >Pokud aktualizujete doménovou strukturu, která je jiná než Azure AD Connect One, ujistěte se, že je k dispozici připojení k serveru globálního katalogu (TCP 3268 a TCP 3269).
 
    >[!IMPORTANT]
    >Ujistěte se, že jste příkaz _nespouštěli_ `Update-AzureADSSOForest` více než jednou. V opačném případě funkce přestane fungovat, dokud nevyprší doba vypršení platnosti vašich uživatelských lístků Kerberos a znovu ji nevyřeší vaše místní služba Active Directory.
@@ -130,7 +134,7 @@ Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těc
 
    Na místním serveru, na kterém běží Azure AD Connect, spusťte následující kroky:
 
-   1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](/powershell/azure/active-directory/overview).
    2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
    3. Pomocí tohoto příkazu Importujte modul prostředí PowerShell pro bezproblémové přihlašování: `Import-Module .\AzureADSSO.psd1` .
    4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext` . Tento příkaz by vám měl poskytnout místní nabídku pro zadání přihlašovacích údajů globálního správce vašeho tenanta.
@@ -145,7 +149,7 @@ Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těc
 
    Pokud jste zakázali bezproblémové jednotné přihlašování pomocí Azure AD Connect, postupujte podle kroků 1 až 4 níže. Pokud jste místo toho zakázali bezproblémové jednotné přihlašování pomocí PowerShellu, přejděte dopředu na úlohu 5 níže.
 
-   1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Nejdřív si stáhněte a nainstalujte [Azure AD PowerShell](/powershell/azure/active-directory/overview).
    2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
    3. Pomocí tohoto příkazu Importujte modul prostředí PowerShell pro bezproblémové přihlašování: `Import-Module .\AzureADSSO.psd1` .
    4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext` . Tento příkaz by vám měl poskytnout místní nabídku pro zadání přihlašovacích údajů globálního správce vašeho tenanta.

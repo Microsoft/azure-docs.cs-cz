@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: b8408dde86d1902cf5b4899c4783c9dd185449ee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067150"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515742"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Migrujte stávající aplikace JMS (Java Message Service) 2,0 z Apache ActiveMQ na Azure Service Bus
 
@@ -62,7 +62,7 @@ V rámci migrace a změny klientských aplikací pro interakci s Azure Service B
 
 #### <a name="authentication-and-authorization"></a>Ověřování a autorizace
 
-Řízení přístupu na základě role (RBAC), které zajišťuje Azure Active Directory, je upřednostňovaným mechanismem ověřování pro Service Bus. Vzhledem k tomu, že služba Apache QPID JMS v současné době nepodporuje ověřování RBAC nebo založené na deklaracích identity, měli byste pro ověřování použít klíče SAS.
+Řízení přístupu na základě role Azure (Azure RBAC), které zajišťuje Azure Active Directory, je upřednostňovaným mechanismem ověřování pro Service Bus. Vzhledem k tomu, že Apache QPID JMS v současnosti nepodporuje ověřování v Azure RBAC nebo založené na deklaracích identity, měli byste pro ověřování použít klíče SAS.
 
 ## <a name="pre-migration"></a>Před migrací
 
@@ -70,10 +70,10 @@ V rámci migrace a změny klientských aplikací pro interakci s Azure Service B
 
 Při psaní aplikací JMS používáte následující komponenty a verze: 
 
-| Součást | Verze |
+| Komponenta | Verze |
 |---|---|
 | Rozhraní API pro JMS (Java Message Service) | 1,1 nebo vyšší |
-| Protokol AMQP | 1.0 |
+| Protokol AMQP | 1,0 |
 
 ### <a name="ensure-that-amqp-ports-are-open"></a>Zajistěte, aby byly porty AMQP otevřené.
 
@@ -84,7 +84,7 @@ Service Bus podporuje komunikaci přes protokol AMQP. Pro tento účel povolte k
 
 ### <a name="set-up-enterprise-configurations"></a>Nastavení podnikových konfigurací
 
-Service Bus umožňuje různé funkce pro podnikové zabezpečení a vysokou dostupnost. Další informace: 
+Service Bus umožňuje různé funkce pro podnikové zabezpečení a vysokou dostupnost. Další informace naleznete v tématech: 
 
   * [Koncové body služby pro virtuální síť](service-bus-service-endpoints.md)
   * [Brána firewall](service-bus-ip-filtering.md)
@@ -116,7 +116,7 @@ Můžete sladit metriky z mapy ActiveMQ, na které se metriky v Azure Service Bu
 |Nese|`CurrentConnectionsCount`|`activeConnections`|
 |Nese|`EstablishedConnectionsCount`|`activeConnections` + `connectionsClosed`|
 |Nese|`InactiveDurableTopicSubscribersCount`|Použití metrik předplatného|
-|Nese|`TotalMessageCount`|Použít úroveň fronty, tématu nebo předplatného`activeMessages`|
+|Nese|`TotalMessageCount`|Použít úroveň fronty, tématu nebo předplatného `activeMessages`|
 |Fronta/téma|`EnqueueCount`|`incomingMessages`|
 |Fronta/téma|`DequeueCount`|`outgoingMessages`|
 |Fronta|`QueueSize`|`sizeBytes`|

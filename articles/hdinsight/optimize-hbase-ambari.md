@@ -1,18 +1,15 @@
 ---
 title: Optimalizace Apache HBA s Apache Ambari ve službě Azure HDInsight
 description: Ke konfiguraci a optimalizaci adaptérů Apache HBA použijte webové uživatelské rozhraní Apache Ambari.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/04/2020
-ms.openlocfilehash: d143c9648f84dd0c8b45122cf2271539a0b9d1cf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 02/01/2021
+ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086326"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428196"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache HBA s Apache Ambari ve službě Azure HDInsight
 
@@ -21,6 +18,9 @@ Apache Ambari je webové rozhraní pro správu a monitorování clusterů HDInsi
 Konfigurace Apache HBA je upravena na kartě **Konfigurace HBA** . Následující části popisují některá z důležitých nastavení konfigurace, která ovlivňují výkon adaptérů HBA.
 
 ## <a name="set-hbase_heapsize"></a>Nastavit HBASE_HEAPSIZE
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na *Hlavní* termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 Velikost haldy HBA určuje maximální velikost haldy, která bude použita v megabajtech podle *oblasti* a *hlavních* serverů. Výchozí hodnota je 1 000 MB. Tato hodnota by měla být vyladěna pro zatížení clusteru.
 
@@ -89,7 +89,7 @@ HBA ukládají data do interního formátu souboru s názvem *HFile*. Vlastnost 
 
 ## <a name="define-memstore-size"></a>Definovat velikost setSize paměťového úložiště
 
-Velikost setSize paměťového úložiště je definována `hbase.regionserver.global.memstore.UpperLimit` `hbase.regionserver.global.memstore.LowerLimit` parametry a. Nastavení těchto hodnot je stejné jako u každého dalšího, při zápisu dojde k pozastavení, což také způsobuje častější vyprazdňování a vede k vyššímu výkonu zápisu.
+Velikost setSize paměťového úložiště je definována `hbase.regionserver.global.memstore.upperLimit` `hbase.regionserver.global.memstore.lowerLimit` parametry a. Nastavení těchto hodnot je stejné jako u každého dalšího, při zápisu dojde k pozastavení, což také způsobuje častější vyprazdňování a vede k vyššímu výkonu zápisu.
 
 ## <a name="set-memstore-local-allocation-buffer"></a>Nastavit místní vyrovnávací paměť pro přidělení setSize paměťového úložiště
 

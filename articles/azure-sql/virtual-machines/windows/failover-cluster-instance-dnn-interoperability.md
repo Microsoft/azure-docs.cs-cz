@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: hadr
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: f9c4f58c3318d9d030637f85f3c1597b98d458c7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965509"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358210"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>Interoperabilita funkcí s SQL Server FCI & DNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +42,7 @@ U pojmenované instance by se mělo provést mapování síťových aliasů pro 
 
 Pro ovladače ODBC, OLEDB, ADO.NET, JDBC, PHP a Node.js musí uživatelé explicitně zadat název DNS DNN jako název serveru v připojovacím řetězci. Pokud chcete zajistit rychlé připojení při převzetí služeb při selhání, přidejte `MultiSubnetFailover=True` do připojovacího řetězce, pokud ho klient SQL podporuje. 
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 
 Uživatelé nástrojů [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms), [Sqlcmd](/sql/tools/sqlcmd-utility), [Azure Data Studio](/sql/azure-data-studio/what-is)a [SQL Server Data Tools](/sql/ssdt/sql-server-data-tools) musí explicitně zadat název DNS DNN jako název serveru v připojovacím řetězci. 
 
@@ -71,7 +72,7 @@ Port v adrese URL můžete vynechat, pokud je to výchozí port 1433. U pojmenov
 
 Replikace má tři komponenty: Vydavatel, distributor, odběratel. Kterákoli z těchto součástí může být instancí clusteru s podporou převzetí služeb při selhání. Vzhledem k tomu, že se FCI VNN v konfiguraci replikace intenzivně používá explicitně i implicitně, může být potřeba, aby replikace mohla být nutná k tomu, aby replikace fungovala v síťovém aliasu, který mapuje VNN na DNN. 
 
-V rámci replikace používejte název VNN jako název FCI, ale *před konfigurací replikace*vytvořte v následujících vzdálených situacích alias sítě:
+V rámci replikace používejte název VNN jako název FCI, ale *před konfigurací replikace* vytvořte v následujících vzdálených situacích alias sítě:
 
 | **Součást replikace (FCI s DNN)** | **Vzdálená součást** | **Mapa aliasu sítě** | **Server s mapou sítě**| 
 |---------|---------|---------|-------- | 
@@ -174,7 +175,7 @@ Pak vytvořte alias sítě, na který se má mapovat `vnnname\insta1` `dnnlsnr\i
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v tématech: 
+Další informace najdete tady: 
 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

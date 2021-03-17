@@ -1,19 +1,19 @@
 ---
-title: Konfigurace tunelového připojení typu Always-On
+title: Konfigurace tunelového připojení VPN Always-On
 titleSuffix: Azure VPN Gateway
 description: Naučte se, jak používat brány se systémem Windows 10, abyste navázali a nakonfigurovali trvalé tunely zařízení do Azure.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: e64d2223740942fe35ae8a730303bee8893c2489
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7688e42175b2b4e35b63979f5df25702f3bb869d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035599"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90986592"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurace tunelu zařízení VPN AlwaysOn
 
@@ -31,7 +31,7 @@ Nakonfigurujte bránu VPN na používání protokolu IKEv2 a ověřování zalo�
 
 Chcete-li odebrat profil, spusťte následující příkaz:
 
-![Vyčištění](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
+![Snímek obrazovky se zobrazí okno PowerShellu, ve kterém se spustí příkaz Remove-VpnConnection-Name MachineCertTest.](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Další kroky
 

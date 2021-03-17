@@ -2,17 +2,18 @@
 title: Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB
 description: Postup připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB pomocí rozhraní příkazového řádku Azure
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 45042f474f39b3f64d45913905765016fae3cb26
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085482"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551789"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB
 
@@ -33,9 +34,9 @@ Vytvořte v umístění *východní USA* skupinu prostředků s názvem *myResou
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-V rámci vytvořené skupiny prostředků vytvořte nový účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT \<random number> * a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečné, použití `$RANDOM` čísla ke konci připojovat k jedinečnému názvu.
+V rámci vytvořené skupiny prostředků vytvořte nový účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT \<random number>* a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečné, použití `$RANDOM` čísla ke konci připojovat k jedinečnému názvu.
 
 ```azurecli
 STORAGEACCT=$(az storage account create \
@@ -110,4 +111,4 @@ Pro zvýšení zabezpečení v produkčních prostředích byste měli přihlaš
 
 - [Přizpůsobení virtuálního počítače se systémem Linux během vytváření pomocí Cloud-init](using-cloud-init.md)
 - [Přidání disku do virtuálního počítače s Linuxem](add-disk.md)
-- [Azure Disk Encryption pro virtuální počítače se systémem Linux](disk-encryption-overview.md)
+- [Azure Disk Encryption pro virtuální počítače s Linuxem](disk-encryption-overview.md)

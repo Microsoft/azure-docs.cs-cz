@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc4bd817fda762e62e791542aea2df65deb0dae3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d7bd9913cccbe077a4deed9a7c5bfdc601f3dd5e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054047"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742336"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -27,7 +27,11 @@ ms.locfileid: "88054047"
 Tato stránka popisuje novou instalaci serveru a jeho nastavení pro spolupráci s místní službou Active Directory. Pokud už máte nainstalovaný server MFA a chcete provést upgrade, přečtěte si téma [Upgrade na nejnovější verzi Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-upgrade.md). Pokud hledáte informace pouze o instalaci webové služby, přečtěte si téma [Nasazení webové služby mobilní aplikace Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-mobileapp.md).
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) během přihlašovacích událostí, by měli používat cloudovou Multi-Factor Authentication Azure AD.
+>
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Stávající zákazníci, kteří si vyaktivovali MFA Server dřív než 1. července 2019, můžou stáhnout nejnovější verzi, budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 ## <a name="plan-your-deployment"></a>Plánování nasazení
 
@@ -54,7 +58,7 @@ Ujistěte se, že server, který používáte pro Azure Multi-Factor Authenticat
 | Požadavky pro Azure Multi-Factor Authentication Server | Popis |
 |:--- |:--- |
 | Hardware |<li>200 MB volného místa na pevném disku</li><li>Procesor kompatibilní s x32 nebo x64</li><li>1 GB RAM nebo víc</li> |
-| Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 (jenom s [EVJ](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) )</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice (jenom s [EVJ](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) )</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
+| Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 (jenom s [EVJ](/lifecycle/faq/extended-security-updates) )</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice (jenom s [EVJ](/lifecycle/faq/extended-security-updates) )</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
 | Oprávnění | Účet správce domény nebo účet správce rozlehlé sítě pro registraci ve službě Active Directory |
 
 ### <a name="azure-mfa-server-components"></a>Komponenty Azure MFA Serveru
@@ -107,9 +111,16 @@ Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužíva
 
 Postupujte podle těchto kroků a stáhněte Azure Multi-Factor Authentication Server z webu Azure Portal:
 
+> [!IMPORTANT]
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) od uživatelů, by měli používat cloudovou Multi-Factor Authentication služby Azure AD.
+>
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Stávající zákazníci, kteří si vyaktivovali MFA Server dřív než 1. července 2019, můžou stáhnout nejnovější verzi, budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci obvyklým způsobem. Následující postup funguje jenom v případě, že jste byli stávajícím zákazníkem MFA serveru.
+
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
 2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **zabezpečení**  >  **MFA**.
-3. V části **správce MFA serveru**vyberte **nastavení serveru**.
+3. V části **správce MFA serveru** vyberte **nastavení serveru**.
 4. Vyberte **Stáhnout** a podle pokynů na stránce pro stažení uložte instalační program. 
 
    ![Stažení MFA serveru z Azure Portal](./media/howto-mfaserver-deploy/downloadportal.png)
@@ -209,7 +220,7 @@ Nový server je teď zprovozněný s původní zálohovanou konfigurací a uživ
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Správa protokolů TLS a SSL a šifrovacích sad
 
-Po upgradu na MFA Server verze 8.x nebo novější nebo jeho instalaci se doporučuje zakázat nebo odebrat starší a slabší šifrovací sady, pokud je vaše organizace nevyžaduje. Informace o tom, jak to provést, najdete v článku [Správa protokolů SSL a TLS a šifrovacích sad pro AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
+Po upgradu na MFA Server verze 8.x nebo novější nebo jeho instalaci se doporučuje zakázat nebo odebrat starší a slabší šifrovací sady, pokud je vaše organizace nevyžaduje. Informace o tom, jak to provést, najdete v článku [Správa protokolů SSL a TLS a šifrovacích sad pro AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
 
 ## <a name="next-steps"></a>Další kroky
 

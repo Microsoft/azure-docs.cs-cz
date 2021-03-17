@@ -7,34 +7,34 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 041751b5b23dbb3153f1ae638303579a860c0e5b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211880"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020159"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorovat mezipaměť Gen2
+# <a name="how-to-monitor-the-adaptive-cache"></a>Jak monitorovat adaptivní mezipaměť
 
-Tento článek popisuje, jak monitorovat a řešit potíže s pomalým výkonem dotazů tím, že určíte, jestli vaše zatížení optimálně využívá Gen2 cache.
+Tento článek popisuje, jak monitorovat a řešit potíže s pomalým výkonem dotazů tím, že určíte, jestli vaše zatížení optimálně využívá adaptivní mezipaměť pro vyhrazené fondy SQL.
 
-Architektura úložiště Gen2 automaticky vychází z nejčastěji dotazovaných segmentů columnstore v mezipaměti, která je umístěná v NVMe na SSD, která je určená pro Gen2 datové sklady. Vyšší výkon je realizován, když dotazy načítají segmenty, které jsou umístěny v mezipaměti.
+Vyhrazená architektura úložiště fondu SQL automaticky vychází z nejčastěji dotazovaných segmentů columnstore v mezipaměti, která je umístěná v SSD založených na NVMe. Když dotazy načítají segmenty, které jsou umístěné v mezipaměti, budete mít větší výkon.
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>Řešení potíží pomocí Azure Portal
 
-Pomocí Azure Monitor můžete zobrazit metriky mezipaměti Gen2 a řešit potíže s výkonem dotazů. Nejprve přejděte na Azure Portal a klikněte na **monitorování**, **metriky** a **Vyberte rozsah**:
+Pomocí Azure Monitor můžete zobrazit metriky mezipaměti a řešit potíže s výkonem dotazů. Nejprve přejděte na Azure Portal a klikněte na **monitorování**, **metriky** a **Vyberte rozsah**:
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
+![Snímek obrazovky ukazuje vybrat obor vybraný z metrik v Azure Portal.](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
-K vyhledání datového skladu použijte panely hledání a rozevírací seznam. Pak vyberte použít.
+K vyhledání vyhrazeného fondu SQL použijte panely hledání a rozevírací seznam. Pak vyberte použít.
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
+![Snímek obrazovky se zobrazí v podokně vybrat obor, kde můžete vybrat svůj datový sklad.](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-Klíčovou metrikou pro řešení potíží s mezipamětí Gen2 je **Procento přístupů do mezipaměti** a **procento využití mezipaměti**. Vyberte **Procento přístupů do mezipaměti** a potom pomocí tlačítka **Přidat metriku** přidejte **procento využité mezipaměti**. 
+Klíčovou metrikou pro řešení potíží s mezipamětí jsou **Procento přístupů do mezipaměti** a **procento využité v mezipaměti**. Vyberte **Procento přístupů do mezipaměti** a potom pomocí tlačítka **Přidat metriku** přidejte **procento využité mezipaměti**. 
 
 ![Metriky mezipaměti](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 01/27/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: b0684735b32e03abe525b19dce6d9d887afe513b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 80be5ca22f3dfb673f09327108e66fccc9de6ddd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194068"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918039"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení účtů v Azure Active Directory
 
@@ -41,15 +41,17 @@ Následující tabulka popisuje zásady uživatelského jména, které se vztahu
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Zásady hesel Azure AD
 
-Zásady hesel se aplikují na všechny uživatelské účty, které se vytváří a spravují přímo ve službě Azure AD. Tato zásada hesla se nedá upravit, i když můžete [nakonfigurovat vlastní zakázaná hesla pro ochranu heslem Azure AD](tutorial-configure-custom-password-protection.md).
+Zásady hesel se aplikují na všechny uživatelské účty, které se vytváří a spravují přímo ve službě Azure AD. Některá z těchto nastavení zásad hesla není možné upravovat. můžete ale [nakonfigurovat vlastní zakázaná hesla pro parametry ochrany hesel Azure AD](tutorial-configure-custom-password-protection.md) nebo uzamčení účtu.
 
-Zásady hesla se nevztahují na uživatelské účty synchronizované z místního prostředí služba AD DS pomocí Azure AD Connect.
+Ve výchozím nastavení je účet uzamčen po 10 neúspěšných pokusech o přihlášení s nesprávným heslem. Uživatel je zablokován na jednu minutu. Další nesprávné pokusy o přihlášení zablokují uživateli zvýšení doby trvání. [Inteligentní uzamykání](howto-password-smart-lockout.md) sleduje poslední tři chybné hodnoty hash hesla, aby nedošlo k vyššímu zvýšení čítače uzamčení pro stejné heslo. Pokud někdo několikrát zadá stejné chybné heslo, toto chování nezpůsobí, že účet nebude uzamčen. Můžete definovat mezní hodnotu inteligentního uzamčení a dobu trvání.
 
-Jsou definovány následující možnosti zásad hesla:
+Zásady hesel Azure AD se nevztahují na uživatelské účty synchronizované z místního prostředí služba AD DS pomocí Azure AD Connect, pokud *EnforceCloudPasswordPolicyForPasswordSyncedUsers* nepovolíte.
+
+Jsou definované následující možnosti zásad hesel služby Azure AD. Pokud není uvedeno jinak, nemůžete tato nastavení změnit:
 
 | Vlastnost | Požadavky |
 | --- | --- |
-| Povolené znaky |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \:,. ? / \`~ " ( ) ;</li> <li>prázdné místo</li></ul> |
+| Povolené znaky |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \:,. ? / \` ~ " ( ) ;</li> <li>prázdné místo</li></ul> |
 | Nepovolené znaky | Znaky Unicode. |
 | Omezení hesla |<ul><li>Minimálně 8 znaků a maximálně 256 znaků.</li><li>Vyžaduje tři ze čtyř z následujících možností:<ul><li>Malými písmeny.</li><li>Velká písmena.</li><li>Čísla (0-9).</li><li>Symboly (viz předchozí omezení hesla).</li></ul></li></ul> |
 | Doba platnosti hesla vypršela (maximální stáří hesla) |<ul><li>Výchozí hodnota: **90** dní.</li><li>Hodnota se dá nakonfigurovat pomocí `Set-MsolPasswordPolicy` rutiny z modulu Azure Active Directory pro Windows PowerShell.</li></ul> |
@@ -57,11 +59,10 @@ Jsou definovány následující možnosti zásad hesla:
 | Vypršení platnosti hesla (nechat hesla nikdy nevyprší) |<ul><li>Výchozí hodnota: **false** (označuje, že heslo má datum vypršení platnosti).</li><li>Hodnotu lze nakonfigurovat pro jednotlivé uživatelské účty pomocí `Set-MsolUser` rutiny.</li></ul> |
 | Historie změn hesel | Poslední heslo *nelze* znovu použít, když uživatel změní heslo. |
 | Historie resetování hesla | Poslední heslo *lze* znovu použít, když uživatel resetuje zapomenuté heslo. |
-| Uzamčení účtu | Po 10 neúspěšných pokusech o přihlášení k nesprávnému heslu je uživatel zablokován na jednu minutu. Další nesprávné pokusy o přihlášení zablokují uživateli zvýšení doby trvání. [Inteligentní uzamykání](howto-password-smart-lockout.md) sleduje poslední tři chybné hodnoty hash hesla, aby nedošlo k vyššímu zvýšení čítače uzamčení pro stejné heslo. Pokud někdo několikrát zadá stejné chybné heslo, toto chování nezpůsobí, že účet nebude uzamčen. |
 
 ## <a name="administrator-reset-policy-differences"></a>Rozdílné zásady resetování hesel pro správce
 
-Společnost Microsoft vynutila silná *výchozí zásada* pro resetování hesla pro všechny role správce Azure. Tato zásada může být jiná než ta, kterou jste definovali pro uživatele, a tato zásada se nedá změnit. Funkce resetování hesla byste měli vždycky testovat jako uživatel bez přiřazených rolí správce Azure.
+Ve výchozím nastavení se pro Samoobslužné resetování hesla povolují účty správců a vynutila se silná výchozí zásada pro resetování hesel se *dvěma branami* . Tato zásada může být jiná než ta, kterou jste definovali pro uživatele, a tato zásada se nedá změnit. Funkce resetování hesla byste měli vždycky testovat jako uživatel bez přiřazených rolí správce Azure.
 
 Díky zásadám se dvěma branami nemají správci možnost používat bezpečnostní otázky.
 
@@ -74,6 +75,7 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je e-mailová
   * Podpora partnerů Tier1
   * Podpora partnerů 2
   * Správce Exchange
+  * Správce poštovní schránky
   * Správce Skypu pro firmy
   * Správce uživatelů
   * Zapisovače adresářů
@@ -84,15 +86,19 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je e-mailová
   * Správce zabezpečení
   * Správce privilegovaných rolí
   * Správce Intune
+  * Místní správce zařízení připojený k Azure AD
   * Správce služby proxy aplikací
   * Správce Dynamics 365
   * Správce služby Power BI
   * Správce ověřování
+  * Správce hesel
   * Správce privilegovaného ověřování
 
 * Pokud uplyne 30 dnů ve zkušebním předplatném, ani
 * Pro vašeho tenanta Azure AD je nakonfigurovaná vlastní doména, třeba *contoso.com*; ani
 * Azure AD Connect synchronizuje identity z místního adresáře.
+
+Pomocí rutiny [set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings) prostředí PowerShell můžete zakázat použití SSPR pro účty správců. `-SelfServePasswordResetEnabled $False`Parametr ZAKÁŽE SSPR správcům.
 
 ### <a name="exceptions"></a>Výjimky
 
@@ -104,24 +110,24 @@ Zásada s jedním bránou vyžaduje jedno z ověřovacích dat, jako je e-mailov
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>Zásady vypršení platnosti hesla
 
-*Globální správce* nebo *Správce uživatelů* může použít [modul Microsoft Azure AD pro Windows PowerShell](/powershell/module/Azuread/?view=azureadps-2.0) k nastavení hesla uživatele, která nebrzy vyprší.
+*Globální správce* nebo *Správce uživatelů* může použít [modul Microsoft Azure AD pro Windows PowerShell](/powershell/module/Azuread/) k nastavení hesla uživatele, která nebrzy vyprší.
 
 Pomocí rutin prostředí PowerShell můžete také odebrat konfiguraci pro nikdy nevypršení platnosti nebo zjistit, která uživatelská hesla jsou nastavena na hodnotu nikdy nevyprší.
 
-Tento návod se vztahuje na jiné poskytovatele, jako je Intune a Office 365, které se taky spoléhají na Azure AD pro identity a adresářové služby. Vypršení platnosti hesla je jediná součást zásad, kterou je možné změnit.
+Tento návod se vztahuje na jiné poskytovatele, jako je Intune a Microsoft 365, které se také spoléhají na Azure AD pro identity a adresářové služby. Vypršení platnosti hesla je jediná součást zásad, kterou je možné změnit.
 
 > [!NOTE]
 > Jenom hesla pro uživatelské účty, které nejsou synchronizované prostřednictvím Azure AD Connect, se dají nakonfigurovat tak, aby nevypršela platnost. Další informace o synchronizaci adresářů najdete v tématu [připojení AD pomocí Azure AD](../hybrid/whatis-hybrid-identity.md).
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>Nastavení nebo kontrola zásad hesla pomocí PowerShellu
 
-Začněte tím, [že si stáhnete a nainstalujete modul Azure AD PowerShell](/powershell/module/Azuread/?view=azureadps-2.0) a [připojíte ho k vašemu tenantovi Azure AD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples).
+Začněte tím, [že si stáhnete a nainstalujete modul Azure AD PowerShell](/powershell/module/Azuread/) a [připojíte ho k vašemu tenantovi Azure AD](/powershell/module/azuread/connect-azuread#examples).
 
 Po instalaci modulu použijte následující postup k dokončení jednotlivých úkolů podle potřeby.
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>Podívejte se na zásady vypršení platnosti hesla.
 
-1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
+1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
 1. Pro jednotlivé uživatele nebo všechny uživatele spusťte jeden z následujících příkazů:
 
    * Pokud chcete zjistit, jestli je u jednoho uživatele nastavené na nikdy vypršení platnosti hesla, spusťte následující rutinu. Nahraďte `<user ID>` ID uživatele, které chcete kontrolovat, například *driley \@ contoso.onmicrosoft.com*:
@@ -138,7 +144,7 @@ Po instalaci modulu použijte následující postup k dokončení jednotlivých 
 
 ### <a name="set-a-password-to-expire"></a>Nastavit vypršení platnosti hesla
 
-1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
+1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
 1. Pro jednotlivé uživatele nebo všechny uživatele spusťte jeden z následujících příkazů:
 
    * Pokud chcete nastavit heslo jednoho uživatele, aby platnost hesla vyprší, spusťte následující rutinu. Nahraďte `<user ID>` ID uživatele, které chcete kontrolovat, například *driley \@ contoso.onmicrosoft.com* .
@@ -155,7 +161,7 @@ Po instalaci modulu použijte následující postup k dokončení jednotlivých 
 
 ### <a name="set-a-password-to-never-expire"></a>Nastavit heslo na nikdy neplatnost
 
-1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
+1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
 1. Pro jednotlivé uživatele nebo všechny uživatele spusťte jeden z následujících příkazů:
 
    * Pokud chcete nastavit heslo pro jednoho uživatele, který nikdy nevyprší, spusťte následující rutinu. Nahraďte `<user ID>` ID uživatele, které chcete kontrolovat, například *driley \@ contoso.onmicrosoft.com* .
@@ -177,4 +183,4 @@ Po instalaci modulu použijte následující postup k dokončení jednotlivých 
 
 Pokud chcete začít s SSPR, přečtěte si téma [kurz: povolení uživatelům odemknout svůj účet nebo resetovat hesla pomocí samoobslužného resetování hesla Azure Active Directory](tutorial-enable-sspr.md).
 
-Pokud máte nebo uživatelé s SSPR problémy, přečtěte si téma [řešení potíží s samoobslužným resetováním hesla](active-directory-passwords-troubleshoot.md) .
+Pokud máte nebo uživatelé s SSPR problémy, přečtěte si téma [řešení potíží s samoobslužným resetováním hesla](./troubleshoot-sspr.md) .

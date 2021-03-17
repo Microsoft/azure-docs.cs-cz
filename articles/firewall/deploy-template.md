@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: vytvoření Azure Firewall se šablonou Zóny dostupnosti-Správce prostředků'
-description: Nasaďte Azure Firewall pomocí šablony. Virtuální síť má jednu virtuální síť se třemi podsítěmi. Nasadí se dva virtuální počítače s Windows serverem. pole s odkazem a serverem.
+description: V tomto rychlém startu nasadíte Azure Firewall pomocí šablony. Virtuální síť má jednu virtuální síť se třemi podsítěmi. Nasadí se dva virtuální počítače s Windows serverem. pole s odkazem a serverem.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/30/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 104e2e9f6593d95caf77c0796f8b9465eebcfcee
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 478f3454a728871040cdbbf9f817394cffe6b82f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705125"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660249"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Rychlý Start: nasazení Azure Firewall se šablonou Zóny dostupnosti-ARM
 
@@ -21,7 +21,7 @@ V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Šablona vytvoří testovací síťové prostředí s bránou firewall. Síť má jednu virtuální síť se třemi podsítěmi: *AzureFirewallSubnet*, *ServersSubnet*a *JumpboxSubnet*. Každá podsíť *ServersSubnet* a *JumpboxSubnet* má jeden virtuální počítač se dvěma jádry Windows serveru.
+Šablona vytvoří testovací síťové prostředí s bránou firewall. Síť má jednu virtuální síť se třemi podsítěmi: *AzureFirewallSubnet*, *ServersSubnet* a *JumpboxSubnet*. Každá podsíť *ServersSubnet* a *JumpboxSubnet* má jeden virtuální počítač se dvěma jádry Windows serveru.
 
 Brána firewall je v podsíti *AzureFirewallSubnet* a má kolekci pravidel aplikace s jedním pravidlem, které umožňuje přístup k `www.microsoft.com` .
 
@@ -93,4 +93,4 @@ Neodstraňujte skupinu prostředků a bránu firewall, pokud máte v plánu pokr
 Dál můžete pokračovat monitorováním protokolů brány Azure Firewall.
 
 > [!div class="nextstepaction"]
-> [Kurz: Monitorování protokolů brány Azure Firewall](tutorial-diagnostics.md)
+> [Kurz: Monitorování protokolů brány Azure Firewall](./firewall-diagnostics.md)

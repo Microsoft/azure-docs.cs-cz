@@ -3,17 +3,17 @@ title: Azure Storage ukázky pomocí JavaScriptu | Microsoft Docs
 description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Seznamte se s úvodními ukázkami objektů blob, front, tabulek a souborů pomocí klientských knihoven pro úložiště pro JavaScript nebo Node.js.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/19/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 466a1318dbe0a9299eebb9259ef8e0fe9bbbc0e7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: d21c92d6595d2db3f9fb01ee5ddc3669a0564bab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433082"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359743"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven V12 JavaScript
 
@@ -209,7 +209,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="share"></a>Sdílet
+### <a name="share"></a>Sdílení
 
 :::row:::
    :::column span="":::
@@ -350,7 +350,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Entity Batch](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
    :::column-end:::
    :::column span="":::
-      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
+      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -413,7 +413,7 @@ Chcete-li zobrazit kompletní ukázkové knihovny jazyka JavaScript, přejít na
 
 Úložiště GitHubu můžete procházet a klonovat pro každou knihovnu.
 
-## <a name="getting-started-guides"></a>Úvodní příručky
+## <a name="getting-started-guides"></a>Příručky Začínáme
 
 Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure Storage, přečtěte si následující příručky.
 
@@ -428,4 +428,5 @@ Informace o ukázkách pro jiné jazyky:
 * .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
 * Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
 * Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
+* C++: [Azure Storage ukázky pomocí jazyka C++](storage-samples-c-plus-plus.md)
 * Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

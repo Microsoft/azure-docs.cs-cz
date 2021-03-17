@@ -1,22 +1,18 @@
 ---
 title: Prostředí Integration Runtime
 description: Seznamte se s prostředím Integration Runtime v Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 911674a80b531a50cfb429c5dc0ff41f1aaceb08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407689"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389939"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory 
 
@@ -56,7 +52,7 @@ Prostředí Azure Integration runtime může:
 
 - Spouštění toků dat v Azure 
 - Spustit aktivitu kopírování mezi úložišti cloudových dat
-- Odeslání následujících transformačních aktivit ve veřejné síti: datacihly/aktivita jar/jar/Python, aktivita v rámci prostředí HDInsight, aktivita prasete HDInsight, aktivita pro MapReduce HDInsight, aktivita HDInsight Spark, aktivita pro streamování HDInsight, aktivita streamování ve službě HDInsight Machine Learning, aktivita Machine Learning spouštění v prostředí .NET, vlastní aktivita aktivity Data Lake Analytics prostředků, aktivita pro hledání dat
+- Odešlete následující transformační aktivity ve veřejné síti: aktivita poznámkového bloku datacihly/jar/Python, aktivita podregistru HDInsight, aktivita prasete v HDInsight, aktivita MapReduce HDInsight, aktivita Sparku v HDInsight, aktivita streamování HDInsight, aktivita v rámci dávkového zpracování Azure Machine Learning Studio (klasický), Azure Machine Learning Studio (Classic) aktualizovat aktivity prostředků, aktivity uložených procedur a aktivity v jazyce U-SQL, Data Lake Analytics vlastní aktivita technologie .NET, aktivity webu, aktivita vyhledávání
 
 ### <a name="azure-ir-network-environment"></a>Síťové prostředí Azure IR
 
@@ -69,7 +65,7 @@ Prostředí Azure Integration Runtime poskytuje nativní výpočetní prostřed�
 
 Odeslání aktivity je odlehčená operace pro směrování aktivity do cílové výpočetní služby, takže nemusíte škálovat výpočetní velikost pro tento scénář.
 
-Informace o vytváření a konfiguraci Azure IR najdete v tématu Jak vytvořit a nakonfigurovat Azure IR v části průvodce. 
+Informace o vytváření a konfiguraci Azure IR najdete v tématu [jak vytvořit a nakonfigurovat Azure Integration runtime](create-azure-integration-runtime.md). 
 
 > [!NOTE] 
 > Prostředí Azure Integration runtime má vlastnosti související s modulem runtime toku dat, který definuje základní výpočetní infrastrukturu, která by se použila ke spouštění toků dat. 
@@ -79,7 +75,7 @@ Informace o vytváření a konfiguraci Azure IR najdete v tématu Jak vytvořit 
 Prostředí IR v místním prostředí nabízí tyto funkce:
 
 - Spouštění aktivity kopírování mezi úložišti dat v cloudu a úložištěm dat v privátní síti.
-- Odesílání následujících transformačních aktivit pro výpočetní prostředky v místním prostředí nebo v Azure Virtual Network: aktivita v rámci prostředí HDInsight (BYOC-Přineste si vlastní cluster), aktivita prasete služby HDInsight (BYOC), aktivita MapReduce služby HDInsight (BYOC), aktivita HDInsight Spark (BYOC), aktivita streamování HDInsight (BYOC), aktivita spuštění služby Batch, Machine Learning aktualizovat aktivity prostředků, aktivity uložených procedur, Data Lake Analytics Machine Learning aktivity U-SQL, vlastní aktivita (spouští se v Azure Batch) , Aktivity vyhledávání a získání aktivity metadat.
+- Odesílání následujících transformačních aktivit pro výpočetní prostředky v místním prostředí nebo v Azure Virtual Network: aktivita v podregistru HDInsight (BYOC-Přineste si vlastní cluster), aktivita prasete HDInsight (BYOC), aktivita MapReduce HDInsight (BYOC), aktivita HDInsight Spark (BYOC), aktivita streamování HDInsight (BYOC), aktivita spouštění služby Batch (Classic) Azure Machine Learning Studio (Classic) aktualizovat aktivity prostředků, Azure Machine Learning Studio aktivita uložených procedur a činnost služby Data Lake Analytics U-SQL , Vlastní aktivita (běží na Azure Batch), aktivita vyhledávání a aktivita získat metadata.
 
 > [!NOTE] 
 > Pomocí místního prostředí Integration runtime můžete podporovat úložiště dat, která vyžadují vlastní ovladač, jako je SAP HANA, MySQL atd.  Další informace najdete v tématu [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -113,7 +109,7 @@ Další informace najdete v článku o vytváření a konfiguraci prostředí Az
 
 Další informace o modulu runtime Azure-SSIS najdete v následujících článcích: 
 
-- [Kurz: Nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) Tento článek obsahuje podrobné pokyny k vytvoření Azure-SSIS IR a používá Azure SQL Database k hostování katalogu SSIS. 
+- [Kurz: Nasazení balíčků SSIS do Azure](./tutorial-deploy-ssis-packages-azure.md) Tento článek obsahuje podrobné pokyny k vytvoření Azure-SSIS IR a používá Azure SQL Database k hostování katalogu SSIS. 
 - [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek se rozbalí v tomto kurzu a poskytne pokyny k použití spravované instance SQL a připojení IR k virtuální síti. 
 - [Monitorování Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime). Tento článek ukazuje, jak načíst informace o Azure-SSIS IR a popisy stavů ve vrácených informacích. 
 - [Správa Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). Tento článek ukazuje, jak zastavit, spustit nebo odebrat Azure-SSIS IR. Ukazuje také postup horizontálního navýšení kapacity Azure-SSIS IR přidáním více uzlů. 
@@ -143,7 +139,7 @@ Pokud se rozhodnete použít Azure IR automatického řešení ve veřejné sít
   - Při kopírování dat do Salesforce, u kterých není oblast zjistitelná, se aktivita kopírování spustí na IR v Východní USA.
 
   >[!TIP] 
-  >Pokud máte přísné požadavky na dodržování předpisů pro data a potřebujete zajistit, aby data neopustila určité území, můžete prostředí Azure IR explicitně vytvořit v určité oblasti a odkázat propojenou službu na toto prostředí IR pomocí vlastnosti ConnectVia. Například pokud chcete kopírovat data z objektu blob v oblasti Velká Británie – jih do služby SQL Data Warehouse v oblasti Velká Británie – jih a chcete zajistit, aby data neopustila Velkou Británii, vytvořte prostředí Azure IR v oblasti Velká Británie – jih a připojte obě propojené služby k tomuto prostředí IR.
+  >Pokud máte přísné požadavky na dodržování předpisů pro data a potřebujete zajistit, aby data neopustila určité území, můžete prostředí Azure IR explicitně vytvořit v určité oblasti a odkázat propojenou službu na toto prostředí IR pomocí vlastnosti ConnectVia. Pokud třeba chcete kopírovat data z objektu BLOB v Velká Británie – jih do služby Azure synapse Analytics v Velká Británie – jih a chcete zajistit, aby data nezůstala Velká Británie, vytvořte v Velká Británie – jih Azure IR a propojte obě propojené služby s tímto IR.
 
 - Pro provádění aktivit vyhledávání/GetMetadata/Delete (označuje se také jako aktivity kanálu), deoprava transformačních aktivit (označované také jako externí aktivity) a vytváření operací (testovací připojení, seznam složek a seznam tabulek, náhled dat), ADF používá v oblasti Datové továrny IR.
 
@@ -202,4 +198,4 @@ Viz následující články:
 
 - [Vytvoření prostředí Azure Integration runtime](create-azure-integration-runtime.md)
 - [Vytvoření prostředí Integration Runtime v místním prostředí](create-self-hosted-integration-runtime.md)
-- [Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md). Tento článek se rozbalí v tomto kurzu a poskytne pokyny k použití spravované instance SQL a připojení IR k virtuální síti. 
+- [Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md). Tento článek se rozbalí v tomto kurzu a poskytne pokyny k použití spravované instance SQL a připojení IR k virtuální síti.

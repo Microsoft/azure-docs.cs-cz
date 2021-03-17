@@ -2,18 +2,19 @@
 title: Odpojení datového disku od virtuálního počítače se systémem Linux – Azure
 description: Naučte se odpojit datový disk od virtuálního počítače v Azure pomocí rozhraní příkazového řádku Azure nebo Azure Portal.
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41f70a476e5cc562207614c4e04658d5f0fc6d09
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 29a2cbbf2c390b81aa62b064a7cf93decbaa7457
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499513"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565984"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Linuxem
 
@@ -108,14 +109,12 @@ Disk zůstává v úložišti, ale už není připojený k virtuálnímu počít
 
 1. V nabídce vlevo vyberte **Virtual Machines**.
 1. V okně virtuálního počítače vyberte **disky**.
-1. V horní části okna **disky** vyberte **Upravit**.
-1. V okně **disky** v pravém dolním rohu datového disku, který chcete odpojit, klikněte na tlačítko Odpojit ![ Obrázek tlačítka odpojit ](./media/detach-disk/detach.png) .
-1. Po odebrání disku klikněte na **Uložit** v horní části okna.
+1. V okně **disky** v pravém dolním rohu datového disku, který chcete odpojit, vyberte tlačítko **X** a odpojte disk.
+1. Po odebrání disku vyberte **Uložit** v horní části okna.
 
-Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.
-
-
+Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači. Disk není odstraněný.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete znovu použít datový disk, můžete [ho jednoduše připojit k jinému virtuálnímu počítači](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud chcete znovu použít datový disk, můžete [ho jednoduše připojit k jinému virtuálnímu počítači](add-disk.md).
 
+Pokud chcete disk odstranit, takže už nebudete mít náklady na úložiště, přečtěte si téma [vyhledání a odstranění nepřipojeného spravovaného a nespravovaného disku Azure – Azure Portal](../disks-find-unattached-portal.md).

@@ -1,14 +1,16 @@
 ---
 title: Soubory SharePointu – QnA Maker
 description: Přidejte do znalostní báze zabezpečené zdroje dat SharePointu, abyste mohli rozšířit znalostní bázi s dotazy a odpověďmi, které je možné zabezpečit pomocí služby Active Directory.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0832b54e02cabecb0b1f0e7af600b8adc621a8b0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660310"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584766"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidání zabezpečeného zdroje dat SharePointu do znalostní báze
 
@@ -21,11 +23,11 @@ Pokud správce znalostní báze QnA Maker Knowledge Base není správce služby 
 ## <a name="prerequisites"></a>Požadavky
 
 * Cloudová služba SharePoint – QnA Maker používá Microsoft Graph pro oprávnění. Pokud je váš SharePoint v místním prostředí, nebudete se moct extrahovat ze SharePointu, protože Microsoft Graph nebude moct určit oprávnění.
-* Formát adresy URL – QnA Maker podporují jenom adresy URL SharePointu, které jsou vygenerované pro sdílení a mají formát.`https://\*.sharepoint.com`
+* Formát adresy URL – QnA Maker podporují jenom adresy URL SharePointu, které jsou vygenerované pro sdílení a mají formát. `https://\*.sharepoint.com`
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Přidání podporovaných typů souborů do znalostní báze Knowledge Base
 
-Z webu služby SharePoint do znalostní báze můžete přidat všechny [typy souborů](../Concepts/content-types.md) podporované QnA maker. Je možné, že budete muset udělit [oprávnění](#permissions) , pokud je prostředek souboru zabezpečený.
+Z webu služby SharePoint do znalostní báze můžete přidat všechny [typy souborů](../index.yml) podporované QnA maker. Je možné, že budete muset udělit [oprávnění](#permissions) , pokud je prostředek souboru zabezpečený.
 
 1. Z knihovny s webem služby SharePoint vyberte nabídku se třemi tečkami v souboru `...` .
 1. Zkopírujte adresu URL souboru.
@@ -117,20 +119,24 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
     [![Hledat QnAMakerPortalSharePoint v seznamu podnikových aplikací](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
-1. V části **zabezpečení**pokračujte na **oprávnění**. Vyberte **udělit souhlas správce pro organizaci**.
+1. V části **zabezpečení** pokračujte na **oprávnění**. Vyberte **udělit souhlas správce pro organizaci**.
 
     [![Vybrat ověřeného uživatele pro správce služby Active Directory](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
-1. Vyberte účet pro přihlášení s oprávněním pro udělení oprávnění pro službu Active Directory.
+1. Vyberte účet Sign-On s oprávněním pro udělení oprávnění pro službu Active Directory.
 
+
+
+
+## <a name="add-sharepoint-data-source-with-apis"></a>Přidání zdroje dat SharePointu pomocí rozhraní API
+
+Existuje alternativní řešení, které umožňuje přidat nejnovější obsah služby SharePoint přes rozhraní API pomocí služby Azure Blob Storage, a to níže v následujících krocích: 
+1.  Stáhnout soubory SharePoint lokálně. Uživatel, který volá rozhraní API, musí mít přístup k SharePointu. 
+1.  Nahrajte je do úložiště objektů BLOB v Azure. Tím se vytvoří zabezpečený sdílený přístup [pomocí tokenu SAS.](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works) 
+1. Předejte adresu URL objektu BLOB vygenerovanou tokenem SAS na rozhraní API služby QnA Maker. Pokud chcete, aby otázka mohla vyextrahovat z těchto souborů, je nutné přidat typ souboru přípony jako ' &EXT = PDF ' nebo ' &EXT = doc ' na konci adresy URL před předáním do rozhraní API služby QnA Maker.
 
 
 <!--
-
-## Add SharePoint data source with APIs
-
-You need to get the SharePoint file's URI before adding it to QnA Maker.
-
 ## Get SharePoint File URI
 
 Use the following steps to transform the SharePoint URL into a sharing token.
@@ -154,7 +160,7 @@ Use the following steps to transform the SharePoint URL into a sharing token.
 
 ### Add or update a SharePoint File URI to your knowledge base
 
-Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
+Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) or [updating a knowledge base](/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
 ```
 {
@@ -186,4 +192,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Spolupráce na znalostní bázi](collaborate-knowledge-base.md)
+> [Spolupráce na znalostní bázi](../index.yml)

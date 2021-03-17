@@ -10,16 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758954"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006383"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Připojení snímače RuuviTag k aplikaci Azure IoT Central
 
-*Tento článek se týká tvůrců řešení a vývojářů zařízení.*
+*Tento článek se týká tvůrců řešení.*
 
 Tento článek popisuje, jak jako tvůrce řešení můžete připojit senzor RuuviTag k aplikaci Microsoft Azure IoT Central.
 
@@ -45,10 +45,10 @@ Pokud chcete RuuviTag senzor do instance aplikace Azure IoT Central, musíte v r
 
 Přidání šablony zařízení RuuviTag:
 
-1. V levém podokně přejděte na kartu ***šablony zařízení*** , vyberte **+ Nový**: ![ vytvořit novou šablonu zařízení. ](./media/howto-connect-ruuvi/devicetemplate-new.png) Stránka vám nabídne možnost ***vytvořit vlastní šablonu*** nebo ***použít předkonfigurovaný šablonu zařízení*** .
-1. V seznamu předkonfigurovaných šablon zařízení vyberte šablonu zařízení RuuviTag, jak je vidět níže: ![ Vyberte šablonu zařízení RuuviTag.](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. Vyberte ***Další: přizpůsobit*** , aby pokračoval k dalšímu kroku.
-1. Na další obrazovce vyberte ***vytvořit*** a připojte šablonu zařízení C500 do vaší aplikace IoT Central.
+1. V levém podokně přejděte na kartu ***šablony zařízení** _, vyberte _* + Nová * *: ![ vytvořit novou šablonu zařízení. ](./media/howto-connect-ruuvi/devicetemplate-new.png) Stránka vám nabídne možnost **_vytvořit vlastní šablonu_*_ nebo _*_použít předkonfigurovaný šablonu zařízení_*_ .
+1. V seznamu předkonfigurovaných šablon zařízení vyberte šablonu zařízení RuuviTag, jak je vidět níže:  ![ Vyberte šablonu zařízení RuuviTag.](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. Vyberte _*_Další: přizpůsobit_*_ , aby pokračoval k dalšímu kroku.
+1. Na další obrazovce vyberte _*_vytvořit_*_ a připojte šablonu zařízení C500 do vaší aplikace IoT Central.
 
 ## <a name="connect-a-ruuvitag-sensor"></a>Připojit senzor RuuviTag
 
@@ -68,7 +68,7 @@ Pokud nemáte fyzické zařízení RuuviTag, můžete vytvořit simulovaný Ruuv
 
 Postup vytvoření simulovaného RuuviTag:
 
-1. Vyberte **zařízení > RuuviTag**.
+1. Vyberte _ * zařízení > RuuviTag * *.
 1. Vyberte **+ Nový**.
 1. Zadejte jedinečné **ID zařízení** a popisný **název zařízení**.  
 1. Povolí **simulované** nastavení.

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68934871"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517168"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Osvědčené postupy pro zabezpečení vývoje v Azure
 Tato série článků představuje bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o fázích Microsoft Security Development Lifecycle (SDL) a bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během každé fáze životního cyklu. Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete v jednotlivých fázích životního cyklu použít k návrhu, vývoji a nasazení bezpečnější aplikace.
@@ -37,7 +37,7 @@ Následující osvědčené postupy pro bezpečný vývoj softwaru vyžadují in
 
 Později vyřešíte problém v životním cyklu vývoje, což bude mít za následek tím větší náklady. Problémy se zabezpečením nejsou žádné výjimky. Pokud nevyřešíte problémy se zabezpečením v počátečních fázích vývoje softwaru, každá z následujících fází může dědit ohrožení zabezpečení předchozí fáze. Konečný produkt bude mít za sebou několik problémů se zabezpečením a možnost porušení. Sestavování zabezpečení v každé fázi životního cyklu vývoje vám pomůže včas zachytit problémy a pomůže vám snížit náklady na vývoj.
 
-Provedeme fáze Microsoft [SDL (Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) k zavedení aktivit a služeb Azure, které můžete použít ke splnění postupů zabezpečení softwaru v každé fázi životního cyklu.
+Provedeme fáze Microsoft [SDL (Security Development Lifecycle)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) k zavedení aktivit a služeb Azure, které můžete použít ke splnění postupů zabezpečení softwaru v každé fázi životního cyklu.
 
 Fáze SDL:
 
@@ -46,10 +46,10 @@ Fáze SDL:
   - Návrh
   - Implementace
   - Ověření
-  - Vydaná verze
+  - Vydat
   - Odpověď
 
-![Security Development Lifecycle](./media/secure-dev-overview/01-sdl-phase.png)
+![Životní cyklus vývoje zabezpečení (Security Development Lifecycle)](./media/secure-dev-overview/01-sdl-phase.png)
 
 V těchto článcích se fáze SDL seskupují do návrhu, vývoje a nasazení.
 
@@ -59,11 +59,11 @@ Vaše organizace může mít formální program zabezpečení aplikací, který 
 
 Chápeme, že mnoho čtenářů nemusí mít tým zabezpečení nebo dodržování předpisů, aby mohl zapojit. Tyto články vám pomůžou s bezpečnostními otázkami a rozhodnutími, která je potřeba vzít v úvahu v každé fázi SDL.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje informací
 
 Následující zdroje vám pomůžou získat další informace o vývoji zabezpečených aplikací a k zabezpečení aplikací v Azure:
 
-[Microsoft Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) – SDL je proces vývoje softwaru od Microsoftu, který vývojářům pomáhá sestavovat bezpečnější software. Pomáhá řešit požadavky na dodržování předpisů zabezpečení a současně snižovat náklady na vývoj.
+[Microsoft Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) – SDL je proces vývoje softwaru od Microsoftu, který vývojářům pomáhá sestavovat bezpečnější software. Pomáhá řešit požadavky na dodržování předpisů zabezpečení a současně snižovat náklady na vývoj.
 
 [Otevřete projekt Web Application Security (OWASP)](https://www.owasp.org/index.php/Main_Page) – OWASP je online komunita, která v poli zabezpečení webových aplikací vytváří volně dostupné články, metodologie, dokumentaci, nástroje a technologie.
 

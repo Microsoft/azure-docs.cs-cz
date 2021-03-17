@@ -1,22 +1,22 @@
 ---
-title: Připojit SQL na vyžádání a Power BI Desktop & vytvořit sestavu
-description: V tomto kurzu se naučíte připojit SQL na vyžádání v Azure synapse Analytics a Power BI plochu a vytvořit ukázkovou sestavu založenou na zobrazení.
+title: 'Kurz: připojení fondu SQL bez serveru k Power BI Desktop & vytvoření sestavy'
+description: V tomto kurzu se dozvíte, jak připojit fond SQL bez serveru ve službě Azure synapse Analytics k Power BI plochu a vytvořit ukázkovou sestavu založenou na zobrazení.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8dd3edd25d21bfcd0fde1bc8b5f103877d968c8a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089171"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119981"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Kurz: použití SQL na vyžádání pomocí Power BI Desktop & vytvoření sestavy
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Kurz: použití fondu SQL bez serveru s Power BI Desktop & vytvoření sestavy
 
 V tomto kurzu se naučíte:
 
@@ -24,15 +24,15 @@ V tomto kurzu se naučíte:
 >
 > - Vytvořit ukázkovou databázi
 > - Vytvořit zobrazení použité pro sestavu
-> - Připojení Power BI Desktop k SQL na vyžádání
+> - Připojit Power BI Desktop k fondu SQL bez serveru
 > - Vytvořit sestavu na základě zobrazení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - [Power BI Desktop](https://powerbi.microsoft.com/downloads/) – je potřeba k vizualizaci dat a vytvoření sestavy.
-- [Pracovní prostor Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) – je potřeba k vytvoření databáze, externímu zdroji dat a zobrazení.
+- [Pracovní prostor Azure synapse](../get-started-create-workspace.md) – je potřeba k vytvoření databáze, externímu zdroji dat a zobrazení.
 
 Volitelné:
 
@@ -42,10 +42,10 @@ Hodnoty pro následující parametry:
 
 | Parametr                                 | Popis                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adresa koncového bodu služby SQL na vyžádání    | Používá se jako název serveru.                                   |
-| Oblast koncového bodu služby SQL na vyžádání     | Slouží k určení úložiště používaného v ukázkách. |
+| Adresa koncového bodu služby fondu SQL bez serveru    | Používá se jako název serveru.                                   |
+| Oblast koncového bodu služby fondu SQL bez serveru     | Slouží k určení úložiště používaného v ukázkách. |
 | Uživatelské jméno a heslo pro přístup ke koncovému bodu | Používá se pro přístup ke koncovému bodu.                               |
-| Databáze, kterou použijete k vytváření zobrazení     | Databáze použitá jako výchozí bod v ukázkách       |
+| Databáze, kterou použijete k vytvoření zobrazení     | Databáze použitá jako výchozí bod v ukázkách       |
 
 ## <a name="1---create-database"></a>1. vytvoření databáze
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2. vytvoření zdroje dat
 
-Zdroj dat je nezbytný pro službu SQL na vyžádání pro přístup k souborům v úložišti. Vytvořte zdroj dat pro účet úložiště, který se nachází ve stejné oblasti jako váš koncový bod. Přestože SQL na vyžádání má přístup k účtům úložiště z různých oblastí, má úložiště a koncový bod ve stejné oblasti lepší výkon.
+Zdroj dat je nezbytný pro službu fondu SQL bez serveru pro přístup k souborům v úložišti. Vytvořte zdroj dat pro účet úložiště, který se nachází ve stejné oblasti jako váš koncový bod. I když fond SQL bez serveru má přístup k účtům úložiště z různých oblastí, má úložiště a koncový bod ve stejné oblasti lepší výkon.
 
 Vytvořte zdroj dat spuštěním následujícího skriptu Transact-SQL (T-SQL):
 
@@ -100,7 +100,7 @@ Ukázková data obsahují následující sady dat:
 
 Naplnění žen a rasy u každého 2000 okresu v USA, který je ve formátu Parquet Decennial a 2010.
 
-| Cesta ke složce                                                  | Popis                                                  |
+| Cesta ke složce                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release                                                    | Nadřazená složka pro data v ukázkovém účtu úložiště               |
 | /Release/us_population_county/                               | Datové soubory v USA ve formátu Parquet jsou rozdělené podle roku pomocí schématu dělení na oddíly nebo Hadoop. |
@@ -158,7 +158,7 @@ Po dokončení práce s touto sestavou tyto prostředky odstraňte pomocí násl
 1. Odstranit přihlašovací údaje účtu úložiště
 
    ```sql
-   DROP EXTENAL DATA SOURCE AzureOpenData
+   DROP EXTERNAL DATA SOURCE AzureOpenData
    ```
 
 2. Odstranit zobrazení

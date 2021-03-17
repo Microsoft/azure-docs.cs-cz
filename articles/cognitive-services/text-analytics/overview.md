@@ -1,53 +1,70 @@
 ---
-title: Co je rozhraní API pro analýzu textu? Vestavěn
+title: Dolování a analýza textu pomocí rozhraní API pro analýzu textu – Azure Cognitive Services
 titleSuffix: Azure Cognitive Services
-description: Použijte rozhraní API pro analýzu textu z Azure Cognitive Services pro analýzu mínění, extrakci klíčových frází, detekci jazyka a rozpoznávání entit.
+description: Přečtěte si o dolování textu pomocí rozhraní API pro analýzu textu. Slouží k mínění analýze, rozpoznávání jazyka a dalším formám zpracování přirozeného jazyka.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+keywords: dolování textu, analýza míněníí, analýza textu
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: cb7bdeb379ee753424d9c975a8c030b0f7890552
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141853"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722275"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
-Rozhraní API pro analýzu textu je cloudová služba, která poskytuje pokročilé zpracování přirozeného jazyka nad nezpracovaným textem a zahrnuje čtyři hlavní funkce: analýzu míněníí, extrakci klíčových frází, detekci jazyka a rozpoznávání pojmenovaných entit.
+Rozhraní API pro analýzu textu je cloudová služba, která poskytuje funkce NLP (přirozený jazyk Processing) pro dolování textu a analýzu textu, včetně analýz mínění, dolování stanovisek, extrakce klíčových frází, rozpoznávání jazyka a rozpoznávání pojmenovaných entit.
 
-Rozhraní API je součástí služby [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty.
+Rozhraní API je součástí služby [Azure Cognitive Services](../index.yml), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty. Tyto funkce můžete použít s REST API [verze 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) nebo [verze 3,1-Preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)nebo v [klientské knihovně](quickstarts/client-libraries-rest-api.md).
 
-> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
-
-Analýza textu může znamenat různé věci, ale v Cognitive Services rozhraní API pro analýzu textu poskytuje čtyři typy analýz, jak je popsáno níže. Tyto funkce můžete použít spolu s [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)nebo s [klientskou knihovnou](quickstarts/text-analytics-sdk.md).
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
-Pomocí [analýzy mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) zjistíte, co si zákazníci myslí o vaší značce nebo tématu analýzou nezpracovaného textu pro poznámky o kladných nebo záporných mínění. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace.
+
+Využijte [analýzu mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) a zjistěte, co lidé považují za vaši značku nebo téma, a to tak, že budou v textu popsány kladné nebo záporné mínění. 
+
+Tato funkce poskytuje popisky mínění (například "negativní", "neutrální" a "pozitivní") na základě nejvyššího skóre spolehlivosti zjištěného službou ve větě a na úrovni dokumentu. Tato funkce také vrátí skóre spolehlivosti mezi 0 a 1 pro každý dokument & větě v rámci něj pro pozitivní, neutrální a negativní mínění. Službu můžete také spustit místně [pomocí kontejneru](how-tos/text-analytics-how-to-install-containers.md).
+
+Počínaje verzí v 3.1 verze Preview je dolování stanovisek funkcí Analýza mínění. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
-Automatické [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) pro rychlé určení hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).
+
+Pomocí [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) můžete rychle identifikovat hlavní koncepty v textu. Například v textu "potravina byla Delicious a dostali jsme milované pracovníky", Extrakce klíčových frází vrátí hlavní body pro komunikaci: "jídla" a "milované pracovníky".
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
-Můžete [zjistit, který jazyk je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka spárovaný se skóre označuje sílu skóre.
+
+Rozpoznání jazyka může [detekovat jazyk, ve kterém je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka se spáruje s skóre spolehlivosti.
 
 ## <a name="named-entity-recognition"></a>Rozpoznávání pojmenovaných entit
-[Identifikujte a Kategorizujte entity](how-tos/text-analytics-how-to-entity-linking.md) v textu jako lidi, místa, organizace, datum a čas, množství, procenta, měny a další. Také rozpozná známé entity a propojí je s dalšími informacemi na webu.
 
-## <a name="use-containers"></a>Použití kontejnerů
+Rozpoznávání pojmenovaných entit (NER) dokáže [identifikovat a kategorizovat entity](how-tos/text-analytics-how-to-entity-linking.md) ve vašem textu, protože uživatelé, místa, organizace, množství, známé entity jsou také rozpoznány a propojeny s dalšími informacemi na webu.
 
-[Kontejnery analýza textu můžete použít](how-tos/text-analytics-how-to-install-containers.md) k extrakci klíčových frází, zjišťování jazyka a k analýze mínění místně, a to díky instalaci standardizovaných kontejnerů Docker blíž k vašim datům.
+## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
+
+[Použijte kontejnery analýza textu](how-tos/text-analytics-how-to-install-containers.md) k nasazení funkcí rozhraní API místně. Tyto kontejnery Docker umožňují přiblížit službu k vašim datům pro účely dodržování předpisů, zabezpečení nebo jiných provozních důvodů. Analýza textu nabízí následující kontejnery:
+
+* Analýza mínění
+* extrakce klíčových frází (Preview)
+* rozpoznávání jazyka (Preview)
+* Analýza textu pro stav (Preview)
+
+## <a name="asynchronous-operations"></a>Asynchronních operace
+
+`/analyze`Koncový bod umožňuje [asynchronní](how-tos/text-analytics-how-to-call-api.md)použití vybraných funkcí rozhraní API pro analýzu textu, jako je například ner a extrakce klíčových frází.
 
 ## <a name="typical-workflow"></a>Typický pracovní postup
 
 Pracovní postup je jednoduchý: odešlete data pro analýzu a obdržíte výstupy ve svém kódu. Analyzátory jsou používány tak, jak jsou, bez dalších konfigurací nebo přizpůsobení.
 
-1. [Vytvořte prostředek Azure](../cognitive-services-apis-create-account.md) pro analýza textu. Potom [získáte klíč](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který jste vygenerovali k ověření vašich požadavků.
+1. [Vytvořte prostředek Azure](how-tos/text-analytics-how-to-call-api.md) pro analýza textu. Potom [získáte klíč](how-tos/text-analytics-how-to-call-api.md) , který jste vygenerovali k ověření vašich požadavků.
 
 2. [Zformulujte požadavek](how-tos/text-analytics-how-to-call-api.md#json-schema) obsahující vaše data ve formě nezpracovaného nestrukturovaného textu ve formátu JSON.
 
@@ -65,56 +82,37 @@ Můžete začít používat rozhraní API pro analýzu textu v procesech, a to i
 
 * Vyžaduje se minimální programování:
     * [Extrakce informací v Excelu pomocí Analýza textu a automatizace](tutorials/extract-excel-information.md)
-    * [Použití rozhraní API pro analýzu textu a MS Flow k identifikaci mínění komentářů ve skupině Yammeru](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Použití rozhraní API pro analýzu textu a MS Flow k identifikaci mínění komentářů ve skupině Yammeru](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [Integrace Power BI s rozhraní API pro analýzu textu k analýze názoru zákazníků](tutorials/tutorial-power-bi-key-phrases.md)
 * Doporučené programovací prostředí:
-    * [Analýza mínění na streamovaných datech s využitím Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [Sestavení aplikace v baňce pro překlad textu, analýza mínění a syntetizace řeči](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Analýza mínění na streamovaných datech s využitím Azure Databricks](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
+    * [Sestavení aplikace v baňce pro překlad textu, analýza mínění a syntetizace řeči](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>Podporované jazyky
 
-Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost. V rozhraní API pro analýzu textu pro tento obsah se můžete podívat na [podporované jazyky](text-analytics-supported-languages.md) .
+Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost. V rozhraní API pro analýzu textu pro tento obsah se můžete podívat na [podporované jazyky](./language-support.md) .
 
 <a name="data-limits"></a>
 
 ## <a name="data-limits"></a>Omezení dat
 
-Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Aktuální limit je 5 120 znaků pro každý dokument; Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků.
-
-| Omezení | Hodnota |
-|------------------------|---------------|
-| Maximální velikost jednoho dokumentu | 5 120 znaků měřených podle [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) . |
-| Maximální velikost celého požadavku | 1 MB |
-| Maximální počet dokumentů v požadavku | Až 1 000 dokumentů ([u každé funkce se liší](concepts/data-limits.md)) |
-
-Vaše omezení četnosti se bude lišit od cenové úrovně.
-
-| Úroveň          | Počet žádostí za sekundu | Žádosti za minutu |
-|---------------|---------------------|---------------------|
-| S/více službami | 1000                | 1000                |
-| S0/F0         | 100                 | 300                 |
-| S1            | 200                 | 300                 |
-| S2            | 300                 | 300                 |
-| S3            | 500                 | 500                 |
-| S4            | 1000                | 1000                |
-
-Požadavky se měří pro každou funkci Analýza textu samostatně. Můžete například odeslat maximální počet požadavků pro vaši cenovou úroveň všem funkcím ve stejnou dobu.      
+Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Další informace najdete v článku [omezení pro data](concepts/data-limits.md) .
 
 ## <a name="unicode-encoding"></a>Kódování Unicode
 
-Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyjádření a kalkulaci počtu znaků. Požadavky je možné odesílat v kódování UTF-8 i UTF-16 bez měřitelných rozdílů v počtu znaků. Body kódu sady Unicode jsou použité jako heuristika délky znaků a jsou považovány za ekvivalentní ve smyslu datového omezení analýzy textu. Pokud použijete [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) k získání počtu znaků, použijete stejnou metodu, kterou používáme k měření velikosti dat.
+Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyjádření a kalkulaci počtu znaků. Požadavky je možné odesílat v kódování UTF-8 i UTF-16 bez měřitelných rozdílů v počtu znaků. Body kódu sady Unicode jsou použité jako heuristika délky znaků a jsou považovány za ekvivalentní ve smyslu datového omezení analýzy textu. Pokud použijete [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) k získání počtu znaků, použijete stejnou metodu, kterou používáme k měření velikosti dat.
 
 ## <a name="next-steps"></a>Další kroky
 
 + [Vytvořte prostředek Azure](../cognitive-services-apis-create-account.md) pro analýza textu, abyste získali klíč a koncový bod pro vaše aplikace.
 
-+ Pomocí [rychlého](quickstarts/text-analytics-sdk.md) startu spustíte odesílání volání rozhraní API. Zjistěte, jak odesílat text, zvolit analýzu a zobrazit výsledky s minimem kódu.
++ Pomocí [rychlého](quickstarts/client-libraries-rest-api.md) startu spustíte odesílání volání rozhraní API. Zjistěte, jak odesílat text, zvolit analýzu a zobrazit výsledky s minimem kódu.
 
 + Další informace o nových verzích a funkcích najdete [v tématu Co je nového v rozhraní API pro analýzu textu](whats-new.md) .
 
-+ Dig se tento [kurz analýzy mínění](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) pomocí Azure Databricks trochu hlubší.
++ Dig se tento [kurz analýzy mínění](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services) pomocí Azure Databricks trochu hlubší.
 
 + Podívejte se na náš seznam blogových příspěvků a další videa o použití rozhraní API pro analýzu textu s dalšími nástroji a technologiemi na naší [externí stránce obsahu komunity &](text-analytics-resource-external-community.md).

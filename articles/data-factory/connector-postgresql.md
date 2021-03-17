@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z PostgreSQL pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z PostgreSQL do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 6d10e7b9b24817eb738172bd0f2d2c3e7f8f2cbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0d8783c4b07c8c87e57ccd9a5d65983825347c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416753"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384091"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopírování dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -54,18 +49,18 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu PostgreSQL jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **PostgreSql** . | Ano |
-| připojovací řetězec | Připojovací řetězec ODBC pro připojení k Azure Database for PostgreSQL. <br/>Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `password` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ | Vlastnost Type musí být nastavená na: **PostgreSql** . | Yes |
+| připojovací řetězec | Připojovací řetězec ODBC pro připojení k Azure Database for PostgreSQL. <br/>Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `password` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 Typický připojovací řetězec je `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` . Další vlastnosti, které můžete nastavit pro váš případ:
 
 | Vlastnost | Popis | Možnosti | Vyžadováno |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Metoda, kterou ovladač používá k šifrování dat posílaných mezi ovladačem a databázovým serverem. Např.:`EncryptionMethod=<0/1/6>;`| 0 (bez šifrování) **(výchozí)** /1 (SSL)/6 (RequestSSL) | Ne |
-| ValidateServerCertificate (VSC) | Určuje, zda ovladač ověřuje certifikát, který je odeslán databázovým serverem, pokud je povoleno šifrování SSL (metoda šifrování = 1). Např.:`ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** /1 (povoleno) | Ne |
+| EncryptionMethod (EM)| Metoda, kterou ovladač používá k šifrování dat posílaných mezi ovladačem a databázovým serverem. Např.:  `EncryptionMethod=<0/1/6>;`| 0 (bez šifrování) **(výchozí)** /1 (SSL)/6 (RequestSSL) | No |
+| ValidateServerCertificate (VSC) | Určuje, zda ovladač ověřuje certifikát, který je odeslán databázovým serverem, pokud je povoleno šifrování SSL (metoda šifrování = 1). Např.:  `ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** /1 (povoleno) | No |
 
 **Příklad:**
 
@@ -94,13 +89,13 @@ Typický připojovací řetězec je `Server=<server>;Database=<database>;Port=<p
         "type": "PostgreSql",
         "typeProperties": {
             "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -143,10 +138,10 @@ Pokud jste používali propojenou službu PostgreSQL s následující datovou č
 
 Chcete-li kopírovat data z PostgreSQL, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **PostgreSqlTable** . | Ano |
-| XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| typ | Vlastnost Type datové sady musí být nastavená na: **PostgreSqlTable** . | Yes |
+| schema | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
@@ -178,10 +173,10 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Chcete-li kopírovat data z PostgreSQL, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PostgreSqlSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PostgreSqlSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 > [!NOTE]
 > V názvech schémat a tabulek se rozlišují velká a malá písmena. Uzavřete je do `""` dotazu (dvojité uvozovky).

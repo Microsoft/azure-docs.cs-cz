@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 60e0ace70fa87c6a4c47e94eb3ff7f121c9a37cb
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: fa6572ddc694cb892f48cb3e618c176f087524f6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509038"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506561"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou ve službě Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Můžete také:
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Tento článek používá [Helm 3][helm] k instalaci kontroleru Nginx příchozího přenosu dat a správce certifikátů. Ujistěte se, že používáte nejnovější verzi Helm a máte přístup k úložištím *stabilní* a *jetstack* Helm. Pokyny k upgradu najdete v [dokumentaci k instalaci Helm][helm-install]. Další informace o konfiguraci a použití Helm najdete v tématu [install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
+Tento článek používá [Helm 3][helm] k instalaci kontroleru Nginx příchozího přenosu dat a správce certifikátů. Ujistěte se, že používáte nejnovější verzi Helm a máte přístup k úložištím *Nginx* a *jetstack* Helm. Pokyny k upgradu najdete v [dokumentaci k instalaci Helm][helm-install]. Další informace o konfiguraci a použití Helm najdete v tématu [install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
 
 Tento článek také vyžaduje, abyste spustili Azure CLI verze 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> Výše uvedené příkazy vytvoří IP adresu, která se odstraní, když odstraníte cluster AKS. Případně můžete vytvořit IP adresu v jiné skupině prostředků, kterou je možné spravovat odděleně od clusteru AKS. Pokud vytvoříte IP adresu v jiné skupině prostředků, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků, jako je například *Přispěvatel sítě*.
+> Výše uvedené příkazy vytvoří IP adresu, která se odstraní, když odstraníte cluster AKS. Případně můžete vytvořit IP adresu v jiné skupině prostředků, kterou je možné spravovat odděleně od clusteru AKS. Pokud vytvoříte IP adresu v jiné skupině prostředků, ujistěte se, že identita clusteru používaná clusterem AKS má delegovaná oprávnění k jiné skupině prostředků, jako je například *Přispěvatel sítě*. Další informace najdete v tématu [použití statické veřejné IP adresy a popisku DNS s nástrojem AKS Load Balancer][aks-static-ip].
 
 Teď nasaďte *Nginx a vstupní* graf s Helm. Pro přidání redundance se nasadí dvě repliky kontrolerů příchozího přenosu dat NGINX s parametrem `--set controller.replicaCount`. Pokud chcete mít v clusteru AKS k dispozici více než jeden uzel, zajistěte, aby bylo možné plně využít více uzlů.
 
@@ -62,7 +62,7 @@ Do vydaných verzí musíte předat dva další parametry, takže kontroler př�
 Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu. V uzlech Windows Serveru by se kontroler příchozího přenosu dat neměl spouštět. Selektor uzlů se specifikuje pomocí parametru `--set nodeSelector`, aby plánovači Kubernetes oznámil, že má spustit kontroler příchozího přenosu dat NGINX v uzlu Linuxu.
 
 > [!TIP]
-> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
+> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není Kubernetes RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
 
 > [!TIP]
 > Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
@@ -76,15 +76,16 @@ Aktualizujte následující skript s použitím **IP adresy** vašeho kontroleru
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
-# Add the official stable repository
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+# Add the ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 # Use Helm to deploy an NGINX ingress controller
-helm install nginx-ingress stable/nginx-ingress \
+helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="STATIC_IP" \
     --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="DNS_LABEL"
 ```
@@ -92,11 +93,10 @@ helm install nginx-ingress stable/nginx-ingress \
 Když se pro kontroler příchozího přenosu NGINX vytvoří služba Vyrovnávání zatížení Kubernetes, vaše statická IP adresa se přiřadí, jak je znázorněno v následujícím příkladu výstupu:
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
+$ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
-NAME                                        TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
-nginx-ingress-controller                    LoadBalancer   10.0.232.56   STATIC_IP      80:31978/TCP,443:32037/TCP   3m
-nginx-ingress-default-backend               ClusterIP      10.0.95.248   <none>         80/TCP                       3m
+NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
+nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_IP     80:32486/TCP,443:30953/TCP   44s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 Zatím se nevytvořila žádná pravidla příchozího přenosu dat, takže pokud přejdete na veřejnou IP adresu, zobrazí se 404 výchozí stránka NGINX adaptéru pro příjem dat. Pravidla příchozího přenosu dat jsou nakonfigurovaná v následujících krocích.
@@ -104,7 +104,7 @@ Zatím se nevytvořila žádná pravidla příchozího přenosu dat, takže poku
 Pomocí dotazu na plně kvalifikovaný název domény na veřejné IP adrese můžete ověřit, že je popisek názvu DNS použit následujícím způsobem:
 
 ```azurecli-interactive
-az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?ipAddress=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
 Kontroler příchozího přenosu dat je teď přístupný prostřednictvím IP adresy nebo plně kvalifikovaného názvu domény.
@@ -116,7 +116,7 @@ Kontroler příchozího přenosu dat NGINX podporuje ukončení protokolu TLS. E
 > [!NOTE]
 > V tomto článku se používá prostředí, které `staging` umožňuje šifrování. V produkčních nasazeních použijte `letsencrypt-prod` a `https://acme-v02.api.letsencrypt.org/directory` v definicích prostředků a při instalaci grafu Helm.
 
-Pokud chcete nainstalovat kontrolér správce certifikátů do clusteru s podporou RBAC, použijte následující `helm install` příkaz:
+Pokud chcete nainstalovat kontrolér správce certifikátů do clusteru s podporou Kubernetes RBAC, použijte následující `helm install` příkaz:
 
 ```console
 # Label the cert-manager namespace to disable resource validation
@@ -167,11 +167,15 @@ spec:
                 "kubernetes.io/os": linux
 ```
 
-K vytvoření vystavitele použijte `kubectl apply -f cluster-issuer.yaml` příkaz.
+K vytvoření vystavitele použijte `kubectl apply` příkaz.
 
 ```
-$ kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+```
 
+Výstup by měl vypadat podobně jako v tomto příkladu:
+
+```
 clusterissuer.cert-manager.io/letsencrypt-staging created
 ```
 
@@ -200,7 +204,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -238,7 +242,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -305,11 +309,15 @@ spec:
         path: /(.*)
 ```
 
-Pomocí příkazu vytvořte prostředek příchozího přenosu dat `kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic` .
+Pomocí příkazu vytvořte prostředek příchozího přenosu dat `kubectl apply` .
 
 ```
-$ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+```
 
+Výstup by měl vypadat podobně jako v tomto příkladu:
+
+```
 ingress.extensions/hello-world-ingress created
 ```
 
@@ -355,7 +363,7 @@ spec:
     kind: ClusterIssuer
 ```
 
-Prostředek certifikátu vytvoříte pomocí `kubectl apply -f certificates.yaml` příkazu.
+Prostředek certifikátu vytvoříte pomocí `kubectl apply` příkazu.
 
 ```
 $ kubectl apply -f certificates.yaml
@@ -484,3 +492,4 @@ Můžete také:
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-static-ip]: static-ip.md

@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, snímač, Viewer, vizualizace, Hloubka, RGB, barva, imu, zvuk, mikrofon, Point Cloud
-ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277149"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166101"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect Viewer
 
@@ -36,7 +36,7 @@ Prohlížeč může pracovat ve dvou režimech: pomocí živých dat ze senzoru 
 
 Spusťte aplikaci spuštěním `k4aviewer.exe` .
 
-![Kontrola verze firmwaru zařízení pomocí prohlížeče](./media/how-to-guides/open-viewer.png)
+![Snímek obrazovky, který zobrazuje spuštěnou aplikaci prohlížeče.](./media/how-to-guides/open-viewer.png)
 
 ### <a name="use-the-viewer-with-live-data"></a>Použití prohlížeče s živými daty
 

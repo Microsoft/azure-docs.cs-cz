@@ -1,22 +1,22 @@
 ---
 title: Azure Firewall filtrování na základě analýzy hrozeb
-description: Filtrování na základě logiky hrozeb lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén.
+description: Pro bránu firewall můžete povolit filtrování na základě analýzy hrozeb, které umožňuje upozorňovat na provoz ze známých škodlivých IP adres a domén nebo z nich a zamítat ho.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83655094"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791455"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall filtrování na základě logiky hrozeb
 
-Filtrování na základě logiky hrozeb lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.<br>
+Pro bránu firewall můžete povolit filtrování na základě analýzy hrozeb, které umožňuje upozorňovat na provoz ze známých škodlivých IP adres a domén nebo z nich a zamítat ho. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.<br>
 <br>
 
 :::image type="content" source="media/threat-intel/firewall-threat.png" alt-text="Analýza hrozeb v bráně firewall" border="false":::
@@ -53,6 +53,6 @@ Následující výpis protokolu ukazuje aktivované pravidlo:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Příklady ukázek Azure Firewall Log Analytics](log-analytics-samples.md)
+- [Příklady ukázek Azure Firewall Log Analytics](./firewall-workbook.md)
 - Zjistěte, jak [nasadit a nakonfigurovat Azure firewall](tutorial-firewall-deploy-portal.md) .
 - Kontrola [sestavy Microsoft Security Intelligence](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

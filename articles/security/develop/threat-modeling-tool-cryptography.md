@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6af4fba8ddf50b795d847a2c7b4e2fbc02fe593f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539947"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587175"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Rámec zabezpečení: kryptografie | Hrozeb 
 
 | Produkt/služba | Článek |
 | --------------- | ------- |
 | **Webová aplikace** | <ul><li>[Používejte jenom schválené symetrické blokové šifry a délky klíčů.](#cipher-length)</li><li>[Použít schválené režimy kódování bloku a inicializační vektory pro symetrické šifry](#vector-ciphers)</li><li>[Použití schválených asymetrických algoritmů, délek klíčů a odsazení](#padding)</li><li>[Použít schválené generátory náhodných čísel](#numgen)</li><li>[Nepoužívejte šifry symetrického streamu.](#stream-ciphers)</li><li>[Použijte schválené algoritmy hash MAC/HMAC/klíčů.](#mac-hash)</li><li>[Používejte jenom schválené kryptografické funkce hash.](#hash-functions)</li></ul> |
-| **Database** | <ul><li>[Použití algoritmu silného šifrování k šifrování dat v databázi](#strong-db)</li><li>[Balíčky SSIS by měly být šifrované a digitálně podepsané](#ssis-signed)</li><li>[Přidat digitální podpis do důležitých zabezpečených databází](#securables-db)</li><li>[Použití SQL serveru EKM k ochraně šifrovacích klíčů](#ekm-keys)</li><li>[Použít funkci AlwaysEncrypted, pokud by se šifrovací klíče neměly vyvažovat do databázového stroje](#keys-engine)</li></ul> |
+| **Databáze** | <ul><li>[Použití algoritmu silného šifrování k šifrování dat v databázi](#strong-db)</li><li>[Balíčky SSIS by měly být šifrované a digitálně podepsané](#ssis-signed)</li><li>[Přidat digitální podpis do důležitých zabezpečených databází](#securables-db)</li><li>[Použití SQL serveru EKM k ochraně šifrovacích klíčů](#ekm-keys)</li><li>[Použít funkci AlwaysEncrypted, pokud by se šifrovací klíče neměly vyvažovat do databázového stroje](#keys-engine)</li></ul> |
 | **Zařízení IoT** | <ul><li>[Bezpečné ukládání kryptografických klíčů na zařízení IoT](#keys-iot)</li></ul> | 
 | **Cloudová brána IoT** | <ul><li>[Vygenerujte náhodný symetrický klíč dostatečné délky pro ověřování IoT Hub](#random-hub)</li></ul> | 
 | **Mobilní klient Dynamics CRM** | <ul><li>[Ujistěte se, že zásady správy zařízení jsou zavedeny, které vyžadují použití PIN a umožňují vzdálené vymazání.](#pin-remote)</li></ul> | 
@@ -115,55 +115,55 @@ ms.locfileid: "87539947"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | Database | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Výběr šifrovacího algoritmu](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
+| **Reference**              | [Výběr šifrovacího algoritmu](/sql/relational-databases/security/encryption/choose-an-encryption-algorithm) |
 | **Kroky** | Algoritmy šifrování definují transformace dat, které nelze snadno vrátit neoprávněnými uživateli. SQL Server umožňuje správcům a vývojářům vybírat z několika algoritmů, včetně DES, Triple DES, TRIPLE_DES_3KEY, RC2, RC4, 128-bit RC4, DESX, 128 AES, 192-bit AES 256 a 16bitového AES. |
 
 ## <a name="ssis-packages-should-be-encrypted-and-digitally-signed"></a><a id="ssis-signed"></a>Balíčky SSIS by měly být šifrované a digitálně podepsané
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | Database | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [Identifikace zdroje balíčků s digitálními podpisy](https://msdn.microsoft.com/library/ms141174.aspx), [zmírnění hrozeb a ohrožení zabezpečení (integrační služby)](https://msdn.microsoft.com/library/bb522559.aspx) |
+| **Reference**              | [Identifikace zdroje balíčků s digitálními podpisy](/sql/integration-services/security/identify-the-source-of-packages-with-digital-signatures), [zmírnění hrozeb a ohrožení zabezpečení (integrační služby)](/sql/integration-services/security/security-overview-integration-services) |
 | **Kroky** | Zdroj balíčku je jednotlivec nebo organizace, které balíček vytvořily. Spuštění balíčku z neznámého nebo nedůvěryhodného zdroje může být riskantní. Aby se zabránilo neoprávněné manipulaci s balíčky SSIS, měli byste použít digitální podpisy. Aby bylo zajištěno utajení balíčků během úložiště nebo přenosu, musí být balíčky SSIS zašifrované |
 
 ## <a name="add-digital-signature-to-critical-database-securables"></a><a id="securables-db"></a>Přidat digitální podpis do důležitých zabezpečených databází
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | Database | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [PŘIDAT podpis (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
+| **Reference**              | [PŘIDAT podpis (Transact-SQL)](/sql/t-sql/statements/add-signature-transact-sql) |
 | **Kroky** | V případech, kdy je nutné ověřit integritu důležité databáze, je třeba použít digitální podpisy. Zabezpečitelné databáze, jako je uložená procedura, funkce, sestavení nebo Trigger, mohou být digitálně podepsány. Níže je uveden příklad, kdy může být užitečný: řekněme, že nezávislý výrobce softwaru (ISV) poskytuje podporu softwaru poskytovaného jednomu ze svých zákazníků. Před poskytnutím podpory by ISV chtěla zajistit, že databáze zabezpečená v softwaru nebyla úmyslně poškozená ani omylem nebo škodlivým pokusem. Pokud je zabezpečitelný podpis digitálně podepsaný, ISV může ověřit jeho digitální podpis a ověřit jeho integritu.| 
 
 ## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>Použití SQL serveru EKM k ochraně šifrovacích klíčů
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | Database | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
-| **Reference**              | [SQL Server Extensible Key Management (EKM)](https://msdn.microsoft.com/library/bb895340), [rozšiřitelná správa klíčů pomocí Azure Key Vault (SQL Server)](https://msdn.microsoft.com/library/dn198405) |
+| **Reference**              | [SQL Server Extensible Key Management (EKM)](/sql/relational-databases/security/encryption/extensible-key-management-ekm), [rozšiřitelná správa klíčů pomocí Azure Key Vault (SQL Server)](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server) |
 | **Kroky** | SQL Server rozšiřitelná Správa klíčů umožňuje šifrovací klíče, které chrání soubory databáze, aby byly uložené v nechráněném zařízení, jako je čipová karta, zařízení USB nebo modul EKM/HSM. Tato možnost také umožňuje ochranu dat od správců databáze (s výjimkou členů skupiny sysadmin). Data je možné šifrovat pomocí šifrovacích klíčů, ke kterým má přístup jenom uživatel databáze, k externímu modulu EKM/HSM. |
 
 ## <a name="use-alwaysencrypted-feature-if-encryption-keys-should-not-be-revealed-to-database-engine"></a><a id="keys-engine"></a>Použít funkci AlwaysEncrypted, pokud by se šifrovací klíče neměly vyvažovat do databázového stroje
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Databáze | 
+| **Komponenta**               | Database | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | SQL Azure, OnPrem |
 | **Atributy**              | SQL verze – V12, MsSQL2016 |
-| **Reference**              | [Always Encrypted (databázový stroj)](https://msdn.microsoft.com/library/mt163865) |
+| **Reference**              | [Always Encrypted (databázový stroj)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) |
 | **Kroky** | Always Encrypted je funkce navržená tak, aby chránila citlivá data, jako jsou čísla kreditních karet nebo národní identifikační čísla (např. čísla sociálního pojištění USA) uložená v databázích Azure SQL Database nebo SQL Server. Always Encrypted umožňuje klientům šifrovat citlivá data v klientských aplikacích a nikdy Neodhalovat šifrovací klíče databázovému stroji (SQL Database nebo SQL Server). V důsledku toho Always Encrypted poskytuje oddělení mezi osobami, které data vlastní (a můžou zobrazit), a osobami, které data spravují (ale nemají přístup). |
 
 ## <a name="store-cryptographic-keys-securely-on-iot-device"></a><a id="keys-iot"></a>Bezpečné ukládání kryptografických klíčů na zařízení IoT
@@ -174,7 +174,7 @@ ms.locfileid: "87539947"
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Operační systém zařízení – Windows IoT Core, připojení zařízení – sady SDK pro zařízení Azure IoT |
-| **Reference**              | [TPM ve Windows IoT Core](https://developer.microsoft.com/windows/iot/docs/tpm), [Nastavení čipu TPM v systému Windows IoT Core](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [čip TPM sady SDK pro zařízení Azure IoT](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **Reference**              | [TPM ve Windows IoT Core](/windows/iot-core/secure-your-device/TPM), [Nastavení čipu TPM v systému Windows IoT Core](/windows/iot-core/secure-your-device/setuptpm), [čip TPM sady SDK pro zařízení Azure IoT](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
 | **Kroky** | Symetrický nebo soukromý klíč certifikátu je bezpečně v úložišti chráněném hardwarem, jako je čip TPM nebo čipy čipových karet. Windows 10 IoT Core podporuje uživatele TPM a existuje několik kompatibilních čipy TPM, které je možné použít: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm . Doporučuje se použít firmware nebo diskrétní čip TPM. ČIP TPM softwaru by se měl používat jenom pro účely vývoje a testování. Jakmile bude čip TPM k dispozici a klíče jsou v něm zřízeny, kód, který vygeneruje token, by měl být napsán bez pevného kódování jakýchkoli citlivých informací. | 
 
 ### <a name="example"></a>Příklad

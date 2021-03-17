@@ -5,18 +5,22 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 02/08/2021
 ms.author: cherylmc
-ms.openlocfilehash: c64e7988094612077131029547682c7ae3d25c98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d83b6ed2ae83db569d3c61e3cf4cd887f875eb25
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753148"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980911"
 ---
-# <a name="working-with-user-vpn-client-profiles"></a>Práce s profily klienta VPN uživatele
+# <a name="working-with-user-vpn-client-profile-files"></a>Práce se soubory profilů klienta VPN uživatele
 
-Stažený soubor profilu obsahuje informace potřebné ke konfiguraci připojení VPN. Tento článek vám pomůže získat a pochopit informace, které jsou nezbytné pro profil klienta VPN uživatele.
+Soubory profilu obsahují informace potřebné ke konfiguraci připojení VPN. Tento článek vám pomůže získat a pochopit informace, které jsou nezbytné pro profil klienta VPN uživatele.
+
+## <a name="download-the-profile"></a>Stáhnout profil
+
+K stažení souboru ZIP profilu klienta můžete použít postup v článku [stažení profilů](global-hub-profile.md) .
 
 [!INCLUDE [client profiles](../../includes/vpn-gateway-vwan-vpn-profile-download.md)]
 

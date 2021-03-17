@@ -3,26 +3,31 @@ title: Konfigurace oprávnění služby Azure image Builder pomocí Azure CLI
 description: Konfigurace požadavků pro službu Azure VM Image Builder, včetně oprávnění a oprávnění pomocí Azure CLI
 author: cynthn
 ms.author: danis
-ms.date: 05/06/2020
+ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
-ms.subservice: imaging
-ms.openlocfilehash: 58bbe01c8de0bbe606f4fc428032cd213f05d386
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068145"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201477"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurace oprávnění služby Azure image Builder pomocí Azure CLI
 
-Služba Azure image Builder vyžaduje před vytvořením image konfiguraci oprávnění a oprávnění. Následující části podrobně popisují, jak nakonfigurovat možné scénáře pomocí Azure CLI.
+Při registraci pro (AIB) udělí služba AIB oprávnění vytvořit, spravovat a odstranit pracovní skupinu prostředků (IT_ *) a mít práva k přidávání prostředků do této služby, které jsou požadovány pro sestavení bitové kopie. K tomu slouží AIB hlavní název služby (SPN), který je ve vašem předplatném dostupný během úspěšné registrace.
+
+Pokud chcete, aby tvůrce imagí virtuálních počítačů Azure mohl distribuovat image do spravovaných imagí nebo do sdílené Galerie imagí, budete muset vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění ke čtení a zápisu imagí. Pokud přistupujete k Azure Storage, budete potřebovat oprávnění ke čtení privátních nebo veřejných kontejnerů.
+
+Před vytvořením image musíte nastavit oprávnění a oprávnění. Následující části podrobně popisují, jak nakonfigurovat možné scénáře pomocí Azure CLI.
 
 > [!IMPORTANT]
 > Azure image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="register-the-features"></a>Registrace funkcí
 
@@ -131,7 +136,7 @@ imageResourceGroup=<Resource group>
 identityName="aibIdentity"
 
 # Use *cURL* to download the a sample JSON description 
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 # Create a unique role name to avoid clashes in the same Azure Active Directory domain
 imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
@@ -172,7 +177,7 @@ VnetResourceGroup=<Resource group>
 identityName="aibIdentity"
 
 # Use *cURL* to download the a sample JSON description 
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
 
 # Create a unique role name to avoid clashes in the same domain
 netRoleDefName="Azure Image Builder Network Def"$(date +'%s')
@@ -234,8 +239,8 @@ Nahraďte následující zástupné nastavení:
 | \<Storage account container\> | Název kontejneru účtu úložiště |
 | \<Subscription ID\> | Předplatné Azure |
 
-Další informace o uživatelsky přiřazené spravované identitě najdete v tématu [Vytvoření vlastní image, která bude používat spravovanou identitu přiřazenou uživatelem Azure k bezproblémové přístupu k souborům Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage). Tento rychlý Start vás provede vytvořením a konfigurací spravované identity přiřazené uživatelem pro přístup k účtu úložiště.
+Další informace o uživatelsky přiřazené spravované identitě najdete v tématu [Vytvoření vlastní image, která bude používat spravovanou identitu Azure User-Assigned k bezproblémové přístupu k souborům Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity). Tento rychlý Start vás provede vytvořením a konfigurací spravované identity přiřazené uživatelem pro přístup k účtu úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Přehled nástroje Azure image Builder](image-builder-overview.md).
+Další informace najdete v tématu [Přehled nástroje Azure image Builder](../image-builder-overview.md).

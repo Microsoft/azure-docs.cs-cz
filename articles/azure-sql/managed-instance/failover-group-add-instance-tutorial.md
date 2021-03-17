@@ -5,19 +5,19 @@ description: V tomto kurzu se naučíte vytvořit skupinu převzetí služeb př
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sashan, carlrab
+ms.topic: tutorial
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: c898eeaf99b8a24b992f1daa82b9149327b7a457
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 1609f188af8ffb58251edc806e19f7820a6b0869
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245774"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525717"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Přidejte spravované instance spravované instance Azure SQL do skupiny převze
   > [!NOTE]
   > - Při procházení tohoto kurzu se ujistěte, že konfigurujete prostředky s [požadavky pro nastavení skupin převzetí služeb při selhání pro spravovanou instanci SQL](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
   > - Vytvoření spravované instance může trvat poměrně dlouhou dobu. V důsledku toho může dokončení tohoto kurzu trvat několik hodin. Další informace o časech zřizování najdete v tématu [operace správy spravované instance SQL](sql-managed-instance-paas-overview.md#management-operations). 
-  > - Spravované instance účastnící se skupiny převzetí služeb při selhání vyžadují buď [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo dvě připojené brány VPN Gateway. Globální partnerský vztah virtuálních sítí se nepodporuje. Tento kurz popisuje kroky pro vytvoření a připojení bran VPN. Tento postup přeskočte, pokud již máte nakonfigurovanou ExpressRoute. 
+  > - Spravované instance účastnící se skupiny převzetí služeb při selhání vyžadují [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md), globální partnerské vztahy virtuálních sítí nebo dvě připojené brány VPN Gateway. Tento kurz popisuje kroky pro vytvoření a připojení bran VPN. Tento postup přeskočte, pokud již máte nakonfigurovanou ExpressRoute. 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -56,21 +56,23 @@ K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 
 V tomto kroku vytvoříte skupinu prostředků a primární spravovanou instanci pro skupinu převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
 
+Nasaďte spravované instance do [spárovaných oblastí](../../best-practices-availability-paired-regions.md) z důvodů výkonu. Spravované instance nacházející se v geograficky spárované oblasti mají mnohem lepší výkon v porovnání s nespárovanými oblastmi. 
+
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal) 
 
 Vytvořte skupinu prostředků a svoji primární spravovanou instanci pomocí Azure Portal. 
 
-1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a potom `Azure SQL` do vyhledávacího pole zadejte. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a potom `Azure SQL` do vyhledávacího pole zadejte. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
 1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o různých databázích můžete zobrazit tak, že na dlaždici **databáze** vyberete **Zobrazit podrobnosti** .
 1. Na dlaždici **spravované instance SQL** vyberte **vytvořit** . 
 
     ![Vybrat spravovanou instanci SQL](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
 1. Na stránce **Vytvoření spravované instance SQL Azure** na kartě **základy** :
-    1. V části **Podrobnosti o projektu**vyberte v rozevíracím seznamu své **předplatné** a pak zvolte **vytvořit novou** skupinu prostředků. Zadejte název vaší skupiny prostředků, jako je například `myResourceGroup` . 
-    1. V části **Podrobnosti spravované instance SQL**zadejte název vaší spravované instance a oblast, do které chcete nasadit spravovanou instanci. Ve výchozích hodnotách ponechte **výpočetní prostředky + úložiště** . 
-    1. V části **účet správce**zadejte přihlašovací jméno správce, například `azureuser` a složitá hesla správce. 
+    1. V části **Podrobnosti o projektu** vyberte v rozevíracím seznamu své **předplatné** a pak zvolte **vytvořit novou** skupinu prostředků. Zadejte název vaší skupiny prostředků, jako je například `myResourceGroup` . 
+    1. V části **Podrobnosti spravované instance SQL** zadejte název vaší spravované instance a oblast, do které chcete nasadit spravovanou instanci. Ve výchozích hodnotách ponechte **výpočetní prostředky + úložiště** . 
+    1. V části **účet správce** zadejte přihlašovací jméno správce, například `azureuser` a složitá hesla správce. 
 
     ![Vytvořit primární spravovanou instanci](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
 
@@ -159,8 +161,8 @@ Vytvořte skupinu prostředků a primární spravovanou instanci pomocí prostř
    # Suppress networking breaking changes warning (https://aka.ms/azps-changewarnings
    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
    
-   # Set the subscription context
-   Set-AzContext -SubscriptionId $subscriptionId 
+   # Set the subscription context
+   Set-AzContext -SubscriptionId $subscriptionId 
    
    # Create the resource group
    Write-host "Creating resource group..."
@@ -455,7 +457,7 @@ Vaše druhá spravovaná instance musí:
 
 Pomocí Azure Portal Vytvořte sekundární spravovanou instanci. 
 
-1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a potom `Azure SQL` do vyhledávacího pole zadejte. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a potom `Azure SQL` do vyhledávacího pole zadejte. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
 1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o různých databázích můžete zobrazit tak, že na dlaždici **databáze** vyberete **Zobrazit podrobnosti** .
 1. Na dlaždici **spravované instance SQL** vyberte **vytvořit** . 
 
@@ -475,11 +477,11 @@ Pomocí Azure Portal Vytvořte sekundární spravovanou instanci.
     | **Heslo** | Složitá hesla, která budou používána přihlášením správce pro novou sekundární spravovanou instanci.  |
     | &nbsp; | &nbsp; |
 
-1. Na kartě **sítě** pro **Virtual Network**v rozevíracím seznamu vyberte virtuální síť, kterou jste vytvořili pro sekundární spravovanou instanci.
+1. Na kartě **sítě** pro **Virtual Network** v rozevíracím seznamu vyberte virtuální síť, kterou jste vytvořili pro sekundární spravovanou instanci.
 
    ![Sekundární síť MI](./media/failover-group-add-instance-tutorial/networking-settings-for-secondary-mi.png)
 
-1. Na kartě **Další nastavení** pro **geografickou replikaci**vyberte **Ano** , aby se _použil jako sekundární převzetí služeb při selhání_. Z rozevíracího seznamu vyberte primární spravovanou instanci. 
+1. Na kartě **Další nastavení** pro **geografickou replikaci** vyberte **Ano** , aby se _použil jako sekundární převzetí služeb při selhání_. Z rozevíracího seznamu vyberte primární spravovanou instanci. 
     
    Ujistěte se, že se kolace a časové pásmo shodují s primární spravovanou instancí. Primární spravovaná instance vytvořená v tomto kurzu použila výchozí `SQL_Latin1_General_CP1_CI_AS` řazení a `(UTC) Coordinated Universal Time` časové pásmo. 
 
@@ -740,6 +742,8 @@ Aby se dvě spravované instance účastnily skupiny převzetí služeb při sel
 
 Tento článek popisuje kroky pro vytvoření dvou bran sítě VPN a jejich připojení, ale můžete přeskočit k vytvoření skupiny převzetí služeb při selhání, pokud jste místo toho nakonfigurovali ExpressRoute. 
 
+> [!NOTE]
+> SKU brány má vliv na výkon propustnosti. Tento kurz nasadí bránu se základní JEDNOTKou ( `HwGw1` ). Pokud `VpnGw3` chcete dosáhnout vyšší propustnosti, nasaďte vyšší hodnotu SKU (příklad:). Všechny dostupné možnosti najdete v tématu [SKU brány](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) .
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -766,7 +770,7 @@ Vytvořte bránu pro virtuální síť vaší primární spravované instance po
     | **Oblast** | Oblast, ve které je vaše primární spravovaná instance. |
     | **Typ brány** | Vyberte **VPN**. |
     | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |
-    | **Skladová jednotka (SKU)**| Ponechte výchozí hodnotu `VpnGw1` . |
+    | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |
     | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-primary` . |
     | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
     | **Název veřejné IP adresy**| Zadejte název vaší IP adresy, například `primary-gateway-IP` . |
@@ -847,7 +851,7 @@ Pomocí Azure Portal vytvořte podsíť virtuální sítě a bránu pro sekundá
    | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
    | **Typ brány** | Vyberte **VPN**. |
    | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |
-   | **Skladová jednotka (SKU)**| Ponechte výchozí hodnotu `VpnGw1` . |
+   | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |
    | **Virtuální síť**| Vyberte virtuální síť pro sekundární spravovanou instanci, například `vnet-sql-mi-secondary` . |
    | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
    | **Název veřejné IP adresy**| Zadejte název vaší IP adresy, například `secondary-gateway-IP` . |
@@ -922,7 +926,7 @@ Připojte dvě brány pomocí Azure Portal.
 1. Do `connection` vyhledávacího pole zadejte a stiskněte klávesu ENTER pro hledání, které vás přesměruje do prostředku **připojení** publikovaného společností Microsoft.
 1. Vyberte **vytvořit** a vytvořte připojení. 
 1. Na stránce **základy** vyberte následující hodnoty a pak vyberte **OK**. 
-    1. Jako `VNet-to-VNet` **Typ připojení**vyberte. 
+    1. Jako `VNet-to-VNet` **Typ připojení** vyberte. 
     1. Vyberte vaše předplatné z rozevíracího seznamu. 
     1. V rozevíracím seznamu vyberte skupinu prostředků pro spravovanou instanci SQL. 
     1. Z rozevíracího seznamu vyberte umístění vaší primární spravované instance. 
@@ -979,9 +983,9 @@ V tomto kroku vytvoříte skupinu převzetí služeb při selhání a přidáte 
 Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal. 
 
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a potom `Azure SQL` do vyhledávacího pole zadejte. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a potom `Azure SQL` do vyhledávacího pole zadejte. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
 1. Vyberte primární spravovanou instanci, kterou jste vytvořili v první části, například `sql-mi-primary` . 
-1. V části **Nastavení**přejděte na **instance skupiny převzetí služeb při selhání** a pak zvolte **Přidat skupinu** . otevře se stránka **Skupina převzetí služeb při selhání instance** . 
+1. V části **Nastavení** přejděte na **instance skupiny převzetí služeb při selhání** a pak zvolte **Přidat skupinu** . otevře se stránka **Skupina převzetí služeb při selhání instance** . 
 
    ![Přidat skupinu převzetí služeb při selhání](./media/failover-group-add-instance-tutorial/add-failover-group.png)
 
@@ -1093,7 +1097,7 @@ Vyčistěte prostředky tak, že nejprve odstraníte spravované instance, potom
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Skupinu prostředků budete muset odebrat dvakrát. Při prvním odebrání skupiny prostředků se spravované instance a virtuální clustery odstraní, ale chybová zpráva se pak nezdaří `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Spusťte příkaz Remove-AzResourceGroup a podruhé odstraňte všechny zbývající prostředky i skupinu prostředků.
+Skupinu prostředků budete muset odebrat dvakrát. Při prvním odebrání skupiny prostředků se spravované instance a virtuální clustery odstraní, ale chybová zpráva se pak nezdaří `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Pokud chcete odebrat všechny zbývající prostředky i skupinu prostředků, spusťte příkaz Remove-AzResourceGroup a podruhé.
 
 ```powershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName

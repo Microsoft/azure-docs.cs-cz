@@ -1,19 +1,16 @@
 ---
 title: Přehled Azure Storage v HDInsight
 description: Přehled Azure Storage v HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851372"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938954"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Přehled Azure Storage v HDInsight
 
@@ -44,7 +41,7 @@ Při použití účtu Azure Storage s clustery HDInsight Vezměte v úvahu násl
 * **Veřejné kontejnery nebo veřejné objekty BLOB v účtech úložiště, které nejsou připojené ke clusteru:** K objektům blob v kontejnerech máte oprávnění jen pro čtení.
   
   > [!NOTE]  
-  > Veřejné kontejnery umožňují získat seznam všech objektů blob, které jsou v daném kontejneru k dispozici, a získat metadata kontejneru. Veřejné objekty blob umožňují přístup k objektům blob jenom v případě, že znáte přesnou adresu URL. Další informace najdete v tématu [Správa anonymního přístupu pro čtení do kontejnerů a objektů BLOB](../storage/blobs/storage-manage-access-to-resources.md).
+  > Veřejné kontejnery umožňují získat seznam všech objektů blob, které jsou v daném kontejneru k dispozici, a získat metadata kontejneru. Veřejné objekty blob umožňují přístup k objektům blob jenom v případě, že znáte přesnou adresu URL. Další informace najdete v tématu [Správa anonymního přístupu pro čtení do kontejnerů a objektů BLOB](../storage/blobs/anonymous-read-access-configure.md).
 
 * **Privátní kontejnery v účtech úložiště, které nejsou připojené ke clusteru:** Nemůžete získat přístup k objektům blob v kontejnerech, pokud nedefinujete účet úložiště při odeslání úloh WebHCat.
 

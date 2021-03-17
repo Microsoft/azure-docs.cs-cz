@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 07/30/2020
-  ms.openlocfilehash: 6a21841d24fcafefe25473e428e1926849f5e9cf
-  ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
-  ms.translationtype: HT
+  ms.date: 03/03/2021
+  ms.openlocfilehash: f2410c25aa6c23cc6fe1546e36f379bfecab60df
+  ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/30/2020
-  ms.locfileid: "87446732"
+  ms.lasthandoff: 03/08/2021
+  ms.locfileid: "102452352"
 landingContent:
 - title: Informace o šablonách ARM
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: Co jsou šablony?
       url: overview.md
+    - text: Co je bicep?
+      url: bicep-overview.md
   - linkListType: concept
     links:
     - text: Osvědčené postupy
@@ -45,24 +47,32 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Vytváření šablon – portál
+    - text: Vytvoření šablon JSON – portál
       url: quickstart-create-templates-use-the-portal.md
-    - text: Vytváření šablon – VS Code
+    - text: Vytvoření šablon JSON – VS Code
       url: quickstart-create-templates-use-visual-studio-code.md
+    - text: Vytvoření šablon bicep – VS Code
+      url: quickstart-create-bicep-use-visual-studio-code.md
+    - text: Vytvoření a nasazení specifikace šablony
+      url: quickstart-create-template-specs.md
   - linkListType: tutorial
     links:
-    - text: Kurzy pro začátečníky
+    - text: Kurzy k šablonám pro začátečníky
       url: template-tutorial-create-first-template.md
-    - text: Nasazení
-      url: deployment-tutorial-local-template.md
+    - text: Bicep kurzy pro začátečníky
+      url: bicep-tutorial-create-first-bicep.md
   - linkListType: learn
     links:
-    - text: Konzistentní infrastruktura
-      url: /learn/modules/create-azure-resource-manager-template-vs-code/
-    - text: Více prostředí
-      url: /learn/modules/modify-azure-resource-manager-template-reuse/
+    - text: Nasazení s využitím šablon ARM
+      url: /learn/paths/deploy-manage-resource-manager-templates/
 - title: Vývoj šablon
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Rozšířené šablony
+      url: template-tutorial-use-template-reference.md
+    - text: Specifikace šablon
+      url: template-specs-create-linked.md
   - linkListType: how-to-guide
     links:
     - text: Použití funkcí
@@ -83,6 +93,10 @@ landingContent:
       url: https://azure.microsoft.com/resources/templates/
 - title: Nasazení šablon
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení
+      url: deployment-tutorial-local-template.md
   - linkListType: how-to-guide
     links:
     - text: PowerShell
@@ -95,20 +109,26 @@ landingContent:
       url: deploy-rest.md
     - text: Tlačítko pro nasazení do Azure
       url: deploy-to-azure-button.md
+    - text: Cloud Shell
+      url: deploy-cloud-shell.md
     - text: Nasazení What-If
       url: template-deploy-what-if.md
 - title: Nasazení s vymezeným oborem
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Skupina prostředků
+      url: deploy-to-resource-group.md
     - text: Předplatné
       url: deploy-to-subscription.md
     - text: Skupina pro správu
       url: deploy-to-management-group.md
     - text: Tenant
       url: deploy-to-tenant.md
-    - text: Nasazení napříč obory
-      url: cross-scope-deployment.md
+    - text: Nastavení rozsahu pro prostředek rozšíření
+      url: scope-extension-resources.md
+    - text: Funkce šablon napříč obory
+      url: scope-functions.md
 - title: Prozkoumat referenční obsah
   linkLists:
   - linkListType: reference
@@ -119,14 +139,14 @@ landingContent:
       url: /rest/api/resources/
     - text: Azure PowerShell
       url: /powershell/module/az.resources
-    - text: Rozhraní příkazového řádku Azure
+    - text: Azure CLI
       url: /cli/azure/resource
     - text: .NET
       url: /dotnet/api/microsoft.azure.management.resourcemanager
     - text: Java
       url: /java/api/com.microsoft.azure.management.resources
     - text: Python
-      url: /python/api/overview/azure/resources?view=azure-python
+      url: /python/api/overview/azure/resources
 - title: Správa šablon
   linkLists:
   - linkListType: how-to-guide

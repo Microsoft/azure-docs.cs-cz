@@ -1,26 +1,19 @@
 ---
 title: Resetování přístupu k virtuálnímu počítači Azure Linux
 description: Správa uživatelů s právy pro správu a obnovení přístupu k virtuálním počítačům se systémem Linux pomocí rozšíření VMAccess a rozhraní příkazového řádku Azure
-services: virtual-machines-linux
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 05/10/2018
-ms.author: akjosh
-ms.openlocfilehash: b3b6c9d5835f6d81ab8641d8a43fb7228b6b53ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0e63762fc151d93cb34885c04dd4d03285c29f1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085635"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557042"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Správa uživatelů s právy pro správu, SSH a kontroly nebo opravy disků na virtuálních počítačích se systémem Linux pomocí rozšíření VMAccess pomocí Azure CLI
 ## <a name="overview"></a>Přehled
@@ -31,7 +24,7 @@ V tomto článku se dozvíte, jak pomocí rozšíření Azure VMAccess vyhledat 
 > [!NOTE]
 > Pokud použijete rozšíření VMAccess k resetování hesla virtuálního počítače po instalaci přihlašovacího rozšíření služby AAD, budete muset znovu spustit přihlašovací rozšíření AAD a znovu povolit přihlášení AAD pro váš počítač.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 ### <a name="operating-system"></a>Operační systém
 
 Rozšíření pro přístup k VIRTUÁLNÍm počítačům lze spustit u těchto distribucí systému Linux:
@@ -66,7 +59,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **Poznámka:** `az vm user update`Příkaz připojí nový text veřejného klíče k `~/.ssh/authorized_keys` souboru pro uživatele s oprávněními správce na virtuálním počítači. Tato funkce nenahrazuje ani neodebírá žádné existující klíče SSH. Tato akce neodebere předchozí klíče nastavené v době nasazení nebo následné aktualizace prostřednictvím rozšíření VMAccess.
+> **Poznámka:** `az vm user update` Příkaz připojí nový text veřejného klíče k `~/.ssh/authorized_keys` souboru pro uživatele s oprávněními správce na virtuálním počítači. Tato funkce nenahrazuje ani neodebírá žádné existující klíče SSH. Tato akce neodebere předchozí klíče nastavené v době nasazení nebo následné aktualizace prostřednictvím rozšíření VMAccess.
 
 ## <a name="reset-password"></a>Resetování hesla
 Následující příklad obnoví heslo pro uživatele `azureuser` na virtuálním počítači s názvem `myVM` :
@@ -247,7 +240,7 @@ az vm extension set \
 ```
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 

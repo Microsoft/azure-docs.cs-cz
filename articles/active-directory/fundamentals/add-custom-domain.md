@@ -13,16 +13,16 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8035744cd7ff7bb3d8347a7d26796531a666bbd
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796807"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973894"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Přidání vlastního názvu domény pomocí portálu Azure Active Directory
 
-Každý nový tenant Azure AD obsahuje počáteční název domény, * \<domainname> . onmicrosoft.com*. Nemůžete změnit nebo odstranit počáteční název domény, ale můžete přidat názvy vaší organizace. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, která jsou pro vaše uživatele známá, například *alain \@ contoso.com*.
+Každý nový tenant Azure AD obsahuje počáteční název domény, *\<domainname> . onmicrosoft.com*. Nemůžete změnit nebo odstranit počáteční název domény, ale můžete přidat názvy vaší organizace. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, která jsou pro vaše uživatele známá, například *alain \@ contoso.com*.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -54,12 +54,12 @@ Po vytvoření adresáře můžete přidat vlastní název domény.
 
     ![Stránka vlastní názvy domén s zobrazenou součástí přidat vlastní doménu](media/add-custom-domain/add-custom-domain.png)
 
-1. Do **vlastního názvu domény**zadejte nový název vaší organizace, v tomto příkladu *contoso.com*. Vyberte **Přidat doménu**.
+1. Do **vlastního názvu domény** zadejte nový název vaší organizace, v tomto příkladu *contoso.com*. Vyberte **Přidat doménu**.
 
     ![Stránka vlastní názvy domén pomocí stránky přidat vlastní doménu](media/add-custom-domain/add-custom-domain-blade.png)
 
     >[!IMPORTANT]
-    >K tomu, aby to fungovalo správně, musíte zahrnout *. com*, *.NET*nebo jakékoli jiné rozšíření nejvyšší úrovně.
+    >K tomu, aby to fungovalo správně, musíte zahrnout *. com*, *.NET* nebo jakékoli jiné rozšíření nejvyšší úrovně.
 
     Je přidána neověřená doména. Zobrazí se stránka **contoso.com** se zobrazením informací o DNS. Uložte tyto informace. Později ho budete potřebovat k vytvoření záznamu TXT pro konfiguraci DNS.
 
@@ -84,7 +84,7 @@ Pokud chcete ověřit vlastní název domény, postupujte podle těchto kroků:
 
 1. Vyhledejte a vyberte *Azure Active Directory* na libovolné stránce a pak vyberte **vlastní názvy domén**.
 
-1. V části **vlastní názvy domén**vyberte vlastní název domény. V tomto příkladu vyberte **contoso.com**.
+1. V části **vlastní názvy domén** vyberte vlastní název domény. V tomto příkladu vyberte **contoso.com**.
 
     ![Fabrikam – stránka vlastní názvy domén se zvýrazněnou společností contoso](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 
@@ -104,9 +104,9 @@ Pokud Azure AD nemůže ověřit vlastní název domény, zkuste následující 
 
   Pokud nemůžete aktualizovat záznam v lokalitě registrátora, sdílejte tuto položku s někým, kdo má oprávnění k přidání položky a ověření správnosti.
 
-- **Ujistěte se, že se název domény už nepoužívá v jiném adresáři.** Název domény se dá ověřit jenom v jednom adresáři. Pokud je název vaší domény aktuálně ověřený v jiném adresáři, nelze ho také ověřit v novém adresáři. Chcete-li vyřešit tento problém duplikace, je nutné odstranit název domény ze starého adresáře. Další informace o odstraňování názvů domén najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
+- **Ujistěte se, že se název domény už nepoužívá v jiném adresáři.** Název domény se dá ověřit jenom v jednom adresáři. Pokud je název vaší domény aktuálně ověřený v jiném adresáři, nelze ho také ověřit v novém adresáři. Chcete-li vyřešit tento problém duplikace, je nutné odstranit název domény ze starého adresáře. Další informace o odstraňování názvů domén najdete v tématu [Správa vlastních názvů domén](../enterprise-users/domains-manage.md).
 
-- **Ujistěte se, že nemáte žádné nespravované klienty Power BI.** Pokud vaši uživatelé aktivovali Power BI prostřednictvím samoobslužné registrace a vytvořili nespravovaného tenanta pro vaši organizaci, musíte převzít správu jako interní nebo externí správce pomocí prostředí PowerShell. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../users-groups-roles/domains-admin-takeover.md).
+- **Ujistěte se, že nemáte žádné nespravované klienty Power BI.** Pokud vaši uživatelé aktivovali Power BI prostřednictvím samoobslužné registrace a vytvořili nespravovaného tenanta pro vaši organizaci, musíte převzít správu jako interní nebo externí správce pomocí prostředí PowerShell. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../enterprise-users/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -114,6 +114,6 @@ Pokud Azure AD nemůže ověřit vlastní název domény, zkuste následující 
 
 - Přidejte uživatele do domény. Další informace najdete v tématu [jak přidat nebo odstranit uživatele](add-users-azure-active-directory.md).
 
-- Spravujte informace o názvu domény v Azure AD. Další informace najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
+- Spravujte informace o názvu domény v Azure AD. Další informace najdete v tématu [Správa vlastních názvů domén](../enterprise-users/domains-manage.md).
 
-- Pokud máte místní verze Windows serveru, které chcete používat společně s Azure Active Directory, přečtěte si téma [Integrace místních adresářů s Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Pokud máte místní verze Windows serveru, které chcete používat společně s Azure Active Directory, přečtěte si téma [Integrace místních adresářů s Azure Active Directory](../hybrid/whatis-hybrid-identity.md).

@@ -3,7 +3,7 @@ title: Vytváření pokročilých pracovních postupů kódování pomocí Návr
 description: Přečtěte si, jak vytvořit pokročilé pracovní postupy kódování pomocí Návrhář postupu provádění.
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 004815f2-0761-4706-87a1-675ba36e0322
@@ -12,17 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72801954"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011149"
 ---
-# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění  
+# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Přehled
 **Návrhář postupu provádění** je desktopový Nástroj pro Windows, který se používá k návrhu a vytváření vlastních pracovních postupů pro kódování pomocí **Media Encoder Premium Workflow**.
 Pomocí výkonného nástroje pro návrháře pracovních postupů můžete navrhovat a vytvářet komplexní pracovní postupy, které se spustí v **Media Encoderu Premium**.  
@@ -73,7 +76,7 @@ Video o dni 3 se zabývá:
 
 * Skriptování v rámci pracovních postupů/modrotisky
 * Omezení s aktuálním kodérem
-* Q&A
+* Otázky a odpovědi
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 

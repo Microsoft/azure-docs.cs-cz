@@ -1,5 +1,5 @@
 ---
-title: Rozšířená ochrana před internetovými útoky
+title: Advanced Threat Protection
 titleSuffix: Azure SQL Database, SQL Managed Instance, & Azure Synapse Analytics
 description: Rozšířená ochrana před internetovými útoky detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení v Azure SQL Database, spravované instanci Azure SQL a Azure synapse Analytics.
 services: sql-database
@@ -10,22 +10,22 @@ ms.custom: sqldbrb=2
 ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
-ms.reviewer: vanto, carlrab
-ms.date: 02/05/2020
+ms.reviewer: vanto, sstein
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: 822d4267d5b163ddda50302e2caea5c3ade3b7c4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 931e914cd3c184136395a9bb9a7e148a90e9fb91
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985367"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461967"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Rozšířená ochrana před internetovými útoky pro Azure SQL Database, Managed instance SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Rozšířená ochrana před internetovými útoky pro [Azure SQL Database](sql-database-paas-overview.md), [spravovaná instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detekuje aktivity neobvyklé, které naznačují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Rozšířená ochrana před internetovými útoky je součástí [rozšířené nabídky zabezpečení dat](advanced-data-security.md) , což je jednotný balíček pro pokročilé funkce zabezpečení SQL. Správa Advanced Threat Protection je dostupná prostřednictvím centrálního portálu SQL ADS.
+Rozšířená ochrana před internetovými útoky je součástí [Azure Defenderu pro nabídku SQL](azure-defender-for-sql.md) , což je jednotný balíček pro pokročilé funkce zabezpečení SQL. K Rozšířené ochraně před internetovými útoky se dá využít a spravovat prostřednictvím centrálního portálu Azure Defender pro SQL Portal.
 
 ## <a name="overview"></a>Přehled
 
@@ -35,7 +35,7 @@ V případě úplného šetření doporučujeme povolit auditování, které zap
 
 ## <a name="alerts"></a>Výstrahy
 
-Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. Seznam výstrah pro Azure SQL Database najdete [v tématu výstrahy pro SQL Database a SQL Data Warehouse v Azure Security Center](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-sql-db-and-warehouse).
+Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. Seznam výstrah pro Azure SQL Database najdete [v tématu výstrahy pro SQL Database a Azure synapse Analytics v Azure Security Center](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse).
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>Prozkoumat detekci podezřelé události
 
@@ -55,19 +55,19 @@ Po detekci neobvykléch databázových aktivit obdržíte e-mailové oznámení.
 
 ## <a name="explore-alerts-in-the-azure-portal"></a>Prozkoumat výstrahy v Azure Portal
 
-Rozšířená ochrana před internetovými útoky integruje své výstrahy se službou [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé SQL Advanced Threat Protection dlaždice v rámci databáze a okna služby SQL ADS v Azure Portal sledují stav aktivních hrozeb.
+Rozšířená ochrana před internetovými útoky integruje své výstrahy se službou [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé SQL Advanced Threat Protection dlaždice v oknech databáze a SQL Azure Defender v Azure Portal sledují stav aktivních hrozeb.
 
 Kliknutím na **Rozšířená výstraha ochrany před internetovými útoky** spustíte stránku Azure Security Center výstrahy a získáte přehled o aktivních hrozbách SQL zjištěných v databázi.
 
-   ![Výstraha rozšířené ochrany před internetovými útoky](./media/threat-detection-overview/threat_detection_alert.png)
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection-alerts.png" alt-text="Přehled výstrah rozšířené ochrany před internetovými útoky v databázi":::
 
-   ![Rozšířená ochrana před internetovými útoky alert2](./media/threat-detection-overview/threat_detection_alert_atp.png)
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection.png" alt-text="Rozšířená ochrana před internetovými útoky ve službě Security Center":::
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si víc o [Rozšířené ochraně před internetovými útoky v Azure SQL Database & Azure synapse](threat-detection-configure.md).
 - Přečtěte si víc o [Rozšířené ochraně před internetovými útoky ve spravované instanci Azure SQL](../managed-instance/threat-detection-configure.md).
-- Přečtěte si další informace o [pokročilém zabezpečení dat](advanced-data-security.md).
+- Přečtěte si další informace o [Azure Defenderu pro SQL](azure-defender-for-sql.md).
 - Další informace o [auditování Azure SQL Database](../../azure-sql/database/auditing-overview.md)
-- Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- Další informace o cenách najdete na stránce s [cenami Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) .  
+- Další informace o [Azure Security Center](../../security-center/security-center-introduction.md)
+- Další informace o cenách najdete na stránce s [cenami Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) .

@@ -1,14 +1,14 @@
 ---
 title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Přečtěte si, jak zjistit, co způsobilo nedodržení předpisů.
-ms.date: 07/06/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a8168bf22aceaf5cbdec4b1346801aa62b7aa4ee
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512023"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439829"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -30,17 +30,17 @@ Pokud prostředek nedodržuje předpisy, podrobnosti o kompatibilitě tohoto pro
 
 Chcete-li zobrazit podrobnosti o kompatibilitě, postupujte takto:
 
-1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+1. Spusťte službu Azure Policy v Azure Portal tak, že vyberete **všechny služby** a pak vyhledáte a vyberete **zásadu**.
 
 1. Na stránce **Přehled** nebo **dodržování předpisů** vyberte zásadu ve **stavu dodržování předpisů** , který _nedodržuje předpisy_.
 
 1. Na kartě **Kompatibilita prostředků** na stránce **dodržování zásad** klikněte pravým tlačítkem myši nebo vyberte tři tečky prostředku ve **stavu dodržování předpisů** , který _nedodržuje předpisy_. Pak vyberte **Zobrazit podrobnosti o kompatibilitě**.
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Zobrazit podrobnosti kompatibility – možnost" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Snímek obrazovky s odkazem zobrazit podrobnosti o dodržování předpisů na kartě Kompatibilita prostředků" border="false":::
 
 1. V podokně **podrobností o dodržování předpisů** se zobrazují informace z posledního vyhodnocení prostředku na aktuální přiřazení zásad. V tomto příkladu se v poli **Microsoft. SQL/servery/verze** našla _12,0_ , zatímco definice zásady očekávala hodnotu _14,0_. Pokud prostředek z více důvodů není kompatibilní, každá z nich je uvedena v tomto podokně.
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Podokno podrobností o dodržování předpisů a důvody pro nedodržování předpisů" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Snímek obrazovky s podoknem podrobností o dodržování předpisů a důvody pro nedodržování předpisů, které jsou aktuální hodnotou 12 a cílová hodnota je 14." border="false":::
 
    V případě definice zásady **auditIfNotExists** nebo **deployIfNotExists** obsahuje podrobnosti informace o vlastnosti **Details. Type** a všech volitelných vlastnostech. Seznam najdete v tématu [vlastnosti auditIfNotExists](../concepts/effects.md#auditifnotexists-properties) a [vlastnosti deployIfNotExists](../concepts/effects.md#deployifnotexists-properties). **Poslední vyhodnocený prostředek** je související prostředek z oddílu **podrobností** definice.
 
@@ -69,7 +69,7 @@ Chcete-li zobrazit podrobnosti o kompatibilitě, postupujte takto:
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Podokno podrobností o dodržování předpisů – * ifNotExists" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Snímek obrazovky s podoknem podrobností o dodržování předpisů pro ifNotExists, včetně vyhodnoceného počtu prostředků" border="false":::
 
 > [!NOTE]
 > Pokud chcete chránit data, když je hodnota vlastnosti _tajná_ , aktuální hodnota zobrazí hvězdičky.
@@ -85,14 +85,14 @@ V následující matrici je možné podle příslušné [podmínky](../concepts/
 |Aktuální hodnota musí obsahovat cílovou hodnotu jako klíč. |ContainsKey – nebo **ne** notContainsKey |
 |Aktuální hodnota musí obsahovat cílovou hodnotu. |obsahuje nebo **není** notContains |
 |Aktuální hodnota musí být stejná jako cílová hodnota. |je rovno nebo **není** notEquals |
-|Aktuální hodnota musí být menší než cílová hodnota. |menší nebo **not** negreaterOrEqualsé |
+|Aktuální hodnota musí být menší než cílová hodnota. |menší nebo  negreaterOrEqualsé |
 |Aktuální hodnota musí být větší než nebo rovna cílové hodnotě. |greaterOrEquals nebo **méně** |
-|Aktuální hodnota musí být větší než cílová hodnota. |větší nebo **not** nelessOrEquals |
+|Aktuální hodnota musí být větší než cílová hodnota. |větší nebo  nelessOrEquals |
 |Aktuální hodnota musí být menší nebo rovna cílové hodnotě. |lessOrEquals nebo **ne** větší |
 |Aktuální hodnota musí existovat. |neexistuje |
 |Aktuální hodnota musí být v cílové hodnotě. |v nebo **ne** notIn |
 |Aktuální hodnota musí být stejná jako cílová hodnota. |Like nebo **Not** notLike |
-|V aktuální hodnotě se musí rozlišovat velká a malá písmena, která se shodují s cílovou hodnotou. |shoda nebo **not** nenotMatch |
+|V aktuální hodnotě se musí rozlišovat velká a malá písmena, která se shodují s cílovou hodnotou. |shoda nebo  nenotMatch |
 |Aktuální hodnota musí rozlišovat velikost písmen, která neodpovídá cílové hodnotě. |matchInsensitively nebo **ne** notMatchInsensitively |
 |Aktuální hodnota nesmí obsahovat cílovou hodnotu jako klíč. |notContainsKey nebo **ne** ContainsKey –|
 |Aktuální hodnota nesmí obsahovat cílovou hodnotu. |notContains nebo **Not** Contains |
@@ -104,9 +104,15 @@ V následující matrici je možné podle příslušné [podmínky](../concepts/
 |Aktuální hodnota nesmí rozlišovat velká a malá písmena. |notMatchInsensitively nebo **ne** matchInsensitively |
 |Žádné související prostředky neodpovídají podrobnostem o vlivu v definici zásady. |Prostředek typu, který je definován v **then. details. Type** a souvisí s prostředkem definovaným v části **if** pravidla zásad, neexistuje. |
 
+## <a name="component-details-for-resource-provider-modes"></a>Podrobnosti o komponentách pro režimy poskytovatele prostředků
+
+Pro přiřazení s [režimem poskytovatele prostředků](../concepts/definition-structure.md#resource-manager-modes)vyberte prostředek, který _nedodržuje předpisy_ , aby bylo možné otevřít hlubší zobrazení. Na kartě **dodržování předpisů komponent** jsou další informace, které jsou specifické pro režim poskytovatele prostředků na přiřazené zásadě ukazující **komponentu** a **ID komponenty**, _které nedodržují předpisy_ .
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Snímek obrazovky karty dodržování předpisů pro součásti a podrobnosti o dodržování předpisů pro přiřazení režimu poskytovatele prostředků." border="false":::
+
 ## <a name="compliance-details-for-guest-configuration"></a>Podrobnosti o dodržování předpisů pro konfiguraci hosta
 
-U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ se ve virtuálním počítači může vyhodnotit víc nastavení a budete muset zobrazit podrobnosti o jednotlivých nastaveních. Pokud například provádíte audit pro seznam zásad hesel a jenom jeden z nich má _nevyhovující_stav, budete muset zjistit, které konkrétní zásady hesel nejsou kompatibilní a proč.
+U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ může být ve virtuálním počítači vyhodnoceno více nastavení a bude nutné zobrazit podrobnosti o jednotlivých nastaveních. Pokud například provádíte audit pro seznam zásad hesel a jenom jeden z nich má _nevyhovující_ stav, budete muset zjistit, které konkrétní zásady hesel nejsou kompatibilní a proč.
 
 Je také možné, že nebudete mít přístup k virtuálnímu počítači přímo, ale potřebujete podávat zprávu o tom, proč virtuální počítač _nedodržuje předpisy_.
 
@@ -114,84 +120,19 @@ Je také možné, že nebudete mít přístup k virtuálnímu počítači přím
 
 Začněte podle stejných kroků v části výše pro zobrazení podrobností o dodržování zásad.
 
-V zobrazení podokna podrobností o dodržování předpisů klikněte na odkaz **naposledy vyhodnocený prostředek**.
+V zobrazení podokna podrobností o dodržování předpisů vyberte odkaz **Poslední vyhodnocený prostředek**.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Zobrazit podrobnosti definice auditIfNotExists" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Snímek obrazovky se zobrazením podrobností o kompatibilitě definicí auditIfNotExists" border="false":::
 
 Na stránce **přiřazení hosta** se zobrazí všechny dostupné podrobnosti o dodržování předpisů. Každý řádek v zobrazení představuje hodnocení, které bylo provedeno uvnitř počítače. Ve sloupci **důvod** se zobrazí fráze popisující, proč není přiřazení hostů _kompatibilní_. Pokud například provádíte audit zásad hesel, sloupec **důvod** by zobrazil text, včetně aktuální hodnoty pro každé nastavení.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Zobrazit podrobnosti o kompatibilitě" border="false":::
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-Podrobnosti o kompatibilitě můžete zobrazit také z Azure PowerShell. Nejdřív se ujistěte, že máte nainstalovaný konfigurační modul hosta.
-
-```azurepowershell-interactive
-Install-Module Az.GuestConfiguration
-```
-
-Aktuální stav všech přiřazení hostů pro virtuální počítač můžete zobrazit pomocí následujícího příkazu:
-
-```azurepowershell-interactive
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
-```
-
-```output
-PolicyDisplayName                                                         ComplianceReasons
------------------                                                         -----------------
-Audit that an application is installed inside Windows VMs                 {[InstalledApplication]bwhitelistedapp}
-Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
-```
-
-Chcete-li zobrazit pouze frázi _důvod_ , která popisuje, proč virtuální počítač _nedodržuje předpisy_, vraťte pouze podřízenou vlastnost důvod.
-
-```azurepowershell-interactive
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
-```
-
-```output
-The following applications are not installed: '<name>'.
-```
-
-Můžete také vymezit historii dodržování předpisů pro přiřazení hostů v oboru pro daný počítač. Výstup z tohoto příkazu zahrnuje podrobnosti o každé sestavě pro virtuální počítač.
-
-> [!NOTE]
-> Výstup může vracet velký objem dat. Je doporučeno uložit výstup do proměnné.
-
-```azurepowershell-interactive
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-[Preview]: Audit that an application is installed inside Windows VMs      NonCompliant                       02/10/2019 12:00:38 PM 02/10/2019 12:00:41 PM VM01  ../17fg0...
-<truncated>
-```
-
-Pro zjednodušení tohoto zobrazení použijte parametr **ShowChanged** . Výstup z tohoto příkazu obsahuje jenom sestavy, které následují změnu stavu dodržování předpisů.
-
-```azurepowershell-interactive
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/10/2019 10:00:38 PM 02/10/2019 10:00:41 PM VM01  ../12ab0...
-Audit that an application is installed inside Windows VMs.                Compliant                          02/09/2019 11:00:38 AM 02/09/2019 11:00:39 AM VM01  ../e3665...
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
-```
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Snímek obrazovky s podrobnostmi o dodržování předpisů pro přiřazení hostů" border="false":::
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>Historie změn (Preview)
 
-V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k dispozici pro všechny prostředky Azure, které podporují [odstranění režimu úplného režimu](../../../azure-resource-manager/templates/complete-mode-deletion.md). Historie změn poskytuje podrobnosti o tom, kdy byla zjištěna změna, a _vizuální rozdíl_ pro každou změnu. Detekce změn se aktivuje, když se přidají, odeberou nebo změní vlastnosti Azure Resource Manager.
+V rámci nové **verze Public Preview** jsou poslední 14 dní historie změn k dispozici pro všechny prostředky Azure, které podporují [odstranění režimu úplného režimu](../../../azure-resource-manager/templates/complete-mode-deletion.md). Historie změn poskytuje podrobnosti o tom, kdy byla zjištěna změna, a _vizuální rozdíl_ pro každou změnu. Detekce změn se aktivuje, když se přidají, odeberou nebo změní vlastnosti Azure Resource Manager.
 
-1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+1. Spusťte službu Azure Policy v Azure Portal tak, že vyberete **všechny služby** a pak vyhledáte a vyberete **zásadu**.
 
 1. Na stránce **Přehled** nebo **dodržování předpisů** vyberte zásadu v jakémkoli **stavu dodržování předpisů**.
 
@@ -199,11 +140,11 @@ V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k d
 
 1. Na stránce **Kompatibilita prostředků** vyberte kartu **historie změn (Preview)** . Zobrazí se seznam zjištěných změn, pokud existují.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Karta historie změn Azure Policy na stránce dodržování předpisů prostředků" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Snímek obrazovky karty historie změn a zjištěné časy změny na stránce dodržování předpisů pro prostředky" border="false":::
 
 1. Vyberte jednu z zjištěných změn. _Rozdíly ve vizuálním_ zdroji se zobrazí na stránce **historie změn** .
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Změna vizuálního rozdílu ve Azure Policy historii změn na stránce Historie změn" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Snímek obrazovky s vizuálním rozdílem v historii změn stavu před a po stavu na stránce Historie změn" border="false":::
 
 _Vizuální rozdíl_ Aides při identifikaci změn prostředku. Zjištěné změny nemůžou souviset s aktuálním stavem dodržování předpisů daného prostředku.
 

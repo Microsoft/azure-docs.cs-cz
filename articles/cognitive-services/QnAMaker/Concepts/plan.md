@@ -1,14 +1,16 @@
 ---
 title: Plánování aplikace – QnA Maker
 description: Přečtěte si, jak naplánovat aplikaci QnA Maker. Seznamte se s tím, jak QnA Maker pracuje a komunikuje s dalšími službami Azure a s některými koncepty znalostní báze.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/2/2020
-ms.openlocfilehash: 19499aceed96155fa42c78865b1d673a3830f5cc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 11/09/2020
+ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054202"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214741"
 ---
 # <a name="plan-your-qna-maker-app"></a>Plánování aplikace QnA Maker
 
@@ -18,6 +20,8 @@ K naplánování QnA Maker aplikace je potřeba pochopit, jak QnA Maker funguje 
 
 Každý [prostředek Azure](azure-resources.md#resource-purposes) vytvořený pomocí QnA Maker má určitý účel. Každý prostředek má svůj účel, omezení a [cenovou úroveň](azure-resources.md#pricing-tier-considerations). Je důležité pochopit funkci těchto prostředků, abyste mohli tyto znalosti použít k procesu plánování.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 | Prostředek | Účel |
 |--|--|
 | Prostředek [QnA maker](azure-resources.md#qna-maker-resource) | Předpověď vytváření a dotazování |
@@ -25,6 +29,14 @@ Každý [prostředek Azure](azure-resources.md#resource-purposes) vytvořený po
 | Prostředek [služby App Service prostředku a plánu aplikací](azure-resources.md#app-service-and-app-service-plan) | Koncový bod předpovědi dotazů |
 | Prostředek [Application Insights](azure-resources.md#application-insights) | Telemetrie prediktivních dotazů |
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+| Prostředek | Účel |
+|--|--|
+| Prostředek [QnA maker](azure-resources.md#qna-maker-resource) | Vytváření, koncový bod a telemetrie prediktivních dotazů|
+| Prostředek [kognitivní hledání](azure-resources.md#cognitive-search-resource) | Úložiště dat a hledání |
+
+---
 ### <a name="resource-planning"></a>Plánování prostředků
 
 Úroveň Free, v `F0` každém prostředku funguje a může poskytovat prostředí prediktivního vytváření a vyvíjení dotazů. Tato úroveň se dá využít k tomu, abyste se dozvěděli o vytváření a předpovědi dotazů. Když přejdete do provozu v produkčním nebo živém scénáři, znovu vyhodnoťte výběr prostředků.
@@ -63,19 +75,32 @@ Znalostní báze je přímo spojená s QnA Maker prostředkem. Obsahuje páry ot
 
 ### <a name="language-considerations"></a>Jazykové požadavky
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 První znalostní báze vytvořená v prostředku QnA Maker nastaví jazyk pro daný prostředek. Pro prostředek QnA Maker můžete mít jenom jeden jazyk.
 
 Prostředky QnA Maker můžete strukturovat podle jazyka nebo můžete pomocí [překladače](../../translator/translator-info-overview.md) změnit dotaz z jiného jazyka na jazyk znalostní báze před odesláním dotazu do koncového bodu předpovědi dotazu.
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+V rámci stejného QnA Maker prostředku teď můžete mít základy znalostní báze v různých jazycích. Když vytvoříte první znalostní bázi Knowledge Base, můžete zvolit, jestli chcete použít prostředek pro znalostní báze v jednom nebo několika jazycích.
+
+![QnA Maker spravované (Preview) výběr vícejazykové znalostní báze](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+
+> [!NOTE]
+> Pokud povolíte jazykové nastavení pro znalostní bázi Knowledge Base, nemůžete ve svém prostředku QnA Maker vytvořit tolik základních základů znalostní báze. [Další podrobnosti o omezeních nastavení jazyka](./azure-resources.md).
+
+---
+
 ### <a name="ingest-data-sources"></a>Přijímání zdrojů dat
 
-K vytvoření znalostní báze můžete použít jeden z následujících zpracovaných [zdrojů dat](knowledge-base.md) :
+K vytvoření znalostní báze můžete použít jeden z následujících zpracovaných [zdrojů dat](../Concepts/data-sources-and-content.md) :
 
 * Veřejná adresa URL
 * Privátní adresa URL SharePointu
 * Soubor
 
-Proces přijímání převede [podporované typy obsahu](content-types.md) na Markdownu. Všechny další úpravy *odpovědi* se provádí pomocí Markdownu. Po vytvoření znalostní báze můžete [QnA páry](question-answer-set.md) upravovat na portálu QnA maker s [bohatým vytvářením textu](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer).
+Proces přijímání převede [podporované typy obsahu](../reference-document-format-guidelines.md) na Markdownu. Všechny další úpravy *odpovědi* se provádí pomocí Markdownu. Po vytvoření znalostní báze můžete [QnA páry](question-answer-set.md) upravovat na portálu QnA maker s [bohatým vytvářením textu](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer).
 
 ### <a name="data-format-considerations"></a>Požadavky na formát dat
 
@@ -99,17 +124,17 @@ Měli byste navrhnout svůj postup konverzace s použitím smyčky, aby uživate
 
 Spolupracovníci můžou být jiní vývojáři, kteří sdílejí úplný vývojový zásobník aplikace znalostní báze Knowledge Base nebo můžou být omezené jenom na vytváření znalostní báze.
 
-Vytváření znalostí ve znalostní bázi podporuje několik [oprávnění pro přístup na základě rolí](../how-to/collaborate-knowledge-base.md) , které použijete v Azure Portal k omezení rozsahu schopností spolupracovníka.
+Vytváření znalostí ve znalostní bázi podporuje několik oprávnění pro přístup na základě rolí, které použijete v Azure Portal k omezení rozsahu schopností spolupracovníka.
 
 ## <a name="integration-with-client-applications"></a>Integrace s klientskými aplikacemi
 
-Integrace s [klientskými aplikacemi](integration-with-other-applications.md) je zajištěna odesláním dotazu do koncového bodu modulu runtime předpovědi. Do vašeho koncového bodu webové aplikace QnA Maker se pošle dotaz do konkrétní znalostní báze se žádostí o sadu SDK nebo na základě REST.
+Integrace s klientskými aplikacemi je zajištěna odesláním dotazu do koncového bodu modulu runtime předpovědi. Do vašeho koncového bodu webové aplikace QnA Maker se pošle dotaz do konkrétní znalostní báze se žádostí o sadu SDK nebo na základě REST.
 
 Aby klientská aplikace správně ověřovala požadavky klienta, musí odeslat správné přihlašovací údaje a ID znalostní báze. Pokud používáte Azure Bot Service, nakonfigurujte tato nastavení jako součást konfigurace robota v Azure Portal.
 
 ### <a name="conversation-flow-in-a-client-application"></a>Tok konverzace v klientské aplikaci
 
-Tok konverzací v [klientské aplikaci](integration-with-other-applications.md), jako je třeba robot Azure, může vyžadovat funkčnost před a po interakci se znalostní bázi.
+Tok konverzací v klientské aplikaci, jako je třeba robot Azure, může vyžadovat funkčnost před a po interakci se znalostní bázi.
 
 Podporuje vaše klientská aplikace tok konverzace, a to poskytnutím náhradních prostředků pro zpracování následných výzev nebo zahrnutí funkce CHITEST-CHITEST? V takovém případě si tyto návrhy Navrhněte a ujistěte se, že dotaz klientské aplikace je správně zpracován jinou službou nebo při odeslání do znalostní báze.
 
@@ -123,11 +148,11 @@ V takovém scénáři [sdílené architektury](../choose-natural-language-proces
 
 ### <a name="active-learning-from-a-client-application"></a>Aktivní učení z klientské aplikace
 
-QnA Maker využívá _aktivní učení_ k vylepšení znalostní báze tím, že navrhuje alternativní otázky na odpověď. Klientská aplikace zodpovídá za součást tohoto [aktivního učení](active-learning-suggestions.md). Prostřednictvím výzev pro konverzaci může klientská aplikace zjistit, že znalostní báze vrátil odpověď, která není pro uživatele užitečná, a může určit lepší odpověď. Klientská aplikace musí [tyto informace odeslat zpět do znalostní báze](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api) , aby se zlepšila kvalita předpovědi.
+QnA Maker využívá _aktivní učení_ k vylepšení znalostní báze tím, že navrhuje alternativní otázky na odpověď. Klientská aplikace zodpovídá za součást tohoto [aktivního učení](../How-To/use-active-learning.md). Prostřednictvím výzev pro konverzaci může klientská aplikace zjistit, že znalostní báze vrátil odpověď, která není pro uživatele užitečná, a může určit lepší odpověď. Klientská aplikace musí tyto informace odeslat zpět do znalostní báze, aby se zlepšila kvalita předpovědi.
 
 ### <a name="providing-a-default-answer"></a>Zadání výchozí odpovědi
 
-Pokud vaše znalostní báze nenajde odpověď, vrátí _výchozí odpověď_. Tato odpověď se dá nakonfigurovat na stránce **Nastavení** na portálu QnA maker nebo v [rozhraních API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body).
+Pokud vaše znalostní báze nenajde odpověď, vrátí _výchozí odpověď_. Tato odpověď se dá nakonfigurovat na stránce **Nastavení** na portálu QnA maker nebo v [rozhraních API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body).
 
 Tato výchozí odpověď se liší od výchozí odpovědi Azure bot. Výchozí odpověď pro Azure bot se konfiguruje v Azure Portal jako součást nastavení konfigurace. Vrátí se, pokud se prahová hodnota skóre nesplní.
 
@@ -150,15 +175,32 @@ K dispozici jsou [dvě fáze hodnocení odpovědí](query-knowledge-base.md#how-
 
 ### <a name="service-updates"></a>Aktualizace služeb
 
-Použijte [nejnovější aktualizace modulu runtime](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) pro automatické spravování aktualizací služby.
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
+Použijte [nejnovější aktualizace modulu runtime](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) pro automatické spravování aktualizací služby.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+V QnA Maker spravovaném (ve verzi Preview) je modul runtime spravovaný pomocí samotné služby QnA Maker. Aktualizace služby proto nelze použít.
+
+---
 
 ### <a name="scaling-throughput-and-resiliency"></a>Škálování, propustnost a odolnost
 
-Škálování, propustnost a odolnost proti chybám určují [prostředky Azure](../how-to/set-up-qnamaker-service-azure.md), jejich cenové úrovně a všechny okolní architektury, jako je [Traffic Manager](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager).
+Škálování, propustnost a odolnost proti chybám určují [prostředky Azure](../how-to/set-up-qnamaker-service-azure.md), jejich cenové úrovně a všechny okolní architektury, jako je [Traffic Manager](../how-to/configure-QnA-Maker-resources.md#business-continuity-with-traffic-manager).
 
 ### <a name="analytics-with-application-insights"></a>Analýza pomocí Application Insights
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 Všechny dotazy do znalostní báze jsou uloženy v Application Insights. Využijte naše [Nejčastější dotazy](../how-to/get-analytics-knowledge-base.md) a pochopte metriky.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+Ve spravovaném nasazení se telemetrie nabízí prostřednictvím [služby Azure monitor](../../../azure-monitor/index.yml). Využijte naše [Nejčastější dotazy](../how-to/get-analytics-knowledge-base.md) a pochopte metriky.
+
+
+---
 
 ## <a name="development-lifecycle"></a>Životní cyklus vývoje
 
@@ -166,16 +208,16 @@ Všechny dotazy do znalostní báze jsou uloženy v Application Insights. Využi
 
 ### <a name="knowledge-base-development-of-qna-maker-pairs"></a>Vývoj dvojic QnA Maker ve znalostní bázi Knowledge Base
 
-Vaše [páry QnA](question-answer-set.md) by se měly navrhovat a vyvíjet na základě využití klientských aplikací.
+Vaše páry QnA by se měly navrhovat a vyvíjet na základě využití klientských aplikací.
 
 Každý pár může obsahovat:
 * Metadata jsou při dotazování, která umožňují označit páry QnA dalšími informacemi o zdroji, obsahu, formátu a účelu vašich dat, filtrovat.
 * Následné výzvy – pomáhají určit cestu přes znalostní bázi, aby uživatel dostal správnou odpověď.
-* Alternativní otázky – důležité: Pokud chcete, aby vyhledávání odpovídalo vaší odpovědi z různých forem otázky, je důležité. [Aktivní návrhy výukových kurzů](active-learning-suggestions.md) se zapínají na alternativní otázky.
+* Alternativní otázky – důležité: Pokud chcete, aby vyhledávání odpovídalo vaší odpovědi z různých forem otázky, je důležité. [Aktivní návrhy výukových kurzů](../How-To/use-active-learning.md) se zapínají na alternativní otázky.
 
 ### <a name="devops-development"></a>Vývoj DevOps
 
-Vývoj znalostní báze pro vložení do kanálu DevOps vyžaduje, aby znalostní báze při [dávkovém testování](../quickstarts/batch-testing.md)byly izolované.
+Vývoj znalostní báze pro vložení do kanálu DevOps vyžaduje, aby znalostní báze byla během dávkového testování izolovaná.
 
 Znalostní báze sdílí index Kognitivní hledání se všemi ostatními základy znalostní báze na prostředku QnA Maker. I když je znalostní báze izolována oddílem, sdílení indexu může v porovnání s publikovanou znalostní báze způsobit rozdíl ve skóre.
 

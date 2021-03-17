@@ -4,11 +4,11 @@ description: 'Rychlý Start: pomocí Azure Event Grid a Azure Portal vytvořte �
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421599"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005686"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal
 
@@ -34,7 +34,7 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
    
 1. Na stránce **vytvořit účet úložiště** proveďte následující kroky:
     1. Vyberte své předplatné Azure. 
-    2. V případě **skupiny prostředků**vytvořte novou skupinu prostředků nebo vyberte některou z existujících. 
+    2. V případě **skupiny prostředků** vytvořte novou skupinu prostředků nebo vyberte některou z existujících. 
     3. Zadejte název účtu úložiště. 
     4. Vyberte **Zkontrolovat a vytvořit**. 
 
@@ -52,9 +52,9 @@ Před přihlášením k odběru událostí úložiště objektů blob vytvořím
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. Na stránce **vlastní nasazení** proveďte následující kroky: 
-    1. V poli **Skupina prostředků**vyberte skupinu prostředků, kterou jste vytvořili při vytváření účtu úložiště. Až budete s kurzem hotovi, budete ho moct vyčistit tím, že odstraníte skupinu prostředků.  
-    2. Jako **název lokality**zadejte název webové aplikace.
-    3. Jako **název plánu hostování**zadejte název app Serviceho plánu, který se má použít pro hostování webové aplikace.
+    1. V poli **Skupina prostředků** vyberte skupinu prostředků, kterou jste vytvořili při vytváření účtu úložiště. Až budete s kurzem hotovi, budete ho moct vyčistit tím, že odstraníte skupinu prostředků.  
+    2. Jako **název lokality** zadejte název webové aplikace.
+    3. Jako **název plánu hostování** zadejte název app Serviceho plánu, který se má použít pro hostování webové aplikace.
     4. Zaškrtněte políčko pro souhlasím **s podmínkami a ujednáními uvedenými nahoře**. 
     5. Vyberte **Koupit**. 
 
@@ -92,7 +92,7 @@ K odběru tématu se přihlašujete, aby služba Event Grid věděla, které ud�
     2. Vyberte **webový Hook** pro **Typ koncového bodu**. 
 
        ![Vybrat typ koncového bodu webového zavěšení](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
-4. V případě **koncového bodu**klikněte na **Vybrat koncový bod**a zadejte adresu URL webové aplikace a přidejte `api/updates` ji na domovskou stránku URL (například: `https://spegridsite.azurewebsites.net/api/updates` ) a pak vyberte **potvrdit výběr**.
+4. V případě **koncového bodu** klikněte na **Vybrat koncový bod** a zadejte adresu URL webové aplikace a přidejte `api/updates` ji na domovskou stránku URL (například: `https://spegridsite.azurewebsites.net/api/updates` ) a pak vyberte **potvrdit výběr**.
 
    ![Potvrdit výběr koncového bodu](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
 5. Nyní na stránce **vytvořit odběr události** vyberte **vytvořit** a vytvořte odběr události. 

@@ -9,19 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: cb3cb41b46c2def4f99af7f1811e4ff96dff7070
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167024"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428639"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)
 
-Kontejner v úložišti objektů blob můžete připojit z virtuálního počítače Azure (VM) se systémem Windows nebo Linux nebo z systému Windows nebo Linux, který běží místně pomocí protokolu NFS 3,0. Tento článek poskytuje podrobné pokyny. Další informace o podpoře protokolů NFS 3,0 v BLOB Storage najdete v tématu [Podpora protokolu NFS (Network File System) 3,0 v Azure Blob Storage (Preview)](network-file-system-protocol-support.md).
-
-> [!NOTE]
-> Podpora protokolu NFS 3,0 v úložišti objektů BLOB v Azure je ve verzi Public Preview a je dostupná v těchto oblastech: USA – východ, USA – střed, USA – středozápad, Austrálie – jihovýchod, Severní Evropa, Velká Británie – západ, Korea – jih, Jižní Korea a Kanada – střed.
+Kontejner v úložišti objektů blob můžete připojit z virtuálního počítače Azure se systémem Linux nebo z operačního systému Linux, který je místně spuštěný pomocí protokolu NFS 3,0. Tento článek poskytuje podrobné pokyny. Další informace o podpoře protokolů NFS 3,0 v BLOB Storage najdete v tématu [Podpora protokolu NFS (Network File System) 3,0 v Azure Blob Storage (Preview)](network-file-system-protocol-support.md).
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Krok 1: registrace funkce protokolu NFS 3,0 v rámci vašeho předplatného
 
@@ -48,13 +45,7 @@ Kontejner v úložišti objektů blob můžete připojit z virtuálního počít
    Register-AzProviderFeature -FeatureName AllowNFSV3 -ProviderNamespace Microsoft.Storage 
    ```
 
-5. Zaregistrujte `PremiumHns` funkci také pomocí následujícího příkazu.
-
-   ```powershell
-   Register-AzProviderFeature -FeatureName PremiumHns -ProviderNamespace Microsoft.Storage  
-   ```
-
-6. Zaregistrujte poskytovatele prostředků pomocí následujícího příkazu.
+5. Zaregistrujte poskytovatele prostředků pomocí následujícího příkazu.
     
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
@@ -66,12 +57,11 @@ Schválení registrace může trvat až hodinu. Chcete-li ověřit, zda byla reg
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumHns  
 ```
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>Krok 3: vytvoření Azure Virtual Network (virtuální síť)
 
-Váš účet úložiště musí být obsažený v rámci virtuální sítě. Virtuální síť umožňuje klientům zabezpečené připojení k vašemu účtu úložiště. Další informace o virtuální síti a o tom, jak ji vytvořit, najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/).
+Váš účet úložiště musí být obsažený v rámci virtuální sítě. Virtuální síť umožňuje klientům zabezpečené připojení k vašemu účtu úložiště. Další informace o virtuální síti a o tom, jak ji vytvořit, najdete v [dokumentaci k Virtual Network](../../virtual-network/index.yml).
 
 > [!NOTE]
 > Klienti ve stejné virtuální síti můžou ve svém účtu připojit kontejnery. Kontejner můžete také připojit z klienta, který běží v místní síti, ale budete muset nejdřív připojit místní síť k vaší virtuální síti. Viz [podporovaná síťová připojení](network-file-system-protocol-support.md#supported-network-connections).
@@ -86,20 +76,20 @@ Pokud chcete zabezpečit data v účtu, přečtěte si tato doporučení: [dopor
 
 Pokud chcete připojit kontejner pomocí NFS 3,0, musíte **po** registraci funkce u svého předplatného vytvořit účet úložiště. Nemůžete povolit účty, které existovaly před registrací funkce. 
 
-V rámci verze Preview této funkce je protokol NFS 3,0 podporován pouze v účtech [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) .
+V rámci verze Preview této funkce je protokol NFS 3,0 podporován v účtech [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) a [obecné účely v2](../common/storage-account-overview.md#general-purpose-v2-accounts) .
 
 Při konfiguraci účtu vyberte tyto hodnoty:
 
-|Nastavení | Hodnota|
-|----|---|
-|Umístění|Jedna z následujících oblastí: USA – východ, USA – střed, USA – středozápad, Austrálie – jihovýchod, Severní Evropa, Velká Británie – západ, Korea – jih a Kanada – střed |
-|Výkon|Premium|
-|Druh účtu|BlockBlobStorage|
-|Replikace|Místně redundantní úložiště (LRS)|
-|Metoda připojení|Veřejný koncový bod (vybrané sítě) nebo soukromý koncový bod|
-|Secure transfer required (Vyžádání bezpečného přenosu)|Zakázáno|
-|Hierarchický obor názvů|Povoleno|
-|SYSTÉM SOUBORŮ NFS V3|Povoleno|
+|Nastavení | Výkon úrovně Premium | Standardní výkon  
+|----|---|---|
+|Umístění|Všechny dostupné oblasti |Jedna z následujících oblastí: Austrálie – východ, Korea – střed a Střed USA – jih   
+|Výkon|Premium| Standard
+|Druh účtu|BlockBlobStorage| Obecné účely v2
+|Replikace|Místně redundantní úložiště (LRS)| Místně redundantní úložiště (LRS)
+|Metoda připojení|Veřejný koncový bod (vybrané sítě) nebo soukromý koncový bod |Veřejný koncový bod (vybrané sítě) nebo soukromý koncový bod
+|Secure transfer required (Vyžádání bezpečného přenosu)|Zakázáno|Zakázáno
+|Hierarchický obor názvů|Povoleno|Povoleno
+|SYSTÉM SOUBORŮ NFS V3|Povoleno |Povoleno 
 
 Můžete přijmout výchozí hodnoty pro všechna ostatní nastavení. 
 
@@ -107,19 +97,17 @@ Můžete přijmout výchozí hodnoty pro všechna ostatní nastavení.
 
 Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů nebo sad SDK:
 
-|Nástroje|Sady SDK|
+|nástroje|Sady SDK|
 |---|---|
-|[Azure Storage Explorer](data-lake-storage-explorer.md#create-a-container)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
-|[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
+|[Azure Portal](https://portal.azure.com)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
+|[AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)|[Java](data-lake-storage-directory-file-acl-java.md)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-|[Azure Portal](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+||[REST](/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>Krok 7: připojení kontejneru
 
-Vytvořte v systému Windows nebo Linux adresář a pak připojte kontejner v účtu úložiště.
-
-### <a name="linux"></a>[Linux](#tab/linux)
+Vytvořte v systému Linux adresář a pak připojte kontejner v účtu úložiště.
 
 1. V systému Linux vytvořte adresář.
 
@@ -131,23 +119,6 @@ Vytvořte v systému Windows nebo Linux adresář a pak připojte kontejner v ú
 
    ```
    mount -o sec=sys,vers=3,nolock,proto=tcp <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name>  /mnt/test
-   ```
-
-   - `<storage-account-name>`Zástupný symbol, který se zobrazí v tomto příkazu, nahraďte názvem vašeho účtu úložiště.  
-
-   - `<container-name>`Zástupný symbol nahraďte názvem vašeho kontejneru.
-
-
-### <a name="windows"></a>[Windows](#tab/windows)
-
-1. Otevřete dialogové okno **funkce systému Windows** a potom zapněte funkci **klient pro systém souborů NFS** . 
-
-   ![Funkce Client for Network File System](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
-
-2. Připojte kontejner pomocí příkazu [Mount](https://docs.microsoft.com/windows-server/administration/windows-commands/mount) .
-
-   ```
-   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
    ```
 
    - `<storage-account-name>`Zástupný symbol, který se zobrazí v tomto příkazu, nahraďte názvem vašeho účtu úložiště.  
@@ -166,10 +137,3 @@ Vytvořte v systému Windows nebo Linux adresář a pak připojte kontejner v ú
 ## <a name="see-also"></a>Viz také
 
 [Podpora protokolů systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)](network-file-system-protocol-support.md)
-
-
-
-
-
-
-

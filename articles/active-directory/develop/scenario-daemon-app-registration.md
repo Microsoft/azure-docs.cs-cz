@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 938a19276839d5e0d2bd3e0244510fc068cb029c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885476"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582903"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Aplikace démona, která volá webová rozhraní API – registrace aplikace
 
@@ -24,7 +24,7 @@ V případě aplikace démona je zde uvedeno, co potřebujete znát při registr
 
 ## <a name="supported-account-types"></a>Podporované typy účtu
 
-Aplikace démona mají smysl jenom v klientech Azure AD. Takže když vytvoříte aplikaci, musíte vybrat jednu z následujících možností:
+Aplikace démona mají smysl jenom v klientech Azure AD. Takže když vytvoříte aplikaci, vyberte jednu z následujících možností:
 
 - **Účty pouze v tomto organizačním adresáři**. Tato volba je nejběžnější, protože aplikace démona jsou obvykle zapisovány obchodními vývojáři (LOB).
 - **Účty v libovolném organizačním adresáři**. Tuto možnost můžete vybrat, pokud jste nezávislý výrobce softwaru, který zákazníkům poskytuje nástroj pro nástroj. Budete potřebovat schválit správce tenanta vašich zákazníků.
@@ -35,14 +35,14 @@ V případě, že vaše důvěrná klientská aplikace používá *pouze* tok p�
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>Oprávnění rozhraní API – oprávnění aplikace a souhlas správce
 
-Aplikace démona může vyžadovat pouze oprávnění aplikace pro rozhraní API (nejsou delegovaná oprávnění). Na stránce **oprávnění rozhraní API** pro registraci aplikace po výběru možnosti **Přidat oprávnění** a zvolení rodiny rozhraní API zvolte **oprávnění aplikace**a pak vyberte vaše oprávnění.
+Aplikace démona může vyžadovat pouze oprávnění aplikace pro rozhraní API (nejsou delegovaná oprávnění). Na stránce **oprávnění rozhraní API** pro registraci aplikace po výběru možnosti **Přidat oprávnění** a zvolení rodiny rozhraní API zvolte **oprávnění aplikace** a pak vyberte vaše oprávnění.
 
 ![Oprávnění aplikace a souhlas správce](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
 > Webové rozhraní API, které chcete volat, musí definovat *oprávnění aplikace (aplikační role)*, ne delegovaná oprávnění. Podrobnosti o tom, jak vystavit takové rozhraní API, najdete v tématu [Protected Web API: registrace aplikace – když je webové rozhraní API voláno aplikací démona](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
 
-Aplikace démona vyžaduje, aby správce tenanta předá aplikaci, která volá webové rozhraní API, předem svůj souhlas. Správci tenanta poskytují tento souhlas na stejné stránce **oprávnění rozhraní API** tak, že v ** *naší organizaci* vyberete udělit souhlas správce** .
+Aplikace démona vyžaduje, aby správce tenanta předá aplikaci, která volá webové rozhraní API, předem svůj souhlas. Správci tenanta poskytují tento souhlas na stejné stránce **oprávnění rozhraní API** tak, že v ***naší organizaci* vyberete udělit souhlas správce** .
 
 Pokud jste nezávislý výrobce softwaru, který vytváří víceklientské aplikace, měli byste si přečtěte část nasazení v případě víceklientské aplikace [démona](scenario-daemon-production.md#deployment---multitenant-daemon-apps).
 
@@ -50,5 +50,4 @@ Pokud jste nezávislý výrobce softwaru, který vytváří víceklientské apli
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Aplikace démon – konfigurace kódu aplikace](./scenario-daemon-app-configuration.md)
+Přejděte k dalšímu článku v tomto scénáři, [Konfigurace kódu aplikace](./scenario-daemon-app-configuration.md).

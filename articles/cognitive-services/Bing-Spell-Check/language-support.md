@@ -10,18 +10,23 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a97bd6bfc1cb7a0760894faaf3fd0617e6165f58
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66390165"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351193"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro kontrolu pravopisu
 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+
 Tyto jazyky jsou podporovány rozhraní API Bingu pro kontrolu pravopisu (pouze v `spell` režimu).
 
-Počítejte s tím, že `en-US` `mkt` Pokud chcete pracovat s jiným jazykem, než, by měl být `Accept-Language` nastaven `setLang` a buď, nebo by měl být nastaven, jak byl popsán v tématu [rozhraní API pro kontrolu pravopisu v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Počítejte s tím, že pokud chcete pracovat s jiným jazykem `en-US` , než, `mkt` by měl být nastaven a buď, `Accept-Language` nebo `setLang` by měl být nastaven, jak byl popsán v tématu [rozhraní API pro kontrolu pravopisu v7 reference](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
@@ -68,5 +73,5 @@ Počítejte s tím, že `en-US` `mkt` Pokud chcete pracovat s jiným jazykem, ne
 
 ## <a name="see-also"></a>Viz také
 
-- [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Stránka dokumentace ke službám Cognitive Services](../index.yml)
 - [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

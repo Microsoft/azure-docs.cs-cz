@@ -6,22 +6,22 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520897"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314841"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Spouštění akcí na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
 Chcete-li spouštět akce až po úspěšném nebo neúspěšném provedení jiné skupiny akcí, seskupte tyto akce do *oboru*. Tato struktura je užitečná v případě, že chcete uspořádat akce jako logickou skupinu, vyhodnotit stav této skupiny a provést akce, které jsou založeny na stavu oboru. Po dokončení všech akcí v oboru, který je spuštěn, rozsah také získá svůj stav. Můžete například použít obory, pokud chcete implementovat [výjimku a zpracování chyb](../logic-apps/logic-apps-exception-handling.md#scopes). 
 
-Ke kontrole stavu oboru můžete použít stejná kritéria, která použijete k určení stavu spuštění Logic Apps, jako je například úspěšné, neúspěšné, zrušené atd. Ve výchozím nastavení se po úspěšném dokončení všech akcí oboru stav tohoto oboru označí jako "úspěch". V případě, že dojde k selhání nebo zrušení jakékoli akce v oboru, je stav oboru označen jako "neúspěch". Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+Chcete-li zjistit stav oboru, můžete použít stejná kritéria, která použijete k určení stavu spuštění aplikace logiky, jako je například **úspěšné**, **neúspěšné**, **zrušené**a tak dále. Ve výchozím nastavení se po úspěšném dokončení všech akcí oboru stav oboru označí jako **úspěšný**. Pokud ale dojde k selhání jakékoli akce v oboru nebo zrušení, stav tohoto oboru se označí jako **neúspěšné**. Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
-Tady je například aplikace logiky vysoké úrovně, která používá obor ke spouštění specifických akcí a podmínku pro kontrolu stavu oboru. Pokud některé akce v oboru selžou nebo neočekávaně skončí, je obor označený jako "neúspěšné" nebo "přerušeno" a aplikace logiky pošle zprávu "obor se nepovedlo". Pokud všechny akce v oboru proběhnou úspěšně, aplikace logiky pošle zprávu "obor byl úspěšný".
+Tady je například aplikace logiky vysoké úrovně, která používá obor ke spouštění specifických akcí a podmínku pro kontrolu stavu oboru. Pokud některé akce v oboru selžou nebo neočekávaně skončí, je obor označený jako **neúspěšný** nebo **přerušený** a aplikace logiky pošle zprávu "obor se nepovedlo". Pokud všechny akce v oboru proběhnou úspěšně, aplikace logiky pošle zprávu "obor byl úspěšný".
 
-![Nastavení triggeru "plán-opakování"](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![Diagram znázorňuje tok oboru aplikace logiky s příklady "obor se selháním" a "obor byl úspěšný".](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -31,7 +31,7 @@ Chcete-li postupovat podle příkladu v tomto článku, budete potřebovat tyto 
 
 * E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje služba Logic Apps. V tomto příkladu se používá Outlook.com. Pokud používáte jiného poskytovatele, zůstane obecný tok stejný, ale vaše uživatelské rozhraní se zobrazí jinak.
 
-* Klíč mapy Bing. Pokud chcete získat tento klíč, přečtěte si téma <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">získání klíče mapy Bing</a>.
+* Klíč mapy Bing. Pokud chcete získat tento klíč, přečtěte si téma <a href="/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key" target="_blank">získání klíče mapy Bing</a>.
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -77,12 +77,12 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
       | ------- | ----- | ----------- |
       | **Bod na trase 1** | <*Čína*> | Zadejte původ trasy. | 
       | **Bod na trase 2** | <*účelu*> | Zadejte cíl trasy. | 
-      | **Vyhnutí se** | Žádný | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route). | 
-      | **Optimalizace** | timeWithTraffic | Vyberte parametr pro optimalizaci trasy, například vzdálenost, čas s aktuálními informacemi o provozu a tak dále. V tomto příkladu se používá tato hodnota: "timeWithTraffic" | 
+      | **Vyhnutí se** | Žádné | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route). | 
+      | **Zvýšit** | timeWithTraffic | Vyberte parametr pro optimalizaci trasy, například vzdálenost, čas s aktuálními informacemi o provozu a tak dále. V tomto příkladu se používá tato hodnota: "timeWithTraffic" | 
       | **Jednotka vzdálenosti** | <*vaše preference*> | Zadejte jednotku ke vzdálenosti pro výpočet trasy. V tomto příkladu se používá tato hodnota: km. | 
       | **Způsob cestování** | Autem | Zadejte režim cesty pro trasu. V tomto příkladu se používá tato hodnota "jízda". | 
-      | **Datum a čas přejezdu** | Žádný | Platí jenom pro režim přenosu. | 
-      | **Typ data přenosu – typ typu** | Žádný | Platí jenom pro režim přenosu. | 
+      | **Datum a čas přejezdu** | Žádné | Platí jenom pro režim přenosu. | 
+      | **Typ Date-Type přenosu** | Žádné | Platí jenom pro režim přenosu. | 
       ||||  
 
 1. [Přidejte podmínku](../logic-apps/logic-apps-control-flow-conditional-statement.md) , která zkontroluje, jestli aktuální doba trvání cesty s provozem přesáhne zadaný čas. 
@@ -143,7 +143,7 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
    1. Po dokončení vyberte **OK**.
 
    <!-- markdownlint-disable MD038 -->
-   1. Po vyřešení výrazu přidejte tento text do úvodního prostoru:``` minutes```
+   1. Po vyřešení výrazu přidejte tento text do úvodního prostoru: ``` minutes```
   
        Vaše pole **tělo** teď vypadá jako v tomto příkladu:
 
@@ -192,7 +192,7 @@ Dále přidejte obor, abyste mohli seskupit konkrétní akce a vyhodnotit jejich
    
       `result('Scope')[0]['status']`
 
-      ![Přidat výraz, který kontroluje stav oboru](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Snímek obrazovky, který zobrazuje pole výrazu se zvýrazněným výrazem výsledku](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Pro oba řádky vyberte **je rovno** jako operátor. 
    

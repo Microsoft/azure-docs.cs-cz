@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 3747be15f7a15d3d47af2d3495eea2315d40a044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 022ccaab0b210cd2d656b69f505791d1a2aa963f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419899"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89440775"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurace připojení VPN S2S typu aktivní-aktivní pomocí bran Azure VPN
 
@@ -411,7 +411,7 @@ V tomto kroku povolíte režim aktivní-aktivní a aktualizujete bránu. V tomto
 
 * V tomto kroku nemůžete změnit starší položku SKU na jednu z nových SKU. Změnit velikost původní SKU můžete jenom na jinou podporovanou starší verzi SKU. Nemůžete například změnit SKLADOVOU položku z úrovně Standard na VpnGw1 (i když je VpnGw1 podporovaná pro aktivní-aktivní), protože Standard je starší skladová položka a VpnGw1 je aktuální SKU. Další informace o změně velikosti a migraci SKU najdete v tématu [SKU brány](vpn-gateway-about-vpngateways.md#gwsku).
 
-* Pokud chcete změnit velikost aktuální SKU, například VpnGw1 na VpnGw3, můžete to udělat pomocí tohoto kroku, protože SKU jsou ve stejné rodině SKU. K tomu byste měli použít tuto hodnotu:```-GatewaySku VpnGw3```
+* Pokud chcete změnit velikost aktuální SKU, například VpnGw1 na VpnGw3, můžete to udělat pomocí tohoto kroku, protože SKU jsou ve stejné rodině SKU. K tomu byste měli použít tuto hodnotu: ```-GatewaySku VpnGw3```
 
 Pokud ve svém prostředí používáte tuto bránu, nemusíte-li měnit velikost brány, nemusíte zadávat-GatewaySku. Všimněte si, že v tomto kroku musíte nastavit objekt brány v PowerShellu tak, aby aktivoval skutečnou aktualizaci. Tato aktualizace může trvat 30 až 45 minut, i když neměníte velikost brány.
 

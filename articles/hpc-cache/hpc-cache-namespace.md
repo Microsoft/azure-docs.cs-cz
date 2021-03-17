@@ -1,25 +1,25 @@
 ---
-title: Použití agregovaného oboru názvů mezipaměti HPC Azure
+title: Vysvětlení agregovaného oboru názvů mezipaměti HPC Azure
 description: Jak naplánovat virtuální obor názvů pro mezipaměť HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 10/30/2019
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1c28f549cf93d77f6aef6bcde6a2225345a79cc9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497025"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91612944"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Plánování agregovaného oboru názvů
 
 Mezipaměť HPC Azure umožňuje klientům přístup k nejrůznějším systémům úložiště prostřednictvím virtuálního oboru názvů, který skrývá podrobnosti o back-endovém systému úložiště.
 
-Když přidáte cíl úložiště, nastavíte cestu k souboru pro klienta. Klientské počítače připojí tuto cestu k souboru a můžou do mezipaměti ukládat požadavky na čtení souborů místo přímého připojení systému úložiště.
+Po přidání cíle úložiště nastavíte pro cíl úložiště jednu nebo více cest k oboru názvů na straně klienta. Klientské počítače připojí tuto cestu k souboru a můžou do mezipaměti ukládat požadavky na čtení souborů místo přímého připojení systému úložiště.
 
-Vzhledem k tomu, že Azure HPC cache spravuje tento virtuální systém souborů, můžete změnit cíl úložiště, aniž byste museli měnit cestu klienta. Můžete například nahradit hardwarový systém úložiště cloudovým úložištěm, aniž byste museli přepisovat klientské postupy.
+Vzhledem k tomu, že Azure HPC cache spravuje tento virtuální systém souborů, můžete změnit cíl úložiště, aniž byste museli měnit cestu klienta. Můžete například nahradit hardwarový systém úložiště cloudovým úložištěm, aniž byste museli přepisovat postupy na straně klienta.
 
 ## <a name="aggregated-namespace-example"></a>Příklad agregovaného oboru názvů
 
@@ -48,7 +48,7 @@ Pokud chcete mít snadný přístup přes mezipaměť, zvažte vytvoření cíl�
 | /goldline/templates/acme2017/sku980     | /templates/sku980      |
 | SourceCollection                        | /Source               |
 
-Cíl úložiště NFS může mít několik cest k virtuálnímu oboru názvů, pokud každý z nich odkazuje na jedinečnou cestu exportu.
+Cíl úložiště NFS může mít několik cest k virtuálnímu oboru názvů, pokud každý z nich odkazuje na jedinečnou cestu exportu. (Čtení [cest k oboru názvů systému souborů NFS](add-namespace-paths.md#nfs-namespace-paths) pro zjištění doporučeného maximálního počtu cest oboru názvů na cíl úložiště systému souborů NFS)
 
 Vzhledem k tomu, že zdrojové cesty NFS jsou podadresářům stejného exportu, budete muset definovat několik cest k oboru názvů ze stejného cíle úložiště.
 
@@ -59,6 +59,13 @@ Vzhledem k tomu, že zdrojové cesty NFS jsou podadresářům stejného exportu,
 
 Klientská aplikace může připojit mezipaměť a snadno získat přístup k agregovaným cestám k souborům oboru názvů, ``/source`` ``/templates/sku798`` a ``/templates/sku980`` .
 
+Alternativním přístupem může být vytvořit virtuální cestu, například `/templates` odkazy na nadřazený adresář, `acme2017` a potom nechat klienty přejít na jednotlivé `sku798` a `sku980` adresáře po připojení mezipaměti. Nemůžete však vytvořit cestu k oboru názvů, která je podadresářem jiné cesty k oboru názvů. Takže pokud vytvoříte cestu k `acme2017` adresáři, nemůžete vytvořit také žádné cesty oboru názvů pro přímý přístup k jeho podadresářům.
+
+Stránka nastavení **oboru názvů** mezipaměti HPC Azure zobrazuje systém souborů s klientským přístupem a umožňuje přidat nebo upravit cesty. Další informace najdete [v tématu Nastavení agregovaného oboru názvů](add-namespace-paths.md) .
+
 ## <a name="next-steps"></a>Další kroky
 
-Až se rozhodnete, jak nastavit virtuální systém souborů, [vytvořte cíle úložiště](hpc-cache-add-storage.md) pro mapování vašeho back-endu úložiště na cesty k virtuálním souborům, ke kterým se klient vztahuje.
+Až se rozhodnete, jak nastavit virtuální systém souborů, proveďte tyto kroky a vytvořte ho:
+
+* [Vytvořte cíle úložiště](hpc-cache-add-storage.md) , abyste přidali vaše back-endové úložné systémy do mezipaměti HPC Azure.
+* [Přidání cest k oboru názvů](add-namespace-paths.md) pro vytvoření agregovaného oboru názvů, který klientské počítače používají pro přístup k souborům

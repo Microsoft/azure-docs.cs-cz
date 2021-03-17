@@ -1,31 +1,32 @@
 ---
-title: Azure Media Services šifrování DRM a služba doručování licencí
-titleSuffix: Azure Media Services
+title: Media Services šifrování DRM a doručování licencí
 description: Naučte se používat dynamické šifrování DRM a službu doručování licencí k doručování streamů šifrovaných pomocí licencí Microsoft PlayReady, Google Widevine nebo Apple FairPlay.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 07/09/2020
-ms.author: juliako
+ms.topic: tutorial
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 8ab8a3ce0718cac3135bfdac67088d36fcd4f184
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eeb41967ac7e2b73bfb32933f7f019a5722fdc9b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060622"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454428"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Kurz: použití dynamického šifrování DRM a služby doručování licencí
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 > [!NOTE]
-> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
+> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
 
 Azure Media Services můžete použít k doručování datových proudů šifrovaných pomocí licencí Microsoft PlayReady, Google Widevine nebo Apple FairPlay. Podrobné vysvětlení najdete v tématu [Ochrana obsahu s dynamickým šifrováním](content-protection-overview.md).
 
@@ -48,7 +49,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kurzu potřebujete následující položky:
 
@@ -135,7 +136,7 @@ Po dokončení kódování a nastavení zásady symetrického klíče spočívá
 
 Proces vytvoření **lokátoru streamování** se nazývá publikování. Ve výchozím nastavení je **Lokátor streamování** platný ihned po volání rozhraní API. Bude trvat až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy.
 
-Při vytváření **lokátoru streamování**je potřeba zadat požadované `StreamingPolicyName` . V tomto kurzu používáme jednu z předdefinovaných zásad streamování, která oznamuje Azure Media Services, jak publikovat obsah pro streamování. V tomto příkladu jsme nastavili název StreamingLocator.StreamingPolicyName na zásadu Predefined_MultiDrmCencStreaming. Šifry PlayReady a Widevine se aplikují a klíč se doručí klientovi pro přehrávání na základě konfigurovaných licencí DRM. Pokud zároveň chcete svůj stream zašifrovat pomocí CBCS (FairPlay), použijte zásadu Predefined_MultiDrmStreaming.
+Při vytváření **lokátoru streamování** je potřeba zadat požadované `StreamingPolicyName` . V tomto kurzu používáme jednu z předdefinovaných zásad streamování, která oznamuje Azure Media Services, jak publikovat obsah pro streamování. V tomto příkladu jsme nastavili název StreamingLocator.StreamingPolicyName na zásadu Predefined_MultiDrmCencStreaming. Šifry PlayReady a Widevine se aplikují a klíč se doručí klientovi pro přehrávání na základě konfigurovaných licencí DRM. Pokud zároveň chcete svůj stream zašifrovat pomocí CBCS (FairPlay), použijte zásadu Predefined_MultiDrmStreaming.
 
 > [!IMPORTANT]
 > Pokud používáte vlastní [zásady streamování](streaming-policy-concept.md), měli byste navrhnout určitou sadu takových zásad pro svůj účet Media Service a znovu je použít pro své StreamingLocators, kdykoli budete potřebovat stejné možnosti šifrování a protokoly. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet novou StreamingPolicy pro každou StreamingLocator.

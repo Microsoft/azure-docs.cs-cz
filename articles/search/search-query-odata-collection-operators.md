@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 47e7e09bae082141efd872d3a90ecc30a3be04e5
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4c1243d5d9122539466e94b6bbfdd5ced588e69a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146069"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88934901"
 ---
-# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Operátory kolekce OData v Azure Kognitivní hledání – `any` a`all`
+# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Operátory kolekce OData v Azure Kognitivní hledání – `any` a `all`
 
 Při psaní [výrazu filtru OData](query-odata-filter-orderby-syntax.md) pro použití s Azure kognitivní hledání je často užitečné filtrovat pole kolekcí. Můžete to dosáhnout pomocí `any` `all` operátorů a.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá `any` nebo `all` .
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá `any` nebo `all` .
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -107,4 +107,4 @@ Další podrobnosti o těchto omezeních a příklady najdete v tématu [řešen
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

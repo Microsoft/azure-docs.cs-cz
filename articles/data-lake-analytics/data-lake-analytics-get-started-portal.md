@@ -3,15 +3,14 @@ title: Vytvořit & dotaz Azure Data Lake Analytics-Azure Portal
 description: Vytvořte pomocí webu Azure Portal účet služby Azure Data Lake Analytics a odešlete úlohu U-SQL.
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: d8f0a5697a128deb75537f3d48a3830dc7ba9df9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6e51c6848476147073626119689407ebc02c036d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132530"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220954"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Začínáme s Azure Data Lake Analytics na webu Azure Portal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -31,7 +30,7 @@ Nyní vytvoříte Data Lake Analytics a účet Azure Data Lake Storage Gen1 ve s
 3. Vyberte hodnoty pro následující položky:
    * **Název:** Pojmenujte svůj účet Data Lake Analytics (povolena jsou pouze malá písmena a číslice).
    * **Předplatné**: Zvolte předplatné Azure použité pro účet Analytics.
-   * **Skupina prostředků**. Vyberte některou z existujících skupin prostředků Azure nebo vytvořte novou.
+   * **Skupina prostředků:** Vyberte některou z existujících skupin prostředků Azure nebo vytvořte novou.
    * **Umístění:** Vyberte datové centrum Azure pro účet Data Lake Analytics.
    * **Data Lake Storage Gen1**: postupujte podle pokynů k vytvoření nového účtu Data Lake Storage Gen1 nebo vyberte existující účet. 
 4. Volitelně vyberte cenovou úroveň pro svůj účet Data Lake Analytics.

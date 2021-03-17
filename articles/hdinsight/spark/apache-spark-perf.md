@@ -1,18 +1,16 @@
 ---
 title: Optimalizace úloh Sparku pro výkon – Azure HDInsight
 description: Zobrazit společné strategie pro nejlepší výkon Apache Sparkch clusterů ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 0b152f7882c7d7a3bab762253da0febc0257ceae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 567fc2637538408d9727d07d3185a5b0e3cf20c5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117968"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929930"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optimalizace úloh Apache Spark v HDInsight
 

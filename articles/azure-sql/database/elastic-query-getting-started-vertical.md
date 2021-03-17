@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2e133228f04cacdc14278abb8b6ee6303b820e7b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 90f89e72193c26b71859076b99c448a6e2d4c4c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956844"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060080"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Začínáme s mezidatabázovými dotazy (vertikální dělení) (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Elastický databázový dotaz (Preview) pro Azure SQL Database umožňuje spouš
 
 Po dokončení se dozvíte, jak nakonfigurovat a použít Azure SQL Database k provádění dotazů, které mají více souvisejících databází.
 
-Další informace o funkci dotazování elastické databáze najdete v tématu [Azure SQL Database přehled dotazů elastické databáze](elastic-query-overview.md).
+Další informace o funkci dotazování elastické databáze najdete v tématu  [Azure SQL Database přehled dotazů elastické databáze](elastic-query-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -77,6 +77,7 @@ INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]
     SECRET = '<password>';  
     ```
 
+    "Master_key_password" je silné heslo, které se používá k šifrování přihlašovacích údajů pro připojení. 
     Uživatelské jméno a heslo by mělo být uživatelské jméno a heslo, které jste použili k přihlášení do databáze Customers.
     Ověřování pomocí Azure Active Directory s elastickými dotazy není v současné době podporováno.
 
@@ -129,4 +130,4 @@ Informace o cenách najdete v tématu [SQL Database ceny](https://azure.microsof
 * Syntaxe a ukázkové dotazy pro vertikálně dělená data najdete v tématu [dotazování na vertikálně dělená data](elastic-query-vertical-partitioning.md) .
 * Kurz horizontálního dělení na oddíly (horizontálního dělení) najdete v tématu [Začínáme s elastickým dotazem pro horizontální dělení na oddíly (horizontálního dělení)](elastic-query-getting-started.md).
 * Syntaxe a ukázkové dotazy pro horizontálně rozdělená data najdete v tématu [dotazování na horizontálně dělená data](elastic-query-horizontal-partitioning.md) .
-* V tématu [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
+* V tématu [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.

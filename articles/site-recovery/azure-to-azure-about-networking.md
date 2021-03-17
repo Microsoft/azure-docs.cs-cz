@@ -2,18 +2,18 @@
 title: O sítích v zotavení po havárii virtuálních počítačů Azure pomocí Azure Site Recovery
 description: Poskytuje přehled o sítích pro replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
-author: sujayt
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
-ms.author: sutalasi
-ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131380"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370436"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -29,24 +29,26 @@ Přečtěte si, jak Site Recovery poskytuje zotavení po havárii pro [Tento sc�
 
 Následující diagram znázorňuje typické prostředí Azure pro aplikace běžící na virtuálních počítačích Azure:
 
-![zákazník – prostředí](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![Diagram, který znázorňuje typické prostředí Azure pro aplikace běžící na virtuálních počítačích Azure.](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 Pokud používáte Azure ExpressRoute nebo připojení VPN z vaší místní sítě do Azure, prostředí je následující:
 
 ![zákazník – prostředí](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-Sítě jsou obvykle chráněné pomocí bran firewall a skupin zabezpečení sítě (skupin zabezpečení sítě). Brány firewall používají k řízení připojení k síti adresu URL nebo přidávání do seznamu povolených IP adres. Skupin zabezpečení sítě poskytují pravidla, která používají rozsahy IP adres k řízení síťového připojení.
+Sítě jsou obvykle chráněné pomocí bran firewall a skupin zabezpečení sítě (skupin zabezpečení sítě). Pro řízení připojení k síti byste měli použít značky služby. Skupin zabezpečení sítě by mělo umožňovat řízení odchozího připojení pro několik značek služeb.
 
 >[!IMPORTANT]
 > Použití ověřeného proxy serveru k řízení připojení k síti není v Site Recovery podporováno a replikaci nelze povolit.
 
+>[!NOTE]
+>- Pro řízení odchozího připojení by se nemělo provádět filtrování na základě IP adresy.
+>- Pro řízení odchozího připojení by se neměly přidávat IP adresy Azure Site Recovery do směrovací tabulky Azure.
 
 ## <a name="outbound-connectivity-for-urls"></a>Odchozí připojení pro adresy URL
 
 Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte tyto adresy URL Site Recovery:
 
-
-**URL** | **Podrobnosti**
+**Adresa URL** | **Podrobnosti**
 --- | ---
 *.blob.core.windows.net | Vyžaduje se, aby se data mohla zapsat do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního počítače. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete přístup k určitým adresám URL účtu úložiště (např.: cache1.blob.core.windows.net a cache2.blob.core.windows.net) zpřístupnit místo *. blob.core.windows.net
 login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování adres URL služby Site Recovery.
@@ -57,16 +59,16 @@ login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování adres UR
 
 ## <a name="outbound-connectivity-using-service-tags"></a>Odchozí připojení pomocí značek služeb
 
-Pokud k řízení odchozího připojení používáte NSG, musí být tyto značky služby povolené.
+Při použití NSG k řízení odchozího připojení je potřeba tyto značky služeb povolit.
 
 - Pro účty úložiště ve zdrojové oblasti:
-    - Vytvořte pravidlo NSG založené na [značce služby úložiště](../virtual-network/security-overview.md#service-tags) pro zdrojovou oblast.
+    - Vytvořte pravidlo NSG založené na [značce služby úložiště](../virtual-network/network-security-groups-overview.md#service-tags) pro zdrojovou oblast.
     - Povolte tyto adresy, aby bylo možné do účtu úložiště mezipaměti zapsat data z virtuálního počítače.
-- Vytvořit pravidlo NSG založené na [značce služby pro Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají AAD
+- Vytvořit pravidlo NSG založené na [značce služby pro Azure Active Directory (AAD)](../virtual-network/network-security-groups-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají AAD
 - Vytvořte pravidlo NSG na základě značky služby EventsHub pro cílovou oblast a umožněte přístup Site Recovery monitorování.
-- Vytvořte pravidlo NSG na základě značky služby AzureSiteRecovery, které umožní přístup k Site Recovery službě v libovolné oblasti.
-- Vytvořte pravidlo NSG na základě značky služby AzureKeyVault. To se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál.
-- Vytvořte pravidlo NSG na základě značky služby GuestAndHybridManagement. To se vyžaduje jenom pro povolení automatického upgradu agenta mobility pro replikovanou položku prostřednictvím portálu.
+- Vytvořte pravidlo NSG na základě značek služby AzureSiteRecovery, které umožní přístup k Site Recovery službě v libovolné oblasti.
+- Vytvořte pravidlo NSG na základě značek služby AzureKeyVault. To se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál.
+- Vytvořte pravidlo NSG na základě značek služby GuestAndHybridManagement. To se vyžaduje jenom pro povolení automatického upgradu agenta mobility pro replikovanou položku prostřednictvím portálu.
 - Doporučujeme, abyste vytvořili požadovaná pravidla NSG na NSG testu a ověřili, že neexistují žádné problémy předtím, než vytvoříte pravidla na produkčním NSG.
 
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
@@ -80,13 +82,13 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
 1. Vytvořte pravidlo zabezpečení odchozího HTTPS (443) pro Storage. EastUS na NSG, jak je znázorněno na snímku obrazovky níže.
 
-      ![úložiště – značka](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![Snímek obrazovky s informacemi o přidání odchozího pravidla zabezpečení pro skupinu zabezpečení sítě pro Storage s tečkou U S.](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. Vytvořte pravidlo zabezpečení odchozího HTTPS (443) pro "Azureactivedirectory selhala" na NSG, jak je znázorněno na snímku obrazovky níže.
 
-      ![AAD – značka](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![Snímek obrazovky ukazuje přidat odchozí pravidlo zabezpečení pro skupinu zabezpečení sítě pro Azure A D.](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. CentralUS" na NSG, které odpovídá cílovému umístění. To umožňuje přístup k Site Recovery monitorování.
+3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. CentralUS" v NSG, které odpovídá cílovému umístění. To umožňuje přístup k Site Recovery monitorování.
 
 4. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro AzureSiteRecovery na NSG. To umožňuje přístup ke službě Site Recovery v libovolné oblasti.
 
@@ -98,7 +100,7 @@ Tato pravidla jsou nutná, aby bylo možné replikaci z cílové oblasti do zdro
 
 2. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro Azureactivedirectory selhala na NSG.
 
-3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. EastUS" na NSG, které odpovídá zdrojovému umístění. To umožňuje přístup k Site Recovery monitorování.
+3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. EastUS" v NSG, které odpovídá umístění zdroje. To umožňuje přístup k Site Recovery monitorování.
 
 4. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro AzureSiteRecovery na NSG. To umožňuje přístup ke službě Site Recovery v libovolné oblasti.
 

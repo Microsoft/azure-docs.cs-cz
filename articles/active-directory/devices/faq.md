@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 509d267dcdaef58a9792609a60c8a9401e90e867
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689040"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199719"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -25,9 +25,9 @@ ms.locfileid: "84689040"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Otázka: Nedávno jsem zaregistroval zařízení. Proč se v Azure Portal v části informace o uživateli nezobrazují zařízení? Nebo proč je pro zařízení připojená k hybridnímu Azure Active Directory (Azure AD) vlastník zařízení označený jako neurčený jako N/A.
 
 **A:** Zařízení s Windows 10, která jsou připojená k hybridní službě Azure AD, se nezobrazí v části **uživatelská zařízení**.
-V Azure Portal použijte zobrazení **všechna zařízení** . Můžete také použít rutinu PowerShellu [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) .
+V Azure Portal použijte zobrazení **všechna zařízení** . Můžete také použít rutinu PowerShellu [Get-MsolDevice](/powershell/module/msonline/get-msoldevice) .
 
-V části **uživatelská zařízení**jsou uvedena pouze následující zařízení:
+V části **uživatelská zařízení** jsou uvedena pouze následující zařízení:
 
 - Všechna osobní zařízení, která nejsou připojená k hybridní službě Azure AD. 
 - Všechna zařízení s jiným systémem než Windows 10 nebo Windows Server 2016.
@@ -51,7 +51,7 @@ V části **uživatelská zařízení**jsou uvedena pouze následující zaříz
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>Otázka: v Azure Portal se v informacích o uživateli zobrazuje záznam o zařízení. Zobrazuje se stav registrovaný na zařízení. Je správně nastavené používání podmíněného přístupu?
 
-**A:** Stav připojení zařízení zobrazený v **deviceID**se musí shodovat se stavem ve službě Azure AD a splňovat všechna kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadování spravovaných zařízení pro cloudovou aplikaci přístup s podmíněným přístupem](../conditional-access/require-managed-devices.md).
+**A:** Stav připojení zařízení zobrazený v **deviceID** se musí shodovat se stavem ve službě Azure AD a splňovat všechna kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadování spravovaných zařízení pro cloudovou aplikaci přístup s podmíněným přístupem](../conditional-access/require-managed-devices.md).
 
 ---
 
@@ -62,7 +62,7 @@ V části **uživatelská zařízení**jsou uvedena pouze následující zaříz
 - Uživatel zařízení zakáže z portálu moje aplikace. 
 - Správce (nebo uživatel) odstraní nebo zakáže zařízení v Azure Portal nebo pomocí PowerShellu.
 - Jenom služba hybridního připojení ke službě Azure AD: správce odebere z oboru synchronizace v případě zařízení odstraněných z Azure AD organizační jednotku zařízení.
-- Upgrade služby Azure AD Connect na verzi 1.4. xx. x [Porozumění Azure AD Connect 1.4. xx. x a odobrazení zařízení](/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Upgrade služby Azure AD Connect na verzi 1.4. xx. x [Porozumění Azure AD Connect 1.4. xx. x a odobrazení zařízení](../hybrid/reference-connect-device-disappearance.md).
 
 
 Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
@@ -134,7 +134,7 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 
 ### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>Otázka: Proč jsou zařízení označená jako "čeká" v rámci zaregistrovaného sloupce v Azure Portal?
 
-Odpověď **: čeká na**zaznamenání, že zařízení není registrováno. Tento stav indikuje, že se zařízení synchronizovaly pomocí Azure AD Connect z místní služby AD a je připravené na registraci zařízení. U těchto zařízení je typ připojení nastaven na možnost "připojené k hybridní službě Azure AD". Přečtěte si další informace o [Plánování implementace služby hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md).
+Odpověď **: čeká na** zaznamenání, že zařízení není registrováno. Tento stav indikuje, že se zařízení synchronizovaly pomocí Azure AD Connect z místní služby AD a je připravené na registraci zařízení. U těchto zařízení je typ připojení nastaven na možnost "připojené k hybridní službě Azure AD". Přečtěte si další informace o [Plánování implementace služby hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md).
 
 >[!NOTE]
 >Zařízení se může také změnit z registrovaného stavu na čeká na vyřízení.
@@ -142,6 +142,12 @@ Odpověď **: čeká na**zaznamenání, že zařízení není registrováno. Ten
 >* Pokud je zařízení odebráno z oboru synchronizace na Azure AD Connect a bylo přidáno zpět.
 >
 >V obou případech je nutné zařízení znovu zaregistrovat ručně na každém z těchto zařízení. Chcete-li zkontrolovat, zda bylo zařízení dříve registrováno, můžete [řešit potíže se zařízeními pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md).
+
+---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>Otázka: Nemůžu přidat více než 3 uživatelské účty Azure AD pod stejnou relaci uživatele na zařízení s Windows 10, proč?
+
+Odpověď **: Azure** AD přidala podporu pro více účtů Azure AD ve verzi Windows 10 1803. Windows 10 ale omezuje počet účtů Azure AD na zařízení na 3 pro omezení velikosti požadavků na tokeny a povoluje spolehlivé jednotné přihlašování (SSO). Po přidání tří účtů se uživatelům zobrazí chyba pro další účty. Další informace o problému na chybové obrazovce poskytují následující zprávu oznamující důvod, proč je operace přidání účtu blokovaná, protože se dosáhlo limitu účtu. 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Nejčastější dotazy ke službě Azure AD JOIN
@@ -198,7 +204,7 @@ Změny UPN se podporují s aktualizací Windows 10 2004 Update. Uživatelé na z
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Otázka: Proč někteří uživatelé nezískali na zařízeních připojených k Azure AD výzvy Multi-Factor Authentication?
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Otázka: Proč někteří uživatelé neobdrželi Multi-Factor Authentication výzvy k zobrazení výzev k Azure AD na zařízeních připojených k Azure AD?
 
 **A:** Uživatel se může ke službě Azure AD připojit nebo zaregistrovat zařízení pomocí Multi-Factor Authentication. Pak se samotné zařízení bude pro daného uživatele jednat o důvěryhodný druhý faktor. Když se stejný uživatel přihlásí k zařízení a přistupuje k aplikaci, služba Azure AD považuje zařízení za druhý faktor. Umožňuje tomuto uživateli bezproblémově přistupovat k aplikacím bez dalších výzev Multi-Factor Authentication. 
 
@@ -215,7 +221,7 @@ Toto chování:
 
 - Vaše přihlašovací údaje uživatele již nejsou platné.
 - Počítač nemůže komunikovat s Azure Active Directory. Vyhledejte všechny problémy s připojením k síti.
-- Federované přihlašování vyžaduje federační server pro podporu koncových bodů WS-Trust, které jsou povolené a přístupné. 
+- Federované přihlašování vyžaduje federační server pro podporu WS-Trust koncových bodů, které jsou povolené a přístupné. 
 - Povolili jste předávací ověřování. Takže vaše dočasné heslo se musí po přihlášení změnit.
 
 ---
@@ -291,8 +297,13 @@ Změny UPN se podporují s aktualizací Windows 10 2004 Update. Uživatelé na z
 
 **Určitého** 
 - U registrovaných zařízení s Windows 10 Azure AD přejděte na **Nastavení**  >  **účty**  >  **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Registrace zařízení je vázaná na uživatelský profil ve Windows 10.
-- V případě iOS a Androidu můžete použít Microsoft Authenticator nastavení aplikace **Settings**  >  **registrace zařízení** a vybrat zrušit **registraci zařízení**.
+- V případě iOS a Androidu můžete použít Microsoft Authenticator nastavení aplikace   >  **registrace zařízení** a vybrat zrušit **registraci zařízení**.
 - V případě macOS můžete pomocí aplikace Portál společnosti Microsoft Intune zrušit registraci zařízení ze správy a odebrat jakoukoli registraci. 
+
+U zařízení s Windows 10 se tento proces dá automatizovat pomocí [Nástroje pro odebrání Workplace Join (WPJ)](https://download.microsoft.com/download/8/e/f/8ef13ae0-6aa8-48a2-8697-5b1711134730/WPJCleanUp.zip) .
+
+> [!NOTE]
+> Tento nástroj odebere na zařízení všechny účty jednotného přihlašování. Po této operaci ztratí všechny aplikace stav jednotného přihlašování a zařízení se zruší z nástrojů pro správu (MDM) a odregistruje se z cloudu. Při dalším pokusu aplikace o přihlášení se uživatelům zobrazí výzva k přidání tohoto účtu.
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>Otázka: Jak můžu zablokovat uživatelům přidávání dalších pracovních účtů (registrovaných v Azure AD) na zařízeních s Windows 10?
@@ -312,7 +323,7 @@ Změny UPN se podporují s aktualizací Windows 10 2004 Update. Uživatelé na z
 **A:** Proveďte následující kroky:
 
 1.    [Tvorba zásady dodržování předpisů](/intune/compliance-policy-create-mac-os)
-1.    [Definování zásad podmíněného přístupu pro zařízení macOS](../active-directory-conditional-access-azure-portal.md) 
+1.    [Definování zásad podmíněného přístupu pro zařízení macOS](../conditional-access/overview.md) 
 
 **Mark**
 

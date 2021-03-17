@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 43ae9bd0e844a23adabf52e7fbb4b8cd077d23bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4cfbfe3e3e3ba620d8292767012c9bb866d8a878
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326711"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968090"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Kurz: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady Java Device and Service SDK a registrace skupin pro IoT Hub Device Provisioning Service
 
@@ -23,9 +23,9 @@ Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Wind
 Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení služby IoT Hub Device Provisioning pomocí webu Azure Portal](./quick-setup-auto-provision.md).
 
 
-## <a name="prepare-the-environment"></a>Příprava prostředí 
+## <a name="prerequisites"></a>Požadavky
 
-1. Ujistěte se, že na svém počítači máte nainstalované prostředí [Java SE Development Kit 8](https://aka.ms/azure-jdks).
+1. Ujistěte se, že na svém počítači máte nainstalované prostředí [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 1. Stáhněte a nainstalujte [Maven](https://maven.apache.org/install.html).
 
@@ -260,4 +260,4 @@ Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím 
 V tomto kurzu jste na svém počítači s Windows vytvořili simulované zařízení X.509 a pomocí služby Azure IoT Hub Device Provisioning a skupin registrací jste ho zřídili pro své centrum IoT. Další informace o vašem zařízení X.509 najdete v konceptech zařízení. 
 
 > [!div class="nextstepaction"]
-> [Koncepty zařízení pro službu Azure IoT Hub Device Provisioning](concepts-device.md)
+> [IoT Hub Device Provisioning Service koncepty](concepts-service.md)

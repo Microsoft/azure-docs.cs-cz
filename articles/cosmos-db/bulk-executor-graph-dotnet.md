@@ -1,34 +1,36 @@
 ---
 title: Použití knihovny .NET hromadně prováděcího modulu graphu s rozhraním API Azure Cosmos DB Gremlin
 description: Naučte se používat knihovnu hromadných prováděcích modulů k hromadnému importu dat grafu do Azure Cosmos DB kontejneru rozhraní API Gremlin.
-author: luisbosquez
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 05/28/2019
-ms.author: lbosq
+ms.author: chrande
 ms.reviewer: sngun
-ms.openlocfilehash: 78cc1fe1a84f1fd596d0c581f034f312cb1a0c3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 15e94dac02770bf28aae4cbfc4e337cb68b8be40
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523804"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425318"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Použití knihovny .NET Bulk prováděče k provádění hromadných operací v rozhraní Azure Cosmos DB API Gremlin
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-V tomto kurzu se dozvíte, jak pomocí knihovny .NET CosmosDB Bulk prováděcích modulů Azure importovat a aktualizovat objekty grafu do kontejneru rozhraní API pro Azure Cosmos DB Gremlin. Tento proces využívá třídu Graph v [knihovně hromadného prováděcího modulu](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) k vytvoření objektů vrcholů a hran programově pro následné vložení více z nich na požadavek na síť. Toto chování lze konfigurovat prostřednictvím knihovny hromadného prováděcího modulu, aby bylo možné optimální využití prostředků databáze i místní paměti.
+V tomto kurzu se dozvíte, jak pomocí knihovny .NET CosmosDB Bulk prováděcích modulů Azure importovat a aktualizovat objekty grafu do kontejneru rozhraní API pro Azure Cosmos DB Gremlin. Tento proces využívá třídu Graph v [knihovně hromadného prováděcího modulu](./bulk-executor-overview.md) k vytvoření objektů vrcholů a hran programově pro následné vložení více z nich na požadavek na síť. Toto chování lze konfigurovat prostřednictvím knihovny hromadného prováděcího modulu, aby bylo možné optimální využití prostředků databáze i místní paměti.
 
 Na rozdíl od odeslání dotazů Gremlin do databáze, kde je příkaz vyhodnocen a následně proveden po jednom, bude místo toho nutné pomocí knihovny hromadného prováděcího modulu vytvořit a ověřit objekty místně. Po vytvoření objektů vám knihovna umožní postupně odeslat objekty grafu do databázové služby. Pomocí této metody je možné až 100krát zvýšit rychlost příjmu dat, což z ní dělá ideální metodu pro počáteční migrace dat nebo pravidelné operace přesunu dat. Další informace najdete na stránce GitHub [ukázkové aplikace hromadného prováděcího modulu Azure Cosmos DB Graph](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started).
 
 ## <a name="bulk-operations-with-graph-data"></a>Hromadné operace s daty grafu
 
-[Knihovna hromadného prováděcího modulu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) obsahuje `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` obor názvů pro poskytování funkcionality pro vytváření a importování objektů grafu. 
+[Knihovna hromadného prováděcího modulu](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph) obsahuje `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` obor názvů pro poskytování funkcionality pro vytváření a importování objektů grafu. 
 
 Následující proces popisuje možnosti využití migrace dat pro kontejner rozhraní Gremlin API:
 1. Načtení záznamů ze zdroje dat.
 2. Vytvoření objektů `GremlinVertex` a `GremlinEdge` ze získaných záznamů a jejich přidání do datové struktury `IEnumerable`. V této části aplikace by se měla implementovat logika pro zjišťování a přidávání relací pro případ, že zdrojem dat není databáze grafu.
-3. Vložení objektů grafu do kolekce pomocí metody [Graph BulkImportAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet).
+3. Vložení objektů grafu do kolekce pomocí metody [Graph BulkImportAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync).
 
 Tento mechanismus zlepší efektivitu migrace dat v porovnání s použitím klienta Gremlin. K tomuto zlepšení dochází, protože vkládání dat pomocí Gremlin vyžaduje, aby aplikace odesílala dotazy jeden po druhém, a k vytvoření dat je potřeba tyto dotazy ověřit, vyhodnotit a pak spustit. Knihovna hromadného prováděcího modulu zpracuje ověřování v aplikaci a pošle více objektů grafu současně pro jednotlivé požadavky sítě.
 
@@ -113,10 +115,10 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>Ukázková aplikace
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 * Visual Studio 2019 s úlohou vývoje Azure. Můžete začít pracovat se sadou [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) zdarma.
 * Předplatné Azure. [Tady si můžete vytvořit bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Případně můžete vytvořit účet databáze Cosmos s možností vyzkoušet si [Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
-* Databáze rozhraní Gremlin API služby Azure Cosmos DB s **neomezenou kolekcí**. Tato příručka ukazuje, jak začít s rozhraním [Gremlin API služby Azure Cosmos DB v .NET](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
+* Databáze rozhraní Gremlin API služby Azure Cosmos DB s **neomezenou kolekcí**. Tato příručka ukazuje, jak začít s rozhraním [Gremlin API služby Azure Cosmos DB v .NET](./create-graph-dotnet.md).
 * Git. Další informace najdete na [stránce pro stažení Gitu](https://git-scm.com/downloads).
 
 ### <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
@@ -139,7 +141,7 @@ Soubor `App.config` obsahuje následující hodnoty konfigurace, které můžete
 Nastavení|Popis
 ---|---
 `EndPointUrl`|Toto je **váš koncový bod sady .NET SDK**, který najdete v okně Přehled vašeho účtu databáze rozhraní Gremlin API služby Azure Cosmos DB. Tato hodnota má formát `https://your-graph-database-account.documents.azure.com:443/`.
-`AuthorizationKey`|Toto je primární nebo sekundární klíč uvedený ve vašem účtu služby Azure Cosmos DB. Další informace o [Zabezpečení přístupu k datům ve službě Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)
+`AuthorizationKey`|Toto je primární nebo sekundární klíč uvedený ve vašem účtu služby Azure Cosmos DB. Další informace o [Zabezpečení přístupu k datům ve službě Azure Cosmos DB](./secure-access-to-data.md#primary-keys)
 `DatabaseName`, `CollectionName`|Toto jsou **názvy cílové databáze a kolekce**. Pokud je možnost `ShouldCleanupOnStart` nastavená na hodnotu `true`, použijí se tyto hodnoty společně s hodnotou `CollectionThroughput` k odstranění cílové databáze a kolekce a vytvoření nové databáze a kolekce. Podobně pokud je možnost `ShouldCleanupOnFinish` nastavená na hodnotu `true`, použijí se k odstranění databáze okamžitě po skončení příjmu dat. Nezapomeňte, že cílová kolekce musí být **neomezená kolekce**.
 `CollectionThroughput`|Toto nastavení slouží k vytvoření nové kolekce v případě, že je možnost `ShouldCleanupOnStart` nastavená na hodnotu `true`.
 `ShouldCleanupOnStart`|Toto nastavení před spuštěním programu odstraní účet databáze a kolekce a pak vytvoří novou databázi a kolekce s použitím hodnot `DatabaseName`, `CollectionName` a `CollectionThroughput`.
@@ -151,11 +153,11 @@ Nastavení|Popis
 ### <a name="run-the-sample-application"></a>Spuštění ukázkové aplikace
 
 1. Do souboru `App.config` přidejte parametry konfigurace specifické pro vaši databázi. Tento soubor se použije k vytvoření instance DocumentClient. Pokud se databáze a kontejner ještě nevytvořily, vytvoří se automaticky.
-2. Aplikaci spusťte. Tím se dvakrát zavolá `BulkImportAsync`, jednou kvůli importu vrcholů a jednou kvůli importu hran. Pokud některý z objektů při vkládání vygeneruje chybu, přidá se do souboru `.\BadVertices.txt` nebo `.\BadEdges.txt`.
+2. Spusťte aplikaci. Tím se dvakrát zavolá `BulkImportAsync`, jednou kvůli importu vrcholů a jednou kvůli importu hran. Pokud některý z objektů při vkládání vygeneruje chybu, přidá se do souboru `.\BadVertices.txt` nebo `.\BadEdges.txt`.
 3. Odešlete dotaz na databázi grafu a vyhodnoťte výsledky. Pokud je možnost `ShouldCleanupOnFinish` nastavená na hodnotu true, databáze se automaticky odstraní.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o podrobnostech balíčku NuGet a poznámkách k verzi hromadné prováděcí knihovny .NET najdete v tématu [hromadné prováděcí informace sady SDK](sql-api-sdk-bulk-executor-dot-net.md). 
-* Podívejte se na [tipy ke zvýšení výkonu](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) , abyste mohli dále optimalizovat využití hromadného prováděcího modulu.
-* V [článku o oboru názvů BulkExecutor.Graph](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) najdete další podrobnosti o třídách a metodách definovaných v tomto oboru názvů.
+* Podívejte se na [tipy ke zvýšení výkonu](./bulk-executor-dot-net.md#performance-tips) , abyste mohli dále optimalizovat využití hromadného prováděcího modulu.
+* V [článku o oboru názvů BulkExecutor.Graph](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph) najdete další podrobnosti o třídách a metodách definovaných v tomto oboru názvů.

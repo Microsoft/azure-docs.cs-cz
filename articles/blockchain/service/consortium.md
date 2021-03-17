@@ -5,10 +5,10 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84712526"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Konsorcium služeb Azure blockchain
@@ -33,12 +33,12 @@ Se správou konsorcia ve službě Azure blockchain můžete spravovat účastní
 
 | Akce | Role uživatele | Role Správce
 |--------|:----:|:------------:|
-| Vytvořit nového člena | Ano | Ano |
+| Vytvořit nového člena | Yes | Yes |
 | Pozvat nové členy | No | Yes |
 | Nastavení nebo změna role člena účastníka | No | Yes |
 | Zobrazovaný název člena změny | Pouze pro vlastního člena | Pouze pro vlastního člena |
 | Odebrání členů | Pouze pro vlastního člena | Yes |
-| Účast v transakcích blockchain | Ano | Ano |
+| Účast v transakcích blockchain | Yes | Yes |
 
 ### <a name="user-role"></a>Role uživatele
 

@@ -8,23 +8,35 @@ ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 718f4c0b41400ae2e35b88820b2d4154dab23111
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 25320fb8cde0cc5a38f1edf4019a2f0e07cefe14
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272820"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461092"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: posílání dat přes transparentní bránu
 
-> [!NOTE]
-> Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 V tomto článku se znovu používá vývojový virtuální počítač jako simulované zařízení. Místo odesílání dat přímo do IoT Hub ale zařízení odesílá data do IoT Edgeho zařízení nakonfigurovaného jako transparentní bránu.
 
 Sledujeme operace IoT Edge zařízení, zatímco simulované zařízení odesílá data. Jakmile se zařízení dokončí, podíváme se na data v našem účtu úložiště, abyste ověřili, co všechno fungovalo podle očekávání.
 
 Tento krok obvykle provádí vývojář cloudu nebo zařízení.
+
+V této části kurzu se dozvíte, jak:
+
+> [!div class="checklist"]
+>
+> * Sestavování a spouštění zařízení typu list.
+> * Ověřte, že se vygenerovaná data ukládají do úložiště objektů BLOB v Azure.
+> * Ověřte, jestli model strojového učení klasifikuje data zařízení.
+
+## <a name="prerequisites"></a>Požadavky
+
+Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
 ## <a name="review-device-harness"></a>Zkontrolovat svazek zařízení
 
@@ -37,7 +49,7 @@ Podívejte se na kód a podívejte se, jak jsou tyto dvě položky implementová
 
 1. Na vývojovém počítači otevřete Visual Studio Code.
 
-1. Pomocí **File**  >  **otevřené složky** souborů otevřete soubor C: \\ source \\ IoTEdgeAndMlSample \\ DeviceHarness.
+1. Pomocí   >  **otevřené složky** souborů otevřete soubor C: \\ source \\ IoTEdgeAndMlSample \\ DeviceHarness.
 
 1. Podívejte se na metodu InstallCertificate () v Program.cs.
 
@@ -235,7 +247,7 @@ Pokud plánujete prozkoumat prostředky používané v tomto uceleném kurzu, po
 
 V tomto článku jsme použili náš vývojový virtuální počítač pro simulaci zařízení, které odesílá senzor a provozní data do našeho IoT Edge zařízení. Ověřili jsme, že moduly v zařízení směrované, klasifikované, zachované a nahrály data pomocí prověření operace hraničního zařízení v reálném čase a prohlížením souborů odeslaných do účtu úložiště.
 
-Další informace najdete na následujících stránkách:
+Pokud chcete pokračovat ve získávání možností IoT Edge, zkuste tento kurz dál:
 
-* [Připojení podřízeného zařízení k bráně služby Azure IoT Edge](how-to-connect-downstream-device.md)
-* [Ukládání dat na hraničních zařízeních pomocí Azure Blob Storage v IoT Edge (Preview)](how-to-store-data-blob.md)
+> [!div class="nextstepaction"]
+> [Vytvoření hierarchie zařízení IoT Edge (Preview)](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)

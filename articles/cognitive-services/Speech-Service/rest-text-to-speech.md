@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 01/08/2021
 ms.author: trbye
-ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: references_regions
+ms.openlocfilehash: 9a5f50588c357b56865bc2a8500dcc250e89d930
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056801"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470628"
 ---
 # <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
 
@@ -33,6 +34,9 @@ Než začnete používat toto rozhraní API, pochopte:
 
 * REST API převodu textu na řeč vyžaduje autorizační hlavičku. To znamená, že při přístupu ke službě musíte dokončit výměnu tokenů. Další informace najdete v tématu [Ověřování](#authentication).
 
+> [!TIP]
+> V [tomto článku](sovereign-clouds.md) najdete Azure Government a koncových bodů Azure Čína.
+
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
 ## <a name="get-a-list-of-voices"></a>Získat seznam hlasů
@@ -44,32 +48,40 @@ Než začnete používat toto rozhraní API, pochopte:
 | Oblast | Koncový bod |
 |--------|----------|
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Brazil South | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Střední Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Střední USA | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – východ 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Francie – střed | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Indie – střed | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Japan East | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Japonsko – východ | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Jižní Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – středosever | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Severní Evropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Jižní Afrika – sever | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Southeast Asia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Spojené království – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA – středozápad | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | West Europe | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – západ | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+
+> [!TIP]
+> [Hlasy ve verzi Preview](language-support.md#neural-voices-in-preview) jsou dostupné jenom v těchto třech oblastech: Východní USA, západní Evropa a jihovýchodní Asie.
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Záhlaví | Popis | Požadováno/volitelné |
+| Hlavička | Popis | Požadováno/volitelné |
 |--------|-------------|---------------------|
-| `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Vyžadováno |
+| `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
+| `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
+
+
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -83,7 +95,7 @@ Tato žádost vyžaduje pouze hlavičku autorizace.
 GET /cognitiveservices/voices/list HTTP/1.1
 
 Host: westus.tts.speech.microsoft.com
-Authorization: Bearer [Base64 access_token]
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 ```
 
 ### <a name="sample-response"></a>Ukázková odpověď
@@ -95,48 +107,82 @@ Tato odpověď byla zkrácena, aby ukázala strukturu odpovědi.
 
 ```json
 [
+     
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-        "ShortName": "ar-EG-Hoda",
-        "Gender": "Female",
-        "Locale": "ar-EG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
-        "ShortName": "ar-SA-Naayf",
-        "Gender": "Male",
-        "Locale": "ar-SA",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
-        "ShortName": "bg-BG-Ivan",
-        "Gender": "Male",
-        "Locale": "bg-BG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
-        "ShortName": "ca-ES-HerenaRUS",
-        "Gender": "Female",
-        "Locale": "ca-ES",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
-        "ShortName": "zh-CN-XiaoxiaoNeural",
-        "Gender": "Female",
-        "Locale": "zh-CN",
-        "SampleRateHertz": "24000",
-        "VoiceType": "Neural"
-    },
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+    "DisplayName": "Aria",
+    "LocalName": "Aria",
+    "ShortName": "en-US-AriaNeural",
+    "Gender": "Female",
+    "Locale": "en-US",
+    "StyleList": [
+      "chat",
+      "customerservice",
+      "newscast-casual",
+      "newscast-formal",
+      "cheerful",
+      "empathetic"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "GA"
+  },
+  
+  ...
+    
+     {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
+    "DisplayName": "Orla",
+    "LocalName": "Orla",
+    "ShortName": "ga-IE-OrlaNeural",
+    "Gender": "Female",
+    "Locale": "ga-IE",
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
+  
+  ...
+    
+   {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
+    "DisplayName": "Yunxi",
+    "LocalName": "云希",
+    "ShortName": "zh-CN-YunxiNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "StyleList": [
+      "Calm",
+      "Fearful",
+      "Cheerful",
+      "Disgruntled",
+      "Serious",
+      "Angry",
+      "Sad",
+      "Depressed",
+      "Embarrassed"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
 
     ...
+      
+   {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+    "DisplayName": "Hoda",
+    "LocalName": "هدى",
+    "ShortName": "ar-EG-Hoda",
+    "Gender": "Female",
+    "Locale": "ar-EG",
+    "SampleRateHertz": "16000",
+    "VoiceType": "Standard",
+    "Status": "GA"
+  },
+
+...
+
 ]
 ```
 
@@ -167,7 +213,7 @@ Tyto oblasti jsou podporované pro převod textu na řeč pomocí REST API. Ujis
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Záhlaví | Popis | Požadováno/volitelné |
+| Hlavička | Popis | Požadováno/volitelné |
 |--------|-------------|---------------------|
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Vyžadováno |
 | `Content-Type` | Určuje typ obsahu pro zadaný text. Přijatá hodnota: `application/ssml+xml` . | Vyžadováno |
@@ -186,6 +232,8 @@ audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
 raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
 audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
 audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+raw-48khz-16bit-mono-pcm            riff-48khz-16bit-mono-pcm
+audio-48khz-96kbitrate-mono-mp3     audio-48khz-192kbitrate-mono-mp3
 ```
 
 > [!NOTE]
@@ -205,23 +253,17 @@ Tento požadavek HTTP používá SSML k určení hlasu a jazyka. Pokud je délka
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
 
-X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+X-Microsoft-OutputFormat: raw-24khz-16bit-mono-pcm
 Content-Type: application/ssml+xml
 Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-AriaRUS'>
+    name='en-US-AriaNeural'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
-
-Příklady konkrétního jazyka najdete v našich rychlých startech:
-
-* [.NET Core, C #](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
-* [Node.js](quickstart-nodejs-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>Stavové kódy HTTP
 
@@ -232,8 +274,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 | 200 | OK | Požadavek byl úspěšný. tělo odpovědi je zvukový soubor. |
 | 400 | Chybný požadavek | Povinný parametr chybí, je prázdný nebo má hodnotu null. Nebo hodnota předaná buď požadovanému, nebo volitelnému parametru není platná. Běžným problémem je záhlaví, které je příliš dlouhé. |
 | 401 | Neautorizováno | Požadavek není autorizovaný. Zkontrolujte, jestli je klíč předplatného nebo token platný a ve správné oblasti. |
-| 413 | Entita požadavku je příliš velká. | Vstup SSML je delší než 1024 znaků. |
-| 415 | Nepodporovaný typ média | Je možné, že `Content-Type` bylo zadáno chybné. `Content-Type`měla by být nastavena na `application/ssml+xml` . |
+| 415 | Nepodporovaný typ média | Je možné, že `Content-Type` bylo zadáno chybné. `Content-Type` měla by být nastavena na `application/ssml+xml` . |
 | 429 | Příliš mnoho žádostí | Překročili jste kvótu nebo míru požadavků povolených pro vaše předplatné. |
 | 502 | Chybná brána    | Problém v síti nebo na straně serveru. Může také označovat neplatné hlavičky. |
 
@@ -242,5 +283,5 @@ Pokud je stav HTTP `200 OK` , tělo odpovědi obsahuje zvukový soubor v požado
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
-- [Asynchronní syntéza pro dlouhý formát zvuku](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Asynchronní syntéza pro dlouhý formát zvuku](./long-audio-api.md)
 - [Začínáme se službou Custom Voice](how-to-custom-voice.md)

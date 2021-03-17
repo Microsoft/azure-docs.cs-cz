@@ -1,15 +1,17 @@
 ---
 title: Příprava počítačů na migraci pomocí Azure Migrate
 description: Přečtěte si, jak připravit místní počítače na migraci pomocí Azure Migrate.
-ms.topic: tutorial
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.custom: MVC
-ms.openlocfilehash: 8acbb867d98a547787e207c410d4e1a852aa68f3
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606814"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614883"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
@@ -33,7 +35,7 @@ Tabulka shrnuje omezení zjišťování, hodnocení a migrace pro Azure Migrate.
 
 **Scénář** | **Projekt** | **Zjišťování/posouzení** | **Migrace**
 --- | --- | --- | ---
-**Virtuální počítače VMware** | Objevte a posuďte až 35 000 virtuálních počítačů v jednom Azure Migrate projektu. | Zjistěte, jak 10 000 virtuálních počítačů VMware s jedním [zařízením Azure Migrate](common-questions-appliance.md) pro VMware. | **Migrace bez agenta**: souběžně můžete replikovat maximálně 300 virtuálních počítačů. Pro dosažení nejlepšího výkonu doporučujeme vytvořit více dávk virtuálních počítačů, pokud máte více než 50.<br/><br/> **Migrace založená na agentovi**: [zařízení replikace](migrate-replication-appliance.md) můžete [škálovat](./agent-based-migration-architecture.md#performance-and-scaling) pro replikaci velkého počtu virtuálních počítačů.<br/><br/> Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.
+**Virtuální počítače VMware** | Objevte a posuďte až 35 000 virtuálních počítačů v jednom Azure Migrate projektu. | Zjistěte, jak 10 000 virtuálních počítačů VMware s jedním [zařízením Azure Migrate](common-questions-appliance.md) pro VMware. | **Migrace bez agenta**: souběžně můžete z každého vCenter Server replikovat maximálně 500 virtuálních počítačů. **Migrace založená na agentovi**: [zařízení replikace](migrate-replication-appliance.md) můžete [škálovat](./agent-based-migration-architecture.md#performance-and-scaling) pro replikaci velkého počtu virtuálních počítačů.<br/><br/> Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.
 **Virtuální počítače Hyper-V** | Objevte a posuďte až 35 000 virtuálních počítačů v jednom Azure Migrate projektu. | Zjištění až 5 000 virtuálních počítačů Hyper-V s jedním zařízením Azure Migrate | Zařízení se nepoužívá pro migraci technologie Hyper-V. Místo toho se Zprostředkovatel replikace technologie Hyper-V spustí na každém hostiteli Hyper-V.<br/><br/> Kapacita replikace je ovlivněná faktory výkonu, jako jsou třeba změny virtuálních počítačů, a nahrává šířku pásma pro data replikace.<br/><br/> Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.
 **Fyzický počítač** | Objevte a posuďte až 35 000 počítačů v jednom Azure Migrate projektu. | Pro fyzické servery si můžete najít až 250 fyzických serverů s jedním zařízením Azure Migrate. | Kapacitu [zařízení replikace](migrate-replication-appliance.md) můžete [škálovat](./agent-based-migration-architecture.md#performance-and-scaling) a replikovat tak velký počet serverů.<br/><br/> Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.
 
@@ -100,7 +102,7 @@ Nakonfigurujte toto nastavení ručně následujícím způsobem:
 
 1. Na místním počítači (ne na hostitelském serveru) otevřete příkazový řádek se zvýšenými oprávněními.
 2. Zadejte **DiskPart**.
-3. Zadejte **San**. Pokud není zachováno písmeno jednotky hostovaného operačního systému, **Offline All** vrátí se offline **sdílená nebo offline** .
+3. Zadejte **San**. Pokud není zachováno písmeno jednotky hostovaného operačního systému,  vrátí se offline **sdílená nebo offline** .
 4. V příkazovém řádku **nástroje DiskPart** zadejte **zásady sítě San = OnlineAll**. Toto nastavení zajistí, že se disky budou do režimu online, a zajistíte tak čtení a zápis na oba disky.
 5. Během migrace testu můžete ověřit, že jsou písmena jednotek zachovaná.
 
@@ -109,11 +111,14 @@ Nakonfigurujte toto nastavení ručně následujícím způsobem:
 
 Azure Migrate tyto akce automaticky dokončí pro tyto verze
 
-- Red Hat Enterprise Linux 7.0 +, 6.5 +
-- CentOS 7.0 +, 6.5 +
+- Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x (agent virtuálního počítače Azure Linux se taky nainstaluje automaticky během migrace)
+- Cent OS 7,7, 7,6, 7,5, 7,4, 6. x (agent virtuálního počítače Azure Linux se taky nainstaluje automaticky během migrace)
 - SUSE Linux Enterprise Server 12 SP1 +
-- Ubuntu 18.04 LTS, 16.04 LTS, 14.04 LTS
-- Debian 8, 7
+- SUSE Linux Enterprise Server 15 SP1
+- Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS (agent virtuálního počítače Azure Linux se taky nainstaluje automaticky během migrace)
+- Ubuntu 18.04 LTS, 16.04 LTS
+- Debian 9, 8, 7
+- Oracle Linux 7,7, 7,7-CI
 
 Pro jiné verze připravte počítače podle souhrnu v tabulce.  
 
@@ -134,15 +139,16 @@ Následující tabulka shrnuje kroky prováděné automaticky pro operační sys
 | Akce                                      | \-Migrace VMware založená na agentech | Migrace VMware bez agentů | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
 | Nainstalovat \- integrační služby Hyper-V Linux | Yes                           | Yes                        | Není potřeba |
-| Povolit protokolování na sériové konzole Azure         | Yes                           | Ano                        | No         |
-| Aktualizovat soubor mapování zařízení                      | Ano                           | No                         | No         |
-| Aktualizovat položky fstab                        | Yes                           | Ano                        | No         |
-| Odebrat pravidlo udev                            | Yes                           | Ano                        | No         |
-| Aktualizace síťových rozhraní                   | Yes                           | Ano                        | No         |
+| Povolit protokolování na sériové konzole Azure         | Yes                           | Yes                        | No         |
+| Aktualizovat soubor mapování zařízení                      | Yes                           | No                         | No         |
+| Aktualizovat položky fstab                        | Yes                           | Yes                        | No         |
+| Odebrat pravidlo udev                            | Yes                           | Yes                        | No         |
+| Aktualizace síťových rozhraní                   | Yes                           | Yes                        | No         |
 | Povolit SSH                                  | No                            | No                         | No         |
 
 Přečtěte si další informace o postupu při [spuštění virtuálního počítače se systémem Linux v Azure](../virtual-machines/linux/create-upload-generic.md)a pokyny pro některé z oblíbených distribucí pro Linux.
 
+Projděte si seznam [požadovaných balíčků](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) pro instalaci agenta virtuálního počítače se systémem Linux. Azure Migrate automaticky nainstaluje agenta virtuálního počítače se systémem Linux pro počítače RHEL6, RHEL7, CentOS7 (6 by se měla podporovat podobně jako RHEL), Ubuntu 14,04, Ubuntu 16,04 a Ubuntu 18.04 při použití metody migrace VMware bez agenta.
 
 ## <a name="check-azure-vm-requirements"></a>Ověřit požadavky na virtuální počítače Azure
 

@@ -5,12 +5,12 @@ ms.date: 06/23/2020
 ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
-ms.openlocfilehash: 3a6535a13ab00c4e22ac4cd8c2de5a5bbb02d0a8
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 080b089efa276779420f6d9bc8e76272f1e65788
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189809"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90069692"
 ---
 # <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Použití rozhraní příkazového řádku Azure k vytvoření Service Busho tématu a odběrů tématu
 V tomto rychlém startu pomocí Azure CLI vytvoříte Service Bus téma a pak pro toto téma vytvoříte odběry. 
@@ -32,7 +32,7 @@ V tomto rychlém startu použijete Azure Cloud Shell, které můžete spustit po
 ## <a name="create-a-service-bus-topic-and-subscriptions"></a>Vytvoření tématu Service Busu a odběrů
 Každý [odběr tématu](service-bus-messaging-overview.md#topics) může přijímat kopie všech zpráv. Témata jsou co do protokolu a sémantiky plně kompatibilní s frontami služby Service Bus. Témata služby Service Bus podporují širokou škálu pravidel pro výběr s podmínkami filtrů, včetně volitelných akcí, kterými se nastavují nebo upravují vlastnosti zprávy. Při každé shodě s pravidlem se vytvoří zpráva. Další informace o pravidlech, filtrech a akcích získáte pomocí tohoto [odkazu](topic-filters.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Azure Cloud Shell spustíte tak, že vyberete ikonu zobrazenou na následujícím obrázku. Přepněte do režimu **bash** , pokud je Cloud Shell v režimu **PowerShellu** . 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Spustit Cloud Shell":::
@@ -80,7 +80,7 @@ Každý [odběr tématu](service-bus-messaging-overview.md#topics) může přij�
 9. Vytvořte filtr pro třetí odběr pomocí filtru pomocí vlastností zákazníka ( `StoreId` nikoli v `Store1` , `Store2` , `Store3` nebo `Store4` ).
 
     ```azurecli-interactive
-    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3', 'Store4')"     
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId NOT IN ('Store1','Store2','Store3', 'Store4')"     
     ```
 10. Spusťte následující příkaz, který získá primární připojovací řetězec pro obor názvů. Tento připojovací řetězec slouží k připojení k frontě a posílání a přijímání zpráv. 
 

@@ -1,29 +1,16 @@
 ---
-title: Nahrávání, kódování a streamování pomocí Media Services V3
-titleSuffix: Azure Media Services
-description: Kurz ukazující, jak nahrát soubor, zakódovat video a streamovat obsah pomocí Azure Media Services V3.
-services: media-services
-documentationcenter: ''
-author: Juliako
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 07/09/2020
-ms.author: juliako
-ms.openlocfilehash: 2c2d55b15fb69fe4c1aea21bb2183f0e40c3586c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136486"
+title: nahrání, kódování a streamování pomocí Media Services V3: Azure Media Services Description: kurz ukazující, jak nahrát soubor, zakódovat video a streamovat obsah pomocí Azure Media Services V3.
+služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: MS. téma: kurz MS. Custom: MVC MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Kurz: nahrávání, kódování a streamování videí pomocí Media Services V3
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 > [!NOTE]
-> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
+> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
 
 Azure Media Services umožňuje kódování mediálních souborů ve formátech, které se přehrávají na nejrůznějších prohlížečích a zařízeních. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Nápovědu k kódování naleznete v tématu [Encoding koncept](encoding-concept.md). V tomto kurzu se nahraje místní soubor videa a nahraný soubor se zakóduje. Obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS, můžete také kódovat. Další informace najdete v článku o [vytvoření vstupu úlohy z adresy URL protokolu HTTP(S)](job-input-from-http-how-to.md).
 
@@ -65,7 +52,7 @@ Tato část popisuje funkce definované v souboru [Program.cs](https://github.co
 Tato ukázka provede následující akce:
 
 1. Vytvoří novou **transformaci** (nejprve zkontroluje, jestli Zadaná transformace existuje).
-2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy**kódování.
+2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy** kódování.
 3. Vytvoří vstupní **Asset** a nahraje zadaný místní videosoubor do souboru. Prostředek se použije jako vstup úlohy.
 4. Odešle úlohu kódování pomocí vytvořeného vstupu a výstupu.
 5. Zkontroluje stav úlohy.

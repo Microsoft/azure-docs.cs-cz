@@ -2,13 +2,13 @@
 title: Dodržování předpisů pomocí Azure Policy
 description: Přiřazení předdefinovaných zásad v Azure Policy pro audit dodržování předpisů ve službě Azure Container Registry
 ms.topic: article
-ms.date: 06/11/2020
-ms.openlocfilehash: 6101db865749f98f50e04f1fec3b8009089b7908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/01/2021
+ms.openlocfilehash: 0fed0c4132043e1eaed7e634e1f45b27f7c6e933
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791890"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014294"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Audit dodržování předpisů pro služby Azure Container Registry pomocí Azure Policy
 
@@ -22,9 +22,7 @@ Za použití Azure Policy se neúčtují žádné poplatky.
 
 Následující předdefinované definice zásad jsou specifické pro Azure Container Registry:
 
-[!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
-
-Viz také integrovaná definice zásad sítě: [Container Registry by měl používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
+[!INCLUDE [azure-policy-reference-rp-containerreg](../../includes/policy/reference/byrp/microsoft.containerregistry.md)]
 
 ## <a name="assign-policies"></a>Přiřazování zásad
 
@@ -43,7 +41,7 @@ Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Chcete
 
 ### <a name="policy-compliance-in-the-portal"></a>Dodržování zásad na portálu:
 
-1. Vyberte **všechny služby**a vyhledejte **zásady**.
+1. Vyberte **všechny služby** a vyhledejte **zásady**.
 1. Vyberte možnost **dodržování předpisů**.
 1. Použijte filtry k omezení stavu dodržování předpisů nebo k vyhledání zásad.
 

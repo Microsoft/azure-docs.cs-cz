@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c982b09aa8a28d520c709c9b8db2c9be4c7bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356946"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90090121"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: přípravný Server a zotavení po havárii
 U serveru v pracovním režimu můžete změnit konfiguraci a zobrazit náhled změn před tím, než provedete server aktivní. Umožňuje taky spustit úplnou synchronizaci a úplnou synchronizaci a ověřit, jestli jsou všechny změny očekávané, než provedete tyto změny v produkčním prostředí.
@@ -57,7 +57,7 @@ Chcete-li použít tuto metodu, postupujte podle následujících kroků:
 
 #### <a name="prepare"></a>Příprava
 1. Nainstalujte Azure AD Connect, vyberte **pracovní režim**a zrušte výběr **Spustit synchronizaci** na poslední stránce Průvodce instalací. Tento režim umožňuje spustit modul synchronizace ručně.
-   ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
+   ![Snímek obrazovky se stránkou připravenou ke konfiguraci najdete v dialogovém okně Azure AD Connect.](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. Odhlaste se nebo se přihlaste a v nabídce Start vyberte **synchronizační službu**.
 
 #### <a name="configuration"></a>Konfigurace
@@ -71,9 +71,9 @@ Pokud jste provedli vlastní změny primárního serveru a chcete porovnat konfi
 
 Teď máte připravené změny v exportu do Azure AD a místní služby AD (Pokud používáte hybridní nasazení Exchange). Následující kroky vám umožní zkontrolovat, co se chystá změnit, než začnete s exportem do adresářů.
 
-#### <a name="verify"></a>Ověřit
-1. Spuštění příkazového řádku a přechod na`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Run (spustit): `csexport "Name of Connector" %temp%\export.xml /f:x` název konektoru najdete ve službě synchronizace. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
+#### <a name="verify"></a>Ověření
+1. Spuštění příkazového řádku a přechod na `%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Run (spustit): `csexport "Name of Connector" %temp%\export.xml /f:x` název konektoru najdete ve službě synchronizace. Má název podobný řetězci "contoso.com – Azure AD" pro Azure AD.
 3. Spustit: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` máte soubor v% Temp% s názvem export.csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
 4. Proveďte nezbytné změny dat nebo konfigurace a spusťte tyto kroky znovu (import a synchronizace a ověření), dokud se neočekávají změny, které se chystá exportovat.
 

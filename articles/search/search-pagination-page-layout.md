@@ -7,19 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 12/09/2020
+ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146186"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209827"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
 
-Tento článek vysvětluje, jak získat odpověď na dotaz, který se vrátí s celkovým počtem vyhovujících dokumentů, stránkovaných výsledků, seřazených výsledků a podmínek zvýrazněných na začátku.
+Tento článek vysvětluje, jak formulovat odpověď na dotaz v Azure Kognitivní hledání. Struktura odpovědi je určena parametry v dotazu: [vyhledat dokument](/rest/api/searchservice/Search-Documents) v REST API nebo v sadě .NET SDK [searchResults](/dotnet/api/azure.search.documents.models.searchresults-1) . Parametry pro dotaz lze použít ke strukturování sady výsledků následujícími způsoby:
 
-Struktura odpovědi je určena parametry v dotazu: [vyhledat dokument](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) v REST API nebo v sadě .NET SDK [DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) .
++ Omezí nebo zadávce počet dokumentů ve výsledcích (ve výchozím nastavení je 50).
++ Vyberte pole, která chcete zahrnout do výsledků.
++ Seřadit výsledky
++ Zvýrazněte v těle výsledků hledání párové celé nebo částečné období
 
 ## <a name="result-composition"></a>Složení výsledku
 
@@ -39,6 +42,14 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 > [!NOTE]
 > Pokud chcete zahrnout soubory obrázků ve výsledku, jako je například fotografie nebo logo produktu, uložte je mimo Azure Kognitivní hledání, ale do indexu zahrňte pole, které odkazuje na adresu URL obrázku v dokumentu hledání. Ukázky indexů, které podporují obrázky ve výsledcích, zahrnují ukázku **realestate-Sample-US** , kterou najdete v tomto [rychlém](search-create-app-portal.md)startu, a [ukázkovou aplikaci pro demonstrační úlohy v New Yorku](https://aka.ms/azjobsdemo).
 
+### <a name="tips-for-unexpected-results"></a>Tipy pro neočekávané výsledky
+
+V některých případech se jedná o neočekávanou látku a nikoli strukturu výsledků. Pokud je výsledek dotazu neočekávaný, můžete vyzkoušet tyto úpravy dotazů, abyste viděli, jestli výsledky zlepšují:
+
++ Změňte **`searchMode=any`** (výchozí) na **`searchMode=all`** tak, aby vyžadovala shodu u všech kritérií místo některého z kritérií. To platí zejména při zahrnutí logických operátorů do dotazu.
+
++ Experimentujte s různými lexikálními analyzátory nebo vlastními analyzátory, abyste viděli, jestli změní výsledek dotazu. Výchozí analyzátor rozdělí slova s pomlčkou a omezí slova na kořenové formuláře, což obvykle zlepšuje odolnost odpovědi na dotaz. Pokud však potřebujete zachovat pomlčky, nebo pokud řetězce obsahují speciální znaky, může být nutné nakonfigurovat vlastní analyzátory, aby bylo zajištěno, že index obsahuje tokeny ve správném formátu. Další informace naleznete v části [hledání částečného termínu a vzory se speciálními znaky (spojovníky, zástupné znaky, regulární výrazy, vzory)](search-query-partial-matching.md).
+
 ## <a name="paging-results"></a>Výsledky stránkování
 
 Ve výchozím nastavení hledá vyhledávací modul až na prvních 50 shod, které jsou určeny skóre vyhledávání, pokud je dotaz fulltextovým vyhledáváním, nebo v libovolném pořadí pro přesné dotazy shody.
@@ -47,12 +58,12 @@ Chcete-li vrátit jiný počet vyhovujících dokumentů, `$top` přidejte `$ski
 
 + Přidejte `$count=true` , chcete-li získat celkový počet vyhovujících dokumentů v rámci indexu.
 
-+ Vrátí první sadu 15 odpovídajících dokumentů a celkový počet shod:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
++ Vrátí první sadu 15 odpovídajících dokumentů a celkový počet shod: `GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ Vrátí druhou sadu a přeskočí prvních 15 k získání následujících 15: `$top=15&$skip=15` . Totéž udělejte u třetí sady 15:`$top=15&$skip=30`
++ Vrátí druhou sadu a přeskočí prvních 15 k získání následujících 15: `$top=15&$skip=15` . Totéž udělejte u třetí sady 15: `$top=15&$skip=30`
 
 V případě změny podkladového indexu není zaručeno, že výsledky stránkovaných dotazů nebudou stabilní. Stránkování změní hodnotu `$skip` pro každou stránku, ale každý dotaz je nezávislý a pracuje s aktuálním zobrazením dat v indexu v době dotazu (jinými slovy, není ukládání do mezipaměti nebo snímku výsledků, jako jsou například ty, které se nacházejí v databázi pro obecné účely).
- 
+ 
 Následuje příklad, jak můžete získat duplicity. Předpokládat index se čtyřmi dokumenty:
 
 ```text
@@ -61,28 +72,28 @@ Následuje příklad, jak můžete získat duplicity. Předpokládat index se č
 { "id": "3", "rating": 2 }
 { "id": "4", "rating": 1 }
 ```
- 
+ 
 Nyní předpokládejme, že výsledky byly vráceny dvakrát v čase seřazené podle hodnocení. Tento dotaz provedete tak, aby získal první stránku výsledků: `$top=2&$skip=0&$orderby=rating desc` a vygeneroval následující výsledky:
 
 ```text
 { "id": "1", "rating": 5 }
 { "id": "2", "rating": 3 }
 ```
- 
+ 
 Ve službě se předpokládá, že se do indexu přidá pátý dokument mezi voláními dotazu: `{ "id": "5", "rating": 4 }` .  Krátce potom spustíte dotaz k načtení druhé stránky: `$top=2&$skip=2&$orderby=rating desc` a získáte tyto výsledky:
 
 ```text
 { "id": "2", "rating": 3 }
 { "id": "3", "rating": 2 }
 ```
- 
+ 
 Všimněte si, že dokument 2 je načten dvakrát. Je to proto, že nový dokument 5 má větší hodnotu hodnocení, takže seřadí před dokument 2 a na první stránce. I když toto chování může být neočekávané, je typický způsob, jakým se chová vyhledávací web.
 
 ## <a name="ordering-results"></a>Řazení výsledků
 
-U fulltextových vyhledávacích dotazů jsou výsledky automaticky seřazené podle skóre hledání, které se počítá na základě četnosti a blízkosti v dokumentu, s vyšším skóre, které se týkají dokumentů s více nebo silnějšími shodami s hledaným termínem. 
+Pro fulltextové vyhledávací dotazy jsou výsledky automaticky seřazené podle skóre vyhledávání, počítáno na základě četnosti a blízkosti v dokumentu (od [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)), s vyšším skóre, které se týkají více nebo silnějších shod hledaného termínu. 
 
-Hledání skóre vyjadřuje obecnou představu o závažnosti a odráží sílu porovnávání ve srovnání s ostatními dokumenty ve stejné sadě výsledků. Skóre nejsou vždy konzistentní od jednoho dotazu k dalšímu, takže při práci s dotazy si můžete všimnout malých nedostatků při řazení dokumentů pro hledání. K tomu může dojít z několika vysvětlení.
+Hledání skóre vyjadřuje obecnou představu o závažnosti a odráží sílu porovnávání vzhledem k ostatním dokumentům ve stejné sadě výsledků. Ale skóre nejsou vždy konzistentní od jednoho dotazu k dalšímu, takže při práci s dotazy si můžete všimnout malých nedostatků při řazení dokumentů pro hledání. K tomu může dojít z několika vysvětlení.
 
 | Příčina | Popis |
 |-----------|-------------|
@@ -90,15 +101,15 @@ Hledání skóre vyjadřuje obecnou představu o závažnosti a odráží sílu 
 | Více replik | Pro služby, které používají více replik, jsou dotazy vydávány paralelně pro každou repliku. Statistiky indexu použité k výpočtu skóre vyhledávání se počítají na základě repliky a výsledky se sloučily a seřazeny v odpovědi na dotaz. Repliky jsou většinou zrcadlově navzájem, ale statistiky se mohou lišit v důsledku malých rozdílů ve stavu. Například jedna replika mohla odstranit dokumenty přispívající do jejich statistik, které byly sloučeny mimo jiné repliky. Rozdíly v statistikách pro jednotlivé repliky jsou obvykle patrné v menších indexech. |
 | Stejné skóre | Pokud má více dokumentů stejné skóre, může se stát, že se některá z nich zobrazí jako první.  |
 
-### <a name="consistent-ordering"></a>Jednotné řazení
+### <a name="how-to-get-consistent-ordering"></a>Jak získat konzistentní řazení
 
-Vzhledem k flexibilnímu řazení výsledků je vhodné prozkoumat další možnosti, pokud je konzistence požadavkem na aplikaci. Nejsnadnější přístup je řazení podle hodnoty pole, jako je například hodnocení nebo datum. U scénářů, ve kterých chcete řadit podle konkrétního pole, jako je například hodnocení nebo datum, můžete explicitně definovat [ `$orderby` výraz](query-odata-filter-orderby-syntax.md), který lze použít pro každé pole, které je indexováno jako **seřaditelné**.
+Je-li konzistentní řazení požadavkem na aplikaci, můžete pro pole explicitně definovat [ **`$orderby`** výraz](query-odata-filter-orderby-syntax.md) . K řazení výsledků lze použít pouze pole, která jsou indexována jako **`sortable`** . Pole, která se běžně používají v **`$orderby`** polích hodnocení, datum a umístění, pokud zadáte hodnotu **`orderby`** parametru pro zahrnutí názvů polí a volání [**`geo.distance()` funkce**](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty.
 
-Další možností je použít [vlastní profil vyhodnocování](index-add-scoring-profiles.md). Profily vyhodnocování poskytují větší kontrolu nad hodnocením položek ve výsledcích vyhledávání a schopnost zvyšovat shody nalezené v konkrétních polích. Další logika hodnocení může pomáhat potlačit drobné rozdíly mezi replikami, protože výsledky hledání pro každý dokument jsou dále od sebe. Pro tento přístup doporučujeme použít [algoritmus hodnocení](index-ranking-similarity.md) .
+Dalším přístupem, který propaguje konzistenci, je použití [vlastního profilu vyhodnocování](index-add-scoring-profiles.md). Profily vyhodnocování poskytují větší kontrolu nad hodnocením položek ve výsledcích vyhledávání a schopnost zvyšovat shody nalezené v konkrétních polích. Další logika hodnocení může pomáhat potlačit drobné rozdíly mezi replikami, protože výsledky hledání pro každý dokument jsou dále od sebe. Pro tento přístup doporučujeme použít [algoritmus hodnocení](index-ranking-similarity.md) .
 
 ## <a name="hit-highlighting"></a>Zvýrazňování položek
 
-Zvýrazňování přístupů odkazuje na formátování textu (například tučné nebo žluté světla) použité pro odpovídající výrazy ve výsledku, což usnadňuje umístění shody. Pokyny pro zvýraznění přístupů jsou k dispozici v [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Zvýrazňování přístupů odkazuje na formátování textu (například tučné nebo žluté světla) použité pro odpovídající výrazy ve výsledku, což usnadňuje umístění shody. Pokyny pro zvýraznění přístupů jsou k dispozici v [žádosti o dotaz](/rest/api/searchservice/search-documents). 
 
 Pokud chcete povolit zvýrazňování přístupů, přidejte, `highlight=[comma-delimited list of string fields]` abyste určili, která pole budou používat zvýraznění. Zvýrazňování je užitečné pro delší pole obsahu, jako je pole popisu, kde shoda není okamžitě zřejmá. Jenom definice polí s atributem, které jsou s **možností prohledávání** , jsou způsobilé pro zvýrazňování přístupů.
 

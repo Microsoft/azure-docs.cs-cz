@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: vytvoření podrobného plánu pomocí REST API'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů pomocí REST API.
-ms.date: 06/29/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971194"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915620"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Rychlý Start: definování a přiřazení Azure Blueprint s REST API
 
@@ -16,7 +16,7 @@ Naučíte se vytvářet a přiřazovat podrobné plány a umožňují definici b
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 - Zaregistrujte `Microsoft.Blueprint` poskytovatele prostředků. Pokyny najdete v tématu [poskytovatelé a typy prostředků](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -59,7 +59,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
-- `{YourMG}`– Nahraďte ID vaší skupiny pro správu.
+- `{YourMG}` – Nahraďte ID vaší skupiny pro správu.
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 > [!NOTE]
@@ -325,11 +325,11 @@ Po publikování podrobného plánu pomocí rozhraní REST API je možné ho př
 
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
-- `{tenantId}`– Nahraďte ID tenanta.
-- `{YourMG}`– Nahraďte ID vaší skupiny pro správu.
+- `{tenantId}` – Nahraďte ID tenanta.
+- `{YourMG}` – Nahraďte ID vaší skupiny pro správu.
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
-1. Poskytněte instančnímu objektu Azure Blueprint roli **Owner** (Vlastník) cílového předplatného. AppId je static ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), ale ID instančního objektu se liší podle tenanta. K vyžádání podrobností týkajících se tenanta použijte následující REST API. Používá [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) s jinou autorizací.
+1. Poskytněte instančnímu objektu Azure Blueprint roli **Owner** (Vlastník) cílového předplatného. AppId je static ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), ale ID instančního objektu se liší podle tenanta. K vyžádání podrobností týkajících se tenanta použijte následující REST API. Používá [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), která má jinou autorizaci.
 
    - Identifikátor URI v REST API
 

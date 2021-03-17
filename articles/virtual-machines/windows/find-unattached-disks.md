@@ -2,17 +2,17 @@
 title: Vyhledání a odstranění nepřipojených spravovaných a nespravovaných disků Azure
 description: Jak najít a odstranit nepřipojené disky spravované v Azure a nespravované (VHD/Page BLOB) pomocí Azure PowerShell.
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d1e7c90e558a6834a169b528d2e8c2f96af377b0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 66a54ea74fcc6d8d354f5adbffe214c34b4c20d5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705692"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554374"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Vyhledání a odstranění nepřipojených spravovaných a nespravovaných disků Azure
 
@@ -20,7 +20,7 @@ Při odstranění virtuálního počítače v Azure se ve výchozím nastavení 
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>Spravované disky: najít a odstranit nepřipojené disky
 
-Následující skript vyhledá nepřipojené [spravované disky](managed-disks-overview.md) zkoumáním hodnoty vlastnosti **ManagedBy** . Po připojení spravovaného disku k virtuálnímu počítači vlastnost **ManagedBy** obsahuje ID prostředku virtuálního počítače. Pokud je nepřipojený spravovaný disk, vlastnost **ManagedBy** má hodnotu null. Skript prověřuje všechny spravované disky v rámci předplatného Azure. Když skript vyhledá spravovaný disk s vlastností **ManagedBy** nastavenou na hodnotu null, skript určí, že disk není připojený.
+Následující skript vyhledá nepřipojené [spravované disky](../managed-disks-overview.md) zkoumáním hodnoty vlastnosti **ManagedBy** . Po připojení spravovaného disku k virtuálnímu počítači vlastnost **ManagedBy** obsahuje ID prostředku virtuálního počítače. Pokud je nepřipojený spravovaný disk, vlastnost **ManagedBy** má hodnotu null. Skript prověřuje všechny spravované disky v rámci předplatného Azure. Když skript vyhledá spravovaný disk s vlastností **ManagedBy** nastavenou na hodnotu null, skript určí, že disk není připojený.
 
 >[!IMPORTANT]
 >Nejdřív spusťte skript nastavením proměnné **deleteUnattachedDisks** na hodnotu 0. Tato akce vám umožní najít a zobrazit všechny nepřipojené spravované disky.

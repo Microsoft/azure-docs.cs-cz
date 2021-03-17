@@ -7,28 +7,34 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 11/17/2020
+ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503298"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738046"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití REST a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
-Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz se zaměřuje na text, používá se pro detekci jazyka a zpracování přirozeného jazyka a vytváří nová pole, která můžete využít v dotazech, omezujících objektech a filtrech.
+Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah z objektů blob, které jsou užitečné pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz se zaměřuje na text, používá se pro detekci jazyka a zpracování přirozeného jazyka a vytváří nová pole, která můžete využít v dotazech, omezujících objektech a filtrech.
 
-V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/) k provádění následujících úloh:
+V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](/rest/api/searchservice/) k provádění následujících úloh:
 
 > [!div class="checklist"]
-> * Začněte s celými dokumenty (nestrukturovaný text), například PDF, HTML, DOCX a PPTX v úložišti objektů BLOB v Azure.
-> * Definujte kanál, který extrahuje text, detekuje jazyk, rozpoznává entity a detekuje klíčové fráze.
-> * Definujte index pro uložení výstupu (nezpracovaný obsah, plus páry název-hodnota vygenerované kanály).
-> * Spusťte kanál, abyste mohli začít transformovat a analyzovat a vytvořit a načíst index.
+> * Nastavte služby a kolekci po ní.
+> * Vytvořte kanál pro obohacení, který extrahuje text, detekuje jazyk, rozpoznává entity a detekuje klíčové fráze.
+> * Vytvoří index pro uložení výstupu (nezpracovaný obsah, plus páry název-hodnota vygenerované kanály).
+> * Spusťte kanál, který provede transformaci a analýzu a načte index.
 > * Prozkoumejte výsledky pomocí fulltextového vyhledávání a bohatou syntaxí dotazu.
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+## <a name="overview"></a>Přehled
+
+V tomto kurzu se používá C# a rozhraní REST API služby Azure Kognitivní hledání k vytvoření zdroje dat, indexu, indexeru a dovednosti. V úložišti objektů BLOB v Azure začnete s celými dokumenty (nestrukturovaný text), jako je PDF, HTML, DOCX a PPTX, a pak je spouštíte pomocí dovednosti, který extrahuje entity, klíčové fráze a další text v souborech obsahu.
+
+Tento dovednosti využívá integrované dovednosti založené na rozhraní API služeb Cognitive Services. Mezi kroky v kanálu patří detekce jazyka pro text, extrakci klíčových frází a rozpoznávání entit (organizace). Nové informace jsou uloženy v nových polích, která lze využít v dotazech, omezujících vlastnostech a filtrech.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -44,6 +50,8 @@ Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https
 1. Otevřete tuto [složku OneDrive](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) a v levém horním rohu klikněte na **Stáhnout** a zkopírujte soubory do počítače. 
 
 1. Klikněte pravým tlačítkem na soubor zip a vyberte **Extrahovat vše**. Existuje 14 souborů různých typů. Pro toto cvičení budete používat 7.
+
+V případě potřeby můžete také stáhnout zdrojový kód a soubor kolekce post pro tento kurz. Zdrojový kód najdete na adrese [https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial) .
 
 ## <a name="1---create-services"></a>1. vytvoření služeb
 
@@ -63,7 +71,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
    + **Skupina prostředků**. Vyberte existující jednu nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli souhrnně spravovat.
 
-   + **Název účtu úložiště** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus*. 
+   + **Název účtu úložiště:** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus*. 
 
    + **Umístění:** Pokud je to možné, vyberte stejné umístění, které se používá pro Azure Kognitivní hledání a Cognitive Services. Jediné místo má za vyrušení poplatky za šířku pásma.
 
@@ -107,35 +115,35 @@ Třetí součástí je Azure Kognitivní hledání, kterou můžete vytvořit na
 
 Stejně jako u služby Azure Blob Storage si pro získání přístupového klíče chvíli počkejte. Když při zahájení strukturování požadavků začnete, budete muset zadat koncový bod a klíč rozhraní API pro správu, který se použije k ověření každého požadavku.
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Získání klíčového rozhraní API pro správu a adresy URL pro Azure Kognitivní hledání
+### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Kopírování klíče rozhraní API pro správu a adresy URL pro Azure Kognitivní hledání
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla adresa URL koncového bodu `https://mydemo.search.windows.net` , název vaší služby by byl `mydemo` .
 
-2. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-javascript/service-name-and-keys.png)
 
 Všechny požadavky vyžadují klíč rozhraní API-Key v hlavičce všech požadavků odeslaných službě. Platný klíč vytváří vztah důvěryhodnosti na základě jednotlivých požadavků mezi aplikací odesílající požadavek a službu, která ho zpracovává.
 
 ## <a name="2---set-up-postman"></a>2 – nastavení post
 
-Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [prozkoumání rozhraní REST API služby Azure kognitivní hledání pomocí služby post](search-get-started-postman.md).
+Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [zkoumání rozhraní REST API pro Azure kognitivní hledání](search-get-started-rest.md).
 
-Metody žádosti použité v tomto kurzu jsou **post**, **Put**a **Get**. Tyto metody použijete k vytvoření čtyř volání rozhraní API vaší vyhledávací služby: vytvořit zdroj dat, dovednosti, index a indexer.
+Metody žádosti použité v tomto kurzu jsou **post**, **Put** a **Get**. Tyto metody použijete k vytvoření čtyř volání rozhraní API vaší vyhledávací služby: vytvořit zdroj dat, dovednosti, index a indexer.
 
 V části hlavičky nastavte typ Content-Type na `application/json` a nastavte `api-key` na klíč rozhraní API pro správu služby Azure kognitivní hledání. Po nastavení hlaviček je můžete použít pro každý požadavek v tomto cvičení.
 
-  ![Adresa URL a záhlaví žádosti post](media/search-get-started-postman/postman-url.png "Adresa URL a záhlaví žádosti post")
+  ![Adresa URL a záhlaví žádosti post](media/search-get-started-rest/postman-url.png "Adresa URL a záhlaví žádosti post")
 
 ## <a name="3---create-the-pipeline"></a>3. vytvoření kanálu
 
-Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování dat) objevuje zpracování AI. Tato část návodu vytvoří čtyři objekty: zdroj dat, index definice, dovednosti, indexer. 
+V Azure Kognitivní hledání dojde k rozšíření při indexování (nebo příjmu dat). Tato část návodu vytvoří čtyři objekty: zdroj dat, index definice, dovednosti, indexer. 
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
 
-[Objekt zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) poskytuje připojovací řetězec k kontejneru objektů blob, který obsahuje soubory.
+[Objekt zdroje dat](/rest/api/searchservice/create-data-source) poskytuje připojovací řetězec k kontejneru objektů blob, který obsahuje soubory.
 
 1. Použijte **post** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby.
 
@@ -143,7 +151,7 @@ Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování
    https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
-1. V **textu**žádosti zkopírujte následující definici JSON a nahraďte ji `connectionString` skutečným připojením svého účtu úložiště. 
+1. V **textu** žádosti zkopírujte následující definici JSON a nahraďte ji `connectionString` skutečným připojením svého účtu úložiště. 
 
    Nezapomeňte také upravit název kontejneru. Navrhl (a) "ozubeného kola-Search-demo" pro název kontejneru v předchozím kroku.
 
@@ -165,7 +173,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 ### <a name="step-2-create-a-skillset"></a>Krok 2: vytvoření dovednosti
 
-[Objekt dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) je sada kroků rozšíření, které se aplikují na váš obsah. 
+[Objekt dovednosti](/rest/api/searchservice/create-skillset) je sada kroků rozšíření, které se aplikují na váš obsah. 
 
 1. Použijte příkaz **Put** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby.
 
@@ -173,7 +181,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
     https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-sd?api-version=2020-06-30
     ```
 
-1. Do **textu**žádosti ZKOPÍRUJTE definici JSON níže. Tento dovednosti se skládá z následujících integrovaných dovedností.
+1. Do **textu** žádosti ZKOPÍRUJTE definici JSON níže. Tento dovednosti se skládá z následujících integrovaných dovedností.
 
    | Tuhle                 | Popis    |
    |-----------------------|----------------|
@@ -250,7 +258,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 ### <a name="step-3-create-an-index"></a>Krok 3: vytvoření indexu
 
-[Index](https://docs.microsoft.com/rest/api/searchservice/create-index) poskytuje schéma používané k vytvoření fyzického výrazu vašeho obsahu ve invertovaných indexech a jiných konstrukcích v Azure kognitivní hledání. Největší součástí indexu je kolekce polí, kde typ dat a atributy určují obsah a chování v Azure Kognitivní hledání.
+[Index](/rest/api/searchservice/create-index) poskytuje schéma používané k vytvoření fyzického výrazu vašeho obsahu ve invertovaných indexech a jiných konstrukcích v Azure kognitivní hledání. Největší součástí indexu je kolekce polí, kde typ dat a atributy určují obsah a chování v Azure Kognitivní hledání.
 
 1. Použijte příkaz **Put** a následující adresu URL, kde nahraďte název vaší služby skutečným názvem vaší služby a pojmenujte index.
 
@@ -258,7 +266,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
-1. Do **textu**žádosti zkopírujte následující definici JSON. Pole slouží k `content` uložení samotného dokumentu. Další pole pro `languageCode` , `keyPhrases` a `organizations` reprezentují nové informace (pole a hodnoty) vytvořené pomocí dovednosti.
+1. Do **textu** žádosti zkopírujte následující definici JSON. Pole slouží k `content` uložení samotného dokumentu. Další pole pro `languageCode` , `keyPhrases` a `organizations` reprezentují nové informace (pole a hodnoty) vytvořené pomocí dovednosti.
 
     ```json
     {
@@ -334,7 +342,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 ### <a name="step-4-create-and-run-an-indexer"></a>Krok 4: vytvoření a spuštění indexeru
 
-[Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) vyřídí kanál. Tři komponenty, které jste doposud vytvořili (zdroj dat, dovednosti, index), jsou vstupy pro indexer. Vytvoření indexeru v Azure Kognitivní hledání je událost, která vloží celý kanál do pohybu. 
+[Indexer](/rest/api/searchservice/create-indexer) vyřídí kanál. Tři komponenty, které jste doposud vytvořili (zdroj dat, dovednosti, index), jsou vstupy pro indexer. Vytvoření indexeru v Azure Kognitivní hledání je událost, která vloží celý kanál do pohybu. 
 
 1. Použijte příkaz **Put** a následující adresu URL, kde NAHRAĎte název vaší služby skutečným názvem vaší služby a pojmenujte indexer.
 
@@ -342,7 +350,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
    https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
-1. Do **textu**žádosti ZKOPÍRUJTE definici JSON níže. Všimněte si elementů mapování polí; Tato mapování jsou důležitá, protože definují tok dat. 
+1. Do **textu** žádosti ZKOPÍRUJTE definici JSON níže. Všimněte si elementů mapování polí; Tato mapování jsou důležitá, protože definují tok dat. 
 
    Je `fieldMappings` zpracována před dovednosti a odesílá obsah ze zdroje dat do cílových polí v indexu. K odeslání existujícího nezměněného obsahu do indexu budete používat mapování polí. Pokud jsou názvy polí a typy na obou koncích stejné, není nutné žádné mapování.
 
@@ -350,7 +358,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
     ```json
     {
-      "name":"cog-search-demo-idxr",    
+      "name":"cog-search-demo-idxr",
       "dataSourceName" : "cog-search-demo-ds",
       "targetIndexName" : "cog-search-demo-idx",
       "skillsetName" : "cog-search-demo-ss",
@@ -486,7 +494,7 @@ Odvoláme, že jsme začali s obsahem objektu blob, kde se celý dokument balí 
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
-Tyto dotazy znázorňují několik způsobů, jak můžete pracovat se syntaxí dotazů a filtry pro nová pole vytvořená pomocí rozpoznávání rozpoznávání. Další příklady dotazů naleznete v tématu [Příklady v dokumentu hledání REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), [jednoduché příklady dotazů syntaxe](search-query-simple-examples.md)a [úplné příklady dotazů na Lucene](search-query-lucene-examples.md).
+Tyto dotazy znázorňují několik způsobů, jak můžete pracovat se syntaxí dotazů a filtry pro nová pole vytvořená pomocí rozpoznávání rozpoznávání. Další příklady dotazů naleznete v tématu [Příklady v dokumentu hledání REST API](/rest/api/searchservice/search-documents#bkmk_examples), [jednoduché příklady dotazů syntaxe](search-query-simple-examples.md)a [úplné příklady dotazů na Lucene](search-query-lucene-examples.md).
 
 <a name="reset"></a>
 
@@ -516,7 +524,7 @@ Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro dal�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

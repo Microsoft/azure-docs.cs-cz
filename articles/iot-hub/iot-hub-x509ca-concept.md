@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 877200cbafbe68fa6161025572abfddad651e172
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61320241"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490716"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Konceptuální porozumění certifikátům CA X. 509 v oboru IoT
 
@@ -29,6 +29,8 @@ Tento článek popisuje:
 
 * Způsob, jakým se zařízení podepsaná pomocí certifikační autority X. 509 připojují k IoT Hub
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
+
 ## <a name="overview"></a>Přehled
 
 Ověřování pomocí certifikační autority X. 509 (CA) představuje přístup k ověřování zařízení, která se IoT Hub pomocí metody, která výrazně zjednodušuje vytváření identit zařízení a správu životního cyklu v zásobovacím řetězci.
@@ -38,6 +40,8 @@ Rozlišující atribut ověřování CA X. 509 je vztah 1: n, který má certifi
 Dalším důležitým atributem ověřování CA X. 509 je zjednodušení logistiky dodavatelského řetězce. Zabezpečené ověřování zařízení vyžaduje, aby každé zařízení mělo v rámci vztahu důvěryhodnosti jedinečný tajný klíč jako klíč. V ověřování na základě certifikátů je tento tajný klíč soukromým klíčem. Typický výrobní tok zařízení zahrnuje několik kroků a starají. Zabezpečená správa privátních klíčů zařízení napříč několika starají a udržování důvěry je obtížná a nákladná. Pomocí certifikačních autorit se tento problém vyřeší tím, že se každý implicitní správce podepíše do kryptografického řetězce důvěry, ale nebudete ho pověřit pomocí privátních klíčů zařízení. Každý implicitní správce v nástroji zase podepisuje zařízení podle příslušného kroku výrobního toku. Celkový výsledek je optimální dodavatelský řetězec s integrovanou zodpovědností prostřednictvím použití kryptografického řetězu důvěryhodnosti. Je potřeba poznamenat, že tento proces má při ochraně svých jedinečných privátních klíčů největší zabezpečení. K tomuto účelu doporučujeme používat hardwarové moduly hardwarového zabezpečení (HSM) schopné interně generovat privátní klíče, které nikdy neuvidí den.
 
 Tento článek nabízí ucelený pohled na použití ověřování CA X. 509, od nastavení dodavatelských řetězců až po připojení zařízení, přičemž při použití reálného světa se přesvědčit porozumění.
+
+Skupiny registrací můžete použít taky v Azure IoT Hub Device Provisioning Service (DPS), abyste mohli zpracovávat zřizování zařízení do Center. Další informace o použití DPS ke zřízení zařízení s certifikátem X. 509 najdete v tématu [kurz: zřízení více zařízení x. 509 pomocí skupin](../iot-dps/tutorial-custom-hsm-enrollment-group-x509.md)registrací.
 
 ## <a name="introduction"></a>Úvod
 
@@ -63,17 +67,17 @@ Podrobnosti o tom, jak tento postup provést, se liší od různých poskytovate
 
 ### <a name="purchasing-an-x509-ca-certificate"></a>Zakoupení certifikátu certifikační autority X. 509
 
-Zakoupení certifikátu certifikační autority má výhodu, že by měla dobře známá kořenová certifikační autorita fungovat jako důvěryhodná třetí strana, která vám při připojování zařízení ručí za legitimitu zařízení IoT. Společnost – X tuto možnost zvolí, pokud chtějí s produkty nebo službami třetích stran komunikovat s produkty nebo službami jiných výrobců po počátečním připojení k IoT Hub.
+Zakoupení certifikátu certifikační autority má výhodu, že by měla dobře známá kořenová certifikační autorita fungovat jako důvěryhodná třetí strana, která vám při připojování zařízení ručí za legitimitu zařízení IoT. Společnost – X zvolí tuto možnost, pokud chtějí s produkty nebo službami třetích stran komunikovat s produkty nebo službami jiných výrobců po počátečním připojení k IoT Hub.
 
 Pokud chcete koupit certifikát CA X. 509, společnost-X zvolí poskytovatele kořenových certifikátů. Hledání v Internetu fráze "Kořenová certifikační autorita" poskytne dobrá zájem. Kořenová certifikační autorita povede společnost-X o tom, jak vytvořit pár veřejného a privátního klíče a jak vygenerovat žádost o podepsání certifikátu pro své služby. CSR je formální proces, který se používá pro certifikát od certifikační autority. Výsledek tohoto nákupu je certifikát, který se použije jako certifikát autority. Vzhledem k všudypřítomnosti výrazněí certifikátů X. 509 je pravděpodobně certifikát správně formátován na standard RFC 5280 specifikace IETF.
 
-### <a name="creating-a-self-signed-x509-ca-certificate"></a>Vytvoření certifikátu CA X. 509 podepsaného svým držitelem
+### <a name="creating-a-self-signed-x509-ca-certificate"></a>Vytvoření certifikátu certifikační autority Self-Signed X. 509
 
-Proces vytvoření certifikátu podepsaného svým držitelem X. 509 se podobá nákupu s výjimkou, že se týká i registrace třetí strany, jako je například kořenová certifikační autorita. V našem příkladu společnost-X podepíše svůj certifikát autority namísto kořenové certifikační autority. Společnost – X může zvolit tuto možnost testování, dokud nebudou připravené k nákupu certifikátu autority. Společnost-X může také v produkčním prostředí používat certifikát CA X. 509 podepsaný svým držitelem, pokud inteligentní-X-widget není určený k připojení k žádným službám třetích stran mimo IoT Hub.
+Proces vytvoření Self-Signed certifikátu certifikační autority X. 509 se podobá nákupu s výjimkou, že se týká registrace třetí strany, jako je například kořenová certifikační autorita. V našem příkladu společnost-X podepíše svůj certifikát autority namísto kořenové certifikační autority. Společnost – X může zvolit tuto možnost testování, dokud nebudou připravené k nákupu certifikátu autority. Společnost-X může také v produkčním prostředí používat certifikát CA X. 509 podepsaný svým držitelem, pokud inteligentní-X-widget není určený k připojení k žádným službám třetích stran mimo IoT Hub.
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Zaregistrujte certifikát X. 509, aby bylo možné IoT Hub
 
-Společnost-X potřebuje zaregistrovat certifikační autoritu X. 509, aby IoT Hub, kde bude sloužit k ověřování inteligentních pomůcek (Smart-X-widgetů) při jejich připojení. Jedná se o jednorázový proces, který umožňuje ověřit a spravovat libovolný počet zařízení s Smart-X widgetem. Tento proces je jednou z důvodu vztahu 1:1 mezi certifikátem autority a zařízeními a také představuje jednu z hlavních výhod použití metody ověřování CA X. 509. Alternativou je nahrání individuálních kryptografických otisků certifikátů pro každé a každé zařízení s inteligentními X a widgety, které přidávají provozním nákladům.
+Společnost-X potřebuje zaregistrovat certifikační autoritu X. 509, aby IoT Hub, kde bude sloužit k ověřování inteligentních pomůcek (Smart-X-widgetů) při jejich připojení. Jedná se o jednorázový proces, který umožňuje ověřit a spravovat libovolný počet zařízení s Smart-X widgetem. Jedná se o jednorázový proces, protože vztah 1: n mezi certifikátem certifikační autority a certifikáty zařízení, které jsou podepsány certifikátem certifikační autority nebo zprostředkujícím certifikátem. Tento vztah představuje jednu z hlavních výhod použití metody ověřování CA X. 509. Alternativou je nahrání individuálních kryptografických otisků certifikátů pro každé a každé zařízení s inteligentními X a widgety, které přidávají provozním nákladům.
 
 Registrace certifikátu certifikační autority X. 509 je proces se dvěma kroky, nahrání certifikátu a důkazem o vlastnictví certifikátu.
 
@@ -85,7 +89,7 @@ Proces nahrání certifikátu certifikační autority X. 509 je právě ten, nah
 
 ### <a name="proof-of-possession-of-the-certificate"></a>Ověření vlastnictví certifikátu
 
-Certifikát CA X. 509, stejně jako jakýkoliv digitální certifikát, je veřejné informace, které jsou náchylné k odposlouchávání. V takovém případě může odposlouchávání zachytit certifikát a pokusit se ho nahrát jako svůj vlastní. V našem příkladu IoT Hub chtít, aby se zajistilo, že společnost-x odesílá certifikát certifikační autority, která ve skutečnosti patří do společnosti-X. Udělá to tak náročné, že společnost-X k ověření, že ve skutečnosti disponuje certifikátem, prostřednictvím [toku podržení (pop)](https://tools.ietf.org/html/rfc5280#section-3.1). Tok ověření příchodu má za následek IoT Hub vygenerování náhodného čísla podepsaného společností-X pomocí jeho privátního klíče. Pokud společnost-X sledovala osvědčené postupy infrastruktury veřejných klíčů a chránila jejich soukromý klíč, pak budou mít jenom na pozici, aby správně reagovala na výzvu k ověření. IoT Hub pokračuje v registraci certifikátu CA X. 509 po úspěšné odezvě na výzvu k ověření příznaku.
+Certifikát CA X. 509, stejně jako jakýkoliv digitální certifikát, je veřejné informace, které jsou náchylné k odposlouchávání. V takovém případě může odposlouchávání zachytit certifikát a pokusit se ho nahrát jako svůj vlastní. V našem příkladu IoT Hub chtít, aby se zajistilo, že společnost-x odesílá certifikát certifikační autority, která ve skutečnosti patří do společnosti-X. Udělá to tak náročné, že společnost-X by prokázala, že by ve skutečnosti měla certifikát prostřednictvím [toku kontrolního programu (pop)](https://tools.ietf.org/html/rfc5280#section-3.1). Tok ověření příchodu má za následek IoT Hub vygenerování náhodného čísla podepsaného společností-X pomocí jeho privátního klíče. Pokud společnost-X sledovala osvědčené postupy infrastruktury veřejných klíčů a chránila jejich soukromý klíč, pak budou mít jenom na pozici, aby správně reagovala na výzvu k ověření. IoT Hub pokračuje v registraci certifikátu CA X. 509 po úspěšné odezvě na výzvu k ověření příznaku.
 
 Úspěšná odpověď na výzvu k ověření příchodu z IoT Hub dokončila registraci CA X. 509.
 

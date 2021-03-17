@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: řešení potíží, aktualizace, chyba, Kinect, zpětná vazba, obnovení, protokolování, tipy
-ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277230"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038816"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Známé problémy s Azure Kinect a řešení potíží
 
-Tato stránka obsahuje známé problémy a tipy pro řešení potíží při používání sady snímač SDK se službou Azure Kinect DK. Problémy specifické pro produktovou hardwarovou podporu viz také [stránky podpory produktu](https://aka.ms/kinectsupport) .
+Tato stránka obsahuje známé problémy a tipy pro řešení potíží při používání sady snímač SDK se službou Azure Kinect DK. Problémy specifické pro produktovou hardwarovou podporu viz také [stránky podpory produktu](./index.yml) .
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -98,7 +98,7 @@ Protokolování K4ABT.dll sady SDK pro sledování textu je podobné s tím rozd
 
 ## <a name="azure-kinect-viewer-fails-to-open"></a>Nepodařilo se otevřít Azure Kinect Viewer
 
-- Nejdřív ověřte, že se vaše zařízení zobrazuje ve Windows Device Manager.
+- Nejdřív ověřte, že se vaše zařízení zobrazuje ve Windows Správce zařízení.
 
     ![Kamery Azure Kinect ve Správci zařízení ve Windows](./media/resources/viewer-fails.png)
 
@@ -113,9 +113,9 @@ Protokolování K4ABT.dll sady SDK pro sledování textu je podobné s tím rozd
 
 ## <a name="cannot-find-microphone"></a>Nejde najít mikrofon.
 
-- Nejprve si nejdříve zajistěte, aby se v Device Manager vyčíslení pole mikrofonu.
+- Nejprve si nejdříve zajistěte, aby se v Správce zařízení vyčíslení pole mikrofonu.
 - Pokud je zařízení ve výčtu a funguje jinak v systému Windows, může to být tím, že po aktualizaci firmwaru Windows přiřadí jiné ID kontejneru k hloubce kamery.
-- Můžete ji zkusit resetovat tak, že přejdete na Device Manager, kliknete pravým tlačítkem na "Azure Kinect Microphone Array" a vyberte odinstalovat zařízení. Až to bude hotové, odpojte a znovu připojte senzor.
+- Můžete ji zkusit resetovat tak, že přejdete na Správce zařízení, kliknete pravým tlačítkem na "Azure Kinect Microphone Array" a vyberte odinstalovat zařízení. Až to bude hotové, odpojte a znovu připojte senzor.
 
     ![Pole Kinect pro mikrofon Azure](./media/resources/mic-not-found.png)
 
@@ -134,7 +134,7 @@ Pokud to neprovede, [resetování továrního nastavení](https://support.micros
 - Pokud chcete sdílet problémy s kvalitou obrazu s týmem, můžete:
 
 1) Zobrazení pozastavení v [Azure Kinect Vieweru](azure-kinect-viewer.md) a pořídit snímek obrazovky nebo
-2) Nahlaste se pomocí nahrávání [Azure Kinect](azure-kinect-recorder.md), třeba`k4arecorder.exe -l 5 -r 5 output.mkv`
+2) Nahlaste se pomocí nahrávání [Azure Kinect](azure-kinect-recorder.md), třeba `k4arecorder.exe -l 5 -r 5 output.mkv`
 
 ## <a name="inconsistent-or-unexpected-device-timestamps"></a>Nekonzistentní nebo neočekávaná časová razítka zařízení
 
@@ -144,11 +144,11 @@ Volání ```k4a_device_set_color_control``` může dočasně vyvolat změny čas
 
 Pokud zařízení ve Správci zařízení nevytváří výčet, může být důvodem to, že je připojený k nepodporovanému USB3 řadiči. 
 
-Pro Azure Kinect DK v **systému Windows**jsou technologie Intel, **Texas Instrumentation (ČŘ)** a **reneseas** *jedinými hostitelskými řadiči, které jsou podporovány*. Sada Azure Kinect SDK na platformách Windows spoléhá na jednotné ID kontejneru a musí zahrnovat zařízení USB 2,0 a 3,0, aby sada SDK mohla najít hloubkovou, barevnou a zvukovou zařízení, která jsou fyzicky umístěná na stejném zařízení. V systému Linux může být podporováno více řadičů hostitele, protože tato platforma spoléhá na ID kontejneru a další informace o sériových číslech zařízení. 
+Pro Azure Kinect DK v **systému Windows** jsou technologie Intel, **Texas Instrumentation (ČŘ)** a **reneseas** *jedinými hostitelskými řadiči, které jsou podporovány*. Sada Azure Kinect SDK na platformách Windows spoléhá na jednotné ID kontejneru a musí zahrnovat zařízení USB 2,0 a 3,0, aby sada SDK mohla najít hloubkovou, barevnou a zvukovou zařízení, která jsou fyzicky umístěná na stejném zařízení. V systému Linux může být podporováno více řadičů hostitele, protože tato platforma spoléhá na ID kontejneru a další informace o sériových číslech zařízení. 
 
 Téma hostitelských řadičů USB získá ještě složitější, když má počítač nainstalovaný víc než jeden hostitelský řadič. Pokud jsou řadiče hostitele smíšené, může uživatel zaznamenat problémy, když některé porty fungují správně a jiné nefungují vůbec. V závislosti na tom, jak jsou porty kabelové, se můžou zobrazit všechny klientské porty s problémy s Azure Kinect.
 
-**Windows:** Chcete-li zjistit, jaký hostitelský řadič máte otevřený Device Manager
+**Windows:** Chcete-li zjistit, jaký hostitelský řadič máte otevřený Správce zařízení
 
 1. Zobrazení – > zařízení podle typu 
 2. S připojenými fotoaparáty k Azure Kinect a vybranými kamerami – >Azure Kinect 4K
@@ -165,6 +165,25 @@ Laser používaný hloubkovou kamerou k výpočtu dat hloubky obrazu má omezen�
 ## <a name="using-body-tracking-sdk-with-unreal"></a>Použití sady SDK pro sledování těla pomocí Unreal
 
 Chcete-li použít sadu SDK pro sledování textu s Unreal, ujistěte se, že jste přidali `<SDK Installation Path>\tools` proměnnou prostředí `PATH` a zkopírovali `dnn_model_2_0.onnx` `cudnn64_7.dll` do `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64` .
+
+## <a name="using-azure-kinect-on-headless-linux-system"></a>Použití Azure Kinect na bezobslužném systému Linux
+
+Modul pro hloubku Azure Kinect v systému Linux používá OpenGL. OpenGL vyžaduje instanci okna, která vyžaduje, aby monitorování bylo připojené k systému. Alternativní řešení pro tento problém:
+
+1. Povolte automatické přihlašování pro uživatelský účet, který plánujete použít. Pokyny, jak povolit automatické přihlašování, najdete v [tomto](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) článku.
+2. Vypněte systém, odpojte monitor a zapněte systém. Automatické přihlašování vynutí vytvoření relace x-serveru.
+2. Připojení přes SSH a nastavení proměnné pro zobrazení ENV `export DISPLAY=:0`
+3. Spusťte aplikaci Azure Kinect.
+
+Nástroj [xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) se dá použít k okamžitému uzamknutí obrazovky po automatickém přihlášení. Do spouštěcí aplikace nebo do systémové služby přidejte následující příkaz:
+
+`bash -c “xtrlock -b”` 
+
+## <a name="missing-c-documentation"></a>Chybějící dokumentace jazyka C#
+
+Dokumentace k sadě senzor SDK jazyka C# se nachází [zde](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html).
+
+Dokumentace pro sledování těla sady SDK jazyka C# se nachází [zde](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html).
 
 ## <a name="next-steps"></a>Další kroky
 

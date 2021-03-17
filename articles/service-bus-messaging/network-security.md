@@ -3,12 +3,12 @@ title: Zabezpečení sítě pro Azure Service Bus
 description: Tento článek popisuje funkce zabezpečení sítě, jako jsou značky služby, pravidla brány firewall protokolu IP, koncové body služby a soukromé koncové body.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341133"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310464"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Zabezpečení sítě pro Azure Service Bus 
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Service Bus: 
@@ -16,13 +16,13 @@ Tento článek popisuje, jak používat následující funkce zabezpečení pro 
 - Značky služeb
 - Pravidla brány firewall protokolu IP
 - Koncové body síťové služby
-- Soukromé koncové body (Preview)
+- Soukromé koncové body
 
 
 ## <a name="service-tags"></a>Značky služeb
 Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu [Přehled značek služeb](../virtual-network/service-tags-overview.md).
 
-Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **ServiceBus**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
+Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **ServiceBus**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
 
 | Značka služby | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -33,7 +33,7 @@ Pomocí značek služeb můžete definovat řízení přístupu k síti pro [sku
 > Značky služeb můžete použít jenom pro obory názvů úrovně **Premium** . Pokud používáte **standardní** obor názvů, použijte IP adresu, kterou vidíte při spuštění následujícího příkazu: `nslookup <host name for the namespace>` . Například: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>Brána firewall protokolu IP 
-Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
+Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 Tato funkce je užitečná ve scénářích, ve kterých Azure Service Bus by měly být dostupné jenom z určitých dobře známých lokalit. Pravidla brány firewall umožňují konfigurovat pravidla pro příjem provozu pocházejících z konkrétních IPv4 adres. Pokud například použijete Service Bus s [Azure Express Route] [Express-Route], můžete vytvořit **pravidlo brány firewall** , které umožní provoz jenom z místních IP adres infrastruktury nebo adres podnikové brány NAT. 
 
@@ -81,8 +81,6 @@ Další informace najdete v tématu [co je privátní propojení Azure?](../priv
 
 > [!NOTE]
 > Tato funkce je podporovaná s úrovní **premium** Azure Service Bus. Další informace o úrovni Premium najdete v článku [Service Bus úrovně pro zasílání zpráv na úrovni Premium a Standard](service-bus-premium-messaging.md) .
->
-> Tato funkce je aktuálně ve **verzi Preview**. 
 
 
 Další informace najdete v tématu [Postup konfigurace privátních koncových bodů pro obor názvů Service Bus](private-link-service.md) .

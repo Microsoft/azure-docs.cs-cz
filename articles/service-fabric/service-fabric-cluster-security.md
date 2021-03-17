@@ -3,13 +3,12 @@ title: Zabezpečení clusteru Azure Service Fabric
 description: Přečtěte si o scénářích zabezpečení pro cluster Azure Service Fabric a o různých technologiích, které můžete použít k jejich implementaci.
 ms.topic: conceptual
 ms.date: 08/14/2018
-ms.custom: sfrev
-ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6f7bb785184938fe5c1e20e3c915b0112c7723ee
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261072"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573064"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric scénáře zabezpečení clusteru
 
@@ -19,7 +18,7 @@ Tento článek představuje přehled scénářů zabezpečení pro clustery Azur
 
 * Zabezpečení mezi uzly
 * Zabezpečení klient-uzel
-* Řízení přístupu na základě role (RBAC)
+* Service Fabric řízení přístupu na základě role
 
 ## <a name="node-to-node-security"></a>Zabezpečení mezi uzly
 
@@ -60,7 +59,7 @@ Clustery běžící v Azure a samostatné clustery, které běží v systému Wi
 
 Nastavte zabezpečení certifikátu klienta na uzel při vytváření clusteru, a to buď v Azure Portal, pomocí Správce prostředků šablony, nebo pomocí samostatné šablony JSON. Certifikát vytvoříte tak, že zadáte certifikát klienta správce nebo klientský certifikát uživatele. Osvědčeným postupem je, že je třeba zadat klientské certifikáty pro správce a uživatele, které zadáte, se liší od primárních a sekundárních certifikátů, které zadáte pro [zabezpečení](#node-to-node-security)mezi uzly. Certifikáty clusteru mají stejná práva jako certifikáty správce klienta. Měli byste je ale používat jenom v clusterech a ne prostřednictvím administrativních uživatelů jako osvědčený postup zabezpečení.
 
-Klienti, kteří se připojují ke clusteru pomocí certifikátu správce, mají úplný přístup k možnostem správy. Klienti, kteří se připojují ke clusteru pomocí klientského certifikátu jen pro čtení, mají přístup jen pro čtení k funkcím pro správu. Tyto certifikáty se používají pro RBAC, který je popsán dále v tomto článku.
+Klienti, kteří se připojují ke clusteru pomocí certifikátu správce, mají úplný přístup k možnostem správy. Klienti, kteří se připojují ke clusteru pomocí klientského certifikátu jen pro čtení, mají přístup jen pro čtení k funkcím pro správu. Tyto certifikáty se používají pro Service Fabric RBAC, která je popsána dále v tomto článku.
 
 Informace o tom, jak nastavit zabezpečení certifikátů v clusteru pro Azure, najdete v tématu [Nastavení clusteru pomocí šablony Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
@@ -85,13 +84,13 @@ U clusterů Service Fabric nasazených ve veřejné síti hostované v Azure dop
 
 V případě samostatných clusterů Windows serveru, pokud máte Windows Server 2012 R2 a Windows Active Directory, doporučujeme, abyste používali zabezpečení systému Windows se skupinovými účty spravované služby. V opačném případě použijte zabezpečení systému Windows s účty systému Windows.
 
-## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
+## <a name="service-fabric-role-based-access-control"></a>Service Fabric řízení přístupu na základě role
 
 Řízení přístupu můžete použít k omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, jsou podporovány dva typy řízení přístupu: role správce a role uživatele.
 
 Uživatelé, kteří mají přiřazenou roli správce, mají plný přístup k funkcím správy, včetně funkcí pro čtení a zápis. Uživatelům, kteří mají přiřazenou roli uživatele, mají ve výchozím nastavení přístup jen pro čtení k funkcím pro správu (například možnosti dotazů). Můžou také řešit aplikace a služby.
 
-Nastavte role správce a uživatele klienta při vytváření clusteru. Přiřaďte role poskytnutím samostatných identit (například pomocí certifikátů nebo Azure AD) pro každý typ role. Další informace o výchozím nastavení řízení přístupu a o tom, jak změnit výchozí nastavení, najdete v tématu [Access Control na základě rolí pro klienty Service Fabric](service-fabric-cluster-security-roles.md).
+Nastavte role správce a uživatele klienta při vytváření clusteru. Přiřaďte role poskytnutím samostatných identit (například pomocí certifikátů nebo Azure AD) pro každý typ role. Další informace o výchozím nastavení řízení přístupu a o tom, jak změnit výchozí nastavení, najdete v tématu [Service Fabric řízení přístupu na základě role pro klienty Service Fabric](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>Certifikáty X. 509 a Service Fabric
 
@@ -134,7 +133,7 @@ Koncept vytváření zabezpečených clusterů je stejný, bez ohledu na to, jes
 
 ### <a name="client-authentication-certificates-optional"></a>Certifikáty pro ověřování klientů (volitelné)
 
-Pro klientské operace správce nebo uživatele lze zadat libovolný počet dalších certifikátů. Klient může tento certifikát použít při vyžadování vzájemného ověřování. Klientské certifikáty obvykle nejsou vydávány certifikační autoritou třetí strany. Místo toho osobní úložiště aktuálního umístění uživatele obvykle obsahuje klientské certifikáty, které jsou umístěny v kořenové autoritě. Certifikát by měl mít **zamýšlenou** hodnotu pro **ověření klienta**.  
+Pro klientské operace správce nebo uživatele lze zadat libovolný počet dalších certifikátů. Klient může tyto certifikáty použít, když je potřeba vzájemné ověřování. Klientské certifikáty obvykle nejsou vydávány certifikační autoritou třetí strany. Místo toho osobní úložiště aktuálního umístění uživatele obvykle obsahuje klientské certifikáty, které jsou umístěny v kořenové autoritě. Certifikát by měl mít **zamýšlenou** hodnotu pro **ověření klienta**.  
 
 Ve výchozím nastavení má certifikát clusteru oprávnění klienta správce. Tyto další klientské certifikáty by neměly být nainstalovány do clusteru, ale jsou zadány jako povolené v konfiguraci clusteru.  Klientské certifikáty ale musí být nainstalované na klientských počítačích pro připojení ke clusteru a provádění operací.
 

@@ -1,26 +1,22 @@
 ---
-title: Začínáme s integrací Azure AD s aplikacemi | Microsoft Docs
+title: Začínáme s integrací Azure AD s aplikacemi
 description: Tento článek je úvodní příručka pro integraci Azure Active Directory (AD) s místními aplikacemi a cloudových aplikací.
 services: active-directory
-documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
-ms.subservice: app-mgmt
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d49c23e5968b0fe1b2d4838978fe1b23931e5e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b321acb00e6e9b4b6cca117afba8bf0c9432719
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763087"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258462"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Průvodce integrací Azure Active Directory s aplikacemi Začínáme
 
@@ -45,7 +41,7 @@ Před integrací aplikací se službou Azure AD je důležité znát, kde jste a
   * Azure AD
   * V samostatné aplikační databázi, kterou vlastníte
   * V neschválených aplikacích
-  * Všechny výš uvedené položky
+  * Všechny výše uvedené možnosti
 * Jaká oprávnění a přiřazení rolí mají jednotliví uživatelé aktuálně k dispozici? Potřebujete si projít svůj přístup nebo jste si jisti, že je teď k disvěřit přístup a přiřazení rolí uživatelů?
 * Jsou již vytvořeny skupiny v místní službě Active Directory?
   * Jak jsou vaše skupiny uspořádány?
@@ -54,7 +50,7 @@ Před integrací aplikací se službou Azure AD je důležité znát, kde jste a
 * Budete potřebovat vyčistit databáze uživatelů a skupin před integrací?  (Jedná se o poměrně důležitou otázku. Uvolnění paměti, uvolnění paměti.)
 
 ### <a name="access-management-inventory"></a>Inventář správy přístupu
-* Jak aktuálně spravujete přístup uživatelů k aplikacím? Je potřeba změnit?  Měli jste za přístup k jiným způsobům správy přístupu, jako je třeba [RBAC](../../role-based-access-control/role-assignments-portal.md) ?
+* Jak aktuálně spravujete přístup uživatelů k aplikacím? Je potřeba změnit?  Měli jste za přístup k jiným způsobům správy přístupu, jako je například se službou [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) ?
 * Kdo potřebuje přístup k čemu?
 
 Možná nemáte odpovědi na všechny tyto otázky dopředu, ale to je v pořádku.  Tato příručka vám pomůže odpovědět na některé z těchto otázek a dělat nějaká kvalifikovaná rozhodnutí.
@@ -66,36 +62,34 @@ Jak je uvedeno výše, můžou existovat aplikace, které nespravuje vaše organ
 ## <a name="integrating-applications-with-azure-ad"></a>Integrace aplikací s Azure AD
 Následující články popisují různé způsoby integrace aplikací s Azure AD a poskytují některé doprovodné materiály.
 
-* [Určení služby Active Directory, která se má použít](../fundamentals/active-directory-administer.md)
+* [Určení služby Active Directory, která se má použít](../fundamentals/active-directory-whatis.md)
 * [Používání aplikací v galerii aplikací Azure](what-is-single-sign-on.md)
-* [Integrace seznamu kurzů pro aplikace SaaS](../active-directory-saas-tutorial-list.md)
+* [Integrace seznamu kurzů pro aplikace SaaS](../saas-apps/tutorial-list.md)
 
 ### <a name="authentication-types"></a>Typy ověřování
-Každá z vašich aplikací může mít různé požadavky na ověřování. Pomocí služby Azure AD je možné podpisové certifikáty použít s aplikacemi, které používají protokoly SAML 2,0, WS-Federation nebo OpenID Connect, a také jednotné přihlašování pomocí hesla. Další informace o typech ověřování aplikací pro použití s Azure AD najdete v tématu [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) a [jednotného přihlašování na základě hesla](what-is-single-sign-on.md).
+Každá z vašich aplikací může mít různé požadavky na ověřování. Pomocí služby Azure AD je možné podpisové certifikáty použít s aplikacemi, které používají protokoly SAML 2,0, WS-Federation nebo OpenID Connect, a také jednotné přihlašování pomocí hesla. Další informace o typech ověřování aplikací pro použití s Azure AD najdete v tématu [Správa certifikátů pro federované jednotné Sign-On v rámci Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) a [jednotného přihlašování založené na heslech](what-is-single-sign-on.md).
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Povolení jednotného přihlašování s Aplikace Azure AD proxy
 Pomocí služby Microsoft Azure AD Application proxy můžete zajistit zabezpečený přístup k aplikacím, které se nacházejí v privátní síti, odkudkoli a na jakémkoli zařízení. Po instalaci konektoru proxy aplikací ve vašem prostředí je možné ho snadno nakonfigurovat pomocí Azure AD.
 
 ### <a name="integrating-custom-applications"></a>Integrace vlastních aplikací
-Pokud píšete novou aplikaci a chcete vývojářům pomoct využít sílu služby Azure AD, přečtěte si téma věnovaném vytváření [identifikátorů GUID pro vývojáře](../active-directory-applications-guiding-developers-for-lob-applications.md).
-
-Pokud chcete přidat vlastní aplikaci do Galerie aplikací Azure, přečtěte si téma ["Přineste si vlastní aplikaci" pomocí konfigurace samoobslužné služby Azure AD](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Pokud chcete přidat vlastní aplikaci do Galerie aplikací Azure, přečtěte si téma [publikování aplikace v galerii aplikací Azure AD](../develop/v2-howto-app-gallery-listing.md).
 
 ## <a name="managing-access-to-applications"></a>Správa přístupu k aplikacím
 Následující články popisují způsoby, kterými můžete spravovat přístup k aplikacím po integraci s Azure AD pomocí konektorů Azure AD a Azure AD.
 
 * [Správa přístupu k aplikacím pomocí Azure AD](what-is-access-management.md)
 * [Automatizace pomocí konektorů Azure AD](../app-provisioning/user-provisioning.md)
-* [Přiřazování uživatelů k aplikaci](../active-directory-applications-guiding-developers-assigning-users.md)
-* [Přiřazování skupin k aplikaci](../active-directory-applications-guiding-developers-assigning-groups.md)
-* [Sdílení účtů](../active-directory-sharing-accounts.md)
+* [Přiřazování uživatelů k aplikaci](./assign-user-or-group-access-portal.md)
+* [Přiřazování skupin k aplikaci](./assign-user-or-group-access-portal.md)
+* [Sdílení účtů](../enterprise-users/users-sharing-accounts.md)
 
 ## <a name="next-steps"></a>Další kroky
-Podrobné informace můžete stáhnout Azure Active Directory plány nasazení z [GitHubu](https://aka.ms/deploymentplans). Pro aplikace v galerii si můžete stáhnout plány nasazení pro jednotné přihlašování, podmíněný přístup a zřizování uživatelů prostřednictvím [Azure Portal](https://portal.azure.com). 
+Podrobné informace můžete stáhnout Azure Active Directory plány nasazení z [GitHubu](../fundamentals/active-directory-deployment-plans.md). Pro aplikace v galerii si můžete stáhnout plány nasazení pro jednotné přihlašování, podmíněný přístup a zřizování uživatelů prostřednictvím [Azure Portal](https://portal.azure.com). 
 
 Stažení plánu nasazení z Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Vyberte možnost **podnikové aplikace**vybrat  |  **Pick an App**  |  **plán nasazení**aplikace.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Vyberte možnost **podnikové aplikace** vybrat  |    |  **plán nasazení** aplikace.
 
 Poskytněte prosím svůj názor na plány nasazení prostřednictvím [průzkumu plánu nasazení](https://aka.ms/DeploymentPlanFeedback).

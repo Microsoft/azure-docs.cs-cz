@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 21b90f423a3ba3c7fa38334c79aec9dc65a250cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3392cc5f3ee9daef1ae8397f6829f4ca7a42373a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079179"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871396"
 ---
 # <a name="limits-and-quotas"></a>Omezení a kvóty
 
@@ -29,7 +29,7 @@ Pro projekty S0 se očekává, že počet školicích obrázků na projekt a zna
 |Školení imagí na projekt |5 000|100 000|
 |Předpovědi za měsíc|10 000 |Unlimited|
 |Značky/projekt|50|500|
-|Iterací |10|10|
+|Iterace |10|10|
 |Minimální počet označených obrázků na značku, klasifikace (maximálně 50 + doporučeno) |5|5|
 |Minimální počet označených obrázků na značku, detekce objektu (maximálně 50 + doporučeno)|15|15|
 |Jak dlouho jsou obrázky předpovědi uloženy|30 dní|30 dní|
@@ -39,11 +39,12 @@ Pro projekty S0 se očekává, že počet školicích obrázků na projekt a zna
 |[Jiná volání rozhraní API](https://go.microsoft.com/fwlink/?linkid=865446) (transakcí za sekundu)|10|10|
 |Přijímané typy obrázků|jpg, PNG, BMP, GIF|jpg, PNG, BMP, GIF|
 |Minimální výška a šířka obrázku v pixelech|256 (viz poznámku)|256 (viz poznámku)|
-|Maximální výška a šířka obrázku v pixelech|Bez omezení|Bez omezení|
+|Maximální výška a šířka obrázku v pixelech|10 240|10 240|
 |Maximální velikost obrázku (školicí obrázek při nahrávání) |6 MB|6 MB|
 |Maximální velikost obrázku (předpověď)|4 MB|4 MB|
-|Maximální počet oblastí na školicí obrázek detekce objektu|300|300|
-|Maximální počet značek na obrázek klasifikace|100|100|
+|Maximální počet oblastí na obrázek (detekce objektu)|300|300|
+|Maximální počet značek na obrázek (klasifikace)|100|100|
 
 > [!NOTE]
 > Obrázky menší než 256 pixelů budou přijímány, ale budou zvětšeny.
+> Poměr stran obrázku by neměl být větší než 25.

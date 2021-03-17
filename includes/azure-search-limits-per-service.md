@@ -9,19 +9,19 @@ ms.date: 05/11/2020
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: fe5c8129434ddb4eec2dd25a3f123f28b4db221b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83682614"
 ---
 Vyhledávací služba je omezená na místo na disku nebo pevně nastavená na maximální počet indexů nebo indexerů, podle toho, co nastane dřív. V následující tabulce jsou uvedené limity úložiště. Maximální limity pro objekty najdete v tématu [omezení podle prostředků](../articles/search/search-limits-quotas-capacity.md#index-limits).
 
 | Prostředek | Free | Základní<sup>1</sup> | S1 | S2 | S3 | S3 &nbsp; HD | L1 | Paměť |
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Smlouva o úrovni služeb (SLA)<sup>2</sup>  |No |Ano |Ano |Ano |Ano |Ano |Ano |Ano |
+| Smlouva o úrovni služeb (SLA)<sup>2</sup>  |No |Yes |Yes |Yes |Yes |Yes |Yes |Yes |
 | Úložiště na oddíl |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
-| Oddíly na službu |Není k dispozici |1 |12 |12 |12 |3 |12 |12 |
+| Oddíly na službu |Nelze použít |1 |12 |12 |12 |3 |12 |12 |
 | Velikost oddílu |Není k dispozici |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
 | Repliky |Není k dispozici |3 |12 |12 |12 |12 |12 |12 |
 

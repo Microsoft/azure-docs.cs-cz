@@ -4,6 +4,8 @@
   items:
     - name: Informace o službě Azure Functions
       href: functions-overview.md
+    - name: Začínáme
+      href: functions-get-started.md
     - name: Odolná služba Functions
       href: durable/durable-functions-overview.md
     - name: Porovnání bez serveru
@@ -13,15 +15,43 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření funkce
+    - name: Vytvoření první funkce
       expanded: true
       items:
         - name: Visual Studio Code
-          href: ./functions-create-first-function-vs-code.md
+          expanded: true
+          items:
+            - name: C#
+              href: create-first-function-vs-code-csharp.md
+            - name: Java
+              href: create-first-function-vs-code-java.md
+            - name: JavaScript
+              href: create-first-function-vs-code-node.md
+            - name: PowerShell
+              href: create-first-function-vs-code-powershell.md
+            - name: Python
+              href: create-first-function-vs-code-python.md
+            - name: TypeScript
+              href: create-first-function-vs-code-typescript.md
+            - name: Jiné (Go/Rust)
+              href: create-first-function-vs-code-other.md
         - name: Visual Studio
           href: functions-create-your-first-function-visual-studio.md
         - name: Příkazový řádek
-          href: functions-create-first-azure-function-azure-cli.md
+          expanded: false
+          items:
+            - name: C#
+              href: create-first-function-cli-csharp.md
+            - name: Java
+              href: create-first-function-cli-java.md
+            - name: JavaScript
+              href: create-first-function-cli-node.md
+            - name: PowerShell
+              href: create-first-function-cli-powershell.md
+            - name: Python
+              href: create-first-function-cli-python.md
+            - name: TypeScript
+              href: create-first-function-cli-typescript.md
         - name: Šablona ARM
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
@@ -79,14 +109,65 @@
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
     - name: Azure CLI
-      href: functions-cli-samples.md
+      items:
+        - name: Index ukázek CLI
+          href: functions-cli-samples.md
+        - name: Vytvoření aplikace funkcí
+          items:
+            - name: Bezserverová aplikace funkcí
+              href: ./scripts/functions-cli-create-serverless.md
+            - name: Bezserverová aplikace v Pythonu
+              href: ./scripts/functions-cli-create-serverless-python.md
+            - name: Aplikace škálovatelného plánu Premium
+              href: ./scripts/functions-cli-create-premium-plan.md
+            - name: Aplikace plánu Dedicated (App Service)
+              href: ./scripts/functions-cli-create-app-service-plan.md
+        - name: Integrace služeb
+          items:
+            - name: Připojení služby Azure Storage
+              href: ./scripts/functions-cli-create-function-app-connect-to-storage-account.md
+            - name: Připojení služby Azure Cosmos DB
+              href: ./scripts/functions-cli-create-function-app-connect-to-cosmos-db.md
+            - name: Připojená sdílená složka s využitím Pythonu
+              href: ./scripts/functions-cli-mount-files-storage-linux.md
+        - name: Průběžné nasazování
+          items:
+            - name: Nasazení GitHubu
+              href: ./scripts/functions-cli-create-function-app-github-continuous.md
+            - name: Nasazení DevOps
+              href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: Koncepty
   items:
+    - name: Osvědčené postupy
+      items:
+        - name: Výkon a spolehlivost
+          href: functions-best-practices.md
+          displayName: best practices
+        - name: Správa připojení
+          href: manage-connections.md
+          displayName: best practices
+        - name: Aspekty úložišť
+          href: storage-considerations.md
+          displayName: 'encryption, keys, mount, files'
+        - name: Zpracování chyb a opakované pokusy funkcí
+          href: functions-bindings-error-pages.md
+          displayName: best practices
+        - name: Zabezpečení
+          href: security-concepts.md
+          displayName: best practices
     - name: Porovnání modulů runtime
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
-    - name: Plán Premium
-      href: functions-premium-plan.md
+    - name: Hosting a škálování
+      items:
+        - name: Plán Consumption
+          href: consumption-plan.md
+        - name: Plán Premium
+          href: functions-premium-plan.md
+        - name: Plán Dedicated
+          href: dedicated-plan.md
+        - name: Škálování řízené událostmi
+          href: event-driven-scaling.md
     - name: Nasazení
       href: functions-deployment-technologies.md
     - name: Události a zasílání zpráv
@@ -116,6 +197,9 @@
           href: supported-languages.md
         - name: Jazyk C# (knihovna tříd)
           href: functions-dotnet-class-library.md
+        - name: C# (izolovaný proces)
+          displayName: '.NET isolated, .NET 5'
+          href: dotnet-isolated-process-guide.md
         - name: Skript jazyka C# (.csx)
           href: functions-reference-csharp.md
         - name: F#
@@ -141,16 +225,14 @@
           displayName: 'secure, ssl'
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+    - name: Monitorování
+      href: functions-monitoring.md
+      displayName: 'App Insights, Application Insights, logs, logging'
     - name: Diagnostika
       href: functions-diagnostics.md
     - name: Náklady plánu Consumption
       href: functions-consumption-costs.md
-    - name: Otázky výkonu
-      href: functions-best-practices.md
       displayName: best practice
-    - name: Aspekty úložišť
-      href: storage-considerations.md
-      displayName: 'encryption, keys, mount, files'
     - name: Proxy servery služby Functions
       href: functions-proxies.md
     - name: Možnosti sítí
@@ -175,18 +257,21 @@
               href: functions-develop-vs.md
             - name: Vývoj s využitím základních nástrojů
               href: functions-run-local.md
+              displayName: 'local, runtime'
         - name: Vytváření funkcí
           items:
             - name: Trigger HTTP
               items:
                 - name: portál Azure
-                  href: functions-create-first-azure-function.md
+                  href: functions-create-function-app-portal.md
                 - name: Příkazový řádek
-                  href: ./functions-create-first-azure-function-azure-cli.md
+                  href: ./create-first-function-cli-csharp.md
                 - name: Visual Studio
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
-                  href: ./functions-create-first-function-vs-code.md
+                  href: ./create-first-function-vs-code-csharp.md
+                - name: Izolovaný jazyk C# (.NET 5)
+                  href: dotnet-isolated-process-developer-howtos.md
                 - name: Java s využitím Gradle
                   href: functions-create-first-java-gradle.md
                 - name: Java s využitím Eclipse
@@ -200,7 +285,9 @@
                 - name: Plán služby App Service pro Linux
                   href: create-function-app-linux-app-service-plan.md
                 - name: Plán Využití v Linuxu
-                  href: ./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python
+                  href: create-first-function-cli-python.md
+                - name: Plán Premium
+                  href: create-premium-plan-function-app-portal.md
                 - name: Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Trigger služby Azure Cosmos DB
@@ -211,8 +298,11 @@
               href: functions-create-storage-queue-triggered-function.md
             - name: Trigger časovače
               href: functions-create-scheduled-function.md
-        - name: Přidání vazeb
+        - name: Připojení ke službám
           items:
+            - name: Jak se připojit ke službám
+              displayName: 'bindings,integrate'
+              href: add-bindings-existing-function.md
             - name: Azure Cosmos DB – portál
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: Storage – Python
@@ -238,7 +328,7 @@
         - name: Správa připojení
           href: manage-connections.md
           displayName: best practice
-        - name: Zpracování chyb
+        - name: Zpracování chyb a opakování
           href: functions-bindings-error-pages.md
         - name: Ruční spuštění funkce neaktivované protokolem HTTP
           href: functions-manually-run-non-http.md
@@ -279,11 +369,18 @@
           href: functions-geo-disaster-recovery.md
     - name: Monitorování
       items:
-        - name: Monitorování funkcí
-          href: functions-monitoring.md
+        - name: Konfigurace sledování
+          href: configure-monitoring.md
           displayName: 'App Insights, Application Insights, logs, logging'
-        - name: Analýza protokolů
+        - name: Analýza telemetrických dat
+          href: analyze-telemetry-data.md
+          displayName: 'App Insights, Application Insights, Kusto'
+        - name: Protokoly streamování
+          href: streaming-logs.md
+          displayName: monitoring
+        - name: Diagnostické protokoly
           href: functions-monitor-log-analytics.md
+          displayName: 'Azure Monitor, Kusto, Log Analytics, metrics'
     - name: Zabezpečení
       items:
         - name: Přidání certifikátu SSL
@@ -302,6 +399,8 @@
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Ověřování pomocí poskytovatele OpenID Connect (Preview)
               href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Ověřování pomocí přihlášení přes Apple (Preview)
+              href: ../app-service/configure-authentication-provider-apple.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Pokročilé ověřování
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Omezení IP adres
@@ -314,7 +413,7 @@
           href: configure-encrypt-at-rest-using-cmk.md
     - name: Integrace
       items:
-        - name: Přidání vazeb
+        - name: Připojení ke službám
           items:
             - name: Azure Cosmos DB – portál
               href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -332,8 +431,6 @@
           href: ./functions-create-vnet.md
         - name: Vytvoření definice OpenAPI 2.0
           href: ./functions-openapi-definition.md
-        - name: Export do PowerApps a Microsoft Flow
-          href: app-service-export-api-to-powerapps-and-flow.md
         - name: Použití spravované identity
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Přizpůsobení koncového bodu funkce HTTP
@@ -346,6 +443,8 @@
           href: functions-recover-storage-account.md
         - name: Řešení potíží s funkcemi Pythonu
           href: recover-python-functions.md
+        - name: Škálování a výkon pro funkce Pythonu
+          href: python-scale-performance-reference.md
 - name: Referenční informace
   items:
     - name: Referenční informace k rozhraní API
@@ -357,9 +456,9 @@
         - name: Azure PowerShell
           href: /powershell/module/az.functions
         - name: Java
-          href: /java/api/overview/azure/functions/runtime?view=azure-java-stable
+          href: /java/api/overview/azure/functions/runtime
         - name: Python
-          href: /python/api/azure-functions/azure.functions?view=azure-python
+          href: /python/api/azure-functions/azure.functions
     - name: Reference k nastavení aplikací
       href: functions-app-settings.md
     - name: Triggery a vazby
@@ -398,6 +497,8 @@
                 - name: Výstup
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
+        - name: Dapr
+          href: 'https://github.com/dapr/azure-functions-extension'
         - name: Event Grid
           items:
             - name: Přehled
@@ -431,6 +532,8 @@
             - name: Výstup
               href: functions-bindings-event-iot-output.md
               displayName: Azure IoT Hubs
+        - name: Kafka
+          href: 'https://github.com/azure/azure-functions-kafka-extension'
         - name: HTTP a webhooky
           items:
             - name: Přehled
@@ -442,8 +545,6 @@
             - name: Výstup
               href: functions-bindings-http-webhook-output.md
               displayName: HTTP
-        - name: Microsoft Graph
-          href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
           href: functions-bindings-mobile-apps.md
         - name: Notification Hubs
@@ -459,6 +560,17 @@
             - name: Výstup
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
+        - name: RabbitMQ
+          items:
+            - name: Přehled
+              href: functions-bindings-rabbitmq.md
+              displayName: RabbitMQ
+            - name: Trigger
+              href: functions-bindings-rabbitmq-trigger.md
+              displayName: RabbitMQ
+            - name: Výstup
+              href: functions-bindings-rabbitmq-output.md
+              displayName: RabbitMQ
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus
@@ -487,7 +599,16 @@
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: Úložiště Table
-          href: functions-bindings-storage-table.md
+          items:
+            - name: Přehled
+              href: functions-bindings-storage-table.md
+              displayName: Table storage
+            - name: Vstup
+              href: functions-bindings-storage-table-input.md
+              displayName: Table storage
+            - name: Výstup
+              href: functions-bindings-storage-table-output.md
+              displayName: Table storage
         - name: Časovač
           href: functions-bindings-timer.md
         - name: Twilio
@@ -511,7 +632,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/functions/'
+      href: pricing.md
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Informace o kvótách

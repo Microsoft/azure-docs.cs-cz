@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797233"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370912"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory
 Přidejte informace o profilu uživatele, včetně profilového obrázku, informací specifických pro úlohu a některých nastavení pomocí Azure Active Directory (Azure AD). Další informace o přidání nových uživatelů najdete v tématu [Postup přidání nebo odstranění uživatelů v Azure Active Directory](add-users-azure-active-directory.md).
@@ -66,4 +66,4 @@ Po aktualizaci profilů uživatelů můžete provádět následující základn�
 
 - [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
 
-Nebo můžete provádět další úlohy správy uživatelů, jako je přiřazení delegátů, používání zásad a sdílení uživatelských účtů. Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../users-groups-roles/index.yml).
+Nebo můžete provádět další úlohy správy uživatelů, jako je přiřazení delegátů, používání zásad a sdílení uživatelských účtů. Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../enterprise-users/index.yml).

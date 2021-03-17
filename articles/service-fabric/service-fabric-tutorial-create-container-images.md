@@ -1,17 +1,15 @@
 ---
 title: Vytváření imagí kontejneru v Service Fabric v Azure
 description: V tomto kurzu se naučíte vytvářet image kontejneru pro vícekontejnerovou aplikaci Service Fabric.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 31b5f870465bc1dff9d6ff7827a4efed084bcf62
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78252790"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739063"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Kurz: Vytváření imagí kontejneru v clusteru Service Fabric s Linuxem
 
@@ -31,7 +29,7 @@ V této sérii kurzů se naučíte:
 > * [Sestavit a spustit aplikaci Service Fabric s kontejnery](service-fabric-tutorial-package-containers.md)
 > * [Jak se zpracovává převzetí služeb při selhání a škálování v prostředku Service Fabric](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vývojové prostředí Linux nastavené pro Service Fabric. Při nastavování prostředí Linux postupujte podle pokynů [zde](service-fabric-get-started-linux.md).
 * Tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
@@ -92,13 +90,13 @@ az account set --subscription <subscription_id>
 
 Pokud chcete nasadit službu Azure Container Registry, nejprve potřebujete skupinu prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu **az group create**. V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *westus*.
+Vytvořte skupinu prostředků pomocí příkazu **az group create** . V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *westus* .
 
 ```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
-Pomocí příkazu **AZ ACR Create** vytvořte službu Azure Container Registry. Nahraďte parametr \<acrName> názvem registru kontejneru, který chcete v rámci svého předplatného vytvořit. Tento název smí obsahovat jen alfanumerické znaky a musí být jedinečný.
+Pomocí příkazu **AZ ACR Create** vytvořte službu Azure Container Registry. Nahraďte \<acrName> názvem registru kontejneru, který chcete vytvořit v rámci vašeho předplatného. Tento název smí obsahovat jen alfanumerické znaky a musí být jedinečný.
 
 ```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
@@ -108,7 +106,7 @@ V celé zbývající části tohoto kurzu používáme položku „acrName“ ja
 
 ## <a name="sign-in-to-your-container-registry"></a>Přihlaste se ke svému registru kontejneru.
 
-Před nahráním imagí do instance ACR se přihlaste. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
+Před nahráním imagí do instance ACR se přihlaste. Dokončete operaci pomocí příkazu **az acr login** . Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
 ```azurecli
 az acr login --name <acrName>

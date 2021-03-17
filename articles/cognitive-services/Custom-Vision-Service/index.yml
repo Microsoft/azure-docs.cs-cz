@@ -11,19 +11,19 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 556af0c505197170a633cf1f949d87f5d2584690
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
-  ms.translationtype: HT
+  ms.openlocfilehash: e357fff89758f7a57e839e7dcfb94854a2e51676
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82131331"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102509451"
 landingContent:
 - title: Informace o Custom Vision
   linkLists:
   - linkListType: overview
     links:
     - text: Co je Custom Vision?
-      url: home.md
+      url: overview.md
   - linkListType: whats-new
     links:
     - text: Co je nového
@@ -38,7 +38,7 @@ landingContent:
     links:
     - text: Použití webového portálu
       url: getting-started-build-a-classifier.md
-    - text: Použití sady Custom Vision SDK
+    - text: Použití sady Custom Vision SDK nebo REST API
       url: quickstarts/image-classification.md
   - linkListType: how-to-guide
     links:
@@ -101,24 +101,22 @@ landingContent:
     - text: Rozhraní API pro předpověď
       url: https://go.microsoft.com/fwlink/?linkid=865445
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
+      url: /dotnet/api/overview/azure/cognitiveservices/client/customvision
     - text: Python SDK
-      url: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/?view=azure-python
+      url: /python/api/azure-cognitiveservices-vision-customvision/
     - text: Java SDK
-      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
+      url: /java/api/overview/azure/cognitiveservices/client/customvision
     - text: Go SDK (trénování)
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training
     - text: Go SDK (předpověď)
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Rozhraní příkazového řádku Azure (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      url: /cli/azure/cognitiveservices
 - title: Nápověda a zpětná vazba
   linkLists:
   - linkListType: reference
     links:
-    - text: UserVoice
-      url: https://cognitive.uservoice.com/forums/598141-custom-vision-service
-    - text: Stack Overflow
-      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+    - text: Možnosti pomoci a podpory
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context

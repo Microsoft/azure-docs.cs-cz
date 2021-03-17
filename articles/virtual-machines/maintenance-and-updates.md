@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 51df72e31acaadc83f4c094b99fa938377e5f023
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501700"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499998"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Údržba virtuálních počítačů v Azure
 
@@ -23,7 +23,7 @@ Aktualizace mají zřídka vliv na hostované virtuální počítače. V přípa
 - Pokud aktualizace nevyžaduje restart, je virtuální počítač pozastaven během aktualizace hostitele nebo je virtuální počítač v provozu, který se migruje na již aktualizovaného hostitele. 
 - Pokud údržba vyžaduje restart, budete informováni o plánované údržbě. Azure také poskytuje časové okno, ve kterém můžete zahájit údržbu, a to v čase, který vám funguje. Okno samoobslužné údržby je obvykle 35 dní, pokud je údržba naléhavá. Azure slouží k tomu, aby se snížil počet případů, ve kterých údržba plánované platformy vyžaduje restartování virtuálních počítačů. Pokyny ke správě plánované údržby najdete v tématu zpracování oznámení o plánované údržbě pomocí Azure [CLI](maintenance-notifications-cli.md), [PowerShellu](maintenance-notifications-powershell.md) nebo [portálu](maintenance-notifications-portal.md).
 
-Tato stránka popisuje, jak Azure provádí oba typy údržby. Další informace o neplánovaných událostech (výpadky) najdete v tématu [Správa dostupnosti virtuálních počítačů pro systém Windows](./windows/manage-availability.md) nebo odpovídající článek pro [Linux](./linux/manage-availability.md).
+Tato stránka popisuje, jak Azure provádí oba typy údržby. Další informace o neplánovaných událostech (výpadky) najdete v tématu [Správa dostupnosti virtuálních počítačů pro systém Windows](./availability.md) nebo odpovídající článek pro [Linux](./availability.md).
 
 V rámci virtuálního počítače můžete dostávat oznámení o nadcházející údržbě [pomocí Scheduled Events pro Windows](./windows/scheduled-events.md) nebo [Linux](./linux/scheduled-events.md).
 
@@ -41,7 +41,7 @@ Tyto operace údržby, které nevyžadují restart, se v jednu chvíli používa
 
 Tyto typy aktualizací mohou ovlivnit některé aplikace. Když se virtuální počítač migruje za provozu na jiného hostitele, můžou se u některých citlivých úloh Zobrazit mírné snížení výkonu během několika minut, které zavedou až do pozastavení virtuálního počítače. Pokud chcete připravit údržbu virtuálních počítačů a snížit dopad při údržbě Azure, zkuste pro tyto aplikace [použít Scheduled Events pro Windows](./windows/scheduled-events.md) nebo [Linux](./linux/scheduled-events.md) . 
 
-Pro lepší kontrolu nad všemi aktivitami údržby, včetně nulových a znovu spuštěných aktualizací, můžete použít funkci řízení údržby. Musíte použít buď [vyhrazené hostitele Azure](./linux/dedicated-hosts.md) , nebo [izolovaný virtuální počítač](../security/fundamentals/isolation-choices.md). Řízení údržby vám umožní přeskočit všechny aktualizace platforem a použít aktualizace podle vašeho výběru času během 35ho okna. Další informace najdete v tématu [řízení aktualizací pomocí řízení údržby a Azure CLI](maintenance-control.md).
+Pro lepší kontrolu nad všemi aktivitami údržby, včetně nulových a znovu spuštěných aktualizací, můžete použít funkci řízení údržby. Musíte použít buď [vyhrazené hostitele Azure](./dedicated-hosts.md) , nebo [izolovaný virtuální počítač](../security/fundamentals/isolation-choices.md). Řízení údržby vám umožní přeskočit všechny aktualizace platforem a použít aktualizace podle vašeho výběru času během 35ho okna. Další informace najdete v tématu [řízení aktualizací pomocí řízení údržby a Azure CLI](maintenance-control.md).
 
 
 ### <a name="live-migration"></a>Migrace za provozu
@@ -87,7 +87,7 @@ V rámci skupiny dostupnosti jsou jednotlivé virtuální počítače rozloženy
 
 Služby Virtual Machine *Scale Sets* jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě sady identických virtuálních počítačů jako jednoho prostředku. Sada škálování se automaticky nasadí přes UDs, jako jsou virtuální počítače ve skupině dostupnosti. Stejně jako u skupin dostupnosti se při použití sad škálování aktualizuje jenom jeden UD v daném okamžiku během plánované údržby.
 
-Další informace o nastavení virtuálních počítačů pro zajištění vysoké dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů pro Windows](./windows/manage-availability.md) nebo odpovídající článek pro [Linux](./linux/manage-availability.md).
+Další informace o nastavení virtuálních počítačů pro zajištění vysoké dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů pro Windows](./availability.md) nebo odpovídající článek pro [Linux](./availability.md).
 
 #### <a name="availability-zones"></a>Zóny dostupnosti
 
@@ -99,4 +99,4 @@ Každá aktualizace infrastruktury shrnuje zónu podle zóny v rámci jedné obl
 
 ## <a name="next-steps"></a>Další kroky 
 
-Ke správě plánované údržby můžete použít [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) nebo [portál](maintenance-notifications-portal.md) . 
+Ke správě plánované údržby můžete použít [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) nebo [portál](maintenance-notifications-portal.md) .

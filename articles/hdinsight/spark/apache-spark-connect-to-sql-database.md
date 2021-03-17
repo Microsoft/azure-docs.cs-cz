@@ -1,19 +1,16 @@
 ---
 title: Použití Apache Spark ke čtení a zápisu dat do Azure SQL Database
 description: Naučte se, jak nastavit připojení mezi clusterem HDInsight Spark a Azure SQL Database. Čtení dat, zápis dat a streamování dat do databáze SQL
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4d42cedbc5dc20c929703be106e732b4806f3902
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078812"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940611"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do Azure SQL Database
 
@@ -23,7 +20,7 @@ Naučte se, jak připojit cluster Apache Spark v Azure HDInsight pomocí Azure S
 
 * Cluster Azure HDInsight Spark.  Postupujte podle pokynů v tématu [Vytvoření clusteru Apache Spark v HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* Azure SQL Database. Postupujte podle pokynů v tématu [Vytvoření databáze v Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md). Ujistěte se, že jste vytvořili databázi s ukázkovým schématem a daty **AdventureWorksLT** . Také se ujistěte, že jste vytvořili pravidlo brány firewall na úrovni serveru, které umožní IP adrese vašeho klienta přístup k databázi SQL. Pokyny pro přidání pravidla brány firewall jsou k dispozici ve stejném článku. Po vytvoření databáze SQL se ujistěte, že jsou následující hodnoty užitečné. Budete je potřebovat pro připojení k databázi z clusteru Spark.
+* Azure SQL Database Postupujte podle pokynů v tématu [Vytvoření databáze v Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md). Ujistěte se, že jste vytvořili databázi s ukázkovým schématem a daty **AdventureWorksLT** . Také se ujistěte, že jste vytvořili pravidlo brány firewall na úrovni serveru, které umožní IP adrese vašeho klienta přístup k databázi SQL. Pokyny pro přidání pravidla brány firewall jsou k dispozici ve stejném článku. Po vytvoření databáze SQL se ujistěte, že jsou následující hodnoty užitečné. Budete je potřebovat pro připojení k databázi z clusteru Spark.
 
     * Název serveru
     * Název databáze.
@@ -36,20 +33,20 @@ Naučte se, jak připojit cluster Apache Spark v Azure HDInsight pomocí Azure S
 Začněte vytvořením Jupyter Notebook přidruženého ke clusteru Spark. Pomocí tohoto poznámkového bloku spustíte fragmenty kódu používané v tomto článku.
 
 1. Z [Azure Portal](https://portal.azure.com/)otevřete svůj cluster.
-1. Na pravé straně vyberte **Poznámkový blok Jupyter** pod **řídicími panely clusteru** .  Pokud nevidíte **řídicí panely clusteru**, vyberte v nabídce vlevo možnost **Přehled** . Po vyzvání zadejte přihlašovací údaje správce clusteru.
+1. Na pravé straně vyberte **Jupyter notebook** pod **řídicími panely clusteru** .  Pokud nevidíte **řídicí panely clusteru**, vyberte v nabídce vlevo možnost **Přehled** . Po vyzvání zadejte přihlašovací údaje správce clusteru.
 
-    ![Jupyter Poznámkový blok na Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Poznámkový blok Jupyter ve Sparku")
+    ![Jupyter Notebook v Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter Notebook ve Sparku")
 
    > [!NOTE]  
-   > K poznámkovým blokům Jupyter můžete získat přístup také otevřením následující adresy URL v prohlížeči. Nahraďte **název_clusteru** názvem vašeho clusteru:
+   > K Jupyter Notebook v clusteru Spark můžete přistupovat také otevřením následující adresy URL v prohlížeči. Nahraďte **název_clusteru** názvem vašeho clusteru:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. V Jupyter poznámkovém bloku v pravém horním rohu klikněte na **Nový**a pak kliknutím na **Spark** vytvořte Poznámkový blok Scala. Jupyter poznámkové bloky v clusteru HDInsight Spark také poskytují jádro **PySpark** pro aplikace Python2 a jádro **PySpark3** pro aplikace python3. V tomto článku vytvoříme Poznámkový blok Scala.
+1. V Jupyter Notebook v pravém horním rohu klikněte na **Nový** a pak kliknutím na **Spark** vytvořte Poznámkový blok Scala. Jupyter poznámkové bloky v clusteru HDInsight Spark také poskytují jádro **PySpark** pro aplikace Python2 a jádro **PySpark3** pro aplikace python3. V tomto článku vytvoříme Poznámkový blok Scala.
 
-    ![Jádra pro Poznámkový blok Jupyter ve Sparku](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Jádra pro Poznámkový blok Jupyter ve Sparku")
+    ![Jádra pro Jupyter Notebook ve Sparku](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Jádra pro Jupyter Notebook ve Sparku")
 
-    Další informace o jádrech najdete v tématu s popisem [použití jader poznámkových bloků Jupyter s clustery Apache Spark v HDInsight](apache-spark-jupyter-notebook-kernels.md).
+    Další informace o jádrech najdete v tématu [použití Jupyter Notebookch jader s Apache Spark clustery v HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
    > [!NOTE]  
    > V tomto článku používáme jádro Spark (Scala), protože streamování dat z Spark do SQL Database se v současnosti podporuje jenom v Scala a Java. I když čtení z a psaní do SQL může být provedeno pomocí Pythonu, pro zajištění konzistence v tomto článku používáme Scala pro všechny tři operace.
@@ -64,7 +61,7 @@ Nyní můžete začít vytvářet aplikace.
 
 V této části si přečtete data z tabulky (například **tabulky SalesLT. Address**), která existuje v databázi AdventureWorks.
 
-1. V novém poznámkovém bloku Jupyter vložte v buňce kódu následující fragment kódu a nahraďte zástupné hodnoty hodnotami pro vaši databázi.
+1. V nové Jupyter Notebook v buňce kódu vložte následující fragment kódu a nahraďte zástupné hodnoty hodnotami pro vaši databázi.
 
     ```scala
     // Declare the values for your database
@@ -121,7 +118,7 @@ V této části si přečtete data z tabulky (například **tabulky SalesLT. Add
 
 V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoření tabulky v databázi a naplníme je daty. Ukázkový soubor CSV (**HVAC.csv**) je k dispozici na všech clusterech HDInsight na adrese `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` .
 
-1. V novém poznámkovém bloku Jupyter vložte v buňce kódu následující fragment kódu a nahraďte zástupné hodnoty hodnotami pro vaši databázi.
+1. V nové Jupyter Notebook v buňce kódu vložte následující fragment kódu a nahraďte zástupné hodnoty hodnotami pro vaši databázi.
 
     ```scala
     // Declare the values for your database
@@ -172,7 +169,7 @@ V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoře
 
     ![Připojení k SQL Database pomocí SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Připojení k SQL Database pomocí SSMS1")
 
-    b. Z **Průzkumník objektů**rozbalte databázi a uzel tabulky, aby se zobrazila vytvořená tabulka **dbo. TVK** .
+    b. Z **Průzkumník objektů** rozbalte databázi a uzel tabulky, aby se zobrazila vytvořená tabulka **dbo. TVK** .
 
     ![Připojení k SQL Database pomocí SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Připojení k SQL Database pomocí SSMS2")
 
@@ -192,7 +189,7 @@ V této části streamuje data do `hvactable` , které jste vytvořili v předch
     TRUNCATE TABLE [dbo].[hvactable]
     ```
 
-1. Vytvořte nový Poznámkový blok Jupyter v clusteru HDInsight Spark. Do buňky kódu vložte následující fragment kódu a stiskněte klávesu **SHIFT + ENTER**:
+1. Vytvořte nový Jupyter Notebook v clusteru HDInsight Spark. Do buňky kódu vložte následující fragment kódu a stiskněte klávesu **SHIFT + ENTER**:
 
     ```scala
     import org.apache.spark.sql._

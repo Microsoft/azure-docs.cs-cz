@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – optimalizace privátního cloudu CloudSimple pro Oracle RAC
 description: Popisuje postup nasazení nového clusteru a optimalizaci virtuálního počítače pro instalaci a konfiguraci Oracle Real Application Clusters (RAC).
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507663"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899265"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizace privátního cloudu CloudSimple pro instalaci Oracle RAC
 
@@ -50,10 +50,10 @@ V následujícím příkladu se používají disky definované v následující 
 | MŘÍŽKY                                      | Umístění instalace pro software Oracle Grid     | No          |
 | DATABÁZE                                  | Umístění instalace pro software Oracle Database | No          |
 | ORAHOME                                   | Základní umístění pro binární soubory Oracle Database    | No          |
-| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Ano         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Ano         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Ano         |
-| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Ano         |
+| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Yes         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Yes         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Yes         |
+| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Yes         |
 
 ![Konfigurace disku virtuálního počítače Oracle](media/oracle-vmdk.png)
 
@@ -79,7 +79,7 @@ Každý virtuální počítač Oracle je nakonfigurovaný s více disky pro oper
 * Sdílení je nastaveno na **bez sdílení**.
 * Redundance je definována v úložišti pomocí zásad síti vSAN.  
 
-![Konfigurace skupiny datových disků Oracle RAC](media/oracle-vm-os-disks.png)
+![Diagram znázorňující fyzickou konfiguraci disku s operačním systémem Oracle RAC](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>Konfigurace datových disků
 
@@ -148,7 +148,7 @@ Oblast rychlé obnovy (v/v) je systém souborů spravovaný skupinou disků Orac
 * Disky musí být nakonfigurované jako skupina disků ASM.  
 * Redundance ASM je nastavená na **externí** redundanci.
 
-![Konfigurace skupiny hlasovacích disků Oracle RAC](media/oracle-vm-fra-disks.png)
+![Diagram, který zobrazuje konfiguraci skupiny hlasovacích disků Oracle RAC.](media/oracle-vm-fra-disks.png)
 
 ## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>Nasazení clusteru CloudSimple Private Cloud vSphere
 
@@ -174,7 +174,7 @@ zásady síti vSAN definují selhání pro tolerovat a diskové obložení pro d
 3. V nabídce vlevo vyberte **zásady úložiště virtuálního počítače** a pak vyberte **vytvořit zásadu úložiště virtuálního počítače**.
 4. Zadejte smysluplný název zásady a klikněte na **Další**.
 5. V části **Struktura zásad** vyberte **Povolit pravidla pro úložiště síti vSAN** a klikněte na **Další**.
-6. V části **vSAN**  >  **dostupnost** síti vSAN vyberte **žádné** pro odolnost sítě po havárii. Pokud chcete chyby tolerovat, vyberte možnost **zrcadlení RAID** pro požadovaný FTT.
+6. V části   >  **dostupnost** síti vSAN vyberte **žádné** pro odolnost sítě po havárii. Pokud chcete chyby tolerovat, vyberte možnost **zrcadlení RAID** pro požadovaný FTT.
     ![](media/oracle-rac-storage-wizard-vsan.png)Nastavení síti vSAN
 7. V části **Upřesnit** vyberte počet diskových pruhů na jeden objekt. V případě rezervovaného prostoru objektu vyberte **silný zřízený**. Vyberte **Zakázat kontrolní součet objektu**. Klikněte na tlačítko **Další**.
 8. Podle pokynů na obrazovce zobrazte seznam kompatibilních úložišť síti vSAN, zkontrolujte nastavení a dokončete instalaci.
@@ -220,7 +220,7 @@ Oracle používá sdílený disk k ukládání dat, protokolů a souborů protok
 9. Pro sdílení zadejte **Vícenásobný zapisovač**.
 10. V uzlu virtuální zařízení vyberte nový řadič SCSI, který byl vytvořen v kroku 2.
 
-    ![Vytvořit disky na prvním virtuálním počítači](media/oracle-rac-new-hard-disk.png)
+    ![Snímek obrazovky, který zvýrazní pole potřebná k vytvoření disků na prvním virtuálním počítači.](media/oracle-rac-new-hard-disk.png)
 
 Opakujte kroky 2 – 10 pro všechny nové disky požadované pro soubory protokolu Oracle data, protokoly a znovu.
 

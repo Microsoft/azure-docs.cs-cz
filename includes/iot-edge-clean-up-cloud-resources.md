@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 08/10/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: c1e5027b192f32b50af10a2bdfbadfeb123b39ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99dcfa46280c6fc00b27fa43fd6079c4ac32bd3a
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67175123"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704672"
 ---
 ### <a name="delete-azure-resources"></a>Odstranění prostředků Azure 
 
-Odstranění prostředků Azure a skupin prostředků je nevratná akce. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
+Odstranění prostředků Azure a skupin prostředků je nevratná akce. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud Centrum IoT vytvoříte ve stávající skupině prostředků, která obsahuje prostředky, které chcete zachovat, odstraňte jenom samotný prostředek služby IoT Hub, nikoli skupinu prostředků.
 
 Odstranění prostředků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 
 2. Vyberte název skupiny prostředků, která obsahuje vaše testovací prostředky služby IoT Edge. 
 
-3. Projděte si seznam prostředků ve vaší skupině prostředků. Pokud chcete odstranit všechny prostředky, můžete vybrat možnost **Odstranit skupinu prostředků**. Pokud chcete odstranit pouze některé prostředky, můžete na ně kliknout a odstranit je jednotlivě. 
+3. Zkontrolujte seznam prostředků, které jsou obsaženy ve vaší skupině prostředků. Pokud chcete odstranit všechny prostředky, můžete vybrat možnost **Odstranit skupinu prostředků**. Pokud chcete odstranit pouze některé prostředky, můžete na ně kliknout a odstranit je jednotlivě. 

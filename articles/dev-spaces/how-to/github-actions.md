@@ -6,15 +6,17 @@ ms.topic: conceptual
 description: Revize a testování změn z žádosti o přijetí změn přímo ve službě Azure Kubernetes pomocí akcí GitHubu a Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, akce GitHubu, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5e3417f16791b71d53a0eec9263532219c779440
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 37ad621609f5a5631b498e55483e5d16e8ac4472
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212498"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202106"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službě Azure Kubernetes (Preview)
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces poskytuje pracovní postup pomocí akcí GitHubu, který umožňuje testovat změny z žádosti o přijetí změn přímo v AKS před sloučením žádosti o přijetí změn do hlavní větve vašeho úložiště. Spuštění aplikace, která bude kontrolovat změny žádosti o přijetí změn, může zvýšit spolehlivost vývojářů i členů týmu. Tato spuštěná aplikace může také pomáhat členům týmu, jako je, manažerům a návrhářům produktů, tvořit součást procesu revize během počátečních fází vývoje.
 
@@ -28,7 +30,7 @@ V tomto průvodci se naučíte:
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI][azure-cli-installed]
@@ -101,7 +103,7 @@ Přejděte do rozvětvené úložiště a klikněte na *Nastavení*. Na levém b
 > [!NOTE]
 > Všechny tyto tajné kódy používá akce GitHub a jsou nakonfigurované v [. GitHub/Workflows/Bikes. yml][github-action-yaml].
 
-Případně, pokud chcete aktualizovat hlavní prostor po sloučení žádosti o přijetí změn, přidejte *GATEWAY_HOST* tajný klíč, který má formu *<MASTER_SPACE>. brána. <* HOST_SUFFIX>, který v tomto příkladu je *dev.Gateway.fedcab0987.EUS.azds.IO*. Po sloučení změn do hlavní větve ve vašem rozvětvení se spustí další akce, která znovu sestaví a spustí celou aplikaci v hlavním vývojovém prostoru. V tomto příkladu je hlavním místem *vývoj*. Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
+Případně, pokud chcete aktualizovat hlavní prostor po sloučení žádosti o přijetí změn, přidejte *GATEWAY_HOST* tajný klíč, který má formu *<MASTER_SPACE>. brána. <* HOST_SUFFIX>, který v tomto příkladu je *dev.Gateway.fedcab0987.EUS.azds.IO*. Až změny sloučíte do hlavní větve ve větvi, spustí se další akce, která znovu sestaví a spustí celou aplikaci v hlavním vývojovém prostoru. V tomto příkladu je hlavním místem *vývoj*. Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 Kromě toho, pokud chcete, aby se změny v žádosti o přijetí změn spouštěly na místě, aktualizujte *MASTER_SPACE* a tajné klíče *hostitele* . Například pokud vaše aplikace běží ve *vývoji s* podřízeným prostorem pro *vývoj/azureuser1*, aby se žádost o přijetí změn spouštěla v podřízeném prostoru pro *vývoj/azureuser1*:
 
@@ -149,7 +151,7 @@ git push origin bike-images
 
 Po dokončení nahrávání přejděte do rozvětvené úložiště na GitHubu a vytvořte žádost o přijetí změn s *Hlavní* větví ve vašem rozvětvené úložišti jako základní větev v porovnání s větví *Bike-images* .
 
-Po otevření žádosti o přijetí změn přejděte na kartu *Akce* . Ověřte, zda byla spuštěna nová akce a sestavuje službu *Bikes* .
+Po otevření žádosti o získání dat přejděte na kartu *Akce* . Ověřte, že byla spuštěna nová akce a probíhá vytváření služby *Bikes* .
 
 ## <a name="view-the-child-space-with-your-changes"></a>Zobrazení podřízeného prostoru vašimi změnami
 
@@ -175,10 +177,10 @@ Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
 > [!div class="nextstepaction"]
 > [Jak Azure Dev Spaces funguje](../how-dev-spaces-works.md)
 
-[azure-cli-installed]: /cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-installed]: /cli/azure/install-azure-cli
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-acr-show]: /cli/azure/acr#az-acr-show
-[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [bikes-server-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L232-L233
 [bike-sharing-gh]: https://github.com/Azure/dev-spaces/

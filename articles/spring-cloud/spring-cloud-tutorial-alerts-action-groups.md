@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 59791b72272ccd721a61da88d13b973119cef5d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071172"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596148"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Kurz: jak monitorovat prostředky jarní cloudu pomocí výstrah a skupin akcí
+
+**Tento článek se týká:** ✔️ Java ✔️ C #
 
 Výstrahy služby Azure jaře Cloud podporují monitorování prostředků na základě podmínek, jako je dostupné úložiště, rychlost požadavků nebo využití dat. Výstraha pošle oznámení, pokud sazby nebo podmínky splňují definované specifikace.
 
@@ -22,9 +24,9 @@ Pro nastavení kanálu výstrah existují dva kroky:
 1. Nastavte skupinu akcí s akcemi, které se mají provést, když se aktivuje výstraha, například e-mail, SMS, Runbook nebo Webhook. Skupiny akcí lze znovu použít mezi různými výstrahami.
 2. Nastavte pravidla upozornění. Pravidla vážou modely metrik se skupinami akcí na základě cílového prostředku, metriky, podmínky, agregace času atd.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Kromě požadavků na jarní kapacitu Azure postup v tomto kurzu pracuje s nasazenou instancí cloudu pro Azure jaře.  Začněte pomocí [rychlého](spring-cloud-quickstart-launch-app-cli.md) startu.
+Kromě požadavků na jarní kapacitu Azure postup v tomto kurzu pracuje s nasazenou instancí cloudu pro Azure jaře.  Začněte pomocí [rychlého](spring-cloud-quickstart.md) startu.
 
 Následující postupy inicializují **skupinu akcí** a **výstrahu** počínaje možností **výstrahy** v levém navigačním podokně instance jarního cloudu. (Tento postup lze také spustit na stránce **Přehled monitorování** Azure Portal.) 
 
@@ -58,11 +60,11 @@ Na stránce **Přidat skupinu akcí** :
 
 ## <a name="set-up-alert"></a>Nastavit upozornění 
 
-Předchozí kroky vytvořily **skupinu akcí** , která používá e-mail. Můžete také použít oznámení pro telefon, Webhooky, službu Azure Functions atd.  
+Předchozí kroky vytvořily **skupinu akcí** , která používá e-mail. Můžete také použít oznámení pro telefon, Webhooky, službu Azure functions a tak dále. Následující postup nakonfiguruje **výstrahu**.
 
-Chcete-li nakonfigurovat **výstrahu**, přejděte zpět na stránku **výstrahy** a klikněte na možnost **Spravovat pravidla výstrah**.
+1. Přejděte zpět na stránku **výstrahy** a klikněte na **Spravovat pravidla výstrah**.
 
-  ![Definice výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-2.png)
+   ![Definice výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-2.png)
 
 1. Vyberte **prostředek** pro výstrahu.
 
@@ -76,42 +78,42 @@ Chcete-li nakonfigurovat **výstrahu**, přejděte zpět na stránku **výstrahy
 
 1. Vyberte podmínku. V tomto příkladu se používá **procento využití procesoru v systému**.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-1.png)
+   ![Nové pravidlo upozornění na portálu obrazovky – pravidlo 2](media/alerts-action-groups/alerts-3-1.png)
 
 1. Posuňte se dolů na podokno **Konfigurovat logiku signálu** a nastavte **prahovou hodnotu** , která se má monitorovat.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-2.png)
+   ![Nové pravidlo upozornění na portálu snímků obrazovky 3](media/alerts-action-groups/alerts-3-2.png)
 
 1. Klikněte na **Hotovo**.
 
-Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Možnosti metrik portálu User Portal](spring-cloud-concept-metrics.md#user-metrics-options).
+   Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Možnosti metrik portálu User Portal](spring-cloud-concept-metrics.md#user-metrics-options).
 
- V části **Akce**klikněte na **Vybrat skupinu akcí**. V podokně **Akce** vyberte dříve definovanou **skupinu akcí**.
+1. V části **Akce** klikněte na **Vybrat skupinu akcí**. V podokně **Akce** vyberte dříve definovanou **skupinu akcí**.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-3.png) 
+   ![Nové pravidlo upozornění na portálu snímků obrazovky 4](media/alerts-action-groups/alerts-3-3.png) 
 
-1. Posuňte se dolů a v části **Podrobnosti o výstraze**pojmenujte pravidlo upozornění.
+1. Posuňte se dolů a v části **Podrobnosti o výstraze** pojmenujte pravidlo upozornění.
 
 1. Nastavte **závažnost**.
 
 1. Klikněte na **Vytvořit pravidlo upozornění**.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-4.png)
+   ![Nové pravidlo upozornění na portálu snímků obrazovky 5](media/alerts-action-groups/alerts-3-4.png)
 
-Ověřte, zda je povoleno nové pravidlo upozornění.
+1. Ověřte, zda je povoleno nové pravidlo upozornění.
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-4.png)
+   ![Nové pravidlo upozornění na portálu snímků obrazovky 6](media/alerts-action-groups/alerts-4.png)
 
 Pravidlo je také možné vytvořit pomocí stránky **metriky** :
 
-   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-5.png)
+![Nové pravidlo upozornění na portálu snímků obrazovky 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak nastavit výstrahy a skupiny akcí pro aplikaci pro jarní Cloud v Azure. Další informace o skupinách akcí najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Vytváření a správa skupin akcí na webu Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Vytváření a správa skupin akcí na webu Azure Portal](../azure-monitor/alerts/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [Chování výstrah SMS ve skupinách akcí](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+> [Chování výstrah SMS ve skupinách akcí](../azure-monitor/alerts/alerts-sms-behavior.md)

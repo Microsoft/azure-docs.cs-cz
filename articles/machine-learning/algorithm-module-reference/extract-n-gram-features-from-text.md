@@ -1,24 +1,24 @@
 ---
 title: Extrahovat N-gram funkcí z odkazu na modul textu
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul extrakce N-gramů v Azure Machine Learning k zpracování textových dat.
+description: Naučte se používat modul extrakce N-gramů v Návrháři Azure Machine Learning k zpracování textových dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: efe09c1d516b37c23b024e07ae387772fa7e5992
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/08/2019
+ms.openlocfilehash: 37a10d90fa0e277fbe45d9f1377e365cb3d42996
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477608"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861447"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Extrahovat N-gram funkcí z odkazu na modul textu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview). K *zpracování* nestrukturovaných textových dat použijte z modulu text extrakci N-gram funkcí. 
+Tento článek popisuje modul v Návrháři Azure Machine Learning. K *zpracování* nestrukturovaných textových dat použijte z modulu text extrakci N-gram funkcí. 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Konfigurace funkcí extrakce N-gramů z modulu textu
 
@@ -28,7 +28,7 @@ Modul podporuje následující scénáře pro použití slovníku n-gramů:
 
 * [Pomocí existující sady textových funkcí](#use-an-existing-n-gram-dictionary) zpracování volný textový sloupec.
 
-* [Skóre nebo publikování modelu](#score-or-publish-a-model-that-uses-n-grams) , který používá n-gramů.
+* [Skóre nebo nasazení modelu](#build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint) , který používá n-gramů.
 
 ### <a name="create-a-new-n-gram-dictionary"></a>Vytvořit nový slovník n-gramů
 
@@ -83,7 +83,7 @@ Modul podporuje následující scénáře pro použití slovníku n-gramů:
 
 1. Přidejte uloženou datovou sadu, která obsahuje dříve generovaný slovník n-gramů, a připojte ho ke **vstupnímu portu slovníku** . Můžete také propojit výstup **slovníku výsledků** z nadřazené instance extrahovat N-gram funkcí z modulu textu.
 
-1. V části **režim slovníku**v rozevíracím seznamu vyberte možnost aktualizace **jen pro čtení** .
+1. V části **režim slovníku** v rozevíracím seznamu vyberte možnost aktualizace **jen pro čtení** .
 
    Možnost **ReadOnly** reprezentuje vstupní corpus pro vstupní slovník. Místo výpočetní frekvence z nové datové sady textu (na levém vstupu) se použije n-gram závaží ze vstupního slovníku, jak je.
 
@@ -94,17 +94,23 @@ Modul podporuje následující scénáře pro použití slovníku n-gramů:
 
 1.  Odešlete kanál.
 
-### <a name="score-or-publish-a-model-that-uses-n-grams"></a>Skóre nebo publikování modelu, který používá n-gramů
+### <a name="build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint"></a>Vytvoření odvozeného kanálu, který používá n-gramů k nasazení koncového bodu v reálném čase
 
-1.  Zkopírujte **funkce extrakce N-gramů z modulu textu** z školicího toku dat do toku dat bodování.
+Školicí kanál, který obsahuje **funkci Extrakce N-gramů z modelu textu** a **skóre** pro vytvoření předpovědi pro testovací datovou sadu, je sestavený v následující struktuře:
 
-1.  Připojte výstup **slovníku výsledků** z školicího toku dat ke **vstupnímu slovníku** v toku dat bodování.
+:::image type="content" source="./media/module/extract-n-gram-training-pipeline-score-model.png" alt-text="Příklad extrakce školicího kanálu N-gramů" border="true":::
 
-1.  V pracovním postupu bodování upravte funkce extrakce N-gramů z textového modulu a nastavte parametr **režimu slovníku** na **jen pro čtení**. Všechny ostatní ponechte stejné.
+**Režim slovníku** v kruhovém **extrahování funkce N-gramů z modulu textu** je **vytvořený** a **režim slovníku** modulu, který se připojuje k modulu **bodového modelu** , je **jen pro čtení**.
 
-1.  Pokud chcete publikovat kanál, uložte **slovník výsledků** jako datovou sadu.
+Po úspěšném odeslání kanálu školení můžete zaregistrovat výstup modulu s kroužkem jako datovou sadu.
 
-1.  Připojte uloženou datovou sadu k extrakci N-gram funkcí z modulu textu v grafu bodování.
+:::image type="content" source="./media/module/extract-n-gram-output-voc-register-dataset.png" alt-text="registrovat datovou sadu" border="true":::
+
+Pak můžete vytvořit kanál odvození v reálném čase. Po vytvoření kanálu odvození je potřeba upravit kanál odvození ručně, například následujícím způsobem:
+
+:::image type="content" source="./media/module/extract-n-gram-inference-pipeline.png" alt-text="odvození kanálu" border="true":::
+
+Pak odešlete kanál odvození a nasaďte koncový bod v reálném čase.
 
 ## <a name="results"></a>Výsledky
 
@@ -125,7 +131,7 @@ Slovník obsahuje slovník n-gramů s termínem četnosti, která se generují j
 + **DF**: skóre četnosti pro n-gram v původní corpus.
 + **IDF**: inverzní četnosti dokumentů pro n-gram v původní Corpus
 
-Tuto datovou sadu můžete ručně aktualizovat, ale můžete uvést chyby. Příklad:
+Tuto datovou sadu můžete ručně aktualizovat, ale můžete uvést chyby. Například:
 
 * Pokud modul nalezne v vstupním slovníku duplicitní řádky se stejným klíčem, vyvolá se chyba. Ujistěte se, že žádné dva řádky ve slovníku nemají stejné slovo.
 * Vstupní schéma datových sad slovníku se musí přesně shodovat, včetně názvů sloupců a typů sloupců. 

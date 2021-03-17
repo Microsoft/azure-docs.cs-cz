@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 1c3ed6cc97c6fc77083baa915fac2f5530922eac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246042"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948121"
 ---
 Začínáme s klientskou knihovnou Automatické návrhy Bingu pro přejít. Pomocí těchto kroků nainstalujte knihovnu a vyzkoušejte si naše příklady pro základní úlohy.
 
@@ -33,7 +33,7 @@ Začněte používat klientskou knihovnu Automatické návrhy Bingu vytvořením
 ## <a name="create-environment-variables"></a>Vytvoření proměnných prostředí
 
 >[!NOTE]
-> Koncové body prostředků vytvořených po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains).
+> Koncové body prostředků vytvořených po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../../../cognitive-services-custom-subdomains.md).
 
 Pomocí klíče a koncového bodu z prostředku, který jste vytvořili, vytvořte dvě proměnné prostředí pro ověřování:
 <!-- replace the below variable names with the names expected in the code sample.-->
@@ -155,7 +155,7 @@ Tyto ukázky kódu ukazují, jak dokončit základní úlohy pomocí Automatick�
 ### <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE]
-> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)  pro klíč pro automatický návrh Bingu s názvem `BING_AUTOSUGGEST_SUBSCRIPTION_KEY` a jednu pro váš koncový bod s názvem `BING_AUTOSUGGEST_ENDPOINT` .
+> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)  pro klíč pro automatický návrh Bingu s názvem `BING_AUTOSUGGEST_SUBSCRIPTION_KEY` a jednu pro váš koncový bod s názvem `BING_AUTOSUGGEST_ENDPOINT` .
 
 Ve `main()` funkci vytvořte instanci klienta s vaším koncovým bodem a klíčem.
 
@@ -171,7 +171,7 @@ client.Endpoint = endpoint
 
 ### <a name="send-an-api-request"></a>Odeslat žádost o rozhraní API
 
-Ve stejné metodě odešlete dotaz do Bingu pomocí metody [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) klienta. Pak proiterujte odpověď na [návrhy](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) a vytiskněte první návrh.
+Ve stejné metodě odešlete dotaz do Bingu pomocí metody [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) klienta. Pak proiterujte odpověď na [návrhy](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions) a vytiskněte první návrh.
 
 ```Go
 // This should return the query suggestion "xbox."
@@ -220,4 +220,4 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 ## <a name="see-also"></a>Viz také
 
 - [Co jsou Automatické návrhy Bingu?](../../get-suggested-search-terms.md)
-- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

@@ -3,16 +3,17 @@ title: Řešení potíží se službou Azure image Builder
 description: Řešení běžných problémů a chyb při použití služby Azure VM Image Builder Service
 author: cynthn
 ms.author: danis
-ms.date: 08/07/2020
+ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
-ms.subservice: imaging
-ms.openlocfilehash: 754d9324137632b928e67bbe4c67a3e6c72e452a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: f76c3e6c739ae4dd13355d350a01b878e4d4f360
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068130"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666204"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Řešení potíží se službou Azure image Builder
 
@@ -152,11 +153,11 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 Když je sestavení image spuštěné, vytvoří se protokoly a uloží se do účtu úložiště. Azure image Builder vytvoří účet úložiště v dočasné skupině prostředků při vytváření artefaktu šablony obrázku.
 
-Název účtu úložiště používá následující vzor: **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\> **
+Název účtu úložiště používá následující vzor: **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\>**
 
 Například *IT_aibmdi_helloImageTemplateLinux01*.
 
-Vlastní nastavení. účet úložiště můžete zobrazit ve skupině prostředků tak, že vyberete objekty blob **účtu úložiště**  >  **Blobs**  >  `packerlogs` .  Pak vyberte **adresář > přizpůsobení. log**.
+Vlastní nastavení. účet úložiště můžete zobrazit ve skupině prostředků tak, že vyberete objekty blob **účtu úložiště**  >    >  `packerlogs` .  Pak vyberte **adresář > přizpůsobení. log**.
 
 
 ### <a name="understanding-the-customization-log"></a>Princip protokolu přizpůsobení
@@ -209,7 +210,7 @@ Přizpůsobení. log zahrnuje tyto fáze:
     ```
 5. Fáze zrušení zřízení. Azure image Builder přidá skrytého úprav. Tento krok zrušení zřízení zodpovídá za přípravu virtuálního počítače na zrušení zřízení. Spustí nástroj Windows Sysprep (pomocí c:\DeprovisioningScript.ps1) nebo se v systému Linux waagent dezřizování (pomocí/tmp/DeprovisioningScript.sh). 
 
-    Příklad:
+    Například:
     ```text
     PACKER ERR 2020/03/04 23:05:04 [INFO] (telemetry) Starting provisioner powershell
     PACKER ERR 2020/03/04 23:05:04 packer: 2020/03/04 23:05:04 Found command: if( TEST-PATH c:\DeprovisioningScript.ps1 ){cat c:\DeprovisioningScript.ps1} else {echo "Deprovisioning script [c:\DeprovisioningScript.ps1] could not be found. Image build may fail or the VM created from the Image may not boot. Please make sure the deprovisioning script is not accidentally deleted by a Customizer in the Template."}
@@ -247,7 +248,7 @@ Přizpůsobení se nezdařilo.
 
 Přečtěte si protokol a vyhledejte chyby úprav. Hledání *(telemetrie)*. 
 
-Příklad:
+Například:
 ```text
 (telemetry) Starting provisioner windows-update
 (telemetry) ending windows-update
@@ -320,7 +321,7 @@ Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in dis
 
 #### <a name="cause"></a>Příčina
 
-Při čekání na přidání a replikaci image do galerie sdílených imagí (SIG) vypršel časový limit tvůrce imagí. Pokud se bitová kopie vloží do SIG, je možné předpokládat, že sestavení obrázku bylo úspěšné. Celkový proces se ale nezdařil, protože tvůrce imagí čekal na galerii sdílených imagí, aby dokončil replikaci. I když se sestavení nezdařilo, replikace pokračuje. Vlastnosti verze image můžete získat tak, že zkontrolujete *runOutput*distribuce.
+Při čekání na přidání a replikaci image do galerie sdílených imagí (SIG) vypršel časový limit tvůrce imagí. Pokud se bitová kopie vloží do SIG, je možné předpokládat, že sestavení obrázku bylo úspěšné. Celkový proces se ale nezdařil, protože tvůrce imagí čekal na galerii sdílených imagí, aby dokončil replikaci. I když se sestavení nezdařilo, replikace pokračuje. Vlastnosti verze image můžete získat tak, že zkontrolujete *runOutput* distribuce.
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -502,6 +503,28 @@ Příčinou může být problém s časováním z důvodu velikosti virtuálníh
 
 Zvětšete velikost virtuálního počítače. Nebo můžete přidat 60 s PowerShellovým přizpůsobením v režimu spánku, abyste se vyhnuli problémům s časováním.
 
+### <a name="cancelling-builder-after-context-cancellation-context-canceled"></a>Zrušení tvůrce po zrušení kontextu kontextu zrušení
+
+#### <a name="error"></a>Chyba
+```text
+PACKER ERR 2020/03/26 22:11:23 Cancelling builder after context cancellation context canceled
+PACKER OUT Cancelling build after receiving terminated
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling hook after context cancellation context canceled
+..
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling provisioning due to context cancellation: context canceled
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [ERROR] Remote command exited without exit status or exit signal.
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [INFO] RPC endpoint: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] 148974 bytes written for 'stdout'
+PACKER ERR 2020/03/26 22:11:25 [INFO] 0 bytes written for 'stderr'
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC client: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 2300218
+```
+#### <a name="cause"></a>Příčina
+Služba image Builder používá port 22 (Linux) nebo 5986 (Windows) pro připojení k virtuálnímu počítači sestavení, k tomu dochází, když je služba odpojená od virtuálního počítače sestavení během sestavení image. Důvody odpojení se můžou lišit, ale když povolíte nebo nakonfigurujete brány firewall ve skriptu, můžou se výše uvedené porty blokovat.
+
+#### <a name="solution"></a>Řešení
+Projděte si skripty pro změny nebo povolení brány firewall nebo změny v SSH nebo WinRM a zajistěte, aby všechny změny umožňovaly stálé připojení mezi službou a sestavení virtuálního počítače na výše uvedených portech. Další informace o sítích s tvůrcem imagí najdete v [požadavcích](./image-builder-networking.md).
+
 ## <a name="devops-task"></a>Úloha DevOps 
 
 ### <a name="troubleshooting-the-task"></a>Řešení potíží s úlohou
@@ -525,7 +548,7 @@ Přejít na účet úložiště > objekty blob > kontejnery > protokoly.
 ### <a name="troubleshooting-successful-builds"></a>Řešení potíží s úspěšným sestavením
 Může se jednat o některé případy, kdy potřebujete prozkoumat úspěšná sestavení a chcete si prohlédnout protokol. Jak už bylo zmíněno, pokud je sestavení image úspěšné, pracovní skupina prostředků, která obsahuje protokoly, se odstraní v rámci vyčištění. To, co všechno můžete dělat, je ale po vloženém příkazu po vložení přejít do režimu spánku a pak získá protokoly jako pozastavené sestavení. Použijte následující postup:
  
-1. Aktualizujte vložený příkaz a přidejte: write-host/echo "spánek" – to vám umožní vyhledávat v protokolu.
+1. Aktualizujte vložený příkaz a přidejte: Write-Host/echo "spánek" – to vám umožní vyhledávat v protokolu.
 2. Přidejte režim spánku aspoň na 10mins, můžete použít příkaz [Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep)nebo `Sleep` Linux.
 3. K identifikaci umístění protokolu použijte výše uvedenou metodu a pak si nechte protokol stáhnout nebo zkontrolovat, dokud se nedostane do režimu spánku.
 
@@ -564,15 +587,27 @@ Může se jednat o některé případy, kdy potřebujete prozkoumat úspěšná 
 
 Pokud uživatel sestavení nezrušil, byl zrušen uživatelským agentem služby Azure DevOps. V důsledku možností Azure DevOps došlo k nejpravděpodobnějšímu vypršení platnosti 1 hodiny. Pokud používáte privátní projekt a agenta, dostanete 60 minut času sestavení. Pokud sestavení překračuje časový limit, DevOps zruší spuštěnou úlohu.
 
-Další informace o možnostech a omezeních Azure DevOps najdete v tématu [agenti hostované v Microsoftu](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations) .
+Další informace o možnostech a omezeních Azure DevOps najdete v tématu [agenti hostované v Microsoftu](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations) .
  
 #### <a name="solution"></a>Řešení
 
 Můžete hostovat vlastní agenty DevOps nebo se podívat, jak zkrátit čas svého sestavení. Pokud například distribuujete do galerie sdílených imagí, replikujte do jedné oblasti. Pokud chcete replikovat asynchronně. 
+
+### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Pomalé přihlášení Windows: Počkejte prosím, než se instalační program pro moduly Windows nainstaluje.
+
+#### <a name="error"></a>Chyba
+Po vytvoření bitové kopie s Windows 10 pomocí nástroje image Builder vytvořte virtuální počítač z image, budete mít protokol RDP a budete muset počkat minuty při prvním přihlášení, na které vidíte modrou obrazovku s touto zprávou:
+```text
+Please wait for the Windows Modules Installer
+```
+
+#### <a name="solution"></a>Řešení
+Nejprve v sestavení bitové kopie ověřte, že neexistují žádná nevyřízená restartování, a to tak, že jako poslední přizpůsobení přidáte restart systému Windows a všechny instalace softwaru budou dokončeny. Nakonec přidejte možnost [/Mode: VM](/windows-hardware/manufacture/desktop/sysprep-command-line-options) do výchozího nástroje Sysprep, který AIB používá. Další informace najdete v části virtuální počítače vytvořené z imagí AIB se úspěšně nevytvořily > přepsání příkazů.  
+
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>Virtuální počítače vytvořené z imagí AIB se nevytvoří úspěšně.
 
-Ve výchozím *nastavení spouští Azure* image Builder na konci každé fáze přizpůsobení image kód pro stanovení *generalizace* . Generalizace je proces, při kterém je image nastavená tak, aby se znovu použila k vytvoření více virtuálních počítačů, a můžete předat nastavení virtuálního počítače, jako je název hostitele, uživatelské jméno atd. V případě systému Windows spustí Azure image Builder *Nástroj Sysprep*a spustí se pro Linux Azure image Builder `waagent -deprovision` . 
+Ve výchozím *nastavení spouští Azure* image Builder na konci každé fáze přizpůsobení image kód pro stanovení *generalizace* . Generalizace je proces, při kterém je image nastavená tak, aby se znovu použila k vytvoření více virtuálních počítačů, a můžete předat nastavení virtuálního počítače, jako je název hostitele, uživatelské jméno atd. V případě systému Windows spustí Azure image Builder *Nástroj Sysprep* a spustí se pro Linux Azure image Builder `waagent -deprovision` . 
 
 Pro Windows používá Azure image Builder obecný příkaz Sysprep. To však nemusí být vhodné pro každé úspěšné generalizaci Windows. Azure image Builder umožňuje přizpůsobit příkaz Sysprep. Poznámka: Azure image Builder je nástroj pro automatizaci obrazu. Je zodpovědný za úspěšné spuštění příkazu Sysprep. K obnovení obrazu ale můžete potřebovat jiné příkazy nástroje Sysprep. Pro Linux používá Azure image Builder obecný `waagent -deprovision+user` příkaz. Další informace najdete v [dokumentaci k agentovi Microsoft Azure Linux](https://github.com/Azure/WALinuxAgent#command-line-options).
 
@@ -633,11 +668,11 @@ Pokud jste odkazovali na doprovodné materiály a stále nemůžete vyřešit pr
 Výběr produktu případu:
 ```bash
 Product Family: Azure
-Product: Virtual Machine Running Windows
-Support Topic: Management
-Support Subtopic: Issues with Azure Image Builder
+Product: Virtual Machine Running (Window\Linux)
+Support Topic: Azure Features
+Support Subtopic: Azure Image Builder
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Přehled nástroje Azure image Builder](image-builder-overview.md).
+Další informace najdete v tématu [Přehled nástroje Azure image Builder](../image-builder-overview.md).

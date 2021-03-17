@@ -1,7 +1,7 @@
 ---
 title: Konfigurace předvolby směrování pro veřejnou IP adresu pomocí Azure CLI
 titlesuffix: Azure Virtual Network
-description: Naučte se vytvářet veřejné IP adresy s prioritou směrování internetových přenosů.
+description: Naučte se vytvářet veřejné IP adresy s prioritou směrování internetových přenosů pomocí Azure CLI.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,43 +11,33 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 64284b198fc76c219ffe0dfbc57461b587b23130
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2291767c162953f8339fb8cc27e55b96290ef795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504598"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101665949"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Konfigurace předvolby směrování pro veřejnou IP adresu pomocí Azure CLI
 
-V tomto článku se dozvíte, jak nakonfigurovat předvolby směrování prostřednictvím sítě poskytovatele internetových služeb (možnost**Internet** ) pro veřejnou IP adresu pomocí Azure CLI. Po vytvoření veřejné IP adresy ji můžete přidružit k následujícím prostředkům Azure pro příchozí a odchozí provoz do Internetu:
+V tomto článku se dozvíte, jak nakonfigurovat předvolby směrování prostřednictvím sítě poskytovatele internetových služeb (možnost **Internet** ) pro veřejnou IP adresu pomocí Azure CLI. Po vytvoření veřejné IP adresy ji můžete přidružit k následujícím prostředkům Azure pro příchozí a odchozí provoz do Internetu:
 
 * Virtuální počítač
 * Škálovací sada virtuálních počítačů
 * Azure Kubernetes Service (AKS)
 * Internetový nástroj pro vyrovnávání zatížení
 * Application Gateway
-* Brána Azure Firewall
+* Azure Firewall
 
 Ve výchozím nastavení je předvolby směrování pro veřejnou IP adresu nastavená na globální síť Microsoft pro všechny služby Azure a může být přidružená k jakékoli službě Azure.
 
-> [!IMPORTANT]
-> Předvolby směrování jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.49 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
-
-## <a name="register-the-feature-for-your-subscription"></a>Registrace funkce pro vaše předplatné
-Funkce předvolby směrování je aktuálně ve verzi Preview. Zaregistrujte funkci pro vaše předplatné následujícím způsobem:
-```azurecli
-az feature register --namespace Microsoft.Network --name AllowRoutingPreferenceFeature
-```
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.49 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků v **východní USA** oblasti Azure:
@@ -57,7 +47,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 ```
 ## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-Vytvořte veřejnou IP adresu s preferovaným směrováním typu "Internet" pomocí příkazu [AZ Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)s následujícím formátem, jak je uvedeno níže.
+Vytvořte veřejnou IP adresu s preferovaným směrováním typu **Internet** pomocí příkazu [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create)s formátem, jak je uvedeno níže.
 
 Následující příkaz vytvoří novou veřejnou IP adresu s upřednostněním **internetového** směrování v oblasti **východní USA** Azure.
 

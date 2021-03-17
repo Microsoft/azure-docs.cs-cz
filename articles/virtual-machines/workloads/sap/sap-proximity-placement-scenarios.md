@@ -8,33 +8,47 @@ manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/17/2020
+ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7aa71062c86d57cabe8579e13011956137804f74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 924fdef475c43023c69c3006db19cd9a5aa15349
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079787"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669668"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP
 Aplikace SAP založené na architektuře SAP NetWeaver nebo SAP S/4HANA jsou citlivé na latenci sítě mezi aplikační vrstvou SAP a databázovou vrstvou SAP. Tato citlivost je výsledkem většiny obchodních logiky spuštěných v aplikační vrstvě. Vzhledem k tomu, že aplikační vrstva SAP spouští obchodní logiku, vydává dotazy do databázové vrstvy s vysokou frekvencí v poměru tisíc nebo desítky tisíců za sekundu. Ve většině případů je povaha těchto dotazů jednoduchá. Je často možné je spouštět na úrovni databáze za 500 mikrosekund nebo méně.
 
-Čas strávený v síti, který odešle takový dotaz z aplikační vrstvy do databázové vrstvy a získá zpět sadu výsledků, má zásadní dopad na dobu potřebnou k provozování obchodních procesů. Tato citlivost na latenci sítě je důvod, proč potřebujete dosáhnout optimální latence sítě v projektech nasazení SAP. Pokyny k klasifikaci latence sítě najdete v tématu [SAP – poznámka #1100926 – Nejčastější dotazy: výkon sítě](https://launchpad.support.sap.com/#/notes/1100926/E) .
+Čas strávený v síti, který odešle takový dotaz z aplikační vrstvy do databázové vrstvy a získá zpět sadu výsledků, má zásadní dopad na dobu potřebnou k provozování obchodních procesů. Tato citlivost na latenci sítě je důvod, proč možná budete chtít dosáhnout určité maximální latence sítě v projektech nasazení SAP. Pokyny k klasifikaci latence sítě najdete v tématu [SAP – poznámka #1100926 – Nejčastější dotazy: výkon sítě](https://launchpad.support.sap.com/#/notes/1100926/E) .
 
-V mnoha oblastech Azure se dosáhlo množství datových center. Tento nárůst se aktivoval také zavedením Zóny dostupnosti. Zákazníci, zvláště pro systémy s vysokým využitím SAP, navíc používají více speciálních SKU virtuálních počítačů ve skupině M-Series nebo ve velkých instancích HANA. Tyto typy virtuálních počítačů Azure nejsou dostupné ve všech datacentrech v konkrétní oblasti Azure. Z důvodu těchto dvou Tendencies zákazníci narazili na latenci sítě, která není v optimálním rozsahu. V některých případech tato latence vede k zajištění optimálního výkonu svých systémů SAP.
+V mnoha oblastech Azure se dosáhlo množství datových center. Ve stejnou chvíli zákazníci, zejména pro špičkové systémy SAP, používají více speciálních SKU virtuálních počítačů v rodině M nebo Mv2 nebo velkých instancích HANA. Tyto typy virtuálních počítačů Azure nejsou vždycky dostupné ve všech datacentrech, která doplňují oblast Azure. Tyto fakta můžou vytvářet příležitosti pro optimalizaci latence sítě mezi aplikační vrstvou SAP a vrstvou SAP DBMS.
 
-Aby se tyto problémy předešly, Azure nabízí [skupiny umístění pro Proximity](../../linux/co-location.md). Tato nová funkce se už použila k nasazení různých systémů SAP. Omezení pro skupiny umístění blízkosti najdete v článku na začátku tohoto odstavce. Tento článek se zabývá scénáři SAP, ve kterých se můžou používat skupiny umístění v blízkosti Azure.
+Pokud chcete mít možnost optimalizovat latenci sítě, Azure nabízí [skupiny umístění pro Proximity](../../co-location.md). Skupiny umístění pro Proximity se dají použít k vynucení seskupení různých typů virtuálních počítačů do jednoho datového centra Azure, aby se co nejlépe optimalizoval latence sítě mezi různými typy virtuálních počítačů. Při nasazování prvního virtuálního počítače do takové skupiny umístění pro Proximity se virtuální počítač bude vázat na konkrétní datové centrum. Jako odvolání jako u tohoto potenciálního zákazníka, použití konstrukce zavádí i některá omezení:
+
+- Nemůžete předpokládat, že všechny typy virtuálních počítačů Azure jsou dostupné v každé a všech datových centrech Azure. V důsledku toho je možné omezit kombinaci různých typů virtuálních počítačů v jedné skupině umístění blízkosti. Tato omezení se projeví proto, že hostitelský hardware potřebný ke spuštění určitého typu virtuálního počítače nemusí být v datovém centru, na které byla nasazena skupina umístění.
+- Když změníte velikost částí virtuálních počítačů, které jsou v jedné skupině umístění Proximity, nemůžete automaticky předpokládat, že ve všech případech je nový typ virtuálního počítače dostupný ve stejném datovém centru jako ostatní virtuální počítače, které jsou součástí skupiny umístění blízkosti.
+- Když Azure vyřadí hardware z provozu, může vynutit určité virtuální počítače skupiny umístění blízkosti do jiného datacentra Azure. Podrobnosti, které se týkají tohoto případu, najdete v dokumentu [společné umístění prostředků pro lepší latenci](../../co-location.md#planned-maintenance-and-proximity-placement-groups) .  
+
+> [!IMPORTANT]
+> V důsledku potenciálních omezení by se měly používat skupiny umístění blízkosti:
+>
+> - Pouze v případě potřeby
+> - Pouze v případě jednoho systému SAP, nikoli celého systému na šířku nebo kompletního SAP na šířku
+> - Způsob zachování různých typů virtuálních počítačů a počtu virtuálních počítačů v rámci skupiny umístění s blízkostí na minimum
+
+Předpokládejme, že pokud nasadíte virtuální počítače zadáním Zóny dostupnosti a vyberete stejný Zóny dostupnosti, latence sítě mezi těmito virtuálními počítači by měla být dostačující k provozu systémů SAP NetWeaver a S/4HANA, které splňují výkon a propustnost. Tento předpoklad nezávisí na tom, zda je konkrétní zóna sestavena z jednoho nebo více datových center. Jediným důvodem pro použití skupin umístění blízkosti v prostředích nasazení je případ, kdy chcete přidělit virtuální počítače nasazené službou Azure Availability společně s nasazenými virtuálními počítači s více oblastmi.
+
 
 ## <a name="what-are-proximity-placement-groups"></a>Co jsou skupiny umístění pro Proximity? 
-Skupina umístění blízkosti Azure je logická konstrukce. Je-li definována jedna, je svázána s oblastí Azure a skupinou prostředků Azure. Po nasazení virtuálních počítačů se na skupinu umístění blízkosti odkazuje:
+Skupina umístění blízkosti Azure je logická konstrukce. Když je definovaná skupina umístění blízkosti, je svázaná s oblastí Azure a skupinou prostředků Azure. Po nasazení virtuálních počítačů se na skupinu umístění blízkosti odkazuje:
 
-- První virtuální počítač Azure nasazený v datacentru. První virtuální počítač si můžete představit jako "virtuální počítač oboru", který je nasazený v datacentru na základě alokačních algoritmů Azure, které se nakonec kombinují s definicemi uživatelů pro konkrétní zónu dostupnosti.
+- První virtuální počítač Azure nasazený v datacentru. První virtuální počítač si můžete představit jako "obor" virtuálního počítače, který je nasazený v datacentru na základě alokačních algoritmů Azure, které se nakonec kombinují s definicemi uživatelů pro konkrétní zónu dostupnosti.
 - Všechny následné nasazené virtuální počítače, které odkazují na skupinu umístění blízkosti, se umístí na všechny následně nasazené virtuální počítače Azure ve stejném datovém centru jako první virtuální počítač.
 
 > [!NOTE]
@@ -42,18 +56,13 @@ Skupina umístění blízkosti Azure je logická konstrukce. Je-li definována j
 
 Jedna [Skupina prostředků Azure](../../../azure-resource-manager/management/manage-resources-portal.md) může mít přiřazených několik skupin umístění blízkosti. Ale skupina umístění blízkosti se dá přiřadit jenom k jedné skupině prostředků Azure.
 
-Pokud používáte skupiny umístění pro Proximity, pamatujte na tyto skutečnosti:
-
-- Když se zaměříte na optimální výkon pro systém SAP a omezíte si ho na jedno datacentrum Azure pro systém pomocí skupin umístění blízkosti, možná nebudete moct kombinovat všechny typy rodin virtuálních počítačů v rámci skupiny umístění. Tato omezení se projeví proto, že hostitelský hardware potřebný ke spuštění určitého typu virtuálního počítače nemusí být v datovém centru, ve kterém je nasazený virtuální počítač s vymezenou skupinou umístění.
-- Během životního cyklu takového systému SAP může být vynuceno přesunutí systému do jiného datového centra. Tato změna se může vyžadovat, pokud se rozhodnete, že se má vrstva správy na více systémů HANA, například přesunout ze čtyř uzlů na 16 uzlů, a není dostatečná kapacita pro získání dalších 12 virtuálních počítačů typu, který jste použili v datacentru.
-- Z důvodu vyřazení hardwaru může společnost Microsoft vytvořit kapacitu pro typ virtuálního počítače, který jste použili v jiném datovém centru, nikoli tu, kterou jste původně použili. V takovém případě může být nutné přesunout všechny virtuální počítače skupiny umístění blízkosti do jiného datového centra.
 
 ## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>Skupiny umístění pro Proximity se systémy SAP, které používají jenom virtuální počítače Azure
 Většina nasazení systémů SAP NetWeaver a S/4HANA v Azure nepoužívá [velké instance Hana](./hana-overview-architecture.md). Pro nasazení, která nepoužívají velké instance HANA, je důležité zajistit optimální výkon mezi aplikační vrstvou SAP a vrstvou DBMS. Provedete to tak, že pro systém definujete skupinu umístění blízkosti Azure.
 
 Ve většině zákaznických nasazení vytvářejí zákazníci jednu [skupinu prostředků Azure](../../../azure-resource-manager/management/manage-resources-portal.md) pro systémy SAP. V takovém případě existuje vztah 1:1 mezi například skupinou prostředků systému produkčního prostředí ERP a skupinou umístění blízkosti. V jiných případech zákazníci organizují své skupiny prostředků vodorovně a shromažďují všechny produkční systémy v jedné skupině prostředků. V tomto případě budete mít mezi skupinou prostředků vztah 1: n pro produkční systémy SAP a skupiny umístění pro Proximity pro produkční prostředí SAP ERP, SAP BW a tak dále.
 
-Vyhněte se sdružování produkčních nebo neprodukčních systémů SAP do jedné skupiny umístění pro Proximity. Když malý počet systémů SAP nebo systém SAP a některé okolní aplikace potřebují síťovou komunikaci s nízkou latencí, můžete zvážit přesunutí těchto systémů do jedné skupiny umístění pro Proximity. Měli byste se vyhnout sadě systémů, protože čím více systémů rozcházíte do skupiny umístění blízkosti, tím větší je riziko:
+Vyhněte se sdružování produkčních nebo neprodukčních systémů SAP do jedné skupiny umístění pro Proximity. Když malý počet systémů SAP nebo systém SAP a některé okolní aplikace potřebují síťovou komunikaci s nízkou latencí, můžete zvážit přesunutí těchto systémů do jedné skupiny umístění pro Proximity. Vyhněte se systémům systémů, protože čím více systémů rozcházíte do skupiny umístění blízkosti, tím vyšší je pravděpodobnost:
 
 - Vyžadujete typ virtuálního počítače, který se nedá spustit v konkrétním datovém centru, do kterého má skupina umístění blízkosti rozsah.
 - Je možné, že prostředky nestandardních virtuálních počítačů, jako jsou virtuální počítače řady M-Series, by mohly být nedodrženy, když budete potřebovat více, protože do skupiny umístění blízkosti přidáváte software v průběhu času.
@@ -108,7 +117,7 @@ Nasaďte první virtuální počítač do skupiny umístění pro Proximity pomo
 New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppganchorvm" -Location "westus2" -OpenPorts 80,3389 -ProximityPlacementGroup "letsgetclose" -Size "Standard_DS11_v2"
 </code></pre>
 
-Předchozí příkaz nasadí virtuální počítač se systémem Windows. Po úspěšném nasazení tohoto virtuálního počítače se obor Datacenter skupiny umístění blízkosti definuje v oblasti Azure. Všechna následující nasazení virtuálních počítačů, která odkazují na skupinu umístění Proximity, jak je znázorněno v předchozím příkazu, se nasadí ve stejném datovém centru Azure, pokud je možné hostovat typ virtuálního počítače na hardwaru umístěném v tomto datovém centru a k dispozici je kapacita pro tento typ virtuálního počítače.
+Předchozí příkaz nasadí virtuální počítač se systémem Windows. Po úspěšném nasazení tohoto virtuálního počítače se obor Datacenter skupiny umístění blízkosti definuje v oblasti Azure. Všechna další nasazení virtuálních počítačů, která odkazují na skupinu umístění Proximity, jak je znázorněno v předchozím příkazu, se nasadí ve stejném datovém centru Azure, pokud je možné hostovat typ virtuálního počítače na hardwaru umístěném v tomto datovém centru a k dispozici je kapacita pro tento typ virtuálního počítače.
 
 ## <a name="combine-availability-sets-and-availability-zones-with-proximity-placement-groups"></a>Kombinování skupin dostupnosti a Zóny dostupnosti se skupinami umístění pro Proximity
 Jednou z výhod používání Zóny dostupnosti pro nasazení systému SAP je to, že vrstvu aplikace SAP nemůžete nasadit pomocí skupin dostupnosti v rámci konkrétní zóny. Chcete, aby byla vrstva aplikace SAP nasazená ve stejných zónách jako vrstva DBMS. Odkazování na zónu dostupnosti a skupinu dostupnosti, když nasazení jednoho virtuálního počítače není podporované. Dříve jste museli nasadit aplikační vrstvu odkazem na zónu. Ztratili jste schopnost zajistit, aby byly virtuální počítače vrstvy aplikace rozdělené mezi různé domény aktualizace a selhání.
@@ -130,7 +139,7 @@ New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppganchorvm" -Location
 
 Předpokládejme, že nasadíte virtuální počítače centrální služby stejným způsobem jako virtuální počítače s DBMS a odkazují na stejnou zónu nebo zóny a stejné skupiny umístění pro Proximity. V dalším kroku potřebujete vytvořit skupiny dostupnosti, které chcete použít pro aplikační vrstvu systému SAP.
 
-Musíte definovat a vytvořit skupinu umístění blízkosti. Příkaz pro vytvoření sady dostupnosti vyžaduje další odkaz na ID skupiny umístění blízkosti (ne název). ID skupiny umístění blízkosti můžete získat pomocí tohoto příkazu:
+Definujte a vytvořte skupinu umístění blízkosti. Příkaz pro vytvoření sady dostupnosti vyžaduje další odkaz na ID skupiny umístění blízkosti (ne název). ID skupiny umístění blízkosti můžete získat pomocí tohoto příkazu:
 
 <pre><code>
 Get-AzProximityPlacementGroup -ResourceGroupName "myfirstppgexercise" -Name "letsgetclose"
@@ -156,7 +165,7 @@ Výsledek tohoto nasazení:
 > Vzhledem k tomu, že nasadíte jeden virtuální počítač s DBMS do jedné zóny a druhý virtuální počítač DBMS do jiné zóny, abyste vytvořili konfiguraci s vysokou dostupností, budete pro každou zónu potřebovat jinou skupinu umístění blízkosti. Totéž platí pro všechny skupiny dostupnosti, které používáte.
 
 ## <a name="move-an-existing-system-into-proximity-placement-groups"></a>Přesunout existující systém do skupin umístění pro Proximity
-Pokud již máte nasazené systémy SAP, možná budete chtít optimalizovat latenci sítě některých důležitých systémů a umístit vrstvu aplikace a vrstvu DBMS do stejného datacentra. Pokud chcete přesunout virtuální počítače s kompletní sadou dostupnosti Azure do existující skupiny umístění s blízkými místy, která už je vymezená, musíte vypnout všechny virtuální počítače skupiny dostupnosti a přiřadit skupinu dostupnosti k existující skupině umístění blízkosti prostřednictvím Azure Portal, PowerShellu nebo rozhraní příkazového řádku. Pokud chcete přesunout virtuální počítač, který není součástí skupiny dostupnosti, do existující skupiny umístění pro Proximity, stačí virtuální počítač vypnout a přiřadit k existující skupině umístění blízkosti. 
+Pokud již máte nasazené systémy SAP, možná budete chtít optimalizovat latenci sítě některých důležitých systémů a umístit vrstvu aplikace a vrstvu DBMS do stejného datacentra. Pokud chcete přesunout virtuální počítače s kompletní skupinou dostupnosti Azure do existující skupiny umístění blízkosti, která už je vymezená, musíte vypnout všechny virtuální počítače skupiny dostupnosti a přiřadit skupinu dostupnosti k existující skupině umístění blízkosti prostřednictvím Azure Portal, PowerShellu nebo rozhraní příkazového řádku. Pokud chcete přesunout virtuální počítač, který není součástí skupiny dostupnosti, do existující skupiny umístění blízkosti, stačí vypnout virtuální počítač a přiřadit ho k existující skupině umístění blízkosti. 
 
 
 ## <a name="next-steps"></a>Další kroky

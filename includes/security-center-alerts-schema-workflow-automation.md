@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
-ms.openlocfilehash: 0b6864c3304b86e80549297fc073a2e387000d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80272672"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91401113"
 ---
 ```json
 {
@@ -58,7 +58,7 @@ ms.locfileid: "80272672"
 
 ### <a name="the-data-model-of-the-schema"></a>Datový model schématu
 
-|Pole|Datový typ|Description|
+|Pole|Datový typ|Popis|
 |----|----|----|
 |**AlertDisplayName**|Řetězec|Zobrazovaný název výstrahy.|
 |**AlertType**|Řetězec|Typ výstrahy Výstrahy stejného typu by měly mít stejnou hodnotu. Toto pole je řetězec s klíčem, který představuje typ výstrahy, nikoli instanci výstrahy. Všechny instance výstrahy ze stejné logiky detekce a analytiky by měly mít stejnou hodnotu jako typ výstrahy.|
@@ -67,10 +67,10 @@ ms.locfileid: "80272672"
 |**EndTimeUtc**|DateTime|Čas poslední události nebo aktivity obsažené v upozornění.  Pole by měl být řetězec, který odpovídá formátu ISO8601, včetně informací o časovém pásmu UTC.|
 |**Entity**|IEnumerable (IEntity)|Seznam entit souvisejících s výstrahou. Tento seznam může obsahovat různé entity různých typů. Typ entity může být libovolný z typů definovaných v části Entities. Entity, které nejsou v seznamu níže, je možné také odeslat, ale není zaručeno, že budou zpracovány (výstraha nebude při ověřování u nových typů entit neúspěšná).|
 |**ExtendedProperties**|Dictionary (String; String)|Poskytovatelé můžou (volitelně) zahrnovat vlastní pole.|
-|**Úmysl**|Výčet|Záměr související s dezaktivačním řetězem za výstrahou. Seznam podporovaných hodnot a vysvětlení podporovaných záměrů dezaktivačního řetězu Azure Security Center naleznete v tématu [záměry](../articles/security-center/alerts-reference.md#intentions).<br/>Toto pole může obsahovat více hodnot (oddělených čárkami).|
+|**Záměr**|Výčet|Záměr související s dezaktivačním řetězem za výstrahou. Seznam podporovaných hodnot a vysvětlení podporovaných záměrů dezaktivačního řetězu Azure Security Center naleznete v tématu [záměry](../articles/security-center/alerts-reference.md#intentions).<br/>Toto pole může obsahovat více hodnot (oddělených čárkami).|
 |**Incident**|Logická hodnota|Toto pole určuje, zda je výstraha incidentem (složené seskupení několika výstrah) nebo jedinou výstrahou. Výchozí hodnota pro pole je false (to znamená, že se jedná o jedinou výstrahu).|
 |**ProcessingEndTime**|DateTime|Čas, kdy byla výstraha přístupná koncovému uživateli v původním produktu, který tuto výstrahu zachovává.|
-|**NázevVýrobku**|Řetězec|Název produktu, který publikoval toto upozornění (Azure Security Center, služby Azure ATP, ATP v programu Microsoft Defender, O365 ATP, MCAS atd.).|
+|**NázevVýrobku**|Řetězec|Název produktu, který publikoval toto upozornění (Azure Security Center, Azure ATP, Microsoft Defender ATP, MCAS atd.).|
 |**RemediationSteps**|Seznamu<String>|Položky ručních akcí, které se mají provést k nápravě výstrahy|
 |**ResourceIdentifiers**|Seznam (identifikátory prostředků)|Identifikátory prostředků pro tuto výstrahu, které se dají použít k přesměrování výstrahy do správné skupiny expozice produktů (tenant, pracovní prostor, předplatné atd.). Pro každou výstrahu může existovat více identifikátorů různého typu.|
 |**Závažnost**|Výčet|Závažnost výstrahy, jak je hlášena zprostředkovatelem. Možné hodnoty: informativní, nízká, střední a vysoká.|

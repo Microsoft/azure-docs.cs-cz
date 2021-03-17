@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9104fb4598eb62ed96d0b21734053fa118b5237
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203244"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120278"
 ---
 # <a name="stringcollection-claims-transformations"></a>Transformace deklarací řetězcové deklarace
 
@@ -31,7 +31,7 @@ Přidá deklaraci identity řetězce do nové deklarace identitycollection řet�
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | položka | řetězec | Deklarace ClaimType, která se má přidat do výstupní deklarace |
-| InputClaim |  – kolekce | Třída StringCollection | Volitelné Je-li tento parametr zadán, transformace deklarací zkopíruje položky z této kolekce a přidá položku na konec deklarace výstupní kolekce. |
+| InputClaim |  – kolekce | Třída StringCollection | Kolekce řetězců, která se má přidat do výstupní deklarace Pokud kolekce obsahuje položky, transformace deklarací zkopíruje položky a přidá položku na konec deklarace výstupní kolekce. |
 | OutputClaim |  – kolekce | Třída StringCollection | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, s hodnotou zadanou ve vstupní deklaraci identity. |
 
 Tuto transformaci deklarací použijte k přidání řetězce do nové nebo existující řetězcové. Běžně se používá v technickém profilu **AAD-UserWriteUsingAlternativeSecurityId** . Před vytvořením nového účtu sociální sítě **CreateOtherMailsFromEmail** transformuje deklarace ClaimType a přidá hodnotu do **otherMails** ClaimType.
@@ -64,7 +64,7 @@ Přidá řetězcový parametr do nové deklarace identitycollection řetězcecol
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim |  – kolekce | Třída StringCollection | Volitelné Je-li tento parametr zadán, transformace deklarací zkopíruje položky z této kolekce a přidá položku na konec deklarace výstupní kolekce. |
+| InputClaim |  – kolekce | Třída StringCollection | Kolekce řetězců, která se má přidat do výstupní deklarace Pokud kolekce obsahuje položky, transformace deklarací zkopíruje položky a přidá položku na konec deklarace výstupní kolekce. |
 | InputParameter | položka | řetězec | Hodnota, která se má přidat do výstupní deklarace |
 | OutputClaim |  – kolekce | Třída StringCollection | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, s hodnotou zadanou ve vstupním parametru. |
 
@@ -125,14 +125,14 @@ Následující příklad přečte deklaraci identity **otherMails** a vrátí pr
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
-Zkontroluje, jestli typ deklarace identitycollection typu StringCollection obsahuje element.
+Kontroluje, zda typ deklarace identity objektu StringCollection obsahuje element.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | Třída StringCollection | Typ deklarace, který má být prohledán. |
 |InputParameter|položka|řetězec|Hodnota, která se má hledat|
 |InputParameter|ignoreCase|řetězec|Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců.|
-| OutputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. Logický indikátor, pokud kolekce obsahuje takový řetězec |
+| OutputClaim | outputClaim | boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. Logický indikátor, pokud kolekce obsahuje takový řetězec |
 
 Následující příklad ověří, zda `roles` typ deklarace StringCollection obsahuje hodnotu **admin**.
 
@@ -168,7 +168,7 @@ Zkontroluje, jestli typ deklarace identitycollection typu StringCollection obsah
 | InputClaim |  – kolekce | Třída StringCollection | Typ deklarace, který má být prohledán. |
 | InputClaim | položka|řetězec| Typ deklarace identity, který obsahuje hledanou hodnotu.|
 |InputParameter|ignoreCase|řetězec|Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců.|
-| OutputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. Logický indikátor, pokud kolekce obsahuje takový řetězec |
+| OutputClaim | outputClaim | boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. Logický indikátor, pokud kolekce obsahuje takový řetězec |
 
 Následující příklad ověří, zda `roles` typ deklarace StringCollection obsahuje hodnotu `role` typu deklarace identity.
 

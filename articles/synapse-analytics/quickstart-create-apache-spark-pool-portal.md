@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Vytvoření fondu Apache Spark pomocí Azure Portal'
-description: Pomocí Azure Portal podle kroků v této příručce vytvořte nový fond Apache Spark.
+title: 'Rychlý Start: Vytvoření fondu Apache Spark bez serveru pomocí Azure Portal'
+description: Pomocí pokynů v této příručce vytvořte fond Apache Spark bez serveru pomocí Azure Portal.
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,15 +8,15 @@ ms.topic: quickstart
 ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0930b7cb7b98874e20f070763a7ec50a6b4f3ef0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006071"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461610"
 ---
-# <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření nového fondu Apache Spark pomocí Azure Portal
+# <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření nového fondu Apache Spark bez serveru pomocí Azure Portal
 
 Azure synapse Analytics nabízí různé analytické moduly, které vám pomůžou ingestovat, transformovat, modelovat, analyzovat a distribuovat data. Fond Apache Spark nabízí Open Source funkce pro výpočet velkých objemů dat. Po vytvoření fondu Apache Spark v pracovním prostoru synapse se data dají načíst, namodelovat, zpracovávat a distribuovat pro rychlejší analytické poznatky.
 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Přejděte do pracovního prostoru synapse. 
 1. Přejděte do pracovního prostoru synapse, kde se vytvoří fond Apache Spark zadáním názvu služby (nebo názvu prostředku přímo) do panelu hledání.
@@ -62,7 +62,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com/).
     > Všimněte si, že existují určitá omezení pro názvy, které mohou fondy Apache Spark použít. Názvy musí obsahovat jenom písmena nebo číslice, musí být delší než 15 znaků, musí začínat písmenem, nesmí obsahovat vyhrazená slova a být v pracovním prostoru jedinečné.
 
 3. Vyberte **Další: Další nastavení** a zkontrolujte výchozí nastavení. Neměňte žádná výchozí nastavení.
-    ![Apache Spark fond vytváření toku – karta Další nastavení.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
+    ![Snímek obrazovky zobrazující stránku vytvořit fond Apache Spark s vybranou kartou Další nastavení.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
 
 4. Vyberte **Další: značky**. Nepřidávejte žádné značky.
     ![Apache Spark fond vytváření toku – karta Další nastavení.](media/quickstart-create-apache-spark-pool/create-spark-pool-03-tags.png)
@@ -73,7 +73,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com/).
     ![Apache Spark fond vytvoření toku – karta nastavení – přezkoumání.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-05.png)
 
 7. V tomto okamžiku se spustí tok zřizování prostředků, který indikuje, že je celý.
-    ![Vytvoření fondu Apache Sparkho toku – zřizování prostředků](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
+    ![Snímek obrazovky zobrazující stránku "Přehled" se zobrazenou zprávou "vaše nasazení je dokončeno".](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
 
 8. Po dokončení zřizování se navigace zpátky do pracovního prostoru zobrazí novou položku pro nově vytvořený fond Apache Spark.
     ![Vytvoření fondu Apache Sparkho toku – zřizování prostředků](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-07.png)
@@ -99,4 +99,4 @@ Pokud chcete fond Apache Spark odstranit, postupujte takto:
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace najdete v tématu [rychlý Start: vytvoření poznámkového bloku Apache Spark](quickstart-apache-spark-notebook.md).
-- Další informace najdete v tématu [rychlý Start: vytvoření synapse fondu SQL pomocí Azure Portal](quickstart-create-sql-pool-portal.md).
+- Další informace najdete v tématu [rychlý Start: vytvoření vyhrazeného fondu SQL pomocí Azure Portal](quickstart-create-sql-pool-portal.md).

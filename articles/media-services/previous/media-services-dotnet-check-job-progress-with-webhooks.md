@@ -3,7 +3,7 @@ title: Použití webhooků Azure k monitorování oznámení úlohy Media Servic
 description: Naučte se používat Webhooky Azure k monitorování oznámení úloh Media Services. Ukázka kódu je zapsána v jazyce C# a používá sadu SDK Media Services pro .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a61fe157-81b1-45c1-89f2-224b7ef55869
@@ -12,19 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 0a82050bef36e139c122ea97f777fb5cb1906974
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5ae1bdfeeffdb904ba80ed42919e4f51411871c3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052969"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016147"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití webhooků Azure k monitorování oznámení úlohy Media Services pomocí .NET 
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití webhooků Azure k monitorování oznámení úlohy Media Services pomocí .NET
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 Když spouštíte úlohy, často potřebujete způsob, jak sledovat průběh úloh. Oznámení o úlohách Media Services můžete sledovat pomocí webhooků Azure nebo [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md). Tento článek ukazuje, jak pracovat s Webhooky.
 
@@ -42,7 +45,7 @@ V tomto článku se dozvíte, jak
 
 Můžete najít Definice různých Media Services .NET Azure Functions (včetně toho, co je uvedeno v tomto článku) [zde](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kurzu potřebujete následující:
 
@@ -61,7 +64,7 @@ Při vývoji Media Servicesch funkcí je užitečné přidat proměnné prostře
 
 Oddíl [nastavení aplikace](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) definuje parametry, které se používají ve Webhooku definovaném v tomto článku. Do nastavení aplikace přidejte také následující parametry. 
 
-|Název|Definice|Příklad| 
+|Name|Definice|Příklad| 
 |---|---|---|
 |SigningKey |Podpisový klíč.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Adresa koncového bodu Webhooku. Po vytvoření funkce Webhooku můžete zkopírovat adresu URL z odkazu **získat adresu URL funkce** . | https: \/ /juliakofuncapp.azurewebsites.NET/API/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|

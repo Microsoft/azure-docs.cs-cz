@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 36d74a8819285c5eb5fb0367a2b32ae299ae6c8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084309"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89003622"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Doprovodné materiály k architektuře nabízení v podnicích
 
@@ -58,7 +59,7 @@ Klíčový kámen v tomto diagramu architektury je Azure Service Bus, který pos
 
 ## <a name="sample"></a>Ukázka
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářeními & kroky konfigurace:
 
@@ -89,7 +90,7 @@ Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářen
     }
     ```
 
-    c. `CreateTopic`slouží k vytvoření Service Busho tématu.
+    c. `CreateTopic` slouží k vytvoření Service Busho tématu.
 
     ```csharp
     public static void CreateTopic(string connectionString)
@@ -106,7 +107,7 @@ Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářen
     }
     ```
 
-    d. `SendMessage`slouží k odeslání zpráv do tohoto Service Bus tématu. Tento kód jednoduše pošle do tématu sadu náhodných zpráv pro účely ukázky. Obvykle existuje systém back-end, který odesílá zprávy, když dojde k události.
+    d. `SendMessage` slouží k odeslání zpráv do tohoto Service Bus tématu. Tento kód jednoduše pošle do tématu sadu náhodných zpráv pro účely ukázky. Obvykle existuje systém back-end, který odesílá zprávy, když dojde k události.
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -158,7 +159,7 @@ Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářen
     }
     ```
 
-    c. `CreateSubscription`slouží k vytvoření předplatného Service Bus pro téma, kde back-end systém odesílá zprávy. V závislosti na obchodním scénáři Tato součást vytvoří jedno nebo více předplatných odpovídajících tématům (například některé můžou přijímat zprávy ze systému HR, některé z finančních systémů a tak dále).
+    c. `CreateSubscription` slouží k vytvoření předplatného Service Bus pro téma, kde back-end systém odesílá zprávy. V závislosti na obchodním scénáři Tato součást vytvoří jedno nebo více předplatných odpovídajících tématům (například některé můžou přijímat zprávy ze systému HR, některé z finančních systémů a tak dále).
 
     ```csharp
     static void CreateSubscription(string connectionString)
@@ -174,7 +175,7 @@ Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářen
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification`se používá ke čtení zprávy z tématu pomocí svého předplatného, a pokud je čtení úspěšné, pak se vytvoří oznámení (ve vzorovém scénáři je nativní oznámení systému Windows), které se odešle do mobilní aplikace pomocí Azure Notification Hubs.
+    d. `ReceiveMessageAndSendNotification` se používá ke čtení zprávy z tématu pomocí svého předplatného, a pokud je čtení úspěšné, pak se vytvoří oznámení (ve vzorovém scénáři je nativní oznámení systému Windows), které se odešle do mobilní aplikace pomocí Azure Notification Hubs.
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)

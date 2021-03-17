@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 81dc3a4f55b214ea6ca7ad0388e57f4b4fdc7124
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1e6cd222c9ee8f40f81d4db3750956e8e698e3e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546470"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607665"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TextMagic
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat TextMagic s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TextMagic svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -90,12 +90,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace TextMagic několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name |   Zdrojový atribut| Obor názvů  |
+    | Název |   Zdrojový atribut| Obor názvů  |
     | --------------- | --------------- | --------------- |
     | company | User. CompanyName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | firstName               | User. křestní jméno |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | lastName            | User. příjmení |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Android               | User. telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName | User. křestní jméno |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName | User. příjmení |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Android | User. telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -109,25 +109,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k TextMagic.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **TextMagic**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -149,11 +149,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. V části uživatelské jméno vyberte **Nastavení účtu** .
 
-    ![Konfigurace TextMagic](./media/textmagic-tutorial/config1.png)
+    ![Snímek obrazovky zobrazuje nastavení účtu vybrané od uživatele.](./media/textmagic-tutorial/config1.png)
 
-5. Klikněte na kartu jednotného **přihlašování (SSO)** a vyplňte následující pole:  
+5. Klikněte na kartu **jednotné Sign-On (SSO)** a vyplňte následující pole:  
 
-    ![Konfigurace TextMagic](./media/textmagic-tutorial/config2.png)
+    ![Snímek obrazovky zobrazuje jednu kartu Sign-On, kde můžete zadat hodnoty, které jsou popsány.](./media/textmagic-tutorial/config2.png)
 
     a. V části **ID entity zprostředkovatele identity:** TextBox vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
 
@@ -174,15 +174,14 @@ V této části není žádná položka akce.
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici TextMagic, měli byste se automaticky přihlásit k TextMagic, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici TextMagic, měli byste se automaticky přihlásit k TextMagic, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si TextMagic s Azure AD](https://aad.portal.azure.com/)
-

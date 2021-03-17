@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: ff12f8857a7977226f836ec0418f74fb29e02906
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 485b14f85d68290c5447c885b9bc4974318f7952
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075110"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103726"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure PowerShell
 
@@ -33,9 +34,9 @@ Naučte se, jak pomocí Azure PowerShell vytvořit účet Azure Data Lake Storag
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0 nebo vyšší**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/).
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
-Tento článek používá jednodušší přístup k ověřování s Data Lake Storage Gen1, kde se zobrazí výzva k zadání přihlašovacích údajů k účtu Azure. Úroveň přístupu k účtu Data Lake Storage Gen1 a systému souborů se pak řídí úrovní přístupu přihlášeného uživatele. Existují však i další přístupy k ověřování pomocí Data Lake Storage Gen1, což jsou ověřování koncového uživatele nebo ověřování služba-služba. Pokyny a další informace o ověřování najdete v tématu [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Ověřování služba-služba](data-lake-store-authenticate-using-active-directory.md).
+Tento článek používá jednodušší přístup k ověřování s Data Lake Storage Gen1, kde se zobrazí výzva k zadání přihlašovacích údajů k účtu Azure. Úroveň přístupu k účtu Data Lake Storage Gen1 a systému souborů se pak řídí úrovní přístupu přihlášeného uživatele. Existují však i další přístupy k ověřování pomocí Data Lake Storage Gen1, což jsou ověřování koncového uživatele nebo ověřování služba-služba. Pokyny a další informace o ověřování najdete v tématu [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Ověřování služba-služba](./data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Vytvoření účtu Data Lake Storage Gen1
 

@@ -3,19 +3,20 @@ title: Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 titleSuffix: Azure Cognitive Services
 description: Instalace a spuštění kontejnerů řeči. Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Převod textu na řeč převede vstupní text na syntetizované řeč podobné člověku.
 services: cognitive-services
-author: aahill
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/24/2020
-ms.author: aahi
-ms.openlocfilehash: 10a75d19b7fb134b8e7498c422742e00f6475da5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 03/11/2021
+ms.author: trbye
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690200"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573740"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 
@@ -42,7 +43,7 @@ Kromě toho jsme představili spustitelné soubory pro počítače se sadou inst
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Nakonec můžete nastavit počet dekodérů, které chcete v *jednom* kontejneru, pomocí `DECODER MAX_COUNT` proměnné. Proto byste měli začít s vaší jednotkou SKU (procesor/paměť) a můžeme navrhnout, jak to máme nejlépe. Skvělý výchozí bod odkazuje na Doporučené specifikace prostředků hostitelského počítače.
+Pomocí proměnné můžete nastavit počet dekodérů, které chcete v *jednom* kontejneru `DECODER MAX_COUNT` . Proto byste měli začít s vaší jednotkou SKU (procesor/paměť) a můžeme navrhnout, jak to máme nejlépe. Skvělý výchozí bod odkazuje na Doporučené specifikace prostředků hostitelského počítače.
 
 <br>
 </details>
@@ -97,7 +98,7 @@ Náklady na údržbu placené Microsoftu závisí na úrovni služby a obsahu sl
 
 **Odpověď:** V `speech_recognition_language=<YOUR_LANGUAGE>` případě, že klient používá klienta, musí být explicitně nakonfigurován v žádosti.
 
-Příklad:
+Například:
 
 ```python
 if not recognize_once(
@@ -168,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Odpověď 2:** V požadavku musíte zadat správný název hlasu, což rozlišuje velká a malá písmena. Přečtěte si úplné mapování názvu služby. Je nutné použít `en-US-JessaRUS` , protože není `en-US-JessaNeural` nyní k dispozici ve verzi kontejneru převodu textu na řeč.
+**Odpověď 2:** V požadavku musíte zadat správný název hlasu, což rozlišuje velká a malá písmena. Přečtěte si úplné mapování názvu služby.
 
 **Chyba 3:**
 
@@ -291,8 +292,8 @@ Mohli byste vám pomáhat s plněním následujících metrik testu, včetně to
 
 | Koncový bod                                                | Funkční test                                                   | Sada SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Ano      |
-| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Ano | Ne       |
+| `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Yes      |
+| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Yes | No       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | Koncový bod Prem Interactive v1 WebSocket v Cognitive Services  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | Koncový bod WebSocket v Prem konverzaci v1 služby vnímání |     |          |
 
@@ -309,6 +310,8 @@ Pro váš kód nastavte koncový bod na `host:port` /Speech/Recognition/Interact
 
 Různé režimy najdete v tématu režimy řeči – viz níže:
 
+## <a name="speech-modes---interactive-conversation-dictation"></a>Režimy řeči – interaktivní, konverzace, diktování
+
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
 Správná Oprava se koná v sadě SDK 1,8, která má podporu on-Prem (vybírá správný koncový bod, takže nebudeme se od online služby lišit). Do té doby existuje ukázka pro průběžné rozpoznávání, proč na ni neodkazujeme?
@@ -323,7 +326,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>Jaký režim mám použít pro různé zvukové soubory?</b>
 </summary>
 
-**Odpověď:** Tady je [rychlý Start s použitím Pythonu](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python). Další jazyky, které jsou propojené na webu Docs, najdete v části.
+**Odpověď:** Tady je [rychlý Start s použitím Pythonu](./get-started-speech-to-text.md?pivots=programming-language-python). Další jazyky, které jsou propojené na webu Docs, najdete v části.
 
 Jenom pro objasnění interaktivních, konverzací a diktování; Toto je pokročilý způsob určení konkrétního způsobu, jakým bude naše služba zpracovávat požadavky na řeč. Pro kontejnery on-Prem je ale nutné zadat úplný identifikátor URI (protože zahrnuje místní počítač), proto tyto informace nedošlo k úniku z abstrakce. Spolupracujeme s týmem sady SDK, aby bylo možné ho v budoucnu využít.
 
@@ -341,20 +344,6 @@ Jenom pro objasnění interaktivních, konverzací a diktování; Toto je pokro�
 - Pro MIC se bude nacházet v čase 1x v reálném čase. Celkové využití by mělo být v přibližně 1 jádru pro jedno rozpoznávání.
 
 To se dá ověřit z protokolů Docker. Ve skutečnosti vypíšeme řádek s údaji o relaci a frázi/utterance, který obsahuje čísla ve formátu RTF.
-
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Je běžné rozdělit zvukové soubory do Chucks pro použití kontejneru řeči?</b>
-</summary>
-
-V mém aktuálním plánu si můžete vzít existující zvukový soubor a rozdělit ho do 10 sekund bloků dat a odeslat je prostřednictvím kontejneru. Je to přijatelný scénář?  Existuje lepší způsob, jak zpracovat větší zvukové soubory pomocí kontejneru?
-
-**Odpověď:** Stačí použít sadu Speech SDK a dát jí soubor, který bude mít správnou věc. Proč potřebujete soubor zablokovat?
-
 
 <br>
 </details>
@@ -482,6 +471,16 @@ Content-Length: 0
 <br>
 </details>
 
+
+<details>
+<summary>
+<b> Proč je kontejner spuštěn jako uživatel, který není kořenový? K jakým problémům může docházet z tohoto důvodu?</b>
+</summary>
+
+**Odpověď:** Všimněte si, že výchozí uživatel uvnitř kontejneru je uživatel, který není kořenový. To poskytuje ochranu proti procesům, které se započítávají do kontejneru a získávají povýšená oprávnění na uzlu hostitele. Ve výchozím nastavení některé platformy, jako je třeba kontejnerová platforma OpenShift, to již provede spuštěním kontejnerů pomocí libovolného přiřazeného ID uživatele. U těchto platforem bude uživatel, který není kořenový, potřebovat oprávnění k zápisu do libovolného externě mapovaného svazku, který vyžaduje zápis. Například složka protokolování nebo složka pro stažení vlastního modelu.
+<br>
+</details>
+
 <details>
 <summary>
 <b>Proč se při používání služby Speech-to-text zobrazuje tato chyba?</b>
@@ -548,6 +547,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 
 **Odpověď:** Existují tři koncové body kontejneru řeči pro různá použití, jsou definovány jako režimy řeči – viz níže:
 
+## <a name="speech-modes"></a>Režimy řeči
+
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
 Jsou určené pro různé účely a jsou používány odlišně.
@@ -562,11 +563,11 @@ V jazyce C# Chcete-li povolit diktování, volejte `SpeechConfig.EnableDictation
 ### <a name="fromendpoint-apis"></a>`FromEndpoint` Třídy
 | Jazyk | Podrobnosti rozhraní API |
 |----------|:------------|
-| C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-dotnet" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-java-stable" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | JavaScript | V současné době není podporována, ani není plánována. |
 
 <br>
@@ -583,11 +584,11 @@ V jazyce C# Chcete-li povolit diktování, volejte `SpeechConfig.EnableDictation
 
 | Jazyk | Podrobnosti rozhraní API |
 |--|:-|
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-java-stable" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | JavaScript | Aktuálně se nepodporuje. |
 
 > Parametry: hostitel (povinný), klíč předplatného (volitelné, pokud můžete službu použít bez ní).

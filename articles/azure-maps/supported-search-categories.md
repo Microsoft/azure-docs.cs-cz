@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: a9e910c38000fc4dbc454b68b752925df9145837
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b9cf9e031c73b1412ab9fc20f5ffe94736d28eb4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037673"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896901"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps podporované kategorie
 
-Když provedete [Hledání kategorií](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) bodů zájmu, existují více než sto podporovaných kategorií. Níže je uveden seznam kódů kategorií pro podporované názvy kategorií. Kódy kategorií se generují pro kategorie nejvyšší úrovně. Všechny dílčí kategorie sdílejí stejný kód kategorie. Tento seznam kategorií se může změnit novými verzemi dat.
+Když provedete [Hledání kategorií](/rest/api/maps/search/getsearchpoicategory) bodů zájmu, existují více než sto podporovaných kategorií. Níže je uveden seznam kódů kategorií pro podporované názvy kategorií. Kódy kategorií se generují pro kategorie nejvyšší úrovně. Všechny dílčí kategorie sdílejí stejný kód kategorie. Tento seznam kategorií se může změnit novými verzemi dat.
 
 <br/>
 

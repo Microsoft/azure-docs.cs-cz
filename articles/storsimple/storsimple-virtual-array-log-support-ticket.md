@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507666"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005771"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>Použití služby StorSimple Device Manager k zaznamenání Support request pro virtuální pole StorSimple
 
@@ -35,7 +35,7 @@ V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)mů
 
 1. Přejděte do služby Správce zařízení StorSimple. V okně souhrnu služby přejděte do části **Podpora a řešení potíží** a pak klikněte na **Nová žádost o podporu**.
    
-    ![Nová žádost o podporu](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
+    ![Snímek obrazovky se zobrazí v podokně základy nové žádosti o podporu.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. V okně **základy** proveďte následující:
 
@@ -47,13 +47,13 @@ V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)mů
 
     4. Pokud máte ke svému předplatnému přidružené víc plánů, vyberte vhodný **plán podpory** . K povolení technické podpory potřebujete placený plán podpory.
 
-3. V **kroku 2**zvolte **závažnost** a určete, jestli problém souvisí s polem nebo službou StorSimple Device Manager. Také vyberte **kategorii** pro tento problém a zadejte další **Podrobnosti** o problému.
+3. V **kroku 2** zvolte **závažnost** a určete, jestli problém souvisí s polem nebo službou StorSimple Device Manager. Také vyberte **kategorii** pro tento problém a zadejte další **Podrobnosti** o problému.
    
-    ![Nová žádost o podporu](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
+    ![Snímek obrazovky se zobrazí v podokně problému, kde můžete zadat typ problému, kategorii a podrobnosti žádosti o podporu.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. V **kroku 3**zadejte své kontaktní informace. Podpora Microsoftu použijí tyto informace pro další informace, diagnostiku a řešení.
+4. V **kroku 3** zadejte své kontaktní informace. Podpora Microsoftu použijí tyto informace pro další informace, diagnostiku a řešení.
    
-    ![Nová žádost o podporu](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
+    ![Snímek obrazovky se zobrazí v podokně kontaktní informace.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
 ## <a name="manage-a-support-request"></a>Správa žádosti o podporu
 

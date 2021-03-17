@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3300d68c6356cb7cdd56a9ad79eb0ac011942eb2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080854"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547896"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání entit
 
-Dovednost pro **rozpoznávání entit** extrahuje z textu entity různých typů. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) .
+Dovednost pro **rozpoznávání entit** extrahuje z textu entity různých typů. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [Analýza textu](../cognitive-services/text-analytics/overview.md) .
 
 > [!NOTE]
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
@@ -29,7 +29,7 @@ Dovednost pro **rozpoznávání entit** extrahuje z textu entity různých typů
 Microsoft. dovednosti. text. EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
@@ -40,7 +40,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 | `categories`    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"` , `"Location"` , `"Organization"` , `"Quantity"` , `"Datetime"` , `"URL"` , `"Email"` . Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
 | `defaultLanguageCode` |    Kód jazyka vstupního textu Podporují se tyto jazyky: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` . Ne všechny kategorie entit jsou podporovány pro všechny jazyky; Viz poznámka níže.|
 | `minimumPrecision` | Hodnota v rozsahu 0 až 1. Pokud je výsledek spolehlivosti (ve `namedEntities` výstupu) nižší než tato hodnota, entita se nevrátí. Výchozí hodnota je 0. |
-| `includeTypelessEntities` | Nastavte na, `true` Pokud chcete rozpoznat dobře známé entity, které se nevejdou do aktuálních kategorií. Rozpoznané entity jsou vráceny v `entities` poli se složitým výstupem. Například "Windows 10" je dobře známá entita (produkt), ale vzhledem k tomu, že "Products" není podporovanou kategorií, bude tato entita obsažena v poli výstup entit. Výchozí hodnota je`false` |
+| `includeTypelessEntities` | Nastavte na, `true` Pokud chcete rozpoznat dobře známé entity, které se nevejdou do aktuálních kategorií. Rozpoznané entity jsou vráceny v `entities` poli se složitým výstupem. Například "Windows 10" je dobře známá entita (produkt), ale vzhledem k tomu, že "Products" není podporovanou kategorií, bude tato entita obsažena v poli výstup entit. Výchozí hodnota je `false` |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
@@ -53,7 +53,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
 > [!NOTE]
-> Ne všechny kategorie entit jsou podporovány pro všechny jazyky. `"Person"` `"Location"` `"Organization"` Typy kategorií entit, a jsou podporovány pro úplný seznam jazyků uvedených výše. Jenom _de_, _EN_, _ES_, _fr_a _zh-Hans_ podporují extrakci `"Quantity"` typů, `"Datetime"` , `"URL"` a `"Email"` . Další informace najdete v tématu [Podpora jazyků a oblastí pro rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
+> Ne všechny kategorie entit jsou podporovány pro všechny jazyky. `"Person"` `"Location"` `"Organization"` Typy kategorií entit, a jsou podporovány pro úplný seznam jazyků uvedených výše. Jenom _de_, _EN_, _ES_, _fr_ a _zh-Hans_ podporují extrakci `"Quantity"` typů, `"Datetime"` , `"URL"` a `"Email"` . Další informace najdete v tématu [Podpora jazyků a oblastí pro rozhraní API pro analýzu textu](../cognitive-services/text-analytics/language-support.md).  
 
 | Název výstupu      | Description                   |
 |---------------|-------------------------------|
@@ -97,7 +97,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
     ]
   }
 ```
-##    <a name="sample-input"></a>Vzorový vstup
+##    <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {
@@ -187,10 +187,10 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 }
 ```
 
-Všimněte si, že posuny vracené pro entity ve výstupu této dovednosti jsou přímo vráceny z [rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview), což znamená, že pokud je používáte k indexování do původního řetězce, měli byste použít třídu [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) v rozhraní .NET, aby bylo možné extrahovat správný obsah.  [Další podrobnosti najdete tady.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+Všimněte si, že posuny vracené pro entity ve výstupu této dovednosti jsou přímo vráceny z [rozhraní API pro analýzu textu](../cognitive-services/text-analytics/overview.md), což znamená, že pokud je používáte k indexování do původního řetězce, měli byste použít třídu [StringInfo](/dotnet/api/system.globalization.stringinfo) v rozhraní .NET, aby bylo možné extrahovat správný obsah.  [Další podrobnosti najdete tady.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
-## <a name="error-cases"></a>Chybové případy
-Pokud kód jazyka pro dokument není podporován, je vrácena chyba a nejsou extrahovány žádné entity.
+## <a name="warning-cases"></a>Případy upozornění
+Pokud kód jazyka pro dokument není podporován, je vrácena upozornění a extrahovány žádné entity.
 
 ## <a name="see-also"></a>Viz také
 

@@ -6,30 +6,36 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e2f7424464860b647883be2441e903900cb266
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff89e8c803e0edf5245a62d625a6367d68de96ba
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652881"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742064"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Brána vzdálené plochy Azure Multi-Factor Authentication Server pomocí protokolu RADIUS
 
-Brána vzdálené plochy (RD) často používá k ověřování uživatelů [službu NPS (Network Policy Services)](https://docs.microsoft.com/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures) . Tento článek popisuje směrování požadavků protokolu RADIUS ze služby Brána vzdálené plochy (prostřednictvím místního serveru NPS) na Multi-Factor Authentication Server. Kombinace Azure MFA a služby Brána VP znamená, že při provádění silného ověřování můžou uživatelé ke svým pracovním prostředím přistupovat odkudkoli.
+Brána vzdálené plochy (RD) často používá k ověřování uživatelů [službu NPS (Network Policy Services)](/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures) . Tento článek popisuje směrování požadavků protokolu RADIUS ze služby Brána vzdálené plochy (prostřednictvím místního serveru NPS) na Multi-Factor Authentication Server. Kombinace Azure MFA a služby Brána VP znamená, že při provádění silného ověřování můžou uživatelé ke svým pracovním prostředím přistupovat odkudkoli.
 
 Vzhledem k tomu, že ověřování systému Windows pro terminálové služby není podporováno pro Server 2012 R2, použijte pro integraci s MFA Serverem službu Brána VP a protokol RADIUS.
 
 Nainstalujte Multi-Factor Authentication Server na samostatném serveru, který bude směrovat požadavky protokolu RADIUS přes proxy server zpět na server NPS na serveru služby Brána vzdálené plochy. Když NPS ověří uživatelské jméno a heslo, vrátí odpověď Multi-Factor Authentication Serveru. Potom MFA Server provádí druhý faktor ověřování a vrátí výsledek bráně.
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> Od 1. července 2019 už společnost Microsoft nenabízí MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat vícefaktorové ověřování (MFA) během přihlašovacích událostí, by měli používat cloudovou Multi-Factor Authentication Azure AD.
+>
+> Pokud chcete začít s cloudovým ověřováním MFA, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Pokud používáte cloudové VÍCEFAKTOROVÉ ověřování, přečtěte si téma [integrace s ověřováním protokolu RADIUS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension.md).
+>
+> Stávající zákazníci, kteří si vyaktivovali MFA Server dřív než 1. července 2019, můžou stáhnout nejnovější verzi, budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure MFA Server připojený k doméně. Pokud jej ještě nemáte nainstalovaný, postupujte podle pokynů v tématu [Začínáme s Azure Multi-Factor Authentication Serverem](howto-mfaserver-deploy.md).
 - Existující nakonfigurovaný server NPS.

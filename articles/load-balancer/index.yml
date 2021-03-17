@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 05/07/2020
-  ms.openlocfilehash: 8049897cf7a08eeac79e4a217f4ecc3ec636eab9
-  ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
-  ms.translationtype: HT
+  ms.openlocfilehash: f7f48c8b81b1da48737d01efce3237e65154232e
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86143891"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102506986"
 landingContent:
 - title: Informace o Load Balanceru
   linkLists:
@@ -24,24 +24,24 @@ landingContent:
     links:
     - text: Co je nástroj pro vyrovnávání zatížení?
       url: load-balancer-overview.md
-    - text: Koncepce Load Balanceru
+    - text: Algoritmus Load Balanceru
       url: concepts.md
     - text: Komponenty Load Balanceru
       url: components.md
     - text: Co je nového?
-      url: whats-new.md
+      url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
     - text: Skladové položky Load Balanceru
       url: skus.md
 - title: Začínáme
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Vytvoření služby Load Balanceru pro vyrovnávání zatížení virtuálních počítačů
+    - text: Vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů
       url: quickstart-load-balancer-standard-public-portal.md
+    - text: Vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů
+      url: quickstart-load-balancer-standard-internal-portal.md
   - linkListType: tutorial
     links:
-    - text: Vyrovnávání zatížení internetového provozu do virtuálních počítačů
-      url: tutorial-load-balancer-standard-manage-portal.md
     - text: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti pomocí Load Balanceru úrovně Standard
       url: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - text: Konfigurace přesměrování portů v Azure Load Balanceru
@@ -59,7 +59,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Konfigurace vyrovnávání zatížení a pravidel odchozích přenosů v Load Balanceru (Azure CLI)
-      url: configure-load-balancer-outbound-cli.md
+      url: ./quickstart-load-balancer-standard-public-cli.md#create-outbound-rule-configuration
     - text: Vytvoření internetového nástroje pro vyrovnávání zatížení s protokolem IPv6 (PowerShell)
       url: load-balancer-ipv6-internet-ps.md
     - text: Konfigurace distribučního režimu
@@ -77,9 +77,9 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Vytvoření Load Balanceru se zónově redundantním front-endem
-      url: load-balancer-get-started-internet-az-portal.md
+      url: ./quickstart-load-balancer-standard-public-portal.md
     - text: Vytvoření Load Balanceru se zónovým front-endem
-      url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+      url: ./quickstart-load-balancer-standard-public-portal.md
     - text: Vyrovnávání zatížení pro několik konfigurací IP adres
       url: load-balancer-multiple-ip.md
 - title: Řešení potíží
@@ -94,15 +94,23 @@ landingContent:
       url: load-balancer-common-deployment-errors.md
     - text: Řešení běžných problémů s odchozím připojením
       url: troubleshoot-outbound-connection.md
+    - text: Problémy se stavem sondy stavu
+      url: load-balancer-troubleshoot-health-probe-status.md
+    - text: Provoz back-endového fondu (virtuální počítač)
+      url: load-balancer-troubleshoot-backend-traffic.md
+  - linkListType: video
+    links:
+    - text: Sestavování a monitorování aplikací s vysokou dostupností s využitím Azure Load Balanceru
+      url: https://techcommunity.microsoft.com/t5/video-hub/build-amp-monitor-highly-available-apps-w-azure-load-balancer/m-p/1703353
 - title: Referenční informace
   linkLists:
   - linkListType: reference
     links:
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
+      url: /powershell/module/az.network/#load_balancer
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest
+      url: /cli/azure/network/lb
     - text: Šablony ARM
-      url: https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates
+      url: /azure/templates/microsoft.network/loadbalancers#quickstart-templates
     - text: Nejčastější dotazy týkající se Load Balanceru
       url: load-balancer-faqs.md

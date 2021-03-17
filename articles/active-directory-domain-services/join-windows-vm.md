@@ -1,20 +1,20 @@
 ---
 title: Připojení virtuálního počítače s Windows serverem k spravované doméně Azure AD Domain Services | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak připojit virtuální počítač s Windows serverem k spravované doméně Azure Active Directory Domain Services.
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.author: justinha
+ms.openlocfilehash: 869c827485d9b7a6baf68d2619af98d4c2ee82b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024923"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619568"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: připojení virtuálního počítače s Windows serverem k spravované doméně Azure Active Directory Domain Services
 
@@ -29,11 +29,11 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující zdroje:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -62,7 +62,7 @@ Pokud už máte virtuální počítač, ke kterému se chcete připojit k domén
 
     ![Vyberte, pokud chcete vytvořit virtuální počítač s Windows serverem 2016 Datacenter v Azure Portal](./media/join-windows-vm/select-vm-image.png)
 
-1. V okně **základy** nakonfigurujte základní nastavení virtuálního počítače. Pro *Možnosti dostupnosti*, *Obrázek*a *Velikost*ponechte výchozí nastavení.
+1. V okně **základy** nakonfigurujte základní nastavení virtuálního počítače. Pro *Možnosti dostupnosti*, *Obrázek* a *Velikost* ponechte výchozí nastavení.
 
     | Parametr            | Navrhovaná hodnota   |
     |----------------------|-------------------|
@@ -76,10 +76,10 @@ Pokud už máte virtuální počítač, ke kterému se chcete připojit k domén
 
     Protokol RDP by měl být povolen pouze v případě potřeby a omezen na sadu autorizovaných rozsahů IP adres. Tato konfigurace pomáhá zlepšit zabezpečení virtuálního počítače a snižuje oblast pro možný útok. Nebo můžete vytvořit a použít hostitele Azure bastionu, který umožňuje přístup pouze prostřednictvím Azure Portal přes protokol TLS. V dalším kroku tohoto kurzu použijete hostitele Azure bastionu k zabezpečenému připojení k virtuálnímu počítači.
 
-    V části **veřejné příchozí porty**vyberte *žádné*.
+    V části **veřejné příchozí porty** vyberte *žádné*.
 
 1. Až budete hotovi, vyberte **Další: disky**.
-1. V rozevírací nabídce pro **typ disku s operačním systémem**zvolte *SSD úrovně Standard*a potom vyberte **Další: sítě**.
+1. V rozevírací nabídce pro **typ disku s operačním systémem** zvolte *SSD úrovně Standard* a potom vyberte **Další: sítě**.
 1. Váš virtuální počítač se musí připojit k podsíti virtuální sítě Azure, která může komunikovat s podsítí, do které jste spravovanou doménu nasadili. Doporučujeme, aby se spravovaná doména nasadila do své vlastní vyhrazené podsítě. Nesaďte virtuální počítač ve stejné podsíti jako vaše spravovaná doména.
 
     Existují dva hlavní způsoby, jak nasadit virtuální počítač a připojit se k příslušné podsíti virtuální sítě:
@@ -102,15 +102,15 @@ Pokud už máte virtuální počítač, ke kterému se chcete připojit k domén
 
     ![Přidejte do Azure Portal další rozsah IP adres virtuální sítě.](./media/join-windows-vm/add-vnet-address-range.png)
 
-1. V nabídce vlevo v okně virtuální síť vyberte **podsítě**a pak vyberte **+ podsíť** a přidejte podsíť.
+1. V nabídce vlevo v okně virtuální síť vyberte **podsítě** a pak vyberte **+ podsíť** a přidejte podsíť.
 
-1. Vyberte **+ podsíť**a potom zadejte název podsítě, jako je například *Správa*. Zadejte **Rozsah adres (blok CIDR)**, například *10.0.5.0/24*. Ujistěte se, že se tento rozsah IP adres nepřekrývá s žádnými jinými existujícími rozsahy Azure nebo místními adresami. U ostatních možností ponechte výchozí hodnoty a pak vyberte **OK**.
+1. Vyberte **+ podsíť** a potom zadejte název podsítě, jako je například *Správa*. Zadejte **Rozsah adres (blok CIDR)**, například *10.0.5.0/24*. Ujistěte se, že se tento rozsah IP adres nepřekrývá s žádnými jinými existujícími rozsahy Azure nebo místními adresami. U ostatních možností ponechte výchozí hodnoty a pak vyberte **OK**.
 
     ![Vytvořte konfiguraci podsítě v Azure Portal](./media/join-windows-vm/create-subnet.png)
 
 1. Vytvoření podsítě trvá několik sekund. Po vytvoření vyberte *X* , čímž zavřete okno podsíť.
 1. Zpátky v podokně **sítě** Chcete-li vytvořit virtuální počítač, vyberte podsíť, kterou jste vytvořili, z rozevírací nabídky, jako je například *Správa*. Znovu se ujistěte, že jste vybrali správnou podsíť a nesadíte virtuální počítač ve stejné podsíti jako vaše spravovaná doména.
-1. V rozevírací nabídce pro **veřejnou IP adresu**vyberte *None (žádné* ). Když v tomto kurzu použijete Azure bastionu a připojíte se ke správě, nepotřebujete k virtuálnímu počítači přiřazenou veřejnou IP adresu.
+1. V rozevírací nabídce pro **veřejnou IP adresu** vyberte *None (žádné* ). Když v tomto kurzu použijete Azure bastionu a připojíte se ke správě, nepotřebujete k virtuálnímu počítači přiřazenou veřejnou IP adresu.
 1. U ostatních možností ponechte výchozí hodnoty a pak vyberte **Správa**.
 1. Nastavte **diagnostiku spouštění** na *vypnuto*. U ostatních možností ponechte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
 1. Zkontrolujte nastavení virtuálního počítače a pak vyberte **vytvořit**.
@@ -125,7 +125,7 @@ K zabezpečenému připojení k virtuálním počítačům použijte hostitele A
 
 Pokud se chcete k VIRTUÁLNÍmu počítači připojit pomocí hostitele bastionu, proveďte následující kroky:
 
-1. V podokně **Přehled** pro váš virtuální počítač vyberte **připojit**a pak **bastionu**.
+1. V podokně **Přehled** pro váš virtuální počítač vyberte **připojit** a pak **bastionu**.
 
     ![Připojení k virtuálnímu počítači s Windows pomocí bastionu v Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
@@ -244,7 +244,7 @@ Pokud chcete spravovat spravovanou doménu, nakonfigurujte virtuální počíta�
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
-[password-sync]: active-directory-ds-getting-started-password-sync.md
+[password-sync]: ./tutorial-create-instance.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

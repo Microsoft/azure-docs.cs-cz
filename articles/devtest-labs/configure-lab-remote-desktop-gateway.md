@@ -3,12 +3,12 @@ title: Konfigurace testovacího prostředí pro použití Brána vzdálené ploc
 description: Naučte se, jak nakonfigurovat testovací prostředí v Azure DevTest Labs pomocí brány vzdálené plochy, která zajišťuje zabezpečený přístup k testovacím virtuálním počítačům bez nutnosti vystavit port RDP.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288081"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695681"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurace testovacího prostředí v Azure DevTest Labs pro použití brány vzdálené plochy
 V Azure DevTest Labs můžete nakonfigurovat bránu vzdálené plochy pro testovací prostředí, aby se zajistil zabezpečený přístup k virtuálním počítačům testovacího prostředí, aniž by bylo nutné vystavit port protokolu RDP. Testovací prostředí poskytuje centrální místo pro uživatele testovacího prostředí pro zobrazení a připojení ke všem virtuálním počítačům, ke kterým mají přístup. Tlačítko **připojit** na stránce **virtuální počítač** vytvoří soubor RDP specifický pro počítač, který můžete otevřít pro připojení k počítači. Připojení RDP můžete dál upravovat a zabezpečovat tak, že testovací prostředí připojíte k bráně vzdálené plochy. 
@@ -21,9 +21,9 @@ Tento přístup je bezpečnější, protože se uživatel testovacího prostřed
 
 1. Akce [získat obsah souboru RDP](/rest/api/dtl/virtualmachines/getrdpfilecontents) se zavolá, když vyberete tlačítko **připojit** . 1. 
 1. Akce získat obsah souboru protokolu RDP vyvolá `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` požadavek na ověřovací token.
-    1. `{gateway-hostname}`je název hostitele brány zadaný na stránce **Nastavení testovacího prostředí** v Azure Portal. 
-    1. `{lab-machine-name}`je název počítače, ke kterému se pokoušíte připojit.
-    1. `{port-number}`je port, na kterém je nutné vytvořit připojení. Obvykle je tento port 3389. Pokud virtuální počítač testovacího prostředí používá funkci [sdílené IP adresy](devtest-lab-shared-ip.md) v DevTest Labs, port se liší.
+    1. `{gateway-hostname}` je název hostitele brány zadaný na stránce **Nastavení testovacího prostředí** v Azure Portal. 
+    1. `{lab-machine-name}` je název počítače, ke kterému se pokoušíte připojit.
+    1. `{port-number}` je port, na kterém je nutné vytvořit připojení. Obvykle je tento port 3389. Pokud virtuální počítač testovacího prostředí používá funkci [sdílené IP adresy](devtest-lab-shared-ip.md) v DevTest Labs, port se liší.
 1. Brána vzdálené plochy odloží volání `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` do funkce Azure, aby vygenerovala ověřovací token. Služba DevTest Labs automaticky obsahuje klíč funkce v hlavičce požadavku. Klíč funkce se uloží do trezoru klíčů testovacího prostředí. Název tohoto tajného klíče, který se má zobrazit jako **tajný klíč tokenu brány** na stránce **Nastavení testovacího** prostředí pro testovací prostředí.
 1. Očekává se, že funkce Azure vrátí token pro ověřování tokenů založeného na certifikátech na počítači brány.  
 1. Akce získat obsah souboru RDP pak vrátí úplný soubor RDP, včetně ověřovacích informací.
@@ -66,7 +66,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 Nakonfigurujte testovací prostředí tak, aby používalo ověřování tokenu pomocí těchto kroků:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte **testovací prostředí**.
 1. Na stránce testovacího prostředí vyberte **Konfigurace a zásady**.
 1. V nabídce vlevo v části **Nastavení** vyberte **Nastavení testovacího prostředí**.
@@ -79,7 +79,7 @@ Nakonfigurujte testovací prostředí tak, aby používalo ověřování tokenu 
 1. **Uložit** Provedeny.
 
     > [!NOTE] 
-    > Kliknutím na **Uložit**vyjadřujete souhlas s [licenčními podmínkami Brána vzdálené plochy](https://www.microsoft.com/licensing/product-licensing/products). Další informace o vzdálené bráně najdete v tématu [Vítá vás služba Vzdálená plocha](https://aka.ms/rds) a [nasazení prostředí vzdálené plochy](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+    > Kliknutím na **Uložit** vyjadřujete souhlas s [licenčními podmínkami Brána vzdálené plochy](https://www.microsoft.com/licensing/product-licensing/products). Další informace o vzdálené bráně najdete v tématu [Vítá vás služba Vzdálená plocha](/windows-server/remote/remote-desktop-services/Welcome-to-rds) a [nasazení prostředí vzdálené plochy](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 
 Pokud upřednostňujete konfiguraci testovacího prostředí prostřednictvím automatizace, přečtěte si téma [Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) ukázkový skript PowerShellu pro nastavení **názvu hostitele brány** a **tajného klíče tokenu brány** . [Úložiště GitHub Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) taky poskytuje šablonu Azure Resource Manager, která vytvoří nebo aktualizuje testovací prostředí s nastavením **názvu hostitele brány** a **tajného klíče tokenu brány** .
@@ -94,7 +94,7 @@ Tady je příklad NSG, který umožňuje jenom provoz, který nejdřív projde b
 ## <a name="sample-to-create-a-remote-desktop-gateway"></a>Ukázka vytvoření brány vzdálené plochy
 
 > [!NOTE] 
-> Pomocí vzorových šablon souhlasíte s [licenčními podmínkami Brána vzdálené plochy](https://www.microsoft.com/licensing/product-licensing/products). Další informace o vzdálené bráně najdete v tématu [Vítá vás služba Vzdálená plocha](https://aka.ms/rds) a [nasazení prostředí vzdálené plochy](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+> Pomocí vzorových šablon souhlasíte s [licenčními podmínkami Brána vzdálené plochy](https://www.microsoft.com/licensing/product-licensing/products). Další informace o vzdálené bráně najdete v tématu [Vítá vás služba Vzdálená plocha](/windows-server/remote/remote-desktop-services/Welcome-to-rds) a [nasazení prostředí vzdálené plochy](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 [Úložiště GitHub Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) nabízí několik ukázek, které vám pomůžou nastavit prostředky potřebné k použití ověřování tokenu a brány vzdálené plochy s DevTest Labs. Tyto ukázky zahrnují šablony Azure Resource Manager pro počítače brány, nastavení testovacího prostředí a aplikace Function App.
 
@@ -135,7 +135,7 @@ Pomocí těchto kroků můžete nastavit ukázkové řešení pro farmu služby 
     Šablonu je možné nasadit pomocí Azure CLI pomocí následujícího příkazu:
 
     ```azurecli
-    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
+    az deployment group create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
     Tady jsou popisy parametrů:

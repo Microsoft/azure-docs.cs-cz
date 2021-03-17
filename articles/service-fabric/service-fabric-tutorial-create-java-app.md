@@ -1,17 +1,15 @@
 ---
 title: 'Kurz: Vytvoření aplikace Java v Azure Service Fabric'
 description: V tomto kurzu se dozvíte, jak vytvořit aplikaci spolehlivé služby v Javě s front-endem a stavovým back-endem spolehlivé služby a jak tuto aplikaci nasadit do clusteru.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 09/01/2018
-ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-javascript
-ms.openlocfilehash: a4b5f98a4cb8a437a235f956a556745837f5d564
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-js
+ms.openlocfilehash: d1f66177b1939d612a5ee80c99109c397b56cb37
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432367"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532189"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou Java API a stavovou back-end službou v Azure Service Fabric
 
@@ -36,7 +34,7 @@ V první části tohoto kurzu se naučíte:
 > * Použití vzdálené komunikace služby ke komunikaci se stavovou službou
 > * Nasazení aplikace do místního clusteru Service Fabric
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
@@ -70,7 +68,7 @@ Následující tabulka obsahuje stručný popis jednotlivých položek v průzku
 | **Položka průzkumníka balíčků** | **Popis** |
 | --- | --- |
 | PublishProfiles | Obsahuje soubory JSON popisující podrobnosti o profilu místního clusteru a clusteru Azure Service Fabric. Obsah těchto souborů používá modul plug-in při nasazování aplikace. |
-| Scripts | Obsahuje pomocné skripty, které je možné použít z příkazového řádku k rychlé správě aplikace s clusterem. |
+| Skripty | Obsahuje pomocné skripty, které je možné použít z příkazového řádku k rychlé správě aplikace s clusterem. |
 | VotingApplication | Obsahuje aplikaci Service Fabric, která se nasdílí do clusteru Service Fabric. |
 | VotingWeb | Obsahuje zdrojové soubory bezstavové front-end služby spolu se souvisejícím souborem gradle pro sestavení. |
 | build.gradle | Soubor Gradle sloužící ke správě projektu. |

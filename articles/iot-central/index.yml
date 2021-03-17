@@ -1,134 +1,144 @@
-### YamlMime:Hub
-title: Dokumentace k řešením IoT Central
-summary: Projděte si dokumentaci k řešením a službě Azure IoT Central.
-brand: azure
+### YamlMime:Landing
+title: Dokumentace ke službě Azure IoT Central
+summary: Azure IoT Central je aplikační platforma IoT, která zjednodušuje vytváření řešení IoT. Azure IoT Central zjednodušuje počáteční nastavení vašeho řešení IoT a snižuje zátěž související se správou, provozními náklady a režií obvyklou pro projekty IoT. Naše rychlé starty a kurzy vás naučí vytvářet, přizpůsobovat, spravovat a využívat aplikace Azure IoT Central.
 metadata:
-  title: Centrum dokumentace ke službě Azure IoT Central
-  description: Projděte si dokumentaci k řešením a službě Azure IoT Central.
+  title: Dokumentace ke službě Azure IoT Central
+  description: Aplikace Azure IoT Central zjednodušuje vytváření řešení IoT. Naučte se vytvářet, přizpůsobovat, spravovat a využívat aplikace Azure IoT Central.
+  services: iot-central
   ms.service: iot-central
-  ms.topic: hub-page
-  author: philmea
-  ms.author: philmea
-  ms.date: 10/25/2019
-  ms.openlocfilehash: fee76e6782fb01c6d18fd19c8c97d9f2c310c7ab
-  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
-  ms.translationtype: HT
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  ms.date: 09/02/2021
+  ms.custom: contperf-fy21q3
+  ms.openlocfilehash: 4b18c599dec89cf7ac5bc594ff6bd47b9919b5eb
+  ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88080673"
-highlightedContent:
-  items:
-  - title: Co je IoT Central?
-    itemType: overview
-    url: ./core/overview-iot-central.md
-  - title: Co jsou šablony aplikací?
-    itemType: concept
-    url: ./core/concepts-app-templates.md
-  - title: Architektura služby Azure IoT Central
-    itemType: architecture
-    url: ./core/concepts-architecture.md
-  - title: Vytvoření nové aplikace
-    itemType: quickstart
-    url: ./core/quick-deploy-iot-central.md
-  - title: Definování typu zařízení a přidání zařízení
-    itemType: tutorial
-    url: ./core/howto-set-up-template.md
-  - title: Monitorování zařízení
-    itemType: tutorial
-    url: ./core/tutorial-create-telemetry-rules.md
-conceptualContent:
-  items:
-  - title: Připojování
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102212633"
+landingContent:
+- title: Informace o službě Azure IoT Central
+  linkLists:
+  - linkListType: overview
     links:
-    - url: ./core/howto-set-up-template.md
-      itemType: how-to-guide
-      text: Nastavení šablony zařízení
-    footerLink:
-      url: ./core/index.yml
-      text: Další informace
-  - title: Stálé připojení
+    - text: Co je Azure IoT Central?
+      url: core/overview-iot-central.md
+    - text: Prohlídka uživatelského rozhraní
+      url: core/overview-iot-central-tour.md
+  - linkListType: quickstart
     links:
-    - url: ./core/tutorial-use-device-groups.md
-      itemType: how-to-guide
-      text: Použití skupin zařízení
-    - url: ./core/howto-manage-devices.md
-      itemType: how-to-guide
-      text: správu zařízení
-    - url: ./core/howto-run-a-job.md
-      itemType: concept
-      text: Jak spustit úlohu
-    - url: ./core/howto-create-analytics.md
-      itemType: how-to-guide
-      text: Analýza dat zařízení
-    footerLink:
-      url: ./core/index.yml
-      text: Další informace
-  - title: Transformace
+    - text: Vytvoření nové aplikace
+      url: core/quick-deploy-iot-central.md
+  - linkListType: architecture
     links:
-    - url: ./core/tutorial-create-telemetry-rules.md
-      itemType: how-to-guide
-      text: Vytvoření pravidla telemetrie
-    - url: ./core/howto-use-data-export.md
-      itemType: how-to-guide
-      text: Export dat do cílových umístění v cloudu – Preview
-    footerLink:
-      url: ./core/index.yml
-      text: Další informace
-productDirectory:
-  title: Začínáme sestavovat s využitím šablon oborových aplikací
-  summary: Jste připravení začít sestavovat? Projděte si naše šablony oborových aplikací sestavené pro tvůrce řešení.
-  items:
-  - title: Sestavování pro maloobchod
-    imageSrc: ./retail/media/index/iot-central-retail.svg
+    - text: Architektura služby Azure IoT Central
+      url: core/concepts-architecture.md
+    - text: Šablony aplikací
+      url: core/concepts-app-templates.md
+  - linkListType: whats-new
     links:
-    - text: Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
-      url: ./retail/overview-iot-central-retail.md
-    - text: Vytvoření aplikace pro analýzu v obchodě
-      url: ./retail/tutorial-in-store-analytics-create-app.md
-    - text: Vytvoření aplikace pro inteligentní řízení zásob
-      url: ./retail/tutorial-iot-central-smart-inventory-management.md
-    - text: Vytvoření aplikace pro propojenou logistiku
-      url: ./retail/tutorial-iot-central-connected-logistics.md
-    - text: Vytvoření aplikace pro digitální distribuční centrum
-      url: ./retail/tutorial-iot-central-digital-distribution-center.md
-    - text: Vytvoření aplikace pro analýzu videa
-      url: ./retail/tutorial-video-analytics-create-app.md
-  - title: Sestavování pro zdravotnictví
-    imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
-    links:
-    - url: ./healthcare/overview-iot-central-healthcare.md
-      text: Sestavování řešení pro zdravotnictví s využitím služby IoT Central
-    - url: ./healthcare/tutorial-continuous-patient-monitoring.md
-      text: Vytvoření aplikace pro průběžné monitorování pacientů
-  - title: Sestavování pro energetiku
-    imageSrc: ./energy/media/index/iot-central-energy.svg
-    links:
-    - url: ./energy/overview-iot-central-energy.md
-      text: Sestavování řešení pro energetiku s využitím služby IoT Central
-    - url: ./energy/tutorial-smart-meter-app.md
-      text: Vytvoření aplikace pro inteligentní monitorování měřičů
-    - url: ./energy/tutorial-solar-panel-app.md
-      text: Vytvoření aplikace pro monitorování solárních panelů
-  - title: Sestavování pro státní správu
-    imageSrc: ./government/media/index/iot-central-government.svg
-    links:
-    - url: ./government/overview-iot-central-government.md
-      text: Vytváření řešení pro státní správu s využitím služby IoT Central
-    - url: ./government/tutorial-water-quality-monitoring.md
-      text: Vytvoření aplikace pro monitorování kvality vody
-    - url: ./government/tutorial-water-consumption-monitoring.md
-      text: Vytvoření aplikace pro monitorování spotřeby vody
-    - url: ./government/tutorial-connected-waste-management.md
-      text: Vytvoření aplikace pro propojené nakládání s odpady
-additionalContent:
-  sections:
-  - items:
-    - title: Rozhraní API služby IoT Central
-      summary: Projděte si rozhraní API služby IoT Central.
-      url: https://docs.microsoft.com/rest/api/iotcentral/
-    - title: IoT Central na Microsoft Learn
-      summary: Projděte si IoT Central v bezplatném prostředí sandboxu.
-      url: https://docs.microsoft.com/learn/browse/?products=azure-iot-central
-    - title: Nejnovější aktualizace
-      summary: Podívejte se, co je nového ve službě IoT Central.
+    - text: Nejnovější aktualizace
       url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central
+- title: Vývoj a připojení zařízení
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled pro vývojáře zařízení
+      url: core/overview-iot-central-developer.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření a připojení zařízení
+      url: core/tutorial-connect-device.md
+  - linkListType: concept
+    links:
+    - text: Připojení zařízení
+      url: core/concepts-get-connected.md
+    - text: Datové části zpráv
+      url: core/concepts-telemetry-properties-commands.md
+  - linkListType: how-to-guide
+    links:
+    - text: Připojení zařízení Azure Sphere
+      url: core/howto-connect-sphere.md
+    - text: Řešení potíží s připojením zařízení
+      url: core/troubleshoot-connection.md
+- title: Sestavení integrovaných řešení
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled pro sestavovatele řešení
+      url: core/overview-iot-central-solution-builder.md
+  - linkListType: tutorial
+    links:
+    - text: Použití pravidel
+      url: core/tutorial-create-telemetry-rules.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření řídicího panelu
+      url: core/howto-create-personal-dashboards.md
+    - text: Analýza dat zařízení
+      url: core/howto-create-analytics.md
+    - text: Export dat do cílových umístění v cloudu
+      url: core/howto-export-data.md
+    - text: Přesunout zařízení z IoT Hub
+      url: core/how-to-move-device-to-iot.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: /rest/api/iotcentral/
+- title: správu zařízení
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Použití skupin zařízení
+      url: core/tutorial-use-device-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: Přidání, import a export zařízení
+      url: core/howto-manage-devices.md
+    - text: Spuštění úlohy
+      url: core/howto-run-a-job.md
+- title: Správa
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa vaší aplikace
+      url: core/howto-administer.md
+    - text: Správa uživatelů a skupin
+      url: core/howto-manage-users-roles.md
+    - text: Zobrazení vašeho vyúčtování
+      url: core/howto-view-bill.md
+    - text: Přizpůsobení uživatelského rozhraní aplikací
+      url: core/howto-customize-ui.md
+  - linkListType: sample
+    links:
+    - text: Ukázky sady SDK ARM
+      url: /samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/
+- title: Učení na základě scénářů s Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 'Výuková cesta: vývoj řešení IoT pomocí Azure IoT Central'
+      url: /learn/paths/develop-iot-solutions-with-azure-iot-central/
+  - linkListType: learn
+    links:
+    - text: 'Seznámení s modulem: Vytvoření první aplikace IoT Central pro Azure'
+      url: /learn/modules/create-your-first-iot-central-app/
+    - text: 'Naučte se modul: Nastavte pravidla a proveďte akci s daty telemetrie v Azure IoT Central'
+      url: /learn/modules/set-up-rules-take-actions-telemetry-data-azure-iot-central/
+    - text: 'Naučit se modul: Správa IoT Central aplikací pomocí REST API'
+      url: /learn/modules/manage-iot-central-apps-with-rest-api/
+    - text: 'Seznámení s modulem: nastavení exportu průběžných dat z Azure IoT Central do aplikace Power BI'
+      url: /learn/modules/continuously-export-data-from-iot-central-power-bi/
+- title: Šablony oborových aplikací
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Maloobchod
+      url: retail/overview-iot-central-retail.md
+    - text: Zdravotnictví
+      url: healthcare/overview-iot-central-healthcare.md
+    - text: Státní správa
+      url: government/overview-iot-central-government.md
+    - text: Energetický sektor
+      url: energy/overview-iot-central-energy.md

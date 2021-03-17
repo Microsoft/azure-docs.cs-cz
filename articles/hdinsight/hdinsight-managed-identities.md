@@ -1,19 +1,16 @@
 ---
 title: Spravované identity ve službě Azure HDInsight
 description: Poskytuje přehled implementace spravovaných identit ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2b7f6e8421a735db131bc05605936e8cb2d87eb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408940"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944119"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Spravované identity ve službě Azure HDInsight
 
@@ -25,7 +22,9 @@ Existují dva typy spravovaných identit: přiřazeno uživatelem a systémem. A
 
 ## <a name="hdinsight-managed-identity-implementation"></a>Implementace spravované identity HDInsight
 
-Ve službě Azure HDInsight se spravované identity zřídí v každém uzlu clusteru. Tyto součásti identity se ale dá použít jenom ve službě HDInsight. V tuto chvíli není k dispozici žádná podporovaná metoda pro generování přístupových tokenů pomocí spravovaných identit nainstalovaných na uzlech clusteru HDInsight. U některých služeb Azure se spravované identity implementují s koncovým bodem, který můžete použít k získání přístupových tokenů. Použijte tokeny pro interakci s ostatními službami Azure sami.
+Ve službě Azure HDInsight jsou spravované identity dostupné jenom pro interní součásti služby HDInsight. Pro přístup k externím službám není momentálně k dispozici žádná podporovaná metoda pro generování přístupových tokenů pomocí spravovaných identit nainstalovaných na uzlech clusteru HDInsight. U některých služeb Azure, jako jsou výpočetní virtuální počítače, se spravované identity implementují s koncovým bodem, který můžete použít k získání přístupových tokenů. Tento koncový bod není v uzlech HDInsight aktuálně k dispozici.
+
+Pokud potřebujete spustit své aplikace, abyste se vyhnuli vkládání tajných klíčů a hesel do úloh analýzy (např. SCALA úlohy), můžete distribuovat vlastní certifikáty do uzlů clusteru pomocí akcí skriptů a potom použít tento certifikát k získání přístupového tokenu (například pro přístup k trezoru klíčů Azure).
 
 ## <a name="create-a-managed-identity"></a>Vytvoření spravované identity
 
@@ -42,9 +41,19 @@ Zbývající kroky konfigurace spravované identity závisí na scénáři, kde 
 
 Spravované identity se používají ve službě Azure HDInsight ve více scénářích. Podrobné pokyny k instalaci a konfiguraci najdete v souvisejících dokumentech:
 
-* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#create-a-user-assigned-managed-identity)
 * [Balíček zabezpečení podniku](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Šifrování disků s využitím klíčů spravovaných zákazníky](disk-encryption.md)
+
+HDInsight bude automaticky obnovovat certifikáty pro spravované identity, které pro tyto scénáře používáte. Nicméně omezení, pokud se pro dlouhotrvající clustery používá více různých spravovaných identit, nemusí obnovení certifikátu fungovat podle očekávání pro všechny spravované identity. Pokud plánujete používat dlouho běžící clustery (například více než 60 dní), doporučujeme, abyste v důsledku tohoto omezení používali stejnou spravovanou identitu pro všechny výše uvedené scénáře. 
+
+Pokud jste už vytvořili dlouhotrvající cluster s více různými spravovanými identitami a v některém z těchto problémů běžely tyto problémy:
+ * V clusterech ESP služba Cluster Services spouští selhání nebo navýšení kapacity a jiné operace začnou selhat s chybami ověřování.
+ * V clusterech ESP při změně certifikátu LDAP-DS LDAPs se certifikát LDAPs automaticky neaktualizuje, takže se nedaří spustit změny ze služby LDAP Sync a Scale.
+ * Přístup MSI k neúspěšnému spuštění ADLS Gen2
+ * Šifrovací klíče nelze ve scénáři CMK otáčet.
+
+pak byste měli přiřadit požadované role a oprávnění pro výše uvedené scénáře všem spravovaným identitám používaným v clusteru. Pokud jste třeba pro clustery ADLS Gen2 a ESP používali různé spravované identity, musí mít obě tyto identity přiřazené role vlastník dat objektů BLOB úložiště a přispěvatele HDInsight Domain Services, aby se v těchto problémech nepoužívaly.
 
 ## <a name="faq"></a>Nejčastější dotazy
 

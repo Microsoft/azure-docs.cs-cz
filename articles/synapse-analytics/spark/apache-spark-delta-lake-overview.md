@@ -9,13 +9,14 @@ ms.topic: overview
 ms.subservice: spark
 ms.date: 07/28/2020
 ms.author: euang
+ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 4559446c3de61c552d8fe091fbb95e8b52163472
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1e0dfd597e7f445eeba6cef332d8ea12b27dc3a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658506"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676302"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Přehled rozdílových Lake pro Linux Foundation
 
@@ -285,14 +286,14 @@ Výsledky:
 |id                          |bigint                                                                                                       |null   |
 |                            |                                                                                                             |       |
 |Podrobné informace o tabulce  |                                                                                                             |       |
-|Databáze                    |default                                                                                                      |       |
+|databáze                    |default                                                                                                      |       |
 |Tabulka                       |manageddeltatable                                                                                            |       |
 |Vlastník                       |Trusted-Service-User                                                                                         |       |
 |Čas vytvoření                |So Apr 25 00:35:34 UTC 2020                                                                                 |       |
 |Poslední přístup                 |Čtvrtek LED 01 00:00:00 UTC 1970                                                                                 |       |
 |Created By                  |Spark 2.4.4.2.6.99.201 – 11401300                                                                              |       |
 |Typ                        |STAROSTI                                                                                                      |       |
-|Poskytovatel                    |rozdíl                                                                                                        |       |
+|Poskytovatel                    |Delta                                                                                                        |       |
 |Vlastnosti tabulky            |[transient_lastDdlTime = 1587774934]                                                                           |       |
 |Statistika                  |2407 bajtů                                                                                                   |       |
 |Umístění                    |abfss://data @ <data lake> . DFS.Core.Windows.NET/synapse/Workspaces/ <workspace name> /Warehouse/manageddeltatable|       |
@@ -332,7 +333,7 @@ Výsledky:
 |id                          |bigint                                                                |null   |
 |                            |                                                                      |       |
 |Podrobné informace o tabulce  |                                                                      |       |
-|Databáze                    |default                                                               |       |
+|databáze                    |default                                                               |       |
 |Tabulka                       |externaldeltatable                                                    |       |
 |Vlastník                       |Trusted-Service-User                                                  |       |
 |Čas vytvoření                |So Apr 25 00:35:38 UTC 2020                                          |       |
@@ -563,7 +564,7 @@ deltaTable.history.show(false)
 
 Výsledky:
 
-|verze|          časové razítko|userId|userName|operation|                                                operationParameters| funkcí|poznámkového bloku|clusterId|readVersion|isolationLevel|isBlindAppend|
+|verze|          časové razítko|userId|userName|operation|                                                operationParameters| úloha|poznámkový blok|clusterId|readVersion|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|---------|-------------------------------------------------------------------|----|--------|---------|-----------|--------------|-------------|
 |      4|2020-04-25 00:36:27|  null|    null|    SLOUČENÍ|                       [predikát-> (oldData.`ID` = newData. `ID` )]|null|    null|     null|          3|          null|        false (nepravda)|
 |      3|2020-04-25 00:36:08|  null|    null|   DELETE|[predikát-> ["(( `ID` % cast (2 jako bigint)) = přetypování (0 jako bigint))]|null|    null|     null|          2|          null|        false (nepravda)|
@@ -902,7 +903,7 @@ spark.sql(s"DESCRIBE HISTORY delta.`$deltaTablePath`").show()
 
 Výsledky:
 
-|verze|          časové razítko|userId|userName|       operation| operationParameters| funkcí|poznámkového bloku|clusterId|readVersion|isolationLevel|isBlindAppend|
+|verze|          časové razítko|userId|userName|       operation| operationParameters| úloha|poznámkový blok|clusterId|readVersion|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|----------------|--------------------|----|--------|---------|-----------|--------------|-------------|
 |      5|2020-04-25 00:37:09|  null|    null|AKTUALIZACE STREAMOVÁNÍ|[outputMode-> přístupový bod...|null|    null|     null|          4|          null|         true|
 |      4|2020-04-25 00:36:27|  null|    null|           SLOUČENÍ|[predikát-> (OL...|null|    null|     null|          3|          null|        false (nepravda)|
@@ -995,5 +996,5 @@ Další informace najdete v tématu [rozdílový projekt Lake](https://github.co
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-* [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+* [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark)
+* [Azure Synapse Analytics](../index.yml)

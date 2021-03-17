@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: 5cd050c88fbc954a211c3a75cdabcb557ae998c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86d4248b449ad3961a7798fd36a320eb6a74009
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073933"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217069"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřazení více IP adres k virtuálním počítačům pomocí PowerShellu
 
@@ -26,7 +26,7 @@ ms.locfileid: "87073933"
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Tento článek vysvětluje, jak pomocí PowerShellu vytvořit virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager. K prostředkům vytvořeným prostřednictvím modelu nasazení Classic nelze přiřadit více IP adres. Další informace o modelech nasazení Azure najdete v článku [Principy modelů nasazení](../resource-manager-deployment-model.md) .
+Tento článek vysvětluje, jak pomocí PowerShellu vytvořit virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager. K prostředkům vytvořeným prostřednictvím modelu nasazení Classic nelze přiřadit více IP adres. Další informace o modelech nasazení Azure najdete v článku [Principy modelů nasazení](../azure-resource-manager/management/deployment-models.md) .
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -242,7 +242,7 @@ K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy 
 
    **Přidat privátní IP adresu**
 
-   Chcete-li přidat privátní IP adresu do síťového rozhraní, je nutné vytvořit konfiguraci protokolu IP. Následující příkaz vytvoří konfiguraci se statickou IP adresou 10.0.0.7. Když zadáte statickou IP adresu, musí se jednat o nepoužitou adresu podsítě. Doporučuje se nejdřív otestovat adresu, abyste měli jistotu, že je k dispozici, zadáním `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` příkazu. Pokud je IP adresa dostupná, vrátí výstup *hodnotu true*. Pokud není k dispozici, vrátí výstup *hodnotu false*a zobrazí seznam adres, které jsou k dispozici.
+   Chcete-li přidat privátní IP adresu do síťového rozhraní, je nutné vytvořit konfiguraci protokolu IP. Následující příkaz vytvoří konfiguraci se statickou IP adresou 10.0.0.7. Když zadáte statickou IP adresu, musí se jednat o nepoužitou adresu podsítě. Doporučuje se nejdřív otestovat adresu, abyste měli jistotu, že je k dispozici, zadáním `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` příkazu. Pokud je IP adresa dostupná, vrátí výstup *hodnotu true*. Pokud není k dispozici, vrátí výstup *hodnotu false* a zobrazí seznam adres, které jsou k dispozici.
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `

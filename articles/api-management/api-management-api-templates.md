@@ -15,10 +15,10 @@ ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: devx-track-python
 ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87851710"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Šablony rozhraní API v Azure API Management
@@ -46,7 +46,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-## <a name="api-list"></a><a name="APIList"></a>Seznam rozhraní API  
+## <a name="api-list"></a><a name="APIList"></a> Seznam rozhraní API  
  Šablona **seznam rozhraní API** vám umožní přizpůsobit tělo stránky seznam rozhraní API na portálu pro vývojáře.  
   
  ![Seznam rozhraní API portálu pro vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "Seznam rozhraní API šablon portálu pro vývojáře APIM")  
@@ -90,7 +90,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`apis`|Kolekce [souhrnných entit rozhraní API](api-management-template-data-model-reference.md#APISummary)|Rozhraní API viditelné pro aktuálního uživatele.|  
   
@@ -114,7 +114,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }  
 ```  
   
-## <a name="operation"></a><a name="Product"></a>NázevOperace  
+## <a name="operation"></a><a name="Product"></a> NázevOperace  
  Šablona **operace** vám umožní přizpůsobit tělo stránky operace na portálu pro vývojáře.  
   
  ![Stránka operace portálu pro vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Stránka operace šablony portálu pro vývojáře APIM")  
@@ -644,7 +644,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }  
 ```  
   
-## <a name="code-samples"></a><a name="CodeSamples"></a>Ukázky kódu  
+## <a name="code-samples"></a><a name="CodeSamples"></a> Ukázky kódu  
  Následující šablony vám umožní přizpůsobit tělo jednotlivých ukázek kódu na stránce operace.  
   
  ![Ukázky kódu šablon portálu pro vývojáře](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Ukázky kódu šablon portálu pro vývojáře APIM")  
@@ -665,7 +665,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 -   [Ruby](#Ruby)  
   
-### <a name="curl"></a><a name="Curl"></a>Curl  
+### <a name="curl"></a><a name="Curl"></a> Curl  
  Šablona **DocumentationSamplesCurl** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
@@ -897,7 +897,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-### <a name="java"></a><a name="Stub"></a>Kompilátor  
+### <a name="java"></a><a name="Stub"></a> Kompilátor  
  Šablona **DocumentationSamplesJava** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
@@ -993,7 +993,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="javascript"></a><a name="JavaScript"></a>JavaScriptu  
+### <a name="javascript"></a><a name="JavaScript"></a> JavaScriptu  
  Šablona **DocumentationSamplesJs** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
@@ -1082,7 +1082,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="objective-c"></a><a name="ObjectiveC"></a>Cíl C  
+### <a name="objective-c"></a><a name="ObjectiveC"></a> Cíl C  
  Šablona **DocumentationSamplesObjc** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
@@ -1194,7 +1194,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-### <a name="php"></a><a name="PHP"></a>PHP  
+### <a name="php"></a><a name="PHP"></a> PHP  
  Šablona **DocumentationSamplesPhp** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  
@@ -1402,7 +1402,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="ruby"></a><a name="Ruby"></a>Ruby  
+### <a name="ruby"></a><a name="Ruby"></a> Ruby  
  Šablona **DocumentationSamplesRuby** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  

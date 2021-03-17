@@ -6,59 +6,59 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
-ms.topic: conceptual
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+ms.topic: sample
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046982"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487299"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Cílový kód cyklické vyrovnávací paměti pro rozšířené události v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Chcete vytvořit kompletní ukázku kódu pro nejsnadnější rychlý způsob, jak zachytit a ohlásit informace pro rozšířenou událost během testu. Nejjednodušší cíl pro rozšířená data události je [cíl kruhové vyrovnávací paměti](https://msdn.microsoft.com/library/ff878182.aspx).
+Chcete vytvořit kompletní ukázku kódu pro nejsnadnější rychlý způsob, jak zachytit a ohlásit informace pro rozšířenou událost během testu. Nejjednodušší cíl pro rozšířená data události je [cíl kruhové vyrovnávací paměti](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)).
 
 Toto téma představuje ukázku kódu Transact-SQL, který:
 
 1. Vytvoří tabulku s daty, která se mají demonstrovat.
-2. Vytvoří relaci pro existující rozšířenou událost, konkrétně **SqlServer. sql_statement_starting**.
+2. Vytvoří relaci pro existující rozšířenou událost, konkrétně **SqlServer.sql_statement_starting**.
 
    * Událost je omezená na příkazy SQL, které obsahují konkrétní řetězec aktualizace: **příkaz jako% Update tabEmployee%**.
-   * Rozhodne odeslat výstup události do cíle typu Ring buffer, jmenovitě **package0. ring_buffer**.
+   * Rozhodne odeslat výstup události do cíle typu Ring buffer, konkrétně  **package0.ring_buffer**.
 3. Spustí relaci události.
 4. Vydává několik jednoduchých příkazů SQL UPDATE.
 5. Vydá příkaz SQL SELECT, který načte výstup události z kruhové vyrovnávací paměti.
 
-   * jsou připojeni **Sys. dm_xe_database_session_targets** a další zobrazení dynamické správy (zobrazení dynamické správy).
+   * jsou připojeni **Sys.dm_xe_database_session_targets** a další zobrazení dynamické správy (zobrazení dynamické správy).
 6. Zastaví relaci události.
 7. Uvolní cíl kruhové vyrovnávací paměti pro uvolnění prostředků.
 8. Zruší relaci události a ukázkovou tabulku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Můžete si zaregistrovat i [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * Všechny databáze, na kterých můžete vytvořit tabulku.
   
-  * Volitelně můžete [vytvořit ukázkovou databázi **AdventureWorksLT** ](single-database-create-quickstart.md) během několika minut.
+  * Volitelně můžete [vytvořit ukázkovou databázi **AdventureWorksLT**](single-database-create-quickstart.md) během několika minut.
 * SQL Server Management Studio (ssms.exe), v ideálním případě podle nejnovější měsíční verze aktualizace.
   Nejnovější ssms.exe si můžete stáhnout z těchto:
   
-  * Téma s názvem [stažení SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  * Téma s názvem [stažení SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
   * [Přímý odkaz na stažení.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Ukázka kódu
 
 S velmi drobnými úpravami se dá spustit následující ukázka kódu Ring bufferu buď Azure SQL Database, nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu ' _database ' v názvu některých zobrazení dynamické správy (zobrazení dynamické správy), která se používá v klauzuli FROM v kroku 5. Příklad:
 
-* sys. dm_xe<strong>_database</strong>_session_targets
-* sys. dm_xe_session_targets
+* sys.dm_xe<strong>_database</strong>_session_targets
+* sys.dm_xe_session_targets
 
 &nbsp;
 
@@ -349,6 +349,6 @@ Další témata s ukázkami kódu pro rozšířené události jsou k dispozici n
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

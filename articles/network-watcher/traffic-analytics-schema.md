@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74666371"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017778"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schématu a dat v Analýza provozu
 
@@ -39,11 +39,11 @@ Analýza provozu je cloudové řešení, které poskytuje přehled o aktivitách
 5. FlowStartTime_t pole indikuje první výskyt tohoto agregovaného toku (stejné čtyři-řazené kolekce členů) v intervalu zpracování protokolu toku mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t".
 6. U všech prostředků v poli jsou toky, které jsou uvedené v uživatelském rozhraní, celkovými toky, které NSG uvidí, ale v Log Analytics uživatel uvidí jenom jediný, snížený záznam. Pokud chcete zobrazit všechny toky, použijte pole blob_id, na které se dá odkazovat z úložiště. Celkový počet toků pro tento záznam bude odpovídat jednotlivým tokům, které jsou v objektu BLOB viditelné.
 
-Níže uvedený dotaz vám pomůže pokaždé, když se v posledních 30 dnech podíváme na všechny protokoly toku z místního prostředí.
+Následující dotaz vám pomůže podívat se na všechny podsítě, které v posledních 30 dnech pracují s veřejnými IP adresami mimo Azure.
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
-| project Subnet_s  
+| project Subnet1_s, Subnet2_s  
 ```
 Chcete-li zobrazit cestu objektu BLOB pro toky ve výše uvedeném dotazu, použijte následující dotaz:
 

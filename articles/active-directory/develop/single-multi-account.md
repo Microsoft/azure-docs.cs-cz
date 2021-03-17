@@ -12,12 +12,12 @@ ms.date: 09/26/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bea1753c87c11094e78f95a1bbadb02fb0b95e2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881328"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752976"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>Veřejné klientské aplikace s jedním a několika účty
 
@@ -25,24 +25,24 @@ Tento článek vám pomůže pochopit typy používané v veřejných klientský
 
 Model knihovny Azure Active Directory Authentication Library (ADAL) serveru.  Knihovna Microsoft Authentication Library (MSAL) místo toho vytváří model klientské aplikace.  Většina aplikací pro Android se považuje za veřejné klienty. Veřejný klient je aplikace, která nemůže bezpečně uchovávat tajný klíč.  
 
-MSAL specializuje plochu rozhraní API, `PublicClientApplication` aby zjednodušila a objasnila vývojové prostředí pro aplikace, které umožňují používat pouze jeden účet v jednom okamžiku. `PublicClientApplication`je podtříd `SingleAccountPublicClientApplication` a `MultipleAccountPublicClientApplication` .  Následující diagram znázorňuje vztah mezi těmito třídami.
+MSAL specializuje plochu rozhraní API, `PublicClientApplication` aby zjednodušila a objasnila vývojové prostředí pro aplikace, které umožňují používat pouze jeden účet v jednom okamžiku. `PublicClientApplication` je podtříd `SingleAccountPublicClientApplication` a `MultipleAccountPublicClientApplication` .  Následující diagram znázorňuje vztah mezi těmito třídami.
 
 ![Diagram tříd UML SingleAccountPublicClientApplication](./media/single-multi-account/single-and-multiple-account.png)
 
 ## <a name="single-account-public-client-application"></a>Veřejná klientská aplikace s jedním účtem
 
-`SingleAccountPublicClientApplication`Třída umožňuje vytvořit aplikaci založenou na MSAL, která umožňuje, aby byl pouze jeden účet přihlášen v jednom okamžiku. `SingleAccountPublicClientApplication`se liší od `PublicClientApplication` následujících způsobů:
+`SingleAccountPublicClientApplication`Třída umožňuje vytvořit aplikaci založenou na MSAL, která umožňuje, aby byl pouze jeden účet přihlášen v jednom okamžiku. `SingleAccountPublicClientApplication` se liší od `PublicClientApplication` následujících způsobů:
 
 - MSAL sleduje aktuálně přihlášený účet.
   - Pokud vaše aplikace používá zprostředkovatele (výchozí během Azure Portal registrace aplikace) a je nainstalovaný na zařízení, ve kterém je zprostředkovatel přítomen, MSAL ověří, jestli je účet pořád k dispozici na zařízení.
-- `signIn`slouží k tomu, abyste se k účtu přihlásili explicitně a nezávisle na žádosti o obory.
-- `acquireTokenSilent`nevyžaduje parametr účtu.  Pokud účet zadáte a účet, který zadáte, se neshoduje s aktuálním účtem sledovaným nástrojem MSAL, `MsalClientException` je vyvolána výjimka.
-- `acquireToken`neumožňuje uživateli přepnout účty. Pokud se uživatel pokusí přepnout na jiný účet, je vyvolána výjimka.
-- `getCurrentAccount`Vrátí objekt výsledku, který poskytuje následující:
+- `signIn` slouží k tomu, abyste se k účtu přihlásili explicitně a nezávisle na žádosti o obory.
+- `acquireTokenSilent` nevyžaduje parametr účtu.  Pokud účet zadáte a účet, který zadáte, se neshoduje s aktuálním účtem sledovaným nástrojem MSAL, `MsalClientException` je vyvolána výjimka.
+- `acquireToken` neumožňuje uživateli přepnout účty. Pokud se uživatel pokusí přepnout na jiný účet, je vyvolána výjimka.
+- `getCurrentAccount` Vrátí objekt výsledku, který poskytuje následující:
   - Logická hodnota označující, zda byl účet změněn. Účet může být změněn v důsledku odebrání ze zařízení, například.
   - Předchozí účet. To je užitečné v případě, že při odebrání účtu ze zařízení nebo při přihlášení k novému účtu potřebujete provést jakékoli místní vyčištění dat.
   - CurrentAccount.
-- `signOut`Odebere ze zařízení všechny tokeny přidružené ke klientovi.  
+- `signOut` Odebere ze zařízení všechny tokeny přidružené ke klientovi.  
 
 Když je na zařízení nainstalovaný zprostředkovatel ověřování Androidu, jako je Microsoft Authenticator nebo Portál společnosti Intune, a vaše aplikace je nakonfigurovaná tak, aby používala zprostředkovatele, `signOut` účet neodebere ze zařízení.
 

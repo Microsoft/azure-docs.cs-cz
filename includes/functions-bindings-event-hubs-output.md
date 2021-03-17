@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 78836ca4e51875be4237267b3bb9256cc4541fe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fca69804220021ca7935e562f2026c11749515a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81791670"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623250"
 ---
 Použijte výstupní vazbu Event Hubs k zápisu událostí do datového proudu událostí. Musíte mít oprávnění k odesílání do centra událostí, abyste do něj události mohli zapisovat.
 
@@ -235,7 +235,7 @@ Python nepodporuje atributy.
 
 # <a name="java"></a>[Java](#tab/java)
 
-V [knihovně modulu runtime Functions jazyka Java](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)použijte anotaci [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) u parametrů, jejichž hodnota by byla publikována do centra událostí. Parametr by měl být typu `OutputBinding<T>` , kde `T` je Pojo nebo jakýkoli nativní typ Java.
+V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte anotaci [EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) u parametrů, jejichž hodnota by byla publikována do centra událostí. Parametr by měl být typu `OutputBinding<T>` , kde `T` je Pojo nebo jakýkoli nativní typ Java.
 
 ---
 
@@ -246,11 +246,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastavené na eventHub. |
-|**direction** | Není k dispozici | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
+|**směr** | Není k dispozici | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
 |**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje událost. |
 |**dílčí** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
 |**eventHubName** |**EventHubName** | Functions 2. x a vyšší. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
-|**vázán** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro *obor názvů*, nikoli v samotném centru událostí. Tento připojovací řetězec musí mít oprávnění Odeslat pro odeslání zprávy do datového proudu událostí.|
+|**vázán** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro [obor názvů](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli v samotném centru událostí. Tento připojovací řetězec musí mít oprávnění Odeslat pro odeslání zprávy do datového proudu událostí. <br><br>Pokud používáte [verzi 5. x nebo vyšší z rozšíření](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)místo připojovacího řetězce, můžete zadat odkaz na oddíl konfigurace, který definuje připojení. Viz [připojení](../articles/azure-functions/functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -258,11 +258,39 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 # <a name="c"></a>[C#](#tab/csharp)
 
+### <a name="default"></a>Výchozí
+
+Pro výstupní vazbu centra událostí můžete použít následující typy parametrů:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+
 Odesílat zprávy pomocí parametru metody, jako je například `out string paramName` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. Chcete-li zapsat více zpráv, můžete použít `ICollector<string>` nebo `IAsyncCollector<string>` místo `out string` .
+
+### <a name="additional-types"></a>Další typy 
+Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
+### <a name="default"></a>Výchozí
+
+Pro výstupní vazbu centra událostí můžete použít následující typy parametrů:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+
 Odesílat zprávy pomocí parametru metody, jako je například `out string paramName` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. Chcete-li zapsat více zpráv, můžete použít `ICollector<string>` nebo `IAsyncCollector<string>` místo `out string` .
+
+### <a name="additional-types"></a>Další typy 
+Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -274,20 +302,20 @@ K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce:
 
 - **Návratová hodnota**: nastavte `name` vlastnost v *function.jsna* `$return` . V této konfiguraci je návratová hodnota funkce trvalá jako zpráva centra událostí.
 
-- **Imperativní**: předejte hodnotu metodě [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru deklarovaného jako typ [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) . Předaná hodnota `set` je trvalá jako zpráva centra událostí.
+- **Imperativní**: předejte hodnotu metodě [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) parametru deklarovaného jako typ [out](/python/api/azure-functions/azure.functions.out) . Předaná hodnota `set` je trvalá jako zpráva centra událostí.
 
 # <a name="java"></a>[Java](#tab/java)
 
-K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce pomocí anotace [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) :
+K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce pomocí anotace [EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) :
 
 - **Návratová hodnota**: použitím poznámky k samotné funkci je vrácená hodnota funkce trvalá jako zpráva centra událostí.
 
-- **Imperativní**: Chcete-li explicitně nastavit hodnotu zprávy, použijte poznámku na konkrétní parametr typu [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) , kde `T` je Pojo nebo jakýkoli nativní typ Java. Při této konfiguraci předává hodnota metodě předávání hodnoty `setValue` jako zprávy centra událostí.
+- **Imperativní**: Chcete-li explicitně nastavit hodnotu zprávy, použijte poznámku na konkrétní parametr typu [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.OutputBinding) , kde `T` je Pojo nebo jakýkoli nativní typ Java. Při této konfiguraci předává hodnota metodě předávání hodnoty `setValue` jako zprávy centra událostí.
 
 ---
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Reference |
 |---|---|
-| Centrum událostí | [Provozní příručka](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Centrum událostí | [Provozní příručka](/rest/api/eventhub/publisher-policy-operations) |

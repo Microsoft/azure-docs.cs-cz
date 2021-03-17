@@ -1,0 +1,358 @@
+- name: Dokumentace k Azure Defenderu for IoT
+  href: index.yml
+- name: Přehled
+  displayName: 'IoT, OT, getting started'
+  href: overview.md
+  items:
+    - name: Co je nového?
+      href: release-notes.md
+    - name: Architektura řešení bez agentů
+      displayName: 'deployment, where to deploy'
+      href: architecture.md
+    - name: Architektura řešení založená na agentech
+      href: architecture-agent-based.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Řešení bez agentů pro organizace
+      items:
+        - name: Systémové požadavky
+          displayName: 'firewall, proxy, open ports'
+          href: quickstart-system-prerequisites.md
+        - name: Začínáme se službou Azure Defender for IoT
+          displayName: 'getting started, registration, onboarding'
+          href: getting-started.md
+    - name: Řešení založená na agentech pro tvůrce zařízení
+      items:
+        - name: Připojování k programu Defender pro řešení založené na agentech IoT
+          displayName: 'IoT Hub, existing, enable'
+          href: quickstart-onboard-iot-hub.md
+        - name: Instalace programu Defender pro IoT Micro Agent (Preview)
+          displayName: 'package, authentication, methods, certificate, authenticate, version'
+          href: quickstart-standalone-agent-binary-installation.md
+        - name: Vytvoření vlákna programu IoT Micro agent v programu Defender (Preview)
+          href: quickstart-create-micro-agent-module-twin.md
+        - name: Sestavení programu Defender pro IoT Micro Agent ze zdrojového kódu (Preview)
+          displayName: 'baseline, configuration, customize, distribution'
+          href: quickstart-building-the-defender-micro-agent-from-source.md
+        - name: Konfigurace programu Defender – IoT-Micro-Agent pro Azure RTO
+          href: quickstart-azure-rtos-security-module.md
+        - name: Přidání prostředků Azure do řešení IoT
+          displayName: 'resources, monitored, resource'
+          href: quickstart-configure-your-solution.md
+        - name: Klasický
+          items:
+            - name: Přehled agenta zabezpečení
+              displayName: 'platforms, C, C#, agent,'
+              href: security-agent-architecture.md
+            - name: Vytvoření vlákna modulu azureiotsecurity
+              displayName: 'module twin, security module'
+              href: quickstart-create-security-twin.md
+- name: Koncepty
+  items:
+    - name: Řešení bez agentů pro organizace
+      items:
+        - name: Klíčové koncepty
+          href: concept-key-concepts.md
+    - name: Řešení založená na agentech pro tvůrce zařízení
+      items:
+        - name: Přehled portfolia agenta a podpora operačního systému (Preview)
+          displayName: 'standalone agent, micro agent, RTOS'
+          href: concept-agent-portfolio-overview-os-support.md
+        - name: Přehled nástroje Standalone Micro Agent (Preview)
+          displayName: 'endpoint, posture, distribution, flexible, model'
+          href: concept-standalone-micro-agent-overview.md
+        - name: Ověřování agenta zabezpečení (Preview)
+          displayName: 'connection string, certificate, authentication'
+          href: concept-security-agent-authentication.md
+        - name: Stav zabezpečení-SNS – srovnávací test
+          href: concept-security-posture.md
+        - name: Agregace událostí (Preview)
+          displayName: 'process events, network connection'
+          href: concept-event-aggregation.md
+        - name: Integrované výstrahy pro IoT Hub
+          displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
+          href: concept-security-alerts.md
+        - name: Vlastní výstrahy zabezpečení pro IoT Hub
+          href: concept-customizable-security-alerts.md
+        - name: Doporučení zabezpečení pro IoT Hub
+          href: concept-recommendations.md
+        - name: Klasický
+          items:
+            - name: Defender – IoT-Micro Agent
+              displayName: 'device twins, Defender-IoT-micro-agent twin'
+              href: concept-security-module.md
+            - name: Edge Defender – IoT-Micro Agent
+              href: security-edge-architecture.md
+            - name: Agenti zabezpečení
+              href: overview-security-agents.md
+            - name: Ověřování agentů zabezpečení
+              displayName: 'method, C, C#, module, device, installation, authentication'
+              href: concept-security-agent-authentication-methods.md
+            - name: Standardní hodnoty
+              displayName: 'custom, setting, properties'
+              href: concept-baseline.md
+            - name: Základní plán zabezpečení Azure pro Azure Defender pro IoT
+              displayName: 'identity management, active directory, privileged access, data protection, asset management, incident response, posture, vulnerability, governance'
+              href: security-baseline.md
+            - name: Defender – agregace událostí v programu IoT-Micro-Agent
+              displayName: 'twin, default, configuration, alerts'
+              href: event-aggregation.md
+            - name: Výstrahy zabezpečení založené na agentech
+              href: agent-based-security-alerts.md
+            - name: Vlastní výstrahy zabezpečení založené na agentech
+              href: agent-based-security-custom-alerts.md
+            - name: Doporučení založená na agentech
+              href: agent-based-recommendations.md
+- name: Návody
+  items:
+    - name: Řešení bez agentů pro organizace
+      items:
+        - name: Příprava sítě
+          items:
+            - name: Identifikace požadovaných zařízení
+              href: how-to-identify-required-appliances.md
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment, DL20, EL300, R340, enterprise, SMB, corporate'
+            - name: Nastavení sítě
+              displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
+              href: how-to-set-up-your-network.md
+            - name: Instalovat software
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate'
+              href: how-to-install-software.md
+        - name: Příprava senzorů
+          items:
+            - name: Nasazení senzorů
+              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions'
+              href: how-to-manage-sensors-on-the-cloud.md
+            - name: Aktivace a nastavení senzoru
+              displayName: 'onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
+              href: how-to-activate-and-set-up-your-sensor.md
+        - name: Příprava místní konzoly pro správu
+          items:
+            - name: Aktivace a nastavení místní konzoly pro správu
+              displayName: 'activate, certificate, sign in, SSL, TLS, login, setup, initial, committed activation file'
+              href: how-to-activate-and-set-up-your-on-premises-management-console.md
+            - name: Nastavení vysoké dostupnosti
+              displayName: 'primary, secondary, failover, failback fail, recovery'
+              href: how-to-set-up-high-availability.md
+        - name: Správa uživatelů a uživatelského přístupu
+          items:
+            - name: Vytváření a správa uživatelů
+              displayName: 'Active Directory, roles, permissions'
+              href: how-to-create-and-manage-users.md
+            - name: Definování globálního řízení přístupu uživatelů
+              href: how-to-define-global-user-access-control.md
+              displayName: 'business unit, site, region, user'
+        - name: 'Určení, který provoz se monitoruje'
+          displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
+          href: how-to-control-what-traffic-is-monitored.md
+        - name: Správa senzorů z místní konzoly pro správu
+          displayName: 'disconnect, connect, activation file, sensor backup'
+          href: how-to-manage-sensors-from-the-on-premises-management-console.md
+        - name: Správa individuálních senzorů
+          href: how-to-manage-individual-sensors.md
+          displayName: 'upgrade, activation, certificate, SSL, TLS, connect, timezone time zone, backup, sync, restore, software update, failure'
+        - name: Správa senzorů v cloudu
+          href: how-to-manage-sensors-on-the-cloud.md
+        - name: Správa místní konzoly pro správu
+          href: how-to-manage-the-on-premises-management-console.md
+          displayName: 'mail, SMTP, activation, certificate, software update, backup, restore, proxy, password recovery'
+        - name: Práce s balíčky analýz hrozeb
+          href: how-to-work-with-threat-intelligence-packages.md
+        - name: Práce s informacemi inventáře zařízení
+          items:
+            - name: Prošetření všech detekovaných podnikových senzorů v inventáři zařízení
+              href: how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md
+              displayName: classification
+            - name: Prošetření detekovaných senzorů v inventáři zařízení
+              href: how-to-investigate-sensor-detections-in-a-device-inventory.md
+              displayName: 'classification, Windows registry, asset, device, firmware, import'
+        - name: Práce s mapou zařízení senzorů
+          href: how-to-work-with-the-sensor-device-map.md
+          displayName: 'connections, Purdue, zoom, delete device'
+        - name: Práce s upozorněními zjištěnými senzorem
+          items:
+            - name: Práce s upozorněním na senzoru
+              href: how-to-work-with-alerts-on-your-sensor.md
+            - name: Zobrazení upozornění
+              href: how-to-view-alerts.md
+            - name: Zobrazení informací uvedených v upozorněních
+              href: how-to-view-information-provided-in-alerts.md
+              displayName: PCAP
+            - name: Správa události upozornění
+              href: how-to-manage-the-alert-event.md
+              displayName: 'PCAP, acknowledge, learn, mute, policy'
+            - name: Urychlení reakce na incidenty upozornění
+              href: how-to-accelerate-alert-incident-response.md
+              displayName: 'custom, alerts, comments, groups'
+            - name: Předávání informací o upozornění
+              href: how-to-forward-alert-information-to-partners.md
+              displayName: 'integration, 3rd party, partners, vendor, Syslog server, NetWitness, CEF, LEEF, email, SOC, SIEM, SOAR, incident response'
+        - name: 'Získání přehledu o globálních, regionálních a místních hrozbách'
+          href: how-to-gain-insight-into-global-regional-and-local-threats.md
+          displayName: 'site, business unit, region, map'
+        - name: Práce s upozorněními na místní konzole pro správu
+          href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: Vytváření sestav
+          items:
+            - name: Vytváření sestav posouzení rizik
+              href: how-to-create-risk-assessment-reports.md
+              displayName: 'vulnerability, security score, score, CVE'
+            - name: Vytváření sestav vektorů útoku
+              href: how-to-create-attack-vector-reports.md
+              displayName: 'Attack surface, prediction,simulation'
+            - name: Vytváření sestav dolování dat
+              displayName: 'CVE, activity'
+              href: how-to-create-data-mining-queries.md
+            - name: Vytváření trendů a statistických sestav
+              href: how-to-create-trends-and-statistics-reports.md
+              displayName: 'widgets, charts'
+        - name: Rozšíření informací o zařízení
+          items:
+            - name: Práce s oznámeními zařízení
+              displayName: 'notifications, operating systems, enrich, device information, classification, delete devices'
+              href: how-to-work-with-device-notifications.md
+            - name: Vylepšení rozlišování názvů sítě VLAN a portů
+              displayName: 'port, VLAN'
+              href: how-to-enhance-port-and-vlan-name-resolution.md
+            - name: Import informací o zařízení
+              displayName: 'import, enrich'
+              href: how-to-import-device-information.md
+        - name: Sledování aktivity senzorů
+          displayName: 'timeline, time line, time-line, event'
+          href: how-to-track-sensor-activity.md
+        - name: Řešení potíží se senzory a místní konzolou pro správu
+          href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
+        - name: Nastavení monitorování SNMP MIB
+          href: how-to-set-up-snmp-mib-monitoring.md
+          displayName: health
+        - name: Integrace s partnery
+          items:
+            - name: Integrace Cisco ISE pxGridu
+              href: integration-cisco-ise-pxgrid.md
+            - name: Integrace Forescoutu
+              href: integration-forescout.md
+            - name: Integrace Fortinetu
+              href: integration-fortinet.md
+            - name: Integrace Palo Alto
+              href: integration-palo-alto.md
+            - name: Integrace ServiceNow
+              href: integration-servicenow.md
+            - name: Integrace Splunku
+              href: integration-splunk.md
+    - name: Řešení založená na agentech pro tvůrce zařízení
+      items:
+        - name: Připojení k Azure Sentinelu
+          displayName: 'log analytics, service notes'
+          href: how-to-configure-with-sentinel.md
+        - name: Konfigurace řešení Azure Defender pro řešení založené na agentech IoT
+          displayName: 'data, collection, geolocation, log analytics, raw events'
+          href: how-to-configure-agent-based-solution.md
+        - name: Prozkoumat doporučení pro srovnávací testy modelu CI
+          href: how-to-investigate-cis-benchmark.md
+        - name: Vytváření vlastních výstrah
+          displayName: security group
+          href: quickstart-create-custom-alerts.md
+        - name: Defender – IoT-Micro-Agent pro Azure RTO
+          href: iot-security-azure-rtos.md
+          items:
+            - name: Práce s Defenderem – IoT-Micro-Agent pro Azure RTO
+              href: how-to-azure-rtos-security-module.md
+            - name: Vysvětlení programu Defender-IoT-Micro-Agent pro Azure RTO
+              href: concept-rtos-security-module.md
+            - name: Defender – IoT-Micro-Agent pro Azure RTO – výstrahy a doporučení
+              href: concept-rtos-security-alerts-recommendations.md
+        - name: Klasický
+          items:
+            - name: Kterého agenta mám nasadit?
+              items:
+                - name: Výběr agenta pro nasazení
+                  href: how-to-deploy-agent.md
+                - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Windows
+                  href: how-to-deploy-windows-cs.md
+                - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Linuxem
+                  href: how-to-deploy-linux-cs.md
+                - name: Nasazení agenta zabezpečení založeného na C v zařízení s Linuxem
+                  href: how-to-deploy-linux-c.md
+            - name: Řešení potíží s agentem zabezpečení
+              items:
+                - name: Řešení potíží s linuxovým agentem zabezpečení služby Azure Defender for IoT
+                  href: troubleshoot-agent.md
+                - name: Místní konfigurace C
+                  href: azure-iot-security-local-configuration-c.md
+                - name: Místní konfigurace C#
+                  href: azure-iot-security-local-configuration-csharp.md
+            - name: Nasazení Edge Defenderu – IoT-Micro-Agent
+              href: how-to-deploy-edge.md
+            - name: Konfigurace agentů zabezpečení
+              displayName: property
+              href: how-to-agent-configuration.md
+            - name: Odesílání vlastních zpráv zabezpečení
+              href: how-to-send-security-messages.md
+            - name: Přístup k nezpracovaným datům zabezpečení
+              displayName: 'log analytics, alerts,'
+              href: how-to-security-data-access.md
+            - name: Prozkoumání zařízení
+              displayName: 'access, data, kql, ports, logins, process'
+              href: how-to-investigate-device.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s agentem IoT Micro v Defenderu (Preview)
+          displayName: 'service status, review logs'
+          href: troubleshoot-defender-micro-agent.md
+- name: Reference
+  items:
+    - name: Řešení bez agentů pro organizace
+      items:
+        - name: Práce s rozhraními API Defenderu for IoT
+          href: references-work-with-defender-for-iot-apis.md
+        - name: Horizon API
+          href: references-horizon-api.md
+        - name: Horizon SDK
+          href: references-horizon-sdk.md
+        - name: Práce s příkazy CLI Defenderu for IoT
+          href: references-work-with-defender-for-iot-cli-commands.md
+        - name: Správa proprietárních protokolů (Horizon)
+          href: resources-manage-proprietary-protocols.md
+        - name: Nejčastější dotazy – služba
+          displayName: 'FAQ, regulation, internet, connection, hardware, appliances, ports, logs'
+          href: resources-frequently-asked-questions.md
+    - name: Řešení založená na agentech pro tvůrce zařízení
+      items:
+        - name: Defender – IoT-Micro-Agent pro Azure RTO API
+          displayNAme: 'prototype, disable'
+          href: azure-rtos-security-module-api.md
+        - name: Nejčastější dotazy – agent
+          displayName: 'FAQ, embedded, dependencies, data, quota, internet,'
+          href: resources-agent-frequently-asked-questions.md
+        - name: Plány Azure do budoucna
+          href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Glosář Defenderu for IoT
+      href: references-defender-for-iot-glossary.md
+    - name: Podpora funkcí a vyřazení z provozu
+      items:
+        - name: Podpora funkcí a vyřazení z provozu
+          displayName: 'C, C#, deprecation, support'
+          href: edge-security-module-deprecation.md
+- name: Prostředek
+  items:
+    - name: Řešení založená na agentech pro tvůrce zařízení
+      items:
+        - name: Získávání dovedností v oblasti zabezpečení pomocí Microsoft Learn
+          href: /learn/browse/?term=securityS&terms=securityS
+        - name: Dokumentace ke službě Azure Security Center
+          href: ../security-center/
+        - name: Dokumentace k zabezpečení Azure
+          href: ../security/index.yml
+        - name: Azure RTO Defender – IoT-Micro-Agent na Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
+        - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure IoT'
+          href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+        - name: Regionální dostupnost
+          href: 'https://azure.microsoft.com/regions/services/'
+        - name: Ceny
+          href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
+        - name: Zásady podpory pro Azure Defender pro IoT
+          href: support-policies.md
+        - name: Videa
+          href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

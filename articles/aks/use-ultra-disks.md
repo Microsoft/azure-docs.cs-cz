@@ -4,12 +4,12 @@ description: Přečtěte si, jak povolit a nakonfigurovat disky Ultra v clusteru
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c743162ed3f75386287e050443e82069e797ced9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650175"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502565"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Použití disků Azure Ultra ve službě Azure Kubernetes (Preview)
 
@@ -22,11 +22,6 @@ Tato funkce se dá nastavit jenom při vytváření clusteru nebo při vytváře
 > [!IMPORTANT]
 > Disky Azure Ultra vyžadují nodepools nasazené v zónách dostupnosti a oblastech, které tyto disky podporují, a také pouze konkrétní řady virtuálních počítačů. Podívejte se na téma [**omezení a rozsahy Ultra discích GA**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
 
-### <a name="prerequisites"></a>Předpoklady
-
-- Ujistěte se, že máte `EnableUltraSSD` povolený příznak funkce.
-- Ujistěte se, že máte `aks-preview` nainstalovanou nejnovější [rozšíření CLI][az-extension-add] .
-
 ### <a name="register-the-enableultrassd-preview-feature"></a>Registrace `EnableUltraSSD` funkce Preview
 
 Pokud chcete vytvořit cluster AKS nebo fond uzlů, který může využít Ultra disků, musíte `EnableUltraSSD` u svého předplatného povolit příznak funkce.
@@ -37,7 +32,7 @@ Zaregistrujte `EnableUltraSSD` příznak funkce pomocí příkazu [AZ Feature Re
 az feature register --namespace "Microsoft.ContainerService" --name "EnableUltraSSD"
 ```
 
-Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
+Zobrazení stavu v *registraci* trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableUltraSSD')].{Name:name,State:properties.state}"
@@ -78,7 +73,7 @@ Vytvořte skupinu prostředků Azure:
 az group create --name myResourceGroup --location westus2
 ```
 
-Vytvořte cluster AKS s využitím spravované integrace služby Azure AD a Azure RBAC pro autorizaci Kubernetes.
+Vytvořte cluster AKS s podporou pro disky Ultra.
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
@@ -89,7 +84,7 @@ Pokud chcete vytvořit clustery bez podpory Ultra disk, můžete to udělat tak,
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>Povolení disků Ultra v existujícím clusteru
 
-Můžete povolit disky Ultra na existujících clusterech přidáním nového fondu uzlů do clusteru, který podporuje extrémně disky. Nakonfigurujte nový fond uzlů pro použití šifrování založeného na hostiteli pomocí `--aks-custom-headers` příznaku.
+Můžete povolit disky Ultra na existujících clusterech přidáním nového fondu uzlů do clusteru, který podporuje extrémně disky. Nakonfigurujte nový fond uzlů tak, aby používal disky Ultra pomocí `--aks-custom-headers` příznaku.
 
 ```azurecli
 az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
@@ -133,7 +128,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 ## <a name="create-a-persistent-volume-claim"></a>Vytvoření deklarace identity trvalého svazku
 
-Deklarace identity trvalého svazku (PVC) se používá k automatickému zřízení úložiště na základě třídy úložiště. V takovém případě může virtuální okruh použít jednu z předem vytvořených tříd úložiště k vytvoření spravovaného disku Azure úrovně Standard nebo Premium.
+Deklarace identity trvalého svazku (PVC) se používá k automatickému zřízení úložiště na základě třídy úložiště. V takovém případě může virtuální okruh použít dříve vytvořenou třídu úložiště k vytvoření Ultra disku.
 
 Vytvořte soubor s názvem `azure-ultra-disk-pvc.yaml` a zkopírujte ho do následujícího manifestu. Deklarace identity vyžaduje disk s názvem `ultra-disk` *1000 GB* s přístupem *ReadWriteOnce* . Třída úložiště *Ultra-disk-SC* je určena jako třída úložiště.
 
@@ -173,7 +168,7 @@ metadata:
 spec:
   containers:
   - name: nginx-ultra
-    image: nginx
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -251,8 +246,8 @@ Events:
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

@@ -1,22 +1,40 @@
 ---
 title: 'Azure ExpressRoute: Konfigurace ExpressRoute Direct'
-description: Přečtěte si, jak pomocí Azure PowerShell nakonfigurovat Azure ExpressRoute Direct pro přímé připojení k globální síti Microsoftu v umístěních partnerských vztahů po celém světě.
+description: Naučte se, jak pomocí Azure PowerShell nakonfigurovat Azure ExpressRoute Direct pro přímé připojení k globální síti Microsoft.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/22/2020
-ms.author: jaredro
-ms.openlocfilehash: 42803cbc7901be01c88145e2d98f2982434710a1
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 12/14/2020
+ms.author: duau
+ms.openlocfilehash: f54c22a0c2f7bf89d790dbd33f748446a871d224
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192758"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099943"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak nakonfigurovat ExpressRoute Direct
 
-ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Microsoftu při partnerských umístěních, která jsou strategicky distribuována po celém světě. Další informace najdete v článku o [ExpressRoute Direct](expressroute-erdirect-about.md).
+ExpressRoute Direct vám umožní přímo se připojit k globální síti Microsoftu prostřednictvím umístění partnerských vztahů, které jsou v celém světě strategické distribuce. Další informace najdete v článku o [ExpressRoute Direct](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a>Než začnete
+
+Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, udělejte to prosím pomocí Azure PowerShell:
+1.  Přihlaste se k Azure a vyberte předplatné, které chcete zaregistrovat.
+
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. Zaregistrujte své předplatné pro Public Preview pomocí následujícího příkazu:
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+Po zaregistrování ověřte, zda je poskytovatel prostředků **Microsoft. Network** zaregistrován ve vašem předplatném. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků.
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření prostředku
 
@@ -155,9 +173,22 @@ ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Mi
    Circuits                   : []
    ```
 
-## <a name="change-admin-state-of-links"></a><a name="state"></a>Změnit stav Správce odkazů
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Vygenerovat písmeno autorizace (LOA)
 
-  Tento proces by měl být použit k provedení testu vrstvy 1, čímž se zajistí, že každé připojení mezi jednotlivými směrovači je u primárních a sekundárních zařízení správně opraveno.
+Odkažte na nedávno vytvořený ExpressRoute přímý prostředek, zadejte název zákazníka pro zápis LOA do a (volitelně) definujte umístění souboru pro uložení dokumentu. Pokud na cestu k souboru neodkazuje, dokument se stáhne do aktuálního adresáře.
+
+  ```powershell 
+   New-AzExpressRoutePortLOA -ExpressRoutePort $ERDirect -CustomerName TestCustomerName -Destination "C:\Users\SampleUser\Downloads" 
+   ```
+ **Příklad výstupu**
+
+   ```powershell
+   Written Letter of Authorization To: C:\Users\SampleUser\Downloads\LOA.pdf
+   ```
+
+## <a name="change-admin-state-of-links"></a><a name="state"></a>Změnit stav Správce odkazů
+   
+Tento proces by měl být použit k provedení testu vrstvy 1, čímž se zajistí, že každé připojení mezi jednotlivými směrovači je u primárních a sekundárních zařízení správně opraveno.
 1. Získat podrobnosti o ExpressRoute
 
    ```powershell
@@ -227,13 +258,13 @@ ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Mi
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Vytvoření okruhu
 
-Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, kde je prostředek ExpressRoute Direct. To se dá zvýšit podporou. Zodpovídáte za sledování zřízené i využité šířky pásma. Zřízená šířka pásma je celková šířka šířky pásma všech okruhů v prostředku ExpressRoute Direct a využité šířky pásma je fyzické využití základních fyzických rozhraní.
+Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, kde je prostředek ExpressRoute Direct. Toto omezení se dá zvýšit díky podpoře. Zodpovídáte za sledování zřízené i využité šířky pásma. Zřízená šířka pásma je celková šířka šířky pásma všech okruhů v prostředku ExpressRoute Direct a využité šířky pásma je fyzické využití základních fyzických rozhraní.
 
-K dispozici jsou další šířky pásma okruhů, které je možné využít na ExpressRoute přímo pro podporu scénářů uvedených výše. Jsou to tyto: 40Gbps a 100Gbps.
+K dispozici jsou další šířky pásma okruhů, které je možné využít na ExpressRoute přímo k podpoře pouze těch scénářů uvedených výše. Tyto šířky pásma jsou 40 GB/s a 100 GB/s.
 
 **SkuTier** může být Local, Standard nebo Premium.
 
-**SkuFamily** musí být MeteredData pouze v případě, že v ExpressRoute Direct není podporována žádná neomezená velikost.
+**SkuFamily** může být MeteredData. V ExpressRoute Direct se nepodporuje neomezený počet.
 
 Vytvořte okruh na prostředku ExpressRoute Direct.
 

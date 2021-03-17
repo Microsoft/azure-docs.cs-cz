@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206175"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88932912"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Porozumění filtrům kolekce OData v Azure Kognitivní hledání
 
@@ -88,14 +88,14 @@ Důvodem je, že `Rooms/Type` odkazuje na všechny analyzované výrazy `Rooms/T
 
 Jak `Rooms/Type` je uloženo pro fulltextové vyhledávání:
 
-| Termín`Rooms/Type` | ID dokumentů |
+| Termín `Rooms/Type` | ID dokumentů |
 | --- | --- |
 | Deluxe | 1, 2 |
 | standardní | 1 |
 
 Jak `Rooms/Description` je uloženo pro fulltextové vyhledávání:
 
-| Termín`Rooms/Description` | ID dokumentů |
+| Termín `Rooms/Description` | ID dokumentů |
 | --- | --- |
 | courtyard | 2 |
 | city | 1 |
@@ -142,7 +142,7 @@ Představte si například pole pro shromažďování řetězců, jako je třeba
 
 Hodnoty `seasons` pole jsou uloženy ve struktuře s názvem **obrácený index**, který vypadá přibližně takto:
 
-| Termín | ID dokumentů |
+| Označení | ID dokumentů |
 | --- | --- |
 | návratu | 1, 2 |
 | letní | 1 |
@@ -180,9 +180,9 @@ což je důvod, proč je možné použít `all` s `ne` a `and` .
 > [!NOTE]
 > I když jsou podrobnosti nad rámec tohoto dokumentu, tyto stejné principy se také rozšíří na [dálkovou a Mezioddílové testy pro kolekce geograficky prostorových bodů](search-query-odata-geo-spatial-functions.md) . To je důvod, proč v `any` :
 >
-> - `geo.intersects`nemůže být negace
-> - `geo.distance`musí být porovnány pomocí `lt` nebo`le`
-> - výrazy musí být kombinovány s `or` , ne`and`
+> - `geo.intersects` nemůže být negace
+> - `geo.distance` musí být porovnány pomocí `lt` nebo `le`
+> - výrazy musí být kombinovány s `or` , ne `and`
 >
 > Pravidla konverzace platí pro `all` .
 
@@ -204,4 +204,4 @@ Konkrétní příklady, které typy filtrů jsou povolené a které nejsou, najd
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
 - [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents)

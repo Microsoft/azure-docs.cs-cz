@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75775495"
 ---
 # <a name="internet-peering---faqs"></a>Internet peering – Nejčastější dotazy
@@ -27,7 +27,7 @@ Peering Service je služba, která v úmyslu poskytovat Microsoftu pro své podn
 
 Připojení partnerského vztahu nastavené pomocí Azure PowerShell se spravuje jako prostředek Azure. Připojení partnerského vztahu nastavená v minulosti se ukládají v našem systému jako starší verze partnerského vztahu, kterou můžete zvolit pro správu jako prostředek Azure.
 
-**Když se zavolá New-AzPeeringDirectConnectionObject, jaké IP adresy se mají přidávat zařízením Microsoftu a Peere?**
+**Když se zavolá New-AzPeeringDirectConnectionObject, jaké IP adresy se mají přidávat do zařízení Microsoftu a peer?**
 
 Při volání rutiny New-AzPeeringDirectConnectionObject se zadá adresa/31 (a. b. c. d/31) nebo adresa/30 (a. b. c. d/30). První IP adresa (a. b. c. d. d + 0) se předávají zařízení společnosti Microsoft pro zařízení druhé IP adresy (a. b. c. d + 1).
 

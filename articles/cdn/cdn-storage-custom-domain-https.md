@@ -1,26 +1,20 @@
 ---
-title: Přístup k objektům blob úložiště pomocí Azure CDN vlastní domény přes HTTPS
+title: 'Kurz: Přístup k objektům blob úložiště pomocí vlastní domény Azure CDN přes HTTPS'
 description: Naučte se, jak přidat vlastní doménu Azure CDN a povolit HTTPS v této doméně pro svůj vlastní koncový bod služby Blob Storage.
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5b6fe2b2704f101a7775b7eb700375105b0a9eca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 296a51edf024551a03330f4843690e97c6abd47d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81259880"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564879"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Kurz: Přístup k objektům blob úložiště pomocí vlastní domény Azure CDN přes HTTPS
 
@@ -37,7 +31,7 @@ Ve výchozím nastavení se při vytváření koncového bodu CDN ve vašem prof
 Když u vlastní domény použijete protokol HTTPS, zajistíte tak, že se vaše data budou na internetu doručovat zabezpečeně prostřednictvím šifrování TLS/SSL. Když se webový prohlížeč připojí k webu přes HTTPS, ověří certifikát zabezpečení webu a to, že je vydán legitimní certifikační autoritou. Pokud chcete nakonfigurovat protokol HTTPS pro vlastní doménu, postupujte podle pokynů uvedených v kurzu: [Konfigurace HTTPS pro vlastní doménu Azure CDN](cdn-custom-ssl.md).
 
 ## <a name="shared-access-signatures"></a>Sdílené přístupové podpisy
-Pokud je koncový bod úložiště objektů blob nakonfigurovaný tak, aby zakazoval anonymní přístup pro čtení, měli byste poskytnout token [sdíleného přístupového podpisu (SAS)](cdn-sas-storage-support.md) v každé žádosti, kterou ve vlastní doméně provedete. Koncové body úložiště objektů blob ve výchozím nastavení anonymní přístup pro čtení zakazují. Další informace o sdíleném přístupovém podpisu najdete v tématu o [správě anonymního přístupu pro čtení ke kontejnerům a objektům blob](../storage/blobs/storage-manage-access-to-resources.md).
+Pokud je koncový bod úložiště objektů blob nakonfigurovaný tak, aby zakazoval anonymní přístup pro čtení, měli byste poskytnout token [sdíleného přístupového podpisu (SAS)](cdn-sas-storage-support.md) v každé žádosti, kterou ve vlastní doméně provedete. Koncové body úložiště objektů blob ve výchozím nastavení anonymní přístup pro čtení zakazují. Další informace o sdíleném přístupovém podpisu najdete v tématu o [správě anonymního přístupu pro čtení ke kontejnerům a objektům blob](../storage/blobs/anonymous-read-access-configure.md).
 
 Azure CDN ignoruje jakákoli omezení přidaná do tokenu SAS. Všechny tokeny SAS například mají čas konce platnosti, což znamená, že k obsahu lze dále přistupovat i s SAS, jehož platnost vypršela, dokud nebude daný obsah ze serverů POP (point-of-presence) služby CDN odstraněn. To, jak dlouho budou data uložena v mezipaměti Azure CDN, můžete řídit nastavením hlavičky odpovědi mezipaměti. Další informace najdete v článku o [správě vypršení platnosti objektů blob úložiště Azure v Azure CDN](cdn-manage-expiration-of-blob-content.md).
 
@@ -61,7 +55,3 @@ Pokud třeba máte v USA účet úložiště, ke kterému přistupujete pomocí 
 
 ## <a name="next-steps"></a>Další kroky
 [Kurz: Nastavení pravidel ukládání do mezipaměti Azure CDN](cdn-caching-rules-tutorial.md)
-
-
-
-

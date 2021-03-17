@@ -21,14 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Použití prohlížeče
       href: luis-get-started-get-intent-from-browser.md
-    - name: Použití sady SDK
-      href: quickstart-sdk.md
-    - name: Použití rozhraní REST API
-      items:
-        - name: Získání záměru
-          href: luis-get-started-rest-get-intent.md
-        - name: Změna modelu
-          href: luis-get-started-rest-get-model.md
+    - name: Použití klientských knihoven a rozhraní REST API
+      href: client-libraries-rest-api.md
 - name: Kurzy
   items:
     - name: Sestavení rozložitelné aplikace
@@ -42,8 +36,6 @@
       items:
         - name: Oprava nejistých předpovědí
           href: luis-tutorial-review-endpoint-utterances.md
-        - name: Dávkový test datových sad
-          href: luis-tutorial-batch-testing.md
         - name: Přidání vzorů pro zlepšení predikce
           href: luis-tutorial-pattern.md
     - name: Použití s robotem
@@ -99,8 +91,6 @@
       items:
         - name: Interaktivní testování
           href: luis-concept-test.md
-        - name: Dávkové testování
-          href: luis-concept-batch-test.md
     - name: Správa dat
       items:
         - name: Změna dat
@@ -130,6 +120,8 @@
           href: luis-concept-devops-automation.md
 - name: Návody
   items:
+    - name: Přihlášení k portálu LUIS
+      href: sign-in-luis-portal.md
     - name: Vytvoření nové aplikace
       href: luis-how-to-start-new-app.md
       displayName: 'import, export, container'
@@ -199,9 +191,7 @@
           href: luis-how-to-azure-subscription.md
         - name: Nastavení aplikací a verzí
           href: how-to-application-settings-portal.md
-        - name: Migrace na prostředek vytváření
-          href: luis-migration-authoring.md
-        - name: Autoři a spolupracovníci
+        - name: Autoři a přispěvatelé
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
         - name: S využitím verzí
@@ -235,10 +225,12 @@
         - name: Konfigurace kontejnerů
           href: luis-container-configuration.md
         - name: Použití instancí kontejneru
-          href: deploy-luis-on-container-instances.md
+          href: ../containers/azure-container-instance-recipe.md
         - name: Omezení kontejnerů
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: Dokumentace ke kontejnerům Cognitive Services
+          href: ../containers/index.yml
     - name: Použití DevOps
       href: luis-how-to-devops-with-github.md
     - name: Související služby
@@ -269,9 +261,9 @@
         - name: Aplikační schéma
           href: app-schema-definition.md
         - name: Azure CLI
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
+          href: /cli/azure/cognitiveservices#az_cognitiveservices_list
         - name: Azure RM PowerShell
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
+          href: /powershell/module/azurerm.cognitiveservices/#cognitive_services
         - name: Rozhraní REST API
           items:
             - name: Rozhraní REST API pro vytváření V3 (Preview)
@@ -294,7 +286,7 @@
                 - name: NuGet – modul runtime
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
                 - name: Referenční informace
-                  href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet'
+                  href: /dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding
                 - name: ukázky
                   href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
             - name: Přejít
@@ -312,7 +304,7 @@
                 - name: Maven – modul runtime
                   href: 'https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime'
                 - name: Referenční informace
-                  href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable'
+                  href: /java/api/overview/azure/cognitiveservices/client/languageunderstanding
                 - name: ukázky
                   href: 'https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Language/LanguageUnderstanding'
             - name: Node.js
@@ -328,7 +320,7 @@
                 - name: Pip SDK
                   href: 'https://pypi.org/project/azure-cognitiveservices-language-luis/'
                 - name: Referenční informace
-                  href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python'
+                  href: /python/api/azure-cognitiveservices-language-luis/index
                 - name: ukázky
                   href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis'
     - name: Ochrana osobních údajů uživatele
@@ -400,6 +392,8 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: Zdroje a prostředky
   items:
+    - name: Možnosti pomoci a podpory
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - name: Ukázky kódů
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: Regionální dostupnost
@@ -419,16 +413,13 @@
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování
-      href: luis-encryption-of-data-at-rest.md
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/LUIS'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
+      href: encrypt-data-at-rest.md
+    - name: Konfigurace virtuálních sítí
+      maintainContext: true
+      href: ../cognitive-services-virtual-networks.md
     - name: Search
-      href: 'https://docs.microsoft.com/search/index?search=LUIS'
+      href: /search/index?search=LUIS
     - name: Blog
       href: 'https://blog.botframework.com/category/luis/'
-    - name: Znalostní báze
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'
 - name: Portál LUIS
   href: 'https://www.luis.ai'

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
-ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b2576669357aae7e5fe423515933c2ce4a23a7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82926226"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954473"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Přehled záznamů aliasů Azure DNS
 
@@ -79,4 +79,4 @@ Další informace o záznamech aliasů najdete v následujících článcích:
 
 - [Kurz: Konfigurace záznamu aliasu, který odkazuje na veřejnou IP adresu Azure](tutorial-alias-pip.md)
 - [Kurz: Konfigurace záznamu aliasu pro podporu vrcholů názvů domén ve službě Traffic Manager](tutorial-alias-tm.md)
-- [Nejčastější dotazy k DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+- [Nejčastější dotazy k DNS](./dns-faq.md#alias-records)

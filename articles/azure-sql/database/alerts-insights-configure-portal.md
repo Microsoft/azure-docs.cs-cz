@@ -1,22 +1,22 @@
 ---
-title: Nastavení výstrah a oznámení (Azure Portal)
+title: Nastavení výstrah a oznámení v Azure Portal
 description: Pomocí Azure Portal můžete vytvářet výstrahy, které můžou aktivovat oznámení nebo automatizaci při splnění podmínek, které zadáte.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: d03c1cad9692058c47dd643be9770284b207bb74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7f72a9b140c68320e221a4cfb20cbf107a5f531
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553489"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572278"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Vytváření upozornění pro Azure SQL Database a Azure synapse Analytics pomocí Azure Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "85553489"
 
 ## <a name="overview"></a>Přehled
 
-V tomto článku se dozvíte, jak nastavit výstrahy pro databáze v Azure SQL Database a Azure synapse Analytics (dřív Azure SQL Data Warehouse) pomocí Azure Portal. Když některá metrika (například velikost databáze nebo využití procesoru) dosáhne prahové hodnoty, můžou vám výstrahy poslat e-mail nebo zavolat webový Hook.
+V tomto článku se dozvíte, jak nastavit výstrahy pro databáze v Azure SQL Database a Azure synapse Analytics pomocí Azure Portal. Když některá metrika (například velikost databáze nebo využití procesoru) dosáhne prahové hodnoty, můžou vám výstrahy poslat e-mail nebo zavolat webový Hook.
 
 > [!NOTE]
 > Pokyny pro konkrétní instrukce spravované instance Azure SQL najdete v tématu [Vytvoření upozornění pro spravovanou instanci Azure SQL](../managed-instance/alerts-create.md).
@@ -42,17 +42,17 @@ Můžete nakonfigurovat výstrahu, která při triggeru provede následující a
 
 Můžete nakonfigurovat a získat informace o pravidlech upozornění pomocí
 
-* [Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
-* [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Rozhraní příkazového řádku (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Portal](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [PowerShell](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [Rozhraní příkazového řádku (CLI)](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [Rozhraní REST API služby Azure Monitor](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě s Azure Portal
 
 1. Na [portálu](https://portal.azure.com/)vyhledejte prostředek, který chcete monitorovat, a vyberte ho.
 2. V části monitorování vyberte **výstrahy** . Text a ikona se mohou mírně lišit pro různé prostředky.  
 
-   ![Monitorování](./media/alerts-insights-configure-portal/Alerts.png)
+   ![Sledování](./media/alerts-insights-configure-portal/Alerts.png)
   
 3. Kliknutím na tlačítko **nové pravidlo výstrahy** otevřete stránku **vytvořit pravidlo** .
   ![Vytvořit pravidlo](./media/alerts-insights-configure-portal/create-rule.png)
@@ -64,7 +64,7 @@ Můžete nakonfigurovat a získat informace o pravidlech upozornění pomocí
 6. Po výběru signálu, jako je **Procento procesoru**, se zobrazí stránka **Konfigurovat logiku signálu** .
   ![Konfigurace logiky signálů](./media/alerts-insights-configure-portal/configure-signal-logic.png)
 7. Na této stránce nakonfigurujte tento typ prahové hodnoty, operátor, typ agregace, prahovou hodnotu, členitost agregace a frekvenci vyhodnocení. Pak klikněte na **Hotovo**.
-8. V poli **vytvořit pravidlo**vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Skupina akcí umožňuje definovat akci, která má být provedena při výskytu výstrahy.
+8. V poli **vytvořit pravidlo** vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Skupina akcí umožňuje definovat akci, která má být provedena při výskytu výstrahy.
   ![Definovat skupinu akcí](./media/alerts-insights-configure-portal/action-group.png)
 
 9. Definujte název pravidla, zadejte volitelný popis, zvolte úroveň závažnosti pro pravidlo, zvolte, jestli se má pravidlo Povolit při vytváření pravidla, a pak klikněte na **vytvořit výstrahu pravidla** a vytvořte výstrahu pravidla metriky.
@@ -73,4 +73,4 @@ Během 10 minut je výstraha aktivní a triggery, jak je popsáno výše.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../../azure-monitor/platform/alerts-webhooks.md).
+* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../../azure-monitor/alerts/alerts-webhooks.md).

@@ -1,27 +1,28 @@
 ---
-title: Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání
-titleSuffix: Azure Media Services
+title: Použití času na posunutí k vytvoření přehrávání videa na vyžádání
 description: Tento článek popisuje, jak používat časová posunutí a živé výstupy k nahrávání živých streamů a k vytváření přehrávání na vyžádání.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 05/07/2020
-ms.author: juliako
-ms.openlocfilehash: 8c5afe45ce864ba76d5d637df3534d426d39167a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a2bb876c164f0df56a8b7f3c4a3666ff306e9416
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000988"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955932"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V Azure Media Services je objekt [živého výstupu](/rest/api/media/liveoutputs) podobný digitálnímu záznamu videa, který zachytí a zaznamená svůj živý stream do assetu v účtu Media Services. Zaznamenaný obsah je trvale uložen do kontejneru definovaného prostředkem [assetu](/rest/api/media/assets) (kontejner je v účtu Azure Storage připojeném k vašemu účtu). Živý výstup také umožňuje řídit některé vlastnosti odchozího živého streamu, například kolik dat v archivu je uchováváno (například kapacita záznamu v cloudu), nebo když můžou čtenáři začít sledovat živý datový proud. Archiv na disku je kruhový archiv "Window", který uchovává pouze množství obsahu, které je zadáno ve vlastnosti **ArchiveWindowLength** živého výstupu. Obsah, který spadá mimo toto okno, se automaticky zahodí z kontejneru úložiště a nedá se obnovit. Hodnota archiveWindowLength představuje dobu trvání časového rozmezí ISO-8601 (například PTHH: MM: SS), která určuje kapacitu souboru DVR. Hodnotu lze nastavit od nejméně jedné minuty po dobu maximálně 25 hodin.
 
@@ -45,7 +46,7 @@ I po zastavení a odstranění události můžou uživatelé streamovat archivov
 
 Pokud jste publikovali Asset svého živého výstupu pomocí lokátoru streamování, bude se dál zobrazovat živá událost (až do délky okna DVR), dokud nevyprší platnost nebo odstranění lokátoru streamování, podle toho, co nastane dřív.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Přehled živého streamování](live-streaming-overview.md)
 - [Kurz živého streamování](stream-live-tutorial-with-api.md)

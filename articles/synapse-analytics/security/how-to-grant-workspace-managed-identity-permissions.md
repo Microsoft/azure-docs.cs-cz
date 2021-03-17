@@ -8,27 +8,27 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 46fe27205a2c30d6cb2319bf620c6fe1ee34c31e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535038"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459003"
 ---
-# <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Udělení oprávnění pro spravovanou identitu pracovního prostoru (Preview)
+# <a name="grant-permissions-to-workspace-managed-identity"></a>Udělení oprávnění spravované identitě pracovního prostoru
 
-V tomto článku se naučíte, jak udělit oprávnění ke spravované identitě v pracovním prostoru Azure synapse. Oprávnění zase umožňují přístup k fondům SQL v pracovním prostoru a ADLS Gen2 účtu úložiště prostřednictvím Azure Portal.
+V tomto článku se naučíte, jak udělit oprávnění ke spravované identitě v pracovním prostoru Azure synapse. Oprávnění zase umožňují přístup k vyhrazeným fondům SQL v pracovním prostoru a ADLS Gen2 účtu úložiště prostřednictvím Azure Portal.
 
 >[!NOTE]
 >Tato identita spravovaná pracovním prostorem se bude v ostatních částech tohoto dokumentu označovat jako spravovaná identita.
 
-## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>Udělení oprávnění ke spravovaným identitám pro fond SQL
+## <a name="grant-managed-identity-permissions-to-the-dedicated-sql-pool"></a>Udělit spravovanému fondu SQL oprávnění spravovaných identit
 
-Spravovaná identita uděluje oprávnění k fondům SQL v pracovním prostoru. S udělenými oprávněními můžete orchestrovat kanály, které provádějí aktivity související se fondem SQL. Když vytvoříte pracovní prostor Azure synapse pomocí Azure Portal, můžete pro fondy SQL udělit oprávnění řízení spravovaných identit.
+Spravovaná identita uděluje oprávnění k vyhrazeným fondům SQL v pracovním prostoru. S udělenými oprávněními můžete orchestrovat kanály, které provádějí vyhrazené aktivity související s fondem SQL. Když vytvoříte pracovní prostor Azure synapse pomocí Azure Portal, můžete udělit oprávnění spravovat spravovaná řízení identit na vyhrazené fondy SQL.
 
-Když vytváříte pracovní prostor Azure synapse, vyberte **zabezpečení a sítě** . Pak vyberte **udělit řízení spravované identitě pracovního prostoru v rámci fondů SQL**.
+Při vytváření pracovního prostoru Azure synapse vyberte **zabezpečení** . Pak **pro přístup k fondům SQL vyberte možnost povoluje kanálům (spouštěným jako identitu přiřazené systémem v pracovním prostoru)**.
 
-![ŘÍZENÍ oprávnění pro fondy SQL](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
+![ŘÍZENÍ oprávnění pro vyhrazené fondy SQL](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
 ## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>Udělení oprávnění spravovaných identit ADLS Gen2 účtu úložiště
 
@@ -40,7 +40,7 @@ Služba Azure synapse se pokusí udělit roli Přispěvatel dat objektů BLOB ú
 
 ![Karta základy v toku vytváření pracovního prostoru](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-V poli **název účtu** a **název systému souborů**vyberte adls Gen2 účet úložiště a systém souborů.
+V poli **název účtu** a **název systému souborů** vyberte adls Gen2 účet úložiště a systém souborů.
 
 ![Poskytnutí podrobností o ADLS Gen2 účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
@@ -70,7 +70,7 @@ Spravovaná identita by měla mít přístup k datům do kontejneru (systému so
 
 
 Vyberte stejný kontejner nebo systém souborů pro udělení role *Přispěvatel dat objektů BLOB úložiště* spravované identitě.
-![ADLS Gen2 výběru kontejneru účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![Snímek obrazovky se zobrazením kontejneru nebo systému souborů, který byste měli vybrat.](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>Krok 3: přechod na řízení přístupu
 

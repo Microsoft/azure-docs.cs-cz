@@ -1,23 +1,40 @@
-- name: Azure Digital Twins
+- name: Dokumentace ke službě Azure Digital Twins
   href: index.yml
 - name: Přehled
   items:
     - name: Informace o službě Azure Digital Twins
       href: overview.md
-    - name: Rozdíly oproti předchozím verzím
-      href: overview-differences.md
-- name: Kurzy
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Prozkoumání ukázkového scénáře
+      href: quickstart-adt-explorer.md
+- name: Výukové kurzy
   items:
     - name: Kódování klientské aplikace
       href: tutorial-code.md
-    - name: Seznámení se základy prostřednictvím ukázkové klientské aplikace
-      href: tutorial-command-line-app.md
+    - name: Vytvoření grafu
+      items:
+        - name: Použití ukázkové klientské aplikace
+          href: tutorial-command-line-app.md
+        - name: Použití příkazů rozhraní příkazového řádku Azure
+          href: tutorial-command-line-cli.md
     - name: Připojení kompletního řešení
       href: tutorial-end-to-end.md
 - name: Koncepty
   items:
-    - name: Vlastní modely
+    - name: Modely DTDL
       href: concepts-models.md
+    - name: Ontologie
+      items:
+        - name: Co je Ontology?
+          href: concepts-ontologies.md
+        - name: Přijetí oboru standardní ontologie
+          href: concepts-ontologies-adopt.md
+        - name: Převádění ontologie
+          href: concepts-ontologies-convert.md
+        - name: Rozšíření ontologie
+          href: concepts-ontologies-extend.md
     - name: Digitální dvojčata a graf dvojčat
       href: concepts-twins-graph.md
     - name: Dotazovací jazyk
@@ -30,31 +47,39 @@
       href: concepts-route-events.md
     - name: Zabezpečení pro řešení Azure Digital Twins
       href: concepts-security.md
+    - name: Vysoká dostupnost a zotavení po havárii
+      href: concepts-high-availability-disaster-recovery.md
 - name: Návody
   items:
-    - name: Vývoj
-      items:
-        - name: Použití rozhraní API a sad SDK
-          href: how-to-use-apis-sdks.md
-        - name: Vytváření vlastních sad SDK s využitím AutoRestu
-          href: how-to-create-custom-sdks.md
     - name: Nasazení
       items:
         - name: Použití rozhraní příkazového řádku Azure Digital Twins
           href: how-to-use-cli.md
         - name: Nastavení instance a ověřování
           items:
-            - name: Skriptovaná verze
-              href: how-to-set-up-instance-scripted.md
-            - name: Verze rozhraní příkazového řádku
-              href: how-to-set-up-instance-cli.md
             - name: Portálová verze
               href: how-to-set-up-instance-portal.md
+            - name: Verze rozhraní příkazového řádku
+              href: how-to-set-up-instance-cli.md
+            - name: Verze Powershellu
+              href: how-to-set-up-instance-powershell.md
+            - name: Skriptovaná verze
+              href: how-to-set-up-instance-scripted.md
+        - name: Povolení privátního přístupu pomocí Private Linku
+          items:
+            - name: Portálová verze
+              href: how-to-enable-private-link-portal.md
+            - name: Verze rozhraní příkazového řádku
+              href: how-to-enable-private-link-cli.md
         - name: Zápis ověřovacího kódu aplikace
           href: how-to-authenticate-client.md
+        - name: Vytvoření registrace aplikace
+          href: how-to-create-app-registration.md
+        - name: Přesun instance do jiné oblasti
+          href: how-to-move-regions.md
     - name: Návrh modelů
       items:
-        - name: Správa vlastních modelů
+        - name: Správa modelů DTDL
           href: how-to-manage-model.md
         - name: Parsování a ověření modelů
           href: how-to-parse-models.md
@@ -72,30 +97,52 @@
           href: how-to-create-azure-function.md
         - name: Dotazování na graf dvojčat
           href: how-to-query-graph.md
+    - name: Vývoj klientských aplikací
+      items:
+        - name: Použití rozhraní API a sad SDK
+          href: how-to-use-apis-sdks.md
+        - name: Vytváření vlastních jazykových sad SDK pomocí automatického REST
+          href: how-to-create-custom-sdks.md
+        - name: Vytváření požadavků s využitím Postmana
+          href: how-to-use-postman.md
+        - name: Integrace se službou Azure SignalR Service
+          href: how-to-integrate-azure-signalr.md
     - name: Připojení vstupu
       items:
         - name: Ingestování telemetrie z IoT Hubu
           href: how-to-ingest-iot-hub-data.md
+        - name: Automatická správa zařízení s využitím DPS
+          href: how-to-provision-using-device-provisioning-service.md
+        - name: Integrace s Logic Apps
+          href: how-to-integrate-logic-apps.md
     - name: Připojení výstupu
       items:
         - name: Správa koncových bodů a tras
           items:
-            - name: Verze CLI a rozhraní API
-              href: how-to-manage-routes-apis-cli.md
             - name: Portálová verze
               href: how-to-manage-routes-portal.md
+            - name: Verze CLI a rozhraní API
+              href: how-to-manage-routes-apis-cli.md
+        - name: Povolení spravované identity pro události směrování
+          items:
+            - name: Portálová verze
+              href: how-to-enable-managed-identities-portal.md
+            - name: Verze rozhraní příkazového řádku
+              href: how-to-enable-managed-identities-cli.md
         - name: Integrace s Azure Maps
           href: how-to-integrate-maps.md
         - name: Integrace se službou Azure Time Series Insights
           href: how-to-integrate-time-series-insights.md
-    - name: Řešení potíží
+    - name: Monitorování a odstraňování potíží
       items:
         - name: Zobrazení metrik v Azure Monitoru
           href: troubleshoot-metrics.md
-        - name: Povolení diagnostických protokolů
+        - name: Povolení diagnostických protokolů a dotazování na ně
           href: troubleshoot-diagnostics.md
         - name: Povolení upozornění
           href: troubleshoot-alerts.md
+        - name: Vysvětlení stavu prostředků
+          href: troubleshoot-resource-health.md
         - name: Známé problémy
           href: troubleshoot-known-issues.md
         - name: Řešení problémů
@@ -104,54 +151,128 @@
               href: troubleshoot-error-403.md
 - name: Referenční informace
   items:
-    - name: Omezení služby Digital Twins
-      href: reference-service-limits.md
-    - name: Rozhraní API a sady SDK
+    - name: REST API – referenční informace
+      href: /rest/api/azure-digitaltwins/
+    - name: Sady SDK
       items:
-        - name: REST API – referenční informace
-          href: 'https://docs.microsoft.com/rest/api/azure-digitaltwins/'
         - name: Řídicí rovina
           items:
-            - name: Swagger
-              href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins'
-            - name: .NET (C#) SDK – NuGet
-              href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1'
-            - name: .NET (C#) SDK – referenční informace
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview'
-            - name: .NET (C#) SDK – zdroj
-              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/management
             - name: Java SDK
-              href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins'
-            - name: Java SDK – referenční informace
-              href: 'https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview'
-            - name: Java SDK – zdroj
-              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins'
-            - name: JavaScript SDK
-              href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
-            - name: JavaScript SDK – zdroj
-              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
-            - name: Python SDK
-              href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
-            - name: Python SDK – zdroj
-              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins'
-            - name: Go SDK – zdroj
-              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins'
+              href: /java/api/overview/azure/digitaltwins/resourcemanagement
         - name: Rovina dat
           items:
-            - name: Swagger
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/client
+            - name: Java SDK
+              href: /java/api/overview/azure/digitaltwins/client
+            - name: JavaScript SDK
+              href: /javascript/api/@azure/digital-twins-core/
+            - name: Python SDK
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
+    - name: CLI služby Digital Twins
+      href: /cli/azure/ext/azure-iot/dt
+- name: Zdroje a prostředky
+  items:
+    - name: Omezení služby Digital Twins
+      href: reference-service-limits.md
+    - name: Ceny a dostupnost
+      items:
+        - name: Ceny
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: Oblasti a dostupnost
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+    - name: Požadavky na zákaznická data
+      href: resources-customer-data-requests.md
+    - name: Rozdíly z původní verze
+      href: resources-compare-original-release.md
+    - name: Rozhraní API a sady SDK
+      items:
+        - name: Řídicí rovina
+          items:
+            - name: Řídicí rovina – Swagger
+              href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable'
+            - name: .NET (C#) SDK – NuGet
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/'
+            - name: .NET (C#) SDK – zdrojový kód
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
+            - name: Java SDK – Maven
+              href: 'https://search.maven.org/search?q=a:azure-mgmt-digitaltwins'
+            - name: Java SDK – zdrojový kód
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins'
+            - name: JavaScript SDK – NPM
+              href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
+            - name: JavaScript SDK – zdrojový kód
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
+            - name: Python SDK – PyPi
+              href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
+            - name: Python SDK – zdrojový kód
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
+            - name: Go SDK – GoDoc
+              href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+            - name: Go – zdrojový kód
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+        - name: Rovina dat
+          items:
+            - name: Rovina dat – Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
             - name: .NET (C#) SDK – NuGet
               href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
-            - name: .NET (C#) SDK – referenční informace
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview'
-            - name: .NET (C#) SDK – zdroj
+            - name: .NET (C#) SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
-    - name: CLI služby Digital Twins
+            - name: Java SDK – Maven
+              href: 'https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar'
+            - name: Java SDK – zdrojový kód
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
+            - name: JavaScript SDK – NPM
+              href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
+            - name: JavaScript SDK – zdrojový kód
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
+            - name: Python SDK – PyPi
+              href: 'https://pypi.org/project/azure-digitaltwins-core/'
+            - name: Python SDK – zdrojový kód
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
+    - name: Balíček CLI služby Digital Twins
+      href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+    - name: Modul Azure PowerShell služby Digital Twins
+      href: 'https://www.powershellgallery.com/packages/Az.DigitalTwins/'
+    - name: Moduly Terraformu
       items:
-        - name: Referenční informace k CLI služby Digital Twins
-          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest
-        - name: Balíček CLI
-          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+        - name: Prostředek instance služby Digital Twins
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_instance'
+        - name: Zdroj dat instance služby Digital Twins
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/digital_twins_instance'
+        - name: Prostředek koncového bodu centra událostí
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventhub'
+        - name: Prostředek koncového bodu služby Event Grid
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventgrid'
+        - name: Prostředek koncového bodu služby Service Bus
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
+    - name: Nástroje a ukázkové projekty
+      items:
+        - name: Služba simulátoru zařízení
+          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+        - name: Komplexní ukázky služby Azure Digital Twins
+          href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
+        - name: Průzkumník Azure Digital Twins (ukázka)
+          href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
+        - name: Validátor DTDL (ukázka)
+          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: Odeslání modelu (ukázka)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader'
+        - name: Vizualizér modelů (ukázka)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer'
+        - name: OWL2DTDL konvertor
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/OWL2DTDL'
+        - name: Ukázka integrace ioT Hubu a DPS
+          href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
+        - name: Ukázka integrace SignalR
+          href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+        - name: Vlastní swaggery pro konektor Logic Apps
+          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: DTDL
       items:
         - name: Specifikace DTDL v2
@@ -161,72 +282,24 @@
         - name: Knihovna analyzátoru DTDL – NuGet
           href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
         - name: Validátor DTDL (ukázka)
-          href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
+          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: Specifikace DTMI
           href: 'https://github.com/Azure/digital-twin-model-identifier'
-    - name: Nástroje a ukázkové projekty
-      items:
-        - name: Služba simulátoru zařízení
-          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
-        - name: Ukázky služby Azure Digital Twins
-          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
-        - name: Průzkumník Azure Digital Twins (ukázka)
-          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
-        - name: Validátor DTDL (ukázka)
-          href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
-        - name: Ukázka integrace ioT Hubu a DPS
-          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
+    - name: 'Naučte se: vývoj s využitím digitálních vláken Azure'
+      href: /learn/paths/develop-azure-digital-twins/
+    - name: Videa na webu Channel 9
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: Příběhy zákazníků
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Nástroje Azure
       items:
         - name: Azure Cloud Shell
           href: 'https://shell.azure.com'
         - name: Azure PowerShell
-          href: /powershell/module/az.iothub#iot
+          href: /powershell/azure/
         - name: portál Azure
           href: 'https://portal.azure.com'
-    - name: Dokumentace ke službě Azure RBAC
-      href: /azure/role-based-access-control/overview
-- name: Zdroje a prostředky
-  items:
     - name: Možnosti pomoci a podpory
-      href: /azure/iot-fundamentals/iot-support-help
-    - name: Příběhy zákazníků
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Videa na webu Channel 9
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
-    - name: Požadavky na zákaznická data
-      href: resources-customer-data-requests.md
-    - name: Ceny a dostupnost
-      items:
-        - name: Ceny
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: Oblasti a dostupnost
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
-- name: Související
-  items:
-    - name: Řešení
-      items:
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: /azure/iot-central/core/overview-iot-central
-    - name: Služby platformy
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Plug and Play
-          href: /azure/iot-pnp
-        - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Sady SDK pro služby
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Řešení Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Sady SDK pro zařízení IoT
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json

@@ -1,0 +1,47 @@
+- name: Dokumentace k serveru Směrování
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Azure Route Server (Preview)?
+      href: overview.md
+- name: Rychlé starty
+  items:
+    - name: Konfigurace serveru Směrování – portál
+      href: quickstart-configure-route-server-portal.md
+    - name: Konfigurace serveru Směrování – PowerShell
+      href: quickstart-configure-route-server-powershell.md
+    - name: Konfigurace serveru tras – CLI
+      href: quickstart-configure-route-server-cli.md
+  expanded: true
+- name: Koncepty
+  items:
+    - name: Server trasy – Nejčastější dotazy
+      href: route-server-faq.md
+    - name: ExpressRoute a podpora Azure VPN
+      href: expressroute-vpn-support.md
+- name: Návody
+  items:
+    - name: Řešení potíží se serverem směrování
+      href: troubleshoot-route-server.md
+- name: Referenční informace
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/#route
+    - name: Azure CLI
+      href: /cli/azure/network/routeserver
+    - name: REST
+      href: /rest/api/virtualwan/virtualhubipconfiguration
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog o sítích
+      href: 'https://azure.microsoft.com/blog/topics/networking/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/routeserver/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=routeserver'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/'

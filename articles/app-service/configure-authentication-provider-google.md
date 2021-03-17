@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80519945"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro používání přihlášení Google
@@ -24,7 +24,7 @@ Chcete-li dokončit postup v tomto tématu, musíte mít účet Google, který m
 
 ## <a name="register-your-application-with-google"></a><a name="register"> </a>Registrace aplikace pomocí Google
 
-1. Pokud chcete vytvořit ID klienta a tajný klíč klienta, postupujte podle dokumentace Google na webu [Google Signing pro aplikace na straně serveru](https://developers.google.com/identity/sign-in/web/server-side-flow) . Není nutné dělat žádné změny kódu. Stačí použít následující informace:
+1. Pokud chcete vytvořit ID klienta a tajný klíč klienta, postupujte podle dokumentace Google na webu [google Sign-In pro aplikace na straně serveru](https://developers.google.com/identity/sign-in/web/server-side-flow) . Není nutné dělat žádné změny kódu. Stačí použít následující informace:
     - U **autorizovaných zdrojů JavaScriptu**použijte `https://<app-name>.azurewebsites.net` s názvem vaší aplikace v *\<app-name>* .
     - Pro **autorizovaný identifikátor URI přesměrování**použijte `https://<app-name>.azurewebsites.net/.auth/login/google/callback` .
 1. Zkopírujte ID aplikace a hodnoty tajného klíče aplikace.

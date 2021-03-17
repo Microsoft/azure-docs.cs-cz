@@ -5,21 +5,22 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: tutorial
-ms.date: 05/07/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d39b487550fb8566faab428f55bd38572523587
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657525"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598240"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení informací na faktuře za smlouvu Azure Enterprise
 
 Když zákazníci Azure se smlouvou Enterprise překročí kredit své organizace nebo použijí služby, na které se kredit nevztahuje, dostanou fakturu.
 
-Kredit vaší organizace zahrnuje váš peněžní závazek. Peněžní závazek je množství, které vaše organizace předem zaplatila za využívání služeb Azure. Pokud chcete do své smlouvy Enterprise přidat prostředky peněžního závazku, obraťte se na svého správce účtu Microsoft nebo prodejce.
+Kredit vaší organizace zahrnuje Azure Prepayment (dřív označovaný jako peněžní závazek). Azure Prepayment je částka, kterou vaše organizace předem zaplatila za využívání služeb Azure. Pokud chcete do své smlouvy Enterprise přidat prostředky Azure Prepaymentu, obraťte se na prodejce nebo správce účtu Microsoft.
 
 Tento kurz se týká zákazníků Azure, kteří mají smlouvu Azure Enterprise.
 
@@ -154,7 +155,7 @@ Tady jsou některé důvody rozdílů v cenách:
 
 ## <a name="request-detailed-usage-information"></a>Žádost o podrobné informace o využití
 
-Podnikoví správci si na portálu Azure Enterprise Portal můžou zobrazit souhrnné údaje o využití, výši spotřebovaného peněžního závazku a poplatky za další využití. Tyto poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
+Podnikoví správci si na portálu Azure Enterprise Portal můžou zobrazit souhrnné údaje o využití, výši spotřebované zálohy na Azure a poplatky za další využití. Tyto poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
 
 Pokud si chcete prohlédnout podrobné údaje o využití konkrétních účtů, stáhněte si sestavu podrobných informací o využití tím, že přejdete na **Reports** (Sestavy)  >  **Download Usage** (Stáhnout údaje o využití).
 
@@ -165,7 +166,7 @@ U nepřímých registrací je potřeba, aby partner před zobrazením informací
 
 ## <a name="reports"></a>Sestavy
 
-Podnikoví správci si na portálu Azure Enterprise Portal můžou zobrazit souhrnné údaje o využití, výši spotřebovaného peněžního závazku a poplatky za další využití. Tyto poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
+Podnikoví správci si na portálu Azure Enterprise Portal můžou zobrazit souhrnné údaje o využití, výši spotřebované zálohy na Azure a poplatky za další využití. Tyto poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
 
 ### <a name="azure-enterprise-reports"></a>Sestavy Azure Enterprise
 
@@ -435,7 +436,7 @@ V případě problémů s Power BI zaprotokolujte lístek pomocí [týmu podpory
 
 ### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Proč se značky prostředků nezobrazují u sestav?
 
-Značky prostředků se spravují na webu Azure Portal. Obraťte se na tým předplatného Azure na webu [Azure Portal](https://portal.azure.com). Postupujte podle kroků v článku [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Značky prostředků se spravují na webu Azure Portal. Obraťte se na tým předplatného Azure na webu [Azure Portal](https://portal.azure.com). Postupujte podle kroků v článku [Jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="why-does-my-resource-rate-change-every-day"></a>Proč se mi každý den mění sazba za prostředek?
 

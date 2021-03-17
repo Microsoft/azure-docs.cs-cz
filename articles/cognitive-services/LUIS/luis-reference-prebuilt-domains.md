@@ -3,23 +3,21 @@ title: Předem sestavený odkaz na doménu – LUIS
 titleSuffix: Azure Cognitive Services
 description: Odkaz na předem sestavené domény, které představují předem sestavené kolekce záměrů a entit z Language Understandingch inteligentních služeb (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: d41ec3abfa2e562d5a6e11dd9ed0fcbcffead5c6
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 73b279f98011181b329cdb010041022ab0da57f0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191977"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018629"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Předem sestavený odkaz na doménu pro aplikaci LUIS
-Tento odkaz obsahuje informace o [předem sestavených doménách](luis-how-to-use-prebuilt-domains.md), které představují předem sestavené kolekce záměrů a entit, které Luis nabídky.
+Tento odkaz obsahuje informace o [předem sestavených doménách](./howto-add-prebuilt-models.md), které představují předem sestavené kolekce záměrů a entit, které Luis nabídky.
 
 [Vlastní domény](luis-how-to-start-new-app.md)na rozdíl od začátku bez záměrů a modelů. Do vlastního modelu můžete přidat všechny předem připravené domény a entity.
 
@@ -31,7 +29,7 @@ Následující tabulka shrnuje aktuálně podporované domény. Podpora angličt
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:|
 | Kalendář  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 |Komunikace  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| E-mail     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| E-mailu     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | HomeAutomation          | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Poznámky     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Zadá   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |

@@ -1,24 +1,29 @@
 ---
-title: Kontejnery Docker – LUIS
+title: Instalace a spuštění kontejnerů Docker pro LUIS
 titleSuffix: Azure Cognitive Services
-description: Kontejner LUIS načte vaši vyškolenou nebo publikovanou aplikaci do kontejneru Docker a poskytne přístup k dotazu předpovědi z koncových bodů rozhraní API kontejneru.
+description: Pomocí kontejneru LUIS můžete načítat vyškolené nebo publikované aplikace a získat přístup k jejímu předpovědiu v místním prostředí.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 03/02/2021
 ms.author: aahi
-ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: místní, Docker, kontejner
+ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547388"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040188"
 ---
-# <a name="install-and-run-luis-docker-containers"></a>Instalace a spuštění kontejnerů Docker LUIS
+# <a name="install-and-run-docker-containers-for-luis"></a>Instalace a spuštění kontejnerů Docker pro LUIS
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
+
+Kontejnery umožňují používat LUIS ve vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner LUIS.
 
 Kontejner Language Understanding (LUIS) načte váš vyškolený nebo publikovaný Language Understanding model. Kontejner Docker jako [aplikace Luis](https://www.luis.ai)poskytuje přístup k dotazu předpovědi z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky do aplikace Language Understanding, aby se zlepšila přesnost předpovědi aplikace.
 
@@ -34,7 +39,7 @@ Pokud chcete spustit kontejner LUIS, vezměte na vědomí následující požada
 
 |Vyžadováno|Účel|
 |--|--|
-|Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
+|Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.|
 |`Cognitive Services`Soubor Luis [zabalených aplikací](luis-how-to-start-new-app.md) a prostředků Azure |Aby bylo možné kontejner používat, musíte mít:<br><br>* _Cognitive Services_ prostředek Azure a související fakturační klíč identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru. <br>* Vyškolená nebo publikovaná aplikace zabalená jako připojená vstup do kontejneru s jeho přidruženým ID aplikace. Zabalený soubor můžete získat z portálu LUIS nebo z rozhraní API pro vytváření obsahu. Pokud získáváte LUIS zabalenou aplikaci z [rozhraní API pro vytváření obsahu](#authoring-apis-for-package-file), budete také potřebovat svůj _klíč pro vytváření obsahu_.<br><br>Tyto požadavky slouží k předání argumentů příkazového řádku do následujících proměnných:<br><br>**{AUTHORING_KEY}**: Tento klíč se používá k získání zabalené aplikace ze služby Luis v cloudu a k nahrání protokolů dotazů zpátky do cloudu. Formát je `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .<br><br>**{APP_ID}**: Toto ID se používá k výběru aplikace. Formát je `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` .<br><br>**{API_KEY}**: Tento klíč se používá ke spuštění kontejneru. Klíč koncového bodu můžete najít na dvou místech. První je Azure Portal v seznamu klíčů prostředků _Cognitive Services_ . Klíč koncového bodu je k dispozici také na portálu LUIS na stránce klíče a nastavení koncového bodu. Nepoužívejte počáteční klíč.<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce Přehled.<br><br>Klíč pro [vytváření obsahu a klíč koncového bodu](luis-limits.md#key-limits) mají různé účely. Nepoužívejte je zaměnitelné. |
 
@@ -66,10 +71,10 @@ Základní a paměť odpovídají `--cpus` `--memory` nastavení a, která se po
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí `docker pull`
 
-Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu si stáhněte image kontejneru z `mcr.microsoft.com/azure-cognitive-services/luis` úložiště:
+Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu si stáhněte image kontejneru z `mcr.microsoft.com/azure-cognitive-services/language/luis` úložiště:
 
 ```
-docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/language/luis:latest
 ```
 
 Úplný popis dostupných značek, jako je například `latest` použitý v předchozím příkazu, najdete v tématu [Luis](https://go.microsoft.com/fwlink/?linkid=2043204) v Docker Hub.
@@ -84,7 +89,7 @@ Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použij
 
 1. [Exportujte balíček](#export-packaged-app-from-luis) pro kontejner z portálu Luis nebo z rozhraní Luis API.
 1. Přesuňte soubor balíčku do požadovaného **vstupního** adresáře v [hostitelském počítači](#the-host-computer). Neměňte přejmenování, změnu, přepsání ani dekomprimaci souboru balíčku LUIS.
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným _vstupním připojením_ a nastavením fakturace. [examples](luis-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným _vstupním připojením_ a nastavením fakturace. [](luis-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 1. Až budete s kontejnerem hotovi, [importujte protokoly koncových bodů](#import-the-endpoint-logs-for-active-learning) z výstupního připojení na portálu Luis a [zastavte](#stop-the-container) kontejner.
 1. K vylepšení aplikace použijte [aktivní učení](luis-how-to-review-endpoint-utterances.md) na portálu Luis na stránce **zkontrolovat koncový bod projevy** .
@@ -103,7 +108,7 @@ Po spuštění kontejneru Docker umístěte soubor balíčku do adresáře a odk
 
 ### <a name="package-types"></a>Typy balíčků
 
-Vstupní adresář pro připojení může obsahovat současně **produkční**, **pracovní**a modelované modely **verzí** aplikace. Všechny balíčky jsou připojené.
+Vstupní adresář pro připojení může obsahovat současně **produkční**, **pracovní** a modelované modely **verzí** aplikace. Všechny balíčky jsou připojené.
 
 |Typ balíčku|Rozhraní API koncového bodu dotazu|Dostupnost dotazů|Formát souboru balíčku|
 |--|--|--|--|
@@ -198,7 +203,7 @@ Pokud chcete stáhnout balíček se správou verzí, přečtěte si [tady dokume
 
 Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` .
 
-[Examples](luis-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
+[](luis-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -206,7 +211,7 @@ docker run --rm -it -p 5000:5000 ^
 --cpus 2 ^
 --mount type=bind,src=c:\input,target=/input ^
 --mount type=bind,src=c:\output\,target=/output ^
-mcr.microsoft.com/azure-cognitive-services/luis ^
+mcr.microsoft.com/azure-cognitive-services/language/luis ^
 Eula=accept ^
 Billing={ENDPOINT_URI} ^
 ApiKey={API_KEY}
@@ -225,7 +230,7 @@ Tento příkaz:
 * Uloží protokoly kontejnerů a LUIS do výstupního připojení na *C:\output*, které se nachází na hostiteli kontejneru.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
-[examples](luis-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
+[](luis-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
 
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
@@ -245,7 +250,7 @@ Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`.
 
 # <a name="v3-prediction-endpoint"></a>[Prediktivní koncový bod V3](#tab/v3)
 
-|Typ balíčku|Příkaz HTTP|Trasa|Parametry dotazu|
+|Typ balíčku|Příkaz HTTP|Trasa|Parametry dotazů|
 |--|--|--|--|
 |Publikováno|ZÍSKAT, ZVEŘEJNIT|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 |Verzí|ZÍSKAT, ZVEŘEJNIT|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
@@ -261,7 +266,7 @@ Parametry dotazu konfigurují jak a co je vráceno v odpovědi na dotaz:
 
 # <a name="v2-prediction-endpoint"></a>[Koncový bod pro předpověď v2](#tab/v2)
 
-|Typ balíčku|Příkaz HTTP|Trasa|Parametry dotazu|
+|Typ balíčku|Příkaz HTTP|Trasa|Parametry dotazů|
 |--|--|--|--|
 |Publikováno|[získat](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [zveřejnit](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
 |Verzí|ZÍSKAT, ZVEŘEJNIT|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
@@ -345,7 +350,7 @@ Na portálu LUIS vyberte svoji aplikaci a pak vyberte **importovat protokoly kon
 
 ![Importovat soubory protokolu kontejneru pro aktivní učení](./media/luis-container-how-to/upload-endpoint-log-files.png)
 
-Po nahrání protokolu [Zkontrolujte koncový bod](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) projevy na portálu Luis.
+Po nahrání protokolu [Zkontrolujte koncový bod](./luis-concept-review-endpoint-utterances.md) projevy na portálu Luis.
 
 <!--  ## Validate container is running -->
 
@@ -369,10 +374,7 @@ Kontejner LUIS odesílá informace o fakturaci do Azure pomocí prostředku _Cog
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](luis-container-configuration.md).
 
-<!--blogs/samples/video courses -->
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postup pro stažení, instalaci a spuštění kontejnerů Language Understanding (LUIS). Souhrn:
 

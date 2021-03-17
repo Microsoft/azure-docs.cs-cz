@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a0089d246169ad4215075662500794e7143940e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993846"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90601805"
 ---
 # <a name="conditional-access-session"></a>Podmíněný přístup: relace
 
@@ -57,7 +57,7 @@ Nastavení četnosti přihlašování funguje s aplikacemi, které implementoval
 - Word, Excel, PowerPoint Online
 - OneNote Online
 - Office.com
-- Portál pro správu O365
+- Portál pro správu Microsoft 365
 - Exchange Online
 - SharePoint a OneDrive
 - Webový klient pro týmy

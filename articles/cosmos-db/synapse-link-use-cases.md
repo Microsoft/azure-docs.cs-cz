@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 493a2b0d0aab47c2e38648ec8f6be75685dfd7ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119490"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463111"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link pro Azure Cosmos DB: Případy použití pro analýzu téměř v reálném čase
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Odkaz na Azure synapse](synapse-link.md) pro Azure Cosmos DB je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy prakticky v reálném čase nad provozními daty. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
 
@@ -34,7 +35,7 @@ Výrobci se přihlásili k technologiím nativním pro Cloud, aby bylo možné p
 
 Následující architektura ukazuje sílu využití Azure Cosmos DB jako provozní databázi cloudu a synapse propojení v rámci analýzy dodavatelských řetězců:
 
-:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="Odkaz na Azure synapse pro Azure Cosmos DB v analýze dodavatelských řetězců" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="Odkaz na Azure synapse pro Azure Cosmos DB v analýze dodavatelských řetězců " border="false":::
 
 Na základě předchozí architektury můžete dosáhnout následujících případů použití s odkazem na synapse pro Azure Cosmos DB:
 
@@ -52,9 +53,9 @@ Na základě předchozí architektury můžete dosáhnout následujících pří
 
   Synapse odkaz pro Azure Cosmos DB povoluje/Reporting scénáře s bohatou business intelligence (BI):
 
-  * Dotazy na provozní data z Azure Cosmos DB analytického úložiště pomocí nativní integrace s synapse bez SQL serveru a plnou expresivity jazyka T-SQL.
+  * Dotazy na provozní data z Azure Cosmos DB analytického úložiště pomocí nativní integrace s SQL serverem bez serveru a plnou expresivity jazyka T-SQL.
 
-  * Modelujte a publikujte automatické aktualizace řídicích panelů BI přes Azure Cosmos DB prostřednictvím synapse podpory bez SQL serveru pro známé nástroje BI. Například Azure Analysis Services, Power BI Premium atd.
+  * Modelujte a publikujte automatické aktualizace řídicích panelů BI přes Azure Cosmos DB prostřednictvím podpory fondu SQL bez serveru pro známé nástroje BI. Například Azure Analysis Services, Power BI Premium atd.
 
 Následuje několik pokynů pro integraci dat pro dávkové & streamování dat do Azure Cosmos DB:
 
@@ -86,13 +87,13 @@ Následuje architektura, která využívá možnosti cloudového nativního HTAP
 
 Synapse odkaz pro případy použití Azure Cosmos DB:
 
-* **Příprava & prognózování výukového kanálu:** Historická provozní data ze senzorů zařízení IoT je možné využít ke školení prediktivních modelů, jako jsou detektory anomálií. Tyto detektory anomálií se pak nasadí zpátky na hranici monitorování v reálném čase. Tato smyčka virtuous umožňuje nepřetržité přeškolení prediktivních modelů.
+* **Příprava & prognózování výukového kanálu:** Historická provozní data ze senzorů zařízení IoT je možné využít ke školení prediktivních modelů, jako jsou detektory anomálií. Tyto detektory anomálií se pak zpětně nasadí na hranici kvůli monitorování v reálném čase. Tato smyčka virtuous umožňuje nepřetržité přeškolení prediktivních modelů.
 
 * **Provozní sestavy:** Díky nárůstu digitálních vlákenných iniciativ společnosti shromažďují velké množství provozních dat od velkého počtu senzorů a vytvářejí tak digitální kopii každého počítače. Tyto datové pravomoci musí aplikace BI pochopit trendy v historických datech kromě nedávných aktivních dat v aplikacích v reálném čase.
 
 ## <a name="sample-scenario-htap-for-azure-cosmos-db"></a>Ukázkový scénář: HTAP pro Azure Cosmos DB
 
-Pro skoro desetiletí Azure Cosmos DB používali tisíce zákazníků pro kritické aplikace, které vyžadují Elastické škálování, klíč globální distribuci, replikaci s více hlavními servery pro nízkou latenci a vysokou dostupnost obou čtení & zápisu ve svých transakčních úlohách.
+Skoro pro desetiletí Azure Cosmos DB používali tisíce zákazníků pro kritické aplikace, které vyžadují Elastické škálování, klíč globální distribuci, replikaci s více oblastmi pro nízkou latenci a vysokou dostupnost obou čtení & zápisu ve svých transakčních úlohách.
  
 Následující seznam obsahuje přehled různých vzorů úloh, které jsou podporované provozními daty pomocí Azure Cosmos DB:
 
@@ -110,15 +111,15 @@ Podíváme se na příklad společnosti elektronického obchodování CompanyXYZ
 
 * Základní firmy CompanyXYZ závisí na systému správy inventáře, takže dostupnost & spolehlivosti jsou požadavky na základní pilíř. Výhody použití Azure Cosmos DB:
 
-  * Díky důkladné integraci s infrastrukturou Azure a transparentní globální replikaci s více hlavními servery poskytuje Azure Cosmos DB v oboru špičkové [99,999% vysoké dostupnosti](high-availability.md) v rámci regionálních výpadků.
+  * Díky důkladné integraci s infrastrukturou Azure a transparentním zápisům na více oblastí, globální replikace Azure Cosmos DB poskytuje špičkovou [99,999% vysokou dostupnost](high-availability.md) před místními výpadky.
 
 * Partneři dodavatelského dodavatelských CompanyXYZ můžou být v různých geografických umístěních, ale můžou si Zobrazit jediné zobrazení inventáře produktů na celém světě, aby bylo možné podporovat jejich místní operace. To zahrnuje nutnost číst aktualizace provedené jinými partnery dodavatelských řetězců v reálném čase. I schopnost dělat aktualizace, aniž byste se museli starat o konflikty s ostatními partnery při vysoké propustnosti. Výhody použití Azure Cosmos DB:
 
-  * S jedinečným protokolem replikace s více hlavními servery a transakčním úložištěm s podporou zápisu s bezplatným zápisem Azure Cosmos DB garantuje globálně než 10 MS latence pro indexované čtení i zápisy v 99 percentilu globálně.
+  * S jeho jedinečnou mezioblastí zapisuje protokol replikace a transakční úložiště optimalizované pro zápis bez zámků, Azure Cosmos DB garantuje méně než 10 MS latence pro indexované čtení i zápisy v 99 percentilu globálně.
 
   * Ingestování s vysokou propustností datových kanálů Batch & streamování v [reálném čase](index-policy.md) v transakčním úložišti.
 
-  * Azure Cosmos DB transakční úložiště poskytuje tři další možnosti než dvě extrémní hodnoty silné a konečné úrovně konzistence, aby dosáhly [kompromisů pro dostupnost a výkon](consistency-levels-tradeoffs.md) , které jsou nejblíže potřebám podniku.
+  * Azure Cosmos DB transakční úložiště poskytuje tři další možnosti než dvě extrémní hodnoty silné a konečné úrovně konzistence, aby dosáhly [kompromisů pro dostupnost a výkon](./consistency-levels.md) , které jsou nejblíže potřebám podniku.
 
 * Partneři dodavatelských dodavatelských společností mají vysoce výkyvy ve vzorech přenosů v rozsahu od stovek po miliony požadavků, a proto musí platforma pro správu inventáře zabývat se neočekávaným burstiness v provozu.  Výhody použití Azure Cosmos DB:
 
@@ -134,7 +135,7 @@ Další informace najdete v následujících dokumentech:
 
 * [Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md) 
 
-* [Azure Cosmos DB analytické úložiště](analytical-store-introduction.md)
+* [Analytické úložiště Azure Cosmos DB](analytical-store-introduction.md)
 
 * [Práce s odkazem na Azure synapse pro Azure Cosmos DB](configure-synapse-link.md)
 
@@ -142,4 +143,4 @@ Další informace najdete v následujících dokumentech:
 
 * [Apache Spark ve službě Azure synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [SQL Server bez a na vyžádání v Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Podpora běhového fondu SQL bez serveru ve službě Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)

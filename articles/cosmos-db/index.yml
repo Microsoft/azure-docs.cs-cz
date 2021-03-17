@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace k Azure Cosmos DB
-summary: Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely pro provozní a analytické úlohy. Nabízí funkci multi-master pomocí automatického škálování propustnosti, výpočtů a úložiště.
+summary: Azure Cosmos DB – rychlá databáze NoSQL s rychlostí a dostupností zajištěnou smlouvou SLA, automatickou a okamžitou škálovatelností a open source rozhraní API pro MongoDB a Cassandra.
 metadata:
   title: Azure Cosmos DB
-  description: Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely pro provozní a analytické úlohy. Nabízí funkci multi-master pomocí automatického škálování propustnosti, výpočtů a úložiště.
+  description: Azure Cosmos DB – rychlá databáze NoSQL s rychlostí a dostupností zajištěnou smlouvou SLA, automatickou a okamžitou škálovatelností a open source rozhraní API pro MongoDB a Cassandra.
   services: service
   ms.service: cosmos-db
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: b99ded362ea366222a656d9c127defc63ff6b37b
-  ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-  ms.translationtype: HT
+  ms.openlocfilehash: 0dda9cb110592c9fd9325f607b455d16c32da7f3
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/03/2020
-  ms.locfileid: "84309794"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101658008"
 landingContent:
 - title: Informace o databázi Azure Cosmos
   linkLists:
@@ -24,184 +24,78 @@ landingContent:
     links:
     - text: Co je Azure Cosmos DB?
       url: introduction.md
-  - linkListType: concept
+  - linkListType: get-started
     links:
-    - text: Kompatibilita přenosového protokolu s MongoDB
-      url: mongodb-feature-support.md
-    - text: Kompatibilita přenosového protokolu s Apache Cassandrou
-      url: cassandra-support.md
-    - text: Kompatibilita přenosového protokolu s Tinkerpop Gremlinem
-      url: gremlin-support.md
+    - text: NoSQL vs. relační databáze
+      url: relational-nosql.md
+    - text: Model prostředků Azure Cosmos DB
+      url: account-databases-containers-items.md
+    - text: Globální distribuce dat
+      url: distribute-data-globally.md
+    - text: Dělení
+      url: partitioning-overview.md
+    - text: Jednotky propustnosti a žádostí
+      url: request-units.md
+    - text: Modelování a dělení dat
+      url: how-to-model-partition-example.md
+    - text: Kvóty služeb
+      url: concepts-limits.md
   - linkListType: quickstart
     links:
     - text: Vytvoření účtu Azure Cosmos
       url: create-cosmosdb-resources-portal.md
-- title: Globální distribuce
-  linkLists:
-  - linkListType: concept
+  - linkListType: video
     links:
-    - text: Přehled
-      url: distribute-data-globally.md
-    - text: Úrovně konzistence
-      url: consistency-levels.md
-    - text: Volba vhodné úrovně konzistence
-      url: consistency-levels-choosing.md
-    - text: Úrovně konzistence a rozhraní API
-      url: consistency-levels-across-apis.md
-    - text: Kompromisy mezi konzistencí, dostupností a výkonem
-      url: consistency-levels-tradeoffs.md
-    - text: Vysoká dostupnost
-      url: high-availability.md
-    - text: Zásady řešení a typy konfliktů
-      url: conflict-resolution-policies.md
-    - text: Globální distribuce dat pod pokličkou
-      url: global-dist-under-the-hood.md
-    - text: Přítomnost v konkrétních oblastech
-      url: regional-presence.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurace multi-masteru
-      url: how-to-multi-master.md
-    - text: Konfigurace úrovní konzistence
-      url: how-to-manage-consistency.md
-    - text: Implementace vlastní synchronizace
-      url: how-to-manage-conflicts.md
-    - text: Konfigurace zásad řešení konfliktů
-      url: how-to-manage-conflicts.md
-- title: Dělení dat a osvědčené postupy
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Přehled
-      url: partitioning-overview.md
-    - text: Dělení a horizontální škálování
-      url: partition-data.md
-    - text: Syntetický klíč oddílu
-      url: synthetic-partition-keys.md
-    - text: Modelování dat
-      url: modeling-data.md
-  - linkListType: how-to-guide
-    links:
-    - text: Vytvoření kontejneru s rozsáhlým klíčem oddílu
-      url: large-partition-keys.md
-    - text: Migrace na dělený kontejner
-      url: migrate-containers-partitioned-to-nonpartitioned.md
-- title: Vytváření a migrace prostředků Cosmos DB
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Co je účet služby Azure Cosmos DB?
-      url: account-overview.md
-    - text: Databáze, kontejnery a položky Azure Cosmos
-      url: databases-containers-items.md
-    - text: Jak se indexují data v Cosmos DB
-      url: index-overview.md
-    - text: Zásady indexování, zahrnutí a vyloučení vlastností
-      url: index-policy.md
-    - text: Hodnota TTL (Time to Live)
-      url: time-to-live.md
-    - text: Omezení jedinečných klíčů
-      url: unique-keys.md
-  - linkListType: how-to-guide
-    links:
-    - text: Vytvoření databáze
-      url: how-to-manage-database-account.md
-    - text: Vytvoření kontejneru
-      url: how-to-create-container.md
-    - text: Dotazování na data z kontejneru
-      url: how-to-query-container.md
-    - text: Konfigurace hodnoty TTL (Time to Live) pro kontejnery a položky
-      url: how-to-time-to-live.md
-    - text: Konfigurace zásad indexování
-      url: how-to-manage-indexing-policy.md
-    - text: Definování jedinečných klíčů
-      url: how-to-define-unique-keys.md
-    - text: Použití emulátoru pro místní vývoj
-      url: local-emulator.md
-    - text: Správa pomocí Azure PowerShellu
-      url: manage-with-powershell.md
-    - text: Správa s využitím rozhraní příkazového řádku Azure
-      url: manage-with-cli.md
-    - text: Správa s využitím šablon Resource Manageru (ARM)
-      url: manage-sql-with-resource-manager.md
-- title: Zřízená propustnost
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Jednotky žádostí
-      url: request-units.md
-    - text: Propustnost na úrovni databáze a kontejneru
-      url: set-throughput.md
-  - linkListType: how-to-guide
-    links:
-    - text: Odhad požadované propustnosti
-      url: estimate-ru-with-capacity-planner.md
-    - text: Zřízení propustnosti pro databázi
-      url: how-to-provision-database-throughput.md
-    - text: Zřízení propustnosti pro kontejner
-      url: how-to-provision-container-throughput.md
-    - text: Získání poplatků za jednotku žádosti
-      url: find-request-unit-charge.md
-    - text: Škálování s využitím časovače Azure Functions
-      url: scale-on-schedule.md
-- title: Sestavení aplikace pomocí rozhraní SQL API
+    - text: Využití datového modelu – zlepšení rychlosti a výkonu vaší aplikace
+      url: https://www.youtube.com/watch?v=wOWa8ecFo88
+- title: Využití rozhraní SQL API v Azure Cosmos DB
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Aplikace konzoly .NET
-      url: create-sql-api-dotnet.md
-    - text: Aplikace v Javě
+    - text: Správa dat s využitím aplikace konzoly .NET
+      url: create-sql-api-dotnet-v4.md
+    - text: Správa dat s využitím aplikace v Javě
       url: create-sql-api-java.md
-    - text: Aplikace v Node.js
-      url: create-sql-api-nodejs.md
-    - text: Aplikace v Pythonu
-      url: create-sql-api-python.md
-    - text: Aplikace v Xamarinu
-      url: create-sql-api-xamarin-dotnet.md
+  - linkListType: concept
+    links:
+    - text: Začínáme s příkazy jazyka SQL
+      url: sql-query-getting-started.md
+    - text: Co je kanál změn?
+      url: change-feed.md
   - linkListType: tutorial
     links:
-    - text: Webová aplikace .NET
+    - text: Vytvoření webové aplikace v .NET pro správu dat
       url: sql-api-dotnet-application.md
     - text: Aplikace v Javě s asynchronní sadou SDK
-      url: sql-api-async-java-get-started.md
-    - text: Ukázka aplikace v Javě s kanálem změn
-      url: create-sql-api-java-changefeed.md
+      url: ./create-sql-api-java.md
     - text: Dotazování na data pomocí dotazů SQL
       url: tutorial-query-sql-api.md
   - linkListType: how-to-guide
     links:
-    - text: Vizualizace dat pomocí Power BI
-      url: powerbi-visualize.md
+    - text: Ladění výkonu dotazů
+      url: sql-api-query-metrics.md
     - text: Definování uložených procedur, triggerů a funkcí UDF
       url: how-to-write-stored-procedures-triggers-udfs.md
-    - text: Provádění uložených procedur, triggerů a funkcí UDF
-      url: how-to-use-stored-procedures-triggers-udfs.md
-  - linkListType: reference
-    links:
-    - text: .NET
-      url: sql-api-sdk-dotnet.md
-    - text: Java
-      url: sql-api-sdk-java.md
-    - text: JavaScript
-      url: sql-api-sdk-node.md
-    - text: REST
-      url: /rest/api/cosmos-db/
-  - linkListType: learn
-    links:
-    - text: Vytváření a správa dat rozhraní SQL API
-      url: /learn/modules/store-access-data-cosmos-table-api/
-- title: Sestavení aplikace pomocí rozhraní MongoDB API
+- title: Využití rozhraní API pro MongoDB v Azure Cosmos DB
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je rozhraní API pro MongoDB v Azure Cosmos DB?
+      url: mongodb-introduction.md
   - linkListType: quickstart
     links:
-    - text: Aplikace v .NET
+    - text: Správa dat s využitím aplikace v .NET
       url: create-mongodb-dotnet.md
-    - text: Aplikace v Javě
-      url: create-mongodb-java.md
-    - text: Aplikace v Node.js
-      url: create-mongodb-nodejs.md
-    - text: Aplikace v Pythonu
-      url: create-mongodb-flask.md
+    - text: Správa dat s využitím aplikace v GoLangu
+      url: create-mongodb-go.md
+  - linkListType: concept
+    links:
+    - text: Kompatibilita přenosového protokolu s MongoDB
+      url: mongodb-feature-support-40.md
+    - text: Příkazy rozšíření MongoDB
+      url: mongodb-custom-commands.md
+    - text: Změna datových proudů
+      url: mongodb-change-streams.md
   - linkListType: tutorial
     links:
     - text: Dotazování na data pomocí shellu MongoDB
@@ -210,78 +104,62 @@ landingContent:
     links:
     - text: Správa indexování dat
       url: mongodb-indexing.md
-    - text: Nastavení hodnoty TTL (Time to Live)
-      url: mongodb-time-to-live.md
     - text: Připojení pomocí Robo 3T
       url: mongodb-robomongo.md
-- title: Sestavení aplikace pomocí rozhraní Gremlin API
+- title: Použití rozhraní Gremlin API v Azure Cosmos DB
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je rozhraní API pro Gremlin v Azure Cosmos DB?
+      url: graph-introduction.md
   - linkListType: quickstart
     links:
-    - text: Použití konzoly Gremlin
+    - text: Správa dat s využitím konzoly Gremlin
       url: create-graph-gremlin-console.md
-    - text: Aplikace v .NET
+    - text: Správa dat s využitím aplikace v .NET
       url: create-graph-dotnet.md
-    - text: Aplikace v Javě
-      url: create-graph-java.md
-    - text: Aplikace v Node.js
-      url: create-graph-nodejs.md
-    - text: Aplikace v Pythonu
-      url: create-graph-python.md
-    - text: Aplikace v PHP
-      url: create-graph-php.md
+  - linkListType: concept
+    links:
+    - text: Kompatibilita přenosového protokolu s Tinkerpop Gremlinem
+      url: gremlin-support.md
+    - text: Omezení služeb rozhraní Gremlin API
+      url: gremlin-limits.md
   - linkListType: how-to-guide
     links:
     - text: Modelování dat grafů
       url: graph-modeling.md
-    - text: Osvědčené postupy pro dělení dat grafu
+    - text: Osvědčené postupy pro dělení dat grafů
       url: graph-partitioning.md
     - text: Optimalizace dotazů Gremlinu
       url: graph-execution-profile.md
-  - linkListType: learn
-    links:
-    - text: Ukládání dat grafu a přístup k nim
-      url: /learn/modules/store-access-data-cosmos-graph-api/
-- title: Sestavení aplikace pomocí rozhraní API Cassandra
+- title: Použití rozhraní API Cassandra v Azure Cosmos DB
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je rozhraní API Cassandra v Azure Cosmos DB?
+      url: cassandra-introduction.md
   - linkListType: quickstart
     links:
-    - text: .NET
-      url: create-cassandra-dotnet.md
-    - text: .NET Core
+    - text: Správa dat s využitím aplikace v .NET Core
       url: create-cassandra-dotnet-core.md
-    - text: Java v3
-      url: create-cassandra-java.md
-    - text: Java v4
+    - text: Správa dat s využitím aplikace v Javě
       url: create-cassandra-java-v4.md
-    - text: Node.js
-      url: create-cassandra-nodejs.md
-    - text: Python
-      url: create-cassandra-python.md
+  - linkListType: concept
+    links:
+    - text: Kompatibilita přenosového protokolu s Apache Cassandrou
+      url: cassandra-support.md
+    - text: Elastické škálování
+      url: manage-scale-cassandra.md
+    - text: Sekundární indexy
+      url: cassandra-secondary-index.md
+    - text: Dělení
+      url: cassandra-partitioning.md
   - linkListType: how-to-guide
     links:
     - text: Připojení k rozhraní Cassandra API ze Sparku
       url: cassandra-spark-generic.md
-- title: Optimalizace výkonu a nákladů
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Náklady na propustnost
-      url: optimize-cost-throughput.md
-    - text: Náklady na dotaz
-      url: optimize-cost-queries.md
-    - text: Náklady na úložiště
-      url: optimize-cost-storage.md
-    - text: Náklady na čtení a zápis
-      url: optimize-cost-reads-writes.md
-    - text: Náklady na více oblastí
-      url: optimize-cost-regions.md
-    - text: Výkon dotazů
-      url: sql-api-query-metrics.md
-  - linkListType: how-to-guide
-    links:
-    - text: Optimalizace pomocí modelování dat
-      url: how-to-model-partition-example.md
+    - text: Podpora kanálů změn s predikáty dotazů
+      url: cassandra-change-feed.md?tabs=java
 - title: Migrace dat do Cosmos DB
   linkLists:
   - linkListType: tutorial
@@ -291,7 +169,7 @@ landingContent:
     - text: Shell CQL, Spark – Cassandra API
       url: cassandra-import-data.md
     - text: Azure Database Migration Service – MongoDB API
-      url: /azure/dms/tutorial-mongodb-cosmos-db
+      url: ../dms/tutorial-mongodb-cosmos-db.md
     - text: AzCopy, nástroj pro migraci dat – rozhraní API pro tabulky
       url: table-import.md
   - linkListType: how-to-guide
@@ -306,17 +184,29 @@ landingContent:
       url: cassandra-migrate-cosmos-db-blitzz.md
     - text: Migrace stovek TB dat
       url: migrate-cosmosdb-data.md
-- title: Integrované analýzy s využitím Apache Sparku
+- title: Analýzy s využitím Azure Synapse Linku
   linkLists:
   - linkListType: concept
     links:
-    - text: Případy použití analýz
-      url: analytics-usecases.md
-    - text: Architektura lambda
-      url: lambda-architecture.md
+    - text: Synapse Link pro Azure Cosmos DB
+      url: synapse-link.md
+    - text: Analytické úložiště Azure Cosmos DB
+      url: analytical-store-introduction.md
+    - text: Případy použití Synapse Linku
+      url: synapse-link-use-cases.md
   - linkListType: how-to-guide
     links:
-    - text: Použití konektoru Cosmos DB –> Spark
-      url: spark-connector.md
-    - text: Použití Cosmos DB s Apache Kafka
-      url: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
+    - text: Konfigurace Azure Synapse Linku
+      url: configure-synapse-link.md
+- title: Rozhraní API pro tabulky v Azure Cosmos DB
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Správa dat s využitím aplikace v .NET
+      url: create-table-dotnet.md
+    - text: Správa dat s využitím aplikace v Javě
+      url: create-table-java.md
+  - linkListType: concept
+    links:
+    - text: Rozdíly mezi rozhraním API pro tabulky a Azure Table Storage
+      url: table-support.md

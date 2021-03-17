@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a62c9bbde0726c8dec8fba1f69e221bd4e4b63bc
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080450"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209845"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Pochopení ID instancí pro virtuální počítače Azure VM Scale set
 Tento článek popisuje ID instancí pro sady škálování a různé způsoby jejich povrchu.
@@ -27,7 +27,7 @@ REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/reso
 
 PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Další informace najdete v [dokumentaci k PowerShellu](/powershell/module/az.compute/set-azvmssvm))
 
-CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Další informace najdete v [dokumentaci k](/cli/azure/vmss?view=azure-cli-latest)rozhraní příkazového řádku).
+CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Další informace najdete v [dokumentaci k](/cli/azure/vmss)rozhraní příkazového řádku).
 
 Seznam ID instancí můžete získat zobrazením všech instancí v sadě škálování:
 
@@ -35,7 +35,7 @@ REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resou
 
 PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Další informace najdete v [dokumentaci k PowerShellu](/powershell/module/az.compute/get-azvmssvm))
 
-CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Další informace najdete v [dokumentaci k](/cli/azure/vmss?view=azure-cli-latest)rozhraní příkazového řádku).
+CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Další informace najdete v [dokumentaci k](/cli/azure/vmss)rozhraní příkazového řádku).
 
 K vypsání virtuálních počítačů v sadě škálování můžete použít taky [Resources.Azure.com](https://resources.azure.com) nebo [Azure SDK](https://azure.microsoft.com/downloads/) .
 

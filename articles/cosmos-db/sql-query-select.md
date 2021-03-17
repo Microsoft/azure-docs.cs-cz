@@ -3,17 +3,19 @@ title: Klauzule SELECT v Azure Cosmos DB
 description: Seznamte se s klauzulí SELECT jazyka SQL pro Azure Cosmos DB. Použijte SQL jako dotazovací jazyk Azure Cosmos DB JSON.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072e17b1c0ea312b4adfa1687e447fd2cadde233
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83005953"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335432"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Klauzule SELECT v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Každý dotaz se skládá z `SELECT` klauzule a volitelných klauzulí [from](sql-query-from.md) a [WHERE](sql-query-where.md) podle standardů ANSI SQL. Obvykle je zdroj v klauzuli vyhodnocen `FROM` a `WHERE` klauzule používá filtr na zdroj pro načtení podmnožiny položek JSON. `SELECT`Klauzule potom v seznamu Select vypíše požadované hodnoty JSON.
 
@@ -59,7 +61,7 @@ SELECT <select_specification>
 
 ## <a name="remarks"></a>Poznámky
 
-`SELECT *`Syntaxe je platná pouze v případě, že klauzule FROM deklaruje přesně jeden alias. `SELECT *`poskytuje projekci identity, která může být užitečná, pokud není potřeba žádná projekce. PŘÍKAZ SELECT * je platný pouze v případě, že je zadána klauzule FROM a byl zaveden pouze jeden vstupní zdroj.  
+`SELECT *`Syntaxe je platná pouze v případě, že klauzule FROM deklaruje přesně jeden alias. `SELECT *` poskytuje projekci identity, která může být užitečná, pokud není potřeba žádná projekce. PŘÍKAZ SELECT * je platný pouze v případě, že je zadána klauzule FROM a byl zaveden pouze jeden vstupní zdroj.  
   
 `SELECT <select_list>`A `SELECT *` jsou "syntaktický cukr" a mohou být případně vyjádřeny pomocí jednoduchých příkazů SELECT, jak je znázorněno níže.  
   

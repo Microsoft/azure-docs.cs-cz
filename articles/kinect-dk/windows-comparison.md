@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, porovnání, SDK, rozdíly, hardware, software
 ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87031571"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Porovnání Azure Kinect a Kinect Windows v2
@@ -22,7 +22,7 @@ Nástroje pro vývoj hardwaru a softwaru ve službě Azure Kinect DK mají rozd�
 
 V následující tabulce jsou uvedeny rozdíly vysoké úrovně mezi službou Azure Kinect Development Kit a Kinect pro Windows v2.
 
-| Funkce | Typ | Azure Kinect DK | Kinect pro Windows v2 |
+| Příznak | Typ | Azure Kinect DK | Kinect pro Windows v2 |
 | ------- | ---- | --------------- | --------------------- |
 | **Zvuk** | Podrobnosti  | 7. kruhové pole MIC | 4 – lineární pole s podporou MIC |
 | **Snímač pohybu** | Podrobnosti | Gyro na 3 osy akcelerometr – osa 3 | akcelerometr – 3 osy |
@@ -71,7 +71,7 @@ Sada funkcí sady Azure Kinect SDK se liší od Kinect pro Windows v2, jak je po
 | | BodyIndexFrame | Sada SDK pro sledování textu  |
 | Mapování souřadnic|CoordinateMapper| [SADA senzorů – transformace obrázků](use-image-transformation.md) |
 |Sledování obličeje | FaceFrame | [Cognitive Services: Face](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    Rozpoznávání řeči    |    –                      |    [Cognitive Services: řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    Rozpoznávání řeči    |    Není k dispozici                      |    [Cognitive Services: řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>Další kroky
 

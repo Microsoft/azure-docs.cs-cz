@@ -1,29 +1,30 @@
 ---
-title: Instalace a spuštění kontejnerů – Face
+title: Instalace a spuštění kontejnerů Docker pro rozhraní API pro rozpoznávání tváře
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejnery pro tvář v tomto výukovém kurzu.
+description: Pomocí kontejneru Docker pro rozhraní API pro rozpoznávání tváře můžete detekovat a identifikovat lidské plošky na obrázcích.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: místní, Docker, kontejner, identifikace
+ms.openlocfilehash: 36cbd7bd24304871593b107f9b8ed9be02ce46de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548459"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706788"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Instalace a spuštění kontejnerů obličeje (Preview)
 
 > [!IMPORTANT]
 > Došlo k dosažení limitu počtu uživatelů kontejnerů Rozpoznávání tváře. V současné době nepřijímáme nové přihlášky ke kontejnerům Rozpoznávání tváře.
 
-Azure Cognitive Services Face poskytuje standardizovaný kontejner pro Linux pro Docker, který detekuje lidské obličeje na obrázcích. Také identifikuje atributy, které zahrnují orientační orientační prvky, jako jsou například nos a oči, pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli dvě plošky ve stejné imagi nebo v různých imagích jsou stejné pomocí skóre spolehlivosti. Ploška také může porovnat plošky s databází a zjistit, zda již existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.
+Azure Cognitive Services rozhraní API pro rozpoznávání tváře poskytuje kontejner pro Linux Docker, který detekuje a analyzuje lidské obličeje na obrázcích. Také identifikuje atributy, které zahrnují orientační orientační prvky, jako jsou například nos a oči, pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli dvě plošky ve stejné imagi nebo v různých imagích jsou stejné pomocí skóre spolehlivosti. Ploška také může porovnat plošky s databází a zjistit, zda již existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
@@ -76,14 +77,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 Po dokončení kontejneru v [hostitelském počítači](#the-host-computer)použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run) s požadovaným nastavením fakturace. [examples](./face-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu. 
+1. [Spusťte kontejner](#run-the-container-with-docker-run) s požadovaným nastavením fakturace. [](./face-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu. 
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint) 
 
 ## <a name="run-the-container-with-docker-run"></a>Spuštění kontejneru pomocí Docker run
 
 Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` .
 
-[Examples](face-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
+[](face-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -100,7 +101,7 @@ Tento příkaz:
 * Zveřejňuje port TCP 5000 a přiděluje pseudo TTY pro kontejner.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači. 
 
-[examples](./face-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu. 
+[](./face-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu. 
 
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, nebo se kontejner nespustí, musí být zadány možnosti, a. Další informace najdete v tématu [fakturace](#billing).
@@ -137,11 +138,7 @@ Kontejnery služby obličeje odesílají informace o fakturaci do Azure pomocí 
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](./face-resource-container-config.md).
 
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů služeb obličeje. Souhrn:
 
@@ -157,5 +154,5 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
 
 * Nastavení konfigurace najdete v tématu [konfigurace kontejnerů](face-resource-container-config.md).
 * Další informace o tom, jak detekovat a identifikovat plošky, najdete v tématu [Přehled obličeje](Overview.md).
-* Informace o metodách podporovaných kontejnerem naleznete v [Face API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+* Informace o metodách podporovaných kontejnerem naleznete v [rozhraní API pro rozpoznávání tváře](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 * Chcete-li použít více Cognitive Services kontejnerů, přečtěte si téma [Cognitive Services kontejnery](../cognitive-services-container-support.md).

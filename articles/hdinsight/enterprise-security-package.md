@@ -1,18 +1,15 @@
 ---
 title: Balíček zabezpečení podniku pro Azure HDInsight
 description: Přečtěte si informace o komponentách a verzích Balíček zabezpečení podniku ve službě Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 07210350826001bd3e0be6e04be211c9de43695a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 442c21c92ef2124ebef1889f99a8d2b806c8ce10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82997253"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943303"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Balíček zabezpečení podniku pro Azure HDInsight
 
@@ -20,15 +17,15 @@ Enterprise Security je volitelný balíček, který můžete přidat do clusteru
 
 * Integrace se službou Active Directory pro ověřování.
 
-    V minulosti jste vytvořili clustery HDInsight s místními uživateli a místními uživateli SSH. Místní uživatel správce má přístup ke všem souborům, složkám, tabulkám a sloupcům.  Pomocí Balíček zabezpečení podniku můžete povolit řízení přístupu na základě role integrací služby HDInsight se službou Active Directory. Který zahrnuje místní službu Active Directory Azure Active Directory Domain Services. Nebo Active Directory na virtuálním počítači s IaaS. Správce domény v clusteru může uživatelům udělit vlastní uživatelské jméno a heslo v podnikovém (doméně).
+    V minulosti jste vytvořili clustery HDInsight s místními uživateli a místními uživateli SSH. Místní uživatel správce má přístup ke všem souborům, složkám, tabulkám a sloupcům.  Pomocí Balíček zabezpečení podniku můžete povolit řízení přístupu na základě role Azure integrací služby HDInsight s vašimi Azure Active Directory Domain Services.
 
-    Další informace naleznete v tématech:
+    Další informace naleznete v tématu:
 
     * [Úvod do zabezpečení Apache Hadoop s využitím clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md)
 
     * [Plánování clusterů Apache Hadoop připojených k doméně Azure v HDInsight](./domain-joined/apache-domain-joined-architecture.md)
 
-    * [Konfigurace prostředí sandboxu připojeného k doméně](./domain-joined/apache-domain-joined-configure.md)
+    * [Konfigurace prostředí sandboxu připojeného k doméně](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
     * [Konfigurace clusterů HDInsight připojených k doméně pomocí Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 

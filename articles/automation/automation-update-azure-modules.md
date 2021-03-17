@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f05c3247ecdd77fe4cf02db70c7ba4b2c534f959
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185768"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055344"
 ---
 # <a name="update-azure-powershell-modules"></a>Aktualizace modulů Azure PowerShellu
 
@@ -23,7 +23,7 @@ Nejběžnější moduly PowerShellu jsou ve výchozím nastavení k dispozici v 
 
 Chcete-li se vyhnout vlivu na vaše Runbooky a procesy, které automatizují, proveďte testování a ověření při provádění aktualizací. Pokud nemáte pro tento účel vyhrazený účet služby Automation, zvažte jeho vytvoření, abyste mohli otestovat mnoho různých scénářů během vývoje runbooků. Toto testování by mělo zahrnovat iterativní změny, jako je například aktualizace modulů prostředí PowerShell.
 
-Ujistěte se, že váš účet Automation má vytvořené [přihlašovací údaje účtu Spustit jako pro Azure](manage-runas-account.md) .
+Ujistěte se, že má váš účet Automation vytvořený [účet Spustit jako pro Azure](automation-security-overview.md#run-as-accounts) .
 
 Pokud vaše skripty vyvíjíte místně, doporučujeme mít v místním počítači stejné verze modulu, které máte v účtu Automation při testování, abyste měli jistotu, že dostanete stejné výsledky. Po ověření výsledků a provedení všech požadovaných změn můžete změny přesunout do produkčního prostředí.
 
@@ -38,7 +38,7 @@ Sada Runbook **Update-AutomationAzureModulesForAccount** podporuje ve výchozím
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>Použití aktualizace kódu Runbooku jako regulárního skriptu PowerShellu
 
-Kód Runbooku můžete použít jako regulární skript PowerShellu namísto Runbooku. Pokud to chcete provést, přihlaste se k Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) a pak ji předejte `-Login $false` do skriptu.
+Kód Runbooku můžete použít jako regulární skript PowerShellu namísto Runbooku. Pokud to chcete provést, přihlaste se k Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a pak ji předejte `-Login $false` do skriptu.
 
 ## <a name="use-the-update-runbook-on-sovereign-clouds"></a>Použití sady Runbook aktualizace na cloudech z svrchovaného počítače
 
@@ -46,7 +46,7 @@ Chcete-li použít tuto sadu Runbook v rámci svrchovaného cloudu, použijte `A
 
 ## <a name="use-the-update-runbook-to-update-a-specific-module-version"></a>Aktualizace konkrétní verze modulu pomocí Runbooku aktualizace
 
-Pokud chcete použít konkrétní verzi modulu Azure PowerShell místo nejnovějšího modulu, který je k dispozici v Galerie prostředí PowerShell, předejte tyto verze volitelnému `ModuleVersionOverrides` parametru Runbooku **Update-AutomationAzureModulesForAccount** . Příklady najdete v tématu [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) Runbook. Azure PowerShell moduly, které nejsou uvedené v `ModuleVersionOverrides` parametru, se aktualizují pomocí nejnovějších verzí modulu v Galerie prostředí PowerShell. Pokud do parametru nepředáte žádnou hodnotu `ModuleVersionOverrides` , všechny moduly se aktualizují s nejnovějšími verzemi modulu na galerie prostředí PowerShell. Toto chování je stejné jako u tlačítka **aktualizovat moduly Azure** v Azure Portal.
+Pokud chcete použít konkrétní verzi modulu Azure PowerShell místo nejnovějšího modulu, který je k dispozici v Galerie prostředí PowerShell, předejte tyto verze volitelnému `ModuleVersionOverrides` parametru Runbooku **Update-AutomationAzureModulesForAccount** . Příklady najdete v tématu  [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) Runbook. Azure PowerShell moduly, které nejsou uvedené v `ModuleVersionOverrides` parametru, se aktualizují pomocí nejnovějších verzí modulu v Galerie prostředí PowerShell. Pokud do parametru nepředáte žádnou hodnotu `ModuleVersionOverrides` , všechny moduly se aktualizují s nejnovějšími verzemi modulu na galerie prostředí PowerShell. Toto chování je stejné jako u tlačítka **aktualizovat moduly Azure** v Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 

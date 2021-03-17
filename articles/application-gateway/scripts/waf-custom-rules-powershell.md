@@ -6,16 +6,17 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: 4ffbab992732c39054818b9b4f21871687b05dcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 312f052671036d8153dd19fcf4e559e825fd8464
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083136"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396987"
 ---
 # <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Vytváření vlastních pravidel firewallu webových aplikací (WAF) pomocí Azure PowerShell
 
-Tento skript vytvoří bránu firewall webových aplikací Application Gateway, která používá vlastní pravidla. Vlastní pravidlo blokuje provoz, pokud Hlavička požadavku obsahuje User-Agent *evilbot*.
+Tento skript vytvoří bránu firewall webových aplikací Application Gateway, která používá vlastní pravidla. Vlastní pravidlo blokuje provoz, pokud hlavička žádosti obsahuje User-Agent *evilbot*.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -69,6 +70,6 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vlastních pravidlech WAF najdete v tématu [vlastní pravidla pro Firewall webových aplikací](../custom-waf-rules-overview.md) .
+- Další informace o vlastních pravidlech WAF najdete v tématu [vlastní pravidla pro Firewall webových aplikací](../../web-application-firewall/ag/custom-waf-rules-overview.md) .
 - Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/).
 - Další ukázkové skripty PowerShellu pro aplikační brány najdete v [dokumentaci služby Azure Application Gateway](../powershell-samples.md).

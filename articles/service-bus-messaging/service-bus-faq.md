@@ -2,19 +2,18 @@
 title: Nejčastější dotazy k Azure Service Bus | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Service Bus.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 01/20/2021
+ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080809"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693392"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Service Bus (FAQ)
 
 Tento článek popisuje některé časté otázky týkající se Microsoft Azure Service Bus. [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) můžete také navštívit pro obecné ceny a informace o podpoře Azure.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions-about-azure-service-bus"></a>Obecné otázky týkající se Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
@@ -36,20 +35,32 @@ Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukl�
 
  Dělené entity už nejsou v [SKU úrovně Premium](service-bus-premium-messaging.md)podporované. 
 
+### <a name="where-does-azure-service-bus-store-data"></a><a name="in-region-data-residency"></a>Kde Azure Service Bus ukládá data?
+Úroveň Standard Azure Service Bus využívá Azure SQL Database pro vrstvu úložiště back-end. U všech oblastí kromě oblasti Brazílie – jih a jihovýchodní Asie je záloha databáze hostována v jiné oblasti (obvykle spárováno s Azure). Pro oblast Brazílie – jih a jihovýchodní Asie se zálohy databází ukládají ve stejné oblasti, aby vyhovovaly požadavkům na umístění dat pro tyto oblasti.
+
+Azure Service Bus úrovně Premium ukládá metadata a data v oblastech, které vyberete. Pokud je pro obor názvů Azure Service Bus Premium nastavená geografická zotavení po havárii, zkopírují se metadata do sekundární oblasti, kterou vyberete.
+
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
 K posílání a přijímání zpráv můžete použít následující protokoly s Azure Service Bus:
 
-- Rozšířený protokol řízení front zpráv (AMQP)
-- Protokol SBMP (Service Bus Messaging Protocol)
-- HTTP
+- Rozšířený protokol řízení front zpráv (AMQP) 1,0 (AMQP)
+- Http (Hypertext Transfer Protocol 1,1) s protokolem TLS (HTTPS)
 
-V následující tabulce najdete Odchozí porty, které musíte otevřít, abyste mohli tyto protokoly používat ke komunikaci s Azure Event Hubs. 
+V následující tabulce jsou uvedeny Odchozí porty TCP, které je třeba otevřít pro použití těchto protokolů ke komunikaci s Azure Service Bus:
 
-| Protokol | Porty | Podrobnosti | 
+| Protokol | Port | Podrobnosti | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](service-bus-amqp-protocol-guide.md) . | 
-| SBMP | 9350 až 9354 | Zobrazit [režim připojení](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
-| HTTP, HTTPS | 80, 443 | 
+| AMQP | 5671 | AMQP s protokolem TLS. Viz [Průvodce protokolem AMQP](service-bus-amqp-protocol-guide.md) . | 
+| HTTPS | 443 | Tento port se používá pro HTTP/REST API a pro sokety AMQP-over-Web. |
+
+Port HTTPS se obecně vyžaduje pro odchozí komunikaci, i když se AMQP používá přes port 5671, protože klientské sady SDK a získávání tokenů z Azure Active Directory (Pokud se používají) spouští přes protokol HTTPS několik operací správy prováděných klientskými sadami SDK. 
+
+Oficiální sady Azure SDK obecně používají protokol AMQP k posílání a přijímání zpráv z Service Bus. 
+
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+
+Starší balíček WindowsAzure. ServiceBus pro .NET Framework má možnost použít starší verzi protokolu Service Bus Messaging Protocol (SBMP), která se také označuje jako "NetMessaging". Tento protokol používá porty TCP 9350-9354. Výchozím režimem tohoto balíčku je automatické zjištění, zda jsou tyto porty k dispozici pro komunikaci, a v případě, že se jedná o tento případ, přepne na objekty WebSockets s protokolem TLS přes port 443. Toto nastavení můžete přepsat a tento režim vynutit nastavením `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode) na [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) nastavení, které platí globálně pro aplikaci.
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Jaké IP adresy potřebuji přidat do seznamu povolených adres?
 Chcete-li najít správné IP adresy, které se mají přidat do seznamu povolených připojení, postupujte podle následujících kroků:
@@ -59,9 +70,9 @@ Chcete-li najít správné IP adresy, které se mají přidat do seznamu povolen
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer` . Tato IP adresa je statická. Jediná doba, kterou by se změnila, je, že obor názvů obnovíte na jiný cluster.
+2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer` . 
 
-Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést několik dalších kroků: 
+Pokud používáte **redundanci zóny** pro svůj obor názvů, musíte provést několik dalších kroků: 
 
 1. Nejprve spustíte nástroj nslookup v oboru názvů.
 
@@ -77,8 +88,11 @@ Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést ně
     ```
 3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
+    > [!NOTE]
+    > IP adresa vrácená `nslookup` příkazem není statická IP adresa. Zůstává ale konstantní, dokud se základní nasazení neodstraní nebo nepřesune do jiného clusteru.
+
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Kde najdu IP adresu klienta odesílajícího/přijímaného zprávy do/z oboru názvů? 
-Nebudeme protokolovat IP adresy klientů odesílajících nebo přijímaných zpráv do a z vašeho oboru názvů. Znovu vygenerujte klíče, aby se u všech stávajících klientů nepovedlo ověřit a zkontrolovat nastavení řízení přístupu na základě rolí ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)), aby se zajistilo, že přístup k oboru názvů má jenom povolený uživatel nebo aplikace. 
+Nebudeme protokolovat IP adresy klientů odesílajících nebo přijímaných zpráv do a z vašeho oboru názvů. Znovu vygenerujte klíče, aby se u všech stávajících klientů nepovedlo ověřit a zkontrolovat nastavení [řízení přístupu na základě role (Azure RBAC) v Azure](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)), aby se zajistilo, že přístup k oboru názvů jenom povoleným uživatelům nebo aplikacím. 
 
 Pokud používáte obor názvů **Premium** , omezte přístup k oboru názvů pomocí [filtrování IP adres](service-bus-ip-filtering.md), [koncových bodů služby virtuální sítě](service-bus-service-endpoints.md)a [privátních koncových bodů](private-link-service.md) . 
 
@@ -124,7 +138,7 @@ Seznam limitů a kvót Service Bus najdete v tématu [Přehled kvót Service Bus
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>Jak zpracovávat zprávy o velikosti > 1 MB?
 Služba Service Bus Messaging Services (fronty a témata/odběry) umožňuje aplikaci posílat zprávy o velikosti až 256 KB (úroveň Standard) nebo 1 MB (úroveň Premium). Pokud pracujete se zprávami o velikosti větší než 1 MB, použijte vzor kontroly deklarací identity popsaný v [tomto blogovém příspěvku](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
 Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva: `Namespace already exists` . 
 
@@ -157,6 +171,8 @@ Select-AzSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
 $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
+## <a name="is-it-possible-to-disable-tls-10-or-11-on-service-bus-namespaces"></a>Je možné zakázat TLS 1,0 nebo 1,1 na Service Bus obory názvů?
+Ne. Pro Service Bus obory názvů není možné zakázat TLS 1,0 nebo 1,1. V klientských aplikacích připojujících se k Service Bus použijte protokol TLS 1,2 nebo vyšší. Další informace najdete v tématu [vynucování TLS 1,2 s využitím Azure Service Bus-Microsoft Tech Community](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Service Bus najdete v následujících článcích:

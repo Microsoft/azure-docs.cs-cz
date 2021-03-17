@@ -6,22 +6,22 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: 0497356e536632d179f4f64a6a9df8551a7a1897
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557865"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364949"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled elastického dotazu Azure SQL Database (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Funkce elastického dotazu (ve verzi Preview) umožňuje spustit dotaz Transact-SQL, který pokrývá více databází v Azure SQL Database. Umožňuje provádět dotazy napříč databázemi pro přístup ke vzdáleným tabulkám a k propojení nástrojů společnosti Microsoft a jiných dodavatelů (Excel, Power BI, Tableau atd.) pro dotazování napříč datovými vrstvami s více databázemi. Pomocí této funkce můžete horizontální navýšení kapacity dotazů na velké úrovně dat a vizualizaci výsledků v sestavách business intelligence (BI).
+Funkce elastických dotazů (ve verzi Preview) umožňuje spouštět dotazy Transact-SQL zahrnující několik databází ve službě Azure SQL Database. Umožňuje provádět dotazy napříč databázemi pro přístup ke vzdáleným tabulkám a k propojení nástrojů společnosti Microsoft a jiných dodavatelů (Excel, Power BI, Tableau atd.) pro dotazování napříč datovými vrstvami s více databázemi. S využitím této funkce můžete škálovat dotazy na velké datové vrstvy na více instancí a vizualizovat výsledky v sestavách business intelligence (BI).
 
 ## <a name="why-use-elastic-queries"></a>Proč používat elastické dotazy
 
@@ -39,7 +39,7 @@ Elastické dotazy teď můžou odeslat parametry SQL do vzdálených databází 
 
 ### <a name="stored-procedure-execution"></a>Spuštění uložené procedury
 
-Spuštění vzdálených volání uložených procedur nebo vzdálených funkcí pomocí [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714).
+Spuštění vzdálených volání uložených procedur nebo vzdálených funkcí pomocí [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database).
 
 ### <a name="flexibility"></a>Flexibilita
 
@@ -87,10 +87,10 @@ Elastický dotaz lze použít k zajištění dat umístěných v databázi v SQL
 
 Následující kroky nakonfigurují elastické databázové dotazy pro scénáře vertikální dělení, které vyžadují přístup k tabulce umístěné ve vzdálených databázích v SQL Database se stejným schématem:
 
-* [Vytvořit hlavní klíč](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
-* [Vytvořit databázi s rozsahem přihlašovacích údajů](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-* [Vytvořit nebo vyřadit externí zdroj dat](https://msdn.microsoft.com/library/dn935022.aspx) myDataSource typu **RDBMS**
-* [Vytvořit nebo vyřadit externí tabulku](https://msdn.microsoft.com/library/dn935021.aspx) myTable
+* [Vytvořit hlavní klíč](/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [Vytvořit databázi s rozsahem přihlašovacích údajů](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
+* [Vytvořit nebo vyřadit externí zdroj dat](/sql/t-sql/statements/create-external-data-source-transact-sql) myDataSource typu **RDBMS**
+* [Vytvořit nebo vyřadit externí tabulku](/sql/t-sql/statements/create-external-table-transact-sql) myTable
 
 Po spuštění příkazů DDL máte přístup ke vzdálené tabulce "myTable", jako by šlo o místní tabulku. Azure SQL Database automaticky otevře připojení ke vzdálené databázi, zpracuje vaši žádost ve vzdálené databázi a vrátí výsledky.
 
@@ -108,11 +108,11 @@ Použití elastického dotazu k provádění úloh vytváření sestav přes hor
 
 Následující kroky nakonfigurují elastické databázové dotazy pro scénáře horizontálního dělení, které vyžadují přístup k sadě tabulek umístěných na (obvykle) několika vzdálených databází v SQL Database:
 
-* [Vytvořit hlavní klíč](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
-* [Vytvořit databázi s rozsahem přihlašovacích údajů](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
+* [Vytvořit hlavní klíč](/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [Vytvořit databázi s rozsahem přihlašovacích údajů](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * Vytvořte [mapu horizontálních oddílů](elastic-scale-shard-map-management.md) představující vaši datovou vrstvu pomocí klientské knihovny elastické databáze.
-* [Vytvořit nebo vyřadit externí zdroj dat](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource typu **SHARD_MAP_MANAGER**
-* [Vytvořit nebo vyřadit externí tabulku](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) myTable
+* [Vytvořit nebo vyřadit externí zdroj dat](/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource typu **SHARD_MAP_MANAGER**
+* [Vytvořit nebo vyřadit externí tabulku](/sql/t-sql/statements/create-external-table-transact-sql) myTable
 
 Po provedení těchto kroků můžete získat přístup k horizontálně rozdělené tabulce "myTable", jako by šlo o místní tabulku. Azure SQL Database automaticky otevírá více paralelních připojení ke vzdáleným databázím, kde jsou fyzicky uloženy tabulky, zpracovává požadavky na vzdálené databáze a vrací výsledky.
 Další informace o krocích, které jsou potřebné pro scénář horizontálního dělení, najdete v [elastickém dotazu pro horizontální dělení na oddíly](elastic-query-horizontal-partitioning.md).
@@ -120,7 +120,7 @@ Další informace o krocích, které jsou potřebné pro scénář horizontáln�
 Chcete-li začít s kódováním, přečtěte si téma [Začínáme s elastickým dotazem pro horizontální dělení (horizontálního dělení)](elastic-query-getting-started.md).
 
 > [!IMPORTANT]
-> Úspěšné provedení elastického dotazu nad velkou sadou databází v průběhu provádění dotazu intenzivně závisí na dostupnosti jednotlivých databází. Pokud není jedna z databází k dispozici, celý dotaz se nezdaří. Pokud plánujete dotazovat stovky nebo tisíce databází najednou, ujistěte se, že vaše klientská aplikace má vloženou logiku opakování, nebo zvažte použití [Elastic Databasech úloh](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (Preview) a dotazování na menší podmnožiny databází a konsoliduje výsledky každého dotazu do jednoho cíle.
+> Úspěšné provedení elastického dotazu nad velkou sadou databází v průběhu provádění dotazu intenzivně závisí na dostupnosti jednotlivých databází. Pokud není jedna z databází k dispozici, celý dotaz se nezdaří. Pokud plánujete dotazovat stovky nebo tisíce databází najednou, ujistěte se, že vaše klientská aplikace má vloženou logiku opakování, nebo zvažte použití [Elastic Databasech úloh](./job-automation-overview.md) (Preview) a dotazování na menší podmnožiny databází a konsoliduje výsledky každého dotazu do jednoho cíle.
 
 ## <a name="t-sql-querying"></a>Dotazování T-SQL
 
@@ -158,7 +158,7 @@ Flexibilní dotazy vám pomůžete sdílet s elastickými dotazy, a to na fórec
 * Syntaxe a ukázkové dotazy pro vertikálně dělená data najdete v tématu [dotazování na vertikálně dělená data](elastic-query-vertical-partitioning.md) .
 * Kurz horizontálního dělení na oddíly (horizontálního dělení) najdete v tématu [Začínáme s elastickým dotazem pro horizontální dělení na oddíly (horizontálního dělení)](elastic-query-getting-started.md).
 * Syntaxe a ukázkové dotazy pro horizontálně rozdělená data najdete v tématu [dotazování na horizontálně dělená data](elastic-query-horizontal-partitioning.md) .
-* V tématu [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
+* V tématu [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
 
 <!--Image references-->
 [1]: ./media/elastic-query-overview/overview.png

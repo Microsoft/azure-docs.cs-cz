@@ -5,41 +5,42 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 03/10/2021
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21bb1856409b7fbea1eeffb8b3769dd63119da50
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095577"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612843"
 ---
 # <a name="azure-firewall-features"></a>Funkce Azure Firewallu
 
-[Azure firewall](overview.md) je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network..
+[Azure firewall](overview.md) je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network.
 
 ![Přehled brány firewall](media/overview/firewall-threat.png)
 
 Azure Firewall obsahuje následující funkce:
 
-- [Integrovaná vysoká dostupnost](#built-in-high-availability)
-- [Zóny dostupnosti](#availability-zones)
-- [Neomezená cloudová škálovatelnost](#unrestricted-cloud-scalability)
-- [Pravidla filtrování plně kvalifikovaných názvů domén aplikací](#application-fqdn-filtering-rules)
-- [Pravidla filtrování síťového provozu](#network-traffic-filtering-rules)
-- [Značky plně kvalifikovaných názvů domén](#fqdn-tags)
-- [Značky služeb](#service-tags)
-- [Analýza hrozeb](#threat-intelligence)
-- [Podpora pro odchozí SNAT](#outbound-snat-support)
-- [Podpora DNAT u příchozích přenosů](#inbound-dnat-support)
-- [Několik veřejných IP adres](#multiple-public-ip-addresses)
-- [Protokolování Azure Monitor](#azure-monitor-logging)
-- [Vynucené tunelování](#forced-tunneling)
-- [Certifikace](#certifications)
+- Integrovaná vysoká dostupnost
+- Zóny dostupnosti
+- Neomezená cloudová škálovatelnost
+- Pravidla filtrování plně kvalifikovaných názvů domén aplikací
+- Pravidla filtrování síťového provozu
+- Značky plně kvalifikovaných názvů domén
+- Značky služeb
+- Analýza hrozeb
+- Podpora pro odchozí SNAT
+- Podpora DNAT u příchozích přenosů
+- Několik veřejných IP adres
+- Protokolování Azure Monitor
+- Vynucené tunelování
+- Webové kategorie (Preview)
+- Certifikace
 
 ## <a name="built-in-high-availability"></a>Integrovaná vysoká dostupnost
 
-Máte vestavěnou vysokou dostupnost, takže se nevyžadují žádné další nástroje pro vyrovnávání zatížení a nemusíte nic konfigurovat.
+Je integrovaná vysoká dostupnost, takže se nevyžadují žádné další nástroje pro vyrovnávání zatížení a nemusíte nic konfigurovat.
 
 ## <a name="availability-zones"></a>Zóny dostupnosti
 
@@ -47,7 +48,7 @@ Azure Firewall se dá nakonfigurovat během nasazení, aby se zvýšila dostupno
 
 K určité zóně taky můžete přidružit Azure Firewall jenom z důvodů blízkosti, a to pomocí smlouvy SLA pro službu Standard 99,95%.
 
-Pro bránu firewall, která je nasazená v zóně dostupnosti, se neúčtují žádné další náklady. U příchozích a odchozích přenosů dat spojených s Zóny dostupnosti však existují další náklady. Další informace najdete v tématu [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
+Pro bránu firewall, která je nasazená v zóně dostupnosti, se neúčtují žádné další náklady. U příchozích a odchozích přenosů dat přidružených k Zóny dostupnosti jsou však přidané náklady. Další informace najdete v tématu [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 Azure Firewall Zóny dostupnosti jsou k dispozici v oblastech, které podporují Zóny dostupnosti. Další informace najdete v tématu [oblasti, které podporují zóny dostupnosti v Azure](../availability-zones/az-region.md) .
 
@@ -62,11 +63,11 @@ Bránu Azure Firewall můžete vertikálně škálovat tak, jak to vyžadují zm
 
 ## <a name="application-fqdn-filtering-rules"></a>Pravidla filtrování plně kvalifikovaných názvů domén aplikací
 
-Můžete omezit odchozí provoz HTTP/S nebo Azure SQL provoz (Preview) na zadaný seznam plně kvalifikovaných názvů domény (FQDN), včetně zástupných karet. Tato funkce nevyžaduje ukončení protokolu TLS.
+Odchozí provoz HTTP/S můžete omezit nebo provoz Azure SQL na zadaný seznam plně kvalifikovaných názvů domény (FQDN), včetně zástupných karet. Tato funkce nevyžaduje ukončení protokolu TLS.
 
 ## <a name="network-traffic-filtering-rules"></a>Pravidla filtrování síťového provozu
 
-Můžete centrálně vytvořit pravidla pro *povolení* nebo *blokování* podle zdrojové a cílové IP adresy, portu a protokolu. Brána Azure Firewall je plně stavová, takže dokáže odlišit legitimní pakety pro různé typy spojení. Pravidla jsou vynucována a protokolována napříč různými předplatnými a virtuálními sítěmi.
+Můžete centrálně *vytvořit pravidla* *filtrování sítě pomocí* zdrojové a cílové IP adresy, portu a protokolu. Brána Azure Firewall je plně stavová, takže dokáže odlišit legitimní pakety pro různé typy spojení. Pravidla jsou vynucována a protokolována napříč různými předplatnými a virtuálními sítěmi.
 
 ## <a name="fqdn-tags"></a>Značky plně kvalifikovaných názvů domén
 
@@ -78,7 +79,7 @@ Můžete centrálně vytvořit pravidla pro *povolení* nebo *blokování* podle
 
 ## <a name="threat-intelligence"></a>Analýza hrozeb
 
-Filtrování na základě [logiky hrozeb](threat-intel.md)lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
+Filtrování na základě [logiky hrozeb](threat-intel.md)lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
 
 ## <a name="outbound-snat-support"></a>Podpora pro odchozí SNAT
 
@@ -96,21 +97,55 @@ Pomocí brány firewall můžete přidružit [několik veřejných IP adres](dep
 
 To umožňuje následující scénáře:
 
-- **DNAT** – můžete přeložit několik standardních instancí portů na servery back-end. Pokud máte například dvě veřejné IP adresy, můžete přeložit TCP port 3389 (RDP) na obě IP adresy.
-- **SNAT** – pro odchozí připojení SNAT jsou k dispozici další porty, což snižuje potenciál vyčerpání portů SNAT. V tuto chvíli Azure Firewall náhodně vybere zdrojovou veřejnou IP adresu, která se má použít pro připojení. Pokud máte v síti filtrování pro příjem dat, je potřeba, abyste povolili všechny veřejné IP adresy přidružené k bráně firewall. Pro zjednodušení této konfigurace zvažte použití [předpony veřejných IP adres](../virtual-network/public-ip-address-prefix.md) .
+- **DNAT** – můžete přeložit několik standardních instancí portů na servery back-end. Například pokud máte dvě veřejné IP adresy, můžete pro obě IP adresy překládat port TCP 3389 (RDP).
+- **SNAT** – pro odchozí připojení SNAT jsou k dispozici další porty, což snižuje potenciál vyčerpání portů SNAT. V tuto chvíli Azure Firewall náhodně vybere zdrojovou veřejnou IP adresu, která se má použít pro připojení. Pokud ve své síti využíváte následné filtrování, musíte povolit všechny veřejné IP adresy přidružené k vaší bráně firewall. Pro zjednodušení této konfigurace zvažte použití [předpony veřejných IP adres](../virtual-network/public-ip-address-prefix.md) .
 
 ## <a name="azure-monitor-logging"></a>Protokolování Azure Monitor
 
-Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor. Další informace najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](tutorial-diagnostics.md).
+Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor. Ukázky protokolu Azure Monitor najdete v tématu [protokoly Azure monitor pro Azure firewall](./firewall-workbook.md).
+
+Další informace najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](./firewall-diagnostics.md). 
+
+Azure Firewall sešit nabízí flexibilní plátno pro Azure Firewall analýzu dat. Můžete ho použít k vytvoření bohatých vizuálních sestav v rámci Azure Portal. Další informace najdete v tématu [monitorování protokolů pomocí Azure firewall sešitu](firewall-workbook.md).
 
 ## <a name="forced-tunneling"></a>Vynucené tunelování
 
 Azure Firewall můžete nakonfigurovat tak, aby směroval veškerý provoz vázaný na Internet na určený další segment směrování a nemuseli jít přímo na Internet. Můžete mít například místní hraniční bránu firewall nebo jiné síťové virtuální zařízení (síťové virtuální zařízení) pro zpracování síťového provozu před předáním na Internet. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md).
 
+## <a name="web-categories-preview"></a>Webové kategorie (Preview)
+
+Webové kategorie správcům umožňují povolit nebo odepřít přístup uživatelů k kategoriím webu, jako jsou například weby hazardních her, weby sociálních médií a další. Webové kategorie jsou zahrnuté ve Azure Firewall Standard, ale je lépe vyladěná v Azure Firewall Premium Preview. Na rozdíl od možností kategorií webu ve standardní SKU, které odpovídají kategorii na základě plně kvalifikovaného názvu domény, skladová položka Premium odpovídá kategorii podle celé adresy URL pro přenos HTTP i HTTPS. Další informace o Azure Firewall Premium Preview najdete v tématu [Azure firewall funkce Premium Preview](premium-features.md).
+
+Pokud například Azure Firewall zachytí požadavek HTTPS pro `www.google.com/news` , je očekávána následující kategorizace: 
+
+- Firewall Standard – bude prověřena pouze část plně kvalifikovaného názvu domény, takže `www.google.com` bude zařazena do kategorie jako *vyhledávací modul*. 
+
+- Firewall Premium – bude prověřena úplná adresa URL, takže `www.google.com/news` bude zařazena do kategorie *zpráv*.
+
+Kategorie jsou seřazené na základě závažnosti v oblasti **zodpovědnosti**, **vysoké šířky pásma**, **používání firmy**, **ztráty produktivity**, **Obecné procházení** a **Nezařazeno do kategorie**.
+
+### <a name="categorization-change"></a>Změna kategorizace
+
+Změnu kategorizace si můžete vyžádat v těchto případech:
+
+ - Zamyslete se plně kvalifikovaný název domény nebo adresa URL v jiné kategorii. 
+ 
+nebo 
+
+- má navrhovanou kategorii pro plně kvalifikovaný název domény (Nezařazeno do kategorie) nebo adresu URL.
+
+Vítá vás žádost o odeslání žádosti [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
+
+### <a name="category-exceptions"></a>Výjimky kategorie
+
+Můžete vytvořit výjimky pro pravidla vaší webové kategorie. Vytvořte samostatnou kolekci pravidel povolení nebo odepření s vyšší prioritou v rámci skupiny kolekce pravidel. Můžete například nakonfigurovat kolekci pravidel, která umožňuje `www.linkedin.com` s prioritou 100, s kolekcí pravidel, která zakazuje **sociální sítě** s prioritou 200. Tím se vytvoří výjimka pro předdefinovanou webovou kategorii **sítě pro sociální sítě** .
+
+
+
 ## <a name="certifications"></a>Certifikace
 
-Azure Firewall je obor platebních karet (PCI), ovládací prvky SOC (Service Organization Controls), ISO (ISO) a ICSA Labs splňující předpisy. Další informace najdete v tématu [Azure firewall certifikace dodržování předpisů](compliance-certifications.md).
+Azure Firewall je obor platebních karet (PCI), ovládací prvky SOC (Service Organization Controls), Mezinárodní organizace pro normalizaci (ISO) a ICSA Labs splňující předpisy. Další informace najdete v tématu [Azure firewall certifikace dodržování předpisů](compliance-certifications.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Logika zpracování pravidel Azure Firewall](rule-processing.md)
+- [Funkce verze Preview Azure Firewall Premium](premium-features.md)

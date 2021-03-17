@@ -5,15 +5,15 @@ keywords: Azure App Service, Web App, Linux, OSS
 author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 02/23/2021
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: f663b58de666e2a0fe44fa3c023816a524b7d6c5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 8e9dd76b60d05b9fa5e3a4aaf7ccc6663f4a969b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082958"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709032"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Otevřete relaci SSH k kontejneru Linux v Azure App Service
 
@@ -23,7 +23,7 @@ ms.locfileid: "88082958"
 
 Ke kontejneru se můžete připojit také přímo z místního vývojového počítače pomocí SSH a SFTP.
 
-## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
+## <a name="open-ssh-session-in-browser"></a>Otevření relace SSH v prohlížeči
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-no-h.md)]
 
@@ -39,16 +39,23 @@ Viz [Konfigurace SSH ve vlastním kontejneru](configure-custom-container.md#enab
 
 Pomocí tunelového propojení TCP můžete vytvořit síťové připojení mezi vývojovým počítačem a Web App for Containers přes ověřované připojení protokolu WebSocket. Umožňuje otevřít relaci SSH s kontejnerem spuštěným v App Service z klienta podle vašeho výběru.
 
-Chcete-li začít, je nutné nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Pokud chcete zjistit, jak funguje bez instalace rozhraní příkazového řádku Azure, otevřete [Azure Cloud Shell](../cloud-shell/overview.md). 
+Chcete-li začít, je nutné nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). Pokud chcete zjistit, jak funguje bez instalace rozhraní příkazového řádku Azure, otevřete [Azure Cloud Shell](../cloud-shell/overview.md). 
 
-Pomocí příkazu [AZ WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) spusťte vzdálené připojení k aplikaci. Zadejte _\<subscription-id>_ , _\<group-name>_ a \_ \<app-name> _ pro vaši aplikaci.
+Pomocí příkazu [AZ WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) spusťte vzdálené připojení k aplikaci. Zadejte _\<subscription-id>_ , _\<group-name>_ a \_ \<app-name> _ pro vaši aplikaci.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> `&`na konci příkazu je jenom pro pohodlí, pokud používáte Cloud Shell. Spustí proces na pozadí, takže můžete spustit další příkaz ve stejném prostředí.
+> `&` na konci příkazu je jenom pro pohodlí, pokud používáte Cloud Shell. Spustí proces na pozadí, takže můžete spustit další příkaz ve stejném prostředí.
+
+> [!NOTE]
+> Pokud se tento příkaz nepovede, ujistěte se, že je [vzdálené ladění](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0) *zakázané* , a to pomocí následujícího příkazu:
+>
+> ```azurecli-interactive
+> az webapp config set --resource-group <resource-group-name> -n <app-name> --remote-debugging-enabled=false
+> ```
 
 Výstup příkazu vám poskytne informace, které potřebujete k otevření relace SSH.
 
@@ -113,7 +120,7 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 ## <a name="next-steps"></a>Další kroky
 
-Otázky a připomínky můžete publikovat na [fóru Azure](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+Otázky a připomínky můžete publikovat na [fóru Azure](/answers/topics/azure-webapps.html).
 
 Další informace o Web App for Containers najdete v tématech:
 

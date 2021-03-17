@@ -3,19 +3,19 @@ title: Ukázkový skript Azure CLI – odstranění úložiště konfigurace apl
 titleSuffix: Azure App Configuration
 description: Odstraňte úložiště konfigurace aplikace Azure pomocí ukázkového skriptu Azure CLI. Viz článek odkazy na příkazy používané ve skriptu.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e107ba9628eca384f518f7a241be5c00c278ef0a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 49d6a85faa55de5dbf50377998dbe2fc829d9f6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588294"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929782"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Odstranění úložiště konfigurace aplikace Azure
 
@@ -23,9 +23,9 @@ Tento ukázkový skript odstraní instanci Azure App Configuration.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+ - Tento kurz vyžaduje Azure CLI verze 2,0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="sample-script"></a>Ukázkový skript
 

@@ -1,19 +1,18 @@
 ---
 title: Testování živých dat pomocí Azure Stream Analytics pro Visual Studio
 description: Naučte se, jak místně testovat úlohu Azure Stream Analytics pomocí živých streamování dat.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: fe1caca11ec0a3d89ddae140d00cd3556b9d3d89
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 99e9ce85bb1e59b5016e836ff16d03cb3326ec8c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044460"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020362"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Místní testování živých dat pomocí Azure Stream Analyticsch nástrojů pro Visual Studio (Preview)
 
@@ -59,7 +58,7 @@ Podporovány jsou následující možnosti místního testování:
 
 * Power BI a Azure Data Lake Storage nejsou podporovány výstupní jímky z důvodu omezení modelu ověřování.
 
-* Pouze možnosti cloudového vstupu mají podporu [časových zásad](stream-analytics-out-of-order-and-late-events.md) , zatímco možnosti místního vstupu ne.
+* Pouze možnosti cloudového vstupu mají podporu [časových zásad](./stream-analytics-time-handling.md) , zatímco možnosti místního vstupu ne.
 
 ## <a name="next-steps"></a>Další kroky
 

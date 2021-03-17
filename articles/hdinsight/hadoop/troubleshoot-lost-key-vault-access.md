@@ -1,18 +1,15 @@
 ---
 title: Clustery Azure HDInsight se ztrátou šifrování disku Key Vault přístup
-description: Kroky řešení potíží a možná řešení pro problémy při komunikaci s clustery Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+description: Postup řešení potíží a možná řešení pro problémy s přístupem k Key Vault při komunikaci s clustery Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce2929ca84746de1ab8b51882f3004c3699f17ca
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461527"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943121"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scénář: clustery Azure HDInsight se ztrátou šifrování disku Key Vault přístup
 
@@ -32,11 +29,11 @@ Přejděte na uživatelské rozhraní Apache Ambari, kde najdete další informa
 
 ### <a name="kvaad-outage"></a>KV/výpadek AAD
 
-Další podrobnosti najdete v [Azure Key Vault dostupnosti a redundanci](../../key-vault/general/disaster-recovery-guidance.md) a na stránce stavu Azure.https://status.azure.com/
+Další podrobnosti najdete v [Azure Key Vault dostupnosti a redundanci](../../key-vault/general/disaster-recovery-guidance.md) a na stránce stavu Azure. https://status.azure.com/
 
 ### <a name="kv-accidental-deletion"></a>Nepředvídatelné odstranění KV
 
-* Obnovte odstraněný klíč v KV na automatické obnovení. Další informace najdete v tématu [Obnovení odstraněné klíče](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey).
+* Obnovte odstraněný klíč v KV na automatické obnovení. Další informace najdete v tématu [Obnovení odstraněné klíče](/rest/api/keyvault/recoverdeletedkey).
 * Vyzkoušením týmu KV se můžete zotavit z neúmyslných odstranění.
 
 ### <a name="kv-access-policy-changed"></a>KV – zásady přístupu se změnily
@@ -88,4 +85,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

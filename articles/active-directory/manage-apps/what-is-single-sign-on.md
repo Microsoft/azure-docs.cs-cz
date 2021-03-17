@@ -3,7 +3,7 @@ title: Co je jednotné přihlašování Azure (SSO)?
 description: Přečtěte si, jak jednotné přihlašování (SSO) funguje s Azure Active Directory. Použijte jednotné přihlašování, aby uživatelé nemuseli pamatovat hesla pro každou aplikaci. K zjednodušení správy správy účtů taky používejte jednotné přihlašování.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,13 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 3e845507404e0dd7ec3d11c68aaa553ae75eef0b
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 36025a5a68e4c3d0de1d6b11a13df656c72745d4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164491"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260193"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Co je jednotné přihlašování (SSO)?
 
@@ -52,7 +53,7 @@ Způsob implementace jednotného přihlašování závisí na tom, kde je aplika
 > [!TIP]
 > Aplikace hostované v cloudu se označují také jako aplikace SaaS (software jako služba). 
 
-Jednotné přihlašování pro aplikace hostované v cloudu je jednoduché. Sdělte poskytovateli identity, který ví, že se používá pro aplikaci. A potom nakonfigurujete aplikaci tak, aby důvěřovala zprostředkovateli identity. Informace o tom, jak používat Azure AD jako zprostředkovatele identity pro aplikaci, najdete v části [rychlý start série při správě aplikací](view-applications-portal.md).
+Jednotné přihlašování pro aplikace hostované v cloudu je jednoduché. Sdělte poskytovateli identity, který ví, že se používá pro aplikaci. A potom nakonfigurujete aplikaci tak, aby důvěřovala zprostředkovateli identity. Informace o tom, jak používat Azure AD jako zprostředkovatele identity pro aplikaci, najdete v části [rychlý start série při správě aplikací](add-application-portal.md).
 
 > [!TIP]
 > Pojem Cloud a Internet se často používají k zaměnitelné. Důvodem je to, že se v diagramech sítě musí dělat. Je běžné, že velké počítačové sítě s obrazcem cloudu v diagramu jsou neproveditelné, protože není možné nakreslit všechny součásti. Internet je nejužitečnější síť, takže je snadné je snadno použít. Nicméně jakákoli počítačová síť může být mince v cloudu.

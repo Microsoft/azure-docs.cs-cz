@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 5457730494d509a2923ce929f41e397cb6064126
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2fd21731513d0b32a96a74a822e38075ad1d8eb2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550053"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454962"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s CylancePROTECT
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat CylancePROTECT s Azure Active Director
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k CylancePROTECT svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -79,20 +79,20 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** zadejte adresu URL:
     
-    | Region | Hodnota adresy URL |
+    | Oblast | Hodnota adresy URL |
     |----------|---------|
-    | Asie a Tichomoří – Severovýchod (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
-    | Asie a Tichomoří – jihovýchod (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
+    | Asia-Pacific Severovýchod (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asia-Pacific jihovýchod (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
     | Evropa – střed (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Severní Amerika|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Jižní Amerika (SAE1)|`https://login-sae1.cylance.com/EnterpriseLogin/ConsumeSaml`|
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:
     
-    | Region | Hodnota adresy URL |
+    | Oblast | Hodnota adresy URL |
     |----------|---------|
-    | Asie a Tichomoří – Severovýchod (APNE1)|`https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
-    | Asie a Tichomoří – jihovýchod (AU)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asia-Pacific Severovýchod (APNE1)|`https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asia-Pacific jihovýchod (AU)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Evropa – střed (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Severní Amerika|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Jižní Amerika (SAE1)|`https://login-sae1.cylance.com/EnterpriseLogin/ConsumeSaml`|
@@ -122,7 +122,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -144,7 +144,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-cylanceprotect-sso"></a>Konfigurace jednotného přihlašování CylancePROTECT
 
-Ke konfiguraci jednotného přihlašování na straně **CylancePROTECT** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory CylancePROTECT](https://www.cylance.com/en-us/resources/support/support-overview.html). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách. Další informace najdete v dokumentaci k Cylance: [https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4](https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4) .
+Ke konfiguraci jednotného přihlašování na straně **CylancePROTECT** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory CylancePROTECT](https://www.cylance.com/en-us/resources/support/support-overview.html). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách. Další informace najdete v dokumentaci k Cylance: [https://support.cylance.com/s/](https://support.cylance.com/s/) .
 
 ### <a name="create-cylanceprotect-test-user"></a>Vytvořit testovacího uživatele CylancePROTECT
 
@@ -154,14 +154,14 @@ V této části vytvoříte uživatele s názvem Britta Simon v CylancePROTECT. 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici CylancePROTECT, měli byste se automaticky přihlásit k CylancePROTECT, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici CylancePROTECT, měli byste se automaticky přihlásit k CylancePROTECT, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si CylancePROTECT s Azure AD](https://aad.portal.azure.com/)

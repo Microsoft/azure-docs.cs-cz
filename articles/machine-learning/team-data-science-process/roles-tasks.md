@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4bcbbd9378b6ea861c926eed16d2ceed8131b913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082745"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000959"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Role a úlohy vědeckého zpracování týmových dat
 
@@ -65,7 +65,7 @@ Správce skupin nebo určený správce systému TDSP dokončí následující ú
 - Vytvoří **úložiště šablony projektu** v projektu skupiny Azure DevOps a vysemení ho z úložiště šablony projektu vyvinuté týmem Microsoft TDSP. Úložiště šablon projektu Microsoft TDSP poskytuje:
   - **Standardizovaná adresářová struktura**, včetně adresářů pro data, kód a dokumenty.
   - Sada **standardizovaných šablon dokumentů** , které vám pomohou zefektivnit proces vědeckého zpracování dat.
-- Vytvoří **úložiště nástrojů**a vysemení ho z úložiště nástrojů vyvinutého týmem Microsoft TDSPe. Úložiště nástrojů TDSP od Microsoftu poskytuje sadu užitečných nástrojů, které zajistí efektivnější práci s daty. Úložiště nástrojů společnosti Microsoft obsahuje nástroje pro interaktivní zkoumání dat, analýzu, generování sestav a modelování a vytváření sestav podle směrného plánu.
+- Vytvoří **úložiště nástrojů** a vysemení ho z úložiště nástrojů vyvinutého týmem Microsoft TDSPe. Úložiště nástrojů TDSP od Microsoftu poskytuje sadu užitečných nástrojů, které zajistí efektivnější práci s daty. Úložiště nástrojů společnosti Microsoft obsahuje nástroje pro interaktivní zkoumání dat, analýzu, generování sestav a modelování a vytváření sestav podle směrného plánu.
 - Nastaví **zásady řízení zabezpečení** pro účet organizace.
 
 Podrobné pokyny najdete v tématu [úlohy správce skupin pro tým pro datové vědy](group-manager-tasks.md).

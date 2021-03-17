@@ -8,21 +8,21 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: da740909cedb8e2bb78f5f70e062481395a5c181
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422075"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91360867"
 ---
-# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné zapnutí ochrany virtuálních počítačů Azure v primární oblasti
+# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Znovunastavení ochrany virtuálních počítačů Azure, u kterých proběhlo převzetí služeb při selhání, v primární oblasti
 
 Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálních počítačů Azure z jedné oblasti do druhé pomocí [Azure Site Recovery](site-recovery-overview.md)se virtuální počítače spustí v sekundární oblasti v **nechráněném** stavu. Pokud chcete převzít služby při selhání back-VM do primární oblasti, proveďte následující úlohy:
 
 1. Znovu nastavte ochranu virtuálních počítačů v sekundární oblasti, aby se začaly replikovat do primární oblasti.
 1. Po dokončení ochrany a replikaci virtuálních počítačů můžete převzít služby při selhání ze sekundární do primární oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Převzetí služeb virtuálního počítače při selhání z primární do sekundární oblasti musí být potvrzené.
 - Primární cílový webový server by měl být dostupný a měl by být přístupný nebo vytvářet prostředky v této oblasti.
@@ -31,7 +31,7 @@ Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálníc
 
 1. V **trezoru**  >  **replikované položky**klikněte pravým tlačítkem na virtuální počítač převzetí služeb při selhání a vyberte **znovu zapnout ochranu**. Směr další ochrany by se měl zobrazit ze sekundárního na primární.
 
-   ![Znovunastavení ochrany](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![Snímek obrazovky zobrazuje virtuální počítač s místní nabídkou, která má vybranou možnost znovu nastavit ochranu.](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 1. Zkontrolujte skupinu prostředků, síť, úložiště a skupiny dostupnosti. Pak klikněte na **OK**. Pokud jsou nějaké prostředky označené jako nové, vytvoří se jako součást procesu nové ochrany.
 1. V rámci úlohy ochrany se v cílové lokalitě dokončí nejnovější data. Po dokončení úlohy bude provedena rozdílová replikace. Pak můžete převzít služby při selhání zpět do primární lokality. Pomocí možnosti přizpůsobit můžete vybrat účet úložiště nebo síť, kterou chcete použít při opětovném zapnutí ochrany.
@@ -90,8 +90,8 @@ Následující podmínky určují, kolik dat se replikuje:
 |Zdrojová oblast má 1 virtuální počítač s 1 TB standardního disku.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Standard s propustností 60 MB/s.<br/>Po převzetí služeb při selhání se žádná data nezmění.| Přibližná doba: 60-90 minut.<br/> Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 45MBps, takže celková doba, kterou bude trvat, je 127 GB/45 MB/s, přibližně 45 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
 |Zdrojová oblast má 1 virtuální počítač s 1 TB standardního disku.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Standard s propustností 60 MB/s.<br/>po převzetí služeb při selhání se změní 45 GB dat.| Přibližná doba: 2,5-3 hodiny.<br/> Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 45MBps, takže celková doba, kterou bude trvat, je 127 GB/45 MB/s, přibližně 45 minut.<br/>Rychlost přenosu je přibližně 16% propustnosti nebo 9.6 MB/s. Proto se doba přenosu aplikuje na změny 45 GB, což je 45 GB/9.6 MB/s, 80 přibližně v minutách.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
 |Zdrojová oblast má 1 virtuální počítač s 1 TB standardního disku.<br/>Používá se jenom 20 GB dat a zbytek disku je prázdný.<br/>Typ disku je Standard s propustností 60 MB/s.<br/>Počáteční data na disku hned po převzetí služeb při selhání byly 15 GB. Po převzetí služeb při selhání se změnila 5 GB dat. Celková naplněná data jsou tedy 20 GB.| Přibližná doba: 1 – 1,5 hodiny<br/>Vzhledem k tomu, že data naplněná na disku jsou menší než 10% velikosti disku, provádíme kompletní počáteční replikaci.<br/> Rychlost přenosu je přibližně 16% propustnosti nebo 9.6 MB/s. Proto se doba přenosu aplikuje na změny 20 GB, což je 20 GB/9.6 MB/s, přibližně 36 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
-|Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>Po převzetí služeb při selhání se žádná data nezmění.| Přibližná doba: 45-60 minut.<br/>Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 80MBps, takže celková doba, kterou bude trvat, je 127 GB/80 MB/s, přibližně 27 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
-|Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>po převzetí služeb při selhání se změní 45 GB dat.| Přibližná doba: 1,5 – 2 hodiny.<br/>Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 80MBps, takže celková doba, kterou bude trvat, je 127 GB/80 MB/s, přibližně 27 minut.</br>Rychlost přenosu je přibližně 16% propustnosti nebo 32MBps. Proto se doba přenosu aplikuje na změny 45 GB, které jsou 45 GB/32 MB/s, přibližně 24 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>Po převzetí služeb při selhání se žádná data nezmění.| Přibližná doba: 2 hodiny.<br/>Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 25MBps (až 16% propustnosti disku), takže celková doba, kterou bude trvat, je 127 GB/25 MB/s, přibližně 87 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 127 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>po převzetí služeb při selhání se změní 45 GB dat.| Přibližná doba: 2,5-3 hodiny.<br/>Během ochrany Site Recovery naplní kontrolní součet všech dat. To funguje na 25MBps (až 16% propustnosti disku), takže celková doba, kterou bude trvat, je 127 GB/25 MB/s, přibližně 87 minut.</br>Rychlost přenosu je přibližně 16% propustnosti nebo 32MBps. Proto se doba přenosu aplikuje na změny 45 GB, které jsou 45 GB/32 MB/s, přibližně 24 minut.<br/>Site Recovery k automatickému škálování je potřeba určitý čas režie, přibližně 20-30 minut. |
 |Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 20 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>Počáteční data na disku hned po převzetí služeb při selhání byly 15 GB. Po převzetí služeb při selhání se změnila 5 GB dat. Celková naplněná data jsou tedy 20 GB.| Přibližná doba: 30-45 minut.<br/>Vzhledem k tomu, že data naplněná na disku jsou menší než 10% velikosti disku, provádíme kompletní počáteční replikaci.<br/>Rychlost přenosu je přibližně 16% propustnosti nebo 32MBps. Proto se doba přenosu aplikuje na změny 20 GB, což je 20 GB/32 MB/s, přibližně 11 minut.<br/>Site Recovery k automatickému škálování vyžaduje určitý čas režie, přibližně 20-30 minut. |
 
 Pokud je virtuální počítač po převzetí služeb při selhání zpátky do primární oblasti (tj. Pokud je virtuální počítač znovu chráněný z primární oblasti na oblast zotavení po havárii), odstraní se cílový virtuální počítač a přidružené síťové karty.

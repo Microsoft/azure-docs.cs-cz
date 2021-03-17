@@ -3,16 +3,16 @@ title: Nastavení výstrah monitorování pro úlohy Azure Stream Analytics
 description: Tento článek popisuje, jak použít Azure Portal k nastavení monitorování a výstrah pro úlohy Azure Stream Analytics.
 author: jseb225
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
+ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
-ms.openlocfilehash: de8b69cbe3117a3ec248cee4808b676b39c56658
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7884f8baa24180fcb94f77a45c3457ba62d3f351
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324790"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018135"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro Azure Stream Analytics úlohy
 
@@ -29,15 +29,15 @@ Následující příklad ukazuje, jak nastavit upozornění, když vaše úloha 
 
 2. Na stránce **úloha** přejděte do části **monitorování** .  
 
-3. Vyberte **metriky**a pak **nové pravidlo výstrahy**.
+3. Vyberte **metriky** a pak **nové pravidlo výstrahy**.
 
    ![Nastavení výstrah Azure Portal Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. Název vaší Stream Analytics úlohy by se měl automaticky zobrazit v části **prostředek**. Klikněte na **Přidat podmínku**a v části **Konfigurovat logiku signálu**vyberte **všechny operace správy** .
+4. Název vaší Stream Analytics úlohy by se měl automaticky zobrazit v části **prostředek**. Klikněte na **Přidat podmínku** a v části **Konfigurovat logiku signálu** vyberte **všechny operace správy** .
 
    ![Vyberte název signálu pro výstrahu Stream Analytics.](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. V části **Konfigurovat logiku signálu**změňte **úroveň události** na **vše** a změňte **stav** na **neúspěch**. Nechejte **událost iniciovaná** prázdným a vyberte **Hotovo**.
+5. V části **Konfigurovat logiku signálu** změňte **úroveň události** na **vše** a změňte **stav** na **neúspěch**. Nechejte **událost iniciovaná** prázdným a vyberte **Hotovo**.
 
    ![Konfigurace výstrahy signálu pro Stream Analytics výstrahu](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
@@ -45,13 +45,13 @@ Následující příklad ukazuje, jak nastavit upozornění, když vaše úloha 
 
    ![Nastavení výstrahy pro úlohu Azure Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. Jednotlivé skupiny **prostředků**, **podmínek**a **akcí** by měly mít položku. Všimněte si, že aby se výstrahy mohly aktivovat, musí být splněné podmínky. Například můžete každých 5 minut měřit průměrnou hodnotu metriky za posledních 15 minut.
+7. Jednotlivé skupiny **prostředků**, **podmínek** a **akcí** by měly mít položku. Všimněte si, že aby se výstrahy mohly aktivovat, musí být splněné podmínky. Například můžete každých 5 minut měřit průměrnou hodnotu metriky za posledních 15 minut.
 
-   ![Vytvořit pravidlo upozornění Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+   ![Snímek obrazovky s dialogovým oknem vytvořit pravidlo se zobrazí jako prostředek, podmínka a skupina akcí.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   Přidejte k **podrobnostem výstrahy** **název pravidla výstrahy**, **Popis**a **skupinu prostředků** a kliknutím na **vytvořit pravidlo výstrahy** vytvořte pravidlo pro Stream Analytics úlohu.
+   Přidejte k **podrobnostem výstrahy** **název pravidla výstrahy**, **Popis** a **skupinu prostředků** a kliknutím na **vytvořit pravidlo výstrahy** vytvořte pravidlo pro Stream Analytics úlohu.
 
-   ![Vytvořit pravidlo upozornění Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+   ![Snímek obrazovky se zobrazí dialogové okno vytvořit pravidlo s PODROBNOSTmi výstrahy.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
 ## <a name="scenarios-to-monitor"></a>Scénáře k monitorování
 
@@ -67,5 +67,4 @@ Následující výstrahy jsou doporučeny pro sledování výkonu Stream Analyti
 ## <a name="next-steps"></a>Další kroky
 
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)

@@ -6,22 +6,22 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: carlrab, jovanpop
+ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: ba2dd167cdf49b5f1a4b4f2dcd0edd48ea969fae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c465da3d5d812ea7e811cbe59318122700c6e786
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073336"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824661"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>Migrace certifikátu chráněné databáze TDE do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Pokud migrujete databázi chráněnou [transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) do spravované instance Azure SQL pomocí možnosti nativní obnovení, musí být před obnovením databáze migrován odpovídající certifikát z SQL Server instance. Tento článek vás provede procesem ruční migrace certifikátu do spravované instance Azure SQL:
+Pokud migrujete databázi chráněnou [transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) do spravované instance Azure SQL pomocí možnosti nativní obnovení, musí být před obnovením databáze migrován odpovídající certifikát z SQL Server instance. Tento článek vás provede procesem ruční migrace certifikátu do spravované instance Azure SQL:
 
 > [!div class="checklist"]
 >
@@ -34,24 +34,24 @@ Alternativní možnost použití plně spravované služby pro bezproblémové m
 > [!IMPORTANT]
 > Migrovaný certifikát se používá pouze pro obnovení databáze chráněné TDE. Po dokončení obnovení se migrované certifikát nahradí jiným modulem ochrany, buď certifikátem spravovaným službou, nebo asymetrický klíč z trezoru klíčů, a to v závislosti na typu TDE, který jste pro instanci nastavili.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-* Nástroj příkazového řádku [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) nainstalovaný na místním serveru nebo jiném počítači s přístupem k certifikátu, který se exportuje do souboru. Nástroj Pvk2Pfx je součástí sady [Enterprise Driver Kit pro Windows](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), která obsahuje samostatné prostředí příkazového řádku.
+* Nástroj příkazového řádku [Pvk2pfx](/windows-hardware/drivers/devtest/pvk2pfx) nainstalovaný na místním serveru nebo jiném počítači s přístupem k certifikátu, který se exportuje do souboru. Nástroj Pvk2Pfx je součástí sady [Enterprise Driver Kit pro Windows](/windows-hardware/drivers/download-the-wdk), která obsahuje samostatné prostředí příkazového řádku.
 * [Prostředí Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) nainstalované ve verzi 5.0 nebo vyšší.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ujistěte se, že máte následující:
 
-* Je [nainstalovaný a aktualizovaný](https://docs.microsoft.com/powershell/azure/install-az-ps)modul Azure PowerShell.
+* Je [nainstalovaný a aktualizovaný](/powershell/azure/install-az-ps)modul Azure PowerShell.
 * [AZ. SQL Module](https://www.powershellgallery.com/packages/Az.Sql).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován službou Azure SQL Managed instance, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRM jsou v podstatě identické.
+> Modul PowerShell Azure Resource Manager je stále podporován službou Azure SQL Managed instance, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRM jsou v podstatě identické.
 
 Spuštěním následujících příkazů v PowerShellu nainstalujte/aktualizujte modul:
 
@@ -160,7 +160,7 @@ Pokud je certifikát uložený v úložišti certifikátů místního počítač
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Nejdřív musíte [nastavit Trezor klíčů Azure](/azure/key-vault/key-vault-manage-with-cli2) pomocí souboru *. pfx* .
+Nejdřív musíte [nastavit Trezor klíčů Azure](../../key-vault/general/manage-with-cli2.md) pomocí souboru *. pfx* .
 
 1. Začněte s přípravnými kroky v prostředí PowerShell:
 

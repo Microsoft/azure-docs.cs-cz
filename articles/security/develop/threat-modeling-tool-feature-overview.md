@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539998"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90980674"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí Threat Modeling Tool
 
@@ -89,7 +89,7 @@ Na základě vámi vybrané šablony můžete najít všechny vzorníky, které 
 
 ### <a name="notesmessages"></a>Poznámky a zprávy
 
-| Komponenta                               | Podrobnosti      |
+| Součást                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
 | **Zprávy** | Interní logika nástrojů, která upozorní uživatele vždy, když dojde k chybě, například bez toků dat mezi prvky. |
 | **Poznámky** | V rámci procesu návrhu a kontroly jsou do souboru přidány ruční poznámky. |
@@ -122,7 +122,7 @@ Najeďte myší na **Otevřít model** a odhalte dvě možnosti: **otevřít z t
 
 Když vyberete **zpětnou vazbu, návrhy a problémy**, přejdete na Fórum MSDN pro nástroje SDL. Můžete si přečíst, co o nástroji říká další lidé, včetně řešení a nových nápadů.
 
-![Váš názor](./media/threat-modeling-tool-feature-overview/feedback.png)
+![Snímek obrazovky zobrazující tlačítko s zpětnou vazbou textu, návrhy a problémy.](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>zobrazení Návrh
 
@@ -158,7 +158,7 @@ Prvky lze spojit dvěma způsoby:
 
 Pokud vytvoříte model hrozeb a zapomenete připojit toky dat k prvkům, dostanete oznámení. Tuto zprávu můžete ignorovat, nebo můžete podle pokynů tento problém vyřešit. 
 
-![Zprávy](./media/threat-modeling-tool-feature-overview/messages.png)
+![Snímek obrazovky ukazuje konektor modelu hrozeb, který není připojený k elementům, a zprávu, že tento problém způsobuje.](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>Poznámky
 
@@ -196,7 +196,7 @@ Jak je vidět na předchozím obrázku, můžete změnit informace vygenerované
 
 Až dokončíte měnící se priority a aktualizujete stav každé vygenerované hrozby, můžete soubor uložit nebo vytisknout sestavu. Přejít na **sestavu**  >  **vytvořit úplnou sestavu**. Pojmenujte sestavu a měli byste vidět něco podobného jako na následujícím obrázku:
 
-![Sestava](./media/threat-modeling-tool-feature-overview/report.png)
+![Snímek obrazovky ukazuje ukázkovou sestavu modelování hrozeb, včetně souhrnu, diagramů a dalších informací.](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Další kroky
 

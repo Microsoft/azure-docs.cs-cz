@@ -7,10 +7,10 @@ ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87847920"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Kurz: vytvoření Runbooku v Pythonu
@@ -101,7 +101,7 @@ Vytvořený runbook je stále v režimu konceptu. Musíte ho publikovat, abyste 
 
 9. Klikněte na **Všechny protokoly** a otevřete podokno Datové proudy, které patří k úloze runbooku. Měla by se zobrazit jenom `Hello World` ve výstupním datovém proudu. Toto podokno však může zobrazit další datové proudy pro úlohu Runbooku, jako je například verbose a chyba, pokud je sada Runbook zapisuje do nich.
 
-10. Zavřete podokno streamy a podokno úloh a vraťte se do podokna MyFirstRunbook-Python.
+10. Zavřete podokno datové proudy a podokno úlohy, které se vrátí do podokna MyFirstRunbook-Python.
 
 11. Kliknutím na **úlohy** otevřete stránku úlohy pro tuto sadu Runbook. Tato stránka obsahuje seznam všech úloh vytvořených pomocí tohoto Runbooku. Ve výpisu by se měla zobrazit pouze jedna úloha, protože jste ji spustili jenom jednou.
 

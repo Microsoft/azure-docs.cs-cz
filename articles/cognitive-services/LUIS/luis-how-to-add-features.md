@@ -3,20 +3,18 @@ title: Použití funkcí ke zlepšení seznamu LUIS slov
 titleSuffix: Azure Cognitive Services
 description: Pomocí Language Understanding (LUIS) můžete přidat funkce aplikace, které můžou zlepšit detekci nebo předpovědi záměrů a entit, které kategorie a vzory.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075208"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999922"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Použití funkcí k posílení signálu v seznamu slov
 
@@ -28,7 +26,7 @@ Seznamte se s [Koncepty](luis-concept-feature.md) a zjistěte, kdy a proč použ
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
 1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název.
-1. Vyberte **sestavit**a pak na levém panelu vaší aplikace vyberte **funkce** .
+1. Vyberte **sestavit** a pak na levém panelu vaší aplikace vyberte **funkce** .
 
 1. Na stránce **funkce** vyberte **+ vytvořit**.
 

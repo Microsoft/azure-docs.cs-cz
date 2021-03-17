@@ -3,18 +3,18 @@ title: Ověřování a autorizace Azure Service Bus | Microsoft Docs
 description: Ověřování aplikací pro Service Bus s ověřováním pomocí sdíleného přístupového podpisu (SAS).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 7b287b209fbcd5bc2782505095aeae4390107803
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066857"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060210"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Ověřování a autorizace Service Bus
 Existují dva způsoby, jak ověřit a autorizovat přístup k prostředkům Azure Service Bus: Azure Activity Directory (Azure AD) a signatury sdíleného přístupu (SAS). Tento článek obsahuje podrobné informace o použití těchto dvou typů mechanismů zabezpečení. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Integrace Azure AD pro prostředky Service Bus poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Řízení přístupu na základě role (RBAC) můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt služby. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Service Bus (frontě, tématu atd.).
+Integrace Azure AD pro prostředky Service Bus poskytuje řízení přístupu na základě role Azure (Azure RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Službu Azure RBAC můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Service Bus (frontě, tématu atd.).
 
 Další informace o ověřování ve službě Azure AD najdete v následujících článcích:
 
@@ -37,7 +37,7 @@ Chcete-li použít SAS, můžete nakonfigurovat objekt [SharedAccessAuthorizatio
 * *KeyName*: identifikuje pravidlo.
 * *PrimaryKey*: kryptografický klíč, který slouží k podepisování/ověřování tokenů SAS.
 * *SecondaryKey*: kryptografický klíč, který slouží k podepisování/ověřování tokenů SAS.
-* *Práva*: představuje shromažďování udělených oprávnění k **naslouchání**, **odesílání**nebo **správě** .
+* *Práva*: představuje shromažďování udělených oprávnění k **naslouchání**, **odesílání** nebo **správě** .
 
 Autorizační pravidla konfigurovaná na úrovni oboru názvů můžou udělit přístup ke všem entitám v oboru názvů pro klienty s tokeny podepsanými pomocí odpovídajícího klíče. Pro Service Bus obor názvů, frontu nebo téma můžete nakonfigurovat až 12 těchto autorizačních pravidel. Ve výchozím nastavení se [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) se všemi právy nakonfigurují pro každý obor názvů při prvním zřízení.
 

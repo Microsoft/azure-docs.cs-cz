@@ -10,21 +10,21 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708837"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347060"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Co je fond spravovaných instancí Azure SQL (Preview)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Fondy instancí ve spravované instanci Azure SQL poskytují pohodlný a cenově výhodný způsob migrace menších instancí SQL Server do cloudu ve velkém měřítku.
 
-Fondy instancí umožňují předem zřídit výpočetní prostředky podle vašich celkových požadavků na migraci. Následně můžete nasadit několik jednotlivých spravovaných instancí až do předem zřízené výpočetní úrovně. Pokud například předzřídíte 8 virtuální jádra, můžete nasadit dvě 2 – vCore a jednu instanci 4 – vCore a následně migrovat databáze do těchto instancí. Před tím, než jsou fondy instancí k dispozici, je při migraci do cloudu často nutné konsolidovat menší a méně úlohy náročné na výpočetní výkon. Nutnost migrace skupin databází na velkou instanci obvykle vyžaduje pečlivé plánování kapacity a zásady správného řízení prostředků, další požadavky na zabezpečení a další práci při konsolidaci dat na úrovni instance.
+Fondy instancí umožňují předem zřídit výpočetní prostředky podle vašich celkových požadavků na migraci. Následně můžete nasadit několik jednotlivých spravovaných instancí až do předem zřízené výpočetní úrovně. Pokud například předzřídíte 8 virtuální jádra, můžete nasadit instanci 2 2-vCore a 1 4-vCore a následně migrovat databáze do těchto instancí. Před tím, než jsou fondy instancí k dispozici, je při migraci do cloudu často nutné konsolidovat menší a méně úlohy náročné na výpočetní výkon. Nutnost migrace skupin databází na velkou instanci obvykle vyžaduje pečlivé plánování kapacity a zásady správného řízení prostředků, další požadavky na zabezpečení a další práci při konsolidaci dat na úrovni instance.
 
 Fondy instancí navíc podporují nativní integraci virtuální sítě, takže můžete ve stejné podsíti nasadit více fondů instancí a více instancí s několika samostatnými instancemi.
 
@@ -32,7 +32,7 @@ Fondy instancí navíc podporují nativní integraci virtuální sítě, takže 
 
 Fondy instancí poskytují následující výhody:
 
-1. Možnost hostování 2-vCore instancí. * \* Pouze pro instance ve fondech instancí*.
+1. Možnost hostování 2-vCore instancí. *\* Pouze pro instance ve fondech instancí*.
 2. Předvídatelný a rychlý čas nasazení instance (až 5 minut).
 3. Minimální přidělení IP adresy.
 
@@ -59,9 +59,9 @@ Následující seznam poskytuje hlavní případy použití, ve kterých by se m
 
 ## <a name="architecture"></a>Architektura
 
-Fondy instancí mají podobnou architekturu pro běžné (*samostatné*) spravované instance. Aby bylo možné podporovat [nasazení v rámci virtuálních sítí Azure](../../virtual-network/virtual-network-for-azure-services.md)   a poskytovat izolaci a zabezpečení pro zákazníky, využívají fondy instancí také [virtuální clustery](connectivity-architecture-overview.md#high-level-connectivity-architecture). Virtuální clustery reprezentují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka.
+Fondy instancí mají podobnou architekturu pro běžné (*samostatné*) spravované instance. Aby bylo možné podporovat [nasazení v rámci virtuálních sítí Azure](../../virtual-network/virtual-network-for-azure-services.md) a poskytovat izolaci a zabezpečení pro zákazníky, využívají fondy instancí také [virtuální clustery](connectivity-architecture-overview.md#high-level-connectivity-architecture). Virtuální clustery reprezentují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka.
 
-Hlavním rozdílem mezi těmito dvěma modely nasazení je, že fondy instancí povolují nasazení více SQL Server procesů ve stejném uzlu virtuálního počítače, který je prostředkem, který se řídí pomocí [objektů úloh systému Windows](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), zatímco jednotlivé instance jsou vždy pouze v uzlu virtuálního počítače.
+Hlavním rozdílem mezi těmito dvěma modely nasazení je, že fondy instancí povolují nasazení více SQL Server procesů ve stejném uzlu virtuálního počítače, který je prostředkem, který se řídí pomocí [objektů úloh systému Windows](/windows/desktop/ProcThread/job-objects), zatímco jednotlivé instance jsou vždy pouze v uzlu virtuálního počítače.
 
 Následující diagram znázorňuje fond instancí a dvě jednotlivé instance nasazené ve stejné podsíti a ilustrují hlavní informace o architektuře pro oba modely nasazení:
 
@@ -78,15 +78,20 @@ Na fondy instancí a instance v rámci fondů se vztahuje několik omezení pros
 - Všechny [limity na úrovni instance](resource-limits.md#service-tier-characteristics) se vztahují na instance vytvořené v rámci fondu.
 - Kromě omezení na úrovni instance platí také dvě omezení *na úrovni fondu instancí*:
   - Celková velikost úložiště na fond (8 TB).
-  - Celkový počet databází na fond (100).
+  - Celkový počet uživatelských databází na fond. Tento limit závisí na hodnotě virtuální jádra fondu:
+    - 8 virtuální jádra fond podporuje až 200 databází,
+    - 16 virtuální jádra fond podporuje až 400 databází,
+    - 24 a větší virtuální jádra fond podporuje až 500 databází.
+- Správce AAD nelze nastavit pro instance nasazené uvnitř fondu instancí, nelze proto použít ověřování AAD.
 
 Celkové přidělení úložiště a počet databází napříč všemi instancemi musí být nižší než nebo rovno omezením vystaveným fondy instancí.
 
 - Fondy instancí podporují 8, 16, 24, 32, 40, 64 a 80 virtuální jádra.
 - Spravované instance v rámci fondů podporují 2, 4, 8, 16, 24, 32, 40, 64 a 80 virtuální jádra.
 - Spravované instance v rámci fondů podporují velikosti úložiště mezi 32 GB a 8 TB, s výjimkou:
-  - 2 instance vCore podporují velikosti mezi 32 GB a 640 GB
+  - 2 instance vCore podporují velikosti mezi 32 GB a 640 GB,
   - 4 instance vCore podporují velikosti mezi 32 GB a 2 TB.
+- Spravované instance v fondech mají limit až 100 databází uživatelů na instanci, s výjimkou 2 instancí vCore, které podporují až 50 uživatelských databází na instanci.
 
 [Vlastnost vrstvy služeb](resource-limits.md#service-tier-characteristics) je přidružená k prostředku fondu instancí, takže všechny instance ve fondu musí být stejné jako úroveň služby fondu. V tuto chvíli je dostupná jenom úroveň služby Pro obecné účely Service (v části omezení v aktuální verzi Preview viz následující část).
 
@@ -112,7 +117,7 @@ Volitelné funkce nebo funkce, které vyžadují, abyste vybrali konkrétní hod
 
 I když spravované instance v rámci fondů mají vyhrazené vCore a RAM, sdílí místní disk (pro použití databáze tempdb) a síťové prostředky. Není pravděpodobné, ale je možné vyzkoušet *sousední* efekt v případě vysokého počtu instancí, pokud má více instancí ve fondu současně stejnou spotřebu prostředků. Pokud toto chování provedete, zvažte nasazení těchto instancí do většího fondu nebo jako jedné instance.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Vzhledem k tomu, že instance nasazené ve fondu sdílejí stejný virtuální počítač, možná budete chtít vzít v úvahu, že jsou zakázané funkce, které vedou k vyšším bezpečnostním rizikům, nebo abyste k těmto funkcím měli oprávnění Například integrace modulu CLR, nativní zálohování a obnovení, databázový e-mail atd.
 

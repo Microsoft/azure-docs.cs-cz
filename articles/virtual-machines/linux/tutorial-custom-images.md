@@ -2,7 +2,7 @@
 title: Kurz – vytváření vlastních imagí virtuálních počítačů pomocí Azure CLI
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvořit vlastní image virtuálního počítače v Azure.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: tutorial
 ms.workload: infrastructure
@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 7fff8539f330c7cbc886577eaf6dbe4417411999
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 40ec86030e136a06fe240e473a469681dcfa7c4f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498136"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557757"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI
 
@@ -35,7 +35,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="overview"></a>Přehled
 
-[Galerie sdílených imagí](shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. 
+[Galerie sdílených imagí](../shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. 
 
 Galerie sdílených imagí umožňuje sdílet vlastní image virtuálních počítačů s ostatními. Vyberte, které Image chcete sdílet, které oblasti mají být v nástroji dostupné a které chcete sdílet s. 
 
@@ -61,7 +61,7 @@ Galerie imagí je primární prostředek, který slouží k povolení sdílení 
 
 Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
-Pomocí [AZ SIG Create](/cli/azure/sig#az-sig-create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA*a galerii s názvem *myGallery*.
+Pomocí [AZ SIG Create](/cli/azure/sig#az-sig-create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA* a galerii s názvem *myGallery*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -90,11 +90,11 @@ Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě
 
 Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. 
 
-Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](./shared-image-galleries.md#image-definitions).
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](../shared-image-galleries.md#image-definitions).
 
 Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create). 
 
-V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [specializovanou](./shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. 
+V tomto příkladu se definice image jmenuje *myImageDefinition* a je určena pro [specializovanou](../shared-image-galleries.md#generalized-and-specialized-images) image operačního systému Linux. 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -156,7 +156,7 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="share-the-gallery"></a>Sdílení galerie
 
-Image můžete sdílet mezi předplatnými pomocí Access Control na základě rolí (RBAC). Image můžete sdílet v galerii, definici Image nebo imagi verze Leve. Každý uživatel, který má oprávnění ke čtení verze image, dokonce i přes odběry, bude moci nasadit virtuální počítač pomocí verze image.
+Image můžete sdílet mezi předplatnými pomocí řízení přístupu na základě role Azure (RBAC). Image můžete sdílet v galerii, definici Image nebo imagi verze Leve. Každý uživatel, který má oprávnění ke čtení verze image, dokonce i přes odběry, bude moci nasadit virtuální počítač pomocí verze image.
 
 Doporučujeme sdílet s ostatními uživateli na úrovni galerie. Chcete-li získat ID objektu galerie, použijte příkaz [AZ SIG show](/cli/azure/sig#az-sig-show).
 
@@ -176,11 +176,11 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-Další informace o tom, jak sdílet prostředky pomocí RBAC, najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md).
+Další informace o tom, jak sdílet prostředky pomocí Azure RBAC, najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Azure také nabízí službu, která je založená na balíčku, [tvůrci imagí virtuálních počítačů Azure](./image-builder-overview.md). Jednoduše popište vlastní nastavení v šabloně a zpracuje se tím vytváření obrázků. 
+Azure také nabízí službu, která je založená na balíčku, [tvůrci imagí virtuálních počítačů Azure](../image-builder-overview.md). Jednoduše popište vlastní nastavení v šabloně a zpracuje se tím vytváření obrázků. 
 
 ## <a name="next-steps"></a>Další kroky
 

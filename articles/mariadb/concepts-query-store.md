@@ -1,17 +1,17 @@
 ---
 title: Úložiště dotazů – Azure Database for MariaDB
 description: Přečtěte si o funkci úložiště dotazů v Azure Database for MariaDB, která vám pomůžou sledovat výkon v průběhu času.
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/15/2021
+ms.openlocfilehash: 0841a38ab6e4fe3b4d0faf755209d85cfea1ac17
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79527805"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664193"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Monitorování výkonu Azure Database for MariaDB s využitím úložiště dotazů
 
@@ -21,7 +21,7 @@ Funkce úložiště dotazů v Azure Database for MariaDB poskytuje způsob, jak 
 
 ## <a name="common-scenarios-for-using-query-store"></a>Běžné scénáře použití úložiště dotazů
 
-Úložiště dotazů je možné použít v několika scénářích, včetně následujících:
+Úložiště dotazů se dá použít v mnoha scénářích, včetně následujících:
 
 - Zjišťování vrácených dotazů
 - Určení počtu spuštění dotazu v daném časovém intervalu
@@ -34,14 +34,14 @@ Funkce úložiště dotazů v Azure Database for MariaDB poskytuje způsob, jak 
 ### <a name="enable-query-store-using-the-azure-portal"></a>Povolit úložiště dotazů pomocí Azure Portal
 
 1. Přihlaste se k Azure Portal a vyberte Azure Database for MariaDB Server.
-1. V části **Nastavení** v nabídce vyberte **parametry serveru** .
-1. Vyhledejte parametr query_store_capture_mode.
-1. Nastavte hodnotu vše a **uložte**.
+2. V části **Nastavení** v nabídce vyberte **parametry serveru** .
+3. Vyhledejte parametr query_store_capture_mode.
+4. Nastavte hodnotu vše a **uložte**.
 
 Postup při povolování statistik čekání v úložišti dotazů:
 
 1. Vyhledejte parametr query_store_wait_sampling_capture_mode.
-1. Nastavte hodnotu vše a **uložte**.
+2. Nastavte hodnotu vše a **uložte**.
 
 Umožňuje trvat až 20 minut, než se první dávka dat uloží v databázi MySQL.
 
@@ -87,7 +87,7 @@ Když je povoleno úložiště dotazů, ukládá data v oknech agregace 15 minut
 
 Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující možnosti.
 
-| **Parametr** | **Popis** | **Výchozí** | **Oblasti** |
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah** |
 |---|---|---|---|
 | query_store_capture_mode | Zapněte nebo vypněte funkci úložiště dotazů na základě hodnoty. Poznámka: Pokud je performance_schema VYPNUTá, zapnutí query_store_capture_mode zapnete performance_schema a podmnožinu nástrojů schématu výkonu, které jsou pro tuto funkci nutné. | ALL | ŽÁDNÉ, VŠE |
 | query_store_capture_interval | Interval zachycení úložiště dotazů je v řádu minut. Umožňuje zadat interval, ve kterém jsou metriky dotazu agregovány. | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující 
 
 Následující možnosti platí konkrétně pro čekání na statistiku.
 
-| **Parametr** | **Popis** | **Výchozí** | **Oblasti** |
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Umožňuje zapnout nebo vypnout statistiku čekání. | NTATO | ŽÁDNÉ, VŠE |
 | query_store_wait_sampling_frequency | Mění frekvenci příkazu Wait-vzorkování v sekundách. 5 až 300 sekund. | 30 | 5-300 |
@@ -108,15 +108,15 @@ Použijte [Azure Portal](howto-server-parameters.md) k získání nebo nastaven�
 
 ## <a name="views-and-functions"></a>Zobrazení a funkce
 
-Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli z [veřejné role vybrat oprávnění](howto-create-users.md#create-additional-admin-users) může tato zobrazení použít k zobrazení dat v úložišti dotazů. Tato zobrazení jsou k dispozici pouze v databázi **MySQL** .
+Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli z [veřejné role vybrat oprávnění](howto-create-users.md#create-more-admin-users) může tato zobrazení použít k zobrazení dat v úložišti dotazů. Tato zobrazení jsou k dispozici pouze v databázi **MySQL** .
 
 Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhledají jejich strukturu. Pokud jsou dva dotazy stejné s výjimkou hodnot literálů, budou mít stejnou hodnotu hash.
 
-### <a name="mysqlquery_store"></a>MySQL. query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
 Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele a ID dotazu je k dispozici jeden řádek.
 
-| **Název** | **Typ dat** | **IS_NULLABLE** | **Popis** |
+| **Název** | **Datový typ** | **IS_NULLABLE** | **Popis** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Název schématu |
 | `query_id`| bigint (20) | NO| Jedinečné ID generované pro konkrétní dotaz, pokud se stejný dotaz spustí v jiném schématu, vygeneruje se nové ID. |
@@ -139,17 +139,17 @@ Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedine�
 | `sum_select_scan` | bigint (20)| NO| Počet kontrol vybraných pro výběr |
 | `sum_sort_rows` | bigint (20)| NO| Počet seřazených řádků|
 | `sum_no_index_used` | bigint (20)| NO| Počet pokusů, kolikrát dotaz nepoužil žádné indexy|
-| `sum_no_good_index_used` | bigint (20)| NO| Počet pokusů, kolikrát prováděcí modul dotazu nepoužil žádné dobré indexy|
+| `sum_no_good_index_used` | bigint (20)| NO| Počet pokusů, kolikrát modul provádění dotazů nepoužil žádné dobré indexy|
 | `sum_created_tmp_tables` | bigint (20)| NO| Celkový počet vytvořených dočasných tabulek|
 | `sum_created_tmp_disk_tables` | bigint (20)| NO| Celkový počet dočasných tabulek vytvořených na disku (generuje se I/O)|
 | `first_seen` | časové razítko| NO| První výskyt dotazu (UTC) během okna agregace|
 | `last_seen` | časové razítko| NO| Poslední výskyt dotazu (UTC) během tohoto okna agregace|
 
-### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
 
-| **Název**| **Typ dat** | **IS_NULLABLE** | **Popis** |
+| **Název**| **Datový typ** | **IS_NULLABLE** | **Popis** |
 |---|---|---|---|
 | `interval_start` | časové razítko | NO| Začátek intervalu (přírůstek 15 minut)|
 | `interval_end` | časové razítko | NO| Konec intervalu (přírůstek 15 minut)|

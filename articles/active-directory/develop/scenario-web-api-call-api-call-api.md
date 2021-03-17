@@ -1,5 +1,6 @@
 ---
-title: Webové rozhraní API, které volá webová rozhraní API – Microsoft Identity Platform | Azure
+title: Webové rozhraní API, které volá webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet webové rozhraní API, které volá webová rozhraní API.
 services: active-directory
 author: jmprieur
@@ -8,40 +9,130 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b756d7df03bd3c06b703617dbf84a194d716f1e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f4dfd2c7f9dbdd111f70a5dd5a648c11eacbf7b0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026369"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038539"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webové rozhraní API, které volá webová rozhraní API: volá rozhraní API.
 
-Po vytvoření tokenu můžete zavolat chráněné webové rozhraní API. Provedete to z kontroleru vašeho webového rozhraní API.
+Po vytvoření tokenu můžete zavolat chráněné webové rozhraní API. Rozhraní API pro příjem dat obvykle vyvoláte z kontroleru nebo stránek vašeho webového rozhraní API.
 
 ## <a name="controller-code"></a>Kód kontroleru
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Následující kód pokračuje v ukázkovém kódu, který je zobrazen ve [webovém rozhraní API, které volá webová rozhraní API: získání tokenu pro aplikaci](scenario-web-api-call-api-acquire-token.md). Kód se volá v akcích řadičů rozhraní API. Volá rozhraní API pro příjem dat s názvem *ToDoList*.
+Pokud používáte *Microsoft. identity. Web*, máte tři scénáře použití:
 
-Po získání tokenu ho použijte jako nosný token pro volání rozhraní API pro příjem dat.
+- [Možnost 1: volání Microsoft Graph se sadou SDK](#option-1-call-microsoft-graph-with-the-sdk)
+- [Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [Možnost 3: volání podřízeného webového rozhraní API bez pomocné třídy](#option-3-call-a-downstream-web-api-without-the-helper-class)
+
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Možnost 1: volání Microsoft Graph se sadou SDK
+
+V tomto scénáři jste přidali `.AddMicrosoftGraph()` v *Startup.cs* , jak je uvedeno v části [Konfigurace kódu](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph), a můžete přímo vložit `GraphServiceClient` do svého kontroleru nebo konstruktoru stránky pro použití v akcích. Následující příklad stránky Razor zobrazuje fotografii přihlášeného uživatele.
+
+```CSharp
+ [Authorize]
+ [AuthorizeForScopes(Scopes = new[] { "user.read" })]
+ public class IndexModel : PageModel
+ {
+     private readonly GraphServiceClient _graphServiceClient;
+
+     public IndexModel(GraphServiceClient graphServiceClient)
+     {
+         _graphServiceClient = graphServiceClient;
+     }
+
+     public async Task OnGet()
+     {
+         var user = await _graphServiceClient.Me.Request().GetAsync();
+         try
+         {
+             using (var photoStream = await _graphServiceClient.Me.Photo.Content.Request().GetAsync())
+             {
+                 byte[] photoByte = ((MemoryStream)photoStream).ToArray();
+                 ViewData["photo"] = Convert.ToBase64String(photoByte);
+             }
+             ViewData["name"] = user.DisplayName;
+         }
+         catch (Exception)
+         {
+             ViewData["photo"] = null;
+         }
+     }
+ }
+```
+
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou
+
+V tomto scénáři jste přidali `.AddDownstreamWebApi()` v *Startup.cs* , jak je uvedeno v části [Konfigurace kódu](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), a můžete přímo vložit `IDownstreamWebApi` službu do vašeho kontroleru nebo konstruktoru stránky a použít ji v akcích:
+
+```CSharp
+ [Authorize]
+ [AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
+ public class TodoListController : Controller
+ {
+     private IDownstreamWebApi _downstreamWebApi;
+     private const string ServiceName = "TodoList";
+
+     public TodoListController(IDownstreamWebApi downstreamWebApi)
+     {
+         _downstreamWebApi = downstreamWebApi;
+     }
+
+     public async Task<ActionResult> Details(int id)
+     {
+         var value = await _downstreamWebApi.CallWebApiForUserAsync(
+             ServiceName,
+             options =>
+             {
+                 options.RelativePath = $"me";
+             });
+         return View(value);
+     }
+```
+
+`CallWebApiForUserAsync`Metoda má také obecné přepsání silného typu, které vám umožní přímo získat objekt. Například následující metoda obdržela `Todo` instanci, která je silně typovou reprezentací JSON vrácenou webovým rozhraním API.
+
+```CSharp
+ // GET: TodoList/Details/5
+ public async Task<ActionResult> Details(int id)
+ {
+     var value = await _downstreamWebApi.CallWebApiForUserAsync<object, Todo>(
+         ServiceName,
+         null,
+         options =>
+         {
+             options.HttpMethod = HttpMethod.Get;
+             options.RelativePath = $"api/todolist/{id}";
+         });
+     return View(value);
+ }
+```
+
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Možnost 3: volání podřízeného webového rozhraní API bez pomocné třídy
+
+Pokud jste se rozhodli získat token ručně pomocí `ITokenAcquisition` služby, je teď nutné použít token. V takovém případě následující kód pokračuje v ukázkovém kódu zobrazeném ve [webovém rozhraní API, které volá webová rozhraní API: Získejte token pro aplikaci](scenario-web-api-call-api-acquire-token.md). Kód se volá v akcích řadičů rozhraní API. Volá rozhraní API pro příjem dat s názvem *ToDoList*.
+
+ Po získání tokenu ho použijte jako nosný token pro volání rozhraní API pro příjem dat.
 
 ```csharp
-private async Task CallTodoListService(string accessToken)
-{
+ private async Task CallTodoListService(string accessToken)
+ {
+  // After the token has been returned by Microsoft.Identity.Web, add it to the HTTP authorization header before making the call to access the todolist service.
+ _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
-// After the token has been returned by Microsoft Identity Web, add it to the HTTP authorization header before making the call to access the To Do list service.
-_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-
-// Call the To Do list service.
-HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
-...
-}
-```
+ // Call the todolist service.
+ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
+ // ...
+ }
+ ```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -68,11 +159,10 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-Ukázka demonstrující tento tok pomocí MSAL Python ještě není k dispozici.
+Ukázka demonstrující tento tok pomocí MSAL Pythonu je k dispozici v [části MS-identity-Python-on-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of).
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Webové rozhraní API, které volá webová rozhraní API: Přesun do produkčního prostředí](scenario-web-api-call-api-production.md)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](scenario-web-api-call-api-production.md)prostředí.

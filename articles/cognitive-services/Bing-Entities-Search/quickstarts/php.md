@@ -10,14 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 21a8d47f80dae35553114f522c1c78a97a086518
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fcb924b84865519e8def3b28f633f9752c038ca2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650222"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351414"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí PHP
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace PHP pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď. 
 
@@ -37,7 +42,7 @@ Pokud chcete tuto aplikaci spustit, postupujte následovně:
 2. Přidejte níže uvedený kód.
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
-5. Spusťte program.
+5. Spustíte program.
 
 ```php
 <?php
@@ -46,8 +51,8 @@ Pokud chcete tuto aplikaci spustit, postupujte následovně:
 // ;extension=php_openssl.dll
 
 // **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// **_ Update or verify the following values. _*_
+// _*********************************************
 
 // Replace the subscriptionKey string value with your valid subscription key.
 $subscriptionKey = 'ENTER KEY HERE';
@@ -154,4 +159,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
-* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

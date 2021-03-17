@@ -1,18 +1,18 @@
 ---
 title: Kontrola odhadů nákladů v Plánovač nasazení služby Azure Site Recovery
 description: V tomto článku se dozvíte, jak zkontrolovat odhad nákladů v Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware.
-author: mayurigupta13
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
-ms.author: mayg
-ms.openlocfilehash: d7ee72b5f6441f2b3b3ea9a7eaa41a3e1b650745
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: ramamill
+ms.openlocfilehash: dba585fbadca479c146ad42ac1bc5aa9d5349f49
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528957"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186701"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Kontrola odhadů nákladů v Plánovač nasazení VMware 
 
@@ -105,7 +105,7 @@ Ruční přidání virtuálních počítačů:
 * Number of DR drills in a year 
 * Each DR drill duration (Days) 
 * Typ operačního systému
-* Data redundancy 
+* Redundance dat 
 * Zvýhodněné hybridní využití Azure
 
 1. Pokud chcete použít stejnou hodnotu pro všechny virtuální počítače v tabulce, klikněte na tlačítko Apply to all (Použít u všech) pro sloupce DR-Drills in a year, Each DR-Drill duration (Days), Data redundancy a Azure Hybrid Use Benefit.
@@ -122,7 +122,7 @@ Ruční přidání virtuálních počítačů:
 
 **Storage type:** Typ úložiště, který virtuální počítač využívá. Je to Storage úrovně Standard nebo Premium.
 
-**Virtuální počítač celková velikost úložiště (GB)**: Celková velikost úložiště zdrojového virtuálního počítače.
+**Virtuální počítač celková velikost úložiště (GB)** : Celková velikost úložiště zdrojového virtuálního počítače.
 
 **Number of DR-Drills in a year:** Počet, kolikrát za rok provedete nácvik zotavení po havárii. Ve výchozím nastavení je to 4krát do roka. Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače, a to zadáním požadované hodnoty do horního řádku a kliknutím na tlačítko Apply to all (Použít u všech). Na základě počtu nácviků zotavení po havárii za rok a délce trvání jednotlivých nácviků se vypočtou celkové náklady na nácvik zotavení po havárii.  
 

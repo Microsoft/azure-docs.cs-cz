@@ -1,26 +1,14 @@
 ---
-title: Vývoj s využitím rozhraní API V3
-titleSuffix: Azure Media Services
-description: Přečtěte si o pravidlech, která se vztahují na entity a rozhraní API při vývoji s Media Services V3.
-services: media-services
-documentationcenter: ''
-author: Juliako
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: article
-ms.date: 10/21/2019
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 703c08cd5a884c8bfdd027b4ecf457c9e954a2dc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043402"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Povinná pole. Další informace najdete na aka.ms/skyeye/meta.
+title: vývoj s rozhraními API V3: Azure Media Services popis: informace o pravidlech, která se vztahují na entity a rozhraní API při vývoji pomocí Media Services V3. služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. rebavování: MS. téma: konceptuální MS. Date: 10/23/2020 MS. Author: inhenkel MS. Custom: seodec18
+
 ---
+
 # <a name="develop-with-media-services-v3-apis"></a>Vývoj pomocí rozhraní API služby Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Jako vývojář můžete použít Media Services [REST API](/rest/api/media/) nebo klientské knihovny, které vám umožní pracovat s REST API, abyste mohli snadno vytvářet, spravovat a spravovat vlastní pracovní postupy pro média. Rozhraní [Media Services V3](https://aka.ms/ams-v3-rest-sdk) API je založené na specifikaci openapi (dříve označované jako Swagger).
 
@@ -33,13 +21,13 @@ Abyste mohli získat autorizaci pro přístup k prostředkům a rozhraní API sl
 * **Ověřování instančních objektů:** Slouží k ověřování služeb (například webových aplikací, aplikací funkcí, aplikací logiky, rozhraní API nebo mikroslužeb). Mezi aplikace, které běžně využívají tuto metodu ověřování, patří aplikace spouštějící služby démonů, služby střední úrovně nebo naplánované úlohy. Například pro webové aplikace by měla být vždy střední vrstva, která se připojuje k Media Services s instančním objektem.
 * **Ověřování uživatelů:** Slouží k ověřování lidí, kteří pomocí aplikace pracují s prostředky služby Media Services. Interaktivní aplikace by nejprve měla uživatele vyzvat k zadání přihlašovacích údajů. Příkladem je aplikace konzoly pro správu, kterou autorizovaní uživatelé používají k monitorování úloh kódování nebo živého streamování.
 
-Rozhraní API služby Media Services vyžaduje, aby uživatel nebo aplikace provádějící požadavky rozhraní REST API měli přístup k prostředku účtu služby Media Services a používali roli **Přispěvatel** nebo **Vlastník**. K rozhraní API je možné získat přístup také s rolí **Čtenář**, ale v takovém případě budou k dispozici pouze operace **Get** a **List**.Další informace najdete v tématu [Řízení přístupu na základě role pro účty služby Media Services](rbac-overview.md).
+Rozhraní API služby Media Services vyžaduje, aby uživatel nebo aplikace provádějící požadavky rozhraní REST API měli přístup k prostředku účtu služby Media Services a používali roli **Přispěvatel** nebo **Vlastník**. K rozhraní API je možné získat přístup také s rolí **Čtenář**, ale v takovém případě budou k dispozici pouze operace **Get** a **List**.Další informace najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC) pro účty Media Services](rbac-overview.md).
 
 Místo vytváření instančního objektu zvažte přístup k rozhraní API služby Media Services prostřednictvím Azure Resource Manageru s využitím spravovaných identit pro prostředky Azure. Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [Co jsou spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="azure-ad-service-principal"></a>Instanční objekt služby Azure AD
 
-Pokud vytváříte aplikaci a instanční objekt služby Azure AD, musí být aplikace ve vlastním tenantovi. Po vytvoření aplikace udělte **přispěvateli** aplikace nebo roli **vlastníka** přístup k účtu Media Services.
+Aplikace a instanční objekt služby Azure AD by měly být ve stejném tenantovi. Po vytvoření aplikace udělte **přispěvateli** aplikace nebo roli **vlastníka** přístup k účtu Media Services.
 
 Pokud si nejste jistí, jestli máte oprávnění k vytvoření aplikace služby Azure AD, přečtěte si téma [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
@@ -60,7 +48,7 @@ Na následujícím obrázku čísla reprezentují tok požadavků v chronologick
 4. Střední vrstva odesílá požadavek do Azure Media REST API s tokenem Azure AD.
 5. Střední vrstva vrátí data z Media Services.
 
-### <a name="samples"></a>Ukázky
+### <a name="samples"></a>ukázky
 
 Podívejte se na následující ukázky, které ukazují, jak se připojit pomocí instančního objektu služby Azure AD:
 
@@ -86,7 +74,7 @@ Názvy souborů nebo objektů BLOB v rámci assetu musí splňovat požadavky na
 
 Operace označené `x-ms-long-running-operation` v Azure Media Services [soubory Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) jsou dlouhodobě běžící operace. 
 
-Podrobnosti o tom, jak sledovat asynchronní operace Azure, najdete v tématu [asynchronní operace](../../azure-resource-manager/management/async-operations.md#monitor-status-of-operation).
+Podrobnosti o tom, jak sledovat asynchronní operace Azure, najdete v tématu [asynchronní operace](../../azure-resource-manager/management/async-operations.md).
 
 Media Services má následující dlouhodobě běžící operace:
 
@@ -107,22 +95,22 @@ Media Services má následující dlouhodobě běžící operace:
 * [Zastavit StreamingEndpoint](/rest/api/media/streamingendpoints/stop)
 * [Škálování StreamingEndpoint](/rest/api/media/streamingendpoints/scale)
 
-Po úspěšném odeslání dlouhé operace obdržíte 202 přijatý a musí se dotazovat na dokončení operace s použitím vráceného ID operace.
+Po úspěšném odeslání dlouhé operace obdržíte vytvořenou položku 201 vytvořeno a musíte se dotázat na dokončení operace pomocí ID vrácené operace.
 
 Článek [sledování asynchronních operací Azure](../../azure-resource-manager/management/async-operations.md) podrobněji vysvětluje, jak sledovat stav asynchronních operací Azure prostřednictvím hodnot vrácených v odpovědi.
 
-Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vysílání je podporována pouze jedna dlouhodobě běžící operace. Po spuštění se musí dlouho běžící operace dokončit před spuštěním následné dlouhotrvající operace na stejném Livestream nebo jakýchkoli přidružených živých výstupech. U živých událostí s více živými výstupy musíte očekávat dokončení dlouhotrvající operace na jednom aktivním výstupu před aktivací dlouhotrvající operace na jiném živém výstupu. 
+Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vysílání je podporována pouze jedna dlouhodobě běžící operace. Po spuštění se musí dlouho běžící operace dokončit před spuštěním následné dlouhotrvající operace na stejném Livestream nebo jakýchkoli přidružených živých výstupech. U živých událostí s více živými výstupy musíte očekávat dokončení dlouhotrvající operace na jednom aktivním výstupu před aktivací dlouhotrvající operace na jiném živém výstupu.
 
 ## <a name="sdks"></a>Sady SDK
 
 > [!NOTE]
 > Sady SDK Azure Media Services V3 nejsou zaručeny jako bezpečné pro přístup z více vláken. Při vývoji aplikace s více vlákny byste měli přidat vlastní logiku synchronizace vláken pro ochranu klienta nebo použití nového objektu AzureMediaServicesClient na vlákno. Měli byste také dbát na problémy s více vlákny, které přináší volitelné objekty poskytované vaším kódem, klientovi (například instance HttpClient v rozhraní .NET).
 
-|Sada SDK|Referenční informace|
+|Sada SDK|Reference|
 |---|---|
-|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[Referenční informace k .NET](https://aka.ms/ams-v3-dotnet-ref)|
-|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Referenční informace k Javě](https://aka.ms/ams-v3-java-ref)|
-|[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Referenční informace k Pythonu](https://aka.ms/ams-v3-python-ref)|
+|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[Referenční informace k .NET](/dotnet/api/overview/azure/mediaservices/management)|
+|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Referenční informace k Javě](/java/api/overview/azure/mediaservices/management)|
+|[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Referenční informace k Pythonu](/python/api/overview/azure/mediaservices/management)|
 |[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Referenční informace k Node.js](/javascript/api/overview/azure/mediaservices/management)| 
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Referenční informace k jazyku Go](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||

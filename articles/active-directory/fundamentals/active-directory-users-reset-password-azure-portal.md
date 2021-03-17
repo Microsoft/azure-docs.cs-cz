@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69da6aa0253f92f9242a988c6b46de873df0677e
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 8809f8c168e7095f05587c7a572e08287637dc5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797199"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034587"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Resetování hesla uživatele pomocí Azure Active Directory
 
@@ -33,7 +33,7 @@ Jako správce můžete resetovat heslo uživatele, pokud je zapomenuté heslo, p
 
 ## <a name="to-reset-a-password"></a>Resetování hesla
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce uživatele nebo správce hesel. Další informace o dostupných rolích najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles) .
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce uživatele nebo správce hesel. Další informace o dostupných rolích najdete v tématu [předdefinované role Azure AD](../roles/permissions-reference.md) .
 
 2. Vyberte **Azure Active Directory**, vyberte **Uživatelé**, vyhledejte a vyberte uživatele, který vyžaduje resetování, a pak vyberte **resetovat heslo**.
 
@@ -51,6 +51,10 @@ Jako správce můžete resetovat heslo uživatele, pokud je zapomenuté heslo, p
     >[!Note]
     >Dočasné heslo je platné i po vypršení platnosti. Až se uživatel příště přihlásí, heslo bude pořád fungovat bez ohledu na to, kolik času uplynulo od vygenerování dočasného hesla.
 
+> [!IMPORTANT]
+> Pokud správce nemůže resetovat heslo uživatele a v protokolech událostí aplikace na Azure AD Connect serveru se zobrazí následující kód chyby HR = 80231367, zkontrolujte atributy uživatele ve službě Active Directory.  Pokud je atribut **AdminCount** nastaven na hodnotu 1, znemožní vám správce resetování hesla uživatele.  Aby správci mohli resetovat heslo uživatele, musí být atribut **AdminCount** nastaven na hodnotu 0.
+
+
 ## <a name="next-steps"></a>Další kroky
 
 Po resetování hesla uživatele můžete provádět následující základní procesy:
@@ -63,4 +67,4 @@ Po resetování hesla uživatele můžete provádět následující základní p
 
 - [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
 
-Nebo můžete provádět složitější uživatelské scénáře, jako je přiřazení delegátů, používání zásad a sdílení uživatelských účtů. Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../users-groups-roles/index.yml).
+Nebo můžete provádět složitější uživatelské scénáře, jako je přiřazení delegátů, používání zásad a sdílení uživatelských účtů. Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../enterprise-users/index.yml).

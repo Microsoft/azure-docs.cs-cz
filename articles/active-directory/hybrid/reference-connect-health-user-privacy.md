@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58cddcde71e6e86b9abe07eb4200f13ad55ea659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690689"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89182356"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Ochrana osobních údajů uživatelů a Azure AD Connect Health 
 
@@ -41,7 +41,7 @@ Servery s aktivními **daty služby Health Service nejsou aktuálními** výstra
 Azure AD Connect Health vám umožní zastavit shromažďování dat pro jednotlivé monitorované servery nebo pro instanci monitorované služby. Můžete například zastavit shromažďování dat pro jednotlivé servery ADFS (Active Directory Federation Services (AD FS)), které jsou monitorovány pomocí Azure AD Connect Health. Můžete také zastavit shromažďování dat pro celou instanci služby AD FS, která je monitorována pomocí Azure AD Connect Health. Pokud se rozhodnete tak učinit, budou se po zastavení shromažďování dat na portálu Azure AD Connect Health odstranit odpovídající servery. 
 
 >[!IMPORTANT]
-> Abyste mohli odstranit monitorované servery z Azure AD Connect Health, potřebujete buď oprávnění globálního správce služby Azure AD, nebo roli Přispěvatel v RBAC.
+> Abyste mohli odstranit monitorované servery z Azure AD Connect Health, potřebujete buď oprávnění globálního správce služby Azure AD, nebo roli Přispěvatel v Azure RBAC.
 >
 > Odebrání instance serveru nebo služby z Azure AD Connect Health není akce vratné. 
 

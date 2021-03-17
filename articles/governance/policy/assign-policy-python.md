@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: nové přiřazení zásad pomocí Pythonu'
 description: V tomto rychlém startu pomocí Pythonu vytvoříte přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
-ms.date: 08/10/2020
+ms.date: 03/02/2021
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: a160b9bc389bc0c902f9644887aa478f80822e60
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136512"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742326"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Pythonu
 
@@ -40,7 +40,7 @@ Chcete-li povolit Pythonu pro práci s Azure Policy, musí být knihovna přidá
    az login
    ```
 
-1. V prostředí Python dle výběru nainstalujte požadované knihovny pro Azure Resource Graph:
+1. V prostředí Python dle výběru nainstalujte požadované knihovny pro Azure Policy:
 
    ```bash
    # Add the Python library for Python
@@ -56,7 +56,7 @@ Chcete-li povolit Pythonu pro práci s Azure Policy, musí být knihovna přidá
    > [!NOTE]
    > Pokud je Python nainstalovaný pro všechny uživatele, musí být tyto příkazy spuštěné z konzoly se zvýšenými oprávněními.
 
-1. Ověřte, zda byly knihovny nainstalovány. `azure-mgmt-policyinsights`by měla být **0.5.0** nebo vyšší, `azure-mgmt-resource` měla by být **9.0.0** nebo vyšší a `azure-cli-core` měla by být **2.5.0** nebo vyšší.
+1. Ověřte, zda byly knihovny nainstalovány. `azure-mgmt-policyinsights` by měla být **0.5.0** nebo vyšší, `azure-mgmt-resource` měla by být **9.0.0** nebo vyšší a `azure-cli-core` měla by být **2.5.0** nebo vyšší.
 
    ```bash
    # Check each installed library
@@ -95,10 +95,10 @@ Podrobnosti přiřazení:
 - **DISPLAY_NAME** – zobrazovaný název přiřazení zásady. V takovém případě použijete _přiřazení audit virtuálních počítačů bez spravovaných disků_.
 - **policy_definition_id** – cesta definice zásad na základě toho, kterou používáte k vytvoření přiřazení. V tomto případě se jedná o ID _virtuálních počítačů auditu definice zásad, které nepoužívají spravované disky_. V tomto příkladu je definice zásad integrovaná a cesta neobsahuje informace o skupině pro správu nebo předplatném.
 - **Scope** – obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude uplatňovat. Může být v rozsahu od skupiny pro správu k individuálnímu prostředku. Nezapomeňte nahradit `{scope}` jedním z následujících způsobů:
-  - Skupina pro správu:`/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Formě`/subscriptions/{subscriptionId}`
+  - Skupina pro správu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
+  - Předplatné: `/subscriptions/{subscriptionId}`
   - Skupina prostředků: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
-  - Partner`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
+  - Partner `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 - **Popis** – podrobnější vysvětlení toho, co zásada dělá nebo proč je přiřazena tomuto oboru.
 
 Vytváření přiřazení:

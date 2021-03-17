@@ -14,33 +14,44 @@
           href: unity-overview.md
         - name: HoloLens
           href: quickstarts/get-started-unity-hololens.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
         - name: Android
           href: quickstarts/get-started-unity-android.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
     - name: Vytvoření aplikace HoloLens
       href: quickstarts/get-started-hololens.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
     - name: Vytvoření aplikace pro Android
       href: quickstarts/get-started-android.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
     - name: Vytvoření aplikace pro iOS
       href: quickstarts/get-started-ios.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
     - name: Vytvoření aplikace Xamarin
       items:
         - name: Android
           href: quickstarts/get-started-xamarin-android.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
         - name: iOS
           href: quickstarts/get-started-xamarin-ios.md
+          displayName: 'Azure CLI, az spatial-anchors-account'
 - name: Kurzy
   items:
     - name: Sdílení napříč relacemi a zařízeními
       href: tutorials/tutorial-share-anchors-across-devices.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
       items:
         - name: Trvalé sdílení s využitím Azure Cosmos DB
           href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
     - name: Spuštění nové aplikace Unity HoloLens
       href: tutorials/tutorial-new-unity-hololens-app.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
     - name: Spuštění nové aplikace pro Android
       href: tutorials/tutorial-new-android-app.md
+      displayName: 'Azure CLI, az spatial-anchors-account'
 - name: Postupy
   items:
     - name: Vytvoření a zjištění kotev
@@ -72,6 +83,8 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: V C++/WinRT
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: Použít hrubou reprostředí bez relace kotvy
+      href: how-tos/use-coarse-relocalization-without-anchor-session.md
     - name: Nastavení projektu
       items:
         - name: C++/WinRT
@@ -94,26 +107,30 @@
       href: concepts/logging-diagnostics.md
     - name: Přibližná relokalizace
       href: concepts/coarse-reloc.md
+    - name: Kotva – najít strategii
+      href: concepts/anchor-locate-strategy.md
 - name: Odkazy
   items:
     - name: SDK pro Unity
-      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/'
+      href: /dotnet/api/Microsoft.Azure.SpatialAnchors/
     - name: SDK pro iOS Objective-C
-      href: 'https://docs.microsoft.com/objectivec/api/spatial-anchors/'
+      href: /objectivec/api/spatial-anchors/
     - name: SDK pro Android Javu
-      href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/'
+      href: /java/api/com.microsoft.azure.spatialanchors/
     - name: SDK pro Android NDK
-      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
+      href: /cpp/api/spatial-anchors/ndk/
     - name: SDK pro HoloLens C++/WinRT
-      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+      href: /cpp/api/spatial-anchors/winrt/
     - name: Azure CLI
       href: /cli/azure/ext/mixed-reality/spatial-anchors-account
+    - name: Azure PowerShell
+      href: /powershell/module/az.mixedreality
 - name: Zdroje a prostředky
   items:
     - name: Poznámky k verzi
       href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
     - name: Rozhraní REST API správy prostředků služby Azure Mixed Reality
-      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+      href: /rest/api/mixedreality/
     - name: Nejčastější dotazy
       href: spatial-anchor-faq.md
     - name: Poskytnutí zpětné vazby k produktu

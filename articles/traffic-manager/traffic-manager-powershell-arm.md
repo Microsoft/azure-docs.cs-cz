@@ -3,20 +3,20 @@ title: Použití PowerShellu ke správě Traffic Manager v Azure
 description: Pomocí této cesty výukového programu můžete začít používat Azure PowerShell pro Traffic Manager.
 services: traffic-manager
 documentationcenter: na
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: e9d995a69a4fc54d6f001ced7503a9138d737dbc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 21076fe23301c189d9987f78706cc81691ce7a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089035"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89400530"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití PowerShellu ke správě Traffic Manager
 
@@ -125,7 +125,7 @@ V každém případě:
 * Zadání ' Weight ' je volitelné. Váhy se používají jenom v případě, že je profil nakonfigurovaný tak, aby používal metodu "váženého směrování provozu". V opačném případě jsou ignorovány. Je-li tento parametr zadán, musí být číslo v rozsahu od 1 do 1000. Výchozí hodnota je 1.
 * Zadání priority je volitelné. Priority se používají jenom v případě, že je profil nakonfigurovaný tak, aby používal metodu "Priorita" směrování provozu. V opačném případě jsou ignorovány. Platné hodnoty jsou od 1 do 1000 s nižšími hodnotami, které označují vyšší prioritu. Pokud je tato parametr zadána pro jeden koncový bod, musí být zadána pro všechny koncové body. Je-li tento parametr vynechán, výchozí hodnoty začínající znakem 1 jsou aplikovány v pořadí, v němž jsou uvedeny koncové body.
 
-### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>Příklad 1: Přidání koncových bodů App Service pomocí`Add-AzTrafficManagerEndpointConfig`
+### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>Příklad 1: Přidání koncových bodů App Service pomocí `Add-AzTrafficManagerEndpointConfig`
 
 V tomto příkladu vytvoříme profil Traffic Manager a přidáte dva koncové body App Service pomocí `Add-AzTrafficManagerEndpointConfig` rutiny.
 
@@ -137,7 +137,7 @@ $webapp2 = Get-AzWebApp -Name webapp2
 Add-AzTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $TmProfile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>Příklad 2: Přidání koncového bodu publicIpAddress pomocí`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>Příklad 2: Přidání koncového bodu publicIpAddress pomocí `New-AzTrafficManagerEndpoint`
 
 V tomto příkladu je prostředek veřejné IP adresy přidán do profilu Traffic Manager. Veřejná IP adresa musí mít nakonfigurovaný název DNS a může být vázaná buď na síťový adaptér virtuálního počítače, nebo na nástroj pro vyrovnávání zatížení.
 
@@ -156,7 +156,7 @@ Při určování externích koncových bodů:
 * Pokud se používá metoda směrování provozu "Performance", je vyžadováno klíčové slovo ' EndpointLocation '. V opačném případě je to volitelné. Hodnota musí být [platný název oblasti Azure](https://azure.microsoft.com/regions/).
 * Hodnota ' Weight ' a ' priorita ' je volitelná.
 
-### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Příklad 1: přidání externích koncových bodů pomocí `Add-AzTrafficManagerEndpointConfig` a`Set-AzTrafficManagerProfile`
+### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Příklad 1: přidání externích koncových bodů pomocí `Add-AzTrafficManagerEndpointConfig` a `Set-AzTrafficManagerProfile`
 
 V tomto příkladu vytvoříme profil Traffic Manager, přidáte dva externí koncové body a změny potvrdíte.
 
@@ -167,7 +167,7 @@ Add-AzTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManagerProf
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>Příklad 2: přidání externích koncových bodů pomocí`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>Příklad 2: přidání externích koncových bodů pomocí `New-AzTrafficManagerEndpoint`
 
 V tomto příkladu přidáme externí koncový bod do existujícího profilu. Profil se zadává pomocí názvů profilů a skupin prostředků.
 
@@ -186,7 +186,7 @@ Vnořené koncové body jsou nakonfigurovány v nadřazeném profilu pomocí kon
 * Možnost váha a Priorita je volitelná, jako u koncových bodů Azure.
 * Parametr MinChildEndpoints je nepovinný. Výchozí hodnota je 1. Pokud počet dostupných koncových bodů klesne pod tuto prahovou hodnotu, nadřazený profil považuje podřízený profil za Degradováno a přesměruje provoz do ostatních koncových bodů v nadřazeném profilu.
 
-### <a name="example-1-adding-nested-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Příklad 1: Přidání vnořených koncových bodů pomocí `Add-AzTrafficManagerEndpointConfig` a`Set-AzTrafficManagerProfile`
+### <a name="example-1-adding-nested-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Příklad 1: Přidání vnořených koncových bodů pomocí `Add-AzTrafficManagerEndpointConfig` a `Set-AzTrafficManagerProfile`
 
 V tomto příkladu vytvoříme nové Traffic Manager podřízené a nadřazené profily, přidáte podřízenou položku jako vnořený koncový bod nadřazenému objektu a potvrdíte změny.
 
@@ -199,7 +199,7 @@ Set-AzTrafficManagerProfile -TrafficManagerProfile $parent
 
 Pro zkrácení v tomto příkladu jsme do podřízených nebo nadřazených profilů nepřidali žádné jiné koncové body.
 
-### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>Příklad 2: Přidání vnořených koncových bodů pomocí`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>Příklad 2: Přidání vnořených koncových bodů pomocí `New-AzTrafficManagerEndpoint`
 
 V tomto příkladu přidáme existující podřízený profil jako vnořený koncový bod do existujícího nadřazeného profilu. Profil se zadává pomocí názvů profilů a skupin prostředků.
 
@@ -227,7 +227,7 @@ Existují dva způsoby, jak aktualizovat existující koncový bod Traffic Manag
 1. Získejte Profil Traffic Manager pomocí `Get-AzTrafficManagerProfile` , aktualizujte vlastnosti koncového bodu v rámci profilu a potvrďte změny pomocí `Set-AzTrafficManagerProfile` . Tato metoda má schopnost aktualizovat více než jeden koncový bod v rámci jedné operace.
 2. Získejte Traffic Manager koncový bod pomocí `Get-AzTrafficManagerEndpoint` , aktualizujte vlastnosti koncového bodu a potvrďte změny pomocí `Set-AzTrafficManagerEndpoint` . Tato metoda je jednodušší, protože nevyžaduje indexování do pole koncových bodů v profilu.
 
-### <a name="example-1-updating-endpoints-using-get-aztrafficmanagerprofile-and-set-aztrafficmanagerprofile"></a>Příklad 1: aktualizace koncových bodů pomocí `Get-AzTrafficManagerProfile` a`Set-AzTrafficManagerProfile`
+### <a name="example-1-updating-endpoints-using-get-aztrafficmanagerprofile-and-set-aztrafficmanagerprofile"></a>Příklad 1: aktualizace koncových bodů pomocí `Get-AzTrafficManagerProfile` a `Set-AzTrafficManagerProfile`
 
 V tomto příkladu upravujeme prioritu dvou koncových bodů v rámci existujícího profilu.
 
@@ -238,7 +238,7 @@ $TmProfile.Endpoints[1].Priority = 1
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>Příklad 2: aktualizace koncového bodu pomocí `Get-AzTrafficManagerEndpoint` a`Set-AzTrafficManagerEndpoint`
+### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>Příklad 2: aktualizace koncového bodu pomocí `Get-AzTrafficManagerEndpoint` a `Set-AzTrafficManagerEndpoint`
 
 V tomto příkladu upravujeme váhu jednoho koncového bodu v existujícím profilu.
 
@@ -267,7 +267,7 @@ Postup zakázání profilu Traffic Manager:
 Disable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-Rutina Disable-AzTrafficManagerProfile vyzve k potvrzení. Tato výzva se dá potlačit pomocí parametru-Force.
+Rutina Disable-AzTrafficManagerProfile zobrazí výzvu k potvrzení. Tato výzva se dá potlačit pomocí parametru-Force.
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Příklad 2: povolení a zákaz Traffic Managerho koncového bodu
 

@@ -2,16 +2,18 @@
 title: Možnosti překladu názvů DNS pro virtuální počítače se systémem Linux
 description: Scénáře překladu názvů pro virtuální počítače se systémem Linux ve službě Azure IaaS, včetně poskytovaných služeb DNS, hybridního externího DNS a uvedení vlastního serveru DNS.
 author: RicksterCDN
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.collection: linux
+ms.openlocfilehash: e689e934f11e3cc2a621f25525e507a72a7044b8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372820"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556787"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překladu názvů DNS pro virtuální počítače se systémem Linux v Azure
 Azure poskytuje překlad názvů DNS standardně pro všechny virtuální počítače, které jsou v jedné virtuální síti. Můžete implementovat vlastní řešení překladu názvů DNS tak, že na virtuálních počítačích, které hostují Azure, nakonfigurujete vlastní služby DNS. Následující scénáře vám pomůžou vybrat ten, který bude fungovat pro vaši situaci.

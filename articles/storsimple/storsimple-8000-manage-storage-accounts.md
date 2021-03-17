@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0df0c12d5942179e2492bfdc932fa25d126a2426
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515029"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016862"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použijte službu StorSimple Device Manager ke správě přihlašovacích údajů účtu úložiště.
 
@@ -33,7 +33,7 @@ ms.locfileid: "85515029"
 
 V tomto kurzu se dozvíte, jak přidat, upravit nebo odstranit přihlašovací údaje k účtu úložiště nebo jak vystřídat klíče zabezpečení pro účet úložiště.
 
- ![Seznam přihlašovacích údajů účtu úložiště](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![Seznam přihlašovacích údajů účtu úložiště 1](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 Účty úložiště obsahují přihlašovací údaje, které zařízení StorSimple používá pro přístup k vašemu účtu úložiště ve vašem poskytovateli cloudové služby. U Microsoft Azure účtů úložiště se jedná o přihlašovací údaje, jako je název účtu a primární přístupový klíč. 
 
@@ -55,7 +55,7 @@ Nejběžnější úlohy týkající se účtů úložiště, které je možné p
 Existují tři typy účtů úložiště, které se dají používat se zařízením StorSimple.
 
 * **Automaticky generované účty úložiště** – jak název navrhuje, tento typ účtu úložiště se automaticky vygeneruje při prvním vytvoření služby. Další informace o tom, jak se tento účet úložiště vytváří, najdete v části [Krok 1: vytvoření nové služby](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) v tématu [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md). 
-* **Účty úložiště v předplatném služby** – jedná se o účty úložiště Azure, které jsou přidružené ke stejnému předplatnému jako služba. Další informace o tom, jak se tyto účty úložiště vytvářejí, najdete v tématu [informace o Azure Storagech účtech](../storage/common/storage-create-storage-account.md). 
+* **Účty úložiště v předplatném služby** – jedná se o účty úložiště Azure, které jsou přidružené ke stejnému předplatnému jako služba. Další informace o tom, jak se tyto účty úložiště vytvářejí, najdete v tématu [informace o Azure Storagech účtech](../storage/common/storage-account-create.md). 
 * **Účty úložiště mimo předplatné služby** – jedná se o účty úložiště Azure, které nejsou přidružené k vaší službě a nejspíš existovaly před vytvořením služby.
 
 ## <a name="add-a-storage-account"></a>Přidat účet úložiště
@@ -77,10 +77,10 @@ K přidání přihlašovacích údajů k účtu úložiště Azure použijte ná
 
 1. Přejděte ke službě StorSimple Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
 2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** . Tato seznam obsahuje všechna existující pověření účtu úložiště přidružená ke službě StorSimple Device Manager.
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 4. V okně **Přidat přihlašovací údaje účtu úložiště** udělejte toto:
    
-    1. U **předplatného**vyberte **jiné**.
+    1. U **předplatného** vyberte **jiné**.
    
     2. Zadejte název přihlašovacích údajů k účtu úložiště Azure.
    
@@ -88,7 +88,7 @@ K přidání přihlašovacích údajů k účtu úložiště Azure použijte ná
    
     4. Pokud chcete povolit protokol TLS, klikněte na tlačítko **Povolit** a vytvořte zabezpečený kanál pro síťovou komunikaci mezi službou StorSimple Device Manager a cloudem. Klikněte na tlačítko **Zakázat** jenom v případě, že pracujete v privátním cloudu.
    
-    5. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření přihlašovacích údajů účtu úložiště se zobrazí oznámení.
+    5. Klikněte na **Přidat**. Po úspěšném vytvoření přihlašovacích údajů účtu úložiště se zobrazí oznámení.
 
 5. Nově vytvořené přihlašovací údaje účtu úložiště se zobrazí v okně StorSimple konfigurace služby Device Manager v části **přihlašovací údaje účtu úložiště**.
    
@@ -102,7 +102,7 @@ Můžete upravit účet úložiště, který je používán kontejnerem svazků.
 
 1. Přejděte do služby Správce zařízení StorSimple. V části **Konfigurace** klikněte na **Přihlašovací údaje účtu úložiště**.
 
-    ![Přihlašovací údaje účtu úložiště](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![Přihlašovací údaje účtu úložiště 2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. V okně **přihlašovací údaje účtu úložiště** vyberte v seznamu přihlašovací údaje účtu úložiště možnost a klikněte na tu, kterou chcete upravit. 
 
@@ -159,11 +159,11 @@ Abyste informovali službu StorSimple Device Manager o změně, budete potřebov
 
 3. Klikněte na **... A pak** vyberte možnost **synchronizovat přístupový klíč k otočení**.   
 
-    ![synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![synchronizovat klíče 2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. Ve službě StorSimple Device Manager musíte aktualizovat klíč, který se dříve změnil ve službě Microsoft Azure Storage. Pokud se primární přístupový klíč změnil (znovu vygeneroval), vyberte **primární** klíč. Pokud se sekundární klíč změnil, vyberte **sekundární** klíč. Klikněte na **synchronizovat klíč**.
       
-      ![synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![synchronizace klíčů 3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 Po úspěšné synchronizaci klíče budete upozorněni.
 
@@ -179,4 +179,3 @@ Po úspěšné synchronizaci klíče budete upozorněni.
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [zabezpečení StorSimple](storsimple-8000-security.md).
 * Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
-

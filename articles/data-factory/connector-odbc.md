@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z a do datových úložišť rozhraní ODBC pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z a do úložišť dat ODBC pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: jingwang
-ms.openlocfilehash: c92428666f0766f78475be16416027cdc6e71f20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b73e10b0ed539879e9a32d3961b6375828cc153
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506527"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389616"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopírování dat z a do datových úložišť rozhraní ODBC pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -54,10 +49,10 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu ODBC jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **ODBC** . | Yes |
-| připojovací řetězec | Připojovací řetězec s výjimkou části s přihlašovacími údaji Můžete zadat připojovací řetězec se vzorem, jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` je, nebo použít systémový DSN (název zdroje dat), který jste nastavili na Integration runtimem počítači, a `"DSN=<name of the DSN on IR machine>;"` (je třeba přesto zadat část přihlašovacích údajů v propojené službě odpovídajícím způsobem).<br>Můžete také vložit heslo do Azure Key Vault a získat  `password`   konfiguraci z připojovacího řetězce.Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md)   .| Yes |
+| připojovací řetězec | Připojovací řetězec s výjimkou části s přihlašovacími údaji Můžete zadat připojovací řetězec se vzorem, jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` je, nebo použít systémový DSN (název zdroje dat), který jste nastavili na Integration runtimem počítači, a `"DSN=<name of the DSN on IR machine>;"` (je třeba přesto zadat část přihlašovacích údajů v propojené službě odpovídajícím způsobem).<br>Můžete také vložit heslo do Azure Key Vault a získat `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) .| Yes |
 | authenticationType | Typ ověřování, který se používá pro připojení k úložišti dat ODBC.<br/>Povolené hodnoty jsou: **základní** a **anonymní**. | Yes |
 | userName | Pokud používáte základní ověřování, zadejte uživatelské jméno. | No |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
@@ -117,7 +112,7 @@ Pro propojenou službu ODBC jsou podporovány následující vlastnosti:
 
 Pro kopírování dat z úložiště dat kompatibilních s rozhraním ODBC jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **ODBC** . | Yes |
 | tableName | Název tabulky v úložišti dat rozhraní ODBC. | Ne pro zdroj (Pokud je zadáno "dotaz" ve zdroji aktivity);<br/>Ano pro jímku |
@@ -151,10 +146,10 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Pokud chcete kopírovat data z úložiště dat kompatibilního s rozhraním ODBC, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **OdbcSource** . | Yes |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 
@@ -194,7 +189,7 @@ Pokud jste používali `RelationalSource` typový zdroj, je stále podporován t
 
 Chcete-li kopírovat data do úložiště dat kompatibilního s rozhraním ODBC, nastavte typ jímky v aktivitě kopírování na **OdbcSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na: **OdbcSink** . | Yes |
 | writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br/>Povolené hodnoty jsou: TimeSpan. Příklad: "00:30:00" (30 minut). |No |
@@ -242,12 +237,12 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 
 ## <a name="troubleshoot-connectivity-issues"></a>Řešení potíží s připojením
 
-Pokud chcete řešit problémy s připojením, **Diagnostics** použijte kartu diagnostika **Integration runtime Configuration Manager**.
+Pokud chcete řešit problémy s připojením,  použijte kartu diagnostika **Integration runtime Configuration Manager**.
 
 1. Spusťte **Integration Runtime Configuration Manager**.
 2. Přepněte na kartu **Diagnostika** .
 3. V části test připojení vyberte **typ** úložiště dat (propojená služba).
-4. Zadejte **připojovací řetězec** , který se používá pro připojení k úložišti dat, vyberte **ověřování** a zadejte **uživatelské jméno**, **heslo**a/nebo **přihlašovací údaje**.
+4. Zadejte **připojovací řetězec** , který se používá pro připojení k úložišti dat, vyberte **ověřování** a zadejte **uživatelské jméno**, **heslo** a/nebo **přihlašovací údaje**.
 5. Klikněte na **Test připojení** a otestujte připojení k úložišti dat.
 
 ## <a name="next-steps"></a>Další kroky

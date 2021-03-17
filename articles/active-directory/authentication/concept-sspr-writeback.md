@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53f416a23dbb47660097c41ada09c8c135434bcb
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027593"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743645"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Jak funguje zpětný zápis hesla samoobslužné služby pro resetování hesla v Azure Active Directory?
 
@@ -37,7 +37,7 @@ Zpětný zápis hesla poskytuje následující funkce:
 
 * **Vynucování zásad pro hesla místních Active Directory Domain Services (služba AD DS)**: když uživatel resetuje heslo, před jeho potvrzením do tohoto adresáře se ověří, jestli splňuje vaše místní služba AD DS zásady. Tato revize zahrnuje kontrolu historie, složitosti, stáří, filtrů hesel a dalších omezení hesla, která definujete v služba AD DS.
 * **Nulování zpětná vazba**: zpětný zápis hesla je synchronní operace. Uživatelé se okamžitě oznámí, pokud heslo nesplňuje zásady nebo se z nějakého důvodu nedá resetovat ani změnit.
-* **Podporuje změny hesla z přístupového panelu a Office 365**: když se uživatelům synchronizovaných nebo hesel synchronizovaná hodnota hash změnila hesla, jejichž platnost vypršela nebo kdy vypršela platnost, tato hesla se napíší zpátky do služba AD DS.
+* **Podporuje změny hesla z přístupového panelu a Microsoft 365**: Pokud se pro uživatele synchronizovaných hodnot hash nebo hesla, jejichž platnost vypršela, změnila hesla, která vypršela nebo jsou neprošlá, tato hesla se napíší zpátky do služba AD DS
 * **Podporuje zpětný zápis hesla, když ho správce resetuje z Azure Portal**: Když správce resetuje heslo uživatele v [Azure Portal](https://portal.azure.com), pokud je tento uživatel federovaný nebo je hodnota hash hesla synchronizovaná, heslo se zapíše zpátky do místního prostředí. Tato funkce se v současnosti nepodporuje na portálu pro správu Office.
 * **Nevyžaduje žádná pravidla brány firewall pro příchozí připojení**: zpětný zápis hesla používá jako základní komunikační kanál Azure Service Bus Relay. Veškerá komunikace je odchozí přes port 443.
 
@@ -47,7 +47,7 @@ Zpětný zápis hesla poskytuje následující funkce:
 Pokud chcete začít se zpětným zápisem SSPR, dokončete následující kurz:
 
 > [!div class="nextstepaction"]
-> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](tutorial-enable-writeback.md)
+> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>Jak funguje zpětný zápis hesla
 
@@ -90,7 +90,7 @@ Zpětný zápis hesla je vysoce Zabezpečená služba. Aby bylo zajištěno, že
 * **Služba pro předávání přes konkrétního tenanta**
    * Při nastavování služby se nastaví předávání Service Bus pro konkrétního tenanta, které je chráněné náhodně generovaným silným heslem, ke kterému má přístup Microsoft nikdy.
 * **Uzamčená, kryptograficky silný šifrovací klíč hesla**
-   * Po vytvoření služby Service Bus Relay se vytvoří silný symetrický klíč that'is, který slouží k šifrování hesla, když se nachází na lince. Tento klíč se používá jenom v tajném úložišti vaší společnosti v cloudu, které je silně uzamčené a auditované, stejně jako jakékoli jiné heslo v adresáři.
+   * Po vytvoření služby Service Bus Relay se vytvoří silný symetrický klíč, který slouží k šifrování hesla při jeho přenosech. Tento klíč se používá jenom v tajném úložišti vaší společnosti v cloudu, které je silně uzamčené a auditované, stejně jako jakékoli jiné heslo v adresáři.
 * **Standardní obor TLS (Transport Layer Security)**
    1. V případě, že dojde k resetování hesla nebo k operaci změny v cloudu, heslo ve formátu prostého textu se zašifruje pomocí veřejného klíče.
    1. Šifrované heslo se umístí do zprávy HTTPS, která se pošle přes zašifrovaný kanál pomocí certifikátů Microsoft TLS/SSL k předávání Service Bus.
@@ -140,7 +140,7 @@ Hesla se zapisují zpátky do všech těchto situací:
    * Jakákoli operace změny hesla samoobslužného hesla pro správce, například vypršení platnosti hesla.
    * Jakékoli Samoobslužné resetování hesla, které pochází z portálu pro [resetování hesla](https://passwordreset.microsoftonline.com).
    * Jakékoli resetování hesla koncového uživatele iniciované správcem z [Azure Portal](https://portal.azure.com).
-   * Všichni správci iniciovali resetování hesla koncových uživatelů z [rozhraní Microsoft Graph API beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http).
+   * Všichni správci iniciovali resetování hesla koncových uživatelů z [rozhraní Microsoft Graph API beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta).
 
 ## <a name="unsupported-writeback-operations"></a>Nepodporované operace zpětného zápisu
 
@@ -149,7 +149,7 @@ Hesla se nezapisují zpátky v následujících situacích:
 * **Nepodporované operace koncového uživatele**
    * Libovolný koncový uživatel resetuje vlastní heslo pomocí prostředí PowerShell verze 1, verze 2 nebo rozhraní Microsoft Graph API.
 * **Nepodporované operace Správce**
-   * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo rozhraní Microsoft Graph API (podporuje se [Microsoft Graph API beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) ).
+   * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo rozhraní Microsoft Graph API (podporuje se [Microsoft Graph API beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta) ).
    * Jakékoli resetování hesla koncového uživatele iniciované správcem v [centru pro správu Microsoft 365](https://admin.microsoft.com).
    * Žádný správce nemůže použít nástroj pro resetování hesla k resetování vlastního hesla pro zpětný zápis hesla.
 
@@ -161,4 +161,4 @@ Hesla se nezapisují zpátky v následujících situacích:
 Pokud chcete začít se zpětným zápisem SSPR, dokončete následující kurz:
 
 > [!div class="nextstepaction"]
-> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](tutorial-enable-writeback.md)
+> [Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla (SSPR)](./tutorial-enable-sspr-writeback.md)

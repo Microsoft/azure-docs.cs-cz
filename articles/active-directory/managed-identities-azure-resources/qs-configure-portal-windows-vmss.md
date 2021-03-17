@@ -1,9 +1,9 @@
 ---
-title: Konfigurace spravovaných identit v Azure VMSS – Azure AD
+title: Konfigurace spravovaných identit v sadě škálování virtuálních počítačů – Azure AD
 description: Podrobné pokyny pro konfiguraci spravovaných identit pro prostředky Azure v sadě škálování virtuálního počítače pomocí Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2018
-ms.author: markvi
+ms.date: 12/15/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d05ee1be18b315c63ccf9d564ea95391a163826e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 73c2f4167d6ce5465a879f6b2ef7e96d91065c4d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924491"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590915"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálních počítačů pomocí Azure Portal
+# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-vmss-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure ve službě Virtual Machine Scale set (VMSS) pomocí Azure Portal
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -37,7 +37,7 @@ V tomto článku se naučíte, jak provádět následující spravované identit
     > [!NOTE]
     > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) , který umožňuje povolit a odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálního počítače.
+    - [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) , který umožňuje povolit a odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálního počítače.
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
@@ -59,7 +59,7 @@ Povolení spravované identity přiřazené systémem v sadě škálování virt
 
 3. V části **přiřazeno systému**, **stav**, vyberte **zapnuto** a potom klikněte na **Uložit**:
 
-   ![Snímek obrazovky konfigurační stránky](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
+   ![Snímek obrazovky zobrazuje stránku identita (Preview) s vybranou možností systémem, stav zapnuto a zvýrazněné tlačítko Uložit.](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů
 
@@ -69,7 +69,7 @@ Pokud máte sadu škálování virtuálního počítače, která už nepotřebuj
 
 2. Přejděte na požadovanou sadu škálování virtuálního počítače.
 
-3. V části **přiřazeno systému**, **stav**vyberte **vypnuto** a potom klikněte na **Uložit**:
+3. V části **přiřazeno systému**, **stav** vyberte **vypnuto** a potom klikněte na **Uložit**:
 
    ![Snímek obrazovky konfigurační stránky](./media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)
 
@@ -86,9 +86,9 @@ V současné době Azure Portal nepodporuje přiřazení spravované identity p�
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>Přiřazení spravované identity přiřazené uživatelem do existující sady škálování virtuálních počítačů
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače.
-2. Přejděte na požadovanou sadu škálování virtuálního počítače a klikněte na **Identita**, **přiřazený uživatel** a pak na ** \+ Přidat**.
+2. Přejděte na požadovanou sadu škálování virtuálního počítače a klikněte na **Identita**, **přiřazený uživatel** a pak na **\+ Přidat**.
 
-   ![Přidání identity přiřazené uživatelem do VMSS](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
+   ![Snímek obrazovky zobrazující stránku identita s vybraným uživatelem přiřazenou a zvýrazněným tlačítkem Přidat](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
 3. Klikněte na identitu přiřazenou uživateli, kterou chcete přidat do sady škálování virtuálního počítače, a pak klikněte na **Přidat**.
    
