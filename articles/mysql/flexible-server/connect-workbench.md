@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.openlocfilehash: d604ca8c8979ec98b990f8002ce29d0df92ac2af
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90947300"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server-preview"></a>Rychlý Start: použití aplikace MySQL Workbench pro připojení a dotazování dat v Azure Database for MySQL-flexibilním serveru (Preview)
@@ -39,8 +39,8 @@ Tento rychlý start jako výchozí bod využívá prostředky vytvořené v něk
 
 Získejte informace o připojení potřebné pro připojení k flexibilnímu serveru. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje pro přihlášení.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky** a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
 3. Vyberte název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
 <!--- :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL Flexible Server name":::--->
@@ -53,7 +53,7 @@ Připojení k Azure Database for MySQL flexibilnímu serveru pomocí MySQL Workb
 
 2. V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
 
-    :::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Azure Database for MySQL Flexible Server name":::
+    :::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="nastavení nového připojení":::
 
     | **Parametry** | **Navrhovaná hodnota** | **Popis pole** |
     |---|---|---|
@@ -108,7 +108,7 @@ Připojení k Azure Database for MySQL flexibilnímu serveru pomocí MySQL Workb
 
     Snímek obrazovky ukazuje příklad kódu SQL v aplikaci MySQL Workbench a výstup po jeho spuštění.
 
-    :::image type="content" source="./media/connect-workbench/3-workbench-sql-tab.png" alt-text="Azure Database for MySQL Flexible Server name":::
+    :::image type="content" source="./media/connect-workbench/3-workbench-sql-tab.png" alt-text="Karta SQL aplikace MySQL Workbench pro spuštění vzorového kódu SQL":::
 
 2. Pokud chcete spustit ukázkový kód SQL, klikněte na ikonu blesku na panelu nástrojů karty **Soubor SQL**.
 3. Všimněte si výsledků na třech kartách v části **Mřížka výsledků** uprostřed stránky.

@@ -7,15 +7,15 @@ ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87048655"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Odeslání souvisejících zpráv v pořadí pomocí sekvenčního convoyu v Azure Logic Apps s Azure Service Bus
 
-Pokud potřebujete odeslat korelační zprávy v určitém pořadí, můžete postupovat podle [ *sekvenčního vzoru convoy* ](/azure/architecture/patterns/sequential-convoy) při použití [Azure Logic Apps](../logic-apps/logic-apps-overview.md) pomocí [konektoru Azure Service Bus](../connectors/connectors-create-api-servicebus.md). Korelační zprávy mají vlastnost, která definuje vztah mezi těmito zprávami, jako je ID [relace](../service-bus-messaging/message-sessions.md) v Service Bus.
+Pokud potřebujete odeslat korelační zprávy v určitém pořadí, můžete postupovat podle [ *sekvenčního vzoru convoy*](/azure/architecture/patterns/sequential-convoy) při použití [Azure Logic Apps](../logic-apps/logic-apps-overview.md) pomocí [konektoru Azure Service Bus](../connectors/connectors-create-api-servicebus.md). Korelační zprávy mají vlastnost, která definuje vztah mezi těmito zprávami, jako je ID [relace](../service-bus-messaging/message-sessions.md) v Service Bus.
 
 Předpokládejme například, že máte 10 zpráv pro relaci s názvem "relace 1" a máte 5 zpráv pro relaci s názvem "relace 2", které jsou všechny odesílány do stejné [Service Busové fronty](../service-bus-messaging/service-bus-queues-topics-subscriptions.md). Můžete vytvořit aplikaci logiky, která bude zpracovávat zprávy z fronty, aby všechny zprávy z "relace 1" byly zpracovávány jediným spuštěním triggeru a všechny zprávy z "session 2" jsou zpracovávány dalším spuštěním triggeru.
 
@@ -31,7 +31,7 @@ Chcete-li zkontrolovat soubor JSON této šablony, přečtěte si [GitHub: servi
 
 Další informace najdete v tématu [sekvenční convoy vzor – vzory návrhu cloudu architektury Azure](/azure/architecture/patterns/sequential-convoy).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -47,22 +47,22 @@ Další informace najdete v tématu [sekvenční convoy vzor – vzory návrhu c
 
 Pokud si nejste jistí, jestli má aplikace logiky oprávnění pro přístup k vašemu oboru názvů Service Bus, potvrďte tato oprávnění.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyhledejte a vyberte svůj *obor názvů*Service Bus.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte svůj *obor názvů* Service Bus.
 
-1. V nabídce obor názvů v části **Nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
+1. V nabídce obor názvů v části **Nastavení** vyberte **zásady sdíleného přístupu**. V části **deklarace identity** ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
 
    ![Správa oprávnění pro Service Bus obor názvů](./media/send-related-messages-sequential-convoy/check-service-bus-permissions.png)
 
 1. Nyní Získejte připojovací řetězec pro váš obor názvů Service Bus. Tento řetězec můžete použít později při vytváření připojení k oboru názvů z aplikace logiky.
 
-   1. V podokně **zásady sdíleného přístupu** vyberte v části **zásady**možnost **RootManageSharedAccessKey**.
+   1. V podokně **zásady sdíleného přístupu** vyberte v části **zásady** možnost **RootManageSharedAccessKey**.
    
    1. Vedle primárního připojovacího řetězce vyberte tlačítko Kopírovat. Uložte připojovací řetězec pro pozdější použití.
 
       ![Zkopírování připojovacího řetězce oboru názvů Service Bus](./media/send-related-messages-sequential-convoy/copy-service-bus-connection-string.png)
 
    > [!TIP]
-   > Pokud chcete ověřit, jestli je připojovací řetězec přidružený k vašemu oboru názvů Service Bus nebo entitě zasílání zpráv, jako je například fronta, vyhledejte v připojovacím řetězci `EntityPath`   parametr. Pokud tento parametr vyhledáte, připojovací řetězec je pro konkrétní entitu a není správným řetězcem pro použití s vaší aplikací logiky.
+   > Pokud chcete ověřit, jestli je připojovací řetězec přidružený k vašemu oboru názvů Service Bus nebo entitě zasílání zpráv, jako je například fronta, vyhledejte v připojovacím řetězci `EntityPath` parametr. Pokud tento parametr vyhledáte, připojovací řetězec je pro konkrétní entitu a není správným řetězcem pro použití s vaší aplikací logiky.
 
 ## <a name="create-logic-app"></a>Vytvoření aplikace logiky
 
@@ -76,7 +76,7 @@ V této části vytvoříte aplikaci logiky pomocí šablony **relace služby Se
 
 1. Po zobrazení pole potvrzení vyberte **použít tuto šablonu**.
 
-1. V návrháři aplikace logiky v **Service Busovém** tvaru vyberte **pokračovat**a potom vyberte znaménko plus ( **+** ), které se zobrazí v obrazci.
+1. V návrháři aplikace logiky v **Service Busovém** tvaru vyberte **pokračovat** a potom vyberte znaménko plus ( **+** ), které se zobrazí v obrazci.
 
    ![Pokud se chcete připojit k Azure Service Bus, vyberte pokračovat.](./media/send-related-messages-sequential-convoy/connect-to-service-bus.png)
 
@@ -86,7 +86,7 @@ V této části vytvoříte aplikaci logiky pomocí šablony **relace služby Se
 
      1. Vyberte možnost **ručně zadat informace o připojení**.
 
-     1. Jako **název připojení**zadejte název připojení. V případě **připojovacího řetězce**vložte připojovací řetězec oboru názvů a vyberte **vytvořit**, například:
+     1. Jako **název připojení** zadejte název připojení. V případě **připojovacího řetězce** vložte připojovací řetězec oboru názvů a vyberte **vytvořit**, například:
 
         ![Zadejte název připojení a připojovací řetězec Service Bus.](./media/send-related-messages-sequential-convoy/provide-service-bus-connection-string.png)
 
@@ -95,7 +95,7 @@ V této části vytvoříte aplikaci logiky pomocí šablony **relace služby Se
 
    * Pokud chcete vybrat Service Bus obor názvů z aktuálního předplatného Azure, postupujte podle těchto kroků:
 
-     1. Jako **název připojení**zadejte název připojení. Pro **Service Bus obor názvů**vyberte obor názvů Service Bus, například:
+     1. Jako **název připojení** zadejte název připojení. Pro **Service Bus obor názvů** vyberte obor názvů Service Bus, například:
 
         ![Zadejte název připojení a vyberte Service Bus obor názvů.](./media/send-related-messages-sequential-convoy/create-service-bus-connection.png)
 
@@ -117,12 +117,12 @@ Tady je pracovní postup nejvyšší úrovně v rámci **korelačního doručov�
 
 ![Pracovní postup nejvyšší úrovně šablony](./media/send-related-messages-sequential-convoy/template-top-level-flow.png)
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | V závislosti na zadaném opakování Tato aktivační událost Service Bus zkontroluje všechny zprávy ve frontě Service Bus. Pokud ve frontě existuje zpráva, aktivuje se Trigger, který vytvoří a spustí instanci pracovního postupu. <p><p>Pojem *Náhled – zámek* znamená, že Trigger odesílá požadavek na načtení zprávy z fronty. Pokud zpráva existuje, aktivační událost tuto zprávu načte a zamkne, aby se v této zprávě nedošlo k žádnému dalšímu zpracování, dokud nevyprší doba platnosti zámku. Podrobnosti získáte [inicializací relace](#initialize-session). |
-| **`Init isDone`** | Tato [Akce **inicializovat proměnnou** ](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable) vytvoří logickou proměnnou, která je nastavena na `false` a označuje, že jsou splněny následující podmínky: <p><p>-V relaci nejsou k dispozici žádné další zprávy, které by bylo možné číst. <br>– Zámek relace již není nutné obnovit, aby bylo možné dokončit aktuální instanci pracovního postupu. <p><p>Podrobnosti najdete v tématu [inicializace relace](#initialize-session). |
-| **`Try`** | Tato [Akce **oboru** ](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md) obsahuje akce, které se spouštějí ke zpracování zprávy. Pokud dojde k potížím v `Try` oboru, další akce `Catch` **rozsahu** tento problém zpracuje. Další informace najdete v [oboru "Try"](#try-scope). |
-| **`Catch`**| Tato [Akce **oboru** ](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md) obsahuje akce, které se spustí v případě, že dojde k potížím v předchozím `Try` oboru. Další informace najdete v [oboru "catch"](#catch-scope). |
+| **`Init isDone`** | Tato [Akce **inicializovat proměnnou**](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable) vytvoří logickou proměnnou, která je nastavena na `false` a označuje, že jsou splněny následující podmínky: <p><p>-V relaci nejsou k dispozici žádné další zprávy, které by bylo možné číst. <br>– Zámek relace již není nutné obnovit, aby bylo možné dokončit aktuální instanci pracovního postupu. <p><p>Podrobnosti najdete v tématu [inicializace relace](#initialize-session). |
+| **`Try`** | Tato [Akce **oboru**](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md) obsahuje akce, které se spouštějí ke zpracování zprávy. Pokud dojde k potížím v `Try` oboru, další akce `Catch` **rozsahu** tento problém zpracuje. Další informace najdete v [oboru "Try"](#try-scope). |
+| **`Catch`**| Tato [Akce **oboru**](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md) obsahuje akce, které se spustí v případě, že dojde k potížím v předchozím `Try` oboru. Další informace najdete v [oboru "catch"](#catch-scope). |
 |||
 
 <a name="try-scope"></a>
@@ -133,7 +133,7 @@ Tady je tok nejvyšší úrovně v `Try` [akci oboru](../logic-apps/logic-apps-c
 
 ![Pracovní postup akce "Try" oboru](./media/send-related-messages-sequential-convoy/try-scope-action.png)
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | **`Send initial message to topic`** | Tuto akci můžete nahradit jakoukoliv akcí, kterou chcete zpracovat první zprávu z relace ve frontě. ID relace určuje relaci. <p><p>Pro tuto šablonu Service Bus akce odešle první zprávu do Service Bus tématu. Podrobnosti najdete v tématu [zpracování úvodní zprávy](#handle-initial-message). |
 | (paralelní větev) | Tato [Akce paralelní větve](../logic-apps/logic-apps-control-flow-branches.md) vytvoří dvě cesty: <p><p>-Větvi #1: pokračuje ve zpracování zprávy. Další informace najdete v tématu [větev #1: dokončení počáteční zprávy ve frontě](#complete-initial-message). <p><p>-Větvi #2: Pokud se něco nepovede, ponecháte zprávu a vydáte k vyzvednutí další spuštění triggeru. Další informace najdete v tématu [větev #2: opuštění počáteční zprávy z fronty](#abandon-initial-message). <p><p>Obě cesty se připojí později v **relaci ukončení ve frontě a akce úspěšné** , které jsou popsané v dalším řádku. |
@@ -144,12 +144,12 @@ Tady je tok nejvyšší úrovně v `Try` [akci oboru](../logic-apps/logic-apps-c
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>#1 větve: dokončení počáteční zprávy ve frontě
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | `Complete initial message in queue` | Tato akce Service Bus označí úspěšné načtení zprávy jako dokončenou a odebere zprávu z fronty, aby se zabránilo rezpracování. Podrobnosti najdete v tématu [zpracování úvodní zprávy](#handle-initial-message). |
 | `While there are more messages for the session in the queue` | To, [ **dokud** smyčka](../logic-apps/logic-apps-control-flow-loops.md#until-loop) nadále nezíská zprávy, zatímco existují zprávy nebo dokud neuplyne jedna hodina. Další informace o akcích v této smyčce najdete v části, [zatímco pro relaci ve frontě existuje více zpráv](#while-more-messages-for-session). |
-| **`Set isDone = true`** | Pokud žádné další zprávy neexistují, tato akce sady [ **proměnných** ](../logic-apps/logic-apps-create-variables-store-values.md#set-variable) nastaví `isDone` na `true` . |
-| **`Renew session lock until cancelled`** | Tato [smyčka **dokud** ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) nezajistí, že se zámek relace koná v této aplikaci logiky, když existují zprávy nebo dokud jedna hodina projde. Další informace o akcích v této smyčce najdete v tématu [obnovení zámku relace až do zrušení](#renew-session-while-messages-exist). |
+| **`Set isDone = true`** | Pokud žádné další zprávy neexistují, tato akce sady [ **proměnných**](../logic-apps/logic-apps-create-variables-store-values.md#set-variable) nastaví `isDone` na `true` . |
+| **`Renew session lock until cancelled`** | Tato [smyčka **dokud**](../logic-apps/logic-apps-control-flow-loops.md#until-loop) nezajistí, že se zámek relace koná v této aplikaci logiky, když existují zprávy nebo dokud jedna hodina projde. Další informace o akcích v této smyčce najdete v tématu [obnovení zámku relace až do zrušení](#renew-session-while-messages-exist). |
 |||
 
 <a name="abandon-initial-message"></a>
@@ -168,12 +168,12 @@ Tady je tok nejvyšší úrovně v `Catch` akci oboru při sbalení podrobností
 
 ![Pracovní postup akce oboru catch](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | **`Close a session in a queue and fail`** | Tato akce Service Bus zavře relaci ve frontě, aby zámek relace zůstal otevřený. Podrobnosti najdete v tématu [uzavření relace ve frontě a selhání](#close-session-fail). |
-| **`Find failure msg from 'Try' block`** | Tato [Akce **pole filtru** ](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) vytvoří pole ze vstupů a výstupů ze všech akcí v `Try` oboru na základě zadaných kritérií. V tomto případě tato akce vrátí výstupy z akcí, které byly výsledkem `Failed` stavu. Podrobnosti najdete v tématu [vyhledání zprávy o selhání z bloku try](#find-failure-message). |
-| **`Select error details`** | Tato [Akce **výběru** ](../logic-apps/logic-apps-perform-data-operations.md#select-action) vytvoří pole, které obsahuje objekty JSON na základě zadaných kritérií. Tyto objekty JSON jsou sestaveny z hodnot v poli vytvořeném předchozí akcí, `Find failure msg from 'Try' block` . V tomto případě tato akce vrátí pole, které obsahuje objekt JSON vytvořený z podrobností o chybě vrácených z předchozí akce. Podrobnosti najdete v tématu [Výběr podrobností o chybě](#select-error-details). |
-| **`Terminate`** | Tato [Akce **ukončení** ](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action) zastaví běh pracovního postupu, zruší všechny probíhající akce, přeskočí všechny zbývající akce a vrátí zadaný stav, ID relace a výsledek chyby z `Select error details` akce. Podrobnosti najdete v tématu [ukončení aplikace logiky](#terminate-logic-app). |
+| **`Find failure msg from 'Try' block`** | Tato [Akce **pole filtru**](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) vytvoří pole ze vstupů a výstupů ze všech akcí v `Try` oboru na základě zadaných kritérií. V tomto případě tato akce vrátí výstupy z akcí, které byly výsledkem `Failed` stavu. Podrobnosti najdete v tématu [vyhledání zprávy o selhání z bloku try](#find-failure-message). |
+| **`Select error details`** | Tato [Akce **výběru**](../logic-apps/logic-apps-perform-data-operations.md#select-action) vytvoří pole, které obsahuje objekty JSON na základě zadaných kritérií. Tyto objekty JSON jsou sestaveny z hodnot v poli vytvořeném předchozí akcí, `Find failure msg from 'Try' block` . V tomto případě tato akce vrátí pole, které obsahuje objekt JSON vytvořený z podrobností o chybě vrácených z předchozí akce. Podrobnosti najdete v tématu [Výběr podrobností o chybě](#select-error-details). |
+| **`Terminate`** | Tato [Akce **ukončení**](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action) zastaví běh pracovního postupu, zruší všechny probíhající akce, přeskočí všechny zbývající akce a vrátí zadaný stav, ID relace a výsledek chyby z `Select error details` akce. Podrobnosti najdete v tématu [ukončení aplikace logiky](#terminate-logic-app). |
 |||
 
 <a name="complete-template"></a>
@@ -199,7 +199,7 @@ Pokud chcete zadat hodnoty pro aktivační událost a akce v rámci **korelačn�
   | **Typ fronty** | Yes | **Hlavní** | Vaše primární Service Bus fronta |
   | **ID relace** | Yes | **Další k dispozici** | Tato možnost načte relaci každého spuštění triggeru na základě ID relace ze zprávy ve frontě Service Bus. Relace je taky zamčená, takže žádná jiná aplikace logiky ani jiný klient nemůže zpracovat zprávy, které se vztahují k této relaci. Následující akce pracovního postupu zpracovávají všechny zprávy, které jsou přidružené k této relaci, jak je popsáno dále v tomto článku. <p><p>Zde jsou další informace o možnostech dalších **ID relace** : <p>- **None**: výchozí možnost, která nemá žádné relace a nedá se použít pro implementaci sekvenčního vzoru convoy. <p>- **Zadejte vlastní hodnotu**: tuto možnost použijte, pokud znáte ID relace, které chcete použít, a pro ID relace vždy chcete spustit Trigger. <p>**Poznámka**: konektor Service Bus může současně uložit omezený počet jedinečných relací z Azure Service Bus do mezipaměti konektoru. Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další informace najdete v tématu [zprávy Exchange v cloudu s Azure Logic Apps a Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
   | **Interval** | Yes | <*počet intervalů*> | Počet časových jednotek mezi opakováními před vrácením zprávy se změnami. |
-  | **Frekvence** | Yes | **Sekundy**, **minuty**, **hodiny**, **den**, **týden**nebo **měsíc** | Jednotka času, kterou má opakování použít při kontrole zprávy <p>**Tip**: Pokud chcete přidat **časové pásmo** nebo **čas spuštění**, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** . |
+  | **Frekvence** | Yes | **Sekundy**, **minuty**, **hodiny**, **den**, **týden** nebo **měsíc** | Jednotka času, kterou má opakování použít při kontrole zprávy <p>**Tip**: Pokud chcete přidat **časové pásmo** nebo **čas spuštění**, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** . |
   |||||
 
   Další informace o aktivačních událostech najdete [v tématu Service Bus – při přijetí zprávy ve frontě (prohlížení zámku)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Aktivační událost výstupuje [ServiceBusMessage](/connectors/servicebus/#servicebusmessage).
@@ -212,7 +212,7 @@ Po inicializaci relace pracovní postup pomocí akce **inicializovat proměnnou*
 
 ![Podrobnosti o akci "inicializovat proměnnou" pro "init"](./media/send-related-messages-sequential-convoy/init-is-done-variable.png)
 
-V dalším kroku pracovní **Try** postup provede akce na první přečtené zprávě.
+V dalším kroku pracovní  postup provede akce na první přečtené zprávě.
 
 <a name="handle-initial-message"></a>
 
@@ -261,11 +261,11 @@ Tato akce [ **dokud** smyčka](../logic-apps/logic-apps-control-flow-loops.md#un
 
    ![Podmínka – zpracování zpráv](./media/send-related-messages-sequential-convoy/process-messages-if-any.png)
 
-   V části **if false** **každá smyčka zpracuje každou zprávu** v prvním, prvním a prvním pořadí (FIFO). V **Nastavení**smyčky je nastavení **řízení souběžnosti** nastaveno na `1` , takže je zpracována pouze jedna zpráva.
+   V části **if false** **každá smyčka zpracuje každou zprávu** v prvním, prvním a prvním pořadí (FIFO). V **Nastavení** smyčky je nastavení **řízení souběžnosti** nastaveno na `1` , takže je zpracována pouze jedna zpráva.
 
    ![Každou zprávu zpracuje každá zpráva každé z nich.](./media/send-related-messages-sequential-convoy/for-each-additional-message.png)
 
-1. U Service Bus akcí **dokončete zprávu ve frontě** a zrušte **zprávu ve**frontě, zadejte název pro vaši frontu Service Bus.
+1. U Service Bus akcí **dokončete zprávu ve frontě** a zrušte **zprávu ve** frontě, zadejte název pro vaši frontu Service Bus.
 
    ![Service Bus akce – "dokončení zprávy ve frontě" a "opuštění zprávy ve frontě"](./media/send-related-messages-sequential-convoy/abandon-or-complete-message-in-queue.png)
 
@@ -277,7 +277,7 @@ V dalším kroku zadáte potřebné informace pro akce v **zámku relace obnoven
 
 ### <a name="renew-session-lock-until-cancelled"></a>Prodloužit zámek relace až do zrušení
 
-Tato [smyčka **dokud** ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) nezajistí, že se zámek relace koná v této aplikaci logiky, zatímco zprávy ve frontě nebo dokud jednu hodinu neprojde spuštěním těchto akcí. Chcete-li změnit časový limit smyčky, upravte hodnotu vlastnosti **časový limit** smyčky.
+Tato [smyčka **dokud**](../logic-apps/logic-apps-control-flow-loops.md#until-loop) nezajistí, že se zámek relace koná v této aplikaci logiky, zatímco zprávy ve frontě nebo dokud jednu hodinu neprojde spuštěním těchto akcí. Chcete-li změnit časový limit smyčky, upravte hodnotu vlastnosti **časový limit** smyčky.
 
 * Zpoždění po dobu 25 sekund nebo množství času, které je menší než časový limit zámku pro zpracovávanou frontu. Nejmenší doba uzamčení je 30 sekund, takže výchozí hodnota je dostatečná. Můžete ale optimalizovat počet spuštění smyčky úpravou odpovídajícím způsobem.
 
@@ -309,7 +309,7 @@ V dalším kroku poskytnete informace potřebné k Service Bus akci, **uzavřen�
 
 Tato akce Service Bus ukončí relaci ve frontě poté, co pracovní postup dokončí zpracování všech dostupných zpráv ve frontě, nebo pracovní postup opustí úvodní zprávu.
 
-* V Service Bus akci **zavřete relaci ve frontě a**pojmenujte ji, zadejte název pro vaši frontu Service Bus.
+* V Service Bus akci **zavřete relaci ve frontě a** pojmenujte ji, zadejte název pro vaši frontu Service Bus.
 
   ![Service Bus akce – "ukončení relace ve frontě a úspěšné"](./media/send-related-messages-sequential-convoy/close-session-in-queue-succeed.png)
 
@@ -321,7 +321,7 @@ Následující části popisují akce v `Catch` části, které zpracovávají c
 
 Tato akce Service Bus se vždycky spouští jako první akce v `Catch` oboru a uzavírá relaci ve frontě.
 
-* V Service Bus akci **zavřete relaci ve frontě a**požádejte o selhání, zadejte název pro vaši frontu Service Bus.
+* V Service Bus akci **zavřete relaci ve frontě a** požádejte o selhání, zadejte název pro vaši frontu Service Bus.
 
   ![Service Bus akce – "ukončení relace ve frontě a selhání"](./media/send-related-messages-sequential-convoy/close-session-in-queue-fail.png)
 
@@ -331,7 +331,7 @@ V dalším kroku pracovní postup vytvoří pole, které obsahuje vstupy a výst
 
 ### <a name="find-failure-msg-from-try-block"></a>Najít zprávu o selhání z bloku try
 
-Tato [Akce **pole filtru** ](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) vytvoří pole, které obsahuje vstupy a výstupy ze všech akcí v `Try` oboru založeného na zadaných kritériích pomocí [ `result()` funkce](../logic-apps/workflow-definition-language-functions-reference.md#result). V tomto případě tato akce vrátí výstupy z akcí, které mají `Failed` stav pomocí [ `equals()` funkce](../logic-apps/workflow-definition-language-functions-reference.md#equals) a [ `item()` funkce](../logic-apps/workflow-definition-language-functions-reference.md#item).
+Tato [Akce **pole filtru**](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) vytvoří pole, které obsahuje vstupy a výstupy ze všech akcí v `Try` oboru založeného na zadaných kritériích pomocí [ `result()` funkce](../logic-apps/workflow-definition-language-functions-reference.md#result). V tomto případě tato akce vrátí výstupy z akcí, které mají `Failed` stav pomocí [ `equals()` funkce](../logic-apps/workflow-definition-language-functions-reference.md#equals) a [ `item()` funkce](../logic-apps/workflow-definition-language-functions-reference.md#item).
 
 ![Akce pole filtru – "hledání zprávy o chybě z bloku try"](./media/send-related-messages-sequential-convoy/find-failure-message.png)
 
@@ -358,7 +358,7 @@ V dalším kroku pracovní postup vytvoří pole s objektem JSON, který obsahuj
 
 ### <a name="select-error-details"></a>Vybrat podrobnosti o chybě
 
-Tato [Akce **výběru** ](../logic-apps/logic-apps-perform-data-operations.md#select-action) vytvoří pole, které obsahuje objekty JSON založené na výstupu pole Input z předchozí akce, `Find failure msg from 'Try' block` . Konkrétně tato akce vrátí pole, které má pouze zadané vlastnosti pro každý objekt v poli. V tomto případě pole obsahuje název akce a vlastnosti výsledku chyby.
+Tato [Akce **výběru**](../logic-apps/logic-apps-perform-data-operations.md#select-action) vytvoří pole, které obsahuje objekty JSON založené na výstupu pole Input z předchozí akce, `Find failure msg from 'Try' block` . Konkrétně tato akce vrátí pole, které má pouze zadané vlastnosti pro každý objekt v poli. V tomto případě pole obsahuje název akce a vlastnosti výsledku chyby.
 
 ![Vybrat akci – "vybrat podrobnosti o chybě"](./media/send-related-messages-sequential-convoy/select-error-details.png)
 
@@ -388,7 +388,7 @@ V dalším kroku pracovní postup zastaví běh aplikace logiky a vrátí stav s
 
 ### <a name="terminate-logic-app-run"></a>Ukončení běhu aplikace logiky
 
-Tato [Akce **ukončení** ](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action) zastaví běh aplikace logiky a vrátí `Failed` jako stav spuštění aplikace logiky spolu s ID relace a výsledkem chyby z `Select error details` akce.
+Tato [Akce **ukončení**](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action) zastaví běh aplikace logiky a vrátí `Failed` jako stav spuštění aplikace logiky spolu s ID relace a výsledkem chyby z `Select error details` akce.
 
 ![Ukončit akci pro zastavení spuštění aplikace logiky](./media/send-related-messages-sequential-convoy/terminate-logic-app-run.png)
 

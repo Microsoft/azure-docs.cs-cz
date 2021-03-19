@@ -7,13 +7,13 @@ ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: fb329273d442c023233fee2e7e01aabe5f5bff8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83122357"
 ---
-# <a name="azure-functions-diagnostics-overview"></a>Přehled diagnostiky Azure Functions
+# <a name="azure-functions-diagnostics-overview"></a>Přehled diagnostiky ve službě Azure Functions
 
 Když spouštíte aplikaci Function App, chcete se připravit na případné problémy, které mohou nastat, od chyb 4xx, aby se chyby aktivovaly. Diagnostika Azure Functions je inteligentní a interaktivní prostředí, které vám může pomoct při odstraňování potíží s aplikací Function App bez jakýchkoli konfigurací nebo dalších nákladů. Když narazíte na problémy s aplikací Function App, Azure Functions Diagnostika ukazuje, co je špatné. Zobrazí se vám správné informace pro snazší a rychlé řešení potíží a vyřešení problému. V tomto článku se dozvíte základy použití diagnostiky Azure Functions pro rychlejší diagnostiku a řešení běžných potíží s aplikacemi Function App.
 
@@ -31,11 +31,11 @@ Spuštění diagnostiky Azure Functions:
 
 Jakmile vyberete kategorii domovské stránky, která nejlépe odpovídá vašemu problému aplikace Function App, Azure Functions interaktivní rozhraní s názvem Genie, může vás diagnostikovat a řešit problém vaší aplikace. Pomocí klávesových zkratek, které poskytuje Genie, můžete zobrazit úplnou diagnostickou sestavu kategorie problému, na kterou vás zajímáte. Zástupci dlaždic poskytují přímý způsob přístupu k diagnostickým metrikám.
 
-:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Vyhledejte diagnostiku Azure Functions." border="false":::
+:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Genie je Azure Functions rozhraní diagnostiky." border="false":::
 
 Po výběru dlaždice se zobrazí seznam témat souvisejících s problémem popsaným na dlaždici. Tato témata poskytují fragmenty důležitých informací z celé sestavy. Výběrem kterékoli z těchto témat můžete prozkoumat další problémy. Můžete také vybrat **Zobrazit úplnou sestavu** a prozkoumat všechna témata na jedné stránce.
 
-:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="Vyhledejte diagnostiku Azure Functions." border="false":::
+:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="Náhled diagnostické sestavy" border="false":::
 
 ## <a name="view-a-diagnostic-report"></a>Zobrazit diagnostickou sestavu
 
@@ -45,9 +45,9 @@ Po výběru tématu si můžete zobrazit diagnostickou zprávu specifickou pro v
 
 V případě funkcí založených na skriptech můžete použít **spouštění funkcí a chyby** v části **Function App dolů nebo hlášení chyb** a zúžit tak rozsah kódu, který způsobuje výjimky nebo chyby. Pomocí tohoto nástroje můžete získat původní příčinu a opravit problémy z konkrétního řádku kódu. Tato možnost není k dispozici pro předkompilované funkce C# a Java.
 
-:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="Vyhledejte diagnostiku Azure Functions." border="false":::
+:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="Diagnostická zpráva o chybách spuštění funkce" border="false":::
 
-:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Vyhledejte diagnostiku Azure Functions." border="false":::
+:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Zobrazení podrobností o výjimce." border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

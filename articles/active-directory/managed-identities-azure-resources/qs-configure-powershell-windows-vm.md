@@ -16,10 +16,10 @@ ms.date: 08/19/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b4209ce159c9d0bbee01dd422b98832f6bb5713
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90968997"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu
@@ -122,7 +122,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 1. Přečtěte si jedno z následujících rychlých startů virtuálních počítačů Azure a vyplněním pouze nezbytných oddílů ("přihlášení do Azure", "vytvořit skupinu prostředků", "vytvořit síťovou skupinu", "Vytvoření virtuálního počítače").
 
-    Až se dostanete do části Vytvoření virtuálního počítače, udělejte mírně změnu [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) syntaxe rutiny. Přidáním `-IdentityType UserAssigned` parametrů a `-IdentityID` ZŘÍDÍTE virtuální počítač s uživatelem přiřazenou identitou.  Nahraďte `<VM NAME>` ,, `<SUBSCRIPTION ID>` `<RESROURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.  Příklad:
+    Až se dostanete do části Vytvoření virtuálního počítače, udělejte mírně změnu [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) syntaxe rutiny. Přidáním `-IdentityType UserAssigned` parametrů a `-IdentityID` ZŘÍDÍTE virtuální počítač s uživatelem přiřazenou identitou.  Nahraďte `<VM NAME>` ,, `<SUBSCRIPTION ID>` `<RESROURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.  Například:
 
     ```azurepowershell-interactive
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."

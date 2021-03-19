@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 74e657ba8934057d5720eef47bc5ffe11a3a5ece
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 791591f3d98f9e6902e89a880c464e6a609e3a1f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444164"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599029"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ ms.locfileid: "102444164"
 
 ---
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Python 3.x](https://www.python.org/)
@@ -267,17 +267,17 @@ def sentiment_analysis_with_opinion_mining_example(client):
                 sentence.confidence_scores.negative,
             ))
             for mined_opinion in sentence.mined_opinions:
-                aspect = mined_opinion.aspect
-                print("......'{}' aspect '{}'".format(aspect.sentiment, aspect.text))
-                print("......Aspect score:\n......Positive={0:.2f}\n......Negative={1:.2f}\n".format(
-                    aspect.confidence_scores.positive,
-                    aspect.confidence_scores.negative,
+                target = mined_opinion.target
+                print("......'{}' target '{}'".format(target.sentiment, target.text))
+                print("......Target score:\n......Positive={0:.2f}\n......Negative={1:.2f}\n".format(
+                    target.confidence_scores.positive,
+                    target.confidence_scores.negative,
                 ))
-                for opinion in mined_opinion.opinions:
-                    print("......'{}' opinion '{}'".format(opinion.sentiment, opinion.text))
-                    print("......Opinion score:\n......Positive={0:.2f}\n......Negative={1:.2f}\n".format(
-                        opinion.confidence_scores.positive,
-                        opinion.confidence_scores.negative,
+                for assessment in mined_opinion.assessments:
+                    print("......'{}' assessment '{}'".format(assessment.sentiment, assessment.text))
+                    print("......Assessment score:\n......Positive={0:.2f}\n......Negative={1:.2f}\n".format(
+                        assessment.confidence_scores.positive,
+                        assessment.confidence_scores.negative,
                     ))
             print("\n")
         print("\n")
@@ -298,33 +298,33 @@ Positive=0.84
 Neutral=0.00
 Negative=0.16
 
-......'negative' aspect 'food'
-......Aspect score:
+......'negative' target 'food'
+......Target score:
 ......Positive=0.01
 ......Negative=0.99
 
-......'negative' opinion 'unacceptable'
-......Opinion score:
+......'negative' assessment 'unacceptable'
+......Assessment score:
 ......Positive=0.01
 ......Negative=0.99
 
-......'negative' aspect 'service'
-......Aspect score:
+......'negative' target 'service'
+......Target score:
 ......Positive=0.01
 ......Negative=0.99
 
-......'negative' opinion 'unacceptable'
-......Opinion score:
+......'negative' assessment 'unacceptable'
+......Assessment score:
 ......Positive=0.01
 ......Negative=0.99
 
-......'positive' aspect 'concierge'
-......Aspect score:
+......'positive' target 'concierge'
+......Target score:
 ......Positive=1.00
 ......Negative=0.00
 
-......'positive' opinion 'nice'
-......Opinion score:
+......'positive' assessment 'nice'
+......Assessment score:
 ......Positive=1.00
 ......Negative=0.00
 
@@ -799,41 +799,41 @@ key_phrase_extraction_example(client)
 
 ---
 
-## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Asynchronní použití rozhraní API s operací analyzovat
+## <a name="use-the-api-asynchronously-with-the-batch-analyze-operation"></a>Asynchronní použití rozhraní API s operací dávkové analýzy
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-Vytvořte novou funkci s názvem `analyze_example()` , která převezme klienta jako argument, a pak zavolá `begin_analyze()` funkci. Výsledkem bude dlouhodobá operace, která se bude dotazovat na výsledky.
+Vytvořte novou funkci s názvem `analyze_batch_actions_example()` , která převezme klienta jako argument, a pak zavolá `begin_analyze_batch_actions()` funkci. Výsledkem bude dlouhodobá operace, která se bude dotazovat na výsledky.
 
 ```python
-    def analyze_example(client):
+    def analyze_batch_actions_example(client):
         documents = [
             "Microsoft was founded by Bill Gates and Paul Allen."
         ]
 
-        poller = text_analytics_client.begin_analyze(
+        poller = text_analytics_client.begin_analyze_batch_actions(
             documents,
             display_name="Sample Text Analysis",
             entities_recognition_tasks=[EntitiesRecognitionTask()]
         )
 
         result = poller.result()
+        action_results = [action_result for action_result in list(result) if not action_result.is_error]
 
-        for page in result:
-            for task in page.entities_recognition_results:
-                print("Results of Entities Recognition task:")
-                
-                docs = [doc for doc in task.results if not doc.is_error]
-                for idx, doc in enumerate(docs):
-                    print("\nDocument text: {}".format(documents[idx]))
-                    for entity in doc.entities:
-                        print("Entity: {}".format(entity.text))
-                        print("...Category: {}".format(entity.category))
-                        print("...Confidence Score: {}".format(entity.confidence_score))
-                        print("...Offset: {}".format(entity.offset))
-                    print("------------------------------------------")
+        entities_recognition_task_result = action_results[0]
+        print("Results of Entities Recognition action:")
+        docs = [doc for doc in first_action_result.document_results if not doc.is_error]
+
+        for idx, doc in enumerate(docs):
+            print("\nDocument text: {}".format(documents[idx]))
+            for entity in doc.entities:
+                print("Entity: {}".format(entity.text))
+                print("...Category: {}".format(entity.category))
+                print("...Confidence Score: {}".format(entity.confidence_score))
+                print("...Offset: {}".format(entity.offset))
+            print("------------------------------------------")
 
 analyze_example(client)
 ```
@@ -858,7 +858,7 @@ Entity: Paul Allen
 ------------------------------------------
 ```
 
-Můžete také použít operaci analyzovat ke zjištění kódu PII a extrakce klíčových frází. Podívejte se na téma [Analýza ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples/async_samples) na GitHubu.
+K detekci PII a provádění extrakce klíčových frází můžete také použít operaci analyzovat dávku. Podívejte se na [ukázku analýza dávky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_batch_actions.py) na GitHubu.
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 

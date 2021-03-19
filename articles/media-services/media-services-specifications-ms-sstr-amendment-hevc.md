@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87053050"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Změna protokolu SSTR (MS-) pro HEVC Smooth Streaming 
@@ -66,10 +66,10 @@ Následující výrazy jsou specifické pro tento dokument:
 
 >  [MS-SSTR] *V20140502* protokolu Smooth Streaming [https://msdn.microsoft.com/library/ff469518.aspx](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)
 > 
->   [ISO/IEC 14496-12] ISO, "informační technologie – kódování zvuku-vizuálních objektů – část 12: formát souboru ISO Base Media", ISO/IEC 14496-12:2014, edice 4, plus Corrigendum 1, změny 1 & 2.
+>   [ISO/IEC 14496-12] Mezinárodní organizace pro normalizaci, "informační technologie – kódování zvuku-vizuálních objektů – část 12: formát souboru ISO Base Media", ISO/IEC 14496-12:2014, edice 4, plus Corrigendum 1, změny 1 & 2.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
 > 
->   [ISO/IEC 14496-15] ISO, "informační technologie--kódování zvuku-vizuálních objektů – část 15: přeprava strukturovaného videa jednotky NAL ve formátu ISO Base Media File Format", ISO 14496-15:2015, edice 3.
+>   [ISO/IEC 14496-15] Mezinárodní organizace pro normalizaci, "informační technologie--kódování zvuku-vizuálních objektů – část 15: přeprava strukturovaného videa jednotky NAL ve formátu ISO Base Media File Format", ISO 14496-15:2015, edice 3.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
 >   [ISO/IEC 23008-2] Informační technologie – kódování s vysokými efektivitami a doručování médií v heterogenních prostředích – část 2: video s vysokým efektivitou: 2013 nebo nejnovější edice   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>

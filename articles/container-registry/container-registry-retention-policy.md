@@ -4,10 +4,10 @@ description: Naučte se, jak ve službě Azure Container Registry povolit zásad
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83683456"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Nastavit zásady uchovávání informací pro netagované manifesty
@@ -86,16 +86,16 @@ V [Azure Portal](https://portal.azure.com)můžete také nastavit zásady uchov�
 
 ### <a name="enable-a-retention-policy"></a>Povolit zásady uchovávání informací
 
-1. Přejděte do služby Azure Container Registry. V části **zásady**vyberte **uchování** (Preview).
-1. V **stav**vyberte **povoleno**.
+1. Přejděte do služby Azure Container Registry. V části **zásady** vyberte **uchování** (Preview).
+1. V **stav** vyberte **povoleno**.
 1. Vyberte počet dní mezi 0 a 365 a zachovejte netagované manifesty. Vyberte **Uložit**.
 
 ![Povolit zásady uchovávání informací v Azure Portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
 ### <a name="disable-a-retention-policy"></a>Zakázat zásady uchovávání informací
 
-1. Přejděte do služby Azure Container Registry. V části **zásady**vyberte **uchování** (Preview).
-1. V **stav**vyberte **zakázáno**. Vyberte **Uložit**.
+1. Přejděte do služby Azure Container Registry. V části **zásady** vyberte **uchování** (Preview).
+1. V **stav** vyberte **zakázáno**. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 

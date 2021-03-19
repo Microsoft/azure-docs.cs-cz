@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983652"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Zobrazení efektivních tras virtuálního centra
@@ -33,13 +33,13 @@ Výstup stránky zobrazuje následující pole:
 * **Původ**: ID prostředku zdroje směrování.
 * **Jako cesta**: atribut BGP jako (autonomní systém) cesta uvádí všechny hodnoty, které je třeba procházet, aby se dosáhlo místa, odkud je inzerována předpona, ke které je připojena cesta.
 
-### <a name="example"></a><a name="example"></a>Příklad
+### <a name="example"></a><a name="example"></a>Případě
 
 Hodnoty v následující ukázkové tabulce naznačují, že připojení nebo směrovací tabulka virtuálního rozbočovače se naučila trasa 10.2.0.0/24 (předpona větve). Zjistila se trasa z důvodu **typu dalšího segmentu směrování sítě VPN** VPN_S2S_GATEWAY s ID prostředku **dalšího segmentu směrování** VPN Gateway. Body **původu trasují** k ID prostředku, který pochází z brány VPN/tabulky nebo připojení směrování. **Jako cesta** označuje cestu pro větev.
 
 Pomocí posuvníku v dolní části tabulky zobrazte "AS Path".
 
-| **Předpona** |  **Typ dalšího segmentu směrování** | **Další směrování** |  **Původ trasy** |**JAKO cesta** |
+| **Předpona** |  **Typ dalšího přesměrování** | **Další směrování** |  **Původ trasy** |**JAKO cesta** |
 | ---        | ---                | ---          | ---               | ---         |
 | 10.2.0.0/24| VPN_S2S_Gateway |/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw|/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 

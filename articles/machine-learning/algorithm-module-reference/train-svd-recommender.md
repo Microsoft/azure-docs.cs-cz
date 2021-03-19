@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: 77407f253bb347160ea331bd7384d8085f21b040
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890241"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654454"
 ---
 # <a name="train-svd-recommender"></a>Trénování doporučovacího systému SVD
 
 Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul doporučování výukového SVD. Tento modul slouží ke školení modelu doporučení založeného na algoritmu dekompozice s jednou hodnotou (SVD).  
 
-Modul doporučení SVDu pro vlaky přečte datovou sadu trojí pro hodnocení položek. Vrátí SVD doporučení. Potom můžete pomocí vyškolený model předpovědět hodnocení nebo vygenerovat doporučení pomocí modulu [SVD doporučeného skóre](score-svd-recommender.md) .  
+Modul doporučení SVDu pro vlaky přečte datovou sadu trojí pro hodnocení položek. Vrátí SVD doporučení. Potom můžete pomocí trained model předpovědět hodnocení nebo vygenerovat doporučení tím, že propojíte modul pro [doporučení SVD skóre](score-svd-recommender.md) .  
 
 
   
@@ -58,18 +58,21 @@ Z této ukázky vidíte, že jeden uživatel nahodnotil několik filmů.
 
 1.  Přidejte do kanálu modul doporučeného učení SVD v návrháři a připojte ho k školicím datům.  
    
-2.  V poli **počet faktorů**určete počet faktorů, které se mají použít u doporučení.  
+2.  V poli **počet faktorů** určete počet faktorů, které se mají použít u doporučení.  
     
     Každý faktor měří, kolik uživatelů se s položkou týká. Počet faktorů je také dimenzionální prostor typu latentního faktoru. S rostoucím počtem uživatelů a položek je lepší nastavit větší počet faktorů. Pokud je ale příliš velký počet, může dojít k poklesu výkonu.
     
 3.  **Počet iterací algoritmu doporučení** indikuje, kolikrát by měl algoritmus zpracovat vstupní data. Čím vyšší je toto číslo, tím přesnější je předpovědi. Vyšší číslo však znamená pomalejší školení. Výchozí hodnota je 30.
 
-4.  Do pole **rychlost učení**zadejte číslo od 0,0 do 2,0, které definuje velikost kroku pro učení.
+4.  Do pole **rychlost učení** zadejte číslo od 0,0 do 2,0, které definuje velikost kroku pro učení.
 
     Studijní frekvence určuje velikost kroku v každé iteraci. Pokud je velikost kroku moc velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než vyhledá nejlepší řešení. 
   
 5.  Odešlete kanál.  
 
+## <a name="results"></a>Výsledky
+
+Po dokončení běhu kanálu můžete použít model pro bodování, připojit [doporučení k SVDu vlaku](train-svd-recommender.md) pro [vyhodnocení doporučení SVD](score-svd-recommender.md), aby bylo možné předpovědět hodnoty pro nové vstupní příklady.
 
 ## <a name="next-steps"></a>Další kroky
 

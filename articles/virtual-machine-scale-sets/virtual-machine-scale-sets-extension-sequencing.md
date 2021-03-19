@@ -10,10 +10,10 @@ ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83121027"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Zřizování rozšíření sekvence ve virtuálních počítačích Virtual Machine Scale Sets
@@ -23,7 +23,7 @@ Při používání více rozšíření na virtuálním počítači je důležit�
 
 Tento článek podrobně popisuje, jak můžete sekvencování rozšíření nakonfigurovat pro instance virtuálních počítačů ve službě Virtual Machine Scale Sets.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že jste obeznámeni s:
 -   [Rozšíření](../virtual-machines/extensions/overview.md) virtuálních počítačů Azure
 -   [Úprava](virtual-machine-scale-sets-upgrade-scale-set.md) virtuálních počítačů Scale Sets

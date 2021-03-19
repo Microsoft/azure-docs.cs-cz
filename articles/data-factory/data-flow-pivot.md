@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/17/2020
 ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87086655"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Transformace pivotu v toku dat mapování
@@ -41,7 +41,7 @@ Tato část je volitelná. Pokud nejsou vybrány žádné sloupce Group by, bude
 
 Kontingenční klíč je sloupec, jehož hodnoty řádků se překopírují do nových sloupců. Ve výchozím nastavení vytvoří transformace Pivot pro každou hodnotu jedinečného řádku nový sloupec.
 
-V části s popisem **hodnoty**můžete zadat konkrétní hodnoty řádků, které se mají Překlopit. Budou předávány pouze hodnoty řádků zadané v této části. Když se povolí **hodnota null** , vytvoří se pro hodnoty null ve sloupci sloupec s kontingenčním objektem.
+V části s popisem **hodnoty** můžete zadat konkrétní hodnoty řádků, které se mají Překlopit. Budou předávány pouze hodnoty řádků zadané v této části. Když se povolí **hodnota null** , vytvoří se pro hodnoty null ve sloupci sloupec s kontingenčním objektem.
 
 ### <a name="pivoted-columns"></a>Sloupce v kontingenčním sloupci
 

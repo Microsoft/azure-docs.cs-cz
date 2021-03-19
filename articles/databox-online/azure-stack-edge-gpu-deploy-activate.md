@@ -10,10 +10,10 @@ ms.date: 10/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: a767f6f877ae22a311afdb00417efb9f28fdc8f0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91938350"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Kurz: Aktivace Azure Stack Edge pro pomocí GPU
@@ -25,10 +25,10 @@ Dokončení procesu aktivace může trvat přibližně 5 minut.
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Aktivace fyzického zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým procesorem, ujistěte se, že:
 
@@ -79,7 +79,7 @@ Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým 
  
     Různé klíče jsou vysvětleny v následující tabulce:
     
-    |Pole  |Popis  |
+    |Pole  |Description  |
     |---------|---------|
     |`Id`    | Toto je ID zařízení.        |
     |`DataVolumeBitLockerExternalKeys`|Jedná se o klíče BitLockeru pro datové disky a používají se k obnovení místních dat v zařízení.|
@@ -99,7 +99,7 @@ Pokud narazíte na nějaké problémy při aktivaci, přečtěte si [řešení p
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Aktivace fyzického zařízení
 
 Informace o tom, jak přenést data pomocí zařízení Azure Stack Edge pro, najdete v těchto tématech:

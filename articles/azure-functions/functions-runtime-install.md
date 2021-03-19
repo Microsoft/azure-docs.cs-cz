@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540379"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Nainstalovat Modul runtime služby Azure Functions Preview 2
@@ -25,7 +25,7 @@ Chcete-li nainstalovat Modul runtime služby Azure Functions verze Preview 2, po
 1. Dokončete konfiguraci Modul runtime služby Azure Functions verze Preview 2.
 1. Vytvoření první funkce v Modul runtime služby Azure Functions Preview
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než nainstalujete Modul runtime služby Azure Functions Preview, musíte mít k dispozici následující prostředky:
 
@@ -75,7 +75,7 @@ Chcete-li dokončit instalaci Modul runtime služby Azure Functions, je nutné d
 
     ![Konfigurace databáze Modul runtime služby Azure Functions Preview][8]
 
-1. Klikněte na kartu **přihlašovací údaje** .  Tady musíte vytvořit dvě nové přihlašovací údaje, které se mají použít se sdílenou složkou pro hostování všech vašich aplikací Function App.  Zadejte kombinace **uživatelského jména** a **hesla** pro **vlastníka sdílené složky** a pro **uživatele sdílené složky**a potom klikněte na **použít**.
+1. Klikněte na kartu **přihlašovací údaje** .  Tady musíte vytvořit dvě nové přihlašovací údaje, které se mají použít se sdílenou složkou pro hostování všech vašich aplikací Function App.  Zadejte kombinace **uživatelského jména** a **hesla** pro **vlastníka sdílené složky** a pro **uživatele sdílené složky** a potom klikněte na **použít**.
 
     ![Přihlašovací údaje pro Modul runtime služby Azure Functions Preview][9]
 

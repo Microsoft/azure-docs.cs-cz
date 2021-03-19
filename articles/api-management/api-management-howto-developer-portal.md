@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93074793"
 ---
 # <a name="overview-of-the-developer-portal"></a>Přehled portálu pro vývojáře
@@ -62,7 +62,7 @@ Při prvním spuštění verze Preview portálu pro vývojáře jste ve službě
 
 Pokud jste portál silně přizpůsobili na základě verze Preview obsahu, můžete ho i nadále používat a na stránkách na portálu umístit nové widgety ručně. V opačném případě doporučujeme nahradit obsah vašeho portálu novým výchozím obsahem.
 
-Chcete-li obnovit obsah na spravovaném portálu, vyberte možnost **obnovit obsah** v části nabídka **operace** . Tato operace odstraní veškerý obsah portálu a zřídí nový výchozí obsah. Ztratíte všechna přizpůsobení a změny portálu pro vývojáře. **Tuto akci nelze vrátit zpět** .
+Chcete-li obnovit obsah na spravovaném portálu, vyberte možnost **obnovit obsah** v části nabídka **operace** . Tato operace odstraní veškerý obsah portálu a zřídí nový výchozí obsah. Ztratíte všechna přizpůsobení a změny portálu pro vývojáře. **Tuto akci nelze vrátit zpět**.
 
 ![Resetování obsahu portálu](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -90,11 +90,11 @@ Můžete mít jeden spravovaný portál a několik samoobslužných portálů. O
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Podporuje portál Azure Resource Manager šablony nebo je kompatibilní se sadou API Management DevOps Resource Kit?
 
-Ne.
+No.
 
 ### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>Je obsah portálu uložený s funkcí zálohování a obnovení v API Management?
 
-Ne.
+No.
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Musím pro závislosti spravovaného portálu povolit další připojení VNet?
 

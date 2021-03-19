@@ -9,10 +9,10 @@ ms.date: 05/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e01f9ac8966223e11ad218af7bf6fbb2462f28f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83714895"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Firewall webových aplikací Azure v Azure Application Gateway – přehled ochrany bot
@@ -26,7 +26,7 @@ Pro WAF můžete povolit spravovanou sadu pravidel ochrany před roboty, která 
 
 ## <a name="use-with-owasp-rulesets"></a>Použití s OWASP RuleSets
 
-Sadu pravidel ochrany před roboty můžete použít společně s jakýmikoli sadami pravidel OWASP (2.2.9, 3.0 a 3.1). V jednu chvíli se může používat pouze jedna sada pravidel OWASP. Sada pravidel ochrany před roboty obsahuje další pravidlo, které se zobrazuje ve vlastní sadě pravidel. Má podobu **Microsoft_BotManagerRuleSet_0.1**a můžete ho povolit nebo zakázat podobně jako ostatní pravidla OWASP.
+Sadu pravidel ochrany před roboty můžete použít společně s jakýmikoli sadami pravidel OWASP (2.2.9, 3.0 a 3.1). V jednu chvíli se může používat pouze jedna sada pravidel OWASP. Sada pravidel ochrany před roboty obsahuje další pravidlo, které se zobrazuje ve vlastní sadě pravidel. Má podobu **Microsoft_BotManagerRuleSet_0.1** a můžete ho povolit nebo zakázat podobně jako ostatní pravidla OWASP.
 
 ![Robot RuleSet](../media/bot-protection-overview/bot-ruleset.png)
 

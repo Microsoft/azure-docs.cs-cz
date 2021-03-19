@@ -9,17 +9,17 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
 ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87001481"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Kódování a dekódování plochých souborů v Azure Logic Apps s využitím řešení Enterprise Integration Pack
 
 Před odesláním obsahu XML obchodnímu partnerovi ve scénáři B2B (Business-to-Business) možná budete chtít takový obsah nejdřív zakódovat. Vytvořením aplikace logiky můžete kódovat a dekódovat ploché soubory pomocí konektoru **plochých souborů** . Aplikace logiky může získat tento obsah XML z různých zdrojů, jako je Trigger žádosti, jiná aplikace nebo jiné [konektory, které podporuje Azure Logic Apps](../connectors/apis-list.md). Další informace najdete v tématu [co je Azure Logic Apps](logic-apps-overview.md)?
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -40,7 +40,7 @@ Před odesláním obsahu XML obchodnímu partnerovi ve scénáři B2B (Business-
    > [!TIP]
    > Zadání schématu JSON je volitelné. Pokud máte ukázkovou datovou část z příchozího požadavku, vyberte **použít ukázkovou datovou část k vygenerování schématu**, zadejte ukázkovou datovou část a vyberte **Hotovo**. Schéma se zobrazí v poli **schématu JSON textu žádosti** .
 
-1. V části **zvolit akci**zadejte `flat file` . V seznamu akce vyberte tuto akci: **kódování plochého souboru**
+1. V části **zvolit akci** zadejte `flat file` . V seznamu akce vyberte tuto akci: **kódování plochého souboru**
 
    ![Vybrat akci kódování plochého souboru](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
 
@@ -72,7 +72,7 @@ Nyní jste hotovi s nastavením akce kódování plochého souboru. V reálné a
    > [!TIP]
    > Zadání schématu JSON je volitelné. Pokud máte ukázkovou datovou část z příchozího požadavku, vyberte **použít ukázkovou datovou část k vygenerování schématu**, zadejte ukázkovou datovou část a vyberte **Hotovo**. Schéma se zobrazí v poli **schématu JSON textu žádosti** .
 
-1. V části **zvolit akci**zadejte `flat file` . V seznamu akce vyberte tuto akci: **dekódování plochého souboru**
+1. V části **zvolit akci** zadejte `flat file` . V seznamu akce vyberte tuto akci: **dekódování plochého souboru**
 
    ![Výběr akce "dekódování plochého souboru"](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
 

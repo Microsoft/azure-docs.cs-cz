@@ -1,14 +1,14 @@
 ---
 title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
-ms.date: 08/17/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: b4f15241799469da2e479cb758f648ec3131a149
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033859"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598486"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -16,7 +16,7 @@ Tento článek vás provede programově vytvářením a správou zásad. Azure P
 
 Informace o dodržování předpisů najdete v tématu [získání dat o dodržování předpisů](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že jsou splněné následující předpoklady:
 
@@ -244,5 +244,5 @@ Další informace o příkazech a dotazech v tomto článku najdete v následuj�
 - [Prostředky Azure REST API](/rest/api/resources/)
 - [Moduly Azure PowerShell](/powershell/module/az.resources/#policy)
 - [Příkazy zásad Azure CLI](/cli/azure/policy)
-- [Referenční informace o REST API poskytovatele prostředků Azure Policy Insights](/rest/api/policy-insights)
+- [Referenční informace o REST API Azure Policy poskytovatele prostředků](/rest/api/policy)
 - [Uspořádání prostředků s využitím skupin pro správu Azure.](../../management-groups/overview.md)

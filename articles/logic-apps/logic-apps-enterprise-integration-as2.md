@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91856666"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv AS2 pro podnikovou integraci B2B v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
@@ -22,7 +22,7 @@ ms.locfileid: "91856666"
 
 Pokud chcete pracovat se AS2 zprávami v Azure Logic Apps, můžete použít konektor AS2, který poskytuje triggery a akce, které podporují a spravují komunikaci AS2 (verze 1,2). Chcete-li například vytvořit zabezpečení a spolehlivost při odesílání zpráv, můžete použít tyto akce:
 
-* [ **AS2 zakódovat** ](#encode) pro poskytování šifrování, digitálního podepisování a potvrzení prostřednictvím oznámení o vyřazení zpráv (MDN), které vám pomůžou zajistit Neodmítnutí. Tato akce například používá hlavičky AS2/HTTP a při konfiguraci provádí tyto úlohy:
+* [ **AS2 zakódovat**](#encode) pro poskytování šifrování, digitálního podepisování a potvrzení prostřednictvím oznámení o vyřazení zpráv (MDN), které vám pomůžou zajistit Neodmítnutí. Tato akce například používá hlavičky AS2/HTTP a při konfiguraci provádí tyto úlohy:
 
   * Podepíše odchozí zprávy.
   * Šifruje odchozí zprávy.
@@ -49,7 +49,7 @@ Pokud chcete pracovat se AS2 zprávami v Azure Logic Apps, můžete použít kon
 
 Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do existující aplikace logiky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -63,7 +63,7 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
 
 * Pokud používáte [Azure Key Vault](../key-vault/general/overview.md) pro správu certifikátů, ověřte, že klíče trezoru umožňují operace **šifrování** a **dešifrování** . V opačném případě se akce kódování a dekódování nezdaří.
 
-  V Azure Portal ve vašem trezoru klíčů vyhledejte klíč, zkontrolujte **povolené operace**klíče a ověřte, že jsou vybrané operace **šifrování** a **dešifrování** . Příklad:
+  V Azure Portal ve vašem trezoru klíčů vyhledejte klíč, zkontrolujte **povolené operace** klíče a ověřte, že jsou vybrané operace **šifrování** a **dešifrování** . Příklad:
 
   ![Kontrolovat operace klíče trezoru](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 

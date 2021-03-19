@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: bca885f9b19086302fd91d29b8ff6553b7205f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86544284"
 ---
 ## <a name="c-program-example"></a>Příklad programu C#
@@ -39,7 +39,7 @@ Program v jazyce C# je logicky jeden soubor. cs a fyzicky je rozdělen do někol
 
 1. Vytvořte projekt C# v aplikaci Visual Studio. Typ projektu by měl být *Konzola*, která se nachází v části **šablony**  >  **Visual C#**  >  **Windows Desktop**  >  **Konzolová aplikace (.NET Framework)**.
 
-1. V souboru *program.cs*nahraďte počáteční řádky kódu následujícím postupem:
+1. V souboru *program. cs* nahraďte počáteční řádky kódu následujícím postupem:
 
     1. Zkopírujte a vložte následující bloky kódu ve stejném pořadí, v jakém jsou prezentovány, viz [připojení k databázi](#cs_1_connect), [generování T-SQL](#cs_2_return)a [odeslání do databáze](#cs_3_submit).
 

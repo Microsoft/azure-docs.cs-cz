@@ -5,10 +5,10 @@ ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: f0ba19bf1d7fdf05014ac199fae9392b5c3249d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87073080"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenční informace o konfiguraci Azure blockchain Workbench
@@ -56,7 +56,7 @@ Obchodní logika aplikace může být modelována jako Stavový počítač, kter
 | StartState | Název počátečního stavu pracovního postupu | Yes | |
 | Vlastnosti | Kolekce [identifikátorů](#identifiers). Představuje data, která lze číst z řetězce nebo vizuálního použití v nástroji uživatelského prostředí. | Yes | |
 | Konstruktor | Definuje vstupní parametry pro vytvoření instance pracovního postupu. | Yes | |
-| Funkce | Kolekce [funkcí](#functions) , které lze spustit v pracovním postupu. | Yes | |
+| Functions | Kolekce [funkcí](#functions) , které lze spustit v pracovním postupu. | Yes | |
 | Stavy | Kolekce [stavů](#states)pracovního postupu. | Yes | |
 
 Příklad najdete v tématu [příklad konfiguračního souboru](#configuration-file-example).
@@ -197,7 +197,7 @@ Definuje vstupní parametry pro instanci pracovního postupu.
 }
 ```
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Definuje funkce, které lze spustit v pracovním postupu.
 
@@ -418,7 +418,7 @@ Identifikátory představuje kolekci informací, které slouží k popisu vlastn
 
 ## <a name="configuration-file-example"></a>Příklad konfiguračního souboru
 
-Přenos prostředků je scénář inteligentního kontraktu pro nákup a prodej prostředků s vysokou hodnotou, který vyžaduje inspektora a hodnocení. Prodejci můžou vypsat své prostředky vytvořením instance inteligentního kontraktu přenosu prostředků. Účastníci můžou nabídky dělat na základě akce v rámci inteligentních smluv a další strany mohou podniknout kroky ke kontrole nebo posouzení assetu. Jakmile je Asset označený jako zkontrolovaný a vyhodnocený, kupující a prodávající si tento prodej znovu potvrdí, než se smlouva nastaví na dokončeno. V každém okamžiku procesu mají všichni účastníci přehled o stavu kontraktu, jak je aktualizován. 
+Přenos prostředků je scénář inteligentního kontraktu pro nákup a prodej prostředků s vysokou hodnotou, který vyžaduje inspektora a hodnocení. Prodejci můžou vypsat své prostředky vytvořením instance inteligentního kontraktu přenosu prostředků. Účastníci můžou nabídky dělat na základě akce v rámci inteligentních smluv a další strany mohou podniknout kroky ke kontrole nebo posouzení assetu. Jakmile je Asset označený jako zkontrolovaný a vyhodnocený, kupující a prodávající si tento prodej znovu potvrdí, než se smlouva nastaví na dokončeno. V každém okamžiku procesu mají všichni účastníci přehled o stavu kontraktu, jak je aktualizován. 
 
 Další informace, včetně souborů s kódem, najdete v tématu [Ukázka přenosu assetu pro Azure blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer) .
 

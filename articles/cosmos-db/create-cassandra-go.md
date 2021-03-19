@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
 ms.openlocfilehash: 595ec1aaa4aedc3916d1b4d46986dcabae887aaf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93076397"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Rychlý Start: Vytvoření aplikace v cestách pomocí `gocql` klienta pro správu dat Azure Cosmos DB rozhraní API Cassandra
@@ -226,7 +226,7 @@ func mapToUser(m map[string]interface{}) model.User {
 
 Jak už jsme uvedli, aplikace přijímá připojení a přihlašovací údaje ve formě proměnných prostředí. 
 
-1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec** . 
+1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec**. 
 
     :::image type="content" source="./media/create-cassandra-go/copy-username-connection-string-azure-portal.png" alt-text="Zobrazení a zkopírování podrobností na stránce připojovací řetězec v Azure Portal":::
 
@@ -253,9 +253,9 @@ go run main.go
 
 3. V okně terminálu se zobrazí oznámení o různých operacích, včetně prostoru klíčů a nastavení tabulky, vytvoření uživatele atd.
 
-4. Na portálu Azure Portal otevřete **Data Explorer** , abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
+4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
 
-    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Zobrazení a zkopírování podrobností na stránce připojovací řetězec v Azure Portal":::
+    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Zobrazení dat v Průzkumník dat-Azure Cosmos DB":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

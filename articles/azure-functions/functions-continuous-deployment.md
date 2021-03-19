@@ -5,10 +5,10 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83123657"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
@@ -36,13 +36,13 @@ Aby průběžné nasazování bylo úspěšné, musí být vaše adresářová s
 
 Pokud chcete nakonfigurovat průběžné nasazování pro existující aplikaci Function App, proveďte tyto kroky. Kroky ukazují integraci s úložištěm GitHub, ale podobný postup platí pro Azure Repos nebo jiné úložiště zdrojového kódu.
 
-1. Ve vaší aplikaci Function App v [Azure Portal](https://portal.azure.com)vyberte **centrum nasazení**, vyberte **GitHub**a potom vyberte **autorizovat**. Pokud jste už máte autorizovaný GitHub, vyberte **pokračovat** a přejděte k dalšímu kroku. 
+1. Ve vaší aplikaci Function App v [Azure Portal](https://portal.azure.com)vyberte **centrum nasazení**, vyberte **GitHub** a potom vyberte **autorizovat**. Pokud jste už máte autorizovaný GitHub, vyberte **pokračovat** a přejděte k dalšímu kroku. 
 
     :::image type="content" source="./media/functions-continuous-deployment/github.png" alt-text="Centrum nasazení Azure App Service":::
 
 3. V GitHubu vyberte **autorizovat AzureAppService**.
 
-    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Centrum nasazení Azure App Service":::
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Autorizovat Azure App Service":::
 
     Zadejte své heslo GitHubu a pak vyberte **pokračovat**.
 
@@ -53,9 +53,9 @@ Pokud chcete nakonfigurovat průběžné nasazování pro existující aplikaci 
 
     Vyberte **Pokračovat**.
 
-5. Nakonfigurujte informace specifické pro zadanou možnost správy zdrojového kódu. V případě GitHubu je nutné zadat nebo vybrat hodnoty pro **organizaci**, **úložiště**a **větev**. Hodnoty jsou založené na umístění vašeho kódu. Pak vyberte **pokračovat**.
+5. Nakonfigurujte informace specifické pro zadanou možnost správy zdrojového kódu. V případě GitHubu je nutné zadat nebo vybrat hodnoty pro **organizaci**, **úložiště** a **větev**. Hodnoty jsou založené na umístění vašeho kódu. Pak vyberte **pokračovat**.
 
-    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Centrum nasazení Azure App Service":::
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Konfigurace GitHubu":::
 
 6. Zkontrolujte všechny podrobnosti a pak vyberte **Dokončit** a dokončete konfiguraci nasazení.
 

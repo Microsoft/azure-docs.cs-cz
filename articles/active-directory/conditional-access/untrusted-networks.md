@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077672"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Postupy: vyžadování MFA pro přístup z nedůvěryhodných sítí s podmíněným přístupem   
@@ -58,7 +58,7 @@ Místo toho, abyste se pokoušeli definovat, která všechna umístění nejsou 
 
 - Vyloučit všechna důvěryhodná umístění 
 
-   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Snímek obrazovky s podoknem umístění Azure a D s možností konfigurovat nastavenou na hodnotu Ano, zobrazit kartu zahrnout a vybranou možnost Libovolná poloha a zvýrazněná." border="false":::
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Snímek obrazovky s podoknem umístění Azure a D s možností konfigurovat nastavenou na hodnotu Ano, karta vyloučit a vybraná možnost všechna důvěryhodná umístění." border="false":::
 
 ## <a name="policy-deployment"></a>Nasazení zásad
 

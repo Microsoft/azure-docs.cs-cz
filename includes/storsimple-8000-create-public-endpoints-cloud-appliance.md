@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5a286753e438b7d65f3d33a82669c4f7e79a282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86544672"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Vytvoření veřejných koncových bodů na cloudovém zařízení
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Přejděte na **Virtuální počítače** a vyberte a klikněte na virtuální počítač, který používáte jako cloudové zařízení.
     
 3. Potřebujete vytvořit pravidlo skupiny zabezpečení sítě (NSG) pro řízení toku přenosů do a z virtuálního počítače. Proveďte následující kroky a vytvořte pravidlo skupiny zabezpečení sítě.

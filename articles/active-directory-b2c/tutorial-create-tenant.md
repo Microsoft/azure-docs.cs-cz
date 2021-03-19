@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 673e2260f358332de00a15b29729f14d62fe82a4
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: aa91851787bbb0f5570a4f439f794ee352bf0625
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518003"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579684"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Kurz: Vytvoření tenanta Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Než můžou vaše aplikace pracovat s Azure Active Directory B2C (Azure AD B2C)
 > [!NOTE]
 > U každého předplatného můžete vytvořit až 20 klientů. Toto omezení pomáhá chránit před hrozbami vašich prostředků, jako jsou útoky DoS (Denial-of-Service), a je vynutilo jak Azure Portal, tak i základní rozhraní API pro vytváření tenantů. Pokud potřebujete vytvořit více než 20 tenantů, kontaktujte prosím [Podpora Microsoftu](support-options.md).
 > 
-> Pokud chcete znovu použít název tenanta, který jste se předtím pokusili odstranit, ale při zadání názvu domény se zobrazí chyba "už se používá v jiném adresáři", budete muset [nejprve tento tenant úplně odstranit pomocí těchto kroků](https://docs.microsoft.com/azure/active-directory-b2c/faq?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant). Je vyžadována role aspoň Správce předplatného. Po odstranění tenanta se možná budete muset odhlásit a znovu přihlásit a teprve potom můžete znovu použít název domény.
+> Pokud chcete znovu použít název tenanta, který jste se předtím pokusili odstranit, ale při zadání názvu domény se zobrazí chyba "už se používá v jiném adresáři", budete muset [nejprve tento tenant úplně odstranit pomocí těchto kroků](./faq.md?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant). Je vyžadována role aspoň Správce předplatného. Po odstranění tenanta se možná budete muset odhlásit a znovu přihlásit a teprve potom můžete znovu použít název domény.
 
 V tomto článku získáte informace o těchto tématech:
 

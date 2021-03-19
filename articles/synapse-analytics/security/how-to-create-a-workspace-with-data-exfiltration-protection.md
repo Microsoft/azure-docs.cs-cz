@@ -1,19 +1,19 @@
 ---
 title: Vytvoření pracovního prostoru s povolenou službou data exfiltrace Protection
 description: V tomto článku se dozvíte, jak vytvořit pracovní prostor s ochranou dat exfiltrace ve službě Azure synapse Analytics.
-author: NanditaV
+author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: a3dc0b9e83af5a29172189f75e5a2174dc4d393d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 59c2f5e5738b29aa11e9227b157f8b11d53f2b25
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096118"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598078"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Vytvoření pracovního prostoru s povolenou službou data exfiltrace Protection
 Tento článek popisuje, jak vytvořit pracovní prostor s povolenou službou data exfiltrace Protection a jak spravovat schválené klienty Azure AD pro tento pracovní prostor.
@@ -21,7 +21,7 @@ Tento článek popisuje, jak vytvořit pracovní prostor s povolenou službou da
 >[!Note]
 >Po vytvoření pracovního prostoru nemůžete změnit konfiguraci pracovního prostoru pro spravovanou virtuální síť a ochranu dat exfiltrace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Oprávnění k vytvoření prostředku pracovního prostoru v Azure.
 - Synapse v pracovním prostoru oprávnění k vytváření spravovaných privátních koncových bodů.
 - Odběry jsou zaregistrované pro poskytovatele síťových prostředků. [Další informace](../../azure-resource-manager/management/resource-providers-and-types.md)

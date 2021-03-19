@@ -4,10 +4,10 @@ description: Naučte se obnovit Key Vault klíč a tajný kód v Azure Backup po
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.openlocfilehash: 456ce18f253ffa02cd6b13826a7839f18beecba7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88827082"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Obnovení klíče a tajného kódu Key Vault pro šifrované virtuální počítače pomocí Azure Backup
@@ -16,7 +16,7 @@ Tento článek pojednává o použití zálohování virtuálních počítačů 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Zálohování šifrovaných virtuálních počítačů** – šifrované virtuální počítače Azure se zálohovali pomocí Azure Backup. Podrobnosti o tom, jak zálohovat šifrované virtuální počítače Azure, najdete v článku [Správa zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu](backup-azure-vms-automation.md) .
 * **Konfigurace Azure Key Vault** – Ujistěte se, že je již přítomen Trezor klíčů, pro který jsou klíče a tajné kódy nutné obnovit. Podrobnosti o správě trezoru klíčů najdete v článku [Začínáme s Azure Key Vault](../key-vault/general/overview.md) .
@@ -60,7 +60,7 @@ Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile $keyDes
 
 ## <a name="restore-secret"></a>Obnovit tajný klíč
 
-Pomocí souboru JSON, který jste vygenerovali nahoře, získáte název a hodnotu tajného klíče a zadáte ho k nastavení tajné rutiny pro vložení tajného klíče (klíče bek) zpátky do trezoru klíčů.Tyto rutiny použijte, pokud **je váš virtuální počítač zašifrovaný pomocí klíče bek a KEK**.
+Pomocí souboru JSON, který jste vygenerovali nahoře, získáte název a hodnotu tajného klíče a zadáte ho k nastavení tajné rutiny pro vložení tajného klíče (klíče bek) zpátky do trezoru klíčů. Tyto rutiny použijte, pokud **je váš virtuální počítač zašifrovaný pomocí klíče bek a KEK**.
 
 **Tyto rutiny použijte, pokud je váš virtuální počítač s Windows zašifrovaný pomocí klíče bek a KEK.**
 
@@ -82,7 +82,7 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Pomocí souboru JSON, který jste vygenerovali nahoře, získáte název a hodnotu tajného klíče a zadáte ho k nastavení tajné rutiny pro vložení tajného klíče (klíče bek) zpátky do trezoru klíčů.Tyto rutiny použijte, pokud **je váš virtuální počítač zašifrovaný jenom pomocí klíče bek** .
+Pomocí souboru JSON, který jste vygenerovali nahoře, získáte název a hodnotu tajného klíče a zadáte ho k nastavení tajné rutiny pro vložení tajného klíče (klíče bek) zpátky do trezoru klíčů. Tyto rutiny použijte, pokud **je váš virtuální počítač zašifrovaný jenom pomocí klíče bek** .
 
 ```powershell
 $secretDestination = 'C:\secret.blob'

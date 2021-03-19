@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f6a1bc652125990a7daf3414895f34b95c544912
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83590550"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnerů Docker Analýza textu
@@ -43,7 +43,7 @@ Toto nastavení najdete na následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Nastavení konfigurace fakturace
 
-`Billing`Nastavení určuje identifikátor URI koncového bodu _Analýza textu_ prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro objekt __Analýza textu_ prostředku v Azure. Kontejner hlásí využití každých 10 až 15 minut.
+`Billing`Nastavení určuje identifikátor URI koncového bodu _Analýza textu_ prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner. Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro objekt _ _Analýza textu_ prostředku v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
 Toto nastavení najdete na následujícím místě:
 

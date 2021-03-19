@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91892706"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
@@ -150,7 +150,7 @@ Pro funkce a funkce, které vyžadují rozšířené testování a zpětnou vazb
 
 Funkce verze Preview nebo funkce příznaku funkcí nejsou určeny pro produkční prostředí. Probíhající změny v rozhraních API a chování, opravy chyb a další změny můžou vést k nestabilním clusterům a výpadkům.
 
-Funkce ve verzi Public Preview spadají pod podporu "nejlepšího úsilí", protože tyto funkce jsou ve verzi Preview a nejsou určené pro produkční prostředí a jsou podporovány AKS pracovníky technické podpory pouze v pracovní době. Další informace naleznete v tématech:
+Funkce ve verzi Public Preview spadají pod podporu "nejlepšího úsilí", protože tyto funkce jsou ve verzi Preview a nejsou určené pro produkční prostředí a jsou podporovány AKS pracovníky technické podpory pouze v pracovní době. Další informace naleznete v tématu:
 
 * [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/)
 

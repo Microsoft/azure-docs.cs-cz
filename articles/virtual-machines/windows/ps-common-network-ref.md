@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87088372"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Běžné příkazy PowerShellu pro virtuální sítě Azure
@@ -27,10 +27,10 @@ Některé proměnné mohou být užitečné při spuštění více než jednoho 
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-| Úloha | Příkaz |
+| Úkol | Příkaz |
 | ---- | ------- |
-| Vytvoření konfigurací podsítí |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-AddressPrefix xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2"-AddressPrefix XX. X. X. X/XX<BR><BR>Typická síť může mít podsíť pro [internetový nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md) a samostatnou podsíť pro [interní nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md). |
-| Vytvoření virtuální sítě |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $MyResourceGroup-Location $Location-AddressPrefix xx. X. X. X/XX-podsíť $subnet 1, $subnet 2 |
+| Vytvoření konfigurací podsítí |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-AddressPrefix xx. X. X. x/xx<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2"-AddressPrefix XX. X. X. X/XX<BR><BR>Typická síť může mít podsíť pro [internetový nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md) a samostatnou podsíť pro [interní nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md). |
+| Vytvoření virtuální sítě |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $MyResourceGroup-Location $Location-AddressPrefix xx. x. X. x/xx-Subnet $Subnet 1, $Subnet 2 |
 | Testování jedinečného názvu domény |[Test-AzDnsAvailability](/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" – Umístění $Location<BR><BR>Pro [prostředek veřejné IP](../../virtual-network/public-ip-addresses.md)adresy můžete zadat název domény DNS, který vytvoří mapování pro domainname.Location.cloudapp.Azure.com na veřejnou IP adresu na serverech DNS spravovaných Azure. Název může obsahovat pouze písmena, číslice a pomlčky. První a poslední znak musí být písmeno nebo číslo a název domény musí být v rámci svého umístění Azure jedinečný. Pokud je vrácena **hodnota true** , je navržený název globálně jedinečný. |
 | Vytvoření veřejné IP adresy |$pip = [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp"-ResourceGroupName $MyResourceGroup-DomainNameLabel "myDNS"-Location $Location-element allocationmethod Dynamic<BR><BR>Veřejná IP adresa používá název domény, který jste dříve otestovali a kterou používá konfigurace front-endu nástroje pro vyrovnávání zatížení. |
 | Vytvoření konfigurace IP adresy front-endu |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP"-PublicIpAddress $PIP<BR><BR>Konfigurace front-endu zahrnuje veřejnou IP adresu, kterou jste dříve vytvořili pro příchozí síťový provoz. |
@@ -39,11 +39,11 @@ Některé proměnné mohou být užitečné při spuštění více než jednoho 
 | Vytvoření pravidla vyrovnávání zatížení |$lbRule = [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) -Name http-FrontendIpConfiguration $FrontendIP-BackendAddressPool $BeAddressPool-probe $HealthProbe-Protocol TCP-FrontendPort 80-BackendPort 80<BR><BR>Obsahuje pravidla, která přiřazují veřejný port v nástroji pro vyrovnávání zatížení do portu ve fondu back-end adres. |
 | Vytvoření příchozího pravidla NAT |$inboundNATRule = [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) -Name "myInboundRule1"-FrontendIpConfiguration $FrontendIP-Protocol TCP-FrontendPort 3441-BackendPort 3389<BR><BR>Obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port pro konkrétní virtuální počítač ve fondu back-end adres. |
 | Vytvoření nástroje pro vyrovnávání zatížení |$loadBalancer = [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) -ResourceGroupName $MyResourceGroup-Name "myLoadBalancer" – Location $Location-FrontendIpConfiguration $FrontendIP-InboundNatRule $InboundNATRule-LoadBalancingRule $LbRule-BackendAddressPool $BeAddressPool-probe $healthProbe |
-| Vytvoření síťového rozhraní |$nic 1 = [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) -ResourceGroupName $MyResourceGroup-Name "myNIC" – Location $Location-PrivateIpAddress xx. X. X. X-Subnet $subnet 2-LoadBalancerBackendAddressPool $loadBalancer. BackendAddressPools [0]-LoadBalancerInboundNatRule $loadBalancer. InboundNatRules [0]<BR><BR>Vytvořte síťové rozhraní pomocí veřejné IP adresy a podsítě virtuální sítě, kterou jste vytvořili dříve. |
+| Vytvoření síťového rozhraní |$nic 1 = [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) -ResourceGroupName $MyResourceGroup-Name "myNIC" – Location $Location-PrivateIpAddress xx. X. X. x-Subnet $Subnet 2-LoadBalancerBackendAddressPool $LoadBalancer. BackendAddressPools [0]-LoadBalancerInboundNatRule $LoadBalancer. InboundNatRules [0]<BR><BR>Vytvořte síťové rozhraní pomocí veřejné IP adresy a podsítě virtuální sítě, kterou jste vytvořili dříve. |
 
 ## <a name="get-information-about-network-resources"></a>Získat informace o síťových prostředcích
 
-| Úloha | Příkaz |
+| Úkol | Příkaz |
 | ---- | ------- |
 | Vypsat virtuální sítě |[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) -ResourceGroupName $myResourceGroup<BR><BR>Vypíše všechny virtuální sítě ve skupině prostředků. |
 | Získání informací o virtuální síti |Get-AzVirtualNetwork-Name "myVNet"-ResourceGroupName $myResourceGroup |
@@ -57,11 +57,11 @@ Některé proměnné mohou být užitečné při spuštění více než jednoho 
 
 ## <a name="manage-network-resources"></a>Správa síťových prostředků
 
-| Úloha | Příkaz |
+| Úkol | Příkaz |
 | ---- | ------- |
-| Přidání podsítě do virtuální sítě |[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix xx. X. X. X/XX-Name "mySubnet1"-VirtualNetwork $vnet<BR><BR>Přidá podsíť do existující virtuální sítě. Hodnota $vnet představuje objekt vrácený funkcí get-AzVirtualNetwork. |
+| Přidání podsítě do virtuální sítě |[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix xx. X. X. x/xx-Name "mySubnet1"-VirtualNetwork $VNet<BR><BR>Přidá podsíť do existující virtuální sítě. Hodnota $vnet představuje objekt vrácený funkcí get-AzVirtualNetwork. |
 | Odstranění virtuální sítě |[Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $myResourceGroup<BR><BR>Odebere zadanou virtuální síť ze skupiny prostředků. |
-| Odstraní síťové rozhraní. |[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface) -Name "myNIC"-ResourceGroupName $myResourceGroup<BR><BR>Odebere zadané síťové rozhraní ze skupiny prostředků. |
+| Odstranění síťového rozhraní |[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface) -Name "myNIC"-ResourceGroupName $myResourceGroup<BR><BR>Odebere zadané síťové rozhraní ze skupiny prostředků. |
 | Odstranění nástroje pro vyrovnávání zatížení |[Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer) -Name "myLoadBalancer"-ResourceGroupName $myResourceGroup<BR><BR>Odebere zadaný Nástroj pro vyrovnávání zatížení ze skupiny prostředků. |
 | Odstranění veřejné IP adresy |[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress)-Name "myIPAddress"-ResourceGroupName $myResourceGroup<BR><BR>Odebere zadanou veřejnou IP adresu ze skupiny prostředků. |
 

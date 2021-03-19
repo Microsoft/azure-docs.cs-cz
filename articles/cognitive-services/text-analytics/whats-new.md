@@ -8,19 +8,57 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 03/18/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736628"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598894"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku najdete informace o nových vydaných verzích a funkcích, abyste měli přehled o aktuálním vývoji.
+
+## <a name="march-2021"></a>Březen 2021
+
+### <a name="general-api-updates"></a>Obecné aktualizace rozhraní API
+* Vydání nového rozhraní API v 3.1-Preview. 4, které zahrnuje 
+   * Změny v těle odpovědi JSON pro dolování stanovisek: 
+      * `aspects` je teď `targets` a `opinions` teď `assessments` . 
+   * Změny v těle odpovědi JSON hostovaného webového rozhraní API Analýza textu pro stav: 
+      * `isNegated`Logický název zjištěného objektu entity pro negaci je zastaralý a nahrazen detekcí kontrolního výrazu.
+      * Nová vlastnost s názvem `role` je nyní součástí extrahované relace mezi atributem a entitou a také vztahem mezi entitami.  Tím se přidá specifická Vazba na zjištěný typ vztahu.
+   * Propojení entit je teď k dispozici jako asynchronní úloha v `/analyze` koncovém bodu.
+   * `pii-categories`V koncovém bodu je nyní k dispozici nový parametr `/pii` .
+      * Tento parametr umožňuje zadat entity PII, které se ve výchozím nastavení nepodporují, a to pro vstupní jazyk.
+* Aktualizované klientské knihovny, které zahrnují asynchronní analýzu a Analýza textu pro operace stavu. Příklady najdete na GitHubu:
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+    * [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/javascript)
+    
+> [!div class="nextstepaction"]
+> [Další informace o rozhraní API pro analýzu textu v 3.1 – Preview. 4](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/operations/Languages)
+
+### <a name="text-analytics-for-health-updates"></a>Analýza textu pro aktualizace stavu
+
+* Nová verze modelu `2021-03-01` pro `/health` koncový bod a místní kontejner, který poskytuje
+    * Přejmenování `Gene` typu entity na `GeneOrProtein` .
+    * Nový `Date` typ entity.
+    * Detekce kontrolního výrazu, která nahrazuje detekci negace (k dispozici pouze v rozhraní API verze 3.1-Preview. 4).
+    * Nová upřednostňovaná `name` vlastnost pro propojené entity, která je normalizována z různých systémů ontologie a kódování (k dispozici pouze v rozhraní API verze 3.1-Preview. 4). 
+* Do úložiště náhledu kontejneru se uvolnila nová image kontejneru s označením `3.0.015370001-onprem-amd64` a novou verzí modelu `2021-03-01` . 
+* Analýza textu pro Image stavu se přesunou do nového úložiště v příštím měsíci.  Sledujte prosím e-mailovou komunikaci v umístění svého nového domova.
+> [!div class="nextstepaction"]
+> [Další informace o Analýza textu pro stav](how-tos/text-analytics-for-health.md)
+>
+
+### <a name="text-analytics-resource-portal-update"></a>Analýza textu aktualizace portálu prostředků
+* **Zpracované textové záznamy** jsou nyní k dispozici jako metrika v části **monitorování** pro prostředek analýza textu v Azure Portal.  
 
 ## <a name="february-2021"></a>Únor 2021
 
@@ -46,7 +84,7 @@ Tyto verze modelů nejsou aktuálně k dispozici v Východní USA oblasti.
 
 ## <a name="december-2020"></a>Prosinec 2020
 
-* [Aktualizované](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) podrobnosti o cenách pro rozhraní API pro analýzu textu
+* [Aktualizované](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) podrobnosti o cenách pro rozhraní API pro analýzu textu.
 
 ## <a name="november-2020"></a>Listopad 2020
 
@@ -59,8 +97,7 @@ Tyto verze modelů nejsou aktuálně k dispozici v Východní USA oblasti.
     * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
     * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
     * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
-
-
+    * 
 > [!div class="nextstepaction"]
 > [Další informace o rozhraní API pro analýzu textu v 3.1 – Preview. 3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 

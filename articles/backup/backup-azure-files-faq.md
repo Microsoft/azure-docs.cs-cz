@@ -4,10 +4,10 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.date: 04/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91940831"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
@@ -44,7 +44,7 @@ Ano. Z připojeného trezoru ale budete muset [Zastavit ochranu sdílené složk
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Můžu chránit dvě různé sdílené složky ze stejného účtu úložiště v jiných trezorech?
 
-Ne. Všechny sdílené složky v účtu úložiště je možné chránit pouze ve stejném trezoru.
+No. Všechny sdílené složky v účtu úložiště je možné chránit pouze ve stejném trezoru.
 
 ## <a name="backup"></a>Backup
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: eefc42fb8e66e66c6388599df65c59ff642a6b59
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c953668d6b2e364e6e703b1769317f1c520317ca
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124104"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654369"
 ---
 # <a name="about-expressroute-fastpath"></a>Informace o službě ExpressRoute FastPath
 
@@ -42,7 +42,7 @@ Aby bylo možné konfigurovat FastPath, musí být brána virtuální sítě bu�
 
 I když FastPath podporuje většinu konfigurací, nepodporuje následující funkce:
 
-* UDR v podsíti brány: Pokud použijete UDR k podsíti brány vaší virtuální sítě, síťový provoz z vaší místní sítě se dál pošle do brány virtuální sítě.
+* UDR v podsíti brány: Tento UDR nemá žádný vliv na síťový provoz, který FastPath odesílá přímo z vaší místní sítě do virtuálních počítačů ve službě Azure Virtual Network. 
 
 * Partnerský vztah virtuálních sítí: Pokud máte jiné virtuální sítě s partnerským vztahem, který je připojený k ExpressRoute, bude síťový provoz z vaší místní sítě do ostatních virtuálních sítí (tj. "paprskový" virtuální sítě ") dál odesílán do brány virtuální sítě. Alternativním řešením je připojit všechny virtuální sítě k okruhu ExpressRoute přímo.
 

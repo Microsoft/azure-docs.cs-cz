@@ -7,10 +7,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91930267"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Kurz: Správa skupin aplikací pomocí Azure Portal
@@ -30,7 +30,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Portal nebo PowerShellu, můžete přidat skupiny aplikací z Azure Portal pomocí následujícího postupu:
 
-1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se na [Azure Portal](https://portal.azure.com/).
    
     >[!NOTE]
     > Pokud se přihlašujete k portálu US Gov, použijte [https://portal.azure.us/](https://portal.azure.us/) místo toho.
@@ -53,7 +53,7 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky karty základy v Azure Portal.](media/basics-tab.png)
 
-6. V části **typ skupiny aplikací**vyberte **Vzdálená aplikace RemoteApp** a potom zadejte název vaší aplikace RemoteApp.
+6. V části **typ skupiny aplikací** vyberte **Vzdálená aplikace RemoteApp** a potom zadejte název vaší aplikace RemoteApp.
 
       > [!div class="mx-imgBorder"]
       > ![Snímek obrazovky s poli typu skupiny aplikací. Je zvýrazněna Vzdálená aplikace RemoteApp.](media/remoteapp-button.png)
@@ -73,22 +73,22 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
 
 12.  Přidání aplikace z nabídky Start:
 
-      - V části **zdroj aplikace**v rozevírací nabídce vyberte **Nabídka Start** . Dále v části **aplikace**vyberte aplikaci z rozevírací nabídky.
+      - V části **zdroj aplikace** v rozevírací nabídce vyberte **Nabídka Start** . Dále v části **aplikace** vyberte aplikaci z rozevírací nabídky.
 
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky obrazovky Přidat aplikaci s vybranou nabídkou Start](media/add-app-start.png)
 
-      - Do pole **Zobrazovaný název**zadejte název aplikace, který se zobrazí uživateli na svém klientovi.
+      - Do pole **Zobrazovaný název** zadejte název aplikace, který se zobrazí uživateli na svém klientovi.
 
       - Ostatní možnosti ponechte zapnuté a vyberte **Uložit**.
 
 13.  Přidání aplikace z konkrétní cesty k souboru:
 
-      - V části **zdroj aplikace**vyberte v rozevírací nabídce možnost **cesta k souboru** .
+      - V části **zdroj aplikace** vyberte v rozevírací nabídce možnost **cesta k souboru** .
 
-      - Do pole **cesta k aplikaci**zadejte cestu k aplikaci na hostiteli relace registrovaném s přidruženým fondem hostitelů.
+      - Do pole **cesta k aplikaci** zadejte cestu k aplikaci na hostiteli relace registrovaném s přidruženým fondem hostitelů.
 
-      - Zadejte podrobnosti aplikace do polí **název aplikace**, **Zobrazovaný název**, **cesta ikony**a **index ikony** .
+      - Zadejte podrobnosti aplikace do polí **název aplikace**, **Zobrazovaný název**, **cesta ikony** a **index ikony** .
 
       - Vyberte **Uložit**.
 
@@ -97,9 +97,9 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
 
 14.  Tento postup opakujte pro každou aplikaci, kterou chcete přidat do skupiny aplikací.
 
-15.  Potom vyberte **Další: >pracovního prostoru **.
+15.  Potom vyberte **Další: >pracovního prostoru**.
 
-16.  Pokud chcete zaregistrovat skupinu aplikací k pracovnímu prostoru, pro **registraci skupiny aplikací**vyberte **Ano** . Pokud místo toho chcete skupinu aplikací zaregistrovat později, vyberte možnost **ne**.
+16.  Pokud chcete zaregistrovat skupinu aplikací k pracovnímu prostoru, pro **registraci skupiny aplikací** vyberte **Ano** . Pokud místo toho chcete skupinu aplikací zaregistrovat později, vyberte možnost **ne**.
 
 17.  Pokud vyberete **Ano**, můžete vybrat existující pracovní prostor, do kterého se má skupina aplikací zaregistrovat.
 

@@ -4,10 +4,10 @@ description: Popisuje, jak můžete použít Webhooky jako obslužné rutiny ud�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: aa20c75789a18b93f787134dffe165e60ff1ab6f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91875797"
 ---
 # <a name="webhooks-automation-runbooks-logic-apps-as-event-handlers-for-azure-event-grid-events"></a>Webhooky, Runbooky Automation Logic Apps jako obslužné rutiny událostí pro Azure Event Grid události

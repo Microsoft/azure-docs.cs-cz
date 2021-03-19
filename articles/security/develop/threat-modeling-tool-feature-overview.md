@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980674"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí Threat Modeling Tool
@@ -55,7 +55,7 @@ Symboly jsou zkratky pro nabídky nejvyšší úrovně:
 | **Otevřít** | Otevře nový soubor. |
 | **Uložit** | Uloží aktuální soubor. |
 | **Návrh** | Otevře zobrazení **Návrh** , kde můžete vytvářet modely. |
-| **Analýza** | Zobrazuje vygenerované hrozby a jejich vlastnosti. |
+| **Analyzovat** | Zobrazuje vygenerované hrozby a jejich vlastnosti. |
 | **Přidat diagram** | Přidá nový diagram (podobně jako nové karty v Excelu). |
 | **Odstranit diagram** | Odstraní aktuální diagram. |
 | **Kopírování, vyjmutí a vložení** | Kopie, řezy a minulé prvky. |
@@ -132,8 +132,8 @@ Když otevřete nebo vytvoříte nový model, otevře se **návrhové** zobrazen
 
 Prvky mřížky můžete přidat dvěma způsoby:
 
-- **Přetažení: přetáhněte**požadovaný prvek do mřížky. Pak použijte vlastnosti prvku k poskytnutí dalších informací.
-- Klikněte **pravým tlačítkem**myši na libovolné místo v mřížce a vyberte položku z rozevírací nabídky. Obecná reprezentace prvku, který vyberete, se zobrazí na obrazovce.
+- **Přetažení: přetáhněte** požadovaný prvek do mřížky. Pak použijte vlastnosti prvku k poskytnutí dalších informací.
+- Klikněte **pravým tlačítkem** myši na libovolné místo v mřížce a vyberte položku z rozevírací nabídky. Obecná reprezentace prvku, který vyberete, se zobrazí na obrazovce.
 
 ### <a name="connect-elements"></a>Propojit prvky
 
@@ -174,7 +174,7 @@ Po sestavení diagramu vyberte symbol **analýzy** (Lupa) na panelu nástrojů z
 
 Když vyberete hrozbu, můžete použít tři různé funkce:
 
-| Příznak                               | Informace      |
+| Funkce                               | Informace      |
 | --------------------------------------- | ------------ |
 | **Přečíst ukazatel** | <p>Hrozba je označena jako přečtená, která pomáhá sledovat položky, které jste zkontrolovali.</p><p>![Indikátor čtení a nepřečtené](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Fokus interakce** | <p>Je zvýrazněna interakce v diagramu, která patří k hrozbě.</p><p>![Fokus interakce](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |

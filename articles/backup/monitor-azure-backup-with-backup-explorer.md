@@ -5,10 +5,10 @@ ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88824408"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Monitorování záloh pomocí Průzkumníka zálohování
@@ -54,19 +54,19 @@ Karta **Souhrn** poskytuje rychlý přehled o celkovém stavu vaší nemovitosti
 
 ### <a name="the-backup-items-tab"></a>Karta zálohované položky
 
-Jednotlivé zálohované položky můžete filtrovat a zobrazit podle předplatného, trezoru a dalších vlastností. Když vyberete název zálohované položky, můžete pro tuto položku otevřít podokno Azure. V tabulce můžete například všimnout, že poslední zálohování selhalo pro položku *X*. Výběrem *X*můžete otevřít podokno **zálohování** položky, kde můžete aktivovat operaci zálohování na vyžádání.
+Jednotlivé zálohované položky můžete filtrovat a zobrazit podle předplatného, trezoru a dalších vlastností. Když vyberete název zálohované položky, můžete pro tuto položku otevřít podokno Azure. V tabulce můžete například všimnout, že poslední zálohování selhalo pro položku *X*. Výběrem *X* můžete otevřít podokno **zálohování** položky, kde můžete aktivovat operaci zálohování na vyžádání.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYc]
 
 ### <a name="the-jobs-tab"></a>Karta úlohy
 
-Vyberte kartu **úlohy** pro zobrazení podrobností o všech úlohách, které byly aktivovány během posledních 7 dnů. Tady můžete filtrovat podle *operace úlohy*, *stavu úlohy*a *kódu chyby* (u neúspěšných úloh).
+Vyberte kartu **úlohy** pro zobrazení podrobností o všech úlohách, které byly aktivovány během posledních 7 dnů. Tady můžete filtrovat podle *operace úlohy*, *stavu úlohy* a *kódu chyby* (u neúspěšných úloh).
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nOrh]
 
 ### <a name="the-alerts-tab"></a>Karta výstrahy
 
-Výběrem karty **výstrahy** zobrazíte podrobnosti o všech výstrahách, které byly vygenerovány v trezorech za posledních 7 dnů. Výstrahy můžete filtrovat podle typu (Chyba*zálohování* nebo *obnovení*), aktuální stav (*aktivní* nebo *Vyřešeno*) a závažnost (*kritická*, *Upozornění*nebo *informace*). Můžete také vybrat odkaz pro přechod na virtuální počítač Azure a provést všechny potřebné akce.
+Výběrem karty **výstrahy** zobrazíte podrobnosti o všech výstrahách, které byly vygenerovány v trezorech za posledních 7 dnů. Výstrahy můžete filtrovat podle typu (Chyba *zálohování* nebo *obnovení*), aktuální stav (*aktivní* nebo *Vyřešeno*) a závažnost (*kritická*, *Upozornění* nebo *informace*). Můžete také vybrat odkaz pro přechod na virtuální počítač Azure a provést všechny potřebné akce.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nTxe]
 
