@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a764538ebc73927b1d274b2538e123ec90ce60e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5ad1b8318e261c7dfef7fc125716736087a84bdc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741554"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579174"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti vytváření sestav správy hesel v Azure AD
 
@@ -53,7 +53,7 @@ V prostředí Azure Portal jsme vylepšili způsob, jakým můžete zobrazit akt
 
 ### <a name="combined-registration"></a>Kombinovaná registrace
 
-Pokud jste povolili [kombinovanou registraci](./concept-registration-mfa-sspr-combined.md), budou se v části **Security**  >  **metody ověřování** zabezpečení najít informace týkající se aktivity uživatele v protokolech auditu.
+Pokud jste povolili [kombinovanou registraci](./concept-registration-mfa-sspr-combined.md), budou se v části   >  **metody ověřování** zabezpečení najít informace týkající se aktivity uživatele v protokolech auditu.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupců sestavy v Azure Portal
 
@@ -171,7 +171,7 @@ Následující seznam vysvětluje tuto aktivitu podrobněji:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření sestav využití SSPR a MFA a přehledy](howto-authentication-methods-usage-insights.md)
+* [Vytváření sestav využití SSPR a MFA a přehledy](./howto-authentication-methods-activity.md)
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Zaregistrujte se na Samoobslužné resetování hesla](../user-help/active-directory-passwords-reset-register.md).

@@ -4,13 +4,13 @@ description: V této části najdete popis postupu vytvoření pravidla shromaž
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/19/2020
-ms.openlocfilehash: 93e244706d6d478155ac001d20fa3ce74fa6a887
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: 73f7ab83ea15d223b76b9f71fde2f8a6a37bdacf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723635"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586365"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurace shromažďování dat pro agenta Azure Monitorho (Preview)
 
@@ -68,6 +68,32 @@ Klikněte na **Přidat zdroj dat** a pak **Zkontrolujte + vytvořit** a zkontrol
 > [!NOTE]
 > Po vytvoření pravidla shromažďování dat a přidružení může trvat až 5 minut, než se data odešlou do cílů.
 
+## <a name="limit-data-collection-with-custom-xpath-queries"></a>Omezení shromažďování dat pomocí vlastních dotazů XPath
+Vzhledem k tomu, že se vám účtují data shromážděná v pracovním prostoru Log Analytics, měli byste shromažďovat jenom data, která potřebujete. Při použití základní konfigurace v Azure Portal máte jenom omezené možnosti filtrovat události, které se mají shromažďovat. Pro protokoly aplikací a systému se jedná o všechny protokoly s určitou závažností. V protokolech zabezpečení se jedná o všechny úspěšné audity nebo všechny protokoly neúspěšných auditů.
+
+Chcete-li zadat další filtry, je nutné použít vlastní konfiguraci a zadat výraz XPath, který odfiltruje události, které ne. Položky XPath jsou zapsány ve formuláři `LogName!XPathQuery` . Například můžete chtít vracet pouze události z protokolu událostí aplikace s ID události 1035. Dotaz xpathquery pro tyto události by byl `*[System[EventID=1035]]` . Vzhledem k tomu, že chcete načíst události z protokolu událostí aplikace, bude cesta XPath `Application!*[System[EventID=1035]]`
+
+> [!TIP]
+> `Get-WinEvent`K otestování platnosti dotaz xpathquery použijte rutinu PowerShellu s `FilterXPath` parametrem. Příklad ukazuje následující skript.
+> 
+> ```powershell
+> $XPath = '*[System[EventID=1035]]'
+> Get-WinEvent -LogName 'Application' -FilterXPath $XPath
+> ```
+>
+> - Pokud jsou vráceny události, dotaz je platný.
+> - Pokud se zobrazí zpráva *, že se nenašly žádné události, které by odpovídaly zadaným kritériím výběru*, dotaz může být platný, ale na místním počítači neexistují žádné odpovídající události.
+> - Pokud se zobrazí zpráva, *že zadaný dotaz není platný* , syntaxe dotazu je neplatná. 
+
+V následující tabulce jsou uvedeny příklady pro filtrování událostí pomocí vlastního XPath.
+
+| Description |  XPath |
+|:---|:---|
+| Shromažďovat pouze systémové události s ID události = 4648 |  `System!*[System[EventID=4648]]`
+| Shromažďovat pouze systémové události s ID události = 4648 a názvem procesu consent.exe |  `System!*[System[(EventID=4648) and (EventData[@Name='ProcessName']='C:\Windows\System32\consent.exe')]]`
+| Shromáždí všechny události kritické, chyby, upozornění a informací z protokolu událostí systému s výjimkou ID události = 6 (načtený ovladač). |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
+| Shromažďovat všechny události zabezpečení úspěšné a neúspěšné s výjimkou ID události 4624 (úspěšné přihlášení) |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
+
 
 ## <a name="create-rule-and-association-using-rest-api"></a>Vytvoření pravidla a přidružení pomocí REST API
 
@@ -83,6 +109,8 @@ Použijte následující postup k vytvoření pravidla shromažďování dat a p
 ## <a name="create-association-using-resource-manager-template"></a>Vytvoření asociace pomocí šablony Správce prostředků
 
 Pomocí šablony Správce prostředků nemůžete vytvořit pravidlo shromažďování dat, ale můžete vytvořit přidružení mezi virtuálním počítačem Azure nebo serverem s podporou ARC Azure pomocí šablony Správce prostředků. Ukázkové šablony najdete [v tématu Správce prostředků ukázek šablon pro pravidla shromažďování dat v Azure monitor](./resource-manager-data-collection-rules.md) .
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

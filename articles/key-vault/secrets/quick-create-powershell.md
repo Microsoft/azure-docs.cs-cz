@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f3b770a5790d5e9554c7bf5d7d24f1eeccff7662
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5e3b78dfb8f08f1a596ad12884ec088cd36c4a98
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072215"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582442"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí PowerShellu
 
@@ -57,7 +57,7 @@ Nejprve převeďte hodnotu **hVFkk965BuUv** na zabezpečený řetězec zadáním
 $secretvalue = ConvertTo-SecureString "hVFkk965BuUv" -AsPlainText -Force
 ```
 
-Potom zadejte níže uvedené příkazy PowerShellu pro vytvoření tajného klíče v Key Vault s názvem **ExamplePassword** s hodnotou **hVFkk965BuUv** :
+Pak pomocí rutiny Azure PowerShell [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) vytvořte tajný klíč v Key Vault s názvem **ExamplePassword** s hodnotou **hVFkk965BuUv** :
 
 
 ```azurepowershell-interactive
@@ -96,5 +96,6 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
+- Naučte se [ukládat víceřádková tajná tajemství v Key Vault](multiline-secrets.md) .
 - Přečtěte si referenční informace pro [rutiny Azure PowerShell Key Vault](/powershell/module/az.keyvault/#key_vault)
 - Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

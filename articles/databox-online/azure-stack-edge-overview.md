@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 3973235991a16d118b47d7289f3a1825621a9023
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: e6cd1f8a1f7d1777e786ab91637b4065a2c5e850
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574675"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585940"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>Co je Azure Stack Edge Pro s FPGA?
 
@@ -85,6 +85,8 @@ Fyzické zařízení Azure Stack Edge pro, prostředek Azure a cílový účet �
 - **Dostupnost prostředků** – seznam všech oblastí, ve kterých je dostupný Azure Stack hraniční prostředek, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge pro je možné nasadit také v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](../azure-government/documentation-government-welcome.md).
     
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých se ukládají účty úložiště Azure Stack hraniční data pro, jsou umístěny blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon.
+
+Služba Azure Stack Edge je neoblastní služba. Další informace najdete v tématu [oblasti a zóny dostupnosti v Azure](https://docs.microsoft.com/azure/availability-zones/az-overview). Služba Azure Stack Edge nemá závislost na konkrétní oblasti Azure, takže je odolná vůči výpadkům v rámci zóny a výpadkům v rámci oblastí.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,12 +4,12 @@ description: Jak zajistit maximální možnou dostupnost a konzistenci s Azure E
 ms.topic: article
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 62249357f8c6aa8521924dceef26a6f2c1e9e296
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 6005a51314cff19883fc2a07e4810bd24eb94b24
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103600841"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600951"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 Tento článek poskytuje informace o dostupnosti a konzistenci, které podporuje Azure Event Hubs. 
@@ -43,7 +43,7 @@ Doporučujeme odesílat události do centra událostí bez nastavování informa
 V této části se dozvíte, jak odesílat události do konkrétního oddílu pomocí různých programovacích jazyků. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
-Chcete-li odeslat události do konkrétního oddílu, vytvořte dávku pomocí metody [EventHubProducerClient. CreateBatchAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) , a to tak, že zadáte buď `PartitionId` nebo `PartitionKey` v [CreateBatchOptions](//dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions). Následující kód pošle dávku událostí do konkrétního oddílu zadáním klíče oddílu. 
+Chcete-li odeslat události do konkrétního oddílu, vytvořte dávku pomocí metody [EventHubProducerClient. CreateBatchAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) , a to tak, že zadáte buď `PartitionId` nebo `PartitionKey` v [CreateBatchOptions](//dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions). Následující kód pošle dávku událostí do konkrétního oddílu zadáním klíče oddílu. Event Hubs zajišťuje, aby všechny události sdílející hodnotu klíče oddílu byly uloženy společně a doručeny v pořadí doručení.
 
 ```csharp
 var batchOptions = new CreateBatchOptions { PartitionKey = "cities" };

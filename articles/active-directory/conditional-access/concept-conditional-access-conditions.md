@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab840b46503aed1a318e3b39a4e8fe3e4d11735c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362416"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579123"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -174,11 +174,11 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 
 ### <a name="exchange-activesync-clients"></a>Klienti Exchange ActiveSync
 
-- Organizace můžou při přiřazování zásad uživatelům nebo skupinám vybrat jenom klienty Exchange ActiveSync. Výběr **všech uživatelů**, **Všichni host a externí uživatelé** nebo **role adresáře** způsobí, že všichni uživatelé budou zablokovaný.
+- Organizace můžou při přiřazování zásad uživatelům nebo skupinám vybrat jenom klienty Exchange ActiveSync. Výběr **všech uživatelů**, **Všichni uživatelé typu Host a externí uživatelé** nebo **role adresáře** způsobí, že se na všechny uživatele budou vztahovat zásady.
 - Při vytváření zásad přiřazených klientům Exchange ActiveSync by měla být **Exchange Online** jedinou cloudovou aplikací přiřazenou zásadám. 
 - Organizace můžou zúžit rozsah těchto zásad na konkrétní platformy pomocí podmínky pro **platformy zařízení** .
 
-Pokud řízení přístupu přiřazené k zásadám **vyžaduje schválení klientské aplikace**, uživatel se přesměruje na instalaci a používání mobilního klienta Outlooku. V případě, že je vyžadováno **ověřování Multi-Factor Authentication** , jsou ovlivněni uživatelé zablokováni, protože základní ověřování nepodporuje službu Multi-Factor Authentication.
+Pokud řízení přístupu přiřazené k zásadám **vyžaduje schválení klientské aplikace**, uživatel se přesměruje na instalaci a používání mobilního klienta Outlooku. V případě potřeby aplikace **Multi-Factor Authentication**, **podmínky použití** nebo **vlastní ovládací prvky** jsou ovlivnění uživatelé zablokováni, protože základní ověřování nepodporuje tyto ovládací prvky.
 
 Další informace najdete v následujících článcích:
 

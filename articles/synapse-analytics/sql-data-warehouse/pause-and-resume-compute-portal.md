@@ -2,21 +2,21 @@
 title: 'Rychlý Start: pozastavení a obnovení výpočetní kapacity ve vyhrazeném fondu SQL prostřednictvím Azure Portal'
 description: Pomocí Azure Portal můžete pozastavit výpočetní výkon vyhrazeného fondu SQL a ušetřit tak náklady. Až budete připraveni k používání datového skladu, obnovte výpočetní prostředky.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 11/23/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 567d5ae8b9d480003486362a7aa0ef69f9740d52
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f9cc5083c4b515454b9d5cbc40ed3b48cba80211
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120287"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602158"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve vyhrazeném fondu SQL prostřednictvím Azure Portal
 
@@ -24,7 +24,7 @@ Můžete použít Azure Portal k pozastavení a obnovení vyhrazených výpočet
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -39,7 +39,7 @@ Pokud chcete snížit náklady, můžete pozastavit a obnovit výpočetní prost
 
 Pomocí těchto kroků pozastavíte vyhrazený fond SQL:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Přejděte na stránku **vyhrazeného fondu SQL** , kde otevřete fond SQL. 
 3. **Stav** oznámení je **online**.
 

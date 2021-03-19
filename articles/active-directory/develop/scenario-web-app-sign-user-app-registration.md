@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96fbe676d4b929d2c1ee2efce0d10f3b5dc7c6ab
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 920249aa252469c3db2be284fc010d775d04c921
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103188"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578273"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Webová aplikace, která přihlašuje uživatele: registrace aplikace
 
@@ -94,6 +94,21 @@ Ve výchozím nastavení ukázka používá:
    1. Vyberte dobu trvání klíče **v 1 roce**.
    1. Vyberte **Přidat**.
    1. Jakmile se zobrazí hodnota klíče, zkopírujte ji pro pozdější verzi. Tato hodnota se znovu nezobrazí nebo ji nebude možné získat jakýmkoli jiným způsobem.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+1. Jakmile se zobrazí **Stránka Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
+   1. Zadejte **název** vaší aplikace, například `node-webapp` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+   1. Změňte **podporované typy účtů** na **účty v jakémkoli adresáři organizace a na osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**.
+   1. V části **identifikátor URI přesměrování (volitelné)** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování: `http://localhost:3000/redirect` .
+   1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
+1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru pro tento projekt.
+1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
+1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta** a potom:
+   1. Zadejte popis klíče.
+   1. Vyberte dobu trvání klíče **v intervalu 1 roku**.
+   1. Vyberte **Přidat**.
+   1. Když se zobrazí hodnota klíče, zkopírujte ji. Budete ho potřebovat později.
 
 # <a name="python"></a>[Python](#tab/python)
 

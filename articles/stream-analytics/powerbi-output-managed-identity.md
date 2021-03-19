@@ -6,20 +6,20 @@ author: enkrumah
 ms.author: ebnkruma
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: b468df97f168562f4f5ce9e0e6d6e9a70835648b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 7c1ddbbbd8198cf769e89cfa824de370184a992c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436103"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589680"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy do Power BI (Preview)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy pro Power BI
 
 [Spravované ověřování identity](../active-directory/managed-identities-azure-resources/overview.md) pro výstup do Power BI poskytuje Stream Analytics úlohy přímý přístup k pracovnímu prostoru v rámci účtu Power BI. Tato funkce umožňuje plně automatizovanou instalaci Stream Analytics úloh, protože už není potřeba, aby se uživatel interaktivně přihlásil k Power BI prostřednictvím Azure Portal. Kromě toho dlouhodobě běžící úlohy, které zapisují do Power BI, jsou teď lépe podporované, protože nebudete muset úlohu pravidelně znovu autorizovat.
 
 V tomto článku se dozvíte, jak povolit spravovanou identitu pro Power BI výstupy Stream Analytics úlohy prostřednictvím Azure Portal a prostřednictvím nasazení Azure Resource Manager.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K použití této funkce jsou potřeba následující:
 

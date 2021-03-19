@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c320c8497506a0269e65cd79e18aea1972354729
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644778"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589518"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
@@ -41,6 +41,9 @@ Ujistěte se, že jsou splněné následující požadavky:
 
     >[!NOTE]
     >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](./reference-connect-version-history.md) , _kde najdete další_ informace.
+    
+    >[!NOTE]
+    >Pokud máte odchozí proxy server HTTP, ujistěte se, že je tato adresa URL autologon.microsoftazuread-sso.com povolená. Tuto adresu URL byste měli explicitně zadat, protože zástupný znak nelze přijmout. 
 
 * **Použití podporované topologie Azure AD Connect**: Ujistěte se, že používáte jednu z podporovaných topologií Azure AD Connect, které jsou popsané [tady](plan-connect-topologies.md).
 

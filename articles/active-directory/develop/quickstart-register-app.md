@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 413f0be32b54ee6da39934cf3f8753246fbce924
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175426"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578800"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -25,7 +25,7 @@ V tomto rychlém startu zaregistrujete aplikaci do Azure Portal, aby platforma M
 
 Microsoft Identity Platform provádí správu identit a přístupu (IAM) pouze u registrovaných aplikací. Bez ohledu na to, jestli se jedná o klientskou aplikaci, jako je webová nebo mobilní aplikace, nebo se jedná o webové rozhraní API, které zálohuje klientskou aplikaci, registrace vytvoří vztah důvěryhodnosti mezi vaší aplikací a poskytovatelem identity a platformou Microsoft identity.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure, který má aktivní předplatné. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Dokončení nastavení rychlého startu [tenanta](quickstart-create-new-tenant.md)
@@ -44,7 +44,7 @@ Při vytváření registrace aplikace postupujte podle těchto kroků:
     Zobrazovaný název můžete kdykoli změnit a několik registrací aplikací může sdílet stejný název. Automatické vygenerované ID aplikace (klienta) registrace aplikace, ne jeho zobrazované jméno, jednoznačně identifikuje vaši aplikaci v rámci platformy identity.
 1. Určete, kdo může používat aplikaci, někdy označovanou jako *přihlášená cílová skupina*.
 
-    | Podporované typy účtu | Popis |
+    | Podporované typy účtu | Description |
     |-------------------------|-------------|
     | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte aplikaci pro použití jenom pro uživatele (nebo hosty) ve *vašem* tenantovi.<br><br>Často se říká *obchodní* aplikace (LOB), tato aplikace je *jediná klientská* aplikace na platformě Microsoft identity. |
     | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete, aby uživatelé v *jakémkoli* Azure Active Directoryovém Tenantovi (Azure AD) mohli aplikaci používat. Tato možnost je vhodná, pokud například vytváříte aplikaci typu software jako služba (SaaS), kterou máte v úmyslu poskytnout více organizacím.<br><br>Tento typ aplikace se označuje jako *víceklientské* aplikace na platformě Microsoft identity. |
@@ -89,7 +89,7 @@ Konfigurace nastavení aplikace na základě platformy nebo zařízení, na kter
     | **Jednostránková aplikace** | Zadejte **identifikátor URI pro přesměrování** vaší aplikace. Tento identifikátor URI je umístění, kde Microsoft Identity Platform přesměruje klienta uživatele a odesílá tokeny zabezpečení po ověření.<br/><br/>Tuto platformu vyberte, pokud vytváříte webovou aplikaci na straně klienta pomocí JavaScriptu nebo architektury, jako je například úhlová, Vue.js, React.js nebo Blazor WebAssembly. |
     | **iOS/macOS** | Zadejte **ID sady prostředků** aplikace. Najdete ho v **nastavení sestavení** nebo v Xcode v souboru *info. plist*.<br/><br/>Identifikátor URI přesměrování se vygeneruje při zadání **ID sady prostředků**. |
     | **Android** | Zadejte **název balíčku** aplikace. Najdete ho v souboru *AndroidManifest.xml* . Také vygenerujte a zadejte **hodnotu hash podpisu**.<br/><br/>Identifikátor URI přesměrování se vygeneruje při zadání těchto nastavení. |
-    | **Mobilní a desktopové aplikace** | Vyberte jeden z **navrhovaných identifikátorů URI pro přesměrování**. Nebo zadejte **vlastní identifikátor URI pro přesměrování**.<br/><br/>U desktopových aplikací doporučujeme<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Vyberte tuto platformu pro mobilní aplikace, které nepoužívají nejnovější knihovnu Microsoft Authentication Library (MSAL), nebo nepoužívají zprostředkovatele. Vyberte taky tuto platformu pro desktopové aplikace. |
+    | **Mobilní a desktopové aplikace** | Vyberte jeden z **navrhovaných identifikátorů URI pro přesměrování**. Nebo zadejte **vlastní identifikátor URI pro přesměrování**.<br/><br/>U aplikací klasické pracovní plochy pomocí vloženého prohlížeče doporučujeme<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Pro desktopové aplikace, které používají systémový prohlížeč, doporučujeme<br/>`http://localhost`<br/><br/>Vyberte tuto platformu pro mobilní aplikace, které nepoužívají nejnovější knihovnu Microsoft Authentication Library (MSAL), nebo nepoužívají zprostředkovatele. Vyberte taky tuto platformu pro desktopové aplikace. |
 1. Vyberte **Konfigurovat** a dokončete konfiguraci platformy.
 
 ### <a name="redirect-uri-restrictions"></a>Omezení identifikátoru URI přesměrování

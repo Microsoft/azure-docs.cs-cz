@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/18/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: d3d944646689e9e6189b0343e8bf67c8fb0abcbd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95239546"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590921"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Řešení potíží s replikací mezi oblastmi
 
@@ -71,11 +71,18 @@ Tento článek popisuje chybové zprávy a řešení, které vám můžou pomoct
 |     `Snapshot   cannot be deleted, parent volume is a Data Protection volume with a   replication object`    |     Pokud chcete tento snímek odstranit, ověřte, jestli jste přerušili replikaci svazku.    |
 |     `Cannot delete   volume replication generated snapshot`    |     Odstranění snímků směrného plánu replikace se nepovoluje.    |
 
+## <a name="errors-resizing-volumes"></a>Chyby při změně velikosti svazků
+
+|     Chybová zpráva    |     Řešení    |
+|-|-|
+|   Pokus o změnu velikosti zdrojového svazku se nezdařil s chybou `"PoolSizeTooSmall","message":"Pool size too small for total volume size."`  |  Ujistěte se, že máte dostatečnou rezervu v fondech kapacit pro zdroj i cílové svazky replikace mezi oblastmi. Při změně velikosti zdrojového svazku se automaticky změní velikost cílového svazku. Pokud ale fond kapacit hostující cílový svazek nemá dost místa, změna velikosti zdrojového i cílového svazku se nezdaří. Podrobnosti najdete v tématu [Změna velikosti cílového svazku replikace mezi oblastmi](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume) .   |
+
 ## <a name="next-steps"></a>Další kroky  
 
 * [Replikace mezi oblastmi](cross-region-replication-introduction.md)
 * [Požadavky a předpoklady pro použití replikace mezi oblastmi](cross-region-replication-requirements-considerations.md)
-* [Vytvoření replikace svazků](cross-region-replication-create-peering.md)
+* [Vytvoření replikace svazku](cross-region-replication-create-peering.md)
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
+* [Změna velikosti cílového svazku replikace mezi oblastmi](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)

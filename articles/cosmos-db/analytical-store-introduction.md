@@ -4,15 +4,15 @@ description: Přečtěte si o Azure Cosmos DB transakční (založený na řádk
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bca4eb7f5f266a639916c0f8e520f025d259c39b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452850"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577355"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Co je Azure Cosmos DB analytické úložiště?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -65,32 +65,60 @@ Automatická synchronizace odkazuje na plně spravovanou funkci Azure Cosmos DB,
 
 Funkce automatické synchronizace společně s analytickým úložištěm nabízí tyto klíčové výhody:
 
-#### <a name="scalability--elasticity"></a>Pružnost & škálovatelnosti
+### <a name="scalability--elasticity"></a>Pružnost & škálovatelnosti
 
 Při použití horizontálního dělení Azure Cosmos DB transakční úložiště může elasticky škálovat úložiště a propustnost bez výpadků. Horizontální dělení do transakčního úložiště poskytuje škálovatelnost & flexibility při automatické synchronizaci, aby se zajistilo, že se data synchronizují s analytickým úložištěm téměř v reálném čase. Synchronizace dat probíhá bez ohledu na propustnost transakčních přenosů, ať už je 1000 operací za sekundu nebo 1 000 000 operací/s, a nemá vliv na zřízenou propustnost v transakčním úložišti. 
 
-#### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Automatické zpracování aktualizací schématu
+### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Automatické zpracování aktualizací schématu
 
 Azure Cosmos DB transakční úložiště je nezávislá schématu a umožňuje iterovat na transakčních aplikacích bez nutnosti zabývat se správou schématu nebo indexu. Na rozdíl od toho Azure Cosmos DB analytické úložiště optimalizuje výkon dotazů v analytických dotazech. Díky funkci automatické synchronizace Azure Cosmos DB spravuje odvození schématu přes nejnovější aktualizace z transakčního úložiště.  Spravuje také reprezentaci schématu v analytickém úložišti, která zahrnuje zpracování vnořených datových typů.
 
 Když se vaše schéma vyvíjí a v průběhu času se přidají nové vlastnosti, analytické úložiště automaticky prezentuje sjednocené schéma ve všech historických schématech v transakčním úložišti.
 
-##### <a name="schema-constraints"></a>Omezení schématu
+#### <a name="schema-constraints"></a>Omezení schématu
 
 Následující omezení se vztahují na provozní data v Azure Cosmos DB, když povolíte analytické úložiště pro automatické odvození a reprezentaci schématu:
 
-* Ve schématu můžete mít maximálně 200 vlastností na úrovni vnoření a maximální hloubku vnoření 5.
+* Ve schématu můžete mít maximálně 1000 vlastností na úrovni vnoření a maximální hloubku vnoření 127.
+  * V analytickém úložišti jsou reprezentovány pouze první vlastnosti 1000.
+  * V analytickém úložišti jsou reprezentovány pouze první 127 vnořené úrovně.
+
+* I když dokumenty JSON (a Cosmos DB kolekce/kontejnery) rozlišují velká a malá písmena z perspektivy jedinečnosti, analytické úložiště není.
+
+  * **Ve stejném dokumentu:** Vlastnosti názvů ve stejné úrovni by měly být jedinečné při porovnání malých a velkých písmen. Například následující dokument JSON má "Name" a "Name" na stejné úrovni. I když je to platný dokument JSON, nesplňuje omezení jedinečnosti, a proto nebude plně reprezentovaný v analytickém úložišti. V tomto příkladu jsou názvy "Name" a "Name" stejné, pokud jsou porovnány způsobem, který nerozlišuje velká a malá písmena. Pouze `"Name": "fred"` bude reprezentovat v analytickém úložišti, protože se jedná o první výskyt. A `"name": "john"` nebudou zastoupeny vůbec.
   
-  * Položka s 201 vlastnostmi na nejvyšší úrovni nevyhovuje tomuto omezení, a proto nebude reprezentována v analytickém úložišti.
-  * Položka s více než pěti vnořenými úrovněmi ve schématu také nevyhovuje tomuto omezení, a proto nebude reprezentována v analytickém úložišti. Například následující položka nesplňuje požadavek:
+  
+  ```json
+  {"id": 1, "Name": "fred", "name": "john"}
+  ```
+  
+  * **V různých dokumentech:** Vlastnosti na stejné úrovni a se stejným názvem, ale v různých případech, budou ve stejném sloupci reprezentovány pomocí formátu názvu prvního výskytu. Například následující dokumenty JSON mají `"Name"` a na `"name"` stejné úrovni. Vzhledem k tomu, že první formát dokumentu je `"Name"` , bude použit k reprezentaci názvu vlastnosti v analytickém úložišti. Jinými slovy, název sloupce v analytickém úložišti bude `"Name"` . `"fred"` `"john"` Ve sloupci budou zastoupeny i a `"Name"` .
 
-     `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
 
-* Názvy vlastností by měly být jedinečné při porovnání malých a velkých písmen. Například následující položky nesplňují toto omezení, a proto nebudou v analytickém úložišti zastoupeny:
+  ```json
+  {"id": 1, "Name": "fred"}
+  {"id": 2, "name": "john"}
+  ```
 
-  `{"Name": "fred"} {"name": "john"}` – "Name" a "Name" jsou stejné, pokud jsou porovnány způsobem, který nerozlišuje velká a malá písmena.
 
-##### <a name="schema-representation"></a>Reprezentace schématu
+* První dokument kolekce definuje počáteční schéma analytického úložiště.
+  * Vlastnosti v první úrovni dokumentu se reprezentují jako sloupce.
+  * Dokumenty s více vlastnostmi, než má počáteční schéma, budou generovat nové sloupce v analytickém úložišti.
+  * Sloupce nelze odebrat.
+  * Odstranění všech dokumentů v kolekci neresetuje schéma analytického úložiště.
+  * Není k dispozici Správa verzí schématu. Poslední verzí odvozenou z transakčního úložiště je to, co se zobrazí v analytickém úložišti.
+
+* V současné době nepodporujeme Azure synapse Spark pro čtení názvů sloupců, které obsahují prázdné znaky (prázdné znaky).
+
+* V souvislosti s hodnotami očekáváte jiné chování `NULL` :
+  * Fondy Spark ve službě Azure synapse budou tyto hodnoty číst jako 0 (nula).
+  * Fondy bez SQL serveru ve službě Azure synapse budou tyto hodnoty číst jako `NULL` .
+
+* V případě chybějících sloupců očekávat jiné chování:
+  * Fondy Spark ve službě Azure synapse budou tyto sloupce zastupovat jako `undefined` .
+  * Fondy bez SQL serveru ve službě Azure synapse budou tyto sloupce zastupovat jako `NULL` .
+
+#### <a name="schema-representation"></a>Reprezentace schématu
 
 V analytickém úložišti existují dva režimy reprezentace schématu. Tyto režimy dělají kompromisy mezi jednoduchostí sloupcové reprezentace, zpracováním polymorfních schémat a jednoduchostí dotazování:
 
@@ -106,7 +134,7 @@ Dobře definovaná reprezentace schématu vytvoří jednoduché tabulkové vyjá
 
 * Vlastnost vždy má stejný typ v několika položkách.
 
-  * Například `{"a":123} {"a": "str"}` nemá správně definované schéma, protože `"a"` je někdy řetězec a někdy číslo. V tomto případě analytické úložiště zaregistruje datový typ `“a”` jako datový typ `“a”` v první vyskytující položce po dobu života kontejneru. Položky, ve kterých se datový typ liší, nebudou `“a”` zahrnuty do analytického úložiště.
+  * Například `{"a":123} {"a": "str"}` nemá správně definované schéma, protože `"a"` je někdy řetězec a někdy číslo. V tomto případě analytické úložiště zaregistruje datový typ `"a"` jako datový typ `“a”` v první vyskytující položce po dobu života kontejneru. Dokument bude i nadále součástí analytického úložiště, ale položky, u kterých se datový typ `"a"` liší, nebudou.
   
     Tento stav se nevztahuje na vlastnosti null. Například `{"a":123} {"a":null}` je stále dobře definován.
 
@@ -150,7 +178,7 @@ Tady je mapa všech datových typů vlastností a jejich reprezentace přípon v
 | dvojité |  ". float64" |    24,99|
 | Pole | ". Array" |    ["a", "b"]|
 |Binární | . Binary |0|
-|Logická hodnota    | . bool   |Pravda|
+|Logická hodnota    | . bool   |Ano|
 |Int32  | . Int32  |123|
 |Int64  | ". Int64"  |255486129307|
 |Null   | ". null"   | null|
@@ -230,7 +258,7 @@ Další informace najdete v tématu [Postup konfigurace analytického TTL na kon
 
 Další informace najdete v následujících dokumentech:
 
-* [Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md)
+* [Azure Synapse Link pro Azure Cosmos DB](synapse-link.md)
 
 * [Začínáme s Azure Synapse Linkem pro Azure Cosmos DB](configure-synapse-link.md)
 

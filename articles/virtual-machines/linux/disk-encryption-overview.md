@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fb81960b573b5b7d28f44f7a7482c28b4ef284be
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 81c026893c3185c6c9f960cdb6acb2d0c2d49cc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496452"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580347"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače s Linuxem 
 
@@ -108,7 +108,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 
 Azure Disk Encryption vyžaduje, aby byly v systému přítomné moduly dm-crypt a vfat. Odebráním nebo zakázáním VFAT z výchozí image znemožníte systému číst klíč a získat klíč potřebný k odemknutí disků při dalším restartování. Kroky pro posílení zabezpečení systému, které odeberou modul VFAT ze systému nebo vynutili rozšiřování mountpoints/složek operačního systému v datových jednotkách nejsou kompatibilní s Azure Disk Encryption. 
 
-Než povolíte šifrování, datové disky, které mají být zašifrované, musí být správně uvedené v adresáři/etc/fstab.. Při vytváření položek použít možnost "neúspěch" a zvolit název trvalého blokového zařízení (jako názvy zařízení ve formátu "/dev/sdX" nemusí být přidružen ke stejnému disku během restartování, zejména po šifrování; Další informace o tomto chování najdete v tématu: [řešení potíží se změnami názvů zařízení s platformou Linux VM](../troubleshooting/troubleshoot-device-names-problems.md)).
+Než povolíte šifrování, datové disky, které mají být zašifrované, musí být správně uvedené v adresáři/etc/fstab.. Při vytváření položek použít možnost "neúspěch" a zvolit název trvalého blokového zařízení (jako názvy zařízení ve formátu "/dev/sdX" nemusí být přidružen ke stejnému disku během restartování, zejména po šifrování; Další informace o tomto chování najdete v tématu: [řešení potíží se změnami názvů zařízení s platformou Linux VM](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)).
 
 Ujistěte se, že nastavení/etc/fstab jsou správně nakonfigurovaná pro připojení. Chcete-li nakonfigurovat tato nastavení, spusťte příkaz Mount-a, restartujte virtuální počítač a aktivujte znovu připojení tímto způsobem. Až to bude hotové, zkontrolujte výstup příkazu lsblk a ověřte, jestli je jednotka pořád připojená. 
 

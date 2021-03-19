@@ -5,18 +5,18 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 03/17/2021
 ms.author: duau
-ms.openlocfilehash: 0365fd8d0d04b7d144ca6826d3d5eff976558eb3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 4b129a218f0fe90f632adef1325288b3f8d97d16
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202143"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585957"
 ---
 # <a name="about-expressroute-direct"></a>O službě ExpressRoute Direct
 
-ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Microsoftu při partnerských umístěních, která jsou strategicky distribuována po celém světě. ExpressRoute Direct poskytuje připojení Dual 100 GB/s nebo 10 GB/s, které podporuje škálování aktivní/aktivní.
+ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Microsoftu při partnerských umístěních, která jsou strategicky distribuována po celém světě. ExpressRoute Direct poskytuje připojení Dual 100 GB/s nebo 10 GB, které podporuje škálování aktivní/aktivní.
 
 K dispozici jsou klíčové funkce, které ExpressRoute Direct poskytuje, ale nejsou omezené na:
 
@@ -26,35 +26,52 @@ K dispozici jsou klíčové funkce, které ExpressRoute Direct poskytuje, ale ne
 
 ## <a name="onboard-to-expressroute-direct"></a>Připojit k ExpressRoute Direct
 
-Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, pošlete E-mail na adresu <ExpressRouteDirect@microsoft.com> s vaším ID předplatného, včetně následujících podrobností:
+Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, spusťte následující příkazy pomocí Azure PowerShell:
 
-* Scénáře, které se chystáte provést s **přímým přístupem ExpressRoute**
-* Předvolby umístění – v části [partneři a umístění partnerských vztahů](expressroute-locations-providers.md) najdete úplný seznam všech umístění.
-* Časová osa implementace
-* Jakékoli další dotazy
+1.  Přihlaste se k Azure a vyberte předplatné, které chcete zaregistrovat.
+
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+1. Zaregistrujte své předplatné pro Public Preview pomocí následujícího příkazu:
+1. 
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+Po zaregistrování ověřte, že je ve vašem předplatném zaregistrovaný poskytovatel prostředků **Microsoft. Network** . Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků.
+
+1. Přístup k nastavením předplatného, jak je popsáno v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
+
+1. V rámci vašeho předplatného pro **poskytovatele prostředků** ověřte, že poskytovatel **Microsoft. Network** zobrazuje **registrovaný** stav. Pokud poskytovatel prostředků Microsoft. Network není uveden v seznamu registrovaných zprostředkovatelů, přidejte ho.
+
+Pokud začnete používat ExpressRoute Direct a všimnete si, že ve zvoleném umístění partnerského vztahu nejsou dostupné žádné porty, ExpressRouteDirect@microsoft.com můžete požádat o další inventarizaci e-mailem.
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>ExpressRoute pomocí poskytovatele služeb a ExpressRoute Direct
 
 | **ExpressRoute pomocí poskytovatele služeb** | **ExpressRoute Direct** | 
 | --- | --- |
-| Využívá poskytovatele služeb k umožnění rychlé registrace a připojení do stávající infrastruktury. | Vyžaduje infrastrukturu s 100 GB/s/10 GB/s a úplnou správu všech vrstev.
+| Pomocí poskytovatelů služeb umožňuje rychlou registraci a připojení do stávající infrastruktury. | Vyžaduje infrastrukturu s 100 GB/s/10 GB/s a úplnou správu všech vrstev.
 | Se integruje se stovkami poskytovatelů, včetně ethernetových a MPLS | Přímá a vyhrazená kapacita pro regulované odvětví a obrovské přijímání dat |
-| SKU okruhů od 50 do 10 GB/s | Zákazník může vybrat kombinaci následujících SKU okruhů v 100 GB/s ExpressRoute Direct: <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 Gb/s</li><li>100 Gb/s</li></ul> Zákazník může vybrat kombinaci následujících SKU okruhu na 10 GB/s ExpressRoute Direct:<ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
+| SKU okruhů od 50 do 10 GB/s | Zákazník může vybrat kombinaci následujících SKU okruhu na 100 – ExpressRoute s přímým přístupem: <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 Gb/s</li><li>100 Gb/s</li></ul> Zákazník může vybrat kombinaci následujících SKU okruhu pro ExpressRoute Direct na 10 GB/s.<ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
 | Optimalizováno pro jednoho tenanta | Optimalizováno pro jednoho tenanta s více obchodními jednotkami a několika pracovními prostředími
 
 ## <a name="expressroute-direct-circuits"></a>Přímé okruhy ExpressRoute
 
-Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Microsoft 365.
+Microsoft Azure ExpressRoute umožňuje rozšiřování místní sítě do cloudu Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Microsoft 365.
 
-Každé umístění partnerského vztahu má přístup ke globální síti Microsoftu a má ve výchozím nastavení přístup k libovolné oblasti v geopolitické zóně a má přístup ke všem globálním oblastem okruhu Premium.  
+Každé umístění partnerského vztahu má přístup ke globální síti Microsoftu a má ve výchozím nastavení přístup k libovolné oblasti v geopolitické zóně. Přístup ke všem globálním oblastem získáte pomocí okruhu Premium.  
 
-Funkce ve většině scénářů je rovnocenná okruhům, které využívají poskytovatele služby ExpressRoute k provozu. Aby bylo možné podporovat další členitost a nové funkce, které jsou nabízeny pomocí ExpressRoute Direct, existují některé klíčové funkce, které existují na ExpressRoute přímých Okruhech.
+Funkce ve většině scénářů je ekvivalentní okruhům, které používají poskytovatele služby ExpressRoute k provozu. Aby bylo možné podporovat další členitost a nové funkce, které jsou nabízeny pomocí ExpressRoute Direct, existují některé klíčové funkce, které existují na ExpressRoute přímých Okruhech.
 
 ## <a name="circuit-skus"></a>SKU okruhů
 
-ExpressRoute Direct podporuje rozsáhlé scénáře přijímání dat do služby Azure Storage a dalších služeb pro velké objemy dat. Okruhy ExpressRoute na 100 GB/s ExpressRoute Direct teď také podporují SKU **40 GB/** s a **100 GB/** s. Páry fyzických portů jsou jenom **100 nebo 10 GB/** s a můžou mít několik virtuálních okruhů. Velikosti okruhů:
+ExpressRoute Direct podporuje rozsáhlé scénáře přijímání dat do služby Azure Storage a dalších služeb pro velké objemy dat. Okruhy ExpressRoute na 100-GB ExpressRoute Direct teď také podporují **40 GB/** s a * 100 * SKU okruhu GB/s. Fyzické páry portů jsou **100 GB/s nebo 10 GB/** s a můžou mít několik virtuálních okruhů. Velikosti okruhů:
 
-| **100 GB/s ExpressRoute Direct** | **10 GB/s ExpressRoute Direct** | 
+| **100-GB ExpressRoute Direct** | **ExpressRoute přímý přenos s rychlostí 10 GB/s** | 
 | --- | --- |
 | **Předplacená šířka pásma**: 200 GB/s | **Přihlášená šířka pásma**: 20 GB/s |
 | <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 Gb/s</li><li>100 Gb/s</li></ul> | <ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
@@ -62,24 +79,24 @@ ExpressRoute Direct podporuje rozsáhlé scénáře přijímání dat do služby
 ## <a name="technical-requirements"></a>Technické požadavky
 
 * Rozhraní MSEE (Enterprise Edge router) společnosti Microsoft:
-    * Dual 10 nebo 100 portů gigabitového Ethernetu v páru směrovačů
+    * Duální 10 gigabitových nebo 100 – portů gigabitového Ethernetu v páru směrovačů
     * Připojení k LR vláknu s jedním režimem
     * IPv4 a IPv6
     * IP jednotka MTU 1500 bajtů
 
-* Připojení vrstvy 2 nebo směrovač na úrovni 2/vrstvy 3:
+* Konektivita/vrstva směrovače 2/+ vrstvy tři:
     * Musí podporovat 1 802.1 Q (Dot1Q) nebo dvě značky 802.1 Q (QinQ) – zapouzdření značky.
     * EtherType = 0x8100
     * Je nutné přidat vnější značku VLAN (STAG) založenou na ID sítě VLAN, které je určeno pro Microsoft, *pouze v QinQ* .
     * Musí podporovat víc relací protokolu BGP (VLAN) na port a zařízení.
-    * Připojení IPv4 a IPv6. *Pro protokol IPv6 se nevytvoří žádné další dílčí rozhraní. Adresa IPv6 bude přidána do stávajícího podřízeného rozhraní*. 
+    * Připojení IPv4 a IPv6. *Pro protokol IPv6 se vytvoří žádné další podrozhraní. Adresa IPv6 bude přidána do stávajícího podrozhraní*. 
     * Volitelné: podpora [detekce obousměrného předávání (BFD)](./expressroute-bfd.md) , která je nakonfigurovaná ve výchozím nastavení u všech privátních partnerských vztahů v okruhech ExpressRoute.
 
 ## <a name="vlan-tagging"></a>Označování značek VLAN
 
 ExpressRoute Direct podporuje označování značek VLAN QinQ a Dot1Q.
 
-* **Označování QINQ VLAN** umožňuje doménám izolované směrování na jednotlivých okruhech ExpressRoute. Azure při vytváření okruhů dynamicky přiděluje značku S-a nedá se změnit. Každý partnerský vztah na okruhu (Private a Microsoft) bude používat jedinečnou značku C jako síť VLAN. Označení C-není nutné, aby bylo v okruhech na ExpressRoute přímých portech jedinečné.
+* **Označování QINQ VLAN** umožňuje doménám izolované směrování na jednotlivých okruhech ExpressRoute. Azure při vytváření okruhů dynamicky poskytuje značku S-tag a nedá se změnit. Každý partnerský vztah na okruhu (Private a Microsoft) bude jako síť VLAN používat jedinečnou značku C. Značka C se nevyžaduje, aby byla v okruhech na portech Direct ExpressRoute jedinečná.
 
 * **Označení sítě VLAN Dot1Q** umožňuje jednu OZNAČENOU síť VLAN pro každou dvojici přímých portů ExpressRoute. Označení jazyka C používaného pro partnerský vztah musí být jedinečné ve všech okruhech a partnerských vztahů na páru portů ExpressRoute Direct.
 
@@ -89,7 +106,7 @@ ExpressRoute Direct podporuje označování značek VLAN QinQ a Dot1Q.
 
 ## <a name="sla"></a>SLA
 
-ExpressRoute Direct poskytuje stejnou smlouvu SLA na podnikové úrovni s aktivními nebo aktivními redundantními připojeními do globální sítě Microsoft. Infrastruktura ExpressRoute je redundantní a připojení k globální síti Microsoft je redundantní a různé a škáluje se podle požadavků zákazníků. 
+ExpressRoute Direct poskytuje stejnou smlouvu SLA na podnikové úrovni s aktivními nebo aktivními redundantními připojeními do globální sítě Microsoft. Infrastruktura ExpressRoute je redundantní a konektivita do globální sítě Microsoft je redundantní a různorodá a správně škáluje s požadavky zákazníků. 
 
 ## <a name="next-steps"></a>Další kroky
 

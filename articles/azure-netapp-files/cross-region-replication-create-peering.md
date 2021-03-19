@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2a3c788ce50ccc1d537fd2903fe05acffd079b0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249933"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591006"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Vytvoření replikace svazků pro Azure NetApp Files
 
@@ -67,7 +67,7 @@ Můžete také vybrat existující účet NetApp v jiné oblasti.
     * Fond kapacit
     * Kvóta svazku
         > [!NOTE] 
-        > Doporučuje se zrcadlit velikost kvóty svazku zdrojového svazku.
+        > Kvóta svazku (velikost) pro cílový svazek by měla zrcadlit jako svazek zdrojového svazku. Pokud zadáte velikost, která je menší než zdrojový svazek, cílový svazek se automaticky změní na velikost zdrojového svazku. 
     * Virtuální síť 
     * Podsíť
 
@@ -80,7 +80,7 @@ V případě protokolu NFS zajistěte, aby pravidla zásad exportu splňovala po
 
 8. Na kartě **replikace** vložte do pole ID prostředku zdrojového svazku, které jste získali v části [Najděte ID prostředku zdrojového svazku](#locate-the-source-volume-resource-id)a potom vyberte požadovaný plán replikace. Mezi možnosti pro plán replikace patří: každých 10 minut, každou hodinu, denně, týdně a měsíčně.  
 
-    ![Vytvoření replikace svazků](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
+    ![Vytvoření replikace svazku](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
 
 9. Klikněte na tlačítko **zkontrolovat + vytvořit** a potom kliknutím na tlačítko **vytvořit** vytvořte svazek replikace dat.   
 
@@ -113,6 +113,6 @@ K autorizaci replikace musíte získat ID prostředku cílového svazku replikac
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
-* [Odstranit replikace svazků nebo svazky](cross-region-replication-delete.md)
+* [Odstranění svazků nebo replikací svazků](cross-region-replication-delete.md)
 * [Řešení potíží při replikaci mezi oblastmi](troubleshoot-cross-region-replication.md)
 

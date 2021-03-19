@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: a8dfb3cacf798559273361ec75cab4570a8a5228
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302609"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582676"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Konvence IoT Plug and Play
 
@@ -20,12 +20,12 @@ Zařízení technologie Plug and Play IoT by měla při výměně zpráv se slu�
 
 Zařízení mohou zahrnovat [moduly](../iot-hub/iot-hub-devguide-module-twins.md)nebo být implementovány v [modulu IoT Edge](../iot-edge/about-iot-edge.md) hostovaném IoT Edge modulem runtime.
 
-Popíšete telemetrii, vlastnosti a příkazy, které zařízení technologie Plug and Play IoT implementuje, pomocí modelu [DTDL (Digital Reed Definition Language) verze V2](https://github.com/Azure/opendigitaltwins-dtdl) _model_. V tomto článku jsou uvedeny dva typy modelu:
+Popíšete telemetrii, vlastnosti a příkazy, které zařízení technologie Plug and Play IoT implementuje, pomocí modelu [DTDL (Digital Reed Definition Language) verze V2](https://github.com/Azure/opendigitaltwins-dtdl) . V tomto článku jsou uvedeny dva typy modelu:
 
 - **Žádná součást** -model bez komponent. Model deklaruje telemetrii, vlastnosti a příkazy jako vlastnosti nejvyšší úrovně v části obsah hlavního rozhraní. V nástroji Azure IoT Explorer se tento model zobrazuje jako jediná _výchozí součást_.
 - **Více komponent** – model složený ze dvou nebo více rozhraní. Hlavní rozhraní, které se zobrazí jako _výchozí komponenta_ s telemetrie, vlastnostmi a příkazy. Jedno nebo více rozhraní deklarované jako komponenty s další telemetrie, vlastnostmi a příkazy.
 
-Další informace naleznete v tématu [komponenty IoT technologie Plug and Play v modelech](concepts-components.md).
+Další informace najdete v tématu [Průvodce modelováním IoT technologie Plug and Play](concepts-modeling-guide.md).
 
 ## <a name="identify-the-model"></a>Identifikace modelu
 
@@ -136,7 +136,7 @@ Zařízení nebo modul by měl potvrdit, že obdržel vlastnost odesláním hlá
 
 Po spuštění zařízení by se mělo vyžádat, aby zařízení bylo zdvojené a kontrolovalo všechny zapisovatelné aktualizace vlastností. Pokud se v době, kdy bylo zařízení v režimu offline, zvýšila verze vlastnosti s možností zápisu, zařízení by mělo odeslat oznámenou odpověď na vlastnost, která potvrdí, že aktualizace přijala.
 
-Když se zařízení poprvé spustí, může odeslat počáteční hodnotu pro hlášené vlastnosti, pokud neobdrží počáteční požadovanou vlastnost z rozbočovače. V takovém případě by mělo být zařízení nastavené `av` na `1` . Příklad:
+Když se zařízení poprvé spustí, může odeslat počáteční hodnotu pro hlášené vlastnosti, pokud neobdrží počáteční požadovanou vlastnost z rozbočovače. V takovém případě by mělo být zařízení nastavené `av` na `1` . Například:
 
 ```json
 "reported": {
@@ -350,7 +350,7 @@ V zařízení nebo modulu více rozhraní komponent používá názvy příkazů
 
 Teď, když jste se naučili o konvencích IoT technologie Plug and Play, je zde několik dalších prostředků:
 
-- [Jazyk DTDL (Digital autodefinition Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl)
+- [Jazyk DTDL (Digital Twins Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [Sada SDK pro zařízení jazyka C](/azure/iot-hub/iot-c-sdk-ref/)
 - [REST API IoT](/rest/api/iothub/device)
-- [Komponenty modelu](./concepts-components.md)
+- [Průvodce modelováním IoT technologie Plug and Play](concepts-modeling-guide.md)

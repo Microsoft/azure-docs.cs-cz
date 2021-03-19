@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0277d4ce263610576178e3844a0665ab6506fbfa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689313"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579157"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Předpoklady pro Azure AD Connect synchronizaci cloudu
 Tento článek poskytuje pokyny k výběru a použití Azure Active Directory (Azure AD) připojit cloudovou synchronizaci jako vaše řešení identity.
@@ -33,15 +33,15 @@ Pro použití Azure AD Connect synchronizace cloudu potřebujete následující:
 Skupinový účet spravované služby je účet spravované domény, který poskytuje automatickou správu hesel, zjednodušenou správu hlavního názvu služby (SPN), schopnost delegovat správu na jiné správce a také rozšiřuje tuto funkci na více serverů.  Azure AD Connect synchronizace cloudu podporuje a používá gMSA ke spuštění agenta.  Během instalace budete vyzváni k zadání přihlašovacích údajů správce, aby bylo možné tento účet vytvořit.  Účet se zobrazí jako (domain\provAgentgMSA $).  Další informace o gMSA najdete v tématu [skupinový účet spravované služby](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) . 
 
 ### <a name="prerequisites-for-gmsa"></a>Předpoklady pro gMSA:
-1.  Schéma služby Active Directory v doménové struktuře domény gMSA je potřeba aktualizovat na Windows Server 2012.
+1.  Schéma služby Active Directory v doménové struktuře domény gMSA je potřeba aktualizovat na Windows Server 2016.
 2.  [Moduly PowerShellu pro vzdálenou správu](/windows-server/remote/remote-server-administration-tools) počítače v řadiči domény
-3.  Aspoň jeden řadič domény v doméně musí používat Windows Server 201.
-4.  Server připojený k doméně, na kterém je agent nainstalovaný, musí být Windows Server 2012 nebo novější.
+3.  Aspoň jeden řadič domény v doméně musí používat Windows Server 2016.
+4.  Server připojený k doméně, na kterém je agent nainstalovaný, musí být Windows Server 2016 nebo novější.
 
 ### <a name="custom-gmsa-account"></a>Vlastní účet gMSA
 Pokud vytváříte vlastní účet gMSA, musíte zajistit, aby měl účet následující oprávnění.
 
-|Typ |Název |Access |Platí pro| 
+|Typ |Name |Access |Platí pro| 
 |-----|-----|-----|-----|
 |Povolit |Účet gMSA |Číst všechny vlastnosti |Podřízené objekty zařízení| 
 |Povolit |Účet gMSA|Číst všechny vlastnosti |Odvozené objekty InetOrgPerson| 

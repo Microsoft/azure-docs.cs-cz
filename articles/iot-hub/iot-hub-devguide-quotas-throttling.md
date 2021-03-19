@@ -6,17 +6,17 @@ ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 03/18/2021
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3de9eccd001e421ef3255f83630716df12b7a2ee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410687"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595256"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -43,7 +43,7 @@ V následující tabulce jsou uvedena vynutila omezení. Hodnoty odkazují na je
 | Omezení | Free, B1 a S1 | B2 a S2 | B3 a S3 | 
 | -------- | ------- | ------- | ------- |
 | [Operace registru identit](#identity-registry-operations-throttle) (vytvoření, načtení, výpis, aktualizace, odstranění) | 1.67/s/jednotku (100/min/Unit) | 1.67/s/jednotku (100/min/Unit) | 83.33/s/jednotku (5 000/min/jednotku) |
-| [Nová připojení zařízení](#device-connections-throttle) (Tato omezení se vztahují na rychlost _nových připojení_ , ne na celkový počet připojení) | Vyšší z 100/s nebo 12/s/jednotka <br/> Například dvě jednotky S1 jsou 2 \* 12 = 24 nových připojení/s, ale v rámci jednotek máte minimálně 100 nových připojení za sekundu. S devíti jednotkami S1 máte v rámci svých jednotek 108 nových připojení za sekundu (9 \* 12). | 120 nových připojení/s/jednotku | 6 000 nových připojení/s/jednotku |
+| [Nová připojení zařízení](#device-connections-throttle) (Tato omezení se vztahují na rychlost _nových připojení_, ne na celkový počet připojení) | Vyšší z 100/s nebo 12/s/jednotka <br/> Například dvě jednotky S1 jsou 2 \* 12 = 24 nových připojení/s, ale v rámci jednotek máte minimálně 100 nových připojení za sekundu. S devíti jednotkami S1 máte v rámci svých jednotek 108 nových připojení za sekundu (9 \* 12). | 120 nových připojení/s/jednotku | 6 000 nových připojení/s/jednotku |
 | Odesílání typu zařízení-cloud | Vyšší z 100 operací odeslání/s nebo 12 operací odeslání za sekundu/jednotku <br/> Například dvě jednotky S1 jsou 2 \* 12 = 24/s, ale v rámci jednotek máte minimálně 100 operací odeslání za sekundu. S devíti jednotkami S1 máte 108 operací odeslání za sekundu (9 \* 12) napříč vašimi jednotkami. | 120 operace odeslání za sekundu/jednotku | 6 000 operace odeslání za sekundu/jednotku |
 | Z cloudu do zařízení odesílá<sup>1</sup> . | 1,67 operace odeslání za sekundu/jednotku (100 zpráv/min/jednotku) | 1,67 operace odeslání za sekundu/jednotku (100 operací odeslání/min/jednotku) | 83,33 operace odeslání za sekundu/jednotku (5 000 operací odeslání/min/jednotku) |
 | Cloud-zařízení obdrží<sup>1</sup> <br/> (jenom když zařízení používá protokol HTTPS)| 16,67 přijatých operací za sekundu (celkem 1 000 operací přijetí za minutu/min/jednotku) | 16,67 přijatých operací za sekundu (celkem 1 000 operací přijetí za minutu/min/jednotku) | 833,33 přijatých operací za sekundu (celkem 50 000 operací přijetí za minutu/min/jednotku) |
@@ -86,6 +86,8 @@ Například můžete použít simulované zařízení k 200 posílání zpráv t
 ### <a name="identity-registry-operations-throttle"></a>Omezení operací v registru identit
 
 Operace v registru identit zařízení jsou určené pro použití za běhu ve scénářích správy a zřizování zařízení. Načítání a aktualizace velkého počtu identit zařízení je podporované prostřednictvím [úloh importu a exportu](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
+
+Při inicializaci operací identity prostřednictvím [hromadných operací zařízení](iot-hub-bulk-identity-mgmt.md)platí stejné limity omezení. Pokud například chcete odeslat hromadnou operaci pro vytváření zařízení 50 a máte IoT Hub S1 s 1 jednotkou, budou přijímány pouze dvě z těchto hromadných požadavků za minutu. Důvodem je, že omezení operace identity pro u IoT Hub S1 s 1 jednotkou je 100/min/jednotku. V takovém případě by se třetí žádost (a mimo ni) ve stejné minutě zamítla, protože tento limit už byl dosažen. 
 
 ### <a name="device-connections-throttle"></a>Omezení připojení zařízení
 

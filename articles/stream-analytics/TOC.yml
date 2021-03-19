@@ -44,7 +44,7 @@
 - name: ukázky
   items:
     - name: Ukázky kódů
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure-stream-analytics'
+      href: /samples/browse/?products=azure-stream-analytics
 - name: Koncepty
   items:
     - name: Kompletní vzory řešení
@@ -316,13 +316,13 @@
               href: external-error-codes.md
             - name: Vnitřní chyby
               href: internal-error-codes.md
-    - name: Integrace se strojovým učením
+    - name: Integrace s Machine Learning
       items:
         - name: Analýza subjektivního hodnocení s využitím modelů ML
           href: stream-analytics-machine-learning-integration-tutorial.md
         - name: Detekce anomálií
           href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: Použití rozhraní REST API
+        - name: Používání ML REST API
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Ladění s využitím diagramu úloh
       href: stream-analytics-job-diagram-with-metrics.md

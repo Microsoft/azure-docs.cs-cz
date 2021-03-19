@@ -3,12 +3,12 @@ title: Azure Service Bus úrovně Premium a Standard
 description: Tento článek popisuje úrovně Standard a Premium Azure Service Bus. Porovná tyto úrovně a poskytuje technické rozdíly.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 0385526560e6aafaab66d9212ff54caff2362ebd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: aa08a99009ef3d20e831e214ae5811059817d13c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100636505"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607547"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -26,7 +26,7 @@ V následující tabulce je zvýrazněno několik nejvýraznějších rozdílů.
 | Možnost vertikálně navýšit a snížit kapacitu |– |
 | Velikost zprávy je až 1 MB. Toto omezení může být vyvoláno v budoucnu. Nejnovější důležité aktualizace této služby najdete v tématu [zasílání zpráv na blogu Azure](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |Velikost zprávy do 256 kB |
 
-**Zasílání zpráv Service Bus Premium** zajišťuje izolaci prostředků na úrovni CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium si můžete koupit 1, 2, 4 nebo 8 jednotek zasílání zpráv. Jedna úloha nebo entita může zabírat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv se dá změnit na. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus.
+**Zasílání zpráv Service Bus Premium** zajišťuje izolaci prostředků na úrovni CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium si můžete koupit 1, 2, 4, 8 nebo 16 jednotek zasílání zpráv. Jedna úloha nebo entita může zabírat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv se dá změnit na. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus.
 
 Vedle toho, že je tento výkon předvídatelnější, je také rychlejší. Se zasíláním zpráv na úrovni Premium je výkon ve špičce mnohem vyšší než na úrovni Standard.
 

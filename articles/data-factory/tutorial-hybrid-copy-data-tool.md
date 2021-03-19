@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: aa6c7dd786a90abadb43a13eaa73a78a2a61bd0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 43097b520297ff17350620faff3da884dcbd2073
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719283"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606714"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure pomocí nástroje Kopírování dat
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -33,7 +33,7 @@ V tomto kurzu budete provádět následující kroky:
 > * Vytvoření kanálu pomocí nástroje pro kopírování dat
 > * Monitorování spuštění aktivit a kanálu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 ### <a name="azure-subscription"></a>Předplatné Azure
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -113,7 +113,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
    Název datové továrny musí být *globálně jedinečný*. Pokud se u pole s názvem zobrazí následující chybová zpráva, tak název datové továrny změňte (třeba na vaše_jméno_ADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
 
-   ![Název nové datové továrny](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Nová chybová zpráva objektu pro vytváření dat pro duplicitní název.":::
 1. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit.
 1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
 
@@ -128,7 +128,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
 
-     ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Domovská stránka Azure Data Factory s dlaždicí pro monitorování autora &.":::
 1. Výběrem dlaždice **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory.
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Vytvoření kanálu pomocí nástroje pro kopírování dat

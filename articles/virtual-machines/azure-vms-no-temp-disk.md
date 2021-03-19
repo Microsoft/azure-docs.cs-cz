@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 1937b8392ee3a73ed7c268897c532c643a9151eb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bd4dcbdc7ab13d18ef7f2d7102c56d1bd8d8758d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565457"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582098"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Velikosti virtuálních počítačů Azure bez místního dočasného disku 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se velikostí virtuálních počítačů Azure, které nemají místní dočasný disk (tj. žádný místní dočasný disk). Další informace o těchto velikostech virtuálních počítačů najdete v tématu [specifikace pro dv4 a Dsv4-Series (pro obecné účely úlohy)](dv4-dsv4-series.md) nebo [specifikace pro Ev4 a Esv4-Series (paměťově optimalizované úlohy)](ev4-esv4-series.md).
@@ -56,7 +56,7 @@ Můžete provést migraci pomocí následujících kroků:
    > Postupujte podle pokynů v části "dočasné přesunutí pagefile.sys do jednotky C" v části použití jednotky D: jako datové jednotky na virtuálním počítači s Windows k přesunutí stránkovacího souboru z místního dočasného disku (D: jednotka) do jednotky C:. **Odchýlení od kroků uvedených v tomto postupu povede k chybové zprávě – "nepovedlo se změnit velikost virtuálního počítače, protože změna z disku prostředků na velikost virtuálního počítače, který není disk prostředku, a naopak není povolená.**
 
 3. Pořídit snímek virtuálního počítače podle kroků uvedených v části [vytvoření snímku pomocí portálu nebo rozhraní příkazového řádku Azure CLI](./linux/snapshot-copy-managed-disk.md). 
-4. Pomocí snímku vytvořte nový virtuální počítač bez disků (například dv4, Dsv4, Ev4, Esv4 Series) podle postupu popsaného v části [Vytvoření virtuálního počítače ze snímku pomocí](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md)rozhraní příkazového řádku. 
+4. Pomocí snímku vytvořte nový virtuální počítač bez disků (například dv4, Dsv4, Ev4, Esv4 Series) podle postupu popsaného v části [Vytvoření virtuálního počítače ze snímku pomocí](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot)rozhraní příkazového řádku. 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Podporují tyto velikosti virtuálních počítačů operační systémy Linux i Windows (OS)?
 Ano.

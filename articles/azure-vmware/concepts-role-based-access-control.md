@@ -2,32 +2,32 @@
 title: Koncepty – vSphere řízení přístupu na základě role (vSphere RBAC)
 description: Přečtěte si o klíčových schopnostech vSphere řízení přístupu na základě rolí pro řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.openlocfilehash: 1e49f219fba8317040bfa56f6576a7c1f5b1ae22
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.date: 03/18/2021
+ms.openlocfilehash: c2d27531f7a0acd36b4047e98aac994668f64a09
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573318"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586161"
 ---
 # <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere řízení přístupu na základě role (vSphere RBAC) pro řešení Azure VMware
 
 V řešení Azure VMware má vCenter integrovaný místní uživatel s názvem cloudadmin a přiřazený k předdefinované roli CloudAdmin. Místní uživatel cloudadmin se používá k nastavení uživatelů ve službě AD. Obecně platí, že role CloudAdmin vytváří a spravuje úlohy v privátním cloudu. V řešení Azure VMware má role CloudAdmin oprávnění vCenter, která se liší od jiných cloudových řešení VMware.     
 
 > [!NOTE]
-> Řešení Azure VMware nabízí vlastní role na vCenter, ale v současné době je nenabízí na portálu řešení Azure VMware. Další informace najdete v části [Vytvoření vlastních rolí v vCenter](#create-custom-roles-on-vcenter) dále v tomto článku. 
+> Řešení Azure VMware nabízí vlastní role v vCenter. nenabízí je na portálu řešení Azure VMware. Další informace najdete v části [Vytvoření vlastních rolí v vCenter](#create-custom-roles-on-vcenter) dále v tomto článku. 
 
 V případě místního nasazení vCenter a ESXi má správce přístup k administrator@vsphere.local účtu vCenter. Mohou mít také přiřazeno více uživatelů nebo skupin služby Active Directory (AD). 
 
 V nasazení řešení Azure VMware nemá správce přístup k uživatelskému účtu správce. Ale můžou k roli CloudAdmin v vCenter přiřadit uživatele a skupiny služby AD.  
 
-Uživatel privátního cloudu nemá přístup ke službě a nemůže konfigurovat konkrétní součásti pro správu podporované a spravované společností Microsoft. Například clustery, hostitelé, úložiště dat a distribuované virtuální přepínače.
+Uživatel privátního cloudu nemá přístup a nemůže konfigurovat konkrétní součásti pro správu podporované a spravované společností Microsoft. Například clustery, hostitelé, úložiště dat a distribuované virtuální přepínače.
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>Role CloudAdmin řešení Azure VMware na serveru vCenter
 
 Můžete zobrazit oprávnění udělená roli CloudAdmin Azure VMware pro řešení Azure VMware v rámci vašeho privátního cloudu vCenter.
 
-1. Přihlaste se ke klientovi SDDC vSphere a přejděte do **nabídky**  >  **Správa**.
+1. Přihlaste se ke službě vCenter a přejděte do **nabídky**  >  **Správa**.
 1. V části **Access Control** vyberte **role**.
 1. V seznamu rolí vyberte **CloudAdmin** a pak vyberte **oprávnění**. 
 
@@ -62,7 +62,7 @@ Role CloudAdmin v řešení Azure VMware má následující oprávnění pro vCe
 
 Role CloudAdmin může vytvářet, upravovat nebo odstraňovat vlastní role, které mají oprávnění menší nebo rovna jejich aktuální roli. Možná budete moct vytvořit role, které mají oprávnění větší než CloudAdmin, ale nebudete je moct přiřadit k žádným uživatelům nebo skupinám ani tuto roli odstranit.
 
-Aby se zabránilo vytváření rolí, které se nedají přiřadit ani odstranit, řešení Azure VMware doporučuje klonování role CloudAdmin jako základu pro vytváření nových vlastních rolí.
+Chcete-li zabránit vytváření rolí, které nelze přiřadit nebo odstranit, je doporučeno naklonovat roli CloudAdmin jako základ pro vytváření nových vlastních rolí.
 
 ### <a name="create-a-custom-role"></a>Vytvoření vlastní role
 1. Přihlaste se k vCenter pomocí cloudadmin \@ vSphere. Local nebo uživatele s rolí cloudadmin.

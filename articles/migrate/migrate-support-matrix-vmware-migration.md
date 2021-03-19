@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: cbb1db15eed53af1d0e4590e1b228e5e47680560
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 40fcdae9a94b2b48eb4c665f4e0c9c3e58962f4b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614917"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576777"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -27,14 +27,9 @@ Virtuální počítače VMware můžete migrovat několika způsoby:
 
 Přečtěte si [Tento článek](server-migrate-overview.md) a zjistěte, kterou metodu chcete použít.
 
-## <a name="migration-limitations"></a>Omezení migrace
-
-- Můžete vybrat až 10 virtuálních počítačů najednou pro replikaci prostřednictvím Azure Portal. Pokud chcete migrovat více počítačů, proveďte replikaci do skupin po 10. Počet virtuálních počítačů, které se dají replikovat prostřednictvím rutin PowerShellu, není nijak omezený. Naším doporučením je replikovat maximálně 500 virtuálních počítačů z jednoho vCenter přes PowerShell, aby se zajistil optimální výkon.
-- Pro migraci bez agentů VMware můžete z každého vCenter Server spustit současně až 500 replikace.
-
 ## <a name="agentless-migration"></a>Migrace bez agentů 
 
-V této části jsou shrnuté požadavky na migraci bez agentů.
+V této části jsou shrnuté požadavky na migraci virtuálních počítačů VMware bez agenta do Azure.
 
 ### <a name="vmware-requirements-agentless"></a>Požadavky VMware (bez agentů)
 
@@ -72,8 +67,11 @@ Tabulka shrnuje požadavky na migraci bez agenta pro virtuální počítače VMw
 **Seskupené síťové adaptéry** | Nepodporováno
 **IPv6** | Nepodporováno
 **Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (standardní pevný disk, Standard SSD, Premium SSD) v Azure.
-**Současná replikace** | 500 virtuálních počítačů na vCenter Server. Pokud máte víc, migrujte je v dávkách 500.
+**Současná replikace** | Až 300 souběžné replikace virtuálních počítačů na vCenter Server s 1 zařízením Až 500 souběžné replikace virtuálních počítačů na vCenter Server při nasazení dalšího [zařízení se škálováním](./how-to-scale-out-for-migration.md) na více instancí. 
 **Automatická instalace agenta virtuálního počítače Azure (Agent systému Windows a Linux)** | Podporováno pro systémy Windows Server 2008 R2 a vyšší. <br/> Podporováno pro počítače RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04. Projděte si seznam [požadovaných balíčků](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)pro tyto operační systémy Linux.
+
+> [!TIP]
+>  Pomocí Azure Portal budete moct pro konfiguraci replikace vybrat až 10 virtuálních počítačů najednou. Pokud chcete replikovat víc virtuálních počítačů, můžete portál použít a přidat virtuální počítače, které se mají replikovat v několika dávkách 10 virtuálních počítačů, nebo pro konfiguraci replikace použít rozhraní Azure Migrate PowerShell. Ujistěte se, že nekonfigurujete souběžnou replikaci na více než maximálním podporovaném počtu virtuálních počítačů pro souběžné replikace.
 
 ### <a name="appliance-requirements-agentless"></a>Požadavky na zařízení (bez agenta)
 

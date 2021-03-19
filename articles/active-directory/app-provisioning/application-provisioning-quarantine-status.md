@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/24/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d997c85f96fa9f87ca6d017cb555b3732007e21c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 49590c46588ad0d0f1c1b7b095679a3c3fce96eb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256301"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579497"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Stav zřizování aplikace v karanténě
 
@@ -52,7 +52,7 @@ Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Proč je moje aplikace v karanténě?
 
-|Popis|Doporučená akce|
+|Description|Doporučená akce|
 |---|---|
 |**Problém s dodržováním předpisů SCIM:** Byla vrácena odpověď HTTP/404 nenalezena místo očekávané odpovědi HTTP/200 OK. V tomto případě služba zřizování Azure AD vytvořila požadavek na cílovou aplikaci a obdržela neočekávanou odpověď.|Podívejte se na část přihlašovací údaje správce. Podívejte se, jestli aplikace vyžaduje zadání adresy URL tenanta a jestli je adresa URL správná. Pokud se problém nezobrazuje, obraťte se na vývojáře aplikace a ujistěte se, že je jejich služba kompatibilní s SCIM. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Neplatné přihlašovací údaje:** Při pokusu o ověření přístupu k cílové aplikaci jsme dostali odpověď z cílové aplikace, která indikuje, že zadané přihlašovací údaje jsou neplatné.|Přejděte do části přihlašovací údaje správce uživatelského rozhraní pro konfiguraci zřizování a znovu udělte přístup s platnými přihlašovacími údaji. Pokud je aplikace v galerii, Projděte si kurz konfigurace aplikace, který už má požadované kroky.|
@@ -85,7 +85,7 @@ Nejprve Vyřešte problém, který způsobil, že se aplikace umístila do karan
 
 Po vyřešení problému restartujte úlohu zřizování. Některé změny nastavení zřizování aplikace, jako jsou mapování atributů nebo filtry oborů, se automaticky restartují pro vás. Indikátor průběhu na stránce pro **zřizování** aplikace indikuje, kdy bylo zřizování naposledy spuštěno. Pokud potřebujete úlohu zřizování restartovat ručně, použijte jednu z následujících metod:  
 
-- Pomocí Azure Portal restartujte úlohu zřizování. Na stránce **zřizování** aplikace v části **Nastavení** vyberte **Vymazat stav a znovu spusťte synchronizaci** a nastavte **stav zřizování** **na zapnuto**. Tato akce plně restartuje službu zřizování, což může nějakou dobu trvat. Úplný počáteční cyklus se znovu spustí, který zruší escrows, odebere aplikaci z karantény a vymaže všechny vodoznaky.
+- Pomocí Azure Portal restartujte úlohu zřizování. Na stránce **zřizování** aplikace vyberte **restartovat zřizování**. Tato akce plně restartuje službu zřizování, což může nějakou dobu trvat. Úplný počáteční cyklus se znovu spustí, který zruší escrows, odebere aplikaci z karantény a vymaže všechny vodoznaky. Služba potom znovu vyhodnotí všechny uživatele ve zdrojovém systému a určí, jestli jsou v oboru pro zřizování. To může být užitečné, pokud je vaše aplikace momentálně v karanténě, jak popisuje tento článek, nebo potřebujete provést změnu mapování atributů. Všimněte si, že počáteční cyklus trvá déle než typický přírůstkový cyklus z důvodu počtu objektů, které je třeba vyhodnotit. Další informace o výkonu počátečních a přírůstkových cyklů najdete [tady](application-provisioning-when-will-provisioning-finish-specific-user.md).
 
 - [Restartujte úlohu zřizování](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)pomocí Microsoft Graph. Budete mít plnou kontrolu nad tím, co restartujete. Můžete zvolit vymazání escrows (pro restartování čítače v úschově, který se bude přestavovat do karantény), vymazat karanténu (Pokud chcete aplikaci odebrat z karantény) nebo zrušit meze. Použijte následující žádost:
  

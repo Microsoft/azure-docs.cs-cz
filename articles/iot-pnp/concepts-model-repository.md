@@ -7,12 +7,12 @@ ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1a58a2f69b9c6c6742c4b9daf32dd0e13341aac1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 33ff96b4e51dbf80bfdb924bc37786a344cdfdc6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742139"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582642"
 ---
 # <a name="device-models-repository"></a>Úložiště modelů zařízení
 
@@ -47,38 +47,50 @@ Všechna rozhraní ve `dtmi` složkách jsou dostupná taky z veřejného koncov
 
 ### <a name="resolve-models"></a>Řešení modelů
 
-Chcete-li programově získat přístup k těmto rozhraním, je nutné převést DTMI na relativní cestu, kterou můžete použít k dotazování veřejného koncového bodu.
+K programovému přístupu k těmto rozhraním můžete použít `ModelsRepositoryClient` dostupnou v balíčku NuGet [Azure. IoT. ModelsRepository](https://www.nuget.org/packages/Azure.IoT.ModelsRepository). Tento klient je ve výchozím nastavení nakonfigurovaný tak, aby se dotazoval na veřejný přístup k dispozici na adrese [DeviceModels.Azure.com](https://devicemodels.azure.com/) a mohl by být nakonfigurovaný na jakékoli vlastní úložiště.
 
-Chcete-li převést DTMI na absolutní cestu, použijte `DtmiToPath` funkci s `IsValidDtmi` :
-
-```cs
-static string DtmiToPath(string dtmi)
-{
-    if (!IsValidDtmi(dtmi))
-    {
-        return null;
-    }
-    // dtmi:com:example:Thermostat;1 -> dtmi/com/example/thermostat-1.json
-    return $"/{dtmi.ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
-}
-
-static bool IsValidDtmi(string dtmi)
-{
-    // Regex defined at https://github.com/Azure/digital-twin-model-identifier#validation-regular-expressions
-    Regex rx = new Regex(@"^dtmi:[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?(?::[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?)*;[1-9][0-9]{0,8}$");
-    return rx.IsMatch(dtmi);
-}
-```
-
-Pomocí výsledné cesty a základní adresy URL pro úložiště můžeme rozhraní získat:
+Klient přijme `DTMI` jako vstup a vrátí slovník se všemi požadovanými rozhraními:
 
 ```cs
-const string _repositoryEndpoint = "https://devicemodels.azure.com";
+using Azure.IoT.ModelsRepository;
 
-string dtmiPath = DtmiToPath(dtmi.ToString());
-string fullyQualifiedPath = $"{_repositoryEndpoint}{dtmiPath}";
-string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
+var client = new ModelsRepositoryClient();
+IDictionary<string, string> models = client.GetModels("dtmi:com:example:TemperatureController;1");
+models.Keys.ToList().ForEach(k => Console.WriteLine(k));
 ```
+
+Očekávaný výstup by měl zobrazovat `DTMI` tři rozhraní nalezená v řetězu závislostí:
+
+```txt
+dtmi:com:example:TemperatureController;1
+dtmi:com:example:Thermostat;1
+dtmi:azure:DeviceManagement:DeviceInformation;1
+```
+
+`ModelsRepositoryClient`Dá se nakonfigurovat tak, aby se dotazoval na vlastní úložiště modelu – dostupné prostřednictvím HTTP (s) – a určete rozlišení závislosti pomocí libovolného z dostupných `ModelDependencyResolution` :
+
+- Zakázáno Vrátí pouze zadané rozhraní bez závislosti.
+- Povolený Vrátí všechna rozhraní v řetězu závislostí.
+- TryFromExpanded. Použijte `.expanded.json` soubor k načtení předem vypočítaných závislostí. 
+
+> [!Tip] 
+> Vlastní úložiště nemusí vystavit `.expanded.json` soubor, pokud není k dispozici, bude klient pro místní zpracování všech závislostí.
+
+Následující vzorový kód ukazuje, jak inicializovat `ModelsRepositoryClient` pomocí vlastní adresy URL vlastního úložiště, v tomto případě pomocí `raw` adres URL z rozhraní GitHub API bez použití `expanded` formuláře – protože není v `raw` koncovém bodu k dispozici. Inicializuje se, `AzureEventSourceListener` aby se zkontroloval požadavek HTTP, který klient provede:
+
+```cs
+using AzureEventSourceListener listener = AzureEventSourceListener.CreateConsoleLogger();
+
+var client = new ModelsRepositoryClient(
+    new Uri("https://raw.githubusercontent.com/Azure/iot-plugandplay-models/main"),
+    new ModelsRepositoryClientOptions(dependencyResolution: ModelDependencyResolution.Enabled));
+
+IDictionary<string, string> models = client.GetModels("dtmi:com:example:TemperatureController;1");
+
+models.Keys.ToList().ForEach(k => Console.WriteLine(k));
+```
+
+Ve zdrojovém kódu je dostupných víc ukázek v úložišti GitHub Azure SDK: [Azure. IoT. ModelsRepository/Samples.](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/modelsrepository/Azure.IoT.ModelsRepository/samples)
 
 ## <a name="publish-a-model"></a>Publikování modelu
 

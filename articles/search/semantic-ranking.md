@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: e3078c8f71f8862cacad552bb3176c08530e79bb
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 01c4d6475ec23b8a55d91e18f49cab27760aa907
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418840"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604283"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Sémantické hodnocení v Azure Kognitivní hledání
 
@@ -28,25 +28,35 @@ Sémantické hodnocení je náročné na prostředky i čas. Aby bylo možné do
 
 Pro sémantické hodnocení používá model porozumění strojovým účelům čtení i přenosu, aby bylo možné dokumenty znovu vyhodnotit na základě toho, jak dobře se každý z nich shoduje s záměrem dotazu.
 
-1. U každého dokumentu sémantická klasifikace vyhodnocuje pole v parametru searchFields v daném pořadí a konsoliduje obsah do jednoho velkého řetězce.
+### <a name="preparation-passage-extraction-phase"></a>Fáze přípravy (extrakce pasáže)
 
-1. Řetězec se pak ořízne tak, aby celková délka nepřesahoval 8 000 tokeny. Pokud máte velmi velké dokumenty, s polem obsahu nebo merged_content poli, které má mnoho stránek obsahu, vše po omezení tokenu se ignoruje.
+U každého dokumentu od počátečních výsledků existuje cvičení extrakce pasáže, které identifikuje klíčové pasáže. Toto je možnost cvičení, které snižuje obsah na množství, které lze zpracovat rychle.
 
-1. Každý z dokumentů 50 je nyní reprezentován jedním dlouhým řetězcem. Tento řetězec je odeslán do modelu sumarizace. Model sumarizace vytváří popisy (a odpovědi) pomocí porozumění strojovým pochopením k identifikaci pasáží, které se zobrazí pro shrnutí obsahu, nebo k zodpovězení otázky. Výstupem modelu sumarizace je další redukovaný řetězec, který má maximálně 128 tokenů.
+1. Pro každý z dokumentů 50 se každé pole v parametru searchFields vyhodnocuje v po sobě jdoucích pořadí. Obsah z každého pole je konsolidován do jednoho dlouhého řetězce. 
 
-1. Menší řetězec se zobrazí v titulku dokumentu a představuje nejrelevantnější pasáže nalezené ve větším řetězci. Sada titulů 50 (nebo méně) je pak seřazená podle relevance pořadí. 
+1. Dlouhý řetězec se pak ořízne tak, aby celková délka nepřesahoval 8 000 tokeny. Z tohoto důvodu doporučujeme umístit Stručná pole jako první, aby byla vložena do řetězce. Pokud máte velmi velké dokumenty s poli s velkým objemem textu, cokoli po omezení tokenu se ignoruje.
 
-Koncepční a sémantická relevance je založena na základě vektorové reprezentace a termínů clusterů. Vzhledem k tomu, že algoritmus podobnosti klíčových slov může v rámci dotazu poskytnout stejnou váhu, sémantický model byl vyškolen pro rozpoznání vzájemné závislosti a vztahů mezi slovy, která jsou jinak nesouvisející na povrchu. Výsledkem je, že pokud řetězec dotazu obsahuje ve stejném clusteru nějaké výrazy, bude mít dokument, který obsahuje obě hodnoty, pořadí vyšší než ten, který ne.
+1. Každý dokument je nyní reprezentován jedním dlouhým řetězcem, který je až 8 000 tokenů. Tyto řetězce jsou odesílány do modelu shrnutí, čímž se dále zkrátí řetězec. Model Shrnutí vyhodnocuje dlouhý řetězec pro klíčové věty nebo pasáže, které nejlépe shrnují dokument nebo odpovídají na otázku.
 
-:::image type="content" source="media/semantic-search-overview/semantic-vector-representation.png" alt-text="Vektorová reprezentace pro kontext" border="true":::
+1. Výstupem této fáze je titulek (a volitelně odpověď). Popisek je nejvýše 128 tokenů na jeden dokument a je považován za nejvýraznějšího zástupce dokumentu.
+
+### <a name="scoring-and-ranking-phases"></a>Fáze bodování a hodnocení
+
+V této fázi jsou všechny titulky 50 vyhodnocovány k vyhodnocení relevance.
+
+1. Bodování je určeno vyhodnocením každého titulu pro koncepční a sémantickou relevanci vzhledem k poskytnutému dotazu.
+
+   Následující diagram znázorňuje, co znamená "sémantická závažnost". Vezměte v úvahu pojem "kapitálový", který by se mohl používat v kontextu finančních, zákonných, geografických nebo gramatických. Pokud dotaz obsahuje termíny ze stejného vektorového prostoru (například "Velká" a "investice"), dokument, který zahrnuje i tokeny ve stejném clusteru, bude mít větší skóre než ta, která ne.
+
+   :::image type="content" source="media/semantic-search-overview/semantic-vector-representation.png" alt-text="Vektorová reprezentace pro kontext" border="true":::
+
+1. Výstup této fáze je @search.rerankerScore přiřazen ke každému dokumentu. Po určení skóre všech dokumentů jsou uvedeny v sestupném pořadí a zahrnuty do datové části odpovědi na dotaz.
 
 ## <a name="next-steps"></a>Další kroky
 
-Sémantické hodnocení se nabízí na úrovních Standard, v určitých oblastech. Další informace a registraci najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
-
-Nový typ dotazu povoluje hodnocení relevance a struktury odpovědí sémantického hledání. Pokud chcete začít, [vytvořte sémantický dotaz](semantic-how-to-query-request.md) .
+Sémantické hodnocení se nabízí na úrovních Standard, v určitých oblastech. Další informace a registraci najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing). Nový typ dotazu povoluje hodnocení relevance a struktury odpovědí sémantického hledání. Začněte tím, [že vytvoříte sémantický dotaz](semantic-how-to-query-request.md).
 
 Případně si můžete projít některé z následujících článků a získat související informace.
 
-+ [Přidat kontrolu pravopisu pro dotaz na výrazy](speller-how-to-add.md)
++ [Přehled sémantického hledání](semantic-search-overview.md)
 + [Vrátí sémantickou odpověď.](semantic-answers.md)

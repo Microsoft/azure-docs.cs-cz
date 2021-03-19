@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: b99cbf91d7fc1c5d90753dfa1461a58eda055180
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: e467affd3ba1b839ce3323e3689d7f5134a0686f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418891"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604300"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Vrácení sémantické odpovědi v Azure Kognitivní hledání
 
@@ -24,7 +24,7 @@ Když vytváříte [sémantický dotaz](semantic-how-to-query-request.md), můž
 
 V tomto článku se dozvíte, jak vyžádat sémantickou odpověď, rozbalit odpověď a zjistit, jaké charakteristiky obsahu nejlépe přispívají k vytváření vysoce kvalitních odpovědí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Všechny požadavky, které platí pro [sémantické dotazy](semantic-how-to-query-request.md) , se vztahují také na odpovědi, včetně úrovně služeb a oblasti.
 
@@ -63,7 +63,7 @@ Parametr "searchFields" je velmi důležitý pro vrácení vysoce kvalitní odpo
 
 + Řetězec dotazu nesmí mít hodnotu null a měl by být formulován jako otázka. V této verzi Preview musí být "queryType" a "queryLanguage" nastavené přesně tak, jak je znázorněno v příkladu.
 
-+ Parametr "searchFields" Určuje, která pole poskytují tokeny modelu extrakce. Nezapomeňte nastavit tento parametr. Musíte mít alespoň jedno pole řetězce, ale zahrňte jakékoli pole řetězce, které považujete za užitečné při poskytování odpovědi. Do modelu se předává jenom přibližně 8 000 tokenů na dokument. Zahajte seznam polí s stručnými poli a pak průběh do polí s textem v textu. Podrobné pokyny k nastavení tohoto pole naleznete v tématu [set searchFields](semantic-how-to-query-request.md#searchfields).
++ Parametr "searchFields" Určuje, která pole poskytují tokeny modelu extrakce. Nezapomeňte nastavit tento parametr. Musíte mít alespoň jedno pole řetězce, ale zahrňte jakékoli pole řetězce, které považujete za užitečné při poskytování odpovědi. Souhrnně napříč všemi poli v searchFields se do modelu předávají jenom informace o tokenech 8 000 v jednom dokumentu. Zahajte seznam polí s stručnými poli a pak průběh do polí s textem v textu. Podrobné pokyny k nastavení tohoto pole naleznete v tématu [set searchFields](semantic-how-to-query-request.md#searchfields).
 
 + Pro "odpovědi" je základní konstrukce parametrů `"answers": "extractive"` , kde je výchozí počet vrácených odpovědí jedna. Počet odpovědí můžete zvýšit přidáním počtu, maximálně po pěti.  Bez ohledu na to, jestli potřebujete víc než jednu odpověď, závisí na uživatelském prostředí vaší aplikace a na tom, jak se mají vykreslovat výsledky.
 
@@ -115,15 +115,15 @@ V případě dotazu "How to Clouds Form" se v odpovědi vrátí následující o
 
 Pro dosažení nejlepších výsledků vraťte sémantické odpovědi na dokument corpus s následujícími charakteristikami:
 
-+ "searchFields" by měl obsahovat jedno nebo více polí, která poskytují dostatečný text, ve kterém je pravděpodobně nalezena odpověď.
-
-+ Sémantická extrakce a sumarizace mají omezení, kolik obsahu je možné včas analyzovat. Souhrnně se analyzují jenom první tokeny 20 000. Vše nad rámec, které je ignorováno. V praktických případech, pokud máte velké dokumenty, které běží na stovkách stránek, byste se měli pokusit rozdělit obsah do spravovatelných částí jako první.
++ "searchFields" musí poskytovat pole, která nabízejí dostatečný text, ve kterém je pravděpodobně nalezena odpověď. Jako odpověď se může zobrazit jenom doslovné text dokumentu.
 
 + řetězce dotazu nesmí mít hodnotu null (Search = `*` ) a řetězec by měl mít charakteristiky otázky, a to na rozdíl od vyhledávání klíčového slova (sekvenční seznam libovolných podmínek nebo frází). Pokud se řetězec dotazu nejeví jako odpověď, je zpracování odpovědi přeskočeno, i když požadavek určuje jako parametr dotazu "odpovědi".
+
++ Sémantická extrakce a sumarizace mají omezení, kolik tokenů na dokument lze včas analyzovat. V praktických případech, pokud máte velké dokumenty, které běží na stovkách stránek, byste se měli pokusit napřed rozdělit obsah do menších dokumentů.
 
 ## <a name="next-steps"></a>Další kroky
 
 + [Přehled sémantického hledání](semantic-search-overview.md)
 + [Algoritmus sémantického hodnocení](semantic-ranking.md)
-+ [Algoritmus podobnosti](index-ranking-similarity.md)
++ [Algoritmus řazení podobnosti](index-ranking-similarity.md)
 + [Vytvořit sémantický dotaz](semantic-how-to-query-request.md)

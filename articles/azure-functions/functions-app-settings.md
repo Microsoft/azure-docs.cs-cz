@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: fb00f0fe16342bf603d534c34a860278dc21deac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425698"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595971"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -257,9 +257,17 @@ Používá se jenom při nasazování do plánu Premium nebo na plán spotřeby,
 
 Při použití Azure Resource Manager k vytvoření aplikace Function App během nasazení nezahrnujte do šablony WEBSITE_CONTENTSHARE. Toto nastavení aplikace se generuje během nasazování. Další informace najdete v tématu [Automatizace nasazení prostředků pro aplikaci Function App](functions-infrastructure-as-code.md#windows).   
 
+## <a name="website_dns_server"></a>\_Server DNS \_ webu
+
+Nastaví server DNS používaný aplikací při překladu IP adres. Toto nastavení se často vyžaduje při používání určitých síťových funkcí, například [Azure DNS privátních zónách](functions-networking-options.md#azure-dns-private-zones) a [soukromých koncových bodů](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network).   
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|\_Server DNS \_ webu|168.63.129.16|
+
 ## <a name="website_max_dynamic_application_scale_out"></a>maximální navýšení \_ \_ \_ kapacity dynamické aplikace \_ \_ na webu
 
-Maximální počet instancí, na které může aplikace Function App navýšit horizontální navýšení kapacity. Výchozí hodnota není nijak omezena.
+Maximální počet instancí, na které může aplikace navýšit horizontální navýšení kapacity. Výchozí hodnota není nijak omezena.
 
 > [!IMPORTANT]
 > Toto nastavení je ve verzi Preview.  Byla přidána [vlastnost aplikace pro maximum horizontálního](./event-driven-scaling.md#limit-scale-out) navýšení kapacity a je doporučeným způsobem, jak omezit horizontální navýšení kapacity.
@@ -297,6 +305,14 @@ Umožňuje nastavit časové pásmo pro aplikaci Function App.
 |\_časové \_ pásmo webu|Linux|America/New_York|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
+
+## <a name="website_vnet_route_all"></a>všechna směrování webu na \_ virtuální síť \_ \_
+
+Označuje, jestli se veškerý odchozí provoz z aplikace směruje přes virtuální síť. Hodnota nastavení `1` znamená, že veškerý provoz se směruje přes virtuální síť. Toto nastavení je potřeba použít při použití funkcí [Místní integrace virtuální sítě](functions-networking-options.md#regional-virtual-network-integration). Používá se také v případě, že se [k definování statické odchozí IP adresy používá brána NAT služby Virtual Network](functions-how-to-use-nat-gateway.md). 
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|všechna směrování webu na \_ virtuální síť \_ \_|1|
 
 ## <a name="next-steps"></a>Další kroky
 

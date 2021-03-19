@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: dbcd6d55ee921c7fabd8e746e0fdcd6f1427733c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f99f9d240a0a9220d3b7f57cddd0a4f8ba6b6101
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210702"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595985"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions
 
@@ -256,7 +256,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `TimerTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastavené na "timerTrigger". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr** | Není k dispozici | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
@@ -365,6 +365,16 @@ Aktivační událost časovače používá zámek úložiště, aby zajistila, �
 ## <a name="retry-behavior"></a>Chování opakování
 
 Na rozdíl od triggeru fronty se aktivační událost časovače neopakuje po chybě funkce. Když funkce dojde k chybě, nebude znovu volána až do příštího plánu.
+
+## <a name="manually-invoke-a-timer-trigger"></a>Ruční vyvolání triggeru časovače
+
+Aktivační událost časovače pro Azure Functions poskytuje Webhook HTTP, který je možné vyvolat k ruční aktivaci funkce. To může být velmi užitečné v následujících scénářích.
+
+* Testování integrace
+* Zahození slotu jako součást aktivity typu kouřového testu nebo zahřívání
+* Počáteční nasazení funkce k okamžitému naplnění mezipaměti nebo vyhledávací tabulky v databázi
+
+Podrobnosti o tom, jak ručně aktivovat funkci aktivovanou časovačem, najdete v tématu [Ruční spuštění funkce neaktivované protokolem HTTP](./functions-manually-run-non-http.md) .
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

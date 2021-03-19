@@ -35,8 +35,8 @@
       href: concepts-developer-guide-device.md
     - name: Příručka pro vývojáře služeb
       href: concepts-developer-guide-service.md
-    - name: Komponenty
-      href: concepts-components.md
+    - name: Průvodce modelováním
+      href: concepts-modeling-guide.md
     - name: Konvence IoT Plug and Play
       href: concepts-convention.md
     - name: Přemostění IoT Plug and Play

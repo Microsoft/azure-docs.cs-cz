@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 03/15/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ce1a4808833cbd897da17f9ad75af346538d23d1
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e0d8a8e3320b49b6fbe3e8ab66c0b4569fac9afd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103473083"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587929"
 ---
 # <a name="azure-synapse-analytics-connectivity-settings"></a>Nastavení připojení Azure synapse Analytics
 
@@ -21,7 +21,7 @@ Tento článek vysvětluje nastavení připojení ve službě Azure synapse Anal
 
 
 ## <a name="connection-policy"></a>Zásady připojení
-Zásady připojení pro synapse SQL ve službě Azure synapse Analytics jsou nastavené na *výchozí*. Tuto změnu v Azure synapse Analytics nemůžete změnit. Další informace o tom, jak to ovlivní připojení k synapse SQL v Azure synapse Analytics, najdete [tady](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy). 
+Zásady připojení pro synapse SQL ve službě Azure synapse Analytics jsou nastavené na *výchozí*. Tuto změnu v Azure synapse Analytics nemůžete změnit. Další informace o tom, jak to ovlivní připojení k synapse SQL v Azure synapse Analytics, najdete [tady](../../azure-sql/database/connectivity-architecture.md#connection-policy). 
 
 ## <a name="minimal-tls-version"></a>Minimální verze protokolu TLS
 Synapse SQL ve službě Azure synapse Analytics umožňuje připojení pomocí všech verzí TLS. V Azure synapse Analytics nemůžete nastavit minimální verzi TLS pro synapse SQL.

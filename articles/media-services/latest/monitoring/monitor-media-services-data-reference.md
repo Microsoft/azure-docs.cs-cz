@@ -6,13 +6,13 @@ ms.author: inhenkel
 manager: femila
 ms.topic: reference
 ms.service: media-services
-ms.date: 03/11/2021
-ms.openlocfilehash: 461c998aa85d70d69cb267fdbeabd7eabcfb5854
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.date: 03/17/2021
+ms.openlocfilehash: 866b2faf473f06fc3f85cdb434d6555504a7f6a8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471545"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598180"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Referenční informace o Media Services dat monitorování
 
@@ -31,7 +31,7 @@ Media Services podporuje monitorování metrik pro následující prostředky:
 
 Můžete monitorovat následující metriky účtu.
 
-|Název metriky|Zobrazované jméno|Popis|
+|Název metriky|Zobrazované jméno|Description|
 |---|---|---|
 |AssetCount|Počet assetů|Prostředky ve vašem účtu.|
 |AssetQuota|Kvóta prostředků|Kvóta prostředků ve vašem účtu.|
@@ -49,7 +49,7 @@ Měli byste taky zkontrolovat [kvóty a omezení účtu](../limits-quotas-constr
 
 Jsou podporovány následující Media Services metriky [koncových bodů streamování](/rest/api/media/streamingendpoints) :
 
-|Název metriky|Zobrazované jméno|Popis|
+|Název metriky|Zobrazované jméno|Description|
 |---|---|---|
 |Žádosti|Žádosti|Poskytuje celkový počet požadavků HTTP poskytovaných koncovým bodem streamování.|
 |Výchozí přenos dat|Výchozí přenos dat|Celkový počet odchozích bajtů za minutu na koncový bod streamování.|
@@ -75,7 +75,7 @@ Media Services podporuje následující diagnostické protokoly:
 
 ### <a name="key-delivery"></a>Doručení klíče
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |Požadavek služby doručení klíčů|Protokoly, které zobrazují informace o požadavku služby doručování klíčů Další informace najdete v tématu [schémata](monitor-media-services-data-reference.md).|
 
@@ -87,7 +87,7 @@ Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdet
 
 Tyto vlastnosti jsou specifické pro schéma protokolu doručení klíčů.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |keyId|ID požadovaného klíče|
 |keyType|Může to být jedna z následujících hodnot: "Clear" (bez šifrování), "FairPlay", "PlayReady" nebo "Widevine".|

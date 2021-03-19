@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487113"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600798"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Dotazování v Azure Kognitivní hledání
 
@@ -71,7 +71,7 @@ V Kognitivní hledání je fulltextové vyhledávání založené na dotazovací
 
 V případě, že jsou nalezeny odpovídající výrazy, modul dotazů znovu vytvoří vyhledávací dokument obsahující shodu pomocí klíče dokumentu nebo ID k sestavení hodnot polí, rozhodne dokumenty v pořadí podle relevance a vrátí nejvyšší 50 (ve výchozím nastavení) v odpovědi nebo jiné číslo, pokud jste určili **`top`** .
 
-Pokud implementujete fulltextové vyhledávání, pomůže vám pochopit, jakým způsobem je váš obsah založen na tokenech, a pomůže vám ladit případné anomálie dotazů. Dotazy nad řetězci s pomlčkou nebo speciálními znaky můžou vyžadovat použití analyzátoru jiného než výchozího standardního poiterace, aby se zajistilo, že index obsahuje správné tokeny. Můžete přepsat výchozí hodnoty pomocí [analyzátorů jazyka](index-add-language-analyzers.md#language-analyzer-list) nebo [specializovaných analyzátorů](index-add-custom-analyzers.md#AnalyzerTable) , které upraví lexikální analýzu. Jedním z příkladů je [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , které se zachází s celým obsahem pole jako s jedním tokenem. To je užitečné pro data, jako jsou kódy PSČ, ID a některé názvy produktů. Další informace naleznete v části [hledání částečného termínu a vzory se speciálními znaky](search-query-partial-matching.md).
+Pokud implementujete fulltextové vyhledávání, pomůže vám pochopit, jakým způsobem je váš obsah založen na tokenech, a pomůže vám ladit případné anomálie dotazů. Dotazy nad řetězci s pomlčkou nebo speciálními znaky můžou vyžadovat použití analyzátoru jiného než výchozího standardního poiterace, aby se zajistilo, že index obsahuje správné tokeny. Můžete přepsat výchozí hodnoty pomocí [analyzátorů jazyka](index-add-language-analyzers.md#language-analyzer-list) nebo [specializovaných analyzátorů](index-add-custom-analyzers.md#built-in-analyzers) , které upraví lexikální analýzu. Jedním z příkladů je [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , které se zachází s celým obsahem pole jako s jedním tokenem. To je užitečné pro data, jako jsou kódy PSČ, ID a některé názvy produktů. Další informace naleznete v části [hledání částečného termínu a vzory se speciálními znaky](search-query-partial-matching.md).
 
 Pokud předpokládáte těžké použití logických operátorů, což je pravděpodobnější v indexech, které obsahují velké textové bloky (pole obsahu nebo dlouhé popisy), ujistěte se, že testujete dotazy s **`searchMode=Any|All`** parametrem, abyste vyhodnotili dopad tohoto nastavení na logických hledání.
 
@@ -85,7 +85,7 @@ Filtry se běžně používají v aplikacích, které zahrnují Kognitivní hled
 
 Je také možné, že budete potřebovat filtry k vyvolání specializovaného formuláře dotazu, jak je popsáno v následující tabulce. Můžete použít filtr s neurčeným hledáním ( **`search=*`** ) nebo s řetězcem dotazu, který obsahuje výrazy, fráze, operátory a vzory.
 
-| Scénář filtru | Popis |
+| Scénář filtru | Description |
 |-----------------|-------------|
 | Filtry rozsahu | V Azure Kognitivní hledání jsou dotazy Range sestaveny pomocí parametru Filter. Další informace a příklady najdete v tématu [příklad filtru rozsahu](search-query-simple-examples.md#example-5-range-filters). |
 | Hledání geografického umístění | Pokud je prohledávatelné pole [typu EDM. GeographyPoint](/rest/api/searchservice/supported-data-types), můžete vytvořit výraz filtru pro "najít blízko" nebo ovládací prvky hledání na základě mapy. Pole, která jednotky geografického hledání obsahují, obsahují souřadnice. Další informace a příklad najdete v [příkladu geografického hledání](search-query-simple-examples.md#example-6-geo-search). |

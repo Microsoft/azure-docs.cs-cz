@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 6d0e660ecce1d45dab4d6003cdba391ba2eb4ee9
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: eacca5573c672e9f4485c26b1b580ee4c982c5d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095591"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580742"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Ochrana úloh Kubernetes
 
@@ -39,7 +39,7 @@ Pokud povolíte Azure Defender, Security Center nabízí více funkcí zabezpeč
 |Stanov|Free|
 |Požadované role a oprávnění:|**Vlastník** nebo **Správce zabezpečení** pro úpravu přiřazení<br>**Čtenář** pro zobrazení doporučení|
 |Požadavky prostředí:|Kubernetes v 1.14 (nebo vyšší) je povinný údaj.<br>Žádný prostředek PodSecurityPolicy (starý model PSP) v clusterech<br>Uzly Windows nejsou podporované.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -80,12 +80,12 @@ Pokud chcete nakonfigurovat doporučení, nainstalujte  **doplněk Azure Policy 
 
     | Název doporučení                                                         | Řízení zabezpečení                         | Vyžaduje se konfigurace |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | Měla by se vyhovět omezení procesoru a paměti kontejneru.                          | Ochrana aplikací před útoky DDoS | Ne                     |
-    | Měly by se vyhnout privilegovanému kontejneru                                     | Správa přístupu a oprávnění            | Ne                     |
-    | Neměnné (jen pro čtení) kořenový systém souborů by měl být vynutil pro kontejnery.     | Správa přístupu a oprávnění            | Ne                     |
-    | Je třeba zabránit kontejneru s eskalací oprávnění.                       | Správa přístupu a oprávnění            | Ne                     |
-    | Spuštění kontejnerů jako kořenový uživatel by se mělo vyhnout.                           | Správa přístupu a oprávnění            | Ne                     |
-    | Kontejnery sdílející závislé obory názvů hostitele by se měly vyhnout              | Správa přístupu a oprávnění            | Ne                     |
+    | Měla by se vyhovět omezení procesoru a paměti kontejneru.                          | Ochrana aplikací před útoky DDoS | No                     |
+    | Měly by se vyhnout privilegovanému kontejneru                                     | Správa přístupu a oprávnění            | No                     |
+    | Neměnné (jen pro čtení) kořenový systém souborů by měl být vynutil pro kontejnery.     | Správa přístupu a oprávnění            | No                     |
+    | Je třeba zabránit kontejneru s eskalací oprávnění.                       | Správa přístupu a oprávnění            | No                     |
+    | Spuštění kontejnerů jako kořenový uživatel by se mělo vyhnout.                           | Správa přístupu a oprávnění            | No                     |
+    | Kontejnery sdílející závislé obory názvů hostitele by se měly vyhnout              | Správa přístupu a oprávnění            | No                     |
     | Pro kontejnery by se měly vyhovět aspoň privilegované možnosti pro Linux.       | Správa přístupu a oprávnění            | **Ano**                |
     | Použití ovládacího připojení svazku pod HostPath by mělo být omezené na známý seznam.    | Správa přístupu a oprávnění            | **Ano**                |
     | Kontejnery by měly naslouchat jenom povoleným portům.                              | Omezit neautorizovaný přístup k síti     | **Ano**                |

@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 62f61549ffd6312b94589b9cabbc347edafd0ff2
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3d71a7ad2507909dacf54e7f1c49b6e768033113
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601963"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600475"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
@@ -244,24 +244,31 @@ Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřed
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z rozsahu internetových IP adres
 
-Účty úložiště můžete nakonfigurovat tak, aby povolovaly přístup z určitých rozsahů veřejných internetových IP adres. Tato konfigurace uděluje přístup ke konkrétním internetovým službám a místním sítím a blokuje obecný internetový provoz.
+Můžete použít pravidla sítě IP k povolení přístupu z konkrétních rozsahů veřejných internetových IP adres vytvořením pravidel sítě IP. Každý účet úložiště podporuje až 200 pravidel. Tato pravidla udělují přístup ke konkrétním internetovým službám a místním sítím a blokují obecný internetový provoz.
 
-Zadejte povolené rozsahy internetových adres pomocí [zápisu CIDR](https://tools.ietf.org/html/rfc4632) ve formě *16.17.18.0/24* nebo jako jednotlivé IP adresy, jako je *16.17.18.19*.
+Pro rozsahy IP adres platí následující omezení.
 
-   > [!NOTE]
-   > Malé rozsahy adres používající velikosti předpony "/31" nebo "/32" se nepodporují. Tyto rozsahy by měly být nakonfigurované pomocí jednotlivých pravidel IP adres.
+- Pravidla sítě IP jsou povolena pouze pro **veřejné internetové** IP adresy. 
 
-Pravidla sítě IP jsou povolená jenom pro **veřejné internetové** IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povolené v pravidlech protokolu IP. Soukromé sítě obsahují adresy, které začínají na _10. *_, _172,16. *_  -  _172,31. *_ a _192,168. *_.
+  Rozsahy IP adres rezervované pro privátní sítě (definované v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povolené v pravidlech protokolu IP. Soukromé sítě obsahují adresy, které začínají na _10. *_, _172,16. *_  -  _172,31. *_ a _192,168. *_.
 
-   > [!NOTE]
-   > Pravidla sítě IP neovlivňují požadavky pocházející ze stejné oblasti Azure jako účet úložiště. Použijte [pravidla virtuální sítě](#grant-access-from-a-virtual-network) a povolte tak požadavky stejné oblasti.
+- Je nutné zadat povolené rozsahy internetových adres pomocí [zápisu CIDR](https://tools.ietf.org/html/rfc4632) ve formě *16.17.18.0/24* nebo jako jednotlivé IP adresy, jako je *16.17.18.19*. 
 
-  > [!NOTE]
-  > Služby nasazené ve stejné oblasti jako účet úložiště používají privátní IP adresy Azure ke komunikaci. Proto nemůžete omezit přístup ke konkrétním službám Azure na základě jejich veřejného odchozího rozsahu IP adres.
+- Malé rozsahy adres používající velikosti předpony "/31" nebo "/32" se nepodporují. Tyto rozsahy by měly být nakonfigurované pomocí jednotlivých pravidel IP adres. 
 
-Pro konfiguraci pravidel brány firewall úložiště se podporují jenom IPV4 adresy.
+- Pro konfiguraci pravidel brány firewall úložiště se podporují jenom IPV4 adresy.
 
-Každý účet úložiště podporuje až 200 pravidel sítě IP.
+Pravidla sítě protokolu IP nelze použít v následujících případech:
+
+- Pokud chcete omezit přístup ke klientům ve stejné oblasti Azure jako účet úložiště.
+  
+  Pravidla sítě IP neovlivňují požadavky pocházející ze stejné oblasti Azure jako účet úložiště. Použijte [pravidla virtuální sítě](#grant-access-from-a-virtual-network) a povolte tak požadavky stejné oblasti. 
+
+- Pro omezení přístupu ke klientům v [spárované oblasti](../../best-practices-availability-paired-regions.md) , která se nachází ve virtuální síti s koncovým bodem služby.
+
+- Pokud chcete omezit přístup ke službám Azure nasazeným ve stejné oblasti jako účet úložiště.
+
+  Služby nasazené ve stejné oblasti jako účet úložiště používají privátní IP adresy Azure ke komunikaci. Proto nemůžete omezit přístup ke konkrétním službám Azure na základě jejich veřejného odchozího rozsahu IP adres.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurace přístupu z místních sítí
 

@@ -4,14 +4,14 @@ description: Zjistěte, jak nakonfigurovat řízení přístupu na základě rol
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: thweiss
-ms.openlocfilehash: 7c5497615ce71d0be713ef9ae28ab1e0f85b7ddb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: efde86eac3e0830b36eabfc9e80df09daeed9f6f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177228"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586042"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurace řízení přístupu na základě role pomocí Azure Active Directory pro účet Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ NeAzure Cosmos DB rovina dat je založena na konceptech, které se běžně nach
 
 V následující tabulce jsou uvedeny všechny akce vystavené modelem oprávnění.
 
-| Název | Odpovídající operace s databází |
+| Name | Odpovídající operace s databází |
 |---|---|
 | `Microsoft.DocumentDB/databaseAccounts/readMetadata` | Čtení metadat účtu. Podrobnosti najdete v tématu [žádosti o metadata](#metadata-requests) . |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create` | Vytvořte novou položku. |
@@ -325,13 +325,13 @@ Způsob vytvoření `TokenCredential` instance je mimo rámec tohoto článku. E
 
 - [v .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
 - [v jazyce Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
+- [v JavaScriptu](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
 
 Níže uvedené příklady používají instanční objekt s `ClientSecretCredential` instancí.
 
 ### <a name="in-net"></a>V .NET
 
-> [!NOTE]
-> `preview`Pro přístup k této funkci je nutné použít verzi sady Azure Cosmos DB .NET SDK.
+Azure Cosmos DB RBAC se v současné době podporuje v rámci `preview` verze sady [.NET SDK V3](sql-api-sdk-dotnet-standard.md).
 
 ```csharp
 TokenCredential servicePrincipal = new ClientSecretCredential(
@@ -342,6 +342,8 @@ CosmosClient client = new CosmosClient("<account-endpoint>", servicePrincipal);
 ```
 
 ### <a name="in-java"></a>V Javě
+
+Azure Cosmos DB RBAC se v současnosti podporuje v sadě [Java SDK v4](sql-api-sdk-java-v4.md).
 
 ```java
 TokenCredential ServicePrincipal = new ClientSecretCredentialBuilder()
@@ -354,6 +356,21 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
     .endpoint("<account-endpoint>")
     .credential(ServicePrincipal)
     .build();
+```
+
+### <a name="in-javascript"></a>V JavaScriptu
+
+Azure Cosmos DB RBAC se v současné době podporuje v [sadě JavaScript SDK V3](sql-api-sdk-node.md).
+
+```javascript
+const servicePrincipal = new ClientSecretCredential(
+    "<azure-ad-tenant-id>",
+    "<client-application-id>",
+    "<client-application-secret>");
+const client = new CosmosClient({
+    "<account-endpoint>",
+    aadCredentials: servicePrincipal
+});
 ```
 
 ## <a name="auditing-data-requests"></a>Požadavky na auditování dat
@@ -374,25 +391,25 @@ Tyto další informace se toků v kategorii protokolu **DataPlaneRequests** a sk
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>Která Azure Cosmos DB rozhraní API podporuje RBAC?
+### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>Která rozhraní API služby Azure Cosmos DB podporuje řízení přístupu na základě role?
 
-V tuto chvíli se podporuje jenom rozhraní SQL API.
+V současné době se podporuje pouze rozhraní SQL API.
 
-### <a name="is-it-possible-to-manage-role-definitions-and-role-assignments-from-the-azure-portal"></a>Je možné spravovat definice rolí a přiřazení rolí z Azure Portal?
+### <a name="is-it-possible-to-manage-role-definitions-and-role-assignments-from-the-azure-portal"></a>Je možné spravovat definice a přiřazení rolí na webu Azure Portal?
 
-Azure Portal Podpora správy rolí ještě není k dispozici.
+Podpora správy rolí na webu Azure Portal zatím není k dispozici.
 
 ### <a name="which-sdks-in-azure-cosmos-db-sql-api-support-rbac"></a>Které sady SDK v Azure Cosmos DB SQL API podporují RBAC?
 
 Sady SDK pro [.NET V3](sql-api-sdk-dotnet-standard.md) a [Java v4](sql-api-sdk-java-v4.md) jsou aktuálně podporované.
 
-### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Automaticky aktualizuje Azure Cosmos DB sady SDK, když vyprší platnost tokenu služby Azure AD?
+### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Aktualizují sady SDK služby Azure Cosmos DB automaticky token Azure AD, když vyprší jeho platnost?
 
 Ano.
 
-### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>Je možné zakázat použití primárního klíče účtu při použití možnosti RBAC?
+### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>Je možné při použití řízení přístupu na základě role zakázat používání primárního klíče účtu?
 
-Zakázání primárního klíče účtu není momentálně možné.
+V současné době není možné zakázat primární klíč účtu.
 
 ## <a name="next-steps"></a>Další kroky
 

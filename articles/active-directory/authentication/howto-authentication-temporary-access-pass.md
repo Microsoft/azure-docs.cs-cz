@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 03/18/2021
 ms.author: justinha
 author: inbarckms
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101e3ee9279d3560c0b561f0ea7ea695387bee15
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096458"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579378"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurace dočasného přístupového průchodu ve službě Azure AD pro registraci metod ověřování bez hesla (Preview)
 
@@ -127,7 +127,7 @@ Pamatujte na tato omezení:
 - Dočasný přístupový průchod nelze použít s adaptérem rozšíření serveru NPS (Network Policy Server) a Active Directory Federation Services (AD FS) (AD FS).
 - Pokud je v tenantovi zapnuté bezproblémové jednotné přihlašování, zobrazí se uživatelům výzva k zadání hesla. Odkaz **použít váš dočasný přístup** bude k dispozici pro uživatele, aby se přihlásil pomocí dočasného přístupového průchodu.
 
-![Snímek obrazovky s použitím dočasného předávacího přístupu](./media/how-to-authentication-temporary-access-pass/alternative.png)
+  ![Snímek obrazovky s použitím dočasného předávacího přístupu](./media/how-to-authentication-temporary-access-pass/alternative.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží    
 

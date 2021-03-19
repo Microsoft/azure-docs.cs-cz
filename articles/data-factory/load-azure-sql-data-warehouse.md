@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/29/2020
-ms.openlocfilehash: 94f5884cb9d1886a9e7aa6b09817b26bba6d47f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0ebbbcd7430a86ee431f67f7b6174b45d60056e5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370712"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593709"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Načtení dat do služby Azure synapse Analytics pomocí Azure Data Factory
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 > [!NOTE]
 > Další informace najdete v tématu [kopírování dat do nebo ze služby Azure synapse Analytics pomocí Azure Data Factory](connector-azure-sql-data-warehouse.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Azure synapse Analytics: datový sklad obsahuje data, která se kopírují z databáze SQL. Pokud nemáte Azure synapse Analytics, přečtěte si pokyny v tématu [Vytvoření služby Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md).
@@ -56,7 +56,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 3. Vyberte **Vytvořit**.
 4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku:
 
-   ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Domovská stránka Azure Data Factory s dlaždicí pro monitorování autora &.":::
 
    Výběrem dlaždice **Author & Monitor** (Vytvořit a monitorovat) otevřete na samostatné kartě aplikaci pro integraci dat.
 

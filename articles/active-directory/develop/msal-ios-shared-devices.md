@@ -1,7 +1,7 @@
 ---
 title: Režim sdíleného zařízení pro zařízení s iOS
 titleSuffix: Microsoft identity platform | Azure
-description: Naučte se povolit režim sdíleného zařízení, aby Firstline pracovníci mohli sdílet zařízení s iOS.
+description: Naučte se povolit režim sdíleného zařízení, aby prvotní pracovníci mohli sdílet zařízení s iOS.
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,19 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c67c5d7b46c04e7f1aea020127ee798878c43d60
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561059"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578766"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Režim sdíleného zařízení pro zařízení s iOS
 
 >[!IMPORTANT]
 > Tato funkce [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-Firstline pracovní procesy, jako jsou maloobchodníci, členové posádky a pracovníci polních služeb často používají ke své práci sdílené mobilní zařízení. Tato sdílená zařízení mohou představovat bezpečnostní rizika, pokud uživatelé sdílejí svá hesla nebo kódy PIN, úmyslně nebo nechtějí získat přístup k datům zákazníků a podnikových dat na sdíleném zařízení.
+Prvotní pracovní procesy, jako jsou maloobchodníci, členové posádky a pracovníci polních služeb často používají ke své práci sdílené mobilní zařízení. Tato sdílená zařízení mohou představovat bezpečnostní rizika, pokud uživatelé sdílejí svá hesla nebo kódy PIN, úmyslně nebo nechtějí získat přístup k datům zákazníků a podnikových dat na sdíleném zařízení.
 
 Režim sdíleného zařízení umožňuje nakonfigurovat zařízení se systémem iOS 13 nebo vyšším, aby je bylo snazší a bezpečně sdílené zaměstnanci. Zaměstnanci se můžou rychle přihlašovat a přistupovat k informacím o zákaznících. Až se dokončí s jejich přesunutím nebo úlohou, můžou se odhlásit ze zařízení a hned ho začít používat pro dalšího zaměstnance.
 
@@ -41,7 +41,7 @@ Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a s
 
 1. **Správci zařízení** připraví zařízení pro sdílení pomocí poskytovatele správy mobilních zařízení (MDM), jako je Microsoft Intune ke správě zařízení v jejich organizaci. MDM vloží aplikaci Microsoft Authenticator do zařízení a zapne "sdílený režim" pro každé zařízení prostřednictvím aktualizace profilu na zařízení. V tomto nastavení sdíleného režimu se mění chování podporovaných aplikací na zařízení. Tato konfigurace od poskytovatele MDM nastavuje režim sdíleného zařízení pro zařízení a povoluje [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) , která se vyžadují pro režim sdíleného zařízení.
 
-1. [ **Vyžadováno pouze během Public Preview** ] Uživatel s rolí [správce cloudového zařízení](../roles/permissions-reference.md#cloud-device-administrator) musí potom spustit [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a připojit své zařízení k organizaci.
+1. [**Vyžadováno pouze během Public Preview**] Uživatel s rolí [správce cloudového zařízení](../roles/permissions-reference.md#cloud-device-administrator) musí potom spustit [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a připojit své zařízení k organizaci.
 
     Pokud chcete nakonfigurovat členství vaší organizační role v Azure Portal: **Azure Active Directory**  >  **role a správci**  >  **cloudového zařízení správce**
 
@@ -56,10 +56,10 @@ Vaše zařízení musí být nakonfigurované tak, aby podporovalo režim sdíle
 
 1. Na portálu konfigurace Intune řekněte zařízení, aby povolilo [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) s následující konfigurací:
 
-    - **Typ** : přesměrování
-    - **ID rozšíření** : com. Microsoft. azureauthenticator. ssoextension
-    - **ID týmu** : (Toto pole není pro iOS potřeba)
-    - **Adresy URL** :   
+    - **Typ**: přesměrování
+    - **ID rozšíření**: com. Microsoft. azureauthenticator. ssoextension
+    - **ID týmu**: (Toto pole není pro iOS potřeba)
+    - **Adresy URL**:   
         - `https://login.microsoftonline.com`
         - `https://login.microsoft.com`
         - `https://sts.windows.net`
@@ -69,7 +69,7 @@ Vaše zařízení musí být nakonfigurované tak, aby podporovalo režim sdíle
         - `https://login.microsoftonline.us`
         - `https://login.usgovcloudapi.net`
         - `https://login-us.microsoftonline.com`
-    - **Další data ke konfiguraci** :
+    - **Další data ke konfiguraci**:
       - Klíč: sharedDeviceMode
       - Typ: Boolean
       - Hodnota: true
@@ -95,7 +95,7 @@ Při změně uživatele byste měli zkontrolovat, že se data předchozího uži
 
 ### <a name="detect-shared-device-mode"></a>Detekovat režim sdíleného zařízení
 
-Zjišťování režimu sdíleného zařízení je pro vaši aplikaci důležité. Mnoho aplikací bude při použití aplikace na sdíleném zařízení vyžadovat změnu v uživatelském prostředí (UX). Například vaše aplikace může mít funkci "registrace", která není vhodná pro pracovní proces Firstline, protože už pravděpodobně má účet. Pokud je v režimu sdíleného zařízení, můžete také pro zpracování dat aplikace přidat další zabezpečení.
+Zjišťování režimu sdíleného zařízení je pro vaši aplikaci důležité. Mnoho aplikací bude při použití aplikace na sdíleném zařízení vyžadovat změnu v uživatelském prostředí (UX). Například vaše aplikace může mít funkci "registrace", která není vhodná pro pracovní proces prvotní, protože už pravděpodobně má účet. Pokud je v režimu sdíleného zařízení, můžete také pro zpracování dat aplikace přidat další zabezpečení.
 
 `getDeviceInformationWithParameters:completionBlock:` `MSALPublicClientApplication` K určení, jestli je aplikace spuštěná na zařízení v režimu sdíleného zařízení, použijte rozhraní API v.
 
@@ -230,6 +230,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete v akci zobrazit režim sdíleného zařízení, následující ukázka kódu na GitHubu obsahuje příklad spuštění aplikace pracovníka Firstline na zařízení s iOS v režimu sdíleného zařízení:
+Pokud chcete v akci zobrazit režim sdíleného zařízení, následující ukázka kódu na GitHubu obsahuje příklad spuštění aplikace pracovníka prvotní na zařízení s iOS v režimu sdíleného zařízení:
 
 [Ukázka rozhraní MSAL pro iOS SWIFT Microsoft Graph](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)
