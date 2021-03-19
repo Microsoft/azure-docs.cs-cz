@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 3fd3695490331a1f599db71bf5cafb25e957bf08
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0876dd00933203c943417d87978567cf555a3e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710341"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598996"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -35,7 +35,7 @@ Funkce PII je součástí NER a může identifikovat a redigování citlivé ent
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Funkce a verze nástroje pro rozpoznávání pojmenovaných entit
 
-| Funkce                                                         | NER v 3.0 | NER v 3.1 – Preview. 3 |
+| Funkce                                                         | NER v 3.0 | NER verze 3.1 – Preview. 4 |
 |-----------------------------------------------------------------|--------|----------|
 | Metody pro jednotlivé a dávkové požadavky                          | ×      | ×        |
 | Rozšířené rozpoznávání entit napříč několika kategoriemi           | ×      | ×        |
@@ -47,8 +47,8 @@ Informace najdete v tématu [Podpora jazyků](../language-support.md) .
 
 Rozpoznávání pojmenovaných entit V3 poskytuje rozšířené zjišťování napříč více typy. V současné době NER v 3.0 dokáže rozpoznat entity v [kategorii obecné entity](../named-entity-types.md).
 
-Recognitioned entity Recognition v 3.1-Preview. 3 zahrnuje možnosti detekce v 3.0 a: 
-* Schopnost zjišťovat osobní údaje ( `PII` ) pomocí `v3.1-preview.3/entities/recognition/pii` koncového bodu. 
+Rozpoznávání pojmenovaných entit v 3.1-Preview. 4 zahrnuje možnosti detekce v 3.0 a: 
+* Schopnost zjišťovat osobní údaje ( `PII` ) pomocí `v3.1-preview.4/entities/recognition/pii` koncového bodu. 
 * Volitelný `domain=phi` parametr pro detekci důvěrných informací o stavu ( `PHI` ).
 * [Asynchronní operace](text-analytics-how-to-call-api.md) s použitím `/analyze` koncového bodu.
 
@@ -72,36 +72,40 @@ Vytvořte žádost POST. Můžete [použít post](text-analytics-how-to-call-api
 
 ### <a name="request-endpoints"></a>Koncové body požadavku
 
-#### <a name="version-31-preview3"></a>[Verze 3,1-Preview. 3](#tab/version-3-preview)
+#### <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-preview)
 
-Rozpoznávání pojmenovaných entit `v3.1-preview.3` používá samostatné koncové body pro žádosti o propojení ner, PII a entit. V závislosti na vaší žádosti použijte formát adresy URL.
+Rozpoznávání pojmenovaných entit `v3.1-preview.4` používá samostatné koncové body pro žádosti o propojení ner, PII a entit. V závislosti na vaší žádosti použijte formát adresy URL.
 
 **Propojení entit**
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/linking`
 
-[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
+[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesLinking)
 
 **Rozpoznávání pojmenovaných entit**
-* Obecné entity – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
+* Obecné entity – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/general`
 
-[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
+[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionGeneral)
 
 **Identifikovatelné osobní údaje (PII)**
-* Osobní ( `PII` ) informace – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
+* Osobní ( `PII` ) informace – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii`
 
 `domain=phi`K detekci `PHI` informací o stavu () v textu můžete použít také volitelný parametr. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?domain=phi`
 
-Počínaje `v3.1-preview.3` verzí odpověď JSON obsahuje `redactedText` vlastnost, která obsahuje upravený vstupní text, kde byly zjištěné entity, které byly zjištěny, nahrazeny hodnotou `*` pro každý znak v entitách.
+Počínaje `v3.1-preview.4` verzí odpověď JSON obsahuje `redactedText` vlastnost, která obsahuje upravený vstupní text, kde byly zjištěné entity, které byly zjištěny, nahrazeny hodnotou `*` pro každý znak v entitách.
 
-[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
+[Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionPii)
+
+Rozhraní API se pokusí rozpoznat [uvedené kategorie entit](../named-entity-types.md?tabs=personal) pro daný jazyk dokumentu. Pokud chcete určit, které entity se budou detekovat a vracet, použijte parametr volitelné PII-Categories s příslušnými kategoriemi entit. Tento parametr vám taky umožní detekovat entity, které nejsou ve výchozím nastavení povolené pro váš jazyk dokumentu. Například číslo licence pro francouzské ovladače, které se může vyskytnout v anglickém textu.
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
 
 **Asynchronní operace**
 
-Počínaje `v3.1-preview.3` nástrojem můžete odesílat požadavky ner asynchronně pomocí `/analyze` koncového bodu.
+Počínaje verzí `v3.1-preview.4` můžete ODESÍLAT ner a požadavky na propojení entit asynchronně pomocí `/analyze` koncového bodu.
 
-* Asynchronní operace – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+* Asynchronní operace – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze`
 
 Informace o posílání asynchronních požadavků naleznete v tématu [How to Call the rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md) .
 

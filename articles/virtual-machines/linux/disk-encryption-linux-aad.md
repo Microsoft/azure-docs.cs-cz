@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d1607ef4ff277f9c9cdb55db3e58da1052a00756
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: cec391ba998165af4dd9339b719a3b73cb330c16
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102558389"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601786"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Povolení Azure Disk Encryption s Azure AD na virtuálních počítačích se systémem Linux (předchozí verze)
 
@@ -210,7 +210,7 @@ Doporučujeme LVM instalaci. Pro všechny následující příklady nahraďte za
 - Přidejte datové disky, které budou tvořit virtuální počítač.
 - Naformátujte, připojte a přidejte tyto disky do souboru fstab.
 
-    1. Naformátujte nově přidaný disk. Symbolických odkazů vygenerované v Azure používáme tady. Použití symbolických odkazů zabraňuje problémům souvisejícím se změnou názvů zařízení. Další informace najdete v tématu [řešení potíží s názvy zařízení](../troubleshooting/troubleshoot-device-names-problems.md).
+    1. Naformátujte nově přidaný disk. Symbolických odkazů vygenerované v Azure používáme tady. Použití symbolických odkazů zabraňuje problémům souvisejícím se změnou názvů zařízení. Další informace najdete v tématu [řešení potíží s názvy zařízení](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
     
         ```console
         mkfs -t ext4 /dev/disk/azure/scsi1/lun0
@@ -266,7 +266,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 Nový datový disk můžete přidat pomocí příkazem [AZ VM disk Attach](add-disk.md) nebo [prostřednictvím Azure Portal](attach-disk-portal.md). Než budete moct šifrování, musíte nejdřív připojit nově připojený datový disk. Musíte požádat o šifrování datové jednotky, protože jednotku nebude možné použít, když probíhá šifrování. 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>Povolení šifrování u nově přidaného disku pomocí Azure CLI
- Pokud byl virtuální počítač dříve zašifrován pomocí "All", parametr--Volume-Type by měl zůstat všechny. Vše zahrnuje operační systém i datové disky. Pokud byl virtuální počítač dříve zašifrován pomocí typu svazku "OS", pak by měl být parametr--Volume-Type změněn na hodnotu All, aby byl operační systém i nový datový disk zahrnut. Pokud byl virtuální počítač zašifrovaný pouze s typem svazku "data", pak může zůstat data, jak je znázorněno zde. Přidání a připojení nového datového disku k virtuálnímu počítači nemá dostatečnou přípravu na šifrování. Předtím, než povolíte šifrování, musí být nově připojený disk ve virtuálním počítači naformátovaný a správně připojený. V systému Linux musí být disk připojen v/etc/fstab s [názvem trvalého blokování zařízení](../troubleshooting/troubleshoot-device-names-problems.md). 
+ Pokud byl virtuální počítač dříve zašifrován pomocí "All", parametr--Volume-Type by měl zůstat všechny. Vše zahrnuje operační systém i datové disky. Pokud byl virtuální počítač dříve zašifrován pomocí typu svazku "OS", pak by měl být parametr--Volume-Type změněn na hodnotu All, aby byl operační systém i nový datový disk zahrnut. Pokud byl virtuální počítač zašifrovaný pouze s typem svazku "data", pak může zůstat data, jak je znázorněno zde. Přidání a připojení nového datového disku k virtuálnímu počítači nemá dostatečnou přípravu na šifrování. Předtím, než povolíte šifrování, musí být nově připojený disk ve virtuálním počítači naformátovaný a správně připojený. V systému Linux musí být disk připojen v/etc/fstab s [názvem trvalého blokování zařízení](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems). 
 
 Na rozdíl od syntaxe PowerShellu rozhraní příkazového řádku nevyžaduje, abyste při povolování šifrování zadali jedinečnou verzi sekvence. Rozhraní příkazového řádku automaticky vygeneruje a použije svou vlastní jedinečnou hodnotu verze sekvence.
 

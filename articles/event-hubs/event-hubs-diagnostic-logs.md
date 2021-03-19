@@ -3,12 +3,12 @@ title: Nastavení diagnostických protokolů – centrum událostí Azure | Micr
 description: Naučte se, jak nastavit protokoly aktivit a diagnostické protokoly pro centra událostí v Azure.
 ms.topic: article
 ms.date: 02/25/2021
-ms.openlocfilehash: 538ff86f1ef4c06bb5400af3fbd2394134aa17f3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5067a2962693ee1c1955aa90e61b43358495585a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742530"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602600"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostických protokolů pro centra událostí Azure
 
@@ -59,7 +59,7 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON).
 
 Řetězce JSON protokolu archivu obsahují prvky uvedené v následující tabulce:
 
-Název | Popis
+Název | Description
 ------- | -------
 `TaskName` | Popis úlohy, která se nezdařila
 `ActivityId` | Interní ID, které se používá ke sledování
@@ -97,7 +97,7 @@ Následující kód je příkladem řetězce JSON protokolu archivu:
 
 Řetězce JSON provozního protokolu obsahují prvky uvedené v následující tabulce:
 
-Název | Popis
+Název | Description
 ------- | -------
 `ActivityId` | Interní ID, které se používá pro účely sledování |
 `EventName` | Název operace Seznam hodnot pro tento prvek najdete v tématu [názvy událostí](#event-names) . |
@@ -136,7 +136,7 @@ Název události je vyplněný jako typ operace + typ prostředku z následujíc
 ## <a name="autoscale-logs-schema"></a>Schéma protokolů automatického škálování
 JSON protokolu automatického škálování obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Název | Description |
 | ---- | ----------- | 
 | `TrackingId` | Interní ID, které se používá pro účely trasování |
 | `ResourceId` | ID prostředku Azure Resource Manager. |
@@ -155,7 +155,7 @@ Tady je příklad události automatického škálování:
 ## <a name="kafka-coordinator-logs-schema"></a>Schéma protokolů koordinátora Kafka
 JSON protokolu Kafka Coordinator obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Název | Description |
 | ---- | ----------- | 
 | `RequestId` | ID žádosti, která se používá pro účely trasování |
 | `ResourceId` | ID prostředku Azure Resource Manager |
@@ -183,7 +183,7 @@ JSON protokolu Kafka Coordinator obsahuje prvky uvedené v následující tabulc
 ## <a name="kafka-user-error-logs-schema"></a>Schéma protokolů chyb uživatele Kafka
 JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Název | Description |
 | ---- | ----------- |
 | `TrackingId` | ID sledování, které se používá pro účely trasování. |
 | `NamespaceName` | Název oboru názvů |
@@ -197,7 +197,7 @@ JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující ta
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs schéma událostí připojení k virtuální síti
 Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Název | Description |
 | ---  | ----------- | 
 | `SubscriptionId` | ID předplatného Azure |
 | `NamespaceName` | Název oboru názvů |
@@ -227,7 +227,7 @@ Protokoly virtuální sítě se generují jenom v případě, že obor názvů u
 ## <a name="customer-managed-key-user-logs"></a>Klíčové uživatelské protokoly spravované uživatelem
 Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Název | Description |
 | ---- | ----------- | 
 | `Category` | Typ kategorie pro zprávu Je to jedna z následujících hodnot: **Chyba** a **informace** |
 | `ResourceId` | ID interního prostředku, což zahrnuje ID předplatného Azure a název oboru názvů |
@@ -247,4 +247,4 @@ Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uve
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)

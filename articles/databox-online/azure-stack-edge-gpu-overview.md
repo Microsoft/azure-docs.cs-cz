@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 8e829d149e96cf658c7a5aaf37291e84def2061e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570095"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602651"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Co je Azure Stack Edge Pro s GPU?
 
@@ -44,7 +44,7 @@ Azure Stack Edge pro nabízí následující možnosti:
 |---------|---------|
 |Akcelerované AI Inferencing| Povoleno integrovaným grafickým procesorem (jeden nebo dva v závislosti na modelu).|
 |Hraniční Computing      |Podporuje úlohy virtuálních počítačů a kontejnerů, aby bylo možné analyzovat, zpracovávat a filtrovat data. |
-|Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu. Místní mezipaměť v zařízení se používá pro rychlý přístup k naposledy použitým souborům.|
+|Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu. Místní mezipaměť v zařízení se používá pro rychlý přístup k naposledy použitým souborům.|
 |Spravované v cloudu     |Zařízení a služba se spravují prostřednictvím Azure Portal.  |
 |Nahrání offline     | Odpojený režim podporuje scénáře nahrání v režimu offline.|
 |Podporované protokoly pro přenos souborů      | Podpora pro protokoly Standard SMB, NFS a REST pro příjem dat. <br> Další informace o podporovaných verzích najdete v tématu [požadavky na systém Azure Stack Edge pro](azure-stack-edge-system-requirements.md).|
@@ -76,6 +76,8 @@ Fyzické zařízení Azure Stack Edge pro, prostředek Azure a cílový účet �
 - **Dostupnost zařízení** – seznam všech zemí nebo oblastí, ve kterých je zařízení Azure Stack Edge pro dostupné, najdete v části **dostupnost** na kartě **Azure Stack Edge** pro [Azure Stack ceny pro Edge pro](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro).
     
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých se ukládají účty úložiště Azure Stack hraniční data pro, jsou umístěny blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon.
+
+Služba Azure Stack Edge je neoblastní služba. Další informace najdete v tématu [oblasti a zóny dostupnosti v Azure](https://docs.microsoft.com/azure/availability-zones/az-overview). Služba Azure Stack Edge nemá závislost na konkrétní oblasti Azure, takže je odolná vůči výpadkům v rámci zóny a výpadkům v rámci oblastí.
 
 ## <a name="next-steps"></a>Další kroky
 

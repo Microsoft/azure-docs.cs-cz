@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: spuštění PlayBook ve službě Azure Sentinel'
-description: Tento kurz vám pomůžete používat playbooky zabezpečení v Azure Sentinel k nastavení automatizovaných odpovědí na hrozby pro problémy související se zabezpečením.
+title: 'Kurz: použití playbooky s pravidly automatizace v Azure Sentinel'
+description: Tento kurz vám umožní využít playbooky spolu s pravidly automatizace v Azure Sentinel k automatizaci reakce na incidenty a napravit hrozby zabezpečení.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,107 +14,199 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/18/2019
+ms.date: 02/18/2021
 ms.author: yelevin
-ms.openlocfilehash: b6fd26b4965b92f5f06a008d67e2d585fd1b41b7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 365ba9df39b4b3bd7397e86e6a51b285bf049242
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652072"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600584"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Kurz: nastavení automatických odpovědí na hrozby v Azure Sentinel
+# <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>Kurz: použití playbooky s pravidly automatizace v Azure Sentinel
 
-
-
-Tento kurz vám pomůže využít playbooky zabezpečení ve službě Azure Sentinel k nastavení automatizovaných odpovědí na hrozby pro problémy související se zabezpečením zjištěné službou Azure Sentinel.
-
+V tomto kurzu se dozvíte, jak pomocí playbooky společně s pravidly automatizace automatizovat reakci na incidenty a opravit bezpečnostní hrozby zjištěné službou Azure Sentinel. Po dokončení tohoto kurzu budete moct:
 
 > [!div class="checklist"]
-> * Principy playbooky
+>
+> * Vytvoření pravidla automatizace
 > * Vytvoření PlayBook
-> * Spustit PlayBook
-> * Automatizace odpovědí na hrozby
+> * Přidání akcí do PlayBook
+> * Připojení PlayBook k pravidlu automatizace nebo pravidla analýzy pro automatizaci odpovědi na hrozbu
 
+## <a name="what-are-automation-rules-and-playbooks"></a>Co jsou pravidla automatizace a playbooky?
 
-## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Co je PlayBook zabezpečení v Azure Sentinel?
+Pravidla automatizace vám pomůžou při třídění incidentů v Azure Sentinel. Můžete je použít k automatickému přiřazení incidentů správným pracovníkům, zavření incidentů s vysokou závažností nebo známých falešně pozitivních výsledků, změně jejich závažnosti a přidání značek. Jsou to také mechanizmus, kterým můžete spustit playbooky v reakci na incidenty.
 
-PlayBook zabezpečení je kolekce procedur, které je možné spustit z Azure Sentinel v reakci na výstrahu. PlayBook zabezpečení může přispět k automatizaci a orchestraci vaší odpovědi a dá se spustit ručně nebo nastavit tak, aby se spouštěla automaticky, když se aktivují konkrétní výstrahy. Playbooky zabezpečení ve službě Azure Sentinel vychází z [Azure Logic Apps](../logic-apps/logic-apps-overview.md), což znamená, že získáte všechny možnosti napájení, možností úprav a předdefinovaných šablon Logic Apps. Každý PlayBook se vytvoří pro konkrétní předplatné, které jste si zvolili, ale při zobrazení na stránce Playbooky se zobrazí všechna playbooky v rámci všech vybraných předplatných.
+Playbooky jsou kolekce procedur, které lze spustit z protokolu Azure Sentinel v reakci na výstrahu nebo incident. PlayBook může přispět k automatizaci a orchestraci vaší odpovědi a je možné ji nastavit tak, aby se automaticky spouštěla, když se generují konkrétní výstrahy nebo incidenty, a to prostřednictvím připojení k pravidlu analýzy nebo pravidla automatizace. Dá se taky spustit ručně na vyžádání.
+
+Playbooky ve službě Azure Sentinel vychází z pracovních postupů vytvořených v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), což znamená, že získáte všechny možnosti napájení, úprav a předdefinovaných šablon Logic Apps. Každý PlayBook se vytvoří pro konkrétní předplatné, ke kterému patří, ale displej **playbooky** zobrazuje všechny dostupné playbooky v rámci všech vybraných předplatných.
 
 > [!NOTE]
-> Playbooky využívá Azure Logic Apps, proto se účtují poplatky. Další podrobnosti najdete na stránce s cenami [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
+> Vzhledem k tomu, že playbooky využívají Azure Logic Apps, mohou platit další poplatky. Další podrobnosti najdete na stránce s cenami [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) .
 
-Pokud máte například obavy týkající se škodlivých útočníků, kteří přistupují k síťovým prostředkům, můžete nastavit výstrahu, která vyhledává škodlivé IP adresy, které přistupují k vaší síti. Pak můžete vytvořit PlayBook, který provede následující akce:
-1. Když se aktivuje výstraha, otevřete lístek v ServiceNow nebo jakémkoli jiném systému pro lístkování IT.
-2. Odešlete zprávu na kanál operací zabezpečení v Microsoft Teams nebo časové rezervy, abyste se ujistili, že analytikům zabezpečení ví o incidentu.
-3. Odešlete všechny informace v výstraze správci a správci zabezpečení vaší hlavní sítě. E-mailová zpráva obsahuje také dva přepínače uživatele, které **blokují** nebo **ignorují**.
-4. PlayBook bude nadále běžet po přijetí odpovědi od správců.
-5. Pokud správci zvolí **blok**, IP adresa je zablokovaná v bráně firewall a uživatel je ve službě Azure AD zakázaný.
-6. Pokud správci zvolí možnost **Ignorovat**, výstraha se uzavře v rámci Azure Sentinel a incident je uzavřený v ServiceNow.
+Například pokud chcete zabránit potenciálně napadeným uživatelům v pohybu kolem sítě a krádeži informací, můžete vytvořit automatizovanou mnohotvárnou reakci na incidenty vygenerované pravidly, které zjišťují napadené uživatele. Začnete vytvořením PlayBook, který provede následující akce:
 
-Playbooky zabezpečení je možné spustit ručně nebo automaticky. Ruční spouštění znamená, že když obdržíte výstrahu, můžete spustit PlayBook na vyžádání jako reakci na vybranou výstrahu. Když je spouštíte automaticky, znamená to, že při vytváření pravidla korelace nastavíte, aby se při aktivaci výstrahy automaticky spouštěla jedna nebo více playbooky.
+1. Když je PlayBook volán pravidlem automatizace, které ho předává incidentu, PlayBook otevře lístek v [ServiceNow](/connectors/service-now/) nebo jakémkoli jiném systému pro lístkování IT.
 
+1. Pošle zprávu na kanál operací zabezpečení v [Microsoft Teams](/connectors/teams/) nebo [časovou rezervu](/connectors/slack/) , aby se zajistilo, že analytikům zabezpečení ví o incidentu.
 
-## <a name="create-a-security-playbook"></a>Vytvoření PlayBook zabezpečení
+1. Odesílá také všechny informace v incidentu v e-mailové zprávě vašemu správci a správci zabezpečení vaší hlavní sítě. E-mailová zpráva bude obsahovat přepínače **blokování** a **Ignorovat** uživatele.
 
-Pomocí těchto kroků vytvořte nové PlayBook zabezpečení v Azure Sentinel:
+1. PlayBook počká, dokud odpověď neobdrží od správců, a pak pokračuje v dalším postupu.
 
-1. Otevřete řídicí panel **Azure Sentinel** .
-2. V části **Konfigurace** vyberte **playbooky**.
+1. Pokud správci zvolí **blok**, pošle příkaz službě Azure AD, který zakáže uživatele, a druhý pro bránu firewall, která zablokuje IP adresu.
 
-   ![Aplikace logiky](./media/tutorial-respond-threats-playbook/playbookimg.png)
+1. Pokud správci zvolí možnost **Ignorovat**, PlayBook uzavře incident v rámci Azure Sentinel a lístek v ServiceNow.
 
-3. Na stránce **Azure Sentinel-playbooky** klikněte na tlačítko **Přidat** .
+Pokud chcete aktivovat PlayBook, vytvoříte pravidlo automatizace, které se spustí, když se tyto incidenty generují. Toto pravidlo provede tyto kroky:
 
-   ![Vytvoření aplikace logiky](./media/tutorial-respond-threats-playbook/create-playbook.png) 
+1. Pravidlo změní stav incidentu na **aktivní**.
 
-4. Na stránce **vytvořit aplikaci logiky** zadejte požadované informace pro vytvoření nové aplikace logiky a klikněte na **vytvořit**. 
+1. Přiřadí incident analytikovi, který je úkolem správy tohoto typu incidentu.
 
-5. V [**Návrháři aplikace logiky**](../logic-apps/logic-apps-overview.md)vyberte šablonu, kterou chcete použít. Pokud vyberete šablonu, která vyžaduje přihlašovací údaje, budete je muset zadat. Alternativně můžete vytvořit nové prázdné PlayBook od začátku. Vyberte **prázdnou aplikaci logiky**. 
+1. Přidá značku "ohrožený uživatel".
 
-   ![Snímek obrazovky, který zobrazuje panel prázdné aplikace logiky](./media/tutorial-respond-threats-playbook/playbook-template.png)
+1. Nakonec volá PlayBook, který jste právě vytvořili. ([Pro tento krok se vyžadují speciální oprávnění](automate-responses-with-playbooks.md#incident-creation-automated-response).)
 
-6. Přejdete do návrháře aplikace logiky, kde můžete vytvořit novou nebo upravit šablonu. Další informace o vytvoření PlayBook s [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
+Playbooky lze spustit automaticky v reakci na incidenty tím, že vytvoříte pravidla automatizace, která volají playbooky jako akce, jako v předchozím příkladu. Můžou se také spouštět automaticky v reakci na výstrahy. Při vygenerování výstrahy si poupozorní pravidlo analýzy, aby automaticky spouštělo jeden nebo více playbooky. 
 
-7. Pokud vytváříte prázdné PlayBook, zadejte do pole **Prohledat všechny konektory a triggery** *Azure Sentinel* a vyberte, **když se aktivuje odpověď na výstrahu Sentinel Azure**. <br>Po vytvoření se nový PlayBook zobrazí v seznamu **playbooky** . Pokud se nezobrazí, klikněte na tlačítko **aktualizovat**.
+Můžete také zvolit, že se má PlayBook spustit ručně na vyžádání, jako odpověď na zvolenou výstrahu.
 
-1. Použijte funkce **získat entity** , které vám umožní získat relevantní entity ze seznamu **entit** , jako jsou účty, IP adresy a hostitelé. To vám umožní spouštět akce u konkrétních entit.
+Získejte úplnější a podrobný Úvod k automatizaci reakce na hrozby pomocí [pravidel automatizace](automate-incident-handling-with-automation-rules.md) a [Playbooky](automate-responses-with-playbooks.md) v Azure Sentinel.
 
-7. Teď můžete definovat, co se stane po aktivaci playbooku. Můžete přidat akci, logickou podmínku, podmínky případu přepínače nebo smyčky.
+> [!IMPORTANT]
+>
+> - **Pravidla automatizace** a použití **triggeru incidentu** pro Playbooky jsou momentálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
 
-   ![Návrhář aplikace logiky](./media/tutorial-respond-threats-playbook/logic-app.png)
+## <a name="create-a-playbook"></a>Vytvoření PlayBook
 
-## <a name="how-to-run-a-security-playbook"></a>Jak spustit PlayBook zabezpečení
+Pomocí těchto kroků vytvořte nové PlayBook ve službě Azure Sentinel:
 
-Můžete spustit PlayBook na vyžádání.
+### <a name="prepare-the-playbook-and-logic-app"></a>Příprava PlayBook a aplikace logiky
+
+1. V navigační nabídce **Azure Sentinel** vyberte **Automation**.
+
+1. V horní nabídce vyberte **vytvořit** a **přidejte nové PlayBook**.
+
+    :::image type="content" source="./media/tutorial-respond-threats-playbook/add-new-playbook.png" alt-text="Přidat nový PlayBook":::
+
+    Otevře se nová karta prohlížeče a přejdete k průvodci **vytvořením aplikace logiky** .
+
+   :::image type="content" source="./media/tutorial-respond-threats-playbook/create-playbook.png" alt-text="Vytvoření aplikace logiky":::
+
+1. Zadejte své **předplatné** a **skupinu prostředků** a v části **název aplikace logiky** zadejte název PlayBook.
+
+1. V poli **oblast** vyberte oblast Azure, ve které se mají ukládat informace o aplikaci logiky.
+
+1. Pokud chcete tuto aktivitu PlayBook sledovat pro účely diagnostiky, zaškrtněte políčko **Povolit Log Analytics** a zadejte název **pracovního prostoru Log Analytics** .
+
+1. Pokud chcete použít značky pro váš PlayBook, klikněte na **Další: značky >** (Nepřipojeno k značkám, které používají pravidla automatizace. [Přečtěte si další informace o značkách](../azure-resource-manager/management/tag-resources.md). V opačném případě klikněte na tlačítko **zkontrolovat + vytvořit**. Potvrďte podrobnosti, které jste zadali, a klikněte na **vytvořit**.
+
+1. Při vytváření a nasazování PlayBook (to může trvat několik minut) se dostanete na obrazovku s názvem **Microsoft. EmptyWorkflow**. Po zobrazení zprávy "vaše nasazení je dokončeno" klikněte na tlačítko **Přejít k prostředku.**
+
+1. Přejdete k novému [návrháři Logic Apps](../logic-apps/logic-apps-overview.md)PlayBook, kde můžete začít navrhovat pracovní postup. Zobrazí se obrazovka s krátkým úvodním videem a běžně používané triggery a šablony aplikace logiky. [Přečtěte si další informace](../logic-apps/logic-apps-create-logic-apps-from-templates.md) o vytváření playbook pomocí Logic Apps.
+
+1. Vyberte šablonu **prázdná aplikace logiky** .
+
+   :::image type="content" source="./media/tutorial-respond-threats-playbook/choose-playbook-template.png" alt-text="Galerie šablon návrháře Logic Apps":::
+
+### <a name="choose-the-trigger"></a>Výběr triggeru
+
+Každý PlayBook musí začínat triggerem. Aktivační událost definuje akci, která spustí PlayBook a schéma, které bude PlayBook očekávat.
+
+1. Na panelu hledání vyhledejte Sentinel Azure. Pokud se zobrazí ve výsledcích, vyberte možnost **Azure Sentinel** .
+
+1. Na kartě výsledné **aktivační události** se zobrazí dvě triggery, které nabízí Azure Sentinel:
+    - Když se aktivuje odpověď na výstrahu Sentinel Azure
+    - Když bylo aktivováno pravidlo pro vytvoření incidentu služby Azure Sentinel
+
+   Vyberte Trigger, který odpovídá typu PlayBook, který vytváříte.
+
+    :::image type="content" source="./media/tutorial-respond-threats-playbook/choose-trigger.png" alt-text="Výběr triggeru pro PlayBook":::
+
+### <a name="add-actions"></a>Přidat akce
+
+Nyní můžete definovat, co se stane při volání PlayBook. Výběrem možnosti **Nový krok** můžete přidat akce, logické podmínky, smyčky nebo podmínky případu přepnutí. Tento výběr otevře nový rámec v návrháři, kde můžete zvolit systém nebo aplikaci, pro kterou chcete pracovat, nebo podmínku, kterou chcete nastavit. Do panelu hledání v horní části rámce zadejte název systému nebo aplikace a pak zvolte z dostupných výsledků.
+
+V každém z těchto kroků se kliknutím na libovolné pole zobrazí panel se dvěma nabídkami: **dynamický obsah** a **výraz**. V nabídce **dynamického obsahu** můžete přidat odkazy na atributy výstrahy nebo incidentu, které byly předány do PlayBook, včetně hodnot a atributů všech zúčastněných entit. V nabídce **výrazu** můžete zvolit z velké knihovny funkcí a přidat další logiku k vašim krokům.
+
+   :::image type="content" source="./media/tutorial-respond-threats-playbook/logic-app.png" alt-text="Návrhář aplikace logiky":::
+
+Tento snímek obrazovky ukazuje akce a podmínky, které byste přidali při vytváření PlayBook popsaných v příkladu na začátku tohoto dokumentu. Jediným rozdílem je to, že v PlayBook, který se tady zobrazuje, použijete **aktivační událost výstrahy** místo **triggeru incidentu**. To znamená, že tento PlayBook budete volat z pravidla analýzy přímo, nikoli z pravidla automatizace. Oba způsoby volání PlayBook budou popsány níže.
+
+## <a name="automate-threat-responses"></a>Automatizace odpovědí na hrozby
+
+Vytvořili jste PlayBook a definovali Trigger, nastavili podmínky a nastavili akce, které bude trvat, a výstupy, které budou vytvořeny. Teď je potřeba určit kritéria, pod kterými se spustí, a nastavit mechanismus automatizace, který se spustí, když budou tato kritéria splněná.
+
+### <a name="respond-to-incidents"></a>Reakce na incidenty
+
+PlayBook můžete použít k reakci na **incident** vytvořením [pravidla automatizace](automate-incident-handling-with-automation-rules.md) , které se spustí při vygenerování incidentu, a pak bude volat PlayBook.
+
+Vytvoření pravidla automatizace:
+
+1. V okně **Automatizace** v navigační nabídce Azure Sentinel vyberte **vytvořit** v horní nabídce a pak **přidejte nové pravidlo**.
+
+   :::image type="content" source="./media/tutorial-respond-threats-playbook/add-new-rule.png" alt-text="Přidat nové pravidlo":::
+
+1. Otevře se panel **vytvořit nové pravidlo automatizace** . Zadejte název pravidla.
+
+   :::image type="content" source="./media/tutorial-respond-threats-playbook/create-automation-rule.png" alt-text="Vytvoření pravidla automatizace":::
+
+1. Pokud chcete, aby pravidlo automatizace vstoupilo v platnost jenom na určitá analytická pravidla, určete, která z nich mění podmínku **název pravidla analýzy** .
+
+1. Přidejte všechny další podmínky, na které chcete, aby tato aktivace pravidla automatizace byla závislá. Klikněte na **Přidat podmínku** a v rozevíracím seznamu vyberte podmínky. Seznam podmínek je vyplněný podrobnostmi o výstrahách a polích identifikátoru entity.
+
+1. Vyberte akce, které má pravidlo automatizace provést. K dispozici jsou tyto akce: **přiřadit vlastníka**, **změnit stav**, **změnit závažnost**, **Přidat značky** a **Spustit PlayBook**. Můžete přidat tolik akcí, kolik chcete.
+
+1. Pokud přidáte akci **Spustit PlayBook** , zobrazí se výzva k výběru z rozevíracího seznamu dostupné playbooky. Z pravidel automatizace se dají spouštět jenom playbooky, které začínají **triggerem incidentu** , takže se v seznamu zobrazí jenom ty.
+
+    > [!IMPORTANT]
+    > Aby bylo možné spustit playbooky z pravidel automatizace, musí být pro službu Azure Sentinel udělená explicitní oprávnění. Pokud se v rozevíracím seznamu zobrazí PlayBook "zobrazeno šedě", znamená to, že Sentinel nemá oprávnění k této skupině prostředků PlayBook. Kliknutím na odkaz **Spravovat oprávnění PlayBook** přiřaďte oprávnění.
+    > Na panelu **Spravovat oprávnění** , který se otevře, označte zaškrtávací políčka skupin prostředků obsahující playbooky, která chcete spustit, a klikněte na **použít**.
+    > :::image type="content" source="./media/tutorial-respond-threats-playbook/manage-permissions.png" alt-text="Správa oprávnění":::
+    > - Sami musíte mít oprávnění **vlastníka** pro libovolnou skupinu prostředků, ke které chcete udělit oprávnění Azure Sentinel, a musíte mít roli **Přispěvatel aplikace logiky** v jakékoli skupině prostředků obsahující playbooky, kterou chcete spustit.
+    > - Pokud se PlayBook, který chcete spustit, nachází v jiném tenantovi, musíte ve víceklientském nasazení udělit oprávnění Azure Sentinel ke spuštění PlayBook v tenantovi PlayBook.
+    >    1. V nabídce navigace v Azure Sentinel v tenantovi playbooky vyberte **Nastavení**.
+    >    1. V okně **Nastavení** vyberte kartu **Nastavení** a pak rozšíření **oprávnění PlayBook** .
+    >    1. Kliknutím na tlačítko **Konfigurovat oprávnění** otevřete panel **Spravovat oprávnění** , který je uvedený výše, a pokračujte podle pokynů uvedených tady.
+
+1. Nastavte datum vypršení platnosti pravidla automatizace, pokud chcete, aby byl nějaký.
+
+1. **Chcete-li určit** , kde v pořadí pravidel automatizace bude toto pravidlo spuštěno, zadejte číslo.
+
+1. Klikněte na **Použít**. A je to hotové!
+
+[Objevte další způsoby](automate-incident-handling-with-automation-rules.md#creating-and-managing-automation-rules) vytváření pravidel automatizace.
+
+### <a name="respond-to-alerts"></a>Reakce na výstrahy
+
+PlayBook můžete použít k reakci na **výstrahu** vytvořením **pravidla analýzy** nebo úpravou stávající, která se spustí, když se výstraha vygeneruje, a v [Průvodci analytickým pravidlem](tutorial-detect-threats-custom.md)vybere vaše PlayBook jako automatickou odpověď.
+
+1. V okně **Analýza** v navigační nabídce Azure Sentinel vyberte pravidlo analýzy, pro které chcete odpověď automatizovat, a v podokně podrobností klikněte na **Upravit** .
+
+1. V **Průvodci pravidlo analýzy – na stránce Upravit existující pravidlo** vyberte kartu **automatizovaná odpověď** .
+
+   :::image type="content" source="./media/tutorial-respond-threats-playbook/automated-response-tab.png" alt-text="Karta automatizovaná odpověď":::
+
+1. Z rozevíracího seznamu vyberte PlayBook. Můžete zvolit více než jeden PlayBook, ale k dispozici bude jenom playbooky pomocí **triggeru výstrahy** .
+
+1. Na kartě **Kontrola a vytvoření** vyberte **Uložit**.
+
+## <a name="run-a-playbook-on-demand"></a>Spuštění playbooku na vyžádání
+
+Můžete také spustit PlayBook na vyžádání.
+
+ > [!NOTE]
+ > Pouze playbooky pomocí **triggeru výstrahy** lze spustit na vyžádání.
 
 Spuštění PlayBook na vyžádání:
 
 1. Na stránce **incidenty** vyberte incident a klikněte na **Zobrazit úplné podrobnosti**.
 
-2. Na kartě **výstrahy** klikněte na výstrahu, na které chcete spustit PlayBook, a posuňte se doprava a klikněte na **Zobrazit playbooky** a vyberte PlayBook, které chcete **Spustit** , ze seznamu dostupných playbooky v předplatném. 
-
-
-
-## <a name="automate-threat-responses"></a>Automatizace odpovědí na hrozby
-
-SIEM/SOC týmy můžou být pravidelně inundated s výstrahami zabezpečení. Objem vygenerovaných výstrah je tak velký, takže správci zabezpečení jsou k dispozici zahlcení. To je velmi často v situacích, kdy se nedá prozkoumat mnoho výstrah, což je ponecháno v organizaci zranitelné vůči útokům, které jsou nepatrné. 
-
-Mnoho z těchto výstrah, pokud není většina, je v souladu s opakovanými vzorci, které lze řešit pomocí konkrétních a definovaných opravných akcí. Sentinel Azure už umožňuje definovat svou nápravu v playbooky. V rámci definice PlayBook je také možné nastavit automatizaci v reálném čase, která vám umožní plně automatizovat definovanou odpověď na konkrétní výstrahy zabezpečení. Díky automatizaci v reálném čase můžou odpovědní týmy významně snižovat své úlohy tím, že plně automatizují rutinní reakce na opakované typy výstrah, což vám umožní soustředit se na jedinečné výstrahy, analyzovat vzory, lovecké hrozby a další informace.
-
-Automatizace odpovědí:
-
-1. Vyberte výstrahu, pro kterou chcete odpověď automatizovat.
-1. Na stránce **Upravit pravidlo výstrahy** v části **automatizace v reálném čase** vyberte **aktivovaný PlayBook** , který chcete spustit, když se toto pravidlo výstrahy shoduje.
-1. Vyberte **Uložit**.
-
-   ![automatizace v reálném čase](./media/tutorial-detect-threats/rt-configuration.png)
-
-
-
-
-
+2. Na kartě **výstrahy** klikněte na výstrahu, na které chcete spustit PlayBook, a posuňte se doprava a klikněte na **Zobrazit playbooky** a vyberte PlayBook, které chcete **Spustit** , ze seznamu dostupných playbooky v předplatném.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak spustit PlayBook ve službě Azure Sentinel. Pokračujte na to, [jak proaktivně](hunting.md) procházet s hrozbami pomocí Azure Sentinel.
+V tomto kurzu jste zjistili, jak používat pravidla playbooky a Automation ve službě Azure Sentinel k reakci na hrozby. 
+- Přečtěte si, jak [aktivně získat hrozby](hunting.md) pomocí Azure Sentinel.

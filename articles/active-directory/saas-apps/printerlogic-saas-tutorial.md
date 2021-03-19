@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SaaSem PrinterLogic | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PrinterLogic SaaS.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s PrinterLogic | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PrinterLogic.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,66 +9,66 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 23b534f1ccbd51b028beeee173e5c3e0accd47a3
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f4537ae1ba79a8885706496967bee2fdff5d4fe4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486127"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591516"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s SaaSem PrinterLogic
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s PrinterLogic
 
-V tomto kurzu se dozvíte, jak integrovat PrinterLogic SaaS s Azure Active Directory (Azure AD). Když integrujete PrinterLogic SaaS s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat PrinterLogic s Azure Active Directory (Azure AD). Když integrujete PrinterLogic s Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k PrinterLogic SaaS.
-* Umožněte uživatelům, aby se automaticky přihlásili k PrinterLogic SaaS s účty Azure AD.
+* Řízení ve službě Azure AD, která má přístup k PrinterLogic.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k PrinterLogic svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Předplatné PrinterLogic SaaS s povoleným jednotným přihlašováním (SSO).
+* PrinterLogic odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* PrinterLogic SaaS podporuje **SP a IDP** iniciované jednotného přihlašování.
-* PrinterLogic SaaS podporuje **jenom při** zřizování uživatelů.
+* PrinterLogic podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
+* PrinterLogic podporuje zřizování uživatelů **jenom v čase** .
 
-## <a name="add-printerlogic-saas-from-the-gallery"></a>Přidání PrinterLogic SaaS z Galerie
+## <a name="add-printerlogic-from-the-gallery"></a>Přidání PrinterLogic z Galerie
 
-Pokud chcete nakonfigurovat integraci PrinterLogic SaaS do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat PrinterLogic SaaS z galerie.
+Pokud chcete nakonfigurovat integraci PrinterLogic do služby Azure AD, musíte přidat PrinterLogic z Galerie do svého seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **PrinterLogic SaaS** .
-1. Z panelu výsledků vyberte **PrinterLogic SaaS** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **PrinterLogic** .
+1. Na panelu výsledků vyberte **PrinterLogic** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-sso-for-printerlogic-saas"></a>Konfigurace a testování jednotného přihlašování Azure AD pro PrinterLogic SaaS
+## <a name="configure-and-test-azure-ad-sso-for-printerlogic"></a>Konfigurace a testování jednotného přihlašování Azure AD pro PrinterLogic
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí PrinterLogic SaaS s použitím testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v PrinterLogic SaaS.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí PrinterLogic pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v PrinterLogic.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí PrinterLogic SaaS, proveďte následující kroky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí PrinterLogic postupujte takto:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Nakonfigurujte PrinterLogic SaaS SSO](#configure-printerlogic-saas-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořit PrinterLogic SaaS Test User](#create-printerlogic-saas-test-user)** -to znamená, že má protějšek B. Simon v PrinterLogic SaaS, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Nakonfigurujte PRINTERLOGIC SSO](#configure-printerlogic-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte PrinterLogic Test User](#create-printerlogic-test-user)** -to, abyste měli protějšek B. Simon v PrinterLogic, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace aplikací **SaaS PrinterLogic** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **PrinterLogic** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
@@ -85,15 +85,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://www.<my_instance>printercloud.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta podpory PrinterLogic SaaS](mailto:support@printerlogic.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta PrinterLogic](mailto:support@printerlogic.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Aplikace PrinterLogic SaaS očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+1. PrinterLogic aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
     ![image](common/edit-attribute.png)
 
-1. Kromě toho aplikace PrinterLogic SaaS očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
+1. Kromě toho očekává aplikace PrinterLogic několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ---------| ------------ |
     | Role | User. assignedroles |
 
@@ -104,7 +104,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. V části **Nastavení SaaS PrinterLogic** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+1. V části **Nastavení PrinterLogic** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -122,23 +122,23 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k PrinterLogic SaaS.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k PrinterLogic.
 
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte možnost **PrinterLogic SaaS**.
+1. V seznamu aplikace vyberte **PrinterLogic**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud jste nastavili role, jak je vysvětleno výše, můžete je vybrat v rozevíracím seznamu **Vybrat roli** .
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-printerlogic-saas-sso"></a>Konfigurace jednotného přihlašování PrinterLogic SaaS
+## <a name="configure-printerlogic-sso"></a>Konfigurace jednotného přihlašování PrinterLogic
 
-Ke konfiguraci jednotného přihlašování na straně **PrinterLogic SaaS** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory PrinterLogic SaaS](mailto:support@printerlogic.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně **PrinterLogic** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory PrinterLogic](mailto:support@printerlogic.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-printerlogic-saas-test-user"></a>Vytvořit testovacího uživatele PrinterLogic SaaS
+### <a name="create-printerlogic-test-user"></a>Vytvořit testovacího uživatele PrinterLogic
 
-V této části se v PrinterLogic SaaS vytvoří uživatel s názvem Britta Simon. PrinterLogic SaaS podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v PrinterLogic SaaS neexistuje, vytvoří se po ověření nový.
+V této části se v PrinterLogic vytvoří uživatel s názvem Britta Simon. PrinterLogic podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v PrinterLogic neexistuje, vytvoří se po ověření nový.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -146,16 +146,16 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 #### <a name="sp-initiated"></a>Zahájena SP:
 
-* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL PrinterLogic SaaS, kde můžete spustit tok přihlášení.  
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k PrinterLogic, kde můžete spustit tok přihlášení.  
 
-* Přejít přímo na adresu URL pro přihlášení k PrinterLogic SaaS a zahajte tok přihlášení.
+* Přejít na adresu URL pro přihlášení k PrinterLogic přímo a zahájit tok přihlášení.
 
 #### <a name="idp-initiated"></a>Iniciované IDP:
 
-* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k SaaSu PrinterLogic, pro kterou jste nastavili jednotné přihlašování. 
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k PrinterLogic, pro které jste nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici PrinterLogic SaaS v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k SaaS PrinterLogic, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici PrinterLogic v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k PrinterLogic, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování PrinterLogic SaaS můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování PrinterLogic můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

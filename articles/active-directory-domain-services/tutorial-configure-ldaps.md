@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564080"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579548"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -152,7 +152,7 @@ Předtím, než budete moci použít digitální certifikát vytvořený v před
 
     Na stránce **zabezpečení** vyberte možnost **heslo** pro ochranu *.* Soubor certifikátu PFX. Šifrovací algoritmus musí být *TripleDES-SHA1*. Zadejte a potvrďte heslo a pak vyberte **Další**. Toto heslo se používá v další části k povolení zabezpečeného protokolu LDAP pro spravovanou doménu.
 
-    Pokud exportujete pomocí [rutiny PowerShellu export-vybíráte](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate), je potřeba předat příznak *-CryptoAlgorithmOption* pomocí TripleDES_SHA1.
+    Pokud exportujete pomocí [rutiny PowerShellu export-vybíráte](/powershell/module/pkiclient/export-pfxcertificate), je potřeba předat příznak *-CryptoAlgorithmOption* pomocí TripleDES_SHA1.
 
     ![Snímek obrazovky s šifrováním hesla](./media/tutorial-configure-ldaps/encrypt.png)
 

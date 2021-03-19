@@ -173,7 +173,9 @@
               href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
     - name: CLI služby Digital Twins
       href: /cli/azure/ext/azure-iot/dt
-- name: Zdroje a prostředky
+    - name: Specifikace DTDL v2
+      href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+- name: Zdroje informací
   items:
     - name: Omezení služby Digital Twins
       href: reference-service-limits.md
@@ -212,9 +214,9 @@
             - name: Python SDK – zdrojový kód
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK – GoDoc
-              href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+              href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt'
             - name: Go – zdrojový kód
-              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt'
         - name: Rovina dat
           items:
             - name: Rovina dat – Swagger
@@ -275,8 +277,6 @@
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: DTDL
       items:
-        - name: Specifikace DTDL v2
-          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
         - name: Rozšíření DTDL pro VS Code
           href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
         - name: Knihovna analyzátoru DTDL – NuGet

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051340"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577780"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
@@ -32,7 +32,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte aplikaci App Service](./index.yml).
 - U privátního certifikátu se ujistěte, že splňuje všechny [požadavky od App Service](#private-certificate-requirements).
@@ -331,7 +331,7 @@ Jakmile je operace obnovení klíčů dokončena, klikněte na tlačítko **sync
 
 Pokud chcete kdykoli zapnout automatické obnovování certifikátu, vyberte certifikát na stránce [App Service certifikáty](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) a potom klikněte na tlačítko **automaticky obnovit nastavení** v levém navigačním panelu. Ve výchozím nastavení mají certifikáty App Service jednoletou dobu platnosti.
 
-Vyberte **zapnuto** a klikněte na **Uložit**. Pokud máte zapnuté automatické obnovení, můžou se certifikáty spustit automaticky po 60 dnech před vypršením platnosti.
+Vyberte **zapnuto** a klikněte na **Uložit**. Certifikáty se můžou po uplynutí 30 dnů před vypršením platnosti automaticky prodloužit, pokud je zapnuté automatické obnovení.
 
 ![Obnovit certifikát App Service automaticky](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
 

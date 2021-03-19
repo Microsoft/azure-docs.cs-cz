@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: převod textu na řeč
-ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: fec90b3257ffafaf2919d2f0a41c2ade6fbc1f64
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599543"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597670"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -40,6 +40,8 @@ V tomto přehledu se dozvíte o výhodách a funkcích služby převod textu na 
 * Neuronové hlasy – špičkové sítě neuronové se používají k překonání omezení tradiční syntézy řeči s ohledem na zátěž a nevýbušnost v mluveném jazyce. Prosody předpověď a Hlasová syntéza se provádí současně, což vede k více kapalinovým a přirozeným výstupům. Hlasy neuronové se dají použít k zajištění většího přirozeného a poutavého působení chatovacích robotů o a hlasových asistentů, převodu digitálních textů, jako jsou například e-knihy na audiobooks, a k vylepšení navigačních systémů v klecích. V případě přirozeného Prosody jako přirozeného a jasného kloubování slov, neuronové hlasy významně omezují naslouchat únavu při interakci se systémy AI. Úplný seznam hlasů pro neuronové najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
 * Upravit styly speaking pomocí jazyka SSML-Speech syntézy (SSML) je značkovací jazyk založený na jazyce XML, který slouží k přizpůsobení výstupů řeči na text. Pomocí SSML můžete upravit rozteč, přidat pauzy, zlepšit výslovnost, zrychlit nebo zpomalit rychlost řeči, zvýšit nebo snížit objem a zadat u jednoho dokumentu více hlasů. Další informace najdete v tématu [postup](speech-synthesis-markup.md) pro úpravu stylu speaking.
+
+* Visemes- [visemes](how-to-speech-synthesis-viseme.md) se používá k reprezentaci klíčových pozic v pozorovaném řeči (tj. umístění sad LIP, vidlici a jazyka při vytváření konkrétního foném). Má silnou korelaci s hlasy a fonémy. Pomocí viseme v sadě Speech SDK můžete vygenerovat data animace obličeje, která se obvykle používají pro animovanou komunikaci, vzdělávání, zábavu a zákaznické služby pro čtení ze sady LIP. 
 
 ## <a name="get-started"></a>Začínáme
 

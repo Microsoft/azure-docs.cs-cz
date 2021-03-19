@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d1290b1dcc1e97d63dd41d5be8ca19b81e32f838
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: cc862759ce28c4d23dbc2197f63311e29ba82709
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225026"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607498"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Verze Preview: režimy orchestrace pro Virtual Machine Scale Sets v Azure 
 
@@ -85,7 +85,7 @@ Použijte příkazy standardního virtuálního počítače ke spuštění, zast
 Monitorování stavu aplikací umožňuje vaší aplikaci poskytovat Azure pomocí prezenčního signálu k určení, jestli je vaše aplikace v pořádku nebo není v pořádku. Azure může automaticky nahradit instance virtuálních počítačů, které nejsou v pořádku. U instancí flexibilní sady škálování musíte na virtuální počítač nainstalovat a nakonfigurovat rozšíření pro stav aplikace. Pro instance sady s jednotným škálováním můžete použít buď rozšíření stavu aplikace, nebo změřit stav s Azure Load Balancer vlastní sondu stavu. 
 
 ### <a name="list-scale-sets-vm-api-changes"></a>Změny rozhraní API virtuálních počítačů v seznamu škálování sady 
-Virtual Machine Scale Sets slouží k vypsání instancí, které patří do sady škálování. Díky flexibilní orchestraci nabízí příkaz list Virtual Machine Scale Sets VM seznam identifikátorů ID virtuálních počítačů sady škálování. Pak můžete zavolat příkazy GET Virtual Machine Scale Sets VM a získat další informace o tom, jak sada škálování funguje s instancí virtuálního počítače. Pokud chcete získat úplné podrobnosti o virtuálním počítači, použijte příkazy získat virtuální počítač Standard nebo [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview). 
+Virtual Machine Scale Sets slouží k vypsání instancí, které patří do sady škálování. Díky flexibilní orchestraci nabízí příkaz list Virtual Machine Scale Sets VM seznam identifikátorů ID virtuálních počítačů sady škálování. Pak můžete zavolat příkazy GET Virtual Machine Scale Sets VM a získat další informace o tom, jak sada škálování funguje s instancí virtuálního počítače. Pokud chcete získat úplné podrobnosti o virtuálním počítači, použijte příkazy získat virtuální počítač Standard nebo [Azure Resource Graph](../governance/resource-graph/overview.md). 
 
 ### <a name="retrieve-boot-diagnostics-data"></a>Načíst data diagnostiky spouštění 
 Pomocí standardních rozhraní API a příkazů virtuálních počítačů načtěte data diagnostiky spouštění instance a snímky obrazovky. Rozhraní API a příkazy pro diagnostiku spouštění Virtual Machine Scale Sets virtuálních počítačů se nepoužívají s flexibilními instancemi režimu orchestrace.
@@ -269,7 +269,7 @@ zones = ["1"]
 
 2. Přidejte virtuální počítače do sady škálování.
     1. Přiřaďte `virtualMachineScaleSet` vlastnost k sadě škálování, kterou jste předtím vytvořili. V `virtualMachineScaleSet` době vytváření virtuálního počítače je nutné zadat vlastnost. 
-    1. Můžete použít funkci **kopírování ()** Azure Resource Manager šablonou k vytvoření více virtuálních počítačů současně. Podívejte se na téma [iterace prostředků](https://docs.microsoft.com/azure/azure-resource-manager/templates/copy-resources#iteration-for-a-child-resource) v šablonách Azure Resource Manager. 
+    1. Můžete použít funkci **kopírování ()** Azure Resource Manager šablonou k vytvoření více virtuálních počítačů současně. Podívejte se na téma [iterace prostředků](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource) v šablonách Azure Resource Manager. 
 
     ```json
     {

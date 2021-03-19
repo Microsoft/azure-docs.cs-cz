@@ -1,6 +1,6 @@
 ---
 title: Synchronizovat atributy s Azure AD pro mapování
-description: Naučte se synchronizovat atributy z vaší místní služby Active Directory do Azure AD. Při konfiguraci zřizování uživatelů pro aplikace SaaS použijte funkci rozšíření adresáře a přidejte zdrojové atributy, které se ve výchozím nastavení nesynchronizují.
+description: Při konfiguraci zřizování uživatelů pro aplikace SaaS použijte funkci rozšíření adresáře a přidejte zdrojové atributy, které se ve výchozím nastavení nesynchronizují.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/12/2021
+ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 0f8369c80a7a219b159f31aacb7d10a0dd009d00
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 52f34cdafac76a9bca2b4ff0b00e0b3efaa63f5d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418670"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579429"
 ---
-# <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Synchronizace atributu z místní služby Active Directory do Azure AD kvůli zřizování pro aplikaci
+# <a name="syncing-extension-attributes-attributes"></a>Synchronizace atributů atributů rozšíření
 
-Při přizpůsobování mapování atributů pro zřizování uživatelů můžete zjistit, že atribut, který chcete mapovat, se nezobrazí v seznamu **zdrojového atributu** . V tomto článku se dozvíte, jak přidat chybějící atribut synchronizací z místní služby Active Directory (AD) do Azure Active Directory (Azure AD).
+Při přizpůsobování mapování atributů pro zřizování uživatelů můžete zjistit, že atribut, který chcete mapovat, se nezobrazí v seznamu **zdrojového atributu** . V tomto článku se dozvíte, jak přidat chybějící atribut tak, že ho synchronizujete z místní služby Active Directory (AD) do služby Azure Active Directory (Azure AD) nebo když ve službě Azure AD vytvoříte atributy rozšíření jenom pro Cloud uživatele. 
 
-Azure AD musí obsahovat všechna data potřebná k vytvoření profilu uživatele při zřizování uživatelských účtů z Azure AD do aplikace SaaS. V některých případech je možné, že budete potřebovat synchronizovat atributy z místní služby AD do Azure AD. Azure AD Connect automaticky synchronizuje určité atributy do Azure AD, ale ne všechny atributy. Kromě toho je možné, že některé atributy (například SAMAccountName), které jsou synchronizovány ve výchozím nastavení, nemusí být vystaveny pomocí rozhraní Microsoft Graph API. V těchto případech můžete použít funkci rozšíření adresář Azure AD Connect k synchronizaci atributu do Azure AD. Tímto způsobem bude atribut viditelný pro rozhraní Microsoft Graph API a službu Azure AD Provisioning.
+Azure AD musí obsahovat všechna data potřebná k vytvoření profilu uživatele při zřizování uživatelských účtů z Azure AD do aplikace SaaS. V některých případech je možné, že budete potřebovat synchronizovat atributy z místní služby AD do Azure AD. Azure AD Connect automaticky synchronizuje určité atributy do Azure AD, ale ne všechny atributy. Kromě toho nemusí být některé atributy (například SAMAccountName) synchronizované ve výchozím nastavení k dispozici pomocí Graph API Azure AD. V těchto případech můžete použít funkci rozšíření adresář Azure AD Connect k synchronizaci atributu do Azure AD. Tímto způsobem bude atribut viditelný pro Graph API Azure AD a službu Azure AD Provisioning. Pokud jsou data potřebná pro zřizování ve službě Active Directory, ale nejsou k dispozici pro zřizování z důvodu výše popsaných výše, můžete použít Azure AD Connect k vytvoření atributů rozšíření. 
 
-Pokud jsou data potřebná pro zřizování ve službě Active Directory, ale nejsou k dispozici pro zřizování z důvodu výše popsaných výše, můžete k vytváření atributů rozšíření použít Azure AD Connect nebo PowerShell. 
- 
+I když většina uživatelů je pravděpodobně hybridními uživateli, kteří jsou synchronizovaný ze služby Active Directory, můžete také vytvořit rozšíření pouze pro cloudové uživatele bez použití Azure AD Connect. Pomocí PowerShellu nebo Microsoft Graph můžete roztáhnout schéma pouze uživatele cloudu. 
+
 ## <a name="create-an-extension-attribute-using-azure-ad-connect"></a>Vytvoření atributu rozšíření pomocí Azure AD Connect
 
 1. Otevřete Průvodce Azure AD Connect, zvolte úlohy a pak zvolte **přizpůsobit možnosti synchronizace**.
@@ -52,7 +52,47 @@ Pokud jsou data potřebná pro zřizování ve službě Active Directory, ale ne
 > [!NOTE]
 > Možnost zřízení referenčních atributů z místní služby AD, jako je **ManagedBy** nebo **DN/rozlišující jméno**, není dnes podporována. Tuto funkci si můžete vyžádat na [uživatelském hlasu](https://feedback.azure.com/forums/169401-azure-active-directory). 
 
-## <a name="create-an-extension-attribute-using-powershell"></a>Vytvoření atributu rozšíření pomocí PowerShellu
+## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>Vytvoření atributu rozšíření v rámci jenom cloudového uživatele
+Zákazníci můžou použít Microsoft Graph a PowerShell k rozšiřování schématu uživatele. Tyto atributy rozšíření se ve většině případů automaticky zjišťují, ale zákazníci s více než 1000 instančními objekty můžou najít rozšíření chybějící v seznamu zdrojového atributu. Pokud se atribut, který vytvoříte pomocí následujících kroků, nezobrazuje automaticky v seznamu zdrojového atributu, ověřte pomocí grafu, že byl atribut rozšíření úspěšně vytvořen a pak jej přidejte do schématu [ručně](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes). Při vytváření požadavků na graf níže klikněte na Další informace a ověřte oprávnění potřebná k provedení požadavků. K vytvoření požadavků můžete použít [Průzkumníka grafů](https://docs.microsoft.com/graph/graph-explorer/graph-explorer-overview) . 
+
+### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>Vytvoření atributu rozšíření v cloudu jen pro uživatele pomocí Microsoft Graph
+K rozšiřování schématu uživatelů budete muset použít aplikaci. Seznamte se s aplikacemi ve vašem tenantovi, abyste identifikovali ID aplikace, kterou chcete použít k rozšiřování schématu uživatele. [Další informace](https://docs.microsoft.com/graph/api/application-list?view=graph-rest-1.0&tabs=http)
+
+```json
+GET https://graph.microsoft.com/v1.0/applications
+```
+
+Vytvořte atribut Extension. Nahraďte níže uvedenou vlastnost **ID** **identifikátorem** , který jste získali v předchozím kroku. Bude nutné použít atribut **"ID"** , nikoli "appId". [Další informace](https://docs.microsoft.com/graph/api/application-post-extensionproperty?view=graph-rest-1.0&tabs=http)
+```json
+POST https://graph.microsoft.com/v1.0/applications/{id}/extensionProperties
+Content-type: application/json
+
+{
+    "name": "extensionName",
+    "dataType": "string",
+    "targetObjects": [
+        "User"
+    ]
+}
+```
+
+Předchozí požadavek vytvořil atribut rozšíření ve formátu "extension_appID_extensionName". Aktualizujte uživatele pomocí atributu Extension. [Další informace](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0&tabs=http)
+```json
+PATCH https://graph.microsoft.com/v1.0/users/{id}
+Content-type: application/json
+
+{
+  "extension_inputAppId_extensionName": "extensionValue"
+}
+```
+Zkontrolujte uživatele a ujistěte se, že byl atribut úspěšně aktualizován. [Další informace](https://docs.microsoft.com/graph/api/user-get?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select)
+
+```json
+GET https://graph.microsoft.com/v1.0/users/{id}?$select=displayName,extension_inputAppId_extensionName
+```
+
+
+### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-powershell"></a>Vytvoření atributu rozšíření v cloudu jenom pro uživatele pomocí PowerShellu
 Vytvořte vlastní rozšíření pomocí PowerShellu a přiřaďte mu hodnotu. 
 
 ```

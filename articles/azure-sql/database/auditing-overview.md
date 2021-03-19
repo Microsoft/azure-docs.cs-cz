@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/09/2021
+ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 82445ce7c1ebfc365459bbeba7e04d660221eaf2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551576"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577628"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ Auditování také:
 
 - Pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a získat přehled o nesrovnalostech a anomáliích, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
 
-- Umožňuje a usnadňuje dodržování předpisů, i když soulad s těmito standardy nezaručuje. Další informace o programech Azure, které podporují dodržování standardů, najdete v [Centrum zabezpečení Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde najdete nejaktuálnější seznam certifikace dodržování předpisů Azure SQL.
+- Umožňuje a usnadňuje dodržování předpisů, i když soulad s těmito standardy nezaručuje. Další informace o programech Azure, které podporují dodržování standardů, najdete v [Centru zabezpečení Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), kde najdete aktuální seznam certifikací dodržování předpisů SQL.
 
 > [!NOTE]
 > Informace o auditování spravované instance Azure SQL najdete v následujícím článku [Začínáme s auditováním spravované instance SQL](../managed-instance/auditing-configure.md).
@@ -99,7 +99,7 @@ Azure SQL Database a Azure synapse audit ukládá 4000 znaků dat pro pole znak�
 V následující části je popsána konfigurace auditování pomocí Azure Portal.
 
   > [!NOTE]
-  > - Povolení auditování u pozastaveného vyhrazeného fondu SQL není možné. Chcete-li povolit auditování, zrušte pozastavení vyhrazeného fondu SQL. Přečtěte si další informace o [vyhrazeném fondu SQL](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - Povolení auditování u pozastaveného vyhrazeného fondu SQL není možné. Chcete-li povolit auditování, zrušte pozastavení vyhrazeného fondu SQL. Přečtěte si další informace o [vyhrazeném fondu SQL](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md).
   > - Pokud je auditování nakonfigurované na Log Analytics pracovní prostor nebo do cílového umístění centra pomocí rutiny Azure Portal nebo PowerShellu, vytvoří se pro [nastavení diagnostiky](../../azure-monitor/essentials/diagnostic-settings.md) povolená kategorie SQLSecurityAuditEvents.
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
@@ -134,16 +134,16 @@ AzureDiagnostics
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Auditovat cíl úložiště
 
-Pokud chcete nakonfigurovat zápis protokolů auditu na účet úložiště, vyberte **úložiště** a otevřete **Podrobnosti úložiště**. Vyberte účet úložiště Azure, do kterého se budou ukládat protokoly, a pak vyberte dobu uchování. Pak klikněte na **OK**. Protokoly starší než doba uchování se odstraní.
+Pokud chcete nakonfigurovat zápis protokolů auditu na účet úložiště, vyberte **úložiště** při přístupu k části **auditování** . Vyberte účet úložiště Azure, do kterého se budou ukládat protokoly, a pak vyberte dobu uchování otevřením **Upřesnit vlastnosti**. Potom klikněte na **Uložit**. Protokoly starší než doba uchování se odstraní.
 
-- Výchozí hodnota pro dobu uchování je 0 (neomezená doba uchovávání). Tuto hodnotu můžete změnit přesunutím posuvníku **uchovávání (dny)** v **Nastavení úložiště** při konfiguraci účtu úložiště pro auditování.
+- Výchozí hodnota pro dobu uchování je 0 (neomezená doba uchovávání). Tuto hodnotu můžete změnit přesunutím posuvníku **uchování (dny)** v části **Upřesnit vlastnosti** při konfiguraci účtu úložiště pro auditování.
   - Pokud změníte dobu uchování z 0 (neomezené uchovávání) na jakoukoli jinou hodnotu, pamatujte na to, že doba uchovávání se bude vztahovat jenom na protokoly zapsané po změně hodnoty uchování (protokoly zapsané během období, kdy byla doba uchování nastavená na neomezený, se zachovají i po povolení uchování).
 
   ![účet úložiště](./media/auditing-overview/auditing_select_storage.png)
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Audit na Log Analytics cíl
   
-Pokud chcete nakonfigurovat zápis protokolů auditu na Log Analytics pracovní prostor, vyberte **Log Analytics** a otevřete **Log Analytics podrobnosti**. Vyberte nebo vytvořte Log Analytics pracovní prostor, do kterého budou zapsány protokoly, a pak klikněte na **OK**.
+Pokud chcete nakonfigurovat zápis protokolů auditu na Log Analytics pracovní prostor, vyberte **Log Analytics** a otevřete **Log Analytics podrobnosti**. Vyberte Log Analytics pracovní prostor, do kterého budou zapsány protokoly, a pak klikněte na **OK**. Pokud jste pracovní prostor Log Analytics nevytvořili, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../azure-monitor/logs/quick-create-workspace.md).
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -151,7 +151,7 @@ Další informace o pracovním prostoru Azure Monitor Log Analytics najdete v t�
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Auditovat cíl centra událostí
 
-Pokud chcete nakonfigurovat zápis protokolů auditu do centra událostí, vyberte **centrum událostí** a otevřete **Podrobnosti centra událostí**. Vyberte centrum událostí, kam budou zapsány protokoly, a pak klikněte na **OK**. Ujistěte se, že centrum událostí je ve stejné oblasti jako databáze a Server.
+Pokud chcete nakonfigurovat zápis protokolů auditu do centra událostí, vyberte **centrum událostí**. Vyberte centrum událostí, kam budou zapsány protokoly, a pak klikněte na **Uložit**. Ujistěte se, že centrum událostí je ve stejné oblasti jako databáze a Server.
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -191,13 +191,12 @@ Pokud jste se rozhodli zapsat protokoly auditu do účtu služby Azure Storage, 
 
 - Použijete [Azure Portal](https://portal.azure.com)  Otevřete příslušnou databázi. V horní části stránky **auditování** databáze klikněte na **Zobrazit protokoly auditu**.
 
-    ![Snímek obrazovky, který zobrazuje tlačítko Zobrazit protokoly auditu zvýrazněné na stránce auditování databáze.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Zobrazit protokoly auditu](./media/auditing-overview/auditing-view-audit-logs.png)
 
     Otevře se **záznamy auditu** , ze kterých budete moci zobrazit protokoly.
 
   - Konkrétní data můžete zobrazit kliknutím na **Filtr** v horní části stránky **audit Records** .
   - Můžete přepínat mezi záznamy auditu vytvořenými *zásadami auditu serveru* a *zásadami auditu databáze* přepnutím **zdroje auditu**.
-  - Zaškrtnutím políčka  **Zobrazit pouze záznamy auditu pro INJEKTÁŽE SQL** můžete zobrazit pouze záznamy auditu související s injektáže SQL.
 
        ![Snímek obrazovky, který zobrazuje možnosti zobrazení záznamů auditu.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
@@ -242,7 +241,7 @@ Když v případě geograficky replikovaných databází povolíte auditování 
 
 V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úložiště. Při zápisu protokolů auditu do úložiště Azure je nutné při obnovování klíčů znovu uložit zásady auditování. Postup je následující:
 
-1. Otevřete **Podrobnosti úložiště**. V poli **přístupový klíč k úložišti** vyberte **sekundární** a klikněte na **OK**. Pak v horní části stránky Konfigurace auditování klikněte na **Uložit** .
+1. V části **úložiště** otevřete **Upřesnit vlastnosti** . V poli **přístupový klíč k úložišti** vyberte **sekundární**. Pak v horní části stránky Konfigurace auditování klikněte na **Uložit** .
 
     ![Snímek obrazovky, který ukazuje proces pro výběr sekundárního přístupového klíče úložiště.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Přejděte na stránku konfigurace úložiště a znovu vygenerujte primární přístupový klíč.

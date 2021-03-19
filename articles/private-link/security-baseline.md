@@ -4,23 +4,27 @@ description: Základní hodnoty zabezpečení služby Azure Private Link poskytu
 author: msmbaldwin
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 03/16/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7dacec1521787e55ee4c7fd5f08b9e56d9dd4842
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8fcbfa745a78d335606c11dcbd8851a235407b9d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735994"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588524"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Základní plán zabezpečení Azure pro privátní propojení Azure
 
-Tato základní hodnota zabezpečení se vztahuje na doprovodné materiály z [Azure Security srovnávacích testů](../security/benchmarks/overview.md) na Azure Private. Azure Security Benchmark poskytuje doporučení, jak můžete zabezpečit svá cloudová řešení v Azure. Obsah se seskupuje pomocí **ovládacích prvků zabezpečení** , které definuje srovnávací test zabezpečení Azure, a souvisejících pokynů vztahujících se na privátní připojení Azure. Nevztahují se **ovládací prvky** , které se vztahují na privátní propojení Azure. Pokud chcete zjistit, jak se privátní propojení Azure kompletně mapuje na srovnávací test zabezpečení Azure, přečtěte si [kompletní soubor mapování standardních hodnot azure Virtual Network Security](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Tato základní hodnota zabezpečení se týká pokynů z [Azure Security test 1,0](../security/benchmarks/overview-v1.md) na privátní odkaz na Azure. Azure Security Benchmark poskytuje doporučení, jak můžete zabezpečit svá cloudová řešení v Azure.
+Obsah se seskupuje pomocí **ovládacích prvků zabezpečení** , které definuje srovnávací test zabezpečení Azure, a souvisejících pokynů vztahujících se na privátní připojení Azure. Nevztahují se **ovládací prvky** , které se vztahují na privátní propojení Azure.
+
+ 
+Pokud chcete zjistit, jak se privátní propojení Azure kompletně mapuje na srovnávací test zabezpečení Azure, přečtěte si [kompletní soubor mapování základní úrovně zabezpečení Azure Private Links](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
 
@@ -28,13 +32,13 @@ Tato základní hodnota zabezpečení se vztahuje na doprovodné materiály z [A
 
 Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
 - [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
@@ -52,15 +56,15 @@ V závislosti na organizačních požadavcích společnosti můžete také povol
 
 - [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Protokolování a sledování privátního odkazu](private-link-overview.md#logging-and-monitoring)
+- [Protokolování a sledování privátního odkazu](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
 
 - [Protokolování diagnostiky pro skupinu zabezpečení sítě](../virtual-network/virtual-network-nsg-manage-log.md)
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-**Monitorování služby Azure Security Center:** Ano
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
@@ -68,25 +72,25 @@ V závislosti na organizačních požadavcích společnosti můžete také povol
 
 - [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Zobrazení a načtení událostí protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
-- [Protokolování a sledování privátního odkazu](private-link-overview.md#logging-and-monitoring)
-
-**Monitorování služby Azure Security Center:** Ano
+- [Protokolování a sledování privátního odkazu](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
 
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
 **Doprovodné** materiály: u protokolů souvisejících s privátním odkazem nastavte Log Analytics dobu uchování pracovního prostoru podle předpisů pro dodržování předpisů vaší organizace v Azure monitor. Používejte účty Azure Storage pro jakékoliv dlouhodobé nebo archivní úložiště protokolů.
 
-- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/manage-storage-analytics-logs.md#configure-logging)
-
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](https://docs.microsoft.com/azure/storage/common/manage-storage-analytics-logs#configure-logging)
 
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
@@ -100,9 +104,9 @@ Další možností je povolit a začlenit data do Azure Sentinel nebo SIEM třet
 
 - [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
@@ -116,25 +120,25 @@ Povolte a zapněte data do Azure Sentinel nebo SIEM třetí strany na základě 
 
 - [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
-**Monitorování služby Azure Security Center:** Ano
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a Access Control](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
 **Pokyny**: Používejte předdefinované role správce Azure Active Directory (Azure AD), které se dají explicitně přiřadit a dotazovat na ně. Spusťte modul Azure AD PowerShellu, který provede ad hoc dotazy a zjistí účty, které jsou členy skupin pro správu.
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
-
-**Monitorování služby Azure Security Center:** Ano
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
 
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
@@ -142,51 +146,53 @@ Povolte a zapněte data do Azure Sentinel nebo SIEM třetí strany na základě 
 
 Pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management privilegované role pro služby Microsoftu a Azure Resource Manager. můžete taky povolit jen přizpůsobený přístup za běhu.
 
-- [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
-
-**Monitorování služby Azure Security Center:** Ano
+- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: použijte Azure Active Directory jednotné přihlašování (SSO).
 
-**Doprovodné** materiály: kdykoli je to možné, používejte jednotné přihlašování s Azure Active Directory, ale nemusíte konfigurovat jednotlivé samostatné přihlašovací údaje na službu.
+**Doprovodné** materiály: bez ohledu na to, co je to možné, použijte jednotné přihlašování s Azure Active Directory (Azure AD) a nekonfigurujte jednotlivé samostatné přihlašovací údaje na službu.
 
-- [Jednotné přihlašování k aplikacím v Azure Active Directory](../active-directory/manage-apps/what-is-single-sign-on.md)
+- [Jednotné přihlašování k aplikacím v Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 - [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné** materiály: Povolte službu Multi-Factor Authentication (Azure AD) pro Azure Active Directory (Azure AD) a postupujte podle Security Center doporučení pro správu identit a přístupu.
+**Doprovodné** materiály: Povolte vícefaktorové ověřování Azure Active Directory (Azure AD) a sledujte Security Center doporučení pro správu identit a přístupu.
 
-- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Postup povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Monitorování služby Azure Security Center:** Ano
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: Používejte zabezpečené pracovní stanice spravované Azure pro úlohy správy
 
-**Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) s Multi-Factor Authentication nakonfigurovanou pro přihlášení k a konfiguraci síťových prostředků Azure.
+**Doprovodné** materiály: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) s nakonfigurovaným vícefaktorového ověřováním, které je nakonfigurované pro přihlášení a konfiguraci síťových prostředků Azure.
 
 - [Další informace o pracovních stanicích s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Monitorování služby Azure Security Center:** Nelze použít
+- [Postup povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Odpovědnost:** Zákazník
 
+**Monitorování Azure Security Center**: žádné
+
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: protokolovat a upozornit na podezřelé aktivity z účtů pro správu
 
-**Doprovodné** materiály: využití funkce detekce rizik Azure Active Directory (Azure AD) k zobrazení výstrah a sestav na základě rizikového chování uživatelů. Ingestovat výstrahy Security Center detekce rizik do Azure Monitor a nakonfigurovat vlastní výstrahy a oznámení pomocí skupin akcí.
+**Doprovodné** materiály: využití funkce detekce rizik Azure Active Directory (Azure AD) k zobrazení výstrah a sestav na základě rizikového chování uživatelů. 
+
+Ingestovat výstrahy Security Center detekce rizik do Azure Monitor a nakonfigurovat vlastní výstrahy a oznámení pomocí skupin akcí.
 
 - [Principy zjišťování rizik Azure Security Center (podezřelá aktivita)](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -194,9 +200,9 @@ Pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management
 
 - [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../azure-monitor/alerts/action-groups.md)
 
-**Monitorování služby Azure Security Center:** Ano
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
@@ -204,9 +210,9 @@ Pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management
 
 - [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
@@ -214,21 +220,21 @@ Pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management
 
 - [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory-domain-services/tutorial-create-instance.md)
 
-**Monitorování služby Azure Security Center:** Ano
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné** materiály: Azure Active Directory poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Pomocí kontrol přístupu k identitám Azure můžete také efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
+**Doprovodné** materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Pomocí kontrol přístupu k identitám Azure můžete také efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
+- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
-**Monitorování služby Azure Security Center:** Ano
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: sledování pokusů o přístup k deaktivovaným přihlašovacím údajům
 
@@ -238,9 +244,9 @@ Zjednodušte tento proces vytvořením nastavení diagnostiky pro uživatelské 
 
 - [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: výstraha při odchylce chování při přihlašování k účtu
 
@@ -254,31 +260,31 @@ Ingestujte data do Azure Sentinel pro další šetření.
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [srovnávací testy zabezpečení Azure: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. 
+**Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat.
 
-Omezte úroveň přístupu k prostředkům Azure pomocí vašich aplikací a podnikových prostředí na základě podnikových požadavků. 
+Omezte úroveň přístupu k prostředkům Azure pomocí vašich aplikací a podnikových prostředí na základě podnikových požadavků.
 
-Řízení přístupu k prostředkům Azure prostřednictvím řízení přístupu na základě role Azure (RBAC).
+Řízení přístupu k prostředkům Azure prostřednictvím řízení přístupu na základě role Azure (Azure AD).
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
+- [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
@@ -286,15 +292,15 @@ Omezte úroveň přístupu k prostředkům Azure pomocí vašich aplikací a pod
 
 Pokud je to možné, postupujte podle Security Center doporučení pro šifrování v klidovém režimu a šifrování.
 
-- [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
-
-**Monitorování služby Azure Security Center:** Ano
+- [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
 **Odpovědnost:** Sdílené
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
+**Monitorování Azure Security Center**: žádné
 
-**Pokyny**: použití řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k datům a prostředkům, v opačném případě použití metod řízení přístupu specifických pro službu.
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC. 
+
+**Pokyny**: k řízení přístupu k datům a prostředkům použijte řízení přístupu na základě role Azure (Azure RBAC), jinak použijte metody řízení přístupu ke konkrétním službám.
 
 - [Tady se seznamte s krátkým popisem a jedinečným ID předdefinovaných rolí Azure.](../role-based-access-control/built-in-roles.md)
 
@@ -308,21 +314,21 @@ Zpřístupněte službu jako soukromou pro využití z jiných virtuálních sí
 
 - [Vlastnosti služby privátního propojení](private-link-service-overview.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
 **Pokyny**: pomocí Azure monitor výstrah protokolu aktivit můžete vytvořit upozornění na důležité prostředky Azure, jako jsou třeba služby a koncové body privátního propojení. 
 
-- [Protokolování diagnostiky pro skupinu zabezpečení sítě](private-link-overview.md#logging-and-monitoring)
+- [Protokolování diagnostiky pro skupinu zabezpečení sítě](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
 
 - [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
@@ -330,19 +336,19 @@ Zpřístupněte službu jako soukromou pro využití z jiných virtuálních sí
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
-**Pokyny**: pomocí Azure Resource graphu se můžete dotazovat a zjišťovat všechny síťové prostředky, jako jsou služby privátního propojení a koncové body v rámci vašich předplatných. 
+**Pokyny**: pomocí Azure Resource graphu se můžete dotazovat a zjišťovat všechny síťové prostředky, jako jsou služby privátního propojení a koncové body v rámci vašich předplatných.
 
 Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků.
 
 - [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription)
+- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
@@ -350,9 +356,9 @@ Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čten
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
@@ -362,21 +368,21 @@ Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
+- [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
 **Doprovodné** materiály: Vytvořte inventarizaci schválených prostředků a softwaru Azure pro výpočetní prostředky na základě potřeb vaší organizace.
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
@@ -394,9 +400,9 @@ K dotazování a zjišťování prostředků v rámci předplatných taky použi
 
 - [Vzorové předdefinované služby Azure Policy pro privátní propojení](../governance/policy/samples/built-in-policies.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="67-remove-unapproved-azure-resources"></a>6,7: Odeberte neschválené prostředky Azure.
 
@@ -404,27 +410,25 @@ K dotazování a zjišťování prostředků v rámci předplatných taky použi
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-
 - Žádné povolené typy prostředků
-
 - Povolené typy prostředků
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 - [Vzorové předdefinované služby Azure Policy pro privátní propojení](../governance/policy/samples/built-in-policies.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: Omezte schopnost uživatelů pracovat s Azure Resource Manager
 
@@ -432,9 +436,9 @@ K dotazování a zjišťování prostředků v rámci předplatných taky použi
 
 - [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
@@ -448,7 +452,7 @@ Azure Resource Manager má možnost Exportovat šablonu v JavaScript Object Nota
 
 Implementujte doporučení z Security Center jako standardní hodnoty konfigurace pro vaše prostředky Azure.
 
-- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
+- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
 
 - [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 
@@ -458,9 +462,9 @@ Implementujte doporučení z Security Center jako standardní hodnoty konfigurac
 
 - [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
@@ -480,23 +484,23 @@ Použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili 
 
 - [Vzorové předdefinované služby Azure Policy pro privátní propojení](../governance/policy/samples/built-in-policies.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
-**Doprovodné** materiály: pomocí Azure DevOps můžete bezpečně ukládat a spravovat kód, jako jsou vlastní zásady Azure, šablony Azure Resource Manager a požadované konfigurační skripty. 
+**Doprovodné** materiály: pomocí Azure DevOps můžete bezpečně ukládat a spravovat kód, jako jsou vlastní zásady Azure, šablony Azure Resource Manager a požadované konfigurační skripty.
 
 Udělení nebo odmítnutí oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným ve službě Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps pro jejich přístup, nebo Active Directory, pokud jsou integrované s Team Foundation Server.
 
-- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
+- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: nasazení nástrojů pro správu konfigurace pro prostředky Azure
 
@@ -508,13 +512,13 @@ Využijte také předdefinované definice zásad týkající se jakýchkoli konk
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
+- [Jak používat aliasy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
 - [Vzorové předdefinované služby Azure Policy pro privátní propojení](../governance/policy/samples/built-in-policies.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: Implementujte automatizované monitorování konfigurace pro prostředky Azure.
 
@@ -524,9 +528,9 @@ Využijte také předdefinované definice zásad týkající se jakýchkoli konk
 
 - [Vzorové předdefinované služby Azure Policy pro privátní propojení](../governance/policy/samples/built-in-policies.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="data-recovery"></a>Obnovení dat
 
@@ -548,17 +552,17 @@ Použijte Azure Automation k pravidelnému volání rozhraní API pro export Azu
 
 - [Úvod do Azure Automation](../automation/automation-intro.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny klíče spravované zákazníkem.
 
-**Doprovodné** materiály: použijte Azure Resource Manager k nasazení služeb privátního propojení, koncových bodů a souvisejících prostředků. Azure Resource Manager poskytuje možnost exportu šablon, které se dají použít jako zálohy k obnovení koncových bodů privátních odkazů a souvisejících prostředků.  
+**Doprovodné** materiály: použijte Azure Resource Manager k nasazení služeb privátního propojení, koncových bodů a souvisejících prostředků. Azure Resource Manager poskytuje možnost exportu šablon, které se dají použít jako zálohy k obnovení koncových bodů privátních odkazů a souvisejících prostředků.
 
-Použijte Azure Automation k pravidelnému volání rozhraní API pro export Azure Resource Manager šablony.  
+Použijte Azure Automation k pravidelnému volání rozhraní API pro export Azure Resource Manager šablony.
 
-Zálohování klíčů spravovaných zákazníkem v rámci Azure Key Vault.
+Zálohujte klíče spravované zákazníkem v rámci Azure Key Vault.
 
 - [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md)
 
@@ -570,43 +574,43 @@ Zálohování klíčů spravovaných zákazníkem v rámci Azure Key Vault.
 
 - [Úvod do Azure Automation](../automation/automation-intro.md)
 
-- [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
-
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
+- [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
 
 **Odpovědnost:** Zákazník
 
+**Monitorování Azure Security Center**: žádné
+
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-**Doprovodné** materiály: Ověřte schopnost pravidelně provádět nasazení Azure Resource Manager šablon pro izolované předplatné na základě vašich obchodních požadavků. 
+**Doprovodné** materiály: Ověřte schopnost pravidelně provádět nasazení Azure Resource Manager šablon pro izolované předplatné na základě vašich obchodních požadavků.
 
 Také ověřte obnovení zálohovaných klíčů spravovaných zákazníkem.
 
 - [Nasazení prostředků pomocí šablon ARM a Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
-
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
+- [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
 
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Doprovodné** materiály: pomocí Azure DevOps bezpečně ukládejte a spravujte kód, jako je Azure Resource Manager šablon. 
+**Doprovodné** materiály: pomocí Azure DevOps bezpečně ukládejte a spravujte kód, jako je Azure Resource Manager šablon.
 
 Udělení nebo odmítnutí oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným ve službě Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps pro přístup k těmto prostředkům nebo ve službě Active Directory, pokud jsou integrované s Team Foundation Server.
 
-- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
+- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v odpovědi na [incidenty Azure Security test:](../security/benchmarks/security-control-incident-response.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: reakce na incidenty](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -620,9 +624,9 @@ Zajistěte zápis plánů reakcí na incidenty, které definují všechny role p
 
 - [Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty.](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
@@ -636,9 +640,9 @@ Zákazník je zodpovědný za to, že má navýšit nápravu výstrah na základ
 
 - [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování služby Azure Security Center:** Ano
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
@@ -646,9 +650,9 @@ Zákazník je zodpovědný za to, že má navýšit nápravu výstrah na základ
 
 - [Publikování v NIST – průvodce pro testování, školení a cvičení programů pro plány a možnosti IT](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
@@ -658,9 +662,9 @@ Projděte si incidenty, vystavte výskyt, abyste měli jistotu, že byly vyřeš
 
 - [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
-**Monitorování služby Azure Security Center:** Ano
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
@@ -672,9 +676,9 @@ Pomocí konektoru Security Center Data můžete také streamovat výstrahy do Az
 
 - [Streamování upozornění do služby Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
@@ -682,9 +686,9 @@ Pomocí konektoru Security Center Data můžete také streamovat výstrahy do Az
 
 - [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
@@ -700,11 +704,11 @@ Využijte strategii a provádění testování na základě červeného týmové
 
 - [Červený tým cloudových služeb Microsoftu](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Sdílené
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
-- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
+- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)

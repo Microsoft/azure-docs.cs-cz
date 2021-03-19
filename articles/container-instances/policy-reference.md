@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Container Instances
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Container Instances. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 7790d3a6f2ee8cc5fbdd8f36ca23a88d00593ece
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 990c9070f49438a6f66f5c1861479c298d1d8b90
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103422150"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606854"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-instances"></a>Azure Policy předdefinované definice pro Azure Container Instances
 

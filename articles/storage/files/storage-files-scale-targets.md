@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa24989103cca5bb7031a21ca106b93ada0c3904
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: 0ecfbb9053fde4ff332cbbcb6e14a84a5bbeb99a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149456"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593148"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti služby Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím protokolů systému souborů SMB a NFS. Tento článek popisuje škálovatelnost a výkonnostní cíle pro Azure Files a Synchronizace souborů Azure.
@@ -134,7 +134,7 @@ Míra výkonu je 20 objektů za sekundu. Zákazníci si můžou odhadnout čas, 
 
 **Počáteční synchronizace dat ze systému Windows Server do sdílené složky Azure**: mnoho nasazení synchronizace souborů Azure začínat prázdnou sdílenou složkou Azure, protože všechna data jsou na Windows serveru. V těchto případech je počáteční výčet změn v cloudu rychlý a většina času stráví synchronizaci změn z Windows serveru až po sdílené složky Azure. 
 
-Zatímco synchronizace nahrává data do sdílené složky Azure, na místním souborovém serveru nedochází k výpadkům a správci můžou [nastavit omezení sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-registration#set-azure-file-sync-network-limits) , aby se omezila šířka pásma využitá pro nahrání dat na pozadí.
+Zatímco synchronizace nahrává data do sdílené složky Azure, na místním souborovém serveru nedochází k výpadkům a správci můžou [nastavit omezení sítě](./storage-sync-files-server-registration.md#set-azure-file-sync-network-limits) , aby se omezila šířka pásma využitá pro nahrání dat na pozadí.
 
 Počáteční synchronizace se obvykle omezí na počáteční rychlost nahrávání 20 souborů za sekundu na skupinu synchronizace. Zákazníci můžou odhadnout čas nahrávání všech svých dat do Azure pomocí následujícího vzorce a získat tak dobu ve dnech:  
 

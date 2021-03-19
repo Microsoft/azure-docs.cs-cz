@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 10ddee404de21c5bc04672fdb6dd32c30f481ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937840"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578239"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webová aplikace, která přihlašuje uživatele: přihlášení a odhlášení
 
@@ -95,6 +95,16 @@ V našem rychlém startu Java se přihlašovací tlačítko nachází v souboru 
 </html>
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+V rychlém startu Node.js není k dispozici žádné tlačítko pro přihlášení. Kód na pozadí automaticky vyzve uživatele k přihlášení, když se dostane do kořenového adresáře webové aplikace.
+
+```javascript
+app.get('/', (req, res) => {
+    // authentication logic
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 V rychlém startu Pythonu není k dispozici žádné tlačítko pro přihlášení. Kód na pozadí automaticky vyzve uživatele k přihlášení, když se dostane do kořenového adresáře webové aplikace. Viz [App. py # L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18).
@@ -113,7 +123,7 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-V ASP.NET výběr tlačítka pro **přihlášení** ve webové aplikaci aktivuje `SignIn` akci na `AccountController` řadiči. V předchozích verzích základních šablon ASP.NET `Account` byl kontroler vložen do webové aplikace. To už neplatí, protože kontroler je teď součástí balíčku NuGet **Microsoft. identity. Web. UI** . Podrobnosti najdete v tématu [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
+V ASP.NET výběr tlačítka pro **přihlášení** ve webové aplikaci aktivuje `SignIn` akci na `AccountController` řadiči. V předchozích verzích základních šablon ASP.NET `Account` byl kontroler vložen do webové aplikace. To už neplatí, protože kontroler je teď součástí balíčku NuGet **Microsoft. identity. Web. UI** . Podrobnosti najdete v tématu [AccountController. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
 Tento kontroler také zpracovává aplikace Azure AD B2C.
 
@@ -158,6 +168,43 @@ public class AuthPageController {
     }
 
     // More code omitted for simplicity
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Na rozdíl od jiných platforem se tady uzel MSAL postará o to, aby se uživatel přihlásil ze stránky pro přihlášení.
+
+```javascript
+
+// 1st leg of auth code flow: acquire a code
+app.get('/', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    // get url to sign user in and consent to scopes needed for application
+    pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+        res.redirect(response);
+    }).catch((error) => console.log(JSON.stringify(error)));
+});
+
+// 2nd leg of auth code flow: exchange code for token
+app.get('/redirect', (req, res) => {
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send(error);
+    });
+});
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -229,6 +276,10 @@ Při registraci aplikace zaregistrujete adresu URL pro odhlášení front-Channe
 Během registrace aplikace nemusíte registrovat další adresu URL pro odhlášení front-Channel. Aplikace se bude volat zpátky na svou hlavní adresu URL. 
 
 # <a name="java"></a>[Java](#tab/java)
+
+V registraci aplikace se nevyžaduje žádná adresa URL pro odhlášení front-Channel.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 V registraci aplikace se nevyžaduje žádná adresa URL pro odhlášení front-Channel.
 
@@ -305,6 +356,10 @@ V našem rychlém startu Java se tlačítko pro odhlášení nachází v souboru
 ...
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Tato ukázková aplikace neimplementuje odhlášení.
+
 # <a name="python"></a>[Python](#tab/python)
 
 V rychlém startu Pythonu se tlačítko pro odhlášení nachází v souboru [Templates/index.html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) .
@@ -330,13 +385,13 @@ V rychlém startu Pythonu se tlačítko pro odhlášení nachází v souboru [Te
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-V předchozích verzích základních šablon ASP.NET `Account` byl kontroler vložen do webové aplikace. To už neplatí, protože kontroler je teď součástí balíčku NuGet **Microsoft. identity. Web. UI** . Podrobnosti najdete v tématu [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
+V předchozích verzích základních šablon ASP.NET `Account` byl kontroler vložen do webové aplikace. To už neplatí, protože kontroler je teď součástí balíčku NuGet **Microsoft. identity. Web. UI** . Podrobnosti najdete v tématu [AccountController. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
 - Nastaví identifikátor URI pro přesměrování OpenID na `/Account/SignedOut` tak, aby se řadič zavolal zpátky, když Azure AD dokončí odhlášení.
 - Volání `Signout()` , která umožňují middlewaru OpenID Connect, se obrátit na koncový bod Microsoft Identity Platform `logout` . Koncový bod pak:
 
   - Vymaže soubor cookie relace z prohlížeče.
-  - Zavolá zpět identifikátor URI přesměrování po odhlášení. Ve výchozím nastavení se identifikátor URI pro přesměrování po odhlášení zobrazuje na [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)stránce zobrazení s odhlašovacím podpisem. Tato stránka je také k dispozici jako součást Microsoft. identity. Web.
+  - Zavolá zpět identifikátor URI přesměrování po odhlášení. Ve výchozím nastavení se identifikátor URI pro přesměrování po odhlášení zobrazí na stránce zobrazení se znaménkem [. cshtml. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs). Tato stránka je také k dispozici jako součást Microsoft. identity. Web.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -376,6 +431,10 @@ V jazyce Java se odhlášení zpracovává voláním `logout` koncového bodu Mi
                 URLEncoder.encode(redirectUrl, "UTF-8"));
     }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Tato ukázková aplikace neimplementuje odhlášení.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -420,6 +479,10 @@ public class AccountController : Controller
 # <a name="java"></a>[Java](#tab/java)
 
 V rychlém startu v Java se identifikátor URI přesměrování po odhlášení zobrazí jenom stránka index.html.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Tato ukázková aplikace neimplementuje odhlášení.
 
 # <a name="python"></a>[Python](#tab/python)
 

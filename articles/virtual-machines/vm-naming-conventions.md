@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 98d35821c884ba25a109f929556087ff6ecba0ca
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 2fa362a56eb1246381fcc944e82ea85d31ff3d39
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551010"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599897"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Zásady vytváření názvů virtuálních počítačů Azure
 
@@ -28,7 +28,7 @@ Tato stránka popisuje konvence pojmenování používané pro virtuální poč�
 | Rodina | Označuje řadu rodin virtuálních počítačů.| 
 | * Sub-Family | Používá se jenom pro specializované rozlišení virtuálních počítačů.|
 | počet vCPU| Označuje počet vCPU virtuálního počítače. |
-| * Omezené vCPU| Používá se jenom pro určité velikosti virtuálních počítačů. Označuje počet vCPU pro [Velikost omezeného vCPU](https://docs.microsoft.com/azure/virtual-machines/constrained-vcpu) . |
+| * Omezené vCPU| Používá se jenom pro určité velikosti virtuálních počítačů. Označuje počet vCPU pro [Velikost omezeného vCPU](./constrained-vcpu.md) . |
 | Doplňkové funkce | Jedno nebo několik malých písmen značí doplňkové funkce, jako například: <br> a = procesor založený na platformě AMD <br> d = disk (místní dočasný disk je přítomen); Toto je pro novější virtuální počítače Azure, viz [Ddv4 a Ddsv4-Series](./ddv4-ddsv4-series.md) . <br> h = podporuje hibernace <br> i = izolovaná velikost <br> l = nedostatek paměti; menší množství paměti, než je velikost náročná na paměť <br> m = náročné na paměť; největší velikost paměti v určité velikosti <br> t = malá paměť; nejmenší velikost paměti v určité velikosti <br> r = podporuje RDMA <br> s = Premium Storage schopný, včetně možného použití [SSD úrovně Ultra](./disks-types.md#ultra-disk) (Poznámka: Některé novější velikosti bez atributu s mohou i nadále podporovat Premium Storage, například M128, M64 atd.)<br> |
 | * Typ akcelerátoru | Označuje typ hardwarového akcelerátoru v SKU specializovaného/GPU. V názvu budou mít v názvu pouze nové specializované SKU/SKU GPU spuštěné z tohoto čtvrtletí 2020. |
 | Verze | Označuje verzi řady virtuálních počítačů. |
@@ -79,4 +79,4 @@ Tato stránka popisuje konvence pojmenování používané pro virtuální poč�
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o dostupných [velikostech virtuálních počítačů](./sizes.md) v Azure. 
+Přečtěte si další informace o dostupných [velikostech virtuálních počítačů](./sizes.md) v Azure.

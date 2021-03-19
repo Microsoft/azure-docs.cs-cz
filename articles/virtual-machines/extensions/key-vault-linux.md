@@ -10,16 +10,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 23a0d7cd45ceef8f97bb56d65f4807f8d60735dc
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 9032bfca30ead56c91d7904e18b76753cf3b6dfc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601045"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582166"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
-Rozšíření virtuálního počítače Key Vault poskytuje automatickou aktualizaci certifikátů uložených v trezoru klíčů Azure. Konkrétně rozšíření monitoruje seznam pozorovaných certifikátů uložených v trezorech klíčů.  Při zjištění změny rozšíření načte a nainstaluje odpovídající certifikáty. Rozšíření nainstaluje úplný řetěz certifikátů na virtuálním počítači. Rozšíření virtuálního počítače Key Vault zveřejňuje a podporuje společnost Microsoft, aktuálně na virtuálních počítačích se systémem Linux. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření Key Vault virtuálního počítače pro Linux. 
+Rozšíření virtuálního počítače Key Vault poskytuje automatickou aktualizaci certifikátů uložených v trezoru klíčů Azure. Konkrétně rozšíření monitoruje seznam pozorovaných certifikátů uložených v trezorech klíčů.  Při zjištění změny rozšíření načte a nainstaluje odpovídající certifikáty. Rozšíření virtuálního počítače Key Vault zveřejňuje a podporuje společnost Microsoft, aktuálně na virtuálních počítačích se systémem Linux. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření Key Vault virtuálního počítače pro Linux. 
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -36,6 +36,7 @@ Rozšíření virtuálních počítačů Key Vault podporuje tyto distribuce sys
 
 - #12 PKCS
 - PEM
+
 
 ## <a name="prerequisities"></a>Konfigurátoru
   - Key Vault instance s certifikátem Viz [vytvoření Key Vault](../../key-vault/general/quick-create-portal.md)
@@ -56,6 +57,20 @@ Rozšíření virtuálních počítačů Key Vault podporuje tyto distribuce sys
                     "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
                   }
    `
+## <a name="key-vault-vm-extension-version"></a>Verze rozšíření virtuálního počítače Key Vault
+* Ubuntu-18,04 a SUSE-15 uživatelé můžou zvolit upgrade verze rozšíření virtuálního počítače trezoru klíčů na `V2.0` , aby využívaly úplnou funkci pro stažení řetězu certifikátů. Certifikáty vystavitele (zprostředkující a root) se připojí k certifikátu list v souboru PEM.
+
+* Pokud budete chtít upgradovat na `v2.0` , musíte `v1.0` nejdřív odstranit a pak nainstalovat `v2.0` .
+```
+  az vm extension delete --name KeyVaultForLinux --resource-group ${resourceGroup} --vm-name ${vmName}
+  az vm extension set -n "KeyVaultForLinux" --publisher Microsoft.Azure.KeyVault --resource-group "${resourceGroup}" --vm-name "${vmName}" –settings .\akvvm.json –version 2.0
+```  
+  Příznak – verze 2,0 je volitelná, protože se ve výchozím nastavení nainstaluje nejnovější verze.   
+
+* Pokud má virtuální počítač certifikáty stažené v 1.0, odstraněním rozšíření v 1.0 AKVVM se stažené certifikáty neodstraní.  Po instalaci verze 2.0 nebudou existující certifikáty změněny.  Aby bylo možné získat soubor PEM s úplným řetězem na VIRTUÁLNÍm počítači, je třeba odstranit soubory certifikátu nebo převedený certifikát.
+
+
+
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -72,7 +87,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
@@ -109,7 +124,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
 | typ | KeyVaultForLinux | řetězec |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 2.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | Ignoruje se na Linux. | řetězec |
 | linkOnRenewal | false (nepravda) | boolean |
@@ -142,7 +157,7 @@ Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořen�
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -189,7 +204,7 @@ Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního 
        
     
         # Start the deployment
-        Set-AzVmExtension -TypeHandlerVersion "1.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
+        Set-AzVmExtension -TypeHandlerVersion "2.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
     
     ```
 
@@ -209,7 +224,7 @@ Azure PowerShell lze použít k nasazení Key Vault rozšíření virtuálního 
         
         # Add Extension to VMSS
         $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
-        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "1.0" -Setting $settings
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "2.0" -Setting $settings
 
         # Start the deployment
         Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
@@ -228,6 +243,7 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
+         --version 2.0 `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
@@ -239,6 +255,7 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
         --vmss-name "<vmssName>" `
+        --version 2.0 `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 Mějte na paměti následující omezení/požadavky:

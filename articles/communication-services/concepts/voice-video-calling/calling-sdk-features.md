@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 110607e9da68cf131a43651b97c599873ce33cb8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: e154e43f9e9378d6cccd23e2e5892f2a8ccf9a1e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495262"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598877"
 ---
 # <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
 
@@ -120,8 +120,8 @@ Komunikační služby volající klientské knihovny podporují následující k
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**počet odchozích streamů, které se dají poslat současně** |1 sdílení obrazovky a 1 video + 1 | 1 sdílení obrazovky a 1 video + 1|
-|**počet příchozích streamů, které se dají vykreslovat současně** |1 sdílení obrazovky a 1 video + 1| 6 sdílení obrazovky a videa 1 |
+|**počet odchozích streamů, které se dají poslat současně** |1 sdílení obrazovky nebo 1 | 1 sdílení obrazovky a 1 video + 1|
+|**počet příchozích streamů, které se dají vykreslovat současně** |1 sdílení obrazovky nebo 1| 6 sdílení obrazovky a videa 1 |
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury definice iniciativy
 description: Popisuje způsob, jakým se definice iniciativ zásad používají k definování zásad pro nasazení do prostředků Azure ve vaší organizaci.
-ms.date: 10/07/2020
+ms.date: 03/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: edd3f25dd528d1a718c9287c9f30988b87fb73e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876171"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587215"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Struktura definice Azure Policy iniciativy
 
@@ -17,7 +17,7 @@ Iniciativy umožňují seskupit několik souvisejících definic zásad, které 
 K vytvoření definice iniciativy zásad použijte JSON. Definice iniciativy zásad obsahuje prvky pro:
 
 - zobrazované jméno
-- Popis
+- description
 - zprostředkovatele identity
 - parameters
 - definice zásad
@@ -113,7 +113,7 @@ Zákazníci mohou definovat libovolné vlastnosti a hodnoty, které jsou užite�
 - `category` (String): Určuje, pod kterou kategorii v Azure Portal je tato definice zásad zobrazená.
 
   > [!NOTE]
-  > V případě iniciativ [dodržování předpisů](./regulatory-compliance.md) `category` musí být **předpisy dodržování**předpisů.
+  > V případě iniciativ [dodržování předpisů](./regulatory-compliance.md) `category` musí být **předpisy dodržování** předpisů.
 
 - `preview` (Boolean): příznak True nebo false pro, pokud je definice iniciativy pro zásady ve _verzi Preview_.
 - `deprecated` (Boolean): příznak True nebo false pro, pokud byla definice iniciativy zásad označena jako _zastaralá_.
@@ -134,7 +134,7 @@ Parametry fungují stejným způsobem při vytváření iniciativ zásad. Zahrnu
 Parametr má následující vlastnosti, které se používají v definici iniciativy zásad:
 
 - `name`: Název vašeho parametru. Používá se `parameters` funkcí nasazení v rámci pravidla zásad. Další informace najdete v tématu [použití hodnoty parametru](#passing-a-parameter-value-to-a-policy-definition).
-- `type`: Určuje, zda je parametr typu **řetězec**, **pole**, **objekt**, **Boolean**, **Integer**, **float**nebo **DateTime**.
+- `type`: Určuje, zda je parametr typu **řetězec**, **pole**, **objekt**, **Boolean**, **Integer**, **float** nebo **DateTime**.
 - `metadata`: Definuje podvlastnost primárně používané Azure Portal k zobrazení uživatelsky přívětivých informací:
   - `description`: Vysvětlení použití parametru pro. Dá se použít k zadání příkladů přijatelných hodnot.
   - `displayName`: Popisný název zobrazený na portálu pro parametr.
@@ -256,7 +256,7 @@ Definice zásad v definici iniciativy lze seskupit a kategorizovat. Funkce [dodr
 
 Každý prvek _pole_ v `policyDefinitionGroups` musí mít obě následující vlastnosti:
 
-- `name` (String) \[ požadováno \] : krátký název **skupiny**. **Řízení**dodržování předpisů v souladu se zákonem. Hodnota této vlastnosti je používána `groupNames` v `policyDefinitions` .
+- `name` (String) \[ požadováno \] : krátký název **skupiny**. **Řízení** dodržování předpisů v souladu se zákonem. Hodnota této vlastnosti je používána `groupNames` v `policyDefinitions` .
 - `category` (String): hierarchie, do které skupina patří. V souladu se zákonem o dodržování předpisů, **doména dodržování předpisů** ovládacího prvku.
 - `displayName` (String): popisný název pro **skupinu** nebo **ovládací prvek**. Používáno portálem.
 - `description` (String): popis toho, co **Skupina** nebo **ovládací prvek** pokrývá.
@@ -282,7 +282,7 @@ Vestavěné předpisy vytvořené Microsoftem obsahují další informace o jedn
 Tyto informace jsou:
 
 - Zobrazuje se v Azure Portal přehledu **ovládacího prvku** v iniciativě dodržování předpisů.
-- K dispozici prostřednictvím REST API. Prohlédněte si `Microsoft.PolicyInsights` poskytovatele prostředků a [skupinu operací policyMetadata](/rest/api/policy-insights/policymetadata/getresource).
+- K dispozici prostřednictvím REST API. Prohlédněte si `Microsoft.PolicyInsights` poskytovatele prostředků a [skupinu operací policyMetadata](/rest/api/policy/policymetadata/getresource).
 - K dispozici prostřednictvím Azure CLI. Viz příkaz [AZ Policy metadata](/cli/azure/policy/metadata) .
 
 > [!IMPORTANT]

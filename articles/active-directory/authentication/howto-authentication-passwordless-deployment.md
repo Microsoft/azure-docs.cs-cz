@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8d4ff717a49ba9c9b4d66e54e5eae1248af3fcea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651123"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579361"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování s neplatnými hesly v Azure Active Directory
 
@@ -61,7 +61,7 @@ Metody ověřování s neheslem od Microsoftu umožňují různé scénáře. Po
 
 Informace o tom, jak vybrat nejlepší metodu pro vaši organizaci, najdete v tématu věnovaném [postupu bez hesla](./concept-authentication-passwordless.md#choose-a-passwordless-method).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Organizace musí před zahájením nasazení s neplatným heslem splňovat následující požadavky:
 
@@ -93,7 +93,7 @@ Vezměte v úvahu své obchodní potřeby a případy použití pro jednotlivé 
 
 Následující tabulka popisuje případy použití, které mají být implementovány během tohoto projektu.
 
-| Plošný | Popis |
+| Plošný | Description |
 | --- | --- |
 | **Přístup** | Přihlášení bez hesla je k dispozici v podnikovém nebo osobním zařízení v rámci podnikové sítě nebo mimo ni. |
 | **Auditování** | Data o využití jsou k dispozici správcům k zaznamenávání téměř v reálném čase. <br> Data o využití se stáhnou do podnikových systémů aspoň každých 29 dní nebo se použije nástroj SIEM Tool. |
@@ -292,7 +292,7 @@ Postupujte podle kroků zarovnaných k vybrané metodě níže.
 
 ### <a name="required-administrative-roles"></a>Požadované role pro správu
 
-| Role Azure AD | Popis |
+| Role Azure AD | Description |
 | --- | --- |
 | Globální správce|Nejnižší privilegovaná role schopna implementovat kombinované prostředí registrace. |
 | Správce ověřování | Nejnižší privilegovaná role schopná implementovat a spravovat metody ověřování. |
@@ -330,4 +330,4 @@ Postupujte podle kroků v článku a [Povolte přihlášení klíče zabezpečen
 
 - [Povolit klíče zabezpečení s nezabezpečenými hesly pro přihlášení pro Azure AD](howto-authentication-passwordless-security-key.md)
 - [Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator](howto-authentication-passwordless-phone.md)
-- [Další informace o použití metod ověřování & Insights](howto-authentication-methods-usage-insights.md)
+- [Další informace o použití metod ověřování & Insights](./howto-authentication-methods-activity.md)

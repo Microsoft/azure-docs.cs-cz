@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 22ee920c38a8cacaf37a1e3a6cfc5165dfa0bb44
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 4a8efff7ef53753e15a47e87a2bb82d0124ae997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419945"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590445"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Funkce verze Preview Azure Firewall Premium
 
@@ -157,8 +157,7 @@ Nedůvěryhodní certifikáty podepsané zákazníky|Certifikáty podepsané zá
 |Šíření certifikátů|Po použití certifikátu certifikační autority v bráně firewall může trvat od 5-10 minut, než se certifikát projeví.|Oprava je naplánovaná na GA.|
 |ZPROSTŘEDKOVATELŮ identity obejít|ZPROSTŘEDKOVATELŮ identity nefunguje pro přenos ukončený protokolem TLS a zdrojová IP adresa a zdrojové skupiny IP adres nejsou podporované.|Oprava je naplánovaná na GA.|
 |Podpora TLS 1,3|Protokol TLS 1,3 je částečně podporován. Tunelové propojení TLS od klienta k bráně firewall vychází z TLS 1,2 a z brány firewall na externí webový server vychází z TLS 1,3.|Probíhá zkoumání aktualizací.|
-
-
+|Privátní koncový bod trezoru klíčů|Trezor klíčů podporuje přístup privátního koncového bodu, který omezuje jeho expozici sítě. Pokud je výjimka nakonfigurovaná tak, jak je popsáno v [dokumentaci k trezoru](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)klíčů, můžou důvěryhodné služby Azure obejít toto omezení. Azure Firewall není aktuálně uveden jako důvěryhodná služba a nemá přístup k Key Vault.|Oprava je naplánovaná na GA.|
 
 
 ## <a name="next-steps"></a>Další kroky

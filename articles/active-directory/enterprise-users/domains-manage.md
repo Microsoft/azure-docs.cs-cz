@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/20/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47c991457925664c82baed1a47d89f77a323ff45
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: a201452a9c708d898ee1762385955b63684876c7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561530"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577967"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
@@ -43,7 +43,7 @@ Primární název domény vaší organizace můžete změnit tak, aby byla ově�
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Přidání vlastních názvů domén do vaší organizace Azure AD
 
-Můžete přidat až 900 názvů spravovaných domén. Pokud konfigurujete všechny domény pro federaci s místní službou Active Directory, můžete v každé organizaci přidat až 450 názvů domén.
+Můžete přidat až 5000 názvů spravovaných domén. Pokud konfigurujete všechny domény pro federaci s místní službou Active Directory, můžete v každé organizaci přidat až 2500 názvů domén.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Přidat subdomény vlastní domény
 

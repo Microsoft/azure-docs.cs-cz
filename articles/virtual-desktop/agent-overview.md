@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ecc4a5a17186eddd4223715462b14399bdf702df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601247"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601886"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Začínáme s agentem virtuálního počítače s Windows
 
@@ -32,7 +32,10 @@ Agent virtuálního počítače s Windows je zpočátku nainstalovaný jedním z
 
 ## <a name="agent-update-process"></a>Proces aktualizace agenta
 
-Když bude aktualizace k dispozici, služba Windows Virtual Desktop automaticky aktualizuje agenta. Aktualizace agenta můžou zahrnovat nové funkce nebo opravit předchozí problémy. Po instalaci počáteční verze agenta virtuálního počítače se systémem Windows Agent pravidelně dotazuje službu virtuální plochy systému Windows, aby zjistil, zda je k dispozici novější verze agenta a jeho součástí. Pokud je k dispozici nová verze, program pro spouštění agenta automaticky stáhne nejnovější verzi agenta, souběžného zásobníku a agenta monitorování Ženeva.
+Služba Windows Virtual Desktop aktualizuje agenta vždy, když bude k dispozici aktualizace. Aktualizace agenta můžou zahrnovat nové funkce nebo opravy pro předchozí problémy. Po nainstalování počáteční verze agenta virtuálního počítače se systémem Windows Agent pravidelně dotazuje službu virtuální plochy systému Windows, aby zjistil, zda je k dispozici novější verze agenta, zásobníku nebo monitorovací součásti. Pokud již byla nasazena novější verze jakékoli součásti, je automaticky nainstalována aktualizovaná součást.
+
+Nové verze agenta se nasazují v pravidelných intervalech v weeklong obdobích pro všechna předplatná Azure. Tato aktualizační období se nazývají "lety". Když dojde k letu, můžete vidět, že virtuální počítače ve fondu hostitelů obdrží aktualizaci agenta v různou dobu. Všechna agenti virtuálních počítačů ve všech předplatných budou aktualizována na konci období nasazení. Systém pro započet virtuálních počítačů s Windows vylepšuje spolehlivost služby tím, že zajišťuje stabilitu a kvalitu aktualizace agenta.
+
 
 >[!NOTE]
 >- Když Ženeva Monitoring Agent aktualizuje na nejnovější verzi, stará úloha GenevaTask se nachází a zakáže před vytvořením nové úlohy pro nového agenta monitorování. Starší verze agenta monitorování se neodstraní v případě, že nejnovější verze agenta monitorování má problém, který vyžaduje, aby se oprava vrátila do starší verze. Pokud má nejnovější verze nějaký problém, Starý agent monitorování se znovu povolí, aby pokračoval v doručování dat monitorování. Všechny verze monitorování, které jsou starší než poslední, který jste nainstalovali před aktualizací, se z virtuálního počítače odstraní.

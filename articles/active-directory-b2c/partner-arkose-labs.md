@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500288"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579786"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Kurz: Konfigurace Arkose Labs pomocí Azure Active Directory B2C
 
 V tomto ukázkovém kurzu se dozvíte, jak integrovat Azure Active Directory (AD) B2C ověřování pomocí [Arkose Labs](https://www.arkoselabs.com/). Arkose Labs můžou organizacím pomáhat s útoky na roboty, útoky při převzetí účtů a podvodnými otevřenými účty.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -81,13 +81,13 @@ Chcete-li vytvořit vlastní atribut, použijte následující postup:
 
 5. Vyberte **Vytvořit**.
 
-Přečtěte si další informace o [vlastních atributech](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-custom-attributes?pivots=b2c-user-flow).
+Přečtěte si další informace o [vlastních atributech](./user-flow-custom-attributes.md?pivots=b2c-user-flow).
 
 ### <a name="part-2---create-a-user-flow"></a>Část 2 – Vytvoření toku uživatele
 
 Tok uživatele může být buď pro **registraci** , **přihlašování, nebo jen** k **registraci**. Tok uživatele Arkose Labs se zobrazí jenom během registrace.
 
-1. Přečtěte si [pokyny](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) k vytvoření toku uživatele. Pokud používáte existující tok uživatele, musí se jednat o **doporučený typ verze (Náhled nové generace)** .
+1. Přečtěte si [pokyny](./tutorial-create-user-flows.md) k vytvoření toku uživatele. Pokud používáte existující tok uživatele, musí se jednat o **doporučený typ verze (Náhled nové generace)** .
 
 2. V nastavení toku uživatele přejít na **atributy uživatele** a vyberte deklaraci identity **ArkoseSessionToken** .
 
@@ -109,7 +109,7 @@ Postupujte podle kroků uvedených v části použití vlastního HTML a JavaScr
 
 1. Upravte soubor [selfAsserted.html](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html) tak, aby `<ARKOSE_PUBLIC_KEY>` odpovídal hodnotě, kterou jste vygenerovali pro ověřování na straně klienta, a použili jste k načtení skriptu Arkose Labs pro svůj účet.
 
-2. Hostovat stránku HTML na webovém koncovém bodu s povoleným sdílením prostředků mezi zdroji (CORS). [Vytvořte účet úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal) a [nakonfigurujte CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
+2. Hostovat stránku HTML na webovém koncovém bodu s povoleným sdílením prostředků mezi zdroji (CORS). [Vytvořte účet úložiště objektů BLOB v Azure](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) a [nakonfigurujte CORS](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
 
   >[!NOTE]
   >Máte-li vlastní kód HTML, zkopírujte a vložte `<script>` prvky do stránky HTML.
@@ -132,7 +132,7 @@ Postupujte podle kroků uvedených v části použití vlastního HTML a JavaScr
 
    ![Obrázek znázorňující rozložení stránky](media/partner-arkose-labs/page-layouts.png)
 
-4. V toku uživatele, přejít na **vlastnosti** a vyberte **Povolit JavaScript** – vynutit rozložení stránky (Preview). Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/active-directory-b2c/javascript-and-page-layout?pivots=b2c-user-flow) .
+4. V toku uživatele, přejít na **vlastnosti** a vyberte **Povolit JavaScript** – vynutit rozložení stránky (Preview). Další informace najdete v tomto [článku](./javascript-and-page-layout.md?pivots=b2c-user-flow) .
 
 ### <a name="part-4---create-and-deploy-your-api"></a>Část 4 – Vytvoření a nasazení rozhraní API
 
@@ -157,7 +157,7 @@ K opětovnému nasazení místní instance během testování zopakujte kroky 1 
 
 Tato ukázka chrání koncový bod webového rozhraní API pomocí [ověřování HTTP Basic](https://tools.ietf.org/html/rfc7617).
 
-Uživatelské jméno a heslo se ukládají jako proměnné prostředí a ne jako součást úložiště. Další informace najdete v tématu [local.settings.jsv](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file) souboru.
+Uživatelské jméno a heslo se ukládají jako proměnné prostředí a ne jako součást úložiště. Další informace najdete v tématu [local.settings.jsv](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file) souboru.
 
 1. Vytvořit local.settings.jsv souboru v kořenové složce
 
@@ -186,15 +186,15 @@ Hodnoty **BASIC_AUTH_USERNAME** a **BASIC_AUTH_PASSWORD** budou přihlašovací 
 
 #### <a name="deploy-the-application-to-the-web"></a>Nasazení aplikace na web
 
-1. Postupujte podle kroků uvedených v [tomto](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04) průvodci a nasaďte funkci Azure Functions do cloudu. Zkopírujte adresu URL webu koncového bodu vaší funkce Azure Functions.
+1. Postupujte podle kroků uvedených v [tomto](/azure/javascript/tutorial-vscode-serverless-node-04) průvodci a nasaďte funkci Azure Functions do cloudu. Zkopírujte adresu URL webu koncového bodu vaší funkce Azure Functions.
 
-2. Po nasazení vyberte možnost **nahrávání nastavení** . Vaše proměnné prostředí nahraje do [nastavení aplikace](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure) služby App Service. Tato nastavení aplikace lze také konfigurovat nebo [spravovat prostřednictvím Azure Portal.](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)
+2. Po nasazení vyberte možnost **nahrávání nastavení** . Vaše proměnné prostředí nahraje do [nastavení aplikace](../azure-functions/functions-develop-vs-code.md?tabs=csharp#application-settings-in-azure) služby App Service. Tato nastavení aplikace lze také konfigurovat nebo [spravovat prostřednictvím Azure Portal.](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
 
-Další informace o Visual Studio Code vývoji pro Azure Functions najdete v [tomto článku](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files) .
+Další informace o Visual Studio Code vývoji pro Azure Functions najdete v [tomto článku](../azure-functions/functions-develop-vs-code.md?tabs=csharp#republish-project-files) .
 
 #### <a name="configure-and-enable-the-api-connector"></a>Konfigurace a povolení konektoru API
 
-[Vytvořte konektor API](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector) a povolte ho pro tok uživatele. Vaše konfigurace konektoru API by měla vypadat takto:
+[Vytvořte konektor API](./add-api-connector.md) a povolte ho pro tok uživatele. Vaše konfigurace konektoru API by měla vypadat takto:
 
 ![Obrázek ukazuje, jak nakonfigurovat konektor API.](media/partner-arkose-labs/configure-api-connector.png)
 
@@ -232,6 +232,6 @@ Pokud chcete povolit konektor API, v nastavení **konektoru rozhraní API** pro 
 
 - [Ukázkové kódy](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) Azure AD B2C toku uživatelů při registraci
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

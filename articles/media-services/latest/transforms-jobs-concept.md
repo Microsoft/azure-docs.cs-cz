@@ -3,7 +3,7 @@
 title: transformes a Jobs v Media Services: Azure Media Services Description: Naučte se vytvořit transformace, které popisují pravidla pro zpracování videí v Azure Media Services.
 služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. Service: Media-Services MS. rebavování: MS. téma: konceptuální MS. Date: 08/19/2019 MS. Author: inhenkel
+MS. Service: Media-Services MS. rebavování: MS. téma: konceptuální MS. Date: 03/17/2021 MS. Author: inhenkel
 ---
 
 # <a name="transforms-and-jobs-in-media-services"></a>Transformace a úlohy v Media Services
@@ -77,7 +77,7 @@ Pokud je vstupní obsah již v prostředku nebo je uložen v místním souboru, 
 
 ### <a name="checking-job-progress"></a>Kontrola průběhu úlohy
 
-Průběh a stav úloh lze získat monitorováním událostí pomocí Event Grid. Další informace najdete v tématu [monitorování událostí pomocí EventGrid](job-state-events-cli-how-to.md).
+Průběh a stav úloh lze získat monitorováním událostí pomocí Event Grid. Další informace najdete v tématu [monitorování událostí pomocí EventGrid](monitoring/job-state-events-cli-how-to.md).
 
 ### <a name="updating-jobs"></a>Aktualizace úloh
 

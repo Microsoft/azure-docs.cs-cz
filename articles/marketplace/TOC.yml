@@ -53,11 +53,11 @@
         - name: Společný prodej s Microsoftem
           items:
             - name: Přehled společného prodeje
-              href: marketplace-co-sell.md
+              href: co-sell-overview.md
             - name: Požadavky na společný prodej
               href: co-sell-requirements.md
             - name: Konfigurace společného prodeje
-              href: commercial-marketplace-co-sell.md
+              href: co-sell-configure.md
             - name: Ověření stavu společného prodeje
               href: co-sell-status.md
             - name: Migrace řešení spoluprodeje z OCP GTM
