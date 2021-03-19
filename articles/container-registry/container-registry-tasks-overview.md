@@ -3,12 +3,12 @@ title: Přehled úloh ACR
 description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1cf9faf934cebfb5abe0d2e1b26ffd7da2d6c549
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562850"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606782"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -39,7 +39,7 @@ Cyklus vývoje vnitřních smyček, iterativní proces psaní kódu, sestavován
 
 Než začnete s prvním řádkem kódu, funkce [Rychlé úlohy](container-registry-tutorial-quick-task.md) ACR úkoly může poskytovat integrované vývojové prostředí tím, že převede přesměrování sestavení imagí kontejneru do Azure. Pomocí rychlých úloh můžete ověřit své automatizované definice sestavení a zachytit potenciální problémy před potvrzením kódu.
 
-Pomocí známého `docker build` formátu převezme příkaz [AZ ACR Build][az-acr-build] v Azure CLI [kontext](#context-locations) (sadu souborů k sestavení), odešle IT úlohy ACR a ve výchozím nastavení po dokončení vloží do svého registru vytvořenou image.
+Pomocí známého `docker build` formátu přebírá příkaz [AZ ACR Build][az-acr-build] v Azure CLI [kontext](#context-locations) (sadu souborů k sestavení), odesílá ho ACR úlohám a ve výchozím nastavení po dokončení vloží do svého registru vytvořenou image.
 
 Úvod najdete v tématu rychlý Start k [sestavení a spuštění image kontejneru](container-registry-quickstart-task-cli.md) v Azure Container Registry.  
 
@@ -58,8 +58,8 @@ Aktivovat sestavení image kontejneru nebo úlohu s více kroky, když je kód p
 
 | Trigger | Ve výchozím nastavení povolená |
 | ------- | ------------------ |
-| Potvrzení | Ano |
-| Žádost o přijetí změn | Ne |
+| Potvrzení | Yes |
+| Žádost o přijetí změn | No |
 
 Pokud chcete nakonfigurovat aktivační proceduru aktualizace zdrojového kódu, je nutné zadat úlohu pomocí tokenu PAT (Personal Access token) pro nastavení Webhooku ve veřejném nebo privátním úložišti GitHubu nebo Azure DevOps.
 

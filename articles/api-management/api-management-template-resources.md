@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84689983"
 ---
 # <a name="azure-api-management-template-resources"></a>Prostředky šablony Azure API Management
@@ -135,7 +135,7 @@ Podporovány jsou následující možnosti lokalizace:
 |WebDevelopersAppNotSubmitted|Neodesláno|  
 |WebDevelopersAppTableCategoryHeader|Kategorie|  
 |WebDevelopersAppTableNameHeader|Name|  
-|WebDevelopersAppTableStateHeader|State|  
+|WebDevelopersAppTableStateHeader|Stav|  
 |WebDevelopersEditLink|Upravit|  
 |WebDevelopersRegisterAppLink|Registrace aplikace|  
 |WebDevelopersRemoveLink|Odebrat|  
@@ -535,7 +535,7 @@ Podporovány jsou následující možnosti lokalizace:
 |----------|----------|  
 |SubscriptionCancelConfirmation|Opravdu chcete zrušit toto předplatné?|  
 |SubscriptionRenewConfirmation|Opravdu chcete obnovit toto předplatné?|  
-|WebDevelopersManageSubscriptions|Spravovat předplatná|  
+|WebDevelopersManageSubscriptions|Správa předplatných|  
 |WebDevelopersPrimaryKey|Primární klíč|  
 |WebDevelopersRegenerateLink|Znovu vytvořit|  
 |WebDevelopersSecondaryKey|Sekundární klíč|  
@@ -544,7 +544,7 @@ Podporovány jsou následující možnosti lokalizace:
 |WebDevelopersSubscriptionRequested|Požadováno dne {0}|  
 |WebDevelopersSubscriptionRequestedState|Požádáno|  
 |WebDevelopersSubscriptionTableNameHeader|Name|  
-|WebDevelopersSubscriptionTableStateHeader|State|  
+|WebDevelopersSubscriptionTableStateHeader|Stav|  
 |WebDevelopersUsageStatisticsLink|Analytické sestavy|  
 |WebDevelopersYourSubscriptions|Vaše předplatná|  
 |SubscriptionPropertyLabelRequestedDate|Požadováno dne|  

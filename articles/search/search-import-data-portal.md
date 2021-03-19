@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935207"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Průvodce importem dat pro Azure Kognitivní hledání
@@ -68,7 +68,7 @@ Tuto jednu tabulku nebo zobrazení byste měli vytvořit před spuštěním prů
 | [**Azure SQL Database nebo spravovaná instance SQL**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Název služby, přihlašovací údaje uživatele s oprávněním ke čtení a název databáze můžete zadat na této stránce nebo přes připojovací řetězec technologie ADO.NET. Chcete-li zobrazit nebo přizpůsobit vlastnosti, zvolte možnost připojovacího řetězce. <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat.|
 | **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID uživatele a heslo a databázi jako připojovací řetězec. Abyste mohli použít tento zdroj dat, je třeba mít v místním úložišti dříve nainstalovaný certifikát šifrující připojení. Pokyny najdete v tématu [připojení k virtuálnímu počítači SQL do Azure kognitivní hledání](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Požadavky zahrnují účet, databázi a kolekci. Všechny dokumenty v kolekci budou zahrnuty v indexu. Můžete definovat dotaz pro sloučení nebo filtrování sady řádků nebo nechat dotaz prázdný. V tomto průvodci není vyžadován dotaz.|
-| [**Azure Blob Storage**](search-howto-indexing-azure-blob-storage.md) |Požadavky zahrnují účet úložiště a kontejner. Pokud se názvy objektů blob řídí zásadami virtuálního pojmenovávání pro účely seskupování, můžete volitelně zadat část názvu obsahující virtuální adresář jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
+| [**Blob Storage Azure**](search-howto-indexing-azure-blob-storage.md) |Požadavky zahrnují účet úložiště a kontejner. Pokud se názvy objektů blob řídí zásadami virtuálního pojmenovávání pro účely seskupování, můžete volitelně zadat část názvu obsahující virtuální adresář jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
 | [**Table Storage Azure**](search-howto-indexing-azure-tables.md) |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [Indexování služby Table Storage](search-howto-indexing-azure-tables.md). |
 
 ## <a name="wizard-output"></a>Výstup Průvodce
@@ -105,7 +105,7 @@ Průvodce vygeneruje nekompletní index, který se naplní dokumenty získanými
 
 1. Je datový typ vhodný pro příchozí data? Azure Kognitivní hledání podporuje [datové typy EDM (Entity Data Model)](/rest/api/searchservice/supported-data-types). Pro data SQL Azure je k dispozici [mapování grafu](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) , které stanovuje ekvivalentní hodnoty. Další informace najdete v tématu [mapování polí a transformace](search-indexer-field-mappings.md).
 
-1. Máte jedno pole, které může sloužit jako *klíč*? Toto pole musí být EDM. String a musí jednoznačně identifikovat dokument. V případě relačních dat může být namapována na primární klíč. U objektů BLOB může být `metadata-storage-path` . Pokud hodnoty polí obsahují mezery nebo pomlčky, je nutné nastavit možnost **klíč kódování Base-64** v kroku **Vytvoření indexeru** v části **Upřesnit možnosti**pro potlačení kontroly ověření pro tyto znaky.
+1. Máte jedno pole, které může sloužit jako *klíč*? Toto pole musí být EDM. String a musí jednoznačně identifikovat dokument. V případě relačních dat může být namapována na primární klíč. U objektů BLOB může být `metadata-storage-path` . Pokud hodnoty polí obsahují mezery nebo pomlčky, je nutné nastavit možnost **klíč kódování Base-64** v kroku **Vytvoření indexeru** v části **Upřesnit možnosti** pro potlačení kontroly ověření pro tyto znaky.
 
 1. Nastavte atributy pro určení způsobu použití tohoto pole v indexu. 
 

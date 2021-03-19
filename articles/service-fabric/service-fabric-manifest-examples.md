@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75451641"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Příklady manifestu aplikace a služby Service Fabric
@@ -17,7 +17,7 @@ Tato část obsahuje příklady manifestů aplikace a služby. Tyto příklady n
 
 Následuje index zobrazených funkcí a ukázkových manifestů, které jsou součástí.
 
-|Příznak|Manifest|
+|Funkce|Manifest|
 |---|---|
 |[Zásady správného řízení prostředků](service-fabric-resource-governance.md)|[Reliable Services manifestu aplikace](service-fabric-manifest-example-reliable-services-app.md#application-manifest), [manifestu aplikace kontejneru](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Spusťte službu jako účet místního správce.](service-fabric-application-runas-security.md)|[Reliable Services manifest aplikace](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|

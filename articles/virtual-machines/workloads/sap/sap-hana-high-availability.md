@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 03/16/2021
 ms.author: radeltch
-ms.openlocfilehash: 817a17de240ee10966a6cd20d758def7c2ab9c87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 42a4c4a41f6c8bdf9d4a8e78f634893722c8f389
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669678"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576389"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -592,6 +592,115 @@ Ujistěte se, že stav clusteru je OK a že jsou spuštěné všechny prostředk
 #     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 #     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
 </code></pre>
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Konfigurace replikace systému s povoleným aktivním/čtením v clusteru Pacemaker
+
+Počínaje SAP HANA 2,0 SPS 01 umožňuje aktivní/čtecí instalaci pro SAP HANA systémovou replikaci, kde sekundární systémy SAP HANA replikace systému můžou být aktivně používány pro úlohy náročné na čtení. Aby bylo možné podporovat takové nastavení v clusteru, je vyžadována druhá virtuální IP adresa, která klientům umožňuje přístup k sekundární databázi SAP HANA s povoleným čtením. Aby bylo zajištěno, že k lokalitě sekundární replikace dojde i po převzetí, musí být virtuální IP adresa přesunuta se sekundárním prostředkem SAPHana.
+
+Tato část popisuje další kroky, které jsou nutné ke správě replikace systému s povoleným aktivním/čtením v clusteru SUSE s vysokou dostupností s druhou virtuální IP adresou.    
+Než budete pokračovat, ujistěte se, že máte plně nakonfigurovaný cluster SUSE s vysokou dostupností, který spravuje SAP HANA databázi, jak je popsáno ve výše uvedených segmentech dokumentace.  
+
+![SAP HANA vysoké dostupnosti s povoleným sekundárním čtením](./media/sap-hana-high-availability/ha-hana-read-enabled-secondary.png)
+
+### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>Další nastavení v nástroji pro vyrovnávání zatížení Azure pro instalaci s povoleným aktivním/čtením
+
+Pokud chcete pokračovat dalšími kroky při zřizování druhé virtuální IP adresy, ujistěte se, že jste nakonfigurovali Azure Load Balancer, jak je popsáno v části [Ruční nasazení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#manual-deployment) .
+
+1. V případě **standardního** nástroje pro vyrovnávání zatížení postupujte podle dalších kroků na stejném nástroji pro vyrovnávání zatížení, který jste vytvořili v předchozí části.
+
+   a. Vytvořte druhý front-end fond IP adres: 
+
+   - Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond** a vyberte **Přidat**.
+   - Zadejte název druhého fondu front-end IP adres (například **Hana-secondaryIP**).
+   - Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.0.0.14**).
+   - Vyberte **OK**.
+   - Až se vytvoří nový fond front-end IP adres, poznamenejte si IP adresu front-endu.
+
+   b. Potom vytvořte sondu stavu:
+
+   - Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu** a vyberte **Přidat**.
+   - Zadejte název nové sondy stavu (například **Hana-secondaryhp**).
+   - Jako protokol a port **62603** vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+   - Vyberte **OK**.
+
+   c. Dále vytvořte pravidla vyrovnávání zatížení:
+
+   - Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení** a vyberte **Přidat**.
+   - Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-secondarylb**).
+   - Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-secondaryIP**, **Hana-back-end** a **Hana-secondaryhp**).
+   - Vyberte **porty ha**.
+   - Zvyšte **časový limit nečinnosti** na 30 minut.
+   - Ujistěte se, že jste **povolili plovoucí IP adresu**.
+   - Vyberte **OK**.
+
+### <a name="configure-hana-activeread-enabled-system-replication"></a>Konfigurace replikace systému s povoleným aktivním/čtením
+
+Postup konfigurace replikace systému HANA je popsán v části [Konfigurace systémové replikace SAP HANA 2,0](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#configure-sap-hana-20-system-replication) . Pokud nasazujete sekundární scénář s povoleným čtením, při konfiguraci replikace systému na druhém uzlu spusťte následující příkaz jako **hanasid** ADM:
+
+```
+sapcontrol -nr 03 -function StopWait 600 10 
+
+hdbnsutil -sr_register --remoteHost=hn1-db-0 --remoteInstance=03 --replicationMode=sync --name=SITE2 --operationMode=logreplay_readaccess 
+```
+
+### <a name="adding-a-secondary-virtual-ip-address-resource-for-an-activeread-enabled-setup"></a>Přidání prostředku sekundární virtuální IP adresy pro instalaci s povoleným aktivním/čtením
+
+Druhá virtuální IP adresa a příslušné omezení pro stejné umístění můžete nakonfigurovat pomocí následujících příkazů:
+
+```
+crm configure property maintenance-mode=true
+
+crm configure primitive rsc_secip_HN1_HDB03 ocf:heartbeat:IPaddr2 \
+ meta target-role="Started" \
+ operations \$id="rsc_secip_HN1_HDB03-operations" \
+ op monitor interval="10s" timeout="20s" \
+ params ip="10.0.0.14"
+
+crm configure primitive rsc_secnc_HN1_HDB03 azure-lb port=62603 \
+ meta resource-stickiness=0
+
+crm configure group g_secip_HN1_HDB03 rsc_secip_HN1_HDB03 rsc_secnc_HN1_HDB03
+
+crm configure colocation col_saphana_secip_HN1_HDB03 4000: g_secip_HN1_HDB03:Started \
+ msl_SAPHana_HN1_HDB03:Slave 
+
+crm configure property maintenance-mode=false
+```
+Ujistěte se, že stav clusteru je OK a že jsou spuštěné všechny prostředky. Druhá virtuální IP adresa se spustí v sekundární lokalitě společně se sekundárním prostředkem SAPHana.
+
+```
+sudo crm_mon -r
+
+# Online: [ hn1-db-0 hn1-db-1 ]
+#
+# Full list of resources:
+#
+# stonith-sbd     (stonith:external/sbd): Started hn1-db-0
+# Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
+#     Started: [ hn1-db-0 hn1-db-1 ]
+# Master/Slave Set: msl_SAPHana_HN1_HDB03 [rsc_SAPHana_HN1_HDB03]
+#     Masters: [ hn1-db-0 ]
+#     Slaves: [ hn1-db-1 ]
+# Resource Group: g_ip_HN1_HDB03
+#     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
+#     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
+# Resource Group: g_secip_HN1_HDB03:
+#     rsc_secip_HN1_HDB03       (ocf::heartbeat:IPaddr2):        Started hn1-db-1
+#     rsc_secnc_HN1_HDB03       (ocf::heartbeat:azure-lb):       Started hn1-db-1
+
+```
+
+V další části najdete typickou sadu testů pro převzetí služeb při selhání, které se mají spustit.
+
+Při testování clusteru HANA nakonfigurovaného sekundárního režimu pro čtení mějte na paměti, že se jedná o druhé chování virtuální IP adresy:
+
+1. Při migraci prostředku clusteru **SAPHana_HN1_HDB03** do **HN1-DB-1** se druhá virtuální IP adresa přesune na druhý server **HN1-DB-0**. Pokud jste nakonfigurovali AUTOMATED_REGISTER = "false" a replikace systému HANA není zaregistrovaná automaticky, pak se druhá virtuální IP adresa spustí na **HN1-DB-0,** protože server je dostupný a služba Cluster Services je online.  
+
+2. Při testování selhání serveru budou na primárním serveru vedle primárních prostředků virtuální IP adresy (**rsc_secip_HN1_HDB03**) a prostředku portu nástroje pro vyrovnávání zatížení Azure (**rsc_secnc_HN1_HDB03**) spouštěny druhé prostředky. I když je sekundární server mimo provoz, aplikace připojené k databázi HANA s podporou čtení se připojí k primární databázi HANA. Očekává se chování, protože nechcete, aby aplikace připojené k databázi HANA s povoleným čtením byly nedostupné, když sekundární server není dostupný.
+  
+3. Když je sekundární server dostupný a Clusterové služby jsou online, ostatní prostředky virtuální IP adresy a portu se automaticky přesunou na sekundární server, a to i v případě, že se replikace systému HANA nemusí registrovat jako sekundární. Před spuštěním clusterových služeb na tomto serveru se ujistěte, že jste zaregistrovali sekundární databázi HANA jako povolenou pro čtení. Prostředek clusteru instance HANA můžete nakonfigurovat tak, aby automaticky registroval sekundární parametr nastavením parametru AUTOMATED_REGISTER = true.       
+
+4. Během převzetí služeb při selhání a zálohování se může přerušit existující připojení pro aplikace s použitím druhé virtuální IP adresy pro připojení k databázi HANA.  
 
 ## <a name="test-the-cluster-setup"></a>Otestování instalace clusteru
 

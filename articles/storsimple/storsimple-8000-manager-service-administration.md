@@ -1,6 +1,6 @@
 ---
-title: Správa služby StorSimple Device Manager | Microsoft Docs
-description: Naučte se spravovat zařízení StorSimple pomocí služby StorSimple Device Manager v Azure Portal.
+title: Správa služby StorSimple Správce zařízení | Microsoft Docs
+description: Naučte se spravovat zařízení StorSimple pomocí služby StorSimple Správce zařízení v Azure Portal.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -12,49 +12,51 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2017
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0e25d41fbf6a9683f178cbfd1b07fde1b6796509
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967971"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656817"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Použití služby StorSimple Device Manager ke správě zařízení StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Použití služby StorSimple Správce zařízení ke správě zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento článek popisuje rozhraní služby StorSimple Device Manager Service, včetně toho, jak se k němu připojit, dostupné možnosti a odkazy na konkrétní pracovní postupy, které je možné provádět prostřednictvím tohoto uživatelského rozhraní. Tyto pokyny platí pro obojí. fyzické zařízení StorSimple a cloudové zařízení.
+Tento článek popisuje rozhraní služby StorSimple Správce zařízení Service, včetně toho, jak se k němu připojit, dostupné možnosti a odkazy na konkrétní pracovní postupy, které je možné provádět prostřednictvím tohoto uživatelského rozhraní. Tyto pokyny platí pro obojí. fyzické zařízení StorSimple a cloudové zařízení.
 
 Po přečtení tohoto článku se naučíte:
 
-* Připojení ke službě StorSimple Device Manager Service
-* Správa zařízení StorSimple prostřednictvím služby StorSimple Device Manager
+* Připojení ke službě StorSimple Správce zařízení Service
+* Správa zařízení StorSimple prostřednictvím služby StorSimple Správce zařízení
 
-## <a name="connect-to-storsimple-device-manager-service"></a>Připojení ke službě StorSimple Device Manager Service
+## <a name="connect-to-storsimple-device-manager-service"></a>Připojení ke službě StorSimple Správce zařízení Service
 
-Služba StorSimple Device Manager běží v Microsoft Azure a připojuje se k více zařízením StorSimple. Ke správě těchto zařízení používáte centrální portál Microsoft Azure běžící v prohlížeči. Pokud se chcete připojit ke službě StorSimple Device Manager, udělejte toto:
+Služba StorSimple Správce zařízení běží v Microsoft Azure a připojuje se k více zařízením StorSimple. Ke správě těchto zařízení používáte centrální portál Microsoft Azure běžící v prohlížeči. Pokud se chcete připojit ke službě StorSimple Správce zařízení, udělejte toto:
 
 #### <a name="to-connect-to-the-service"></a>Připojení ke službě
 1. Přejděte na [https://portal.azure.com/](https://portal.azure.com/) .
 2. Pomocí přihlašovacích údajů pro účet Microsoft se přihlaste k portál Microsoft Azure (nachází se v pravém horním rohu podokna).
-3. Přejděte dolů na levé navigační podokno, abyste měli přístup ke službě StorSimple Device Manager.
+3. Přejděte dolů na levé navigační podokno, abyste měli přístup ke službě StorSimple Správce zařízení.
 
 
-## <a name="administer-storsimple-device-using-storsimple-device-manager-service"></a>Správa zařízení StorSimple pomocí služby StorSimple Device Manager
+## <a name="administer-storsimple-device-using-storsimple-device-manager-service"></a>Správa zařízení StorSimple pomocí služby StorSimple Správce zařízení
 
-Následující tabulka obsahuje souhrn všech běžných úloh správy a složitých pracovních postupů, které se dají provádět v uživatelském rozhraní služby StorSimple Device Manager. Tyto úlohy jsou uspořádány na základě oken uživatelského rozhraní, na kterých jsou iniciována.
+Následující tabulka obsahuje souhrn všech běžných úloh správy a složitých pracovních postupů, které se dají provádět v uživatelském rozhraní služby StorSimple Správce zařízení. Tyto úlohy jsou uspořádány na základě oken uživatelského rozhraní, na kterých jsou iniciována.
 
 Chcete-li získat další informace o jednotlivých pracovních postupech, klikněte na příslušný postup v tabulce.
 
-#### <a name="storsimple-device-manager-workflows"></a>Pracovní postupy Device Manager StorSimple
+[!INCLUDE [StorSimple software warning](../../includes/storsimple-update-software-warning.md)]
+
+#### <a name="storsimple-device-manager-workflows"></a>Pracovní postupy Správce zařízení StorSimple
 
 | Pokud to chcete provést... | Použijte tento postup. |
 | --- | --- |
-| Vytvoření služby</br>Odstranění služby</br>Získat registrační klíč služby</br>Znovu vygenerovat registrační klíč služby |[Nasazení služby StorSimple Device Manager](storsimple-8000-manage-service.md) |
-| Zobrazení protokolů aktivit |[Použití přehledu služby Device Manager StorSimple](storsimple-8000-service-dashboard.md) |
-| Změna šifrovacího klíče dat služby</br>Zobrazit protokoly operací |[Použití řídicího panelu služby StorSimple Device Manager](storsimple-8000-service-dashboard.md) |
+| Vytvoření služby</br>Odstranění služby</br>Získat registrační klíč služby</br>Znovu vygenerovat registrační klíč služby |[Nasazení služby StorSimple Správce zařízení](storsimple-8000-manage-service.md) |
+| Zobrazení protokolů aktivit |[Použití přehledu služby Správce zařízení StorSimple](storsimple-8000-service-dashboard.md) |
+| Změna šifrovacího klíče dat služby</br>Zobrazit protokoly operací |[Použití řídicího panelu služby StorSimple Správce zařízení](storsimple-8000-service-dashboard.md) |
 | Deaktivace zařízení</br>Odstranit zařízení |[Deaktivace nebo odstranění zařízení](storsimple-8000-deactivate-and-delete-device.md) |
 | Informace o zotavení po havárii a převzetí služeb při selhání zařízení</br>Převzetí služeb při selhání fyzického zařízení</br>Převzetí služeb při selhání virtuálního zařízení</br>Zotavení po havárii pro provozní kontinuitu (BCDR) |[Převzetí služeb při selhání a zotavení po havárii pro zařízení StorSimple](storsimple-8000-device-failover-disaster-recovery.md) |
 | Výpis záloh svazku</br>Vybrat zálohovací sklad</br>Odstraní zálohovací sklad. |[Správa záloh](storsimple-8000-manage-backup-catalog.md) |

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 263d27f4236ba43f6514f6a084e58cfe0a13a9d2
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 0197b533f80ccb1524de2bbb9fc5c642f2626bbc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199515"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655253"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení v Azure Database for MySQL
 Tento článek popisuje architekturu připojení Azure Database for MySQL a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MySQL od klientů v rámci i mimo Azure.
@@ -84,7 +84,7 @@ V následující tabulce jsou uvedené IP adresy brány Azure Database for MySQL
 | USA – středozápad | 13.78.145.25     | | |
 | West Europe |13.69.105.208, 104.40.169.187 | 40.68.37.158 | 191.237.232.75 |
 | USA – západ |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
-| Západní USA 2 | 13.66.226.202  | | |
+| Západní USA 2 | 13.66.136.192 | 13.66.226.202  | | 
 ||||
 
 ## <a name="connection-redirection"></a>Přesměrování připojení

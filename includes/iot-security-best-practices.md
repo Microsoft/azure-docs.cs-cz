@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72793129"
 ---
 Zabezpečení infrastruktury Internet věcí (IoT) vyžaduje přísnou strategii zabezpečení v rámci hloubky. Tato strategie vyžaduje, abyste zabezpečili data v cloudu, chránili integritu dat během přenosu prostřednictvím veřejného Internetu a bezpečně zřídili zařízení. Každá vrstva sestaví větší bezpečnostní ujištění v celkové infrastruktuře.

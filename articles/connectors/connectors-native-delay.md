@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 tags: connectors
 ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74787332"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Zpoždění spuštění další akce v Azure Logic Apps
@@ -28,7 +28,7 @@ Tady je několik příkladů, jak použít tyto akce:
 
 * Před pokračováním a obnovením dat odložit pracovní postup do dokončení volání HTTP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -50,9 +50,9 @@ Tady je několik příkladů, jak použít tyto akce:
 
    ![Nastavte dobu zpoždění.](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
+   | Vlastnost | Název JSON | Požaduje se | Typ | Description |
    |----------|-----------|----------|------|-------------|
-   | Počet | count | Ano | Integer | Počet časových jednotek, které se mají zpozdit |
+   | Počet | count | Yes | Integer | Počet časových jednotek, které se mají zpozdit |
    | Jednotka | unit | Ano | Řetězec | Jednotka času, například: `Second` , `Minute` , `Hour` , `Day` , `Week` nebo `Month` |
    ||||||
 
@@ -76,7 +76,7 @@ Tady je několik příkladů, jak použít tyto akce:
 
    ![Zadejte časové razítko, kdy se má zpoždění ukončit.](./media/connectors-native-delay/delay-until-timestamp.png)
 
-   | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
+   | Vlastnost | Název JSON | Požaduje se | Typ | Description |
    |----------|-----------|----------|------|-------------|
    | Timestamp | časové razítko | Ano | Řetězec | Koncové datum a čas pro obnovení pracovního postupu v tomto formátu: <p>RRRR-MM-DDThh: mm: ssZ <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00Z". <p>**Poznámka:** Tento formát času musí odpovídat [specifikaci data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data a času UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Bez časového pásma je nutné přidat písmeno "Z" na konci bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). |
    ||||||

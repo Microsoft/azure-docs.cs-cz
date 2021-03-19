@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75614345"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Použití sady Visual Studio k vytváření a publikování aplikací .Net Core cílících na vzdálený Service Fabric clusteru se systémem Linux
@@ -25,7 +25,7 @@ Pomocí nástrojů sady Visual Studio můžete vyvíjet a publikovat Service Fab
 3. V dialogovém okně **Nový projekt** vyberte **Service Fabric aplikace Cloud->**.
 ![vytvořit aplikaci]
 4. Pojmenujte aplikaci a klikněte na **OK**.
-5. Na stránce **Nová služba Service Fabric** v **části .NET Core**vyberte typ služby, kterou chcete vytvořit.
+5. Na stránce **Nová služba Service Fabric** v **části .NET Core** vyberte typ služby, kterou chcete vytvořit.
 ![vytvořit službu]
 
 ## <a name="deploy-to-a-remote-linux-cluster"></a>Nasazení na vzdálený cluster se systémem Linux
@@ -54,7 +54,7 @@ Pomocí nástrojů sady Visual Studio můžete vyvíjet a publikovat Service Fab
     </EntryPoint>
 ```
 6. V Průzkumník řešení klikněte pravým tlačítkem na aplikaci a vyberte **publikovat**. Zobrazí se dialogové okno **Publikovat**.
-7. V části **koncový bod připojení**vyberte koncový bod pro cluster vzdáleného Service Fabric Linux, na který chcete cílit.
+7. V části **koncový bod připojení** vyberte koncový bod pro cluster vzdáleného Service Fabric Linux, na který chcete cílit.
 ![publikování – aplikace]
 
 <!--Image references-->

@@ -9,10 +9,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89075252"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytváření Service Busch prostředků pomocí šablon Azure Resource Manager
@@ -46,7 +46,7 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
 4. Pokud jeden z nich neexistuje, vytvořte novou skupinu prostředků.
 5. Otestujte nasazení.
 6. V případě potřeby nastavte režim nasazení.
-7. Nasaďte šablonu.
+7. Nasazení šablony
 
 Úplné informace o nasazení Azure Resource Manager šablon najdete v tématu [nasazení prostředků pomocí šablon Azure Resource Manager][Deploy resources with Azure Resource Manager templates].
 

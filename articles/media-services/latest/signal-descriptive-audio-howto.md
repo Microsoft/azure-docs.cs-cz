@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5174cb584f2e8df236725f7427b423fda1a02c88
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630856"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596718"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signály popisné zvukové stopy
 
@@ -27,7 +27,7 @@ Do svého videa můžete přidat záznam mluveného komentáře, který umožní
 
 Tento článek ukazuje, jak zakódovat video, nahrát zvukový soubor MP4 (kodek AAC) obsahující popisný zvuk do výstupního prostředku a upravit soubor. ISM tak, aby obsahoval popisný zvuk.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte účet Media Services](./create-account-howto.md).
 - Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](./access-api-howto.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API.
@@ -80,7 +80,7 @@ Následující funkce odešle úlohu.
 
 Úloha obvykle prochází následujícími stavy: **naplánované**, **zařazeno do fronty**, **zpracování**, **dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
 
-Další informace najdete v tématu [zpracování událostí Event Grid](reacting-to-media-services-events.md).
+Další informace najdete v tématu [zpracování událostí Event Grid](monitoring/reacting-to-media-services-events.md).
 
 ## <a name="upload-the-audio-only-mp4-file"></a>Nahrání souboru MP4 jenom pro zvuk
 

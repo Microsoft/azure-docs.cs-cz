@@ -4,10 +4,10 @@ description: Naučte se integrovat Azure DevTest Labs do Azure Pipelines nepřet
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87288921"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Integrace Azure DevTest Labs do kanálu CI/CD Azure Pipelines
@@ -24,7 +24,7 @@ Tento článek popisuje, jak pomocí úloh Azure DevTest Labs vytvořit a nasadi
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Zaregistrujte se nebo se přihlaste do své organizace [Azure DevOps](https://dev.azure.com) a [vytvořte projekt](/vsts/organizations/projects/create-project) v organizaci. 
   
@@ -97,7 +97,7 @@ Vytvoření nového kanálu vydaných verzí:
 
 1. Na stránce projektu Azure DevOps v levém navigačním panelu vyberte **kanály**  >  **vydaných verzí** .
 1. Vyberte **Nový kanál**.
-1. V části **Vybrat šablonu**přejděte dolů a vyberte **prázdná úloha**a pak vyberte **použít**.
+1. V části **Vybrat šablonu** přejděte dolů a vyberte **prázdná úloha** a pak vyberte **použít**.
 
 ### <a name="add-and-set-variables"></a>Přidání a nastavení proměnných
 
@@ -121,7 +121,7 @@ Dalším krokem je vytvoření virtuálního počítače zlaté image pro použi
 
 1. Na kartě **kanál** kanálu vydaných verzí vyberte v části **fáze 1** text s hypertextovými odkazy, aby se **zobrazily úlohy fáze**, a pak vyberte symbol plus **+** vedle **úlohy agenta**. 
    
-1. V části **Přidat úlohy**vyberte **Azure DevTest Labs vytvořit virtuální počítač**a vyberte **Přidat**. 
+1. V části **Přidat úlohy** vyberte **Azure DevTest Labs vytvořit virtuální počítač** a vyberte **Přidat**. 
    
 1. V levém podokně vyberte **vytvořit Azure DevTest Labs virtuální počítač** . 
 
@@ -141,7 +141,7 @@ Spusťte skript, který jste vytvořili dříve, abyste shromáždili podrobnost
 
 1. Na kartě **kanál** kanálu vydaných verzí vyberte v části **fáze 1** text s hypertextovými odkazy, aby se **zobrazily úlohy fáze**, a pak vyberte symbol plus **+** vedle **úlohy agenta**. 
    
-1. V části **Přidat úlohy**vyberte možnost **Azure PowerShell**a vyberte možnost **Přidat**. 
+1. V části **Přidat úlohy** vyberte možnost **Azure PowerShell** a vyberte možnost **Přidat**. 
    
 1. V levém podokně vyberte **Azure PowerShell skript: FilePath** . 
    
@@ -163,7 +163,7 @@ Dalším úkolem je vytvořit image nově nasazeného virtuálního počítače 
 
 1. Na kartě **kanál** kanálu vydaných verzí vyberte v části **fáze 1** text s hypertextovými odkazy, aby se **zobrazily úlohy fáze**, a pak vyberte symbol plus **+** vedle **úlohy agenta**. 
    
-1. V části **Přidat úlohy**vyberte **Azure DevTest Labs vytvořit vlastní image**a vyberte **Přidat**. 
+1. V části **Přidat úlohy** vyberte **Azure DevTest Labs vytvořit vlastní image** a vyberte **Přidat**. 
    
 1. Nakonfigurujte úlohu následujícím způsobem:
    
@@ -180,7 +180,7 @@ Dalším úkolem je vytvořit image nově nasazeného virtuálního počítače 
 
 Můžete přidat úlohy, které nasadí vaši aplikaci do nového virtuálního počítače DevTest Labs. Úkoly, které obvykle používáte k nasazení aplikace, jsou *kopírování souborů Azure* a *PowerShellu na cílových počítačích*.
 
-Informace o virtuálním počítači, které potřebujete pro parametry těchto úloh, se ukládají ve třech konfiguračních proměnných s názvem **labVmRgName**, **labVMIpAddress**a **labVMFqdn** v kanálu pro vydávání verzí. Pokud chcete experimentovat jenom s vytvořením virtuálního počítače s DevTest Labs a vlastní image bez nasazení aplikace, můžete tento krok přeskočit.
+Informace o virtuálním počítači, které potřebujete pro parametry těchto úloh, se ukládají ve třech konfiguračních proměnných s názvem **labVmRgName**, **labVMIpAddress** a **labVMFqdn** v kanálu pro vydávání verzí. Pokud chcete experimentovat jenom s vytvořením virtuálního počítače s DevTest Labs a vlastní image bez nasazení aplikace, můžete tento krok přeskočit.
 
 ### <a name="delete-the-vm"></a>Odstranění virtuálního počítače
 
@@ -188,12 +188,12 @@ Posledním úkolem je odstranit virtuální počítač, který jste nasadili v i
 
 1. Na kartě **kanál** kanálu vydaných verzí vyberte v části **fáze 1** text s hypertextovými odkazy, aby se **zobrazily úlohy fáze**, a pak vyberte symbol plus **+** vedle **úlohy agenta**. 
    
-1. V části **Přidat úlohy**vyberte **Azure DevTest Labs odstranit virtuální počítač**a vyberte **Přidat**. 
+1. V části **Přidat úlohy** vyberte **Azure DevTest Labs odstranit virtuální počítač** a vyberte **Přidat**. 
    
 1. Nakonfigurujte úlohu následujícím způsobem:
    
-   - V části **předplatné Azure RM**vyberte připojení nebo předplatné služby. 
-   - Pokud pro **ID virtuálního počítače testovacího prostředí**jste změnili výchozí název proměnné LabVMId, zadejte ji sem. Výchozí hodnota je **$ (labVMId)**.
+   - V části **předplatné Azure RM** vyberte připojení nebo předplatné služby. 
+   - Pokud pro **ID virtuálního počítače testovacího prostředí** jste změnili výchozí název proměnné LabVMId, zadejte ji sem. Výchozí hodnota je **$ (labVMId)**.
    
 ### <a name="save-the-release-pipeline"></a>Uložení kanálu pro vydávání verzí
 
@@ -209,7 +209,7 @@ Vytvoření a spuštění vydaných verzí pomocí nového kanálu:
 
 1. V pravém horním rohu na stránce kanál verze vyberte **vytvořit vydání** . 
    
-1. V části **artefakty**vyberte nejnovější sestavení a pak vyberte **vytvořit**.
+1. V části **artefakty** vyberte nejnovější sestavení a pak vyberte **vytvořit**.
    
 1. V každé fázi vydaných verzí aktualizujte zobrazení instance DevTest Labs v Azure Portal tak, aby se zobrazilo vytváření virtuálních počítačů, vytváření imagí a odstraňování virtuálních počítačů.
 

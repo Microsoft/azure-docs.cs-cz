@@ -1,22 +1,22 @@
 ---
 title: 'ExpressRoute: jak nakonfigurovat vlastní výstrahy pro inzerované trasy'
-description: V tomto článku se dozvíte, jak pomocí Azure Automation a Logic Apps monitorovat počet tras inzerovaných z brány ExpressRoute do místních sítí, aby se předešlo tomu, že se zasáhne limit trasy 200.
+description: V tomto článku se dozvíte, jak pomocí Azure Automation a Logic Apps monitorovat počet tras inzerovaných z brány ExpressRoute do místních sítí, aby se předešlo tomu, že se zasáhne limit trasy 1000.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: fed7663e2342a708aee70b9a54e6e0a6b6f97e8c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504397"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654386"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurace vlastních upozornění pro monitorování inzerovaných tras
 
-Tento článek vám pomůže s použitím Azure Automation a Logic Apps k nepřetržitému monitorování počtu tras inzerovaných z brány ExpressRoute do místních sítí. Monitorování může zabránit zvýšení [limitu trasy 200](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering).
+Tento článek vám pomůže s použitím Azure Automation a Logic Apps k nepřetržitému monitorování počtu tras inzerovaných z brány ExpressRoute do místních sítí. Monitorování může přispět k tomu, aby se zabránilo zvýšení limitu trasy 1000] (ExpressRoute-FAQ. MD # how-m:n----many------li----------ExpressRoute-Private-peering-on-----------
 
 **Azure Automation** umožňuje automatizovat spouštění vlastního skriptu PowerShellu uloženého v *Runbooku*. Při použití konfigurace v tomto článku sada Runbook obsahuje skript PowerShellu, který se dotazuje na jednu nebo více ExpressRoute bran. Shromažďuje datovou sadu obsahující skupinu prostředků, název brány ExpressRoute a počet předpon sítě inzerovaných místně.
 
@@ -48,7 +48,7 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 * Vlastní výstraha popisovaná v tomto článku je doplněk pro dosažení lepšího provozu a řízení. Nejedná se o náhradu za nativní výstrahy v ExpressRoute.
 * Shromažďování dat pro brány ExpressRoute běží na pozadí. Doba běhu může být delší, než se očekávalo. Aby nedošlo k zařazování do fronty úloh, je nutné správně nastavit opakování pracovního postupu.
-* Nasazení pomocí skriptů nebo šablon ARM může nastat rychleji než vlastní aktivační událost alarmu. To může vést ke zvýšení počtu předpon sítě v bráně ExpressRoute nad limit 200 tras.
+* Nasazení pomocí skriptů nebo šablon ARM může nastat rychleji než vlastní aktivační událost alarmu. To může vést ke zvýšení počtu předpon sítě v bráně ExpressRoute nad limit 1000 tras.
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Vytvoření a konfigurace účtů
 
@@ -409,7 +409,7 @@ Po analýze formátu JSON akce **operace analýzy dat JSON** uloží obsah do v�
 
    :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
 
-9. Podmínka Logic je pravdivá, pokud jedna ze dvou dynamických proměnných, numRoute1 nebo numRoute2, je větší než prahová hodnota. V tomto příkladu je prahová hodnota opravena na 160 (80% maximální hodnoty 200 trasy). Prahovou hodnotu můžete změnit tak, aby vyhovovala vašim požadavkům. V případě konzistence by měla být hodnota stejná jako hodnota použitá ve skriptu Runbooku PowerShellu.
+9. Podmínka Logic je pravdivá, pokud jedna ze dvou dynamických proměnných, numRoute1 nebo numRoute2, je větší než prahová hodnota. V tomto příkladu je prahová hodnota opravena na 800 (80% maximální hodnoty 1000 trasy). Prahovou hodnotu můžete změnit tak, aby vyhovovala vašim požadavkům. V případě konzistence by měla být hodnota stejná jako hodnota použitá ve skriptu Runbooku PowerShellu.
 
    :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="Logická podmínka":::
 

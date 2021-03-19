@@ -4,13 +4,13 @@ description: Naučte se, jak vytvořit pracovní prostor Log Analytics, který u
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/26/2020
-ms.openlocfilehash: 3c5df095cccec7509084f122c9a42f3b113d1c95
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/18/2021
+ms.openlocfilehash: 27eac9cefe645087cae43c34cb6503b562fb7c07
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047311"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656294"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Vytvoření pracovního prostoru Log Analytics na webu Azure Portal
 Pomocí nabídky **pracovní prostory Log Analytics** můžete vytvořit pracovní prostor Log Analytics pomocí Azure Portal. Log Analytics pracovní prostor je jedinečné prostředí pro Azure Monitor data protokolu. Každý pracovní prostor má své vlastní úložiště a konfiguraci dat a zdroje dat a řešení jsou nakonfigurovány tak, aby ukládaly data do konkrétního pracovního prostoru. Pokud máte v úmyslu shromažďovat data z následujících zdrojů, potřebujete Log Analytics pracovní prostor:
@@ -32,23 +32,24 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
-1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
+Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
-    ![portál Azure](media/quick-create-workspace/azure-portal-01.png)
+![portál Azure](media/quick-create-workspace/azure-portal-01.png)
   
-2. Klikněte na **Přidat** a pak vyberte volby pro následující položky:
+Klikněte na tlačítko **Přidat** a zadejte hodnoty pro následující možnosti:
 
-   * Zadejte název nového **pracovního prostoru služby Log Analytics**, například *DefaultLAWorkspace*. Tento název musí být globálně jedinečný v rámci všech předplatných Azure Monitor.
    * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
    * V případě **skupiny prostředků** vyberte možnost použít existující skupinu prostředků, která už je nastavená, nebo vytvořte novou.  
-   * Vyberte dostupné **umístění**.  Další informace najdete v tématu které [oblasti Log Analytics jsou k dispozici v](https://azure.microsoft.com/regions/services/) článku a vyhledejte Azure monitor z **hledání pole produkt** .  
-   * Pokud vytváříte pracovní prostor v novém předplatném vytvořeném po 2. dubnu 2018, automaticky se použije cenový plán *podle počtu GB* a možnost vybrat cenovou úroveň nebude dostupná.  Pokud vytváříte pracovní prostor pro existující předplatné vytvořené před 2. dubna nebo do předplatného, které bylo vázáno na existující registraci smlouva Enterprise (EA), vyberte upřednostňovanou cenovou úroveň.  Další informace o jednotlivých vrstvách najdete v článku [informace o cenách Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
+   * Zadejte název nového **pracovního prostoru služby Log Analytics**, například *DefaultLAWorkspace*. Tento název musí být globálně jedinečný v rámci všech předplatných Azure Monitor.
+   * Vyberte dostupnou **oblast**.  Další informace najdete v tématu které [oblasti Log Analytics jsou k dispozici v](https://azure.microsoft.com/regions/services/) článku a vyhledejte Azure monitor z **hledání pole produkt** .  
 
-        ![Okno pro vytvoření Log Analytics prostředku](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
 
-3. Po zadání požadovaných informací v podokně **log Analyticsho pracovního prostoru** klikněte na tlačítko **OK**.  
+        ![Okno pro vytvoření Log Analytics prostředku](media/quick-create-workspace/create-workspace.png)  
 
-Během ověřování informací a vytváření pracovního prostoru můžete průběh zpracování sledovat prostřednictvím položky nabídky **Oznámení**. 
+
+Kliknutím na tlačítko **zkontrolovat + vytvořit** zkontrolujte nastavení a pak **vytvořte** pracovní prostor. Tím se vybere výchozí cenová úroveň s průběžnými platbami, které neúčtují žádné změny, dokud nezačnete shromažďovat dostatečné množství dat. Další informace o dalších cenových úrovních najdete v tématu [informace o cenách Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
+
+
 
 ## <a name="troubleshooting"></a>Řešení potíží
 Když vytvoříte pracovní prostor, který byl odstraněn za posledních 14 dní a ve [stavu "obnovitelného odstranění](../logs/delete-workspace.md#soft-delete-behavior)", může mít operace v závislosti na konfiguraci pracovního prostoru jiný výsledek:

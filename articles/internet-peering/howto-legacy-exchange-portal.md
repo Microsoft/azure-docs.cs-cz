@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/21/2020
 ms.author: derekol
 ms.openlocfilehash: 6249d68486af754f2d2980aaed9d5fd8287dcb5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84700157"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Převedení staršího partnerského vztahu serveru Exchange na prostředek Azure pomocí Azure Portal
@@ -57,7 +57,7 @@ Jako poskytovatel internetového Exchange můžete vytvořit partnerský vztah E
 ### <a name="verify-exchange-peering"></a><a name=get></a>Ověření partnerského vztahu Exchange
 [!INCLUDE [peering-exchange-get-portal](./includes/exchange-portal-get.md)]
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Další informace najdete v tématu [Nejčastější dotazy k internetovým partnerům](faqs.md).
 

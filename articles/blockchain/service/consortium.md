@@ -5,10 +5,10 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84712526"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Konsorcium služeb Azure blockchain
@@ -17,7 +17,7 @@ Pomocí služby Azure blockchain můžete vytvořit soukromé sítě konsorcia b
 
 * Účastníci s oprávněním **správce** , kteří můžou přebírat akce správy konsorcia a můžou se zúčastnit transakcí blockchain.
 
-* **User** Účastníci, kteří nemohou provádět žádnou akci správy konsorcia, ale mohou se zúčastnit transakcí blockchain.
+*  Účastníci, kteří nemohou provádět žádnou akci správy konsorcia, ale mohou se zúčastnit transakcí blockchain.
 
 Sítě konsorcia můžou být kombinací rolí účastníka a můžou mít libovolný počet jednotlivých typů rolí. Musí existovat alespoň jeden správce.
 

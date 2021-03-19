@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 606704621a4904dd0fb7b6f55e753dbe77e39cb5
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601011"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578494"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -269,6 +269,7 @@ Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [http
 | AADSTS90094 | AdminConsentRequired – vyžaduje se souhlas správce. |
 | AADSTS900382 | Důvěrného klienta není v žádosti mezi cloudy podporován. |
 | AADSTS90099 | Aplikace {appId} ({appName}) není v tenantovi {tenant} autorizovaná. Aplikace musí mít autorizaci pro přístup k tenantovi zákazníka, aby je mohli používat Delegovaní správci partnera. K autorizaci aplikace poskytněte příslušné rozhraní API partnerského centra nebo spusťte příslušné rozhraní API partnerského centra. |
+| AADSTS900971| Nebyla zadána žádná adresa pro odpověď.|
 | AADSTS90100 | InvalidRequestParameter – parametr je prázdný nebo neplatný. |
 | AADSTS901002 | AADSTS901002: parametr žádosti prostředku není podporován. |
 | AADSTS90101 | InvalidEmailAddress – zadaná data nejsou platnou e-mailovou adresou. E-mailová adresa musí být ve formátu `someone@example.com` . |

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: 1a45eed421dd8d734fcef0dd452df1d4a65fd053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936958"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Trvalá data úloh a úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET
@@ -47,7 +47,7 @@ Pokud vyvíjíte v jiném jazyce než .NET, můžete implementovat vlastní konv
 Pokud chcete zachovat výstupní data Azure Storage pomocí knihovny konvence souborů, musíte nejdřív propojit účet Azure Storage s účtem Batch. Pokud jste to ještě neudělali, propojte účet úložiště s účtem Batch pomocí [Azure Portal](https://portal.azure.com):
 
 1. Na webu Azure Portal přejděte ke svému účtu Batch.
-1. V části **Nastavení**vyberte **účet úložiště**.
+1. V části **Nastavení** vyberte **účet úložiště**.
 1. Pokud ještě nemáte účet úložiště přidružený k účtu Batch, klikněte na **účet úložiště (žádný)**.
 1. Vyberte účet úložiště ze seznamu pro vaše předplatné. Nejlepšího výkonu dosáhnete, když použijete účet Azure Storage, který je ve stejné oblasti jako účet Batch, ve kterém jsou vaše úlohy spuštěné.
 
@@ -104,7 +104,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 Tyto typy výstupu umožňují určit, který typ výstupů se má zobrazit, když později budete dotazovat Batch na trvalé výstupy daného úkolu. Jinými slovy, při výpisu výstupů pro úlohu můžete filtrovat seznam na jednom z výstupních typů. Například "dát mi výstup *verze Preview* pro úlohu *109*." Další informace o výpisu a načítání výstupů se zobrazí v části načtení výstupu později v článku.
 
 > [!TIP]
-> Typ výstupu také určuje, kde se v Azure Portal zobrazí konkrétní *soubor: soubory*zařazené do kategorií se zobrazí v části **výstupní soubory úlohy**a v části **protokoly úloh**se zobrazí soubory *TaskLog* .
+> Typ výstupu také určuje, kde se v Azure Portal zobrazí konkrétní *soubor: soubory* zařazené do kategorií se zobrazí v části **výstupní soubory úlohy** a v části **protokoly úloh** se zobrazí soubory *TaskLog* .
 
 ### <a name="store-job-outputs"></a>Ukládání výstupů úloh
 

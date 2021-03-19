@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75645459"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Monitorování a diagnostika zpracování požadavků na reverzním proxy serveru
@@ -77,7 +77,7 @@ Tady je několik příkladů, jak interpretovat běžné protokoly selhání, ke
     
     Tady je příklad události, kde reverzní proxy vrátí 404, protože se nepovedlo najít odpovídajícího koncového bodu služby.
     Zde jsou datové položky, které vás zajímají:
-   * **processRequestPhase**: Určuje fázi během zpracování žádosti, když došlo k chybě, ***TryGetEndpoint*** , tj. Při pokusu o načtení koncového bodu služby pro přeposílání. 
+   * **processRequestPhase**: Určuje fázi během zpracování žádosti, když došlo k chybě, **_TryGetEndpoint_** , tj. Při pokusu o načtení koncového bodu služby pro přeposílání. 
    * **errorDetails**: vypíše kritéria hledání koncových bodů. Tady vidíte **, že seznam** koncových bodů repliky obsahuje jenom naslouchací proces s názvem **OldListener**.
     
      ```

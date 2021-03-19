@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84712441"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Vzorové kódy operací s daty pro Azure Logic Apps
@@ -23,7 +23,7 @@ Na základě standardů JavaScript Object Notation (JSON) se tyto definice akcí
 
 ## <a name="compose"></a>Vytvořit
 
-Chcete-li vyzkoušet [příklad akce **psaní** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action), tady jsou definice akcí, které můžete použít:
+Chcete-li vyzkoušet [příklad akce **psaní**](../logic-apps/logic-apps-perform-data-operations.md#compose-action), tady jsou definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -93,7 +93,7 @@ Chcete-li vyzkoušet [příklad akce **psaní** ](../logic-apps/logic-apps-perfo
 
 ## <a name="create-csv-table"></a>Vytvoření tabulky CSV
 
-Pokud chcete vyzkoušet [příklad akce **Vytvoření tabulky CSV** ](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action), najdete tady definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **Vytvoření tabulky CSV**](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action), najdete tady definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -138,7 +138,7 @@ Pokud chcete vyzkoušet [příklad akce **Vytvoření tabulky CSV** ](../logic-a
 
 ## <a name="create-html-table"></a>Vytvoření tabulky HTML
 
-Pokud chcete vyzkoušet [příklad akce **Vytvoření tabulky HTML** ](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), najdete tady definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **Vytvoření tabulky HTML**](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), najdete tady definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -183,7 +183,7 @@ Pokud chcete vyzkoušet [příklad akce **Vytvoření tabulky HTML** ](../logic-
 
 ## <a name="filter-array"></a>Filtrovat pole
 
-Pokud chcete vyzkoušet [příklad akce **pole filtru** ](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action), tady jsou definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **pole filtru**](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action), tady jsou definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -224,7 +224,7 @@ Pokud chcete vyzkoušet [příklad akce **pole filtru** ](../logic-apps/logic-ap
 
 ## <a name="join"></a>Spojit
 
-Pokud chcete vyzkoušet [příklad akce **spojení** ](../logic-apps/logic-apps-perform-data-operations.md#join-action), můžete použít tyto definice akcí:
+Pokud chcete vyzkoušet [příklad akce **spojení**](../logic-apps/logic-apps-perform-data-operations.md#join-action), můžete použít tyto definice akcí:
 
 ```json
 "actions": {
@@ -265,7 +265,7 @@ Pokud chcete vyzkoušet [příklad akce **spojení** ](../logic-apps/logic-apps-
 
 ## <a name="parse-json"></a>Parsovat JSON
 
-Pokud chcete vyzkoušet [příklad akce **analyzovat JSON** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), najdete tady definice akcí, které můžete použít:
+Pokud chcete vyzkoušet [příklad akce **analyzovat JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), najdete tady definice akcí, které můžete použít:
 
 ```json
 "actions": {
@@ -324,7 +324,7 @@ Pokud chcete vyzkoušet [příklad akce **analyzovat JSON** ](../logic-apps/logi
 
 ## <a name="select"></a>Vyberte
 
-Pokud chcete vyzkoušet [příklad akce **výběru** ](../logic-apps/logic-apps-perform-data-operations.md#select-action), můžete použít tyto definice akcí:
+Pokud chcete vyzkoušet [příklad akce **výběru**](../logic-apps/logic-apps-perform-data-operations.md#select-action), můžete použít tyto definice akcí:
 
 ```json
 "actions": {

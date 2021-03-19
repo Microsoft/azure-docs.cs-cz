@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak pomocí řídicího panelu přehl
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: 74351d781287d863db8be0fc7d20517e0479106c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002126"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
@@ -235,7 +235,7 @@ Můžete zobrazit jednu operaci nebo všechny operace. Nemůžete vybrat dvě ne
 * Konfigurace zálohování
 * Backup
 * Obnovení
-* Zakázat zálohování
+* Zákaz zálohování
 * Odstranění zálohovaných dat
 
 #### <a name="status"></a>Status
@@ -276,9 +276,9 @@ Dlaždice úložiště zálohování na řídicím panelu zobrazuje úložiště
 
 **Postup řešení potíží:** Proces, ```OBRecoveryServicesManagementAgent``` odešle data úlohy a výstrahy do služby Azure Backup. Občas se může stát, že se tento proces zablokuje nebo vypne.
 
-1. Pokud chcete ověřit, že proces není spuštěný, otevřete **Správce úloh**a zkontrolujte, jestli ```OBRecoveryServicesManagementAgent``` je spuštěný.
+1. Pokud chcete ověřit, že proces není spuštěný, otevřete **Správce úloh** a zkontrolujte, jestli ```OBRecoveryServicesManagementAgent``` je spuštěný.
 
-2. Pokud proces není spuštěn, otevřete **Ovládací panely**a procházejte seznam služeb. Spusťte nebo restartujte **agenta pro správu Microsoft Azure Recovery Services**.
+2. Pokud proces není spuštěn, otevřete **Ovládací panely** a procházejte seznam služeb. Spusťte nebo restartujte **agenta pro správu Microsoft Azure Recovery Services**.
 
     Další informace najdete v protokolech v těchto umístěních:<br/>
    `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` Například:<br/>

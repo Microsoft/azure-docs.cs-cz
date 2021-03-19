@@ -10,10 +10,10 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72248569"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Odeslání pracovního postupu pomocí více vstupů ze stejného vzorku
@@ -28,7 +28,7 @@ Tento článek předpokládá, že jste už nainstalovali a spustili klienta `ms
 ## <a name="multiple-bam-files"></a>Více souborů BAM
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Odeslání vstupních souborů do Azure Storage
-Předpokládejme, že máte jako vstup několik souborů BAM, *reads.bam*, *additional_reads.bam* a *yet_more_reads.bam*, a odeslali jste je do vašeho účtu úložiště *myaccount* v Azure. Máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
+Předpokládejme, že máte jako vstup několik souborů BAM, *reads.bam*, *additional_reads.bam* a *yet_more_reads.bam*, a odeslali jste je do vašeho účtu úložiště *myaccount* v Azure. Máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>**.
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Odeslání úlohy do klienta `msgen` 
@@ -91,7 +91,7 @@ Odešlete soubor `config.txt` tímto voláním: `msgen submit -f config.txt`
 ## <a name="multiple-paired-fastq-files"></a>Více párovaných souborů FASTQ
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Odeslání vstupních souborů do Azure Storage
-Předpokládejme, máte na vstupu několik párovaných souborů FASTQ, *reads_1.fq.gz* a *reads_2.fq.gz*, *additional_reads_1.fq.gz* a *additional_ reads_2.fq.gz* a *yet_more_reads_1.fq.gz* a *yet_more_reads_2.fq.gz*. Nahráli jste je do svého účtu úložiště *myaccount* v Azure a máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
+Předpokládejme, máte na vstupu několik párovaných souborů FASTQ, *reads_1.fq.gz* a *reads_2.fq.gz*, *additional_reads_1.fq.gz* a *additional_ reads_2.fq.gz* a *yet_more_reads_1.fq.gz* a *yet_more_reads_2.fq.gz*. Nahráli jste je do svého účtu úložiště *myaccount* v Azure a máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>**.
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Odeslání úlohy do klienta `msgen` 

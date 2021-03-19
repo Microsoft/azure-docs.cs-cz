@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 3fe98160cc10eb3607b8309a9a263d63380dcfb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89073212"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytváření vlastních rozhraní API, která můžete volat z Azure Logic Apps
@@ -136,7 +136,7 @@ Pro tento model nastavte na řadiči dva koncové body: `subscribe` a `unsubscri
 
 ![Vzor akce Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model tedy musíte přidat [akci **Webhooku** ](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text pro vaši žádost. Viz také [akce a triggery pracovního postupu](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Příklad vzoru Webhooku najdete v tomto příkladu [triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model tedy musíte přidat [akci **Webhooku**](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text pro vaši žádost. Viz také [akce a triggery pracovního postupu](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Příklad vzoru Webhooku najdete v tomto příkladu [triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
 Tady jsou některé další tipy a poznámky:
 
@@ -200,7 +200,7 @@ Triggery Webhooku fungují podobně jako [Akce Webhooku](#webhook-actions) dří
 
 ![Vzor triggeru Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model proto musíte přidat [Trigger **Webhooku** ](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text vaší žádosti. Viz také [Trigger HTTPWebhook](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Příklad vzoru Webhooku najdete [v ukázce tohoto kontroleru triggeru triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model proto musíte přidat [Trigger **Webhooku**](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text vaší žádosti. Viz také [Trigger HTTPWebhook](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Příklad vzoru Webhooku najdete [v ukázce tohoto kontroleru triggeru triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
 Tady jsou některé další tipy a poznámky:
 
@@ -224,7 +224,7 @@ Aby vaše vlastní rozhraní API byla dostupná pro ostatní Logic Apps uživate
 
 Pokud chcete, aby vaše vlastní rozhraní API byla dostupná pro všechny uživatele v Logic Apps, automatizaci a aplikacích Microsoft Power, musíte přidat zabezpečení, zaregistrovat vaše rozhraní API jako konektory aplikací logiky a pojmenovat konektory pro [program Microsoft Azure Certified](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 * Pro konkrétní nápovědu k vlastním rozhraním API kontaktujte [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 

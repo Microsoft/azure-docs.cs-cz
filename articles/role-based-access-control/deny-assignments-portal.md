@@ -15,10 +15,10 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84790242"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Výpis přiřazení odmítnutí Azure pomocí Azure Portal
@@ -28,7 +28,7 @@ ms.locfileid: "84790242"
 > [!NOTE]
 > Nemůžete přímo vytvořit vlastní přiřazení zamítnutí. Informace o tom, jak se vytvářejí přiřazení odepřít, najdete v tématu [přiřazení odmítnutí Azure](deny-assignments.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následující:
 
@@ -42,7 +42,7 @@ Pomocí těchto kroků můžete vypsat přiřazení zamítnutí v oboru předpla
 
 1. Klikněte na skupinu pro správu nebo na předplatné, které chcete zobrazit.
 
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 
 1. Klikněte na kartu **Odepřít přiřazení** (nebo klikněte na tlačítko **Zobrazit** na dlaždici zobrazit přiřazení odepřít).
 
@@ -63,7 +63,7 @@ Pomocí těchto kroků můžete vypsat přiřazení zamítnutí v oboru předpla
     | **Vyloučené objekty zabezpečení** | Zda existují objekty zabezpečení, které jsou vyloučeny z přiřazení zamítnutí. |
     | **Neplatí pro podřízené položky** | Zda je přiřazení zamítnutí děděno do podoborů. |
     | **Chráněno systémem** | Zda je přiřazení zamítnuto spravováno službou Azure. V současné době vždycky Ano. |
-    | **Rozsah** | Skupina pro správu, předplatné, skupina prostředků nebo prostředek. |
+    | **Scope** | Skupina pro správu, předplatné, skupina prostředků nebo prostředek. |
 
 1. Přidejte značku zaškrtnutí na kteroukoli z povolených položek a potom kliknutím na tlačítko **OK** Zobrazte vybrané sloupce.
 

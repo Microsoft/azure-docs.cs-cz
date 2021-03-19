@@ -4,17 +4,17 @@ description: Připojení soukromě k webové aplikaci pomocí privátního konco
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/09/2020
+ms.date: 03/16/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 8d471b680a6ff97b4b96a9c5f90f5548488dd35f
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 4de405e07a9ae9d1efb33f2cee3630a1eefdef33
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563607"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655899"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Používání privátních koncových bodů pro webovou aplikaci Azure
 
@@ -117,8 +117,6 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure][pr
 Když použijete funkci Azure v plánu elastické Premium s privátním koncovým bodem, spustíte nebo spustíte funkci na webovém portálu Azure, musíte mít přímý přístup k síti nebo se zobrazí chyba HTTP 403. Jinými slovy, váš prohlížeč musí být schopný spojit se s privátním koncovým bodem a spustit funkci z webového portálu Azure. 
 
 K určité webové aplikaci můžete připojit až 100 privátních koncových bodů.
-
-Sloty nemůžou používat privátní koncový bod.
 
 Funkce vzdáleného ladění nejsou k dispozici, pokud je pro webovou aplikaci povolen soukromý koncový bod. Doporučení je nasazení kódu do slotu a jeho vzdálené ladění.
 
