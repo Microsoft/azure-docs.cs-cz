@@ -3,18 +3,18 @@ title: Správa a hledání dat objektů BLOB v Azure pomocí značek indexu obje
 description: Naučte se používat značky indexu objektů BLOB ke kategorizaci, správě a dotazování objektů BLOB.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/05/2021
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: be2ff9d6ed908bdc0645fc713717a08674354096
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 540f6ca165c80dd90f5004fb53e1577cdc35d770
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593216"
+ms.locfileid: "104656035"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)
 
@@ -30,7 +30,7 @@ Značky indexu objektů BLOB umožňují:
 Vezměte v úvahu scénář, ve kterém máte v účtu úložiště miliony objektů blob, ke kterým má přistup řada různých aplikací. Chcete najít všechna související data z jednoho projektu. Nejste si jistí, co je v oboru, protože data je možné rozdělit do několika kontejnerů s různými konvencemi vytváření názvů. Vaše aplikace ale nahrávají všechna data pomocí značek na základě jejich projektu. Místo vyhledávání v milionech objektů BLOB a porovnávání názvů a vlastností můžete použít `Project = Contoso` jako kritéria vyhledávání. Index objektu BLOB filtruje všechny kontejnery napříč celým účtem úložiště, aby bylo možné rychle vyhledat a vrátit jenom sadu objektů BLOB 50 z `Project = Contoso` .
 
 > [!IMPORTANT]
-> Značky indexu objektu BLOB jsou momentálně ve **verzi Preview**. Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
+> Značky indexu objektů BLOB jsou momentálně ve **verzi Preview** a jsou dostupné ve všech veřejných oblastech. Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
 
 Pokud chcete začít s příklady použití indexu objektů blob, přečtěte si téma [použití značek indexu objektů BLOB ke správě a hledání dat](storage-blob-index-how-to.md).
 

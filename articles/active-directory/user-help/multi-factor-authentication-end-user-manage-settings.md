@@ -13,10 +13,10 @@ ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
 ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88798376"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Změna metody a nastavení dvou faktorů ověřování
@@ -71,7 +71,7 @@ Pokud se rozhodnete, že chcete změnit výchozí metodu ověření zabezpečen�
 
     - **Textový kód na telefon pro ověření**: jako součást textové zprávy na mobilním zařízení se zobrazí ověřovací kód. Tento kód musíte zadat do výzvy k ověření pro svůj pracovní nebo školní účet.
 
-    - **Zavolat mi**na telefon do kanceláře: na telefonu na telefonu se zobrazí telefonní hovor, který vás vyzve k ověření vašich informací.
+    - **Zavolat mi** na telefon do kanceláře: na telefonu na telefonu se zobrazí telefonní hovor, který vás vyzve k ověření vašich informací.
 
     - **Použít ověřovací kód z aplikace**: pomocí aplikace ověřovatele získáte ověřovací kód, který zadáte do výzvy ze svého pracovního nebo školního účtu.
 
@@ -128,7 +128,7 @@ V závislosti na nastavení organizace se může zobrazit zaškrtávací políč
 
 ### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>Postup zapnutí služby dvojúrovňového ověřování na zařízeních znovu
 
-Na stránce [ **Další ověření zabezpečení** ](#to-get-to-the-additional-security-verification-page)vyberte možnost **obnovit službu Multi-Factor Authentication u dříve důvěryhodných zařízení**. Až se příště přihlásíte k jakémukoli zařízení, zobrazí se výzva k provedení dvojúrovňového ověřování.
+Na stránce [ **Další ověření zabezpečení**](#to-get-to-the-additional-security-verification-page)vyberte možnost **obnovit službu Multi-Factor Authentication u dříve důvěryhodných zařízení**. Až se příště přihlásíte k jakémukoli zařízení, zobrazí se výzva k provedení dvojúrovňového ověřování.
 
 ## <a name="next-steps"></a>Další kroky
 

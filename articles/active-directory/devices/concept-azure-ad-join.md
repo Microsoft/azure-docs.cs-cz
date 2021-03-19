@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90601448"
 ---
 # <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
@@ -24,7 +24,7 @@ Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze clou
 
 | Připojení k Azure AD | Description |
 | --- | --- |
-| **Definice** | Připojeno pouze k Azure AD vyžadování účtu organizace pro přihlášení k zařízení |
+| **Definition** | Připojeno pouze k Azure AD vyžadování účtu organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Vhodné pro cloudové i hybridní organizace. |
 |   | Platí pro všechny uživatele v organizaci. |
 | **Vlastnictví zařízení** | Organizace |

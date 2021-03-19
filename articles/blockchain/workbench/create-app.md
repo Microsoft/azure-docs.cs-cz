@@ -5,10 +5,10 @@ ms.date: 08/24/2020
 ms.topic: tutorial
 ms.reviewer: ravastra
 ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88784024"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Kurz: Vytvoření aplikace blockchain pro Azure blockchain Workbench
@@ -25,7 +25,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nasazení aplikace blockchain Workbench Další informace najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) pro podrobnosti o nasazení.
 * Azure Active Directory uživatelů v tenantovi přidružených k blockchain Workbench. Další informace najdete v tématu [Přidání uživatelů Azure AD v Azure blockchain Workbench](manage-users.md#add-azure-ad-users).
@@ -321,10 +321,10 @@ Pokud chcete přidat aplikaci blockchain do aplikace blockchain Workbench, nahra
 2. Přihlaste se jako [správce aplikace blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
 3. Vyberte **aplikace**  >  **nové**. Zobrazí se podokno **Nová aplikace** .
 4. Vyberte možnost **nahrát konfiguraci smlouvy**  >  **Procházet** a vyhledejte **HelloBlockchain.js** konfiguračního souboru, který jste vytvořili. Konfigurační soubor je automaticky ověřen. Vyberte odkaz **Zobrazit** pro zobrazení chyb ověřování. Před nasazením aplikace opravte chyby ověřování.
-5. Vyberte **Odeslat kód kontraktu**  >  **Browse** a vyhledejte soubor kódu inteligentní kontraktu **HelloBlockchain. Sol** . Soubor kódu je automaticky ověřen. Vyberte odkaz **Zobrazit** pro zobrazení chyb ověřování. Před nasazením aplikace opravte chyby ověřování.
+5. Vyberte **Odeslat kód kontraktu**  >   a vyhledejte soubor kódu inteligentní kontraktu **HelloBlockchain. Sol** . Soubor kódu je automaticky ověřen. Vyberte odkaz **Zobrazit** pro zobrazení chyb ověřování. Před nasazením aplikace opravte chyby ověřování.
 6. Vyberte **nasadit** a vytvořte tak aplikaci blockchain založenou na konfiguračních a inteligentních souborech smluv.
 
-Nasazení aplikace blockchain trvá několik minut. Po dokončení nasazení se v **aplikacích**zobrazí nová aplikace. 
+Nasazení aplikace blockchain trvá několik minut. Po dokončení nasazení se v **aplikacích** zobrazí nová aplikace. 
 
 > [!NOTE]
 > Blockchain aplikace můžete vytvářet také pomocí [REST API Azure blockchain Workbench](/rest/api/azure-blockchain-workbench).

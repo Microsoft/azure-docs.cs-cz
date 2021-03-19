@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: 04950f01c06bc3c8ed3bb11a790310c2319a0579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90900298"
 ---
 # <a name="sysexternal_streams-transact-sql"></a>sys.external_streams (Transact-SQL)
@@ -29,8 +29,8 @@ Vrátí řádek pro každý objekt externího datového proudu vytvořený v rá
 |**parent_object_id**|**id**| identifikační číslo objektu pro nadřazený objekt tohoto datového proudu. V aktuální implementaci je tato hodnota vždycky null.|
 |**textový**|**char (2)**|Typ objektu. U objektů Stream je typ vždycky "ES".|
 |**type_desc**|**nvarchar (60)**| Popis typu objektu U objektů Stream je typ vždycky EXTERNAL_STREAM.|
-|**create_date**|**hodnotu**| Datum, kdy byl objekt vytvořen.|
-|**modify_date**|**hodnotu**| Datum, kdy byl objekt naposledy změněn pomocí příkazu ALTER.|
+|**create_date**|**datetime**| Datum, kdy byl objekt vytvořen.|
+|**modify_date**|**datetime**| Datum, kdy byl objekt naposledy změněn pomocí příkazu ALTER.|
 |**is_ms_shipped**|**bit**| Objekt vytvořený interní komponentou.|  
 |**is_published**|**bit**|Objekt je publikovaný.|  
 |**is_schema_published**|**bit**|Je Publikováno pouze schéma objektu.|

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 09/05/2020
 ms.author: mikeray
 ms.openlocfilehash: 929a2775ab678d37b20865a6d6edc1cf17230b06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90936422"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct pokračovat v úlohách v tomto článku, musíte mít:
 
@@ -19,6 +19,6 @@ Než budete moct pokračovat v úlohách v tomto článku, musíte mít:
 
    Mezi tyto nástroje patří `azdata` Azure Data Studio a Azure CLI.
 
-   Pro Azure Data Studio nainstalujte rozšíření pro **Azure Data CLI**, **Azure ARC**a **PostgreSQL** (v závislosti na datových službách).
+   Pro Azure Data Studio nainstalujte rozšíření pro **Azure Data CLI**, **Azure ARC** a **PostgreSQL** (v závislosti na datových službách).
 
 - [Nainstalovaný řadič dat ARC Azure](../articles/azure-arc/data/create-data-controller.md)

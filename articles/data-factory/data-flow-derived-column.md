@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/14/2020
 ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90531968"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Odvozená transformace sloupce v toku mapování dat
@@ -52,7 +52,7 @@ Další informace o zpracování složitých typů v toku dat naleznete v témat
 
 ### <a name="locals"></a>Místní hodnoty
 
-Pokud sdílíte logiku napříč více sloupci nebo chcete rozdělit logiku, můžete v odvozené transformaci sloupce vytvořit místní. Místní je sada logiky, která nenačte podřízenou část následující transformaci. Národní prostředí lze v Tvůrci výrazů vytvořit tak, že kliknete na **prvky výrazu** a vyberete **lokální**hodnoty. Vytvořte nový výběrem možnosti **vytvořit nový**.
+Pokud sdílíte logiku napříč více sloupci nebo chcete rozdělit logiku, můžete v odvozené transformaci sloupce vytvořit místní. Místní je sada logiky, která nenačte podřízenou část následující transformaci. Národní prostředí lze v Tvůrci výrazů vytvořit tak, že kliknete na **prvky výrazu** a vyberete **lokální** hodnoty. Vytvořte nový výběrem možnosti **vytvořit nový**.
 
 ![Vytvořit místní](media/data-flow/create-local.png "Vytvořit místní")
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bc1dea8121d7986b8394adf6545a0b2c30afb133
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572996"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580177"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
@@ -46,7 +46,7 @@ Následující diagram znázorňuje komponenty, které nakonfigurujete ve svých
 
 ![Projekce skupiny prostředků](./media/azure-monitor/resource-group-projection.png)
 
-Během tohoto nasazení nakonfigurujete svého klienta Azure AD B2C i klienta služby Azure AD, kde bude hostovaný pracovní prostor Log Analytics. Účet, který se používá ke spuštění nasazení, musí mít v obou těchto klientech přiřazenou roli [globálního správce](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) . Je také důležité se ujistit, že jste přihlášeni ke správnému adresáři, jak jste dokončili každý krok, jak je popsáno v tématu.
+Během tohoto nasazení nakonfigurujete svého klienta Azure AD B2C i klienta služby Azure AD, kde bude hostovaný pracovní prostor Log Analytics. Účtu Azure AD B2C by měla být přiřazena role [globální správce](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) v tenantovi Azure AD B2C. Účet Azure AD, který se používá ke spuštění nasazení, musí mít přiřazenou roli [vlastníka](../role-based-access-control/built-in-roles.md#owner) v předplatném Azure AD. Je také důležité se ujistit, že jste přihlášeni ke správnému adresáři, jak jste dokončili každý krok, jak je popsáno v tématu.
 
 ## <a name="1-create-or-choose-resource-group"></a>1. Vytvořte nebo vyberte skupinu prostředků.
 
@@ -97,7 +97,7 @@ V dalším kroku vytvoříte šablonu Azure Resource Manager, která uděluje Az
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho TENANTA **Azure AD** .
 3. Pomocí tlačítka **nasadit do Azure** otevřete Azure Portal a šablonu nasaďte přímo na portálu. Další informace najdete v tématu [Vytvoření šablony Azure Resource Manager](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
 
-   [![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
+   [![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
 5. Na stránce **vlastní nasazení** zadejte následující informace:
 

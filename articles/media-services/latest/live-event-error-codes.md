@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 02/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: b3be465c488bdd3c5dbd62f757733939d1bee393
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5463f1d8376cbe1a6e81d17c1f95a84e67f3b418
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393509"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581078"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services kódy chyb živé události
 
@@ -28,7 +28,7 @@ V následujících tabulkách jsou uvedeny kódy chyb [živé události](live-ev
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-Když se přihlásíte k odběru události [Event Grid](../../event-grid/index.yml) pro živou událost, může se zobrazit jedna z následujících chyb z události [LiveEventConnectionRejected](media-services-event-schemas.md\#liveeventconnectionrejected) .
+Když se přihlásíte k odběru události [Event Grid](../../event-grid/index.yml) pro živou událost, může se zobrazit jedna z následujících chyb z události [LiveEventConnectionRejected](monitoring/media-services-event-schemas.md\#liveeventconnectionrejected) .
 > [!div class="mx-tdCol2BreakAll"]
 >| Chyba | Informace |
 >|--|--|
@@ -68,7 +68,7 @@ Když se přihlásíte k odběru události [Event Grid](../../event-grid/index.y
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
-V události [LiveEventEncoderDisconnected](media-services-event-schemas.md\#liveeventencoderdisconnected) se může zobrazit jedna z následujících chyb.
+V události [LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md\#liveeventencoderdisconnected) se může zobrazit jedna z následujících chyb.
 
 > [!div class="mx-tdCol2BreakAll"]
 >| Chyba | Informace |

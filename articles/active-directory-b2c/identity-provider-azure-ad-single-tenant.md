@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 497b171cad956dee23139bcfb0ec76fad82bfb33
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 490880e4a37711a92b44a0ffe01315edfa6ddb26
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488964"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580116"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak povolit přihlášení pro uživatele z konkr�
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -106,6 +106,8 @@ Pokud chcete získat `family_name` `given_name` deklarace identity a ze služby 
 1. Vyberte **Uložit**.
 
 ## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Azure AD do toku uživatele 
+
+V tuto chvíli se zprostředkovatel identit Azure AD nastavil, ale ještě není dostupný na žádném z přihlašovacích stránek. Přidání poskytovatele identit Azure AD do toku uživatele:
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
 1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity Azure AD.

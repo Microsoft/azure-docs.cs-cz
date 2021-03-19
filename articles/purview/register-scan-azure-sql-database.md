@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 11ce7b3da0d33fbe7f1229cbc00246da00858ec5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a708f0c1884073a2f2ea73092d25006415c59d5f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598214"
+ms.locfileid: "104655219"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrace a kontrola Azure SQL Database
 
@@ -157,8 +157,8 @@ Na obrazovce **Registrovat zdroje (Azure SQL Database)** udělejte toto:
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
 > [!NOTE]
-> Odstraněním kontroly nedojde k odstranění assetů z předchozích Azure SQL Databasech kontrol.
-> Asset již nebude aktualizován se změnami schématu, pokud je zdrojová tabulka změněna a znovu prohledává zdrojovou tabulku po úpravě popisu na kartě schématu dosah.
+> * Odstraněním kontroly nedojde k odstranění assetů z předchozích Azure SQL Databasech kontrol.
+> * Asset již nebude aktualizován se změnami schématu, pokud je zdrojová tabulka změněna a znovu prohledává zdrojovou tabulku po úpravě popisu na kartě schématu dosah.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673275"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Kurz: konfigurace aktivní geografické replikace a převzetí služeb při selhání v Azure Portal (Azure SQL Database)
@@ -70,8 +70,8 @@ Po vytvoření a osazení sekundární databáze se data začnou replikovat z pr
 Sekundární databázi lze přepnout tak, aby se stala primární.  
 
 1. V [Azure Portal](https://portal.azure.com)přejděte k primární databázi v rámci partnerství geografické replikace.
-2. V okně SQL Database vyberte **všechna nastavení**  >  **geografické replikace** .
-3. V seznamu **sekundárních** , vyberte databázi, která se má stát novou primární, a klikněte na **Vynucené převzetí služeb při selhání** .
+2. V okně SQL Database vyberte **všechna nastavení**  >  **geografické replikace**.
+3. V seznamu **sekundárních** , vyberte databázi, která se má stát novou primární, a klikněte na **Vynucené převzetí služeb při selhání**.
 
     ![převzetí služeb při selhání](./media/active-geo-replication-configure-portal/secondaries.png)
 4. Kliknutím na **Ano** zahájíte převzetí služeb při selhání.
@@ -88,9 +88,9 @@ Probíhá krátká doba, během které jsou obě databáze nedostupné (v pořad
 Tato operace trvale ukončí replikaci do sekundární databáze a změní roli sekundární databáze na standardní databázi pro čtení a zápis. Pokud je připojení k sekundární databázi přerušeno, příkaz se zdaří, ale sekundární se nestane pro čtení a zápis až po obnovení připojení.  
 
 1. V [Azure Portal](https://portal.azure.com)přejděte k primární databázi v rámci partnerství geografické replikace.
-2. Na stránce databáze SQL vyberte **geografickou replikaci** .
+2. Na stránce databáze SQL vyberte **geografickou replikaci**.
 3. V seznamu **sekundárních** umístění vyberte databázi, kterou chcete odebrat, ze partnerství geografické replikace.
-4. Klikněte na **zastavit replikaci** .
+4. Klikněte na **zastavit replikaci**.
 
     ![Odebrat sekundární](./media/active-geo-replication-configure-portal/remove-secondary.png)
 5. Otevře se okno potvrzení. Kliknutím na **Ano** odeberete databázi ze partnerství geografické replikace. (Nastavte ji na databázi pro čtení i zápis, která není součástí žádné replikace.)

@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371796"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Přidat nebo odebrat skupinu z jiné skupiny pomocí Azure Active Directory
@@ -36,7 +36,7 @@ Existující skupinu zabezpečení můžete přidat do jiné existující skupin
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
+2. Vyberte **Azure Active Directory** a pak vyberte **skupiny**.
 
 3. Na stránce **skupiny – všechny skupiny** vyhledejte a vyberte skupinu, která se stane členem jiné skupiny. Pro toto cvičení používáme skupinu **zásad MDM – západ** .
 

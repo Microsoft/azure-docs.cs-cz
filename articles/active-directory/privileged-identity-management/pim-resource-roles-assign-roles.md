@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 011b50449f0a02b128bc000535f93e1809fd9777
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673878"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Přiřazení rolí prostředků Azure v Privileged Identity Management
@@ -43,9 +43,9 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění k roli prost�
 
     Informace o tom, jak udělit přístup jinému správci ke správě Privileged Identity Management, najdete v tématu [udělení přístupu jiným správcům pro správu Privileged Identity Management](pim-how-to-give-access-to-pim.md).
 
-1. Otevřete **Azure AD Privileged Identity Management** .
+1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Vyberte **prostředky Azure** .
+1. Vyberte **prostředky Azure**.
 
 1. Pomocí filtru prostředků Najděte spravované prostředky, které hledáte.
 
@@ -63,15 +63,15 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění k roli prost�
 
     ![Podokno nového přiřazení](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-1. Vyberte roli, kterou chcete přiřadit, a potom klikněte na **Vybrat** .
+1. Vyberte roli, kterou chcete přiřadit, a potom klikněte na **Vybrat**.
 
     Otevře se podokno **Vybrat člena nebo skupinu** .
 
-1. Vyberte člena nebo skupinu, které chcete přiřadit k roli, a potom klikněte na **Vybrat** .
+1. Vyberte člena nebo skupinu, které chcete přiřadit k roli, a potom klikněte na **Vybrat**.
 
     ![Vybrat člena nebo podokno skupiny](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-1. Na kartě **Nastavení** v seznamu **Typ přiřazení** vyberte možnost **oprávněné** nebo **aktivní** .
+1. Na kartě **Nastavení** v seznamu **Typ přiřazení** vyberte možnost **oprávněné** nebo **aktivní**.
 
     ![Podokno nastavení členství](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
@@ -83,7 +83,7 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění k roli prost�
 
 1. Chcete-li zadat konkrétní dobu trvání přiřazení, změňte počáteční a koncové datum a čas.
 
-1. Po dokončení vyberte **přiřadit** .
+1. Po dokončení vyberte **přiřadit**.
 
 1. Po vytvoření nového přiřazení role se zobrazí oznámení o stavu.
 
@@ -93,9 +93,9 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění k roli prost�
 
 Pomocí těchto kroků aktualizujete nebo odeberete existující přiřazení role.
 
-1. Otevřete **Azure AD Privileged Identity Management** .
+1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Vyberte **prostředky Azure** .
+1. Vyberte **prostředky Azure**.
 
 1. Vyberte prostředek, který chcete spravovat, a otevřete jeho stránku Přehled.
 

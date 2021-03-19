@@ -4,10 +4,10 @@ description: Tento článek popisuje běžné úlohy správy a monitorování sd
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88757621"
 ---
 # <a name="manage-azure-file-share-backups"></a>Správa záloh sdílených složek Azure
@@ -24,7 +24,7 @@ Otevření stránky **Úlohy zálohování**:
 
    ![Úlohy zálohování v části monitorování](./media/manage-afs-backup/backup-jobs.png)
 
-1. Po výběru **OK**se v podokně **úlohy zálohování** zobrazí stav všech úloh. Vyberte název úlohy, který odpovídá sdílené složce, kterou chcete monitorovat.
+1. Po výběru **OK** se v podokně **úlohy zálohování** zobrazí stav všech úloh. Vyberte název úlohy, který odpovídá sdílené složce, kterou chcete monitorovat.
 
    ![Název úlohy](./media/manage-afs-backup/workload-name.png)
 
@@ -48,7 +48,7 @@ Vytvoření nové zásady zálohování:
 
    ![Nové zásady zálohování](./media/manage-afs-backup/new-backup-policy.png)
 
-1. V podokně **Přidat** jako **Typ zásady**vyberte **sdílená složka Azure** . Otevře se podokno **zásady zálohování** pro **sdílenou složku Azure** . Zadejte název zásady, četnost zálohování a rozsah uchování bodů obnovení. Po definování zásady vyberte **OK**.
+1. V podokně **Přidat** jako **Typ zásady** vyberte **sdílená složka Azure** . Otevře se podokno **zásady zálohování** pro **sdílenou složku Azure** . Zadejte název zásady, četnost zálohování a rozsah uchování bodů obnovení. Po definování zásady vyberte **OK**.
 
    ![Definování zásad zálohování](./media/manage-afs-backup/define-backup-policy.png)
 
@@ -158,7 +158,7 @@ Zrušení registrace účtu úložiště:
 
    ![Vybrat účty úložiště](./media/manage-afs-backup/storage-accounts.png)
 
-1. Po výběru **účtů úložiště**se zobrazí seznam účtů úložiště zaregistrovaných v trezoru.
+1. Po výběru **účtů úložiště** se zobrazí seznam účtů úložiště zaregistrovaných v trezoru.
 1. Klikněte pravým tlačítkem na účet úložiště, který chcete zrušit, a vyberte zrušit **registraci**.
 
    ![Vybrat zrušit registraci](./media/manage-afs-backup/select-unregister.png)

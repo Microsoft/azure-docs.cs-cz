@@ -4,10 +4,10 @@ description: Naučte se vytvářet vlastní značky v Azure DevTest Labs a použ
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270729"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Přidání značek do testovacího prostředí v Azure DevTest Labs
@@ -19,7 +19,7 @@ Mezi prostředky, které tyto značky podporují, patří
 * Výpočetní virtuální počítače
 * Síťové karty
 * IP adresy
-* Nástrojů pro vyrovnávání zatížení
+* Nástroje pro vyrovnávání zatížení
 * Účty úložiště
 * Spravované disky
 
@@ -29,15 +29,15 @@ Každá značka se skládá z dvojice **název**- / **hodnota** . Například je
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>Postup pro správu značek v existujícím testovacím prostředí
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. V případě potřeby vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** . Vaše testovací prostředí se už možná zobrazuje na řídicím panelu v části **všechny prostředky**.
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. V případě potřeby vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** . Vaše testovací prostředí se už možná zobrazuje na řídicím panelu v části **všechny prostředky**.
 1. V seznamu cvičení vyberte testovací prostředí, ve kterém chcete přidat nebo spravovat značky.
 1. V oblasti **Přehled** testovacího prostředí vyberte **Konfigurace a zásady**.
 
     ![Tlačítko Konfigurace a zásady](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
-1. Na levé straně v části **Spravovat**vyberte **značky**.
-1. Pokud chcete pro toto testovací prostředí vytvořit novou značku, zadejte **Name** / dvojici název-**hodnota** a vyberte **Uložit**. Můžete také vybrat existující značku ze seznamu pro zobrazení nebo správu prostředků přidružených k této značce.
+1. Na levé straně v části **Spravovat** vyberte **značky**.
+1. Pokud chcete pro toto testovací prostředí vytvořit novou značku, zadejte  / dvojici název-**hodnota** a vyberte **Uložit**. Můžete také vybrat existující značku ze seznamu pro zobrazení nebo správu prostředků přidružených k této značce.
 
     ![Správa značek](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 

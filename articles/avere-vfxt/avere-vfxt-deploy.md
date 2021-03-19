@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92342412"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
@@ -147,7 +147,7 @@ Vyhledání informací:
 
 1. Přejít do skupiny prostředků pro váš řadič clusteru.
 
-1. Na levé straně klikněte na **nasazení**a pak na **Microsoft-avere. vfxt-Template**.
+1. Na levé straně klikněte na **nasazení** a pak na **Microsoft-avere. vfxt-Template**.
 
    ![Stránka portálu skupiny prostředků s nasazeními vybranými vlevo a Microsoft-avere. vfxt-Template, která se zobrazuje v tabulce pod názvem nasazení](media/avere-vfxt-outputs-deployments.png)
 

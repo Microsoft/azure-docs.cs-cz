@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: d2990b5950cf8812367c3a59c6cace39e4085e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88261901"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
@@ -98,7 +98,7 @@ Pomocí agenta služby Microsoft Azure Recovery Services můžete nakonfigurovat
 
 1. Otevřete agenta Služeb zotavení Microsoft Azure. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.
 
-2. V konzole Recovery Services agenta vyberte v **podokně akce**možnost **naplánovat zálohování** .
+2. V konzole Recovery Services agenta vyberte v **podokně akce** možnost **naplánovat zálohování** .
 
     ![Naplánovat zálohování](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
 
@@ -114,7 +114,7 @@ Pomocí agenta služby Microsoft Azure Recovery Services můžete nakonfigurovat
 
 8. Podobným způsobem vyberte plán zálohování a zásadu uchovávání pro vybrané soubory a složky.
 
-9. Na stránce **Výběr počátečního typu zálohování** vyberte **automaticky přes síť**a vyberte **Další**.
+9. Na stránce **Výběr počátečního typu zálohování** vyberte **automaticky přes síť** a vyberte **Další**.
 
 10. Na stránce **potvrzení** zkontrolujte informace a vyberte **Dokončit**.
 

@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91762455"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>Volání aplikací logiky z Power Automate a Power Apps
@@ -26,7 +26,7 @@ Pokud chcete migrovat tok z Power Automate nebo Power Logic Apps, přečtěte si
 >
 > * Pokud chcete zjistit, které Logic Apps konektory nemají ekvivalenty vypnutí napájení, přečtěte si téma [Logic Apps konektory](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -40,9 +40,9 @@ Pokud chcete migrovat tok z Power Automate nebo Power Logic Apps, přečtěte si
 
 Než budete moct aplikaci logiky volat z Power Automata nebo Power Apps, musíte nejdřív exportovat aplikaci logiky jako vlastní konektor.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole Azure Portal zadejte `Logic Apps` . Ve výsledcích vyberte v části **služby**možnost **Logic Apps**.
+1. Do vyhledávacího pole Azure Portal zadejte `Logic Apps` . Ve výsledcích vyberte v části **služby** možnost **Logic Apps**.
 
 1. Vyberte aplikaci logiky, kterou chcete exportovat.
 
@@ -50,9 +50,9 @@ Než budete moct aplikaci logiky volat z Power Automata nebo Power Apps, musíte
 
     :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app.png" alt-text="Snímek stránky aplikace logiky v Azure Portal, zobrazení nabídky s vybraným tlačítkem exportovat":::
 
-1. V podokně **Export** pro **název**zadejte název vlastního konektoru do vaší aplikace logiky. V seznamu **prostředí** vyberte prostředí Power automatizuje nebo Power Apps, ze kterého chcete zavolat aplikaci logiky. Až to bude hotové, vyberte **OK**.
+1. V podokně **Export** pro **název** zadejte název vlastního konektoru do vaší aplikace logiky. V seznamu **prostředí** vyberte prostředí Power automatizuje nebo Power Apps, ze kterého chcete zavolat aplikaci logiky. Až to bude hotové, vyberte **OK**.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Snímek stránky aplikace logiky v Azure Portal, zobrazení nabídky s vybraným tlačítkem exportovat":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Snímek obrazovky s podoknem exportu pro aplikaci logiky se zobrazenými požadovanými poli pro název vlastního konektoru a prostředí":::
 
 1. Pokud chcete potvrdit, že se aplikace logiky úspěšně exportovali, zkontrolujte podokno oznámení.
 
@@ -78,9 +78,9 @@ Pokud se chcete připojit k aplikaci logiky, kterou jste exportovali s vaším t
 
 1. V editoru toků vyberte **&#43; nový krok**.
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole název konektoru aplikace logiky. Pokud chcete ve svém prostředí zobrazit jenom vlastní konektory, vyfiltrujte výsledky tak, že vyberete **vlastní** kartu.
+1. V části **zvolit akci** zadejte do vyhledávacího pole název konektoru aplikace logiky. Pokud chcete ve svém prostředí zobrazit jenom vlastní konektory, vyfiltrujte výsledky tak, že vyberete **vlastní** kartu.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Snímek stránky aplikace logiky v Azure Portal, zobrazení nabídky s vybraným tlačítkem exportovat":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Snímek obrazovky s editorem Flow Power automatizuje a zobrazuje nový krok pro vlastní konektor a dostupné akce.":::
 
 1. Vyberte akci, kterou chcete provést s vaším konektorem aplikace logiky. 
 
@@ -88,7 +88,7 @@ Pokud se chcete připojit k aplikaci logiky, kterou jste exportovali s vaším t
 
 1. Pokud chcete změny uložit, vyberte v nabídce editor automatizace napájení možnost **Uložit**.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Ve službě Logic Apps Najděte aplikaci logiky, kterou jste exportovali.
 
@@ -102,7 +102,7 @@ Pokud se chcete připojit k aplikaci logiky, kterou jste exportovali s vaším t
 
 1. V seznamu najděte vlastní konektor a vyberte tlačítko se třemi tečkami (**...**) &gt; **Odstranit**.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Snímek stránky aplikace logiky v Azure Portal, zobrazení nabídky s vybraným tlačítkem exportovat":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Snímek obrazovky Power Automatizujte vlastní konektory, která zobrazuje tlačítka pro správu vlastních konektorů aplikace logiky":::
 
 1. Odstranění potvrďte tak, že vyberete **OK**.
 
@@ -122,7 +122,7 @@ Pokud se chcete připojit k aplikaci logiky, kterou jste exportovali s vaším t
 
 1. V části **zvolit akci** v novém kroku zadejte do vyhledávacího pole název vašeho konektoru aplikace logiky. Podle potřeby můžete filtrovat výsledky podle **vlastní** karty, aby se zobrazily pouze vlastní konektory ve vašem prostředí.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Snímek stránky aplikace logiky v Azure Portal, zobrazení nabídky s vybraným tlačítkem exportovat":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Snímek obrazovky s editorem toku Power Apps, který zobrazuje nový krok přidaný pro vlastní konektor a dostupné akce.":::
 
 1. Vyberte akci, kterou chcete s konektorem provést. 
 
@@ -130,7 +130,7 @@ Pokud se chcete připojit k aplikaci logiky, kterou jste exportovali s vaším t
 
 1. V nabídce editor Power Apps vyberte **Uložit** a uložte provedené změny. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Ve službě Logic Apps Najděte aplikaci logiky, kterou jste exportovali.
 
@@ -140,11 +140,11 @@ Pokud se chcete připojit k aplikaci logiky, kterou jste exportovali s vaším t
 
 1. Přihlaste se k [Power Apps](https://powerapps.microsoft.com).
 
-1. Na domovské stránce **Power Apps** vyberte **Data** &gt; v nabídce **vlastní konektory** dat.
+1. Na domovské stránce **Power Apps** vyberte  &gt; v nabídce **vlastní konektory** dat.
 
 1. V seznamu najděte vlastní konektor a vyberte tlačítko se třemi tečkami (**...**) &gt; **Odstranit**.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Snímek stránky aplikace logiky v Azure Portal, zobrazení nabídky s vybraným tlačítkem exportovat":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Obrazovka vlastní konektory Power Apps, která zobrazuje tlačítka pro správu vlastních konektorů aplikace logiky":::
 
 1. Odstranění potvrďte tak, že vyberete **OK**.
 

@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 57d3d1c6bb14db3eb2ca499069934a628d2f7fea
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92425781"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Reference k rozhraní API portál partnerů cloudu
@@ -63,6 +63,6 @@ Tato reference odkazuje na rozhraní API, aby prováděla následující běžn�
 
 - [Nastavení cen pro nabídky virtuálních počítačů](./cloud-partner-portal-api-setting-price.md)
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 - [Řešení potíží s chybami ověřování](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)

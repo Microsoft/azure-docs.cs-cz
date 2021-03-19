@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 5b7943b2026d640ae7e5d119e165bd752ae2fe7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898830"
 ---
 # <a name="clean-missing-data-module"></a>Modul vyčištění chybějících dat
@@ -52,17 +52,17 @@ Pokaždé, když použijete modul  [Vyčištění chybějících dat](./clean-mi
 
 1.  Přidejte modul [Vyčištění chybějících dat](./clean-missing-data.md) do kanálu a připojte datovou sadu, která obsahuje chybějící hodnoty.  
   
-2.  Pro **sloupce, které mají být vyčištěny**vyberte sloupce obsahující chybějící hodnoty, které chcete změnit. Můžete zvolit více sloupců, ale je nutné použít stejnou metodu nahrazení ve všech vybraných sloupcích. Proto je obvykle nutné vyčistit řetězcové sloupce a číselné sloupce samostatně.
+2.  Pro **sloupce, které mají být vyčištěny** vyberte sloupce obsahující chybějící hodnoty, které chcete změnit. Můžete zvolit více sloupců, ale je nutné použít stejnou metodu nahrazení ve všech vybraných sloupcích. Proto je obvykle nutné vyčistit řetězcové sloupce a číselné sloupce samostatně.
 
     Například pro kontrolu chybějících hodnot ve všech číselných sloupcích:
 
     1. Vyberte modul **Vyčištění chybějících dat** a klikněte na tlačítko **Upravit sloupec** v pravém panelu modulu.
 
-    3. V rozevíracím seznamu **Zahrnout**vyberte **typy sloupců** a pak vyberte **Číselná**. 
+    3. V rozevíracím seznamu **Zahrnout** vyberte **typy sloupců** a pak vyberte **Číselná**. 
   
     Jakákoli metoda čištění nebo náhrady, kterou zvolíte, musí být platná pro **všechny** sloupce ve výběru. Pokud jsou data v jakémkoli sloupci nekompatibilní se zadanou operací, modul vrátí chybu a zastaví kanál.
   
-3.  Pro **poměr minimální chybějící hodnoty**zadejte minimální počet chybějících hodnot vyžadovaných pro provedení operace.  
+3.  Pro **poměr minimální chybějící hodnoty** zadejte minimální počet chybějících hodnot vyžadovaných pro provedení operace.  
   
     Tuto možnost použijete v kombinaci s **maximálním limitem chybějící hodnoty** , abyste mohli definovat podmínky, za kterých se operace čištění provádí na datové sadě. Pokud je příliš mnoho nebo příliš málo řádků, ve kterých chybí hodnoty, operaci nelze provést. 
   
@@ -73,7 +73,7 @@ Pokaždé, když použijete modul  [Vyčištění chybějících dat](./clean-mi
     > 
     > Pokud máte nějaké pochybnosti o tom, jestli se chybějící hodnoty změnily, vyberte možnost, **vygenerujte sloupec indikátor chybějící hodnoty**. Sloupec je připojen k datové sadě, aby označoval, zda každý sloupec splnil zadaná kritéria pro minimální a maximální rozsahy.  
   
-4. V poli **maximální velikost chybějící**hodnoty zadejte maximální počet chybějících hodnot, které mohou být k dispozici pro provedení operace.   
+4. V poli **maximální velikost chybějící** hodnoty zadejte maximální počet chybějících hodnot, které mohou být k dispozici pro provedení operace.   
   
     Například může být vhodné provést nahrazení chybějící hodnoty pouze v případě, že 30% nebo méně řádků obsahuje chybějící hodnoty, ale hodnoty ponechte tak, jak jsou, pokud má více než 30% řádků chybějící hodnoty.  
   
@@ -81,7 +81,7 @@ Pokaždé, když použijete modul  [Vyčištění chybějících dat](./clean-mi
   
    
   
-5. Pro **režim čištění**vyberte jednu z následujících možností pro nahrazení nebo odebrání chybějících hodnot:  
+5. Pro **režim čištění** vyberte jednu z následujících možností pro nahrazení nebo odebrání chybějících hodnot:  
   
   
     + **Vlastní substituční hodnota**: pomocí této možnosti můžete zadat zástupnou hodnotu (například 0 nebo na), která se vztahuje na všechny chybějící hodnoty. Hodnota, kterou zadáte jako náhradu, musí být kompatibilní s datovým typem sloupce.

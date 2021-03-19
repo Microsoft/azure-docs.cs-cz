@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92441551"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Spolupráce s dynamickými skupinami a Azure Active Directory B2B
@@ -30,9 +30,9 @@ Můžete vytvořit skupinu obsahující všechny uživatele v rámci tenanta pom
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu, kterému se v tenantovi přiřadí role Globální správce nebo Správce uživatelů.
 1. Vyberte **Azure Active Directory**.
-2. V části **Spravovat**vyberte **skupiny**a pak vyberte **Nová skupina**.
-1. Na stránce **Nová skupina** v části **typ skupiny**vyberte **zabezpečení**. Zadejte **název skupiny** a **Popis skupiny** pro novou skupinu. 
-2. V části **typ členství**vyberte možnost **dynamický uživatel**a pak vyberte **Přidat dynamický dotaz**. 
+2. V části **Spravovat** vyberte **skupiny** a pak vyberte **Nová skupina**.
+1. Na stránce **Nová skupina** v části **typ skupiny** vyberte **zabezpečení**. Zadejte **název skupiny** a **Popis skupiny** pro novou skupinu. 
+2. V části **typ členství** vyberte možnost **dynamický uživatel** a pak vyberte **Přidat dynamický dotaz**. 
 4. Nad textovým polem **syntaxe pravidla** vyberte **Upravit**. Na stránce **Upravit syntaxi pravidla** zadejte do textového pole následující výraz:
 
    ```

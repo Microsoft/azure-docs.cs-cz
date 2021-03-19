@@ -10,10 +10,10 @@ ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: 5a74240e3f116121c0aaddd11c186e6e674ea26a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368175"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Sestavování pokročilých plánů a opakování úloh v Azure Scheduleru
@@ -66,13 +66,13 @@ Tato tabulka poskytuje podrobný přehled hlavních elementů JSON, které můž
 
 | Prvek | Povinné | Popis | 
 |---------|----------|-------------|
-| **Spuštění** | Ne | Hodnota řetězce DateTime ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se úloha poprvé spustí podle plánu Basic. <p>U složitých plánů úloha začíná dřív než **StartTime**. | 
-| **vzorec** | Ne | Pravidla opakování při spuštění úlohy. Objekt **opakování** podporuje tyto prvky: **četnost**, **interval**, **plán**, **počet**a **čas**ukončení. <p>Použijete-li element **opakování** , je nutné také použít prvek **frekvence** , zatímco jiné prvky **opakování** jsou volitelné. |
-| **frequency** | Ano, při použití **opakování** | Časová jednotka mezi výskyty a podporuje tyto hodnoty: "minuta", "hodina", "den", "týden", "Month" a "Year" | 
-| **interval** | Ne | Celé kladné číslo určující počet časových jednotek mezi výskyty na základě **frekvence**. <p>Pokud má například **interval** hodnotu 10 a **frekvence** "týden", úloha se opakuje každých 10 týdnů. <p>Toto je nejvyšší počet intervalů pro každou frekvenci: <p>– 18 měsíců <br>– 78 týdnů <br>– 548 dní <br>– Pro hodiny a minuty je rozsah 1 <= <*intervalu*> <= 1000. | 
-| **CXL** | Ne | Definuje změny opakování na základě zadaných minutových značek, hodinových značek, dnů v týdnu a dnů v měsíci. | 
-| **výpočtu** | Ne | Kladné celé číslo, které určuje počet pokusů o spuštění úlohy před dokončením. <p>Pokud je například denní úloha v poli **počet** nastavená na hodnotu 7 a počáteční datum je pondělí, úloha skončí běžet v neděli. Pokud počáteční datum již prošlo, je první spuštění vypočítáno z času vytvoření. <p>Aniž byste měli **čas** ukončení ani **počet**, úloha se spustí nekonečně. V rámci stejné úlohy nemůžete použít současně jak **Count** , tak i **čas** , ale pravidlo, které se dokončí jako první, se respektuje. | 
-| **endTime** | Ne | Hodnota řetězce Date nebo DateTime ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se úloha přestane spouštět. Můžete nastavit hodnotu pro **čas** ukončení, který je v minulosti. <p>Aniž byste měli **čas** ukončení ani **počet**, úloha se spustí nekonečně. V rámci stejné úlohy nemůžete použít současně jak **Count** , tak i **čas** , ale pravidlo, které se dokončí jako první, se respektuje. |
+| **Spuštění** | No | Hodnota řetězce DateTime ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se úloha poprvé spustí podle plánu Basic. <p>U složitých plánů úloha začíná dřív než **StartTime**. | 
+| **vzorec** | No | Pravidla opakování při spuštění úlohy. Objekt **opakování** podporuje tyto prvky: **četnost**, **interval**, **plán**, **počet** a **čas** ukončení. <p>Použijete-li element **opakování** , je nutné také použít prvek **frekvence** , zatímco jiné prvky **opakování** jsou volitelné. |
+| **opakování** | Ano, při použití **opakování** | Časová jednotka mezi výskyty a podporuje tyto hodnoty: "minuta", "hodina", "den", "týden", "Month" a "Year" | 
+| **doba** | No | Celé kladné číslo určující počet časových jednotek mezi výskyty na základě **frekvence**. <p>Pokud má například **interval** hodnotu 10 a **frekvence** "týden", úloha se opakuje každých 10 týdnů. <p>Toto je nejvyšší počet intervalů pro každou frekvenci: <p>– 18 měsíců <br>– 78 týdnů <br>– 548 dní <br>– Pro hodiny a minuty je rozsah 1 <= <*intervalu*> <= 1000. | 
+| **CXL** | No | Definuje změny opakování na základě zadaných minutových značek, hodinových značek, dnů v týdnu a dnů v měsíci. | 
+| **count** | No | Kladné celé číslo, které určuje počet pokusů o spuštění úlohy před dokončením. <p>Pokud je například denní úloha v poli **počet** nastavená na hodnotu 7 a počáteční datum je pondělí, úloha skončí běžet v neděli. Pokud počáteční datum již prošlo, je první spuštění vypočítáno z času vytvoření. <p>Aniž byste měli **čas** ukončení ani **počet**, úloha se spustí nekonečně. V rámci stejné úlohy nemůžete použít současně jak **Count** , tak i **čas** , ale pravidlo, které se dokončí jako první, se respektuje. | 
+| **endTime** | No | Hodnota řetězce Date nebo DateTime ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se úloha přestane spouštět. Můžete nastavit hodnotu pro **čas** ukončení, který je v minulosti. <p>Aniž byste měli **čas** ukončení ani **počet**, úloha se spustí nekonečně. V rámci stejné úlohy nemůžete použít současně jak **Count** , tak i **čas** , ale pravidlo, které se dokončí jako první, se respektuje. |
 |||| 
 
 Toto schéma JSON například popisuje základní plán a opakování úlohy: 
@@ -160,7 +160,7 @@ Pokud zadáte více než jeden prvek plánování, pořadí vyhodnocení bude od
 
 Následující tabulka obsahuje podrobný popis elementů plánu:
 
-| Název JSON | Popis | Platné hodnoty |
+| Název JSON | Description | Platné hodnoty |
 |:--- |:--- |:--- |
 | **minuty** |Minuty hodiny, kdy se úloha spouští. |Pole celých čísel. |
 | **hodin** |Hodiny dne, kdy se úloha spouští. |Pole celých čísel. |
@@ -174,7 +174,7 @@ Následující příklady znázorňují různé plány opakování. Příklady j
 
 V těchto plánech se předpokládá, že je tento **interval** nastavený na hodnotu 1.\. Příklady také předpokládají správné hodnoty **frekvence** pro hodnoty v **plánu**. Například nemůžete použít **frekvenci** "Day" (den) a **monthDays** změnu v **plánu**. Tato omezení jsme popsali výše v článku.
 
-| Příklad | Popis |
+| Příklad | Description |
 |:--- |:--- |
 | `{"hours":[5]}` |Spusťte každý den v intervalu 5 dop.<br /><br />Scheduler porovnává každou hodnotu v řádu "hours" s každou hodnotou v hodnotě "minuty" a vytvoří seznam všech časů spuštění úlohy. |
 | `{"minutes":[15], "hours":[5]}` |Spuštění každý den v 5:15. |

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88566127"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Správa uživatelských účtů ve službě Azure API Management
@@ -25,7 +25,7 @@ V API Management jsou vývojáři uživateli rozhraní API, které vystavíte po
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončení úloh v tomto článku: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 
@@ -42,7 +42,7 @@ Chcete-li přidat nového uživatele, postupujte podle kroků v této části:
 
     ![Přidání nového uživatele](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-Ve výchozím nastavení jsou nově vytvořené účty pro vývojáře **aktivní**a přidruženy ke skupině **Developers** . Účty pro vývojáře, které jsou v **aktivním** stavu, se dají použít pro přístup ke všem rozhraním API, pro která mají předplatná. Chcete-li přidružit nově vytvořeného vývojáře k dalším skupinám, přečtěte si téma [jak přidružit skupiny k vývojářům][How to associate groups with developers].
+Ve výchozím nastavení jsou nově vytvořené účty pro vývojáře **aktivní** a přidruženy ke skupině **Developers** . Účty pro vývojáře, které jsou v **aktivním** stavu, se dají použít pro přístup ke všem rozhraním API, pro která mají předplatná. Chcete-li přidružit nově vytvořeného vývojáře k dalším skupinám, přečtěte si téma [jak přidružit skupiny k vývojářům][How to associate groups with developers].
 
 ## <a name="invite-a-developer"></a><a name="invite-developer"> </a>Pozvání vývojáře
 Pokud chcete pozvat vývojáře, postupujte podle kroků v této části:
@@ -56,9 +56,9 @@ Po pozvání vývojáře se vývojářovi pošle e-mail. Tento e-mail je vygener
 
 Po přijetí pozvánky se účet aktivuje.
 
-## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> Deaktivuje nebo znovu aktivuje vývojářský účet.
+## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"></a> Deaktivuje nebo znovu aktivuje vývojářský účet.
 
-Ve výchozím nastavení jsou **aktivní**nově vytvořené nebo pozvaní účty pro vývojáře. Chcete-li deaktivovat vývojářský účet, klikněte na tlačítko **blokovat**. Chcete-li znovu aktivovat blokovaný vývojářský účet, klikněte na tlačítko **aktivovat**. Blokovaný vývojářský účet nemá přístup k portálu pro vývojáře ani volání libovolných rozhraní API. Pokud chcete odstranit uživatelský účet, klikněte na **Odstranit**.
+Ve výchozím nastavení jsou **aktivní** nově vytvořené nebo pozvaní účty pro vývojáře. Chcete-li deaktivovat vývojářský účet, klikněte na tlačítko **blokovat**. Chcete-li znovu aktivovat blokovaný vývojářský účet, klikněte na tlačítko **aktivovat**. Blokovaný vývojářský účet nemá přístup k portálu pro vývojáře ani volání libovolných rozhraní API. Pokud chcete odstranit uživatelský účet, klikněte na **Odstranit**.
 
 Pokud chcete uživatele zablokovat, postupujte podle následujících kroků.
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
 ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898257"
 ---
 # <a name="smote"></a>SMOTE
@@ -38,7 +38,7 @@ Doporučujeme, abyste se pokusili používat SMOTE s malou datovou sadou k tomu,
   
 Pokud přidáte datovou sadu do kanálu a vyberete **vizualizovat** na výstupu datové sady, vidíte, že 748 řádků nebo případů v datové sadě, 570 (76 procent), jsou třídy 0 a v případě 178 případů (24 procent) jsou třídy 1. I když tento výsledek není vážně selhalo, třída 1 představuje lidi, kteří zavedli krev, takže tyto řádky obsahují *prostor funkcí* , který chcete modelovat.
  
-Chcete-li zvýšit počet případů, můžete nastavit hodnotu **SMOTE procent**pomocí násobcích 100, a to následujícím způsobem:
+Chcete-li zvýšit počet případů, můžete nastavit hodnotu **SMOTE procent** pomocí násobcích 100, a to následujícím způsobem:
 
 ||Třída 0|Třída 1|celkem|  
 |-|-------------|-------------|-----------|  
@@ -52,7 +52,7 @@ Chcete-li zvýšit počet případů, můžete nastavit hodnotu **SMOTE procent*
   
 ## <a name="how-to-configure-smote"></a>Jak nakonfigurovat SMOTE
   
-1.  Přidejte modul SMOTE do svého kanálu. Modul najdete v části **moduly transformace dat**v kategorii **manipulace** .
+1.  Přidejte modul SMOTE do svého kanálu. Modul najdete v části **moduly transformace dat** v kategorii **manipulace** .
 
 2. Připojte datovou sadu, kterou chcete zvýšit. Pokud chcete určit místo pro funkci pro vytváření nových případů, buď pomocí pouze konkrétních sloupců, nebo vyloučením některých, použijte modul [Výběr sloupců v datové sadě](select-columns-in-dataset.md) . Potom můžete před použitím SMOTE izolovat sloupce, které chcete použít.
   

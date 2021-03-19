@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 694d63dacedd8ffcd075e73bb91b5ab0a089b58c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91766493"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurace protokolu CHAP pro zařízení StorSimple
@@ -45,7 +45,7 @@ V případě jednosměrného ověřování cíl ověřuje iniciátor. Toto ově�
 
 #### <a name="to-configure-your-device-for-one-way-authentication"></a>Konfigurace zařízení na jednosměrné ověřování
 
-1. V Azure Portal přejdete do služby StorSimple Device Manager. Klikněte na **zařízení** a vyberte a klikněte na zařízení, pro které chcete nakonfigurovat protokol CHAP. Přejít na **nastavení zařízení > zabezpečení**. V okně **nastavení zabezpečení** klikněte na **CHAP**.
+1. V Azure Portal přejdete do služby StorSimple Správce zařízení. Klikněte na **zařízení** a vyberte a klikněte na zařízení, pro které chcete nakonfigurovat protokol CHAP. Přejít na **nastavení zařízení > zabezpečení**. V okně **nastavení zabezpečení** klikněte na **CHAP**.
    
     ![Iniciátor protokolu CHAP](./media/storsimple-8000-configure-chap/configure-chap5.png)
 2. V okně **protokolu CHAP** a v části **iniciátoru protokolu CHAP** :
@@ -98,7 +98,7 @@ V obousměrném ověřování cíl ověřuje iniciátor a potom iniciátor ově�
 
 #### <a name="to-configure-your-device-for-mutual-authentication"></a>Konfigurace zařízení pro vzájemné ověřování
 
-1. V Azure Portal přejdete do služby StorSimple Device Manager. Klikněte na **zařízení** a vyberte a klikněte na zařízení, pro které chcete nakonfigurovat protokol CHAP. Přejít na **nastavení zařízení > zabezpečení**. V okně **nastavení zabezpečení** klikněte na **CHAP**.
+1. V Azure Portal přejdete do služby StorSimple Správce zařízení. Klikněte na **zařízení** a vyberte a klikněte na zařízení, pro které chcete nakonfigurovat protokol CHAP. Přejít na **nastavení zařízení > zabezpečení**. V okně **nastavení zabezpečení** klikněte na **CHAP**.
    
     ![Cíl protokolu CHAP](./media/storsimple-8000-configure-chap/configure-chap5.png)
 2. Přejděte dolů na této stránce a v části **cíl protokolu CHAP** :
@@ -170,5 +170,5 @@ To, jestli se protokol CHAP používá, můžete ověřit provedením následuj�
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [zabezpečení StorSimple](storsimple-8000-security.md).
-* Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o [používání služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

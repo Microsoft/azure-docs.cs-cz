@@ -7,10 +7,10 @@ ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
 ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263176"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Co je nového v Data Lake Analytics?
@@ -58,5 +58,5 @@ Informace o posledních aktualizacích najdete v [poznámkách k verzi Azure Dat
 
 ## <a name="next-steps"></a>Další kroky
 
-* Začínáme s Data Lake Analytics pomocí rozhraní příkazového řádku [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [CLI](data-lake-analytics-get-started-cli.md)
+* Začínáme s Data Lake Analytics pomocí rozhraní příkazového řádku [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [](data-lake-analytics-get-started-cli.md)
 

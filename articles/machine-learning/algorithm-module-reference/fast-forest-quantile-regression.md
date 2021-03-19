@@ -1,6 +1,6 @@
 ---
 title: 'Rychlá doménová struktura Quantile regrese: odkaz na modul'
-titleSuffix: Azure Machine Learning
+titleSuffix: Azure Machine Learning
 description: Naučte se používat modul Quantile regrese Fast doménové struktury k vytvoření regresního modelu, který může předpovědět hodnoty pro zadaný počet quantiles.
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
 ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907950"
 ---
 # <a name="fast-forest-quantile-regression"></a>Rychlá kvantilová regrese rozhodovacích stromů
@@ -36,14 +36,14 @@ Existuje mnoho různých typů regrese. Jednoduše řečeno, regrese znamená p�
 
 Nejjednodušší definice *Quantile* je hodnota, která rozdělí sadu dat do skupin se stejnou velikostí; Proto hodnoty Quantile označují hranice mezi skupinami. Statisticky řečeno, quantiles jsou hodnoty, které se provádí v pravidelných intervalech, od inverzní funkce k funkci kumulativní distribuce (CDF) náhodné proměnné.
 
-Vzhledem k tomu, že modely lineární regrese se pokusí odhadnout hodnotu číselné proměnné pomocí jednoho odhadu *, je třeba v některých*případech potřebovat odhadnout rozsah nebo celou distribuci cílové proměnné. Pro tento účel se vyvinuly techniky, jako je bayesovského rozhodování regrese a Quantile regrese.
+Vzhledem k tomu, že modely lineární regrese se pokusí odhadnout hodnotu číselné proměnné pomocí jednoho odhadu *, je třeba v některých* případech potřebovat odhadnout rozsah nebo celou distribuci cílové proměnné. Pro tento účel se vyvinuly techniky, jako je bayesovského rozhodování regrese a Quantile regrese.
 
 Quantile regrese vám pomůže pochopit distribuci předpovězené hodnoty. Quantile regresní modely založené na stromové struktuře, jako je například ta, která se používá v tomto modulu, mají další výhody, které lze použít k předpovídání distribucí bez ukazatelů.
 
   
 ## <a name="how-to-configure-fast-forest-quantile-regression"></a>Jak nakonfigurovat Quantile regresi rychlé doménové struktury
 
-1. Do kanálu v Návrháři přidejte modul **Quantile regrese Fast doménové struktury** . Tento modul můžete najít v části **Machine Learning algoritmy**v kategorii **regrese** .
+1. Do kanálu v Návrháři přidejte modul **Quantile regrese Fast doménové struktury** . Tento modul můžete najít v části **Machine Learning algoritmy** v kategorii **regrese** .
 
 2. V pravém podokně **Quantile regrese rychlé doménové struktury** určete způsob, jakým chcete model vyškolený, nastavením možnosti **vytvořit režim Trainer** .  
   
@@ -55,7 +55,7 @@ Quantile regrese vám pomůže pochopit distribuci předpovězené hodnoty. Quan
 
 4. **Počet pochodů**, zadejte maximální počet listů nebo uzly terminálu, které se dají vytvořit v jakémkoli stromu.  
 
-5. **Minimální počet instancí školení vyžadovaných pro vytvoření listu**a určení minimálního počtu příkladů, které jsou nutné k vytvoření libovolného uzlu terminálu (list) ve stromu.  
+5. **Minimální počet instancí školení vyžadovaných pro vytvoření listu** a určení minimálního počtu příkladů, které jsou nutné k vytvoření libovolného uzlu terminálu (list) ve stromu.  
   
      Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň 5 případů, které splňují stejné podmínky.
 
@@ -63,7 +63,7 @@ Quantile regrese vám pomůže pochopit distribuci předpovězené hodnoty. Quan
 
 7. **Rozdělit zlomky**, zadejte číslo od 0 do 1, které představuje zlomek funkcí, které se mají použít v každém rozdělení stromu. Používané funkce se vždycky vybírají náhodně.
 
-8. **Quantiles, který**se má odhadnout, zadejte seznam quantiles oddělený středníkem, pro který chcete, aby model vytvořil a vytvořil předpovědi.
+8. **Quantiles, který** se má odhadnout, zadejte seznam quantiles oddělený středníkem, pro který chcete, aby model vytvořil a vytvořil předpovědi.
   
      Například pokud chcete sestavit model s odhadem pro Kvartily, měli byste zadat `0.25; 0.5; 0.75` .  
 

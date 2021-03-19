@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371830"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Přidat nebo odebrat členy skupiny pomocí Azure Active Directory
@@ -27,7 +27,7 @@ Pomocí Azure Active Directory můžete pokračovat v přidávání a odebírán
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
+2. Vyberte **Azure Active Directory** a pak vyberte **skupiny**.
 
 3. Na stránce **skupiny – všechny skupiny** vyhledejte a vyberte skupinu, do které chcete člena přidat. V takovém případě použijte naši dříve vytvořenou skupinu **– zásada MDM – západ**.
 
@@ -37,7 +37,7 @@ Pomocí Azure Active Directory můžete pokračovat v přidávání a odebírán
 
     ![Zásady MDM – Stránka s přehledem, se zvýrazněnou možností členové](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-5. Vyberte **přidat členy**a potom vyhledejte a vyberte jednotlivé členy, které chcete přidat do skupiny, a pak zvolte **Vybrat**.
+5. Vyberte **přidat členy** a potom vyhledejte a vyberte jednotlivé členy, které chcete přidat do skupiny, a pak zvolte **Vybrat**.
 
     Zobrazí se zpráva oznamující, že členové byli úspěšně přidáni.
 

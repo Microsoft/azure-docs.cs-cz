@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: e4255f0d42e28a72ad55d9b7f81d0dc49b2950cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87041002"
 ---
 # <a name="createuidefinition-functions"></a>Funkce CreateUiDefinition
@@ -46,10 +46,10 @@ Tyto funkce lze použít s kolekcemi, jako jsou řetězce JSON, pole a objekty.
 * [první](create-ui-definition-collection-functions.md#first)
 * [posledního](create-ui-definition-collection-functions.md#last)
 * [length](create-ui-definition-collection-functions.md#length)
-* [mapa](create-ui-definition-collection-functions.md#map)
+* [mapy](create-ui-definition-collection-functions.md#map)
 * [přímo](create-ui-definition-collection-functions.md#skip)
 * [rozdělení](create-ui-definition-collection-functions.md#split)
-* [take](create-ui-definition-collection-functions.md#take)
+* [nezbytná](create-ui-definition-collection-functions.md#take)
 
 ## <a name="conversion-functions"></a>Převodní funkce
 
@@ -62,8 +62,8 @@ Tyto funkce lze použít pro převod hodnot mezi datovými typy JSON a kódován
 * [encodeURIComponent –](create-ui-definition-conversion-functions.md#encodeuricomponent)
 * [float](create-ui-definition-conversion-functions.md#float)
 * [int](create-ui-definition-conversion-functions.md#int)
-* [Analýza](create-ui-definition-conversion-functions.md#parse)
-* [řetezce](create-ui-definition-conversion-functions.md#string)
+* [parse](create-ui-definition-conversion-functions.md#parse)
+* [řetězec](create-ui-definition-conversion-functions.md#string)
 
 ## <a name="date-functions"></a>Datové funkce
 
@@ -78,7 +78,7 @@ Tyto funkce lze použít v podmíněných podmínkách. Některé funkce nemusí
 
 * [and](create-ui-definition-logical-functions.md#and)
 * [COALESCE](create-ui-definition-logical-functions.md#coalesce)
-* [rovná se](create-ui-definition-logical-functions.md#equals)
+* [rovná](create-ui-definition-logical-functions.md#equals)
 * [greater](create-ui-definition-logical-functions.md#greater)
 * [greaterOrEquals](create-ui-definition-logical-functions.md#greaterorequals)
 * [if](create-ui-definition-logical-functions.md#if)

@@ -5,13 +5,13 @@ author: ecfan
 ms.author: estfan
 ms.date: 07/21/2020
 ms.openlocfilehash: 06a503e800309d8689735417931820d9f16a6e75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102562"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet [OneDrivu pro firmy](https://OneDrive.com) 
 
@@ -19,9 +19,9 @@ Než budete moct použít účet OneDrivu pro firmy s Logic Apps, musíte autori
 
 Pomocí následujícího postupu autorizujete Logic Apps připojení k účtu OneDrivu pro firmy:  
 
-1. Přihlaste se k portálu Azure. 
+1. Přihlaste se k webu Azure Portal. 
 
-1. V části **služby Azure**vyberte **Logic Apps**. Pak v seznamu vyberte název vaší aplikace logiky.
+1. V části **služby Azure** vyberte **Logic Apps**. Pak v seznamu vyberte název vaší aplikace logiky.
 
 1. V nabídce aplikace logiky vyberte **Návrhář aplikace logiky** v části **vývojové nástroje**.
 

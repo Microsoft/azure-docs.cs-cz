@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-python
 ms.openlocfilehash: f57fa1b668cacdaaceb2026f9e5d7fff0cc56d7f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371354"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Ukázky Azure Storage pomocí klientských knihoven V12 Python
@@ -166,7 +166,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="blob"></a>Blob
+### <a name="blob"></a>Objekt blob
 
 :::row:::
    :::column span="":::
@@ -410,15 +410,15 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Nahrání souboru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L54)
+      [Nahrát soubor](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L54)
    :::column-end:::
    :::column span="":::
-      [Stažení souboru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L60)
+      [Stáhnout soubor](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L60)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Odstranit dlaždici](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L67)
+      [Odstranit soubor](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L67)
    :::column-end:::
    :::column span="":::
       [Kopírovat soubor z adresy URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L101)
@@ -517,7 +517,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Prohlížet zprávu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L197)
    :::column-end:::
    :::column span="":::
-      [Zpráva aktualizace](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L222)
+      [Aktualizovat zprávu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L222)
    :::column-end:::
 :::row-end:::
 :::row:::

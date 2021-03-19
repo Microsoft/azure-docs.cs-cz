@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d91b62afacad31d78feb7d4743cd4050fcc1bd4e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382391"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581639"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>Škálování mezipaměti Azure pro instanci Redis
 Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. V případě mezipaměti Basic, Standard nebo Premium můžete změnit její velikost a úroveň, aby se zajistilo, že budou splňovat požadavky vaší aplikace. V tomto článku se dozvíte, jak škálovat mezipaměť pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
@@ -45,7 +45,7 @@ Můžete škálovat na jinou cenovou úroveň s následujícími omezeními:
   * **Standardní** mezipaměť nejde škálovat do **základní** mezipaměti.
 * Můžete škálovat ze **základní** mezipaměti na **standardní** mezipaměť, ale nemůžete změnit velikost současně. Pokud potřebujete jinou velikost, můžete provést následnou operaci škálování na požadovanou velikost.
 * Nemůžete škálovat ze **základní** mezipaměti přímo do mezipaměti **Premium** . Nejprve Škálujte z úrovně **Basic** na **Standard** v rámci jedné operace škálování a pak od **Standard** na **Premium** v následné operaci škálování.
-* Velikost se nedá škálovat z větší velikosti na velikost **C0 (250 MB/s)** .
+* Velikost se nedá škálovat z větší velikosti na velikost **C0 (250 MB/s)** . V rámci stejné cenové úrovně ale můžete horizontální navýšení kapacity snížit na jinou velikost. Můžete například horizontální navýšení kapacity od C5 Standard až C1.
  
 I když je mezipaměť škálovatelná na novou cenovou úroveň, v okně **Azure cache pro Redis** se zobrazí stav **škálování** .
 

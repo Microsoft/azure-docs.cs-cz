@@ -4,10 +4,10 @@ description: 'Rychlý Start: Tento článek poskytuje informace o tom, jak přij
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87087573"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Rychlý Start: příjem událostí z Event Hubs pomocí Apache Storm
@@ -30,13 +30,13 @@ Tento kurz používá instalaci [HDInsight][HDInsight Storm] , která je součá
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. V zatmění vytvořte nový projekt Maven (klikněte na **soubor**, pak na **Nový**a pak na **projekt**).
+4. V zatmění vytvořte nový projekt Maven (klikněte na **soubor**, pak na **Nový** a pak na **projekt**).
    
     ![Soubor-> nový projekt >][12]
-5. Vyberte **použít výchozí umístění pracovního prostoru**a pak klikněte na **Další** .
+5. Vyberte **použít výchozí umístění pracovního prostoru** a pak klikněte na **Další** .
 6. Vyberte **Maven-Archetype – rychlý Start** Archetype a potom klikněte na **Další** .
-7. Vložte ID **skupiny** a **ArtifactId**a potom klikněte na **Dokončit** .
-8. V **pom.xml**přidejte do uzlu následující závislosti `<dependency>` .
+7. Vložte ID **skupiny** a **ArtifactId** a potom klikněte na **Dokončit** .
+8. V **pom.xml** přidejte do uzlu následující závislosti `<dependency>` .
 
     ```xml  
     <dependency>

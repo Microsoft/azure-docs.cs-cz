@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90705482"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Jaké je bezpečné skóre identity v Azure Active Directory?
@@ -48,7 +48,7 @@ Provedením nápravných akcí můžete:
 
 ## <a name="how-do-i-get-my-secure-score"></a>Jak získám svoje bezpečnostní skóre?
 
-Hodnocení identity Secure je dostupné ve všech edicích služby Azure AD. Organizace mají přístup k zabezpečenému skóre identity z **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **zabezpečeného skóre identity**zabezpečení.
+Hodnocení identity Secure je dostupné ve všech edicích služby Azure AD. Organizace mají přístup k zabezpečenému skóre identity z **Azure Portal**  >  **Azure Active Directory**  >    >  **zabezpečeného skóre identity** zabezpečení.
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
@@ -110,7 +110,7 @@ Pokud chcete zobrazit historii skóre, přejděte do [služby Microsoft 365 Secu
 - Data
 - Zařízení
 - Infrastruktura
-- Apps
+- Aplikace
 
 Počet bezpečných identit identity představuje část identity Microsoft Secure skóre. Tento překryv znamená, že vaše doporučení pro bezpečné skóre identity a hodnocení identity v Microsoftu jsou stejná.
 

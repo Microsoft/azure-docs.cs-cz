@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92672487"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rychlý Start: použití Visual Studio Code k připojení a dotazování 
@@ -51,7 +51,7 @@ Ujistěte se, že máte nainstalovanou nejnovější [Visual Studio Code](https:
 
 ### <a name="macos"></a>**macOS**
 
-Pro macOS musíte nainstalovat OpenSSL, což je předpoklad pro .NET Core, který rozšíření MSSQL používá. Otevřete terminál a zadejte následující příkazy, abyste nainstalovali **brew** a **OpenSSL** .
+Pro macOS musíte nainstalovat OpenSSL, což je předpoklad pro .NET Core, který rozšíření MSSQL používá. Otevřete terminál a zadejte následující příkazy, abyste nainstalovali **brew** a **OpenSSL**.
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -74,7 +74,7 @@ Není potřeba žádná zvláštní konfigurace.
 
 Získejte informace o připojení, které potřebujete pro připojení k Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
@@ -86,11 +86,11 @@ V Visual Studio Code nastavte jazykový režim na **SQL**  , aby se povolily př
 
 1. Otevřete nové okno nástroje Visual Studio Code.
 
-2. Stiskněte klávesu **CTRL** + **N** . Otevře se nový soubor s prostým textem.
+2. Stiskněte klávesu **CTRL** + **N**. Otevře se nový soubor s prostým textem.
 
 3. V pravém dolním rohu stavového řádku vyberte **prostý text** .
 
-4. V rozevírací nabídce **Vybrat režim jazyka** vyberte **SQL** .
+4. V rozevírací nabídce **Vybrat režim jazyka** vyberte **SQL**.
 
 ## <a name="connect-to-your-database"></a>Připojení k databázi
 
@@ -99,17 +99,17 @@ K navázání připojení k serveru použijte Visual Studio Code.
 > [!IMPORTANT]
 > Než budete pokračovat, ujistěte se, že máte server a že se přihlásíte k informacím. Když začnete zadávat informace o profilu připojení, budete muset při změně fokusu z Visual Studio Code znovu vytvořit profil.
 
-1. V Visual Studio Code stisknutím **kombinace kláves CTRL + SHIFT + P** (nebo **F1** ) otevřete paletu příkazů.
+1. V Visual Studio Code stisknutím **kombinace kláves CTRL + SHIFT + P** (nebo **F1**) otevřete paletu příkazů.
 
-2. Vyberte **MS SQL: Connect** a zvolte **ENTER** .
+2. Vyberte **MS SQL: Connect** a zvolte **ENTER**.
 
-3. Vyberte **vytvořit profil připojení** .
+3. Vyberte **vytvořit profil připojení**.
 
 4. Podle pokynů zadejte vlastnosti připojení nového profilu. Po zadání všech hodnot vyberte **ENTER** a pokračujte.
 
    | Vlastnost       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **mynewserver20170313.Database.Windows.NET** . |
+   | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **mynewserver20170313.Database.Windows.NET**. |
    | **Název databáze** | mySampleDatabase | Databáze, ke které se chcete připojit |
    | **Authentication** | Přihlášení k SQL| V tomto kurzu se používá ověřování SQL. |
    | **Uživatelské jméno** | Uživatelské jméno | Uživatelské jméno účtu správce serveru použitého k vytvoření serveru. |
@@ -132,7 +132,7 @@ Spusťte [následující příkaz](/sql/t-sql/queries/select-transact-sql) jazyk
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Stisknutím **kombinace kláves CTRL** + **SHIFT +** + **E** spustíte dotaz a zobrazíte výsledky z `Product` `ProductCategory` tabulek a.
+2. Stisknutím **kombinace kláves CTRL** + **SHIFT +** +  spustíte dotaz a zobrazíte výsledky z `Product` `ProductCategory` tabulek a.
 
     ![Dotaz pro načtení dat ze dvou tabulek](./media/connect-query-vscode/query.png)
 
@@ -162,7 +162,7 @@ Spuštěním následujícího příkazu [INSERT](/sql/t-sql/statements/insert-tr
          ,GETDATE() );
    ```
 
-2. Stisknutím **kombinace kláves CTRL** + **SHIFT +** + **E** vložte nový řádek do `Product` tabulky.
+2. Stisknutím **kombinace kláves CTRL** + **SHIFT +** +  vložte nový řádek do `Product` tabulky.
 
 ## <a name="update-data"></a>Aktualizace dat
 
@@ -176,7 +176,7 @@ Pokud chcete aktualizovat přidaný produkt, spusťte následující příkaz Tr
    WHERE Name = 'myNewProduct';
    ```
 
-2. Stisknutím **kombinace kláves CTRL** + **SHIFT +** + **E** aktualizujete zadaný řádek v `Product` tabulce.
+2. Stisknutím **kombinace kláves CTRL** + **SHIFT +** +  aktualizujete zadaný řádek v `Product` tabulce.
 
 ## <a name="delete-data"></a>Odstranění dat
 
@@ -189,7 +189,7 @@ Pokud chcete nový produkt odebrat, spusťte následující příkaz Transact-SQ
    WHERE Name = 'myNewProduct';
    ```
 
-2. Stisknutím **kombinace kláves CTRL** + **SHIFT +** + **E** odstraňte zadaný řádek v `Product` tabulce.
+2. Stisknutím **kombinace kláves CTRL** + **SHIFT +** +  odstraňte zadaný řádek v `Product` tabulce.
 
 ## <a name="next-steps"></a>Další kroky
 

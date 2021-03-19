@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 29484bee685fcc15073ef255e65a780e05f1200d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ce321574ce2878f51864f55bf5618df2c96d1068
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561664"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589884"
 ---
 # <a name="backup-to-azure-with-commvault"></a>Zálohování do Azure pomocí CommVault
 
@@ -45,7 +45,7 @@ Malé plánování vám pomůže využít Azure jako cíl zálohování mimo lok
 
 ### <a name="get-started-with-azure"></a>Začínáme s Azure
 
-Microsoft nabízí rámec, který vám umožní začít s Azure. Rozhraní CAF (Cloud [Framework](https://docs.microsoft.com/azure/architecture/cloud-adoption/) ) představuje podrobný přístup k podnikové digitální transformaci a komplexní příručce pro plánování produkčního přijetí cloudu. CAF obsahuje podrobný [Průvodce nastavením Azure](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/) , který vám pomůže rychle a bezpečně začít pracovat. Interaktivní verzi můžete najít v [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade). Najdete ukázkové architektury, konkrétní osvědčené postupy pro nasazení aplikací a bezplatné školicí materiály, které vás zavedou na cestu ke odbornosti Azure.
+Microsoft nabízí rámec, který vám umožní začít s Azure. Rozhraní CAF (Cloud [Framework](/azure/architecture/cloud-adoption/) ) představuje podrobný přístup k podnikové digitální transformaci a komplexní příručce pro plánování produkčního přijetí cloudu. CAF obsahuje podrobný [Průvodce nastavením Azure](/azure/cloud-adoption-framework/ready/azure-setup-guide/) , který vám pomůže rychle a bezpečně začít pracovat. Interaktivní verzi můžete najít v [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade). Najdete ukázkové architektury, konkrétní osvědčené postupy pro nasazení aplikací a bezplatné školicí materiály, které vás zavedou na cestu ke odbornosti Azure.
 
 ### <a name="consider-the-network-between-your-location-and-azure"></a>Vezměte v úvahu síť mezi vaší lokalitou a Azure
 
@@ -96,7 +96,7 @@ Když použijete Azure jako cíl zálohování, budete používat službu [Azure
 |**Efektivní počet kopií**     | 3         | 3         | 6         | 6 |
 |**počet zón dostupnosti**     | 1         | 3         | 2         | 4 |
 |**počet oblastí**     | 1         | 1         | 2         | 2 |
-|**Ruční převzetí služeb při selhání do sekundární oblasti**     | N/A         | N/A         | Ano         | Ano |
+|**Ruční převzetí služeb při selhání do sekundární oblasti**     | N/A         | N/A         | Ano         | Yes |
 
 **Úrovně úložiště objektů BLOB:**
 
@@ -187,7 +187,7 @@ Doporučuje se monitorovat jak prostředky Azure, tak i možnost CommVault, abys
 
 #### <a name="azure-portal"></a>portál Azure
 
-Azure poskytuje robustní řešení monitorování ve formě [Azure monitor](../../../../../azure-monitor/essentials/monitor-azure-resource.md). Můžete [nakonfigurovat Azure monitor](../../../../common/monitor-storage.md) ke sledování Azure Storage kapacity, transakcí, dostupnosti, ověřování a dalších. Můžete najít úplný odkaz na metriky, které jsou [zde](../../../../blobs/monitor-blob-storage-reference.md)shromažďovány. Několik užitečných metrik, které je třeba sledovat, je BlobCapacity – abyste se ujistili, že zůstanete pod maximálním [limitem kapacity účtu úložiště](../../../../common/scalability-targets-standard-account.md), příchozí a odchozí přenos dat, ke sledování množství dat zapsaných do a čtení z vašeho účtu Azure Storage a SuccessE2ELatency – ke sledování času zpětného odezvy pro požadavky na a z Azure Storage a na MediaAgent.
+Azure poskytuje robustní řešení monitorování ve formě [Azure monitor](../../../../../azure-monitor/essentials/monitor-azure-resource.md). Můžete [nakonfigurovat Azure monitor](../../../../blobs/monitor-blob-storage.md) ke sledování Azure Storage kapacity, transakcí, dostupnosti, ověřování a dalších. Můžete najít úplný odkaz na metriky, které jsou [zde](../../../../blobs/monitor-blob-storage-reference.md)shromažďovány. Několik užitečných metrik, které je třeba sledovat, je BlobCapacity – abyste se ujistili, že zůstanete pod maximálním [limitem kapacity účtu úložiště](../../../../common/scalability-targets-standard-account.md), příchozí a odchozí přenos dat, ke sledování množství dat zapsaných do a čtení z vašeho účtu Azure Storage a SuccessE2ELatency – ke sledování času zpětného odezvy pro požadavky na a z Azure Storage a na MediaAgent.
 
 Můžete také [vytvořit výstrahy protokolu](../../../../../service-health/alerts-activity-log-service-notifications-portal.md) pro sledování stavu služby Azure Storage a [řídicí panel stavu Azure](https://status.azure.com/status) kdykoli zobrazit.
 

@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272446"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform a tok udělení autorizace zařízení OAuth 2,0
@@ -51,7 +51,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Parametr | Stav | Popis |
+| Parametr | Podmínka | Popis |
 | --- | --- | --- |
 | `tenant` | Povinné | Může být/běžné,/consumers nebo/Organizations.  Může to být také tenant adresáře, ze kterého chcete požádat o oprávnění ve formátu GUID nebo popisného názvu.  |
 | `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
@@ -129,7 +129,7 @@ Tok kódu zařízení je protokol cyklického dotazování, aby klient musel obd
 | `scope` | Řetězce oddělené mezerami | V případě vrácení přístupového tokenu zobrazí seznam oborů, pro které je přístupový token platný. |
 | `expires_in`| int | Počet sekund, než je zahrnutý přístupový token platný pro. |
 | `access_token`| Neprůhledný řetězec | Vydány pro požadované [obory](v2-permissions-and-consent.md) .  |
-| `id_token`   | TOKEN | Vydáno, pokud původní `scope` parametr zahrnoval `openid` obor.  |
+| `id_token`   | JWT | Vydáno, pokud původní `scope` parametr zahrnoval `openid` obor.  |
 | `refresh_token` | Neprůhledný řetězec | Vydáno, pokud je `scope` zahrnut původní parametr `offline_access` .  |
 
 Obnovovací token můžete použít k získání nových přístupových tokenů a k aktualizaci tokenů pomocí stejného toku, který je popsán v [dokumentaci toku kódu OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).

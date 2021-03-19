@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 448998328ff15b74b0aa0b17e2435a7ff55c54a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83124163"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>Práce s incidenty v mnoha pracovních prostorech najednou 
@@ -40,11 +40,11 @@ Všimněte si, že v seznamu pracovních prostorů vidíte adresář, předplatn
 
 ## <a name="working-with-incidents"></a>Práce s incidenty
 
-V **zobrazení více pracovních prostorů**je teď k dispozici jenom obrazovka **incidentů** . Vypadá a funguje podobně jako obrazovka běžné **incidenty** . K dispozici je několik důležitých rozdílů, i když:
+V **zobrazení více pracovních prostorů** je teď k dispozici jenom obrazovka **incidentů** . Vypadá a funguje podobně jako obrazovka běžné **incidenty** . K dispozici je několik důležitých rozdílů, i když:
 
    ![Zobrazení incidentů ve více pracovních prostorech](./media/multiple-workspace-view/incidents.png)
 
-- Čítače v horní části *incidentů otevření*stránky, *nových incidentů* *, probíhajících*atd. – zobrazí souhrnná čísla všech vybraných pracovních prostorů.
+- Čítače v horní části *incidentů otevření* stránky, *nových incidentů* *, probíhajících* atd. – zobrazí souhrnná čísla všech vybraných pracovních prostorů.
 
 - V jednom sjednoceném seznamu se zobrazí incidenty ze všech vybraných pracovních prostorů a adresářů (klientů). Kromě filtrů z obrazovky běžné **incidenty** můžete filtrovat seznam podle pracovního prostoru a adresáře.
 

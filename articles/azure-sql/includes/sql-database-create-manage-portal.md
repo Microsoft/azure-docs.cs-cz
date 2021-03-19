@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 08/23/2019
 ms.author: sstein
 ms.openlocfilehash: 3cc8e836d39a38f950e15d31aeb3e3acdca45acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84045491"
 ---
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Vytváření a Správa prostředků Azure SQL pomocí Azure Portal
@@ -25,7 +25,7 @@ Pokud chcete spravovat existující prostředky, vyberte požadovanou položku v
 
 ![Stránka portálu Azure SQL](./media/sql-database-create-manage-portal/add-azure-sql-resources.png)
 
-Po výběru možnosti **+ Přidat**zobrazte další informace o různých možnostech výběrem možnosti **Zobrazit podrobnosti** na libovolné dlaždici.
+Po výběru možnosti **+ Přidat** zobrazte další informace o různých možnostech výběrem možnosti **Zobrazit podrobnosti** na libovolné dlaždici.
 
 ![Podrobnosti dlaždice databáze](./media/sql-database-create-manage-portal/single-sql-database-deployment-options.png)
 

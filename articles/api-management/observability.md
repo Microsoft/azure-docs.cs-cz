@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 06/01/2020
 ms.author: apimpm
 ms.openlocfilehash: 1ebebed465952bbb5d3e8f82ae1c7776c441c6b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87096739"
 ---
 # <a name="observability-in-azure-api-management"></a>Pozorování v Azure API Management
@@ -33,9 +33,9 @@ Následující tabulka shrnuje všechny nástroje podporované nástrojem API Ma
 |:------------- |:-------------|:---- |:----|:---- |:--- |:---- 
 | **[Kontrola rozhraní API](api-management-howto-api-inspector.md)** | Testování a ladění | Okamžitě | Poslední 100 trasování | Zapnuto na žádost | Trasování požadavků | Vždy
 | **Integrované analýzy** | Sledování a vytváření sestav | V řádu minut | Doba platnosti | 100 % | Sestavy a protokoly | Vždy |
-| **[Azure Monitor metriky](api-management-howto-use-azure-monitor.md)** | Sledování a vytváření sestav | V řádu minut | 93 dní (upgrade pro rozšíření) | 100 % | Metriky | Vždy |
+| **[Metriky Azure Monitoru](api-management-howto-use-azure-monitor.md)** | Sledování a vytváření sestav | V řádu minut | 93 dní (upgrade pro rozšíření) | 100 % | Metriky | Vždy |
 | **[Protokoly služby Azure Monitor](api-management-howto-use-azure-monitor.md)** | Vytváření sestav, monitorování a ladění | V řádu minut | 31 dní/5 GB (upgrade pro rozšíření) | 100% (nastavitelný) | Protokoly | Volitelné |
-| **[Azure Application Insights](api-management-howto-app-insights.md)** | Vytváření sestav, monitorování a ladění | Sekundy | 90 dní/5 GB (upgrade pro rozšíření) | Vlastní | Protokoly, metriky | Volitelné |
+| **[Application Insights Azure](api-management-howto-app-insights.md)** | Vytváření sestav, monitorování a ladění | Sekundy | 90 dní/5 GB (upgrade pro rozšíření) | Vlastní | Protokoly, metriky | Volitelné |
 | **[Protokolování prostřednictvím centra událostí Azure](api-management-howto-log-event-hubs.md)** | Vlastní scénáře | Sekundy | Spravované uživatelem | Vlastní | Vlastní | Volitelné |
 
 ### <a name="self-hosted-gateway"></a>Brána pro samoobslužné hostování

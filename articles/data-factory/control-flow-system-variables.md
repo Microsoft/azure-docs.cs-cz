@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 119ecb3ec9c208340f09f513bf10b3ad24312cb5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: a5d2043c29db87876cc0d5ddb5b3708abad033c5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201222"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591975"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporované nástrojem Azure Data Factory
 
@@ -24,7 +24,7 @@ Tento článek popisuje systémové proměnné, které podporuje Azure Data Fact
 
 Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON kanálu.
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
 | @pipeline(). DataFactory |Název datové továrny, ve které běží běh kanálu. |
 | @pipeline(). Kanálu |Název kanálu |
@@ -41,7 +41,7 @@ Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON kanálu.
 
 Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger).
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
 | @trigger().scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. |
 | @trigger(). Čas_spuštění |Čas, kdy se Trigger **skutečně** aktivoval pro vyvolání spuštění kanálu. Může se mírně lišit od naplánovaného času triggeru. |
@@ -50,7 +50,7 @@ Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pr
 
 Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger).
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
 | @trigger(). Outputs. windowStartTime |Začátek okna přidruženého ke spuštění triggeru |
 | @trigger(). Outputs. windowEndTime |Konec okna přidruženého ke spuštění triggeru |
@@ -61,11 +61,25 @@ Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pr
 
 Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger).
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
 | @triggerBody(). fileName  |Název souboru, jehož vytvořením nebo odstraněním způsobilo aktivaci triggeru.   |
 | @triggerBody(). název_složky  |Cesta ke složce, která obsahuje soubor určený parametrem `@triggerBody().fileName` . První segment cesty ke složce je název kontejneru Azure Blob Storage.  |
 | @trigger(). Čas_spuštění |Čas, kdy Trigger vyvolal vyvolání spuštění kanálu. |
+
+## <a name="custom-event-trigger-scope"></a>Rozsah triggeru vlastní události
+
+Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [CustomEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger).
+
+>[!NOTE]
+>Azure Data Factory očekává, že se vlastní událost naformátuje pomocí [schématu události Azure Event Grid](../event-grid/event-schema.md).
+
+| Název proměnné | Description
+| --- | --- |
+| @triggerBody(). Event. eventType | Typ událostí, které spustily vlastní spuštění triggeru událostí. Typ události je pole definované zákazníkem a přebírat se všemi hodnotami typu String. |
+| @triggerBody(). Event. Subject | Předmět vlastní události, která způsobila, že se Trigger aktivuje. |
+| @triggerBody(). Event. data. _Název_klíče_ | Datové pole ve vlastní události je bezplatné od objektu BLOB JSON, který může zákazník použít k posílání zpráv a dat. Použijte prosím data. _KeyName_ , který odkazuje na jednotlivá pole. Například @triggerBody (). Event. data. callback vrátí hodnotu pole _zpětného volání_ uložené v části _data_. |
+| @trigger(). Čas_spuštění | Čas, kdy Trigger vyvolal vyvolání spuštění kanálu. |
 
 ## <a name="next-steps"></a>Další kroky
 

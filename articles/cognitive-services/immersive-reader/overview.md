@@ -12,16 +12,21 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: čtenáři, nástroje pro jazyky, zobrazované obrázky, vylepšení čtení, čtení obsahu, překlad
-ms.openlocfilehash: 0661bd5f917a2bf071f11393ad8ac9af53ddfe97
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6affc0a2b94c7ea950a8995981d63470722d981f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631235"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599523"
 ---
 # <a name="what-is-immersive-reader"></a>Co je Asistivní čtečka?
 
 [Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí klientské knihovny pro moderní čtečku můžete využívat stejnou technologii používanou v Microsoft Wordu a Microsoftu jednu poznámku ke zlepšení svých webových aplikací. 
+
+Tato dokumentace obsahuje následující typy článků:  
+
+* **[Rychlé starty](quickstarts/client-libraries.md)** jsou podrobné pokyny, které vám umožní volat službu a získat výsledky.
+* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném **[způsobu.](how-to-create-immersive-reader.md)**  
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Použití moderního čtecího zařízení ke zlepšení usnadnění čtení 
 
@@ -72,10 +77,3 @@ Moderní čtečka je samostatná webová aplikace. Při vyvolání pomocí klien
 Klientská knihovna pro moderní čtení je k dispozici v jazycích C#, JavaScript, Java (Android), Kotlin (Android) a SWIFT (iOS). Při zahájení práce využijte tyto možnosti:
 
 * [Rychlý Start: použití klientské knihovny pro moderní čtenáře](quickstarts/client-libraries.md)
-
-## <a name="next-steps"></a>Další kroky
-
-Začínáme s Asistivní čtečkou:
-
-* Přečtěte si [odkaz na klientskou knihovnu pro moderní čtečku](./reference.md)
-* Prozkoumat [klientskou knihovnu pro moderní čtenáře na GitHubu](https://github.com/microsoft/immersive-reader-sdk)

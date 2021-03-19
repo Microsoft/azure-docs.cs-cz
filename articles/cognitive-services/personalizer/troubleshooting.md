@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.openlocfilehash: b5f7ed1f2ded8f6ec0320d417b59bab016d75028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91777271"
 ---
 # <a name="personalizer-troubleshooting"></a>Řešení potíží s přizpůsobením
@@ -66,7 +66,7 @@ Po zahájení nového období aktualizace se použije aktualizovaný model a doj
 
 ### <a name="how-do-i-know-that-the-learning-loop-is-getting-updated-regularly-and-is-used-to-score-my-data"></a>Návody víte, že výuková smyčka se pravidelně aktualizuje a používá se k vyhodnocení mých dat?
 
-Čas poslední aktualizace modelu můžete najít na stránce **Nastavení modelu a učení** Azure Portal. Pokud se zobrazí staré časové razítko, je pravděpodobně způsobeno tím, že neposíláte volání pořadí a odměňování. Pokud služba neobsahuje žádná příchozí data, neaktualizuje výuku. Pokud vidíte, že výuková smyčka není často aktualizována, můžete upravit **Četnost aktualizace modelu**smyčky.
+Čas poslední aktualizace modelu můžete najít na stránce **Nastavení modelu a učení** Azure Portal. Pokud se zobrazí staré časové razítko, je pravděpodobně způsobeno tím, že neposíláte volání pořadí a odměňování. Pokud služba neobsahuje žádná příchozí data, neaktualizuje výuku. Pokud vidíte, že výuková smyčka není často aktualizována, můžete upravit **Četnost aktualizace modelu** smyčky.
 
 ## <a name="offline-evaluations"></a>Offline vyhodnocení
 

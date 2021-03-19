@@ -6,11 +6,11 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370572"
 ---
 # <a name="changelog"></a>Protokol změn
@@ -198,7 +198,7 @@ Při volání aplikací vracet smysluplné chyby doručení
 
 ### <a name="changes"></a>Změny ###
 
-- Mění [Živé titulky] Změnili jste název rozhraní API pro popisky CEA z 608 na 708. Další informace najdete v tématu [Nastavení popisků CEA708](/javascript/api/azuremediaplayer/cea708captionssettings) .-->
+- Mění [Živé titulky] Změnili jste název rozhraní API pro popisky CEA z 608 na 708. Další informace najdete v tématu [Nastavení popisků CEA708](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings) .-->
 
 ## <a name="220-official-release"></a>2.2.0 (oficiální verze) ##
 
@@ -727,7 +727,7 @@ Při volání aplikací vracet smysluplné chyby doručení
 - [Chyba oprava] aktualizované prostředí načítání uživatelského rozhraní pro režim automatického přehrávání
 - [Oprava chyby] Problém zavaděče AMD a definování konfliktů metod
 - [Oprava chyby] Problém načítání aplikace WP 8,1 Cordova
-- [Oprava chyby] Chráněný obsah dotazování na platformu/technickou podporu typ ochrany replik k výběru vhodného Techu pro přehrávání.  Opravuje předchozí známý problém_obsahu PlayReady z aplikace Chrome (Desktop)/Safari 8 (na OSX Yosemite) v současné době neumožňuje použití aplikace Silverlight Player_.
+- [Oprava chyby] Chráněný obsah dotazování na platformu/technickou podporu typ ochrany replik k výběru vhodného Techu pro přehrávání.  Opravuje předchozí známý problém _obsahu PlayReady z aplikace Chrome (Desktop)/Safari 8 (na OSX Yosemite) v současné době neumožňuje použití aplikace Silverlight Player_.
 - [Chyba Fix] nezachycená výjimka v WinServer 2012 R2 z důvodu Media Foundation není ve výchozím nastavení nainstalovaná na tomto počítači.  Došlo k pokusu o použití rozhraní API značek HTML, která nejsou implementována, čímž dojde k chybě. Současné zmírnění je zachytit tuto chybu a vrátit hodnotu false namísto vyvolání chyby.
 - [Chyba oprava] vždy získá segment init po hledání nebo selhání protokolu HTTP, které brání histogramu během přehrávání.
 - [Chyba oprava] vypnout sledování simulovaného průběhu a timeupdates, když došlo k chybě.

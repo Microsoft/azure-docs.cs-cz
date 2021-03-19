@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563858"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect synchronizace: Principy architektury
@@ -145,7 +145,7 @@ Objekt importu se vytvoří jako odpojený objekt. Objekt exportu musí být př
 ## <a name="sync-engine-identity-management-process"></a>Proces správy identit modulu synchronizace
 Proces správy identit řídí způsob, jakým se aktualizují informace o identitě mezi různými připojenými zdroji dat. Správa identit probíhá ve třech procesech:
 
-* Importovat
+* Import
 * Synchronizace
 * Export
 
@@ -173,7 +173,7 @@ Pro každý objekt zadaný v konektoru se synchronizační modul nejprve pokusí
 Když synchronizační modul najde pracovní objekt, který odpovídá rozlišujícímu názvu, ale nikoli kotvě, dojde k následujícímu zvláštnímu chování:
 
 * Pokud objekt umístěný v prostoru konektoru nemá žádnou kotvu, pak synchronizační modul tento objekt z prostoru konektoru odstraní a označí objekt Metaverse, ke kterému je tento objekt propojený, jako **zkuste znovu zřídit při příštím spuštění synchronizace**. Pak vytvoří nový objekt importu.
-* Pokud objekt umístěný v prostoru konektoru má kotvu, pak synchronizační modul předpokládá, že se tento objekt buď přejmenoval, nebo odstranil v připojeném adresáři. Přiřadí dočasný, nový rozlišující název objektu prostoru konektoru tak, aby mohl připravit příchozí objekt. Starý objekt pak bude **přechodný**a čeká, až konektor importuje přejmenování nebo odstranění za účelem vyřešení situace.
+* Pokud objekt umístěný v prostoru konektoru má kotvu, pak synchronizační modul předpokládá, že se tento objekt buď přejmenoval, nebo odstranil v připojeném adresáři. Přiřadí dočasný, nový rozlišující název objektu prostoru konektoru tak, aby mohl připravit příchozí objekt. Starý objekt pak bude **přechodný** a čeká, až konektor importuje přejmenování nebo odstranění za účelem vyřešení situace.
 
 Pokud synchronizační modul vyhledá pracovní objekt, který odpovídá objektu zadanému v konektoru, určuje, jaký typ změn použít. Například synchronizační stroj může přejmenovat nebo odstranit objekt v připojeném zdroji dat nebo může aktualizovat pouze hodnoty atributu objektu.
 
@@ -182,7 +182,7 @@ Pracovní objekty s aktualizovanými daty jsou označeny jako nedokončené impo
 * **Žádné**. Žádné změny atributů pracovního objektu nejsou k dispozici. Synchronizační modul neoznačí tento typ jako nedokončený import.
 * **Přidat**. Pracovní objekt je novým objektem importu v prostoru konektoru. Synchronizační modul označí tento typ jako nedokončený import pro další zpracování v úložišti Metaverse.
 * **Aktualizace**. Synchronizační modul vyhledá odpovídající pracovní objekt v prostoru konektoru a označí tento typ jako nedokončený import, aby bylo možné zpracovat aktualizace atributů v úložišti Metaverse. Aktualizace obsahují přejmenování objektů.
-* **Odstraňte**. Synchronizační modul najde odpovídající pracovní objekt v prostoru konektoru a označí tento typ jako nedokončený import, aby bylo možné připojený objekt odstranit.
+* **Delete**. Synchronizační modul najde odpovídající pracovní objekt v prostoru konektoru a označí tento typ jako nedokončený import, aby bylo možné připojený objekt odstranit.
 * **Odstranit/přidat**. Synchronizační modul vyhledá odpovídající pracovní objekt v prostoru konektoru, ale typy objektů se neshodují. V tomto případě je upravena úprava přidávání a přidávání. Modifikace Delete-Add indikuje modulu synchronizace, že je nutné provést úplnou resynchronizaci tohoto objektu, protože se u tohoto objektu při změně typu objektu vztahují různé sady pravidel.
 
 Nastavením stavu čekání na Import pracovního objektu je možné výrazně snížit množství dat zpracovaných během synchronizace, protože Tím umožníte, aby systém zpracovával pouze ty objekty, které mají aktualizovaná data.
@@ -204,7 +204,7 @@ Příchozí synchronizace vytvoří integrované zobrazení v úložišti Metave
 Příchozí synchronizace zahrnuje následující procesy:
 
 * **Zřízení** (označované také jako **projekce** , pokud je důležité odlišit tento proces od odchozího zřizování synchronizace). Synchronizační modul vytvoří nový objekt Metaverse na základě pracovního objektu a propojí je. Zřízení je operace na úrovni objektu.
-* **Připojte**se. Synchronizační modul propojí pracovní objekt s existujícím objektem úložiště metaverse. Spojení je operace na úrovni objektu.
+* **Připojte** se. Synchronizační modul propojí pracovní objekt s existujícím objektem úložiště metaverse. Spojení je operace na úrovni objektu.
 * **Importujte tok atributů**. Synchronizační modul aktualizuje hodnoty atributů, které se nazývají tok atributů objektu v úložišti Metaverse. Tok atributu import je operace na úrovni atributu, která vyžaduje propojení mezi pracovním objektem a objektem úložiště metaverse.
 
 Zřizuje se jediný proces, který vytváří objekty v úložišti Metaverse. Zřizování má vliv pouze na Import objektů, které jsou odpojeny objekty. Během zřizování vytvoří synchronizační modul objekt úložiště metaverse, který odpovídá typu objektu importovaného objektu, a vytvoří propojení mezi oběma objekty, čímž vytvoří připojený objekt.

@@ -9,10 +9,10 @@ ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84317557"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Kolik koncových bodů klienta VPN je možné mít v konfiguraci připojení Point-to-Site?
@@ -73,7 +73,7 @@ Určit přesnou propustnost tunelových propojení sítí VPN je obtížné. IPs
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Je možné pro připojení Point-to-Site použít libovolného softwarového klienta sítě VPN, pokud podporuje protokol SSTP a/nebo IKEv2?
 
-Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. K připojení přes protokol OpenVPN ale můžete použít klienta OpenVPN na všech platformách. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
+No. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. K připojení přes protokol OpenVPN ale můžete použít klienta OpenVPN na všech platformách. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Podporuje Azure IKEv2 VPN s Windows?
 
@@ -83,7 +83,7 @@ Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
 
 1. Nainstalujte aktualizaci.
 
-   | Verze operačního systému | Datum | Číslo/odkaz |
+   | Verze operačního systému | Date (Datum) | Číslo/odkaz |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 verze 1607 | 17. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 verze 1703 | 17. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
