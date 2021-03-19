@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87908589"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Opuštění organizace jako uživatel typu host
@@ -32,14 +32,14 @@ Pokud chcete opustit organizaci, postupujte podle těchto kroků.
 1. Přejděte na stránku profilu přístupového panelu pomocí jednoho z následujících kroků:
    
    - V [Azure Portal](https://portal.azure.com)klikněte na jméno v pravém horním rohu a vyberte **Zobrazit účet**.
-   - Otevřete [přístupový panel](https://myapps.microsoft.com), klikněte na jméno v pravém horním rohu a vedle možnosti **organizace**vyberte ikonu nastavení (ozubené kolo).
+   - Otevřete [přístupový panel](https://myapps.microsoft.com), klikněte na jméno v pravém horním rohu a vedle možnosti **organizace** vyberte ikonu nastavení (ozubené kolo).
  
    ![Snímek obrazovky s uživatelským nastavením na přístupovém panelu](media/leave-the-organization/UserSettings.png) 
 
    > [!NOTE]
-   > Pokud ještě nejste přihlášeni k organizaci, kterou chcete opustit, klikněte v části **organizace**na odkaz **Přihlásit se a ponechte** název organizace vedle názvu organizace. Po přihlášení klikněte v pravém horním **rohu na své**jméno a pak vyberte ikonu nastavení (ozubené kolo).
+   > Pokud ještě nejste přihlášeni k organizaci, kterou chcete opustit, klikněte v části **organizace** na odkaz **Přihlásit se a ponechte** název organizace vedle názvu organizace. Po přihlášení klikněte v pravém horním **rohu na své** jméno a pak vyberte ikonu nastavení (ozubené kolo).
 
-3. V části **organizace**Najděte organizaci, kterou chcete opustit, a vyberte **opustit organizaci**.
+3. V části **organizace** Najděte organizaci, kterou chcete opustit, a vyberte **opustit organizaci**.
 
    ![Snímek obrazovky, který ukazuje možnost opustit organizaci v uživatelském rozhraní](media/leave-the-organization/LeaveOrg.png)
 

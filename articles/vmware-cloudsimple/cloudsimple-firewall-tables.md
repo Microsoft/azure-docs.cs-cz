@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140866"
 ---
 # <a name="firewall-tables-overview"></a>Přehled tabulek brány firewall
@@ -53,7 +53,7 @@ Pro tok přenosů v opačném směru můžou být nutná další pravidla.  Pro 
 
 V každé tabulce brány firewall jsou vytvořena následující výchozí pravidla.
 
-|Priorita|Name|Sledování stavu|Směr|Typ provozu|Protokol|Zdroj|Zdrojový port|Cíl|Cílový port|Akce|
+|Priorita|Název|Sledování stavu|Směr|Typ provozu|Protokol|Zdroj|Zdrojový port|Cíl|Cílový port|Akce|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|povolení – vše pro Internet|Stavové|Odchozí|Veřejná IP adresa nebo internetový provoz|Vše|Všechny|Všechny|Všechny|Všechny|Povolit|
 |65001|Odepřít – vše z Internetu|Stavové|Příchozí|Veřejná IP adresa nebo internetový provoz|Vše|Všechny|Všechny|Všechny|Všechny|Odepřít|

@@ -9,17 +9,17 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792160"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověřování XML pro podnikovou integraci B2B v Azure Logic Apps pomocí Enterprise Integration Packu
 
 Ve scénářích B2B se často musí obchodní partneři v rámci smlouvy ujistit, že jsou zprávy, které vyměňují, platné předtím, než může začít jakékoli zpracování dat. Dokumenty můžete v předdefinovaném schématu ověřit pomocí akce ověřování XML, která je k dispozici ve Enterprise Integration Pack.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -37,7 +37,7 @@ Ve scénářích B2B se často musí obchodní partneři v rámci smlouvy ujisti
 
    Chcete-li přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku, která spojuje tyto kroky, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `xml validation` jako filtr. V seznamu akce vyberte **ověřování XML**.
+1. V části **zvolit akci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `xml validation` jako filtr. V seznamu akce vyberte **ověřování XML**.
 
    ![Najde a vybere akci ověřování XML.](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
 

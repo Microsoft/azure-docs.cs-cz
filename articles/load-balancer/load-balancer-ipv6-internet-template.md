@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90562515"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení internetového vyrovnávání zatížení s protokolem IPv6 pomocí šablony
@@ -72,7 +72,7 @@ Tento článek odkazuje na šablonu, která je publikovaná v galerii [šablon A
 
     ![Snímek obrazovky se zobrazí v kroku spuštění vlastního nasazení, které je upravit šablonu.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. Klikněte na upravit parametry. V okně Parametry zadejte hodnoty podle pokynů v části parametry šablony a potom kliknutím na Uložit zavřete okno parametry. V okně vlastní nasazení vyberte vaše předplatné, existující skupinu prostředků nebo vytvořte jednu z nich. Pokud vytváříte skupinu prostředků, vyberte umístění pro skupinu prostředků. V dalším kroku klikněte na **právní předpisy**a pak na **koupit** pro zákonné smlouvy. Azure začíná nasazovat prostředky. Nasazení všech prostředků trvá několik minut.
+6. Klikněte na upravit parametry. V okně Parametry zadejte hodnoty podle pokynů v části parametry šablony a potom kliknutím na Uložit zavřete okno parametry. V okně vlastní nasazení vyberte vaše předplatné, existující skupinu prostředků nebo vytvořte jednu z nich. Pokud vytváříte skupinu prostředků, vyberte umístění pro skupinu prostředků. V dalším kroku klikněte na **právní předpisy** a pak na **koupit** pro zákonné smlouvy. Azure začíná nasazovat prostředky. Nasazení všech prostředků trvá několik minut.
 
     ![Snímek obrazovky se zobrazí kroky, které jsou součástí vlastního nasazení, počínaje zadáním hodnot parametrů šablony.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 

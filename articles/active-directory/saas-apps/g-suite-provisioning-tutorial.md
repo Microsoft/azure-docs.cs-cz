@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/06/2020
+ms.date: 03/18/2021
 ms.author: Zhchia
-ms.openlocfilehash: 5243e9490c9de0d6df1520edb970da93fabef85a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746117"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583747"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -33,7 +33,7 @@ Tento kurz popisuje kroky, které je třeba provést v G Suite a Azure Active Di
 > * Zřizování skupin a členství ve skupinách v G Suite
 > * [Jednotné přihlašování](./google-apps-tutorial.md) do G Suite (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -273,6 +273,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * 10/17/2020 – byla přidána podpora dalších atributů uživatelů a skupin v sadě G Suite.
 * 10/17/2020 – aktualizované názvy atributů cíle G Suite budou odpovídat hodnotám, které jsou [zde](https://developers.google.com/admin-sdk/directory)definovány.
 * 10/17/2020 – aktualizované výchozí mapování atributů.
+* 03/18/2021 – e-mail správce se teď synchronizuje namísto ID pro všechny nové uživatele. Pro všechny existující uživatele, kteří byli zřízeni s manažerem jako ID, můžete provést restart prostřednictvím [Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) s rozsahem "úplné", aby se zajistilo zřízení e-mailu. Tato změna ovlivní jenom úlohu zřizování GSuite a ne starší úlohu probisioning začínající na Goov2OutDelta. Poznámka: e-mail manažera se zřídí při prvním vytvoření uživatele nebo při změně správce. Pokud správce změní svou e-mailovou adresu, nezřídí se e-mail správce. 
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

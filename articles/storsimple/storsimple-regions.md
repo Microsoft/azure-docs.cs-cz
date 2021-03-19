@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90564147"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostupné oblasti pro váš StorSimple
@@ -25,29 +25,29 @@ Výběr oblasti Azure je velmi důležitý a volba oblasti je ovlivněna činite
 
 V případě řešení StorSimple je volba oblasti určena konkrétně následujícími faktory:
 
-- Oblasti, ve kterých je dostupná služba StorSimple Device Manager.
+- Oblasti, ve kterých je dostupná služba StorSimple Správce zařízení.
 - Země nebo oblasti, kde je k dispozici fyzický, Cloud nebo virtuální zařízení StorSimple.
 - Pro optimální výkon by měly být umístěny oblasti, ve kterých jsou uloženy účty úložiště s StorSimple daty.
 
-Tento kurz popisuje dostupnost oblasti pro službu StorSimple Device Manager, místní fyzické a cloudová zařízení. Informace obsažené v tomto článku se vztahují na zařízení StorSimple 8000 a 1200 Series.
+Tento kurz popisuje dostupnost oblasti pro službu StorSimple Správce zařízení, místní fyzické a cloudová zařízení. Informace obsažené v tomto článku se vztahují na zařízení StorSimple 8000 a 1200 Series.
 
-## <a name="region-availability-for-storsimple-device-manager-service"></a>Dostupnost oblasti pro službu StorSimple Device Manager
+## <a name="region-availability-for-storsimple-device-manager-service"></a>Dostupnost oblasti pro službu StorSimple Správce zařízení
 
-Služba StorSimple Device Manager se v současné době podporuje ve 12 veřejných oblastech a 2 Azure Government oblastech.
+Služba StorSimple Správce zařízení se v současné době podporuje ve 12 veřejných oblastech a 2 Azure Government oblastech.
 
-Oblast nebo umístění definujete při prvním vytvoření služby StorSimple Device Manager. Obecně se volí umístění nejbližší k geografické oblasti, kde je zařízení nasazené. Zařízení a služba se ale dají nasadit i v různých umístěních.
+Oblast nebo umístění definujete při prvním vytvoření služby StorSimple Správce zařízení. Obecně se volí umístění nejbližší k geografické oblasti, kde je zařízení nasazené. Zařízení a služba se ale dají nasadit i v různých umístěních.
 
-Tady je seznam oblastí, kde je služba StorSimple Device Manager pro veřejný cloud Azure dostupná a dá se nasadit.
+Tady je seznam oblastí, kde je služba StorSimple Správce zařízení pro veřejný cloud Azure dostupná a dá se nasadit.
 
-![Snímek obrazovky zobrazuje StorSimple Device Manager se zvýrazněným seznamem umístění.](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![Snímek obrazovky zobrazuje StorSimple Správce zařízení se zvýrazněným seznamem umístění.](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
-Pro Azure Government Cloud je služba Device Manager StorSimple dostupná v datových centrech US Gov – Iowa a US Gov – Virginie.
+Pro Azure Government Cloud je služba Správce zařízení StorSimple dostupná v datových centrech US Gov – Iowa a US Gov – Virginie.
 
 ## <a name="region-availability-for-data-stored-in-storsimple"></a>Dostupnost oblastí pro data uložená v StorSimple
 
 Data StorSimple se fyzicky ukládají v účtech Azure Storage a tyto účty jsou dostupné ve všech oblastech Azure. Když vytvoříte účet úložiště Azure, vybere se primární umístění účtu úložiště a určí se oblast, kde se data nacházejí.
 
-Když poprvé vytvoříte službu StorSimple Device Manager a přidružíte k ní účet úložiště, vaše služba StorSimple Device Manager a Azure Storage můžou být ve dvou různých umístěních. V takovém případě je nutné vytvořit Správce zařízení StorSimple a účet úložiště Azure odděleně.
+Když poprvé vytvoříte službu StorSimple Správce zařízení a přidružíte k ní účet úložiště, vaše služba StorSimple Správce zařízení a Azure Storage můžou být ve dvou různých umístěních. V takovém případě je nutné vytvořit Správce zařízení StorSimple a účet úložiště Azure odděleně.
 
 V části Obecné vyberte do služby pro svůj účet úložiště nejbližší oblast. Nejbližší Microsoft Azure oblast ale nemusí být ve skutečnosti oblastí s nejnižší latencí. Jedná se o latenci, která určuje výkon síťové služby, a to i výkon řešení. Takže pokud zvolíte účet úložiště v jiné oblasti, je důležité znát, co jsou latence mezi vaší službou a oblastí přidruženou k vašemu účtu úložiště.
 
@@ -100,4 +100,4 @@ Pokud používáte virtuální pole řady 1200 Series StorSimple, je image virtu
 
 * Přečtěte si další informace o [cenách různých modelů StorSimple](https://azure.microsoft.com/pricing/calculator/#storsimple2).
 * Přečtěte si další informace o [správě účtu úložiště StorSimple](storsimple-8000-manage-storage-accounts.md).
-* Přečtěte si další informace o tom, jak [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o tom, jak [používat službu StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

@@ -5,10 +5,10 @@ ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530433"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Rychlý Start: použití MetaMask k připojení a nasazení inteligentního kontraktu
@@ -27,7 +27,7 @@ V tomto rychlém startu použijete MetaMask k připojení k síti služby Azure 
 
 Pro připojení k síti blockchain potřebujete adresu koncového bodu služby Azure blockchain. Adresa koncového bodu a přístupové klávesy jsou v Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte ke členu služby Azure blockchain.
 1. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
@@ -45,7 +45,7 @@ Pro připojení k síti blockchain potřebujete adresu koncového bodu služby A
 
     ![Vlastní RPC](./media/connect-metamask/custom-rpc.png)
 
-1. V **nové síti > nové adresy URL RPC**vložte adresu koncového bodu, kterou jste zkopírovali výše.
+1. V **nové síti > nové adresy URL RPC** vložte adresu koncového bodu, kterou jste zkopírovali výše.
 1. Vyberte **Uložit**.
 
     Pokud bylo připojení úspěšné, zobrazí se v rozevíracím seznamu síť privátní síť.
@@ -57,7 +57,7 @@ Pro připojení k síti blockchain potřebujete adresu koncového bodu služby A
 Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a Remix společně můžete nasadit a provádět akce s inteligentními kontrakty.
 
 1. V prohlížeči přejděte na adresu `https://remix.ethereum.org`.
-1. Na kartě **Domů** v části **soubor**vyberte **nový soubor** .
+1. Na kartě **Domů** v části **soubor** vyberte **nový soubor** .
 
     Pojmenujte nový soubor `simple.sol` .
 
@@ -104,7 +104,7 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
 
     V případě veřejné sítě blockchain budete potřebovat ether pro platbu za náklady na transakci. Vzhledem k tomu, že se jedná o soukromou síť v konsorciu, můžete nastavit cenu za plyn na nulu.
 
-1.  Vyberte **poplatek za plyn > upravit > Upřesnit**a nastavte **cenu za plyn** na 0.
+1.  Vyberte **poplatek za plyn > upravit > Upřesnit** a nastavte **cenu za plyn** na 0.
 
     ![Cena za plyn](./media/connect-metamask/gas-price.png)
 
@@ -130,7 +130,7 @@ Podokno ladění Remix obsahuje podrobnosti o transakcích blockchain:
 
 ![Historie ladění](./media/connect-metamask/debug.png)
 
-Můžete si prohlédnout **jednoduché** Vytvoření kontraktu, transakci pro **jednoduché přidávání**a volání metody **Simple. Get**.
+Můžete si prohlédnout **jednoduché** Vytvoření kontraktu, transakci pro **jednoduché přidávání** a volání metody **Simple. Get**.
 
 Chcete-li zobrazit historii transakcí v MetaMask, otevřete rozšíření prohlížeče MetaMask a vyhledejte v části **Historie** protokol nasazených kontraktů a transakcí.
 

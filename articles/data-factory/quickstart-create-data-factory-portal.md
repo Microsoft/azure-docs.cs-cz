@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: e7d4770af38081353fc58eec9957f50e2b6a7348
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b33005b7f0d08e6da963457813b012199d89f5f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372786"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655029"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Rychlý start: Vytvoření datové továrny pomocí uživatelského rozhraní Azure Data Factory 
 
@@ -39,7 +39,8 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
 1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**.
 1. Vyberte **integrace** a pak vyberte **Data Factory**. 
    
-   ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="Data Factory výběru v novém podokně.":::
+
 1. Na stránce **vytvořit data Factory** na kartě **základy** vyberte **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
 1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
 
@@ -55,8 +56,8 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
  
 1. Jako **název** zadejte **ADFTutorialDataFactory**.
    Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například na **&lt; &gt; ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
-  
-   ![Chyba: název není k dispozici](./media/doc-common-process/name-not-available-error.png)
+
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Nová chybová zpráva objektu pro vytváření dat pro duplicitní název.":::
 
 1. V poli **Verze** vyberte **V2**.
 
@@ -66,7 +67,7 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
 
 1. Výběrem dlaždice **autora & monitorování** spustíte aplikaci Azure Data Factory uživatelského rozhraní (UI) na samostatné kartě prohlížeče.
    
-   ![Domovská stránka datové továrny s dlaždici Author & Monitor (Vytvořit a sledovat)](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Domovská stránka Azure Data Factory s dlaždicí pro monitorování autora &.":::
    
    > [!NOTE]
    > Pokud vidíte, že webový prohlížeč je zablokovaný při autorizaci, zrušte zaškrtnutí políčka **Blokovat soubory cookie a data lokality třetích stran** . Nebo ho nechejte vybraný, vytvořte výjimku pro **Login.microsoftonline.com** a pak zkuste aplikaci znovu otevřít.
@@ -79,7 +80,7 @@ V tomto postupu vytvoříte propojenou službu, která propojí váš Azure Stor
 
 1. Na stránce propojené služby vyberte **+ Nová** a vytvořte novou propojenou službu.
 
-   ![Nová propojená služba](./media/doc-common-process/new-linked-service.png)
+   :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="Nová propojená služba.":::
    
 1. Na stránce **Nová propojená služba** vyberte **Azure Blob Storage** a pak vyberte **Pokračovat**. 
 
@@ -93,7 +94,7 @@ V tomto postupu vytvoříte propojenou službu, která propojí váš Azure Stor
 
    d. Vyberte **vytvořit** a uložte propojenou službu. 
 
-      ![Propojená služba](./media/quickstart-create-data-factory-portal/linked-service.png)
+      :::image type="content" source="./media/quickstart-create-data-factory-portal/linked-service.png" alt-text="Propojená služba.":::
 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
@@ -109,13 +110,13 @@ V nastavení propojené služby jste zadali Azure Storage účet, který obsahuj
 
 1. Vyberte **+** tlačítko (plus) a pak vyberte **datová sada**.
 
-   ![Nabídka pro vytvoření datové sady](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-dataset-menu.png" alt-text="Nabídka pro vytvoření datové sady.":::
 
 1. Na stránce **Nová datová sada** vyberte **Azure Blob Storage** a pak vyberte **pokračovat**. 
 
 1. Na stránce **Vybrat formát** zvolte typ formátu dat a pak vyberte **pokračovat**. V takovém případě vyberte **binární soubor** při kopírování souborů bez analýzy obsahu.
 
-   ![Vybrat formát](./media/quickstart-create-data-factory-portal/select-format.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/select-format.png" alt-text="Vyberte formát.":::   
    
 1. Na stránce **nastavit vlastnosti** proveďte následující kroky:
 
@@ -129,7 +130,8 @@ V nastavení propojené služby jste zadali Azure Storage účet, který obsahuj
     
     e. Vyberte **OK**.   
 
-    ![Nastavit vlastnosti pro InputDataset](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png" alt-text="Nastavte vlastnosti pro InputDataset.":::
+
 1. Pomocí stejného postupu vytvořte výstupní datovou sadu:  
 
     a. Vyberte **+** tlačítko (plus) a pak vyberte **datová sada**.
@@ -144,7 +146,7 @@ V nastavení propojené služby jste zadali Azure Storage účet, který obsahuj
 
     f. Vyberte **OK**.   
 
-    ![Nastavit vlastnosti pro OutputDataset](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png" alt-text="Nastavte vlastnosti pro OutputDataset.":::    
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu 
 V tomto postupu vytvoříte a ověříte kanál s aktivitou kopírování, která používá vstupní a výstupní datovou sadu. Aktivita kopírování kopíruje data ze souboru zadaného v nastavení vstupní datové sady do souboru zadaného v nastavení výstupní datové sady. Pokud vstupní datová sada určuje pouze složku (bez názvu souboru), aktivita kopírování zkopíruje do cíle všechny soubory ve zdrojové složce. 
@@ -155,7 +157,7 @@ V tomto postupu vytvoříte a ověříte kanál s aktivitou kopírování, kter�
 
 1. Na panelu nástrojů **Aktivity** rozbalte **Přesunout a transformovat**. Přetáhněte aktivitu **kopírování dat** z panelu nástrojů **aktivity** na plochu návrháře kanálu. Na panelu nástrojů **Aktivity** můžete aktivity také vyhledávat. Jako **Název** zadejte **CopyFromBlobToBlob**.
 
-   ![Vytvoření aktivity kopírovat data](./media/quickstart-create-data-factory-portal/copy-activity.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/copy-activity.png" alt-text="Vytváření aktivity kopírování dat":::   
 
 1. V nastavení aktivity kopírování přepněte na kartu **Zdroj** a jako **Zdrojová datová sada** vyberte **InputDataset**.
 
@@ -163,7 +165,7 @@ V tomto postupu vytvoříte a ověříte kanál s aktivitou kopírování, kter�
 
 1. Kliknutím na **Ověřit** na panelu nástrojů kanálu nad plátnem ověřte nastavení kanálu. Ověřte úspěšné ověření kanálu. Pokud chcete výstup ověřování zavřít, vyberte v pravém horním rohu tlačítko ověření. 
 
-   ![Ověření kanálu](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/pipeline-validate.png"   alt-text="Ověřte kanál.":::
 
 ## <a name="debug-the-pipeline"></a>Ladění kanálu
 V tomto kroku provedete ladění kanálu před tím, než ho nasadíte do služby Data Factory. 
@@ -172,7 +174,7 @@ V tomto kroku provedete ladění kanálu před tím, než ho nasadíte do služb
     
 1. Ověřte, že se na kartě **Výstup** v nastavení kanálu v dolní části zobrazí stav spuštění kanálu. 
  
-    ![Výstup spuštění kanálu](./media/quickstart-create-data-factory-portal/pipeline-output.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/pipeline-output.png" alt-text="Výstup spuštění kanálu":::
 
 1. Ověřte, že složka **output** kontejneru **adftutorial** obsahuje výstupní soubor. Pokud výstupní složka neexistuje, Služba Data Factory ji automaticky vytvoří. 
 
@@ -181,7 +183,7 @@ V tomto postupu nasadíte entity (propojené služby, datové sady a kanály) do
 
 1. Před aktivací kanálu je nutné publikovat entity do služby Data Factory. Pro publikování vyberte v horní části **publikovat vše** . 
 
-    ![Publikovat vše](./media/quickstart-create-data-factory-portal/publish-all.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/publish-all.png" alt-text="Publikovat vše":::    
 
 1. Pokud chcete kanál aktivovat ručně, vyberte **Přidat aktivační událost** na panelu nástrojů kanálu a potom vyberte **aktivovat nyní**. Na stránce **spuštění kanálu** vyberte **OK**.
 
@@ -189,12 +191,12 @@ V tomto postupu nasadíte entity (propojené služby, datové sady a kanály) do
 
 1. Vlevo přepněte na kartu **Monitorování**. Pomocí tlačítka **Aktualizovat** seznam aktualizujte.
 
-   ![Karta pro monitorování spuštění kanálu](./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png" alt-text="Karta pro monitorování spuštění kanálu"::: 
 1. Vyberte odkaz **CopyPipeline** , na této stránce se zobrazí stav spuštění aktivity kopírování. 
 
 1. Chcete-li zobrazit podrobnosti o operaci kopírování, vyberte odkaz **Podrobnosti** (brýlí image). Podrobnosti o vlastnostech najdete v tématu [Přehled aktivity kopírování](copy-activity-overview.md). 
 
-   ![Podrobnosti o aktivitě kopírování](./media/quickstart-create-data-factory-portal/copy-operation-details.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/copy-operation-details.png" alt-text="Kopírovat podrobnosti o operaci.":::
 1. Ověřte, že složka **output** obsahuje nový soubor. 
 1. Kliknutím na odkaz **všechny spuštění kanálu** můžete přepnout zpátky na zobrazení **spuštění kanálu** ze zobrazení **spuštění aktivity** . 
 
@@ -213,7 +215,7 @@ Tento postup je v tomto kurzu volitelný. Můžete vytvořit *aktivační událo
 
 1. Na stránce **Nová aktivační událost** zaškrtněte políčko **aktivováno** a pak vyberte **OK**. 
 
-   ![Nové nastavení triggeru](./media/quickstart-create-data-factory-portal/trigger-settings-next.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/trigger-settings-next.png" alt-text="Nové nastavení aktivační události.":::   
 1. Přečtěte si zprávu upozornění a vyberte **OK**.
 
 1. Kliknutím na **publikovat vše** publikujte změny data Factory. 

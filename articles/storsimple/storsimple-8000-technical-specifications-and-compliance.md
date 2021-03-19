@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68965292"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technické specifikace a dodržování předpisů pro zařízení StorSimple
@@ -38,7 +38,7 @@ EBOD skříň používá modul PCM 580 W a primární skříň používá 764 W 
 | Specifikace | 580 W PCM (EBOD) | 764 W PCM (primární) |
 | --- | --- | --- |
 | Maximální výstupní výkon |580 W |764 |
-| Frequency |50/60 Hz |50/60 Hz |
+| Frekvence |50/60 Hz |50/60 Hz |
 | Výběr rozsahu napětí |Automatické rozsahy: 90 – 264 V AC, 47/63 Hz |Automatické rozsahy: 90-264 V AC, 47/63 Hz |
 | Maximální inrush aktuální |20 A |20 A |
 | Oprava Power Factor |Nominální vstupní napětí >95% |Nominální vstupní napětí >95% |
@@ -46,7 +46,7 @@ EBOD skříň používá modul PCM 580 W a primární skříň používá 764 W 
 | Výstup |Snímač 5V síťového pohotovostní napětí \@ 2,0 A |Snímač 5V síťového pohotovostní napětí \@ 2,7 A |
 | + Snímač 5V síťového \@ 42 A |+ Snímač 5V síťového \@ 40 A | |
 | + Snímač 12V síťového \@ 38 A |+ Snímač 12V síťového \@ 38 A | |
-| Horká, připojitelná |Ano |Ano |
+| Horká, připojitelná |Yes |Yes |
 | Přepínače a diody LED |Přepínač zapnutí/vypnutí střídavého napájení a čtyři indikátory LED stavu |Přepínač zapnutí/vypnutí střídavého napájení a šest indikátorů stavu |
 | Chlazení skříně |Axiální chladicí ventilátory s proměnlivým ovládáním rychlosti ventilátoru |Axiální chladicí ventilátory s proměnlivým ovládáním rychlosti ventilátoru |
 

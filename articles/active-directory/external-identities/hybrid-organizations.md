@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87908617"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Azure Active Directory spolupráce B2B pro hybridní organizace
@@ -48,6 +48,6 @@ Podrobnosti o implementaci najdete v tématu [přidělení místně spravovanýc
 ## <a name="next-steps"></a>Další kroky
 
 - [Udělení přístupu k místním aplikacím uživatelům B2B v Azure AD](hybrid-cloud-to-on-premises.md)
-- [Přidělte místně spravované partnerské účty přístup k prostředkům cloudu pomocí spolupráce Azure AD B2B.](hybrid-on-premises-to-cloud.md)
+- [Udělení přístupu ke cloudovým prostředkům místně spravovaným partnerským účtům s využitím spolupráce Azure AD s B2B](hybrid-on-premises-to-cloud.md)
 
 

@@ -4,10 +4,10 @@ description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563722"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí Azure Portal
@@ -68,7 +68,7 @@ Vytvoření produkčního clusteru, který splňuje požadavky vaší aplikace, 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Vyhledejte prostředek Service Fabric clusteru.
 
-Přihlaste se k [portálu Azure Portal][azure-portal].
+Přihlaste se na [Azure Portal][azure-portal].
 Kliknutím na **vytvořit prostředek** přidejte novou šablonu prostředků. Na **webu Marketplace** vyhledejte šablonu Service Fabric clusteru v rámci **všeho**.
 V seznamu vyberte **Cluster Service Fabric** .
 
@@ -110,7 +110,7 @@ Nakonfigurujte uzly clusteru. Typy uzlů definují velikosti virtuálních poč�
 5. Vyberte **počáteční kapacitu sady škálování virtuálního počítače** pro typ uzlu. Počet virtuálních počítačů v typu uzlu můžete později škálovat nebo rozmístit, ale na primárním typu uzlu je minimum pět pro produkční úlohy. Jiné typy uzlů můžou mít minimálně jeden virtuální počítač. Minimální **počet** virtuálních počítačů pro typ primárního uzlu zařídí **spolehlivost** clusteru.  
 6. Nakonfigurujte **vlastní koncové body**. Toto pole umožňuje zadat čárkami oddělený seznam portů, které chcete zpřístupnit prostřednictvím Azure Load Balancer k veřejnému Internetu pro vaše aplikace. Pokud například plánujete nasadit webovou aplikaci do clusteru, zadejte sem "80", čímž povolíte provoz na portu 80 do clusteru. Další informace o koncových bodech najdete v tématu [komunikace s aplikacemi][service-fabric-connect-and-communicate-with-services] .
 7. **Povolte reverzní proxy**.  [Service Fabric reverzní proxy](service-fabric-reverseproxy.md) pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http.
-8. Zpátky v okně **Konfigurace clusteru** v části **+ Zobrazit volitelná nastavení**nakonfigurujte **diagnostiku**clusteru. Ve výchozím nastavení jsou diagnostika ve vašem clusteru zapnutá, aby pomohla řešit problémy. Pokud chcete zakázat diagnostiku, změňte **stav** přepínač na **vypnuto**. Vypnutí diagnostiky se **nedoporučuje.** Pokud již máte vytvořený projekt Application Insights, přiřaďte jeho klíč, aby se do něj směrovalo trasování aplikace.
+8. Zpátky v okně **Konfigurace clusteru** v části **+ Zobrazit volitelná nastavení** nakonfigurujte **diagnostiku** clusteru. Ve výchozím nastavení jsou diagnostika ve vašem clusteru zapnutá, aby pomohla řešit problémy. Pokud chcete zakázat diagnostiku, změňte **stav** přepínač na **vypnuto**. Vypnutí diagnostiky se **nedoporučuje.** Pokud již máte vytvořený projekt Application Insights, přiřaďte jeho klíč, aby se do něj směrovalo trasování aplikace.
 9. **Zahrnout službu DNS**.  [Služba DNS](service-fabric-dnsservice.md) nabízí volitelnou službu, která vám umožní najít další služby pomocí protokolu DNS.
 10. Vyberte **režim upgradu prostředků infrastruktury** , pro který chcete nastavit cluster. Vyberte možnost **automaticky**, pokud chcete, aby systém automaticky vybral nejnovější dostupnou verzi a pokusil se upgradovat cluster na něj. Nastavte režim na **Ruční**, pokud chcete zvolit podporovanou verzi. Další podrobnosti o režimu upgradu prostředků infrastruktury najdete v [dokumentu Service Fabric upgrade clusteru.][service-fabric-cluster-upgrade]
 
@@ -134,7 +134,7 @@ Teď, když je vytvořený Trezor klíčů, upravte zásady přístupu pro svůj
 
 ![Snímek obrazovky se zobrazí v podokně vytvořit Service Fabric clusteru s vybranou možností 3 zabezpečení a vysvětlením, že Trezor klíčů není povolený.][CreateKeyVault2]
 
-Klikněte na **upravit zásady přístupu**a pak na **Zobrazit zásady pokročilého přístupu** a povolte přístup k Azure Virtual Machines pro nasazení. Doporučuje se také povolit nasazení šablony. Po provedení výběru nezapomeňte kliknout na tlačítko **Uložit** a zavřít podokno **zásady přístupu** .
+Klikněte na **upravit zásady přístupu** a pak na **Zobrazit zásady pokročilého přístupu** a povolte přístup k Azure Virtual Machines pro nasazení. Doporučuje se také povolit nasazení šablony. Po provedení výběru nezapomeňte kliknout na tlačítko **Uložit** a zavřít podokno **zásady přístupu** .
 
 ![Snímek obrazovky se zobrazí v podokně vytvořit Service Fabric clusteru s otevřeným podoknem zabezpečení a otevře se podokno zásady přístupu.][CreateKeyVault3]
 

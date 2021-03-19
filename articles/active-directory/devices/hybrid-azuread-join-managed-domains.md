@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7338fb480f76ed1a5edbf9502dc0946d08618a63
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4545e92767a427b8cd89af07ed4d06053685977a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644914"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578001"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro spravované domény
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 > * Ověření připojených zařízení
 > * Řešení potíží
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 nebo novější)
 - Přihlašovací údaje globálního správce pro vašeho tenanta Azure AD
@@ -58,6 +58,9 @@ Seznamte se s těmito články:
 > Azure AD nepodporuje čipové karty ani certifikáty ve spravovaných doménách.
 
 Ověřte, že Azure AD Connect synchronizoval objekty počítačů zařízení, která chcete mít k Azure AD připojená k hybridní službě Azure AD. Pokud objekty počítače patří konkrétním organizačním jednotkám (OU), nakonfigurujte organizační jednotky pro synchronizaci v Azure AD Connect. Další informace o tom, jak synchronizovat objekty počítačů pomocí Azure AD Connect, najdete v tématu [filtrování na základě organizační jednotky](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
+
+> [!NOTE]
+> Abyste mohli úspěšně připojit synchronizaci zařízení, můžete jako součást konfigurace registrace zařízení vyloučit z konfigurace Azure AD Connect synchronizace výchozí atributy zařízení. Další informace o výchozích atributech zařízení synchronizovaných do AAD najdete v tématu [atributy synchronizované pomocí Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
 
 Počínaje verzí 1.1.819.0 Azure AD Connect obsahuje průvodce pro konfiguraci hybridního připojení k Azure AD. Průvodce významně zjednodušuje proces konfigurace. Průvodce nakonfiguruje spojovací body služby (SCP) pro registraci zařízení.
 

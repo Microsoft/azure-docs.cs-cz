@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: be2ff9d6ed908bdc0645fc713717a08674354096
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431750"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593216"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)
 
@@ -289,12 +289,7 @@ Značky indexu objektu BLOB jsou k dispozici pouze v účtech Pro obecné účel
 
 Značky indexu nejsou podporované v účtech Premium Storage. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
-Ve verzi Public Preview jsou značky indexu objektů BLOB k dispozici pouze v následujících oblastech:
-
-- Střední Kanada
-- Kanada – východ
-- Francie – střed
-- Francie – jih
+Značky indexu objektu BLOB jsou aktuálně k dispozici ve všech veřejných oblastech.
 
 Informace o tom, jak začít, najdete v tématu [použití značek indexu objektů BLOB ke správě a hledání dat](storage-blob-index-how-to.md).
 

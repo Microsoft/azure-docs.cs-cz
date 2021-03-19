@@ -8,10 +8,10 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87474321"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
@@ -35,7 +35,7 @@ Application Gateway umožňuje směrování na hostiteli pomocí naslouchacího 
 
 Pomocí zástupného znaku v názvu hostitele můžete vyhledat více názvů hostitelů v rámci jednoho naslouchacího procesu. `*.contoso.com`Můžete například porovnat s, stejně `ecom.contoso.com` `b2b.contoso.com` jako `customer1.b2b.contoso.com` a tak dále. Pomocí pole názvů hostitelů můžete pro naslouchací proces nakonfigurovat více než jeden název hostitele, aby bylo možné směrovat požadavky do back-endu fondu. Naslouchací proces může například obsahovat, `contoso.com, fabrikam.com` který bude přijímat žádosti pro názvy hostitelů.
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Application Gateway více lokalit":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Naslouchací proces se zástupnými znaky":::
 
 >[!NOTE]
 > Tato funkce je ve verzi Preview a je dostupná jenom pro Standard_v2 a WAF_v2 SKU Application Gateway. Další informace o verzi Preview najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

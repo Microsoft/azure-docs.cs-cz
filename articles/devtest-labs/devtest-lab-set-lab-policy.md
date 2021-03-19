@@ -4,10 +4,10 @@ description: Naučte se definovat zásady testovacího prostředí, jako jsou ve
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530348"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Správa všech zásad pro testovací prostředí v Azure DevTest Labs
@@ -25,7 +25,7 @@ Zásady pro nastavení povolených velikostí virtuálních počítačů pomáha
    
     ![Povolené velikosti virtuálních počítačů](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
 
-1. Výběrem **zapnuto** tuto zásadu povolíte a **Off** zakážete.
+1. Výběrem **zapnuto** tuto zásadu povolíte a  zakážete.
 
 1. Pokud tuto zásadu povolíte, vyberte jednu nebo víc velikostí virtuálních počítačů, které se v testovacím prostředí dají vytvořit.
 
@@ -64,7 +64,7 @@ Zásady automatického vypínání pomáhají minimalizovat testovací odpad tí
    
     ![Automatické vypnutí](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
-1. Výběrem **zapnuto** tuto zásadu povolíte a **Off** zakážete.
+1. Výběrem **zapnuto** tuto zásadu povolíte a  zakážete.
 
 1. Pokud tuto zásadu povolíte, zadejte čas (a časové pásmo) pro vypnutí všech virtuálních počítačů v aktuálním testovacím prostředí.
 
@@ -107,7 +107,7 @@ Zásada autostart umožňuje určit, kdy se mají spustit virtuální počítač
    
     ![Snímek obrazovky zobrazuje možnosti automatického spuštění pro virtuální počítač.](./media/devtest-lab-set-lab-policy/auto-start.png)
 
-2. Výběrem **zapnuto** tuto zásadu povolíte a **Off** zakážete.
+2. Výběrem **zapnuto** tuto zásadu povolíte a  zakážete.
 
 3. Pokud tuto zásadu povolíte, určete naplánovaný čas zahájení, časové pásmo a dny v týdnu, pro které se použije čas. 
 
@@ -116,7 +116,7 @@ Zásada autostart umožňuje určit, kdy se mají spustit virtuální počítač
 Po povolení se tato zásada nepoužije automaticky pro žádné virtuální počítače v aktuálním testovacím prostředí. Pokud chcete toto nastavení použít na konkrétní virtuální počítač, otevřete podokno pro správu virtuálního počítače a změňte jeho nastavení pro **automatické spuštění** .
 
 ## <a name="set-expiration-date"></a>Nastavit datum vypršení platnosti
-Když [vytváříte virtuální počítač](devtest-lab-add-vm.md), můžete nastavit datum vypršení platnosti. V části **Upřesnit nastavení**zvolte ikonu kalendáře a zadejte datum, kdy se má virtuální počítač automaticky odstranit. Ve výchozím nastavení virtuální počítač nikdy nevyprší.
+Když [vytváříte virtuální počítač](devtest-lab-add-vm.md), můžete nastavit datum vypršení platnosti. V části **Upřesnit nastavení** zvolte ikonu kalendáře a zadejte datum, kdy se má virtuální počítač automaticky odstranit. Ve výchozím nastavení virtuální počítač nikdy nevyprší.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

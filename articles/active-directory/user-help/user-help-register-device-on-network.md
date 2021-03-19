@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90033043"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Registrace svého osobního zařízení v síti vaší organizace
@@ -41,28 +41,28 @@ Při registraci zařízení v síti vaší organizace dojde k následujícím ak
 
 Pomocí těchto kroků zaregistrujete své osobní zařízení v síti.
 
-1. Otevřete **Nastavení**a pak vyberte **účty**.
+1. Otevřete **Nastavení** a pak vyberte **účty**.
 
     ![Účty na obrazovce nastavení](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Vyberte možnost **přístup do práce nebo do školy**a pak vyberte **připojit** z **pracovní nebo školní** obrazovky.
+2. Vyberte možnost **přístup do práce nebo do školy** a pak vyberte **připojit** z **pracovní nebo školní** obrazovky.
 
     ![Přístup k pracovní nebo školní obrazovce s zvýrazněnou možností připojit](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
 3. Na obrazovce **Přidat pracovní nebo školní účet** zadejte e-mailovou adresu svého pracovního nebo školního účtu a pak vyberte **Další**. Například, alain@contoso.com.
 
-4. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak vyberte **Přihlásit**se.
+4. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak vyberte **Přihlásit** se.
 
 5. Dokončete zbývající část procesu registrace, včetně schvalování žádosti o ověření identity (Pokud používáte dvoustupňové ověřování) a nastavte Windows Hello (v případě potřeby).
 
 ## <a name="to-verify-that-youre-registered"></a>Ověření, že jste zaregistrováni
 Můžete se ujistit, že jste zaregistrováni, a to tak, že si prohlédněte nastavení.
 
-1. Otevřete **Nastavení**a pak vyberte **účty**.
+1. Otevřete **Nastavení** a pak vyberte **účty**.
 
     ![Účty na obrazovce nastavení](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že jste viděli svůj pracovní nebo školní účet.
+2. Vyberte možnost **přístup do práce nebo do školy** a ujistěte se, že jste viděli svůj pracovní nebo školní účet.
 
     ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 

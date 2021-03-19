@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: e302cb9da410487dbea4ec5c5b256c4cb5dd186f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: a3ab3a801872cc20b4e41bbff02ad6474c3bab8c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102566375"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655202"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Rychlý Start: vytvoření a konfigurace serveru Směrování pomocí Azure PowerShell
 
@@ -23,7 +23,7 @@ Tento článek vám pomůže nakonfigurovat partnerský server Azure tak, aby se
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ujistěte se, že máte nejnovější moduly PowerShellu, nebo můžete na portálu použít Azure Cloud Shell.
@@ -40,8 +40,8 @@ Tento článek vám pomůže nakonfigurovat partnerský server Azure tak, aby se
 Než budete moct vytvořit směrovací server Azure, budete k hostování nasazení potřebovat virtuální síť. Pomocí příkazu níže vytvořte skupinu prostředků a virtuální síť. Pokud již máte virtuální síť, můžete přejít k další části.
 
 ```azurepowershell-interactive
-New-AzResourceGroup –Name “RouteServerRG” -Location “West US”
-New-AzVirtualNetwork –ResourceGroupName “RouteServerRG -Location “West US” -Name myVirtualNetwork –AddressPrefix 10.0.0.0/16
+New-AzResourceGroup –Name "RouteServerRG” -Location “West US"
+New-AzVirtualNetwork –ResourceGroupName "RouteServerRG" -Location "West US" -Name myVirtualNetwork –AddressPrefix 10.0.0.0/16
 ```
 
 ### <a name="add-a-subnet"></a>Přidání podsítě
@@ -49,15 +49,15 @@ New-AzVirtualNetwork –ResourceGroupName “RouteServerRG -Location “West US�
 1. Přidejte podsíť s názvem *RouteServerSubnet* , do které se nasadí Server směrování Azure. Tato podsíť je vyhrazená podsíť jenom pro server Azure Route. RouteServerSubnet musí být/27 nebo kratší předpona (například/26,/25) nebo se vám při přidávání serveru tras Azure zobrazí chybová zpráva.
 
     ```azurepowershell-interactive
-    $vnet = Get-AzVirtualNetwork –Name “myVirtualNetwork” - ResourceGroupName “RouteServerRG”
-    Add-AzVirtualNetworkSubnetConfig –Name “RouteServerSubnet” -AddressPrefix 10.0.0.0/24 -VirtualNetwork $vnet
+    $vnet = Get-AzVirtualNetwork –Name "myVirtualNetwork" - ResourceGroupName "RouteServerRG"
+    Add-AzVirtualNetworkSubnetConfig –Name "RouteServerSubnet" -AddressPrefix 10.0.0.0/24 -VirtualNetwork $vnet
     $vnet | Set-AzVirtualNetwork
     ```
 
 1. Získejte ID RouteServerSubnet. Pokud chcete zobrazit ID prostředku všech podsítí ve virtuální síti, použijte tento příkaz:
 
     ```azurepowershell-interactive
-    $vnet = Get-AzVirtualNetwork –Name “vnet_name” -ResourceGroupName “
+    $vnet = Get-AzVirtualNetwork –Name "vnet_name" -ResourceGroupName "RouteServerRG"
     $vnet.Subnets
     ```
 
@@ -70,7 +70,7 @@ ID RouteServerSubnet vypadá takto:
 Vytvoření směrovacího serveru pomocí tohoto příkazu:
 
 ```azurepowershell-interactive 
-New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US" -HostedSubnet "RouteServerSubnet_ID"
 ```
 
 Umístění musí odpovídat umístění vaší virtuální sítě. HostedSubnet je ID RouteServerSubnet, které jste získali v předchozí části.
@@ -137,7 +137,7 @@ Pokud už nepotřebujete Server tras Azure, pomocí těchto příkazů odeberte 
 1. Pomocí tohoto příkazu odeberte vytvoření partnerského vztahu protokolu BGP mezi serverem Azure Route Server a síťové virtuální zařízení:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
+Remove-AzRouteServerPeer -PeerName "nva_name" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 2. Odeberte server služby Azure Route pomocí tohoto příkazu:

@@ -14,10 +14,10 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85383713"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postupy: opětovná aktivace zakázaných oborů názvů Access Control Service
@@ -28,7 +28,7 @@ Od listopadu 2017 jsme oznámili, že Microsoft Azure Access Control Service (AC
 
 Od té doby jsme poslali e-maily e-mailem pro správce předplatných ACS o 12 měsících, 9 měsíců, 6 měsíců, 3 měsíce, 1 měsíc, 2 týdny, 1 týden a 1 den před datem vyřazení 7. listopadu 2018.
 
-3. října 2018 jsme oznámili rozšíření nabídky zákazníkům, kteří [a blog post](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)nemůžou dokončit migraci do 7. listopadu 2018. Oznámení má také pokyny pro vyžádání rozšíření.
+3. října 2018 jsme oznámili rozšíření nabídky zákazníkům, kteří [](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)nemůžou dokončit migraci do 7. listopadu 2018. Oznámení má také pokyny pro vyžádání rozšíření.
 
 ## <a name="why-your-namespace-is-disabled"></a>Proč je váš obor názvů zakázaný
 

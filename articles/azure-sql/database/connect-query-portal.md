@@ -6,19 +6,19 @@ keywords: připojení k SQL Database, dotazování SQL Database, Azure Portal, P
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, contperf-fy21q3-portal
 ms.devlang: ''
 ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: b2b614002a380ecd9c7eb6ec40e9dbd734b99628
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a6f13e27a5aa2684a16565c616d781e3d5c3a750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692840"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594185"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>Rychlý Start: použití Editoru dotazů Azure Portal (Preview) k dotazování na Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Editor dotazů je nástroj v Azure Portal pro spouštění dotazů SQL pro vaši
 
 V tomto rychlém startu použijete Editor dotazů ke spouštění dotazů jazyka Transact-SQL (T-SQL) na databázi.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="create-a-database-with-sample-data"></a>Vytvoření databáze s ukázkovými daty
 

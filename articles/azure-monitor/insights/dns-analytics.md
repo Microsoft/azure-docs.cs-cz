@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f01a1204aefbcaabe0ddac254b24bc014c3d5a64
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708097"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654522"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.
 
@@ -34,10 +34,10 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../agents/agent-windows.md) | Ano | Řešení shromažďuje informace o DNS z agentů Windows. |
-| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](../agents/om-agents.md) | Ano | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Ne | Řešení Azure Storage se v řešení nepoužívá. |
+| [Agenti systému Windows](../agents/agent-windows.md) | Yes | Řešení shromažďuje informace o DNS z agentů Windows. |
+| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
+| [Skupina pro správu nástroje System Center Operations Manager](../agents/om-agents.md) | Yes | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Řešení Azure Storage se v řešení nepoužívá. |
 
 ### <a name="data-collection-details"></a>Podrobnosti shromažďování dat
 
@@ -54,7 +54,7 @@ Pro konfiguraci řešení použijte následující informace:
 
 ### <a name="configure-the-solution"></a>Konfigurace řešení
 
-Kliknutím na položku **Konfigurace** na řídicím panelu řešení otevřete stránku konfigurace DNS Analytics. Existují dva typy změn konfigurace, které lze provést:
+V pracovním prostoru Log Analytics v Azure Portal vyberte možnost **Souhrn pracovního prostoru** a pak klikněte na dlaždici **DNS Analytics** . Kliknutím na položku **Konfigurace** na řídicím panelu řešení otevřete stránku konfigurace DNS Analytics. Existují dva typy změn konfigurace, které lze provést:
 
 - **Allowlisted názvy domén**. Řešení nezpracovává všechny vyhledávací dotazy. Udržuje povolených přípon názvů domén. Řešení vyhledávacích dotazů, které jsou přeloženy na názvy domén, které odpovídají příponám názvů domén v tomto povolených, nejsou zpracovávány řešením. Nezpracovávání názvů domén allowlisted přispívá k optimalizaci dat odesílaných do Azure Monitor. Výchozí povolených zahrnuje oblíbené názvy veřejných domén, jako je například www.google.com a www.facebook.com. Úplný výchozí seznam můžete zobrazit posouváním.
 

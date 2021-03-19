@@ -4,18 +4,18 @@ description: Než budete moct získat přístup k datům z Azure Logic Apps, St�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 05/15/2020
-ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.topic: how-to
+ms.date: 03/16/2021
+ms.openlocfilehash: 4b2559ad20036870c6df5c0662bb973f35155bfa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054767"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576794"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
-Než se budete moct [připojit k místním zdrojům dat z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), Stáhněte a nainstalujte místní [bránu dat](https://aka.ms/on-premises-data-gateway-installer) do místního počítače. Tato brána funguje jako most, který poskytuje rychlý přenos dat a šifrování mezi místními zdroji dat a vašimi aplikacemi logiky. Stejnou instalaci brány můžete použít i u jiných cloudových služeb, jako je Power BI, automatizace, Power Apps a Azure Analysis Services. Informace o tom, jak používat bránu s těmito službami, najdete v těchto článcích:
+Než se budete moct [připojit k místním zdrojům dat z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), Stáhněte a nainstalujte místní [bránu dat](https://aka.ms/on-premises-data-gateway-installer) do místního počítače. Tato brána funguje jako most, který poskytuje rychlý přenos dat a šifrování mezi místními zdroji dat a vašimi aplikacemi logiky. Stejnou instalaci brány můžete použít i u jiných cloudových služeb, jako je například automatizace, Power BI, Power Users a Azure Analysis Services. Informace o tom, jak používat bránu s těmito službami, najdete v těchto článcích:
 
 * [Microsoft Power Automatizujte místní bránu dat](/power-automate/gateway-reference)
 * [Místní brána dat Power BI Microsoftu](/power-bi/service-gateway-onprem)
@@ -26,7 +26,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud nemáte účet Azure s předplatným, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -71,7 +71,12 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
   * Pokud plánujete používat ověřování systému Windows, ujistěte se, že jste nainstalovali bránu do počítače, který je členem stejného prostředí služby Active Directory jako vaše zdroje dat.
 
-  * Oblast, kterou vyberete pro instalaci brány, je stejné umístění, které musíte vybrat při pozdějším vytvoření prostředku brány Azure pro vaši aplikaci logiky. Ve výchozím nastavení se jedná o stejné umístění jako váš tenant služby Azure AD, který spravuje váš účet Azure. Umístění však můžete změnit během instalace brány.
+  * Oblast, kterou vyberete pro instalaci brány, je stejné umístění, které musíte vybrat při pozdějším vytvoření prostředku brány Azure pro vaši aplikaci logiky. Ve výchozím nastavení se jedná o stejné umístění jako váš tenant služby Azure AD, který spravuje váš uživatelský účet Azure. Umístění však můžete změnit během instalace brány nebo později.
+
+    > [!IMPORTANT]
+    > Během instalace brány není příkaz **změnit oblast** dostupný, pokud jste se přihlásili pomocí účtu Azure Government, který je přidružený k tenantovi Azure Active Directory (Azure AD) v [cloudu Azure Government](../azure-government/compare-azure-government-global-azure.md). Brána automaticky používá stejnou oblast jako tenant Azure AD vašeho uživatelského účtu.
+    > 
+    > Pokud chcete i nadále používat účet Azure Government, ale nastavte bránu tak, aby fungovala v globálním komerčním cloudu pro více tenantů Azure, nejprve se přihlaste během instalace brány pomocí `prod@microsoft.com` uživatelského jména. Toto řešení vynutí, aby brána používala globálního cloudového Azure s více klienty, ale pořád vám umožní dál používat účet Azure Government.
 
   * Pokud aktualizujete instalaci brány, odinstalujte nejprve svou aktuální bránu pro čisticí prostředí.
 

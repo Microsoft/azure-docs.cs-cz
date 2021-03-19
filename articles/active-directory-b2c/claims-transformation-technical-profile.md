@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85201204"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definice technického profilu transformace deklarací identity v Azure Active Directory B2C vlastní zásady
@@ -82,7 +82,7 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-Technický profil transformace deklarací identity umožňuje spustit transformaci deklarací identity z kroku orchestrace cesty uživatele. V následujícím příkladu krok Orchestration zavolá jeden z technických profilů odpojování, jako je například **odpojení Facebooku-OAuth**. Tento technický profil volá **RemoveAlternativeSecurityIdByIdentityProvidery**Technical Profile pro transformaci deklarací identity, která generuje novou deklaraci identity **AlternativeSecurityIds2** , která obsahuje seznam sociálních identit uživatelů, a současně odebírá identitu Facebooku z kolekcí.
+Technický profil transformace deklarací identity umožňuje spustit transformaci deklarací identity z kroku orchestrace cesty uživatele. V následujícím příkladu krok Orchestration zavolá jeden z technických profilů odpojování, jako je například **odpojení Facebooku-OAuth**. Tento technický profil volá **RemoveAlternativeSecurityIdByIdentityProvidery** Technical Profile pro transformaci deklarací identity, která generuje novou deklaraci identity **AlternativeSecurityIds2** , která obsahuje seznam sociálních identit uživatelů, a současně odebírá identitu Facebooku z kolekcí.
 
 ```xml
 <UserJourney Id="AccountUnLink">
@@ -104,11 +104,11 @@ Technický profil transformace deklarací identity umožňuje spustit transforma
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 
 ## <a name="use-a-validation-technical-profile"></a>Použít technický profil ověřování
 
-K ověření informací lze použít technický profil transformace deklarací identity. V následujícím příkladu přihlášený [technický profil](self-asserted-technical-profile.md) s názvem **LocalAccountSignUpWithLogonEmail** vyzve uživatele k zadání e-mailu dvakrát a pak zavolá [technický profil ověření](validation-technical-profile.md) s názvem **Validate-email** a ověří e-maily. Technický profil **ověřit – e-mail** volá transformaci deklarací **AssertEmailAreEqual** k porovnání dvou deklarací identity **email** a **emailRepeat**a vyvolávají výjimku, pokud se neshodují podle zadaného porovnání.
+K ověření informací lze použít technický profil transformace deklarací identity. V následujícím příkladu přihlášený [technický profil](self-asserted-technical-profile.md) s názvem **LocalAccountSignUpWithLogonEmail** vyzve uživatele k zadání e-mailu dvakrát a pak zavolá [technický profil ověření](validation-technical-profile.md) s názvem **Validate-email** a ověří e-maily. Technický profil **ověřit – e-mail** volá transformaci deklarací **AssertEmailAreEqual** k porovnání dvou deklarací identity **email** a **emailRepeat** a vyvolávají výjimku, pokud se neshodují podle zadaného porovnání.
 
 ```xml
 <ClaimsTransformations>

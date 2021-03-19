@@ -4,10 +4,10 @@ description: K tiché instalaci Azure Backup Server v2 použijte skript prostře
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74172247"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Spuštění bezobslužné instalace Azure Backup Server
@@ -43,7 +43,7 @@ Tyto kroky neplatí, pokud instalujete Azure Backup Server v1.
    UseExistingSQL=<1/0 use or do not use existing SQL>
    ```
 
-3. Uložte soubor. Pak na příkazovém řádku se zvýšenými oprávněními na instalačním serveru zadejte tento příkaz:
+3. Soubor uložte. Pak na příkazovém řádku se zvýšenými oprávněními na instalačním serveru zadejte tento příkaz:
 
    ```cmd
    start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
@@ -60,6 +60,6 @@ Tyto příznaky můžete použít pro instalaci:</br>
 Po instalaci záložního serveru se dozvíte, jak připravit server nebo začít chránit úlohu.
 
 - [Příprava úloh záložního serveru](backup-azure-microsoft-azure-backup.md)
-- [Použití záložního serveru k zálohování serveru VMware](backup-azure-backup-server-vmware.md)
-- [Zálohování SQL Server pomocí záložního serveru](backup-azure-sql-mabs.md)
-- [Přidat Moderní úložiště zálohování do záložního serveru](backup-mabs-add-storage.md)
+- [Použití Backup Serveru k zálohování serveru VMware](backup-azure-backup-server-vmware.md)
+- [Použití Backup Serveru k zálohování SQL Serveru](backup-azure-sql-mabs.md)
+- [Přidání moderního úložiště zálohování na Backup Server](backup-mabs-add-storage.md)

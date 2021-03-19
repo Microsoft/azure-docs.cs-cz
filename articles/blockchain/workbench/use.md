@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74324046"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Kurz: používání aplikací v Azure blockchain Workbench
@@ -23,7 +23,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nasazení aplikace blockchain Workbench Další informace najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) pro podrobnosti o nasazení.
 * Nasazená aplikace blockchain v blockchain Workbench. Další informace najdete [v tématu Vytvoření aplikace v blockchain v Azure blockchain Workbench](create-app.md) .
@@ -36,7 +36,7 @@ Musíte se přihlásit jako člen aplikace blockchain Workbench. Pokud nejsou uv
 
 ## <a name="create-new-contract"></a>Vytvořit nový kontrakt
 
-Pokud chcete vytvořit nový kontrakt, musíte být členem, který jste zadali jako **iniciátor**kontraktu. Informace, které definují aplikační role a iniciátory pro kontrakt, najdete [v tématu pracovní postupy v tématu Přehled konfigurace](configuration.md#workflows). Informace o přiřazování členů k aplikačním rolím najdete v tématu [Přidání člena do aplikace](manage-users.md#add-member-to-application).
+Pokud chcete vytvořit nový kontrakt, musíte být členem, který jste zadali jako **iniciátor** kontraktu. Informace, které definují aplikační role a iniciátory pro kontrakt, najdete [v tématu pracovní postupy v tématu Přehled konfigurace](configuration.md#workflows). Informace o přiřazování členů k aplikačním rolím najdete v tématu [Přidání člena do aplikace](manage-users.md#add-member-to-application).
 
 1. V části aplikace blockchain Workbench vyberte dlaždici aplikace obsahující kontrakt, který chcete vytvořit. Zobrazí se seznam aktivních smluv.
 
@@ -61,7 +61,7 @@ V závislosti na stavu, ve kterém se kontrakt nachází, můžou členové prov
 
     ![Podrobnosti o kontraktu](./media/use/contract-details.png)
 
-    | Sekce  | Popis  |
+    | Sekce  | Description  |
     |---------|---------|
     | Status | Zobrazí aktuální průběh v rámci fází smlouvy. |
     | Podrobnosti | Aktuální hodnoty kontraktu |

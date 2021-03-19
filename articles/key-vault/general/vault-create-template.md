@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 10/5/2020
+ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 24fef1680c5660a70a20ae727833b045f6c5aa88
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: e489efd335d2a46a0e55d4ceb9bdee809ae6c39d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664346"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595239"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Vytvoření trezoru klíčů Azure a zásad přístupu k trezoru pomocí šablony Správce prostředků
 
@@ -23,7 +23,7 @@ ms.locfileid: "98664346"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup dokončení kroků v tomto článku:
 
@@ -150,7 +150,7 @@ Zásady přístupu můžete nasadit do existujícího trezoru klíčů, aniž by
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
               "secrets": "[parameters('secretsPermissions')]",
-              "certificates": "[parameters('certificatesPermissions')]"
+              "certificates": "[parameters('certificatePermissions')]"
             }
           }
         ]
@@ -210,7 +210,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ---
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md).
 - Přečtěte si další informace o [Azure Resource Manager](../../azure-resource-manager/management/overview.md).

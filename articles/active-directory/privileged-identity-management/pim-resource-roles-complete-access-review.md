@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1601c9fc750df1f8e18bdaa072ede1b5ee164329
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84743809"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Dokončení kontroly přístupu pro role prostředků Azure v Privileged Identity Management
@@ -30,7 +30,7 @@ Po uplynutí doby kontroly přístupu nebo po skončení vlastního přezkoumán
 
 ## <a name="manage-access-reviews"></a>Správa kontrol přístupu
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com/). Na řídicím panelu vyberte službu **prostředků Azure** .
+1. Přejděte na [Azure Portal](https://portal.azure.com/). Na řídicím panelu vyberte službu **prostředků Azure** .
 
 2. Vyberte prostředek.
 

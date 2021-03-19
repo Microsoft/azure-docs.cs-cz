@@ -7,13 +7,13 @@ ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
 ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87846033"
 ---
-# <a name="troubleshoot-python-errors-in-azure-functions"></a>Řešení chyb v Pythonu v Azure Functions
+# <a name="troubleshoot-python-errors-in-azure-functions"></a>Řešení chyb Pythonu ve službě Azure Functions
 
 Následuje seznam průvodců odstraňováním potíží pro běžné problémy ve funkcích Pythonu:
 
@@ -69,7 +69,7 @@ Přečtěte si téma [Povolení vzdáleného sestavení](#enable-remote-build) n
 
 Přejít na `.python_packages/lib/python3.6/site-packages/<package-name>-<version>-dist-info` nebo `.python_packages/lib/site-packages/<package-name>-<version>-dist-info` . Pomocí textového editoru otevřete soubor METADAT a podívejte se do části **třídění:** oddíl. Pokud část neobsahuje `Python :: 3` , `Python :: 3.6` , `Python :: 3.7` , nebo `Python :: 3.8` , znamená to, že je verze balíčku buď příliš stará, nebo je pravděpodobně balíček již mimo údržbu.
 
-Verzi Pythonu aplikace Function App můžete ověřit z [Azure Portal](https://portal.azure.com). Přejděte do aplikace Function App, zvolte **Průzkumník prostředků**a vyberte **Přejít**.
+Verzi Pythonu aplikace Function App můžete ověřit z [Azure Portal](https://portal.azure.com). Přejděte do aplikace Function App, zvolte **Průzkumník prostředků** a vyberte **Přejít**.
 
 :::image type="content" source="media/recover-module-not-found/resource-explorer.png" alt-text="Otevření Průzkumník prostředků pro aplikaci Function App na portálu":::
 
@@ -124,7 +124,7 @@ Ujistěte se, že je nainstalovaná nejnovější verze **Docker** i [Azure Func
 
 #### <a name="update-your-package-to-the-latest-version"></a>Aktualizace balíčku na nejnovější verzi
 
-Projděte si nejnovější verzi balíčku v `https://pypi.org/project/<package-name>` tématu a podívejte se do části **třídění:** oddíl. Balíček by měl být `OS Independent` nebo kompatibilní s `POSIX` `POSIX :: Linux` **operačním systémem**nebo. Programovací jazyk by měl také obsahovat `Python :: 3` , `Python :: 3.6` , `Python :: 3.7` , nebo `Python :: 3.8` .
+Projděte si nejnovější verzi balíčku v `https://pypi.org/project/<package-name>` tématu a podívejte se do části **třídění:** oddíl. Balíček by měl být `OS Independent` nebo kompatibilní s `POSIX` `POSIX :: Linux` **operačním systémem** nebo. Programovací jazyk by měl také obsahovat `Python :: 3` , `Python :: 3.6` , `Python :: 3.7` , nebo `Python :: 3.8` .
 
 Pokud jsou tyto správné, můžete balíček aktualizovat na nejnovější verzi tak, že změníte řádek `<package-name>~=<latest-version>` v requirements.txt.
 

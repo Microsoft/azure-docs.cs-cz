@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8fa6e108550b1417f736d1caff5cafd3e16f63a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707519"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595001"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Omezení v Azure Database for PostgreSQL – jeden server
 Následující části popisují kapacitu a funkční omezení v databázové službě. Pokud se chcete dozvědět víc o úrovních prostředků (výpočetních, paměť, úložiště), přečtěte si článek o [cenových úrovních](concepts-pricing-tiers.md) .
@@ -23,8 +23,8 @@ Níže jsou uvedené maximální počty připojení na cenové úrovni a virtuá
 
 |**Cenová úroveň**| **vCore (celkem)**| **Maximální počet připojení** | **Maximální počet připojení uživatelů** |
 |---|---|---|---|
-|Základní| 1| 55 | 50|
-|Základní| 2| 105 | 100|
+|Basic| 1| 55 | 50|
+|Basic| 2| 105 | 100|
 |Pro obecné účely| 2| 150| 145|
 |Pro obecné účely| 4| 250| 245|
 |Pro obecné účely| 8| 480| 475|
@@ -68,9 +68,12 @@ Připojení PostgreSQL, dokonce nečinné, může zabírat přibližně 10 MB pa
 - V některých scénářích nejsou znaky UTF-8 v systému Open Source PostgreSQL ve Windows plně podporované, což má vliv na Azure Database for PostgreSQL. Další informace najdete v tématu věnovaném [chybě #15476 v archivu](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) .
 
 ### <a name="gss-error"></a>Chyba služby GSS
-Pokud se vám zobrazí chyba týkající se služby **GSS**, pravděpodobně používáte novější verzi klienta nebo ovladače, kterou Azure Postgres Single server ještě plně nepodporuje. Tato chyba se označuje jako ovlivnění [verzí ovladačů JDBC 42.2.15 a 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868).
-   - Tuto aktualizaci plánujeme dokončit na konci listopadu. Během této doby zvažte použití funkční verze ovladače.
-   - Nebo zvažte zakázání žádosti služby GSS.  Použijte parametr připojení, jako je `gssEncMode=disable` .
+Pokud se vám zobrazí chyba související s **GSS**, pravděpodobně používáte novější verzi klienta nebo ovladače, kterou jednoúčelový server Azure Postgres ještě plně nepodporuje. Tato chyba se týká [ovladače JDBC verze 42.2.15 a 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868).
+   - Do konce listopadu plánujeme dokončit aktualizaci. Mezitím zvažte použití funkční verze ovladače.
+   - Nebo zvažte zakázání žádosti služby GSS.  Použijte parametr připojení, jako je `gssEncMode=disable`.
+
+### <a name="storage-size-reduction"></a>Omezení velikosti úložiště
+Velikost úložiště nejde snížit. Je nutné vytvořit nový server s požadovanou velikostí úložiště, provést ruční [Výpis paměti a obnovení](./howto-migrate-using-dump-and-restore.md) a migrovat databáze na nový server.
 
 ## <a name="next-steps"></a>Další kroky
 - Informace o [tom, co je k dispozici v každé cenové úrovni](concepts-pricing-tiers.md)

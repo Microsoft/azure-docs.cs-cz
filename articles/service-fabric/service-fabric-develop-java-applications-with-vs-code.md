@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87327357"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Vývoj aplikací Service Fabric Java pomocí Visual Studio Code
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak sestavit, nasadit a ladit aplikaci Service Fab
 > [!IMPORTANT]
 > Aplikace Service Fabric Java je možné vyvíjet na počítačích s Windows, ale dají se nasadit jenom do clusterů Azure Linux. Ladění aplikací Java není v systému Windows podporováno.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už nainstalovali VS Code, Service Fabric Reliable Services rozšíření pro VS Code a všechny závislosti, které jsou pro vaše vývojové prostředí potřeba. Další informace najdete v tématu [Začínáme](./service-fabric-get-started-vs-code.md#prerequisites).
 
@@ -54,7 +54,7 @@ Po vytvoření aplikace ji můžete nasadit do místního clusteru.
 > [!IMPORTANT]
 > V počítačích s Windows není podporováno nasazení aplikací Java do místního clusteru.
 
-1. Z **palety příkazů**vyberte **příkaz Service Fabric: nasadit aplikaci (localhost)**. Výstup procesu instalace se pošle do integrovaného terminálu.
+1. Z **palety příkazů** vyberte **příkaz Service Fabric: nasadit aplikaci (localhost)**. Výstup procesu instalace se pošle do integrovaného terminálu.
 
    ![Příkaz nasadit aplikaci v VS Code](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
@@ -93,7 +93,7 @@ Přidejte komentář na řádek 6 (použijte ' # ') a přidejte do dolní část
 
    ![Ikona ladění v pracovním prostoru VS Code](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. V launch.jsv souboru nastavte hodnotu portu v konfiguraci s názvem **Debug (připojit)** na **8001**. Uložte soubor.
+3. V launch.jsv souboru nastavte hodnotu portu v konfiguraci s názvem **Debug (připojit)** na **8001**. Soubor uložte.
 
    ![Konfigurace ladění pro launch.jsv](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 

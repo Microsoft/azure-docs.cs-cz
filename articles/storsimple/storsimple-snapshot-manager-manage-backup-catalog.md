@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90054989"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Použití Snapshot Manager StorSimple ke správě katalogu záloh
@@ -43,10 +43,10 @@ Katalog záloh můžete zobrazit rozbalením uzlu **zálohovat katalog** v podok
   * **Typ** – určuje, zda se jedná o místní snímek nebo snímek v cloudu.
   * **Vlastník** – vlastník obsahu. 
   * **K dispozici** – zda je snímek aktuálně k dispozici. **Hodnota true** označuje, že je snímek dostupný a je možné ho obnovit. **Hodnota false** znamená, že snímek již není k dispozici. 
-  * **Importováno** – bez ohledu na to, zda byla záloha naimportována. **Hodnota true** označuje, že záloha byla naimportována ze služby StorSimple Device Manager v době, kdy bylo zařízení nakonfigurované v StorSimple Snapshot Manager; **Hodnota false** označuje, že nebyla naimportována, ale byla vytvořena pomocí StorSimple Snapshot Manager. (Importovanou skupinu svazků můžete snadno identifikovat, protože je přidaná přípona, která identifikuje zařízení, ze kterého se naimportovala skupina svazků.)
+  * **Importováno** – bez ohledu na to, zda byla záloha naimportována. **Hodnota true** označuje, že záloha byla naimportována ze služby StorSimple Správce zařízení v době, kdy bylo zařízení nakonfigurované v StorSimple Snapshot Manager; **Hodnota false** označuje, že nebyla naimportována, ale byla vytvořena pomocí StorSimple Snapshot Manager. (Importovanou skupinu svazků můžete snadno identifikovat, protože je přidaná přípona, která identifikuje zařízení, ze kterého se naimportovala skupina svazků.)
     
     ![Katalog záloh](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
-* Pokud rozbalíte snímek **místního snímku** nebo **cloudu**a potom kliknete na název jednotlivého snímku, v podokně **výsledků** se zobrazí následující informace o snímku, který jste vybrali:
+* Pokud rozbalíte snímek **místního snímku** nebo **cloudu** a potom kliknete na název jednotlivého snímku, v podokně **výsledků** se zobrazí následující informace o snímku, který jste vybrali:
   
   * **Název** – svazek identifikovaný písmenem jednotky. 
   * **Místní název** – místní název jednotky (je-li k dispozici). 
@@ -56,7 +56,7 @@ Katalog záloh můžete zobrazit rozbalením uzlu **zálohovat katalog** v podok
 ## <a name="restore-a-volume"></a>Obnovení svazku
 K obnovení svazku ze zálohy použijte následující postup.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 Pokud jste to ještě neudělali, vytvořte svazek a skupinu svazků a pak svazek odstraňte. Ve výchozím nastavení StorSimple Snapshot Manager zálohuje svazek před tím, než umožní jeho odstranění. Tato preventivní opatření můžou zabránit ztrátě dat, pokud se svazek neúmyslně odstraní nebo pokud je potřeba obnovit data z jakéhokoli důvodu. 
 
 StorSimple Snapshot Manager zobrazí během vytváření předběžné opatrnosti následující zprávu.
@@ -74,7 +74,7 @@ StorSimple Snapshot Manager zobrazí během vytváření předběžné opatrnost
 3. Vyhledejte zálohu, kterou chcete obnovit, klikněte pravým tlačítkem myši a pak klikněte na tlačítko **obnovit**.
    
     ![Obnovit katalog záloh](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png) 
-4. Na stránce potvrzení zkontrolujte podrobnosti, zadejte **Potvrdit**a pak klikněte na **OK**. StorSimple Snapshot Manager používá k obnovení svazku zálohu.
+4. Na stránce potvrzení zkontrolujte podrobnosti, zadejte **Potvrdit** a pak klikněte na **OK**. StorSimple Snapshot Manager používá k obnovení svazku zálohu.
    
     ![Zpráva o potvrzení obnovení](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
 5. Můžete monitorovat akci obnovení při spuštění. V podokně **obor** rozbalte uzel **úlohy** a potom klikněte na možnost **spuštěno**. Podrobnosti úlohy se zobrazí v podokně **výsledků** . Po dokončení úlohy obnovení se podrobnosti úlohy přenesou do seznamu **posledních 24 hodin** .
@@ -91,7 +91,7 @@ K vytvoření duplicitního (klonování) svazku nebo skupiny svazků použijte 
 4. Dokončete dialog **klonovat cloudový snímek** následujícím způsobem: 
    
    1. Do textového pole **název** zadejte název klonovaného svazku. Tento název se zobrazí v uzlu **svazky** . 
-   2. (Volitelné) vyberte **jednotka**a v rozevíracím seznamu vyberte písmeno jednotky.
+   2. (Volitelné) vyberte **jednotka** a v rozevíracím seznamu vyberte písmeno jednotky.
    3. (Volitelné) vyberte **složku (NTFS)** a zadejte cestu ke složce nebo klikněte na Procházet a vyberte umístění složky. 
    4. Klikněte na **Vytvořit**.
 5. Po dokončení procesu klonování musíte inicializovat Klonovaný svazek. Spusťte Správce serveru a potom spusťte správu disků. Podrobné pokyny najdete v tématu [připojení svazků](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Po inicializaci se svazek zobrazí pod uzlem **svazky** v podokně **Rozsah** . Pokud se svazek nezobrazí, aktualizujte seznam svazků (klikněte pravým tlačítkem na uzel **svazky** a pak klikněte na **aktualizovat**).
@@ -112,7 +112,7 @@ Pomocí následujícího postupu můžete odstranit snímek ze zálohy katalogu.
 ## <a name="recover-a-file"></a>Obnovení souboru
 Pokud se soubor ze svazku omylem odstraní, můžete soubor obnovit tak, že nakopírujete snímek, který se předá odstraněním, pomocí snímku vytvoříte klon svazku a pak zkopírujete soubor z klonovaného svazku do původního svazku.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 Než začnete, ujistěte se, že máte aktuální zálohu skupiny svazků. Pak odstraňte soubor uložený na jednom ze svazků v této skupině svazků. Nakonec pomocí následujících kroků obnovte odstraněný soubor ze zálohy. 
 
 #### <a name="to-recover-a-deleted-file"></a>Obnovení odstraněné souboru
@@ -124,7 +124,7 @@ Než začnete, ujistěte se, že máte aktuální zálohu skupiny svazků. Pak o
 4. Dokončete dialog **klonovat cloudový snímek** následujícím způsobem: 
    
    1. Do textového pole **název** zadejte název klonovaného svazku. Tento název se zobrazí v uzlu **svazky** . 
-   2. Volitelné Vyberte **jednotka**a v rozevíracím seznamu vyberte písmeno jednotky. 
+   2. Volitelné Vyberte **jednotka** a v rozevíracím seznamu vyberte písmeno jednotky. 
    3. Volitelné Vyberte **složku (NTFS)** a zadejte cestu ke složce nebo klikněte na **Procházet** a vyberte umístění složky. 
    4. Klikněte na **Vytvořit**. 
 5. Po dokončení procesu klonování musíte inicializovat Klonovaný svazek. Spusťte Správce serveru a potom spusťte správu disků. Podrobné pokyny najdete v tématu [připojení svazků](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Po inicializaci se svazek zobrazí pod uzlem **svazky** v podokně **Rozsah** . 
@@ -142,7 +142,7 @@ Pravidelně byste měli zálohovat databázi StorSimple Snapshot Manager v hosti
    1. Spusťte Správce serveru.
    2. Na řídicím panelu Správce serveru v nabídce **nástroje** vyberte **služby**.
    3. V okně **služby** vyberte **službu Microsoft StorSimple Management Service**.
-   4. V pravém podokně v části **Služba správy Microsoft StorSimple**klikněte na **Zastavit službu**.
+   4. V pravém podokně v části **Služba správy Microsoft StorSimple** klikněte na **Zastavit službu**.
 2. V hostitelském počítači přejděte na C:\ProgramData\Microsoft\StorSimple\BACatalog.. 
    
    > [!NOTE]
@@ -156,7 +156,7 @@ Pravidelně byste měli zálohovat databázi StorSimple Snapshot Manager v hosti
    
    1. Na řídicím panelu Správce serveru v nabídce **nástroje** vyberte **služby**.
    2. V okně **služby** vyberte **službu Microsoft StorSimple Management Service**.
-   3. V pravém podokně v části **Služba správy Microsoft StorSimple**klikněte na **restartovat službu**.
+   3. V pravém podokně v části **Služba správy Microsoft StorSimple** klikněte na **restartovat službu**.
 5. V hostitelském počítači přejděte na C:\ProgramData\Microsoft\StorSimple\BACatalog.. 
 6. Odstraňte soubor XML katalogu a nahraďte ho verzí zálohy, kterou jste vytvořili. 
 7. Kliknutím na ikonu Snapshot Manager plochy StorSimple spusťte StorSimple Snapshot Manager. 

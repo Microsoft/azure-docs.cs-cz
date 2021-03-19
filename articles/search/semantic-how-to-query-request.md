@@ -7,34 +7,34 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.date: 03/18/2021
+ms.openlocfilehash: c33739124092a17acf0590f00b2f9c3c09bf894e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418874"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654658"
 ---
-# <a name="create-a-semantic-query-in-cognitive-search"></a>Vytvoření sémantického dotazu v Kognitivní hledání
+# <a name="create-a-query-for-semantic-captions-in-cognitive-search"></a>Vytvoření dotazu pro sémantická titulky v Kognitivní hledání
 
 > [!IMPORTANT]
-> Sémantický typ dotazu je ve verzi Public Preview, který je k dispozici ve verzi Preview REST API a Azure Portal. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
+> Sémantické vyhledávání je ve verzi Public Preview, které je dostupné ve verzi Preview REST API a Azure Portal. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tyto funkce jsou Fakturovatelné. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
 
-V tomto článku se dozvíte, jak formulovat požadavek hledání, který používá sémantické hodnocení. Požadavek vrátí sémantické titulky a volitelně [sémantické odpovědi](semantic-answers.md)a zvýrazní nejdůležitější výrazy a fráze.
+V tomto článku se dozvíte, jak formulovat požadavek hledání, který používá sémantické hodnocení a vrací sémantické titulky (a volitelně [sémantické odpovědi](semantic-answers.md)), s nejzajímavější podmínkami a frázemi. V dotazech, které jsou formulovány pomocí typu dotazu "sémantické", jsou vráceny i popisky a odpovědi.
 
-Titulky a odpovědi jsou extrahovány pomocí textu v dokumentu hledání. Sémantický podsystém určuje, který obsah má vlastnosti titulku nebo odpovědi, ale nevytváří nové věty ani fráze. Z tohoto důvodu může obsah, který obsahuje vysvětlení nebo definice, fungovat nejlépe pro sémantické vyhledávání.
+Titulky a odpovědi jsou extrahovány pomocí textu v dokumentu hledání. Sémantický podsystém určuje, která část obsahu má vlastnosti titulku nebo odpovědi, ale nevytváří nové věty ani fráze. Z tohoto důvodu může obsah, který obsahuje vysvětlení nebo definice, fungovat nejlépe pro sémantické vyhledávání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Vyhledávací služba na úrovni Standard (S1, S2, S3), která se nachází v jedné z těchto oblastí: Střed USA – sever, Západní USA, Západní USA 2, Východní USA 2, Severní Evropa, Západní Evropa. Pokud máte v jedné z těchto oblastí existující službu S1 nebo větší, můžete požádat o přístup bez nutnosti vytvářet novou službu.
 
 + Přístup ke službě sémantického vyhledávání ve verzi Preview: [registrace](https://aka.ms/SemanticSearchPreviewSignup)
 
-+ Existující index vyhledávání, který obsahuje anglický obsah
++ Existující vyhledávací index obsahující obsah v angličtině
 
 + Vyhledávací klient pro odesílání dotazů
 
-  Vyhledávací klient musí v žádosti o dotaz podporovat rozhraní REST API pro náhled. Můžete použít [post](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)nebo kód, který jste změnili, aby se v rozhraní API verze Preview zavolala volání REST. Můžete také použít [Průzkumníka vyhledávání](search-explorer.md) v Azure Portal k odeslání sémantického dotazu.
+  Vyhledávací klient musí v žádosti o dotaz podporovat rozhraní REST API pro náhled. Můžete použít [post](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)nebo kód, který poskytuje volání rozhraní REST API pro verzi Preview. Můžete také použít [Průzkumníka vyhledávání](search-explorer.md) v Azure Portal k odeslání sémantického dotazu.
 
 + [Požadavek na dotaz](/rest/api/searchservice/preview-api/search-documents) musí obsahovat sémantickou možnost a další parametry popsané v tomto článku.
 
@@ -62,9 +62,13 @@ Pouze prvních 50 shod od počátečních výsledků lze sémanticky seřadit a 
 
 ## <a name="query-with-search-explorer"></a>Dotaz s využitím Průzkumníka služby Hledání
 
-[Průzkumník služby Search](search-explorer.md) byl aktualizován tak, aby obsahoval možnosti pro sémantické dotazy. Tyto možnosti se zobrazí na portálu po získání přístupu k verzi Preview. Možnosti dotazu mohou umožňovat sémantické dotazy, searchFields a opravy pravopisu.
+[Průzkumník služby Search](search-explorer.md) byl aktualizován tak, aby obsahoval možnosti pro sémantické dotazy. Tyto možnosti se zobrazí na portálu po provedení následujících kroků:
 
-Do řetězce dotazu můžete také vložit požadované parametry dotazu.
+1. [Zaregistrujte](https://aka.ms/SemanticSearchPreviewSignup) a admittance službu Search do programu Preview
+
+1. Otevřete portál s touto syntaxí: `https://portal.azure.com/?feature.semanticSearch=true`
+
+Možnosti dotazu zahrnují přepínače pro povolení sémantických dotazů, searchFields a opravy pravopisu. Do řetězce dotazu můžete také vložit požadované parametry dotazu.
 
 :::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="Možnosti dotazů v Průzkumníkovi vyhledávání" border="true":::
 
@@ -98,7 +102,7 @@ Následující tabulka shrnuje parametry dotazu používané v sémantickém dot
 |-----------|-------|-------------|
 | queryType | Řetězec | Mezi platné hodnoty patří jednoduchá, plná a sémantická. Pro sémantické dotazy je požadována hodnota sémantika. |
 | queryLanguage | Řetězec | Vyžaduje se pro sémantické dotazy. V současné době je implementována pouze "en-US". |
-| searchFields | Řetězec | Seznam prohledávatelných polí oddělených čárkami. Volitelné, ale doporučené. Určuje pole, přes která probíhá sémantické hodnocení. </br></br>Na rozdíl od jednoduchých a úplných typů dotazů je pořadí, ve kterém jsou pole uvedena, určena přednostně. Další pokyny k používání najdete v části [Krok 2: set searchFields](#searchfields). |
+| searchFields | Řetězec | Seznam prohledávatelných polí oddělených čárkami. Určuje pole, ve kterých se bude objevovat sémantické hodnocení, ze kterých se extrahují popisy a odpovědi. </br></br>Na rozdíl od jednoduchých a úplných typů dotazů je pořadí, ve kterém jsou pole uvedena, určena přednostně. Další pokyny k používání najdete v části [Krok 2: set searchFields](#searchfields). |
 | kontrolu pravopisu | Řetězec | Volitelný parametr, který není specifický pro sémantické dotazy, který opravuje nesprávně napsané výrazy předtím, než dosáhnou vyhledávacího modulu. Další informace najdete v tématu [Přidání opravy pravopisu do dotazů](speller-how-to-add.md). |
 | zodpovídá |Řetězec | Volitelné parametry, které určují, zda jsou ve výsledku zahrnuty sémantické odpovědi. V současné době je implementována pouze "extrakce". Odpovědi lze nakonfigurovat tak, aby vracely maximálně pět. Výchozí hodnota je jedna. V tomto příkladu se zobrazuje počet tří odpovědí: "extrahovatelné \| count3". Další informace najdete v tématu o [vrácení sémantických odpovědí](semantic-answers.md).|
 
@@ -125,13 +129,11 @@ Obsah ve vyhledávacím indexu může být tvořen v několika jazycích, takže
 
 #### <a name="step-2-set-searchfields"></a>Krok 2: nastavení searchFields
 
-Tento parametr je nepovinný v tom, že není k dispozici žádná chyba, pokud ho necháte, ale pro titulky a odpovědi se důrazně doporučuje zobrazit uspořádaný seznam polí.
-
 Parametr searchFields slouží k identifikaci pasáží pro vyhodnocení "sémantické podobnosti" dotazem. V rámci verze Preview nedoporučujeme ponechání searchFields prázdné, protože model vyžaduje doporučení, která pole jsou pro zpracování nejdůležitější.
 
-Pořadí searchFields je kritické. Pokud už používáte searchFields v existujících jednoduchých nebo úplných dotazech na Lucene, nezapomeňte tento parametr znovu navštívit a při přechodu na sémantický typ dotazu zkontrolovat pořadí polí.
+Pořadí searchFields je kritické. Pokud již používáte searchFields v existujícím kódu pro jednoduché nebo úplné dotazy Lucene, přečtěte si tento parametr, abyste při přechodu na sémantický typ dotazu kontrolovali pořadí polí.
 
-Postupujte podle těchto pokynů, abyste zajistili optimální výsledky při zadání dvou nebo více searchFields:
+Pro dvě nebo více searchFields:
 
 + V kolekcích zahrňte pouze pole řetězců a pole řetězců nejvyšší úrovně. Pokud se rozhodnete zahrnout neřetězcová pole nebo pole nižší úrovně v kolekci, nebude k dispozici žádná chyba, ale tato pole se nepoužijí v sémantickém hodnocení.
 
@@ -141,7 +143,7 @@ Postupujte podle těchto pokynů, abyste zajistili optimální výsledky při za
 
 + Použijte tato pole podle popisných polí, kde můžete najít odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu.
 
-Pokud je zadáno pouze jedno pole, použijte popisné pole, kde lze nalézt odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu. Vyberte pole, které poskytuje dostatečný obsah. Aby bylo zajištěno včasné zpracování, pouze o tokenech 8 000 o společném obsahu searchFields podstupuje sémantické vyhodnocení a hodnocení.
+Pokud je zadáno pouze jedno pole, použijte popisné pole, kde lze nalézt odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu. 
 
 #### <a name="step-3-remove-orderby-clauses"></a>Krok 3: odebrání klauzulí orderBy
 
@@ -191,7 +193,7 @@ Odpověď pro příklad dotazu výše vrací následující shodu jako horního 
 Pomocí počáteční sady výsledků odvoláte, aby se sémantické hodnocení a odpovědi vystavily. Všechny logiky, které zvyšují kvalitu počátečních výsledků, se přenesou na sémantické vyhledávání. V dalším kroku si Projděte funkce, které přispívají k počátečním výsledkům, včetně analyzátorů, které mají vliv na tokeny řetězců, vyhodnocovací profily, které mohou ladit výsledky a výchozí algoritmus pro relevanci.
 
 + [Analyzátory pro zpracování textu](search-analyzers.md)
-+ [Podobnost a bodování v Kognitivní hledání](index-similarity-and-scoring.md)
-+ [Přidání profilů vyhodnocování](index-add-scoring-profiles.md)
++ [Algoritmus řazení podobnosti](index-similarity-and-scoring.md)
++ [Profily skórování](index-add-scoring-profiles.md)
 + [Přehled sémantického hledání](semantic-search-overview.md)
-+ [Přidat kontrolu pravopisu pro dotaz na výrazy](speller-how-to-add.md)
++ [Algoritmus sémantického hodnocení](semantic-ranking.md)

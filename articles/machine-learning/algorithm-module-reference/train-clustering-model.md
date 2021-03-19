@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0dfde6fef7cc91edf2101095018bc031d392c4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: ea6673a04bf9f5f568c660658e51036f2d2712e0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898181"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654726"
 ---
 # <a name="train-clustering-model"></a>Trénování modelu clusteringu
 
@@ -29,13 +29,13 @@ Modul převezme provedený model clusteringu, který jste už nakonfigurovali po
   
 ## <a name="how-to-use-train-clustering-model"></a>Použití modelu výukového clusteringu  
 
-1.  Přidejte modul **clusteringu clustering model** do kanálu v návrháři. Modul najdete v části **Machine Learning moduly**v kategorii **vlaků** .  
+1.  Přidejte modul **clusteringu clustering model** do kanálu v návrháři. Modul najdete v části **Machine Learning moduly** v kategorii **vlaků** .  
   
 2. Přidejte modul pro clusteringu, který je [prostředkem pro clustering](k-means-clustering.md) , nebo jiný vlastní modul, který vytvoří kompatibilní model clusteringu, a nastavte parametry modelu clusteringu.  
     
 3.  Připojte školicí datovou sadu k pravému vstupu **modelu clusteringu s výukou**.
   
-5.  V části **sada sloupců**vyberte sloupce z datové sady, které chcete použít při vytváření clusterů. Nezapomeňte vybrat sloupce, které mají dobré funkce, například Vyhněte se použití ID nebo jiných sloupců, které mají jedinečné hodnoty, nebo sloupců, které mají všechny stejné hodnoty.
+5.  V části **sada sloupců** vyberte sloupce z datové sady, které chcete použít při vytváření clusterů. Nezapomeňte vybrat sloupce, které mají dobré funkce, například Vyhněte se použití ID nebo jiných sloupců, které mají jedinečné hodnoty, nebo sloupců, které mají všechny stejné hodnoty.
 
     Pokud je popisek k dispozici, můžete ho buď použít jako funkci, nebo ho nechat zapnutý.  
   
@@ -52,6 +52,9 @@ Po dokončení školení:
 + Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
 + K vygenerování skóre z modelu použijte [přiřazení dat do clusterů](assign-data-to-clusters.md).
+
+> [!NOTE]
+> Pokud potřebujete nasadit model vyškolený v návrháři, ujistěte se, že [přiřazení dat do clusterů](assign-data-to-clusters.md) namísto **modelu skóre** je připojeno k vstupu [výstupního modulu webové služby](web-service-input-output.md) v kanálu odvození.
 
 ## <a name="next-steps"></a>Další kroky
 

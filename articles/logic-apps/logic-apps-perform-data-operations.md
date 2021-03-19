@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84710367"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Provádění operací s daty v Azure Logic Apps
@@ -34,7 +34,7 @@ Tyto akce vám pomůžou pracovat s daty v polích.
 | [**Vytvořit tabulku CSV**](#create-csv-table-action) | Vytvoří tabulku hodnot s oddělovači (CSV) z pole. |
 | [**Vytvořit tabulku HTML**](#create-html-table-action) | Vytvoří tabulku HTML z pole. |
 | [**Filtrovat pole**](#filter-array-action) | Vytvořte podmnožinu pole z pole na základě zadaného filtru nebo podmínky. |
-| [**Spojit**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí každou položku zadaným znakem. |
+| [**Zúčastnit**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí každou položku zadaným znakem. |
 | [**Vyberte**](#select-action) | Vytvoří pole z určených vlastností pro všechny položky v jiném poli. |
 ||| 
 
@@ -44,13 +44,13 @@ Tyto akce vám pomůžou pracovat s daty ve formátu JavaScript Object Notation 
 
 | Akce | Popis |
 |--------|-------------|
-| [**Vytvořit**](#compose-action) | Vytvoření zprávy nebo řetězce z více vstupů, které mohou mít různé datové typy. Tento řetězec je pak možné použít jako jeden vstup místo opakovaného zadávání stejných vstupů. Můžete například vytvořit jednu zprávu JSON z různých vstupů. |
+| [**Sestavit**](#compose-action) | Vytvoření zprávy nebo řetězce z více vstupů, které mohou mít různé datové typy. Tento řetězec je pak možné použít jako jeden vstup místo opakovaného zadávání stejných vstupů. Můžete například vytvořit jednu zprávu JSON z různých vstupů. |
 | [**Analyzovat JSON**](#parse-json-action) | Vytvářejte uživatelsky přívětivé datové tokeny pro vlastnosti v obsahu JSON, abyste mohli snadněji používat vlastnosti ve svých aplikacích logiky. |
 |||
 
 Chcete-li vytvořit složitější transformace JSON, přečtěte si téma [provádění pokročilých TRANSFORMACÍ JSON pomocí tekutých šablon](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -92,7 +92,7 @@ Pokud chcete vyzkoušet příklad, postupujte podle těchto kroků pomocí návr
 
    * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `compose` jako filtr. V seznamu akce vyberte akci **vytvořit** .
+1. V části **zvolit akci** zadejte do vyhledávacího pole `compose` jako filtr. V seznamu akce vyberte akci **vytvořit** .
 
    ![Vybrat akci psaní](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -150,7 +150,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
    * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `create csv table` jako filtr. V seznamu akce vyberte akci **vytvořit tabulku CSV** .
+1. V části **zvolit akci** zadejte do vyhledávacího pole `create csv table` jako filtr. V seznamu akce vyberte akci **vytvořit tabulku CSV** .
 
    ![Výběr akce vytvoření tabulky CSV](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -192,7 +192,7 @@ Oranges,2
 
 V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci **hodnota** odkažte na každou vlastnost pole, kterou chcete. Každý řádek pod **hodnotou** vrátí všechny hodnoty pro zadanou vlastnost pole a v tabulce se bude jednat o sloupec.
 
-1. V části **hodnota**na každém řádku, který chcete, klikněte do pole pro úpravy, aby se zobrazil seznam dynamického obsahu.
+1. V části **hodnota** na každém řádku, který chcete, klikněte do pole pro úpravy, aby se zobrazil seznam dynamického obsahu.
 
 1. V seznamu dynamický obsah vyberte možnost **výraz**.
 
@@ -301,7 +301,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
    * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `create html table` jako filtr. V seznamu akce vyberte akci **vytvořit tabulku HTML** .
+1. V části **zvolit akci** zadejte do vyhledávacího pole `create html table` jako filtr. V seznamu akce vyberte akci **vytvořit tabulku HTML** .
 
    ![Výběr akce vytvoření tabulky HTML](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -343,7 +343,7 @@ Oranges,2
 
 V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci **hodnota** odkažte na každou vlastnost pole, kterou chcete. Každý řádek pod **hodnotou** vrátí všechny hodnoty pro zadanou vlastnost a v tabulce se bude jednat o sloupec.
 
-1. V části **hodnota**na každém řádku, který chcete, klikněte do pole pro úpravy, aby se zobrazil seznam dynamického obsahu.
+1. V části **hodnota** na každém řádku, který chcete, klikněte do pole pro úpravy, aby se zobrazil seznam dynamického obsahu.
 
 1. V seznamu dynamický obsah vyberte možnost **výraz**.
 
@@ -608,7 +608,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
    
    1. V akci **analyzovat JSON** vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte obsah JSON a potom vyberte **Hotovo**.
+   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON** zadejte obsah JSON a potom vyberte **Hotovo**.
 
       ![Zadejte obsah JSON pro generování schématu.](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
 
@@ -624,7 +624,7 @@ Pokud chcete potvrdit, jestli akce **analýzy JSON** vytvoří očekávané výs
 
 1. V takovém případě klikněte na libovolné místo, kde chcete zobrazit výsledky. Po otevření seznamu dynamický obsah v rámci akce **analyzovat JSON** teď můžete vybrat vlastnosti z analyzovaného obsahu JSON.
 
-   V tomto příkladu se používá **e-mailová** akce Office 365 Outlooku odeslat e-mail a do těla e-mailu zahrne pole **FirstName**, **LastName**a **e-mail** :
+   V tomto příkladu se používá **e-mailová** akce Office 365 Outlooku odeslat e-mail a do těla e-mailu zahrne pole **FirstName**, **LastName** a **e-mail** :
 
    ![Vlastnosti JSON v akci odeslat e-mail](./media/logic-apps-perform-data-operations/send-email-parse-json-action.png)
 
@@ -663,7 +663,7 @@ Pokud dáváte přednost práci v editoru zobrazení kódu, můžete zkopírovat
 
    * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `select` jako filtr. V seznamu akce vyberte akci **Vybrat** .
+1. V části **zvolit akci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `select` jako filtr. V seznamu akce vyberte akci **Vybrat** .
 
    ![Vyberte akci vybrat.](./media/logic-apps-perform-data-operations/select-select-action.png)
 

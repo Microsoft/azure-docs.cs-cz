@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a176a30a1e21ec03c2da329785ab895ec67a4faf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694984"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596412"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure spot Virtual Machines pro Virtual Machine Scale Sets 
 
@@ -46,7 +46,7 @@ V současné době jsou podporovány následující [typy nabídek](https://azur
 -   Smlouva Enterprise
 -   003P kódu nabídky s průběžnými platbami
 -   Financovan
-- Pro poskytovatele cloudových služeb (CSP) si přečtěte téma [Partnerské centrum](https://docs.microsoft.com/partner-center/azure-plan-get-started) nebo se obraťte přímo na svého partnera.
+- Pro poskytovatele cloudových služeb (CSP) si přečtěte téma [Partnerské centrum](/partner-center/azure-plan-get-started) nebo se obraťte přímo na svého partnera.
 
 ## <a name="eviction-policy"></a>Zásady vyřazení
 
@@ -202,7 +202,7 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 ## <a name="simulate-an-eviction"></a>Simulace vyřazení
 
-Můžete [simulovat vyřazení](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction) virtuálních počítačů se systémem Azure na místě, abyste otestovali, jak dobře bude aplikace reagovat na náhlé vyřazení. 
+Můžete [simulovat vyřazení](/rest/api/compute/virtualmachines/simulateeviction) virtuálních počítačů se systémem Azure na místě, abyste otestovali, jak dobře bude aplikace reagovat na náhlé vyřazení. 
 
 Pro vaše informace nahraďte následující údaje: 
 

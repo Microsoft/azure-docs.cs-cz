@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sideeksh
 ms.openlocfilehash: 569af28f5773d843f49dd9c8143b45e308ae142e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87420409"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Hyper-V do sekundární lokality
@@ -123,7 +123,7 @@ Tento postup popisuje, jak spustit testovací převzetí služeb při selhání 
 2. V okně **Test převzetí služeb při selhání** určete, jak se mají virtuální počítače repliky po testovacím převzetí služeb při selhání připojit k sítím.
 3. Sledujte průběh převzetí služeb při selhání na kartě **úlohy** .
 4. Po dokončení převzetí služeb při selhání ověřte, že se virtuální počítače úspěšně spustily.
-5. Až skončíte, klikněte na **Vyčištění testovacího převzetí služeb při selhání** v plánu obnovení. V části **poznámky**si zaznamenejte a uložte všechny poznámky spojené s testovacím převzetím služeb při selhání. Tento krok odstraní všechny virtuální počítače a sítě, které Site Recovery vytvořil během testovacího převzetí služeb při selhání. 
+5. Až skončíte, klikněte na **Vyčištění testovacího převzetí služeb při selhání** v plánu obnovení. V části **poznámky** si zaznamenejte a uložte všechny poznámky spojené s testovacím převzetím služeb při selhání. Tento krok odstraní všechny virtuální počítače a sítě, které Site Recovery vytvořil během testovacího převzetí služeb při selhání. 
 
 ![Testovací převzetí služeb při selhání](./media/hyper-v-vmm-test-failover/TestFailover.png)
  
