@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b02a08b7e8d8b867df820868b72a0ce14b6afa40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "71670934"
 ---
 # <a name="microsoft-client-tools-for-working-with-azure-storage"></a>Klientské nástroje Microsoftu pro práci s Azure Storage
@@ -22,8 +22,8 @@ Microsoft poskytuje několik nástrojů grafického uživatelského rozhraní (G
 
 | Nástroj klienta Azure Storage                 | Podporované platformy | Objekt blob bloku | Objekt blob stránky | Doplňovací objekt BLOB | Tabulky | Fronty | Soubory |
 |-------------------------------------------|---------------------|------------|-----------|-------------|--------|--------|-------|
-| [Azure Portal](https://portal.azure.com)                    | Web                 | Ano          | Ano         | Ano           | Ano      | Ano      | Ano     |
-| [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)          | Windows, OSX        | Ano          | Ano         | Ano           | Ano      | Ano      | Ano     |
-| [Průzkumník cloudu Microsoft Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | Ano          | Ano         | Ano           | Ano      | Ano      | No      |
+| [Azure Portal](https://portal.azure.com)                    | Web                 | Yes          | Yes         | Yes           | Yes      | Yes      | Yes     |
+| [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)          | Windows, OSX        | Yes          | Yes         | Yes           | Yes      | Yes      | Yes     |
+| [Průzkumník cloudu Microsoft Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | Yes          | Yes         | Yes           | Yes      | Yes      | No      |
 
 K dispozici je také řada nástrojů třetích stran pro práci s Azure Storagemi daty.

@@ -8,18 +8,18 @@ ms.service: data-factory
 ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
-ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c21c576cbb99ccc96bf7edf733769a9b28b9344
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013347"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612651"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-subscription"></a>Předplatné Azure
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ### <a name="azure-roles"></a>Role Azure
 
@@ -27,7 +27,7 @@ Pro vytvoření instancí služby Data Factory musí být uživatelský účet, 
 
 Při vytváření a správě podřízených prostředků pro službu Data Factory, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration Runtime, platí následující požadavky:
 
-- Pokud chcete vytvářet a spravovat podřízené prostředky na webu Azure Portal, je potřeba, abyste patřili do role **Přispěvatel Data Factory** na úrovni skupiny prostředků nebo vyšší.
+- K vytváření a správě podřízených prostředků v Azure Portal musíte patřit do role **přispěvatel Data Factory** na úrovni skupiny prostředků nebo výše.
 - Pro vytváření a správu podřízených prostředků pomocí PowerShellu nebo sady SDK na úrovni prostředku nebo vyšší je dostatečná role **Přispěvatel**.
 
 Ukázku pokynů pro přidání uživatele do role najdete v článku věnovaném [přidávání rolí](../articles/cost-management-billing/manage/add-change-subscription-administrator.md).
@@ -46,7 +46,7 @@ V tomto rychlém startu použijete účet pro obecné účely Azure Storage (kon
 Pro účely tohoto rychlého startu potřebujete název účtu Azure Storage. Následující postup popisuje kroky pro získání názvu účtu úložiště: 
 
 1. Ve webovém prohlížeči přejdete na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí uživatelského jména a hesla Azure.
-2. V nabídce Azure Portal vyberte **všechny služby** a pak vyberte **Storage**  >  **účty úložiště** úložiště. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
+2. V nabídce Azure Portal vyberte **všechny služby** a pak vyberte   >  **účty úložiště** úložiště. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
 3. Na stránce **účty úložiště** vyfiltrujte váš účet úložiště (Pokud je to potřeba) a pak vyberte svůj účet úložiště. 
 
 Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
@@ -59,7 +59,8 @@ V této části vytvoříte v úložišti objektů blob v Azure kontejner objekt
 2. Na *\<Account name>*  -  panelu nástrojů stránky **kontejnerů** vyberte **kontejner**.
 3. V dialogovém okně **Nový kontejner** jako název zadejte **adftutorial** a pak vyberte **OK**. *\<Account name>*  -  Stránka **kontejnery** je aktualizována tak, aby zahrnovala **adftutorial** v seznamu kontejnerů.
 
-   ![Seznam kontejnerů](media/data-factory-quickstart-prerequisites/list-of-containers.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/list-of-containers.png" alt-text="Seznam kontejnerů":::
+
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Přidání vstupní složky a souboru pro kontejner objektů BLOB
 
@@ -75,14 +76,15 @@ Uložte soubor do složky **C:\ADFv2QuickStartPSH** . (Pokud složka ještě nee
 1. Na *\<Account name>*  -  stránce **kontejnery** , kde jste skončili, vyberte **adftutorial** z aktualizovaného seznamu kontejnerů.
 
    1. Pokud jste okno zavřeli nebo jste přešli na jinou stránku, přihlaste se k [Azure Portal](https://portal.azure.com) znovu.
-   1. V nabídce Azure Portal vyberte **všechny služby** a pak vyberte **Storage**  >  **účty úložiště** úložiště. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
+   1. V nabídce Azure Portal vyberte **všechny služby** a pak vyberte   >  **účty úložiště** úložiště. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
    1. Vyberte svůj účet úložiště a pak vyberte **kontejnery**  >  **adftutorial**.
 
 2. Na panelu nástrojů na stránce kontejneru **adftutorial** vyberte **nahrát**.
 3. Na stránce **nahrát objekt BLOB** vyberte pole **soubory** a pak vyhledejte a vyberte soubor **emp.txt** .
 4. Rozbalte nadpis **Upřesnit** . Stránka se teď zobrazí, jak je znázorněno na následujícím obrázku:
 
-   ![Výběr odkazu Upřesnit](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/upload-blob-advanced.png" alt-text="Výběr odkazu Upřesnit":::
+
 5. Do pole **Odeslat do složky** zadejte Input ( **vstup**).
 6. Vyberte tlačítko **Nahrát**. Měli byste vidět soubor **emp.txt** a stav nahrávání v seznamu.
 7. Vyberte ikonu **Zavřít** ( **X**) pro zavření stránky **nahrát objekt BLOB** .

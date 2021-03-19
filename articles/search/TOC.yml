@@ -358,6 +358,8 @@
           href: search-query-understand-collection-filters.md
         - name: Filtrování podle jazyka
           href: search-filters-language.md
+        - name: Normalizovat text
+          href: search-normalizers.md
     - name: Relevance
       items:
         - name: Řazení podobnosti

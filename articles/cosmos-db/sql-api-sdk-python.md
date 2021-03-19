@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
 ms.date: 08/12/2020
-ms.author: anfeldma
+ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 77cde4fb580ebea14c09856b9ad2e7f093e20db3
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8487743efd4f18806ae03ed7529927736314988b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505048"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595675"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Sada Python SDK služby Azure Cosmos DB pro rozhraní SQL API: Poznámky k verzi a zdroje informací
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,17 +38,26 @@ ms.locfileid: "102505048"
 > * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| Stránka| Odkaz |
 |---|---|
 |**Stáhnout sadu SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](/python/api/azure-cosmos/)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Začínáme**|[Začínáme se sadou Python SDK](create-sql-api-python.md)|
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) a [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Historie verzí
 
-### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+## <a name="420"></a>4.2.0
+
+**Opravy chyb**
+- Opravená chyba, kde se nedodržuje token pro pokračování, když query_iterable slouží k získání výsledků podle stránky.
+- Opravená chyba, kdy se pro čtení a odstraňování dokumentů neuplatňují tokeny prostředků. 
+
+**Nové funkce**
+- Přidání podpory pro předávání `partitionKey` při dotazování na změnu kanálu.
+
+## <a name="410"></a>4.1.0
 
 - Přidání upozornění na zastaralost pro režim indexování "opožděné". Back-end už neumožňuje vytvářet kontejnery s tímto režimem a bude je místo toho nastavit na konzistentní.
 
@@ -56,13 +65,14 @@ ms.locfileid: "102505048"
 - Byla přidána možnost nastavit hodnotu TTL analytického úložiště při vytváření nového kontejneru.
 
 **Opravy chyb**
-- Pevná podpora pro Dicts jako vstupní hodnoty pro rozhraní API pro get_client.
+- Pevná podpora pro `dicts` vstupní hodnoty pro Get_client rozhraní API
 - Opravená kompatibilita Pythonu 2/3 ve iterátorech dotazů.
-- Došlo k chybě pomocného parametru pro pevný typ (problém #12570).
-- Opravená chyba, kdy se záhlaví možností do funkce upsert_item nepřidala. Problém #11791 – Děkujeme vám @aalapatirvbd .
-- Při použití neřetězcového ID v položce byla vyvolána Opravená chyba. Nyní vyvolává TypeError místo AttributeError (problém #11793).
+- Došlo k chybě nápovědy k pevnému typu.
+- Opravená chyba, kdy se záhlaví možností do funkce upsert_item nepřidala. 
+- Opravená chyba vyvolána, když je v položce použit identifikátor bez řetězce. Nyní vyvolává TypeError místo AttributeError.
 
-### <a name="400"></a>4.0.0
+
+## <a name="400"></a>4.0.0
 
 * Stabilní verze.
 * Přidali jsme HttpLoggingPolicy do kanálu, abyste umožnili předávání vlastního protokolovacího nástroje pro hlavičky požadavků a odpovědí.
@@ -80,8 +90,8 @@ ms.locfileid: "102505048"
 * Přidala se podpora jedinečnosti, posunu a omezení dotazu.
 * Výchozí kontext spuštění dotazu dokumentu, který se teď používá pro
 
-  * Dotazy ChangeFeed
-  * dotazy s jedním oddílem (partitionkey, partitionKeyRangeId je k dispozici v možnostech)
+  * Změnit dotazy kanálu
+  * dotazy s jedním oddílem ( `partitionkey` , `partitionKeyRangeId` je k dispozici v možnostech)
   * Jiné než dokumentové dotazy
 
 * Chyby pro agregace na více oddílech, přičemž dotaz povolit mezioddíl je nastaven na hodnotu true, ale neexistuje žádné klíčové slovo Value.
@@ -324,6 +334,8 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [4.2.0](#420) |9. října 2020 |--- |
+| [4.1.0](#410) |10. srpna 2020 |--- |
 | [4.0.0](#400) |20. května 2020 |--- |
 | [3.0.2](#302) |15. listopadu 2018 |--- |
 | [3.0.1](#301) |Říjen 04, 2018 |--- |

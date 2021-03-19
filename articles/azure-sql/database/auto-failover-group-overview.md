@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/26/2020
-ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.openlocfilehash: e0b9eea7be97b9b67e75c314c4a1d9e69322e5b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792496"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594253"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ Pokud používáte skupiny s automatickým převzetím služeb při selhání se
 - [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: Skupina převzetí služeb při selhání](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: Skupina převzetí služeb při selhání](scripts/add-database-to-failover-group-powershell.md)
-- [REST API: Skupina převzetí služeb při selhání](/rest/api/sql/failovergroups).
+- [REST API: Skupina převzetí služeb při selhání](/rest/api/sql/failovergroups)
 
 Po převzetí služeb při selhání zajistěte, aby byly požadavky na ověření pro vaši databázi a Server nebo instance nakonfigurovány na novém primárním serveru. Podrobnosti najdete v tématu [SQL Database Security po zotavení po havárii](active-geo-replication-security-configure.md).
 
@@ -115,7 +115,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 
   - Podrobná cvičení zotavení po havárii (DR) v produkčním prostředí, když je ztráta dat nepřijatelná
   - Přemístit databáze do jiné oblasti
-  - Po omezení výpadku (navrácení služeb po obnovení) Vraťte databáze do primární oblasti.
+  - Obnovení databází do primární oblasti po omezení výpadku (navrácení služeb po obnovení)
 
 - **Neplánované převzetí služeb při selhání**
 
@@ -127,7 +127,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 
 - **Období odkladu s ztrátou dat**
 
-  Vzhledem k tomu, že primární a sekundární databáze jsou synchronizovány pomocí asynchronní replikace, může převzetí služeb při selhání dojít ke ztrátě dat. Zásady automatického převzetí služeb při selhání můžete přizpůsobit tak, aby odrážely odolnost vaší aplikace proti ztrátě dat. Konfigurací nástroje `GracePeriodWithDataLossHours` můžete určit, jak dlouho systém počká, než se iniciuje převzetí služeb při selhání, které pravděpodobně bude mít za následek ztrátu dat.
+  Vzhledem k tomu, že primární a sekundární databáze jsou synchronizovány pomocí asynchronní replikace, může převzetí služeb při selhání dojít ke ztrátě dat. Zásady automatického převzetí služeb při selhání můžete přizpůsobit tak, aby odrážely odolnost vaší aplikace proti ztrátě dat. Konfigurací `GracePeriodWithDataLossHours` můžete určit, jak dlouho systém počká, než iniciuje převzetí služeb při selhání, které by pravděpodobně vedlo ke ztrátě dat.
 
 - **Několik skupin převzetí služeb při selhání**
 
@@ -176,7 +176,7 @@ Při provádění operací OLTP použijte `<fog-name>.database.windows.net` jako
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>Použití naslouchacího procesu jen pro čtení pro úlohu jen pro čtení
 
-Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. V případě relací jen pro čtení použijte `<fog-name>.secondary.database.windows.net` jako adresu URL serveru a připojení se automaticky přesměruje na sekundární. Je také vhodné určit v úmyslu přečíst si v připojovacím řetězci pomocí `ApplicationIntent=ReadOnly` .
+Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. V případě relací jen pro čtení použijte `<fog-name>.secondary.database.windows.net` jako adresu URL serveru a připojení se automaticky přesměruje na sekundární. Je také vhodné určit záměr čtení v připojovacím řetězci pomocí `ApplicationIntent=ReadOnly` .
 
 ### <a name="preparing-for-performance-degradation"></a>Příprava na snížení výkonu
 

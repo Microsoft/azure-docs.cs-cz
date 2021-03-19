@@ -2,17 +2,17 @@
 title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: 65fa6a690f05a61e54bae2d22f4889c3193bcb1a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.date: 03/16/2021
+ms.openlocfilehash: ee8cb054f3f10c3b33d5235b2b03cdfeac266139
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008701"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592157"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
-V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostředků na služby Azure.
+V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostředků na služby Azure. Pokud poskytovatele prostředků neznáte, přečtěte si téma [Vyhledání poskytovatele prostředků](#find-resource-provider).
 
 ## <a name="match-resource-provider-to-service"></a>Spárovat poskytovatele prostředků se službou
 
@@ -192,6 +192,42 @@ Poskytovatelé prostředků, které jsou označeni jako **registrované** , jsou
 
 > [!IMPORTANT]
 > Pokud jste připraveni ho použít, zaregistrujte pouze poskytovatele prostředků. Krok registrace umožňuje zachovat v rámci předplatného nejnižší oprávnění. Uživatel se zlými úmysly nemůže použít poskytovatele prostředků, kteří nejsou registrováni.
+
+## <a name="find-resource-provider"></a>Najít poskytovatele prostředků
+
+Pokud máte v Azure existující infrastrukturu, ale nejste si jistí, který poskytovatel prostředků se používá, můžete poskytovatele prostředků najít pomocí rozhraní příkazového řádku Azure CLI nebo PowerShellu. Zadejte název skupiny prostředků obsahující prostředky, které se mají najít.
+
+Následující příklad používá rozhraní příkazového řádku Azure:
+
+```azurecli-interactive
+az resource list -g examplegroup
+```
+
+Výsledky zahrnují typ prostředku. Obor názvů poskytovatele prostředků je první část typu prostředku. Následující příklad ukazuje poskytovatele prostředků **trezoru Microsoft..** .
+
+```json
+[
+  {
+    ...
+    "type": "Microsoft.KeyVault/vaults"
+  }
+]
+```
+
+V následujícím příkladu se používá PowerShell:
+
+```azurepowershell-interactive
+Get-AzResource -ResourceGroupName examplegroup
+```
+
+Výsledky zahrnují typ prostředku. Obor názvů poskytovatele prostředků je první část typu prostředku. Následující příklad ukazuje poskytovatele prostředků **trezoru Microsoft..** .
+
+```azurepowershell
+Name              : examplekey
+ResourceGroupName : examplegroup
+ResourceType      : Microsoft.KeyVault/vaults
+...
+```
 
 ## <a name="next-steps"></a>Další kroky
 

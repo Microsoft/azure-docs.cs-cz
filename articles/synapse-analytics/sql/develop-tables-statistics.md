@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 218803d0b7e1f5add2f033a7ce01e0a8f6ffc956
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674090"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594780"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistika v synapse SQL
 
@@ -90,9 +90,9 @@ Statistiky ve sloupci země nebo oblasti v tabulce zákazníků nemusí být nik
 
 Pokud však datový sklad obsahuje pouze jednu zemi nebo oblast a přinesete data z nové země nebo oblasti, je nutné aktualizovat statistiku ve sloupci země nebo oblast.
 
-V následující části jsou doporučení aktualizující statistiky:
+Níže jsou uvedená doporučení pro aktualizaci statistik:
 
-|||
+|Typ|Doporučení|
 |-|-|
 | **Frekvence aktualizací statistiky**  | Konzervativní: denně </br> Po načtení nebo transformaci dat |
 | **Vzorkování** |  Méně než 1 000 000 000 řádků, použijte výchozí vzorkování (20 procent). </br> S více než 1 000 000 000 řádky použijte vzorkování ze dvou procent. |
@@ -443,7 +443,7 @@ K dispozici je několik systémových zobrazení a funkcí, které můžete pou�
 
 Tato systémová zobrazení obsahují informace o statistice:
 
-| Zobrazení katalogu | Popis |
+| Zobrazení katalogu | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každý sloupec. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každý objekt v databázi. |
@@ -457,7 +457,7 @@ Tato systémová zobrazení obsahují informace o statistice:
 
 Tyto systémové funkce jsou užitečné pro práci s statistikami:
 
-| Systémová funkce | Popis |
+| Systémová funkce | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Datum poslední aktualizace objektu statistiky |
 | [PŘÍKAZ DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Souhrnná úroveň a podrobné informace o distribuci hodnot, které přirozuměl objektům statistiky. |
@@ -825,7 +825,7 @@ K dispozici je několik systémových zobrazení a funkcí, které můžete pou�
 
 Tato systémová zobrazení obsahují informace o statistice:
 
-| Zobrazení katalogu                                                 | Popis                                                  |
+| Zobrazení katalogu                                                 | Description                                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Jeden řádek pro každý sloupec.                                     |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Jeden řádek pro každý objekt v databázi.                     |
@@ -839,7 +839,7 @@ Tato systémová zobrazení obsahují informace o statistice:
 
 Tyto systémové funkce jsou užitečné pro práci s statistikami:
 
-| Systémová funkce                                              | Popis                                  |
+| Systémová funkce                                              | Description                                  |
 | :----------------------------------------------------------- | :------------------------------------------- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Datum poslední aktualizace objektu statistiky |
 
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>Další kroky
 
-Další vylepšení výkonu dotazů pro vyhrazený fond SQL najdete v tématu [Monitorování úloh](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a [osvědčených postupů pro vyhrazený fond SQL](best-practices-sql-pool.md#maintain-statistics).
+Další vylepšení výkonu dotazů pro vyhrazený fond SQL najdete v tématu [Monitorování úloh](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a [osvědčených postupů pro vyhrazený fond SQL](best-practices-dedicated-sql-pool.md#maintain-statistics).
 
-Další vylepšení výkonu dotazů pro fond SQL bez serveru najdete v tématu [osvědčené postupy pro fond SQL bez serveru](best-practices-sql-on-demand.md) .
+Další vylepšení výkonu dotazů pro fond SQL bez serveru najdete v tématu [osvědčené postupy pro fond SQL bez serveru](best-practices-serverless-sql-pool.md) .

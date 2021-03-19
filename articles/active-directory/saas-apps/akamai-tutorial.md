@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 8838e3c92a2c7ccc77794973b3cb8e67128e3c71
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a22a214104357b9ad99238a8db157839a1c9fd46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654650"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591941"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Akamai
 
@@ -82,7 +82,7 @@ Aplikace Akamai EAA se nastavuje individuálně na portálu Azure AD. Správce m
 
 ![Scénář integrace 2](./media/header-akamai-tutorial/scenario-2.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -478,11 +478,11 @@ Přiřaďte poskytovatele identity.
 
 1. Ověřte vytvoření adresáře.
 
-    ![Snímek obrazovky okna adresáře konzoly Akamai EAA ukazující, že byla přidána ukázková ukázka adresáře. Live](./media/header-akamai-tutorial/directory-domain.png)
+    ![Snímek obrazovky okna adresáře konzoly Akamai EAA s informacemi o tom, že byl přidán adresář superdemo.live](./media/header-akamai-tutorial/directory-domain.png)
 
 1. Přidejte skupiny/organizační jednotky, které by vyžadovaly přístup.
 
-    ![Snímek obrazovky s nastavením pro \ demo adresáře. Live Ikona, kterou vyberete pro přidání skupin nebo organizačních jednotek, je zvýrazněna.](./media/header-akamai-tutorial/add-group.png)
+    ![Snímek obrazovky s nastavením adresáře superdemo.live. Ikona, kterou vyberete pro přidání skupin nebo organizačních jednotek, je zvýrazněna.](./media/header-akamai-tutorial/add-group.png)
 
 1. V níže uvedené skupině se říká EAAGroup a má 1 člen.
 
@@ -490,7 +490,7 @@ Přiřaďte poskytovatele identity.
 
 1. Přidejte adresář k poskytovateli identity kliknutím na   >  **zprostředkovatele identity** identity, klikněte na kartu **adresáře** a klikněte na **přiřadit adresář**.
 
-    ![Snímek obrazovky karty adresáře konzoly Akamai EAA pro jednotné přihlašování Azure AD zobrazující v seznamu aktuálně přiřazených adresářů prodemo.](./media/header-akamai-tutorial/assign-directory.png)
+    ![Snímek obrazovky karty adresáře konzoly Akamai EAA pro jednotné přihlašování Azure AD zobrazující superdemo.live v seznamu aktuálně přiřazených adresářů.](./media/header-akamai-tutorial/assign-directory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>Postup konfigurace delegování KCD pro EAA
 
@@ -498,7 +498,7 @@ Přiřaďte poskytovatele identity.
 
 1. V tomto příkladu použijeme účet s názvem **EAADelegation**. To můžete provést pomocí Snappin **Uživatelé a počítače služby Active Directory** .
 
-    ![Snímek obrazovky karty adresáře konzoly Akamai EAA pro jednotné přihlašování Azure AD Ukázková ukázka adresáře. Live je uvedena v části aktuálně přiřazené adresáře.](./media/header-akamai-tutorial/assign-directory.png)
+    ![Snímek obrazovky karty adresáře konzoly Akamai EAA pro jednotné přihlašování Azure AD Adresář superdemo.live je uveden v části aktuálně přiřazené adresáře.](./media/header-akamai-tutorial/assign-directory.png)
 
     > [!NOTE]
     > Uživatelské jméno musí být v určitém formátu založeném na **názvu zachycení identity**. Z obrázku 1 vidíte, že se jedná o **corpapps.Login.go.Akamai-Access.com** .
@@ -583,8 +583,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k Akamai, pro které jste nastavili jednotné přihlašování.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Akamai v okně moje aplikace, měli byste se automaticky přihlásit k Akamai, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Akamai v okně moje aplikace, měli byste se automaticky přihlásit k Akamai, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Akamai můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování Akamai můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

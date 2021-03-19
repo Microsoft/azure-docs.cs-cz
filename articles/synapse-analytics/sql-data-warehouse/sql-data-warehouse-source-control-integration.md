@@ -2,20 +2,20 @@
 title: Integrace správy zdrojového kódu
 description: DevOps prostředí databáze podnikové třídy pro vyhrazený fond SQL s integrací nativní správy zdrojového kódu pomocí Azure Repos (Git a GitHub).
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
 ms.date: 08/23/2019
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
-ms.openlocfilehash: 681b60ac664a210971f083900b9d8b5ba5df119f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 0864ab90f35e4af0443b418bc139ee5f8a7db665
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102617552"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585532"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Integrace správy zdrojového kódu pro vyhrazený fond SQL ve službě Azure synapse Analytics
 

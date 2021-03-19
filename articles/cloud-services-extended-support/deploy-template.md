@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: a606956483ddb7c7f3a4f3cef8728ade508ab461
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: b3fd8dcd5f2e73b798f6e9529b5811b9935bc393
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574267"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605762"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Nasazení cloudové služby (rozšířené podpory) pomocí šablon ARM
 
@@ -45,7 +45,7 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
 ## <a name="deploy-a-cloud-service-extended-support"></a>Nasazení cloudové služby (Rozšířená podpora)
 
 > [!NOTE]
-> Alternativním způsobem, jak nasadit cloudovou službu (rozšířené podpoře), je prostřednictvím [Azure Portal](https://portal.azure.com). Vygenerovanou šablonu ARM si můžete stáhnout prostřednictvím portálu pro budoucí nasazení.
+> Alternativním způsobem, jak nasadit cloudovou službu (rozšířené podpoře), je prostřednictvím [Azure Portal](https://portal.azure.com). Vygenerovanou [šablonu ARM](generate-template-portal.md) si můžete stáhnout prostřednictvím portálu pro budoucí nasazení.
  
 1. Vytvořte virtuální síť. Název virtuální sítě musí odpovídat odkazům v souboru konfigurace služby (. cscfg). Pokud používáte existující virtuální síť, vynechejte tento oddíl ze šablony ARM.
 

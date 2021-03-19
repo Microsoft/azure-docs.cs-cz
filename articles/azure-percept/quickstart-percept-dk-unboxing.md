@@ -7,18 +7,18 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/16/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 40751401760d877fe3feab39f3fea1f2fbeee54b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: efa255ba38f7e00785335bf458ecc0ed91da646b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665381"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608176"
 ---
 # <a name="quickstart-unbox-and-assemble-your-azure-percept-dk-components"></a>Rychlý Start: Unbox a sestavení komponent Azure Percept DK
 
 Po přijetí služby Azure Percept DK si v této příručce najdete informace o tom, jak připojit komponenty a zapnout zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Percept DK (DevKit)
 - P7 Screwdriver (nepovinný, použitý k zabezpečení konektoru napájecího kabelu do nosné desky)
@@ -32,7 +32,7 @@ Po přijetí služby Azure Percept DK si v této příručce najdete informace o
 1. Připojte komponenty DevKit.
 
     > [!NOTE]
-    > Port adaptéru napájení je umístěný na pravé straně nosné desky. Zbývající porty (2x USB-A, 1x USB-C, 1x HDMI a 1x Ethernet) a tlačítko obnovit se nachází na levé straně nosné desky.
+    > Port adaptéru napájení je umístěný na pravé straně nosné desky. Zbývající porty (2x USB-A, 1x USB-C a 1x Ethernet) a tlačítko napájení se nachází na levé straně nosné desky.
 
     1. Došroubujte Wi-Fi antény do nosné desky.
 
@@ -44,11 +44,17 @@ Po přijetí služby Azure Percept DK si v této příručce najdete informace o
 
     1. Připojte napájecí adaptér/kabel k nosné desce a zásuvce na zdi. K naplnění konektoru napájecího kabelu na desku použijte P7 Screwdriver (není součástí DevKit) pro zvýšení šrouby konektorů.
 
-    1. Po připojení napájecího kabelu do zásuvky na zdi se zařízení automaticky zapne. Tlačítko Reset na levé straně nosné desky bude osvětlené. Počkejte prosím nějakou dobu, než se zařízení spustí.
+    1. Po připojení napájecího kabelu do zásuvky na zdi se zařízení automaticky zapne. Tlačítko napájení na levé straně nosné desky bude osvětlené. Počkejte prosím nějakou dobu, než se zařízení spustí.
 
         > [!NOTE]
-        > Tlačítko Obnovit slouží k vypnutí nebo resetování zařízení během připojení k napájení z elektrické zásuvky. V případě výpadku napájení se zařízení automaticky resetuje a znovu zapne.
+        > Tlačítko napájení slouží k vypnutí nebo restartování zařízení při připojení k napájení z elektrické zásuvky. V případě výpadku napájení se zařízení automaticky restartuje.
+
+Pro vizuální ukázku sestavení DevKit se podívejte na 0:00 až 0:50 z následujícího videa:
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/-dmcE2aQkDE]
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když je váš DevKit připojený a zapnutý, přečtěte si průvodce prostředím pro instalaci Azure Percept DK a dokončete nastavení zařízení. Prostředí pro instalaci umožňuje připojit DevKit k síti Wi-Fi, nastavit přihlášení SSH, vytvořit IoT Hub a zřídit DevKit pro svůj účet Azure. Po dokončení instalace zařízení budete připraveni začít vytváření prototypů.
+Teď, když je váš DevKit připojený a zapnutý, přečtěte si průvodce [prostředím pro instalaci Azure PERCEPT DK](./quickstart-percept-dk-set-up.md) a dokončete nastavení zařízení. Prostředí pro instalaci umožňuje připojit DevKit k síti Wi-Fi, nastavit přihlášení SSH, vytvořit IoT Hub a zřídit DevKit pro svůj účet Azure. Po dokončení instalace zařízení budete připraveni začít vytváření prototypů.

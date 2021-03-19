@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: ae2f37cd84904aff33c4752bd54c815b74bb71c8
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 78639386c9d836055d80566f4b84565c2c3b8e80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428180"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612063"
 ---
 V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syn
 
 Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky pro rychlý Start C++](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/text-to-speech) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -78,8 +78,8 @@ int wmain()
     }
     return 0;
 }
-    
-void synthesizeSpeech() 
+
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 }
@@ -92,7 +92,7 @@ V dalším kroku vytvoříte [`SpeechSynthesizer`](/cpp/cognitive-services/speec
 Chcete-li začít, vytvořte `AudioConfig` a automaticky zapište výstup do `.wav` souboru pomocí `FromWavFileOutput()` funkce.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto audioConfig = AudioConfig::FromWavFileOutput("path/to/write/file.wav");
@@ -102,7 +102,7 @@ void synthesizeSpeech()
 Dále vytvořte instanci a `SpeechSynthesizer` předání `config` objektu a `audioConfig` objektu jako param. Pak je provádění syntézy řeči a psaní do souboru jednoduché jako při spuštění `SpeakTextAsync()` s textovým řetězcem.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto audioConfig = AudioConfig::FromWavFileOutput("path/to/write/file.wav");
@@ -118,7 +118,7 @@ Spusťte program a v `.wav` zadaném umístění se zapíše syntetizující sou
 V některých případech můžete chtít přímo vyprogramovat výstup syntetizované řeči přímo na mluvčí. Pokud to chcete provést, jednoduše vynechejte `AudioConfig` PARAT při vytváření `SpeechSynthesizer` v předchozím příkladu. Tento výstup vypíše aktuální aktivní výstupní zařízení.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto synthesizer = SpeechSynthesizer::FromConfig(config);
@@ -134,7 +134,7 @@ Pro mnoho scénářů ve vývoji aplikací pro rozpoznávání řeči pravděpod
 * Integrujte výsledek s jinými službami nebo rozhraními API.
 * Úprava zvukových dat, psaní vlastních `.wav` hlaviček atd.
 
-Tuto změnu je jednoduché provést v předchozím příkladu. Nejprve odeberte `AudioConfig` , protože budete spravovat chování výstupu ručně z tohoto bodu dále pro zvýšené řízení. Pak předejte `NULL` `AudioConfig` v `SpeechSynthesizer` konstruktoru. 
+Tuto změnu je jednoduché provést v předchozím příkladu. Nejprve odeberte `AudioConfig` , protože budete spravovat chování výstupu ručně z tohoto bodu dále pro zvýšené řízení. Pak předejte `NULL` `AudioConfig` v `SpeechSynthesizer` konstruktoru.
 
 > [!NOTE]
 > Předání `NULL` pro `AudioConfig` místo toho, aby ho nemuseli vynechat jako v příkladu výstupu mluvčího, ve výchozím nastavení nebude přehrávat zvuk na aktuálním aktivním výstupním zařízení.
@@ -142,11 +142,11 @@ Tuto změnu je jednoduché provést v předchozím příkladu. Nejprve odeberte 
 Tentokrát výsledek uložíte do [`SpeechSynthesisResult`](/cpp/cognitive-services/speech/speechsynthesisresult) proměnné. `GetAudioData`Funkce getter vrátí `byte []` výstupní data. S tímto můžete pracovat `byte []` ručně nebo můžete použít [`AudioDataStream`](/cpp/cognitive-services/speech/audiodatastream) třídu ke správě streamu v paměti. V tomto příkladu použijete `AudioDataStream.FromResult()` statickou funkci k získání datového proudu z výsledku.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
-    
+
     auto result = synthesizer->SpeakTextAsync("Getting the response as an in-memory stream.").get();
     auto stream = AudioDataStream::FromResult(result);
 }
@@ -172,14 +172,14 @@ V závislosti na vašich požadavcích máte k dispozici různé možnosti pro r
 V tomto příkladu zadáte RIFF formát s vysokou přesností nastavením `Riff24Khz16BitMonoPcm` `SpeechSynthesisOutputFormat` `SpeechConfig` objektu na. Podobně jako v předchozím oddílu můžete použít [`AudioDataStream`](/cpp/cognitive-services/speech/audiodatastream) k získání streamu v paměti výsledku a pak ho zapsat do souboru.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     config->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Riff24Khz16BitMonoPcm);
 
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
     auto result = synthesizer->SpeakTextAsync("A simple test to write to a file.").get();
-    
+
     auto stream = AudioDataStream::FromResult(result);
     stream->SaveToWavFileAsync("path/to/write/file.wav").get();
 }
@@ -205,11 +205,11 @@ Nejprve vytvořte nový soubor XML pro SSML config v kořenovém adresáři proj
 Dál je potřeba změnit požadavek na Shrnutí řeči, aby odkazoval na váš soubor XML. Požadavek je většinou stejný, ale namísto použití `SpeakTextAsync()` funkce použijte `SpeakSsmlAsync()` . Tato funkce očekává řetězec XML, takže nejdřív načtěte konfiguraci SSML jako řetězec. Z tohoto místa je objekt výsledku přesně stejný jako předchozí příklady.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
-    
+
     std::ifstream file("./ssml.xml");
     std::string ssml, line;
     while (std::getline(file, line))
@@ -218,7 +218,7 @@ void synthesizeSpeech()
         ssml.push_back('\n');
     }
     auto result = synthesizer->SpeakSsmlAsync(ssml).get();
-    
+
     auto stream = AudioDataStream::FromResult(result);
     stream->SaveToWavFileAsync("path/to/write/file.wav").get();
 }
@@ -254,3 +254,11 @@ Pokud chcete přepnout na neuronové hlas, změňte na `name` jednu z [možnost�
   </voice>
 </speak>
 ```
+
+## <a name="visemes"></a>Visemes
+
+Rozpoznávání řeči se obvykle považuje za dobrý způsob, jak vyřídit animaci výrazů obličeje.
+Často se [visemes](../../../how-to-speech-synthesis-viseme.md) používají k reprezentování klíčových pozic v pozorovaném řeči (tj. umístění sad LIP, vidlici a jazyka při vytváření konkrétního foném).
+Můžete se přihlásit k odběru události viseme v sadě Speech SDK a vygenerovat data animace obličeje.
+Pak můžete použít taková data na znak pro vytvoření animace obličeje.
+Přečtěte si, [Jak získat viseme výstupy](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).

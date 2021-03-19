@@ -7,10 +7,10 @@ ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73468553"
 ---
 # <a name="azure-data-share-concepts"></a>Koncepty Azure Data Share 
@@ -27,7 +27,7 @@ Příjemce dat je organizace, která přijímá data od poskytovatele dat. Pří
 
 ## <a name="data-share"></a>Data Share
 
-Sdílená složka je skupina datových sad, které jsou sdíleny jako jediná entita. Datové sady mohou být z řady zdrojů dat Azure, které podporuje sdílená složka Azure. V současné době Azure Data Share podporuje Azure Blob Storage a Azure Data Lake Store. 
+Sdílená datová složka je skupina datových sad, které se sdílejí jako jediná entita. Datové sady mohou být z celé řady zdrojů dat v Azure, které podporuje služba Azure Data Share. V současné době Azure Data Share podporuje Azure Blob Storage a Azure Data Lake Store. 
 
 ## <a name="share-subscription"></a>Sdílet předplatné 
 

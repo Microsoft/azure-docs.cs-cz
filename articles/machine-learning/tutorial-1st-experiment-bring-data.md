@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ecabfde624ba6d3393bbf6d5480b83dbb5303c5e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522355"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604551"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Kurz: použití vlastních dat (část 4 ze 4)
 
@@ -37,9 +37,14 @@ V tomto kurzu jste:
 > * Odešlete a spusťte školicí skript.
 > * Zobrazte si výstup kódu v cloudu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Dokončení [třetí části](tutorial-1st-experiment-sdk-train.md) série.
+Budete potřebovat data a aktualizovanou verzi prostředí pytorch, kterou jste vytvořili v předchozím kurzu.  Ujistěte se, že jste dokončili tyto kroky:
+
+1. [Vytvoření trénovacího skriptu](tutorial-1st-experiment-sdk-train.md#create-training-scripts)
+1. [Vytvořit nové prostředí Pythonu](tutorial-1st-experiment-sdk-train.md#environment)
+1. [Test lokálně](tutorial-1st-experiment-sdk-train.md#test-local)
+1. [Aktualizace souboru prostředí conda](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
 ## <a name="adjust-the-training-script"></a>Úprava školicího skriptu
 
@@ -75,6 +80,7 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+
 > [!div class="nextstepaction"]
 > [Upravil (a) jsem školicí skript,](?success=adjust-training-script#test-locally) který [jsem narazil na problém](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
 
@@ -84,28 +90,27 @@ Váš skript teď jako argument přijímá _cestu k datům_ . Začněte tím, ž
 
 :::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="Adresářová struktura ukazuje. AzureML, data a src sub-directorys":::
 
+1. Ukončí aktuální prostředí.
 
-Pokud jste v předchozím kurzu nespouštěli místně, nebudete `train.py` mít `data/` adresář. V takovém případě spusťte `torchvision.datasets.CIFAR10` metodu místně `download=True` ve vašem `train.py` skriptu.
+    ```bash
+    conda deactivate
 
-Pokud chcete spustit místní prostředí, ujistěte se, že jste ukončili prostředí kurzu a aktivujete nové prostředí conda:
+1. Now create and activate the new environment.  This will rebuild the pytorch-aml-env with the [updated environment file](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
-```bash
-conda deactivate                # If you are still using the tutorial environment, exit it
-```
 
-```bash
-conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
-```
+    ```bash
+    conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+    ```
 
-```bash
-conda activate pytorch-aml-env          # activate new conda environment
-```
+    ```bash
+    conda activate pytorch-aml-env          # activate new conda environment
+    ```
 
-Pokud chcete upravený školicí skript spustit místně, zavolejte:
+1. Nakonec spusťte upravený školicí skript místně.
 
-```bash
-python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
-```
+    ```bash
+    python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
+    ```
 
 Nemusíte si stahovat datovou sadu CIFAR10 předáním místní cesty k datům. Můžete také experimentovat s různými hodnotami pro _studijní_ kurzy a _potenciál_ parametry, aniž byste je museli v školicím skriptu zakódovat.
 

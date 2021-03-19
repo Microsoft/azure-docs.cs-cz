@@ -9,20 +9,20 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruxu
 ms.author: ruxu
-ms.openlocfilehash: ad6f0d5ad55716e19e4e0c571056d18641e23d21
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: a3899b83133b3f951547fae0b11c044bfa85a5fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102620234"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589595"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Kurz: sestavování aplikací strojového učení pomocí Microsoft Machine Learning pro Apache Spark (Preview)
 
-V tomto článku se naučíte, jak používat Microsoft Machine Learning for Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) k vytváření aplikací strojového učení. MMLSpark rozbalí řešení distribuovaného strojového učení Apache Spark přidáním mnoha nástrojů pro hloubkové učení a datové vědy, jako je [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/big-data/cognitive-services-for-big-data), [OpenCV](https://opencv.org/), [LightGBM](https://github.com/Microsoft/LightGBM) a další.  MMLSpark umožňuje vytvářet výkonné a vysoce škálovatelné prediktivní a analytické modely z různých zdrojů dat Spark.
+V tomto článku se naučíte, jak používat Microsoft Machine Learning for Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) k vytváření aplikací strojového učení. MMLSpark rozbalí řešení distribuovaného strojového učení Apache Spark přidáním mnoha nástrojů pro hloubkové učení a datové vědy, jako je [Azure Cognitive Services](../../cognitive-services/big-data/cognitive-services-for-big-data.md), [OpenCV](https://opencv.org/), [LightGBM](https://github.com/Microsoft/LightGBM) a další.  MMLSpark umožňuje vytvářet výkonné a vysoce škálovatelné prediktivní a analytické modely z různých zdrojů dat Spark.
 Synapse Spark poskytuje integrované MMLSpark knihovny, včetně:
 
 - [Pro dostupné](https://github.com/VowpalWabbit/vowpal_wabbit) – služby knihoven pro strojové učení, které umožňují v tweety povolit analýzu textu jako mínění Analysis.
-- [Cognitive Services ve Sparku](https://docs.microsoft.com/azure/cognitive-services/big-data/cognitive-services-for-big-data) – Chcete-li kombinovat funkci Azure Cognitive Services v kanálech SparkML, aby bylo možné odvodit návrh řešení pro rozpoznávání služby Data Modeling, jako je detekce anomálií.
+- [Cognitive Services ve Sparku](../../cognitive-services/big-data/cognitive-services-for-big-data.md) – Chcete-li kombinovat funkci Azure Cognitive Services v kanálech SparkML, aby bylo možné odvodit návrh řešení pro rozpoznávání služby Data Modeling, jako je detekce anomálií.
 - [LightBGM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – model strojového učení, který umožňuje školení modelu pro prediktivní analýzu, jako je detekce ID obličeje.
 - Podmíněné KNN – škálovatelné modely KNN s podmíněnými dotazy.
 - [Http ve Sparku](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – povoluje orchestraci distribuovaných mikroslužeb v integraci Sparku a protokolu HTTP založeného na protokolu HTTP.
@@ -36,11 +36,11 @@ Tento kurz se zabývá ukázkami, které používají Azure Cognitive Services v
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
-- [Pracovní prostor Azure synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace) s účtem úložiště Azure Data Lake Storage Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být *přispěvatelem dat objektů BLOB úložiště* Data Lake Storage Gen2 systému souborů, se kterým pracujete.
-- V pracovním prostoru Azure synapse Analytics je fond Spark. Podrobnosti najdete v tématu [Vytvoření fondu Spark ve službě Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-sql-pool-studio).
-- Kroky před konfigurací popsané v tomto kurzu [konfigurují Cognitive Services v Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/machine-learning/tutorial-configure-cognitive-services-synapse).
+- [Pracovní prostor Azure synapse Analytics](../get-started-create-workspace.md) s účtem úložiště Azure Data Lake Storage Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být *přispěvatelem dat objektů BLOB úložiště* Data Lake Storage Gen2 systému souborů, se kterým pracujete.
+- V pracovním prostoru Azure synapse Analytics je fond Spark. Podrobnosti najdete v tématu [Vytvoření fondu Spark ve službě Azure synapse](../quickstart-create-sql-pool-studio.md).
+- Kroky před konfigurací popsané v tomto kurzu [konfigurují Cognitive Services v Azure synapse](./tutorial-configure-cognitive-services-synapse.md).
 
 
 ## <a name="get-started"></a>Začínáme
@@ -69,7 +69,7 @@ anomalydetector_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", a
 
 ## <a name="text-analytics-sample"></a>Ukázka analýzy textu
 
-Služba [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) poskytuje několik algoritmů pro extrakci inteligentních přehledů z textu. Můžete například najít mínění zadaného vstupního textu. Služba vrátí skóre od 0,0 do 1,0, kde nízké skóre naznačují negativní mínění a vysoké skóre značí kladné mínění. Tato ukázka používá tři jednoduché věty a vrátí mínění pro každou z nich.
+Služba [Analýza textu](../../cognitive-services/text-analytics/index.yml) poskytuje několik algoritmů pro extrakci inteligentních přehledů z textu. Můžete například najít mínění zadaného vstupního textu. Služba vrátí skóre od 0,0 do 1,0, kde nízké skóre naznačují negativní mínění a vysoké skóre značí kladné mínění. Tato ukázka používá tři jednoduché věty a vrátí mínění pro každou z nich.
 
 ```python
 from pyspark.sql.functions import col
@@ -104,7 +104,7 @@ display(sentiment.transform(df_sentences).select("text", col("sentiment")[0].get
 | Jsem si dnes spokojeni, Slunečné! | pozitivní |
 
 ## <a name="computer-vision-sample"></a>Ukázka počítačového vidění
-[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) analyzuje obrázky pro identifikaci struktury, jako jsou obličeje, objekty a popisy přirozeného jazyka. V této ukázce označíte následující obrázek. Značky jsou jedním z popisů textu v obrázku, jako jsou například rozpoznatelné objekty, lidé, krajin a akce.
+[Počítačové zpracování obrazu](../../cognitive-services/computer-vision/index.yml) analyzuje obrázky pro identifikaci struktury, jako jsou obličeje, objekty a popisy přirozeného jazyka. V této ukázce označíte následující obrázek. Značky jsou jedním z popisů textu v obrázku, jako jsou například rozpoznatelné objekty, lidé, krajin a akce.
 
 
 ![image](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg)
@@ -134,7 +134,7 @@ display(analysis.transform(df_images).select("image", "analysis_results.descript
 | `https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg` | [skating, person, Man, venkovní, jedoucí, sport, skateboard, Young, Board, tričko, vzduch, Park, Boy, strana, přechod, rampa, zdvih, štych, nalétající; |
 
 ## <a name="bing-image-search-sample"></a>Ukázka vyhledávání obrázků Bingu
-[Vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) vyhledá web, aby se načetly obrázky související s dotazem přirozeného jazyka uživatele. V této ukázce používáme textový dotaz, který vyhledává obrázky s uvozovkami. Vrátí seznam adres URL obrázků, které obsahují fotografie související s naším dotazem.
+[Vyhledávání obrázků Bingu](../../cognitive-services/bing-image-search/overview.md) vyhledá web, aby se načetly obrázky související s dotazem přirozeného jazyka uživatele. V této ukázce používáme textový dotaz, který vyhledává obrázky s uvozovkami. Vrátí seznam adres URL obrázků, které obsahují fotografie související s naším dotazem.
 
 
 ```python
@@ -185,7 +185,7 @@ display(res_bingsearch.dropDuplicates())
 
 ## <a name="anomaly-detector-sample"></a>Ukázka detektoru anomálií
 
-Detekce [anomálií](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) je ideální pro detekci nedovolených dat v datech časových řad. V této ukázce používáme službu k nalezení anomálií v celé časové řadě.
+Detekce [anomálií](../../cognitive-services/anomaly-detector/index.yml) je ideální pro detekci nedovolených dat v datech časových řad. V této ukázce používáme službu k nalezení anomálií v celé časové řadě.
 
 ```python
 from pyspark.sql.functions import lit

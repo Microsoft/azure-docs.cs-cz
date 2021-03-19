@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 76c6d7caf3c63779e12443304688192f7311720a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101473"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594559"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -51,14 +51,16 @@ Některé Azure Monitor služby používají globální koncové body, což znam
 Když nastavíte připojení k privátnímu propojení, vaše služba DNS se aktualizuje, aby mapovala Azure Monitor koncové body na privátní IP adresy z rozsahu IP adres vaší virtuální sítě. Tato změna přepíše všechna předchozí mapování těchto koncových bodů, což může mít smysluplné důsledky, které jsou níže uvedené. 
 
 ### <a name="azure-monitor-private-link-applies-to-all-azure-monitor-resources---its-all-or-nothing"></a>Azure Monitor privátní odkaz platí pro všechny prostředky Azure Monitor – to je vše nebo nic
-Vzhledem k tomu, že některé koncové body Azure Monitor jsou globální, není možné vytvořit připojení privátního propojení pro konkrétní součást nebo pracovní prostor. Místo toho se při nastavení privátního odkazu na jednu komponentu Application Insights aktualizace záznamů DNS pro **všechny** Application Insights součásti. Jakékoli pokusy o ingestování nebo dotazování komponenty procházejí přes privátní odkaz a pravděpodobně selžou. Podobně nastavení privátního odkazu na jeden pracovní prostor způsobí, že všechny Log Analytics dotazy procházejí koncovým bodem dotazu privátního propojení (ale ne žádosti ingestování, které mají koncové body specifické pro pracovní prostor).
+Vzhledem k tomu, že některé koncové body Azure Monitor jsou globální, není možné vytvořit připojení privátního propojení pro konkrétní součást nebo pracovní prostor. Místo toho, když nastavíte privátní odkaz na jednu součást Application Insights nebo pracovní prostor Log Analytics, budou se záznamy DNS aktualizovat pro **všechny** Application Insights komponenty. Jakékoli pokusy o ingestování nebo dotazování komponenty procházejí přes privátní odkaz a pravděpodobně selžou. S ohledem na Log Analytics jsou koncové body pro ingestování a konfiguraci specifické pro pracovní prostory, což znamená, že nastavení privátního odkazu bude platit jenom pro zadané pracovní prostory. Ingestování a konfigurace dalších pracovních prostorů se přesměrují na výchozí koncové body veřejné Log Analytics.
 
 ![Diagram přepsání DNS v jedné virtuální síti](./media/private-link-security/dns-overrides-single-vnet.png)
 
 To platí nejen pro konkrétní virtuální síť, ale pro všechny virtuální sítě, které sdílejí stejný server DNS (viz [problém přepsání DNS](#the-issue-of-dns-overrides)). Například požadavek na ingestování protokolů do jakékoli Application Insights komponenty se vždycky pošle prostřednictvím trasy privátního odkazu. Součásti, které nejsou propojené s AMPLS, selžou ověřování privátních odkazů a neprojde se.
 
 > [!NOTE]
-> K uzavření: Když nastavíte připojení privátního propojení k jednomu prostředku, vztahuje se na všechny prostředky Azure Monitor v síti – to vše nebo nic. To znamená, že byste měli přidat všechny Azure Monitor prostředky do vaší sítě k vašemu AMPLS nebo žádné z nich.
+> K uzavření: Když nastavíte připojení privátního propojení k jednomu prostředku, vztahuje se na prostředky Azure Monitor napříč vaší sítí. U Application Insightsch prostředků se jedná o vše nebo nic. To znamená, že byste měli přidat všechny Application Insights prostředky do vaší sítě k vašemu AMPLS nebo žádné z nich.
+> 
+> Abychom mohli zpracovávat rizika exfiltraceí dat, doporučujeme, abyste do svého AMPLS přidali všechny prostředky Application Insights a Log Analytics a zablokovali tak co nejvíc síťových přenosů.
 
 ### <a name="azure-monitor-private-link-applies-to-your-entire-network"></a>Azure Monitor privátní odkaz platí pro celou síť.
 Některé sítě se skládají z několika virtuální sítě. Pokud virtuální sítě používá stejný server DNS, přepíše mapování DNS mezi sebou a může také přerušit komunikaci mezi sebou pomocí Azure Monitor (podívejte [se na problémy s přepsáními DNS](#the-issue-of-dns-overrides)). V konečném případě bude moci komunikovat s Azure Monitor pouze poslední síť VNet, protože služba DNS namapuje Azure Monitor koncových bodů na privátní IP adresy z tohoto virtuální sítě rozsahu (které nemusí být dosažitelné z jiných virtuální sítě).

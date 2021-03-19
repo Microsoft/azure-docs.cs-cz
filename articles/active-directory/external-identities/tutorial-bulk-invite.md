@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 05/07/2020
+ms.date: 03/17/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01deae46c442fc95c6aead0f11de929f47163c3c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905867"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586529"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Hromadné pozvání uživatelů spolupráce B2B služby Azure AD
 
@@ -41,7 +41,7 @@ Stáhněte a vyplňte šablonu sdíleného svazku clusteru hromadného nahrání
 
 - **Číslo verze**: první řádek obsahující číslo verze musí být zahrnut do souboru CSV pro nahrávání.
 - **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název položky* &gt; [PropertyName] &lt; *povinný nebo prázdný* &gt; . Například, `Email address to invite [inviteeEmail] Required`. Některé starší verze šablony mohou mít drobné variace.
-- **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů přípustných hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
+- **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
 
 ### <a name="additional-guidance"></a>Další doprovodné materiály
 
@@ -50,35 +50,39 @@ Stáhněte a vyplňte šablonu sdíleného svazku clusteru hromadného nahrání
 - Nedoporučujeme přidávat do šablony nové sloupce. Všechny další sloupce, které přidáte, se ignorují a nezpracovávají.
 - Doporučujeme si stáhnout nejnovější verzi šablony CSV, jak je to možné.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Potřebujete alespoň dva testovací e-mailové účty, na které můžete pozvánky odeslat. Účty se nesmí nacházet ve vaší organizaci. Můžete použít libovolný typ účtu, včetně sociálních účtů jako jsou adresy gmail.com nebo outlook.com.
 
 ## <a name="invite-guest-users-in-bulk"></a>Hromadné pozvání uživatelů typu Host
 
-1. Přihlaste se k Azure Portal pomocí účtu, který je správcem uživatele v organizaci.
+1. Přihlaste se k Azure Portal pomocí účtu, který je globálním správcem organizace.
 2. V navigačním podokně vyberte **Azure Active Directory**.
-3. V části **Spravovat**vyberte **Uživatelé**  >  **hromadné pozvánky**.
+3. V části **Spravovat** vyberte **Všichni uživatelé**.
+4. Vyberte hromadné pozvání **hromadných operací**  >  .
+
+    ![Tlačítko hromadného pozvání](media/tutorial-bulk-invite/bulk-invite-button.png)
+
 4. Na stránce **hromadně pozvat uživatele** vyberte **Stáhnout** a získejte platnou šablonu. csv s vlastnostmi pozvánky.
 
-    ![Tlačítko pro stažení hromadného pozvání](media/tutorial-bulk-invite/bulk-invite-button.png)
+     ![Stáhnout soubor CSV](media/tutorial-bulk-invite/download-button.png)
 
-5. Otevřete šablonu. csv a přidejte řádek pro každého uživatele typu Host. Požadované hodnoty jsou:
+1. Otevřete šablonu. csv a přidejte řádek pro každého uživatele typu Host. Požadované hodnoty jsou:
 
    * **E-mailová adresa pro pozvání** – uživatel, který dostane pozvánku
 
-   * **Adresa URL přesměrování** – adresa URL, na kterou se po přijetí pozvánky přesměruje pozvaní uživatelé
+   * **Adresa URL přesměrování** – adresa URL, na kterou se po přijetí pozvánky přesměruje pozvaní uživatelé. Pokud chcete přeposlání uživatele na stránku Moje aplikace, musíte tuto hodnotu změnit na https://myapps.microsoft.com nebo https://myapplications.microsoft.com .
 
     ![Příklad souboru CSV se zadanými uživateli typu Host](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
    > [!NOTE]
    > V **přizpůsobené zprávě pozvánky** nepoužívejte čárky, protože jim zabrání v úspěšném analyzování zprávy.
 
-6. Uložte soubor.
-7. Na stránce **hromadně pozvat uživatele** v části **nahrát soubor CSV**přejděte k souboru. Po výběru souboru se spustí ověření souboru. csv. 
+6. Soubor uložte.
+7. Na stránce **hromadně pozvat uživatele** v části **nahrát soubor CSV** přejděte k souboru. Po výběru souboru se spustí ověření souboru. csv. 
 8. Když se obsah souboru ověří, zobrazí se soubor se **úspěšně nahrál**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
 9. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která přidá pozvánky. 
-10. Chcete-li zobrazit stav úlohy, vyberte **kliknutím sem zobrazíte stav jednotlivých operací**. Nebo můžete vybrat **výsledky hromadné operace** v části **aktivita** . Chcete-li zobrazit podrobnosti o jednotlivých položkách řádku v rámci hromadné operace, vyberte hodnoty ve sloupcích **# úspěch**, **# selhání**nebo **Celkový počet požadavků** . Pokud dojde k chybám, zobrazí se důvody selhání.
+10. Chcete-li zobrazit stav úlohy, vyberte **kliknutím sem zobrazíte stav jednotlivých operací**. Nebo můžete vybrat **výsledky hromadné operace** v části **aktivita** . Chcete-li zobrazit podrobnosti o jednotlivých položkách řádku v rámci hromadné operace, vyberte hodnoty ve sloupcích **# úspěch**, **# selhání** nebo **Celkový počet požadavků** . Pokud dojde k chybám, zobrazí se důvody selhání.
 
     ![Příklad výsledků hromadné operace](media/tutorial-bulk-invite/bulk-operation-results.png)
 
@@ -93,7 +97,7 @@ Zkontrolujte, že uživatelé typu Host, které jste přidali, existují v adres
 1. Přihlaste se k Azure Portal pomocí účtu, který je správcem uživatele v organizaci.
 2. V navigačním podokně vyberte **Azure Active Directory**.
 3. V části **Spravovat** vyberte **Uživatelé**.
-4. V části **Zobrazit**vyberte možnost **Uživatelé typu Host** a ověřte, že jsou v seznamu uvedeni uživatelé, které jste přidali.
+4. V části **Zobrazit** vyberte možnost **Uživatelé typu Host** a ověřte, že jsou v seznamu uvedeni uživatelé, které jste přidali.
 
 ### <a name="view-guest-users-with-powershell"></a>Zobrazení uživatelů typu host s využitím PowerShellu
 

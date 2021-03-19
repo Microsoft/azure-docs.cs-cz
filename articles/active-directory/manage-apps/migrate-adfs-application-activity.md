@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260058"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589459"
 ---
-# <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS (Preview) k migraci aplikací do služby Azure AD
+# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS k migraci aplikací do Azure AD
 
 Mnoho organizací používá Active Directory Federation Services (AD FS) (AD FS) k zajištění jednotného přihlašování ke cloudovým aplikacím. Při přesunu AD FSch aplikací do Azure AD se k ověřování připravují významné výhody, zejména v souvislosti se správou nákladů, řízením rizik, produktivitou, dodržováním předpisů a zásadami správného řízení. Ale porozumění aplikacím, které jsou kompatibilní s Azure AD, a určením konkrétních kroků migrace může být časově náročné.
 
-Sestava aktivita aplikace AD FS (Preview) v Azure Portal umožňuje rychle určit, které z vašich aplikací je možné migrovat do služby Azure AD. Posuzuje všechny AD FS aplikace kvůli kompatibilitě s Azure AD, kontroluje případné problémy a poskytuje pokyny k přípravě jednotlivých aplikací pro migraci. Pomocí sestavy aktivity aplikace AD FS můžete:
+Sestava aktivita aplikace AD FS v Azure Portal vám umožní rychle určit, které z vašich aplikací se můžou migrovat do služby Azure AD. Posuzuje všechny AD FS aplikace kvůli kompatibilitě s Azure AD, kontroluje případné problémy a poskytuje pokyny k přípravě jednotlivých aplikací pro migraci. Pomocí sestavy aktivity aplikace AD FS můžete:
 
 * **Zjištění AD FS aplikací a určení rozsahu migrace** Sestava aktivita aplikace AD FS obsahuje seznam všech aplikací AD FS ve vaší organizaci, u kterých se během posledních 30 dnů přihlásilo aktivní uživatelské jméno. Tato sestava označuje připravenost aplikací pro migraci do služby Azure AD. Sestava nezobrazuje v AD FS, jako je například Office 365, žádné související předávající strany společnosti Microsoft. Například předávající strany s názvem "urn: Federation: MicrosoftOnline".
 
@@ -33,7 +33,7 @@ Sestava aktivita aplikace AD FS (Preview) v Azure Portal umožňuje rychle urči
 
 Data aktivity aplikace AD FS jsou k dispozici uživatelům, kteří mají přiřazenou některou z těchto rolí správce: globální správce, čtenář sestav, čtenář zabezpečení, správce aplikace nebo správce cloudové aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vaše organizace musí aktuálně používat AD FS k přístupu k aplikacím.
 * Azure AD Connect Health musí být ve vašem tenantovi Azure AD povolené.
@@ -52,7 +52,7 @@ Sestava aktivity aplikace AD FS je k dispozici v Azure Portal v části Azure AD
 
 2. Vyberte **Azure Active Directory** a pak vyberte **podnikové aplikace**.
 
-3. V části **aktivita** vyberte **využití & přehledy (Preview)** a pak vyberte **AD FS aktivita aplikace** a otevřete tak seznam všech AD FS aplikací ve vaší organizaci.
+3. V části **aktivita** vyberte **využití & přehledy** a pak vyberte **AD FS aktivita aplikace** a otevřete tak seznam všech AD FS aplikací ve vaší organizaci.
 
    ![Aktivita aplikace AD FS](media/migrate-adfs-application-activity/adfs-application-activity.png)
 
@@ -78,7 +78,7 @@ Sestava aktivity aplikace AD FS je k dispozici v Azure Portal v části Azure AD
 
 V následující tabulce jsou uvedeny všechny testy konfigurace, které se provádí v AD FSch aplikacích.
 
-|Výsledek  |Úspěch/upozornění/selhání  |Popis  |
+|Výsledek  |Úspěch/upozornění/selhání  |Description  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> Pro AdditionalAuthentication se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Předávající strana obsahuje pravidla pro dotazování služby Multi-Factor Authentication (MFA). Pokud se chcete přesunout do služby Azure AD, přeložte tato pravidla na zásady podmíněného přístupu. Pokud používáte místní MFA, doporučujeme přejít na Azure AD MFA. [Přečtěte si další informace o podmíněném přístupu](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Předávající strana má AdditionalWSFedEndpoint nastavenou na hodnotu true.       | Úspěch/neúspěch          | Předávající strana v AD FS umožňuje více koncových bodů kontrolního výrazu pro WS-Fed.V současné době Azure AD podporuje jenom jeden.Pokud máte scénář, kde tento výsledek blokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |

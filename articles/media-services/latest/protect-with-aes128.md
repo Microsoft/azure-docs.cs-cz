@@ -2,7 +2,7 @@
 title: Zašifrujte video pomocí AES-128: Azure Media Services popis: Naučte se šifrovat video pomocí šifrování AES 128-bit a jak používat službu pro doručování klíčů v Azure Media Services.
 služby: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: na MS. téma: tutorial MS. Date: 08/31/2020 MS. Author: inhenkel
+MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlang: na MS. téma: tutorial MS. Date: 03/17/2021 MS. Author: inhenkel
 
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Kurz: šifrování videa pomocí AES-128 a používání služby pro doručování klíčů
@@ -37,7 +37,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující:
 
@@ -89,7 +89,7 @@ V tomto kurzu vytvoříme vstup úlohy na základě souboru, který je ingestný
 
 ## <a name="wait-for-the-job-to-complete"></a>Čekání na dokončení úlohy
 
-Dokončení úlohy trvá déle. V takovém případě chcete být upozorněni. Následující ukázka kódu ukazuje, jak se má služba dotazovat na stav [úlohy](/rest/api/media/jobs). Cyklické dotazování není doporučeným osvědčeným postupem pro produkční aplikace kvůli možné latenci. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid. Další informace najdete v tématu [Směrování událostí do vlastního webového koncového bodu](job-state-events-cli-how-to.md).
+Dokončení úlohy trvá déle. V takovém případě chcete být upozorněni. Následující ukázka kódu ukazuje, jak se má služba dotazovat na stav [úlohy](/rest/api/media/jobs). Cyklické dotazování není doporučeným osvědčeným postupem pro produkční aplikace kvůli možné latenci. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid. Další informace najdete v tématu [Směrování událostí do vlastního webového koncového bodu](monitoring/job-state-events-cli-how-to.md).
 
 **Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud se úloha dokončí v rámci chyby, zobrazí se **chybový** stav. Pokud dojde ke zrušení úlohy, po dokončení operace se akce **zruší** a **zruší** .
 

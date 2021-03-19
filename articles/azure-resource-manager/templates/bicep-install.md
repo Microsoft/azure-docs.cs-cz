@@ -2,13 +2,13 @@
 title: Nastavení prostředí pro vývoj a nasazení bicep
 description: Jak nakonfigurovat prostředí pro vývoj a nasazení bicep
 ms.topic: conceptual
-ms.date: 03/09/2021
-ms.openlocfilehash: 0434c08a4427d2549a9adf4e4ab1e7e73a465ad8
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.date: 03/17/2021
+ms.openlocfilehash: d665a863affdec2009fc208f76b85a7f25de451d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102620007"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594389"
 ---
 # <a name="setup-bicep-development-and-deployment-environment"></a>Nastavení prostředí pro vývoj a nasazení bicep
 
@@ -18,7 +18,7 @@ Naučte se, jak nastavit prostředí pro vývoj a nasazení bicep.
 
 K získání nejlepšího prostředí pro vytváření bicep potřebujete dvě komponenty:
 
-- **Rozšíření bicep pro Visual Studio Code**. K vytváření souborů bicep potřebujete dobrý Editor bicep. Doporučujeme [Visual Studio Code](https://code.visualstudio.com/) s [rozšířením bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep). Tyto nástroje poskytují podporu jazyka a automatického dokončování prostředků. Pomůžou vytvořit a ověřit soubory bicep. Další informace najdete v tématu [rychlý Start: vytvoření souborů bicep pomocí Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md).
+- **Rozšíření bicep pro Visual Studio Code**. K vytváření souborů bicep potřebujete dobrý Editor bicep. Doporučujeme [Visual Studio Code](https://code.visualstudio.com/) s [rozšířením bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep). Tyto nástroje poskytují podporu jazyka a automatického dokončování prostředků. Pomůžou vytvořit a ověřit soubory bicep. Další informace o použití Visual Studio Code a rozšíření bicep najdete v tématu [rychlý Start: vytvoření bicep souborů pomocí Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md).
 - **BICEP CLI**. Pomocí bicep CLI můžete kompilovat soubory bicep a šablony JSON pro ARM a dekompilovat šablony JSON ARM do souborů bicep. Další informace najdete v tématu Instalace rozhraní příkazového [řádku bicep](#install-bicep-cli).
 
 ## <a name="deployment-environment"></a>Prostředí nasazení

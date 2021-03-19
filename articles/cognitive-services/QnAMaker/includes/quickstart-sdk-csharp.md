@@ -3,12 +3,12 @@ title: 'Rychlý Start: Klientská knihovna QnA Maker pro .NET'
 description: V tomto rychlém startu se dozvíte, jak začít s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: d14c137150b802c734a0386536fbe32a6917cd92
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3b2bbf30fcd93bdd8e3d8bdefcbf863df30d9017
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730956"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583190"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
 
@@ -43,7 +43,7 @@ Pomocí klientské knihovny QnA Maker pro .NET:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
 
@@ -66,21 +66,9 @@ Pomocí klientské knihovny QnA Maker pro .NET:
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="visual-studio-ide"></a>Visual Studio – sada IDE
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
-
-Pomocí sady Visual Studio vytvořte aplikaci .NET Core a nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet** a vyhledejte `Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker` . Vyberte verzi `2.0.1` a pak **nainstalujte**.
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/version-2)
-
-Pomocí sady Visual Studio vytvořte aplikaci .NET Core a nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předprodejní** a vyhledejte `Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker` . Vyberte verzi `3.0.0-preview.1` a pak **nainstalujte**.
-
----
-
 ### <a name="cli"></a>Rozhraní příkazového řádku
 
-V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `qna-maker-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*.
+V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `qna-maker-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program. cs*.
 
 ```console
 dotnet new console -n qna-maker-quickstart
@@ -132,7 +120,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 
 ### <a name="using-directives"></a>Direktivy using
 
-Z adresáře projektu otevřete soubor *program.cs* a přidejte následující `using` direktivy:
+Z adresáře projektu otevřete soubor *program. cs* a přidejte následující `using` direktivy:
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
 
@@ -155,9 +143,11 @@ V `Main` metodě aplikace přidejte proměnné a kód zobrazené v následujíc�
 
 Používáme klíč předplatného a vytváření klíčů Key interchangably. Další informace o vytváření klíčů najdete [pod klíči v QnA maker](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
 
-- Vytvořte proměnné prostředí s názvem QNA_MAKER_SUBSCRIPTION_KEY, QNA_MAKER_ENDPOINT a QNA_MAKER_RUNTIME_ENDPOINT k uložení těchto hodnot.
 - Hodnota QNA_MAKER_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
-- Hodnota QNA_MAKER_RUNTIME_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.azurewebsites.net` .
+- Hodnota QNA_MAKER_RUNTIME_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Po publikování znalostní báze na portálu QnA Maker můžete najít koncový bod modulu runtime, jak je znázorněno níže.
+  
+  ![Koncový bod QnA Maker runtime](../media/endpoint.png)
+      
 - V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Azure Key trezor](../../../key-vault/general/overview.md) poskytuje zabezpečené úložiště klíčů.
 
 [!code-csharp[Set the resource key and resource name](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Resourcevariables)]
@@ -169,7 +159,6 @@ Používáme klíč předplatného a vytváření klíčů Key interchangably. D
 
 Používáme klíč předplatného a vytváření klíčů Key interchangably. Další informace o vytváření klíčů najdete [pod klíči v QnA maker](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
 
-- Vytvořte proměnné prostředí s názvem QNA_MAKER_SUBSCRIPTION_KEY a QNA_MAKER_ENDPOINT k uložení těchto hodnot.
 - Hodnota QNA_MAKER_ENDPOINT má formát `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
 - V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Azure Key trezor](../../../key-vault/general/overview.md) poskytuje zabezpečené úložiště klíčů.
 

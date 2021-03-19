@@ -71,10 +71,15 @@
       href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: Definice OpenAPI pro bezserverová rozhraní API
       href: functions-openapi-definition.md
-    - name: Připojení k virtuální síti
-      href: functions-create-vnet.md
-    - name: Vytvoření privátního přístupu k webu
-      href: functions-create-private-site-access.md
+    - name: Sítě
+      items:
+        - name: Připojení k virtuální síti
+          href: functions-create-vnet.md
+          displayName: vnet
+        - name: Vytvoření privátního přístupu k webu
+          href: functions-create-private-site-access.md
+        - name: Použít odchozí bránu NAT
+          href: functions-how-to-use-nat-gateway.md
     - name: Změna velikosti obrázků s využitím služby Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Vytvoření webové aplikace bez serveru
@@ -365,6 +370,8 @@
           href: set-runtime-version.md
         - name: Vypnutí funkce
           href: disable-function.md
+        - name: Sítě
+          href: configure-networking-how-to.md
         - name: Geografické zotavení po havárii
           href: functions-geo-disaster-recovery.md
     - name: Monitorování

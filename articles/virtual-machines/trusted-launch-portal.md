@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f5e361d32cf2ab436f92ce2ca86a054a6dd3337e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553744"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582064"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Nasazení virtuálního počítače s povoleným důvěryhodným spouštěním (Preview)
 
@@ -134,13 +134,13 @@ Kliknutím na tlačítko dole nasadíte zásady do svého předplatného:
 
 Šablona musí být nasazena pouze jednou pro každé předplatné. Automaticky se nainstaluje `GuestAttestation` a `AzureSecurity` rozšíření na všechny podporované virtuální počítače. Pokud se zobrazí chyby, zkuste šablonu znovu nasadit.
 
-Pokud chcete získat doporučení pro vTPM a zabezpečené spouštění pro důvěryhodné spouštěcí virtuální počítače, přečtěte si téma [Přidání vlastní iniciativy do předplatného](https://docs.microsoft.com/azure/security-center/custom-security-policies#to-add-a-custom-initiative-to-your-subscription).
+Pokud chcete získat doporučení pro vTPM a zabezpečené spouštění pro důvěryhodné spouštěcí virtuální počítače, přečtěte si téma [Přidání vlastní iniciativy do předplatného](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription).
  
 ## <a name="sign-things-for-secure-boot-on-linux"></a>Podepisování věcí pro zabezpečené spouštění systému Linux
 
 V některých případech může být nutné se přihlásit k zabezpečenému spouštění UEFI.  Například budete potřebovat [postup, jak se přihlašovat k zabezpečenému spouštění](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) pro Ubuntu. V těchto případech je potřeba zadat pro svůj virtuální počítač klíče pro zápis MOK Utility. K tomu je potřeba použít pro přístup k nástroji MOK službu sériového portu Azure.
 
-1. Povolte službu Azure Serial Console pro Linux. Další informace najdete v tématu [sériová Konzola pro Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
+1. Povolte službu Azure Serial Console pro Linux. Další informace najdete v tématu [sériová Konzola pro Linux](/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **virtuální počítače** a ze seznamu vyberte svůj virtuální počítač.
 1. V nabídce vlevo v části **Podpora a řešení potíží** vyberte **sériová konzola**. Stránka se otevře napravo s použitím konzoly sériového portu.

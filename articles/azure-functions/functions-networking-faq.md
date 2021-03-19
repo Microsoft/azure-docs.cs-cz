@@ -4,12 +4,12 @@ description: Odpovědi na některé z nejběžnějších otázek a scénářů p
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 24afeeee3207127bb9404156dc390433671dd5da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578225"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592298"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Nejčastější dotazy týkající se sítě v Azure Functions
 
@@ -17,7 +17,9 @@ V tomto článku jsou uvedeny nejčastější dotazy týkající se sítě v Azu
 
 ## <a name="how-do-i-set-a-static-ip-in-functions"></a>Návody nastavit statickou IP adresu ve funkcích Functions?
 
-Nasazení funkce v App Service Environment je v současné době jediným způsobem, jak pro vaši funkci vytvořit statickou příchozí a odchozí IP adresu. Podrobné informace o použití App Service Environment začněte s článkem [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
+Nasazení funkce v App Service Environment je primárním způsobem, jak mít statické příchozí a odchozí IP adresy pro vaše funkce. Podrobné informace o použití App Service Environment začněte s článkem [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
+
+Můžete také použít bránu NAT virtuální sítě ke směrování odchozího provozu prostřednictvím veřejné IP adresy, kterou ovládáte. Další informace najdete v tématu [kurz: řízení Azure Functions odchozí IP adresy pomocí brány NAT služby Azure Virtual Network](functions-how-to-use-nat-gateway.md). 
 
 ## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Návody omezit přístup k Internetu na moji funkci?
 
@@ -33,7 +35,7 @@ Mějte na paměti, že editor Azure Portal vyžaduje přímý přístup ke spuš
 
 **Příchozí** provoz pro aplikaci Function App můžete omezit na virtuální síť pomocí [koncových bodů služby](./functions-networking-options.md#use-service-endpoints). Tato konfigurace pořád umožňuje, aby aplikace Functions provedla odchozí volání na Internet.
 
-Pokud chcete úplně omezit funkci tak, aby všechny přenosy přes virtuální síť prošly, můžete použít [privátní koncové body](./functions-networking-options.md#private-endpoint-connections) s integrací virtuální sítě nebo App Service Environment.
+Pokud chcete úplně omezit funkci tak, aby všechny přenosy přes virtuální síť prošly, můžete použít [privátní koncové body](./functions-networking-options.md#private-endpoint-connections) s integrací virtuální sítě nebo App Service Environment. Další informace najdete v tématu věnovaném [integraci Azure Functions s Azure Virtual Network pomocí privátních koncových bodů](functions-create-vnet.md).
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Jak můžu získat přístup k prostředkům ve virtuální síti z aplikace Function App?
 

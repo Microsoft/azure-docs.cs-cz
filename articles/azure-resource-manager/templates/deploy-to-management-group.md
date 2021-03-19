@@ -2,13 +2,13 @@
 title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.openlocfilehash: b14dc3622a6ad6519968bd2998aa354a850f2515
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.date: 03/18/2021
+ms.openlocfilehash: 79020e8e24cb43697a44ac9accd4e777bffe959e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601589"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594202"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Nasazení skupin pro správu pomocí šablon ARM
 
@@ -219,6 +219,14 @@ Následující příklad vytvoří novou skupinu pro správu ve skupině pro spr
     }
 }
 ```
+
+## <a name="subscriptions"></a>Předplatná
+
+Chcete-li použít šablonu ARM k vytvoření nového předplatného Azure ve skupině pro správu, přečtěte si téma:
+
+* [Programové vytváření předplatných Azure smlouva Enterprise](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)
+* [Programové vytvoření předplatných Azure pro zákaznickou smlouvu Microsoftu](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement.md)
+* [Programové vytvoření předplatných Azure pro partnerských smluv Microsoftu](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-partner-agreement.md)
 
 Pokud chcete nasadit šablonu, která přesouvá stávající předplatné Azure do nové skupiny pro správu, přečtěte si téma [Přesun předplatných v ŠABLONĚ ARM](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template) .
 

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5943a65d61dee4fcf610b8cc45139674362995cb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724247"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600713"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -59,8 +59,8 @@ Aby bylo možné tyto aplikace spravovat úspěšně, měli byste je monitorovat
   * [K vašemu problému dochází při použití emulátoru úložiště pro vývoj nebo testování.]
   * [Narazíte na problémy s instalací sady Azure SDK pro .NET.]
   * [Máte jiný problém se službou úložiště.]
-  * [Řešení potíží s virtuálními počítači na virtuálních počítačích s Windows](../../virtual-machines/troubleshooting/index.yml)   
-  * [Řešení potíží s VHD na virtuálních počítačích se systémem Linux](../../virtual-machines/troubleshooting/index.yml)
+  * [Řešení potíží s virtuálními počítači na virtuálních počítačích s Windows](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)   
+  * [Řešení potíží s VHD na virtuálních počítačích se systémem Linux](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
   * [Řešení potíží se soubory Azure v systému Windows](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [Řešení potíží se soubory Azure se systémem Linux](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [Dodatky]
@@ -566,7 +566,7 @@ Pokud se klientská aplikace pokusí použít klíč SAS, který neobsahuje pot�
 
 Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru ze souboru protokolu protokolování úložiště:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 | Čas zahájení požadavku | 2014-05-30T06:17:48.4473697 Z |
 | Typ operace     | GetBlobProperties            |

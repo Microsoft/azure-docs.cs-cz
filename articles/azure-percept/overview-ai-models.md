@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e31a696dfb443c20566f13f5a228eefac7af5ecc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218158"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595919"
 ---
 # <a name="azure-percept-ai-models"></a>Modely AI pro Azure Percept
 
@@ -40,6 +40,10 @@ K dispozici je také [řešení pro počítání odkazů lidí](https://github.c
 Prostřednictvím Azure Percept studia můžete vyvíjet vlastní řešení pro [vize](./tutorial-nocode-vision.md) a rozpoznávání řeči, nevyžaduje se žádné kódování.
 
 Pro vlastní řešení Vision jsou k dispozici oba modely pro detekci a klasifikaci AI. Jednoduše nahrajte a označte své školicí obrázky, které se dají přímo s Azure Percept Vision SoM v Azure Percept DK, pokud je to potřeba. Školení a vyhodnocení modelu se snadno provádí v [Custom Vision](https://www.customvision.ai/), což je součástí [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/#overview).
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/9LvafyazlJM]
 
 Pro vlastní řešení pro rozpoznávání řeči jsou aktuálně k dispozici šablony hlasového asistenta pro následující aplikace:
 

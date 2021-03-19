@@ -1,23 +1,20 @@
 ---
-title: Spustit Azure Stream Analytics v Azure Stack (Preview)
+title: Spustit Azure Stream Analytics v Azure Stack
 description: Vytvořte úlohu Azure Stream Analytics Edge a nasaďte ji do Azure Stack centra prostřednictvím modulu runtime IoT Edge.
 ms.service: stream-analytics
 author: an-emma
 ms.author: raan
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 315b2efa042721a19fa779794c4921f9ced1fc83
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020124"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589799"
 ---
-# <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Spustit Azure Stream Analytics v Azure Stack (Preview)
-
-> [!IMPORTANT]
-> Tato funkce je ve verzi Preview a nedoporučuje se používat v produkčním prostředí.
+# <a name="run-azure-stream-analytics-on-azure-stack"></a>Spustit Azure Stream Analytics v Azure Stack 
 
 Azure Stream Analytics můžete spustit v centru Azure Stack jako modul IoT Edge. Do modulu IoT Edge byly přidány konfigurace umožňující interakci s úložištěm objektů blob, Event Hubs a centrem IoT běžícími v předplatném centra Azure Stack. tím se povolí vlastní adresy URL, které se nacházejí v každé komunikaci centra Azure Stack.
 

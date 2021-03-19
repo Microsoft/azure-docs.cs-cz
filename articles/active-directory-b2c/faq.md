@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d84c5fff41a7f00405c29ab4b4921ed2e28bdfde
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517986"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580092"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -103,7 +103,7 @@ Ne, Azure AD Connect není navržená tak, aby spolupracovala s Azure AD B2C. Pr
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Může moje aplikace otevřít Azure AD B2C stránky v rámci prvku iFrame?
 
-Ne, z důvodů zabezpečení nelze v rámci prvku iFrame otevřít Azure AD B2C stránky. Naše služba komunikuje s prohlížečem a znemožňuje prvky iFrame. Bezpečnostní komunita obecně a specifikace OAUTH2 doporučují pro používání prvků iFrame pro prostředí identity z důvodu rizika při kliknutí na zásuvky.
+Tato funkce je ve verzi Public Preview. Podrobnosti najdete v tématu [integrované přihlašovací prostředí](https://docs.microsoft.com/azure/active-directory-b2c/embedded-login).
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Funguje Azure AD B2C se systémy CRM, jako je Microsoft Dynamics?
 
@@ -131,7 +131,7 @@ Ano, podívejte se na téma [přizpůsobení jazyka](language-customization.md).
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Můžu vlastní adresy URL používat na přihlašovacích a přihlašovacích stránkách, které obsluhuje Azure AD B2C? Například je možné změnit adresu URL z contoso.b2clogin.com na login.contoso.com?
 
-Momentálně ne. Tato funkce je v našem plánu. Ověření domény na kartě **domény** v Azure Portal nedosahuje tohoto cíle. V b2clogin.com ale nabízíme [neutrální doménu nejvyšší úrovně](b2clogin.md), takže externí vzhled se dá implementovat bez zmínky o Microsoftu.
+Tato funkce je k dispozici ve verzi Public Preview. Podrobnosti najdete v tématu [Azure AD B2C vlastní domény](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow).
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Návody odstranit můj tenant Azure AD B2C?
 
