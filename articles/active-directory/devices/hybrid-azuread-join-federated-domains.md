@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a455e1ee6f8f714cf50ebdf6a59dab568489ca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 221b7bdbb8ab5d0121e9c8032be8f18d8ae60d1e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646295"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578052"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro federované domény
 
@@ -52,7 +52,7 @@ Získáte informace o těchto tématech:
 > * Ověření registrace
 > * Řešení potíží
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že máte zkušenosti s těmito články:
 
@@ -85,6 +85,9 @@ Služba připojení k hybridní službě Azure AD vyžaduje, aby zařízení mě
 > Pokud vaše organizace používá proxy servery, které zachycují provoz SSL pro scénáře, jako je prevence ztráty dat nebo omezení tenanta Azure AD, zajistěte, aby byl provoz do ' https://device.login.microsoftonline.com ' vyloučený z přerušení TLS a prověřený. Vyloučení se nepovedlo https://device.login.microsoftonline.com , může způsobit rušení s ověřováním klientským certifikátem a způsobuje problémy s registrací zařízení a podmíněným přístupem na základě zařízení.
 
 Od verze Windows 10 1803, pokud se okamžité připojení hybridní služby Azure AD pro federované prostředí pomocí AD FS nepovede, spoléháme na Azure AD Connect synchronizaci objektu počítače v Azure AD, který se následně používá k dokončení registrace zařízení pro připojení k hybridní službě Azure AD. Ověřte, že Azure AD Connect synchronizoval objekty počítačů zařízení, která chcete mít k Azure AD připojená k hybridní službě Azure AD. Pokud objekty počítače patří konkrétním organizačním jednotkám (OU), musíte také nakonfigurovat organizační jednotky pro synchronizaci v Azure AD Connect. Další informace o tom, jak synchronizovat objekty počítačů pomocí Azure AD Connect, najdete v tématu [Konfigurace filtrování pomocí Azure AD Connect](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
+
+> [!NOTE]
+> Abyste mohli úspěšně připojit synchronizaci zařízení, můžete jako součást konfigurace registrace zařízení vyloučit z konfigurace Azure AD Connect synchronizace výchozí atributy zařízení. Další informace o výchozích atributech zařízení synchronizovaných do AAD najdete v tématu [atributy synchronizované pomocí Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
 
 Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, doporučuje Microsoft [implementovat automatické zjišťování webových proxy serverů (WPAD)](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) a povolit tak počítačům s Windows 10 registraci zařízení ve službě Azure AD. Pokud narazíte na problémy s konfigurací a správou WPAD, přečtěte si téma [řešení potíží s automatickým](/previous-versions/tn-archive/cc302643(v=technet.10)) 
 

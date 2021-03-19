@@ -8,10 +8,10 @@ ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 5ca8f2b003b7f2142da329a07f929ecf31fee627
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90908265"
 ---
 # <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Navázání instance Azure Database for MySQL k aplikaci Azure jaře Cloud 
@@ -20,7 +20,7 @@ ms.locfileid: "90908265"
 
 Pomocí Azure jarního cloudu můžete automaticky navazovat vybrané služby Azure na své aplikace, místo abyste museli konfigurovat aplikaci pružinového spouštění ručně. V tomto článku se dozvíte, jak vytvořit propojení aplikace s instancí Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nasazená instance cloudu Azure pro jaře
 * Účet Azure Database for MySQL
@@ -46,11 +46,11 @@ Pokud nemáte nasazenou instanci cloudového cloudu Azure, postupujte podle poky
 
 1. Aktualizujte aktuální nasazení spuštěním `az spring-cloud app update` nebo vytvořte nové nasazení pro tuto změnu spuštěním `az spring-cloud app deployment create` .  Tyto příkazy buď aktualizují, nebo vytvoří aplikaci s novou závislostí.
 
-1. V Azure Portal na stránce služby **jarní cloudová služba Azure** vyhledejte **řídicí panel aplikace**a pak vyberte aplikaci, kterou chcete vytvořit jako instanci Azure Database for MySQL.  Jedná se o stejnou aplikaci, kterou jste aktualizovali nebo nasadili v předchozím kroku. 
+1. V Azure Portal na stránce služby **jarní cloudová služba Azure** vyhledejte **řídicí panel aplikace** a pak vyberte aplikaci, kterou chcete vytvořit jako instanci Azure Database for MySQL.  Jedná se o stejnou aplikaci, kterou jste aktualizovali nebo nasadili v předchozím kroku. 
 
-1. Vyberte možnost **vazba služby**a pak vyberte tlačítko **vytvořit vazbu služby** . 
+1. Vyberte možnost **vazba služby** a pak vyberte tlačítko **vytvořit vazbu služby** . 
 
-1. Vyplňte formulář, vyberte **Azure MySQL** jako **typ vazby**a použijte stejný název databáze, který jste použili dříve, a použijte stejné uživatelské jméno a heslo, které jste si poznamenali v prvním kroku.
+1. Vyplňte formulář, vyberte **Azure MySQL** jako **typ vazby** a použijte stejný název databáze, který jste použili dříve, a použijte stejné uživatelské jméno a heslo, které jste si poznamenali v prvním kroku.
 
 1. Restartujte aplikaci a tato vazba by teď měla fungovat.
 

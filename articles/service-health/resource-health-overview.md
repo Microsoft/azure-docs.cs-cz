@@ -4,10 +4,10 @@ description: Přečtěte si, jak Azure Resource Health pomáhá s diagnostikou a
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90967874"
 ---
 # <a name="resource-health-overview"></a>Přehled Resource Health
@@ -70,7 +70,7 @@ Různé prostředky mají vlastní kritéria, když hlásí, že jsou degradová
 
 ## <a name="reporting-an-incorrect-status"></a>Hlášení nesprávného stavu
 
-Pokud se domníváte, že aktuální stav je nesprávný, můžete nás informovat tak, že vyberete možnost **sestava nesprávný stav**stavu. V případech, kdy se vám problém s Azure dotýká, doporučujeme, abyste se obrátili na podporu od Resource Health.
+Pokud se domníváte, že aktuální stav je nesprávný, můžete nás informovat tak, že vyberete možnost **sestava nesprávný stav** stavu. V případech, kdy se vám problém s Azure dotýká, doporučujeme, abyste se obrátili na podporu od Resource Health.
 
 ![Formulář pro odeslání informací o nesprávném stavu](./media/resource-health-overview/incorrect-status.png)
 
@@ -84,7 +84,7 @@ V části **historie stavu** Resource Health můžete získat přístup k histor
 
 Pro otevření Resource Health pro jeden prostředek:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Vyhledejte prostředek.
 3. V nabídce prostředek v levém podokně vyberte **stav prostředku**.
 

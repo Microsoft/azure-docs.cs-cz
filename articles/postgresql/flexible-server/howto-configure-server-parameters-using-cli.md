@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 9/22/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 43b14858cc99cac41e277b03171fd4cac4d6eafa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90936774"
 ---
 # <a name="customize-server-parameters-for-azure-database-for-postgresql---flexible-server-using-azure-cli"></a>Přizpůsobení parametrů serveru pro Azure Database for PostgreSQL-flexibilní Server pomocí Azure CLI
 
 Můžete vypsat, zobrazit a aktualizovat parametry konfigurace pro server Azure PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Podmnožina parametrů modulu je vystavena na úrovni serveru a lze ji upravit. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Vytvoření serveru a databáze Azure Database for PostgreSQL pomocí následujících kroků vytvořte [Azure Database for PostgreSQL](quickstart-create-server-cli.md)
@@ -49,7 +49,7 @@ az postgres flexible-server parameter show --name log_min_messages --resource-gr
 
 Můžete také změnit hodnotu určitého parametru serveru, která aktualizuje základní konfigurační hodnotu pro modul PostgreSQL serveru. Chcete-li aktualizovat parametr, použijte příkaz [AZ Postgres flexibilní-Server Parameter set](/cli/azure/postgres/flexible-server/parameter) . 
 
-Chcete-li aktualizovat parametr serveru pro ** \_ minimální \_ zprávy s protokolem** serveru **mydemoserver.Postgres.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
+Chcete-li aktualizovat parametr serveru pro **\_ minimální \_ zprávy s protokolem** serveru **mydemoserver.Postgres.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
 
 ```azurecli-interactive
 az postgres flexible-server parameter set --name log_min_messages --value INFO --resource-group myresourcegroup --server-name mydemoserver
@@ -61,7 +61,7 @@ Pokud chcete resetovat hodnotu parametru, stačí zvolit volitelný `--value` pa
 az postgres flexible-server parameter set --name log_min_messages --resource-group myresourcegroup --server-name mydemoserver
 ```
 
-Tento příkaz obnoví parametr pro ** \_ minimální počet \_ zpráv protokolu** na **Upozornění**na výchozí hodnotu. Další informace o parametrech serveru a přípustných hodnotách naleznete v dokumentaci PostgreSQL o [Nastavení parametrů](https://www.postgresql.org/docs/12/config-setting.html).
+Tento příkaz obnoví parametr pro **\_ minimální počet \_ zpráv protokolu** na **Upozornění** na výchozí hodnotu. Další informace o parametrech serveru a přípustných hodnotách naleznete v dokumentaci PostgreSQL o [Nastavení parametrů](https://www.postgresql.org/docs/12/config-setting.html).
 
 ## <a name="next-steps"></a>Další kroky
 

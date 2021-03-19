@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91774456"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Převzetí služeb při selhání na StorSimple Cloud Appliance
@@ -31,7 +31,7 @@ Další informace o převzetí služeb při selhání zařízení a způsobu jeh
 
 Pokud chcete převzít služby při selhání fyzického zařízení StorSimple na jiné fyzické zařízení, přečtěte si [převzetí služeb při selhání na fyzické zařízení StorSimple](storsimple-8000-device-failover-physical-device.md). Pokud chcete převzít služby zařízení při selhání, převzetí [služeb při selhání na stejné fyzické zařízení StorSimple](storsimple-8000-device-failover-same-device.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že jste si prošli požadavky na převzetí služeb při selhání zařízení. Další informace najdete v [častých otázkách pro převzetí služeb zařízení při selhání](storsimple-8000-device-failover-disaster-recovery.md).
 
@@ -41,7 +41,7 @@ Pokud chcete převzít služby při selhání fyzického zařízení StorSimple 
 
 Provedením následujících kroků obnovíte zařízení do cílového StorSimple Cloud Appliance.
 
-1.  Ověřte, že kontejner svazků, u kterého chcete převzít služby při selhání, má přidružené cloudové snímky. Další informace najdete v pro [vytváření záloh pomocí služby StorSimple Device Manager](storsimple-8000-manage-backup-policies-u2.md).
+1.  Ověřte, že kontejner svazků, u kterého chcete převzít služby při selhání, má přidružené cloudové snímky. Další informace najdete v pro [vytváření záloh pomocí služby StorSimple Správce zařízení](storsimple-8000-manage-backup-policies-u2.md).
 2. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V okně **zařízení** přejdete na seznam zařízení, která jsou připojená k vaší službě.
     ![Vybrat zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. Vyberte zdrojové zařízení a klikněte na něj. Zdrojové zařízení obsahuje kontejnery svazků, u kterých chcete převzít služby při selhání. Přejít na **nastavení > kontejnery svazků**.
@@ -94,5 +94,5 @@ Provedením následujících kroků obnovíte zařízení do cílového StorSimp
 
 * Po provedení převzetí služeb při selhání možná budete muset [zařízení StorSimple deaktivovat nebo odstranit](storsimple-8000-deactivate-and-delete-device.md).
 
-* Informace o tom, jak používat službu StorSimple Device Manager, najdete v článku [použití služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Informace o tom, jak používat službu StorSimple Správce zařízení, najdete v článku [použití služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

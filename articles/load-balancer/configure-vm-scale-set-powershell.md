@@ -7,17 +7,17 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.openlocfilehash: 919883025075ca38bcef6c23ac744528e7bd5502
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88510058"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Konfigurace sady škálování virtuálních počítačů s existujícím Azure Load Balancer pomocí Azure PowerShell
 
 V tomto článku se dozvíte, jak nakonfigurovat sadu škálování virtuálních počítačů s existujícím Azure Load Balancer.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure.
 - Existující Nástroj pro vyrovnávání zatížení Standard SKU v předplatném, kde se bude nasazovat sada škálování virtuálního počítače.

@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 5ee38fa4b005cf053890c223dfec9244c637bd00
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: b4cf3699243e990b5e7b7478ba643067ac456020
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561817"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584699"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Průvodce pro spouštění funkcí v .NET 5,0 v Azure
 
@@ -47,7 +47,7 @@ Projekt izolované funkce .NET je v podstatě projekt konzolové aplikace .NET, 
 + [host.jsv](functions-host-json.md) souboru.
 + [local.settings.jsv](functions-run-local.md#local-settings-file) souboru.
 + Soubor projektu C# (. csproj), který definuje projekt a závislosti.
-+ Program.cs soubor, který je vstupním bodem aplikace.
++ Soubor program. cs, který je vstupním bodem aplikace
 
 ## <a name="package-references"></a>Odkazy na balíčky
 
@@ -68,7 +68,7 @@ Tyto balíčky rozšíření najdete v části [Microsoft. Azure. Functions. Wor
 
 ## <a name="start-up-and-configuration"></a>Spuštění a konfigurace 
 
-Při použití izolovaných funkcí .NET máte přístup ke spuštění aplikace Function App, která je obvykle v Program.cs. Zodpovídáte za vytvoření a spuštění vlastní instance hostitele. V takovém případě máte také přímý přístup ke konfiguračnímu kanálu vaší aplikace. Můžete mnohem snadněji vložit závislosti a spustit middleware při spuštění mimo proces. 
+Při použití izolovaných funkcí .NET máte přístup ke spuštění aplikace Function App, která je obvykle v programu program. cs. Zodpovídáte za vytvoření a spuštění vlastní instance hostitele. V takovém případě máte také přímý přístup ke konfiguračnímu kanálu vaší aplikace. Můžete mnohem snadněji vložit závislosti a spustit middleware při spuštění mimo proces. 
 
 Následující kód ukazuje příklad `HostBuilder` kanálu:
 

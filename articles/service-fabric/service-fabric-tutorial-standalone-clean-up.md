@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 0d46e9068a311594f779411c3ccee2b408febb3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842882"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Kurz: Čištění samostatného clusteru
@@ -52,11 +52,11 @@ V tomto článku se naučíte:
 1. Přihlaste se ke svému účtu AWS.
 2. Přejděte na konzolu EC2.
 3. Vyberte tři uzly, které jste vytvořili v první části kurzu.
-4. Vyberte **Akce**  >  **ukončit stav instance**  >  **Terminate**.
+4. Vyberte **Akce**  >  **ukončit stav instance**  >  .
 
 ## <a name="delete-azure-resources"></a>Odstranění prostředků Azure
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Přejít na část **Virtual Machines** .
 3. Zaškrtněte políčka pro tři uzly, které jste vytvořili v první části kurzu.
 4. Vyberte **Odstranit**.

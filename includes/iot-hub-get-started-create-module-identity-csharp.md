@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68883724"
 ---
 ## <a name="create-a-module-identity"></a>Vytvoření identity modulu
@@ -23,7 +23,7 @@ Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč za�
 
 1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
 
-1. V v **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)**.
+1. V v **vytvořit nový projekt** vyberte **Konzolová aplikace (.NET Framework)**.
 
 1. Výběrem **Další** otevřete položku **Konfigurovat nový projekt**. Projekt pojmenujte *CreateIdentities* a řešení pojmenujte *IoTHubGetStarted*. Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější.
 
@@ -104,7 +104,7 @@ Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč za�
 
     `AddDeviceAsync`Metoda vytvoří identitu zařízení s ID **myFirstDevice**. Pokud toto ID zařízení již v registru identit existuje, kód jednoduše načte informace o stávajícím zařízení. Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč použijete v aplikaci simulovaného zařízení pro připojení k vašemu centru.
 
-    `AddModuleAsync`Metoda vytvoří identitu modulu s ID **MyFirstModule** v **myFirstDevice**zařízení. Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu. Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč použijete v aplikaci simulovaného modulu pro připojení k vašemu centru.
+    `AddModuleAsync`Metoda vytvoří identitu modulu s ID **MyFirstModule** v **myFirstDevice** zařízení. Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu. Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč použijete v aplikaci simulovaného modulu pro připojení k vašemu centru.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 

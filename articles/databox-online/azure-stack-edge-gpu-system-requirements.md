@@ -6,18 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: e72ad50b495dec7e3a647bb7bcbdeafd53f5de7b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636619"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577086"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Požadavky na systém pro Azure Stack Edge pro s grafickým procesorem 
 
-Tento článek popisuje důležité systémové požadavky pro vaše řešení Microsoft Azure Stack Edge pro a klienty, kteří se připojují k Azure Stack Edge pro. Doporučujeme pečlivě zkontrolovat informace před nasazením Azure Stack Edge pro. V případě potřeby můžete v průběhu nasazení a následné operace přejít zpět na tyto informace.
+Tento článek popisuje důležité systémové požadavky pro řešení grafického procesoru Microsoft Azure Stack Edge pro a klienty, kteří se připojují k Azure Stack Edge pro. Doporučujeme pečlivě zkontrolovat informace před nasazením Azure Stack Edge pro. V případě potřeby můžete v průběhu nasazení a následné operace přejít zpět na tyto informace.
 
 Mezi požadavky na systém Azure Stack Edge pro:
 

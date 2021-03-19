@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 7c28eb604de4f6e23f37b6ca2fcab3fdc976f237
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 14a425c3aca3a1c296b96855b2c920d558e89f9e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102125194"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585974"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Co je Azure Stack hraniční Mini R?
 
@@ -79,6 +79,7 @@ Azure Stack fyzické zařízení, které je na hraničních zařízeních, a cí
 
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých se ukládají účty úložiště Azure Stack data o minim R, se nacházejí blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon.
 
+Služba Azure Stack Edge je neoblastní služba. Další informace najdete v tématu [oblasti a zóny dostupnosti v Azure](https://docs.microsoft.com/azure/availability-zones/az-overview). Služba Azure Stack Edge nemá závislost na konkrétní oblasti Azure, takže je odolná vůči výpadkům v rámci zóny a výpadkům v rámci oblastí.
 
 ## <a name="next-steps"></a>Další kroky
 

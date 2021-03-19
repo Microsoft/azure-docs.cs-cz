@@ -2,15 +2,15 @@
 title: Konfigurace aplikací pro Linux Python
 description: Naučte se konfigurovat kontejner Pythonu, ve kterém jsou webové aplikace spuštěné, pomocí Azure Portal a Azure CLI.
 ms.topic: quickstart
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11b9ab8e954827cfcc73e440bee1023504e14057
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709083"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577600"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -373,6 +373,7 @@ Následující části poskytují další pokyny pro konkrétní problémy.
 - [Aplikace se nezobrazí – zpráva služba není k dispozici](#service-unavailable)
 - [Nepovedlo se najít setup.py nebo requirements.txt. ](#could-not-find-setuppy-or-requirementstxt)
 - [ModuleNotFoundError při spuštění](#modulenotfounderror-when-app-starts)
+- [Databáze je uzamčena.](#database-is-locked)
 - [Při zadání se hesla nezobrazují v relaci SSH.](#other-issues)
 - [Příkazy v relaci SSH se zdají být oříznuté.](#other-issues)
 - [Statické prostředky se neobjevují v aplikaci pro Django.](#other-issues)
@@ -409,6 +410,14 @@ Následující části poskytují další pokyny pro konkrétní problémy.
 #### <a name="modulenotfounderror-when-app-starts"></a>ModuleNotFoundError při spuštění aplikace
 
 Pokud se zobrazí chyba `ModuleNotFoundError: No module named 'example'` , znamená to, že při spuštění aplikace Python nenalezl jeden nebo více modulů. K této situaci nejčastěji dochází, pokud nasadíte virtuální prostředí s vaším kódem. Virtuální prostředí nejsou přenosné, takže virtuální prostředí by nemělo být nasazeno s kódem vaší aplikace. Místo toho Oryx vytvořit virtuální prostředí a nainstalovat balíčky do webové aplikace vytvořením nastavení aplikace, `SCM_DO_BUILD_DURING_DEPLOYMENT` a nastavením na `1` . Tím dojde k vynucení Oryx instalace balíčků při každém nasazení do App Service. Další informace najdete [v tomto článku na přenositelnosti virtuálního prostředí](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html).
+
+### <a name="database-is-locked"></a>Databáze je uzamčena.
+
+Při pokusu o spuštění migrace databáze s aplikací Django se může zobrazit zpráva "sqlite3". OperationalError: databáze je uzamčena. " Tato chyba označuje, že vaše aplikace používá databázi SQLite, pro kterou je ve výchozím nastavení Django nakonfigurovaná, a ne pro použití cloudové databáze, jako je PostgreSQL pro Azure.
+
+Zkontrolujte `DATABASES` proměnnou v souboru *Settings.py* aplikace a ujistěte se, že aplikace používá cloudovou databázi místo sqlite.
+
+Pokud k této chybě dochází v ukázce v [kurzu: nasazení webové aplikace v Django pomocí PostgreSQL](tutorial-python-postgresql-app.md), ověřte, že jste dokončili kroky v části [konfigurace proměnných prostředí pro připojení databáze](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database).
 
 #### <a name="other-issues"></a>Další problémy
 

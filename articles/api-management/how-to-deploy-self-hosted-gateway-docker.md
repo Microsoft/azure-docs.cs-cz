@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82205089"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Nasazení samoobslužné brány Azure API Management do Docker
@@ -24,7 +24,7 @@ Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure 
 > [!NOTE]
 > Hostování samoobslužné brány v Docker se nejlépe hodí pro případy použití při vyhodnocování a vývoji. Kubernetes se doporučuje pro produkční použití. V [tomto](how-to-deploy-self-hosted-gateway-kubernetes.md) dokumentu se dozvíte, jak nasadit samoobslužnou bránu do Kubernetes.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 - Vytvořte prostředí Docker. [Docker pro stolní počítače](https://www.docker.com/products/docker-desktop) je vhodnou možností pro účely vývoje a vyhodnocení. Informace o všech edicích Docker, jejich funkcích a komplexní dokumentaci k samotnému Docker najdete v [dokumentaci k Docker](https://docs.docker.com) .
@@ -35,11 +35,11 @@ Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure 
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Nasazení samoobslužné brány do Docker
 
-1. V části **nasazení a infrastruktura**vyberte **brány** .
+1. V části **nasazení a infrastruktura** vyberte **brány** .
 2. Vyberte prostředek brány, který hodláte nasadit.
 3. Vyberte **nasazení**.
 4. Všimněte si, že přístupový token v textovém poli **token** byl automaticky vygenerován za použití výchozích hodnot **vypršení platnosti** a **tajného klíče** . V případě potřeby vyberte požadované hodnoty v jednom nebo obou ovládacích prvcích pro vygenerování nového tokenu.
-4. Ujistěte se, že je v části **skripty nasazení**vybraná možnost **Docker** .
+4. Ujistěte se, že je v části **skripty nasazení** vybraná možnost **Docker** .
 5. Vyberte odkaz na soubor **env. conf** vedle **prostředí** a Stáhněte si soubor.
 6. Vyberte možnost **Kopírovat** ikonu umístěnou na pravé straně textového pole **Spustit** pro zkopírování příkazu Docker do schránky.
 7. Vložte příkaz do okna terminálu (nebo příkazu). Podle potřeby upravte mapování portů a název kontejneru. Všimněte si, že příkaz předpokládá, že stažený soubor prostředí je přítomen v aktuálním adresáři.

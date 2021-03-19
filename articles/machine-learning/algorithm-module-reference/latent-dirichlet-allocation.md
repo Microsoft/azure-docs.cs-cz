@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907857"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Modul přidělování latentních Dirichletův
@@ -30,7 +30,7 @@ Tento modul přebírá sloupec textu a generuje tyto výstupy:
 
 + Transformace, kterou můžete uložit a znovu použít na nový text použitý jako vstup
 
-Tento modul používá knihovnu scikit-učení. Další informace o scikit – informace najdete v [úložišti GitHub](https://github.com/scikit-learn/scikit-learn), které obsahuje kurzy a vysvětlení algoritmu.
+Tento modul používá knihovnu scikit-učení. Další informace o scikit – informace najdete v [úložišti GitHub](https://github.com/scikit-learn/scikit-learn), které obsahuje kurzy a vysvětlení algoritmu.
 
 ## <a name="more-about-latent-dirichlet-allocation"></a>Další informace o Dirichletův přidělování latentních
 
@@ -52,17 +52,17 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu, a to buď nez
 
 2. Jako vstup pro modul zadejte datovou sadu, která obsahuje jeden nebo více textových sloupců.
 
-3. Pro **cílové sloupce**vyberte jeden nebo více sloupců, které obsahují text k analýze.
+3. Pro **cílové sloupce** vyberte jeden nebo více sloupců, které obsahují text k analýze.
 
     Můžete zvolit více sloupců, ale musí se jednat o datový typ **String** .
 
     Vzhledem k tomu, že LDA vytvoří z textu celou matrici funkcí, obvykle budete analyzovat jeden textový sloupec.
 
-4. Pro  **počet témat pro model**zadejte celé číslo od 1 do 1000, které určuje, kolik kategorií nebo témat chcete ze vstupního textu odvodit.
+4. Pro  **počet témat pro model** zadejte celé číslo od 1 do 1000, které určuje, kolik kategorií nebo témat chcete ze vstupního textu odvodit.
 
     Ve výchozím nastavení se vytvoří 5 témat.
 
-5. U **n-gramů**zadejte maximální délku N-gramů vygenerovanou během generování hodnoty hash.
+5. U **n-gramů** zadejte maximální délku N-gramů vygenerovanou během generování hodnoty hash.
 
     Výchozí hodnota je 2, což znamená, že jsou vygenerovány bigrams i unigrams.
 
@@ -77,7 +77,7 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu, a to buď nez
     > [!NOTE] 
     > V Azure Machine Learning Designer už knihovna scikit-učí nepodporuje nenormalizovaný *doc_topic_distr* výstup z verze 0,19. V tomto modulu se parametr **Normalize** dá použít jenom pro výstup *matice tématu funkce* . *Transformovaný výstup datové sady* je vždy normalizován.
 
-7. Vyberte možnost **Zobrazit všechny možnosti**a pak ji nastavte na **hodnotu true** , pokud chcete nastavit následující rozšířené parametry.
+7. Vyberte možnost **Zobrazit všechny možnosti** a pak ji nastavte na **hodnotu true** , pokud chcete nastavit následující rozšířené parametry.
 
     Tyto parametry jsou specifické pro implementaci LDA scikit-učení. K dispozici jsou některé dobré kurzy týkající se LDA v scikit a také oficiální [dokument scikit-učení](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html).
 
@@ -99,7 +99,7 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu, a to buď nez
 
     Pokud vytvoříte počáteční slovník předem, můžete ho později použít při kontrole modelu. Schopnost mapovat výsledky na text, nikoli na číselné indexy, je obecně snazší pro výklad. Uložení slovníku ale trvá déle a bude používat další úložiště.
 
-9. Pro **maximální velikost ngram slovníku**zadejte celkový počet řádků, které je možné vytvořit ve slovníku n-gramů.
+9. Pro **maximální velikost ngram slovníku** zadejte celkový počet řádků, které je možné vytvořit ve slovníku n-gramů.
 
     Tato možnost je užitečná pro řízení velikosti slovníku. Pokud ale počet ngrams ve vstupu překračuje tuto velikost, může dojít ke kolizím.
 
@@ -156,7 +156,7 @@ V Návrháři můžete také použít knihovny R nebo Python pro zpracování te
 
 Tato část obsahuje podrobné informace o implementaci, tipy a odpovědi na nejčastější dotazy.
 
-### <a name="implementation-details"></a>Podrobnosti implementace
+### <a name="implementation-details"></a>Podrobnosti o implementaci
 
 Ve výchozím nastavení jsou distribuce výstupů pro transformovaná datová sada a matice témat funkcí normalizovány jako pravděpodobnosti:
 
@@ -169,7 +169,7 @@ Ve výchozím nastavení jsou distribuce výstupů pro transformovaná datová s
 
 ### <a name="lda-and-topic-modeling"></a>LDA a modelování témat
 
-Pro *modelování tématem založeného na obsahu*se často používá latentní Dirichletův přidělování. to znamená, že kategorie výuky z neklasifikovaného textu jsou v podstatě. V tématu modelování témat na základě obsahu je téma rozdělením do slov.
+Pro *modelování tématem založeného na obsahu* se často používá latentní Dirichletův přidělování. to znamená, že kategorie výuky z neklasifikovaného textu jsou v podstatě. V tématu modelování témat na základě obsahu je téma rozdělením do slov.
 
 Předpokládejme například, že jste zadali corpus recenze zákazníků, které obsahují mnoho produktů. Text revizí odeslaných zákazníky v průběhu času obsahuje mnoho termínů, z nichž některé jsou používány ve více tématech.
 
@@ -187,7 +187,7 @@ Po vypočítání indexů je míra podobnosti na základě vzdálenosti porovná
 |Počet témat pro model|Integer|[1; 1000]|Vyžadováno|5|Namodelujte distribuci dokumentu na N témata.|  
 |N-gramů|Integer|[1; 10]|Vyžadováno|2|Pořadí N-gramů generovaných během hashace.|  
 |Normalizovat|Logická hodnota|True nebo false|Vyžadováno|true|Normalizuje výstup na pravděpodobnost.  Transformovaná datová sada bude P (téma&#124;dokumentu) a matice tématu funkce bude P (Word&#124;téma).|  
-|Zobrazit všechny možnosti|Logická hodnota|True nebo false|Vyžadováno|Nepravda|Uvede další parametry, které jsou specifické pro scikit – Přečtěte si online LDA.|  
+|Zobrazit všechny možnosti|Logická hodnota|True nebo false|Vyžadováno|Ne|Uvede další parametry, které jsou specifické pro scikit – Přečtěte si online LDA.|  
 |Ró – parametr|Float|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Předchozí distribuce slova tématu|  
 |Parametr alfa|Float|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Předchozí distribuce dokumentu|  
 |Odhadovaný počet dokumentů|Integer|[1; int. MaxValue|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|1000|Odhadovaný počet dokumentů Odpovídá `total_samples` parametru.|  

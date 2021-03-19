@@ -3,12 +3,12 @@ title: Přesunout podporu operace podle typu prostředku
 description: Zobrazuje seznam typů prostředků Azure, které se dají přesunout do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: ae59bcc65f296a10c68b88f5f6a1ecbc923f8856
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 3a15ddc62c19d74871de33003d46ec2fc5437f51
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232592"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584682"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout podporu operací pro prostředky
 
@@ -850,7 +850,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | flexibleServers | Yes | Yes |
+> | flexibleServers | No | No |
 > | servery | Yes | Yes |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL

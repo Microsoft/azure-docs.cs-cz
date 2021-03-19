@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: fb14e647d3444f2f0d0cb86901f93582a18848f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91814554"
 ---
 # <a name="fail-back-vms-to-azure-vmware-solution-private-cloud"></a>Navrácení virtuálních počítačů do privátního cloudu řešení Azure VMware
@@ -33,12 +33,12 @@ Tento článek popisuje, jak navrácení služeb po obnovení virtuálních poč
 1. Ujistěte se, že virtuální počítače Azure jsou znovu chráněné a jsou replikovány do privátního cloudu řešení Azure VMware.
     - Aby virtuální počítač mohl navrácení služeb po obnovení, musí mít aspoň jeden bod obnovení.
     - Pokud naplánujete navrácení služeb při selhání plánu obnovení, musí mít všechny počítače v plánu alespoň jeden bod obnovení.
-2. V trezoru > **replikované položky**vyberte virtuální počítač. Klikněte pravým tlačítkem na virtuální počítač > **neplánované převzetí služeb při selhání**.
-3. V části potvrzení převzetí **služeb při selhání**ověřte směr převzetí služeb při selhání (z Azure).
+2. V trezoru > **replikované položky** vyberte virtuální počítač. Klikněte pravým tlačítkem na virtuální počítač > **neplánované převzetí služeb při selhání**.
+3. V části potvrzení převzetí **služeb při selhání** ověřte směr převzetí služeb při selhání (z Azure).
 4. Vyberte bod obnovení, který chcete pro převzetí služeb při selhání použít.
     - Doporučujeme použít **nejnovější** bod obnovení. Bod konzistentní vzhledem k aplikacím je za posledním bodem v čase a způsobuje ztrátu dat.
     - **Nejnovější** je bod obnovení konzistentní vzhledem k selháním.
-    - V **nejnovější verzi**se virtuální počítač převezme k nejnovějšímu dostupnému bodu v čase. Pokud máte replikační skupinu pro konzistenci s více virtuálními počítači v rámci plánu obnovení, každý virtuální počítač ve skupině převezme služby při selhání k nezávislému nejnovějšímu bodu v čase.
+    - V **nejnovější verzi** se virtuální počítač převezme k nejnovějšímu dostupnému bodu v čase. Pokud máte replikační skupinu pro konzistenci s více virtuálními počítači v rámci plánu obnovení, každý virtuální počítač ve skupině převezme služby při selhání k nezávislému nejnovějšímu bodu v čase.
     - Pokud používáte bod obnovení konzistentní vzhledem k aplikacím, každý virtuální počítač se vrátí k nejnovějšímu dostupnému bodu. Pokud má plán obnovení replikační skupinu, každá skupina se obnoví do jejího společného dostupného bodu obnovení.
 5. Začíná převzetí služeb při selhání. Site Recovery vypne virtuální počítače Azure.
 6. Po dokončení převzetí služeb při selhání ověřte, že vše funguje podle očekávání. Ověřte, že jsou virtuální počítače Azure vypnuté. 
@@ -54,7 +54,7 @@ Tento článek popisuje, jak navrácení služeb po obnovení virtuálních poč
 
 Po potvrzení navrácení služeb po obnovení dojde k odstranění virtuálních počítačů Azure. Virtuální počítač je zpátky v privátním cloudu řešení Azure VMware, ale není chráněný. Pokud chcete znovu začít replikovat virtuální počítače do Azure, postupujte takto:
 
-1. V trezoru > **replikované položky**vyberte virtuální počítače, u kterých došlo k chybě, a pak vyberte **znovu nastavit ochranu**.
+1. V trezoru > **replikované položky** vyberte virtuální počítače, u kterých došlo k chybě, a pak vyberte **znovu nastavit ochranu**.
 2. Zadejte procesový Server, který se používá k odesílání dat zpět do Azure.
 3. Výběrem **OK** spusťte úlohu opětovného zapnutí ochrany.
 

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 92333857177d33307d6997bfcbdf79787d3ab127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90895958"
 ---
 # <a name="determining-application-type"></a>Určení typu aplikace
@@ -22,12 +22,12 @@ Existují široké dva druhy aplikací, které dobře fungují na Citus (s velko
 
 ## <a name="at-a-glance"></a>Na první pohled
 
-| Víceklientské aplikace                                 | Real-Time aplikací                                |
+| Víceklientské aplikace                                 | Aplikace v reálném čase                                |
 |-----------------------------------------------------------|-------------------------------------------------------|
-| V některých případech se ve schématu vydávají desítky nebo stovky tabulek.          | Malý počet tabulek                                |
+| V některých případech schéma zahrnuje desítky nebo stovky tabulek          | Malý počet tabulek                                |
 | Dotazy vztahující se k jednomu klientovi (společnosti/úložiště) v čase | Relativně jednoduché analytické dotazy s agregacemi |
-| OLTP úlohy pro obsluhu webových klientů                    | Vysoký objem ingest převážně neproměnlivých dat           |
-| Úlohy OLAP, které slouží k analytickým dotazům pro jednotlivé klienty   | Časté secentrování kolem velké tabulky událostí            |
+| Úlohy OLTP pro obsluhu webových klientů                    | Velké množství přijímaných převážně neměnných dat           |
+| Úlohy OLAP obsluhující analytické dotazy pro jednotlivé klienty   | Úlohy se často týkají velkých tabulek událostí            |
 
 ## <a name="examples-and-characteristics"></a>Příklady a charakteristiky
 

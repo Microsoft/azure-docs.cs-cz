@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4faa7837a75bab6dfab651862754cd92394c5137
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91be2f8641a061d009962cdcd03a8d56048594da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585911"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594494"
 ---
 # <a name="how-to-create-alerts-for-change-tracking-and-inventory"></a>Jak vytvořit výstrahy pro Change Tracking a inventář
 
@@ -50,11 +50,11 @@ Jakmile budete mít nakonfigurovaná upozornění, můžete nastavit skupinu akc
 
 3. V části **Akce** zadejte název, který určuje akci, například **e-mailové oznámení**.
 
-4. Jako **typ akce** vyberte vhodný typ, například **e-mail/SMS/Push/Voice**.
+4. Jako **typ akce** vyberte vhodný typ, například **E-mail/zpráva SMS/nabízení/hlas**.
 
-5. Vyberte **Upravit podrobnosti**.
+5. Vyberte ikonu tužky a upravte podrobnosti akce.
 
-6. Vyplňte podokno pro typ akce. Pokud například používáte **e-mail/SMS/Push/Voice**, zadejte název akce, zaškrtněte políčko **e-mail** , zadejte platnou e-mailovou adresu a pak vyberte **OK**.
+6. Vyplňte podokno pro typ akce. Pokud například odešlete e-mail pomocí **e-mailu/zprávy SMS/Push/Voice** , zadejte název akce, zaškrtněte políčko **e-mail** , zadejte platnou e-mailovou adresu a pak vyberte **OK**.
 
     ![Konfigurace e-mailové skupiny akcí](./media/configure-alerts/configure-email-action-group.png)
 

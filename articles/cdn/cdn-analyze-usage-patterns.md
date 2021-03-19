@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90985533"
 ---
 # <a name="core-reports-from-verizon"></a>Základní sestavy od Verizonu
@@ -132,6 +132,6 @@ Tato sestava zobrazuje distribuci využití provozu v protokolu IPV4 vs IPV6.
 
 ![Přenesená data protokolu IPV4/IPV6](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 Sestavy se dají vygenerovat jenom během posledních 18 měsíců.
 

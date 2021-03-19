@@ -5,12 +5,12 @@ author: ofirmanor
 ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: d65fa03a183c15022535debee6476844192ec6bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 08ac23fbb29829bf2a7a46e41f9a7f646ad97915
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037842"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586314"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Řešení potíží s výstrahami Azure Monitor
 
@@ -21,7 +21,7 @@ Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech mo
 Pokud máte problém s vypálením nebo vypálením výstrahy v případě, že jste očekávali, podívejte se na články níže. Výstrahy "aktivované" můžete zobrazit v Azure Portal.
 
 - [Řešení potíží s Azure Monitor výstrahami metrik v Microsoft Azure](alerts-troubleshoot-metric.md)  
-- [Řešení potíží s Azure Monitor výstrahami protokolu v Microsoft Azure](alerts-troubleshoot-metric.md)
+- [Řešení potíží s Azure Monitor výstrahami protokolu v Microsoft Azure](alerts-troubleshoot-log.md)
 
 Pokud se výstraha aktivuje podle Azure Portal, ale neproběhne správná oznámení, použijte informace ve zbývající části tohoto článku k vyřešení tohoto problému.
 

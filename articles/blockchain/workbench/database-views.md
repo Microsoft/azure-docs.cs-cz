@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87003317"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Zobrazení databáze Azure blockchain Workbench
@@ -287,7 +287,7 @@ Toto zobrazení představuje většinu informací týkajících se stavu konkré
 
 Toto zobrazení poskytuje podrobné informace o členech konsorcia zřízených pro používání Azure blockchain Workbench. Ve výchozím nastavení se data naplní počátečním zřizováním uživatele.
 
-| Název               | Typ          | Může mít hodnotu null. | Description                                                                                                                                                                                                                               |
+| Název               | Typ          | Může mít hodnotu null. | Popis                                                                                                                                                                                                                               |
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | No          | Jedinečný identifikátor uživatele |
 | ExternalID         | nvarchar (255) | No          | Externí identifikátor pro uživatele. Ve výchozím nastavení je toto ID identifikátor GUID, který představuje ID Azure Active Directory pro uživatele. |

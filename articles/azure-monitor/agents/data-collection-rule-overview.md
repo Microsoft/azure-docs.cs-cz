@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039610"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586331"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Pravidla shromažďování dat v Azure Monitor (Preview)
 Pravidla shromažďování dat (DCR) definují data přicházející do Azure Monitor a určují, kam se tato data mají odeslat nebo Uložit. Tento článek obsahuje přehled pravidel shromažďování dat, včetně jejich obsahu a struktury a způsobu, jakým můžete s nimi vytvářet a pracovat s nimi.
@@ -39,7 +39,7 @@ Následující diagram znázorňuje komponenty pravidla shromažďování dat a 
 ### <a name="data-source-types"></a>Typy zdroje dat
 Každý zdroj dat má typ zdroje dat. Každý typ definuje jedinečnou sadu vlastností, které musí být zadány pro každý zdroj dat. Typy zdrojů dat, které jsou aktuálně k dispozici, jsou uvedeny v následující tabulce.
 
-| Typ zdroje dat | Popis | 
+| Typ zdroje dat | Description | 
 |:---|:---|
 | přípona | Zdroj dat založený na rozšíření virtuálních počítačů |
 | Čítače výkonu | Čítače výkonu pro systémy Windows i Linux |
@@ -81,6 +81,10 @@ Níže uvedené pravidlo shromažďování ukázkových dat je pro virtuální p
   - Shromažďuje výstrahy, kritické a naléhavé události ze zařízení syslog.
 - Cíle
   - Pošle všechna data do pracovního prostoru Log Analytics s názvem centralWorkspace.
+
+> [!NOTE]
+> Vysvětlení XPath, která se používají k určení shromažďování událostí v pravidlech shromažďování dat, najdete v tématu [omezení shromažďování dat pomocí vlastních dotazů XPath](data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries) .
+
 
 ```json
 {

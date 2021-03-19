@@ -2,20 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8291089d40ada02adfa011beedf18e90766d3a26
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 82cb3119330a9a392b5fa7410e90e891ab7e2100
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613788"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604919"
 ---
 |Název |Description |Zásady |Verze |
 |---|---|---|---|
 |[\[Preview: inverze pro \] australský státní správu ISM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |Tato iniciativa zahrnuje zásady pro nasazování auditu a rozšíření virtuálních počítačů, které řeší podmnožinu australských ovládacích prvků (ISM) pro státní správu zabezpečení informací. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint) . |61 |4.0.1 – Preview |
-|[Canada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu federálních PBMMch ovládacích prvků Kanady. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |60 |4.0.1 |
+|[Canada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu federálních PBMMch ovládacích prvků Kanady. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |59 |5.0.0 |
 |[Srovnávací test CIS Microsoft Azure Foundations 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |V této iniciativě jsou uvedeny zásady, které řeší podmnožinu referenčních doporučení pro CIS Microsoft Azurech základů. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cisazure110-initiative](https://aka.ms/cisazure110-initiative) . |92 |9.0.0 |
 |[\[Verze Preview \] : Microsoft Azure CIS 1.3.0 Foundation – testování](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_3_0.json) |V této iniciativě jsou uvedeny zásady, které řeší podmnožinu referenčních doporučení pro CIS Microsoft Azurech základů. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cisazure130-initiative](https://aka.ms/cisazure130-initiative) . |104 |1.0.0 – Preview |
 |[\[Verze Preview \] : CMMC úrovně 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu požadavků na kyberbezpečnosti (CMMC) () úrovně 3. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative) . |183 |3.0.0 – Preview |
@@ -30,4 +30,4 @@ ms.locfileid: "102613788"
 |[NIST SP 800-53 R4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu NIST SP 800-53 R4 Controls. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/nist80053-blueprint](https://aka.ms/nist80053-blueprint) . |790 |4.0.1 |
 |[PCI v 3.2.1:2018](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/PCIv3_2_1_2018_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu PCI v 3.2.1:2018 Controls. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/pciv321-init](https://aka.ms/pciv321-init) . |39 |3.0.2 |
 |[\[Verze Preview \] : SWIFT CSP – CSCF v2020](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |Tato iniciativa zahrnuje zásady pro nasazování auditu a rozšíření virtuálních počítačů, které řeší podmnožinu CSCF v2020ových ovládacích prvků SWIFT CSP. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/swift-blueprint](https://aka.ms/swift-blueprint) . |61 |3.0.1 – Preview |
-|[UK OFFICIAL a UK NHS](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu OFICIÁLNÍch a NHSch ovládacích prvků pro Spojené království. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na webu [https://aka.ms/ukofficial-blueprint](https://aka.ms/ukofficial-blueprint) a [https://aka.ms/uknhs-blueprint](https://aka.ms/uknhs-blueprint) . |59 |5.0.1 |
+|[UK OFFICIAL a UK NHS](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu OFICIÁLNÍch a NHSch ovládacích prvků pro Spojené království. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na webu [https://aka.ms/ukofficial-blueprint](https://aka.ms/ukofficial-blueprint) a [https://aka.ms/uknhs-blueprint](https://aka.ms/uknhs-blueprint) . |59 |6.0.0 |

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90885840"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Odebrání služby Azure Sentinel z pracovního prostoru
@@ -29,7 +29,7 @@ Pokud už nechcete používat Azure Sentinel, Tento článek vysvětluje, jak ho
 
 Pomocí tohoto postupu odeberte Azure Sentinel z pracovního prostoru:
 
-1. Přejít na **Azure Sentinel**, potom na **Nastavení**a vyberte kartu **Odebrat Sentinel Azure**.
+1. Přejít na **Azure Sentinel**, potom na **Nastavení** a vyberte kartu **Odebrat Sentinel Azure**.
 
 1. Před odebráním ověřovacího rozhraní Azure použijte zaškrtávací políčka a sdělte nám prosím, proč jste ji odebrali.
 
@@ -66,12 +66,12 @@ Během prvních 48 hodin už nebudou pravidla pro data a analýzy (včetně konf
 
 -   Záložky
 
-Vaše playbooky, uložené sešity, uložené lovecké dotazy a poznámkové bloky se neodstraňují. **Některé mohou být z důvodu odebraných dat přerušeny. Můžete je odebrat ručně.**
+Vaše playbooky, uložené sešity, uložené dotazy proaktivního vyhledávání ani poznámkové bloky se neodeberou. **Některé mohou být z důvodu odebraných dat přerušeny. Můžete je odebrat ručně.**
 
 Po odebrání služby dojde k uplynutí období 30 dnů, během kterého můžete řešení znovu povolit, a data a analytická pravidla budou obnovena, ale odpojené konektory se musí znovu připojit.
 
 > [!NOTE]
-> Pokud řešení odeberete, vaše předplatné bude i nadále zaregistrováno u poskytovatele prostředků Azure Sentinel. **Můžete jej odebrat ručně.**
+> Pokud řešení odeberete, vaše předplatné bude dál zaregistrované u poskytovatele prostředků služby Azure Sentinel. **Můžete ho odebrat ručně.**
 
 
 

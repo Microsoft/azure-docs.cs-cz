@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91767567"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Použití služby Správce zařízení StorSimple na webu Azure Portal ke klonování svazku
@@ -23,7 +23,7 @@ ms.locfileid: "91767567"
 
 V tomto kurzu se dozvíte, jak můžete pomocí zálohovacího skladu naklonovat jednotlivé svazky přes okno **zálohovat katalog** . Vysvětluje také rozdíl mezi *přechodnými* a *trvalými* klony. Pokyny v tomto kurzu se vztahují na všechna zařízení řady StorSimple 8000 s aktualizací Update 3 nebo novější.
 
-V okně StorSimple Device Manager Service **Backup Catalog** se zobrazí všechny zálohovací sklady, které se vytvoří při ručním nebo automatizovaném zálohování. Pak můžete vybrat svazek v zálohovacím skladu, který chcete klonovat.
+V okně StorSimple Správce zařízení Service **Backup Catalog** se zobrazí všechny zálohovací sklady, které se vytvoří při ručním nebo automatizovaném zálohování. Pak můžete vybrat svazek v zálohovacím skladu, který chcete klonovat.
 
  ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
@@ -53,7 +53,7 @@ Provedením následujících kroků vytvoříte klon svazku ze zálohy katalogu.
 
 #### <a name="to-clone-a-volume"></a>Naklonování svazku
 
-1. Přejděte ke službě StorSimple Device Manager a potom klikněte na **katalog záloh**.
+1. Přejděte ke službě StorSimple Správce zařízení a potom klikněte na **katalog záloh**.
 
 2. Vyberte zálohovací sklad následujícím způsobem:
    
@@ -82,7 +82,7 @@ Provedením následujících kroků vytvoříte klon svazku ze zálohy katalogu.
        > [!NOTE]
        > Pole **Klonovaný svazek jako** bude **vrstveno** i v případě klonování místně připojeného svazku. Toto nastavení nemůžete změnit. Pokud ale potřebujete, aby Klonovaný svazek byl připnuté místně, můžete po úspěšném vytvoření klonu převést klon na místně připojený svazek. Informace o převedení vrstveného svazku na místně připojený svazek získáte, když přejdete na [změnit typ svazku](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
           
-   3. V části **připojení hostitelé**zadejte záznam řízení přístupu (ACR) pro klon. Můžete přidat novou ACR nebo vybrat z existujícího seznamu. ACR určí, kteří hostitelé budou mít přístup k tomuto klonu.
+   3. V části **připojení hostitelé** zadejte záznam řízení přístupu (ACR) pro klon. Můžete přidat novou ACR nebo vybrat z existujícího seznamu. ACR určí, kteří hostitelé budou mít přístup k tomuto klonu.
       
        ![Seznam zálohovacích skladů 4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
@@ -100,7 +100,7 @@ Klon, který je vytvořen tímto způsobem, je přechodným klonem. Další info
 
 
 ## <a name="transient-vs-permanent-clones"></a>Přechodné vs. trvalé klony
-Přechodné klony se vytvářejí jenom při klonování na jiné zařízení. Konkrétní svazek můžete klonovat ze zálohovacího skladu na jiné zařízení, které spravuje StorSimple Device Manager. Přechodný klon má odkazy na data v původním svazku a tato data používá ke čtení a zápisu místně na cílovém zařízení.
+Přechodné klony se vytvářejí jenom při klonování na jiné zařízení. Konkrétní svazek můžete klonovat ze zálohovacího skladu na jiné zařízení, které spravuje StorSimple Správce zařízení. Přechodný klon má odkazy na data v původním svazku a tato data používá ke čtení a zápisu místně na cílovém zařízení.
 
 Po převzetí cloudového snímku přechodného klonu je výsledný klon *trvalým* klonem. Během tohoto procesu se v cloudu vytvoří kopie dat a čas pro kopírování těchto dat se určí podle velikosti dat a latencí Azure (Jedná se o kopii z Azure do Azure). Tento proces může trvat několik dní až týdnů. Přechodný klon se stal trvalým klonem a nemá žádné odkazy na původní data svazků, ze kterých byla naklonována.
 
@@ -115,5 +115,5 @@ Je nutné ověřit chybu testování v produkčním prostředí. V produkčním 
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [obnovit svazek StorSimple ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md).
-* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Naučte se [používat službu StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

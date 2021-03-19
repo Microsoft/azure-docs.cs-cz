@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74232761"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Správa verzí v Durable Functions (Azure Functions)
@@ -87,7 +87,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 > [!NOTE]
 > Předchozí příklady C# Target Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-Tato změna přidá nové volání funkce **SendNotification** mezi **foo** a **bar**. Neexistují žádné změny podpisu. K tomuto problému dochází, když existující instance obnoví volání na **bar**. Při opakovaném přehrání, pokud se vrátí původní volání **foo** `true` , pak bude znovu přehrání nástroje Orchestrator volat do **SendNotification**, které není v historii spuštění. Výsledkem je, že rozhraní odolného úlohy se nezdařila s a, `NonDeterministicOrchestrationException` protože při očekávaném volání na **panel**se objevilo volání **SendNotification** . Stejný typ problému může nastat při přidávání jakýchkoli volání do "trvanlivého" rozhraní API, včetně `CreateTimer` , `WaitForExternalEvent` atd.
+Tato změna přidá nové volání funkce **SendNotification** mezi **foo** a **bar**. Neexistují žádné změny podpisu. K tomuto problému dochází, když existující instance obnoví volání na **bar**. Při opakovaném přehrání, pokud se vrátí původní volání **foo** `true` , pak bude znovu přehrání nástroje Orchestrator volat do **SendNotification**, které není v historii spuštění. Výsledkem je, že rozhraní odolného úlohy se nezdařila s a, `NonDeterministicOrchestrationException` protože při očekávaném volání na **panel** se objevilo volání **SendNotification** . Stejný typ problému může nastat při přidávání jakýchkoli volání do "trvanlivého" rozhraní API, včetně `CreateTimer` , `WaitForExternalEvent` atd.
 
 ## <a name="mitigation-strategies"></a>Strategie zmírňování
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90987389"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Pokyny pro ochranu osobních údajů pro hlasové asistenty ve Windows
@@ -50,7 +50,7 @@ Pokud je zjištěna kterákoli z výše uvedených skutečností, může společ
 
 Pomocným autorům, kteří chtějí usnadnit a hladce se přihlášeni k aktivaci hlasu, můžou to udělat tak, že splní další požadavky, aby dostatečně splnily informace a souhlasili s tím, že se na stránku nastavení nepřipojí další cesta. Po schválení bude aktivace hlasu okamžitě k dispozici, jakmile uživatel udělí aplikaci pomocníka oprávnění k mikrofonu. Aby to bylo možné, musí pomocníkská aplikace **před** zobrazením souhlasu s mikrofonem (například pomocí `AppCapability.RequestAccessAsync` rozhraní API) provést následující akce:
 
-1. Poskytněte jasnému a výraznému oznámení uživateli, že by aplikace chtěla naslouchat hlasu uživatele pro klíčové slovo, a *to i v případě, že aplikace není spuštěná*a přeje by se jednat o souhlas uživatele.
+1. Poskytněte jasnému a výraznému oznámení uživateli, že by aplikace chtěla naslouchat hlasu uživatele pro klíčové slovo, a *to i v případě, že aplikace není spuštěná* a přeje by se jednat o souhlas uživatele.
 1. Uveďte relevantní informace o využití dat a zásadách ochrany osobních údajů, jako je odkaz na oficiální prohlášení o zásadách ochrany osobních údajů.
 1. Vyhněte se jakékoli direktivě nebo úvodnímu slovu (například "při použití možnosti" klikněte na tlačítko Ano ") v toku zkušeností, který vychází z chování při zachytávání zvuku
 

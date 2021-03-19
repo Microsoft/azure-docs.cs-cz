@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87004272"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft. Common. upload – element uživatelského rozhraní
@@ -86,7 +86,7 @@ Při testování CreateUiDefinition některé prohlížeče (jako Google Chrome)
 - Nahraný soubor je chráněný. Výstupní adresa URL obsahuje [token SAS](../../storage/common/storage-sas-overview.md?toc=/azure/storage/blobs/toc.json) pro přístup k souboru během nasazování.
 - Hodnota určuje, `options.openMode` jak je soubor čten. Pokud by měl být soubor prostým textem, zadejte **text**; v opačném případě zadejte **Binary**. Výchozí hodnota je **text**.
 - Pokud `options.uploadMode` je nastavená na **soubor** a `options.openMode` je nastavená na **Binary**, výstup je kódovaný v kódování Base64.
-- `options.encoding` Určuje kódování, které má být použito při čtení souboru. Výchozí hodnota je **UTF-8**a používá se jenom v případě, že `options.openMode` je nastavená na **text**.
+- `options.encoding` Určuje kódování, které má být použito při čtení souboru. Výchozí hodnota je **UTF-8** a používá se jenom v případě, že `options.openMode` je nastavená na **text**.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88653966"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro úložiště a zálohování ve službě Azure Kubernetes (AKS)
@@ -34,7 +34,7 @@ Následující tabulka popisuje dostupné typy úložišť a jejich možnosti:
 
 | Případ použití | Modul plug-in svazku | Čtení a zápis jednou | Velký počet jen pro čtení | Čtení a zápis mnoha | Podpora kontejneru Windows serveru |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| Sdílená konfigurace       | Soubory Azure   | Yes | Yes | Yes | Yes |
+| Sdílená konfigurace       | Azure Files   | Yes | Yes | Yes | Yes |
 | Data strukturovaných aplikací        | Disky Azure   | Yes | No  | No  | Yes |
 | Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Yes | Yes | Yes | No |
 
@@ -49,7 +49,7 @@ Seznámení s požadavky na výkon aplikace a vzory přístupu k výběru vhodn�
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Vytvoření a použití tříd úložiště k definování potřeb aplikace
 
-Typ úložiště, který použijete, je definovaný pomocí *tříd úložiště*Kubernetes. Na třídu úložiště se pak odkazuje ve specifikaci pod nebo nasazováním. Tyto definice společně vytvoří vhodné úložiště a připojí je k luskům. Další informace najdete v tématu [třídy úložiště v AKS][aks-concepts-storage-classes].
+Typ úložiště, který použijete, je definovaný pomocí *tříd úložiště* Kubernetes. Na třídu úložiště se pak odkazuje ve specifikaci pod nebo nasazováním. Tyto definice společně vytvoří vhodné úložiště a připojí je k luskům. Další informace najdete v tématu [třídy úložiště v AKS][aks-concepts-storage-classes].
 
 ## <a name="size-the-nodes-for-storage-needs"></a>Velikost uzlů pro potřeby úložiště
 
@@ -61,7 +61,7 @@ Pokud vaše aplikace jako řešení úložiště vyžadují disky Azure, naplán
 
 | Typ a velikost uzlu | Virtuální procesory | Paměť (GiB) | Max. datových disků | Maximální počet necachených vstupně-výstupních operací disku | Maximální propustnost při neukládání do mezipaměti (MB/s) |
 |--------------------|------|--------------|----------------|------------------------|--------------------------------|
-| Standard_B2ms      | 2    | 8            | 4              | 1 920                  | 22,5                           |
+| Standard_B2ms      | 2    | 8            | 4              | 1 920                  | 22.5                           |
 | Standard_DS2_v2    | 2    | 7            | 8              | 6 400                  | 96                             |
 
 V tomto případě *Standard_DS2_v2* umožňuje dvojnásobek počtu připojených disků a poskytuje tři až ČTYŘIKRÁT množství IOPS a propustnosti disku. Pokud jste si prohlédli jenom základní výpočetní prostředky a porovnané náklady, můžete si vybrat velikost virtuálního počítače *Standard_B2ms* a snížit výkon a omezení úložiště. Pracujte s vývojovým týmem vaší aplikace, abyste pochopili kapacitu úložiště a požadavky na výkon. Vyberte odpovídající velikost virtuálního počítače pro uzly AKS, které splňují nebo překračují jejich požadavky na výkon. Pravidelné standardní aplikace pro přizpůsobení velikosti virtuálních počítačů podle potřeby.

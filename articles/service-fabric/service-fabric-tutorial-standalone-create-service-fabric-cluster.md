@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: ae0b343be986f4d8d5176c1f39eef6b23ca81278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91840638"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
@@ -17,7 +17,7 @@ Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostř
 
 Tento kurz je druhá část série. Tento kurz vás provede kroky vytvoření samostatného clusteru Service Fabric.
 
-V tomto článku se dozvíte, jak:
+V tomto článku se naučíte:
 
 > [!div class="checklist"]
 > * Stáhnout a nainstalovat samostatný balíček Service Fabric

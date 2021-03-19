@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87047334"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnat Azure Media Services V3 předvolby a Video Indexer 
@@ -29,7 +29,7 @@ V současné době dochází k překrytí mezi funkcemi nabízenými [rozhraním
 
 ## <a name="compare"></a>Porovnání
 
-|Příznak|Rozhraní API pro Video Indexer |Předvolby videa a analyzátoru zvuku<br/>v rozhraních API pro Media Services V3|
+|Funkce|Rozhraní API pro Video Indexer |Předvolby videa a analyzátoru zvuku<br/>v rozhraních API pro Media Services V3|
 |---|---|---|
 |Media Insights|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/analyzing-video-audio-files-concept.md)|
 |Možnosti|Úplný seznam podporovaných funkcí najdete v článku: <br/> [Přehled](video-indexer-overview.md)|Vrátí jenom video přehledy.|

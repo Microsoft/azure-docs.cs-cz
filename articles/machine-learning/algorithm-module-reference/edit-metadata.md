@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
 ms.openlocfilehash: e279a7c9f6810ece482b043284f0be0719a3dafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90908032"
 ---
 # <a name="edit-metadata-module"></a>Upravit modul metadat
@@ -46,7 +46,7 @@ Typické změny metadat mohou zahrnovat:
   
 1. Vyberte možnost **datového typu** , pokud pro vybrané sloupce potřebujete přiřadit jiný datový typ. Pro určité operace může být nutné změnit datový typ. Pokud má vaše zdrojová datová sada například čísla zpracovaná jako text, musíte je před použitím matematických operací změnit na číselný datový typ.
 
-    + Podporované datové typy jsou **řetězec**, **celé číslo**, **Double**, **Boolean**a **DateTime**.
+    + Podporované datové typy jsou **řetězec**, **celé číslo**, **Double**, **Boolean** a **DateTime**.
 
     + Pokud vyberete více sloupců, je nutné použít změny metadat u *všech* vybraných sloupců. Řekněme například, že vyberete dva nebo tři číselné sloupce. Můžete je změnit na datový typ String a přejmenovat je v jedné operaci. Nelze však změnit jeden sloupec na datový typ String a jiný sloupec z typu float na celé číslo.
   
@@ -87,7 +87,7 @@ Typické změny metadat mohou zahrnovat:
   
          V tuto chvíli nemůžete explicitně označit sloupec jako skóre v Azure Machine Learning. Některé operace ale mají za následek, že se sloupec označí jako skóre interně. Také vlastní modul R může výstupní hodnoty skóre.
 
-1. Pro **nové názvy sloupců**zadejte nový název vybraného sloupce nebo sloupce.  
+1. Pro **nové názvy sloupců** zadejte nový název vybraného sloupce nebo sloupce.  
   
     + Názvy sloupců můžou používat jenom znaky, které podporuje kódování UTF-8. Prázdné řetězce, hodnoty null nebo názvy, které jsou tvořeny pouze mezerami, nejsou povoleny.  
   

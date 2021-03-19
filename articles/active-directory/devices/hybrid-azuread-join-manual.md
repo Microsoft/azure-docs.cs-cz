@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346b997b5e0c785d066ce3a1edaab8cbea10212
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644115"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577984"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -35,7 +35,7 @@ Pokud máte místní prostředí Active Directory a chcete připojit svá zaří
 > * Ověření připojených zařízení
 > * Řešení potíží s implementací
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste obeznámeni s:
 
@@ -74,6 +74,9 @@ Pokud vaše organizace používá spravované (nefederované) nastavení s míst
 U zařízení s Windows 10 ve verzi 1703 nebo starší, pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, musíte implementovat automatické zjišťování webového proxy serveru (WPAD), aby se počítače s Windows 10 mohly registrovat do Azure AD.
 
 Počínaje systémem Windows 10 1803, a to i v případě, že pokus o připojení k hybridní službě Azure AD prostřednictvím zařízení ve federované doméně prostřednictvím AD FS selže a pokud je Azure AD Connect nakonfigurovaná tak, aby synchronizoval objekty počítače nebo zařízení do Azure AD, zařízení se pokusí dokončit připojení k hybridní službě Azure AD pomocí synchronizovaného počítače nebo zařízení.
+
+> [!NOTE]
+> Abyste mohli úspěšně připojit synchronizaci zařízení, můžete jako součást konfigurace registrace zařízení vyloučit z konfigurace Azure AD Connect synchronizace výchozí atributy zařízení. Další informace o výchozích atributech zařízení synchronizovaných se službou Azure AD najdete v článku o [atributech synchronizovaných pomocí Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
 
 Pokud chcete ověřit, jestli má zařízení přístup k výše uvedeným prostředkům Microsoftu pod účtem System, můžete použít skript pro [připojení k registraci testovacího zařízení](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) .
 

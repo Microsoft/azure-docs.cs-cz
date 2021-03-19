@@ -3,14 +3,14 @@ title: Vytváření virtuálních uzlů pomocí portálu ve službě Azure Kuber
 description: Naučte se, jak pomocí Azure Portal vytvořit cluster Azure Kubernetes Services (AKS), který pomocí virtuálních uzlů spouští lusky.
 services: container-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 03/15/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c1ecaa88dd5329d86818565983a6ba891a6d8424
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501800"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577817"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vytvoření a konfigurace clusteru Azure Kubernetes Services (AKS) pro použití virtuálních uzlů v Azure Portal
 
@@ -54,15 +54,15 @@ V levém horním rohu Azure Portal vyberte **vytvořit**  >  **službu Kubernete
 Na kartě **Basics** (Základy) nakonfigurujte následující možnosti:
 
 - *PODROBNOSTI O PROJEKTU:* Vyberte předplatné Azure a pak vyberte nebo vytvořte skupinu prostředků Azure, například *myResourceGroup*. Zadejte **Název clusteru Kubernetes**, například *myAKSCluster*.
-- *PODROBNOSTI O CLUSTERU:* Vyberte oblast, verzi Kubernetes a předponu názvu DNS pro cluster AKS.
+- *Podrobnosti o clusteru*: Vyberte oblast a verzi Kubernetes pro cluster AKS.
 - *Fond primárních uzlů*: vyberte velikost virtuálního počítače pro uzly AKS. Velikost virtuálního počítače **nejde** změnit po nasazení clusteru AKS.
      - Vyberte počet uzlů, které se mají do clusteru nasadit. V tomto článku nastavte **počet uzlů** na *1*. Počet uzlů **jde** upravit po nasazení clusteru.
 
-Klikněte na **Další: škálovat**.
+Klikněte na **Další: fondy uzlů**.
 
-Na stránce **škálování** vyberte v části **virtuální uzly** *povoleno* .
+Na stránce **fondy uzlů** vyberte možnost *Povolit virtuální uzly*.
 
-![Vytvoření clusteru AKS a povolení virtuálních uzlů](media/virtual-nodes-portal/enable-virtual-nodes.png)
+:::image type="content" source="media/virtual-nodes-portal/enable-virtual-nodes.png" alt-text="V prohlížeči se v prohlížeči zobrazuje vytváření clusteru s virtuálními uzly povolenými na Azure Portal. Možnost ' Povolit virtuální uzly ' je zvýrazněna.":::
 
 Ve výchozím nastavení se vytvoří identita clusteru. Tato identita clusteru se používá pro komunikaci clusteru a integraci s dalšími službami Azure. Ve výchozím nastavení je tato identita clusteru spravovaná identitou. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md). Jako identitu clusteru můžete použít taky instanční objekt.
 
@@ -158,7 +158,7 @@ Pod ní je přiřazena interní IP adresa z podsítě virtuální sítě Azure d
 Chcete-li otestovat běžící na virtuálním uzlu, přejděte k ukázkové aplikaci pomocí webového klienta. V případě, že je pod přiřazená interní IP adresa, můžete toto připojení rychle otestovat z jiného seznamu pod clusterem AKS. Vytvořte test pod a připojte k němu relaci terminálu:
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run -it --rm virtual-node-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Nainstalujte `curl` v části pod pomocí `apt-get` :

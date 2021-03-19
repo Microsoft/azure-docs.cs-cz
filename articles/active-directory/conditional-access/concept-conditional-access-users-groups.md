@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f316b17096e1241fe23cbf2c965122fd8966522
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b878abbead68b3268891e1f35087e5942969730c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630873"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579055"
 ---
 # <a name="conditional-access-users-and-groups"></a>Podmíněný přístup: uživatelé a skupiny
 
-Zásady podmíněného přístupu musí zahrnovat přiřazení uživatele jako jeden ze signálů v rámci procesu rozhodování. Uživatele můžete zahrnout nebo vyloučit ze zásad podmíněného přístupu. Azure Active Directory vyhodnotí všechny zásady a zajistí splnění všech požadavků před udělením přístupu uživateli. Kromě tohoto článku máme video o [tom, jak zahrnout nebo vyloučit uživatele ze zásad podmíněného přístupu](https://www.youtube.com/watch?v=5DsW1hB3Jqs) , které vás provedou procesem popsaným níže. 
+Zásady podmíněného přístupu musí zahrnovat přiřazení uživatele jako jeden ze signálů v rámci procesu rozhodování. Uživatele můžete zahrnout nebo vyloučit ze zásad podmíněného přístupu. Azure Active Directory vyhodnotí všechny zásady a zajistí splnění všech požadavků před udělením přístupu uživateli. 
 
-![Uživatel jako signál v rozhodnutích učiněných podmíněným přístupem](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+> [!VIDEO https://www.youtube.com/embed/5DsW1hB3Jqs]
 
 ## <a name="include-users"></a>Zahrnutí uživatelů
 
@@ -77,7 +77,7 @@ Ve výchozím nastavení zásada nabídne možnost vyloučení aktuálního uži
 
 ![Upozornění, neprovádějte zámek!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
-[Co dělat v případě, že jste se odhlásili z Azure Portal?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
+Pokud se vám při[nedostatku Azure Portal zamknete, co dělat?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>Další kroky
 

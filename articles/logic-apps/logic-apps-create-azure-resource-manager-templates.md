@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90971778"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Vytváření šablon Azure Resource Manageru pro automatizaci nasazení pro Azure Logic Apps
@@ -34,7 +34,7 @@ Další informace o Azure Resource Manager šablonách najdete v těchto témate
 
 Pro nejjednodušší způsob, jak vytvořit platné šablony aplikace logiky, které jsou většinou připravené k nasazení, použijte Visual Studio (edice Community nebo vyšší) a nástroje Azure Logic Apps pro Visual Studio. Pak můžete [vytvořit aplikaci logiky v aplikaci Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) nebo [Najít a stáhnout existující aplikaci logiky z Azure Portal do sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
-Stažením aplikace logiky získáte šablonu, která obsahuje definice pro vaši aplikaci logiky a další prostředky, například připojení. Šablona také *parameterizes*nebo definuje parametry pro, hodnoty používané k nasazení aplikace logiky a dalších prostředků. Hodnoty pro tyto parametry můžete zadat v samostatném souboru parametrů. Tímto způsobem můžete tyto hodnoty snadněji změnit v závislosti na potřebách nasazení. Další informace najdete v těchto tématech:
+Stažením aplikace logiky získáte šablonu, která obsahuje definice pro vaši aplikaci logiky a další prostředky, například připojení. Šablona také *parameterizes* nebo definuje parametry pro, hodnoty používané k nasazení aplikace logiky a dalších prostředků. Hodnoty pro tyto parametry můžete zadat v samostatném souboru parametrů. Tímto způsobem můžete tyto hodnoty snadněji změnit v závislosti na potřebách nasazení. Další informace najdete v těchto tématech:
 
 * [Vytváření aplikací logiky pomocí sady Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Správa aplikací logiky s využitím sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)

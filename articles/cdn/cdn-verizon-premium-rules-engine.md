@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040218"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Přepsat chování HTTP pomocí Azure CDN z modulu pravidel Verizon Premium
@@ -80,7 +80,7 @@ Chcete-li získat přístup k modulu pravidel, je nutné nejprve vybrat možnost
    > [!NOTE]
    > V rozevíracím seznamu je k dispozici více funkcí. Pokud chcete získat informace o aktuálně vybrané funkci, vyberte modrou informační ikonu vlevo.
    >
-   > Pro **vynucení interního maximálního stáří**se v `Cache-Control` případě, že `Expires` hraniční uzel CDN aktualizuje Asset z původního zdroje, přepíše a hlavičky assetu se přepíšou. V tomto příkladu hraniční uzel CDN uloží Asset do mezipaměti po dobu 300 sekund nebo 5 minut, než se aktivuje ze svého původu.
+   > Pro **vynucení interního maximálního stáří** se v `Cache-Control` případě, že `Expires` hraniční uzel CDN aktualizuje Asset z původního zdroje, přepíše a hlavičky assetu se přepíšou. V tomto příkladu hraniční uzel CDN uloží Asset do mezipaměti po dobu 300 sekund nebo 5 minut, než se aktivuje ze svého původu.
    >
    > Podrobný seznam funkcí najdete v tématu [funkce stroje pravidel](cdn-verizon-premium-rules-engine-reference-features.md).
    >

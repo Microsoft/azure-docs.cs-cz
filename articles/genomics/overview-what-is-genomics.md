@@ -1,7 +1,7 @@
 ---
 title: Co je Microsoft Genomics?
 titleSuffix: Microsoft Genomics
-description: Přečtěte si, jak Microsoft Genomics můžou používat sekvencování pro zpracování genomu, s využitím cloudové implementace Burrows-Wheeler (BWA) a genom Analysis Toolkit (GENOME).
+description: Přečtěte si, jak Microsoft Genomics můžou používat sekvenci napájení, pomocí cloudové implementace sady Burrows-Wheeler Aligner (BWA) a genom Analysis Toolkit (GENOME).
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,14 +10,14 @@ ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
 ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73498823"
 ---
 # <a name="what-is-microsoft-genomics"></a>Co je Microsoft Genomics?
-Microsoft Genomics nabízí cloudovou implementaci Burrows-Wheeler pro vyrovnání (BWA) a sadu genom Analysis Toolkit (GENOME) pro sekundární analýzu. Služba je certifikována podle ISO a dodržuje předpisy HIPAA a nabízí předvídatelnost cen pro potřeby sekvencování genomu. Přečtěte si naše rychlé starty, kurzy a dokumentaci a Naučte se používat službu Microsoft Genomics a integrovat s našimi rozhraním API.
+Microsoft Genomics nabízí cloudovou implementaci služby Burrows-Wheeler Aligner (BWA) a GENOME (genom Analysis Toolkit) pro sekundární analýzu. Služba je certifikována podle ISO a dodržuje předpisy HIPAA a nabízí předvídatelnost cen pro potřeby sekvencování genomu. Přečtěte si naše rychlé starty, kurzy a dokumentaci a Naučte se používat službu Microsoft Genomics a integrovat s našimi rozhraním API.
 
 ## <a name="support-your-most-demanding-sequencing-needs"></a>Podpora svých nejnáročnějších potřeb sekvencování
 Místo správy vlastních Datacenter Využijte výhod škály a zkušeností Microsoftu při spouštění úloh škály Exabyte. Naše cloudová implementace BWA-GENOME je vysoce mezišňůrá s kanálem osvědčených postupů pro hlavní instituce.

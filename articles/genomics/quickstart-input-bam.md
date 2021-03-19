@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72249167"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Odeslání pracovní postupu pomocí vstupního souboru BAM
@@ -21,7 +21,7 @@ ms.locfileid: "72249167"
 Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud je vstupním souborem jeden soubor BAM. Toto téma předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat úložiště Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí poskytnutých ukázkových dat, budete připraveni pokračovat v tomto článku. 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Příprava: Odeslání souboru BAM do úložiště Azure
-Předpokládejme, že máte jeden soubor BAM, *reads.bam*, a že jste ho nahráli do svého účtu úložiště *myaccount* v Azure jako **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**. Máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
+Předpokládejme, že máte jeden soubor BAM, *reads.bam*, a že jste ho nahráli do svého účtu úložiště *myaccount* v Azure jako **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/inputs/reads <span></span>.bam <span></span>**. Máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>**.
 
 
 

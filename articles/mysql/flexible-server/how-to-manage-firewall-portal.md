@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 132319575147c2ff1075881b1f1faec8bc5029f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90936631"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Vytvoření a Správa pravidel brány firewall pro Azure Database for MySQL flexibilní Server pomocí Azure Portal
@@ -32,7 +32,7 @@ V tomto článku se zaměříme na vytvoření serveru MySQL s **veřejným př�
 3. Jako možnost nasazení vyberte **flexibilní Server** .
 4. Vyplňte formulář **základy** .
 5. Chcete-li nakonfigurovat, jak se chcete připojit k serveru, přejdete na kartu **sítě** .
-6. V části **metoda připojení**vyberte *veřejný přístup (povolené IP adresy)*. Chcete-li vytvořit **pravidla brány firewall**, zadejte název pravidla brány firewall a jednu IP adresu nebo rozsah adres. Pokud chcete pravidlo omezit na jednu IP adresu, zadejte v poli Počáteční IP adresa a koncovou IP adresu stejnou adresu. Otevření brány firewall umožňuje správcům, uživatelům a aplikacím přístup k jakékoli databázi na serveru MySQL, ke které mají platné přihlašovací údaje.
+6. V části **metoda připojení** vyberte *veřejný přístup (povolené IP adresy)*. Chcete-li vytvořit **pravidla brány firewall**, zadejte název pravidla brány firewall a jednu IP adresu nebo rozsah adres. Pokud chcete pravidlo omezit na jednu IP adresu, zadejte v poli Počáteční IP adresa a koncovou IP adresu stejnou adresu. Otevření brány firewall umožňuje správcům, uživatelům a aplikacím přístup k jakékoli databázi na serveru MySQL, ke které mají platné přihlašovací údaje.
    > [!Note]
    > Azure Database for MySQL flexibilní Server vytvoří bránu firewall na úrovni serveru. Ta brání externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru, pokud nevytvoříte pravidlo k otevření brány firewall pro konkrétní IP adresy.
 
@@ -48,21 +48,21 @@ V tomto článku se zaměříme na vytvoření serveru MySQL s **veřejným př�
 
 3. V pravidlech brány firewall klikněte na **Přidat aktuální IP adresu klienta** . Tím se automaticky vytvoří pravidlo brány firewall s veřejnou IP adresou vašeho počítače, jak je znázorněno v systému Azure.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Connection Security":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Add My IP":::-->
 
 4. Před uložením konfigurace ověřte svoji IP adresu. V některých situacích se IP adresa zjištěná Azure Portal liší od IP adresy používané při přístupu k Internetu a k serverům Azure. Proto může být nutné změnit počáteční IP adresu a koncovou IP adresu, aby pravidlo fungovalo podle očekávání.
 
    K kontrole vlastní IP adresy můžete použít vyhledávací modul nebo jiný online nástroj. Vyhledejte například "Co je moje IP adresa".
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Azure portal - click Connection Security":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Bing search for What is my IP":::-->
 
 5. Přidejte další rozsahy adres. V pravidlech brány firewall pro Azure Database for MySQL flexibilní Server můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete pravidlo omezit na jednu IP adresu, zadejte v poli Počáteční IP adresa a koncovou IP adresu stejnou adresu. Otevření brány firewall umožňuje správcům, uživatelům a aplikacím přístup k jakékoli databázi na serveru MySQL, ke které mají platné přihlašovací údaje.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - click Connection Security":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - firewall rules":::-->
 
 6. Kliknutím na **Uložit** na panelu nástrojů uložte toto pravidlo brány firewall. Počkejte, až se potvrdí, že aktualizace pravidel firewallu proběhla úspěšně.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Connection Security":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Save":::-->
 
 ## <a name="connect-from-azure"></a>Připojení z Azure
 

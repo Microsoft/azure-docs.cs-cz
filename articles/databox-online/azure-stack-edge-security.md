@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: b5c5143c7bc92487aeabc3cdc1afea5061466027
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90903161"
 ---
 # <a name="azure-stack-edge-pro-security-and-data-protection"></a>Zabezpečení a ochrana dat v Azure Stack Edge pro
@@ -56,7 +56,7 @@ Další informace najdete v tématu [získání aktivačního klíče](azure-sta
 
 Hesla zajišťují, že k datům budou mít přístup jenom autorizovaní uživatelé. Zařízení Azure Stack Edge pro se spouští v uzamčeném stavu.
 
-Můžete:
+Další možnosti:
 
 - Připojte se k místnímu webovému uživatelskému rozhraní zařízení přes prohlížeč a pak zadejte heslo pro přihlášení k zařízení.
 - Vzdáleně se připojte k rozhraní PowerShellu zařízení přes HTTP. Vzdálená správa je ve výchozím nastavení zapnutá. Pak můžete zadat heslo zařízení pro přihlášení k zařízení. Další informace najdete v tématu [vzdálené připojení k zařízení Azure Stack Edge pro](azure-stack-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).

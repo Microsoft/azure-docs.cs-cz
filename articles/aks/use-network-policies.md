@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se zabezpečit provoz, který se zachází do lusků, pomocí zásad sítě Kubernetes ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 4b72c5551d6ed33deb4df40a60215aed8071141d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/16/2021
+ms.openlocfilehash: 17e14859ecdfe11872d5b0526d755d01bc1b034a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178894"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577848"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -181,9 +181,13 @@ Zásady sítě Calico s uzly Windows jsou momentálně ve verzi Preview.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-```azurecli
-PASSWORD_WIN="P@ssw0rd1234"
+Vytvořte uživatelské jméno, které se použije jako přihlašovací údaje správce pro kontejnery Windows serveru v clusteru. Následující příkazy zobrazí výzvu k zadání uživatelského jména a nastaví WINDOWS_USERNAME pro použití v pozdějším příkazu (Nezapomeňte, že příkazy v tomto článku jsou zadány do prostředí BASH).
 
+```azurecli-interactive
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
+
+```azurecli
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
@@ -195,8 +199,7 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --kubernetes-version 1.20.2 \
     --network-plugin azure \
@@ -222,7 +225,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>Odepřít veškerý příchozí provoz do pod
 
-Před definováním pravidel pro povolení konkrétního síťového provozu vytvořte nejprve zásadu sítě, která zamítne veškerý provoz. Tato zásada vám umožní začít vytvářet seznam povolených dat jenom pro požadovaný provoz. Můžete také jasně vidět, že při použití zásad sítě dojde k přerušení provozu.
+Před definováním pravidel pro povolení konkrétního síťového provozu vytvořte nejprve zásadu sítě, která zamítne veškerý provoz. Tato zásada vám poskytne výchozí bod pro začátek vytváření povolených jenom pro požadovaný provoz. Můžete také jasně vidět, že při použití zásad sítě dojde k přerušení provozu.
 
 V případě ukázkových prostředí aplikace a pravidel přenosů nejprve vytvoříme obor názvů s názvem *vývoj* pro spuštění příkladu lusků:
 
@@ -234,13 +237,13 @@ kubectl label namespace/development purpose=development
 Vytvořte příklad back-endu pod, na kterém běží NGINX. Pomocí tohoto back-endu se dá simulovat Ukázková webová aplikace v back-endu. Vytvořte tuto položku pod oborem názvů pro *vývoj* a otevřete port *80* pro obsloužení webového provozu. Popište ho jako *App = WebApp, role = back-end* , abyste se mohli na něj zaměřit pomocí zásad sítě v následující části:
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
+kubectl run backend --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 Vytvořte další pod a připojte relaci terminálu k otestování, jestli můžete úspěšně dosáhnout výchozí webové stránky NGINX:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 Na příkazovém řádku prostředí použijte `wget` k potvrzení, že máte přístup k výchozí webové stránce Nginx:
@@ -296,7 +299,7 @@ kubectl apply -f backend-policy.yaml
 Pojďme se podívat, jestli můžete použít webovou stránku NGINX v back-endu pod. Vytvořte další test pod a připojte relaci terminálu:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 Na příkazovém řádku prostředí použijte `wget` k zobrazení, zda máte přístup k výchozí webové stránce Nginx. Tentokrát nastavte hodnotu časového limitu na *2* sekund. Zásada sítě teď blokuje veškerý příchozí provoz, takže stránku nejde načíst, jak je znázorněno v následujícím příkladu:
@@ -353,7 +356,7 @@ kubectl apply -f backend-policy.yaml
 Naplánujte pod označený jako *App = WebApp, role = front-end* a připojte relaci terminálu:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 Na příkazovém řádku prostředí použijte `wget` k zobrazení, zda máte přístup k výchozí webové stránce Nginx:
@@ -383,7 +386,7 @@ exit
 Zásady sítě umožňují provoz z lusků s označením *aplikace: WebApp, role: front-end*, ale měla by Odepřít všechny ostatní přenosy. Pojďme se podívat, jestli jiný pod ním bez těchto popisků může mít přístup k back-endové NGINX pod. Vytvořte další test pod a připojte relaci terminálu:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 Na příkazovém řádku prostředí použijte `wget` k zobrazení, zda máte přístup k výchozí webové stránce Nginx. Zásada sítě blokuje příchozí provoz, takže nelze načíst stránku, jak je znázorněno v následujícím příkladu:
@@ -416,7 +419,7 @@ kubectl label namespace/production purpose=production
 Naplánujte test pod v *produkčním* oboru názvů, který je označený jako *App = WebApp, role = front-endu*. Připojit relaci terminálu:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 Na příkazovém řádku prostředí použijte `wget` k potvrzení, že máte přístup k výchozí webové stránce Nginx:
@@ -480,7 +483,7 @@ kubectl apply -f backend-policy.yaml
 Naplánujte další pod v *produkčním* oboru názvů a připojte relaci terminálu:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 Na příkazovém řádku prostředí použijte `wget` k zobrazení, že síťové zásady nyní zakazuje provoz:
@@ -502,7 +505,7 @@ exit
 Když se provoz zamítl z *produkčního* oboru názvů, naplánujte ho zpátky v oboru názvů pro *vývoj* a připojte relaci Terminálové služby:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 Na příkazovém řádku prostředí použijte `wget` k tomu, abyste viděli, že síťové zásady povolují přenosy:

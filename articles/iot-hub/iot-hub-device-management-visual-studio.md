@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73953183"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Použití Průzkumníka cloudu pro Visual Studio pro správu zařízení IoT Hub Azure
@@ -22,7 +22,7 @@ ms.locfileid: "73953183"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úloha                    |
+| Možnost správy          | Úkol                    |
 |----------------------------|--------------------------------|
 | Přímé metody             | Udělejte zařízení jako takové, jako je spuštění nebo zastavení odesílání zpráv nebo restartování zařízení.                                        |
 | Čtení z vlákna zařízení           | Načte stav nahlášeného zařízení. Například zařízení nahlásí, že indikátor LED právě bliká.                                    |
@@ -79,7 +79,7 @@ Chcete-li použít přímé metody, proveďte následující kroky:
 
 1. Klikněte pravým tlačítkem na zařízení a vyberte **vyvolat metodu Direct zařízení**.
 
-1. Zadejte název metody a datovou část v **metodě Invoke Direct**a pak vyberte **OK**.
+1. Zadejte název metody a datovou část v **metodě Invoke Direct** a pak vyberte **OK**.
 
     Výsledky se zobrazí ve **výstupu**.
 

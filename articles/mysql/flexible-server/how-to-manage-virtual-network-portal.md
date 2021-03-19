@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 28506ea5afe085e9f52e40495d9931ae0aeddf32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90935062"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Vytvoření a správa virtuálních sítí pro Azure Database for MySQL flexibilní Server pomocí Azure Portal
@@ -27,7 +27,7 @@ V tomto článku se zaměříme na vytvoření serveru MySQL s **privátním př
 
 Flexibilní server můžete nasadit do virtuální sítě a podsítě při vytváření serveru. Po nasazení flexibilního serveru ho nemůžete přesunout do jiné virtuální sítě ani podsítě ani pro něj nastavit *veřejný přístup (povolené IP adresy)* .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K vytvoření flexibilního serveru ve virtuální síti potřebujete:
 - [Virtuální síť](../../virtual-network/quick-create-portal.md#create-a-virtual-network)
     > [!Note]
@@ -42,7 +42,7 @@ K vytvoření flexibilního serveru ve virtuální síti potřebujete:
 3. Jako možnost nasazení vyberte **flexibilní Server** .
 4. Vyplňte formulář **základy** .
 5. Chcete-li nakonfigurovat, jak se chcete připojit k serveru, přejdete na kartu **sítě** .
-6. V části **způsob připojení**vyberte **privátní přístup (integrace virtuální sítě)**. Přejít na **Virtual Network** a vyberte už existující *virtuální síť* a *podsíť* , která se vytvořila v rámci výše uvedených požadavků.
+6. V části **způsob připojení** vyberte **privátní přístup (integrace virtuální sítě)**. Přejít na **Virtual Network** a vyberte už existující *virtuální síť* a *podsíť* , která se vytvořila v rámci výše uvedených požadavků.
 7. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte flexibilní konfiguraci serveru.
 8. Vyberte **Vytvořit**, aby se server zřídil. Zřizování může trvat několik minut.
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/10/2020
 ms.openlocfilehash: bf62fa995724b8e1fff757e89945cc39db3d9842
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90893714"
 ---
 # <a name="score-svd-recommender"></a>Určení skóre doporučovacího systému SVD
@@ -45,7 +45,7 @@ Když odhadnete hodnocení, model vypočítá, jak bude uživatel reagovat na ko
 
 1. Přidejte do svého kanálu školený model doporučení a připojte ho k **škole SVD doporučení**. Model je potřeba vytvořit pomocí modulu SVD, který je [doporučený pro vlak](train-SVD-recommender.md) .
 
-2. V případě **doporučeného druhu odhadu**vyberte **předpověď hodnocení**. Nejsou vyžadovány žádné další parametry.
+2. V případě **doporučeného druhu odhadu** vyberte **předpověď hodnocení**. Nejsou vyžadovány žádné další parametry.
 
 3. Přidejte data, pro která chcete vytvořit předpovědi, a připojte je k **datové sadě ke skóre**.
 
@@ -67,7 +67,7 @@ Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a polo�
 
 2. Chcete-li doporučit položky pro seznam uživatelů, nastavte **druh předpovědi** doporučení na **položku doporučení**.
 
-3. Pro **Výběr Doporučené položky**uveďte, zda používáte modul bodování v produkčním prostředí nebo pro vyhodnocení modelu. Vyberte jednu z těchto hodnot:
+3. Pro **Výběr Doporučené položky** uveďte, zda používáte modul bodování v produkčním prostředí nebo pro vyhodnocení modelu. Vyberte jednu z těchto hodnot:
 
     - **Ze všech položek**: tuto možnost vyberte, Pokud nastavujete kanál pro použití ve webové službě nebo v produkčním prostředí.  Tato možnost povolí *režim výroby*. Modul vytváří doporučení ze všech položek zobrazených během školení.
 
@@ -77,7 +77,7 @@ Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a polo�
 
 4. Přidejte datovou sadu, pro kterou chcete vytvořit předpovědi, a připojte ji k **datové sadě ke skóre**.
 
-    - Pro **ze všech položek**by vstupní datová sada měla sestávat z jednoho sloupce. Obsahuje identifikátory uživatelů, pro které chcete vytvořit doporučení.
+    - Pro **ze všech položek** by vstupní datová sada měla sestávat z jednoho sloupce. Obsahuje identifikátory uživatelů, pro které chcete vytvořit doporučení.
 
       Datová sada může obsahovat další dva sloupce identifikátorů a hodnocení položek, ale tyto dva sloupce jsou ignorovány. 
 
@@ -95,7 +95,7 @@ Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a polo�
 
    Tuto možnost použijte pouze v případě, že vyhodnocujete režim vyhodnocování. Možnost není k dispozici, pokud vyberete možnost **ze všech položek** nebo **z nehodnocených položek (pro návrh nových položek uživatelům)**.
 
-7.  V případě z nezpracovaných **položek (pro návrh nových položek uživatelům)** použijte třetí vstupní port s názvem **školicí data**pro odebrání položek, které již byly ohodnoceny z výsledků předpovědi.
+7.  V případě z nezpracovaných **položek (pro návrh nových položek uživatelům)** použijte třetí vstupní port s názvem **školicí data** pro odebrání položek, které již byly ohodnoceny z výsledků předpovědi.
 
     Chcete-li použít tento filtr, připojte původní datovou sadu školení ke vstupnímu portu.
 
