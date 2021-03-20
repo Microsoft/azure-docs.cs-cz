@@ -10,17 +10,17 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: bc2f802a902212633fdbc081d33a51407d374e36
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98696359"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Instalace softwaru a nastavení prostředků pro tento kurz
 
 V tomto tříleté kurzu vytvoříte model strojového učení, který bude předpovídat nečistoty železa jako procentuální podíl křemíku a potom model nasadíte do Azure SQL Edge. V první části nainstalujete požadovaný software a nasadíte prostředky Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 2. Instalace sady Visual Studio 2019 s 

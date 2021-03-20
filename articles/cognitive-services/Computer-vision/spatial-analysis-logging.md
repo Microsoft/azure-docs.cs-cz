@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
 ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98186018"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie a řešení potíží
@@ -121,7 +121,7 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>Řešení potíží s IoT Edge zařízením
 
-`iotedge`Nástroj příkazového řádku můžete použít ke kontrole stavu a protokolů spuštěných modulů. Příklad:
+`iotedge`Nástroj příkazového řádku můžete použít ke kontrole stavu a protokolů spuštěných modulů. Například:
 * `iotedge list`: Oznamuje seznam spuštěných modulů. 
   Chyby můžete dále kontrolovat pomocí `iotedge logs edgeAgent` . Pokud se `iotedge` zablokuje, můžete ho zkusit restartovat pomocí. `iotedge restart edgeAgent`
 * `iotedge logs <module-name>`
@@ -216,9 +216,9 @@ Protokoly se nahrávají na vyžádání pomocí `getRTCVLogs` metody IoT Edge v
 
 
 1. Přejít na stránku IoT Hub portálu, vyberte **hraniční zařízení** a pak vyberte zařízení a modul diagnostiky. 
-2. Přejděte na stránku podrobností modulu a klikněte na kartu **_Přímá metoda_* _.
+2. Přejděte na stránku podrobností modulu a klikněte na kartu ***Přímá metoda*** .
 3. `getRTCVLogs`V datové části zadejte název metody a řetězec formátu JSON. Můžete zadat `{}` , což je prázdná datová část. 
-4. Nastavte časový limit připojení a metody a klikněte na _ * vyvolat metodu * *.
+4. Nastavte časový limit připojení a metody a klikněte na **vyvolat metodu**.
 5. Vyberte cílový kontejner a vytvořte řetězec JSON datové části pomocí parametrů popsaných v části **syntaxe protokolování** . Pro provedení žádosti klikněte na **vyvolat metodu** .
 
 >[!NOTE]
@@ -245,7 +245,7 @@ V následující tabulce jsou uvedeny atributy v odpovědi na dotaz.
 
 | Klíčové slovo | Description|
 |--|--|
-|DoPost| Buď *hodnotu true* , nebo *false*. Určuje, jestli jsou protokoly nahrané nebo ne. Pokud se rozhodnete Nenahrávat protokoly, rozhraní API vrátí informace ***synchronně** _. Pokud se rozhodnete odeslat protokoly, rozhraní API vrátí 200, pokud je požadavek platný, a spustí odesílání protokolů _*_asynchronně_*_.|
+|DoPost| Buď *hodnotu true* , nebo *false*. Určuje, jestli jsou protokoly nahrané nebo ne. Pokud se rozhodnete Nenahrávat protokoly, rozhraní API vrátí informace ***synchronně** _. Pokud se rozhodnete odeslat protokoly, rozhraní API vrátí 200, pokud je žádost platná, a spustí nahrávání protokolů _ *_asynchronně_* *.|
 |TimeFilter| Filtr času aplikovaný na protokoly.|
 |ValueFilters| Filtry klíčových slov použité pro protokoly. |
 |Časové razítko| Čas spuštění metody |
@@ -298,7 +298,7 @@ V následující tabulce jsou uvedeny atributy v odpovědi na dotaz.
 }
 ```
 
-Zkontrolujte řádky, časy a velikosti protokolu načtení a v případě, že tato nastavení vypadají dobře, nahraďte _*_DoPost_*_ do `true` a tím, že protokoly budou nabízeny stejným filtrům do cílových umístění. 
+Zkontrolujte řádky, časy a velikosti protokolu načtení a v případě, že tato nastavení vypadají dobře, nahraďte ***DoPost*** do `true` a tím, že protokoly budou nabízeny stejným filtrům do cílových umístění. 
 
 Při řešení potíží můžete exportovat protokoly z Azure Blob Storage. 
 
@@ -316,7 +316,7 @@ Následující část je k dispozici pro nápovědu k ladění a ověřování s
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Přístup ke koncovému bodu rozhraní Kubernetes API. 
 
-1. V místním uživatelském rozhraní zařízení, otevřete stránku _ *zařízení**. 
+1. V místním uživatelském rozhraní zařízení přejdete na stránku **zařízení** . 
 2. V části **koncové body zařízení** zkopírujte koncový bod služby API Kubernetes. Tento koncový bod je řetězec v následujícím formátu: `https://compute..[device-IP-address]` .
 3. Uložte řetězec koncového bodu. Později to budete používat při konfiguraci `kubectl` pro přístup ke clusteru Kubernetes.
 
@@ -331,7 +331,7 @@ Vzdáleně se připojte z klienta Windows. Po vytvoření clusteru Kubernetes m�
 1. Spusťte relaci Windows PowerShellu jako správce. 
     1. Ujistěte se, že je ve vašem klientovi spuštěná služba Vzdálená správa systému Windows. Do příkazového řádku zadejte `winrm quickconfig` .
 
-2. Přiřaďte proměnnou pro IP adresu zařízení. Například `$ip = "<device-ip-address>"`.
+2. Přiřaďte proměnnou pro IP adresu zařízení. Například, `$ip = "<device-ip-address>"`.
 
 3. Pomocí následujícího příkazu přidejte IP adresu vašeho zařízení do seznamu důvěryhodných hostitelů klienta. 
 

@@ -13,10 +13,10 @@ ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcf6e7a4fb5e76dddba6162bbabfdc5abc806a20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87905872"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Kód a ukázky PowerShellu spolupráce B2B služby Azure Active Directory
@@ -26,7 +26,7 @@ Externí uživatele můžete do organizace pozvat hromadně pomocí e-mailových
 
 1. Připravte si soubor CSV. Vytvořte nový soubor CSV a pojmenujte ho invitations.csv. V tomto příkladu soubor uložíme do adresáře C:\data a bude obsahovat následující informace:
 
-   Název                  |  InvitedUserEmailAddress (E-mailová adresa pozvaného uživatele)
+   Name                  |  InvitedUserEmailAddress (E-mailová adresa pozvaného uživatele)
    --------------------- | --------------------------
    Pozvaný uživatel B2B z Gmailu     | b2binvitee@gmail.com
    Pozvaný uživatel B2B z Outlooku   | b2binvitee@outlook.com
@@ -80,7 +80,7 @@ namespace SampleInviteApp
         static readonly string InviteEndPoint = "https://graph.microsoft.com/v1.0/invitations";
 
         /// <summary>
-        ///  Authentication endpoint to get token.
+        ///  Authentication endpoint to get token.
         /// </summary>
         static readonly string EstsLoginEndpoint = "https://login.microsoftonline.com";
 

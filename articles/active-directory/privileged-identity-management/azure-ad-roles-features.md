@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371507"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Možnosti správy pro role Azure AD v Privileged Identity Management
@@ -42,8 +42,8 @@ V mnoha případech i v případě, že nechcete, aby uživatelé měli k dispoz
 
 Také přidáváme nová nastavení pro role Azure AD.
 
-- **Dřív**jste mohli nakonfigurovat nastavení aktivace jenom u jednotlivých rolí. To znamená, že nastavení aktivace jako požadavky na vícefaktorové ověřování a požadavky lístku incidentu nebo žádosti byly aplikovány na všechny uživatele s nárokem na zadanou roli.
-- **Nyní**můžete nakonfigurovat, zda má jednotliví uživatelé provádět službu Multi-Factor Authentication před tím, než budou moci aktivovat roli. Navíc můžete mít pokročilou kontrolu nad Privileged Identity Management e-maily, které souvisejí s konkrétními rolemi.
+- **Dřív** jste mohli nakonfigurovat nastavení aktivace jenom u jednotlivých rolí. To znamená, že nastavení aktivace jako požadavky na vícefaktorové ověřování a požadavky lístku incidentu nebo žádosti byly aplikovány na všechny uživatele s nárokem na zadanou roli.
+- **Nyní** můžete nakonfigurovat, zda má jednotliví uživatelé provádět službu Multi-Factor Authentication před tím, než budou moci aktivovat roli. Navíc můžete mít pokročilou kontrolu nad Privileged Identity Management e-maily, které souvisejí s konkrétními rolemi.
 
 ## <a name="extend-and-renew-assignments"></a>Prodloužit a prodloužit přiřazení
 

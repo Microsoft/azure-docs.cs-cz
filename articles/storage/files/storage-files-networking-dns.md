@@ -8,10 +8,10 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94630188"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Konfigurace přesměrování DNS pro Azure Files
@@ -110,7 +110,7 @@ New-AzDnsForwarder `
 
 Může vám také být užitečné, abyste mohli dodat několik dalších parametrů:
 
-| Název parametru | Typ | Popis |
+| Název parametru | Typ | Description |
 |----------------|------|-------------|
 | `DnsServerResourceGroupName` | `string` | Ve výchozím nastavení se servery DNS nasadí do stejné skupiny prostředků jako virtuální síť. Pokud to není žádoucí, tento parametr vám umožní vybrat alternativní skupinu prostředků, do které se mají nasadit. |
 | `DnsForwarderRootName` | `string` | Ve výchozím nastavení mají servery DNS, které jsou nasazené v Azure `DnsFwder-*` , názvy, kde je hvězdička naplněna iterátorem. Tento parametr změní kořen daného názvu (tj. `DnsFwder` ). |

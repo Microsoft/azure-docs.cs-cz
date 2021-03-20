@@ -4,10 +4,10 @@ description: V tomto rychlém startu se dozvíte, jak používat Live video Anal
 ms.topic: quickstart
 ms.date: 04/27/2020
 ms.openlocfilehash: 135e68e2630d74dace6c3a6b70bb3666f77aad89
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99575530"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Rychlý Start: zjištění pohybu, nahrání videa do Media Services
@@ -16,7 +16,7 @@ Tento článek vás provede kroky k použití živé analýzy videí v IoT Edge 
 
 Tento článek se sestavuje na začátku [Začínáme rychlý Start](get-started-detect-motion-emit-events-quickstart.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
   > [!NOTE]

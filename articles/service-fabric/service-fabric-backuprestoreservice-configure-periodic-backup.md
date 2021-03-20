@@ -4,10 +4,10 @@ description: Pomocí funkce periodického zálohování a obnovení Service Fabr
 ms.topic: article
 ms.date: 2/01/2019
 ms.openlocfilehash: 2607502af44b178131820d78f23bcdf4e32454a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018881"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Princip pravidelné konfigurace zálohování v Azure Service Fabric
@@ -183,7 +183,7 @@ Následující diagram znázorňuje explicitně povolené zásady zálohování 
 
 ![Service Fabric hierarchie aplikace][0]
 
-## <a name="disable-backup"></a>Zakázat zálohování
+## <a name="disable-backup"></a>Zákaz zálohování
 Zásady zálohování je možné zakázat, pokud není nutné data zálohovat. Zásady zálohování povolené v _aplikaci_ je možné zakázat jenom ve stejné _aplikaci_ , která používá zakázané rozhraní API pro [zálohování aplikací](/rest/api/servicefabric/sfclient-api-disableapplicationbackup) . zásady zálohování povolené v rámci _služby_ můžou být ve stejné _službě_ zakázané pomocí rozhraní [disabled Backup](/rest/api/servicefabric/sfclient-api-disableservicebackup) API a zásady zálohování povolené v _oddílu_ můžou být zakázané ve stejném _oddílu_ pomocí rozhraní API pro [zálohování oddílů](/rest/api/servicefabric/sfclient-api-disablepartitionbackup) .
 
 * Zakázáním zásad zálohování pro _aplikaci_ se zastaví všechna pravidelná zálohování dat, která se děje v důsledku šíření zásad zálohování do spolehlivých oddílů stavových služeb nebo spolehlivých oddílů actor.

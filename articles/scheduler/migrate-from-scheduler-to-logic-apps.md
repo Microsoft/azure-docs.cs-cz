@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 0e9ca2c7b5d15fcc6be451bbe215c8b85d5309eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368260"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru do Azure Logic Apps
@@ -67,7 +67,7 @@ Můžete spustit více jednorázových úloh vytvořením pouze jedné aplikace 
 
    1. V triggeru žádosti vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte svou ukázkovou datovou část a vyberte **Hotovo**, například:
+   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON** zadejte svou ukázkovou datovou část a vyberte **Hotovo**, například:
 
       ![Ukázková datová část](./media/migrate-from-scheduler-to-logic-apps/sample-payload.png)
 
@@ -193,7 +193,7 @@ Pokud ve službě Azure Scheduler neproběhne spuštění výchozí akce, může
 
    ![Konfigurovat běh po](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
-1. Zrušte zaškrtnutí políčka pro vlastnost **je úspěšná** . Vyberte tyto vlastnosti: **operace se nezdařila**, byla **vynechána**a **vypršel časový limit** .
+1. Zrušte zaškrtnutí políčka pro vlastnost **je úspěšná** . Vyberte tyto vlastnosti: **operace se nezdařila**, byla **vynechána** a **vypršel časový limit** .
 
    ![Nastavení vlastností spustit po](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
@@ -201,24 +201,24 @@ Pokud ve službě Azure Scheduler neproběhne spuštění výchozí akce, může
 
 Další informace o zpracování výjimek naleznete v tématu [zpracování chyb a výjimek – vlastnost runafter šablonové](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 <a name="retire-date"></a>
 
 **Otázka**: kdy je vyřazení z Azure Scheduleru? <br>
-Odpověď **: plán**Azure Scheduleru je naplánován na úplné vyřazení 31. prosince 2019. Důležité kroky, které je třeba provést před tímto datem a detailní časovou osou, najdete v tématu [rozšíření data vyřazení pro Scheduler do 31. prosince 2019](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Obecné aktualizace najdete v tématu [Azure Updates – Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
+Odpověď **: plán** Azure Scheduleru je naplánován na úplné vyřazení 31. prosince 2019. Důležité kroky, které je třeba provést před tímto datem a detailní časovou osou, najdete v tématu [rozšíření data vyřazení pro Scheduler do 31. prosince 2019](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Obecné aktualizace najdete v tématu [Azure Updates – Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
 **Otázka**: co se stane s kolekcemi úloh a úlohami po vystavování služby? <br>
 **O**: všechny kolekce úloh Scheduleru a úlohy přestanou běžet a jsou odstraněny ze systému.
 
 **Otázka**: musím před migrací úloh Scheduleru do Logic Apps provést zálohování nebo provedení dalších úloh? <br>
-Odpověď **: osvědčeným postupem je vždy**zálohovat práci. Ověřte, že aplikace logiky, které jste vytvořili, jsou spuštěné podle očekávání před odstraněním nebo zakázáním úloh plánovače.
+Odpověď **: osvědčeným postupem je vždy** zálohovat práci. Ověřte, že aplikace logiky, které jste vytvořili, jsou spuštěné podle očekávání před odstraněním nebo zakázáním úloh plánovače.
 
 **Otázka**: je k dispozici nástroj, který vám může přispět k migraci mých úloh z Scheduleru na Logic Apps? <br>
-Odpověď **: každá**úloha Scheduleru je jedinečná, takže neexistují žádné nástroje, které se vejdou na všechny. Na základě vašich potřeb ale můžete [Tento skript upravit a migrovat úlohy Azure Scheduleru na Azure Logic Apps](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration).
+Odpověď **: každá** úloha Scheduleru je jedinečná, takže neexistují žádné nástroje, které se vejdou na všechny. Na základě vašich potřeb ale můžete [Tento skript upravit a migrovat úlohy Azure Scheduleru na Azure Logic Apps](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration).
 
 **Otázka**: kde můžu získat podporu pro migraci úloh plánovače? <br>
-Odpověď **: Zde je několik**způsobů, jak získat podporu:
+Odpověď **: Zde je několik** způsobů, jak získat podporu:
 
 **Azure Portal**
 
@@ -232,7 +232,7 @@ Pokud má vaše předplatné Azure placený plán podpory, můžete v Azure Port
    |---------|-------|
    | **Typ problému** | **Technické** |
    | **Předplatné** | <*Vaše předplatné – Azure*> |
-   | **Služba** | V části **monitorování & Správa**vyberte **Plánovač**. Pokud nemůžete najít **Scheduler**, nejdřív vyberte **všechny služby** . |
+   | **Služba** | V části **monitorování & Správa** vyberte **Plánovač**. Pokud nemůžete najít **Scheduler**, nejdřív vyberte **všechny služby** . |
    ||| 
 
 1. Vyberte požadovanou možnost podpory. Pokud máte placený plán podpory, vyberte **Další**.

@@ -11,10 +11,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
 ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98696375"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Poznámky k verzi Azure SQL Edge 
@@ -40,7 +40,7 @@ Tento článek popisuje, co je nového a co se změnilo u každého nového buil
 
 15.0.2000.1553 sestavení modulu SQL Engine
 
-### <a name="whats-new"></a>Co je nového?
+### <a name="whats-new"></a>Co je nového
 
 - Povoluje Date_Bucket výrazy definované v počítaných sloupcích.
 
@@ -55,7 +55,7 @@ Tento článek popisuje, co je nového a co se změnilo u každého nového buil
 
 15.0.2000.1552 sestavení modulu SQL Engine
 
-### <a name="whats-new"></a>Co je nového?
+### <a name="whats-new"></a>Co je nového
 - Image kontejneru založené na Ubuntu 18,04 
 - Podpora `IGNORE NULL` a `RESPECT NULL` syntaxe `LAST_VALUE()` `FIRST_VALUE()` funkcí a 
 - Vylepšení spolehlivosti pro předpověď pomocí ONNX
@@ -89,7 +89,7 @@ Tento článek popisuje, co je nového a co se změnilo u každého nového buil
 
 ## <a name="ctp-23"></a>CTP 2,3
 15.0.2000.1549 sestavení modulu SQL Engine
-### <a name="whats-new"></a>Co je nového?
+### <a name="whats-new"></a>Co je nového
 - Podpora pro vlastní zdroje v funkci Date_Bucket () 
 - Podpora souborů BACPAC jako součást nasazení SQL
 - Podpora pro vyčištění na základě zásad uchovávání dat:      
@@ -107,7 +107,7 @@ Tento článek popisuje, co je nového a co se změnilo u každého nového buil
 
 ## <a name="ctp-22"></a>CTP 2,2
 15.0.2000.1546 sestavení modulu SQL Engine
-### <a name="whats-new"></a>Co je nového?
+### <a name="whats-new"></a>Co je nového
 - Podpora pro nekořenové kontejnery 
 - Podpora pro shromažďování dat využití a diagnostiky 
 - Aktualizace pro streamování T-SQL:
@@ -129,7 +129,7 @@ Tento článek popisuje, co je nového a co se změnilo u každého nového buil
 
 ## <a name="ctp-20"></a>CTP 2,0 
 15.0.2000.1401 sestavení modulu SQL Engine
-### <a name="whats-new"></a>Co je nového?
+### <a name="whats-new"></a>Co je nového
 -   Název produktu se aktualizoval na *Edge Azure SQL* .
 -  Date_Bucket funkce:
     - Podpora pro typy data, času a DateTime
@@ -153,7 +153,7 @@ Na [stránce podpory](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support
 
 ## <a name="ctp-15"></a>CTP 1,5
 15.0.2000.1331 sestavení modulu SQL Engine
-### <a name="whats-new"></a>Co je nového?
+### <a name="whats-new"></a>Co je nového
 - Date_Bucket funkce:
     - Podpora pro typ DateTimeOffset
 - PŘEDPOVĚĎ pomocí ONNX modelů:
@@ -161,7 +161,7 @@ Na [stránce podpory](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support
  
 ## <a name="ctp-14"></a>CTP 1,4
 15.0.2000.1247 sestavení modulu SQL Engine
-### <a name="whats-new"></a>Co je nového?
+### <a name="whats-new"></a>Co je nového
 -   PŘEDPOVĚĎ pomocí ONNX modelů:
     - VARCHAR – podpora
     - Migrace na modul runtime ONNX verze 1,0 
@@ -175,7 +175,7 @@ Na [stránce podpory](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support
  
 ## <a name="ctp-13"></a>CTP 1,3
 15.0.2000.1147 sestavení modulu SQL Engine
-### <a name="whats-new"></a>Co je nového?
+### <a name="whats-new"></a>Co je nového
 - Nasazení portálu Azure IoT Portal: 
     - Podpora pro nasazování imagí AMD64 a ARM
     - Podpora vytváření úloh streamování

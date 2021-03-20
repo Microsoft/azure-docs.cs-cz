@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92428388"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí sady Firebase SDK verze 0,6
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující kroky:
 > * Připojte aplikaci k centru.
 > * Otestujete aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/). 
 
@@ -56,8 +56,8 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
 ## <a name="create-an-android-studio-project"></a>Vytvoření projektu v Android Studiu
 
 1. Spusťte Android Studio.
-2. Vyberte **soubor**, přejděte na **Nový**a potom vyberte **Nový projekt**. 
-2. Na stránce **Zvolte projekt** vyberte možnost **prázdná aktivita**a potom vyberte možnost **Další**. 
+2. Vyberte **soubor**, přejděte na **Nový** a potom vyberte **Nový projekt**. 
+2. Na stránce **Zvolte projekt** vyberte možnost **prázdná aktivita** a potom vyberte možnost **Další**. 
 3. Na stránce **Konfigurovat projekt** proveďte následující kroky: 
     1. Zadejte název aplikace.
     2. Zadejte umístění, do kterého chcete uložit soubory projektu. 
@@ -171,7 +171,7 @@ Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým 
 
 ### <a name="add-code"></a>Přidat kód
 
-1. V zobrazení projektu rozbalte položku **App**  >  **Src**  >  **Main**  >  **Java**. Klikněte pravým tlačítkem myši na složku balíčku v kategorii **Java**, vyberte možnost **Nový**a potom vyberte možnost **Třída Java**. Jako název zadejte **NotificationSettings** a pak vyberte **OK**.
+1. V zobrazení projektu rozbalte položku **App**  >  **Src**  >  **Main**  >  **Java**. Klikněte pravým tlačítkem myši na složku balíčku v kategorii **Java**, vyberte možnost **Nový** a potom vyberte možnost **Třída Java**. Jako název zadejte **NotificationSettings** a pak vyberte **OK**.
 
     Nezapomeňte aktualizovat tyto tři zástupné symboly v následujícím kódu pro třídu `NotificationSettings`:
 
@@ -405,7 +405,7 @@ Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým 
     }
     ```
 
-9. Metoda `ToastNotify` používá ovládání *„Hello World“* `TextView` k trvalému hlášení stavu a oznámení v aplikaci. V rozložení **res**  >  **rozložení** zdrojů  >  **activity_main.xml** rozložení přidejte následující ID pro tento ovládací prvek.
+9. Metoda `ToastNotify` používá ovládání *„Hello World“* `TextView` k trvalému hlášení stavu a oznámení v aplikaci. V rozložení   >  **rozložení** zdrojů  >  **activity_main.xml** rozložení přidejte následující ID pro tento ovládací prvek.
 
     ```java
     android:id="@+id/text_hello"
@@ -542,7 +542,7 @@ Nabízená oznámení můžete odesílat z [Azure Portal] provedením následuj�
 
 1. V Azure Portal na stránce Centra oznámení pro vaše centrum vyberte v části **Poradce při potížích** možnost **test Send** .
 3. V položce **Platformy** vyberte **Android**.
-4. Vyberte **Poslat**.  Na zařízení s Androidem se ještě nezobrazuje oznámení, protože jste na něm nespouštěli mobilní aplikaci. Po spuštění mobilní aplikace znovu vyberte tlačítko **Odeslat** a zobrazí se zpráva s oznámením.
+4. Vyberte **Odeslat**.  Na zařízení s Androidem se ještě nezobrazuje oznámení, protože jste na něm nespouštěli mobilní aplikaci. Po spuštění mobilní aplikace znovu vyberte tlačítko **Odeslat** a zobrazí se zpráva s oznámením.
 5. Výsledek operace si můžete prohlédnout v seznamu dole v okně.
 
     ![Azure Notification Hubs – testovací odeslání](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
@@ -557,7 +557,7 @@ Nabízená oznámení můžete odesílat z [Azure Portal] provedením následuj�
 
 Než otestujete nabízená oznámení v emulátoru, ujistěte se, že vaše image emulátoru podporuje úroveň rozhraní Google API, kterou jste zvolili pro vaši aplikaci. Pokud vaše image nepodporuje nativní rozhraní Google API, může být **Služba \_ \_ nedostupná** výjimka.
 
-Také se ujistěte, že jste do svého spuštěného emulátoru v části **Nastavení**  >  **účty**přidali účet Google. V opačném případě se můžou vaše pokusy o registraci v **FCM \_ způsobit výjimku ověřování** .
+Také se ujistěte, že jste do svého spuštěného emulátoru v části **Nastavení**  >  **účty** přidali účet Google. V opačném případě se můžou vaše pokusy o registraci v **FCM \_ způsobit výjimku ověřování** .
 
 ## <a name="next-steps"></a>Další kroky
 

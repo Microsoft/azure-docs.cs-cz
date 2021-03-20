@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
 ms.openlocfilehash: f5c176db4f679c79bb42c6ceb46b3588e9440874
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572226"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
@@ -38,11 +38,11 @@ Protokoly auditu [replik jen pro čtení](read-scale-out.md) se ukládají do st
 
 ### <a name="event-hub"></a>Centrum událostí
 
-Události auditu se zapisují do oboru názvů a centra událostí, které bylo definováno během konfigurace auditování, a jsou zachyceny v těle událostí [Apache Avro](https://avro.apache.org/) a uloženy pomocí formátu JSON s kódováním UTF-8. Protokoly auditu si můžete přečíst pomocí [nástrojů Avro](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) nebo podobných nástrojů, které zpracovávají tento formát.
+Události auditu se zapisují do oboru názvů a centra událostí definovaných během konfigurace auditování, zachytávají se v textu událostí [Apache Avro](https://avro.apache.org/) a ukládají se ve formátu JSON s kódováním UTF-8. Ke čtení protokolů auditu můžete použít [nástroje Avro](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) nebo podobné nástroje, které dokáží tento formát zpracovat.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Události auditu se zapisují do Log Analytics pracovního prostoru definovaného během konfigurace auditování do `AzureDiagnostics` tabulky s kategorií `SQLSecurityAuditEvents` . Další užitečné informace o jazyce a příkazech hledání Log Analytics naleznete v tématu [Log Analytics Search reference](../../azure-monitor/logs/log-query-overview.md).
+Události auditu se zapisují do pracovního prostoru služby Log Analytics definovaného během konfigurace auditování do tabulky `AzureDiagnostics` v kategorii `SQLSecurityAuditEvents`. Další užitečné informace o jazyku a příkazech pro vyhledávání v Log Analytics najdete v [referenčních informacích o vyhledávání v Log Analytics](../../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Pole protokolu auditu
 

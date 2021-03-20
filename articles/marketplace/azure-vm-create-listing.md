@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
 ms.openlocfilehash: 7030ffeb49c0a3919894f6dcf81e7252777267c5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629593"
 ---
 # <a name="how-to-configure-virtual-machine-offer-listing-details"></a>Postup konfigurace podrobností seznamu nabídky virtuálních počítačů
@@ -39,7 +39,7 @@ Zadejte krátký popis nabídky, která se zobrazí ve výsledcích hledání Az
 
 Zadejte delší popis nabídky, která se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 256 znaků.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](includes/long-description-1.md)]
 
@@ -55,8 +55,8 @@ Zadejte webovou adresu (URL) zásad ochrany osobních údajů vaší organizace.
 
 Poskytněte dodatečné online dokumenty o vaší nabídce. Chcete-li přidat odkaz, vyberte možnost **Přidat odkaz** a vyplňte následující pole:
 
-- **Název** : zákazníci uvidí jméno na stránce s podrobnostmi.
-- **Odkaz** : zadejte webovou adresu, která zákazníkům umožní zobrazit dokument online.
+- **Název**: zákazníci uvidí jméno na stránce s podrobnostmi.
+- **Odkaz**: zadejte webovou adresu, která zákazníkům umožní zobrazit dokument online.
 
 ## <a name="customer-support-links"></a>Odkazy na zákaznickou podporu
 
@@ -67,15 +67,15 @@ Poskytněte web podpory, kde se zákazníci můžou připojit k vašemu týmu po
 
 ## <a name="partner-support-contact"></a>Kontakt na podporu partnerů
 
-Zadejte **jméno** , **e-mail** a **telefon** pro partnery Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tyto informace nejsou uvedené na Azure Marketplace.
+Zadejte **jméno**, **e-mail** a **telefon** pro partnery Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tyto informace nejsou uvedené na Azure Marketplace.
 
 ## <a name="engineering-contact"></a>Technický kontakt
 
-Zadejte **jméno** , **e-mail** a **telefon** pro společnost Microsoft, která se má použít v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tyto informace nejsou uvedené na Azure Marketplace.
+Zadejte **jméno**, **e-mail** a **telefon** pro společnost Microsoft, která se má použít v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tyto informace nejsou uvedené na Azure Marketplace.
 
 ## <a name="cloud-solution-provider-program-contact"></a>Kontaktování programu poskytovatele Cloud Solution Provider
 
-Zadejte **jméno** , **e-mail** a **telefon** osoby, která zpracovává váš program CSP (Pokud je k dispozici). Tyto informace nejsou uvedené na Azure Marketplace. Pro **marketingové materiály programu CSP** zadejte webovou adresu, kde partneři v tomto programu můžou zobrazit vaše marketingové materiály.
+Zadejte **jméno**, **e-mail** a **telefon** osoby, která zpracovává váš program CSP (Pokud je k dispozici). Tyto informace nejsou uvedené na Azure Marketplace. Pro **marketingové materiály programu CSP** zadejte webovou adresu, kde partneři v tomto programu můžou zobrazit vaše marketingové materiály.
 
 ## <a name="marketplace-media"></a>Média Marketplace
 

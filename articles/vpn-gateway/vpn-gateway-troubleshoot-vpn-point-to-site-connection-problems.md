@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
 ms.openlocfilehash: c316aaf02979008b9d2ebc691d54c0fb95a5a52d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994855"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: problémy s připojením k bodům Azure Point-to-site
@@ -71,7 +71,7 @@ Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
 
 1. Nainstalujte aktualizaci.
 
-   | Verze operačního systému | Datum | Číslo/odkaz |
+   | Verze operačního systému | Date (Datum) | Číslo/odkaz |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 verze 1607 | 17. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 verze 1703 | 17. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
@@ -178,7 +178,7 @@ Rozbalte konfigurační balíček klienta VPN a vyhledejte soubor. cer. K instal
 
 Při pokusu o uložení změn pro bránu VPN v Azure Portal se zobrazí následující chybová zpráva:
 
-**Nepovedlo se uložit &lt; *název brány* brány virtuální sítě &gt; . Data pro ID certifikátu certifikátu &lt; *certificate ID* &gt; nejsou platná.**
+**Nepovedlo se uložit &lt; *název brány* brány virtuální sítě &gt; . Data pro ID certifikátu certifikátu &lt;  &gt; nejsou platná.**
 
 ### <a name="cause"></a>Příčina 
 
@@ -335,7 +335,7 @@ Ovladač síťové karty je zastaralý.
 
 Aktualizujte ovladač síťových adaptérů:
 
-1. Klikněte na **Start**, zadejte **Device Manager** a vyberte ho ze seznamu výsledků. Pokud se zobrazí výzva k zadání hesla správce nebo k potvrzení, zadejte heslo nebo zadejte potvrzení.
+1. Klikněte na **Start**, zadejte **Správce zařízení** a vyberte ho ze seznamu výsledků. Pokud se zobrazí výzva k zadání hesla správce nebo k potvrzení, zadejte heslo nebo zadejte potvrzení.
 2. V kategorii **síťové adaptéry** Najděte síťovou kartu, kterou chcete aktualizovat.  
 3. Dvakrát klikněte na název zařízení, vyberte **Aktualizovat ovladač** a **pro aktualizovaný software ovladače vyberte automaticky hledat**.
 4. Pokud systém Windows nenalezne nový ovladač, zkuste ho vyhledat na webu výrobce zařízení a postupujte podle pokynů.

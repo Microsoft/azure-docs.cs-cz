@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: dea88bf93000422ce1d832be4a0f60474ff27938
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629780"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí Průzkumníka služby Azure Storage
@@ -24,7 +24,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 ## <a name="prerequisites"></a>Požadavky
 Tento postup vyžaduje nainstalovaného Průzkumníka služby Storage. Stáhnout ho a následně ho nainstalovat můžete ze stránky [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 Průzkumníka služby Storage není možné použít k vytvoření nových prostředků. Pro účely této ukázky si vytvořte účet úložiště na webu [Azure Portal](https://portal.azure.com/). 
 
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
@@ -32,8 +32,8 @@ Průzkumníka služby Storage není možné použít k vytvoření nových prost
 ## <a name="connect-storage-explorer-to-azure-resources"></a>Připojení Průzkumníka služby Storage k prostředkům Azure
 Když poprvé spustíte Průzkumníka služby Storage, objeví se okno **Průzkumník služby Microsoft Azure Storage – Připojení**. Průzkumník služby Storage nabízí několik způsobů, jak se k účtům úložiště připojit: 
 
-- **Přihlášení pomocí účtu Azure** : Můžete se přihlásit pomocí přihlašovacích údajů uživatele své organizace nebo účtu Microsoft. 
-- **Připojení ke konkrétnímu účtu úložiště pomocí připojovacího řetězce nebo tokenu SAS** : Připojovací řetězec je speciální řetězec, který obsahuje název účtu úložiště a klíč účtu úložiště nebo token SAS. Díky tomuto tokenu získá Průzkumník služby Storage přístup přímo k účtu úložiště (místo zobrazení všech účtů úložiště obsažených na účtu Azure). Další informace o připojovacích řetězcích najdete v tématu [Konfigurace připojovacích řetězců úložiště Azure](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Přihlášení pomocí účtu Azure**: Můžete se přihlásit pomocí přihlašovacích údajů uživatele své organizace nebo účtu Microsoft. 
+- **Připojení ke konkrétnímu účtu úložiště pomocí připojovacího řetězce nebo tokenu SAS**: Připojovací řetězec je speciální řetězec, který obsahuje název účtu úložiště a klíč účtu úložiště nebo token SAS. Díky tomuto tokenu získá Průzkumník služby Storage přístup přímo k účtu úložiště (místo zobrazení všech účtů úložiště obsažených na účtu Azure). Další informace o připojovacích řetězcích najdete v tématu [Konfigurace připojovacích řetězců úložiště Azure](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 - **Připojení ke konkrétnímu účtu úložiště pomocí názvu a klíče účtu úložiště:** Připojte se k úložišti Azure použitím názvu a klíče účtu úložiště.
 
 Pro účely tohoto rychlého startu se přihlaste pomocí svého účtu Azure. Vyberte **Přidat účet Azure** a pak vyberte **Přihlásit**. Podle pokynů se přihlaste ke svému účtu Azure.

@@ -12,10 +12,10 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101093035"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Pochopení a používání vláken zařízení v IoT Hub
@@ -124,7 +124,7 @@ V předchozím příkladu obsahuje vlákna zařízení `batteryLevel` vlastnost,
 
 ### <a name="desired-property-example"></a>Požadovaný příklad vlastnosti
 
-V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a aplikace pro zařízení používá k synchronizaci konfigurace telemetrie pro toto zařízení, aby bylo požadované a hlášené vlastnosti zařízení. Příklad:
+V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a aplikace pro zařízení používá k synchronizaci konfigurace telemetrie pro toto zařízení, aby bylo požadované a hlášené vlastnosti zařízení. Například:
 
 1. Back-end řešení nastaví požadovanou vlastnost s požadovanou konfigurační hodnotou. Tady je část dokumentu s požadovanou sadou vlastností:
 
@@ -312,7 +312,7 @@ IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost `tags
 
 IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v požadovaném a hlášeném vlastnosti zařízení. Časová razítka jsou v UTC a kódovaná ve [](https://en.wikipedia.org/wiki/ISO_8601) formátu ISO8601 `YYYY-MM-DDTHH:MM:SS.mmmZ` .
 
-Příklad:
+Například:
 
 ```json
 {

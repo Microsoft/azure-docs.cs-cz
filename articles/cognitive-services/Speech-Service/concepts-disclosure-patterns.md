@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
 ms.openlocfilehash: aec553b473e0fb2688224e8a8d027f7e9f3a6025
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716614"
 ---
 # <a name="disclosure-design-patterns"></a>Zpřístupnění způsobů návrhu
@@ -38,7 +38,7 @@ Následující graf vám umožní odkazovat přímo na vzory, které se vztahuj�
 
 
 
-| Pokud máte syntetické hlasové prostředí... | Doporučení | Způsoby návrhu |
+| Pokud máte syntetické hlasové prostředí... | Doporučení | Vzory návrhu |
 | --- | --- | --- |
 | Vyžaduje vysoké zveřejnění  | K tomu, aby uživatelé mohli vytvářet přidružení, použijte alespoň jeden explicitní vzor a implicitní hromádky. |[Explicitní zveřejnění](#explicit-disclosure)<br>[Implicitní zveřejnění](#implicit-disclosure)  |
 | Vyžaduje nízké zpřístupnění | Zveřejnění může být minimální nebo zbytečné, ale může mít užitek z některých implicitních vzorů. | [Vyzrazení schopností](#capability-disclosure)<br>[Průhlednost konverzací](#conversational-transparency)  |

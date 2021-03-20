@@ -8,10 +8,10 @@ ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: 91a6adecc9cf0db56fa4c433f388b05aa1bdef6a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98202908"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Přesunutí konfigurace řízení údržby do jiné oblasti
@@ -24,7 +24,7 @@ Podle tohoto článku můžete přesunout konfiguraci řízení údržby do jin�
 - Chcete-li přesunout prostředky spojené s konfigurací údržby, ale ne samotnou konfiguraci, postupujte podle [těchto pokynů](move-region-maintenance-configuration-resources.md).
 - Pokud chcete přesunout jak konfiguraci údržby, tak i prostředky, které jsou k němu přidružené, postupujte nejprve podle pokynů v tomto článku. Pak postupujte podle [těchto pokynů](move-region-maintenance-configuration-resources.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete přesouvat konfiguraci řízení údržby:
 

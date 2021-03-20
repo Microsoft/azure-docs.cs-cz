@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 24e56736e0d033420f9aaf976b0fb7d9727c1a5b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143217"
 ---
 # <a name="configure-network-access-control"></a>Konfigurace řízení přístupu k síti
@@ -54,7 +54,7 @@ V tomto scénáři můžete nakonfigurovat pravidlo veřejné sítě tak, aby po
 
     ![Upravit seznam ACL veřejné sítě na portálu ](media/howto-network-access-control/portal-public-network.png)
 
-1. Pokud chcete upravit pravidla sítě privátního koncového bodu, vyberte v části **připojení privátního koncového bodu**povolené typy požadavků v každém řádku.
+1. Pokud chcete upravit pravidla sítě privátního koncového bodu, vyberte v části **připojení privátního koncového bodu** povolené typy požadavků v každém řádku.
 
     ![Upravit seznam ACL privátního koncového bodu na portálu ](media/howto-network-access-control/portal-private-endpoint.png)
 

@@ -11,17 +11,17 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545391"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatická správa zařízení a modulů IoT pomocí webu Azure Portal
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Automatická správa zařízení v Azure IoT Hub automatizuje mnoho opakujících se a složitých úloh při správě rozsáhlých loďstva zařízení. Díky automatické správě zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definovat požadovanou konfiguraci a potom nechat zařízení IoT Hub aktualizovat, když vstoupí do rozsahu. Tato aktualizace se provádí pomocí _automatické konfigurace zařízení_ nebo _automatické konfigurace modulu_ , která umožňuje shrnout dokončování a dodržování předpisů, zpracovávat sloučení a konflikty a nastavovat konfigurace v rámci postupného přístupu.
+Automatická správa zařízení v Azure IoT Hub automatizuje mnoho opakujících se a složitých úloh při správě rozsáhlých loďstva zařízení. Díky automatické správě zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definovat požadovanou konfiguraci a potom nechat zařízení IoT Hub aktualizovat, když vstoupí do rozsahu. Tato aktualizace se provádí pomocí _automatické konfigurace zařízení_ nebo _automatické konfigurace modulu_, která umožňuje shrnout dokončování a dodržování předpisů, zpracovávat sloučení a konflikty a nastavovat konfigurace v rámci postupného přístupu.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -31,7 +31,7 @@ Automatická správa zařízení funguje tak, že aktualizuje sadu dvojitých vl
 
 * **Cílový obsah** definuje požadované vlastnosti, které se mají přidat nebo aktualizovat v cílovém zařízení vlákna nebo vlákna v modulu. Obsah zahrnuje cestu k oddílu požadovaných vlastností, které mají být změněny.
 
-* **Metriky** definují Souhrnné počty různých stavů **konfigurace, například** **úspěch** , probíhá a **Chyba** . Vlastní metriky jsou zadány jako dotazy na nedokončené hlášené vlastnosti.  Systémové metriky jsou výchozí metriky, které měří stav s dvojitou aktualizací, jako je třeba počet nezpracovaných vláken a počet úspěšně aktualizovaných vláken.
+* **Metriky** definují Souhrnné počty různých stavů **konfigurace, například** **úspěch**, probíhá a **Chyba**. Vlastní metriky jsou zadány jako dotazy na nedokončené hlášené vlastnosti.  Systémové metriky jsou výchozí metriky, které měří stav s dvojitou aktualizací, jako je třeba počet nezpracovaných vláken a počet úspěšně aktualizovaných vláken.
 
 Automatické konfigurace se spouští poprvé po vytvoření konfigurace a pak v intervalu pěti minut. Dotazy na metriky se spouštějí při každém spuštění automatické konfigurace.
 
@@ -58,9 +58,9 @@ Před vytvořením konfigurace musíte určit, která zařízení nebo moduly ma
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
-2. Vyberte **Konfigurace zařízení IoT** .
+2. Vyberte **Konfigurace zařízení IoT**.
 
-3. Vyberte **Přidat konfiguraci zařízení** nebo **Přidat konfiguraci modulu** .
+3. Vyberte **Přidat konfiguraci zařízení** nebo **Přidat konfiguraci modulu**.
 
    ![Přidat konfiguraci zařízení nebo konfiguraci modulu](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
@@ -70,7 +70,7 @@ Existuje pět kroků pro vytvoření konfigurace. V následujících částech s
 
 1. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /` .
 
-2. Přidejte popisky, které vám pomůžou sledovat vaše konfigurace. Popisky jsou **názvy** , páry **hodnot** , které popisují vaši konfiguraci. Příkladem je `HostPlatform, Linux` nebo `Version, 3.0.1`.
+2. Přidejte popisky, které vám pomůžou sledovat vaše konfigurace. Popisky jsou **názvy**, páry **hodnot** , které popisují vaši konfiguraci. Příkladem je `HostPlatform, Linux` nebo `Version, 3.0.1`.
 
 3. Kliknutím na tlačítko **Další** přejděte k dalšímu kroku. 
 
@@ -96,7 +96,7 @@ Pokud dvě nebo více konfigurací cílí na stejnou cestu, bude platit obsah z 
 
 Chcete-li odebrat existující vlastnost, zadejte hodnotu vlastnosti `null` .
 
-Další nastavení můžete přidat tak, že vyberete možnost **Přidat zdvojené zařízení** nebo **Přidat nastavení s dvojitým modulem** .
+Další nastavení můžete přidat tak, že vyberete možnost **Přidat zdvojené zařízení** nebo **Přidat nastavení s dvojitým modulem**.
 
 ### <a name="specify-metrics-optional"></a>Zadat metriky (volitelné)
 
@@ -104,9 +104,9 @@ Metriky poskytují souhrnné počty různých stavů, které může zařízení 
 
 Každá konfigurace může mít až pět vlastních metrik. 
 
-1. Zadejte název **metriky** .
+1. Zadejte název **metriky**.
 
-2. Zadejte dotaz na **kritéria metriky** .  Dotaz vychází z nezaznamenaných vlastností zařízení.  Metrika představuje počet řádků vrácených dotazem.
+2. Zadejte dotaz na **kritéria metriky**.  Dotaz vychází z nezaznamenaných vlastností zařízení.  Metrika představuje počet řádků vrácených dotazem.
 
 Například:
 
@@ -150,7 +150,7 @@ Vzhledem k tomu, že více konfigurací může cílit na stejné zařízení neb
 
 ### <a name="review-configuration"></a>Kontrola konfigurace
 
-Zkontrolujte informace o konfiguraci a pak vyberte **Odeslat** .
+Zkontrolujte informace o konfiguraci a pak vyberte **Odeslat**.
 
 ## <a name="monitor-a-configuration"></a>Monitorování konfigurace
 
@@ -158,7 +158,7 @@ Pokud chcete zobrazit podrobnosti o konfiguraci a monitorovat zařízení, kter�
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
-2. Vyberte **Konfigurace zařízení IoT** .
+2. Vyberte **Konfigurace zařízení IoT**.
 
 3. Zkontrolujte seznam konfigurací. Pro každou konfiguraci můžete zobrazit následující podrobnosti:
 
@@ -180,7 +180,7 @@ Pokud chcete zobrazit podrobnosti o konfiguraci a monitorovat zařízení, kter�
 
    * **Podmínka cíle** – zařízení nebo moduly, které se shodují s cílovou podmínkou. 
 
-   * **Metriky** – seznam systémových metrik a vlastní metriky.  Seznam zařízení nebo modulů, které se počítají pro jednotlivé metriky, můžete zobrazit tak, že vyberete metriku v rozevíracím seznamu a pak vyberete **Zobrazit zařízení** nebo **Zobrazit moduly** .
+   * **Metriky** – seznam systémových metrik a vlastní metriky.  Seznam zařízení nebo modulů, které se počítají pro jednotlivé metriky, můžete zobrazit tak, že vyberete metriku v rozevíracím seznamu a pak vyberete **Zobrazit zařízení** nebo **Zobrazit moduly**.
 
    * Nastavení s dvojitou podmnožinou **zařízení** nebo **modulu** – nastavení s dvojitou čárkou – nastavení, které je nastavené konfigurací. 
 
@@ -202,7 +202,7 @@ Chcete-li upravit konfiguraci, použijte následující postup:
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
-2. Vyberte **Konfigurace zařízení IoT** . 
+2. Vyberte **Konfigurace zařízení IoT**. 
 
 3. Vyberte konfiguraci, kterou chcete upravit. 
 
@@ -213,7 +213,7 @@ Chcete-li upravit konfiguraci, použijte následující postup:
    * Priorita 
    * Metriky
 
-4. Vyberte **Uložit** .
+4. Vyberte **Uložit**.
 
 5. Pokud chcete sledovat změny, postupujte podle kroků v části [monitorování konfigurace](#monitor-a-configuration) . 
 
@@ -223,11 +223,11 @@ Když konfiguraci odstraníte, všechna vlákna zařízení převezmou svou dal�
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
-2. Vyberte **Konfigurace zařízení IoT** . 
+2. Vyberte **Konfigurace zařízení IoT**. 
 
 3. Pomocí zaškrtávacího políčka vyberte konfiguraci, kterou chcete odstranit. 
 
-4. Vyberte **Odstranit** .
+4. Vyberte **Odstranit**.
 
 5. Výzva vás vyzve k potvrzení.
 

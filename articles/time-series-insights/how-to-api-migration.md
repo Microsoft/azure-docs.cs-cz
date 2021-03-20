@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
 ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97740551"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migrace na nové verze rozhraní API Azure Time Series Insights Gen2
@@ -84,7 +84,7 @@ Pokud vaše vlastní aplikace provádí volání následujících koncových bod
 
 - Rozhraní API modelu časové řady
   - Rozhraní API pro nastavení modelu
-    - [Čtěte](/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [Získat](/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [Aktualizace](/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
   - Rozhraní API instancí
     - [Všechny operace Batch](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)

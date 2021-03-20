@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
 ms.openlocfilehash: 0799e8c76bc5d3969943d766aa83de40659a236a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101093356"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Síťové topologie pro migrace spravované instance SQL Azure pomocí Azure Database Migration Service
@@ -86,9 +86,9 @@ Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje je
 | ServiceBus                | 443, ServiceTag: ServiceBus                           | TCP          | Všechny        | Všechny                       | Povolit      | Komunikace roviny správy prostřednictvím Service Bus. <br/>(Pokud je povolen partnerský vztah Microsoftu, možná toto pravidlo nebudete potřebovat.)                                                             |
 | Storage                   | 443, ServiceTag: Storage                              | TCP          | Všechny        | Všechny                       | Povolit      | Rovina správy s využitím úložiště objektů BLOB v Azure. <br/>(Pokud je povolen partnerský vztah Microsoftu, možná toto pravidlo nebudete potřebovat.)                                                             |
 | Diagnostika               | 443, ServiceTag: AzureMonitor                         | TCP          | Všechny        | Všechny                       | Povolit      | DMS pomocí tohoto pravidla shromažďuje diagnostické informace pro účely řešení potíží. <br/>(Pokud je povolen partnerský vztah Microsoftu, možná toto pravidlo nebudete potřebovat.)                                                  |
-| Zdrojový server SQL         | 1433 (nebo port TCP IP, na který SQL Server naslouchá) | TCP          | Libovolný        | Adresní prostor místního prostředí | Povolit      | Připojení ke zdroji SQL Server z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                                       |
-| SQL Server pojmenované instance | 1434                                                  | UDP          | Libovolný        | Adresní prostor místního prostředí | Povolit      | SQL Server připojení ke zdroji pojmenované instance z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                        |
-| Sdílená složka SMB                 | 445 (Pokud se neeeds scénář)                             | TCP          | Libovolný        | Adresní prostor místního prostředí | Povolit      | Síťová sdílená složka SMB pro DMS pro ukládání záložních souborů databáze pro migrace do Azure SQL Database MI a SQL serverů na virtuálním počítači Azure <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.) |
+| Zdrojový server SQL         | 1433 (nebo port TCP IP, na který SQL Server naslouchá) | TCP          | Všechny        | Adresní prostor místního prostředí | Povolit      | Připojení ke zdroji SQL Server z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                                       |
+| SQL Server pojmenované instance | 1434                                                  | UDP          | Všechny        | Adresní prostor místního prostředí | Povolit      | SQL Server připojení ke zdroji pojmenované instance z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                        |
+| Sdílená složka SMB                 | 445 (Pokud se neeeds scénář)                             | TCP          | Všechny        | Adresní prostor místního prostředí | Povolit      | Síťová sdílená složka SMB pro DMS pro ukládání záložních souborů databáze pro migrace do Azure SQL Database MI a SQL serverů na virtuálním počítači Azure <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.) |
 | DMS_subnet                | Všechny                                                   | Všechny          | Všechny        | DMS_Subnet                | Povolit      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>Viz také

@@ -15,15 +15,15 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92372425"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Zjišťování a přehledy (Preview) pro role Azure AD (dřív Průvodce zabezpečením)
 
-Pokud začínáte s Privileged Identity Management (PIM) v organizaci Azure Active Directory (Azure AD), můžete začít pomocí stránky **zjišťování a přehledy (Preview)** . Tato funkce ukazuje, kdo je přiřazený k privilegovaným rolím ve vaší organizaci, a jak pomocí PIM snadno měnit trvalá přiřazení rolí na přiřazení za běhu. U trvalých přiřazení privilegovaných rolí můžete v **zjišťování a přehledech**zobrazit nebo provádět změny (Preview). Jedná se o nástroj pro analýzu a nástroj akce.
+Pokud začínáte s Privileged Identity Management (PIM) v organizaci Azure Active Directory (Azure AD), můžete začít pomocí stránky **zjišťování a přehledy (Preview)** . Tato funkce ukazuje, kdo je přiřazený k privilegovaným rolím ve vaší organizaci, a jak pomocí PIM snadno měnit trvalá přiřazení rolí na přiřazení za běhu. U trvalých přiřazení privilegovaných rolí můžete v **zjišťování a přehledech** zobrazit nebo provádět změny (Preview). Jedná se o nástroj pro analýzu a nástroj akce.
 
 ## <a name="discovery-and-insights-preview"></a>Zjišťování a přehledy (Preview)
 

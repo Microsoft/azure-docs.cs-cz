@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: d142028d197f9e279b5f1e05757946dc40d2c153
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109132"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-the-azure-portal"></a>Kurz: konfigurace filtrů směrování pro partnerský vztah Microsoftu pomocí Azure Portal
@@ -79,27 +79,27 @@ Filtr tras může mít pouze jedno pravidlo a pravidlo musí být typu Allow. To
 
 1. Umístěte filtr tras do skupiny prostředků. Zajistěte, aby bylo umístění stejné jako okruh ExpressRoute. Vyberte **zkontrolovat + vytvořit** a pak **vytvořit**.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="Snímek obrazovky zobrazující stránku vytvořit filtr tras s příklady zadaných hodnot":::
 
 ### <a name="create-a-filter-rule"></a>Vytvoření pravidla filtru
 
 1. Chcete-li přidat a aktualizovat pravidla, vyberte kartu spravovat pravidlo pro svůj filtr tras.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="Snímek obrazovky zobrazující stránku s přehledem s zvýrazněnou akcí spravovat pravidlo":::
 
 1. V rozevíracím seznamu vyberte služby, ke kterým se chcete připojit, a po dokončení toto pravidlo uložte.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Snímek obrazovky zobrazující okno Spravovat pravidlo se službami vybranými v rozevíracím seznamu povolené komunity služeb":::
 
 ## <a name="attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Připojení filtru tras k okruhu ExpressRoute
 
 Připojte filtr směrování k okruhu tak, že vyberete tlačítko **+ Přidat okruh** a v rozevíracím seznamu vyberete okruh ExpressRoute.
 
-:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="Snímek obrazovky, který zobrazuje stránku s přehledem s vybranou akcí přidat okruh":::
 
 Pokud poskytovatel připojení konfiguruje partnerský vztah pro okruh ExpressRoute, aktualizujte okruh ze stránky okruhu ExpressRoute předtím, než vyberete tlačítko **+ Přidat okruh** .
 
-:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="Snímek obrazovky zobrazující stránku s přehledem s vybranou akcí aktualizovat":::
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Běžné úkoly
 
@@ -107,30 +107,30 @@ Pokud poskytovatel připojení konfiguruje partnerský vztah pro okruh ExpressRo
 
 Vlastnosti filtru tras můžete zobrazit při otevření prostředku na portálu.
 
-:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="Snímek obrazovky znázorňující stránku Přehled":::
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Aktualizace vlastností filtru tras
 
 1. Seznam hodnot komunity protokolu BGP připojených k okruhu můžete aktualizovat tak, že vyberete tlačítko **Spravovat pravidlo** .
 
-    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="Aktualizovat filtry tras pomocí akce spravovat pravidlo":::
 
 1. Vyberte požadované komunity služby a pak vyberte **Uložit**.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Snímek obrazovky, který zobrazuje okno Spravovat pravidlo s vybranými službami":::
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Odpojení filtru tras od okruhu ExpressRoute
 
 Chcete-li odpojit okruh od filtru tras, klikněte pravým tlačítkem myši na okruh a vyberte zrušit **přidružení**.
 
-:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="Snímek obrazovky zobrazující stránku s přehledem s zvýrazněnou akcí zrušit přidružení":::
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Filtr tras můžete odstranit tak, že vyberete tlačítko **Odstranit** . Před tím, než to uděláte, zkontrolujte, že filtr tras není spojený s žádnými okruhy.
 
-:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="Snímek obrazovky zobrazující stránku filtru tras":::
+:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="Odstranění filtru tras":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: 15c7ed4ca9d04e4bb314eea8b92bef749d2369b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92537656"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Nejčastější dotazy ke správě Azure cache pro Redis
 Tento článek obsahuje odpovědi na běžné dotazy týkající se správy mezipaměti Azure pro Redis.
 
-## <a name="common-questions-and-answers"></a>Časté otázky a odpovědi
+## <a name="common-questions-and-answers"></a>Běžné otázky a odpovědi
 Tato část obsahuje následující Nejčastější dotazy:
 
 * [Kdy je vhodné povolit port bez TLS/SSL pro připojení k Redis?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
@@ -127,7 +127,7 @@ S těmito informacemi doporučujeme, aby zákazníci nastavili minimální hodno
 
 Jak nakonfigurovat toto nastavení:
 
-* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs` . Příklad:
+* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs` . Například:
 
     ```csharp
     private readonly int minThreads = 200;
@@ -142,7 +142,7 @@ Jak nakonfigurovat toto nastavení:
     ```
 
     > [!NOTE]
-    > Hodnota zadaná touto metodou je globální nastavení, které ovlivňuje celou doménu AppDomain. Pokud máte například počítač se 4 jádry a chcete nastavit *MinWorkerThreads* a *MINIOTHREADS* 50 na procesor za běhu za běhu, použijte auto. **SetMinThreads – (200, 200)** .
+    > Hodnota zadaná touto metodou je globální nastavení, které ovlivňuje celou doménu AppDomain. Pokud máte například počítač se 4 jádry a chcete nastavit *MinWorkerThreads* a *MINIOTHREADS* 50 na procesor za běhu za běhu, použijte auto. **SetMinThreads – (200, 200)**.
 
 * Je také možné zadat minimální nastavení vláken pomocí [nastavení konfigurace *MinIoThreads* nebo *MinWorkerThreads*](/previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100)) v rámci `<processModel>` konfiguračního prvku v `Machine.config` , obvykle se nachází v `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Nastavení počtu minimálních vláken tímto způsobem se obecně nedoporučuje, protože se jedná o nastavení v rámci systému.**
 

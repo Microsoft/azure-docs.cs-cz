@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92106616"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Zaregistrujte data z Azure Data Lake Storage Gen1 Azure Data Catalog
@@ -35,10 +35,10 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
     ![Registrace zdroje dat](./media/data-lake-store-with-data-catalog/register-data-source.png "Registrace zdroje dat")
 1. Na další stránce klikněte na **Spustit aplikaci**. Tím se stáhne soubor manifestu aplikace na vašem počítači. Dvakrát klikněte na soubor manifestu a spusťte tak aplikaci.
-1. Na úvodní stránce klikněte na **Přihlásit**se a zadejte svoje přihlašovací údaje.
+1. Na úvodní stránce klikněte na **Přihlásit** se a zadejte svoje přihlašovací údaje.
 
     ![Obrazovka Vítejte](./media/data-lake-store-with-data-catalog/welcome.screen.png "Obrazovka Vítejte")
-1. Na stránce vyberte zdroj dat vyberte možnost **Azure Data Lake Store**a potom klikněte na tlačítko **Další**.
+1. Na stránce vyberte zdroj dat vyberte možnost **Azure Data Lake Store** a potom klikněte na tlačítko **Další**.
 
     ![Výběr zdroje dat](./media/data-lake-store-with-data-catalog/select-source.png "Výběr zdroje dat")
 1. Na další stránce zadejte název Data Lake Storage Gen1 účtu, který chcete zaregistrovat v Data Catalog. U ostatních možností ponechte výchozí nastavení a klikněte na **připojit**.

@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629695"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Vývoj pro soubory Azure pomocí C++
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Zobrazení výčtu souborů a adresářů ve sdílené složce Azure
 
-Seznam souborů a adresářů ve sdílené složce je možné snadno provést voláním **list_files_and_directories** na **cloud_file_directory** referenci. Chcete-li získat přístup k bohatě se sadou vlastností a metod vrácených **list_file_and_directory_item** , je nutné volat metodu **list_file_and_directory_item. as _file** pro získání objektu **cloud_file** nebo metody **list_file_and_directory_item. as _directory** pro získání objektu **cloud_file_directory** .
+Seznam souborů a adresářů ve sdílené složce je možné snadno provést voláním **list_files_and_directories** na **cloud_file_directory** referenci. Chcete-li získat přístup k bohatě se sadou vlastností a metod vrácených **list_file_and_directory_item**, je nutné volat metodu **list_file_and_directory_item. as _file** pro získání objektu **cloud_file** nebo metody **list_file_and_directory_item. as _directory** pro získání objektu **cloud_file_directory** .
 
 Následující kód ukazuje, jak načíst a výstupní identifikátor URI každé položky v kořenovém adresáři sdílené složky.
 
@@ -369,5 +369,5 @@ Další informace o službě Azure Storage najdete v těchto zdrojích informac�
 
 * [Klientská knihovna pro úložiště pro C++](https://github.com/Azure/azure-storage-cpp)
 * [Ukázky Azure Storage souborové služby v jazyce C++](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
-* [Průzkumník služby Azure Storage](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

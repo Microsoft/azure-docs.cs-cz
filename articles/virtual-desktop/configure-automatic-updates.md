@@ -8,17 +8,17 @@ ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: lizross
 ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88010119"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>Nakonfigurovat Configuration Manager koncového bodu Microsoft
 
 Tento článek vysvětluje, jak nakonfigurovat službu Microsoft Endpoint Configuration Manager tak, aby automaticky používala aktualizace pro hostitele virtuálních ploch Windows s Windows 10 Enterprise s více relacemi.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci tohoto nastavení budete potřebovat následující věci:
 
@@ -36,7 +36,7 @@ Příjem aktualizací:
 3. V rozevírací nabídce vyberte možnost **bod aktualizace softwaru** .
 4. Vyberte kartu **Products** (Produkty).
 5. Zaškrtněte políčko, které uvádí **Windows Server verze 1903 a novější**.
-6. Přejít na přehled softwarových **knihoven**  >  **Overview**  >  **aktualizace softwaru**  >  **všechny aktualizace softwaru** a vyberte možnost **synchronizovat aktualizace softwaru**.
+6. Přejít na přehled softwarových **knihoven**  >    >  **aktualizace softwaru**  >  **všechny aktualizace softwaru** a vyberte možnost **synchronizovat aktualizace softwaru**.
 7. Zkontrolujte soubor souboru wsyncmgr. log v **programu Program Files**  >  **Microsoft Configuration Manager**  >  **protokoly** , abyste se ujistili, že byly vaše změny uloženy. Synchronizace aktualizací může trvat několik minut.
 
 ## <a name="create-a-query-based-collection"></a>Vytvořit kolekci založenou na dotazech
@@ -47,9 +47,9 @@ Postup vytvoření kolekce:
 
 1. Vyberte **prostředky a dodržování předpisů**.
 2. Přejděte na **Přehled**  >  **kolekce zařízení** a klikněte pravým tlačítkem na **kolekce zařízení** a v rozevírací nabídce vyberte **vytvořit kolekci zařízení** .
-3. Na kartě **Obecné** v nabídce, která se otevře, zadejte název, který popisuje vaši kolekci, do pole **název** . V poli **Komentář** můžete zadat další informace popisující, co je kolekce. V části **omezit kolekci**definujte, které počítače do dotazu kolekce zahrnete.
-4. Na kartě **pravidla členství** přidejte pravidlo pro dotaz výběrem možnosti **Přidat pravidlo**a výběrem možnosti **pravidlo dotazu**.
-5. V části **Vlastnosti dotazového pravidla**zadejte název pravidla a pak definujte parametry pravidla výběrem možnosti **Upravit příkaz dotazu**.
+3. Na kartě **Obecné** v nabídce, která se otevře, zadejte název, který popisuje vaši kolekci, do pole **název** . V poli **Komentář** můžete zadat další informace popisující, co je kolekce. V části **omezit kolekci** definujte, které počítače do dotazu kolekce zahrnete.
+4. Na kartě **pravidla členství** přidejte pravidlo pro dotaz výběrem možnosti **Přidat pravidlo** a výběrem možnosti **pravidlo dotazu**.
+5. V části **Vlastnosti dotazového pravidla** zadejte název pravidla a pak definujte parametry pravidla výběrem možnosti **Upravit příkaz dotazu**.
 6. Vyberte **Zobrazit příkaz dotazu**.
 7. V příkazu zadejte následující řetězec:
 
@@ -62,4 +62,4 @@ Postup vytvoření kolekce:
     ```
 
 8. Vyberte **OK** a vytvořte kolekci.
-9. Pokud chcete zjistit, jestli jste úspěšně vytvořili kolekci, vyhledejte v části Přehled **prostředků a dodržování předpisů**  >  **Overview**  >  **kolekce zařízení**.
+9. Pokud chcete zjistit, jestli jste úspěšně vytvořili kolekci, vyhledejte v části Přehled **prostředků a dodržování předpisů**  >    >  **kolekce zařízení**.

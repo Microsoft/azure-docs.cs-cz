@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: f97840a05115bf5659a6f7579b72786e890051a2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429356"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>Rychlý Start: zřízení symetrického klíčového zařízení pomocí jazyka C #
@@ -32,7 +32,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Ujistěte se, že na počítači se systémem Windows máte nainstalovanou [sadu .NET Core 2,1 SDK](https://www.microsoft.com/net/download/windows) nebo novější.
 
@@ -98,7 +98,7 @@ Zřizovací kód se spojí s instancí DPS na základě těchto proměnných, ab
     cd provisioning\Samples\device\SymmetricKeySample
     ```
 
-3. Ve složce *SymmetricKeySample* otevřete *program.cs* v textovém editoru a najděte řádky kódu, které nastaví `individualEnrollmentPrimaryKey` `individualEnrollmentSecondaryKey` řetězce a. Aktualizujte tyto řádky kódu následujícím způsobem, aby se místo pevného kódování klíčů používaly proměnné prostředí.
+3. Ve složce *SymmetricKeySample* otevřete *program. cs* v textovém editoru a najděte řádky kódu, které nastavují `individualEnrollmentPrimaryKey` `individualEnrollmentSecondaryKey` řetězce a. Aktualizujte tyto řádky kódu následujícím způsobem, aby se místo pevného kódování klíčů používaly proměnné prostředí.
  
     ```csharp
         //These are the two keys that belong to your individual enrollment. 
@@ -119,7 +119,7 @@ Zřizovací kód se spojí s instancí DPS na základě těchto proměnných, ab
         private static string registrationId = Environment.GetEnvironmentVariable("PROVISIONING_REGISTRATION_ID");;
     ```
 
-    Uložte změny do *program.cs*.
+    Uložte změny do *programu program. cs*.
 
 3. Do příkazového řádku přidejte proměnné prostředí pro rozsah ID, ID registrace, primární a sekundární symetrický klíč, který jste zkopírovali z jednotlivé registrace v předchozí části.  
 

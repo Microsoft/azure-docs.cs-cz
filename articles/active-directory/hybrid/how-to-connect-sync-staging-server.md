@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090121"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: přípravný Server a zotavení po havárii
@@ -56,7 +56,7 @@ Chcete-li použít tuto metodu, postupujte podle následujících kroků:
 5. [Přepnout aktivní server](#switch-active-server)
 
 #### <a name="prepare"></a>Příprava
-1. Nainstalujte Azure AD Connect, vyberte **pracovní režim**a zrušte výběr **Spustit synchronizaci** na poslední stránce Průvodce instalací. Tento režim umožňuje spustit modul synchronizace ručně.
+1. Nainstalujte Azure AD Connect, vyberte **pracovní režim** a zrušte výběr **Spustit synchronizaci** na poslední stránce Průvodce instalací. Tento režim umožňuje spustit modul synchronizace ručně.
    ![Snímek obrazovky se stránkou připravenou ke konfiguraci najdete v dialogovém okně Azure AD Connect.](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. Odhlaste se nebo se přihlaste a v nabídce Start vyberte **synchronizační službu**.
 
@@ -64,10 +64,10 @@ Chcete-li použít tuto metodu, postupujte podle následujících kroků:
 Pokud jste provedli vlastní změny primárního serveru a chcete porovnat konfiguraci s pracovním serverem, použijte [Azure AD Connect Configuration Documentation](https://github.com/Microsoft/AADConnectConfigDocumenter).
 
 #### <a name="import-and-synchronize"></a>Import a synchronizace
-1. Vyberte **konektory**a vyberte první konektor s typem **Active Directory Domain Services**. Klikněte na **Spustit**, vyberte **úplný import**a pak **OK**. Proveďte tyto kroky u všech konektorů tohoto typu.
-2. Vyberte konektor typu **Azure Active Directory (Microsoft)**. Klikněte na **Spustit**, vyberte **úplný import**a pak **OK**.
-3. Ujistěte se, že jsou konektory karet stále vybrané. U každého konektoru s typem **Active Directory Domain Services**klikněte na **Spustit**, vyberte **rozdílovou synchronizaci**a pak na **OK**.
-4. Vyberte konektor typu **Azure Active Directory (Microsoft)**. Klikněte na **Spustit**, vyberte **rozdílovou synchronizaci**a pak na **OK**.
+1. Vyberte **konektory** a vyberte první konektor s typem **Active Directory Domain Services**. Klikněte na **Spustit**, vyberte **úplný import** a pak **OK**. Proveďte tyto kroky u všech konektorů tohoto typu.
+2. Vyberte konektor typu **Azure Active Directory (Microsoft)**. Klikněte na **Spustit**, vyberte **úplný import** a pak **OK**.
+3. Ujistěte se, že jsou konektory karet stále vybrané. U každého konektoru s typem **Active Directory Domain Services** klikněte na **Spustit**, vyberte **rozdílovou synchronizaci** a pak na **OK**.
+4. Vyberte konektor typu **Azure Active Directory (Microsoft)**. Klikněte na **Spustit**, vyberte **rozdílovou synchronizaci** a pak na **OK**.
 
 Teď máte připravené změny v exportu do Azure AD a místní služby AD (Pokud používáte hybridní nasazení Exchange). Následující kroky vám umožní zkontrolovat, co se chystá změnit, než začnete s exportem do adresářů.
 
@@ -151,9 +151,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency

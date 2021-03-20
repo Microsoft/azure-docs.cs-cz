@@ -4,10 +4,10 @@ description: Zašifrujte data aplikace v Azure Storage a nasaďte je jako soubor
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92108027"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Šifrování dat vaší aplikace v klidovém formátu pomocí klíčů spravovaných zákazníkem
@@ -71,7 +71,7 @@ Aktualizace nastavení této aplikace způsobí, že se aplikace Function App re
 
 Osvědčeným postupem je pravidelně střídat klíč SAS účtu úložiště. Pokud chcete zajistit, aby aplikace Function App nechtěně nevedla přístup, musíte taky aktualizovat adresu URL SAS v Key Vault.
 
-1. Otočte klíč SAS tak, že přejdete na svůj účet úložiště v Azure Portal. V části **Nastavení**  >  **přístupových klíčů**klikněte na ikonu pro otočení klíče SAS.
+1. Otočte klíč SAS tak, že přejdete na svůj účet úložiště v Azure Portal. V části **Nastavení**  >  **přístupových klíčů** klikněte na ikonu pro otočení klíče SAS.
 
 1. Zkopírujte adresu URL nového SAS a použijte následující příkaz k nastavení aktualizované adresy URL SAS ve vašem trezoru klíčů:
 
@@ -99,7 +99,7 @@ Pokud se klíč SAS pro účet úložiště otočí, aplikace Function App už n
 
 Přístup aplikace Function App k datům webu můžete odvolat tím, že zakážete přístup aplikace Function App k Key Vault. Uděláte to tak, že odeberete zásady přístupu pro identitu aplikace Function App. Jedná se o stejnou identitu, kterou jste vytvořili dříve při konfiguraci odkazů na Trezor klíčů.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Soubory vaší aplikace jsou teď ve vašem účtu úložiště zašifrované v klidovém stavu. Po spuštění aplikace Function App načte adresu URL SAS z vašeho trezoru klíčů. Nakonec aplikace Function App načte soubory aplikace z účtu úložiště. 
 

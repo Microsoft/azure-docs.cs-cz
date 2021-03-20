@@ -12,17 +12,17 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 6784331dccd779390ace7dc632d54fe54aedc458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87760987"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-in-the-azure-portal"></a>Konfigurace nastavení MPNS (Microsoft Push Notification Service) v Azure Portal
 
 V tomto článku se dozvíte, jak nakonfigurovat nastavení MPNS (Microsoft Push Notification Service) pro Centrum oznámení Azure pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md).
 
@@ -33,7 +33,7 @@ Následující postup popisuje, jak nakonfigurovat nastavení MPNS (Microsoft Pu
 1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Windows Phone (MPNS)** .
 2. Povolit buď neověřené, nebo ověřené nabízené oznámení:
 
-   a. Pokud chcete povolit neověřená nabízená oznámení, vyberte **Povolit neověřené nabízené**oznámení  >  **Save**.
+   a. Pokud chcete povolit neověřená nabízená oznámení, vyberte **Povolit neověřené nabízené** oznámení  >  .
 
       ![Snímek obrazovky, který ukazuje, jak povolit neověřená nabízená oznámení](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 

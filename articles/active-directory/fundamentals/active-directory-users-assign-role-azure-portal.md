@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370929"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Přiřazení rolí správců a uživatelů bez oprávnění správce k Azure Active Directory
@@ -65,9 +65,9 @@ Pokud potřebujete odebrat přiřazení role z uživatele, můžete to udělat t
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>Odebrání přiřazení role z uživatele
 
-1. Vyberte **Azure Active Directory**, vyberte **uživatele**a pak vyhledejte a vyberte uživatele, který získal přiřazení role odebrané. Například _Alain Charon_.
+1. Vyberte **Azure Active Directory**, vyberte **uživatele** a pak vyhledejte a vyberte uživatele, který získal přiřazení role odebrané. Například _Alain Charon_.
 
-2. Vyberte **přiřazené role**, vyberte **správce aplikace**a pak vyberte **odebrat přiřazení**.
+2. Vyberte **přiřazené role**, vyberte **správce aplikace** a pak vyberte **odebrat přiřazení**.
 
     ![Stránka přiřazené role, zobrazení vybrané role a možnosti odebrat](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 

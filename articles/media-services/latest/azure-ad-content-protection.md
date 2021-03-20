@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
 ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92427206"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Kurz: komplexní ochrana obsahu pomocí Azure AD
@@ -42,7 +42,7 @@ Pokud nemáte předplatné Azure Media Services, vytvořte [bezplatný zkušebn�
 ### <a name="duration"></a>Doba trvání
 Tento kurz by měl trvat přibližně dvě hodiny, než se dokončí, když máte připravenou technologii, kterou si můžete projít.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Použijí se následující nejnovější technologické verze a koncepty. Před zahájením tohoto kurzu se jim doporučujeme seznámit s nimi.
 
@@ -263,7 +263,7 @@ Máte dvě možnosti, jak nastavit aplikaci přehrávače:
 
 ### <a name="option-1"></a>Možnost 1
 
-1. Spusťte Visual Studio Code.
+1. Spuštění nástroje Visual Studio Code
 1. Chcete-li projekt otevřít, klikněte na položku soubor-> otevřít složku – > vyhledejte a vyberte nadřazenou složku *package.jsv* souboru.
 1. Otevřete JavaScriptový soubor *Public/JavaScript/constants.js*.
 1. Nahraďte `OAUTH2_CONST.CLIENT_ID` `client_id` vaší registrovanou klientskou aplikací v tenantovi AAD.  Najdete ho v `client_id` části Přehled registrované aplikace v Azure Portal. Poznámka: Toto je ID klienta, nikoli ID objektu.
