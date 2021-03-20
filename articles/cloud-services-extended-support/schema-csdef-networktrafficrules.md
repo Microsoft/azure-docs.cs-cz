@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 0064794701e87419da086c458673f7ccee4f37dd
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744346"
 ---
 # <a name="azure-cloud-services-extended-support-definition-networktrafficrules-schema"></a>NetworkTrafficRules definice schématu Azure Cloud Services (Rozšířená podpora)
@@ -72,7 +72,7 @@ Základní formát definičního souboru služby obsahující definice síťové
 ##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> Element RoleEndpoint
 `RoleEndpoint`Element popisuje koncový bod role, který umožňuje komunikaci s. `RoleEndpoint`Pokud je v roli více než jeden koncový bod, můžete zadat více prvků.
 
-| Atribut      | Typ     | Popis |
+| Atribut      | Typ     | Description |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | Povinná hodnota. Název koncového bodu, na který má být povolen provoz.|
 | `roleName`     | `string` | Povinná hodnota. Název webové role, na kterou má být povolena komunikace.|
@@ -83,14 +83,14 @@ Základní formát definičního souboru služby obsahující definice síťové
 ##  <a name="whensource-element"></a><a name="WhenSource"></a> Element WhenSource
 `WhenSource`Prvek popisuje kolekci rolí, než může komunikovat s koncovými body definovanými v `Destinations` uzlu.
 
-| Atribut | Typ     | Popis |
+| Atribut | Typ     | Description |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Povinná hodnota. Určuje pravidlo, které se má použít při povolování komunikace. Jediná platná hodnota je aktuálně `AnyRule` .|
   
 ##  <a name="fromrole-element"></a><a name="FromRole"></a> Element FromRole
 `FromRole`Prvek určuje role, které mohou komunikovat s koncovými body definovanými v `Destinations` uzlu. `FromRole`Pokud existuje více než jedna role, která může komunikovat s koncovými body, můžete zadat více prvků.
 
-| Atribut  | Typ     | Popis |
+| Atribut  | Typ     | Description |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | Povinná hodnota. Název role, ze které má být komunikace povolena.|
 

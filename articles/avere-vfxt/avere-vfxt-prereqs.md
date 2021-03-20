@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: d87f57873a4bb84b20df3da3880017d9ef2484a5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008408"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
@@ -34,7 +34,7 @@ Uživatel s oprávněním vlastníka pro předplatné by měl vytvořit cluster 
 
 K dispozici je několik alternativních řešení, která umožňují vytvořit avere vFXT pro cluster Azure pomocí nevlastnictví. Tyto scénáře zahrnují omezení prostředků a přiřazování dalších rolí Azure tvůrci. Ve všech těchto případech by měl vlastník předplatného také [přijmout podmínky avere vFXT software](#accept-software-terms) před časem.
 
-| Scénář | Omezení | Přístup k rolím vyžadovaným k vytvoření clusteru avere vFXT |
+| Scenario | Omezení | Přístup k rolím vyžadovaným k vytvoření clusteru avere vFXT |
 |----------|--------|-------|
 | Správce skupiny prostředků vytvoří vFXT. | V rámci skupiny prostředků musí být vytvořená virtuální síť, řadič clusteru a uzly clusteru. | Role [Správce přístupu uživatelů](../role-based-access-control/built-in-roles.md#user-access-administrator) a [přispěvatelů](../role-based-access-control/built-in-roles.md#contributor) jsou vymezeny na cílovou skupinu prostředků. |
 | Použít existující externí virtuální síť | Řadič clusteru a uzly clusteru se vytvářejí v rámci skupiny prostředků vFXT, ale používají existující virtuální síť v jiné skupině prostředků. | (1) role [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) a [přispěvatelé](../role-based-access-control/built-in-roles.md#contributor) jsou v oboru pro skupinu prostředků vFXT. a (2) [Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [správce uživatelských přístupů](../role-based-access-control/built-in-roles.md#user-access-administrator)a role [přispěvatele avere](../role-based-access-control/built-in-roles.md#avere-contributor) v oboru pro skupinu prostředků virtuální sítě. |

@@ -10,10 +10,10 @@ ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336781"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Začínáme s nevlákenou zařízení (Node.js)
@@ -22,15 +22,15 @@ ms.locfileid: "91336781"
 
 Na konci tohoto kurzu budete mít dvě Node.js konzolové aplikace:
 
-* **AddTagsAndQuery.js**Node.js back-endové aplikace, která přidá značky a dotaz na vlákna zařízení.
+* **AddTagsAndQuery.js** Node.js back-endové aplikace, která přidá značky a dotaz na vlákna zařízení.
 
-* **TwinSimulatedDevice.js**aplikace Node.js, která simuluje zařízení, které se připojuje ke službě IoT Hub s dříve vytvořenou identitou zařízení a oznamuje její podmínku připojení.
+* **TwinSimulatedDevice.js** aplikace Node.js, která simuluje zařízení, které se připojuje ke službě IoT Hub s dříve vytvořenou identitou zařízení a oznamuje její podmínku připojení.
 
 > [!NOTE]
 > V článku sady [SDK Azure IoT](iot-hub-devguide-sdks.md) najdete informace o sadách SDK Azure IoT, které můžete použít k vytvoření zařízení i back-endové aplikace.
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -40,7 +40,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -105,7 +105,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, která přidá metadata
         });
    ```
 
-    Objekt **registru** zveřejňuje všechny metody, které jsou potřeba pro interakci se zařízeními ze služby. Předchozí kód nejprve inicializuje objekt **registru** , potom načte **myDeviceId**pro zařízení a nakonec aktualizuje své značky o požadované informace o umístění.
+    Objekt **registru** zveřejňuje všechny metody, které jsou potřeba pro interakci se zařízeními ze služby. Předchozí kód nejprve inicializuje objekt **registru** , potom načte **myDeviceId** pro zařízení a nakonec aktualizuje své značky o požadované informace o umístění.
 
     Po aktualizaci značek volá funkci **queryTwins** .
 
@@ -159,7 +159,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, která se připojí k v
     npm init --yes
     ```
 
-2. Na příkazovém řádku ve složce **reportconnectivity** spusťte následující příkaz, který nainstaluje balíčky **Azure-IoT-Device**a **Azure-IoT-Device-MQTT** :
+2. Na příkazovém řádku ve složce **reportconnectivity** spusťte následující příkaz, který nainstaluje balíčky **Azure-IoT-Device** a **Azure-IoT-Device-MQTT** :
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save

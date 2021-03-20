@@ -4,10 +4,10 @@ description: Sledovat témata a odběry událostí
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: d230be4f74abd61ad7b7f0fdb3facb32ee63da73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171529"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Sledovat témata a odběry událostí
@@ -43,7 +43,7 @@ Témata a odběry událostí generují metriky, které vám poskytnou přehled o
 
 ### <a name="topic-metrics"></a>Metriky témat
 
-| Metrika | Popis |
+| Metric | Popis |
 | ------ | ----------- |
 | EventsReceived | Počet událostí publikovaných do tématu
 | UnmatchedEvents | Počet událostí publikovaných do tématu, které nesouhlasí s odběrem události a jsou vyřazeny
@@ -55,7 +55,7 @@ Témata a odběry událostí generují metriky, které vám poskytnou přehled o
 
 ### <a name="event-subscription-metrics"></a>Metriky odběru událostí
 
-| Metrika | Popis |
+| Metric | Popis |
 | ------ | ----------- |
 | DeliverySuccessCounts | Počet událostí úspěšně doručených do nakonfigurovaného koncového bodu
 | DeliveryFailureCounts | Počet událostí, které se nepodařilo doručit do nakonfigurovaného koncového bodu

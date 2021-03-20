@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132325"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Nastavení zotavení po havárii pro služby Active Directory a DNS
@@ -22,7 +22,7 @@ Pomocí [Site Recovery](site-recovery-overview.md) můžete vytvořit plán zota
 
 Tento článek vysvětluje, jak vytvořit řešení zotavení po havárii pro službu Active Directory. Zahrnuje požadavky a pokyny pro převzetí služeb při selhání. Než začnete, měli byste být obeznámeni se službou Active Directory a Site Recovery.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud provádíte replikaci do Azure, [připravíte prostředky Azure](tutorial-prepare-azure.md), včetně předplatného, Virtual Network Azure, účtu úložiště a trezoru Recovery Services.
 - Zkontrolujte [požadavky na podporu](./vmware-physical-azure-support-matrix.md) pro všechny komponenty.
@@ -79,7 +79,7 @@ Většina aplikací vyžaduje přítomnost řadiče domény nebo serveru DNS. Pr
 1. Vytvořte izolovanou síť. Každá virtuální síť, kterou vytvoříte v Azure, je ve výchozím nastavení izolovaná od ostatních sítí. Doporučujeme použít pro tuto síť stejný rozsah IP adres, který používáte ve své produkční síti. V této síti nepovolujte připojení Site-to-site.
 1. Zadejte IP adresu DNS v izolované síti. Použijte IP adresu, kterou očekáváte, že se virtuální počítač DNS dostane. Pokud provádíte replikaci do Azure, zadejte IP adresu pro virtuální počítač, který se používá při převzetí služeb při selhání. Pokud chcete zadat IP adresu, v replikovaném virtuálním počítači v nastavení **výpočty a síť** vyberte nastavení **cílové IP adresy** .
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Síť Azure":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Testovací síť Azure":::
 
    > [!TIP]
    > Site Recovery se pokusí vytvořit testovací virtuální počítače v podsíti se stejným názvem a pomocí stejné IP adresy, která je k dispozici v nastavení **výpočty a síť** virtuálního počítače. Pokud ve službě Azure Virtual Network, která je pro testovací převzetí služeb při selhání, není dostupná podsíť se stejným názvem, testovací virtuální počítač se vytvoří v abecedně první podsíti.
@@ -118,21 +118,21 @@ Pokud se po testovacím převzetí služeb při selhání aktivují bezpečnostn
 
 - Hodnota **GenerationID** se změní:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Síť Azure":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Změna ID generování":::
 
 - Hodnota **InvocationID** se změní:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Síť Azure":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Změna ID vyvolání":::
 
 - `SYSVOL` Složka a `NETLOGON` sdílené složky nejsou k dispozici.
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Síť Azure":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Sdílená složka SYSVOL":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Síť Azure":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Složka NtFrs SYSVOL":::
 
 - Databáze DFSR se odstraní.
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Síť Azure":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Databáze DFSR se odstraní.":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Řešení potíží s řadičem domény během testovacího převzetí služeb
 

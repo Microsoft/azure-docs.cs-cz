@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: 191323a4c150c00c93245be35c9c8af381e26b42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87904851"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Vytváření předplatných ve službě Azure API Management
@@ -25,7 +25,7 @@ Když publikujete rozhraní API prostřednictvím Azure API Management, je snadn
 
 Tento článek vás provede kroky pro vytvoření předplatných v Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto článku jsou nezbytné tyto požadavky:
 

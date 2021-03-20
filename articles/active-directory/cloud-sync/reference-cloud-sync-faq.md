@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39d1554fd1b6cac1a90a794cfd93def97e494bfe
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98613237"
 ---
 # <a name="azure-active-directory-connect-cloud-sync-faq"></a>Nejčastější dotazy k synchronizaci cloudu Azure Active Directory Connect
@@ -42,7 +42,7 @@ Při Azure AD Connect synchronizaci se zřizování spouští na místním serve
 
 **Otázka: mohu použít synchronizaci cloudu pro synchronizaci z více doménových struktur služby Active Directory?**
 
-Yes. Zřizování cloudu se dá použít k synchronizaci z několika doménových struktur služby Active Directory. V prostředí s více doménovými strukturami musí být všechny odkazy (například správce) v doméně.  
+Ano. Zřizování cloudu se dá použít k synchronizaci z několika doménových struktur služby Active Directory. V prostředí s více doménovými strukturami musí být všechny odkazy (například správce) v doméně.  
 
 **Otázka: jak se Agent aktualizuje?**
 
@@ -98,7 +98,7 @@ Ničeho.  Pokud je organizační jednotka přejmenována nebo přesunuta, uživa
 
 **Otázka: Azure AD Connect cloudová synchronizace podporuje velké skupiny?**
 
-Yes. Dnes podporujeme až 50 tis členy skupiny synchronizované pomocí filtrování oboru organizačních jednotek. Když ale použijete filtrování oboru skupiny, doporučujeme, abyste zachovali velikost skupiny méně než 1500 členů. Důvodem je, že i když můžete synchronizovat velkou skupinu jako součást filtru oboru skupiny, když přidáte členy do této skupiny podle dávek většího než 1500, synchronizace rozdílů se nezdaří. 
+Ano. Dnes podporujeme až 50 tis členy skupiny synchronizované pomocí filtrování oboru organizačních jednotek. Když ale použijete filtrování oboru skupiny, doporučujeme, abyste zachovali velikost skupiny méně než 1500 členů. Důvodem je, že i když můžete synchronizovat velkou skupinu jako součást filtru oboru skupiny, když přidáte členy do této skupiny podle dávek většího než 1500, synchronizace rozdílů se nezdaří. 
 
 ## <a name="next-steps"></a>Další kroky 
 

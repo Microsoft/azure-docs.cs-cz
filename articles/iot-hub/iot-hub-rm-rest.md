@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144433"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Vytvoření služby IoT Hub pomocí REST API poskytovatele prostředků (.NET)
@@ -40,11 +40,11 @@ K dokončení tohoto kurzu potřebujete:
 
 2. V Průzkumník řešení klikněte pravým tlačítkem na projekt a pak klikněte na **Spravovat balíčky NuGet**.
 
-3. Ve Správci balíčků NuGet **Zahrňte zahrnutí předběžné verze**a na stránce **Procházet** vyhledejte **Microsoft. Azure. Management. ResourceManager**. Vyberte balíček, klikněte na **nainstalovat**. v části **Zkontrolovat změny** klikněte na **OK**a **pak kliknutím na Souhlasím** přijměte licence.
+3. Ve Správci balíčků NuGet **Zahrňte zahrnutí předběžné verze** a na stránce **Procházet** vyhledejte **Microsoft. Azure. Management. ResourceManager**. Vyberte balíček, klikněte na **nainstalovat**. v části **Zkontrolovat změny** klikněte na **OK** a **pak kliknutím na Souhlasím** přijměte licence.
 
-4. Ve Správci balíčků NuGet vyhledejte **Microsoft. IdentityModel. clients. Active**.  Klikněte na **nainstalovat**, v části **Zkontrolovat změny** klikněte na **OK**a pak **klikněte na Souhlasím, aby se** licence přijímala.
+4. Ve Správci balíčků NuGet vyhledejte **Microsoft. IdentityModel. clients. Active**.  Klikněte na **nainstalovat**, v části **Zkontrolovat změny** klikněte na **OK** a pak **klikněte na Souhlasím, aby se** licence přijímala.
 
-5. V Program.cs nahraďte existující příkazy **using** následujícím kódem:
+5. V programu program. cs nahraďte existující příkazy **using** následujícím kódem:
 
     ```csharp
     using System;
@@ -60,7 +60,7 @@ K dokončení tohoto kurzu potřebujete:
     using System.Threading;
     ```
 
-6. Do Program.cs přidejte následující statické proměnné nahrazující zástupné hodnoty. Dříve v tomto kurzu jste si poznamenali **ApplicationId**, **SubscriptionId**, **TenantId**a **Password** . **Název skupiny prostředků** je název skupiny prostředků, kterou použijete při vytváření centra IoT. Můžete použít již existující nebo novou skupinu prostředků. **Název IoT Hub** je název vytvořeného IoT Hub, například **MyIoTHub**. Název vašeho centra IoT musí být globálně jedinečný. **Název nasazení** je název pro nasazení, například **Deployment_01**.
+6. V programu program. cs přidejte následující statické proměnné, které nahradí zástupné hodnoty. Dříve v tomto kurzu jste si poznamenali **ApplicationId**, **SubscriptionId**, **TenantId** a **Password** . **Název skupiny prostředků** je název skupiny prostředků, kterou použijete při vytváření centra IoT. Můžete použít již existující nebo novou skupinu prostředků. **Název IoT Hub** je název vytvořeného IoT Hub, například **MyIoTHub**. Název vašeho centra IoT musí být globálně jedinečný. **Název nasazení** je název pro nasazení, například **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -80,7 +80,7 @@ K dokončení tohoto kurzu potřebujete:
 
 [REST API poskytovatele prostředků IoT Hub](/rest/api/iothub/iothubresource) použijte k vytvoření centra IoT ve vaší skupině prostředků. K provedení změn v existující službě IoT Hub můžete také použít REST API poskytovatele prostředků.
 
-1. Přidejte následující metodu do Program.cs:
+1. Do programu program. cs přidejte následující metodu:
 
     ```csharp
     static void CreateIoTHub(string token)

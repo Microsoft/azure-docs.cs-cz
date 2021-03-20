@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: duau
 ms.openlocfilehash: 693d2304324bdfcac298b3e20ddd0d882a16533c
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92899866"
 ---
 # <a name="expressroute-encryption"></a>Šifrování ExpressRoute
@@ -21,13 +21,13 @@ ExpressRoute podporuje několik technologií šifrování, které zajišťují d
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Šifrování Point-to-Point pomocí MACsec – Nejčastější dotazy
 MACsec je [Standard IEEE](https://1.ieee802.org/security/802-1ae/). Šifruje data na úrovni MAC (Media Access Control) nebo síťové vrstvě 2. Pomocí MACsec můžete šifrovat fyzické odkazy mezi síťovými zařízeními a síťovými zařízeními Microsoftu, když se připojíte k Microsoftu prostřednictvím [ExpressRoute Direct](expressroute-erdirect-about.md). MACsec je ve výchozím nastavení zakázaný u portů ExpressRoute Direct. Zavedete si vlastní klíč MACsec pro šifrování a uložíte ho do [Azure Key Vault](../key-vault/general/overview.md). Určíte, kdy se má klíč otočit. Další informace najdete v dalších nejčastějších dotazech.
 ### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>Můžu povolit MACsec v okruhu ExpressRoute zřízeném poskytovatelem ExpressRoute?
-Ne. MACsec šifruje veškerý provoz na fyzickém propojení s klíčem, který patří jedné entitě (tj. zákazník). Proto je k dispozici pouze na ExpressRoute Direct.
+No. MACsec šifruje veškerý provoz na fyzickém propojení s klíčem, který patří jedné entitě (tj. zákazník). Proto je k dispozici pouze na ExpressRoute Direct.
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>Je možné zašifrovat některé okruhy ExpressRoute na mých portech ExpressRoute Direct a ponechat jiné okruhy na stejných portech bez šifrování? 
-Ne. Jakmile je MACsec povolený veškerý provoz řízení sítě, například přenos dat protokolu BGP a přenosy dat zákazníků, se zašifrují. 
+No. Jakmile je MACsec povolený veškerý provoz řízení sítě, například přenos dat protokolu BGP a přenosy dat zákazníků, se zašifrují. 
 ### <a name="when-i-enabledisable-macsec-or-update-macsec-key-will-my-on-premises-network-lose-connectivity-to-microsoft-over-expressroute"></a>Když povolíte nebo zakážete MACsec nebo aktualizujete MACsec klíč, ztratí se v místní síti připojení k Microsoftu přes ExpressRoute?
 Ano. V případě konfigurace MACsec podporujeme jenom režim Pre-Shared Key. Znamená to, že potřebujete aktualizovat klíč jak na svých zařízeních, tak na Microsoftu (přes naše rozhraní API). Tato změna není atomická, takže ztratíte připojení, když dojde k neshodě klíče mezi dvěma stranami. Důrazně doporučujeme, abyste naplánovali časové období údržby pro změnu konfigurace. Abychom minimalizovali prostoje, doporučujeme, abyste po přepnutí síťového provozu na jiný odkaz aktualizovali konfiguraci na jednom odkazu ExpressRoute Direct v čase.  
 ### <a name="will-traffic-continue-to-flow-if-theres-a-mismatch-in-macsec-key-between-my-devices-and-microsofts"></a>Bude provoz pokračovat v toku, pokud dojde k neshodě klíče MACsec mezi zařízeními a společností Microsoft?
-Ne. Pokud je MACsec nakonfigurovaný a dojde k neshodě klíčů, ztratíte připojení k Microsoftu. Jinými slovy nebudeme vracet k nezašifrovanému připojení, které zveřejňuje vaše data. 
+No. Pokud je MACsec nakonfigurovaný a dojde k neshodě klíčů, ztratíte připojení k Microsoftu. Jinými slovy nebudeme vracet k nezašifrovanému připojení, které zveřejňuje vaše data. 
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Povolí MACsec na ExpressRoute přímé snížení výkonu sítě?
 K šifrování a dešifrování MACsec dochází v hardwaru na směrovačích, které používáme. Na naší straně není dopad na výkon. Měli byste si však u zařízení, která používáte, kontrolovat u dodavatele sítě a zjistit, zda má MACsec nějaké snížení výkonu.
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>Které šifrovací sady jsou podporované pro šifrování?

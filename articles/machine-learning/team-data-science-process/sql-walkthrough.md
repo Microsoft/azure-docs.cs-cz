@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96007405"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití SQL Server
@@ -495,7 +495,7 @@ V této části vygenerujeme nové popisky a funkce přímo pomocí dotazů SQL,
 #### <a name="label-generation-generate-class-labels"></a>Generování popisků: generování popisků třídy
 V následujícím příkladu generujeme dvě sady popisků, které se mají použít pro modelování:
 
-1. Popisky binárních **tipped** tříd byly označeny (předpověď, jestli se má Tip předávat)
+1. Popisky binárních  tříd byly označeny (předpověď, jestli se má Tip předávat)
 2. **\_ Třída Tip** pro více tříd (předpověď z přihrádky nebo rozsahu Tip)
 
 ```sql   

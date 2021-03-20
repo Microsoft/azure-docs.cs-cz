@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o autorizaci přístupu k prost�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: d794b03fdbb5429983788c74cbb05a7c13bf2d76
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910793"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory
@@ -46,11 +46,11 @@ Než do objektu zabezpečení přiřadíte roli Azure, určete rozsah přístupu
 
 Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Event Hubs, počínaje nejužším rozsahem:
 
-- **Skupina příjemců** : v tomto oboru se přiřazení role vztahuje pouze na tuto entitu. V současné době Azure Portal nepodporuje přiřazení role Azure k objektu zabezpečení na této úrovni. 
-- **Centrum událostí** : přiřazení role se vztahuje k entitě centra událostí a skupině příjemců.
-- **Obor názvů** : přiřazování rolí zahrnuje celou topologii Event Hubs pod oborem názvů a do skupiny uživatelů, které jsou k ní přidružené.
-- **Skupina prostředků** : přiřazení role se vztahuje na všechny prostředky Event Hubs v rámci skupiny prostředků.
-- **Předplatné** : přiřazení role se vztahuje na všechny prostředky Event Hubs ve všech skupinách prostředků v rámci předplatného.
+- **Skupina příjemců**: v tomto oboru se přiřazení role vztahuje pouze na tuto entitu. V současné době Azure Portal nepodporuje přiřazení role Azure k objektu zabezpečení na této úrovni. 
+- **Centrum událostí**: přiřazení role se vztahuje k entitě centra událostí a skupině příjemců.
+- **Obor názvů**: přiřazování rolí zahrnuje celou topologii Event Hubs pod oborem názvů a do skupiny uživatelů, které jsou k ní přidružené.
+- **Skupina prostředků**: přiřazení role se vztahuje na všechny prostředky Event Hubs v rámci skupiny prostředků.
+- **Předplatné**: přiřazení role se vztahuje na všechny prostředky Event Hubs ve všech skupinách prostředků v rámci předplatného.
 
 > [!NOTE]
 > - Mějte na paměti, že rozšíření přiřazení rolí Azure může trvat až pět minut. 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135792"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů s podporou služby Azure Disk Encryption do jiné oblasti Azure
@@ -40,9 +40,9 @@ Aby bylo možné povolit replikaci virtuálních počítačů s povoleným šifr
     - Kryptografické operace
         - Dešifrování a šifrování
 
-Pokud chcete spravovat oprávnění, otevřete na portálu prostředek trezoru klíčů. Přidejte požadovaná oprávnění pro uživatele. Následující příklad ukazuje, jak povolit oprávnění k *ContosoWeb2Keyvault*trezoru klíčů, který je ve zdrojové oblasti.
+Pokud chcete spravovat oprávnění, otevřete na portálu prostředek trezoru klíčů. Přidejte požadovaná oprávnění pro uživatele. Následující příklad ukazuje, jak povolit oprávnění k *ContosoWeb2Keyvault* trezoru klíčů, který je ve zdrojové oblasti.
 
-1. Přejděte na **domovské**  >  **trezory**klíčů  >  **ContosoWeb2KeyVault > zásady přístupu**.
+1. Přejděte na **domovské**  >  **trezory** klíčů  >  **ContosoWeb2KeyVault > zásady přístupu**.
 
    ![Okno oprávnění trezoru klíčů](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
@@ -88,7 +88,7 @@ V tomto příkladu je primární oblast Azure Východní Asie a sekundární obl
 
 3. V **Virtual Machines**  >  **vyberte virtuální počítače**, vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**.
 
-4. V **Nastavení**můžete nakonfigurovat následující nastavení cílové lokality.
+4. V **Nastavení** můžete nakonfigurovat následující nastavení cílové lokality.
 
     - **Cílové umístění**: umístění, kam se budou replikovat vaše zdrojová data virtuálního počítače. Site Recovery poskytuje seznam vhodných cílových oblastí na základě umístění vybraného počítače. Doporučujeme použít stejné umístění jako v umístění trezoru Recovery Services.
     - **Cílové předplatné**: cílové předplatné, které se používá pro zotavení po havárii. Ve výchozím nastavení je cílové předplatné stejné jako zdrojové předplatné.
@@ -99,7 +99,7 @@ V tomto příkladu je primární oblast Azure Východní Asie a sekundární obl
     - **Účty úložiště mezipaměti**: Site Recovery potřebuje další účet úložiště s názvem *úložiště mezipaměti* ve zdrojové oblasti. Všechny změny ve zdrojových virtuálních počítačích jsou sledovány a odesílány do účtu úložiště mezipaměti. Pak se replikují do cílového umístění.
     - **Skupina dostupnosti**: ve výchozím nastavení Site Recovery vytvoří novou skupinu dostupnosti v cílové oblasti. Název má příponu ASR. Pokud skupina dostupnosti, kterou vytvořil Site Recovery, už existuje, použije se znovu.
     - **Trezory klíčů šifrovacího disku**: ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů v cílové oblasti. Má příponu ASR založenou na klíčích pro šifrování disků zdrojového virtuálního počítače. Pokud Trezor klíčů, který byl vytvořen Azure Site Recovery, již existuje, bude znovu použit.
-    - **Trezory klíčů šifrovacího**klíče: ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů v cílové oblasti. Název má příponu ASR, která je založená na šifrovacích klíčích zdrojového virtuálního počítače. Pokud již existuje Trezor klíčů vytvořený pomocí Azure Site Recovery, bude znovu použit.
+    - **Trezory klíčů šifrovacího** klíče: ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů v cílové oblasti. Název má příponu ASR, která je založená na šifrovacích klíčích zdrojového virtuálního počítače. Pokud již existuje Trezor klíčů vytvořený pomocí Azure Site Recovery, bude znovu použit.
     - **Zásady replikace**: definuje nastavení pro historii uchovávání bodů obnovení a četnost snímků konzistentních vzhledem k aplikacím. Ve výchozím nastavení Site Recovery vytvoří novou zásadu replikace s výchozím nastavením *24 hodin* pro uchování bodu obnovení a *60 minut* pro frekvenci snímků konzistentní vzhledem k aplikacím.
 
 ## <a name="customize-target-resources"></a>Přizpůsobení cílových prostředků
@@ -109,17 +109,17 @@ Pomocí těchto kroků upravíte Site Recovery výchozí nastavení cíle.
 1. Pokud chcete změnit výchozí cílové předplatné, vyberte **přizpůsobit** u možnosti cílové předplatné. Vyberte předplatné ze seznamu předplatných, která jsou k dispozici v tenantovi Azure AD.
 
 2. Vyberte **přizpůsobit** vedle možnosti skupina prostředků, síť, úložiště a skupiny dostupnosti a upravte následující výchozí nastavení:
-    - V poli **cílová skupina prostředků**vyberte skupinu prostředků ze seznamu skupin prostředků v cílovém umístění předplatného.
-    - V poli **cílová virtuální síť**vyberte síť ze seznamu virtuálních sítí v cílovém umístění.
-    - V případě **skupiny dostupnosti**můžete do virtuálního počítače přidat nastavení skupiny dostupnosti, pokud jsou součástí skupiny dostupnosti ve zdrojové oblasti.
-    - U **cílových účtů úložiště**vyberte účet, který chcete použít.
+    - V poli **cílová skupina prostředků** vyberte skupinu prostředků ze seznamu skupin prostředků v cílovém umístění předplatného.
+    - V poli **cílová virtuální síť** vyberte síť ze seznamu virtuálních sítí v cílovém umístění.
+    - V případě **skupiny dostupnosti** můžete do virtuálního počítače přidat nastavení skupiny dostupnosti, pokud jsou součástí skupiny dostupnosti ve zdrojové oblasti.
+    - U **cílových účtů úložiště** vyberte účet, který chcete použít.
 
 2. Pokud chcete upravit následující výchozí nastavení, vyberte **přizpůsobit** u možnosti nastavení šifrování:
-   - V případě **trezoru klíčů cílového disku**vyberte v seznamu trezorů klíčů v cílovém umístění předplatného možnost trezoru šifrovacího klíče cílového disku.
-   - U **trezoru šifrovacího klíče cílového klíče**vyberte v seznamu trezorů klíčů v cílovém umístění předplatného možnost trezor šifrovacího klíče cílového klíče.
+   - V případě **trezoru klíčů cílového disku** vyberte v seznamu trezorů klíčů v cílovém umístění předplatného možnost trezoru šifrovacího klíče cílového disku.
+   - U **trezoru šifrovacího klíče cílového klíče** vyberte v seznamu trezorů klíčů v cílovém umístění předplatného možnost trezor šifrovacího klíče cílového klíče.
 
 3. Vyberte **vytvořit cílový prostředek**  >  **Povolit replikaci**.
-4. Po povolení replikace virtuálních počítačů můžete u **replikovaných položek**ověřit stav virtuálních počítačů.
+4. Po povolení replikace virtuálních počítačů můžete u **replikovaných položek** ověřit stav virtuálních počítačů.
 
 >[!NOTE]
 >Během počáteční replikace může aktualizace stavu nějakou dobu trvat, a to bez zjevného postupu. Kliknutím na **aktualizovat**  získáte nejnovější stav.
@@ -129,7 +129,7 @@ V následujících scénářích budete muset aktualizovat nastavení šifrován
   - Povolili jste Site Recovery replikaci na virtuálním počítači. Později jste na zdrojovém virtuálním počítači povolili šifrování disku.
   - Povolili jste Site Recovery replikaci na virtuálním počítači. Později jste změnili šifrovací klíč disku nebo šifrovací klíč klíče na zdrojovém virtuálním počítači.
 
-Můžete použít [skript](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) ke zkopírování šifrovacích klíčů do cílové oblasti a potom aktualizovat nastavení cílového šifrování v replikované položce repliky **služby Recovery Services**  >  *replicated item*  >  **vlastnosti**  >  **COMPUTE a Network**.
+Můžete použít [skript](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) ke zkopírování šifrovacích klíčů do cílové oblasti a potom aktualizovat nastavení cílového šifrování v replikované položce repliky **služby Recovery Services**  >    >  **vlastnosti**  >  **COMPUTE a Network**.
 
 ![Dialogové okno aktualizace nastavení ADE](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -153,7 +153,7 @@ Máte všechna oprávnění k trezoru klíčů zdrojové oblasti. Ale během och
 
 Vyžaduje se oprávnění pro [cílový Trezor klíčů](#required-user-permissions) .
 
-**Jak opravit:** Přejděte na **domácí**  >  **trezory**klíčů  >  **ContosotargetKeyvault**  >  **zásady přístupu** a přidejte příslušná oprávnění.
+**Jak opravit:** Přejděte na **domácí**  >  **trezory** klíčů  >  **ContosotargetKeyvault**  >  **zásady přístupu** a přidejte příslušná oprávnění.
 
 ## <a name="next-steps"></a>Další kroky
 

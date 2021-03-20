@@ -1,6 +1,6 @@
 ---
-title: Kurz – rozšiřování souborových serverů s Windows pomocí Azure File Sync | Microsoft Docs
-description: Naučte se, jak pomocí Azure File Sync roztáhnout souborové servery Windows, od začátku do konce.
+title: Kurz – rozšiřování souborových serverů s Windows pomocí Synchronizace souborů Azure | Microsoft Docs
+description: Naučte se, jak pomocí Synchronizace souborů Azure roztáhnout souborové servery Windows, od začátku do konce.
 author: roygara
 ms.service: storage
 ms.topic: tutorial
@@ -8,15 +8,15 @@ ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91329448"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
 
-Tento článek popisuje základní kroky pro rozšíření kapacity úložiště Windows serveru pomocí Azure File Sync. I když kurz nabízí Windows Server jako virtuální počítač Azure (VM), obvykle tento proces provedete pro vaše místní servery. Pokyny pro nasazení Azure File Sync ve vlastním prostředí najdete v článku o [nasazení Azure File Sync](storage-sync-files-deployment-guide.md) .
+Tento článek popisuje základní kroky pro rozšíření kapacity úložiště Windows serveru pomocí Synchronizace souborů Azure. I když kurz nabízí Windows Server jako virtuální počítač Azure (VM), obvykle tento proces provedete pro vaše místní servery. Pokyny pro nasazení Synchronizace souborů Azure ve vlastním prostředí najdete v článku o [nasazení synchronizace souborů Azure](storage-sync-files-deployment-guide.md) .
 
 > [!div class="checklist"]
 > * Nasazení služby synchronizace úložiště
@@ -26,25 +26,25 @@ Tento článek popisuje základní kroky pro rozšíření kapacity úložiště
 > * Vytvoření skupiny synchronizace a koncového bodu cloudu
 > * Vytvoření koncového bodu serveru
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
-Pro tento kurz je potřeba provést následující kroky, abyste mohli nasadit Azure File Sync:
+Pro tento kurz je potřeba provést následující kroky, abyste mohli nasadit Synchronizace souborů Azure:
 
 - Vytvoření účtu úložiště Azure a sdílení souborů
 - Nastavení virtuálního počítače s Windows serverem 2016 Datacenter
-- Příprava virtuálního počítače s Windows serverem pro Azure File Sync
+- Příprava virtuálního počítače s Windows serverem pro Synchronizace souborů Azure
 
 ### <a name="create-a-folder-and-txt-file"></a>Vytvoření složky a souboru .txt
 
 Na svém místním počítači vytvořte novou složku _FilesToSync_ a přidejte do ní textový soubor _mytestdoc.txt_. Tento soubor nahrajete do sdílené složky později v tomto kurzu.
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -61,7 +61,7 @@ Po nasazení účtu úložiště Azure vytvoříte sdílenou složku.
 
     ![Vyberte tlačítko Přidat sdílení souborů.](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
-1. Pojmenujte novou sdílenou složku _afsfileshare_. Pro **kvótu**zadejte "1" a pak vyberte **vytvořit**. Kvóta může být maximálně 5 TiB, ale pro účely tohoto kurzu vám stačí 1 GB.
+1. Pojmenujte novou sdílenou složku _afsfileshare_. Pro **kvótu** zadejte "1" a pak vyberte **vytvořit**. Kvóta může být maximálně 5 TiB, ale pro účely tohoto kurzu vám stačí 1 GB.
 
     ![Zadání názvu a kvóty pro novou sdílenou složku](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
@@ -83,10 +83,10 @@ V tomto okamžiku jste vytvořili účet úložiště a sdílenou složku s jedn
 
    ![Zadání základních informací o VIRTUÁLNÍm počítači v okně portálu](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
-1. V části **Podrobnosti instance**zadejte název virtuálního počítače. Použijte například _myVM_.
-1. Neměňte výchozí nastavení pro **oblast**, **Možnosti dostupnosti**, **Obrázek**a **Velikost**.
+1. V části **Podrobnosti instance** zadejte název virtuálního počítače. Použijte například _myVM_.
+1. Neměňte výchozí nastavení pro **oblast**, **Možnosti dostupnosti**, **Obrázek** a **Velikost**.
 1. V části **Účet správce** zadejte **Uživatelské jméno** a **Heslo** pro virtuální počítač.
-1. V části **pravidla portů pro příchozí spojení**zvolte **Povolit vybrané porty** a v rozevírací nabídce vyberte **RDP (3389)** a **http** .
+1. V části **pravidla portů pro příchozí spojení** zvolte **Povolit vybrané porty** a v rozevírací nabídce vyberte **RDP (3389)** a **http** .
 
 1. Před vytvořením virtuálního počítače je potřeba vytvořit datový disk.
 
@@ -94,8 +94,8 @@ V tomto okamžiku jste vytvořili účet úložiště a sdílenou složku s jedn
 
       ![Použití datových disků](./media/storage-sync-files-extend-servers/vm-add-data-disk.png)
 
-   1. Na kartě **disky** v části **Možnosti disku**ponechte výchozí nastavení.
-   1. V části **datové disky**vyberte **vytvořit a připojit nový disk**.
+   1. Na kartě **disky** v části **Možnosti disku** ponechte výchozí nastavení.
+   1. V části **datové disky** vyberte **vytvořit a připojit nový disk**.
 
    1. Použijte výchozí nastavení s výjimkou **velikosti (GIB)**, kterou můžete pro tento kurz změnit na **1 GB** .
 
@@ -136,7 +136,7 @@ Pro server Windows Server 2016 Datacenter zakažte možnost Konfigurace rozší�
 
 Na virtuálním počítači Windows Server 2016 Datacenter se Správce serveru automaticky otevře.  Pokud se Správce serveru ve výchozím nastavení neotevře, vyhledejte ji v nabídce Start.
 
-1. V **Správce serveru**vyberte **místní server**.
+1. V **Správce serveru** vyberte **místní server**.
 
    ![Místní server na levé straně uživatelského rozhraní Správce serveru](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-1.png)
 
@@ -152,7 +152,7 @@ Teď můžete k virtuálnímu počítači přidat datový disk.
 
 ### <a name="add-the-data-disk"></a>Přidání datového disku
 
-1. Pořád na virtuálním počítači **Windows Server 2016 Datacenter** vyberte **soubory a**  >  **Volumes**  >  **disky**svazky služby úložiště.
+1. Pořád na virtuálním počítači **Windows Server 2016 Datacenter** vyberte **soubory a**  >    >  **disky** svazky služby úložiště.
 
     ![Datový disk](media/storage-sync-files-extend-servers/your-disk.png)
 
@@ -205,9 +205,9 @@ V tuto chvíli jste si pro tento kurz nastavili prostředí. Jste připraveni na
 
 ## <a name="deploy-the-service"></a>Nasazení služby
 
-Pokud chcete nasadit Azure File Sync, nejdřív umístěte prostředek **služby synchronizace úložiště** do skupiny prostředků pro vybrané předplatné. Služba synchronizace úložiště dědí přístupová oprávnění z předplatného a skupiny prostředků.
+Pokud chcete nasadit Synchronizace souborů Azure, nejdřív umístěte prostředek **služby synchronizace úložiště** do skupiny prostředků pro vybrané předplatné. Služba synchronizace úložiště dědí přístupová oprávnění z předplatného a skupiny prostředků.
 
-1. V Azure Portal vyberte **vytvořit prostředek** a pak vyhledejte **Azure File Sync**.
+1. V Azure Portal vyberte **vytvořit prostředek** a pak vyhledejte **synchronizace souborů Azure**.
 1. Ve výsledcích hledání vyberte **Synchronizace souborů Azure**.
 1. Výběrem možnosti **Vytvořit** otevřete kartu **Nasadit synchronizaci úložiště**.
 
@@ -230,7 +230,7 @@ Pokud chcete nasadit Azure File Sync, nejdřív umístěte prostředek **služby
 Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje synchronizaci Windows Serveru se sdílenou složkou Azure.
 
 1. Na virtuálním počítači s **Windows serverem 2016 Datacenter** otevřete **Internet Explorer**.
-1. Přejděte na web [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Přejděte dolů do části **Agent Azure File Sync** a vyberte **Stáhnout**.
+1. Přejděte na web [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Přejděte dolů do části **Agent synchronizace souborů Azure** a vyberte **Stáhnout**.
 
    ![Stažení agenta synchronizace](media/storage-sync-files-extend-servers/sync-agent-download.png)
 
@@ -250,11 +250,11 @@ Na virtuální počítač s Windows Serverem 2016 Datacenter jste nasadili služ
 
 Registrace Windows serveru pomocí služby synchronizace úložiště vytvoří vztah důvěryhodnosti mezi serverem (nebo clusterem) a službou synchronizace úložiště. Server lze registrovat pouze do jedné služby synchronizace úložiště. Může se synchronizovat s ostatními servery a sdílenými složkami Azure, které jsou přidružené k této službě synchronizace úložiště.
 
-Uživatelské rozhraní pro registraci serveru by se mělo po instalaci agenta Azure File Sync otevřít automaticky. Pokud ne, můžete ho otevřít ručně z umístění souboru: `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+Uživatelské rozhraní pro registraci serveru by se mělo po instalaci agenta Synchronizace souborů Azure otevřít automaticky. Pokud ne, můžete ho otevřít ručně z umístění souboru: `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
 
 1. Když se na virtuálním počítači otevře uživatelské rozhraní pro registraci serveru, vyberte **OK**.
 1. Začněte tím, že vyberete **přihlášení** .
-1. Přihlaste se pomocí svých přihlašovacích údajů k účtu Azure a vyberte **Přihlásit**se.
+1. Přihlaste se pomocí svých přihlašovacích údajů k účtu Azure a vyberte **Přihlásit** se.
 1. Zadejte tyto informace:
 
    ![Snímek obrazovky uživatelského rozhraní pro registraci serveru](media/storage-sync-files-extend-servers/signin.png)
@@ -321,7 +321,7 @@ Pokud chcete vyčistit prostředky, které jste vytvořili v tomto kurzu, odeber
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili se základními kroky pro rozšiřování kapacity úložiště Windows serveru pomocí Azure File Sync. Důkladnější pohled na plánování nasazení Azure File Sync najdete v tématu:
+V tomto kurzu jste se seznámili se základními kroky pro rozšiřování kapacity úložiště Windows serveru pomocí Synchronizace souborů Azure. Důkladnější pohled na plánování nasazení Synchronizace souborů Azure najdete v tématu:
 
 > [!div class="nextstepaction"]
 > [Plánování nasazení Synchronizace souborů Azure](./storage-sync-files-planning.md)

@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit proměnné prostředí v kontejnerech, kte
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169761"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Nastavení proměnných prostředí v instancích kontejnerů
@@ -144,12 +144,12 @@ Azure:\
 Chcete-li nastavit proměnné prostředí při spuštění kontejneru v Azure Portal, určete je na stránce **Upřesnit** při vytváření kontejneru.
 
 1. Na stránce **Upřesnit** nastavte **zásady restartování** na při *selhání* .
-2. V části **proměnné prostředí**zadejte `NumWords` s hodnotou `5` pro první proměnnou a zadejte `MinLength` s hodnotou `8` pro druhou proměnnou. 
+2. V části **proměnné prostředí** zadejte `NumWords` s hodnotou `5` pro první proměnnou a zadejte `MinLength` s hodnotou `8` pro druhou proměnnou. 
 1. Vyberte **zkontrolovat + vytvořit** a ověřte a nasaďte kontejner.
 
 ![Stránka portálu zobrazující tlačítko Povolit proměnnou prostředí a textová pole][portal-env-vars-01]
 
-Chcete-li zobrazit protokoly kontejneru, v části **Nastavení** vyberte **kontejnery**a pak **protokoly**. Podobně jako výstup zobrazený v předchozích oddílech CLI a PowerShellu vidíte, jak bylo chování skriptu upraveno pomocí proměnných prostředí. Zobrazí se pouze pět slov, z nichž každá má minimální délku osm znaků.
+Chcete-li zobrazit protokoly kontejneru, v části **Nastavení** vyberte **kontejnery** a pak **protokoly**. Podobně jako výstup zobrazený v předchozích oddílech CLI a PowerShellu vidíte, jak bylo chování skriptu upraveno pomocí proměnných prostředí. Zobrazí se pouze pět slov, z nichž každá má minimální délku osm znaků.
 
 ![Portál znázorňující výstup protokolu kontejneru][portal-env-vars-02]
 

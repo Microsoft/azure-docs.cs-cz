@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f328ed44252f7fb314552d6d05df9806f59d972
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100591133"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrace protokolů služby Azure AD s protokoly Azure Monitor
@@ -52,7 +52,7 @@ Protokoly aktivit auditu a protokoly aktivit přihlašování můžete směrovat
 > Zatím není dostupná podpora protokolů aktivit auditu a přihlašování souvisejících s B2C.
 >
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 

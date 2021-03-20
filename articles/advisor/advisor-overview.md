@@ -4,10 +4,10 @@ description: K optimalizaci nasazení Azure použijte Azure Advisor.
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91405203"
 ---
 # <a name="introduction-to-azure-advisor"></a>Seznámení s Azure Advisorem
@@ -30,7 +30,7 @@ Ke službě Advisor můžete přistupovat prostřednictvím [Azure Portal](https
 * **Zabezpečení**: detekuje hrozby a ohrožení zabezpečení, které by mohly vést k porušení zabezpečení. Další informace najdete v tématu [doporučení pro zabezpečení služby Advisor](advisor-security-recommendations.md).
 * **Výkon**: pro zlepšení rychlosti aplikací. Další informace najdete v tématu [doporučení k výkonu služby Advisor](advisor-performance-recommendations.md).
 * **Náklady**: pro optimalizaci a snížení celkové útraty Azure. Další informace najdete v tématu [doporučení pro náklady na poradce](advisor-cost-recommendations.md).
-* **Vynikající provozní**prostředí: vám umožní dosáhnout efektivity procesu a pracovního postupu, osvědčených postupů pro správu prostředků a nasazení. . Další informace najdete v tématu [doporučení pro provozní výkon služby Advisor](advisor-operational-excellence-recommendations.md).
+* **Vynikající provozní** prostředí: vám umožní dosáhnout efektivity procesu a pracovního postupu, osvědčených postupů pro správu prostředků a nasazení. . Další informace najdete v tématu [doporučení pro provozní výkon služby Advisor](advisor-operational-excellence-recommendations.md).
 
   ![Typy doporučení Advisoru](./media/advisor-overview/advisor-dashboard.png)
 
@@ -51,7 +51,7 @@ Doporučení Poradce můžete zobrazit také prostřednictvím rozhraní prostř
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Jaká oprávnění potřebuji pro přístup k Advisoru?
  
-K doporučením Advisoru se dostanete jako *vlastník*, *Přispěvatel*nebo *Čtenář* předplatného, skupiny prostředků nebo prostředku.
+K doporučením Advisoru se dostanete jako *vlastník*, *Přispěvatel* nebo *Čtenář* předplatného, skupiny prostředků nebo prostředku.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>K jakým prostředkům poradce poskytuje doporučení?
 

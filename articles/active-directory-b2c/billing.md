@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99225204"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Model fakturace pro Azure Active Directory B2C
@@ -49,7 +49,7 @@ Poplatky za využití Azure Active Directory B2C (Azure AD B2C) se účtují do 
 
 Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci využití Azure AD B2C nebo dalších prostředků Azure, včetně dalších prostředků Azure AD B2C. Nedá se použít k přidání dalších služeb založených na licencích Azure nebo licencí Office 365 v rámci tenanta Azure AD B2C.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * [Předplatné Azure](https://azure.microsoft.com/free/)
 * [Azure AD B2C tenanta](tutorial-create-tenant.md) , kterého chcete propojit s předplatným
@@ -78,7 +78,7 @@ Tenant musí být propojený s příslušnou cenovou úrovní Azure na základě
 
 Pokud chcete změnit cenovou úroveň, postupujte podle těchto kroků.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje předplatné Azure, se kterým je váš TENANT Azure B2C *propojený (nevybírejte* samotného klienta Azure AD B2C).
 
@@ -125,7 +125,7 @@ Tady je postup, jak převést MAU na fakturaci na stávající prostředek Azure
 
 Měření založené na MAU je povolené, jakmile budete vy, předplatné nebo vlastníka prostředků, potvrďte změnu. Vaše měsíční vyúčtování bude odrážet jednotky ověřování účtované do změny a nové jednotky MAU, které začínají změnou.
 
-Uživatelům se během přechodného měsíce nepočítá dvakrát. Jedinečným aktivním uživatelům, kteří se před změnou ověřují, se za kalendářní měsíc účtuje sazba za ověřování. Tyto stejné uživatele nejsou zahrnuté do výpočtu MAU pro zbytek fakturačního cyklu předplatného. Příklad:
+Uživatelům se během přechodného měsíce nepočítá dvakrát. Jedinečným aktivním uživatelům, kteří se před změnou ověřují, se za kalendářní měsíc účtuje sazba za ověřování. Tyto stejné uživatele nejsou zahrnuté do výpočtu MAU pro zbytek fakturačního cyklu předplatného. Například:
 
 * Tenant společnosti Contoso B2C má 1 000 uživatelů. 250 uživatelů v daném měsíci jsou aktivní. Správce předplatného se od desátého dne v měsíci změní z ověřování na měsíčně aktivních uživatelů (MAU).
 * Fakturace za 1. den se účtuje podle modelu ověřování.

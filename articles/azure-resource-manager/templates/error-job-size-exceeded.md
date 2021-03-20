@@ -4,10 +4,10 @@ description: Popisuje, jak řešit chyby, pokud je velikost nebo Šablona úlohy
 ms.topic: troubleshooting
 ms.date: 01/19/2021
 ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610399"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Řešení chyb pro překročení velikosti úlohy
@@ -22,10 +22,10 @@ Při nasazování šablony se zobrazí chyba s oznámením, že nasazení překr
 
 Tato chyba se zobrazí, pokud nasazení překročí jedno z povolených limitů. Obvykle se tato chyba zobrazí, pokud buď šablona nebo úloha, která spouští nasazení, je příliš velká.
 
-Úloha nasazení nemůže být větší než 1 MB. Úloha zahrnuje metadata o požadavku. U velkých šablon může metadata v kombinaci s šablonou překročit povolenou velikost úlohy.
+Úloha nasazení nemůže být větší než 1 MB. Úloha zahrnuje metadata o žádosti. U velkých šablon můžou metadata v kombinaci s šablonou překročit povolenou velikost pro úlohy.
 
 
-Šablona nemůže být větší než 4 MB. Limit velikosti 4 MB se vztahuje na konečný stav šablony po rozbalení pro definice prostředků, které používají [kopírování](copy-resources.md) k vytvoření mnoha instancí. Konečný stav zahrnuje také vyřešené hodnoty pro proměnné a parametry.
+Šablona nemůže být větší než 4 MB. Limit velikosti 4 MB se vztahuje na konečný stav šablony po rozbalení pro definice prostředků, které používají [kopírování](copy-resources.md) k vytvoření mnoha instancí. Konečný stav zahrnuje také přeložené hodnoty proměnných a parametrů.
 
 Další omezení pro tuto šablonu:
 

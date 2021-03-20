@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92131832"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Řešení potíží s firewallem webových aplikací (WAF) pro Azure Application Gateway
@@ -297,11 +297,11 @@ Druhá je zajímavá (pravidlo 942130). Můžete se podívat v podrobnostech, kt
 
 ## <a name="finding-request-header-names"></a>Vyhledávají se názvy hlaviček požadavků.
 
-Fiddler je užitečný nástroj znovu pro vyhledání názvů hlaviček požadavků. Na následujícím snímku obrazovky vidíte záhlaví této žádosti o získání, což zahrnuje *typ obsahu*, *uživatelský agent*atd.
+Fiddler je užitečný nástroj znovu pro vyhledání názvů hlaviček požadavků. Na následujícím snímku obrazovky vidíte záhlaví této žádosti o získání, což zahrnuje *typ obsahu*, *uživatelský agent* atd.
 
 :::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="Snímek obrazovky s průběhem webového ladicího programu Telerik Fiddler Nezpracovaná karta obsahuje podrobnosti hlavičky požadavku, jako je připojení, typ obsahu a Agent pro uživatele." border="false":::
 
-Další možností zobrazení hlaviček žádostí a odpovědí je prohledání v vývojářských nástrojích Chrome. Můžete stisknout klávesu F12 nebo kliknout pravým tlačítkem – > **zkontrolovat**  ->  **vývojářské nástroje**a vybrat kartu **síť** . načtěte webovou stránku a klikněte na žádost, kterou chcete zkontrolovat.
+Další možností zobrazení hlaviček žádostí a odpovědí je prohledání v vývojářských nástrojích Chrome. Můžete stisknout klávesu F12 nebo kliknout pravým tlačítkem – > **zkontrolovat**  ->  **vývojářské nástroje** a vybrat kartu **síť** . načtěte webovou stránku a klikněte na žádost, kterou chcete zkontrolovat.
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 

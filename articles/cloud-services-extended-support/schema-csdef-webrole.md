@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: fef3e3cc63fb9e1ca6aa64cf799a620f187db76f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744325"
 ---
 # <a name="azure-cloud-services-extended-support-definition-webrole-schema"></a>Schéma webrole webrole Azure Cloud Services (Rozšířená podpora) definice
@@ -159,7 +159,7 @@ Definiční soubor služby obsahuje tyto prvky, které jsou podrobně popsány v
 
 Následující tabulka popisuje atributy `WebRole` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Název webové role. Název role musí být jedinečný.|  
 |enableNativeCodeExecution|boolean|Nepovinný parametr. Výchozí hodnota je `true` ; ve výchozím nastavení je povoleno spuštění nativního kódu a Plná důvěra. Nastavením tohoto atributu `false` zakážete spuštění nativního kódu pro webovou roli a místo toho použijete částečnou důvěryhodnost Azure.|  
@@ -173,7 +173,7 @@ Následující tabulka popisuje atributy `WebRole` prvku.
 
 Následující tabulka popisuje atributy `Setting` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Jedinečný název pro nastavení konfigurace.|  
 
@@ -190,7 +190,7 @@ Konfigurační nastavení role jsou páry název-hodnota, které jsou deklarová
 
 Následující tabulka popisuje atributy `LocalStorage` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Jedinečný název pro místní úložiště.|  
 |cleanOnRoleRecycle|boolean|Nepovinný parametr. Označuje, jestli se má při restartování role vyčistit místní úložiště. Výchozí hodnota je `true`.|  
@@ -213,7 +213,7 @@ Můžete definovat několik koncových bodů, které jsou kombinací koncových 
 
 Následující tabulka popisuje atributy `InputEndpoint` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Jedinečný název externího koncového bodu.|  
 |protokol|řetězec|Povinná hodnota. Transportní protokol pro externí koncový bod. U webové role jsou možné hodnoty `HTTP` , `HTTPS` , `UDP` nebo `TCP` .|  
@@ -228,7 +228,7 @@ Následující tabulka popisuje atributy `InputEndpoint` prvku.
 
 Následující tabulka popisuje atributy `InternalEndpoint` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Jedinečný název vnitřního koncového bodu.|  
 |protokol|řetězec|Povinná hodnota. Transportní protokol pro vnitřní koncový bod. Možné hodnoty jsou `HTTP` , `TCP` , `UDP` nebo `ANY` .<br /><br /> Hodnota `ANY` Určuje, že libovolný protokol je povolený.|  
@@ -241,7 +241,7 @@ Následující tabulka popisuje atributy `InternalEndpoint` prvku.
 
 Následující tabulka popisuje atributy `InstanceInputEndpoint` prvku.
   
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Jedinečný název koncového bodu.|  
 |localPort|int|Povinná hodnota. Určuje interní port, k němuž budou poslouchat všechny instance rolí, aby se přijímal příchozí provoz předaný z nástroje pro vyrovnávání zatížení. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně.|  
@@ -259,7 +259,7 @@ Následující tabulka popisuje atributy `InstanceInputEndpoint` prvku.
 
 Následující tabulka popisuje atributy `FixedPort` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |port|int|Povinná hodnota. Port interního koncového bodu. To má stejný účinek jako nastavení `FixedPortRange` minimální a maximální hodnoty na stejný port.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535, včetně (Azure SDK verze 1,7 nebo novější).|  
 
@@ -273,7 +273,7 @@ Následující tabulka popisuje atributy `FixedPort` prvku.
 
 Následující tabulka popisuje atributy `FixedPortRange` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |min|int|Povinná hodnota. Minimální port v rozsahu. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně (Azure SDK verze 1,7 nebo novější).|  
 |max|řetězec|Povinná hodnota. Maximální port v rozsahu. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně (Azure SDK verze 1,7 nebo novější).|  
@@ -286,7 +286,7 @@ Následující tabulka popisuje atributy `FixedPortRange` prvku.
 
 Následující tabulka popisuje atributy `Certificate` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Název pro tento certifikát, který se používá k odkazování na něj, je-li přidružen k `InputEndpoint` elementu https.|  
 |storeLocation|řetězec|Povinná hodnota. Umístění úložiště certifikátů, ve kterém se tento certifikát nachází na místním počítači. Možné hodnoty jsou `CurrentUser` a `LocalMachine` .|  
@@ -305,7 +305,7 @@ Následující tabulka popisuje atributy `Certificate` prvku.
 
 Následující tabulka popisuje atributy `Import` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |moduleName|řetězec|Povinná hodnota. Název modulu, který se má importovat Platné moduly importu jsou:<br /><br /> – RemoteAccess<br />- RemoteForwarder<br />– Diagnostika<br /><br /> Moduly RemoteAccess a RemoteForwarder umožňují nakonfigurovat instanci role pro připojení ke vzdálené ploše. Další informace najdete v tématu [rozšíření](extensions.md).<br /><br /> Modul diagnostiky umožňuje shromažďovat diagnostická data pro instanci role.|  
 
@@ -316,7 +316,7 @@ Následující tabulka popisuje atributy `Import` prvku.
 
 Následující tabulka popisuje atributy `Runtime` prvku:  
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |executionContext|řetězec|Nepovinný parametr. Určuje kontext, ve kterém se spustí proces role. Výchozí kontext je `limited` .<br /><br /> -   `limited` – Proces se spustí bez oprávnění správce.<br />-   `elevated` – Proces se spustí s oprávněními správce.|  
 
@@ -330,7 +330,7 @@ Následující tabulka popisuje atributy `Runtime` prvku:
 
 Následující tabulka popisuje atributy `Variable` prvku:  
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Název proměnné prostředí, kterou chcete nastavit.|  
 |hodnota|řetězec|Nepovinný parametr. Hodnota, která má být nastavena pro proměnnou prostředí. Musíte zahrnout buď atribut hodnoty, nebo `RoleInstanceValue` element.|  
@@ -340,7 +340,7 @@ Následující tabulka popisuje atributy `Variable` prvku:
 
 Následující tabulka popisuje atributy `RoleInstanceValue` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |cestou|řetězec|Nepovinný parametr. Cesta umístění nastavení nasazení pro instanci Další informace naleznete v tématu [konfigurační proměnné s XPath](../cloud-services/cloud-services-role-config-xpath.md).<br /><br /> Musíte zahrnout buď atribut hodnoty, nebo `RoleInstanceValue` element.|  
 
@@ -357,10 +357,10 @@ Následující tabulka popisuje atributy `RoleInstanceValue` prvku.
 
 Následující tabulka popisuje atributy `NetFxEntryPoint` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |Doplňk|řetězec|Povinná hodnota. Cesta a název souboru sestavení, který obsahuje vstupní bod. Cesta je relativní ke složce **\\ %ROLEROOT%\Approot** (nespecifikuje **\\ %ROLEROOT%\Approot** v `commandLine` , předpokládá se). **% ROLEROOT%** je proměnná prostředí udržovaná službou Azure, která představuje umístění kořenové složky pro vaši roli. Složka **\\ %ROLEROOT%\Approot** představuje složku aplikace pro vaši roli.<br /><br /> Pro role umožní je cesta vždy relativní vzhledem ke složce **\\ %ROLEROOT%\Approot\bin** .<br /><br /> V případě úplných webových rolí služby IIS a IIS Express, pokud nebylo nalezeno sestavení vzhledem ke složce **\\ %ROLEROOT%\Approot** , je prohledána **\\ %ROLEROOT%\Approot\bin** .<br /><br /> Toto chování při návratu do úplné služby IIS není doporučeným osvědčeným postupem a v budoucích verzích je možná odebrat.|  
-|targetFrameworkVersion|řetězec|Povinná hodnota. Verze rozhraní .NET Framework, na které bylo sestavení sestaveno. Například `targetFrameworkVersion="v4.0"`.|  
+|targetFrameworkVersion|řetězec|Povinná hodnota. Verze rozhraní .NET Framework, na které bylo sestavení sestaveno. Například, `targetFrameworkVersion="v4.0"`.|  
 
 ##  <a name="sites"></a><a name="Sites"></a> Místa  
 `Sites`Element popisuje kolekci webů a webových aplikací, které jsou hostovány ve webové roli. Tento prvek je nadřazeným prvkem `Site` elementu. Pokud nezadáte `Sites` element, Webová role je hostována jako starší webová role a můžete mít pouze jeden web hostovaný ve vaší webové roli. Tento prvek je nepovinný a role může mít jenom jeden blok webů.
@@ -374,7 +374,7 @@ Následující tabulka popisuje atributy `NetFxEntryPoint` prvku.
 
 Následující tabulka popisuje atributy `Site` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Název webu nebo aplikace.|  
 |physicalDirectory|řetězec|Umístění adresáře obsahu pro kořen webu Umístění lze zadat jako absolutní cestu nebo relativní vzhledem k umístění csdef.|  
@@ -386,7 +386,7 @@ Následující tabulka popisuje atributy `Site` prvku.
 
 Následující tabulka popisuje atributy `VirtualApplication` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Určuje název, který identifikuje virtuální aplikaci.|  
 |physicalDirectory|řetězec|Povinná hodnota. Určuje cestu k vývojovému počítači, který obsahuje virtuální aplikaci. V emulátoru výpočetní služby je služba IIS nakonfigurovaná tak, aby načetla obsah z tohoto umístění. Při nasazování do Azure se obsah fyzického adresáře zabalí spolu se zbytkem služby. Po nasazení balíčku služby do Azure se služba IIS nakonfiguruje s umístěním rozbaleného obsahu.|  
@@ -398,7 +398,7 @@ Následující tabulka popisuje atributy `VirtualApplication` prvku.
 
 Následující tabulka popisuje atributy `VirtualDirectory` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Určuje název, který identifikuje virtuální adresář.|  
 |hodnota|physicalDirectory|Povinná hodnota. Určuje cestu k vývojovému počítači, který obsahuje obsah webu nebo virtuálního adresáře. V emulátoru výpočetní služby je služba IIS nakonfigurovaná tak, aby načetla obsah z tohoto umístění. Při nasazování do Azure se obsah fyzického adresáře zabalí spolu se zbytkem služby. Po nasazení balíčku služby do Azure se služba IIS nakonfiguruje s umístěním rozbaleného obsahu.|  
@@ -413,7 +413,7 @@ Následující tabulka popisuje atributy `VirtualDirectory` prvku.
 
 `Binding`Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |name|řetězec|Povinná hodnota. Určuje název pro identifikaci vazby.|  
 |koncový bod|řetězec|Povinná hodnota. Určuje název koncového bodu, ke kterému se má vytvořit vazba.|  
@@ -424,7 +424,7 @@ Následující tabulka popisuje atributy `VirtualDirectory` prvku.
 
 Následující tabulka popisuje atribut `Startup` elementu.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |upřednostněn|int|Pouze pro interní použití.|  
 
@@ -435,7 +435,7 @@ Následující tabulka popisuje atribut `Startup` elementu.
 
 Následující tabulka popisuje atributy `Task` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |Řádek|řetězec|Povinná hodnota. Skript, jako je například soubor CMD, obsahující příkazy, které mají být spuštěny. Spouštěcí příkaz a dávkové soubory musí být uloženy ve formátu ANSI. Formáty souborů, které nastavují značku pořadí bajtů na začátku souboru, nebudou pracovat správně.|  
 |executionContext|řetězec|Určuje kontext, ve kterém se skript spustí.<br /><br /> -   `limited` [Výchozí] – spusťte se stejnými oprávněními jako role hostující proces.<br />-   `elevated` – Spusťte s oprávněními správce.|  
@@ -453,7 +453,7 @@ Následující tabulka popisuje atributy `Task` prvku.
 
 Následující tabulka popisuje atributy `Content` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |destination|řetězec|Povinná hodnota. Umístění na virtuálním počítači Azure, na který je umístěn obsah. Toto umístění je relativní vzhledem ke složce **%ROLEROOT%\Approot**.|  
 
@@ -466,7 +466,7 @@ Tento prvek je nadřazeným prvkem `SourceDirectory` elementu.
 
 Následující tabulka popisuje atributy `SourceDirectory` prvku.
 
-| Atribut | Typ | Popis |  
+| Atribut | Typ | Description |  
 | --------- | ---- | ----------- |  
 |program|řetězec|Povinná hodnota. Relativní nebo absolutní cesta k místnímu adresáři, jehož obsah se zkopíruje na virtuální počítač Azure. Rozšíření proměnných prostředí v cestě k adresáři je podporováno.|  
   

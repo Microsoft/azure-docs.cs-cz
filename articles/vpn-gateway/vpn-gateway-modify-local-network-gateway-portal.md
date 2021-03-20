@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: cherylmc
 ms.openlocfilehash: 4ff4f1238764d7bdab6e74d29254a6388ea76d78
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143119"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Úprava nastavení místní síťové brány pomocí webu Azure Portal
@@ -32,7 +32,7 @@ Níže uvedený snímek obrazovky ukazuje stránku **Konfigurace** prostředku b
 
 Toto je konfigurační stránka s koncovým bodem plně kvalifikovaného názvu domény:
 
-:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/name.png" alt-text="Nastavení IP adresy":::
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/name.png" alt-text="Nastavení plně kvalifikovaného názvu domény":::
 
 ## <a name="to-modify-the-gateway-ip-address-or-fqdn"></a><a name="ip"></a>Úprava IP adresy brány nebo plně kvalifikovaného názvu domény
 

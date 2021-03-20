@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151662"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak klonovat službu Azure IoT Hub do jiné oblasti
@@ -107,7 +107,7 @@ V této části najdete konkrétní pokyny pro migraci centra.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Najděte původní centrum a exportujte ho do šablony prostředků.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 1. Přejděte do **skupiny prostředků** a vyberte skupinu prostředků obsahující rozbočovač, který chcete přesunout. Můžete také přejít na **prostředky** a najít centrum. Vyberte centrum.
 
@@ -300,7 +300,7 @@ Když exportujete šablonu Správce prostředků pro rozbočovač s nakonfigurov
 
 1. Načte klíče požadované pro všechny prostředky směrování a umístí je do šablony. Můžete načíst klíče z prostředku v [Azure Portal](https://portal.azure.com). 
 
-   Pokud například směrujete zprávy do kontejneru úložiště, Najděte účet úložiště na portálu. V části nastavení vyberte **přístupové klíče**a pak zkopírujte jeden z klíčů. V takovém případě klíč vypadá při prvním exportu šablony:
+   Pokud například směrujete zprávy do kontejneru úložiště, Najděte účet úložiště na portálu. V části nastavení vyberte **přístupové klíče** a pak zkopírujte jeden z klíčů. V takovém případě klíč vypadá při prvním exportu šablony:
 
    ```json
    "connectionString": "DefaultEndpointsProtocol=https;
@@ -347,7 +347,7 @@ Teď máte šablonu, která vytvoří nové centrum, které vypadá téměř př
 
 Vytvořte nové centrum v novém umístění pomocí šablony. Pokud máte prostředky směrování, které se budou přesouvat, prostředky by se měly nastavit v novém umístění a odkazy v šabloně se budou aktualizovat tak, aby odpovídaly. Pokud nepřesouváte prostředky směrování, měly by být v šabloně s aktualizovanými klíči.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **Vytvořit prostředek**. 
 
@@ -375,7 +375,7 @@ Vytvořte nové centrum v novém umístění pomocí šablony. Pokud máte prost
 
    **Umístění**: Pokud jste vybrali existující skupinu prostředků, tato možnost se vyplní tak, aby odpovídala umístění skupiny prostředků. Pokud jste vytvořili novou skupinu prostředků, bude to jejich umístění.
 
-   **Zaškrtávací políčko**souhlasím: v tomto seznamu uvádíme, že souhlasíte s tím, že platíte za prostředky, které vytváříte.
+   **Zaškrtávací políčko** souhlasím: v tomto seznamu uvádíme, že souhlasíte s tím, že platíte za prostředky, které vytváříte.
 
 1. Vyberte tlačítko **koupit** .
 
@@ -526,7 +526,7 @@ Nyní máte proměnné prostředí v souboru s příkazy SET a víte, jaké argu
     
 1. Klikněte pravým tlačítkem na projekt *ImportExportDevicesSample* a vyberte **nastavit jako spouštěný projekt**.    
     
-1. Nastavte proměnné v horní části Program.cs ve složce ImportExportDevicesSample na pět možností.
+1. Nastavte proměnné v horní části programu. cs ve složce ImportExportDevicesSample pro pět možností.
 
    ``` csharp
    // Add randomly created devices to the source hub.

@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid schéma událostí
-description: Popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události.Události se skládají ze sady pěti požadovaných vlastností řetězce a požadovaného datového objektu.
+description: Popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události. Události se skládají ze sady pěti požadovaných vlastností řetězce a požadovaného datového objektu.
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86105876"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid schéma událostí
 
-Tento článek popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události.Události se skládají ze sady pěti požadovaných vlastností řetězce a požadovaného datového objektu. Vlastnosti jsou společné pro všechny události od libovolného vydavatele. Datový objekt má vlastnosti, které jsou specifické pro každého vydavatele. Pro systémová témata jsou tyto vlastnosti specifické pro poskytovatele prostředků, jako je Azure Storage nebo Azure Event Hubs.
+Tento článek popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události. Události se skládají ze sady pěti požadovaných vlastností řetězce a požadovaného datového objektu. Vlastnosti jsou společné pro všechny události od libovolného vydavatele. Datový objekt má vlastnosti, které jsou specifické pro každého vydavatele. Pro systémová témata jsou tyto vlastnosti specifické pro poskytovatele prostředků, jako je Azure Storage nebo Azure Event Hubs.
 
 Zdroje událostí odesílají události do Azure Event Grid v poli, které mohou mít několik objektů událostí. Při odesílání událostí do tématu Event gridu může mít pole celkovou velikost až 1 MB. Každá událost v poli je omezená na 1 MB. Pokud je událost nebo pole větší než omezení velikosti, obdržíte **příliš velkou datovou část odpovědi 413**. Operace se účtují v 64 KB, ale i když se to bude zvyšovat. Události, které překročí 64 KB, budou účtovat poplatky za operace, jako by se jednalo o více událostí. Například událost, která je 130 KB, by mohla způsobit operace, jako by se jednalo o 3 samostatné události.
 

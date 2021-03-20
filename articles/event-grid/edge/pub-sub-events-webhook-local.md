@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171444"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Kurz: publikování, přihlášení k odběru událostí v místním prostředí
@@ -21,7 +21,7 @@ Tento článek vás provede všemi kroky potřebnými k publikování a přihlá
 > [!NOTE]
 > Další informace o Azure Event Grid tématech a předplatných najdete v tématu [Event Grid koncepty](concepts.md).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 Aby bylo možné dokončit tento kurz, budete potřebovat:
 
 * **Předplatné Azure** – Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) . 
@@ -45,7 +45,7 @@ Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge, a všec
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nasadit, způsob, jakým jsou toky dat mezi moduly a požadované vlastnosti v modulu vlákna. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **zadat trasy**a **zkontrolovat nasazení**.
+Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nasadit, způsob, jakým jsou toky dat mezi moduly a požadované vlastnosti v modulu vlákna. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **zadat trasy** a **zkontrolovat nasazení**.
 
 ### <a name="add-modules"></a>Přidat moduly
 
@@ -108,7 +108,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
 
 1. V části Kontrola se dozvíte, který manifest nasazení JSON byl vytvořen na základě vašich výběrů v předchozí části. Ověřte, že se zobrazují oba moduly: **eventgridmodule** a **předplatitelé** uvedené ve formátu JSON. 
 1. Zkontrolujte informace o svém nasazení a pak vyberte **Odeslat**. Po odeslání nasazení se vrátíte na stránku **zařízení** .
-1. V **části moduly**ověřte, že jsou uvedené moduly **eventgrid** a **předplatitelé** . A ověřte, zda je **zadaná hodnota ve sloupci nasazení** a **hlášená pomocí sloupce zařízení** nastavena na **hodnotu Ano**.
+1. V **části moduly** ověřte, že jsou uvedené moduly **eventgrid** a **předplatitelé** . A ověřte, zda je **zadaná hodnota ve sloupci nasazení** a **hlášená pomocí sloupce zařízení** nastavena na **hodnotu Ano**.
 
     Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
 

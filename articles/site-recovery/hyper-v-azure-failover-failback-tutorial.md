@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132461"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Převzetí služeb při selhání virtuálních počítačů Hyper-V do Azure
@@ -29,7 +29,7 @@ Tento kurz je pátou částí série. Předpokládá se, že jste už dokončili
 1. [Příprava Azure](tutorial-prepare-azure.md)
 2. [Příprava místního Hyper-V](./hyper-v-prepare-on-premises-tutorial.md)
 3. Nastavení zotavení po havárii pro [virtuální počítače Hyper-V](./hyper-v-azure-tutorial.md) nebo [virtuální počítače Hyper-V spravované v cloudech System Center VMM](./hyper-v-vmm-azure-tutorial.md)
-4. [Spuštění postupu zotavení po havárii](tutorial-dr-drill-azure.md)
+4. [Provedení postupu zotavení po havárii](tutorial-dr-drill-azure.md)
 
 [Přečtěte si o](failover-failback-overview.md#types-of-failover) různých typech převzetí služeb při selhání. Pokud chcete převzít služby při selhání více virtuálních počítačů v plánu obnovení, přečtěte si [Tento článek](site-recovery-failover.md).
 
@@ -58,7 +58,7 @@ V části **Chráněné položky** klikněte na **Replikované položky** a pak 
 
 ## <a name="fail-over-to-azure"></a>Převzetí služeb při selhání do Azure
 
-1. V **Nastavení**  >  **replikované položky**klikněte na virtuální počítač > **převzetí služeb při selhání**.
+1. V **Nastavení**  >  **replikované položky** klikněte na virtuální počítač > **převzetí služeb při selhání**.
 2. V části **Převzetí služeb při selhání** vyberte **Nejnovější** bod obnovení. 
 3. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Site Recovery se před aktivací převzetí služeb při selhání pokusí vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **úlohy** .
 4. Po ověření převzetí služeb při selhání klikněte na **Potvrdit**. Tím se odstraní všechny dostupné body obnovení.

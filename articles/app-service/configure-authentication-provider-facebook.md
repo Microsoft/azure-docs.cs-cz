@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80519959"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlašovacích údajů na Facebooku
@@ -35,8 +35,8 @@ K dokončení postupu v tomto článku potřebujete účet Facebook s ověřenou
    1. Dokončete kontrolu zabezpečení.
 
    Otevře se řídicí panel vývojář pro novou facebookovou aplikaci.
-1. Vyberte možnost **řídicí panel**–  >  **přihlášení**k  >  **Set up**  >  **webu**Facebook.
-1. V levém navigačním panelu v části **přihlášení na Facebooku**vyberte **Nastavení**.
+1. Vyberte možnost **řídicí panel**–  >  **přihlášení** k  >    >  **webu** Facebook.
+1. V levém navigačním panelu v části **přihlášení na Facebooku** vyberte **Nastavení**.
 1. Do pole **platné identifikátory URI pro přesměrování OAuth** zadejte `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` . Nezapomeňte nahradit `<app-name>` názvem vaší aplikace Azure App Service.
 1. Vyberte **Uložit změny**.
 1. V levém podokně vyberte **Nastavení**  >  **základní**. 
@@ -48,13 +48,13 @@ K dokončení postupu v tomto článku potřebujete účet Facebook s ověřenou
 
 1. Účet Facebook, který jste použili k registraci aplikace, je správce aplikace. V tuto chvíli se k této aplikaci můžou přihlásit jenom správci.
 
-   Pokud chcete ověřit jiné účty Facebook, vyberte možnost **Kontrola aplikace** a umožněte ** \<your-app-name> veřejnému** veřejnému přístupu pro přístup k aplikaci pomocí ověřování na Facebooku.
+   Pokud chcete ověřit jiné účty Facebook, vyberte možnost **Kontrola aplikace** a umožněte **\<your-app-name> veřejnému** veřejnému přístupu pro přístup k aplikaci pomocí ověřování na Facebooku.
 
 ## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Přidání informací o Facebooku do aplikace
 
 1. Přihlaste se k [Azure Portal] a přejděte do aplikace App Service.
-1. Vyberte **Nastavení**  >  **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
-1. Vyberte **Facebook**a pak vložte do hodnot ID aplikace a tajné hodnoty aplikace, které jste získali dříve. Povolte všechny rozsahy, které vaše aplikace vyžaduje.
+1. Vyberte **Nastavení**  >  **ověřování/autorizace** a ujistěte se, že je **zapnuté** **ověřování App Service** .
+1. Vyberte **Facebook** a pak vložte do hodnot ID aplikace a tajné hodnoty aplikace, které jste získali dříve. Povolte všechny rozsahy, které vaše aplikace vyžaduje.
 1. Vyberte **OK**.
 
    ![Snímek obrazovky s nastavením Facebooku mobilní aplikace][0]
