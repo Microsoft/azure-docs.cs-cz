@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c035a7fbafe9b3a42fbd16e3f8377014010ddd49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88003540"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic) pomocí PowerShellu
@@ -82,7 +82,7 @@ K úspěšnému připojení k doméně udělejte na každém virtuálním počí
 
 1. [Připojte se k virtuálnímu počítači](../../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
 2. Na virtuálním počítači spusťte **Ovládací panely** a vyberte možnost **systém**.
-3. Vyberte **název počítače**, vyberte **změnit nastavení**a pak zvolte **změnit...**
+3. Vyberte **název počítače**, vyberte **změnit nastavení** a pak zvolte **změnit...**
 4. Vyberte **doména** a pak zadejte doménu služby Active Directory ve virtuální síti.
 5. Proveďte ověření pomocí doménového účtu, který má oprávnění k počítačům připojeným k doméně.
 
@@ -98,11 +98,11 @@ Pokud chcete zaregistrovat agenty virtuálních počítačů s Windows, udělejt
 1. [Připojte se k virtuálnímu počítači](../../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
 2. Stáhněte a nainstalujte agenta virtuálního počítače s Windows.
    - Stáhněte si [agenta pro virtuální počítače s Windows](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
-   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**, vyberte **odblokování**a pak vyberte **OK**. To umožní vašemu systému důvěřovat instalačnímu programu.
+   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**, vyberte **odblokování** a pak vyberte **OK**. To umožní vašemu systému důvěřovat instalačnímu programu.
    - Spusťte instalační program. Když instalační program požaduje registrační token, zadejte hodnotu, kterou jste získali z rutiny **Export-RdsRegistrationInfo** .
 3. Stáhněte a nainstalujte si zaváděcí program pro Windows Virtual Desktop agent.
    - Stáhněte si [zaváděcí program pro Windows Virtual Desktop agent](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
-   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**, vyberte **odblokování**a pak vyberte **OK**. To umožní vašemu systému důvěřovat instalačnímu programu.
+   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**, vyberte **odblokování** a pak vyberte **OK**. To umožní vašemu systému důvěřovat instalačnímu programu.
    - Spusťte instalační program.
 
 >[!IMPORTANT]

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
 ms.openlocfilehash: d237d5709f8d2bb47de3e89b0b7103b195376e11
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489740"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Přesunout Azure Database for Azure Database for PostgreSQL – jeden server do jiné oblasti pomocí Azure Portal
@@ -33,7 +33,7 @@ K dokončení přesunu do jiné oblasti můžete použít [repliku čtení Azure
 
 K přípravě zdrojového serveru pro replikaci pomocí Azure Portal použijte následující postup: 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Vyberte existující server Azure Database for PostgreSQL, který chcete použít jako zdrojový server. Tato akce otevře stránku s **přehledem** .
 1. V nabídce serveru vyberte **replikace**. Pokud je podpora replikace Azure nastavená na aspoň **repliku**, můžete vytvořit repliky pro čtení. 
 1. Pokud není podpora replikace Azure nastavená na aspoň **repliku**, nastavte ji. Vyberte **Uložit**.
@@ -44,7 +44,7 @@ K přípravě zdrojového serveru pro replikaci pomocí Azure Portal použijte n
 Pokud chcete vytvořit v cílové oblasti server repliky pro různé oblasti pomocí Azure Portal, použijte následující postup:
 
 1. Vyberte existující server Azure Database for PostgreSQL, který chcete použít jako zdrojový server.
-1. V nabídce v části **Nastavení**vyberte **replikace** .
+1. V nabídce v části **Nastavení** vyberte **replikace** .
 1. Vyberte **Přidat repliku**.
 1. Zadejte název serveru repliky.
 1. Vyberte umístění serveru repliky. Výchozí umístění je stejné jako na primárním serveru. Ověřte, zda jste vybrali cílové umístění, do kterého chcete repliku nasadit.
@@ -62,10 +62,10 @@ Pokud chcete vytvořit v cílové oblasti server repliky pro různé oblasti pom
 Pokud chcete zastavit replikaci do repliky z Azure Portal, použijte následující postup:
 
 1. Po vytvoření repliky vyhledejte a vyberte zdrojový server Azure Database for PostgreSQL. 
-1. V nabídce v části **Nastavení**vyberte **replikace** .
+1. V nabídce v části **Nastavení** vyberte **replikace** .
 1. Vyberte server repliky.
 1. Vyberte **zastavit replikaci**.
-1. Kliknutím na **OK**potvrďte, že chcete replikaci zastavit.
+1. Kliknutím na **OK** potvrďte, že chcete replikaci zastavit.
 
 ## <a name="clean-up-source-server"></a>Vyčištění zdrojového serveru
 

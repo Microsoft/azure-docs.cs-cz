@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86131165"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
@@ -70,7 +70,7 @@ Virtuální počítač hosta – více síťových karet | Ano
 
 **Úložiště (hostitel)** | **Podporováno**
 --- | --- 
-NFS | Není k dispozici
+NFS | –
 SMB 3.0 |  Yes
 SÍŤ SAN (ISCSI) | Yes
 Multipath (multi-Path) | Yes
@@ -79,15 +79,15 @@ Multipath (multi-Path) | Yes
 
 **Konfigurace** | **Podporováno**
 --- | --- | 
-FORMÁTU |  Není k dispozici
+FORMÁTU |  –
 VHD/VHDX | Ano (až 16 disků)
 Virtuální počítač 2. generace | Yes
 Disk sdíleného clusteru | No
 Zašifrovaný disk | No
-UEFI| Není k dispozici
+UEFI| –
 NFS | No
 SMB 3.0 | No
-RDM | Není k dispozici
+RDM | –
 Disk > 1 TB | Yes
 Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Yes
 Prostory úložiště | Yes

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 033561ac3c4a510927691dc8db4f61196f54ec2a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460380"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Kurz: Azure Active Directory integrace se softwarem Igloo
@@ -30,7 +30,7 @@ Integrace softwaru Igloo s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se softwarem Igloo potřebujete následující položky:
 
@@ -155,17 +155,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Igloo so
 
     e. Otevřete v programu Poznámkový blok certifikát s kódováním **Base-64** stažený z Azure Portal, zkopírujte jeho obsah do schránky a vložte ho do textového pole **veřejné certifikáty** .
 
-6. V **konfiguraci odpovědí a ověřování**proveďte následující kroky:
+6. V **konfiguraci odpovědí a ověřování** proveďte následující kroky:
 
     ![Konfigurace odpovědí a ověřování](./media/igloo-software-tutorial/IC783971.png "Konfigurace odpovědí a ověřování")
   
-    a. Jako **zprostředkovatel identity**vyberte **Microsoft AD FS**.
+    a. Jako **zprostředkovatel identity** vyberte **Microsoft AD FS**.
 
-    b. Jako **typ identifikátoru**vyberte **e-mailová adresa**. 
+    b. Jako **typ identifikátoru** vyberte **e-mailová adresa**. 
 
     c. Do textového pole **atribut e-mailu** zadejte **EmailAddress**.
 
-    d. Do textového pole **název atributu jména** zadejte jméno **givenname**.
+    d. Do textového pole **název atributu jména** zadejte jméno .
 
     e. Do textového pole **název atributu příjmení** zadejte **příjmení**.
 
@@ -173,9 +173,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Igloo so
 
     ![Vytváření uživatelů při přihlášení](./media/igloo-software-tutorial/IC783972.png "Vytváření uživatelů při přihlášení") 
 
-    a. Když se **uživatel při přihlašování**vytvoří, vyberte **v lokalitě vytvořit nového uživatele, když se přihlásí**.
+    a. Když se **uživatel při přihlašování** vytvoří, vyberte **v lokalitě vytvořit nového uživatele, když se přihlásí**.
 
-    b. Jako **Nastavení přihlášení**vyberte **použít tlačítko SAML na obrazovce přihlásit**se.
+    b. Jako **Nastavení přihlášení** vyberte **použít tlačítko SAML na obrazovce přihlásit** se.
 
     c. Klikněte na **Uložit**.
 
@@ -183,7 +183,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Igloo so
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -208,7 +208,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Igloo softwaru.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Igloo Software**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Igloo Software**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -242,7 +242,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Igloo software na přístupovém panelu, měli byste se automaticky přihlásit k softwaru Igloo, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

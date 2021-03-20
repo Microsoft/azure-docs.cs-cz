@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 69b122196cbeb7508cddf3a890768f83fdcd4727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88030924"
 ---
 # <a name="azure-maps-render-coverage"></a>Pokrytí vykreslování Azure Maps
@@ -139,7 +139,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Svatý Kryštof a Nevis     | ✓ | ✓ |
 | Svatá Lucie               | ✓ | ✓ |
 | Svatý Martin (francouzština)     | ✓ | ✓ |
-| Saint-Pierre a Miquelon | ✓ | ✓ |
+| Saint Pierre a Miquelon | ✓ | ✓ |
 | Svatý Vincenc a Grenadiny | ✓ | ✓ |
 | Svatý Martin (Nizozemsko)      | ✓ | ✓ |
 | Jižní Georgie a Jižní Sandwichovy ostrovy | ✓ | ✓ |
@@ -290,7 +290,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Slovinsko                  | ✓ | ✓ |
 | Jižní Kurils           | ✓ | ✓ |
 | Španělsko                     | ✓ | ✓ |
-| Svalbard                  | ✓ | ✓ |
+| Špicberky                  | ✓ | ✓ |
 | Švédsko                    | ✓ | ✓ |
 | Švýcarsko               | ✓ | ✓ |
 | Turecko                    | ✓ | ✓ |

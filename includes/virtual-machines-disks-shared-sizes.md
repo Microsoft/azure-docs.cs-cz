@@ -9,10 +9,10 @@ ms.date: 04/06/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0b185d545e129c941d5df2e8ce86ee684174b666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81008323"
 ---
 V současné době můžou sdílené disky povolit jenom disky s Ultra SSD a Premium. Různé velikosti disků mohou mít jiný `maxShares` limit, což není při nastavení hodnoty možné překročit `maxShares` . Pro Premium SSD jsou velikosti disků, které podporují sdílení svých disků, P15 a větší.

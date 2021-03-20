@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: db4b676e65d36a9476fd72b66cc8ccfa38af4d85
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144505"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Vytvoření služby IoT Hub pomocí šablony Azure Resource Manager (.NET)
@@ -43,11 +43,11 @@ K dokončení tohoto kurzu potřebujete:
 
 2. V Průzkumník řešení klikněte pravým tlačítkem na projekt a pak klikněte na **Spravovat balíčky NuGet**.
 
-3. Ve Správci balíčků NuGet **Zahrňte zahrnutí předběžné verze**a na stránce **Procházet** vyhledejte **Microsoft. Azure. Management. ResourceManager**. Vyberte balíček, klikněte na **nainstalovat**. v části **Zkontrolovat změny** klikněte na **OK**a **pak kliknutím na Souhlasím** přijměte licence.
+3. Ve Správci balíčků NuGet **Zahrňte zahrnutí předběžné verze** a na stránce **Procházet** vyhledejte **Microsoft. Azure. Management. ResourceManager**. Vyberte balíček, klikněte na **nainstalovat**. v části **Zkontrolovat změny** klikněte na **OK** a **pak kliknutím na Souhlasím** přijměte licence.
 
-4. Ve Správci balíčků NuGet vyhledejte **Microsoft. IdentityModel. clients. Active**.  Klikněte na **nainstalovat**, v části **Zkontrolovat změny** klikněte na **OK**a pak **klikněte na Souhlasím, aby se** licence přijímala.
+4. Ve Správci balíčků NuGet vyhledejte **Microsoft. IdentityModel. clients. Active**.  Klikněte na **nainstalovat**, v části **Zkontrolovat změny** klikněte na **OK** a pak **klikněte na Souhlasím, aby se** licence přijímala.
 
-5. V Program.cs nahraďte existující příkazy **using** následujícím kódem:
+5. V programu program. cs nahraďte existující příkazy **using** následujícím kódem:
 
     ```csharp
     using System;
@@ -57,7 +57,7 @@ K dokončení tohoto kurzu potřebujete:
     using Microsoft.Rest;
     ```
 
-6. Do Program.cs přidejte následující statické proměnné nahrazující zástupné hodnoty. Dříve v tomto kurzu jste si poznamenali **ApplicationId**, **SubscriptionId**, **TenantId**a **Password** . **Název účtu Azure Storage** je název účtu Azure Storage, kam ukládáte soubory šablon Azure Resource Manager. **Název skupiny prostředků** je název skupiny prostředků, kterou použijete při vytváření centra IoT. Název může být již existující nebo nová skupina prostředků. **Název nasazení** je název pro nasazení, například **Deployment_01**.
+6. V programu program. cs přidejte následující statické proměnné, které nahradí zástupné hodnoty. Dříve v tomto kurzu jste si poznamenali **ApplicationId**, **SubscriptionId**, **TenantId** a **Password** . **Název účtu Azure Storage** je název účtu Azure Storage, kam ukládáte soubory šablon Azure Resource Manager. **Název skupiny prostředků** je název skupiny prostředků, kterou použijete při vytváření centra IoT. Název může být již existující nebo nová skupina prostředků. **Název nasazení** je název pro nasazení, například **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -75,7 +75,7 @@ K dokončení tohoto kurzu potřebujete:
 
 K vytvoření centra IoT ve vaší skupině prostředků použijte šablonu a soubor parametrů JSON. K provedení změn v existujícím centru IoT Hub můžete použít také šablonu Azure Resource Manager.
 
-1. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt, klikněte na tlačítko **Přidat**a poté klikněte na položku **Nová položka**. Do projektu přidejte soubor JSON s názvem **template.js** .
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt, klikněte na tlačítko **Přidat** a poté klikněte na položku **Nová položka**. Do projektu přidejte soubor JSON s názvem **template.js** .
 
 2. Chcete-li do oblasti **východní USA** přidat standardní centrum IoT, nahraďte obsah **template.jsv** následující definici prostředků. Aktuální seznam oblastí, které podporují IoT Hub, najdete v tématu [stav Azure][lnk-status]:
 
@@ -113,7 +113,7 @@ K vytvoření centra IoT ve vaší skupině prostředků použijte šablonu a so
     }
     ```
 
-3. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt, klikněte na tlačítko **Přidat**a poté klikněte na položku **Nová položka**. Do projektu přidejte soubor JSON s názvem **parameters.js** .
+3. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt, klikněte na tlačítko **Přidat** a poté klikněte na položku **Nová položka**. Do projektu přidejte soubor JSON s názvem **parameters.js** .
 
 4. Nahraďte obsah **parameters.jsinformacemi o** následujících parametrech, které nastaví název nového centra IoT, jako je například **{vaše iniciály} mynewiothub**. Název centra IoT musí být globálně jedinečný, aby měl zahrnovat vaše jméno nebo iniciály:
 
@@ -128,15 +128,15 @@ K vytvoření centra IoT ve vaší skupině prostředků použijte šablonu a so
     ```
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. V **Průzkumník serveru**se připojte k předplatnému Azure a v účtu Azure Storage vytvořte kontejner nazvaný **šablony**. Na panelu **vlastnosti** nastavte veřejné oprávnění ke **čtení** pro kontejner **šablony** na hodnotu **BLOB**.
+5. V **Průzkumník serveru** se připojte k předplatnému Azure a v účtu Azure Storage vytvořte kontejner nazvaný **šablony**. Na panelu **vlastnosti** nastavte veřejné oprávnění ke **čtení** pro kontejner **šablony** na hodnotu **BLOB**.
 
-6. V **Průzkumník serveru**klikněte pravým tlačítkem na kontejner **šablon** a pak klikněte na **Zobrazit kontejner objektů BLOB**. Klikněte na tlačítko **nahrát objekt BLOB** , vyberte dva soubory **parameters.jszapnuto** a **templates.jsna**a potom kliknutím na tlačítko **otevřít** nahrajte soubory JSON do kontejneru **šablony** . Adresy URL objektů BLOB obsahující data JSON jsou:
+6. V **Průzkumník serveru** klikněte pravým tlačítkem na kontejner **šablon** a pak klikněte na **Zobrazit kontejner objektů BLOB**. Klikněte na tlačítko **nahrát objekt BLOB** , vyberte dva soubory **parameters.jszapnuto** a **templates.jsna** a potom kliknutím na tlačítko **otevřít** nahrajte soubory JSON do kontejneru **šablony** . Adresy URL objektů BLOB obsahující data JSON jsou:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
     https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
-7. Přidejte následující metodu do Program.cs:
+7. Do programu program. cs přidejte následující metodu:
 
     ```csharp
     static void CreateIoTHub(ResourceManagementClient client)

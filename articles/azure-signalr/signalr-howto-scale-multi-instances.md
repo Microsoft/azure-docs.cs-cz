@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89439210"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Jak škálovat službu signálu pomocí více instancí?
@@ -220,7 +220,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 `primary` koncové body jsou upřednostňovanými koncovými body pro příjem klientského provozu a považují se za spolehlivější síťová připojení. `secondary` koncovým bodům se považují méně spolehlivá síťová připojení a používají se pouze k přebírání přenosů mezi servery, například při vysílání zpráv, nikoli pro přenos klientů na server.
 
-V případech různých oblastí může být síť nestabilní. U jednoho serveru aplikace umístěného v *východní USA*se koncový bod služby Signal umístěný ve stejné *východní USA* oblasti dá nakonfigurovat jako `primary` a koncové body v jiných oblastech označených jako `secondary` . V této konfiguraci můžou koncové body služby v jiných oblastech **přijímat** zprávy z tohoto *východní USA* serveru aplikace, ale na tento aplikační server se nesměrují žádní klienti pro **různé oblasti** . Architektura se zobrazuje v následujícím diagramu:
+V případech různých oblastí může být síť nestabilní. U jednoho serveru aplikace umístěného v *východní USA* se koncový bod služby Signal umístěný ve stejné *východní USA* oblasti dá nakonfigurovat jako `primary` a koncové body v jiných oblastech označených jako `secondary` . V této konfiguraci můžou koncové body služby v jiných oblastech **přijímat** zprávy z tohoto *východní USA* serveru aplikace, ale na tento aplikační server se nesměrují žádní klienti pro **různé oblasti** . Architektura se zobrazuje v následujícím diagramu:
 
 ![Mezi geografickým a geografickým infračerveným](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 

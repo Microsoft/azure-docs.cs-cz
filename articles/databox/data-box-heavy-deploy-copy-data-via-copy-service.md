@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006555"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Kurz: použití služby kopírování dat ke kopírování dat do Azure Data Box Heavy (Preview)
@@ -58,7 +58,7 @@ Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit
     |Pole                          |Hodnota    |
     |-------------------------------|---------|
     |**Název úlohy**                       |Jedinečný název pro úlohu je kratší než 230 znaků. Tyto znaky nejsou povoleny v názvu úlohy: \<, \> , \| , \? , \* , \\ , \: , \/ a \\\.         |
-    |**Umístění zdroje**                |Zadejte cestu SMB ke zdroji dat ve formátu: `\\<ServerIPAddress>\<ShareName>` nebo `\\<ServerName>\<ShareName>` .        |
+    |**Zdrojová lokalita**                |Zadejte cestu SMB ke zdroji dat ve formátu: `\\<ServerIPAddress>\<ShareName>` nebo `\\<ServerName>\<ShareName>` .        |
     |**Uživatelské jméno**                       |Uživatelské jméno ve `\\<DomainName><UserName>` formátu pro přístup ke zdroji dat. Pokud se připojujete k místnímu správci, budou potřebovat explicitní oprávnění zabezpečení. Klikněte pravým tlačítkem na složku, vyberte **vlastnosti** a pak vyberte **zabezpečení**. Měli byste přidat místního správce na kartě **zabezpečení** .       |
     |**Heslo**                       |Heslo pro přístup ke zdroji dat.           |
     |**Cílový účet úložiště**    |Vyberte cílový účet úložiště, do kterého se mají nahrát data ze seznamu.         |
@@ -112,7 +112,7 @@ Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit
 6. Zatímco probíhá úloha, na stránce **Kopírovat data** :
 
     - Ve sloupci **stav** můžete zobrazit stav úlohy kopírování. Stav může být následující:
-        - **Spuštěný**
+        - **Spuštěno**
         - **Neúspěšný**
         - **Úspěšný**
         - **Pozastaveno**

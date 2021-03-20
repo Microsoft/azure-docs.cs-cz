@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086773"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
@@ -41,7 +41,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Toto nastavení můžete aktualizovat přímo v souboru daemon.json v instalační cestě Dockeru. Nastavení konfigurace démona můžete přímo upravit v Docker. Vyberte **ikonu Docker** a potom vyberte **Předvolby** > **Démon** > **Upřesnit** .
+    Toto nastavení můžete aktualizovat přímo v souboru daemon.json v instalační cestě Dockeru. Nastavení konfigurace démona můžete přímo upravit v Docker. Vyberte **ikonu Docker** a potom vyberte **Předvolby** > **Démon** > **Upřesnit**.
     
     >[!NOTE]
     >
@@ -49,7 +49,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >
 
     >[!TIP]
-    >Při testování rozsáhlých aplikací doporučujeme zvýšit množství prostředků přidělených Dockeru. Můžete to provést tak, že vyberete **ikonu Dockeru** , pak vyberete **Upřesnit** a upravíte počet jader a velikost paměti.
+    >Při testování rozsáhlých aplikací doporučujeme zvýšit množství prostředků přidělených Dockeru. Můžete to provést tak, že vyberete **ikonu Dockeru**, pak vyberete **Upřesnit** a upravíte počet jader a velikost paměti.
 
 2. Spusťte cluster.<br/>
     <b>Ubuntu 18,04 LTS:</b>

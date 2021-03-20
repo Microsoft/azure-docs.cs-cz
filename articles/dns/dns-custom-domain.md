@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487394"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Použití Azure DNS k poskytnutí vlastní nastavení domény pro službu Azure
@@ -46,7 +46,7 @@ Přejděte do zóny DNS a klikněte na **+ Sada záznamů**. V okně **Přidat s
 |Jednotka TTL     | Hodiny        | Hodiny se používají jako časová měření.         |
 |Alias     | adatumfunction.azurewebsites.net        | Název DNS, pro který vytváříte alias, v tomto příkladu se jedná o název DNS adatumfunction.azurewebsites.net, který je ve výchozím nastavení zadaný pro aplikaci Function App.        |
 
-Přejděte zpátky do aplikace Function App, klikněte na **funkce platformy**a v části **sítě** klikněte na **vlastní domény**a potom v části **vlastní názvy hostitelů** klikněte na **+ Přidat název hostitele**.
+Přejděte zpátky do aplikace Function App, klikněte na **funkce platformy** a v části **sítě** klikněte na **vlastní domény** a potom v části **vlastní názvy hostitelů** klikněte na **+ Přidat název hostitele**.
 
 V okně **Přidat název hostitele** zadejte záznam CNAME do textového pole **název hostitele** a klikněte na **ověřit**. Pokud se záznam najde, zobrazí se tlačítko **Přidat název hostitele** . Kliknutím na **Přidat název hostitele** přidejte alias.
 
@@ -101,7 +101,7 @@ Přejděte do zóny DNS a klikněte na **+ Sada záznamů**. V okně **Přidat s
 
 ![Vytvoření záznamu CNAME](./media/dns-custom-domain/createcnamerecord.png)
 
-Přejděte zpátky do služby App Service, která je nakonfigurovaná pro vlastní název domény. Klikněte na **vlastní domény**a potom klikněte na **názvy hostitelů**. Chcete-li přidat záznam CNAME, který jste vytvořili, klikněte na **+ Přidat název hostitele**.
+Přejděte zpátky do služby App Service, která je nakonfigurovaná pro vlastní název domény. Klikněte na **vlastní domény** a potom klikněte na **názvy hostitelů**. Chcete-li přidat záznam CNAME, který jste vytvořili, klikněte na **+ Přidat název hostitele**.
 
 ![Snímek obrazovky, který zvýrazní tlačítko + Přidat název hostitele.](./media/dns-custom-domain/figure1.png)
 
@@ -119,7 +119,7 @@ Pokud potřebujete koupit vlastní doménu, přečtěte si téma [koupit si vlas
 
 Následující kroky vás provedou konfigurací záznamu CNAME pro účet úložiště objektů BLOB pomocí metody asverify. Tato metoda zajistí, že nedochází k výpadkům.
 
-Přejděte na **úložiště**  >  **účty**úložiště, vyberte svůj účet úložiště a klikněte na **vlastní doména**. V části Krok 2 se zobrazí plně kvalifikovaný název domény. Tato hodnota se používá k vytvoření prvního záznamu CNAME.
+Přejděte na **úložiště**  >  **účty** úložiště, vyberte svůj účet úložiště a klikněte na **vlastní doména**. V části Krok 2 se zobrazí plně kvalifikovaný název domény. Tato hodnota se používá k vytvoření prvního záznamu CNAME.
 
 ![vlastní doména BLOB Storage](./media/dns-custom-domain/blobcustomdomain.png)
 
@@ -134,7 +134,7 @@ Přejděte do zóny DNS a klikněte na **+ Sada záznamů**. V okně **Přidat s
 |Jednotka TTL     | Hodiny        | Hodiny se používají jako časová měření.         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Název DNS, pro který vytváříte alias, v tomto příkladu se jedná o název DNS asverify.adatumfunctiona9ed.blob.core.windows.net, který se ve výchozím nastavení zadal pro účet úložiště.        |
 
-Přejděte zpátky na svůj účet úložiště kliknutím na **úložiště**  >  **účty**úložiště, vyberte svůj účet úložiště a klikněte na **vlastní doména**. Do textového pole zadejte alias, který jste vytvořili bez předpony asverify, zaškrtněte políčko **použít nepřímé ověřování CNAME**a klikněte na **Uložit**. Až se tento krok dokončí, vraťte se do zóny DNS a vytvořte záznam CNAME bez předpony asverify.  Po tomto okamžiku můžete bezpečně odstranit záznam CNAME s předponou cdnverify.
+Přejděte zpátky na svůj účet úložiště kliknutím na **úložiště**  >  **účty** úložiště, vyberte svůj účet úložiště a klikněte na **vlastní doména**. Do textového pole zadejte alias, který jste vytvořili bez předpony asverify, zaškrtněte políčko **použít nepřímé ověřování CNAME** a klikněte na **Uložit**. Až se tento krok dokončí, vraťte se do zóny DNS a vytvořte záznam CNAME bez předpony asverify.  Po tomto okamžiku můžete bezpečně odstranit záznam CNAME s předponou cdnverify.
 
 ![Snímek obrazovky zobrazující stránku vlastní doména](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -162,7 +162,7 @@ Přejděte do zóny DNS a klikněte na **+ Sada záznamů**. V okně **Přidat s
 |Jednotka TTL     | Hodiny        | Hodiny se používají jako časová měření.         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Název DNS, pro který vytváříte alias, v tomto příkladu se jedná o název DNS cdnverify.adatumcdnendpoint.azureedge.net, který se ve výchozím nastavení zadal pro účet úložiště.        |
 
-Přejděte zpátky na koncový bod CDN kliknutím na **sítě**  >  **profily CDN**a vyberte svůj profil CDN. Klikněte na **+ vlastní doména** a zadejte alias záznamu CNAME bez předpony cdnverify a klikněte na **Přidat**.
+Přejděte zpátky na koncový bod CDN kliknutím na **sítě**  >  **profily CDN** a vyberte svůj profil CDN. Klikněte na **+ vlastní doména** a zadejte alias záznamu CNAME bez předpony cdnverify a klikněte na **Přidat**.
 
 Až se tento krok dokončí, vraťte se do zóny DNS a vytvořte záznam CNAME bez předpony cdnverify.  Po tomto okamžiku můžete bezpečně odstranit záznam CNAME s předponou cdnverify. Další informace o CDN a o tom, jak nakonfigurovat vlastní doménu bez kroku zprostředkující registrace, najdete v tématu [mapování Azure CDN obsahu do vlastní domény](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
 

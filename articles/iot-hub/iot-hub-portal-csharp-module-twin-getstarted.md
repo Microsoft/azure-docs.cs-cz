@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: 0d16d7a6dbf903ae790015c12e3d34e4a2a553d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92139343"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí portálu a zařízení .NET
@@ -75,7 +75,7 @@ Chcete-li vytvořit aplikaci, která aktualizuje nedokončené hlášené vlastn
 
 1. V aplikaci Visual Studio vyberte **vytvořit nový projekt**, pak zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. V části **Konfigurovat nový projekt**zadejte *UpdateModuleTwinReportedProperties* jako **název projektu**. Pokračujte výběrem **vytvořit** .
+1. V části **Konfigurovat nový projekt** zadejte *UpdateModuleTwinReportedProperties* jako **název projektu**. Pokračujte výběrem **vytvořit** .
 
     ![Konfigurace projektu sady Visual Studio](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
@@ -85,7 +85,7 @@ Identita modulu a modul s dvojitou identitou jsou ve verzi Public Preview. Je k 
 
 1. V aplikaci Visual Studio otevřete **nástroje**  >  **Správce balíčků NuGet**  >  **Spravovat balíčky NuGet pro řešení**.
 
-1. Vyberte **Procházet**a pak vyberte **Zahrnout předprodejní verze**. Vyhledejte *Microsoft. Azure. Devices. Client*. Vyberte nejnovější verzi a nainstalujte.
+1. Vyberte **Procházet** a pak vyberte **Zahrnout předprodejní verze**. Vyhledejte *Microsoft. Azure. Devices. Client*. Vyberte nejnovější verzi a nainstalujte.
 
     ![Instalace sady SDK služby Azure IoT Hub .NET Preview](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
@@ -99,7 +99,7 @@ Pro konzolovou aplikaci potřebujete připojovací řetězec modulu. Postupujte 
 
 1. Přejděte do svého centra IoT a vyberte **zařízení IoT**. Otevřete **myFirstDevice** a uvidíte, že **myFirstModule** se úspěšně vytvořil.
 
-1. V části **identity modulu**vyberte **myFirstModule** . V části **Podrobnosti o identitě modulu**zkopírujte **připojovací řetězec (primární klíč)**.
+1. V části **identity modulu** vyberte **myFirstModule** . V části **Podrobnosti o identitě modulu** zkopírujte **připojovací řetězec (primární klíč)**.
 
     ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 

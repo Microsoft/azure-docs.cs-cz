@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/22/2020
 ms.openlocfilehash: 1813fb222bca74f355fec52252ce3d77fef06e5d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013919"
 ---
 # <a name="create-custom-net-deserializers-for-azure-stream-analytics-in-visual-studio-code"></a>Vytváření vlastních deserializátorů .NET pro Azure Stream Analytics v Visual Studio Code
@@ -21,7 +21,7 @@ Azure Stream Analytics má [integrovanou podporu pro tři formáty dat](stream-a
 
 Pomocí Visual Studio Code můžete vytvořit, otestovat a ladit vlastní odserializátory .NET pro cloudovou úlohu Azure Stream Analytics.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [sadu .NET Core SDK](https://dotnet.microsoft.com/download) a restartujte Visual Studio Code.
 
@@ -69,7 +69,7 @@ Pomocí Visual Studio Code můžete vytvořit, otestovat a ladit vlastní odseri
 
    |Nastavení|Navrhovaná hodnota|
    |-------|---------------|
-   |Název|Vstup|
+   |Name|Vstup|
    |Předplatné|< vaše předplatné >|
    |Účet úložiště|< svého účtu úložiště >|
    |Kontejner|< kontejneru úložiště >|

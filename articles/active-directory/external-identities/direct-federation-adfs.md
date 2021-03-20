@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87908683"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Příklad: Přímá federace s Active Directory Federation Services (AD FS) (AD FS) (Preview)
@@ -58,8 +58,8 @@ Než začnete s tímto postupem, musí být již nastaven a funkční server AD 
 ### <a name="add-the-claim-description"></a>Přidat popis deklarace identity
 
 1. Na serveru AD FS vyberte **nástroje**  >  **AD FS Správa**.
-2. V navigačním podokně vyberte **Service**  >  **Popis deklarace identity**služby.
-3. V části **Akce**vyberte **přidat popis deklarace identity**.
+2. V navigačním podokně vyberte   >  **Popis deklarace identity** služby.
+3. V části **Akce** vyberte **přidat popis deklarace identity**.
 4. V okně **přidat popis deklarace** zadejte následující hodnoty:
 
    - **Zobrazovaný název**: trvalý identifikátor
@@ -72,12 +72,12 @@ Než začnete s tímto postupem, musí být již nastaven a funkční server AD 
 ### <a name="add-the-relying-party-trust-and-claim-rules"></a>Přidání vztahu důvěryhodnosti předávající strany a pravidel deklarací identity
 
 1. Na AD FS serveru přejdete na **nástroje**  >  **AD FS Správa**.
-2. V navigačním podokně vyberte vztahy **důvěryhodnosti**  >  **předávající strany**vztahů důvěryhodnosti.
-3. V části **Akce**vyberte **Přidat vztah důvěryhodnosti předávající strany**. 
-4. V Průvodci přidáním vztahu důvěryhodnosti předávající strany pro **možnost vybrat zdroj dat**použijte možnost **importovat data o předávající straně, která je publikována online nebo v místní síti**. Zadejte tuto adresu URL federačních metadat – https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Ponechte ostatní výchozí výběry. Vyberte **Zavřít**.
+2. V navigačním podokně vyberte vztahy **důvěryhodnosti**  >  **předávající strany** vztahů důvěryhodnosti.
+3. V části **Akce** vyberte **Přidat vztah důvěryhodnosti předávající strany**. 
+4. V Průvodci přidáním vztahu důvěryhodnosti předávající strany pro **možnost vybrat zdroj dat** použijte možnost **importovat data o předávající straně, která je publikována online nebo v místní síti**. Zadejte tuto adresu URL federačních metadat – https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Ponechte ostatní výchozí výběry. Vyberte **Zavřít**.
 5. Otevře se průvodce **úpravou pravidel deklarací identity** .
-6. V průvodci **úpravou pravidel deklarací** vyberte **Přidat pravidlo**. V **Možnosti zvolit typ pravidla**vyberte **Odeslat atributy LDAP jako deklarace identity**. Vyberte **Další**.
-7. V části **konfigurovat pravidlo deklarace identity**zadejte následující hodnoty: 
+6. V průvodci **úpravou pravidel deklarací** vyberte **Přidat pravidlo**. V **Možnosti zvolit typ pravidla** vyberte **Odeslat atributy LDAP jako deklarace identity**. Vyberte **Další**.
+7. V části **konfigurovat pravidlo deklarace identity** zadejte následující hodnoty: 
 
    - **Název pravidla deklarace identity**: pravidlo deklarace e-mailu 
    - **Úložiště atributů**: Služba Active Directory 
@@ -89,8 +89,8 @@ Než začnete s tímto postupem, musí být již nastaven a funkční server AD 
 10. Klikněte na **OK**.  
 
 ### <a name="create-an-email-transform-rule"></a>Vytvořit pravidlo transformace e-mailu
-1. Přejděte na **upravit pravidla deklarace identity** a klikněte na **Přidat pravidlo**. V **Možnosti zvolit typ pravidla**vyberte **transformovat příchozí deklaraci identity** a klikněte na **Další**. 
-2. V části **konfigurovat pravidlo deklarace identity**zadejte následující hodnoty: 
+1. Přejděte na **upravit pravidla deklarace identity** a klikněte na **Přidat pravidlo**. V **Možnosti zvolit typ pravidla** vyberte **transformovat příchozí deklaraci identity** a klikněte na **Další**. 
+2. V části **konfigurovat pravidlo deklarace identity** zadejte následující hodnoty: 
 
    - **Název pravidla deklarace identity**: pravidlo transformace e-mailu 
    - **Typ příchozí deklarace identity**: e-mailová adresa 
@@ -128,20 +128,20 @@ Než začnete s tímto postupem, musí být již nastaven a funkční server AD 
 
 ### <a name="add-the-relying-party-trust-and-claim-rules"></a>Přidání vztahu důvěryhodnosti předávající strany a pravidel deklarací identity 
 1. Na AD FS serveru přejdete na **nástroje**  >  **AD FS Správa**. 
-1. V navigačním podokně vyberte vztahy **důvěryhodnosti**  >  **předávající strany**vztahů důvěryhodnosti. 
-1. V části **Akce**vyberte **Přidat vztah důvěryhodnosti předávající strany**.  
-1. V Průvodci přidáním vztahu důvěryhodnosti předávající strany pro **možnost vybrat zdroj dat**použijte možnost **importovat data o předávající straně, která je publikována online nebo v místní síti**. Zadejte tuto adresu URL federačních metadat: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml` .  Ponechte ostatní výchozí výběry. Vyberte **Zavřít**.
+1. V navigačním podokně vyberte vztahy **důvěryhodnosti**  >  **předávající strany** vztahů důvěryhodnosti. 
+1. V části **Akce** vyberte **Přidat vztah důvěryhodnosti předávající strany**.  
+1. V Průvodci přidáním vztahu důvěryhodnosti předávající strany pro **možnost vybrat zdroj dat** použijte možnost **importovat data o předávající straně, která je publikována online nebo v místní síti**. Zadejte tuto adresu URL federačních metadat: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml` .  Ponechte ostatní výchozí výběry. Vyberte **Zavřít**.
 1. Otevře se průvodce **úpravou pravidel deklarací identity** . 
-1. V průvodci **úpravou pravidel deklarací** vyberte **Přidat pravidlo**. V **Možnosti zvolit typ pravidla**vyberte **Odeslat deklarace identity pomocí vlastního pravidla**. Vyberte *Další*. 
-1. V části **konfigurovat pravidlo deklarace identity**zadejte následující hodnoty:
+1. V průvodci **úpravou pravidel deklarací** vyberte **Přidat pravidlo**. V **Možnosti zvolit typ pravidla** vyberte **Odeslat deklarace identity pomocí vlastního pravidla**. Vyberte *Další*. 
+1. V části **konfigurovat pravidlo deklarace identity** zadejte následující hodnoty:
 
    - **Název pravidla deklarace identity**: neměnné ID problému  
    - **Vlastní pravidlo**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. Vyberte **Dokončit**. 
 1. V okně **upravit pravidla deklarací** se zobrazí nové pravidlo. Klikněte na **Použít**.  
-1. Ve stejném průvodci **úpravou pravidel deklarací identity** vyberte **Přidat pravidlo**. V **typu pravidla kohadice**vyberte **Odeslat atributy LDAP jako deklarace identity**. Vyberte **Další**.
-1. V části **konfigurovat pravidlo deklarace identity**zadejte následující hodnoty: 
+1. Ve stejném průvodci **úpravou pravidel deklarací identity** vyberte **Přidat pravidlo**. V **typu pravidla kohadice** vyberte **Odeslat atributy LDAP jako deklarace identity**. Vyberte **Další**.
+1. V části **konfigurovat pravidlo deklarace identity** zadejte následující hodnoty: 
 
    - **Název pravidla deklarace identity**: pravidlo deklarace e-mailu  
    - **Úložiště atributů**: Služba Active Directory  

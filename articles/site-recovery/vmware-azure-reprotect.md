@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89441489"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Zpětná replikace z Azure do místního prostředí
@@ -28,7 +28,7 @@ Po [převzetí služeb při selhání](site-recovery-failover.md) místních vir
 6. Ujistěte se, že je vCenter Server připojená před navrácením služeb po obnovení. V opačném případě dojde k chybě odpojení disků a jejich připojení zpátky k virtuálnímu počítači.
 7. Pokud Server vCenter spravuje virtuální počítače, ke kterým se vrátíte, ujistěte se, že máte požadovaná oprávnění. Pokud provádíte zjišťování vCenter uživatele, který je jen pro čtení, a ochranu virtuálních počítačů, ochrana bude úspěšná a funguje převzetí služeb při selhání. Během opakované ochrany ale převzetí služeb při selhání se nepovede, protože úložiště dat nejde zjistit a nejsou uvedené během ochrany. Chcete-li tento problém vyřešit, můžete aktualizovat přihlašovací údaje pro vCenter pomocí [příslušného účtu nebo oprávnění](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)a pak úlohu opakovat. 
 8. Pokud jste pro vytváření virtuálních počítačů použili šablonu, ujistěte se, že každý virtuální počítač má vlastní UUID pro tyto disky. Pokud je identifikátor UUID místního virtuálního počítače v konfliktu s identifikátorem UUID hlavního cílového serveru, protože oba se vytvořily ze stejné šablony, znovu se ochrana nezdařila. Nasaďte z jiné šablony.
-9. Pokud nasazujete zpět na alternativní vCenter Server, ujistěte se, že se zjistil nový vCenter Server a hlavní cílový server. Obvykle nejsou úložiště dat přístupná, nebo nejsou v rámci opětovného zapnutí **ochrany**viditelná.
+9. Pokud nasazujete zpět na alternativní vCenter Server, ujistěte se, že se zjistil nový vCenter Server a hlavní cílový server. Obvykle nejsou úložiště dat přístupná, nebo nejsou v rámci opětovného zapnutí **ochrany** viditelná.
 10. Ověřte následující scénáře, ve kterých nelze provést navrácení služeb po obnovení:
     - Pokud používáte buď bezplatnou edici ESXi 5,5 nebo edici hypervisoru vSphere 6. Upgradujte na jinou verzi.
     - Pokud máte fyzický server se systémem Windows Server 2008 R2 SP1.
@@ -60,8 +60,8 @@ Povolte znovu ochranu následujícím způsobem:
 
 1. Vyberte **úložiště**  >  **replikované položky**. Klikněte pravým tlačítkem na virtuální počítač, u kterého došlo k převzetí služeb při selhání, a pak vyberte **znovu zapnout ochranu**. Případně můžete z příkazových tlačítek vybrat počítač a pak vybrat možnost **znovu zapnout ochranu**.
 2. Ověřte, že je vybraná možnost **Azure do místního** směru ochrany.
-3. Na **hlavním cílovém serveru** a **procesovém serveru**vyberte místní hlavní cílový server a procesový Server.  
-4. V části **úložiště dat**vyberte úložiště dat, do kterého chcete místně obnovit disky. Tato možnost se používá, když se místní virtuální počítač odstraní a potřebujete vytvořit nové disky. Tato možnost je ignorována, pokud již disky existují. Stále musíte zadat hodnotu.
+3. Na **hlavním cílovém serveru** a **procesovém serveru** vyberte místní hlavní cílový server a procesový Server.  
+4. V části **úložiště dat** vyberte úložiště dat, do kterého chcete místně obnovit disky. Tato možnost se používá, když se místní virtuální počítač odstraní a potřebujete vytvořit nové disky. Tato možnost je ignorována, pokud již disky existují. Stále musíte zadat hodnotu.
 5. Vyberte jednotku pro uchovávání.
 6. Automaticky se vyberou zásady navrácení služeb po obnovení.
 7. Kliknutím na **tlačítko OK** zahajte znovu ochranu.

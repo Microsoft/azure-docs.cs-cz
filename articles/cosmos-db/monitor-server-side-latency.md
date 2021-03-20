@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
 ms.openlocfilehash: ec6a9db63504958640137fcd0fcfc904eb01afa5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93074725"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Jak monitorovat latenci na straně serveru pro operace v Azure Cosmos DBovém kontejneru nebo účtu
@@ -30,27 +30,27 @@ Můžete vyhledat diagnostický protokol a zobrazit velikost vrácených dat. Po
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky** .
+1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 
    :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Podokno metrik v Azure Monitor":::
 
-1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné** a **skupinu prostředků** . Jako **typ prostředku** vyberte **Azure Cosmos DB účty** , zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít** .
+1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné** a **skupinu prostředků**. Jako **typ prostředku** vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
    
-   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Podokno metrik v Azure Monitor":::
+   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Vyberte účet Azure Cosmos DB, pro který chcete zobrazit metriky.":::
 
 1. Dále vyberte metriku **latence na straně serveru**  ze seznamu dostupných metrik. Podrobné informace o všech dostupných metrikách v tomto seznamu najdete v článku [metriky podle kategorií](monitor-cosmos-db-reference.md) . V tomto příkladu vybereme možnost **latence na straně serveru** a **Průměrná** hodnota pro agregaci. Kromě těchto podrobností můžete také vybrat **časový rozsah** a **časovou členitost** metrik. V poli Max (maximum) si můžete zobrazit metriky za posledních 30 dní.  Po použití filtru se v závislosti na vašem filtru zobrazí graf. Pro vybrané období můžete zobrazit latenci na straně serveru za minutu.  
 
-   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Podokno metrik v Azure Monitor":::
+   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Vyberte Server-Side metriku latence z Azure Portal":::
 
 ## <a name="filters-for-server-side-latency"></a>Filtry pro latenci na straně serveru
 
-Můžete také vyfiltrovat metriky a získat grafy zobrazené v konkrétním typu **CollectionName** , **ConnectionMode** , **DatabaseName** , **typem operace OperationType** , **region** a **PublicAPIType** . 
+Můžete také vyfiltrovat metriky a získat grafy zobrazené v konkrétním typu **CollectionName**, **ConnectionMode**, **DatabaseName**, **typem operace OperationType**, **region** a **PublicAPIType**. 
 
-Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **PublicAPIType** a vyberte hodnotu **SQL** . Přidejte další filtr pro **typem operace OperationType** . Graf pak zobrazí latenci na straně serveru pro různé operace během vybraného období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
+Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **PublicAPIType** a vyberte hodnotu **SQL**. Přidejte další filtr pro **typem operace OperationType**. Graf pak zobrazí latenci na straně serveru pro různé operace během vybraného období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
 
 Metrika **latence na straně serveru** pro každou operaci se zobrazí, jak je znázorněno na následujícím obrázku:
 
-:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="Podokno metrik v Azure Monitor":::
+:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="Filtry pro metriky latence na straně serveru":::
 
 Metriky můžete také seskupit pomocí možnosti **použít rozdělení** .  
 

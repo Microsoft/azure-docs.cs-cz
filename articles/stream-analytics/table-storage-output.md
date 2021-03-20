@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 558ddf065d33a552034c5b129ea70bc144c494ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013885"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>Výstup tabulkového úložiště z Azure Stream Analytics
@@ -19,7 +19,7 @@ ms.locfileid: "98013885"
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vytvoření výstupu tabulky.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k přesměrování výstupu dotazu do tohoto úložiště tabulek. |
 | Účet úložiště |Název účtu úložiště, do kterého posíláte výstup. |
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Klíč řádku |Název výstupního sloupce, který obsahuje klíč řádku. Klíč řádku je jedinečný identifikátor pro entitu v rámci oddílu. Tvoří druhou část primárního klíče entity. Klíč řádku je řetězcová hodnota, která může mít velikost až 1 KB. |
 | Velikost dávky |Počet záznamů pro dávkovou operaci. Výchozí (100) je pro většinu úloh dostačující. Další informace o úpravách tohoto nastavení najdete v článku [specifikace operace dávky tabulky](/java/api/com.microsoft.azure.storage.table.tablebatchoperation) . |
 
-## <a name="partitioning"></a>Dělení na oddíly
+## <a name="partitioning"></a>Dělení
 
 Klíč oddílu je libovolný výstupní sloupec. Počet zapisovačů výstupu následuje za vstupními oddíly pro [plně paralelní dotazy](stream-analytics-scale-jobs.md).
 

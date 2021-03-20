@@ -4,10 +4,10 @@ description: Naučte se, jak můžete použít Azure Data Box k osazení velkýc
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752579"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak můžete použít Azure Data Box k počátečn
 
 Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v následujících SKU systému Windows.
 
-| **OS**                                 | **Skladová jednotka (SKU)**                                                      |
+| **OS**                                 | **SKU**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **Pracovní stanice**                        |                                                              |
 | Windows 10, 64bitová verze                     | Enterprise, Pro, Home                                       |
@@ -284,7 +284,7 @@ Přihlaste se k PowerShellu, který se zobrazí v uživatelském rozhraní MAB p
 Pokud na žádném jiném serveru není nakonfigurované počáteční nastavování offline a na aplikaci není závislý žádný jiný server `AzureOfflineBackup_<Azure User Id>` , odstraňte tuto aplikaci. Vyberte **Azure Portal**  >  **Azure Active Directory**  >  **Registrace aplikací**.
 
 >[!NOTE]
-> Zkontrolujte, jestli aplikace nemá `AzureOfflineBackup_<Azure User Id>` nakonfigurované žádné další offline nastavení, a jestli není na této aplikaci závislý žádný jiný server. **Settings**  >  V části **veřejné klíče** pokračujte na **klíče** nastavení. Neměl by mít přidané žádné jiné veřejné klíče. Odkaz najdete na následujícím snímku obrazovky.
+> Zkontrolujte, jestli aplikace nemá `AzureOfflineBackup_<Azure User Id>` nakonfigurované žádné další offline nastavení, a jestli není na této aplikaci závislý žádný jiný server.   >  V části **veřejné klíče** pokračujte na **klíče** nastavení. Neměl by mít přidané žádné jiné veřejné klíče. Odkaz najdete na následujícím snímku obrazovky.
 >
 >![Veřejné klíče](./media/offline-backup-azure-data-box/public-keys.png)
 

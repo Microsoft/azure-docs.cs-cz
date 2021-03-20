@@ -4,17 +4,17 @@ description: V tomto článku se dozvíte, jak zadat image na webu Marketplace, 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5c81c8d7a15d67055729a29e98f5b7e30f3d0764
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434732"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>Určení imagí Marketplace dostupných pro tvůrci testovacího prostředí
 Jako vlastník účtu testovacího prostředí můžete určit image z Marketplace, které můžou autoři testovacích prostředí použít k vytváření testovacích prostředí v tomto účtu testovacího prostředí. 
 
 ## <a name="select-images-available-for-labs"></a>Výběr imagí dostupných pro laboratoře
-V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Seznam můžete filtrovat tak, aby se zobrazily jenom povolené nebo zakázané obrázky **Enabled only**, a to tak, že v / rozevíracím seznamu v horní části vyberete možnost jenom **zakázaná** . 
+V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Seznam můžete filtrovat tak, aby se zobrazily jenom povolené nebo zakázané obrázky , a to tak, že v / rozevíracím seznamu v horní části vyberete možnost jenom **zakázaná** . 
     
 ![Stránka imagí v Marketplace](./media/tutorial-setup-lab-account/marketplace-images-page.png)
 

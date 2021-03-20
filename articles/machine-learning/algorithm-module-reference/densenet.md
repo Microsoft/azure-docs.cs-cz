@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421324"
 ---
 # <a name="densenet"></a>DenseNet
@@ -54,15 +54,15 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Name             | Rozsah | Typ    | Výchozí     | Popis                              |
+| Name             | Rozsah | Typ    | Výchozí     | Description                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Název modelu       | Libovolný   | Režim    | densenet201 | Název určité struktury DenseNet     |
-| Předvlakované       | Libovolný   | Logická hodnota | Ano        | Jestli se má používat model předučený na ImageNet |
-| Efektivní paměť | Libovolný   | Logická hodnota | Nepravda       | Bez ohledu na to, jestli se má použít kontrolní bod, což je mnohem víc paměti, ale pomalejší |
+| Název modelu       | Všechny   | Režim    | densenet201 | Název určité struktury DenseNet     |
+| Předvlakované       | Všechny   | Logická hodnota | Ano        | Jestli se má používat model předučený na ImageNet |
+| Efektivní paměť | Všechny   | Logická hodnota | Ne       | Bez ohledu na to, jestli se má použít kontrolní bod, což je mnohem víc paměti, ale pomalejší |
 
 ###  <a name="output"></a>Výstup  
 
-| Název            | Typ                    | Popis                              |
+| Název            | Typ                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nevlakový model | UntrainedModelDirectory | Nevlakový model DenseNet, který se dá připojit ke Pytorch modelu výuky. |
 

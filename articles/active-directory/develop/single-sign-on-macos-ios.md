@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80881244"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Postupy: Konfigurace jednotného přihlašování v macOS a iOS
@@ -96,7 +96,7 @@ Pokud máte oprávnění nastavené správně, zobrazí se `entitlements.plist` 
 
 #### <a name="add-a-new-keychain-group"></a>Přidat novou skupinu řetězce klíčů
 
-Přidejte novou skupinu řetězce klíčů do **možností**projektu. Skupina řetězce klíčů by měla být:
+Přidejte novou skupinu řetězce klíčů do **možností** projektu. Skupina řetězce klíčů by měla být:
 * `com.microsoft.adalcache` v iOS 
 * `com.microsoft.identity.universalstorage` v macOS.
 
@@ -137,7 +137,7 @@ do {
 > To platí zejména v případě, že máte aplikace, které na tokeny spoléhají na práci na pozadí.
 > Sdílení řetězce klíčů znamená, že musíte být velmi opatrní, pokud vaše aplikace používá operace odebrání sady Microsoft Identity SDK.
 
-A je to! Sada Microsoft Identity SDK teď bude sdílet přihlašovací údaje napříč všemi vašimi aplikacemi. Seznam účtů se taky bude sdílet mezi instancemi aplikací.
+A to je vše! Sada Microsoft Identity SDK teď bude sdílet přihlašovací údaje napříč všemi vašimi aplikacemi. Seznam účtů se taky bude sdílet mezi instancemi aplikací.
 
 ## <a name="sso-through-authentication-broker-on-ios"></a>Jednotné přihlašování prostřednictvím zprostředkovatele ověřování v iOS
 

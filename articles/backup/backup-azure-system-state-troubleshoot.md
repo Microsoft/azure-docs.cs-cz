@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376277"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
@@ -22,7 +22,7 @@ Než začnete s odstraňováním potíží se zálohováním stavu systému, dop
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Zajistěte, aby mezi agentem MARS a Azure bylo síťové připojení.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte operaci a operaci opakujte.
-- [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Zajistěte, aby v umístění pomocné složky bylo k dispozici 5-10% volného místa na disku](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [Zkontrolujte, jestli službě Azure Backup nepřekáží jiný proces nebo antivirový software.](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
 - [Plánované zálohování se nedaří, ale ruční zálohování funguje](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - Ujistěte se, že má váš operační systém nainstalované nejnovější aktualizace.
@@ -40,7 +40,7 @@ Než začnete s odstraňováním potíží se zálohováním stavu systému, dop
 - Obnovení na jiný hardware pomocí obnovení stavu systému nedoporučuje Microsoft
 - Zálohování stavu systému aktuálně podporuje místní servery Windows. Tato funkce není k dispozici pro virtuální počítače Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před odstraňováním potíží se zálohováním stavu systému pomocí Azure Backup proveďte následující kontrolu předpokladů.  
 
@@ -66,7 +66,7 @@ Pokud chcete nainstalovat Zálohování Windows Serveru pomocí PowerShellu, spu
 
 Pokud chcete nainstalovat Zálohování Windows Serveru pomocí Správce serveru, proveďte následující kroky:
 
-1. V nástroji **Správce serveru**vyberte **Přidat role a funkce**. Zobrazí se **Průvodce přidáním rolí a funkcí** .
+1. V nástroji **Správce serveru** vyberte **Přidat role a funkce**. Zobrazí se **Průvodce přidáním rolí a funkcí** .
 
     ![Řídicí panel](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 

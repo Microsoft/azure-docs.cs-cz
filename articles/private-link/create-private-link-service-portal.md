@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
 ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98746403"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure Portal
 
 Začněte vytvářet službu privátního propojení, která odkazuje na vaši službu.  Poskytněte soukromému odkazu přístup k vaší službě nebo prostředku nasazenému za službou Azure Standard Load Balancer.  Uživatelé vaší služby mají privátní přístup ze své virtuální sítě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -46,7 +46,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování nástro
     | Skupina prostředků   | Vybrat **CreatePrivLinkService-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Region (Oblast)           | Vyberte **východní USA 2** |
+    | Oblast           | Vyberte **východní USA 2** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -84,7 +84,7 @@ Pomocí portálu vytvořte standardní interní nástroj pro vyrovnávání zat�
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreatePrivLinkService-RG** vytvořené v předchozím kroku.|
     | Name                   | Zadejte **myLoadBalancer**                                   |
-    | Region (Oblast)         | Vyberte **USA – východ 2**.                                        |
+    | Oblast         | Vyberte **USA – východ 2**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **Standard** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
@@ -192,7 +192,7 @@ V této části vytvoříte službu privátního propojení za standardním nás
     | Skupina prostředků | Vyberte **CreatePrivLinkService-RG**. |
     | **Podrobnosti o instancích** |  |
     | Name | Zadejte **myPrivateLinkService**. |
-    | Region (Oblast) | Vyberte **USA – východ 2**. |
+    | Oblast | Vyberte **USA – východ 2**. |
 
 6. Vyberte kartu **odchozí nastavení** nebo vyberte **Další: odchozí nastavení** v dolní části stránky.
 
@@ -237,7 +237,7 @@ V této části namapujete službu privátního propojení na soukromý koncový
     | Skupina prostředků   | Vybrat **CreatePrivLinkService-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNetPE**                                    |
-    | Region (Oblast)           | Vyberte **východní USA 2** |
+    | Oblast           | Vyberte **východní USA 2** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -281,7 +281,7 @@ V této části namapujete službu privátního propojení na soukromý koncový
     | Skupina prostředků | Vyberte **CreatePrivLinkService-RG**. Tuto skupinu prostředků jste vytvořili v předchozí části.|
     | **Podrobnosti o instancích** |  |
     | Name  | Zadejte **myPrivateEndpoint**. |
-    | Region (Oblast) | Vyberte **USA – východ 2**. |
+    | Oblast | Vyberte **USA – východ 2**. |
 
 6. Vyberte kartu **prostředek** nebo tlačítko **Další: prostředek** ve spodní části stránky.
     

@@ -4,10 +4,10 @@ description: Jak zobrazit a spravovat protokoly spuštění generované ACR úko
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027172"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Zobrazení a správa protokolů spuštění úloh
@@ -65,14 +65,14 @@ Pokud se úloha spustí automaticky, například při aktualizaci zdrojového k�
 Zobrazení protokolů spuštění na portálu:
 
 1. Přejděte do registru kontejneru.
-1. V **služby** vyberte možnost **Tasks**  >  **spuštěné** úlohy.
+1. V **služby** vyberte možnost   >  **spuštěné** úlohy.
 1. Vyberte **ID spuštění** pro zobrazení stavu spuštění a protokolů spuštění. Pokud je vygenerováno, protokol obsahuje stejné informace jako protokol streamování.
 
 ![Zobrazit portál pro přihlášení ke spuštění úlohy](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
 Pokud chcete zobrazit protokol pomocí Azure CLI, spusťte [protokol AZ ACR Task log](/cli/azure/acr/task#az-acr-task-logs) a zadejte ID spuštění, název úlohy nebo konkrétní obrázek, který vytvoří úloha sestavení. Je-li zadán název úlohy, příkaz zobrazí protokol posledního vytvořeného spuštění.
 
-Následující příklad vypíše výstup protokolu pro běh s ID *CF4* :
+Následující příklad vypíše výstup protokolu pro běh s ID *CF4*:
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \

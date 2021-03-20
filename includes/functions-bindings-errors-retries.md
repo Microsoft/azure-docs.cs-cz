@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
 ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96356189"
 ---
 Chyby vyvolané v Azure Functions můžou pocházet z některého z následujících zdrojů:
@@ -293,13 +293,13 @@ Tady jsou zásady opakování v *function.js* souboru:
 ```
 ---
 
-|function.jsvlastnost  |Vlastnost atributu | Popis |
+|function.jsvlastnost  |Vlastnost atributu | Description |
 |---------|---------|---------| 
-|strategie|neuvedeno|Povinná hodnota. Používaná strategie opakování. Platné hodnoty jsou `fixedDelay` nebo `exponentialBackoff` .|
-|maxRetryCount|neuvedeno|Povinná hodnota. Maximální počet opakovaných pokusů povolených pro spuštění funkce. `-1` způsob, jak to provést po neomezenou dobu.|
-|delayInterval|neuvedeno|Prodleva, která bude použita mezi opakovanými pokusy při použití `fixedDelay` strategie.|
-|minimumInterval|neuvedeno|Minimální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.|
-|maximumInterval|neuvedeno|Maximální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.| 
+|strategie|Není k dispozici|Povinná hodnota. Používaná strategie opakování. Platné hodnoty jsou `fixedDelay` nebo `exponentialBackoff` .|
+|maxRetryCount|Není k dispozici|Povinná hodnota. Maximální počet opakovaných pokusů povolených pro spuštění funkce. `-1` způsob, jak to provést po neomezenou dobu.|
+|delayInterval|Není k dispozici|Prodleva, která bude použita mezi opakovanými pokusy při použití `fixedDelay` strategie.|
+|minimumInterval|Není k dispozici|Minimální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.|
+|maximumInterval|Není k dispozici|Maximální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.| 
 
 ### <a name="retry-limitations-during-preview"></a>Omezení počtu opakování během období Preview
 

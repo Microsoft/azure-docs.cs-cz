@@ -4,10 +4,10 @@ description: Přečtěte si o migraci z Azure Active Directory Access Control Se
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88064617"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus – migrace z Azure Active Directory Access Control Service na autorizaci sdíleného přístupového podpisu
@@ -30,7 +30,7 @@ Scénáře migrace spadají do tří hlavních kategorií:
 
 1.  **Nezměněné výchozí hodnoty**. Někteří zákazníci používají objekt [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) , který předá automaticky generovanou identitu služby **vlastníka** a její tajný klíč pro obor názvů ACS, spárováný s oborem názvů Service Bus a nepřidává nová pravidla.
 
-2.  **Vlastní identity služby s jednoduchými pravidly**. Někteří zákazníci přidávají nové identity služby a udělují každé nové identitě služby oprávnění **Odeslat**, **naslouchat**a **Spravovat** pro jednu konkrétní entitu.
+2.  **Vlastní identity služby s jednoduchými pravidly**. Někteří zákazníci přidávají nové identity služby a udělují každé nové identitě služby oprávnění **Odeslat**, **naslouchat** a **Spravovat** pro jednu konkrétní entitu.
 
 3.  **Vlastní identity služby se složitými pravidly**. Příliš málo zákazníků má komplexní sady pravidel, ve kterých jsou externě vydávané tokeny namapovány na práva na Relay nebo kde je jedna identita služby přiřazena odlišná práva k několika cestám oboru názvů prostřednictvím více pravidel.
 

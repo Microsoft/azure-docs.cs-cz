@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008640"
 ---
 # <a name="manage-app-groups-using-powershell"></a>Správa skupin aplikací pomocí PowerShellu
@@ -26,7 +26,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Vytvořte skupinu RemoteApp.
 > * Udělení přístupu k aplikacím vzdálené aplikace RemoteApp.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste postupovali podle pokynů v tématu [nastavení modulu PowerShellu](powershell-module.md) pro nastavení modulu PowerShell a přihlásíte se ke svému účtu Azure.
 
@@ -46,7 +46,7 @@ Vytvoření skupiny vzdálených aplikací RemoteApp pomocí prostředí PowerSh
    Get-AzWvdApplicationGroup -Name <appgroupname> -ResourceGroupName <resourcegroupname>
    ```
 
-3. Spuštěním následující rutiny Získejte seznam aplikací nabídky **Start** v imagi virtuálního počítače fondu hostitelů. Zapište hodnoty pro **FilePath**, **IconPath**, **IconIndex**a další důležité informace o aplikaci, kterou chcete publikovat.
+3. Spuštěním následující rutiny Získejte seznam aplikací nabídky **Start** v imagi virtuálního počítače fondu hostitelů. Zapište hodnoty pro **FilePath**, **IconPath**, **IconIndex** a další důležité informace o aplikaci, kterou chcete publikovat.
 
    ```powershell
    Get-AzWvdStartMenuItem -ApplicationGroupName <appgroupname> -ResourceGroupName <resourcegroupname> | Format-List | more

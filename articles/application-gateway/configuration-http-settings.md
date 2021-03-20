@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: c0c939a6a8323dfdfafddb46ccdb7d7ef3dd2f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89652813"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>Konfigurace nastavení protokolu HTTP Application Gateway
@@ -76,7 +76,7 @@ Toto nastavení umožňuje nakonfigurovat volitelnou vlastní cestu přesměrov�
 
 ## <a name="use-for-app-service"></a>Použít pro App Service
 
-Jedná se o zástupce pouze uživatelského rozhraní, který vybere dvě požadovaná nastavení pro back-end Azure App Service. Umožňuje **Vybrat název hostitele z back-endové adresy**a vytvoří nový vlastní test, pokud ho ještě nemáte. (Další informace naleznete v části [výběr názvu hostitele z nastavení back-endové adresy](#pick-host-name-from-back-end-address)v tomto článku.) Vytvoří se nový test paměti a hlavička testu se vybere z adresy člena, který je back-end.
+Jedná se o zástupce pouze uživatelského rozhraní, který vybere dvě požadovaná nastavení pro back-end Azure App Service. Umožňuje **Vybrat název hostitele z back-endové adresy** a vytvoří nový vlastní test, pokud ho ještě nemáte. (Další informace naleznete v části [výběr názvu hostitele z nastavení back-endové adresy](#pick-host-name-from-back-end-address)v tomto článku.) Vytvoří se nový test paměti a hlavička testu se vybere z adresy člena, který je back-end.
 
 ## <a name="use-custom-probe"></a>Použít vlastní test paměti
 

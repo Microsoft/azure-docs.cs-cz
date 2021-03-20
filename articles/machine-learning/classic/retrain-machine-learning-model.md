@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
 ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100517582"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučení a nasazení modelu strojového učení
@@ -66,7 +66,7 @@ K volání rozhraní API pro přeškolení použijte následující postup:
 1. Klikněte na webovou službu, se kterou právě pracujete.
 1. Klikněte na možnost **spotřebovat**.
 1. V dolní části stránky **využívání** klikněte v části **vzorový kód** na **Batch**.
-1. Zkopírujte ukázkový kód C# pro spuštění dávky a vložte ho do souboru Program.cs. Ujistěte se, že obor názvů zůstane nedotčený.
+1. Zkopírujte ukázkový kód C# pro spuštění dávky a vložte ho do souboru program. cs. Ujistěte se, že obor názvů zůstane nedotčený.
 
 Přidejte balíček NuGet Microsoft. AspNet. WebApi. Client, jak je uvedeno v komentářích. Chcete-li přidat odkaz na Microsoft.WindowsAzure.Storage.dll, může být nutné nainstalovat [klientskou knihovnu pro služby Azure Storage](https://www.nuget.org/packages/WindowsAzure.Storage).
 

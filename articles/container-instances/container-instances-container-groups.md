@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 72ebe6186da179bc5a1effddcc14327455eb7557
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89612402"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů ve službě Azure Container Instances
@@ -79,13 +79,13 @@ Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtu
 
 Můžete zadat externí svazky, které se připojí v rámci skupiny kontejnerů. Mezi podporované svazky patří:
 * [Sdílená složka Azure][azure-files]
-* [Tajný kód][secret]
+* [Otázku][secret]
 * [Prázdný adresář][empty-directory]
 * [Naklonované úložiště Git][volume-gitrepo]
 
 Tyto svazky můžete namapovat na konkrétní cesty v rámci jednotlivých kontejnerů ve skupině. 
 
-## <a name="common-scenarios"></a>Typické scénáře
+## <a name="common-scenarios"></a>Obvyklé scénáře
 
 Skupiny více kontejnerů jsou užitečné v případech, kdy chcete rozdělit jednu funkční úlohu na malý počet imagí kontejneru. Tyto Image je pak možné doručovat různými týmy a mít samostatné požadavky na prostředky.
 
