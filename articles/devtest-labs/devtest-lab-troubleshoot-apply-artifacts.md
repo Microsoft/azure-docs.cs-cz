@@ -4,10 +4,10 @@ description: Naučte se řešit problémy, ke kterým dochází při aplikován�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483189"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Řešení potíží při aplikování artefaktů ve Azure DevTest Labsm virtuálním počítači
@@ -22,9 +22,9 @@ Pokud potřebujete další informace v jakémkoli bodě tohoto článku, můžet
 Ověřte, že je virtuální počítač spuštěný. DevTest Labs vyžaduje, aby byl virtuální počítač spuštěný a aby byl nainstalovaný a připravený [Agent virtuálního počítače s Microsoft Azure (VM Agent)](../virtual-machines/extensions/agent-windows.md) .
 
 > [!TIP]
-> V **Azure Portal**přejděte na stránku **Spravovat ARTEFAKTY** pro virtuální počítač a zjistěte, jestli je virtuální počítač připravený na použití artefaktů. V horní části stránky se zobrazí zpráva. 
+> V **Azure Portal** přejděte na stránku **Spravovat ARTEFAKTY** pro virtuální počítač a zjistěte, jestli je virtuální počítač připravený na použití artefaktů. V horní části stránky se zobrazí zpráva. 
 > 
-> Pomocí **Azure PowerShell**zkontrolujte příznak **canApplyArtifacts**, který se vrátí, jenom když rozbalíte operaci get. Podívejte se na následující vzorový příkaz:
+> Pomocí **Azure PowerShell** zkontrolujte příznak **canApplyArtifacts**, který se vrátí, jenom když rozbalíte operaci get. Podívejte se na následující vzorový příkaz:
 
 ```powershell
 Select-AzSubscription -SubscriptionId $SubscriptionId | Out-Null

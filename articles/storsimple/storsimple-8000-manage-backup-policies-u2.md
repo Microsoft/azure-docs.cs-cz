@@ -1,6 +1,6 @@
 ---
 title: Správa zásad zálohování řady StorSimple 8000 | Microsoft Docs
-description: Vysvětluje, jak můžete službu StorSimple Device Manager použít k vytváření a správě ručních záloh, plánů zálohování a uchovávání záloh na zařízení řady StorSimple 8000.
+description: Vysvětluje, jak můžete službu StorSimple Správce zařízení použít k vytváření a správě ručních záloh, plánů zálohování a uchovávání záloh na zařízení řady StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,18 +15,18 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9ec2bbef88ed185c3927676ad2596269783d1850
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85515622"
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Ke správě zásad zálohování použijte službu StorSimple Device Manager v Azure Portal.
+# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Ke správě zásad zálohování použijte službu StorSimple Správce zařízení v Azure Portal.
 
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu se dozvíte, jak pomocí okna **zásady zálohování** služby StorSimple Device Manager řídit procesy zálohování a uchovávání záloh pro vaše svazky StorSimple. Také popisuje, jak provést ruční zálohování.
+V tomto kurzu se dozvíte, jak pomocí okna **zásady zálohování** služby StorSimple Správce zařízení řídit procesy zálohování a uchovávání záloh pro vaše svazky StorSimple. Také popisuje, jak provést ruční zálohování.
 
 Při zálohování svazku můžete zvolit vytvoření místního snímku nebo snímku v cloudu. Pokud zálohujete místně připojený svazek, doporučujeme, abyste určili snímek v cloudu. Výsledkem většího počtu místních snímků místně připnutého svazku, na kterém je propojená sada dat s velkým množstvím změn, je situace, kdy se můžete rychle dostat mimo místní prostor. Pokud se rozhodnete použít místní snímky, doporučujeme vám, abyste měli méně denní snímky pro zálohování nejaktuálnějšího stavu, zachováte je za den a pak je odstraníte.
 
@@ -98,5 +98,5 @@ Pokud chcete vytvořit zálohu na vyžádání (ruční) pro jeden svazek, prove
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+Přečtěte si další informace o [používání služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

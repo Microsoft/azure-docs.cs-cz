@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514082"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Výměna modulu Controller na zařízení StorSimple
@@ -78,7 +78,7 @@ Pokud jeden z řadičů v zařízení Microsoft Azure StorSimple neprojde, prove
 
 
 #### <a name="to-remove-a-single-failed-controller-module"></a>Odebrání jednoho modulu neúspěšného kontroleru
-1. V Azure Portal přejděte na službu StorSimple Device Manager, klikněte na **zařízení**a potom klikněte na název zařízení, které chcete monitorovat.
+1. V Azure Portal přejděte na službu StorSimple Správce zařízení, klikněte na **zařízení** a potom klikněte na název zařízení, které chcete monitorovat.
 2. Přejít na **Monitor > stav hardwaru**. Stav obou řadičů Controller 0 nebo Controller 1 by měl být červený, což znamená selhání.
    
    > [!NOTE]
@@ -195,7 +195,7 @@ Pomocí následujícího postupu nainstalujete modul kontroleru dodaný výrobce
    > [!NOTE]
    > Může trvat až 5 minut, než se kontroler a indikátor LED aktivuje.
   
-5. Pokud chcete ověřit, jestli je nahrazení úspěšné, přejděte v Azure Portal do svého zařízení a pak přejděte na **monitor**  >  **stav hardwaru**a ujistěte se, že je řadič 0 i řadič 1 v pořádku (stav je zelený).
+5. Pokud chcete ověřit, jestli je nahrazení úspěšné, přejděte v Azure Portal do svého zařízení a pak přejděte na **monitor**  >  **stav hardwaru** a ujistěte se, že je řadič 0 i řadič 1 v pořádku (stav je zelený).
 
 ## <a name="identify-the-active-controller-on-your-device"></a>Identifikujte aktivní kontroler v zařízení
 Existuje mnoho situací, jako je například registrace zařízení za provozu nebo náhrada řadiče, které vyžadují, abyste našli aktivní kontroler na zařízení StorSimple. Aktivní kontroler zpracovává všechny síťové firmware a síťové operace. Aktivní kontroler můžete identifikovat pomocí kterékoli z následujících metod:
@@ -207,7 +207,7 @@ Existuje mnoho situací, jako je například registrace zařízení za provozu n
 Jednotlivé postupy jsou popsány dále.
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>K identifikaci aktivního kontroleru použijte Azure Portal.
-V Azure Portal přejděte do zařízení a pak **Sledujte**  >  **stav hardwaru**a přejděte do části **řadiče** . Tady můžete ověřit, který kontroler je aktivní.
+V Azure Portal přejděte do zařízení a pak **Sledujte**  >  **stav hardwaru** a přejděte do části **řadiče** . Tady můžete ověřit, který kontroler je aktivní.
 
 ![Identifikujte aktivní kontroler v Azure Portal](./media/storsimple-controller-replacement/IC752072.png)
 

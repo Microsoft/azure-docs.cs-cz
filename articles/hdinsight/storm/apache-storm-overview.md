@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98928898"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co je Apache Storm ve službě Azure HDInsight?
@@ -60,7 +60,7 @@ Výchozí konfigurace pro clustery Apache Storm může obsahovat pouze jeden uze
 
 ## <a name="ease-of-use"></a>Jednoduché používání
 
-|Použití |Popis |
+|Použití |Description |
 |---|---|
 |Připojení k Secure Shell (SSH)|K hlavním uzlům clusteru s převzetím služeb při selhání můžete přistupovat přes Internet pomocí SSH. Příkazy můžete spouštět přímo v clusteru prostřednictvím SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Připojení k webu|Všechny clustery HDInsight poskytují webové uživatelské rozhraní Ambari. Webové uživatelské rozhraní Ambari umožňuje snadno monitorovat, konfigurovat a spravovat služby v clusteru. Clustery Storm také poskytují uživatelské rozhraní Storm. Prostřednictvím uživatelského rozhraní Storm můžete monitorovat a spravovat spuštěné topologie Storm z prohlížeče. Další informace najdete v tématu [Správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](../hdinsight-hadoop-manage-ambari.md) a [monitorování a správa pomocí Apache STORMCH dokumentů uživatelského rozhraní](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui) .|

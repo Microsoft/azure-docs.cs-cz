@@ -16,17 +16,17 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bad0d7adfd77dff53b1582e63a91f2cd87a9233d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85507615"
 ---
-# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Použití Device Manager StorSimple ke správě záznamů řízení přístupu pro virtuální pole StorSimple
+# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Použití Správce zařízení StorSimple ke správě záznamů řízení přístupu pro virtuální pole StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Záznamy řízení přístupu (záznamů ACR) umožňují určit hostitele, kteří se mohou připojit ke svazku ve virtuálním poli StorSimple (označované také jako místní virtuální zařízení StorSimple). Záznamů ACR jsou nastavené na konkrétní svazek a obsahují kvalifikované názvy iSCSI (IQNs) hostitelů. Když se hostitel pokusí připojit ke svazku, zařízení zkontroluje ACR přidružené k tomuto svazku pro název IQN a pokud existuje shoda, naváže se připojení. Okno **záznamy řízení přístupu** v části **Konfigurace** služby Device Manager zobrazuje všechny záznamy řízení přístupu s odpovídajícími IQNs hostitelů.
+Záznamy řízení přístupu (záznamů ACR) umožňují určit hostitele, kteří se mohou připojit ke svazku ve virtuálním poli StorSimple (označované také jako místní virtuální zařízení StorSimple). Záznamů ACR jsou nastavené na konkrétní svazek a obsahují kvalifikované názvy iSCSI (IQNs) hostitelů. Když se hostitel pokusí připojit ke svazku, zařízení zkontroluje ACR přidružené k tomuto svazku pro název IQN a pokud existuje shoda, naváže se připojení. Okno **záznamy řízení přístupu** v části **Konfigurace** služby Správce zařízení zobrazuje všechny záznamy řízení přístupu s odpovídajícími IQNs hostitelů.
 
 ![Správa záznamů řízení přístupu](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
 
@@ -51,7 +51,7 @@ Pomocí následujících kroků získejte identifikátor IQN hostitele systému 
 
 ## <a name="add-an-acr"></a>Přidat ACR
 
-V rámci **konfiguračního** oddílu služby StorSimple Device Manager můžete použít okno **záznamů řízení přístupu** a přidat záznamů ACR. Obvykle přiřadíte jeden ACR s jedním svazkem.
+V rámci **konfiguračního** oddílu služby StorSimple Správce zařízení můžete použít okno **záznamů řízení přístupu** a přidat záznamů ACR. Obvykle přiřadíte jeden ACR s jedním svazkem.
 
 Informace o přidružení ACR ke svazku získáte tak, že přejdete na [Přidat svazek](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
 
@@ -69,7 +69,7 @@ Chcete-li přidat ACR, proveďte následující kroky.
    
     1. Zadejte **Název** záznamu ACR.
     
-    2. V části **název iniciátoru iSCSI**zadejte název IQN hostitele Windows. K získání názvu IQN hostitele Windows serveru udělejte toto:
+    2. V části **název iniciátoru iSCSI** zadejte název IQN hostitele Windows. K získání názvu IQN hostitele Windows serveru udělejte toto:
    
     3. Na hostiteli s Windows spusťte iniciátor iSCSI od Microsoftu. V okně iSCSI Initiator Properties (Vlastnosti iniciátoru iSCSI) na kartě **Konfigurace** vyberte a zkopírujte řetězec z pole **Název iniciátoru**.
     Vložte tento řetězec do pole **IQN** v okně **Přidat ACR** .
@@ -81,7 +81,7 @@ Chcete-li přidat ACR, proveďte následující kroky.
 
 ## <a name="edit-an-acr"></a>Upravit ACR
 
-V okně Device Manager služby v Azure Portal k úpravám záznamů ACR použijete okno pro **záznamy řízení přístupu** v rámci **konfiguračního** oddílu.
+V okně Správce zařízení služby v Azure Portal k úpravám záznamů ACR použijete okno pro **záznamy řízení přístupu** v rámci **konfiguračního** oddílu.
 
 > [!NOTE]
 > Neměňte ACR, který se právě používá. Pokud chcete upravit ACR přidružené ke svazku, který se právě používá, měli byste nejdřív svazek převést do režimu offline.

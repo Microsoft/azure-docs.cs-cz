@@ -15,10 +15,10 @@ ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
 ms.openlocfilehash: 76df8baaf170b05762b93478a496eb1e9ed802d5
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94916742"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Připojení k Media Services V3 API – Python
@@ -27,7 +27,7 @@ ms.locfileid: "94916742"
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 Python SDK pomocí metody přihlašování instančního objektu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Stažení Pythonu z [Python.org](https://www.python.org/downloads/)
 - Ujistěte se, že jste nastavili `PATH` proměnnou prostředí.

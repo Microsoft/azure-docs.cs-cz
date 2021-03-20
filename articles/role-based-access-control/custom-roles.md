@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: rolyon
 ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97617319"
 ---
 # <a name="azure-custom-roles"></a>Vlastní role Azure
@@ -161,11 +161,11 @@ Následující tabulka popisuje, co znamenají vlastnosti vlastní role.
 | `Id`</br>`name` | Ano | Řetězec | Jedinečné ID vlastní role Pro Azure PowerShell a Azure CLI se toto ID automaticky vygeneruje při vytvoření nové role. |
 | `IsCustom`</br>`roleType` | Ano | Řetězec | Označuje, zda se jedná o vlastní roli. Nastavte na `true` nebo `CustomRole` pro vlastní role. Nastavte na `false` nebo `BuiltInRole` pro předdefinované role. |
 | `Description`</br>`description` | Ano | Řetězec | Popis vlastní role Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 1024. |
-| `Actions`</br>`actions` | Ano | Řetězec [] | Pole řetězců, které určuje operace správy, které může role provést. Další informace najdete v tématu [Akce](role-definitions.md#actions). |
-| `NotActions`</br>`notActions` | Ne | Řetězec [] | Pole řetězců, které určují operace správy, které jsou vyloučeny z povolených `Actions` . Další informace najdete v tématu [NotActions](role-definitions.md#notactions). |
-| `DataActions`</br>`dataActions` | Ne | Řetězec [] | Pole řetězců, které určuje datové operace, které může role provádět na vašich datech v rámci daného objektu. Pokud vytvoříte vlastní roli s `DataActions` , tuto roli nelze přiřadit v oboru skupiny pro správu. Další informace naleznete v tématu [Dataactions](role-definitions.md#dataactions). |
-| `NotDataActions`</br>`notDataActions` | Ne | Řetězec [] | Pole řetězců, které určují operace s daty, které jsou vyloučeny z povolených `DataActions` . Další informace najdete v tématu [NotDataActions](role-definitions.md#notdataactions). |
-| `AssignableScopes`</br>`assignableScopes` | Ano | Řetězec [] | Pole řetězců, které určuje rozsahy, které jsou k dispozici pro přiřazení vlastní role. V rámci vlastní role můžete definovat jenom jednu skupinu pro správu `AssignableScopes` . Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview. Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes). |
+| `Actions`</br>`actions` | Yes | Řetězec [] | Pole řetězců, které určuje operace správy, které může role provést. Další informace najdete v tématu [Akce](role-definitions.md#actions). |
+| `NotActions`</br>`notActions` | No | Řetězec [] | Pole řetězců, které určují operace správy, které jsou vyloučeny z povolených `Actions` . Další informace najdete v tématu [NotActions](role-definitions.md#notactions). |
+| `DataActions`</br>`dataActions` | No | Řetězec [] | Pole řetězců, které určuje datové operace, které může role provádět na vašich datech v rámci daného objektu. Pokud vytvoříte vlastní roli s `DataActions` , tuto roli nelze přiřadit v oboru skupiny pro správu. Další informace naleznete v tématu [Dataactions](role-definitions.md#dataactions). |
+| `NotDataActions`</br>`notDataActions` | No | Řetězec [] | Pole řetězců, které určují operace s daty, které jsou vyloučeny z povolených `DataActions` . Další informace najdete v tématu [NotDataActions](role-definitions.md#notdataactions). |
+| `AssignableScopes`</br>`assignableScopes` | Yes | Řetězec [] | Pole řetězců, které určuje rozsahy, které jsou k dispozici pro přiřazení vlastní role. V rámci vlastní role můžete definovat jenom jednu skupinu pro správu `AssignableScopes` . Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview. Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes). |
 
 ## <a name="wildcard-permissions"></a>Oprávnění zástupných znaků
 
@@ -195,7 +195,7 @@ Microsoft.CostManagement/*/query/*
 
 Stejně jako předdefinované role `AssignableScopes` Určuje vlastnost obory, které je role k dispozici pro přiřazení. `AssignableScopes`Vlastnost vlastní role také určuje, kdo může vytvořit, odstranit, aktualizovat nebo zobrazit vlastní roli.
 
-| Úloha | Operace | Popis |
+| Úkol | Operace | Description |
 | --- | --- | --- |
 | Vytvoření nebo odstranění vlastní role | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kterým je tato operace udělena na všech `AssignableScopes` vlastních rolích, mohou vytvořit (nebo odstranit) vlastní role pro použití v těchto oborech. Například [vlastníci](built-in-roles.md#owner) a [Správci přístupu uživatelů](built-in-roles.md#user-access-administrator) skupiny pro správu, předplatná a skupiny prostředků. |
 | Aktualizace vlastní role | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kterým je tato operace udělena na všech `AssignableScopes` vlastních rolích, mohou aktualizovat vlastní role v těchto oborech. Například [vlastníci](built-in-roles.md#owner) a [Správci přístupu uživatelů](built-in-roles.md#user-access-administrator) skupiny pro správu, předplatná a skupiny prostředků. |

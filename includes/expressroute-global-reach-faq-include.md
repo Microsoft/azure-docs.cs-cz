@@ -9,10 +9,10 @@ ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 317a480c13c5c6e00653fd61878a379df3f65ac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67174743"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Co je ExpressRoute Global Reach?
@@ -41,11 +41,11 @@ Ano, můžete, pokud jsou okruhy v podporovaných zemích nebo oblastech. Je pot
 
 ### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>Můžu povolit ExpressRoute Global Reach mezi dvěma ExpressRoute okruhy ve stejném umístění partnerského vztahu?
 
-Ne. Dva okruhy musí být z různých umístění partnerského vztahu. Pokud má Metro v podporované zemi nebo oblasti více než jedno umístění partnerského vztahu ExpressRoute, můžete se spojit mezi ExpressRoute okruhy vytvořenými v různých umístěních partnerských vztahů v této službě Metro. 
+No. Dva okruhy musí být z různých umístění partnerského vztahu. Pokud má Metro v podporované zemi nebo oblasti více než jedno umístění partnerského vztahu ExpressRoute, můžete se spojit mezi ExpressRoute okruhy vytvořenými v různých umístěních partnerských vztahů v této službě Metro. 
 
 ### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>Pokud je ExpressRoute Global Reach mezi okruhem X a okruh Y a mezi okruhem Y a okruh Z, budou místní sítě připojené k okruhu X a okruhu Z vzájemně propojeny přes síť Microsoftu?
 
-Ne. Pokud chcete povolit připojení mezi dvěma vašimi místními sítěmi, musíte explicitně propojit odpovídající okruhy ExpressRoute. V předchozím příkladu je třeba spojit okruh X a okruh Z. 
+No. Pokud chcete povolit připojení mezi dvěma vašimi místními sítěmi, musíte explicitně propojit odpovídající okruhy ExpressRoute. V předchozím příkladu je třeba spojit okruh X a okruh Z. 
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Jakou propustnost sítě můžu očekávat mezi místními sítěmi po povolení ExpressRoute Global Reach?
 

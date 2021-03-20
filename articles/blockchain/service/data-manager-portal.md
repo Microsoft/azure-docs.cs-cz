@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85200677"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurace Blockchain Data Manageru s využitím webu Azure Portal
@@ -20,7 +20,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 * Vytvoření instance blockchain Data Manager pro uzel transakce služby Azure blockchain
 * Přidání aplikací blockchain
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md). Služba Azure blockchain Service úrovně *Standard* se doporučuje při použití blockchain data Manager.
 * Vytvoření [tématu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
@@ -32,7 +32,7 @@ Instance blockchain Data Manager se připojuje a monitoruje uzel transakcí slu�
 
 Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení. Blockchain Data Manager podporuje vícenásobná odchozí připojení Event Grid tématu pro všechny dané instance služby blockchain Data Manager. Blockchain data můžete odesílat do jednoho cíle nebo odesílat blockchain data do více cílů. Pokud chcete přidat další cíl, stačí do instance přidat další odchozí připojení.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejít na člen služby Azure blockchain, který se má připojit k blockchain Data Manager. Vyberte **Blockchain data Manager**.
 1. Vyberte **Přidat**.
 

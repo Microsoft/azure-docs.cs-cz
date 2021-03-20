@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912901"
 ---
 # <a name="learn-text-moderation-concepts"></a>Základní informace o principech moderování textu
@@ -47,7 +47,7 @@ Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporo
 ```
 
 > [!NOTE]
-> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu** .
+> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače  (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
 >
 > Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
 
@@ -142,7 +142,7 @@ Pokud si vyžádáte automatické opravy, odpověď obsahuje opravenou verzi tex
 I když výchozí globální seznam pojmů funguje skvěle pro většinu případů, možná se budete chtít setkat s podmínkami, které jsou specifické pro vaše obchodní potřeby. Můžete například chtít vyfiltrovat všechny názvy značek konkurenčních uživatelů na základě příspěvků.
 
 > [!NOTE]
-> Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů** .
+> Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů**.
 >
 
 Následující příklad ukazuje ID odpovídajícího seznamu:

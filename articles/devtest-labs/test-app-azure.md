@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit sdílenou složku v testovacím prostřed
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87282241"
 ---
 # <a name="test-your-app-in-azure"></a>Testování aplikace v Azure 
@@ -15,10 +15,10 @@ Tento článek popisuje kroky pro testování vaší aplikace v Azure pomocí De
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 1. [Vytvořte si předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte, a přihlaste se [Azure Portal](https://portal.azure.com).
 2. Postupujte podle pokynů v [tomto článku](devtest-lab-create-lab.md) a vytvořte testovací prostředí pomocí Azure DevTest Labs. Připněte testovací prostředí na řídicí panel, abyste ho mohli snadno najít při příštím přihlášení. Azure DevTest Labs vám umožní rychle vytvářet prostředky v rámci Azure minimalizací odpadů a řízení nákladů. Další informace o DevTest Labs najdete v tématu [Přehled](devtest-lab-overview.md). 
-3. Podle pokynů v článku [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) vytvořte účet Azure Storage ve skupině prostředků testovacího prostředí. Na stránce **vytvořit účet úložiště** vyberte **použít existující** pro **skupinu prostředků**a vyberte **skupinu prostředků testovacího prostředí**. 
+3. Podle pokynů v článku [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) vytvořte účet Azure Storage ve skupině prostředků testovacího prostředí. Na stránce **vytvořit účet úložiště** vyberte **použít existující** pro **skupinu prostředků** a vyberte **skupinu prostředků testovacího prostředí**. 
 4. Pomocí pokynů v článku [Vytvoření sdílené složky v Azure Files](../storage/files/storage-how-to-create-file-share.md) vytvořte sdílenou složku ve službě Azure Storage. 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>Připojte sdílenou složku na místním počítači.
@@ -37,10 +37,10 @@ Tento článek popisuje kroky pro testování vaší aplikace v Azure pomocí De
 3. Na stránce **testovací prostředí DevTest** pro testovací prostředí vyberte **+ Přidat** na panelu nástrojů. 
 
     ![Přidat tlačítko pro testovací prostředí](media/test-app-in-azure/add-button-in-lab.png)
-4. Na stránce **Zvolte základní** stránku vyhledejte **smalldisk**a vyberte **[Smalldisk] datové centrum Windows Server 2016**. 
+4. Na stránce **Zvolte základní** stránku vyhledejte **smalldisk** a vyberte **[Smalldisk] datové centrum Windows Server 2016**. 
 
     ![Výběr malého disku Windows serveru](media/test-app-in-azure/choose-small-disk-windows-server.png)
-5. Na stránce **virtuální počítač** zadejte **název virtuálního počítače**, **uživatelské jméno**, **heslo**a vyberte **vytvořit**.    
+5. Na stránce **virtuální počítač** zadejte **název virtuálního počítače**, **uživatelské jméno**, **heslo** a vyberte **vytvořit**.    
     
     ![Stránka vytvořit virtuální počítač](media/test-app-in-azure/create-virtual-machine-page.png)    
 
@@ -57,8 +57,8 @@ V této části publikujete aplikaci ze sady Visual Studio do testovacího virtu
 
 1. Pomocí sady Visual Studio 2019 vytvořte pracovní plochu nebo webovou aplikaci.
 2. Sestavte aplikaci.
-3. Pokud chcete aplikaci publikovat, klikněte pravým tlačítkem na projekt v **Průzkumník řešení**a vyberte **publikovat**. 
-4. V **Průvodci publikování**zadejte **jednotku** , která je namapovaná na sdílenou složku.
+3. Pokud chcete aplikaci publikovat, klikněte pravým tlačítkem na projekt v **Průzkumník řešení** a vyberte **publikovat**. 
+4. V **Průvodci publikování** zadejte **jednotku** , která je namapovaná na sdílenou složku.
 
     **Aplikace klasické pracovní plochy:**
 
@@ -75,10 +75,10 @@ V této části publikujete aplikaci ze sady Visual Studio do testovacího virtu
 
 1. Přejděte na stránku virtuálního počítače pro váš virtuální počítač v testovacím prostředí. 
 2. Pokud je virtuální počítač v zastaveném stavu, vyberte **Spustit** na panelu nástrojů. Pro virtuální počítač můžete nastavit zásady automatického spouštění a automatického vypínání, abyste se vyhnuli spouštění a zastavování. 
-3. Vyberte **Připojit**.
+3. Vyberte **Connect** (Připojit).
 
     ![Stránka virtuálního počítače](media/test-app-in-azure/virtual-machine-page.png)
-4. V rámci virtuálního počítače spusťte **Průzkumníka souborů**a vyberte **Tento počítač** , abyste našli svoji sdílenou složku.
+4. V rámci virtuálního počítače spusťte **Průzkumníka souborů** a vyberte **Tento počítač** , abyste našli svoji sdílenou složku.
 
     ![Najít sdílenou složku na virtuálním počítači](media/test-app-in-azure/find-share-on-vm.png)
 

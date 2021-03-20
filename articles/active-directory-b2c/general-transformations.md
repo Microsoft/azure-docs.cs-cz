@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85202216"
 ---
 # <a name="general-claims-transformations"></a>Obecné transformace deklarací identity
@@ -90,7 +90,7 @@ Vytvoří hodnotu hash zadaného prostého textu pomocí soli a tajného klíče
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | prostý | řetězec | Vstupní deklarace identity, která se má zašifrovat |
 | InputClaim | sůl | řetězec | Parametr Salt. Pomocí transformace deklarací identity můžete vytvořit náhodnou hodnotu `CreateRandomString` . |
-| InputParameter | randomizerSecret | řetězec | Odkazuje na existující **klíč zásad**Azure AD B2C. Pokud chcete vytvořit nový klíč zásad: v tenantovi Azure AD B2C v části **Spravovat**vyberte **Architektura prostředí identity**. Vyberte **klíče zásad** pro zobrazení klíčů, které jsou k dispozici ve vašem tenantovi. Vyberte **Přidat**. V případě **možností**vyberte možnost **ručně**. Zadejte název (předponu *B2C_1A_* možné přidat automaticky.) Do textového pole **tajný kód** zadejte libovolný tajný klíč, který chcete použít, například 1234567890. V případě **použití klíče**vyberte možnost **podpis**. Vyberte **Vytvořit**. |
+| InputParameter | randomizerSecret | řetězec | Odkazuje na existující **klíč zásad** Azure AD B2C. Pokud chcete vytvořit nový klíč zásad: v tenantovi Azure AD B2C v části **Spravovat** vyberte **Architektura prostředí identity**. Vyberte **klíče zásad** pro zobrazení klíčů, které jsou k dispozici ve vašem tenantovi. Vyberte **Přidat**. V případě **možností** vyberte možnost **ručně**. Zadejte název (předponu *B2C_1A_* možné přidat automaticky.) Do textového pole **tajný kód** zadejte libovolný tajný klíč, který chcete použít, například 1234567890. V případě **použití klíče** vyberte možnost **podpis**. Vyberte **Vytvořit**. |
 | OutputClaim | hash | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. Deklarace identity konfigurovaná v `plaintext` inputClaim. |
 
 ```xml

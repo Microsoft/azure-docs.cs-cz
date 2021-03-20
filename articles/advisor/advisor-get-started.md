@@ -4,10 +4,10 @@ description: Začínáme s Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85117858"
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
@@ -19,15 +19,15 @@ Naučte se, jak získat přístup ke službě Advisor prostřednictvím Azure Po
 
 ## <a name="get-recommendations"></a>Získat doporučení
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. V levém podokně klikněte na možnost **Poradce**.  Pokud v levém podokně nevidíte poradce, klikněte na **všechny služby**.  V podokně nabídky služby v části **monitorování a Správa**klikněte na možnost **Poradce**. Zobrazí se řídicí panel Advisor.
+1. V levém podokně klikněte na možnost **Poradce**.  Pokud v levém podokně nevidíte poradce, klikněte na **všechny služby**.  V podokně nabídky služby v části **monitorování a Správa** klikněte na možnost **Poradce**. Zobrazí se řídicí panel Advisor.
 
    ![Přístup k Azure Advisor pomocí Azure Portal](./media/advisor-get-started/advisor-portal-menu.png) 
 
 1. Na řídicím panelu služby Advisor se zobrazí souhrn doporučení pro všechna vybraná předplatná.  Předplatná, pro která chcete zobrazit doporučení, můžete zvolit pomocí rozevíracího seznamu filtru předplatných.
 
-1. Pokud chcete získat doporučení pro konkrétní kategorii, klikněte na jednu z karet: **spolehlivost**, **zabezpečení**, **výkon**nebo **náklady**. 
+1. Pokud chcete získat doporučení pro konkrétní kategorii, klikněte na jednu z karet: **spolehlivost**, **zabezpečení**, **výkon** nebo **náklady**. 
 
    ![Řídicí panel Azure Advisor](./media/advisor-overview/advisor-dashboard.png)
 
@@ -93,7 +93,7 @@ Advisor monitoruje využití virtuálních počítačů po dobu 7 dní a pak ide
 Pokud chcete mít více agresivní při identifikaci virtuálních počítačů s nízkým využitím, můžete pro každé předplatné upravit průměrné pravidlo využití procesoru.  Pravidlo využití CPU lze nastavit na 5%, 10%, 15% nebo 20%.
 
 > [!NOTE]
-> Chcete-li upravit průměrné pravidlo využití procesoru pro identifikaci virtuálních počítačů s nízkým využitím, musíte být *vlastníkem*předplatného.  Pokud nemáte požadovaná oprávnění pro předplatné nebo skupinu prostředků, možnost zahrnutí nebo vyloučení se v uživatelském rozhraní zakáže. 
+> Chcete-li upravit průměrné pravidlo využití procesoru pro identifikaci virtuálních počítačů s nízkým využitím, musíte být *vlastníkem* předplatného.  Pokud nemáte požadovaná oprávnění pro předplatné nebo skupinu prostředků, možnost zahrnutí nebo vyloučení se v uživatelském rozhraní zakáže. 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
 

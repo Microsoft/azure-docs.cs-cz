@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91319873"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Používání konektorů s Azure AD Connect synchronizace Service Manager
@@ -69,7 +69,7 @@ Začněte výběrem **oboru**. Můžete vyhledávat na základě dat (RDN, DN, k
 ![Snímek obrazovky, který zobrazuje rozevírací nabídku "obor".](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 Pokud například Sub-Tree hledání, získáte všechny objekty v jedné organizační jednotce.  
 ![Snímek obrazovky, který zobrazuje příklad hledání "sub-Tree".](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
-Z této mřížky můžete vybrat objekt, vybrat **vlastnosti**a [sledovat ho](tshoot-connect-object-not-syncing.md) z prostoru zdrojového konektoru, do úložiště metaverse a do cílového prostoru konektoru.
+Z této mřížky můžete vybrat objekt, vybrat **vlastnosti** a [sledovat ho](tshoot-connect-object-not-syncing.md) z prostoru zdrojového konektoru, do úložiště metaverse a do cílového prostoru konektoru.
 
 ### <a name="changing-the-ad-ds-account-password"></a>Změna hesla účtu služby AD DS
 Pokud změníte heslo účtu, synchronizační služba už nebude moct importovat a exportovat změny v místní službě AD.   Situace může vypadat takto:

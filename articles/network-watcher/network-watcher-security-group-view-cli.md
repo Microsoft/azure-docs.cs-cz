@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: b3aa963c4da7802a9db714f25e7b544b3a132d4b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94948642"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Analýza zabezpečení virtuálního počítače pomocí zobrazení skupiny zabezpečení pomocí Azure CLI
@@ -38,7 +38,7 @@ K provedení kroků v tomto článku potřebujete [nainstalovat rozhraní přík
 
 V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Scénář popsaný v tomto článku načte nakonfigurovaná a platná pravidla zabezpečení pro daný virtuální počítač.
 

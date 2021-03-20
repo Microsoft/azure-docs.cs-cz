@@ -8,10 +8,10 @@ ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.openlocfilehash: 3aa1c0b8579bd37d2bb51cbde70997131c696813
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97964503"
 ---
 # <a name="troubleshoot-common-problems-in-azure-data-share"></a>Řešení běžných problémů v Azure Data Share 
@@ -50,7 +50,7 @@ Při vytváření nové sdílené složky, přidání datových sad nebo mapová
 * Nemáte správná oprávnění k x.
 * Nemohli jsme přidat oprávnění k zápisu pro účet Azure Data Share k jednomu nebo více vybraným prostředkům.
 
-Pokud nemáte dostatečná oprávnění k úložišti dat Azure, může se zobrazit jedna z těchto chyb. Další informace najdete v tématu [role a požadavky](concepts-roles-permissions.md). 
+Pokud nemáte dostatečná oprávnění k úložišti dat Azure, může se zobrazit jedna z těchto chyb. Další informace najdete části [Role a požadavky](concepts-roles-permissions.md). 
 
 Ke sdílení nebo příjmu dat z úložiště dat Azure potřebujete oprávnění k zápisu. Toto oprávnění je obvykle součástí role přispěvatele. 
 
@@ -65,7 +65,7 @@ Snímek může z různých důvodů selhat. Otevřete podrobnou chybovou zprávu
 
 Snímky se běžně nedaří z těchto důvodů:
 
-* Sdílení dat nemá oprávnění ke čtení ze zdrojového úložiště dat nebo k zápisu do cílového úložiště dat. Další informace najdete v tématu [role a požadavky](concepts-roles-permissions.md). Pokud pořídíte snímek poprvé, prostředek sdílení dat může potřebovat několik minut, než bude moct získat přístup k úložišti dat Azure. Po několika minutách to zkuste znovu.
+* Sdílení dat nemá oprávnění ke čtení ze zdrojového úložiště dat nebo k zápisu do cílového úložiště dat. Další informace najdete části [Role a požadavky](concepts-roles-permissions.md). Pokud pořídíte snímek poprvé, prostředek sdílení dat může potřebovat několik minut, než bude moct získat přístup k úložišti dat Azure. Po několika minutách to zkuste znovu.
 * Připojení ke zdrojovému úložišti dat nebo cílovému úložišti dat je blokováno bránou firewall.
 * Byla odstraněna sdílená datová sada, zdrojové úložiště dat nebo cílové úložiště dat.
 

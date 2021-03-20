@@ -8,10 +8,10 @@ ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4814a12a870d5317ad91c3514327ba0daad7ed69
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99225366"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
@@ -19,7 +19,7 @@ Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve
 
 Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, abyste si přečetli [Plánování nasazení souborů Azure](storage-files-planning.md) a [Plánování nasazení synchronizace souborů Azure](storage-sync-files-planning.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

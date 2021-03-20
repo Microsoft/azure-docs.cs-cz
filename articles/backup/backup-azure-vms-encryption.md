@@ -4,10 +4,10 @@ description: Popisuje postup zálohování a obnovení šifrovaných virtuální
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: db06b64fba203fb3d2ed54d34235504ac6aa4e2d
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99223453"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Zálohování a obnovení šifrovaných virtuálních počítačů Azure
@@ -160,8 +160,8 @@ Následujícím způsobem obnovte šifrované virtuální počítače:
 
 1. [Obnovte disk virtuálního počítače](backup-azure-arm-restore-vms.md#restore-disks).
 2. Vytvořte instanci virtuálního počítače znovu tak, že provedete jednu z následujících akcí:
-    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Přečtěte si další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Přečtěte si další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 3. Pro virtuální počítače se systémem Linux přeinstalujte rozšíření ADE, aby byly datové disky otevřené a připojené.
 
 ## <a name="next-steps"></a>Další kroky

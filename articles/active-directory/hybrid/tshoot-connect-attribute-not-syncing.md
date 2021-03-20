@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317483"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Řešení potíží s atributem, který se nesynchronizuje v Azure AD Connect
@@ -57,7 +57,7 @@ Než prozkoumáte problémy se synchronizací atributů, Podívejme se na **Azur
 
   ![Spustit Synchronization Service Manager](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
 
-* V **Synchronization Service Manager**vyberte **hledání Metaverse**, vyberte **Rozsah podle typu objektu**, vyberte objekt pomocí atributu a klikněte na tlačítko **Hledat** .
+* V **Synchronization Service Manager** vyberte **hledání Metaverse**, vyberte **Rozsah podle typu objektu**, vyberte objekt pomocí atributu a klikněte na tlačítko **Hledat** .
 
   ![Hledání v úložišti Metaverse](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
 

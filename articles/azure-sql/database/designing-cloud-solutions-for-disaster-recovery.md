@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: be632ba06edc858e7eadcd6e57a4f7769f69f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91321675"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Návrh globálně dostupných služeb pomocí Azure SQL Database
@@ -36,7 +36,7 @@ V tomto scénáři mají aplikace následující vlastnosti:
 * Aby se snížila latence a náklady na provoz, musí být společně umístěnéhoa webová vrstva a Datová vrstva.
 * V podstatě je výpadkům pro tyto aplikace vyšší riziko, než je ztráta dat.
 
-V takovém případě je topologie nasazení aplikace optimalizována pro zpracování regionálních havárií, pokud všechny součásti aplikace potřebují převzít služby při selhání společně. Následující diagram znázorňuje tuto topologii. V případě geografické redundance jsou prostředky aplikace nasazeny do oblastí A a B. Prostředky v oblasti B se ale nevyužívají, dokud nebude oblast A neúspěšná. Skupina převzetí služeb při selhání je nakonfigurovaná mezi dvěma oblastmi pro správu připojení k databázi, replikaci a převzetí služeb při selhání. Webová služba v obou oblastech je nakonfigurovaná pro přístup k databázi prostřednictvím naslouchacího procesu pro čtení i zápis ** &lt; převzetí služeb při selhání-Group-name &gt; . Database.Windows.NET** (1). Služba Azure Traffic Manager je nastavená tak, aby používala [metodu směrování priority](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
+V takovém případě je topologie nasazení aplikace optimalizována pro zpracování regionálních havárií, pokud všechny součásti aplikace potřebují převzít služby při selhání společně. Následující diagram znázorňuje tuto topologii. V případě geografické redundance jsou prostředky aplikace nasazeny do oblastí A a B. Prostředky v oblasti B se ale nevyužívají, dokud nebude oblast A neúspěšná. Skupina převzetí služeb při selhání je nakonfigurovaná mezi dvěma oblastmi pro správu připojení k databázi, replikaci a převzetí služeb při selhání. Webová služba v obou oblastech je nakonfigurovaná pro přístup k databázi prostřednictvím naslouchacího procesu pro čtení i zápis **&lt; převzetí služeb při selhání-Group-name &gt; . Database.Windows.NET** (1). Služba Azure Traffic Manager je nastavená tak, aby používala [metodu směrování priority](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
 
 > [!NOTE]
 > [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) se v tomto článku používá jenom pro ilustraci. Můžete použít jakékoli řešení vyrovnávání zatížení, které podporuje metodu směrování priority.
@@ -119,7 +119,7 @@ V tomto scénáři má aplikace následující vlastnosti:
 
 Aby bylo možné splnit tyto požadavky, je třeba zaručit, že se zařízení uživatele **vždy** připojí k aplikaci nasazené ve stejné geografické oblasti pro operace jen pro čtení, například na data procházení, analýzy atd. Vzhledem k tomu, že operace OLTP se zpracovávají ve stejném geografickém **čase**. Například během dne se OLTP operace zpracování ve stejné geografické oblasti, ale v době mimo hodiny, kdy je možné je zpracovat v jiném geografickém období. Pokud se aktivita koncového uživatele většinou stane během pracovní doby, můžete zajistit optimální výkon pro většinu uživatelů v většinu času. Tato topologie je znázorněna na následujícím obrázku.
 
-Prostředky aplikace by se měly nasadit v každé geografické oblasti, kde máte významné nároky na využití. Například pokud se vaše aplikace aktivně používá v USA, Evropské unii a Jižní Východní Asie aplikace by měla být nasazená do všech těchto zeměpisných oblastí. Primární databáze by se měla dynamicky přepínat mezi jednotlivými geografickými oblastmi na konci pracovní doby. Tato metoda se nazývá "následovat na Sun". Úloha OLTP se vždy připojuje k databázi prostřednictvím naslouchacího procesu pro čtení i zápis ** &lt; převzetí služeb při selhání-Group-name &gt; . Database.Windows.NET** (1). Úloha jen pro čtení se připojuje k místní databázi přímo pomocí serveru koncového bodu serveru databáze ** &lt; -name &gt; . Database.Windows.NET** (2). Traffic Manager je nakonfigurována pomocí [metody směrování výkonu](../../traffic-manager/traffic-manager-configure-performance-routing-method.md). Zajišťuje, aby bylo zařízení koncového uživatele připojeno k webové službě v nejbližší oblasti. Traffic Manager by měl být nastaven s povoleným monitorováním koncových bodů pro každý koncový bod webové služby (3).
+Prostředky aplikace by se měly nasadit v každé geografické oblasti, kde máte významné nároky na využití. Například pokud se vaše aplikace aktivně používá v USA, Evropské unii a Jižní Východní Asie aplikace by měla být nasazená do všech těchto zeměpisných oblastí. Primární databáze by se měla dynamicky přepínat mezi jednotlivými geografickými oblastmi na konci pracovní doby. Tato metoda se nazývá "následovat na Sun". Úloha OLTP se vždy připojuje k databázi prostřednictvím naslouchacího procesu pro čtení i zápis **&lt; převzetí služeb při selhání-Group-name &gt; . Database.Windows.NET** (1). Úloha jen pro čtení se připojuje k místní databázi přímo pomocí serveru koncového bodu serveru databáze **&lt; -name &gt; . Database.Windows.NET** (2). Traffic Manager je nakonfigurována pomocí [metody směrování výkonu](../../traffic-manager/traffic-manager-configure-performance-routing-method.md). Zajišťuje, aby bylo zařízení koncového uživatele připojeno k webové službě v nejbližší oblasti. Traffic Manager by měl být nastaven s povoleným monitorováním koncových bodů pro každý koncový bod webové služby (3).
 
 > [!NOTE]
 > Tato oblast se používá pro převzetí služeb při selhání konfigurace skupiny převzetí služeb při selhání. Vzhledem k tomu, že nový primární objekt je v jiné geografické úrovni, jsou výsledky převzetí služeb při selhání v delší době pro OLTP i pro úlohy jen pro čtení, dokud se ovlivněná oblast znovu nevrátí do režimu online.

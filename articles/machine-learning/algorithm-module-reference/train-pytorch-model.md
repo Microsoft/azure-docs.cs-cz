@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 2d88069f33995bdbe9dd479afe9a4e72ab9939b6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420661"
 ---
 # <a name="train-pytorch-model"></a>Trénování modelu PyTorch
@@ -58,7 +58,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 ## <a name="technical-notes"></a>Technické poznámky
 ###  <a name="expected-inputs"></a>Očekávané vstupy  
 
-| Název               | Typ                    | Popis                              |
+| Název               | Typ                    | Description                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Nevlakový model    | UntrainedModelDirectory | Nevlakový model, vyžadovat pytorch         |
 | Datová sada školení   | ImageDirectory          | Datová sada školení                         |
@@ -66,17 +66,17 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Name          | Rozsah            | Typ    | Výchozí | Popis                              |
+| Name          | Rozsah            | Typ    | Výchozí | Description                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epochs        | > 0               | Integer | 5       | Výběr sloupce obsahujícího sloupec popisek nebo výsledek |
 | Velikost dávky    | > 0               | Integer | 16      | Kolik instancí se má naučit v dávce   |
 | Rychlost učení | >= Double. Kurzív | Float   | 0,001   | Počáteční rychlost učení pro Optimalizátor stochastického gradientu klesání. |
-| Náhodné osazení   | Libovolný              | Integer | 1       | Počáteční hodnota pro generátor náhodných čísel používaný modelem |
+| Náhodné osazení   | Všechny              | Integer | 1       | Počáteční hodnota pro generátor náhodných čísel používaný modelem |
 | Trpělivost      | > 0               | Integer | 3       | Kolik epochs k předčasnému zastavení školení   |
 
 ###  <a name="outputs"></a>Výstupy  
 
-| Název          | Typ           | Popis   |
+| Název          | Typ           | Description   |
 | ------------- | -------------- | ------------- |
 | Školený model | ModelDirectory | Školený model |
 

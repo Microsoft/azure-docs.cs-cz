@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357507"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Změna hesla účtu služby AD DS
@@ -42,7 +42,7 @@ Chcete-li aktualizovat synchronizační službu pomocí nového hesla:
 
 3. Vyberte **konektor služby AD** , který odpovídá účtu služba AD DS, pro který se změnilo jeho heslo.
 
-4. V části **Akce**vyberte **vlastnosti**.
+4. V části **Akce** vyberte **vlastnosti**.
 
 5. V místním dialogovém okně vyberte **připojit k doménové struktuře služby Active Directory**:
 

@@ -4,10 +4,10 @@ description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spra
 ms.date: 12/16/2020
 ms.topic: overview
 ms.openlocfilehash: b9215f42e3ad3b7517d14fdaee710a31680ce453
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97617149"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?
@@ -28,7 +28,7 @@ Azure Lighthouse pomáhá poskytovatelům služeb efektivně sestavovat a dodáv
 
 K používání Azure Lighthouse ke správě prostředků Azure se nevztahují žádné další poplatky. Azure Lighthouse může používat libovolný zákazník nebo partner Azure.
 
-## <a name="capabilities"></a>Schopnosti
+## <a name="capabilities"></a>Možnosti
 
 Azure Lighthouse nabízí několik způsobů, jak zjednodušit zapojení a správu:
 

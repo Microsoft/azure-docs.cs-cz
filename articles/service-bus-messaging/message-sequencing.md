@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak zachovat sekvencování a řazení 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85341165"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Určování pořadí zpráv a časová razítka
@@ -30,7 +30,7 @@ Zprávy můžete odeslat do fronty nebo tématu pro zpožděné zpracování. M�
 
 Naplánované zprávy se ve frontě nevyhodnotit, dokud není definovaná doba zařazení do fronty. Před uplynutím této doby lze naplánované zprávy zrušit. Zrušení odstraní zprávu.
 
-Zprávy můžete naplánovat buď nastavením vlastnosti [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) při posílání zprávy prostřednictvím cesty pro normální odeslání, nebo explicitně pomocí rozhraní [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API. Druhá funkce okamžitě vrátí **SequenceNumber**naplánované zprávy, kterou můžete později použít k zrušení naplánované zprávy v případě potřeby. Naplánované zprávy a jejich pořadová čísla lze také zjistit pomocí [procházení zpráv](message-browsing.md).
+Zprávy můžete naplánovat buď nastavením vlastnosti [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) při posílání zprávy prostřednictvím cesty pro normální odeslání, nebo explicitně pomocí rozhraní [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API. Druhá funkce okamžitě vrátí **SequenceNumber** naplánované zprávy, kterou můžete později použít k zrušení naplánované zprávy v případě potřeby. Naplánované zprávy a jejich pořadová čísla lze také zjistit pomocí [procházení zpráv](message-browsing.md).
 
 **SequenceNumber** pro naplánovanou zprávu je platná pouze v případě, že je zpráva v tomto stavu. Při přechodu na aktivní stav zprávy se zpráva připojí do fronty, jako kdyby byla zařazená do fronty v aktuálním okamžitém stavu, což zahrnuje přiřazení nové **SequenceNumber**.
 

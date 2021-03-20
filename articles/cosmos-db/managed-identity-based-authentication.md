@@ -10,10 +10,10 @@ ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98927413"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
@@ -43,7 +43,7 @@ V tomto kroku přiřadíte aplikaci Function App spravovanou identitu přiřazen
 
 V tomto kroku přiřadíte roli spravované identitě přiřazené k systému aplikace Function App. Azure Cosmos DB má několik předdefinovaných rolí, které můžete přiřadit ke spravované identitě. Pro toto řešení použijete tyto dvě role:
 
-|Předdefinovaná role  |Popis  |
+|Předdefinovaná role  |Description  |
 |---------|---------|
 |[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB. Umožňuje načtení klíčů pro čtení i zápis. |
 |[Role čtečky účtu Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu. Umožňuje načtení klíčů pro čtení. |

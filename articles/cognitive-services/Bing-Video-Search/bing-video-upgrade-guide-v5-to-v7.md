@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: e47691c82d43a35a7235eb5c3fd3cf7bca081aee
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351908"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Průvodce upgradem rozhraní Vyhledávání videí API
@@ -43,7 +43,7 @@ Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní 
 
 - Kódy chyb 5 nahradily následujícími možnými `code` hodnotami a `subCode` .
 
-|Kód|Podřízeného kódu|Popis
+|Kód|Podřízeného kódu|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError vždy, když dojde ke kterékoli z podmínek dílčího kódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud je chyba HttpNotAllowed, kód stavu HTTP 410.
@@ -80,6 +80,6 @@ Blokované|InvalidRequest. Block
 
 ### <a name="object-changes"></a>Změny objektu
 
-- Pole videí bylo přejmenováno `nextOffsetAddCount` [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) na `nextOffset` . Způsob, jakým používáte posun, se také změnil. Dřív byste nastavili parametr [posunutí](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) dotazu na `nextOffset` hodnotu plus hodnotu předchozí posunutí a počet videí ve výsledku. Nyní jednoduše nastavíte `offset` parametr dotazu na `nextOffset` hodnotu.  
+- Pole videí bylo přejmenováno `nextOffsetAddCount` [](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) na `nextOffset` . Způsob, jakým používáte posun, se také změnil. Dřív byste nastavili parametr [posunutí](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) dotazu na `nextOffset` hodnotu plus hodnotu předchozí posunutí a počet videí ve výsledku. Nyní jednoduše nastavíte `offset` parametr dotazu na `nextOffset` hodnotu.  
   
 - Změnili jste datový typ `relatedVideos` pole z `Video[]` na [VideosModule](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (viz [VideoDetails](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).

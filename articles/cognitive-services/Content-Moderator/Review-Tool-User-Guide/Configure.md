@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 8812fd1e6c1efb2aa44c77573bc4b8f1c099834d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912017"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
@@ -35,7 +35,7 @@ V této části se dozvíte, jak vytvářet dílčí týmy a rychle přiřazovat
 
 ### <a name="create-a-subteam"></a>Vytvořit subtým
 
-Přejděte do části **subtýmy** a klikněte na **Přidat dílčí tým** . Do dialogového okna zadejte název svého subtýmu a klikněte na **Uložit** .
+Přejděte do části **subtýmy** a klikněte na **Přidat dílčí tým**. Do dialogového okna zadejte název svého subtýmu a klikněte na **Uložit**.
 
 ![Název subtýmu](images/1-Teams-2.PNG)
 
@@ -60,13 +60,13 @@ Chcete-li přiřadit obsah dílčímu týmu, klikněte na tlačítko se třemi t
 
 ### <a name="switch-between-subteams"></a>Přepínání mezi subskupinami
 
-Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupeními přepínat a změnit, které recenze obsahu se vám budou zobrazovat. Na kartě **Revize** vyberte rozevírací nabídku s názvem **výchozí** a vyberte **možnost dílčí tým** . Můžete zobrazit revize obsahu pro různé subtýmy, ale pouze ty, které jsou členy.
+Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupeními přepínat a změnit, které recenze obsahu se vám budou zobrazovat. Na kartě **Revize** vyberte rozevírací nabídku s názvem **výchozí** a vyberte **možnost dílčí tým**. Můžete zobrazit revize obsahu pro různé subtýmy, ale pouze ty, které jsou členy.
 
 ![Přepínání mezi subskupinami](images/3-review-image-subteam-2.png)
 
 ## <a name="tags"></a>Značky
 
-Karta **značky** vám umožňuje definovat vlastní značky moderování kromě dvou výchozích značek moderování &mdash; **isadult** ( **a** ) a **isracy** ( **r** ). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
+Karta **značky** vám umožňuje definovat vlastní značky moderování kromě dvou výchozích značek moderování &mdash;  (**a**) a **isracy** (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
 
 ![Zobrazení značek, včetně zaškrtávacích políček "je viditelné"](images/tags-4-disable.png)
 
@@ -74,9 +74,9 @@ Karta **značky** vám umožňuje definovat vlastní značky moderování kromě
 
 Chcete-li vytvořit novou značku, je nutné do příslušných polí zadat krátký kód, název a popis.
 
-- **Krátký kód** : zadejte pro značku kód se dvěma písmeny. Příklad: **cb**
-- **Název** : zadejte krátký a popisný název značky malými písmeny bez mezer. Příklad: **isbullying** .
-- **Popis** : (volitelné) zadejte popis druhu obsahu, který vaše značka cílí. Příklad: **znázornění nebo instance počítačové bullyingy** .
+- **Krátký kód**: zadejte pro značku kód se dvěma písmeny. Příklad: 
+- **Název**: zadejte krátký a popisný název značky malými písmeny bez mezer. Příklad: **isbullying**.
+- **Popis**: (volitelné) zadejte popis druhu obsahu, který vaše značka cílí. Příklad: **znázornění nebo instance počítačové bullyingy**.
 
 Kliknutím na **Přidat** přidejte značku a po dokončení vytváření značek klikněte na **Uložit** .
 
@@ -90,12 +90,12 @@ Vlastní značky můžete odstranit tak, že v seznamu značek vyberete ikonu od
 
 Karta **konektory** vám umožní spravovat vaše konektory, které jsou moduly plug-in pro konkrétní služby, které mohou zpracovávat obsah různými způsoby jako součást [pracovních postupů](../review-api.md#workflows)obsahu.
 
-Výchozí konektor při vytváření pracovního postupu je konektor Content Moderator, který může označovat obsah jako **dospělý** nebo **pikantní** , Hledat vulgární výrazy atd. Můžete ale použít i jiné konektory, které jsou tady uvedené, pokud máte přihlašovací údaje pro příslušné služby (například pro použití konektoru obličeje, budete potřebovat klíč předplatného pro [obličej](../../face/overview.md) ).
+Výchozí konektor při vytváření pracovního postupu je konektor Content Moderator, který může označovat obsah jako **dospělý** nebo **pikantní**, Hledat vulgární výrazy atd. Můžete ale použít i jiné konektory, které jsou tady uvedené, pokud máte přihlašovací údaje pro příslušné služby (například pro použití konektoru obličeje, budete potřebovat klíč předplatného pro [obličej](../../face/overview.md) ).
 
 [Nástroj pro kontrolu](./human-in-the-loop.md) zahrnuje následující konektory:
 
 - Emoce
-- Tvář
+- Rozpoznávání tváře
 - Cloudová služba PhotoDNA
 - Analýza textu
 
@@ -111,7 +111,7 @@ Karta **pracovní postupy** vám umožní spravovat [pracovní postupy](../revie
 
 ![Nastavení pracovního postupu Content Moderator](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>Credentials
+## <a name="credentials"></a>Přihlašovací údaje
 
 Karta **pověření** poskytuje rychlý přístup k vašemu Content moderator klíč předplatného, který budete potřebovat k přístupu ke všem službám pro moderování z volání REST nebo klientské sady SDK.
 

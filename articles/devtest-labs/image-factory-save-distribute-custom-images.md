@@ -4,16 +4,16 @@ description: Tento článek popisuje kroky pro uložení vlastních imagí z ji�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476236"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Uložení vlastních imagí a jejich distribuce do několika testovacích prostředí
 Tento článek popisuje kroky pro uložení vlastních imagí z již vytvořených virtuálních počítačů (VM). Také se zabývá tím, jak distribuovat tyto vlastní image do dalších DevTest Labs v organizaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Již by měly být zavedeny následující položky:
 
 - Testovací prostředí pro objekt pro vytváření imagí v Azure DevTest Labs.

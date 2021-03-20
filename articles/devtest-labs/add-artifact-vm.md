@@ -4,10 +4,10 @@ description: Naučte se, jak přidat artefakt do virtuálního počítače v tes
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483886"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Přidání artefaktu do virtuálního počítače
@@ -20,8 +20,8 @@ Další informace o tom, jak vytvořit vlastní artefakty, najdete v článku: [
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte testovací prostředí obsahující virtuální počítač, se kterým chcete pracovat.  
 1. Vyberte **moje virtuální počítače**.
 1. Vyberte požadovaný virtuální počítač.

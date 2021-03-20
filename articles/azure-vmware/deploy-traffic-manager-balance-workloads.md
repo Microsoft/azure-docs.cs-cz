@@ -4,10 +4,10 @@ description: Naučte se integrovat Traffic Manager s řešením Azure VMware a v
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.openlocfilehash: 46570c5a61fc0a641d83126fd0f8ef35b3dc42cc
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99988587"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Nasazení Traffic Manager pro vyrovnávání zatížení řešení Azure VMware
@@ -27,7 +27,7 @@ Než začnete, nejdříve si přečtěte [předpoklady](#prerequisites) a pak Pr
 > * Vytvořit profil Traffic Manager
 > * Přidání externích koncových bodů do profilu Traffic Manager
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Tři virtuální počítače nakonfigurované jako servery Microsoft IIS běžící v různých oblastech řešení Azure VMware: 
    - USA – západ
@@ -106,7 +106,7 @@ Následující kroky ověřují konfiguraci segmentu NSX-T v prostředí řešen
 
 1. Pro každý z externích koncových bodů v různých oblastech zadejte požadované podrobnosti a pak vyberte **Přidat**: 
    - Typ
-   - Název
+   - Name
    - Plně kvalifikovaný název domény (FQDN) nebo IP adresa
    - Váha (přiřaďte váhu 1 ke každému koncovému bodu). 
 

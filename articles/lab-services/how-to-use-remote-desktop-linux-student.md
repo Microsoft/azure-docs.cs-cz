@@ -4,10 +4,10 @@ description: Naučte se používat vzdálenou plochu pro virtuální počítače
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d13868477ff2e3378d87d7785789a7498ed17e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85443413"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Připojení k virtuálním počítačům se systémem Linux v laboratoři učebny Azure Lab Services
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak se můžou studenti připojit k virtuálnímu počí
    
 1. Na dlaždici přepněte tlačítko tak, aby se virtuální počítač spustil, pokud je v zastaveném stavu. 
 
-2. Vyberte **Připojit**. Zobrazí se dvě možnosti, jak se připojit k virtuálnímu počítači: **SSH** a **RDP**.
+2. Vyberte **Connect** (Připojit). Zobrazí se dvě možnosti, jak se připojit k virtuálnímu počítači: **SSH** a **RDP**.
 
     ![Virtuální počítač student – možnosti připojení](./media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 

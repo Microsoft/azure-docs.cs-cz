@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92897190"
 ---
 # <a name="geofencing-geojson-data"></a>Geografická data geografických zón
@@ -30,7 +30,7 @@ Data pro geografickou nebo množinu geografických plotů jsou reprezentována `
 * `expiredTime`Je datum a čas vypršení platnosti dat geografických zón. Pokud `userTime` je hodnota v žádosti pozdější než tato hodnota, považují se odpovídající data o geografickou část považována za data s vypršenou platností a nedotazují se na ně. Na základě toho se geometryId z těchto geografických dat do `expiredGeofenceGeometryId` pole v rámci reakce na geografické ploty.
 * `validityPeriod`Je seznam časových období platnosti geografické zóny. Pokud hodnota `userTime` v žádosti spadá mimo období platnosti, považují se odpovídající data o geografickou oblast za neplatnou a nebudou se dotazovat. GeometryId těchto geografických dat je součástí `invalidPeriodGeofenceGeometryId` pole v rámci reakce na geografické ploty. V následující tabulce jsou uvedeny vlastnosti elementu validityPeriod.
 
-| Název | Typ | Povinné  | Popis |
+| Název | Typ | Vyžadováno  | Popis |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datum a čas  | true | Datum a čas zahájení období platnosti. |
 | endTime   | Datum a čas  | true |  Datum a čas konce období platnosti. |

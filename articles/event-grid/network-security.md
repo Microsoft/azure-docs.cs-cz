@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
 ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94917524"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Azure Event Grid
@@ -27,7 +27,7 @@ Pomocí značek služeb můžete definovat řízení přístupu k síti pro [sku
 
 | Značka služby | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid. | Obojí | Ne | Ne |
+| AzureEventGrid | Azure Event Grid. | Obojí | No | No |
 
 
 ## <a name="ip-firewall"></a>Brána firewall protokolu IP 
@@ -37,7 +37,7 @@ Ve výchozím nastavení je k tématům a doménám přístup z Internetu, pokud
 
 Podrobné pokyny ke konfiguraci brány firewall protokolu IP pro témata a domény najdete v tématu [Konfigurace brány firewall protokolu IP](configure-firewall.md).
 
-## <a name="private-endpoints"></a>Soukromé koncové body
+## <a name="private-endpoints"></a>Privátní koncové body
 Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md) můžete v případě, že chcete přijímat události přímo z vaší virtuální sítě, zabezpečit vaše témata a domény přes [privátní propojení](../private-link/private-link-overview.md) , aniž byste museli procházet veřejným internetem. Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší virtuální síti. Když vytvoříte privátní koncový bod pro vaše téma nebo doménu, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším prostředkem Event Grid. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou Event Grid používá zabezpečený privátní odkaz.
 
 ![Diagram architektury](./media/network-security/architecture-diagram.png)
@@ -84,9 +84,9 @@ Následující tabulka popisuje různé stavy připojení privátního koncovéh
 | Stav připojení   |  Úspěšné publikování (ano/ne) |
 | ------------------ | -------------------------------|
 | Schválené           | Yes                            |
-| Zamítnuto           | Ne                             |
-| Čekající            | Ne                             |
-| Propojení       | Ne                             |
+| Zamítnuto           | No                             |
+| Čekající            | No                             |
+| Odpojeno       | No                             |
 
 Aby publikování bylo úspěšné, měla by být **schválen** stav připojení privátního koncového bodu. Pokud se připojení odmítne, nebude možné ho schválit pomocí Azure Portal. Jedinou možností je odstranit připojení a místo toho vytvořit nový.
 

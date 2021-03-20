@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit testovací prostředí pomocí Azure Lab S
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 97cdf13f39cc73ee7f35fb402229469195f1456c
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97616418"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Nastavení testovacího prostředí pro výuku etických tříd hackerů
@@ -24,7 +24,7 @@ K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, ab
 
 Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací prostředí a pak použijte následující nastavení:
 
-| Velikost virtuálního počítače | Obrázek |
+| Velikost virtuálního počítače | Image |
 | -------------------- | ----- |
 | Střední (vnořená virtualizace) | Windows Server 2019 Datacenter |
 
@@ -121,7 +121,7 @@ Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s ch
 
 Šablona se teď aktualizovala a obsahuje image pro etický testovací třídu průniku hackerů, image s nástroji pro testování průniku a další image s chybami zabezpečení ke zjišťování. Image šablony se teď dají publikovat do třídy. Vyberte tlačítko **publikovat** na stránce šablony a publikujte šablonu do testovacího prostředí.
 
-## <a name="cost"></a>Cost  
+## <a name="cost"></a>Náklady  
 
 Pokud byste chtěli odhadnout náklady na toto testovací prostředí, můžete použít následující příklad:
 

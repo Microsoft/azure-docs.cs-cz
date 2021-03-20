@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
 ms.openlocfilehash: f49e05578f55a38845acbd4010f928fb17c51606
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96352265"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Formát Markdownu podporovaný v textu odpovědi QnA Maker
@@ -37,8 +37,8 @@ Nový řádek mezi 2 větami.|`\n\n`|`How can I create a bot with \n\n QnA Maker
 |Adresa URL odkazu|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![formát pro adresu URL (hypertextový odkaz)](./media/qnamaker-concepts-datasources/format-url.png)|
 |* Adresa URL pro veřejnou image|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![formát pro adresu URL veřejného obrázku ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |Přeškrtnutí|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![formát pro přeškrtnutí](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|Tučné a kurzívy|`***text**_`|`How can I create a _*_QnA Maker_*_ bot?`|![formát pro tučné písmo a kurzívu](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|Tučná adresa URL odkazu|`[_*text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![formát pro adresu URL tučného písma](./media/qnamaker-concepts-datasources/format-bold-url.png)|
+|Tučné a kurzívy|`***text**_`|`How can I create a _*_QnA Maker_** bot?`|![formát pro tučné písmo a kurzívu](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|Tučná adresa URL odkazu|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![formát pro adresu URL tučného písma](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Adresa URL pro odkaz na kurzívu|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![formát pro adresu URL kurzívou](./media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Řídicí symboly Markdownu|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Formát pro řídicí symboly Markdownu](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Seřazený seznam|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Předchozí příklad používá automatické číslování integrovaný do Markdownu.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Předchozí příklad používá explicitní číslování.|![formát pro uspořádaný seznam](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
@@ -51,8 +51,8 @@ Pokud chcete přidat obsah pomocí direktivy Update nebo nahradit rozhraní API 
 
 | Zachovat HTML  | Reprezentace v žádosti rozhraní API  | Reprezentace v KB |
 |-----------|---------|-------------------------|
-| Ano | \&lt; br \& gt; | &lt;BR&gt; |
-| Ano | \&lt; H3 \& gt; Header \& lt;/H3 \& gt; | &lt;H3 – &gt; záhlaví &lt; /H3&gt; |
+| Yes | \&lt; br \& gt; | &lt;BR&gt; |
+| Yes | \&lt; H3 \& gt; Header \& lt;/H3 \& gt; | &lt;H3 – &gt; záhlaví &lt; /H3&gt; |
 
 Znaky CR (\r\n) se navíc v KB převádějí na \n. LF (\n) se udržuje tak, jak je. V případě, že chcete řídicí sekvenci řídicích znaků, jako je například \t nebo \n, můžete použít zpětné lomítko, například: \\ \\ r \\ \\ n a \\ \\ t.
 

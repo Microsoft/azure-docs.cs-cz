@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62afe97b44f45bc0b7aa12b33b6a65dd94ecf095
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99252198"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Nastavení souborů cookie pro přístup k místním aplikacím v Azure Active Directory
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) mají přístup a soubory cookie relace pro p�
 
 [Proxy aplikace](application-proxy.md) používá následující nastavení přístupu a souborů cookie relace.
 
-| Nastavení souborů cookie | Výchozí | Popis | Doporučení |
+| Nastavení souborů cookie | Výchozí | Description | Doporučení |
 | -------------- | ------- | ----------- | --------------- |
 | Použít soubor cookie HTTP-Only | **Ne** | Hodnota **Ano** povolí proxy aplikace, aby do hlaviček http Response zahrnovala příznak HttpOnly. Tento příznak poskytuje další výhody zabezpečení, například brání skriptování na straně klienta (CSS) z kopírování a úprav souborů cookie.<br></br><br></br>Předtím, než jsme podporovali nastavení HTTP-Only, proxy aplikací zašifrované a přenesené soubory cookie přes zabezpečený kanál TLS, aby se chránily proti úpravám. | Použijte **Ano** z důvodu dalších výhod zabezpečení.<br></br><br></br>Pro klienty nebo uživatelské agenty, kteří potřebují přístup k souboru cookie relace, nepoužívejte **žádné** . Například pro klienta RDP nebo MTSC použijte **No** , který se připojuje k serveru Brána vzdálené plochy prostřednictvím proxy aplikací.|
 | Použít zabezpečený soubor cookie | **Ne** | Hodnota **Ano** povolí proxy aplikace zahrnout zabezpečený příznak v hlavičkách http Response. Soubory cookie zabezpečení zvyšují zabezpečení tím, že přenáší soubory cookie přes zabezpečený kanál TLS, jako je například HTTPS. To brání tomu, aby soubory cookie byly pozorovány neoprávněnými stranami z důvodu přenosu souboru cookie ve formě prostého textu. | Použijte **Ano** z důvodu dalších výhod zabezpečení.|

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: justinha
 ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97615813"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure Active Directory Domain Services
@@ -91,7 +91,7 @@ Překlad adres IP můžete povolit pomocí podmíněného přeposílání DNS na
 
 Spravovaná doména vytvoří během nasazení některé síťové prostředky. Tyto prostředky jsou nutné pro úspěšnou operaci a správu spravované domény a neměli byste je konfigurovat ručně.
 
-| Prostředek Azure                          | Popis |
+| Prostředek Azure                          | Description |
 |:----------------------------------------|:---|
 | Síťová karta                  | Azure služba AD DS hostuje spravovanou doménu na dvou řadičích domény (DCs), které běží na Windows serveru jako virtuální počítače Azure. Každý virtuální počítač má virtuální síťové rozhraní, které se připojuje k podsíti virtuální sítě. |
 | Dynamická standardní veřejná IP adresa      | Azure služba AD DS komunikuje se službou synchronizace a správy pomocí veřejné IP adresy standardní SKU. Další informace o veřejných IP adresách najdete v tématu [typy IP adres a metody přidělování v Azure](../virtual-network/public-ip-addresses.md). |
@@ -108,9 +108,9 @@ Spravovaná doména vytvoří během nasazení některé síťové prostředky. 
 
 Aby mohla spravovaná doména poskytovat služby ověřování a správy, vyžadují se následující pravidla skupiny zabezpečení sítě. Neupravujte ani neodstraňujte tato pravidla skupiny zabezpečení sítě pro podsíť virtuální sítě, do které je spravovaná doména nasazená.
 
-| Číslo portu | Protokol | Zdroj                             | Cíl | Akce | Povinné | Účel |
+| Číslo portu | Protokol | Zdroj                             | Cíl | Akce | Vyžadováno | Účel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Správa vaší domény. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Yes      | Správa vaší domény. |
 | 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Volitelné      | Ladění pro podporu. |
 
 Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména. Tuto skupinu zabezpečení sítě neodstraňujte. Nástroj pro vyrovnávání zatížení nebude bez něj správně fungovat.

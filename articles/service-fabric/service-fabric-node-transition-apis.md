@@ -7,10 +7,10 @@ ms.date: 6/12/2017
 ms.author: lemai
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c31040ec13084f9e4b08bbc9a347e4ad44975bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89021251"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Nahrazení počátečního uzlu a zastavení rozhraní API uzlu pomocí rozhraní API pro přechod uzlů
@@ -42,7 +42,7 @@ Pokud rozhraní API pro přechod uzlů nevyvolá výjimku při vyvolání, syst�
 Spuštění *zastaveného* uzlu pomocí rozhraní API pro přechod uzlů vrátí ho do funkce jako normálního člena clusteru znovu.  Výstup rozhraní API pro dotaz na uzel se zobrazí *jako false* a *NodeStatus* jako něco mimo provoz (například nahoru).
 
 
-**Omezená doba trvání** Když použijete rozhraní API pro přechod uzlů k zastavení uzlu, jeden z požadovaných parametrů *stopNodeDurationInSeconds*představuje dobu v sekundách, po kterou se uzel *zastavil*.  Tato hodnota musí být v povoleném rozsahu, který má minimálně 600 a maximálně 14400.  Po uplynutí této doby se uzel automaticky restartuje do stavu nahoru.  Příklad použití najdete v ukázce 1 níže.
+**Omezená doba trvání** Když použijete rozhraní API pro přechod uzlů k zastavení uzlu, jeden z požadovaných parametrů *stopNodeDurationInSeconds* představuje dobu v sekundách, po kterou se uzel *zastavil*.  Tato hodnota musí být v povoleném rozsahu, který má minimálně 600 a maximálně 14400.  Po uplynutí této doby se uzel automaticky restartuje do stavu nahoru.  Příklad použití najdete v ukázce 1 níže.
 
 > [!WARNING]
 > Vyhněte se kombinování rozhraní API pro přechod uzlů a zastavování rozhraní API pro uzel zastavení a spuštění.  Doporučujeme použít pouze rozhraní API pro přechod uzlů.  > Pokud byl uzel už zastavený pomocí rozhraní API pro zastavení uzlu, měl by se nejdřív začít používat rozhraní API pro spuštění uzlu předtím, než se použijí rozhraní API pro přechod uzlů >.
